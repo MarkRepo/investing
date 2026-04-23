@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}搜索{% endblock %}
+{% block content %}
+<h1>搜索</h1>
+<form method="get" action="/search" class="search-form">
+  <input name="q" value="{{ q }}" placeholder="关键字（完全匹配）" autofocus id="search-input" />
+  <select name="scope">
+    {% for s in scopes %}<option value="{{ s }}" {% if s == scope %}selected{% endif %}>{{ s }}</option>{% endfor %}
+  </select>
+  <button>搜索</button>
+</form>
+
+{% if q %}
+<p class="hint">{{ results|length }} 条结果（scope：{{ scope }}）</p>
+{% if results %}
+<ul class="search-results">
+  {% for r in results %}
+  <li>
+    <code>{{ r.path }}:{{ r.line_no }}</code>
+    <div class="snippet">{{ r.snippet }}</div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p><em>没有命中。</em></p>
+{% endif %}
+{% endif %}
+{% endblock %}

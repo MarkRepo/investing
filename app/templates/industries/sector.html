@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}行业 · {{ sector }}{% endblock %}
+{% block content %}
+<h1>行业：{{ sector }}</h1>
+<p><a href="/industries">← 返回行业列表</a></p>
+
+{% if derived %}
+<div class="summary">
+  <span>能力图（{{ derived_year }}）：{{ derived.count }} 条决策</span>
+  {% if derived.avg_process is not none %}
+    <span>平均过程：<strong>{{ derived.avg_process|round(2) }}</strong></span>
+  {% endif %}
+  {% if derived.avg_result is not none %}
+    <span>平均结果：<strong>{{ derived.avg_result|round(2) }}</strong></span>
+  {% endif %}
+  {% if derived.hit_rate is not none %}
+    <span>命中率（buy/add，result≥4）：<strong>{{ (derived.hit_rate * 100)|round(1) }}%</strong></span>
+  {% endif %}
+</div>
+<p class="hint">上方数据来自 journal 聚合，仅作参考；`competence-map.md` 里应手写模式、教训、能力演进，不是只看数字。</p>
+{% else %}
+<p class="hint">{{ derived_year }} 年尚无该行业的决策记录。</p>
+{% endif %}
+
+{% for kind, doc in files.items() %}
+<section>
+  <h2>
+    {{ kind }}.md
+    {% if doc.exists %}
+      <span class="badge badge-active">已建</span>
+    {% else %}
+      <span class="badge badge-draft">未建</span>
+    {% endif %}
+    <small><a href="/industries/{{ sector }}/{{ kind }}">编辑</a></small>
+  </h2>
+  {% if doc.frontmatter %}
+  <p class="hint">
+    {% if doc.frontmatter.last_updated %}最后更新：{{ doc.frontmatter.last_updated }}{% endif %}
+    {% if doc.frontmatter.source_type %} · 来源类型：{{ doc.frontmatter.source_type }}{% endif %}
+  </p>
+  {% endif %}
+  <pre class="preview">{{ doc.body }}</pre>
+</section>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}复盘 {{ summary.quarter }}{% endblock %}
+{% block content %}
+<h1>{{ summary.quarter }} 季度复盘</h1>
+
+<p><a href="/review">← 返回季度列表</a></p>
+
+{% macro score(v) %}{% if v is none %}—{% else %}{{ "%.2f"|format(v) }}{% endif %}{% endmacro %}
+
+<div class="summary">
+  <div>决策总数：<strong>{{ summary.count }}</strong></div>
+  <div>平均过程分：<strong>{{ score(summary.avg_process) }}</strong></div>
+  <div>平均结果分：<strong>{{ score(summary.avg_result) }}</strong></div>
+</div>
+
+{% if summary.count == 0 %}
+<p class="hint">本季度无决策。</p>
+{% else %}
+<h2>按动作分布</h2>
+<table>
+  <thead><tr><th>动作</th><th>数量</th><th>平均过程</th><th>平均结果</th></tr></thead>
+  <tbody>
+    {% for a, st in summary.by_action.items() %}
+    <tr>
+      <td>{{ a }}</td>
+      <td>{{ st.count }}</td>
+      <td>{{ score(st.avg_process) }}</td>
+      <td>{{ score(st.avg_result) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if summary.mismatches.good_process_bad_result %}
+<fieldset class="warn-section">
+  <legend>过程 ≥4 但结果 ≤2（精读！可能是运气差，不是方法错）</legend>
+  <ul class="status-list">
+    {% for r in summary.mismatches.good_process_bad_result %}
+    <li><a href="/journal/{{ r.id }}">{{ r.id }}</a> — 过程 {{ score(r.process) }} / 结果 {{ score(r.result) }}</li>
+    {% endfor %}
+  </ul>
+</fieldset>
+{% endif %}
+
+{% if summary.mismatches.bad_process_good_result %}
+<fieldset class="warn-section">
+  <legend>过程 ≤2 但结果 ≥4（最危险！别被运气奖励错误方法）</legend>
+  <ul class="status-list">
+    {% for r in summary.mismatches.bad_process_good_result %}
+    <li><a href="/journal/{{ r.id }}">{{ r.id }}</a> — 过程 {{ score(r.process) }} / 结果 {{ score(r.result) }}</li>
+    {% endfor %}
+  </ul>
+</fieldset>
+{% endif %}
+
+{% if summary.mismatches.unfilled_result %}
+<fieldset>
+  <legend>未填结果分（buy/sell/add/trim）</legend>
+  <p class="hint">DESIGN §3.5：结果分在决策后 3/6/12 个月回填。</p>
+  <ul class="status-list">
+    {% for r in summary.mismatches.unfilled_result %}
+    <li><a href="/journal/{{ r.id }}">{{ r.id }}</a></li>
+    {% endfor %}
+  </ul>
+</fieldset>
+{% endif %}
+
+<h2>全部决策</h2>
+<table>
+  <thead><tr><th>日期</th><th>标的</th><th>动作</th><th>过程</th><th>结果</th><th></th></tr></thead>
+  <tbody>
+    {% for r in summary.entries %}
+    <tr>
+      <td>{{ r.date }}</td>
+      <td>{{ r.market }}:{{ r.ticker }}</td>
+      <td><span class="badge badge-action-{{ r.action }}">{{ r.action }}</span></td>
+      <td>{{ score(r.process) }}</td>
+      <td>{{ score(r.result) }}</td>
+      <td><a href="/journal/{{ r.id }}">详情</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

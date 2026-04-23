@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}催化剂日历{% endblock %}
+{% block content %}
+<h1>催化剂日历</h1>
+
+<p class="hint">
+  手工维护的时间表：财报日期（看 IR 页面）+ 行业事件（看新闻）。
+  DESIGN §2.1：催化剂日历位于"V0 + 执行 → 持仓监控"环节。
+</p>
+
+{% if upcoming %}
+<fieldset class="warn-section">
+  <legend>未来 7 天</legend>
+  <table>
+    <thead><tr><th>日期</th><th>天数</th><th>标的</th><th>类型</th><th>标题</th></tr></thead>
+    <tbody>
+      {% for r in upcoming %}
+      <tr>
+        <td>{{ r.date }}</td>
+        <td><strong>T+{{ r.days_to }}</strong></td>
+        <td>{{ r.ticker or r.industry or '—' }}</td>
+        <td>{{ r.kind }}</td>
+        <td>{{ r.title }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</fieldset>
+{% endif %}
+
+<fieldset>
+  <legend>新增</legend>
+  {% if error %}<p class="warn">{{ error }}</p>{% endif %}
+  <form method="post" action="/catalysts/add">
+    <label>日期<input type="date" name="date" required></label>
+    <label>类型
+      <select name="kind">
+        {% for k in kinds %}<option value="{{ k }}">{{ k }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>标的（公司用 US_HIMS 形式；行业用空，填行业）
+      <input name="ticker" placeholder="US_HIMS">
+    </label>
+    <label>行业（可留空）<input name="industry" placeholder="baijiu"></label>
+    <label>标题<input name="title" required placeholder="HIMS 2026Q1 财报"></label>
+    <label>备注<input name="note" placeholder="可选"></label>
+    <button type="submit">添加</button>
+  </form>
+</fieldset>
+
+<h2>全部（共 {{ rows|length }} 条）</h2>
+{% if not rows %}
+<p class="hint">还没有催化剂。</p>
+{% else %}
+<table>
+  <thead><tr><th>日期</th><th>标的</th><th>行业</th><th>类型</th><th>标题</th><th>备注</th><th></th></tr></thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td>{{ r.date }}</td>
+      <td>{{ r.ticker or '—' }}</td>
+      <td>{{ r.industry or '—' }}</td>
+      <td><span class="badge">{{ r.kind }}</span></td>
+      <td>{{ r.title }}</td>
+      <td class="hint">{{ r.note }}</td>
+      <td>
+        <form method="post" action="/catalysts/delete/{{ loop.index0 }}" class="inline"
+              onsubmit="return confirm('删除？');">
+          <button type="submit">×</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}新建公司{% endblock %}
+{% block content %}
+<h1>新建公司</h1>
+<form method="post" action="/companies/new">
+  <label>
+    ticker
+    <input name="ticker" required autofocus />
+  </label>
+  <label>
+    market
+    <select name="market" required>
+      {% for m in markets %}<option value="{{ m }}">{{ m }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>
+    名称
+    <input name="name" required />
+  </label>
+  <label>
+    行业
+    <select name="sector" required>
+      {% for s in sectors %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>
+    币种
+    <input name="currency" value="USD" />
+  </label>
+  <button type="submit">创建</button>
+</form>
+{% endblock %}

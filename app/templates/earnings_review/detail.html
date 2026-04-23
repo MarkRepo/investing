@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}对照：{{ ticker }}{% endblock %}
+{% block content %}
+<h1>财报对照：{{ meta.get('name', ticker) }} <small>({{ market }}:{{ ticker }})</small></h1>
+<p><a href="/earnings-review">← 返回待办</a> · <a href="/companies/{{ key }}">公司详情</a> · <a href="/companies/{{ key }}/v0">编辑 V0</a> · <a href="/companies/{{ key }}/financials">编辑财务</a></p>
+
+<div class="summary">
+  <div>最新财务期间：<strong>{{ s.latest_period or '无' }}</strong></div>
+  <div>上次对照：<strong>{{ s.last_reviewed_period or '从未' }}</strong></div>
+  <div>状态：
+    {% if s.pending %}
+      <span class="badge badge-missing">待对照</span>
+    {% else %}
+      <span class="badge badge-active">已对照</span>
+    {% endif %}
+  </div>
+</div>
+
+{% if s.financials %}
+<h2>最近财务（{{ s.financials|length }} 期）</h2>
+<table class="financials">
+  <thead>
+    <tr><th>期间</th><th>营收</th><th>毛利</th><th>营业利润</th><th>净利润</th><th>经营现金流</th><th>毛利率</th><th>营业利润率</th><th>净利率</th><th>ROE</th><th>ROA</th><th>D/E</th></tr>
+  </thead>
+  <tbody>
+    {% macro num(v) -%}{%- if v is none -%}<span class="hint">–</span>{%- else -%}{{ "%.2f"|format(v) }}{%- endif -%}{%- endmacro %}
+    {% macro pct(v) -%}{%- if v is none -%}<span class="hint">–</span>{%- else -%}{{ "%.1f%%"|format(v * 100) }}{%- endif -%}{%- endmacro %}
+    {% for r in s.financials %}
+    <tr>
+      <td><strong>{{ r.period }}</strong></td>
+      <td>{{ num(r.revenue) }}</td>
+      <td>{{ num(r.gross_profit) }}</td>
+      <td>{{ num(r.operating_income) }}</td>
+      <td>{{ num(r.net_income) }}</td>
+      <td>{{ num(r.operating_cashflow) }}</td>
+      <td>{{ pct(r.gross_margin) }}</td>
+      <td>{{ pct(r.operating_margin) }}</td>
+      <td>{{ pct(r.net_margin) }}</td>
+      <td>{{ pct(r.roe) }}</td>
+      <td>{{ pct(r.roa) }}</td>
+      <td>{{ num(r.debt_to_equity) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p><em>还没有财务数据。</em></p>
+{% endif %}
+
+<h2>V0 §5 卖出触发（推翻条件）</h2>
+<fieldset>
+  {% if s.v0_section_5 %}
+  <pre style="white-space: pre-wrap; font-family: ui-monospace, Menlo, monospace; font-size: 13px;">{{ s.v0_section_5 }}</pre>
+  {% else %}
+  <p class="hint">V0 §5 为空。建议去 <a href="/companies/{{ key }}/v0">V0 编辑</a> 补上具体的基本面触发条件。</p>
+  {% endif %}
+</fieldset>
+
+<h2>V0 §6 什么不算推翻（噪音清单）</h2>
+<fieldset>
+  {% if s.v0_section_6 %}
+  <pre style="white-space: pre-wrap; font-family: ui-monospace, Menlo, monospace; font-size: 13px;">{{ s.v0_section_6 }}</pre>
+  {% else %}
+  <p class="hint">V0 §6 为空。</p>
+  {% endif %}
+</fieldset>
+
+<h2>V0 §7 当前状态</h2>
+<fieldset>
+  {% if s.v0_section_7 %}
+  <pre style="white-space: pre-wrap; font-family: ui-monospace, Menlo, monospace; font-size: 13px;">{{ s.v0_section_7 }}</pre>
+  {% else %}
+  <p class="hint">V0 §7 为空。</p>
+  {% endif %}
+</fieldset>
+
+{% if s.latest_period %}
+<h2>标记已对照</h2>
+<p class="hint">确认读完 §5/§6/§7 且与最近财务对照过后再点。会把 <code>last_reviewed_period</code> 写入 V0 frontmatter。如果发现推翻条件已触发，别标记，去 <a href="/journal/new?ticker={{ ticker }}&market={{ market }}&action=sell">开卖出决策</a>。</p>
+<form method="post" action="/earnings-review/{{ key }}/mark">
+  <input type="hidden" name="period" value="{{ s.latest_period }}" />
+  <button type="submit">标记对照到 {{ s.latest_period }}</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,63 @@
+# 通用能力圈 12 问（来自 DESIGN.md §3.3）
+# 评分标准：具体度优先于全面度，回答要能被可证伪
+# 自评三档：
+#   unanswered  未答或不清楚           0 分
+#   vague       有方向但无具体数字/机制   0.5 分
+#   specific    给出可证伪的具体答案      1 分
+# 门禁阈值（V1 默认）：
+#   universal_score >= 8 且 sector_score >= 3 → in_competence = true
+#   否则 → 不进入 V0 阶段（见 DESIGN §1 第 3 条核心哲学）
+
+version: 1
+scoring:
+  levels:
+    - id: unanswered
+      weight: 0
+      label: 未答或不清楚
+    - id: vague
+      weight: 0.5
+      label: 有方向但无具体数字或机制
+    - id: specific
+      weight: 1
+      label: 给出可证伪的具体答案
+  pass_threshold:
+    universal_min: 8
+    sector_min: 3
+
+universal_questions:
+  - id: q1_what
+    label: 做什么
+    prompt: 用两句话说清它卖什么、卖给谁、怎么交付
+  - id: q2_revenue_model
+    label: 怎么赚钱
+    prompt: 收入按什么单位结算
+  - id: q3_unit_economics
+    label: 单位经济
+    prompt: 每卖一个单位它赚多少、花多少、净赚多少
+  - id: q4_customer_profile
+    label: 客户画像
+    prompt: 主要客户是谁，为什么选它
+  - id: q5_customer_acquisition
+    label: 获客模式
+    prompt: 获客成本 vs 生命周期价值的量级
+  - id: q6_value_chain
+    label: 上下游关系
+    prompt: 上下游议价力如何影响公司利润
+  - id: q7_competition
+    label: 竞争格局
+    prompt: 前三竞争对手及各自相对强项
+  - id: q8_moat
+    label: 护城河
+    prompt: 10 亿资金能复制这家公司吗？为什么不能
+  - id: q9_capital_intensity
+    label: 资本密集度
+    prompt: 每赚 1 块钱要投入多少固定资产
+  - id: q10_cycle
+    label: 周期位置
+    prompt: 当前在长期增长、成熟、还是衰退阶段
+  - id: q11_regulation
+    label: 监管环境
+    prompt: 政策是朋友还是敌人，关键变数是什么
+  - id: q12_fatal_risk
+    label: 致命风险
+    prompt: 什么情况下这家公司会死（要具体）

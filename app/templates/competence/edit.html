@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}能力圈 · {{ ticker }}{% endblock %}
+{% block content %}
+<h1>能力圈自检：{{ ticker }} <small>({{ sector or '未设置行业' }})</small></h1>
+<p><a href="/companies/{{ key }}">← 返回公司</a></p>
+
+{% if sector in ['bank', 'reit', 'insurance', 'real_estate', 'utilities', 'cyclical', 'semiconductor', 'energy', 'defense'] %}
+<p class="warn">
+  <strong>利率/宏观敏感行业</strong>（DESIGN §2.3）：宏观传导机制是必答题，不能只看通用 12 问，行业卷里的利率 / 周期 / 政策题要答透。
+</p>
+{% endif %}
+
+<div class="summary">
+  <span>通用 <strong>{{ fm.get('universal_score', 0) }}</strong> / 12</span>
+  <span>行业 <strong>{{ fm.get('sector_score', 0) }}</strong> / {{ sector_questions|length or '?' }}</span>
+  <span>
+    状态：
+    {% if fm.get('in_competence') %}<span class="badge badge-active">通过</span>
+    {% else %}<span class="badge badge-draft">未通过（门禁阈值：通用 ≥8 且 行业 ≥3）</span>
+    {% endif %}
+  </span>
+</div>
+
+{% if fm.get('gaps') %}
+<p class="hint">缺口：{{ fm.gaps|join(', ') }}</p>
+{% endif %}
+
+{% if not sector %}
+<p class="warn">meta.md 里没有 industry_primary，无法加载行业题。请先补充 meta.md。</p>
+{% endif %}
+
+<form method="post" action="/companies/{{ key }}/competence">
+  <h2>通用 12 问</h2>
+  {% for q in universal_questions %}
+    {% set a = answers.get(q.id, {}) %}
+    <fieldset>
+      <legend>{{ q.id }} · {{ q.label }}</legend>
+      <p class="hint">{{ q.prompt }}</p>
+      <label class="level-row">
+        自评：
+        {% for lv in levels %}
+          <label class="level-radio">
+            <input type="radio" name="{{ q.id }}__level" value="{{ lv }}"
+              {% if a.get('level') == lv or (not a and lv == 'unanswered') %}checked{% endif %} />
+            {{ lv }}
+          </label>
+        {% endfor %}
+      </label>
+      <textarea name="{{ q.id }}__text" rows="3">{{ a.get('text', '') }}</textarea>
+    </fieldset>
+  {% endfor %}
+
+  {% if sector_questions %}
+  <h2>行业补丁：{{ sector }}</h2>
+  {% for q in sector_questions %}
+    {% set a = answers.get(q.id, {}) %}
+    <fieldset>
+      <legend>{{ q.id }} · {{ q.label }}</legend>
+      <p class="hint">{{ q.prompt }}</p>
+      <label class="level-row">
+        自评：
+        {% for lv in levels %}
+          <label class="level-radio">
+            <input type="radio" name="{{ q.id }}__level" value="{{ lv }}"
+              {% if a.get('level') == lv or (not a and lv == 'unanswered') %}checked{% endif %} />
+            {{ lv }}
+          </label>
+        {% endfor %}
+      </label>
+      <textarea name="{{ q.id }}__text" rows="3">{{ a.get('text', '') }}</textarea>
+    </fieldset>
+  {% endfor %}
+  {% endif %}
+
+  <button type="submit">保存并重新计分</button>
+</form>
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}研究 · {{ ticker }}{% endblock %}
+{% block content %}
+<h1>研究工作台：{{ ticker }} <small>({{ market }})</small></h1>
+<p><a href="/companies/{{ key }}">← 返回公司</a></p>
+
+<h2>研报源（sources/）</h2>
+<form method="post" action="/research/{{ key }}/source" enctype="multipart/form-data">
+  <input type="file" name="file" accept=".md,.txt" required />
+  <button type="submit">上传</button>
+</form>
+{% if sources %}
+<ul>
+  {% for s in sources %}<li>{{ s.name }} <span class="hint">({{ s.size }}B)</span></li>{% endfor %}
+</ul>
+{% else %}
+<p><em>还没有上传的研报。</em></p>
+{% endif %}
+
+<h2>批量导入 claims（LLM 对话产出）</h2>
+<p class="hint">
+  在 Claude 对话里用 <a href="/prompts/claim-extraction.md">claim-extraction prompt</a>
+  对着研报抽取 JSON，把结果粘贴到下面。校验不通过会整批拒绝（不做部分导入），
+  修正后再粘。subject_tag 必须在 <code>controlled-vocab/subjects.yaml</code> 里。
+</p>
+{% if batch_error_message %}
+<fieldset class="warn-section">
+  <legend>校验失败</legend>
+  <p class="warn">{{ batch_error_message }}</p>
+  {% if batch_errors %}
+  <table>
+    <thead><tr><th>索引</th><th>错误</th><th>claim_text 预览</th></tr></thead>
+    <tbody>
+      {% for e in batch_errors %}
+      <tr>
+        <td>#{{ e.index }}</td>
+        <td><ul>{% for m in e.errors %}<li>{{ m }}</li>{% endfor %}</ul></td>
+        <td class="hint">{{ (e.claim.claim_text or '(空)')[:60] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</fieldset>
+{% endif %}
+<form method="post" action="/research/{{ key }}/batch-import">
+  <fieldset>
+    <textarea name="claims_json" rows="14" placeholder='{"source_id": "MS-2026-04-10", "claims": [...]}'
+              style="width:100%; font-family: ui-monospace, Menlo, monospace; font-size: 12px;">{{ batch_json or '' }}</textarea>
+    <button type="submit">校验并导入</button>
+  </fieldset>
+</form>
+
+<h2>claims（{{ claims|length }} 条）</h2>
+{% if claims %}
+<table>
+  <thead>
+    <tr><th>id</th><th>subject</th><th>polarity</th><th>claim</th><th>evidence</th></tr>
+  </thead>
+  <tbody>
+    {% for c in claims %}
+    <tr>
+      <td>{{ c.id }}</td>
+      <td>{{ c.subject_tag }}</td>
+      <td><span class="badge badge-pol-{{ c.polarity }}">{{ c.polarity }}</span></td>
+      <td>{{ c.claim_text }}</td>
+      <td class="hint">{% if c.evidence %}{{ c.evidence[0].text }}{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<h3>新增 claim</h3>
+<form method="post" action="/research/{{ key }}/claim">
+  <fieldset>
+    <label>claim_text <textarea name="claim_text" rows="2" required></textarea></label>
+    <label>subject_tag
+      <select name="subject_tag" required>
+        {% for s in subjects %}<option value="{{ s.id }}">{{ s.id }} · {{ s.label }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>polarity
+      <select name="polarity">
+        {% for p in polarities %}<option value="{{ p }}">{{ p }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>claim_type
+      <select name="claim_type">
+        {% for t in claim_types %}<option value="{{ t }}">{{ t }}</option>{% endfor %}
+      </select>
+    </label>
+    <label>timeframe <input name="timeframe" placeholder="2026Q1 / long-term" /></label>
+    <label>source_id <input name="source_id" placeholder="MS-2026-04-10" /></label>
+    <label>evidence_text（可选）<textarea name="evidence_text" rows="2"></textarea></label>
+    <button type="submit">新增</button>
+  </fieldset>
+</form>
+
+<h2>共识地图</h2>
+{% if consensus %}
+<table>
+  <thead>
+    <tr><th>subject</th><th class="pol-bull">bull</th><th class="pol-bear">bear</th><th class="pol-neutral">neutral</th></tr>
+  </thead>
+  <tbody>
+    {% for row in consensus %}
+    <tr>
+      <td>{{ row.subject_tag }}</td>
+      <td class="pol-bull">{{ row.bull }}</td>
+      <td class="pol-bear">{{ row.bear }}</td>
+      <td class="pol-neutral">{{ row.neutral }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="hint">加几条 claim 后这里会按 subject_tag 聚合。</p>
+{% endif %}
+{% endblock %}

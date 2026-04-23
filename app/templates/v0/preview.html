@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}V0 预览 · {{ ticker }}{% endblock %}
+{% block content %}
+<p>
+  <a href="/companies/{{ key }}/v0">← 返回编辑</a>
+</p>
+<article class="markdown">
+  {{ html|safe }}
+</article>
+{% endblock %}

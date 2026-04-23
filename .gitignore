@@ -14,5 +14,13 @@ __pycache__/
 # OS
 .DS_Store
 
-# cron log (rotates, not meaningful to version)
-weekly/.cron.log
+# pytest
+.pytest_cache/
+
+# V1 runtime data (local only)
+data/*.db
+data/*.csv
+
+# Large source materials (kept local only)
+companies/**/sources/*.pdf
+

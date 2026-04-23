@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}investing{% endblock %} · investing</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <nav class="top">
+    <a href="/" class="brand">investing</a>
+    <a href="/companies">公司</a>
+    <a href="/watchlist">观察池</a>
+    <a href="/portfolio">持仓</a>
+    <a href="/journal">日志</a>
+    <a href="/review">复盘</a>
+    <a href="/competence-map">能力图</a>
+    <a href="/industries">行业</a>
+    <a href="/discipline">自律</a>
+    <a href="/earnings-review">对照</a>
+    <a href="/catalysts">催化剂</a>
+    <a href="/prices">价格</a>
+    <a href="/performance">业绩</a>
+    <a href="/regime">钟摆</a>
+    <a href="/search">搜索</a>
+    <a href="/prompts">提示词</a>
+    <span class="kbd-hint">键盘：<kbd>g</kbd><kbd>h/c/w/p/j/e/r/f/s/m</kbd> 跳转 · <kbd>/</kbd> 搜索</span>
+  </nav>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <script>
+  (function () {
+    let pending = false;
+    let pendingTimer = null;
+    const go = (path) => { window.location.href = path; };
+    document.addEventListener('keydown', (e) => {
+      const tag = (e.target.tagName || '').toUpperCase();
+      const inField = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.target.isContentEditable;
+      if (inField) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      if (e.key === '/') {
+        const el = document.getElementById('search-input');
+        if (el) { e.preventDefault(); el.focus(); return; }
+        e.preventDefault();
+        go('/search');
+        return;
+      }
+
+      if (pending) {
+        pending = false;
+        if (pendingTimer) clearTimeout(pendingTimer);
+        const map = { h: '/', c: '/companies', w: '/watchlist', p: '/portfolio', j: '/journal', e: '/earnings-review', r: '/prices', f: '/performance', s: '/search', m: '/prompts' };
+        if (map[e.key]) { e.preventDefault(); go(map[e.key]); }
+        return;
+      }
+      if (e.key === 'g') {
+        pending = true;
+        pendingTimer = setTimeout(() => { pending = false; }, 1200);
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

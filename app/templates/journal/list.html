@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}投资日志{% endblock %}
+{% block content %}
+<h1>投资日志</h1>
+<p><a href="/journal/new" class="btn">+ 记录新决策</a></p>
+
+{% if rows %}
+<table>
+  <thead>
+    <tr><th>日期</th><th>ticker</th><th>动作</th><th>价格</th><th>仓位变化</th><th>过程</th><th>结果</th><th></th></tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td>{{ r.date }}</td>
+      <td>{{ r.ticker }}</td>
+      <td><span class="badge badge-action-{{ r.action }}">{{ r.action }}</span></td>
+      <td>{{ r.price }}</td>
+      <td>{{ r.position_change }}</td>
+      <td>
+        {% if r.process_quality %}{{ r.process_quality }}/5{% else %}<span class="hint">–</span>{% endif %}
+      </td>
+      <td>
+        {% if r.result_quality %}{{ r.result_quality }}/5{% else %}<span class="hint">–</span>{% endif %}
+      </td>
+      <td><a href="/journal/{{ r.id }}">打开</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p><em>还没有决策记录。</em></p>
+{% endif %}
+{% endblock %}

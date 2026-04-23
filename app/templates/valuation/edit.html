@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}估值 · {{ ticker }}{% endblock %}
+{% block content %}
+<h1>估值：{{ ticker }} <small>({{ market }})</small></h1>
+<p><a href="/companies/{{ key }}">← 返回公司</a></p>
+
+{% if signal %}
+<div class="summary">
+  <span>当前信号：<span class="badge badge-signal-{{ signal.tier }}">{{ signal.label }}</span></span>
+  <span class="hint">{{ signal.rationale }}</span>
+</div>
+{% endif %}
+
+{% if fm.weighted_expected and fm.current_price %}
+<p class="hint">
+  加权预期价 <strong>{{ fm.weighted_expected }}</strong>
+  vs 当前价 <strong>{{ fm.current_price }}</strong>
+  （相对基准的隐含回报 {{ (fm.implied_return_to_base * 100)|round(1) }}%）
+</p>
+{% endif %}
+
+<form method="post" action="/companies/{{ key }}/valuation">
+  <fieldset>
+    <legend>三情景价格 + 概率</legend>
+    <table class="scenario">
+      <tr>
+        <th></th><th>价格</th><th>概率</th>
+      </tr>
+      <tr>
+        <td>乐观</td>
+        <td><input name="bull_price" type="number" step="0.01" value="{{ fm.bull_price or 0 }}" /></td>
+        <td><input name="prob_bull" type="number" step="0.01" value="{{ fm.prob_bull or 0.25 }}" /></td>
+      </tr>
+      <tr>
+        <td>基准</td>
+        <td><input name="base_price" type="number" step="0.01" value="{{ fm.base_price or 0 }}" /></td>
+        <td><input name="prob_base" type="number" step="0.01" value="{{ fm.prob_base or 0.5 }}" /></td>
+      </tr>
+      <tr>
+        <td>悲观</td>
+        <td><input name="bear_price" type="number" step="0.01" value="{{ fm.bear_price or 0 }}" /></td>
+        <td><input name="prob_bear" type="number" step="0.01" value="{{ fm.prob_bear or 0.25 }}" /></td>
+      </tr>
+    </table>
+    <p class="hint">三概率必须加到 1.0。</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>当前价 + 折现率</legend>
+    <label>valuation_date<input name="valuation_date" value="{{ fm.valuation_date or '' }}" placeholder="YYYY-MM-DD" /></label>
+    <label>current_price<input name="current_price" type="number" step="0.01" value="{{ fm.current_price or 0 }}" /></label>
+    <label>discount_rate<input name="discount_rate" type="number" step="0.001" value="{{ fm.discount_rate or 0.09 }}" /></label>
+    <p class="hint">
+      DESIGN §2.3：折现率 = 长期国债收益率 + 股票风险溢价（5-6%）。利率环境变了要重算。
+      {% if regime_fm.verdict %}当前钟摆：<strong>{{ regime_fm.verdict }}</strong>{% endif %}
+    </p>
+    {% if suggested_rate %}
+    <p class="hint">
+      <strong>建议值</strong>：{{ (suggested_rate.suggested * 100)|round(2) }}%
+      （{{ suggested_rate.rationale }}）。
+      {% if suggested_rate.addon %}当前环境建议比基线 {{ (suggested_rate.baseline*100)|round(2) }}% 多加 {{ (suggested_rate.addon*100)|round(1) }} pp。{% endif %}
+      数值仅作参考，不自动写入。
+    </p>
+    {% else %}
+    <p class="hint">若要获得折现率建议值，请到<a href="/regime">钟摆页</a>填写 <code>ust_10y_yield</code>。</p>
+    {% endif %}
+  </fieldset>
+
+  <fieldset>
+    <legend>分析内容（markdown）</legend>
+    <p class="hint">三情景触发条件、相对估值、倒推法、结论。</p>
+    <textarea name="body" rows="18">{{ body }}</textarea>
+  </fieldset>
+
+  <button type="submit">保存并计算加权价</button>
+</form>
+{% endblock %}

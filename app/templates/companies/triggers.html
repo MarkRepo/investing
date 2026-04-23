@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}{{ ticker }} 触发{% endblock %}
+{% block content %}
+<h1>{{ meta.get('name', ticker) }} · 价格触发 <small>({{ market }}:{{ ticker }})</small></h1>
+<p><a href="/companies/{{ key }}">← 返回公司</a> · <a href="/prices">价格录入</a></p>
+
+{% if latest_price %}
+<div class="summary">
+  <span>最新价格：<strong>{{ "%.2f"|format(latest_price[1]) }}</strong></span>
+  <span class="hint">({{ latest_price[0] }})</span>
+</div>
+{% else %}
+<p class="hint">尚未录入价格。去 <a href="/prices">价格录入</a>。</p>
+{% endif %}
+
+<h2>触发列表（{{ rows|length }}）</h2>
+{% if rows %}
+<table>
+  <thead>
+    <tr><th>方向</th><th>动作</th><th>触发价</th><th>状态</th><th>创建</th><th>触发于</th><th></th></tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td>
+        {% if r.action in ('first_entry', 'add_1', 'add_2') %}
+          <span class="badge badge-action-buy">买入向</span>
+        {% elif r.action == 'stop_loss' %}
+          <span class="badge badge-action-sell">止损</span>
+        {% else %}
+          <span class="badge badge-action-sell">卖出向</span>
+        {% endif %}
+      </td>
+      <td>{{ r.action }}</td>
+      <td><strong>{{ "%.2f"|format(r.trigger_price) }}</strong></td>
+      <td>
+        {% if r.triggered_at %}
+          <span class="badge badge-missing">已触发 {{ r.triggered_at }}</span>
+        {% else %}
+          <span class="badge badge-active">armed</span>
+        {% endif %}
+      </td>
+      <td class="hint">{{ r.created_at }}</td>
+      <td class="hint">{{ r.triggered_at or '-' }}</td>
+      <td>
+        <form class="inline" method="post" action="/companies/{{ key }}/triggers/{{ r.id }}/delete">
+          <button type="submit">删除</button>
+        </form>
+        {% if r.triggered_at %}
+        <form class="inline" method="post" action="/companies/{{ key }}/triggers/{{ r.id }}/reset">
+          <button type="submit">重置</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p><em>还没有触发。</em></p>
+{% endif %}
+
+<h2>新增触发</h2>
+<p class="hint">
+  买入向 (<code>first_entry</code> / <code>add_1</code> / <code>add_2</code>) 当现价 ≤ 触发价 时触发。
+  卖出向 (<code>trim</code> / <code>exit</code>) 当现价 ≥ 触发价 时触发。
+  <code>stop_loss</code> 是买入向（现价 ≤ 止损价）但代表卖出动作。
+</p>
+<form method="post" action="/companies/{{ key }}/triggers">
+  <fieldset>
+    <label>动作
+      <select name="action" required>
+        <optgroup label="买入向">
+          {% for a in buy_actions %}<option value="{{ a }}">{{ a }}</option>{% endfor %}
+        </optgroup>
+        <optgroup label="卖出向">
+          {% for a in sell_actions %}<option value="{{ a }}">{{ a }}</option>{% endfor %}
+        </optgroup>
+      </select>
+    </label>
+    <label>触发价
+      <input type="number" step="0.01" name="trigger_price" required />
+    </label>
+    <button type="submit">新增</button>
+  </fieldset>
+</form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}行业{% endblock %}
+{% block content %}
+<h1>行业维度（事实层）</h1>
+<p class="hint">
+  DESIGN §2.4：事实（行业格局、参与者、能力圈演进）与主观判断分开存。<br>
+  来源规则（§8 坑 9）：仅允许年报、公司公告、多份研报交叉验证。新闻属于 claim，不能升级为事实。
+</p>
+
+<table>
+  <tr>
+    <th>行业</th>
+    {% for f in files %}<th>{{ f }}</th>{% endfor %}
+    <th>进入</th>
+  </tr>
+  {% for s in sectors %}
+  <tr>
+    <td><strong>{{ s.sector }}</strong></td>
+    {% for f in files %}
+      <td>
+        {% if s.present[f] %}
+          <span class="badge badge-active">✓</span>
+        {% else %}
+          <span class="badge badge-draft">未建</span>
+        {% endif %}
+      </td>
+    {% endfor %}
+    <td><a href="/industries/{{ s.sector }}">打开</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

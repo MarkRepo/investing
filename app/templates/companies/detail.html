@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}{{ ticker }}{% endblock %}
+{% block content %}
+<h1>{{ meta.get('name', ticker) }} <small>({{ market }}:{{ ticker }})</small></h1>
+
+<table class="kv">
+  <tr><th>行业</th><td>{{ meta.get('industry_primary', '-') }}</td></tr>
+  <tr><th>主题</th><td>
+    {% if meta.get('themes') %}
+      {% for t in meta.themes %}<code>{{ t }}</code>{% if not loop.last %}, {% endif %}{% endfor %}
+    {% else %}<span class="hint">未标注</span>{% endif %}
+  </td></tr>
+  <tr><th>币种</th><td>{{ meta.get('currency', '-') }}</td></tr>
+  {% if meta.get('listed_date') %}<tr><th>上市日</th><td>{{ meta.listed_date }}</td></tr>{% endif %}
+  {% if meta.get('website') %}<tr><th>官网</th><td><a href="{{ meta.website }}">{{ meta.website }}</a></td></tr>{% endif %}
+  <tr><th></th><td><a href="/companies/{{ key }}/meta">编辑 meta.md</a></td></tr>
+</table>
+
+<h2>年度快照（profile-YYYY.md）</h2>
+<p class="hint">DESIGN §8 坑 9：只从年报 / 公司公告 / 多份研报交叉验证。新闻不能升级为事实。</p>
+{% if profiles %}
+<ul>
+  {% for p in profiles %}
+    <li>
+      <a href="/companies/{{ key }}/profile/{{ p.year }}">profile-{{ p.year }}.md</a>
+      {% if p.profile_date %} · 更新于 {{ p.profile_date }}{% endif %}
+      {% if p.source_file %} · 来源：<code>{{ p.source_file }}</code>{% else %}
+        <span class="gate-warn">⚠️ 未标 source_file（事实层来源缺失）</span>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p><em>还没有年度快照。</em></p>
+{% endif %}
+
+<h2>状态</h2>
+{% if row %}
+<ul class="status-list">
+  <li>V0：<span class="badge badge-{{ row.v0_status }}">{{ row.v0_status }}</span></li>
+  <li>能力圈：
+    {% if row.in_competence %}<span class="badge badge-active">通过</span>
+    {% elif row.competence_score is not none %}<span class="badge badge-draft">{{ row.competence_score }}/12</span>
+    {% else %}<span class="badge badge-missing">未填</span>
+    {% endif %}
+  </li>
+</ul>
+{% endif %}
+
+<h2>操作</h2>
+<ul class="actions">
+  <li><a href="/companies/{{ key }}/competence">能力圈自检</a></li>
+  <li>
+    <a href="/companies/{{ key }}/v0">V0 编辑</a>
+    {% if row and not row.in_competence %}
+    <span class="gate-warn">⚠️ 能力圈未通过。正确做法是<strong>不买这只股</strong>而不是"读更多研报补深度"（DESIGN §1 第 3 条）</span>
+    {% endif %}
+  </li>
+  <li><a href="/companies/{{ key }}/valuation">估值</a></li>
+  <li><a href="/companies/{{ key }}/financials">财务</a></li>
+  <li><a href="/companies/{{ key }}/triggers">价格触发</a></li>
+  <li><a href="/research/{{ key }}">研究工作台</a></li>
+</ul>
+
+<h2>记录决策</h2>
+<p class="hint">会自动快照当前 V0 的内容。</p>
+<div class="action-buttons">
+  {% for action in journal_actions %}
+  <a class="btn btn-{{ action }}" href="/journal/new?ticker={{ ticker }}&market={{ market }}&action={{ action }}">{{ action }}</a>
+  {% endfor %}
+</div>
+
+<h2>近期决策（{{ decisions|length }}）</h2>
+{% if decisions %}
+<table>
+  <thead><tr><th>日期</th><th>动作</th><th>价格</th><th>仓位 Δ</th><th>过程</th><th>结果</th><th></th></tr></thead>
+  <tbody>
+  {% for d in decisions %}
+    <tr>
+      <td>{{ d.date }}</td>
+      <td><span class="badge badge-action-{{ d.action }}">{{ d.action }}</span></td>
+      <td>{{ d.price }}</td>
+      <td>{{ d.position_change }}%</td>
+      <td>{% if d.process_quality %}{{ d.process_quality }}/5{% else %}<span class="hint">–</span>{% endif %}</td>
+      <td>{% if d.result_quality %}{{ d.result_quality }}/5{% else %}<span class="hint">–</span>{% endif %}</td>
+      <td><a href="/journal/{{ d.id }}">打开</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p><em>还没有决策。</em></p>
+{% endif %}
+{% endblock %}

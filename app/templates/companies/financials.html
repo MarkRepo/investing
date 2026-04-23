@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}{{ ticker }} 财务{% endblock %}
+{% block content %}
+<h1>{{ meta.get('name', ticker) }} · 财务 <small>({{ market }}:{{ ticker }})</small></h1>
+<p><a href="/companies/{{ key }}">← 返回公司</a></p>
+
+<h2>CSV 导入</h2>
+<p class="hint">表头必须包含 <code>period, period_type</code>，可选列：{{ columns|join(', ') }}。<code>period</code> 格式 <code>YYYYQn</code> 或 <code>YYYYA</code>，<code>period_type</code> 为 <code>annual</code> 或 <code>quarterly</code>。同一期间重复导入会覆盖。</p>
+<form method="post" action="/companies/{{ key }}/financials/import" enctype="multipart/form-data">
+  <label>CSV 文件 <input type="file" name="file" accept=".csv,text/csv" required></label>
+  <button type="submit">导入</button>
+</form>
+
+<h2>历史（最近 {{ rows|length }} 期）</h2>
+{% if rows %}
+<table class="financials">
+  <thead>
+    <tr>
+      <th>期间</th>
+      <th>类型</th>
+      <th>营收</th>
+      <th>毛利</th>
+      <th>营业利润</th>
+      <th>净利润</th>
+      <th>经营现金流</th>
+      <th>毛利率</th>
+      <th>营业利润率</th>
+      <th>净利率</th>
+      <th>ROE</th>
+      <th>ROA</th>
+      <th>D/E</th>
+      <th>来源</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% macro num(v) -%}
+      {%- if v is none -%}<span class="hint">–</span>{%- else -%}{{ "%.2f"|format(v) }}{%- endif -%}
+    {%- endmacro %}
+    {% macro pct(v) -%}
+      {%- if v is none -%}<span class="hint">–</span>{%- else -%}{{ "%.1f%%"|format(v * 100) }}{%- endif -%}
+    {%- endmacro %}
+    {% for r in rows %}
+    <tr>
+      <td><strong>{{ r.period }}</strong></td>
+      <td>{{ r.period_type }}</td>
+      <td>{{ num(r.revenue) }}</td>
+      <td>{{ num(r.gross_profit) }}</td>
+      <td>{{ num(r.operating_income) }}</td>
+      <td>{{ num(r.net_income) }}</td>
+      <td>{{ num(r.operating_cashflow) }}</td>
+      <td>{{ pct(r.gross_margin) }}</td>
+      <td>{{ pct(r.operating_margin) }}</td>
+      <td>{{ pct(r.net_margin) }}</td>
+      <td>{{ pct(r.roe) }}</td>
+      <td>{{ pct(r.roa) }}</td>
+      <td>{{ num(r.debt_to_equity) }}</td>
+      <td><code class="hint">{{ r.source_file or '-' }}</code></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p><em>还没有财务数据。</em> 用上面的 CSV 导入开始填入。</p>
+{% endif %}
+{% endblock %}

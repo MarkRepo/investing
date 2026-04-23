@@ -948,6 +948,9 @@ benchmark (
 - **v1.0** (2026-04-22)：初始设计完成，经过一次 office-hours 诊断和多轮迭代。核心转折：从"大型研究聚合系统"转向"V0 决策纪律为主 + B 研究为辅"。关键补丁来自 Howard Marks 的《投资最重要的事》20 章对照。
 - **v1.1** (2026-04-23)：8 个结构补丁（研究工作台页面、prompt 化抽取替代手工金样本、估值五档信号、偏见自查四问、观察池分流规则、事实不从新闻抽、5 个行业包完整内容、完整 Source/Claim schema）。
 - **v1.2** (2026-04-23)：第二次 office-hours 压力测试后的 frame 反转。新增第 7 条核心哲学（"AI 主动 > 人主动"）。实施路径从"B 信息仓库优先"反转为"Monday 推送优先"（详见 `~/.gstack/projects/investing/yangqi-nogit-design-20260423-105753.md`）。§5 实施路线图 V1 范围待根据反转结论单独更新。
+- **v1.3** (2026-04-23)：V4 缺口盘点后的两项记录性更新：
+  1. **LLM 管道反转为对话驱动**：§5 V2.1 原文"研报 → claims.jsonl（全自动）"在实施时有意偏离，改为"Claude 在对话里按 `docs/prompts/claim-extraction.md` 抽取 → 粘贴进 `/research/{key}/batch-import` → 脚本校验+写入"。原因：自动抽取依赖后台守护进程 + API 费率管理 + prompt 漂移监控，个人系统 overkill；对话驱动让 prompt 调优成本几乎为零。相关维护机制（§5 V2 月度 10% 抽检）保留，以 `/research-audit` 实现。
+  2. **V4 补齐（事实层 / 观察池纪律 / 自律仪表盘 / 组合规则极端风险）**：`docs/PLAN-V4.md` 按 DESIGN 对齐补上 5 个 Phase，路由与模块新增：`industries/`、`/companies/{key}/meta`、`/companies/{key}/profile/{year}`（含年报来源校验）、观察池 7 天静置 + 预筛三问 gate、研究时限红标、`max_theme_pct`、`app/io/macro_risks.py`（VIX/信用利差/行业同步跌）、`/discipline`（无 V0 买入 / 情绪卖出 / 复盘跳过）、`/research-audit`、`ust_10y_yield` 驱动的折现率建议值。
 
 ---
 

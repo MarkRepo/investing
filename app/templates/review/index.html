@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}季度复盘{% endblock %}
+{% block content %}
+<h1>季度复盘</h1>
+
+<p class="hint">
+  按季度聚合 journal 决策的<strong>过程分</strong>和<strong>结果分</strong>。DESIGN §2.1：
+  过程好 + 结果差 → 继续；过程烂 + 结果好 → 纠正，别被运气误导。
+</p>
+
+{% if not quarters %}
+<p class="hint">journal 里还没有决策；先去 <a href="/journal">日志</a> 写几条。</p>
+{% else %}
+<ul class="status-list">
+  {% for q in quarters %}
+  <li><a href="/review/{{ q }}">{{ q }}</a>
+    {% if q == current %}<span class="hint">（本季度）</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

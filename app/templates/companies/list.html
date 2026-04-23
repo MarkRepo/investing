@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}公司{% endblock %}
+{% block content %}
+<h1>公司</h1>
+<p><a href="/companies/new" class="btn">+ 新建公司</a></p>
+
+{% if rows %}
+<table>
+  <thead>
+    <tr><th>ticker</th><th>market</th><th>名称</th><th>行业</th><th>V0</th><th>能力圈</th></tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td><a href="/companies/{{ r.key }}">{{ r.ticker }}</a></td>
+      <td>{{ r.market }}</td>
+      <td>{{ r.name }}</td>
+      <td>{{ r.industry_primary or '-' }}</td>
+      <td><span class="badge badge-{{ r.v0_status }}">{{ r.v0_status }}</span></td>
+      <td>
+        {% if r.in_competence %}<span class="badge badge-active">通过</span>
+        {% elif r.competence_score is not none %}<span class="badge badge-draft">{{ r.competence_score }}</span>
+        {% else %}<span class="badge badge-missing">missing</span>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p><em>还没有公司。<a href="/companies/new">创建第一家</a>。</em></p>
+{% endif %}
+{% endblock %}

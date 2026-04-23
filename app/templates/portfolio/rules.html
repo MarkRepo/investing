@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}组合级规则{% endblock %}
+{% block content %}
+<h1>组合级规则</h1>
+
+<p><a href="/portfolio">← 返回持仓</a></p>
+
+<p class="hint">
+  DESIGN §2.1：组合级规则层与单股 V0 并列存在。这里定义的是<strong>预设触发</strong>，
+  一旦违反，系统在持仓页会高亮警告。执行时不讨论；要改规则，先改这个页面。
+</p>
+
+{% if error %}<p class="warn">{{ error }}</p>{% endif %}
+
+<form method="post" action="/portfolio/rules">
+  <fieldset>
+    <legend>数值上限</legend>
+    <label>单仓位上限（%）
+      <input name="max_single_pct" value="{{ limits.max_single_pct if limits.max_single_pct is defined }}" placeholder="例如 20">
+    </label>
+    <label>单一行业上限（%）
+      <input name="max_sector_pct" value="{{ limits.max_sector_pct if limits.max_sector_pct is defined }}" placeholder="例如 35">
+    </label>
+    <label>现金下限（%）
+      <input name="min_cash_pct" value="{{ limits.min_cash_pct if limits.min_cash_pct is defined }}" placeholder="例如 10">
+    </label>
+    <label>单一主题上限（%）
+      <input name="max_theme_pct" value="{{ limits.max_theme_pct if limits.max_theme_pct is defined }}" placeholder="例如 40">
+    </label>
+    <p class="hint">
+      主题来自每家公司 <code>meta.md</code> 的 <code>themes: []</code> 字段。
+      DESIGN §3.8：主题相关性比行业分类更隐蔽（如 AI、减肥药、新能源），季度 review 一次。
+    </p>
+  </fieldset>
+  <fieldset>
+    <legend>正文说明（markdown）</legend>
+    <textarea name="body" rows="10">{{ body }}</textarea>
+    <p class="hint">写清楚：为什么选这些数字，什么情况下可以临时违反，什么情况下不能。</p>
+  </fieldset>
+  <button type="submit">保存</button>
+</form>
+{% endblock %}

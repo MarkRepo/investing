@@ -1,0 +1,17 @@
+# SaaS / 订阅行业补丁
+version: 1
+sector: saas
+label: SaaS / 订阅
+sector_questions:
+  - id: arr
+    label: ARR
+    prompt: 年度经常性收入及增速构成（new / expansion / churn）
+  - id: nrr
+    label: NRR
+    prompt: 净收入留存（老客户扩展能力）
+  - id: cac_payback
+    label: CAC 回收期
+    prompt: 获客成本回本周期
+  - id: engagement
+    label: 使用频率
+    prompt: DAU/MAU、核心场景粘性

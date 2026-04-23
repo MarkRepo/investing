@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}业绩度量{% endblock %}
+{% block content %}
+<h1>业绩度量</h1>
+
+<p class="hint">
+  月度组合收益 vs 基准（SPY / CSI300 / HSI 自选）。<br>
+  组合收益按"当前持仓 × 月末收盘"粗算，<strong>不是会计口径的时间加权收益</strong>，
+  用于月度"有没有跟上基准"的 sanity check，别拿去跟人报告真实业绩。
+</p>
+
+<fieldset>
+  <legend>手动粘贴基准历史</legend>
+  <p class="hint">一行一条：<code>YYYY-MM-DD  symbol  close</code>。可从 Yahoo/雪球导出月度月末收盘。</p>
+  <form action="/performance/benchmark-import" method="post">
+    <textarea name="paste" rows="8" placeholder="# 示例
+2025-01-31  SPY  599.82
+2025-02-28  SPY  594.18
+2025-03-31  SPY  559.39"></textarea>
+    <br>
+    <label>
+      查看基准：
+      <select name="benchmark">
+        {% for s in symbols %}
+        <option value="{{ s }}" {% if s == chosen %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <button type="submit">导入 + 重算</button>
+  </form>
+  {% if written %}<p class="hint">已写入 {{ written }} 行。</p>{% endif %}
+  {% if parse_errors %}
+  <p class="warn">解析错误（整批拒绝写入）：</p>
+  <ul>
+    {% for e in parse_errors %}
+    <li>第 {{ e.line }} 行: {{ e.error }} — <code>{{ e.text }}</code></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</fieldset>
+
+{% if not symbols %}
+<p class="hint">尚未录入任何基准，先粘一份月末收盘。</p>
+{% else %}
+<h2>{{ chosen }} vs 组合（月度）</h2>
+<form method="get" class="inline" style="margin-bottom:12px;">
+  <label>切换基准：
+    <select name="benchmark" onchange="this.form.submit()">
+      {% for s in symbols %}
+      <option value="{{ s }}" {% if s == chosen %}selected{% endif %}>{{ s }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</form>
+
+{% if not compare.rows %}
+<p class="hint">尚未有重叠月份（需要同时有基准月末收盘和持仓月末价格）。</p>
+{% else %}
+<div class="summary">
+  <div>累计组合：<strong class="{% if compare.cum_portfolio_pct >= 0 %}pol-bull{% else %}pol-bear{% endif %}">{{ "%.2f"|format(compare.cum_portfolio_pct) }}%</strong></div>
+  <div>累计基准：<strong class="{% if compare.cum_benchmark_pct >= 0 %}pol-bull{% else %}pol-bear{% endif %}">{{ "%.2f"|format(compare.cum_benchmark_pct) }}%</strong></div>
+  <div>超额（spread）：<strong class="{% if compare.spread_pct >= 0 %}pol-bull{% else %}pol-bear{% endif %}">{{ "%.2f"|format(compare.spread_pct) }}%</strong></div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>月份</th>
+      <th>组合 MoM</th>
+      <th>基准 MoM</th>
+      <th>当月超额</th>
+      <th>累计组合</th>
+      <th>累计基准</th>
+      <th>累计超额</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in compare.rows %}
+    <tr>
+      <td>{{ r.month }}</td>
+      <td class="{% if r.portfolio_ret_pct is not none and r.portfolio_ret_pct >= 0 %}pol-bull{% elif r.portfolio_ret_pct is not none %}pol-bear{% endif %}">
+        {{ r.portfolio_ret_pct is none and '-' or "%.2f"|format(r.portfolio_ret_pct) + '%' }}
+      </td>
+      <td class="{% if r.benchmark_ret_pct is not none and r.benchmark_ret_pct >= 0 %}pol-bull{% elif r.benchmark_ret_pct is not none %}pol-bear{% endif %}">
+        {{ r.benchmark_ret_pct is none and '-' or "%.2f"|format(r.benchmark_ret_pct) + '%' }}
+      </td>
+      {% set diff = (r.portfolio_ret_pct or 0) - (r.benchmark_ret_pct or 0) %}
+      <td class="{% if diff >= 0 %}pol-bull{% else %}pol-bear{% endif %}">
+        {% if r.portfolio_ret_pct is none or r.benchmark_ret_pct is none %}-{% else %}{{ "%.2f"|format(diff) }}%{% endif %}
+      </td>
+      <td>{{ "%.2f"|format(r.cum_portfolio_pct) }}%</td>
+      <td>{{ "%.2f"|format(r.cum_benchmark_pct) }}%</td>
+      <td class="{% if r.spread_pct >= 0 %}pol-bull{% else %}pol-bear{% endif %}">{{ "%.2f"|format(r.spread_pct) }}%</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endif %}
+{% endblock %}
