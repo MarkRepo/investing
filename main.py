@@ -8,6 +8,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 
 from app.config import APP_TEMPLATES_DIR, STATIC_DIR
+from app.routes.arenas import router as arenas_router
 from app.routes.catalysts import router as catalysts_router
 from app.routes.claim_audit import router as claim_audit_router
 from app.routes.companies import router as companies_router
@@ -22,6 +23,7 @@ from app.routes.performance import router as performance_router
 from app.routes.portfolio import router as portfolio_router
 from app.routes.prices import router as prices_router
 from app.routes.prompts import router as prompts_router
+from app.routes.qa import router as qa_router
 from app.routes.regime import router as regime_router
 from app.routes.research import router as research_router
 from app.routes.review import router as review_router
@@ -65,6 +67,8 @@ app.include_router(competence_map_router)
 app.include_router(industries_router)
 app.include_router(discipline_router)
 app.include_router(claim_audit_router)
+app.include_router(qa_router)
+app.include_router(arenas_router)
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -73,6 +77,7 @@ def home(request: Request):
     from app.io import discipline
     from app.io import earnings_review as er
     from app.io import prices as prices_io
+    from app.io import qa as qa_io
     from app.io import triggers as triggers_io
     from app.io import watchlist as wl
     pending = er.pending_reviews()
@@ -84,6 +89,11 @@ def home(request: Request):
     ]
     review_gaps = discipline.review_gaps()
     big_movers = prices_io.big_movers(threshold_pct=15.0)
+    qa_rows = qa_io.summarize_by_company()
+    qa_summary = {
+        "rows": qa_rows,
+        "total_open": sum(r["open"] for r in qa_rows),
+    }
     return templates.TemplateResponse(
         request,
         "home.html",
@@ -94,6 +104,7 @@ def home(request: Request):
             "overdue_research": overdue_research,
             "review_gaps": review_gaps,
             "big_movers": big_movers,
+            "qa_summary": qa_summary,
         },
     )
 

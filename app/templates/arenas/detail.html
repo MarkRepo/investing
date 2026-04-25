@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}arena · {{ slug }}{% endblock %}
+{% block content %}
+<h1>{{ fm.name or slug }} <small>({{ slug }})</small></h1>
+<p><a href="/arenas">← 返回 arena 列表</a></p>
+
+<h2>定义</h2>
+<table class="kv">
+  {% if fm.name %}<tr><th>name</th><td>{{ fm.name }}</td></tr>{% endif %}
+  {% if fm.product_category %}<tr><th>产品</th><td>{{ fm.product_category }}</td></tr>{% endif %}
+  {% if fm.customer_context %}<tr><th>客户</th><td>{{ fm.customer_context }}</td></tr>{% endif %}
+  {% if fm.geography %}<tr><th>地理</th><td>{{ fm.geography }}</td></tr>{% endif %}
+  {% if fm.price_tier %}<tr><th>价位段</th><td>{{ fm.price_tier }}</td></tr>{% endif %}
+  <tr><th>创建</th><td>{{ fm.created or '-' }}</td></tr>
+  <tr><th>last_updated</th><td>{{ fm.last_updated or '-' }}</td></tr>
+  {% if checklist_version is not none %}
+  <tr><th>checklist</th><td>v{{ checklist_version }}</td></tr>
+  {% endif %}
+</table>
+
+{% if participants %}
+<h3>参与者（{{ participants|length }}）</h3>
+<ul class="arena-summary">
+  {% for p in participants %}
+  <li>
+    <a class="slug" href="/companies/{{ p.market }}_{{ p.ticker }}">{{ p.market }}:{{ p.ticker }}</a>
+    · {{ p.name }}{% if p.role %} <span class="hint">{{ p.role }}</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if definition_html %}
+<article class="markdown">
+  {{ definition_html|safe }}
+</article>
+{% endif %}
+
+<h2>Checklist &amp; 跨公司答案</h2>
+{% if not per_item %}
+<p class="hint">还没有 checklist。ingest 研报时会自动生成。</p>
+{% else %}
+{% for block in per_item %}
+{% set it = block.item %}
+<section class="arena-q" id="{{ it.id }}">
+  <p class="q-question">{{ loop.index }}. {{ it.question }} <small class="hint">({{ it.id }})</small></p>
+  <p class="q-why">为何重要：{{ it.why_matters }}</p>
+  <p class="q-meta">
+    {% if it.tags %}标签：
+      {% for t in it.tags %}<code>{{ t }}</code>{% if not loop.last %}, {% endif %}{% endfor %}
+    {% endif %}
+    {% if it.typical_evidence_section %}
+      · 典型章节：
+      {% for s in it.typical_evidence_section %}<code>{{ s }}</code>{% if not loop.last %}, {% endif %}{% endfor %}
+    {% endif %}
+  </p>
+  {% for r in block.rows %}
+  <div class="participant">
+    <div class="p-head">
+      <a class="p-name" href="/companies/{{ r.market }}_{{ r.ticker }}">{{ r.market }}:{{ r.ticker }}</a>
+      · {{ r.name }}
+      {% if r.answer %}
+        <span class="badge badge-level-{{ r.answer.level }}">{{ r.answer.level }}</span>
+      {% else %}
+        <span class="badge badge-level-unanswered">未作答</span>
+      {% endif %}
+    </div>
+    {% if r.answer %}
+      {% if r.answer.answer %}<div class="p-answer">{{ r.answer.answer }}</div>{% endif %}
+      {% if r.answer.quote %}<blockquote>{{ r.answer.quote }}</blockquote>{% endif %}
+      <div class="p-src">
+        来源：{{ r.answer.source_id or '-' }}
+        {% if r.answer.checklist_version %} · checklist v{{ r.answer.checklist_version }}{% endif %}
+        {% if r.answer.date %} · {{ r.answer.date }}{% endif %}
+      </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</section>
+{% endfor %}
+{% endif %}
+
+{% if changelog %}
+<details>
+  <summary>checklist 变更历史（{{ changelog|length }} 次）</summary>
+  <table>
+    <thead><tr><th>version</th><th>date</th><th>source_id</th><th>changes</th></tr></thead>
+    <tbody>
+      {% for e in changelog %}
+      <tr>
+        <td>v{{ e.version }}</td>
+        <td>{{ e.date }}</td>
+        <td class="hint">{{ e.source_id or '-' }}</td>
+        <td>{{ e.changes or '-' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</details>
+{% endif %}
+{% endblock %}

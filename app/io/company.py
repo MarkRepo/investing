@@ -15,6 +15,7 @@ _META_KEYS = (
     "market",
     "name",
     "industry_primary",
+    "arenas",
     "themes",
     "listed_date",
     "currency",
@@ -99,7 +100,12 @@ def _split_frontmatter(text: str) -> tuple[dict, str]:
     end = text.find("\n---", 3)
     if end == -1:
         return {}, text
-    return yaml.safe_load(text[3:end].strip()) or {}, text[end + len("\n---") :].lstrip("\n")
+    fm = yaml.safe_load(text[3:end].strip()) or {}
+    if "ticker" in fm and not isinstance(fm["ticker"], str):
+        # all-digit tickers (BSE 920118, A-share 600519, HK 0700) in unquoted YAML
+        # come back as int; every IO callsite treats ticker as str, so normalize here.
+        fm["ticker"] = str(fm["ticker"])
+    return fm, text[end + len("\n---") :].lstrip("\n")
 
 
 def _meta_path(ticker: str, market: str, base: Path | None) -> Path:
@@ -164,6 +170,13 @@ def write_meta(
         if not isinstance(themes, list) or not all(isinstance(t, str) for t in themes):
             raise ValueError("themes must be a list of strings")
         fm["themes"] = themes
+    arenas = fm.get("arenas")
+    if arenas is not None:
+        if isinstance(arenas, str):
+            arenas = [a.strip() for a in arenas.split(",") if a.strip()]
+        if not isinstance(arenas, list) or not all(isinstance(a, str) for a in arenas):
+            raise ValueError("arenas must be a list of strings")
+        fm["arenas"] = arenas
     path = _meta_path(ticker, market, base)
     path.parent.mkdir(parents=True, exist_ok=True)
     text = _emit_meta_frontmatter(fm) + "\n" + body.lstrip()

@@ -82,6 +82,26 @@
 </fieldset>
 {% endif %}
 
+{% if qa_summary and qa_summary.total_open > 0 %}
+<fieldset class="warn-section">
+  <legend>🔎 QA 未处理告警（{{ qa_summary.total_open }}）</legend>
+  <p class="warn">抽取 bug / checklist 污染等结构性问题，去 <a href="/qa">QA 面板</a> 处理。</p>
+  <ul class="status-list">
+    {% for r in qa_summary.rows[:5] %}
+      {% if r.open > 0 %}
+      <li>
+        <a href="/qa/{{ r.key }}"><strong>{{ r.key }}</strong></a> ·
+        open={{ r.open }}
+        {% for rule, n in r.open_by_rule.items() %}
+          · <code>{{ rule }}</code>×{{ n }}
+        {% endfor %}
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</fieldset>
+{% endif %}
+
 {% if pending_reviews %}
 <fieldset class="warn-section">
   <legend>待办：财报对照（{{ pending_reviews|length }}）</legend>
@@ -112,5 +132,6 @@
   <li><a href="/performance">业绩</a></li>
   <li><a href="/search">搜索</a></li>
   <li><a href="/prompts">提示词</a></li>
+  <li><a href="/qa">QA</a></li>
 </ul>
 {% endblock %}

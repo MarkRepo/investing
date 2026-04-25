@@ -124,6 +124,8 @@ def _split_frontmatter(text: str) -> tuple[dict, str]:
     if end == -1:
         return {}, text
     fm = yaml.safe_load(text[3:end].strip()) or {}
+    if "ticker" in fm and not isinstance(fm["ticker"], str):
+        fm["ticker"] = str(fm["ticker"])
     return fm, text[end + len("\n---") :].lstrip("\n")
 
 

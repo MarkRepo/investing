@@ -55,6 +55,10 @@ def _parse_frontmatter(text: str) -> tuple[dict[str, Any], str]:
         return {}, text
     raw = text[3:end].strip()
     fm = yaml.safe_load(raw) or {}
+    if "ticker" in fm and not isinstance(fm["ticker"], str):
+        # all-digit tickers (BSE 920118, A-share 600519, HK 0700) in unquoted YAML
+        # come back as int; normalize here so downstream str ops don't crash.
+        fm["ticker"] = str(fm["ticker"])
     body_start = end + len("\n---")
     body = text[body_start:].lstrip("\n")
     return fm, body

@@ -75,6 +75,36 @@ def test_write_meta_rejects_bad_themes(tmp_path):
         company.write_meta("HIMS", "US", {"themes": [1, 2]}, "body", base=tmp_path)
 
 
+def test_write_meta_accepts_arenas_list(tmp_path):
+    _make_company(tmp_path)
+    company.write_meta(
+        "HIMS", "US",
+        {"arenas": ["us-telehealth", "us-glp1-compounding"]},
+        "body",
+        base=tmp_path,
+    )
+    doc = company.read_meta_with_body("HIMS", "US", base=tmp_path)
+    assert doc["frontmatter"]["arenas"] == ["us-telehealth", "us-glp1-compounding"]
+
+
+def test_write_meta_coerces_arenas_string(tmp_path):
+    _make_company(tmp_path)
+    company.write_meta(
+        "HIMS", "US",
+        {"arenas": "a1, a2, a3"},
+        "body",
+        base=tmp_path,
+    )
+    doc = company.read_meta_with_body("HIMS", "US", base=tmp_path)
+    assert doc["frontmatter"]["arenas"] == ["a1", "a2", "a3"]
+
+
+def test_write_meta_rejects_bad_arenas(tmp_path):
+    _make_company(tmp_path)
+    with pytest.raises(ValueError, match="arenas"):
+        company.write_meta("HIMS", "US", {"arenas": [1, 2]}, "body", base=tmp_path)
+
+
 # --- profile-YYYY.md ---------------------------------------------------------
 
 

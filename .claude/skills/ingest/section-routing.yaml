@@ -1,0 +1,143 @@
+# Section → 产出通道映射表
+#
+# 按"市场+报告类型"分键。每个 entry 的 key 是标准化 section 名（来自 templates/*.yaml
+# 的 section_normalize 输出），value 定义要做什么：
+#   action: skip | extract | meta-suggest
+#     skip         — 预处理已标记，workflow 不喂 subagent
+#     extract      — 分配 subagent，subagent 按 targets 产出数据
+#     meta-suggest — 不 dispatch subagent，主 agent 直接产出 meta 更新建议给用户审
+#   subagent: prompts/sections/{name}.md 或 prompts/sell-side/{name}.md
+#   targets: 该 subagent 产出的数据将被写入的通道
+#     financials        — 写 SQLite financials + ratios
+#     claims            — 追加 claims.jsonl
+#     profile.§N        — 填入 profile-{year}.md 的对应章节
+#     meta              — meta.md 更新建议（workflow 不自动写）
+#
+# 注意：A 股和 US 10-K 的 section 名不同，但映射到同一套 subagent
+# —— 预处理负责 section 名标准化，这里只消费标准化后的 key
+
+a-share-annual:
+  重要提示_目录_释义:     {action: skip, reason: 模版样板}
+  公司简介_财务指标:      {action: extract, subagent: business-overview,
+                        targets: [meta, profile.§1, profile.§2, claims]}
+  管理层讨论与分析:       {action: extract, subagent: mdna,
+                        targets: [profile.§1, profile.§2, profile.§4, claims]}
+  公司治理:               {action: extract, subagent: governance,
+                        targets: [profile.§7]}
+  环境与社会责任:         {action: skip, reason: ESG 与投资分析弱相关}
+  重要事项:               {action: extract, subagent: related-party,
+                        targets: [profile.§5, profile.§8, claims]}
+  股份变动_股东情况:      {action: extract, subagent: governance,
+                        targets: [profile.§7]}
+  优先股情况:             {action: skip, reason: 多数公司无}
+  债券情况:               {action: skip, reason: 多数公司无}
+  财务报告:               {action: extract, subagent: financials-tables,
+                        targets: [financials, profile.§6]}
+
+us-10k:
+  Item_1_Business:                   {action: extract, subagent: business-overview,
+                                      targets: [meta, profile.§1, profile.§2, profile.§3, claims]}
+  Item_1A_Risk_Factors:              {action: extract, subagent: risk-factors,
+                                      targets: [profile.§9, claims]}
+  Item_1B_Unresolved_Staff_Comments: {action: skip, reason: 通常 None}
+  Item_1C_Cybersecurity:             {action: extract, subagent: risk-factors,
+                                      targets: [profile.§9, claims]}
+  Item_2_Properties:                 {action: extract, subagent: contracts,
+                                      targets: [profile.§8]}
+  Item_3_Legal_Proceedings:          {action: extract, subagent: risk-factors,
+                                      targets: [profile.§9, claims]}
+  Item_4_Mine_Safety:                {action: skip, reason: N/A}
+  Item_5_Market_for_Equity:          {action: extract, subagent: governance,
+                                      targets: [profile.§7]}
+  Item_6_Reserved:                   {action: skip, reason: SEC 保留位}
+  Item_7_MDA:                        {action: extract, subagent: mdna,
+                                      targets: [profile.§1, profile.§2, profile.§4, claims]}
+  Item_7A_Quantitative_Market_Risk:  {action: skip, reason: 对个人分析价值低}
+  Item_8_Financial_Statements:       {action: extract, subagent: financials-tables,
+                                      targets: [financials, profile.§6]}
+  Item_9_Changes_Disagreements:      {action: skip, reason: 通常 None}
+  Item_9A_Controls_Procedures:       {action: skip, reason: 标准披露}
+  Item_9B_Other_Information:         {action: skip, reason: 边角}
+  Item_9C_Foreign_Jurisdictions:     {action: skip, reason: 境外上市才相关}
+  Item_10_Directors_Officers:        {action: extract, subagent: governance,
+                                      targets: [profile.§7, claims]}
+  Item_11_Executive_Compensation:    {action: extract, subagent: governance,
+                                      targets: [profile.§7]}
+  Item_12_Security_Ownership:        {action: extract, subagent: governance,
+                                      targets: [profile.§7]}
+  Item_13_Related_Transactions:      {action: extract, subagent: related-party,
+                                      targets: [profile.§5, claims]}
+  Item_14_Principal_Accountant_Fees: {action: extract, subagent: governance,
+                                      targets: [profile.§7]}
+  Item_15_Exhibits:                  {action: skip, reason: 附件清单}
+
+# US 10-Q: 季报通道。注意 targets **不含 profile.§N** —— 季报不触发事实层快照，
+# profile-{year}.md 只由年报刷新。claims + financials 是季报主要产物。
+us-10q:
+  Part_I_Item_1_Financial_Statements: {action: extract, subagent: financials-tables,
+                                       targets: [financials]}
+  Part_I_Item_2_MDA:                  {action: extract, subagent: mdna,
+                                       targets: [claims]}
+  Part_I_Item_3_Market_Risk:          {action: skip, reason: 对个人分析价值低}
+  Part_I_Item_4_Controls:             {action: skip, reason: 标准披露}
+  Part_II_Item_1_Legal_Proceedings:   {action: extract, subagent: risk-factors,
+                                       targets: [claims],
+                                       note: 多数 10-Q 此节较薄；只有已立案具体诉讼才抽}
+  Part_II_Item_1A_Risk_Factors:       {action: extract, subagent: risk-factors,
+                                       targets: [claims],
+                                       max_chars: 20000,
+                                       oversize_action: skip,
+                                       oversize_reason: "疑似 10-K Risk Factors 全文复制（非 material changes），已由 10-K ingest 覆盖",
+                                       note: 10-Q Part II Item 1A 仅披露相对 10-K 的"material changes"，常为空；部分公司直接整段复制 10-K，遇到就走 oversize_action}
+  Part_II_Item_2_Unregistered_Sales:  {action: extract, subagent: governance,
+                                       targets: [claims],
+                                       note: 含 share repurchase 数字；subject_tag=capital_allocation}
+  Part_II_Item_3_Defaults:            {action: skip, reason: 通常 None}
+  Part_II_Item_4_Mine_Safety:         {action: skip, reason: N/A 非矿业公司}
+  Part_II_Item_5_Other_Information:   {action: skip, reason: 通常空或样板}
+  Part_II_Item_6_Exhibits:            {action: skip, reason: 附件清单}
+
+# A 股季度报告通道。同上：targets 不含 profile.§N。
+a-share-quarterly:
+  主要财务数据:       {action: extract, subagent: financials-tables,
+                    targets: [financials, claims]}
+  股东信息:           {action: skip, reason: 前十大股东快照变化通常不显著，省略抽取}
+  其他提醒事项:       {action: extract, subagent: related-party,
+                    targets: [claims],
+                    note: 季报的"其他提醒事项"多为重大合同/担保/关联方进展，少量可抽 claims}
+  季度财务报表:       {action: extract, subagent: financials-tables,
+                    targets: [financials]}
+
+# 研报通道：无 profile/financials/meta 通道，全部进 claims
+sell-side-generic:
+  investment_thesis: {action: extract, subagent: thesis,     targets: [claims]}
+  forecasts:         {action: extract, subagent: forecasts,  targets: [claims]}
+  valuation:         {action: extract, subagent: valuation,  targets: [claims]}
+  risk_section:      {action: extract, subagent: thesis,     targets: [claims]}
+  disclaimer:        {action: skip, reason: 免责声明模版}
+  analyst_bio:       {action: skip, reason: 分析师信息}
+  rating_definition: {action: skip, reason: 评级定义模版}
+
+# 默认 fallback：未在 routing 表里的 section，action = extract，
+# subagent = business-overview（最通用），但 targets 仅 claims（保守）
+_fallback:
+  action: extract
+  subagent: business-overview
+  targets: [claims]
+  note: section 未在 routing 表内，走保守通道；如频繁出现请更新 routing
+
+# ========== 通用 dispatch 字段说明 ==========
+#
+# max_chars (int, optional)
+#   section.char_count 超过此阈值时，按 oversize_action 处理；未设置等于"不限"。
+#   用于约束那些在少数公司会突然爆量的 section（典型：10-Q Part II Item 1A 被
+#   整段复制 10-K 原文）。给常规公司留足空间；只拦截异常肥大的个例。
+#
+# oversize_action (enum, default: extract)
+#   - skip  : 不派 subagent，在 workflow 的 flags 里加一条提示
+#   - extract: 忽略 max_chars，照常派单（等价于不设 max_chars）
+#   预留未来扩展：chunk — 按子标题切小块并行派单。目前不实现。
+#
+# oversize_reason (str)
+#   触发 oversize_action 时写进 flags 的解释，给下游分析留痕。
+

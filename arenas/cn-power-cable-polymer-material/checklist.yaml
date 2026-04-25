@@ -1,0 +1,151 @@
+slug: cn-power-cable-polymer-material
+version: 2
+last_updated: '2026-04-25'
+changelog:
+- version: 1
+  date: '2026-04-25'
+  source_id: 研报-西南证券-2024-08-15-09fe9bc6
+  changes: initial bootstrap from sell-side note
+- version: 2
+  date: '2026-04-25'
+  source_id: 研报-西南证券-2024-08-15-09fe9bc6
+  changes: added q_renewable_segment_demand_growth from 西南证券 2024-08-15 note
+items:
+- id: q_cert_cycle_and_stickiness
+  question: 中高压电缆料客户认证周期多长，认证后切换成本如何形成护城河
+  why_matters: 决定太湖远大从送样到批量供货的时间窗口，是国产替代能否加速的核心变量；认证后粘性直接影响份额稳定性
+  typical_evidence_section:
+  - business_overview
+  - risk_factors
+  tags:
+  - customer_structure
+  - competitive_position
+- id: q_top20_cable_customers
+  question: 前 20 强电缆厂中太湖远大覆盖的 19 家分别是谁，与竞争对手万马/杭州高新的重叠度和份额差异
+  why_matters: 验证 19/20 客户覆盖率的真实性和可持续性；识别对手的份额堡垒在哪些大客户
+  typical_evidence_section:
+  - business_overview
+  - investment_thesis
+  tags:
+  - customer_structure
+  - competitive_position
+- id: q_xlpe_tech_gap
+  question: 太湖远大的 XLPE 过氧化物交联工艺与三井/Borealis/陶氏的核心性能指标差距在哪些方面
+  why_matters: 技术代差直接决定产品能切入的电压等级和应用场景；代差越小，国产替代逻辑越成立，反之风险越大
+  typical_evidence_section:
+  - business_overview
+  - investment_thesis
+  tags:
+  - technology
+  - competitive_position
+- id: q_hv_new_energy_ramp
+  question: 募投项目中高压电缆料和新能源特种材料产能从当前到达产、满产的爬坡节奏是多少，下游需求确定性如何
+  why_matters: 募投是增长的关键引擎；爬坡慢或下游需求不足会显著拖累收入预期，是最容易验证的增长假设
+  typical_evidence_section:
+  - business_overview
+  - forecasts
+  tags:
+  - growth_drivers
+  - industry_structure
+- id: q_power_grid_tam
+  question: 十四五期间电力电缆线路投资规模预期、中高压电缆占比、与太湖远大可寻址 TAM 的对应关系
+  why_matters: 行业总需求是产能扩张的天花板；电网投资周期和政策导向决定全市场增长空间
+  typical_evidence_section:
+  - investment_thesis
+  - forecasts
+  tags:
+  - industry_structure
+  - policy_environment
+- id: q_raw_material_cost
+  question: 过氧化物和聚乙烯两大原料成本在产品毛利中的占比，定价机制是如何挂钩大宗商品价格的
+  why_matters: 解释毛利率 10% 上下波动的结构性原因；大宗波动时公司的毛利承受能力和议价力
+  typical_evidence_section:
+  - business_overview
+  - financial_tables
+  - mdna
+  tags:
+  - financial_model
+  - risk
+- id: q_domestic_consolidation
+  question: 中小国产电缆料厂商出清进度如何，太湖远大/万马/杭州高新的市场份额在近三年的变化趋势
+  why_matters: 国产替代的核心逻辑依赖行业出清；出清快意味着空间快速向头部集中，公司有扩产的需求确定性
+  typical_evidence_section:
+  - investment_thesis
+  - mdna
+  tags:
+  - industry_structure
+  - competitive_position
+- id: q_new_energy_special_materials
+  question: 新能源特种材料（如高温、阻燃等）在太湖远大产品组合中的占比预期，与传统电压等级电缆料的毛利差异
+  why_matters: 新能源是增长最快的新品类；毛利差异大的话，产品结构升级对业绩的拉动能力会被高估
+  typical_evidence_section:
+  - business_overview
+  - forecasts
+  tags:
+  - growth_drivers
+  - financial_model
+- id: q_customer_concentration
+  question: 前五大客户占营收比重多少，是否有单一大客户的突然流失风险或长期合同锁定
+  why_matters: 极高的集中度（超 30-40%）意味着一家客户的认证变更或需求下滑能直接打破增长预期
+  typical_evidence_section:
+  - business_overview
+  - risk_factors
+  - related_party
+  tags:
+  - customer_structure
+  - risk
+- id: q_policy_subsidies_barriers
+  question: 电力电缆用高分子材料是否获得国产替代补贴或政府采购倾斜，准入认证是否有强制性技术门槛
+  why_matters: 政策加速国产替代的力度直接影响市场扩张速度和新进入者被挡在门外的概率
+  typical_evidence_section:
+  - investment_thesis
+  - risk_factors
+  tags:
+  - policy_environment
+  - competitive_position
+- id: q_overcapacity_risk
+  question: 全行业对未来三年电缆料需求的扩产预期总量是多少，太湖远大新增产能会否导致行业产能过剩和价格竞争加剧
+  why_matters: 如果全行业都在扩产应对相同需求，价格战风险会抵消产量增长带来的收入增幅
+  typical_evidence_section:
+  - business_overview
+  - mdna
+  - risk_factors
+  tags:
+  - growth_drivers
+  - risk
+- id: q_rd_roadmap_patent
+  question: 太湖远大在 XLPE 交联工艺、阻燃/高温特种料的研发投入占比，有无核心专利护城河与竞争对手的研发进度差
+  why_matters: 研发投入能否转化成技术代差的维持和产品线扩展的成功率，决定长期竞争力
+  typical_evidence_section:
+  - business_overview
+  - investment_thesis
+  tags:
+  - technology
+  - competitive_position
+- id: q_margin_evolution
+  question: 过去三年毛利率的变化轨迹，与原料价格、产销量、产品结构变化的因素拆解
+  why_matters: 区分公司增长是量推动还是价推动，判断未来成本压力下的盈利能力是否可持续
+  typical_evidence_section:
+  - financial_tables
+  - mdna
+  - business_overview
+  tags:
+  - financial_model
+- id: q_incumbent_response
+  question: 万马和杭州高新对太湖远大在中端市场蚕食的反应是什么（产能/定价/客户粘性策略），是否有价格战趋势
+  why_matters: 对手是否已陷入被动防守，还是仍有反制空间，直接影响太湖远大扩产的利润空间
+  typical_evidence_section:
+  - investment_thesis
+  - mdna
+  tags:
+  - competitive_position
+  - risk
+- id: q_renewable_segment_demand_growth
+  question: 风电/光伏/核电用特种电缆材料的需求增速与产品结构（耐温、绝缘等级等）变化，与太湖远大产品组合的匹配度
+  why_matters: 新能源场景对材料的技术要求与传统电网差异大；决定公司 3.8 万吨新能源特种材料产能能否顺利消化、增长预期是否可支撑
+  typical_evidence_section:
+  - investment_thesis
+  - forecasts
+  tags:
+  - growth_drivers
+  - technology

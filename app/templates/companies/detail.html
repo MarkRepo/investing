@@ -22,7 +22,8 @@
 <ul>
   {% for p in profiles %}
     <li>
-      <a href="/companies/{{ key }}/profile/{{ p.year }}">profile-{{ p.year }}.md</a>
+      <a href="/companies/{{ key }}/profile/{{ p.year }}/view">profile-{{ p.year }}.md</a>
+      <span class="hint">(<a href="/companies/{{ key }}/profile/{{ p.year }}">编辑</a>)</span>
       {% if p.profile_date %} · 更新于 {{ p.profile_date }}{% endif %}
       {% if p.source_file %} · 来源：<code>{{ p.source_file }}</code>{% else %}
         <span class="gate-warn">⚠️ 未标 source_file（事实层来源缺失）</span>
@@ -32,6 +33,23 @@
 </ul>
 {% else %}
 <p><em>还没有年度快照。</em></p>
+{% endif %}
+
+<h2>行业竞技场（arena）</h2>
+{% if arena_rows %}
+<ul class="arena-summary">
+  {% for a in arena_rows %}
+  <li>
+    <a class="slug" href="/arenas/{{ a.slug }}">{{ a.slug }}</a>
+    {% if a.name %} · {{ a.name }}{% endif %}
+    <span class="stat">
+      {{ a.total }} 题 · specific {{ a.answered_specific }} / vague {{ a.answered_vague }} / 未答 {{ a.unanswered }}
+    </span>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="hint"><em>该公司尚未关联 arena（meta.md 的 <code>arenas</code> 字段为空）。ingest 研报时会自动关联。</em></p>
 {% endif %}
 
 <h2>状态</h2>

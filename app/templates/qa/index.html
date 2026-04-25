@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}QA 告警{% endblock %}
+{% block content %}
+<h1>QA 告警 · {{ total_open }} 条未处理</h1>
+<p class="muted">每次 ingest 末尾跑 <code>scripts.ingest_qa warn --write --scope MARKET_TICKER</code> 即落盘到对应公司。本页汇总全部公司的 open/resolved/dismissed 计数。</p>
+
+{% if rows %}
+<table>
+  <thead>
+    <tr>
+      <th>公司</th>
+      <th>open</th>
+      <th>resolved</th>
+      <th>dismissed</th>
+      <th>total</th>
+      <th>主要规则（open）</th>
+      <th>gap 报告</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td><a href="/qa/{{ r.key }}">{{ r.key }}</a></td>
+      <td>{% if r.open > 0 %}<span class="badge badge-missing">{{ r.open }}</span>{% else %}<span class="muted">0</span>{% endif %}</td>
+      <td>{{ r.resolved }}</td>
+      <td>{{ r.dismissed }}</td>
+      <td>{{ r.total }}</td>
+      <td>
+        {% for rule, n in r.open_by_rule.items() %}
+          <code>{{ rule }}</code>×{{ n }}&nbsp;
+        {% endfor %}
+      </td>
+      <td>
+        {% if r.gap_generated_at %}
+          <span class="muted">{{ r.gap_generated_at }}</span>
+        {% else %}
+          <span class="muted">—</span>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p><em>还没有任何 QA 告警或缺口报告落盘。先跑一次 <code>scripts.ingest_qa warn --write --scope ...</code>。</em></p>
+{% endif %}
+{% endblock %}

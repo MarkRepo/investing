@@ -5,6 +5,7 @@ BASE_PATH = Path(__file__).resolve().parent.parent
 
 COMPANIES_DIR = BASE_PATH / "companies"
 INDUSTRIES_DIR = BASE_PATH / "industries"
+ARENAS_DIR = BASE_PATH / "arenas"
 WATCHLIST_DIR = BASE_PATH / "watchlist"
 PORTFOLIO_DIR = BASE_PATH / "portfolio"
 MACRO_DIR = BASE_PATH / "macro"
@@ -20,4 +21,4 @@ APP_TEMPLATES_DIR = BASE_PATH / "app" / "templates"
 STATIC_DIR = BASE_PATH / "static"
 
 VALID_SECTORS = ("consumer", "saas", "cyclical", "bank", "biotech")
-VALID_MARKETS = ("US", "SSE", "SZSE", "HK")
+VALID_MARKETS = ("US", "SSE", "SZSE", "BSE", "HK")

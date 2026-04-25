@@ -4,6 +4,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import APP_TEMPLATES_DIR, VALID_MARKETS, VALID_SECTORS
+from app.io import arenas as arenas_io
 from app.io import company as company_io
 from app.io import journal as journal_io
 
@@ -68,6 +69,7 @@ def detail_page(request: Request, key: str):
     row = next((r for r in rows if r["key"] == key), None)
     decisions = journal_io.list_entries(ticker=ticker, market=market)[:10]
     profiles = company_io.list_profiles(ticker, market)
+    arena_rows = arenas_io.company_summary(ticker, market)
 
     return templates.TemplateResponse(
         request,
@@ -81,6 +83,7 @@ def detail_page(request: Request, key: str):
             "decisions": decisions,
             "journal_actions": journal_io.ACTIONS,
             "profiles": profiles,
+            "arena_rows": arena_rows,
         },
     )
 
@@ -135,6 +138,34 @@ async def meta_save(request: Request, key: str):
 
 
 # --- profile-YYYY.md editor --------------------------------------------------
+
+
+@router.get("/{key}/profile/{year}/view")
+def profile_view(request: Request, key: str, year: int):
+    if "_" not in key:
+        raise HTTPException(status_code=404, detail="invalid key")
+    market, ticker = key.split("_", 1)
+    doc = company_io.read_profile(ticker, market, year)
+    if not doc.get("exists"):
+        raise HTTPException(status_code=404, detail="profile not found")
+
+    import markdown as _md
+
+    body_html = _md.markdown(
+        doc.get("body") or "", extensions=["tables", "fenced_code"]
+    )
+    return templates.TemplateResponse(
+        request,
+        "companies/profile_view.html",
+        {
+            "key": key,
+            "ticker": ticker,
+            "market": market,
+            "year": year,
+            "fm": doc.get("frontmatter") or {},
+            "body_html": body_html,
+        },
+    )
 
 
 @router.get("/{key}/profile/{year}")

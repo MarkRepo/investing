@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 {% block title %}研究 · {{ ticker }}{% endblock %}
+
+{% macro sort_link(col, label, filter_state) %}
+  {% set is_active = filter_state.sort == col %}
+  {% set next_order = 'asc' if (is_active and filter_state.order == 'desc') else 'desc' %}
+  <a href="?sort={{ col }}&order={{ next_order }}&page=1{% if filter_state.subject_tag %}&subject_tag={{ filter_state.subject_tag }}{% endif %}{% if filter_state.polarity %}&polarity={{ filter_state.polarity }}{% endif %}{% if filter_state.source_id %}&source_id={{ filter_state.source_id }}{% endif %}">{{ label }}</a>
+  {% if is_active %}<span class="ind">{% if filter_state.order == 'desc' %}↓{% else %}↑{% endif %}</span>{% endif %}
+{% endmacro %}
+
+{% macro page_link(n, filter_state, label=None) %}
+  <a href="?page={{ n }}&sort={{ filter_state.sort }}&order={{ filter_state.order }}{% if filter_state.subject_tag %}&subject_tag={{ filter_state.subject_tag }}{% endif %}{% if filter_state.polarity %}&polarity={{ filter_state.polarity }}{% endif %}{% if filter_state.source_id %}&source_id={{ filter_state.source_id }}{% endif %}">{{ label or n }}</a>
+{% endmacro %}
+
 {% block content %}
 <h1>研究工作台：{{ ticker }} <small>({{ market }})</small></h1>
 <p><a href="/companies/{{ key }}">← 返回公司</a></p>
@@ -51,11 +63,53 @@
   </fieldset>
 </form>
 
-<h2>claims（{{ claims|length }} 条）</h2>
+<h2>claims（{{ total }}{% if total != all_total %} / 共 {{ all_total }}{% endif %} 条）</h2>
+
+<form class="filter-bar" method="get" action="/research/{{ key }}">
+  <input type="hidden" name="sort" value="{{ filter_state.sort }}" />
+  <input type="hidden" name="order" value="{{ filter_state.order }}" />
+  <label>subject_tag
+    <select name="subject_tag">
+      <option value="">（全部）</option>
+      {% for s in subjects %}
+        <option value="{{ s.id }}" {% if filter_state.subject_tag == s.id %}selected{% endif %}>{{ s.id }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>polarity
+    <select name="polarity">
+      <option value="">（全部）</option>
+      {% for p in polarities %}
+        <option value="{{ p }}" {% if filter_state.polarity == p %}selected{% endif %}>{{ p }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>source_id
+    <select name="source_id">
+      <option value="">（全部）</option>
+      {% for sid in source_id_options %}
+        <option value="{{ sid }}" {% if filter_state.source_id == sid %}selected{% endif %}>{{ sid }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <div class="actions">
+    <button type="submit">应用</button>
+    <a class="reset" href="/research/{{ key }}">重置</a>
+  </div>
+</form>
+
 {% if claims %}
 <table>
   <thead>
-    <tr><th>id</th><th>subject</th><th>polarity</th><th>claim</th><th>evidence</th></tr>
+    <tr>
+      <th>id</th>
+      <th class="sort">{{ sort_link('subject_tag', 'subject', filter_state) }}</th>
+      <th class="sort">{{ sort_link('polarity', 'polarity', filter_state) }}</th>
+      <th>claim</th>
+      <th>evidence</th>
+      <th class="sort">{{ sort_link('source_id', 'source_id', filter_state) }}</th>
+      <th class="sort">{{ sort_link('extracted_at', 'extracted_at', filter_state) }}</th>
+    </tr>
   </thead>
   <tbody>
     {% for c in claims %}
@@ -65,10 +119,23 @@
       <td><span class="badge badge-pol-{{ c.polarity }}">{{ c.polarity }}</span></td>
       <td>{{ c.claim_text }}</td>
       <td class="hint">{% if c.evidence %}{{ c.evidence[0].text }}{% endif %}</td>
+      <td class="hint">{{ c.source_id or '-' }}</td>
+      <td class="hint">{{ c.extracted_at or '-' }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+
+{% if total_pages > 1 %}
+<div class="pagination">
+  {% if page > 1 %}{{ page_link(page - 1, filter_state, '« 上一页') }}{% endif %}
+  <span class="cur">{{ page }} / {{ total_pages }}</span>
+  {% if page < total_pages %}{{ page_link(page + 1, filter_state, '下一页 »') }}{% endif %}
+</div>
+{% endif %}
+
+{% else %}
+<p><em>{% if all_total %}当前筛选无匹配 claim。{% else %}还没有 claim。{% endif %}</em></p>
 {% endif %}
 
 <h3>新增 claim</h3>

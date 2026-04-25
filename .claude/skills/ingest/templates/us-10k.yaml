@@ -1,0 +1,90 @@
+# US 10-K 预处理规则（SEC EDGAR 下载的 HTM）
+#
+# 结构参考 SEC Regulation S-K Item 301–305 + Form 10-K general instructions。
+# HTM 格式结构：大量 <span>/<p>/<table>，Item 标题通常是 <b>/<strong> 或加粗 span。
+
+market: us
+form: 10-K
+
+# section 切分正则
+# 匹配 "Item 1.", "Item 1A.", "ITEM 7" 等多种写法
+section_detection:
+  patterns:
+    - '^\s*ITEM\s+(\d+[A-Z]?)\.?\s+(.+?)\s*$'
+    - '^\s*Item\s+(\d+[A-Z]?)\.?\s+(.+?)\s*$'
+    - '^\s*(\d+[A-Z]?)\.\s+(Business|Risk Factors|Management.+Discussion|Financial Statements|Controls)'
+
+# 标准 section 名归一化
+# Key = "Item_{编号}"，Value = 标准化的 section key
+section_normalize:
+  "Item_1":    Item_1_Business
+  "Item_1A":   Item_1A_Risk_Factors
+  "Item_1B":   Item_1B_Unresolved_Staff_Comments
+  "Item_1C":   Item_1C_Cybersecurity
+  "Item_2":    Item_2_Properties
+  "Item_3":    Item_3_Legal_Proceedings
+  "Item_4":    Item_4_Mine_Safety
+  "Item_5":    Item_5_Market_for_Equity
+  "Item_6":    Item_6_Reserved
+  "Item_7":    Item_7_MDA
+  "Item_7A":   Item_7A_Quantitative_Market_Risk
+  "Item_8":    Item_8_Financial_Statements
+  "Item_9":    Item_9_Changes_Disagreements
+  "Item_9A":   Item_9A_Controls_Procedures
+  "Item_9B":   Item_9B_Other_Information
+  "Item_9C":   Item_9C_Foreign_Jurisdictions
+  "Item_10":   Item_10_Directors_Officers
+  "Item_11":   Item_11_Executive_Compensation
+  "Item_12":   Item_12_Security_Ownership
+  "Item_13":   Item_13_Related_Transactions
+  "Item_14":   Item_14_Principal_Accountant_Fees
+  "Item_15":   Item_15_Exhibits
+
+# 模版剔除规则
+skip_rules:
+  # 整个 section 跳过
+  sections:
+    - Item_1B_Unresolved_Staff_Comments   # 通常 "None"
+    - Item_4_Mine_Safety                  # 非采矿公司一律 N/A
+    - Item_6_Reserved                     # SEC 保留位
+    - Item_9_Changes_Disagreements        # 通常 "None"
+    - Item_9B_Other_Information           # 边角
+    - Item_9C_Foreign_Jurisdictions       # 境外上市才相关
+    - Item_15_Exhibits                    # 附件清单，不含分析价值
+
+  # 段落级跳过
+  paragraphs:
+    - name: Forward-Looking Statements 样板
+      pattern: '(?i)forward[- ]looking\s+statements.*?safe\s+harbor'
+    - name: Table of Contents
+      pattern: '(?i)^\s*TABLE\s+OF\s+CONTENTS\s*$'
+    - name: Signatures block
+      pattern: '(?i)^\s*SIGNATURES?\s*$'
+    - name: Page footer
+      pattern: '(?i)^\s*(?:Form\s+10-K|Annual\s+Report)\s*\|?\s*\d+\s*$'
+
+# form detection — HTM 提取后文本常有换行/多空格，用 \s* 而非 \s+
+form_detection:
+  positive:
+    - '(?i)FORM\s*10[-‐‑–\s]*K\b'
+    - '(?i)Annual\s+Report\s+Pursuant\s+to\s+Section\s+13'
+  negative:
+    - '(?i)FORM\s*10[-‐‑–\s]*Q\b'
+    - '(?i)FORM\s*20[-‐‑–\s]*F\b'
+    - '(?i)10[-\s]*K/A\b'
+
+# fiscal_year 提取
+# 10-K 的 period 在首页 "For the fiscal year ended {date}"
+# HTM extraction often splits dates across lines: "December 31\n, 2025" — regex
+# must tolerate whitespace between day, comma, and year.
+fiscal_year_extraction:
+  patterns:
+    - '(?i)for\s+the\s+fiscal\s+year\s+ended\s+\w+\s+\d{1,2}\s*,?\s*(\d{4})'
+    - '(?i)fiscal\s+year\s+(\d{4})'
+  format: "FY{year}"
+
+reporting_period_extraction:
+  patterns:
+    - '(?i)for\s+the\s+fiscal\s+year\s+ended\s+(\w+\s+\d{1,2}\s*,?\s*\d{4})'
+    - '(?i)(December|January|February|March|April|May|June|July|August|September|October|November)\s+\d{1,2}\s*,?\s*(\d{4})'
+  format: "{raw}"
