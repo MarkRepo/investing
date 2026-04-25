@@ -6,28 +6,33 @@
   <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
+  {% set _path = request.url.path if request is defined and request else '' %}
+  {% macro _navlink(href, label, extra='') -%}
+    {%- set _active = (_path == '/' if href == '/' else (_path == href or _path.startswith(href + '/'))) -%}
+    <a href="{{ href }}" class="{{ extra }}{% if _active %}{% if extra %} {% endif %}active{% endif %}">{{ label }}</a>
+  {%- endmacro %}
   <nav class="top">
-    <a href="/" class="brand">investing</a>
-    <a href="/companies">公司</a>
-    <a href="/watchlist">观察池</a>
-    <a href="/portfolio">持仓</a>
-    <a href="/journal">日志</a>
-    <a href="/review">复盘</a>
-    <a href="/competence-map">能力图</a>
-    <a href="/industries">行业</a>
-    <a href="/arenas">竞技场</a>
-    <a href="/discipline">自律</a>
-    <a href="/earnings-review">对照</a>
-    <a href="/catalysts">催化剂</a>
-    <a href="/prices">价格</a>
-    <a href="/performance">业绩</a>
-    <a href="/regime">钟摆</a>
-    <a href="/search">搜索</a>
-    <a href="/prompts">提示词</a>
-    <a href="/qa">QA</a>
+    {{ _navlink('/', 'investing', 'brand') }}
+    {{ _navlink('/companies', '公司') }}
+    {{ _navlink('/watchlist', '观察池') }}
+    {{ _navlink('/portfolio', '持仓') }}
+    {{ _navlink('/journal', '日志') }}
+    {{ _navlink('/review', '复盘') }}
+    {{ _navlink('/competence-map', '能力图') }}
+    {{ _navlink('/industries', '行业') }}
+    {{ _navlink('/arenas', '竞技场') }}
+    {{ _navlink('/discipline', '自律') }}
+    {{ _navlink('/earnings-review', '对照') }}
+    {{ _navlink('/catalysts', '催化剂') }}
+    {{ _navlink('/prices', '行情') }}
+    {{ _navlink('/performance', '业绩') }}
+    {{ _navlink('/regime', '钟摆') }}
+    {{ _navlink('/search', '搜索') }}
+    {{ _navlink('/prompts', '提示词') }}
+    {{ _navlink('/qa', 'QA') }}
     <span class="kbd-hint">键盘：<kbd>g</kbd><kbd>h/c/w/p/j/e/r/f/s/m</kbd> 跳转 · <kbd>/</kbd> 搜索</span>
   </nav>
-  <main>
+  <main class="{% block main_class %}{% endblock %}">
     {% block content %}{% endblock %}
   </main>
   <script>

@@ -31,6 +31,23 @@
 </fieldset>
 {% endif %}
 
+{% if quote_fetch_errors %}
+<fieldset class="warn-section">
+  <legend>⚠️ 行情拉取失败（{{ quote_fetch_errors|length }}）</legend>
+  <p class="warn">EOD 抓取遇到问题。去对应行情页"↻ 刷新"重试，或检查网络/源站状态。</p>
+  <ul class="status-list">
+    {% for e in quote_fetch_errors[:10] %}
+    <li>
+      <strong>{{ e.ticker }}</strong>
+      <span class="hint">{{ e.market }} · {{ e.source }} · {{ e.phase }}</span>
+      · {{ e.error[:120] }}{% if e.error|length > 120 %}…{% endif %}
+      <span class="hint">（{{ e.attempted_at[:16] }}{% if e.count > 1 %} · ×{{ e.count }}{% endif %}）</span>
+    </li>
+    {% endfor %}
+  </ul>
+</fieldset>
+{% endif %}
+
 {% if fired_triggers %}
 <fieldset class="warn-section">
   <legend>🔔 价格触发（{{ fired_triggers|length }}）</legend>
@@ -128,7 +145,7 @@
   <li><a href="/portfolio">持仓</a></li>
   <li><a href="/journal">日志</a></li>
   <li><a href="/earnings-review">对照</a></li>
-  <li><a href="/prices">价格</a></li>
+  <li><a href="/prices">行情</a></li>
   <li><a href="/performance">业绩</a></li>
   <li><a href="/search">搜索</a></li>
   <li><a href="/prompts">提示词</a></li>

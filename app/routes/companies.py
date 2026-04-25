@@ -7,14 +7,33 @@ from app.config import APP_TEMPLATES_DIR, VALID_MARKETS, VALID_SECTORS
 from app.io import arenas as arenas_io
 from app.io import company as company_io
 from app.io import journal as journal_io
+from app.io import portfolio as portfolio_io
+from app.io import quotes as quotes_io
+from app.io import watchlist as watchlist_io
+from app.templating import register_filters
 
 router = APIRouter(prefix="/companies", tags=["companies"])
 templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
+register_filters(templates)
 
 
 @router.get("")
 def list_page(request: Request):
     rows = company_io.list_companies()
+    # annotate: which tickers are already in watchlist (any stage) / portfolio
+    wl_by_ticker: dict[str, list[str]] = {}
+    for stage in watchlist_io.STAGES:
+        for r in watchlist_io.read_watchlist(stage):
+            t = r.get("ticker", "")
+            if t:
+                wl_by_ticker.setdefault(t, []).append(stage)
+    positions = {
+        (r.get("market", ""), r.get("ticker", ""))
+        for r in portfolio_io.read_positions()
+    }
+    for row in rows:
+        row["_wl_stages"] = wl_by_ticker.get(row["ticker"], [])
+        row["_in_portfolio"] = (row["market"], row["ticker"]) in positions
     return templates.TemplateResponse(
         request,
         "companies/list.html",
@@ -71,6 +90,21 @@ def detail_page(request: Request, key: str):
     profiles = company_io.list_profiles(ticker, market)
     arena_rows = arenas_io.company_summary(ticker, market)
 
+    # which watchlist stages / portfolio this company is already in
+    watchlist_stages = [
+        s
+        for s in watchlist_io.STAGES
+        if any(r.get("ticker") == ticker for r in watchlist_io.read_watchlist(s))
+    ]
+    in_portfolio = any(
+        r.get("ticker") == ticker and r.get("market") == market
+        for r in portfolio_io.read_positions()
+    )
+
+    from datetime import date as _date
+    latest_quote = quotes_io.latest_for(ticker)
+    prev_quote = quotes_io.second_latest_for(ticker)
+    freshness = quotes_io.freshness(ticker)
     return templates.TemplateResponse(
         request,
         "companies/detail.html",
@@ -84,6 +118,13 @@ def detail_page(request: Request, key: str):
             "journal_actions": journal_io.ACTIONS,
             "profiles": profiles,
             "arena_rows": arena_rows,
+            "watchlist_stages": watchlist_stages,
+            "in_portfolio": in_portfolio,
+            "source_types": watchlist_io.SOURCE_TYPES,
+            "today": _date.today().isoformat(),
+            "latest_quote": latest_quote,
+            "prev_quote": prev_quote,
+            "freshness": freshness,
         },
     )
 

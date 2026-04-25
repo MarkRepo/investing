@@ -16,6 +16,10 @@
   <tr><th></th><td><a href="/companies/{{ key }}/meta">编辑 meta.md</a></td></tr>
 </table>
 
+{% if latest_quote or freshness %}
+  {% include "prices/_panel.html" %}
+{% endif %}
+
 <h2>年度快照（profile-YYYY.md）</h2>
 <p class="hint">DESIGN §8 坑 9：只从年报 / 公司公告 / 多份研报交叉验证。新闻不能升级为事实。</p>
 {% if profiles %}
@@ -79,6 +83,51 @@
   <li><a href="/companies/{{ key }}/triggers">价格触发</a></li>
   <li><a href="/research/{{ key }}">研究工作台</a></li>
 </ul>
+
+<div class="quick-add">
+  <fieldset id="add-watchlist">
+    <legend>
+      加到观察池
+      {% if watchlist_stages %}
+        <span class="badge badge-active">已在：{{ watchlist_stages|join(', ') }}</span>
+      {% endif %}
+    </legend>
+    <p class="hint">默认进 prefilter（候选池）。source 必须来自 quant_screen / qual_radar / product_experience（DESIGN §3.9：新闻/热榜/朋友推荐不能作为来源）。</p>
+    <form method="post" action="/watchlist/add/prefilter">
+      <input type="hidden" name="ticker" value="{{ ticker }}" />
+      <input type="hidden" name="date_added" value="{{ today }}" />
+      <label>source_type
+        <select name="source_type" required>
+          {% for s in source_types %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>source <input name="source" placeholder="screener 名称 / 研报编号 / 体验描述" /></label>
+      <label>notes <input name="notes" placeholder="为什么值得留意（可选）" /></label>
+      <button type="submit">添加到 prefilter</button>
+    </form>
+  </fieldset>
+
+  <fieldset id="add-portfolio">
+    <legend>
+      加到持仓
+      {% if in_portfolio %}
+        <span class="badge badge-active">已有持仓（再次提交会覆盖）</span>
+      {% endif %}
+    </legend>
+    {% if row and not row.in_competence %}
+    <p class="warn">⚠️ 能力圈未通过。DESIGN §1 第 3 条：正确做法是不买，而不是带仓位"补研究"。</p>
+    {% endif %}
+    <form method="post" action="/portfolio/position">
+      <input type="hidden" name="ticker" value="{{ ticker }}" />
+      <input type="hidden" name="market" value="{{ market }}" />
+      <label>entry_date <input name="entry_date" value="{{ today }}" /></label>
+      <label>avg_cost <input name="avg_cost" placeholder="例如 120.50" required /></label>
+      <label>shares <input name="shares" placeholder="股数" required /></label>
+      <label>position_pct <input name="position_pct" placeholder="仓位占比 %（例如 5）" required /></label>
+      <button type="submit">添加到持仓</button>
+    </form>
+  </fieldset>
+</div>
 
 <h2>记录决策</h2>
 <p class="hint">会自动快照当前 V0 的内容。</p>

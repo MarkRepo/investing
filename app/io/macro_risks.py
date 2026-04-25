@@ -140,7 +140,7 @@ def _recent_drop_pct(
     """Return pct change ((latest - ref) / ref * 100) over ``window_days`` or None."""
     rows = conn.execute(
         """
-        SELECT date, close FROM prices
+        SELECT date, close FROM quotes_daily
         WHERE ticker = ? AND date <= ?
         ORDER BY date DESC
         LIMIT 60

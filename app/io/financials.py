@@ -92,6 +92,50 @@ CREATE TABLE IF NOT EXISTS prices (
     close REAL NOT NULL,
     PRIMARY KEY (ticker, date)
 );
+
+CREATE TABLE IF NOT EXISTS quotes_daily (
+    ticker TEXT NOT NULL,
+    date TEXT NOT NULL,
+    market TEXT NOT NULL,
+    open REAL,
+    high REAL,
+    low REAL,
+    close REAL NOT NULL,
+    volume INTEGER,
+    amount REAL,
+    turnover_rate REAL,
+    volume_ratio_5d REAL,
+    pe_ttm REAL,
+    pe_static REAL,
+    pe_forward REAL,
+    pb REAL,
+    ps REAL,
+    peg REAL,
+    dividend_yield REAL,
+    market_cap REAL,
+    float_market_cap REAL,
+    shares_outstanding REAL,
+    float_shares REAL,
+    high_52w REAL,
+    low_52w REAL,
+    source TEXT,
+    fetched_at TEXT,
+    PRIMARY KEY (ticker, date)
+);
+
+CREATE TABLE IF NOT EXISTS quotes_fetch_errors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ticker TEXT NOT NULL,
+    market TEXT NOT NULL,
+    attempted_at TEXT NOT NULL,
+    source TEXT NOT NULL,
+    phase TEXT NOT NULL,
+    error TEXT NOT NULL,
+    resolved_at TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_fetch_errors_unresolved
+    ON quotes_fetch_errors(ticker, resolved_at) WHERE resolved_at IS NULL;
 """
 
 

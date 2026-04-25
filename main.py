@@ -76,8 +76,8 @@ def home(request: Request):
     from app.io import catalysts as catalysts_io
     from app.io import discipline
     from app.io import earnings_review as er
-    from app.io import prices as prices_io
     from app.io import qa as qa_io
+    from app.io import quotes as quotes_io
     from app.io import triggers as triggers_io
     from app.io import watchlist as wl
     pending = er.pending_reviews()
@@ -88,7 +88,8 @@ def home(request: Request):
         r for r in researching if wl.researching_status(r) in ("due", "overdue")
     ]
     review_gaps = discipline.review_gaps()
-    big_movers = prices_io.big_movers(threshold_pct=15.0)
+    big_movers = quotes_io.big_movers(threshold_pct=15.0)
+    quote_fetch_errors = quotes_io.unresolved_fetch_errors()
     qa_rows = qa_io.summarize_by_company()
     qa_summary = {
         "rows": qa_rows,
@@ -104,6 +105,7 @@ def home(request: Request):
             "overdue_research": overdue_research,
             "review_gaps": review_gaps,
             "big_movers": big_movers,
+            "quote_fetch_errors": quote_fetch_errors,
             "qa_summary": qa_summary,
         },
     )

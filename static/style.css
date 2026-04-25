@@ -14,9 +14,10 @@ nav.top {
   display: flex; gap: 20px;
   z-index: 10;
 }
-nav.top a { color: #333; text-decoration: none; font-size: 14px; }
+nav.top a { color: #333; text-decoration: none; font-size: 14px; padding: 4px 2px; border-bottom: 2px solid transparent; }
 nav.top a.brand { font-weight: 600; }
 nav.top a:hover { color: #0366d6; }
+nav.top a.active { color: #0366d6; font-weight: 600; border-bottom-color: #0366d6; }
 nav.top .kbd-hint { margin-left: auto; color: #888; font-size: 12px; }
 kbd {
   display: inline-block; padding: 1px 6px; margin: 0 2px;
@@ -28,6 +29,7 @@ main {
   margin: 20px auto;
   padding: 0 20px;
 }
+main.wide { max-width: 1500px; }
 h1 { font-size: 24px; margin: 10px 0 20px; }
 h2 { font-size: 18px; margin: 24px 0 12px; }
 ul.home-nav { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
@@ -184,9 +186,74 @@ th.sort .ind { color: #0366d6; font-size: 11px; margin-left: 4px; }
 .filter-bar .actions .reset { color: #666; text-decoration: none; font-size: 13px; align-self: center; }
 .filter-bar .actions .reset:hover { color: #0366d6; }
 
+/* mini row buttons in company list */
+.btn-mini { padding: 3px 10px; font-size: 12px; background: #0366d6; }
+.btn-mini:hover { background: #024ea7; }
+.btn-mini.btn-done { background: #d4f8d4; color: #1a6b1a; }
+.btn-mini.btn-done:hover { background: #b8ecb8; color: #1a6b1a; }
+.row-actions { white-space: nowrap; }
+.row-actions .btn-mini + .btn-mini { margin-left: 6px; }
+
+/* quick-add forms on company page */
+.quick-add { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+.quick-add fieldset { margin: 0; }
+.quick-add fieldset legend { display: inline-flex; align-items: center; gap: 8px; }
+.quick-add form label { margin: 8px 0; }
+.quick-add form label input, .quick-add form label select { width: 100%; max-width: 100%; }
+.quick-add form button { margin-top: 6px; }
+@media (max-width: 720px) {
+  .quick-add { grid-template-columns: 1fr; }
+}
+
 /* arena summary on company page */
 .arena-summary { list-style: none; padding: 0; margin: 6px 0; }
 .arena-summary li { padding: 4px 0; font-size: 14px; }
 .arena-summary .slug { color: #0366d6; text-decoration: none; font-weight: 600; }
 .arena-summary .slug:hover { text-decoration: underline; }
 .arena-summary .stat { color: #666; font-size: 12px; margin-left: 10px; }
+
+/* Quote panel (shared: /companies/<key> inline + /prices/<key> aside) */
+.quote-panel { background: #f7f7f7; padding: 8px 12px; border-radius: 6px; margin: 10px 0; }
+.quote-panel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.quote-panel-header h2 { margin: 0; font-size: 14px; }
+.quote-panel-header .spacer { flex: 1 1 auto; }
+.quote-panel .freshness-chip { font-size: 12px; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.quote-panel .freshness-green  { background: #e6f4ea; color: #1e7a3a; }
+.quote-panel .freshness-yellow { background: #fff8e1; color: #8a6d1a; }
+.quote-panel .freshness-red    { background: #fde8e8; color: #b42318; }
+.quote-panel .error-detail { font-size: 12px; margin: 4px 0; color: #b42318; }
+.quote-panel .quote-stats { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 14px; row-gap: 4px; font-size: 13px; line-height: 1.5; }
+.quote-panel .quote-stats .stat,
+.quote-panel .quote-stats .stat-main { white-space: nowrap; color: #333; }
+.quote-panel .quote-stats .stat-main strong { font-size: 16px; font-weight: 600; }
+.quote-panel .quote-stats .stat.hint { color: #777; }
+.quote-panel .quote-stats .group-sep { width: 1px; background: #d6d6d6; align-self: stretch; margin: 2px 0; }
+.quote-panel .up   { color: #1e7a3a; font-weight: 600; }
+.quote-panel .down { color: #b42318; font-weight: 600; }
+
+/* Prices page layout */
+.prices-header { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.prices-header h1 { margin: 0; flex: 1 1 auto; }
+.prices-header .switcher select { padding: 4px 8px; }
+.prices-top { margin: 10px 0 14px; }
+.prices-top .quote-panel { margin: 0; }
+.prices-charts { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.chart-wrap { background: #fff; border: 1px solid #ddd; padding: 12px; border-radius: 6px; }
+.chart-wrap h3 { margin: 0 0 8px; font-size: 14px; }
+.chart-toolbar { display: flex; gap: 6px; margin-bottom: 8px; align-items: center; flex-wrap: wrap; }
+.chart-toolbar .fill { flex: 1 1 auto; }
+.chart-wrap.chart-full {
+  position: fixed; inset: 0; z-index: 500;
+  margin: 0; border: 0; border-radius: 0;
+  padding: 14px 20px; background: #fff;
+  overflow: auto;
+}
+.chart-wrap.chart-full #kline-chart { height: calc(100vh - 80px) !important; }
+.period-btn { padding: 3px 10px; font-size: 12px; background: #fff; color: #333; border: 1px solid #bbb; cursor: pointer; border-radius: 3px; }
+.period-btn.active { background: #333; color: #fff; border-color: #333; }
+.status-bar { padding: 6px 12px; border-radius: 4px; margin-bottom: 12px; font-size: 13px; }
+.status-bar.status-green  { background: #e6f4ea; color: #1e7a3a; }
+.status-bar.status-yellow { background: #fff8e1; color: #8a6d1a; }
+.status-bar.status-red    { background: #fde8e8; color: #b42318; }
+.status-bar .error-detail { margin-top: 4px; font-size: 12px; }
+.hint.error { color: #b42318; }

@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.config import APP_TEMPLATES_DIR
 from app.io import company as company_io
-from app.io import prices as prices_io
+from app.io import quotes as quotes_io
 from app.io import triggers as triggers_io
 
 router = APIRouter(prefix="/companies/{key}/triggers", tags=["triggers"])
@@ -26,7 +26,7 @@ def page(request: Request, key: str):
     if not meta:
         raise HTTPException(status_code=404, detail="company not found")
     rows = triggers_io.list_for_ticker(ticker)
-    latest = prices_io.latest_price_for(ticker)
+    latest = quotes_io.latest_price_for(ticker)
     return templates.TemplateResponse(
         request,
         "companies/triggers.html",

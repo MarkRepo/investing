@@ -6,7 +6,7 @@ import pytest
 
 from app import config as cfg
 from app.io import performance as perf
-from app.io import prices
+from tests.helpers import insert_quote
 
 
 @pytest.fixture
@@ -66,8 +66,8 @@ def test_benchmark_monthly_computes_mom(fixture_base):
 
 
 def test_portfolio_monthly_marks_current_shares(fixture_base):
-    prices.upsert_close("AAPL", 150, date(2025, 1, 31), base=fixture_base)
-    prices.upsert_close("AAPL", 160, date(2025, 2, 28), base=fixture_base)
+    insert_quote(fixture_base, ticker="AAPL", close=150, date=date(2025, 1, 31), market="US")
+    insert_quote(fixture_base, ticker="AAPL", close=160, date=date(2025, 2, 28), market="US")
     months = perf.portfolio_monthly(base=fixture_base)
     assert [m["month"] for m in months] == ["2025-01", "2025-02"]
     assert months[0]["mv"] == 1500.0
@@ -79,8 +79,8 @@ def test_compare_spreads_are_cumulative(fixture_base):
         ("2025-01-31", "SPY", 500.0),
         ("2025-02-28", "SPY", 510.0),
     ], base=fixture_base)
-    prices.upsert_close("AAPL", 150, date(2025, 1, 31), base=fixture_base)
-    prices.upsert_close("AAPL", 165, date(2025, 2, 28), base=fixture_base)
+    insert_quote(fixture_base, ticker="AAPL", close=150, date=date(2025, 1, 31), market="US")
+    insert_quote(fixture_base, ticker="AAPL", close=165, date=date(2025, 2, 28), market="US")
     res = perf.compare("SPY", base=fixture_base)
     assert len(res["rows"]) == 2
     # portfolio +10%, benchmark +2%, spread +8%
@@ -96,7 +96,7 @@ def test_compare_only_shared_months(fixture_base):
         ("2025-01-31", "SPY", 500.0),
         ("2025-02-28", "SPY", 510.0),
     ], base=fixture_base)
-    prices.upsert_close("AAPL", 160, date(2025, 2, 28), base=fixture_base)
+    insert_quote(fixture_base, ticker="AAPL", close=160, date=date(2025, 2, 28), market="US")
     res = perf.compare("SPY", base=fixture_base)
     assert len(res["rows"]) == 1
     assert res["rows"][0]["month"] == "2025-02"

@@ -746,12 +746,11 @@ def test_journal_stale_v0_snapshot_detected(client):
     assert "V0 已修改" in r.text
 
 
-def test_prices_and_triggers_end_to_end(client):
+def test_triggers_crud_end_to_end(client):
     client.post(
         "/companies/new",
         data={"ticker": "TR", "market": "US", "name": "tr", "sector": "saas", "currency": "USD"},
     )
-    # Create 2 triggers: a buy at 15, a trim at 30
     r = client.post(
         "/companies/US_TR/triggers",
         data={"trigger_price": "15.00", "action": "first_entry"},
@@ -768,55 +767,13 @@ def test_prices_and_triggers_end_to_end(client):
     assert "trim" in r2.text
     assert "armed" in r2.text
 
-    # Post price below 15 → first_entry should fire
-    r3 = client.post(
-        "/prices",
-        data={"date": "2026-04-23", "paste": "TR 14.50\nNVDA 450.20"},
-    )
-    assert r3.status_code == 200
-    assert "新触发" in r3.text
-    assert "first_entry" in r3.text
-    # Only 1 new trigger (trim didn't fire; 30 still armed)
-    assert "1" in r3.text
-
-    # Check portfolio dashboard picks up price (no position yet so no P&L)
-    client.post(
-        "/portfolio/position",
-        data={"ticker": "TR", "market": "US", "entry_date": "2026-04-01",
-              "avg_cost": "12", "shares": "100", "position_pct": "5"},
-    )
-    r4 = client.get("/portfolio")
-    assert "TR" in r4.text
-    assert "14.50" in r4.text
-    # (14.50 - 12) / 12 = +20.8%
-    assert "+20.8%" in r4.text
-
-    # Home card shows fired trigger
-    r5 = client.get("/")
-    assert "价格触发" in r5.text
-    assert "TR" in r5.text
-
-    # Delete fired trigger
-    rows = r2.text  # to get trigger ids we'd need the IDs; instead re-read triggers list
-    r6 = client.get("/companies/US_TR/triggers")
-    # Find any trigger id form action pattern
     import re as _re
-    ids = _re.findall(r"/triggers/(\d+)/delete", r6.text)
-    assert ids
-    client.post(f"/companies/US_TR/triggers/{ids[0]}/delete")
-    r7 = client.get("/companies/US_TR/triggers")
-    # After deleting one, fewer triggers remain
-    assert r7.text.count("first_entry") + r7.text.count("trim") < r6.text.count("first_entry") + r6.text.count("trim")
-
-
-def test_prices_rejects_gracefully(client):
-    r = client.post(
-        "/prices",
-        data={"date": "2026-04-23", "paste": "JUNK\nNVDA 450"},
-    )
-    assert r.status_code == 200
-    assert "解析错误" in r.text
-    assert "JUNK" in r.text
+    ids_before = _re.findall(r"/triggers/(\d+)/delete", r2.text)
+    assert len(ids_before) == 2
+    client.post(f"/companies/US_TR/triggers/{ids_before[0]}/delete")
+    r3 = client.get("/companies/US_TR/triggers")
+    ids_after = _re.findall(r"/triggers/(\d+)/delete", r3.text)
+    assert len(ids_after) == 1
 
 
 def test_trigger_rejects_bad_action(client):

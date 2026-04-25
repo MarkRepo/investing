@@ -8,8 +8,8 @@ from app import config as cfg
 from app.io import financials as fin_io
 from app.io import macro_risks as mr
 from app.io import performance as perf_io
-from app.io import prices as prices_io
 from app.io import regime as regime_io
+from tests.helpers import insert_quote
 
 
 @pytest.fixture
@@ -129,11 +129,11 @@ def test_sector_crash_trigger(base):
     ref_day = today - timedelta(days=10)
     # three SaaS tickers crash ≥ 20%
     for ticker in ("AAA", "BBB", "CCC"):
-        prices_io.upsert_close(ticker=ticker, close=100.0, d=ref_day, base=base)
-        prices_io.upsert_close(ticker=ticker, close=75.0, d=today, base=base)
+        insert_quote(base=base, ticker=ticker, close=100.0, date=ref_day)
+        insert_quote(base=base, ticker=ticker, close=75.0, date=today)
     # control stock flat
-    prices_io.upsert_close(ticker="CTRL", close=50.0, d=ref_day, base=base)
-    prices_io.upsert_close(ticker="CTRL", close=50.0, d=today, base=base)
+    insert_quote(base=base, ticker="CTRL", close=50.0, date=ref_day)
+    insert_quote(base=base, ticker="CTRL", close=50.0, date=today)
 
     vs = mr.check_sector_crash(today=today, base=base)
     assert len(vs) == 1
@@ -149,8 +149,8 @@ def test_sector_crash_needs_three_names(base):
     today = date(2026, 4, 22)
     ref_day = today - timedelta(days=10)
     for ticker in ("AAA", "BBB"):
-        prices_io.upsert_close(ticker=ticker, close=100.0, d=ref_day, base=base)
-        prices_io.upsert_close(ticker=ticker, close=70.0, d=today, base=base)
+        insert_quote(base=base, ticker=ticker, close=100.0, date=ref_day)
+        insert_quote(base=base, ticker=ticker, close=70.0, date=today)
 
     vs = mr.check_sector_crash(today=today, base=base)
     assert vs == []
@@ -162,8 +162,8 @@ def test_sector_crash_ignores_minor_dips(base):
     today = date(2026, 4, 22)
     ref_day = today - timedelta(days=10)
     for ticker in ("A", "B", "C"):
-        prices_io.upsert_close(ticker=ticker, close=100.0, d=ref_day, base=base)
-        prices_io.upsert_close(ticker=ticker, close=90.0, d=today, base=base)
+        insert_quote(base=base, ticker=ticker, close=100.0, date=ref_day)
+        insert_quote(base=base, ticker=ticker, close=90.0, date=today)
     vs = mr.check_sector_crash(today=today, base=base)
     assert vs == []
 

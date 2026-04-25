@@ -1,0 +1,15 @@
+{# Shown above the chart layout; taps into the same freshness bundle as _panel.html. #}
+<div class="status-bar status-{{ freshness.status }}">
+  {% if freshness.status == 'green' %}✅
+  {%- elif freshness.status == 'yellow' %}⚠️
+  {%- else %}🔴{% endif %}
+  数据至 {{ freshness.last_date or '— 尚无数据' }}
+  {% if freshness.days_since is not none %} · {{ freshness.days_since }} 天前{% endif %}
+  {% if latest_quote %} · 来源 <code>{{ latest_quote.source }}</code>{% endif %}
+  {% if freshness.last_error %}
+    <div class="error-detail">
+      ❌ {{ freshness.last_error.error[:200] }}{% if freshness.last_error.error|length > 200 %}…{% endif %}
+      <small>（{{ freshness.last_error.attempted_at[:16] }}）</small>
+    </div>
+  {% endif %}
+</div>

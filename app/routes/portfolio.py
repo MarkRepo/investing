@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 from app import config as cfg
 from app.config import APP_TEMPLATES_DIR
 from app.io import portfolio
-from app.io import prices as prices_io
+from app.io import quotes as quotes_io
 from app.io import regime as regime_io
 from app.io import rules as rules_io
 from app.io import triggers as triggers_io
@@ -22,7 +22,7 @@ def index(request: Request):
     total = portfolio.total_position_pct(rows)
     cash = max(0.0, 100.0 - total)
 
-    price_map = prices_io.latest_prices_map()
+    price_map = quotes_io.latest_prices_map()
     all_triggers = triggers_io.list_all()
 
     # Attach live info per row

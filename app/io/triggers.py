@@ -129,7 +129,7 @@ def evaluate(
 ) -> dict[str, list[dict]]:
     """Mark crossed-but-not-yet-triggered rows as triggered.
 
-    ``prices``: ``{ticker: (date_iso, close)}`` map from ``prices.latest_prices_map()``.
+    ``prices``: ``{ticker: (date_iso, close)}`` map from ``quotes.latest_prices_map()``.
     Returns ``{"new": [...], "already": [...], "armed": [...]}`` — the
     "new" list are rows triggered by *this* call.
     """

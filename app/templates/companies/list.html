@@ -7,7 +7,10 @@
 {% if rows %}
 <table>
   <thead>
-    <tr><th>ticker</th><th>market</th><th>名称</th><th>行业</th><th>V0</th><th>能力圈</th></tr>
+    <tr>
+      <th>ticker</th><th>market</th><th>名称</th><th>行业</th>
+      <th>V0</th><th>能力圈</th><th>快捷</th>
+    </tr>
   </thead>
   <tbody>
   {% for r in rows %}
@@ -22,6 +25,19 @@
         {% elif r.competence_score is not none %}<span class="badge badge-draft">{{ r.competence_score }}</span>
         {% else %}<span class="badge badge-missing">missing</span>
         {% endif %}
+      </td>
+      <td class="row-actions">
+        <a class="btn btn-mini" href="/prices/{{ r.key }}" title="行情页">行情</a>
+        <a class="btn btn-mini{% if r._wl_stages %} btn-done{% endif %}"
+           href="/companies/{{ r.key }}#add-watchlist"
+           title="{% if r._wl_stages %}已在：{{ r._wl_stages|join(', ') }}{% else %}加到观察池{% endif %}">
+          观察池{% if r._wl_stages %} ✓{% endif %}
+        </a>
+        <a class="btn btn-mini{% if r._in_portfolio %} btn-done{% endif %}"
+           href="/companies/{{ r.key }}#add-portfolio"
+           title="{% if r._in_portfolio %}已有持仓{% else %}加到持仓{% endif %}">
+          持仓{% if r._in_portfolio %} ✓{% endif %}
+        </a>
       </td>
     </tr>
   {% endfor %}

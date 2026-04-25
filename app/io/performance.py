@@ -132,7 +132,7 @@ def _price_month_end_close(
     start = date_cls(year, month, 1).isoformat()
     row = conn.execute(
         """
-        SELECT date, close FROM prices
+        SELECT date, close FROM quotes_daily
         WHERE ticker = ? AND date >= ? AND date <= ?
         ORDER BY date DESC LIMIT 1
         """,
@@ -204,7 +204,7 @@ def portfolio_monthly(base: Path | None = None) -> list[dict]:
 
     conn = fin_io.connect(base=base)
     try:
-        rows = conn.execute("SELECT MIN(date) AS a, MAX(date) AS b FROM prices").fetchone()
+        rows = conn.execute("SELECT MIN(date) AS a, MAX(date) AS b FROM quotes_daily").fetchone()
         if not rows or not rows["a"]:
             return []
         start = date_cls.fromisoformat(rows["a"])

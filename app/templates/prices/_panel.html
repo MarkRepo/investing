@@ -1,0 +1,76 @@
+{# Reusable quote snapshot — embedded on /companies/<key> + /prices/<key> top.
+
+   Expects in context:
+     - ``latest_quote``: dict from quotes_io.latest_for(), may be None
+     - ``prev_quote``:   dict from quotes_io.second_latest_for(), may be None
+     - ``freshness``:    dict from quotes_io.freshness()
+     - ``key``:          "<market>_<ticker>" for the link back to /prices/<key>
+     - ``market``:       SSE/SZSE/BSE/US — drives CN (亿/万) vs US (B/M) units
+
+   Layout: one wrap-friendly row so wide containers (the /prices page, ~1500px)
+   fill horizontally instead of stacking short lines.
+#}
+{% set q = latest_quote %}
+{% set mkt = market or (q.market if q else 'US') %}
+<section class="quote-panel">
+  <header class="quote-panel-header">
+    <h2>最新行情</h2>
+    <span class="freshness-chip freshness-{{ freshness.status }}">
+      {% if freshness.status == 'green' %}✅
+      {%- elif freshness.status == 'yellow' %}⚠️
+      {%- else %}🔴{% endif %}
+      {% if q %}{{ q.date }}{% if freshness.days_since is not none and freshness.days_since > 0 %} · {{ freshness.days_since }} 天前{% endif %}
+      {% else %}尚无数据{% endif %}
+    </span>
+    <span class="spacer"></span>
+    {% if request is defined and request and not request.url.path.startswith('/prices/') %}
+      <a class="btn btn-mini" href="/prices/{{ key }}">→ 行情页</a>
+    {% endif %}
+  </header>
+
+  {% if freshness.last_error %}
+    <div class="error-detail">
+      ❌ {{ freshness.last_error.error[:160] }}{% if freshness.last_error.error|length > 160 %}…{% endif %}
+    </div>
+  {% endif %}
+
+  {% if q %}
+  <div class="quote-stats">
+    <span class="stat-main">收 <strong>{{ q.close|fmt_price }}</strong>
+      {%- if prev_quote and prev_quote.close %}
+        {% set pct = (q.close - prev_quote.close) / prev_quote.close * 100 %}
+        <span class="{{ 'up' if pct > 0 else ('down' if pct < 0 else '') }}">{{ "%+.2f%%"|format(pct) }}</span>
+      {%- endif %}
+    </span>
+    {% if q.open %}<span class="stat">开 {{ q.open|fmt_price }}</span>{% endif %}
+    {% if q.high %}<span class="stat">高 {{ q.high|fmt_price }}</span>{% endif %}
+    {% if q.low %}<span class="stat">低 {{ q.low|fmt_price }}</span>{% endif %}
+
+    {% if q.volume or q.amount or q.turnover_rate or q.volume_ratio_5d %}
+      <span class="group-sep"></span>
+      {% if q.volume %}<span class="stat">量 {{ q.volume|fmt_big(mkt) }}</span>{% endif %}
+      {% if q.amount %}<span class="stat">额 {{ q.amount|fmt_big(mkt) }}</span>{% endif %}
+      {% if q.turnover_rate %}<span class="stat">换 {{ "%.2f%%"|format(q.turnover_rate) }}</span>{% endif %}
+      {% if q.volume_ratio_5d %}<span class="stat">量比 {{ "%.2f"|format(q.volume_ratio_5d) }}</span>{% endif %}
+    {% endif %}
+
+    {% if q.pe_ttm or q.pe_forward or q.pb or q.ps or q.peg or q.dividend_yield %}
+      <span class="group-sep"></span>
+      {% if q.pe_ttm %}<span class="stat">PE(TTM) {{ "%.1f"|format(q.pe_ttm) }}×</span>{% endif %}
+      {% if q.pe_forward %}<span class="stat">PE(Fwd) {{ "%.1f"|format(q.pe_forward) }}×</span>{% endif %}
+      {% if q.pb %}<span class="stat">PB {{ "%.1f"|format(q.pb) }}×</span>{% endif %}
+      {% if q.ps %}<span class="stat">PS {{ "%.1f"|format(q.ps) }}×</span>{% endif %}
+      {% if q.peg %}<span class="stat">PEG {{ "%.2f"|format(q.peg) }}</span>{% endif %}
+      {% if q.dividend_yield %}<span class="stat">DY {{ "%.2f%%"|format(q.dividend_yield) }}</span>{% endif %}
+    {% endif %}
+
+    {% if q.market_cap or q.float_market_cap or q.high_52w or q.low_52w %}
+      <span class="group-sep"></span>
+      {% if q.market_cap %}<span class="stat hint">总市值 {{ q.market_cap|fmt_big(mkt) }}</span>{% endif %}
+      {% if q.float_market_cap %}<span class="stat hint">流通 {{ q.float_market_cap|fmt_big(mkt) }}</span>{% endif %}
+      {% if q.high_52w %}<span class="stat hint">52w高 {{ q.high_52w|fmt_price }}</span>{% endif %}
+      {% if q.low_52w %}<span class="stat hint">52w低 {{ q.low_52w|fmt_price }}</span>{% endif %}
+    {% endif %}
+  </div>
+  {% endif %}
+</section>
