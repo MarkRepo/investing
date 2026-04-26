@@ -334,40 +334,67 @@ prompt: <上面拼好的>
 
 ---
 
-## Step 8：主 agent 汇总
-
-Subagent 的 JSON 里经常有 schema 漂移（polarity 用 `positive` 而非 `bull`、`evidence_text` 平铺而非 `evidence` 列表、偶尔还会把 JSON 包在 ```json``` 代码块里）。不要手写归一化逻辑——直接调 `scripts.ingest_aggregate`：
+## Step 8：主 agent 汇总（digest → 三桶 + 兼容 merged）
 
 ```python
 from scripts import ingest_aggregate as agg
-
-outputs = {
-    name: agg.load_json_tolerant(raw_subagent_output)
-    for name, raw_subagent_output in subagent_results.items()
-}
-merged = agg.aggregate(outputs)
-merged["claims"] = agg.dedup_claims(merged["claims"])
-```
-
-`merged` 包含 `claims` / `profile_fragments` / `financial_rows` / `meta_updates` / `competence_findings` / `flags_by_subagent` / `empty_subagents`。合并规则：
-- `claims`：concat + `normalize_claim`（polarity / evidence 容错归一化）
-- `profile_fragments`：同 key 取更长者
-- `financial_rows`：concat（冲突留给 cross-check）
-- `meta_updates`：首次写入者胜（`setdefault`）
-- `competence_findings`：`answered` 和 `proposed_additions` 分别 concat；Step 10 写入前再用 `arenas_io.consolidate_answers` 合并同 q_id
-- `flags`：每个 subagent 独立保留，最终报告展示
-
-**不要**现在给 claims 补 `ticker` / `source_id` / `source_file` / `extracted_by` / `extracted_at`——这些由 `write_claims` 的 header 负责传播（`claims_io.append_batch` 会自动填入）。
-
-**必须**把 merged 落盘到 `/tmp/ingest-{sha8}.merged.json`（Step 10.5 的 QA 消费它）：
-
-```python
 import json
 from pathlib import Path
+
+# 8.1 容错解析 digest 产出
+digest = agg.load_json_tolerant(subagent_raw_output)
+
+# 8.2 健康检查
+required = {"key_facts", "narratives", "financial_rows", "flags"}
+missing = required - set(digest.keys())
+if missing:
+    # AskUserQuestion: 重派 / 继续但视缺失字段为空 / 中止
+    ...
+
+# 8.3 按 target_layer 分桶
+buckets = agg.route_key_facts(digest["key_facts"])
+company_facts_grouped = agg.group_company_facts(digest["key_facts"])
+
+# 8.4 company facts → claims schema（走 claims 通道）
+claims_all = []
+for (t, m), facts in company_facts_grouped.items():
+    # 年报只处理本公司的 claims；ticker / market 不匹配的 group 丢掉
+    if t != ticker or m != market:
+        # digest 偶尔在 detected_tickers 驱动下产出"非本公司 ticker"的 company fact；
+        # 放 flags 里，不写入本公司 claims.jsonl
+        continue
+    claims_all.extend(agg.facts_to_claims(facts))
+
+# 8.5 dedup claims
+claims_all = agg.dedup_claims(claims_all)
+
+# 8.6 凑 QA 兼容 merged 结构（Step 10.5 的 ingest_qa warn --merged 依赖此 shape）
+merged = {
+    "claims": claims_all,
+    "financial_rows": digest.get("financial_rows", []),
+    "meta_updates": digest.get("meta_updates", {}),
+    "competence_findings": digest.get("competence_findings", {
+        "answered": [], "proposed_additions": []
+    }),
+    "flags_by_subagent": {"annual-digest": digest.get("flags", [])},
+    "empty_subagents": [],
+}
+
 Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
     json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8"
 )
+Path(f"/tmp/ingest-{sha8}.digest.json").write_text(
+    json.dumps(digest, ensure_ascii=False, indent=2), encoding="utf-8"
+)
 ```
+
+**为什么仍保留 `merged` 结构**：Step 10.5 的 `scripts.ingest_qa warn --merged` 期望这个 shape；Plan 2 没改 `ingest_qa` 接口。digest 数据在 `digest.json`（供 Plan 4 新 QA 规则消费），claims QA 数据在 `merged.json`。
+
+**已丢弃的字段**：
+- `profile_fragments` — digest 不产 profile 段；`profile-*.md` 由 `companies/{key}/narratives/*.md` 替代
+- `empty_subagents` — digest 只有 1 个 subagent，empty 概念退化；保留空列表以兼容 QA 脚本
+
+**不要**现在给 claims 补 `ticker` / `source_id` / `source_file` / `extracted_by` / `extracted_at`——这些由 `write_claims` 的 header 负责传播。
 
 ---
 
