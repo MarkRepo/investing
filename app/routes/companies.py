@@ -1,11 +1,14 @@
 """Company CRUD routes: list, create, detail."""
+import markdown as _md
 from fastapi import APIRouter, Form, HTTPException, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
+from app import config as cfg
 from app.config import APP_TEMPLATES_DIR, VALID_MARKETS
 from app.io import arenas as arenas_io
 from app.io import company as company_io
+from app.io import industry as industry_io
 from app.io import journal as journal_io
 from app.io import portfolio as portfolio_io
 from app.io import quotes as quotes_io
@@ -104,6 +107,28 @@ def detail_page(request: Request, key: str):
     latest_quote = quotes_io.latest_for(ticker)
     prev_quote = quotes_io.second_latest_for(ticker)
     freshness = quotes_io.freshness(ticker)
+
+    # 8 company-layer narratives (Plan 3 digest writes here)
+    narratives = []
+    for dim in cfg.COMPANY_DIMENSIONS:
+        md = company_io.read_narrative(ticker, market, dim)
+        has_content = md.strip() and "### 来源" in md
+        narratives.append({
+            "dim": dim,
+            "label": _COMPANY_DIM_LABEL.get(dim, dim),
+            "has_content": bool(has_content),
+            "html": _md.markdown(md, extensions=["tables", "fenced_code"]) if md else "",
+        })
+
+    # Industry back-links via meta.industry_slugs (if present)
+    industry_links = []
+    for slug in meta.get("industry_slugs") or []:
+        try:
+            im = industry_io.read_meta(slug)
+            industry_links.append({"slug": slug, "name": im.get("name") or slug})
+        except FileNotFoundError:
+            industry_links.append({"slug": slug, "name": None})
+
     return templates.TemplateResponse(
         request,
         "companies/detail.html",
@@ -123,8 +148,22 @@ def detail_page(request: Request, key: str):
             "latest_quote": latest_quote,
             "prev_quote": prev_quote,
             "freshness": freshness,
+            "narratives": narratives,
+            "industry_links": industry_links,
         },
     )
+
+
+_COMPANY_DIM_LABEL = {
+    "business_model": "商业模式",
+    "moat": "护城河",
+    "growth_engine": "增长引擎",
+    "management": "管理层",
+    "financial_profile": "财务画像",
+    "catalysts": "催化剂",
+    "risks": "风险",
+    "valuation": "估值",
+}
 
 
 # --- meta.md editor ----------------------------------------------------------

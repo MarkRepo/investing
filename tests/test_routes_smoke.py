@@ -1071,6 +1071,48 @@ def test_industries_detail_404_when_missing(client):
 # --- Plan 4 T8: arenas read view with narratives + industry back-link ------
 
 
+def test_company_detail_shows_narratives(client, tmp_path):
+    from app.io import company as company_io
+    company_io.create_company(
+        ticker="NRTV", market="US", name="Narrative Inc",
+        industry_slugs=["us-telehealth"], base=tmp_path,
+    )
+    company_io.append_narrative_block(
+        ticker="NRTV", market="US", dim="moat",
+        block="订阅 SaaS + 网络效应。",
+        source_meta={
+            "institution": "年报", "date": "2024-12-31",
+            "sha8": "deadbeef",
+            "source_id": "年报-2024-deadbeef",
+        },
+        base=tmp_path,
+    )
+    r = client.get("/companies/US_NRTV")
+    assert r.status_code == 200
+    assert "8 维叙述" in r.text
+    assert "订阅 SaaS" in r.text
+    # moat dim label rendered
+    assert "护城河" in r.text
+
+
+def test_company_detail_industry_backlink(client, tmp_path):
+    from app.io import company as company_io
+    from app.io import industry as industry_io
+    industry_io.create_industry(
+        slug="us-telehealth", name="美国远程医疗",
+        scope="B2C SaaS + RX", base=tmp_path,
+    )
+    company_io.create_company(
+        ticker="HIMS", market="US", name="Hims & Hers",
+        industry_slugs=["us-telehealth"], base=tmp_path,
+    )
+    r = client.get("/companies/US_HIMS")
+    assert r.status_code == 200
+    # Linked industry rendered with name (from meta.yaml), not just slug
+    assert 'href="/industries/us-telehealth"' in r.text
+    assert "美国远程医疗" in r.text
+
+
 def test_arenas_detail_shows_narratives_and_industry_backlink(client, tmp_path):
     from app.io import arenas as arenas_io
     from app.io import industry as industry_io
