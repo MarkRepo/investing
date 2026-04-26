@@ -106,15 +106,54 @@ def list_arenas(base: Path | None = None) -> list[dict[str, Any]]:
 
 def write_definition(
     slug: str,
-    fm: dict,
-    body: str,
+    fm: dict | None = None,
+    body: str | None = None,
     base: Path | None = None,
+    *,
+    name: str | None = None,
+    definition_text: str | None = None,
+    participants: list[dict] | None = None,
+    industry: str | None = None,
+    battleground_focus: str | None = None,
+    today: date | None = None,
 ) -> Path:
     """Create or overwrite ``arenas/{slug}/definition.md``.
 
-    ``fm`` must include ``slug`` (matching path). ``participants`` if present
-    must be a list of dicts with ``{market, ticker, name, role}``.
+    Two call styles are supported:
+
+    - Legacy: ``write_definition(slug, fm_dict, body_str, base=...)`` — caller
+      supplies the full frontmatter dict (must include ``slug``) and body.
+    - Dimensioned (spec §2.2): ``write_definition(slug=..., name=...,
+      definition_text=..., industry=..., battleground_focus=..., base=...)`` —
+      helper builds the frontmatter from the kwargs.
+
+    ``industry`` and ``battleground_focus`` are optional; legacy arenas without
+    them still read correctly. ``participants`` if present must be a list of
+    dicts with ``{market, ticker, name, role}``.
     """
+    if fm is None:
+        today_iso = (today or date.today()).isoformat()
+        fm = {
+            "slug": slug,
+            "name": name,
+            "created": today_iso,
+            "last_updated": today_iso,
+            "participants": participants or [],
+        }
+        if industry is not None:
+            fm["industry"] = industry
+        if battleground_focus is not None:
+            fm["battleground_focus"] = battleground_focus
+        body = definition_text if definition_text is not None else ""
+    else:
+        # merge in any explicit kwargs (allows callers to layer new fields onto
+        # an existing fm dict).
+        if industry is not None:
+            fm["industry"] = industry
+        if battleground_focus is not None:
+            fm["battleground_focus"] = battleground_focus
+        if body is None:
+            body = ""
     if fm.get("slug") != slug:
         raise ValueError(f"frontmatter slug {fm.get('slug')!r} != path slug {slug!r}")
     participants = fm.get("participants")
