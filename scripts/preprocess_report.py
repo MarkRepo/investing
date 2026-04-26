@@ -418,6 +418,71 @@ def extract_publish_date(text: str, template: dict) -> str | None:
     return None
 
 
+# --- detect_tickers ----------------------------------------------------------
+
+# A-share 6-digit code mapping to exchange (prefix rules):
+#   6*     -> SSE   (上海主板/科创板)
+#   000*/001*/002*/003* -> SZSE (深交所主板/中小板/创业板 3XX)
+#   300*/301* -> SZSE (创业板)
+#   8* (6-digit)/9*  -> BSE
+# We keep it simple: first-char rules.
+_A_SHARE_CODE_RE = re.compile(r"(?<!\d)([036][0-9]{5}|8[0-9]{5}|9[0-9]{5})(?!\d)")
+_US_TICKER_RE = re.compile(
+    r"\b(?:NYSE|NASDAQ|NASDAQ:NYSE)\s*:?\s*([A-Z]{1,5})\b"
+)
+
+
+def _classify_a_share(code: str) -> str:
+    if code.startswith("6"):
+        return "SSE"
+    if code.startswith(("0", "3")):
+        return "SZSE"
+    if code.startswith(("8", "9")):
+        return "BSE"
+    return "SSE"
+
+
+def detect_tickers(text: str) -> list[dict]:
+    """Scan for plausible A-share 6-digit codes + US NYSE/NASDAQ: tickers.
+    Returns a de-duplicated list of {market, ticker} rows, in first-seen order.
+    """
+    seen: set[tuple[str, str]] = set()
+    out: list[dict] = []
+    for m in _A_SHARE_CODE_RE.finditer(text):
+        code = m.group(1)
+        market = _classify_a_share(code)
+        key = (market, code)
+        if key not in seen:
+            seen.add(key)
+            out.append({"market": market, "ticker": code})
+    for m in _US_TICKER_RE.finditer(text):
+        sym = m.group(1).upper()
+        key = ("US", sym)
+        if key not in seen:
+            seen.add(key)
+            out.append({"market": "US", "ticker": sym})
+    return out
+
+
+# --- extract_report_abstract -------------------------------------------------
+
+def extract_report_abstract(text: str, max_chars: int = 500) -> str | None:
+    """Pull the leading 200-500 chars as an abstract. Skip obvious header
+    boilerplate (institution name, date line). Stop on first section heading.
+    """
+    # Trim to first section start (one of our common heading patterns).
+    head = text[:3000]
+    # Find first "一、" or "1、" or "##" or "PART I" style heading:
+    stop_re = re.compile(r"(?m)^(?:[一二三四五六七八九十]、|\d+[、.．]|##\s+|PART\s+I)")
+    m = stop_re.search(head)
+    body = head[: m.start()] if m else head
+    # Collapse blank lines.
+    body = re.sub(r"\n{2,}", "\n", body).strip()
+    if not body:
+        return None
+    return body[:max_chars]
+
+
 # --- figure_contexts (spec §4.8) ---------------------------------------------
 
 _FIGURE_CAPTION_PATTERNS = [
@@ -515,6 +580,8 @@ def build_result(
         },
         "sections": out_sections,
         "figure_contexts": fig_contexts,
+        "detected_tickers": detect_tickers(text_full),
+        "report_abstract": extract_report_abstract(text_full),
     }
 
 
