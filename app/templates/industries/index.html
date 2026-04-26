@@ -1,32 +1,42 @@
 {% extends "base.html" %}
 {% block title %}行业{% endblock %}
 {% block content %}
-<h1>行业维度（事实层）</h1>
+<h1>行业维度</h1>
 <p class="hint">
-  DESIGN §2.4：事实（行业格局、参与者、能力圈演进）与主观判断分开存。<br>
-  来源规则（§8 坑 9）：仅允许年报、公司公告、多份研报交叉验证。新闻属于 claim，不能升级为事实。
+  三层知识系统的"行业"层：每个 slug 对应 11 维 narrative + observations.jsonl + figure_contexts。
+  ingest 行业研报（<code>/ingest</code>）或公司年报时自动生成、扩展，不手工编辑。
 </p>
 
+{% if rows %}
 <table>
-  <tr>
-    <th>行业</th>
-    {% for f in files %}<th>{{ f }}</th>{% endfor %}
-    <th>进入</th>
-  </tr>
-  {% for s in sectors %}
-  <tr>
-    <td><strong>{{ s.sector }}</strong></td>
-    {% for f in files %}
-      <td>
-        {% if s.present[f] %}
-          <span class="badge badge-active">✓</span>
-        {% else %}
-          <span class="badge badge-draft">未建</span>
-        {% endif %}
-      </td>
+  <thead>
+    <tr>
+      <th>slug</th>
+      <th>名称</th>
+      <th>范围</th>
+      <th>arena</th>
+      <th>ticker</th>
+      <th>观察</th>
+      <th>last_updated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td><code>{{ r.slug }}</code></td>
+      <td>{{ r.name or '-' }}</td>
+      <td class="hint">{{ r.scope or '-' }}</td>
+      <td>{{ r.linked_arenas_count }}</td>
+      <td>{{ r.linked_tickers_count }}</td>
+      <td>{{ r.observations_count }}</td>
+      <td class="hint">{{ r.last_updated or '-' }}</td>
+      <td><a href="/industries/{{ r.slug }}">打开</a></td>
+    </tr>
     {% endfor %}
-    <td><a href="/industries/{{ s.sector }}">打开</a></td>
-  </tr>
-  {% endfor %}
+  </tbody>
 </table>
+{% else %}
+<p><em>还没有行业。用 <code>/ingest</code> 把一份行业研报导入即可自动建。</em></p>
+{% endif %}
 {% endblock %}

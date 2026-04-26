@@ -1010,3 +1010,57 @@ def test_research_audit_empty(client):
     r = client.get("/research-audit")
     assert r.status_code == 200
     assert "Claim 抽检" in r.text
+
+
+# --- Plan 4 T7: industries read views ---------------------------------------
+
+
+def test_industries_index_empty(client):
+    r = client.get("/industries")
+    assert r.status_code == 200
+    assert "行业维度" in r.text
+
+
+def test_industries_index_lists_created_slugs(client, tmp_path):
+    from app.io import industry as industry_io
+    industry_io.create_industry(
+        slug="cn-test-industry", name="测试行业",
+        scope="单元测试", base=tmp_path,
+    )
+    r = client.get("/industries")
+    assert r.status_code == 200
+    assert "cn-test-industry" in r.text
+    assert "测试行业" in r.text
+
+
+def test_industries_detail_renders_meta_and_narratives(client, tmp_path):
+    from app.io import industry as industry_io
+    industry_io.create_industry(
+        slug="cn-cmp-material", name="CMP 材料",
+        scope="半导体抛光液", base=tmp_path,
+    )
+    # Append a real narrative block so the page shows content for market_size
+    industry_io.append_narrative_block(
+        slug="cn-cmp-material", dim="market_size",
+        block="2025 TAM 33.8B USD，CAGR 9%。",
+        source_meta={
+            "institution": "国金证券", "date": "2026-03-10",
+            "sha8": "abcd1234",
+            "source_id": "行研-国金证券-2026-03-10-abcd1234",
+        },
+        base=tmp_path,
+    )
+    r = client.get("/industries/cn-cmp-material")
+    assert r.status_code == 200
+    assert "CMP 材料" in r.text
+    assert "半导体抛光液" in r.text
+    assert "33.8B USD" in r.text
+    assert "国金证券" in r.text
+    # 11 dims rendered in the page (closed or open)
+    assert "market_size" in r.text
+    assert "valuation" in r.text
+
+
+def test_industries_detail_404_when_missing(client):
+    r = client.get("/industries/no-such-slug")
+    assert r.status_code == 404
