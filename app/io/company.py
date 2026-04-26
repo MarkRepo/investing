@@ -1,5 +1,4 @@
 """Create a new company directory by rendering markdown templates."""
-import re
 from datetime import date
 from pathlib import Path
 
@@ -21,9 +20,6 @@ _META_KEYS = (
     "currency",
     "website",
 )
-
-_PROFILE_KEYS = ("ticker", "market", "year", "profile_date", "source", "source_file")
-_PROFILE_RE = re.compile(r"^profile-(\d{4})\.md$")
 
 # (output filename, template filename)
 _TEMPLATE_MAP = (
@@ -89,11 +85,6 @@ def create_company(
 
     for out_name, tpl_name in _TEMPLATE_MAP:
         (out_dir / out_name).write_text(env.get_template(tpl_name).render(**ctx))
-
-    profile_name = f"profile-{today.year}.md"
-    (out_dir / profile_name).write_text(
-        env.get_template("profile-YYYY.md.tmpl").render(**ctx)
-    )
 
     _ensure_narrative_skeletons(ticker, market, name, base)
 
@@ -200,108 +191,9 @@ def write_meta(
     return path
 
 
-# --- profile-YYYY.md ---------------------------------------------------------
-
-
 def _company_dir(ticker: str, market: str, base: Path | None) -> Path:
     companies_dir = Path(base) / "companies" if base else cfg.COMPANIES_DIR
     return companies_dir / f"{market}_{ticker}"
-
-
-def list_profiles(ticker: str, market: str, base: Path | None = None) -> list[dict]:
-    """Return all profile-YYYY.md entries sorted by year desc."""
-    d = _company_dir(ticker, market, base)
-    if not d.exists():
-        return []
-    out: list[dict] = []
-    for p in d.iterdir():
-        m = _PROFILE_RE.match(p.name)
-        if not m:
-            continue
-        fm, _ = _split_frontmatter(p.read_text(encoding="utf-8"))
-        out.append({
-            "year": int(m.group(1)),
-            "profile_date": fm.get("profile_date"),
-            "source_file": fm.get("source_file") or fm.get("source"),
-            "path": p.name,
-        })
-    out.sort(key=lambda r: r["year"], reverse=True)
-    return out
-
-
-def read_profile(
-    ticker: str, market: str, year: int, base: Path | None = None
-) -> dict:
-    """Return ``{frontmatter, body, exists}`` for profile-{year}.md."""
-    path = _company_dir(ticker, market, base) / f"profile-{year}.md"
-    if not path.exists():
-        return {"frontmatter": {}, "body": "", "exists": False}
-    fm, body = _split_frontmatter(path.read_text(encoding="utf-8"))
-    return {"frontmatter": fm, "body": body, "exists": True}
-
-
-def _emit_profile_frontmatter(fm: dict) -> str:
-    ordered: dict = {}
-    for k in _PROFILE_KEYS:
-        if k in fm and fm[k] not in (None, ""):
-            ordered[k] = fm[k]
-    for k, v in fm.items():
-        if k not in ordered and v not in (None, ""):
-            ordered[k] = v
-    return "---\n" + yaml.safe_dump(ordered, allow_unicode=True, sort_keys=False).rstrip() + "\n---\n"
-
-
-def write_profile(
-    ticker: str,
-    market: str,
-    year: int,
-    frontmatter: dict,
-    body: str,
-    base: Path | None = None,
-) -> Path:
-    """Write profile-{year}.md.
-
-    ``source_file`` must point to a file under this company's ``sources/``
-    directory (enforces DESIGN §8 坑 9: no news-as-fact).
-    """
-    company_dir = _company_dir(ticker, market, base)
-    sources_dir = company_dir / "sources"
-    source_file = str(frontmatter.get("source_file") or "").strip()
-    if not source_file:
-        raise ValueError(
-            "source_file is required — fact layer must cite an annual report "
-            "or filing under sources/ (DESIGN §8 坑 9)."
-        )
-    # Accept either relative ("sources/xyz.md") or just the filename.
-    candidate_names = [source_file]
-    if source_file.startswith("sources/"):
-        candidate_names.append(source_file[len("sources/"):])
-    resolved: Path | None = None
-    for name in candidate_names:
-        p = sources_dir / Path(name).name
-        if p.exists():
-            resolved = p
-            break
-    if resolved is None:
-        raise ValueError(
-            f"source_file {source_file!r} not found in {sources_dir}. "
-            "Upload the annual report / filing first (fact layer rule)."
-        )
-    fm = {**frontmatter}
-    fm["ticker"] = ticker
-    fm["market"] = market
-    fm["year"] = year
-    fm["source_file"] = f"sources/{resolved.name}"
-    fm.setdefault("profile_date", date.today().isoformat())
-    fm.setdefault("source", "annual_report")
-
-    path = company_dir / f"profile-{year}.md"
-    company_dir.mkdir(parents=True, exist_ok=True)
-    text = _emit_profile_frontmatter(fm) + "\n" + body.lstrip()
-    if not text.endswith("\n"):
-        text += "\n"
-    path.write_text(text, encoding="utf-8")
-    return path
 
 
 def list_sources(ticker: str, market: str, base: Path | None = None) -> list[str]:
