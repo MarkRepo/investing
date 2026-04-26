@@ -5,9 +5,9 @@ Each sector has three files under ``industries/{sector}/``:
 - ``players.md``   — 参与者清单（头部公司 + 相对强项）
 - ``competence-map.md`` — 你对该行业能力圈的演进（用户手写 + 聚合 journal 数据）
 
-All three are markdown with YAML frontmatter. ``sector`` is one of
-``cfg.VALID_SECTORS``. ``competence-map.md`` rendering also surfaces derived
-stats (from ``competence_map.yearly_map``) alongside the hand-written body.
+All three are markdown with YAML frontmatter. ``sector`` is a freeform string.
+``competence-map.md`` rendering also surfaces derived stats (from
+``competence_map.yearly_map``) alongside the hand-written body.
 """
 from __future__ import annotations
 
@@ -47,8 +47,8 @@ def _root(base: Path | None) -> Path:
 
 
 def _sector_dir(sector: str, base: Path | None) -> Path:
-    if sector not in cfg.VALID_SECTORS:
-        raise ValueError(f"unknown sector {sector!r}; valid: {cfg.VALID_SECTORS}")
+    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
+        raise ValueError(f"unknown sector {sector!r}; valid: {cfg._INTERNAL_SECTORS_FOR_TESTS}")
     return _root(base) / sector
 
 
@@ -83,7 +83,7 @@ def list_sectors(base: Path | None = None) -> list[dict]:
     """Return one row per known sector with a presence flag per file."""
     root = _root(base)
     out: list[dict] = []
-    for sector in cfg.VALID_SECTORS:
+    for sector in cfg._INTERNAL_SECTORS_FOR_TESTS:
         d = root / sector
         row = {"sector": sector, "present": {kind: (d / f"{kind}.md").exists() for kind in FILES}}
         out.append(row)

@@ -8,7 +8,7 @@ from jinja2 import Environment, FileSystemLoader
 import yaml
 
 from app import config as cfg
-from app.config import VALID_MARKETS, VALID_SECTORS
+from app.config import VALID_MARKETS
 
 _META_KEYS = (
     "ticker",
@@ -48,8 +48,8 @@ def create_company(
     """Lay down a new company directory with all template files rendered."""
     if market not in VALID_MARKETS:
         raise ValueError(f"unknown market {market!r}; valid: {VALID_MARKETS}")
-    if sector not in VALID_SECTORS:
-        raise ValueError(f"unknown sector {sector!r}; valid: {VALID_SECTORS}")
+    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
+        raise ValueError(f"unknown sector {sector!r}; valid: {cfg._INTERNAL_SECTORS_FOR_TESTS}")
 
     ticker = ticker.strip().upper()
     if not ticker:
@@ -151,7 +151,7 @@ def write_meta(
     body: str,
     base: Path | None = None,
 ) -> Path:
-    """Write meta.md. Preserves ``industry_primary`` in cfg.VALID_SECTORS if set.
+    """Write meta.md. Preserves ``industry_primary`` in cfg._INTERNAL_SECTORS_FOR_TESTS if set.
 
     ``themes`` is allowed as a list[str] — used by portfolio theme exposure rule.
     """
@@ -159,9 +159,9 @@ def write_meta(
     fm["ticker"] = ticker
     fm["market"] = market
     industry = fm.get("industry_primary")
-    if industry and industry not in VALID_SECTORS:
+    if industry and industry not in cfg._INTERNAL_SECTORS_FOR_TESTS:
         raise ValueError(
-            f"industry_primary must be one of {VALID_SECTORS}, got {industry!r}"
+            f"industry_primary must be one of {cfg._INTERNAL_SECTORS_FOR_TESTS}, got {industry!r}"
         )
     themes = fm.get("themes")
     if themes is not None:

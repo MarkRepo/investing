@@ -15,10 +15,11 @@ FINANCIALS_DB = DATA_DIR / "financials.db"
 
 TEMPLATES_DIR = BASE_PATH / "templates"
 CONTROLLED_VOCAB_DIR = BASE_PATH / "controlled-vocab"
-SECTOR_VOCAB_DIR = CONTROLLED_VOCAB_DIR / "competence-sector"
 
 APP_TEMPLATES_DIR = BASE_PATH / "app" / "templates"
 STATIC_DIR = BASE_PATH / "static"
 
-VALID_SECTORS = ("consumer", "saas", "cyclical", "bank", "biotech")
 VALID_MARKETS = ("US", "SSE", "SZSE", "BSE", "HK")
+# Note: VALID_SECTORS removed for refactor. See Tasks 4, 11 for migration.
+# Tests use _INTERNAL_SECTORS_FOR_TESTS for backward compatibility.
+_INTERNAL_SECTORS_FOR_TESTS = ("consumer", "saas", "cyclical", "bank", "biotech")

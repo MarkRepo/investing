@@ -34,7 +34,6 @@ def client(tmp_path, monkeypatch):
     monkeypatch.setattr(cfg, "PORTFOLIO_DIR", tmp_path / "portfolio")
     shutil.copytree(repo / "controlled-vocab", tmp_path / "controlled-vocab")
     monkeypatch.setattr(cfg, "CONTROLLED_VOCAB_DIR", tmp_path / "controlled-vocab")
-    monkeypatch.setattr(cfg, "SECTOR_VOCAB_DIR", tmp_path / "controlled-vocab" / "competence-sector")
     (tmp_path / "journal" / "decisions").mkdir(parents=True)
     monkeypatch.setattr(cfg, "JOURNAL_DIR", tmp_path / "journal")
     (tmp_path / "industries").mkdir()

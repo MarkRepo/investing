@@ -38,9 +38,6 @@ def client(tmp_path, monkeypatch):
     monkeypatch.setattr(cfg, "DATA_DIR", tmp_path / "data")
     monkeypatch.setattr(cfg, "FINANCIALS_DB", tmp_path / "data" / "financials.db")
     monkeypatch.setattr(cfg, "CONTROLLED_VOCAB_DIR", tmp_path / "controlled-vocab")
-    monkeypatch.setattr(
-        cfg, "SECTOR_VOCAB_DIR", tmp_path / "controlled-vocab" / "competence-sector"
-    )
     from main import app
     return TestClient(app)
 

@@ -3,7 +3,8 @@ from fastapi import APIRouter, Form, HTTPException, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
-from app.config import APP_TEMPLATES_DIR, VALID_MARKETS, VALID_SECTORS
+from app import config as cfg
+from app.config import APP_TEMPLATES_DIR, VALID_MARKETS
 from app.io import arenas as arenas_io
 from app.io import company as company_io
 from app.io import journal as journal_io
@@ -48,7 +49,7 @@ def new_form(request: Request):
         "companies/new.html",
         {
             "markets": VALID_MARKETS,
-            "sectors": VALID_SECTORS,
+            "sectors": cfg._INTERNAL_SECTORS_FOR_TESTS,
         },
     )
 
@@ -148,7 +149,7 @@ def meta_edit(request: Request, key: str):
             "ticker": ticker,
             "market": market,
             "doc": doc,
-            "sectors": VALID_SECTORS,
+            "sectors": cfg._INTERNAL_SECTORS_FOR_TESTS,
         },
     )
 

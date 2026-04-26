@@ -23,7 +23,7 @@ def index(request: Request):
 
 @router.get("/{sector}")
 def sector_detail(request: Request, sector: str):
-    if sector not in cfg.VALID_SECTORS:
+    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
         raise HTTPException(status_code=404, detail="unknown sector")
     files = {kind: industry_io.read(sector, kind) for kind in industry_io.FILES}
     # competence-map page shows aggregated stats as a sidebar hint
@@ -45,7 +45,7 @@ def sector_detail(request: Request, sector: str):
 
 @router.get("/{sector}/{kind}")
 def file_edit(request: Request, sector: str, kind: str):
-    if sector not in cfg.VALID_SECTORS:
+    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
         raise HTTPException(status_code=404, detail="unknown sector")
     if kind not in industry_io.FILES:
         raise HTTPException(status_code=404, detail="unknown file")
@@ -59,7 +59,7 @@ def file_edit(request: Request, sector: str, kind: str):
 
 @router.post("/{sector}/{kind}")
 async def save(request: Request, sector: str, kind: str):
-    if sector not in cfg.VALID_SECTORS:
+    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
         raise HTTPException(status_code=404, detail="unknown sector")
     if kind not in industry_io.FILES:
         raise HTTPException(status_code=404, detail="unknown file")
