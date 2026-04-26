@@ -112,3 +112,70 @@ def test_write_industry_observations_roundtrip(tmp_path):
     assert len(rows) == 1
     assert rows[0]["field"] == "tam_global"
     assert rows[0]["value"] == 33.8
+
+
+def test_write_industry_narrative_appends_block(tmp_path):
+    from app.io import industry as industry_io
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="", base=base)
+
+    narratives = {"x": {"market_size": "TAM 34B, CAGR 9%", "technology": "铜抛光液演进"}}
+    source_meta = {"source_id": "s1", "institution": "国金", "date": "2026-03-10",
+                   "sha8": "abcd1234"}
+    agg.write_industry_narrative(narratives, source_meta, base=base)
+
+    md = industry_io.read_narrative("x", "market_size", base=base)
+    assert "TAM 34B" in md
+    assert "来源 国金 2026-03-10" in md
+
+    md_t = industry_io.read_narrative("x", "technology", base=base)
+    assert "铜抛光液" in md_t
+
+
+def test_write_arena_narrative_appends_block(tmp_path):
+    from app.io import arenas as arenas_io
+    base = tmp_path / "arenas"
+    base.mkdir()
+    arenas_io.write_definition(slug="a1", name="A1", definition_text="x",
+                                industry="i", battleground_focus="f", base=base)
+    narratives = {"a1": {"participants": "安集 vs Dupont"}}
+    source_meta = {"source_id": "s1", "institution": "X", "date": "2026-01-01",
+                   "sha8": "abcd1234"}
+    agg.write_arena_narrative(narratives, source_meta, base=base)
+    md = arenas_io.read_narrative("a1", "participants", base=base)
+    assert "安集 vs Dupont" in md
+
+
+def test_write_company_narrative_appends_block(tmp_path):
+    from app.io import company as company_io
+    base = tmp_path / "companies"
+    base.mkdir()
+    company_io.create_company(ticker="600519", market="SSE", name="Moutai",
+                              industry_slugs=[], base=base)
+    narratives = {"SSE_600519": {"moat": "品牌+渠道+产能"}}
+    source_meta = {"source_id": "年报-2024-deadbeef", "institution": "年报",
+                   "date": "2024-12-31", "sha8": "deadbeef"}
+    agg.write_company_narrative(narratives, source_meta, base=base)
+    md = company_io.read_narrative("600519", "SSE", "moat", base=base)
+    assert "品牌+渠道" in md
+
+
+def test_write_narrative_skips_empty_string(tmp_path):
+    """Empty narrative dims must not trigger an 'empty block' append —
+    empty str/None means 'dim not covered by this report'."""
+    from app.io import industry as industry_io
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="", base=base)
+    narratives = {"x": {"market_size": "", "technology": None, "lifecycle": "Mature"}}
+    source_meta = {"source_id": "s1", "institution": "X", "date": "2026-01-01",
+                   "sha8": "abcd1234"}
+    agg.write_industry_narrative(narratives, source_meta, base=base)
+    md_m = industry_io.read_narrative("x", "market_size", base=base)
+    md_t = industry_io.read_narrative("x", "technology", base=base)
+    md_l = industry_io.read_narrative("x", "lifecycle", base=base)
+    # skeleton only for empty; new block only for lifecycle
+    assert "来源" not in md_m
+    assert "来源" not in md_t
+    assert "Mature" in md_l

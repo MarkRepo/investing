@@ -483,3 +483,77 @@ def write_claims(
         return 0, errors
     claims_io.append_batch(ticker, market, valid, header=header, base=base)
     return len(valid), []
+
+
+# ---------- Three-layer narrative writers -----
+
+
+def _is_blank_block(s) -> bool:
+    return s is None or (isinstance(s, str) and not s.strip())
+
+
+def write_industry_narrative(
+    narratives: dict[str, dict[str, str]],
+    source_meta: dict,
+    *,
+    base: Path | None = None,
+) -> int:
+    """narratives shape: {industry_slug: {dim: md_block, ...}, ...}.
+    Appends one source block per non-empty (slug, dim). Returns count written."""
+    from app.io import industry as industry_io
+
+    count = 0
+    for slug, by_dim in (narratives or {}).items():
+        if not by_dim:
+            continue
+        for dim, block in by_dim.items():
+            if _is_blank_block(block):
+                continue
+            industry_io.append_narrative_block(slug, dim, block, source_meta, base=base)
+            count += 1
+    return count
+
+
+def write_arena_narrative(
+    narratives: dict[str, dict[str, str]],
+    source_meta: dict,
+    *,
+    base: Path | None = None,
+) -> int:
+    """narratives shape: {arena_slug: {dim: md_block, ...}}."""
+    from app.io import arenas as arenas_io
+
+    count = 0
+    for slug, by_dim in (narratives or {}).items():
+        if not by_dim:
+            continue
+        for dim, block in by_dim.items():
+            if _is_blank_block(block):
+                continue
+            arenas_io.append_narrative_block(slug, dim, block, source_meta, base=base)
+            count += 1
+    return count
+
+
+def write_company_narrative(
+    narratives: dict[str, dict[str, str]],
+    source_meta: dict,
+    *,
+    base: Path | None = None,
+) -> int:
+    """narratives shape: {company_key (MARKET_TICKER): {dim: md_block, ...}}."""
+    from app.io import company as company_io
+
+    count = 0
+    for key, by_dim in (narratives or {}).items():
+        if not by_dim or "_" not in key:
+            continue
+        market, ticker = key.split("_", 1)
+        for dim, block in by_dim.items():
+            if _is_blank_block(block):
+                continue
+            company_io.append_narrative_block(
+                ticker, market, dim, block, source_meta, base=base,
+            )
+            count += 1
+    return count
