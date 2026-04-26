@@ -20,16 +20,21 @@ import yaml
 
 from app import config as cfg
 
-FINANCIAL_COLUMNS = (
-    "revenue",
-    "gross_profit",
-    "operating_income",
-    "net_income",
-    "total_assets",
-    "total_equity",
-    "operating_cashflow",
-    "shares_outstanding",
+# Union of all line items; serves as the authoritative column list for the
+# financials table. Legacy 8 columns are a subset of this.
+FINANCIAL_COLUMNS = tuple(
+    dict.fromkeys(  # stable-dedup while preserving insertion order
+        list(cfg.INCOME_STATEMENT_LINES)
+        + list(cfg.BALANCE_SHEET_LINES)
+        + list(cfg.CASHFLOW_LINES)
+        + ["shares_outstanding"]  # supplementary
+    )
 )
+
+
+def _columns_ddl() -> str:
+    """Generate `col REAL` lines for each FINANCIAL_COLUMNS entry."""
+    return ",\n    ".join(f"{c} REAL" for c in FINANCIAL_COLUMNS)
 
 
 _ALIAS_MAP_CACHE: dict | None = None
@@ -77,12 +82,12 @@ def normalize_raw_key(raw: str, market: str | None = None) -> str | None:
 PERIOD_RE = re.compile(r"^(\d{4})(Q[1-4]|A)$")
 _VALID_PERIOD_TYPES = ("annual", "quarterly")
 
-_SCHEMA = """
+_BASE_SCHEMA_TEMPLATE = """
 CREATE TABLE IF NOT EXISTS companies (
     ticker TEXT PRIMARY KEY,
     market TEXT,
     name TEXT,
-    industry_primary TEXT,
+    industry_slugs TEXT,
     listed_date DATE,
     currency TEXT
 );
@@ -91,14 +96,7 @@ CREATE TABLE IF NOT EXISTS financials (
     ticker TEXT NOT NULL,
     period TEXT NOT NULL,
     period_type TEXT NOT NULL,
-    revenue REAL,
-    gross_profit REAL,
-    operating_income REAL,
-    net_income REAL,
-    total_assets REAL,
-    total_equity REAL,
-    operating_cashflow REAL,
-    shares_outstanding REAL,
+    {column_ddl},
     source_file TEXT,
     PRIMARY KEY (ticker, period)
 );
@@ -184,6 +182,24 @@ CREATE INDEX IF NOT EXISTS idx_fetch_errors_unresolved
 """
 
 
+def init_schema(conn: sqlite3.Connection) -> None:
+    """Create financials + companies tables (and the other sibling tables) if
+    missing; ALTER ADD COLUMN any FINANCIAL_COLUMNS entry that is defined in
+    the authoritative tuple but absent from the live table.
+
+    SQLite quirk: ``ALTER TABLE ADD COLUMN`` does not support ``IF NOT
+    EXISTS``, so we inspect ``PRAGMA table_info`` first.
+    """
+    conn.executescript(_BASE_SCHEMA_TEMPLATE.format(column_ddl=_columns_ddl()))
+
+    cursor = conn.execute("PRAGMA table_info(financials)")
+    existing_cols = {row[1] for row in cursor.fetchall()}
+    for col in FINANCIAL_COLUMNS:
+        if col not in existing_cols:
+            conn.execute(f"ALTER TABLE financials ADD COLUMN {col} REAL")
+    conn.commit()
+
+
 def _db_path(base: Path | None) -> Path:
     if base is None:
         return cfg.FINANCIALS_DB
@@ -196,20 +212,30 @@ def connect(base: Path | None = None) -> sqlite3.Connection:
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
-    conn.executescript(_SCHEMA)
+    init_schema(conn)
     return conn
 
 
 def upsert_company(conn: sqlite3.Connection, meta: dict) -> None:
-    """Mirror markdown meta into the SQLite companies table (read-through cache)."""
+    """Mirror markdown meta into the SQLite companies table (read-through cache).
+
+    Spec note: company meta migrated from scalar ``industry_primary`` to
+    list-valued ``industry_slugs`` (Task 4). We accept either key on the way
+    in and store as comma-separated text in the ``industry_slugs`` column.
+    """
+    industry = meta.get("industry_slugs")
+    if industry is None:
+        industry = meta.get("industry_primary")
+    if isinstance(industry, (list, tuple)):
+        industry = ",".join(str(s) for s in industry if s)
     conn.execute(
         """
-        INSERT INTO companies(ticker, market, name, industry_primary, listed_date, currency)
-        VALUES (:ticker, :market, :name, :industry_primary, :listed_date, :currency)
+        INSERT INTO companies(ticker, market, name, industry_slugs, listed_date, currency)
+        VALUES (:ticker, :market, :name, :industry_slugs, :listed_date, :currency)
         ON CONFLICT(ticker) DO UPDATE SET
             market = excluded.market,
             name = excluded.name,
-            industry_primary = excluded.industry_primary,
+            industry_slugs = excluded.industry_slugs,
             listed_date = excluded.listed_date,
             currency = excluded.currency
         """,
@@ -217,7 +243,7 @@ def upsert_company(conn: sqlite3.Connection, meta: dict) -> None:
             "ticker": (meta.get("ticker") or "").upper(),
             "market": meta.get("market"),
             "name": meta.get("name"),
-            "industry_primary": meta.get("industry_primary"),
+            "industry_slugs": industry,
             "listed_date": str(meta.get("listed_date")) if meta.get("listed_date") else None,
             "currency": meta.get("currency"),
         },
