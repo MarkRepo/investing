@@ -16,6 +16,8 @@ import sqlite3
 from pathlib import Path
 from typing import Iterable
 
+import yaml
+
 from app import config as cfg
 
 FINANCIAL_COLUMNS = (
@@ -28,6 +30,49 @@ FINANCIAL_COLUMNS = (
     "operating_cashflow",
     "shares_outstanding",
 )
+
+
+_ALIAS_MAP_CACHE: dict | None = None
+
+
+def load_alias_map() -> dict:
+    """Load and cache A-share/US GAAP → standard key alias map."""
+    global _ALIAS_MAP_CACHE
+    if _ALIAS_MAP_CACHE is None:
+        path = cfg.FINANCIAL_ALIASES_PATH
+        if not path.exists():
+            raise FileNotFoundError(f"financial aliases map not found at {path}")
+        with path.open("r", encoding="utf-8") as f:
+            _ALIAS_MAP_CACHE = yaml.safe_load(f) or {}
+    return _ALIAS_MAP_CACHE
+
+
+def normalize_raw_key(raw: str, market: str | None = None) -> str | None:
+    """Map a raw A-share or US GAAP line name to standard snake_case key.
+
+    market: "US" / "SSE" / "SZSE" / "BSE" / "HK" / None (tries both).
+    Returns None if no match (caller should log warning, not fail).
+    """
+    if not raw:
+        return None
+    m = load_alias_map()
+    raw_norm = raw.strip().lower()
+    alias_langs = ["a_share", "us_gaap"]
+    if market == "US":
+        alias_langs = ["us_gaap", "a_share"]
+    elif market in ("SSE", "SZSE", "BSE", "HK"):
+        alias_langs = ["a_share", "us_gaap"]
+    for std_key, langs in m.items():
+        for lang in alias_langs:
+            aliases = langs.get(lang, []) or []
+            for alias in aliases:
+                if alias.strip().lower() == raw_norm:
+                    return std_key
+                # Chinese keys also match exact raw (no lowercasing needed for zh):
+                if alias.strip() == raw.strip():
+                    return std_key
+    return None
+
 
 PERIOD_RE = re.compile(r"^(\d{4})(Q[1-4]|A)$")
 _VALID_PERIOD_TYPES = ("annual", "quarterly")
