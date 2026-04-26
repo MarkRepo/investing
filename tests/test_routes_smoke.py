@@ -38,6 +38,8 @@ def client(tmp_path, monkeypatch):
     monkeypatch.setattr(cfg, "JOURNAL_DIR", tmp_path / "journal")
     (tmp_path / "industries").mkdir()
     monkeypatch.setattr(cfg, "INDUSTRIES_DIR", tmp_path / "industries")
+    (tmp_path / "arenas").mkdir()
+    monkeypatch.setattr(cfg, "ARENAS_DIR", tmp_path / "arenas")
     (tmp_path / "macro").mkdir()
     monkeypatch.setattr(cfg, "MACRO_DIR", tmp_path / "macro")
     (tmp_path / "data").mkdir()
@@ -1064,3 +1066,42 @@ def test_industries_detail_renders_meta_and_narratives(client, tmp_path):
 def test_industries_detail_404_when_missing(client):
     r = client.get("/industries/no-such-slug")
     assert r.status_code == 404
+
+
+# --- Plan 4 T8: arenas read view with narratives + industry back-link ------
+
+
+def test_arenas_detail_shows_narratives_and_industry_backlink(client, tmp_path):
+    from app.io import arenas as arenas_io
+    from app.io import industry as industry_io
+
+    industry_io.create_industry(
+        slug="cn-cmp-material", name="CMP 材料",
+        scope="半导体抛光", base=tmp_path,
+    )
+    arenas_io.write_definition(
+        slug="cn-slurry-substitute",
+        name="国产 CMP 抛光液替代战",
+        definition_text="国内抛光液厂商挑战陶氏",
+        industry="cn-cmp-material",
+        battleground_focus="国产替代",
+        base=tmp_path,
+    )
+    arenas_io.append_narrative_block(
+        slug="cn-slurry-substitute", dim="participants",
+        block="安集、鼎龙、贝特 vs 陶氏、Cabot、富士胶片",
+        source_meta={
+            "institution": "国金证券", "date": "2026-03-10",
+            "sha8": "abcd1234",
+            "source_id": "行研-国金证券-2026-03-10-abcd1234",
+        },
+        base=tmp_path,
+    )
+    r = client.get("/arenas/cn-slurry-substitute")
+    assert r.status_code == 200
+    # Industry back-link rendered
+    assert 'href="/industries/cn-cmp-material"' in r.text
+    # Narrative block rendered
+    assert "安集" in r.text
+    # The 5 narrative dim headers rendered
+    assert "participants" in r.text

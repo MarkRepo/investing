@@ -16,6 +16,9 @@
   {% if checklist_version is not none %}
   <tr><th>checklist</th><td>v{{ checklist_version }}</td></tr>
   {% endif %}
+  {% if industry_info %}
+  <tr><th>所属行业</th><td><a href="/industries/{{ industry_info.slug }}">{{ industry_info.name or industry_info.slug }}</a>{% if not industry_info.name %} <span class="hint">(未建 meta)</span>{% endif %}</td></tr>
+  {% endif %}
 </table>
 
 {% if participants %}
@@ -35,6 +38,22 @@
   {{ definition_html|safe }}
 </article>
 {% endif %}
+
+<h2>5 维叙述</h2>
+{% for n in narratives %}
+  <details {% if n.has_content %}open{% endif %}>
+    <summary>
+      <strong>{{ n.label }}</strong>
+      <span class="hint">({{ n.dim }})</span>
+      {% if not n.has_content %}<span class="badge badge-draft">空</span>{% endif %}
+    </summary>
+    {% if n.has_content %}
+      <div class="narrative">{{ n.html|safe }}</div>
+    {% else %}
+      <p class="hint"><em>尚无来源块。下一次该维度的 ingest 会 append。</em></p>
+    {% endif %}
+  </details>
+{% endfor %}
 
 <h2>Checklist &amp; 跨公司答案</h2>
 {% if not per_item %}
