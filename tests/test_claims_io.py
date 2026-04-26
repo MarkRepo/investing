@@ -196,6 +196,51 @@ def test_validate_batch_empty_input(env):
         claims.validate_batch("   ", SUBJECTS)
 
 
+def test_validate_batch_defaults_time_type_to_actual(env):
+    raw = """[
+      {"claim_text": "x", "subject_tag": "revenue_growth", "polarity": "bull", "claim_type": "qualitative"}
+    ]"""
+    _, valid, errors = claims.validate_batch(raw, SUBJECTS)
+    assert not errors
+    assert valid[0]["time_type"] == "actual"
+
+
+def test_validate_batch_accepts_forecast_time_type(env):
+    raw = """[
+      {"claim_text": "2026Q2 预计营收 +20%", "subject_tag": "revenue_growth",
+       "polarity": "bull", "claim_type": "qualitative", "time_type": "forecast"}
+    ]"""
+    _, valid, errors = claims.validate_batch(raw, SUBJECTS)
+    assert not errors
+    assert valid[0]["time_type"] == "forecast"
+
+
+def test_validate_batch_rejects_bad_time_type(env):
+    raw = """[
+      {"claim_text": "x", "subject_tag": "revenue_growth", "polarity": "bull",
+       "claim_type": "qualitative", "time_type": "historical"}
+    ]"""
+    _, valid, errors = claims.validate_batch(raw, SUBJECTS)
+    assert not valid
+    assert len(errors) == 1
+    assert any("time_type" in m for m in errors[0]["errors"])
+
+
+def test_append_batch_persists_time_type(env):
+    raw = """[
+      {"claim_text": "FY2024 历史营收 100", "subject_tag": "revenue_growth",
+       "polarity": "bull", "claim_type": "qualitative"},
+      {"claim_text": "2026Q2 预测毛利率 45%", "subject_tag": "revenue_growth",
+       "polarity": "bull", "claim_type": "qualitative", "time_type": "forecast"}
+    ]"""
+    _, valid, errors = claims.validate_batch(raw, SUBJECTS)
+    assert not errors
+    claims.append_batch("HIMS", "US", valid, header={"source_id": "s1"}, base=env)
+    got = claims.read_claims("HIMS", "US", base=env)
+    assert got[0]["time_type"] == "actual"
+    assert got[1]["time_type"] == "forecast"
+
+
 def test_append_batch_propagates_header_and_ids(env):
     header, valid, errors = claims.validate_batch(GOOD_BATCH, SUBJECTS)
     assert not errors

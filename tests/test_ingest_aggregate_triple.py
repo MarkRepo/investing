@@ -202,9 +202,31 @@ def test_facts_to_claims_converts_fields():
     assert c["subject_tag"] == "revenue_growth"
     assert c["company_dimension_hint"] == "financial_profile"
     assert c["arena_refs"] == ["arena-x"]
+    # Default time_type is actual when fact doesn't specify
+    assert c["time_type"] == "actual"
     # evidence must be [{text, type}] (claim schema)
     assert isinstance(c["evidence"], list)
     assert c["evidence"][0]["text"].startswith("...") or c["evidence"][0]["text"] == "..."
+
+
+def test_facts_to_claims_propagates_forecast_time_type():
+    """Sell-side forecasts set time_type=forecast on the fact; facts_to_claims
+    must carry it through so the claim lands as a forecast, not actual."""
+    facts = [{
+        "idx": 1,
+        "fact_text": "2026Q2 毛利率预计 45%",
+        "evidence_quote": "...",
+        "target_layer": "company",
+        "target_refs": {"ticker": "AAPL", "market": "NASDAQ"},
+        "subject_tag_hint": "gross_margin_forecast",
+        "company_dimension_hint": "valuation",
+        "timeframe": "2026Q2",
+        "time_type": "forecast",
+        "confidence": "medium",
+    }]
+    claims = agg.facts_to_claims(facts)
+    assert len(claims) == 1
+    assert claims[0]["time_type"] == "forecast"
 
 
 def test_facts_to_claims_groups_by_company():

@@ -595,6 +595,7 @@ def facts_to_claims(facts: list[dict]) -> list[dict]:
                 else "qualitative"
             ),
             "timeframe": f.get("timeframe"),
+            "time_type": f.get("time_type", "actual"),
             "evidence": [{"text": f.get("evidence_quote") or "", "type": "primary"}],
             "confidence": f.get("confidence", "medium"),
             "arena_refs": f.get("arena_refs") or [],

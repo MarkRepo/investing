@@ -19,6 +19,7 @@ from app import config as cfg
 
 POLARITIES = ("bull", "bear", "neutral")
 CLAIM_TYPES = ("quantitative", "qualitative")
+TIME_TYPES = ("actual", "forecast")
 
 REQUIRED_CLAIM_FIELDS = ("claim_text", "subject_tag", "polarity", "claim_type")
 
@@ -228,6 +229,13 @@ def validate_batch(
                     f"company_dimension_hint must be one of {cfg.COMPANY_DIMENSIONS} "
                     f"or null, got {dim_hint!r}"
                 )
+
+        # Optional time_type: "actual" (default) or "forecast" (sell-side projections)
+        time_type = c.get("time_type")
+        if time_type is None:
+            c["time_type"] = "actual"
+        elif time_type not in TIME_TYPES:
+            errs.append(f"time_type must be one of {TIME_TYPES}, got {time_type!r}")
 
         if errs:
             errors.append({"index": i, "errors": errs, "claim": c})

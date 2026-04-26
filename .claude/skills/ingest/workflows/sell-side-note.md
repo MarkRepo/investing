@@ -233,8 +233,7 @@ file_meta = {
 
 1. polarity 以**研报作者立场**为准（分析师看多 → bull）；不是你自己的判断
 2. **不要**产出 financial_rows（预测走 claims 通道，subject_tag=eps_forecast / revenue_forecast / target_price / rating）
-3. 预测 claim 的 `time_type="forecast"`；历史 claim（如 FY2024A "已披露收入"）的 time_type="actual"；
-   note：若 `facts_to_claims` 下游不消费 time_type（Plan 3 已知风险），你可选在 `claim_text` 开头写 `[forecast]` 前缀
+3. 预测 claim 的 `time_type="forecast"`；历史 claim（如 FY2024A "已披露收入"）的 `time_type="actual"`；该字段已由 `facts_to_claims` 贯通落盘（Plan 4 T1）
 4. meta_updates 通常留空（研报不是一手披露源）
 5. claim_text 开头可选择加 `[{institution} {publish_date}]` 前缀便于下游区分
 6. proposed_arenas 极少（研报少开新战场，除非主题就是"国产替代"等明确博弈）
