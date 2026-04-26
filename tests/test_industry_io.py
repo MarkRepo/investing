@@ -136,3 +136,54 @@ def test_filter_observations_by_segment(tmp_path):
     ], base=base)
     rows = industry_io.filter_observations_by_segment("x", "slurry", base=base)
     assert {r["id"] for r in rows} == {"a", "c"}
+
+
+def test_read_narrative_returns_skeleton_header(tmp_path):
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="y", base=base)
+    md = industry_io.read_narrative("x", "market_size", base=base)
+    assert md.startswith("# 市场规模与增长")
+
+
+def test_append_narrative_block_writes_source_section(tmp_path):
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="y", base=base)
+
+    block = "2025 年 TAM 达 33.8 亿美元。"
+    industry_io.append_narrative_block(
+        slug="x", dim="market_size", block=block,
+        source_meta={"institution": "国金证券", "date": "2026-03-10",
+                     "sha8": "abc12345", "source_id": "行研-国金证券-2026-03-10-abc12345"},
+        base=base,
+    )
+    md = industry_io.read_narrative("x", "market_size", base=base)
+    assert "### 来源 国金证券 2026-03-10 (sha8=abc12345)" in md
+    assert "source_id: 行研-国金证券-2026-03-10-abc12345" in md
+    assert "2025 年 TAM 达 33.8 亿美元" in md
+
+
+def test_append_narrative_block_append_only(tmp_path):
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="y", base=base)
+    sm = {"institution": "A", "date": "2026-01-01", "sha8": "11111111", "source_id": "s1"}
+    industry_io.append_narrative_block("x", "market_size", "first", sm, base=base)
+    sm2 = {"institution": "B", "date": "2026-02-01", "sha8": "22222222", "source_id": "s2"}
+    industry_io.append_narrative_block("x", "market_size", "second", sm2, base=base)
+    md = industry_io.read_narrative("x", "market_size", base=base)
+    idx_a = md.find("first")
+    idx_b = md.find("second")
+    assert 0 < idx_a < idx_b  # chronological order preserved
+
+
+def test_append_narrative_block_rejects_unknown_dim(tmp_path):
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="y", base=base)
+    with pytest.raises(ValueError, match="unknown"):
+        industry_io.append_narrative_block(
+            "x", "bogus_dim", "x", {"institution":"a","date":"b","sha8":"c","source_id":"d"},
+            base=base,
+        )

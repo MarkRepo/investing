@@ -227,3 +227,44 @@ def filter_observations_by_segment(
         row for row in read_observations(slug, base=base)
         if row.get("segment") == segment
     ]
+
+
+# ---------- Narrative ----------
+
+_NARRATIVE_BLOCK_TEMPLATE = """
+### 来源 {institution} {date} (sha8={sha8})
+source_id: {source_id}
+
+{block}
+"""
+
+
+def read_narrative(slug: str, dim: str, base: Path | None = None) -> str:
+    path = _narrative_path(slug, dim, base)
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
+def append_narrative_block(
+    slug: str,
+    dim: str,
+    block: str,
+    source_meta: dict,
+    base: Path | None = None,
+) -> None:
+    """Append a source-labeled block to narrative .md. source_meta must contain
+    institution / date / sha8 / source_id. Never modifies existing content."""
+    path = _narrative_path(slug, dim, base)  # raises on unknown dim
+    for key in ("institution", "date", "sha8", "source_id"):
+        if key not in source_meta:
+            raise ValueError(f"source_meta missing {key}")
+    rendered = _NARRATIVE_BLOCK_TEMPLATE.format(
+        institution=source_meta["institution"],
+        date=source_meta["date"],
+        sha8=source_meta["sha8"],
+        source_id=source_meta["source_id"],
+        block=block.rstrip(),
+    )
+    with path.open("a", encoding="utf-8") as f:
+        f.write(rendered)
