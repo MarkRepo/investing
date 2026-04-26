@@ -141,3 +141,20 @@ _fallback:
 # oversize_reason (str)
 #   触发 oversize_action 时写进 flags 的解释，给下游分析留痕。
 
+industry-generic:
+  _fallback:
+    action: extract
+    subagent: industry-digest   # single-subagent dispatch, not section-level
+    targets: [observations, narrative, proposed_arenas]
+    note: 行业研报不走 section-per-subagent；整份报告喂一个 industry-digest
+  # All listed section names are advisory — aggregator reads the whole
+  # digest output regardless of how preprocess sliced.
+  market_size:     {action: extract, subagent: industry-digest, targets: [observations, narrative]}
+  competition:     {action: extract, subagent: industry-digest, targets: [observations, narrative]}
+  value_chain:     {action: extract, subagent: industry-digest, targets: [narrative]}
+  technology:      {action: extract, subagent: industry-digest, targets: [narrative]}
+  regulation:      {action: extract, subagent: industry-digest, targets: [narrative]}
+  drivers:         {action: extract, subagent: industry-digest, targets: [narrative]}
+  lifecycle:       {action: extract, subagent: industry-digest, targets: [narrative]}
+  risks:           {action: extract, subagent: industry-digest, targets: [narrative]}
+  valuation:       {action: extract, subagent: industry-digest, targets: [narrative]}

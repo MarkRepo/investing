@@ -12,6 +12,7 @@ formats:
   a-share-quarterly: "季报-{period}-{sha8}"
   a-share-interim:   "半年报-{fiscal_year}-{sha8}"
   sell-side:         "研报-{institution}-{date}-{sha8}"
+  industry-research: "行研-{institution}-{date}-{sha8}"
 
 # 字段来源（从预处理 meta 读取哪个字段）
 field_sources:
