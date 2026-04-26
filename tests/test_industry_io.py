@@ -63,3 +63,46 @@ def test_read_meta_write_meta_roundtrip(tmp_path):
     industry_io.write_meta("x", meta, base=base)
     meta2 = industry_io.read_meta("x", base=base)
     assert meta2["linked_tickers"][0]["ticker"] == "600519"
+
+
+def test_append_observations_writes_jsonl(tmp_path):
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="y", base=base)
+    rows = [
+        {"id": "o1", "dimension": "market_size", "field": "tam_global",
+         "value": 33.8, "unit": "usd_bn", "timeframe": "2025",
+         "time_type": "actual", "metric_type": "atomic",
+         "source_id": "s1", "confidence": "high",
+         "claim_text": "2025 TAM 33.8B", "evidence": "...",
+         "extracted_by": "x", "extracted_at": "2026-04-26T00:00:00"},
+    ]
+    n = industry_io.append_observations("x", rows, base=base)
+    assert n == 1
+
+    read = industry_io.read_observations("x", base=base)
+    assert len(read) == 1
+    assert read[0]["id"] == "o1"
+    assert read[0]["value"] == 33.8
+
+
+def test_dedup_observations_keeps_highest_confidence():
+    rows = [
+        {"field": "tam_global", "timeframe": "2025", "source_id": "s1", "confidence": "low", "id": "a"},
+        {"field": "tam_global", "timeframe": "2025", "source_id": "s1", "confidence": "high", "id": "b"},
+        {"field": "tam_global", "timeframe": "2025", "source_id": "s2", "confidence": "low", "id": "c"},
+    ]
+    out = industry_io.dedup_observations(rows)
+    ids = {r["id"] for r in out}
+    # dedup on (field, timeframe, source_id); s1 keeps "high"=b, s2 keeps c
+    assert ids == {"b", "c"}
+
+
+def test_append_observations_is_additive(tmp_path):
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="y", base=base)
+    industry_io.append_observations("x", [{"id": "1", "field": "f"}], base=base)
+    industry_io.append_observations("x", [{"id": "2", "field": "g"}], base=base)
+    read = industry_io.read_observations("x", base=base)
+    assert [r["id"] for r in read] == ["1", "2"]

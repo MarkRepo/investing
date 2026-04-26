@@ -155,3 +155,56 @@ def list_industries(base: Path | None = None) -> list[dict]:
             "last_updated": meta.get("last_updated"),
         })
     return result
+
+
+# ---------- Observations ----------
+
+_CONFIDENCE_RANK = {"low": 0, "medium": 1, "high": 2}
+
+
+def read_observations(slug: str, base: Path | None = None) -> list[dict]:
+    path = _observations_path(slug, base)
+    if not path.exists():
+        return []
+    rows = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        rows.append(json.loads(line))
+    return rows
+
+
+def append_observations(
+    slug: str, rows: Iterable[dict], base: Path | None = None
+) -> int:
+    """Append rows to observations.jsonl. Returns count written."""
+    path = _observations_path(slug, base)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    count = 0
+    with path.open("a", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+            count += 1
+    return count
+
+
+def dedup_observations(rows: Iterable[dict]) -> list[dict]:
+    """Dedup on (field, timeframe, source_id); when collision, keep highest
+    confidence ('high' > 'medium' > 'low'). Rows missing any key pass through."""
+    buckets: dict[tuple, dict] = {}
+    passthrough: list[dict] = []
+    for row in rows:
+        key_parts = (row.get("field"), row.get("timeframe"), row.get("source_id"))
+        if None in key_parts:
+            passthrough.append(row)
+            continue
+        existing = buckets.get(key_parts)
+        if existing is None:
+            buckets[key_parts] = row
+            continue
+        existing_rank = _CONFIDENCE_RANK.get(existing.get("confidence", "low"), 0)
+        new_rank = _CONFIDENCE_RANK.get(row.get("confidence", "low"), 0)
+        if new_rank > existing_rank:
+            buckets[key_parts] = row
+    return list(buckets.values()) + passthrough
