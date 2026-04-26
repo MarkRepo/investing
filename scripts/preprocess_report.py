@@ -418,6 +418,59 @@ def extract_publish_date(text: str, template: dict) -> str | None:
     return None
 
 
+# --- figure_contexts (spec §4.8) ---------------------------------------------
+
+_FIGURE_CAPTION_PATTERNS = [
+    re.compile(r"^(图表?\s*\d+[:：].{0,120})$", re.MULTILINE),
+    re.compile(r"^(表\s*\d+[:：].{0,120})$", re.MULTILINE),
+    re.compile(r"^((?:Exhibit|Figure|Chart|Table)\s+\d+[:\.]\s.{0,200})$",
+               re.MULTILINE | re.IGNORECASE),
+]
+
+
+def _paragraphs(text: str) -> list[str]:
+    # Split on blank lines; strip; drop empties.
+    return [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
+
+
+def extract_figure_contexts(
+    full_text: str,
+    sections: list[dict],
+) -> list[dict]:
+    """Scan each section body for figure/table captions; for each caption emit
+    a context row with the 2 paragraphs before + 2 paragraphs after as
+    surrounding_text. No LLM — pure regex + paragraph slicing.
+    """
+    out: list[dict] = []
+    fig_counter = 0
+    for sec in sections:
+        sec_text = sec.get("text", "")
+        if not sec_text:
+            continue
+        paras = _paragraphs(sec_text)
+        for p_idx, para in enumerate(paras):
+            for pat in _FIGURE_CAPTION_PATTERNS:
+                m = pat.match(para) or pat.search(para)
+                if not m:
+                    continue
+                caption = m.group(1).strip()
+                # Surrounding: up to 2 paragraphs before and 2 after (skipping
+                # the caption paragraph itself).
+                before = paras[max(0, p_idx - 2): p_idx]
+                after = paras[p_idx + 1: p_idx + 3]
+                surrounding = "\n\n".join(before + after).strip()
+                fig_counter += 1
+                out.append({
+                    "id": f"fig-{fig_counter:03d}",
+                    "page": None,  # page tracking not yet wired; TODO in v2
+                    "caption": caption,
+                    "surrounding_text": surrounding,
+                    "section_name": sec.get("name", "UNKNOWN"),
+                })
+                break  # next paragraph
+    return out
+
+
 def build_result(
     file_path: Path,
     market: str,
@@ -446,6 +499,7 @@ def build_result(
         for s in sections
     ]
 
+    fig_contexts = extract_figure_contexts(text_full, sections)
     return {
         "meta": {
             "source_file": file_path.name,
@@ -460,6 +514,7 @@ def build_result(
             "preprocess_version": "v1",
         },
         "sections": out_sections,
+        "figure_contexts": fig_contexts,
     }
 
 
