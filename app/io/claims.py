@@ -211,7 +211,24 @@ def validate_batch(
         if not isinstance(c, dict):
             errors.append({"index": i, "errors": ["not a JSON object"], "claim": c})
             continue
-        errs = validate_claim(c, valid_ids)
+        errs = list(validate_claim(c, valid_ids))
+
+        # Optional arena_refs: list[str] of arena slugs; default []
+        arena_refs = c.get("arena_refs")
+        if arena_refs is None:
+            c["arena_refs"] = []
+        elif not isinstance(arena_refs, list) or not all(isinstance(s, str) for s in arena_refs):
+            errs.append("arena_refs must be list[str]")
+
+        # Optional company_dimension_hint: must match COMPANY_DIMENSIONS if provided
+        dim_hint = c.get("company_dimension_hint")
+        if dim_hint is not None:
+            if dim_hint not in cfg.COMPANY_DIMENSIONS:
+                errs.append(
+                    f"company_dimension_hint must be one of {cfg.COMPANY_DIMENSIONS} "
+                    f"or null, got {dim_hint!r}"
+                )
+
         if errs:
             errors.append({"index": i, "errors": errs, "claim": c})
         else:
