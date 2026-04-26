@@ -92,3 +92,22 @@ def test_preprocess_industry_technology_alias_normalized(tmp_path):
     tech_count = names.count("technology")
     # "技术演进" is in the yaml already; "技术路线对比" and "技术趋势" must also map
     assert tech_count >= 2, f"expected ≥2 technology sections, got names={names}"
+
+
+def test_dedup_toc_keeps_longest_section(tmp_path):
+    report = tmp_path / "r.md"
+    # "一、市场空间" appears twice: once in TOC (very short body), once in body
+    report.write_text(
+        "目录\n一、市场空间\n二、竞争格局\n三、技术演进\n\n"
+        "一、市场空间\n2025 年全球 CMP 抛光材料市场规模 33.8 亿美元，"
+        "CAGR 9%。产品分为抛光液和抛光垫两大类。\n\n"
+        "二、竞争格局\n龙头 Dupont 市占 75%。\n",
+        encoding="utf-8",
+    )
+    out = tmp_path / "out.json"
+    pre.main([str(report), "--type", "industry", "--market", "a-share", "--out", str(out)])
+    data = json.loads(out.read_text(encoding="utf-8"))
+    market_size = [s for s in data["sections"] if s["name"] == "market_size"]
+    # _dedupe_toc keeps the one with longest body
+    assert len(market_size) == 1
+    assert "33.8" in market_size[0]["text"]
