@@ -137,3 +137,203 @@ shutil.copyfile(file_path, dst)
 幂等：同名文件存在会被覆盖（同 `save_source_markdown` 行为）。
 
 ---
+
+## Step 5：Digest dispatch（单 subagent，整份报告）
+
+### 5a：准备 subagent context
+
+主 agent 组装 digest subagent 的完整 prompt：
+
+```python
+import json
+from pathlib import Path
+from app.io import arenas as arenas_io, industry as industry_io, claims as claims_io
+
+# 5a.1 拼接整份报告文本（所有 action=extract 的 section 按 order 串起）
+preprocess = json.loads(Path(f"/tmp/ingest-{sha8}.sections.json").read_text())
+full_text_chunks = []
+for s in preprocess["sections"]:
+    if s.get("action") == "extract":
+        full_text_chunks.append(f"### {s['heading_raw']}\n\n{s['text']}")
+full_text = "\n\n".join(full_text_chunks)
+
+# 5a.2 已知 arenas（同 industry 的）
+known_arenas_same_industry = [
+    arenas_io.read_definition(slug)
+    for slug in arenas_io.find_by_industry(industry_slug)
+]
+known_arenas = [
+    {
+        "slug": a["slug"],
+        "battleground_focus": a.get("battleground_focus", ""),
+        "participants": [p.get("name") or p.get("ticker") for p in a.get("participants", [])],
+        "industry": industry_slug,
+    }
+    for a in known_arenas_same_industry
+]
+
+# 5a.3 dimension_ref / industry_fields_hint（来自 app.config）
+from app import config as cfg
+dimension_ref = {
+    "industry": list(cfg.INDUSTRY_DIMENSIONS),
+    "arena":    list(cfg.ARENA_DIMENSIONS),
+    "company":  list(cfg.COMPANY_DIMENSIONS),
+}
+industry_fields_hint = cfg.INDUSTRY_FIELDS  # Plan 1 定义
+
+# 5a.4 figure_contexts / detected_tickers（preprocess 直接出）
+figure_contexts = preprocess.get("figure_contexts", [])
+detected_tickers = preprocess.get("detected_tickers", [])
+
+# 5a.5 subjects_whitelist（给 company key_fact 的 subject_tag_hint 用）
+subjects_whitelist = [s["id"] for s in claims_io.load_subjects()]
+
+# 5a.6 industry_context
+industry_meta = industry_io.read_meta(industry_slug)
+industry_context = {"slug": industry_slug, "name": industry_meta.get("name")}
+```
+
+### 5b：Dispatch
+
+读 `.claude/skills/ingest/prompts/digest/_common.md` + `prompts/digest/industry-digest.md`，拼成最终 prompt：
+
+```python
+digest_common = Path(".claude/skills/ingest/prompts/digest/_common.md").read_text()
+digest_industry = Path(".claude/skills/ingest/prompts/digest/industry-digest.md").read_text()
+
+def _indent(text: str, prefix: str = "  ") -> str:
+    return "\n".join(prefix + ln for ln in text.splitlines())
+
+prompt = f"""
+{digest_common}
+
+---
+
+{digest_industry}
+
+---
+
+## 你本次要处理的输入
+
+file_meta:
+  source_id: {source_id}
+  institution: {institution}
+  publish_date: {publish_date}
+  sha8: {sha8}
+
+industry_context: {json.dumps(industry_context, ensure_ascii=False)}
+
+known_arenas: {json.dumps(known_arenas, ensure_ascii=False, indent=2)}
+
+dimension_ref: {json.dumps(dimension_ref, ensure_ascii=False)}
+
+industry_fields_hint: {json.dumps(industry_fields_hint, ensure_ascii=False, indent=2)}
+
+subjects_whitelist: {json.dumps(subjects_whitelist, ensure_ascii=False)}
+
+figure_contexts: {json.dumps(figure_contexts, ensure_ascii=False, indent=2)}
+
+detected_tickers: {json.dumps(detected_tickers, ensure_ascii=False, indent=2)}
+
+full_text: |
+{_indent(full_text, "  ")}
+
+---
+
+现在请输出严格 JSON（顶层 keys: key_facts, narratives, proposed_arenas, flags；见 _common.md schema）。
+"""
+```
+
+**派单**（用 Agent 工具，`subagent_type = "Explore"`；只读，无写权限；即便 prompt 很长 >50K 字也一次派，不分段——digest 的前提就是一次读完整份报告）：
+
+```
+tool: Agent
+subagent_type: Explore
+prompt: <上面拼好的 prompt>
+```
+
+**并发**：行研只有一个 digest subagent，无并发问题。若 subagent 返回超时（>10min），AskUserQuestion 问是继续等 / 重派 / 中止。
+
+### 5c：拒绝产出 section 级并行
+
+**不要**回退到 section-per-subagent 模式（即使 digest 超时或报错）。研报总字数通常 30K-60K 字，远在 Opus 上下文范围内。失败 → 让用户用更窄的报告版本重 ingest，或手动切页数后重试。这是 fix-forward 的体现。
+
+---
+
+## Step 6：主 agent 汇总 + JSON 解析容错
+
+```python
+from scripts import ingest_aggregate as agg
+
+raw_output = subagent_result   # str, subagent 返回的整段文字
+digest = agg.load_json_tolerant(raw_output)
+# load_json_tolerant 会剥掉 ```json fence、处理尾随逗号等容错
+```
+
+**健康检查**（失败 → pause）：
+
+```python
+required_keys = {"key_facts", "narratives", "proposed_arenas", "flags"}
+missing = required_keys - set(digest.keys())
+if missing:
+    # AskUserQuestion: digest 返回 JSON 缺 {missing}。选项：重派 digest / 继续但跳过该字段 / 中止
+    ...
+```
+
+**把 digest 落盘到 `/tmp/ingest-{sha8}.digest.json`**（Step 10.5 QA 消费）：
+
+```python
+Path(f"/tmp/ingest-{sha8}.digest.json").write_text(
+    json.dumps(digest, ensure_ascii=False, indent=2), encoding="utf-8"
+)
+```
+
+---
+
+## Step 7：按 target_layer 分三桶
+
+```python
+buckets = agg.route_key_facts(digest["key_facts"])
+# buckets = {"industry": [...], "arena": [...], "company": [...]}
+```
+
+**预期分布**（行研）：
+- `industry`：50-70% 的 key_facts（TAM / competition / drivers / ...）
+- `arena`：15-25%
+- `company`：10-25%
+- 少量 `cross` 会被同时放进 `industry` 和 `company` 两桶
+
+若某桶异常（如 `industry` 桶 0 条），在最终报告里打 flag；但不阻塞流程。
+
+---
+
+## Step 8：公司 layer 的 autobuild pass
+
+digest 返回的 `company` 桶里每个 fact 带 `target_refs.ticker` + `target_refs.market`。对每个唯一 (ticker, market)：
+
+```python
+company_facts = agg.group_company_facts(digest["key_facts"])
+# {(ticker, market): [facts]}
+
+for (ticker, market), facts in company_facts.items():
+    # 从 facts[0] 或 detected_tickers 里推 company 显示名
+    ticker_info = next((t for t in detected_tickers
+                        if t["ticker"] == ticker and t["market"] == market), {})
+    name = ticker_info.get("name") or f"{market}_{ticker}"
+
+    # industry_slugs 至少含本次的 industry_slug
+    result = agg.ensure_company_exists(
+        ticker=ticker, market=market, name=name,
+        industry_slugs=[industry_slug],
+        currency="CNY" if market in ("SSE", "SZSE", "BSE") else "USD",
+    )
+    if result["autobuilt"]:
+        # 告知用户："已建 companies/{market}_{ticker}/（骨架）"；
+        # name 不准可后续 /edit-meta 改
+```
+
+**注意**：`ensure_company_exists` 不问用户 sector（行研没有好的 sector 判据）；meta.md 的 sector 字段留默认空，等后续 ingest 年报 / 研报时再由那时的 workflow 用 AskUserQuestion 补。
+
+若用户不希望静默建公司骨架，可在 autobuild 前 AskUserQuestion 列出候选公司 + 让用户批量选择 / 排除。默认行为是静默建（减少用户打扰）。
+
+---
