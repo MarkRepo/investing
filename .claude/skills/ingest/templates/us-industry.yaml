@@ -1,0 +1,46 @@
+form: industry-research-us
+
+form_detection:
+  positive:
+    - Industry\s+(Report|Outlook|Primer|Deep\s+Dive)
+    - Sector\s+(Report|Outlook|Primer)
+    - Market\s+Outlook
+    - Thematic\s+Report
+  negative:
+    - Form\s+10-K
+    - Form\s+10-Q
+
+section_detection:
+  patterns:
+    - '^\d+[\.)]\s+(.+)$'
+    - '^##\s+(.+)$'
+
+section_normalize:
+  Market\ Size: market_size
+  TAM: market_size
+  Competitive\ Landscape: competition
+  Value\ Chain: value_chain
+  Technology: technology
+  Regulation: regulation
+  Risk\ Factors: risks
+  Valuation: valuation
+  Lifecycle: lifecycle
+  Growth\ Drivers: drivers
+
+_section_fallback: null
+
+skip_rules:
+  sections:
+    - HEADER
+    - disclaimer
+    - analyst_bio
+    - rating_definition
+
+institution_extraction:
+  patterns:
+    - '(Goldman\s+Sachs|Morgan\s+Stanley|JPMorgan|J\.P\.\s+Morgan|Credit\s+Suisse|UBS|Barclays|Citi|Citigroup|Deutsche\s+Bank|HSBC|BofA|Bank\s+of\s+America|Jefferies|Evercore|Wells\s+Fargo|Baird|Cowen|Piper\s+Sandler)'
+
+publish_date_extraction:
+  patterns:
+    - '(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),?\s+(\d{4})'
+    - '(\d{4})-(\d{1,2})-(\d{1,2})'
