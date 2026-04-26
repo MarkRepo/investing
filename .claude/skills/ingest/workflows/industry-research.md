@@ -9,7 +9,7 @@
 3. **不写 profile**：profile 是单公司事实层快照，与行业无关。
 4. **arena 是"主要来源"**：行研里的"国产替代 / 技术路线之争 / 龙头挑战"等章节是 arena 的最大催化源。`proposed_arenas` 由 digest 直接产出，主 agent 审用户后 `bootstrap_arena` 落盘，无需复用单公司 Step 4.5 的流程。
 5. **company layer 是 opportunistic**：研报里每个被提到 ≥3 句话的 ticker 产 ≥1 条 company key_fact，公司缺失则 `ensure_company_exists` 自动建骨架。
-6. **QA 只跑 warn（read-only 预览），不跑 gap**：行研不绑单一 company，`ingest_qa gap --company` 无意义；`--write` 依赖 `industry:` scope 前缀（Plan 4 实现），当前只做 stdout 预览。
+6. **QA 只跑 warn，不跑 gap**：行研不绑单一 company，`ingest_qa gap --company` 无意义。Plan 4 T3 起 `--write --scope industry:{slug}` 落盘到 `industries/{slug}/qa_warnings.jsonl`。
 
 ---
 
@@ -539,9 +539,11 @@ if changed:
 
 ---
 
-## Step 10.5：QA checkpoint（行研精简版：只做 read-only 预览）
+## Step 10.5：QA checkpoint（行研精简版：落盘到 industry scope）
 
-行研不绑单一 company，`ingest_qa gap --company` 无意义；`--write` 依赖 `industry:{slug}` scope 前缀（当前 `app/io/qa.py` 未实现，Plan 4 scope）。本版只跑 `warn` **不带 `--write`**，stdout 预览给用户看即可。
+行研不绑单一 company，`ingest_qa gap --company` 无意义。Plan 4 T3 起
+`app/io/qa.py` 支持 `scope='industry:{slug}'`，本 step 落盘到
+`industries/{industry_slug}/qa_warnings.jsonl`。
 
 **凑一份兼容 merged.json**（现有 `scripts.ingest_qa warn` 的 `--merged` 参数期望 v1 aggregate 结构；digest 模式下没有现成的 merge 产物，主 agent 手凑）：
 
@@ -565,14 +567,14 @@ Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
 ```bash
 .venv/bin/python -m scripts.ingest_qa warn \
     --merged /tmp/ingest-{sha8}.merged.json \
-    --preprocess /tmp/ingest-{sha8}.sections.json
-# 注：不带 --write / --scope。输出只打到 stdout 给用户预览
+    --preprocess /tmp/ingest-{sha8}.sections.json \
+    --write --scope industry:{industry_slug}
+# stdout 预览 + 落盘到 industries/{industry_slug}/qa_warnings.jsonl
 ```
 
 **不跑 `gap`**，也**不用 `--arena`**（行研常触多 arena，挑一个没意义）。
 
-**未来扩展**（Plan 4）：
-- `app/io/qa.py` 支持 `scope='industry:{slug}'`；行研可以 `--write` 到 `industries/{slug}/qa_warnings.jsonl`
+**未来扩展**：
 - 行研专属规则：`figure_without_observation` / `arena_proposed_but_no_narrative` / `tam_unit_mismatch` / `dup_observation_across_institutions`
 
 ---
@@ -589,7 +591,7 @@ Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
 {✓|⊘} companies/{...} (autobuild)                   {k_auto_company} 家骨架 / 无
 {✓|⊘} companies/{key}/narratives/*.md              +{n_nar_comp} dim
 {✓|⊘} companies/{key}/claims.jsonl                 +{total_claims} 条 (source_id={source_id})
-⊘ qa_warnings                                      仅 stdout 预览（Plan 4 再支持 industry scope --write）
+✓ industries/{industry_slug}/qa_warnings.jsonl     +{n_qa} 条（rule 分布见 stdout 预览）
 ⊘ qa_gaps                                          行研不跑（无单一 company 绑定）
 ⊘ financials.db                                     行研不写
 ⊘ profile-*.md                                     行研不写
@@ -601,7 +603,7 @@ Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
 图表覆盖率：{fact_count_from_figures}/{n_fig} 图表产出 observation
 
 下一步建议：
-- 查看行业视图：`/industries/{industry_slug}` （Plan 4 加此路由）
+- 查看行业视图：`/industries/{industry_slug}`
 - 查看新建 arena 的认知库：`arenas/{slug}/`
 - 对照 detected_tickers 补 ingest 这些公司的年报 / 研报
 - 行研 flags：
