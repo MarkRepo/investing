@@ -255,7 +255,75 @@ def route_key_facts(key_facts: list[dict]) -> dict[str, list[dict]]:
     return out
 
 
-# ---------- Cross-checks ----------------------------------------------------
+def fact_to_observation(
+    fact: dict,
+    source_meta: dict,
+    *,
+    extracted_by: str,
+    extracted_at: str,
+) -> dict:
+    """Map a digest key_fact (target_layer=industry) to an observations.jsonl row
+    matching spec §4.2 schema.
+    """
+    slug = (fact.get("target_refs") or {}).get("industry_slug", "")
+    # ID: first 3 chars of slug after any "cn-"/"us-" prefix
+    # For "cn-cmp-material", we want "cmp"
+    slug_no_geo = re.sub(r"^(cn|us|uk|de|fr|jp|in|br)-", "", slug)
+    first_segment = slug_no_geo.split("-")[0]
+    prefix = re.sub(r"[^a-z]", "", first_segment)[:3] or "obs"
+    # Use fact idx + source sha8 for deterministic local id.
+    obs_id = f"{prefix}-{source_meta.get('sha8', '')}-{fact.get('idx', 0):04d}"
+    return {
+        "id": obs_id,
+        "dimension": fact.get("dimension_hint"),
+        "field": fact.get("field_hint"),
+        "value": fact.get("value_numeric"),
+        "unit": fact.get("unit"),
+        "timeframe": fact.get("timeframe"),
+        "time_type": fact.get("time_type", "actual"),
+        "metric_type": fact.get("metric_type", "atomic"),
+        "segment": fact.get("segment"),
+        "arena_refs": fact.get("arena_refs") or [],
+        "source_id": source_meta["source_id"],
+        "source_file": source_meta.get("source_file"),
+        "source_note": source_meta.get("source_note"),
+        "confidence": fact.get("confidence", "medium"),
+        "claim_text": fact.get("fact_text"),
+        "evidence": fact.get("evidence_quote"),
+        "extracted_by": extracted_by,
+        "extracted_at": extracted_at,
+    }
+
+
+def write_industry_observations(
+    facts: list[dict],
+    source_meta: dict,
+    *,
+    extracted_by: str,
+    extracted_at: str,
+    base: Path | None = None,
+) -> int:
+    """Convert digest facts → observation rows, dedup, append per-slug.
+    Returns total rows written across all slugs.
+    """
+    from app.io import industry as industry_io  # lazy: avoid circular
+
+    by_slug: dict[str, list[dict]] = {}
+    for f in facts:
+        refs = f.get("target_refs") or {}
+        slug = refs.get("industry_slug")
+        if not slug:
+            continue
+        by_slug.setdefault(slug, []).append(fact_to_observation(
+            f, source_meta, extracted_by=extracted_by, extracted_at=extracted_at,
+        ))
+
+    total = 0
+    for slug, rows in by_slug.items():
+        rows = industry_io.dedup_observations(rows)
+        total += industry_io.append_observations(slug, rows, base=base)
+    return total
+
 
 
 def _extract_money_usd(text: str) -> float | None:
