@@ -96,6 +96,8 @@ def create_company(
         env.get_template("profile-YYYY.md.tmpl").render(**ctx)
     )
 
+    _ensure_narrative_skeletons(ticker, market, name, base)
+
     return out_dir
 
 
@@ -357,3 +359,70 @@ def list_companies(base: Path | None = None) -> list[dict]:
             }
         )
     return out
+
+
+# ---------- Narrative (8-dim, spec §4.1) ----------
+
+_COMPANY_CN_TITLES = {
+    "business_model": "业务模式",
+    "moat": "护城河与竞争策略",
+    "growth_engine": "增长引擎与未来规划",
+    "management": "管理层与治理",
+    "financial_profile": "财务分析",
+    "catalysts": "关键事件与催化剂",
+    "risks": "风险",
+    "valuation": "估值",
+}
+
+_COMPANY_NARRATIVE_TEMPLATE = """
+### 来源 {institution} {date} (sha8={sha8})
+source_id: {source_id}
+
+{block}
+"""
+
+
+def _narratives_dir(ticker: str, market: str, base: Path | None) -> Path:
+    return _company_dir(ticker, market, base) / "narratives"
+
+
+def _narrative_path(ticker: str, market: str, dim: str, base: Path | None) -> Path:
+    if dim not in cfg.COMPANY_DIMENSIONS:
+        raise ValueError(f"unknown company dim {dim!r}; must be one of {cfg.COMPANY_DIMENSIONS}")
+    return _narratives_dir(ticker, market, base) / f"{dim.replace('_', '-')}.md"
+
+
+def _ensure_narrative_skeletons(ticker: str, market: str, name: str, base: Path | None) -> None:
+    narr_dir = _narratives_dir(ticker, market, base)
+    narr_dir.mkdir(exist_ok=True)
+    for dim in cfg.COMPANY_DIMENSIONS:
+        path = _narrative_path(ticker, market, dim, base)
+        if not path.exists():
+            header = f"# {_COMPANY_CN_TITLES[dim]} · {name}\n\n*{market}_{ticker} · 维度: {dim}*\n\n"
+            path.write_text(header, encoding="utf-8")
+
+
+def read_narrative(ticker: str, market: str, dim: str, base: Path | None = None) -> str:
+    path = _narrative_path(ticker, market, dim, base)
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
+def append_narrative_block(
+    ticker: str, market: str, dim: str, block: str,
+    source_meta: dict, base: Path | None = None,
+) -> None:
+    path = _narrative_path(ticker, market, dim, base)
+    for key in ("institution", "date", "sha8", "source_id"):
+        if key not in source_meta:
+            raise ValueError(f"source_meta missing {key}")
+    rendered = _COMPANY_NARRATIVE_TEMPLATE.format(
+        institution=source_meta["institution"],
+        date=source_meta["date"],
+        sha8=source_meta["sha8"],
+        source_id=source_meta["source_id"],
+        block=block.rstrip(),
+    )
+    with path.open("a", encoding="utf-8") as f:
+        f.write(rendered)
