@@ -174,6 +174,7 @@ def write_definition(
     if not text.endswith("\n"):
         text += "\n"
     path.write_text(text, encoding="utf-8")
+    _ensure_narrative_skeletons(slug, fm.get("name") or slug, base)
     return path
 
 
@@ -638,3 +639,67 @@ def company_summary(
             }
         )
     return out
+
+
+# ---------- Narrative (6-dim, spec §4.1) ----------
+
+_ARENA_NARRATIVE_TEMPLATE = """
+### 来源 {institution} {date} (sha8={sha8})
+source_id: {source_id}
+
+{block}
+"""
+
+_ARENA_CN_TITLES = {
+    "definition": "战场定义与博弈焦点",
+    "participants": "参与者与相对位置",
+    "decisive_factors": "博弈规则与胜负手",
+    "trajectory": "演进轨迹与触发事件",
+    "narratives": "多空叙事",
+    "investment_view": "决策启示",
+}
+
+
+def _arena_narrative_path(slug: str, dim: str, base: Path | None) -> Path:
+    if dim not in cfg.ARENA_DIMENSIONS:
+        raise ValueError(f"unknown arena dim {dim!r}; must be one of {cfg.ARENA_DIMENSIONS}")
+    if dim == "definition":
+        return _definition_path(slug, base)
+    return _arena_dir(slug, base) / f"{dim.replace('_', '-')}.md"
+
+
+def _ensure_narrative_skeletons(slug: str, name: str, base: Path | None) -> None:
+    """Create 5 narrative .md skeletons (excluding definition.md) if missing."""
+    for dim in cfg.ARENA_DIMENSIONS:
+        if dim == "definition":
+            continue
+        path = _arena_narrative_path(slug, dim, base)
+        if not path.exists():
+            header = f"# {_ARENA_CN_TITLES[dim]} · {name}\n\n*slug: {slug} · 维度: {dim}*\n\n"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(header, encoding="utf-8")
+
+
+def read_narrative(slug: str, dim: str, base: Path | None = None) -> str:
+    path = _arena_narrative_path(slug, dim, base)
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
+def append_narrative_block(
+    slug: str, dim: str, block: str, source_meta: dict, base: Path | None = None
+) -> None:
+    path = _arena_narrative_path(slug, dim, base)
+    for key in ("institution", "date", "sha8", "source_id"):
+        if key not in source_meta:
+            raise ValueError(f"source_meta missing {key}")
+    rendered = _ARENA_NARRATIVE_TEMPLATE.format(
+        institution=source_meta["institution"],
+        date=source_meta["date"],
+        sha8=source_meta["sha8"],
+        source_id=source_meta["source_id"],
+        block=block.rstrip(),
+    )
+    with path.open("a", encoding="utf-8") as f:
+        f.write(rendered)
