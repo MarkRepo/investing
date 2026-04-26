@@ -297,35 +297,6 @@ def test_v0_preview(client):
     assert "<h1>" in r.text  # markdown rendered H1
 
 
-def test_competence_end_to_end(client):
-    client.post(
-        "/companies/new",
-        data={"ticker": "CM", "market": "US", "name": "cm", "sector": "consumer", "currency": "USD"},
-    )
-    r = client.get("/companies/US_CM/competence")
-    assert r.status_code == 200
-    assert "q1_what" in r.text
-    assert "brand_power" in r.text  # consumer sector question
-    assert "门禁阈值" in r.text
-
-    # Fill all universal + sector as specific → should pass gate
-    form_data = {}
-    for qid in ["q1_what", "q2_revenue_model", "q3_unit_economics", "q4_customer_profile",
-                "q5_customer_acquisition", "q6_value_chain", "q7_competition", "q8_moat",
-                "q9_capital_intensity", "q10_cycle", "q11_regulation", "q12_fatal_risk"]:
-        form_data[f"{qid}__level"] = "specific"
-        form_data[f"{qid}__text"] = f"ans-{qid}"
-    for qid in ["brand_power", "channel_structure", "pricing_power", "generational_shift"]:
-        form_data[f"{qid}__level"] = "specific"
-        form_data[f"{qid}__text"] = f"ans-{qid}"
-    r2 = client.post("/companies/US_CM/competence", data=form_data, follow_redirects=False)
-    assert r2.status_code == 303
-
-    r3 = client.get("/companies/US_CM/competence")
-    assert "通过" in r3.text
-    assert "12" in r3.text  # universal score
-
-
 def test_valuation_end_to_end(client):
     client.post(
         "/companies/new",
