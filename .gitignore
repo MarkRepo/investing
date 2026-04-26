@@ -18,6 +18,9 @@ __pycache__/
 # pytest
 .pytest_cache/
 
+# claude worktrees (local-only)
+.claude/worktrees/
+
 # V1 runtime data (local only)
 data/*.db
 data/*.csv
