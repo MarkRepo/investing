@@ -597,3 +597,57 @@ def group_company_facts(facts: list[dict]) -> dict[tuple[str, str], list[dict]]:
             continue
         groups.setdefault((refs["ticker"], refs["market"]), []).append(f)
     return groups
+
+
+def ensure_industry_exists(
+    *, slug: str, name: str, scope: str = "", base: Path | None = None,
+) -> dict:
+    """If industry slug dir missing → create it via industry_io.create_industry.
+    Returns {slug, autobuilt: bool}. Caller (main agent) can surface
+    autobuilt=True to the user ('I just made a new industry slug for you').
+    """
+    from app.io import industry as industry_io
+
+    try:
+        industry_io.read_meta(slug, base=base)
+        return {"slug": slug, "autobuilt": False}
+    except FileNotFoundError:
+        industry_io.create_industry(slug=slug, name=name, scope=scope, base=base)
+        return {"slug": slug, "autobuilt": True}
+
+
+def ensure_company_exists(
+    *, ticker: str, market: str, name: str,
+    industry_slugs: list[str] | None = None,
+    currency: str = "USD",
+    base: Path | None = None,
+) -> dict:
+    """If companies/{market}_{ticker}/ missing → create via
+    company_io.create_company. Returns {key, autobuilt}.
+
+    Note: base param is treated as the companies directory itself (not project root).
+    Internally we convert it to project root for create_company compatibility.
+    """
+    from app.io import company as company_io
+
+    key = f"{market}_{ticker}"
+    companies_dir = base if base else company_io.cfg.COMPANIES_DIR
+    dir_path = companies_dir / key
+
+    # Check if company already exists. Also check for the case where someone called
+    # create_company(base=companies_dir) directly, which would create it at
+    # companies_dir/companies/key due to create_company's internal logic.
+    if dir_path.exists():
+        return {"key": key, "autobuilt": False}
+    if (companies_dir / "companies" / key).exists():
+        return {"key": key, "autobuilt": False}
+
+    # create_company expects base= as project root, but our caller passes companies_dir.
+    # So we need to pass the parent directory to create_company.
+    project_root = companies_dir.parent if base else None
+    company_io.create_company(
+        ticker=ticker, market=market, name=name,
+        industry_slugs=industry_slugs or [],
+        currency=currency, base=project_root,
+    )
+    return {"key": key, "autobuilt": True}
