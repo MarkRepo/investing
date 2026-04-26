@@ -89,9 +89,16 @@ def test_preprocess_industry_technology_alias_normalized(tmp_path):
     pre.main([str(report), "--type", "industry", "--market", "a-share", "--out", str(out)])
     data = json.loads(out.read_text(encoding="utf-8"))
     names = [s["name"] for s in data["sections"]]
-    tech_count = names.count("technology")
-    # "技术演进" is in the yaml already; "技术路线对比" and "技术趋势" must also map
-    assert tech_count >= 2, f"expected ≥2 technology sections, got names={names}"
+    # All three aliases must normalize to `technology`; none should leak as UNKNOWN_N.
+    # After dedup_toc (regression-locked in Task 20) multiple same-name sections
+    # collapse to the longest body — so we don't assert count, we guarantee:
+    #   (a) at least one `technology` section exists
+    #   (b) no UNKNOWN sections — every alias was mapped by section_normalize
+    assert "technology" in names, f"expected a technology section, got names={names}"
+    assert not any(n.startswith("UNKNOWN") for n in names), (
+        f"aliases leaked as UNKNOWN — add them to a-share-industry.yaml "
+        f"section_normalize; got names={names}"
+    )
 
 
 def test_dedup_toc_keeps_longest_section(tmp_path):
