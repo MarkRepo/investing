@@ -328,3 +328,35 @@ def list_sources(ticker: str, market: str, base: Path | None = None) -> list[dic
             continue
         out.append({"name": p.name, "size": p.stat().st_size, "path": str(p)})
     return out
+
+
+def filter_by_arena(arena_slug: str, base: Path | None = None) -> list[dict]:
+    """Scan all companies' claims.jsonl, return claims whose arena_refs contains arena_slug."""
+    from app.io import company as company_io  # lazy to avoid circular  # noqa: F401
+
+    companies_dir = (Path(base) / "companies") if base else cfg.COMPANIES_DIR
+    result: list[dict] = []
+    if not companies_dir.exists():
+        return []
+    for company_dir in sorted(companies_dir.iterdir()):
+        if not company_dir.is_dir() or "_" not in company_dir.name:
+            continue
+        market, ticker = company_dir.name.split("_", 1)
+        try:
+            claims = read_claims(ticker, market, base=base)
+        except Exception:
+            continue
+        for c in claims:
+            if arena_slug in (c.get("arena_refs") or []):
+                result.append(c)
+    return result
+
+
+def filter_by_company_dimension(
+    ticker: str, market: str, dim: str, base: Path | None = None
+) -> list[dict]:
+    """Return claims for given company whose company_dimension_hint == dim."""
+    if dim not in cfg.COMPANY_DIMENSIONS:
+        raise ValueError(f"unknown company dim {dim!r}")
+    return [c for c in read_claims(ticker, market, base=base)
+            if c.get("company_dimension_hint") == dim]
