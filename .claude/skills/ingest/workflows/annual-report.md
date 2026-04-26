@@ -424,75 +424,194 @@ issues = {
 
 ## Step 10：统一写入（前一步失败整体中止）
 
-按顺序（claims 最后写，因为要等 source 已落）：
-
-1. **原文落 `sources/`**（Step 6 已做）
-
-2. **写 financials**：
-   ```python
-   n_fin = agg.write_financials(
-       ticker, merged["financial_rows"],
-       source_file=Path(file_path).name,
-   )
-   ```
-   `write_financials` 内部把 `FY2025` → `2025A`，处理 None 列，调 `fin_io.import_financials_csv`。
-
-3. **输出 profile 草稿给用户审**：
-   - 构造 profile markdown（frontmatter: ticker/market/year/source_file=filename/source="annual report"/profile_date=今天）
-   - 把完整草稿打印到对话
-   - AskUserQuestion：「已产出 profile-{year}.md 草稿，请审阅后确认：是否落盘（`reviewed: true`）？」
-   - 同意 → `company_io.write_profile(ticker, market, fiscal_year_int, fm, body)`
-   - 拒绝或修改 → 把修改意见吸收，重新出草稿再问；或直接跳过 profile 写入
-
-4. **写 claims**：
-   ```python
-   from datetime import datetime, timezone
-   n, errors = agg.write_claims(
-       ticker, market, merged["claims"],
-       source_id=source_id,
-       source_file=Path(file_path).name,
-       extracted_by="claude-opus-4-7",
-       extracted_at=datetime.now(timezone.utc).isoformat(timespec="seconds"),
-   )
-   if errors:
-       # 报给用户，建议回 Step 7 重抽有问题的 section；不做部分写入
-       ...
-   ```
-   **不要**自己 `json.dumps({"header": ..., "claims": ...})` 然后调 `validate_batch`——`parse_batch_json` 期望 header 字段**平铺在顶层**，嵌套 `"header"` key 会被当成 unknown field 静默丢弃（历史上造成过整批 `source_id = None` 的审计断链）。`build_claims_batch` / `write_claims` 替你做对了这件事。
-
-5. **meta 更新建议**：
-   - `merged["meta_updates"]` 非空 → 打印给用户，AskUserQuestion 是否 apply
-   - 同意 →
-     ```python
-     info = company_io.read_meta_with_body(ticker, market)   # returns {frontmatter, body, exists}
-     fm = {**info["frontmatter"], **merged["meta_updates"]}
-     company_io.write_meta(ticker, market, fm, info["body"])
-     ```
-     注意 `read_meta(...)` 只返回 frontmatter dict；需要同时拿到 body 必须用 `read_meta_with_body(...)`——别写 `fm, body = read_meta(...)`，会抛 `too many values to unpack`。
-   - 默认拒绝：meta.md 保持 Step 2b 建的 placeholder
-
-6. **competence 写入**（审阅后，和研报一致）：
+写入顺序：原文 → financials → industry observations → figure_contexts → narratives(industry → arena → company) → proposed_arenas bootstrap → meta → claims → competence。
 
 ```python
-from app.io import arenas as arenas_io
+from datetime import datetime, timezone
+from app.io import arenas as arenas_io, industry as industry_io
 
-findings = merged.get("competence_findings", {"answered": [], "proposed_additions": []})
+extracted_by = "claude-opus-4-7"
+extracted_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+source_meta = {
+    "source_id": source_id,
+    "source_file": Path(file_path).name,
+    "sha8": sha8,
+    "institution": "company-primary",   # 年报一手披露
+    "date": meta.get("reporting_period", ""),
+}
+```
+
+### 10.1 原文（Step 6 已做）
+
+### 10.2 financials（年报主产物）
+
+```python
+n_fin = agg.write_financials(
+    ticker, digest.get("financial_rows", []),
+    source_file=Path(file_path).name,
+)
+```
+
+`write_financials` 内部把 `FY2025` → `2025A`，处理 None 列，调 `fin_io.import_financials_csv`。
+
+### 10.3 industry observations（若 digest 产了 industry 桶）
+
+年报里 digest 可能抽到"公司视角的行业事实"（TAM / market_share / 竞争格局），会被 `route_key_facts` 放进 `buckets["industry"]`：
+
+```python
+n_obs = agg.write_industry_observations(
+    buckets["industry"],
+    source_meta,
+    extracted_by=extracted_by,
+    extracted_at=extracted_at,
+)
+```
+
+**industry_slug 完整性检查**：若 digest 引用了一个公司 meta 里没有 + `industries/` 下不存在的 slug（hallucinate），不走 `ensure_industry_exists`（需要 name/scope 用户拍板，不静默建）；策略：把该 observation 从 `buckets["industry"]` 剔除放进 flags。
+
+```python
+missing_slugs = []
+for f in list(buckets["industry"]):
+    slug = (f.get("target_refs") or {}).get("industry_slug")
+    if not slug:
+        continue
+    try:
+        industry_io.read_meta(slug)
+    except FileNotFoundError:
+        missing_slugs.append((f["idx"], slug))
+        buckets["industry"].remove(f)
+# missing_slugs 记入最终 flags 给用户看
+```
+
+### 10.4 figure_contexts
+
+年报的 `figure_contexts` 通常较少（IR 图表），按 industry_slug 分组归档：
+
+```python
+slugs_touched = {
+    (f.get("target_refs") or {}).get("industry_slug")
+    for f in buckets["industry"]
+}
+n_fig_total = 0
+for slug in slugs_touched:
+    if not slug:
+        continue
+    n_fig_total += agg.write_figure_contexts(
+        slug=slug,
+        contexts=figure_contexts,
+        source_meta=source_meta,
+    )
+```
+
+### 10.5 industry narratives（年报补充，confidence=medium）
+
+```python
+ind_nar = digest["narratives"].get("industry", {})
+# 若 shape 是 {dim: block}，wrap 到单 slug（公司第一个绑定的 industry）
+first_keys = set(ind_nar.keys()) if ind_nar else set()
+dim_set = set(cfg.INDUSTRY_DIMENSIONS)
+
+if first_keys and first_keys.issubset(dim_set) and company_context["industry_slugs"]:
+    ind_nar_payload = {company_context["industry_slugs"][0]: ind_nar}
+else:
+    ind_nar_payload = ind_nar
+n_nar_ind = agg.write_industry_narrative(ind_nar_payload, source_meta)
+```
+
+### 10.6 proposed_arenas bootstrap（写 arena narrative 前）
+
+```python
+proposals = agg.propose_arena_bootstrap(digest.get("proposed_arenas", []))
+# AskUserQuestion 审阅（approve 全部 / 部分 / 改 slug / 全拒）
+approved_proposals = [...]
+
+for p in approved_proposals:
+    agg.bootstrap_arena(p)
+    # 追加到公司 meta 的 arenas 内存映像，便于下步 write_meta 同步
+    company_context["arenas"].append(p["slug"])
+```
+
+### 10.7 arena narratives（已存在 + 新 bootstrap 的）
+
+```python
+arena_nar = digest["narratives"].get("arena", {})
+all_arena_slugs = set(company_context["arenas"])
+arena_nar_to_write = {k: v for k, v in arena_nar.items() if k in all_arena_slugs}
+n_nar_arena = agg.write_arena_narrative(arena_nar_to_write, source_meta)
+```
+
+### 10.8 company narratives（替代旧 profile-*.md）
+
+```python
+comp_nar = digest["narratives"].get("company", {})
+# shape: {"MARKET_TICKER": {dim: md_block}, ...}；本公司 key 是 f"{market}_{ticker}"
+n_nar_comp = agg.write_company_narrative(comp_nar, source_meta)
+```
+
+**注意**：旧 Step 10 的"输出 profile 草稿给用户审 → `company_io.write_profile`"子步已删除。profile-*.md 在新架构下由 `companies/{key}/narratives/*.md` 替代；`write_profile` 不再被调用。已有的旧 profile-*.md 不迁移（Plan 4 做专门的 migration）。
+
+### 10.9 meta 更新（含 arenas 联动）
+
+```python
+meta_updates = digest.get("meta_updates", {})
+info = company_io.read_meta_with_body(ticker, market)
+fm = dict(info["frontmatter"])
+
+# 合并 LLM 给的 meta_updates（需用户审）
+if meta_updates:
+    # AskUserQuestion 展示 before/after 对比
+    if user_approved_meta_updates:
+        fm.update(meta_updates)
+
+# 无论用户是否批 meta_updates，arenas 字段都要同步（已 bootstrap 的 arena 必须写回）
+existing_arenas = set(fm.get("arenas") or [])
+new_arenas = set(company_context["arenas"])  # 含新 bootstrap 的
+if new_arenas - existing_arenas:
+    fm["arenas"] = sorted(existing_arenas | new_arenas)
+
+company_io.write_meta(ticker, market, fm, info["body"])
+```
+
+注意 `read_meta(...)` 只返回 frontmatter dict；需要同时拿到 body 必须用 `read_meta_with_body(...)`——别写 `fm, body = read_meta(...)`，会抛 `too many values to unpack`。
+
+### 10.10 claims
+
+```python
+n, errors = agg.write_claims(
+    ticker, market, claims_all,   # 来自 Step 8.4+8.5
+    source_id=source_id,
+    source_file=Path(file_path).name,
+    extracted_by=extracted_by,
+    extracted_at=extracted_at,
+)
+if errors:
+    # 报给用户，建议回 Step 7 重派（说明失败类别：subject_tag 白名单错？company_dimension_hint 错？）；不做部分写入
+    ...
+```
+
+**不要**自己 `json.dumps({"header": ..., "claims": ...})` 然后调 `validate_batch`——`parse_batch_json` 期望 header 字段**平铺在顶层**，嵌套 `"header"` key 会被当成 unknown field 静默丢弃。`build_claims_batch` / `write_claims` 替你做对了这件事。
+
+### 10.11 competence 写入（审阅后，和研报一致）
+
+```python
+findings = digest.get("competence_findings", {"answered": [], "proposed_additions": []})
 consolidated = arenas_io.consolidate_answers(findings["answered"])
 ```
 
 **AskUserQuestion** 审阅：approve 全部 / approve answered 拒绝 proposed / 逐条筛选 / 跳过写入。
 
-**写入**（对每个 `slug in company_arenas`）：
+**写入**（对每个 `slug in company_context["arenas"]`）：
 
 ```python
-for slug in company_arenas:
+for slug in company_context["arenas"]:
     checklist = arenas_io.read_checklist(slug)
     answered_for_this_arena = [
         a for a in consolidated
         if item_pool.get(a["q_id"], {}).get("arena_slug") == slug
     ]
     arenas_io.append_notes(
-        slug, ticker, market, name,
+        slug, ticker, market, company_context["name"],
         answered_items=answered_for_this_arena,
         source_id=source_id,
         checklist_version=checklist["version"],
@@ -507,6 +626,8 @@ for slug in company_arenas:
             },
         )
 ```
+
+**注意**：digest 模式下 `consolidate_answers` 退化成 no-op（只有 1 个 digest subagent，无跨 subagent 合并）；保留调用以兼容未来可能的多 digest 链路。
 
 ---
 
