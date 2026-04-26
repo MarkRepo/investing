@@ -82,3 +82,40 @@ INDUSTRY_FIELDS = {
     ],
     "valuation": ["pe_ttm_median", "pb_median", "ev_ebitda_median"],
 }
+
+# Financials line items (spec §4.7). Standard snake_case keys; A-share and
+# US GAAP raw names map to these via controlled-vocab/financial-aliases.yaml.
+INCOME_STATEMENT_LINES = (
+    "revenue", "cost_of_revenue", "gross_profit",
+    "selling_expense", "admin_expense", "rd_expense", "other_opex",
+    "operating_income",
+    "interest_income", "interest_expense", "other_non_operating",
+    "pretax_income", "income_tax", "net_income",
+    "minority_interest", "net_income_to_parent",
+    "eps_basic", "eps_diluted",
+)
+
+BALANCE_SHEET_LINES = (
+    "cash_and_equivalents", "short_term_investments",
+    "accounts_receivable", "inventory", "other_current_assets",
+    "total_current_assets",
+    "ppe_net", "goodwill", "intangibles", "other_non_current_assets",
+    "total_assets",
+    "accounts_payable", "short_term_debt", "other_current_liab",
+    "total_current_liab",
+    "long_term_debt", "other_non_current_liab",
+    "total_liab",
+    "minority_equity", "total_equity",
+)
+
+CASHFLOW_LINES = (
+    "net_income_cf", "depreciation_amortization",
+    "working_capital_change", "other_operating",
+    "operating_cashflow",
+    "capex", "other_investing", "investing_cashflow",
+    "debt_issued", "debt_repaid", "equity_issued", "dividends",
+    "other_financing", "financing_cashflow",
+    "fx_effect", "net_change_in_cash",
+)
+
+FINANCIAL_ALIASES_PATH = CONTROLLED_VOCAB_DIR / "financial-aliases.yaml"
