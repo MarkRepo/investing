@@ -538,3 +538,98 @@ if changed:
 ```
 
 ---
+
+## Step 10.5：QA checkpoint（行研精简版：只做 read-only 预览）
+
+行研不绑单一 company，`ingest_qa gap --company` 无意义；`--write` 依赖 `industry:{slug}` scope 前缀（当前 `app/io/qa.py` 未实现，Plan 4 scope）。本版只跑 `warn` **不带 `--write`**，stdout 预览给用户看即可。
+
+**凑一份兼容 merged.json**（现有 `scripts.ingest_qa warn` 的 `--merged` 参数期望 v1 aggregate 结构；digest 模式下没有现成的 merge 产物，主 agent 手凑）：
+
+```python
+# 10.5.1 凑兼容的 merged.json
+all_claims = []
+for (ticker, market), facts in company_facts.items():
+    all_claims.extend(agg.facts_to_claims(facts))
+
+compat_merged = {
+    "claims": all_claims,
+    "flags_by_subagent": {"industry-digest": digest.get("flags", [])},
+    "empty_subagents": [],
+    "competence_findings": {"answered": [], "proposed_additions": []},
+}
+Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
+    json.dumps(compat_merged, ensure_ascii=False, indent=2), encoding="utf-8"
+)
+```
+
+```bash
+.venv/bin/python -m scripts.ingest_qa warn \
+    --merged /tmp/ingest-{sha8}.merged.json \
+    --preprocess /tmp/ingest-{sha8}.sections.json
+# 注：不带 --write / --scope。输出只打到 stdout 给用户预览
+```
+
+**不跑 `gap`**，也**不用 `--arena`**（行研常触多 arena，挑一个没意义）。
+
+**未来扩展**（Plan 4）：
+- `app/io/qa.py` 支持 `scope='industry:{slug}'`；行研可以 `--write` 到 `industries/{slug}/qa_warnings.jsonl`
+- 行研专属规则：`figure_without_observation` / `arena_proposed_but_no_narrative` / `tam_unit_mismatch` / `dup_observation_across_institutions`
+
+---
+
+## Step 11：收尾报告
+
+```
+已 ingest 行业研报：industries/{industry_slug}/sources/{filename}
+✓ industries/{industry_slug}/figure_contexts.jsonl  +{n_fig} 条
+✓ industries/{industry_slug}/observations.jsonl    +{n_obs} 条
+✓ industries/{industry_slug}/narratives/*.md       +{n_nar_ind} dim
+{✓|⊘} arenas/{slug}/ (bootstrap)                    +{k_arenas} 新 arena / 全部拒绝
+{✓|⊘} arenas/{slug}/narratives/*.md                +{n_nar_arena} dim across {k_arenas_total} arena
+{✓|⊘} companies/{...} (autobuild)                   {k_auto_company} 家骨架 / 无
+{✓|⊘} companies/{key}/narratives/*.md              +{n_nar_comp} dim
+{✓|⊘} companies/{key}/claims.jsonl                 +{total_claims} 条 (source_id={source_id})
+⊘ qa_warnings                                      仅 stdout 预览（Plan 4 再支持 industry scope --write）
+⊘ qa_gaps                                          行研不跑（无单一 company 绑定）
+⊘ financials.db                                     行研不写
+⊘ profile-*.md                                     行研不写
+
+机构：{institution}
+发布日期：{publish_date}
+涉及公司 ticker（{len(detected_tickers)}）：{ticker_list_preview}
+涉及 arena（{k_arenas_total}）：{arena_slug_list}
+图表覆盖率：{fact_count_from_figures}/{n_fig} 图表产出 observation
+
+下一步建议：
+- 查看行业视图：`/industries/{industry_slug}` （Plan 4 加此路由）
+- 查看新建 arena 的认知库：`arenas/{slug}/`
+- 对照 detected_tickers 补 ingest 这些公司的年报 / 研报
+- 行研 flags：
+  - {flag 1}
+  - {flag 2}
+```
+
+---
+
+## 失败模式
+
+| 场景 | 处理 |
+|---|---|
+| 预处理抽不到机构 / 日期 | Step 3a AskUserQuestion 补齐 |
+| digest subagent 超时 / 返回非 JSON | Step 6 `load_json_tolerant` 尽力恢复；失败 → AskUserQuestion 重派 / 中止 |
+| digest 返回 `industry` 桶为空 | Step 9 pause；AskUserQuestion 决定是重派 digest（补漏）还是接受（通常意味着报告不是典型行研——如"策略宏观"误入通道） |
+| proposed_arenas 的 `parent_industry_slug` 不在任何已存 industry 中 | Step 10.5 bootstrap 前 AskUserQuestion 让用户决定"改 parent / 先建 parent industry / 拒绝该 proposal" |
+| industry slug 新建时用户给的 slug 已存在 | `ensure_industry_exists` 幂等；自然跳过新建，继续用该 slug（告知用户"slug 已存在，复用；scope 未更新"） |
+| company autobuild 时 ticker 格式异常（如全角数字） | `ensure_company_exists` 不做清洗，直接调 `create_company`；后者抛 ValueError；主 agent 在 Step 8 每家外面 try/except，记入 flags，跳过该家不阻塞 |
+| write_industry_narrative 抛 FileNotFoundError（某 dim 不在 INDUSTRY_DIMENSIONS 闭集） | digest 产出错了 dim key；把错误 dim 从 payload 里剥出来放 flags，继续 write 其它 dim；不整体中止 |
+| write_arena_narrative 抛 FileNotFoundError（slug 未 bootstrap） | Step 10.5 的 rejected 过滤漏了该 slug，或 digest 吐了 known_arenas 之外的 slug；过滤掉 → 记 flag → 继续 |
+| QA warn 抛错（兼容 merged 结构不对） | Step 10.5 pause；把 error 报给用户，让用户选"跳过 QA 继续 / 中止"。QA 不影响已写入数据的完整性 |
+
+---
+
+## 已知范围限制
+
+- **单机构 / 多期合并**：同一机构发的同主题多期研报（季度 update），当前每次独立 ingest，不做 series 合并。未来可在 observations dedup 时做。
+- **跨 industry 研报**：digest 支持在 facts 里标不同 `target_refs.industry_slug`；但当前 workflow Step 3b 只处理一个主 industry（source 只落到主 industry 的 `sources/`）。跨行业需要 Plan 4 加"多 industry 绑定"扩展。
+- **研报为 XLS/PPT**：preprocess 不支持；只支持 PDF/HTML/MD/TXT。
+
