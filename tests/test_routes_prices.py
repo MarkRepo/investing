@@ -86,7 +86,7 @@ def _make_quote(ticker, date_iso, close=100.0, market="US"):
 def _create_company(client, ticker="TR", market="US", name="tr"):
     client.post("/companies/new",
                 data={"ticker": ticker, "market": market, "name": name,
-                      "sector": "saas", "currency": "USD"})
+                      "industry_slugs": "saas", "currency": "USD"})
 
 
 # ---------- index ----------

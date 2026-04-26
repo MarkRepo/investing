@@ -50,7 +50,7 @@ def _seed_company(tmp_path: Path, ticker="TR", market="US", name="tr"):
     c.post(
         "/companies/new",
         data={"ticker": ticker, "market": market, "name": name,
-              "sector": "saas", "currency": "USD"},
+              "industry_slugs": "saas", "currency": "USD"},
     )
 
 
@@ -88,7 +88,7 @@ def test_home_alert_skips_resolved_errors(client, tmp_path):
 def test_list_rows_have_quotes_button(client, tmp_path):
     client.post("/companies/new",
                 data={"ticker": "TR", "market": "US", "name": "tr",
-                      "sector": "saas", "currency": "USD"})
+                      "industry_slugs": "saas", "currency": "USD"})
     r = client.get("/companies")
     assert r.status_code == 200
     # button text "行情" linking to /prices/<key>
@@ -102,7 +102,7 @@ def test_list_rows_have_quotes_button(client, tmp_path):
 def test_detail_panel_hidden_when_no_quote(client, tmp_path):
     client.post("/companies/new",
                 data={"ticker": "TR", "market": "US", "name": "tr",
-                      "sector": "saas", "currency": "USD"})
+                      "industry_slugs": "saas", "currency": "USD"})
     r = client.get("/companies/US_TR")
     assert r.status_code == 200
     # freshness is always returned, so panel renders but shows "尚无数据"
@@ -113,7 +113,7 @@ def test_detail_panel_hidden_when_no_quote(client, tmp_path):
 def test_detail_panel_shows_latest_quote(client, tmp_path):
     client.post("/companies/new",
                 data={"ticker": "TR", "market": "US", "name": "tr",
-                      "sector": "saas", "currency": "USD"})
+                      "industry_slugs": "saas", "currency": "USD"})
     insert_quote(tmp_path, ticker="TR", date="2026-04-24",
                  market="US", close=123.45)
 
@@ -128,7 +128,7 @@ def test_detail_panel_shows_latest_quote(client, tmp_path):
 def test_detail_panel_shows_prev_move_pct(client, tmp_path):
     client.post("/companies/new",
                 data={"ticker": "TR", "market": "US", "name": "tr",
-                      "sector": "saas", "currency": "USD"})
+                      "industry_slugs": "saas", "currency": "USD"})
     insert_quote(tmp_path, ticker="TR", date="2026-04-23",
                  market="US", close=100.0)
     insert_quote(tmp_path, ticker="TR", date="2026-04-24",

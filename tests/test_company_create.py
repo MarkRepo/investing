@@ -20,10 +20,6 @@ def _fake_templates(tmp_path: Path) -> Path:
         "---\nticker: {{ ticker }}\nmarket: {{ market }}\nstatus: draft\n"
         "last_reviewed: {{ today }}\n---\n\n# V0: {{ ticker }}\n"
     )
-    (d / "competence-check.md.tmpl").write_text(
-        "---\nticker: {{ ticker }}\nmarket: {{ market }}\n"
-        "check_date: {{ today }}\nin_competence: false\n---\n\n# competence\n"
-    )
     (d / "valuation.md.tmpl").write_text(
         "---\nticker: {{ ticker }}\nmarket: {{ market }}\nvaluation_date: {{ today }}\n---\n\n# val\n"
     )
@@ -54,7 +50,6 @@ def test_create_company_lays_down_all_files(tmp_path):
     assert (path / "sources").is_dir()
     assert (path / "meta.md").exists()
     assert (path / "v0.md").exists()
-    assert (path / "competence-check.md").exists()
     assert (path / "valuation.md").exists()
     assert (path / "trade-log.md").exists()
     assert (path / "profile-2026.md").exists()

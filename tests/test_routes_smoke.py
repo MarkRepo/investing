@@ -70,7 +70,7 @@ def test_new_company_form(client):
     r = client.get("/companies/new")
     assert r.status_code == 200
     assert "ticker" in r.text
-    assert "consumer" in r.text
+    assert "industry_slugs" in r.text
 
 
 def test_create_company_end_to_end(client):
@@ -80,7 +80,7 @@ def test_create_company_end_to_end(client):
             "ticker": "HIMS",
             "market": "US",
             "name": "Hims & Hers",
-            "sector": "consumer",
+            "industry_slugs": "consumer",
             "currency": "USD",
         },
         follow_redirects=False,
@@ -102,7 +102,7 @@ def test_create_company_duplicate(client):
         "ticker": "DUP",
         "market": "US",
         "name": "dup",
-        "sector": "saas",
+        "industry_slugs": "saas",
         "currency": "USD",
     }
     client.post("/companies/new", data=payload)
@@ -117,7 +117,7 @@ def test_v0_edit_roundtrip(client):
             "ticker": "RT",
             "market": "US",
             "name": "rt",
-            "sector": "saas",
+            "industry_slugs": "saas",
             "currency": "USD",
         },
     )
@@ -273,7 +273,7 @@ def test_v0_preview(client):
             "ticker": "PV",
             "market": "US",
             "name": "pv",
-            "sector": "saas",
+            "industry_slugs": "saas",
             "currency": "USD",
         },
     )
@@ -285,7 +285,7 @@ def test_v0_preview(client):
 def test_valuation_end_to_end(client):
     client.post(
         "/companies/new",
-        data={"ticker": "VL", "market": "US", "name": "vl", "sector": "saas", "currency": "USD"},
+        data={"ticker": "VL", "market": "US", "name": "vl", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.get("/companies/US_VL/valuation")
     assert r.status_code == 200
@@ -312,7 +312,7 @@ def test_valuation_end_to_end(client):
 def test_research_add_claim_and_upload(client):
     client.post(
         "/companies/new",
-        data={"ticker": "RS", "market": "US", "name": "rs", "sector": "saas", "currency": "USD"},
+        data={"ticker": "RS", "market": "US", "name": "rs", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.get("/research/US_RS")
     assert r.status_code == 200
@@ -351,7 +351,7 @@ def test_research_add_claim_and_upload(client):
 def test_research_batch_import_end_to_end(client):
     client.post(
         "/companies/new",
-        data={"ticker": "BI", "market": "US", "name": "bi", "sector": "saas", "currency": "USD"},
+        data={"ticker": "BI", "market": "US", "name": "bi", "industry_slugs": "saas", "currency": "USD"},
     )
     payload = (
         '{"source_id": "MS-2026-04-10", '
@@ -382,7 +382,7 @@ def test_research_batch_import_end_to_end(client):
 def test_research_batch_import_rejects_invalid_tag(client):
     client.post(
         "/companies/new",
-        data={"ticker": "BJ", "market": "US", "name": "bj", "sector": "saas", "currency": "USD"},
+        data={"ticker": "BJ", "market": "US", "name": "bj", "industry_slugs": "saas", "currency": "USD"},
     )
     payload = (
         '[{"claim_text": "x", "subject_tag": "made_up_tag",'
@@ -403,7 +403,7 @@ def test_research_batch_import_rejects_invalid_tag(client):
 def test_research_batch_import_rejects_malformed_json(client):
     client.post(
         "/companies/new",
-        data={"ticker": "BK", "market": "US", "name": "bk", "sector": "saas", "currency": "USD"},
+        data={"ticker": "BK", "market": "US", "name": "bk", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.post(
         "/research/US_BK/batch-import",
@@ -417,7 +417,7 @@ def test_research_batch_atomic_no_partial_import(client):
     # Mixed valid + invalid → whole batch rejected
     client.post(
         "/companies/new",
-        data={"ticker": "BL", "market": "US", "name": "bl", "sector": "saas", "currency": "USD"},
+        data={"ticker": "BL", "market": "US", "name": "bl", "industry_slugs": "saas", "currency": "USD"},
     )
     payload = (
         '[{"claim_text": "ok", "subject_tag": "revenue_growth",'
@@ -628,7 +628,7 @@ def test_journal_end_to_end(client):
     # First need a company so V0 snapshot exists
     client.post(
         "/companies/new",
-        data={"ticker": "JL", "market": "US", "name": "jl", "sector": "saas", "currency": "USD"},
+        data={"ticker": "JL", "market": "US", "name": "jl", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.get("/journal")
     assert r.status_code == 200
@@ -680,7 +680,7 @@ def test_journal_end_to_end(client):
 def test_journal_stale_v0_snapshot_detected(client):
     client.post(
         "/companies/new",
-        data={"ticker": "ST", "market": "US", "name": "st", "sector": "saas", "currency": "USD"},
+        data={"ticker": "ST", "market": "US", "name": "st", "industry_slugs": "saas", "currency": "USD"},
     )
     client.post(
         "/journal/new",
@@ -705,7 +705,7 @@ def test_journal_stale_v0_snapshot_detected(client):
 def test_triggers_crud_end_to_end(client):
     client.post(
         "/companies/new",
-        data={"ticker": "TR", "market": "US", "name": "tr", "sector": "saas", "currency": "USD"},
+        data={"ticker": "TR", "market": "US", "name": "tr", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.post(
         "/companies/US_TR/triggers",
@@ -735,7 +735,7 @@ def test_triggers_crud_end_to_end(client):
 def test_trigger_rejects_bad_action(client):
     client.post(
         "/companies/new",
-        data={"ticker": "TX", "market": "US", "name": "tx", "sector": "saas", "currency": "USD"},
+        data={"ticker": "TX", "market": "US", "name": "tx", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.post(
         "/companies/US_TX/triggers",
@@ -753,7 +753,7 @@ def test_earnings_review_end_to_end(client):
     # Create a company + import financials → should appear as pending
     client.post(
         "/companies/new",
-        data={"ticker": "ER", "market": "US", "name": "er", "sector": "saas", "currency": "USD"},
+        data={"ticker": "ER", "market": "US", "name": "er", "industry_slugs": "saas", "currency": "USD"},
     )
     csv_bytes = (
         b"period,period_type,revenue,gross_profit,operating_income,net_income,"
@@ -808,7 +808,7 @@ def test_earnings_review_detail_404(client):
 def test_valuation_rejects_bad_probs(client):
     client.post(
         "/companies/new",
-        data={"ticker": "VB", "market": "US", "name": "vb", "sector": "saas", "currency": "USD"},
+        data={"ticker": "VB", "market": "US", "name": "vb", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.post(
         "/companies/US_VB/valuation",
@@ -825,7 +825,7 @@ def test_valuation_rejects_bad_probs(client):
 def test_competence_gate_warn_shows_on_detail_when_not_passing(client):
     client.post(
         "/companies/new",
-        data={"ticker": "GW", "market": "US", "name": "gw", "sector": "saas", "currency": "USD"},
+        data={"ticker": "GW", "market": "US", "name": "gw", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.get("/companies/US_GW")
     # Fresh company has unfilled competence → should show gate warning
@@ -835,7 +835,7 @@ def test_competence_gate_warn_shows_on_detail_when_not_passing(client):
 def test_financials_empty_page(client):
     client.post(
         "/companies/new",
-        data={"ticker": "FN", "market": "US", "name": "fn", "sector": "saas", "currency": "USD"},
+        data={"ticker": "FN", "market": "US", "name": "fn", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.get("/companies/US_FN/financials")
     assert r.status_code == 200
@@ -846,7 +846,7 @@ def test_financials_empty_page(client):
 def test_financials_csv_import_end_to_end(client):
     client.post(
         "/companies/new",
-        data={"ticker": "FI", "market": "US", "name": "fi", "sector": "saas", "currency": "USD"},
+        data={"ticker": "FI", "market": "US", "name": "fi", "industry_slugs": "saas", "currency": "USD"},
     )
 
     csv_bytes = (
@@ -876,7 +876,7 @@ def test_financials_csv_import_end_to_end(client):
 def test_financials_rejects_bad_csv(client):
     client.post(
         "/companies/new",
-        data={"ticker": "BAD", "market": "US", "name": "bad", "sector": "saas", "currency": "USD"},
+        data={"ticker": "BAD", "market": "US", "name": "bad", "industry_slugs": "saas", "currency": "USD"},
     )
     r = client.post(
         "/companies/US_BAD/financials/import",
@@ -899,7 +899,7 @@ def test_portfolio_end_to_end(client):
     # Create a company first so V0 exists
     client.post(
         "/companies/new",
-        data={"ticker": "PF", "market": "US", "name": "pf", "sector": "saas", "currency": "USD"},
+        data={"ticker": "PF", "market": "US", "name": "pf", "industry_slugs": "saas", "currency": "USD"},
     )
 
     r2 = client.post(
@@ -964,7 +964,7 @@ def test_industries_rejects_bad_sector(client):
 def test_meta_edit_round_trip(client):
     r = client.post(
         "/companies/new",
-        data={"ticker": "META1", "market": "US", "name": "Meta Co", "sector": "consumer"},
+        data={"ticker": "META1", "market": "US", "name": "Meta Co", "industry_slugs": "consumer"},
         follow_redirects=False,
     )
     assert r.status_code == 303
@@ -977,7 +977,7 @@ def test_meta_edit_round_trip(client):
         "/companies/US_META1/meta",
         data={
             "name": "Meta Co Updated",
-            "industry_primary": "consumer",
+            "industry_slugs": "cn-cmp-consumer, us-platforms",
             "themes": "ai, platforms",
             "listed_date": "2012-05-18",
             "currency": "USD",
@@ -992,25 +992,19 @@ def test_meta_edit_round_trip(client):
     assert "Meta Co Updated" in detail.text
     assert "<code>ai</code>" in detail.text
     assert "<code>platforms</code>" in detail.text
+    assert "cn-cmp-consumer" in detail.text
+    assert "us-platforms" in detail.text
 
 
-def test_meta_rejects_bad_industry(client):
-    client.post(
-        "/companies/new",
-        data={"ticker": "BAD1", "market": "US", "name": "Bad", "sector": "consumer"},
-        follow_redirects=False,
-    )
-    r = client.post(
-        "/companies/US_BAD1/meta",
-        data={"name": "Bad", "industry_primary": "unknown_sector", "body": ""},
-    )
-    assert r.status_code == 400
+# test_meta_rejects_bad_industry deleted: industry_slugs is now free-form
+# (no whitelist) so there is no invalid value to reject. The whitelist was
+# the old VALID_SECTORS compat shim, removed in Plan 1 Task 22.
 
 
 def test_profile_edit_requires_source(client):
     client.post(
         "/companies/new",
-        data={"ticker": "PROF1", "market": "US", "name": "Prof", "sector": "consumer"},
+        data={"ticker": "PROF1", "market": "US", "name": "Prof", "industry_slugs": "consumer"},
         follow_redirects=False,
     )
 
@@ -1042,7 +1036,7 @@ def test_research_audit_empty(client):
 def test_profile_edit_accepts_uploaded_source(client, tmp_path):
     client.post(
         "/companies/new",
-        data={"ticker": "PROF2", "market": "US", "name": "Prof2", "sector": "saas"},
+        data={"ticker": "PROF2", "market": "US", "name": "Prof2", "industry_slugs": "saas"},
         follow_redirects=False,
     )
     # drop a source file directly on disk

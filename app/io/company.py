@@ -29,7 +29,6 @@ _PROFILE_RE = re.compile(r"^profile-(\d{4})\.md$")
 _TEMPLATE_MAP = (
     ("meta.md", "meta.md.tmpl"),
     ("v0.md", "v0.md.tmpl"),
-    ("competence-check.md", "competence-check.md.tmpl"),
     ("valuation.md", "valuation.md.tmpl"),
     ("trade-log.md", "trade-log.md.tmpl"),
 )
