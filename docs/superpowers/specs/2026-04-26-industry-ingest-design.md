@@ -1,9 +1,10 @@
 # 三层知识系统 ingest 设计
 
 **Status**: 设计已定，待 writing-plans 出实施计划
-**Date**: 2026-04-26（v2 全量重写）
+**Date**: 2026-04-26（v2.2，含财务 line items 扩展 + 研报图 caption 强化）
 **Supersedes**: `docs/PLAN-INDUSTRY-INGEST.md`（v0，已废弃）
 **v1 → v2 变化**: arena 从"聚合视图"升为"博弈叙事独立数据层（6 维度）"；company 增加"画像 narrative 层（8 维度）"；ingest 四套 workflow（行业研报 / 年报 / 季报 / 公司研报）全部升级为 digest + 主 agent 分拣架构；sector 概念及其所有派生物完全删除
+**v2.1 → v2.2 变化**: §4.7 财务 line items 从 8 列扩到 ~45 列（支持 DuPont / FCF / OCF quality / CCC 等二次分析）+ A 股/US GAAP alias map；§4.8 preprocess 新增 `figure_contexts[]` 抽取（caption + 周围文本）以强化研报图表数据捕获；vision 裁图方案推 v2
 
 ---
 
@@ -281,6 +282,104 @@ COMPANY_DIMENSIONS = (                  # snake_case key ↔ kebab-case .md file
 - `industry_io.filter_observations_by_arena(slug, arena_slug) -> list[row]`（按 arena_refs 过滤）
 - `claims_io.filter_by_arena(arena_slug) -> list[claim]`（扫所有 companies，按 arena_refs 过滤）
 
+### 4.7 财务 line items 扩展（8 → ~40 列）
+
+当前 `app/io/financials.py:21-30` 的 `FINANCIAL_COLUMNS` 只有 8 列（revenue / gross_profit / operating_income / net_income / total_assets / total_equity / operating_cashflow / shares_outstanding），无法支持 DuPont 分解、FCF 计算、营运资本变动、OCF quality 等常见二次分析。本次扩到三表标准 line items，约 40 项。
+
+**新 schema 清单**（`app/config.py` 新增）：
+
+```python
+INCOME_STATEMENT_LINES = (
+    "revenue", "cost_of_revenue", "gross_profit",
+    "selling_expense", "admin_expense", "rd_expense", "other_opex",
+    "operating_income",
+    "interest_income", "interest_expense", "other_non_operating",
+    "pretax_income", "income_tax", "net_income",
+    "minority_interest", "net_income_to_parent",
+    "eps_basic", "eps_diluted",
+)  # 18 项
+
+BALANCE_SHEET_LINES = (
+    "cash_and_equivalents", "short_term_investments",
+    "accounts_receivable", "inventory", "other_current_assets",
+    "total_current_assets",
+    "ppe_net", "goodwill", "intangibles", "other_non_current_assets",
+    "total_assets",
+    "accounts_payable", "short_term_debt", "other_current_liab",
+    "total_current_liab",
+    "long_term_debt", "other_non_current_liab",
+    "total_liab",
+    "minority_equity", "total_equity",
+)  # 20 项
+
+CASHFLOW_LINES = (
+    "net_income_cf", "depreciation_amortization",
+    "working_capital_change", "other_operating",
+    "operating_cashflow",
+    "capex", "other_investing", "investing_cashflow",
+    "debt_issued", "debt_repaid", "equity_issued", "dividends",
+    "other_financing", "financing_cashflow",
+    "fx_effect", "net_change_in_cash",
+)  # 16 项
+
+# Total ≈ 54 列（含重复的 net_income / operating_cashflow 锚点），
+# 实际 SQLite 列数 ~45（去重 + 去锚）。
+```
+
+**命名规则**：snake_case 英文；A 股科目 / US GAAP 的原名通过 `FINANCIAL_ALIAS_MAP` 映射到标准 key。alias map 作为独立 yaml（`controlled-vocab/financial-aliases.yaml`）方便迭代：
+
+```yaml
+# controlled-vocab/financial-aliases.yaml (片段)
+revenue:
+  a_share: [营业收入, 营业总收入]
+  us_gaap: [Revenue, Revenues, Net sales, Total revenue]
+cost_of_revenue:
+  a_share: [营业成本, 营业总成本]  # 注意：A 股"营业总成本"含期间费用，需拆分
+  us_gaap: [Cost of revenue, Cost of goods sold, Cost of sales]
+# ... 约 40 项 alias
+```
+
+**派生指标扩展**（`financials.py` view `ratios`）：
+- 现有：gross_margin / net_margin / operating_margin / roe / roa / debt_to_equity
+- 新增：asset_turnover / equity_multiplier（DuPont 三因子）、fcf（= OCF − capex）、fcf_margin、ocf_quality（= OCF / net_income）、interest_coverage（= op_income / interest_expense）、current_ratio、quick_ratio、days_inventory、days_receivable、days_payable、cash_conversion_cycle
+
+**缺失处理**：任何 line 缺失 → NULL；ratios view 用 `NULLIF` 守护除零；页面层缺字段显示 `—`。
+
+**迁移策略**：
+- 不迁移旧数据。现有 `financials` 表结构 `ALTER TABLE ADD COLUMN` 扩容（SQLite 支持），保留旧 8 列数据；新 ingest 填新列
+- 老数据的派生指标只能基于 8 列算（保持现状）；新 ingest 后有完整 40 列的期间才能算 DuPont / FCF 等新指标
+- SQL 查询层 `financials` 表统一读（旧期间新列为 NULL，应用层兼容）
+
+### 4.8 研报 figure_contexts（preprocess 产出）
+
+研报图表数据现状全丢（`preprocess_report.py:85-106` 用 PyMuPDF `get_text("text")` 纯文本提取）。本次 v1 做零成本强化：preprocess 识别图表 caption 模式，把 caption + 前后 2 段文本标为 `figure_context`，在 digest prompt 里显式要求关注这类段。
+
+**preprocess JSON 新增字段**：
+
+```json
+{
+  // ... 现有 meta + sections ...
+  "figure_contexts": [
+    {
+      "id": "fig-001",
+      "page": 3,
+      "caption": "图表1: 2020-2030 全球 CMP 抛光材料市场规模（亿美元）",
+      "surrounding_text": "...如图表1所示，2025 年市场规模 33.8 亿美元，CAGR 9.0%...",
+      "section_name": "market_size"
+    },
+    ...
+  ]
+}
+```
+
+**caption 模式**（正则）：
+- 中文：`图表?\s*\d+[:：]`、`表\s*\d+[:：]`、`图\s*\d+[:：]`
+- 英文：`(Exhibit|Figure|Chart|Table)\s+\d+[:\.]`
+
+**digest prompt 注入**：加段 "`figure_contexts` 中的 surrounding_text 是作者对图表的文字描述，关键数据常出现在这里（如市场规模、份额占比、时间序列）。优先从 figure_contexts 抽 observations。"
+
+**不做**（v2）：裁图、vision subagent、evidence_figure schema（见 §9）。
+
 ## 5. ingest pipelines
 
 ### 5.1 统一架构：digest-extract subagent + 主 agent 分拣
@@ -291,10 +390,12 @@ COMPANY_DIMENSIONS = (                  # snake_case key ↔ kebab-case .md file
 [preprocess]  scripts.preprocess_report --type {industry|annual|quarterly|sell-side}
               产出: sections[] + detected_tickers + meta{institution/date/sha8/form}
               + report_abstract_200w（从封面+首页抽）
+              + figure_contexts[]（§4.8，图表 caption + 周围 2 段文本）
 
 [1 个 digest subagent]  prompts/digest/{type}-digest.md
-              注入: 全文 + 三层维度清单 + 已知 arena 列表（{slug, definition_four_dims, battleground_focus}）
+              注入: 全文 + figure_contexts[] + 三层维度清单 + 已知 arena 列表（{slug, definition_four_dims, battleground_focus}）
                     + 现有 observations/claims schema + per-type 侧重说明
+                    + 财务 line items 字典（年报/季报 type）
               职责: 读全文产结构化摘要，单职责只吐事实，不做写入决策
               输出 JSON: {
                 key_facts: [
@@ -516,6 +617,15 @@ app/io/company.py             # 升级
 app/io/claims.py              # 升级
   validate_batch 接受 arena_refs / company_dimension_hint 可选字段
   filter_by_arena(arena_slug) / filter_by_company_dimension(key, dim)
+
+app/io/financials.py          # 升级（§4.7）
+  FINANCIAL_COLUMNS: 8 → ~45 列（三表 line items）
+  _SCHEMA: financials 表 ALTER ADD COLUMN 扩容；ratios view 扩派生指标
+  import_financials_csv: 接受宽表 CSV；未知列警告而非报错
+  load_alias_map() -> dict: 读 controlled-vocab/financial-aliases.yaml
+  ratios view 增: asset_turnover / equity_multiplier / fcf / fcf_margin /
+                  ocf_quality / interest_coverage / current_ratio /
+                  quick_ratio / days_{inventory,receivable,payable} / ccc
 ```
 
 **config**：
@@ -523,7 +633,11 @@ app/io/claims.py              # 升级
 - `app/config.INDUSTRY_FIELDS`（建议词表）
 - `app/config.ARENA_DIMENSIONS`（闭集 6）
 - `app/config.COMPANY_DIMENSIONS`（闭集 8）
+- `app/config.INCOME_STATEMENT_LINES` / `BALANCE_SHEET_LINES` / `CASHFLOW_LINES`（§4.7）
 - 删 `VALID_SECTORS`
+
+**受控词表新增**：
+- `controlled-vocab/financial-aliases.yaml`（§4.7，A 股 / US GAAP 科目名 → 标准 key）
 
 **routes + templates**：
 
@@ -552,7 +666,8 @@ app/templates/companies/*.html   # 8 维度 narrative 卡片 + claims 分组
 **预处理 + 聚合**：
 
 ```
-scripts/preprocess_report.py    # 加 --type industry 分支 + detected_tickers + report_abstract 产出
+scripts/preprocess_report.py    # 加 --type industry 分支 + detected_tickers
+                                # + report_abstract + figure_contexts[]（§4.8）
 scripts/ingest_aggregate.py     # 新增
   write_industry_observations(slug, rows)
   write_industry_narrative(slug, dim, block, source_meta)
@@ -632,6 +747,9 @@ tests/test_arena_aggregation.py          # arena 聚合 view（filter by arena_r
 - ❌ 多份报告间 narrative 自动合并（只按 source 并列；合并靠用户手动）
 - ❌ 预测数据进 `actual` 观察序列（用 `time_type=forecast` 区分）
 - ❌ 长报告（> 30 页）digest 按 section 二次拆分（首批不需要，遇到再加）
+- ❌ Vision-enabled digest（研报图表裁图 + subagent 看图）：推 v2，先用 §4.8 figure_context caption 强化方案跑 v1 样本，看缺口多大
+- ❌ observations/claims evidence 支持图片引用（`evidence_figure: {page, bbox, caption}`）：随 vision 一起推 v2
+- ❌ 财务附注 / 分部数据 / 季度环比微观数据（现在只抽合并三表 line items，附注表级数据未来再议）
 
 ## 10. 测试策略
 
@@ -640,6 +758,8 @@ tests/test_arena_aggregation.py          # arena 聚合 view（filter by arena_r
 - observations dedup（同 field+timeframe+source_id 保留 confidence 最高）
 - filter_by_arena 按 arena_refs 精准过滤
 - 反查 helpers 正确性
+- **财务扩展**（§4.7）：financials ALTER ADD COLUMN 迁移不丢旧数据；新 40 列 CSV 导入；alias map 从 A 股"营业收入"、US "Net sales" 正确映射到 `revenue`；派生指标 view 计算正确（DuPont 三因子 / FCF / OCF quality / CCC 等）
+- **figure_contexts 抽取**（§4.8）：preprocess 对 `图表\d+:` / `Figure \d+` 等 caption 正则命中；surrounding_text 取 caption 前后 2 段文本；CMP 样本至少抽出 10+ figure_contexts
 
 **Integration**（端到端 fixture）：
 - 用 `~/Downloads/化学机械抛光行业.pdf` 走 industry-report workflow，断言：
@@ -667,6 +787,8 @@ tests/test_arena_aggregation.py          # arena 聚合 view（filter by arena_r
 - 跨 industry 的上下游关系表达（currently 不表达；若需要加 `upstream_industries / downstream_industries` 字段）
 - arena 数量增多后的浏览 UX（arena 列表页分类、按 industry 分组）
 - digest subagent 对长报告（> 30 页）的分批策略
+- **Vision-enabled digest 的 ROI 评估**：v1 跑完 3-5 份行业研报后，统计 figure_contexts 方案抓到多少"图中数据"，剩余多少关键数据仍只在图里。若缺口显著（> 20%），v2 启动 vision 方案（裁图 + multi-modal subagent + `evidence_figure` schema）
+- 财务附注级数据（分部数据、分产品收入、存货构成等）的抽取设计（v1 只抽合并三表，附注留给 v2）
 
 ## 附录 A · 三层维度速查
 
@@ -714,8 +836,8 @@ docs/PLAN-INDUSTRY-INGEST.md          标 superseded
 ---
 
 **Next step**：用户终审本 spec → 切 `superpowers:writing-plans` 出实施计划。建议 plan 切分：
-- Plan 1: 三层数据模型 + IO 层（`app/io/{industry,arenas,company,claims}.py`）+ config + 迁移 + tests
-- Plan 2: preprocess + digest subagent prompts + ingest_aggregate helpers
+- Plan 1: 三层数据模型 + IO 层（`app/io/{industry,arenas,company,claims,financials}.py`）+ config + 财务 line items 扩展（§4.7 含 alias map 和 ratios view）+ 迁移 + tests
+- Plan 2: preprocess（加 figure_contexts §4.8 + --type industry + detected_tickers + report_abstract）+ digest subagent prompts（四类）+ ingest_aggregate helpers
 - Plan 3: 四个 workflow（industry-report / annual-report / quarterly-report / sell-side-note）+ SKILL.md 升级
-- Plan 4: routes + templates（三层页面 + cross-ref + 聚合 view）
+- Plan 4: routes + templates（三层页面 + cross-ref + 聚合 view + 新派生指标渲染）
 - Plan 5: 端到端集成测试 + 清理旧 sector 代码
