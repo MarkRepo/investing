@@ -76,3 +76,17 @@ def test_arena_append_narrative_rejects_unknown_dim(tmp_path):
             "a", "bogus", "x", {"institution":"a","date":"b","sha8":"c","source_id":"d"},
             base=base,
         )
+
+
+def test_find_by_industry_lists_arenas(tmp_path):
+    base = tmp_path
+    arenas_io.write_definition(slug="a1", name="A1", definition_text="x",
+                               industry="ind-x", battleground_focus="f", base=base)
+    arenas_io.write_definition(slug="a2", name="A2", definition_text="x",
+                               industry="ind-y", battleground_focus="f", base=base)
+    arenas_io.write_definition(slug="a3", name="A3", definition_text="x",
+                               industry="ind-x", battleground_focus="f", base=base)
+
+    result = arenas_io.find_by_industry("ind-x", base=base)
+    assert set(result) == {"a1", "a3"}
+    assert arenas_io.find_by_industry("ind-z", base=base) == []

@@ -703,3 +703,25 @@ def append_narrative_block(
     )
     with path.open("a", encoding="utf-8") as f:
         f.write(rendered)
+
+
+def find_by_industry(industry_slug: str, base: Path | None = None) -> list[str]:
+    """Return list of arena slugs whose definition.md frontmatter.industry == industry_slug."""
+    root = _arenas_dir(base)
+    if not root.exists():
+        return []
+    result = []
+    for child in sorted(root.iterdir()):
+        if not child.is_dir():
+            continue
+        def_path = _definition_path(child.name, base)
+        if not def_path.exists():
+            continue
+        try:
+            data = read_definition(child.name, base=base)
+        except Exception:
+            continue
+        fm = data.get("frontmatter", {})
+        if fm.get("industry") == industry_slug:
+            result.append(fm.get("slug", child.name))
+    return result
