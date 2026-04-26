@@ -3,7 +3,7 @@
 **Status**: 设计已定，待 writing-plans 出实施计划
 **Date**: 2026-04-26（v2 全量重写）
 **Supersedes**: `docs/PLAN-INDUSTRY-INGEST.md`（v0，已废弃）
-**v1 → v2 变化**: arena 从"聚合视图"升为"博弈叙事独立数据层（6 维度）"；company 增加"画像 narrative 层（7 维度）"；ingest 四套 workflow（行业研报 / 年报 / 季报 / 公司研报）全部升级为 digest + 主 agent 分拣架构；sector 概念及其所有派生物完全删除
+**v1 → v2 变化**: arena 从"聚合视图"升为"博弈叙事独立数据层（6 维度）"；company 增加"画像 narrative 层（8 维度）"；ingest 四套 workflow（行业研报 / 年报 / 季报 / 公司研报）全部升级为 digest + 主 agent 分拣架构；sector 概念及其所有派生物完全删除
 
 ---
 
@@ -34,7 +34,7 @@
 
 **ingest 流程和存储设计服务于用户学习体验**，反向驱动。先定三层知识框架（用户阅读入口），数据 schema 和 ingest pipeline 都是这个框架的附属。
 
-三层设计对称：每层有自己固定的维度清单（11 / 6 / 7）、自己的 narrative 文件按维度拆、自己的结构化事实层（observations / claims）、自己的入口页按维度呈现。跨层关联走 backlinks + `arena_refs` 索引字段。
+三层设计对称：每层有自己固定的维度清单（11 / 6 / 8）、自己的 narrative 文件按维度拆、自己的结构化事实层（observations / claims）、自己的入口页按维度呈现。跨层关联走 backlinks + `arena_refs` 索引字段。
 
 ## 2. 三层知识框架
 
@@ -71,19 +71,20 @@
 | 5 | 多空叙事 | bull（挑战者赢）/ bear（格局不变）/ disruption（第三方颠覆）三元情景 + 证据反证 | 只有 arena 做叙事三分 |
 | 6 | 决策启示 | 这场博弈下哪类参与者值得下注 + 什么触发点会改变结论 | industry §11 是产业整体估值锚；arena 讲**这个具体博弈里怎么选边** |
 
-### 2.3 company（单公司画像，7 维度）
+### 2.3 company（单公司画像，8 维度）
 
-单家公司的画像叙事。7 维度由用户给定。
+单家公司的画像叙事。8 维度。"市场位置/份额"不做独立维度，通过 cross-ref 连 industry.observations (share_by_player) 和 arena.participants 反向呈现。
 
 | # | 维度 | 核心内容 |
 |---|---|---|
-| 1 | 业务模式 | 做什么生意、收入结构、业务条线、客户结构 |
-| 2 | 竞争策略与未来规划 | 当前战略、产品/市场/产能布局、未来 3-5 年规划 |
-| 3 | 护城河 / 核心竞争力 | 技术/规模/品牌/网络效应/切换成本的来源 |
-| 4 | 财务分析 / 核心指标 | 毛利/ROE/ROIC/资本开支/现金流结构与演进 |
-| 5 | 关键事件 / 催化剂 | 即将的里程碑、事件日历、触发因素 |
-| 6 | 风险 | 公司层面风险（业务/财务/治理/特殊） |
-| 7 | 估值 | 估值锚、历史 P/E P/B 区间、当前位置 |
+| 1 | 业务模式 | 做什么生意、收入结构、业务条线、单位经济 / 盈利模型 |
+| 2 | 护城河与竞争策略 | 差异化/成本/聚焦来源、可持续性、与对手相对位置 |
+| 3 | 增长引擎与未来规划 | 量 / 价 / 新品 / 地理 / M&A 的增长结构分解；3-5 年规划 |
+| 4 | 管理层与治理 | 实控人结构、CEO 履历、激励机制、董事会、过往资本配置决策质量 |
+| 5 | 财务分析 | 核心指标演进、利润结构、现金流、资本开支与回报 |
+| 6 | 关键事件与催化剂 | 短期触发点、里程碑、事件日历（与维度 3 的结构性增长分开） |
+| 7 | 风险 | 公司层面风险（业务/财务/治理/特殊） |
+| 8 | 估值 | 估值锚、历史 P/E P/B 区间、当前位置 |
 
 ### 2.4 三层视角对照
 
@@ -91,7 +92,7 @@
 |---|---|---|---|---|---|
 | industry | 产业全景（客观） | 11 | 这个产业有多大、格局如何、往哪走 | observations.jsonl | 11 份 narrative .md |
 | arena | 博弈叙事（相对） | 6 | 这个战场谁会赢、为什么 | （无独立事实库，引 industry + company） | 6 份 narrative .md |
-| company | 单公司画像 | 7 | 这家公司做什么、护城河在哪、估值几何 | claims.jsonl | 7 份 narrative .md |
+| company | 单公司画像 | 8 | 这家公司做什么、护城河在哪、估值几何 | claims.jsonl | 8 份 narrative .md |
 
 三层视角**正交、不重叠**。重叠区的归属原则：
 - **纯数字事实** → industry.observations（带 segment / arena_refs 字段精准过滤）
@@ -119,7 +120,7 @@
 | D13 | 分流识别：文件名关键词 + 预处理扫 ≥2 独立 ticker → AskUser 确认 | 半自动 |
 | D14 | ingest 产出时**所有维度都会产 narrative**，但允许**空维度**（报告不覆盖就空段） | 不强行填充；下次 ingest 逐步补齐 |
 | D15 | narrative 写入方式：**按 source 分块 append**（每次 ingest 在对应维度 .md 末尾加 `### 来源 {institution} {date}` 段），永不修改/覆盖历史段 | 跨报告比对只能靠按 source 分块；合并精简靠用户手动 |
-| D16 | 现有 `profile-YYYY.md` v1 保留过渡：新 ingest 产 7 维度 narrative（主产出），profile-YYYY.md 仍按年度生成（副产出，作为"公司的某年快照"） | 不破坏现有年度快照概念；未来 v3 可能弃 profile 改 narrative 打快照 |
+| D16 | 现有 `profile-YYYY.md` v1 保留过渡：新 ingest 产 8 维度 narrative（主产出），profile-YYYY.md 仍按年度生成（副产出，作为"公司的某年快照"） | 不破坏现有年度快照概念；未来 v3 可能弃 profile 改 narrative 打快照 |
 | D17 | arena 现有 definition.md / checklist.yaml / competence-notes.md 保留位置，frontmatter 加 `industry: {slug}` 字段 + 加 `battleground_focus: str` 字段（博弈焦点文本） | 向后兼容；不破坏 cn-power-cable-polymer-material 现有数据 |
 | D18 | arena 新增 6 份维度 narrative（§1 definition 不新建，复用现有 definition.md；§2-§6 新建 5 份） | definition.md 扩展为 arena §1 内容 |
 | D19 | 阅读视图 v1：数据 backlink + 页面 cross-ref + 按维度渲染 narrative/observation。`/brief/{slug}` 按决策问题聚合视图推 v2 独立 spec | 本次 scope 已经很大；brief 单独评估 |
@@ -159,14 +160,15 @@ companies/{key}/                    # 单公司画像层（升级）
 ├── meta.md                         # frontmatter 字段改：industry_primary → industry_slugs: [list]
 ├── claims.jsonl                    # 原子事实库（schema 加 arena_refs 字段）
 ├── profile-YYYY.md                 # 保留过渡（v3 可能弃）
-├── narratives/                     # 新：按 7 维度
-│   ├── business-model.md           # §1
-│   ├── strategy-roadmap.md         # §2 竞争策略与未来规划
-│   ├── moat.md                     # §3 护城河
-│   ├── financial-profile.md        # §4 财务分析与核心指标
-│   ├── catalysts.md                # §5 关键事件与催化剂
-│   ├── risks.md                    # §6 风险
-│   └── valuation.md                # §7 估值
+├── narratives/                     # 新：按 8 维度
+│   ├── business-model.md           # §1 业务模式
+│   ├── moat.md                     # §2 护城河与竞争策略
+│   ├── growth-engine.md            # §3 增长引擎与未来规划
+│   ├── management.md               # §4 管理层与治理
+│   ├── financial-profile.md        # §5 财务分析
+│   ├── catalysts.md                # §6 关键事件与催化剂
+│   ├── risks.md                    # §7 风险
+│   └── valuation.md                # §8 估值
 └── sources/                        # 原文 PDF
 ```
 
@@ -253,13 +255,13 @@ ARENA_DIMENSIONS = (                    # snake_case key ↔ kebab-case .md file
     "trajectory", "narratives", "investment_view",
 )
 
-COMPANY_DIMENSIONS = (                  # snake_case key ↔ kebab-case .md filename
-    "business_model", "strategy_roadmap", "moat",
+COMPANY_DIMENSIONS = (                  # snake_case key ↔ kebab-case .md filename; 8 dims
+    "business_model", "moat", "growth_engine", "management",
     "financial_profile", "catalysts", "risks", "valuation",
 )
 
 # 文件路径规则：{layer_dir}/{slug_or_key}/{dim.replace('_','-')}.md
-# e.g. company_dim="strategy_roadmap" → companies/{key}/narratives/strategy-roadmap.md
+# e.g. company_dim="growth_engine" → companies/{key}/narratives/growth-engine.md
 ```
 
 ### 4.6 跨层引用机制
@@ -377,12 +379,12 @@ source_id 规则：
 
 ### 5.3 公司年报 / 10-K / 半年报 workflow（`workflows/annual-report.md` 改造）
 
-现有 workflow 升级，数据产出增加 **7 维度 company narrative**：
+现有 workflow 升级，数据产出增加 **8 维度 company narrative**：
 
 ```
 1-4. 同现有（识别类型/company key/预处理）
 5. 派 1 个 digest subagent (prompts/digest/annual-digest.md)，
-   注入: 全文 + company 7 维度 + arena 已关联（若 company.arenas 非空）+ industry 已关联（若 industry_slugs 非空）
+   注入: 全文 + company 8 维度 + arena 已关联（若 company.arenas 非空）+ industry 已关联（若 industry_slugs 非空）
 6. 主 agent 分拣:
    - key_facts[].target_layer == "company" (主力) → claim + narrative
    - target_layer == "industry" → 候选 "来自公司视角的行业补充" (confidence 标 medium，append 到 industry narrative 对应 dim)
@@ -390,7 +392,7 @@ source_id 规则：
    - financial_rows → financials.db (现有)
 7. 用户审 3 处 + 现有 profile-YYYY.md 审:
    - claims (按 subject_tag 分段)
-   - company narratives (7 维度 md block 预览)
+   - company narratives (8 维度 md block 预览)
    - 可选：industry 补充段 / arena 补充段
    - profile-YYYY.md 年度快照 (现有流程保留)
 8. 写入 + QA
@@ -435,7 +437,7 @@ source_id: `年报-{fiscal_year}-{sha8}`（不变）
 | `/industries/{slug}` | industry 名 | 11 维度 narrative（按 §顺序展开） + 每维度尾部结构化 observation 表格（若有） | linked_arenas 列表 + linked_tickers 参与者卡片 + 原文 sources |
 | `/industries/{slug}/observations` | industry 名 · observations | 所有结构化事实的跨源聚合表格 | 按 dimension 分 tab，spread/outlier 标注 |
 | `/arenas/{slug}` | 所属 industry（→）→ arena 名 | 6 维度 narrative（含 §1 definition.md） + 参与者 × 关键指标聚合表（从 industry.observations 按 arena_refs 过滤） | 参与者卡片（→ company 页）+ 相关 claims（按 arena_refs 过滤） |
-| `/companies/{key}` | industry_slugs tag（→） + arenas tag（→） | 7 维度 narrative 卡片 + 每卡片底部"支撑证据（N claims）"可展开 | meta + profile-YYYY 快照 + competence-check 链接（v1 仍在，v2 拆） |
+| `/companies/{key}` | industry_slugs tag（→） + arenas tag（→） | 8 维度 narrative 卡片 + 每卡片底部"支撑证据（N claims）"可展开 | meta + profile-YYYY 快照 + competence-check 链接（v1 仍在，v2 拆） |
 | `/companies/{key}/claims` | company 名 · claims | 按 subject_tag 分组的 claim 列表（现状保留） | 过滤器：timeframe / confidence / source_id |
 
 ### 6.2 跨源分歧渲染规则（industry 层）
@@ -509,7 +511,7 @@ app/io/arenas.py              # 升级
 app/io/company.py             # 升级
   create_company 不再校验 sector 白名单
   read/write meta.md frontmatter 加 industry_slugs: [list]
-  read_narrative(key, dim) / append_narrative_block(key, dim, block, source_meta)  # 7 维度
+  read_narrative(key, dim) / append_narrative_block(key, dim, block, source_meta)  # 8 维度
 
 app/io/claims.py              # 升级
   validate_batch 接受 arena_refs / company_dimension_hint 可选字段
@@ -520,7 +522,7 @@ app/io/claims.py              # 升级
 - `app/config.INDUSTRY_DIMENSIONS`（闭集 11）
 - `app/config.INDUSTRY_FIELDS`（建议词表）
 - `app/config.ARENA_DIMENSIONS`（闭集 6）
-- `app/config.COMPANY_DIMENSIONS`（闭集 7）
+- `app/config.COMPANY_DIMENSIONS`（闭集 8）
 - 删 `VALID_SECTORS`
 
 **routes + templates**：
@@ -536,7 +538,7 @@ app/routes/arenas.py          # 升级
   现有路由（checklist/notes）保留
 
 app/routes/companies.py       # 升级
-  /companies/{key}  主页加"7 维度 narrative 卡片"（可展开证据 claims）
+  /companies/{key}  主页加"8 维度 narrative 卡片"（可展开证据 claims）
   /companies/{key}/claims  现有按 subject_tag 列表保留
   删 sector 相关
 
@@ -544,7 +546,7 @@ app/routes/competence.py      # 整体删
 
 app/templates/industries/*.html  # slug 模板 + observation diff + 维度渲染
 app/templates/arenas/*.html      # 6 维度模板 + 参与者聚合
-app/templates/companies/*.html   # 7 维度 narrative 卡片 + claims 分组
+app/templates/companies/*.html   # 8 维度 narrative 卡片 + claims 分组
 ```
 
 **预处理 + 聚合**：
@@ -592,7 +594,7 @@ scripts/ingest_aggregate.py     # 新增
 ```
 tests/test_industry_io.py                # slug CRUD / observations dedup / narrative append / find_by_company / filter_by_arena
 tests/test_arenas_narrative.py           # 6 维度 narrative append
-tests/test_company_narrative.py          # 7 维度 narrative append
+tests/test_company_narrative.py          # 8 维度 narrative append
 tests/test_digest_schema.py              # digest JSON schema 校验
 tests/test_ingest_aggregate_triple.py    # 三层分拣逻辑
 tests/test_preprocess_industry.py        # ticker 扫描 + abstract 提取
@@ -647,7 +649,7 @@ tests/test_arena_aggregation.py          # arena 聚合 view（filter by arena_r
   - `proposed_arenas` 至少推出 `cn-cmp-slurry-*` / `cn-cmp-pad-*` 两个候选
   - 若用户 bootstrap 了 `cn-cmp-slurry-domestic-substitution` arena，6 份 .md 生成，definition.md frontmatter 含 battleground_focus
   - 被提及 ≥3 句话的 ticker（安集 / 鼎龙）生成 per-ticker claims 和 narrative，且 claims 不含 `market_size.tam_global` 这类行业级事实
-- 用 茅台 2025 年报走 annual-report workflow，断言 `companies/SSE_600519/narratives/*.md` 生成且 7 维度覆盖，claims.jsonl 新增
+- 用 茅台 2025 年报走 annual-report workflow，断言 `companies/SSE_600519/narratives/*.md` 生成且 8 维度覆盖，claims.jsonl 新增
 
 **Regression**：
 - 现有 annual-report / quarterly-report / sell-side-note 的基础行为（claims 产出 + financials 导入）不退化
@@ -672,7 +674,7 @@ tests/test_arena_aggregation.py          # arena 聚合 view（filter by arena_r
 |---|---|---|
 | industry | 11 | definition / market-size / lifecycle / value-chain / competition / drivers / technology / regulation / benchmark / risks / valuation |
 | arena | 6 | definition（现有）/ participants / decisive-factors / trajectory / narratives / investment-view |
-| company | 7 | business-model / strategy-roadmap / moat / financial-profile / catalysts / risks / valuation |
+| company | 8 | business-model / moat / growth-engine / management / financial-profile / catalysts / risks / valuation |
 
 ## 附录 B · CMP 用例端到端跟踪
 
@@ -687,7 +689,7 @@ ingest `~/Downloads/化学机械抛光行业.pdf`（国金证券 2026-03-10，12
    - `cn-cmp-pad-dupont-disruption`（Dupont 75% 被 Fujibo/鼎龙挑战）
 3. **若 arena 被 bootstrap**：各 6 份 narrative .md 初始化，§2 §3 §4 由本次 digest 填；definition.md frontmatter 含 battleground_focus
 4. **公司 narrative + claims**：
-   - `companies/SSE_688019/narratives/` 7 维度 md 部分维度有内容（business-model / moat / financial-profile / strategy-roadmap 约 4 维）
+   - `companies/SSE_688019/narratives/` 8 维度 md 部分维度有内容（business-model / moat / financial-profile / growth-engine 约 4 维）
    - `companies/SZ_300054/narratives/` 同上
    - 其他被提及 ticker 若证据 <2 句话则不建 narrative，但可入 linked_tickers 列表
    - claims.jsonl per ticker append，带 `arena_refs` 指向相关 arena（若已 bootstrap）
