@@ -30,9 +30,11 @@ TEMPLATE_MAP = {
     ("a-share", "annual"):    "a-share-annual.yaml",
     ("a-share", "quarterly"): "a-share-quarterly.yaml",
     ("a-share", "sell-side"): "sell-side-generic.yaml",
+    ("a-share", "industry"):  "a-share-industry.yaml",
     ("us", "annual"):         "us-10k.yaml",
     ("us", "quarterly"):      "us-10q.yaml",
     ("us", "sell-side"):      "sell-side-generic.yaml",
+    ("us", "industry"):       "us-industry.yaml",
 }
 
 MIN_SECTION_CHARS = 500
@@ -464,7 +466,7 @@ def build_result(
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Preprocess a report into sections JSON")
     ap.add_argument("file", type=Path, help="Path to the report file (PDF/HTM/MD/TXT)")
-    ap.add_argument("--type", required=True, choices=["annual", "quarterly", "sell-side"])
+    ap.add_argument("--type", required=True, choices=["annual", "quarterly", "sell-side", "industry"])
     ap.add_argument("--market", required=True, choices=["a-share", "us"])
     ap.add_argument("--out", type=Path, default=None, help="Output JSON path (default: stdout)")
     args = ap.parse_args(argv)
