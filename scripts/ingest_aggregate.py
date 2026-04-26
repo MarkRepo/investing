@@ -221,6 +221,40 @@ def dedup_claims(claims: list[dict]) -> list[dict]:
     return out
 
 
+def route_key_facts(key_facts: list[dict]) -> dict[str, list[dict]]:
+    """Split digest key_facts into per-layer buckets based on target_layer.
+
+    cross-layer facts (e.g. share_by_player that reports a ticker's industry
+    market share) go into BOTH industry and company buckets so the arena
+    page / company page both see the fact. Malformed facts (no target_refs,
+    unknown target_layer) are silently dropped.
+    """
+    out: dict[str, list[dict]] = {"industry": [], "arena": [], "company": []}
+    for f in key_facts:
+        layer = f.get("target_layer")
+        refs = f.get("target_refs") or {}
+        if not refs:
+            continue
+        if layer == "industry":
+            if refs.get("industry_slug"):
+                out["industry"].append(f)
+        elif layer == "arena":
+            if refs.get("arena_slug"):
+                out["arena"].append(f)
+        elif layer == "company":
+            if refs.get("ticker") and refs.get("market"):
+                out["company"].append(f)
+        elif layer == "cross":
+            # Cross-layer: append to industry (primary) and also company if
+            # ticker present.
+            if refs.get("industry_slug"):
+                out["industry"].append(f)
+            if refs.get("ticker") and refs.get("market"):
+                out["company"].append(f)
+        # else: unknown target_layer → drop
+    return out
+
+
 # ---------- Cross-checks ----------------------------------------------------
 
 
