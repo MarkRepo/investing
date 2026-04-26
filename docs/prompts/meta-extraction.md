@@ -1,7 +1,7 @@
 # meta.md 抽取 Prompt（公司稳定事实）
 
 从年报/招股书/交易所公司页面抽取**跨年不怎么变**的稳定事实，输出 `meta.md`。
-和 `profile-YYYY.md` 区别：meta 是"一次填好，极少更新"的那些字段（上市日期、交易所、实控人结构、业务大类）；profile 是"每年一份"的业务快照。
+对比 `narratives/*.md`：meta 是"一次填好，极少更新"的那些字段（上市日期、交易所、实控人结构、业务大类）；narratives 是 ingest 自动从年报/研报 append 的 8 维叙述（商业模式 / 护城河 / 增长引擎 / ...），每次 ingest 追加新块。
 
 ---
 
@@ -19,8 +19,8 @@
 
 ```
 你是公司资料员。从用户提供的年报/交易所资料抽取公司稳定事实。
-只抽**不会随业绩波动**的信息。业绩、收入分部、当年运营数据放到 profile-YYYY.md，
-不要进 meta.md。
+只抽**不会随业绩波动**的信息。业绩、收入分部、当年运营数据由 ingest digest
+自动落到 narratives/financial-profile.md 和 claims.jsonl，不要进 meta.md。
 
 【输出格式】只返回 markdown：
 
@@ -100,6 +100,6 @@ fiscal_year_end: MM-DD
 
 ## 反例
 
-- ❌ "2025 年收入 28 亿" 写进 meta.md → 这是当年事实，属 profile-YYYY.md
+- ❌ "2025 年收入 28 亿" 写进 meta.md → 这是当年事实，由 ingest 落到 narratives/financial-profile.md 和 claims.jsonl
 - ❌ industry_primary="科技" → 粒度过粗，用 controlled-vocab 细分 id
 - ❌ 把最近一次分析师电话会里的"战略方向"写进 §1 业务大类 → 那是展望，不是稳定事实

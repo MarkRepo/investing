@@ -171,7 +171,6 @@ app/routes/companies.py::new_submit
 app/io/company.py::create_company
     ↓ mkdir companies/<key>/
     ↓ 从 templates/ 拷贝 meta.md / v0.md / valuation.md / trade-log.md 骨架
-    ↓ 写入 profile-YYYY.md
     ↓ 创建 narratives/ 8 维骨架（business-model / moat / ... / valuation）
     ↓
 302 → /companies/<key>
@@ -338,17 +337,19 @@ def base(tmp_path, monkeypatch):
 /healthz                     main.py
 /companies                   companies.py
 /companies/new               companies.py
-/companies/{key}             companies.py
+/companies/{key}             companies.py (+ 8 维 narratives)
 /companies/{key}/meta        companies.py
-/companies/{key}/profile/{year}  companies.py
 /companies/{key}/v0          v0.py
 /companies/{key}/competence  competence.py
 /companies/{key}/valuation   valuation.py
 /companies/{key}/financials  financials.py
 /companies/{key}/triggers    triggers.py
-/industries                  industries.py (501, UI 迁移中，spec §D)
-/industries/{slug}           industries.py (501)
-/industries/{slug}/{kind}    industries.py (501)
+/industries                  industries.py (index)
+/industries/{slug}           industries.py (meta + 11 维 narratives + obs)
+/arenas                      arenas.py (index)
+/arenas/{slug}               arenas.py (definition + 5 维 narratives + checklist)
+/qa                          qa.py (跨 scope 汇总)
+/qa/{scope}                  qa.py (scope = MARKET_TICKER 或 industry:SLUG)
 /watchlist                   watchlist.py
 /watchlist/add/{stage}       watchlist.py
 /watchlist/move              watchlist.py

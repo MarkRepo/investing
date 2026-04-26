@@ -172,9 +172,8 @@ uvicorn main:app --reload
 | `/prompts` | LLM 提示词模板 |
 
 ### 单公司入口（`<key>` = `US_HIMS` 形式）
-- `/companies/<key>` 详情
+- `/companies/<key>` 详情（含 8 维 narrative + 行业/arena 跨层链接）
 - `/companies/<key>/meta` 编辑 ticker/market/industry/themes
-- `/companies/<key>/profile/<year>` 年度客观事实（与主观自评分离）
 - `/companies/<key>/v0` 买入逻辑
 - `/companies/<key>/competence` 能力圈问卷
 - `/companies/<key>/valuation` 三情景估值
@@ -227,7 +226,7 @@ uvicorn main:app --reload
 ```
 companies/US_HIMS/         # 单公司所有数据
 ├── meta.md                # 元信息（frontmatter）
-├── profile-2025.md        # 年度事实
+├── narratives/            # 8 维叙述（ingest 自动 append）
 ├── v0.md                  # 买入逻辑
 ├── valuation.md           # 估值
 ├── claims.jsonl           # B 研究结果
