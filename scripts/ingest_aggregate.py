@@ -559,6 +559,23 @@ def write_company_narrative(
     return count
 
 
+def write_figure_contexts(
+    *,
+    slug: str,
+    contexts: list[dict],
+    source_meta: dict,
+    base: Path | None = None,
+) -> int:
+    """Stamp source_id on each preprocess figure_context and append to
+    industries/{slug}/figure_contexts.jsonl."""
+    from app.io import figure_contexts as fc_io
+
+    enriched = []
+    for c in contexts or []:
+        enriched.append({**c, "source_id": source_meta["source_id"]})
+    return fc_io.append_figure_contexts(slug, enriched, base=base)
+
+
 def facts_to_claims(facts: list[dict]) -> list[dict]:
     """Convert company-layer digest facts to claim dicts accepted by
     claims_io.validate_batch (and subsequently append_batch)."""
