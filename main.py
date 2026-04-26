@@ -12,7 +12,6 @@ from app.routes.arenas import router as arenas_router
 from app.routes.catalysts import router as catalysts_router
 from app.routes.claim_audit import router as claim_audit_router
 from app.routes.companies import router as companies_router
-from app.routes.competence import router as competence_router
 from app.routes.competence_map import router as competence_map_router
 from app.routes.discipline import router as discipline_router
 from app.routes.earnings_review import router as earnings_review_router
@@ -48,7 +47,6 @@ if _PROMPTS_DIR.exists():
 
 app.include_router(companies_router)
 app.include_router(v0_router)
-app.include_router(competence_router)
 app.include_router(valuation_router)
 app.include_router(financials_router)
 app.include_router(watchlist_router)
