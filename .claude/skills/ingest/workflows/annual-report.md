@@ -168,93 +168,169 @@ claims_io.save_source_markdown(ticker, market, Path(file_path).name, content)
 
 ---
 
-## Step 7：Dispatch subagents（并发 ≤ 5）
+## Step 7：Digest dispatch（单 subagent，整份年报）
 
-读 `.claude/skills/ingest/section-routing.yaml` 的对应 key（如 `us-10k` 或 `a-share-annual`）。
+### 7a：准备 subagent context
 
-对每个 `action == "extract"` 的 section：
-- 用 Agent 工具，`subagent_type = "Explore"`
-- prompt 由下列拼成：
-  1. `.claude/skills/ingest/prompts/sections/{subagent}.md` 的内容
-  2. 公司 context：`ticker / market / name / fiscal_year / currency`
-  3. `subjects_whitelist`：`claims_io.load_subjects()` 的 id 列表
-  4. section 的 `text`（含 heading_raw）
-  5. 该 section 的 `targets`（决定 subagent 返回哪些字段）
-- 明确要求 subagent **只返回严格 JSON**，schema 见下
+和行研相比，年报的 digest 多了这些输入：
+- `company_context`（ticker / market / name / industry_slugs / arenas）
+- `subjects_whitelist`（claims subject_tag 白名单）
+- `financial_line_rows`（preprocess 从三张表粗抽的候选行）
+- `checklist_items`（若 Step 4.5 有 `item_pool`）
 
-**并发控制**：同一时间最多 5 个 Agent 调用并行（用 run_in_background=true，主 agent 用 task notification 收集）。超过 5 个 section → 分批，第一批跑完再派第二批。
+```python
+import json
+from pathlib import Path
+from app.io import arenas as arenas_io, company as company_io, industry as industry_io, claims as claims_io
+from app import config as cfg
 
-**Oversize 检查（派单前）**：对每个 `action: extract` 的 section，比较 `section.char_count` 和 routing entry 的 `max_chars`（见 `section-routing.yaml` 文末"通用 dispatch 字段说明"）。超阈值且 `oversize_action == skip` → 不派 subagent，在 Step 8 的 `flags` 里加一条 `"[oversized] {section} skipped: {oversize_reason} (char_count={n} > max_chars={m})"`。年报当前无 entry 设置 `max_chars`（所有 section 正常派单）；此机制主要为季报 Part II Item 1A 的 10-K 复制场景准备。
+preprocess = json.loads(Path(f"/tmp/ingest-{sha8}.sections.json").read_text())
 
-**同名 section 合并（派单前）**：预处理有时切出多个 `name` 相同的 section（本 workflow 里较少见；研报场景更常见）。按 `.claude/skills/ingest/dispatch-merge-rules.md` 的决策树处理：同名 ≥ 2 个且合并 chars ≤ 50000 → 合并派 1 个 subagent；超过则按一级章节号分组降级。Oversize 检查在合并之前生效。
+# 7a.1 整份报告文本（所有 extract sections 按 order 串）
+full_text_chunks = []
+for s in preprocess["sections"]:
+    if s.get("action") == "extract":
+        full_text_chunks.append(f"### {s['heading_raw']}\n\n{s['text']}")
+full_text = "\n\n".join(full_text_chunks)
 
-### subagent 返回 JSON schema
-
-```json
-{
-  "section": "<section name, e.g. Item_7_MDA>",
-  "claims": [
-    {
-      "claim_text": "...",
-      "subject_tag": "revenue_growth",
-      "polarity": "bull|bear|neutral",
-      "claim_type": "quantitative|qualitative",
-      "timeframe": "FY2025|2025Q4|long-term",
-      "evidence": [{"text": "...", "type": "primary|secondary|inferred"}],
-      "confidence": "high|medium|low"
-    }
-  ],
-  "profile_fragments": {
-    "§1_business_essence": "...",
-    "§2_revenue_structure": "| 业务线 | 收入 | 占比 |\n| --- | --- | --- |\n...",
-    "§9_risk_factors": "..."
-  },
-  "financial_rows": [
-    {
-      "period": "2025A",
-      "period_type": "annual",
-      "revenue": 130497000000,
-      "gross_profit": 97858000000,
-      "operating_income": 81453000000,
-      "net_income": 72880000000,
-      "total_assets": 96012000000,
-      "total_equity": 79327000000,
-      "operating_cashflow": 64089000000,
-      "shares_outstanding": 24475000000
-    }
-  ],
-  "meta_updates": {
-    "website": "https://hims.com",
-    "listed_date": "2021-01-21"
-  },
-  "flags": ["<subagent 观察到的异常，自由文本>"]
+# 7a.2 company_context
+meta_info = company_io.read_meta_with_body(ticker, market)
+fm = meta_info["frontmatter"]
+company_context = {
+    "ticker": ticker,
+    "market": market,
+    "name": fm.get("name"),
+    "industry_slugs": fm.get("industry_slugs") or [],
+    "arenas": fm.get("arenas") or [],
 }
+
+# 7a.3 industry_context（若公司绑定了 industry，取第一个作 primary）
+industry_context = None
+if company_context["industry_slugs"]:
+    primary_slug = company_context["industry_slugs"][0]
+    try:
+        im = industry_io.read_meta(primary_slug)
+        industry_context = {"slug": primary_slug, "name": im.get("name")}
+    except FileNotFoundError:
+        pass
+
+# 7a.4 known_arenas（公司已参与的）
+known_arenas = []
+for slug in company_context["arenas"]:
+    try:
+        a = arenas_io.read_definition(slug)
+        known_arenas.append({
+            "slug": slug,
+            "battleground_focus": a.get("battleground_focus", ""),
+            "participants": [p.get("name") or p.get("ticker") for p in a.get("participants", [])],
+            "industry": a.get("industry"),
+        })
+    except FileNotFoundError:
+        pass
+
+# 7a.5 dimension_ref + industry_fields_hint
+dimension_ref = {
+    "industry": list(cfg.INDUSTRY_DIMENSIONS),
+    "arena":    list(cfg.ARENA_DIMENSIONS),
+    "company":  list(cfg.COMPANY_DIMENSIONS),
+}
+industry_fields_hint = cfg.INDUSTRY_FIELDS
+
+# 7a.6 subjects_whitelist
+subjects_whitelist = [s["id"] for s in claims_io.load_subjects()]
+
+# 7a.7 figure_contexts + detected_tickers（preprocess 产出）
+figure_contexts = preprocess.get("figure_contexts", [])
+detected_tickers = preprocess.get("detected_tickers", [])
+
+# 7a.8 financial_line_rows（年报核心输入）
+financial_line_rows = preprocess.get("financial_line_rows", [])
+
+# 7a.9 checklist_items（若 Step 4.5 有 item_pool）
+checklist_items_flat = [
+    {"id": it["id"],
+     "arena_slug": it["arena_slug"],
+     "question": it["question"],
+     "why_matters": it.get("why_matters", ""),
+     "typical_evidence_section": it.get("typical_evidence_section", []),
+     "tags": it.get("tags", [])}
+    for it in item_pool.values()
+]
 ```
 
-**每个 subagent 只产出该 section targets 里的字段**，其它字段返回空 `[]` / `{}`。
+### 7b：拼 prompt
 
-### Step 7b：Arena checklist item 路由（若 Step 4.5 有 `item_pool`）
+```python
+digest_common = Path(".claude/skills/ingest/prompts/digest/_common.md").read_text()
+digest_annual = Path(".claude/skills/ingest/prompts/digest/annual-digest.md").read_text()
 
-对每个将派的 subagent，算出该 subagent 应收的 item 子集，注入 prompt：
+def _indent(text: str, prefix: str = "  ") -> str:
+    return "\n".join(prefix + ln for ln in text.splitlines())
 
-1. **按 `typical_evidence_section` 粗分**：
-   - 主要 section → 候选 item（如 MD&A subagent 拿 `typical_evidence_section` 含 `mdna` 的 item）
-   - `["any"]` → 只投给**综述类**（年报的 `business_overview` subagent）
-2. **item 密度决策树**：≤20 正常派；21-30 正常派 + 加"逐条对照"指令；>30 pause
-3. **prompt 拼接**：在该 subagent 的主 prompt 末尾追加：
-   ```
-   ## Arena 能力圈填答
-   本次 ingest 属 arena：{arena_name} ({slug})
-   本 subagent 的 checklist 子集（共 N 条）：
-     - {id1}: {question1}
-     - ...
-   产出 `competence_findings.answered` + 可选 `proposed_additions`（schema 见 _common.md）。
-   ```
-4. **非综述类 subagent 额外追加**：
-   ```
-   本 section 未涉及的 item 默认不填 unanswered（留给综述类或 tag 对应的 subagent 答）；
-   但若该 item 的 typical_evidence_section 只包含你这一个 section 类型 → 必须老实填 unanswered。
-   ```
+prompt = f"""
+{digest_common}
+
+---
+
+{digest_annual}
+
+---
+
+## 本次输入
+
+file_meta:
+  source_id: {source_id}
+  sha8: {sha8}
+  fiscal_year: {meta['fiscal_year']}
+
+company_context: {json.dumps(company_context, ensure_ascii=False)}
+
+industry_context: {json.dumps(industry_context, ensure_ascii=False)}
+
+known_arenas: {json.dumps(known_arenas, ensure_ascii=False, indent=2)}
+
+dimension_ref: {json.dumps(dimension_ref, ensure_ascii=False)}
+
+industry_fields_hint: {json.dumps(industry_fields_hint, ensure_ascii=False, indent=2)}
+
+subjects_whitelist: {json.dumps(subjects_whitelist, ensure_ascii=False)}
+
+figure_contexts: {json.dumps(figure_contexts, ensure_ascii=False, indent=2)}
+
+detected_tickers: {json.dumps(detected_tickers, ensure_ascii=False, indent=2)}
+
+financial_line_rows: {json.dumps(financial_line_rows, ensure_ascii=False, indent=2)}
+
+checklist_items:
+{json.dumps(checklist_items_flat, ensure_ascii=False, indent=2)}
+
+full_text: |
+{_indent(full_text, "  ")}
+
+---
+
+## 产出要求（除 _common.md 的 schema 外，年报专属）
+
+1. **`financial_rows[]`** 必填（至少本期 + 上一期比较；用基础货币单位，A 股"万元"→元自行换算）
+2. **`narratives.company.{market}_{ticker}`** 必覆盖 ≥3 维（business_model / moat / growth_engine / financial_profile 优先）
+3. **`competence_findings.answered[]`**：对上面 checklist_items 里每条 item，尽量给出 `level=concrete|vague|unanswered` 的填答；附 evidence_quote
+4. **`proposed_arenas`** 仅当年报明确谈及一个还不在 company_context.arenas 里的博弈焦点
+
+现在请输出严格 JSON（顶层 keys 至少含：key_facts, narratives, proposed_arenas, financial_rows, meta_updates, competence_findings, flags）。
+"""
+```
+
+### 7c：Dispatch
+
+```
+tool: Agent
+subagent_type: Explore
+prompt: <上面拼好的>
+```
+
+**并发**：年报只有一个 digest subagent。**不分批、不分段**。若返回超时（>10min）→ AskUserQuestion 问是继续等 / 重派 / 中止。
+
+**Section-level merge 不再发生**：digest 直接读整份文本，无"同名 section 合并"问题。`dispatch-merge-rules.md`（在 `prompts/_v1_archived/` 下）在新架构里不再被引用。
 
 ---
 
