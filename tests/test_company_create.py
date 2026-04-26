@@ -26,9 +26,6 @@ def _fake_templates(tmp_path: Path) -> Path:
     (d / "trade-log.md.tmpl").write_text(
         "---\nticker: {{ ticker }}\nmarket: {{ market }}\n---\n\n# trade-log\n"
     )
-    (d / "profile-YYYY.md.tmpl").write_text(
-        "---\nticker: {{ ticker }}\nmarket: {{ market }}\nyear: {{ year }}\n---\n\n# profile\n"
-    )
     return d
 
 
@@ -52,7 +49,6 @@ def test_create_company_lays_down_all_files(tmp_path):
     assert (path / "v0.md").exists()
     assert (path / "valuation.md").exists()
     assert (path / "trade-log.md").exists()
-    assert (path / "profile-2026.md").exists()
     assert (path / "claims.jsonl").exists()
     assert (path / "claims.jsonl").read_text() == ""
 

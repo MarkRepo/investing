@@ -24,25 +24,6 @@
   {% include "prices/_panel.html" %}
 {% endif %}
 
-<h2>年度快照（profile-YYYY.md）</h2>
-<p class="hint">DESIGN §8 坑 9：只从年报 / 公司公告 / 多份研报交叉验证。新闻不能升级为事实。</p>
-{% if profiles %}
-<ul>
-  {% for p in profiles %}
-    <li>
-      <a href="/companies/{{ key }}/profile/{{ p.year }}/view">profile-{{ p.year }}.md</a>
-      <span class="hint">(<a href="/companies/{{ key }}/profile/{{ p.year }}">编辑</a>)</span>
-      {% if p.profile_date %} · 更新于 {{ p.profile_date }}{% endif %}
-      {% if p.source_file %} · 来源：<code>{{ p.source_file }}</code>{% else %}
-        <span class="gate-warn">⚠️ 未标 source_file（事实层来源缺失）</span>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p><em>还没有年度快照。</em></p>
-{% endif %}
-
 <h2>行业竞技场（arena）</h2>
 {% if arena_rows %}
 <ul class="arena-summary">

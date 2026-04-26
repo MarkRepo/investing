@@ -87,9 +87,6 @@ def _fake_templates(tmp_path: Path) -> Path:
     (d / "trade-log.md.tmpl").write_text(
         "---\nticker: {{ ticker }}\nmarket: {{ market }}\n---\n\n# trade-log\n"
     )
-    (d / "profile-YYYY.md.tmpl").write_text(
-        "---\nticker: {{ ticker }}\nmarket: {{ market }}\nyear: {{ year }}\n---\n\n# profile\n"
-    )
     return d
 
 

@@ -617,7 +617,6 @@ def test_prompts_index_lists_all_docs(client):
     assert r.status_code == 200
     # Index should mention every prompt file shipped in docs/prompts/
     assert "claim-extraction.md" in r.text
-    assert "profile-extraction.md" in r.text
     assert "meta-extraction.md" in r.text
     assert "consensus-map.md" in r.text
     # And link to raw markdown
@@ -1001,26 +1000,6 @@ def test_meta_edit_round_trip(client):
 # the old VALID_SECTORS compat shim, removed in Plan 1 Task 22.
 
 
-def test_profile_edit_requires_source(client):
-    client.post(
-        "/companies/new",
-        data={"ticker": "PROF1", "market": "US", "name": "Prof", "industry_slugs": "consumer"},
-        follow_redirects=False,
-    )
-
-    # GET page renders even with no source uploaded
-    r = client.get("/companies/US_PROF1/profile/2026")
-    assert r.status_code == 200
-    assert "sources/" in r.text or "必选" in r.text or "为空" in r.text
-
-    # POST without source_file → 400
-    r2 = client.post(
-        "/companies/US_PROF1/profile/2026",
-        data={"source_file": "", "source": "annual_report", "body": "x"},
-    )
-    assert r2.status_code == 400
-
-
 def test_discipline_empty(client):
     r = client.get("/discipline")
     assert r.status_code == 200
@@ -1031,29 +1010,3 @@ def test_research_audit_empty(client):
     r = client.get("/research-audit")
     assert r.status_code == 200
     assert "Claim 抽检" in r.text
-
-
-def test_profile_edit_accepts_uploaded_source(client, tmp_path):
-    client.post(
-        "/companies/new",
-        data={"ticker": "PROF2", "market": "US", "name": "Prof2", "industry_slugs": "saas"},
-        follow_redirects=False,
-    )
-    # drop a source file directly on disk
-    src = tmp_path / "companies" / "US_PROF2" / "sources" / "2026-annual.md"
-    src.write_text("# 年报\n", encoding="utf-8")
-
-    r = client.post(
-        "/companies/US_PROF2/profile/2026",
-        data={
-            "source_file": "sources/2026-annual.md",
-            "source": "annual_report",
-            "body": "## 业务构成\n核心 SaaS。\n",
-        },
-        follow_redirects=False,
-    )
-    assert r.status_code == 303
-
-    detail = client.get("/companies/US_PROF2")
-    assert "profile-2026.md" in detail.text
-    assert "2026-annual.md" in detail.text
