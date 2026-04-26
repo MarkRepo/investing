@@ -13,14 +13,15 @@ def _fake_templates(tmp_path: Path) -> Path:
     # Minimal templates sufficient for create_company to render
     (d / "meta.md.tmpl").write_text(
         "---\nticker: {{ ticker }}\nmarket: {{ market }}\nname: {{ name }}\n"
-        "industry_primary: {{ sector }}\ncurrency: {{ currency }}\n---\n\n# {{ ticker }}\n"
+        "industry_slugs: {{ industry_slugs | default([]) | tojson }}\n"
+        "currency: {{ currency }}\n---\n\n# {{ ticker }}\n"
     )
     (d / "v0.md.tmpl").write_text(
         "---\nticker: {{ ticker }}\nmarket: {{ market }}\nstatus: draft\n"
         "last_reviewed: {{ today }}\n---\n\n# V0: {{ ticker }}\n"
     )
     (d / "competence-check.md.tmpl").write_text(
-        "---\nticker: {{ ticker }}\nmarket: {{ market }}\nsector: {{ sector }}\n"
+        "---\nticker: {{ ticker }}\nmarket: {{ market }}\n"
         "check_date: {{ today }}\nin_competence: false\n---\n\n# competence\n"
     )
     (d / "valuation.md.tmpl").write_text(
@@ -41,7 +42,7 @@ def test_create_company_lays_down_all_files(tmp_path):
         ticker="HIMS",
         market="US",
         name="Hims & Hers",
-        sector="consumer",
+        industry_slugs=["us-telehealth"],
         currency="USD",
         base=tmp_path,
         templates_dir=tpl,
@@ -67,7 +68,7 @@ def test_create_company_inserts_frontmatter(tmp_path):
         ticker="HIMS",
         market="US",
         name="Hims & Hers",
-        sector="consumer",
+        industry_slugs=["us-telehealth"],
         currency="USD",
         base=tmp_path,
         templates_dir=tpl,
@@ -75,12 +76,28 @@ def test_create_company_inserts_frontmatter(tmp_path):
     )
     meta = (path / "meta.md").read_text()
     assert "ticker: HIMS" in meta
-    assert "industry_primary: consumer" in meta
+    assert "us-telehealth" in meta
     assert "currency: USD" in meta
 
     v0 = (path / "v0.md").read_text()
     assert "ticker: HIMS" in v0
     assert "status: draft" in v0
+
+
+def test_create_company_defaults_empty_industry_slugs(tmp_path):
+    tpl = _fake_templates(tmp_path)
+    path = company_io.create_company(
+        ticker="HIMS",
+        market="US",
+        name="Hims & Hers",
+        currency="USD",
+        base=tmp_path,
+        templates_dir=tpl,
+        today=date(2026, 4, 23),
+    )
+    meta = (path / "meta.md").read_text()
+    # Empty list should render as `[]`
+    assert "industry_slugs: []" in meta
 
 
 def test_create_company_refuses_overwrite(tmp_path):
@@ -89,7 +106,7 @@ def test_create_company_refuses_overwrite(tmp_path):
         ticker="HIMS",
         market="US",
         name="x",
-        sector="consumer",
+        industry_slugs=[],
         currency="USD",
         base=tmp_path,
         templates_dir=tpl,
@@ -100,22 +117,7 @@ def test_create_company_refuses_overwrite(tmp_path):
             ticker="HIMS",
             market="US",
             name="x",
-            sector="consumer",
-            currency="USD",
-            base=tmp_path,
-            templates_dir=tpl,
-            today=date(2026, 4, 23),
-        )
-
-
-def test_create_company_rejects_unknown_sector(tmp_path):
-    tpl = _fake_templates(tmp_path)
-    with pytest.raises(ValueError):
-        company_io.create_company(
-            ticker="X",
-            market="US",
-            name="x",
-            sector="tech_unknown",
+            industry_slugs=[],
             currency="USD",
             base=tmp_path,
             templates_dir=tpl,
@@ -130,7 +132,7 @@ def test_create_company_rejects_unknown_market(tmp_path):
             ticker="X",
             market="LSE",
             name="x",
-            sector="consumer",
+            industry_slugs=[],
             currency="USD",
             base=tmp_path,
             templates_dir=tpl,

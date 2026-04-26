@@ -10,7 +10,7 @@ def _make_company(tmp_path: Path, market: str = "US", ticker: str = "HIMS") -> P
     d = tmp_path / "companies" / f"{market}_{ticker}"
     (d / "sources").mkdir(parents=True)
     (d / "meta.md").write_text(
-        "---\nticker: HIMS\nmarket: US\nname: Hims\nindustry_primary: consumer\n---\n\n# Hims\n",
+        "---\nticker: HIMS\nmarket: US\nname: Hims\nindustry_slugs: []\n---\n\n# Hims\n",
         encoding="utf-8",
     )
     return d
@@ -33,7 +33,7 @@ def test_write_meta_round_trip(tmp_path):
         "HIMS", "US",
         {
             "name": "Hims & Hers",
-            "industry_primary": "consumer",
+            "industry_slugs": ["us-telehealth", "us-glp1-compounding"],
             "themes": ["weight_loss", "telehealth"],
             "currency": "USD",
         },
@@ -42,16 +42,35 @@ def test_write_meta_round_trip(tmp_path):
     )
     doc = company.read_meta_with_body("HIMS", "US", base=tmp_path)
     assert doc["frontmatter"]["name"] == "Hims & Hers"
+    assert doc["frontmatter"]["industry_slugs"] == [
+        "us-telehealth",
+        "us-glp1-compounding",
+    ]
     assert doc["frontmatter"]["themes"] == ["weight_loss", "telehealth"]
     assert "稳定事实" in doc["body"]
 
 
-def test_write_meta_rejects_bad_sector(tmp_path):
+def test_write_meta_coerces_industry_slugs_string(tmp_path):
     _make_company(tmp_path)
-    with pytest.raises(ValueError, match="industry_primary"):
+    company.write_meta(
+        "HIMS", "US",
+        {"industry_slugs": "us-telehealth, us-glp1-compounding", "name": "Hims"},
+        "body",
+        base=tmp_path,
+    )
+    doc = company.read_meta_with_body("HIMS", "US", base=tmp_path)
+    assert doc["frontmatter"]["industry_slugs"] == [
+        "us-telehealth",
+        "us-glp1-compounding",
+    ]
+
+
+def test_write_meta_rejects_bad_industry_slugs(tmp_path):
+    _make_company(tmp_path)
+    with pytest.raises(ValueError, match="industry_slugs"):
         company.write_meta(
             "HIMS", "US",
-            {"industry_primary": "unknown", "name": "x"},
+            {"industry_slugs": [1, 2], "name": "x"},
             "body",
             base=tmp_path,
         )

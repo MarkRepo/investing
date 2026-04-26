@@ -14,7 +14,7 @@ _META_KEYS = (
     "ticker",
     "market",
     "name",
-    "industry_primary",
+    "industry_slugs",
     "arenas",
     "themes",
     "listed_date",
@@ -39,21 +39,26 @@ def create_company(
     ticker: str,
     market: str,
     name: str,
-    sector: str,
+    industry_slugs: list[str] | None = None,
     currency: str = "USD",
     base: Path | None = None,
     templates_dir: Path | None = None,
     today: date | None = None,
 ) -> Path:
-    """Lay down a new company directory with all template files rendered."""
+    """Lay down a new company directory with all template files rendered.
+
+    ``industry_slugs`` is a free-form list of industry slugs the company
+    belongs to (multi-industry supported). No whitelist enforcement — the
+    industry layer owns the canonical registry.
+    """
     if market not in VALID_MARKETS:
         raise ValueError(f"unknown market {market!r}; valid: {VALID_MARKETS}")
-    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
-        raise ValueError(f"unknown sector {sector!r}; valid: {cfg._INTERNAL_SECTORS_FOR_TESTS}")
 
     ticker = ticker.strip().upper()
     if not ticker:
         raise ValueError("ticker cannot be empty")
+
+    industry_slugs = list(industry_slugs or [])
 
     today = today or date.today()
     base_path = Path(base) if base else cfg.BASE_PATH
@@ -72,7 +77,7 @@ def create_company(
         "ticker": ticker,
         "market": market,
         "name": name,
-        "sector": sector,
+        "industry_slugs": industry_slugs,
         "currency": currency,
         "today": today.isoformat(),
         "year": today.year,
@@ -151,18 +156,26 @@ def write_meta(
     body: str,
     base: Path | None = None,
 ) -> Path:
-    """Write meta.md. Preserves ``industry_primary`` in cfg._INTERNAL_SECTORS_FOR_TESTS if set.
+    """Write meta.md.
+
+    ``industry_slugs`` accepts either a list[str] or a comma-separated string
+    (which gets coerced to a list). No whitelist — industry slugs are managed
+    by the industry layer.
 
     ``themes`` is allowed as a list[str] — used by portfolio theme exposure rule.
     """
     fm = {**frontmatter}
     fm["ticker"] = ticker
     fm["market"] = market
-    industry = fm.get("industry_primary")
-    if industry and industry not in cfg._INTERNAL_SECTORS_FOR_TESTS:
-        raise ValueError(
-            f"industry_primary must be one of {cfg._INTERNAL_SECTORS_FOR_TESTS}, got {industry!r}"
-        )
+    industry_slugs = fm.get("industry_slugs")
+    if industry_slugs is not None:
+        if isinstance(industry_slugs, str):
+            industry_slugs = [s.strip() for s in industry_slugs.split(",") if s.strip()]
+        if not isinstance(industry_slugs, list) or not all(
+            isinstance(s, str) for s in industry_slugs
+        ):
+            raise ValueError("industry_slugs must be a list of strings")
+        fm["industry_slugs"] = industry_slugs
     themes = fm.get("themes")
     if themes is not None:
         if isinstance(themes, str):
@@ -337,7 +350,7 @@ def list_companies(base: Path | None = None) -> list[dict]:
                 "ticker": ticker,
                 "market": market,
                 "name": meta_fm.get("name") or ticker,
-                "industry_primary": meta_fm.get("industry_primary"),
+                "industry_slugs": list(meta_fm.get("industry_slugs") or []),
                 "v0_status": v0_status,
                 "competence_score": comp_score,
                 "in_competence": comp_pass,

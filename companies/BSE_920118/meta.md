@@ -2,7 +2,7 @@
 ticker: '920118'
 market: BSE
 name: 太湖远大
-industry_primary: cyclical
+industry_slugs: []
 arenas:
 - cn-power-cable-polymer-material
 currency: CNY

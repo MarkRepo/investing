@@ -2,7 +2,7 @@
 ticker: '600519'
 market: SSE
 name: 贵州茅台酒股份有限公司
-industry_primary: consumer
+industry_slugs: []
 currency: CNY
 website: http://www.moutaichina.com/
 ---

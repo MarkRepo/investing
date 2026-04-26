@@ -97,20 +97,6 @@ def test_create_company_end_to_end(client):
     assert "consumer" in r3.text
 
 
-def test_create_company_rejects_bad_sector(client):
-    r = client.post(
-        "/companies/new",
-        data={
-            "ticker": "X",
-            "market": "US",
-            "name": "x",
-            "sector": "fake",
-            "currency": "USD",
-        },
-    )
-    assert r.status_code == 400
-
-
 def test_create_company_duplicate(client):
     payload = {
         "ticker": "DUP",

@@ -2,7 +2,7 @@
 ticker: HIMS
 market: US
 name: Hims & Hers Health, Inc.
-industry_primary: consumer
+industry_slugs: []
 currency: USD
 website: https://hims.com
 ---

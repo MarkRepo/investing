@@ -2,7 +2,7 @@
 ticker: "{{ ticker }}"
 market: {{ market }}
 name: {{ name }}
-industry_primary: {{ sector }}
+industry_slugs: {{ industry_slugs | default([]) | tojson }}
 arenas: []
 listed_date:
 currency: {{ currency }}
