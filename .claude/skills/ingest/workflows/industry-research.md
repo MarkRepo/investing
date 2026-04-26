@@ -337,3 +337,204 @@ for (ticker, market), facts in company_facts.items():
 若用户不希望静默建公司骨架，可在 autobuild 前 AskUserQuestion 列出候选公司 + 让用户批量选择 / 排除。默认行为是静默建（减少用户打扰）。
 
 ---
+
+## Step 9：交叉校验（行研精简版）
+
+行研的 cross-check 与 annual 不同：
+
+- 不跑 `revenue_consistency`（行研没 total revenue 锚）
+- 不跑 `period_consistency`（行研事实跨多 FY / 多 timeframe；众数概念无意义）
+- **跑** empty-layer check（检查 digest 是否忘了某层）
+- **新增** `industry_observation_sanity`（主 agent 在对话里写简单校验，见下）
+
+```python
+issues = []
+
+# 9.1 empty layer check（digest 模式专用；不调 agg.check_empty_sections——
+# 后者是针对 section-per-subagent 的）
+if not buckets["industry"]:
+    issues.append("industry 桶为空（行研核心产物缺失）")
+if not digest.get("narratives", {}).get("industry"):
+    issues.append("narratives.industry 为空（digest 未产出浓缩叙事）")
+
+# 9.2 industry_observation_sanity：
+# 对每条 industry fact，若 field_hint 非空，value_numeric 必须非 None；
+# timeframe 必须非空；unit 必须非空
+for f in buckets["industry"]:
+    if f.get("field_hint") and f.get("value_numeric") is None:
+        issues.append(f"industry fact idx={f['idx']} field={f['field_hint']} 缺 value_numeric")
+    if not f.get("timeframe"):
+        issues.append(f"industry fact idx={f['idx']} 缺 timeframe")
+    if f.get("field_hint") and not f.get("unit"):
+        issues.append(f"industry fact idx={f['idx']} field 有 value 但缺 unit")
+```
+
+**触发处理**：`issues` 非空 → AskUserQuestion 展示前 10 条，让用户选"接受差异（继续写入但标 flag） / 重派 digest（回到 Step 5b） / 中止"。
+
+---
+
+## Step 10：统一写入
+
+**写入顺序**（前一步失败则中止；不回滚已写）：
+
+### 10.1 原文（Step 4c 已做）
+
+### 10.2 figure_contexts（行研主产物）
+
+```python
+from datetime import datetime, timezone
+
+source_meta = {
+    "source_id": source_id,
+    "institution": institution,
+    "date": publish_date,
+    "sha8": sha8,
+    "source_file": Path(file_path).name,
+}
+
+n_fig = agg.write_figure_contexts(
+    slug=industry_slug,
+    contexts=figure_contexts,        # 来自 preprocess
+    source_meta=source_meta,
+)
+```
+
+### 10.3 industry observations（atomic 数值）
+
+```python
+extracted_by = "claude-opus-4-7"
+extracted_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+n_obs = agg.write_industry_observations(
+    buckets["industry"],   # + cross layer 已被 route_key_facts 复制进来
+    source_meta,
+    extracted_by=extracted_by,
+    extracted_at=extracted_at,
+)
+```
+
+`write_industry_observations` 内部自动按 `target_refs.industry_slug` 分拣——一份行研可能涉及**多个** industry（如 "半导体材料行业深度" 触及 `cn-cmp-material` / `cn-photoresist` 两个）；write 层按 slug 独立 append 并 dedup。
+
+### 10.4 industry narratives（11 维浓缩段）
+
+`digest["narratives"]["industry"]` 的 shape 可能是：
+- `{dim: md_block}`（单 slug 上下文；11 维扁平）
+- `{slug: {dim: md_block}, slug2: {dim: md_block}}`（多 slug）
+
+IO 函数 `write_industry_narrative` 期望 `{slug: {dim: md_block}}`——主 agent 检测后统一 wrap：
+
+```python
+raw = digest["narratives"].get("industry", {})
+first_keys = set(raw.keys())
+dim_set = set(cfg.INDUSTRY_DIMENSIONS)
+
+if first_keys and first_keys.issubset(dim_set):
+    # 扁平：单 slug
+    industry_nar_payload = {industry_slug: raw}
+else:
+    # 已按 slug 分组
+    industry_nar_payload = raw
+
+n_nar_ind = agg.write_industry_narrative(industry_nar_payload, source_meta)
+```
+
+### 10.5 proposed_arenas 审阅 + bootstrap（写 arena narrative 前）
+
+```python
+proposals = agg.propose_arena_bootstrap(digest["proposed_arenas"])
+# returns [{slug, name, industry, battleground_focus, participants}, ...]
+```
+
+**AskUserQuestion** 展示每个 proposal（slug / focus / participants），让用户批量选：
+- approve 全部
+- approve 部分（逐条勾选）
+- approve 全部但逐条改 slug / focus（用户编辑）
+- 拒绝所有
+
+**对每个 approved proposal**：
+
+```python
+for p in approved_proposals:
+    agg.bootstrap_arena(p)
+    # 此时 arenas/{slug}/ 下已有 definition.md + 5 份 narrative 骨架
+```
+
+**注意**：bootstrap 必须在 10.6（arena narrative append）之前完成——`write_arena_narrative` 在 arena 不存在时抛 FileNotFoundError。
+
+### 10.6 arena narratives（若有）
+
+```python
+arena_nar_raw = digest["narratives"].get("arena", {})
+# shape: {arena_slug: {dim: md_block}}
+
+# 过滤掉被用户 reject 的 proposed arena slug
+rejected_slugs = {p["slug"] for p in proposals if p not in approved_proposals}
+arena_nar = {s: dims for s, dims in arena_nar_raw.items() if s not in rejected_slugs}
+
+n_nar_arena = agg.write_arena_narrative(arena_nar, source_meta)
+```
+
+### 10.7 company narratives
+
+```python
+comp_nar = digest["narratives"].get("company", {})
+# shape: {"MARKET_TICKER": {dim: md_block}, ...}
+n_nar_comp = agg.write_company_narrative(comp_nar, source_meta)
+```
+
+Step 8 已经做完 `ensure_company_exists` —— 所有 key 对应的目录都已存在。
+
+### 10.8 company claims
+
+行研的 company facts 数量通常很少（每个 ticker 1-3 条），但仍要写到 `companies/{key}/claims.jsonl`——`facts_to_claims` 把它们转成 claim schema：
+
+```python
+total_claims = 0
+for (ticker, market), facts in company_facts.items():
+    claims_payload = agg.facts_to_claims(facts)
+    if not claims_payload:
+        continue
+    n, errors = agg.write_claims(
+        ticker, market, claims_payload,
+        source_id=source_id,
+        source_file=Path(file_path).name,
+        extracted_by=extracted_by,
+        extracted_at=extracted_at,
+    )
+    total_claims += n
+    if errors:
+        # 报给用户；不阻塞后续公司（行研 company layer 是 opportunistic）
+        ...
+```
+
+**注意**：`facts_to_claims` 默认 `claim_type="qualitative"`（除非 value_numeric 存在）。行研里大部分 company fact 是 qualitative（护城河 / 业务结构描述）。
+
+### 10.9 industry meta 联动
+
+若 bootstrap 了新 arena，`industries/{slug}/meta.yaml` 的 `linked_arenas` 字段追加；若 autobuilt 了 company，`linked_tickers` 追加：
+
+```python
+industry_meta = industry_io.read_meta(industry_slug)
+changed = False
+
+# 追加 linked_arenas
+existing_arenas = set(industry_meta.get("linked_arenas") or [])
+new_arenas = {p["slug"] for p in approved_proposals}
+if new_arenas - existing_arenas:
+    industry_meta["linked_arenas"] = sorted(existing_arenas | new_arenas)
+    changed = True
+
+# 追加 linked_tickers
+existing_tickers = {(t["market"], t["ticker"])
+                    for t in industry_meta.get("linked_tickers") or []}
+new_tickers_list = industry_meta.setdefault("linked_tickers", [])
+for (ticker, market) in company_facts.keys():
+    if (market, ticker) not in existing_tickers:
+        new_tickers_list.append({"market": market, "ticker": ticker, "role": "mentioned"})
+        changed = True
+
+if changed:
+    industry_io.write_meta(industry_slug, industry_meta)
+```
+
+---
