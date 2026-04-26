@@ -70,3 +70,25 @@ def test_preprocess_industry_full_output_shape(tmp_path):
 
     # report_abstract non-empty
     assert data["report_abstract"]
+
+
+def test_preprocess_industry_technology_alias_normalized(tmp_path):
+    """Fix-forward regression: '技术路线对比' / '技术演进' / '技术趋势' should all
+    normalize to the `technology` dim. If someone adds a new Chinese alias
+    used by a specific broker, add it to a-share-industry.yaml's
+    section_normalize — NOT with a per-doc hack."""
+    report = tmp_path / "r.md"
+    report.write_text(
+        "# 行业研报\n\n"
+        "三、技术演进\n正文 A。\n\n"
+        "四、技术路线对比\n正文 B。\n\n"
+        "五、技术趋势\n正文 C。\n",
+        encoding="utf-8",
+    )
+    out = tmp_path / "out.json"
+    pre.main([str(report), "--type", "industry", "--market", "a-share", "--out", str(out)])
+    data = json.loads(out.read_text(encoding="utf-8"))
+    names = [s["name"] for s in data["sections"]]
+    tech_count = names.count("technology")
+    # "技术演进" is in the yaml already; "技术路线对比" and "技术趋势" must also map
+    assert tech_count >= 2, f"expected ≥2 technology sections, got names={names}"
