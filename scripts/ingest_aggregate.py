@@ -651,3 +651,43 @@ def ensure_company_exists(
         currency=currency, base=project_root,
     )
     return {"key": key, "autobuilt": True}
+
+
+def propose_arena_bootstrap(proposed: list[dict]) -> list[dict]:
+    """Normalize digest proposed_arenas to arena-create args for the main agent
+    to surface to the user. Lower-cases slug; drops proposals without
+    battleground_focus. Returns list of {slug, name, industry, battleground_focus,
+    participants}.
+    """
+    out: list[dict] = []
+    for p in proposed or []:
+        slug_raw = (p.get("tentative_slug") or "").strip().lower()
+        focus = (p.get("battleground_focus") or "").strip()
+        industry = (p.get("parent_industry_slug") or "").strip()
+        if not slug_raw or not focus or not industry:
+            continue
+        participants = p.get("tentative_participants") or []
+        # Synthesize a display name from focus if absent
+        out.append({
+            "slug": slug_raw,
+            "name": p.get("name") or focus[:40],
+            "industry": industry,
+            "battleground_focus": focus,
+            "participants": participants,
+        })
+    return out
+
+
+def bootstrap_arena(proposal: dict, *, base: Path | None = None) -> None:
+    """After user approves, actually create the arena (definition + 5 dim
+    narrative skeletons). Wrapper around arenas_io.write_definition."""
+    from app.io import arenas as arenas_io
+
+    arenas_io.write_definition(
+        slug=proposal["slug"],
+        name=proposal["name"],
+        definition_text=proposal["battleground_focus"],
+        industry=proposal["industry"],
+        battleground_focus=proposal["battleground_focus"],
+        base=base,
+    )
