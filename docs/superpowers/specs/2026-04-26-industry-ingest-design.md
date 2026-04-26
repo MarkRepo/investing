@@ -1,28 +1,50 @@
-# 行业研报 ingest 子系统 · 设计
+# 三层知识系统 ingest 设计
 
 **Status**: 设计已定，待 writing-plans 出实施计划
-**Date**: 2026-04-26
+**Date**: 2026-04-26（v2 全量重写）
 **Supersedes**: `docs/PLAN-INDUSTRY-INGEST.md`（v0，已废弃）
+**v1 → v2 变化**: arena 从"聚合视图"升为"博弈叙事独立数据层（6 维度）"；company 增加"画像 narrative 层（7 维度）"；ingest 四套 workflow（行业研报 / 年报 / 季报 / 公司研报）全部升级为 digest + 主 agent 分拣架构；sector 概念及其所有派生物完全删除
 
 ---
 
 ## 1. 背景与动机
 
-现有系统只处理聚焦单家公司的财报与卖方研报，行业研报（一份文件跨 ≥2 家公司的"行业深度/专题/策略"）被拒收。当下把一份行业研报硬塞进现有结构会把**行业事实错位寄生到公司层**——这不是假设，是现状：
+### 1.1 问题诊断（三层都碎）
 
-- `companies/BSE_920118/claims.jsonl` 前 5 条中有 4 条是纯行业事实（十四五电网投资 3 万亿、2026 电缆市场 1.5 万亿、5G 基站光缆 CAGR 14.5%、特高压装机），跟太湖远大本身无关，但没处放只好塞进 ticker=920118 的 claims
-- `arenas/cn-power-cable-polymer-material/competence-notes.md` 里 `q_power_grid_tam / q_policy_subsidies_barriers / q_domestic_consolidation` 这几条，问的是行业事实却挂在"太湖远大"公司名下，下次导万马股份就得再抄一遍
-- 现有 `industries/{sector}/` 走 5 桶白名单（consumer/saas/cyclical/bank/biotech），粒度太粗、与 arena 不对齐、新建行业要改代码
+当前"一套投资决策工作流"的知识呈现是**事实碎片 + 无维度叙事**，不符合"先学懂公司/战场/行业，再决策"的人脑认知规律。每层都有自己的碎片问题：
 
-根因：系统里没有"产业"这个一等公民。需要把产业事实层独立出来，并重构 arena/company 的职责边界，使三层各司其职、不重复复写同一事实。同时行业研报导入需要**跨报告交叉验证**能力（不同卖方对同一产业的 TAM/CAGR/竞争格局会给不同数字）。
+**industry 层（当前 sector 白名单 5 桶）**：
+- `VALID_SECTORS = (consumer, saas, cyclical, bank, biotech)` 粒度太粗，与 arena 不对齐
+- 新建行业要改代码（白名单硬 coded）
+- `industries/{sector}/landscape.md` 走 5 章节固定模板，与行业研报真正的 11 维度（CFA/Porter/Damodaran）不对应
+- 每份研报 append 段到 landscape，无法做跨报告字段级聚合（TAM 谁对谁错看不出）
 
-## 2. 产出目标（11 维度）
+**arena 层（当前 checklist-first）**：
+- arena 作为"窄战场"本意是竞争叙事单位，但实现上偏成"按问题 id 组织的答卷"（competence-notes）
+- 行业事实被错位挂到单 ticker 名下（`q_power_grid_tam`、`q_policy_subsidies_barriers` 的答案都挂在"太湖远大"公司名下，下次导万马股份需重抄）
+- 没有"博弈维度"的叙事入口，用户看 arena 页读到的是一堆独立 q_id 答案
 
-一份行业研报 ingest 后，系统要能回答该产业的 11 个核心维度（CFA Level 1 + Porter + Damodaran 综合）：
+**company 层（当前 claims + profile）**：
+- `claims.jsonl` 是原子事实库，交叉验证/检索不可替代，但**唯一的用户阅读入口是"按 subject_tag 分组的 50 条 claim 列表"**
+- `profile-YYYY.md` 章节随报告来（稳定事实 / 年度事实 / 业务条线），不是按公司维度组织
+- 用户读完 50 条 claim 拼不出公司全貌
+- 行业事实被错位塞进公司 claims（BSE_920118 前 5 条 claim 中 4 条是"电网投资 3 万亿"这类行业 TAM，跟太湖远大无关）
+
+### 1.2 核心原则
+
+**ingest 流程和存储设计服务于用户学习体验**，反向驱动。先定三层知识框架（用户阅读入口），数据 schema 和 ingest pipeline 都是这个框架的附属。
+
+三层设计对称：每层有自己固定的维度清单（11 / 6 / 7）、自己的 narrative 文件按维度拆、自己的结构化事实层（observations / claims）、自己的入口页按维度呈现。跨层关联走 backlinks + `arena_refs` 索引字段。
+
+## 2. 三层知识框架
+
+### 2.1 industry（产业全景，11 维度）
+
+产业的客观事实库。理论来源：CFA L1 Industry Analysis + Porter Scope + Damodaran 估值框架。
 
 | # | 维度 | 核心内容 | 数据形态 |
 |---|---|---|---|
-| 1 | 定义与边界 | 行业做什么、子行业/品类划分、与相邻行业边界 | narrative |
+| 1 | 定义与边界 | 行业做什么、子行业/品类划分、与相邻行业的边界 | narrative |
 | 2 | 市场规模与增长 | 全球/分地域 TAM、历史/未来 CAGR、分品类拆解 | structured observations |
 | 3 | 生命周期阶段 | Embryonic/Growth/Shakeout/Mature/Decline + 判据 | enum observation + narrative |
 | 4 | 产业链分析 | 上/中/下游 + 各环节成本占比 + 议价权分布 | narrative + segment observations |
@@ -34,480 +56,664 @@
 | 10 | 主要风险 | 周期/政策/技术替代/客户集中/上游依赖/合规/汇率 | narrative |
 | 11 | 投资视角与估值锚 | Damodaran 三元 + 历史 PE/PB/EV 中枢 + 选股逻辑 | narrative + structured observations |
 
-"结构化"意味着可跨报告字段级聚合（自动算 median/range/spread、outlier 标记）；"narrative"意味着按 source 分块并列，不强行合并。
+### 2.2 arena（博弈叙事，6 维度）
 
-## 3. 核心设计决策（14 条）
+**arena = 一组参与者围绕某个博弈焦点的竞争叙事单位**，不是行业的细分市场（那是 industry 的 segment）。理论来源：Porter 竞争战略 + Christensen 颠覆理论 + Crossing the Chasm。
+
+**建立前提**：必须有明确的博弈焦点（国产替代 / 技术路线之争 / incumbent 守擂 / 升级破局 / 平台迁移 等）。没有博弈焦点的子市场不建 arena，直接用 industry segment 表达。
+
+| # | 维度 | 核心内容 | 与 industry/company 的区分 |
+|---|---|---|---|
+| 1 | 战场定义与博弈焦点 | 四维（产品/客户/地理/价位）+ 博弈主题 + 边界条件 | industry 不讲博弈；company 只讲自家 |
+| 2 | 参与者与相对位置 | 角色（incumbent/challenger/disruptor）+ 份额（引 industry observation）+ 当前攻守状态 | industry.concentration 是全行业数字；arena 讲相对位置 |
+| 3 | 博弈规则与胜负手 | 靠什么取胜（认证/技术/规模/品牌/渠道）+ 当前最关键不确定性 | industry 不做胜负判断，company 讲自家策略 |
+| 4 | 演进轨迹与触发事件 | 过去 3-5 年格局如何变 + 未来演进路径 + 触发转向事件 | industry 讲产业生命周期；arena 讲**这场博弈**的弧线 |
+| 5 | 多空叙事 | bull（挑战者赢）/ bear（格局不变）/ disruption（第三方颠覆）三元情景 + 证据反证 | 只有 arena 做叙事三分 |
+| 6 | 决策启示 | 这场博弈下哪类参与者值得下注 + 什么触发点会改变结论 | industry §11 是产业整体估值锚；arena 讲**这个具体博弈里怎么选边** |
+
+### 2.3 company（单公司画像，7 维度）
+
+单家公司的画像叙事。7 维度由用户给定。
+
+| # | 维度 | 核心内容 |
+|---|---|---|
+| 1 | 业务模式 | 做什么生意、收入结构、业务条线、客户结构 |
+| 2 | 竞争策略与未来规划 | 当前战略、产品/市场/产能布局、未来 3-5 年规划 |
+| 3 | 护城河 / 核心竞争力 | 技术/规模/品牌/网络效应/切换成本的来源 |
+| 4 | 财务分析 / 核心指标 | 毛利/ROE/ROIC/资本开支/现金流结构与演进 |
+| 5 | 关键事件 / 催化剂 | 即将的里程碑、事件日历、触发因素 |
+| 6 | 风险 | 公司层面风险（业务/财务/治理/特殊） |
+| 7 | 估值 | 估值锚、历史 P/E P/B 区间、当前位置 |
+
+### 2.4 三层视角对照
+
+| 层 | 视角 | 维度数 | 核心问题 | 事实库 | 叙事库 |
+|---|---|---|---|---|---|
+| industry | 产业全景（客观） | 11 | 这个产业有多大、格局如何、往哪走 | observations.jsonl | 11 份 narrative .md |
+| arena | 博弈叙事（相对） | 6 | 这个战场谁会赢、为什么 | （无独立事实库，引 industry + company） | 6 份 narrative .md |
+| company | 单公司画像 | 7 | 这家公司做什么、护城河在哪、估值几何 | claims.jsonl | 7 份 narrative .md |
+
+三层视角**正交、不重叠**。重叠区的归属原则：
+- **纯数字事实** → industry.observations（带 segment / arena_refs 字段精准过滤）
+- **公司 × 战场交互事实** → company.claims（带 arena_refs 字段标注关联 arena）
+- **跨 ticker 的窄战场规律** → industry.observations（带 arena_refs，视为 arena 相关的产业级 fact）
+- **博弈判断/相对位置/多空叙事** → arena narrative（独有）
+- **公司内在属性** → company narrative / claims
+
+## 3. 核心设计决策（19 条）
 
 | # | 决策 | 取舍 |
 |---|---|---|
-| D1 | industry 作为一等公民，与 arena/company 并列三层 | 不做两层嵌套（topic > arena），概念干净而实现轻 |
-| D2 | industry slug 中粒度，跟随报告主题（如 `cn-cmp-material`），**无白名单** | 卖方切分单位即默认 industry 单位；不做 sector 宽切（TAM 交叉验证无意义） |
-| D3 | industry 存"市场格局"，arena 存"战场参与者" | 两层 players 语义不同，不重复 |
-| D4 | 双模式存储：`observations.jsonl`（结构化字段） + 按维度拆的 `*.md`（叙事） | 单 JSONL 渲染难、单 markdown 无法字段级聚合，都不可取 |
-| D5 | 交叉验证 lazy：写入不检测冲突，页面层按 field 聚合渲染 diff/outlier | ingest 流程简单；用户一定会打开页面 |
-| D6 | 旧错位数据（BSE_920118 等）不迁移，新规则只对新导入生效 | 迁移脚本难写得可靠；历史数据原地保留有溯源价值 |
-| D7 | subagent 按预处理 section 粒度派发（而非按 11 维度） | 并发度可控（每份报告 3-8 个 section），subagent prompt 统一，维度跨 section 时在聚合阶段合并 |
-| D8 | 分流识别：文件名关键词 + 预处理扫 ≥2 独立 ticker → AskUser 确认 | 半自动；纯关键词误判率高，纯 flag 太麻烦 |
-| D9 | **sector 概念完全删除**：`VALID_SECTORS` 白名单、`competence-sector/` 能力圈模板、`app/io/competence.py` 、`companies/*/competence-check.md` 全部废 | 用户明确指令；能力圈概念搬到 industry 层（见 D10） |
-| D10 | industry 级别新增 checklist（类 arena checklist），承担"行业认知完整度引导"角色 | 替代旧 sector 能力圈；arena checklist 继续存在但收窄到"公司×战场交互" |
-| D11 | company meta frontmatter `industry_primary` 字段改名为 `industry_slugs: [list]`，freeform 不卡白名单 | 一家公司可属多 industry；迁移零成本 |
-| D12 | industry checklist bootstrap：agent 读报告 + 11 维度生成草稿 → 用户 AskUser 审改 | 同 arena bootstrap pattern，冷启动有内容 |
-| D13 | ingest 行业研报时同时扫 industry checklist + 所有 linked arena 的 checklist（未答/vague 的 items） | 研报顺手回答 arena 问题，避免重复劳动 |
-| D14 | 阅读体验 v1 先做"数据 backlink + 页面 cross-ref"；brief 聚合视图单独拆后续 plan | 本次 scope 可控；brief 是"阅读体验根治"重点，独立评估 |
+| D1 | 三层（industry/arena/company）都作为一等公民，各有固定维度、自己的 narrative 层 | 服务于"用户按维度学习" |
+| D2 | **sector 概念完全删除**：`VALID_SECTORS` 白名单 / `app/io/competence.py` / `competence-sector/` 词表 / `competence-check.md.tmpl` / 所有 `companies/*/competence-check.md` 全废 | 用户明确指令。能力圈概念迁出：不再挂 sector，改为基于三层知识框架的"维度覆盖度"（v2 checklist spec 一并做） |
+| D3 | industry slug 中粒度，跟随报告主题，**无白名单** | 卖方切分即默认 industry 单位 |
+| D4 | **arena = 博弈叙事单位**（非细分市场）。"有博弈焦点才建 arena"，某些 industry 下 0 个 arena | 不与 industry segment 重复；arena 数 ≤ industry 数 |
+| D5 | 所有事实库**双模式**：结构化 `observations.jsonl`/`claims.jsonl` + 按维度拆的 `*.md` narrative | 单 jsonl 不可读；单 md 无法做字段级聚合 |
+| D6 | 交叉验证 **lazy**：写入不检测冲突，页面层按 field 聚合渲染 spread/outlier | ingest 简单；用户一定会打开页面 |
+| D7 | 旧错位数据不迁移，新规则只对新导入生效 | 迁移脚本难写得可靠；历史数据有溯源价值 |
+| D8 | ingest 架构统一：**digest-extract subagent（读全文一次，产结构化摘要）+ 主 agent 分拣**。所有 workflow 共用这套 | 关注点分离；subagent 单职责提质；主 agent 可互动审改 |
+| D9 | digest 产 `key_facts[]`，每条带 `target_layer` / `dimension_hint` / `arena_refs` 等路由提示；主 agent 分拣 | 主 agent 做业务语义判断，subagent 只做机械抽取 |
+| D10 | **v1 去 checklist 设计**：industry + arena checklist 都不在 v1 ingest 流程里抽。arena 现有 checklist.yaml + competence-notes 保留作历史资产，新 ingest 不动 | v2 独立 spec：基于三层知识库反向生成 checklist |
+| D11 | `arena_refs: [slug]` 是新增跨层引用字段，出现在 industry.observation 和 company.claim 的 schema 中 | 解决 arena 作为叙事层但"需要的底层事实散在 industry/company"的引证问题 |
+| D12 | company meta frontmatter `industry_primary: {5桶}` 字段改名为 `industry_slugs: [list]`，freeform 不卡白名单 | 一家公司可属多 industry；迁移零成本 |
+| D13 | 分流识别：文件名关键词 + 预处理扫 ≥2 独立 ticker → AskUser 确认 | 半自动 |
+| D14 | ingest 产出时**所有维度都会产 narrative**，但允许**空维度**（报告不覆盖就空段） | 不强行填充；下次 ingest 逐步补齐 |
+| D15 | narrative 写入方式：**按 source 分块 append**（每次 ingest 在对应维度 .md 末尾加 `### 来源 {institution} {date}` 段），永不修改/覆盖历史段 | 跨报告比对只能靠按 source 分块；合并精简靠用户手动 |
+| D16 | 现有 `profile-YYYY.md` v1 保留过渡：新 ingest 产 7 维度 narrative（主产出），profile-YYYY.md 仍按年度生成（副产出，作为"公司的某年快照"） | 不破坏现有年度快照概念；未来 v3 可能弃 profile 改 narrative 打快照 |
+| D17 | arena 现有 definition.md / checklist.yaml / competence-notes.md 保留位置，frontmatter 加 `industry: {slug}` 字段 + 加 `battleground_focus: str` 字段（博弈焦点文本） | 向后兼容；不破坏 cn-power-cable-polymer-material 现有数据 |
+| D18 | arena 新增 6 份维度 narrative（§1 definition 不新建，复用现有 definition.md；§2-§6 新建 5 份） | definition.md 扩展为 arena §1 内容 |
+| D19 | 阅读视图 v1：数据 backlink + 页面 cross-ref + 按维度渲染 narrative/observation。`/brief/{slug}` 按决策问题聚合视图推 v2 独立 spec | 本次 scope 已经很大；brief 单独评估 |
 
 ## 4. 数据模型
 
 ### 4.1 三层目录布局
 
 ```
-industries/{slug}/                  # 新一等公民。废旧 industries/{sector}/，slug 无白名单
-├── meta.yaml                       # slug / name / scope / lifecycle_stage / linked_arenas / linked_tickers / created / last_updated
-├── observations.jsonl              # 结构化字段事实（每行一条，见 §4.2）
-├── checklist.yaml                  # 认知引导问题（见 §4.3）
-├── checklist-answers.md            # checklist 回答（按 q_id × source_id 分段，见 §4.3）
-├── definition.md                   # §1 维度 narrative
+industries/{slug}/                  # 产业全景层（新）
+├── meta.yaml                       # slug / name / scope / linked_arenas / linked_tickers / created / last_updated
+├── observations.jsonl              # 结构化事实（见 §4.2）
+├── definition.md                   # §1
+├── market-size.md                  # §2
+├── lifecycle.md                    # §3
 ├── value-chain.md                  # §4
-├── technology.md                   # §7
+├── competition.md                  # §5
 ├── drivers.md                      # §6
+├── technology.md                   # §7
 ├── regulation.md                   # §8
+├── benchmark.md                    # §9
 ├── risks.md                        # §10
 ├── valuation.md                    # §11
 └── sources/                        # 原研报 PDF 存档
 
-arenas/{slug}/                      # 位置不变
-├── definition.md                   # frontmatter 新增字段: industry: {slug}（多对一）
-├── checklist.yaml                  # 收窄：只问"公司×战场交互"，不再问纯行业问题
-└── competence-notes.md
+arenas/{slug}/                      # 博弈叙事层（升级）
+├── definition.md                   # §1 战场定义与博弈焦点（现有文件扩展；frontmatter 加 industry/battleground_focus 字段）
+├── participants.md                 # §2 参与者与相对位置（新）
+├── decisive-factors.md             # §3 博弈规则与胜负手（新）
+├── trajectory.md                   # §4 演进轨迹与触发事件（新）
+├── narratives.md                   # §5 多空叙事（bull/bear/disruption）（新）
+├── investment-view.md              # §6 决策启示（新）
+├── checklist.yaml                  # 保留（v1 不抽取，v2 重做）
+└── competence-notes.md             # 保留（v1 不抽取，v2 重做）
 
-companies/{key}/                    # 位置不变
+companies/{key}/                    # 单公司画像层（升级）
 ├── meta.md                         # frontmatter 字段改：industry_primary → industry_slugs: [list]
-│                                   # competence-check.md 文件删
-├── profile-YYYY.md
-├── claims.jsonl                    # 收窄：不再混入行业 TAM/政策（通过 prompt 约束，不做 schema 强制）
-└── ...
+├── claims.jsonl                    # 原子事实库（schema 加 arena_refs 字段）
+├── profile-YYYY.md                 # 保留过渡（v3 可能弃）
+├── narratives/                     # 新：按 7 维度
+│   ├── business-model.md           # §1
+│   ├── strategy-roadmap.md         # §2 竞争策略与未来规划
+│   ├── moat.md                     # §3 护城河
+│   ├── financial-profile.md        # §4 财务分析与核心指标
+│   ├── catalysts.md                # §5 关键事件与催化剂
+│   ├── risks.md                    # §6 风险
+│   └── valuation.md                # §7 估值
+└── sources/                        # 原文 PDF
 ```
 
-### 4.2 observation schema（`industries/{slug}/observations.jsonl` 行格式）
+**删除**：现有 `industries/{sector}/` 子目录结构（仅 .gitkeep，无用户数据）；`companies/*/competence-check.md`（3 份均为空骨架，已验证）；`controlled-vocab/competence-sector/*.yaml`（5 个）；`templates/competence-check.md.tmpl`。
+
+### 4.2 industry.observations 行 schema
 
 ```json
 {
   "id": "cmp-material-0001",
-  "dimension": "market_size",
-  "field": "tam_global",
+  "dimension": "market_size",           // ∈ INDUSTRY_DIMENSIONS（11 闭集）
+  "field": "tam_global",                // 开放词表（INDUSTRY_FIELDS 给建议清单）
   "value": 33.8,
   "unit": "usd_bn",
   "timeframe": "2025",
-  "segment": null,
-  "metric_type": "atomic",
-  "time_type": "actual",
+  "time_type": "actual",                // actual | forecast
+  "metric_type": "atomic",              // atomic | enum | segment
+  "segment": null,                      // 若 segment 型：品类 slurry/pad，或 ticker（表 share_by_player）
+  "arena_refs": [],                     // 若与某 arena 博弈直接相关：[arena_slug, ...]
   "source_id": "行研-国金证券-2026-03-10-abc12345",
-  "source_file": "2026-03-10_国金_半导体材料CMP行业.pdf",
-  "source_note": "研报引用 Market Growth Reports",
-  "confidence": "high",
-  "claim_text": "2025 年全球 CMP 抛光液和抛光垫市场规模约为 33.8 亿美元",
-  "evidence": "根据 Market Growth Reports 统计，2025 年全球 CMP 抛光液和抛光垫的市场规模约为 33.8 亿美元",
+  "source_file": "...",
+  "source_note": "引用 Market Growth Reports",   // 研报引用的更原始数据源
+  "confidence": "high",                 // high | medium | low
+  "claim_text": "2025 年全球 CMP 抛光液和抛光垫市场规模约 33.8 亿美元",
+  "evidence": "...",                    // 原文 quote
   "extracted_by": "claude-opus-4-7",
   "extracted_at": "2026-04-26T..."
 }
 ```
 
-字段说明：
+### 4.3 company.claims 行 schema（增量字段）
 
-- `dimension` ∈ `INDUSTRY_DIMENSIONS`（见 §4.4）。固定 11 个值，闭集
-- `field` 开放词表。`INDUSTRY_FIELDS` 给初版建议清单，用户可扩展
-- `value` 数值 / `unit` 单位。enum 字段 value 是字符串（如 lifecycle.stage = `"growth"`）
-- `metric_type`: `atomic` (单一数) | `enum` (枚举判断) | `segment` (分品类/分 ticker 拆解)
-- `time_type`: `actual` (历史/当前) | `forecast` (未来预测)。交叉验证 UI 按此分组，`forecast` 不和 `actual` 混算
-- `segment`: 若 metric_type=segment，填子类别（如 slurry/pad，或 ticker）
-- `source_id`: 行业研报格式 `行研-{institution}-{date}-{sha8}`；同份报告所有 observation 共用
-- `confidence`: `high` | `medium` | `low`（由 subagent 判定，原文明确量化=high，引用间接数据=medium，表述模糊=low）
+现有 schema 保持不变（ticker / subject_tag / polarity / claim_type / timeframe / evidence / confidence / source_id / source_file / extracted_by / id / extracted_at / claim_text），**新增**：
 
-### 4.3 checklist schema（`industries/{slug}/checklist.yaml`）
-
-```yaml
-slug: cn-cmp-material
-version: 1
-last_updated: '2026-04-26'
-changelog:
-  - version: 1
-    date: '2026-04-26'
-    source_id: 行研-国金证券-2026-03-10-abc12345
-    changes: initial bootstrap from 国金 CMP 行研
-items:
-  - id: q_cmp_tam_cross_source
-    question: 不同数据源对全球与中国 CMP 材料市场规模的测算是否一致，差异来自什么
-    why_matters: TAM 量级不一致意味着赛道大小判断有分歧，直接影响估值锚
-    maps_to:
-      dimension: market_size
-      fields: [tam_global, tam_china, cagr_global, cagr_china]
-    tags: [market_size, cross_source]
-  - id: q_slurry_pad_value_chain
-    question: CMP 抛光液和抛光垫的上游关键原料（磨料 SiO2/CeO2/Al2O3、聚氨酯）集中度和国产化进度
-    why_matters: 上游卡脖子会压制国产替代逻辑
-    maps_to:
-      dimension: value_chain
-      fields: null
-    tags: [value_chain, technology]
-  - id: q_cmp_concentration_trend
-    question: CMP 抛光液/抛光垫全球头部格局（Dupont / 安集 / 鼎龙 / Fujibo 等）在过去 5 年的变化方向
-    why_matters: 头部份额稳不稳决定国产替代的空间天花板
-    maps_to:
-      dimension: concentration
-      fields: [hhi, cr5, share_by_player]
-    tags: [concentration, competitive_position]
-```
-
-answers 文件 `checklist-answers.md`（与 arena competence-notes 同构，按 q_id × source_id 分段）：
-
-```markdown
----
-slug: cn-cmp-material
----
-
-# 认知库 · cn-cmp-material
-
-## q_cmp_tam_cross_source · level=specific
-来源：行研-国金证券-2026-03-10-abc12345 · checklist v1 · 2026-04-26
-
-国金报告内部就给出了两个冲突数字：华经统计 2024 年中国 CMP 抛光液 29.6 亿元，弗若斯特沙利文测算 23 亿元，差 28%。全球 TAM 33.8 亿美元（Market Growth Reports）与中国单品类 TAM 放在一起推算，隐含中国占比约 40-50%，与头部份额集中在国内（安集 10%）逻辑一致。
-
-> 根据 Market Growth Reports 统计，2025 年全球 CMP 抛光液和抛光垫的市场规模约为 33.8 亿美元...根据华经产业研究院统计，2023 年中国 CMP 抛光液市场规模约为 29.6 亿元；根据弗若斯特沙利文测算，2024 年中国 CMP 抛光垫市场规模约 23 亿元。
-```
-
-### 4.4 维度固定清单 + 字段初版
-
-`app/config.INDUSTRY_DIMENSIONS`（元组，闭集）：
-
-```python
-INDUSTRY_DIMENSIONS = (
-    "definition", "market_size", "lifecycle", "value_chain",
-    "concentration", "drivers", "technology", "regulation",
-    "benchmark", "risks", "valuation",
-)
-```
-
-`app/config.INDUSTRY_FIELDS`（字段初版建议，开放扩展，不做强白名单）：
-
-```python
-INDUSTRY_FIELDS = {
-    "market_size":  ["tam_global", "tam_china", "tam_by_segment"],
-    "lifecycle":    ["stage", "stage_evidence"],                  # stage: enum embryonic/growth/shakeout/mature/decline
-    "concentration": ["hhi", "cr5", "cr10", "share_by_player"],
-    "benchmark":    ["gross_margin_leader", "gross_margin_avg",
-                     "capex_intensity_avg", "rd_ratio_leader"],
-    "valuation":    ["pe_ttm_median", "pb_median", "ev_ebitda_median"],
-    # porter 五力作为 concentration 的子组（每力一个 field，metric_type=enum，value 为 1-5 评分）
-    # 其余维度（definition/value_chain/drivers/technology/regulation/risks）默认走 narrative，
-    # 用户可在需要量化的场景自行新增 field，不卡白名单
+```json
+{
+  // ... 现有字段 ...
+  "arena_refs": ["cn-cmp-slurry-domestic-substitution"],  // 新：该 claim 属于哪些博弈战场（可选，默认 []）
+  "company_dimension_hint": "moat"     // 新：建议归到哪个 company 维度（∈ COMPANY_DIMENSIONS，用于聚合页渲染）
 }
 ```
 
-维度 `definition` 只承载 narrative 不存 observation。`value_chain / drivers / technology / regulation / risks` 同理，但如果某份报告有量化事实（如"磨料占抛光液成本 54.6%"），subagent 可选填 segment observation。
+`arena_refs` 和 `company_dimension_hint` 都是可选字段，旧 claim 无此字段时视为空列表 / null。
 
-## 5. ingest pipeline（行业研报 workflow）
+### 4.4 narrative .md 写入格式（所有层通用）
+
+每次 ingest 在对应维度文件末尾**追加段**，格式：
+
+```markdown
+### 来源 {institution} {date} (sha8={sha8})
+source_id: {source_id}
+
+{要点内容，≤300 字浓缩，必要时 quote 原文}
+
+> {原文 quote 1}
+> {原文 quote 2}
+```
+
+永不修改/覆盖历史段。多报告 append 后文件变"日志流"是已知代价；用户手动合并精简不在 ingest 流程内。
+
+### 4.5 维度固定清单（config.py）
+
+```python
+# app/config.py 新增
+INDUSTRY_DIMENSIONS = (
+    "definition", "market_size", "lifecycle", "value_chain",
+    "competition", "drivers", "technology", "regulation",
+    "benchmark", "risks", "valuation",
+)
+
+INDUSTRY_FIELDS = {                     # 开放词表，仅建议
+    "market_size":  ["tam_global", "tam_china", "tam_by_segment", "cagr_global", "cagr_china"],
+    "lifecycle":    ["stage", "stage_evidence"],            # stage enum
+    "competition":  ["hhi", "cr5", "cr10", "share_by_player",
+                     "porter_entry_barrier", "porter_substitute_threat",
+                     "porter_supplier_power", "porter_buyer_power", "porter_rivalry"],
+    "benchmark":    ["gross_margin_leader", "gross_margin_avg",
+                     "capex_intensity_avg", "rd_ratio_leader"],
+    "valuation":    ["pe_ttm_median", "pb_median", "ev_ebitda_median"],
+}
+
+ARENA_DIMENSIONS = (                    # snake_case key ↔ kebab-case .md filename
+    "definition", "participants", "decisive_factors",
+    "trajectory", "narratives", "investment_view",
+)
+
+COMPANY_DIMENSIONS = (                  # snake_case key ↔ kebab-case .md filename
+    "business_model", "strategy_roadmap", "moat",
+    "financial_profile", "catalysts", "risks", "valuation",
+)
+
+# 文件路径规则：{layer_dir}/{slug_or_key}/{dim.replace('_','-')}.md
+# e.g. company_dim="strategy_roadmap" → companies/{key}/narratives/strategy-roadmap.md
+```
+
+### 4.6 跨层引用机制
+
+**backlinks 字段**：
+- `industries/{slug}/meta.yaml`: `linked_arenas: [slug, ...]` + `linked_tickers: [{market, ticker, name}, ...]`
+- `arenas/{slug}/definition.md` frontmatter: `industry: {slug}` + `battleground_focus: str`（博弈焦点短句）
+- `companies/{key}/meta.md` frontmatter: `industry_slugs: [slug, ...]` + `arenas: [slug, ...]`（现有 arenas 字段保留）
+
+**arena_refs 索引字段**：industry.observation 和 company.claim 都携带。让 arena 页能精准过滤出与自己博弈相关的底层事实。
+
+**反查 helpers**：
+- `industry_io.find_by_company(ticker, market) -> list[slug]`（扫所有 industry meta.yaml 的 linked_tickers）
+- `industry_io.find_by_arena(arena_slug) -> slug`（读 arena.definition.md frontmatter.industry）
+- `arena_io.find_by_company(ticker, market)`（现有）
+- `arena_io.find_by_industry(industry_slug) -> list[slug]`（新）
+- `industry_io.filter_observations_by_arena(slug, arena_slug) -> list[row]`（按 arena_refs 过滤）
+- `claims_io.filter_by_arena(arena_slug) -> list[claim]`（扫所有 companies，按 arena_refs 过滤）
+
+## 5. ingest pipelines
+
+### 5.1 统一架构：digest-extract subagent + 主 agent 分拣
+
+所有 4 类报告（行业研报 / 公司年报 / 公司季报 / 公司卖方研报）都走这套架构：
+
+```
+[preprocess]  scripts.preprocess_report --type {industry|annual|quarterly|sell-side}
+              产出: sections[] + detected_tickers + meta{institution/date/sha8/form}
+              + report_abstract_200w（从封面+首页抽）
+
+[1 个 digest subagent]  prompts/digest/{type}-digest.md
+              注入: 全文 + 三层维度清单 + 已知 arena 列表（{slug, definition_four_dims, battleground_focus}）
+                    + 现有 observations/claims schema + per-type 侧重说明
+              职责: 读全文产结构化摘要，单职责只吐事实，不做写入决策
+              输出 JSON: {
+                key_facts: [
+                  {
+                    idx, fact_text, evidence_quote,
+                    target_layer: "industry"|"arena"|"company"|"cross",
+                    target_refs: {industry_slug?, arena_slug?, ticker?},
+                    dimension_hint: str,      // 对应层的维度
+                    field_hint?: str,         // 若是结构化数值
+                    value_numeric?, unit?, timeframe?, time_type?, segment?,
+                    arena_refs: [slug, ...],
+                    subject_tag_hint?: str,   // claim 用
+                    confidence: "high"|"medium"|"low"
+                  }, ...
+                ],
+                narratives: {
+                  industry: { dim → md_block },
+                  arena: { arena_slug: { dim → md_block } },
+                  company: { ticker: { dim → md_block } }
+                },
+                proposed_arenas: [             // 若发现报告明确讨论了未在 known_arenas 里的博弈，建议新 arena
+                  { tentative_slug, battleground_focus, tentative_participants, parent_industry_slug }
+                ]
+              }
+
+[主 agent 在对话内]  读 digest，做：
+              1. dedup observations（同 field+timeframe+source_id 保留 confidence 最高）
+              2. 按 target_layer/dimension_hint 归类到三层的 observation/claim/narrative
+              3. 对 proposed_arenas 走 AskUser 确认是否 bootstrap 新 arena
+              4. 与用户互动审改 (见 §5.2-5.5 各 workflow 的审阅环节)
+              5. 用户批准后写入所有落盘目标
+              6. QA checkpoint（现有 ingest_qa warn/gap）
+```
+
+**读文次数**：digest subagent 读全文 1 次；主 agent 不读原文（只读 digest）。
+
+**token 估算（Opus 4.7，以 12 页行业研报为基数）**：
+- digest subagent：input ~8k（全文 6k + prompt schema 2k），output ~10k（丰富结构化）
+- 主 agent：input ~15k（digest 10k + 三层维度清单 + 已有 observations 参考；prompt cache 命中重复段）, output ~5k（写入 draft + 审阅 UI 文本）
+- 单份 ingest 总计约 **$0.9-$1.3**（Opus），Sonnet 约 $0.2-$0.3
+
+### 5.2 行业研报 workflow（`workflows/industry-report.md`，新）
 
 ```
 1. /ingest <pdf>
-2. 分流识别（SKILL.md Step 1）
-   - 文件名命中 "行业/深度/industry/sector/strategy" 或预处理扫出 ≥2 独立 ticker
-   - AskUserQuestion: [行业研报 / 公司深度研报 / 取消]
-3. 预处理
-   scripts.preprocess_report <file> --type industry --market {a-share,us} --out <json>
-   templates/{a-share,us}-industry.yaml 剔除封面/免责/目录/风险提示套话
-   输出: sections[] + detected_tickers[] + meta{institution, report_date, sha8}
-4. industry slug 确认
-   - 主 agent 基于报告标题 / 首段 / 目录推一个候选 slug (如 cn-cmp-material)
-   - AskUserQuestion: [新建候选 slug / 选择已有 / 改名]
-   - 新建 → auto-create industries/{slug}/meta.yaml 骨架（name / scope / linked_arenas=[] / linked_tickers=[]）
-5. arena 识别（可选，v0 PLAN Q3=A 沿用）
-   - 对 detected_tickers 调 arenas_io.find_by_company() 反查
-   - 命中 → 加入 linked_arenas；未命中 → AskUser 是否 bootstrap；拒绝 → 降级跳过 arena
-6. 首次新建 industry 的 checklist bootstrap（仅首次 ingest 该 industry 时执行）
-   - 派 bootstrap-checklist subagent（Explore）：读报告 + 11 维度 + 字段初版清单
-     → 产 10-15 题 initial checklist 草稿
-   - AskUser 审/改/批准后写入 industries/{slug}/checklist.yaml v1
-   - 注：此 subagent 只产问题，不产答案；Step 7b 的 industry-checklist-answer 再针对刚生成的问题产答案。
-     这两个 subagent 对同一份报告读两遍，是刻意分工（prompt 各司其职），不合并。
-7. 派发 3 类 subagent（Explore，并发上限 5 分批）
-   a. section-extract：每个预处理 section 一个。prompts/industry/section-extract.md
-      注入：section text + dimensions + field inventory + source_id + 11 维度产出 schema
-      产出：{ observations: [...], narratives: { dimension → md_block }, per_ticker_claims: { ticker → [claim,...] } }
-   b. industry-checklist-answer：1 个。prompts/industry/checklist-answer.md
-      注入：report 全文 + industry checklist 未答/vague items + maps_to 提示
-      产出：{ industry_answers: { q_id → {level, summary, evidence_quote} } }
-   c. arena-checklist-answer：每个 linked arena 一个。同上 prompt，注入对应 arena checklist
-      产出：{ arena_answers: { arena_slug: { q_id → {...} } } }
-8. 主 agent 聚合（scripts.ingest_aggregate 新增 helper）
-   - observations dedup（同 field + timeframe + source_id 保留 confidence 最高）
-   - narratives 按 dimension 合并成单段 md block（顶部标 "### 来源 {institution} {date}"）
-   - per_ticker_claims：经 subjects_io.validate_batch → claims schema 校验
-   - checklist answers：consolidate（同 q_id 取 level 最高）
-9. 用户审 4 处（按顺序）
-   - industry observations（表格：新增 N 条）
-   - industry narratives（每维度 md block 预览）
-   - industry + arena checklist 新答案（按 q_id + arena 分段）
-   - per-ticker claims（按 ticker 分段，数量多时分批）
-10. 写入（用户批准后）
-    - observations.jsonl append，source_id = `行研-{institution}-{date}-{sha8}`
-    - 每维度 narrative .md 尾部插 "### 来源 {institution} {date} (sha8={sha8})" 段
-    - industries/{slug}/meta.yaml 更新 linked_arenas / linked_tickers / last_updated
-    - industries/{slug}/checklist-answers.md 按 q_id × source_id 追加段
-    - arenas/{slug}/competence-notes.md 追加段（现有 arenas_io.append_notes）
-    - 各 ticker claims.jsonl append（现有 claims_io.append_batch），
-      source_id = `行研-{institution}-{date}-{sha8}-{ticker}` （附 `-{ticker}` 后缀，
-      避免同份报告产生的 N 组 per-ticker claim 撞 id；sha8 关联回同一份 PDF）
-    - sources/ 存档 PDF
-11. QA checkpoint
-    scripts.ingest_qa warn --write + gap --write（不跳过）
+2. SKILL 分流识别：文件名命中 "行业/深度/industry/sector/strategy"
+   或预处理扫出 ≥2 独立 ticker → AskUser: [行业研报 / 公司深度研报 / 取消]
+3. preprocess --type industry, 产 sections[] + detected_tickers + report_abstract
+4. industry slug 确认:
+   - 主 agent 基于报告标题/目录/首段推候选 slug
+   - AskUser: [新建候选 / 选择已有 / 改名]
+   - 新建 → auto-create industries/{slug}/meta.yaml + 11 份空 narrative .md 骨架
+5. 预加载已知 arena 列表 (industry 反查: arena_io.find_by_industry(industry_slug))
+6. 派 1 个 digest subagent (prompts/digest/industry-digest.md)，
+   注入: 全文 + 三层维度 + 已知 arena 列表 + 要求输出三层分类提示
+7. 主 agent 分拣:
+   - key_facts[].target_layer == "industry" → 候选 industry observation (+ arena_refs 透传)
+                                                或 industry narrative (按 dim)
+   - target_layer == "arena" → 分拣到对应 arena narrative (按 arena 6 维度)
+   - target_layer == "company" → 候选 per-ticker claim (+ arena_refs)
+   - proposed_arenas → AskUser 是否 bootstrap 新 arena (若批准，auto-create arena 6 份骨架 md + definition.md 填入 battleground_focus)
+8. 用户审 4 处 (按顺序):
+   - industry observations (表格 diff: 新增 N 条)
+   - industry narratives (11 维度每维度 md block 预览)
+   - arena narratives (每 arena 6 维度预览; 每 arena 独立分页审)
+   - per-ticker claims (按 ticker 分段预览)
+9. 写入:
+   - industries/{slug}/observations.jsonl append
+   - industries/{slug}/{dim}.md 末尾 append 块
+   - arenas/{slug}/{dim}.md 末尾 append 块 (per linked_arena)
+   - industries/{slug}/meta.yaml 更新 linked_arenas/linked_tickers/last_updated
+   - arenas/{slug}/definition.md frontmatter 字段更新 (若 new)
+   - companies/{ticker}/claims.jsonl append (带 arena_refs)
+   - sources/ 归档 PDF
+10. QA checkpoint: scripts.ingest_qa warn --write + gap --write
 ```
 
-source_id 格式：`行研-{institution}-{date}-{sha8}`（industry observations / narrative / checklist-answers 共用；per-ticker claims 额外附加 `-{ticker}` 后缀保持跨 claim 层的唯一性）。
+source_id 规则：
+- industry 写入: `行研-{institution}-{date}-{sha8}`
+- arena 写入: 同 id（一份报告的 arena narrative 与 industry narrative 共享 id）
+- per-ticker claims: `行研-{institution}-{date}-{sha8}-{ticker}`
 
-## 6. arena / company 的配合改造
+### 5.3 公司年报 / 10-K / 半年报 workflow（`workflows/annual-report.md` 改造）
 
-### arena 收窄
+现有 workflow 升级，数据产出增加 **7 维度 company narrative**：
 
-- `arenas/{slug}/definition.md` frontmatter 加 `industry: {slug}` 字段（多对一），bootstrap 时主 agent 推 industry → AskUser 确认。旧 arena 补齐 `industry: null` 后由下一次 ingest 自动回填
-- `arenas/{slug}/checklist.yaml` 的 bootstrap prompt（`prompts/arena/bootstrap-checklist.md`）更新：规定"不生成 TAM/CAGR/HHI/产业政策 这类纯行业问题，那类走 industry checklist；只生成公司×战场交互问题"
-- 现有 arena checklist 的纯行业 items（如 `q_power_grid_tam` `q_domestic_consolidation` `q_policy_subsidies_barriers`）**不主动迁**，在 arena 下注解但保留（D6：历史不动）
+```
+1-4. 同现有（识别类型/company key/预处理）
+5. 派 1 个 digest subagent (prompts/digest/annual-digest.md)，
+   注入: 全文 + company 7 维度 + arena 已关联（若 company.arenas 非空）+ industry 已关联（若 industry_slugs 非空）
+6. 主 agent 分拣:
+   - key_facts[].target_layer == "company" (主力) → claim + narrative
+   - target_layer == "industry" → 候选 "来自公司视角的行业补充" (confidence 标 medium，append 到 industry narrative 对应 dim)
+   - target_layer == "arena" → 若公司参与某 arena，append 到该 arena narrative 对应 dim
+   - financial_rows → financials.db (现有)
+7. 用户审 3 处 + 现有 profile-YYYY.md 审:
+   - claims (按 subject_tag 分段)
+   - company narratives (7 维度 md block 预览)
+   - 可选：industry 补充段 / arena 补充段
+   - profile-YYYY.md 年度快照 (现有流程保留)
+8. 写入 + QA
+```
 
-### company 收窄
+source_id: `年报-{fiscal_year}-{sha8}`（不变）
 
-- `companies/{key}/meta.md` frontmatter 字段改：`industry_primary: {value}` → `industry_slugs: [list]`
-  - `app/io/company.py` 不再校验白名单，freeform slug 数组
-  - 旧 3 份 meta 迁移：`cyclical` → `industry_slugs: []`（置空，下次 ingest 回填），保留 `arenas: [...]` 字段
-- `companies/{key}/competence-check.md` 文件删除
-- claims extraction prompt（per-ticker subagent）规定："只抽与本公司直接相关的事实；研报引用的行业 TAM/政策/同业市占不抽成 claim"
-- 跨层反查：新增 `industry_io.find_by_company(ticker, market)` 扫所有 `industries/*/meta.yaml` 的 `linked_tickers` 字段
+### 5.4 公司季报 / 10-Q workflow（`workflows/quarterly-report.md` 改造）
 
-## 7. 阅读视图（v1：跨层 cross-ref）
+与年报对称但轻量：季报主要补 `financial-profile.md` / `catalysts.md` 两个维度；其他 narrative 维度若无新事实则空。
 
-**数据层 backlinks**（§4 已埋好）：
-- `industries/{slug}/meta.yaml`: `linked_arenas`, `linked_tickers`
-- `arenas/{slug}/` frontmatter: `industry: {slug}`
-- `companies/{key}/meta.md`: `industry_slugs: [list]`, `arenas: [list]`
+### 5.5 公司卖方研报 workflow（`workflows/sell-side-note.md` 改造）
 
-**页面层 cross-ref**（v1 本次 scope）：
+原有 workflow 除产 per-ticker claims 外：
 
-| 页面 | 顶部面包屑 | 侧边/底部关联区 | 维度内交叉展示 |
+- 研报中行业段（前几页"行业简介"）→ 轻量 industry narrative append（标 source_type=sell_side, confidence 偏 medium）
+- 研报中博弈段（"竞争格局"/"行业地位"章节）→ 轻量 arena narrative append（若 arena 已存在）
+- 研报主体（推荐公司）→ company narrative + claims
+- 取消现有 "问 sector" 步骤（D2），改为 "问 industry_slugs"（freeform 多值）
+
+### 5.6 arena bootstrap 机制（任一 workflow 触发）
+
+任一 workflow 的 digest 产出 `proposed_arenas` 非空 → 走 AskUser 机制：
+
+```
+检测到报告明确讨论以下博弈焦点，建议新建 arena：
+  [ ] tentative_slug: cn-cmp-slurry-domestic-substitution
+      battleground_focus: 国产 CMP 抛光液厂商挑战 Dupont/Cabot/Versum 等海外龙头
+      tentative_participants: 安集(challenger), Dupont(incumbent), Cabot(incumbent)
+      parent_industry_slug: cn-cmp-material
+  [ ] ...
+```
+
+用户勾选后 auto-create arena 骨架（definition.md frontmatter 填 industry + battleground_focus；participants 表填候选；5 份新 narrative .md 空骨架），后续由本次 ingest 或后续 ingest 逐步填充。
+
+## 6. 阅读视图（v1 cross-ref + 按维度渲染）
+
+### 6.1 页面层布局
+
+| 页面 | 顶部面包屑 | 主体 | 侧边/底部 |
 |---|---|---|---|
-| `/industries/{slug}` | industry 名 | 参与者列表（→ `/companies/{key}`）、关联 arena（→ `/arenas/{slug}`）、原文 `/sources/{file}` | 每个结构化 dim 表格：observations 按 source 折叠；spread>30% 高亮；forecast/actual 分组；每 observation 的 source 可点 |
-| `/arenas/{slug}` | 所属 industry（→）→ arena 名 | 参与者（→ company）、checklist item 的 `maps_to.dimension` → industry 对应 section | checklist item 旁显示 industry 对应 dim 的 observation 片段 |
-| `/companies/{key}` | industry_slugs tag（→） + arenas tag（→） | 所属 arena checklist 完成度 + industry checklist 完成度 | claim 按 subject_tag 分组（现状保留） |
+| `/industries/{slug}` | industry 名 | 11 维度 narrative（按 §顺序展开） + 每维度尾部结构化 observation 表格（若有） | linked_arenas 列表 + linked_tickers 参与者卡片 + 原文 sources |
+| `/industries/{slug}/observations` | industry 名 · observations | 所有结构化事实的跨源聚合表格 | 按 dimension 分 tab，spread/outlier 标注 |
+| `/arenas/{slug}` | 所属 industry（→）→ arena 名 | 6 维度 narrative（含 §1 definition.md） + 参与者 × 关键指标聚合表（从 industry.observations 按 arena_refs 过滤） | 参与者卡片（→ company 页）+ 相关 claims（按 arena_refs 过滤） |
+| `/companies/{key}` | industry_slugs tag（→） + arenas tag（→） | 7 维度 narrative 卡片 + 每卡片底部"支撑证据（N claims）"可展开 | meta + profile-YYYY 快照 + competence-check 链接（v1 仍在，v2 拆） |
+| `/companies/{key}/claims` | company 名 · claims | 按 subject_tag 分组的 claim 列表（现状保留） | 过滤器：timeframe / confidence / source_id |
 
-**跨层分歧渲染规则**（只在 industry 页做）：
+### 6.2 跨源分歧渲染规则（industry 层）
 
-- atomic 数值字段：`table {source | timeframe | value | unit}` + 顶部 `median / range / spread` + `spread>30%` 红色 🚨
+- atomic 数值字段：`table {source | timeframe | value | unit}` + 顶部 `median / range / spread` + `spread > 30%` 显示红色 🚨
 - enum 字段：各 source 判断并列；一致 → 🟢；分歧 → 🟡 展开对比
-- narrative .md：默认展开最新一份 + 折叠其他；用户可勾选多份侧边栏对照
+- segment 字段（如 share_by_player）：按 segment 分组，各 segment 内跨源聚合
+- narrative .md：默认展开最新段 + 折叠其他；勾选多源做侧边栏对照
 
-**不在本次 scope（拆后续 plan）**：`/brief/{slug}` 按决策问题聚合视图、首页决策仪表盘。
+### 6.3 arena 页的聚合逻辑
 
-## 8. 代码改动清单
+arena narrative 主要靠自己的 6 份 .md。但 §2 participants、§3 decisive-factors 经常需要引证底层事实，通过：
 
-### 删除
+- `industry_io.filter_observations_by_arena(arena.slug)` 拉出 arena_refs 包含本 slug 的 industry observations
+- `claims_io.filter_by_arena(arena.slug)` 拉出 arena_refs 包含本 slug 的 company claims（按 participants.tickers 过滤）
+- 侧边栏"参与者 × 关键指标"表由这两类数据组装
 
-- `app/config.VALID_SECTORS` 白名单整条
-- `app/io/industry.py`（旧 sector 承载，重写）
-- `app/io/competence.py`（旧能力圈）
-- `app/routes/competence.py`
-- `controlled-vocab/competence-sector/*.yaml`（5 个）
-- `templates/competence-check.md.tmpl`
-- 所有 `companies/*/competence-check.md` 旧文件（已核对 3 份均为 0 分空骨架，无用户手写内容，删除安全）
-- 所有 import `VALID_SECTORS` 的代码点（`company.py` / `routes/companies.py` / 等）
+### 6.4 不在本次 scope（v2 独立 spec）
 
-### 迁移（一次性，含在本次 PR）
+- `/brief/{slug}` 按决策问题聚合视图（三层事实融合一页摘要）
+- 首页决策仪表盘（按公司聚合 arena/industry 未答 checklist + 分歧 + 最新事实）
+- industry + arena checklist 基于知识库反向生成
 
-- 现有 3 份 `companies/*/meta.md` frontmatter：`industry_primary: {value}` → `industry_slugs: []`（保留 arenas 字段）
-- `app/io/company.py` 字段校验逻辑移除白名单分支
+## 7. 代码改动清单
+
+### 7.1 删除
+
+| 路径 | 删除原因 |
+|---|---|
+| `app/config.VALID_SECTORS` | sector 概念完全废 |
+| `app/io/industry.py`（旧） | 重写（slug-based） |
+| `app/io/competence.py` | sector 能力圈废 |
+| `app/routes/competence.py` | 同上 |
+| `controlled-vocab/competence-sector/*.yaml`（5 个） | 同上 |
+| `templates/competence-check.md.tmpl` | 同上 |
+| `companies/*/competence-check.md`（3 份，均空骨架） | 同上 |
+| 所有 `import VALID_SECTORS` 点 | 级联 |
+
+### 7.2 迁移（本次 PR 一次性）
+
+- 3 份 `companies/*/meta.md` frontmatter：`industry_primary: {cyclical|consumer|...}` → `industry_slugs: []`（置空待回填；保留 `arenas: [...]`）
+- `app/io/company.py` 移除 sector 白名单分支
 - `docs/USER-GUIDE.md` / `docs/DEVELOPER-GUIDE.md` 对应章节改写
-- `.claude/skills/ingest/SKILL.md` 中 sector 提示行移除 + 支持范围更新
-- `.claude/skills/ingest/workflows/sell-side-note.md` Step "问 sector" 整段改为"问 industry slug"（freeform，AskUser 手填或选已有）
-- 旧 `docs/PLAN-INDUSTRY-INGEST.md` 文件头部加 `Status: superseded by specs/2026-04-26-industry-ingest-design.md` 注记（保留历史，不删）
+- `.claude/skills/ingest/SKILL.md` 支持范围 + 关键资源索引更新
+- `.claude/skills/ingest/workflows/sell-side-note.md` Step "问 sector" 改为 "问 industry_slugs"
+- 旧 `docs/PLAN-INDUSTRY-INGEST.md` 文件头加 `Status: superseded by specs/2026-04-26-industry-ingest-design.md` 注记
 
-### 新增
+**不做的迁移**（D7）：
+- `BSE_920118/claims.jsonl` 前 5 条行业错位 claim 留原地
+- `arenas/cn-power-cable-polymer-material/competence-notes.md` 里行业错位答案留原地
+- 3 家 `companies/*/profile-YYYY.md` 内容不拆到 narratives/（profile 保留过渡，narratives 由下次 ingest 新填）
+
+### 7.3 新增
 
 **核心 IO 层**：
 
-- `app/io/industry.py`（完全重写）
-  - `list_industries() -> list[dict]`
-  - `read_meta(slug)` / `write_meta(slug, fm)`
-  - `read_observations(slug) -> list[dict]` / `append_observations(slug, rows)` / `dedup_observations(rows)`
-  - `read_narrative(slug, dimension)` / `append_narrative_block(slug, dimension, block, source_meta)`
-  - `read_checklist(slug)` / `write_checklist(slug, items, changelog_entry)` / `bump_version(slug)`
-  - `consolidate_checklist_answers(raw)` / `append_checklist_answers(slug, q_id, body, source_id)`
-  - `find_by_company(ticker, market) -> list[slug]`（扫 meta.yaml.linked_tickers）
-- `app/io/arenas.py`：
-  - `read_arena` 返回字段加 `industry`
-  - `write_definition` 接受 `industry` 参数
-  - `bootstrap` 相关函数更新
+```
+app/io/industry.py            # 重写 slug-based
+  list_industries / read_meta / write_meta / bump_meta_linked_*
+  read_observations / append_observations / dedup_observations
+  filter_observations_by_arena / filter_observations_by_segment
+  read_narrative(slug, dim) / append_narrative_block(slug, dim, block, source_meta)
+  find_by_company(ticker, market) / find_by_arena(arena_slug)
+
+app/io/arenas.py              # 升级
+  read/write definition.md frontmatter 含 industry + battleground_focus
+  read_narrative(slug, dim) / append_narrative_block(slug, dim, block, source_meta)  # 6 维度
+  (现有 checklist / competence-notes / participants / consolidate_answers 全保留不改)
+  find_by_industry(industry_slug) -> list[slug]
+
+app/io/company.py             # 升级
+  create_company 不再校验 sector 白名单
+  read/write meta.md frontmatter 加 industry_slugs: [list]
+  read_narrative(key, dim) / append_narrative_block(key, dim, block, source_meta)  # 7 维度
+
+app/io/claims.py              # 升级
+  validate_batch 接受 arena_refs / company_dimension_hint 可选字段
+  filter_by_arena(arena_slug) / filter_by_company_dimension(key, dim)
+```
 
 **config**：
-
-- `app/config.INDUSTRY_DIMENSIONS`（11 元组，闭集）
-- `app/config.INDUSTRY_FIELDS`（dict，初版建议清单，不做强校验）
+- `app/config.INDUSTRY_DIMENSIONS`（闭集 11）
+- `app/config.INDUSTRY_FIELDS`（建议词表）
+- `app/config.ARENA_DIMENSIONS`（闭集 6）
+- `app/config.COMPANY_DIMENSIONS`（闭集 7）
+- 删 `VALID_SECTORS`
 
 **routes + templates**：
 
-- `app/routes/industries.py`（完全重写为 slug 路由）
-  - `/industries/` 列表
-  - `/industries/{slug}` 详情（11 维度 + 跨源聚合 + 关联 arena/company）
-  - `/industries/{slug}/checklist` 清单页 + 完成度
-- `app/templates/industries/*.html`（slug 详情模板 + observation diff 表 + checklist 页）
-- `app/routes/arenas.py` + 模板：加 industry 顶部链接
-- `app/routes/companies.py` + 模板：industry_slugs tag 显示 + 跨层跳转
+```
+app/routes/industries.py      # 重写 slug 路由
+  /industries/ 列表
+  /industries/{slug}  主页（11 维度 narrative + observation 表格）
+  /industries/{slug}/observations  结构化事实跨源聚合表
+
+app/routes/arenas.py          # 升级
+  /arenas/{slug}  主页（6 维度 narrative + 参与者聚合表）
+  现有路由（checklist/notes）保留
+
+app/routes/companies.py       # 升级
+  /companies/{key}  主页加"7 维度 narrative 卡片"（可展开证据 claims）
+  /companies/{key}/claims  现有按 subject_tag 列表保留
+  删 sector 相关
+
+app/routes/competence.py      # 整体删
+
+app/templates/industries/*.html  # slug 模板 + observation diff + 维度渲染
+app/templates/arenas/*.html      # 6 维度模板 + 参与者聚合
+app/templates/companies/*.html   # 7 维度 narrative 卡片 + claims 分组
+```
 
 **预处理 + 聚合**：
 
-- `scripts/preprocess_report.py`：加 `--type industry` 分支；`detected_tickers[]` 扫描；meta 提取 institution / report_date / sha8
-- `.claude/skills/ingest/templates/a-share-industry.yaml`（新，剔除规则）
-- `.claude/skills/ingest/templates/us-industry.yaml`（新）
-- `scripts/ingest_aggregate.py`：新增
-  - `write_industry_observations(slug, rows)` + dedup
-  - `write_industry_narrative(slug, dim, block, source_meta)`
-  - `write_industry_checklist_answers(slug, consolidated)`
-  - `write_arena_checklist_answers(arena_slug, consolidated)`
+```
+scripts/preprocess_report.py    # 加 --type industry 分支 + detected_tickers + report_abstract 产出
+scripts/ingest_aggregate.py     # 新增
+  write_industry_observations(slug, rows)
+  write_industry_narrative(slug, dim, block, source_meta)
+  write_arena_narrative(arena_slug, dim, block, source_meta)
+  write_company_narrative(key, dim, block, source_meta)
+  dedup_observations(rows) + validate_schema(row)
+```
 
 **ingest skill**：
 
-- `.claude/skills/ingest/SKILL.md`：支持范围放开到行业研报；补关键资源索引（industry 维度清单 / field inventory / bootstrap prompt 位置）
-- `.claude/skills/ingest/workflows/industry-report.md`（新，完整 workflow）
-- `.claude/skills/ingest/prompts/industry/section-extract.md`（新，统一 section subagent prompt）
-- `.claude/skills/ingest/prompts/industry/checklist-answer.md`（新）
-- `.claude/skills/ingest/prompts/industry/bootstrap-checklist.md`（新）
-- `.claude/skills/ingest/section-routing.yaml`：加 `industry-generic` 通道
-- `.claude/skills/ingest/source-id-rules.yaml`：加 `行研-` 格式
+```
+.claude/skills/ingest/
+├── SKILL.md                             # 支持范围放开到行业研报 + 三层产出说明
+├── workflows/
+│   ├── industry-report.md               # 新：§5.2
+│   ├── annual-report.md                 # 改造：§5.3 加 narrative 产出
+│   ├── quarterly-report.md              # 改造：§5.4
+│   └── sell-side-note.md                # 改造：§5.5 删 sector + 加 narrative
+├── templates/
+│   ├── a-share-industry.yaml            # 新：行业研报剔除规则
+│   ├── us-industry.yaml                 # 新
+│   ├── a-share-annual.yaml              # 保留
+│   └── ... 其他保留
+├── prompts/
+│   ├── digest/                          # 新目录
+│   │   ├── industry-digest.md           # 新
+│   │   ├── annual-digest.md             # 新
+│   │   ├── quarterly-digest.md          # 新
+│   │   └── sell-side-digest.md          # 新
+│   ├── arena/                           # 现有保留
+│   └── sections/                        # 现有 section 抽取 prompt 保留（兼容 fallback，不是主路径）
+├── section-routing.yaml                 # 加 industry-generic 通道
+├── source-id-rules.yaml                 # 加 行研- 格式
+└── cross-checks.yaml                    # 保留
+```
 
 **tests**：
 
-- `tests/test_industry_io.py`（slug CRUD / observations dedup / narrative append / checklist version bump / find_by_company）
-- `tests/test_ingest_industry_aggregate.py`（observations schema / narrative formatting / checklist consolidation）
-- `tests/test_preprocess_industry.py`（ticker 扫描 / meta 提取）
-
-## 9. 跨验证呈现示例（CMP 用例）
-
-假设先后 ingest 了国金 2026-03-10 和一份虚拟的华泰 2025-12-01 CMP 报告，industry 页 `市场规模` 维度渲染：
-
 ```
-§2 市场规模与增长                                              [2 sources]
-
-atomic · market_size.tam_global                               median 34.7  range 33.8-35.6  spread 5%
-┌──────────────────────┬──────────┬────────┬────────┬────────┐
-│ source               │ timeframe│ value  │ unit   │ conf   │
-├──────────────────────┼──────────┼────────┼────────┼────────┤
-│ 国金 2026-03-10      │ 2025     │ 33.8   │ usd_bn │ high   │
-│ 华泰 2025-12-01      │ 2025     │ 35.6   │ usd_bn │ high   │
-└──────────────────────┴──────────┴────────┴────────┴────────┘
-
-atomic · market_size.tam_china                                🚨 spread 28%
-┌──────────────────────┬──────────┬────────┬────────┬────────┐
-│ 国金 2026-03-10      │ 2024     │ 29.6   │ cny_bn │ high   │ (华经)
-│ 国金 2026-03-10      │ 2024     │ 23.0   │ cny_bn │ high   │ (弗若斯特沙利文)
-│ 华泰 2025-12-01      │ 2024     │ 27.2   │ cny_bn │ medium │
-└──────────────────────┴──────────┴────────┴────────┴────────┘
-
-atomic · market_size.cagr_global (forecast)                   2025-2034
-┌──────────────────────┬──────────┬────────┬────────┬────────┐
-│ 国金 2026-03-10      │ 2025-2034│ 4.5%   │ -      │ high   │
-│ 华泰 2025-12-01      │ 2025-2030│ 5.0%   │ -      │ high   │
-└──────────────────────┴──────────┴────────┴────────┴────────┘
+tests/test_industry_io.py                # slug CRUD / observations dedup / narrative append / find_by_company / filter_by_arena
+tests/test_arenas_narrative.py           # 6 维度 narrative append
+tests/test_company_narrative.py          # 7 维度 narrative append
+tests/test_digest_schema.py              # digest JSON schema 校验
+tests/test_ingest_aggregate_triple.py    # 三层分拣逻辑
+tests/test_preprocess_industry.py        # ticker 扫描 + abstract 提取
+tests/test_industry_routes.py            # /industries/{slug} 页面渲染 + spread badge
+tests/test_arena_aggregation.py          # arena 聚合 view（filter by arena_refs）
 ```
 
-用户看到 `tam_china` 同一份报告内部就有 2 条冲突（华经 29.6 vs 弗若斯特沙利文 23），外部再加华泰 27.2 —— 一眼看清有多少不确定性。
+## 8. 破坏性变更与兼容策略
 
-## 10. 破坏性变更与兼容策略
-
-**破坏性（一次性完成，预期在 CI 验证下通过）**：
-
-- `VALID_SECTORS` 相关引用从代码完全移除（import 失败点在 CI 会暴露）
-- `company.meta.industry_primary` 字段迁移（3 份 meta 一次性改写）
-- 旧 `app/io/industry.py` API 签名完全变（基于 sector 的 `read/write(sector, kind)` → 基于 slug 的完整新 API）；若有外部代码依赖旧签名需同步改，项目内扫过确认只有 `app/routes/industries.py` 引用
-- `app/routes/competence.py` + 模板删，URL `/competence/*` 消失。历史 bookmark 会 404
+**破坏性（一次性完成，CI 暴露级联）**：
+- `VALID_SECTORS` 从代码完全移除
+- `company.meta.industry_primary` 字段迁移（3 份 meta 改写）
+- 旧 `app/io/industry.py` API 签名完全变
+- `app/routes/competence.py` 删除，URL `/competence/*` 消失
+- `industries/{sector}/` 子目录删除（空）
 
 **不破坏**：
+- `claims.jsonl` schema 只新增可选字段（arena_refs / company_dimension_hint），旧 claim 可读
+- `arenas/{slug}/` 现有文件保留位置（definition.md 扩展 frontmatter 字段不破坏读取）
+- `financials.db` / `profile-YYYY.md` / `meta.md`（除 industry_primary 外）不变
 
-- 现有 claims.jsonl / profile-*.md / financials.db 格式不变
-- arena 文件格式不变（只加 frontmatter 字段 `industry`，解析旧文件向后兼容即可）
-- ingest 现有 workflow（annual / quarterly / sell-side）不动
+**已知遗留**（D7 的代价）：
+- `BSE_920118/claims.jsonl` 4 条行业错位 claim、`cn-power-cable-polymer-material/competence-notes.md` 行业错位答案 —— 保留
+- 3 家 company 的 `profile-YYYY.md` 内容暂不拆到 narratives/；后续新 ingest 会为这些公司补 narrative，profile 与 narrative 并存
 
-**已知遗留问题**（design 决策 D6 的代价）：
+## 9. 不做 / 推后
 
-- `BSE_920118/claims.jsonl` 的 id=0001-0005 中 4 条属于行业事实错位，但保留以维持历史完整性；后续若用户手动整理可一次性迁移到对应 industry observations
-- `cn-power-cable-polymer-material/competence-notes.md` 的 `q_power_grid_tam / q_policy_subsidies_barriers / q_domestic_consolidation / q_overcapacity_risk` 几条答案挂公司名下但实为行业事实；同上保留
-- 新 ingest 按新规则写入，不会继续累积此类错位
-
-## 11. 不做的事（显式排除）
-
-- ❌ 自动冲突检测（D5）
+- ❌ 自动冲突检测（D6：lazy view）
 - ❌ industry observation → company claim 自动联动（两个独立事实层）
-- ❌ 迁移旧错位数据（D6）
-- ❌ brief 聚合视图 /brief/{slug}（v1 scope 外，后续 plan）
-- ❌ 首页决策仪表盘重做（scope 外）
-- ❌ 将来预测进 `metric_type=atomic`（用 `time_type=forecast` 区分，渲染上与 actual 分组）
-- ❌ 行业新闻 / 电话会纪要 / 社媒 ingest（本次只处理正式行业研报 PDF）
-- ❌ 多份报告之间自动合并 narrative 段（只按 source 并列，合并靠用户手动）
+- ❌ 迁移旧错位数据（D7）
+- ❌ industry + arena checklist 基于知识库反向生成（v2 独立 spec）
+- ❌ `/brief/{slug}` 聚合视图（v2 独立 spec）
+- ❌ 首页决策仪表盘（推后）
+- ❌ `profile-YYYY.md` 完全退休（v3 评估）
+- ❌ 多份报告间 narrative 自动合并（只按 source 并列；合并靠用户手动）
+- ❌ 预测数据进 `actual` 观察序列（用 `time_type=forecast` 区分）
+- ❌ 长报告（> 30 页）digest 按 section 二次拆分（首批不需要，遇到再加）
 
-## 12. 测试策略
+## 10. 测试策略
 
-- unit：所有新 IO 函数（industry.py / ingest_aggregate 新增 helpers）+ 预处理 ticker 扫描
-- integration：用国金 `化学机械抛光行业.pdf` 走完整 pipeline，断言
-  - `industries/cn-cmp-material/` 各文件生成且结构正确
-  - observations.jsonl 含 `market_size.tam_global=33.8 usd_bn @ 2025` 和 `market_size.tam_china` 同 source 下 29.6 与 23.0 两条并列（`source_note` 分别为"华经统计"和"弗若斯特沙利文测算"）
-  - checklist.yaml v1 生成且 maps_to 字段齐
-  - per-ticker claims 至少为安集/鼎龙生成 ≥3 条公司事实 claim，且不含 `market_size.tam_global` / `concentration.cr5` 这类本属 industry observation 的行业级事实
-- regression：现有 sell-side-note / annual-report workflow 仍通过（保留 fixture）
-- UI：industry 详情页渲染 spread>30% badge 的测试（需要 observations fixture 覆盖）
+**Unit**：
+- 三层 narrative append 写入格式正确（frontmatter / 来源段头 / quote 块）
+- observations dedup（同 field+timeframe+source_id 保留 confidence 最高）
+- filter_by_arena 按 arena_refs 精准过滤
+- 反查 helpers 正确性
 
-## 13. 未决 / 后续
+**Integration**（端到端 fixture）：
+- 用 `~/Downloads/化学机械抛光行业.pdf` 走 industry-report workflow，断言：
+  - `industries/cn-cmp-material/` 11 维度 .md + observations.jsonl 生成
+  - observations 含 `market_size.tam_global=33.8 @ 2025`、`market_size.tam_china` 同 source 29.6 与 23.0 两条（source_note 分别为"华经"、"弗若斯特沙利文"）
+  - `market_size.md` narrative 段含"33.8 亿美元"等要点
+  - `proposed_arenas` 至少推出 `cn-cmp-slurry-*` / `cn-cmp-pad-*` 两个候选
+  - 若用户 bootstrap 了 `cn-cmp-slurry-domestic-substitution` arena，6 份 .md 生成，definition.md frontmatter 含 battleground_focus
+  - 被提及 ≥3 句话的 ticker（安集 / 鼎龙）生成 per-ticker claims 和 narrative，且 claims 不含 `market_size.tam_global` 这类行业级事实
+- 用 茅台 2025 年报走 annual-report workflow，断言 `companies/SSE_600519/narratives/*.md` 生成且 7 维度覆盖，claims.jsonl 新增
 
-- `/brief/{slug}` 聚合视图设计（下一个 spec）
-- field inventory 初版是否够用：首批跑完 3-5 份行业研报后回头复盘，看哪些 dim 需要强结构化补字段
-- industry checklist 问题质量：多次 bootstrap 后若用户频繁删改草稿，调整 `bootstrap-checklist.md` prompt
-- arena checklist 的历史纯行业 items 是否主动清理（目前保留；首批新 ingest 跑完后评估）
-- 跨 industry 的关系表达（如 `cn-cmp-material` 和 `cn-semiconductor-equipment` 存在上下游关系）：目前不表达，未来若需要可在 meta.yaml 加 `upstream_industries / downstream_industries` 字段
+**Regression**：
+- 现有 annual-report / quarterly-report / sell-side-note 的基础行为（claims 产出 + financials 导入）不退化
 
-## 附录 A · 现有数据形态参考
+**UI**：
+- `/industries/{slug}` 跨源 spread>30% badge 渲染
+- `/arenas/{slug}` 参与者聚合表正确拉出 industry.observations with matching arena_refs
 
-- 行业研报样例：`~/Downloads/化学机械抛光行业.pdf`（国金证券 2026-03-10，12 页，封面"半导体材料行业研究：化学机械抛光行业"）
-- 现有 arena checklist：`arenas/cn-power-cable-polymer-material/checklist.yaml`（含 15 items，tag 混用 industry_structure / competitive_position / growth_drivers 等 8 标签）
-- 现有 arena notes：`arenas/cn-power-cable-polymer-material/competence-notes.md`（按 q_id × ticker 分段）
-- 现有 claims 样例：`companies/BSE_920118/claims.jsonl`（混有行业错位 claim）/ `companies/SSE_600519/claims.jsonl`（纯公司事实）
+## 11. 未决与 v2 演进
 
-## 附录 B · 废除 sector 级联影响 grep 清单
+- `/brief/{slug}` 三层融合决策视图（v2 独立 spec）
+- industry + arena checklist 基于知识库反向生成机制（v2 独立 spec；现有 arena.checklist.yaml 作 seed）
+- field inventory 初版够不够：跑完 3-5 份行业研报后回头复盘，看哪些 dim 需补 structured field
+- `profile-YYYY.md` 退休评估（v3 spec）
+- 跨 industry 的上下游关系表达（currently 不表达；若需要加 `upstream_industries / downstream_industries` 字段）
+- arena 数量增多后的浏览 UX（arena 列表页分类、按 industry 分组）
+- digest subagent 对长报告（> 30 页）的分批策略
 
-废 `VALID_SECTORS` 涉及文件（要同步改）：
+## 附录 A · 三层维度速查
+
+| 层 | 维度 | 对应文件 |
+|---|---|---|
+| industry | 11 | definition / market-size / lifecycle / value-chain / competition / drivers / technology / regulation / benchmark / risks / valuation |
+| arena | 6 | definition（现有）/ participants / decisive-factors / trajectory / narratives / investment-view |
+| company | 7 | business-model / strategy-roadmap / moat / financial-profile / catalysts / risks / valuation |
+
+## 附录 B · CMP 用例端到端跟踪
+
+ingest `~/Downloads/化学机械抛光行业.pdf`（国金证券 2026-03-10，12 页）预期产物：
+
+1. **industry 新建** `industries/cn-cmp-material/`：
+   - meta.yaml：linked_tickers 含 `[SSE/688019 安集, SZ/300054 鼎龙, SH/603659 上海新阳, SZ/002088 时代新材]` 等报告明确提及的；linked_arenas 由 Step 7 用户选择决定
+   - observations.jsonl：约 20-30 条（tam/cagr 市场规模、Dupont 75% / 头部 6 家 85% 等 concentration、磨料 54.6% 成本占比、CMP 步骤数 vs 制程节点等 benchmark、钴抛光液演进等 technology）
+   - 11 份 narrative .md 按维度 append `### 来源 国金证券 2026-03-10`
+2. **arena 候选提出**（用户审后决定 bootstrap 哪些）：
+   - `cn-cmp-slurry-domestic-substitution`（安集 challenger vs Dupont/Cabot/Versum incumbent）
+   - `cn-cmp-pad-dupont-disruption`（Dupont 75% 被 Fujibo/鼎龙挑战）
+3. **若 arena 被 bootstrap**：各 6 份 narrative .md 初始化，§2 §3 §4 由本次 digest 填；definition.md frontmatter 含 battleground_focus
+4. **公司 narrative + claims**：
+   - `companies/SSE_688019/narratives/` 7 维度 md 部分维度有内容（business-model / moat / financial-profile / strategy-roadmap 约 4 维）
+   - `companies/SZ_300054/narratives/` 同上
+   - 其他被提及 ticker 若证据 <2 句话则不建 narrative，但可入 linked_tickers 列表
+   - claims.jsonl per ticker append，带 `arena_refs` 指向相关 arena（若已 bootstrap）
+
+## 附录 C · 废除 sector 级联 grep 清单
 
 ```
-app/config.py:23                      VALID_SECTORS 定义
-app/io/company.py:11,51,52,162,164   import + sector 校验
-app/io/industry.py:50,51,86          废 API 整体重写
-app/io/competence.py:23,155,156      整个模块删
-app/routes/companies.py:6,51,151     form 下拉去除
-app/routes/industries.py:26,48,62    路由改为 slug
-app/routes/competence.py:8,31,34     整个路由删
-.claude/skills/ingest/SKILL.md:47              关键资源索引更新
-.claude/skills/ingest/workflows/sell-side-note.md:38    Step "问 sector" 改写
-docs/USER-GUIDE.md:63,102,297        章节改写
-docs/DEVELOPER-GUIDE.md:123,251,299  同上
-docs/PLAN-INDUSTRY-INGEST.md         整份标为 superseded
+app/config.py:23                      VALID_SECTORS 定义 (删)
+app/io/company.py:11,51,52,162,164    import + sector 校验 (改/删)
+app/io/industry.py:all                重写
+app/io/competence.py:all              删
+app/routes/companies.py:6,51,151      form 下拉去除
+app/routes/industries.py:all          slug 路由重写
+app/routes/competence.py:all          删
+.claude/skills/ingest/SKILL.md:47             关键资源索引更新
+.claude/skills/ingest/workflows/sell-side-note.md:38   Step 问 sector 改写
+docs/USER-GUIDE.md:63,102,297         章节改写
+docs/DEVELOPER-GUIDE.md:123,251,299   同上
+docs/PLAN-INDUSTRY-INGEST.md          标 superseded
 ```
-
-## 附录 C · 用例跟踪（CMP 端到端）
-
-ingest `化学机械抛光行业.pdf` 预期产物：
-
-1. `industries/cn-cmp-material/meta.yaml`（新建）
-   - linked_tickers: `[{market: SSE, ticker: '688019', name: 安集科技}, {market: SZ, ticker: '300054', name: 鼎龙股份}, ...]`（报告提及且证据充分的）
-   - linked_arenas: 如果 `cn-cmp-slurry` / `cn-cmp-pad` arena 已存在则加入；否则 empty + 提示用户 bootstrap
-   - 注：cn-cmp-material 与现有 `cn-power-cable-polymer-material`（电缆料）是两个完全不同的 industry，没有交集，不会互相污染数据
-2. `industries/cn-cmp-material/observations.jsonl` 约 15-25 条原子/segment/enum 事实
-3. 7 份 narrative .md（definition / value_chain / technology / drivers / regulation / risks / valuation）
-4. `industries/cn-cmp-material/checklist.yaml` v1 含 10-15 items
-5. `industries/cn-cmp-material/checklist-answers.md` 针对被报告覆盖的 5-10 个 q_id 有答案
-6. `companies/SSE_688019/claims.jsonl` 新增 3-5 条（安集 CMP 营收 / 全球份额 / 产能 / 研发）
-7. `companies/SZ_300054/claims.jsonl` 新增 3-5 条（鼎龙抛光垫份额 / 武汉汉阳基地 60 万片/年 / 多品类布局）
-8. 其他提及 ticker（上海新阳 / 时代新材等）若报告内容不足 2 句话则不建 meta 不产 claim（沿用 v0 PLAN 降噪规则）
 
 ---
 
-**Next step**: 用 `superpowers:writing-plans` 出实施 plan（按代码改动清单 §8 的"删除 → 迁移 → 新增"三批拆 task，建议按 `app/io → scripts → .claude/skills/prompts → workflows → routes → templates → tests` 的依赖顺序实施）。
+**Next step**：用户终审本 spec → 切 `superpowers:writing-plans` 出实施计划。建议 plan 切分：
+- Plan 1: 三层数据模型 + IO 层（`app/io/{industry,arenas,company,claims}.py`）+ config + 迁移 + tests
+- Plan 2: preprocess + digest subagent prompts + ingest_aggregate helpers
+- Plan 3: 四个 workflow（industry-report / annual-report / quarterly-report / sell-side-note）+ SKILL.md 升级
+- Plan 4: routes + templates（三层页面 + cross-ref + 聚合 view）
+- Plan 5: 端到端集成测试 + 清理旧 sector 代码
