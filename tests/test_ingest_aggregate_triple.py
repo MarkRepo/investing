@@ -179,3 +179,46 @@ def test_write_narrative_skips_empty_string(tmp_path):
     assert "来源" not in md_m
     assert "来源" not in md_t
     assert "Mature" in md_l
+
+
+def test_facts_to_claims_converts_fields():
+    facts = [{
+        "idx": 1,
+        "fact_text": "FY2025 营收 1,688 亿元，同比 +14.3%",
+        "evidence_quote": "...",
+        "target_layer": "company",
+        "target_refs": {"ticker": "600519", "market": "SSE"},
+        "dimension_hint": "financial_profile",
+        "subject_tag_hint": "revenue_growth",
+        "company_dimension_hint": "financial_profile",
+        "timeframe": "FY2025",
+        "confidence": "high",
+        "arena_refs": ["arena-x"],
+    }]
+    claims = agg.facts_to_claims(facts)
+    assert len(claims) == 1
+    c = claims[0]
+    assert c["claim_text"] == "FY2025 营收 1,688 亿元，同比 +14.3%"
+    assert c["subject_tag"] == "revenue_growth"
+    assert c["company_dimension_hint"] == "financial_profile"
+    assert c["arena_refs"] == ["arena-x"]
+    # evidence must be [{text, type}] (claim schema)
+    assert isinstance(c["evidence"], list)
+    assert c["evidence"][0]["text"].startswith("...") or c["evidence"][0]["text"] == "..."
+
+
+def test_facts_to_claims_groups_by_company():
+    facts = [
+        {"idx": 1, "target_layer": "company",
+         "target_refs": {"ticker": "600519", "market": "SSE"},
+         "fact_text": "A", "evidence_quote": "ea",
+         "subject_tag_hint": "tag1", "company_dimension_hint": "moat"},
+        {"idx": 2, "target_layer": "company",
+         "target_refs": {"ticker": "000858", "market": "SSE"},
+         "fact_text": "B", "evidence_quote": "eb",
+         "subject_tag_hint": "tag1", "company_dimension_hint": "moat"},
+    ]
+    groups = agg.group_company_facts(facts)
+    assert set(groups.keys()) == {("600519", "SSE"), ("000858", "SSE")}
+    assert len(groups[("600519", "SSE")]) == 1
+    assert len(groups[("000858", "SSE")]) == 1

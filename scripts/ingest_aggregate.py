@@ -557,3 +557,43 @@ def write_company_narrative(
             )
             count += 1
     return count
+
+
+def facts_to_claims(facts: list[dict]) -> list[dict]:
+    """Convert company-layer digest facts to claim dicts accepted by
+    claims_io.validate_batch (and subsequently append_batch)."""
+    out: list[dict] = []
+    for f in facts:
+        if f.get("target_layer") not in ("company", "cross"):
+            continue
+        refs = f.get("target_refs") or {}
+        if not (refs.get("ticker") and refs.get("market")):
+            continue
+        out.append({
+            "claim_text": f.get("fact_text"),
+            "subject_tag": f.get("subject_tag_hint"),
+            "polarity": f.get("polarity", "neutral"),
+            "claim_type": (
+                "quantitative" if f.get("value_numeric") is not None
+                else "qualitative"
+            ),
+            "timeframe": f.get("timeframe"),
+            "evidence": [{"text": f.get("evidence_quote") or "", "type": "primary"}],
+            "confidence": f.get("confidence", "medium"),
+            "arena_refs": f.get("arena_refs") or [],
+            "company_dimension_hint": f.get("company_dimension_hint"),
+        })
+    return out
+
+
+def group_company_facts(facts: list[dict]) -> dict[tuple[str, str], list[dict]]:
+    """Return {(ticker, market): [facts]} for every company-layer fact."""
+    groups: dict[tuple[str, str], list[dict]] = {}
+    for f in facts:
+        if f.get("target_layer") not in ("company", "cross"):
+            continue
+        refs = f.get("target_refs") or {}
+        if not (refs.get("ticker") and refs.get("market")):
+            continue
+        groups.setdefault((refs["ticker"], refs["market"]), []).append(f)
+    return groups
