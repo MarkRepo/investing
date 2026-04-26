@@ -10,10 +10,10 @@ import pytest
 from app.io import financials as fin
 
 
-SAMPLE_CSV = """period,period_type,revenue,gross_profit,operating_income,net_income,total_assets,total_equity,operating_cashflow,shares_outstanding
-2024Q4,quarterly,1000,400,200,150,5000,2000,180,100
-2024Q3,quarterly,900,360,170,120,4800,1950,160,100
-2024A,annual,3500,1400,700,500,5000,2000,650,100
+SAMPLE_CSV = """period,period_type,revenue,gross_profit,operating_income,net_income,total_assets,total_equity,operating_cashflow,shares_outstanding,short_term_debt,long_term_debt
+2024Q4,quarterly,1000,400,200,150,5000,2000,180,100,1000,2000
+2024Q3,quarterly,900,360,170,120,4800,1950,160,100,1000,1900
+2024A,annual,3500,1400,700,500,5000,2000,650,100,1000,2000
 """
 
 

@@ -72,3 +72,72 @@ def test_alter_table_migration_preserves_legacy_data(tmp_path):
     assert row[1] is None  # new inventory column is NULL
     assert row[2] is None  # new capex column is NULL
     conn.close()
+
+
+def test_recompute_ratios_produces_dupont(tmp_path):
+    db_path = tmp_path / "t.db"
+    conn = sqlite3.connect(str(db_path))
+    fin_io.init_schema(conn)
+    conn.execute("""
+        INSERT INTO financials (ticker, period, period_type,
+            revenue, net_income, total_assets, total_equity, operating_cashflow, capex)
+        VALUES ('T', '2023A', 'annual', 1000, 100, 2000, 500, 120, 30)
+    """)
+    conn.commit()
+    fin_io.recompute_ratios(conn, "T")
+
+    row = conn.execute("""SELECT net_margin, asset_turnover, equity_multiplier,
+                          roe, fcf, fcf_margin, ocf_quality
+                          FROM ratios WHERE ticker='T' AND period='2023A'""").fetchone()
+    net_margin, asset_turn, eq_mult, roe, fcf, fcf_margin, ocf_q = row
+    assert net_margin == 0.1         # 100/1000
+    assert asset_turn == 0.5          # 1000/2000
+    assert eq_mult == 4.0             # 2000/500
+    assert roe == 0.2                 # 100/500
+    assert abs(roe - net_margin * asset_turn * eq_mult) < 1e-9  # DuPont identity
+    assert fcf == 90                  # 120 - 30
+    assert fcf_margin == 0.09         # 90/1000
+    assert ocf_q == 1.2                # 120/100
+
+
+def test_recompute_ratios_ccc(tmp_path):
+    db_path = tmp_path / "ccc.db"
+    conn = sqlite3.connect(str(db_path))
+    fin_io.init_schema(conn)
+    conn.execute("""
+        INSERT INTO financials (ticker, period, period_type,
+            revenue, cost_of_revenue, inventory, accounts_receivable, accounts_payable)
+        VALUES ('T', '2023A', 'annual', 3650, 2190, 300, 400, 200)
+    """)
+    conn.commit()
+    fin_io.recompute_ratios(conn, "T")
+
+    row = conn.execute("""SELECT days_inventory, days_receivable, days_payable, cash_conversion_cycle
+                          FROM ratios WHERE ticker='T'""").fetchone()
+    d_inv, d_ar, d_ap, ccc = row
+    # days_inventory = inventory / cost_of_revenue * 365 = 300/2190*365 ≈ 50
+    assert abs(d_inv - 50.0) < 0.5
+    # days_receivable = ar / revenue * 365 = 400/3650*365 = 40
+    assert abs(d_ar - 40.0) < 0.5
+    # days_payable = ap / cost_of_revenue * 365 = 200/2190*365 ≈ 33.33
+    assert abs(d_ap - 33.3) < 0.5
+    # ccc = d_inv + d_ar - d_ap
+    assert abs(ccc - (d_inv + d_ar - d_ap)) < 0.01
+
+
+def test_recompute_ratios_handles_null_gracefully(tmp_path):
+    """Missing columns must not cause divide-by-zero errors."""
+    db_path = tmp_path / "nulls.db"
+    conn = sqlite3.connect(str(db_path))
+    fin_io.init_schema(conn)
+    conn.execute("""
+        INSERT INTO financials (ticker, period, period_type, revenue)
+        VALUES ('T', '2023A', 'annual', 1000)
+    """)
+    conn.commit()
+    fin_io.recompute_ratios(conn, "T")  # must not raise
+    row = conn.execute("SELECT net_margin, fcf, cash_conversion_cycle FROM ratios WHERE ticker='T'").fetchone()
+    # missing net_income / ocf / capex / inventory → NULL
+    assert row is not None
+    assert row[0] is None
+    assert row[1] is None

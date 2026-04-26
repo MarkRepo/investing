@@ -37,6 +37,69 @@ def _columns_ddl() -> str:
     return ",\n    ".join(f"{c} REAL" for c in FINANCIAL_COLUMNS)
 
 
+# Expanded ratios schema (20 cols: ticker + period + 18 derived metrics):
+# margins, returns, DuPont three-factor, leverage, cash flow, interest coverage,
+# liquidity, working capital cycle. All REAL; missing inputs → NULL output
+# via NULLIF() in recompute_ratios.
+_RATIOS_SCHEMA = """
+CREATE TABLE IF NOT EXISTS ratios (
+    ticker TEXT NOT NULL,
+    period TEXT NOT NULL,
+    -- margins
+    gross_margin REAL,
+    operating_margin REAL,
+    net_margin REAL,
+    -- returns
+    roe REAL,
+    roa REAL,
+    -- DuPont three-factor
+    asset_turnover REAL,
+    equity_multiplier REAL,
+    -- leverage
+    debt_to_equity REAL,
+    -- cash flow
+    fcf REAL,
+    fcf_margin REAL,
+    ocf_quality REAL,
+    -- interest coverage
+    interest_coverage REAL,
+    -- liquidity
+    current_ratio REAL,
+    quick_ratio REAL,
+    -- working capital cycle
+    days_inventory REAL,
+    days_receivable REAL,
+    days_payable REAL,
+    cash_conversion_cycle REAL,
+    PRIMARY KEY (ticker, period)
+);
+"""
+
+# Authoritative ratios column list (matches _RATIOS_SCHEMA order, minus PK keys).
+# Used by init_schema() to ALTER ADD COLUMN any missing entry against an older
+# (5-col legacy) ratios table that may live in a carried-over DB file.
+_RATIOS_COLUMNS = (
+    "gross_margin",
+    "operating_margin",
+    "net_margin",
+    "roe",
+    "roa",
+    "asset_turnover",
+    "equity_multiplier",
+    "debt_to_equity",
+    "fcf",
+    "fcf_margin",
+    "ocf_quality",
+    "interest_coverage",
+    "current_ratio",
+    "quick_ratio",
+    "days_inventory",
+    "days_receivable",
+    "days_payable",
+    "cash_conversion_cycle",
+)
+
+
 _ALIAS_MAP_CACHE: dict | None = None
 
 
@@ -101,17 +164,7 @@ CREATE TABLE IF NOT EXISTS financials (
     PRIMARY KEY (ticker, period)
 );
 
-CREATE TABLE IF NOT EXISTS ratios (
-    ticker TEXT NOT NULL,
-    period TEXT NOT NULL,
-    gross_margin REAL,
-    net_margin REAL,
-    operating_margin REAL,
-    roe REAL,
-    roa REAL,
-    debt_to_equity REAL,
-    PRIMARY KEY (ticker, period)
-);
+{ratios_schema}
 
 CREATE TABLE IF NOT EXISTS price_triggers (
     ticker TEXT NOT NULL,
@@ -190,13 +243,29 @@ def init_schema(conn: sqlite3.Connection) -> None:
     SQLite quirk: ``ALTER TABLE ADD COLUMN`` does not support ``IF NOT
     EXISTS``, so we inspect ``PRAGMA table_info`` first.
     """
-    conn.executescript(_BASE_SCHEMA_TEMPLATE.format(column_ddl=_columns_ddl()))
+    conn.executescript(
+        _BASE_SCHEMA_TEMPLATE.format(
+            column_ddl=_columns_ddl(),
+            ratios_schema=_RATIOS_SCHEMA.strip(),
+        )
+    )
 
     cursor = conn.execute("PRAGMA table_info(financials)")
     existing_cols = {row[1] for row in cursor.fetchall()}
     for col in FINANCIAL_COLUMNS:
         if col not in existing_cols:
             conn.execute(f"ALTER TABLE financials ADD COLUMN {col} REAL")
+
+    # ratios table may exist in older DB files with only the legacy 5-col set
+    # (gross_margin, net_margin, operating_margin, roe, roa, debt_to_equity);
+    # add any columns introduced by the expanded DuPont/FCF/CCC schema so that
+    # recompute_ratios INSERTs don't fail with "no such column".
+    cursor = conn.execute("PRAGMA table_info(ratios)")
+    existing_ratios_cols = {row[1] for row in cursor.fetchall()}
+    for col in _RATIOS_COLUMNS:
+        if col not in existing_ratios_cols:
+            conn.execute(f"ALTER TABLE ratios ADD COLUMN {col} REAL")
+
     conn.commit()
 
 
@@ -351,42 +420,58 @@ def import_financials_csv(
 # --- Derived ratios ---------------------------------------------------------
 
 
-def _safe_div(num: float | None, den: float | None) -> float | None:
-    if num is None or den is None or den == 0:
-        return None
-    return num / den
-
-
 def recompute_ratios(conn: sqlite3.Connection, ticker: str) -> None:
-    """Rebuild the ratios table for one ticker from current financials rows."""
+    """Recompute all derived ratios for a single ticker. Safe for NULL inputs
+    (uses NULLIF to avoid division-by-zero; missing inputs → NULL output)."""
     ticker = ticker.strip().upper()
+    conn.executescript(_RATIOS_SCHEMA)
     conn.execute("DELETE FROM ratios WHERE ticker = ?", (ticker,))
-    rows = conn.execute(
-        f"SELECT period, {', '.join(FINANCIAL_COLUMNS)} FROM financials WHERE ticker = ?",
-        (ticker,),
-    ).fetchall()
-    for r in rows:
-        revenue = r["revenue"]
-        liabilities = None
-        if r["total_assets"] is not None and r["total_equity"] is not None:
-            liabilities = r["total_assets"] - r["total_equity"]
-        conn.execute(
-            """
-            INSERT INTO ratios
-                (ticker, period, gross_margin, net_margin, operating_margin, roe, roa, debt_to_equity)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                ticker,
-                r["period"],
-                _safe_div(r["gross_profit"], revenue),
-                _safe_div(r["net_income"], revenue),
-                _safe_div(r["operating_income"], revenue),
-                _safe_div(r["net_income"], r["total_equity"]),
-                _safe_div(r["net_income"], r["total_assets"]),
-                _safe_div(liabilities, r["total_equity"]),
-            ),
+
+    # Insert one row per period with all derived metrics.
+    # NULLIF(x, 0) converts zero to NULL so division returns NULL instead of error.
+    conn.execute(
+        """
+        INSERT INTO ratios (
+            ticker, period,
+            gross_margin, operating_margin, net_margin,
+            roe, roa, asset_turnover, equity_multiplier, debt_to_equity,
+            fcf, fcf_margin, ocf_quality, interest_coverage,
+            current_ratio, quick_ratio,
+            days_inventory, days_receivable, days_payable, cash_conversion_cycle
         )
+        SELECT
+            ticker, period,
+            gross_profit / NULLIF(revenue, 0),
+            operating_income / NULLIF(revenue, 0),
+            net_income / NULLIF(revenue, 0),
+
+            net_income / NULLIF(total_equity, 0),
+            net_income / NULLIF(total_assets, 0),
+            revenue / NULLIF(total_assets, 0),
+            total_assets / NULLIF(total_equity, 0),
+            (COALESCE(short_term_debt, 0) + COALESCE(long_term_debt, 0))
+                / NULLIF(total_equity, 0),
+
+            operating_cashflow - COALESCE(capex, 0),
+            (operating_cashflow - COALESCE(capex, 0)) / NULLIF(revenue, 0),
+            operating_cashflow / NULLIF(net_income, 0),
+            operating_income / NULLIF(interest_expense, 0),
+
+            total_current_assets / NULLIF(total_current_liab, 0),
+            (total_current_assets - COALESCE(inventory, 0)) / NULLIF(total_current_liab, 0),
+
+            inventory * 365.0 / NULLIF(cost_of_revenue, 0),
+            accounts_receivable * 365.0 / NULLIF(revenue, 0),
+            accounts_payable * 365.0 / NULLIF(cost_of_revenue, 0),
+
+            (inventory * 365.0 / NULLIF(cost_of_revenue, 0))
+              + (accounts_receivable * 365.0 / NULLIF(revenue, 0))
+              - (accounts_payable * 365.0 / NULLIF(cost_of_revenue, 0))
+        FROM financials
+        WHERE ticker = ?
+        """,
+        (ticker,),
+    )
     conn.commit()
 
 
