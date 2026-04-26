@@ -11,8 +11,7 @@ def test_figure_context_schema_required_keys():
 
 
 def test_append_write_read_roundtrip(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="s", base=base)
     rows = [
         {"id": "fig-001", "page": 3,
@@ -29,8 +28,7 @@ def test_append_write_read_roundtrip(tmp_path):
 
 
 def test_append_rejects_missing_required_key(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="", base=base)
     bad = [{"id": "f1", "page": 1}]  # missing caption etc.
     with pytest.raises(ValueError, match="missing"):
@@ -38,8 +36,7 @@ def test_append_rejects_missing_required_key(tmp_path):
 
 
 def test_filter_by_source_id(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="", base=base)
     fc_io.append_figure_contexts("x", [
         {"id": "a", "page": 1, "caption": "c1", "surrounding_text": "t",

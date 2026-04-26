@@ -19,7 +19,7 @@ REQUIRED_KEYS = ("id", "page", "caption", "surrounding_text", "section_name", "s
 
 
 def _path(slug: str, base: Path | None) -> Path:
-    root = base or cfg.INDUSTRIES_DIR
+    root = (Path(base) / "industries") if base else cfg.INDUSTRIES_DIR
     return root / slug / "figure_contexts.jsonl"
 
 

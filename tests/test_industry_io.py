@@ -7,8 +7,7 @@ from app.io import industry as industry_io
 
 
 def test_create_industry_builds_skeleton(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
 
     industry_io.create_industry(
         slug="cn-cmp-material",
@@ -17,7 +16,7 @@ def test_create_industry_builds_skeleton(tmp_path):
         base=base,
     )
 
-    slug_dir = base / "cn-cmp-material"
+    slug_dir = base / "industries" / "cn-cmp-material"
     assert slug_dir.is_dir()
     # 11 narrative .md (kebab-case filenames)
     for dim in cfg.INDUSTRY_DIMENSIONS:
@@ -38,8 +37,7 @@ def test_create_industry_builds_skeleton(tmp_path):
 
 
 def test_create_industry_rejects_invalid_slug(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     with pytest.raises(ValueError, match="slug"):
         industry_io.create_industry(slug="Bad Slug!", name="x", scope="y", base=base)
     with pytest.raises(ValueError, match="slug"):
@@ -47,16 +45,14 @@ def test_create_industry_rejects_invalid_slug(tmp_path):
 
 
 def test_create_industry_refuses_overwrite(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
     with pytest.raises(FileExistsError):
         industry_io.create_industry(slug="x", name="X2", scope="y2", base=base)
 
 
 def test_read_meta_write_meta_roundtrip(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
     meta = industry_io.read_meta("x", base=base)
     meta["linked_tickers"] = [{"market": "SSE", "ticker": "600519", "name": "茅台"}]
@@ -66,8 +62,7 @@ def test_read_meta_write_meta_roundtrip(tmp_path):
 
 
 def test_append_observations_writes_jsonl(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
     rows = [
         {"id": "o1", "dimension": "market_size", "field": "tam_global",
@@ -99,8 +94,7 @@ def test_dedup_observations_keeps_highest_confidence():
 
 
 def test_append_observations_is_additive(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
     industry_io.append_observations("x", [{"id": "1", "field": "f"}], base=base)
     industry_io.append_observations("x", [{"id": "2", "field": "g"}], base=base)
@@ -109,8 +103,7 @@ def test_append_observations_is_additive(tmp_path):
 
 
 def test_filter_observations_by_arena(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
     industry_io.append_observations("x", [
         {"id": "a", "arena_refs": ["arena-1"]},
@@ -125,8 +118,7 @@ def test_filter_observations_by_arena(tmp_path):
 
 
 def test_filter_observations_by_segment(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
     industry_io.append_observations("x", [
         {"id": "a", "segment": "slurry"},
@@ -139,16 +131,14 @@ def test_filter_observations_by_segment(tmp_path):
 
 
 def test_read_narrative_returns_skeleton_header(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
     md = industry_io.read_narrative("x", "market_size", base=base)
     assert md.startswith("# 市场规模与增长")
 
 
 def test_append_narrative_block_writes_source_section(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
 
     block = "2025 年 TAM 达 33.8 亿美元。"
@@ -165,8 +155,7 @@ def test_append_narrative_block_writes_source_section(tmp_path):
 
 
 def test_append_narrative_block_append_only(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
     sm = {"institution": "A", "date": "2026-01-01", "sha8": "11111111", "source_id": "s1"}
     industry_io.append_narrative_block("x", "market_size", "first", sm, base=base)
@@ -179,8 +168,7 @@ def test_append_narrative_block_append_only(tmp_path):
 
 
 def test_append_narrative_block_rejects_unknown_dim(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="y", base=base)
     with pytest.raises(ValueError, match="unknown"):
         industry_io.append_narrative_block(
@@ -190,8 +178,7 @@ def test_append_narrative_block_rejects_unknown_dim(tmp_path):
 
 
 def test_find_by_company_scans_linked_tickers(tmp_path):
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="a", name="A", scope="", base=base)
     industry_io.create_industry(slug="b", name="B", scope="", base=base)
     # put ticker 600519 in industry A only
@@ -214,8 +201,7 @@ def test_find_by_company_scans_linked_tickers(tmp_path):
 def test_find_by_arena_via_definition_frontmatter(tmp_path, monkeypatch):
     """find_by_arena reads arena.definition.md frontmatter.industry.
     Uses arenas.find_by_industry inverse lookup OR scans industry meta linked_arenas."""
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="ind1", name="I1", scope="", base=base)
     meta = industry_io.read_meta("ind1", base=base)
     meta["linked_arenas"] = ["arena-x", "arena-y"]

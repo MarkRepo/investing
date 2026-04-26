@@ -27,7 +27,7 @@ _SLUG_RE = re.compile(r"^[a-z0-9]([a-z0-9-]{0,62}[a-z0-9])?$")
 # ---------- Paths ----------
 
 def _industries_dir(base: Path | None) -> Path:
-    return base or cfg.INDUSTRIES_DIR
+    return Path(base) / "industries" if base else cfg.INDUSTRIES_DIR
 
 
 def _slug_dir(slug: str, base: Path | None) -> Path:

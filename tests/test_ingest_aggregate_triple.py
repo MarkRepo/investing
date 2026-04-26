@@ -84,8 +84,7 @@ def test_fact_to_observation_maps_standard_fields():
 
 def test_write_industry_observations_roundtrip(tmp_path):
     from app.io import industry as industry_io
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="cn-cmp-material", name="CMP", scope="", base=base)
 
     facts = [{
@@ -116,8 +115,7 @@ def test_write_industry_observations_roundtrip(tmp_path):
 
 def test_write_industry_narrative_appends_block(tmp_path):
     from app.io import industry as industry_io
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="", base=base)
 
     narratives = {"x": {"market_size": "TAM 34B, CAGR 9%", "technology": "铜抛光液演进"}}
@@ -135,8 +133,7 @@ def test_write_industry_narrative_appends_block(tmp_path):
 
 def test_write_arena_narrative_appends_block(tmp_path):
     from app.io import arenas as arenas_io
-    base = tmp_path / "arenas"
-    base.mkdir()
+    base = tmp_path
     arenas_io.write_definition(slug="a1", name="A1", definition_text="x",
                                 industry="i", battleground_focus="f", base=base)
     narratives = {"a1": {"participants": "安集 vs Dupont"}}
@@ -149,8 +146,7 @@ def test_write_arena_narrative_appends_block(tmp_path):
 
 def test_write_company_narrative_appends_block(tmp_path):
     from app.io import company as company_io
-    base = tmp_path / "companies"
-    base.mkdir()
+    base = tmp_path
     company_io.create_company(ticker="600519", market="SSE", name="Moutai",
                               industry_slugs=[], base=base)
     narratives = {"SSE_600519": {"moat": "品牌+渠道+产能"}}
@@ -165,8 +161,7 @@ def test_write_narrative_skips_empty_string(tmp_path):
     """Empty narrative dims must not trigger an 'empty block' append —
     empty str/None means 'dim not covered by this report'."""
     from app.io import industry as industry_io
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="x", name="X", scope="", base=base)
     narratives = {"x": {"market_size": "", "technology": None, "lifecycle": "Mature"}}
     source_meta = {"source_id": "s1", "institution": "X", "date": "2026-01-01",
@@ -258,29 +253,15 @@ def test_e2e_industry_digest_full_pipeline(tmp_path):
     from app.io import company as company_io
     from app.io import figure_contexts as fc_io
 
-    # Each IO module has a different convention for what "base" means:
-    # - industry_io: base IS the industries dir
-    # - arenas_io: base is project root, creates base/"arenas"/slug/
-    # - company_io: base is project root, creates base/"companies"/market_ticker/
-    # - ensure_company_exists(base=X): X is treated as the companies dir itself
-    #   (internally passes X.parent to create_company, which appends "companies/")
-
-    ind_base = tmp_path / "industries"
-    ind_base.mkdir()
-
-    # For ensure_company_exists: pass the companies dir itself (T16 convention)
-    comp_dir_for_ensure = tmp_path / "companies"
-    comp_dir_for_ensure.mkdir()
-
-    # For write_company_narrative and read_narrative: pass project root
-    project_root = tmp_path
-
-    # For bootstrap_arena and read_definition: pass project root (arenas_io convention)
+    # After Plan 4 T2: every IO module's base= is the project root.
+    # industry_io, arenas_io, company_io, figure_contexts all prepend their
+    # subdir internally.
+    base = tmp_path
 
     # Step 1: autobuild industry
     agg.ensure_industry_exists(
         slug="cn-cmp-material", name="CMP", scope="半导体抛光",
-        base=ind_base,
+        base=base,
     )
 
     # Step 2: simulated digest JSON
@@ -333,7 +314,7 @@ def test_e2e_industry_digest_full_pipeline(tmp_path):
     n_obs = agg.write_industry_observations(
         buckets["industry"], source_meta,
         extracted_by="t", extracted_at="2026-04-26T00:00:00Z",
-        base=ind_base,
+        base=base,
     )
     assert n_obs == 1
 
@@ -342,38 +323,34 @@ def test_e2e_industry_digest_full_pipeline(tmp_path):
     # {slug:{dim:block}} so pass the inner dict directly.
     n_nar = agg.write_industry_narrative(
         digest["narratives"]["industry"],
-        source_meta, base=ind_base,
+        source_meta, base=base,
     )
     assert n_nar == 1
 
     # Step 4c: autobuild company + write company narrative
-    # ensure_company_exists expects the companies dir (T16 convention),
-    # while write_company_narrative expects project root (company_io convention).
     agg.ensure_company_exists(
         ticker="688019", market="SSE", name="安集科技",
         industry_slugs=["cn-cmp-material"], currency="CNY",
-        base=comp_dir_for_ensure,
+        base=base,
     )
     n_cn = agg.write_company_narrative(
         digest["narratives"]["company"],
-        source_meta, base=project_root,
+        source_meta, base=base,
     )
     assert n_cn == 1
 
     # Step 4d: bootstrap proposed arena (simulate user approval)
     proposals = agg.propose_arena_bootstrap(digest["proposed_arenas"])
     assert len(proposals) == 1
-    # bootstrap_arena passes base directly to arenas_io.write_definition,
-    # which prepends "arenas/" — so pass project root, not an arenas subdir.
-    agg.bootstrap_arena(proposals[0], base=project_root)
+    agg.bootstrap_arena(proposals[0], base=base)
 
     # Assertions — disk state
-    assert len(industry_io.read_observations("cn-cmp-material", base=ind_base)) == 1
+    assert len(industry_io.read_observations("cn-cmp-material", base=base)) == 1
     assert "CAGR 9%" in industry_io.read_narrative(
-        "cn-cmp-material", "market_size", base=ind_base)
-    assert "护城河" in company_io.read_narrative("688019", "SSE", "moat", base=project_root)
+        "cn-cmp-material", "market_size", base=base)
+    assert "护城河" in company_io.read_narrative("688019", "SSE", "moat", base=base)
     arena_def = arenas_io.read_definition("cn-cmp-slurry-domestic-substitution",
-                                          base=project_root)
+                                          base=base)
     assert arena_def["frontmatter"]["industry"] == "cn-cmp-material"
     assert arena_def["frontmatter"]["battleground_focus"] == "国产 CMP 抛光液挑战 Dupont"
 
@@ -381,8 +358,7 @@ def test_e2e_industry_digest_full_pipeline(tmp_path):
 def test_write_figure_contexts_attaches_source_id(tmp_path):
     from app.io import industry as industry_io
     from app.io import figure_contexts as fc_io
-    base = tmp_path / "industries"
-    base.mkdir()
+    base = tmp_path
     industry_io.create_industry(slug="cn-cmp-material", name="X", scope="", base=base)
 
     preprocess_contexts = [
