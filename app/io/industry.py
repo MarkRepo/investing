@@ -208,3 +208,22 @@ def dedup_observations(rows: Iterable[dict]) -> list[dict]:
         if new_rank > existing_rank:
             buckets[key_parts] = row
     return list(buckets.values()) + passthrough
+
+
+def filter_observations_by_arena(
+    slug: str, arena_slug: str, base: Path | None = None
+) -> list[dict]:
+    """Return observations whose arena_refs include arena_slug."""
+    return [
+        row for row in read_observations(slug, base=base)
+        if arena_slug in (row.get("arena_refs") or [])
+    ]
+
+
+def filter_observations_by_segment(
+    slug: str, segment: str, base: Path | None = None
+) -> list[dict]:
+    return [
+        row for row in read_observations(slug, base=base)
+        if row.get("segment") == segment
+    ]

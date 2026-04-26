@@ -106,3 +106,33 @@ def test_append_observations_is_additive(tmp_path):
     industry_io.append_observations("x", [{"id": "2", "field": "g"}], base=base)
     read = industry_io.read_observations("x", base=base)
     assert [r["id"] for r in read] == ["1", "2"]
+
+
+def test_filter_observations_by_arena(tmp_path):
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="y", base=base)
+    industry_io.append_observations("x", [
+        {"id": "a", "arena_refs": ["arena-1"]},
+        {"id": "b", "arena_refs": ["arena-2"]},
+        {"id": "c", "arena_refs": ["arena-1", "arena-2"]},
+        {"id": "d", "arena_refs": []},
+        {"id": "e"},  # no arena_refs field at all
+    ], base=base)
+
+    rows = industry_io.filter_observations_by_arena("x", "arena-1", base=base)
+    assert {r["id"] for r in rows} == {"a", "c"}
+
+
+def test_filter_observations_by_segment(tmp_path):
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="x", name="X", scope="y", base=base)
+    industry_io.append_observations("x", [
+        {"id": "a", "segment": "slurry"},
+        {"id": "b", "segment": "pad"},
+        {"id": "c", "segment": "slurry"},
+        {"id": "d", "segment": None},
+    ], base=base)
+    rows = industry_io.filter_observations_by_segment("x", "slurry", base=base)
+    assert {r["id"] for r in rows} == {"a", "c"}
