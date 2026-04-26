@@ -156,96 +156,102 @@ claims_io.save_source_markdown(ticker, market, Path(file_path).name, content)
 
 ---
 
-## Step 7：Dispatch subagents（并发 ≤ 5）
+## Step 7：Digest dispatch（单 subagent，整份季报）
 
-读 `section-routing.yaml` 的 `us-10q` 或 `a-share-quarterly` key。
+### 7a：Context 组装
 
-**季报 subagent 集合很小**：
-- `financials-tables`：三表
-- `mdna`：季度 MD&A 变化
-- `risk-factors`（仅 US Part II Item 1A 存在时）：季报的"material changes"
-- `related-party`（仅 A 股"其他提醒事项"存在时）
+和 `annual-report.md` Step 7a 的代码 99% 相同，**差异**：
 
-### Step 7a：派单前的 oversize 检查
+1. `period_code`（如 `2025Q3`）作为额外字段注入 prompt
+2. `financial_line_rows` 重要性更高（季报主产物）
+3. 不期待 digest 产出 `proposed_arenas`（季报素材不支持新开战场；若真产出，Step 8 丢弃 + 入 flags）
+4. `checklist_items` 通常稀疏（季报多数 item 答 unanswered）
 
-对每个 `action: extract` 的 section，派单前比较 `section.char_count` 和 routing entry 的 `max_chars`（见 `section-routing.yaml` 文末"通用 dispatch 字段说明"）：
+复用 annual Step 7a 代码，额外：
 
-- `max_chars` 未设置 / char_count ≤ max_chars → 正常派单
-- char_count > max_chars 且 `oversize_action == skip` → **不派 subagent**，在 Step 8 合并后的 `flags` 里加一条：`"[oversized] {section_name} skipped: {oversize_reason} (char_count={n} > max_chars={m})"`
-- 其它 `oversize_action` 值目前未实现，按 extract 处理即可
-
-**典型触发**：HIMS / TSLA 等在 10-Q Part II Item 1A 整段复制 10-K 风险因素。此时 10-K 的 risk claims 已存在，季报跳过无损。
-
-### Step 7b：同名 section 合并派单（oversize 检查之后）
-
-季报通常每个 canonical section 就一份（三表 / MD&A / 风险 / reminders），合并场景罕见。但若预处理因 fallback 或子节归类产生多个同名 section，按 `.claude/skills/ingest/dispatch-merge-rules.md` 的决策树处理：同名 ≥ 2 个且合并 ≤ 50000 → 合并派 1 个；超过则按一级章节号分组。
-
-每个 subagent 的 prompt 拼接方式和年报相同：`_common.md` + `prompts/sections/{subagent}.md` + 公司 context + subjects_whitelist + section 文本 + targets。
-
-**季报 MD&A 的特殊 prompt 追加**（在主 prompt 末尾加一段）：
-
-```
-本次是季度报告 (period_code={period_code}) 的 MD&A。你产出的 claims 必须：
-- 每条 timeframe 都写作 `{period_code}`（如 "2025Q3"），**不**写 FY{year}
-- 重点抽"季度内发生 + YoY/QoQ 变化"：例如 "Q3 收入 X 亿，YoY +25%"
-- 管理层指引：若给了季度或年化指引数字，单独抽并标 `guidance_reliability`
-- **不要**产出 `profile_fragments`（季报不刷新 profile）
+```python
+# period_code 在 Step 4 已推出（如 "2025Q3"）
 ```
 
-**季报 financials-tables 的特殊 prompt 追加**：
+### 7b：拼 prompt
+
+复用 annual Step 7b 的结构，但 digest prompt 换成 `prompts/digest/quarterly-digest.md`，并在最终 prompt 末尾多一段：
 
 ```
-本次是季度报告。你产出的 `financial_rows[*].period` 必须是 `{period_code}`，
-`period_type` 必须是 `quarterly`。季报通常披露"当季 + 本年累计"两列——
-**只抽当季列**，不抽累计列（cumulative 会和其它季度重复）。
+## 季报专属指令（覆盖 annual-digest）
+
+- 所有 financial_rows[*].period 必须是 `{period_code}`（如 "2025Q3"），period_type="quarterly"
+- 所有 key_facts 的 timeframe 主要是 `{period_code}`（少量 long-term / 跨期对比允许）
+- A 股"本报告期"vs"本年累计"：只抽"本报告期"列
+- 10-Q "three months ended" vs "nine months ended"：只抽 three months ended
+- narratives.company 仅填 financial_profile + catalysts 两维；其它 6 维度不列 key
+- meta_updates 通常留空（季报罕见更新公司简介）
+- proposed_arenas 预期为空；若有，简要写原因到 flags
 ```
 
-**并发控制**：季报 subagent 通常 2-4 个，一把全部并发即可，不需分批。
+### 7c：Dispatch
 
-### Step 7c：Arena checklist item 路由（若 Step 4.5 有 `item_pool`）
+```
+tool: Agent
+subagent_type: Explore
+prompt: <上面拼好的>
+```
 
-- 按 `typical_evidence_section` 粗分：MD&A subagent 拿 `mdna` 相关 item；risk-factors subagent 拿 `risk_factors` 相关 item
-- `["any"]` → 在季报里没有纯综述类 section，优先投给 MD&A subagent
-- item 密度决策树：≤20 正常 / 21-30 加"逐条对照"指令 / >30 pause
-- prompt 拼接格式和 annual Step 7b 相同
+**并发**：季报只有一个 digest subagent。**不分批、不分段**。若返回超时（>10min）→ AskUserQuestion。
 
-季报 checklist 答题通常比年报稀——因为季报披露面窄（没 Business section），很多 item 会是 unanswered，这是预期行为。
+**Oversize 检查** 不再派发前生效（digest 读整份报告，不按 section 分）。preprocess 的 `action: skip` 规则仍用于丢弃 10-Q Part II Item 1A 被整段复制的 10-K 风险因素场景——调整 `section-routing.yaml` 而非运行时决策。
 
 ---
 
-## Step 8：主 agent 汇总
+## Step 8：主 agent 汇总（digest → 三桶，丢 meta_updates + proposed_arenas）
 
 ```python
 from scripts import ingest_aggregate as agg
-
-outputs = {name: agg.load_json_tolerant(raw) for name, raw in subagent_results.items()}
-merged = agg.aggregate(outputs)
-merged["claims"] = agg.dedup_claims(merged["claims"])
-```
-
-**季报特有的后处理**：
-- **丢弃 `profile_fragments`**：
-  ```python
-  dropped_fragments = merged.pop("profile_fragments", {})
-  if dropped_fragments:
-      # 在最终报告里提一句："subagent 产出的 §X fragment 已丢弃（季报不刷 profile）"
-      ...
-  ```
-- **丢弃 `meta_updates`**：
-  ```python
-  dropped_meta = merged.pop("meta_updates", {})
-  if dropped_meta:
-      # 报告里提一句；meta 变更建议用户用 /revise-meta 或走下一次年报
-      ...
-  ```
-
-**必须**把 merged 落盘到 `/tmp/ingest-{sha8}.merged.json`（Step 10.5 的 QA 消费它）：
-
-```python
 import json
 from pathlib import Path
+
+digest = agg.load_json_tolerant(subagent_raw_output)
+buckets = agg.route_key_facts(digest["key_facts"])
+company_facts_grouped = agg.group_company_facts(digest["key_facts"])
+
+# 季报专属后处理：
+# 1. 丢弃 proposed_arenas（季报素材不适合开新战场）
+dropped_proposed = digest.pop("proposed_arenas", [])
+if dropped_proposed:
+    digest.setdefault("flags", []).append(
+        f"季报 digest 产出了 {len(dropped_proposed)} 个 proposed_arena，已丢弃"
+        f"（季报素材不适合新开战场）"
+    )
+
+# 2. 丢弃 meta_updates（季报原则不刷 meta）
+dropped_meta = digest.pop("meta_updates", {})
+if dropped_meta:
+    digest.setdefault("flags", []).append(f"季报 digest 产出了 meta_updates，已丢弃")
+
+# 3. company facts → claims（只处理本公司）
+claims_all = []
+for (t, m), facts in company_facts_grouped.items():
+    if t != ticker or m != market:
+        continue
+    claims_all.extend(agg.facts_to_claims(facts))
+claims_all = agg.dedup_claims(claims_all)
+
+# 4. 凑兼容 merged（Step 10.5 QA 依赖）
+merged = {
+    "claims": claims_all,
+    "financial_rows": digest.get("financial_rows", []),
+    "meta_updates": {},
+    "competence_findings": digest.get("competence_findings", {
+        "answered": [], "proposed_additions": []
+    }),
+    "flags_by_subagent": {"quarterly-digest": digest.get("flags", [])},
+    "empty_subagents": [],
+}
 Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
     json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8"
+)
+Path(f"/tmp/ingest-{sha8}.digest.json").write_text(
+    json.dumps(digest, ensure_ascii=False, indent=2), encoding="utf-8"
 )
 ```
 
@@ -272,44 +278,90 @@ issues = {
 
 ## Step 10：统一写入（前一步失败整体中止）
 
-按顺序：
-
-1. **原文落 `sources/`**（Step 6 已做）
-
-2. **写 financials**（当季行）：
-   ```python
-   n_fin = agg.write_financials(
-       ticker, merged["financial_rows"],
-       source_file=Path(file_path).name,
-   )
-   ```
-   `write_financials` 内部把 `{period_code}` 原样透传（它已经是 `2025Q3` 格式），同时填 `period_type=quarterly`（subagent 按 prompt 要求应已填）。
-
-3. **写 claims**：
-   ```python
-   from datetime import datetime, timezone
-   n, errors = agg.write_claims(
-       ticker, market, merged["claims"],
-       source_id=source_id,
-       source_file=Path(file_path).name,
-       extracted_by="claude-opus-4-7",
-       extracted_at=datetime.now(timezone.utc).isoformat(timespec="seconds"),
-   )
-   if errors:
-       # 报给用户，建议重跑单个 subagent；不做部分写入
-       ...
-   ```
-
-4. **profile 不写**（季报不触发）；如果 Step 8 有被丢弃的 `profile_fragments`，在收尾报告里标明"丢弃 N 个 fragment"。
-
-5. **meta 不写**（同上）；丢弃的建议记入收尾报告。
-
-6. **competence 写入**（审阅后；流程同 annual Step 10 step 6）：
+季报写入清单：原文 → financials → company narratives（仅 2 维）→ claims → competence。**不写** profile / meta / proposed_arena / industry observations / figure_contexts（都罕见）。
 
 ```python
+from datetime import datetime, timezone
 from app.io import arenas as arenas_io
 
-findings = merged.get("competence_findings", {"answered": [], "proposed_additions": []})
+extracted_by = "claude-opus-4-7"
+extracted_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+source_meta = {
+    "source_id": source_id,
+    "source_file": Path(file_path).name,
+    "sha8": sha8,
+    "institution": "company-primary",
+    "date": period_code,
+}
+```
+
+### 10.1 原文（Step 6 已做）
+
+### 10.2 financials（季报主产物）
+
+```python
+n_fin = agg.write_financials(
+    ticker, digest.get("financial_rows", []),
+    source_file=Path(file_path).name,
+)
+```
+
+`write_financials` 把 `{period_code}` 原样透传（已是 `2025Q3` 格式），`period_type=quarterly` 由 digest 按 prompt 要求填。
+
+### 10.3 industry observations + figure_contexts（季报通常为空）
+
+```python
+# 仅 buckets["industry"] 非空（季报罕见）时才写
+if buckets["industry"]:
+    n_obs = agg.write_industry_observations(
+        buckets["industry"], source_meta,
+        extracted_by=extracted_by, extracted_at=extracted_at,
+    )
+# figure_contexts 按 annual Step 10.4 的 multi-slug 模式写；通常 n_fig = 0
+```
+
+### 10.4 narratives
+
+```python
+# 季报的 narratives.company 通常只有 financial_profile + catalysts 两维
+comp_nar = digest["narratives"].get("company", {})
+n_nar_comp = agg.write_company_narrative(comp_nar, source_meta)
+
+# industry / arena narrative 通常为空
+ind_nar = digest["narratives"].get("industry", {})
+if ind_nar:
+    # 按 annual 10.5 的 wrap 逻辑处理（单 slug → wrap；多 slug → 直接传）
+    ...
+arena_nar = digest["narratives"].get("arena", {})
+if arena_nar:
+    n_nar_arena = agg.write_arena_narrative(arena_nar, source_meta)
+```
+
+### 10.5 claims
+
+```python
+n, errors = agg.write_claims(
+    ticker, market, claims_all,
+    source_id=source_id,
+    source_file=Path(file_path).name,
+    extracted_by=extracted_by,
+    extracted_at=extracted_at,
+)
+if errors:
+    # 报给用户，建议回 Step 7 重派；不做部分写入
+    ...
+```
+
+### 10.6 profile / meta（都不写）
+
+- `profile-*.md` 不写（季报不触发事实层快照；新架构下已废弃）
+- `meta.md` 不写（Step 8 已丢弃 `meta_updates`）
+
+### 10.7 competence 写入
+
+```python
+findings = digest.get("competence_findings", {"answered": [], "proposed_additions": []})
 consolidated = arenas_io.consolidate_answers(findings["answered"])
 # AskUserQuestion 审阅 → 按 arena 分组写入
 for slug in company_arenas:
@@ -324,10 +376,12 @@ for slug in company_arenas:
         source_id=source_id,
         checklist_version=checklist["version"],
     )
-    # approved_new_items 同上
+    # approved_new_items 同 annual 10.11；season 罕见新增
 ```
 
 季报通常新增 answer 比 annual 少、且 proposed_additions 很罕见（季报披露面窄）——用户多数情况下会 skip 或只接受少量更新。
+
+**不再有 `proposed_arenas` 处理**——Step 8 已丢弃。
 
 ---
 
