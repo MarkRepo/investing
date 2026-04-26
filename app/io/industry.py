@@ -268,3 +268,40 @@ def append_narrative_block(
     )
     with path.open("a", encoding="utf-8") as f:
         f.write(rendered)
+
+
+def find_by_company(ticker: str, market: str, base: Path | None = None) -> list[str]:
+    """Return list of industry slugs whose linked_tickers include (market, ticker)."""
+    root = _industries_dir(base)
+    if not root.exists():
+        return []
+    matches = []
+    for child in sorted(root.iterdir()):
+        if not child.is_dir():
+            continue
+        meta_path = child / "meta.yaml"
+        if not meta_path.exists():
+            continue
+        meta = yaml.safe_load(meta_path.read_text(encoding="utf-8")) or {}
+        for t in meta.get("linked_tickers") or []:
+            if t.get("ticker") == ticker and t.get("market") == market:
+                matches.append(meta.get("slug", child.name))
+                break
+    return matches
+
+
+def find_by_arena(arena_slug: str, base: Path | None = None) -> str | None:
+    """Return industry slug whose linked_arenas contains arena_slug, or None."""
+    root = _industries_dir(base)
+    if not root.exists():
+        return None
+    for child in sorted(root.iterdir()):
+        if not child.is_dir():
+            continue
+        meta_path = child / "meta.yaml"
+        if not meta_path.exists():
+            continue
+        meta = yaml.safe_load(meta_path.read_text(encoding="utf-8")) or {}
+        if arena_slug in (meta.get("linked_arenas") or []):
+            return meta.get("slug", child.name)
+    return None

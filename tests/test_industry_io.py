@@ -187,3 +187,39 @@ def test_append_narrative_block_rejects_unknown_dim(tmp_path):
             "x", "bogus_dim", "x", {"institution":"a","date":"b","sha8":"c","source_id":"d"},
             base=base,
         )
+
+
+def test_find_by_company_scans_linked_tickers(tmp_path):
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="a", name="A", scope="", base=base)
+    industry_io.create_industry(slug="b", name="B", scope="", base=base)
+    # put ticker 600519 in industry A only
+    meta_a = industry_io.read_meta("a", base=base)
+    meta_a["linked_tickers"] = [
+        {"market": "SSE", "ticker": "600519", "name": "茅台"},
+        {"market": "US", "ticker": "AAPL", "name": "Apple"},
+    ]
+    industry_io.write_meta("a", meta_a, base=base)
+    meta_b = industry_io.read_meta("b", base=base)
+    meta_b["linked_tickers"] = [{"market": "SSE", "ticker": "000858", "name": "五粮液"}]
+    industry_io.write_meta("b", meta_b, base=base)
+
+    slugs = industry_io.find_by_company("600519", "SSE", base=base)
+    assert slugs == ["a"]
+    slugs2 = industry_io.find_by_company("unknown", "SSE", base=base)
+    assert slugs2 == []
+
+
+def test_find_by_arena_via_definition_frontmatter(tmp_path, monkeypatch):
+    """find_by_arena reads arena.definition.md frontmatter.industry.
+    Uses arenas.find_by_industry inverse lookup OR scans industry meta linked_arenas."""
+    base = tmp_path / "industries"
+    base.mkdir()
+    industry_io.create_industry(slug="ind1", name="I1", scope="", base=base)
+    meta = industry_io.read_meta("ind1", base=base)
+    meta["linked_arenas"] = ["arena-x", "arena-y"]
+    industry_io.write_meta("ind1", meta, base=base)
+
+    assert industry_io.find_by_arena("arena-x", base=base) == "ind1"
+    assert industry_io.find_by_arena("arena-z", base=base) is None
