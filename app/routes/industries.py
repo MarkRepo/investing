@@ -1,11 +1,14 @@
-"""Industry (行业维度) routes — landscape/players/competence-map."""
-from fastapi import APIRouter, Form, HTTPException, Request
-from fastapi.responses import RedirectResponse
+"""Industry (行业维度) routes — SLUG-BASED, UI migration pending.
+
+The old sector-based UI (landscape.md / players.md / competence-map.md) was
+retired in Plan 1 Task 11 along with the sector-based IO. Routes here are
+stubbed pending the new slug+11-dim UI (tracked in spec §D). The router object
+and URL prefix are kept intact so ``main.py``'s ``include_router`` still works.
+"""
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.templating import Jinja2Templates
 
-from app import config as cfg
 from app.config import APP_TEMPLATES_DIR
-from app.io import competence_map as cmap
 from app.io import industry as industry_io
 
 router = APIRouter(prefix="/industries", tags=["industries"])
@@ -14,61 +17,32 @@ templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
 
 @router.get("")
 def index(request: Request):
-    return templates.TemplateResponse(
-        request,
-        "industries/index.html",
-        {"sectors": industry_io.list_sectors(), "files": industry_io.FILES},
+    raise HTTPException(
+        status_code=501,
+        detail="industries UI temporarily offline — pending industry.py slug migration",
     )
 
 
-@router.get("/{sector}")
-def sector_detail(request: Request, sector: str):
-    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
-        raise HTTPException(status_code=404, detail="unknown sector")
-    files = {kind: industry_io.read(sector, kind) for kind in industry_io.FILES}
-    # competence-map page shows aggregated stats as a sidebar hint
-    from datetime import date as date_cls
-    year = date_cls.today().year
-    derived = cmap.yearly_map(year)
-    derived_for_sector = next((r for r in derived["by_sector"] if r["sector"] == sector), None)
-    return templates.TemplateResponse(
-        request,
-        "industries/sector.html",
-        {
-            "sector": sector,
-            "files": files,
-            "derived": derived_for_sector,
-            "derived_year": year,
-        },
+@router.get("/{slug}")
+def industry_detail(request: Request, slug: str):
+    # New API available: industry_io.read_meta(slug) / industry_io.list_industries()
+    raise HTTPException(
+        status_code=501,
+        detail="industries UI temporarily offline — pending industry.py slug migration",
     )
 
 
-@router.get("/{sector}/{kind}")
-def file_edit(request: Request, sector: str, kind: str):
-    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
-        raise HTTPException(status_code=404, detail="unknown sector")
-    if kind not in industry_io.FILES:
-        raise HTTPException(status_code=404, detail="unknown file")
-    doc = industry_io.read(sector, kind)
-    return templates.TemplateResponse(
-        request,
-        "industries/edit.html",
-        {"sector": sector, "kind": kind, "doc": doc},
+@router.get("/{slug}/{kind}")
+def file_edit(request: Request, slug: str, kind: str):
+    raise HTTPException(
+        status_code=501,
+        detail="industries UI temporarily offline — pending industry.py slug migration",
     )
 
 
-@router.post("/{sector}/{kind}")
-async def save(request: Request, sector: str, kind: str):
-    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
-        raise HTTPException(status_code=404, detail="unknown sector")
-    if kind not in industry_io.FILES:
-        raise HTTPException(status_code=404, detail="unknown file")
-    form = await request.form()
-    body = str(form.get("body", ""))
-    fm: dict = {}
-    if kind == "landscape":
-        source_type = str(form.get("source_type", "")).strip()
-        if source_type:
-            fm["source_type"] = source_type
-    industry_io.write(sector, kind, fm, body)
-    return RedirectResponse(url=f"/industries/{sector}", status_code=303)
+@router.post("/{slug}/{kind}")
+async def save(request: Request, slug: str, kind: str):
+    raise HTTPException(
+        status_code=501,
+        detail="industries UI temporarily offline — pending industry.py slug migration",
+    )

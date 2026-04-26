@@ -925,6 +925,10 @@ def test_portfolio_end_to_end(client):
     assert "active" in r4.text
 
 
+# Plan 1 Task 11: industry IO migrated from sector-based to slug-based.
+# Route handlers now return 501 pending the new slug+11-dim UI (spec §D).
+# These legacy sector-UI smoke tests are skipped until the UI is rewritten.
+@pytest.mark.skip(reason="industries UI pending slug+11-dim migration (spec §D)")
 def test_industries_index_empty(client):
     r = client.get("/industries")
     assert r.status_code == 200
@@ -932,6 +936,7 @@ def test_industries_index_empty(client):
     assert "saas" in r.text
 
 
+@pytest.mark.skip(reason="industries UI pending slug+11-dim migration (spec §D)")
 def test_industries_sector_edit_round_trip(client):
     r = client.get("/industries/consumer")
     assert r.status_code == 200
@@ -948,6 +953,7 @@ def test_industries_sector_edit_round_trip(client):
     assert "annual_report_xref" in r3.text
 
 
+@pytest.mark.skip(reason="industries UI pending slug+11-dim migration (spec §D)")
 def test_industries_rejects_bad_sector(client):
     r = client.get("/industries/unknown")
     assert r.status_code == 404

@@ -1,116 +1,157 @@
-"""Industry (行业维度) facts layer — DESIGN §2.4 / §3.1.
+"""Slug-based industry IO (spec §4.1, §4.2).
 
-Each sector has three files under ``industries/{sector}/``:
-- ``landscape.md`` — 行业事实（供给/需求/周期/监管）
-- ``players.md``   — 参与者清单（头部公司 + 相对强项）
-- ``competence-map.md`` — 你对该行业能力圈的演进（用户手写 + 聚合 journal 数据）
+Replaces the old sector-based landscape.md/players.md layout. Each industry
+is one slug directory containing:
 
-All three are markdown with YAML frontmatter. ``sector`` is a freeform string.
-``competence-map.md`` rendering also surfaces derived stats (from
-``competence_map.yearly_map``) alongside the hand-written body.
+- meta.yaml        (slug, name, scope, linked_arenas, linked_tickers, created, last_updated)
+- observations.jsonl  (structured facts, one per line)
+- 11 narrative .md files (one per INDUSTRY_DIMENSIONS dim, kebab-case names)
+- sources/         (archived original PDFs)
 """
 from __future__ import annotations
 
-from datetime import date as date_cls
+import json
+import re
+from datetime import date
 from pathlib import Path
+from typing import Iterable
 
 import yaml
 
 from app import config as cfg
 
-FILES = ("landscape", "players", "competence-map")
-
-_FRONTMATTER_KEYS = {
-    "landscape": ("sector", "last_updated", "source_type"),
-    "players": ("sector", "last_updated"),
-    "competence-map": ("sector", "last_updated"),
-}
-
-_DEFAULT_BODY = {
-    "landscape": (
-        "## 供需\n\n\n## 成本曲线 / 产能周期\n\n\n## 监管\n\n\n"
-        "## 上下游议价力\n\n\n## 关键指标（看哪几个数字）\n\n\n"
-    ),
-    "players": (
-        "| ticker | market | name | position | 相对强项 | 备注 |\n"
-        "|---|---|---|---|---|---|\n"
-    ),
-    "competence-map": (
-        "## 我在这个行业懂什么\n\n\n## 我不懂什么（研究缺口）\n\n\n"
-        "## 踩过的坑 / 赢过的仗\n\n\n"
-    ),
-}
+# Single-char slugs allowed for tests; up to 64 chars total.
+_SLUG_RE = re.compile(r"^[a-z0-9]([a-z0-9-]{0,62}[a-z0-9])?$")
 
 
-def _root(base: Path | None) -> Path:
-    return Path(base) / "industries" if base else cfg.INDUSTRIES_DIR
+# ---------- Paths ----------
+
+def _industries_dir(base: Path | None) -> Path:
+    return base or cfg.INDUSTRIES_DIR
 
 
-def _sector_dir(sector: str, base: Path | None) -> Path:
-    if sector not in cfg._INTERNAL_SECTORS_FOR_TESTS:
-        raise ValueError(f"unknown sector {sector!r}; valid: {cfg._INTERNAL_SECTORS_FOR_TESTS}")
-    return _root(base) / sector
+def _slug_dir(slug: str, base: Path | None) -> Path:
+    return _industries_dir(base) / slug
 
 
-def _file_path(sector: str, kind: str, base: Path | None) -> Path:
-    if kind not in FILES:
-        raise ValueError(f"kind must be one of {FILES}, got {kind!r}")
-    return _sector_dir(sector, base) / f"{kind}.md"
+def _meta_path(slug: str, base: Path | None) -> Path:
+    return _slug_dir(slug, base) / "meta.yaml"
 
 
-def _split_frontmatter(text: str) -> tuple[dict, str]:
-    if not text.startswith("---"):
-        return {}, text
-    end = text.find("\n---", 3)
-    if end == -1:
-        return {}, text
-    fm = yaml.safe_load(text[3:end].strip()) or {}
-    return fm, text[end + len("\n---") :].lstrip("\n")
+def _observations_path(slug: str, base: Path | None) -> Path:
+    return _slug_dir(slug, base) / "observations.jsonl"
 
 
-def _emit_frontmatter(fm: dict, kind: str) -> str:
-    ordered: dict = {}
-    for k in _FRONTMATTER_KEYS[kind]:
-        if k in fm and fm[k] not in (None, ""):
-            ordered[k] = fm[k]
-    for k, v in fm.items():
-        if k not in ordered and v not in (None, ""):
-            ordered[k] = v
-    return "---\n" + yaml.safe_dump(ordered, allow_unicode=True, sort_keys=False).rstrip() + "\n---\n"
+def _narrative_path(slug: str, dim: str, base: Path | None) -> Path:
+    if dim not in cfg.INDUSTRY_DIMENSIONS:
+        raise ValueError(f"unknown industry dim {dim!r}; must be one of {cfg.INDUSTRY_DIMENSIONS}")
+    return _slug_dir(slug, base) / f"{dim.replace('_', '-')}.md"
 
 
-def list_sectors(base: Path | None = None) -> list[dict]:
-    """Return one row per known sector with a presence flag per file."""
-    root = _root(base)
-    out: list[dict] = []
-    for sector in cfg._INTERNAL_SECTORS_FOR_TESTS:
-        d = root / sector
-        row = {"sector": sector, "present": {kind: (d / f"{kind}.md").exists() for kind in FILES}}
-        out.append(row)
-    return out
+# ---------- Validation ----------
+
+def _validate_slug(slug: str) -> None:
+    if not slug or not _SLUG_RE.match(slug):
+        raise ValueError(
+            f"invalid industry slug {slug!r}; must match [a-z0-9][a-z0-9-]*[a-z0-9], len 1-64"
+        )
 
 
-def read(sector: str, kind: str, base: Path | None = None) -> dict:
-    path = _file_path(sector, kind, base)
-    if not path.exists():
-        return {"frontmatter": {}, "body": _DEFAULT_BODY[kind], "exists": False, "path": str(path)}
-    fm, body = _split_frontmatter(path.read_text(encoding="utf-8"))
-    return {"frontmatter": fm, "body": body, "exists": True, "path": str(path)}
+# ---------- Meta ----------
 
-
-def write(
-    sector: str,
-    kind: str,
-    frontmatter: dict,
-    body: str,
+def create_industry(
+    slug: str,
+    name: str,
+    scope: str,
     base: Path | None = None,
+    today: date | None = None,
 ) -> Path:
-    path = _file_path(sector, kind, base)
-    fm = {**frontmatter, "sector": sector}
-    fm.setdefault("last_updated", date_cls.today().isoformat())
-    path.parent.mkdir(parents=True, exist_ok=True)
-    text = _emit_frontmatter(fm, kind) + "\n" + body.lstrip()
-    if not text.endswith("\n"):
-        text += "\n"
-    path.write_text(text, encoding="utf-8")
-    return path
+    """Create a new industry slug directory with 11-dim narrative skeletons,
+    empty observations.jsonl, meta.yaml, and sources/ dir.
+
+    Raises ValueError on bad slug, FileExistsError if dir already exists.
+    """
+    _validate_slug(slug)
+    if not name.strip():
+        raise ValueError("name must be non-empty")
+    today = today or date.today()
+
+    slug_dir = _slug_dir(slug, base)
+    if slug_dir.exists():
+        raise FileExistsError(f"industry dir already exists: {slug_dir}")
+    slug_dir.mkdir(parents=True)
+    (slug_dir / "sources").mkdir()
+
+    meta = {
+        "slug": slug,
+        "name": name,
+        "scope": scope,
+        "linked_arenas": [],
+        "linked_tickers": [],
+        "created": today.isoformat(),
+        "last_updated": today.isoformat(),
+    }
+    _meta_path(slug, base).write_text(
+        yaml.safe_dump(meta, allow_unicode=True, sort_keys=False), encoding="utf-8"
+    )
+
+    # 11 narrative skeleton files
+    _CN_TITLES = {
+        "definition": "定义与边界",
+        "market_size": "市场规模与增长",
+        "lifecycle": "生命周期阶段",
+        "value_chain": "产业链分析",
+        "competition": "竞争结构",
+        "drivers": "增长驱动与催化",
+        "technology": "技术与产品",
+        "regulation": "监管与政策",
+        "benchmark": "关键经营指标基准值",
+        "risks": "主要风险",
+        "valuation": "投资视角与估值锚",
+    }
+    for dim in cfg.INDUSTRY_DIMENSIONS:
+        header = f"# {_CN_TITLES[dim]} · {name}\n\n*slug: {slug} · 维度: {dim}*\n\n"
+        _narrative_path(slug, dim, base).write_text(header, encoding="utf-8")
+
+    # empty observations.jsonl
+    _observations_path(slug, base).write_text("", encoding="utf-8")
+
+    return slug_dir
+
+
+def read_meta(slug: str, base: Path | None = None) -> dict:
+    path = _meta_path(slug, base)
+    if not path.exists():
+        raise FileNotFoundError(f"industry not found: {slug}")
+    return yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+
+
+def write_meta(slug: str, meta: dict, base: Path | None = None, today: date | None = None) -> None:
+    meta = {**meta, "last_updated": (today or date.today()).isoformat()}
+    _meta_path(slug, base).write_text(
+        yaml.safe_dump(meta, allow_unicode=True, sort_keys=False), encoding="utf-8"
+    )
+
+
+def list_industries(base: Path | None = None) -> list[dict]:
+    """Return [{slug, name, scope, linked_arenas_count, linked_tickers_count, last_updated}, ...]."""
+    root = _industries_dir(base)
+    if not root.exists():
+        return []
+    result = []
+    for child in sorted(root.iterdir()):
+        if not child.is_dir() or child.name.startswith("."):
+            continue
+        meta_path = child / "meta.yaml"
+        if not meta_path.exists():
+            continue
+        meta = yaml.safe_load(meta_path.read_text(encoding="utf-8")) or {}
+        result.append({
+            "slug": meta.get("slug", child.name),
+            "name": meta.get("name", child.name),
+            "scope": meta.get("scope", ""),
+            "linked_arenas_count": len(meta.get("linked_arenas") or []),
+            "linked_tickers_count": len(meta.get("linked_tickers") or []),
+            "last_updated": meta.get("last_updated"),
+        })
+    return result
