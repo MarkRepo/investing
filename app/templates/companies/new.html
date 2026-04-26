@@ -18,10 +18,8 @@
     <input name="name" required />
   </label>
   <label>
-    行业
-    <select name="sector" required>
-      {% for s in sectors %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
-    </select>
+    行业 slugs（逗号分隔，可留空）
+    <input name="industry_slugs" placeholder="如 cn-cmp-material, cn-biotech" />
   </label>
   <label>
     币种

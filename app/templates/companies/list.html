@@ -18,7 +18,7 @@
       <td><a href="/companies/{{ r.key }}">{{ r.ticker }}</a></td>
       <td>{{ r.market }}</td>
       <td>{{ r.name }}</td>
-      <td>{{ r.industry_primary or '-' }}</td>
+      <td>{% if r.industry_slugs %}{{ r.industry_slugs | join(', ') }}{% else %}-{% endif %}</td>
       <td><span class="badge badge-{{ r.v0_status }}">{{ r.v0_status }}</span></td>
       <td>
         {% if r.in_competence %}<span class="badge badge-active">通过</span>

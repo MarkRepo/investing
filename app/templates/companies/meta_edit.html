@@ -15,13 +15,8 @@
     <label>name（公司名）
       <input name="name" value="{{ doc.frontmatter.name or ticker }}" />
     </label>
-    <label>industry_primary
-      <select name="industry_primary">
-        <option value="">（未设置）</option>
-        {% for s in sectors %}
-          <option value="{{ s }}" {% if doc.frontmatter.industry_primary == s %}selected{% endif %}>{{ s }}</option>
-        {% endfor %}
-      </select>
+    <label>industry_slugs（逗号分隔，对应 industries/ 下的 slug）
+      <input name="industry_slugs" value="{% if doc.frontmatter.industry_slugs %}{{ doc.frontmatter.industry_slugs | join(', ') }}{% endif %}" placeholder="如 cn-cmp-material, cn-biotech" />
     </label>
     <label>themes（逗号分隔，如 <code>ai, weight_loss, clean_energy</code>）
       <input name="themes" value="{% if doc.frontmatter.themes %}{{ doc.frontmatter.themes | join(', ') }}{% endif %}" placeholder="逗号分隔" />

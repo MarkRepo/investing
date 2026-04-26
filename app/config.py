@@ -20,9 +20,9 @@ APP_TEMPLATES_DIR = BASE_PATH / "app" / "templates"
 STATIC_DIR = BASE_PATH / "static"
 
 VALID_MARKETS = ("US", "SSE", "SZSE", "BSE", "HK")
-# Note: VALID_SECTORS removed for refactor. See Tasks 4, 11 for migration.
-# Tests use _INTERNAL_SECTORS_FOR_TESTS for backward compatibility.
-_INTERNAL_SECTORS_FOR_TESTS = ("consumer", "saas", "cyclical", "bank", "biotech")
+# VALID_SECTORS / sector whitelist removed in Plan 1 (Tasks 3/4/11/22).
+# Industry membership is now `industry_slugs: list[str]` — a free-form list
+# of slugs that reference the `industries/` registry. No whitelist enforcement.
 
 # Three-layer knowledge dimension tuples (spec §4.5).
 # Snake_case keys map to kebab-case filenames:

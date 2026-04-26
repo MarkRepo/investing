@@ -3,7 +3,6 @@ from fastapi import APIRouter, Form, HTTPException, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
-from app import config as cfg
 from app.config import APP_TEMPLATES_DIR, VALID_MARKETS
 from app.io import arenas as arenas_io
 from app.io import company as company_io
@@ -49,7 +48,6 @@ def new_form(request: Request):
         "companies/new.html",
         {
             "markets": VALID_MARKETS,
-            "sectors": cfg._INTERNAL_SECTORS_FOR_TESTS,
         },
     )
 
@@ -59,15 +57,16 @@ def new_submit(
     ticker: str = Form(...),
     market: str = Form(...),
     name: str = Form(...),
-    sector: str = Form(...),
+    industry_slugs: str = Form(""),
     currency: str = Form("USD"),
 ):
+    slugs = [s.strip() for s in industry_slugs.split(",") if s.strip()]
     try:
         path = company_io.create_company(
             ticker=ticker,
             market=market,
             name=name,
-            sector=sector,
+            industry_slugs=slugs,
             currency=currency,
         )
     except (ValueError, FileExistsError) as e:
@@ -149,7 +148,6 @@ def meta_edit(request: Request, key: str):
             "ticker": ticker,
             "market": market,
             "doc": doc,
-            "sectors": cfg._INTERNAL_SECTORS_FOR_TESTS,
         },
     )
 
@@ -162,9 +160,11 @@ async def meta_save(request: Request, key: str):
     form = await request.form()
     themes_raw = str(form.get("themes", "")).strip()
     themes = [t.strip() for t in themes_raw.split(",") if t.strip()] if themes_raw else []
+    slugs_raw = str(form.get("industry_slugs", "")).strip()
+    industry_slugs = [s.strip() for s in slugs_raw.split(",") if s.strip()] if slugs_raw else []
     fm = {
         "name": str(form.get("name", "")).strip() or ticker,
-        "industry_primary": str(form.get("industry_primary", "")).strip() or None,
+        "industry_slugs": industry_slugs,
         "themes": themes,
         "listed_date": str(form.get("listed_date", "")).strip() or None,
         "currency": str(form.get("currency", "")).strip() or "USD",

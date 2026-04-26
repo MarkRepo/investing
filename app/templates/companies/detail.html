@@ -4,7 +4,11 @@
 <h1>{{ meta.get('name', ticker) }} <small>({{ market }}:{{ ticker }})</small></h1>
 
 <table class="kv">
-  <tr><th>行业</th><td>{{ meta.get('industry_primary', '-') }}</td></tr>
+  <tr><th>行业 slugs</th><td>
+    {% if meta.get('industry_slugs') %}
+      {% for s in meta.industry_slugs %}<code>{{ s }}</code>{% if not loop.last %}, {% endif %}{% endfor %}
+    {% else %}-{% endif %}
+  </td></tr>
   <tr><th>主题</th><td>
     {% if meta.get('themes') %}
       {% for t in meta.themes %}<code>{{ t }}</code>{% if not loop.last %}, {% endif %}{% endfor %}
