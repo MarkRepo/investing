@@ -105,7 +105,7 @@ def read_watchlist(stage: str, base: Path | None = None) -> list[dict]:
 ---
 ticker: HIMS
 market: US
-industry_primary: consumer
+industry_slugs: [us-telehealth]
 themes: [telehealth, GLP-1]
 ---
 
@@ -120,14 +120,18 @@ themes: [telehealth, GLP-1]
 
 ### 5.3 受控词表
 所有枚举集中在 `app/config.py`：
-- `VALID_SECTORS = ("consumer", "saas", "cyclical", "bank", "biotech")`
-- `VALID_MARKETS = ("US", "SSE", "SZSE", "HK")`
+- `VALID_MARKETS = ("US", "SSE", "SZSE", "BSE", "HK")`
+- `INDUSTRY_DIMENSIONS` / `ARENA_DIMENSIONS` / `COMPANY_DIMENSIONS`（三层知识框架，spec §4.5）
+- `INDUSTRY_FIELDS`（每个行业维度的结构化字段建议列表；开放词表，不强制）
+- `INCOME_STATEMENT_LINES` / `BALANCE_SHEET_LINES` / `CASHFLOW_LINES`（财务 line item 规约，spec §4.7）
 
 其他词表分散在对应 io 模块：
 - `watchlist.py`: `SOURCE_TYPES = ("quant_screen", "qual_radar", "product_experience")`
 - `review.py`: `POLARITIES = ("up", "down", "flat")`
 
-**原则**：新增枚举值 = 改代码 + 改测试 + 改模板下拉。这是刻意设计的阻力，防止随手加类别把决策框架稀释掉（DESIGN §8 坑 9 的变种）。
+**行业不再是枚举词表**：company.meta 的 `industry_slugs` 是自由文本 list，每个 slug 对应 `industries/{slug}/` 一个注册行业。新增行业 = 在 `industries/` 下 `create_industry()`，不用改代码。
+
+**原则（维度词表）**：增/改 `*_DIMENSIONS` 元组 = 改代码 + 改测试 + 改模板。这是刻意设计的阻力。
 
 ### 5.4 控制表格分隔符
 `watchlist/researching.md` 是 markdown 表格。**body 里不能出现 `|`**（会被 markdown table parser 当列分隔）。具体影响：`gate_notes` 三个理由拼接用 `" ; "` 而不是 `" | "`。遇到这类字段时注意检查。
@@ -160,14 +164,15 @@ FastAPI 动态段匹配顺序敏感。`/research/{key}` 会抢走 `/research/aud
 ```
 POST /companies/new
     ↓
-app/routes/companies.py::company_create
-    ↓ 读表单 → 验证 ticker/market/industry_primary
+app/routes/companies.py::new_submit
+    ↓ 读表单 → 解析 industry_slugs（逗号分隔 → list）
+    ↓ 验证 ticker/market
     ↓
 app/io/company.py::create_company
     ↓ mkdir companies/<key>/
-    ↓ 从 templates/ 拷贝 meta.md / v0.md / valuation.md 骨架
-    ↓ write_meta(frontmatter) 填入用户值
-    ↓ 复制能力圈问卷（取决于 industry_primary）
+    ↓ 从 templates/ 拷贝 meta.md / v0.md / valuation.md / trade-log.md 骨架
+    ↓ 写入 profile-YYYY.md
+    ↓ 创建 narratives/ 8 维骨架（business-model / moat / ... / valuation）
     ↓
 302 → /companies/<key>
 
@@ -248,7 +253,7 @@ def base(tmp_path, monkeypatch):
 | 测试偶尔失败 | 用了 `random` 没 seed | 用 hash-seed（见 5.7） |
 | 测试相互污染 | 忘了 `monkeypatch` 某个 `cfg.XXX_DIR` | 补 monkeypatch |
 | frontmatter 读不到某字段 | 文件里写的是 list，代码期望 str（或反之） | io 层加 coerce（见 5.2） |
-| 新行业加了但页面崩 | `VALID_SECTORS` 没同步；或 competence 模板没加 | `app/config.py` + `templates/competence/` |
+| 新行业加了但页面崩 | `industries/{slug}/meta.md` 没建；或 arena 维度 slug 打错 | `industry_io.create_industry()` + spec §4.5 |
 | 首页加载慢 | `discipline.review_gaps` / `big_movers` 是 O(tickers × SQLite queries) | 如果持仓 >50 才考虑优化，不是现在 |
 
 ---
@@ -296,7 +301,7 @@ def base(tmp_path, monkeypatch):
 
 ### 冻结契约
 **永远不改**下列东西（会让已有数据失效）：
-- `VALID_SECTORS` 里已用过的值的拼写
+- `industries/{slug}/` 目录名（被 company.meta.industry_slugs 引用）
 - SQLite 表主键列
 - markdown frontmatter 已存在的 key（可以加新 key，不能删/改现有 key）
 
@@ -341,9 +346,9 @@ def base(tmp_path, monkeypatch):
 /companies/{key}/valuation   valuation.py
 /companies/{key}/financials  financials.py
 /companies/{key}/triggers    triggers.py
-/industries                  industries.py
-/industries/{sector}         industries.py
-/industries/{sector}/{kind}  industries.py
+/industries                  industries.py (501, UI 迁移中，spec §D)
+/industries/{slug}           industries.py (501)
+/industries/{slug}/{kind}    industries.py (501)
 /watchlist                   watchlist.py
 /watchlist/add/{stage}       watchlist.py
 /watchlist/move              watchlist.py

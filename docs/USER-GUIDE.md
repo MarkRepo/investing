@@ -59,8 +59,8 @@ uvicorn main:app --reload
 - 每个持仓公司 V0 逐一 review（点 `/companies/<key>/v0` 确认是否需要更新）
 
 ### 每年（一天）
-- `/competence-map`：哪些行业你真正有能力圈（结果分证明），哪些是幻觉
-- 调整 `app/config.py` 里的 `VALID_SECTORS`（如果你决定完全退出某个行业）
+- 复盘哪些行业你真正有能力圈（结果分证明），哪些是幻觉
+- 审视 `industries/` 下的行业目录：哪些已经没人跟了？哪些需要重写 11 维？
 
 ### 触发式
 - **想买**→必须先走 `/companies/<key>/v0`。没写完的 V0 = 不能买
@@ -94,12 +94,12 @@ uvicorn main:app --reload
 
 ### 第 3 步：建档（公司元信息）
 `/companies/new` → 创建 `US_HIMS`。生成：
-- `companies/US_HIMS/meta.md`（ticker、market、industry_primary、themes）
+- `companies/US_HIMS/meta.md`（ticker、market、industry_slugs、themes）
 - `companies/US_HIMS/v0.md`（空模板）
-- `companies/US_HIMS/competence/<sector>.md`（能力圈问卷）
 - `companies/US_HIMS/valuation.md`（三情景估值）
+- `companies/US_HIMS/narratives/{business-model,moat,...}.md`（8 维，spec §4.5）
 
-`industry_primary` 必须属于 `VALID_SECTORS`：`consumer / saas / cyclical / bank / biotech`（定义在 `app/config.py`）。加新行业需要改代码 + 写能力圈问卷模板，这是刻意设计的阻力。
+`industry_slugs` 是一个自由文本 list，每个 slug 对应 `industries/` 下的一个行业目录。没有白名单 —— 行业层由 `industries/` 注册表本身定义（spec §4.5）。
 
 ### 第 4 步：填能力圈问卷（硬门禁）
 `/companies/US_HIMS/competence`。按题目打 ✓ / 部分 / ✗。每个 ✗ 都是缺口。
@@ -294,7 +294,6 @@ data/financials.db         # 唯一的 SQLite；派生数据，可以删了重�
 | 三问门禁任一回答 `no` 或理由 <30 字 | 能力圈门禁 | §3.9 |
 | researching 已有 2 家时再升级第 3 家 | 上限 | §8 坑 8 |
 | 创建 claim 但 source_file 不在 `sources/` | 事实层净化 | §8 坑 9 |
-| 创建公司但 industry_primary 不在 VALID_SECTORS | 受控词表 | §3.1 |
 | 买入日志不关联 v0_snapshot_path | 坑 3 检测 | §8 坑 3 |
 
 系统不会拦住你完成动作（你可以绕过，可以手改 markdown），它只保证你在绕过时**自己能看到在绕过**。这是"纪律在信息系统前面"的具体含义。
