@@ -514,11 +514,14 @@ def _target_from_rule(rule: str, w: dict, source_id: str | None) -> str:
     return w.get("claim_id") or w.get("q_id") or "?"
 
 
-def _parse_scope(scope: str) -> tuple[str, str]:
-    parts = scope.split("_", 1)
-    if len(parts) != 2:
-        raise SystemExit(f"--scope 格式应为 MARKET_TICKER, got {scope!r}")
-    return parts[0], parts[1]  # market, ticker
+def _validate_scope(scope: str) -> str:
+    """Accept MARKET_TICKER or industry:SLUG. Raises SystemExit on malformed."""
+    from app.io import qa as qa_io
+    try:
+        qa_io._resolve_scope_dir(scope)
+    except ValueError as e:
+        raise SystemExit(f"--scope: {e}")
+    return scope
 
 
 def cmd_warn(args: argparse.Namespace) -> int:
@@ -580,14 +583,14 @@ def cmd_warn(args: argparse.Namespace) -> int:
     # optional: persist
     if args.write:
         if not args.scope:
-            print("ERROR: --write 需要配合 --scope MARKET_TICKER", file=sys.stderr)
+            print("ERROR: --write 需要配合 --scope MARKET_TICKER 或 industry:SLUG", file=sys.stderr)
             return 2
         from app.io import qa as qa_io
 
-        market, ticker = _parse_scope(args.scope)
+        scope = _validate_scope(args.scope)
         normalized = [
             qa_io.make_warning(
-                scope=args.scope,
+                scope=scope,
                 source_id=source_id,
                 rule=w["rule"],
                 target=_target_from_rule(w["rule"], w, source_id),
@@ -595,23 +598,28 @@ def cmd_warn(args: argparse.Namespace) -> int:
             )
             for w in raw_warnings
         ]
-        counts = qa_io.append_warnings(ticker, market, normalized)
+        counts = qa_io.append_warnings(scope, normalized)
+        dest_dir = "industries" if scope.startswith("industry:") else "companies"
+        dest_name = scope[len("industry:"):] if scope.startswith("industry:") else scope
         print(
-            f"✓ 落盘 companies/{args.scope}/qa_warnings.jsonl"
+            f"✓ 落盘 {dest_dir}/{dest_name}/qa_warnings.jsonl"
             f"：added={counts['added']} skipped_dup={counts['skipped_dup']} reopened={counts['reopened']}"
         )
     return 1
 
 
 def cmd_gap(args: argparse.Namespace) -> int:
-    market, ticker = _parse_scope(args.company)
+    scope = _validate_scope(args.company)
+    if scope.startswith("industry:"):
+        raise SystemExit("gap 子命令目前仅支持公司 scope（MARKET_TICKER）")
+    market, ticker = scope.split("_", 1)
     gaps = collect_company_gaps(ticker, market)
     md = render_gap_markdown(gaps)
     print(md)
     if args.write:
         from app.io import qa as qa_io
 
-        path = qa_io.write_gap_markdown(ticker, market, md)
+        path = qa_io.write_gap_markdown(scope, md)
         print(f"\n✓ 落盘 {path}", file=sys.stderr)
     return 0
 
@@ -619,8 +627,8 @@ def cmd_gap(args: argparse.Namespace) -> int:
 def cmd_resolve(args: argparse.Namespace) -> int:
     from app.io import qa as qa_io
 
-    market, ticker = _parse_scope(args.scope)
-    ok = qa_io.update_status(ticker, market, args.id, "resolved", note=args.note)
+    scope = _validate_scope(args.scope)
+    ok = qa_io.update_status(scope, args.id, "resolved", note=args.note)
     print("✓ resolved" if ok else "✗ warning id 未找到", file=sys.stderr)
     return 0 if ok else 1
 
@@ -628,8 +636,8 @@ def cmd_resolve(args: argparse.Namespace) -> int:
 def cmd_dismiss(args: argparse.Namespace) -> int:
     from app.io import qa as qa_io
 
-    market, ticker = _parse_scope(args.scope)
-    ok = qa_io.update_status(ticker, market, args.id, "dismissed", note=args.note)
+    scope = _validate_scope(args.scope)
+    ok = qa_io.update_status(scope, args.id, "dismissed", note=args.note)
     print("✓ dismissed" if ok else "✗ warning id 未找到", file=sys.stderr)
     return 0 if ok else 1
 
@@ -637,12 +645,12 @@ def cmd_dismiss(args: argparse.Namespace) -> int:
 def cmd_list(args: argparse.Namespace) -> int:
     from app.io import qa as qa_io
 
-    market, ticker = _parse_scope(args.scope)
-    ws = qa_io.read_warnings(ticker, market, status=args.status)
+    scope = _validate_scope(args.scope)
+    ws = qa_io.read_warnings(scope, status=args.status)
     if not ws:
-        print(f"({args.scope}) 无 {args.status or 'all'} 状态的告警")
+        print(f"({scope}) 无 {args.status or 'all'} 状态的告警")
         return 0
-    print(f"# {args.scope} · {args.status or 'all'} warnings ({len(ws)})\n")
+    print(f"# {scope} · {args.status or 'all'} warnings ({len(ws)})\n")
     for w in ws:
         print(f"- [{w['id']}] ({w['rule']}) {w['target']}  status={w['status']}")
         print(f"  · {w['detail']}")
@@ -660,8 +668,8 @@ def main() -> int:
     p_warn.add_argument("--merged", required=True, help="aggregate 后的 merged.json")
     p_warn.add_argument("--preprocess", help="preprocess 产出的 sections.json（跑 fidelity 校验）")
     p_warn.add_argument("--arena", help="checklist slug（跑 proposed_dup / company contamination）")
-    p_warn.add_argument("--write", action="store_true", help="落盘到 companies/{scope}/qa_warnings.jsonl")
-    p_warn.add_argument("--scope", help="MARKET_TICKER 如 BSE_920118（配合 --write 使用）")
+    p_warn.add_argument("--write", action="store_true", help="落盘到 {scope}/qa_warnings.jsonl（公司或行业）")
+    p_warn.add_argument("--scope", help="MARKET_TICKER（BSE_920118）或 industry:SLUG（industry:cn-cmp-material），配合 --write 使用")
     p_warn.set_defaults(func=cmd_warn)
 
     p_gap = sub.add_parser("gap", help="认知缺口清单")

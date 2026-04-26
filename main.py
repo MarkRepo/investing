@@ -88,7 +88,7 @@ def home(request: Request):
     review_gaps = discipline.review_gaps()
     big_movers = quotes_io.big_movers(threshold_pct=15.0)
     quote_fetch_errors = quotes_io.unresolved_fetch_errors()
-    qa_rows = qa_io.summarize_by_company()
+    qa_rows = qa_io.summarize_by_scope()
     qa_summary = {
         "rows": qa_rows,
         "total_open": sum(r["open"] for r in qa_rows),

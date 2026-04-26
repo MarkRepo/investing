@@ -1,12 +1,18 @@
 """QA warnings & gap-report IO.
 
-每家公司一个 ``qa_warnings.jsonl``（append-only）+ 一个 ``qa_gaps.md`` 快照。
+每个 scope（公司或行业）一个 ``qa_warnings.jsonl``（append-only）+ 一个
+``qa_gaps.md`` 快照。
+
+Scope 格式::
+
+  "{market}_{ticker}"   → data/companies/{market}_{ticker}/
+  "industry:{slug}"     → data/industries/{slug}/
 
 Warning schema::
 
     {
       "id": "<stable hash of scope+source_id+rule+target>",
-      "scope": "BSE_920118",
+      "scope": "BSE_920118" 或 "industry:cn-cmp-material",
       "source_id": "研报-…-09fe9bc6",
       "rule": "fidelity",
       "target": "claim:#10",
@@ -33,20 +39,40 @@ from typing import Any
 from app import config as cfg
 
 
-# --- paths -------------------------------------------------------------------
+# --- scope helpers -----------------------------------------------------------
 
 
-def _company_dir(ticker: str, market: str, base: Path | None = None) -> Path:
+INDUSTRY_SCOPE_PREFIX = "industry:"
+
+
+def _scope_kind(scope: str) -> str:
+    """Return 'industry' or 'company' based on scope prefix."""
+    return "industry" if scope.startswith(INDUSTRY_SCOPE_PREFIX) else "company"
+
+
+def _resolve_scope_dir(scope: str, base: Path | None = None) -> Path:
+    """Map a scope string to the directory that holds its qa_* files."""
     root = Path(base) if base else cfg.BASE_PATH
+    if scope.startswith(INDUSTRY_SCOPE_PREFIX):
+        slug = scope[len(INDUSTRY_SCOPE_PREFIX):]
+        if not slug:
+            raise ValueError(f"industry scope missing slug: {scope!r}")
+        return root / "industries" / slug
+    parts = scope.split("_", 1)
+    if len(parts) != 2 or not all(parts):
+        raise ValueError(
+            f"invalid scope {scope!r}; expected MARKET_TICKER or industry:SLUG"
+        )
+    market, ticker = parts
     return root / "companies" / f"{market}_{ticker}"
 
 
-def _warnings_path(ticker: str, market: str, base: Path | None = None) -> Path:
-    return _company_dir(ticker, market, base) / "qa_warnings.jsonl"
+def _warnings_path(scope: str, base: Path | None = None) -> Path:
+    return _resolve_scope_dir(scope, base) / "qa_warnings.jsonl"
 
 
-def _gap_path(ticker: str, market: str, base: Path | None = None) -> Path:
-    return _company_dir(ticker, market, base) / "qa_gaps.md"
+def _gap_path(scope: str, base: Path | None = None) -> Path:
+    return _resolve_scope_dir(scope, base) / "qa_gaps.md"
 
 
 # --- fix hints ---------------------------------------------------------------
@@ -124,13 +150,12 @@ def make_warning(
 
 
 def read_warnings(
-    ticker: str,
-    market: str,
+    scope: str,
     *,
     status: str | None = None,
     base: Path | None = None,
 ) -> list[dict[str, Any]]:
-    path = _warnings_path(ticker, market, base)
+    path = _warnings_path(scope, base)
     if not path.exists():
         return []
     out: list[dict[str, Any]] = []
@@ -155,8 +180,7 @@ def _write_all(path: Path, warnings: list[dict[str, Any]]) -> None:
 
 
 def append_warnings(
-    ticker: str,
-    market: str,
+    scope: str,
     warnings: list[dict[str, Any]],
     *,
     base: Path | None = None,
@@ -165,8 +189,8 @@ def append_warnings(
 
     Returns counts: ``{"added": N, "skipped_dup": M, "reopened": K}``.
     """
-    path = _warnings_path(ticker, market, base)
-    existing = read_warnings(ticker, market, base=base)
+    path = _warnings_path(scope, base)
+    existing = read_warnings(scope, base=base)
     existing_by_id = {w["id"]: w for w in existing}
     added = skipped = reopened = 0
 
@@ -197,8 +221,7 @@ def append_warnings(
 
 
 def update_status(
-    ticker: str,
-    market: str,
+    scope: str,
     warning_id: str,
     status: str,
     *,
@@ -208,8 +231,8 @@ def update_status(
     """Mark a warning as ``resolved`` / ``dismissed`` / ``open``. Returns True if found."""
     if status not in ("open", "resolved", "dismissed"):
         raise ValueError(f"invalid status: {status}")
-    path = _warnings_path(ticker, market, base)
-    existing = read_warnings(ticker, market, base=base)
+    path = _warnings_path(scope, base)
+    existing = read_warnings(scope, base=base)
     hit = False
     for w in existing:
         if w["id"] == warning_id:
@@ -227,13 +250,12 @@ def update_status(
 
 
 def write_gap_markdown(
-    ticker: str,
-    market: str,
+    scope: str,
     markdown: str,
     *,
     base: Path | None = None,
 ) -> Path:
-    path = _gap_path(ticker, market, base)
+    path = _gap_path(scope, base)
     path.parent.mkdir(parents=True, exist_ok=True)
     stamped = f"<!-- generated_at: {_now_iso()} -->\n" + markdown.rstrip() + "\n"
     path.write_text(stamped, encoding="utf-8")
@@ -241,10 +263,10 @@ def write_gap_markdown(
 
 
 def read_gap_markdown(
-    ticker: str, market: str, *, base: Path | None = None
+    scope: str, *, base: Path | None = None
 ) -> tuple[str, str | None]:
     """Return ``(markdown, generated_at)``. Markdown excludes the header comment."""
-    path = _gap_path(ticker, market, base)
+    path = _gap_path(scope, base)
     if not path.exists():
         return "", None
     text = path.read_text(encoding="utf-8")
@@ -259,43 +281,47 @@ def read_gap_markdown(
     return text, generated_at
 
 
-# --- cross-company summary ---------------------------------------------------
+# --- cross-scope summary -----------------------------------------------------
 
 
-def list_all_companies_with_qa(base: Path | None = None) -> list[tuple[str, str]]:
-    """Walk ``companies/`` and return (ticker, market) pairs that have qa files."""
-    root = (Path(base) if base else cfg.BASE_PATH) / "companies"
-    if not root.exists():
-        return []
-    out = []
-    for d in sorted(root.iterdir()):
-        if not d.is_dir():
-            continue
-        name = d.name
-        if "_" not in name:
-            continue
-        market, ticker = name.split("_", 1)
-        if (d / "qa_warnings.jsonl").exists() or (d / "qa_gaps.md").exists():
-            out.append((ticker, market))
-    return out
+def list_all_scopes_with_qa(base: Path | None = None) -> list[str]:
+    """Walk ``companies/`` and ``industries/`` and return scope strings for
+    dirs that have qa files (either qa_warnings.jsonl or qa_gaps.md)."""
+    root = Path(base) if base else cfg.BASE_PATH
+    scopes: list[str] = []
+    companies_dir = root / "companies"
+    if companies_dir.exists():
+        for d in sorted(companies_dir.iterdir()):
+            if not d.is_dir() or "_" not in d.name:
+                continue
+            if (d / "qa_warnings.jsonl").exists() or (d / "qa_gaps.md").exists():
+                scopes.append(d.name)
+    industries_dir = root / "industries"
+    if industries_dir.exists():
+        for d in sorted(industries_dir.iterdir()):
+            if not d.is_dir():
+                continue
+            if (d / "qa_warnings.jsonl").exists() or (d / "qa_gaps.md").exists():
+                scopes.append(f"{INDUSTRY_SCOPE_PREFIX}{d.name}")
+    return scopes
 
 
-def summarize_by_company(base: Path | None = None) -> list[dict[str, Any]]:
-    """Return one row per company with qa files, with open/resolved/dismissed counts."""
+def summarize_by_scope(base: Path | None = None) -> list[dict[str, Any]]:
+    """Return one row per scope with qa files, with open/resolved/dismissed counts.
+    Rows include ``scope_kind`` ∈ {'company', 'industry'} to let UIs split sections."""
     rows = []
-    for (ticker, market) in list_all_companies_with_qa(base):
-        warnings = read_warnings(ticker, market, base=base)
+    for scope in list_all_scopes_with_qa(base):
+        warnings = read_warnings(scope, base=base)
         counts = {"open": 0, "resolved": 0, "dismissed": 0}
         by_rule: dict[str, int] = {}
         for w in warnings:
             counts[w.get("status", "open")] = counts.get(w.get("status", "open"), 0) + 1
             if w.get("status") == "open":
                 by_rule[w["rule"]] = by_rule.get(w["rule"], 0) + 1
-        _, gap_generated = read_gap_markdown(ticker, market, base=base)
+        _, gap_generated = read_gap_markdown(scope, base=base)
         rows.append({
-            "ticker": ticker,
-            "market": market,
-            "key": f"{market}_{ticker}",
+            "scope": scope,
+            "scope_kind": _scope_kind(scope),
             "open": counts["open"],
             "resolved": counts["resolved"],
             "dismissed": counts["dismissed"],
@@ -303,5 +329,5 @@ def summarize_by_company(base: Path | None = None) -> list[dict[str, Any]]:
             "open_by_rule": by_rule,
             "gap_generated_at": gap_generated,
         })
-    rows.sort(key=lambda r: (-r["open"], r["key"]))
+    rows.sort(key=lambda r: (-r["open"], r["scope"]))
     return rows

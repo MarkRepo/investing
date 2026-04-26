@@ -1,10 +1,10 @@
 """QA warnings & gap-report routes.
 
-- ``GET /qa``            跨公司汇总：每家有多少 open / resolved / dismissed
-- ``GET /qa/{key}``      公司详情：warnings 列表 + gap 清单 markdown
-- ``POST /qa/{key}/warnings/{wid}/resolve``  标 resolved
-- ``POST /qa/{key}/warnings/{wid}/dismiss``  标 dismissed
-- ``POST /qa/{key}/warnings/{wid}/reopen``   回到 open（用于手滑撤销）
+- ``GET /qa``                             跨 scope 汇总（公司 + 行业）
+- ``GET /qa/{scope}``                     scope 详情（scope = MARKET_TICKER 或 industry:SLUG）
+- ``POST /qa/{scope}/warnings/{wid}/resolve``  标 resolved
+- ``POST /qa/{scope}/warnings/{wid}/dismiss``  标 dismissed
+- ``POST /qa/{scope}/warnings/{wid}/reopen``   回到 open（用于手滑撤销）
 """
 from __future__ import annotations
 
@@ -20,16 +20,18 @@ router = APIRouter(prefix="/qa", tags=["qa"])
 templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
 
 
-def _parse_key(key: str) -> tuple[str, str]:
-    if "_" not in key:
-        raise HTTPException(status_code=400, detail=f"invalid key: {key}")
-    market, ticker = key.split("_", 1)
-    return market, ticker
+def _validate_scope(scope: str) -> str:
+    """Ensure a path-param scope parses. Returns it unchanged on success."""
+    try:
+        qa_io._resolve_scope_dir(scope)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return scope
 
 
 @router.get("")
 def index(request: Request):
-    rows = qa_io.summarize_by_company()
+    rows = qa_io.summarize_by_scope()
     total_open = sum(r["open"] for r in rows)
     return templates.TemplateResponse(
         request,
@@ -38,13 +40,13 @@ def index(request: Request):
     )
 
 
-@router.get("/{key}")
-def company_detail(request: Request, key: str, status: str = "open"):
-    market, ticker = _parse_key(key)
+@router.get("/{scope}")
+def scope_detail(request: Request, scope: str, status: str = "open"):
+    scope = _validate_scope(scope)
     if status not in ("open", "resolved", "dismissed", "all"):
         status = "open"
 
-    warnings_all = qa_io.read_warnings(ticker, market)
+    warnings_all = qa_io.read_warnings(scope)
     if status == "all":
         warnings_view = warnings_all
     else:
@@ -60,16 +62,16 @@ def company_detail(request: Request, key: str, status: str = "open"):
         st = w.get("status", "open")
         status_counts[st] = status_counts.get(st, 0) + 1
 
-    gap_md, gap_generated_at = qa_io.read_gap_markdown(ticker, market)
+    gap_md, gap_generated_at = qa_io.read_gap_markdown(scope)
     gap_html = md.markdown(gap_md, extensions=["fenced_code", "tables"]) if gap_md else ""
 
     return templates.TemplateResponse(
         request,
         "qa/company.html",
         {
-            "key": key,
-            "ticker": ticker,
-            "market": market,
+            "key": scope,
+            "scope": scope,
+            "scope_kind": qa_io._scope_kind(scope),
             "by_rule": by_rule,
             "status": status,
             "status_counts": status_counts,
@@ -81,31 +83,31 @@ def company_detail(request: Request, key: str, status: str = "open"):
     )
 
 
-@router.post("/{key}/warnings/{wid}/resolve")
-def mark_resolved(key: str, wid: str, note: str = Form("")):
-    market, ticker = _parse_key(key)
-    ok = qa_io.update_status(ticker, market, wid, "resolved", note=note or None)
+@router.post("/{scope}/warnings/{wid}/resolve")
+def mark_resolved(scope: str, wid: str, note: str = Form("")):
+    scope = _validate_scope(scope)
+    ok = qa_io.update_status(scope, wid, "resolved", note=note or None)
     if not ok:
         raise HTTPException(status_code=404, detail=f"warning {wid} not found")
-    return RedirectResponse(url=f"/qa/{key}", status_code=303)
+    return RedirectResponse(url=f"/qa/{scope}", status_code=303)
 
 
-@router.post("/{key}/warnings/{wid}/dismiss")
-def mark_dismissed(key: str, wid: str, note: str = Form("")):
-    market, ticker = _parse_key(key)
-    ok = qa_io.update_status(ticker, market, wid, "dismissed", note=note or None)
+@router.post("/{scope}/warnings/{wid}/dismiss")
+def mark_dismissed(scope: str, wid: str, note: str = Form("")):
+    scope = _validate_scope(scope)
+    ok = qa_io.update_status(scope, wid, "dismissed", note=note or None)
     if not ok:
         raise HTTPException(status_code=404, detail=f"warning {wid} not found")
-    return RedirectResponse(url=f"/qa/{key}", status_code=303)
+    return RedirectResponse(url=f"/qa/{scope}", status_code=303)
 
 
-@router.post("/{key}/warnings/{wid}/reopen")
-def mark_reopened(key: str, wid: str):
-    market, ticker = _parse_key(key)
-    ok = qa_io.update_status(ticker, market, wid, "open")
+@router.post("/{scope}/warnings/{wid}/reopen")
+def mark_reopened(scope: str, wid: str):
+    scope = _validate_scope(scope)
+    ok = qa_io.update_status(scope, wid, "open")
     if not ok:
         raise HTTPException(status_code=404, detail=f"warning {wid} not found")
-    return RedirectResponse(url=f"/qa/{key}?status=all", status_code=303)
+    return RedirectResponse(url=f"/qa/{scope}?status=all", status_code=303)
 
 
 _RULE_DESC = {
