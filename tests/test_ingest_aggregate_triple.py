@@ -224,6 +224,138 @@ def test_facts_to_claims_groups_by_company():
     assert len(groups[("000858", "SSE")]) == 1
 
 
+def test_e2e_industry_digest_full_pipeline(tmp_path):
+    """Simulate the full Plan 3 workflow (except the LLM call):
+       1. create industry via autobuild helper
+       2. receive digest JSON
+       3. route_key_facts → three buckets
+       4. write each bucket to the right layer via helpers
+       5. assert disk state"""
+    from app.io import industry as industry_io
+    from app.io import arenas as arenas_io
+    from app.io import company as company_io
+    from app.io import figure_contexts as fc_io
+
+    # Each IO module has a different convention for what "base" means:
+    # - industry_io: base IS the industries dir
+    # - arenas_io: base is project root, creates base/"arenas"/slug/
+    # - company_io: base is project root, creates base/"companies"/market_ticker/
+    # - ensure_company_exists(base=X): X is treated as the companies dir itself
+    #   (internally passes X.parent to create_company, which appends "companies/")
+
+    ind_base = tmp_path / "industries"
+    ind_base.mkdir()
+
+    # For ensure_company_exists: pass the companies dir itself (T16 convention)
+    comp_dir_for_ensure = tmp_path / "companies"
+    comp_dir_for_ensure.mkdir()
+
+    # For write_company_narrative and read_narrative: pass project root
+    project_root = tmp_path
+
+    # For bootstrap_arena and read_definition: pass project root (arenas_io convention)
+
+    # Step 1: autobuild industry
+    agg.ensure_industry_exists(
+        slug="cn-cmp-material", name="CMP", scope="半导体抛光",
+        base=ind_base,
+    )
+
+    # Step 2: simulated digest JSON
+    digest = {
+        "key_facts": [
+            {"idx": 1, "target_layer": "industry",
+             "target_refs": {"industry_slug": "cn-cmp-material"},
+             "dimension_hint": "market_size", "field_hint": "tam_global",
+             "value_numeric": 33.8, "unit": "usd_bn",
+             "timeframe": "2025", "time_type": "actual",
+             "metric_type": "atomic", "confidence": "high",
+             "fact_text": "2025 TAM 33.8B USD",
+             "evidence_quote": "...原文引用..."},
+            {"idx": 2, "target_layer": "company",
+             "target_refs": {"ticker": "688019", "market": "SSE"},
+             "dimension_hint": "moat",
+             "subject_tag_hint": "moat", "company_dimension_hint": "moat",
+             "fact_text": "安集 CMP 抛光液技术领先",
+             "evidence_quote": "原文 X",
+             "confidence": "high"},
+        ],
+        "narratives": {
+            "industry": {"cn-cmp-material": {
+                "market_size": "2025 年全球 CMP 市场 ~34 亿美元，CAGR 9%。"
+            }},
+            "arena": {},
+            "company": {"SSE_688019": {
+                "moat": "安集的核心护城河是 CMP 抛光液的多年工艺积累。"
+            }},
+        },
+        "proposed_arenas": [
+            {"tentative_slug": "cn-cmp-slurry-domestic-substitution",
+             "battleground_focus": "国产 CMP 抛光液挑战 Dupont",
+             "tentative_participants": [
+                 {"name": "安集", "role": "challenger"},
+                 {"name": "Dupont", "role": "incumbent"},
+             ],
+             "parent_industry_slug": "cn-cmp-material"},
+        ],
+    }
+
+    source_meta = {"source_id": "行研-国金-2026-03-10-abcd1234",
+                   "institution": "国金", "date": "2026-03-10",
+                   "sha8": "abcd1234", "source_file": "cmp.pdf"}
+
+    # Step 3: route
+    buckets = agg.route_key_facts(digest["key_facts"])
+
+    # Step 4a: write observations
+    n_obs = agg.write_industry_observations(
+        buckets["industry"], source_meta,
+        extracted_by="t", extracted_at="2026-04-26T00:00:00Z",
+        base=ind_base,
+    )
+    assert n_obs == 1
+
+    # Step 4b: write industry narrative
+    # Note: digest shape is narratives.industry.{slug}.{dim}; our writer expects
+    # {slug:{dim:block}} so pass the inner dict directly.
+    n_nar = agg.write_industry_narrative(
+        digest["narratives"]["industry"],
+        source_meta, base=ind_base,
+    )
+    assert n_nar == 1
+
+    # Step 4c: autobuild company + write company narrative
+    # ensure_company_exists expects the companies dir (T16 convention),
+    # while write_company_narrative expects project root (company_io convention).
+    agg.ensure_company_exists(
+        ticker="688019", market="SSE", name="安集科技",
+        industry_slugs=["cn-cmp-material"], currency="CNY",
+        base=comp_dir_for_ensure,
+    )
+    n_cn = agg.write_company_narrative(
+        digest["narratives"]["company"],
+        source_meta, base=project_root,
+    )
+    assert n_cn == 1
+
+    # Step 4d: bootstrap proposed arena (simulate user approval)
+    proposals = agg.propose_arena_bootstrap(digest["proposed_arenas"])
+    assert len(proposals) == 1
+    # bootstrap_arena passes base directly to arenas_io.write_definition,
+    # which prepends "arenas/" — so pass project root, not an arenas subdir.
+    agg.bootstrap_arena(proposals[0], base=project_root)
+
+    # Assertions — disk state
+    assert len(industry_io.read_observations("cn-cmp-material", base=ind_base)) == 1
+    assert "CAGR 9%" in industry_io.read_narrative(
+        "cn-cmp-material", "market_size", base=ind_base)
+    assert "护城河" in company_io.read_narrative("688019", "SSE", "moat", base=project_root)
+    arena_def = arenas_io.read_definition("cn-cmp-slurry-domestic-substitution",
+                                          base=project_root)
+    assert arena_def["frontmatter"]["industry"] == "cn-cmp-material"
+    assert arena_def["frontmatter"]["battleground_focus"] == "国产 CMP 抛光液挑战 Dupont"
+
+
 def test_write_figure_contexts_attaches_source_id(tmp_path):
     from app.io import industry as industry_io
     from app.io import figure_contexts as fc_io
