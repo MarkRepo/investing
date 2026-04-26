@@ -202,118 +202,109 @@ claims_io.save_source_markdown(ticker, market, Path(file_path).name, content)
 
 ---
 
-## Step 7：Dispatch subagents（并发 ≤ 5）
+## Step 7：Digest dispatch（单 subagent，整份研报）
 
-读 `section-routing.yaml` 的 `sell-side-generic` key。可派的 section 很少，通常是：
+### 7a：Context 组装
 
-- `investment_thesis` → `prompts/sell-side/thesis.md`
-- `forecasts` → `prompts/sell-side/forecasts.md`
-- `valuation` → `prompts/sell-side/valuation.md`
-- `risk_section` → `prompts/sell-side/thesis.md`（复用 thesis prompt，因为研报风险节多为对立面的 thesis）
+和 annual Step 7a 代码 99% 相同，**差异**：
+- 注入 `institution` + `publish_date`（研报专属）
+- digest prompt 换成 `prompts/digest/sell-side-digest.md`
+- 不注入 `financial_line_rows`（研报预测走 claims，不经 financials 通道）
 
-全部 `targets: [claims]`。一把并发即可（通常 3-4 个 subagent）。
-
-**共同 prompt 追加**（派每个 subagent 时在主 prompt 末尾加）：
-
-```
-本次是卖方研报，不是公司一手披露。你产出的每条 claim 必须：
-- polarity 以**研报作者的立场**为准（分析师说看多 → bull），不是你的判断
-- claim_text 开头可选择标注 "[{institution} {publish_date}]" 便于后续消费区分
-- subject_tag 必须在 subjects_whitelist 里；研报最常用的 tag：
-  - `consensus_direction`（目标价 / 评级 / 市场共识方向）
-  - `guidance_reliability`（研报给出的预测与公司指引的一致性/偏差）
-  - `catalyst`（作者列出的推动因素）
-  - `competitive_position` / `pricing_power` / `market_share`（论点的行业结构观点）
-- **不要产出** `profile_fragments` / `financial_rows` / `meta_updates` —— 研报不经这些通道
-- flags 里如见到"目标价大幅偏离现价"、"预测与公司指引明显不一致"，务必标出
+```python
+# 复用 annual Step 7a 的 full_text / company_context / industry_context /
+# known_arenas / dimension_ref / industry_fields_hint / subjects_whitelist /
+# figure_contexts / detected_tickers / checklist_items 代码
+# 补：
+file_meta = {
+    "source_id": source_id,
+    "sha8": sha8,
+    "institution": institution,
+    "publish_date": publish_date,
+}
 ```
 
-**oversize 检查**：sell-side-generic 当前没有设置 `max_chars`。研报正文通常 30K 字内；若某 section 超 100K 字（极罕见），手动降级成 AskUserQuestion。
+### 7b：拼 prompt
 
-**同名 section 合并派单**（研报的核心优化——`_section_fallback` 经常产生 N 个同名 investment_thesis）：按 `.claude/skills/ingest/dispatch-merge-rules.md` 的决策树处理。
+复用 annual Step 7b 的结构，digest prompt 换成 `sell-side-digest.md`，最终 prompt 末尾加：
 
-研报 `investment_thesis` 类**走方案 C**（默认按一级章节号分派，不再全合并）：10 个 thesis 子节 → `thesis__lvl1` / `thesis__lvl2` / `thesis__lvl3` / `thesis__misc` 等 3-5 个子 subagent。这样 claim 抽取更聚焦，arena checklist 填答也能按 heading 主题路由。
-
-合并文本的拼接格式：
 ```
-### {heading_raw_1}
-{text_1}
+## 卖方研报专属指令
 
-### {heading_raw_2}
-{text_2}
+1. polarity 以**研报作者立场**为准（分析师看多 → bull）；不是你自己的判断
+2. **不要**产出 financial_rows（预测走 claims 通道，subject_tag=eps_forecast / revenue_forecast / target_price / rating）
+3. 预测 claim 的 `time_type="forecast"`；历史 claim（如 FY2024A "已披露收入"）的 time_type="actual"；
+   note：若 `facts_to_claims` 下游不消费 time_type（Plan 3 已知风险），你可选在 `claim_text` 开头写 `[forecast]` 前缀
+4. meta_updates 通常留空（研报不是一手披露源）
+5. claim_text 开头可选择加 `[{institution} {publish_date}]` 前缀便于下游区分
+6. proposed_arenas 极少（研报少开新战场，除非主题就是"国产替代"等明确博弈）
+7. narratives.company.{market}_{ticker}.valuation 必填（研报核心产出）
+8. Arena checklist 填答仍走 `competence_findings.answered`，level=concrete|vague|unanswered
 ```
 
-### 7b：Arena checklist item 路由（若 Step 4.5 有 `item_pool`）
+### 7c：Dispatch
 
-对每个要派的 subagent，算出**该 subagent 应收的 item 子集**，注入 prompt：
+```
+tool: Agent
+subagent_type: Explore
+prompt: <上面拼好的>
+```
 
-1. **按 `typical_evidence_section` 粗分**：
-   - item 的 `typical_evidence_section` 含 `investment_thesis` → 候选"投给所有 `thesis__*` 子 subagent"
-   - 含 `valuation` → 投给 `valuation` subagent
-   - 含 `forecasts` → 投给 `forecasts` subagent（若该 section 存在）
-   - 含 `risk_factors` 或 `risk` → 投给 `risk_section` subagent
-   - `["any"]` → 只投给 `thesis__*` 系列（研报的综述类）
-
-2. **thesis 子 subagent 的二次细分**（主 agent 在对话里推理，不派专门 subagent 做）：
-   - 读每个 `thesis__lvlN` 聚合后的 heading_raw 列表
-   - 对照预定义 tag 定义表（见 `prompts/arena/bootstrap-checklist.md`），给每个子 subagent 推理 1-3 个 tag（例："1.1 深耕线缆材料" + "1.2 产品矩阵" → `[competitive_position, technology]`）
-   - 从候选 item 里筛 `tags` 与子 subagent tag 有交集的 item
-
-3. **item 密度决策树**（筛完后）：
-   - ≤ 20 → 正常派
-   - 21-30 → 正常派，prompt 里加"逐条对照，不确定就 level=vague 或 unanswered"
-   - \> 30 → pause，AskUserQuestion（说明公司可能属于过多 arena，让用户取舍）
-
-4. **prompt 拼接**：在该 subagent 的主 prompt 末尾追加：
-   ```
-   ## Arena 能力圈填答
-
-   本次 ingest 属 arena：{arena_name} ({slug})
-   本 subagent 的 checklist 子集（共 N 条）：
-     - {id1}: {question1}
-     - {id2}: {question2}
-     ...
-
-   产出 `competence_findings.answered`（见 _common.md schema）+ 可选 `proposed_additions`。
-   ```
-
-5. **研报 thesis 子 subagent 额外追加**（区别于财报的"留给其它 subagent"策略）：
-   ```
-   本 section 是研报综述性论证章节。请认真对照 checklist 每一条；没有覆盖到的 item 用 level=unanswered 诚实标出（不要留给其它 subagent——本 ingest 里研报的能力圈填答主要落在 thesis 子 subagent 群里）。
-   ```
+**并发**：研报只有 1 个 digest subagent。旧版"按 heading 一级章节号拆 `thesis__lvl1/2/3` 3-5 个 subagent"不再使用——digest 读整份一次解决。
 
 ---
 
-## Step 8：主 agent 汇总
+## Step 8：主 agent 汇总（digest → 三桶，丢 financial_rows + meta_updates）
 
 ```python
 from scripts import ingest_aggregate as agg
-
-outputs = {name: agg.load_json_tolerant(raw) for name, raw in subagent_results.items()}
-merged = agg.aggregate(outputs)
-merged["claims"] = agg.dedup_claims(merged["claims"])
-```
-
-**研报特有后处理**（和季报 Step 8 类似）：
-
-```python
-dropped_fragments = merged.pop("profile_fragments", {})
-dropped_fin       = merged.pop("financial_rows", [])
-dropped_meta      = merged.pop("meta_updates", {})
-# 任一非空 → 在收尾报告里标"subagent 误产出 X，已丢弃"
-```
-
-研报 subagent 若产出 `financial_rows` 很可能是把预测表误当成"已披露数字"——丢弃，并在 flags 加提醒（预测数字应留在 claims 的 claim_text 里，subject_tag=guidance_reliability）。
-
-**注意**：`merged["competence_findings"]` **保留**（研报 ingest 的核心新增通道），在 Step 10 审阅后写入。
-
-**必须**把 merged 落盘到 `/tmp/ingest-{sha8}.merged.json`（Step 10.5 的 QA 消费它）：
-
-```python
 import json
 from pathlib import Path
+
+digest = agg.load_json_tolerant(subagent_raw_output)
+buckets = agg.route_key_facts(digest["key_facts"])
+company_facts_grouped = agg.group_company_facts(digest["key_facts"])
+
+# 研报专属后处理：
+# 1. 丢弃 financial_rows（研报不经此通道；预测走 claims + time_type=forecast）
+dropped_fin = digest.pop("financial_rows", [])
+if dropped_fin:
+    digest.setdefault("flags", []).append(
+        f"sell-side digest 产出了 {len(dropped_fin)} 条 financial_rows，已丢弃"
+        f"（预测数字应走 claims 通道 time_type=forecast）"
+    )
+
+# 2. 丢弃 meta_updates（研报不刷 meta）
+dropped_meta = digest.pop("meta_updates", {})
+if dropped_meta:
+    digest.setdefault("flags", []).append(f"sell-side digest 产出了 meta_updates，已丢弃")
+
+# 3. company facts → claims（研报主产物）
+claims_all = []
+for (t, m), facts in company_facts_grouped.items():
+    if t != ticker or m != market:
+        # Step 4a 已拒绝多公司研报；到此 refs 应全是本公司。
+        # 若 digest 因 detected_tickers 偶尔产出可比公司 fact，进 flags 不写本公司
+        continue
+    claims_all.extend(agg.facts_to_claims(facts))
+claims_all = agg.dedup_claims(claims_all)
+
+# 4. 凑兼容 merged
+merged = {
+    "claims": claims_all,
+    "financial_rows": [],
+    "meta_updates": {},
+    "competence_findings": digest.get("competence_findings", {
+        "answered": [], "proposed_additions": []
+    }),
+    "flags_by_subagent": {"sell-side-digest": digest.get("flags", [])},
+    "empty_subagents": [],
+}
 Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
     json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8"
+)
+Path(f"/tmp/ingest-{sha8}.digest.json").write_text(
+    json.dumps(digest, ensure_ascii=False, indent=2), encoding="utf-8"
 )
 ```
 
@@ -337,52 +328,143 @@ issues = {
 
 ## Step 10：统一写入
 
-三件事：
-
-1. **原文落 `sources/`**（Step 6 已做）
-
-2. **写 claims**：
+研报写入清单：原文 → industry observations（若有）+ figure_contexts → narratives(industry + arena + company) → proposed_arena bootstrap → claims → competence。**不写** financials / profile / meta（原则不变，但 arena bootstrap 会同步更新 meta.arenas）。
 
 ```python
 from datetime import datetime, timezone
+from app.io import arenas as arenas_io
+
+extracted_by = "claude-opus-4-7"
+extracted_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+source_meta = {
+    "source_id": source_id,
+    "source_file": Path(file_path).name,
+    "sha8": sha8,
+    "institution": institution,
+    "date": publish_date,
+}
+```
+
+### 10.1 原文（Step 6 已做）
+
+### 10.2 industry observations + figure_contexts（研报偶有）
+
+```python
+# 仅 buckets["industry"] 非空时写（研报前几页"行业简介"可能含 TAM / 竞争）
+if buckets["industry"]:
+    n_obs = agg.write_industry_observations(
+        buckets["industry"], source_meta,
+        extracted_by=extracted_by, extracted_at=extracted_at,
+    )
+
+# figure_contexts 按 annual 10.4 的 multi-slug 模式写
+slugs_touched = {
+    (f.get("target_refs") or {}).get("industry_slug")
+    for f in buckets["industry"]
+}
+for slug in slugs_touched:
+    if not slug:
+        continue
+    agg.write_figure_contexts(slug=slug, contexts=figure_contexts, source_meta=source_meta)
+```
+
+### 10.3 narratives（industry + arena + company）
+
+```python
+from app import config as cfg
+
+# industry narrative（研报"行业背景"段，confidence=medium）
+ind_nar = digest["narratives"].get("industry", {})
+first_keys = set(ind_nar.keys()) if ind_nar else set()
+dim_set = set(cfg.INDUSTRY_DIMENSIONS)
+if first_keys and first_keys.issubset(dim_set) and company_arenas and company_context["industry_slugs"]:
+    ind_nar_payload = {company_context["industry_slugs"][0]: ind_nar}
+else:
+    ind_nar_payload = ind_nar
+if ind_nar_payload:
+    n_nar_ind = agg.write_industry_narrative(ind_nar_payload, source_meta)
+
+# arena narratives（已存在的；newly-bootstrapped 在 10.4 后写）
+arena_nar = digest["narratives"].get("arena", {})
+known_slugs = set(company_arenas)
+arena_nar_existing = {k: v for k, v in arena_nar.items() if k in known_slugs}
+n_nar_arena = agg.write_arena_narrative(arena_nar_existing, source_meta)
+
+# company narratives（研报主产物之一，必含 valuation dim）
+comp_nar = digest["narratives"].get("company", {})
+n_nar_comp = agg.write_company_narrative(comp_nar, source_meta)
+```
+
+### 10.4 proposed_arenas bootstrap（研报偶有）
+
+同 annual Step 10.6；研报 proposed_arenas 通常 0-1 个。
+
+```python
+proposals = agg.propose_arena_bootstrap(digest.get("proposed_arenas", []))
+# AskUserQuestion 审阅
+approved_proposals = [...]
+for p in approved_proposals:
+    agg.bootstrap_arena(p)
+    company_arenas.append(p["slug"])   # 更新内存映像
+
+# 写 newly-bootstrapped arena 的 narrative
+new_slugs = {p["slug"] for p in approved_proposals}
+arena_nar_new = {k: v for k, v in arena_nar.items() if k in new_slugs}
+if arena_nar_new:
+    n_nar_arena += agg.write_arena_narrative(arena_nar_new, source_meta)
+```
+
+### 10.5 claims（研报主产物）
+
+```python
 n, errors = agg.write_claims(
-    ticker, market, merged["claims"],
+    ticker, market, claims_all,
     source_id=source_id,
     source_file=Path(file_path).name,
-    extracted_by="claude-opus-4-7",
-    extracted_at=datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    extracted_by=extracted_by,
+    extracted_at=extracted_at,
 )
 if errors:
-    # 报给用户，建议重抽单个 subagent；不做部分写入
+    # 报给用户，建议回 Step 7 重派；不做部分写入
     ...
 ```
 
-3. **competence 写入**（审阅后）：
+### 10.6 financials / profile / meta
+
+- `financials.db`：研报不写
+- `profile-*.md`：研报不写（研报不是事实源；新架构下 profile 整体废弃）
+- `meta.md`：原则不写；**例外** —— 若 10.4 bootstrap 了新 arena，同步更新 `fm["arenas"]`：
 
 ```python
-findings = merged.get("competence_findings", {"answered": [], "proposed_additions": []})
+if approved_proposals:
+    info = company_io.read_meta_with_body(ticker, market)
+    fm = dict(info["frontmatter"])
+    existing_arenas = set(fm.get("arenas") or [])
+    new_arenas = {p["slug"] for p in approved_proposals}
+    fm["arenas"] = sorted(existing_arenas | new_arenas)
+    company_io.write_meta(ticker, market, fm, info["body"])
+```
 
-# 合并同 q_id 跨 subagent 的多答（取 level 最高 + evidence 最长）
+### 10.7 competence 写入（审阅后）
+
+```python
+findings = digest.get("competence_findings", {"answered": [], "proposed_additions": []})
 consolidated = arenas_io.consolidate_answers(findings["answered"])
-
-# 审阅前展示：
-#   - consolidated（按 arena 分组展示）
-#   - findings["proposed_additions"]
 ```
 
 **AskUserQuestion 审阅**：
 
 - 选项 A：approve 全部 answered + approve 所有 proposed_additions
-- 选项 B：approve answered，拒绝所有 proposed（适合 checklist 已经比较成熟）
-- 选项 C：逐条筛选（多选）
-- 选项 D：跳过 competence 写入（本次只产 claim，competence 不落盘）
+- 选项 B：approve answered，拒绝所有 proposed（checklist 已成熟）
+- 选项 C：逐条筛选
+- 选项 D：跳过 competence 写入
 
 **写入**（对每个 arena）：
 
 ```python
 for slug in company_arenas:
     checklist = arenas_io.read_checklist(slug)
-    # 过滤属于本 arena 的 answered（item_pool 里记录了 arena_slug）
     answered_for_this_arena = [
         a for a in consolidated
         if item_pool.get(a["q_id"], {}).get("arena_slug") == slug
@@ -393,12 +475,10 @@ for slug in company_arenas:
         source_id=source_id,
         checklist_version=checklist["version"],
     )
-    # proposed_additions：若用户 approve 了针对本 arena 的新 item
     approved_new = [...]   # 主 agent 在审阅时已分好归属
     if approved_new:
-        new_items = checklist["items"] + approved_new
         arenas_io.write_checklist(
-            slug, new_items,
+            slug, checklist["items"] + approved_new,
             changelog_entry={
                 "source_id": source_id,
                 "changes": f"added {len(approved_new)} item(s) from {source_id}",
@@ -406,7 +486,7 @@ for slug in company_arenas:
         )
 ```
 
-**不写** financials、**不写** profile、**不写** meta（研报原则不变）。
+**注意**：digest 模式下 `consolidate_answers` 退化成 no-op（单 digest 无跨 subagent 合并），保留调用以兼容未来多 digest。
 
 ---
 
