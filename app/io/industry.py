@@ -229,6 +229,114 @@ def filter_observations_by_segment(
     ]
 
 
+# ---------- Cross-source aggregation (spec §6.2) ----------
+
+_DIVERGENCE_THRESHOLD = 0.30
+
+
+def _row_summary(r: dict) -> dict:
+    return {
+        "value": r.get("value"),
+        "unit": r.get("unit"),
+        "timeframe": r.get("timeframe"),
+        "source_id": r.get("source_id"),
+        "source_note": r.get("source_note"),
+        "confidence": r.get("confidence"),
+    }
+
+
+def _compute_spread(values: list[float]) -> tuple[float, float, float, float | None]:
+    """Return (median, min, max, spread) where spread=(max-min)/|median|.
+    spread is None when median is 0 (avoid div-by-zero)."""
+    vs = sorted(values)
+    n = len(vs)
+    median = vs[n // 2] if n % 2 == 1 else (vs[n // 2 - 1] + vs[n // 2]) / 2
+    mn, mx = vs[0], vs[-1]
+    spread = (mx - mn) / abs(median) if median else None
+    return median, mn, mx, spread
+
+
+def aggregate_observations(slug: str, base: Path | None = None) -> dict:
+    """Group observations for cross-source rendering (spec §6.2).
+
+    Returns ``{"numeric": [...], "segment": [...], "enum": [...]}``.
+
+    - numeric: atomic numeric facts grouped by (dimension, field, timeframe, unit).
+      Each group: rows, median, min_value, max_value, spread, divergent (spread>0.30),
+      n_sources, n_rows.
+    - segment: metric_type='segment' numeric facts grouped by (…, segment). Same shape.
+    - enum: non-numeric facts grouped by (dimension, field, timeframe).
+      Each group: rows, values (sorted distinct list), consistent (len==1).
+
+    Single-source groups still compute stats (spread=0, divergent=False); the
+    template decides whether to show the divergence banner based on n_sources.
+    Rows with value=None or missing dimension/field are skipped.
+    """
+    rows = read_observations(slug, base=base)
+    numeric: dict[tuple, dict] = {}
+    segment: dict[tuple, dict] = {}
+    enum: dict[tuple, dict] = {}
+    for r in rows:
+        dim = r.get("dimension")
+        field = r.get("field")
+        if not dim or not field:
+            continue
+        timeframe = r.get("timeframe")
+        unit = r.get("unit")
+        value = r.get("value")
+        seg = r.get("segment")
+        metric_type = r.get("metric_type") or "atomic"
+        is_numeric = isinstance(value, (int, float)) and not isinstance(value, bool)
+        if metric_type == "segment" and is_numeric and seg:
+            key = (dim, field, timeframe, unit, seg)
+            bucket = segment.setdefault(key, {
+                "dimension": dim, "field": field, "timeframe": timeframe,
+                "unit": unit, "segment": seg, "rows": [],
+            })
+            bucket["rows"].append(_row_summary(r))
+        elif is_numeric:
+            key = (dim, field, timeframe, unit)
+            bucket = numeric.setdefault(key, {
+                "dimension": dim, "field": field, "timeframe": timeframe,
+                "unit": unit, "rows": [],
+            })
+            bucket["rows"].append(_row_summary(r))
+        elif isinstance(value, str) and value.strip():
+            key = (dim, field, timeframe)
+            bucket = enum.setdefault(key, {
+                "dimension": dim, "field": field, "timeframe": timeframe,
+                "rows": [],
+            })
+            bucket["rows"].append({**_row_summary(r), "value": value})
+
+    def _finalize_numeric(b: dict) -> dict:
+        vs = [row["value"] for row in b["rows"]]
+        median, mn, mx, spread = _compute_spread(vs)
+        b["median"] = median
+        b["min_value"] = mn
+        b["max_value"] = mx
+        b["spread"] = spread
+        b["divergent"] = spread is not None and spread > _DIVERGENCE_THRESHOLD
+        b["n_sources"] = len({row["source_id"] for row in b["rows"]})
+        b["n_rows"] = len(b["rows"])
+        return b
+
+    numeric_out = [_finalize_numeric(b) for b in numeric.values()]
+    segment_out = [_finalize_numeric(b) for b in segment.values()]
+    enum_out = []
+    for b in enum.values():
+        distinct = sorted({row["value"] for row in b["rows"]})
+        b["values"] = distinct
+        b["consistent"] = len(distinct) == 1
+        b["n_sources"] = len({row["source_id"] for row in b["rows"]})
+        b["n_rows"] = len(b["rows"])
+        enum_out.append(b)
+    numeric_out.sort(key=lambda b: (b["dimension"], b["field"], b["timeframe"] or ""))
+    segment_out.sort(key=lambda b: (b["dimension"], b["field"], b["segment"], b["timeframe"] or ""))
+    enum_out.sort(key=lambda b: (b["dimension"], b["field"], b["timeframe"] or ""))
+    return {"numeric": numeric_out, "segment": segment_out, "enum": enum_out}
+
+
 # ---------- Narrative ----------
 
 _NARRATIVE_BLOCK_TEMPLATE = """

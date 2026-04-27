@@ -79,6 +79,45 @@ def industry_detail(request: Request, slug: str):
     )
 
 
+@router.get("/{slug}/observations")
+def industry_observations(request: Request, slug: str):
+    """Cross-source aggregation view (spec §6.2).
+
+    Renders structured facts grouped by (dimension, field, timeframe[, segment])
+    with median/range/spread stats; spread > 30% is flagged red.
+    """
+    try:
+        meta = industry_io.read_meta(slug)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"industry {slug!r} not found")
+
+    agg = industry_io.aggregate_observations(slug)
+    # Tab organization: by dimension; within a dim bundle numeric + segment + enum groups.
+    groups_by_dim: dict[str, dict] = {}
+    for kind in ("numeric", "segment", "enum"):
+        for g in agg[kind]:
+            dim = g["dimension"]
+            bucket = groups_by_dim.setdefault(dim, {"numeric": [], "segment": [], "enum": []})
+            bucket[kind].append(g)
+    # Order dims per INDUSTRY_DIMENSIONS; include only dims with any group.
+    ordered_dims = [d for d in cfg.INDUSTRY_DIMENSIONS if d in groups_by_dim]
+    divergent_count = sum(1 for g in agg["numeric"] + agg["segment"] if g["divergent"])
+
+    return templates.TemplateResponse(
+        request,
+        "industries/observations.html",
+        {
+            "slug": slug,
+            "meta": meta,
+            "ordered_dims": ordered_dims,
+            "groups_by_dim": groups_by_dim,
+            "dim_labels": _INDUSTRY_DIM_LABEL,
+            "n_groups": sum(len(agg[k]) for k in ("numeric", "segment", "enum")),
+            "n_divergent": divergent_count,
+        },
+    )
+
+
 def _is_skeleton_only(md: str) -> bool:
     """A narrative is 'skeleton-only' if it just contains the initial `# 标题`
     line from create_industry — no digest blocks appended yet."""

@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}{{ slug }} · observations{% endblock %}
+{% block content %}
+<p class="hint"><a href="/industries/{{ slug }}">{{ meta.name or slug }}</a> · 跨源聚合观察</p>
+
+<h1>{{ meta.name or slug }} · 观察聚合</h1>
+
+<p class="hint">
+  {{ n_groups }} 个分组
+  {% if n_divergent %}
+    · <span class="badge-divergent">🚨 {{ n_divergent }} 个 spread &gt; 30%</span>
+  {% endif %}
+</p>
+
+{% if not ordered_dims %}
+  <p class="hint"><em>尚无结构化 observation。</em></p>
+{% endif %}
+
+{% for dim in ordered_dims %}
+  <h2 id="dim-{{ dim }}">{{ dim_labels.get(dim, dim) }} <span class="hint">({{ dim }})</span></h2>
+
+  {# --- atomic numeric groups --- #}
+  {% if groups_by_dim[dim].numeric %}
+    <h3>atomic 数值</h3>
+    {% for g in groups_by_dim[dim].numeric %}
+      <details open class="group {% if g.divergent %}group-divergent{% endif %}">
+        <summary>
+          <code>{{ g.field }}</code>
+          {% if g.timeframe %} · {{ g.timeframe }}{% endif %}
+          {% if g.unit %} · {{ g.unit }}{% endif %}
+          {% if g.n_sources >= 2 %}
+            · median <strong>{{ '%.3g'|format(g.median) }}</strong>
+            · range [{{ '%.3g'|format(g.min_value) }}, {{ '%.3g'|format(g.max_value) }}]
+            {% if g.spread is not none %}
+              · spread <span class="{% if g.divergent %}spread-bad{% endif %}">
+                {{ '%.1f'|format(g.spread * 100) }}%
+              </span>
+              {% if g.divergent %}<span class="badge-divergent">🚨</span>{% endif %}
+            {% endif %}
+          {% else %}
+            <span class="hint">· 单源</span>
+          {% endif %}
+        </summary>
+        <table>
+          <thead>
+            <tr><th>source</th><th>source_note</th><th>value</th><th>unit</th><th>timeframe</th><th>confidence</th></tr>
+          </thead>
+          <tbody>
+            {% for r in g.rows %}
+            <tr>
+              <td><code>{{ r.source_id or '-' }}</code></td>
+              <td class="hint">{{ r.source_note or '-' }}</td>
+              <td>{{ r.value }}</td>
+              <td class="hint">{{ r.unit or '' }}</td>
+              <td class="hint">{{ r.timeframe or '-' }}</td>
+              <td>{{ r.confidence or '-' }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </details>
+    {% endfor %}
+  {% endif %}
+
+  {# --- segment groups --- #}
+  {% if groups_by_dim[dim].segment %}
+    <h3>segment 分组</h3>
+    {% for g in groups_by_dim[dim].segment %}
+      <details open class="group {% if g.divergent %}group-divergent{% endif %}">
+        <summary>
+          <code>{{ g.field }}</code>
+          · <strong>{{ g.segment }}</strong>
+          {% if g.timeframe %} · {{ g.timeframe }}{% endif %}
+          {% if g.unit %} · {{ g.unit }}{% endif %}
+          {% if g.n_sources >= 2 %}
+            · median <strong>{{ '%.3g'|format(g.median) }}</strong>
+            · range [{{ '%.3g'|format(g.min_value) }}, {{ '%.3g'|format(g.max_value) }}]
+            {% if g.spread is not none %}
+              · spread <span class="{% if g.divergent %}spread-bad{% endif %}">
+                {{ '%.1f'|format(g.spread * 100) }}%
+              </span>
+              {% if g.divergent %}<span class="badge-divergent">🚨</span>{% endif %}
+            {% endif %}
+          {% else %}
+            <span class="hint">· 单源</span>
+          {% endif %}
+        </summary>
+        <table>
+          <thead>
+            <tr><th>source</th><th>source_note</th><th>value</th><th>unit</th><th>timeframe</th><th>confidence</th></tr>
+          </thead>
+          <tbody>
+            {% for r in g.rows %}
+            <tr>
+              <td><code>{{ r.source_id or '-' }}</code></td>
+              <td class="hint">{{ r.source_note or '-' }}</td>
+              <td>{{ r.value }}</td>
+              <td class="hint">{{ r.unit or '' }}</td>
+              <td class="hint">{{ r.timeframe or '-' }}</td>
+              <td>{{ r.confidence or '-' }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </details>
+    {% endfor %}
+  {% endif %}
+
+  {# --- enum groups --- #}
+  {% if groups_by_dim[dim].enum %}
+    <h3>enum / 文本字段</h3>
+    {% for g in groups_by_dim[dim].enum %}
+      <details open class="group">
+        <summary>
+          <code>{{ g.field }}</code>
+          {% if g.timeframe %} · {{ g.timeframe }}{% endif %}
+          · {{ g.values|length }} 种取值
+          {% if g.consistent %}
+            <span class="badge-consistent">🟢 一致</span>
+          {% else %}
+            <span class="badge-divergent-enum">🟡 分歧</span>
+          {% endif %}
+        </summary>
+        <table>
+          <thead>
+            <tr><th>source</th><th>source_note</th><th>value</th><th>timeframe</th><th>confidence</th></tr>
+          </thead>
+          <tbody>
+            {% for r in g.rows %}
+            <tr>
+              <td><code>{{ r.source_id or '-' }}</code></td>
+              <td class="hint">{{ r.source_note or '-' }}</td>
+              <td><strong>{{ r.value }}</strong></td>
+              <td class="hint">{{ r.timeframe or '-' }}</td>
+              <td>{{ r.confidence or '-' }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </details>
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+<p><a href="/industries/{{ slug }}">← 返回行业主页</a> · <a href="/industries">行业列表</a></p>
+
+<style>
+  .group { margin: 0.4em 0; padding: 0.4em 0.7em; border: 1px solid var(--border, #ddd); border-radius: 4px; }
+  .group summary { cursor: pointer; padding: 0.15em 0; }
+  .group-divergent { border-color: #d94a3d; background: #fff5f4; }
+  .spread-bad { color: #d94a3d; font-weight: bold; }
+  .badge-divergent { background: #d94a3d; color: white; padding: 0.1em 0.4em; border-radius: 3px; font-size: 0.85em; }
+  .badge-divergent-enum { background: #f0ad4e; color: white; padding: 0.1em 0.4em; border-radius: 3px; font-size: 0.85em; }
+  .badge-consistent { color: #3c763d; font-size: 0.9em; }
+  h2 { margin-top: 1.5em; border-bottom: 1px solid var(--border-soft, #eee); padding-bottom: 0.2em; }
+  h3 { font-size: 1em; color: #666; margin: 0.8em 0 0.3em; }
+</style>
+{% endblock %}

@@ -1068,6 +1068,51 @@ def test_industries_detail_404_when_missing(client):
     assert r.status_code == 404
 
 
+def test_industries_observations_aggregation_renders_spread_badge(client, tmp_path):
+    """Plan 5 T10: /industries/{slug}/observations groups by (field, timeframe)
+    across sources; spread > 30% renders 🚨 badge (spec §6.2)."""
+    from app.io import industry as industry_io
+    industry_io.create_industry(
+        slug="cn-cmp-material", name="CMP 材料", scope="", base=tmp_path,
+    )
+    industry_io.append_observations(
+        "cn-cmp-material",
+        [
+            {"dimension": "market_size", "field": "tam_china", "timeframe": "2025",
+             "unit": "亿美元", "value": 10.0, "metric_type": "atomic",
+             "source_id": "a", "source_note": "华经"},
+            {"dimension": "market_size", "field": "tam_china", "timeframe": "2025",
+             "unit": "亿美元", "value": 25.0, "metric_type": "atomic",
+             "source_id": "b", "source_note": "弗若斯特沙利文"},
+        ],
+        base=tmp_path,
+    )
+    r = client.get("/industries/cn-cmp-material/observations")
+    assert r.status_code == 200
+    assert "tam_china" in r.text
+    assert "华经" in r.text
+    assert "弗若斯特沙利文" in r.text
+    # spread = 15/17.5 ≈ 85.7% → divergent badge rendered
+    assert "🚨" in r.text
+    assert "spread-bad" in r.text
+
+
+def test_industries_observations_404_when_missing(client):
+    r = client.get("/industries/no-such-slug/observations")
+    assert r.status_code == 404
+
+
+def test_industries_detail_links_to_observations_page(client, tmp_path):
+    """Detail page has a link to the /observations aggregation view."""
+    from app.io import industry as industry_io
+    industry_io.create_industry(
+        slug="cn-linked", name="L", scope="", base=tmp_path,
+    )
+    r = client.get("/industries/cn-linked")
+    assert r.status_code == 200
+    assert "/industries/cn-linked/observations" in r.text
+
+
 # --- Plan 4 T8: arenas read view with narratives + industry back-link ------
 
 

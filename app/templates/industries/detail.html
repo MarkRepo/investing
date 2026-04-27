@@ -44,7 +44,9 @@
   </details>
 {% endfor %}
 
-<h2>观察（observations · 最近 {{ observations|length }} / {{ observations_total }}）</h2>
+<h2>观察（observations · 最近 {{ observations|length }} / {{ observations_total }}）
+  <a href="/industries/{{ slug }}/observations" class="hint" style="font-size: 0.7em; margin-left: 0.5em;">→ 跨源聚合</a>
+</h2>
 {% if observations %}
 <table>
   <thead>

@@ -209,3 +209,133 @@ def test_find_by_arena_via_definition_frontmatter(tmp_path, monkeypatch):
 
     assert industry_io.find_by_arena("arena-x", base=base) == "ind1"
     assert industry_io.find_by_arena("arena-z", base=base) is None
+
+
+# --- Plan 5 T10: cross-source aggregation (spec §6.2) ------------------------
+
+
+def _append_rows(base, slug, rows):
+    industry_io.create_industry(slug=slug, name=slug, scope="", base=base)
+    industry_io.append_observations(slug, rows, base=base)
+
+
+def test_aggregate_numeric_group_computes_stats(tmp_path):
+    """Two sources quoting same field+timeframe+unit → one numeric group with
+    median/min/max/spread."""
+    rows = [
+        {"dimension": "market_size", "field": "tam_global", "timeframe": "2025",
+         "unit": "亿美元", "value": 34.0, "metric_type": "atomic",
+         "source_id": "src-huajing", "source_note": "华经"},
+        {"dimension": "market_size", "field": "tam_global", "timeframe": "2025",
+         "unit": "亿美元", "value": 29.6, "metric_type": "atomic",
+         "source_id": "src-frost", "source_note": "弗若斯特沙利文"},
+    ]
+    _append_rows(tmp_path, "cn-cmp", rows)
+    agg = industry_io.aggregate_observations("cn-cmp", base=tmp_path)
+    assert len(agg["numeric"]) == 1
+    g = agg["numeric"][0]
+    assert g["field"] == "tam_global"
+    assert g["n_rows"] == 2
+    assert g["n_sources"] == 2
+    assert g["min_value"] == 29.6
+    assert g["max_value"] == 34.0
+    # median of two values = mean
+    assert abs(g["median"] - 31.8) < 1e-9
+    # spread = (34 - 29.6) / 31.8 ≈ 0.138
+    assert abs(g["spread"] - (4.4 / 31.8)) < 1e-9
+    assert g["divergent"] is False
+
+
+def test_aggregate_numeric_divergent_flag_above_threshold(tmp_path):
+    """spread > 0.30 → divergent=True (red badge condition)."""
+    rows = [
+        {"dimension": "market_size", "field": "tam_china", "timeframe": "2025",
+         "unit": "亿美元", "value": 10.0, "metric_type": "atomic",
+         "source_id": "a", "source_note": "A"},
+        {"dimension": "market_size", "field": "tam_china", "timeframe": "2025",
+         "unit": "亿美元", "value": 25.0, "metric_type": "atomic",
+         "source_id": "b", "source_note": "B"},
+    ]
+    _append_rows(tmp_path, "cn-cmp", rows)
+    agg = industry_io.aggregate_observations("cn-cmp", base=tmp_path)
+    g = agg["numeric"][0]
+    assert g["divergent"] is True
+    # spread = 15 / 17.5 ≈ 0.857 > 0.30
+    assert g["spread"] > 0.30
+
+
+def test_aggregate_segment_groups_by_segment(tmp_path):
+    """metric_type='segment' rows split by segment, not merged."""
+    rows = [
+        {"dimension": "competition", "field": "share_by_player", "timeframe": "2024",
+         "unit": "%", "value": 11.0, "metric_type": "segment", "segment": "SSE_688019",
+         "source_id": "a", "source_note": "A"},
+        {"dimension": "competition", "field": "share_by_player", "timeframe": "2024",
+         "unit": "%", "value": 9.0, "metric_type": "segment", "segment": "SSE_688019",
+         "source_id": "b", "source_note": "B"},
+        {"dimension": "competition", "field": "share_by_player", "timeframe": "2024",
+         "unit": "%", "value": 7.0, "metric_type": "segment", "segment": "SZSE_300054",
+         "source_id": "a", "source_note": "A"},
+    ]
+    _append_rows(tmp_path, "cn-cmp", rows)
+    agg = industry_io.aggregate_observations("cn-cmp", base=tmp_path)
+    assert len(agg["segment"]) == 2
+    by_seg = {g["segment"]: g for g in agg["segment"]}
+    assert by_seg["SSE_688019"]["n_rows"] == 2
+    assert by_seg["SSE_688019"]["n_sources"] == 2
+    assert by_seg["SZSE_300054"]["n_rows"] == 1
+    assert by_seg["SZSE_300054"]["n_sources"] == 1
+
+
+def test_aggregate_enum_detects_divergence(tmp_path):
+    """Two sources disagree on lifecycle.stage → consistent=False."""
+    rows = [
+        {"dimension": "lifecycle", "field": "stage", "timeframe": "2025",
+         "value": "Growth", "metric_type": "atomic",
+         "source_id": "a", "source_note": "A"},
+        {"dimension": "lifecycle", "field": "stage", "timeframe": "2025",
+         "value": "Shakeout", "metric_type": "atomic",
+         "source_id": "b", "source_note": "B"},
+        {"dimension": "lifecycle", "field": "stage", "timeframe": "2024",
+         "value": "Growth", "metric_type": "atomic",
+         "source_id": "a", "source_note": "A"},
+    ]
+    _append_rows(tmp_path, "cn-cmp", rows)
+    agg = industry_io.aggregate_observations("cn-cmp", base=tmp_path)
+    assert len(agg["enum"]) == 2
+    by_tf = {g["timeframe"]: g for g in agg["enum"]}
+    assert by_tf["2025"]["values"] == ["Growth", "Shakeout"]
+    assert by_tf["2025"]["consistent"] is False
+    assert by_tf["2024"]["consistent"] is True
+
+
+def test_aggregate_single_source_group_has_zero_spread(tmp_path):
+    """Single-source group: spread=0, divergent=False, n_sources=1."""
+    rows = [
+        {"dimension": "market_size", "field": "tam_global", "timeframe": "2025",
+         "unit": "亿美元", "value": 34.0, "metric_type": "atomic",
+         "source_id": "sole", "source_note": "Sole"},
+    ]
+    _append_rows(tmp_path, "cn-cmp", rows)
+    agg = industry_io.aggregate_observations("cn-cmp", base=tmp_path)
+    g = agg["numeric"][0]
+    assert g["n_sources"] == 1
+    assert g["spread"] == 0.0
+    assert g["divergent"] is False
+
+
+def test_aggregate_skips_rows_with_null_value_or_missing_dim(tmp_path):
+    """Rows with value=None or missing dimension/field are excluded from all
+    buckets (they're narrative-only or schema-invalid)."""
+    rows = [
+        {"dimension": "market_size", "field": "tam_global", "timeframe": "2025",
+         "unit": "亿美元", "value": None, "claim_text": "unstructured note",
+         "source_id": "a", "source_note": "A"},
+        {"dimension": None, "field": "tam_global", "timeframe": "2025",
+         "value": 34.0, "source_id": "b", "source_note": "B"},
+    ]
+    _append_rows(tmp_path, "cn-cmp", rows)
+    agg = industry_io.aggregate_observations("cn-cmp", base=tmp_path)
+    assert agg["numeric"] == []
+    assert agg["segment"] == []
+    assert agg["enum"] == []
