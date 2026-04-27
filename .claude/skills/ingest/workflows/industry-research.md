@@ -241,10 +241,14 @@ full_text: |
 ---
 
 现在请输出严格 JSON（顶层 keys: key_facts, narratives, proposed_arenas, flags；见 _common.md schema）。
+
+**产出方式**（任选其一）：
+1. 在对话里直接返回整段 JSON（`{` 开头 `}` 结尾）
+2. 用 bash heredoc 把 JSON 写到 `/tmp/ingest-{sha8}.digest.json`，然后在对话返回里**只**打印这行：`WROTE /tmp/ingest-{sha8}.digest.json`（主 agent 会 grep 这行拿到文件路径）。输出很长时推荐这种。
 """
 ```
 
-**派单**（用 Agent 工具，`subagent_type = "Explore"`；只读，无写权限；即便 prompt 很长 >50K 字也一次派，不分段——digest 的前提就是一次读完整份报告）：
+**派单**（用 Agent 工具，`subagent_type = "Explore"`；Explore 无 Write 权限但有 Bash，所以走上面第 2 条文件路径时用 `cat > /tmp/... <<'JSON'` 方式即可）：
 
 ```
 tool: Agent
@@ -263,11 +267,21 @@ prompt: <上面拼好的 prompt>
 ## Step 6：主 agent 汇总 + JSON 解析容错
 
 ```python
+import re, json
+from pathlib import Path
 from scripts import ingest_aggregate as agg
 
 raw_output = subagent_result   # str, subagent 返回的整段文字
-digest = agg.load_json_tolerant(raw_output)
-# load_json_tolerant 会剥掉 ```json fence、处理尾随逗号等容错
+
+# Step 6.a 文件路径 fallback（Plan 5 T3）：
+# subagent 可能用 bash 写 /tmp/*.digest.json（或 /tmp/digest_output.json 等常见变体）
+# 然后只返回摘要。主 agent 先扫路径。
+m = re.search(r'(/tmp/[\w\-\.]+\.json)', raw_output)
+if m and Path(m.group(1)).exists():
+    digest = json.loads(Path(m.group(1)).read_text())
+else:
+    digest = agg.load_json_tolerant(raw_output)
+    # load_json_tolerant 会剥掉 ```json fence、处理尾随逗号等容错
 ```
 
 **健康检查**（失败 → pause）：
