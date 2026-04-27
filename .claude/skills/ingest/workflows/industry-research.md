@@ -309,11 +309,19 @@ Path(f"/tmp/ingest-{sha8}.digest.json").write_text(
 ```python
 buckets = agg.route_key_facts(digest["key_facts"])
 # buckets = {"industry": [...], "arena": [...], "company": [...]}
+
+# Plan 5 T9：arena 桶 arena_refs-driven 自动派生
+# 凡 industry fact 的 arena_refs 里含某 proposed_arena.tentative_slug，
+# 克隆一份到 arena 桶（原 industry fact 不变）。解决"arena 证据天然在
+# industry 层"的双层事实复用问题。
+proposed_slugs = [p["tentative_slug"] for p in digest.get("proposed_arenas", [])]
+derived = agg.derive_arena_facts(buckets, proposed_slugs)
+buckets["arena"].extend(derived)
 ```
 
 **预期分布**（行研）：
 - `industry`：50-70% 的 key_facts（TAM / competition / drivers / ...）
-- `arena`：15-25%
+- `arena`：15-25%（含 arena_refs 自动派生的）
 - `company`：10-25%
 - 少量 `cross` 会被同时放进 `industry` 和 `company` 两桶
 

@@ -42,7 +42,10 @@
 - 报告只做"产业链分析"/"行业介绍"，无博弈叙事
 - 只提到 1 家公司的竞争位置
 
-**arena 桶最低证据量**：若 `proposed_arenas` 非空，则 `key_facts` 里 `target_layer=arena` 的条数必须 **≥3**（每个 proposed arena 至少 3 条证据支撑）。不足则主 agent 会拒建该 arena —— 宁可少建也不虚建。
+**arena 证据量（soft）**：识别到博弈主题就产 `proposed_arenas` + `narratives.arena`，**不要因为 `target_layer=arena` 的 key_fact 不足 N 条而放弃**。很多 arena 证据天然挂在 industry 层（如 `competition.share_by_player` 是 industry 事实，但也是 arena 证据）—— 只要你在这些 industry fact 的 `arena_refs` 里填了该 arena 的 slug，主 agent 会自动把它们复用到 arena 桶。所以：
+
+- `target_layer=arena` 的 fact 只写"纯 arena 层"的东西（多空叙事、演进节奏、决策启示）——条数不硬性要求
+- industry fact 的 `arena_refs` 字段要用好：凡与 proposed_arena 的博弈焦点相关的 industry fact（市占率/国产化率/技术路线之争的数据）→ 在 arena_refs 里标出该 arena 的 slug
 
 **已知 arena 判重**：
 - prompt 里的 `known_arenas` 给了已存在 arena 的 slug + focus + participants
@@ -90,7 +93,7 @@
 - [ ] key_facts 中 target_layer=industry 的条数占多数（研报的正活）
 - [ ] 若有 figure_contexts，≥80% 的图表 caption 被扫过（要么产 observation，要么至少影响 narrative）
 - [ ] proposed_arenas 的每个 tentative_slug 都有 tentative_name + battleground_focus + ≥2 participants + parent_industry_slug
-- [ ] 若 proposed_arenas 非空，target_layer=arena 的 key_fact 总数 ≥3
+- [ ] 若产 proposed_arenas，有对应的 industry fact 在 `arena_refs` 里标了该 slug（主 agent 会自动复用这些到 arena 桶）
 - [ ] `narratives.arena` 所有 key 都是 slug（与 proposed_arenas.tentative_slug 或 known_arenas.slug 对齐）
 - [ ] `target_layer=company` 的 key_fact 每条都有 subject_tag_hint
 - [ ] `narratives.industry` 覆盖至少 3 个维度（除非报告真的只讲一维）

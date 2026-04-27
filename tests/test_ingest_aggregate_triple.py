@@ -45,6 +45,80 @@ def test_route_key_facts_cross_layer_also_tagged_as_company():
     assert any(f["idx"] == 5 for f in buckets["company"])
 
 
+def test_derive_arena_facts_clones_industry_facts_with_matching_arena_refs():
+    """Plan 5 T9: industry facts whose arena_refs include a proposed arena slug
+    get cloned into the arena bucket so the subagent doesn't need to also emit
+    target_layer=arena copies. Originals stay in industry."""
+    buckets = {
+        "industry": [
+            {"idx": 1, "target_layer": "industry",
+             "target_refs": {"industry_slug": "cn-cmp-material"},
+             "arena_refs": ["cn-cmp-domestic-substitution"],
+             "fact_text": "国产 CMP 抛光液龙头市占率 11%"},
+            {"idx": 2, "target_layer": "industry",
+             "target_refs": {"industry_slug": "cn-cmp-material"},
+             "arena_refs": [],
+             "fact_text": "全球 CMP 市场 2025 年 33.8B USD"},
+        ],
+        "arena": [],
+        "company": [],
+    }
+    derived = agg.derive_arena_facts(buckets, ["cn-cmp-domestic-substitution"])
+    assert len(derived) == 1
+    assert derived[0]["idx"] == 1
+    assert derived[0]["target_layer"] == "arena"
+    assert derived[0]["target_refs"]["arena_slug"] == "cn-cmp-domestic-substitution"
+    assert derived[0]["target_refs"]["industry_slug"] == "cn-cmp-material"  # kept
+    assert derived[0]["_derived_from"] == "industry.arena_refs"
+    # Original industry fact unchanged
+    assert buckets["industry"][0]["target_layer"] == "industry"
+
+
+def test_derive_arena_facts_skips_when_no_proposed_arenas():
+    buckets = {
+        "industry": [
+            {"idx": 1, "arena_refs": ["anything"], "target_layer": "industry",
+             "target_refs": {"industry_slug": "x"}}
+        ],
+        "arena": [], "company": [],
+    }
+    derived = agg.derive_arena_facts(buckets, [])
+    assert derived == []
+
+
+def test_derive_arena_facts_idempotent_against_existing_arena_bucket():
+    """If the digest already put a (idx, arena_slug) in the arena bucket,
+    derive_arena_facts should not duplicate it."""
+    buckets = {
+        "industry": [
+            {"idx": 7, "target_layer": "industry", "arena_refs": ["arena-a"],
+             "target_refs": {"industry_slug": "i"}},
+        ],
+        "arena": [
+            {"idx": 7, "target_layer": "arena",
+             "target_refs": {"arena_slug": "arena-a"}},
+        ],
+        "company": [],
+    }
+    derived = agg.derive_arena_facts(buckets, ["arena-a"])
+    assert derived == []
+
+
+def test_derive_arena_facts_promotes_multiple_arena_refs():
+    """A single industry fact cited by arena_refs=[a, b] produces 2 clones."""
+    buckets = {
+        "industry": [
+            {"idx": 5, "target_layer": "industry", "arena_refs": ["arena-a", "arena-b"],
+             "target_refs": {"industry_slug": "i"}},
+        ],
+        "arena": [],
+        "company": [],
+    }
+    derived = agg.derive_arena_facts(buckets, ["arena-a", "arena-b"])
+    assert len(derived) == 2
+    assert {d["target_refs"]["arena_slug"] for d in derived} == {"arena-a", "arena-b"}
+
+
 def test_fact_to_observation_maps_standard_fields():
     fact = {
         "idx": 1, "fact_text": "2025 TAM 33.8B USD",

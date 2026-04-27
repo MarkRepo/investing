@@ -255,6 +255,47 @@ def route_key_facts(key_facts: list[dict]) -> dict[str, list[dict]]:
     return out
 
 
+def derive_arena_facts(
+    buckets: dict[str, list[dict]],
+    proposed_arena_slugs: list[str],
+) -> list[dict]:
+    """Promote industry-layer facts whose ``arena_refs`` matches a
+    proposed/known arena into the arena bucket, as evidence for that arena.
+
+    Original industry facts stay put; clones are returned (target_layer=
+    "arena", target_refs.arena_slug filled). Caller extends
+    ``buckets["arena"]`` with the result.
+
+    Idempotent — if a clone with the same (idx, arena_slug) is already in the
+    arena bucket, it isn't duplicated.
+    """
+    if not proposed_arena_slugs:
+        return []
+    slug_set = set(proposed_arena_slugs)
+    existing_keys = {
+        (f.get("idx"), (f.get("target_refs") or {}).get("arena_slug"))
+        for f in buckets.get("arena", [])
+    }
+    derived: list[dict] = []
+    for f in buckets.get("industry", []):
+        refs_in = f.get("arena_refs") or []
+        for slug in refs_in:
+            if slug not in slug_set:
+                continue
+            if (f.get("idx"), slug) in existing_keys:
+                continue
+            clone = dict(f)
+            clone["target_layer"] = "arena"
+            clone["target_refs"] = {
+                **(f.get("target_refs") or {}),
+                "arena_slug": slug,
+            }
+            clone["_derived_from"] = "industry.arena_refs"
+            derived.append(clone)
+            existing_keys.add((f.get("idx"), slug))
+    return derived
+
+
 def fact_to_observation(
     fact: dict,
     source_meta: dict,
