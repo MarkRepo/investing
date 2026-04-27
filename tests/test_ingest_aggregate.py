@@ -9,7 +9,6 @@ import yaml
 
 from app import config as cfg
 from app.io import claims as claims_io
-from app.io import financials as fin_io
 from scripts import ingest_aggregate as agg
 
 
@@ -131,7 +130,6 @@ def _sample_subagent(**overrides):
     base = {
         "claims": [],
         "profile_fragments": {},
-        "financial_rows": [],
         "meta_updates": {},
         "flags": [],
     }
@@ -241,73 +239,6 @@ def test_aggregate_detects_empty_subagent_even_with_only_competence():
 # ---------- cross-checks ----------------------------------------------------
 
 
-def _merged_with_total_revenue_claim(claim_text: str, revenue_csv_usd: float, tf: str = "FY2025"):
-    return {
-        "financial_rows": [{"period": tf, "revenue": revenue_csv_usd}],
-        "claims": [
-            {
-                "claim_text": claim_text,
-                "claim_type": "quantitative",
-                "subject_tag": "revenue_growth",
-                "timeframe": tf,
-            }
-        ],
-        "empty_subagents": [],
-    }
-
-
-def test_revenue_consistency_pass_within_tolerance():
-    # Claim says $2,347.6M total revenue, CSV says $2,347,637,000 → match
-    m = _merged_with_total_revenue_claim(
-        "FY2025 total revenue reached $2,347.6M, up 59%", 2_347_637_000
-    )
-    assert agg.check_revenue_consistency(m) == []
-
-
-def test_revenue_consistency_fails_outside_tolerance():
-    # Claim says $2,500M total revenue vs CSV $2,347M → > 2% diff → fails
-    m = _merged_with_total_revenue_claim(
-        "FY2025 total revenue was $2,500.0M", 2_347_637_000
-    )
-    issues = agg.check_revenue_consistency(m)
-    assert len(issues) == 1
-    assert "diff" in issues[0]
-
-
-def test_revenue_consistency_ignores_segment_revenue():
-    # Segment-level revenue should NOT be compared against total revenue,
-    # even though it trivially mismatches.
-    m = _merged_with_total_revenue_claim(
-        "FY2025 United States Revenue was $2,213.6M", 2_347_637_000
-    )
-    assert agg.check_revenue_consistency(m) == []
-
-
-def test_revenue_consistency_handles_fy_to_annual_lookup():
-    # CSV uses 2025A, claim timeframe is FY2025 — should still match.
-    m = {
-        "financial_rows": [{"period": "2025A", "revenue": 2_347_637_000}],
-        "claims": [
-            {
-                "claim_text": "FY2025 total revenue reached $2,347.6M",
-                "claim_type": "quantitative",
-                "subject_tag": "revenue_growth",
-                "timeframe": "FY2025",
-            }
-        ],
-        "empty_subagents": [],
-    }
-    assert agg.check_revenue_consistency(m) == []
-
-
-def test_revenue_consistency_skips_qualitative_claims():
-    m = _merged_with_total_revenue_claim(
-        "total revenue grew strongly", 2_347_637_000
-    )
-    m["claims"][0]["claim_type"] = "qualitative"
-    assert agg.check_revenue_consistency(m) == []
-
-
 def test_period_consistency_pass():
     m = {
         "claims": [
@@ -345,24 +276,7 @@ def test_empty_sections_report():
     assert "risk-factors" in issues[0]
 
 
-def test_financials_required_missing_revenue():
-    m = {"financial_rows": [{"period": "2025A", "revenue": None, "net_income": 100}]}
-    issues = agg.check_financials_required(m)
-    assert any("missing revenue" in i for i in issues)
-
-
-def test_financials_required_missing_net_income():
-    m = {"financial_rows": [{"period": "2025A", "revenue": 100, "net_income": None}]}
-    issues = agg.check_financials_required(m)
-    assert any("missing net_income" in i for i in issues)
-
-
-def test_financials_required_pass():
-    m = {"financial_rows": [{"period": "2025A", "revenue": 100, "net_income": 10}]}
-    assert agg.check_financials_required(m) == []
-
-
-# ---------- build_claims_batch / build_financials_csv -----------------------
+# ---------- build_claims_batch -----------------------------------------------
 
 
 def test_build_claims_batch_has_flat_header():
@@ -393,27 +307,7 @@ def test_build_claims_batch_roundtrips_through_parse_batch_json():
     assert len(claims_out) == 1
 
 
-def test_build_financials_csv_normalizes_period_and_handles_none():
-    rows = [
-        {"period": "FY2025", "period_type": "annual", "revenue": 100, "net_income": 10},
-        {"period": "FY2024", "period_type": "annual", "revenue": 80, "net_income": None},
-    ]
-    csv_text = agg.build_financials_csv(rows)
-    lines = csv_text.splitlines()  # handles CRLF from csv.writer
-    header = lines[0].split(",")
-    assert "period" in header and "revenue" in header and "shares_outstanding" in header
-    # FY2025 → 2025A normalization
-    assert "2025A" in csv_text
-    assert "FY2025" not in csv_text
-    # net_income None → empty field
-    row_2024 = next(row for row in lines if row.startswith("2024A"))
-    # net_income column's value should be empty (``,,`` or trailing ``,``)
-    fields = row_2024.split(",")
-    ni_idx = header.index("net_income")
-    assert fields[ni_idx] == ""
-
-
-# ---------- write_financials / write_claims (integration) -------------------
+# ---------- write_claims (integration) --------------------------------------
 
 
 @pytest.fixture
@@ -438,22 +332,6 @@ def env(tmp_path, monkeypatch):
         encoding="utf-8",
     )
     return tmp_path
-
-
-def test_write_financials_round_trip(env):
-    rows = [
-        {"period": "FY2025", "period_type": "annual",
-         "revenue": 2_347_637_000, "net_income": 128_365_000},
-        {"period": "FY2024", "period_type": "annual",
-         "revenue": 1_476_514_000, "net_income": 126_038_000},
-    ]
-    n = agg.write_financials("HIMS", rows, source_file="10-K.htm", base=env)
-    assert n == 2
-    got = fin_io.list_financials("HIMS", base=env)
-    periods = {r["period"] for r in got}
-    assert periods == {"2025A", "2024A"}
-    row_2025 = next(r for r in got if r["period"] == "2025A")
-    assert row_2025["revenue"] == 2_347_637_000
 
 
 def test_write_claims_succeeds_and_attaches_source_id(env):

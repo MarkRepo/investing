@@ -54,8 +54,8 @@ def test_preprocess_industry_full_output_shape(tmp_path):
     # Required top-level keys
     for key in ("meta", "sections", "figure_contexts", "detected_tickers", "report_abstract"):
         assert key in data, f"missing top-level key: {key}"
-    # industry type should NOT populate financial_line_rows
-    assert data.get("financial_line_rows", []) == []
+    # financial_line_rows key was removed entirely (financials now API-sourced)
+    assert "financial_line_rows" not in data
 
     # detected tickers
     markets = {t["market"] for t in data["detected_tickers"]}

@@ -45,13 +45,6 @@ def test_industry_digest_declares_figure_context_priority():
     assert "atomic observation" in md or "atomic" in md
 
 
-def test_annual_digest_declares_financial_rows():
-    md = _read("annual-digest.md")
-    assert "financial_rows" in md
-    assert "万元" in md  # unit-conversion warning
-    assert "10000" in md or "× 10000" in md
-
-
 def test_quarterly_digest_limits_narrative_dims():
     md = _read("quarterly-digest.md")
     assert "financial_profile" in md

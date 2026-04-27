@@ -746,28 +746,34 @@ def test_trigger_rejects_bad_action(client):
 
 
 def test_earnings_review_end_to_end(client):
+    """Seed financials via the DB module directly (no longer uses CSV import).
+    Verifies the end-to-end earnings-review surface: list → detail → mark."""
+    from app.io import financials as fin_io
+
     # Empty state first
     r = client.get("/earnings-review")
     assert r.status_code == 200
     assert "没有待对照" in r.text
 
-    # Create a company + import financials → should appear as pending
+    # Create a company (V0 + meta)
     client.post(
         "/companies/new",
         data={"ticker": "ER", "market": "US", "name": "er", "industry_slugs": "saas", "currency": "USD"},
     )
-    csv_bytes = (
-        b"period,period_type,revenue,gross_profit,operating_income,net_income,"
-        b"total_assets,total_equity,operating_cashflow,shares_outstanding\n"
-        b"2024Q4,quarterly,1000,400,200,150,5000,2000,180,100\n"
-    )
-    client.post(
-        "/earnings-review",  # harmless GET target; next call is the import
-    )
-    client.post(
-        "/companies/US_ER/financials/import",
-        files={"file": ("er-q4.csv", csv_bytes, "text/csv")},
-    )
+    # Seed US financials directly into the DB (connect() honors the patched FINANCIALS_DB)
+    conn = fin_io.connect()
+    try:
+        fin_io.upsert_financials_us(conn, [{
+            "ticker": "ER", "period": "2024Q4", "period_type": "quarterly",
+            "report_date": "2024-12-31", "total_revenue": 1000.0,
+            "gross_profit": 400.0, "operating_income": 200.0,
+            "net_income": 150.0, "total_assets": 5000.0,
+            "total_equity": 2000.0, "operating_cash_flow": 180.0,
+            "source": "yfinance",
+        }])
+        fin_io.recompute_ratios(conn, "ER", market="US")
+    finally:
+        conn.close()
 
     r2 = client.get("/earnings-review")
     assert "ER" in r2.text
@@ -840,50 +846,15 @@ def test_financials_empty_page(client):
     )
     r = client.get("/companies/US_FN/financials")
     assert r.status_code == 200
-    assert "CSV 导入" in r.text
+    assert "刷新财务数据" in r.text
     assert "还没有财务数据" in r.text
 
 
-def test_financials_csv_import_end_to_end(client):
-    client.post(
-        "/companies/new",
-        data={"ticker": "FI", "market": "US", "name": "fi", "industry_slugs": "saas", "currency": "USD"},
-    )
-
-    csv_bytes = (
-        b"period,period_type,revenue,gross_profit,operating_income,net_income,"
-        b"total_assets,total_equity,operating_cashflow,shares_outstanding\n"
-        b"2024Q4,quarterly,1000,400,200,150,5000,2000,180,100\n"
-        b"2024A,annual,3500,1400,700,500,5000,2000,650,100\n"
-    )
-    r = client.post(
-        "/companies/US_FI/financials/import",
-        files={"file": ("fi-2024.csv", csv_bytes, "text/csv")},
-        follow_redirects=False,
-    )
-    assert r.status_code == 303
-    assert r.headers["location"] == "/companies/US_FI/financials"
-
-    r2 = client.get("/companies/US_FI/financials")
-    assert r2.status_code == 200
-    assert "2024A" in r2.text
-    assert "2024Q4" in r2.text
-    # gross margin 400/1000 = 40.0% and ROE 150/2000 = 7.5%
-    assert "40.0%" in r2.text
-    assert "7.5%" in r2.text
-    assert "fi-2024.csv" in r2.text
-
-
-def test_financials_rejects_bad_csv(client):
-    client.post(
-        "/companies/new",
-        data={"ticker": "BAD", "market": "US", "name": "bad", "industry_slugs": "saas", "currency": "USD"},
-    )
-    r = client.post(
-        "/companies/US_BAD/financials/import",
-        files={"file": ("bad.csv", b"period,revenue\n2024Q4,1000\n", "text/csv")},
-    )
-    assert r.status_code == 400
+def test_financials_refresh_route_wired(client):
+    """The /refresh endpoint should exist and return a JSON error when the
+    ticker is unknown. Real fetch is covered by fetch_financials_{cn,us} tests."""
+    r = client.post("/companies/US_NOPE/financials/refresh")
+    assert r.status_code == 404
 
 
 def test_financials_404_for_unknown_company(client):

@@ -28,17 +28,17 @@
     {% for r in s.financials %}
     <tr>
       <td><strong>{{ r.period }}</strong></td>
-      <td>{{ num(r.revenue) }}</td>
-      <td>{{ num(r.gross_profit) }}</td>
-      <td>{{ num(r.operating_income) }}</td>
-      <td>{{ num(r.net_income) }}</td>
-      <td>{{ num(r.operating_cashflow) }}</td>
-      <td>{{ pct(r.gross_margin) }}</td>
-      <td>{{ pct(r.operating_margin) }}</td>
-      <td>{{ pct(r.net_margin) }}</td>
-      <td>{{ pct(r.roe) }}</td>
-      <td>{{ pct(r.roa) }}</td>
-      <td>{{ num(r.debt_to_equity) }}</td>
+      <td>{{ num(r.get('total_revenue') or r.get('operating_revenue')) }}</td>
+      <td>{{ num(r.get('gross_profit')) }}</td>
+      <td>{{ num(r.get('operating_income')) }}</td>
+      <td>{{ num(r.get('net_income')) }}</td>
+      <td>{{ num(r.get('operating_cashflow') or r.get('operating_cash_flow')) }}</td>
+      <td>{{ pct(r.get('gross_margin')) }}</td>
+      <td>{{ pct(r.get('operating_margin')) }}</td>
+      <td>{{ pct(r.get('net_margin')) }}</td>
+      <td>{{ pct(r.get('roe')) }}</td>
+      <td>{{ pct(r.get('roa')) }}</td>
+      <td>{{ num(r.get('debt_to_equity')) }}</td>
     </tr>
     {% endfor %}
   </tbody>

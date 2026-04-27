@@ -102,7 +102,7 @@ def test_connect_is_idempotent(tmp_path: Path):
 def test_existing_tables_still_exist(tmp_path: Path):
     conn = fin.connect(base=tmp_path)
     try:
-        for name in ("companies", "financials", "ratios", "price_triggers", "benchmark", "prices"):
+        for name in ("companies", "financials_cn", "financials_us", "ratios", "price_triggers", "benchmark", "prices"):
             assert _has_table(conn, name), f"pre-existing table {name} missing after connect()"
     finally:
         conn.close()
