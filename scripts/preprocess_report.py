@@ -342,15 +342,24 @@ def _dedupe_toc(sections: list[dict]) -> list[dict]:
     return [s for s in sections if id(s) in kept_ids]
 
 
+_TOC_TAIL_RE = re.compile(r"\.{3,}\s*\d+\s*$")
+
+
 def apply_skip_rules(sections: list[dict], template: dict) -> list[dict]:
     skip_sections = set(template.get("skip_rules", {}).get("sections", []) or [])
     for sec in sections:
+        heading = sec.get("heading_raw", "") or ""
         if sec["name"] in skip_sections:
             sec["action"] = "skip"
             sec["reason"] = "template skip_rules.sections"
         elif sec["name"] == "HEADER":
             sec["action"] = "skip"
             sec["reason"] = "document header, no section content"
+        elif _TOC_TAIL_RE.search(heading):
+            # Table-of-contents line leaked in as a section (heading ends with
+            # "........<page>"). Skip — it's not content.
+            sec["action"] = "skip"
+            sec["reason"] = "TOC entry (heading ends with dotted page ref)"
         elif sec["name"].startswith("UNKNOWN_"):
             sec["action"] = "keep"
             sec["reason"] = "section title not matched in normalize table"
@@ -519,6 +528,9 @@ def extract_figure_contexts(
                 if not m:
                     continue
                 caption = m.group(1).strip()
+                if _TOC_TAIL_RE.search(caption):
+                    # "图表1：CMP 工作原理 ...... 4" — TOC entry, not real figure
+                    continue
                 # Surrounding: up to 2 paragraphs before and 2 after (skipping
                 # the caption paragraph itself).
                 before = paras[max(0, p_idx - 2): p_idx]
