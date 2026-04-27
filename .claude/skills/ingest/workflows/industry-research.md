@@ -41,7 +41,7 @@
 
 输出 JSON 关键字段：
 - `meta.sha8` / `meta.institution` / `meta.publish_date` / `meta.detected_form`（值固定为 `industry-research-{market}`）
-- `sections[*]`：action = skip（封面 / 免责 / 分析师 bio 等）或 extract（实际内容）
+- `sections[*]`：action = skip（封面 / 免责 / 分析师 bio / 目录行等）或 keep（实际内容）
 - `figure_contexts[]`：**本 workflow 主产物之一**；digest subagent 会读这些
 - `detected_tickers[]`：研报出现的所有 ticker
 - `report_abstract`（封面摘要）
@@ -153,7 +153,7 @@ from app.io import arenas as arenas_io, industry as industry_io, claims as claim
 preprocess = json.loads(Path(f"/tmp/ingest-{sha8}.sections.json").read_text())
 full_text_chunks = []
 for s in preprocess["sections"]:
-    if s.get("action") == "extract":
+    if s.get("action") == "keep":    # preprocess 产出 "keep" 或 "skip"
         full_text_chunks.append(f"### {s['heading_raw']}\n\n{s['text']}")
 full_text = "\n\n".join(full_text_chunks)
 
@@ -585,9 +585,9 @@ Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
 已 ingest 行业研报：industries/{industry_slug}/sources/{filename}
 ✓ industries/{industry_slug}/figure_contexts.jsonl  +{n_fig} 条
 ✓ industries/{industry_slug}/observations.jsonl    +{n_obs} 条
-✓ industries/{industry_slug}/narratives/*.md       +{n_nar_ind} dim
+✓ industries/{industry_slug}/*.md (11 dim narratives 在根目录)  +{n_nar_ind} dim
 {✓|⊘} arenas/{slug}/ (bootstrap)                    +{k_arenas} 新 arena / 全部拒绝
-{✓|⊘} arenas/{slug}/narratives/*.md                +{n_nar_arena} dim across {k_arenas_total} arena
+{✓|⊘} arenas/{slug}/*.md (5 dim narratives 在根目录)  +{n_nar_arena} dim across {k_arenas_total} arena
 {✓|⊘} companies/{...} (autobuild)                   {k_auto_company} 家骨架 / 无
 {✓|⊘} companies/{key}/narratives/*.md              +{n_nar_comp} dim
 {✓|⊘} companies/{key}/claims.jsonl                 +{total_claims} 条 (source_id={source_id})
