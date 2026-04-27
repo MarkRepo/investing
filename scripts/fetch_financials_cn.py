@@ -40,10 +40,14 @@ def sina_symbol(ticker: str, market: str) -> str:
 
 
 def derive_period(report_date: str, report_type: str) -> tuple[str, str]:
-    """报告日(YYYY-MM-DD) + 类型 → (period, period_type)."""
-    d = report_date[:10]
-    year = d[:4]
-    mm = d[5:7]
+    """报告日 + 类型 → (period, period_type). Accepts 'YYYY-MM-DD' or 'YYYYMMDD'."""
+    d = str(report_date).strip()
+    if "-" in d:
+        d = d[:10]
+        year, mm = d[:4], d[5:7]
+    else:
+        d = d[:8]
+        year, mm = d[:4], d[4:6]
     t = (report_type or "").strip()
     if mm == "12" and "年报" in t:
         return (f"{year}A", "annual")

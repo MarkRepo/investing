@@ -54,13 +54,13 @@
   </thead>
   <tbody>
     {% for r in rows %}
-    <tr data-period-type="{{ r.period_type }}">
-      <td><strong>{{ r.period }}</strong></td>
-      <td>{{ num(r.total_revenue or r.operating_revenue) }}</td>
-      <td>{{ pct(r.gross_margin) }}</td>
-      <td>{{ num(r.operating_income) }}</td>
-      <td>{{ num(r.net_income) }}</td>
-      <td>{{ num(r.diluted_eps or r.eps_diluted) }}</td>
+    <tr data-period-type="{{ r.get('period_type') }}">
+      <td><strong>{{ r.get('period') }}</strong></td>
+      <td>{{ num(r.get('total_revenue') or r.get('operating_revenue')) }}</td>
+      <td>{{ pct(r.get('gross_margin')) }}</td>
+      <td>{{ num(r.get('operating_income')) }}</td>
+      <td>{{ num(r.get('net_income')) }}</td>
+      <td>{{ num(r.get('diluted_eps') or r.get('eps_diluted')) }}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -74,18 +74,19 @@
   </thead>
   <tbody>
     {% for r in rows %}
-    <tr data-period-type="{{ r.period_type }}">
-      <td><strong>{{ r.period }}</strong></td>
-      <td>{{ num(r.total_assets) }}</td>
-      <td>{{ num(r.total_liabilities or r.total_liabilities_net_minority_interest) }}</td>
-      <td>{{ num(r.total_equity) }}</td>
+    <tr data-period-type="{{ r.get('period_type') }}">
+      <td><strong>{{ r.get('period') }}</strong></td>
+      <td>{{ num(r.get('total_assets')) }}</td>
+      <td>{{ num(r.get('total_liabilities') or r.get('total_liabilities_net_minority_interest')) }}</td>
+      <td>{{ num(r.get('total_equity')) }}</td>
       <td>
-        {%- set lia = r.total_liabilities or r.total_liabilities_net_minority_interest -%}
-        {%- if lia is not none and r.total_assets -%}
-          {{ pct(lia / r.total_assets) }}
+        {%- set lia = r.get('total_liabilities') or r.get('total_liabilities_net_minority_interest') -%}
+        {%- set ta = r.get('total_assets') -%}
+        {%- if lia is not none and ta -%}
+          {{ pct(lia / ta) }}
         {%- else -%}<span class="hint">–</span>{%- endif -%}
       </td>
-      <td>{{ num(r.current_ratio) }}</td>
+      <td>{{ num(r.get('current_ratio')) }}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -99,12 +100,12 @@
   </thead>
   <tbody>
     {% for r in rows %}
-    <tr data-period-type="{{ r.period_type }}">
-      <td><strong>{{ r.period }}</strong></td>
-      <td>{{ num(r.operating_cashflow or r.operating_cash_flow) }}</td>
-      <td>{{ num(r.capex or r.capital_expenditure) }}</td>
-      <td>{{ num(r.fcf) }}</td>
-      <td>{{ num(r.financing_cashflow or r.financing_cash_flow) }}</td>
+    <tr data-period-type="{{ r.get('period_type') }}">
+      <td><strong>{{ r.get('period') }}</strong></td>
+      <td>{{ num(r.get('operating_cashflow') or r.get('operating_cash_flow')) }}</td>
+      <td>{{ num(r.get('capex') or r.get('capital_expenditure')) }}</td>
+      <td>{{ num(r.get('fcf')) }}</td>
+      <td>{{ num(r.get('financing_cashflow') or r.get('financing_cash_flow')) }}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -118,13 +119,13 @@
   </thead>
   <tbody>
     {% for r in rows %}
-    <tr data-period-type="{{ r.period_type }}">
-      <td><strong>{{ r.period }}</strong></td>
-      <td>{{ pct(r.gross_margin) }}</td>
-      <td>{{ pct(r.net_margin) }}</td>
-      <td>{{ pct(r.roe) }}</td>
-      <td>{{ pct(r.roa) }}</td>
-      <td>{{ num(r.debt_to_equity) }}</td>
+    <tr data-period-type="{{ r.get('period_type') }}">
+      <td><strong>{{ r.get('period') }}</strong></td>
+      <td>{{ pct(r.get('gross_margin')) }}</td>
+      <td>{{ pct(r.get('net_margin')) }}</td>
+      <td>{{ pct(r.get('roe')) }}</td>
+      <td>{{ pct(r.get('roa')) }}</td>
+      <td>{{ num(r.get('debt_to_equity')) }}</td>
     </tr>
     {% endfor %}
   </tbody>

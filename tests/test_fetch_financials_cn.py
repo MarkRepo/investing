@@ -41,6 +41,14 @@ def test_derive_period_from_report_row():
     assert fc.derive_period("2024-03-31", "一季报") == ("2024Q1", "quarterly")
 
 
+def test_derive_period_accepts_yyyymmdd_no_dashes():
+    """akshare Sina 实际返回 '20241231' 无短横线格式；必须兼容，
+    否则真实拉取时每一行都被 ValueError 跳过（曾经发生）。"""
+    assert fc.derive_period("20241231", "年报") == ("2024A", "annual")
+    assert fc.derive_period("20240930", "三季报") == ("2024Q3", "quarterly")
+    assert fc.derive_period("20240331", "一季报") == ("2024Q1", "quarterly")
+
+
 def test_sina_symbol_for_markets():
     assert fc.sina_symbol("600519", "SSE") == "sh600519"
     assert fc.sina_symbol("000001", "SZSE") == "sz000001"
