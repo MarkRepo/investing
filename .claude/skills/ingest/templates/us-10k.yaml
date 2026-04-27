@@ -51,6 +51,7 @@ skip_rules:
     - Item_9B_Other_Information           # 边角
     - Item_9C_Foreign_Jurisdictions       # 境外上市才相关
     - Item_15_Exhibits                    # 附件清单，不含分析价值
+    - Item_8_Financial_Statements         # 数字已由 API 入库
 
   # 段落级跳过
   paragraphs:

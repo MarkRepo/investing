@@ -60,6 +60,7 @@ skip_rules:
     - Part_II_Item_4_Mine_Safety          # N/A 非矿业公司
     - Part_II_Item_5_Other_Information    # 通常空或样板
     - Part_II_Item_6_Exhibits             # 附件清单
+    - Part_I_Item_1_Financial_Statements   # 数字已由 API 入库
 
   paragraphs:
     - name: Forward-Looking Statements 样板

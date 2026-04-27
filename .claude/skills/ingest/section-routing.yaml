@@ -23,7 +23,7 @@ a-share-annual:
   股份变动_股东情况:      {action: extract}
   优先股情况:             {action: skip, reason: 多数公司无}
   债券情况:               {action: skip, reason: 多数公司无}
-  财务报告:               {action: extract}
+  财务报告:               {action: skip, reason: 数字已由 API 入库，叙述由 MD&A 覆盖}
 
 us-10k:
   Item_1_Business:                   {action: extract}
@@ -37,7 +37,7 @@ us-10k:
   Item_6_Reserved:                   {action: skip, reason: SEC 保留位}
   Item_7_MDA:                        {action: extract}
   Item_7A_Quantitative_Market_Risk:  {action: skip, reason: 对个人分析价值低}
-  Item_8_Financial_Statements:       {action: extract}
+  Item_8_Financial_Statements:       {action: skip, reason: 数字已由 API 入库，叙述由 MD&A 覆盖}
   Item_9_Changes_Disagreements:      {action: skip, reason: 通常 None}
   Item_9A_Controls_Procedures:       {action: skip, reason: 标准披露}
   Item_9B_Other_Information:         {action: skip, reason: 边角}
@@ -52,7 +52,7 @@ us-10k:
 us-10q:
   # 季报：过去版本给 Part II Item 1A 设 max_chars=20000（检测 10-K 整段复制场景）；
   # digest 架构下不需要——digest 吃整份，复制段落的重复由 digest 自己判断。
-  Part_I_Item_1_Financial_Statements: {action: extract}
+  Part_I_Item_1_Financial_Statements: {action: skip, reason: 数字已由 API 入库，叙述由 MD&A 覆盖}
   Part_I_Item_2_MDA:                  {action: extract}
   Part_I_Item_3_Market_Risk:          {action: skip, reason: 对个人分析价值低}
   Part_I_Item_4_Controls:             {action: skip, reason: 标准披露}
@@ -65,10 +65,10 @@ us-10q:
   Part_II_Item_6_Exhibits:            {action: skip, reason: 附件清单}
 
 a-share-quarterly:
-  主要财务数据:       {action: extract}
+  主要财务数据:       {action: skip, reason: 数字已由 API 入库}
   股东信息:           {action: skip, reason: 前十大股东快照变化通常不显著}
   其他提醒事项:       {action: extract, reason: 重大合同/担保/关联方进展}
-  季度财务报表:       {action: extract}
+  季度财务报表:       {action: skip, reason: 数字已由 API 入库}
 
 # 卖方公司研报：digest 吃整份；保留几条常见 section 的 skip 规则
 sell-side-generic:

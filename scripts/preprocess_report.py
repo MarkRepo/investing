@@ -548,65 +548,6 @@ def extract_figure_contexts(
     return out
 
 
-# --- extract_financial_line_rows -----------------------------------------------
-
-_NUMERIC_RE = re.compile(r"-?\d{1,3}(?:,\d{3})*(?:\.\d+)?|-?\d+(?:\.\d+)?")
-
-
-def extract_financial_line_rows(text: str, market: str) -> list[dict]:
-    """Scan financial statement text line by line. If the first token(s) match
-    an alias in FINANCIAL_ALIASES, emit a candidate row.
-
-    Output row shape:
-      {raw_label, standard_key, numeric_candidates: [float,...], line}
-
-    The caller (main agent / digest) decides which candidate (which column,
-    e.g. current-year vs prior-year) actually populates the financials row
-    — we don't guess here.
-    """
-    # Lazy import to avoid pulling app.io.financials at module load time
-    # (preprocess is meant to run stand-alone without heavy deps).
-    from app.io import financials as fin_io
-
-    alias_map = fin_io.load_alias_map()
-    lang_key = "us_gaap" if market == "US" else "a_share"
-
-    # Flatten alias list -> standard_key, sorted longest-first so "营业总收入"
-    # wins over "营业收入" when it appears literally in a line.
-    flat: list[tuple[str, str]] = []
-    for std_key, langs in alias_map.items():
-        for alias in (langs or {}).get(lang_key, []) or []:
-            flat.append((alias.strip(), std_key))
-    flat.sort(key=lambda p: len(p[0]), reverse=True)
-
-    rows: list[dict] = []
-    for raw_line in text.splitlines():
-        stripped = raw_line.strip()
-        if not stripped or len(stripped) > 300:
-            continue
-        # Must contain at least one number to be a candidate.
-        nums = _NUMERIC_RE.findall(stripped)
-        if not nums:
-            continue
-        for alias, std_key in flat:
-            # Anchored: alias must appear at the START of the line (allowing
-            # optional leading item numbering like "1.", "一、").
-            prefix_re = re.compile(
-                r"^\s*(?:[一二三四五六七八九十]、|\d+[、.．]|\d+\))?\s*" + re.escape(alias)
-            )
-            if not prefix_re.match(stripped):
-                continue
-            numeric_candidates = [float(n.replace(",", "")) for n in nums]
-            rows.append({
-                "raw_label": alias,
-                "standard_key": std_key,
-                "numeric_candidates": numeric_candidates,
-                "line": stripped,
-            })
-            break
-    return rows
-
-
 def build_result(
     file_path: Path,
     market: str,
@@ -637,17 +578,6 @@ def build_result(
 
     fig_contexts = extract_figure_contexts(text_full, sections)
 
-    fin_rows: list[dict] = []
-    if form_cli in ("annual", "quarterly"):
-        market_norm = "US" if market == "us" else ("SSE" if market == "a-share" else market)
-        for s in sections:
-            if s.get("name") in (
-                "财务报告", "主要财务数据", "季度财务报表",
-                "Item_8_Financial_Statements",
-                "Part_I_Item_1_Financial_Statements",
-            ):
-                fin_rows.extend(extract_financial_line_rows(s["text"], market=market_norm))
-
     return {
         "meta": {
             "source_file": file_path.name,
@@ -665,7 +595,6 @@ def build_result(
         "figure_contexts": fig_contexts,
         "detected_tickers": detect_tickers(text_full),
         "report_abstract": extract_report_abstract(text_full),
-        "financial_line_rows": fin_rows,
     }
 
 
