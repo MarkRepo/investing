@@ -40,7 +40,11 @@ def sina_symbol(ticker: str, market: str) -> str:
 
 
 def derive_period(report_date: str, report_type: str) -> tuple[str, str]:
-    """报告日 + 类型 → (period, period_type). Accepts 'YYYY-MM-DD' or 'YYYYMMDD'."""
+    """报告日 + 类型 → (period, period_type). Accepts 'YYYY-MM-DD' or 'YYYYMMDD'.
+
+    A 股没有独立 Q4 报告，12 月截止日就是全年年报，不依赖 类型 字段（实测
+    akshare Sina 返回 '合并期末'，而不是 '年报'）。
+    """
     d = str(report_date).strip()
     if "-" in d:
         d = d[:10]
@@ -48,10 +52,9 @@ def derive_period(report_date: str, report_type: str) -> tuple[str, str]:
     else:
         d = d[:8]
         year, mm = d[:4], d[4:6]
-    t = (report_type or "").strip()
-    if mm == "12" and "年报" in t:
+    if mm == "12":
         return (f"{year}A", "annual")
-    q = {"03": "Q1", "06": "Q2", "09": "Q3", "12": "Q4"}.get(mm)
+    q = {"03": "Q1", "06": "Q2", "09": "Q3"}.get(mm)
     if not q:
         raise ValueError(f"unrecognized month in report_date {report_date!r}")
     return (f"{year}{q}", "quarterly")
