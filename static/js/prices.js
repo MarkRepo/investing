@@ -169,14 +169,28 @@
   }
 
   function intradayOption(rows) {
-    const times = rows.map((r) => r[0]);
-    const prices = rows.map((r) => r[1]);
+    // Build full A-share trading session axis: 09:30–11:30 + 13:00–15:00.
+    const fullAxis = [];
+    const addRange = (h0, m0, h1, m1) => {
+      let h = h0, m = m0;
+      while (h < h1 || (h === h1 && m <= m1)) {
+        fullAxis.push(`${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`);
+        m++; if (m === 60) { m = 0; h++; }
+      }
+    };
+    addRange(9, 30, 11, 30);
+    addRange(13, 0, 15, 0);
+
+    const priceMap = new Map(rows.map((r) => [r[0], r[1]]));
+    const prices = fullAxis.map((t) => priceMap.has(t) ? priceMap.get(t) : null);
     return {
       tooltip: { trigger: "axis" },
       grid: { left: 55, right: 20, top: 20, bottom: 30 },
-      xAxis: { type: "category", data: times, boundaryGap: false },
+      xAxis: { type: "category", data: fullAxis, boundaryGap: false,
+        min: 0, max: fullAxis.length - 1,
+        axisLabel: { interval: (_, v) => ["09:30","10:30","11:30","13:00","14:00","15:00"].includes(v) } },
       yAxis: { scale: true },
-      series: [{ type: "line", data: prices, smooth: false, showSymbol: false }],
+      series: [{ type: "line", data: prices, smooth: false, showSymbol: false, connectNulls: false }],
     };
   }
 
