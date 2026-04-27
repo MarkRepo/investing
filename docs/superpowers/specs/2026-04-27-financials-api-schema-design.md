@@ -357,22 +357,75 @@ python -m scripts.fetch_financials_us --all
 - **删除** `build_result()` 里的 `financial_line_rows` 键
 - 四个模板新增 `skip_rules.sections` 条目，让财务报表 section 直接标记 `action: skip`（不传 LLM，省 token）：
 
-| 模板 | 新增 skip section |
-|---|---|
-| `a-share-annual.yaml` | `财务报告`、`主要财务数据` |
-| `a-share-quarterly.yaml` | `季度财务报表`、`主要财务数据` |
-| `us-10k.yaml` | `Item_8_Financial_Statements` |
-| `us-10q.yaml` | `Part_I_Item_1_Financial_Statements` |
+| 模板 | 新增 skip section | 省 token 估算 |
+|---|---|---|
+| `a-share-annual.yaml` | `财务报告`、`主要财务数据` | ~8-15 万字 |
+| `a-share-quarterly.yaml` | `季度财务报表`、`主要财务数据` | ~3-5 万字 |
+| `us-10k.yaml` | `Item_8_Financial_Statements` | ~5-10 万字 |
+| `us-10q.yaml` | `Part_I_Item_1_Financial_Statements` | ~2-4 万字 |
+
+同步更新 `section-routing.yaml` 和 `prompts/digest/annual-digest.md`，将 `financial_profile` 维度的来源提示从 `§财务报告` 改为 `§管理层讨论与分析`（A 股）/ `§Item_7_MDA`（US）：
+
+```yaml
+# section-routing.yaml 变更前
+财务报告: {action: extract}
+
+# 变更后
+财务报告: {action: skip, reason: 数字已由 API 入库，叙述由 MD&A 覆盖}
+```
+
+```markdown
+<!-- annual-digest.md 变更前 -->
+| financial_profile | 核心指标演进 / 利润结构 / 现金流质量 → `§财务报告` |
+
+<!-- 变更后 -->
+| financial_profile | 核心指标演进 / 利润结构 / 现金流质量 → `§管理层讨论与分析` / `§Item_7_MDA` |
+```
+
+**依据**：MD&A 是管理层对财务趋势的主动解读，比原始报表数字堆砌更适合驱动叙述性分析。季报同理，`Part_I_Item_2_MDA` 已是 extract，足够支撑 `financial_profile`。
 
 ### Aggregate（`scripts/ingest_aggregate.py`）
 
-- **删除** `financial_rows` 字段聚合逻辑
+- **删除** `financial_rows` 字段聚合逻辑（`aggregate()` 里的 extend + empty_subagents 判断）
 - **删除** `write_financials()` 函数
-- **删除** `check_financials_required()` 调用
+- **删除** `check_financials_required()` 函数
+- **删除** `check_revenue_consistency()` 中引用 `financial_rows` 的 cross-check 逻辑（该函数整体可删或保留空实现）
 
 ### QA（`scripts/ingest_qa.py`）
 
 - **删除** `check_financials_required()` 函数
+
+### Ingest workflows（`.claude/skills/ingest/workflows/`）
+
+`annual-report.md` 和 `quarterly-report.md` 有多处引用 `financial_rows` / `write_financials` / `check_financials_required` 的代码片段和流程说明，需同步更新：
+
+- **`annual-report.md`**：删除 Step 7a.8（`financial_line_rows` 注入）、删除 digest prompt 里 `financial_rows` 必填要求、删除 Step 结果校验里 `financials_required` 检查、删除 `agg.write_financials(...)` 调用、删除 `financial_rows` 相关 pause 条件
+- **`quarterly-report.md`**：同上，且季报 `financial_rows` 是"主产物"的描述需改为 claims 是主产物
+- **`sell-side-note.md`**：已有"不产 financial_rows"说明，但引用了 `agg.check_financials_required` 作为捕获误产出的哨兵——改为删除该检查（因为函数本身删了）
+
+### Ingest digest prompts（`.claude/skills/ingest/prompts/digest/`）
+
+- **`annual-digest.md`**：删除 `financial_rows` 输出字段说明、删除 `financial_line_rows` 输入说明、更新 `financial_profile` 来源提示为 `§管理层讨论与分析` / `§Item_7_MDA`
+- **`quarterly-digest.md`**：删除 `financial_rows` 为主产物的描述、删除输出 `financial_rows` 的 checklist 项
+
+### SKILL.md（`.claude/skills/ingest/SKILL.md`）
+
+- 删除 `financial_line_rows` 在预处理输出结构中的说明
+- 删除 `write_financials` / `check_financials_required` 在 `ingest_aggregate` 函数列表中的条目
+- 删除 `app.io.financials` → `import_financials_csv` 的引用说明
+- 删除 ingest 流程代码片段里的 `financial_rows` / `write_financials` 步骤
+
+### cross-checks.yaml（`.claude/skills/ingest/cross-checks.yaml`）
+
+- 删除 `financial_rows=[]` 警告规则（该检查已无意义）
+- 删除 `financial_rows CSV 至少有 revenue、net_income` 的校验规则
+
+### tests
+
+- **`tests/test_ingest_aggregate.py`**：删除 `financial_rows` 相关测试用例（`test_write_financials_round_trip`、`check_financials_required` 系列、cross-check revenue consistency 测试）
+- **`tests/test_digest_prompt_contracts.py`**：删除 `test_annual_digest_declares_financial_rows`
+- **`tests/test_config_dimensions.py`**：删除 `INCOME_STATEMENT_LINES` / `BALANCE_SHEET_LINES` / `CASHFLOW_LINES` 相关断言
+- **`tests/test_preprocess_industry_type.py`**：删除 `financial_line_rows` 为空的断言
 
 ---
 
@@ -386,9 +439,16 @@ python -m scripts.fetch_financials_us --all
 | `app/templates/companies/financials.html` | 重写 | 三张报表 + 比率 + 刷新按钮；删 CSV 上传表单 |
 | `controlled-vocab/financial-aliases.yaml` | 改 | 映射目标改为新 snake_case 列名 |
 | `scripts/preprocess_report.py` | 改 | 删 `extract_financial_line_rows` + `financial_line_rows` |
-| `scripts/ingest_aggregate.py` | 改 | 删 `financial_rows` 聚合 + `write_financials` + `check_financials_required` |
+| `scripts/ingest_aggregate.py` | 改 | 删 `financial_rows` 聚合 + `write_financials` + `check_financials_required` + revenue cross-check |
 | `scripts/ingest_qa.py` | 改 | 删 `check_financials_required` |
-| `.claude/skills/ingest/templates/*.yaml`（4 个）| 改 | 新增财务 section skip |
+| `.claude/skills/ingest/templates/*.yaml`（4 个）| 改 | 新增财务 section skip；`section-routing.yaml` 财务 section 改 skip |
+| `.claude/skills/ingest/workflows/annual-report.md` | 改 | 删 financial_rows 流程步骤 |
+| `.claude/skills/ingest/workflows/quarterly-report.md` | 改 | 删 financial_rows 主产物描述及步骤 |
+| `.claude/skills/ingest/workflows/sell-side-note.md` | 改 | 删 check_financials_required 哨兵引用 |
+| `.claude/skills/ingest/prompts/digest/annual-digest.md` | 改 | 删 financial_rows 字段；更新 financial_profile 来源提示 |
+| `.claude/skills/ingest/prompts/digest/quarterly-digest.md` | 改 | 删 financial_rows 主产物描述 |
+| `.claude/skills/ingest/SKILL.md` | 改 | 删 financial_line_rows / write_financials 等引用 |
+| `.claude/skills/ingest/cross-checks.yaml` | 改 | 删 financial_rows 相关校验规则 |
 | `scripts/fetch_financials_cn.py` | 新增 | A 股财务 API 拉取 + upsert |
 | `scripts/fetch_financials_us.py` | 新增 | 美股财务 API 拉取 + upsert |
 | `tests/test_financials_io.py` | 重写 | 新 schema API |
