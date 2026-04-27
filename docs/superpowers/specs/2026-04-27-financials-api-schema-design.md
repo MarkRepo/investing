@@ -153,78 +153,78 @@ CREATE TABLE financials_us (
     currency      TEXT,
 
     -- 利润表（yfinance Title Case → snake_case）
-    total_revenue             REAL,
-    operating_revenue         REAL,
-    cost_of_revenue           REAL,
-    gross_profit              REAL,
-    research_and_development  REAL,
-    selling_general_and_administration REAL,
-    operating_expense         REAL,
-    operating_income          REAL,
-    ebit                      REAL,
-    ebitda                    REAL,
-    interest_income           REAL,
-    interest_expense          REAL,
-    net_interest_income       REAL,
-    pretax_income             REAL,
-    tax_provision             REAL,
-    net_income                REAL,
-    net_income_common_stockholders REAL,
-    basic_eps                 REAL,
-    diluted_eps               REAL,
-    basic_average_shares      REAL,
-    diluted_average_shares    REAL,
-    normalized_income         REAL,
-    normalized_ebitda         REAL,
-    reconciled_depreciation   REAL,
-    stock_based_compensation  REAL,    -- from cashflow, carried here for convenience
+    total_revenue             REAL,   -- 总营收
+    operating_revenue         REAL,   -- 经营性营收（排除非经常项）
+    cost_of_revenue           REAL,   -- 营业成本
+    gross_profit              REAL,   -- 毛利润
+    research_and_development  REAL,   -- 研发费用
+    selling_general_and_administration REAL, -- 销售及管理费用（SG&A 合并）
+    operating_expense         REAL,   -- 营业费用合计（含 SG&A + R&D）
+    operating_income          REAL,   -- 营业利润（EBIT 前）
+    ebit                      REAL,   -- 息税前利润
+    ebitda                    REAL,   -- 息税折旧摊销前利润
+    interest_income           REAL,   -- 利息收入
+    interest_expense          REAL,   -- 利息支出
+    net_interest_income       REAL,   -- 净利息收支（收入 - 支出）
+    pretax_income             REAL,   -- 税前利润
+    tax_provision             REAL,   -- 所得税费用
+    net_income                REAL,   -- 净利润
+    net_income_common_stockholders REAL, -- 归属普通股股东净利润
+    basic_eps                 REAL,   -- 基本每股收益
+    diluted_eps               REAL,   -- 摊薄每股收益
+    basic_average_shares      REAL,   -- 基本加权平均股数
+    diluted_average_shares    REAL,   -- 摊薄加权平均股数
+    normalized_income         REAL,   -- 调整后净利润（剔除特殊项）
+    normalized_ebitda         REAL,   -- 调整后 EBITDA
+    reconciled_depreciation   REAL,   -- 调节后折旧摊销额
+    stock_based_compensation  REAL,   -- 股权激励费用（从现金流量表取）
 
     -- 资产负债表
-    cash_and_cash_equivalents REAL,
-    accounts_receivable       REAL,
-    inventory                 REAL,
-    current_assets            REAL,
-    net_ppe                   REAL,
-    gross_ppe                 REAL,
-    accumulated_depreciation  REAL,
-    goodwill                  REAL,
-    goodwill_and_intangible_assets REAL, -- yfinance 字段，不单独拆分
-    deferred_tax_assets       REAL,
-    total_non_current_assets  REAL,
-    total_assets              REAL,
-    accounts_payable          REAL,
-    current_debt              REAL,
-    current_liabilities       REAL,
-    long_term_debt            REAL,
-    total_liabilities_net_minority_interest REAL,
-    retained_earnings         REAL,
-    stockholders_equity       REAL,
-    total_equity              REAL,    -- total_equity_gross_minority_interest
-    total_debt                REAL,
-    net_debt                  REAL,
-    working_capital           REAL,
-    capital_lease_obligations REAL,
-    common_stock              REAL,
-    treasury_shares_number    REAL,
+    cash_and_cash_equivalents REAL,   -- 现金及现金等价物
+    accounts_receivable       REAL,   -- 应收账款
+    inventory                 REAL,   -- 存货
+    current_assets            REAL,   -- 流动资产合计
+    net_ppe                   REAL,   -- 固定资产净值（PP&E net）
+    gross_ppe                 REAL,   -- 固定资产原值（PP&E gross）
+    accumulated_depreciation  REAL,   -- 累计折旧
+    goodwill                  REAL,   -- 商誉
+    goodwill_and_intangible_assets REAL, -- 商誉及无形资产合计（yfinance 不单独拆分）
+    deferred_tax_assets       REAL,   -- 递延所得税资产
+    total_non_current_assets  REAL,   -- 非流动资产合计
+    total_assets              REAL,   -- 资产总计
+    accounts_payable          REAL,   -- 应付账款
+    current_debt              REAL,   -- 短期借款及一年内到期长债
+    current_liabilities       REAL,   -- 流动负债合计
+    long_term_debt            REAL,   -- 长期债务
+    total_liabilities_net_minority_interest REAL, -- 负债合计（不含少数股东权益）
+    retained_earnings         REAL,   -- 留存收益（未分配利润）
+    stockholders_equity       REAL,   -- 普通股股东权益
+    total_equity              REAL,   -- 股东权益合计（含少数股东）
+    total_debt                REAL,   -- 有息负债合计（短期 + 长期）
+    net_debt                  REAL,   -- 净负债（有息负债 - 现金）
+    working_capital           REAL,   -- 营运资本（流动资产 - 流动负债）
+    capital_lease_obligations REAL,   -- 融资租赁负债
+    common_stock              REAL,   -- 普通股面值
+    treasury_shares_number    REAL,   -- 库存股股数
 
     -- 现金流量表
-    operating_cash_flow       REAL,
-    investing_cash_flow       REAL,
-    financing_cash_flow       REAL,
-    capital_expenditure       REAL,
-    free_cash_flow            REAL,
-    depreciation_and_amortization REAL,
-    change_in_working_capital REAL,
-    changes_in_cash           REAL,
-    end_cash_position         REAL,
-    begin_cash_position       REAL,
-    issuance_of_debt          REAL,
-    repayment_of_debt         REAL,
-    repurchase_of_capital_stock REAL,
-    cash_dividends_paid       REAL,
-    net_income_from_continuing_operations REAL,
-    deferred_income_tax       REAL,
-    other_non_cash_items      REAL,
+    operating_cash_flow       REAL,   -- 经营活动现金流量净额
+    investing_cash_flow       REAL,   -- 投资活动现金流量净额
+    financing_cash_flow       REAL,   -- 筹资活动现金流量净额
+    capital_expenditure       REAL,   -- 资本支出（购建固定资产等，负值）
+    free_cash_flow            REAL,   -- 自由现金流（OCF + CapEx）
+    depreciation_and_amortization REAL, -- 折旧与摊销
+    change_in_working_capital REAL,   -- 营运资本变动
+    changes_in_cash           REAL,   -- 现金净增加额
+    end_cash_position         REAL,   -- 期末现金余额
+    begin_cash_position       REAL,   -- 期初现金余额
+    issuance_of_debt          REAL,   -- 借款净增加（发行债务）
+    repayment_of_debt         REAL,   -- 偿还债务支付的现金
+    repurchase_of_capital_stock REAL, -- 回购股票支付的现金
+    cash_dividends_paid       REAL,   -- 支付股息
+    net_income_from_continuing_operations REAL, -- 持续经营净利润（OCF 调节起点）
+    deferred_income_tax       REAL,   -- 递延所得税（非现金调整项）
+    other_non_cash_items      REAL,   -- 其他非现金调整项
 
     source TEXT,
     PRIMARY KEY (ticker, period)
