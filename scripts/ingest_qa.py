@@ -85,9 +85,25 @@ def _jaccard(a: set[str], b: set[str]) -> float:
     return len(a & b) / len(a | b)
 
 
+# Thresholds for preprocess completeness hint (Plan 5 T7).
+# Below this the message is softened: preprocess text is probably lossy so
+# every "not found" should be read with a grain of salt.
+_PREPROCESS_SMALL_CHARS = 25_000
+
+
 def check_evidence_fidelity(claims: list[dict], haystack: str) -> list[dict]:
-    """Each claim.evidence[*].text should be substring of some section_text."""
+    """Each claim.evidence[*].text should be substring of some section_text.
+
+    Two layers of tolerance:
+    1. Full quote substring match against normalized haystack.
+    2. First 40 chars of normalized quote against haystack (OCR/wording noise).
+
+    When the preprocess haystack is short (< _PREPROCESS_SMALL_CHARS), the
+    warning detail notes the preprocess may be lossy — this happens with
+    image-heavy or table-heavy PDFs where pdftotext drops content.
+    """
     hay = _normalize(haystack)
+    preprocess_short = len(hay) < _PREPROCESS_SMALL_CHARS
     warnings = []
     for i, c in enumerate(claims):
         for ev in c.get("evidence") or []:
@@ -97,17 +113,23 @@ def check_evidence_fidelity(claims: list[dict], haystack: str) -> list[dict]:
             needle = _normalize(quote)
             if not needle:
                 continue
-            # Try full then first 40 chars (OCR noise tolerance)
             if needle in hay:
                 continue
             head = needle[: min(40, len(needle))]
             if head in hay:
                 continue
+            if preprocess_short:
+                detail = (
+                    f"evidence_quote 在 preprocess 文本（{len(hay)} 字，偏短，"
+                    f"可能是 PDF→text 损失）里匹配不到（前 40 字：{quote[:40]!r}）"
+                )
+            else:
+                detail = f"evidence_quote 在原文里找不到（前 40 字：{quote[:40]!r}）"
             warnings.append({
                 "rule": "fidelity",
                 "claim_id": c.get("id") or f"#{i}",
                 "subject_tag": c.get("subject_tag"),
-                "detail": f"evidence_quote 在原文里找不到（前 40 字：{quote[:40]!r}）",
+                "detail": detail,
             })
     return warnings
 
