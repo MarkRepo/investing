@@ -1,18 +1,29 @@
 {% extends "base.html" %}
-{% block title %}{{ ticker }} 财务报表{% endblock %}
+{% block title %}{{ meta.get('name', ticker) }} 财务分析{% endblock %}
+{% block main_class %}wide{% endblock %}
 {% block content %}
-<h1>{{ meta.get('name', ticker) }} · 财务报表 <small>({{ market }}:{{ ticker }})</small></h1>
-<p><a href="/companies/{{ key }}">← 返回公司</a></p>
+
+<header class="prices-header">
+  <h1>{{ meta.get('name', ticker) }} <small>({{ market }}:{{ ticker }})</small></h1>
+  <form class="switcher" method="get" onsubmit="return false">
+    <select id="company-switch">
+      {% for c in all_companies %}
+        <option value="{{ c.key }}" {% if c.key == key %}selected{% endif %}>
+          {{ c.market }}:{{ c.ticker }} {{ c.get('name', c.ticker) }}
+        </option>
+      {% endfor %}
+    </select>
+  </form>
+  <a class="btn-mini" href="/companies/{{ key }}">← 公司页</a>
+</header>
 
 <div class="fin-toolbar">
-  <button id="refresh-fin" type="button">刷新财务数据</button>
+  <button id="refresh-fin" type="button">↻ 刷新财务数据</button>
   <span id="refresh-status" class="hint"></span>
-
   <span class="tab-group">
-    <button class="period-tab active" data-type="annual" type="button">年报</button>
-    <button class="period-tab" data-type="quarterly" type="button">季报</button>
+    <button class="period-tab active" data-type="annual"   type="button">年报</button>
+    <button class="period-tab"        data-type="quarterly" type="button">季报</button>
   </span>
-
   <label class="period-count-annual">期数：
     <select id="count-annual">
       <option value="5">5</option>
@@ -31,15 +42,16 @@
   </label>
 </div>
 
-{% macro num(v) -%}
-  {%- if v is none -%}<span class="hint">–</span>
-  {%- else -%}{{ "%.2f"|format(v) }}{%- endif -%}
-{%- endmacro %}
+{# ── macros ─────────────────────────────────────────────────────────────── #}
 {% macro pct(v) -%}
   {%- if v is none -%}<span class="hint">–</span>
   {%- else -%}{{ "%.1f%%"|format(v * 100) }}{%- endif -%}
 {%- endmacro %}
-{# numf: auto-scale monetary amounts. CN → 亿/万；US → B/M #}
+{% macro num(v) -%}
+  {%- if v is none -%}<span class="hint">–</span>
+  {%- else -%}{{ "%.2f"|format(v) }}{%- endif -%}
+{%- endmacro %}
+{# monetary amounts: CN → 亿/万，US → B/M #}
 {% macro numf(v) -%}
   {%- if v is none -%}<span class="hint">–</span>
   {%- elif market in ('SSE', 'SZSE', 'BSE') -%}
@@ -54,16 +66,25 @@
 {%- endmacro %}
 
 {% if not rows %}
-<p><em>还没有财务数据。</em> 点 "刷新财务数据" 从 API 拉取。</p>
+<p class="hint" style="margin-top:2rem">还没有财务数据。点 "↻ 刷新财务数据" 从 API 拉取。</p>
 {% else %}
 
-{# Pick shared-concept column names that work for both CN and US. Jinja
-   falls back with `or` so a missing CN key doesn't break US rendering. #}
-<h2>利润表</h2>
-<table class="financials" data-section="income">
+{# ── 表1：盈利 & 利润率 ──────────────────────────────────────────────── #}
+<h2>盈利 &amp; 利润率</h2>
+<div class="table-scroll">
+<table class="financials fin-wide" data-section="income">
   <thead>
-    <tr><th>期间</th><th>营收</th><th>毛利率</th><th>营业利润</th>
-        <th>净利润</th><th>EPS (稀释)</th></tr>
+    <tr>
+      <th>期间</th>
+      <th>营收</th>
+      <th>毛利率</th>
+      <th>毛利</th>
+      <th>营业利润</th>
+      <th>营业利润率</th>
+      <th>净利润</th>
+      <th>净利率</th>
+      <th>EPS (稀释)</th>
+    </tr>
   </thead>
   <tbody>
     {% for r in rows %}
@@ -71,91 +92,79 @@
       <td><strong>{{ r.get('period') }}</strong></td>
       <td>{{ numf(r.get('total_revenue') or r.get('operating_revenue')) }}</td>
       <td>{{ pct(r.get('gross_margin')) }}</td>
+      <td>{{ numf(r.get('gross_profit')) }}</td>
       <td>{{ numf(r.get('operating_income')) }}</td>
+      <td>{{ pct(r.get('operating_margin')) }}</td>
       <td>{{ numf(r.get('net_income')) }}</td>
+      <td>{{ pct(r.get('net_margin')) }}</td>
       <td>{{ num(r.get('diluted_eps') or r.get('eps_diluted')) }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+</div>
 
-<h2>资产负债表</h2>
-<table class="financials" data-section="balance">
+{# ── 表2：资产、现金流 & 回报率 ──────────────────────────────────────── #}
+<h2>资产、现金流 &amp; 回报率</h2>
+<div class="table-scroll">
+<table class="financials fin-wide" data-section="balance">
   <thead>
-    <tr><th>期间</th><th>总资产</th><th>总负债</th><th>股东权益</th>
-        <th>资产负债率</th><th>流动比率</th></tr>
+    <tr>
+      <th>期间</th>
+      <th>总资产</th>
+      <th>净资产</th>
+      <th>资产负债率</th>
+      <th>D/E</th>
+      <th>经营 CFO</th>
+      <th>资本开支</th>
+      <th>自由现金流</th>
+      <th>ROE</th>
+      <th>ROA</th>
+    </tr>
   </thead>
   <tbody>
     {% for r in rows %}
     <tr data-period-type="{{ r.get('period_type') }}">
       <td><strong>{{ r.get('period') }}</strong></td>
       <td>{{ numf(r.get('total_assets')) }}</td>
-      <td>{{ numf(r.get('total_liabilities') or r.get('total_liabilities_net_minority_interest')) }}</td>
       <td>{{ numf(r.get('total_equity')) }}</td>
       <td>
         {%- set lia = r.get('total_liabilities') or r.get('total_liabilities_net_minority_interest') -%}
-        {%- set ta = r.get('total_assets') -%}
-        {%- if lia is not none and ta -%}
-          {{ pct(lia / ta) }}
+        {%- set ta  = r.get('total_assets') -%}
+        {%- if lia is not none and ta -%}{{ pct(lia / ta) }}
         {%- else -%}<span class="hint">–</span>{%- endif -%}
       </td>
-      <td>{{ num(r.get('current_ratio')) }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<h2>现金流量表</h2>
-<table class="financials" data-section="cashflow">
-  <thead>
-    <tr><th>期间</th><th>经营 CFO</th><th>资本开支</th><th>自由现金流</th>
-        <th>筹资 CFF</th></tr>
-  </thead>
-  <tbody>
-    {% for r in rows %}
-    <tr data-period-type="{{ r.get('period_type') }}">
-      <td><strong>{{ r.get('period') }}</strong></td>
+      <td>{{ num(r.get('debt_to_equity')) }}</td>
       <td>{{ numf(r.get('operating_cashflow') or r.get('operating_cash_flow')) }}</td>
       <td>{{ numf(r.get('capex') or r.get('capital_expenditure')) }}</td>
       <td>{{ numf(r.get('fcf')) }}</td>
-      <td>{{ numf(r.get('financing_cashflow') or r.get('financing_cash_flow')) }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-<h2>关键比率</h2>
-<table class="financials" data-section="ratios">
-  <thead>
-    <tr><th>期间</th><th>毛利率</th><th>净利率</th>
-        <th>ROE</th><th>ROA</th><th>D/E</th></tr>
-  </thead>
-  <tbody>
-    {% for r in rows %}
-    <tr data-period-type="{{ r.get('period_type') }}">
-      <td><strong>{{ r.get('period') }}</strong></td>
-      <td>{{ pct(r.get('gross_margin')) }}</td>
-      <td>{{ pct(r.get('net_margin')) }}</td>
       <td>{{ pct(r.get('roe')) }}</td>
       <td>{{ pct(r.get('roa')) }}</td>
-      <td>{{ num(r.get('debt_to_equity')) }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+</div>
 
 {% endif %}
 
 <script>
 (function () {
-  const KEY = {{ key|tojson }};
+  // ── company switcher ──────────────────────────────────────────────────
+  const sel = document.getElementById("company-switch");
+  if (sel) {
+    sel.addEventListener("change", () => {
+      window.location.href = "/companies/" + sel.value + "/financials";
+    });
+  }
 
-  // Tab switch (annual / quarterly) + period count filter
-  const tabs = document.querySelectorAll(".period-tab");
-  const selAnnual = document.getElementById("count-annual");
-  const selQuarterly = document.getElementById("count-quarterly");
-  const wrapAnnual = document.querySelector(".period-count-annual");
-  const wrapQuarterly = document.querySelector(".period-count-quarterly");
+  // ── tab + period count filter ─────────────────────────────────────────
+  const KEY = {{ key|tojson }};
+  const tabs        = document.querySelectorAll(".period-tab");
+  const selAnnual   = document.getElementById("count-annual");
+  const selQtr      = document.getElementById("count-quarterly");
+  const wrapAnnual  = document.querySelector(".period-count-annual");
+  const wrapQtr     = document.querySelector(".period-count-quarterly");
 
   function activeType() {
     const t = document.querySelector(".period-tab.active");
@@ -163,23 +172,21 @@
   }
 
   function applyFilter() {
-    const type = activeType();
-    const sel = type === "annual" ? selAnnual : selQuarterly;
-    const countRaw = sel ? sel.value : "all";
-    const limit = countRaw === "all" ? Infinity : parseInt(countRaw, 10);
+    const type  = activeType();
+    const sel   = type === "annual" ? selAnnual : selQtr;
+    const limit = sel && sel.value !== "all" ? parseInt(sel.value, 10) : Infinity;
 
     document.querySelectorAll("table.financials").forEach((tbl) => {
-      const rows = tbl.querySelectorAll("tbody tr");
       let shown = 0;
-      rows.forEach((tr) => {
+      tbl.querySelectorAll("tbody tr").forEach((tr) => {
         if (tr.dataset.periodType !== type) { tr.hidden = true; return; }
-        if (shown < limit) { tr.hidden = false; shown++; }
-        else tr.hidden = true;
+        tr.hidden = shown >= limit;
+        if (!tr.hidden) shown++;
       });
     });
 
     wrapAnnual.hidden = type !== "annual";
-    wrapQuarterly.hidden = type !== "quarterly";
+    wrapQtr.hidden    = type !== "quarterly";
   }
 
   tabs.forEach((t) => t.addEventListener("click", () => {
@@ -188,11 +195,11 @@
     applyFilter();
   }));
   if (selAnnual) selAnnual.addEventListener("change", applyFilter);
-  if (selQuarterly) selQuarterly.addEventListener("change", applyFilter);
+  if (selQtr)    selQtr.addEventListener("change", applyFilter);
   applyFilter();
 
-  // Refresh button (30s throttle)
-  const btn = document.getElementById("refresh-fin");
+  // ── refresh button (30 s throttle) ───────────────────────────────────
+  const btn    = document.getElementById("refresh-fin");
   const status = document.getElementById("refresh-status");
   let throttleUntil = 0;
   if (btn) {
@@ -205,22 +212,17 @@
       status.textContent = "";
       try {
         const res = await fetch(`/companies/${KEY}/financials/refresh`, { method: "POST" });
-        const j = await res.json();
+        const j   = await res.json();
         if (j.ok) {
-          status.textContent = `已刷新 ${j.periods_added} 期，正在重载...`;
+          status.textContent = `已刷新 ${j.periods_added} 期，正在重载…`;
           location.reload();
         } else {
           status.textContent = "刷新失败: " + (j.error || "未知错误");
-          status.classList.add("error");
         }
       } catch (e) {
         status.textContent = "请求失败: " + e.message;
-        status.classList.add("error");
       } finally {
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.textContent = orig;
-        }, 30000);
+        setTimeout(() => { btn.disabled = false; btn.textContent = orig; }, 30000);
       }
     });
   }

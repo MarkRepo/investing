@@ -37,12 +37,18 @@ def page(request: Request, key: str):
     finally:
         conn.close()
 
+    all_companies = sorted(
+        company_io.list_companies(),
+        key=lambda c: (c.get("market", ""), c.get("ticker", "")),
+    )
+
     return templates.TemplateResponse(
         request,
         "companies/financials.html",
         {
             "key": key, "ticker": ticker, "market": market,
             "meta": meta, "rows": rows,
+            "all_companies": all_companies,
         },
     )
 
