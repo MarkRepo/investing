@@ -189,8 +189,8 @@ th.sort .ind { color: #0366d6; font-size: 11px; margin-left: 4px; }
 .filter-bar .actions .reset:hover { color: #0366d6; }
 
 /* mini row buttons in company list */
-.btn-mini { padding: 3px 10px; font-size: 12px; background: #0366d6; }
-.btn-mini:hover { background: #024ea7; }
+.btn-mini { padding: 3px 10px; font-size: 12px; background: #0366d6; color: #fff; text-decoration: none; }
+.btn-mini:hover { background: #024ea7; color: #fff; }
 .btn-mini.btn-done { background: #d4f8d4; color: #1a6b1a; }
 .btn-mini.btn-done:hover { background: #b8ecb8; color: #1a6b1a; }
 .row-actions { white-space: nowrap; }
