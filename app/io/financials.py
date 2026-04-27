@@ -1,72 +1,123 @@
-"""SQLite financial data pipeline (DESIGN §3.7).
+"""Financials storage (A-share + US two-table wide schema).
 
-Schema lives in SQLite; markdown is still authoritative for qualitative data.
-CSV import is the primary ingestion mode (manual entry → CSV → this module).
-Derived ratios are recomputed whenever financials rows change.
+Two independent wide tables (`financials_cn`, `financials_us`) backed by API
+sources (akshare Sina / yfinance). Shared-concept columns use the same
+snake_case names so `recompute_ratios` can reuse the same SQL skeleton
+with only column-name variations between markets.
 
-No LLM calls here. Parsing of PDFs/reports happens in a separate conversation-
-driven flow that eventually feeds into this module via CSV.
+No LLM calls here. Writers are `scripts/fetch_financials_cn.py` and
+`scripts/fetch_financials_us.py`.
 """
 from __future__ import annotations
 
-import csv
-import io
 import re
 import sqlite3
 from pathlib import Path
 from typing import Iterable
 
-import yaml
-
 from app import config as cfg
 
-# Union of all line items; serves as the authoritative column list for the
-# financials table. Legacy 8 columns are a subset of this.
-FINANCIAL_COLUMNS = tuple(
-    dict.fromkeys(  # stable-dedup while preserving insertion order
-        list(cfg.INCOME_STATEMENT_LINES)
-        + list(cfg.BALANCE_SHEET_LINES)
-        + list(cfg.CASHFLOW_LINES)
-        + ["shares_outstanding"]  # supplementary
-    )
+PERIOD_RE = re.compile(r"^(\d{4})(Q[1-4]|A)$")
+_VALID_PERIOD_TYPES = ("annual", "quarterly")
+
+# ---------- Schema -----------------------------------------------------------
+
+# Columns in financials_cn (order preserved for DDL + upsert). Must stay in
+# sync with the SQL in _CN_RATIOS_SQL below and with CN_COL_MAP snake_case values.
+CN_COLUMNS: tuple[str, ...] = (
+    "report_date", "period_type", "is_audited", "announced_date", "currency",
+    # 利润表
+    "total_revenue", "operating_revenue", "total_operating_cost", "cost_of_revenue",
+    "rd_expense", "selling_expense", "admin_expense", "finance_expense",
+    "interest_expense", "interest_income", "investment_income",
+    "fair_value_change_income", "fx_gain", "other_income",
+    "asset_impairment_loss", "credit_impairment_loss",
+    "operating_income", "non_operating_income", "non_operating_expense",
+    "pretax_income", "income_tax",
+    "net_income", "net_income_to_parent", "minority_interest_income",
+    "other_comprehensive_income", "total_comprehensive_income",
+    "eps_basic", "eps_diluted",
+    "premium_earned", "commission_income", "commission_expense",
+    # 资产负债表
+    "cash_and_equivalents", "trading_financial_assets",
+    "notes_and_accounts_receivable", "accounts_receivable",
+    "prepayments", "other_receivables", "inventory", "other_current_assets",
+    "total_current_assets",
+    "long_term_equity_investment", "investment_property",
+    "gross_ppe", "accumulated_depreciation", "net_ppe",
+    "construction_in_progress", "intangible_assets", "goodwill",
+    "deferred_tax_assets", "other_non_current_assets",
+    "total_non_current_assets", "total_assets",
+    "short_term_debt", "notes_and_accounts_payable", "accounts_payable",
+    "contract_liabilities", "employee_benefits_payable", "taxes_payable",
+    "other_current_liab", "total_current_liab",
+    "long_term_debt", "bonds_payable", "deferred_tax_liabilities",
+    "other_non_current_liab", "total_non_current_liab", "total_liabilities",
+    "paid_in_capital", "capital_surplus", "retained_earnings",
+    "treasury_stock", "other_comprehensive_equity",
+    "equity_to_parent", "minority_equity", "total_equity",
+    # 现金流量表
+    "cash_from_customers", "cash_paid_to_employees", "taxes_paid",
+    "operating_cashflow",
+    "capex", "investment_purchased", "investment_recovered", "investing_cashflow",
+    "proceeds_from_borrowings", "repayment_of_debt", "dividends_paid",
+    "financing_cashflow",
+    "fx_effect_on_cash", "net_change_in_cash", "begin_cash", "end_cash",
+    "source",
+)
+
+US_COLUMNS: tuple[str, ...] = (
+    "report_date", "period_type", "currency",
+    # 利润表
+    "total_revenue", "operating_revenue", "cost_of_revenue", "gross_profit",
+    "research_and_development", "selling_general_and_administration",
+    "operating_expense", "operating_income", "ebit", "ebitda",
+    "interest_income", "interest_expense", "net_interest_income",
+    "pretax_income", "tax_provision",
+    "net_income", "net_income_common_stockholders",
+    "basic_eps", "diluted_eps", "basic_average_shares", "diluted_average_shares",
+    "normalized_income", "normalized_ebitda", "reconciled_depreciation",
+    "stock_based_compensation",
+    # 资产负债表
+    "cash_and_cash_equivalents", "accounts_receivable", "inventory",
+    "current_assets", "net_ppe", "gross_ppe", "accumulated_depreciation",
+    "goodwill", "goodwill_and_intangible_assets", "deferred_tax_assets",
+    "total_non_current_assets", "total_assets",
+    "accounts_payable", "current_debt", "current_liabilities",
+    "long_term_debt", "total_liabilities_net_minority_interest",
+    "retained_earnings", "stockholders_equity", "total_equity",
+    "total_debt", "net_debt", "working_capital",
+    "capital_lease_obligations", "common_stock", "treasury_shares_number",
+    # 现金流量表
+    "operating_cash_flow", "investing_cash_flow", "financing_cash_flow",
+    "capital_expenditure", "free_cash_flow",
+    "depreciation_and_amortization", "change_in_working_capital",
+    "changes_in_cash", "end_cash_position", "begin_cash_position",
+    "issuance_of_debt", "repayment_of_debt", "repurchase_of_capital_stock",
+    "cash_dividends_paid", "net_income_from_continuing_operations",
+    "deferred_income_tax", "other_non_cash_items",
+    "source",
 )
 
 
-def _columns_ddl() -> str:
-    """Generate `col REAL` lines for each FINANCIAL_COLUMNS entry."""
-    return ",\n    ".join(f"{c} REAL" for c in FINANCIAL_COLUMNS)
-
-
-# Expanded ratios schema (20 cols: ticker + period + 18 derived metrics):
-# margins, returns, DuPont three-factor, leverage, cash flow, interest coverage,
-# liquidity, working capital cycle. All REAL; missing inputs → NULL output
-# via NULLIF() in recompute_ratios.
 _RATIOS_SCHEMA = """
 CREATE TABLE IF NOT EXISTS ratios (
     ticker TEXT NOT NULL,
     period TEXT NOT NULL,
-    -- margins
     gross_margin REAL,
     operating_margin REAL,
     net_margin REAL,
-    -- returns
     roe REAL,
     roa REAL,
-    -- DuPont three-factor
     asset_turnover REAL,
     equity_multiplier REAL,
-    -- leverage
     debt_to_equity REAL,
-    -- cash flow
     fcf REAL,
     fcf_margin REAL,
     ocf_quality REAL,
-    -- interest coverage
     interest_coverage REAL,
-    -- liquidity
     current_ratio REAL,
     quick_ratio REAL,
-    -- working capital cycle
     days_inventory REAL,
     days_receivable REAL,
     days_payable REAL,
@@ -75,77 +126,7 @@ CREATE TABLE IF NOT EXISTS ratios (
 );
 """
 
-# Authoritative ratios column list (matches _RATIOS_SCHEMA order, minus PK keys).
-# Used by init_schema() to ALTER ADD COLUMN any missing entry against an older
-# (5-col legacy) ratios table that may live in a carried-over DB file.
-_RATIOS_COLUMNS = (
-    "gross_margin",
-    "operating_margin",
-    "net_margin",
-    "roe",
-    "roa",
-    "asset_turnover",
-    "equity_multiplier",
-    "debt_to_equity",
-    "fcf",
-    "fcf_margin",
-    "ocf_quality",
-    "interest_coverage",
-    "current_ratio",
-    "quick_ratio",
-    "days_inventory",
-    "days_receivable",
-    "days_payable",
-    "cash_conversion_cycle",
-)
-
-
-_ALIAS_MAP_CACHE: dict | None = None
-
-
-def load_alias_map() -> dict:
-    """Load and cache A-share/US GAAP → standard key alias map."""
-    global _ALIAS_MAP_CACHE
-    if _ALIAS_MAP_CACHE is None:
-        path = cfg.FINANCIAL_ALIASES_PATH
-        if not path.exists():
-            raise FileNotFoundError(f"financial aliases map not found at {path}")
-        with path.open("r", encoding="utf-8") as f:
-            _ALIAS_MAP_CACHE = yaml.safe_load(f) or {}
-    return _ALIAS_MAP_CACHE
-
-
-def normalize_raw_key(raw: str, market: str | None = None) -> str | None:
-    """Map a raw A-share or US GAAP line name to standard snake_case key.
-
-    market: "US" / "SSE" / "SZSE" / "BSE" / "HK" / None (tries both).
-    Returns None if no match (caller should log warning, not fail).
-    """
-    if not raw:
-        return None
-    m = load_alias_map()
-    raw_norm = raw.strip().lower()
-    alias_langs = ["a_share", "us_gaap"]
-    if market == "US":
-        alias_langs = ["us_gaap", "a_share"]
-    elif market in ("SSE", "SZSE", "BSE", "HK"):
-        alias_langs = ["a_share", "us_gaap"]
-    for std_key, langs in m.items():
-        for lang in alias_langs:
-            aliases = langs.get(lang, []) or []
-            for alias in aliases:
-                if alias.strip().lower() == raw_norm:
-                    return std_key
-                # Chinese keys also match exact raw (no lowercasing needed for zh):
-                if alias.strip() == raw.strip():
-                    return std_key
-    return None
-
-
-PERIOD_RE = re.compile(r"^(\d{4})(Q[1-4]|A)$")
-_VALID_PERIOD_TYPES = ("annual", "quarterly")
-
-_BASE_SCHEMA_TEMPLATE = """
+_COMPANIES_SCHEMA = """
 CREATE TABLE IF NOT EXISTS companies (
     ticker TEXT PRIMARY KEY,
     market TEXT,
@@ -154,18 +135,9 @@ CREATE TABLE IF NOT EXISTS companies (
     listed_date DATE,
     currency TEXT
 );
+"""
 
-CREATE TABLE IF NOT EXISTS financials (
-    ticker TEXT NOT NULL,
-    period TEXT NOT NULL,
-    period_type TEXT NOT NULL,
-    {column_ddl},
-    source_file TEXT,
-    PRIMARY KEY (ticker, period)
-);
-
-{ratios_schema}
-
+_PRICES_SCHEMA = """
 CREATE TABLE IF NOT EXISTS price_triggers (
     ticker TEXT NOT NULL,
     trigger_price REAL NOT NULL,
@@ -174,98 +146,88 @@ CREATE TABLE IF NOT EXISTS price_triggers (
     created_at DATE,
     triggered_at DATE
 );
-
 CREATE TABLE IF NOT EXISTS benchmark (
-    date DATE NOT NULL,
-    symbol TEXT NOT NULL,
-    close REAL,
+    date DATE NOT NULL, symbol TEXT NOT NULL, close REAL,
     PRIMARY KEY (date, symbol)
 );
-
 CREATE TABLE IF NOT EXISTS prices (
-    ticker TEXT NOT NULL,
-    date DATE NOT NULL,
-    close REAL NOT NULL,
+    ticker TEXT NOT NULL, date DATE NOT NULL, close REAL NOT NULL,
     PRIMARY KEY (ticker, date)
 );
-
 CREATE TABLE IF NOT EXISTS quotes_daily (
-    ticker TEXT NOT NULL,
-    date TEXT NOT NULL,
-    market TEXT NOT NULL,
-    open REAL,
-    high REAL,
-    low REAL,
-    close REAL NOT NULL,
-    volume INTEGER,
-    amount REAL,
-    turnover_rate REAL,
-    volume_ratio_5d REAL,
-    pe_ttm REAL,
-    pe_static REAL,
-    pe_forward REAL,
-    pb REAL,
-    ps REAL,
-    peg REAL,
-    dividend_yield REAL,
-    market_cap REAL,
-    float_market_cap REAL,
-    shares_outstanding REAL,
-    float_shares REAL,
-    high_52w REAL,
-    low_52w REAL,
-    source TEXT,
-    fetched_at TEXT,
+    ticker TEXT NOT NULL, date TEXT NOT NULL, market TEXT NOT NULL,
+    open REAL, high REAL, low REAL, close REAL NOT NULL,
+    volume INTEGER, amount REAL, turnover_rate REAL, volume_ratio_5d REAL,
+    pe_ttm REAL, pe_static REAL, pe_forward REAL,
+    pb REAL, ps REAL, peg REAL, dividend_yield REAL,
+    market_cap REAL, float_market_cap REAL,
+    shares_outstanding REAL, float_shares REAL,
+    high_52w REAL, low_52w REAL, source TEXT, fetched_at TEXT,
     PRIMARY KEY (ticker, date)
 );
-
 CREATE TABLE IF NOT EXISTS quotes_fetch_errors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    ticker TEXT NOT NULL,
-    market TEXT NOT NULL,
-    attempted_at TEXT NOT NULL,
-    source TEXT NOT NULL,
-    phase TEXT NOT NULL,
-    error TEXT NOT NULL,
-    resolved_at TEXT
+    ticker TEXT NOT NULL, market TEXT NOT NULL,
+    attempted_at TEXT NOT NULL, source TEXT NOT NULL,
+    phase TEXT NOT NULL, error TEXT NOT NULL, resolved_at TEXT
 );
-
 CREATE INDEX IF NOT EXISTS idx_fetch_errors_unresolved
     ON quotes_fetch_errors(ticker, resolved_at) WHERE resolved_at IS NULL;
 """
 
 
+_TEXT_COLS = {"report_date", "period_type", "announced_date", "currency", "source"}
+
+
+def _col_type(col: str) -> str:
+    if col in _TEXT_COLS:
+        return "TEXT"
+    if col == "is_audited":
+        return "INTEGER"
+    return "REAL"
+
+
+def _cn_table_ddl() -> str:
+    cols_sql = ",\n    ".join(f"{c} {_col_type(c)}" for c in CN_COLUMNS)
+    return f"""
+CREATE TABLE IF NOT EXISTS financials_cn (
+    ticker TEXT NOT NULL,
+    period TEXT NOT NULL,
+    {cols_sql},
+    PRIMARY KEY (ticker, period)
+);
+"""
+
+
+def _us_table_ddl() -> str:
+    cols_sql = ",\n    ".join(f"{c} {_col_type(c)}" for c in US_COLUMNS)
+    return f"""
+CREATE TABLE IF NOT EXISTS financials_us (
+    ticker TEXT NOT NULL,
+    period TEXT NOT NULL,
+    {cols_sql},
+    PRIMARY KEY (ticker, period)
+);
+"""
+
+
 def init_schema(conn: sqlite3.Connection) -> None:
-    """Create financials + companies tables (and the other sibling tables) if
-    missing; ALTER ADD COLUMN any FINANCIAL_COLUMNS entry that is defined in
-    the authoritative tuple but absent from the live table.
-
-    SQLite quirk: ``ALTER TABLE ADD COLUMN`` does not support ``IF NOT
-    EXISTS``, so we inspect ``PRAGMA table_info`` first.
-    """
+    """Create all tables if missing. Old `financials` table is intentionally
+    NOT recreated — Task 12 cleanup removes it from existing DBs."""
     conn.executescript(
-        _BASE_SCHEMA_TEMPLATE.format(
-            column_ddl=_columns_ddl(),
-            ratios_schema=_RATIOS_SCHEMA.strip(),
-        )
+        _COMPANIES_SCHEMA
+        + _cn_table_ddl()
+        + _us_table_ddl()
+        + _RATIOS_SCHEMA
+        + _PRICES_SCHEMA
     )
-
-    cursor = conn.execute("PRAGMA table_info(financials)")
-    existing_cols = {row[1] for row in cursor.fetchall()}
-    for col in FINANCIAL_COLUMNS:
-        if col not in existing_cols:
-            conn.execute(f"ALTER TABLE financials ADD COLUMN {col} REAL")
-
-    # ratios table may exist in older DB files with only the legacy 5-col set
-    # (gross_margin, net_margin, operating_margin, roe, roa, debt_to_equity);
-    # add any columns introduced by the expanded DuPont/FCF/CCC schema so that
-    # recompute_ratios INSERTs don't fail with "no such column".
-    cursor = conn.execute("PRAGMA table_info(ratios)")
-    existing_ratios_cols = {row[1] for row in cursor.fetchall()}
-    for col in _RATIOS_COLUMNS:
-        if col not in existing_ratios_cols:
-            conn.execute(f"ALTER TABLE ratios ADD COLUMN {col} REAL")
-
+    # ALTER ADD COLUMN for forward compat: any CN_COLUMNS / US_COLUMNS entry
+    # missing from a pre-existing table gets added.
+    for table, cols in (("financials_cn", CN_COLUMNS), ("financials_us", US_COLUMNS)):
+        existing = {r[1] for r in conn.execute(f"PRAGMA table_info({table})").fetchall()}
+        for col in cols:
+            if col not in existing:
+                conn.execute(f"ALTER TABLE {table} ADD COLUMN {col} {_col_type(col)}")
     conn.commit()
 
 
@@ -276,7 +238,6 @@ def _db_path(base: Path | None) -> Path:
 
 
 def connect(base: Path | None = None) -> sqlite3.Connection:
-    """Open (and initialize if needed) the financials DB."""
     path = _db_path(base)
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(path)
@@ -285,16 +246,11 @@ def connect(base: Path | None = None) -> sqlite3.Connection:
     return conn
 
 
-def upsert_company(conn: sqlite3.Connection, meta: dict) -> None:
-    """Mirror markdown meta into the SQLite companies table (read-through cache).
+# ---------- companies (unchanged from old) ----------------------------------
 
-    Spec note: company meta migrated from scalar ``industry_primary`` to
-    list-valued ``industry_slugs`` (Task 4). We accept either key on the way
-    in and store as comma-separated text in the ``industry_slugs`` column.
-    """
-    industry = meta.get("industry_slugs")
-    if industry is None:
-        industry = meta.get("industry_primary")
+
+def upsert_company(conn: sqlite3.Connection, meta: dict) -> None:
+    industry = meta.get("industry_slugs") or meta.get("industry_primary")
     if isinstance(industry, (list, tuple)):
         industry = ",".join(str(s) for s in industry if s)
     conn.execute(
@@ -302,11 +258,9 @@ def upsert_company(conn: sqlite3.Connection, meta: dict) -> None:
         INSERT INTO companies(ticker, market, name, industry_slugs, listed_date, currency)
         VALUES (:ticker, :market, :name, :industry_slugs, :listed_date, :currency)
         ON CONFLICT(ticker) DO UPDATE SET
-            market = excluded.market,
-            name = excluded.name,
+            market = excluded.market, name = excluded.name,
             industry_slugs = excluded.industry_slugs,
-            listed_date = excluded.listed_date,
-            currency = excluded.currency
+            listed_date = excluded.listed_date, currency = excluded.currency
         """,
         {
             "ticker": (meta.get("ticker") or "").upper(),
@@ -320,228 +274,208 @@ def upsert_company(conn: sqlite3.Connection, meta: dict) -> None:
     conn.commit()
 
 
-# --- CSV import -------------------------------------------------------------
+# ---------- upsert -----------------------------------------------------------
 
 
-def _coerce_float(raw: str | None) -> float | None:
-    if raw is None:
-        return None
-    s = str(raw).strip()
-    if not s or s.lower() in ("nan", "null", "none", "-"):
-        return None
-    # Tolerate thousands separators like 1,234.56
-    s = s.replace(",", "")
-    try:
-        return float(s)
-    except ValueError as e:
-        raise ValueError(f"not a number: {raw!r}") from e
+def _validate_period_row(row: dict) -> None:
+    p = row.get("period") or ""
+    if not PERIOD_RE.match(p):
+        raise ValueError(f"invalid period {p!r} (expected YYYYQ[1-4] or YYYYA)")
+    pt = (row.get("period_type") or "").lower()
+    if pt not in _VALID_PERIOD_TYPES:
+        raise ValueError(f"invalid period_type {pt!r}")
+    if p.endswith("A") and pt != "annual":
+        raise ValueError(f"period {p} ↔ period_type {pt} mismatch")
+    if "Q" in p and pt != "quarterly":
+        raise ValueError(f"period {p} ↔ period_type {pt} mismatch")
 
 
-def _parse_rows(csv_text: str) -> list[dict]:
-    reader = csv.DictReader(io.StringIO(csv_text))
-    if not reader.fieldnames:
-        raise ValueError("CSV has no header row")
-    required = {"period", "period_type"}
-    missing_required = required - set(reader.fieldnames)
-    if missing_required:
-        raise ValueError(f"CSV missing required columns: {sorted(missing_required)}")
-
-    rows: list[dict] = []
-    for i, raw in enumerate(reader, start=2):  # header is line 1
-        period = (raw.get("period") or "").strip()
-        ptype = (raw.get("period_type") or "").strip().lower()
-        if not PERIOD_RE.match(period):
-            raise ValueError(f"line {i}: invalid period {period!r}, expected YYYYQ[1-4] or YYYYA")
-        if ptype not in _VALID_PERIOD_TYPES:
-            raise ValueError(
-                f"line {i}: invalid period_type {ptype!r}, expected one of {_VALID_PERIOD_TYPES}"
-            )
-        if period.endswith("A") and ptype != "annual":
-            raise ValueError(f"line {i}: period {period} implies annual but period_type is {ptype}")
-        if "Q" in period and ptype != "quarterly":
-            raise ValueError(
-                f"line {i}: period {period} implies quarterly but period_type is {ptype}"
-            )
-
-        parsed = {"period": period, "period_type": ptype}
-        for col in FINANCIAL_COLUMNS:
-            try:
-                parsed[col] = _coerce_float(raw.get(col))
-            except ValueError as e:
-                raise ValueError(f"line {i}, column {col}: {e}") from e
-        rows.append(parsed)
-    return rows
+def _upsert(conn: sqlite3.Connection, table: str, cols: tuple[str, ...], rows: Iterable[dict]) -> int:
+    """Generic upsert. `rows` carry `ticker`, `period` + any subset of `cols`."""
+    n = 0
+    for row in rows:
+        _validate_period_row(row)
+        ticker = (row.get("ticker") or "").strip().upper()
+        if not ticker:
+            raise ValueError("row missing ticker")
+        params = {"ticker": ticker, "period": row["period"]}
+        for c in cols:
+            params[c] = row.get(c)
+        col_list = ", ".join(cols)
+        ph_list = ", ".join(f":{c}" for c in cols)
+        set_list = ", ".join(f"{c} = excluded.{c}" for c in cols)
+        conn.execute(
+            f"""
+            INSERT INTO {table} (ticker, period, {col_list})
+            VALUES (:ticker, :period, {ph_list})
+            ON CONFLICT(ticker, period) DO UPDATE SET {set_list}
+            """,
+            params,
+        )
+        n += 1
+    conn.commit()
+    return n
 
 
-def import_financials_csv(
-    ticker: str,
-    csv_text: str,
-    source_file: str = "",
-    base: Path | None = None,
-    conn: sqlite3.Connection | None = None,
-) -> int:
-    """Upsert rows parsed from ``csv_text`` into financials + recompute ratios.
+def upsert_financials_cn(conn: sqlite3.Connection, rows: Iterable[dict]) -> int:
+    return _upsert(conn, "financials_cn", CN_COLUMNS, rows)
 
-    Returns the number of rows written.
+
+def upsert_financials_us(conn: sqlite3.Connection, rows: Iterable[dict]) -> int:
+    return _upsert(conn, "financials_us", US_COLUMNS, rows)
+
+
+# ---------- ratios -----------------------------------------------------------
+
+_CN_MARKETS = {"SSE", "SZSE", "BSE"}
+
+
+_CN_RATIOS_SQL = """
+INSERT INTO ratios (ticker, period,
+    gross_margin, operating_margin, net_margin,
+    roe, roa, asset_turnover, equity_multiplier, debt_to_equity,
+    fcf, fcf_margin, ocf_quality, interest_coverage,
+    current_ratio, quick_ratio,
+    days_inventory, days_receivable, days_payable, cash_conversion_cycle)
+SELECT
+    ticker, period,
+    (operating_revenue - cost_of_revenue) / NULLIF(operating_revenue, 0),
+    operating_income / NULLIF(operating_revenue, 0),
+    net_income / NULLIF(operating_revenue, 0),
+    net_income / NULLIF(total_equity, 0),
+    net_income / NULLIF(total_assets, 0),
+    operating_revenue / NULLIF(total_assets, 0),
+    total_assets / NULLIF(total_equity, 0),
+    (COALESCE(short_term_debt, 0) + COALESCE(long_term_debt, 0)) / NULLIF(total_equity, 0),
+    operating_cashflow - COALESCE(capex, 0),
+    (operating_cashflow - COALESCE(capex, 0)) / NULLIF(operating_revenue, 0),
+    operating_cashflow / NULLIF(net_income, 0),
+    operating_income / NULLIF(interest_expense, 0),
+    total_current_assets / NULLIF(total_current_liab, 0),
+    (total_current_assets - COALESCE(inventory, 0)) / NULLIF(total_current_liab, 0),
+    inventory * 365.0 / NULLIF(cost_of_revenue, 0),
+    accounts_receivable * 365.0 / NULLIF(operating_revenue, 0),
+    accounts_payable * 365.0 / NULLIF(cost_of_revenue, 0),
+    (inventory * 365.0 / NULLIF(cost_of_revenue, 0))
+      + (accounts_receivable * 365.0 / NULLIF(operating_revenue, 0))
+      - (accounts_payable * 365.0 / NULLIF(cost_of_revenue, 0))
+FROM financials_cn
+WHERE ticker = ?
+"""
+
+_US_RATIOS_SQL = """
+INSERT INTO ratios (ticker, period,
+    gross_margin, operating_margin, net_margin,
+    roe, roa, asset_turnover, equity_multiplier, debt_to_equity,
+    fcf, fcf_margin, ocf_quality, interest_coverage,
+    current_ratio, quick_ratio,
+    days_inventory, days_receivable, days_payable, cash_conversion_cycle)
+SELECT
+    ticker, period,
+    gross_profit / NULLIF(total_revenue, 0),
+    operating_income / NULLIF(total_revenue, 0),
+    net_income / NULLIF(total_revenue, 0),
+    net_income / NULLIF(total_equity, 0),
+    net_income / NULLIF(total_assets, 0),
+    total_revenue / NULLIF(total_assets, 0),
+    total_assets / NULLIF(total_equity, 0),
+    COALESCE(total_debt, 0) / NULLIF(total_equity, 0),
+    COALESCE(free_cash_flow, operating_cash_flow + COALESCE(capital_expenditure, 0)),
+    COALESCE(free_cash_flow, operating_cash_flow + COALESCE(capital_expenditure, 0))
+        / NULLIF(total_revenue, 0),
+    operating_cash_flow / NULLIF(net_income, 0),
+    COALESCE(ebit, operating_income) / NULLIF(interest_expense, 0),
+    current_assets / NULLIF(current_liabilities, 0),
+    (current_assets - COALESCE(inventory, 0)) / NULLIF(current_liabilities, 0),
+    inventory * 365.0 / NULLIF(cost_of_revenue, 0),
+    accounts_receivable * 365.0 / NULLIF(total_revenue, 0),
+    accounts_payable * 365.0 / NULLIF(cost_of_revenue, 0),
+    (inventory * 365.0 / NULLIF(cost_of_revenue, 0))
+      + (accounts_receivable * 365.0 / NULLIF(total_revenue, 0))
+      - (accounts_payable * 365.0 / NULLIF(cost_of_revenue, 0))
+FROM financials_us
+WHERE ticker = ?
+"""
+
+
+def recompute_ratios(conn: sqlite3.Connection, ticker: str, market: str) -> None:
+    """Recompute ratios for a single ticker. `market` picks the source table:
+    {SSE, SZSE, BSE} → financials_cn; US → financials_us.
     """
-    ticker = ticker.strip().upper()
+    ticker = (ticker or "").strip().upper()
     if not ticker:
-        raise ValueError("ticker cannot be empty")
-
-    rows = _parse_rows(csv_text)
-    if not rows:
-        return 0
-
-    owns = conn is None
-    conn = conn or connect(base=base)
-    try:
-        for r in rows:
-            conn.execute(
-                f"""
-                INSERT INTO financials
-                    (ticker, period, period_type, {", ".join(FINANCIAL_COLUMNS)}, source_file)
-                VALUES
-                    (:ticker, :period, :period_type, {", ".join(f":{c}" for c in FINANCIAL_COLUMNS)}, :source_file)
-                ON CONFLICT(ticker, period) DO UPDATE SET
-                    period_type = excluded.period_type,
-                    {", ".join(f"{c} = excluded.{c}" for c in FINANCIAL_COLUMNS)},
-                    source_file = excluded.source_file
-                """,
-                {"ticker": ticker, "source_file": source_file or None, **r},
-            )
-        conn.commit()
-        recompute_ratios(conn, ticker)
-    finally:
-        if owns:
-            conn.close()
-    return len(rows)
-
-
-# --- Derived ratios ---------------------------------------------------------
-
-
-def recompute_ratios(conn: sqlite3.Connection, ticker: str) -> None:
-    """Recompute all derived ratios for a single ticker. Safe for NULL inputs
-    (uses NULLIF to avoid division-by-zero; missing inputs → NULL output)."""
-    ticker = ticker.strip().upper()
+        raise ValueError("ticker is empty")
+    if market in _CN_MARKETS:
+        sql = _CN_RATIOS_SQL
+    elif market == "US":
+        sql = _US_RATIOS_SQL
+    else:
+        raise ValueError(f"unsupported market {market!r}")
     conn.executescript(_RATIOS_SCHEMA)
     conn.execute("DELETE FROM ratios WHERE ticker = ?", (ticker,))
-
-    # Insert one row per period with all derived metrics.
-    # NULLIF(x, 0) converts zero to NULL so division returns NULL instead of error.
-    conn.execute(
-        """
-        INSERT INTO ratios (
-            ticker, period,
-            gross_margin, operating_margin, net_margin,
-            roe, roa, asset_turnover, equity_multiplier, debt_to_equity,
-            fcf, fcf_margin, ocf_quality, interest_coverage,
-            current_ratio, quick_ratio,
-            days_inventory, days_receivable, days_payable, cash_conversion_cycle
-        )
-        SELECT
-            ticker, period,
-            gross_profit / NULLIF(revenue, 0),
-            operating_income / NULLIF(revenue, 0),
-            net_income / NULLIF(revenue, 0),
-
-            net_income / NULLIF(total_equity, 0),
-            net_income / NULLIF(total_assets, 0),
-            revenue / NULLIF(total_assets, 0),
-            total_assets / NULLIF(total_equity, 0),
-            (COALESCE(short_term_debt, 0) + COALESCE(long_term_debt, 0))
-                / NULLIF(total_equity, 0),
-
-            operating_cashflow - COALESCE(capex, 0),
-            (operating_cashflow - COALESCE(capex, 0)) / NULLIF(revenue, 0),
-            operating_cashflow / NULLIF(net_income, 0),
-            operating_income / NULLIF(interest_expense, 0),
-
-            total_current_assets / NULLIF(total_current_liab, 0),
-            (total_current_assets - COALESCE(inventory, 0)) / NULLIF(total_current_liab, 0),
-
-            inventory * 365.0 / NULLIF(cost_of_revenue, 0),
-            accounts_receivable * 365.0 / NULLIF(revenue, 0),
-            accounts_payable * 365.0 / NULLIF(cost_of_revenue, 0),
-
-            (inventory * 365.0 / NULLIF(cost_of_revenue, 0))
-              + (accounts_receivable * 365.0 / NULLIF(revenue, 0))
-              - (accounts_payable * 365.0 / NULLIF(cost_of_revenue, 0))
-        FROM financials
-        WHERE ticker = ?
-        """,
-        (ticker,),
-    )
+    conn.execute(sql, (ticker,))
     conn.commit()
 
 
-# --- Queries ----------------------------------------------------------------
+# ---------- queries ---------------------------------------------------------
 
 
 def _period_sort_key(period: str) -> tuple[int, int, int]:
-    """Order: year desc primary; within year, annual after quarterly (A = 5, Q1..Q4 = 1..4)."""
     m = PERIOD_RE.match(period)
     if not m:
         return (0, 0, 0)
     year = int(m.group(1))
     tag = m.group(2)
     if tag == "A":
-        return (year, 2, 5)  # annual groups after quarterly of same year
+        return (year, 2, 5)
     return (year, 1, int(tag[1]))
 
 
-def _sort_by_period_desc(rows: Iterable[dict]) -> list[dict]:
+def _sort_desc(rows: Iterable[dict]) -> list[dict]:
     return sorted(rows, key=lambda r: _period_sort_key(r["period"]), reverse=True)
 
 
-def list_financials(
-    ticker: str, base: Path | None = None, conn: sqlite3.Connection | None = None
-) -> list[dict]:
+def list_financials_cn(conn: sqlite3.Connection, ticker: str) -> list[dict]:
     ticker = ticker.strip().upper()
-    owns = conn is None
-    conn = conn or connect(base=base)
-    try:
-        rows = conn.execute(
-            f"""SELECT period, period_type, {", ".join(FINANCIAL_COLUMNS)}, source_file
-                FROM financials WHERE ticker = ?""",
-            (ticker,),
-        ).fetchall()
-        return _sort_by_period_desc(dict(r) for r in rows)
-    finally:
-        if owns:
-            conn.close()
+    rows = conn.execute(
+        f"SELECT ticker, period, {', '.join(CN_COLUMNS)} FROM financials_cn WHERE ticker = ?",
+        (ticker,),
+    ).fetchall()
+    return _sort_desc(dict(r) for r in rows)
 
 
-def list_ratios(
-    ticker: str, base: Path | None = None, conn: sqlite3.Connection | None = None
-) -> list[dict]:
+def list_financials_us(conn: sqlite3.Connection, ticker: str) -> list[dict]:
     ticker = ticker.strip().upper()
-    owns = conn is None
-    conn = conn or connect(base=base)
-    try:
-        rows = conn.execute(
-            """SELECT period, gross_margin, net_margin, operating_margin, roe, roa, debt_to_equity
-               FROM ratios WHERE ticker = ?""",
-            (ticker,),
-        ).fetchall()
-        return _sort_by_period_desc(dict(r) for r in rows)
-    finally:
-        if owns:
-            conn.close()
+    rows = conn.execute(
+        f"SELECT ticker, period, {', '.join(US_COLUMNS)} FROM financials_us WHERE ticker = ?",
+        (ticker,),
+    ).fetchall()
+    return _sort_desc(dict(r) for r in rows)
+
+
+def list_ratios(conn: sqlite3.Connection, ticker: str) -> list[dict]:
+    ticker = ticker.strip().upper()
+    rows = conn.execute(
+        "SELECT * FROM ratios WHERE ticker = ?", (ticker,)
+    ).fetchall()
+    return _sort_desc(dict(r) for r in rows)
 
 
 def list_periods_with_ratios(
-    ticker: str, base: Path | None = None, limit: int = 12
+    conn: sqlite3.Connection, ticker: str, market: str
 ) -> list[dict]:
-    """Join financials + ratios into a single per-period row, newest first."""
-    conn = connect(base=base)
-    try:
-        fins = {r["period"]: r for r in list_financials(ticker, conn=conn)}
-        rats = {r["period"]: r for r in list_ratios(ticker, conn=conn)}
-    finally:
-        conn.close()
-    merged = []
-    for period in fins:
-        row = {**fins[period], **{k: v for k, v in rats.get(period, {}).items() if k != "period"}}
-        merged.append(row)
-    return _sort_by_period_desc(merged)[:limit]
+    """Merged per-period rows (financials + ratios), newest first. Used by the
+    financials page. Caller selects which table via `market`."""
+    ticker = ticker.strip().upper()
+    if market in _CN_MARKETS:
+        fins = list_financials_cn(conn, ticker)
+    elif market == "US":
+        fins = list_financials_us(conn, ticker)
+    else:
+        raise ValueError(f"unsupported market {market!r}")
+    rats = {r["period"]: dict(r) for r in list_ratios(conn, ticker)}
+    out = []
+    for row in fins:
+        merged = {**row, **{k: v for k, v in rats.get(row["period"], {}).items() if k not in ("ticker", "period")}}
+        out.append(merged)
+    return _sort_desc(out)
