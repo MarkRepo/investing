@@ -1,8 +1,9 @@
 """Aggregation + cross-check + write helpers for the ingest skill.
 
 The main agent loads subagent outputs, passes them through these functions,
-and (after user review) writes claims / financials. No LLM calls happen here
-— this is plumbing only.
+and (after user review) writes claims. No LLM calls happen here — this is
+plumbing only. Financial line-items are no longer part of ingest; numbers
+come from API (akshare / yfinance) via the financials page.
 
 Public API:
 
@@ -14,24 +15,20 @@ Public API:
 - ``aggregate(outputs)``: merge per-section subagent outputs into a single
   pre-write bundle.
 - ``dedup_claims(claims)``: drop exact duplicates on (text-prefix, tag, tf).
-- Cross-checks: ``check_revenue_consistency``, ``check_period_consistency``,
-  ``check_empty_sections``, ``check_financials_required``. Each returns a
-  list of human-readable issue strings; empty list = pass.
+- Cross-checks: ``check_period_consistency``, ``check_empty_sections``.
+  Each returns a list of human-readable issue strings; empty list = pass.
 - ``build_claims_batch(...)``: produce the dict ``validate_batch`` expects
   (header fields flat at the top level — not nested under ``"header"``).
-- ``write_financials(...)`` / ``write_claims(...)``: perform the writes.
+- ``write_claims(...)``: perform the write.
 """
 from __future__ import annotations
 
-import csv
-import io
 import json
 import re
 from collections import Counter
 from pathlib import Path
 
 from app.io import claims as claims_io
-from app.io import financials as fin_io
 
 POLARITY_MAP = {
     "bull": "bull",
@@ -40,26 +37,6 @@ POLARITY_MAP = {
     "positive": "bull",
     "negative": "bear",
 }
-
-# Only claims that explicitly talk about TOTAL revenue get revenue-consistency
-# checked against financials CSV. Segment/geography/channel sub-revenues are
-# naturally smaller than total and would otherwise trigger false positives.
-_TOTAL_REVENUE_KEYS = ("total revenue", "营业收入", "营业总收入", "总收入")
-_SEGMENT_REVENUE_KEYS = (
-    "segment",
-    "united states revenue",
-    "rest of world",
-    "rest of the world",
-    "wholesale revenue",
-    "online revenue",
-    "international revenue",
-    "personalized",
-    "hers brand",
-)
-
-_MONEY_RE = re.compile(
-    r"\$([\d,]+(?:\.\d+)?)\s*(M|B|billion|million)\b", re.IGNORECASE
-)
 
 
 # ---------- Parsing ---------------------------------------------------------
@@ -149,14 +126,12 @@ def aggregate(outputs: dict[str, dict]) -> dict:
     """Merge per-subagent outputs keyed by name into a single bundle.
 
     ``outputs`` is ``{subagent_name: raw_output_dict}``. Each raw output may
-    hold ``claims``, ``profile_fragments``, ``financial_rows``, ``meta_updates``,
-    ``flags``.
+    hold ``claims``, ``profile_fragments``, ``meta_updates``, ``flags``.
 
     Merge rules:
       - ``claims``: normalized (``normalize_claim``) then concatenated.
       - ``profile_fragments``: merged by key; on duplicate, prefer the
         longer string (assumed to be more detailed).
-      - ``financial_rows``: concatenated (cross-check handles conflicts).
       - ``meta_updates``: first writer wins (``setdefault``).
       - ``flags``: kept per-subagent for surfacing in the final report.
       - ``empty_subagents``: subagents that returned nothing meaningful.
@@ -164,7 +139,6 @@ def aggregate(outputs: dict[str, dict]) -> dict:
     merged: dict = {
         "claims": [],
         "profile_fragments": {},
-        "financial_rows": [],
         "meta_updates": {},
         "competence_findings": {"answered": [], "proposed_additions": []},
         "flags_by_subagent": {},
@@ -178,8 +152,6 @@ def aggregate(outputs: dict[str, dict]) -> dict:
             prev = merged["profile_fragments"].get(k)
             if prev is None or len(v) > len(prev):
                 merged["profile_fragments"][k] = v
-
-        merged["financial_rows"].extend(blob.get("financial_rows") or [])
 
         for k, v in (blob.get("meta_updates") or {}).items():
             merged["meta_updates"].setdefault(k, v)
@@ -195,7 +167,6 @@ def aggregate(outputs: dict[str, dict]) -> dict:
         if (
             not claims
             and not (blob.get("profile_fragments") or {})
-            and not (blob.get("financial_rows") or [])
             and not cf.get("answered")
             and not cf.get("proposed_additions")
         ):
@@ -367,51 +338,6 @@ def write_industry_observations(
 
 
 
-def _extract_money_usd(text: str) -> float | None:
-    """Pull ``$N M|B`` from claim_text, return dollars. ``None`` if absent."""
-    m = _MONEY_RE.search(text)
-    if not m:
-        return None
-    val = float(m.group(1).replace(",", ""))
-    unit = m.group(2).lower()
-    return val * (1e9 if unit in ("b", "billion") else 1e6)
-
-
-def check_revenue_consistency(merged: dict, tol: float = 0.02) -> list[str]:
-    """Only validates claims that explicitly talk about TOTAL revenue. Segment
-    and channel sub-revenue claims are skipped (they're smaller than total by
-    definition and must not trigger a pause).
-    """
-    issues: list[str] = []
-    by_period = {r["period"]: r for r in merged.get("financial_rows", [])}
-    for c in merged.get("claims", []):
-        if c.get("claim_type") != "quantitative":
-            continue
-        ct = (c.get("claim_text") or "").lower()
-        if not any(k in ct for k in _TOTAL_REVENUE_KEYS):
-            continue
-        if any(k in ct for k in _SEGMENT_REVENUE_KEYS):
-            continue
-        tf = c.get("timeframe") or ""
-        row = by_period.get(tf) or by_period.get(normalize_period(tf))
-        if not row or row.get("revenue") is None:
-            continue
-        usd = _extract_money_usd(c.get("claim_text") or "")
-        if usd is None:
-            continue
-        csv_rev = float(row["revenue"])
-        if csv_rev == 0:
-            continue
-        diff = abs(usd - csv_rev) / csv_rev
-        if diff > tol:
-            issues.append(
-                f"claim '{c['claim_text'][:80]}' -> {usd:.0f} vs "
-                f"financial_rows[{tf}].revenue={csv_rev:.0f} "
-                f"(diff {diff * 100:.1f}%)"
-            )
-    return issues
-
-
 def check_period_consistency(merged: dict, expected: str) -> list[str]:
     """The dominant claim timeframe must match the report's fiscal period."""
     tfs = [c.get("timeframe") for c in merged.get("claims", []) if c.get("timeframe")]
@@ -425,16 +351,6 @@ def check_period_consistency(merged: dict, expected: str) -> list[str]:
 
 def check_empty_sections(merged: dict) -> list[str]:
     return [f"empty output from subagent: {name}" for name in merged.get("empty_subagents", [])]
-
-
-def check_financials_required(merged: dict) -> list[str]:
-    issues: list[str] = []
-    for r in merged.get("financial_rows", []):
-        if r.get("revenue") is None:
-            issues.append(f"row {r.get('period')!r} missing revenue")
-        if r.get("net_income") is None:
-            issues.append(f"row {r.get('period')!r} missing net_income")
-    return issues
 
 
 # ---------- Builders --------------------------------------------------------
@@ -462,34 +378,7 @@ def build_claims_batch(
     }
 
 
-def build_financials_csv(rows: list[dict]) -> str:
-    """Produce a CSV string accepted by ``fin_io.import_financials_csv``.
-
-    Period strings are normalized (``FY2025 -> 2025A``). Missing financial
-    columns are emitted as empty strings (SQLite treats these as NULL).
-    """
-    cols = ["period", "period_type"] + list(fin_io.FINANCIAL_COLUMNS)
-    buf = io.StringIO()
-    w = csv.DictWriter(buf, fieldnames=cols, extrasaction="ignore")
-    w.writeheader()
-    for r in rows:
-        r = {**r, "period": normalize_period(r["period"])}
-        w.writerow({k: ("" if r.get(k) is None else r.get(k)) for k in cols})
-    return buf.getvalue()
-
-
 # ---------- Writers ---------------------------------------------------------
-
-
-def write_financials(
-    ticker: str,
-    rows: list[dict],
-    *,
-    source_file: str,
-    base: Path | None = None,
-) -> int:
-    csv_text = build_financials_csv(rows)
-    return fin_io.import_financials_csv(ticker, csv_text, source_file=source_file, base=base)
 
 
 def write_claims(
