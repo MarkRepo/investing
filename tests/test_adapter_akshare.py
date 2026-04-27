@@ -10,12 +10,15 @@ eastmoney-data-center endpoints with CSV fixtures. The adapter uses:
 from __future__ import annotations
 
 from datetime import date
+from pathlib import Path
 
 import pandas as pd
 import pytest
 
 from app.io.adapters import akshare_adapter as akad
 from app.io.adapters.base import AdapterError
+
+FIX_DIR = Path(__file__).parent / "fixtures" / "adapters" / "akshare"
 
 
 # ---------- fetch_daily ----------
@@ -146,13 +149,20 @@ def test_fetch_intraday_empty_returns_empty(monkeypatch, mock_akshare):
 # ---------- fetch_snapshot ----------
 
 
-def test_fetch_snapshot_returns_latest_daily_row(mock_akshare):
+def test_fetch_snapshot_returns_latest_daily_row(mock_akshare, monkeypatch):
+    # EOD date == today → no fallback needed
+    class _FakeDate(date):
+        @classmethod
+        def today(cls):
+            return date(2026, 4, 24)
+
+    monkeypatch.setattr(akad, "date", _FakeDate)
     q = akad.fetch_snapshot("600519", "SSE")
     assert q.ticker == "600519"
-    # Snapshot = last fixture row
     assert q.date == "2026-04-24"
     assert q.close == 1698.50
     assert q.high_52w == 1708.0
+    assert q.source == "akshare"
 
 
 def test_fetch_snapshot_no_data_raises(monkeypatch, mock_akshare):
@@ -161,3 +171,68 @@ def test_fetch_snapshot_no_data_raises(monkeypatch, mock_akshare):
     with pytest.raises(AdapterError) as exc:
         akad.fetch_snapshot("999999", "SSE")
     assert "999999" in str(exc.value)
+
+
+def test_fetch_snapshot_falls_back_to_intraday_when_eod_is_stale(mock_akshare, monkeypatch):
+    """When EOD last row < today and minute feed has today's bars, return
+    synthesized intraday Quote tagged source='akshare-intraday'."""
+    import akshare as ak
+    today_val = date(2026, 4, 27)
+
+    class _FakeDate(date):
+        @classmethod
+        def today(cls):
+            return today_val
+
+    monkeypatch.setattr(akad, "date", _FakeDate)
+    # Swap minute fixture to one with today's date
+    def _minute_today(symbol, period, adjust):
+        return pd.read_csv(FIX_DIR / "minute_sh600519_today.csv")
+    monkeypatch.setattr(ak, "stock_zh_a_minute", _minute_today)
+
+    q = akad.fetch_snapshot("600519", "SSE")
+    assert q.date == "2026-04-27"
+    assert q.source == "akshare-intraday"
+    # close = last bar close
+    assert q.close == 1710.0
+    # high = max of bar closes, low = min of bar closes
+    assert q.high == 1710.0
+    assert q.low == pytest.approx(1706.5)
+    # volume = sum of all bars
+    assert q.volume == 6200 + 5800 + 5100
+    # fundamentals carried forward from last EOD row (2026-04-24)
+    assert q.pe_ttm is not None
+    assert q.pb is not None
+
+
+def test_fetch_snapshot_falls_back_to_eod_when_minute_feed_not_today(mock_akshare, monkeypatch):
+    """When minute feed's latest day != today (holiday/weekend), return last EOD row."""
+    today_val = date(2026, 4, 27)
+
+    class _FakeDate(date):
+        @classmethod
+        def today(cls):
+            return today_val
+
+    monkeypatch.setattr(akad, "date", _FakeDate)
+    # Default mock_akshare minute fixture has 2026-04-25 as latest — not today
+    q = akad.fetch_snapshot("600519", "SSE")
+    assert q.date == "2026-04-24"
+    assert q.source == "akshare"
+
+
+def test_fetch_snapshot_falls_back_to_eod_when_minute_feed_fails(mock_akshare, monkeypatch):
+    """When minute feed raises, gracefully return last EOD row."""
+    import akshare as ak
+    today_val = date(2026, 4, 27)
+
+    class _FakeDate(date):
+        @classmethod
+        def today(cls):
+            return today_val
+
+    monkeypatch.setattr(akad, "date", _FakeDate)
+    monkeypatch.setattr(ak, "stock_zh_a_minute", lambda **_kw: (_ for _ in ()).throw(TimeoutError("down")))
+    q = akad.fetch_snapshot("600519", "SSE")
+    assert q.date == "2026-04-24"
+    assert q.source == "akshare"

@@ -181,6 +181,46 @@ def fetch_daily(
     return out
 
 
+def _fetch_minute_bars(
+    ticker: str, market: str
+) -> tuple[str, list[tuple[str, float, int]]] | None:
+    """Return (latest_day_iso, [(HH:MM, close, volume), ...]) or None on failure.
+
+    Silently returns None on any upstream error — intended for the snapshot
+    fallback path where a minute-feed failure should degrade to EOD gracefully.
+    """
+    symbol = _sina_symbol(ticker, market)
+    try:
+        with _no_proxy():
+            df = ak.stock_zh_a_minute(symbol=symbol, period="1", adjust="")
+    except Exception:
+        return None
+    if df is None or df.empty:
+        return None
+    return _parse_minute_df(df)
+
+
+def _parse_minute_df(
+    df: "pd.DataFrame",
+) -> tuple[str, list[tuple[str, float, int]]] | None:
+    """Extract (latest_day_iso, bars) from a minute DataFrame."""
+    day_prefixes = df["day"].astype(str).str.slice(0, 10)
+    latest_day = day_prefixes.max()
+    df = df[day_prefixes == latest_day]
+    bars: list[tuple[str, float, int]] = []
+    for _, r in df.iterrows():
+        ts = str(r["day"])
+        hhmm = ts[11:16] if len(ts) >= 16 else ts
+        c = _f(r.get("close"))
+        v = _f(r.get("volume"))
+        if c is None or v is None:
+            continue
+        bars.append((hhmm, c, int(v)))
+    if not bars:
+        return None
+    return (latest_day, bars)
+
+
 def fetch_intraday_today(
     ticker: str, market: str
 ) -> list[tuple[str, float, int]]:
@@ -201,30 +241,71 @@ def fetch_intraday_today(
         ) from e
     if df is None or df.empty:
         return []
-    # Pick the latest session present in the feed (YYYY-MM-DD prefix of ``day``).
-    day_prefixes = df["day"].astype(str).str.slice(0, 10)
-    latest_day = day_prefixes.max()
-    df = df[day_prefixes == latest_day]
-    out: list[tuple[str, float, int]] = []
-    for _, r in df.iterrows():
-        ts = str(r["day"])
-        hhmm = ts[11:16] if len(ts) >= 16 else ts
-        c = _f(r.get("close"))
-        v = _f(r.get("volume"))
-        if c is None or v is None:
-            continue
-        out.append((hhmm, c, int(v)))
-    return out
+    result = _parse_minute_df(df)
+    return result[1] if result else []
 
 
 def fetch_snapshot(ticker: str, market: str) -> Quote:
-    """One-shot current snapshot. We just fetch the last few days of daily
-    data and return the most-recent row; Sina has no separate "realtime"
-    endpoint in a shape compatible with the Quote dataclass.
+    """One-shot current snapshot.
+
+    Primary path: fetch EOD daily rows from Sina; return the latest row.
+    Intraday fallback: if the latest EOD row is not from today (Sina hasn't
+    published the close yet), try the 1-min feed. When today's minute bars are
+    available, synthesize a Quote with live OHLCV and carried-forward
+    fundamentals (pe/pb/shares) from the last EOD row. Source is tagged
+    "akshare-intraday" so callers can distinguish. The upsert later will
+    overwrite this row once EOD publishes.
     """
-    end = date.today()
+    today = date.today()
+    end = today
     start = end.replace(day=1) if end.day > 3 else end.replace(year=end.year, month=max(1, end.month - 1), day=1)
     rows = fetch_daily(ticker, market, start, end)
     if not rows:
         raise AdapterError(f"akshare: no recent data for {ticker}")
-    return rows[-1]
+    last = rows[-1]
+    if last.date == today.isoformat():
+        return last
+
+    # EOD hasn't published today — try minute feed for live intraday data.
+    minute_result = _fetch_minute_bars(ticker, market)
+    if minute_result is None:
+        return last
+    minute_day, bars = minute_result
+    if minute_day != today.isoformat() or not bars:
+        return last
+
+    # Synthesize today's Quote from intraday bars + carried-forward fundamentals.
+    closes = [c for _, c, _ in bars]
+    volumes = [v for _, _, v in bars]
+    open_price = _f(bars[0][1])  # first bar close ≈ open approximation
+    close_price = closes[-1]
+    high_price = max(closes)
+    low_price = min(closes)
+    total_volume = sum(volumes)
+    shares = last.shares_outstanding
+    market_cap = (close_price * shares) if shares else last.market_cap
+    return Quote(
+        ticker=ticker, date=today.isoformat(), market=market,
+        open=open_price,
+        high=high_price,
+        low=low_price,
+        close=close_price,
+        volume=total_volume,
+        amount=None,
+        turnover_rate=None,
+        pe_ttm=last.pe_ttm,
+        pe_static=last.pe_static,
+        pe_forward=None,
+        pb=last.pb,
+        ps=last.ps,
+        peg=last.peg,
+        dividend_yield=None,
+        market_cap=market_cap,
+        float_market_cap=last.float_market_cap,
+        shares_outstanding=shares,
+        float_shares=last.float_shares,
+        high_52w=last.high_52w,
+        low_52w=last.low_52w,
+        source="akshare-intraday",
+        fetched_at=datetime.now().isoformat(),
+    )
