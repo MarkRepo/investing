@@ -188,9 +188,9 @@
       grid: { left: 55, right: 20, top: 20, bottom: 30 },
       xAxis: { type: "category", data: fullAxis, boundaryGap: false,
         min: 0, max: fullAxis.length - 1,
-        axisLabel: { interval: (_, v) => ["09:30","10:30","11:30","13:00","14:00","15:00"].includes(v) } },
+        axisLabel: { interval: (_, v) => ["09:30","10:30","11:30","14:00","15:00"].includes(v) } },
       yAxis: { scale: true },
-      series: [{ type: "line", data: prices, smooth: false, showSymbol: false, connectNulls: false }],
+      series: [{ type: "line", data: prices, smooth: false, showSymbol: false, connectNulls: true }],
     };
   }
 
