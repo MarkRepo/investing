@@ -462,8 +462,10 @@ def write_claims(
     extracted_at: str,
     base: Path | None = None,
 ) -> tuple[int, list[dict]]:
-    """Validate then append. Returns ``(n_written, errors)``. On any
-    validation error returns ``(0, errors)`` and writes nothing.
+    """Validate then append. Returns ``(n_written, errors)``.
+
+    Partial success: valid claims are appended even if some sibling claims
+    fail validation. Caller inspects ``errors`` and reports to the user.
     """
     batch = build_claims_batch(
         claims,
@@ -479,10 +481,9 @@ def write_claims(
         )
     except ValueError as e:
         return 0, [{"error": str(e)}]
-    if errors:
-        return 0, errors
-    claims_io.append_batch(ticker, market, valid, header=header, base=base)
-    return len(valid), []
+    if valid:
+        claims_io.append_batch(ticker, market, valid, header=header, base=base)
+    return len(valid), errors
 
 
 # ---------- Three-layer narrative writers -----

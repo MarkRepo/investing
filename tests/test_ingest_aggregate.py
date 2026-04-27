@@ -480,7 +480,7 @@ def test_write_claims_succeeds_and_attaches_source_id(env):
     assert got[0]["ticker"] == "HIMS"
 
 
-def test_write_claims_validation_error_blocks_all_writes(env):
+def test_write_claims_partial_success_writes_valid_only(env):
     bad_claim = {
         "claim_text": "x",
         "subject_tag": "not_in_vocab",  # not in our subjects.yaml
@@ -499,8 +499,10 @@ def test_write_claims_validation_error_blocks_all_writes(env):
         extracted_by="e", extracted_at="2026-04-24T00:00:00+00:00",
         base=env,
     )
-    assert n == 0
-    assert errors  # non-empty
-    # Nothing got written — regression guard for partial writes.
+    # Partial success: 1 good claim written, 1 bad claim rejected.
+    assert n == 1
+    assert len(errors) == 1
+    assert errors[0]["index"] == 0  # bad_claim was first
     got = claims_io.read_claims("HIMS", "US", base=env)
-    assert got == []
+    assert len(got) == 1
+    assert got[0]["claim_text"] == "y"
