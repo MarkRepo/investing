@@ -228,6 +228,11 @@ def init_schema(conn: sqlite3.Connection) -> None:
         for col in cols:
             if col not in existing:
                 conn.execute(f"ALTER TABLE {table} ADD COLUMN {col} {_col_type(col)}")
+    # Companies table pre-existing without industry_slugs (legacy column name
+    # was industry_primary) — add the new column so upsert_company works.
+    existing_co = {r[1] for r in conn.execute("PRAGMA table_info(companies)").fetchall()}
+    if "industry_slugs" not in existing_co:
+        conn.execute("ALTER TABLE companies ADD COLUMN industry_slugs TEXT")
     conn.commit()
 
 

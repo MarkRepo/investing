@@ -1,15 +1,16 @@
-"""Financials routes: show historical table + CSV import.
+"""Financials page + manual refresh.
 
-The page shows whatever is in SQLite for the given ticker. CSV import is the
-primary way to populate it (manual entry → CSV, later report-parsing → CSV).
+GET  /companies/{key}/financials           → render page (all periods)
+POST /companies/{key}/financials/refresh   → pull fresh from API, return JSON
 """
-from fastapi import APIRouter, File, HTTPException, Request, UploadFile
-from fastapi.responses import RedirectResponse
+from fastapi import APIRouter, HTTPException, Request
+from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import APP_TEMPLATES_DIR
 from app.io import company as company_io
 from app.io import financials as fin_io
+from scripts import fetch_financials_cn, fetch_financials_us
 
 router = APIRouter(prefix="/companies/{key}/financials", tags=["financials"])
 templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
@@ -29,39 +30,38 @@ def page(request: Request, key: str):
     if not meta:
         raise HTTPException(status_code=404, detail="company not found")
 
-    # Mirror meta into SQLite companies table (read-through cache).
     conn = fin_io.connect()
     try:
         fin_io.upsert_company(conn, {**meta, "ticker": ticker, "market": market})
+        rows = fin_io.list_periods_with_ratios(conn, ticker, market=market)
     finally:
         conn.close()
 
-    rows = fin_io.list_periods_with_ratios(ticker)
     return templates.TemplateResponse(
         request,
         "companies/financials.html",
         {
             "key": key, "ticker": ticker, "market": market,
             "meta": meta, "rows": rows,
-            "columns": fin_io.FINANCIAL_COLUMNS,
         },
     )
 
 
-@router.post("/import")
-async def import_csv(key: str, file: UploadFile = File(...)):
+@router.post("/refresh")
+def refresh(key: str):
     market, ticker = _parse_key(key)
     if not company_io.read_meta(ticker, market):
         raise HTTPException(status_code=404, detail="company not found")
-
-    raw = await file.read()
     try:
-        text = raw.decode("utf-8-sig")
-    except UnicodeDecodeError as e:
-        raise HTTPException(status_code=400, detail=f"CSV must be UTF-8: {e}") from e
-
-    try:
-        fin_io.import_financials_csv(ticker, text, source_file=file.filename or "")
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e)) from e
-    return RedirectResponse(url=f"/companies/{key}/financials", status_code=303)
+        if market == "US":
+            n = fetch_financials_us.run_for_ticker(ticker, market)
+        elif market in ("SSE", "SZSE", "BSE"):
+            n = fetch_financials_cn.run_for_ticker(ticker, market)
+        else:
+            return JSONResponse({"ok": False, "error": f"unsupported market {market}"}, status_code=400)
+    except Exception as e:
+        return JSONResponse(
+            {"ok": False, "error": f"{type(e).__name__}: {e}"},
+            status_code=500,
+        )
+    return {"ok": True, "periods_added": n}

@@ -1,65 +1,215 @@
 {% extends "base.html" %}
-{% block title %}{{ ticker }} 财务{% endblock %}
+{% block title %}{{ ticker }} 财务报表{% endblock %}
 {% block content %}
-<h1>{{ meta.get('name', ticker) }} · 财务 <small>({{ market }}:{{ ticker }})</small></h1>
+<h1>{{ meta.get('name', ticker) }} · 财务报表 <small>({{ market }}:{{ ticker }})</small></h1>
 <p><a href="/companies/{{ key }}">← 返回公司</a></p>
 
-<h2>CSV 导入</h2>
-<p class="hint">表头必须包含 <code>period, period_type</code>，可选列：{{ columns|join(', ') }}。<code>period</code> 格式 <code>YYYYQn</code> 或 <code>YYYYA</code>，<code>period_type</code> 为 <code>annual</code> 或 <code>quarterly</code>。同一期间重复导入会覆盖。</p>
-<form method="post" action="/companies/{{ key }}/financials/import" enctype="multipart/form-data">
-  <label>CSV 文件 <input type="file" name="file" accept=".csv,text/csv" required></label>
-  <button type="submit">导入</button>
-</form>
+<div class="fin-toolbar">
+  <button id="refresh-fin" type="button">刷新财务数据</button>
+  <span id="refresh-status" class="hint"></span>
 
-<h2>历史（最近 {{ rows|length }} 期）</h2>
-{% if rows %}
-<table class="financials">
+  <span class="tab-group">
+    <button class="period-tab active" data-type="annual" type="button">年报</button>
+    <button class="period-tab" data-type="quarterly" type="button">季报</button>
+  </span>
+
+  <label class="period-count-annual">期数：
+    <select id="count-annual">
+      <option value="5">5</option>
+      <option value="8" selected>8</option>
+      <option value="10">10</option>
+      <option value="all">全部</option>
+    </select>
+  </label>
+  <label class="period-count-quarterly" hidden>期数：
+    <select id="count-quarterly">
+      <option value="8">8</option>
+      <option value="12" selected>12</option>
+      <option value="20">20</option>
+      <option value="all">全部</option>
+    </select>
+  </label>
+</div>
+
+{% macro num(v) -%}
+  {%- if v is none -%}<span class="hint">–</span>
+  {%- else -%}{{ "%.2f"|format(v) }}{%- endif -%}
+{%- endmacro %}
+{% macro pct(v) -%}
+  {%- if v is none -%}<span class="hint">–</span>
+  {%- else -%}{{ "%.1f%%"|format(v * 100) }}{%- endif -%}
+{%- endmacro %}
+
+{% if not rows %}
+<p><em>还没有财务数据。</em> 点 "刷新财务数据" 从 API 拉取。</p>
+{% else %}
+
+{# Pick shared-concept column names that work for both CN and US. Jinja
+   falls back with `or` so a missing CN key doesn't break US rendering. #}
+<h2>利润表</h2>
+<table class="financials" data-section="income">
   <thead>
-    <tr>
-      <th>期间</th>
-      <th>类型</th>
-      <th>营收</th>
-      <th>毛利</th>
-      <th>营业利润</th>
-      <th>净利润</th>
-      <th>经营现金流</th>
-      <th>毛利率</th>
-      <th>营业利润率</th>
-      <th>净利率</th>
-      <th>ROE</th>
-      <th>ROA</th>
-      <th>D/E</th>
-      <th>来源</th>
-    </tr>
+    <tr><th>期间</th><th>营收</th><th>毛利率</th><th>营业利润</th>
+        <th>净利润</th><th>EPS (稀释)</th></tr>
   </thead>
   <tbody>
-    {% macro num(v) -%}
-      {%- if v is none -%}<span class="hint">–</span>{%- else -%}{{ "%.2f"|format(v) }}{%- endif -%}
-    {%- endmacro %}
-    {% macro pct(v) -%}
-      {%- if v is none -%}<span class="hint">–</span>{%- else -%}{{ "%.1f%%"|format(v * 100) }}{%- endif -%}
-    {%- endmacro %}
     {% for r in rows %}
-    <tr>
+    <tr data-period-type="{{ r.period_type }}">
       <td><strong>{{ r.period }}</strong></td>
-      <td>{{ r.period_type }}</td>
-      <td>{{ num(r.revenue) }}</td>
-      <td>{{ num(r.gross_profit) }}</td>
+      <td>{{ num(r.total_revenue or r.operating_revenue) }}</td>
+      <td>{{ pct(r.gross_margin) }}</td>
       <td>{{ num(r.operating_income) }}</td>
       <td>{{ num(r.net_income) }}</td>
-      <td>{{ num(r.operating_cashflow) }}</td>
-      <td>{{ pct(r.gross_margin) }}</td>
-      <td>{{ pct(r.operating_margin) }}</td>
-      <td>{{ pct(r.net_margin) }}</td>
-      <td>{{ pct(r.roe) }}</td>
-      <td>{{ pct(r.roa) }}</td>
-      <td>{{ num(r.debt_to_equity) }}</td>
-      <td><code class="hint">{{ r.source_file or '-' }}</code></td>
+      <td>{{ num(r.diluted_eps or r.eps_diluted) }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-{% else %}
-<p><em>还没有财务数据。</em> 用上面的 CSV 导入开始填入。</p>
+
+<h2>资产负债表</h2>
+<table class="financials" data-section="balance">
+  <thead>
+    <tr><th>期间</th><th>总资产</th><th>总负债</th><th>股东权益</th>
+        <th>资产负债率</th><th>流动比率</th></tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr data-period-type="{{ r.period_type }}">
+      <td><strong>{{ r.period }}</strong></td>
+      <td>{{ num(r.total_assets) }}</td>
+      <td>{{ num(r.total_liabilities or r.total_liabilities_net_minority_interest) }}</td>
+      <td>{{ num(r.total_equity) }}</td>
+      <td>
+        {%- set lia = r.total_liabilities or r.total_liabilities_net_minority_interest -%}
+        {%- if lia is not none and r.total_assets -%}
+          {{ pct(lia / r.total_assets) }}
+        {%- else -%}<span class="hint">–</span>{%- endif -%}
+      </td>
+      <td>{{ num(r.current_ratio) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>现金流量表</h2>
+<table class="financials" data-section="cashflow">
+  <thead>
+    <tr><th>期间</th><th>经营 CFO</th><th>资本开支</th><th>自由现金流</th>
+        <th>筹资 CFF</th></tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr data-period-type="{{ r.period_type }}">
+      <td><strong>{{ r.period }}</strong></td>
+      <td>{{ num(r.operating_cashflow or r.operating_cash_flow) }}</td>
+      <td>{{ num(r.capex or r.capital_expenditure) }}</td>
+      <td>{{ num(r.fcf) }}</td>
+      <td>{{ num(r.financing_cashflow or r.financing_cash_flow) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>关键比率</h2>
+<table class="financials" data-section="ratios">
+  <thead>
+    <tr><th>期间</th><th>毛利率</th><th>净利率</th>
+        <th>ROE</th><th>ROA</th><th>D/E</th></tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr data-period-type="{{ r.period_type }}">
+      <td><strong>{{ r.period }}</strong></td>
+      <td>{{ pct(r.gross_margin) }}</td>
+      <td>{{ pct(r.net_margin) }}</td>
+      <td>{{ pct(r.roe) }}</td>
+      <td>{{ pct(r.roa) }}</td>
+      <td>{{ num(r.debt_to_equity) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endif %}
+
+<script>
+(function () {
+  const KEY = {{ key|tojson }};
+
+  // Tab switch (annual / quarterly) + period count filter
+  const tabs = document.querySelectorAll(".period-tab");
+  const selAnnual = document.getElementById("count-annual");
+  const selQuarterly = document.getElementById("count-quarterly");
+  const wrapAnnual = document.querySelector(".period-count-annual");
+  const wrapQuarterly = document.querySelector(".period-count-quarterly");
+
+  function activeType() {
+    const t = document.querySelector(".period-tab.active");
+    return t ? t.dataset.type : "annual";
+  }
+
+  function applyFilter() {
+    const type = activeType();
+    const sel = type === "annual" ? selAnnual : selQuarterly;
+    const countRaw = sel ? sel.value : "all";
+    const limit = countRaw === "all" ? Infinity : parseInt(countRaw, 10);
+
+    document.querySelectorAll("table.financials").forEach((tbl) => {
+      const rows = tbl.querySelectorAll("tbody tr");
+      let shown = 0;
+      rows.forEach((tr) => {
+        if (tr.dataset.periodType !== type) { tr.hidden = true; return; }
+        if (shown < limit) { tr.hidden = false; shown++; }
+        else tr.hidden = true;
+      });
+    });
+
+    wrapAnnual.hidden = type !== "annual";
+    wrapQuarterly.hidden = type !== "quarterly";
+  }
+
+  tabs.forEach((t) => t.addEventListener("click", () => {
+    tabs.forEach((x) => x.classList.remove("active"));
+    t.classList.add("active");
+    applyFilter();
+  }));
+  if (selAnnual) selAnnual.addEventListener("change", applyFilter);
+  if (selQuarterly) selQuarterly.addEventListener("change", applyFilter);
+  applyFilter();
+
+  // Refresh button (30s throttle)
+  const btn = document.getElementById("refresh-fin");
+  const status = document.getElementById("refresh-status");
+  let throttleUntil = 0;
+  if (btn) {
+    btn.addEventListener("click", async () => {
+      if (Date.now() < throttleUntil) return;
+      throttleUntil = Date.now() + 30000;
+      btn.disabled = true;
+      const orig = btn.textContent;
+      btn.textContent = "正在刷新…";
+      status.textContent = "";
+      try {
+        const res = await fetch(`/companies/${KEY}/financials/refresh`, { method: "POST" });
+        const j = await res.json();
+        if (j.ok) {
+          status.textContent = `已刷新 ${j.periods_added} 期，正在重载...`;
+          location.reload();
+        } else {
+          status.textContent = "刷新失败: " + (j.error || "未知错误");
+          status.classList.add("error");
+        }
+      } catch (e) {
+        status.textContent = "请求失败: " + e.message;
+        status.classList.add("error");
+      } finally {
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = orig;
+        }, 30000);
+      }
+    });
+  }
+})();
+</script>
 {% endblock %}
