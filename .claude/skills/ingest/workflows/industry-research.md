@@ -580,6 +580,12 @@ compat_merged = {
     "flags_by_subagent": {"industry-digest": digest.get("flags", [])},
     "empty_subagents": [],
     "competence_findings": {"answered": [], "proposed_additions": []},
+    # Plan 5 T10: lets `check_figure_context_coverage` fire. Industry key_facts
+    # are the ones the subagent emitted with target_layer=industry.
+    "industry_key_facts": [
+        f for f in digest.get("key_facts", [])
+        if f.get("target_layer") == "industry"
+    ],
 }
 Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
     json.dumps(compat_merged, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -596,8 +602,11 @@ Path(f"/tmp/ingest-{sha8}.merged.json").write_text(
 
 **不跑 `gap`**，也**不用 `--arena`**（行研常触多 arena，挑一个没意义）。
 
+**已上线的行研专属规则**：
+- `figure_coverage_low`（Plan 5 T10）— 数字 caption 多但 observation 少时 warn
+
 **未来扩展**：
-- 行研专属规则：`figure_without_observation` / `arena_proposed_but_no_narrative` / `tam_unit_mismatch` / `dup_observation_across_institutions`
+- `arena_proposed_but_no_narrative` / `tam_unit_mismatch` / `dup_observation_across_institutions`
 
 ---
 

@@ -208,6 +208,49 @@ def check_proposed_vs_existing(
     return warnings
 
 
+def check_figure_context_coverage(
+    industry_facts: list[dict],
+    figure_contexts: list[dict],
+    ratio_threshold: float = 0.30,
+) -> list[dict]:
+    """Plan 5 T10: warn when digest produces too few numeric observations
+    relative to figure_contexts with digit-bearing captions.
+
+    The industry-digest prompt demands ≥80% of figure captions be scanned
+    ("要么产 observation，要么影响 narrative"). We can't directly measure
+    "scanned"; the useful proxy is the ratio of atomic numeric facts to
+    figures whose caption contains a digit (TAM / CAGR / share-rate figures
+    almost always have digits). A ratio < 0.30 likely means the subagent
+    skipped most figures.
+
+    No warning if there are zero digit-bearing captions — the rule only fires
+    when there's measurable figure data to compare against.
+    """
+    numeric_captions = [
+        f for f in figure_contexts or []
+        if any(c.isdigit() for c in (f.get("caption") or ""))
+    ]
+    if not numeric_captions:
+        return []
+    numeric_facts = [
+        f for f in industry_facts or []
+        if f.get("value_numeric") is not None
+    ]
+    ratio = len(numeric_facts) / len(numeric_captions)
+    if ratio >= ratio_threshold:
+        return []
+    return [{
+        "rule": "figure_coverage_low",
+        "detail": (
+            f"图表数据回收率偏低：{len(numeric_captions)} 个带数字 caption，"
+            f"仅 {len(numeric_facts)} 条 atomic 数值 observation "
+            f"(ratio={ratio:.2f} < {ratio_threshold})。"
+            "subagent 可能漏读 figure_contexts——检查 industry-digest 输出"
+            "是否覆盖主要图表。"
+        ),
+    }]
+
+
 def check_checklist_company_contamination(
     items: list[dict],
     participants: list[dict],
@@ -561,11 +604,13 @@ def cmd_warn(args: argparse.Namespace) -> int:
 
     # haystack for fidelity
     haystack_parts = []
+    figure_contexts = []
     if args.preprocess:
         pre = json.loads(Path(args.preprocess).read_text(encoding="utf-8"))
         for s in pre.get("sections", []):
             if s.get("action") != "skip":
                 haystack_parts.append(s.get("text") or "")
+        figure_contexts = pre.get("figure_contexts") or []
     haystack = "\n".join(haystack_parts)
 
     raw_warnings: list[dict] = []
@@ -573,6 +618,13 @@ def cmd_warn(args: argparse.Namespace) -> int:
         raw_warnings += check_evidence_fidelity(claims, haystack)
     raw_warnings += check_answered_self_contradiction(answered)
     raw_warnings += check_polarity_text_mismatch(claims)
+    # Plan 5 T10: figure_contexts coverage (industry workflow passes digest
+    # industry key_facts via merged["industry_key_facts"]).
+    industry_key_facts = merged.get("industry_key_facts") or []
+    if figure_contexts and industry_key_facts:
+        raw_warnings += check_figure_context_coverage(
+            industry_key_facts, figure_contexts,
+        )
 
     # checklist-dependent checks
     if args.arena:

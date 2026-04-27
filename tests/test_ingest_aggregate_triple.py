@@ -429,6 +429,151 @@ def test_e2e_industry_digest_full_pipeline(tmp_path):
     assert arena_def["frontmatter"]["battleground_focus"] == "国产 CMP 抛光液挑战 Dupont"
 
 
+def test_e2e_plan5_chains_derive_arena_and_claims(tmp_path):
+    """Plan 5 T10: extends the Plan 3 e2e with the post-Plan-5 chain:
+       - derive_arena_facts clones industry facts with matching arena_refs
+       - facts_to_claims + write_claims produces company claims
+       - arena narratives get appended under the proposed slug
+       - filter_observations_by_arena retrieves the cross-layer fact
+    Individual pieces are unit-tested; this verifies the chain."""
+    from app.io import industry as industry_io
+    from app.io import arenas as arenas_io
+    from app.io import claims as claims_io
+    from app.io import company as company_io
+
+    base = tmp_path
+    arena_slug = "cn-cmp-slurry-domestic-substitution"
+
+    # Seed industry + a valid subjects.yaml the claim validator loads.
+    agg.ensure_industry_exists(
+        slug="cn-cmp-material", name="CMP", scope="半导体抛光", base=base,
+    )
+    (base / "controlled-vocab").mkdir(exist_ok=True)
+    (base / "controlled-vocab" / "subjects.yaml").write_text(
+        "version: 1\nsubjects:\n  - id: competitive_position\n    label: 竞争位置\n",
+        encoding="utf-8",
+    )
+
+    # Digest shape mirrors Plan 5 industry-digest output contract.
+    digest = {
+        "key_facts": [
+            # industry fact tagged with arena_refs → will be cloned to arena bucket
+            {"idx": 1, "target_layer": "industry",
+             "target_refs": {"industry_slug": "cn-cmp-material"},
+             "dimension_hint": "competition", "field_hint": "share_by_player",
+             "value_numeric": 11.0, "unit": "%",
+             "timeframe": "2024", "metric_type": "segment", "segment": "SSE_688019",
+             "arena_refs": [arena_slug],
+             "confidence": "high",
+             "fact_text": "安集 2024 全球市占率 11%",
+             "evidence_quote": "原文 X"},
+            # company fact with valid subject_tag_hint
+            {"idx": 2, "target_layer": "company",
+             "target_refs": {"ticker": "688019", "market": "SSE"},
+             "dimension_hint": "moat",
+             "subject_tag_hint": "competitive_position",
+             "company_dimension_hint": "moat",
+             "confidence": "high",
+             "fact_text": "安集 CMP 抛光液技术积累多年",
+             "evidence_quote": "原文 Y"},
+        ],
+        "narratives": {
+            "industry": {"cn-cmp-material": {
+                "competition": "头部 5 家占 CR5=65%，国产替代加速。"
+            }},
+            # arena narrative keyed by slug (Plan 5 T5 铁律)
+            "arena": {arena_slug: {
+                "participants": "安集 vs Dupont；本土 vs 跨国。"
+            }},
+            "company": {"SSE_688019": {
+                "moat": "CMP 抛光液多年工艺积累是护城河。"
+            }},
+        },
+        "proposed_arenas": [
+            {"tentative_slug": arena_slug,
+             "tentative_name": "国产 CMP 抛光液替代",
+             "battleground_focus": "国产 CMP 抛光液挑战 Dupont",
+             "parent_industry_slug": "cn-cmp-material",
+             "tentative_participants": [
+                 {"name": "安集", "role": "challenger"},
+                 {"name": "Dupont", "role": "incumbent"},
+             ]},
+        ],
+    }
+    source_meta = {"source_id": "行研-国金-2026-03-10-abcd1234",
+                   "institution": "国金", "date": "2026-03-10",
+                   "sha8": "abcd1234", "source_file": "cmp.pdf"}
+
+    # Bootstrap arena first — so derived facts can target a real arena page.
+    proposals = agg.propose_arena_bootstrap(digest["proposed_arenas"])
+    assert len(proposals) == 1 and proposals[0]["name"] == "国产 CMP 抛光液替代"
+    agg.bootstrap_arena(proposals[0], base=base)
+
+    # Route + derive (Plan 5 T9)
+    buckets = agg.route_key_facts(digest["key_facts"])
+    derived = agg.derive_arena_facts(buckets, [arena_slug])
+    assert len(derived) == 1
+    assert derived[0]["target_refs"]["arena_slug"] == arena_slug
+    assert derived[0]["_derived_from"] == "industry.arena_refs"
+
+    # Write layers
+    agg.write_industry_observations(
+        buckets["industry"], source_meta,
+        extracted_by="t", extracted_at="2026-04-27T00:00:00Z",
+        base=base,
+    )
+    agg.write_industry_narrative(
+        digest["narratives"]["industry"], source_meta, base=base,
+    )
+    agg.write_arena_narrative(
+        digest["narratives"]["arena"], source_meta, base=base,
+    )
+    agg.ensure_company_exists(
+        ticker="688019", market="SSE", name="安集科技",
+        industry_slugs=["cn-cmp-material"], currency="CNY", base=base,
+    )
+    agg.write_company_narrative(
+        digest["narratives"]["company"], source_meta, base=base,
+    )
+    # facts_to_claims + write_claims (Plan 5 T4 partial-success contract)
+    claim_dicts = agg.facts_to_claims(buckets["company"])
+    n_written, errors = agg.write_claims(
+        ticker="688019", market="SSE", claims=claim_dicts,
+        source_id=source_meta["source_id"], source_file="cmp.pdf",
+        extracted_by="t", extracted_at="2026-04-27T00:00:00Z",
+        base=base,
+    )
+    assert n_written == 1
+    assert errors == []
+
+    # --- Assertions on disk state ---
+    # Industry observation with arena_refs is retrievable by arena slug
+    obs = industry_io.read_observations("cn-cmp-material", base=base)
+    assert len(obs) == 1
+    arena_obs = industry_io.filter_observations_by_arena(
+        "cn-cmp-material", arena_slug, base=base,
+    )
+    assert len(arena_obs) == 1
+    assert arena_obs[0]["segment"] == "SSE_688019"
+
+    # Arena has definition + populated narrative
+    arena_def = arenas_io.read_definition(arena_slug, base=base)
+    assert arena_def["frontmatter"]["industry"] == "cn-cmp-material"
+    participants_md = arenas_io.read_narrative(
+        arena_slug, "participants", base=base,
+    )
+    assert "安集 vs Dupont" in participants_md
+    assert "### 来源 国金" in participants_md
+
+    # Company claim exists with valid subject_tag
+    company_claims = claims_io.read_claims("688019", "SSE", base=base)
+    assert len(company_claims) == 1
+    assert company_claims[0]["subject_tag"] == "competitive_position"
+    # Company narrative populated
+    moat_md = company_io.read_narrative("688019", "SSE", "moat", base=base)
+    assert "CMP 抛光液" in moat_md
+
+
 def test_write_figure_contexts_attaches_source_id(tmp_path):
     from app.io import industry as industry_io
     from app.io import figure_contexts as fc_io
