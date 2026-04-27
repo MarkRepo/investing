@@ -1,5 +1,7 @@
 # quarterly-digest prompt（季报 / 10-Q 专用 digest subagent）
 
+> **⚠️ 迁移中（2026-04）**：**不要再产 `financial_rows`** 字段——财务数字统一由 `scripts/fetch_financials_{cn,us}` 从 akshare / yfinance API 入库。`financial_profile` narrative 来源改为 `§管理层讨论与分析` / `§Item_7_MDA`。以下文档中提到 `financial_rows` 的地方请**跳过**，输出 JSON 顶层 keys 不含 `financial_rows`。
+
 读 `_common.md` + `annual-digest.md` 的通用规则先；本文档只写季报专属差异。
 
 ## 与年报的差异

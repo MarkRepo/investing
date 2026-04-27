@@ -17,7 +17,7 @@ argument-hint: "<file-path> [--key MARKET_TICKER | --industry INDUSTRY_SLUG]"
 
 1. **直接调 `app/io/*`**，不走 HTTP 路由。服务是否启动不影响本 skill。
 2. **LLM 抽取发生在对话里**（主 agent 派发 **1 个 digest subagent** 读整份报告）；Python 脚本（`scripts.preprocess_report` / `scripts.ingest_aggregate` / `scripts.ingest_qa`）只做预处理 / 校验 / 写入 / 查询，不调 LLM。
-3. **digest subagent = 单 Explore**（只读，无写权限）。旧版"section-per-subagent，并发 ≤ 5"架构已废弃（v1，归档在 `prompts/_v1_archived/`）。digest subagent **返回 JSON**（key_facts / narratives / proposed_arenas / financial_rows / competence_findings / flags），主 agent 用 `route_key_facts` 分桶到三层，再统一写入 + 做交叉校验。
+3. **digest subagent = 单 Explore**（只读，无写权限）。旧版"section-per-subagent，并发 ≤ 5"架构已废弃（v1，归档在 `prompts/_v1_archived/`）。digest subagent **返回 JSON**（key_facts / narratives / proposed_arenas / competence_findings / flags），主 agent 用 `route_key_facts` 分桶到三层，再统一写入 + 做交叉校验。财务数字走 API（akshare / yfinance）不走 ingest。
 4. **事实层写入前必须让用户审**：`meta_updates` / `proposed_arena_bootstrap` 走 AskUserQuestion；claims / observations / narratives 校验通过后主 agent 直接写。
 5. **meta / industry / company 缺失时主动建**（autobuild 纪律）——绝不中止流程引导用户去别处。`agg.ensure_industry_exists` / `agg.ensure_company_exists` 幂等。
 6. **`profile-{year}.md` 不再产出**：新架构下公司事实层快照由 `companies/{key}/narratives/*.md`（8 维分文件）替代；`write_profile` / `company_io.write_profile` 已废弃。旧历史 profile 文件保留不迁移（Plan 4 做专门 migration + `/narratives/{key}` 路由）。
@@ -51,8 +51,8 @@ argument-hint: "<file-path> [--key MARKET_TICKER | --industry INDUSTRY_SLUG]"
 ## 关键资源索引（主 agent 派单前读）
 
 ### Python 辅助
-- `scripts.preprocess_report` — PDF/HTML → 结构化 JSON（`sections / figure_contexts / detected_tickers / financial_line_rows / meta / report_abstract`）
-- `scripts.ingest_aggregate` — 全部 digest 后处理与写入辅助：`load_json_tolerant` / `route_key_facts` / `group_company_facts` / `facts_to_claims` / `dedup_claims` / `ensure_industry_exists` / `ensure_company_exists` / `propose_arena_bootstrap` / `bootstrap_arena` / `write_industry_observations` / `write_industry_narrative` / `write_arena_narrative` / `write_company_narrative` / `write_figure_contexts` / `write_financials` / `write_claims` / `check_revenue_consistency` / `check_period_consistency` / `check_financials_required` / `check_empty_sections`
+- `scripts.preprocess_report` — PDF/HTML → 结构化 JSON（`sections / figure_contexts / detected_tickers / meta / report_abstract`）
+- `scripts.ingest_aggregate` — 全部 digest 后处理与写入辅助：`load_json_tolerant` / `route_key_facts` / `group_company_facts` / `facts_to_claims` / `dedup_claims` / `ensure_industry_exists` / `ensure_company_exists` / `propose_arena_bootstrap` / `bootstrap_arena` / `write_industry_observations` / `write_industry_narrative` / `write_arena_narrative` / `write_company_narrative` / `write_figure_contexts` / `write_claims` / `check_period_consistency` / `check_empty_sections`
 - `scripts.ingest_qa` — QA 规则运行器（`warn` / `gap` / `list` / `resolve` / `dismiss`）
 
 ### 配置与模版
@@ -77,7 +77,7 @@ argument-hint: "<file-path> [--key MARKET_TICKER | --industry INDUSTRY_SLUG]"
 - `app.io.company` — `list_companies / read_meta / read_meta_with_body / write_meta / create_company / list_sources / read_narrative / append_narrative_block`
 - `app.io.claims` — `load_subjects / save_source_markdown / validate_batch / append_batch / read_claims`
 - `app.io.figure_contexts` — `append_figure_contexts / read_figure_contexts / filter_by_source_id / filter_by_section`
-- `app.io.financials` — `import_financials_csv / load_alias_map`
+- `app.io.financials` — `upsert_financials_cn / upsert_financials_us / recompute_ratios / list_financials_cn / list_financials_us`（财务数字走 API，不再从 ingest 入库）
 - `app.io.qa` — `append_warnings / read_warnings / update_status / write_gap_markdown / summarize_by_company`
 
 ### Arena 预定义 tag
@@ -102,7 +102,6 @@ argument-hint: "<file-path> [--key MARKET_TICKER | --industry INDUSTRY_SLUG]"
 - `sections[{name, heading_raw, order, char_count, action, reason, text}]`
 - `figure_contexts[{id, page, caption, surrounding_text, section_name}]`
 - `detected_tickers[{market, ticker, name}]`
-- `financial_line_rows[{raw_label, standard_key, numeric_candidates, line}]`（`--type industry` 下为空）
 - `report_abstract`（封面 / 前言摘要，前 500 字）
 
 ## Digest dispatch（Step 7 核心模板）
@@ -134,7 +133,6 @@ industry_fields_hint: {{market_size: [...], ...}}
 subjects_whitelist: [...]  # 公司通道才有
 figure_contexts: [...]
 detected_tickers: [...]
-financial_line_rows: [...]   # annual/quarterly 才有
 checklist_items: [...]        # 若 Step 4.5 有 item_pool
 
 full_text: |
@@ -170,7 +168,6 @@ claims_all = agg.dedup_claims(claims_all)
 # 凑 QA 兼容 merged（Step 10.5 依赖）
 merged = {
     "claims": claims_all,
-    "financial_rows": digest.get("financial_rows", []),
     "meta_updates": digest.get("meta_updates", {}),
     "competence_findings": digest.get("competence_findings",
                                       {"answered": [], "proposed_additions": []}),
@@ -186,8 +183,8 @@ agg.write_industry_narrative({slug: dims_dict}, source_meta)
 agg.write_arena_narrative({arena_slug: dims_dict}, source_meta)
 agg.write_company_narrative({f"{market}_{ticker}": dims_dict}, source_meta)
 agg.write_figure_contexts(slug=industry_slug, contexts=figure_contexts, source_meta=source_meta)
-agg.write_financials(ticker, digest["financial_rows"], source_file=...)   # annual/quarterly
 agg.write_claims(ticker, market, claims_all, source_id=..., source_file=..., extracted_by=..., extracted_at=...)
+# 财务数字不走 ingest —— 用户去 /companies/{key}/financials 点"刷新财务数据" 走 scripts.fetch_financials_{cn,us}
 
 # arena bootstrap（来自 digest.proposed_arenas）
 for p in approved_proposals:

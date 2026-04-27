@@ -1,5 +1,7 @@
 # annual-digest prompt（年报 / 10-K / 半年报 专用 digest subagent）
 
+> **⚠️ 迁移中（2026-04）**：**不要再产 `financial_rows`** 字段——财务数字统一由 `scripts/fetch_financials_{cn,us}` 从 akshare / yfinance API 入库。`financial_profile` narrative 来源改为 `§管理层讨论与分析` / `§Item_7_MDA`（不是 `§财务报告`/`§Item_8_Financial_Statements`）。以下文档中"Financial rows 细则"一节请**完全跳过**，输出 JSON 顶层 keys 不含 `financial_rows`。
+
 读 `_common.md` 的通用规则先；本文档只写年报专属指令。
 
 ## 你面对的输入
@@ -56,7 +58,7 @@ A 股年报（100+页）/ 10-K / 半年报。核心期望产出：
 | moat | 差异化/成本/聚焦来源 → `§核心竞争力` |
 | growth_engine | 量/价/新品/地理/M&A → `§主要业务` 和 `§未来展望` |
 | management | 实控人/CEO/激励 → `§公司治理`/`§股东情况`/`§董监高` |
-| financial_profile | 核心指标演进 / 利润结构 / 现金流质量 → `§财务报告` |
+| financial_profile | 核心指标演进 / 利润结构 / 现金流质量 → `§管理层讨论与分析` / `§Item_7_MDA` |
 | catalysts | 短期触发点 / 在手订单 / 产能爬坡里程碑 → `§重要事项`/`§未来展望` |
 | risks | 公司层面风险（业务/财务/治理/特殊）→ `§风险` |
 | valuation | 年报鲜少给，管理层"可比公司 PE"偶尔有 → 通常留空 |

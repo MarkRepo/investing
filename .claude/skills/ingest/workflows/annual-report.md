@@ -1,5 +1,7 @@
 # workflow: annual-report
 
+> **⚠️ 迁移中（2026-04）**：本文档里所有 `financial_rows` / `financial_line_rows` / `write_financials` / `check_financials_required` / `check_revenue_consistency` / `import_financials_csv` 相关步骤**已下线**。财务数字统一从 API（akshare / yfinance）入库，用户在 `/companies/{key}/financials` 页面点"刷新财务数据"。ingest 只产 claims + MD&A 叙述，不再产财务数字。以下步骤中涉及上述函数/字段的部分请**跳过**。`financial_profile` narrative 来源改为 `§管理层讨论与分析` / `§Item_7_MDA`。
+
 处理年报 / 10-K / 20-F / 半年报。主 agent（你）按步骤执行；subagent 只读返回数据，由你统一校验和写入。
 
 ---

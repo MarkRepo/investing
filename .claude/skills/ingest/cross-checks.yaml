@@ -5,24 +5,12 @@
 #   merge  — 自动合并/去重，留日志
 #   warn   — 不暂停，在最终报告里标记
 #   abort  — 直接中止，不写入
+#
+# Note: 财务数字相关的交叉校验（revenue_consistency / segment_sum 等）已随
+# "财报数字改 API 化"下线：ingest 不再产出 financial_rows，财报数字由
+# scripts/fetch_financials_* 从 akshare / yfinance 入库，和 claims 不再交叉。
 
 checks:
-  - id: revenue_consistency
-    desc: |
-      claims 里定量 revenue 数字（claim_text 含"营收/收入"且 subject_tag=revenue_growth
-      或 claim_type=quantitative 且 metric=revenue）vs financials CSV 同 period 的 revenue。
-    scope: [claims, financials]
-    tolerance: 0.02
-    on_fail: pause
-
-  - id: segment_sum
-    desc: |
-      profile §2 收入结构表的分部合计 vs financials CSV 同 period 的 revenue。
-      容差 5%（少数公司有"其它"分部或汇总差异）。
-    scope: [profile.§2, financials]
-    tolerance: 0.05
-    on_fail: pause
-
   - id: period_consistency
     desc: |
       所有 subagent 产出的 claim.timeframe 里，出现频率最高的 period
@@ -41,18 +29,10 @@ checks:
 
   - id: empty_section_warn
     desc: |
-      keep 类 section 对应的 subagent 返回 claims=[] 且 profile_fragments={} 且
-      financial_rows=[]（即零产出）→ 警告，可能是 prompt 太严或 section 切错。
+      keep 类 section 对应的 subagent 返回 claims=[] 且 profile_fragments={}
+      （即零产出）→ 警告，可能是 prompt 太严或 section 切错。
     scope: [subagent_output]
     on_fail: warn
-
-  - id: financials_required_columns
-    desc: |
-      financial_rows CSV 至少要有 revenue、net_income 两列；缺失 → 暂停问。
-      其它列缺失允许（年报披露不完整），写入时 NULL。
-    scope: [financials]
-    required: [revenue, net_income]
-    on_fail: pause
 
   - id: subjects_whitelist
     desc: |

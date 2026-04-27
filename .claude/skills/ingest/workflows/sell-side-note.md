@@ -1,5 +1,7 @@
 # workflow: sell-side-note
 
+> **⚠️ 迁移中（2026-04）**：本文档里所有 `financial_rows` / `financial_line_rows` / `write_financials` / `check_financials_required` / `check_revenue_consistency` 相关步骤**已下线**。研报的预测数字本来就走 claims 通道（time_type=forecast），不经 financials。"丢弃 financial_rows" 这层防御也废了——digest 不再产 financial_rows。以下步骤中涉及上述函数/字段的部分请**跳过**。
+
 处理卖方研报。与财报流程的关键差异：
 
 1. **只写 claims**。不写 profile（研报不是事实源）、不写 financials（研报里的预测数字是**未来期观点**，不是已披露历史数字）、不改 meta。
