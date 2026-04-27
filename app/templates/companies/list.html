@@ -28,6 +28,7 @@
       </td>
       <td class="row-actions">
         <a class="btn btn-mini" href="/prices/{{ r.key }}" title="行情页">行情</a>
+        <a class="btn btn-mini" href="/companies/{{ r.key }}/financials" title="财务分析">财务</a>
         <a class="btn btn-mini{% if r._wl_stages %} btn-done{% endif %}"
            href="/companies/{{ r.key }}#add-watchlist"
            title="{% if r._wl_stages %}已在：{{ r._wl_stages|join(', ') }}{% else %}加到观察池{% endif %}">

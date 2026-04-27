@@ -179,7 +179,7 @@ CN_COL_MAP: dict[str, str] = {
     "支付给职工以及为职工支付的现金": "cash_paid_to_employees",
     "支付的各项税费": "taxes_paid",
     "经营活动产生的现金流量净额": "operating_cashflow",
-    "购建固定资产、无形资产和其他长期资产支付的现金": "capex",
+    "购建固定资产、无形资产和其他长期资产所支付的现金": "capex",
     "投资所支付的现金": "investment_purchased",
     "收回投资所收到的现金": "investment_recovered",
     "投资活动产生的现金流量净额": "investing_cashflow",
