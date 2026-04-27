@@ -39,6 +39,19 @@
   {%- if v is none -%}<span class="hint">–</span>
   {%- else -%}{{ "%.1f%%"|format(v * 100) }}{%- endif -%}
 {%- endmacro %}
+{# numf: auto-scale monetary amounts. CN → 亿/万；US → B/M #}
+{% macro numf(v) -%}
+  {%- if v is none -%}<span class="hint">–</span>
+  {%- elif market in ('SSE', 'SZSE', 'BSE') -%}
+    {%- if v | abs >= 1e8 -%}{{ "%.2f"|format(v / 1e8) }} 亿
+    {%- elif v | abs >= 1e4 -%}{{ "%.1f"|format(v / 1e4) }} 万
+    {%- else -%}{{ "%.2f"|format(v) }}{%- endif -%}
+  {%- else -%}
+    {%- if v | abs >= 1e9 -%}{{ "%.2f"|format(v / 1e9) }} B
+    {%- elif v | abs >= 1e6 -%}{{ "%.1f"|format(v / 1e6) }} M
+    {%- else -%}{{ "%.2f"|format(v) }}{%- endif -%}
+  {%- endif -%}
+{%- endmacro %}
 
 {% if not rows %}
 <p><em>还没有财务数据。</em> 点 "刷新财务数据" 从 API 拉取。</p>
@@ -56,10 +69,10 @@
     {% for r in rows %}
     <tr data-period-type="{{ r.get('period_type') }}">
       <td><strong>{{ r.get('period') }}</strong></td>
-      <td>{{ num(r.get('total_revenue') or r.get('operating_revenue')) }}</td>
+      <td>{{ numf(r.get('total_revenue') or r.get('operating_revenue')) }}</td>
       <td>{{ pct(r.get('gross_margin')) }}</td>
-      <td>{{ num(r.get('operating_income')) }}</td>
-      <td>{{ num(r.get('net_income')) }}</td>
+      <td>{{ numf(r.get('operating_income')) }}</td>
+      <td>{{ numf(r.get('net_income')) }}</td>
       <td>{{ num(r.get('diluted_eps') or r.get('eps_diluted')) }}</td>
     </tr>
     {% endfor %}
@@ -76,9 +89,9 @@
     {% for r in rows %}
     <tr data-period-type="{{ r.get('period_type') }}">
       <td><strong>{{ r.get('period') }}</strong></td>
-      <td>{{ num(r.get('total_assets')) }}</td>
-      <td>{{ num(r.get('total_liabilities') or r.get('total_liabilities_net_minority_interest')) }}</td>
-      <td>{{ num(r.get('total_equity')) }}</td>
+      <td>{{ numf(r.get('total_assets')) }}</td>
+      <td>{{ numf(r.get('total_liabilities') or r.get('total_liabilities_net_minority_interest')) }}</td>
+      <td>{{ numf(r.get('total_equity')) }}</td>
       <td>
         {%- set lia = r.get('total_liabilities') or r.get('total_liabilities_net_minority_interest') -%}
         {%- set ta = r.get('total_assets') -%}
@@ -102,10 +115,10 @@
     {% for r in rows %}
     <tr data-period-type="{{ r.get('period_type') }}">
       <td><strong>{{ r.get('period') }}</strong></td>
-      <td>{{ num(r.get('operating_cashflow') or r.get('operating_cash_flow')) }}</td>
-      <td>{{ num(r.get('capex') or r.get('capital_expenditure')) }}</td>
-      <td>{{ num(r.get('fcf')) }}</td>
-      <td>{{ num(r.get('financing_cashflow') or r.get('financing_cash_flow')) }}</td>
+      <td>{{ numf(r.get('operating_cashflow') or r.get('operating_cash_flow')) }}</td>
+      <td>{{ numf(r.get('capex') or r.get('capital_expenditure')) }}</td>
+      <td>{{ numf(r.get('fcf')) }}</td>
+      <td>{{ numf(r.get('financing_cashflow') or r.get('financing_cash_flow')) }}</td>
     </tr>
     {% endfor %}
   </tbody>
