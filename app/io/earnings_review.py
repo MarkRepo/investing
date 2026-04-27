@@ -37,7 +37,12 @@ def _scan(base: Path | None = None) -> list[dict[str, Any]]:
             market = r.get("market")
             if not ticker or not market:
                 continue
-            fins = fin_io.list_financials(ticker, conn=conn)
+            if market == "US":
+                fins = fin_io.list_financials_us(conn, ticker)
+            elif market in ("SSE", "SZSE", "BSE"):
+                fins = fin_io.list_financials_cn(conn, ticker)
+            else:
+                continue
             if not fins:
                 continue
             latest = fins[0]["period"]
@@ -92,7 +97,11 @@ def company_summary(
     fm = doc["frontmatter"]
     body = doc["body"]
     sections = v0_io.split_sections(body)
-    rows = fin_io.list_periods_with_ratios(ticker, base=base, limit=limit)
+    conn = fin_io.connect(base=base)
+    try:
+        rows = fin_io.list_periods_with_ratios(conn, ticker, market=market)[:limit]
+    finally:
+        conn.close()
     latest = rows[0]["period"] if rows else None
     reviewed = fm.get("last_reviewed_period")
     return {
