@@ -28,7 +28,7 @@
       <tr{% if stage == 'researching' and r._status == 'overdue' %} class="row-overdue"{% elif stage == 'researching' and r._status == 'due' %} class="row-due"{% endif %}>
         {% for c in cols %}<td>{{ r[c] }}</td>{% endfor %}
         <td>
-          <a class="btn-mini" href="/companies/{{ r.market }}_{{ r.ticker }}/financials">财务</a>
+          <a class="btn-mini" href="/financials/{{ r.market }}_{{ r.ticker }}">财务</a>
           <a class="btn-mini" href="/prices/{{ r.market }}_{{ r.ticker }}">行情</a>
         </td>
         {% if stage == 'researching' %}

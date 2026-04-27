@@ -154,7 +154,7 @@
   const sel = document.getElementById("company-switch");
   if (sel) {
     sel.addEventListener("change", () => {
-      window.location.href = "/companies/" + sel.value + "/financials";
+      window.location.href = "/financials/" + sel.value;
     });
   }
 
@@ -211,7 +211,7 @@
       btn.textContent = "正在刷新…";
       status.textContent = "";
       try {
-        const res = await fetch(`/companies/${KEY}/financials/refresh`, { method: "POST" });
+        const res = await fetch(`/financials/${KEY}/refresh`, { method: "POST" });
         const j   = await res.json();
         if (j.ok) {
           status.textContent = `已刷新 ${j.periods_added} 期，正在重载…`;

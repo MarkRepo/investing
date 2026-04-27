@@ -844,21 +844,32 @@ def test_financials_empty_page(client):
         "/companies/new",
         data={"ticker": "FN", "market": "US", "name": "fn", "industry_slugs": "saas", "currency": "USD"},
     )
-    r = client.get("/companies/US_FN/financials")
+    r = client.get("/financials/US_FN")
     assert r.status_code == 200
     assert "刷新财务数据" in r.text
     assert "还没有财务数据" in r.text
 
 
+def test_financials_legacy_redirect(client):
+    """Old /companies/{key}/financials URL must 301 → /financials/{key}."""
+    client.post(
+        "/companies/new",
+        data={"ticker": "FN2", "market": "US", "name": "fn2", "industry_slugs": "saas", "currency": "USD"},
+    )
+    r = client.get("/companies/US_FN2/financials", follow_redirects=False)
+    assert r.status_code == 301
+    assert r.headers["location"] == "/financials/US_FN2"
+
+
 def test_financials_refresh_route_wired(client):
     """The /refresh endpoint should exist and return a JSON error when the
     ticker is unknown. Real fetch is covered by fetch_financials_{cn,us} tests."""
-    r = client.post("/companies/US_NOPE/financials/refresh")
+    r = client.post("/financials/US_NOPE/refresh")
     assert r.status_code == 404
 
 
 def test_financials_404_for_unknown_company(client):
-    r = client.get("/companies/US_NOPE/financials")
+    r = client.get("/financials/US_NOPE")
     assert r.status_code == 404
 
 

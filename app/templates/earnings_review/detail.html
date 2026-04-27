@@ -2,7 +2,7 @@
 {% block title %}对照：{{ ticker }}{% endblock %}
 {% block content %}
 <h1>财报对照：{{ meta.get('name', ticker) }} <small>({{ market }}:{{ ticker }})</small></h1>
-<p><a href="/earnings-review">← 返回待办</a> · <a href="/companies/{{ key }}">公司详情</a> · <a href="/companies/{{ key }}/v0">编辑 V0</a> · <a href="/companies/{{ key }}/financials">编辑财务</a></p>
+<p><a href="/earnings-review">← 返回待办</a> · <a href="/companies/{{ key }}">公司详情</a> · <a href="/companies/{{ key }}/v0">编辑 V0</a> · <a href="/financials/{{ key }}">编辑财务</a></p>
 
 <div class="summary">
   <div>最新财务期间：<strong>{{ s.latest_period or '无' }}</strong></div>

@@ -1,10 +1,11 @@
 """Financials page + manual refresh.
 
-GET  /companies/{key}/financials           → render page (all periods)
-POST /companies/{key}/financials/refresh   → pull fresh from API, return JSON
+GET  /financials/{key}         → render page (all periods)
+POST /financials/{key}/refresh → pull fresh from API, return JSON
+GET  /companies/{key}/financials → 301 redirect to /financials/{key}
 """
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import APP_TEMPLATES_DIR
@@ -12,7 +13,7 @@ from app.io import company as company_io
 from app.io import financials as fin_io
 from scripts import fetch_financials_cn, fetch_financials_us
 
-router = APIRouter(prefix="/companies/{key}/financials", tags=["financials"])
+router = APIRouter(tags=["financials"])
 templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
 
 
@@ -23,7 +24,25 @@ def _parse_key(key: str) -> tuple[str, str]:
     return market, ticker
 
 
-@router.get("")
+# ── redirect for old URLs ──────────────────────────────────────────────────
+
+@router.get("/companies/{key}/financials")
+def legacy_redirect(key: str):
+    return RedirectResponse(url=f"/financials/{key}", status_code=301)
+
+
+# ── main routes ───────────────────────────────────────────────────────────
+
+@router.get("/financials")
+def index(request: Request):
+    """No key → redirect to first company, or show empty state."""
+    companies = company_io.list_companies()
+    if companies:
+        return RedirectResponse(url=f"/financials/{companies[0]['key']}", status_code=302)
+    return templates.TemplateResponse(request, "companies/financials_empty.html", {})
+
+
+@router.get("/financials/{key}")
 def page(request: Request, key: str):
     market, ticker = _parse_key(key)
     meta = company_io.read_meta(ticker, market)
@@ -53,7 +72,7 @@ def page(request: Request, key: str):
     )
 
 
-@router.post("/refresh")
+@router.post("/financials/{key}/refresh")
 def refresh(key: str):
     market, ticker = _parse_key(key)
     if not company_io.read_meta(ticker, market):
