@@ -10,6 +10,7 @@ from fastapi.templating import Jinja2Templates
 from app import config as cfg
 from app.config import APP_TEMPLATES_DIR
 from app.io import arenas as arenas_io
+from app.io import company as company_io
 from app.io import figure_contexts as fc_io
 from app.io import industry as industry_io
 
@@ -63,6 +64,19 @@ def industry_detail(request: Request, slug: str):
             "name": (info.get("definition_fm") or {}).get("name") or arena_slug,
         })
 
+    raw_tickers = meta.get("linked_tickers") or []
+    linked_tickers = []
+    for t in raw_tickers:
+        ticker, market = t.get("ticker"), t.get("market")
+        name = t.get("name")
+        if not name and ticker and market:
+            try:
+                cm = company_io.read_meta(ticker, market)
+                name = (cm or {}).get("name")
+            except Exception:
+                pass
+        linked_tickers.append({**t, "name": name or f"{market}_{ticker}"})
+
     return templates.TemplateResponse(
         request,
         "industries/detail.html",
@@ -74,7 +88,7 @@ def industry_detail(request: Request, slug: str):
             "narratives": narratives,
             "figure_contexts": figure_contexts,
             "linked_arenas": arena_meta,
-            "linked_tickers": meta.get("linked_tickers") or [],
+            "linked_tickers": linked_tickers,
         },
     )
 
