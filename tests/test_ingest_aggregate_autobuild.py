@@ -75,6 +75,35 @@ def test_propose_arena_bootstrap_normalizes_slug():
     ]
 
 
+def test_propose_arena_bootstrap_prefers_tentative_name():
+    long_focus = "国内 CMP 抛光液和抛光垫厂商挑战全球龙头 Dupont/Entegris/Fujifilm 等海外玩家争夺国内晶圆制造市场份额"
+    proposed = [
+        {
+            "tentative_slug": "cn-cmp-sub",
+            "tentative_name": "国产 CMP 抛光替代",
+            "battleground_focus": long_focus,
+            "parent_industry_slug": "cn-cmp-material",
+            "tentative_participants": [],
+        },
+    ]
+    out = agg.propose_arena_bootstrap(proposed)
+    assert out[0]["name"] == "国产 CMP 抛光替代"  # used tentative_name, not truncated focus
+    assert out[0]["battleground_focus"] == long_focus  # focus not truncated
+
+
+def test_propose_arena_bootstrap_falls_back_to_truncated_focus():
+    proposed = [
+        {
+            "tentative_slug": "cn-x",
+            "battleground_focus": "a" * 80,
+            "parent_industry_slug": "cn-x-industry",
+            "tentative_participants": [],
+        },
+    ]
+    out = agg.propose_arena_bootstrap(proposed)
+    assert out[0]["name"] == "a" * 40  # focus[:40] when no name fields
+
+
 def test_propose_arena_bootstrap_drops_missing_focus():
     proposed = [
         {"tentative_slug": "good", "battleground_focus": "focus",

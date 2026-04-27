@@ -105,6 +105,7 @@ subjects_whitelist: [list]           # annual/quarterly/sell-side 才注入
   "proposed_arenas": [
     {
       "tentative_slug": "cn-cmp-slurry-domestic-substitution",
+      "tentative_name": "国产 CMP 抛光液替代",
       "battleground_focus": "国产 CMP 抛光液厂商挑战 Dupont/Cabot 等海外龙头",
       "tentative_participants": [
         {"name": "安集", "role": "challenger"},
@@ -136,7 +137,10 @@ subjects_whitelist: [list]           # annual/quarterly/sell-side 才注入
 7. **figure_contexts 优先级**：caption + surrounding_text 中出现的 TAM / share / CAGR 必须抽成 atomic observation（研报核心数据常在图表里）。
 8. **proposed_arenas**：仅当报告明确讨论了**一个**或**多个 known_arenas 之外的博弈焦点**时才填。没发现新博弈 → 空 list；不要硬凑。
 9. **narratives**：按维度写浓缩段（≤300 字），不是抄原文。每个 dim 一段，缺失维度不列 key（空段**不要**填进来）。
-10. **subject_tag_hint / company_dimension_hint 仅当 target_layer=company**；值必须在 subjects_whitelist / COMPANY_DIMENSIONS 内。
+10. **subject_tag_hint / company_dimension_hint 仅当 target_layer=company**；值必须在 subjects_whitelist / COMPANY_DIMENSIONS 内。`target_layer=company` 的 fact **必填 `subject_tag_hint`**（不填会导致该 fact 在 facts_to_claims 后被拒）；找不到合适值就填 subjects_whitelist 里的 `other`（若存在）或最宽泛的一个。
+11. **narratives.arena 的 key 必须是 kebab-case slug**，且与 `proposed_arenas[*].tentative_slug` 或 `known_arenas[*].slug` 一一对应。用中文 key 或自然语言短语会被主 agent 丢弃。
+12. **proposed_arenas** 新增 `tentative_name` 字段（≤20 字中文简短名，面向 UI 展示）；`battleground_focus` 仍为完整描述（可以很长）。
+13. **detected_tickers 空的 fallback**：prompt 可能给你 `detected_tickers: []`（preprocess 抽不到）。若 full_text 明显提到公司（如"安集科技(688019)"、"鼎龙股份"），你需要从文本推断 `target_refs.ticker` 与 `market`。推断不出就留空而非编造。
 
 ## 输出前自查
 
@@ -145,3 +149,6 @@ subjects_whitelist: [list]           # annual/quarterly/sell-side 才注入
 - [ ] 每条 key_fact 的 target_layer/dimension_hint 在闭集内
 - [ ] arena_refs 里的 slug 只来自 known_arenas 或 proposed_arenas[].tentative_slug
 - [ ] narratives 的 industry/arena/company 三段字典结构正确（缺失维度不列 key，不写空串）
+- [ ] `narratives.arena` 的 key **是 slug**（不是中文），每个 key 都出现在 proposed_arenas 或 known_arenas 中
+- [ ] `target_layer=company` 的 key_fact 全部填了 `subject_tag_hint`（从 subjects_whitelist）
+- [ ] `proposed_arenas[*]` 全部带 `tentative_name`（≤20 字中文）

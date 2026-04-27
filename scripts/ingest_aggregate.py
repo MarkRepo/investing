@@ -676,10 +676,11 @@ def propose_arena_bootstrap(proposed: list[dict]) -> list[dict]:
         if not slug_raw or not focus or not industry:
             continue
         participants = p.get("tentative_participants") or []
-        # Synthesize a display name from focus if absent
+        # Display name priority: explicit name > tentative_name (Plan 5 schema) > trimmed focus
+        name = (p.get("name") or p.get("tentative_name") or focus[:40]).strip()
         out.append({
             "slug": slug_raw,
-            "name": p.get("name") or focus[:40],
+            "name": name,
             "industry": industry,
             "battleground_focus": focus,
             "participants": participants,

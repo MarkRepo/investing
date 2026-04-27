@@ -42,6 +42,8 @@
 - 报告只做"产业链分析"/"行业介绍"，无博弈叙事
 - 只提到 1 家公司的竞争位置
 
+**arena 桶最低证据量**：若 `proposed_arenas` 非空，则 `key_facts` 里 `target_layer=arena` 的条数必须 **≥3**（每个 proposed arena 至少 3 条证据支撑）。不足则主 agent 会拒建该 arena —— 宁可少建也不虚建。
+
 **已知 arena 判重**：
 - prompt 里的 `known_arenas` 给了已存在 arena 的 slug + focus + participants
 - 若你发现的博弈与已知 arena 的 battleground_focus 重合 → 只填 `arena_refs: [existing_slug]`，不走 proposed_arenas
@@ -58,7 +60,8 @@
 
 - 报告里每个 ticker 若被提及 ≥3 句话 → 产 ≥1 条 company key_fact（target_layer=company）
 - 若只出现在 "涉及公司" 列表或图表角标 → 不产 company key_fact，但 `target_refs.ticker` 可挂在 industry 事实的 segment 上
-- `subject_tag_hint` 留空或给可能的白名单值；主 agent 做最终归属
+- **每条 company key_fact 必填 `subject_tag_hint`**（从 `subjects_whitelist` 选最贴近的一个；无任何合适值才用 `other`）。不填的 fact 在 facts_to_claims 后会被 validate_batch 拒掉。
+- **detected_tickers 为空时**：若 prompt 给你 `detected_tickers: []` 但 full_text 明显提到公司（如"安集科技"、"鼎龙股份(300054)"），你要自行从文本推断 `target_refs.ticker` 与 `market`（A 股 6 位数字：6 开头=SSE，0/3 开头=SZSE，8/9 开头=BSE）。推断不出来就 `ticker: null, market: null`，该 fact 退化为 industry 层（别编码）。
 - **不要**产 `financial_rows` —— 研报里的公司财务片段由 sell-side-digest 走，不是 industry-digest
 
 ## 对 figure_contexts 的硬要求
@@ -86,5 +89,8 @@
 
 - [ ] key_facts 中 target_layer=industry 的条数占多数（研报的正活）
 - [ ] 若有 figure_contexts，≥80% 的图表 caption 被扫过（要么产 observation，要么至少影响 narrative）
-- [ ] proposed_arenas 的每个 tentative_slug 都有 battleground_focus + ≥2 participants + parent_industry_slug
+- [ ] proposed_arenas 的每个 tentative_slug 都有 tentative_name + battleground_focus + ≥2 participants + parent_industry_slug
+- [ ] 若 proposed_arenas 非空，target_layer=arena 的 key_fact 总数 ≥3
+- [ ] `narratives.arena` 所有 key 都是 slug（与 proposed_arenas.tentative_slug 或 known_arenas.slug 对齐）
+- [ ] `target_layer=company` 的 key_fact 每条都有 subject_tag_hint
 - [ ] `narratives.industry` 覆盖至少 3 个维度（除非报告真的只讲一维）
