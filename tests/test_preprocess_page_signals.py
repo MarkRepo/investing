@@ -170,3 +170,109 @@ def test_build_result_without_doc_returns_empty_signals_and_warnings():
     finally:
         temp_path.unlink()
 
+
+def test_build_preprocess_output_includes_page_metadata():
+    """Test that build_preprocess_output includes page_count, extracted_pages, and extraction_warnings."""
+    doc = FakeDoc([
+        FakePage("表 数据 Chart CAGR"),
+        FakePage("x"),  # low text quality
+    ])
+
+    template = {
+        "form": "test-form",
+    }
+    sections = [
+        {
+            "name": "Section1",
+            "heading_raw": "Section 1",
+            "order": 1,
+            "text": "Some content here.",
+            "action": "keep",
+            "reason": None,
+        }
+    ]
+
+    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as f:
+        temp_path = Path(f.name)
+        f.write(b"test pdf content")
+
+    try:
+        result = pr.build_result(
+            file_path=temp_path,
+            market="a-share",
+            form_cli="annual",
+            template=template,
+            sections=sections,
+            text_full="表 数据 Chart CAGR\nx",
+            doc=doc,
+        )
+
+        # Build the preprocess output (CLI-style output)
+        output = pr.build_preprocess_output(result, doc)
+
+        # Assert the output includes required fields
+        assert "page_count" in output
+        assert "extracted_pages" in output
+        assert "extraction_warnings" in output
+
+        # Verify field values
+        assert output["page_count"] == 2
+        assert len(output["extracted_pages"]) == 2
+        assert output["extracted_pages"][0]["page"] == 1
+        assert output["extracted_pages"][1]["page"] == 2
+        assert len(output["extraction_warnings"]) > 0
+        assert any("表格密集" in w or "文本提取质量低" in w for w in output["extraction_warnings"])
+    finally:
+        temp_path.unlink()
+
+
+def test_cli_output_includes_preprocess_metadata_for_pdf():
+    """Test that CLI JSON output includes preprocess_metadata with page metrics."""
+    import json
+
+    doc = FakeDoc([
+        FakePage("表 数据 Chart CAGR"),
+        FakePage("x"),  # low text quality
+    ])
+
+    template = {
+        "form": "test-form",
+    }
+    sections = [
+        {
+            "name": "Section1",
+            "heading_raw": "Section 1",
+            "order": 1,
+            "text": "Some content here.",
+            "action": "keep",
+            "reason": None,
+        }
+    ]
+
+    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as f:
+        temp_path = Path(f.name)
+        f.write(b"test pdf content")
+
+    try:
+        result = pr.build_result(
+            file_path=temp_path,
+            market="a-share",
+            form_cli="annual",
+            template=template,
+            sections=sections,
+            text_full="表 数据 Chart CAGR\nx",
+            doc=doc,
+        )
+
+        # Build the final CLI output (as main() would do)
+        output = pr.add_preprocess_metadata(result, doc)
+
+        # Verify preprocess_metadata is in the final output
+        assert "preprocess_metadata" in output
+        meta = output["preprocess_metadata"]
+        assert meta["page_count"] == 2
+        assert len(meta["extracted_pages"]) == 2
+        assert len(meta["extraction_warnings"]) > 0
+    finally:
+        temp_path.unlink()
+

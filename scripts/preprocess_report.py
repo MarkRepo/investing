@@ -559,6 +559,48 @@ def collect_extraction_warnings(page_signals: list[dict]) -> list[str]:
     return warnings
 
 
+def build_preprocess_output(result: dict, doc=None) -> dict:
+    """Build phase-1 preprocess metadata for CLI output.
+
+    Takes the result dict from build_result and wraps page-level signals
+    and warnings into a CLI-friendly structure with explicit page metrics.
+
+    Args:
+        result: Dict from build_result with metadata, sections, signals, warnings
+        doc: Optional PyMuPDF document (unused, kept for compatibility)
+
+    Returns:
+        Dict with page_count, extracted_pages (page_signals), and extraction_warnings
+    """
+    page_signals = result.get("page_signals", [])
+    extraction_warnings = result.get("extraction_warnings", [])
+
+    return {
+        "page_count": len(page_signals),
+        "extracted_pages": page_signals,
+        "extraction_warnings": extraction_warnings,
+    }
+
+
+def add_preprocess_metadata(result: dict, doc=None) -> dict:
+    """Add preprocess_metadata section to result dict for CLI output.
+
+    Wraps build_preprocess_output output into the result dict under the
+    preprocess_metadata key, creating a final output structure suitable for
+    CLI emission.
+
+    Args:
+        result: Dict from build_result with metadata, sections, signals, warnings
+        doc: Optional PyMuPDF document (unused, kept for compatibility)
+
+    Returns:
+        The result dict with added preprocess_metadata field
+    """
+    preprocess_meta = build_preprocess_output(result, doc)
+    result["preprocess_metadata"] = preprocess_meta
+    return result
+
+
 # --- figure_contexts (spec §4.8) ---------------------------------------------
 
 _FIGURE_CAPTION_PATTERNS = [
@@ -705,6 +747,9 @@ def main(argv: list[str] | None = None) -> int:
     # Close PDF document if opened
     if doc is not None:
         doc.close()
+
+    # Add preprocess metadata to result for CLI output
+    result = add_preprocess_metadata(result, doc)
 
     out_json = json.dumps(result, ensure_ascii=False, indent=2)
     if args.out:
