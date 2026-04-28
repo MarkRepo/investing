@@ -1,4 +1,5 @@
 from pathlib import Path
+import tempfile
 
 from scripts import preprocess_report as pr
 
@@ -47,3 +48,125 @@ def test_collect_extraction_warnings_mentions_low_text_and_visual_pages():
 
     assert any("第 1 页" in w and "图表" in w for w in warnings)
     assert any("第 2 页" in w and "文本提取质量低" in w for w in warnings)
+
+
+def test_collect_extraction_warnings_flags_table_heavy_pages():
+    """Test that table_heavy pages trigger extraction warnings."""
+    signals = [
+        {"page": 1, "text_quality": "high", "image_heavy": False, "chart_heavy": False, "table_heavy": True},
+        {"page": 2, "text_quality": "medium", "image_heavy": False, "chart_heavy": False, "table_heavy": False},
+    ]
+
+    warnings = pr.collect_extraction_warnings(signals)
+
+    assert len(warnings) == 1
+    assert "第 1 页" in warnings[0]
+    assert "表格密集" in warnings[0]
+
+
+def test_build_page_signals_detects_table_markers():
+    """Test that table markers (表, Table) are detected in pages."""
+    doc = FakeDoc([
+        FakePage("表1 财务数据\n2024年营收: 1000万元\n表2 成本构成"),
+        FakePage("Table 5: Financial metrics\nRevenue in millions"),
+        FakePage("这是一个普通页面 数据很少"),
+    ])
+
+    pages = pr.build_page_signals(doc)
+
+    assert pages[0]["table_heavy"] is True
+    assert pages[1]["table_heavy"] is True
+    assert pages[2]["table_heavy"] is False
+
+
+def test_build_result_wires_page_signals_and_warnings_for_pdf():
+    """Test that build_result includes page_signals and extraction_warnings when doc is provided."""
+    # Create a simple fake document
+    doc = FakeDoc([
+        FakePage("表 数据 Chart CAGR"),
+        FakePage("x"),  # low text quality
+    ])
+
+    # Create minimal template and sections for build_result
+    template = {
+        "form": "test-form",
+    }
+    sections = [
+        {
+            "name": "Section1",
+            "heading_raw": "Section 1",
+            "order": 1,
+            "text": "Some content here.",
+            "action": "keep",
+            "reason": None,
+        }
+    ]
+
+    # Create a temporary test file to avoid file not found error
+    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as f:
+        temp_path = Path(f.name)
+        f.write(b"test pdf content")
+
+    try:
+        result = pr.build_result(
+            file_path=temp_path,
+            market="a-share",
+            form_cli="annual",
+            template=template,
+            sections=sections,
+            text_full="表 数据 Chart CAGR\nx",
+            doc=doc,
+        )
+
+        # Verify page_signals and extraction_warnings are in result
+        assert "page_signals" in result
+        assert "extraction_warnings" in result
+        assert len(result["page_signals"]) == 2
+        assert len(result["extraction_warnings"]) > 0
+
+        # Verify warnings include table and low-text issues
+        warning_text = " ".join(result["extraction_warnings"])
+        assert "表格密集" in warning_text
+        assert "文本提取质量低" in warning_text
+    finally:
+        temp_path.unlink()
+
+
+def test_build_result_without_doc_returns_empty_signals_and_warnings():
+    """Test that build_result handles non-PDF files (no doc parameter)."""
+    template = {
+        "form": "test-form",
+    }
+    sections = [
+        {
+            "name": "Section1",
+            "heading_raw": "Section 1",
+            "order": 1,
+            "text": "Some content here.",
+            "action": "keep",
+            "reason": None,
+        }
+    ]
+
+    # Create a temporary test file
+    with tempfile.NamedTemporaryFile(suffix=".txt", delete=False) as f:
+        temp_path = Path(f.name)
+        f.write(b"Some text content")
+
+    try:
+        result = pr.build_result(
+            file_path=temp_path,
+            market="a-share",
+            form_cli="annual",
+            template=template,
+            sections=sections,
+            text_full="Some text content",
+            doc=None,  # No document for non-PDF files
+        )
+
+        # Verify page_signals and extraction_warnings are empty
+        assert result["page_signals"] == []
+        assert result["extraction_warnings"] == []
+    finally:
+        temp_path.unlink()
+

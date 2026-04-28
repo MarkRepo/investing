@@ -554,6 +554,8 @@ def collect_extraction_warnings(page_signals: list[dict]) -> list[str]:
             warnings.append(f"第 {page['page']} 页文本提取质量低，需谨慎使用。")
         if page["chart_heavy"] or page["image_heavy"]:
             warnings.append(f"第 {page['page']} 页包含图表或图片密集内容，关键结论需复核。")
+        if page["table_heavy"]:
+            warnings.append(f"第 {page['page']} 页表格密集，提取内容可能不完整。")
     return warnings
 
 
@@ -620,6 +622,7 @@ def build_result(
     template: dict,
     sections: list[dict],
     text_full: str,
+    doc=None,  # Optional PyMuPDF document for page-level signals (PDF only)
 ) -> dict:
     sha8 = sha256_head(file_path)
     detected = detect_form(text_full, template)
@@ -643,6 +646,13 @@ def build_result(
 
     fig_contexts = extract_figure_contexts(text_full, sections)
 
+    # Build page-level signals and extraction warnings from PDF document (if available)
+    page_signals = []
+    extraction_warnings = []
+    if doc is not None:
+        page_signals = build_page_signals(doc)
+        extraction_warnings = collect_extraction_warnings(page_signals)
+
     return {
         "meta": {
             "source_file": file_path.name,
@@ -660,6 +670,8 @@ def build_result(
         "figure_contexts": fig_contexts,
         "detected_tickers": detect_tickers(text_full),
         "report_abstract": extract_report_abstract(text_full),
+        "page_signals": page_signals,
+        "extraction_warnings": extraction_warnings,
     }
 
 
@@ -676,11 +688,23 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     template = load_template(args.market, args.type)
+
+    # Extract document for page-level signals (PDF only)
+    doc = None
+    suf = args.file.suffix.lower()
+    if suf == ".pdf":
+        import fitz  # pymupdf
+        doc = fitz.open(str(args.file))
+
     text = extract_text(args.file)
     text = join_multiline_headings(text)
     sections = split_sections(text, template)
     sections = apply_skip_rules(sections, template)
-    result = build_result(args.file, args.market, args.type, template, sections, text)
+    result = build_result(args.file, args.market, args.type, template, sections, text, doc=doc)
+
+    # Close PDF document if opened
+    if doc is not None:
+        doc.close()
 
     out_json = json.dumps(result, ensure_ascii=False, indent=2)
     if args.out:
