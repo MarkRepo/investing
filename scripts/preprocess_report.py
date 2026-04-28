@@ -492,6 +492,71 @@ def extract_report_abstract(text: str, max_chars: int = 500) -> str | None:
     return body[:max_chars]
 
 
+# --- page_signals (phase-1 preprocess metadata) ---
+
+def _page_text_quality(text: str) -> str:
+    """Classify page text quality based on extracted character count.
+
+    Args:
+        text: Raw extracted text from page
+
+    Returns:
+        "low" if < 30 chars, "medium" if < 200 chars, "high" otherwise
+    """
+    stripped = re.sub(r"\s+", "", text or "")
+    if len(stripped) < 30:
+        return "low"
+    if len(stripped) < 200:
+        return "medium"
+    return "high"
+
+
+def build_page_signals(doc) -> list[dict]:
+    """Build per-page risk signals from PDF document.
+
+    Scans each page for text quality, visual content indicators (charts, tables, images).
+    Returns list of dicts with page number (1-based) and quality flags.
+
+    Args:
+        doc: PyMuPDF document with __len__ and load_page(idx) interface
+
+    Returns:
+        List of dicts with keys: page, text_quality, image_heavy, chart_heavy, table_heavy
+    """
+    pages: list[dict] = []
+    for i in range(len(doc)):
+        text = doc.load_page(i).get_text("text")
+        pages.append({
+            "page": i + 1,  # 1-based page numbering
+            "text_quality": _page_text_quality(text),
+            "image_heavy": False,  # TODO: detect from doc metadata if needed
+            "chart_heavy": any(k in text for k in ("图", "Chart", "CAGR")),
+            "table_heavy": any(k in text for k in ("表", "Table")),
+        })
+    return pages
+
+
+def collect_extraction_warnings(page_signals: list[dict]) -> list[str]:
+    """Emit warnings for risky extraction scenarios.
+
+    Flags low-text-quality pages and visual-heavy pages that may have
+    extraction fidelity issues.
+
+    Args:
+        page_signals: List of page signal dicts from build_page_signals
+
+    Returns:
+        List of warning strings (Chinese) describing quality concerns
+    """
+    warnings: list[str] = []
+    for page in page_signals:
+        if page["text_quality"] == "low":
+            warnings.append(f"第 {page['page']} 页文本提取质量低，需谨慎使用。")
+        if page["chart_heavy"] or page["image_heavy"]:
+            warnings.append(f"第 {page['page']} 页包含图表或图片密集内容，关键结论需复核。")
+    return warnings
+
+
 # --- figure_contexts (spec §4.8) ---------------------------------------------
 
 _FIGURE_CAPTION_PATTERNS = [
