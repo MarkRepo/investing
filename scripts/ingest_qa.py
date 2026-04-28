@@ -270,6 +270,299 @@ def check_checklist_company_contamination(
     return warnings
 
 
+# --- 规则：review bundle QA ---------------------------------------------------
+
+
+def _qa_warning(
+    rule: str,
+    severity: str,
+    target: str,
+    detail: str,
+    fix_hint: str | None = None,
+) -> dict:
+    warning = {
+        "rule": rule,
+        "severity": severity,
+        "target": target,
+        "detail": detail,
+    }
+    if fix_hint:
+        warning["fix_hint"] = fix_hint
+    return warning
+
+
+def check_review_bundle_shape(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    if not bundle.get("source_digest"):
+        warnings.append(_qa_warning(
+            "missing_source_digest",
+            "error",
+            "source_digest",
+            "Missing source_digest.",
+        ))
+    if not bundle.get("insight_blocks"):
+        warnings.append(_qa_warning(
+            "missing_insight_blocks",
+            "error",
+            "insight_blocks",
+            "Missing or empty insight_blocks.",
+        ))
+    if not bundle.get("synthesis"):
+        warnings.append(_qa_warning(
+            "missing_synthesis",
+            "error",
+            "synthesis",
+            "Missing synthesis.",
+        ))
+    return warnings
+
+
+def _candidate_key(candidate: dict, fallback: str) -> str:
+    market = candidate.get("market")
+    ticker = candidate.get("ticker")
+    if market and ticker:
+        return f"{market}_{ticker}"
+    return ticker or fallback
+
+
+def check_fact_block_links(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    block_ids = {
+        block.get("id")
+        for block in bundle.get("insight_blocks", [])
+        if block.get("id")
+    }
+    for idx, fact in enumerate(bundle.get("atomic_facts", []) or []):
+        fact_id = fact.get("fact_id") or f"#{idx}"
+        linked_block_id = fact.get("linked_block_id")
+        if not linked_block_id:
+            warnings.append(_qa_warning(
+                "fact_missing_linked_block",
+                "error",
+                f"atomic_facts.{fact_id}",
+                "atomic_fact.linked_block_id is missing.",
+            ))
+        elif linked_block_id not in block_ids:
+            warnings.append(_qa_warning(
+                "fact_unknown_linked_block",
+                "error",
+                f"atomic_facts.{fact_id}",
+                f"linked_block_id {linked_block_id!r} does not exist in insight_blocks.",
+            ))
+        if not fact.get("evidence_quote"):
+            warnings.append(_qa_warning(
+                "fact_missing_evidence_quote",
+                "error",
+                f"atomic_facts.{fact_id}",
+                "atomic_fact.evidence_quote is missing.",
+            ))
+    return warnings
+
+
+def _preprocess_haystack(preprocess: dict) -> str:
+    parts: list[str] = []
+    for section in preprocess.get("sections", []) or []:
+        if section.get("action") != "skip":
+            parts.append(section.get("text") or "")
+    return "\n".join(parts)
+
+
+def check_fact_evidence_quotes(bundle: dict, preprocess: dict) -> list[dict]:
+    haystack = _preprocess_haystack(preprocess)
+    claims: list[dict] = []
+    for idx, fact in enumerate(bundle.get("atomic_facts", []) or []):
+        fact_id = fact.get("fact_id") or f"#{idx}"
+        quote = fact.get("evidence_quote")
+        if not quote:
+            continue
+        claims.append({
+            "id": fact_id,
+            "evidence": [{"text": quote}],
+        })
+
+    raw_warnings = check_evidence_fidelity(claims, haystack)
+    warnings: list[dict] = []
+    for warning in raw_warnings:
+        fact_id = warning.get("claim_id") or "?"
+        warnings.append(_qa_warning(
+            "evidence_quote_not_found",
+            "warning",
+            f"atomic_facts.{fact_id}",
+            warning["detail"],
+        ))
+    return warnings
+
+
+def _risky_pages(preprocess: dict) -> dict[int, dict]:
+    pages = (preprocess.get("preprocess_metadata") or {}).get("extracted_pages") or []
+    risky: dict[int, dict] = {}
+    for page in pages:
+        page_no = page.get("page")
+        if page_no is None:
+            continue
+        if (
+            page.get("text_quality") == "low"
+            or page.get("image_heavy")
+            or page.get("chart_heavy")
+            or page.get("table_heavy")
+        ):
+            risky[int(page_no)] = page
+    return risky
+
+
+def _source_page_numbers(source_page_range: str) -> set[int]:
+    pages: set[int] = set()
+    text = source_page_range or ""
+    for start, end in re.findall(r"(\d+)\s*[-–—~至到]\s*(\d+)", text):
+        a = int(start)
+        b = int(end)
+        if a <= b:
+            pages.update(range(a, b + 1))
+        else:
+            pages.update(range(b, a + 1))
+    text_without_ranges = re.sub(r"\d+\s*[-–—~至到]\s*\d+", " ", text)
+    pages.update(int(n) for n in re.findall(r"\d+", text_without_ranges))
+    return pages
+
+
+def check_preprocess_risk_confidence(bundle: dict, preprocess: dict) -> list[dict]:
+    risky_pages = _risky_pages(preprocess)
+    if not risky_pages:
+        return []
+
+    warnings: list[dict] = []
+    for idx, fact in enumerate(bundle.get("atomic_facts", []) or []):
+        fact_id = fact.get("fact_id") or f"#{idx}"
+        source_page = fact.get("source_page")
+        if fact.get("confidence") == "high" and source_page in risky_pages:
+            warnings.append(_qa_warning(
+                "high_confidence_fact_from_risky_page",
+                "warning",
+                f"atomic_facts.{fact_id}",
+                f"High-confidence fact comes from risky preprocess page {source_page}.",
+            ))
+
+    block_pages: dict[str, set[int]] = {}
+    for block in bundle.get("insight_blocks", []) or []:
+        block_id = block.get("id")
+        if not block_id:
+            continue
+        pages = _source_page_numbers(str(block.get("source_page_range") or ""))
+        if pages:
+            block_pages[block_id] = pages
+
+    for idx, candidate in enumerate(bundle.get("company_candidates", []) or []):
+        candidate_key = _candidate_key(candidate, f"#{idx}")
+        candidate_pages: set[int] = set()
+        for block_id in candidate.get("source_block_ids", []) or []:
+            candidate_pages |= block_pages.get(block_id, set())
+        if candidate.get("confidence") == "high" and candidate_pages & set(risky_pages):
+            warnings.append(_qa_warning(
+                "high_confidence_candidate_from_risky_page",
+                "warning",
+                f"company_candidates.{candidate_key}",
+                f"High-confidence company candidate is sourced from risky preprocess pages {sorted(candidate_pages & set(risky_pages))}.",
+            ))
+    return warnings
+
+
+def check_stage_gate_synthesis(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    cannot_conclude = (bundle.get("synthesis") or {}).get("cannot_conclude") or []
+    for idx, gate in enumerate(bundle.get("stage_gates", []) or []):
+        gate_id = gate.get("id") or f"#{idx}"
+        if gate.get("crossed") is False and not cannot_conclude:
+            warnings.append(_qa_warning(
+                "stage_gate_missing_cannot_conclude",
+                "error",
+                f"stage_gates:{gate_id}",
+                "Material uncrossed stage gate exists but synthesis.cannot_conclude is empty.",
+            ))
+    return warnings
+
+
+def check_company_candidates(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    for idx, candidate in enumerate(bundle.get("company_candidates", []) or []):
+        candidate_key = _candidate_key(candidate, f"#{idx}")
+        target = f"company_candidates.{candidate_key}"
+        if not candidate.get("exposure_type"):
+            warnings.append(_qa_warning(
+                "candidate_missing_exposure_type",
+                "error",
+                f"{target}.exposure_type",
+                "Company candidate is missing exposure_type.",
+            ))
+        if not candidate.get("source_block_ids"):
+            warnings.append(_qa_warning(
+                "candidate_missing_source_blocks",
+                "error",
+                f"{target}.source_block_ids",
+                "Company candidate is missing source_block_ids.",
+            ))
+        if not candidate.get("verification_questions"):
+            warnings.append(_qa_warning(
+                "candidate_missing_verification_questions",
+                "error",
+                f"{target}.verification_questions",
+                "Company candidate is missing verification_questions.",
+            ))
+        if candidate.get("exposure_type") == "thematic_related" and candidate.get("confidence") == "high":
+            warnings.append(_qa_warning(
+                "thematic_related_high_confidence",
+                "warning",
+                target,
+                "thematic_related company candidate cannot be high confidence.",
+            ))
+    return warnings
+
+
+_STRONG_SYNTHESIS_WORDS = [
+    "确定", "必然", "显著受益", "爆发", "高增长", "明确受益", "核心受益",
+    "confirmed", "must", "will", "certain",
+]
+
+
+def check_synthesis_discipline(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    source_evidence = (bundle.get("source_digest") or {}).get("evidence_strength")
+    synthesis = bundle.get("synthesis") or {}
+    one_sentence = synthesis.get("one_sentence") or ""
+
+    if source_evidence in ("low", "medium_low") and _contains_any(one_sentence, _STRONG_SYNTHESIS_WORDS):
+        warnings.append(_qa_warning(
+            "low_evidence_strong_synthesis",
+            "warning",
+            "synthesis.one_sentence",
+            "Low evidence source produces strong one-sentence thesis.",
+        ))
+
+    overclaim_words = ["确定受益", "明确受益", "核心受益", "confirmed beneficiary"]
+    for idx, candidate in enumerate(bundle.get("company_candidates", []) or []):
+        name = candidate.get("name") or ""
+        candidate_key = _candidate_key(candidate, f"#{idx}")
+        if name and name in one_sentence and _contains_any(one_sentence, overclaim_words):
+            warnings.append(_qa_warning(
+                "candidate_overclaimed_in_synthesis",
+                "warning",
+                f"company_candidates.{candidate_key}",
+                "Candidate company appears in synthesis.one_sentence as a confirmed beneficiary.",
+            ))
+    return warnings
+
+
+def check_ingest_review_bundle(bundle: dict, preprocess: dict) -> list[dict]:
+    warnings: list[dict] = []
+    warnings += check_review_bundle_shape(bundle)
+    warnings += check_fact_block_links(bundle)
+    warnings += check_fact_evidence_quotes(bundle, preprocess)
+    warnings += check_preprocess_risk_confidence(bundle, preprocess)
+    warnings += check_stage_gate_synthesis(bundle)
+    warnings += check_company_candidates(bundle)
+    warnings += check_synthesis_discipline(bundle)
+    return warnings
+
+
 # --- 规则：缺口清单 ---------------------------------------------------------
 
 ANNUAL_PATTERNS = [
@@ -681,6 +974,30 @@ def cmd_warn(args: argparse.Namespace) -> int:
         )
     return 1
 
+def cmd_review_bundle(args: argparse.Namespace) -> int:
+    bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
+    preprocess = json.loads(Path(args.preprocess).read_text(encoding="utf-8"))
+    warnings = check_ingest_review_bundle(bundle, preprocess)
+
+    if not warnings:
+        print("✓ review bundle QA passed")
+        return 0
+
+    by_rule: dict[str, list[dict]] = {}
+    for warning in warnings:
+        by_rule.setdefault(warning["rule"], []).append(warning)
+
+    print(f"# Review bundle QA · {len(warnings)} warnings")
+    print()
+    for rule, items in by_rule.items():
+        print(f"## {rule} ({len(items)})")
+        for warning in items:
+            severity = warning.get("severity", "warning")
+            target = warning.get("target", "?")
+            print(f"- [{severity}] {target}: {warning['detail']}")
+        print()
+    return 1
+
 
 def cmd_gap(args: argparse.Namespace) -> int:
     scope = _validate_scope(args.company)
@@ -734,9 +1051,14 @@ def cmd_list(args: argparse.Namespace) -> int:
     return 0
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="ingest_qa")
     sub = p.add_subparsers(dest="cmd", required=True)
+
+    p_review = sub.add_parser("review-bundle", help="校验 ingest_review_bundle")
+    p_review.add_argument("--bundle", required=True, help="ingest_review_bundle JSON")
+    p_review.add_argument("--preprocess", required=True, help="preprocess JSON")
+    p_review.set_defaults(func=cmd_review_bundle)
 
     p_warn = sub.add_parser("warn", help="抽取异常告警")
     p_warn.add_argument("--merged", required=True, help="aggregate 后的 merged.json")
@@ -768,7 +1090,7 @@ def main() -> int:
     p_list.add_argument("--status", choices=["open", "resolved", "dismissed"], help="过滤状态")
     p_list.set_defaults(func=cmd_list)
 
-    args = p.parse_args()
+    args = p.parse_args(argv)
     return args.func(args)
 
 

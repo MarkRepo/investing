@@ -228,7 +228,6 @@ def test_build_preprocess_output_includes_page_metadata():
 
 def test_cli_output_includes_preprocess_metadata_for_pdf():
     """Test that CLI JSON output includes preprocess_metadata with page metrics."""
-    import json
 
     doc = FakeDoc([
         FakePage("表 数据 Chart CAGR"),
@@ -267,8 +266,11 @@ def test_cli_output_includes_preprocess_metadata_for_pdf():
         # Build the final CLI output (as main() would do)
         output = pr.add_preprocess_metadata(result, doc)
 
-        # Verify preprocess_metadata is in the final output
+        # Verify preprocess_metadata is the public page metadata location
         assert "preprocess_metadata" in output
+        assert "page_signals" not in output
+        assert "extraction_warnings" not in output
+        assert output["meta"]["preprocess_version"] == "v2-phase1"
         meta = output["preprocess_metadata"]
         assert meta["page_count"] == 2
         assert len(meta["extracted_pages"]) == 2

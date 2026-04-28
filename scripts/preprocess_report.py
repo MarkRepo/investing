@@ -597,8 +597,11 @@ def add_preprocess_metadata(result: dict, doc=None) -> dict:
         The result dict with added preprocess_metadata field
     """
     preprocess_meta = build_preprocess_output(result, doc)
-    result["preprocess_metadata"] = preprocess_meta
-    return result
+    public = dict(result)
+    public.pop("page_signals", None)
+    public.pop("extraction_warnings", None)
+    public["preprocess_metadata"] = preprocess_meta
+    return public
 
 
 # --- figure_contexts (spec §4.8) ---------------------------------------------
@@ -706,7 +709,7 @@ def build_result(
             "institution": institution,
             "publish_date": publish_date,
             "market": market,
-            "preprocess_version": "v1",
+            "preprocess_version": "v2-phase1",
         },
         "sections": out_sections,
         "figure_contexts": fig_contexts,
