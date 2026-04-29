@@ -2,6 +2,7 @@ from pathlib import Path
 import pytest
 
 PROMPT_DIR = Path(__file__).resolve().parent.parent / ".claude/skills/ingest/prompts/digest"
+DOC_PROMPT_DIR = Path(__file__).resolve().parent.parent / "docs/prompts"
 
 
 def _read(name: str) -> str:
@@ -57,3 +58,38 @@ def test_sell_side_digest_declares_valuation_mandatory():
     md = _read("sell-side-digest.md")
     assert "valuation" in md
     assert "目标价" in md or "target_price" in md
+
+
+def test_ingest_review_bundle_prompt_declares_phase1_contract():
+    md = (DOC_PROMPT_DIR / "ingest-review-bundle.md").read_text(encoding="utf-8")
+    for tok in (
+        "ingest_review_bundle",
+        "bundle_version",
+        "v2-phase1",
+        "source_digest",
+        "insight_blocks",
+        "atomic_facts",
+        "linked_block_id",
+        "evidence_quote",
+        "stage_gates",
+        "company_candidates",
+        "synthesis",
+        "schema_fit_review",
+        "write_status",
+        "not_applicable_phase1",
+        "coverage_review",
+        "full_report_pass",
+        "sections_reviewed",
+        "fact_text",
+        "review-bundle",
+        "reasoning_chain",
+        "block_relations",
+        "corroborates",
+    ):
+        assert tok in md, f"ingest-review-bundle.md missing contract token {tok!r}"
+
+
+def test_ingest_review_bundle_prompt_keeps_llm_out_of_python():
+    md = (DOC_PROMPT_DIR / "ingest-review-bundle.md").read_text(encoding="utf-8")
+    assert "不调用 LLM API" in md or "不调 LLM API" in md
+    assert "Claude 对话" in md

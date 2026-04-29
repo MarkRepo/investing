@@ -317,6 +317,66 @@ def check_review_bundle_shape(bundle: dict) -> list[dict]:
     return warnings
 
 
+_BLOCK_RELATION_VALUES = {"premise_for", "corroborates", "risk_to", "contradicts"}
+
+
+def check_insight_blocks(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    block_ids = {
+        block.get("id")
+        for block in bundle.get("insight_blocks", []) or []
+        if block.get("id")
+    }
+    for idx, block in enumerate(bundle.get("insight_blocks", []) or []):
+        block_id = block.get("id") or f"#{idx}"
+        target = f"insight_blocks.{block_id}"
+
+        if not block.get("block_type"):
+            warnings.append(_qa_warning(
+                "block_missing_block_type",
+                "error",
+                f"{target}.block_type",
+                "block_type is empty.",
+            ))
+
+        chain = block.get("reasoning_chain") or []
+        if len(chain) < 2:
+            warnings.append(_qa_warning(
+                "block_shallow_reasoning_chain",
+                "warning",
+                f"{target}.reasoning_chain",
+                f"reasoning_chain has {len(chain)} item(s); must have at least 2 "
+                "(observation + investment implication).",
+            ))
+
+        for rel_idx, rel in enumerate(block.get("block_relations", []) or []):
+            ref_id = rel.get("block_id")
+            relation = rel.get("relation")
+            rel_target = f"{target}.block_relations[{rel_idx}]"
+            if ref_id and ref_id == block_id:
+                warnings.append(_qa_warning(
+                    "block_relations_unknown_block",
+                    "error",
+                    rel_target,
+                    f"block_relations references itself ({ref_id!r}).",
+                ))
+            elif ref_id and ref_id not in block_ids:
+                warnings.append(_qa_warning(
+                    "block_relations_unknown_block",
+                    "error",
+                    rel_target,
+                    f"block_relations references unknown block_id {ref_id!r}.",
+                ))
+            if relation and relation not in _BLOCK_RELATION_VALUES:
+                warnings.append(_qa_warning(
+                    "block_relations_invalid_relation",
+                    "warning",
+                    rel_target,
+                    f"relation {relation!r} is not one of {sorted(_BLOCK_RELATION_VALUES)}.",
+                ))
+    return warnings
+
+
 def _candidate_key(candidate: dict, fallback: str) -> str:
     market = candidate.get("market")
     ticker = candidate.get("ticker")
@@ -392,6 +452,45 @@ def check_fact_evidence_quotes(bundle: dict, preprocess: dict) -> list[dict]:
         ))
     return warnings
 
+
+_A_SHARE_TICKER_RE = re.compile(r"(?<!\d)(?:\d{6})\.(?:SH|SZ|BJ|SSE|SZSE|BSE)(?![A-Za-z0-9])", re.IGNORECASE)
+
+
+def _known_fact_entities(bundle: dict, fact_text: str) -> list[str]:
+    entities: list[str] = []
+    for match in _A_SHARE_TICKER_RE.findall(fact_text or ""):
+        ticker = match.split(".")[0]
+        if ticker not in entities:
+            entities.append(ticker)
+
+    for candidate in bundle.get("company_candidates", []) or []:
+        name = candidate.get("name")
+        if name and name in fact_text and name not in entities:
+            entities.append(name)
+        ticker = candidate.get("ticker")
+        if not ticker:
+            continue
+        ticker_base = str(ticker).split(".")[0]
+        if ticker_base in (fact_text or "") and ticker_base not in entities:
+            entities.append(ticker_base)
+    return entities
+
+
+def check_fact_quote_consistency(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    for idx, fact in enumerate(bundle.get("atomic_facts", []) or []):
+        fact_id = fact.get("fact_id") or f"#{idx}"
+        fact_text = fact.get("fact_text") or ""
+        quote = fact.get("evidence_quote") or ""
+        missing = [entity for entity in _known_fact_entities(bundle, fact_text) if entity not in quote]
+        if missing:
+            warnings.append(_qa_warning(
+                "fact_text_entity_missing_from_quote",
+                "warning",
+                f"atomic_facts.{fact_id}",
+                f"fact_text mentions entities not present in evidence_quote: {', '.join(missing)}.",
+            ))
+    return warnings
 
 def _risky_pages(preprocess: dict) -> dict[int, dict]:
     pages = (preprocess.get("preprocess_metadata") or {}).get("extracted_pages") or []
@@ -551,15 +650,131 @@ def check_synthesis_discipline(bundle: dict) -> list[dict]:
     return warnings
 
 
+_VALID_SCOPE_TYPES = {"industry", "arena", "company", "cross_cutting"}
+
+
+def check_claim_candidates(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    candidates = bundle.get("claim_candidates") or []
+    if not candidates:
+        return warnings
+
+    block_ids = {b.get("id") for b in (bundle.get("insight_blocks") or []) if b.get("id")}
+    source_date = (bundle.get("source_digest") or {}).get("source_date")
+    required_fields = (
+        "candidate_id",
+        "claim_text",
+        "scope_type",
+        "claim_type",
+        "supporting_block_ids",
+        "direction_on_source",
+        "as_of",
+    )
+
+    for candidate in candidates:
+        cid = candidate.get("candidate_id", "?")
+        for field in required_fields:
+            if not candidate.get(field):
+                warnings.append(_qa_warning(
+                    "claim_candidate_missing_field",
+                    "error",
+                    cid,
+                    f"missing required field: {field}",
+                ))
+
+        scope = candidate.get("scope_type")
+        if scope and scope not in _VALID_SCOPE_TYPES:
+            warnings.append(_qa_warning(
+                "claim_candidate_invalid_scope_type",
+                "error",
+                cid,
+                f"scope_type={scope} not in {sorted(_VALID_SCOPE_TYPES)}",
+            ))
+
+        for block_id in candidate.get("supporting_block_ids") or []:
+            if block_id not in block_ids:
+                warnings.append(_qa_warning(
+                    "claim_candidate_broken_link",
+                    "error",
+                    cid,
+                    f"supporting_block_id={block_id} not in insight_blocks",
+                ))
+
+        as_of = candidate.get("as_of")
+        if as_of and source_date and as_of != source_date:
+            warnings.append(_qa_warning(
+                "claim_candidate_as_of_mismatch",
+                "warning",
+                cid,
+                f"as_of={as_of} != source_date={source_date}",
+            ))
+
+        text = (candidate.get("claim_text") or "").strip()
+        if text and _looks_multi_sentence(text):
+            warnings.append(_qa_warning(
+                "claim_candidate_claim_text_not_atomic",
+                "warning",
+                cid,
+                "claim_text 含多句迹象；应为单句命题",
+            ))
+
+    return warnings
+
+
+def _looks_multi_sentence(text: str) -> bool:
+    parts = re.split(r"[。！？；\n]+|(?<=[A-Za-z0-9])\.\s+(?=[A-Z0-9])", text)
+    non_empty = [part for part in parts if part.strip()]
+    return len(non_empty) > 1
+
+
+def check_schema_fit_review(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    sfr = bundle.get("schema_fit_review")
+    if sfr is None or sfr == {}:
+        warnings.append(_qa_warning(
+            "schema_fit_review_incomplete",
+            "warning",
+            "schema_fit_review",
+            "schema_fit_review 未填写（Phase 1.5 起应至少给出 fits_current_schema 判断）",
+        ))
+        return warnings
+
+    required = ("fits_current_schema", "missing_schema_fields", "extra_fields_needed", "notes")
+    for key in required:
+        if key not in sfr:
+            warnings.append(_qa_warning(
+                "schema_fit_review_incomplete",
+                "warning",
+                "schema_fit_review",
+                f"missing key: {key}",
+            ))
+
+    if sfr.get("fits_current_schema") is False:
+        missing = sfr.get("missing_schema_fields") or []
+        extra = sfr.get("extra_fields_needed") or []
+        if not missing and not extra:
+            warnings.append(_qa_warning(
+                "schema_fit_review_fits_false_without_details",
+                "warning",
+                "schema_fit_review",
+                "fits_current_schema=false 但未给出 missing_schema_fields 或 extra_fields_needed",
+            ))
+    return warnings
+
+
 def check_ingest_review_bundle(bundle: dict, preprocess: dict) -> list[dict]:
     warnings: list[dict] = []
     warnings += check_review_bundle_shape(bundle)
+    warnings += check_insight_blocks(bundle)
     warnings += check_fact_block_links(bundle)
     warnings += check_fact_evidence_quotes(bundle, preprocess)
+    warnings += check_fact_quote_consistency(bundle)
     warnings += check_preprocess_risk_confidence(bundle, preprocess)
     warnings += check_stage_gate_synthesis(bundle)
     warnings += check_company_candidates(bundle)
+    warnings += check_claim_candidates(bundle)
     warnings += check_synthesis_discipline(bundle)
+    warnings += check_schema_fit_review(bundle)
     return warnings
 
 
@@ -1033,6 +1248,51 @@ def cmd_dismiss(args: argparse.Namespace) -> int:
     return 0 if ok else 1
 
 
+def cmd_evaluation_init(args: argparse.Namespace) -> int:
+    from datetime import timezone
+
+    bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
+    preprocess = json.loads(Path(args.preprocess).read_text(encoding="utf-8"))
+    warnings = check_ingest_review_bundle(bundle, preprocess)
+    source_id = (bundle.get("source_digest") or {}).get("source_id", "")
+
+    evaluation = {
+        "bundle_ref": source_id,
+        "evaluated_at": datetime.now(timezone.utc).isoformat(),
+        "evaluator": "",
+        "eval_prompt_version": "phase1.5-v1",
+        "method_layers_run": ["L1"],
+        "dimension_ratings": {
+            "coverage_fidelity": {"trend": None, "notes": ""},
+            "reasoning_quality": {"trend": None, "notes": ""},
+            "calibration": {"trend": None, "notes": ""},
+            "narrative": {"trend": None, "notes": ""},
+            "claim_extraction_quality": {"trend": None, "notes": ""},
+        },
+        "system_fit": {"notes": ""},
+        "phase2_readiness": {"notes": ""},
+        "defects": [
+            {
+                "id": f"d-{i + 1:03d}",
+                "category": w.get("rule", "unknown"),
+                "severity": w.get("severity", "warning"),
+                "target_ref": w.get("target", ""),
+                "description": w.get("detail", ""),
+                "root_cause_hint": None,
+                "suggested_fix": "",
+            }
+            for i, w in enumerate(warnings)
+        ],
+        "overall_notes": "",
+    }
+    Path(args.out).write_text(
+        json.dumps(evaluation, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print(f"✓ evaluation skeleton written to {args.out}")
+    return 0
+
+
 def cmd_list(args: argparse.Namespace) -> int:
     from app.io import qa as qa_io
 
@@ -1089,6 +1349,14 @@ def main(argv: list[str] | None = None) -> int:
     p_list.add_argument("--scope", required=True)
     p_list.add_argument("--status", choices=["open", "resolved", "dismissed"], help="过滤状态")
     p_list.set_defaults(func=cmd_list)
+
+    p_eval = sub.add_parser("evaluation", help="evaluation workflow")
+    eval_sub = p_eval.add_subparsers(dest="eval_cmd", required=True)
+    p_eval_init = eval_sub.add_parser("init", help="aggregate L1 warnings into evaluation skeleton")
+    p_eval_init.add_argument("--bundle", required=True)
+    p_eval_init.add_argument("--preprocess", required=True)
+    p_eval_init.add_argument("--out", required=True)
+    p_eval_init.set_defaults(func=cmd_evaluation_init)
 
     args = p.parse_args(argv)
     return args.func(args)

@@ -275,6 +275,53 @@ data/financials.db         # 唯一的 SQLite；派生数据，可以删了重�
 2. 粘贴多行，格式 `TICKER 价格`（宽松解析，支持 `,` 或空格分隔，支持货币符号）
 3. 系统 upsert 到 SQLite，同日重复录入后覆盖
 
+### Phase 1 review bundle 试跑
+
+Phase 1 ingest 不写 archive。它只把一份研报转成可审核的 `ingest_review_bundle`，再用 QA 脚本检查证据链。
+
+1. 运行 preprocess，保存为 `preprocess.json`
+2. 打开 `/prompts`，复制 `ingest-review-bundle.md`
+3. 在 Claude 对话里贴 prompt 和完整 `preprocess.json`
+4. 先做 full-report pass：按顺序通读所有 `action != "skip"` 的 sections，不能只看摘要页、关键词搜索或抽样段落
+5. 把 Claude 返回的严格 JSON 保存为 `bundle.json`
+6. 运行：
+
+```bash
+python3 scripts/ingest_qa.py review-bundle --bundle bundle.json --preprocess preprocess.json
+```
+
+如果在本 repo worktree 的虚拟环境里：
+
+```bash
+.venv/bin/python scripts/ingest_qa.py review-bundle --bundle bundle.json --preprocess preprocess.json
+```
+
+通过时会输出：
+
+```text
+✓ review bundle QA passed
+```
+
+如果出现 warning/error，先修 `bundle.json`，再重跑 QA。`fact_text` 里的公司名、ticker、关键数字必须能在 `evidence_quote` 里看到；否则拆成更小的 fact。不要让 Python 调 LLM API，也不要在 Phase 1 写入 `industries/`、`arenas/` 或 `companies/`。
+
+### Phase 1 评测工作流（可选）
+
+评测用于迭代 ingest prompt / QA 规则，不是 ingest 验收门。是否评测、是否在本次 ingest 后跑，由用户决定。
+
+1. 完成 ingest，得到 `bundle.json` + `preprocess.json`
+2. 生成 evaluation 骨架（L1 聚合）：
+
+   ```bash
+   .venv/bin/python scripts/ingest_qa.py evaluation init \
+     --bundle bundle.json --preprocess preprocess.json --out evaluation.json
+   ```
+
+3. 在 Claude 对话里贴 `docs/prompts/ingest-eval-l2.md` 作为 system 指令，再贴三份 JSON（bundle / preprocess / evaluation 骨架）
+4. Claude 返回 L2 评测 JSON 片段，按 prompt 末尾“合并规则”合并进 `evaluation.json`
+5. `evaluation.json` 与 bundle、preprocess 同目录存放；多次评测用 `evaluation-{ISO-date}.json` 避免覆盖
+
+评测的作用是**产出结构化缺陷清单**（`defects[]`），供跨 ingest 对比与 prompt / QA 规则迭代。不产出“合格/不合格”结论。
+
 ### 添加持仓
 1. `/portfolio`
 2. POST `/portfolio/position`（通过页面表单）

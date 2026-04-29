@@ -18,7 +18,7 @@ def valid_bundle() -> dict:
                 "source_page_range": "1-2",
                 "summary": "需求增长来自政策和经济性。",
                 "evidence_strength": "medium",
-                "reasoning_chain": ["政策支持", "经济性改善"],
+                "reasoning_chain": ["政策推动新增装机需求持续增长。", "因此储能设备采购量有望扩大，相关供应商受益。"],
             }
         ],
         "atomic_facts": [
@@ -42,7 +42,12 @@ def valid_bundle() -> dict:
             "investment_questions": [],
             "cannot_conclude": [],
         },
-        "schema_fit_review": {},
+        "schema_fit_review": {
+            "fits_current_schema": True,
+            "missing_schema_fields": [],
+            "extra_fields_needed": [],
+            "notes": "",
+        },
         "write_status": "not_applicable_phase1",
     }
 
@@ -54,6 +59,24 @@ def test_missing_insight_blocks_returns_error():
     warnings = qa.check_review_bundle_shape(bundle)
 
     assert any(w["rule"] == "missing_insight_blocks" and w["severity"] == "error" for w in warnings)
+
+
+def test_missing_source_digest_returns_error():
+    bundle = valid_bundle()
+    bundle.pop("source_digest")
+
+    warnings = qa.check_review_bundle_shape(bundle)
+
+    assert any(w["rule"] == "missing_source_digest" and w["severity"] == "error" for w in warnings)
+
+
+def test_missing_synthesis_returns_error():
+    bundle = valid_bundle()
+    bundle.pop("synthesis")
+
+    warnings = qa.check_review_bundle_shape(bundle)
+
+    assert any(w["rule"] == "missing_synthesis" and w["severity"] == "error" for w in warnings)
 
 
 def test_fact_without_linked_block_id_returns_error():
@@ -83,7 +106,7 @@ def test_fact_without_evidence_quote_returns_error():
     assert any(w["rule"] == "fact_missing_evidence_quote" and w["severity"] == "error" for w in warnings)
 
 
-def test_evidence_quote_not_found_in_preprocess_text_returns_warning():
+def test_evidence_quote_not_found_in_short_preprocess_warns_about_pdf_text_loss():
     bundle = valid_bundle()
     preprocess = {
         "sections": [
@@ -97,6 +120,20 @@ def test_evidence_quote_not_found_in_preprocess_text_returns_warning():
     assert any("PDF→text" in w["detail"] for w in warnings)
 
 
+def test_evidence_quote_not_found_in_normal_preprocess_omits_pdf_text_loss_hint():
+    bundle = valid_bundle()
+    preprocess = {
+        "sections": [
+            {"action": "keep", "text": "这里没有对应证据。" * 5000},
+        ]
+    }
+
+    warnings = qa.check_fact_evidence_quotes(bundle, preprocess)
+
+    assert any(w["rule"] == "evidence_quote_not_found" and w["severity"] == "warning" for w in warnings)
+    assert all("PDF→text" not in w["detail"] for w in warnings)
+
+
 def test_valid_bundle_returns_no_warnings_when_quote_matches_preprocess():
     preprocess = {
         "sections": [
@@ -105,6 +142,94 @@ def test_valid_bundle_returns_no_warnings_when_quote_matches_preprocess():
     }
 
     warnings = qa.check_ingest_review_bundle(valid_bundle(), preprocess)
+
+    assert warnings == []
+
+
+
+def test_fact_text_candidate_company_name_missing_from_evidence_quote_returns_warning():
+    bundle = valid_bundle()
+    bundle["company_candidates"] = [
+        {
+            "ticker": "600363",
+            "market": "SSE",
+            "name": "联创光电",
+            "exposure_type": "thematic_related",
+            "confidence": "medium",
+            "source_block_ids": ["ib-001"],
+            "verification_questions": ["收入占比是多少？"],
+        }
+    ]
+    bundle["atomic_facts"][0] = {
+        "fact_id": "fact-001",
+        "linked_block_id": "ib-001",
+        "fact_text": "报告首页列出联创光电，股票代码为 600363.SH。",
+        "evidence_quote": "600363.SH 人民币53.50  增持  西部超导",
+        "confidence": "medium",
+    }
+
+    warnings = qa.check_fact_quote_consistency(bundle)
+
+    assert any(w["rule"] == "fact_text_entity_missing_from_quote" and w["target"] == "atomic_facts.fact-001" for w in warnings)
+    assert any("联创光电" in w["detail"] for w in warnings)
+
+
+def test_company_like_technical_term_without_candidate_does_not_warn():
+    bundle = valid_bundle()
+    bundle["atomic_facts"][0] = {
+        "fact_id": "fact-001",
+        "linked_block_id": "ib-001",
+        "fact_text": "高温超导磁体是聚变装置的关键技术路线。",
+        "evidence_quote": "磁体是聚变装置的关键技术路线",
+        "confidence": "medium",
+    }
+
+    warnings = qa.check_fact_quote_consistency(bundle)
+
+    assert warnings == []
+
+
+def test_six_digit_quantity_without_exchange_suffix_is_not_treated_as_ticker():
+    bundle = valid_bundle()
+    bundle["atomic_facts"][0] = {
+        "fact_id": "fact-001",
+        "linked_block_id": "ib-001",
+        "fact_text": "示范项目年发电量达到 123456 兆瓦时。",
+        "evidence_quote": "示范项目年发电量达到 兆瓦时",
+        "confidence": "medium",
+    }
+
+    warnings = qa.check_fact_quote_consistency(bundle)
+
+    assert warnings == []
+
+
+def test_fact_text_ticker_missing_from_evidence_quote_returns_warning():
+    bundle = valid_bundle()
+    bundle["atomic_facts"][0] = {
+        "fact_id": "fact-001",
+        "linked_block_id": "ib-001",
+        "fact_text": "报告首页列出安泰科技，股票代码为 688122.SH。",
+        "evidence_quote": "安泰科技 人民币43.68  买入",
+        "confidence": "medium",
+    }
+
+    warnings = qa.check_fact_quote_consistency(bundle)
+
+    assert any(w["rule"] == "fact_text_entity_missing_from_quote" and "688122" in w["detail"] for w in warnings)
+
+
+def test_fact_text_company_and_ticker_present_in_quote_returns_no_consistency_warning():
+    bundle = valid_bundle()
+    bundle["atomic_facts"][0] = {
+        "fact_id": "fact-001",
+        "linked_block_id": "ib-001",
+        "fact_text": "报告首页列出安泰科技，股票代码为 688122.SH。",
+        "evidence_quote": "688122.SH 人民币43.68  买入  安泰科技",
+        "confidence": "medium",
+    }
+
+    warnings = qa.check_fact_quote_consistency(bundle)
 
     assert warnings == []
 
@@ -308,3 +433,268 @@ def test_review_bundle_cli_returns_nonzero_for_warnings(tmp_path, capsys):
     assert code == 1
     assert "# Review bundle QA" in captured.out
     assert "missing_insight_blocks" in captured.out
+
+
+def test_block_missing_block_type_returns_error():
+    bundle = valid_bundle()
+    bundle["insight_blocks"][0].pop("block_type", None)
+    bundle["insight_blocks"][0]["block_type"] = ""
+
+    warnings = qa.check_insight_blocks(bundle)
+
+    assert any(w["rule"] == "block_missing_block_type" and w["severity"] == "error" for w in warnings)
+
+
+def test_block_single_item_reasoning_chain_returns_warning():
+    bundle = valid_bundle()
+    bundle["insight_blocks"][0]["reasoning_chain"] = ["只有一条"]
+
+    warnings = qa.check_insight_blocks(bundle)
+
+    assert any(w["rule"] == "block_shallow_reasoning_chain" and w["severity"] == "warning" for w in warnings)
+
+
+def test_block_two_item_reasoning_chain_passes():
+    bundle = valid_bundle()
+    bundle["insight_blocks"][0]["reasoning_chain"] = ["观察：数据如此", "因此投资含义如彼"]
+
+    warnings = qa.check_insight_blocks(bundle)
+
+    assert not any(w["rule"] == "block_shallow_reasoning_chain" for w in warnings)
+
+
+def test_block_relations_unknown_block_returns_error():
+    bundle = valid_bundle()
+    bundle["insight_blocks"][0]["block_relations"] = [
+        {"block_id": "ib-999", "relation": "premise_for"}
+    ]
+
+    warnings = qa.check_insight_blocks(bundle)
+
+    assert any(w["rule"] == "block_relations_unknown_block" and w["severity"] == "error" for w in warnings)
+
+
+def test_block_relations_invalid_relation_returns_warning():
+    bundle = valid_bundle()
+    bundle["insight_blocks"][0]["block_relations"] = [
+        {"block_id": "ib-001", "relation": "vaguely_related"}
+    ]
+
+    warnings = qa.check_insight_blocks(bundle)
+
+    assert any(w["rule"] == "block_relations_invalid_relation" and w["severity"] == "warning" for w in warnings)
+
+
+def test_block_relations_self_reference_returns_error():
+    bundle = valid_bundle()
+    bundle["insight_blocks"][0]["block_relations"] = [
+        {"block_id": "ib-001", "relation": "premise_for"}
+    ]
+
+    warnings = qa.check_insight_blocks(bundle)
+
+    assert any(w["rule"] == "block_relations_unknown_block" and w["severity"] == "error" for w in warnings)
+
+
+def test_block_relations_valid_passes():
+    bundle = valid_bundle()
+    bundle["insight_blocks"].append({
+        "id": "ib-002",
+        "block_type": "risk",
+        "title": "风险",
+        "summary": "风险说明。",
+        "evidence_strength": "medium",
+        "reasoning_chain": ["观察", "含义"],
+    })
+    bundle["insight_blocks"][0]["block_relations"] = [
+        {"block_id": "ib-002", "relation": "corroborates"}
+    ]
+
+    warnings = qa.check_insight_blocks(bundle)
+
+    assert not any(w["rule"].startswith("block_relations_") for w in warnings)
+
+
+def test_claim_candidate_missing_required_field_returns_error():
+    bundle = valid_bundle()
+    bundle["claim_candidates"] = [
+        {
+            "candidate_id": "cc-001",
+            "scope_type": "industry",
+            "claim_type": "thesis",
+            "supporting_block_ids": ["ib-001"],
+            "direction_on_source": "supports",
+            "as_of": "2026-04-30",
+        }
+    ]
+
+    warnings = qa.check_claim_candidates(bundle)
+
+    assert any(w["rule"] == "claim_candidate_missing_field" and w["severity"] == "error" for w in warnings)
+    assert any("claim_text" in w["detail"] for w in warnings)
+
+
+def test_claim_candidate_invalid_scope_type_returns_error():
+    bundle = valid_bundle()
+    bundle["claim_candidates"] = [
+        {
+            "candidate_id": "cc-001",
+            "claim_text": "储能需求增长",
+            "scope_type": "random",
+            "claim_type": "thesis",
+            "supporting_block_ids": ["ib-001"],
+            "direction_on_source": "supports",
+            "as_of": "2026-04-30",
+        }
+    ]
+
+    warnings = qa.check_claim_candidates(bundle)
+
+    assert any(w["rule"] == "claim_candidate_invalid_scope_type" and w["severity"] == "error" for w in warnings)
+
+
+def test_claim_candidate_supporting_block_id_not_in_bundle_returns_error():
+    bundle = valid_bundle()
+    bundle["claim_candidates"] = [
+        {
+            "candidate_id": "cc-001",
+            "claim_text": "储能需求增长",
+            "scope_type": "industry",
+            "claim_type": "thesis",
+            "supporting_block_ids": ["ib-999"],
+            "direction_on_source": "supports",
+            "as_of": "2026-04-30",
+        }
+    ]
+
+    warnings = qa.check_claim_candidates(bundle)
+
+    assert any(w["rule"] == "claim_candidate_broken_link" and w["severity"] == "error" for w in warnings)
+
+
+def test_claim_candidate_as_of_mismatches_source_date_returns_warning():
+    bundle = valid_bundle()
+    bundle["source_digest"]["source_date"] = "2026-04-30"
+    bundle["claim_candidates"] = [
+        {
+            "candidate_id": "cc-001",
+            "claim_text": "储能需求增长",
+            "scope_type": "industry",
+            "claim_type": "thesis",
+            "supporting_block_ids": ["ib-001"],
+            "direction_on_source": "supports",
+            "as_of": "2026-04-29",
+        }
+    ]
+
+    warnings = qa.check_claim_candidates(bundle)
+
+    assert any(w["rule"] == "claim_candidate_as_of_mismatch" and w["severity"] == "warning" for w in warnings)
+
+
+def test_claim_candidate_claim_text_not_atomic_returns_warning():
+    bundle = valid_bundle()
+    bundle["claim_candidates"] = [
+        {
+            "candidate_id": "cc-001",
+            "claim_text": "A 增长。B 衰退。",
+            "scope_type": "industry",
+            "claim_type": "thesis",
+            "supporting_block_ids": ["ib-001"],
+            "direction_on_source": "supports",
+            "as_of": "2026-04-30",
+        }
+    ]
+
+    warnings = qa.check_claim_candidates(bundle)
+
+    assert any(w["rule"] == "claim_candidate_claim_text_not_atomic" and w["severity"] == "warning" for w in warnings)
+
+
+def test_claim_candidate_english_multi_sentence_returns_warning():
+    bundle = valid_bundle()
+    bundle["claim_candidates"] = [
+        {
+            "candidate_id": "cc-001",
+            "claim_text": "A is growing. B is declining.",
+            "scope_type": "industry",
+            "claim_type": "thesis",
+            "supporting_block_ids": ["ib-001"],
+            "direction_on_source": "supports",
+            "as_of": "2026-04-30",
+        }
+    ]
+
+    warnings = qa.check_claim_candidates(bundle)
+
+    assert any(w["rule"] == "claim_candidate_claim_text_not_atomic" and w["severity"] == "warning" for w in warnings)
+
+
+def test_valid_claim_candidates_pass():
+    bundle = valid_bundle()
+    bundle["source_digest"]["source_date"] = "2026-04-30"
+    bundle["claim_candidates"] = [
+        {
+            "candidate_id": "cc-001",
+            "claim_text": "储能需求增长",
+            "scope_type": "industry",
+            "scope_ref": "cn-energy-storage",
+            "claim_type": "thesis",
+            "dimension_hint": "drivers",
+            "supporting_block_ids": ["ib-001"],
+            "direction_on_source": "supports",
+            "confidence": "medium",
+            "as_of": "2026-04-30",
+        }
+    ]
+
+    warnings = qa.check_claim_candidates(bundle)
+
+    assert warnings == []
+
+
+def test_schema_fit_review_missing_required_keys_returns_warning():
+    bundle = valid_bundle()
+    bundle["schema_fit_review"] = {"missing_schema_fields": [], "extra_fields_needed": [], "notes": ""}
+
+    warnings = qa.check_schema_fit_review(bundle)
+
+    assert any(w["rule"] == "schema_fit_review_incomplete" and w["severity"] == "warning" for w in warnings)
+
+
+def test_schema_fit_review_fits_false_without_details_returns_warning():
+    bundle = valid_bundle()
+    bundle["schema_fit_review"] = {
+        "fits_current_schema": False,
+        "missing_schema_fields": [],
+        "extra_fields_needed": [],
+        "notes": "",
+    }
+
+    warnings = qa.check_schema_fit_review(bundle)
+
+    assert any(w["rule"] == "schema_fit_review_fits_false_without_details" and w["severity"] == "warning" for w in warnings)
+
+
+def test_valid_schema_fit_review_passes_true_case():
+    bundle = valid_bundle()
+
+    warnings = qa.check_schema_fit_review(bundle)
+
+    assert warnings == []
+
+
+def test_valid_schema_fit_review_passes_false_case():
+    bundle = valid_bundle()
+    bundle["schema_fit_review"] = {
+        "fits_current_schema": False,
+        "missing_schema_fields": [],
+        "extra_fields_needed": [
+            {"proposed_field": "pipeline_stage", "rationale": "需要阶段", "example_evidence": "处于临床 II 期"}
+        ],
+        "notes": "需要扩展",
+    }
+
+    warnings = qa.check_schema_fit_review(bundle)
+
+    assert warnings == []
