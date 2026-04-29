@@ -148,20 +148,25 @@
 
 ```json
 {
-  "coverage":           { "score": "medium", "notes": "section 18 后半段漏提炼" },
-  "fidelity":           { "score": "high",   "notes": "" },
-  "reasoning_depth":    { "score": "medium", "notes": "" },
+  "coverage_fidelity":  { "score": "medium", "notes": "section 18 后半段漏提炼；evidence_quote 整体忠实" },
+  "reasoning_quality":  { "score": "medium", "notes": "推断链偏浅；stage_gates 条件过抽象" },
   "calibration":        { "score": "high",   "notes": "" },
-  "investment_utility": { "score": "medium", "notes": "stage_gates 过抽象" },
-  "coherence":          { "score": "high",   "notes": "" },
-  "compression":        { "score": "high",   "notes": "" },
-  "narrative":          { "score": "medium", "notes": "blocks 缺主线" }
+  "narrative":          { "score": "medium", "notes": "blocks 缺主线；synthesis 与 blocks 一致" }
 }
 ```
 
-共 8 个维度，都用五档评分（`high / medium_high / medium / medium_low / low`）。
+共 **4 个维度**，都用五档评分（`high / medium_high / medium / medium_low / low`）。
 
-**`system_fit` 不在 dimension_ratings 里**，作为独立顶层对象（见 4.5）。
+**维度收敛原则**（从 9 个合并）：
+
+| 收敛后维度 | 合并自 | 涵盖什么 |
+|---|---|---|
+| `coverage_fidelity` | coverage + fidelity | "该抽的抽了没" + "抽的是不是忠实原文" |
+| `reasoning_quality` | reasoning_depth + investment_utility | 推断链深度 + 投资含义的可操作性 |
+| `calibration` | calibration | 置信度与证据强度的匹配 |
+| `narrative` | coherence + compression + narrative | 一致性 + 压缩度 + 叙事连贯（广义"读起来好不好"） |
+
+**`system_fit` 不在 dimension_ratings 里**，作为独立顶层对象（见 4.5）——评估"工具和这类文档合不合拍"，和 dimension_ratings 正交。
 
 ### 4.5 `system_fit`（L3 LLM，独立顶层）
 
@@ -207,7 +212,7 @@
 [
   {
     "defect_id": "def-001",
-    "dimension": "coverage",
+    "dimension": "coverage_fidelity",
     "severity": "error",
     "defect_type": "missed_subtopic",
     "description": "...",
@@ -240,23 +245,20 @@
 
 ## 5. 缺陷类型完整分类
 
-### 5.1 覆盖度（coverage）
+按收敛后的 4 维度组织；system_fit 和 phase2_readiness 作为独立顶层对象也有自己的缺陷类型。
+
+### 5.1 `coverage_fidelity`（覆盖 + 忠实）
 
 | defect_type | 说明 |
 |---|---|
 | `missed_subtopic` | 原文 section 内子话题未被提炼 |
 | `missed_company` | 原文明确点名的公司未进入 candidates |
 | `missed_key_figure` | 重要数值/指标未被 fact 捕获 |
-
-### 5.2 忠实度（fidelity）
-
-| defect_type | 说明 |
-|---|---|
 | `hallucinated_fact` | fact 无原文支撑 |
 | `entity_mismatch` | fact_text 实体未出现在 evidence_quote（已有 QA） |
 | `evidence_quote_fabricated` | quote 在 preprocess 中找不到（已有 QA） |
 
-### 5.3 推断质量（reasoning_depth）
+### 5.2 `reasoning_quality`（推断 + 投资实用）
 
 | defect_type | 说明 |
 |---|---|
@@ -264,8 +266,12 @@
 | `shallow_reasoning` | reasoning_chain < 2 条（已有 QA） |
 | `block_fact_undifferentiated` | block summary = facts 合并，无额外合成 |
 | `circular_reasoning` | 结论复述前提 |
+| `vague_stage_gates` | stage gate 条件过抽象 |
+| `missing_stage_gates` | 有重要门槛未标 |
+| `non_actionable_questions` | investment_questions 过宽泛 |
+| `candidate_overclaimed` | candidates 被写成确定受益者 |
 
-### 5.4 校准度（calibration）
+### 5.3 `calibration`（置信度校准）
 
 | defect_type | 说明 |
 |---|---|
@@ -274,43 +280,24 @@
 | `overclaimed_synthesis` | synthesis 措辞超出 evidence strength 允许（已有 QA） |
 | `exposure_type_overclaimed` | direct_supplier 无合同证据 |
 
-### 5.5 投资实用性（investment_utility）
+### 5.4 `narrative`（一致 + 压缩 + 叙事连贯）
 
-| defect_type | 说明 |
-|---|---|
-| `vague_stage_gates` | stage gate 条件过抽象 |
-| `missing_stage_gates` | 有重要门槛未标 |
-| `non_actionable_questions` | investment_questions 过宽泛 |
-| `candidate_overclaimed` | candidates 被写成确定受益者 |
+| defect_type | 子类 | 说明 |
+|---|---|---|
+| `synthesis_block_mismatch` | 一致 | synthesis 结论无 block 支撑 |
+| `candidate_not_in_blocks` | 一致 | candidate source_block_ids 对应 block 未提该公司 |
+| `relation_direction_wrong` | 一致 | block_relations 方向有误 |
+| `redundant_blocks` | 压缩 | 两个 block 覆盖同一子话题 |
+| `block_too_broad` | 压缩 | 单 block 混多个无关子话题 |
+| `over_granular_facts` | 压缩 | facts 粒度过细 |
+| `disconnected_blocks` | 叙事 | blocks 之间缺联系（块间关系问题） |
+| `missing_narrative_arc` | 叙事 | 整体无"是什么 → 为什么 → 投资含义"递进 |
+| `synthesis_not_grounded` | 叙事 | synthesis 引入 blocks 中未建立的框架 |
+| `block_summary_opaque` | 叙事 | block summary 需对照原文才能理解 |
+| `inconsistent_entity_reference` | 叙事 | 同一实体不同 blocks 称呼不一 |
+| `synthesis_sections_incoherent` | 叙事 | what_we_know / plausible / cannot_conclude 矛盾 |
 
-### 5.6 内部一致性（coherence）
-
-| defect_type | 说明 |
-|---|---|
-| `synthesis_block_mismatch` | synthesis 结论无 block 支撑 |
-| `candidate_not_in_blocks` | candidate source_block_ids 对应 block 未提该公司 |
-| `relation_direction_wrong` | block_relations 方向有误 |
-
-### 5.7 压缩效率（compression）
-
-| defect_type | 说明 |
-|---|---|
-| `redundant_blocks` | 两个 block 覆盖同一子话题 |
-| `block_too_broad` | 单 block 混多个无关子话题 |
-| `over_granular_facts` | facts 粒度过细 |
-
-### 5.8 叙事逻辑与可理解性（narrative）
-
-| defect_type | 说明 |
-|---|---|
-| `disconnected_blocks` | blocks 之间缺联系（块间关系问题） |
-| `missing_narrative_arc` | 整体无"是什么 → 为什么 → 投资含义"递进（结构问题） |
-| `synthesis_not_grounded` | synthesis 引入 blocks 中未建立的框架 |
-| `block_summary_opaque` | block summary 需对照原文才能理解 |
-| `inconsistent_entity_reference` | 同一实体不同 blocks 称呼不一 |
-| `synthesis_sections_incoherent` | what_we_know / plausible / cannot_conclude 矛盾 |
-
-### 5.9 系统适配性（system_fit）
+### 5.5 `system_fit`（独立顶层对象的缺陷）
 
 | defect_type | 说明 |
 |---|---|
@@ -323,7 +310,7 @@
 | `wrong_dimension_hint` | 具体 block 的 dimension_hint 错误 |
 | `wrong_target_layer` | 具体 block 的 target_layer 错误 |
 
-### 5.10 Phase 2 就绪度（P1.5 后启用）
+### 5.6 `phase2_readiness`（独立顶层对象的缺陷，P1.5 后启用）
 
 | defect_type | 说明 |
 |---|---|
@@ -378,23 +365,38 @@ ingest_qa.py schema-conformance --design docs/superpowers/specs/2026-04-29-inges
 
 Claude 对话里贴此 prompt + bundle.json + preprocess.json + 已填的 metrics，Claude 返回 quality_review.json（严格 JSON）。
 
-**评审步骤结构**：
+**评审步骤结构**（按 4 个维度 + 2 个独立顶层对象组织）：
 
 ```
-【L3.1 内容质量】
+【L3.1 coverage_fidelity】
 - 对照 preprocess sections 核查漏提炼子话题 → missed_subtopic
+- 核查 entity 覆盖度 → missed_company / missed_key_figure
+- 核查 evidence_quote 忠实度 → hallucinated_fact / entity_mismatch
+- 填 dimension_ratings.coverage_fidelity
+
+【L3.2 reasoning_quality】
 - 核查 reasoning_chain 最后一条是推断还是事实复述 → facts_only_reasoning
-- 核查 stage_gates 可验证性 → vague_stage_gates
-- 核查 synthesis 与 blocks 一致性 → synthesis_block_mismatch
+- 核查 block summary 和 facts 的关系 → block_fact_undifferentiated
+- 核查 stage_gates 可验证性 → vague_stage_gates / missing_stage_gates
+- 核查 investment_questions / candidates 实用性 → non_actionable_questions / candidate_overclaimed
+- 填 dimension_ratings.reasoning_quality
 
-【L3.2 叙事与可理解性】
-- 判断 block summary 是否自包含 → block_summary_opaque
-- 判断 blocks 块间联系 → disconnected_blocks
-- 判断整体递进结构 → missing_narrative_arc
-- 核查 synthesis 各小节一致性 → synthesis_sections_incoherent
-- 核查实体引用一致 → inconsistent_entity_reference
+【L3.3 calibration】
+- 核查 high confidence 的证据充分度 → inflated_confidence
+- 核查 confidence 分布合理性 → uniform_high_evidence
+- 核查 synthesis 措辞强度 vs evidence_strength → overclaimed_synthesis
+- 核查 exposure_type 判定 → exposure_type_overclaimed
+- 填 dimension_ratings.calibration
 
-【L3.3 系统适配性】
+【L3.4 narrative（一致 + 压缩 + 叙事连贯）】
+- 内部一致性: synthesis 与 blocks 是否互证 → synthesis_block_mismatch
+- 一致性: candidate 与其 source blocks 对齐 → candidate_not_in_blocks
+- 压缩度: blocks 有无重复或过细 → redundant_blocks / block_too_broad / over_granular_facts
+- 叙事连贯: block summary 自包含、整体有递进 → block_summary_opaque / missing_narrative_arc / disconnected_blocks
+- 一致性: 实体引用和 synthesis 小节 → inconsistent_entity_reference / synthesis_sections_incoherent
+- 填 dimension_ratings.narrative
+
+【L3.5 system_fit（独立顶层对象）】
 - 判断文档结构 vs prompt 设计假设 → source_type_mismatch
 - 判断 reasoning_chain 要求对该文档是否自然 → reasoning_chain_forced
 - 判断 block_type 分配质量 → block_type_unnatural
@@ -402,7 +404,7 @@ Claude 对话里贴此 prompt + bundle.json + preprocess.json + 已填的 metric
 - 核查 dimension_hint / target_layer 准确度 → wrong_dimension_hint / wrong_target_layer
 - 填写 system_fit 结构化字段
 
-【L3.4 Phase 2 就绪度】（P1.5 后启用）
+【L3.6 phase2_readiness（独立顶层对象，P1.5 后启用）】
 - 核查 claim_candidates 粒度 → claim_candidate_granularity_off
 - 核查 claim 的 dimension_hint 准确度 → claim_dimension_hint_wrong
 - 核查 supporting_blocks 充足度 → claim_supporting_blocks_weak
@@ -529,8 +531,8 @@ ingest_qa.py compare-reviews --before v1 --after v2
 
 **已知**：Claude 评审另一个 Claude 产出的 bundle 存在系统性盲点——两者共享训练数据，同源失误会被同源放过。尤其以下维度受影响：
 
-- `coverage.missed_subtopic`：ingest Claude 认为"不重要"跳过的子话题，评审 Claude 可能同样认为不重要
-- `reasoning_depth.facts_only_reasoning`：同模型对"投资含义推断"的标准相近
+- `coverage_fidelity.missed_subtopic`：ingest Claude 认为"不重要"跳过的子话题，评审 Claude 可能同样认为不重要
+- `reasoning_quality.facts_only_reasoning`：同模型对"投资含义推断"的标准相近
 - `narrative.missing_narrative_arc`：同模型对"叙事连贯"的标准相近
 
 **缓解**：
