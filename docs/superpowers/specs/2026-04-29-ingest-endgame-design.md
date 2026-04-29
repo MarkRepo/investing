@@ -129,6 +129,21 @@ claim:
 - `supporting_evidence` 永远追加，矛盾证据也追加（方向不同）
 - `user_override.status` 非空时覆盖所有自动计算
 
+**Conflict resolution（conflicted 不是终态）**：
+
+当 claim 进入 `conflicted`（证据方向矛盾且权重接近），用户在 Claude 对话里 review 后**必须**产出一种 resolution：
+
+| resolution_type | 状态流转 | 说明 |
+|---|---|---|
+| `judge_strengthens` | conflicted → active（可能升 confidence） | 判定新证据方向主导，反向证据降权但保留在台账 |
+| `judge_weakens` | conflicted → weakened | 判定反向证据主导 |
+| `split_claim` | 原 claim → retired；新建两条独立 claim | 发现原 claim 实际混合了两个命题 |
+| `keep_uncertain` | 保持 conflicted，追加 user_note | 无法判定，明确悬置 |
+
+`split_claim` 时原 claim 的 `state_log` 记录 split 到的新 claim_ids；新 claim 继承原 claim 的 related_claims 和 supporting_evidence（按方向分配到对应新 claim）。
+
+`keep_uncertain` 不是默认选项——系统不允许 conflict 无限期挂起，每 90 天 forcing 用户重新 review。
+
 ### 4.2 event（新，外部信号）
 
 ```yaml
@@ -221,12 +236,33 @@ memo_id
 company_ref
 written_at
 last_reviewed
+status                              # active | dormant | archived
 referenced_claims[]                 # 用户手动声明
 referenced_narratives[]
-auto_review_flags[]                 # {flag, claim_id/narrative_ref, flagged_at, dismissed}
+auto_review_flags[]                 # {flag_level, ref_type, ref_id, reason, flagged_at, dismissed, superseded_by}
 ---
 # 正文用户手写，系统不解析
 ```
+
+**Flag 分级（由系统计算）**：
+
+| flag_level | 触发条件 |
+|---|---|
+| `critical` | 引用的 claim 从 active → weakened/retired，或叙事段 status → divergent |
+| `significant` | 引用的 claim confidence 跨 2 档变化（如 high → medium_low），或 claim 进入 conflicted |
+| `informational` | 引用的 claim 追加证据但状态不变 |
+
+**Flag 合并与批量操作**：
+
+- 同一 claim 在 30 天内多次变化 → 新 flag 标记 `superseded_by` 指向更新的 flag，UI 只展示最新那条
+- 批量 dismiss：用户可一次性 dismiss 某 memo 下所有 `informational` flag
+- 展开视图：critical/significant 默认展开，informational 默认折叠
+
+**Forcing function（防止堆积）**：
+
+- memo.last_reviewed 超过 180 天且有 pending critical/significant flag → status 自动降为 `dormant`
+- dormant memo 不再产生新 flag，UI 默认不展示，但保留 frontmatter 可用户显式 restore 回 active
+- flag 创建超过 365 天未 dismiss 或处理 → 自动 archived（不在默认视图，可查询历史）
 
 **关键**：系统只读 frontmatter，正文完全不解析（差异化观点 / 买入价 / kill conditions 保持用户私产）。
 
