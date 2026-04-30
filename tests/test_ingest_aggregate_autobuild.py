@@ -53,68 +53,6 @@ def test_ensure_company_exists_noop_when_present(tmp_path):
     assert result["autobuilt"] is False
 
 
-def test_propose_arena_bootstrap_normalizes_slug():
-    proposed = [
-        {"tentative_slug": "CN-CMP-Slurry-Domestic-Substitution",
-         "battleground_focus": "国产 CMP 抛光液挑战 Dupont/Cabot/Versum",
-         "tentative_participants": [
-             {"name": "安集", "role": "challenger"},
-             {"name": "Dupont", "role": "incumbent"},
-         ],
-         "parent_industry_slug": "cn-cmp-material"},
-    ]
-    out = agg.propose_arena_bootstrap(proposed)
-    assert len(out) == 1
-    a = out[0]
-    assert a["slug"] == "cn-cmp-slurry-domestic-substitution"  # lowercased
-    assert a["industry"] == "cn-cmp-material"
-    assert a["battleground_focus"] == "国产 CMP 抛光液挑战 Dupont/Cabot/Versum"
-    assert a["participants"] == [
-        {"name": "安集", "role": "challenger"},
-        {"name": "Dupont", "role": "incumbent"},
-    ]
-
-
-def test_propose_arena_bootstrap_prefers_tentative_name():
-    long_focus = "国内 CMP 抛光液和抛光垫厂商挑战全球龙头 Dupont/Entegris/Fujifilm 等海外玩家争夺国内晶圆制造市场份额"
-    proposed = [
-        {
-            "tentative_slug": "cn-cmp-sub",
-            "tentative_name": "国产 CMP 抛光替代",
-            "battleground_focus": long_focus,
-            "parent_industry_slug": "cn-cmp-material",
-            "tentative_participants": [],
-        },
-    ]
-    out = agg.propose_arena_bootstrap(proposed)
-    assert out[0]["name"] == "国产 CMP 抛光替代"  # used tentative_name, not truncated focus
-    assert out[0]["battleground_focus"] == long_focus  # focus not truncated
-
-
-def test_propose_arena_bootstrap_falls_back_to_truncated_focus():
-    proposed = [
-        {
-            "tentative_slug": "cn-x",
-            "battleground_focus": "a" * 80,
-            "parent_industry_slug": "cn-x-industry",
-            "tentative_participants": [],
-        },
-    ]
-    out = agg.propose_arena_bootstrap(proposed)
-    assert out[0]["name"] == "a" * 40  # focus[:40] when no name fields
-
-
-def test_propose_arena_bootstrap_drops_missing_focus():
-    proposed = [
-        {"tentative_slug": "good", "battleground_focus": "focus",
-         "parent_industry_slug": "i", "tentative_participants": []},
-        {"tentative_slug": "bad-no-focus", "battleground_focus": "",
-         "parent_industry_slug": "i", "tentative_participants": []},
-    ]
-    out = agg.propose_arena_bootstrap(proposed)
-    assert [a["slug"] for a in out] == ["good"]
-
-
 def test_bootstrap_arena_creates_definition_and_skeletons(tmp_path):
     """After user approves, this helper actually writes arena files."""
     from app.io import arenas as arenas_io

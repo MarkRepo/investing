@@ -7,8 +7,6 @@ come from API (akshare / yfinance) via the financials page.
 
 Public API:
 
-- ``load_json_tolerant(raw)``: parse JSON even when wrapped in a markdown
-  code fence or embedded in prose.
 - ``normalize_claim(c)``: coerce subagent schema quirks (polarity synonyms,
   flat ``evidence_text``) into the canonical ``claim`` shape.
 - ``normalize_period(p)``: ``FY2025 -> 2025A``, quarterly unchanged.
@@ -19,16 +17,16 @@ Public API:
   Each returns a list of human-readable issue strings; empty list = pass.
 - ``build_claims_batch(...)``: produce the dict ``validate_batch`` expects
   (header fields flat at the top level — not nested under ``"header"``).
-- ``write_claims(...)``: perform the write.
+- ``write_figure_contexts_for_company(...)``: append figure contexts to a
+  company's figure_contexts.jsonl.
+- ``bootstrap_arena_from_candidate(...)``: create arena from a candidate dict
+  using tentative_slug / name / parent_industry_slug / battleground_focus.
 """
 from __future__ import annotations
 
 import json
-import re
 from collections import Counter
 from pathlib import Path
-
-from app.io import claims as claims_io
 
 POLARITY_MAP = {
     "bull": "bull",
@@ -37,31 +35,6 @@ POLARITY_MAP = {
     "positive": "bull",
     "negative": "bear",
 }
-
-
-# ---------- Parsing ---------------------------------------------------------
-
-
-def load_json_tolerant(raw: str) -> dict:
-    """Decode JSON that may be wrapped in a ```json ... ``` fence or embedded
-    in other prose. Falls back to the first ``{`` and last ``}``.
-    """
-    raw = (raw or "").strip()
-    if not raw:
-        raise ValueError("empty input")
-    m = re.search(r"```(?:json)?\s*(\{.*\})\s*```", raw, re.DOTALL)
-    if m:
-        raw = m.group(1)
-    else:
-        first, last = raw.find("{"), raw.rfind("}")
-        if first >= 0 and last > first:
-            raw = raw[first : last + 1]
-    return json.loads(raw)
-
-
-def load_subagent_json(path: str | Path) -> dict:
-    """Read a subagent output file and parse it tolerantly."""
-    return load_json_tolerant(Path(path).read_text(encoding="utf-8"))
 
 
 # ---------- Normalization ---------------------------------------------------
@@ -192,152 +165,6 @@ def dedup_claims(claims: list[dict]) -> list[dict]:
     return out
 
 
-def route_key_facts(key_facts: list[dict]) -> dict[str, list[dict]]:
-    """Split digest key_facts into per-layer buckets based on target_layer.
-
-    cross-layer facts (e.g. share_by_player that reports a ticker's industry
-    market share) go into BOTH industry and company buckets so the arena
-    page / company page both see the fact. Malformed facts (no target_refs,
-    unknown target_layer) are silently dropped.
-    """
-    out: dict[str, list[dict]] = {"industry": [], "arena": [], "company": []}
-    for f in key_facts:
-        layer = f.get("target_layer")
-        refs = f.get("target_refs") or {}
-        if not refs:
-            continue
-        if layer == "industry":
-            if refs.get("industry_slug"):
-                out["industry"].append(f)
-        elif layer == "arena":
-            if refs.get("arena_slug"):
-                out["arena"].append(f)
-        elif layer == "company":
-            if refs.get("ticker") and refs.get("market"):
-                out["company"].append(f)
-        elif layer == "cross":
-            # Cross-layer: append to industry (primary) and also company if
-            # ticker present.
-            if refs.get("industry_slug"):
-                out["industry"].append(f)
-            if refs.get("ticker") and refs.get("market"):
-                out["company"].append(f)
-        # else: unknown target_layer → drop
-    return out
-
-
-def derive_arena_facts(
-    buckets: dict[str, list[dict]],
-    proposed_arena_slugs: list[str],
-) -> list[dict]:
-    """Promote industry-layer facts whose ``arena_refs`` matches a
-    proposed/known arena into the arena bucket, as evidence for that arena.
-
-    Original industry facts stay put; clones are returned (target_layer=
-    "arena", target_refs.arena_slug filled). Caller extends
-    ``buckets["arena"]`` with the result.
-
-    Idempotent — if a clone with the same (idx, arena_slug) is already in the
-    arena bucket, it isn't duplicated.
-    """
-    if not proposed_arena_slugs:
-        return []
-    slug_set = set(proposed_arena_slugs)
-    existing_keys = {
-        (f.get("idx"), (f.get("target_refs") or {}).get("arena_slug"))
-        for f in buckets.get("arena", [])
-    }
-    derived: list[dict] = []
-    for f in buckets.get("industry", []):
-        refs_in = f.get("arena_refs") or []
-        for slug in refs_in:
-            if slug not in slug_set:
-                continue
-            if (f.get("idx"), slug) in existing_keys:
-                continue
-            clone = dict(f)
-            clone["target_layer"] = "arena"
-            clone["target_refs"] = {
-                **(f.get("target_refs") or {}),
-                "arena_slug": slug,
-            }
-            clone["_derived_from"] = "industry.arena_refs"
-            derived.append(clone)
-            existing_keys.add((f.get("idx"), slug))
-    return derived
-
-
-def fact_to_observation(
-    fact: dict,
-    source_meta: dict,
-    *,
-    extracted_by: str,
-    extracted_at: str,
-) -> dict:
-    """Map a digest key_fact (target_layer=industry) to an observations.jsonl row
-    matching spec §4.2 schema.
-    """
-    slug = (fact.get("target_refs") or {}).get("industry_slug", "")
-    # ID: first 3 chars of slug after any "cn-"/"us-" prefix
-    # For "cn-cmp-material", we want "cmp"
-    slug_no_geo = re.sub(r"^(cn|us|uk|de|fr|jp|in|br)-", "", slug)
-    first_segment = slug_no_geo.split("-")[0]
-    prefix = re.sub(r"[^a-z]", "", first_segment)[:3] or "obs"
-    # Use fact idx + source sha8 for deterministic local id.
-    obs_id = f"{prefix}-{source_meta.get('sha8', '')}-{fact.get('idx', 0):04d}"
-    return {
-        "id": obs_id,
-        "dimension": fact.get("dimension_hint"),
-        "field": fact.get("field_hint"),
-        "value": fact.get("value_numeric"),
-        "unit": fact.get("unit"),
-        "timeframe": fact.get("timeframe"),
-        "time_type": fact.get("time_type", "actual"),
-        "metric_type": fact.get("metric_type", "atomic"),
-        "segment": fact.get("segment"),
-        "arena_refs": fact.get("arena_refs") or [],
-        "source_id": source_meta["source_id"],
-        "source_file": source_meta.get("source_file"),
-        "source_note": source_meta.get("source_note"),
-        "confidence": fact.get("confidence", "medium"),
-        "claim_text": fact.get("fact_text"),
-        "evidence": fact.get("evidence_quote"),
-        "extracted_by": extracted_by,
-        "extracted_at": extracted_at,
-    }
-
-
-def write_industry_observations(
-    facts: list[dict],
-    source_meta: dict,
-    *,
-    extracted_by: str,
-    extracted_at: str,
-    base: Path | None = None,
-) -> int:
-    """Convert digest facts → observation rows, dedup, append per-slug.
-    Returns total rows written across all slugs.
-    """
-    from app.io import industry as industry_io  # lazy: avoid circular
-
-    by_slug: dict[str, list[dict]] = {}
-    for f in facts:
-        refs = f.get("target_refs") or {}
-        slug = refs.get("industry_slug")
-        if not slug:
-            continue
-        by_slug.setdefault(slug, []).append(fact_to_observation(
-            f, source_meta, extracted_by=extracted_by, extracted_at=extracted_at,
-        ))
-
-    total = 0
-    for slug, rows in by_slug.items():
-        rows = industry_io.dedup_observations(rows)
-        total += industry_io.append_observations(slug, rows, base=base)
-    return total
-
-
-
 def check_period_consistency(merged: dict, expected: str) -> list[str]:
     """The dominant claim timeframe must match the report's fiscal period."""
     tfs = [c.get("timeframe") for c in merged.get("claims", []) if c.get("timeframe")]
@@ -381,115 +208,6 @@ def build_claims_batch(
 # ---------- Writers ---------------------------------------------------------
 
 
-def write_claims(
-    ticker: str,
-    market: str,
-    claims: list[dict],
-    *,
-    source_id: str,
-    source_file: str,
-    extracted_by: str,
-    extracted_at: str,
-    base: Path | None = None,
-) -> tuple[int, list[dict]]:
-    """Validate then append. Returns ``(n_written, errors)``.
-
-    Partial success: valid claims are appended even if some sibling claims
-    fail validation. Caller inspects ``errors`` and reports to the user.
-    """
-    batch = build_claims_batch(
-        claims,
-        source_id=source_id,
-        source_file=source_file,
-        extracted_by=extracted_by,
-        extracted_at=extracted_at,
-    )
-    subjects = claims_io.load_subjects(base=base)
-    try:
-        header, valid, errors = claims_io.validate_batch(
-            json.dumps(batch, ensure_ascii=False), subjects
-        )
-    except ValueError as e:
-        return 0, [{"error": str(e)}]
-    if valid:
-        claims_io.append_batch(ticker, market, valid, header=header, base=base)
-    return len(valid), errors
-
-
-# ---------- Three-layer narrative writers -----
-
-
-def _is_blank_block(s) -> bool:
-    return s is None or (isinstance(s, str) and not s.strip())
-
-
-def write_industry_narrative(
-    narratives: dict[str, dict[str, str]],
-    source_meta: dict,
-    *,
-    base: Path | None = None,
-) -> int:
-    """narratives shape: {industry_slug: {dim: md_block, ...}, ...}.
-    Appends one source block per non-empty (slug, dim). Returns count written."""
-    from app.io import industry as industry_io
-
-    count = 0
-    for slug, by_dim in (narratives or {}).items():
-        if not by_dim:
-            continue
-        for dim, block in by_dim.items():
-            if _is_blank_block(block):
-                continue
-            industry_io.append_narrative_block(slug, dim, block, source_meta, base=base)
-            count += 1
-    return count
-
-
-def write_arena_narrative(
-    narratives: dict[str, dict[str, str]],
-    source_meta: dict,
-    *,
-    base: Path | None = None,
-) -> int:
-    """narratives shape: {arena_slug: {dim: md_block, ...}}."""
-    from app.io import arenas as arenas_io
-
-    count = 0
-    for slug, by_dim in (narratives or {}).items():
-        if not by_dim:
-            continue
-        for dim, block in by_dim.items():
-            if _is_blank_block(block):
-                continue
-            arenas_io.append_narrative_block(slug, dim, block, source_meta, base=base)
-            count += 1
-    return count
-
-
-def write_company_narrative(
-    narratives: dict[str, dict[str, str]],
-    source_meta: dict,
-    *,
-    base: Path | None = None,
-) -> int:
-    """narratives shape: {company_key (MARKET_TICKER): {dim: md_block, ...}}."""
-    from app.io import company as company_io
-
-    count = 0
-    for key, by_dim in (narratives or {}).items():
-        if not by_dim or "_" not in key:
-            continue
-        market, ticker = key.split("_", 1)
-        for dim, block in by_dim.items():
-            if _is_blank_block(block):
-                continue
-            company_io.append_narrative_block(
-                ticker, market, dim, block, source_meta, base=base,
-            )
-            count += 1
-    return count
-
-
 def write_figure_contexts(
     *,
     slug: str,
@@ -505,47 +223,6 @@ def write_figure_contexts(
     for c in contexts or []:
         enriched.append({**c, "source_id": source_meta["source_id"]})
     return fc_io.append_figure_contexts(slug, enriched, base=base)
-
-
-def facts_to_claims(facts: list[dict]) -> list[dict]:
-    """Convert company-layer digest facts to claim dicts accepted by
-    claims_io.validate_batch (and subsequently append_batch)."""
-    out: list[dict] = []
-    for f in facts:
-        if f.get("target_layer") not in ("company", "cross"):
-            continue
-        refs = f.get("target_refs") or {}
-        if not (refs.get("ticker") and refs.get("market")):
-            continue
-        out.append({
-            "claim_text": f.get("claim_text") or f.get("fact_text"),
-            "subject_tag": f.get("subject_tag_hint"),
-            "polarity": f.get("polarity", "neutral"),
-            "claim_type": (
-                "quantitative" if f.get("value_numeric") is not None
-                else "qualitative"
-            ),
-            "timeframe": f.get("timeframe"),
-            "time_type": f.get("time_type", "actual"),
-            "evidence": [{"text": f.get("evidence_quote") or "", "type": "primary"}],
-            "confidence": f.get("confidence", "medium"),
-            "arena_refs": f.get("arena_refs") or [],
-            "company_dimension_hint": f.get("company_dimension_hint"),
-        })
-    return out
-
-
-def group_company_facts(facts: list[dict]) -> dict[tuple[str, str], list[dict]]:
-    """Return {(ticker, market): [facts]} for every company-layer fact."""
-    groups: dict[tuple[str, str], list[dict]] = {}
-    for f in facts:
-        if f.get("target_layer") not in ("company", "cross"):
-            continue
-        refs = f.get("target_refs") or {}
-        if not (refs.get("ticker") and refs.get("market")):
-            continue
-        groups.setdefault((refs["ticker"], refs["market"]), []).append(f)
-    return groups
 
 
 def ensure_industry_exists(
@@ -592,32 +269,6 @@ def ensure_company_exists(
     return {"key": key, "autobuilt": True}
 
 
-def propose_arena_bootstrap(proposed: list[dict]) -> list[dict]:
-    """Normalize digest proposed_arenas to arena-create args for the main agent
-    to surface to the user. Lower-cases slug; drops proposals without
-    battleground_focus. Returns list of {slug, name, industry, battleground_focus,
-    participants}.
-    """
-    out: list[dict] = []
-    for p in proposed or []:
-        slug_raw = (p.get("tentative_slug") or "").strip().lower()
-        focus = (p.get("battleground_focus") or "").strip()
-        industry = (p.get("parent_industry_slug") or "").strip()
-        if not slug_raw or not focus or not industry:
-            continue
-        participants = p.get("tentative_participants") or []
-        # Display name priority: explicit name > tentative_name (Plan 5 schema) > trimmed focus
-        name = (p.get("name") or p.get("tentative_name") or focus[:40]).strip()
-        out.append({
-            "slug": slug_raw,
-            "name": name,
-            "industry": industry,
-            "battleground_focus": focus,
-            "participants": participants,
-        })
-    return out
-
-
 def bootstrap_arena(proposal: dict, *, base: Path | None = None) -> None:
     """After user approves, actually create the arena (definition + 5 dim
     narrative skeletons). Wrapper around arenas_io.write_definition."""
@@ -631,3 +282,53 @@ def bootstrap_arena(proposal: dict, *, base: Path | None = None) -> None:
         battleground_focus=proposal["battleground_focus"],
         base=base,
     )
+
+
+def write_figure_contexts_for_company(
+    market_ticker: str,
+    contexts: list[dict],
+    source_meta: dict,
+    *,
+    base: Path | None = None,
+) -> int:
+    """Append figure contexts to companies/{market_ticker}/figure_contexts.jsonl.
+
+    Each row is the original context dict plus source_id, source_title, and
+    source_date taken from source_meta. Returns count of rows written.
+    """
+    from app import config as cfg
+
+    companies_dir = (Path(base) / "companies") if base else cfg.COMPANIES_DIR
+    out_path = companies_dir / market_ticker / "figure_contexts.jsonl"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    rows = []
+    for c in contexts or []:
+        row = dict(c)
+        row["source_id"] = source_meta.get("source_id")
+        row["source_title"] = source_meta.get("source_title")
+        row["source_date"] = source_meta.get("source_date")
+        rows.append(row)
+    with out_path.open("a", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    return len(rows)
+
+
+def bootstrap_arena_from_candidate(
+    candidate: dict,
+    *,
+    base: Path | None = None,
+) -> None:
+    """Create an arena from a candidate dict using tentative_slug / name /
+    parent_industry_slug / battleground_focus fields.
+
+    Adapts the candidate shape into the proposal shape expected by
+    bootstrap_arena and delegates to it.
+    """
+    proposal = {
+        "slug": (candidate.get("tentative_slug") or "").strip().lower(),
+        "name": (candidate.get("name") or "").strip(),
+        "industry": (candidate.get("parent_industry_slug") or "").strip(),
+        "battleground_focus": (candidate.get("battleground_focus") or "").strip(),
+    }
+    bootstrap_arena(proposal, base=base)

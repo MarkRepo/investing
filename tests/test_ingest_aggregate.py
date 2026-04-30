@@ -2,41 +2,9 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
-import pytest
-import yaml
-
-from app import config as cfg
 from app.io import claims as claims_io
 from scripts import ingest_aggregate as agg
-
-
-# ---------- load_json_tolerant ----------------------------------------------
-
-
-def test_load_json_tolerant_bare():
-    assert agg.load_json_tolerant('{"a": 1}') == {"a": 1}
-
-
-def test_load_json_tolerant_markdown_fence():
-    raw = "```json\n{\"section\": \"mdna\", \"claims\": []}\n```"
-    assert agg.load_json_tolerant(raw) == {"section": "mdna", "claims": []}
-
-
-def test_load_json_tolerant_markdown_fence_no_lang():
-    raw = "some prefix\n```\n{\"a\": 2}\n```\ntrailing"
-    assert agg.load_json_tolerant(raw) == {"a": 2}
-
-
-def test_load_json_tolerant_embedded_in_prose():
-    raw = "Here is the result: {\"b\": 3}. Done."
-    assert agg.load_json_tolerant(raw) == {"b": 3}
-
-
-def test_load_json_tolerant_rejects_empty():
-    with pytest.raises(ValueError):
-        agg.load_json_tolerant("")
 
 
 # ---------- normalize_claim -------------------------------------------------
@@ -305,82 +273,3 @@ def test_build_claims_batch_roundtrips_through_parse_batch_json():
     header, claims_out = claims_io.parse_batch_json(json.dumps(batch))
     assert header["source_id"] == "id"
     assert len(claims_out) == 1
-
-
-# ---------- write_claims (integration) --------------------------------------
-
-
-@pytest.fixture
-def env(tmp_path, monkeypatch):
-    monkeypatch.setattr(cfg, "BASE_PATH", tmp_path)
-    monkeypatch.setattr(cfg, "COMPANIES_DIR", tmp_path / "companies")
-    monkeypatch.setattr(cfg, "CONTROLLED_VOCAB_DIR", tmp_path / "controlled-vocab")
-    monkeypatch.setattr(cfg, "DATA_DIR", tmp_path / "data")
-    monkeypatch.setattr(cfg, "FINANCIALS_DB", tmp_path / "data" / "financials.db")
-    (tmp_path / "companies" / "US_HIMS").mkdir(parents=True)
-    vocab = tmp_path / "controlled-vocab"
-    vocab.mkdir()
-    (vocab / "subjects.yaml").write_text(
-        yaml.safe_dump(
-            {
-                "subjects": [
-                    {"id": "revenue_growth", "name": "Revenue growth"},
-                    {"id": "revenue_mix", "name": "Revenue mix"},
-                ]
-            }
-        ),
-        encoding="utf-8",
-    )
-    return tmp_path
-
-
-def test_write_claims_succeeds_and_attaches_source_id(env):
-    claim = {
-        "claim_text": "FY2025 revenue grew 59%",
-        "subject_tag": "revenue_growth",
-        "polarity": "bull",
-        "claim_type": "quantitative",
-        "timeframe": "FY2025",
-    }
-    n, errors = agg.write_claims(
-        "HIMS", "US", [claim],
-        source_id="10-K-FY2025-abc12345",
-        source_file="10-K.htm",
-        extracted_by="claude-opus-4-7",
-        extracted_at="2026-04-24T00:00:00+00:00",
-        base=env,
-    )
-    assert errors == []
-    assert n == 1
-    got = claims_io.read_claims("HIMS", "US", base=env)
-    assert len(got) == 1
-    assert got[0]["source_id"] == "10-K-FY2025-abc12345"
-    assert got[0]["ticker"] == "HIMS"
-
-
-def test_write_claims_partial_success_writes_valid_only(env):
-    bad_claim = {
-        "claim_text": "x",
-        "subject_tag": "not_in_vocab",  # not in our subjects.yaml
-        "polarity": "bull",
-        "claim_type": "quantitative",
-    }
-    good_claim = {
-        "claim_text": "y",
-        "subject_tag": "revenue_growth",
-        "polarity": "bull",
-        "claim_type": "quantitative",
-    }
-    n, errors = agg.write_claims(
-        "HIMS", "US", [bad_claim, good_claim],
-        source_id="id", source_file="f",
-        extracted_by="e", extracted_at="2026-04-24T00:00:00+00:00",
-        base=env,
-    )
-    # Partial success: 1 good claim written, 1 bad claim rejected.
-    assert n == 1
-    assert len(errors) == 1
-    assert errors[0]["index"] == 0  # bad_claim was first
-    got = claims_io.read_claims("HIMS", "US", base=env)
-    assert len(got) == 1
-    assert got[0]["claim_text"] == "y"
