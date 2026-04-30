@@ -1248,6 +1248,48 @@ def cmd_dismiss(args: argparse.Namespace) -> int:
     return 0 if ok else 1
 
 
+def check_archive_writes_shape(data: dict) -> list[dict]:
+    warnings: list[dict] = []
+    for idx, write in enumerate(data.get("writes", []) or []):
+        target = f"writes[{idx}]"
+        if not write.get("fact_id"):
+            warnings.append(_qa_warning("archive_missing_fact_id", "error", target, "fact_id is required."))
+        final_targets = write.get("final_targets")
+        if not final_targets:
+            warnings.append(_qa_warning("archive_missing_final_targets", "error", target, "final_targets is required before apply."))
+            continue
+        for t_idx, final_target in enumerate(final_targets):
+            t_ref = f"{target}.final_targets[{t_idx}]"
+            action = final_target.get("action")
+            if action not in {"new", "append"}:
+                warnings.append(_qa_warning("archive_invalid_action", "error", t_ref, f"action {action!r} is not one of ['append', 'new']."))
+            archive_path = final_target.get("archive_path", "")
+            if not archive_path.startswith("archive/") or not archive_path.endswith(".jsonl"):
+                warnings.append(_qa_warning("archive_invalid_path", "error", t_ref, f"archive_path {archive_path!r} must look like archive/.../*.jsonl."))
+    return warnings
+
+
+def cmd_archive_apply(args: argparse.Namespace) -> int:
+    pending_path = Path(args.pending)
+    base = Path(args.base)
+    data = json.loads(pending_path.read_text(encoding="utf-8"))
+    warnings = check_archive_writes_shape(data)
+    errors = [w for w in warnings if w.get("severity") == "error"]
+    if errors:
+        for warning in errors:
+            print(f"✗ {warning['rule']}: {warning['detail']}", file=sys.stderr)
+        return 1
+    for write in data.get("writes", []) or []:
+        payload = write["fact_payload"]
+        for final_target in write.get("final_targets", []) or []:
+            target_path = base / final_target["archive_path"]
+            target_path.parent.mkdir(parents=True, exist_ok=True)
+            with target_path.open("a", encoding="utf-8") as f:
+                f.write(json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\n")
+    print(f"✓ archive writes applied from {pending_path}")
+    return 0
+
+
 def cmd_evaluation_init(args: argparse.Namespace) -> int:
     from datetime import timezone
 
@@ -1349,6 +1391,13 @@ def main(argv: list[str] | None = None) -> int:
     p_list.add_argument("--scope", required=True)
     p_list.add_argument("--status", choices=["open", "resolved", "dismissed"], help="过滤状态")
     p_list.set_defaults(func=cmd_list)
+
+    p_archive = sub.add_parser("archive", help="archive pending write workflow")
+    archive_sub = p_archive.add_subparsers(dest="archive_cmd", required=True)
+    p_archive_apply = archive_sub.add_parser("apply", help="apply approved archive writes")
+    p_archive_apply.add_argument("--pending", required=True)
+    p_archive_apply.add_argument("--base", default=".")
+    p_archive_apply.set_defaults(func=cmd_archive_apply)
 
     p_eval = sub.add_parser("evaluation", help="evaluation workflow")
     eval_sub = p_eval.add_subparsers(dest="eval_cmd", required=True)
