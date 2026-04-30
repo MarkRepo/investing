@@ -165,3 +165,97 @@ class ClaimRegistry:
         self._by_scope.setdefault((scope_type, scope_ref), []).append(claim_id)
         self._persist_scope(scope_type)
         return claim
+
+    def _rewrite_claim(self, claim: dict[str, Any]) -> None:
+        scope_type = claim["scope_type"]
+        rows = self._rows_by_scope_type.get(scope_type, [])
+        for idx, row in enumerate(rows):
+            if row["claim_id"] == claim["claim_id"]:
+                rows[idx] = claim
+                self._claims_by_id[claim["claim_id"]] = claim
+                self._persist_scope(scope_type)
+                return
+        raise KeyError(claim["claim_id"])
+
+    def append_evidence(self, claim_id: str, evidence: dict[str, Any], *, now: str) -> dict[str, Any]:
+        claim = self.find_by_id(claim_id)
+        if claim is None:
+            raise KeyError(claim_id)
+        claim["supporting_evidence"].append(evidence)
+        claim["last_updated"] = now
+        self._rewrite_claim(claim)
+        return claim
+
+    def split_claim(
+        self,
+        claim_id: str,
+        *,
+        new_claim_specs: list[dict[str, Any]],
+        now: str,
+    ) -> list[dict[str, Any]]:
+        original = self.find_by_id(claim_id)
+        if original is None:
+            raise KeyError(claim_id)
+        if original.get("status") != "active":
+            raise ValueError(f"cannot split non-active claim: {claim_id}")
+
+        new_claims = []
+        for spec in new_claim_specs:
+            new_claim = self.create_claim(
+                claim_text=spec["claim_text"],
+                scope_type=spec["scope_type"],
+                scope_ref=spec["scope_ref"],
+                claim_type=spec["claim_type"],
+                dimension_hint=spec["dimension_hint"],
+                confidence=spec["confidence"],
+                as_of=spec["as_of"],
+                evidence=spec["evidence"],
+                trigger="split_from",
+                trigger_ref=claim_id,
+                now=now,
+            )
+            new_claims.append(new_claim)
+
+        original["status"] = "retired"
+        original["last_updated"] = now
+        original["state_log"].append(
+            {
+                "timestamp": now,
+                "from_status": "active",
+                "to_status": "retired",
+                "trigger": "split",
+                "trigger_ref": claim_id,
+                "split_to_claim_ids": [claim["claim_id"] for claim in new_claims],
+            }
+        )
+        self._rewrite_claim(original)
+        return new_claims
+
+    def append_audit_event(self, event: dict[str, Any]) -> None:
+        path = self.base / "audit" / "claim-events.jsonl"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(event, ensure_ascii=False, sort_keys=True) + "\n")
+
+    def check_integrity(self) -> list[str]:
+        warnings: list[str] = []
+        seen_ids: set[str] = set()
+        max_by_scope: dict[str, int] = {}
+        for scope_type, rows in self._rows_by_scope_type.items():
+            for claim in rows:
+                claim_id = claim["claim_id"]
+                if claim_id in seen_ids:
+                    warnings.append(f"duplicate claim_id: {claim_id}")
+                seen_ids.add(claim_id)
+                suffix = int(claim_id.rsplit("-", 1)[1])
+                max_by_scope[scope_type] = max(max_by_scope.get(scope_type, 0), suffix)
+                for evidence in claim.get("supporting_evidence", []):
+                    if not evidence.get("source_id"):
+                        warnings.append(f"empty evidence source_id: {claim_id}")
+                if claim.get("status") == "retired" and claim.get("state_log", [])[-1].get("trigger") != "split":
+                    warnings.append(f"retired claim without split log: {claim_id}")
+        for scope_type, max_id in max_by_scope.items():
+            counter = int(self._counters.get(scope_type, 0))
+            if counter != max_id:
+                warnings.append(f"counter mismatch for {scope_type}: counter={counter} max_id={max_id}")
+        return warnings
