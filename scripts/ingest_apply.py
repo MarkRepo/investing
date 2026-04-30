@@ -143,6 +143,34 @@ def _write_pending_files(base: Path, source_id: str, bundle: dict[str, Any]) -> 
     (pending / f"arenas-{source_id}.jsonl").write_text("\n".join(arena_lines) + ("\n" if arena_lines else ""), encoding="utf-8")
 
 
+def _apply_split(registry: ClaimRegistry, source_id: str, row: dict[str, Any], now: str) -> list[dict[str, Any]]:
+    candidate = row["candidate_payload"]
+    instructions = row["split_instructions"]
+    specs = []
+    for new_claim in instructions["new_claims"]:
+        evidence_subset = new_claim["evidence_subset"]
+        evidence = build_evidence_entry(
+            source_id=source_id,
+            block_ids=evidence_subset.get("block_ids", []),
+            fact_ids=evidence_subset.get("fact_ids", []),
+            direction=candidate.get("direction_on_source", "neutral"),
+            now=now,
+        )
+        specs.append(
+            {
+                "claim_text": new_claim["claim_text"],
+                "scope_type": candidate["scope_type"],
+                "scope_ref": candidate.get("scope_ref", ""),
+                "claim_type": candidate["claim_type"],
+                "dimension_hint": candidate.get("dimension_hint", ""),
+                "confidence": candidate["confidence"],
+                "as_of": candidate["as_of"],
+                "evidence": evidence,
+            }
+        )
+    return registry.split_claim(instructions["retire_target_claim_id"], new_claim_specs=specs, now=now)
+
+
 def cmd_apply(args: argparse.Namespace) -> int:
     base = Path(args.registry_base)
     match = json.loads(Path(args.match).read_text(encoding="utf-8"))
@@ -167,7 +195,16 @@ def cmd_apply(args: argparse.Namespace) -> int:
         elif decision == "skip":
             registry.append_audit_event({"event_type": "candidate_skipped", "source_id": source_id, "candidate_id": row["candidate_id"]})
         elif decision == "split":
-            raise NotImplementedError("split is implemented in Task D3")
+            new_claims = _apply_split(registry, source_id, row, now)
+            registry.append_audit_event(
+                {
+                    "event_type": "claim_split",
+                    "source_id": source_id,
+                    "candidate_id": row["candidate_id"],
+                    "retired_claim_id": row["split_instructions"]["retire_target_claim_id"],
+                    "new_claim_ids": [claim["claim_id"] for claim in new_claims],
+                }
+            )
     _write_pending_files(base, source_id, bundle)
     print(f"✓ applied match decisions from {args.match}")
     return 0
