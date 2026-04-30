@@ -44,8 +44,8 @@
       <td>{{ c.dimension_hint }}</td>
       <td>{{ c.confidence }}</td>
       <td>
-        {% for sid in c.supporting_source_ids %}
-          <a href="/bundles/{{ sid }}">{{ sid }}</a>{% if not loop.last %}, {% endif %}
+        {% for source_id in c.source_ids %}
+          <a class="badge" href="/bundles/{{ source_id }}">{{ source_id }}</a>
         {% else %}
           <span class="hint">–</span>
         {% endfor %}

@@ -57,4 +57,6 @@ def test_company_detail_shows_registry_claims(tmp_path, monkeypatch):
 
     assert response.status_code == 200
     assert "公司具备主题相关性" in response.text
+    # Source badge must link back to the review bundle.
+    assert "/bundles/source-1" in response.text
     assert "source-1" in response.text

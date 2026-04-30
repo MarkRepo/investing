@@ -142,26 +142,17 @@ def detail_page(request: Request, key: str):
     # Load company claims from ClaimRegistry
     registry = ClaimRegistry(cfg.BASE_PATH)
     raw_claims = registry.list_claims(scope_type="company", scope_ref=scope_ref)
-    claims = []
-    for claim in raw_claims:
-        # Derive source ids: supporting_source_ids > evidence[].source_id > claim.source_id
-        supporting_source_ids = claim.get("supporting_source_ids") or []
-        if not supporting_source_ids:
-            supporting_source_ids = [
-                ev["source_id"]
-                for ev in claim.get("supporting_evidence", [])
-                if ev.get("source_id")
-            ]
-        if not supporting_source_ids and claim.get("source_id"):
-            supporting_source_ids = [claim["source_id"]]
-        claims.append({
+    claims = [
+        {
             "claim_id": claim.get("claim_id", ""),
             "claim_text": claim.get("claim_text", ""),
             "claim_type": claim.get("claim_type", ""),
             "dimension_hint": claim.get("dimension_hint", ""),
             "confidence": claim.get("confidence", ""),
-            "supporting_source_ids": supporting_source_ids,
-        })
+            "source_ids": _claim_source_ids(claim),
+        }
+        for claim in raw_claims
+    ]
 
     return templates.TemplateResponse(
         request,
@@ -199,6 +190,20 @@ _COMPANY_DIM_LABEL = {
     "risks": "风险",
     "valuation": "估值",
 }
+
+
+def _claim_source_ids(claim: dict) -> list[str]:
+    """Collect all source IDs referenced by a claim (sorted, deduplicated)."""
+    ids: set[str] = set(claim.get("supporting_source_ids") or [])
+    for evidence in claim.get("evidence", []) or []:
+        if evidence.get("source_id"):
+            ids.add(evidence["source_id"])
+    for evidence in claim.get("supporting_evidence", []) or []:
+        if evidence.get("source_id"):
+            ids.add(evidence["source_id"])
+    if claim.get("source_id"):
+        ids.add(claim["source_id"])
+    return sorted(ids)
 
 
 # --- meta.md editor ----------------------------------------------------------
