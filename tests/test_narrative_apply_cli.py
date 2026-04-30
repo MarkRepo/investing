@@ -126,5 +126,5 @@ def test_narrative_apply_cli_applies_valid_file(tmp_path):
     )
 
     assert rc == 0
-    assert "医疗场景是主要验证路��。" in (arena_dir / "participants.md").read_text(encoding="utf-8")
+    assert "医疗场景是主要验证路径。" in (arena_dir / "participants.md").read_text(encoding="utf-8")
     assert (tmp_path / "data" / "pending" / "archive" / pending.name).exists()
