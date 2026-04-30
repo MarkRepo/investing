@@ -50,6 +50,7 @@ def build_match_file(bundle: dict[str, Any], *, bundle_ref: str, registry: Claim
                 "direction_on_claim": None,
                 "target_claim_id": None,
                 "split_instructions": None,
+                "confidence": candidate_payload.get("confidence", "medium"),
             }
         )
     return {
@@ -67,6 +68,14 @@ def build_match_file(bundle: dict[str, Any], *, bundle_ref: str, registry: Claim
     }
 
 
+def _write_match(match_file: dict[str, Any], path: Path, rows: list[dict[str, Any]] | None = None) -> None:
+    out = dict(match_file)
+    if rows is not None:
+        out = dict(match_file, decisions_required=rows)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 def cmd_match(args: argparse.Namespace) -> int:
     bundle_path = Path(args.bundle)
     bundle = json.loads(bundle_path.read_text(encoding="utf-8"))
@@ -77,10 +86,25 @@ def cmd_match(args: argparse.Namespace) -> int:
         registry=registry,
         generated_at=_now(),
     )
-    out = Path(args.out)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(match_file, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"✓ match file written to {out}")
+    rows = match_file["decisions_required"]
+    out_arg = getattr(args, "out", None)
+    auto_out_arg = getattr(args, "auto_out", None)
+    pending_out_arg = getattr(args, "pending_out", None)
+    if not any([out_arg, auto_out_arg, pending_out_arg]):
+        import sys
+        print("error: one of --out, --auto-out, or --pending-out is required", file=sys.stderr)
+        return 2
+    if out_arg:
+        _write_match(match_file, Path(out_arg))
+        print(f"✓ match file written to {out_arg}")
+    if auto_out_arg:
+        auto_rows = [r for r in rows if r.get("confidence") == "high"]
+        _write_match(match_file, Path(auto_out_arg), auto_rows)
+        print(f"✓ auto match file written to {auto_out_arg}")
+    if pending_out_arg:
+        pending_rows = [r for r in rows if r.get("confidence") != "high"]
+        _write_match(match_file, Path(pending_out_arg), pending_rows)
+        print(f"✓ pending match file written to {pending_out_arg}")
     return 0
 
 
@@ -88,8 +112,12 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ingest_match")
     parser.add_argument("--bundle", required=True)
     parser.add_argument("--registry-base", default="data")
-    parser.add_argument("--out", required=True)
+    parser.add_argument("--out", help="legacy single match output path")
+    parser.add_argument("--auto-out", help="write high-confidence decisions here")
+    parser.add_argument("--pending-out", help="write medium/low-confidence decisions here")
     args = parser.parse_args(argv)
+    if not any([args.out, args.auto_out, args.pending_out]):
+        parser.error("one of --out, --auto-out, or --pending-out is required")
     return cmd_match(args)
 
 
