@@ -89,7 +89,7 @@ def test_evaluation_init_produces_skeleton_from_qa(tmp_path):
     ppath.write_text(json.dumps(preprocess), encoding="utf-8")
     out = tmp_path / "evaluation.json"
 
-    rc = qa.cmd_evaluation_init(Namespace(bundle=str(bpath), preprocess=str(ppath), out=str(out)))
+    rc = qa.cmd_evaluation_init(Namespace(bundle=str(bpath), preprocess=str(ppath), match=None, out=str(out)))
 
     assert rc == 0
     data = json.loads(out.read_text(encoding="utf-8"))
@@ -101,11 +101,14 @@ def test_evaluation_init_produces_skeleton_from_qa(tmp_path):
         "calibration",
         "narrative",
         "claim_extraction_quality",
+        "matching_accuracy",
+        "claim_lifecycle_discipline",
     }
     for dim in data["dimension_ratings"].values():
         assert dim["trend"] is None and dim["notes"] == ""
-    assert "system_fit" in data and "phase2_readiness" in data
-    assert data["eval_prompt_version"] == "phase1.5-v1"
+    assert "system_fit" in data and "phase2_readiness" in data and "phase3_readiness" in data
+    assert data["matching_metrics"] == {}
+    assert data["eval_prompt_version"] == "phase2-v1"
     assert len(data["defects"]) >= 1
     assert any(d["category"] == "fact_unknown_linked_block" for d in data["defects"])
 
@@ -117,8 +120,50 @@ def test_evaluation_init_produces_skeleton_with_no_warnings(tmp_path):
     ppath.write_text(json.dumps(_minimal_valid_preprocess()), encoding="utf-8")
     out = tmp_path / "evaluation.json"
 
-    rc = qa.cmd_evaluation_init(Namespace(bundle=str(bpath), preprocess=str(ppath), out=str(out)))
+    rc = qa.cmd_evaluation_init(Namespace(bundle=str(bpath), preprocess=str(ppath), match=None, out=str(out)))
 
     assert rc == 0
     data = json.loads(out.read_text(encoding="utf-8"))
     assert data["defects"] == []
+
+
+def test_evaluation_init_with_match_adds_matching_metrics(tmp_path):
+    bpath = tmp_path / "bundle.json"
+    bpath.write_text(json.dumps(_valid_bundle()), encoding="utf-8")
+    ppath = tmp_path / "preprocess.json"
+    ppath.write_text(json.dumps(_minimal_valid_preprocess()), encoding="utf-8")
+    match = {
+        "decisions_required": [
+            {
+                "candidate_id": "cc-001",
+                "top_matches": [{"claim_id": "clm-company-0001", "score": 0.82, "high_confidence": True}],
+                "decision": "new",
+            },
+            {
+                "candidate_id": "cc-002",
+                "top_matches": [{"claim_id": "clm-company-0002", "score": 0.27, "high_confidence": False}],
+                "decision": "attach",
+            },
+            {
+                "candidate_id": "cc-003",
+                "top_matches": [],
+                "decision": "split",
+            },
+        ]
+    }
+    mpath = tmp_path / "match.json"
+    mpath.write_text(json.dumps(match), encoding="utf-8")
+    out = tmp_path / "evaluation.json"
+
+    rc = qa.cmd_evaluation_init(
+        Namespace(bundle=str(bpath), preprocess=str(ppath), match=str(mpath), out=str(out))
+    )
+
+    assert rc == 0
+    data = json.loads(out.read_text(encoding="utf-8"))
+    assert data["matching_metrics"] == {
+        "total_candidates": 3,
+        "decisions": {"attach": 1, "new": 1, "split": 1, "skip": 0},
+        "high_confidence_matches_not_attached": 1,
+        "low_confidence_matches_attached": 1,
+    }

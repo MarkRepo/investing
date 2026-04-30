@@ -1355,11 +1355,38 @@ def cmd_arena_merge(args: argparse.Namespace) -> int:
     return _mark_arena_candidate(args, "merged", args.target_slug)
 
 
+def _matching_metrics(match: dict | None) -> dict:
+    if not match:
+        return {}
+    rows = match.get("decisions_required", []) or []
+    decisions = {"attach": 0, "new": 0, "split": 0, "skip": 0}
+    high_confidence_not_attached = 0
+    low_confidence_attached = 0
+    for row in rows:
+        decision = row.get("decision")
+        if decision in decisions:
+            decisions[decision] += 1
+        matches = row.get("top_matches", []) or []
+        has_high_confidence = any(m.get("high_confidence") or m.get("score", 0) >= 0.80 for m in matches)
+        has_low_confidence = any(m.get("score", 0) < 0.30 for m in matches)
+        if has_high_confidence and decision != "attach":
+            high_confidence_not_attached += 1
+        if has_low_confidence and decision == "attach":
+            low_confidence_attached += 1
+    return {
+        "total_candidates": len(rows),
+        "decisions": decisions,
+        "high_confidence_matches_not_attached": high_confidence_not_attached,
+        "low_confidence_matches_attached": low_confidence_attached,
+    }
+
+
 def cmd_evaluation_init(args: argparse.Namespace) -> int:
     from datetime import timezone
 
     bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
     preprocess = json.loads(Path(args.preprocess).read_text(encoding="utf-8"))
+    match = json.loads(Path(args.match).read_text(encoding="utf-8")) if getattr(args, "match", None) else None
     warnings = check_ingest_review_bundle(bundle, preprocess)
     source_id = (bundle.get("source_digest") or {}).get("source_id", "")
 
@@ -1367,7 +1394,7 @@ def cmd_evaluation_init(args: argparse.Namespace) -> int:
         "bundle_ref": source_id,
         "evaluated_at": datetime.now(timezone.utc).isoformat(),
         "evaluator": "",
-        "eval_prompt_version": "phase1.5-v1",
+        "eval_prompt_version": "phase2-v1",
         "method_layers_run": ["L1"],
         "dimension_ratings": {
             "coverage_fidelity": {"trend": None, "notes": ""},
@@ -1375,9 +1402,13 @@ def cmd_evaluation_init(args: argparse.Namespace) -> int:
             "calibration": {"trend": None, "notes": ""},
             "narrative": {"trend": None, "notes": ""},
             "claim_extraction_quality": {"trend": None, "notes": ""},
+            "matching_accuracy": {"trend": None, "notes": ""},
+            "claim_lifecycle_discipline": {"trend": None, "notes": ""},
         },
         "system_fit": {"notes": ""},
         "phase2_readiness": {"notes": ""},
+        "phase3_readiness": {"notes": ""},
+        "matching_metrics": _matching_metrics(match),
         "defects": [
             {
                 "id": f"d-{i + 1:03d}",
@@ -1488,6 +1519,7 @@ def main(argv: list[str] | None = None) -> int:
     p_eval_init = eval_sub.add_parser("init", help="aggregate L1 warnings into evaluation skeleton")
     p_eval_init.add_argument("--bundle", required=True)
     p_eval_init.add_argument("--preprocess", required=True)
+    p_eval_init.add_argument("--match", help="Phase 2 match decision JSON")
     p_eval_init.add_argument("--out", required=True)
     p_eval_init.set_defaults(func=cmd_evaluation_init)
 
