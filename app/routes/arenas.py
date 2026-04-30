@@ -43,7 +43,7 @@ def detail(request: Request, slug: str):
     participants = data["definition_fm"].get("participants") or []
     industry_slug = data["definition_fm"].get("industry")
 
-    narrative_flags = narrative_io.read_narrative_flags(slug)
+    narrative_flags = narrative_io.read_narrative_flags("arena", slug)
     flags_by_dimension = {}
     for flag in narrative_flags:
         flags_by_dimension.setdefault(flag.get("dimension"), []).append(flag)

@@ -19,10 +19,11 @@ def cmd_propose(args: argparse.Namespace) -> int:
     registry = ClaimRegistry(Path(args.registry_base))
     data = build_proposal_file(
         registry=registry,
-        arena_slug=args.arena,
         source_id=args.source_id,
         generated_at=now_iso(),
-        existing_excerpt_loader=lambda arena, dim: _existing_excerpt(base, arena, dim),
+        scope_type="arena",
+        scope_ref=args.arena,
+        existing_excerpt_loader=lambda scope_type, scope_ref, dim: _existing_excerpt(base, scope_ref, dim),
     )
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)

@@ -12,7 +12,8 @@ def cmd_flags(args: argparse.Namespace) -> int:
     flags = scan_narrative_flags(
         registry=registry,
         base=Path(args.base),
-        arena_slug=args.arena,
+        scope_type="arena",
+        scope_ref=args.arena,
     )
     print(f"✓ narrative flags generated: {len(flags)}")
     return 0

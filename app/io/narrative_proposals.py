@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+import inspect
 import json
-import re
 import shutil
+from dataclasses import dataclass
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
@@ -12,7 +13,8 @@ from app.io.claim_registry import ClaimRegistry
 
 PROPOSAL_VERSION = "phase3a-v1"
 VALID_DECISIONS = {"approve", "edit", "reject", "defer"}
-NARRATIVE_DIMS = tuple(dim for dim in cfg.ARENA_DIMENSIONS if dim != "definition")
+PLACEHOLDER_PATTERNS = ("待 Claude", "待填写", "TODO", "TBD", "<body>")
+
 CLAIM_DIMENSION_TO_ARENA_NARRATIVE = {
     "participants": "participants",
     "competition": "participants",
@@ -31,15 +33,90 @@ CLAIM_DIMENSION_TO_ARENA_NARRATIVE = {
     "valuation": "investment_view",
     "investment_view": "investment_view",
 }
-PLACEHOLDER_PATTERNS = ("待 Claude", "待填写", "TODO", "TBD", "<body>")
+
+CLAIM_DIMENSION_TO_COMPANY_NARRATIVE = {
+    "business_model": "business_model",
+    "thesis": "business_model",
+    "moat": "moat",
+    "competition": "moat",
+    "competitive_position": "moat",
+    "technology": "moat",
+    "supply_chain": "moat",
+    "winning_variables": "moat",
+    "growth_engine": "growth_engine",
+    "management": "management",
+    "financial_profile": "financial_profile",
+    "catalysts": "catalysts",
+    "stage_gate": "catalysts",
+    "regulation": "risks",
+    "risk": "risks",
+    "risks": "risks",
+    "scenario": "risks",
+    "valuation": "valuation",
+    "investment_view": "valuation",
+    "judgment": "valuation",
+}
+
+
+@dataclass(frozen=True)
+class ScopeConfig:
+    scope_type: str
+    narrative_dims: tuple[str, ...]
+    mapping: dict[str, str]
+    top_dir: str
+    narrative_subdir: str | None
+
+
+SCOPE_CONFIGS: dict[str, ScopeConfig] = {
+    "arena": ScopeConfig(
+        scope_type="arena",
+        narrative_dims=tuple(d for d in cfg.ARENA_DIMENSIONS if d != "definition"),
+        mapping=CLAIM_DIMENSION_TO_ARENA_NARRATIVE,
+        top_dir="arenas",
+        narrative_subdir=None,
+    ),
+    "company": ScopeConfig(
+        scope_type="company",
+        narrative_dims=tuple(cfg.COMPANY_DIMENSIONS),
+        mapping=CLAIM_DIMENSION_TO_COMPANY_NARRATIVE,
+        top_dir="companies",
+        narrative_subdir="narratives",
+    ),
+}
+
+# Phase 3A compatibility: old name still imported by Phase 3A tests.
+NARRATIVE_DIMS = SCOPE_CONFIGS["arena"].narrative_dims
+
+
+def _scope(scope_type: str) -> ScopeConfig:
+    if scope_type not in SCOPE_CONFIGS:
+        raise ValueError(f"unsupported scope_type: {scope_type}")
+    return SCOPE_CONFIGS[scope_type]
+
+
+def narrative_dims_for_scope(scope_type: str) -> tuple[str, ...]:
+    return _scope(scope_type).narrative_dims
+
+
+def map_claim_dimension(dimension_hint: str, scope_type: str = "arena") -> str | None:
+    return _scope(scope_type).mapping.get(dimension_hint)
+
+
+def dimension_path(base: Path, scope_type: str, scope_ref: str, dimension: str) -> Path:
+    scope = _scope(scope_type)
+    scope_dir = Path(base) / scope.top_dir / scope_ref
+    if scope.narrative_subdir:
+        scope_dir = scope_dir / scope.narrative_subdir
+    return scope_dir / f"{dimension.replace('_', '-')}.md"
+
+
+def flags_path(base: Path, scope_type: str, scope_ref: str) -> Path:
+    scope = _scope(scope_type)
+    return Path(base) / scope.top_dir / scope_ref / "narrative-flags.jsonl"
 
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
-
-
-def map_claim_dimension(dimension_hint: str) -> str | None:
-    return CLAIM_DIMENSION_TO_ARENA_NARRATIVE.get(dimension_hint)
 
 
 def _claim_source_ids(claim: dict[str, Any]) -> list[str]:
@@ -68,22 +145,42 @@ def _evidence_summary(claims: list[dict[str, Any]]) -> list[dict[str, Any]]:
     ]
 
 
+def _call_excerpt_loader(loader: Callable, scope_type: str, scope_ref: str, dimension: str) -> str:
+    """Call excerpt loader with 3 args (scope_type, scope_ref, dim) or 2 args (scope_ref, dim)."""
+    try:
+        sig = inspect.signature(loader)
+        n_params = len(sig.parameters)
+    except (ValueError, TypeError):
+        n_params = 3
+    if n_params >= 3:
+        return loader(scope_type, scope_ref, dimension)
+    return loader(scope_ref, dimension)
+
+
 def build_proposal_file(
     *,
     registry: ClaimRegistry,
-    arena_slug: str,
     source_id: str,
     generated_at: str,
-    existing_excerpt_loader: Callable[[str, str], str],
+    existing_excerpt_loader: Callable[[str, str, str], str],
+    scope_type: str = "arena",
+    scope_ref: str | None = None,
+    arena_slug: str | None = None,
 ) -> dict[str, Any]:
+    if scope_ref is None:
+        scope_ref = arena_slug
+    if scope_ref is None:
+        raise ValueError("scope_ref (or arena_slug for arena scope) is required")
+    scope = _scope(scope_type)
+
     grouped: dict[str, list[dict[str, Any]]] = {}
     unmapped: list[dict[str, Any]] = []
-    for claim in registry.claims_for_scope("arena", arena_slug):
+    for claim in registry.claims_for_scope(scope_type, scope_ref):
         if claim.get("status") != "active":
             continue
         if not _claim_has_source(claim, source_id):
             continue
-        dimension = map_claim_dimension(claim.get("dimension_hint", ""))
+        dimension = scope.mapping.get(claim.get("dimension_hint", ""))
         if dimension is None:
             unmapped.append(
                 {
@@ -96,7 +193,7 @@ def build_proposal_file(
             continue
         grouped.setdefault(dimension, []).append(claim)
 
-    proposals = []
+    proposals: list[dict[str, Any]] = []
     for idx, dimension in enumerate(sorted(grouped), start=1):
         claims = grouped[dimension]
         supported_by_claims = [claim["claim_id"] for claim in claims]
@@ -105,38 +202,47 @@ def build_proposal_file(
             for claim_source_id in _claim_source_ids(claim):
                 if claim_source_id not in source_ids:
                     source_ids.append(claim_source_id)
-        proposals.append(
-            {
-                "proposal_id": f"np-{idx:03d}",
-                "arena_slug": arena_slug,
-                "dimension": dimension,
-                "title": f"Draft narrative for {dimension}",
-                "body": None,
-                "supported_by_claims": supported_by_claims,
-                "source_ids": source_ids,
-                "evidence_summary": _evidence_summary(claims),
-                "existing_narrative_excerpt": existing_excerpt_loader(arena_slug, dimension),
-                "decision": None,
-                "decision_reason": None,
-                "edited_title": None,
-                "edited_body": None,
-            }
-        )
+        proposal = {
+            "proposal_id": f"np-{idx:03d}",
+            "scope_type": scope_type,
+            "scope_ref": scope_ref,
+            "dimension": dimension,
+            "title": f"Draft narrative for {dimension}",
+            "body": None,
+            "supported_by_claims": supported_by_claims,
+            "source_ids": source_ids,
+            "evidence_summary": _evidence_summary(claims),
+            "existing_narrative_excerpt": _call_excerpt_loader(existing_excerpt_loader, scope_type, scope_ref, dimension),
+            "decision": None,
+            "decision_reason": None,
+            "edited_title": None,
+            "edited_body": None,
+        }
+        if scope_type == "arena":
+            # Phase 3A compatibility: keep arena_slug on arena proposals.
+            proposal["arena_slug"] = scope_ref
+        proposals.append(proposal)
 
-    return {
+    result: dict[str, Any] = {
         "source_id": source_id,
         "generated_at": generated_at,
         "proposal_version": PROPOSAL_VERSION,
-        "scope_type": "arena",
+        "scope_type": scope_type,
+        "scope_ref": scope_ref,
         "proposals": proposals,
         "unmapped_claims": unmapped,
         "summary_stats": {
             "total_proposals": len(proposals),
-            "arena_count": 1 if proposals else 0,
             "dimension_count": len({proposal["dimension"] for proposal in proposals}),
             "unsupported_candidates_skipped": len(unmapped),
         },
     }
+    if scope_type == "arena":
+        # Phase 3A compatibility: keep legacy arena_count key (no scope_count).
+        result["summary_stats"]["arena_count"] = 1 if proposals else 0
+    else:
+        result["summary_stats"]["scope_count"] = 1 if proposals else 0
+    return result
 
 
 def _is_placeholder(text: str) -> bool:
@@ -151,8 +257,16 @@ def _validate_body(proposal_id: str, body: Any, field_name: str) -> list[str]:
     return []
 
 
+def _proposal_scope(proposal: dict[str, Any], data_scope_type: str) -> tuple[str, str]:
+    scope_type = proposal.get("scope_type") or data_scope_type
+    if scope_type == "arena" and proposal.get("arena_slug") and not proposal.get("scope_ref"):
+        return scope_type, proposal["arena_slug"]
+    return scope_type, proposal.get("scope_ref", "")
+
+
 def validate_proposal_decisions(data: dict[str, Any], registry: ClaimRegistry) -> list[str]:
     errors: list[str] = []
+    data_scope_type = data.get("scope_type") or "arena"
     for proposal in data.get("proposals", []) or []:
         proposal_id = proposal.get("proposal_id", "<unknown>")
         decision = proposal.get("decision")
@@ -161,11 +275,16 @@ def validate_proposal_decisions(data: dict[str, Any], registry: ClaimRegistry) -
             continue
         if not str(proposal.get("decision_reason") or "").strip():
             errors.append(f"{proposal_id}: missing decision_reason")
+        scope_type, _scope_ref = _proposal_scope(proposal, data_scope_type)
+        if scope_type not in SCOPE_CONFIGS:
+            errors.append(f"{proposal_id}: invalid scope_type {scope_type!r}")
+            continue
+        scope = SCOPE_CONFIGS[scope_type]
         dimension = proposal.get("dimension")
-        if dimension == "definition":
+        if scope_type == "arena" and dimension == "definition":
             errors.append(f"{proposal_id}: dimension definition cannot be written by narrative proposals")
-        elif dimension not in NARRATIVE_DIMS:
-            errors.append(f"{proposal_id}: invalid narrative dimension {dimension!r}")
+        elif dimension not in scope.narrative_dims:
+            errors.append(f"{proposal_id}: invalid narrative dimension {dimension!r} for scope {scope_type}")
         if decision in {"approve", "edit"}:
             claim_ids = proposal.get("supported_by_claims") or []
             if not claim_ids:
@@ -181,10 +300,6 @@ def validate_proposal_decisions(data: dict[str, Any], registry: ClaimRegistry) -
             else:
                 errors.extend(_validate_body(proposal_id, proposal.get("edited_body"), "edit"))
     return errors
-
-
-def _dimension_path(base: Path, arena_slug: str, dimension: str) -> Path:
-    return base / "arenas" / arena_slug / f"{dimension.replace('_', '-')}.md"
 
 
 def _format_list(values: list[str]) -> str:
@@ -214,14 +329,14 @@ def _render_markdown_block(proposal: dict[str, Any], *, today: str) -> str:
 
 
 def append_audit_event(base: Path, event: dict[str, Any]) -> None:
-    path = base / "data" / "audit" / "narrative-events.jsonl"
+    path = Path(base) / "data" / "audit" / "narrative-events.jsonl"
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(event, ensure_ascii=False, sort_keys=True) + "\n")
 
 
 def archive_pending_file(pending_path: Path, base: Path) -> Path:
-    archive_dir = base / "data" / "pending" / "archive"
+    archive_dir = Path(base) / "data" / "pending" / "archive"
     archive_dir.mkdir(parents=True, exist_ok=True)
     archived = archive_dir / pending_path.name
     shutil.move(str(pending_path), str(archived))
@@ -244,10 +359,12 @@ def apply_proposal_file(
     now = now or now_iso()
     counts = {"applied": 0, "rejected": 0, "deferred": 0}
     source_id = data.get("source_id", "")
+    data_scope_type = data.get("scope_type") or "arena"
     for proposal in data.get("proposals", []) or []:
         decision = proposal["decision"]
+        scope_type, scope_ref = _proposal_scope(proposal, data_scope_type)
         if decision in {"approve", "edit"}:
-            path = _dimension_path(base, proposal["arena_slug"], proposal["dimension"])
+            path = dimension_path(Path(base), scope_type, scope_ref, proposal["dimension"])
             path.parent.mkdir(parents=True, exist_ok=True)
             with path.open("a", encoding="utf-8") as f:
                 f.write(_render_markdown_block(proposal, today=today))
@@ -260,28 +377,39 @@ def apply_proposal_file(
             counts["deferred"] += 1
             event_type = "narrative_deferred"
         append_audit_event(
-            base,
+            Path(base),
             {
                 "event_type": event_type,
                 "source_id": source_id,
                 "proposal_id": proposal.get("proposal_id"),
-                "arena_slug": proposal.get("arena_slug"),
+                "scope_type": scope_type,
+                "scope_ref": scope_ref,
                 "dimension": proposal.get("dimension"),
                 "decision_reason": proposal.get("decision_reason"),
                 "created_at": now,
             },
         )
-    archive_pending_file(pending_path, base)
+    archive_pending_file(Path(pending_path), Path(base))
     return counts
 
 
-def _flags_path(base: Path, arena_slug: str) -> Path:
-    return base / "arenas" / arena_slug / "narrative-flags.jsonl"
+def read_narrative_flags(
+    scope_type_or_arena_slug: str,
+    scope_ref: str | None = None,
+    base: Path | None = None,
+    include_dismissed: bool = False,
+) -> list[dict[str, Any]]:
+    """Read flags for a scope.
 
-
-def read_narrative_flags(arena_slug: str, base: Path | None = None, include_dismissed: bool = False) -> list[dict[str, Any]]:
+    Backward-compatible signature: Phase 3A callers pass a single positional
+    arena slug — this is treated as scope_type="arena", scope_ref=<slug>.
+    """
+    if scope_ref is None:
+        scope_type, scope_ref_val = "arena", scope_type_or_arena_slug
+    else:
+        scope_type, scope_ref_val = scope_type_or_arena_slug, scope_ref
     root = Path(base) if base is not None else cfg.ARENAS_DIR.parent
-    path = _flags_path(root, arena_slug)
+    path = flags_path(root, scope_type, scope_ref_val)
     if not path.exists():
         return []
     rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -306,11 +434,11 @@ def _parse_claim_ids(raw: str) -> list[str]:
     return [part.strip() for part in raw.split(",") if part.strip()]
 
 
-def _scan_segments(base: Path, arena_slug: str) -> list[dict[str, Any]]:
+def _scan_segments(base: Path, scope_type: str, scope_ref: str) -> list[dict[str, Any]]:
+    scope = _scope(scope_type)
     segments: list[dict[str, Any]] = []
-    arena_dir = base / "arenas" / arena_slug
-    for dimension in NARRATIVE_DIMS:
-        path = arena_dir / f"{dimension.replace('_', '-')}.md"
+    for dimension in scope.narrative_dims:
+        path = dimension_path(base, scope_type, scope_ref, dimension)
         if not path.exists():
             continue
         current_proposal_id: str | None = None
@@ -365,18 +493,24 @@ def scan_narrative_flags(
     *,
     registry: ClaimRegistry,
     base: Path,
-    arena_slug: str,
+    scope_type: str = "arena",
+    scope_ref: str | None = None,
+    arena_slug: str | None = None,
     now: str | None = None,
 ) -> list[dict[str, Any]]:
+    if scope_ref is None:
+        scope_ref = arena_slug
+    if scope_ref is None:
+        raise ValueError("scope_ref (or arena_slug for arena scope) is required")
     now = now or now_iso()
-    existing = read_narrative_flags(arena_slug, base=base, include_dismissed=True)
+    existing = read_narrative_flags(scope_type, scope_ref, base=base, include_dismissed=True)
     existing_keys = {
         (flag.get("dimension"), flag.get("segment_ref"), flag.get("supported_by_claim"), flag.get("reason"))
         for flag in existing
         if not flag.get("dismissed")
     }
     new_flags: list[dict[str, Any]] = []
-    for segment in _scan_segments(base, arena_slug):
+    for segment in _scan_segments(Path(base), scope_type, scope_ref):
         level_reason = _flag_for_segment(segment, registry)
         if level_reason is None:
             continue
@@ -390,6 +524,8 @@ def scan_narrative_flags(
             "dimension": segment["dimension"],
             "segment_ref": segment["segment_ref"],
             "supported_by_claim": segment["claim_id"],
+            "scope_type": scope_type,
+            "scope_ref": scope_ref,
             "flag_level": level,
             "reason": reason,
             "dismissed": False,
@@ -397,7 +533,7 @@ def scan_narrative_flags(
         }
         new_flags.append(flag)
     if new_flags:
-        path = _flags_path(base, arena_slug)
+        path = flags_path(Path(base), scope_type, scope_ref)
         path.parent.mkdir(parents=True, exist_ok=True)
         with path.open("a", encoding="utf-8") as f:
             for flag in new_flags:
