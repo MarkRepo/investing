@@ -103,6 +103,19 @@ Phase 1 只产出可审核的中间结果，不写入 archive，不改写 indust
       "verification_questions": ["进入公司 archive 前必须验证的问题"]
     }
   ],
+  "arena_candidates": [
+    {
+      "candidate_id": "ac-001",
+      "tentative_slug": "短蛇形 slug，不得是单一公司名",
+      "name": "竞争格局名称（≤20 字，不得以单一公司命名）",
+      "parent_industry_slug": "必填；所属行业的 slug（如 cn-nuclear-fusion）",
+      "battleground_focus": "一句话说明竞争焦点是什么",
+      "participant_tickers": ["MARKET_TICKER 格式，如 SSE_603011；必须对应 company_candidates 中的条目"],
+      "linked_block_ids": ["ib-001"],
+      "confidence": "high | medium | low",
+      "verification_questions": ["确认 arena 是否成立前要验证的问题"]
+    }
+  ],
   "synthesis": {
     "one_sentence": "一句话结论；避免确定爆发、必然受益等过度确定措辞",
     "evidence_strength": "high | medium_high | medium | medium_low | low",
@@ -166,6 +179,11 @@ Phase 1 只产出可审核的中间结果，不写入 archive，不改写 indust
 17. `candidate_id` 稳定格式 `cc-{NNN}`（与 ib / fact id 编号规则对齐）。
 18. `schema_fit_review.fits_current_schema` 为 false 时，`missing_schema_fields` 和 `extra_fields_needed` 至少一个非空（即给出具体不适配点，不允许 false + 空建议）。
 19. 输出必须是可被 `json.loads()` 解析的严格 JSON。
+20. `arena_candidates[*].parent_industry_slug` 必填；所属行业的 slug 不能为空字符串。
+21. `arena_candidates[*].linked_block_ids` 必须全部指向本 bundle 中已有的 `insight_blocks[].id`。
+22. `arena_candidates[*].participant_tickers` 使用 `MARKET_TICKER` 格式（如 `SSE_603011`），且必须对应 `company_candidates` 中的条目；不能凭空填写不在 company_candidates 里的 ticker。
+23. `arena_candidates[*].tentative_slug` 和 `name` 不得是单一公司的名称或 ticker——arena 是竞争格局，必须代表多方竞争关系。
+24. `arena_candidates` 中 `confidence=high` 的条目至少要有 2 条 `linked_block_ids`；只有 1 条证据 block 时，降为 `medium`。
 
 【抽取顺序】
 1. 先读 `preprocess_metadata.extracted_pages`，记住低质量、图表重、图片重、表格重页面。
@@ -241,6 +259,11 @@ python3 scripts/ingest_qa.py review-bundle --bundle bundle.json --preprocess pre
 - `block_shallow_reasoning_chain`：`reasoning_chain` 至少两条，最后一条必须是投资含义推断，不能全是事实陈述。
 - `block_relations_unknown_block`：`block_relations` 里的 `block_id` 必须是已有 `ib-xxx`，且不能是自身。
 - `block_relations_invalid_relation`：`relation` 只能是 `premise_for`、`corroborates`、`risk_to`、`contradicts`。
+- `arena_candidate_missing_parent_industry`：补 `arena_candidates[*].parent_industry_slug`，指向所属行业 slug。
+- `arena_candidate_unknown_linked_block`：`arena_candidates[*].linked_block_ids` 中的 id 必须是已有的 `ib-xxx`。
+- `arena_candidate_participant_not_in_company_candidates`：`participant_tickers` 中的每个 `MARKET_TICKER` 必须在 `company_candidates` 中有对应条目（相同 market + ticker）。
+- `arena_candidate_overconfident`：`confidence=high` 的 arena candidate 必须有至少 2 条 `linked_block_ids`；不足时降为 `medium`。
+- `claim_refs_nonexistent_arena`：`scope_type=arena` 的 claim candidate 的 `scope_ref` 必须匹配 `arena_candidates[*].tentative_slug`；如果指向的 arena 不在本 bundle 中，改用实际存在的 slug 或在 `arena_candidates` 中补充对应条目。
 
 ---
 

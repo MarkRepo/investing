@@ -19,7 +19,16 @@ def valid_bundle() -> dict:
                 "summary": "需求增长来自政策和经济性。",
                 "evidence_strength": "medium",
                 "reasoning_chain": ["政策推动新增装机需求持续增长。", "因此储能设备采购量有望扩大，相关供应商受益。"],
-            }
+            },
+            {
+                "id": "ib-002",
+                "block_type": "technology",
+                "title": "高温超导磁体技术",
+                "source_page_range": "3-4",
+                "summary": "聚变装置依赖高温超导磁体，国内供应商加速布局。",
+                "evidence_strength": "medium",
+                "reasoning_chain": ["高温超导磁体是聚变装置关键部件，国内已有企业承接订单。", "因此磁体供应商的竞争格局将决定聚变产业链的核心受益方向。"],
+            },
         ],
         "atomic_facts": [
             {
@@ -29,10 +38,41 @@ def valid_bundle() -> dict:
                 "evidence_quote": "2025 年新增装机提升",
                 "source_page": 1,
                 "confidence": "medium",
-            }
+            },
+            {
+                "fact_id": "fact-002",
+                "linked_block_id": "ib-002",
+                "fact_text": "国内企业已承接聚变磁体订单。",
+                "evidence_quote": "国内已有企业承接订单",
+                "source_page": 3,
+                "confidence": "medium",
+            },
         ],
         "stage_gates": [],
-        "company_candidates": [],
+        "company_candidates": [
+            {
+                "ticker": "603011",
+                "market": "SSE",
+                "name": "供应商甲",
+                "exposure_type": "direct_supplier",
+                "confidence": "medium",
+                "source_block_ids": ["ib-002"],
+                "verification_questions": ["已交付磁体数量是多少？"],
+            }
+        ],
+        "arena_candidates": [
+            {
+                "candidate_id": "ac-001",
+                "tentative_slug": "cn-fusion-magnet-supply",
+                "name": "中国聚变磁体供应竞争",
+                "parent_industry_slug": "cn-nuclear-fusion",
+                "battleground_focus": "围绕聚变装置磁体部件供应能力的竞争。",
+                "participant_tickers": ["SSE_603011"],
+                "linked_block_ids": ["ib-001", "ib-002"],
+                "confidence": "high",
+                "verification_questions": ["哪些公司已有已交付订单？"],
+            }
+        ],
         "synthesis": {
             "one_sentence": "储能需求改善，但仍需验证经济性。",
             "evidence_strength": "medium",
@@ -137,7 +177,7 @@ def test_evidence_quote_not_found_in_normal_preprocess_omits_pdf_text_loss_hint(
 def test_valid_bundle_returns_no_warnings_when_quote_matches_preprocess():
     preprocess = {
         "sections": [
-            {"action": "keep", "text": "2025 年新增装机提升，需求改善。"},
+            {"action": "keep", "text": "2025 年新增装机提升，需求改善。国内已有企业承接订单，磁体供应链布局加速。"},
         ]
     }
 
@@ -401,7 +441,7 @@ def test_review_bundle_cli_returns_zero_for_valid_bundle(tmp_path, capsys):
     preprocess_path = tmp_path / "preprocess.json"
     bundle_path.write_text(json.dumps(valid_bundle(), ensure_ascii=False), encoding="utf-8")
     preprocess_path.write_text(json.dumps({
-        "sections": [{"action": "keep", "text": "2025 年新增装机提升，需求改善。"}],
+        "sections": [{"action": "keep", "text": "2025 年新增装机提升，需求改善。国内已有企业承接订单，磁体供应链布局加速。"}],
     }, ensure_ascii=False), encoding="utf-8")
 
     code = qa.main([
@@ -698,3 +738,78 @@ def test_valid_schema_fit_review_passes_false_case():
     warnings = qa.check_schema_fit_review(bundle)
 
     assert warnings == []
+
+
+# --- arena_candidates QA tests -----------------------------------------------
+
+
+def test_arena_candidate_requires_parent_industry():
+    bundle = valid_bundle()
+    bundle["arena_candidates"][0]["parent_industry_slug"] = ""
+
+    warnings = qa.check_arena_candidates(bundle)
+
+    assert any(
+        w["rule"] == "arena_candidate_missing_parent_industry" and w["severity"] == "error"
+        for w in warnings
+    )
+
+
+def test_arena_candidate_linked_blocks_must_exist():
+    bundle = valid_bundle()
+    bundle["arena_candidates"][0]["linked_block_ids"] = ["ib-001", "ib-999"]
+
+    warnings = qa.check_arena_candidates(bundle)
+
+    assert any(
+        w["rule"] == "arena_candidate_unknown_linked_block" and w["severity"] == "error"
+        for w in warnings
+    )
+
+
+def test_arena_candidate_participants_must_match_company_candidates():
+    bundle = valid_bundle()
+    bundle["arena_candidates"][0]["participant_tickers"] = ["SSE_603011", "SSE_999999"]
+
+    warnings = qa.check_arena_candidates(bundle)
+
+    assert any(
+        w["rule"] == "arena_candidate_participant_not_in_company_candidates" and w["severity"] == "error"
+        for w in warnings
+    )
+
+
+def test_high_confidence_arena_candidate_requires_two_blocks():
+    bundle = valid_bundle()
+    bundle["arena_candidates"][0]["confidence"] = "high"
+    bundle["arena_candidates"][0]["linked_block_ids"] = ["ib-001"]
+
+    warnings = qa.check_arena_candidates(bundle)
+
+    assert any(
+        w["rule"] == "arena_candidate_overconfident" and w["severity"] == "warning"
+        for w in warnings
+    )
+
+
+def test_arena_claim_ref_must_exist_or_be_candidate():
+    bundle = valid_bundle()
+    bundle["claim_candidates"] = [
+        {
+            "candidate_id": "cc-001",
+            "claim_text": "磁体供应竞争已形成。",
+            "scope_type": "arena",
+            "scope_ref": "cn-nonexistent-arena",
+            "claim_type": "thesis",
+            "supporting_block_ids": ["ib-001"],
+            "direction_on_source": "supports",
+            "as_of": "2026-04-30",
+        }
+    ]
+
+    warnings = qa.check_claim_candidates(bundle)
+
+    assert any(
+        w["rule"] == "claim_refs_nonexistent_arena" and w["severity"] == "error"
+        for w in warnings
+    )

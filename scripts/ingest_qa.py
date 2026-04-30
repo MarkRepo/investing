@@ -661,6 +661,11 @@ def check_claim_candidates(bundle: dict) -> list[dict]:
 
     block_ids = {b.get("id") for b in (bundle.get("insight_blocks") or []) if b.get("id")}
     source_date = (bundle.get("source_digest") or {}).get("source_date")
+    arena_candidate_slugs = {
+        ac.get("tentative_slug")
+        for ac in (bundle.get("arena_candidates") or [])
+        if ac.get("tentative_slug")
+    }
     required_fields = (
         "candidate_id",
         "claim_text",
@@ -718,6 +723,16 @@ def check_claim_candidates(bundle: dict) -> list[dict]:
                 "claim_text 含多句迹象；应为单句命题",
             ))
 
+        if scope == "arena":
+            scope_ref = candidate.get("scope_ref") or ""
+            if scope_ref and scope_ref not in arena_candidate_slugs:
+                warnings.append(_qa_warning(
+                    "claim_refs_nonexistent_arena",
+                    "error",
+                    cid,
+                    f"scope_ref={scope_ref!r} is not in arena_candidates.tentative_slug.",
+                ))
+
     return warnings
 
 
@@ -725,6 +740,67 @@ def _looks_multi_sentence(text: str) -> bool:
     parts = re.split(r"[。！？；\n]+|(?<=[A-Za-z0-9])\.\s+(?=[A-Z0-9])", text)
     non_empty = [part for part in parts if part.strip()]
     return len(non_empty) > 1
+
+
+def check_arena_candidates(bundle: dict) -> list[dict]:
+    warnings: list[dict] = []
+    arena_candidates = bundle.get("arena_candidates") or []
+    block_ids = {
+        block.get("id")
+        for block in bundle.get("insight_blocks", []) or []
+        if block.get("id")
+    }
+    # Build company_candidate_keys: both MARKET_TICKER and bare ticker
+    company_candidate_keys: set[str] = set()
+    for candidate in bundle.get("company_candidates", []) or []:
+        market = candidate.get("market")
+        ticker = candidate.get("ticker")
+        if market and ticker:
+            company_candidate_keys.add(f"{market}_{ticker}")
+        if ticker:
+            company_candidate_keys.add(ticker)
+
+    for idx, ac in enumerate(arena_candidates):
+        ac_id = ac.get("candidate_id") or f"#{idx}"
+        slug = ac.get("tentative_slug") or ac_id
+        target = f"arena_candidates.{slug}"
+
+        if not ac.get("parent_industry_slug"):
+            warnings.append(_qa_warning(
+                "arena_candidate_missing_parent_industry",
+                "error",
+                f"{target}.parent_industry_slug",
+                "arena_candidate.parent_industry_slug is required.",
+            ))
+
+        for block_id in ac.get("linked_block_ids") or []:
+            if block_id not in block_ids:
+                warnings.append(_qa_warning(
+                    "arena_candidate_unknown_linked_block",
+                    "error",
+                    target,
+                    f"linked_block_id {block_id!r} does not exist in insight_blocks.",
+                ))
+
+        for ticker_key in ac.get("participant_tickers") or []:
+            # Accept MARKET_TICKER format or bare ticker
+            if ticker_key not in company_candidate_keys:
+                warnings.append(_qa_warning(
+                    "arena_candidate_participant_not_in_company_candidates",
+                    "error",
+                    target,
+                    f"participant_ticker {ticker_key!r} is not in company_candidates.",
+                ))
+
+        if ac.get("confidence") == "high" and len(ac.get("linked_block_ids") or []) < 2:
+            warnings.append(_qa_warning(
+                "arena_candidate_overconfident",
+                "warning",
+                target,
+                "high confidence arena candidate should have at least 2 linked_block_ids.",
+            ))
+
+    return warnings
 
 
 def check_schema_fit_review(bundle: dict) -> list[dict]:
@@ -772,6 +848,7 @@ def check_ingest_review_bundle(bundle: dict, preprocess: dict) -> list[dict]:
     warnings += check_preprocess_risk_confidence(bundle, preprocess)
     warnings += check_stage_gate_synthesis(bundle)
     warnings += check_company_candidates(bundle)
+    warnings += check_arena_candidates(bundle)
     warnings += check_claim_candidates(bundle)
     warnings += check_synthesis_discipline(bundle)
     warnings += check_schema_fit_review(bundle)
