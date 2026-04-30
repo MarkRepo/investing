@@ -141,3 +141,130 @@ def test_build_proposal_file_records_unmapped_claims_without_proposals(tmp_path)
         }
     ]
     assert result["summary_stats"]["unsupported_candidates_skipped"] == 1
+
+
+from app.io.narrative_proposals import (
+    apply_proposal_file,
+    validate_proposal_decisions,
+)
+
+
+def _proposal_file(claim_id):
+    return {
+        "source_id": "src-001",
+        "generated_at": "2026-04-30T12:00:00+00:00",
+        "proposal_version": "phase3a-v1",
+        "scope_type": "arena",
+        "proposals": [
+            {
+                "proposal_id": "np-001",
+                "arena_slug": "cn-bci-industrialization",
+                "dimension": "participants",
+                "title": "参与者格局变化",
+                "body": "医疗场景仍是脑机接口商业化的主要验证路径。",
+                "supported_by_claims": [claim_id],
+                "source_ids": ["src-001"],
+                "evidence_summary": [],
+                "existing_narrative_excerpt": "",
+                "decision": "approve",
+                "decision_reason": "claim 支撑明确",
+                "edited_title": None,
+                "edited_body": None,
+            }
+        ],
+        "unmapped_claims": [],
+        "summary_stats": {},
+    }
+
+
+def test_validate_proposal_decisions_rejects_missing_body_and_placeholder(tmp_path):
+    registry = ClaimRegistry(tmp_path)
+    claim = _create_claim(registry)
+    data = _proposal_file(claim["claim_id"])
+    data["proposals"][0]["body"] = None
+
+    errors = validate_proposal_decisions(data, registry)
+    assert "np-001: approve requires non-empty body" in errors
+
+    data["proposals"][0]["body"] = "待填写"
+    errors = validate_proposal_decisions(data, registry)
+    assert "np-001: body must not be placeholder text" in errors
+
+
+def test_validate_proposal_decisions_rejects_retired_claim_and_definition(tmp_path):
+    registry = ClaimRegistry(tmp_path)
+    claim = _create_claim(registry, status="retired")
+    data = _proposal_file(claim["claim_id"])
+    data["proposals"][0]["dimension"] = "definition"
+
+    errors = validate_proposal_decisions(data, registry)
+
+    assert "np-001: dimension definition cannot be written by narrative proposals" in errors
+    assert f"np-001: supported claim {claim['claim_id']} is not active" in errors
+
+
+def test_apply_proposal_file_appends_markdown_audit_and_archives(tmp_path):
+    registry = ClaimRegistry(tmp_path)
+    claim = _create_claim(registry)
+    arena_dir = tmp_path / "arenas" / "cn-bci-industrialization"
+    arena_dir.mkdir(parents=True)
+    target = arena_dir / "participants.md"
+    target.write_text("# 参与者与相对位置 · 脑机接口\n\n", encoding="utf-8")
+    pending = tmp_path / "data" / "pending" / "narrative-proposals-src-001.json"
+    pending.parent.mkdir(parents=True)
+    data = _proposal_file(claim["claim_id"])
+    pending.write_text(__import__("json").dumps(data, ensure_ascii=False), encoding="utf-8")
+
+    result = apply_proposal_file(
+        data=data,
+        registry=registry,
+        base=tmp_path,
+        pending_path=pending,
+        today="2026-04-30",
+        now="2026-04-30T12:00:00+00:00",
+    )
+
+    assert result == {"applied": 1, "rejected": 0, "deferred": 0}
+    text = target.read_text(encoding="utf-8")
+    assert "### 参与者格局变化" in text
+    assert "status: active" in text
+    assert "last_written: 2026-04-30" in text
+    assert f"supported_by_claims: [{claim['claim_id']}]" in text
+    assert "source_ids: [src-001]" in text
+    assert "proposal_id: np-001" in text
+    assert "医疗场景仍是脑机接口商业化的主要验证路径。" in text
+    audit_lines = (tmp_path / "data" / "audit" / "narrative-events.jsonl").read_text(encoding="utf-8").splitlines()
+    assert len(audit_lines) == 1
+    archived = tmp_path / "data" / "pending" / "archive" / pending.name
+    assert archived.exists()
+    assert not pending.exists()
+
+
+def test_apply_proposal_file_uses_edited_body(tmp_path):
+    registry = ClaimRegistry(tmp_path)
+    claim = _create_claim(registry)
+    arena_dir = tmp_path / "arenas" / "cn-bci-industrialization"
+    arena_dir.mkdir(parents=True)
+    (arena_dir / "participants.md").write_text("# x\n\n", encoding="utf-8")
+    pending = tmp_path / "data" / "pending" / "narrative-proposals-src-001.json"
+    pending.parent.mkdir(parents=True)
+    data = _proposal_file(claim["claim_id"])
+    data["proposals"][0]["decision"] = "edit"
+    data["proposals"][0]["edited_title"] = "编辑后的标题"
+    data["proposals"][0]["edited_body"] = "编辑后的正文。"
+    pending.write_text(__import__("json").dumps(data, ensure_ascii=False), encoding="utf-8")
+
+    result = apply_proposal_file(
+        data=data,
+        registry=registry,
+        base=tmp_path,
+        pending_path=pending,
+        today="2026-04-30",
+        now="2026-04-30T12:00:00+00:00",
+    )
+
+    assert result["applied"] == 1
+    text = (arena_dir / "participants.md").read_text(encoding="utf-8")
+    assert "### 编辑后的标题" in text
+    assert "编辑后的正文。" in text
+    assert "医疗场景仍是脑机接口商业化的主要验证路径。" not in text
