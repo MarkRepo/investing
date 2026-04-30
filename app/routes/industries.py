@@ -13,6 +13,7 @@ from app.io import arenas as arenas_io
 from app.io import company as company_io
 from app.io import figure_contexts as fc_io
 from app.io import industry as industry_io
+from app.io import narrative_proposals as narrative_io
 
 router = APIRouter(prefix="/industries", tags=["industries"])
 templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
@@ -41,15 +42,22 @@ def industry_detail(request: Request, slug: str):
     # Sort observations by added_at desc; rows lacking added_at sink to bottom.
     observations.sort(key=lambda r: r.get("added_at") or "", reverse=True)
 
+    industry_flags = narrative_io.read_narrative_flags("industry", slug, base=cfg.INDUSTRIES_DIR.parent)
+    flags_by_dimension = {}
+    for flag in industry_flags:
+        flags_by_dimension.setdefault(flag.get("dimension"), []).append(flag)
     narratives = []
     for dim in cfg.INDUSTRY_DIMENSIONS:
         md = industry_io.read_narrative(slug, dim)
         has_content = md.strip() and not _is_skeleton_only(md)
+        dim_flags = flags_by_dimension.get(dim, [])
         narratives.append({
             "dim": dim,
             "label": _INDUSTRY_DIM_LABEL.get(dim, dim),
             "has_content": bool(has_content),
             "html": _md.markdown(md, extensions=["tables", "fenced_code"]) if md else "",
+            "flags": dim_flags,
+            "needs_review": bool(dim_flags),
         })
 
     figure_contexts = fc_io.read_figure_contexts(slug)
