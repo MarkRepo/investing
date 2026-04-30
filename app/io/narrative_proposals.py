@@ -273,3 +273,133 @@ def apply_proposal_file(
         )
     archive_pending_file(pending_path, base)
     return counts
+
+
+def _flags_path(base: Path, arena_slug: str) -> Path:
+    return base / "arenas" / arena_slug / "narrative-flags.jsonl"
+
+
+def read_narrative_flags(arena_slug: str, base: Path | None = None, include_dismissed: bool = False) -> list[dict[str, Any]]:
+    root = Path(base) if base is not None else cfg.BASE_PATH
+    path = _flags_path(root, arena_slug)
+    if not path.exists():
+        return []
+    rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    if include_dismissed:
+        return rows
+    return [row for row in rows if not row.get("dismissed")]
+
+
+def _next_flag_id(existing: list[dict[str, Any]], offset: int) -> str:
+    max_id = 0
+    for flag in existing:
+        flag_id = flag.get("flag_id", "")
+        if flag_id.startswith("nf-"):
+            try:
+                max_id = max(max_id, int(flag_id.rsplit("-", 1)[1]))
+            except ValueError:
+                pass
+    return f"nf-{max_id + offset:04d}"
+
+
+def _parse_claim_ids(raw: str) -> list[str]:
+    return [part.strip() for part in raw.split(",") if part.strip()]
+
+
+def _scan_segments(base: Path, arena_slug: str) -> list[dict[str, Any]]:
+    segments: list[dict[str, Any]] = []
+    arena_dir = base / "arenas" / arena_slug
+    for dimension in NARRATIVE_DIMS:
+        path = arena_dir / f"{dimension.replace('_', '-')}.md"
+        if not path.exists():
+            continue
+        current_proposal_id: str | None = None
+        current_claim_ids: list[str] = []
+        for line in path.read_text(encoding="utf-8").splitlines():
+            stripped = line.strip()
+            if stripped.startswith("### "):
+                current_proposal_id = None
+                current_claim_ids = []
+                continue
+            if stripped.startswith("supported_by_claims:"):
+                value = stripped.split(":", 1)[1].strip()
+                if value.startswith("[") and value.endswith("]"):
+                    current_claim_ids = _parse_claim_ids(value[1:-1])
+            elif stripped.startswith("proposal_id:"):
+                current_proposal_id = stripped.split(":", 1)[1].strip()
+                if current_claim_ids:
+                    proposal_id = current_proposal_id or "unknown"
+                    for claim_id in current_claim_ids:
+                        segments.append(
+                            {
+                                "dimension": dimension,
+                                "segment_ref": f"{path.name}#{proposal_id}",
+                                "claim_id": claim_id,
+                            }
+                        )
+    return segments
+
+
+def _claim_has_refuting_evidence(claim: dict[str, Any]) -> bool:
+    return any(
+        evidence.get("direction") == "refutes"
+        for evidence in claim.get("supporting_evidence", []) or []
+    )
+
+
+def _flag_for_segment(segment: dict[str, Any], registry: ClaimRegistry) -> tuple[str, str] | None:
+    claim_id = segment["claim_id"]
+    claim = registry.find_by_id(claim_id)
+    if claim is None:
+        return "critical", "supporting claim missing"
+    if claim.get("status") == "retired":
+        return "critical", "supporting claim retired"
+    if claim.get("status") != "active":
+        return "critical", "supporting claim not active"
+    if _claim_has_refuting_evidence(claim):
+        return "significant", "supporting claim has refuting evidence"
+    return None
+
+
+def scan_narrative_flags(
+    *,
+    registry: ClaimRegistry,
+    base: Path,
+    arena_slug: str,
+    now: str | None = None,
+) -> list[dict[str, Any]]:
+    now = now or now_iso()
+    existing = read_narrative_flags(arena_slug, base=base, include_dismissed=True)
+    existing_keys = {
+        (flag.get("dimension"), flag.get("segment_ref"), flag.get("supported_by_claim"), flag.get("reason"))
+        for flag in existing
+        if not flag.get("dismissed")
+    }
+    new_flags: list[dict[str, Any]] = []
+    for segment in _scan_segments(base, arena_slug):
+        level_reason = _flag_for_segment(segment, registry)
+        if level_reason is None:
+            continue
+        level, reason = level_reason
+        key = (segment["dimension"], segment["segment_ref"], segment["claim_id"], reason)
+        if key in existing_keys:
+            continue
+        flag = {
+            "flag_id": _next_flag_id(existing, len(new_flags) + 1),
+            "created_at": now,
+            "dimension": segment["dimension"],
+            "segment_ref": segment["segment_ref"],
+            "supported_by_claim": segment["claim_id"],
+            "flag_level": level,
+            "reason": reason,
+            "dismissed": False,
+            "superseded_by": None,
+        }
+        new_flags.append(flag)
+    if new_flags:
+        path = _flags_path(base, arena_slug)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as f:
+            for flag in new_flags:
+                f.write(json.dumps(flag, ensure_ascii=False, sort_keys=True) + "\n")
+    return new_flags
