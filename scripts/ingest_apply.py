@@ -180,49 +180,111 @@ def _apply_split(registry: ClaimRegistry, source_id: str, row: dict[str, Any], n
 
 def cmd_apply(args: argparse.Namespace) -> int:
     base = Path(args.registry_base)
-    match = json.loads(Path(args.match).read_text(encoding="utf-8"))
     bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
     registry = ClaimRegistry(base)
-    errors = validate_match_decisions(match, registry)
-    if errors:
-        for error in errors:
-            print(f"✗ {error}")
-        return 1
 
-    source_id = match.get("source_id", "")
+    # Resolve all decision file paths (--decisions repeated, --match deprecated alias)
+    match_val = getattr(args, "match", None)
+    decisions_val = getattr(args, "decisions", None) or []
+    match_list = [match_val] if (match_val and not isinstance(match_val, list)) else (match_val or [])
+    decision_paths = [Path(p) for p in match_list + decisions_val]
+
+    if not decision_paths:
+        print("error: at least one --decisions file is required", flush=True)
+        return 2
+
+    # Load all match files and validate all before writing anything
+    all_matches: list[dict] = []
+    for dp in decision_paths:
+        match_data = json.loads(dp.read_text(encoding="utf-8"))
+        all_matches.append(match_data)
+        errors = validate_match_decisions(match_data, registry)
+        if errors:
+            for error in errors:
+                print(f"✗ {error}")
+            return 1
+
+    source_id = bundle.get("source_digest", {}).get("source_id", "")
     now = _now()
-    for row in match.get("decisions_required", []) or []:
-        decision = row["decision"]
-        if decision == "new":
-            claim = _apply_new(registry, bundle, source_id, row, now)
-            registry.append_audit_event({"event_type": "claim_created", "source_id": source_id, "candidate_id": row["candidate_id"], "claim_id": claim["claim_id"]})
-        elif decision == "attach":
-            _apply_attach(registry, bundle, source_id, row, now)
-            registry.append_audit_event({"event_type": "evidence_attached", "source_id": source_id, "candidate_id": row["candidate_id"], "claim_id": row["target_claim_id"]})
-        elif decision == "skip":
-            registry.append_audit_event({"event_type": "candidate_skipped", "source_id": source_id, "candidate_id": row["candidate_id"]})
-        elif decision == "split":
-            new_claims = _apply_split(registry, source_id, row, now)
-            registry.append_audit_event(
-                {
-                    "event_type": "claim_split",
-                    "source_id": source_id,
+    applied_rows: list[dict] = []
+
+    for match in all_matches:
+        file_source_id = match.get("source_id", source_id)
+        for row in match.get("decisions_required", []) or []:
+            decision = row["decision"]
+            candidate = row.get("candidate_payload", {})
+            if decision == "new":
+                claim = _apply_new(registry, bundle, file_source_id, row, now)
+                registry.append_audit_event({"event_type": "claim_created", "source_id": file_source_id, "candidate_id": row["candidate_id"], "claim_id": claim["claim_id"]})
+                applied_rows.append({
+                    "source_id": bundle["source_digest"]["source_id"],
                     "candidate_id": row["candidate_id"],
-                    "retired_claim_id": row["split_instructions"]["retire_target_claim_id"],
-                    "new_claim_ids": [claim["claim_id"] for claim in new_claims],
-                }
-            )
+                    "claim_id": claim["claim_id"],
+                    "scope_type": candidate.get("scope_type", ""),
+                    "scope_ref": candidate.get("scope_ref", ""),
+                    "action": row["decision"],
+                })
+            elif decision == "attach":
+                _apply_attach(registry, bundle, file_source_id, row, now)
+                registry.append_audit_event({"event_type": "evidence_attached", "source_id": file_source_id, "candidate_id": row["candidate_id"], "claim_id": row["target_claim_id"]})
+                applied_rows.append({
+                    "source_id": bundle["source_digest"]["source_id"],
+                    "candidate_id": row["candidate_id"],
+                    "claim_id": row["target_claim_id"],
+                    "scope_type": candidate.get("scope_type", ""),
+                    "scope_ref": candidate.get("scope_ref", ""),
+                    "action": row["decision"],
+                })
+            elif decision == "skip":
+                registry.append_audit_event({"event_type": "candidate_skipped", "source_id": file_source_id, "candidate_id": row["candidate_id"]})
+            elif decision == "split":
+                new_claims = _apply_split(registry, file_source_id, row, now)
+                registry.append_audit_event(
+                    {
+                        "event_type": "claim_split",
+                        "source_id": file_source_id,
+                        "candidate_id": row["candidate_id"],
+                        "retired_claim_id": row["split_instructions"]["retire_target_claim_id"],
+                        "new_claim_ids": [claim["claim_id"] for claim in new_claims],
+                    }
+                )
+                for claim in new_claims:
+                    applied_rows.append({
+                        "source_id": bundle["source_digest"]["source_id"],
+                        "candidate_id": row["candidate_id"],
+                        "claim_id": claim["claim_id"],
+                        "scope_type": candidate.get("scope_type", ""),
+                        "scope_ref": candidate.get("scope_ref", ""),
+                        "action": row["decision"],
+                    })
+
     _write_pending_files(base, source_id, bundle)
-    print(f"✓ applied match decisions from {args.match}")
+
+    applied_out = getattr(args, "applied_out", None)
+    if applied_out:
+        out_path = Path(applied_out)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(
+            "\n".join(json.dumps(r, ensure_ascii=False) for r in applied_rows) + ("\n" if applied_rows else ""),
+            encoding="utf-8",
+        )
+
+    decision_files_desc = ", ".join(str(p) for p in decision_paths)
+    print(f"✓ applied match decisions from {decision_files_desc}")
     return 0
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ingest_apply")
-    parser.add_argument("--match", required=True)
+    parser.add_argument("--match", action="append", default=[], help="deprecated alias for --decisions")
+    parser.add_argument("--decisions", action="append", default=[], help="decision file from ingest_match; may be repeated")
     parser.add_argument("--bundle", required=True)
     parser.add_argument("--registry-base", default="data")
+    parser.add_argument("--applied-out", help="write applied claim summary JSONL")
     args = parser.parse_args(argv)
+    decision_paths = args.match + args.decisions
+    if not decision_paths:
+        parser.error("at least one --decisions file is required")
     return cmd_apply(args)
 
 

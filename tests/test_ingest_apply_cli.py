@@ -1,8 +1,14 @@
 import json
+import os
+import subprocess
+import sys
 from argparse import Namespace
+from pathlib import Path
 
 from app.io.claim_registry import ClaimRegistry, build_evidence_entry
 from scripts import ingest_apply
+
+_REPO_ROOT = Path(__file__).parent.parent
 
 
 def _bundle():
@@ -229,6 +235,69 @@ def test_apply_split_retires_original_and_creates_new_claim(tmp_path):
     assert new_claim["claim_text"] == "拆分后的命题"
     assert new_claim["supporting_evidence"][0]["fact_ids"] == ["fact-001"]
     assert new_claim["state_log"][0]["trigger"] == "split_from"
+
+
+def test_apply_accepts_multiple_decision_files_and_writes_applied_jsonl(tmp_path):
+
+    candidate_001 = _candidate(candidate_id="cc-001", scope_type="company", scope_ref="SSE_600519")
+    candidate_002 = _candidate(
+        candidate_id="cc-002",
+        claim_text="五粮液规模优势降低成本",
+        scope_type="industry",
+        scope_ref="liquor",
+    )
+
+    bundle = _bundle()
+    bundle["claim_candidates"] = [candidate_001, candidate_002]
+
+    auto_match = {
+        "source_id": "src-001",
+        "decisions_required": [_decision(candidate_001)],
+    }
+    pending_match = {
+        "source_id": "src-001",
+        "decisions_required": [_decision(candidate_002)],
+    }
+
+    bundle_path = tmp_path / "bundle.json"
+    auto_path = tmp_path / "auto-match.json"
+    pending_path = tmp_path / "pending-match.json"
+    applied_path = tmp_path / "applied.jsonl"
+
+    _write_json(bundle_path, bundle)
+    _write_json(auto_path, auto_match)
+    _write_json(pending_path, pending_match)
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(_REPO_ROOT / "scripts" / "ingest_apply.py"),
+            "--bundle", str(bundle_path),
+            "--registry-base", str(tmp_path),
+            "--decisions", str(auto_path),
+            "--decisions", str(pending_path),
+            "--applied-out", str(applied_path),
+        ],
+        capture_output=True,
+        text=True,
+        cwd=str(_REPO_ROOT),
+        env={**os.environ, "PYTHONPATH": str(_REPO_ROOT)},
+    )
+
+    assert result.returncode == 0, result.stderr
+
+    assert applied_path.exists()
+    rows = [json.loads(line) for line in applied_path.read_text(encoding="utf-8").splitlines()]
+    candidate_ids = {row["candidate_id"] for row in rows}
+    assert "cc-001" in candidate_ids
+    assert "cc-002" in candidate_ids
+
+    valid_scope_types = {"industry", "arena", "company", "cross_cutting"}
+    for row in rows:
+        assert "claim_id" in row
+        assert row["scope_type"] in valid_scope_types
+        assert "scope_ref" in row
+        assert "action" in row
 
 
 def test_archive_writes_include_suggested_target_from_dimension_mapping(tmp_path):
