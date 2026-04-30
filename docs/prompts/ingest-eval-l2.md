@@ -1,4 +1,4 @@
-<!-- prompt_version: phase1.5-v1 -->
+<!-- prompt_version: phase2-v1 -->
 
 # Phase 1 Review Bundle L2 评测 Prompt
 
@@ -35,6 +35,14 @@
 4. narrative：synthesis 可读性；blocks 之间的逻辑链是否连贯；what_we_know / what_is_plausible / cannot_conclude 分层是否克制。
 5. claim_extraction_quality（Phase 1.5 起）：claim_candidates 粒度是否合适（不过粗不过碎）、claim_text 是否真为单句命题、scope/dimension_hint 归属是否准确、是否可作为跨报告比对单元
 
+### Phase 2 matching dimensions
+
+`matching_accuracy` evaluates whether each claim_candidate was matched to the right existing claim or correctly left as new. Penalize duplicate new claims when `top_matches` contained the same semantic claim, and penalize polluted attaches when a candidate was attached despite only weak or unrelated matches.
+
+`claim_lifecycle_discipline` evaluates whether the chosen action (`attach`, `new`, `split`, `skip`) respected the Phase 2 lifecycle. Attach should append evidence without changing confidence/status; split should be reserved for an over-broad existing claim that must be retired and replaced; skip requires a concrete reason.
+
+Also fill `phase3_readiness.notes`: can the current claim registry support Phase 3 narrative `supported_by_claims` references, or are claim IDs/coverage/matching decisions too unstable?
+
 ### 独立判断（不进维度 trend）
 
 - system_fit：本 bundle 字段集是否适配该 source_type？（如医药报告缺 pipeline 信息、行业报告缺 lifecycle 判断等。给具体不适配点）
@@ -50,7 +58,9 @@
     "reasoning_quality": {"trend": "stronger|comparable|weaker|insufficient_samples", "notes": "≤200 字"},
     "calibration": {"trend": "stronger|comparable|weaker|insufficient_samples", "notes": "≤200 字"},
     "narrative": {"trend": "stronger|comparable|weaker|insufficient_samples", "notes": "≤200 字"},
-    "claim_extraction_quality": {"trend": "stronger|comparable|weaker|insufficient_samples", "notes": "≤200 字"}
+    "claim_extraction_quality": {"trend": "stronger|comparable|weaker|insufficient_samples", "notes": "≤200 字"},
+    "matching_accuracy": {"trend": "stronger|comparable|weaker|insufficient_samples", "notes": "≤200 字"},
+    "claim_lifecycle_discipline": {"trend": "stronger|comparable|weaker|insufficient_samples", "notes": "≤200 字"}
   },
   "system_fit": {"notes": "..."},
   "phase2_readiness": {"notes": "..."},
