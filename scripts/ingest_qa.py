@@ -1290,6 +1290,71 @@ def cmd_archive_apply(args: argparse.Namespace) -> int:
     return 0
 
 
+def _read_jsonl_file(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def _archive_arena_pending(pending_path: Path, rows: list[dict], base: Path) -> None:
+    archive_dir = base / "data" / "pending" / "archive"
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    archived = archive_dir / pending_path.name
+    archived.write_text("".join(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n" for row in rows), encoding="utf-8")
+    pending_path.unlink()
+
+
+def _mark_arena_candidate(args: argparse.Namespace, decision: str, merge_target: str | None = None) -> int:
+    pending_path = Path(args.pending)
+    base = Path(args.base)
+    rows = _read_jsonl_file(pending_path)
+    found = False
+    for row in rows:
+        if row.get("candidate_id") == args.id:
+            row["decision"] = decision
+            if merge_target:
+                row["merge_target"] = merge_target
+            found = True
+    if not found:
+        print(f"✗ arena candidate not found: {args.id}", file=sys.stderr)
+        return 1
+    _archive_arena_pending(pending_path, rows, base)
+    print(f"✓ arena candidate {args.id} {decision}")
+    return 0
+
+
+def cmd_arena_approve(args: argparse.Namespace) -> int:
+    pending_path = Path(args.pending)
+    base = Path(args.base)
+    rows = _read_jsonl_file(pending_path)
+    target = next((row for row in rows if row.get("candidate_id") == args.id), None)
+    if target is None:
+        print(f"✗ arena candidate not found: {args.id}", file=sys.stderr)
+        return 1
+    slug = target["slug"]
+    arena_dir = base / "arenas" / slug
+    arena_dir.mkdir(parents=True, exist_ok=True)
+    (arena_dir / "name.yaml").write_text(
+        f"slug: {slug}\nname: {target.get('name', '')}\nfirst_seen_source: {pending_path.name}\n",
+        encoding="utf-8",
+    )
+    (arena_dir / "battleground_focus.md").write_text(f"{target.get('battleground_focus', '')}\n", encoding="utf-8")
+    participants = target.get("core_participants", []) or []
+    (arena_dir / "core_participants.yaml").write_text("".join(f"- {p}\n" for p in participants), encoding="utf-8")
+    target["decision"] = "approved"
+    _archive_arena_pending(pending_path, rows, base)
+    print(f"✓ arena approved: {slug}")
+    return 0
+
+
+def cmd_arena_reject(args: argparse.Namespace) -> int:
+    return _mark_arena_candidate(args, "rejected")
+
+
+def cmd_arena_merge(args: argparse.Namespace) -> int:
+    return _mark_arena_candidate(args, "merged", args.target_slug)
+
+
 def cmd_evaluation_init(args: argparse.Namespace) -> int:
     from datetime import timezone
 
@@ -1391,6 +1456,25 @@ def main(argv: list[str] | None = None) -> int:
     p_list.add_argument("--scope", required=True)
     p_list.add_argument("--status", choices=["open", "resolved", "dismissed"], help="过滤状态")
     p_list.set_defaults(func=cmd_list)
+
+    p_arena = sub.add_parser("arena", help="arena candidate approval workflow")
+    arena_sub = p_arena.add_subparsers(dest="arena_cmd", required=True)
+    p_arena_approve = arena_sub.add_parser("approve", help="approve arena candidate")
+    p_arena_approve.add_argument("--pending", required=True)
+    p_arena_approve.add_argument("--base", default=".")
+    p_arena_approve.add_argument("id")
+    p_arena_approve.set_defaults(func=cmd_arena_approve)
+    p_arena_reject = arena_sub.add_parser("reject", help="reject arena candidate")
+    p_arena_reject.add_argument("--pending", required=True)
+    p_arena_reject.add_argument("--base", default=".")
+    p_arena_reject.add_argument("id")
+    p_arena_reject.set_defaults(func=cmd_arena_reject)
+    p_arena_merge = arena_sub.add_parser("merge", help="merge arena candidate into existing arena")
+    p_arena_merge.add_argument("--pending", required=True)
+    p_arena_merge.add_argument("--base", default=".")
+    p_arena_merge.add_argument("id")
+    p_arena_merge.add_argument("target_slug")
+    p_arena_merge.set_defaults(func=cmd_arena_merge)
 
     p_archive = sub.add_parser("archive", help="archive pending write workflow")
     archive_sub = p_archive.add_subparsers(dest="archive_cmd", required=True)
