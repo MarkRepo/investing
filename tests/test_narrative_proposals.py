@@ -268,3 +268,39 @@ def test_apply_proposal_file_uses_edited_body(tmp_path):
     assert "### 编辑后的标题" in text
     assert "编辑后的正文。" in text
     assert "医疗场景仍是脑机接口商业化的主要验证路径。" not in text
+
+
+from app.io.narrative_proposals import (
+    SCOPE_CONFIGS,
+    dimension_path,
+    flags_path,
+    narrative_dims_for_scope,
+)
+
+
+def test_scope_configs_cover_arena_and_company():
+    assert "arena" in SCOPE_CONFIGS
+    assert "company" in SCOPE_CONFIGS
+    assert "definition" not in narrative_dims_for_scope("arena")
+    # company has no "definition" dim, all 8 COMPANY_DIMENSIONS are allowed
+    from app import config as cfg
+    assert set(narrative_dims_for_scope("company")) == set(cfg.COMPANY_DIMENSIONS)
+
+
+def test_dimension_path_for_arena_and_company(tmp_path):
+    arena_path = dimension_path(tmp_path, "arena", "cn-bci-industrialization", "participants")
+    assert arena_path == tmp_path / "arenas" / "cn-bci-industrialization" / "participants.md"
+
+    company_path = dimension_path(tmp_path, "company", "SSE_600519", "moat")
+    assert company_path == tmp_path / "companies" / "SSE_600519" / "narratives" / "moat.md"
+
+    company_kebab = dimension_path(tmp_path, "company", "SSE_600519", "growth_engine")
+    assert company_kebab.name == "growth-engine.md"
+
+
+def test_flags_path_for_arena_and_company(tmp_path):
+    arena_flags = flags_path(tmp_path, "arena", "cn-bci-industrialization")
+    assert arena_flags == tmp_path / "arenas" / "cn-bci-industrialization" / "narrative-flags.jsonl"
+
+    company_flags = flags_path(tmp_path, "company", "SSE_600519")
+    assert company_flags == tmp_path / "companies" / "SSE_600519" / "narrative-flags.jsonl"
