@@ -33,6 +33,12 @@ subjects:
     label: 市场份额
   - id: competitive_position
     label: 竞争地位
+  - id: competitive_advantage
+    label: 竞争优势
+  - id: technology_leadership
+    label: 技术领先性
+  - id: new_product
+    label: 新业务/新品
   - id: new_entrants
     label: 新进入者
 

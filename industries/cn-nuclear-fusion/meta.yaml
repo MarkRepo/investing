@@ -1,0 +1,23 @@
+slug: cn-nuclear-fusion
+name: 中国可控核聚变
+scope: 可控核聚变技术及产业链，包含托卡马克装置、超导磁体、第一壁材料、聚变堆设计及商业化路径。不含传统裂变核电。
+linked_arenas:
+- cn-fusion-divertor-material
+- cn-fusion-firstwall-material
+- cn-fusion-hts-magnet-supply
+- cn-fusion-vacuum-vessel-fabrication
+linked_tickers:
+- market: SSE
+  ticker: '603011'
+  role: mentioned
+- market: SSE
+  ticker: '600363'
+  role: mentioned
+- market: SSE
+  ticker: '688122'
+  role: mentioned
+- market: SZSE
+  ticker: 000969
+  role: mentioned
+created: '2026-04-30'
+last_updated: '2026-04-30'

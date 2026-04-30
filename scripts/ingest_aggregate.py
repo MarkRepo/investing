@@ -518,7 +518,7 @@ def facts_to_claims(facts: list[dict]) -> list[dict]:
         if not (refs.get("ticker") and refs.get("market")):
             continue
         out.append({
-            "claim_text": f.get("fact_text"),
+            "claim_text": f.get("claim_text") or f.get("fact_text"),
             "subject_tag": f.get("subject_tag_hint"),
             "polarity": f.get("polarity", "neutral"),
             "claim_type": (
