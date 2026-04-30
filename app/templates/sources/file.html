@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}source {{ entry.source_id }}{% endblock %}
+{% block content %}
+<h1>原文：<code>{{ entry.source_id }}</code></h1>
+
+<p>
+  <a href="/bundles/{{ entry.source_id }}">← Bundle 详情</a>
+</p>
+
+<p class="hint">文件路径：<code>{{ entry.source_file_path }}</code></p>
+
+{% if is_pdf %}
+<embed src="/{{ entry.source_file_path }}" type="application/pdf" width="100%" height="900px">
+{% else %}
+<p>文件路径：<code>{{ source_path }}</code>（非 PDF 文件，请直接在文件系统查看）</p>
+{% endif %}
+
+{% endblock %}

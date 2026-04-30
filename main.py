@@ -9,6 +9,7 @@ from starlette.requests import Request
 
 from app.config import APP_TEMPLATES_DIR, STATIC_DIR
 from app.routes.arenas import router as arenas_router
+from app.routes.bundles import router as bundles_router
 from app.routes.catalysts import router as catalysts_router
 from app.routes.claim_audit import router as claim_audit_router
 from app.routes.companies import router as companies_router
@@ -27,6 +28,7 @@ from app.routes.regime import router as regime_router
 from app.routes.research import router as research_router
 from app.routes.review import router as review_router
 from app.routes.search import router as search_router
+from app.routes.sources import router as sources_router
 from app.routes.triggers import router as triggers_router
 from app.routes.v0 import router as v0_router
 from app.routes.valuation import router as valuation_router
@@ -67,6 +69,8 @@ app.include_router(discipline_router)
 app.include_router(claim_audit_router)
 app.include_router(qa_router)
 app.include_router(arenas_router)
+app.include_router(bundles_router)
+app.include_router(sources_router)
 
 
 @app.get("/", response_class=HTMLResponse)

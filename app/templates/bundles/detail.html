@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}bundle {{ entry.source_id }}{% endblock %}
+{% block content %}
+<h1>Bundle: <code>{{ entry.source_id }}</code></h1>
+
+<p>
+  <a href="/bundles">← 所有 Bundle</a>
+  {% if entry.source_file_path %}
+  · <a href="/sources/{{ entry.source_id }}/file">查看原文</a>
+  {% endif %}
+</p>
+
+<table>
+  <tbody>
+    <tr><th>source_type</th><td>{{ entry.source_type or '-' }}</td></tr>
+    <tr><th>institution</th><td>{{ entry.institution or '-' }}</td></tr>
+    <tr><th>publish_date</th><td>{{ entry.publish_date or '-' }}</td></tr>
+    <tr><th>ingested_at</th><td>{{ entry.ingested_at or '-' }}</td></tr>
+    <tr><th>bundle_path</th><td><code>{{ entry.bundle_path or '-' }}</code></td></tr>
+    <tr><th>source_file_path</th><td><code>{{ entry.source_file_path or '-' }}</code></td></tr>
+  </tbody>
+</table>
+
+<h2>source_digest</h2>
+<pre>{{ bundle.source_digest | tojson(indent=2) }}</pre>
+
+<h2>insight_blocks</h2>
+<pre>{{ bundle.insight_blocks | tojson(indent=2) }}</pre>
+
+<h2>atomic_facts</h2>
+<pre>{{ bundle.atomic_facts | tojson(indent=2) }}</pre>
+
+<h2>synthesis</h2>
+<pre>{{ bundle.synthesis | tojson(indent=2) }}</pre>
+
+<h2>stage_gates</h2>
+<pre>{{ bundle.stage_gates | tojson(indent=2) }}</pre>
+
+<h2>claim_candidates</h2>
+<pre>{{ bundle.claim_candidates | tojson(indent=2) }}</pre>
+
+<h2>company_candidates</h2>
+<pre>{{ bundle.company_candidates | tojson(indent=2) }}</pre>
+
+<h2>arena_candidates</h2>
+<pre>{{ bundle.arena_candidates | tojson(indent=2) }}</pre>
+
+<h2>schema_fit_review</h2>
+<pre>{{ bundle.schema_fit_review | tojson(indent=2) }}</pre>
+
+{% endblock %}
