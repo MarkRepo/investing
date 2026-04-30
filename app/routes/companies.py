@@ -12,6 +12,7 @@ from app.io import industry as industry_io
 from app.io import journal as journal_io
 from app.io import portfolio as portfolio_io
 from app.io import quotes as quotes_io
+from app.io import narrative_proposals as narrative_io
 from app.io import watchlist as watchlist_io
 from app.templating import register_filters
 
@@ -108,16 +109,24 @@ def detail_page(request: Request, key: str):
     prev_quote = quotes_io.second_latest_for(ticker)
     freshness = quotes_io.freshness(ticker)
 
-    # 8 company-layer narratives (Plan 3 digest writes here)
+    # 8 company-layer narratives (Plan 3 digest writes here, Phase 3B flags here)
+    scope_ref = f"{market}_{ticker}"
+    company_flags = narrative_io.read_narrative_flags("company", scope_ref, base=cfg.COMPANIES_DIR.parent)
+    flags_by_dimension = {}
+    for flag in company_flags:
+        flags_by_dimension.setdefault(flag.get("dimension"), []).append(flag)
     narratives = []
     for dim in cfg.COMPANY_DIMENSIONS:
         md = company_io.read_narrative(ticker, market, dim)
-        has_content = md.strip() and "### 来源" in md
+        has_content = md.strip() and ("### 来源" in md or "proposal_id:" in md)
+        dim_flags = flags_by_dimension.get(dim, [])
         narratives.append({
             "dim": dim,
             "label": _COMPANY_DIM_LABEL.get(dim, dim),
             "has_content": bool(has_content),
             "html": _md.markdown(md, extensions=["tables", "fenced_code"]) if md else "",
+            "flags": dim_flags,
+            "needs_review": bool(dim_flags),
         })
 
     # Industry back-links via meta.industry_slugs (if present)

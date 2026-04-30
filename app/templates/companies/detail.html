@@ -31,7 +31,21 @@
       <strong>{{ n.label }}</strong>
       <span class="hint">({{ n.dim }})</span>
       {% if not n.has_content %}<span class="badge badge-draft">空</span>{% endif %}
+      {% if n.needs_review %}<span class="badge badge-draft">needs review</span>{% endif %}
     </summary>
+    {% if n.flags %}
+      <div class="narrative-flags">
+        <strong>Review flags</strong>
+        <ul>
+          {% for flag in n.flags %}
+          <li>
+            <span class="badge badge-draft">{{ flag.flag_level }}</span>
+            {{ flag.reason }} · {{ flag.supported_by_claim }} · {{ flag.segment_ref }} · {{ flag.created_at }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
     {% if n.has_content %}
       <div class="narrative">{{ n.html|safe }}</div>
     {% else %}
