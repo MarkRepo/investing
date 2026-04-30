@@ -14,6 +14,7 @@ from app.io import portfolio as portfolio_io
 from app.io import quotes as quotes_io
 from app.io import narrative_proposals as narrative_io
 from app.io import watchlist as watchlist_io
+from app.io.claim_registry import ClaimRegistry
 from app.templating import register_filters
 
 router = APIRouter(prefix="/companies", tags=["companies"])
@@ -138,6 +139,30 @@ def detail_page(request: Request, key: str):
         except FileNotFoundError:
             industry_links.append({"slug": slug, "name": None})
 
+    # Load company claims from ClaimRegistry
+    registry = ClaimRegistry(cfg.BASE_PATH)
+    raw_claims = registry.list_claims(scope_type="company", scope_ref=scope_ref)
+    claims = []
+    for claim in raw_claims:
+        # Derive source ids: supporting_source_ids > evidence[].source_id > claim.source_id
+        supporting_source_ids = claim.get("supporting_source_ids") or []
+        if not supporting_source_ids:
+            supporting_source_ids = [
+                ev["source_id"]
+                for ev in claim.get("supporting_evidence", [])
+                if ev.get("source_id")
+            ]
+        if not supporting_source_ids and claim.get("source_id"):
+            supporting_source_ids = [claim["source_id"]]
+        claims.append({
+            "claim_id": claim.get("claim_id", ""),
+            "claim_text": claim.get("claim_text", ""),
+            "claim_type": claim.get("claim_type", ""),
+            "dimension_hint": claim.get("dimension_hint", ""),
+            "confidence": claim.get("confidence", ""),
+            "supporting_source_ids": supporting_source_ids,
+        })
+
     return templates.TemplateResponse(
         request,
         "companies/detail.html",
@@ -159,6 +184,7 @@ def detail_page(request: Request, key: str):
             "freshness": freshness,
             "narratives": narratives,
             "industry_links": industry_links,
+            "claims": claims,
         },
     )
 

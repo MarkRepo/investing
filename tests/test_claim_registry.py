@@ -189,3 +189,52 @@ def test_check_integrity_detects_counter_mismatch(tmp_path):
     warnings = ClaimRegistry(tmp_path).check_integrity()
 
     assert warnings == ["counter mismatch for company: counter=9 max_id=1"]
+
+
+def test_list_claims_filters_by_scope(tmp_path):
+    registry = ClaimRegistry(tmp_path)
+    evidence_company = build_evidence_entry(
+        source_id="src-company-001",
+        block_ids=["ib-001"],
+        fact_ids=["fact-001"],
+        direction="supports",
+        now="2026-04-30T12:00:00+00:00",
+    )
+    company_claim = registry.create_claim(
+        claim_text="公司具备主题相关性",
+        scope_type="company",
+        scope_ref="SSE_603011",
+        claim_type="judgment",
+        dimension_hint="moat",
+        confidence="medium_high",
+        as_of="2024-12-31",
+        evidence=evidence_company,
+        trigger="created",
+        trigger_ref="match-src-company-001.json#cc-001",
+        now="2026-04-30T12:00:00+00:00",
+    )
+    evidence_industry = build_evidence_entry(
+        source_id="src-industry-001",
+        block_ids=["ib-002"],
+        fact_ids=[],
+        direction="supports",
+        now="2026-04-30T12:00:00+00:00",
+    )
+    registry.create_claim(
+        claim_text="核聚变行业处于快速成长阶段",
+        scope_type="industry",
+        scope_ref="cn-nuclear-fusion",
+        claim_type="judgment",
+        dimension_hint="lifecycle",
+        confidence="medium",
+        as_of="2024-12-31",
+        evidence=evidence_industry,
+        trigger="created",
+        trigger_ref="match-src-industry-001.json#cc-001",
+        now="2026-04-30T12:00:00+00:00",
+    )
+
+    rows = registry.list_claims(scope_type="company", scope_ref="SSE_603011")
+
+    assert len(rows) == 1
+    assert rows[0]["claim_id"] == company_claim["claim_id"]

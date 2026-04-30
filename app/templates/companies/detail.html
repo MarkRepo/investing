@@ -24,6 +24,40 @@
   {% include "prices/_panel.html" %}
 {% endif %}
 
+<h2>Claims（{{ claims|length }}）</h2>
+{% if claims %}
+<table>
+  <thead>
+    <tr>
+      <th>Claim</th>
+      <th>Type</th>
+      <th>Dimension</th>
+      <th>Confidence</th>
+      <th>Sources</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for c in claims %}
+    <tr>
+      <td>{{ c.claim_text }}</td>
+      <td>{{ c.claim_type }}</td>
+      <td>{{ c.dimension_hint }}</td>
+      <td>{{ c.confidence }}</td>
+      <td>
+        {% for sid in c.supporting_source_ids %}
+          <a href="/bundles/{{ sid }}">{{ sid }}</a>{% if not loop.last %}, {% endif %}
+        {% else %}
+          <span class="hint">–</span>
+        {% endfor %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="hint"><em>该公司暂无 claims。ingest 研报后自动生成。</em></p>
+{% endif %}
+
 <h2>8 维叙述（narratives）</h2>
 {% for n in narratives %}
   <details {% if n.has_content %}open{% endif %}>

@@ -231,6 +231,27 @@ class ClaimRegistry:
         self._rewrite_claim(original)
         return new_claims
 
+    def list_claims(
+        self,
+        scope_type: str | None = None,
+        scope_ref: str | None = None,
+    ) -> list[dict[str, Any]]:
+        """Return claims filtered by scope_type and/or scope_ref.
+
+        - Both provided: return claims_for_scope(scope_type, scope_ref)
+        - scope_type only: return all_claims_for_scope_type(scope_type)
+        - Neither: return all claims across all scope files
+        """
+        if scope_type is not None and scope_ref is not None:
+            return self.claims_for_scope(scope_type, scope_ref)
+        if scope_type is not None:
+            return self.all_claims_for_scope_type(scope_type)
+        # no filter — return everything
+        all_rows: list[dict[str, Any]] = []
+        for rows in self._rows_by_scope_type.values():
+            all_rows.extend(rows)
+        return all_rows
+
     def append_audit_event(self, event: dict[str, Any]) -> None:
         path = self.base / "audit" / "claim-events.jsonl"
         path.parent.mkdir(parents=True, exist_ok=True)
