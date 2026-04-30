@@ -280,7 +280,7 @@ def _flags_path(base: Path, arena_slug: str) -> Path:
 
 
 def read_narrative_flags(arena_slug: str, base: Path | None = None, include_dismissed: bool = False) -> list[dict[str, Any]]:
-    root = Path(base) if base is not None else cfg.BASE_PATH
+    root = Path(base) if base is not None else cfg.ARENAS_DIR.parent
     path = _flags_path(root, arena_slug)
     if not path.exists():
         return []

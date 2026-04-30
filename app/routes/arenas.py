@@ -7,6 +7,7 @@ from app import config as cfg
 from app.config import APP_TEMPLATES_DIR
 from app.io import arenas as arenas_io
 from app.io import industry as industry_io
+from app.io import narrative_proposals as narrative_io
 
 router = APIRouter(prefix="/arenas", tags=["arenas"])
 templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
@@ -42,6 +43,11 @@ def detail(request: Request, slug: str):
     participants = data["definition_fm"].get("participants") or []
     industry_slug = data["definition_fm"].get("industry")
 
+    narrative_flags = narrative_io.read_narrative_flags(slug)
+    flags_by_dimension = {}
+    for flag in narrative_flags:
+        flags_by_dimension.setdefault(flag.get("dimension"), []).append(flag)
+
     parsed = arenas_io.parse_notes(slug)
     by_ticker = parsed["by_ticker"]
 
@@ -70,11 +76,14 @@ def detail(request: Request, slug: str):
             continue
         md = arenas_io.read_narrative(slug, dim)
         has_content = md.strip() and "### 来源" in md
+        dim_flags = flags_by_dimension.get(dim, [])
         narratives.append({
             "dim": dim,
             "label": _ARENA_DIM_LABEL.get(dim, dim),
             "has_content": bool(has_content),
             "html": _md.markdown(md, extensions=["tables", "fenced_code"]) if md else "",
+            "flags": dim_flags,
+            "needs_review": bool(dim_flags),
         })
 
     # Industry back-link: arena.definition_fm.industry → /industries/{slug}
