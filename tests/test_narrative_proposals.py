@@ -304,3 +304,44 @@ def test_flags_path_for_arena_and_company(tmp_path):
 
     company_flags = flags_path(tmp_path, "company", "SSE_600519")
     assert company_flags == tmp_path / "companies" / "SSE_600519" / "narrative-flags.jsonl"
+
+from app.io.narrative_proposals import (
+    CLAIM_DIMENSION_TO_INDUSTRY_NARRATIVE,
+)
+
+
+def test_scope_configs_cover_industry():
+    from app.io.narrative_proposals import SCOPE_CONFIGS, narrative_dims_for_scope
+    assert "industry" in SCOPE_CONFIGS
+    dims = narrative_dims_for_scope("industry")
+    assert "definition" not in dims
+    from app import config as cfg
+    assert set(dims) == {d for d in cfg.INDUSTRY_DIMENSIONS if d != "definition"}
+
+
+def test_dimension_path_for_industry(tmp_path):
+    from app.io.narrative_proposals import dimension_path
+    path = dimension_path(tmp_path, "industry", "cn-power-equipment", "market_size")
+    assert path == tmp_path / "industries" / "cn-power-equipment" / "market-size.md"
+
+    path2 = dimension_path(tmp_path, "industry", "cn-power-equipment", "value_chain")
+    assert path2.name == "value-chain.md"
+
+
+def test_flags_path_for_industry(tmp_path):
+    from app.io.narrative_proposals import flags_path
+    path = flags_path(tmp_path, "industry", "cn-power-equipment")
+    assert path == tmp_path / "industries" / "cn-power-equipment" / "narrative-flags.jsonl"
+
+
+def test_industry_dimension_mapping_spot_checks():
+    from app.io.narrative_proposals import map_claim_dimension
+    assert map_claim_dimension("market_size", "industry") == "market_size"
+    assert map_claim_dimension("stage_gate", "industry") == "lifecycle"
+    assert map_claim_dimension("supply_chain", "industry") == "value_chain"
+    assert map_claim_dimension("competition", "industry") == "competition"
+    assert map_claim_dimension("regulation", "industry") == "regulation"
+    assert map_claim_dimension("benchmark", "industry") == "benchmark"
+    assert map_claim_dimension("risk", "industry") == "risks"
+    assert map_claim_dimension("valuation", "industry") == "valuation"
+    assert CLAIM_DIMENSION_TO_INDUSTRY_NARRATIVE["thesis"] == "drivers"
