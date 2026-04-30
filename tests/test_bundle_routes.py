@@ -112,3 +112,60 @@ def test_bundle_detail_renders_all_major_sections(client, tmp_path):
 def test_bundle_detail_404_for_unknown_source(client):
     r = client.get("/bundles/missing")
     assert r.status_code == 404
+
+
+def _write_two_registry_entries(tmp_path):
+    """Write two registry entries with different source_type and institution values."""
+    entry_a = _registry_entry("source-a", source_type="industry_report")
+    entry_a["institution"] = "中银证券"
+    entry_a["touched"]["industries"] = ["cn-nuclear-fusion"]
+
+    entry_b = _registry_entry("source-b", source_type="company_report")
+    entry_b["institution"] = "海通证券"
+    entry_b["touched"]["industries"] = ["cn-ev"]
+
+    registry_path = tmp_path / "data" / "bundle_registry.jsonl"
+    registry_path.parent.mkdir(parents=True, exist_ok=True)
+    registry_path.write_text(
+        json.dumps(entry_a) + "\n" + json.dumps(entry_b) + "\n",
+        encoding="utf-8",
+    )
+
+    # Write minimal bundle files so detail routes wouldn't crash (not needed here
+    # but keeps the registry consistent).
+    for entry in (entry_a, entry_b):
+        bundle_path = tmp_path / entry["bundle_path"]
+        bundle_path.parent.mkdir(parents=True, exist_ok=True)
+        bundle_path.write_text(json.dumps(_bundle_data(), ensure_ascii=False), encoding="utf-8")
+
+    return entry_a, entry_b
+
+
+def test_bundles_filter_by_type_returns_matching_and_excludes_other(client, tmp_path):
+    """?type= filter should return only the matching source_type entry."""
+    _write_two_registry_entries(tmp_path)
+
+    r = client.get("/bundles?type=industry_report")
+    assert r.status_code == 200
+    assert "source-a" in r.text
+    assert "source-b" not in r.text
+
+
+def test_bundles_filter_by_institution_returns_matching_and_excludes_other(client, tmp_path):
+    """?institution= filter should return only the matching institution entry."""
+    _write_two_registry_entries(tmp_path)
+
+    r = client.get("/bundles?institution=海通证券")
+    assert r.status_code == 200
+    assert "source-b" in r.text
+    assert "source-a" not in r.text
+
+
+def test_bundles_filter_by_industry_returns_matching_and_excludes_other(client, tmp_path):
+    """?industry= filter should return only entries touching that industry."""
+    _write_two_registry_entries(tmp_path)
+
+    r = client.get("/bundles?industry=cn-nuclear-fusion")
+    assert r.status_code == 200
+    assert "source-a" in r.text
+    assert "source-b" not in r.text

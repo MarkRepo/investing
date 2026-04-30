@@ -87,3 +87,25 @@ def test_source_file_embeds_pdf(client, tmp_path):
 def test_source_file_404_for_unknown_source(client):
     r = client.get("/sources/missing/file")
     assert r.status_code == 404
+
+
+def test_source_file_404_when_file_missing_from_disk(client, tmp_path):
+    """Registry entry exists but source_file_path points to a nonexistent file."""
+    entry = {
+        "source_id": "source-1",
+        "sha8": "abcdef12",
+        "source_type": "industry_report",
+        "institution": "中银证券",
+        "publish_date": "2025-04-10",
+        "bundle_path": "data/bundles/source-1.json",
+        "source_file_path": "data/sources/source-1/missing.pdf",
+        "ingested_at": "2026-04-30T08:15:00Z",
+        "touched": {"industries": [], "arenas": [], "companies": []},
+    }
+    registry_path = tmp_path / "data" / "bundle_registry.jsonl"
+    registry_path.parent.mkdir(parents=True, exist_ok=True)
+    registry_path.write_text(json.dumps(entry) + "\n", encoding="utf-8")
+    # Deliberately do NOT create the source file on disk.
+
+    r = client.get("/sources/source-1/file")
+    assert r.status_code == 404
