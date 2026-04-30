@@ -3,7 +3,7 @@
 {% block content %}
 <h1>行业维度</h1>
 <p class="hint">
-  三层知识系统的"行业"层：每个 slug 对应 11 维 narrative + observations.jsonl + figure_contexts。
+  三层知识系统的"行业"层：每个 slug 对应 11 维 narrative + ClaimRegistry claims + figure_contexts。
   ingest 行业研报（<code>/ingest</code>）或公司年报时自动生成、扩展，不手工编辑。
 </p>
 
@@ -16,7 +16,6 @@
       <th>范围</th>
       <th>arena</th>
       <th>ticker</th>
-      <th>观察</th>
       <th>last_updated</th>
       <th></th>
     </tr>
@@ -29,7 +28,6 @@
       <td class="hint">{{ r.scope or '-' }}</td>
       <td>{{ r.linked_arenas_count }}</td>
       <td>{{ r.linked_tickers_count }}</td>
-      <td>{{ r.observations_count }}</td>
       <td class="hint">{{ r.last_updated or '-' }}</td>
       <td><a href="/industries/{{ r.slug }}">打开</a></td>
     </tr>

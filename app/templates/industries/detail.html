@@ -58,36 +58,6 @@
   </details>
 {% endfor %}
 
-<h2>观察（observations · 最近 {{ observations|length }} / {{ observations_total }}）
-  <a href="/industries/{{ slug }}/observations" class="hint" style="font-size: 0.7em; margin-left: 0.5em;">→ 跨源聚合</a>
-</h2>
-{% if observations %}
-<table>
-  <thead>
-    <tr>
-      <th>字段</th>
-      <th>值</th>
-      <th>时段</th>
-      <th>confidence</th>
-      <th>来源</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for o in observations %}
-    <tr>
-      <td><code>{{ o.field or '-' }}</code><br><span class="hint">{{ o.dimension or '' }}</span></td>
-      <td>{{ o.value if o.value is not none else (o.claim_text or '-') }}{% if o.unit %} {{ o.unit }}{% endif %}</td>
-      <td class="hint">{{ o.timeframe or '-' }}</td>
-      <td>{{ o.confidence or '-' }}</td>
-      <td class="hint">{{ o.source_id or '-' }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% else %}
-<p class="hint"><em>尚无 observation。</em></p>
-{% endif %}
-
 <h2>图表上下文（figure_contexts）</h2>
 {% if figure_contexts %}
   <p class="hint">共 {{ figure_contexts|length }} 条。</p>

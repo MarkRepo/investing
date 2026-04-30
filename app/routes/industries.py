@@ -22,8 +22,6 @@ templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
 @router.get("")
 def index(request: Request):
     rows = industry_io.list_industries()
-    for r in rows:
-        r["observations_count"] = len(industry_io.read_observations(r["slug"]))
     return templates.TemplateResponse(
         request,
         "industries/index.html",
@@ -37,10 +35,6 @@ def industry_detail(request: Request, slug: str):
         meta = industry_io.read_meta(slug)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f"industry {slug!r} not found")
-
-    observations = industry_io.read_observations(slug)
-    # Sort observations by added_at desc; rows lacking added_at sink to bottom.
-    observations.sort(key=lambda r: r.get("added_at") or "", reverse=True)
 
     industry_flags = narrative_io.read_narrative_flags("industry", slug, base=cfg.INDUSTRIES_DIR.parent)
     flags_by_dimension = {}
@@ -91,51 +85,10 @@ def industry_detail(request: Request, slug: str):
         {
             "slug": slug,
             "meta": meta,
-            "observations": observations[:50],
-            "observations_total": len(observations),
             "narratives": narratives,
             "figure_contexts": figure_contexts,
             "linked_arenas": arena_meta,
             "linked_tickers": linked_tickers,
-        },
-    )
-
-
-@router.get("/{slug}/observations")
-def industry_observations(request: Request, slug: str):
-    """Cross-source aggregation view (spec §6.2).
-
-    Renders structured facts grouped by (dimension, field, timeframe[, segment])
-    with median/range/spread stats; spread > 30% is flagged red.
-    """
-    try:
-        meta = industry_io.read_meta(slug)
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail=f"industry {slug!r} not found")
-
-    agg = industry_io.aggregate_observations(slug)
-    # Tab organization: by dimension; within a dim bundle numeric + segment + enum groups.
-    groups_by_dim: dict[str, dict] = {}
-    for kind in ("numeric", "segment", "enum"):
-        for g in agg[kind]:
-            dim = g["dimension"]
-            bucket = groups_by_dim.setdefault(dim, {"numeric": [], "segment": [], "enum": []})
-            bucket[kind].append(g)
-    # Order dims per INDUSTRY_DIMENSIONS; include only dims with any group.
-    ordered_dims = [d for d in cfg.INDUSTRY_DIMENSIONS if d in groups_by_dim]
-    divergent_count = sum(1 for g in agg["numeric"] + agg["segment"] if g["divergent"])
-
-    return templates.TemplateResponse(
-        request,
-        "industries/observations.html",
-        {
-            "slug": slug,
-            "meta": meta,
-            "ordered_dims": ordered_dims,
-            "groups_by_dim": groups_by_dim,
-            "dim_labels": _INDUSTRY_DIM_LABEL,
-            "n_groups": sum(len(agg[k]) for k in ("numeric", "segment", "enum")),
-            "n_divergent": divergent_count,
         },
     )
 
