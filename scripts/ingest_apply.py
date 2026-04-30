@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from app.io.archive_mapping import suggest_archive_target
 from app.io.claim_registry import ClaimRegistry, build_evidence_entry
 
 VALID_DECISIONS = {"attach", "new", "split", "skip"}
@@ -98,15 +99,21 @@ def _apply_attach(registry: ClaimRegistry, bundle: dict[str, Any], source_id: st
 def derive_archive_writes(bundle: dict[str, Any], source_id: str) -> dict[str, Any]:
     writes = []
     blocks = {block.get("id"): block for block in bundle.get("insight_blocks", []) or []}
+    source_digest = bundle.get("source_digest") or {}
     for fact in bundle.get("atomic_facts", []) or []:
         linked_block = blocks.get(fact.get("linked_block_id"), {})
+        suggested_target = suggest_archive_target(
+            source_digest.get("scope_type", "company"),
+            source_digest.get("scope_ref", ""),
+            linked_block.get("dimension_hint", ""),
+        )
         writes.append(
             {
                 "fact_id": fact.get("fact_id"),
                 "fact_payload": fact,
                 "linked_block": linked_block,
                 "linked_claim_ids": [],
-                "suggested_target": None,
+                "suggested_target": suggested_target,
                 "alternative_targets": [],
                 "decision": None,
                 "decision_reason": None,
