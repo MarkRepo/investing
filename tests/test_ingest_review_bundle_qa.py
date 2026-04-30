@@ -779,6 +779,20 @@ def test_arena_candidate_participants_must_match_company_candidates():
     )
 
 
+def test_arena_candidate_bare_ticker_without_market_prefix_is_rejected():
+    bundle = valid_bundle()
+    # 603011 is the bare ticker for a company_candidate with market=SSE, ticker=603011.
+    # Only MARKET_TICKER format (SSE_603011) should be accepted; bare ticker must be rejected.
+    bundle["arena_candidates"][0]["participant_tickers"] = ["603011"]
+
+    warnings = qa.check_arena_candidates(bundle)
+
+    assert any(
+        w["rule"] == "arena_candidate_participant_not_in_company_candidates" and w["severity"] == "error"
+        for w in warnings
+    )
+
+
 def test_high_confidence_arena_candidate_requires_two_blocks():
     bundle = valid_bundle()
     bundle["arena_candidates"][0]["confidence"] = "high"

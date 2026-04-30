@@ -750,15 +750,13 @@ def check_arena_candidates(bundle: dict) -> list[dict]:
         for block in bundle.get("insight_blocks", []) or []
         if block.get("id")
     }
-    # Build company_candidate_keys: both MARKET_TICKER and bare ticker
+    # Build company_candidate_keys: only MARKET_TICKER format (market_ticker)
     company_candidate_keys: set[str] = set()
     for candidate in bundle.get("company_candidates", []) or []:
         market = candidate.get("market")
         ticker = candidate.get("ticker")
         if market and ticker:
             company_candidate_keys.add(f"{market}_{ticker}")
-        if ticker:
-            company_candidate_keys.add(ticker)
 
     for idx, ac in enumerate(arena_candidates):
         ac_id = ac.get("candidate_id") or f"#{idx}"
@@ -783,7 +781,7 @@ def check_arena_candidates(bundle: dict) -> list[dict]:
                 ))
 
         for ticker_key in ac.get("participant_tickers") or []:
-            # Accept MARKET_TICKER format or bare ticker
+            # Require MARKET_TICKER format (e.g. SSE_603011)
             if ticker_key not in company_candidate_keys:
                 warnings.append(_qa_warning(
                     "arena_candidate_participant_not_in_company_candidates",

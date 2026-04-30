@@ -103,11 +103,12 @@ Phase 1 只产出可审核的中间结果，不写入 archive，不改写 indust
       "verification_questions": ["进入公司 archive 前必须验证的问题"]
     }
   ],
+  // 编辑注：tentative_slug 和 name 应代表竞争格局，而非单一公司名或 ticker——arena 是多方竞争关系的概念。
   "arena_candidates": [
     {
       "candidate_id": "ac-001",
-      "tentative_slug": "短蛇形 slug，不得是单一公司名",
-      "name": "竞争格局名称（≤20 字，不得以单一公司命名）",
+      "tentative_slug": "短蛇形 slug",
+      "name": "竞争格局名称（≤20 字）",
       "parent_industry_slug": "必填；所属行业的 slug（如 cn-nuclear-fusion）",
       "battleground_focus": "一句话说明竞争焦点是什么",
       "participant_tickers": ["MARKET_TICKER 格式，如 SSE_603011；必须对应 company_candidates 中的条目"],
@@ -182,8 +183,7 @@ Phase 1 只产出可审核的中间结果，不写入 archive，不改写 indust
 20. `arena_candidates[*].parent_industry_slug` 必填；所属行业的 slug 不能为空字符串。
 21. `arena_candidates[*].linked_block_ids` 必须全部指向本 bundle 中已有的 `insight_blocks[].id`。
 22. `arena_candidates[*].participant_tickers` 使用 `MARKET_TICKER` 格式（如 `SSE_603011`），且必须对应 `company_candidates` 中的条目；不能凭空填写不在 company_candidates 里的 ticker。
-23. `arena_candidates[*].tentative_slug` 和 `name` 不得是单一公司的名称或 ticker——arena 是竞争格局，必须代表多方竞争关系。
-24. `arena_candidates` 中 `confidence=high` 的条目至少要有 2 条 `linked_block_ids`；只有 1 条证据 block 时，降为 `medium`。
+23. `arena_candidates` 中 `confidence=high` 的条目至少要有 2 条 `linked_block_ids`；只有 1 条证据 block 时，降为 `medium`。
 
 【抽取顺序】
 1. 先读 `preprocess_metadata.extracted_pages`，记住低质量、图表重、图片重、表格重页面。
