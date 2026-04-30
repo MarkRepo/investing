@@ -57,6 +57,32 @@ CLAIM_DIMENSION_TO_COMPANY_NARRATIVE = {
     "judgment": "valuation",
 }
 
+CLAIM_DIMENSION_TO_INDUSTRY_NARRATIVE = {
+    "market_size": "market_size",
+    "tam": "market_size",
+    "lifecycle": "lifecycle",
+    "stage_gate": "lifecycle",
+    "value_chain": "value_chain",
+    "supply_chain": "value_chain",
+    "competition": "competition",
+    "competitive_position": "competition",
+    "participants": "competition",
+    "drivers": "drivers",
+    "catalysts": "drivers",
+    "technology": "technology",
+    "regulation": "regulation",
+    "benchmark": "benchmark",
+    "winning_variables": "benchmark",
+    "moat": "benchmark",
+    "risk": "risks",
+    "risks": "risks",
+    "scenario": "risks",
+    "valuation": "valuation",
+    "investment_view": "valuation",
+    "thesis": "drivers",
+    "judgment": "drivers",
+}
+
 
 @dataclass(frozen=True)
 class ScopeConfig:
@@ -81,6 +107,13 @@ SCOPE_CONFIGS: dict[str, ScopeConfig] = {
         mapping=CLAIM_DIMENSION_TO_COMPANY_NARRATIVE,
         top_dir="companies",
         narrative_subdir="narratives",
+    ),
+    "industry": ScopeConfig(
+        scope_type="industry",
+        narrative_dims=tuple(d for d in cfg.INDUSTRY_DIMENSIONS if d != "definition"),
+        mapping=CLAIM_DIMENSION_TO_INDUSTRY_NARRATIVE,
+        top_dir="industries",
+        narrative_subdir=None,
     ),
 }
 
