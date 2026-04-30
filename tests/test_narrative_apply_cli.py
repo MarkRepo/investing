@@ -1,8 +1,14 @@
 import json
+import os
+import subprocess
+import sys
 from argparse import Namespace
+from pathlib import Path
 
 from app.io.claim_registry import ClaimRegistry, build_evidence_entry
 from scripts import narrative_apply, narrative_propose
+
+_REPO_ROOT = Path(__file__).parent.parent
 
 
 def _seed_claim(tmp_path):
@@ -128,3 +134,47 @@ def test_narrative_apply_cli_applies_valid_file(tmp_path):
     assert rc == 0
     assert "医疗场景是主要验证路径。" in (arena_dir / "participants.md").read_text(encoding="utf-8")
     assert (tmp_path / "data" / "pending" / "archive" / pending.name).exists()
+
+
+def test_narrative_propose_accepts_scope_and_ref(tmp_path):
+    registry = ClaimRegistry(tmp_path)
+    evidence = build_evidence_entry(
+        source_id="source-1",
+        block_ids=["ib-001"],
+        fact_ids=["fact-001"],
+        direction="supports",
+        now="2026-04-30T12:00:00+00:00",
+    )
+    registry.create_claim(
+        claim_text="核聚变行业进入工程化阶段",
+        scope_type="industry",
+        scope_ref="cn-nuclear-fusion",
+        claim_type="judgment",
+        dimension_hint="lifecycle",
+        confidence="medium_high",
+        as_of="2025-12-31",
+        evidence=evidence,
+        trigger="created",
+        trigger_ref="seed",
+        now="2026-04-30T12:00:00+00:00",
+    )
+    out_path = tmp_path / "data" / "pending" / "narrative-proposals-source-1.json"
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(_REPO_ROOT / "scripts" / "narrative_propose.py"),
+            "--source-id", "source-1",
+            "--scope", "industry",
+            "--ref", "cn-nuclear-fusion",
+            "--registry-base", str(tmp_path),
+            "--out", str(out_path),
+        ],
+        capture_output=True,
+        text=True,
+        cwd=str(_REPO_ROOT),
+        env={**os.environ, "PYTHONPATH": str(_REPO_ROOT)},
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert out_path.exists()

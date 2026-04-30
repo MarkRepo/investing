@@ -1,9 +1,15 @@
 import json
+import os
+import subprocess
+import sys
 from argparse import Namespace
+from pathlib import Path
 
 from app.io.claim_registry import ClaimRegistry, build_evidence_entry
 from app.io.narrative_proposals import read_narrative_flags, scan_narrative_flags
 from scripts import narrative_flags
+
+_REPO_ROOT = Path(__file__).parent.parent
 
 
 def _claim(registry, *, status="active", direction="supports"):
@@ -125,3 +131,44 @@ def test_narrative_flags_cli(tmp_path):
     rows = [json.loads(line) for line in (tmp_path / "arenas" / "cn-bci-industrialization" / "narrative-flags.jsonl").read_text(encoding="utf-8").splitlines()]
     assert len(rows) == 1
     assert rows[0]["reason"] == "supporting claim retired"
+
+
+def test_narrative_flags_accepts_scope_and_ref(tmp_path):
+    registry = ClaimRegistry(tmp_path)
+    evidence = build_evidence_entry(
+        source_id="source-1",
+        block_ids=["ib-001"],
+        fact_ids=["fact-001"],
+        direction="supports",
+        now="2026-04-30T12:00:00+00:00",
+    )
+    registry.create_claim(
+        claim_text="核聚变行业进入工程化阶段",
+        scope_type="industry",
+        scope_ref="cn-nuclear-fusion",
+        claim_type="judgment",
+        dimension_hint="lifecycle",
+        confidence="medium_high",
+        as_of="2025-12-31",
+        evidence=evidence,
+        trigger="created",
+        trigger_ref="seed",
+        now="2026-04-30T12:00:00+00:00",
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(_REPO_ROOT / "scripts" / "narrative_flags.py"),
+            "--source-id", "source-1",
+            "--scope", "industry",
+            "--ref", "cn-nuclear-fusion",
+            "--registry-base", str(tmp_path),
+        ],
+        capture_output=True,
+        text=True,
+        cwd=str(_REPO_ROOT),
+        env={**os.environ, "PYTHONPATH": str(_REPO_ROOT)},
+    )
+
+    assert result.returncode == 0, result.stderr
