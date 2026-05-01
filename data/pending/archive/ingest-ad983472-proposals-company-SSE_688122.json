@@ -1,0 +1,46 @@
+{
+  "source_id": "行研-中银证券-2025-04-10-ad983472",
+  "generated_at": "2026-05-01T07:15:49.758279+00:00",
+  "proposal_version": "phase3a-v1",
+  "scope_type": "company",
+  "scope_ref": "SSE_688122",
+  "proposals": [
+    {
+      "proposal_id": "np-001",
+      "scope_type": "company",
+      "scope_ref": "SSE_688122",
+      "dimension": "moat",
+      "title": "西部超导是ITER唯一中国低温超导线材供应商，NbTi全流程独家",
+      "body": "西部超导（688122）在聚变超导线材环节建立了国内无竞争者的排他性地位，护城河来源于三个相互强化的层面。\n\n第一是认证壁垒。公司是 ITER 低温超导线材在中国的唯一供应商，且完成了全部采购量的交付，这一资质获得史上规模最大聚变工程的背书，后来者短期内无法复制。第二是工艺壁垒。公司是全球唯一实现从 NbTi 铸锭→棒材→超导线材→超导磁体全流程商业化生产的企业，MCZ 用磁体已批量供货，SIEMENS 和 GE 的合格供应商资质进一步印证工艺水平达到国际医疗级标准。第三是机构背景。公司前身为西北有色金属研究院超导材料研究所，背靠陕西省政府实控的科研体系，超导领域技术积累逾 40 年，研发体系难以被民营或跨界资本在短期内赶超。\n\n值得注意的是：公司超导线材收入 2023 年约占营收 23.7%，军工钛合金仍占约 60%，聚变相关超导业务对整体业绩的拉动依然从属于军品景气度。此外，高温超导（REBCO）路线的兴起对低温超导（NbTi/Nb₃Sn）构成长期替代压力，公司是否能顺利向高温超导体系迁移，是中长期最大的战略验证点。",
+      "supported_by_claims": [
+        "clm-company-0001"
+      ],
+      "source_ids": [
+        "行研-中银证券-2025-04-10-ad983472"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-company-0001",
+          "claim_text": "西部超导凭借 ITER 中国唯一低温超导线材供应商与 NbTi 全流程能力，在聚变超导线材环节具有排他性地位。",
+          "confidence": "high",
+          "as_of": "2025-04-10",
+          "evidence_source_ids": [
+            "行研-中银证券-2025-04-10-ad983472"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 护城河与竞争策略 · SSE_688122\n\n*SSE_688122 · 维度: moat*\n\n\n### 来源 中银证券 2025-04-10 (sha8=ad983472)\nsource_id: 行研-中银证券-2025-04-10-ad983472\n\n全球唯一低温超导全流程企业，完成ITER超导线材全部交付任务；是SIEMENS和GE合格供应商，MCZ用磁体已批量生产；高端钛合金国产化率持续提升，商用飞机、军用战机、航空发动机均有成功应用；背靠西北有色金属研究院（陕西省政府实控），技术积累40余年；2015-2024年复合增长率达20.19%。\n",
+      "decision": "approve",
+      "decision_reason": "ITER唯一供应商资质+NbTi全流程独家能力是聚变超导线材赛道中确定性最高的护城河，同时指出高温超导路线替代风险，判断均衡。",
+      "edited_title": null,
+      "edited_body": null
+    }
+  ],
+  "unmapped_claims": [],
+  "summary_stats": {
+    "total_proposals": 1,
+    "dimension_count": 1,
+    "unsupported_candidates_skipped": 0,
+    "scope_count": 1
+  }
+}

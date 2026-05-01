@@ -165,3 +165,64 @@ def test_ingest_match_writes_auto_and_pending_decisions(tmp_path):
 
     assert auto_data["decisions_required"][0]["confidence"] == "high"
     assert pending_data["decisions_required"][0]["confidence"] == "medium"
+
+    # high-confidence row with no top_matches → auto-approved as "new"
+    auto_row = auto_data["decisions_required"][0]
+    assert auto_row["top_matches"] == []
+    assert auto_row["decision"] == "new"
+    assert auto_row["decision_reason"] is not None
+
+
+def test_auto_apply_no_decision_when_top_matches_exist(tmp_path):
+    """High-confidence candidate with existing matches must NOT be auto-approved."""
+    registry = ClaimRegistry(tmp_path)
+    evidence = build_evidence_entry(
+        source_id="src-old",
+        block_ids=["ib-old"],
+        fact_ids=["fact-old"],
+        direction="supports",
+        now="2026-04-30T12:00:00+00:00",
+    )
+    registry.create_claim(
+        claim_text="高置信度声明",
+        scope_type="company",
+        scope_ref="SSE_600519",
+        claim_type="judgment",
+        dimension_hint="moat",
+        confidence="high",
+        as_of="2024-12-31",
+        evidence=evidence,
+        trigger="created",
+        trigger_ref="seed",
+        now="2026-04-30T12:00:00+00:00",
+    )
+    bundle = {
+        "source_digest": {"source_id": "src-match", "source_date": "2024-12-31"},
+        "claim_candidates": [
+            {
+                "candidate_id": "cc-001",
+                "claim_text": "高置信度声明",
+                "scope_type": "company",
+                "scope_ref": "SSE_600519",
+                "claim_type": "judgment",
+                "dimension_hint": "moat",
+                "confidence": "high",
+                "as_of": "2024-12-31",
+                "direction_on_source": "supports",
+                "supporting_block_ids": ["ib-001"],
+            }
+        ],
+    }
+    bundle_path = tmp_path / "bundle.json"
+    bundle_path.write_text(json.dumps(bundle), encoding="utf-8")
+    auto_path = tmp_path / "auto.json"
+
+    rc = ingest_match.cmd_match(
+        Namespace(bundle=str(bundle_path), registry_base=str(tmp_path), auto_out=str(auto_path))
+    )
+    assert rc == 0
+    auto_data = json.loads(auto_path.read_text(encoding="utf-8"))
+    auto_row = auto_data["decisions_required"][0]
+    assert len(auto_row["top_matches"]) > 0
+    # must NOT be auto-approved when there are existing matches to consider
+    assert auto_row["decision"] is None

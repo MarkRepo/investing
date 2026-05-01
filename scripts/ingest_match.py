@@ -99,6 +99,10 @@ def cmd_match(args: argparse.Namespace) -> int:
         print(f"✓ match file written to {out_arg}")
     if auto_out_arg:
         auto_rows = [r for r in rows if r.get("confidence") == "high"]
+        for r in auto_rows:
+            if not r["top_matches"]:
+                r["decision"] = "new"
+                r["decision_reason"] = "auto-approved: high confidence, no existing claim matches"
         _write_match(match_file, Path(auto_out_arg), auto_rows)
         print(f"✓ auto match file written to {auto_out_arg}")
     if pending_out_arg:

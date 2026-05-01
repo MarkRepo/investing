@@ -1,51 +1,209 @@
 {% extends "base.html" %}
-{% block title %}bundle {{ entry.source_id }}{% endblock %}
+{% block title %}{{ entry.source_id }}{% endblock %}
 {% block content %}
-<h1>Bundle: <code>{{ entry.source_id }}</code></h1>
+<style>
+.bundle-meta { display:flex; gap:2rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+.bundle-meta dt { color:var(--fg-muted, #888); font-size:.8rem; margin-bottom:.15rem; }
+.bundle-meta dd { margin:0 0 .5rem; }
+.badge { display:inline-block; padding:.1rem .4rem; border-radius:3px; font-size:.75rem; font-weight:600; background:var(--bg-alt,#f4f4f4); }
+.badge-ib { background:#e8f4fd; color:#1a6090; }
+.badge-dim { background:#f0f4e8; color:#3a5a10; }
+.badge-scope { background:#fdf0e8; color:#904010; }
+.badge-conf { background:#f4eafd; color:#5a10a0; }
+.block-card { border:1px solid var(--border,#e0e0e0); border-radius:6px; padding:1rem; margin-bottom:1rem; }
+.block-card h4 { margin:.25rem 0 .5rem; }
+.block-card .summary { color:var(--fg-muted,#555); margin:.25rem 0; }
+.reasoning-chain { padding-left:1.2rem; margin:.25rem 0; }
+.reasoning-chain li:last-child { font-style:italic; color:var(--fg-accent,#1a6090); }
+.facts-list { font-size:.85rem; padding-left:1.2rem; }
+.facts-list li { margin:.3rem 0; }
+.evidence-quote { color:var(--fg-muted,#777); font-size:.8rem; border-left:2px solid #ccc; padding-left:.5rem; margin-top:.2rem; }
+.synthesis-section { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.synthesis-box h4 { font-size:.85rem; text-transform:uppercase; letter-spacing:.05em; color:var(--fg-muted,#888); margin:.5rem 0 .25rem; }
+.synthesis-box ul { padding-left:1.2rem; margin:.25rem 0; font-size:.9rem; }
+.gate-row { display:flex; align-items:flex-start; gap:.5rem; margin:.5rem 0; }
+.gate-icon { font-size:1.1rem; flex-shrink:0; }
+.claims-table, .companies-table { width:100%; font-size:.88rem; }
+.claims-table th, .companies-table th { text-align:left; font-weight:600; padding:.3rem .5rem; background:var(--bg-alt,#f8f8f8); }
+.claims-table td, .companies-table td { padding:.3rem .5rem; border-top:1px solid var(--border,#eee); vertical-align:top; }
+.section-h2 { border-bottom:2px solid var(--border,#e0e0e0); padding-bottom:.3rem; margin-top:2rem; }
+</style>
 
+<h1>{{ entry.source_id }}</h1>
 <p>
-  <a href="/bundles">← 所有 Bundle</a>
-  {% if entry.source_file_path %}
-  · <a href="/sources/{{ entry.source_id }}/file">查看原文</a>
-  {% endif %}
+  <a href="/bundles">← 所有研报</a>
+  {% if entry.source_file_path %} · <a href="/sources/{{ entry.source_id }}/file">查看原文 PDF</a>{% endif %}
 </p>
 
-<table>
+{# ── Meta ───────────────────────────────────────────────── #}
+<dl class="bundle-meta">
+  <div><dt>类型</dt><dd>{{ bundle.source_digest.source_type or '-' }}</dd></div>
+  <div><dt>机构</dt><dd>{{ bundle.source_digest.source_id.split('-')[1] if '-' in bundle.source_digest.source_id else (entry.institution or '-') }}</dd></div>
+  <div><dt>日期</dt><dd>{{ bundle.source_digest.source_date or '-' }}</dd></div>
+  <div><dt>质量</dt><dd>{{ bundle.source_digest.source_quality or '-' }}</dd></div>
+  <div><dt>证据强度</dt><dd>{{ bundle.source_digest.evidence_strength or '-' }}</dd></div>
+  <div><dt>入库时间</dt><dd>{{ entry.ingested_at[:10] if entry.ingested_at else '-' }}</dd></div>
+</dl>
+
+{% if bundle.source_digest.limitations %}
+<p class="hint">⚠ 局限性：{{ bundle.source_digest.limitations | join('；') }}</p>
+{% endif %}
+
+{# ── Synthesis ───────────────────────────────────────────── #}
+<h2 class="section-h2">结论综述</h2>
+<p><strong>{{ bundle.synthesis.one_sentence }}</strong></p>
+<div class="synthesis-section">
+  {% if bundle.synthesis.what_we_know %}
+  <div class="synthesis-box">
+    <h4>已知</h4>
+    <ul>{% for x in bundle.synthesis.what_we_know %}<li>{{ x }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+  {% if bundle.synthesis.what_is_plausible %}
+  <div class="synthesis-box">
+    <h4>可推断</h4>
+    <ul>{% for x in bundle.synthesis.what_is_plausible %}<li>{{ x }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+  {% if bundle.synthesis.what_needs_verification %}
+  <div class="synthesis-box">
+    <h4>待验证</h4>
+    <ul>{% for x in bundle.synthesis.what_needs_verification %}<li>{{ x }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+  {% if bundle.synthesis.cannot_conclude %}
+  <div class="synthesis-box">
+    <h4>不能得出</h4>
+    <ul>{% for x in bundle.synthesis.cannot_conclude %}<li>{{ x }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+</div>
+{% if bundle.synthesis.investment_questions %}
+<h4 style="margin-top:1rem">投资研究问题</h4>
+<ul>{% for x in bundle.synthesis.investment_questions %}<li>{{ x }}</li>{% endfor %}</ul>
+{% endif %}
+
+{# ── Stage Gates ─────────────────────────────────────────── #}
+{% if bundle.stage_gates %}
+<h2 class="section-h2">判断门槛</h2>
+{% for g in bundle.stage_gates %}
+<div class="gate-row">
+  <span class="gate-icon">{{ '✅' if g.crossed else '⬜' }}</span>
+  <div>
+    <strong>{{ g.title }}</strong>
+    <span class="badge">{{ g.gate_type }}</span>
+    {% if not g.crossed and g.what_would_cross_it %}
+    <div class="hint" style="font-size:.85rem;margin-top:.2rem">需要：{{ g.what_would_cross_it | join('；') }}</div>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+
+{# ── Insight Blocks ──────────────────────────────────────── #}
+<h2 class="section-h2">洞察块（{{ bundle.insight_blocks | length }}）</h2>
+{% for ib in bundle.insight_blocks %}
+<div class="block-card">
+  <div>
+    <span class="badge badge-ib">{{ ib.id }}</span>
+    <span class="badge badge-dim">{{ ib.block_type }}</span>
+    <span class="badge">{{ ib.archive_routing_hints.dimension_hint }}</span>
+    <span class="badge">{{ ib.evidence_strength }}</span>
+    {% if ib.source_page_range %}<span class="badge hint">p.{{ ib.source_page_range }}</span>{% endif %}
+  </div>
+  <h4>{{ ib.title }}</h4>
+  <p class="summary">{{ ib.summary }}</p>
+  {% if ib.reasoning_chain %}
+  <ol class="reasoning-chain">
+    {% for r in ib.reasoning_chain %}<li>{{ r }}</li>{% endfor %}
+  </ol>
+  {% endif %}
+  {# Facts for this block #}
+  {% set block_facts = bundle.atomic_facts | selectattr('linked_block_id', 'equalto', ib.id) | list %}
+  {% if block_facts %}
+  <ul class="facts-list">
+    {% for f in block_facts %}
+    <li>
+      <span class="badge" style="font-size:.7rem">{{ f.fact_id }}</span>
+      <span class="badge badge-conf">{{ f.confidence }}</span>
+      {{ f.fact_text }}
+      <div class="evidence-quote">「{{ f.evidence_quote }}」</div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endfor %}
+
+{# ── Claim Candidates ────────────────────────────────────── #}
+<h2 class="section-h2">命题候选（{{ bundle.claim_candidates | length }}）</h2>
+<table class="claims-table">
+  <thead>
+    <tr><th>ID</th><th>命题</th><th>范围</th><th>类型</th><th>维度</th><th>置信度</th><th>方向</th></tr>
+  </thead>
   <tbody>
-    <tr><th>source_type</th><td>{{ entry.source_type or '-' }}</td></tr>
-    <tr><th>institution</th><td>{{ entry.institution or '-' }}</td></tr>
-    <tr><th>publish_date</th><td>{{ entry.publish_date or '-' }}</td></tr>
-    <tr><th>ingested_at</th><td>{{ entry.ingested_at or '-' }}</td></tr>
-    <tr><th>bundle_path</th><td><code>{{ entry.bundle_path or '-' }}</code></td></tr>
-    <tr><th>source_file_path</th><td><code>{{ entry.source_file_path or '-' }}</code></td></tr>
+  {% for cc in bundle.claim_candidates %}
+  <tr>
+    <td><code>{{ cc.candidate_id }}</code></td>
+    <td>{{ cc.claim_text }}</td>
+    <td><span class="badge badge-scope">{{ cc.scope_type }}</span> {{ cc.scope_ref }}</td>
+    <td>{{ cc.claim_type }}</td>
+    <td>{{ cc.dimension_hint }}</td>
+    <td><span class="badge badge-conf">{{ cc.confidence }}</span></td>
+    <td>{{ cc.direction_on_source }}</td>
+  </tr>
+  {% endfor %}
   </tbody>
 </table>
 
-<h2>source_digest</h2>
-<pre>{{ bundle.source_digest | tojson(indent=2) }}</pre>
+{# ── Company Candidates ──────────────────────────────────── #}
+{% if bundle.company_candidates %}
+<h2 class="section-h2">公司候选（{{ bundle.company_candidates | length }}）</h2>
+<table class="companies-table">
+  <thead>
+    <tr><th>Ticker</th><th>公司</th><th>敞口类型</th><th>置信度</th><th>待验证</th></tr>
+  </thead>
+  <tbody>
+  {% for co in bundle.company_candidates %}
+  <tr>
+    <td><code>{{ co.market }}_{{ co.ticker }}</code></td>
+    <td>{{ co.name or '-' }}</td>
+    <td>{{ co.exposure_type }}</td>
+    <td><span class="badge badge-conf">{{ co.confidence }}</span></td>
+    <td class="hint" style="font-size:.8rem">{{ co.verification_questions | join('；') if co.verification_questions else '-' }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
 
-<h2>insight_blocks</h2>
-<pre>{{ bundle.insight_blocks | tojson(indent=2) }}</pre>
+{# ── Arena Candidates ────────────────────────────────────── #}
+{% if bundle.arena_candidates %}
+<h2 class="section-h2">竞技场候选（{{ bundle.arena_candidates | length }}）</h2>
+{% for ac in bundle.arena_candidates %}
+<div class="block-card">
+  <div>
+    <span class="badge">{{ ac.candidate_id }}</span>
+    <span class="badge badge-conf">{{ ac.confidence }}</span>
+    <code style="font-size:.8rem">{{ ac.tentative_slug }}</code>
+  </div>
+  <h4>{{ ac.name }}</h4>
+  <p class="summary">{{ ac.battleground_focus }}</p>
+  {% if ac.participant_tickers %}
+  <div style="font-size:.85rem">参与者：{{ ac.participant_tickers | join('、') }}</div>
+  {% endif %}
+</div>
+{% endfor %}
+{% endif %}
 
-<h2>atomic_facts</h2>
-<pre>{{ bundle.atomic_facts | tojson(indent=2) }}</pre>
-
-<h2>synthesis</h2>
-<pre>{{ bundle.synthesis | tojson(indent=2) }}</pre>
-
-<h2>stage_gates</h2>
-<pre>{{ bundle.stage_gates | tojson(indent=2) }}</pre>
-
-<h2>claim_candidates</h2>
-<pre>{{ bundle.claim_candidates | tojson(indent=2) }}</pre>
-
-<h2>company_candidates</h2>
-<pre>{{ bundle.company_candidates | tojson(indent=2) }}</pre>
-
-<h2>arena_candidates</h2>
-<pre>{{ bundle.arena_candidates | tojson(indent=2) }}</pre>
-
-<h2>schema_fit_review</h2>
-<pre>{{ bundle.schema_fit_review | tojson(indent=2) }}</pre>
+{# ── Schema Fit ──────────────────────────────────────────── #}
+{% if bundle.schema_fit_review %}
+<h2 class="section-h2">Schema 适配评估</h2>
+<p>适配：<strong>{{ '是' if bundle.schema_fit_review.fits_current_schema else '否' }}</strong></p>
+{% if bundle.schema_fit_review.notes %}<p>{{ bundle.schema_fit_review.notes }}</p>{% endif %}
+{% if bundle.schema_fit_review.missing_schema_fields %}
+<p>缺失字段类型：{{ bundle.schema_fit_review.missing_schema_fields | join('；') }}</p>
+{% endif %}
+{% endif %}
 
 {% endblock %}
