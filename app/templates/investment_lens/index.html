@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}投资决策视图{% endblock %}
+{% block content %}
+<h1>投资决策视图</h1>
+<p class="hint">从 bundle 综述、累积 claim 和 archive 叙事聚合的决策面投影。</p>
+
+<section class="lens-index-section">
+  <h2>行业 <span class="hint">8 维</span></h2>
+  <ul class="lens-index-list">
+    {% for ind in industries %}
+    <li><a href="/lens/industry/{{ ind.slug }}">{{ ind.name }}</a> <span class="hint">{{ ind.slug }}</span></li>
+    {% else %}
+    <li class="hint">暂无行业</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="lens-index-section">
+  <h2>Arena <span class="hint">7 维</span></h2>
+  <ul class="lens-index-list">
+    {% for ar in arenas %}
+    <li><a href="/lens/arena/{{ ar.slug }}">{{ ar.name or ar.slug }}</a> <span class="hint">{{ ar.slug }}</span></li>
+    {% else %}
+    <li class="hint">暂无 Arena</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="lens-index-section">
+  <h2>公司 <span class="hint">9 维</span></h2>
+  <ul class="lens-index-list">
+    {% for co in companies %}
+    <li><a href="/lens/company/{{ co.key }}">{{ co.name }}</a> <span class="hint">{{ co.key }}</span></li>
+    {% else %}
+    <li class="hint">暂无公司</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<style>
+  .lens-index-section { margin: 1.5em 0; }
+  .lens-index-section h2 { border-bottom: 1px solid var(--border, #ddd); padding-bottom: 0.3em; }
+  .lens-index-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4em 1.2em; margin: 0.6em 0; }
+  .lens-index-list li { font-size: 0.95em; }
+  .hint { color: #888; font-size: 0.85em; }
+</style>
+{% endblock %}

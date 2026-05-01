@@ -50,7 +50,18 @@ FIELD_LABELS: dict[str, str] = {
 
 @router.get("")
 def lens_index(request: Request):
-    return RedirectResponse(url="/industries", status_code=302)
+    industries = industry_io.list_industries()
+    arenas = arenas_io.list_arenas()
+    companies = company_io.list_companies()
+    return templates.TemplateResponse(
+        request,
+        "investment_lens/index.html",
+        {
+            "industries": industries,
+            "arenas": arenas,
+            "companies": companies,
+        },
+    )
 
 
 @router.get("/industry/{slug}")
