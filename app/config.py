@@ -61,6 +61,38 @@ COMPANY_DIMENSIONS = (
     "valuation",
 )
 
+# Investment lens view dimension tuples (spec §10.2-10.4).
+# Distinct from archive dimensions — lens answers "what is our judgment"
+# while archive answers "what do we know".
+INDUSTRY_INVESTMENT_VIEW_DIMS = (
+    "thesis", "demand", "supply_competition", "profit_pool",
+    "unit_economics", "stage_gates", "catalysts_timeline",
+    "risks_disconfirming_evidence",
+)
+ARENA_BATTLEFIELD_VIEW_DIMS = (
+    "battlefield_definition", "players_positions", "winning_variables",
+    "evidence_scoreboard", "stage_gates", "inflection_points",
+    "company_implications",
+)
+COMPANY_MEMO_VIEW_DIMS = (
+    "business_exposure", "thesis_fit", "moat_execution", "financial_quality",
+    "growth_drivers", "stage_gate_status", "valuation_expectations",
+    "catalysts_risks", "open_questions",
+)
+
+VIEW_DIMENSIONS = {
+    "archive": {
+        "industry": INDUSTRY_DIMENSIONS,
+        "arena": ARENA_DIMENSIONS,
+        "company": COMPANY_DIMENSIONS,
+    },
+    "investment_lens": {
+        "industry": INDUSTRY_INVESTMENT_VIEW_DIMS,
+        "arena": ARENA_BATTLEFIELD_VIEW_DIMS,
+        "company": COMPANY_MEMO_VIEW_DIMS,
+    },
+}
+
 # Suggested structured fields per industry dimension. Open vocabulary —
 # observations.field is not validated against this dict, but digest prompts
 # use it as guidance. Dimensions not listed here don't have structured fields

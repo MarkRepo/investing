@@ -2,6 +2,7 @@
 {% block title %}{{ ticker }}{% endblock %}
 {% block content %}
 <h1>{{ meta.get('name', ticker) }} <small>({{ market }}:{{ ticker }})</small></h1>
+<a href="/lens/company/{{ key }}" class="btn">投资决策视图 →</a>
 
 <table class="kv">
   <tr><th>行业 slugs</th><td>

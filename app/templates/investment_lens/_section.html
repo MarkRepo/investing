@@ -1,0 +1,50 @@
+{# Shared section fragment for investment lens fields.
+   Include with: {% include "investment_lens/_section.html" %}
+   Expects: field, mat (LensMaterial object), field_labels, scope_link (for narrative back-links), scope_slug #}
+<section class="lens-field" id="field-{{ field }}">
+  <h2>{{ field_labels[field] }} <span class="hint">{{ field }}</span></h2>
+
+  <h3>研报综述 ({{ mat.bundle_excerpts|length }})</h3>
+  {% if mat.bundle_excerpts %}
+  <ul class="bundle-excerpts">
+    {% for ex in mat.bundle_excerpts %}
+    <li>
+      <span class="badge">{{ ex.publish_date }}</span>
+      <a href="/bundles/{{ ex.bundle_sha8 }}">{{ ex.source_id }}</a>
+      {% if ex.confidence %}<span class="badge badge-conf">{{ ex.confidence }}</span>{% endif %}
+      <blockquote>{{ ex.text }}</blockquote>
+      <span class="hint">{{ ex.path_in_bundle }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="hint"><em>暂无研报原料。</em></p>
+  {% endif %}
+
+  <h3>累积 claim ({{ mat.claims|length }})</h3>
+  {% if mat.claims %}
+  <table class="claims">
+    <thead><tr><th>ID</th><th>论点</th><th>信心</th><th>状态</th><th>证据数</th></tr></thead>
+    <tbody>
+    {% for c in mat.claims %}
+    <tr>
+      <td><code>{{ c.claim_id }}</code></td>
+      <td>{{ c.claim_text }}</td>
+      <td><span class="badge badge-conf">{{ c.confidence }}</span></td>
+      <td>{{ c.status }}</td>
+      <td>{{ c.evidence_count }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="hint"><em>暂无 claim。</em></p>
+  {% endif %}
+
+  {% if mat.narrative_excerpts %}
+  <h3>已有 archive narrative</h3>
+  {% for ne in mat.narrative_excerpts %}
+  <p><a href="{{ scope_link }}#{{ ne.dimension }}">{{ ne.dimension }}（{{ ne.headline_count }} 段）→</a></p>
+  {% endfor %}
+  {% endif %}
+</section>

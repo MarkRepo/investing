@@ -2,7 +2,10 @@
 {% block title %}arena · {{ slug }}{% endblock %}
 {% block content %}
 <h1>{{ fm.name or slug }} <small>({{ slug }})</small></h1>
-<p><a href="/arenas">← 返回 arena 列表</a></p>
+<p>
+  <a href="/arenas">← 返回 arena 列表</a>
+  <a href="/lens/arena/{{ slug }}" class="btn">投资决策视图 →</a>
+</p>
 
 <h2>定义</h2>
 <table class="kv">

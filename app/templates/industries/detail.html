@@ -2,6 +2,7 @@
 {% block title %}{{ slug }} · 行业{% endblock %}
 {% block content %}
 <h1>{{ meta.name or slug }} <span class="hint">· <code>{{ slug }}</code></span></h1>
+<a href="/lens/industry/{{ slug }}" class="btn">投资决策视图 →</a>
 
 <table class="meta">
   <tr><th>scope</th><td>{{ meta.scope or '-' }}</td></tr>
