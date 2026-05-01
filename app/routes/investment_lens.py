@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException, Request
+from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from app import config as cfg
@@ -45,6 +46,11 @@ FIELD_LABELS: dict[str, str] = {
     "catalysts_risks": "催化剂与风险",
     "open_questions": "待答问题",
 }
+
+
+@router.get("")
+def lens_index(request: Request):
+    return RedirectResponse(url="/industries", status_code=302)
 
 
 @router.get("/industry/{slug}")

@@ -3,8 +3,12 @@
 {% block content %}
 <h1>投资决策视图 · {{ meta.name or slug }} <span class="hint">· <code>{{ slug }}</code></span></h1>
 
-<p>
-  <a href="/arenas/{{ slug }}">← 返回 archive 视图</a>
+<p class="page-nav">
+  <a href="/arenas/{{ slug }}">← archive 视图</a>
+  <span class="nav-sep-inline">·</span>
+  <a href="/bundles">研报</a>
+  <span class="nav-sep-inline">·</span>
+  <a href="/arenas">所有 Arena</a>
 </p>
 
 <p class="hint">Arena 投资决策 7 维视图 — 聚合自研报 bundle / 累积 claim / 已有 archive narrative。</p>
@@ -22,6 +26,8 @@
 {% endfor %}
 
 <style>
+  .page-nav { margin: 0.5em 0 1em; font-size: 0.9em; }
+  .nav-sep-inline { color: #aaa; margin: 0 0.4em; }
   .lens-nav { margin: 1em 0; display: flex; flex-wrap: wrap; gap: 0.5em; }
   .lens-nav a { padding: 0.2em 0.6em; border: 1px solid var(--border, #ddd); border-radius: 3px; font-size: 0.9em; text-decoration: none; }
   .lens-nav a:hover { background: var(--bg-hover, #f5f5f5); }
