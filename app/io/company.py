@@ -81,7 +81,6 @@ def create_company(
 
     out_dir.mkdir(parents=True)
     (out_dir / "sources").mkdir()
-    (out_dir / "claims.jsonl").write_text("")
 
     for out_name, tpl_name in _TEMPLATE_MAP:
         (out_dir / out_name).write_text(env.get_template(tpl_name).render(**ctx))

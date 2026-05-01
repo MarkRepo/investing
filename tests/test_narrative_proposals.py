@@ -50,6 +50,21 @@ def test_map_claim_dimension_known_values():
     assert map_claim_dimension("valuation") == "investment_view"
 
 
+def test_map_claim_dimension_covers_bundle_prompt_vocab():
+    """Every dimension_hint value in docs/prompts/ingest-review-bundle.md must map
+    in every scope — otherwise claims get silently dropped in narrative_propose."""
+    bundle_vocab = [
+        "market_size", "lifecycle", "value_chain", "competition", "drivers",
+        "technology", "regulation", "benchmark", "risks", "valuation",
+        "financial_profile", "catalysts",
+    ]
+    for scope in ("arena", "company", "industry"):
+        for hint in bundle_vocab:
+            assert map_claim_dimension(hint, scope) is not None, (
+                f"scope={scope} hint={hint} unmapped — would silently drop"
+            )
+
+
 def test_build_proposal_file_groups_active_arena_claims_by_dimension(tmp_path):
     registry = ClaimRegistry(tmp_path)
     claim = _create_claim(registry)

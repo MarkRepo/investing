@@ -49,8 +49,8 @@ def test_create_company_lays_down_all_files(tmp_path):
     assert (path / "v0.md").exists()
     assert (path / "valuation.md").exists()
     assert (path / "trade-log.md").exists()
-    assert (path / "claims.jsonl").exists()
-    assert (path / "claims.jsonl").read_text() == ""
+    # per-company claims.jsonl is prohibited endgame artifact; must NOT be created
+    assert not (path / "claims.jsonl").exists()
 
 
 def test_create_company_inserts_frontmatter(tmp_path):

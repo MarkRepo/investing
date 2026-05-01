@@ -67,7 +67,7 @@ def create_industry(
     today: date | None = None,
 ) -> Path:
     """Create a new industry slug directory with 11-dim narrative skeletons,
-    empty observations.jsonl, meta.yaml, and sources/ dir.
+    meta.yaml, and sources/ dir.
 
     Raises ValueError on bad slug, FileExistsError if dir already exists.
     """
@@ -112,9 +112,6 @@ def create_industry(
     for dim in cfg.INDUSTRY_DIMENSIONS:
         header = f"# {_CN_TITLES[dim]} · {name}\n\n*slug: {slug} · 维度: {dim}*\n\n"
         _narrative_path(slug, dim, base).write_text(header, encoding="utf-8")
-
-    # empty observations.jsonl
-    _observations_path(slug, base).write_text("", encoding="utf-8")
 
     return slug_dir
 

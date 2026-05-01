@@ -29,9 +29,8 @@ def test_create_industry_builds_skeleton(tmp_path):
     assert meta["name"] == "中国化学机械抛光材料"
     assert meta["linked_arenas"] == []
     assert meta["linked_tickers"] == []
-    # observations.jsonl created empty
-    assert (slug_dir / "observations.jsonl").is_file()
-    assert (slug_dir / "observations.jsonl").read_text() == ""
+    # observations.jsonl is prohibited endgame artifact; must NOT be created
+    assert not (slug_dir / "observations.jsonl").exists()
     # sources/ dir
     assert (slug_dir / "sources").is_dir()
 
