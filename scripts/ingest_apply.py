@@ -6,7 +6,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from app.io.archive_mapping import suggest_archive_target
 from app.io.claim_registry import ClaimRegistry, build_evidence_entry
 
 VALID_DECISIONS = {"attach", "new", "split", "skip"}
@@ -96,33 +95,6 @@ def _apply_attach(registry: ClaimRegistry, bundle: dict[str, Any], source_id: st
     registry.append_evidence(row["target_claim_id"], evidence, now=now)
 
 
-def derive_archive_writes(bundle: dict[str, Any], source_id: str) -> dict[str, Any]:
-    writes = []
-    blocks = {block.get("id"): block for block in bundle.get("insight_blocks", []) or []}
-    source_digest = bundle.get("source_digest") or {}
-    for fact in bundle.get("atomic_facts", []) or []:
-        linked_block = blocks.get(fact.get("linked_block_id"), {})
-        suggested_target = suggest_archive_target(
-            source_digest.get("scope_type", "company"),
-            source_digest.get("scope_ref", ""),
-            linked_block.get("dimension_hint", ""),
-        )
-        writes.append(
-            {
-                "fact_id": fact.get("fact_id"),
-                "fact_payload": fact,
-                "linked_block": linked_block,
-                "linked_claim_ids": [],
-                "suggested_target": suggested_target,
-                "alternative_targets": [],
-                "decision": None,
-                "decision_reason": None,
-                "final_targets": None,
-            }
-        )
-    return {"source_id": source_id, "writes": writes}
-
-
 def derive_arena_candidates(bundle: dict[str, Any]) -> list[dict[str, Any]]:
     rows = []
     for idx, candidate in enumerate(bundle.get("arena_candidates", []) or []):
@@ -142,10 +114,6 @@ def derive_arena_candidates(bundle: dict[str, Any]) -> list[dict[str, Any]]:
 def _write_pending_files(base: Path, source_id: str, bundle: dict[str, Any]) -> None:
     pending = base / "pending"
     pending.mkdir(parents=True, exist_ok=True)
-    (pending / f"archive-writes-{source_id}.json").write_text(
-        json.dumps(derive_archive_writes(bundle, source_id), ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
     arena_lines = [json.dumps(row, ensure_ascii=False, sort_keys=True) for row in derive_arena_candidates(bundle)]
     (pending / f"arenas-{source_id}.jsonl").write_text("\n".join(arena_lines) + ("\n" if arena_lines else ""), encoding="utf-8")
 

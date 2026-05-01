@@ -476,7 +476,8 @@ TDD 风格，每个小 task 一个 commit（test → impl）。参考 Phase 2 co
 
 ## 13. 未来工作（本 spec 外）
 
-- **investment_lens 层**（industry 8 / arena 7 / company 9 维）：spec §10 of research-os-design 定义，未实现。单独 Phase 规划
+- **investment_lens 层**（industry 8 / arena 7 / company 9 维）：spec §10 of research-os-design 定义。
+  **未实现**，需单独 Phase 规划。⚠ 区别于 Phase 3A/B/C——那是 archive 11/6/8 的 claim-proposal 写入管线，不是 decision-view projection。
 - **全局 /claims 路由**（跨 scope 浏览 ClaimRegistry）：随 investment_lens phase 一起做
 - **migration**（把旧 per-company claims 迁到 ClaimRegistry）：目前放弃，接受旧数据丢失。若将来改主意，单独写迁移脚本
 - **bundle 的 knowledge_delta 层**（对比新旧 bundle 产出增量）：research-os-design §8 定义，未实现。需要跨报告比对时再做

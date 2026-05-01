@@ -48,7 +48,23 @@ Examine `bundle.arena_candidates`. For each candidate, decide via `AskUserQuesti
 - create a new arena (`agg.bootstrap_arena_from_candidate`)
 - skip (e.g. no listed participants, or topic out of scope)
 
-Skipped arenas are not bootstrapped and should not appear in `touched.arenas` at Step 15. If a `claim_candidates[*]` references a skipped arena, it will fail `ingest_apply` — either re-label the claim scope or also skip that claim in Step 8.
+**After decisions are made, patch the bundle before proceeding to Step 7.** This is required whether the decision is "associate" or "new":
+
+```python
+slug_map = {
+    "<tentative_slug>": "<final_approved_slug>",  # one entry per candidate
+}
+# 1. Update arena_candidates[*].tentative_slug
+for ac in bundle["arena_candidates"]:
+    ac["tentative_slug"] = slug_map.get(ac["tentative_slug"], ac["tentative_slug"])
+# 2. Update claim_candidates[*].scope_ref for arena-scoped claims
+for cc in bundle["claim_candidates"]:
+    if cc["scope_type"] == "arena" and cc["scope_ref"] in slug_map:
+        cc["scope_ref"] = slug_map[cc["scope_ref"]]
+# 3. Write bundle back and re-run QA (Step 3) to confirm no broken refs
+```
+
+Skipped arenas: set their final slug to an empty string or remove from slug_map; any `claim_candidates` referencing a skipped arena must be relabelled or will fail `ingest_apply`.
 
 ### Step 5 — Ensure Industries
 
@@ -96,6 +112,13 @@ Present `pending_review.json` to user via `AskUserQuestion`. For each row, set t
 - **For `decision="attach"`**: set `target_claim_id` and `direction_on_claim`.
 - **For `decision="split"`**: set `split_instructions`.
 - **For `decision="skip"`**: only `decision` + `decision_reason`.
+
+**When all rows have empty `top_matches`** (first ingest of a new industry/company):
+
+- Still present the claims to the user — even with no matches, the user may want to skip low-quality or out-of-scope claims.
+- Show the `claim_text` and `scope_ref` for each row in a compact summary.
+- If the user approves all, set `decision="new"` for every row. If they skip some, set `decision="skip"` + `decision_reason`.
+- Do NOT silently bulk-approve without user acknowledgement.
 
 Write the file back in place.
 
@@ -216,6 +239,18 @@ entry = persist_bundle(
 The helper writes `<source_dir>/bundles/{bundle_sha8}.json` and appends to `data/bundle_registry.jsonl`. Note: the `sha8` in the registry entry is a hash of the bundle JSON content (not the source file's sha8), so don't confuse it with the sha8 used in `source_id`.
 
 **Known gap:** `bundle.source_digest` has no `institution` field, so the registry's `institution` column will be empty string. If the `/bundles` page needs institution filtering, parse it from `source_id` (e.g. `行研-中银证券-2025-04-10-ad983472` → `中银证券`) until the schema adds a first-class field.
+
+After `persist_bundle` succeeds, generate the evaluation skeleton:
+
+```bash
+.venv/bin/python -m scripts.ingest_qa evaluation init \
+    --bundle <source_dir>/bundles/{bundle_sha8}.json \
+    --preprocess /tmp/ingest-<sha8>-preprocess.json \
+    --match /tmp/ingest-<sha8>-auto_apply.json \
+    --out <source_dir>/bundles/{bundle_sha8}-evaluation.json
+```
+
+Omit `--match` if no auto_apply file was produced (e.g. all candidates went to pending_review). The skeleton captures L1 warnings and matching metrics; L2 is run separately via `docs/prompts/ingest-eval-l2.md` when the user requests a quality review.
 
 ---
 

@@ -60,4 +60,3 @@ def test_phase2_minimal_match_apply_evaluation_chain(tmp_path):
     assert len(claim_lines) == 1
     evaluation = json.loads(eval_path.read_text(encoding="utf-8"))
     assert evaluation["matching_metrics"]["decisions"]["new"] == 1
-    assert (tmp_path / "pending" / "archive-writes-src-001.json").exists()

@@ -34,12 +34,12 @@
 
 ## 2. 方法分层（贯穿所有 phase）
 
-| 层 | 方法 | 典型用例 | 触发 |
-|---|---|---|---|
-| L1 | Python schema/rule 检查 | 硬性结构错（缺字段、引用错位、preprocess risk 与 confidence 不匹配） | 每次 ingest 必跑 |
-| L2 | Claude 对话里跑 review prompt | 语义判断（覆盖度、推理完整、校准、叙事） | 用户按需 |
-| L3 | 跨 ingest 轨迹观察 | claim 状态演进合理性、重复 claim 检测、review_by 处理及时性 | 定期（建议每 N 次 ingest 或每周） |
-| L4 | Cross-LLM 交叉验证 | 用其他模型独立跑 L2 对齐 Claude 自评盲区 | Phase 5+ 启用 |
+| 层   | 方法                        | 典型用例                                             | 触发                     |
+| --- | ------------------------- | ------------------------------------------------ | ---------------------- |
+| L1  | Python schema/rule 检查     | 硬性结构错（缺字段、引用错位、preprocess risk 与 confidence 不匹配） | 每次 ingest 必跑           |
+| L2  | Claude 对话里跑 review prompt | 语义判断（覆盖度、推理完整、校准、叙事）                             | 用户按需                   |
+| L3  | 跨 ingest 轨迹观察             | claim 状态演进合理性、重复 claim 检测、review_by 处理及时性        | 定期（建议每 N 次 ingest 或每周） |
+| L4  | Cross-LLM 交叉验证            | 用其他模型独立跑 L2 对齐 Claude 自评盲区                       | Phase 5+ 启用            |
 
 L1 必跑、零成本；L2 是主力语义评测；L3 需样本量（Phase 2+ 有意义）；L4 规模化后引入。
 
@@ -205,7 +205,7 @@ Phase 2 主系统变更：引入 claim registry、claim matching 决策（新建
 
 ## 6. Phase 3 评测（叙事层 + Memo Flags）
 
-Phase 3 主系统变更：投资视图 8/6/9 叙事段、`supported_by_claims` 链接、segment status 流转、memo `auto_review_flags`。
+Phase 3 主系统变更：archive 11/6/8 叙事段（claim-proposal 管线）、`supported_by_claims` 链接、segment status 流转、memo `auto_review_flags`。
 
 ### 6.1 新增 L1 检查
 

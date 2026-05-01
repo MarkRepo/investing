@@ -1,5 +1,10 @@
 # Ingest 系统终局设计
 
+> **Errata 2026-05-01**：本文原稿把 Phase 3 叙事层数字写成 "投资视图 8/6/9"。
+> 这是草稿错误——从未列出过字段、也无代码实现。Phase 3A/B/C 实际写入的是 archive **11/6/8** (`app/config.py:30-62`)，
+> 以 claim 驱动的 proposal 管线替换原 digest 写入路径。真正 decision-view 的 investment_lens (8/7/9) 见
+> `research-os-design.md §10`，尚未实现。
+
 **Status**: 终局概念设计，用于指导 Phase 演进规划，不直接实施
 **Date**: 2026-04-29
 **Supersedes for endgame vision**: 本文档取代
@@ -53,7 +58,7 @@ Ingest 系统的终局是一个**个人投资研究操作系统**：
 │         │ 用户私产；引用 narrative_refs + claim_refs       │
 │         │ 浅层反向追踪：claim/叙事变化时系统只做标记         │
 ├──────────────────────────────────────────────────────────┤
-│  叙事层  投资视图（industry 8 / arena 6 / company 9）     │
+│  叙事层  archive 11/6/8 (claim 驱动的 narrative proposal) │
 │         │ 每段有 supported_by_claims + status + trigger_log │
 │         │ claim 变化时段落自动标 divergent                 │
 │         │ 内容永远由人写（含 Claude 对话里写），git 是内容史 │
@@ -86,7 +91,7 @@ Ingest 系统的终局是一个**个人投资研究操作系统**：
 
 ### 3.3 archive 11/6/8 的定位
 
-Archive 是**证据层按 (entity, dimension) 的结构化索引**，不是阅读面。用户读的是叙事层（投资视图 8/6/9）。Archive 只在下钻具体证据时才被访问。
+Archive 是**证据层按 (entity, dimension) 的结构化索引**，不是阅读面。用户读的是 archive 叙事层（11/6/8，每维一个 .md），由 Phase 3 的 claim-proposal 管线写入。Archive 只在下钻具体证据时才被访问。
 
 ---
 
@@ -214,11 +219,11 @@ arena_candidate:
   user_decision                     # {decision, merge_target, decided_at}
 ```
 
-### 4.5 投资视图叙事段（延伸，新增 metadata）
+### 4.5 archive 叙事段 (frontmatter 延伸)
 
 ```yaml
 narrative_segment:
-  dimension                         # 对应 8/6/9 的某一维
+  dimension                         # 对应 archive 11/6/8 的某一维（definition 不经 proposal 写）
   text                              # markdown / plain text
   supported_by_claims[]
   status                            # active | divergent | under_review
@@ -378,9 +383,9 @@ Phase 1.5 不建 claim 对象、不建 archive、不做 merge。只是让 bundle
 
 完成后系统具备：跨报告 claim 状态、evidence 台账、archive 档案库。用户能查"这条命题现在怎么样"，但没有连贯叙事阅读面。
 
-### Phase 3：投资视图叙事层
+### Phase 3：archive 叙事层的 claim 驱动写入管线 / 用 claim 驱动替换 digest 直写，产出 archive 11/6/8 的 Markdown (definition 维度除外)
 
-- 投资视图 8/6/9 的初版叙事（手写或 Claude 对话辅助写）
+- archive 叙事层初版叙事（手写或 Claude 对话辅助写）
 - 每段标 supported_by_claims
 - Claim 变化 → 叙事段自动标 divergent
 - 叙事复写工作流（Claude 对话 + 用户确认）

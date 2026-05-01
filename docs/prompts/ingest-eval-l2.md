@@ -12,7 +12,7 @@
    ```
 3. 在 Claude 对话里贴入本 prompt（作为 system 指令）+ 三份 JSON（bundle、preprocess、evaluation 骨架）
 4. Claude 返回 L2 评测 JSON 片段
-5. 把片段手工合并进 `evaluation.json`：`dimension_ratings / system_fit / phase2_readiness / overall_notes` 覆盖，`defects` 追加；同时更新 `evaluated_at`、`evaluator`、`method_layers_run = ["L1", "L2"]`
+5. 把片段手工合并进 `evaluation.json`：`dimension_ratings / system_fit / phase2_readiness / phase3_readiness / overall_notes` 覆盖，`defects` 追加；同时更新 `evaluated_at`、`evaluator`、`method_layers_run = ["L1", "L2"]`
 
 ## 系统指令（粘贴到对话）
 
@@ -47,6 +47,7 @@ Also fill `phase3_readiness.notes`: can the current claim registry support Phase
 
 - system_fit：本 bundle 字段集是否适配该 source_type？（如医药报告缺 pipeline 信息、行业报告缺 lifecycle 判断等。给具体不适配点）
 - phase2_readiness（Phase 1.5 起为必评项）：本 bundle 进入 Phase 2 claim layer 是否会产生脏数据？具体风险点列明。
+- phase3_readiness（Phase 2 完成后为必评项）：基于当前 claim registry 状态，Phase 3 叙事层的 `supported_by_claims` 引用是否有足够稳定的基础？关注：claim_id 是否稳定不会被替换、coverage 是否覆盖叙事所需维度、matching 决策是否足够干净（无大量重复 claim 或过宽 claim 污染叙事）。
 
 ### 输出格式
 
@@ -64,6 +65,7 @@ Also fill `phase3_readiness.notes`: can the current claim registry support Phase
   },
   "system_fit": {"notes": "..."},
   "phase2_readiness": {"notes": "..."},
+  "phase3_readiness": {"notes": "..."},
   "defects": [
     {
       "category": "coverage_fidelity | reasoning_quality | calibration | narrative | system_fit | phase2_readiness | <L1 rule 名>",
@@ -81,6 +83,6 @@ Also fill `phase3_readiness.notes`: can the current claim registry support Phase
 ## 合并规则
 
 用户收到输出后：
-- `dimension_ratings` / `system_fit` / `phase2_readiness` / `overall_notes` 直接覆盖 evaluation.json 同名字段
+- `dimension_ratings` / `system_fit` / `phase2_readiness` / `phase3_readiness` / `overall_notes` 直接覆盖 evaluation.json 同名字段
 - `defects` 追加到 evaluation.json 现有 defects 末尾（不要丢 L1 聚合进来的那批）
 - 更新 evaluation.json：`evaluated_at` = 合并时刻，`evaluator` = 使用的模型标识，`method_layers_run` = `["L1", "L2"]`

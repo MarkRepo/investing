@@ -81,7 +81,6 @@ def test_apply_new_creates_claim_and_pending_files(tmp_path):
     assert claim["claim_id"] == "clm-company-0001"
     assert claim["supporting_evidence"][0]["fact_ids"] == ["fact-001"]
     assert claim["supporting_evidence"][0]["direction"] == "supports"
-    assert (tmp_path / "pending" / "archive-writes-src-001.json").exists()
     assert (tmp_path / "pending" / "arenas-src-001.jsonl").exists()
 
 
@@ -298,28 +297,3 @@ def test_apply_accepts_multiple_decision_files_and_writes_applied_jsonl(tmp_path
         assert row["scope_type"] in valid_scope_types
         assert "scope_ref" in row
         assert "action" in row
-
-
-def test_archive_writes_include_suggested_target_from_dimension_mapping(tmp_path):
-    candidate = _candidate()
-    match = {"source_id": "src-001", "decisions_required": [_decision(candidate)]}
-    bundle = _bundle()
-    bundle["source_digest"]["scope_type"] = "company"
-    bundle["source_digest"]["scope_ref"] = "SSE_600519"
-    bundle_path = tmp_path / "bundle.json"
-    match_path = tmp_path / "pending" / "match-src-001.json"
-    match_path.parent.mkdir()
-    _write_json(bundle_path, bundle)
-    _write_json(match_path, match)
-
-    rc = ingest_apply.cmd_apply(
-        Namespace(match=str(match_path), bundle=str(bundle_path), registry_base=str(tmp_path))
-    )
-
-    assert rc == 0
-    writes = json.loads((tmp_path / "pending" / "archive-writes-src-001.json").read_text(encoding="utf-8"))
-    assert writes["writes"][0]["suggested_target"] == {
-        "archive_layer": 8,
-        "archive_path": "archive/layer8/company/SSE_600519/moat.jsonl",
-        "action": "append",
-    }
