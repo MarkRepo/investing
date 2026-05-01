@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import hashlib
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -59,3 +61,39 @@ def load_bundle_json(source_id: str, base: Path | None = None) -> dict[str, Any]
         raise FileNotFoundError(source_id)
     bundle_path = _base(base) / entry["bundle_path"]
     return json.loads(bundle_path.read_text(encoding="utf-8"))
+
+
+def persist_bundle(
+    bundle: dict[str, Any],
+    *,
+    source_file_path: Path,
+    touched: dict[str, list[str]],
+    base: Path | None = None,
+) -> dict[str, Any]:
+    root = _base(base)
+    source_file_path = Path(source_file_path)
+    rel_source = (
+        source_file_path.relative_to(root)
+        if source_file_path.is_absolute()
+        else source_file_path
+    )
+    raw = json.dumps(bundle, ensure_ascii=False, sort_keys=True).encode("utf-8")
+    sha8 = hashlib.sha256(raw).hexdigest()[:8]
+    bundle_rel = rel_source.parent.parent / "bundles" / f"{sha8}.json"
+    bundle_abs = root / bundle_rel
+    bundle_abs.parent.mkdir(parents=True, exist_ok=True)
+    bundle_abs.write_bytes(raw)
+    digest = bundle.get("source_digest", {})
+    entry: dict[str, Any] = {
+        "source_id": digest["source_id"],
+        "sha8": sha8,
+        "source_type": digest.get("source_type", "unknown"),
+        "institution": digest.get("institution", ""),
+        "publish_date": digest.get("source_date", ""),
+        "bundle_path": str(bundle_rel),
+        "source_file_path": str(rel_source),
+        "ingested_at": datetime.now(timezone.utc).isoformat(),
+        "touched": touched,
+    }
+    append_registry(entry, base=base)
+    return entry

@@ -9,6 +9,7 @@ from app.io.bundle_registry import (
     get_bundle,
     list_bundles,
     load_bundle_json,
+    persist_bundle,
 )
 
 
@@ -59,3 +60,30 @@ def test_load_bundle_json_uses_registry_relative_path(tmp_path):
 def test_load_bundle_json_raises_if_source_id_missing(tmp_path):
     with pytest.raises(FileNotFoundError):
         load_bundle_json("nonexistent-source", base=tmp_path)
+
+
+def test_persist_bundle_writes_co_located_bundle_and_registry(tmp_path):
+    bundle = {
+        "source_digest": {
+            "source_id": "source-1",
+            "source_type": "industry_report",
+            "source_date": "2025-04-10",
+        },
+        "insight_blocks": [],
+        "atomic_facts": [],
+        "synthesis": {},
+    }
+    source_file = tmp_path / "industries" / "cn-nuclear-fusion" / "sources" / "report.pdf"
+    source_file.parent.mkdir(parents=True, exist_ok=True)
+    source_file.write_bytes(b"%PDF-1.4")
+
+    entry = persist_bundle(
+        bundle,
+        source_file_path=source_file,
+        touched={"industries": ["cn-nuclear-fusion"], "arenas": [], "companies": []},
+        base=tmp_path,
+    )
+
+    assert entry["bundle_path"] == "industries/cn-nuclear-fusion/bundles/" + entry["sha8"] + ".json"
+    assert (tmp_path / entry["bundle_path"]).exists()
+    assert get_bundle("source-1", base=tmp_path)["source_id"] == "source-1"
