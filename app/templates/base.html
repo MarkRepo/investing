@@ -13,24 +13,24 @@
   {%- endmacro %}
   <nav class="top">
     {{ _navlink('/', 'investing', 'brand') }}
-    {{ _navlink('/companies', '公司') }}
-    {{ _navlink('/watchlist', '观察池') }}
-    {{ _navlink('/portfolio', '持仓') }}
-    {{ _navlink('/journal', '日志') }}
-    {{ _navlink('/review', '复盘') }}
-    {{ _navlink('/competence-map', '能力图') }}
     {{ _navlink('/industries', '行业') }}
     {{ _navlink('/arenas', '竞技场') }}
-    {{ _navlink('/discipline', '自律') }}
+    {{ _navlink('/companies', '公司') }}
+    {{ _navlink('/financials', '财务') }}
+    {{ _navlink('/prices', '行情') }}
     {{ _navlink('/earnings-review', '对照') }}
     {{ _navlink('/catalysts', '催化剂') }}
-    {{ _navlink('/prices', '行情') }}
-    {{ _navlink('/financials', '财务') }}
-    {{ _navlink('/performance', '业绩') }}
+    {{ _navlink('/competence-map', '能力图') }}
     {{ _navlink('/regime', '钟摆') }}
     {{ _navlink('/search', '搜索') }}
-    {{ _navlink('/prompts', '提示词') }}
-    {{ _navlink('/qa', 'QA') }}
+    <span class="nav-sep"></span>
+    {{ _navlink('/watchlist', '观察池') }}
+    {{ _navlink('/portfolio', '持仓') }}
+    {{ _navlink('/performance', '业绩') }}
+    {{ _navlink('/review', '复盘') }}
+    {{ _navlink('/journal', '日志') }}
+    {{ _navlink('/discipline', '自律') }}
+    {{ _navlink('/qa', '告警') }}
     <span class="kbd-hint">键盘：<kbd>g</kbd><kbd>h/c/w/p/j/e/r/f/s/m</kbd> 跳转 · <kbd>/</kbd> 搜索</span>
   </nav>
   <main class="{% block main_class %}{% endblock %}">

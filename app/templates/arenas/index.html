@@ -16,18 +16,16 @@
       <th>参与者</th>
       <th>checklist 题数</th>
       <th>last_updated</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     {% for r in rows %}
     <tr>
-      <td><code>{{ r.slug }}</code></td>
+      <td><a href="/arenas/{{ r.slug }}"><code>{{ r.slug }}</code></a></td>
       <td>{{ r.name or '-' }}</td>
       <td>{{ r.participants_count }}</td>
       <td>{{ r.checklist_count }}</td>
       <td class="hint">{{ r.last_updated or '-' }}</td>
-      <td><a href="/arenas/{{ r.slug }}">打开</a></td>
     </tr>
     {% endfor %}
   </tbody>

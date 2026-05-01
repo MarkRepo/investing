@@ -18,6 +18,7 @@ nav.top a { color: #333; text-decoration: none; font-size: 14px; padding: 4px 2p
 nav.top a.brand { font-weight: 600; }
 nav.top a:hover { color: #0366d6; }
 nav.top a.active { color: #0366d6; font-weight: 600; border-bottom-color: #0366d6; }
+nav.top .nav-sep { width: 1px; height: 16px; background: #999; align-self: center; flex-shrink: 0; }
 nav.top .kbd-hint { margin-left: auto; color: #888; font-size: 12px; }
 kbd {
   display: inline-block; padding: 1px 6px; margin: 0 2px;
