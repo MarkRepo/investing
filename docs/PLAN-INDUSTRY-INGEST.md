@@ -1,6 +1,8 @@
 # 行业研报 ingest 设计 (v0)
 
 > 状态：2026-04-26 3 个决策已拍板（见文末"已决策"段）。下一步 writing-plans 出可执行 plan。
+>
+> **注意：本文档描述的 digest-era 行业研报路径已被 endgame pipeline 替代。** 当前实现走 `review-bundle → ClaimRegistry → narrative` 路径；`companies/{ticker}/claims.jsonl` 和 `observations.jsonl` 均已废弃。本文档仅保留作历史设计参考。
 
 ## 范围
 

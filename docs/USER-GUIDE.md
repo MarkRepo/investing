@@ -109,7 +109,7 @@ uvicorn main:app --reload
 ### 第 5 步：B 研究（可选，只针对缺口）
 `/research/US_HIMS`：
 - 你在对话里（任意 LLM）让它帮你抽 claim
-- 结果粘贴到 `/research/US_HIMS`（会写入 `companies/US_HIMS/claims.jsonl`）
+- 结果粘贴到 `/research/US_HIMS`（会写入 ClaimRegistry，即 `claims/*.jsonl`）
 - **硬性要求**：每条 claim 必须绑定一个 `source_file`，且文件必须存在于 `companies/US_HIMS/sources/`（DESIGN §8 坑 9——事实层不接受"新闻里说"）
 
 时限：2-4 小时一家。拖更长 = 你在用研究回避决策。
@@ -353,3 +353,16 @@ python3 scripts/ingest_qa.py review-bundle --bundle bundle.json --preprocess pre
 - ❌ 不要给所有公司都建档。只建你认真考虑过的
 - ❌ 不要用系统去**证明**长期观点。系统是反向偏见工具，不是信念强化器（坑 7）
 - ❌ 不要改首页的噪音词清单把情绪卖出的关键词删掉。这相当于作弊
+
+---
+
+## 13. Ingest output
+
+New ingest runs produce:
+
+- a review bundle with `insight_blocks`, `atomic_facts`, `synthesis`, `claim_candidates`, `company_candidates`, and `arena_candidates`
+- ClaimRegistry entries under `claims/*.jsonl`
+- archive narrative updates in industry 11 dimensions, arena 6 dimensions, and company 8 dimensions after proposal approval
+- bundle registry entries visible at `/bundles`
+
+Old per-company `claims.jsonl` and industry `observations.jsonl` are no longer maintained.

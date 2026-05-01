@@ -17,7 +17,7 @@ DESIGN §3.6：`claims.jsonl` 的消费者是 consensus-map skill。本 prompt �
 
 ## 流程
 
-1. 从本地把目标公司的 `companies/{market}_{ticker}/claims.jsonl` 全文粘进 Claude 对话
+1. 从 ClaimRegistry（`claims/*.jsonl`，按 `scope_ref` filter 目标公司）导出目标公司的 claims 全文，粘进 Claude 对话
 2. 附上本 prompt 作为系统指令
 3. Claude 返回 markdown 报告
 4. 自己拷贝关键结论到 V0 的 §4（共识 vs 独立判断）或 `competence-check.md` 补缺口

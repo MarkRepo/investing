@@ -1,7 +1,7 @@
 # Claim 抽取 Prompt（给 Claude 对话用）
 
 从研报/财报/电话会纪要里抽取**原子级 claim**，按受控词表打标签，输出严格 JSON。
-Python 端只做 schema 校验 + 写入 `companies/{market}_{ticker}/claims.jsonl`，不碰 LLM API。
+Python 端只做 schema 校验 + 写入 ClaimRegistry（`claims/*.jsonl`），不碰 LLM API。
 
 ---
 
