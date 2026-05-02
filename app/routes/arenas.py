@@ -75,7 +75,7 @@ def detail(request: Request, slug: str):
         if dim == "definition":
             continue
         md = arenas_io.read_narrative(slug, dim)
-        has_content = md.strip() and "### 来源" in md
+        has_content = md.strip() and ("### 来源" in md or "supported_by_claims:" in md)
         dim_flags = flags_by_dimension.get(dim, [])
         narratives.append({
             "dim": dim,

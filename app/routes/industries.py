@@ -99,8 +99,9 @@ def _is_skeleton_only(md: str) -> bool:
     stripped = md.strip()
     if not stripped.startswith("#"):
         return False
-    # Real narratives have a "### 来源 ..." block appended by append_narrative_block.
-    return "### 来源" not in stripped
+    # Real narratives have either "### 来源 ..." (old digest format) or
+    # "supported_by_claims:" (narrative_apply endgame format).
+    return "### 来源" not in stripped and "supported_by_claims:" not in stripped
 
 
 _INDUSTRY_DIM_LABEL = {
