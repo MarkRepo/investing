@@ -1,0 +1,176 @@
+{
+  "source_id": "行研-毕马威-2025-06-d385a3c7",
+  "generated_at": "2026-05-01T17:10:32.280794+00:00",
+  "proposal_version": "phase3a-v1",
+  "scope_type": "industry",
+  "scope_ref": "cn-pet-industry",
+  "proposals": [
+    {
+      "proposal_id": "np-001",
+      "scope_type": "industry",
+      "scope_ref": "cn-pet-industry",
+      "dimension": "competition",
+      "title": "国产品牌份额持续提升，电商渠道重塑竞争格局",
+      "body": "中国宠物行业竞争格局正在发生深刻变化。国产品牌在犬猫食品市场中的占比2022-2024年持续上升，逐步蚕食进口品牌份额。与此同时，电商和直播已成为宠物消费的主要渠道，2024年养宠人中85.0%偏好天猫/淘宝，78.6%偏好抖音直播购物。渠道变革为国产品牌提供了弯道超车的机会，通过电商平台直接触达消费者，减少了对传统线下经销商的依赖。行业企业多以OEM/ODM模式起步，正逐步向自主品牌转型。",
+      "supported_by_claims": [
+        "clm-industry-0010"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-industry-0010",
+          "claim_text": "电商和直播已成为宠物消费的主要渠道。",
+          "confidence": "high",
+          "as_of": "2025-06",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 竞争结构 · 宠物行业\n\n*slug: cn-pet-industry · 维度: competition*\n\n",
+      "decision": "approve",
+      "decision_reason": "基于KPMG报告直接支持的内容，批准写入",
+      "edited_title": null,
+      "edited_body": null
+    },
+    {
+      "proposal_id": "np-002",
+      "scope_type": "industry",
+      "scope_ref": "cn-pet-industry",
+      "dimension": "drivers",
+      "title": "年轻世代主导养宠市场，出口多元化降低贸易风险",
+      "body": "90后和00后合计占据67.7%的养宠市场份额，这一群体普遍具有较高学历和较强消费意愿，是推动宠物消费升级的核心力量。同时，三线及以下城市成为增量市场，2021-2024年养宠人数唯一实现正增长。在出口端，2024年中国宠物行业产品出口额42.7亿美元，同比增长7.8%，但市场正从欧美向东盟、拉美等新兴市场多元化转移，以降低对单一市场的依赖。",
+      "supported_by_claims": [
+        "clm-industry-0009"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-industry-0009",
+          "claim_text": "90后和00后合计占据67.7%的养宠市场份额，预计未来将延续主导宠物消费市场。",
+          "confidence": "high",
+          "as_of": "2025-06",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 增长驱动与催化 · 宠物行业\n\n*slug: cn-pet-industry · 维度: drivers*\n\n",
+      "decision": "approve",
+      "decision_reason": "基于KPMG报告直接支持的内容，批准写入",
+      "edited_title": null,
+      "edited_body": null
+    },
+    {
+      "proposal_id": "np-003",
+      "scope_type": "industry",
+      "scope_ref": "cn-pet-industry",
+      "dimension": "market_size",
+      "title": "宠物市场规模突破3000亿元，2027年有望达4000亿",
+      "body": "2024年中国城镇宠物（犬猫）市场规模超过3000亿元，预计至2027年有望突破4000亿元。行业保持双位数增长，背后是我国经济总量超过130万亿元、人均可支配收入持续增长提供的经济基础，以及宠物从功能性伴侣向家庭成员角色转变的消费理念升级。宠物正逐步融入人类生活的方方面面，从单纯的看家护院到提供情感陪伴，消费场景不断拓展。",
+      "supported_by_claims": [
+        "clm-industry-0007",
+        "clm-industry-0012"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-industry-0007",
+          "claim_text": "中国城镇宠物市场规模2024年超过3000亿元，预计2027年突破4000亿元。",
+          "confidence": "high",
+          "as_of": "2025-06",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        },
+        {
+          "claim_id": "clm-industry-0012",
+          "claim_text": "三线及以下城市是宠物经济增量蓝海。",
+          "confidence": "medium",
+          "as_of": "2025-06",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 市场规模与增长 · 宠物行业\n\n*slug: cn-pet-industry · 维度: market_size*\n\n",
+      "decision": "approve",
+      "decision_reason": "基于KPMG报告直接支持的内容，批准写入",
+      "edited_title": null,
+      "edited_body": null
+    },
+    {
+      "proposal_id": "np-004",
+      "scope_type": "industry",
+      "scope_ref": "cn-pet-industry",
+      "dimension": "technology",
+      "title": "宠物保险市场潜力巨大但供给不足",
+      "body": "宠物保险市场2024年增长129.5%，显示出巨大的发展潜力。然而\"销售宠物保险的公司太少\"和\"不知如何挑选保险产品\"是困扰养宠人的主要痛点，关注度均超过30.0%。此外，一些高发疾病或常见疾病未纳入保单的问题占比达28.8%。2024年底已有约1,707万人饲养异宠，相关市场规模接近百亿元，异宠保险等细分需求尚未被满足。保险供给不足制约了后市场服务的进一步发展。",
+      "supported_by_claims": [
+        "clm-industry-0013"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-industry-0013",
+          "claim_text": "宠物保险市场处于早期阶段，具备较大增长潜力。",
+          "confidence": "medium",
+          "as_of": "2025-06",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 技术与产品 · 宠物行业\n\n*slug: cn-pet-industry · 维度: technology*\n\n",
+      "decision": "approve",
+      "decision_reason": "基于KPMG报告直接支持的内容，批准写入",
+      "edited_title": null,
+      "edited_body": null
+    },
+    {
+      "proposal_id": "np-005",
+      "scope_type": "industry",
+      "scope_ref": "cn-pet-industry",
+      "dimension": "value_chain",
+      "title": "医疗和智能用品赛道增速领先行业",
+      "body": "中国宠物行业分为食品、医疗、用品、服务四大板块，其中医疗和智能用品赛道增速高于食品和服务。宠物医药2024年规模209.5亿元，预计2025-2029年CAGR为10.4%。智能宠物用品2018-2024年CAGR达13.9%，部分智能产品有望成为现代养宠标配。宠物食品作为最大板块保持稳健增长，而宠物服务板块在医院连锁化、保险等方向有广阔空间。",
+      "supported_by_claims": [
+        "clm-industry-0008"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-industry-0008",
+          "claim_text": "中国宠物行业医疗和智能用品赛道增速高于食品和服务板块。",
+          "confidence": "high",
+          "as_of": "2025-06",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 产业链分析 · 宠物行业\n\n*slug: cn-pet-industry · 维度: value_chain*\n\n",
+      "decision": "approve",
+      "decision_reason": "基于KPMG报告直接支持的内容，批准写入",
+      "edited_title": null,
+      "edited_body": null
+    }
+  ],
+  "unmapped_claims": [],
+  "summary_stats": {
+    "total_proposals": 5,
+    "dimension_count": 5,
+    "unsupported_candidates_skipped": 0,
+    "scope_count": 1
+  }
+}

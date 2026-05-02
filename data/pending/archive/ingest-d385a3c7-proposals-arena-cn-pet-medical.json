@@ -1,0 +1,98 @@
+{
+  "source_id": "行研-毕马威-2025-06-d385a3c7",
+  "generated_at": "2026-05-02T00:55:20.630532+00:00",
+  "proposal_version": "phase3a-v1",
+  "scope_type": "arena",
+  "scope_ref": "cn-pet-medical",
+  "proposals": [
+    {
+      "proposal_id": "np-001",
+      "scope_type": "arena",
+      "scope_ref": "cn-pet-medical",
+      "dimension": "decisive_factors",
+      "title": "AI 诊断渗透一线七成：技术扩散快于商业变现验证",
+      "body": "AI 辅助诊断在一线城市宠物医院的扩散速度已超出多数市场预期：公开数据显示，超过七成的一线城市宠物医院已引入 AI 辅助诊断工具，这一渗透率在医疗科技细分领域属于较高水平。然而，渗透率的快速提升并不等同于商业变现路径已经清晰。目前尚无法找到公司级的 AI 诊断营收贡献或 ROI 数据，相关证据仍停留在工具采用率的叙事层面，缺乏定价能力、复购逻辑和利润率的财务佐证。对宠物医疗赛道的胜负手判断而言，AI 诊断的关键问题在于：技术能否从辅助工具进化为定价杠杆，即医院能否凭借 AI 诊断实现显著高于行业均值的客单价和复诊率。这一能力的公司级验证是当前最重要但尚未跨越的门槛。在验证完成之前，AI 宠物医疗更多是定性的结构性主题而非可量化的投资逻辑。",
+      "supported_by_claims": [
+        "clm-arena-0015"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-arena-0015",
+          "claim_text": "AI 辅助诊断已在一线城市宠物医院快速渗透但尚缺公司级财务验证",
+          "confidence": "medium_low",
+          "as_of": "2025-06-01",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 博弈规则与胜负手 · 中国宠物医疗市场\n\n*slug: cn-pet-medical · 维度: decisive_factors*\n\n",
+      "decision": "approve",
+      "decision_reason": "一线城市七成渗透率有 KPMG 2025 报告明确引用，财务验证缺失的判断与报告 evidence_strength=medium_low 评级一致，诚实反映了证据边界。",
+      "edited_title": null,
+      "edited_body": null,
+      "arena_slug": "cn-pet-medical"
+    },
+    {
+      "proposal_id": "np-002",
+      "scope_type": "arena",
+      "scope_ref": "cn-pet-medical",
+      "dimension": "trajectory",
+      "title": "医疗 735 亿奠基、医药 10.4% 成长、保险三位数爆发",
+      "body": "中国宠物医疗及其延伸赛道正沿三条平行轨道加速成长。其一，宠物医疗主市场：2023 年内地规模已约 735 亿元，截至 2024 年 9 月全国备案有效的动物诊疗机构达 22,320 家，行业基础设施的量级意味着规模化整合窗口已开启，但目前尚无可识别的全国连锁龙头。其二，宠物医药子赛道：2024 年市场规模 209.5 亿元，预测 2025 至 2029 年 CAGR 约 10.4%，2029 年有望达到 354.1 亿元；相较诊疗端，医药制造的技术壁垒更高，受益于深圳等地新兽药注册奖励政策，国产药证书加速获取将是未来 2 至 3 年的核心催化剂。其三，宠物保险：2024 年宠物险保费同比增长高达 129.5%，众安、大地、平安等保险公司已入局，但消费者痛点仍集中在产品选择困难和高发疾病未纳保单，渗透率极低意味着增速可持续但总量贡献仍小。三条轨道共同指向宠物医疗后市场服务在 2025 至 2030 年的系统性扩容，投资机会最明确的入口当前是宠物医药制造端而非连锁诊疗端。",
+      "supported_by_claims": [
+        "clm-arena-0012",
+        "clm-arena-0013",
+        "clm-arena-0014"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-arena-0012",
+          "claim_text": "中国宠物医疗市场总量已达 735 亿元且诊疗机构网络完成基础搭建",
+          "confidence": "medium",
+          "as_of": "2025-06-01",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        },
+        {
+          "claim_id": "clm-arena-0013",
+          "claim_text": "中国宠物医药市场 2025-2029 年有望以 10.4% CAGR 增长至 354.1 亿元",
+          "confidence": "medium",
+          "as_of": "2025-06-01",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        },
+        {
+          "claim_id": "clm-arena-0014",
+          "claim_text": "宠物保险渗透率极低但保费正以三位数高速增长，是后市场服务的潜在结构性机会",
+          "confidence": "medium",
+          "as_of": "2025-06-01",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 演进轨迹与触发事件 · 中国宠物医疗市场\n\n*slug: cn-pet-medical · 维度: trajectory*\n\n",
+      "decision": "approve",
+      "decision_reason": "三条支撑 claim 均有具体量化数据，医疗/医药/保险三轨道演进轨迹逻辑清晰，与 KPMG 2025 报告医疗赛道章节高度一致。",
+      "edited_title": null,
+      "edited_body": null,
+      "arena_slug": "cn-pet-medical"
+    }
+  ],
+  "unmapped_claims": [],
+  "summary_stats": {
+    "total_proposals": 2,
+    "dimension_count": 2,
+    "unsupported_candidates_skipped": 0,
+    "arena_count": 1
+  }
+}

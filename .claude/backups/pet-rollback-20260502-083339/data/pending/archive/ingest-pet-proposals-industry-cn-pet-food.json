@@ -1,0 +1,46 @@
+{
+  "source_id": "行研-毕马威-2025-06-d385a3c7",
+  "generated_at": "2026-05-01T17:10:37.973575+00:00",
+  "proposal_version": "phase3a-v1",
+  "scope_type": "industry",
+  "scope_ref": "cn-pet-food",
+  "proposals": [
+    {
+      "proposal_id": "np-001",
+      "scope_type": "industry",
+      "scope_ref": "cn-pet-food",
+      "dimension": "competition",
+      "title": "国产宠物食品品牌份额持续提升",
+      "body": "国产品牌在犬猫食品市场中的占比2022-2024年持续上升，反映出消费者对国产品牌认可度提高。这一趋势与电商渠道的发展密切相关——国产品牌借助天猫/淘宝、抖音直播等平台直接触达消费者，减少了渠道壁垒。同时，中国宠物产品出口也从欧美向东盟、拉美等新兴市场多元化转移，2024年出口额42.7亿美元，同比增长7.8%。",
+      "supported_by_claims": [
+        "clm-industry-0011"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-industry-0011",
+          "claim_text": "国产品牌在宠物食品市场中份额持续提升。",
+          "confidence": "medium",
+          "as_of": "2025-06",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "",
+      "decision": "approve",
+      "decision_reason": "基于KPMG报告直接支持的内容，批准写入",
+      "edited_title": null,
+      "edited_body": null
+    }
+  ],
+  "unmapped_claims": [],
+  "summary_stats": {
+    "total_proposals": 1,
+    "dimension_count": 1,
+    "unsupported_candidates_skipped": 0,
+    "scope_count": 1
+  }
+}

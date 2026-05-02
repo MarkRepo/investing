@@ -1,0 +1,78 @@
+{
+  "source_id": "行研-毕马威-2025-06-d385a3c7",
+  "generated_at": "2026-05-02T00:55:20.668878+00:00",
+  "proposal_version": "phase3a-v1",
+  "scope_type": "arena",
+  "scope_ref": "cn-smart-pet-supplies",
+  "proposals": [
+    {
+      "proposal_id": "np-001",
+      "scope_type": "arena",
+      "scope_ref": "cn-smart-pet-supplies",
+      "dimension": "decisive_factors",
+      "title": "复购拐点未至：智能用品从尝鲜到刚需仍需数据验证",
+      "body": "宠物智能用品赛道的核心投资争议在于：消费者是否已从一次性尝鲜购买迁移到持续复购刚需。这一跨越对于赛道的长期价值至关重要——智能猫砂盆、自动饮水机、摄像头等产品若停留在礼品或尝鲜属性，则市场规模将难以支撑持续的品牌溢价和研发投入；反之，若复购率成立，则行业将进入消费电子式的硬件加耗材服务复合收入模式，估值逻辑将发生质变。然而，KPMG 2025 报告目前尚未提供任何公司级的复购率或活跃用户留存数据。京东 2023 至 2024 年宠物电器销售额和销量分别同比增长 28.0% 和 29.0%，增速可观但仅反映总销量，无法区分新用户购买与老用户换新或扩品类。在复购率得到头部品牌公开披露并出现连续上升趋势之前，智能用品仍是一个增速高但商业模式可持续性待验证的早中期赛道。",
+      "supported_by_claims": [
+        "clm-arena-0017"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-arena-0017",
+          "claim_text": "智能用品是否已跨越尝鲜消费到重复购买的拐点仍需公司级复购数据验证",
+          "confidence": "medium_low",
+          "as_of": "2025-06-01",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 博弈规则与胜负手 · 中国智能宠物用品市场\n\n*slug: cn-smart-pet-supplies · 维度: decisive_factors*\n\n",
+      "decision": "approve",
+      "decision_reason": "京东销量增速数据来自 KPMG 2025 报告，复购验证缺口的判断与报告 sg-002 阶段门逻辑完全吻合，如实反映证据边界。",
+      "edited_title": null,
+      "edited_body": null,
+      "arena_slug": "cn-smart-pet-supplies"
+    },
+    {
+      "proposal_id": "np-002",
+      "scope_type": "arena",
+      "scope_ref": "cn-smart-pet-supplies",
+      "dimension": "trajectory",
+      "title": "102 亿起跑：智能用品增速跑赢传统用品、S 曲线早中段",
+      "body": "中国宠物智能用品赛道 2024 年市场规模预计约 102 亿元，对应京东平台宠物电器销售额和销量同比分别增长 28.0% 和 29.0%，增速远超宠物用品整体（2025 年整体预测约 484 亿元）。智能猫砂盆、自动饮水机、智能喂食器和宠物摄像头是当前销售额最大的四大品类，兼具消费电子和宠物刚需的双重属性，与其他用品品类相比更具研发壁垒和溢价空间。102 亿的绝对规模仍相对有限，大约占宠物用品总市场的 20% 出头，但 S 曲线形态判断表明该赛道正处于渗透率提升的早中段，价格带持续下沉正在扩大潜在用户群体。对于具备消费电子供应链或研发能力的跨界参与者而言，这是一个进入时机尚早、竞争格局未定的窗口期；未来 2 至 3 年内若出现头部品牌主动披露复购率与毛利率数据，将是赛道成熟度的重要跃升信号。",
+      "supported_by_claims": [
+        "clm-arena-0016"
+      ],
+      "source_ids": [
+        "行研-毕马威-2025-06-d385a3c7"
+      ],
+      "evidence_summary": [
+        {
+          "claim_id": "clm-arena-0016",
+          "claim_text": "中国宠物智能用品 2024 年市场规模约 102 亿元，增速显著高于传统用品",
+          "confidence": "medium",
+          "as_of": "2025-06-01",
+          "evidence_source_ids": [
+            "行研-毕马威-2025-06-d385a3c7"
+          ]
+        }
+      ],
+      "existing_narrative_excerpt": "# 演进轨迹与触发事件 · 中国智能宠物用品市场\n\n*slug: cn-smart-pet-supplies · 维度: trajectory*\n\n",
+      "decision": "approve",
+      "decision_reason": "102 亿元规模和京东增速数据均来自 KPMG 2025 报告引用的艾瑞/京东数据，证据与报告智能用品章节一致，成长轨迹描述有量化锚点支撑。",
+      "edited_title": null,
+      "edited_body": null,
+      "arena_slug": "cn-smart-pet-supplies"
+    }
+  ],
+  "unmapped_claims": [],
+  "summary_stats": {
+    "total_proposals": 2,
+    "dimension_count": 2,
+    "unsupported_candidates_skipped": 0,
+    "arena_count": 1
+  }
+}
