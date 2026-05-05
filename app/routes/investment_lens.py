@@ -1,8 +1,9 @@
 """Investment lens read-only aggregation views — /lens/{scope}/{slug_or_key}."""
 from __future__ import annotations
 
+import markdown as _md
+import yaml
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from app import config as cfg
@@ -48,6 +49,18 @@ FIELD_LABELS: dict[str, str] = {
 }
 
 
+def _list_insights(slug: str) -> list[dict[str, str]]:
+    """Return all insight files for an industry slug."""
+    insights_dir = cfg.INDUSTRIES_DIR / slug / "insights"
+    if not insights_dir.is_dir():
+        return []
+    results = []
+    for f in sorted(insights_dir.iterdir()):
+        if f.suffix == ".md" and f.stem not in ("INSIGHTS",):
+            results.append({"sha8": f.stem, "path": str(f)})
+    return results
+
+
 @router.get("")
 def lens_index(request: Request):
     industries = industry_io.list_industries()
@@ -77,6 +90,7 @@ def industry_lens(request: Request, slug: str):
         f: fetch_lens_material("industry", slug, f, registry=registry, base=cfg.BASE_PATH)
         for f in fields
     }
+    insights = _list_insights(slug)
     return templates.TemplateResponse(
         request,
         "investment_lens/industry.html",
@@ -86,6 +100,136 @@ def industry_lens(request: Request, slug: str):
             "fields": fields,
             "materials": materials,
             "field_labels": FIELD_LABELS,
+            "insights": insights,
+        },
+    )
+
+
+@router.get("/industry/{slug}/insights/{bundle_sha8}")
+def industry_insight(request: Request, slug: str, bundle_sha8: str):
+    """Render a single INSIGHTS.md file as HTML."""
+    try:
+        meta = industry_io.read_meta(slug)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"industry {slug!r} not found")
+
+    insight_path = cfg.INDUSTRIES_DIR / slug / "insights" / f"{bundle_sha8}.md"
+    if not insight_path.is_file():
+        raise HTTPException(
+            status_code=404,
+            detail=f"insight {bundle_sha8!r} not found for industry {slug!r}",
+        )
+
+    raw = insight_path.read_text(encoding="utf-8")
+
+    # Split YAML frontmatter if present
+    body: str = raw
+    fm: dict[str, str] = {}
+    if raw.startswith("---"):
+        parts = raw.split("---", 2)
+        if len(parts) >= 3:
+            try:
+                fm = yaml.safe_load(parts[1]) or {}
+            except Exception:
+                fm = {}
+            body = parts[2].lstrip("\n")
+
+    html_body = _md.markdown(body, extensions=["tables", "fenced_code", "toc"])
+    insights = _list_insights(slug)
+
+    return templates.TemplateResponse(
+        request,
+        "investment_lens/insight.html",
+        {
+            "slug": slug,
+            "bundle_sha8": bundle_sha8,
+            "meta": meta,
+            "frontmatter": fm,
+            "html_body": html_body,
+            "insights": insights,
+        },
+    )
+
+
+@router.get("/industry/{slug}/narrative")
+def industry_narrative(request: Request, slug: str):
+    """Render render_views-generated narrative.md as HTML."""
+    try:
+        meta = industry_io.read_meta(slug)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"industry {slug!r} not found")
+
+    narrative_path = cfg.DATA_DIR / "industries" / slug / "narrative.md"
+    if not narrative_path.is_file():
+        raise HTTPException(status_code=404, detail=f"narrative.md not found for {slug!r} — run render_views first")
+
+    raw = narrative_path.read_text(encoding="utf-8")
+    fm: dict[str, str] = {}
+    body = raw
+    if raw.startswith("---"):
+        parts = raw.split("---", 2)
+        if len(parts) >= 3:
+            try:
+                fm = yaml.safe_load(parts[1]) or {}
+            except Exception:
+                fm = {}
+            body = parts[2].lstrip("\n")
+
+    html_body = _md.markdown(body, extensions=["tables", "fenced_code", "toc"])
+    return templates.TemplateResponse(
+        request,
+        "investment_lens/insight.html",
+        {
+            "slug": slug,
+            "bundle_sha8": "narrative",
+            "meta": meta,
+            "frontmatter": fm,
+            "html_body": html_body,
+            "insights": _list_insights(slug),
+        },
+    )
+
+
+@router.get("/company/{key}/dashboard")
+def company_dashboard(request: Request, key: str):
+    """Render render_views-generated dashboard.md as HTML."""
+    parts = key.split("_", 1)
+    if len(parts) != 2:
+        raise HTTPException(status_code=400, detail=f"invalid company key format: {key!r}")
+    market, ticker = parts[0], parts[1]
+
+    try:
+        meta = company_io.read_meta(ticker, market)
+    except Exception:
+        meta = {}
+
+    dashboard_path = cfg.DATA_DIR / "companies" / key / "dashboard.md"
+    if not dashboard_path.is_file():
+        raise HTTPException(status_code=404, detail=f"dashboard.md not found for {key!r} — run render_views first")
+
+    raw = dashboard_path.read_text(encoding="utf-8")
+    fm: dict[str, str] = {}
+    body = raw
+    if raw.startswith("---"):
+        parts_md = raw.split("---", 2)
+        if len(parts_md) >= 3:
+            try:
+                fm = yaml.safe_load(parts_md[1]) or {}
+            except Exception:
+                fm = {}
+            body = parts_md[2].lstrip("\n")
+
+    html_body = _md.markdown(body, extensions=["tables", "fenced_code", "toc"])
+    return templates.TemplateResponse(
+        request,
+        "investment_lens/insight.html",
+        {
+            "slug": key,
+            "bundle_sha8": "dashboard",
+            "meta": {"name": meta.get("name", key)} if meta else {"name": key},
+            "frontmatter": fm,
+            "html_body": html_body,
+            "insights": [],
         },
     )
 

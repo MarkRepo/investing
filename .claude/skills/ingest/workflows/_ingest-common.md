@@ -38,7 +38,7 @@ Output: `{ _mineru_md, _mineru_images, meta }`.
 
 ### Step 2 — Generate Bundle (review-bundle)
 
-Dispatch a **general-purpose subagent** with `docs/prompts/ingest-review-bundle.md` as the LLM prompt. Provide the `full.md` (or `full-clean.md`) file from the MinerU output directory.
+Dispatch a **general-purpose subagent** with `docs/prompts/ingest-review-bundle-v3.md` as the LLM prompt. Provide the `full.md` (or `full-clean.md`) file from the MinerU output directory.
 
 The subagent returns a strict v3 JSON bundle. Save to `/tmp/ingest-<sha8>-bundle.json`, then persist to `industries/{slug}/bundles/{sha8}.json` (or `companies/{market}_{ticker}/bundles/{sha8}.json`).
 
@@ -149,6 +149,32 @@ Generate a human-readable insights memo from the bundle and applied claims:
 ```
 
 Then dispatch a **general-purpose subagent** with `docs/prompts/synthesize-insights.md`, providing the context JSON path and the target output path.
+
+Viewable at: `/lens/industry/<slug>/insights/<sha8>`
+
+---
+
+## Post-Apply: Render Views
+
+Generate static markdown views (narrative, company dashboards) for all touched scopes:
+
+```bash
+# Industry narrative
+.venv/bin/python -m scripts.render_views --registry-base data --scope industry --ref <slug>
+
+# Arena narratives (one per arena)
+.venv/bin/python -m scripts.render_views --registry-base data --scope arena --ref <arena_slug>
+
+# Company dashboards (one per company)
+.venv/bin/python -m scripts.render_views --registry-base data --scope company --ref <MARKET_TICKER>
+
+# Or render all scopes at once
+.venv/bin/python -m scripts.render_views --registry-base data --scope all
+```
+
+Viewable at:
+- `/lens/industry/<slug>/narrative` — industry narrative
+- `/lens/company/<MARKET_TICKER>/dashboard` — company dashboard
 
 ---
 

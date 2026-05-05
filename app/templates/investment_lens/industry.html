@@ -9,6 +9,12 @@
   <a href="/bundles?industry={{ slug }}">相关研报</a>
   <span class="nav-sep-inline">·</span>
   <a href="/industries">所有行业</a>
+  <span class="nav-sep-inline">·</span>
+  <a href="/lens/industry/{{ slug }}/narrative">叙事视图</a>
+  {% if insights %}
+  <span class="nav-sep-inline">·</span>
+  <a href="/lens/industry/{{ slug }}/insights/{{ insights[0].sha8 }}">研报摘要</a>
+  {% endif %}
 </p>
 
 <p class="hint">行业投资决策 8 维视图 — 聚合自研报 bundle / 累积 claim / 已有 archive narrative。</p>

@@ -26,6 +26,15 @@ __pycache__/
 data/*.db
 data/*.csv
 
+# ClaimRegistry render_views output (regeneratable from registry)
+data/arenas/
+data/companies/
+data/industries/
+
+# claude lock
+.claude/scheduled_tasks.lock
+
 # Large source materials (kept local only)
 companies/**/sources/*.pdf
 
+.gitnexus

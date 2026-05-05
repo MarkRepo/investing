@@ -59,7 +59,11 @@ def apply_decisions_v3(
                 "action": "new",
             })
         elif decision == "attach":
-            target_id = row["target_claim_id"]
+            target_id = row.get("target_claim_id") or (
+                (row.get("top_matches") or [{}])[0].get("claim_id")
+            )
+            if not target_id:
+                raise ValueError(f"attach row {bid!r} has no target_claim_id and no top_matches")
             registry.attach_evidence_v3(target_id, claim_v3, meta, now)
             bundle_to_persistent[bid] = target_id
             applied.append({
