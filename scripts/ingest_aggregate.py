@@ -269,6 +269,36 @@ def ensure_company_exists(
     return {"key": key, "autobuilt": True}
 
 
+def ensure_brand_exists(name: str, base: Path | None = None) -> Path:
+    """Create brands/{name}/ + meta.yaml if missing. Returns the directory path."""
+    import yaml
+    from datetime import datetime, timezone
+    brand_dir = (Path(base) if base else Path(".")) / "brands" / name
+    brand_dir.mkdir(parents=True, exist_ok=True)
+    meta_file = brand_dir / "meta.yaml"
+    if not meta_file.exists():
+        now = datetime.now(timezone.utc).isoformat()
+        meta_file.write_text(f"name: {name}\ncreated_at: {now}\n", encoding="utf-8")
+    return brand_dir
+
+
+def ensure_arena_exists(
+    slug: str, name: str, parent_industry_slug: str, base: Path | None = None
+) -> Path:
+    """Create arenas/{slug}/ + meta.yaml if missing. Returns the directory path."""
+    from datetime import datetime, timezone
+    arena_dir = (Path(base) if base else Path(".")) / "arenas" / slug
+    arena_dir.mkdir(parents=True, exist_ok=True)
+    meta_file = arena_dir / "meta.yaml"
+    if not meta_file.exists():
+        now = datetime.now(timezone.utc).isoformat()
+        meta_file.write_text(
+            f"slug: {slug}\nname: {name}\nparent_industry_slug: {parent_industry_slug}\ncreated_at: {now}\n",
+            encoding="utf-8",
+        )
+    return arena_dir
+
+
 def bootstrap_arena(proposal: dict, *, base: Path | None = None) -> None:
     """After user approves, actually create the arena (definition + 5 dim
     narrative skeletons). Wrapper around arenas_io.write_definition."""

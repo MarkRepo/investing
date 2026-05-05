@@ -20,6 +20,124 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+# ── v3 apply path ─────────────────────────────────────────────────────────────
+
+
+def _find_claim_in_bundle(bundle: dict, bundle_local_id: str) -> dict:
+    for c in bundle.get("claims", []):
+        if c["id"] == bundle_local_id:
+            return c
+    raise KeyError(f"claim {bundle_local_id!r} not found in bundle")
+
+
+def apply_decisions_v3(
+    bundle: dict[str, Any],
+    decisions: list[dict[str, Any]],
+    registry: ClaimRegistry,
+    now: str,
+) -> list[dict[str, Any]]:
+    """Apply v3 decisions to ClaimRegistry. Returns applied.jsonl rows."""
+    bundle_to_persistent: dict[str, str] = {}
+    applied: list[dict[str, Any]] = []
+    meta = bundle["meta"]
+
+    # Pass 1: new + attach (no relations yet)
+    for row in decisions:
+        decision = row.get("decision")
+        if decision == "skip":
+            continue
+        bid = row["bundle_local_id"]
+        claim_v3 = _find_claim_in_bundle(bundle, bid)
+        if decision == "new":
+            persistent_id = registry.create_claim_v3(claim_v3, meta, now)
+            bundle_to_persistent[bid] = persistent_id
+            applied.append({
+                "bundle_local_id": bid,
+                "claim_id": persistent_id,
+                "scope_type": claim_v3["scope"].split("/")[0].replace("brand:", "brand").replace("cross_cutting", "cross_cutting"),
+                "scope_ref": claim_v3["scope"].split("/", 1)[-1] if "/" in claim_v3["scope"] else "",
+                "action": "new",
+            })
+        elif decision == "attach":
+            target_id = row["target_claim_id"]
+            registry.attach_evidence_v3(target_id, claim_v3, meta, now)
+            bundle_to_persistent[bid] = target_id
+            applied.append({
+                "bundle_local_id": bid,
+                "claim_id": target_id,
+                "scope_type": claim_v3["scope"].split("/")[0],
+                "scope_ref": claim_v3["scope"].split("/", 1)[-1] if "/" in claim_v3["scope"] else "",
+                "action": "attach",
+            })
+        elif decision == "split":
+            raise NotImplementedError("decision='split' is not supported in v3; use skip + manual new")
+
+    # Pass 2: relations (requires all claims to be persisted first)
+    for row in decisions:
+        if row.get("decision") == "skip":
+            continue
+        bid = row["bundle_local_id"]
+        my_persistent = bundle_to_persistent.get(bid)
+        if not my_persistent:
+            continue
+        claim_v3 = _find_claim_in_bundle(bundle, bid)
+        for rel in claim_v3.get("relations", []):
+            target_bid = rel["to"]
+            target_persistent = bundle_to_persistent.get(target_bid)
+            if not target_persistent:
+                continue  # target was skipped
+            registry.append_relation_v3(my_persistent, target_persistent, rel["kind"], meta["source_id"])
+
+    return applied
+
+
+def _load_decisions_v3(decision_paths: list[Path]) -> list[dict[str, Any]]:
+    """Load v3 decision files (JSON arrays) and merge into one list."""
+    merged: list[dict[str, Any]] = []
+    for dp in decision_paths:
+        data = json.loads(dp.read_text(encoding="utf-8"))
+        if isinstance(data, list):
+            merged.extend(data)
+        elif isinstance(data, dict) and "decisions_required" in data:
+            # tolerate accidentally passing v2-format file
+            raise ValueError(f"{dp}: looks like v2 match file, expected v3 JSON array")
+        else:
+            raise ValueError(f"{dp}: unexpected format (expected JSON array)")
+    return merged
+
+
+def cmd_apply_v3(args: argparse.Namespace) -> int:
+    base = Path(args.registry_base)
+    bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
+    registry = ClaimRegistry(base)
+
+    decisions_val = getattr(args, "decisions", None) or []
+    decision_paths = [Path(p) for p in decisions_val]
+    if not decision_paths:
+        print("error: at least one --decisions file is required", flush=True)
+        return 2
+
+    decisions = _load_decisions_v3(decision_paths)
+    now = _now()
+    applied_rows = apply_decisions_v3(bundle, decisions, registry, now)
+
+    applied_out = getattr(args, "applied_out", None)
+    if applied_out:
+        out_path = Path(applied_out)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(
+            "\n".join(json.dumps(r, ensure_ascii=False) for r in applied_rows) + ("\n" if applied_rows else ""),
+            encoding="utf-8",
+        )
+
+    decision_files_desc = ", ".join(str(p) for p in decision_paths)
+    print(f"✓ v3 applied {len(applied_rows)} claims from {decision_files_desc}", flush=True)
+    return 0
+
+
+# ── v2 apply path (preserved for backward compat) ─────────────────────────────
+
+
 def _fact_ids_for_blocks(bundle: dict[str, Any], block_ids: list[str]) -> list[str]:
     block_set = set(block_ids)
     fact_ids = []
@@ -147,8 +265,12 @@ def _apply_split(registry: ClaimRegistry, source_id: str, row: dict[str, Any], n
 
 
 def cmd_apply(args: argparse.Namespace) -> int:
-    base = Path(args.registry_base)
+    # Peek at schema_version to dispatch
     bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
+    if bundle.get("schema_version") == "v3":
+        return cmd_apply_v3(args)
+
+    base = Path(args.registry_base)
     registry = ClaimRegistry(base)
 
     # Resolve all decision file paths (--decisions repeated, --match deprecated alias)

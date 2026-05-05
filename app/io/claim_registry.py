@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import tempfile
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -10,11 +11,38 @@ SCOPE_FILES = {
     "industry": "industries.jsonl",
     "arena": "arenas.jsonl",
     "company": "companies.jsonl",
+    "brand": "brands.jsonl",
     "cross_cutting": "cross_cutting.jsonl",
 }
 CLAIM_TYPES = {"thesis", "judgment", "risk", "scenario", "gate_assessment"}
 CONFIDENCE_VALUES = {"high", "medium_high", "medium", "medium_low", "low"}
 EVIDENCE_DIRECTIONS = {"supports", "refutes", "neutral"}
+
+# v3 allowed values
+V3_CLAIM_TYPES = {"thesis", "judgment", "risk", "catalyst"}
+V3_CONFIDENCE_VALUES = {"high", "medium", "low"}
+V3_RELATION_KINDS = {"because_of", "leads_to", "tension_with", "refines"}
+
+
+def _now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _split_scope_v3(scope: str) -> tuple[str, str]:
+    from app.io.scope_utils import split_scope
+    return split_scope(scope)
+
+
+def _evidence_with_provenance(e: dict, meta: dict, direction: int) -> dict:
+    return {
+        "quote": e.get("quote", ""),
+        "page": e.get("page"),
+        "why": e.get("why", ""),
+        "source_id": meta["source_id"],
+        "institution": meta["institution"],
+        "as_of": meta["published_at"],
+        "direction_in_source": direction,
+    }
 
 
 def _read_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -257,6 +285,99 @@ class ClaimRegistry:
         path.parent.mkdir(parents=True, exist_ok=True)
         with path.open("a", encoding="utf-8") as f:
             f.write(json.dumps(event, ensure_ascii=False, sort_keys=True) + "\n")
+
+    # ── v3 methods ────────────────────────────────────────────────────────────
+
+    def create_claim_v3(self, claim_v3: dict, meta: dict, now: str) -> str:
+        """Create a ClaimRegistry record from a v3 bundle claim. Returns claim_id."""
+        scope_type, scope_ref = _split_scope_v3(claim_v3["scope"])
+        year = meta["published_at"][:4]
+        new_id = self._next_id_v3(scope_type, year)
+        record: dict[str, Any] = {
+            "claim_id": new_id,
+            "schema_version": "v3",
+            "scope_type": scope_type,
+            "scope_ref": scope_ref,
+            "text": claim_v3["text"],
+            "type": claim_v3["type"],
+            "direction": claim_v3["direction"],
+            "confidence": claim_v3["confidence"],
+            "semantic_key": claim_v3.get("semantic_key", ""),
+            "evidence": [
+                _evidence_with_provenance(e, meta, claim_v3["direction"])
+                for e in claim_v3.get("evidence", [])
+            ],
+            "sources": [{
+                "source_id": meta["source_id"],
+                "institution": meta["institution"],
+                "as_of": meta["published_at"],
+                "direction_in_source": claim_v3["direction"],
+                "confidence_in_source": claim_v3["confidence"],
+                "bundle_local_id": claim_v3["id"],
+            }],
+            "relations": [],
+            "first_seen_at": now,
+            "last_updated_at": now,
+        }
+        self._rows_by_scope_type.setdefault(scope_type, []).append(record)
+        self._claims_by_id[new_id] = record
+        self._by_scope.setdefault((scope_type, scope_ref), []).append(new_id)
+        self._persist_scope(scope_type)
+        return new_id
+
+    def attach_evidence_v3(self, claim_id: str, claim_v3: dict, meta: dict, now: str) -> None:
+        """Append evidence from a v3 claim to an existing registry record (last-writer-wins for text/direction/confidence)."""
+        record = self.find_by_id(claim_id)
+        if not record:
+            raise ValueError(f"claim not found: {claim_id}")
+        for e in claim_v3.get("evidence", []):
+            record["evidence"].append(_evidence_with_provenance(e, meta, claim_v3["direction"]))
+        record["sources"].append({
+            "source_id": meta["source_id"],
+            "institution": meta["institution"],
+            "as_of": meta["published_at"],
+            "direction_in_source": claim_v3["direction"],
+            "confidence_in_source": claim_v3["confidence"],
+            "bundle_local_id": claim_v3["id"],
+        })
+        record["text"] = claim_v3["text"]
+        record["direction"] = claim_v3["direction"]
+        record["confidence"] = claim_v3["confidence"]
+        record["last_updated_at"] = now
+        self._rewrite_claim(record)
+
+    def append_relation_v3(self, from_id: str, to_id: str, kind: str, source_id: str) -> None:
+        """Accumulate a relation between two persistent claim ids. Deduped by 'kind|to'."""
+        record = self.find_by_id(from_id)
+        if not record:
+            raise ValueError(f"claim not found: {from_id}")
+        key = f"{kind}|{to_id}"
+        existing_keys = {f"{r['kind']}|{r['to']}" for r in record.get("relations", [])}
+        if key not in existing_keys:
+            record.setdefault("relations", []).append({
+                "to": to_id,
+                "kind": kind,
+                "from_source": source_id,
+            })
+        record["last_updated_at"] = _now_iso()
+        self._rewrite_claim(record)
+
+    def _next_id_v3(self, scope_type: str, year: str) -> str:
+        """Generate {scope_type}-c-{year}-{NNNN}. NNNN increments per (scope_type, year)."""
+        rows = self._rows_by_scope_type.get(scope_type, [])
+        prefix = f"{scope_type}-c-{year}-"
+        existing_nums = []
+        for r in rows:
+            cid = r.get("claim_id", "")
+            if cid.startswith(prefix):
+                try:
+                    existing_nums.append(int(cid[len(prefix):]))
+                except ValueError:
+                    pass
+        next_num = (max(existing_nums) + 1) if existing_nums else 1
+        return f"{prefix}{next_num:04d}"
+
+    # ── integrity ─────────────────────────────────────────────────────────────
 
     def check_integrity(self) -> list[str]:
         warnings: list[str] = []
