@@ -30,3 +30,4 @@ Follow the 6-step v3 workflow in [`_ingest-common.md`](./_ingest-common.md).
 
 - Industry reports may reference multiple companies. Ensure all referenced companies exist but do not force-assign claims to companies outside the report's primary focus.
 - Arena-scoped claims use scope format `arena/{slug}`; handle any new arena slugs by running `agg.ensure_industry_exists` for the parent industry first.
+- If the report contains charts/tables with figure contexts, append them to `industries/{primary_slug}/figure_contexts.jsonl` using `agg.write_figure_contexts`.

@@ -159,7 +159,7 @@ The following are **never used** in the v3 path:
 - `key_facts` (digest-era field)
 - `route_key_facts` (digest-era function)
 - `proposed_arenas` (digest-era field)
-- v2 narrative scripts (removed in v3): the `narrative_*` family — propose, apply, flags
+- v2 narrative scripts (removed in v3): `narrative_propose`, `narrative_apply`, `narrative_flags`
 - v2 bundle fields (not in v3 schema): `insight_*` blocks, `atomic_*` facts, `block_type`
 - v2 gate system (removed in v3): `check_stage_*` script and `stage_*` bundle keys
 - `claim_candidates`, `arena_candidates` (v2 bundle keys — v3 uses top-level `claims` array)
