@@ -1,224 +1,121 @@
-# Endgame Ingest Common Workflow
+# Ingest Common Workflow (v3)
 
 > **Do NOT use digest prompts, key_facts, route_key_facts, proposed_arenas, per-company claims.jsonl written from digest JSON, or observations.jsonl.**
 > The digest-era fields and flow are archived in `docs/superpowers/archive/`. The only supported path is described below.
 
 ---
 
-## 15-Step Endgame Workflow
+## v3 Bundle Schema
 
-### Step 1 — Preprocess
+- **schema_version**: `"v3"`
+- **Top-level keys**: `meta`, `claims`, `summary`, `notes`
+- **claim fields**: `id`, `text`, `type` (thesis/judgment/risk/catalyst), `scope`, `direction` (-1/0/1), `confidence` (high/medium/low — default `"medium"`), `evidence` (list of `{quote, page, why}`), `relations` (list of `{to, kind}`), `semantic_key` (≤20 chars), `as_of`
+- **scope formats**: `industry/{slug}`, `company/{MARKET_TICKER}`, `arena/{slug}`, `brand:{name}`, `cross_cutting`
+- **Decisions files**: JSON arrays (not wrapped in `decisions_required`)
+- `--auto-out`: high-confidence/clear claims; `--pending-out`: risks/negatives/ambiguous
 
-Run `scripts.preprocess_report` to convert the source file (PDF/HTML/MD/TXT) into structured JSON:
+---
+
+## 6-Step v3 Workflow
+
+### Step 1 — Convert PDF (MinerU)
+
+Use the MinerU desktop application to convert the PDF to a markdown output directory (contains `full.md` + `images/`). Then clean and wrap:
 
 ```bash
-.venv/bin/python -m scripts.preprocess_report <file> \
-    --type {annual|quarterly|sell-side|industry} \
-    --market {a-share|us} \
-    --out /tmp/ingest-<sha8>-preprocess.json
+# Step 1a: clean decorative images, keep data charts
+.venv/bin/python -m scripts.clean_mineru <mineru_output_dir>
+# Output: full-clean.md + keep_images/ + delete_images/ + classify_report.json
+
+# Step 1b: wrap paths as JSON for downstream use
+.venv/bin/python -m scripts.mineru_ingest <mineru_output_dir> \
+    --out /tmp/ingest-<sha8>-mineru.json
 ```
 
-Output fields: `meta`, `sections`, `figure_contexts`, `detected_tickers`, `report_abstract`.
+`mineru_ingest.py` auto-detects `full-clean.md` (preferred) or `full.md` (fallback).
 
-**Known limits of preprocess — the controller must verify / patch before proceeding:**
+Output: `{ _mineru_md, _mineru_images, meta }`.
 
-- `meta.institution` is often `null` — read the report cover from `sections[0:5]` or `report_abstract` and fill it manually before building the source_id.
-- `detected_tickers` order does not match cover-page company order; it also occasionally contains invalid strings (OCR noise). Always cross-check ticker↔company name from the cover, not from list position.
+### Step 2 — Generate Bundle (review-bundle)
 
-### Step 2 — Generate Bundle
+Dispatch a **general-purpose subagent** with `docs/prompts/ingest-review-bundle.md` as the LLM prompt. Provide the `full.md` (or `full-clean.md`) file from the MinerU output directory.
 
-Dispatch a **general-purpose subagent** (NOT Explore — Explore is read-only search) with `docs/prompts/ingest-review-bundle.md` as the LLM prompt and the full preprocessed JSON as input. The subagent returns a strict JSON bundle containing `bundle_version`, `source_digest`, `insight_blocks`, `atomic_facts`, `arena_candidates`, `company_candidates`, `claim_candidates`, `synthesis`, `stage_gates`, `schema_fit_review`.
+The subagent returns a strict v3 JSON bundle. Save to `/tmp/ingest-<sha8>-bundle.json`, then persist to `industries/{slug}/bundles/{sha8}.json` (or `companies/{market}_{ticker}/bundles/{sha8}.json`).
 
-Save to `/tmp/ingest-<sha8>-bundle.json`.
+CLI equivalent for re-running extraction:
+```bash
+.venv/bin/python -m scripts.ingest_qa review-bundle \
+    --bundle <path> \
+    --mineru-md <mineru_output_dir>/full.md
+```
 
-### Step 3 — Run ingest_qa review-bundle
+### Step 3 — QA (validate C1-C9)
+
+Run `ingest_qa` to validate the bundle against C1-C9 checks:
 
 ```bash
 .venv/bin/python -m scripts.ingest_qa review-bundle \
-    --bundle /tmp/ingest-<sha8>-bundle.json \
-    --preprocess /tmp/ingest-<sha8>-preprocess.json
+    --bundle /tmp/ingest-<sha8>-bundle.json
 ```
 
-Fix any reported warnings / errors in the bundle before proceeding. (A capable subagent will usually run this itself at the end of Step 2; rerun independently to confirm.)
+Fix any reported warnings or errors in the bundle before proceeding. A capable subagent will often run this at the end of Step 2; rerun independently to confirm.
 
-### Step 4 — Review bundle.arena_candidates
+**Common checks**: schema_version is "v3", required claim fields present, confidence values in {high/medium/low}, scope format valid, semantic_key ≤20 chars, evidence list non-empty.
 
-Examine `bundle.arena_candidates`. For each candidate, decide via `AskUserQuestion`:
-- associate with an existing arena slug
-- create a new arena (`agg.bootstrap_arena_from_candidate`)
-- skip (e.g. no listed participants, or topic out of scope)
+### Step 4 — Match (ingest_match)
 
-**After decisions are made, patch the bundle before proceeding to Step 7.** This is required whether the decision is "associate" or "new":
-
-```python
-slug_map = {
-    "<tentative_slug>": "<final_approved_slug>",  # one entry per candidate
-}
-# 1. Update arena_candidates[*].tentative_slug
-for ac in bundle["arena_candidates"]:
-    ac["tentative_slug"] = slug_map.get(ac["tentative_slug"], ac["tentative_slug"])
-# 2. Update claim_candidates[*].scope_ref for arena-scoped claims
-for cc in bundle["claim_candidates"]:
-    if cc["scope_type"] == "arena" and cc["scope_ref"] in slug_map:
-        cc["scope_ref"] = slug_map[cc["scope_ref"]]
-# 3. Write bundle back and re-run QA (Step 3) to confirm no broken refs
-```
-
-Skipped arenas: set their final slug to an empty string or remove from slug_map; any `claim_candidates` referencing a skipped arena must be relabelled or will fail `ingest_apply`.
-
-### Step 5 — Ensure Industries
-
-For each `industry_slug` referenced in the bundle, run:
-
-```python
-from scripts import ingest_aggregate as agg
-agg.ensure_industry_exists(slug=..., name=..., scope=..., base=Path("."))
-```
-
-Autobuild missing industries; do not abort.
-
-### Step 6 — Ensure Companies
-
-For each approved `company_candidates` entry, run:
-
-```python
-agg.ensure_company_exists(
-    ticker=..., market=..., name=...,
-    industry_slugs=[...], base=Path("."),
-)
-```
-
-Autobuild missing companies; do not abort.
-
-### Step 7 — ingest_match
+Score bundle claims against the existing ClaimRegistry to find duplicates, near-duplicates, and new claims:
 
 ```bash
 .venv/bin/python -m scripts.ingest_match \
     --bundle /tmp/ingest-<sha8>-bundle.json \
-    --registry-base . \
-    --auto-out /tmp/ingest-<sha8>-auto_apply.json \
-    --pending-out /tmp/ingest-<sha8>-pending_review.json
+    --registry-base data \
+    --auto-out /tmp/ingest-<sha8>-auto.json \
+    --pending-out /tmp/ingest-<sha8>-pending.json
 ```
 
-**Split semantics:** `auto_apply` only catches `confidence=high` candidates. Everything else (`medium_high`, `medium`, `medium_low`, `low`) goes to `pending_review` — the pending bucket is therefore not just "medium/low", it is "not high". Don't expect `auto_apply` to be populated for first ingests or conservatively scored bundles.
+**Split semantics**:
+- `auto.json` — `confidence=high` claims with clear registry disposition; safe to apply without review.
+- `pending.json` — risks, negatives, ambiguous, or any claim where confidence is not `"high"`. Always review this file with the user before applying.
 
-### Step 8 — Review pending_review
+**When `pending.json` is non-empty**: present it to the user via `AskUserQuestion`. For each row, the user confirms `decision` (`"new"` / `"attach"` / `"skip"` / `"split"`) and optionally `decision_reason`. Write the file back in place before proceeding to Step 5.
 
-Present `pending_review.json` to user via `AskUserQuestion`. For each row, set three fields:
+**First ingest of a new industry/company**: `top_matches` will be empty for all rows. Still present claims to the user — they may want to skip low-quality or out-of-scope claims. Do NOT silently bulk-approve without user acknowledgement.
 
-- `decision`: `"new" | "attach" | "skip" | "split"`
-- `decision_reason`: one-sentence justification
-- **For `decision="new"`**: `direction_on_claim` and `split_instructions` MUST remain `null` (the match file pre-fills them; leave them alone). `ingest_apply` will reject the row otherwise.
-- **For `decision="attach"`**: set `target_claim_id` and `direction_on_claim`.
-- **For `decision="split"`**: set `split_instructions`.
-- **For `decision="skip"`**: only `decision` + `decision_reason`.
+### Step 5 — Apply (ingest_apply)
 
-**When all rows have empty `top_matches`** (first ingest of a new industry/company):
-
-- Still present the claims to the user — even with no matches, the user may want to skip low-quality or out-of-scope claims.
-- Show the `claim_text` and `scope_ref` for each row in a compact summary.
-- If the user approves all, set `decision="new"` for every row. If they skip some, set `decision="skip"` + `decision_reason`.
-- Do NOT silently bulk-approve without user acknowledgement.
-
-Write the file back in place.
-
-### Step 9 — ingest_apply
+Write approved claims into the ClaimRegistry:
 
 ```bash
 .venv/bin/python -m scripts.ingest_apply \
     --bundle /tmp/ingest-<sha8>-bundle.json \
-    --registry-base . \
-    --decisions /tmp/ingest-<sha8>-auto_apply.json \
-    --decisions /tmp/ingest-<sha8>-pending_review.json \
-    --applied-out /tmp/ingest-<sha8>-applied.jsonl
+    --decisions /tmp/ingest-<sha8>-auto.json \
+    --decisions /tmp/ingest-<sha8>-pending.json \
+    --registry-base data
 ```
 
-Writes approved claims into the ClaimRegistry (`claims/{scope_type}s.jsonl`). `applied.jsonl` lists every (claim_id, scope_type, scope_ref, action) — use it to derive the set of touched `(scope, ref)` pairs for Steps 10, 13, 14.
+Include both `--decisions` flags only when both files exist and are non-empty. Omit a flag if the corresponding file was not produced or is empty.
 
-### Step 10 — narrative_propose (per touched scope)
+`ingest_apply` writes approved claims to `claims/{scope_type}s.jsonl` in the registry.
 
-`narrative_propose` is **per (scope, ref)** — not a single bulk call. Loop over every distinct `(scope_type, scope_ref)` in `applied.jsonl`. Cross-cutting scope has no narrative layer; skip it.
+**Ensure industries and companies exist before applying**: for each `industry/{slug}` or `company/{MARKET_TICKER}` scope referenced in the bundle, run `agg.ensure_industry_exists` / `agg.ensure_company_exists` first. Never abort — autobuild missing entries.
+
+### Step 6 — Verify (QA re-run)
+
+Re-run `ingest_qa` to confirm the applied bundle is clean:
 
 ```bash
-for each (scope, ref) in applied.jsonl where scope in {industry, arena, company}:
-    .venv/bin/python -m scripts.narrative_propose \
-        --scope {industry|arena|company} \
-        --ref <slug_or_ticker> \
-        --registry-base . \
-        --base . \
-        --source-id <source_id> \
-        --out /tmp/ingest-<sha8>-proposals-<scope>-<ref>.json
+.venv/bin/python -m scripts.ingest_qa review-bundle \
+    --bundle /tmp/ingest-<sha8>-bundle.json
 ```
 
-Each file holds proposals with `body=null` — bodies are written in Step 11.
+Expect zero errors. Warnings about missing optional fields are acceptable. If errors appear, fix the underlying data and re-apply.
 
-### Step 11 — Draft bodies, then approve/skip
+---
 
-`narrative_propose` emits proposal shells only (title default, body null, decision null). For each proposal:
+## Post-Apply: Persist Bundle + Registry
 
-1. Draft a Chinese `body` (150-300 字) grounded in the claim's evidence. Prefer dispatching a Sonnet subagent to draft all proposals across all files in one pass — provide it the bundle + proposal files + claim registry excerpts.
-2. Set `decision` to `"approve"` or `"skip"`, with a one-sentence `decision_reason`.
-3. Override the default `title` with a dimension-specific headline.
-4. Leave `edited_title` / `edited_body` as `null`.
-
-`narrative_apply` rejects proposals with empty bodies — do not approve blank proposals.
-
-### Step 12 — narrative_apply (per proposal file)
-
-```bash
-for each proposals file written in Step 10:
-    .venv/bin/python -m scripts.narrative_apply \
-        --proposals /tmp/ingest-<sha8>-proposals-<scope>-<ref>.json \
-        --registry-base . \
-        --base .
-```
-
-Approved proposals append to the scope's dimension `.md` file with frontmatter; the proposals file gets moved to `data/pending/archive/`.
-
-### Step 13 — Write figure_contexts to source layer
-
-Figure contexts live on the **preprocess** JSON (not the bundle). If preprocess extracted any, write them to the industry or company source layer:
-
-```python
-from scripts import ingest_aggregate as agg
-
-# for industry_report / industry-scoped source:
-agg.write_figure_contexts(
-    slug="<industry_slug>",
-    rows=preprocess["figure_contexts"],
-    source_meta=preprocess["meta"],
-    base=Path("."),
-)
-
-# for annual/quarterly/sell-side company source:
-agg.write_figure_contexts_for_company(
-    "<MARKET_TICKER>",
-    preprocess["figure_contexts"],
-    preprocess["meta"],
-    base=Path("."),
-)
-```
-
-If `preprocess["figure_contexts"]` is empty (e.g. PDF without extractable figures), skip.
-
-### Step 14 — narrative_flags (per touched scope)
-
-Same loop as Step 10 — one call per touched `(scope, ref)`:
-
-```bash
-for each (scope, ref) in applied.jsonl where scope in {industry, arena, company}:
-    .venv/bin/python -m scripts.narrative_flags \
-        --scope {industry|arena|company} \
-        --ref <slug_or_ticker> \
-        --registry-base . \
-        --base .
-```
-
-On a fresh ingest the expected count is **0 flags per scope** (all newly-written narrative frontmatter already lists `supported_by_claims`). Non-zero counts point to orphan narrative sections from before this ingest.
-
-### Step 15 — Persist bundle + update registry
-
-Use the `persist_bundle` helper — it co-locates the bundle JSON with the source file and appends a registry entry atomically.
+After Step 6 passes, persist the bundle to the registry:
 
 ```python
 from app.io.bundle_registry import persist_bundle
@@ -228,40 +125,46 @@ entry = persist_bundle(
     bundle,
     source_file_path=Path("<source_dir>/sources/<filename>"),
     touched={
-        "industries": [...],  # industry_slugs touched (claim applied OR narrative written)
-        "arenas":     [...],  # arena_slugs touched (approved in Step 4, excludes skipped)
+        "industries": [...],  # industry_slugs touched
+        "arenas":     [...],  # arena_slugs touched
         "companies":  [...],  # MARKET_TICKER format
     },
-    base=Path("."),
+    base=Path("data"),
 )
 ```
 
-The helper writes `<source_dir>/bundles/{bundle_sha8}.json` and appends to `data/bundle_registry.jsonl`. Note: the `sha8` in the registry entry is a hash of the bundle JSON content (not the source file's sha8), so don't confuse it with the sha8 used in `source_id`.
+The helper writes `<source_dir>/bundles/{bundle_sha8}.json` and appends to `data/bundle_registry.jsonl`.
 
-**Known gap:** `bundle.source_digest` has no `institution` field, so the registry's `institution` column will be empty string. If the `/bundles` page needs institution filtering, parse it from `source_id` (e.g. `行研-中银证券-2025-04-10-ad983472` → `中银证券`) until the schema adds a first-class field.
+---
 
-After `persist_bundle` succeeds, generate the evaluation skeleton:
+## Post-Apply: Synthesize Insights
+
+Generate a human-readable insights memo from the bundle and applied claims:
 
 ```bash
-.venv/bin/python -m scripts.ingest_qa evaluation init \
-    --bundle <source_dir>/bundles/{bundle_sha8}.json \
-    --preprocess /tmp/ingest-<sha8>-preprocess.json \
-    --match /tmp/ingest-<sha8>-auto_apply.json \
-    --out <source_dir>/bundles/{bundle_sha8}-evaluation.json
+.venv/bin/python -m scripts.synthesize_insights \
+    --bundle industries/<slug>/bundles/<sha8>.json \
+    --registry-base data \
+    --out industries/<slug>/insights/<sha8>.md
 ```
 
-Omit `--match` if no auto_apply file was produced (e.g. all candidates went to pending_review). The skeleton captures L1 warnings and matching metrics; L2 is run separately via `docs/prompts/ingest-eval-l2.md` when the user requests a quality review.
+Then dispatch a **general-purpose subagent** with `docs/prompts/synthesize-insights.md`, providing the context JSON path and the target output path.
 
 ---
 
 ## Prohibited Fields and Paths
 
-The following are **never used** in the endgame path:
+The following are **never used** in the v3 path:
 
 - `key_facts` (digest-era field)
 - `route_key_facts` (digest-era function)
 - `proposed_arenas` (digest-era field)
+- v2 narrative scripts (removed in v3): the `narrative_*` family — propose, apply, flags
+- v2 bundle fields (not in v3 schema): `insight_*` blocks, `atomic_*` facts, `block_type`
+- v2 gate system (removed in v3): `check_stage_*` script and `stage_*` bundle keys
+- `claim_candidates`, `arena_candidates` (v2 bundle keys — v3 uses top-level `claims` array)
 - Per-company `claims.jsonl` (replaced by ClaimRegistry at `claims/{scope_type}s.jsonl`)
 - `observations.jsonl` under `industries/{slug}/` (replaced by ClaimRegistry)
 - Any prompt in `.claude/skills/ingest/prompts/digest/` (archived)
 - Digest subagent (Explore returning JSON with `key_facts`)
+- `scripts.preprocess_report` (v2 preprocess — use MinerU for PDFs)

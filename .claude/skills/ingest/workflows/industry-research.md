@@ -10,30 +10,23 @@ industries/{primary_slug}/sources/{filename}
 
 Save the original file with `claims_io.save_source_markdown` (or copy directly) into the industry sources directory.
 
-## Figure Contexts Location
-
-```
-industries/{primary_slug}/figure_contexts.jsonl
-```
-
 ## Pre-match Steps
 
-Before running `ingest_match` (Step 7 of common workflow):
+Before running `ingest_match` (Step 4 of common workflow):
 
 1. Identify or confirm `primary_slug` from the report title/abstract. If unclear, AskUserQuestion.
 2. Ensure the `primary_slug` industry exists via `agg.ensure_industry_exists`.
-3. For each `arena_candidates` entry in the bundle, confirm the parent industry matches `primary_slug` or a related industry before proceeding.
-4. Run Steps 5–6 of the common workflow to ensure all referenced industries and companies exist.
+3. For each arena-scoped claim in the bundle, verify the parent industry matches `primary_slug` or a related industry before proceeding.
+4. Ensure all referenced industries and companies exist via `agg.ensure_industry_exists` / `agg.ensure_company_exists`.
 
 ## Workflow Reference
 
-Follow all 15 steps in [`_ingest-common.md`](./_ingest-common.md).
+Follow the 6-step v3 workflow in [`_ingest-common.md`](./_ingest-common.md).
 
-- `--scope industry --ref {primary_slug}` for Steps 10 and 14.
-- figure_contexts written to `industries/{primary_slug}/figure_contexts.jsonl` in Step 13.
-- Bundle persisted to `industries/{primary_slug}/bundles/` in Step 15.
+- Scope for match/apply: `industry/{primary_slug}`.
+- Bundle persisted to `industries/{primary_slug}/bundles/` after Step 6.
 
 ## Notes
 
-- Industry reports may reference multiple companies (`company_candidates`). Ensure all referenced companies exist but do not force-assign narrative updates to companies outside the report's primary focus.
-- Arena candidates from the bundle represent themes across the industry; handle them per Step 4 of the common workflow.
+- Industry reports may reference multiple companies. Ensure all referenced companies exist but do not force-assign claims to companies outside the report's primary focus.
+- Arena-scoped claims use scope format `arena/{slug}`; handle any new arena slugs by running `agg.ensure_industry_exists` for the parent industry first.

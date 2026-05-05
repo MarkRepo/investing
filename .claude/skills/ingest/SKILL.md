@@ -11,10 +11,15 @@ Use this skill to ingest investment research source files into the **review-bund
 
 ## Pipeline Overview
 
-The only supported path is:
+The v3 pipeline is a 6-step workflow. PDF files should be converted with MinerU first.
 
 ```
-preprocess → review-bundle → review-bundle QA → ingest_match → ingest_apply → ClaimRegistry → narrative_propose → narrative_apply → narrative_flags → bundle registry
+1. mineru      — MinerU desktop app converts PDF → markdown
+2. review-bundle — LLM extracts v3 bundle from markdown
+3. QA          — ingest_qa validates C1-C9 checks
+4. match       — ingest_match scores claims against registry
+5. apply       — ingest_apply writes approved claims to ClaimRegistry
+6. verify      — ingest_qa re-run to confirm clean state
 ```
 
 Never use digest prompts or digest-era fields. See the archived docs at `docs/superpowers/archive/` for historical reference only.
@@ -40,11 +45,11 @@ Every workflow follows the 15-step endgame skeleton defined in `workflows/_inges
 
 - **Common workflow**: `workflows/_ingest-common.md`
 - **Review-bundle prompt**: `docs/prompts/ingest-review-bundle.md`
-- **Preprocess script**: `scripts.preprocess_report`
+- **MinerU ingest**: `scripts.mineru_ingest`
 - **Match script**: `scripts.ingest_match`
 - **Apply script**: `scripts.ingest_apply`
-- **Narrative scripts**: `scripts.narrative_propose`, `scripts.narrative_apply`, `scripts.narrative_flags`
-- **ClaimRegistry**: written by `ingest_apply`; queried by web app and narrative scripts
+- **QA script**: `scripts.ingest_qa`
+- **ClaimRegistry**: written by `ingest_apply`; queried by web app
 - **Bundle registry**: `data/bundle_registry.jsonl`
 - **Templates**: `.claude/skills/ingest/templates/`
 - **Source ID rules**: `.claude/skills/ingest/source-id-rules.yaml`
