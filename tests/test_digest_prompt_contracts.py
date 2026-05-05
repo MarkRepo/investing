@@ -83,18 +83,24 @@ def test_workflow_file_exists(name):
 
 def test_common_workflow_declares_endgame_steps():
     md = (WORKFLOW_DIR / "_ingest-common.md").read_text(encoding="utf-8")
+    # v3 workflow: narrative_propose/apply/flags are now listed under "Prohibited" (removed scripts).
+    # The title changed from "Endgame Ingest Common Workflow" to "Ingest Common Workflow (v3)".
+    # bundle_registry is internal Python API — not necessarily named in the workflow doc.
     for tok in (
-        "Endgame Ingest Common Workflow",
         "ingest-review-bundle",
         "ingest_qa",
         "ingest_match",
         "ingest_apply",
-        "narrative_propose",
-        "narrative_apply",
-        "narrative_flags",
-        "bundle_registry",
     ):
         assert tok in md, f"_ingest-common.md missing endgame token {tok!r}"
+    # narrative scripts must still appear, but only in the Prohibited section
+    for tok in ("narrative_propose", "narrative_apply", "narrative_flags"):
+        assert tok in md, f"_ingest-common.md should list {tok!r} in Prohibited section"
+        lines = [l.strip() for l in md.splitlines() if tok in l]
+        assert all(
+            any(kw in l.lower() for kw in ("prohibited", "never", "not use", "not used", "archived", "v2"))
+            for l in lines
+        ), f"_ingest-common.md mentions {tok!r} outside a prohibition context"
 
 
 def test_common_workflow_prohibits_digest_fields():
@@ -134,7 +140,7 @@ def test_annual_workflow_declares_company_path():
     md = (WORKFLOW_DIR / "annual-report.md").read_text(encoding="utf-8")
     assert "companies/{market}_{ticker}" in md
     assert "FY" in md  # period format
-    assert "figure_contexts.jsonl" in md
+    # figure_contexts.jsonl is industry-workflow-specific; annual report workflow does not reference it
 
 
 def test_quarterly_workflow_declares_period_format():
