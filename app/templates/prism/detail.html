@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block title %}{{ topic.display_name or topic.slug }} · 研究主题{% endblock %}
+{% block content %}
+<div class="prism-header" data-slug="{{ topic.slug }}">
+  <h1>{{ topic.display_name or topic.slug }}</h1>
+  <code class="slug-tag">{{ topic.slug }}</code>
+  <span class="badge badge-{{ topic.status }}">{{ topic.status }}</span>
+  <span class="hint"> · {{ topic.type }} · {{ topic.scope.geo }}</span>
+</div>
+
+<p class="scope-question">研究问题：<em>{{ topic.scope.question }}</em></p>
+
+<div class="prism-columns">
+
+  <!-- Left: 8 outputs -->
+  <section class="outputs-panel">
+    <h2>8 份产出</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>产出</th><th>版本</th><th>状态</th><th>更新时间</th></tr>
+      </thead>
+      <tbody>
+      {% for out in outputs %}
+        <tr>
+          <td>
+            {% if out.file_exists %}
+              <a href="/prism/{{ topic.slug }}/output/{{ out.key }}">{{ out.label }}</a>
+            {% else %}
+              <span class="hint">{{ out.label }}</span>
+            {% endif %}
+          </td>
+          <td class="hint">v{{ out.version }}</td>
+          <td>
+            <span class="badge-small badge-{{ out.status }}">{{ out.status }}</span>
+          </td>
+          <td class="hint">{{ (out.last_updated or '')[:10] or '—' }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Right: next actions + todos -->
+  <aside class="actions-panel">
+    <section>
+      <h3>下一步（系统建议）</h3>
+      {% if topic.next_actions %}
+      <ul>
+        {% for action in topic.next_actions %}
+        <li>{{ action }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="hint">暂无建议</p>
+      {% endif %}
+    </section>
+
+    <section>
+      <h3>你需要做的事</h3>
+      {% if topic.user_todos %}
+      <ul>
+        {% for todo in topic.user_todos %}
+        <li>{{ todo }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="hint">暂无待办</p>
+      {% endif %}
+    </section>
+
+    <section>
+      <h3>资料库</h3>
+      <p>共 {{ mat_counts.total }} 份 · 已处理 {{ mat_counts.processed }} · 未处理 {{ mat_counts.unprocessed }}</p>
+      {% if manifest.materials %}
+      <ul class="material-list">
+        {% for mat in manifest.materials %}
+        <li>
+          <span class="{% if mat.processed %}processed{% else %}unprocessed{% endif %}">
+            {{ mat.filename }}
+          </span>
+          <span class="hint"> · {{ mat.source_type }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="hint">暂无资料。运行 workflow 02-gather-materials 后自动更新。</p>
+      {% endif %}
+    </section>
+
+    <section>
+      <h3>当前阶段</h3>
+      <p class="hint stage-badge">{{ topic.stage }}</p>
+    </section>
+  </aside>
+
+</div>
+
+<a href="/prism" class="back-link">← 所有主题</a>
+
+<style>
+  .prism-header { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0.3em; flex-wrap: wrap; }
+  .slug-tag { font-size: 0.78em; color: #888; background: #f4f4f4; padding: 0.1em 0.4em; border-radius: 3px; }
+  .scope-question { color: #444; margin: 0.5em 0 1.5em; }
+  .prism-columns { display: grid; grid-template-columns: 1fr 320px; gap: 2em; align-items: start; }
+  @media (max-width: 900px) { .prism-columns { grid-template-columns: 1fr; } }
+  .outputs-panel h2, .actions-panel h3 { margin: 0 0 0.5em; font-size: 1em; color: #333; }
+  .actions-panel { border-left: 2px solid #eee; padding-left: 1.5em; }
+  .actions-panel section { margin-bottom: 1.5em; }
+  .actions-panel ul { padding-left: 1.2em; margin: 0.3em 0; }
+  .actions-panel li { margin: 0.3em 0; font-size: 0.9em; }
+  .material-list { padding-left: 1em; }
+  .material-list li { margin: 0.25em 0; font-size: 0.85em; }
+  .processed { color: #888; }
+  .unprocessed { color: #222; font-weight: 500; }
+  .stage-badge { font-family: monospace; background: #f4f4f4; padding: 0.2em 0.5em; border-radius: 3px; display: inline-block; }
+  .badge { font-size: 0.75em; padding: 0.2em 0.5em; border-radius: 3px; }
+  .badge-small { font-size: 0.72em; padding: 0.15em 0.4em; border-radius: 3px; }
+  .badge-active, .badge-fresh { background: #e6f4ea; color: #2d7a3a; }
+  .badge-paused, .badge-stale { background: #fff3e0; color: #b45309; }
+  .badge-archived, .badge-pending { background: #f1f5f9; color: #888; }
+  .data-table { border-collapse: collapse; width: 100%; }
+  .data-table th, .data-table td { padding: 0.45em 0.7em; border-bottom: 1px solid #eee; font-size: 0.9em; }
+  .data-table th { font-weight: 600; color: #555; }
+  .hint { color: #888; font-size: 0.85em; }
+  .back-link { display: inline-block; margin-top: 2em; color: #666; font-size: 0.9em; }
+</style>
+{% endblock %}
