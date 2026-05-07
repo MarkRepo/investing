@@ -107,3 +107,72 @@ def test_list_topics_returns_all(topics_root):
     slugs = [tp["slug"] for tp in topics]
     assert "cn-pet" in slugs
     assert "cn-space" in slugs
+
+
+# ---------------------------------------------------------------------------
+# manifest.py tests
+# ---------------------------------------------------------------------------
+
+@pytest.fixture
+def manifest_root(tmp_path, monkeypatch):
+    import prism.scripts.topic as t
+    import prism.scripts.manifest as m
+    monkeypatch.setattr(t, "_PRISM_ROOT", tmp_path)
+    monkeypatch.setattr(m, "_PRISM_ROOT", tmp_path)
+    (tmp_path / "topics").mkdir()
+    t.create_topic("cn-pet", "中国宠物", "industry", "q", "CN", "deep")
+    return tmp_path
+
+
+def test_create_manifest(manifest_root):
+    from prism.scripts import manifest as m
+
+    path = m.create_manifest("cn-pet")
+    assert path.exists()
+    data = m.read_manifest("cn-pet")
+    assert data["slug"] == "cn-pet"
+    assert data["materials"] == []
+
+
+def test_add_material_returns_id(manifest_root):
+    from prism.scripts import manifest as m
+
+    m.create_manifest("cn-pet")
+    mat_id = m.add_material("cn-pet", "report.md", "sell-side-note")
+    assert mat_id.startswith("mat-")
+    data = m.read_manifest("cn-pet")
+    assert len(data["materials"]) == 1
+    assert data["materials"][0]["filename"] == "report.md"
+    assert data["materials"][0]["processed"] is False
+
+
+def test_mark_processed(manifest_root):
+    from prism.scripts import manifest as m
+
+    m.create_manifest("cn-pet")
+    mat_id = m.add_material("cn-pet", "report.md", "sell-side-note")
+    m.mark_processed("cn-pet", mat_id)
+    assert m.read_manifest("cn-pet")["materials"][0]["processed"] is True
+
+
+def test_list_unprocessed(manifest_root):
+    from prism.scripts import manifest as m
+
+    m.create_manifest("cn-pet")
+    m.add_material("cn-pet", "a.md", "sell-side-note")
+    id2 = m.add_material("cn-pet", "b.md", "annual-report")
+    m.mark_processed("cn-pet", id2)
+    unprocessed = m.list_unprocessed("cn-pet")
+    assert len(unprocessed) == 1
+    assert unprocessed[0]["filename"] == "a.md"
+
+
+def test_material_count(manifest_root):
+    from prism.scripts import manifest as m
+
+    m.create_manifest("cn-pet")
+    id1 = m.add_material("cn-pet", "a.md", "sell-side-note")
+    m.add_material("cn-pet", "b.md", "sell-side-note")
+    m.mark_processed("cn-pet", id1)
+    counts = m.material_count("cn-pet")
+    assert counts == {"total": 2, "processed": 1, "unprocessed": 1}
