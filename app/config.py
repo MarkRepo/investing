@@ -18,6 +18,7 @@ CONTROLLED_VOCAB_DIR = BASE_PATH / "controlled-vocab"
 
 APP_TEMPLATES_DIR = BASE_PATH / "app" / "templates"
 STATIC_DIR = BASE_PATH / "static"
+PRISM_DIR = BASE_PATH / "prism"
 
 VALID_MARKETS = ("US", "SSE", "SZSE", "BSE", "HK")
 # VALID_SECTORS / sector whitelist removed in Plan 1 (Tasks 3/4/11/22).
