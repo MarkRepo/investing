@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}研究主题{% endblock %}
+{% block content %}
+<h1>研究主题</h1>
+<p class="hint">所有 Prism 研究主题。在对话窗口说「研究 X」开启新主题。</p>
+
+{% if topics %}
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>主题</th>
+      <th>类型</th>
+      <th>阶段</th>
+      <th>产出进度</th>
+      <th>状态</th>
+      <th>创建</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for t in topics %}
+    {% set fresh_count = t.outputs_state.values() | selectattr('status', 'equalto', 'fresh') | list | length %}
+    {% set total_count = t.outputs_state | length %}
+    <tr>
+      <td><a href="/prism/{{ t.slug }}">{{ t.display_name or t.slug }}</a></td>
+      <td class="hint">{{ t.type }}</td>
+      <td class="hint">{{ t.stage }}</td>
+      <td>
+        <span class="progress-label">{{ fresh_count }}/{{ total_count }}</span>
+      </td>
+      <td>
+        <span class="badge badge-{{ t.status }}">{{ t.status }}</span>
+      </td>
+      <td class="hint">{{ (t.created or '')[:10] }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="hint">暂无研究主题。在对话窗口说「研究中国宠物行业」开启第一个主题。</p>
+{% endif %}
+
+<style>
+  .data-table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  .data-table th, .data-table td { padding: 0.5em 0.8em; text-align: left; border-bottom: 1px solid #eee; }
+  .data-table th { font-weight: 600; color: #555; }
+  .badge { font-size: 0.75em; padding: 0.2em 0.5em; border-radius: 3px; }
+  .badge-active { background: #e6f4ea; color: #2d7a3a; }
+  .badge-paused { background: #fff3e0; color: #b45309; }
+  .badge-archived { background: #f1f5f9; color: #888; }
+  .hint { color: #888; font-size: 0.85em; }
+  .progress-label { font-size: 0.85em; color: #555; }
+</style>
+{% endblock %}
