@@ -17,7 +17,6 @@ from app.routes.competence_map import router as competence_map_router
 from app.routes.discipline import router as discipline_router
 from app.routes.earnings_review import router as earnings_review_router
 from app.routes.financials import router as financials_router
-from app.routes.industries import router as industries_router
 from app.routes.journal import router as journal_router
 from app.routes.performance import router as performance_router
 from app.routes.portfolio import router as portfolio_router
@@ -29,7 +28,9 @@ from app.routes.research import router as research_router
 from app.routes.review import router as review_router
 from app.routes.search import router as search_router
 from app.routes.sources import router as sources_router
-from app.routes.investment_lens import router as investment_lens_router
+from app.routes.insights import router as insights_router
+from app.routes.mineru import router as mineru_router
+from app.routes.prism import router as prism_router
 from app.routes.triggers import router as triggers_router
 from app.routes.v0 import router as v0_router
 from app.routes.valuation import router as valuation_router
@@ -65,14 +66,15 @@ app.include_router(review_router)
 app.include_router(catalysts_router)
 app.include_router(regime_router)
 app.include_router(competence_map_router)
-app.include_router(industries_router)
+app.include_router(arenas_router)
 app.include_router(discipline_router)
 app.include_router(claim_audit_router)
 app.include_router(qa_router)
-app.include_router(arenas_router)
 app.include_router(bundles_router)
 app.include_router(sources_router)
-app.include_router(investment_lens_router)
+app.include_router(insights_router)
+app.include_router(mineru_router)
+app.include_router(prism_router)
 
 
 @app.get("/", response_class=HTMLResponse)
