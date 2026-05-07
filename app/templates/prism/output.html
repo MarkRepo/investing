@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{{ current_output.label if current_output else output_key }} · {{ topic.display_name }}{% endblock %}
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
+  <span>{{ current_output.label if current_output else output_key }}</span>
+</nav>
+
+<div class="output-layout">
+  <!-- Sidebar: output nav -->
+  <aside class="output-nav">
+    <h3>8 份产出</h3>
+    <ul>
+    {% for out in outputs %}
+      <li class="{% if out.key == output_key %}active{% endif %}">
+        {% if out.file_exists %}
+          <a href="/prism/{{ topic.slug }}/output/{{ out.key }}">
+            {{ out.label }}
+            {% if out.status == 'stale' %}<span class="stale-dot" title="需要更新">⚠</span>{% endif %}
+          </a>
+        {% else %}
+          <span class="hint">{{ out.label }}</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+    <p class="hint nav-back"><a href="/prism/{{ topic.slug }}">← 返回仪表盘</a></p>
+  </aside>
+
+  <!-- Main content -->
+  <article class="output-body">
+    {% if current_output %}
+    <div class="output-meta hint">
+      版本 v{{ current_output.version }} ·
+      {% if current_output.last_updated %}更新于 {{ current_output.last_updated[:10] }}{% endif %}
+      {% if current_output.status == 'stale' %}<span class="stale-label"> · 已过期，建议重新生成</span>{% endif %}
+    </div>
+    {% endif %}
+
+    <div class="markdown-body">
+      {{ html_body | safe }}
+    </div>
+  </article>
+</div>
+
+<style>
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 1.5em; }
+  .breadcrumb a { color: #555; }
+  .output-layout { display: grid; grid-template-columns: 200px 1fr; gap: 2em; align-items: start; }
+  @media (max-width: 800px) { .output-layout { grid-template-columns: 1fr; } }
+  .output-nav h3 { font-size: 0.85em; color: #888; margin: 0 0 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
+  .output-nav ul { list-style: none; padding: 0; margin: 0; }
+  .output-nav li { margin: 0.3em 0; font-size: 0.9em; padding: 0.25em 0.4em; border-radius: 3px; }
+  .output-nav li.active { background: #f0f0f0; font-weight: 600; }
+  .output-nav li.active a { color: #111; }
+  .nav-back { margin-top: 1em; }
+  .output-meta { margin-bottom: 1em; }
+  .stale-dot { color: #b45309; }
+  .stale-label { color: #b45309; }
+  .markdown-body h1 { font-size: 1.4em; margin-top: 0; }
+  .markdown-body h2 { font-size: 1.1em; margin-top: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 0.2em; }
+  .markdown-body table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.9em; }
+  .markdown-body th, .markdown-body td { border: 1px solid #ddd; padding: 0.4em 0.7em; }
+  .markdown-body th { background: #f8f8f8; font-weight: 600; }
+  .markdown-body code { background: #f4f4f4; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+  .markdown-body pre { background: #f4f4f4; padding: 1em; border-radius: 4px; overflow-x: auto; }
+  .markdown-body blockquote { border-left: 3px solid #ddd; margin: 0; padding-left: 1em; color: #666; }
+  .hint { color: #888; font-size: 0.85em; }
+</style>
+{% endblock %}
