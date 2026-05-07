@@ -19,6 +19,8 @@ _OUTPUT_KEYS = [
     "08_living_feed",
 ]
 
+_DEFAULT_OUTPUT_STATE = {"version": 0, "last_updated": None, "status": "pending"}
+
 
 def _topics_dir() -> Path:
     return _PRISM_ROOT / "topics"
@@ -64,10 +66,7 @@ def create_topic(
             "question": question,
             "depth": depth,
         },
-        "outputs_state": {
-            key: {"version": 0, "last_updated": None, "status": "pending"}
-            for key in _OUTPUT_KEYS
-        },
+        "outputs_state": {key: dict(_DEFAULT_OUTPUT_STATE) for key in _OUTPUT_KEYS},
         "next_actions": ["运行 workflow 01-build-roadmap"],
         "user_todos": [],
         "monitoring": {"enabled": False, "cadence": "daily"},
@@ -96,9 +95,7 @@ def set_stage(slug: str, stage: str) -> None:
 
 def set_output_status(slug: str, output_key: str, status: str, version: int | None = None) -> None:
     data = read_topic(slug)
-    entry = data["outputs_state"].setdefault(
-        output_key, {"version": 0, "last_updated": None, "status": "pending"}
-    )
+    entry = data["outputs_state"].setdefault(output_key, dict(_DEFAULT_OUTPUT_STATE))
     entry["status"] = status
     entry["last_updated"] = _now_iso()
     if version is not None:
