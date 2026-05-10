@@ -2,7 +2,7 @@
 
 **定位**：找出与当前情景最相似的历史案例，从中提炼类比与警示  
 **训练知识比例**：约 90%（LLM 超能力所在，几乎不依赖资料）  
-**产出文件**：`prism/topics/{slug}/outputs/05_historical_mirrors.md`
+**产出文件**：`prism/topics/{slug}/{variant}/outputs/05_historical_mirrors.md`
 
 ---
 

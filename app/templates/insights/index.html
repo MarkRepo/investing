@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}研究备忘录{% endblock %}
+{% block content %}
+<h1>研究备忘录</h1>
+<p class="hint">已有叙事备忘录的行业。</p>
+
+{% if rows %}
+<ul class="insights-index-list">
+  {% for ind in rows %}
+  <li>
+    <a href="/insights/industry/{{ ind.slug }}">{{ ind.name or ind.slug }}</a>
+    <span class="hint">{{ ind.slug }} · {{ ind.insight_count }} 份</span>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="hint">暂无备忘录，ingest 研报后自动显示。</p>
+{% endif %}
+
+<style>
+  .insights-index-list { list-style: none; padding: 0; margin: 1em 0; }
+  .insights-index-list li { margin: 0.5em 0; font-size: 0.95em; }
+  .hint { color: #888; font-size: 0.85em; }
+</style>
+{% endblock %}

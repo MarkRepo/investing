@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block title %}对比：{{ output_label }} · {{ topic.display_name }}{% endblock %}
+{% block main_class %}wide{% endblock %}
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/{{ slug }}">{{ topic.display_name or slug }}</a> /
+  <span>对比：{{ output_label }}</span>
+</nav>
+
+<h1>{{ topic.display_name or slug }} · <span class="output-label">{{ output_label }}</span></h1>
+
+<!-- Selector bar -->
+<form class="compare-controls" method="get" action="/prism/{{ slug }}/compare/{{ output_key }}">
+  <div class="control-group">
+    <label for="output_key">产出</label>
+    <select name="output_key" id="output_key" onchange="navigate_to_output()">
+      {% for key, label in output_options %}
+        <option value="{{ key }}" {% if key == output_key %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="control-group">
+    <label for="source1">模型 A</label>
+    <select name="source1" id="source1" onchange="this.form.submit()">
+      {% for v in all_variants %}
+        <option value="{{ v }}" {% if v == source1 %}selected{% endif %}>{{ v }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="button" class="swap-btn" title="交换两个模型的位置"
+          onclick="swap_sources()">⇄ 交换</button>
+  <div class="control-group">
+    <label for="source2">模型 B</label>
+    <select name="source2" id="source2" onchange="this.form.submit()">
+      {% for v in all_variants %}
+        <option value="{{ v }}" {% if v == source2 %}selected{% endif %}>{{ v }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</form>
+
+<!-- Split view -->
+<div class="compare-split">
+  <div class="compare-pane">
+    <div class="pane-header">
+      <span class="model-tag">{{ source1 }}</span>
+      {% if meta1 %}
+        <span class="hint">v{{ meta1.version }}</span>
+        <span class="badge-small badge-{{ meta1.status }}">{{ meta1.status }}</span>
+      {% endif %}
+    </div>
+    <div class="pane-body">
+      {% if html1 %}
+        <div class="markdown-body">{{ html1 | safe }}</div>
+      {% else %}
+        <p class="empty-hint">该产出尚未生成</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="compare-divider"></div>
+
+  <div class="compare-pane">
+    <div class="pane-header">
+      <span class="model-tag">{{ source2 }}</span>
+      {% if meta2 %}
+        <span class="hint">v{{ meta2.version }}</span>
+        <span class="badge-small badge-{{ meta2.status }}">{{ meta2.status }}</span>
+      {% endif %}
+    </div>
+    <div class="pane-body">
+      {% if html2 %}
+        <div class="markdown-body">{{ html2 | safe }}</div>
+      {% else %}
+        <p class="empty-hint">该产出尚未生成</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<a href="/prism/{{ slug }}" class="back-link">← 模型选择</a>
+
+<script>
+function swap_sources() {
+  var s1 = document.getElementById('source1').value;
+  var s2 = document.getElementById('source2').value;
+  document.getElementById('source1').value = s2;
+  document.getElementById('source2').value = s1;
+  document.querySelector('.compare-controls').submit();
+}
+function navigate_to_output() {
+  var key = document.getElementById('output_key').value;
+  var s1 = document.getElementById('source1').value;
+  var s2 = document.getElementById('source2').value;
+  window.location.href = '/prism/{{ slug }}/compare/' + key + '?source1=' + encodeURIComponent(s1) + '&source2=' + encodeURIComponent(s2);
+}
+</script>
+
+<style>
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 0.5em; }
+  .breadcrumb a { color: #555; }
+  .output-label { color: #2a5db0; }
+
+  .compare-controls {
+    display: flex; align-items: center; gap: 0.8em;
+    margin: 1em 0 1.5em;
+    padding: 0.8em 1em;
+    background: #f8f8f8; border-radius: 6px;
+    flex-wrap: wrap;
+  }
+  .control-group { display: flex; align-items: center; gap: 0.35em; }
+  .control-group label { font-size: 0.8em; color: #888; white-space: nowrap; }
+  .control-group select {
+    padding: 0.3em 0.5em; border: 1px solid #ccc; border-radius: 4px;
+    font-size: 0.85em; background: #fff;
+  }
+  .swap-btn {
+    padding: 0.3em 0.6em; border: 1px solid #ccc; border-radius: 4px;
+    background: #fff; cursor: pointer; font-size: 0.85em; line-height: 1;
+    white-space: nowrap; color: #333;
+  }
+  .swap-btn:hover { background: #eee; color: #111; }
+
+  .compare-split {
+    display: grid; grid-template-columns: 1fr 4px 1fr;
+    gap: 0; align-items: start;
+    border: 1px solid #e0e0e0; border-radius: 6px;
+    overflow: hidden;
+  }
+  @media (max-width: 900px) {
+    .compare-split { grid-template-columns: 1fr; }
+    .compare-divider { display: none; }
+    .compare-pane { border-bottom: 1px solid #e0e0e0; }
+  }
+
+  .compare-pane { overflow: auto; }
+  .pane-header {
+    padding: 0.6em 1em;
+    background: #f4f4f4; border-bottom: 1px solid #e0e0e0;
+    display: flex; align-items: center; gap: 0.5em;
+    position: sticky; top: 0; z-index: 1;
+  }
+  .pane-body { padding: 1em; }
+  .empty-hint { color: #aaa; font-style: italic; padding: 2em 1em; text-align: center; }
+
+  .compare-divider { background: #e0e0e0; }
+
+  .model-tag { font-size: 0.85em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.45em; border-radius: 3px; font-family: monospace; font-weight: 600; }
+  .badge-small { font-size: 0.72em; padding: 0.15em 0.4em; border-radius: 3px; }
+  .badge-fresh { background: #e6f4ea; color: #2d7a3a; }
+  .badge-stale { background: #fff3e0; color: #b45309; }
+  .badge-pending { background: #f1f5f9; color: #888; }
+  .hint { color: #888; font-size: 0.82em; }
+
+  .markdown-body h1 { font-size: 1.3em; margin-top: 0; }
+  .markdown-body h2 { font-size: 1.05em; margin-top: 1.3em; border-bottom: 1px solid #eee; padding-bottom: 0.2em; }
+  .markdown-body h3 { font-size: 0.95em; }
+  .markdown-body table { border-collapse: collapse; width: 100%; margin: 0.8em 0; font-size: 0.82em; }
+  .markdown-body th, .markdown-body td { border: 1px solid #ddd; padding: 0.3em 0.5em; }
+  .markdown-body th { background: #f8f8f8; font-weight: 600; }
+  .markdown-body code { background: #f4f4f4; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+  .markdown-body pre { background: #f4f4f4; padding: 0.8em; border-radius: 4px; overflow-x: auto; font-size: 0.82em; }
+  .markdown-body blockquote { border-left: 3px solid #ddd; margin: 0; padding-left: 0.8em; color: #666; }
+
+  .back-link { display: inline-block; margin-top: 2em; color: #666; font-size: 0.9em; }
+</style>
+{% endblock %}

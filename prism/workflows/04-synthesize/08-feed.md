@@ -2,7 +2,7 @@
 
 **定位**：记录发生时序，以便日后复盘「当时知道什么，当时怎么判断」  
 **训练知识比例**：约 20%（主要记录具体事实和日期）  
-**产出文件**：`prism/topics/{slug}/outputs/08_living_feed.md`
+**产出文件**：`prism/topics/{slug}/{variant}/outputs/08_living_feed.md`
 
 **特点**：这份产出是追加式的，不是一次性生成，每次有新信息都在末尾追加。
 
@@ -11,7 +11,7 @@
 ## Step 0：检查文件是否存在
 
 ```bash
-cat prism/topics/{slug}/outputs/08_living_feed.md 2>/dev/null || echo "FILE_NOT_EXISTS"
+cat prism/topics/{slug}/{variant}/outputs/08_living_feed.md 2>/dev/null || echo "FILE_NOT_EXISTS"
 ```
 
 如果不存在，创建初始文件。如果存在，在末尾追加。
@@ -76,6 +76,22 @@ generated: {timestamp}
 ## Step 3：更新状态
 
 output_key = `08_living_feed`，每次追加后 version+1。
+
+更新 user_todos：
+
+```bash
+python -c "
+from prism.scripts.topic import set_user_todos
+set_user_todos('{slug}', [
+    '8 份产出已全部生成（v{N}）',
+    '可选操作：',
+    '  1. 「评审 {slug}」—— 启动 critic review 找漏洞',
+    '  2. 「深挖 {slug} 的{{具体问题}}」—— 深入研究某个方向',
+    '  3. 「记录决策 {slug}」—— 记录投资决策备忘',
+    '  4. 「prism 推进 {slug}」—— 进入 monitor 阶段',
+])
+"
+```
 
 ---
 

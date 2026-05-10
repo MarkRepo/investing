@@ -2,7 +2,7 @@
 
 **定位**：判断「这个行业现在在周期的哪个位置」，以及「接下来 12-24 个月的方向」  
 **训练知识比例**：约 70%（历史类比靠训练，当前定位靠资料）  
-**产出文件**：`prism/topics/{slug}/outputs/02_cycle_positioning.md`
+**产出文件**：`prism/topics/{slug}/{variant}/outputs/02_cycle_positioning.md`
 
 ---
 
@@ -64,7 +64,7 @@
 
 ## Step 3：写入文件
 
-写入 `prism/topics/{slug}/outputs/02_cycle_positioning.md`（格式同产出 01，含 frontmatter + 信息来源）
+写入 `prism/topics/{slug}/{variant}/outputs/02_cycle_positioning.md`（格式同产出 01，含 frontmatter + 信息来源）
 
 ---
 
@@ -80,5 +80,5 @@ output_key = `02_cycle_positioning`
 ✅ 周期定位已生成 → v{N}
 当前判断：{一句话定位}
 关键验证节点：{时间/数据}
-Web 查看：http://localhost:8000/prism/{slug}/output/02_cycle_positioning
+Web 查看：http://localhost:8000/prism/{slug}/{variant}/output/02_cycle_positioning
 ```

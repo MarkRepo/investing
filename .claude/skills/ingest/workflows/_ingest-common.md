@@ -139,18 +139,30 @@ The helper writes `<source_dir>/bundles/{bundle_sha8}.json` and appends to `data
 
 ## Post-Apply: Synthesize Insights
 
-Generate a human-readable insights memo from the bundle and applied claims:
+Generate a per-bundle narrative memo (叙事备忘录) from the applied claims and their relations.
 
+**Step 1 — Build context:**
 ```bash
 .venv/bin/python -m scripts.synthesize_insights \
-    --bundle industries/<slug>/bundles/<sha8>.json \
-    --registry-base data \
-    --out industries/<slug>/insights/<sha8>.md
+    --bundle <source_dir>/bundles/<sha8>.json \
+    --context-out /tmp/<sha8>-synthesis-ctx.json
 ```
 
-Then dispatch a **general-purpose subagent** with `docs/prompts/synthesize-insights.md`, providing the context JSON path and the target output path.
+The script prints the target output path (derived from `bundle.meta.primary_scope`). Use a persisted bundle path (not `/tmp/`) so the sha8 is clean and the output path is correct.
 
-Viewable at: `/lens/industry/<slug>/insights/<sha8>`
+**Step 2 — Dispatch subagent:**
+
+Dispatch a **general-purpose subagent** (`model=sonnet`) with:
+- System prompt: `docs/prompts/synthesize-insights.md`
+- Context: the JSON file at `/tmp/<sha8>-synthesis-ctx.json`
+- Task: write the insights markdown to the target output path printed in Step 1
+- The output frontmatter **must include** `model: sonnet46` (or whichever model is used)
+
+The subagent writes `industries/<slug>/insights/<sha8>.md` (or `arenas/` / `companies/` for other scopes).
+
+Viewable at: `/insights/industry/<slug>/<sha8>`
+
+**What this produces:** A flowing narrative (叙事逻辑) of what *this one bundle* contributes — how the claims chain from thesis through evidence to conclusions, where the logic is strong and where it is uncertain. One insights file per bundle, not per scope.
 
 ---
 
@@ -173,8 +185,8 @@ Generate static markdown views (narrative, company dashboards) for all touched s
 ```
 
 Viewable at:
-- `/lens/industry/<slug>/narrative` — industry narrative
-- `/lens/company/<MARKET_TICKER>/dashboard` — company dashboard
+- `/insights/industry/<slug>/narrative` — industry narrative
+- `/insights/company/<MARKET_TICKER>/dashboard` — company dashboard
 
 ---
 

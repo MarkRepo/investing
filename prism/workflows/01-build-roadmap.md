@@ -2,7 +2,7 @@
 
 **触发**：stage=01-roadmap-pending 或用户说「制定路线图」  
 **前置**：topic.yaml 已存在  
-**产出**：`prism/topics/{slug}/roadmap.yaml`
+**产出**：`prism/topics/{slug}/{variant}/roadmap.yaml`
 
 ---
 
@@ -12,7 +12,7 @@
 python -c "
 import json
 from prism.scripts.topic import read_topic
-print(json.dumps(read_topic('{slug}'), ensure_ascii=False, indent=2))
+print(json.dumps(read_topic('{slug}', '{variant}'), ensure_ascii=False, indent=2))
 "
 ```
 
@@ -70,24 +70,130 @@ print(json.dumps(read_topic('{slug}'), ensure_ascii=False, indent=2))
 ## Step 5：写入 roadmap.yaml
 
 复制 `prism/templates/roadmap.yaml.tmpl`，填入上面分析内容，写入：
-`prism/topics/{slug}/roadmap.yaml`
+`prism/topics/{slug}/{variant}/roadmap.yaml`
+
+---
+
+## Step 5.5：尝试自动下载可获取的资料
+
+```bash
+python -c "
+import yaml
+import re
+import sys
+from pathlib import Path
+from datetime import date
+
+# Read roadmap
+roadmap_path = Path('prism/topics/{slug}/{variant}/roadmap.yaml')
+roadmap = yaml.safe_load(roadmap_path.read_text())
+
+downloaded = []
+failed = []
+
+# Try to download annual reports
+for tier in ['tier1', 'tier2', 'tier3']:
+    for mat in roadmap.get('material_priority', {}).get(tier, []):
+        if mat.get('type') == 'annual-report':
+            # Try to extract company name/ticker from title
+            title = mat.get('title', '')
+            # Look for patterns like "XXXX(600519)2024年报" or similar
+            ticker_match = re.search(r'(\d{6})', title)
+            if ticker_match:
+                ticker = ticker_match.group(1)
+                # Determine market: 6/9/5 → SSE, else SZSE
+                if ticker.startswith(('6', '9', '5')):
+                    market_ticker = f'SSE_{ticker}'
+                else:
+                    market_ticker = f'SZSE_{ticker}'
+                # Try to extract year - first remove the ticker part to avoid matching 600519 as year
+                title_without_ticker = re.sub(r'\d{6}', '', title)
+                # Look for 2020-2029 range first
+                year_match = re.search(r'(202\d)', title_without_ticker)
+                if not year_match:
+                    year_match = re.search(r'(201\d)', title_without_ticker)
+                year = int(year_match.group(1)) if year_match else (date.today().year - 1)
+                # Try to download
+                try:
+                    import subprocess
+                    result = subprocess.run(
+                        [sys.executable, '-m', 'scripts.fetch_report_prism', market_ticker, '--year', str(year), '--slug', '{slug}'],
+                        capture_output=True, text=True, timeout=120
+                    )
+                    if result.returncode == 0:
+                        downloaded.append(f'{title} ✓')
+                    else:
+                        failed.append(f'{title} ✗')
+                except Exception as e:
+                    failed.append(f'{title} ✗')
+
+print('DOWNLOADED:')
+for item in downloaded:
+    print(f'  {item}')
+print('FAILED:')
+for item in failed:
+    print(f'  {item}')
+"
+```
 
 ---
 
 ## Step 6：更新 topic 状态
 
+从刚生成的 roadmap.yaml 读取资料，把**已成功下载的**从 user_todos 里移除：
+
 ```bash
 python -c "
+import yaml
+import re
+from pathlib import Path
 from prism.scripts.topic import set_stage, set_next_actions, set_user_todos
+
+# Read roadmap
+roadmap_path = Path('prism/topics/{slug}/{variant}/roadmap.yaml')
+roadmap = yaml.safe_load(roadmap_path.read_text())
+
+# Check what's already downloaded
+manual_dir = Path('prism/inbox/manual')
+materials_dir = Path('prism/topics/{slug}/materials')
+downloaded_filenames = set()
+if manual_dir.exists():
+    downloaded_filenames.update(p.name for p in manual_dir.iterdir() if p.is_file())
+if materials_dir.exists():
+    downloaded_filenames.update(p.name for p in materials_dir.iterdir() if p.is_file())
+
+# Build user_todos from tier1 (skip already downloaded)
+def is_downloaded(title):
+    safe_title = re.sub(r'[<>:\"/\\\\|?*]', '_', title)[:80]
+    for fname in downloaded_filenames:
+        if safe_title in fname or title[:30] in fname:
+            return True
+    return False
+
+todos = ['Tier1 必读资料：']
+for i, mat in enumerate(roadmap['material_priority']['tier1'], 1):
+    if not is_downloaded(mat['title']):
+        todos.append(f'  {i}. {mat[\"title\"]}')
+    else:
+        todos.append(f'  {i}. {mat[\"title\"]} ✓ (已下载)')
+
+# Add tier2 as optional if depth is deep
+if roadmap.get('material_priority', {}).get('tier2'):
+    todos.append('')
+    todos.append('Tier2 补充资料（可选）：')
+    for i, mat in enumerate(roadmap['material_priority']['tier2'], 1):
+        if not is_downloaded(mat['title']):
+            todos.append(f'  {i}. {mat[\"title\"]}')
+        else:
+            todos.append(f'  {i}. {mat[\"title\"]} ✓ (已下载)')
+
+# Set topic state
 set_stage('{slug}', '02-gathering')
 set_next_actions('{slug}', [
-    '收集 Tier 1 资料后运行 workflow 02-gather-materials 登记资料',
+    '收集剩余资料后运行 workflow 02-gather-materials 登记资料',
     '有资料可以处理时运行 workflow 03-extract-findings',
 ])
-set_user_todos('{slug}', [
-    '按 roadmap.yaml 的 tier1 清单收集资料，放入 prism/inbox/manual/',
-    '如需自动下载可在对话里说「下载 {slug} 的 cninfo 年报」',
-])
+set_user_todos('{slug}', todos)
 "
 ```
 
@@ -98,7 +204,7 @@ set_user_todos('{slug}', [
 在对话输出：
 
 ```
-✅ 研究路线图已生成 → prism/topics/{slug}/roadmap.yaml
+✅ 研究路线图已生成 → prism/topics/{slug}/{variant}/roadmap.yaml
 
 L4 狩猎问题（最重要）：
 {list L4 questions}
@@ -108,7 +214,8 @@ Tier 1 必读资料：
 
 你现在需要做的事：
 1. 收集上述资料放入 prism/inbox/manual/
-2. 完成后说「prism 推进 {slug}」继续
+2. 具体清单已同步到 Web 页面 "你需要做的事" 区域
+3. 完成后说「prism 推进 {slug}」继续
 
-Web 地址：http://localhost:8000/prism/{slug}
+Web 地址：http://localhost:8000/prism/{slug}/{variant}/
 ```

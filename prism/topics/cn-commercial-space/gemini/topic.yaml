@@ -1,0 +1,50 @@
+slug: cn-commercial-space
+display_name: 中国商业航天
+type: industry
+created: '2026-05-09T02:36:16.441090+00:00'
+status: active
+stage: 04-synthesizing-done
+scope:
+  geo: CN
+  question: 中国商业航天的发射与卫星制造环节的商业模式、竞争格局及破局点在哪里？
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-09T03:17:08.901556+00:00'
+    status: fresh
+  02_cycle_positioning:
+    version: 2
+    last_updated: '2026-05-09T09:21:12.915912+00:00'
+    status: fresh
+  03_narrative_ecology:
+    version: 2
+    last_updated: '2026-05-09T09:21:12.917773+00:00'
+    status: fresh
+  04_implied_expectations:
+    version: 2
+    last_updated: '2026-05-09T09:21:12.919209+00:00'
+    status: fresh
+  05_historical_mirrors:
+    version: 2
+    last_updated: '2026-05-09T09:21:12.920778+00:00'
+    status: fresh
+  06_risk_blindspots:
+    version: 2
+    last_updated: '2026-05-09T09:21:12.922295+00:00'
+    status: fresh
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-05-09T09:21:12.923839+00:00'
+    status: fresh
+  08_living_feed:
+    version: 2
+    last_updated: '2026-05-09T09:21:12.925417+00:00'
+    status: fresh
+next_actions:
+- 正在更新产出...
+user_todos:
+- 产出更新中...
+monitoring:
+  enabled: false
+  cadence: daily

@@ -1,12 +1,27 @@
 {% extends "base.html" %}
-{% block title %}{{ topic.display_name or topic.slug }} · 研究主题{% endblock %}
+{% block title %}{{ topic.display_name or topic.slug }} · {{ variant }}{% endblock %}
 {% block content %}
 <div class="prism-header" data-slug="{{ topic.slug }}">
   <h1>{{ topic.display_name or topic.slug }}</h1>
   <code class="slug-tag">{{ topic.slug }}</code>
+  <span class="model-tag">{{ variant }}</span>
   <span class="badge badge-{{ topic.status }}">{{ topic.status }}</span>
   <span class="hint"> · {{ topic.type }} · {{ topic.scope.geo }}</span>
 </div>
+
+{% if all_variants | length > 1 %}
+<div class="variant-switcher">
+  模型：
+  {% for v in all_variants %}
+    {% if v == variant %}
+      <span class="variant-current">{{ v }}</span>
+    {% else %}
+      <a href="/prism/{{ topic.slug }}/{{ v }}">{{ v }}</a>
+    {% endif %}
+    {% if not loop.last %}<span class="sep">|</span>{% endif %}
+  {% endfor %}
+</div>
+{% endif %}
 
 <p class="scope-question">研究问题：<em>{{ topic.scope.question }}</em></p>
 
@@ -15,16 +30,19 @@
   <!-- Left: 8 outputs -->
   <section class="outputs-panel">
     <h2>8 份产出</h2>
+    {% if all_variants | length > 1 %}
+    {% set _other_v = all_variants | reject('equalto', variant) | first %}
+    {% endif %}
     <table class="data-table">
       <thead>
-        <tr><th>产出</th><th>版本</th><th>状态</th><th>更新时间</th></tr>
+        <tr><th>产出</th><th>版本</th><th>状态</th><th>更新时间</th>{% if _other_v %}<th></th>{% endif %}</tr>
       </thead>
       <tbody>
       {% for out in outputs %}
         <tr>
           <td>
             {% if out.file_exists %}
-              <a href="/prism/{{ topic.slug }}/output/{{ out.key }}">{{ out.label }}</a>
+              <a href="/prism/{{ topic.slug }}/{{ variant }}/{{ out.key }}">{{ out.label }}</a>
             {% else %}
               <span class="hint">{{ out.label }}</span>
             {% endif %}
@@ -34,6 +52,12 @@
             <span class="badge-small badge-{{ out.status }}">{{ out.status }}</span>
           </td>
           <td class="hint">{{ (out.last_updated or '')[:10] or '—' }}</td>
+          {% if _other_v %}
+          <td>
+            <a href="/prism/{{ topic.slug }}/compare/{{ out.key }}?source1={{ variant }}&source2={{ _other_v }}"
+               class="compare-link" title="对比 {{ _other_v }}">对比</a>
+          </td>
+          {% endif %}
         </tr>
       {% endfor %}
       </tbody>
@@ -95,11 +119,17 @@
 
 </div>
 
-<a href="/prism" class="back-link">← 所有主题</a>
+<a href="/prism/{{ topic.slug }}" class="back-link">← 模型选择</a>
+<a href="/prism" class="back-link" style="margin-left: 1em;">← 所有主题</a>
 
 <style>
   .prism-header { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0.3em; flex-wrap: wrap; }
   .slug-tag { font-size: 0.78em; color: #888; background: #f4f4f4; padding: 0.1em 0.4em; border-radius: 3px; }
+  .model-tag { font-size: 0.78em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; }
+  .variant-switcher { margin: 0.5em 0 1em; font-size: 0.85em; color: #555; }
+  .variant-switcher a { color: #2a5db0; }
+  .variant-current { font-weight: 700; color: #111; background: #f0f0f0; padding: 0.1em 0.35em; border-radius: 3px; font-family: monospace; }
+  .sep { color: #ccc; margin: 0 0.3em; }
   .scope-question { color: #444; margin: 0.5em 0 1.5em; }
   .prism-columns { display: grid; grid-template-columns: 1fr 320px; gap: 2em; align-items: start; }
   @media (max-width: 900px) { .prism-columns { grid-template-columns: 1fr; } }
@@ -122,6 +152,13 @@
   .data-table th, .data-table td { padding: 0.45em 0.7em; border-bottom: 1px solid #eee; font-size: 0.9em; }
   .data-table th { font-weight: 600; color: #555; }
   .hint { color: #888; font-size: 0.85em; }
+  .compare-link {
+    font-size: 0.75em; padding: 0.12em 0.4em;
+    border: 1px solid #b8cfe8; border-radius: 3px;
+    background: #f0f4ff; color: #2a5db0; text-decoration: none;
+    white-space: nowrap;
+  }
+  .compare-link:hover { background: #dce6fb; }
   .back-link { display: inline-block; margin-top: 2em; color: #666; font-size: 0.9em; }
 </style>
 {% endblock %}

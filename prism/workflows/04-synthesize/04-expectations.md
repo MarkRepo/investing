@@ -2,7 +2,7 @@
 
 **定位**：反推市场当前价格隐含了什么预期，然后构建从极度乐观到极度悲观的完整观点谱系  
 **训练知识比例**：约 50%（估值框架来自训练，当前数据来自资料）  
-**产出文件**：`prism/topics/{slug}/outputs/04_implied_expectations.md`  
+**产出文件**：`prism/topics/{slug}/{variant}/outputs/04_implied_expectations.md`  
 **重要性**：这是 8 份产出中对投资决策最直接有用的一份
 
 ---

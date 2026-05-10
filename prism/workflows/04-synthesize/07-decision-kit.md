@@ -2,7 +2,7 @@
 
 **定位**：把前 6 份产出的核心结论压缩成投资决策直接需要的形式  
 **训练知识比例**：约 30%（主要是整合前 6 份产出的结论）  
-**产出文件**：`prism/topics/{slug}/outputs/07_decision_kit.md`
+**产出文件**：`prism/topics/{slug}/{variant}/outputs/07_decision_kit.md`
 
 **前置条件**：产出 01-06 必须至少有 4 份已生成（status=fresh）
 
@@ -13,7 +13,7 @@
 ```bash
 python -c "
 from prism.scripts.topic import read_topic
-t = read_topic('{slug}')
+t = read_topic('{slug}', '{variant}')
 fresh = [k for k, v in t['outputs_state'].items() if v['status'] == 'fresh']
 print('已生成产出：', fresh)
 "
@@ -26,12 +26,12 @@ print('已生成产出：', fresh)
 ## Step 1：读取已有产出
 
 ```bash
-cat prism/topics/{slug}/outputs/01_business_panorama.md
-cat prism/topics/{slug}/outputs/02_cycle_positioning.md
-cat prism/topics/{slug}/outputs/03_narrative_ecology.md
-cat prism/topics/{slug}/outputs/04_implied_expectations.md
-cat prism/topics/{slug}/outputs/05_historical_mirrors.md
-cat prism/topics/{slug}/outputs/06_risk_blindspots.md
+cat prism/topics/{slug}/{variant}/outputs/01_business_panorama.md
+cat prism/topics/{slug}/{variant}/outputs/02_cycle_positioning.md
+cat prism/topics/{slug}/{variant}/outputs/03_narrative_ecology.md
+cat prism/topics/{slug}/{variant}/outputs/04_implied_expectations.md
+cat prism/topics/{slug}/{variant}/outputs/05_historical_mirrors.md
+cat prism/topics/{slug}/{variant}/outputs/06_risk_blindspots.md
 ```
 
 ---

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}研报摘要{% endblock %}
+{% block content %}
+<h1>研报摘要</h1>
+<p class="hint">
+  MinerU 提取的行业研报，经 LLM 结构化提炼。点击模型名称查看摘要。
+</p>
+
+<h2>摘要</h2>
+{% if summary_groups %}
+<table>
+  <thead>
+    <tr>
+      <th>报告</th>
+      <th>主题</th>
+      <th>模型</th>
+      <th>原文</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for g in summary_groups %}
+    {% for s in g.summaries %}
+    <tr{% if loop.first %} class="group-first"{% endif %}>
+      {% if loop.first %}
+      <td rowspan="{{ g.summaries|length }}">{{ g.title }}</td>
+      <td rowspan="{{ g.summaries|length }}" class="hint">{{ g.topic }}</td>
+      {% endif %}
+      <td><a href="/digest/{{ s.report_id }}">{{ s.model }}</a></td>
+      {% if loop.first %}
+      <td rowspan="{{ g.summaries|length }}" class="hint">
+        <a href="{{ g.pdf_url or ('/digest/' ~ s.report_id ~ '/raw') }}">{{ g.source_pdf }}</a>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p><em>尚无摘要。运行摘要生成脚本后自动显示。</em></p>
+{% endif %}
+
+{% if compare_reports %}
+<h2 style="margin-top: 2em;">对比报告</h2>
+<table>
+  <thead>
+    <tr>
+      <th>报告</th>
+      <th>主题</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in compare_reports %}
+    <tr>
+      <td><a href="/digest/{{ r.report_id }}">{{ r.title }}</a></td>
+      <td class="hint">{{ r.topic }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<style>
+  .group-first td { border-top: 2px solid var(--border, #ddd); }
+</style>
+{% endblock %}

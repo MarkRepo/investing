@@ -2,7 +2,7 @@
 
 **定位**：给完全不了解这个行业的人，用 1 份文档解释「这个生意是怎么运转的」  
 **训练知识比例**：约 60%（结合资料补充最新数据）  
-**产出文件**：`prism/topics/{slug}/outputs/01_business_panorama.md`
+**产出文件**：`prism/topics/{slug}/{variant}/outputs/01_business_panorama.md`
 
 ---
 
@@ -15,7 +15,7 @@
 ## Step 1：读取 findings
 
 ```bash
-ls prism/topics/{slug}/outputs/findings_*.md
+ls prism/topics/{slug}/{variant}/outputs/findings_*.md
 ```
 
 读取所有 findings 文件，提炼与「商业模式」相关的数据点。
@@ -71,7 +71,7 @@ ls prism/topics/{slug}/outputs/findings_*.md
 
 ## Step 3：写入文件
 
-写入 `prism/topics/{slug}/outputs/01_business_panorama.md`：
+写入 `prism/topics/{slug}/{variant}/outputs/01_business_panorama.md`：
 
 ```markdown
 ---
@@ -121,9 +121,9 @@ generated: {timestamp}
 ```bash
 python -c "
 from prism.scripts.topic import set_output_status, read_topic
-t = read_topic('{slug}')
+t = read_topic('{slug}', '{variant}')
 current_v = t['outputs_state']['01_business_panorama']['version']
-set_output_status('{slug}', '01_business_panorama', 'fresh', version=current_v+1)
+set_output_status('{slug}', '01_business_panorama', 'fresh', '{variant}', version=current_v+1)
 print('状态已更新')
 "
 ```
@@ -135,7 +135,7 @@ print('状态已更新')
 ```
 ✅ 商业全景已生成 → v{N}
 
-Web 查看：http://localhost:8000/prism/{slug}/output/01_business_panorama
+Web 查看：http://localhost:8000/prism/{slug}/{variant}/output/01_business_panorama
 
 关键数据点：
 - 市场规模：{X}

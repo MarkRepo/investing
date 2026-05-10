@@ -4,50 +4,90 @@
 <h1>研究主题</h1>
 <p class="hint">所有 Prism 研究主题。在对话窗口说「研究 X」开启新主题。</p>
 
-{% if topics %}
-<table class="data-table">
-  <thead>
-    <tr>
-      <th>主题</th>
-      <th>类型</th>
-      <th>阶段</th>
-      <th>产出进度</th>
-      <th>状态</th>
-      <th>创建</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for t in topics %}
-    {% set fresh_count = t.outputs_state.values() | selectattr('status', 'equalto', 'fresh') | list | length %}
-    {% set total_count = t.outputs_state | length %}
-    <tr>
-      <td><a href="/prism/{{ t.slug }}">{{ t.display_name or t.slug }}</a></td>
-      <td class="hint">{{ t.type }}</td>
-      <td class="hint">{{ t.stage }}</td>
-      <td>
-        <span class="progress-label">{{ fresh_count }}/{{ total_count }}</span>
-      </td>
-      <td>
-        <span class="badge badge-{{ t.status }}">{{ t.status }}</span>
-      </td>
-      <td class="hint">{{ (t.created or '')[:10] }}</td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+{% if topic_groups %}
+{% for group in topic_groups %}
+{% if group.topics %}
+<section class="topic-group">
+  <h2 class="group-heading">{{ group.label }} <span class="group-count">{{ group.topics|length }}</span></h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>主题</th>
+        <th>模型</th>
+        <th>数据</th>
+        <th>创建</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for t in group.topics %}
+      <tr>
+        <td><a href="/prism/{{ t.slug }}">{{ t.display_name or t.slug }}</a></td>
+        <td>
+          {% for v in t.variants %}
+            <a href="/prism/{{ t.slug }}/{{ v.name }}" class="variant-chip" title="阶段: {{ v.stage }} · 产出: {{ v.fresh_count }}/{{ v.total_count }}">
+              {{ v.name }}
+              <span class="chip-progress">{{ v.fresh_count }}/{{ v.total_count }}</span>
+            </a>
+          {% endfor %}
+        </td>
+        <td>
+          {% if t.type == 'company' and t.ticker %}
+            <a href="/prices/{{ t.ticker }}" class="data-link">行情</a>
+            <a href="/financials/{{ t.ticker }}" class="data-link">财务</a>
+          {% endif %}
+        </td>
+        <td class="hint">{{ (t.created or '')[:10] }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endif %}
+{% endfor %}
 {% else %}
 <p class="hint">暂无研究主题。在对话窗口说「研究中国宠物行业」开启第一个主题。</p>
 {% endif %}
 
 <style>
-  .data-table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  .topic-group { margin: 1.5em 0 2em; }
+  .group-heading {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.5em;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid #d4dff7;
+  }
+  .group-count { color: #888; font-weight: 400; font-size: 0.85em; }
+  .data-table { border-collapse: collapse; width: 100%; margin: 0.5em 0; }
   .data-table th, .data-table td { padding: 0.5em 0.8em; text-align: left; border-bottom: 1px solid #eee; }
-  .data-table th { font-weight: 600; color: #555; }
-  .badge { font-size: 0.75em; padding: 0.2em 0.5em; border-radius: 3px; }
-  .badge-active { background: #e6f4ea; color: #2d7a3a; }
-  .badge-paused { background: #fff3e0; color: #b45309; }
-  .badge-archived { background: #f1f5f9; color: #888; }
+  .data-table th { font-weight: 600; color: #555; font-size: 0.85em; }
   .hint { color: #888; font-size: 0.85em; }
-  .progress-label { font-size: 0.85em; color: #555; }
+  .variant-chip {
+    display: inline-block;
+    padding: 0.15em 0.45em;
+    margin: 0.12em 0.25em;
+    border-radius: 4px;
+    background: #f0f4ff;
+    color: #2a5db0;
+    font-size: 0.82em;
+    font-family: monospace;
+    text-decoration: none;
+    border: 1px solid #d4dff7;
+  }
+  .variant-chip:hover { background: #dce6fb; }
+  .chip-progress { color: #888; margin-left: 0.3em; }
+  .data-link {
+    display: inline-block;
+    padding: 0.1em 0.4em;
+    margin-right: 0.3em;
+    border-radius: 3px;
+    background: #f5f5f5;
+    color: #555;
+    font-size: 0.8em;
+    text-decoration: none;
+    border: 1px solid #ddd;
+  }
+  .data-link:hover { background: #e8e8e8; color: #333; }
 </style>
 {% endblock %}

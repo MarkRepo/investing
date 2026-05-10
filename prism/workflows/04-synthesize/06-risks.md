@@ -2,7 +2,7 @@
 
 **定位**：系统梳理已知风险，并刻意寻找市场可能低估/忽视的风险  
 **训练知识比例**：约 60%  
-**产出文件**：`prism/topics/{slug}/outputs/06_risk_blindspots.md`
+**产出文件**：`prism/topics/{slug}/{variant}/outputs/06_risk_blindspots.md`
 
 ---
 

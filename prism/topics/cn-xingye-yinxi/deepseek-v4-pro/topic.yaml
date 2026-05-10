@@ -1,0 +1,58 @@
+slug: cn-xingye-yinxi
+display_name: 兴业银锡
+type: company
+created: '2026-05-09T17:44:15.578534+00:00'
+status: active
+stage: 01-roadmap-pending
+scope:
+  geo: CN
+  question: 兴业银锡现在的周期位置在哪，是否值得投资？
+  depth: standard
+  ticker: SZSE_000426
+outputs_state:
+  01_business_panorama:
+    version: 0
+    last_updated: null
+    status: pending
+  02_cycle_positioning:
+    version: 0
+    last_updated: null
+    status: pending
+  03_narrative_ecology:
+    version: 0
+    last_updated: null
+    status: pending
+  04_implied_expectations:
+    version: 0
+    last_updated: null
+    status: pending
+  05_historical_mirrors:
+    version: 0
+    last_updated: null
+    status: pending
+  06_risk_blindspots:
+    version: 0
+    last_updated: null
+    status: pending
+  07_decision_kit:
+    version: 0
+    last_updated: null
+    status: pending
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+next_actions:
+- 运行 workflow 01-build-roadmap：制定详细研究路线图
+- 收集初始资料后运行 workflow 02-gather-materials
+user_todos:
+- 'Tier1: 兴业银锡 2025 年报 + 2026Q1 季报'
+- 'Tier1: 银/锡行业深度研报'
+- 'Tier1: 银漫矿业复产跟踪研报'
+- 'Tier2: 白银供需专题报告'
+- 'Tier2: 锡供需专题报告'
+- 'Tier2: 兴业银锡 2024 年报'
+- 'Tier2: 有色金属 2026 年度策略'
+monitoring:
+  enabled: false
+  cadence: daily

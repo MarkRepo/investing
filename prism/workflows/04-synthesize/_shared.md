@@ -9,7 +9,7 @@ python -c "
 import json
 from prism.scripts.topic import read_topic
 from prism.scripts.manifest import material_count
-t = read_topic('{slug}')
+t = read_topic('{slug}', '{variant}')
 counts = material_count('{slug}')
 print('stage:', t['stage'])
 print('materials:', json.dumps(counts))
@@ -22,7 +22,7 @@ print('question:', t['scope']['question'])
 
 ## 写入规范
 
-输出文件路径：`prism/topics/{slug}/outputs/{output_key}.md`
+输出文件路径：`prism/topics/{slug}/{variant}/outputs/{output_key}.md`
 
 每份产出 markdown 必须包含：
 1. YAML frontmatter（slug, output_key, version, generated）

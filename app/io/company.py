@@ -110,12 +110,16 @@ def _meta_path(ticker: str, market: str, base: Path | None) -> Path:
 
 
 def read_meta(ticker: str, market: str, base: Path | None = None) -> dict:
-    """Return meta.md frontmatter dict, empty if missing."""
+    """Return meta.md frontmatter dict, falling back to prism topics."""
     path = _meta_path(ticker, market, base)
-    if not path.exists():
-        return {}
-    fm, _ = _split_frontmatter(path.read_text(encoding="utf-8"))
-    return fm
+    if path.exists():
+        fm, _ = _split_frontmatter(path.read_text(encoding="utf-8"))
+        return fm
+    # Fall back to prism company topics
+    for pt in _prism_company_topics():
+        if pt["key"] == f"{market}_{ticker}":
+            return {"name": pt["name"], "ticker": ticker, "market": market}
+    return {}
 
 
 def read_meta_with_body(
@@ -202,52 +206,95 @@ def list_sources(ticker: str, market: str, base: Path | None = None) -> list[str
     return sorted(f.name for f in d.iterdir() if f.is_file())
 
 
-def list_companies(base: Path | None = None) -> list[dict]:
-    """Enumerate companies/ subdirectories and return summary rows."""
-    companies_dir = Path(base) / "companies" if base else cfg.COMPANIES_DIR
-    if not companies_dir.exists():
+def _prism_company_topics() -> list[dict]:
+    """Collect company-type prism topics with tickers as synthetic company entries."""
+    try:
+        from prism.scripts.topic import list_topics as prism_list_topics
+    except Exception:
         return []
+    all_topics = prism_list_topics()
+    seen: set[str] = set()
+    result: list[dict] = []
+    for t in all_topics:
+        if t.get("type") != "company":
+            continue
+        scope = t.get("scope") or {}
+        ticker_full = scope.get("ticker", "")
+        if not ticker_full or "_" not in ticker_full:
+            continue
+        market, code = ticker_full.split("_", 1)
+        key = f"{market}_{code}"
+        if key in seen:
+            continue
+        seen.add(key)
+        result.append({
+            "key": key,
+            "ticker": code,
+            "market": market,
+            "name": t.get("display_name") or code,
+            "industry_slugs": [],
+            "v0_status": "prism",
+            "competence_score": None,
+            "in_competence": None,
+        })
+    return result
 
+
+def list_companies(base: Path | None = None) -> list[dict]:
+    """Enumerate companies/ subdirectories, augmented with prism company topics."""
+    companies_dir = Path(base) / "companies" if base else cfg.COMPANIES_DIR
     out: list[dict] = []
-    for d in sorted(companies_dir.iterdir()):
-        if not d.is_dir():
-            continue
-        name = d.name
-        if "_" not in name:
-            continue
-        market, ticker = name.split("_", 1)
-        meta_path = d / "meta.md"
-        v0_path = d / "v0.md"
-        comp_path = d / "competence-check.md"
+    if companies_dir.exists():
+        for d in sorted(companies_dir.iterdir()):
+            if not d.is_dir():
+                continue
+            name = d.name
+            if "_" not in name:
+                continue
+            market, ticker = name.split("_", 1)
+            meta_path = d / "meta.md"
+            v0_path = d / "v0.md"
+            comp_path = d / "competence-check.md"
 
-        meta_fm: dict = {}
-        if meta_path.exists():
-            meta_fm, _ = _split_frontmatter(meta_path.read_text(encoding="utf-8"))
+            meta_fm: dict = {}
+            if meta_path.exists():
+                meta_fm, _ = _split_frontmatter(meta_path.read_text(encoding="utf-8"))
 
-        v0_status = "missing"
-        if v0_path.exists():
-            v0_fm, _ = _split_frontmatter(v0_path.read_text(encoding="utf-8"))
-            v0_status = v0_fm.get("status") or "missing"
+            v0_status = "missing"
+            if v0_path.exists():
+                v0_fm, _ = _split_frontmatter(v0_path.read_text(encoding="utf-8"))
+                v0_status = v0_fm.get("status") or "missing"
 
-        comp_score = None
-        comp_pass = None
-        if comp_path.exists():
-            comp_fm, _ = _split_frontmatter(comp_path.read_text(encoding="utf-8"))
-            comp_score = comp_fm.get("universal_score")
-            comp_pass = comp_fm.get("in_competence")
+            comp_score = None
+            comp_pass = None
+            if comp_path.exists():
+                comp_fm, _ = _split_frontmatter(comp_path.read_text(encoding="utf-8"))
+                comp_score = comp_fm.get("universal_score")
+                comp_pass = comp_fm.get("in_competence")
 
-        out.append(
-            {
-                "key": name,
-                "ticker": ticker,
-                "market": market,
-                "name": meta_fm.get("name") or ticker,
-                "industry_slugs": list(meta_fm.get("industry_slugs") or []),
-                "v0_status": v0_status,
-                "competence_score": comp_score,
-                "in_competence": comp_pass,
-            }
-        )
+            out.append(
+                {
+                    "key": name,
+                    "ticker": ticker,
+                    "market": market,
+                    "name": meta_fm.get("name") or ticker,
+                    "industry_slugs": list(meta_fm.get("industry_slugs") or []),
+                    "v0_status": v0_status,
+                    "competence_score": comp_score,
+                    "in_competence": comp_pass,
+                }
+            )
+
+    # Merge prism company topics (companies/ entries take precedence)
+    existing_keys = {c["key"] for c in out}
+    for pt in _prism_company_topics():
+        if pt["key"] not in existing_keys:
+            out.append(pt)
+        else:
+            existing = next(c for c in out if c["key"] == pt["key"])
+            if existing.get("name") == existing.get("ticker") and pt["name"] != pt["ticker"]:
+                existing["name"] = pt["name"]
+
     return out
 
 

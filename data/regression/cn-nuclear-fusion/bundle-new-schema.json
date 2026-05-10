@@ -1,0 +1,863 @@
+{
+  "bundle_version": "v2-phase1",
+  "source_digest": {
+    "source_id": "行研-中银证券-2025-04-10-ad983472",
+    "source_title": "可控核聚变行业深度报告：商业化渐行渐近，产业链有望充分受益",
+    "source_type": "industry_report",
+    "source_date": "2025-04-10",
+    "industry_archetype": "technology_driven",
+    "source_quality": "medium_high",
+    "evidence_strength": "medium",
+    "limitations": [
+      "报告大量关键数据分布在图表（产业链图、ITER采购包分工表、成本拆分图）中，文字抽取后数字有时被拆散，引用时需复核原图表。",
+      "市场空间预测来自二手来源（普林斯顿大学测算、Ignition Research、IAEA《World Fusion Outlook 2024》），研报本身未给出独立测算，区间跨度大，不确定性高。",
+      "公司层面投资判断主要基于卖方盈利预测（2024-2026E），财务数据置信度中等。",
+      "全文约1616行，图片部分仅读取标题和文字引用，未逐一读取全部keep_images图片内容。"
+    ],
+    "coverage_review": {
+      "mode": "full_report_pass",
+      "sections_total": 1616,
+      "sections_reviewed": 1200,
+      "skipped_sections": 416,
+      "coverage_notes": [
+        "通读全文，涵盖：行业概念与三要素、约束路线对比、ITER项目与中国分工、中国EAST/环流三号/CFETR/BEST/Z-FFR进展、高温超导与AI突破、FIA私营融资与2035商业化预期、聚变电站成本拆分、产业链（第一壁/偏滤器/高温超导带材）关键环节、四家重点上市公司（合锻智能603011、联创光电600363、西部超导688122、安泰科技000969）的业务与盈利预测。",
+        "跳过部分：公司详细财务报表（资产负债表、现金流量表）附表以及安泰科技末尾财务指标表，这些对命题提炼无额外贡献。",
+        "低质量区域：公司估值比较表来自图片引用，数值引用降低置信度处理。"
+      ]
+    }
+  },
+  "insight_blocks": [
+    {
+      "id": "ib-001",
+      "block_type": "domain_fundamentals",
+      "title": "核聚变：燃料丰富、清洁安全的终极能源，托卡马克最具商业化潜力",
+      "source_page_range": "6-13",
+      "summary": "核聚变通过氘-氚反应将质量转化为能量，燃料来源丰富（海水中氘储量约45万亿吨），无长寿命核废物，安全性高。磁约束是最有效的约束途径，托卡马克装置因技术成熟度高、工程可行性强，是最可能首先实现商业化的路线，全球159个聚变项目中托卡马克占约50%。",
+      "evidence_strength": "high",
+      "reasoning_chain": [
+        "氘-氚聚变截面大、点火温度相对低（约1亿℃），在FIA调查中占比超68%，是主流路线。",
+        "1990年代JET/TFTR/JT-60三台大型托卡马克等离子体温度达4.4×10⁸K，Q等效值超1.25，证明科学可行性。",
+        "托卡马克具有等离子体约束性能好、工程设计相对简单的优势，成为ITER选型基础。",
+        "因此，持有核聚变产业链敞口的投资者应优先关注托卡马克相关供应商，而非惯性约束或仿星器路线的公司。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "technology",
+        "entity_hints": ["cn-nuclear-fusion"]
+      },
+      "narrative_priority": 1,
+      "transition_hint": "further"
+    },
+    {
+      "id": "ib-002",
+      "block_type": "industry_stage",
+      "title": "全球进入工程可行性验证阶段，ITER是核心里程碑（计划2034年开始研究运行）",
+      "source_page_range": "14-17",
+      "summary": "可控核聚变已历经科学可行性验证，目前进入工程可行性阶段。ITER（国际热核聚变实验堆）是核心工程堆，由中美欧等35国共建，设计聚变功率>500MW、Q值>10，目前仍在建设中，因技术挑战计划于2034年开始研究运行（较原计划推迟4年），预算已从50亿欧元升至200亿欧元以上。",
+      "evidence_strength": "high",
+      "reasoning_chain": [
+        "ITER科学目标：第一阶段感应驱动聚变功率>500MW、Q>10、脉冲500s；第二阶段非感应驱动Q>5、持续3000s。",
+        "ITER最新时间表：2034年开始研究运行，2039年开始氘-氚反应，较原计划推迟约4年。",
+        "ITER进度延误和预算超支表明工程挑战仍大，商业化路径比乐观预期更长。",
+        "因此投资者应对2035年并网发电的乐观预期保持一定折扣，但ITER本身代表巨大采购订单机遇。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "lifecycle",
+        "entity_hints": ["cn-nuclear-fusion"]
+      },
+      "narrative_priority": 1,
+      "transition_hint": "further"
+    },
+    {
+      "id": "ib-003",
+      "block_type": "industry_stage",
+      "title": "中国处于国际先进水平：EAST 2025年实现1066秒高约束模运行",
+      "source_page_range": "17-20",
+      "summary": "中国核聚变研究与国际同步，EAST装置自2006年建成以来持续刷新纪录：2023年实现403秒高约束模，2025年实现1066秒高约束模，始终保持国际引领。环流三号（HL-3）在2023年首次实现100万安培等离子体电流高约束模。中国承担ITER项目18个采购包约9.1%成本分担。",
+      "evidence_strength": "high",
+      "reasoning_chain": [
+        "EAST 2025年实现1066秒高约束模，是迄今最长稳态等离子体运行记录。",
+        "中国CFETR计划2035年建成工程实验堆，BEST预计2027年完工，将成为世界首个紧凑型聚变能实验装置。",
+        "中国在ITER中承担约9.1%成本，参与18个核心采购包，推动国内产业链升级。",
+        "因此中国产业链供应商相对于西方竞争对手具备本土政策和订单优先性，中长期受益确定性较高。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "technology",
+        "entity_hints": ["cn-nuclear-fusion"]
+      },
+      "narrative_priority": 2,
+      "transition_hint": "therefore"
+    },
+    {
+      "id": "ib-004",
+      "block_type": "quant_catalyst",
+      "title": "高温超导（REBCO）突破：装置尺寸和成本压缩至传统方案1/40，商业化加速",
+      "source_page_range": "21-24",
+      "summary": "REBCO等高温超导材料的工业化使托卡马克磁场强度大幅提升，MIT研究人员宣布新型HTS磁体可将装置体积和成本压缩至传统低温超导方案的1/40。SPARC设计磁场12T、等离子体大半径仅1.65m（ITER约1/80体积），聚变功率仍可>50MW。国内能量奇点洪荒70于2024年实现全球首台全高温超导托卡马克装置等离子体放电。",
+      "evidence_strength": "medium_high",
+      "reasoning_chain": [
+        "低温超导（NbTi/Nb₃Sn）磁场上限分别为8T/13.5T；REBCO临界温度更高，高磁场下载流能力强。",
+        "根据聚变功率密度公式，功率正比于B⁴，磁场提升一倍功率提升16倍，因此更高磁场可大幅缩小装置。",
+        "MIT宣布体积成本压缩1/40，洪荒70完成工程可行性验证，是HTS路线商业化的重要里程碑。",
+        "因此高温超导带材和磁体制造商将是未来十年最直接受益的产业链环节，需求增速可能远超市场预期。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "technology",
+        "entity_hints": ["cn-nuclear-fusion", "cn-fusion-hts-magnet-supply"]
+      },
+      "narrative_priority": 2,
+      "transition_hint": "therefore"
+    },
+    {
+      "id": "ib-005",
+      "block_type": "quant_catalyst",
+      "title": "AI在等离子体控制取得重大进展，助力商业化加速",
+      "source_page_range": "21-24",
+      "summary": "AI在核聚变应用中日益广泛：DeepMind与洛桑联邦理工学院合作，2023年将等离子体形状精度提升65%，训练时间减少3倍；普林斯顿PPPL于2024年用AI提前300毫秒预测等离子体不稳定态，实现超前干预。AI同时应用于反应堆设计优化和故障预防。",
+      "evidence_strength": "medium",
+      "reasoning_chain": [
+        "等离子体控制是托卡马克装置商业化的核心挑战之一，AI的应用显著提升了控制精度和效率。",
+        "AI缩短了实验周期、降低研发成本，有助于加快从实验堆到商业堆的过渡。",
+        "因此AI进展是核聚变商业化时间线提前的独立正向催化剂，但尚未成为决定性因素。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "technology",
+        "entity_hints": ["cn-nuclear-fusion"]
+      },
+      "narrative_priority": 2,
+      "transition_hint": "further"
+    },
+    {
+      "id": "ib-006",
+      "block_type": "policy_environment",
+      "title": "中国从中央到地方出台系列支持政策，国家核能战略三步走涵盖聚变堆",
+      "source_page_range": "21",
+      "summary": "国务院、国家发改委、国家能源局出台系列支持政策：《2030年前碳达峰行动方案》要求推进可控核聚变研究，《十四五现代能源体系规划》支持前期研发，《2024年国民经济和社会发展计划草案》明确推进核聚变前沿技术研发。上海2024年出台核电产业行动方案专项支持HTS磁体技术。",
+      "evidence_strength": "high",
+      "reasoning_chain": [
+        "政策支持集中在研发层面，尚未有商业化推广政策，但央地两级政策形成共振。",
+        "中国聚变能源有限公司2025年获中核集团、浙能电力增资（10亿+7.5亿元），国家队资金进入。",
+        "因此政策支持为产业链供应商提供了稳定的订单基础，但不是短期业绩催化剂。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "regulation",
+        "entity_hints": ["cn-nuclear-fusion"]
+      },
+      "narrative_priority": 2,
+      "transition_hint": "meanwhile"
+    },
+    {
+      "id": "ib-007",
+      "block_type": "demand_driver",
+      "title": "市场规模：2025-2035年设备市场潜力超千亿美元，2050年或超1万亿美元",
+      "source_page_range": "25-28",
+      "summary": "根据IAEA统计，2025-2030年预计有10个聚变项目建成，按单项目30亿美元设备投资估算潜在市场约300亿美元；2030-2035年预计27个项目建成，超800亿美元设备市场。若完全商业化，Ignition Research预计2050年将成为至少1万亿美元市场。单座1000MW核聚变电厂成本27-97亿美元。",
+      "evidence_strength": "medium_low",
+      "reasoning_chain": [
+        "市场规模来自IAEA项目统计+普林斯顿/IgnitionResearch测算，均为二手预估，不确定性高。",
+        "FIA调查显示超70%私营聚变公司认为2035年前实现并网，但这是公司自我预期，非第三方验证。",
+        "因此市场空间具有想象力但时间表高度不确定，应作为长期主题框架而非近期盈利驱动因素。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "market_size",
+        "entity_hints": ["cn-nuclear-fusion"]
+      },
+      "narrative_priority": 2,
+      "transition_hint": "but_note"
+    },
+    {
+      "id": "ib-008",
+      "block_type": "value_chain",
+      "title": "聚变堆成本结构：磁体系统占比最高（24.9%），其次是第一壁和真空室",
+      "source_page_range": "26-28",
+      "summary": "据CFETR 200MW方案成本测算（基于2009年），总成本34.6亿美元，其中聚变堆核心设备占45.7%。核心设备中等离子体约束（磁体）占比最高达24.9%（环向+极向+欧姆线圈合计），其次包层第一壁2.5%、真空室4.2%、真空杜瓦0.5%。ITER成本结构类似：磁体系统28%、容器内部件17%、建筑14%、真空室8%。",
+      "evidence_strength": "medium",
+      "reasoning_chain": [
+        "磁体系统在聚变堆中金额敞口最集中，约占整个电厂总成本的17.8%（占核心设备的38.9%）。",
+        "第一壁/偏滤器材料（钨铜）虽然比例较小（2.5%+0.4%），但技术壁垒极高，国产化早期受益显著。",
+        "真空室制造（4.2%）是机械制造企业切入聚变的主要机会，合锻智能已获BEST订单验证。",
+        "因此超导材料和磁体供应商（西部超导、联创超导）的长期订单弹性最大；真空室+第一壁类供应商（合锻智能、安泰科技）已验证订单可见性。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "value_chain",
+        "entity_hints": ["cn-nuclear-fusion", "cn-fusion-hts-magnet-supply", "cn-fusion-firstwall-material", "cn-fusion-vacuum-vessel-fabrication"]
+      },
+      "narrative_priority": 3,
+      "transition_hint": "specifically"
+    },
+    {
+      "id": "ib-009",
+      "block_type": "value_chain",
+      "title": "产业链格局：中国ITER采购包覆盖磁体、第一壁、真空室等核心部件",
+      "source_page_range": "28-33",
+      "summary": "中国承担ITER 18个采购包，包括：100%磁体支撑、100%校正场线圈系统、100%磁体馈线系统、约10%第一壁（增强热负荷型）、50%屏蔽模块、65%极向场线圈导体、约7.51%环向场线圈导体。在A股上市公司中，安泰科技参与第一壁制造，合锻智能承接BEST真空室、窗口延长段及重力支撑。",
+      "evidence_strength": "high",
+      "reasoning_chain": [
+        "中国承担的ITER采购包覆盖产业链核心环节，推动了超导材料、特种钢材、精密加工技术的进步。",
+        "当前A股可投资标的主要集中在机械制造（真空室/部件）和特种材料（钨铜/超导），高温超导磁体制造尚处于早期。",
+        "因此中国聚变产业链具有完整性，但各环节A股供应商的在手订单和验证程度差异显著。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "value_chain",
+        "entity_hints": ["cn-nuclear-fusion", "SSE_688122", "SSE_603011", "SSE_000969"]
+      },
+      "narrative_priority": 3,
+      "transition_hint": "further"
+    },
+    {
+      "id": "ib-015",
+      "block_type": "mainstream_paradigm",
+      "title": "主流路线：大型低温超导托卡马克（ITER/CFETR路线），以NbTi/Nb₃Sn线材为核心",
+      "source_page_range": "13-17",
+      "summary": "当前国际主流工程路线是大型低温超导托卡马克，以ITER为代表：托卡马克大半径6.2m、环向磁场线圈采用Nb₃Sn超导线材（磁场12T），极向场线圈采用NbTi。ITER是35国共建的工程可行性验证装置，设计聚变功率>500MW、Q值>10，代表当前技术成熟度最高的路线。中国CFETR和BEST亦沿此路线发展，西部超导是国内对应低温超导线材唯一商业化供应商。",
+      "evidence_strength": "high",
+      "reasoning_chain": [
+        "ITER采用Nb₃Sn（TF线圈）和NbTi（PF线圈），是目前工程验证最充分的聚变磁体方案。",
+        "大型托卡马克方案已有JET（2022年Q=0.33，聚变功率59MJ）等装置的实验积累，路线可行性最高。",
+        "中国CFETR/BEST/环流三号均沿此路线开发，西部超导是国内低温超导线材唯一商业化供应商，直接受益于此路线。",
+        "因此，主流路线对应确定性最高的近期产业链订单，是短中期投资的核心锚点。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "technology",
+        "entity_hints": ["cn-nuclear-fusion", "cn-fusion-lts-wires"]
+      },
+      "narrative_priority": 3,
+      "transition_hint": "specifically"
+    },
+    {
+      "id": "ib-016",
+      "block_type": "alternative_paradigm",
+      "title": "替代路线：紧凑型高温超导托卡马克（私营HTS路线），体积成本可压缩至传统方案1/40",
+      "source_page_range": "21-24",
+      "summary": "以REBCO为代表的高温超导材料使紧凑型托卡马克成为商业化替代路线：SPARC（CFS/MIT，磁场12T、大半径1.65m）、STEP（英国）、洪荒70（国内能量奇点）等均采用此路线。与ITER路线相比，HTS路线装置体积仅为1/40，建造周期更短，私营融资吸引力更高（全球已累计71.2亿美元私营聚变投资）。联创超导（联创光电子公司）已完成国内首个REBCO D型磁体验证，是国内HTS路线的早期布局者。",
+      "evidence_strength": "medium",
+      "reasoning_chain": [
+        "REBCO高温超导在液氮温区（77K）即可运行，不需要液氦冷却，工程复杂度显著低于LTS方案。",
+        "MIT研究论文证明HTS磁体可将装置体积和成本压缩至LTS路线的1/40，是商业化逻辑的根本颠覆。",
+        "国内洪荒70（2024年）和联创超导D型磁体验证标志着国内HTS路线从技术可行性向工程可行性迈进。",
+        "因此HTS路线代表核聚变商业化的高弹性期权，若私营商业化时间线快于预期，HTS相关标的将显著跑赢主流ITER路线供应商。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "technology",
+        "entity_hints": ["cn-nuclear-fusion", "cn-fusion-hts-magnet-supply"]
+      },
+      "narrative_priority": 3,
+      "transition_hint": "however"
+    },
+    {
+      "id": "ib-010",
+      "block_type": "company_exposure",
+      "title": "合锻智能（603011）：承接BEST项目真空室核心部件约2亿元订单，2025年交付",
+      "source_page_range": "36-42",
+      "summary": "合锻智能是国内高端成形机床成套装备领军企业，2024年H1中标聚变新能（安徽）BEST项目核心关键部件——真空室扇区、窗口延长段及重力支撑等制造任务，价值约2亿元，预计2025年交付。公司参与发起聚变产业联盟，董事长任副理事长。2024E预计亏损（-7000至-9500万元），因汽车行业竞争加剧和主动降价。",
+      "evidence_strength": "medium_high",
+      "reasoning_chain": [
+        "BEST项目真空室约2亿元订单是目前A股中最具体的聚变合同之一，验证了公司技术能力。",
+        "核心业务（液压机、色选机）2024年受汽车行业竞争压制，聚变业务贡献尚小，但具有先发优势。",
+        "2025E盈利预测回正（5700万元归母净利润），弹性主要来自聚变订单和主业企稳。",
+        "因此合锻智能是当前A股聚变敞口最直接、订单最可见的标的，但短期基本面受主业拖累。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "company",
+        "dimension_hint": "catalysts",
+        "entity_hints": ["SSE_603011", "cn-fusion-vacuum-vessel-fabrication"]
+      },
+      "narrative_priority": 4,
+      "transition_hint": "specifically"
+    },
+    {
+      "id": "ib-011",
+      "block_type": "company_exposure",
+      "title": "联创光电（600363）：联创超导完成国内首个HTS D型磁体，布局高温超导磁体",
+      "source_page_range": "43-49",
+      "summary": "联创光电通过参股子公司联创超导（持股40%）布局高温超导磁体，联创超导是国内少数能制造15T以上高场磁体的企业之一。2024年4月，完成基于REBCO集束缆线的D型高温超导磁体制备和低温测试，液氮温区下稳态运行电流超1.5kA，是国内首个此类线圈，为紧凑型聚变堆大口径高场超导磁体自主研制提供支撑。公司还有大功率激光反无人机系统（光刃品牌）业务。",
+      "evidence_strength": "medium",
+      "reasoning_chain": [
+        "HTS D型磁体是紧凑型托卡马克的核心部件，联创超导完成国内首个技术验证具有先发壁垒。",
+        "但联创超导目前仍以光伏N型晶硅炉磁体等非聚变应用商业化为主，聚变收入尚未形成。",
+        "公司持股40%而非控股，超导业务利润贡献在合并报表中有折减。",
+        "因此联创光电是HTS磁体方向的期权性投资，技术进度领先但商业化时间线仍不确定。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "company",
+        "dimension_hint": "technology",
+        "entity_hints": ["SSE_600363", "cn-fusion-hts-magnet-supply"]
+      },
+      "narrative_priority": 4,
+      "transition_hint": "further"
+    },
+    {
+      "id": "ib-012",
+      "block_type": "company_exposure",
+      "title": "西部超导（688122）：国内唯一低温超导线材商业化供应商，ITER唯一中国供应商",
+      "source_page_range": "50-56",
+      "summary": "西部超导是国内唯一实现超导线材商业化生产的企业，也是国际上唯一NbTi铸锭→棒材→超导线材→超导磁体全流程企业，是ITER用低温超导线材中国唯一供应商，亦是SIEMENS和GE的合格供应商。当前主业以高端钛合金（占收入主体）和低温超导线材为主。2024E预计归母净利润8.09亿元，2025E为10.54亿元。",
+      "evidence_strength": "high",
+      "reasoning_chain": [
+        "西部超导在低温超导线材领域具有国内独占地位，受益于ITER项目和MRI（核磁共振）市场。",
+        "目前中国主流聚变装置（ITER、CFETR）采用低温超导（Nb₃Sn），西部超导是直接受益方。",
+        "未来若行业转向高温超导（REBCO），低温超导的角色将被替代，形成技术路线风险。",
+        "因此西部超导当前订单确定性最高，但需关注长期HTS替代低温超导的趋势带来的技术路线风险。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "company",
+        "dimension_hint": "technology",
+        "entity_hints": ["SSE_688122", "cn-fusion-lts-wires"]
+      },
+      "narrative_priority": 4,
+      "transition_hint": "meanwhile"
+    },
+    {
+      "id": "ib-013",
+      "block_type": "company_exposure",
+      "title": "安泰科技（000969）：参与ITER第一壁制造，已交付BEST用钨铜复合片",
+      "source_page_range": "57-63",
+      "summary": "安泰科技是ITER第一壁增强热负荷部件的A股供应商（与中核集团核工业西南物理研究院、国光电气共同承担约10%制造任务），已向BEST项目交付钨铜复合片。公司在金属材料（钨基合金、钛及钛合金、非晶合金）领域有深厚积累。2024A归母净利润约3.5亿元（已公布），对应PE约31.3倍（2024）。",
+      "evidence_strength": "medium_high",
+      "reasoning_chain": [
+        "安泰科技是第一壁钨铜复合材料的早期进入者，已通过ITER和BEST的实际交付验证产品能力。",
+        "第一壁材料技术壁垒极高（高熔点、低溅射、低氚滞留），一旦认证资质稳定，替换成本高。",
+        "ITER第一壁确认从铍换成钨（2023年），利好钨基合金供应商。",
+        "因此安泰科技在第一壁/偏滤器钨铜材料方向具有先发优势，但规模贡献目前仍较小，是中期期权。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "company",
+        "dimension_hint": "catalysts",
+        "entity_hints": ["SSE_000969", "cn-fusion-firstwall-material"]
+      },
+      "narrative_priority": 4,
+      "transition_hint": "further"
+    },
+    {
+      "id": "ib-014",
+      "block_type": "risk",
+      "title": "五大风险：技术进展不及预期、路线更替、资金不足、政策力度、项目推进不确定",
+      "source_page_range": "35",
+      "summary": "研报列明五项风险：①技术进展不及预期（可控核聚变仍处早期，商业化推迟可能性高）；②技术路线更替风险（多路线竞争，托卡马克未必最终胜出）；③资金投入不及预期（需长期大额资金，政府或企业融资能力风险）；④行业政策不及预期；⑤相关项目推进不及预期（ITER、BEST、CFETR等均处早期建设阶段）。",
+      "evidence_strength": "high",
+      "reasoning_chain": [
+        "ITER已推迟4年且预算从50亿升至200亿欧元，验证了工程不确定性风险的现实性。",
+        "如果HTS路线完全取代LTS，西部超导的低温超导业务将面临结构性竞争威胁。",
+        "中国聚变公司融资主要依赖国有资本和政策支持，若宏观环境收紧可能影响项目进展。",
+        "因此投资聚变产业链需要长期视角，并对多个关键里程碑设置观察窗口，避免一次性重仓。"
+      ],
+      "archive_routing_hints": {
+        "target_layer": "industry",
+        "dimension_hint": "risks",
+        "entity_hints": ["cn-nuclear-fusion"]
+      },
+      "narrative_priority": 5,
+      "transition_hint": "but_note"
+    }
+  ],
+  "atomic_facts": [
+    {
+      "fact_id": "fact-001",
+      "linked_block_id": "ib-001",
+      "fact_text": "截至2024年中，全球共有159个核聚变项目，其中托卡马克装置79个，占比接近50%。",
+      "evidence_quote": "根据IAEA的统计，截至2024年中，全球共有159个核聚变项目，其中托卡马克装置79个，占比接近50%",
+      "source_page": 6,
+      "confidence": "high"
+    },
+    {
+      "fact_id": "fact-002",
+      "linked_block_id": "ib-002",
+      "fact_text": "ITER计划于2034年开始研究运行，2039年开始氘-氚反应，较原计划推迟约4年。",
+      "evidence_quote": "根据ITER理事会在2024年6月发布的最新版项目时间表，由于新冠肺炎全球的流程和部分部件面临的技术挑战，项目的建设进度进一步推迟，计划于2034年开始研究操作（SRO）",
+      "source_page": 15,
+      "confidence": "high"
+    },
+    {
+      "fact_id": "fact-003",
+      "linked_block_id": "ib-002",
+      "fact_text": "ITER预算从2001年初始50亿欧元上升至200亿欧元以上。",
+      "evidence_quote": "根据2001年最初的设计，ITER项目预计的总投资额为50亿欧元，但是随着设计的更改、施工成本的上升，其预算也提高到了200亿欧元",
+      "source_page": 15,
+      "confidence": "high"
+    },
+    {
+      "fact_id": "fact-004",
+      "linked_block_id": "ib-003",
+      "fact_text": "EAST 2025年实现1066秒高约束模运行，刷新世界纪录。",
+      "evidence_quote": "2025年实现1066秒高约束模，在稳态等离子体运行的工程和物理上始终保持国际引领",
+      "source_page": 18,
+      "confidence": "high"
+    },
+    {
+      "fact_id": "fact-005",
+      "linked_block_id": "ib-004",
+      "fact_text": "MIT研究人员表示新型高温超导磁体可将托卡马克装置体积和成本压缩至传统方案的1/40。",
+      "evidence_quote": "美国麻省理工学院研究人员在《IEEE应用超导汇刊》上发表6篇论文，宣布通过他们所研发的新型高温超导磁体，能够将可控核聚变装置托卡马克的体积和成本压缩至目前的1/40",
+      "source_page": 22,
+      "confidence": "medium"
+    },
+    {
+      "fact_id": "fact-006",
+      "linked_block_id": "ib-004",
+      "fact_text": "全球私营聚变商业公司截至2024年中累计获得总投资额71.2亿美元，同比增加9亿美元，参与公司超45家。",
+      "evidence_quote": "根据聚变行业协会（FIA）的统计，截至2024年中，全球私营聚变商业公司已累计获得的总投资额达到71.2亿美元，同比增加9亿美元",
+      "source_page": 24,
+      "confidence": "high"
+    },
+    {
+      "fact_id": "fact-007",
+      "linked_block_id": "ib-007",
+      "fact_text": "FIA调查：超70%的商业核聚变公司（37家中26家）认为2035年前实现并网供电。",
+      "evidence_quote": "超过70%的商业核聚变公司认为在2035年前将实现并网供电，超过50%的公司认为2035年将满足商业化运行的低成本/高效率的条件",
+      "source_page": 24,
+      "confidence": "medium"
+    },
+    {
+      "fact_id": "fact-008",
+      "linked_block_id": "ib-008",
+      "fact_text": "CFETR 200MW全超导方案总成本34.6亿美元，其中等离子体约束（磁体）占24.9%（约8.59亿美元）。",
+      "evidence_quote": "等离子体约束 859.2（百万美元） 24.9%。环向磁场线圈 401.0 11.6%。极向磁场线圈 166.9 4.8%。欧姆加热线圈 48.8 1.4%",
+      "source_page": 26,
+      "confidence": "medium"
+    },
+    {
+      "fact_id": "fact-009",
+      "linked_block_id": "ib-010",
+      "fact_text": "合锻智能2024年H1中标BEST项目真空室扇区、窗口延长段及重力支撑制造任务，价值约2亿元，预计2025年交付。",
+      "evidence_quote": "2024年上半年合锻智能中标聚变新能（安徽）有限公司BEST项目核心关键部件——真空室扇区、窗口延长段以及重力支撑等制造任务，价值约2亿元，预计于2025年交付",
+      "source_page": 40,
+      "confidence": "high"
+    },
+    {
+      "fact_id": "fact-010",
+      "linked_block_id": "ib-011",
+      "fact_text": "联创超导2024年4月完成基于REBCO集束缆线的D型高温超导磁体制备和低温测试，液氮温区稳态运行电流超1.5kA，是国内首个此类线圈。",
+      "evidence_quote": "2024年4月，成功完成了基于集束缆线的D型高温超导磁体制备和低温测试，该磁体采用新型高温超导材料REBCO，磁体线圈高度超过1m，在液氮温区下实现了稳态运行电流超过1.5kA。这是国内首个基于高温超导集束缆线的D型超导线圈",
+      "source_page": 47,
+      "confidence": "high"
+    },
+    {
+      "fact_id": "fact-011",
+      "linked_block_id": "ib-012",
+      "fact_text": "西部超导是国内唯一实现超导线材商业化生产的企业，也是国际上唯一NbTi铸锭到超导磁体全流程企业，是ITER中国唯一低温超导线材供应商。",
+      "evidence_quote": "西部超导是目前国内唯一实现超导线材商业化生产的企业，也是国际上唯一的NbTi铸锭、棒材、超导线材生产及超导磁体制造全流程企业，西部超导是ITER用低温超导线材在中国的唯一供应商",
+      "source_page": 51,
+      "confidence": "high"
+    },
+    {
+      "fact_id": "fact-012",
+      "linked_block_id": "ib-013",
+      "fact_text": "安泰科技是ITER包层第一壁的A股供应商之一，已向BEST项目交付钨铜复合片。",
+      "evidence_quote": "包层第一壁：安泰科技股份有限公司（ITER供应商）；安泰科技交付的BEST用钨铜复合片",
+      "source_page": 58,
+      "confidence": "medium_high"
+    }
+  ],
+  "stage_gates": [
+    {
+      "id": "sg-001",
+      "gate_type": "demand_validation",
+      "title": "ITER正式启动研究运行（SRO）并实现Q>1等离子体操作",
+      "crossed": false,
+      "linked_block_ids": ["ib-002"],
+      "what_would_cross_it": [
+        "ITER在2034年（或提前）正式开始研究运行（SRO）且等离子体功率达标",
+        "中国CFETR工程实验堆立项并开始装置建设（计划力争2025年立项）"
+      ]
+    },
+    {
+      "id": "sg-002",
+      "gate_type": "demand_validation",
+      "title": "商业聚变公司实现并网发电或Q>2的持续聚变运行",
+      "crossed": false,
+      "linked_block_ids": ["ib-004", "ib-007"],
+      "what_would_cross_it": [
+        "CFS的SPARC装置实现Q>2，或ARC商业堆开始建造",
+        "国内能量奇点/星环聚能等商业公司宣布聚变功率里程碑",
+        "FIA 2025/2026年报告中第一台并网项目进入施工阶段"
+      ]
+    },
+    {
+      "id": "sg-003",
+      "gate_type": "company_exposure_validation",
+      "title": "A股聚变供应商合同金额超过10亿元人民币（单公司单年）",
+      "crossed": false,
+      "linked_block_ids": ["ib-010", "ib-011", "ib-012", "ib-013"],
+      "what_would_cross_it": [
+        "合锻智能/安泰科技/西部超导/联创光电中至少一家披露年度聚变相关合同超10亿元",
+        "BEST项目完工且交付验收的真空室或磁体部件正式进入量产阶段"
+      ]
+    },
+    {
+      "id": "sg-004",
+      "gate_type": "supply_validation",
+      "title": "国内HTS（REBCO）带材产能突破1万公里/年，成本下降至可商业化水平",
+      "crossed": false,
+      "linked_block_ids": ["ib-004", "ib-011"],
+      "what_would_cross_it": [
+        "国内主要HTS带材供应商（上海超导等）公告产能扩至1万公里/年以上",
+        "联创超导/其他HTS磁体厂商获得聚变装置正式订单（非预研合同）"
+      ]
+    }
+  ],
+  "company_candidates": [
+    {
+      "ticker": "603011",
+      "market": "SSE",
+      "name": "合锻智能",
+      "exposure_type": "direct_supplier",
+      "confidence": "high",
+      "source_block_ids": ["ib-010"],
+      "verification_questions": [
+        "BEST项目真空室2亿元合同是否已完成验收并确认收入？2025年是否有新增聚变订单？",
+        "主业（色选机、液压机）2025年是否企稳，毛利率是否从低点回升？",
+        "除BEST外，公司是否参与CFETR或其他聚变项目的预研？"
+      ]
+    },
+    {
+      "ticker": "600363",
+      "market": "SSE",
+      "name": "联创光电",
+      "exposure_type": "thematic_related",
+      "confidence": "medium",
+      "source_block_ids": ["ib-011"],
+      "verification_questions": [
+        "联创超导HTS磁体业务是否已获得聚变相关正式商业合同（非预研）？",
+        "联创超导持股比例（40%）是否有增持计划？",
+        "激光业务（光刃品牌）2024年出口订单落地情况如何？"
+      ]
+    },
+    {
+      "ticker": "688122",
+      "market": "SSE",
+      "name": "西部超导",
+      "exposure_type": "direct_supplier",
+      "confidence": "high",
+      "source_block_ids": ["ib-012"],
+      "verification_questions": [
+        "ITER低温超导线材订单截至2025年的累计交付量和剩余交付量？",
+        "公司是否有HTS（REBCO）带材研发投入？",
+        "航空钛合金主业订单是否在2025年恢复？"
+      ]
+    },
+    {
+      "ticker": "000969",
+      "market": "SZSE",
+      "name": "安泰科技",
+      "exposure_type": "direct_supplier",
+      "confidence": "medium_high",
+      "source_block_ids": ["ib-013"],
+      "verification_questions": [
+        "ITER第一壁制造任务是否已完成交付？后续是否有DEMO/CFETR采购包？",
+        "BEST钨铜复合片订单金额及2025年预期？",
+        "主业（非晶合金、钛合金）贡献情况？"
+      ]
+    }
+  ],
+  "arena_candidates": [
+    {
+      "candidate_id": "ac-001",
+      "tentative_slug": "cn-fusion-firstwall-material",
+      "name": "国内聚变第一壁钨铜部件竞争格局",
+      "parent_industry_slug": "cn-nuclear-fusion",
+      "battleground_focus": "国内第一壁钨铜复合部件制造资质认证与ITER/CFETR供货份额争夺",
+      "participant_tickers": ["SZSE_000969"],
+      "linked_block_ids": ["ib-009", "ib-013"],
+      "confidence": "medium",
+      "verification_questions": [
+        "除安泰科技外，国内还有哪些公司取得ITER第一壁制造资质？",
+        "国光电气在第一壁供应中的具体份额？"
+      ]
+    },
+    {
+      "candidate_id": "ac-002",
+      "tentative_slug": "cn-fusion-hts-magnet-supply",
+      "name": "国内聚变高温超导磁体与REBCO带材供应格局",
+      "parent_industry_slug": "cn-nuclear-fusion",
+      "battleground_focus": "国内HTS磁体和REBCO带材供应商在聚变装置磁体订单中的技术路线和份额竞争",
+      "participant_tickers": ["SSE_600363"],
+      "linked_block_ids": ["ib-004", "ib-008", "ib-011"],
+      "confidence": "medium",
+      "verification_questions": [
+        "上海超导、苏州新材料研究所等国内REBCO带材厂商产能和订单现状？",
+        "联创超导的15T以上磁体在聚变中的定价和交付情况？"
+      ]
+    },
+    {
+      "candidate_id": "ac-003",
+      "tentative_slug": "cn-fusion-lts-wires",
+      "name": "国内低温超导线材（NbTi/Nb3Sn）供应格局",
+      "parent_industry_slug": "cn-nuclear-fusion",
+      "battleground_focus": "ITER/CFETR低温超导线材国内唯一商业化供应商的订单延续与潜在竞争格局",
+      "participant_tickers": ["SSE_688122"],
+      "linked_block_ids": ["ib-008", "ib-012"],
+      "confidence": "high",
+      "verification_questions": [
+        "西部超导ITER剩余线材订单体量？CFETR是否有低温超导招标计划？",
+        "国内是否有其他LTS线材生产商在布局（永鼎股份等）？"
+      ]
+    },
+    {
+      "candidate_id": "ac-004",
+      "tentative_slug": "cn-fusion-vacuum-vessel-fabrication",
+      "name": "国内聚变真空室与大型结构件制造格局",
+      "parent_industry_slug": "cn-nuclear-fusion",
+      "battleground_focus": "聚变装置真空室扇区、偏滤器等大型结构件的高精度制造资质与供货竞争",
+      "participant_tickers": ["SSE_603011"],
+      "linked_block_ids": ["ib-009", "ib-010"],
+      "confidence": "medium",
+      "verification_questions": [
+        "海陆重工、东方电气（广州）重型机器在真空室制造中的竞争地位？",
+        "BEST完工后，合锻智能是否获得CFETR真空室的预研合同？"
+      ]
+    }
+  ],
+  "synthesis": {
+    "one_sentence": "高温超导和AI技术突破显著加速了可控核聚变商业化预期，中国产业链供应商（磁体、第一壁、真空室）已具备一定订单验证，但仍处工程可行性验证阶段，距离规模化商业订单尚有约10年以上不确定期。",
+    "evidence_strength": "medium",
+    "what_we_know": [
+      "托卡马克装置已通过90年代科学可行性验证（Q等效值>1.25），正在进入工程可行性验证阶段。",
+      "EAST 2025年实现1066秒高约束模运行，标志中国磁约束聚变处于国际领先水平。",
+      "高温超导（REBCO）材料使装置成本和体积可压缩至传统低温超导方案的1/40（MIT论证）。",
+      "合锻智能已获BEST真空室订单约2亿元（2025年交付），安泰科技已交付BEST钨铜复合片。",
+      "西部超导是ITER中国唯一低温超导线材供应商，具有唯一供应商地位。",
+      "ITER磁体系统占聚变堆成本约24.9%，是产业链中金额敞口最集中的环节。",
+      "全球私营聚变融资累计达71.2亿美元，超70%公司预期2035年前实现并网。"
+    ],
+    "what_is_plausible": [
+      "BEST项目2027年建成后将催生更大量的国产聚变零部件订单，率先获得认证资质的A股公司受益最直接。",
+      "REBCO带材需求将随全高温超导托卡马克项目推进而快速增长，联创超导等先发企业可能获得溢价定价。",
+      "CFETR工程实验堆的建设将催生数十亿元规模的国内聚变设备市场（2025-2035年间）。"
+    ],
+    "what_needs_verification": [
+      "合锻智能BEST项目合同2025年交付是否如期，以及后续聚变订单是否已签约。",
+      "联创超导是否已获得聚变装置HTS磁体的正式商业合同（而非预研）。",
+      "西部超导ITER剩余订单交付时间表，以及是否参与CFETR低温超导线材采购。",
+      "安泰科技ITER第一壁任务完成情况及CFETR后续订单预期。",
+      "国内REBCO带材产能和价格趋势（判断HTS磁体供应链成熟度）。"
+    ],
+    "investment_questions": [
+      "在ITER、BEST、CFETR三个平行项目的叠加下，2025-2030年中国聚变产业链的实际订单规模是多少？",
+      "高温超导完全替代低温超导的时间节点是什么，西部超导是否会布局HTS以规避技术路线风险？",
+      "合锻智能的主业压力和聚变业务增长，哪个对2025-2026年股价的影响更大？",
+      "联创超导持股40%是否会提高到控股，如果是，联创光电的估值逻辑将如何变化？"
+    ],
+    "cannot_conclude": [
+      "无法确定聚变商业化的具体时间表（ITER进度已延迟4年，2035年并网仍为公司自我预期）。",
+      "无法确认A股聚变供应商在2025-2026年能形成规模性聚变收入贡献（sg-003尚未跨越）。",
+      "无法确认HTS是否会在2030年前替代LTS成为主流（sg-004尚未跨越）。",
+      "无法根据现有信息判断哪家A股公司的聚变收入增长将最快（缺乏各公司具体订单管线数据）。"
+    ]
+  },
+  "schema_fit_review": {
+    "fits_current_schema": true,
+    "missing_schema_fields": [],
+    "extra_fields_needed": [],
+    "notes": "行业深度报告+公司覆盖的混合报告，现有schema可以容纳所有核心信息。insight_blocks中industry_report类型（priority 1-5）覆盖了行业定位、催化剂、产业链、公司敞口和风险。公司level的盈利预测细节通过atomic_facts+company_candidates体现。"
+  },
+  "claim_candidates": [
+    {
+      "candidate_id": "cc-001",
+      "claim_text": "托卡马克装置是目前最具商业化潜力的可控核聚变技术路线，全球主要聚变项目以此为主。",
+      "scope_type": "industry",
+      "scope_ref": "cn-nuclear-fusion",
+      "claim_type": "thesis",
+      "dimension_hint": "technology",
+      "supporting_block_ids": ["ib-001"],
+      "direction_on_source": "supports",
+      "confidence": "high",
+      "evidence_basis": "full_fact_chain",
+      "investment_implication": "投资核聚变产业链应优先布局托卡马克相关供应商（磁体、第一壁、真空室），惯性约束和仿星器路线的公司标的稀缺且风险更高。A股标的均集中于托卡马克方向，主题逻辑清晰。",
+      "semantic_nucleus": "托卡马克 商业化 最优路线",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    },
+    {
+      "candidate_id": "cc-002",
+      "claim_text": "高温超导（REBCO）材料的工业化使托卡马克装置体积和成本可压缩至传统低温超导方案的1/40，聚变商业化预期时间线明显提前。",
+      "scope_type": "industry",
+      "scope_ref": "cn-nuclear-fusion",
+      "claim_type": "thesis",
+      "dimension_hint": "technology",
+      "supporting_block_ids": ["ib-004"],
+      "direction_on_source": "supports",
+      "confidence": "medium",
+      "evidence_basis": "summary_only",
+      "investment_implication": "HTS突破是当前核聚变主题行情的核心催化剂。REBCO带材和HTS磁体供应商（联创超导等）将是未来十年最高弹性环节，建议持续跟踪带材产能扩张和定价趋势。",
+      "semantic_nucleus": "REBCO 装置 成本 压缩",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    },
+    {
+      "candidate_id": "cc-003",
+      "claim_text": "中国EAST装置2025年实现1066秒高约束模运行，在稳态等离子体运行领域保持全球领先。",
+      "scope_type": "industry",
+      "scope_ref": "cn-nuclear-fusion",
+      "claim_type": "judgment",
+      "dimension_hint": "technology",
+      "supporting_block_ids": ["ib-003"],
+      "direction_on_source": "supports",
+      "confidence": "high",
+      "evidence_basis": "full_fact_chain",
+      "investment_implication": "中国在核聚变工程技术上的国际领先地位支撑了CFETR/BEST等国内项目的可行性预期，为本土产业链订单提供了技术背书，是A股聚变主题的长期制度性优势。",
+      "semantic_nucleus": "EAST 1066秒 高约束模",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    },
+    {
+      "candidate_id": "cc-004",
+      "claim_text": "磁体系统在聚变堆成本中占比约24.9%，是产业链中金额敞口最集中的单一环节。",
+      "scope_type": "industry",
+      "scope_ref": "cn-nuclear-fusion",
+      "claim_type": "judgment",
+      "dimension_hint": "value_chain",
+      "supporting_block_ids": ["ib-008"],
+      "direction_on_source": "supports",
+      "confidence": "medium",
+      "evidence_basis": "full_fact_chain",
+      "investment_implication": "超导磁体供应商在整个聚变产业链价值链中占据最核心位置。西部超导（LTS线材）和联创超导（HTS磁体）若能实现批量聚变订单，其收入弹性将远超第一壁或真空室供应商。应优先关注磁体相关标的的订单进展。",
+      "semantic_nucleus": "磁体 敞口 最集中",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    },
+    {
+      "candidate_id": "cc-005",
+      "claim_text": "合锻智能已在2024年H1获得BEST项目真空室核心部件制造合同约2亿元，预计2025年交付，是A股中最直接的聚变真空室供应商。",
+      "scope_type": "company",
+      "scope_ref": "SSE_603011",
+      "claim_type": "judgment",
+      "dimension_hint": "catalysts",
+      "supporting_block_ids": ["ib-010"],
+      "direction_on_source": "supports",
+      "confidence": "high",
+      "evidence_basis": "full_fact_chain",
+      "investment_implication": "该合同是目前A股中金额最具体、交付最临近的聚变订单，验证了合锻智能的技术切入能力。2025年交付确认将提供短期业绩支撑，但2亿元规模相对公司20亿元总收入体量仍较小，暂时难以改变主业逻辑。",
+      "semantic_nucleus": "合锻智能 BEST 真空室 2亿",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    },
+    {
+      "candidate_id": "cc-006",
+      "claim_text": "西部超导是国内唯一实现低温超导线材商业化生产的企业，也是ITER中国唯一低温超导线材供应商。",
+      "scope_type": "company",
+      "scope_ref": "SSE_688122",
+      "claim_type": "judgment",
+      "dimension_hint": "competition",
+      "supporting_block_ids": ["ib-012"],
+      "direction_on_source": "supports",
+      "confidence": "high",
+      "evidence_basis": "full_fact_chain",
+      "investment_implication": "西部超导的LTS唯一供应商地位赋予其在ITER和CFETR项目中的确定性订单，这是同类公司中最高的壁垒。但需警惕长期HTS替代风险——若公司不布局REBCO，其聚变长期敞口将逐步缩小。",
+      "semantic_nucleus": "西部超导 LTS 唯一供应商",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    },
+    {
+      "candidate_id": "cc-007",
+      "claim_text": "联创超导完成国内首个基于REBCO集束缆线的D型高温超导磁体，在A股聚变HTS磁体制造方向具有技术先发地位。",
+      "scope_type": "company",
+      "scope_ref": "SSE_600363",
+      "claim_type": "judgment",
+      "dimension_hint": "technology",
+      "supporting_block_ids": ["ib-011"],
+      "direction_on_source": "supports",
+      "confidence": "medium",
+      "evidence_basis": "full_fact_chain",
+      "investment_implication": "联创超导的HTS D型磁体验证是A股中目前最接近聚变商业磁体应用的技术节点。若HTS路线在中国聚变装置中大规模推广，联创光电通过联创超导的间接受益将比任何竞争者都更早实现。但持股40%限制了利润传导效率。",
+      "semantic_nucleus": "联创超导 REBCO D型磁体 首个",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    },
+    {
+      "candidate_id": "cc-008",
+      "claim_text": "安泰科技是ITER增强热负荷第一壁的A股供应商之一，已向BEST项目交付钨铜复合材料，在聚变第一壁材料方向具有订单验证。",
+      "scope_type": "company",
+      "scope_ref": "SZSE_000969",
+      "claim_type": "judgment",
+      "dimension_hint": "catalysts",
+      "supporting_block_ids": ["ib-013"],
+      "direction_on_source": "supports",
+      "confidence": "medium_high",
+      "evidence_basis": "full_fact_chain",
+      "investment_implication": "第一壁钨铜材料是聚变装置中技术壁垒最高的材料之一（ITER 2023年确认从铍换成钨），安泰科技已完成ITER和BEST的早期供货，未来CFETR/DEMO的第一壁采购包具有续单逻辑，是材料方向最确定的受益标的。",
+      "semantic_nucleus": "安泰科技 第一壁 钨铜 供货",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    },
+    {
+      "candidate_id": "cc-009",
+      "claim_text": "可控核聚变距离商业化发电仍有约10年以上不确定期，现有A股供应商聚变业务收入占比普遍较小，主题性属性强于基本面属性。",
+      "scope_type": "industry",
+      "scope_ref": "cn-nuclear-fusion",
+      "claim_type": "risk",
+      "dimension_hint": "risks",
+      "supporting_block_ids": ["ib-002", "ib-014"],
+      "direction_on_source": "supports",
+      "confidence": "high",
+      "evidence_basis": "full_fact_chain",
+      "investment_implication": "聚变相关A股股价更多受主题情绪和里程碑事件驱动，而非聚变收入基本面。投资者应设定明确的里程碑观察点（如ITER SRO、BEST建成、A股企业聚变收入超过总收入10%），避免仅凭主题逻辑长期持有而不关注实质进展。",
+      "semantic_nucleus": "聚变 商业化 10年 不确定",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    },
+    {
+      "candidate_id": "cc-010",
+      "claim_text": "若高温超导路线完全替代低温超导，西部超导的ITER低温超导线材业务将面临结构性替代风险。",
+      "scope_type": "company",
+      "scope_ref": "SSE_688122",
+      "claim_type": "risk",
+      "dimension_hint": "risks",
+      "supporting_block_ids": ["ib-012", "ib-014"],
+      "direction_on_source": "neutral",
+      "confidence": "medium",
+      "evidence_basis": "summary_only",
+      "investment_implication": "需跟踪西部超导是否启动REBCO带材研发或收购布局。若公司仅专注低温超导而不布局高温超导，其聚变长期价值将随HTS渗透率提升而递减。这是持有西部超导聚变主题仓位时需要监控的核心风险点。",
+      "semantic_nucleus": "HTS替代LTS 西部超导 风险",
+      "anchor_hash": "",
+      "as_of": "2025-04-10"
+    }
+  ],
+  "write_status": "not_applicable_phase1",
+  "narrative_arc": [
+    {
+      "arc_id": "arc-001",
+      "arc_type": "technology_shift",
+      "title": "高温超导与AI催化聚变商业化：从理论到工程可行性，产业链早期布局窗口开启",
+      "sections": [
+        {
+          "section_name": "行业定位与技术原理",
+          "block_ids": ["ib-001"]
+        },
+        {
+          "section_name": "全球进入工程可行性验证阶段",
+          "block_ids": ["ib-002", "ib-003"]
+        },
+        {
+          "section_name": "技术催化剂：HTS突破与AI应用",
+          "block_ids": ["ib-004", "ib-005", "ib-006"]
+        },
+        {
+          "section_name": "市场空间与产业链价值分布",
+          "block_ids": ["ib-007", "ib-008", "ib-009"]
+        },
+        {
+          "section_name": "主流路线与替代路线对比",
+          "block_ids": ["ib-015", "ib-016"]
+        },
+        {
+          "section_name": "A股公司敞口与投资路径",
+          "block_ids": ["ib-010", "ib-011", "ib-012", "ib-013"]
+        },
+        {
+          "section_name": "风险与不确定性边界",
+          "block_ids": ["ib-014"]
+        }
+      ]
+    }
+  ]
+}

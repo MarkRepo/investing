@@ -34,7 +34,7 @@ ls prism/inbox/auto/
 python -c "
 import json
 from prism.scripts.manifest import read_manifest
-print(json.dumps(read_manifest('{slug}'), ensure_ascii=False, indent=2))
+print(json.dumps(read_manifest('{slug}', '{variant}'), ensure_ascii=False, indent=2))
 "
 ```
 
@@ -47,30 +47,29 @@ print(json.dumps(read_manifest('{slug}'), ensure_ascii=False, indent=2))
 对每份新文件执行：
 
 ```bash
+# 先找到文件完整路径
 python -c "
+from prism.scripts.manifest import get_material_path
+path = get_material_path('{slug}', '{filename}', '{variant}')
+print(path if path else 'FILE_NOT_FOUND')
+"
+# 登记并自动复制到 topic 的 materials 目录
+python -c "
+from pathlib import Path
 from prism.scripts.manifest import add_material
 mat_id = add_material(
     slug='{slug}',
     filename='{filename}',
     source_type='{source_type}',
     notes='{notes}',
+    source_path=Path('{material_full_path}'),
+    variant='{variant}',
 )
 print(f'已登记：{filename} → {mat_id}')
 "
 ```
 
----
-
-## Step 5：移动文件到 topic 目录（可选）
-
-如果资料需要长期关联到这个 topic，可以移动：
-
-```bash
-mkdir -p prism/topics/{slug}/materials/
-cp prism/inbox/manual/{filename} prism/topics/{slug}/materials/
-```
-
-> 注意：移动后原 inbox 文件可删除，manifest 记录 filename 用相对于 materials/ 的路径。
+> 注意：文件会自动复制到 prism/topics/{slug}/materials/，原 inbox 文件保留。
 
 ---
 
@@ -78,12 +77,16 @@ cp prism/inbox/manual/{filename} prism/topics/{slug}/materials/
 
 ```bash
 python -c "
-from prism.scripts.topic import set_stage, set_next_actions
+from prism.scripts.topic import set_stage, set_next_actions, set_user_todos
 from prism.scripts.manifest import material_count
-counts = material_count('{slug}')
-set_stage('{slug}', '03-extracting' if counts['unprocessed'] > 0 else '02-gathering')
+counts = material_count('{slug}', '{variant}')
+set_stage('{slug}', '03-extracting' if counts['unprocessed'] > 0 else '02-gathering', '{variant}')
 set_next_actions('{slug}', [
     f'已有 {counts[\"unprocessed\"]} 份资料未处理，运行 workflow 03-extract-findings',
+])
+set_user_todos('{slug}', [
+    f'已登记 {counts[\"total\"]} 份资料到 manifest',
+    f'待处理：{counts[\"unprocessed\"]} 份（说「prism 推进 {slug}」开始提取发现）',
 ])
 "
 ```

@@ -226,6 +226,14 @@ def build_proposal_file(
             continue
         if not _claim_has_source(claim, source_id):
             continue
+
+        # P3.2: Skip stale claims (no longer drive narrative unless re-evidenced)
+        decay = claim.get("decay_status")
+        if decay == "invalidated":
+            continue
+        if decay == "stale":
+            continue
+
         dimension = scope.mapping.get(claim.get("dimension_hint", ""))
         if dimension is None:
             unmapped.append(

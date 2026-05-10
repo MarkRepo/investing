@@ -1,0 +1,55 @@
+slug: cn-commercial-space
+display_name: 中国商业航天
+type: industry
+created: '2026-05-09T05:16:56.927115+00:00'
+status: active
+stage: 05-critic-review
+scope:
+  geo: CN
+  question: 中国商业航天的发射与卫星制造环节的商业模式、竞争格局及破局点在哪里？
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-09T13:25:00+00:00'
+    status: fresh
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-09T13:25:00+00:00'
+    status: fresh
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-09T13:25:00+00:00'
+    status: fresh
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-09T13:25:00+00:00'
+    status: fresh
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-09T13:25:00+00:00'
+    status: fresh
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-09T13:25:00+00:00'
+    status: fresh
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-09T13:25:00+00:00'
+    status: fresh
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-09T13:25:00+00:00'
+    status: fresh
+next_actions:
+- 8 份标准产出已全部生成（v1）
+user_todos:
+- 8 份产出已全部生成（v1）
+- 可选操作：
+- '  1. 「评审 cn-commercial-space」—— 启动 critic review 找漏洞'
+- '  2. 「深挖 cn-commercial-space 的{具体问题}」—— 深入研究某个方向'
+- '  3. 「记录决策 cn-commercial-space」—— 记录投资决策备忘'
+- '  4. 「prism 推进 cn-commercial-space」—— 进入 monitor 阶段'
+monitoring:
+  enabled: false
+  cadence: daily

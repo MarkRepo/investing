@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ meta.title }} · 研报摘要{% endblock %}
+{% block content %}
+<h1>{{ meta.title }}</h1>
+<p class="hint">
+  原文：{{ meta.source_pdf }}{% if meta.generated_at %} · 生成于 {{ meta.generated_at[:19] }}{% endif %}
+</p>
+
+<div class="action-buttons" style="margin-bottom: 20px;">
+  <a href="/digest">← 返回列表</a>
+</div>
+
+<article class="markdown">
+{{ summary_html|safe }}
+</article>
+{% endblock %}

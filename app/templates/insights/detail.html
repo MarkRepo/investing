@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}{{ frontmatter.source_title or sha8 }} · {{ meta.name or slug }}{% endblock %}
+{% block content %}
+<h1>{{ frontmatter.source_title or sha8 }}</h1>
+
+<p class="page-nav">
+  <a href="{{ back_url or ('/insights/industry/' ~ slug) }}">← {{ meta.name or slug }}</a>
+  {% if mineru_report_id %}
+  <span class="nav-sep-inline">·</span>
+  <a href="/digest/{{ mineru_report_id }}">研报摘要</a>
+  {% endif %}
+  {% if insights %}
+  <span class="nav-sep-inline">·</span>
+  其他备忘录：
+  {% for ins in insights %}
+    {% if ins.sha8 != sha8 %}
+    <a href="/insights/industry/{{ slug }}/{{ ins.sha8 }}">{{ ins.source_title or ins.sha8 }}</a>
+    {% if not loop.last %}<span class="nav-sep-inline">·</span>{% endif %}
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+</p>
+
+{% if frontmatter %}
+<div class="frontmatter">
+  <table>
+    {% for k, v in frontmatter.items() %}
+    <tr><th>{{ k }}</th><td>{{ v }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
+
+<div class="md-content">
+{{ html_body|safe }}
+</div>
+
+<style>
+  .page-nav { margin: 0.5em 0 1em; font-size: 0.9em; }
+  .nav-sep-inline { color: #aaa; margin: 0 0.4em; }
+  .frontmatter { margin: 1em 0; }
+  .frontmatter table { border-collapse: collapse; font-size: 0.85em; }
+  .frontmatter th, .frontmatter td { border: 1px solid var(--border, #ddd); padding: 0.3em 0.6em; text-align: left; }
+  .frontmatter th { background: var(--bg-soft, #f8f8f8); color: #555; }
+  .md-content { margin: 1.5em 0; line-height: 1.6; }
+  .md-content h1 { font-size: 1.5em; margin: 1em 0 0.5em; }
+  .md-content h2 { font-size: 1.25em; margin: 1em 0 0.4em; }
+  .md-content h3 { font-size: 1.1em; margin: 0.8em 0 0.3em; }
+  .md-content p { margin: 0.6em 0; }
+  .md-content blockquote {
+    margin: 0.8em 0; padding: 0.5em 0.8em;
+    border-left: 3px solid var(--border, #ddd);
+    color: #333; font-style: italic;
+    background: var(--bg-soft, #f8f8f8);
+  }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 0.8em 0; font-size: 0.9em; }
+  .md-content th, .md-content td { border: 1px solid var(--border, #ddd); padding: 0.4em 0.6em; text-align: left; }
+  .md-content th { background: var(--bg-soft, #f8f8f8); }
+  .md-content ul, .md-content ol { padding-left: 1.5em; margin: 0.5em 0; }
+  .md-content li { margin: 0.3em 0; }
+  .md-content code { background: var(--bg-soft, #f0f0f0); padding: 0.1em 0.3em; border-radius: 2px; font-size: 0.9em; }
+  .md-content pre { background: var(--bg-soft, #f8f8f8); padding: 0.8em; border-radius: 4px; overflow-x: auto; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content hr { border: none; border-top: 1px solid var(--border, #ddd); margin: 1.5em 0; }
+  .hint { color: #888; font-size: 0.85em; }
+</style>
+{% endblock %}

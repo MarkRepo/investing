@@ -1,368 +1,189 @@
 # 用户指南
 
-> 配合 [`DESIGN.md`](../DESIGN.md) 阅读。DESIGN 讲**为什么**，本文档讲**怎么用**。
+## 快速开始
 
-本系统是个人投资决策工作流，不是研报仪表盘。核心目标：防止**踏空**（知道便宜但不敢重仓）和**情绪卖出**（被宏观叙事冲走原本正确的持仓）。它不会告诉你买什么，它逼你在买之前把买入理由冻结成文字。
-
----
-
-## 1. 启动
+### 启动 Web 服务
 
 ```bash
-source .venv/bin/activate
+cd /path/to/investing
 uvicorn main:app --reload
-# 访问 http://127.0.0.1:8000/
+# 访问 http://localhost:8000
 ```
 
-首次启动会自动创建 `data/financials.db`（空库）。其余目录（`companies/`, `watchlist/`, `portfolio/` 等）在对应功能第一次写入时创建。
-
----
-
-## 2. 首页看板：什么出现意味着什么
-
-首页 `/` 是纪律仪表盘，不是行情页。出现的卡片都是"需要你处理的东西"：
-
-| 卡片 | 含义 | 你该做什么 |
-|---|---|---|
-| 🚨 复盘跳过 | 连续 ≥2 个季度没写 `macro/review-YYYYQX.md` | 立刻补上最近一次复盘（DESIGN §8 坑 6——系统白建了） |
-| 📅 未来 7 天催化剂 | `macro/catalysts.md` 里 T+0–7 的条目 | 点进去确认"什么算推翻 / 什么不算" |
-| 🔔 价格触发 | 持仓/观察池里的价格条件已成立但你还没处理 | 打开对应公司 V0，决定买入/删除/重置 |
-| 📉📈 单日 ±15% | 任何 ticker 相邻两天收盘价变动 ≥15% | 打开对应 V0，对照"什么不算推翻" |
-| ⏰ 研究逾期 | 观察池 researching 段超过 `target_finish` | 结束研究——2-4 小时没结论说明你在绕开门禁（DESIGN §3.6） |
-| 待办：财报对照 | 该公司有新财报期间但你没对过 V0 | 去 `/earnings-review/<key>` 逐条对照 |
-
-**原则：首页空 = 你做得对。** 如果首页卡片堆了很多而你在研究新股票，就是在用"研究"回避"处理"。
-
----
-
-## 3. 日常节奏（DESIGN §6）
-
-### 每天（5 分钟）
-1. 打开首页，扫看板卡片
-2. 处理掉红色/黄色卡片（或明确决定"今天不处理"）
-3. **不做**：打开 `/companies` 逛；读新持仓的新闻
-
-### 每周（30 分钟）
-- `/watchlist`：review 观察池
-  - prefilter 里淘汰不再感兴趣的
-  - researching 里结束已过期的（强行结束也行，写结论到日志）
-- `/prices` 录入本周收盘价（只记你在跟踪的 ticker，不求全）
-
-### 每月（2 小时）
-- `/performance`：这月组合 vs 沪深 300 / SPY
-- `/portfolio/rules` → 检查组合级规则是否被违反
-- `/research-audit`：抽查本月写的 claim，防止 AI 辅助输出的东西不准却没人复核
-
-### 每季度（半天）
-- `/regime/<YYYYQX>` 更新市场钟摆判断（这会影响 `/companies/<key>/valuation` 的建议折现率）
-- `/review/<YYYYQX>` 季度复盘
-- 每个持仓公司 V0 逐一 review（点 `/companies/<key>/v0` 确认是否需要更新）
-
-### 每年（一天）
-- 复盘哪些行业你真正有能力圈（结果分证明），哪些是幻觉
-- 审视 `industries/` 下的行业目录：哪些已经没人跟了？哪些需要重写 11 维？
-
-### 触发式
-- **想买**→必须先走 `/companies/<key>/v0`。没写完的 V0 = 不能买
-- **想卖**→必须对照 V0 里"什么不算推翻"
-- **财报发布**→ `/earnings-review/<key>`
-- **±15% 单日**→首页卡片会提醒
-
----
-
-## 4. 核心工作流：一只新公司怎么从想法走到持仓
-
-这是系统十层主线的具象化（DESIGN §2.1）。假设你刚听说一家公司 "HIMS"。
-
-### 第 1 步：入观察池 prefilter
-`/watchlist` → 添加到 prefilter 段。必填：
-- `source_type`：必须是 `quant_screen` / `qual_radar` / `product_experience` 之一（DESIGN §8 坑 9：不能写 "news"）
-- `source`：具体来源（如 "自己用 GLP-1 服务 6 个月"）
-- `notes`：第一眼印象
-
-**系统会拒绝的事**：7 天冷静期没到就想升级到 researching。
-
-### 第 2 步：冷静期过后，升级到 researching（门禁）
-7 天后回到 `/watchlist`，点"升级"。弹出三问：
-1. **能力圈**：你能解释它怎么赚钱吗？
-2. **错定价**：为什么你觉得市场错了？
-3. **真兴趣**：不是追涨/跟风，对吧？
-
-三问**都**要回答 `yes` 且理由 ≥30 字。短理由和 `no` 都会被系统拒。
-
-另外 researching 段有硬上限 **2 家**。要进第 3 家？先结束一家（DESIGN §8 坑 8：过度研究 = 假装在工作）。
-
-### 第 3 步：建档（公司元信息）
-`/companies/new` → 创建 `US_HIMS`。生成：
-- `companies/US_HIMS/meta.md`（ticker、market、industry_slugs、themes）
-- `companies/US_HIMS/v0.md`（空模板）
-- `companies/US_HIMS/valuation.md`（三情景估值）
-- `companies/US_HIMS/narratives/{business-model,moat,...}.md`（8 维，spec §4.5）
-
-`industry_slugs` 是一个自由文本 list，每个 slug 对应 `industries/` 下的一个行业目录。没有白名单 —— 行业层由 `industries/` 注册表本身定义（spec §4.5）。
-
-### 第 4 步：填能力圈问卷（硬门禁）
-`/companies/US_HIMS/competence`。按题目打 ✓ / 部分 / ✗。每个 ✗ 都是缺口。
-
-**不过关不研究**。 不过关的正确动作是**放弃**，不是"读更多研报"（DESIGN §1 哲学 3）。
-
-### 第 5 步：B 研究（可选，只针对缺口）
-`/research/US_HIMS`：
-- 你在对话里（任意 LLM）让它帮你抽 claim
-- 结果粘贴到 `/research/US_HIMS`（会写入 ClaimRegistry，即 `claims/*.jsonl`）
-- **硬性要求**：每条 claim 必须绑定一个 `source_file`，且文件必须存在于 `companies/US_HIMS/sources/`（DESIGN §8 坑 9——事实层不接受"新闻里说"）
-
-时限：2-4 小时一家。拖更长 = 你在用研究回避决策。
-
-### 第 6 步：估值
-`/companies/US_HIMS/valuation`。填三情景（悲观 25% / 基准 50% / 乐观 25%）+ 相对估值 + 倒推法。
-
-**折现率**：系统根据当前 `macro/regime-<quarter>.md` 的 `ust_10y_yield` + 市场钟摆等级给你一个建议值（hot +1%，panic +2%）。你可以不用这个建议，但系统会显示它，方便你逆向验证自己的数字。
-
-### 第 7 步：写 V0（买入前最后一关）
-`/companies/US_HIMS/v0`。七个字段（DESIGN §3.2）：
-1. 买入逻辑
-2. 差异化观点（二阶思维——市场共识是什么，你哪里不一样）
-3. 估值锚
-4. 买入区间
-5. 卖出触发（基本面 + 估值两类）
-6. **什么不算推翻**（噪音清单——利率/地缘/央行/宏观数据都要写在这里）
-7. 当前状态
-
-"什么不算推翻"是 V0 的灵魂。情绪卖出基本上都是"实际上不算推翻的噪音"被事后合理化成"thesis 坏了"。把噪音在买入前列清楚，卖出时才有抓手。
-
-### 第 8 步：执行（买 / 设触发 / 放弃）
-- 价格已到买入区间：去券商下单，然后在 `/journal/new` 写买入日志
-- 价格还没到：`/companies/US_HIMS/triggers` 设价格触发
-- 决定不买：也要在 `/journal/new` 写"放弃"日志（过程分必填）
-
-### 第 9 步：持仓期间
-- 每次买卖/加减仓 → 写日志（过程分 + 结果分分离）
-- 价格触发激活 → 首页卡片提醒
-- 财报发布 → `/earnings-review/US_HIMS` 对照（最新 period vs 上次 reviewed period）
-- 催化剂 → `/catalysts` 手动登记重大事件日期
-
-### 第 10 步：退出
-卖出时 **必须**对照 V0 的"推翻条件"和"什么不算推翻"。如果卖出理由命中"什么不算推翻"里的词（利率、美联储、地缘政治、VIX、通胀、板块轮动、消息面……），系统会在 `/discipline` 标红。你可以卖，但你会看到自己在违反自己当初写的规则。
-
----
-
-## 5. 各模块索引
-
-### 主要入口
-| 路径 | 作用 |
-|---|---|
-| `/` | 首页看板 |
-| `/companies` | 公司列表 + 新建 |
-| `/watchlist` | 观察池三段（prefilter / researching / price-triggers） |
-| `/portfolio` | 持仓 |
-| `/portfolio/rules` | 组合级硬性规则（单股上限、行业上限、主题上限、现金下限） |
-| `/journal` | 投资日志 |
-| `/earnings-review` | 财报对照待办列表 |
-| `/prices` | 收盘价录入（手动，无外部 API） |
-| `/performance` | 业绩 vs 基准 |
-| `/regime` | 季度市场钟摆 |
-| `/review` | 季度复盘 |
-| `/catalysts` | 催化剂日历 |
-| `/industries` | 行业 landscape / players / 能力圈地图 |
-| `/competence-map` | 跨公司能力圈总览 |
-| `/discipline` | 纪律仪表盘（详见下一节） |
-| `/research-audit` | Claim 月度抽查 |
-| `/search` | 全文搜索 markdown |
-| `/prompts` | LLM 提示词模板 |
-
-### 单公司入口（`<key>` = `US_HIMS` 形式）
-- `/companies/<key>` 详情（含 8 维 narrative + 行业/arena 跨层链接）
-- `/companies/<key>/meta` 编辑 ticker/market/industry/themes
-- `/companies/<key>/v0` 买入逻辑
-- `/companies/<key>/competence` 能力圈问卷
-- `/companies/<key>/valuation` 三情景估值
-- `/companies/<key>/financials` 财务数据（CSV 导入）
-- `/companies/<key>/triggers` 价格触发
-- `/research/<key>` B 研究（claims）
-
----
-
-## 6. 纪律仪表盘 `/discipline`
-
-专门监控自己是否在违反规则。DESIGN §8 的九个坑里，这个仪表盘直接检测其中三个：
-
-### 无 V0 快照的买入（坑 3）
-扫所有买入/加仓日志，找 `v0_snapshot_path` 字段为空的。命中 = 绕开 V0 规则买入。
-
-### 情绪卖出（坑 2 / 哲学 4）
-扫所有卖出/减仓日志，body 里出现**噪音词**（利率、美联储、央行、加息、降息、地缘政治、战争、VIX、恐慌、CPI、PPI、通胀、宏观、板块轮动、新闻、消息面）就命中。
-
-这不是在说"你不能因为宏观调仓"。是在说"如果你的卖出理由是宏观，V0 里'什么不算推翻'一栏也应该列了这些词——你现在正在违反买入时自己写的规则"。
-
-### 复盘跳过（坑 6）
-检查过去 6 个季度每一个季度是否有 `macro/review-<quarter>.md`。连续 ≥2 个季度缺失 = 红旗。
-
----
-
-## 7. Claim 月度抽查 `/research-audit`
-
-**为什么存在**：B 研究（LLM 抽取的 claim）有低概率的"看起来正确但原文没有"。不抽查会被幻觉污染。
-
-**怎么用**：选月份 + 抽查比例（5% / 10% / 20%），系统用确定性哈希（同一月份永远抽到同一批）给你一个清单。你打开原文手动核对 evidence_quote 是否真的在那儿。发现不对的就回 `/research/<key>` 删掉或修。
-
----
-
-## 8. 价格触发 vs 事件驱动
-
-两种触发机制，不要搞混：
-
-- **价格触发**（`/companies/<key>/triggers`）：ticker 到达某价格自动激活 → 首页卡片。用来解决"等下跌到买入区间再买"这种承诺没被执行的问题。
-- **催化剂日历**（`/catalysts`）：手动登记特定日期事件（FDA 裁定、财报窗口、政策节点）→ 首页"未来 7 天"卡片。
-
-共同点：都不会给出操作建议，只负责把"该看这个"推到你面前。
-
----
-
-## 9. 数据在哪里
-
-一切都在 `~/investing/` 里，明文存储，断电也能用 `cat` 读：
+### 目录结构速览
 
 ```
-companies/US_HIMS/         # 单公司所有数据
-├── meta.md                # 元信息（frontmatter）
-├── narratives/            # 8 维叙述（ingest 自动 append）
-├── v0.md                  # 买入逻辑
-├── valuation.md           # 估值
-├── claims.jsonl           # B 研究结果
-├── sources/               # 研报/财报原件（PDF/HTML）
-├── competence/consumer.md # 能力圈问卷
-└── triggers.jsonl         # 价格触发
-
-industries/consumer/       # 行业级
-├── landscape.md
-├── players.md
-└── competence-map.md
-
-watchlist/
-├── prefilter.md
-├── researching.md
-└── price-triggers.md
-
-portfolio/
-├── positions.md           # 持仓
-└── rules.md               # 组合级规则
-
-journal/
-└── 2026-04-23-HIMS-buy.md # 一次决策一个文件
-
-macro/
-├── regime-2026Q2.md
-├── review-2026Q1.md
-└── catalysts.md
-
-data/financials.db         # 唯一的 SQLite；派生数据，可以删了重建
+companies/          # 公司档案（每个公司一个目录）
+industries/         # 行业档案
+arenas/             # 竞技场档案
+claims/             # Claim 注册表（JSONL 文件）
+data/financials.db  # SQLite 财务数据库
+watchlist/          # 观察池
+portfolio/          # 持仓、规则、触发器
+journal/            # 决策日志
+scripts/            # CLI 工具脚本
 ```
 
-**推论**：你可以把整个目录丢进 git 自己版本控制。你可以跨设备同步（rsync/iCloud 都行）。你可以用 `grep` 跨所有公司搜索任意字符串。系统崩溃也不会丢数据——markdown 永远可读。
+## 日常使用流程
 
----
+### 1. 研究新标的
 
-## 10. 常见操作备忘
+**步骤**：创建公司 → 填写 V0 论点 → 设置估值场景 → 加入观察池
 
-### 导入财报数据
-1. `/companies/<key>/financials`
-2. 上传 CSV（列名对上就行，详见该页说明）
-3. 系统自动计算派生 ratio（毛利率、ROE 等）
+1. 在 `/companies` 页面创建新公司（或使用 ingest 流程自动创建）
+2. 编辑 `v0.md`（7 节模板：买入逻辑、差异化观点、估值锚、买入区间、卖出触发、什么不算推翻、当前状态）
+3. 设置 `valuation.md`（三场景估值：bull / base / bear + 概率）
+4. 加入对应阶段的 watchlist：`watchlist/researching.md`
 
-### 录入收盘价
-1. `/prices`
-2. 粘贴多行，格式 `TICKER 价格`（宽松解析，支持 `,` 或空格分隔，支持货币符号）
-3. 系统 upsert 到 SQLite，同日重复录入后覆盖
+### 2. Ingest 研究报告
 
-### Phase 1 review bundle 试跑
+这是向系统导入外部研究（行业报告、年报等）的标准流程。
 
-Phase 1 ingest 不写 archive。它只把一份研报转成可审核的 `ingest_review_bundle`，再用 QA 脚本检查证据链。
+**输入**：一份 PDF 研究报告
 
-1. 运行 preprocess，保存为 `preprocess.json`
-2. 打开 `/prompts`，复制 `ingest-review-bundle.md`
-3. 在 Claude 对话里贴 prompt 和完整 `preprocess.json`
-4. 先做 full-report pass：按顺序通读所有 `action != "skip"` 的 sections，不能只看摘要页、关键词搜索或抽样段落
-5. 把 Claude 返回的严格 JSON 保存为 `bundle.json`
-6. 运行：
+**执行步骤**（在 Claude 对话中完成）：
+
+1. 运行 `preprocess_report.py` 提取 PDF 章节结构
+2. Claude 执行 review-bundle，从报告中提取 claim candidates、insight blocks、atomic facts
+3. （可选）运行 `ingest_qa` 检查质量
+4. 运行 `ingest_match.py` 匹配已有 claims
+5. 审查匹配结果，填写决策（new / attach / split / skip）
+6. 运行 `ingest_apply.py` 应用决策到 ClaimRegistry
+7. 对每个受影响的 scope 运行 `narrative_propose.py` 生成叙事提案
+8. 审查提案，填写决策（approve / edit / reject / defer）
+9. 运行 `narrative_apply.py` 写入叙事档案
+10. 运行 `narrative_flags.py` 扫描一致性标记
+
+**注意事项**：
+- 行业报告必须同时挖 industry 和 arena 两层 claim，否则会严重低估叙事覆盖
+- 对多战场行业报告（如宠物 / 美妆 / 新能源），要显式列出所有可能涉及的 arena slugs
+- ingest 遇到失败时正向修复（改模版 / 正则 / 白名单），不手工抽取
+
+### 3. 执行交易
+
+**步骤**：检查触发器 → 执行 → 记录决策日志
+
+1. 查看 `/triggers` 是否有价格触发
+2. 查看 `/catalysts` 是否有即将到期的催化事件
+3. 查看 `/regime` 确认当前宏观环境
+4. 执行交易
+5. 在 `journal/decisions/{YYYY}-Q{n}/` 创建决策文件
+6. 更新 `portfolio/positions.md`
+7. 拍快照保存 V0 状态到 `v0_snapshot_path`
+
+### 4. 季度审查
+
+每季度末执行：
+
+1. 查看 `/discipline` 确认是否有未评审的决策
+2. 查看 `/review` 填写季度审查
+3. 更新 `/regime` 宏观判定
+4. 查看 `/performance` 收益归因
+5. 检查 `/qa` 质量缺口
+6. 对决策文件补充 `pnl_3m` / `result_quality` / `result_luck_factor` 等事后指标
+
+### 5. 日常监控
+
+首页仪表盘 `/` 聚合了以下信息：
+
+- **待审查**：pending reviews
+- **触发的触发器**：价格触及止损/止盈线
+- **即将到期的催化**：未来 7 天内的催化事件
+- **逾期研究**：watchlist 中超过研究期限的标的
+- **审查缺口**：未评审的决策
+- **大波动**：当日涨跌幅超过 15% 的持仓
+- **行情错误**：未解决的行情抓取失败
+- **QA 缺口**：按 scope 分组的 open warnings
+
+## 常用 CLI 命令
+
+### 行情数据
 
 ```bash
-python3 scripts/ingest_qa.py review-bundle --bundle bundle.json --preprocess preprocess.json
+# 日线行情回填（最近 3 年）
+python -m scripts.fetch_quotes_eod --markets SSE,SZSE,US --backfill-years 3
+
+# A 股财务数据
+python -m scripts.fetch_financials_cn --ticker 603011 --market SSE
+
+# 美股财务数据
+python -m scripts.fetch_financials_us --ticker AAPL --market US
 ```
 
-如果在本 repo worktree 的虚拟环境里：
+### 叙事管理
 
 ```bash
-.venv/bin/python scripts/ingest_qa.py review-bundle --bundle bundle.json --preprocess preprocess.json
+# 生成行业叙事提案
+python -m scripts.narrative_propose \
+  --registry-base . \
+  --base . \
+  --source-id "行研-机构-2025-06-abc12345" \
+  --scope industry --ref cn-pet-industry \
+  --out /tmp/proposals.json
+
+# 应用叙事提案
+python -m scripts.narrative_apply \
+  --registry-base . --base . \
+  --proposal /tmp/proposals.json \
+  --today 2026-05-02
+
+# 扫描叙事标记
+python -m scripts.narrative_flags \
+  --registry-base . --base . \
+  --scope industry --ref cn-pet-industry
 ```
 
-通过时会输出：
+### 质量检查
 
-```text
-✓ review bundle QA passed
+```bash
+# ingest 质量告警
+python -m scripts.ingest_qa warn \
+  --merged /tmp/ingest-merged.json \
+  --preprocess /tmp/ingest-sections.json \
+  --arena cn-pet-food
+
+# ingest 认知缺口
+python -m scripts.ingest_qa gap --company SSE_603011
+
+# Claim 完整性检查
+# 在 /claim-audit 页面查看
 ```
 
-如果出现 warning/error，先修 `bundle.json`，再重跑 QA。`fact_text` 里的公司名、ticker、关键数字必须能在 `evidence_quote` 里看到；否则拆成更小的 fact。不要让 Python 调 LLM API，也不要在 Phase 1 写入 `industries/`、`arenas/` 或 `companies/`。
+## Web 页面导航
 
-### Phase 1 评测工作流（可选）
-
-评测用于迭代 ingest prompt / QA 规则，不是 ingest 验收门。是否评测、是否在本次 ingest 后跑，由用户决定。
-
-1. 完成 ingest，得到 `bundle.json` + `preprocess.json`
-2. 生成 evaluation 骨架（L1 聚合）：
-
-   ```bash
-   .venv/bin/python scripts/ingest_qa.py evaluation init \
-     --bundle bundle.json --preprocess preprocess.json --out evaluation.json
-   ```
-
-3. 在 Claude 对话里贴 `docs/prompts/ingest-eval-l2.md` 作为 system 指令，再贴三份 JSON（bundle / preprocess / evaluation 骨架）
-4. Claude 返回 L2 评测 JSON 片段，按 prompt 末尾“合并规则”合并进 `evaluation.json`
-5. `evaluation.json` 与 bundle、preprocess 同目录存放；多次评测用 `evaluation-{ISO-date}.json` 避免覆盖
-
-评测的作用是**产出结构化缺陷清单**（`defects[]`），供跨 ingest 对比与 prompt / QA 规则迭代。不产出“合格/不合格”结论。
-
-### 添加持仓
-1. `/portfolio`
-2. POST `/portfolio/position`（通过页面表单）
-
-### 查找旧决策
-- `/search?q=<关键词>` 全文搜 markdown
-- `/journal` 按时间倒序
-
----
-
-## 11. 会让系统拒绝你的动作（总览）
-
-| 动作 | 拒绝原因 | DESIGN 出处 |
+| 页面 | URL | 用途 |
 |---|---|---|
-| 7 天内从 prefilter 升级到 researching | 冷静期 | §3.9 |
-| 三问门禁任一回答 `no` 或理由 <30 字 | 能力圈门禁 | §3.9 |
-| researching 已有 2 家时再升级第 3 家 | 上限 | §8 坑 8 |
-| 创建 claim 但 source_file 不在 `sources/` | 事实层净化 | §8 坑 9 |
-| 买入日志不关联 v0_snapshot_path | 坑 3 检测 | §8 坑 3 |
+| 仪表盘 | `/` | 总览，日常入口 |
+| 公司详情 | `/companies/{slug}` | 查看公司论点、叙事、财务 |
+| 行业详情 | `/industries/{slug}` | 查看 11 维行业叙事 |
+| 竞技场详情 | `/arenas/{slug}` | 查看竞技场定义 + 参与者矩阵 |
+| 投资视角 | `/lens` | 综合判断视图（主观） |
+| 持仓表 | `/portfolio` | 当前持仓 + 规则校验 |
+| 观察池 | `/watchlist` | 待研究的标的 |
+| 决策日志 | `/journal` | 历史决策 |
+| 价格触发 | `/triggers` | 止盈/止损状态 |
+| 宏观判定 | `/regime` | 当前宏观环境 |
+| 纪律审查 | `/discipline` | 未评审的决策 |
+| 收益归因 | `/performance` | 持仓 PnL |
+| 质量缺口 | `/qa` | Open warnings |
+| 搜索 | `/search` | 全文搜索 |
 
-系统不会拦住你完成动作（你可以绕过，可以手改 markdown），它只保证你在绕过时**自己能看到在绕过**。这是"纪律在信息系统前面"的具体含义。
+## 文件编辑
 
----
+所有档案文件（Markdown）都可以直接用编辑器修改：
 
-## 12. 不该做的事（DESIGN §7）
+- **公司 V0 论点**：`companies/{MARKET}_{TICKER}/v0.md`
+- **行业叙事**：`industries/{slug}/{dimension}.md`
+- **竞技场叙事**：`arenas/{slug}/{dimension}.md`
+- **持仓表**：`portfolio/positions.md`
+- **观察池**：`watchlist/{stage}.md`
 
-- ❌ 不要等"系统再完善一点"才开始用。完美主义在这套系统里等价于回避决策
-- ❌ 不要把 B 的输出抄到 V0。V0 必须你自己写（哲学 2）
-- ❌ 不要给所有公司都建档。只建你认真考虑过的
-- ❌ 不要用系统去**证明**长期观点。系统是反向偏见工具，不是信念强化器（坑 7）
-- ❌ 不要改首页的噪音词清单把情绪卖出的关键词删掉。这相当于作弊
+修改后刷新 Web 页面即可看到更新。
 
----
+## 注意事项
 
-## 13. Ingest output
-
-New ingest runs produce:
-
-- a review bundle with `insight_blocks`, `atomic_facts`, `synthesis`, `claim_candidates`, `company_candidates`, and `arena_candidates`
-- ClaimRegistry entries under `claims/*.jsonl`
-- archive narrative updates in industry 11 dimensions, arena 6 dimensions, and company 8 dimensions after proposal approval
-- bundle registry entries visible at `/bundles`
-
-Old per-company `claims.jsonl` and industry `observations.jsonl` are no longer maintained.
+1. **Claim 不可直接编辑**：通过 CLI 脚本的 `ingest_apply` 操作（创建/附加/拆分）
+2. **Git 版本控制**：所有文件变更通过 git 管理，修改前建议先 commit
+3. **强制重 ingest 是危险的**：会先备份再清除已有数据，仅在确认需要时使用
+4. **LLM 判断在对话中完成**：Python 脚本不调 LLM API，review-bundle 等步骤在 Claude 对话中执行
+5. **A 股行情源**：使用 AkShare（新浪财经接口），不依赖 eastmoney

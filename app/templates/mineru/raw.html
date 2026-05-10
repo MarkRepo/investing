@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ meta.title }} · 原文{% endblock %}
+{% block content %}
+<h1>{{ meta.title }} · 原文</h1>
+<p class="hint">
+  MinerU 提取的原始 markdown，含图片引用和水印。
+  <a href="/digest/{{ meta.report_id }}">返回摘要</a>
+</p>
+
+<article class="markdown">
+{{ summary_html|safe }}
+</article>
+{% endblock %}

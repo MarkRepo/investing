@@ -20,6 +20,10 @@
 
 如果用户直接说「研究中国宠物行业」，可以推断：type=industry, geo=CN，然后只确认研究问题和深度。
 
+同时需要确认当前使用的 LLM 模型变体名称（如 `gemini`、`gpt-4o` 等），后续将作为 `variant` 参数使用。默认可使用当前调用的模型名称。
+
+**如果是 company 类型，必须确认 ticker**（格式：`{market}_{code}`，如 `SZSE_000426`、`SSE_600519`、`US_AAPL`）。ticker 用于生成行情/财务页面链接。
+
 ---
 
 ## Step 2：生成 slug
@@ -41,8 +45,9 @@ ls prism/topics/ 2>/dev/null
 ```
 
 如果已有同名 slug，告知用户并询问：
-- 继续已有研究（运行 workflow 推进）
-- 还是创建新研究（slug 加后缀，如 `cn-pet-industry-2`）
+- 继续已有研究并在原变体目录下推进（运行 workflow 推进）
+- 在当前 slug 下使用不同模型创建一个新变体目录（如 `gemini`、`qwen3.6-plus`）
+- 还是创建全新研究（slug 加后缀，如 `cn-pet-industry-2`）
 
 ---
 
@@ -58,6 +63,7 @@ create_topic(
     question='{question}',
     geo='{geo}',
     depth='{depth}',
+    variant='{variant}',
 )
 print('创建成功')
 "
@@ -66,7 +72,7 @@ print('创建成功')
 ```bash
 python3 -c "
 from prism.scripts.manifest import create_manifest
-create_manifest('{slug}')
+create_manifest('{slug}', '{variant}')
 print('manifest 创建成功')
 "
 ```
@@ -107,12 +113,12 @@ print('manifest 创建成功')
 ```bash
 python3 -c "
 from prism.scripts.topic import set_stage, set_next_actions, set_user_todos
-set_stage('{slug}', '01-roadmap-pending')
+set_stage('{slug}', '01-roadmap-pending', '{variant}')
 set_next_actions('{slug}', [
     '运行 workflow 01-build-roadmap：制定详细研究路线图',
     '收集初始资料后运行 workflow 02-gather-materials',
-])
-set_user_todos('{slug}', {user_todos_from_step_5_3})
+], '{variant}')
+set_user_todos('{slug}', {user_todos_from_step_5_3}, '{variant}')
 "
 ```
 
@@ -125,7 +131,8 @@ set_user_todos('{slug}', {user_todos_from_step_5_3})
 ✅ 研究主题「{display_name}」已创建
 
 Slug: {slug}
-Web 地址: http://localhost:8000/prism/{slug}
+变体目录: prism/topics/{slug}/{variant}/
+Web 地址: http://localhost:8000/prism/{slug}/{variant}/
 
 下一步：
 1. 在对话里说「prism 推进 {slug}」继续制定研究路线图

@@ -1,6 +1,6 @@
 ---
 name: ingest
-description: 把一份财报（年报/季报/10-K/10-Q/20-F）、公司研报、或行业研报录入投资系统的三层知识系统（industry / arena / company）。触发词：ingest / 导入 / 录入 / 入库 / 10-K / 10-Q / 20-F / 年报 / 季报 / 半年报 / 研报 / 行业研报 / 行业深度 / Sector Report / Industry Report。适用于用户提供一个本地文件路径并说要把它"ingest / 导入 / 录入"到某家公司或某个行业。
+description: 把一份财报（年报/季报/10-K/10-Q/20-F）、公司研报、或行业研报录入投资系统的三层知识系统（industry / arena / company）。触发词：ingest / 导入 / 录入 / 入库 / 10-K / 10-Q / 20-F / 年报 / 季报 / 半年报 / 研报 / 行业研报 / 行业深度 / Sector Report / Industry Report / 研报摘要 / 生成摘要 / digest。适用于用户提供一个本地文件路径并说要把它"ingest / 导入 / 录入"到某家公司或某个行业，或生成研报摘要。
 allowed-tools: Bash Read Write Agent AskUserQuestion
 argument-hint: "<file-path> [--key MARKET_TICKER | --industry INDUSTRY_SLUG]"
 ---
@@ -9,7 +9,18 @@ argument-hint: "<file-path> [--key MARKET_TICKER | --industry INDUSTRY_SLUG]"
 
 Use this skill to ingest investment research source files into the **review-bundle endgame pipeline**.
 
-## Pipeline Overview
+## 两条独立流程
+
+这个 skill 管理两条**完全独立**的流程，均由用户手动触发，互不依赖：
+
+| 流程 | 触发词 | 产出 | 工作流 |
+|------|--------|------|--------|
+| **Bundle ingest** | ingest / 录入 / 导入 / 研报 | ClaimRegistry claims + 叙事备忘录 | `workflows/_ingest-common.md` |
+| **Digest summary** | 研报摘要 / 生成摘要 / digest | `/digest` 页面的结构化摘要 | `workflows/report-summary.md` |
+
+**两条流程都必须用独立干净的 subagent 执行 LLM 推断步骤**，不在主 agent 对话里直接做 LLM 提取。主 agent 负责：路由决策、调用脚本、与用户确认、写入文件。
+
+## Bundle Pipeline Overview
 
 The v3 pipeline is a 6-step workflow. PDF files should be converted with MinerU first.
 
