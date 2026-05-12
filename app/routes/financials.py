@@ -53,6 +53,7 @@ def page(request: Request, key: str):
     try:
         fin_io.upsert_company(conn, {**meta, "ticker": ticker, "market": market})
         rows = fin_io.list_periods_with_ratios(conn, ticker, market=market)
+        last_fetch = fin_io.get_last_fetch(conn, ticker)
     finally:
         conn.close()
 
@@ -68,6 +69,7 @@ def page(request: Request, key: str):
             "key": key, "ticker": ticker, "market": market,
             "meta": meta, "rows": rows,
             "all_companies": all_companies,
+            "last_fetch": last_fetch,
         },
     )
 
@@ -89,4 +91,10 @@ def refresh(key: str):
             {"ok": False, "error": f"{type(e).__name__}: {e}"},
             status_code=500,
         )
+    # Record the fetch
+    conn = fin_io.connect()
+    try:
+        fin_io.record_last_fetch(conn, ticker, market, n)
+    finally:
+        conn.close()
     return {"ok": True, "periods_added": n}

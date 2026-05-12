@@ -21,6 +21,9 @@
 <div class="fin-toolbar">
   <button id="refresh-fin" type="button">↻ 刷新财务数据</button>
   <span id="refresh-status" class="hint"></span>
+  {% if last_fetch %}
+    <span class="hint">上次刷新：{{ last_fetch.last_fetched_at }} · {{ last_fetch.periods_fetched }} 期</span>
+  {% endif %}
   <span class="tab-group">
     <button class="period-tab active" data-type="annual"   type="button">年报</button>
     <button class="period-tab"        data-type="quarterly" type="button">季报</button>

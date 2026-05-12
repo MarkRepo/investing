@@ -25,6 +25,17 @@
 
 <p class="scope-question">研究问题：<em>{{ topic.scope.question }}</em></p>
 
+{% set sc = topic.scope %}
+{% set prism_ticker = sc.get('ticker', '') %}
+{% set prism_market = sc.get('market', '') %}
+{% set prism_key = prism_market ~ '_' ~ prism_ticker %}
+{% if prism_ticker and prism_market %}
+<nav class="prism-nav">
+  <a class="btn btn-nav" href="/prices/{{ prism_key }}">行情 →</a>
+  <a class="btn btn-nav" href="/financials/{{ prism_key }}">财务 →</a>
+</nav>
+{% endif %}
+
 <div class="prism-columns">
 
   <!-- Left: 8 outputs -->
@@ -160,5 +171,12 @@
   }
   .compare-link:hover { background: #dce6fb; }
   .back-link { display: inline-block; margin-top: 2em; color: #666; font-size: 0.9em; }
+  .prism-nav { display: flex; gap: 0.6em; margin: 0.5em 0 1em; flex-wrap: wrap; }
+  .btn-nav {
+    font-size: 0.85em; padding: 0.3em 0.8em;
+    background: #f0f4ff; color: #2a5db0; border: 1px solid #b8cfe8;
+    border-radius: 4px; text-decoration: none;
+  }
+  .btn-nav:hover { background: #dce6fb; }
 </style>
 {% endblock %}

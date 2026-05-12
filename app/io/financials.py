@@ -173,6 +173,13 @@ CREATE TABLE IF NOT EXISTS quotes_fetch_errors (
 );
 CREATE INDEX IF NOT EXISTS idx_fetch_errors_unresolved
     ON quotes_fetch_errors(ticker, resolved_at) WHERE resolved_at IS NULL;
+CREATE TABLE IF NOT EXISTS financials_last_fetch (
+    ticker TEXT NOT NULL,
+    market TEXT NOT NULL,
+    last_fetched_at TEXT NOT NULL,
+    periods_fetched INTEGER,
+    PRIMARY KEY (ticker)
+);
 """
 
 
@@ -484,3 +491,37 @@ def list_periods_with_ratios(
         merged = {**row, **{k: v for k, v in rats.get(row["period"], {}).items() if k not in ("ticker", "period")}}
         out.append(merged)
     return _sort_desc(out)
+
+
+def record_last_fetch(conn: sqlite3.Connection, ticker: str, market: str, count: int) -> None:
+    """Record the last successful fetch timestamp."""
+    ticker = ticker.strip().upper()
+    now = _now_iso()
+    conn.execute(
+        """
+        INSERT INTO financials_last_fetch (ticker, market, last_fetched_at, periods_fetched)
+        VALUES (?, ?, ?, ?)
+        ON CONFLICT(ticker) DO UPDATE SET
+            market = excluded.market,
+            last_fetched_at = excluded.last_fetched_at,
+            periods_fetched = excluded.periods_fetched
+        """,
+        (ticker, market, now, count),
+    )
+    conn.commit()
+
+
+def get_last_fetch(conn: sqlite3.Connection, ticker: str) -> dict | None:
+    """Return last fetch info for a ticker."""
+    row = conn.execute(
+        "SELECT market, last_fetched_at, periods_fetched FROM financials_last_fetch WHERE ticker = ?",
+        (ticker.strip().upper(),),
+    ).fetchone()
+    if row:
+        return dict(row)
+    return None
+
+
+def _now_iso() -> str:
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

@@ -1,0 +1,122 @@
+slug: cn-chengchang-tech
+created: '2026-05-11T11:25:00+00:00'
+learning_track:
+  l1_orientation:
+    - question: 铖昌的 T/R 芯片产品线格局（星载 vs 地面雷达 vs 弹载），各自收入占比、技术壁垒与毛利率差异？
+      source_hint: 公司年报/招股书产品线拆分，营收按下游应用分布
+    - question: 星载 T/R 芯片从流片设计到批量供货的核心工艺瓶颈和产能约束在哪里？（GaAs vs GaN 线产能）
+      source_hint: 招股书中工艺路线描述 + 行业对比研报
+    - question: 在卫星通信载荷的价值分配中，T/R 芯片占相控阵天线成本结构的具体比例及降本路径？
+      source_hint: 父 topic 产出 01_business_panorama 中 T/R 成本占比分析
+    - question: 公司在 GW 星座和千帆星座中的供应商资质状态和送样进度？
+      source_hint: 公司公告 + 行业定制星座供应商研报
+
+  l2_history:
+    - question: 公司从军用雷达跨入星载领域的技术转折点和关键交付里程碑（2020-2025）？
+      source_hint: 招股书技术沿革 + 2022-2024 年报管理层讨论
+    - question: T/R 芯片 ASP 的跟踪记录——随着出货量提升的降价曲线斜率及毛利率趋势？
+      source_hint: 历年财报营收/出货量反推 + 券商财务模型
+    - question: 以往产能扩张的节奏如何？产能利用率与订单匹配度的历史表现？
+      source_hint: 年报在建工程/产能披露 + 母公司（和而泰）公告
+
+  l3_debates:
+    - question: GW/千帆的批产需求能否转化为铖昌的真实可执行订单？军用定制化能力能否平移为商用标准化批产？
+      source_hint: GW 招标规则文件 + 铖昌/国博/臻镭对比研报
+    - question: 国博电子、臻镭科技的同类产品竞争格局——铖昌的份额天花板在哪里？中电科体系内供会否制造"天花板"？
+      source_hint: 国博电子招股书/年报对比 + 军工电子产业链竞争格局研报
+    - question: 硅基 CMOS 集成化趋势对 GaAs/GaN 分立 T/R 芯片的替代威胁有多大？技术路径分歧的时间窗口？
+      source_hint: 学术论文（硅基毫米波相控阵对比 GaAs） + 全球技术路线综述
+    - question: 市场对 2026-2027 年星载收入增速的共识是否过于乐观？订单→收入确认的延迟有多长？
+      source_hint: Wind 一致预期数据 + 同行季报收入确认节奏
+
+  l4_hunting:
+    - question: 如果市场错了，最可能错在哪里——高估了星载订单转化速度（收入低于预期），还是低估了批产降价对毛利率的压制？
+      source_hint: 对比「市场规模乐观假设」与「实际供应商竞争烈度」之间的 gap
+    - question: 什么时候能看到可验证的信号？（GW 首批中标公告后份额分配、季度财报中首次出现「星载」或「航天」收入拆分的毛利率水平）
+      source_hint: 跟踪公司定期报告的分行业营收拆分 + 国防科工局/军方采购公告
+    - question: 什么新信息会推翻当前的多头逻辑？（GW 改用中电科体系内供而非外部采购；GaN-on-Si 技术使 T/R 芯片壁垒大幅降低）
+      source_hint: 行业政策文件 + GW 星座供应商遴选规则
+
+material_priority:
+  tier1:
+    - title: 铖昌科技招股说明书（001270.SZ，2022年上市）
+      type: prospectus
+      source: cninfo（巨潮资讯网）
+      why: 了解公司产品线、技术路线、产能状态和客户结构的原始信息源
+
+    - title: 铖昌科技 2025 年年报（及 2024 年年报）
+      type: annual-report
+      source: 巨潮资讯网（cninfo.com.cn）
+      why: 最新财务数据、星载业务履约进度、产能扩张状态在管理层讨论中的披露
+
+    - title: '复用的 T/R 组件国产替代研报（来自父 topic cn-satcom-payloads materials）'
+      type: sell-side-note
+      source: '父 topic materials 目录'
+      why: '父 topic 中关于相控阵 T/R 组件国产化进度、铖昌/国博/臻镭竞争格局的已有分析，避免重复收集'
+      reuse_from_parent: true
+
+    - title: GW 星座 / 千帆星座供应商遴选与采购规则相关文件
+      type: policy
+      source: 军方采购网 / 航天科技集团公告 / 上海市经信委
+      why: 判断铖昌进入供应链的概率和份额天花板的核心依据
+
+  tier2:
+    - title: 国博电子（688375）招股说明书
+      type: prospectus
+      source: cninfo
+      why: 直接竞争对手的射频芯片产品线、技术路线和客户结构
+
+    - title: 国博电子（688375）2025 年年报
+      type: annual-report
+      source: cninfo
+      why: 竞争对手最新财务数据，星载业务进展
+
+    - title: 臻镭科技（688270）招股说明书
+      type: prospectus
+      source: cninfo
+      why: 终端射频芯片/微系统方向竞争对手的技术路线
+
+    - title: 臻镭科技（688270）2025 年年报
+      type: annual-report
+      source: cninfo
+      why: 竞争对手最新财务数据对比
+
+    - title: 全球相控阵 T/R 组件市场报告（Yole / Strategy Analytics）
+      type: industry-data
+      source: Yole Développement 或国内券商翻译版
+      why: 全球 T/R 芯片技术路线演进（GaAs→GaN→SiGe→CMOS）的市场份额预测
+
+    - title: 'Starlink 供应商分析——Anokiwave/MACOM 在 T/R 芯片领域角色'
+      type: sell-side-note
+      source: 海外券商研报（Bloomberg / SeekingAlpha）
+      why: 海外可类比案例：商用星座对 T/R 供应商的选择偏好和份额演变
+
+  tier3:
+    - title: 军用雷达 T/R 组件市场国产替代报告
+      type: sell-side-note
+      source: 国内券商军工电子组
+      why: 军用市场是铖昌基本盘，了解其稳定收入来源和竞争格局
+
+    - title: 'CMOS / SiGe 集成相控阵技术最新进展（2024-2025 学术综述）'
+      type: academic-paper
+      source: IEEE Xplore / 知网
+      why: 判断技术替代威胁的时间窗口
+
+key_risks_to_monitor:
+  - 'GW 星座供应商体系转向中电科内供——这是铖昌最大的份额天花板风险'
+  - 'GaN-on-Si / CMOS 集成方案在 Ka 及以上频段性能追平 GaAs——技术替代的触发阈值'
+  - '军用雷达订单周期性下行（传统业务拖累），而星载增量未及时接续'
+  - '批产降价幅度超预期——T/R 芯片从"军工定价"到"商用定价"的毛利率压缩'
+
+analogies_to_study:
+  - name: "美国 Anokiwave/MACOM — Starlink T/R 芯片供应链"
+    logic: "商用巨型星座对 T/R 芯片供应商的选择逻辑：性能 vs 成本 vs 供应安全，份额如何演变"
+    limits: "美国 Fabless 生态不同；Starlink 垂直整合程度高于中国 GW 分散采购模式"
+
+  - name: "国内军用雷达 T/R 组件批产降本（2015-2022）"
+    logic: "军用→批产的 ASP 下降曲线、良率爬坡周期、多供应商格局下的毛利率走势"
+    limits: "军用需求总量远小于商用星座，降价压力来源不同"
+
+  - name: "华为海思基站芯片国产替代（2012-2018）"
+    logic: "专用芯片从被外资垄断到国产主导的 timeline 和关键拐点识别"
+    limits: "通信基站市场与航天军工市场的准入壁垒、验证周期差异巨大"
