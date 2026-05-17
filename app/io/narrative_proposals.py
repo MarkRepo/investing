@@ -107,13 +107,6 @@ class ScopeConfig:
 
 
 SCOPE_CONFIGS: dict[str, ScopeConfig] = {
-    "arena": ScopeConfig(
-        scope_type="arena",
-        narrative_dims=tuple(d for d in cfg.ARENA_DIMENSIONS if d != "definition"),
-        mapping=CLAIM_DIMENSION_TO_ARENA_NARRATIVE,
-        top_dir="arenas",
-        narrative_subdir=None,
-    ),
     "company": ScopeConfig(
         scope_type="company",
         narrative_dims=tuple(cfg.COMPANY_DIMENSIONS),
@@ -131,7 +124,7 @@ SCOPE_CONFIGS: dict[str, ScopeConfig] = {
 }
 
 # Phase 3A compatibility: old name still imported by Phase 3A tests.
-NARRATIVE_DIMS = SCOPE_CONFIGS["arena"].narrative_dims
+NARRATIVE_DIMS = SCOPE_CONFIGS["company"].narrative_dims
 
 
 def _scope(scope_type: str) -> ScopeConfig:

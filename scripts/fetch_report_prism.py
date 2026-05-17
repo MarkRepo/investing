@@ -107,10 +107,30 @@ def _download(announcement: dict, dest_dir: Path, company_name: str) -> Path:
 
 def _register_in_prism(slug: str, file_path: Path, report_type: str, company_name: str, variant: str | None = None) -> None:
     """Register downloaded report in prism manifest and update user_todos."""
-    from prism.scripts.manifest import add_material, read_manifest
-    from prism.scripts.topic import read_topic, set_user_todos
+    from prism.scripts.manifest import add_material, create_manifest, read_manifest
+    from prism.scripts.topic import list_variants, read_topic, set_user_todos
 
-    source_type = "annual-report" if report_type == "annual" else "quarterly-report"
+    # Auto-detect variant if not specified
+    if not variant:
+        variants = list_variants(slug)
+        if len(variants) == 1:
+            variant = variants[0]
+        else:
+            log.warning("Cannot auto-detect variant for %s (found %d), skipping manifest update", slug, len(variants))
+            return
+
+    # Auto-create manifest if missing
+    try:
+        read_manifest(slug, variant)
+    except FileNotFoundError:
+        create_manifest(slug, variant)
+        log.info("Created manifest for %s/%s", slug, variant)
+
+    source_type = (
+        "prospectus" if report_type == "prospectus"
+        else "annual-report" if report_type == "annual"
+        else "quarterly-report"
+    )
     mat_id = add_material(
         slug=slug,
         filename=file_path.name,
@@ -130,6 +150,76 @@ def _register_in_prism(slug: str, file_path: Path, report_type: str, company_nam
         log.info("Removed %d matched todo(s)", len(todos) - len(updated))
 
 
+def _search_all_pages(code: str, org_id: str, column: str, keyword: str, max_pages: int = 20) -> list[dict]:
+    """Search announcements across multiple pages for keyword matches."""
+    results = []
+    for page in range(1, max_pages + 1):
+        data = (
+            f"stock={code}%2C{org_id}"
+            f"&pageNum={page}&pageSize=30&tabName=fulltext&column={column}"
+        )
+        r = requests.post(_CNINFO_QUERY, headers=_HEADERS, data=data, timeout=15)
+        r.raise_for_status()
+        page_anns = r.json().get("announcements") or []
+        if not page_anns:
+            break
+        for a in page_anns:
+            if keyword in a.get("announcementTitle", ""):
+                results.append(a)
+    return results
+
+
+def _fetch_prospectus(market_ticker: str, slug: str | None = None, variant: str | None = None) -> Path:
+    """Download IPO prospectus (招股说明书) from cninfo announcements."""
+    _, ticker = _parse_market_ticker(market_ticker)
+    if slug:
+        dest_dir = _materials_dir(slug)
+    else:
+        dest_dir = _INBOX_AUTO
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    log.info("Looking up %s on cninfo…", ticker)
+    info = _company_info(ticker)
+    code, org_id = info["code"], info["orgId"]
+    company_name = info.get("zwjc", ticker)
+    column = _column(code)
+
+    keywords = [
+        "首次公开发行股票招股说明书",
+        "首次公开发行股票招股意向书",
+    ]
+
+    all_found = []
+    for kw in keywords:
+        log.info("Searching for '%s'…", kw)
+        found = _search_all_pages(code, org_id, column, kw)
+        all_found.extend(found)
+        log.info("  Found: %d", len(found))
+
+    if not all_found:
+        log.info("Trying broader search for 招股…")
+        all_found = _search_all_pages(code, org_id, column, "招股")
+
+    if not all_found:
+        raise ValueError(f"No IPO prospectus found for {company_name} ({ticker})")
+
+    target = all_found[0]
+    for a in all_found:
+        t = a.get("announcementTitle", "")
+        if re.search(r"摘要|英文|更正|修订|提示性", t):
+            continue
+        target = a
+        break
+
+    log.info("Selected: %s", target["announcementTitle"])
+    file_path = _download(target, dest_dir, company_name)
+
+    if slug:
+        _register_in_prism(slug, file_path, "prospectus", company_name, variant)
+
+    return file_path
+
+
 def fetch(
     market_ticker: str,
     report_type: str = "annual",
@@ -138,6 +228,9 @@ def fetch(
     variant: str | None = None,
 ) -> Path:
     """Download a financial report. Returns the local file path."""
+    if report_type == "prospectus":
+        return _fetch_prospectus(market_ticker, slug, variant)
+
     # Determine destination: if slug provided, download directly to topic materials
     if slug:
         dest_dir = _materials_dir(slug)
@@ -182,7 +275,7 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     parser = argparse.ArgumentParser(description="Download financial report to prism/inbox/auto/")
     parser.add_argument("ticker", help="Market_Ticker, e.g. SSE_688066")
-    parser.add_argument("--type", choices=["annual", "semi", "quarterly"], default="annual")
+    parser.add_argument("--type", choices=["annual", "semi", "quarterly", "prospectus"], default="annual")
     parser.add_argument("--year", type=int, default=None, help="Fiscal year (default: last year)")
     parser.add_argument("--slug", default=None,
                         help="Prism topic slug — registers manifest + updates user_todos")

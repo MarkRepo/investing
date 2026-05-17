@@ -24,6 +24,36 @@ from prism.scripts import topic as topic_io
 router = APIRouter(prefix="/prism", tags=["prism"])
 templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
 
+
+def _scope_ticker(scope: dict) -> str:
+    """Extract display ticker from scope dict."""
+    raw = scope.get("ticker", "")
+    if not raw:
+        return ""
+    # If ticker is "SZSE_000426" format, return just the code part
+    if "_" in raw:
+        return raw.split("_", 1)[1]
+    return raw
+
+
+def _make_market_ticker(scope: dict) -> str:
+    """Build "MARKET_TICKER" format for price/financials routes.
+
+    Handles both new format (separate ticker + market fields) and
+    old format (ticker already contains market prefix like "SZSE_000426").
+    """
+    ticker = scope.get("ticker", "")
+    if not ticker:
+        return ""
+    # Old format: ticker already contains underscore
+    if "_" in ticker:
+        return ticker
+    # New format: market is separate field
+    market = scope.get("market", "")
+    if market and ticker:
+        return f"{market}_{ticker}"
+    return ""
+
 # Output key → label mapping for dropdowns
 _OUTPUT_OPTIONS = [
     ("01_business_panorama", "商业全景"),
@@ -58,7 +88,8 @@ def prism_index(request: Request):
             "display_name": info.get("display_name", slug),
             "type": topic_type,
             "created": info.get("created", ""),
-            "ticker": (info.get("scope") or {}).get("ticker", ""),
+            "ticker": _scope_ticker(scope := info.get("scope") or {}),
+            "market_ticker": _make_market_ticker(scope),
             "variants": [{
                 "name": v["variant"],
                 "stage": v.get("stage", ""),

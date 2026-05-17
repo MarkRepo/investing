@@ -57,6 +57,14 @@ F. **全球宏观传导**：外部冲击如何影响这个行业
 
 ---
 
+## Step 2.5：填写 data_freshness
+
+在 frontmatter 写入：
+- `data_freshness`: 用到的最晚数据所在期（季度/月份）
+- `data_freshness_basis`: 该期来自哪份 finding
+
+---
+
 ## Step 3：写入文件 + 更新状态
 
 output_key = `06_risk_blindspots`

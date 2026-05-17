@@ -52,11 +52,13 @@
 </div>
 
 <style>
-  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 1.5em; }
+  main { margin-top: 0; }
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 0; position: sticky; top: 41px; background: #fafafa; z-index: 9; padding: 0.5em 0; border-bottom: 1px solid #eee; }
   .breadcrumb a { color: #555; }
   .model-tag { font-size: 0.82em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; }
-  .output-layout { display: grid; grid-template-columns: 200px 1fr; gap: 2em; align-items: start; }
+  .output-layout { display: grid; grid-template-columns: 200px 1fr; gap: 2em; align-items: start; margin-top: 1.2em; }
   @media (max-width: 800px) { .output-layout { grid-template-columns: 1fr; } }
+  .output-nav { position: sticky; top: 78px; align-self: start; }
   .output-nav h3 { font-size: 0.85em; color: #888; margin: 0 0 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
   .output-nav ul { list-style: none; padding: 0; margin: 0; }
   .output-nav li { margin: 0.3em 0; font-size: 0.9em; padding: 0.25em 0.4em; border-radius: 3px; }

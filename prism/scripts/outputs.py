@@ -1,6 +1,7 @@
 """Query output state for topics. Zero LLM calls."""
 from __future__ import annotations
 
+from datetime import datetime
 from pathlib import Path
 
 import markdown as _md
@@ -17,11 +18,13 @@ _OUTPUT_KEYS_LABELS = [
     ("06_risk_blindspots", "风险盲点"),
     ("07_decision_kit", "决策辅助"),
     ("08_living_feed", "信息流时间线"),
+    ("10_peer_matrix", "同行矩阵"),
 ]
 
 # Additional outputs that can be generated via workflows
 _EXTRA_OUTPUTS_LABELS = [
     ("05-critic-review", "批评者评审"),
+    ("09_industry_to_arenas", "产业→竞技场选拔"),
 ]
 
 
@@ -92,6 +95,8 @@ def list_outputs(slug: str, variant: str) -> list[dict]:
                         if isinstance(frontmatter, dict):
                             version = frontmatter.get("version", 1)
                             last_updated = frontmatter.get("generated")
+                            if isinstance(last_updated, datetime):
+                                last_updated = last_updated.isoformat()
             except Exception:
                 pass
             result.append({

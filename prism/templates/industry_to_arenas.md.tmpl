@@ -1,0 +1,81 @@
+---
+slug: {slug}
+output_key: 09_industry_to_arenas
+version: {version}
+generated: {timestamp}
+data_freshness: {data_freshness}
+data_freshness_basis: {data_freshness_basis}
+---
+
+# {display_name} → 细分 Arena 选拔
+
+## Arena 候选清单（≥ 5 个）
+
+| Arena 名 | 利润池规模 | 增速预期 | 竞争结构 | 估值水位 | 周期位置 | 综合评分 | 决定 |
+|---------|-----------|---------|---------|---------|---------|---------|------|
+| {name1} | {pool1} | {cagr1} | {comp1} | {val1} | {cycle1} | {score1} | {decision1} |
+| {name2} | {pool2} | {cagr2} | {comp2} | {val2} | {cycle2} | {score2} | {decision2} |
+| {name3} | {pool3} | {cagr3} | {comp3} | {val3} | {cycle3} | {score3} | {decision3} |
+| {name4} | {pool4} | {cagr4} | {comp4} | {val4} | {cycle4} | {score4} | {decision4} |
+| {name5} | {pool5} | {cagr5} | {comp5} | {val5} | {cycle5} | {score5} | {decision5} |
+| {name6} | {pool6} | {cagr6} | {comp6} | {val6} | {cycle6} | {score6} | {decision6} |
+
+## 评分维度说明
+
+- **利润池规模**：当前及 5 年期 arena 总利润池（亿元，区间）
+- **增速预期**：3 年 CAGR
+- **竞争结构**：CR3 / 是否有自然垄断 / 是否同质化
+- **估值水位**：当前 PE/PS 相对该 arena 历史 + 全球 peer
+- **周期位置**：早期成长 / 中段加速 / 晚期分化 / 成熟饱和
+- **综合评分**：1-5（5 = 最值得深挖）
+
+## 入选深挖（深挖档）
+
+{% for arena in deep_arenas %}
+### {arena.name}
+
+- **建议 slug**: `cn-{arena.slug}`
+- **入选理由**：{arena.reason}
+- **预期关键洞见**：{arena.insights}
+- **预填 L4 狩猎问题**：
+  1. {arena.l4_q1}
+  2. {arena.l4_q2}
+  3. {arena.l4_q3}
+- **触发创建的动作**：{arena.trigger}
+
+{% endfor %}
+
+## 进入 watchlist（观察档）
+
+{% for arena in watch_arenas %}
+### {arena.name}
+
+- **暂不深挖理由**：{arena.reason}
+- **升档触发条件**：{arena.trigger}
+- **监控指标**：
+  1. {arena.metric1}
+  2. {arena.metric2}
+
+{% endfor %}
+
+## 淘汰记录（淘汰档）
+
+{% for arena in drop_arenas %}
+### {arena.name}
+
+- **淘汰理由**：{arena.reason}
+- **复活条件**：{arena.resurrect_condition or "无"}
+
+{% endfor %}
+
+## 信息来源
+
+- 训练知识占比约 {training_knowledge_pct}%
+- 引用来源：
+  - 01_business_panorama
+  - 02_cycle_positioning
+  - 03_narrative_ecology
+  - 04_implied_expectations
+  - 06_risk_blindspots
+  - 07_decision_kit
+  - findings_mat_{mat_ids}

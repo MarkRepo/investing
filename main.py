@@ -8,7 +8,6 @@ from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 
 from app.config import APP_TEMPLATES_DIR, STATIC_DIR
-from app.routes.arenas import router as arenas_router
 from app.routes.bundles import router as bundles_router
 from app.routes.catalysts import router as catalysts_router
 from app.routes.claim_audit import router as claim_audit_router
@@ -66,7 +65,6 @@ app.include_router(review_router)
 app.include_router(catalysts_router)
 app.include_router(regime_router)
 app.include_router(competence_map_router)
-app.include_router(arenas_router)
 app.include_router(discipline_router)
 app.include_router(claim_audit_router)
 app.include_router(qa_router)

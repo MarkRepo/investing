@@ -69,6 +69,14 @@ ls prism/topics/{slug}/{variant}/outputs/findings_*.md
 
 ---
 
+## Step 2.5：填写 data_freshness
+
+在 frontmatter 写入：
+- `data_freshness`: 用到的最晚数据所在期（季度/月份）
+- `data_freshness_basis`: 该期来自哪份 finding
+
+---
+
 ## Step 3：写入文件
 
 写入 `prism/topics/{slug}/{variant}/outputs/01_business_panorama.md`：

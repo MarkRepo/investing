@@ -1,0 +1,62 @@
+---
+slug: {slug}
+output_key: 10_peer_matrix
+version: {version}
+generated: {timestamp}
+data_freshness: {data_freshness}
+data_freshness_basis: {data_freshness_basis}
+---
+
+# {display_name} 公司对比矩阵
+
+## 候选公司全集（≥ 5 家）
+
+| 公司 | Ticker | 业务结构 | 收入规模 | 3Y ROIC | 毛利率 | 资产负债率 | 当前 PE | 历史 PE 区间 | 技术路线 | 客户结构 | 管理层信号 | 综合 | 短名单 |
+|------|--------|---------|---------|--------|--------|-----------|--------|------------|---------|---------|-----------|------|--------|
+{% for co in companies %}| {{ co.name }} | {{ co.ticker or "N/A" }} | {{ co.business }} | {{ co.revenue }} | {{ co.roic }} | {{ co.gross_margin }} | {{ co.debt_ratio }} | {{ co.pe }} | {{ co.pe_range }} | {{ co.tech }} | {{ co.customers }} | {{ co.mgmt_signal }} | {{ co.score }} | {{ co.shortlist }} |
+{% endfor %}
+
+## 评分逻辑说明
+
+{scoring_logic}
+
+## Top-N 短名单（深研档）
+
+{% for co in deep_companies %}
+### {co.name} ({co.ticker})
+
+- **建议 slug**: `cn-{co.slug}`
+- **入选理由**：
+  - 业务卡位：{co.position}
+  - 估值：{co.valuation}
+  - 催化剂：{co.catalyst}
+- **预期 thesis**："{co.thesis}"
+- **下一步**：{co.next_step}
+
+{% endfor %}
+
+## Watchlist（观察档）
+
+{% for co in watch_companies %}
+### {co.name} ({co.ticker})
+
+- **暂不深研理由**：{co.reason}
+- **触发深研条件**：{co.trigger}
+
+{% endfor %}
+
+## 淘汰记录
+
+{% for co in drop_companies %}
+### {co.name} ({co.ticker})
+
+- **淘汰主因**：{co.reason}
+- **是否进入 quarantine**：{co.quarantine or "否"}
+
+{% endfor %}
+
+## 数据来源
+
+- 财务数据：{financial_sources}
+- 业务结构/客户：来自 findings_mat_{mat_ids}
+- 训练知识占比约 {training_knowledge_pct}%

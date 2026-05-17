@@ -47,19 +47,9 @@ python -m scripts.annual_report_extractor \
 
 ```bash
 # 2. 从财务 API 补充财务数据（不从 PDF 解析财务数字）
-# 从文件名推断公司 key（如 SSE_688066）；如 key 未知，跳过此步
-python -m scripts.fetch_financials_cn {MARKET_TICKER}
-# 然后查询最近 2 个报告期的核心指标
 python -c "
-import sqlite3, json
-from app import config as cfg
-conn = sqlite3.connect(cfg.DB_PATH)
-rows = conn.execute('''
-    SELECT period, revenue, net_income, gross_margin, roe, fcf
-    FROM financials_cn WHERE ticker=? ORDER BY period DESC LIMIT 4
-''', ('{ticker}',)).fetchall()
-for r in rows: print(r)
-conn.close()
+from prism.scripts.financial_data import get_financial_context
+print(get_financial_context('{slug}', '{variant}'))
 "
 ```
 

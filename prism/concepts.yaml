@@ -1,0 +1,30 @@
+# Prism 概念索引（受控词表）
+# 每个概念是跨 topic 复用的 tag
+
+concepts:
+  - name: 锂电池
+    aliases:
+      - 动力电池
+      - 锂离子电池
+    description: 二次锂离子电池产业链
+    related_concepts:
+      - 储能
+      - 新能源车
+      - 上游锂资源
+
+  - name: 商业航天
+    aliases:
+      - 民营航天
+      - 商业火箭
+    description: 中国 / 全球非国家队的商业化航天
+    related_concepts:
+      - GW 星座
+      - 千帆星座
+      - 卫星互联网
+
+  - name: 信用利差
+    aliases: []
+    description: 高低评级债券收益率差，宏观信号
+    related_concepts:
+      - 流动性
+      - 风险偏好

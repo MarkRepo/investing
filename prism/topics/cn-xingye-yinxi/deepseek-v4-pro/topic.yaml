@@ -4,12 +4,22 @@ type: company
 created: '2026-05-09T17:44:15.578534+00:00'
 status: active
 stage: 01-roadmap-pending
+parent_topic: null
+monitoring_tier: watch
+concepts:
+- 有色金属
+- 锡
 scope:
   geo: CN
   question: 兴业银锡现在的周期位置在哪，是否值得投资？
   depth: standard
   ticker: SZSE_000426
 outputs_state:
+  00_quality_screen:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
   01_business_panorama:
     version: 0
     last_updated: null

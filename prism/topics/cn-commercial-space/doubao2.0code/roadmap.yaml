@@ -1,0 +1,93 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-commercial-space
+created: "2026-05-11T00:10:00+00:00"
+learning_track:
+  l1_orientation:     # 概览层：是什么，多大，谁玩
+    - question: 中国商业航天的定义和边界在哪里？哪些环节算，哪些不算？
+      source_hint: 从行业报告看官方/市场共识定义
+    - question: 中国商业航天的市场规模多大？增速驱动来自哪里？
+      source_hint: 从卖方研报看市场规模测算
+    - question: 中国商业航天的产业链结构（上中下游）是怎样的？
+      source_hint: 从研报看价值链拆分
+  l2_history:         # 历史层：怎么来的，周期节奏
+    - question: 中国商业航天过去10年经历了哪几个发展阶段？
+      source_hint: 从训练知识+行业史看阶段划分
+    - question: 中国商业航天有什么周期性规律？政策/技术/需求的节奏是怎样的？
+      source_hint: 从历史政策和发射数据看周期
+    - question: 中国商业航天的关键拐点是什么时候？
+      source_hint: 找技术突破/政策出台/订单释放的关键节点
+  l3_debates:         # 争议层：分歧在哪，各方逻辑
+    - question: 多空双方对中国商业航天的核心分歧是什么？
+      source_hint: 从卖方研报的多空逻辑看分歧
+    - question: 当前市场共识是什么？哪里可能是错的？
+      source_hint: 对比市场共识与真实产业数据
+    - question: 最容易被忽视的风险是什么？
+      source_hint: 从风险盲点角度找
+  l4_hunting:         # 狩猎层：哪里有错误定价
+    - question: 如果市场错了，错在哪里？（例如：高估整箭盈利 / 低估配套壁垒）
+      source_hint: 从利润归属判断里找
+    - question: 哪个时间节点能验证或证伪当前判断？
+      source_hint: 找可观测的验证点（发射频次/入轨数量/订单）
+    - question: 什么样的新信息会改变当前判断？
+      source_hint: 找 Kill Criteria 类的信号
+material_priority:
+  tier1:              # 必读，研究不可缺
+    - title: H301_AP202601051815317517_1.pdf（可复用火箭与星座）
+      type: sellside_report
+      source: 已有 ✓
+      why: 提供可复用火箭验证进展、全球发射格局、星座需求测算
+    - title: H3_AP202601211818211539_1.pdf（火箭与发射市场）
+      type: sellside_report
+      source: 已有 ✓
+      why: 提供发射市场规模、火箭频次预测、产业链价值量拆分
+    - title: H3_AP202506171692442280_1.pdf（低轨卫星与终端）
+      type: sellside_report
+      source: 已有 ✓
+      why: 提供低轨卫星市场结构、终端与芯片映射、消费级渗透进展
+    - title: 面向低轨卫星网络的组网关键技术综述_NormalPdf.pdf
+      type: research_paper
+      source: 已有 ✓
+      why: 提供低轨组网工程约束、激光通信等关键技术细节
+    - title: 0900006.pdf
+      type: research_paper
+      source: 已有 ✓
+      why: 提供激光通信等关键分系统技术细节
+  tier2:              # 补充，有最好
+    - title: 中国航天科技/科工集团相关公司年报
+      type: annual_report
+      source: 可从交易所获取
+      why: 了解国家队主体的订单、收入、利润率
+    - title: 海外可比公司（SpaceX / OneWeb / Starlink 相关）研究
+      type: sellside_report
+      source: 可从海外研报获取
+      why: 对比国内外发展路径和估值
+    - title: 中国低轨星座（GW / 鸿雁 / 虹云等）官方规划文件
+      type: policy
+      source: 可从官方渠道获取
+      why: 了解真实部署规划和节奏
+    - title: A股商业航天映射公司的订单公告
+      type: data
+      source: 可从交易所公告获取
+      why: 验证配套环节的真实订单落地
+  tier3:              # 可选
+    - title: 全球发射频次历史数据库
+      type: data
+      source: 可从公开数据获取
+      why: 做更精细的周期定位
+    - title: 更多技术白皮书（相控阵/激光通信/卫星制造）
+      type: research_paper
+      source: 可从论文库获取
+      why: 做更深度的技术理解
+key_risks_to_monitor:
+  - 星座规划转化为真实部署不及预期
+  - 可复用火箭验证失败或降本不及预期
+  - 终端商业化需求不足
+  - 发射资源/测控资源成为瓶颈
+  - 政策节奏或资源配置变化
+analogies_to_study:
+  - name: 美国 SpaceX 早期（2015-2020）
+    analogy_logic: 可复用火箭从验证走向成熟的路径、成本下降曲线、融资与估值变化
+    analogy_limitations: 中国没有像 NASA 那样的稳定大单客户、政策环境不同
+  - name: 中国新能源基础设施建设早期（2019-2021）
+    analogy_logic: 政策驱动+技术突破+资本投入共振、"先建基础设施再看商业化"的路径、利润从配套走向主体的节奏
+    analogy_limitations: 新能源的终端需求更清晰、商业航天的 C 端渗透路径不同

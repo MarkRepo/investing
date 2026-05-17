@@ -36,5 +36,8 @@ data/industries/
 
 # Large source materials (kept local only)
 companies/**/sources/*.pdf
+prism/inbox/auto/
+prism/inbox/manual/
+mineru_summaries/
 
 .gitnexus

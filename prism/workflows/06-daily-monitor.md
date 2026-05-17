@@ -1,12 +1,45 @@
 # Workflow 06 — 日常监控 (Daily Monitor)
 
-**触发**：用户说「监控 {slug}」或每日/每周定期运行  
-**定位**：快速扫描新信息，判断是否影响现有判断  
+**触发**：用户说「监控 {slug}」或每日/每周定期运行
+**定位**：快速扫描新信息，判断是否影响现有判断
 **耗时**：目标 5-10 分钟
 
 ---
 
-## Step 1：读取 Kill Criteria 和 Signposts
+## Step 1：按 monitoring_tier 选择今日要扫的 topic
+
+```bash
+python -c "
+from prism.scripts.topic import list_topics
+import datetime
+today = datetime.date.today()
+all_topics = list_topics()
+
+# deep tier: 每日扫
+deep = [t for t in all_topics if t.get('monitoring_tier') == 'deep']
+# watch tier: 每周二扫
+watch = [t for t in all_topics if t.get('monitoring_tier') == 'watch' and today.weekday() == 1]
+# dormant: 不主动扫
+dormant = [t for t in all_topics if t.get('monitoring_tier') in (None, 'dormant')]
+
+print('=== 今日监控清单 ===')
+print('Deep tier（每日）:')
+for t in deep:
+    print(f'  - {t[\"slug\"]} ({t[\"variant\"]})')
+print()
+print('Watch tier（每周二）:')
+for t in watch:
+    print(f'  - {t[\"slug\"]} ({t[\"variant\"]})')
+print()
+print(f'共 {len(deep) + len(watch)} 个 topic 今日需监控')
+"
+```
+
+如果用户指定了具体 slug，跳过此步直接处理该 topic。
+
+---
+
+## Step 1a：读取该 topic 的 Kill Criteria 和 Signposts
 
 ```bash
 cat prism/topics/{slug}/outputs/06_risk_blindspots.md | grep -A 20 "Kill Criteria"
@@ -56,7 +89,20 @@ cat prism/topics/{slug}/outputs/07_decision_kit.md | grep -A 30 "Signposts"
 
 ```bash
 python -c "
-from prism.scripts.topic import set_next_actions, set_user_todos
-set_next_actions('{slug}', ['下次监控建议关注：{重点}'])
+from prism.scripts.topic import set_next_actions, read_topic
+t = read_topic('{slug}', '{variant}')
+current = t.get('next_actions', [])
+current.append('下次监控建议关注：{重点}')
+set_next_actions('{slug}', current, '{variant}')
 "
 ```
+
+---
+
+## 附录：monitoring_tier 三档定义
+
+| Tier | 含义 | 触发 monitor | 需要的 outputs |
+|------|------|--------------|----------------|
+| `deep` | 持仓 / 候选标的 | 每日 + 重大事件 | 全 8/9/10 份 |
+| `watch` | 值得关注但暂不投 | 每周 | 仅 01 + 02 + 06 |
+| `dormant` | 历史归档 / 完成研究 | 不主动 | 全部，但不 refresh |

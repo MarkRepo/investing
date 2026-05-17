@@ -5,7 +5,6 @@ BASE_PATH = Path(__file__).resolve().parent.parent
 
 COMPANIES_DIR = BASE_PATH / "companies"
 INDUSTRIES_DIR = BASE_PATH / "industries"
-ARENAS_DIR = BASE_PATH / "arenas"
 WATCHLIST_DIR = BASE_PATH / "watchlist"
 PORTFOLIO_DIR = BASE_PATH / "portfolio"
 MACRO_DIR = BASE_PATH / "macro"
@@ -42,15 +41,6 @@ INDUSTRY_DIMENSIONS = (
     "valuation",
 )
 
-ARENA_DIMENSIONS = (
-    "definition",
-    "participants",
-    "decisive_factors",
-    "trajectory",
-    "narratives",
-    "investment_view",
-)
-
 COMPANY_DIMENSIONS = (
     "business_model",
     "moat",
@@ -70,11 +60,6 @@ INDUSTRY_INVESTMENT_VIEW_DIMS = (
     "unit_economics", "stage_gates", "catalysts_timeline",
     "risks_disconfirming_evidence",
 )
-ARENA_BATTLEFIELD_VIEW_DIMS = (
-    "battlefield_definition", "players_positions", "winning_variables",
-    "evidence_scoreboard", "stage_gates", "inflection_points",
-    "company_implications",
-)
 COMPANY_MEMO_VIEW_DIMS = (
     "business_exposure", "thesis_fit", "moat_execution", "financial_quality",
     "growth_drivers", "stage_gate_status", "valuation_expectations",
@@ -84,12 +69,10 @@ COMPANY_MEMO_VIEW_DIMS = (
 VIEW_DIMENSIONS = {
     "archive": {
         "industry": INDUSTRY_DIMENSIONS,
-        "arena": ARENA_DIMENSIONS,
         "company": COMPANY_DIMENSIONS,
     },
     "investment_lens": {
         "industry": INDUSTRY_INVESTMENT_VIEW_DIMS,
-        "arena": ARENA_BATTLEFIELD_VIEW_DIMS,
         "company": COMPANY_MEMO_VIEW_DIMS,
     },
 }

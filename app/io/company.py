@@ -220,9 +220,17 @@ def _prism_company_topics() -> list[dict]:
             continue
         scope = t.get("scope") or {}
         ticker_full = scope.get("ticker", "")
-        if not ticker_full or "_" not in ticker_full:
+        if not ticker_full:
             continue
-        market, code = ticker_full.split("_", 1)
+        # ticker may be plain code (e.g. "001270") with market in separate field,
+        # or legacy format "SZSE_001270"
+        if "_" in ticker_full:
+            market, code = ticker_full.split("_", 1)
+        else:
+            market = scope.get("market", "")
+            code = ticker_full
+        if not market or not code:
+            continue
         key = f"{market}_{code}"
         if key in seen:
             continue

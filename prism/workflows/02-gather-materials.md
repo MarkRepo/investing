@@ -80,7 +80,7 @@ python -c "
 from prism.scripts.topic import set_stage, set_next_actions, set_user_todos
 from prism.scripts.manifest import material_count
 counts = material_count('{slug}', '{variant}')
-set_stage('{slug}', '03-extracting' if counts['unprocessed'] > 0 else '02-gathering', '{variant}')
+set_stage('{slug}', '03-extracting' if counts['unprocessed'] > 0 else '02-gather-materials', '{variant}')
 set_next_actions('{slug}', [
     f'已有 {counts[\"unprocessed\"]} 份资料未处理，运行 workflow 03-extract-findings',
 ])

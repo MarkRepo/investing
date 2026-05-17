@@ -1,0 +1,71 @@
+slug: cn-shanghai-hanxun
+display_name: 上海瀚讯
+type: company
+created: '2026-05-11T11:20:59.091629+00:00'
+status: active
+stage: 00-init
+parent_topic: cn-satcom-payloads
+monitoring_tier: watch
+concepts:
+- 商业航天
+- 卫星终端
+- 军用通信
+- 卫星通信载荷
+scope:
+  geo: CN
+  question: 军用专网通信向卫星终端延伸的路径是否通畅？卫星通信终端基带芯片/模块的竞争格局与瀚讯切入点？
+  depth: deep
+  ticker: '300762'
+  market: SZSE
+outputs_state:
+  00_quality_screen:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  01_business_panorama:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  02_cycle_positioning:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  03_narrative_ecology:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  04_implied_expectations:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  05_historical_mirrors:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  06_risk_blindspots:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  07_decision_kit:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily

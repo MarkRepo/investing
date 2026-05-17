@@ -1,0 +1,67 @@
+slug: cn-commercial-space
+display_name: 中国商业航天
+type: industry
+created: "2026-05-11T00:05:00+00:00"
+status: active
+stage: "00-init"
+parent_topic: null
+monitoring_tier: watch
+concepts: ["商业航天"]
+scope:
+  geo: CN
+  question: 中国商业航天的发射与卫星制造环节的商业模式、竞争格局及破局点在哪里？
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  02_cycle_positioning:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  03_narrative_ecology:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  04_implied_expectations:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  05_historical_mirrors:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  06_risk_blindspots:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  07_decision_kit:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  09_industry_to_arenas:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+next_actions:
+- "运行 workflow 01-build-roadmap：制定详细研究路线图"
+user_todos:
+- "新建 topic：cn-commercial-space（doubao2.0code）"
+- "复用现有 materials：5 份 PDF"
+monitoring:
+  enabled: false
+  cadence: daily

@@ -44,6 +44,23 @@ print('状态已更新')
 "
 ```
 
+## 全部产出完成后（收尾）
+
+```bash
+python -c "
+from prism.scripts.topic import read_topic, set_next_actions, set_user_todos
+t = read_topic('{slug}', '{variant}')
+# 清除 user_todos 中「下一步：生成产出」相关行
+todos = [x for x in t.get('user_todos', []) if '生成产出' not in x and '开始 01-08' not in x]
+todos.append('全部产出完成（' + str(len(t['outputs_state'])) + ' 份），等待创建子 topic 或进入监控')
+set_user_todos('{slug}', todos, '{variant}')
+# 确认 next_actions 不再指向生成产出
+actions = [x for x in t.get('next_actions', []) if '01-08' not in x and '产出' not in x]
+set_next_actions('{slug}', actions, '{variant}')
+print('收尾完成')
+"
+```
+
 ## 质量检验
 
 产出完成后自问：

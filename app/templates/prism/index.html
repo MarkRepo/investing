@@ -31,9 +31,9 @@
           {% endfor %}
         </td>
         <td>
-          {% if t.type == 'company' and t.ticker %}
-            <a href="/prices/{{ t.ticker }}" class="data-link">行情</a>
-            <a href="/financials/{{ t.ticker }}" class="data-link">财务</a>
+          {% if t.type == 'company' and t.market_ticker %}
+            <a href="/prices/{{ t.market_ticker }}" class="data-link">行情</a>
+            <a href="/financials/{{ t.market_ticker }}" class="data-link">财务</a>
           {% endif %}
         </td>
         <td class="hint">{{ (t.created or '')[:10] }}</td>

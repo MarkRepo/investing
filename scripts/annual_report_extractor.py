@@ -28,6 +28,7 @@ _INCLUDE_KEYWORDS = [
     "管理层讨论",
     "经营情况讨论",
     "主要业务",
+    "主营业务",
     "经营模式",
     "行业情况",
     "核心竞争力",
@@ -38,6 +39,9 @@ _INCLUDE_KEYWORDS = [
     "重要事项",
     "公司业务概要",
     "研发情况",
+    "业务和技术",
+    "业务与技术",
+    "发行人基本情况",
 ]
 
 # Sections to always skip — even if they match include keywords

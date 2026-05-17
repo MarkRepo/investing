@@ -1,7 +1,7 @@
 # Workflow 99 — 决策记录 (Decision Record)
 
-**触发**：用户要做出实际投资决策（买入/卖出/持有/放弃）  
-**定位**：在采取行动前记录决策依据，供事后复盘  
+**触发**：用户要做出实际投资决策（买入/卖出/持有/放弃）
+**定位**：在采取行动前记录决策依据，供事后复盘
 **产出文件**：`prism/topics/{slug}/outputs/decision_{YYYYMMDD}.md`
 
 ---
@@ -45,7 +45,8 @@ action: buy|add|reduce|sell|pass
 # 决策记录：{YYYYMMDD}
 
 ## 决策
-操作：{buy/add/reduce/sell/pass}  
+
+操作：{buy/add/reduce/sell/pass}
 理由（一句话）：{一句话}
 
 ## 支撑这个决策的核心假设
@@ -53,6 +54,26 @@ action: buy|add|reduce|sell|pass
 1. {假设}（来自产出04）
 2. {假设}
 3. {假设}
+
+## 同时考虑过的替代标的（强制 ≥ 2 个）
+
+> 来源：从本 company topic 的 parent_topic arena 的 10_peer_matrix.md 短名单 + watchlist 抽取。
+
+### 替代 1：{公司名} ({ticker})
+
+- 排序优势：{相对本标的什么更好}
+- 排序劣势：{相对本标的什么更差}
+- 拒绝主因：{≤30字}
+- 升档触发：{什么情况下应转向这个标的}
+
+### 替代 2：{公司名} ({ticker})
+
+（同上结构）
+
+### 排他性检查
+
+- 有没有可能"两个都买"而不是二选一？{是/否，理由}
+- 是否存在 pair trade 机会（多 A 空 B）？{是/否，结构}
 
 ## 我知道自己不知道的事情
 
@@ -80,6 +101,11 @@ action: buy|add|reduce|sell|pass
 □ 是否受近期涨跌影响而情绪化
 □ 是否对这个行业/公司有特别的偏好
 □ 是否充分考虑了反方观点
+
+## 半年后复盘约定
+
+- 决策日 + 180天 = {YYYY-MM-DD}，强制对照本标的 vs 替代标的实际涨跌
+- 复盘文件：`prism/topics/{slug}/outputs/decision_review_{YYYYMMDD}.md`
 ```
 
 ---
@@ -90,14 +116,31 @@ action: buy|add|reduce|sell|pass
 
 ---
 
-## Step 5：汇报
+## Step 5：设置半年后复盘提醒
+
+```bash
+python -c "
+from datetime import datetime, timedelta
+from prism.scripts.topic import set_user_todos, read_topic
+t = read_topic('{slug}', '{variant}')
+review_date = (datetime.now() + timedelta(days=180)).date().isoformat()
+current_todos = t.get('user_todos', [])
+current_todos.append(f'{review_date}: 决策半年复盘 - 对比本标的 vs 替代标的实际表现')
+set_user_todos('{slug}', current_todos, '{variant}')
+"
+```
+
+---
+
+## Step 6：汇报
 
 ```
 ✅ 决策记录已保存 → prism/topics/{slug}/outputs/decision_{YYYYMMDD}.md
 
 操作：{action}
 核心假设数量：{N}
+替代标的数量：{N}
 主要不确定性：{一句话}
 
-建议：决策后 {30 天} 回来做一次复盘对照。
+建议：决策后 30 天回来做一次复盘对照；180 天强制复盘已加入 user_todos。
 ```
