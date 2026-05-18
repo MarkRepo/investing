@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}投资仪表盘{% endblock %}
+{% block content %}
+<div class="dash-header">
+  <h1>投资仪表盘</h1>
+  <a href="/prism/dashboard?refresh=true" class="refresh-btn">🔄 刷新</a>
+  <a href="/prism" class="back-link">← 研究列表</a>
+</div>
+
+<div class="dash-body">{{ body_html | safe }}</div>
+
+<style>
+  .dash-header { display: flex; align-items: center; gap: 0.75em; margin-bottom: 0.5em; }
+  .dash-header h1 { margin: 0; flex: 1; }
+  .refresh-btn {
+    display: inline-block; padding: 0.3em 0.8em;
+    background: #2a5db0; color: #fff; border-radius: 4px;
+    font-size: 0.85em; text-decoration: none;
+  }
+  .refresh-btn:hover { background: #1e4a96; }
+  .back-link { font-size: 0.85em; color: #888; text-decoration: none; }
+  .back-link:hover { color: #333; }
+  .dash-body table { border-collapse: collapse; width: 100%; font-size: 0.88em; margin: 0.75em 0; }
+  .dash-body th, .dash-body td { border: 1px solid #e0e0e0; padding: 6px 10px; text-align: left; }
+  .dash-body th { background: #f5f5f5; font-weight: 600; }
+  .dash-body tr:hover { background: #fafafa; }
+  .dash-body h2 { font-size: 1.05em; margin-top: 2em; border-bottom: 1px solid #e8e8e8; padding-bottom: 4px; }
+  .dash-body h3 { font-size: 0.95em; margin-top: 1.5em; color: #222; }
+  .dash-body blockquote { color: #666; border-left: 3px solid #ddd; margin: 0.5em 0; padding: 4px 12px; font-size: 0.88em; }
+  .dash-body hr { border: none; border-top: 1px solid #eee; margin: 1.25em 0; }
+  .dash-body a { color: #2a5db0; }
+  .dash-body ul { padding-left: 1.4em; }
+  .dash-body li { margin: 0.3em 0; font-size: 0.9em; }
+</style>
+{% endblock %}

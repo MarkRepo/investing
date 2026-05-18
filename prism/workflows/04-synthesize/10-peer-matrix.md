@@ -1,6 +1,6 @@
 # Workflow 10 — Arena → Peer Matrix 横向矩阵
 
-**触发**: arena topic 完成 04-synthesizing（stage 为 04-synthesizing）
+**触发**: arena topic 完成 01-08 产出后自动触发（由 `_shared.md` 收尾逻辑判断 topic_type=arena）；也可手动说「生成产出 10」
 **定位**: 识别 arena 内候选公司，拉取财务数据，输出对比矩阵
 **产出文件**: `prism/topics/{slug}/outputs/10_peer_matrix.md`
 
@@ -105,6 +105,51 @@ print(f'当前 PE(TTM): {q.get(\"pe_ttm\")}, PB: {q.get(\"pb\")}')
 ## Step 6：写入产出文件
 
 使用模板 `prism/templates/peer_matrix.md.tmpl`，写入 `outputs/10_peer_matrix.md`。
+
+---
+
+## Step 6.5：生成 sidecar YAML（machine-readable 快照）
+
+写入文件：`prism/topics/{slug}/{variant}/outputs/10_peer_matrix.yaml`
+
+从刚才写的 markdown 中提取以下字段。**数字不加引号，缺失用 null，tier 只能是 shortlist / watch / eliminated。**
+
+```yaml
+slug: {slug}
+variant: {variant}
+topic_type: arena
+display_name: {display_name}
+generated: {ISO8601 timestamp}
+data_freshness: {date}
+
+companies:
+  - name: {公司名}
+    ticker: {e.g. TSM or SZSE_001270}   # 空则 ""
+    score: {float 1-5}
+    tier: shortlist                      # shortlist / watch / eliminated
+    topic_created: false                 # 是否已创建 company topic
+    topic_slug: null                     # 实际创建的 topic slug
+    thesis_one_liner: {一句话 thesis}    # shortlist 档必填，其他 null
+    upgrade_triggers: []                 # watch 档：触发深研条件列表
+    quarantine: false                    # eliminated 档：是否进入 quarantine
+  # 追加更多公司...
+
+cluster_tags: [{tag1}, {tag2}]
+```
+
+```bash
+python -c "
+from pathlib import Path
+import yaml
+
+content = '''
+{上面填好的 yaml 内容}
+'''
+path = Path('prism/topics/{slug}/{variant}/outputs/10_peer_matrix.yaml')
+path.write_text(content, encoding='utf-8')
+print('10 sidecar 写入完成')
+"
+```
 
 ---
 

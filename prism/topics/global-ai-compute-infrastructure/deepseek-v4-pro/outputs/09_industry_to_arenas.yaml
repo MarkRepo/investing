@@ -1,0 +1,161 @@
+slug: global-ai-compute-infrastructure
+variant: deepseek-v4-pro
+topic_type: industry
+display_name: AI算力基础设施行业
+generated: '2026-05-17T14:30:00Z'
+data_freshness: '2026-Q1'
+
+arenas:
+  - name: 先进封装 CoWoS/SoIC
+    suggested_slug: global-advanced-packaging
+    topic_created: true
+    topic_slug: global-advanced-packaging
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 5
+      valuation: 4
+      cycle: 4
+      composite: 4.4
+    tier: deep
+    tier_reason: 无论GPU/ASIC谁赢都必须通过先进封装，TSMC CoWoS垄断>80%，AI收入CAGR 60%，确定性最高
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: null
+
+  - name: AI数据中心能源基础设施
+    suggested_slug: global-ai-energy-infrastructure
+    topic_created: true
+    topic_slug: global-ai-energy-infrastructure
+    scores:
+      profit_pool: 4
+      growth: 3
+      competition: 4
+      valuation: 4
+      cycle: 5
+      composite: 4.0
+    tier: deep
+    tier_reason: 电力约束是AI算力增长物理天花板，GE Vernova/西门子能源寡头格局，被市场忽视的受益者
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: null
+
+  - name: AI GPU/加速器芯片
+    suggested_slug: global-ai-gpu-accelerator
+    topic_created: true
+    topic_slug: global-ai-gpu-accelerator
+    scores:
+      profit_pool: 5
+      growth: 4
+      competition: 4
+      valuation: 3
+      cycle: 3
+      composite: 3.8
+    tier: deep
+    tier_reason: NVDA单家FY2026营收$2159亿，全产业链最大利润池，CUDA生态锁定，核心战场
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: null
+
+  - name: 半导体测试设备
+    suggested_slug: global-semi-test
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 4
+      competition: 4
+      valuation: 4
+      cycle: 4
+      composite: 3.6
+    tier: watch
+    tier_reason: niche市场规模小，但测试时长结构性翻倍+AI芯片复杂度提升是估值洼地，缺独立研究资料
+    upgrade_triggers:
+      - Advantest/Teradyne季报AI相关测试收入占比突破50%
+      - 行业报告提供详细测试设备市场数据
+    monitor_metrics:
+      - Advantest/Teradyne季度AI测试收入增速
+      - NVDA Rubin架构测试时长vs Blackwell变化
+    revive_condition: null
+
+  - name: ASIC定制芯片
+    suggested_slug: global-asic-custom
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 4
+      competition: 3
+      valuation: 3
+      cycle: 3
+      composite: 3.4
+    tier: watch
+    tier_reason: 趋势确定但兑现速度不确定，AVGO大客户集中风险是双刃剑，ASIC训练场景仍落后GPU
+    upgrade_triggers:
+      - Amazon或Microsoft宣布自研芯片大规模替代GPU计划
+      - AVGO AI业务营收突破$200亿/年
+    monitor_metrics:
+      - Google TPU/Amazon Trainium/Microsoft Maia公开性能基准vs NVDA H200/B200
+      - 四大云厂商自研芯片在内部推理负载占比
+    revive_condition: null
+
+  - name: HBM高带宽内存
+    suggested_slug: global-hbm
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 4
+      valuation: 2
+      cycle: 3
+      composite: 3.2
+    tier: watch
+    tier_reason: 12-18个月紧缺窗口后供给释放可能逆转，存储器历史周期性意味着择时窗口接近尾声
+    upgrade_triggers:
+      - HBM4需求超预期（ASP大幅提升）
+      - SK Hynix年报显示HBM利润率远超预期
+    monitor_metrics:
+      - SK Hynix/Samsung HBM季度出货量和ASP趋势
+      - HBM短缺缓解时间点（IEA预计2027年底）是否推迟
+    revive_condition: null
+
+  - name: 光模块与互联
+    suggested_slug: global-optical-module
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 3
+      competition: 3
+      valuation: 4
+      cycle: 2
+      composite: 3.0
+    tier: watch
+    tier_reason: LightCounting明确警告过度订购信号，历史规律是光模块在CAPEX仍增长时就先跌
+    upgrade_triggers:
+      - LightCounting Q3/Q4数据确认重复订单未出现
+      - 1.6T光模块大规模量产且ASP超预期
+    monitor_metrics:
+      - LightCounting季度光模块出货/订单数据
+      - 中际旭创季度订单环比增速
+    revive_condition: null
+
+  - name: 传统非AI半导体
+    suggested_slug: global-traditional-semi
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 1
+      competition: 1
+      valuation: 3
+      cycle: 1
+      composite: 1.8
+    tier: eliminated
+    tier_reason: 资源被AI虹吸，弱复苏非强复苏，同质化竞争严重，结构性偏空
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 全球经济超预期复苏推动非AI半导体需求爆发性反弹（概率低，非基准情景）
+
+cluster_tags: [ai-compute, semiconductor, global-tech]

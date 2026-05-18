@@ -1,0 +1,48 @@
+slug: global-humanoid-roller-screw
+variant: deepseek-v4-pro
+topic_type: arena
+display_name: 行星滚柱丝杠
+generated: '2026-05-17T22:30:00Z'
+data_freshness: '2025-Q4'
+
+kill_criteria:
+  - id: grinding_machine_export_control
+    description: 秦川 HJ109/HJ110 磨床精度测试不达标，且日本/欧洲将高精磨床（精度 <1μm 级别）列入出口管制，国产替代路径被物理封死
+    status: pending
+    check_at: '2026-Q4'
+  - id: two_companies_exit_narrative
+    description: 贝斯特/恒立/秦川中任意两家在年报中删除或淡化丝杠/人形机器人战略，企业在"撤出叙事"，说明行业窗口期关闭
+    status: pending
+    check_at: '2027-Q1'
+  - id: tesla_optimus_no_domestic_supplier
+    description: Tesla Optimus Gen3 公布丝杠供应商全部为 Rollvis/GSA（无国产厂商），国产未被核心客户认可，国产替代逻辑证伪
+    status: pending
+    check_at: '2026-Q3'
+  - id: batch_quality_accident
+    description: 行星滚柱丝杠出现批量质量事故（整机厂因丝杠失效召回机器人），国产信任度崩溃，行业监管收紧
+    status: pending
+    check_at: '2026-持续'
+
+signposts:
+  - date: '2026-Q2'
+    event: Tesla Optimus 2026 生产计划更新（Q1/Q2 财报电话会）
+    bull_signal: Musk 主动提及 Optimus 量产进展，2026 出货目标维持或上调，国产供应商进入视野
+    bear_signal: Optimus 量产推迟至 2027+，或连续两次财报电话会中 Musk 不主动提及 Optimus
+    triggered: null
+  - date: '2026-Q3'
+    event: 贝斯特 2026 半年报（丝杠收入和毛利率披露）
+    bull_signal: 丝杠收入占比提升，毛利率≥45%，自研磨床进度符合预期
+    bear_signal: 丝杠收入停滞，贝斯特放弃自研磨床转向进口（验证盲点 3 触发）
+    triggered: null
+  - date: '2026-Q4'
+    event: 整机厂供应商体系披露（Tesla/Figure/宇树等）
+    bull_signal: 国产丝杠厂商（贝斯特/恒立/秦川）被点名为核心供应商
+    bear_signal: 整机厂供应商体系披露全部为欧洲厂商，无国产
+    triggered: null
+  - date: '2026-Q4'
+    event: 国内丝杠精度检测结果公开（第三方认证/行业报告）
+    bull_signal: 国产丝杠通过 C3/C0 级精度认证，打破进口依赖
+    bear_signal: 精度测试显示与进口产品仍有 2-3 代差距，国产替代推迟至 2028+
+    triggered: null
+
+cluster_tags: [humanoid-robot, china-robotics, precision-manufacturing]

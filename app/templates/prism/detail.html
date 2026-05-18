@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block title %}{{ topic.display_name or topic.slug }} · {{ variant }}{% endblock %}
 {% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
+  <span>{{ variant }}</span>
+</nav>
+
 <div class="prism-header" data-slug="{{ topic.slug }}">
   <h1>{{ topic.display_name or topic.slug }}</h1>
   <code class="slug-tag">{{ topic.slug }}</code>
@@ -130,11 +136,13 @@
 
 </div>
 
-<a href="/prism/{{ topic.slug }}" class="back-link">← 模型选择</a>
-<a href="/prism" class="back-link" style="margin-left: 1em;">← 所有主题</a>
 
 <style>
-  .prism-header { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0.3em; flex-wrap: wrap; }
+  main { margin-top: 0; }
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 0; position: sticky; top: 41px; background: #fafafa; z-index: 9; padding: 0.5em 0; border-bottom: 1px solid #eee; }
+  .breadcrumb a { color: #555; }
+  .breadcrumb span { color: #333; }
+  .prism-header { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0.3em; flex-wrap: wrap; margin-top: 1em; }
   .slug-tag { font-size: 0.78em; color: #888; background: #f4f4f4; padding: 0.1em 0.4em; border-radius: 3px; }
   .model-tag { font-size: 0.78em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; }
   .variant-switcher { margin: 0.5em 0 1em; font-size: 0.85em; color: #555; }
@@ -170,7 +178,6 @@
     white-space: nowrap;
   }
   .compare-link:hover { background: #dce6fb; }
-  .back-link { display: inline-block; margin-top: 2em; color: #666; font-size: 0.9em; }
   .prism-nav { display: flex; gap: 0.6em; margin: 0.5em 0 1em; flex-wrap: wrap; }
   .btn-nav {
     font-size: 0.85em; padding: 0.3em 0.8em;

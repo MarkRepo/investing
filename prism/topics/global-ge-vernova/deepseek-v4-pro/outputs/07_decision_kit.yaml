@@ -1,0 +1,86 @@
+slug: global-ge-vernova
+variant: deepseek-v4-pro
+topic_type: company
+display_name: GE Vernova
+ticker: NYSE_GEV
+generated: '2026-05-17T22:30:00Z'
+data_freshness: '2026-Q1'
+archetype: 成熟平台/现金流（PE 30x，$163B RPO 锁定，服务合约长期现金流可见）
+
+buy_box:
+  strong_buy_max: 396
+  accumulate_min: 396
+  accumulate_max: 486
+  hold_min: 486
+  hold_max: 590
+  current_price: 540
+  price_as_of: '2026-05-17'
+  current_zone: hold
+
+position_framework:
+  initial_max_pct: 7.5
+  full_max_pct: 17.5
+  add_ladder_prices: [486, 440, 396, 350]
+  max_cluster_pct: 20
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: Reverse PE-DCF
+    core_assumptions: FY2027正常化NI×终值PE折现2yr at 10%；Bull=NI $6.5B×PE33x，Base=NI $5.0B×PE26x，Bear=NI $3.5B×PE18x
+    bull_fair_value: [620, 680]
+    base_fair_value: [400, 450]
+    bear_fair_value: [190, 240]
+  - name: ev_ebitda
+    label: EV/EBITDA 历史分位
+    core_assumptions: FY2027 Adj EBITDA×EV/EBITDA倍数；Bull=$9B×22x，Base=$7.5B×18x，Bear=$6B×12x（减净债约$10B）
+    bull_fair_value: [650, 720]
+    base_fair_value: [420, 480]
+    bear_fair_value: [200, 260]
+  - name: peer_cross_section
+    label: 同业横截面
+    core_assumptions: GAAP NI vs GE Aerospace(30x)/Honeywell(22x)同业对比，按利润率差异做折溢价
+    bull_fair_value: [600, 660]
+    base_fair_value: [440, 500]
+    bear_fair_value: [220, 280]
+
+kill_criteria:
+  - id: gas_turbine_orders_under_5gw
+    description: 燃气轮机季度订单 <5GW 连续 2 季（当前约 7.5GW/季），说明 AI 电力需求崩塌
+    status: pending
+    check_at: '2026-Q3'
+  - id: gm_not_improving_3q
+    description: Gross Margin 连续 3 个季度未改善或下滑，利润改善逻辑证伪（当前 19.7%，须持续向 23-25% 迈进）
+    status: pending
+    check_at: '2026-Q4'
+  - id: ha_turbine_customer_lost
+    description: HA-Turbine 主要客户取消订单或切换到 Siemens/Mitsubishi，竞争地位恶化
+    status: pending
+    check_at: '2027-Q1'
+  - id: wind_loss_over_500m
+    description: Wind segment 季度亏损扩大至 $500M 以上，拖累超出容忍度
+    status: pending
+    check_at: '2026-Q3'
+
+signposts:
+  - date: '2026-07'
+    event: GEV Q2 2026 季报（GM 是否突破 20%？HA-Turbine 订单≥10 台/季？）
+    bull_signal: GM>20% 且 RPO 维持/扩大，HA-Turbine 订单≥12 台
+    bear_signal: GM 停滞在 19-20% 且 Wind 亏损继续扩大
+    triggered: null
+  - date: '2026-07'
+    event: 云厂商 Q2 季报（AMZN/MSFT/GOOGL CAPEX 是否维持 >40% 增速）
+    bull_signal: 四大云厂商 CAPEX 指引合计增速 >40%，并明确提及电力需求
+    bear_signal: 任一头部云厂商明确削减 CAPEX 且指向电力基建需求放缓
+    triggered: null
+  - date: '2026-Q3'
+    event: GEV Q3 2026 季报（全年指引上调？Electrification 有机增速拆分披露？）
+    bull_signal: 上调全年 Adj EBITDA 指引，Electrification 有机增速≥25%
+    bear_signal: Wind 亏损创新高（>$500M/季），全年指引下调
+    triggered: null
+  - date: '2027-Q1'
+    event: GEV FY2026 年报（全年 GM 达到 22%+？正常化 NI 突破 $5B？）
+    bull_signal: GM 达标（≥22%）且正常化 NI>$5B，RPO 增至 $180B+
+    bear_signal: GM 停留在 20% 以下且订单增速放缓，正常化 NI<$4B
+    triggered: null
+
+cluster_tags: [ai-compute, energy-infrastructure, global-tech]

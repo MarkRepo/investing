@@ -1,0 +1,69 @@
+slug: global-advanced-packaging
+display_name: 先进封装 CoWoS/SoIC
+type: arena
+created: '2026-05-17T07:16:17.167953+00:00'
+status: active
+stage: done
+parent_topic: global-ai-compute-infrastructure
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: TSMC 先进封装（CoWoS/SoIC）的垄断持续性、Non-TSMC 替代进度、产能释放后的价格走势与投资机会
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-17T07:41:49.816404+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-17T07:41:49.818777+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-17T07:41:49.820734+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-17T07:41:49.822679+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-17T07:41:49.824572+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-17T07:41:49.826447+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-17T07:41:49.828494+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-17T07:41:49.830457+00:00'
+    status: fresh
+    data_freshness: null
+  10_peer_matrix:
+    version: 1
+    last_updated: '2026-05-17T08:03:14.163365+00:00'
+    status: fresh
+    data_freshness: null
+next_actions:
+- 可选：评审产出（critic review）、深挖 ASE vs Amkor 竞争格局、记录决策
+- 或继续推进 global-ai-energy-infrastructure 和 global-ai-gpu-accelerator
+user_todos:
+- 全部 8 份产出已生成（v1）
+- 关键结论：TSMC 超配（CoWoS 垄断 + PE 18x 未给垄断溢价），ASE 标配偏积极（CoWoS 追赶者），Amkor 观察（CAPEX 下降）
+- 最大盲点发现：Amkor CAPEX -17% 与 MS 扩产预期相悖 → Non-TSMC 替代可能慢 2-3 年
+monitoring:
+  enabled: false
+  cadence: daily

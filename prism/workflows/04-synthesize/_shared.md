@@ -46,6 +46,8 @@ print('状态已更新')
 
 ## 全部产出完成后（收尾）
 
+先更新 01-08 完成状态：
+
 ```bash
 python -c "
 from prism.scripts.topic import read_topic, set_next_actions, set_user_todos
@@ -60,6 +62,14 @@ set_next_actions('{slug}', actions, '{variant}')
 print('收尾完成')
 "
 ```
+
+**自动触发扩展产出**：根据 topic type 判断是否需要自动生成 09/10：
+
+- **topic_type = industry** → 自动运行 workflow `09-industry-to-arenas`（选拔 arena）
+- **topic_type = arena** → 自动运行 workflow `10-peer-matrix`（公司对比矩阵）
+- **topic_type = company** → 跳过，01-08 即为完整产出
+
+自动触发时，直接读对应 workflow 文件（`prism/workflows/04-synthesize/09-industry-to-arenas.md` 或 `prism/workflows/04-synthesize/10-peer-matrix.md`），按 Step 执行。完成后将 stage 设为 `done` 并追加到 living feed。
 
 ## 质量检验
 

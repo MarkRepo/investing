@@ -68,7 +68,9 @@ def list_outputs(slug: str, variant: str) -> list[dict]:
     outputs_state = data.get("outputs_state", {})
     result = []
     for key, label in _OUTPUT_KEYS_LABELS:
-        state = outputs_state.get(key, {"version": 0, "last_updated": None, "status": "pending"})
+        if key not in outputs_state:
+            continue  # skip keys not relevant to this topic type
+        state = outputs_state[key]
         out_path = _topic_dir(slug, variant) / "outputs" / f"{key}.md"
         result.append({
             "key": key,

@@ -176,6 +176,7 @@ def create_topic(
     }
     _write_yaml(path, data)
     (path.parent / "outputs").mkdir(exist_ok=True)
+    (path.parent.parent / "inbox").mkdir(exist_ok=True)
     return path
 
 

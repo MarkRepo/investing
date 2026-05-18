@@ -2,6 +2,7 @@
 
 Navigation: topic → model → content
   /prism                              — all topics (grouped by slug)
+  /prism/dashboard                    — investment decision dashboard
   /prism/{slug}                       — variant picker (redirect if only 1)
   /prism/{slug}/compare/{output_key}  — side-by-side model comparison
   /prism/{slug}/{variant}             — topic detail for a model
@@ -12,6 +13,7 @@ from __future__ import annotations
 import random
 from collections import defaultdict
 
+import markdown as _md
 from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -64,6 +66,7 @@ _OUTPUT_OPTIONS = [
     ("06_risk_blindspots", "风险盲点"),
     ("07_decision_kit", "决策辅助"),
     ("08_living_feed", "信息流时间线"),
+    ("09_industry_to_arenas", "产业→竞技场选拔"),
 ]
 
 
@@ -119,6 +122,36 @@ def prism_index(request: Request):
         request,
         "prism/index.html",
         {"topic_groups": ordered_groups},
+    )
+
+
+@router.get("/dashboard")
+def prism_dashboard(request: Request, refresh: bool = False):
+    """Investment decision dashboard — /prism/dashboard."""
+    from pathlib import Path
+    dashboard_path = Path(__file__).resolve().parent.parent.parent / "prism" / "dashboard.md"
+
+    if refresh or not dashboard_path.exists():
+        try:
+            from prism.scripts.dashboard import build
+            build()
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Dashboard build failed: {e}")
+
+    if not dashboard_path.exists():
+        raise HTTPException(status_code=404, detail="dashboard.md not found — try ?refresh=true")
+
+    raw = dashboard_path.read_text(encoding="utf-8")
+    # Strip leading h1 — the template renders its own title
+    lines = raw.splitlines()
+    if lines and lines[0].startswith("# "):
+        raw = "\n".join(lines[1:]).lstrip("\n")
+    body_html = _md.markdown(raw, extensions=["tables", "fenced_code"])
+
+    return templates.TemplateResponse(
+        request,
+        "prism/dashboard.html",
+        {"body_html": body_html},
     )
 
 

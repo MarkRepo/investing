@@ -1,8 +1,8 @@
 # Workflow 09 — Industry → Arenas 选拔
 
-**触发**: industry topic 完成 04-synthesizing（stage 为 04-synthesizing）
+**触发**: industry topic 完成 01-08 产出后自动触发（由 `_shared.md` 收尾逻辑判断 topic_type=industry）；也可手动说「生成产出 09」
 **定位**: 从行业研究中识别细分 arena，按 6 维度评分并强制分流
-**产出文件**: `prism/topics/{slug}/outputs/09_industry_to_arenas.md`
+**产出文件**: `prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.md`
 
 ---
 
@@ -101,6 +101,58 @@ create_topic(
     variant='{variant}',
     parent_topic='{slug}',
 )
+"
+```
+
+---
+
+## Step 6.5：生成 sidecar YAML（machine-readable 快照）
+
+写入文件：`prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.yaml`
+
+从刚才写的 markdown 中提取以下字段。**数字不加引号，缺失用 null，tier 只能是 deep / watch / eliminated。**
+
+```yaml
+slug: {slug}
+variant: {variant}
+topic_type: industry
+display_name: {display_name}
+generated: {ISO8601 timestamp}
+data_freshness: {date}
+
+arenas:
+  - name: {arena 中文名}
+    suggested_slug: {e.g. global-advanced-packaging}   # 建议的 arena slug
+    topic_created: false        # 是否已创建 arena topic（默认 false，创建后改为 true）
+    topic_slug: null            # 实际创建的 topic slug（创建后填入）
+    scores:
+      profit_pool: {1-5}
+      growth: {1-5}
+      competition: {1-5}
+      valuation: {1-5}
+      cycle: {1-5}
+      composite: {float}        # 综合加权分
+    tier: deep                  # deep / watch / eliminated
+    tier_reason: {入选/暂不/淘汰理由，一句话}
+    upgrade_triggers: []        # watch 档：升档触发条件列表
+    monitor_metrics: []         # watch 档：监控指标列表
+    revive_condition: null      # eliminated 档：复活条件
+  # 追加更多 arena...
+
+cluster_tags: [{tag1}, {tag2}]  # 继承自行业，e.g. [ai-compute, china-defense]
+```
+
+```bash
+python -c "
+from pathlib import Path
+import yaml
+
+content = '''
+{上面填好的 yaml 内容}
+'''
+path = Path('prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.yaml')
+path.write_text(content, encoding='utf-8')
+print('09 sidecar 写入完成')
 "
 ```
 

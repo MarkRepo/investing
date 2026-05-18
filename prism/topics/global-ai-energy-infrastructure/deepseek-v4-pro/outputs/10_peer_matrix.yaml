@@ -1,0 +1,71 @@
+slug: global-ai-energy-infrastructure
+variant: deepseek-v4-pro
+topic_type: arena
+display_name: AI数据中心能源基础设施
+generated: '2026-05-17T10:15:00Z'
+data_freshness: '2026-Q1'
+
+companies:
+  - name: GE Vernova
+    ticker: GEV
+    score: 4.5
+    tier: shortlist
+    topic_created: true
+    topic_slug: global-ge-vernova
+    thesis_one_liner: 燃气轮机寡头，$94.4B RPO多年可见性，GM从14.4→19.7%趋势清晰，市场按代工商定价但实为垄断资产
+    upgrade_triggers: []
+    quarantine: false
+
+  - name: Constellation Energy
+    ticker: CEG
+    score: 3.8
+    tier: shortlist
+    topic_created: true
+    topic_slug: global-constellation-energy
+    thesis_one_liner: 美国最大核电运营商55GW不可复制，Microsoft 20年PPA标杆，从公用事业→科技基础设施估值重估
+    upgrade_triggers: []
+    quarantine: false
+
+  - name: Siemens Energy
+    ticker: SMNEY
+    score: 3.5
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 获取年报后验证电网技术业务利润率>10%且燃气轮机订单增速>30%
+    quarantine: false
+
+  - name: Quanta Services
+    ticker: PWR
+    score: 3.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 管理层明确拆分数据中心相关施工收入>20%总营收且利润率显著高于传统施工
+    quarantine: false
+
+  - name: NextEra Energy
+    ticker: NEE
+    score: 2.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+
+  - name: NuScale Power
+    ticker: SMR
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+
+cluster_tags: [ai-compute, energy-infrastructure, global-tech]

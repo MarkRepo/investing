@@ -1,0 +1,143 @@
+slug: cn-commercial-space
+variant: deepseek-v4-pro
+topic_type: industry
+display_name: 中国商业航天
+generated: '2026-05-10T12:00:00Z'
+data_freshness: '2026-01'
+
+arenas:
+  - name: 液体火箭发动机
+    suggested_slug: cn-liquid-rocket-engines
+    topic_created: true
+    topic_slug: cn-liquid-rocket-engines
+    scores:
+      profit_pool: 3
+      growth: 5
+      competition: 4
+      valuation: 3
+      cycle: 5
+      composite: 3.8
+    tier: deep
+    tier_reason: 占火箭价值54%，壁垒极深，研发周期5-10年，"铲子中的铲子"且极难制造
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: null
+
+  - name: 卫星通信载荷
+    suggested_slug: cn-satcom-payloads
+    topic_created: true
+    topic_slug: cn-satcom-payloads
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 4
+      valuation: 2
+      cycle: 5
+      composite: 3.8
+    tier: deep
+    tier_reason: 占卫星价值71%，是卫星制造中价值密度最高、技术壁垒最深的环节
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: null
+
+  - name: 卫星平台及批量制造
+    suggested_slug: cn-satellite-manufacturing
+    topic_created: true
+    topic_slug: cn-satellite-manufacturing
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 3
+      valuation: 3
+      cycle: 4
+      composite: 3.8
+    tier: deep
+    tier_reason: 直接受益23.7万颗星座部署，千帆已进入批量交付，行业已过0→1
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: null
+
+  - name: 可回收火箭整机及发射服务
+    suggested_slug: cn-reusable-rocket
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 4
+      competition: 1
+      valuation: 2
+      cycle: 4
+      composite: 3.4
+    tier: watch
+    tier_reason: 8+家民企高度竞争，在可回收技术验证完成前选股胜率低，一级市场估值已高
+    upgrade_triggers:
+      - 某家民营公司连续≥3次成功回收
+      - 蓝箭IPO招股书发布给出财务+订单数据
+      - 行业出现并购/退出，格局从百舸争流→寡头雏形
+    monitor_metrics:
+      - 各公司回收成功率及失败原因收敛性
+      - 蓝箭/星河动力/天兵科技IPO进度及定价
+    revive_condition: null
+
+  - name: 火箭结构件与特种材料
+    suggested_slug: cn-rocket-materials
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 2
+      valuation: 3
+      cycle: 4
+      composite: 3.4
+    tier: watch
+    tier_reason: 供应商分散，可替代性中等，行业beta而非alpha，壁垒弱于发动机和载荷
+    upgrade_triggers:
+      - 发射放量超预期（年>200次）出现供不应求
+      - 出现火箭专用材料突破形成独占期
+      - 某材料供应商与头部火箭公司签5年独家协议
+    monitor_metrics:
+      - 年度发射次数vs结构件供应商产能利用率
+      - 钛合金/高温合金价格走势
+    revive_condition: null
+
+  - name: 商业发射场及地面系统
+    suggested_slug: cn-launch-site
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 3
+      competition: 5
+      valuation: 3
+      cycle: 4
+      composite: 3.2
+    tier: watch
+    tier_reason: 发射场几乎全由央企控制，民营参与环节有限，直接利润池小，更适合作为校验变量
+    upgrade_triggers:
+      - 民营发射场运营政策放开
+      - 地面设备出现高价值民营企业
+      - 发射工位排期利用率>80%触发价格大幅上涨
+    monitor_metrics:
+      - 各发射场工位排期利用率
+      - 新增工位建设计划及进展
+    revive_condition: null
+
+  - name: 卫星遥感运营与应用
+    suggested_slug: cn-satellite-remote-sensing
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 2
+      competition: 1
+      valuation: 2
+      cycle: 3
+      composite: 2.2
+    tier: eliminated
+    tier_reason: 高度分散，长尾竞争，3年CAGR约20%显著低于制造端35-43%，与核心聚焦偏离
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 出现"遥感+AI"杀手级应用形成垄断，可将该应用作为独立arena审视
+
+cluster_tags: [china-commercial-space, china-defense, satellite]

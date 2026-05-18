@@ -1,0 +1,48 @@
+slug: global-ai-compute-infrastructure
+variant: deepseek-v4-pro
+topic_type: industry
+display_name: AI 算力基础设施
+generated: '2026-05-17T22:30:00Z'
+data_freshness: '2026-Q1'
+
+kill_criteria:
+  - id: cloud_capex_annual_guide_cut
+    description: 任一主要云厂商宣布下调 AI CAPEX 年度指引（非季度波动，而是全年指引下修），"军备竞赛持续"核心逻辑终结
+    status: pending
+    check_at: '2026-Q3'
+  - id: nvda_revenue_qoq_decline
+    description: NVDA 单季营收环比下降（非季节性、非供给受限），需求端熄火的明确信号，行业拐点确认
+    status: pending
+    check_at: '2026-Q4'
+  - id: scaling_law_falsified
+    description: OpenAI/Google/Anthropic 下一代模型效果显著不及预期（如 GPT-6 在主流基准提升 <5%），Scaling Law 失效被市场广泛认知
+    status: pending
+    check_at: '2026-Q4'
+  - id: tsmc_production_disruption
+    description: TSMC 生产中断超过 2 周（地震/地缘政治），全球 AI 芯片供给全链条断裂，行业估值重置
+    status: pending
+    check_at: '2026-持续'
+
+signposts:
+  - date: '2026-07'
+    event: 四大云厂商 Q2 2026 季报 CAPEX 指引（AMZN/MSFT/GOOGL/META）
+    bull_signal: 四大 CAPEX 合计增速≥40%，并明确披露 AI 基础设施为主要投向
+    bear_signal: 任一云厂商下调全年 CAPEX 指引或明确提及 AI ROI 压力
+    triggered: null
+  - date: '2026-H2'
+    event: NVDA Rubin/Blackwell Ultra 发布/量产公告
+    bull_signal: 量产时间表符合预期（2026Q3/Q4），性能提升幅度明显，客户预订超额
+    bear_signal: 量产推迟至 2027+ 或性能提升幅度远低于 Blackwell（Scaling Law 硬件层面证伪）
+    triggered: null
+  - date: '2026-持续'
+    event: 美国 AI 芯片出口管制政策更新（BIS 联邦公报）
+    bull_signal: 管制政策维持现状或仅小幅收紧，不影响主要盟友市场准入
+    bear_signal: BIS 新增算力密度阈值管控，或将管制扩展至更多国家/地区，全球市场分裂
+    triggered: null
+  - date: '2026-Q3'
+    event: IEA/BloombergNEF 全球 AI 电力消耗数据更新
+    bull_signal: 数据中心电力需求超预期，验证 AI 算力需求持续爆发，能源约束成为下一个投资机会
+    bear_signal: AI 效率提升导致单位算力能耗大幅下降，需求预测下调，行业整体估值承压
+    triggered: null
+
+cluster_tags: [ai-compute, semiconductor, global-tech]

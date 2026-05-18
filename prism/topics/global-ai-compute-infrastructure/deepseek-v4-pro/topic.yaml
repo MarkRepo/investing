@@ -3,7 +3,7 @@ display_name: AI算力基础设施行业
 type: industry
 created: '2026-05-16T02:35:50.642974+00:00'
 status: active
-stage: done
+stage: 09-arena-shortlist
 parent_topic: null
 monitoring_tier: dormant
 concepts: []
@@ -53,13 +53,14 @@ outputs_state:
     status: fresh
     data_freshness: null
   09_industry_to_arenas:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-17T07:09:04.240098+00:00'
+    status: fresh
     data_freshness: null
 next_actions:
-- 可选：运行 workflow 09 选拔 arena、评审产出、深挖具体方向、记录决策
-- 或进入监控模式，等待路标事件更新
+- '为深挖档创建 arena topic: global-advanced-packaging / global-ai-energy-infrastructure
+  / global-ai-gpu-accelerator'
+- 或对某个 arena 启动深挖研究
 user_todos:
 - ✅ 全部 8 份产出已生成（v1）
 - ''

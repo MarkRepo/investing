@@ -1,0 +1,82 @@
+slug: global-humanoid-roller-screw
+variant: deepseek-v4-pro
+topic_type: arena
+display_name: 行星滚柱丝杠/线性执行器
+generated: '2026-05-17T21:50:00Z'
+data_freshness: '2025-Q4'
+
+companies:
+  - name: 贝斯特
+    ticker: SZSE_300580
+    score: 4.0
+    tier: shortlist
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: A股最纯行星滚柱丝杠proxy，自研磨床+C0级滚珠已交付，若磨床精度达标+拿到整机厂订单则从制造股→成长股重估
+    upgrade_triggers: []
+    quarantine: false
+
+  - name: 恒立液压
+    ticker: SSE_601100
+    score: 3.8
+    tier: shortlist
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: 液压件龙头精密制造底蕴最深，7万套丝杠产能已建，PE 28x中丝杠期权几乎免费
+    upgrade_triggers: []
+    quarantine: false
+
+  - name: 秦川机床
+    ticker: SZSE_000837
+    score: 3.5
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - HJ109/HJ110磨床精度验证通过并获得外部客户订单（证明磨床不只是自用）
+    quarantine: false
+
+  - name: 绿的谐波
+    ticker: SSE_688017
+    score: 3.2
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 年报或投资者交流披露行星丝杠送样/订单有突破性进展（独立于谐波减速器业务）
+    quarantine: false
+
+  - name: 南京工艺
+    ticker: ''
+    score: 2.5
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - IPO或借壳上市
+    quarantine: false
+
+  - name: 北特科技
+    ticker: SSE_603009
+    score: 2.0
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+
+  - name: 五洲新春
+    ticker: SSE_603667
+    score: 1.8
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+
+cluster_tags: [humanoid-robot, china-robotics, precision-manufacturing]

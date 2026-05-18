@@ -1,0 +1,130 @@
+# roadmap.yaml — AI 数据中心能源基础设施
+slug: global-ai-energy-infrastructure
+created: 2026-05-17
+
+learning_track:
+  l1_orientation:
+    - question: "AI 数据中心能源需求的规模和结构？电力消耗从 2025 年 485TWh→2030 年 950TWh 的具体拆分（训练 vs 推理、各地区）？"
+      source_hint: "IEA Electricity 2026（父 topic mat-d8a327）+ 训练知识"
+    - question: "能源供给的三大路径是什么？燃气轮机 / 电网扩容 / SMR 核能各自的市场规模、时间线和参与者？"
+      source_hint: "IEA Electricity 2026 + GE Vernova 10-K + 训练知识"
+    - question: "谁是核心受益者？GE Vernova（燃气轮机）/ Siemens Energy（电网）/ Constellation（核能）/ 各 SMR 公司 的市场定位？"
+      source_hint: "GE Vernova 10-K + Siemens Energy 年报 + Constellation 10-K"
+    - question: "科技公司自建电力 vs 从电网购电的经济性对比？自建燃气轮机的 IRR 和投资回收期？"
+      source_hint: "IEA 2026 + MS 报告中的能源约束部分"
+
+  l2_history:
+    - question: "美国电力基础设施投资的周期性是什么？过去 20 年电网投资的 boom-bust 节奏？"
+      source_hint: "训练知识（美国电力行业历史）"
+    - question: "2011 年福岛后全球核电衰退，现在是真正的核电复兴还是又一次假启动？"
+      source_hint: "训练知识 + NuScale/Constellation 年报"
+    - question: "燃气轮机行业过去 10 年的产能变化？GE Vernova 从 GE 分拆（2024）的背景和战略意义？"
+      source_hint: "GE Vernova 10-K（分拆后的第一份年报）"
+
+  l3_debates:
+    - question: "AI 数据中心的电力需求增长是否被高估了？DeepSeek 效应（效率提升降低能耗）会不会使 950TWh 预测大幅下修？"
+      source_hint: "IEA 2026 + MS 报告中对 DeepSeek 效应的讨论"
+    - question: "SMR 核能是真正的颠覆性技术还是 2030 年之前无法落地的泡沫？NuScale 的 UAMPS 项目取消说明了什么？"
+      source_hint: "NuScale 10-K + 行业新闻"
+    - question: "科技公司自建电力会不会从利好能源设备商变成威胁传统公用事业？——分布式能源对集中式电网的结构性挑战"
+      source_hint: "IEA 2026 + 训练知识"
+    - question: "燃气轮机 vs SMR 的时间线竞争：2027-2030 年谁更可能成为 AI 数据中心的主力电源？"
+      source_hint: "GE Vernova 产能指引 + NuScale/TerraPower 项目进度"
+
+  l4_hunting:
+    - question: "GE Vernova 燃气轮机产能从 20GW(2026)→24GW(2028)，市场是否低估了其定价能力和利润率扩张？"
+      source_hint: "GE Vernova 10-K（订单积压、ASP 趋势、利润率）"
+    - question: "Siemens Energy 电网技术订单积压 420 亿欧元——这个数字意味着多少年的收入可见性？估值是否合理？"
+      source_hint: "Siemens Energy 年报（订单积压、电网业务利润率）"
+    - question: "NuScale 市值 vs 在手订单/项目 pipeline——SMR 是极度高估的泡沫还是极度低估的期权？"
+      source_hint: "NuScale 10-K（项目 pipeline、现金消耗率、监管进展）"
+    - question: "如果 AI CAPEX 在 2027 年见顶回落，能源基础设施投资逻辑是否还能成立？（需求来源从 AI→更广泛的电气化）"
+      source_hint: "IEA 2026 + 训练知识（电气化大趋势是否独立于 AI）"
+
+material_priority:
+  tier1:
+    - title: "IEA Electricity 2026 — Demand Chapter"
+      type: "industry-research"
+      ticker: ""
+      source: "父 topic mat-d8a327 — 已收集，直接复用"
+      why: "数据中心电力消耗 485→950TWh 的核心数据源、$3.9T 累计投资预测、机架功率密度趋势——所有分析的数据基础"
+
+    - title: "GE Vernova 2025 10-K 年报"
+      type: "annual-report"
+      ticker: "GEV"
+      source: "SEC EDGAR"
+      why: "燃气轮机绝对龙头（产能 20GW→24GW），2024 年从 GE 分拆独立上市——第一份完整年报，订单积压/利润率/产能数据是核心"
+
+    - title: "Siemens Energy 2025 年报"
+      type: "annual-report"
+      ticker: "SMNEY"
+      source: "SEC EDGAR (OTC) 或 Siemens Energy IR 官网"
+      why: "电网技术全球龙头，订单积压 420 亿欧元——电网扩容是 AI 数据中心最确定的需求之一"
+
+    - title: "Constellation Energy 2025 10-K"
+      type: "annual-report"
+      ticker: "CEG"
+      source: "SEC EDGAR"
+      why: "美国最大核电运营商，AI 数据中心购电协议（PPA）的最大受益者——核电复兴的一手验证"
+
+    - title: "Morgan Stanley 2026 全球半导体展望（能源约束部分）"
+      type: "sell-side-note"
+      ticker: ""
+      source: "父 topic mat-ed2fae — 已收集，直接复用"
+      why: "能源约束作为 AI CAPEX 的四大增长约束之一、美国数据中心电力供应紧张的具体分析"
+
+  tier2:
+    - title: "NuScale Power 2025 10-K"
+      type: "annual-report"
+      ticker: "SMR"
+      source: "SEC EDGAR"
+      why: "唯一上市的纯 SMR 公司——UAMPS 项目取消后的战略调整、现金消耗率、监管进展是判断 SMR 泡沫的关键"
+
+    - title: "36kr IEA 数据中心电耗分析"
+      type: "web-article"
+      ticker: ""
+      source: "父 topic mat-72ad2b — 已收集，直接复用"
+      why: "中文摘要版的 IEA 关键结论，提供中国视角下的能源约束分析"
+
+    - title: "Microsoft 2025 10-K / 2026 Q3 10-Q"
+      type: "annual-report"
+      ticker: "MSFT"
+      source: "父 topic mat-21381e / mat-2ee004 — 已收集，直接复用"
+      why: "四大云厂商中最大的数据中心建设者——数据中心的电力采购策略和 CAPEX 计划"
+
+    - title: "Amazon 2025 10-K"
+      type: "annual-report"
+      ticker: "AMZN"
+      source: "SEC EDGAR"
+      why: "AWS 是全球最大云厂商，自建数据中心和电力采购的规模最大"
+
+  tier3:
+    - title: "NextEra Energy 2025 10-K"
+      type: "annual-report"
+      ticker: "NEE"
+      source: "SEC EDGAR"
+      why: "美国最大可再生能源运营商，AI 数据中心的清洁能源 PPA 受益者"
+
+    - title: "Quanta Services 2025 10-K"
+      type: "annual-report"
+      ticker: "PWR"
+      source: "SEC EDGAR"
+      why: "美国最大电力基础设施工程承包商——电网扩容的直接施工受益者"
+
+key_risks_to_monitor:
+  - "AI 效率突破（DeepSeek 效应）导致单位算力能耗大幅下降 → 数据中心电力需求预测下调"
+  - "SMR 监管审批延迟或 NuScale 现金耗尽 → SMR 赛道泡沫破裂"
+  - "燃气轮机供过于求（GEV/Siemens/Mitsubishi 同时扩产）→ 利润率压缩"
+  - "美国州级监管否决 GW 级数据中心项目 → 需求断崖"
+  - "天然气价格上涨 → 燃气轮机经济性恶化 vs 可再生能源"
+
+analogies_to_study:
+  - name: "2000-2008 中国电力基建爆发（电网投资 + 火电建设）"
+    analogy: "经济高速增长→电力需求井喷→电网投资 CAGR 15%+ 持续 8 年→设备商订单积压 3-5 年→估值从 10x→30x。AI 数据中心电力需求的爆发性与当时中国工业化电力需求类似。"
+    limitation: "中国是政府主导的基建投资，美国 AI 电力是私营企业需求驱动——政策风险不同。但设备商的受益逻辑相通。"
+  - name: "2011-2021 全球核电衰退（福岛后）"
+    analogy: "福岛事故后全球核电进入 10 年寒冬——Siemens 退出核电、Toshiba/Westinghouse 破产。当前 SMR 核电复兴叙事与 2000 年代初的'核电复兴'（福岛前）高度相似——历史可能重复。"
+    limitation: "SMR 的被动安全设计理论上比传统反应堆安全得多，监管框架（NRC Part 53）也已更新。但'业界说这次不一样'永远是危险信号。"
+  - name: "2015-2020 美国 LNG 出口终端建设潮"
+    analogy: "页岩气革命→LNG 出口终端建设潮→工程承包商（Bechtel/Fluor）和设备商（GE/Baker Hughes）享受多年订单可见性。AI 数据中心电力基础设施建设可能类似——需求确定、周期长、参与者少。"
+    limitation: "LNG 终端是出口导向（全球需求），数据中心电力是内需导向——需求来源不同。但'大型基建项目→设备商多年受益'的逻辑相同。"

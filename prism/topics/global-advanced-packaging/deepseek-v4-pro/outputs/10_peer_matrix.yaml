@@ -1,0 +1,83 @@
+slug: global-advanced-packaging
+variant: deepseek-v4-pro
+topic_type: arena
+display_name: 先进封装 CoWoS/SoIC
+generated: '2026-05-17T16:30:00Z'
+data_freshness: '2026-Q1'
+
+companies:
+  - name: TSMC
+    ticker: TSM
+    score: 4.8
+    tier: shortlist
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: 全球唯一同时掌握3nm/2nm前道+CoWoS/SoIC先进封装的厂商，PE 18x按代工商定价但实为垄断平台
+    upgrade_triggers: []
+    quarantine: false
+
+  - name: ASE Technology
+    ticker: ASX
+    score: 3.2
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - ASE宣布获得NVDA/AVGO/Google的CoWoS认证
+      - 封装业务分拆独立上市
+    quarantine: false
+
+  - name: Samsung Electronics
+    ticker: '005930.KS'
+    score: 2.8
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - Samsung宣布获得NVDA或AMD先进封装订单
+      - 拆分封装业务独立运营
+    quarantine: false
+
+  - name: Amkor Technology
+    ticker: AMKR
+    score: 2.4
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+
+  - name: Intel
+    ticker: INTC
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: true
+
+  - name: 长电科技 JCET
+    ticker: SSE_600584
+    score: 1.9
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+
+  - name: 通富微电 TFME
+    ticker: SZSE_002156
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+
+cluster_tags: [ai-compute, semiconductor, advanced-packaging]

@@ -1,0 +1,73 @@
+slug: global-humanoid-roller-screw
+display_name: 行星滚柱丝杠/线性执行器
+type: arena
+created: '2026-05-17T08:36:28.264887+00:00'
+status: active
+stage: done
+parent_topic: global-humanoid-robot
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 绿的谐波 vs 贝斯特谁先拿到Tier1整机厂供应资格？高精磨床出口管制风险多大？Rollvis/GSA会否主动降价打击国产替代？
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-17T09:58:28.761173+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-17T09:59:07.449197+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-17T10:02:22.974465+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-17T10:02:22.976614+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-17T10:02:22.978543+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-17T10:02:22.980449+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-17T10:04:13.178008+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 2
+    last_updated: '2026-05-17T10:06:31.217557+00:00'
+    status: fresh
+    data_freshness: null
+  10_peer_matrix:
+    version: 1
+    last_updated: '2026-05-17T10:05:48.094875+00:00'
+    status: fresh
+    data_freshness: null
+next_actions:
+- 创建 cn-besite 和 cn-hengli-hydraulic company topic
+- 或说「评审 global-humanoid-roller-screw」启动 critic review
+user_todos:
+- 全部 9 份资料已完成提取：
+- '  3 份年报：贝斯特 | 恒立液压 | 秦川机床'
+- '  6 份研报：丝杠深度 ×3 | 磨床 ×2 | 总论 ×1'
+- '  复用父topic：绿的谐波 (mat-ba9815)'
+- 全部 9 份产出完成（01-08 + 10_peer_matrix）
+- 深研档：贝斯特、恒立液压 → 建议创建 company topic
+- 观察档：秦川机床、绿的谐波、南京工艺
+monitoring:
+  enabled: false
+  cadence: daily

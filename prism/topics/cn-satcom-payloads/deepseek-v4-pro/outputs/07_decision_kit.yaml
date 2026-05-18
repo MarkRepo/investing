@@ -1,0 +1,48 @@
+slug: cn-satcom-payloads
+variant: deepseek-v4-pro
+topic_type: arena
+display_name: 卫星通信载荷
+generated: '2026-05-17T22:30:00Z'
+data_freshness: '2025-Q4'
+
+kill_criteria:
+  - id: starnet_self_develop_payload
+    description: 中国星网宣布自研载荷（任何环节，包括激光终端/转发器/相控阵天线），第三方供应商面临"最大客户变最大竞争对手"
+    status: pending
+    check_at: '2026-Q4'
+  - id: gw_no_launch_2q
+    description: GW/千帆星座连续 2 个季度无发射活动（非一次性技术故障），说明星座建设节奏出现结构性延迟，"2026 放量"预期全部失效
+    status: pending
+    check_at: '2026-Q3'
+  - id: silicon_cmos_rejected
+    description: 硅基 CMOS 相控阵方案被星座运营商正式否定（技术规格明确规定非硅基工艺），降本主路径被封堵，PE 估值至少压缩 50%
+    status: pending
+    check_at: '2026-Q4'
+  - id: chengchang_guobo_revenue_decline
+    description: 铖昌科技/国博电子星载业务连续两个季度收入环比下滑，说明订单节奏或份额出现结构性问题
+    status: pending
+    check_at: '2026-Q3'
+
+signposts:
+  - date: '2026-Q3'
+    event: GW/千帆首批大规模招标结果公告
+    bull_signal: 民营载荷供应商（铖昌/国博等）进入主要供应商名单，份额≥15%
+    bear_signal: 中电科系/国家队获得>80%份额，民营企业未被提及
+    triggered: null
+  - date: '2026-Q3'
+    event: 铖昌科技/国博电子半年报披露星载收入占比
+    bull_signal: 星载收入占比提升至 20%+，毛利率维持≥65%
+    bear_signal: 星载收入环比下滑，毛利率单季环比下降 >5pp
+    triggered: null
+  - date: '2026-Q4'
+    event: 竞争对手臻镭科技 IPO 进展（招股书/上市进程）
+    bull_signal: IPO 延迟或取消，行业竞争格局集中化（利好铖昌/国博）
+    bear_signal: 臻镭科技顺利 IPO 并披露大额卫星互联网订单（竞争格局恶化）
+    triggered: null
+  - date: '2026-持续'
+    event: GW 在轨卫星批量故障/技术路线变更监控
+    bull_signal: 卫星稳定运行，硅基 CMOS 相控阵天线无批量故障，招标按计划推进
+    bear_signal: 在轨卫星因天线/载荷故障失效 >3 起/年，运营商启动技术路线审查
+    triggered: null
+
+cluster_tags: [china-commercial-space, satellite, china-defense]

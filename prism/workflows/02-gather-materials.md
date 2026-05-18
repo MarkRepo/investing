@@ -6,22 +6,37 @@
 
 ---
 
-## Step 1：检查 inbox 有什么新资料
+## Step 1：检查所有来源的新资料
+
+按优先级检查三个来源：
 
 ```bash
+# 1. Topic 专属 inbox（最高优先级，所有文件自动归属本 topic）
+ls prism/topics/{slug}/inbox/   # 如果不存在，创建之
+
+# 2. 全局 manual inbox（需要甄别是否属于本 topic）
 ls prism/inbox/manual/
+
+# 3. 全局 auto inbox（自动下载的资料，需要甄别）
 ls prism/inbox/auto/
 ```
 
-列出所有文件，记录文件名。
+**规则**：`prism/topics/{slug}/inbox/` 下的所有文件**默认属于本 topic，无需甄别直接全部登记**。全局 inbox 的文件仍需判断相关性。
 
 ---
 
 ## Step 2：对每份新资料，判断 source_type
 
-按文件名和内容（如有）判断类型：
+按文件名和内容判断类型。**若文件名无语义信息（如 H3_AP*、纯数字、report.pdf、s_* 随机串），须用 pdftotext 抽取前 3 页确认标题和主题：**
+
+```bash
+pdftotext -l 3 "<file>" - | head -30
+```
+
+类型判断：
 - `sell-side-note`：卖方研报（某机构某日期某标题）
 - `annual-report`：年报 / 半年报 / 10-K / 20-F
+- `industry-research`：第三方行业研究报告
 - `web-article`：网页抓取的新闻/文章
 - `manual-note`：用户自己写的笔记
 - `policy`：政策文件/监管文件
