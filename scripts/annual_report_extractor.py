@@ -120,7 +120,10 @@ def extract(
 
     if not toc:
         log.warning("No TOC found in %s — falling back to full-text extraction", pdf_path.name)
-        return {"全文": _clean_text(doc.get_page_text(range(doc.page_count)))}
+        pages_text = "\n".join(doc[p].get_text("text") for p in range(doc.page_count))
+        full = _clean_text(pages_text)
+        doc.close()
+        return {"全文": full} if full else {}
 
     sections = _build_sections(toc, doc.page_count)
 
@@ -134,8 +137,6 @@ def extract(
                 text = _extract_page_text(doc, sec.start_page, sec.end_page)
                 result[sec.title] = _clean_text(text)
         elif sec.level == 2 and include_subsections and current_l1_included:
-            # Only extract subsections if the parent L1 was included
-            # and the subsection itself isn't in the skip list
             if not any(k in sec.title.replace(" ", "") for k in _SKIP_KEYWORDS):
                 text = _extract_page_text(doc, sec.start_page, sec.end_page)
                 result[f"  {sec.title}"] = _clean_text(text)

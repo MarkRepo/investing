@@ -1,5 +1,7 @@
 # 产出 04 — 隐含预期与观点光谱 (Implied Expectations & View Spectrum)
 
+> **调度提示**：本文件是 04-synthesize 的**内容规范**，不直接 dispatch。实际由 `_shared.md` 描述的单 subagent 顺序生成 01-08 时按本文件填内容。如需单独重生成本份产出，参考 `_shared.md` § Dispatch Prompt 模板调整范围即可。
+
 **定位**：反推市场当前价格隐含了什么预期，然后构建从极度乐观到极度悲观的完整观点谱系
 **训练知识比例**：约 50%（估值框架来自训练，当前数据来自资料）
 **产出文件**：`prism/topics/{slug}/{variant}/outputs/04_implied_expectations.md`

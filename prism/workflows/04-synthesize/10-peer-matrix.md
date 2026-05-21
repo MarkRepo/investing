@@ -22,7 +22,10 @@ print('前置检查通过')
 
 ## Step 2：读取已有产出并提取候选公司
 
-读取以下文件：
+**必读**（决定 Tier 排序的依据，不可跳）：
+- `outputs/_synthesis_brief.md` — K# 校准结论（v0→v1 thesis 强度调整、各 K# 翻盘/支持的 mat_id 清单）。**Tier 排序必须以 brief 的 K# 校准为锚**：被 K# 翻盘的公司不能进 shortlist；K# 强支持的公司应优先进 shortlist。如果 brief 不存在（资料 <10 跳过 brief 生成），在 Step 4 评分备注里写"无 brief 校准，纯 findings 推断"
+
+参考：
 - `outputs/01_business_panorama.md`
 - `outputs/02_cycle_positioning.md`
 - `outputs/03_narrative_ecology.md`
@@ -35,26 +38,50 @@ print('前置检查通过')
 
 ## Step 3：拉取财务 + 行情数据
 
-对每家有 ticker 的公司，调用 wrapper（自动判断本地 DB 是否有数据，无则拉取）：
+**默认走 ticker 模式**（不需要 stub company topic 已建）。每家候选公司只要在 findings 里有股票代码（A 股 / 港股 / 美股），都能直接拉数据：
+
+```bash
+python -c "
+from prism.scripts.financial_data import get_peer_comparison_data_by_tickers
+
+# 列出所有候选 peer：A 股用 SSE/SZSE/BSE，美股用 NASDAQ/NYSE，港股用 HKEX
+peers = [
+    {'key': '利元亨', 'ticker': '688499', 'market': 'SSE'},
+    {'key': '海目星', 'ticker': '688559', 'market': 'SSE'},
+    {'key': '联赢激光', 'ticker': '688518', 'market': 'SSE'},
+    {'key': '先导智能', 'ticker': '300450', 'market': 'SZSE'},
+]
+data = get_peer_comparison_data_by_tickers(peers)
+for k, d in data.items():
+    print(f'{k}:', d)
+"
+```
+
+返回 `{key: {ticker, revenue, gross_margin, roic_3y_avg, debt_to_equity}}`，自动 freshness 检查 + akshare/yfinance 拉取。
+
+如果某家 peer 没有 ticker（如卫蓝/清陶等一级市场公司），用训练知识估算 + 注明"非上市，估算"。
+
+**已注册成 stub company topic 的 peer**（如父级 industry 选拔后建好的 stub），可走 slug 模式：
 
 ```bash
 python -c "
 from prism.scripts.financial_data import get_peer_comparison_data
-from prism.scripts.market_data import get_quote
-
-# 替换为 peer slug 列表
-peers = ['cn-guobo-electronics', 'cn-shanghai-hanxun']
-fin_data = get_peer_comparison_data('{slug}', '{variant}', peers)
-for slug, d in fin_data.items():
-    print(f'{slug}:', d)
-
-# 行情数据（当前 PE）
-q = get_quote('{slug}', '{variant}')
-print(f'当前 PE(TTM): {q.get(\"pe_ttm\")}, PB: {q.get(\"pb\")}')
+data = get_peer_comparison_data('{slug}', '{variant}', ['cn-leadex-300450', 'cn-yuanli-heng-688499'])
+for k, d in data.items():
+    print(k, d)
 "
 ```
 
-如果没有可用数据，注明"训练知识估算"或"数据缺失"。
+行情（当前 PE/PB）走 market_data ticker API：
+
+```bash
+python -c "
+from prism.scripts.market_data import get_quote_by_ticker  # 见下方注释
+# 该 API 不存在则跳过 live PE，用研报里的 PE 表代替
+"
+```
+
+> 注：如果 `market_data.get_quote_by_ticker` 还没实现（截至当前），仍只能走 slug 模式或从研报数据 fallback。后续在批次 3 中补。
 
 需要的指标：
 - 收入规模（亿元，最近财年） — 从 financial_data
@@ -172,6 +199,45 @@ create_topic(
     variant='{variant}',
     parent_topic='{slug}',
     ticker='{ticker}',
+)
+"
+```
+
+### Step 7b：为 stub company 写入继承自父 thesis 的 thesis_v0.md
+
+create_topic 完成后，立即为 stub 写 thesis_v0.md。
+
+1. 读父 arena thesis：
+
+```bash
+python -c "
+from prism.scripts.outputs import extract_killer_questions
+from prism.scripts.topic import read_topic
+parent = read_topic('{slug}', '{variant}')
+cur_v = (parent.get('thesis') or {}).get('current_version', 0)
+ks = extract_killer_questions('{slug}', '{variant}', cur_v)
+print('父 arena K# 数量:', len(ks))
+for k in ks: print(' -', k[:80])
+"
+```
+
+也读 `prism/topics/{slug}/{variant}/outputs/thesis_v{cur_v}.md` 全文 + 该公司在 10_peer_matrix.md 中的"入选理由 / 预期 thesis"段落作为 narrowing 输入。
+
+2. **收窄到公司视角**：从父 arena K# 中挑出与该公司直接相关的 2-4 条（重写为针对本公司的版本，例如「行业是否能跑出 OEM 模式」收窄为「{公司} 能否拿下 OEM 客户份额」）；补 1-2 条公司专属 K#（管理层兑现 / 单一大客户依赖 / 估值锚等）。
+
+3. 用 `prism/templates/thesis_v0.md.tmpl` 五段式写入 `prism/topics/{geo}-{company_slug}/{variant}/outputs/thesis_v0.md`。**核心 thesis ≤120 字**，强度按父 arena 强度 -1 起估。每条 K# 末尾标注「(继承自父 K#)」或「(新增)」。
+
+4. 落入 stub topic.yaml：
+
+```bash
+python -c "
+from prism.scripts.topic import set_thesis
+set_thesis(
+    slug='{geo}-{company_slug}',
+    variant='{variant}',
+    version=0,
+    summary='{≤120字 company 视角 thesis}',
+    stage_set_at='00-init-from-parent',
 )
 "
 ```

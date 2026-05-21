@@ -170,6 +170,7 @@ def create_topic(
         "concepts": concepts or [],
         "scope": scope,
         "outputs_state": {key: dict(_DEFAULT_OUTPUT_STATE) for key in _outputs_for_type(topic_type)},
+        "parent_materials": [],
         "next_actions": ["运行 workflow 01-build-roadmap"],
         "user_todos": [],
         "monitoring": {"enabled": False, "cadence": "daily"},
@@ -191,6 +192,11 @@ def read_topic(slug: str, variant: str) -> dict:
     if "outputs_state" in data:
         for key, state in data["outputs_state"].items():
             state.setdefault("data_freshness", None)
+    if "user_todos" in data and data["user_todos"]:
+        try:
+            data["user_todos"] = [_normalize_todo(t) for t in data["user_todos"]]
+        except Exception:
+            pass
     return data
 
 
@@ -218,7 +224,99 @@ def set_next_actions(slug: str, actions: list[str], variant: str) -> None:
     update_topic(slug, variant, next_actions=actions)
 
 
-def set_user_todos(slug: str, todos: list[str], variant: str) -> None:
+_VALID_INFO_TIERS = ("public", "half_public", "hard")
+_VALID_PRIORITIES = ("P0", "P1", "P2")
+_VALID_TODO_STATUSES = ("pending", "in_progress", "done")
+
+
+def _normalize_todo(item) -> dict:
+    """接受 str 或 dict，规范化为统一 schema。
+
+    str → {task: str, info_tier: 'public', priority: 'P1', addresses: [], status: 'pending'}
+    dict → 校验字段，缺省值补全
+    """
+    if isinstance(item, str):
+        return {
+            "task": item,
+            "priority": "P1",
+            "info_tier": "public",
+            "addresses": [],
+            "source_hint": "",
+            "status": "pending",
+        }
+    if not isinstance(item, dict) or "task" not in item:
+        raise ValueError(f"todo 必须是 str 或含 task 字段的 dict，得到: {item!r}")
+    tier = item.get("info_tier", "public")
+    if tier not in _VALID_INFO_TIERS:
+        raise ValueError(f"info_tier 必须是 {_VALID_INFO_TIERS}，得到: {tier!r}")
+    priority = item.get("priority", "P1")
+    if priority not in _VALID_PRIORITIES:
+        raise ValueError(f"priority 必须是 {_VALID_PRIORITIES}，得到: {priority!r}")
+    status = item.get("status", "pending")
+    if status not in _VALID_TODO_STATUSES:
+        raise ValueError(f"status 必须是 {_VALID_TODO_STATUSES}，得到: {status!r}")
+    addresses = item.get("addresses", [])
+    if not isinstance(addresses, list):
+        raise ValueError(f"addresses 必须是 list，得到: {addresses!r}")
+    return {
+        "task": item["task"],
+        "priority": priority,
+        "info_tier": tier,
+        "addresses": addresses,
+        "source_hint": item.get("source_hint", ""),
+        "status": status,
+    }
+
+
+def set_user_todos(slug: str, todos: list, variant: str) -> None:
+    """接受 list[str | dict]，每项规范化为统一 schema 后写入。"""
+    normalized = [_normalize_todo(t) for t in todos]
+    update_topic(slug, variant, user_todos=normalized)
+
+
+def thesis_coverage(slug: str, variant: str, expected_keys: list[str]) -> dict:
+    """对给定的一组期望 keys（如 K1..K5），统计每个 key 被多少 todo 攻打。
+
+    返回：{
+        'by_key': {'K1': [todo, ...], 'K2': [], ...},  # 每个 key 对应的 todo 列表（按出现顺序）
+        'uncovered': ['K3', 'K5'],                      # 没有任何 todo 引用的 key
+        'covered': ['K1', 'K2', 'K4'],
+        'coverage_pct': 60,
+    }
+    """
+    data = read_topic(slug, variant)
+    todos = data.get("user_todos", []) or []
+    by_key: dict[str, list] = {k: [] for k in expected_keys}
+    for t in todos:
+        if not isinstance(t, dict):
+            continue
+        for addr in t.get("addresses", []) or []:
+            if addr in by_key:
+                by_key[addr].append(t)
+    uncovered = [k for k in expected_keys if not by_key[k]]
+    covered = [k for k in expected_keys if by_key[k]]
+    pct = round(100 * len(covered) / len(expected_keys)) if expected_keys else 0
+    return {
+        "by_key": by_key,
+        "uncovered": uncovered,
+        "covered": covered,
+        "coverage_pct": pct,
+    }
+
+
+def update_user_todo_status(slug: str, variant: str, task_substring: str, status: str) -> None:
+    """根据 task 字段子串匹配，更新对应 todo 的 status。"""
+    if status not in _VALID_TODO_STATUSES:
+        raise ValueError(f"status 必须是 {_VALID_TODO_STATUSES}")
+    data = read_topic(slug, variant)
+    todos = data.get("user_todos", [])
+    hit = False
+    for t in todos:
+        if isinstance(t, dict) and task_substring in t.get("task", ""):
+            t["status"] = status
+            hit = True
+    if not hit:
+        raise ValueError(f"未找到包含 {task_substring!r} 的 todo")
     update_topic(slug, variant, user_todos=todos)
 
 
@@ -230,6 +328,25 @@ def set_monitoring_tier(slug: str, tier: str, variant: str) -> None:
     if tier not in ("deep", "watch", "dormant"):
         raise ValueError(f"Invalid tier: {tier}, must be deep/watch/dormant")
     update_topic(slug, variant, monitoring_tier=tier)
+
+
+def set_thesis(slug: str, variant: str, version: int, summary: str, stage_set_at: str) -> None:
+    """记录 LLM 在特定阶段的 thesis 表态。完整 markdown 写到 thesis_v{N}.md。
+
+    summary: 一句话核心 thesis（≤120 字），用于 yaml/web 列表展示
+    stage_set_at: thesis 表态时的研究阶段（如 01-roadmap-pending、04-synthesizing）
+    """
+    data = read_topic(slug, variant)
+    thesis = data.setdefault("thesis", {"current_version": None, "last_updated": None, "history": []})
+    thesis["current_version"] = version
+    thesis["last_updated"] = _now_iso()
+    thesis["history"].append({
+        "version": version,
+        "stage_set_at": stage_set_at,
+        "set_at": _now_iso(),
+        "summary": summary,
+    })
+    _write_yaml(_topic_path(slug, variant), data)
 
 
 def set_data_freshness(slug: str, output_key: str, freshness: str, variant: str) -> None:
@@ -305,6 +422,59 @@ def list_parent_materials(slug: str, variant: str) -> list[str]:
     if parent_dir and parent_dir.is_dir():
         return sorted([p.name for p in parent_dir.iterdir() if p.is_file()])
     return []
+
+
+def set_parent_materials(slug: str, variant: str, items: list[dict]) -> None:
+    """Set parent_materials field on topic.
+
+    Each item: {parent_slug, parent_variant (optional, defaults to current),
+    mat_id, addresses (list[str], optional), note (optional)}.
+    Idempotent: full replacement.
+    """
+    path = _topic_path(slug, variant)
+    data = _read_yaml(path)
+    cleaned = []
+    for it in items:
+        entry = {
+            "parent_slug": it["parent_slug"],
+            "parent_variant": it.get("parent_variant", variant),
+            "mat_id": it["mat_id"],
+        }
+        if it.get("addresses"):
+            entry["addresses"] = list(it["addresses"])
+        if it.get("note"):
+            entry["note"] = it["note"]
+        cleaned.append(entry)
+    data["parent_materials"] = cleaned
+    _write_yaml(path, data)
+
+
+def add_parent_material(
+    slug: str,
+    variant: str,
+    parent_slug: str,
+    mat_id: str,
+    addresses: list[str] | None = None,
+    note: str | None = None,
+    parent_variant: str | None = None,
+) -> None:
+    """Append a single parent material reference (idempotent on mat_id)."""
+    path = _topic_path(slug, variant)
+    data = _read_yaml(path)
+    items = data.get("parent_materials") or []
+    items = [x for x in items if x.get("mat_id") != mat_id]
+    entry = {
+        "parent_slug": parent_slug,
+        "parent_variant": parent_variant or variant,
+        "mat_id": mat_id,
+    }
+    if addresses:
+        entry["addresses"] = list(addresses)
+    if note:
+        entry["note"] = note
+    items.append(entry)
+    data["parent_materials"] = items
+    _write_yaml(path, data)
 
 
 def find_child_topics(parent_slug: str, variant: str | None = None) -> list[dict]:

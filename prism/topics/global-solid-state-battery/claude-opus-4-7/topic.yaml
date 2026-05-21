@@ -1,0 +1,96 @@
+slug: global-solid-state-battery
+display_name: 全球固态电池行业
+type: industry
+created: '2026-05-18T12:38:59.803752+00:00'
+status: active
+stage: done
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 全球固态电池产业链中，哪些环节/公司在2026-2030年最值得布局，技术路线终局如何，量产时间窗口和估计何时被price-in？
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-19T14:30:10.465892+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-19T14:30:10.480500+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-19T14:30:10.494032+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-19T14:30:10.510612+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-19T14:30:10.524975+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-19T14:30:10.537725+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-19T14:30:10.551729+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-19T14:30:10.565630+00:00'
+    status: fresh
+    data_freshness: null
+  09_industry_to_arenas:
+    version: 1
+    last_updated: '2026-05-19T14:59:28.675484+00:00'
+    status: fresh
+    data_freshness: null
+next_actions:
+- ✅ industry topic 完成全流程：8 份产出 + 09 arena 选拔 + 3 个 stub arena 已建
+- 3 个深挖档 stub arena 准备就绪，可逐个 prism 推进：
+- '  • global-ssb-equipment（设备链）'
+- '  • global-high-nickel-cathode（高镍正极出海）'
+- '  • global-ssb-electrolyte（固态电解质硬卡点）'
+- 父 topic 进入 done 状态，转入日常监控（按 08_living_feed 5 大 K 跟踪）
+user_todos:
+- task: 全 9 份产出完成 + 3 个深挖 arena topic 已建
+  priority: P0
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+- task: 开始推进 global-ssb-equipment arena（说「prism 推进 global-ssb-equipment」）
+  priority: P0
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 按 08_living_feed K1-K5 监控触发器进入日常 monitor
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+thesis:
+  current_version: 0
+  last_updated: '2026-05-19T10:14:00.218882+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-19T10:14:00.218995+00:00'
+    summary: 看多卖铲人(设备+关键材料)，看空已price-in的纯电芯叙事股；强度6/10，分化看法

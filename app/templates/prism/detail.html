@@ -31,6 +31,115 @@
 
 <p class="scope-question">研究问题：<em>{{ topic.scope.question }}</em></p>
 
+{% if topic.thesis and topic.thesis.current_version is not none %}
+{% set _cur_v = topic.thesis.current_version %}
+{% set _cur_entry = (topic.thesis.history | selectattr('version', 'equalto', _cur_v) | list | last) if topic.thesis.history else None %}
+<aside class="thesis-card">
+  <div class="thesis-card-head">
+    <span class="thesis-badge">📍 THESIS v{{ _cur_v }}</span>
+    {% if _cur_entry %}<span class="hint thesis-stage">@ {{ _cur_entry.stage_set_at }} · {{ (_cur_entry.set_at or '')[:10] }}</span>{% endif %}
+    <a class="thesis-link" href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ _cur_v }}">查看完整 thesis →</a>
+  </div>
+  {% if _cur_entry %}
+  <p class="thesis-summary">{{ _cur_entry.summary }}</p>
+  {% endif %}
+  {% if coverage %}
+  <div class="coverage-strip">
+    <span class="cov-label">🎯 Killer Question 火力覆盖 {{ coverage.coverage_pct }}%：</span>
+    {% for k in coverage.all_keys %}
+      {% set _n = coverage.by_key[k] | length %}
+      {% if _n > 0 %}
+        <a class="cov-chip cov-ok" href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ _cur_v }}#{{ k }}" title="{{ _n }} 个 todo 攻打">{{ k }}<span class="cov-count">×{{ _n }}</span></a>
+      {% else %}
+        <span class="cov-chip cov-gap" title="无 todo 攻打——补 todo 或在 thesis 中明确不验证">{{ k }}<span class="cov-count">✗</span></span>
+      {% endif %}
+    {% endfor %}
+    {% if coverage.uncovered %}<span class="cov-warn">⚠ {{ coverage.uncovered | length }} 个 Killer Question 无 todo 攻打</span>{% endif %}
+  </div>
+  {% endif %}
+  {% if roadmap_coverage and roadmap_coverage.roadmap_exists %}
+  <div class="roadmap-cov-strip">
+    <span class="cov-label">🗺 Roadmap 闭环校验：</span>
+    <span class="rc-section">
+      L4
+      {% if roadmap_coverage.uncovered_in_l4 %}
+        <span class="rc-bad" title="未覆盖: {{ roadmap_coverage.uncovered_in_l4 | join(', ') }}">✗ {{ roadmap_coverage.l4_covered | length }}/{{ roadmap_coverage.thesis_ks | length }}</span>
+      {% else %}
+        <span class="rc-ok">✓ {{ roadmap_coverage.l4_covered | length }}/{{ roadmap_coverage.thesis_ks | length }}</span>
+      {% endif %}
+    </span>
+    <span class="rc-section">
+      Material
+      {% if roadmap_coverage.uncovered_in_material %}
+        <span class="rc-bad" title="未覆盖: {{ roadmap_coverage.uncovered_in_material | join(', ') }}">✗ {{ roadmap_coverage.material_covered | length }}/{{ roadmap_coverage.thesis_ks | length }}</span>
+      {% else %}
+        <span class="rc-ok">✓ {{ roadmap_coverage.material_covered | length }}/{{ roadmap_coverage.thesis_ks | length }}</span>
+      {% endif %}
+    </span>
+    {% if roadmap_coverage.ok %}
+      <span class="rc-badge rc-validated">VALIDATED</span>
+    {% else %}
+      <span class="rc-badge rc-broken">闭环未通过</span>
+    {% endif %}
+  </div>
+  {% elif roadmap_coverage and not roadmap_coverage.roadmap_exists %}
+  <div class="roadmap-cov-strip">
+    <span class="hint">🗺 Roadmap 未生成 — 运行 workflow 01 后会显示闭环校验</span>
+  </div>
+  {% endif %}
+  {% if manifest_coverage and manifest_coverage.manifest_exists and manifest_coverage.thesis_ks %}
+  <div class="manifest-cov-strip">
+    <span class="cov-label">📚 实际收集覆盖 {{ manifest_coverage.coverage_pct }}%：</span>
+    {% for k in manifest_coverage.thesis_ks %}
+      {% set _n = manifest_coverage.by_key[k] | length %}
+      {% if _n > 0 %}
+        <span class="cov-chip cov-ok" title="{{ _n }} 份材料攻打">{{ k }}<span class="cov-count">×{{ _n }}</span></span>
+      {% else %}
+        <span class="cov-chip cov-gap" title="无材料攻打——roadmap 写了但没真的收">{{ k }}<span class="cov-count">✗</span></span>
+      {% endif %}
+    {% endfor %}
+    {% if manifest_coverage.uncovered %}
+      <span class="cov-warn" title="计划 vs 现实差距">⚠ {{ manifest_coverage.uncovered | length }} 个 K# 计划已规划但实际未收集</span>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% if k_status %}
+  {% set _ksupp = k_status.values() | select('equalto', 'supported') | list | length %}
+  {% set _kref = k_status.values() | select('equalto', 'refuted') | list | length %}
+  {% set _kunv = k_status.values() | select('equalto', 'unverified') | list | length %}
+  {% set _ktot = k_status | length %}
+  <div class="k-progress-strip">
+    <span class="cov-label">🔬 K# 验证进度：</span>
+    {% if _ksupp %}<span class="k-prog-chip k-supported">{{ _ksupp }} 已支持</span>{% endif %}
+    {% if _kref %}<span class="k-prog-chip k-refuted">{{ _kref }} 已反驳</span>{% endif %}
+    {% if _kunv %}<span class="k-prog-chip k-unverified">{{ _kunv }} 待验证</span>{% endif %}
+    <span class="k-prog-bar" title="{{ _ksupp }} 支持 / {{ _kref }} 反驳 / {{ _kunv }} 待验证">
+      {% if _ksupp %}<span class="pb-supp" style="width:{{ (100 * _ksupp / _ktot) | round }}%"></span>{% endif %}
+      {% if _kref %}<span class="pb-ref" style="width:{{ (100 * _kref / _ktot) | round }}%"></span>{% endif %}
+      {% if _kunv %}<span class="pb-unv" style="width:{{ (100 * _kunv / _ktot) | round }}%"></span>{% endif %}
+    </span>
+  </div>
+  {% endif %}
+  {% if thesis_versions and thesis_versions | length > 1 %}
+  <div class="thesis-history-strip hint">
+    历史版本：
+    {% for v in thesis_versions %}
+      {% if v == _cur_v %}
+        <span class="v-current">v{{ v }}</span>
+      {% else %}
+        <a href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ v }}">v{{ v }}</a>
+      {% endif %}
+      {% if not loop.last %}<span class="sep">·</span>{% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</aside>
+{% elif thesis_versions %}
+<aside class="thesis-card thesis-card-warn">
+  <span class="hint">⚠ 发现 thesis 文件但未在 topic.yaml 登记：{% for v in thesis_versions %}<a href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ v }}">v{{ v }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</span>
+</aside>
+{% endif %}
+
 {% set sc = topic.scope %}
 {% set prism_ticker = sc.get('ticker', '') %}
 {% set prism_market = sc.get('market', '') %}
@@ -99,9 +208,29 @@
     <section>
       <h3>你需要做的事</h3>
       {% if topic.user_todos %}
-      <ul>
+      {% set _tier_labels = {'public': ('公开', 'tier-public'), 'half_public': ('半公开', 'tier-half'), 'hard': ('难获取', 'tier-hard')} %}
+      <ul class="todo-list">
         {% for todo in topic.user_todos %}
-        <li>{{ todo }}</li>
+        {% set _tier = _tier_labels.get(todo.info_tier, ('—', 'tier-public')) %}
+        <li class="todo-item todo-{{ todo.status }}">
+          <div class="todo-meta">
+            <span class="chip chip-{{ todo.priority | lower }}">{{ todo.priority }}</span>
+            <span class="chip {{ _tier[1] }}" title="信息差等级">{{ _tier[0] }}</span>
+            {% if todo.addresses %}
+              {% for a in todo.addresses %}
+                {% if a.startswith('K') and topic.thesis and topic.thesis.current_version is not none %}
+                  <a class="chip chip-addr" href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ topic.thesis.current_version }}" title="对应 Killer Question {{ a }}">{{ a }}</a>
+                {% else %}
+                  <span class="chip chip-addr">{{ a }}</span>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if todo.status == 'done' %}<span class="chip chip-done">✓ 已完成</span>{% endif %}
+            {% if todo.status == 'in_progress' %}<span class="chip chip-prog">进行中</span>{% endif %}
+          </div>
+          <div class="todo-task">{{ todo.task }}</div>
+          {% if todo.source_hint %}<div class="todo-hint hint">📍 {{ todo.source_hint }}</div>{% endif %}
+        </li>
         {% endfor %}
       </ul>
       {% else %}
@@ -111,18 +240,43 @@
 
     <section>
       <h3>资料库</h3>
-      <p>共 {{ mat_counts.total }} 份 · 已处理 {{ mat_counts.processed }} · 未处理 {{ mat_counts.unprocessed }}</p>
+      <p>自有 {{ mat_counts.total }} 份 · 已处理 {{ mat_counts.processed }} · 未处理 {{ mat_counts.unprocessed }}{% if mat_counts.parent_total %} · 复用父级 {{ mat_counts.parent_total }} 份{% endif %}</p>
+      {% if mineru_counts.get('needs', 0) > 0 or mineru_counts.get('failed', 0) > 0 %}
+      <p class="mineru-warn">
+        ⏳ {{ mineru_counts.get('needs', 0) }} 份 PDF 待 mineru 转换
+        {% if mineru_counts.get('failed', 0) %} · ❌ {{ mineru_counts.failed }} 失败{% endif %}
+        {% if mineru_counts.get('done', 0) %} · ✓ {{ mineru_counts.done }} 已转{% endif %}
+      </p>
+      {% elif mineru_counts.get('done', 0) > 0 %}
+      <p class="mineru-ok">✓ {{ mineru_counts.done }} 份 PDF 已 mineru 转换</p>
+      {% endif %}
       {% if manifest.materials %}
-      <ul class="material-list">
-        {% for mat in manifest.materials %}
-        <li>
-          <span class="{% if mat.processed %}processed{% else %}unprocessed{% endif %}">
-            {{ mat.filename }}
-          </span>
-          <span class="hint"> · {{ mat.source_type }}</span>
-        </li>
-        {% endfor %}
-      </ul>
+      {% set _source_groups = manifest.materials | groupby('source_type') %}
+      {% for source_type, mats in _source_groups %}
+      <details class="mat-group" open>
+        <summary class="mat-group-head">
+          <span class="mat-group-label">{{ source_type or '未分类' }}</span>
+          <span class="hint"> · {{ mats | list | length }} 份</span>
+        </summary>
+        <ul class="material-list">
+          {% for mat in mats %}
+          <li>
+            <span class="{% if mat.processed %}processed{% else %}unprocessed{% endif %}">
+              {{ mat.filename }}
+            </span>
+            {% if mat.mineru_state == 'needs' %}<span class="mn-chip mn-needs">mineru?</span>
+            {% elif mat.mineru_state == 'done' %}<span class="mn-chip mn-done">md ✓</span>
+            {% elif mat.mineru_state == 'failed' %}<span class="mn-chip mn-failed">❌</span>
+            {% elif mat.mineru_state == 'in_progress' %}<span class="mn-chip mn-prog">⏳</span>
+            {% endif %}
+            {% if mat.addresses %}
+              {% for a in mat.addresses %}<span class="mat-addr">{{ a }}</span>{% endfor %}
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </details>
+      {% endfor %}
       {% else %}
       <p class="hint">暂无资料。运行 workflow 02-gather-materials 后自动更新。</p>
       {% endif %}
@@ -185,5 +339,84 @@
     border-radius: 4px; text-decoration: none;
   }
   .btn-nav:hover { background: #dce6fb; }
+  .thesis-card {
+    background: #fffbf0; border: 1px solid #f0d896; border-left: 4px solid #d29922;
+    padding: 0.8em 1em; border-radius: 4px; margin: 0.5em 0 1.5em;
+  }
+  .thesis-card-warn { background: #fdf2f2; border-color: #f5c2c2; border-left-color: #c93434; }
+  .thesis-card-head { display: flex; align-items: center; gap: 0.8em; flex-wrap: wrap; margin-bottom: 0.4em; }
+  .thesis-badge {
+    font-size: 0.78em; font-weight: 700; letter-spacing: 0.05em;
+    background: #d29922; color: #fff; padding: 0.15em 0.55em; border-radius: 3px;
+  }
+  .thesis-stage { font-family: monospace; }
+  .thesis-link { font-size: 0.85em; color: #b45309; margin-left: auto; }
+  .thesis-link:hover { text-decoration: underline; }
+  .thesis-summary { margin: 0.3em 0; color: #333; font-size: 0.95em; line-height: 1.5; }
+  .thesis-history-strip { margin-top: 0.5em; font-size: 0.82em; }
+  .thesis-history-strip .v-current { font-weight: 700; color: #b45309; }
+  .thesis-history-strip .sep { color: #ccc; margin: 0 0.3em; }
+  .todo-list { list-style: none; padding: 0; margin: 0.3em 0; }
+  .todo-item { padding: 0.5em 0; border-bottom: 1px dashed #eee; }
+  .todo-item:last-child { border-bottom: none; }
+  .todo-done { opacity: 0.5; }
+  .todo-done .todo-task { text-decoration: line-through; }
+  .todo-meta { display: flex; flex-wrap: wrap; gap: 0.3em; margin-bottom: 0.3em; align-items: center; }
+  .todo-task { font-size: 0.9em; color: #222; line-height: 1.4; }
+  .todo-hint { margin-top: 0.2em; font-size: 0.78em; }
+  .chip {
+    display: inline-block; font-size: 0.7em; padding: 0.1em 0.45em;
+    border-radius: 3px; font-weight: 600; letter-spacing: 0.02em;
+    line-height: 1.3; text-decoration: none;
+  }
+  .chip-p0 { background: #d93025; color: #fff; }
+  .chip-p1 { background: #f59e0b; color: #fff; }
+  .chip-p2 { background: #888; color: #fff; }
+  .tier-public { background: #e6f4ea; color: #2d7a3a; border: 1px solid #b7dfc1; }
+  .tier-half { background: #fff3e0; color: #b45309; border: 1px solid #f0d896; }
+  .tier-hard { background: #fdecea; color: #c93434; border: 1px solid #f5c2c2; }
+  .chip-addr { background: #f0f4ff; color: #2a5db0; border: 1px solid #b8cfe8; font-family: monospace; }
+  a.chip-addr:hover { background: #dce6fb; }
+  .chip-done { background: #e6f4ea; color: #2d7a3a; }
+  .chip-prog { background: #fff3e0; color: #b45309; }
+  .coverage-strip { margin-top: 0.6em; padding-top: 0.5em; border-top: 1px dashed #f0d896; display: flex; flex-wrap: wrap; gap: 0.35em; align-items: center; font-size: 0.85em; }
+  .cov-label { color: #555; font-weight: 600; margin-right: 0.3em; }
+  .cov-chip { display: inline-flex; align-items: center; gap: 0.25em; font-size: 0.78em; padding: 0.15em 0.5em; border-radius: 3px; font-family: monospace; font-weight: 600; text-decoration: none; }
+  .cov-chip.cov-ok { background: #e6f4ea; color: #2d7a3a; border: 1px solid #b7dfc1; }
+  .cov-chip.cov-ok:hover { background: #c8e6cf; }
+  .cov-chip.cov-gap { background: #fdecea; color: #c93434; border: 1px solid #f5c2c2; }
+  .cov-count { font-size: 0.85em; opacity: 0.75; }
+  .cov-warn { margin-left: 0.5em; color: #c93434; font-weight: 600; }
+  .roadmap-cov-strip { margin-top: 0.4em; padding-top: 0.4em; border-top: 1px dashed #f0d896; display: flex; flex-wrap: wrap; gap: 0.8em; align-items: center; font-size: 0.85em; }
+  .rc-section { color: #555; font-size: 0.85em; }
+  .rc-ok { color: #2d7a3a; font-weight: 600; font-family: monospace; }
+  .rc-bad { color: #c93434; font-weight: 600; font-family: monospace; cursor: help; }
+  .rc-badge { font-size: 0.7em; padding: 0.1em 0.5em; border-radius: 3px; font-weight: 700; letter-spacing: 0.05em; margin-left: auto; }
+  .rc-validated { background: #2d7a3a; color: #fff; }
+  .rc-broken { background: #c93434; color: #fff; }
+  .manifest-cov-strip { margin-top: 0.4em; padding-top: 0.4em; border-top: 1px dashed #f0d896; display: flex; flex-wrap: wrap; gap: 0.35em; align-items: center; font-size: 0.85em; }
+  .mineru-warn { color: #b45309; font-size: 0.82em; margin: 0.3em 0; }
+  .mineru-ok { color: #2d7a3a; font-size: 0.82em; margin: 0.3em 0; }
+  .mn-chip { font-size: 0.7em; padding: 0.05em 0.35em; border-radius: 3px; font-weight: 600; margin-left: 0.3em; font-family: monospace; }
+  .mn-needs { background: #fff3e0; color: #b45309; border: 1px solid #f0d896; }
+  .mn-done { background: #e6f4ea; color: #2d7a3a; border: 1px solid #b7dfc1; }
+  .mn-failed { background: #fdecea; color: #c93434; }
+  .mn-prog { background: #f0f4ff; color: #2a5db0; }
+  .mat-addr { font-size: 0.68em; padding: 0.05em 0.3em; background: #f0f4ff; color: #2a5db0; border: 1px solid #b8cfe8; border-radius: 3px; margin-left: 0.2em; font-family: monospace; font-weight: 600; }
+  .mat-group { margin: 0.5em 0; }
+  .mat-group-head { cursor: pointer; padding: 0.25em 0; font-size: 0.85em; color: #444; user-select: none; }
+  .mat-group-head:hover { color: #111; }
+  .mat-group-label { font-weight: 600; color: #2a5db0; font-family: monospace; font-size: 0.92em; }
+  .mat-group .material-list { padding-left: 1.5em; margin: 0.3em 0; }
+  .k-progress-strip { margin-top: 0.4em; padding-top: 0.4em; border-top: 1px dashed #f0d896; display: flex; flex-wrap: wrap; gap: 0.35em; align-items: center; font-size: 0.85em; }
+  .k-prog-chip { display: inline-flex; align-items: center; gap: 0.25em; font-size: 0.78em; padding: 0.15em 0.5em; border-radius: 3px; font-family: monospace; font-weight: 600; }
+  .k-supported { background: #e6f4ea; color: #2d7a3a; border: 1px solid #b7dfc1; }
+  .k-refuted { background: #fdecea; color: #c93434; border: 1px solid #f5c2c2; }
+  .k-unverified { background: #f1f5f9; color: #555; border: 1px solid #cbd5e1; }
+  .k-prog-bar { display: inline-flex; height: 8px; width: 180px; border-radius: 4px; overflow: hidden; background: #f1f5f9; border: 1px solid #cbd5e1; margin-left: 0.3em; }
+  .k-prog-bar > span { display: inline-block; height: 100%; }
+  .k-prog-bar .pb-supp { background: #4a9d5e; }
+  .k-prog-bar .pb-ref { background: #d04a4a; }
+  .k-prog-bar .pb-unv { background: #d4d4d4; }
 </style>
 {% endblock %}

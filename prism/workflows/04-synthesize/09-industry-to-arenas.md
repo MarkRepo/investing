@@ -57,7 +57,7 @@ print('前置检查通过')
 3. **淘汰档**：综合评分 ≤ 2，或有硬伤
 
 对每一档：
-- **深挖档**：写出入选理由（≤100字）+ 预期关键洞见 + 预填 L4 狩猎问题（2-3 个）+ 建议的 arena slug
+- **深挖档**：写出入选理由（≤100字）+ 预期关键洞见 + 预填 L4 狩猎问题（2-3 个）+ 建议的 arena slug + **必填 upgrade_triggers / monitor_metrics**（深挖期间也需要监控触发器；可写"已在 stub topic L1-L4 跟踪，无父级独立触发"但不能留空 list）
 - **观察档**：写出暂不深挖理由 + 升档触发条件 + 监控指标 1-2 个
 - **淘汰档**：写出淘汰理由（≤50字）+ 复活条件（如有）
 
@@ -104,6 +104,47 @@ create_topic(
 "
 ```
 
+### Step 6b：为 stub 写入继承自父 thesis 的 thesis_v0.md
+
+create_topic 完成后，**立即**为 stub 写 thesis_v0.md，省去用户后续推进时再走 00-research-topic 的麻烦。
+
+1. 读父 topic 当前 thesis：
+
+```bash
+python -c "
+from prism.scripts.outputs import extract_killer_questions
+from prism.scripts.topic import read_topic
+parent = read_topic('{slug}', '{variant}')
+cur_v = (parent.get('thesis') or {}).get('current_version', 0)
+ks = extract_killer_questions('{slug}', '{variant}', cur_v)
+print('父级 K# 数量:', len(ks))
+for k in ks: print(' -', k[:80])
+"
+```
+
+也读 `prism/topics/{slug}/{variant}/outputs/thesis_v{cur_v}.md` 全文用作 narrowing 参考。
+
+2. 在对话里**收窄到 arena 视角**：从父 K# 中挑出与该 arena 直接相关的 2-4 条，重写措辞使其聚焦本 arena（公司/路线/客户）；如父 K# 不足，补 1-2 条 arena 专属的待验证假设。
+
+3. 用 `prism/templates/thesis_v0.md.tmpl` 五段式（核心 thesis / 强度评分 / 支持理由 / 反方观点 / K1-K5）写入 stub 的 `prism/topics/{geo}-{arena_slug}/{variant}/outputs/thesis_v0.md`。**核心 thesis ≤120 字**，强度先按父级强度 -1 起估（继承可信度低于亲自验证）。每条 K# 末尾标注「(继承自父 K#)」或「(新增)」。
+
+4. 落入 stub 的 topic.yaml：
+
+```bash
+python -c "
+from prism.scripts.topic import set_thesis
+set_thesis(
+    slug='{geo}-{arena_slug}',
+    variant='{variant}',
+    version=0,
+    summary='{≤120字 arena 视角 thesis}',
+    stage_set_at='00-init-from-parent',
+)
+"
+```
+
+> 跳过条件：父 thesis 完全不可拆分到 arena 维度（极少见）。此时 stub 仍创建，但不写 thesis_v0，由用户日后手动走 00-research-topic。
+
 ---
 
 ## Step 6.5：生成 sidecar YAML（machine-readable 快照）
@@ -134,8 +175,8 @@ arenas:
       composite: {float}        # 综合加权分
     tier: deep                  # deep / watch / eliminated
     tier_reason: {入选/暂不/淘汰理由，一句话}
-    upgrade_triggers: []        # watch 档：升档触发条件列表
-    monitor_metrics: []         # watch 档：监控指标列表
+    upgrade_triggers: []        # deep/watch 档必填非空；deep 可写 ["已在 stub topic L1-L4 跟踪"]
+    monitor_metrics: []         # deep/watch 档必填非空；同上
     revive_condition: null      # eliminated 档：复活条件
   # 追加更多 arena...
 

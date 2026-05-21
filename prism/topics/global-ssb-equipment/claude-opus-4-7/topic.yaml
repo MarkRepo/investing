@@ -1,0 +1,176 @@
+slug: global-ssb-equipment
+display_name: 全球固态电池设备链
+type: arena
+created: '2026-05-19T15:00:35.792146+00:00'
+status: active
+stage: done
+parent_topic: global-solid-state-battery
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: global
+  question: 固态电池设备链（先导/利元亨/海目星/纳科诺尔/联赢/宏工）作为路线无关"卖铲人"的真实订单弹性如何，单 GWh 价值量 4-5x 跃升能否在
+    2026-2027 招标元年兑现到收入？
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-20T04:06:07.774660+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-20T04:06:07.781258+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-20T04:06:07.786851+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-20T04:06:07.792323+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-20T04:06:07.797738+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-20T04:06:07.803171+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-20T04:06:07.808679+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-20T04:06:07.814129+00:00'
+    status: fresh
+    data_freshness: null
+  10_peer_matrix:
+    version: 1
+    last_updated: '2026-05-20T06:04:06.413069+00:00'
+    status: fresh
+    data_freshness: null
+next_actions:
+- 3 家 shortlist company stub topic 已创建：cn-leadex-300450 / cn-yuanli-heng-688499 /
+  cn-lianying-laser-688518
+- 可选：依次推进 cn-leadex-300450（Tier 1 龙头优先）→ workflow 00-thesis_v0
+- 或进入日常监控（按 08_living_feed catalyst 时点）
+user_todos:
+- task: workflow 10 peer-matrix 完成（7 公司，shortlist 3/watch 3/eliminated 1）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K5
+  source_hint: ''
+  status: done
+- task: 可选：创建 3 家 shortlist company stub topic（先导/利元亨/联赢）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K5
+  source_hint: ''
+  status: pending
+- task: 2026-08 跟踪：5 家设备厂 H1 报（K5 持续性 + 海目星账龄）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: ''
+  status: pending
+- task: 2026-Q3 跟踪：CATL 凝聚态首批交付设备供应商名单 + 头部电芯厂量产线招标
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: ''
+  status: pending
+- task: 2026-06 起：半固态车型月销跟踪（蔚来 ET9 / 智己 LS9 / 汉 L）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: ''
+  status: pending
+- task: 2027-Q1：设备厂年报披露固态订单/产能（K2 第一次量化窗口）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: ''
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+thesis:
+  current_version: 0
+  last_updated: '2026-05-20T03:19:21.543705+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-20T03:19:21.543814+00:00'
+    summary: 固态电池设备链是路线无关卖铲人，2026-2027 是国产替代+单 GWh 价值量 4-5x 跃升的兑现窗口；强度 7/10 看多
+parent_materials:
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-8282a6
+  addresses:
+  - K1
+  - K2
+  - K5
+  note: 先导智能 2025 年报
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-71ce1d
+  addresses:
+  - K1
+  - K2
+  - K3
+  note: 2026 全球固态电池产业经济研究
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-5b6fbd
+  addresses:
+  - K1
+  - K2
+  - K3
+  note: 海通 卖方深度
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-938ef9
+  addresses:
+  - K1
+  - K2
+  - K3
+  note: 山西证券 设备专题
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-c660fb
+  addresses:
+  - K1
+  - K2
+  note: 海通装机预测
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-f6cc96
+  addresses:
+  - K1
+  - K3
+  note: 五矿成本测算
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-13806e
+  addresses:
+  - K3
+  note: 三星SDI Interbattery 2025

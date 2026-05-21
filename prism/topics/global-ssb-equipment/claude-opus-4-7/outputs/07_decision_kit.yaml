@@ -1,0 +1,229 @@
+slug: global-ssb-equipment
+variant: claude-opus-4-7
+topic_type: arena
+display_name: 全球固态电池设备链
+ticker: ""
+generated: '2026-05-20T17:00:00+08:00'
+data_freshness: '2025-FY'
+data_freshness_basis: 5 家设备厂 2025 年报（mat-8282a6/b24a9e/5e9473/1c881a）+ mat-eb8634（东吴 2025-07 PE 表）+ mat-7d9213（万联 2026-03）
+
+thesis_summary:
+  stance: 看多设备链卖铲人，但内部分层显著（Tier 1/2 持仓，Tier 3 期权）
+  confidence: 7.5
+  v0_to_v1_shift: |
+    强度从 7/10 上调到 7.5/10：K1 重复订单已兑现（先导欧美日韩供应链 + 重复订单）+ K3 反向兑现
+    （日韩独家锁定假设被部分推翻）；K5 分化结果（先导/利元亨/联赢通过 → Tier 1/2，海目星/信宇人
+    未通过 → Tier 3）；K2 方向兑现但量化滞后（海目星首单实测 2 亿/GWh vs 卖方 4-5 亿口径分歧）；
+    K4 待观察。
+  cluster_tags:
+    - solid-state-battery
+    - battery-equipment
+    - picks-and-shovels
+    - china-tech
+    - cn-equipment
+
+# Arena type — 不填买入框（落到子 company topic 再做）
+buy_box: null
+position_framework:
+  initial_max_pct: 15
+  full_max_pct: 25
+  add_ladder_prices: []     # arena 层级不按价格加仓，按 K# 兑现加
+  max_cluster_pct: 40       # 与父级电池产业链合计上限
+
+# Tier 排序（arena 内部 6 家公司相对权重）
+positions:
+  tier_1_high_conviction:
+    - ticker: SZSE_300450
+      name: 先导智能
+      role: 设备链龙头（整线 + 全球化）
+      logic: |
+        K5 通过（OCF +416%，应收 -22%）+ K1 直接证据（已进入欧美日韩供应链 + 重复订单）+
+        K3 反向兑现（已切入日韩）+ 海外占比 21.66% 毛利率 40.75% + 2026E PE 24.4x 行业最低分位
+      target_position_pct: 50    # 占设备链总仓位 60% 中的 50%
+      pe_2026e: 24.4
+      evidence_mat_ids: [mat-8282a6, mat-7d9213, mat-938ef9]
+  tier_2_medium_conviction:
+    - ticker: SHA_688499
+      name: 利元亨
+      role: 整线 #2（K5 最佳 + 全固态首交付）
+      logic: |
+        K5 强 PASS（应收/收入 0.32x 行业最优 + OCF +665% + 毛利率 +19.63pct 跳升）+
+        K1 直接证据（已为头部车企供应全固态整线项目并陆续交付）+ Quintus 等静压合作；
+        风险点：客户四 50% 集中度（消费锂电）+ 库存/销售 1.61x
+      target_position_pct: 18
+      pe_2026e: 69.4
+      evidence_mat_ids: [mat-b24a9e, mat-7d9213, mat-938ef9]
+    - ticker: SHA_688518
+      name: 联赢激光
+      role: 激光焊接细分龙头
+      logic: |
+        K5 通过（应收 0.47x + OCF 转正 +0.79 亿）+ K1 间接证据（首条全固态装配线交付，客户匿名）；
+        风险点：动力毛利率 -4.23pct 价格战传导 + 境外毛利率 -9.42pct + 订单 +70% 但净利 +1% 撕裂
+      target_position_pct: 12
+      pe_2026e: 35
+      evidence_mat_ids: [mat-1c881a, mat-938ef9]
+  tier_3_option:
+    - ticker: SHA_688559
+      name: 海目星
+      role: 高波动期权（首个商业量产线 + 应收恶化）
+      logic: |
+        K1 最强（行业首个 2 GWh 商业量产订单 4 亿）+ K2 实测 2 亿/GWh（vs 卖方 3-5 亿口径差最大）+
+        K5 FAIL（1 年以上账龄占比从 29.74% → 47.83%）；
+        是"应收恶化逐步消化 + 2 GWh 首单效应"的对赌期权
+      target_position_pct: 5
+      pe_2026e: null      # 亏损年无法直接 PE
+      evidence_mat_ids: [mat-5e9473, mat-938ef9]
+    - ticker: SHA_688573
+      name: 信宇人
+      role: 卤化物 + 干法成膜小市值期权
+      logic: |
+        卤化物路线 + 干法成膜一体机的"双重非共识"赌注；3 亿市值小弹性；
+        K5 FAIL（2024 主业亏损 + 2025 Q1 仍亏）+ K1 未兑现（无客户披露）；
+        资料覆盖度低，关注 2026 H1
+      target_position_pct: 3
+      pe_2026e: 53.9
+      evidence_mat_ids: [mat-eb8634]
+  watch_list:
+    - ticker: BSE_832522
+      name: 纳科诺尔
+      role: 辊压+等静压细分龙头
+      note: 干法 4-22 辊系列 + 等静压 600 MPa 已进入验证测试；资料覆盖少
+      pe_2026e: 36.8
+    - ticker: SZSE_301325
+      name: 曼恩斯特
+      role: 涂布模头进口替代
+      pe_2026e: 42.5
+    - name: 宏工科技 (清研宏工)
+      role: 混合设备
+      ticker: ""
+
+# 估值模型汇总（arena 不直接做单股反推，给行业整体 PE 区间）
+valuation_models:
+  - name: arena_implied_cagr
+    label: 行业 PE-DCF 反推（基于 mat-eb8634 期合计 ~565 亿市值）
+    bull_fair_value: [800, 1000]      # +40-80% 对应 Bull 情景
+    base_fair_value: [565, 650]       # 当前合理 - 中性 +15%
+    bear_fair_value: [350, 425]       # Bear -25%-35%
+    implied_3y_cagr_at_current: 40    # 单位 %
+    sensitivity_low_cagr: 30
+    sensitivity_high_cagr: 60
+  - name: peer_pe_band
+    label: 同业 2026E PE 区间（mat-eb8634）
+    industry_avg_pe: 37.8
+    range_low: 15.9   # 先惠技术
+    range_high: 69.4  # 利元亨
+
+# Kill Criteria（每条对应 thesis 的 1 个核心假设破灭）
+kill_criteria:
+  - id: k5_arena_recv_breach
+    description: 海目星 2026 H1 应收 1 年以上账龄占比突破 60%（vs 当前 47.83%），或计提坏账 ≥3 亿
+    status: pending
+    check_at: '2026-Q3'
+    action_if_triggered: 海目星仓位归零；行业整体仓位减仓 30%
+  - id: k1_no_china_in_oem_orders
+    description: 2026 Q3-Q4 头部电芯厂（CATL/比亚迪/LG/三星）任一公告固态量产线设备首单中标方全为日本 Tier 1
+    status: pending
+    check_at: '2026-Q4'
+    action_if_triggered: K3 空方触发，设备链整体仓位减至 30%；先导海外溢价收回
+  - id: k1_oem_sop_delay_2030
+    description: 2 家以上头部车厂（丰田/松下/三星/CATL/比亚迪）将全固态 SOP 推迟到 2030 年后
+    status: pending
+    check_at: '2027-Q1'
+    action_if_triggered: 整体看多强度从 7.5 降至 5/10，Tier 1 减至半仓
+  - id: k2_unit_value_low
+    description: 2027 H1 设备厂年报披露固态相关单 GWh 价值量稳定在 ≤2.5 亿元
+    status: pending
+    check_at: '2027-Q2'
+    action_if_triggered: 边缘叙事 Z 兑现，行业 PE 修正到 22-25x，Tier 2/3 减仓
+  - id: k4_semisolid_sales_collapse
+    description: 半固态车型（蔚来 ET9 / 智己 LS9 / 比亚迪汉 L / 赛力斯）2026 全年累计销量 <5 万辆
+    status: pending
+    check_at: '2027-Q1'
+    action_if_triggered: 设备订单中段断粮预期，Tier 1 减仓 30%；2027 业绩 cut 15%
+  - id: k5_top_three_recv_explode
+    description: 先导/利元亨/联赢任一家 2026 H1 应收/收入比突破 1.5x（当前 0.32x / 0.47x / 应收 -22%）
+    status: pending
+    check_at: '2026-Q3'
+    action_if_triggered: 该家个股清仓，整体看多强度下调
+  - id: gross_margin_breakdown
+    description: 联赢动力电池毛利率 2026 H1 跌破 19%（vs 当前 20.82%）
+    status: pending
+    check_at: '2026-Q3'
+    action_if_triggered: 价格战已传导到龙头第二梯队，整体仓位减 10%
+
+signposts:
+  - date: '2026-08'
+    event: 5 家设备厂 2026 H1 报披露
+    bull_signal: 先导/利元亨/联赢应收/收入比 <0.6；新签订单同比 +30%+；海目星账龄不再恶化
+    bear_signal: 任一家应收/收入比突破 1.0；海目星账龄突破 60%；新签订单同比 <+10%
+    triggered: null
+  - date: '2026-Q3'
+    event: CATL 凝聚态首批交付 + 设备供应商名单
+    bull_signal: 含 ≥3 家中国设备厂 + 单 GWh 价值量披露 ≥2.5 亿
+    bear_signal: 含 ≤1 家中国设备厂 / 全部日韩 / 单 GWh ≤2 亿
+    triggered: null
+  - date: '2026-Q3'
+    event: 蔚来 ET9 + 智己 LS9 + 比亚迪汉 L 月销月报（半固态 K4）
+    bull_signal: 累计月销 >8000 辆
+    bear_signal: 累计月销 <3000 辆
+    triggered: null
+  - date: '2026-Q4'
+    event: 半固态车型 2026 全年累计销量
+    bull_signal: ≥10 万辆（K4 多方触发）
+    bear_signal: <5 万辆（K4 空方触发，Kill k4 触发）
+    triggered: null
+  - date: '2026-H2'
+    event: 丰田 METI 9 GWh 项目设备采购名单
+    bull_signal: 含 ≥1 家中国设备厂
+    bear_signal: 全为日本 Tier 1（信越/平野/凸版）
+    triggered: null
+  - date: '2026-Q3'
+    event: 海目星 / 先导 固态电池设备首单交付公告
+    bull_signal: 公告披露 + 客户为头部电芯厂（CATL/比亚迪/亿纬等）
+    bear_signal: 交付推迟 / 客户为非头部
+    triggered: null
+  - date: '2027-Q1'
+    event: 设备厂年报披露固态相关订单/产能（K2 量化窗口）
+    bull_signal: 单 GWh 价值量披露 ≥3 亿（K2 多方触发）
+    bear_signal: <2 亿（K2 空方触发，叙事 Z 主流化，Kill k2 触发）
+    triggered: null
+  - date: '2027-H1'
+    event: 先导/利元亨 2027 H1 报新签订单
+    bull_signal: 同比 +30%+
+    bear_signal: 同比 +0% 或负增长（订单已见顶）
+    triggered: null
+
+core_assumptions:
+  - id: a1
+    text: 订单转换为收入的兑现率 ≥80%（先导/利元亨/联赢 2026 H1 应收/收入比 <1.0）
+    falsified_if: 任一头部 K5 通过公司 2026 H1 应收/收入比突破 1.0
+  - id: a2
+    text: 2026 Q3-Q4 至少 1 家头部电芯厂公告固态量产线设备首单且含中国设备厂，单 GWh 价值量 ≥2.5 亿
+    falsified_if: 全部首单延期到 2027+ 或单 GWh 价值量 <2 亿
+  - id: a3
+    text: 半固态车型 2026 全年销量 ≥5 万辆（K4 不空方触发）
+    falsified_if: 半固态车型 2026 全年累计销量 <5 万辆
+  - id: a4
+    text: K3 维持反向兑现，无日韩 Tier 1 独家锁定的明确公告
+    falsified_if: 丰田/三星/松下任一公告全固态产线设备由日本 Tier 1 独家供应
+  - id: a5
+    text: 联赢动力电池毛利率 2026 不破 19%（vs 当前 20.82%），先导锂电装备毛利率不破 32%
+    falsified_if: 联赢/先导任一家毛利率突破阈值
+
+research_maturity:
+  information_completeness: medium
+  conviction: medium_high
+  next_steps:
+    - 等 2026-08 5 家设备厂 H1 报，验证 K5 持续性 + 应收账龄变化
+    - 跟踪蔚来 ET9 / 智己 LS9 / 比亚迪汉 L 月销月报（K4 关键）
+    - 关注 CATL 2026 Q2-Q3 IR 电话会和合肥 5 GWh 中试线良率披露
+    - 若 H1 数据到位，为先导/利元亨创建子 company topic 做个股估值反推
+    - 补全干法电极细分龙头资料（纳科诺尔 / 曼恩斯特 / 宏工 财报）
+
+cluster_tags:
+  - solid-state-battery
+  - battery-equipment
+  - picks-and-shovels
+  - china-tech
+  - ev-supply-chain
+  - cn-equipment

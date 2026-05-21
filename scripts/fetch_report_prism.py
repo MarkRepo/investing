@@ -85,19 +85,39 @@ def _extract_year(title: str) -> int | None:
     return int(m.group(1)) if m else None
 
 
-def _download(announcement: dict, dest_dir: Path, company_name: str) -> Path:
+def _download(announcement: dict, dest_dir: Path, company_name: str,
+              ticker: str = "", report_type: str = "") -> Path:
+    """Download cninfo announcement to dest_dir.
+
+    Filename schema (E7 — sortable by report year, then ticker):
+        {report_year}_{ticker}_{type}_{publish_date}_{company}.PDF
+
+    Falls back to publish year if report year can't be parsed from title.
+    Backward-compat: also checks old filename to avoid re-downloading.
+    """
     url = _CNINFO_DL + announcement["adjunctUrl"]
     ts = announcement["announcementTime"]
-    # Convert ms timestamp to date string
     from datetime import datetime, timezone
     dt = datetime.fromtimestamp(ts / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
     title = announcement["announcementTitle"].replace("/", "-").replace(" ", "")
-    filename = f"{dt}_{company_name}_{title}.PDF"
-    dest = dest_dir / filename
+
+    # Old filename for backward-compat dedup
+    old_name = f"{dt}_{company_name}_{title}.PDF"
+    old_dest = dest_dir / old_name
+    if old_dest.exists():
+        log.info("Already exists (legacy name): %s", old_dest.name)
+        return old_dest
+
+    # New normalized filename
+    report_year = _extract_year(title) or int(dt[:4])
+    type_tag = report_type or "report"
+    new_name = f"{report_year}_{ticker or '_'}_{type_tag}_{dt}_{company_name}.PDF"
+    dest = dest_dir / new_name
     if dest.exists():
         log.info("Already exists: %s", dest.name)
         return dest
-    log.info("Downloading %s…", filename)
+
+    log.info("Downloading %s…", new_name)
     r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=120)
     r.raise_for_status()
     dest.write_bytes(r.content)
@@ -108,7 +128,7 @@ def _download(announcement: dict, dest_dir: Path, company_name: str) -> Path:
 def _register_in_prism(slug: str, file_path: Path, report_type: str, company_name: str, variant: str | None = None) -> None:
     """Register downloaded report in prism manifest and update user_todos."""
     from prism.scripts.manifest import add_material, create_manifest, read_manifest
-    from prism.scripts.topic import list_variants, read_topic, set_user_todos
+    from prism.scripts.topic import list_variants, read_topic, set_user_todos, update_user_todo_status
 
     # Auto-detect variant if not specified
     if not variant:
@@ -141,13 +161,21 @@ def _register_in_prism(slug: str, file_path: Path, report_type: str, company_nam
     )
     log.info("Registered in manifest: %s → %s", file_path.name, mat_id)
 
-    # Remove matching todo from user_todos
+    # 标记匹配的 todo 为 in_progress（保留结构化 schema，不删除）
     topic = read_topic(slug, variant)
     todos = topic.get("user_todos", [])
-    updated = [t for t in todos if company_name not in t and file_path.stem[:8] not in t]
-    if len(updated) < len(todos):
-        set_user_todos(slug, updated, variant)
-        log.info("Removed %d matched todo(s)", len(todos) - len(updated))
+    matched = 0
+    for t in todos:
+        # read_topic 已 normalize 成 dict
+        task_text = t.get("task", "") if isinstance(t, dict) else str(t)
+        if company_name and company_name in task_text and t.get("status") != "done":
+            try:
+                update_user_todo_status(slug, variant, task_text[:30], "in_progress")
+                matched += 1
+            except Exception as e:
+                log.debug("todo status update failed for %s: %s", task_text[:30], e)
+    if matched:
+        log.info("Updated %d matched todo(s) to in_progress (preserving schema)", matched)
 
 
 def _search_all_pages(code: str, org_id: str, column: str, keyword: str, max_pages: int = 20) -> list[dict]:
@@ -212,12 +240,96 @@ def _fetch_prospectus(market_ticker: str, slug: str | None = None, variant: str 
         break
 
     log.info("Selected: %s", target["announcementTitle"])
-    file_path = _download(target, dest_dir, company_name)
+    file_path = _download(target, dest_dir, company_name, ticker=ticker, report_type="prospectus")
 
     if slug:
         _register_in_prism(slug, file_path, "prospectus", company_name, variant)
 
     return file_path
+
+
+def _is_us_ticker(ticker: str) -> bool:
+    """US tickers are 1-5 uppercase letters, no underscore (no market prefix)."""
+    return bool(re.match(r"^[A-Z]{1,5}$", ticker))
+
+
+def fetch_sec(
+    ticker: str,
+    slug: str | None = None,
+    variant: str | None = None,
+    forms: tuple[str, ...] = ("10-K", "10-Q"),
+) -> list[Path]:
+    """Download latest SEC filings for a US ticker. Auto-registers in manifest if slug given."""
+    import json
+    import os
+    import urllib.request
+
+    UA = "investment-wiki research@example.com"
+    dest_dir = _materials_dir(slug) if slug else _INBOX_AUTO
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    # Look up CIK
+    req = urllib.request.Request(
+        "https://www.sec.gov/files/company_tickers.json", headers={"User-Agent": UA}
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        data = json.loads(resp.read())
+    cik_map = {v["ticker"].upper(): (str(v["cik_str"]).zfill(10), v["title"]) for v in data.values()}
+    if ticker.upper() not in cik_map:
+        raise ValueError(f"SEC CIK not found for ticker {ticker}")
+    cik, company_name = cik_map[ticker.upper()]
+
+    # List filings
+    req2 = urllib.request.Request(
+        f"https://data.sec.gov/submissions/CIK{cik}.json", headers={"User-Agent": UA}
+    )
+    with urllib.request.urlopen(req2, timeout=30) as resp:
+        sub = json.loads(resp.read())
+    recent = sub.get("filings", {}).get("recent", {})
+    f_list = recent.get("form", [])
+    dates_ = recent.get("filingDate", [])
+    rdates = recent.get("reportDate", [])
+    accs = recent.get("accessionNumber", [])
+    docs = recent.get("primaryDocument", [])
+
+    targets: dict[str, int] = {}
+    for i, form in enumerate(f_list):
+        if "/A" in form:
+            continue
+        if form in forms and form not in targets:
+            targets[form] = i
+        if len(targets) == len(forms):
+            break
+
+    saved: list[Path] = []
+    for form, idx in targets.items():
+        acc_dir = accs[idx].replace("-", "")
+        cik_num = str(int(cik))
+        doc = docs[idx]
+        fd = dates_[idx]
+        rd = rdates[idx]
+        ext = os.path.splitext(doc)[1] or ".htm"
+        # Backward-compat dedup: check legacy name first
+        legacy = dest_dir / f"{fd}_{ticker}_{form}_{rd}{ext}"
+        # New normalized name: {report_year}_{ticker}_{form}_{filing_date}.{ext}
+        report_year = (rd or fd)[:4]
+        fname = f"{report_year}_{ticker}_{form}_{fd}{ext}"
+        dest = dest_dir / fname
+        if legacy.exists():
+            log.info("%s — already exists (legacy name)", legacy.name)
+            dest = legacy
+        elif dest.exists():
+            log.info("%s — already exists", fname)
+        else:
+            dl = f"https://www.sec.gov/Archives/edgar/data/{cik_num}/{acc_dir}/{doc}"
+            req3 = urllib.request.Request(dl, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req3, timeout=120) as resp:
+                dest.write_bytes(resp.read())
+            log.info("Saved → %s (%.1f MB)", dest, dest.stat().st_size / 1e6)
+        if slug:
+            _register_in_prism(slug, dest, "annual" if form == "10-K" else "quarterly", company_name, variant)
+        saved.append(dest)
+    return saved
 
 
 def fetch(
@@ -227,7 +339,15 @@ def fetch(
     slug: str | None = None,
     variant: str | None = None,
 ) -> Path:
-    """Download a financial report. Returns the local file path."""
+    """Download a financial report. Returns the local file path.
+
+    Auto-routes to SEC for US tickers (e.g. 'QS', 'NVDA') and cninfo for A-share (e.g. 'SZSE_300750').
+    """
+    # US ticker: route to SEC
+    if _is_us_ticker(market_ticker):
+        results = fetch_sec(market_ticker, slug, variant)
+        return results[0] if results else None
+
     if report_type == "prospectus":
         return _fetch_prospectus(market_ticker, slug, variant)
 
@@ -263,12 +383,40 @@ def fetch(
     target = sorted(matches, key=lambda r: r["announcementTime"])[0]
     log.info("Found: %s", target["announcementTitle"])
 
-    file_path = _download(target, dest_dir, company_name)
+    file_path = _download(target, dest_dir, company_name, ticker=ticker, report_type=report_type)
 
     if slug:
         _register_in_prism(slug, file_path, report_type, company_name, variant)
 
     return file_path
+
+
+def fetch_many(
+    market_ticker: str,
+    years: list[int],
+    report_type: str = "annual",
+    slug: str | None = None,
+    variant: str | None = None,
+) -> list[Path]:
+    """Batch-fetch multiple years of a single report type. CN only (SEC has its own pagination)."""
+    paths: list[Path] = []
+    for y in years:
+        try:
+            p = fetch(market_ticker, report_type, y, slug, variant)
+            if p:
+                paths.append(p)
+        except ValueError as e:
+            log.warning("Year %d skipped: %s", y, e)
+    return paths
+
+
+def _parse_years(spec: str) -> list[int]:
+    """Parse '2020-2024' or '2020,2022,2024' into [2020, 2021, 2022, 2023, 2024] / [2020, 2022, 2024]."""
+    spec = spec.strip()
+    if "-" in spec and "," not in spec:
+        a, b = spec.split("-", 1)
+        return list(range(int(a), int(b) + 1))
+    return [int(x) for x in spec.split(",") if x.strip()]
 
 
 def main() -> None:
@@ -277,6 +425,8 @@ def main() -> None:
     parser.add_argument("ticker", help="Market_Ticker, e.g. SSE_688066")
     parser.add_argument("--type", choices=["annual", "semi", "quarterly", "prospectus"], default="annual")
     parser.add_argument("--year", type=int, default=None, help="Fiscal year (default: last year)")
+    parser.add_argument("--years", default=None,
+                        help="Multi-year batch: '2020-2024' (range) or '2020,2022,2024' (list). CN only.")
     parser.add_argument("--slug", default=None,
                         help="Prism topic slug — registers manifest + updates user_todos")
     parser.add_argument("--variant", default=None,
@@ -284,8 +434,14 @@ def main() -> None:
     args = parser.parse_args()
 
     try:
-        path = fetch(args.ticker, args.type, args.year, args.slug, args.variant)
-        print(path)
+        if args.years:
+            years = _parse_years(args.years)
+            paths = fetch_many(args.ticker, years, args.type, args.slug, args.variant)
+            for p in paths:
+                print(p)
+        else:
+            path = fetch(args.ticker, args.type, args.year, args.slug, args.variant)
+            print(path)
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)

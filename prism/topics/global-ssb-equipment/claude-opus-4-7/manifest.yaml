@@ -1,0 +1,39 @@
+slug: global-ssb-equipment
+variant: claude-opus-4-7
+updated: '2026-05-20T08:45:06.602996+00:00'
+materials:
+- id: mat-b24a9e
+  filename: 2026-04-15_利元亨_广东利元亨智能装备股份有限公司2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-20T03:21:18.563312+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 利元亨
+  mineru_state: not_needed
+- id: mat-5e9473
+  filename: 2026-04-29_海目星_海目星：2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-20T03:21:18.981013+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 海目星
+  mineru_state: not_needed
+- id: mat-1c881a
+  filename: 2026-04-24_联赢激光_深圳市联赢激光股份有限公司2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-20T03:21:19.434183+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 联赢激光
+  mineru_state: not_needed
+- id: mat-eb8634
+  filename: 2025-07-26_东吴_信宇人688573公司深度_锂电干燥设备龙头.pdf
+  source_type: sell-side-note
+  added: '2026-05-20T03:36:04.427107+00:00'
+  processed: true
+  notes: 东吴证券公司深度，信宇人锂电干燥设备龙头+卤化物电解质方案，补 K2/K3
+  mineru_state: done
+- id: mat-7d9213
+  filename: 2026-03-19_东吴_2026锂电行业投资策略_锂电周期向上固态技术领航.pdf
+  source_type: sell-side-note
+  added: '2026-05-20T03:36:04.428617+00:00'
+  processed: true
+  notes: 东吴证券 2026 锂电行业投资策略，强补 K1招标/K2价值量/K3路线
+  mineru_state: done

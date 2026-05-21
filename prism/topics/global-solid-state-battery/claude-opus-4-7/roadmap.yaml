@@ -1,0 +1,198 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+# thesis-driven：L4 狩猎层直接对齐 thesis v0 的 Killer Questions（K1-K5）
+slug: global-solid-state-battery
+variant: claude-opus-4-7
+created: 2026-05-19
+thesis_anchor: v0  # 路线图基于 thesis_v0.md 的判断展开
+
+learning_track:
+  l1_orientation:
+    - question: 固态电池四条技术路线（硫化物/氧化物/聚合物/卤化物）的物理特性、工程化进展、各自卡点对比
+      source_hint: SAE/IEEE 综述论文 + 卖方深度
+    - question: 全球产业链版图——电芯厂/材料厂/设备厂/车厂自研，各国梯队与代表玩家
+      source_hint: 中信建投/中金/申万深度报告，公司官网
+    - question: 当前实际市场规模——2024-2026 半固态实际出货 vs 全固态预期，2030 主流机构出货预测口径对比
+      source_hint: 高工锂电、行家说、卖方测算
+
+  l2_history:
+    - question: 固态电池研发简史的 5 个关键拐点——Bolloré 商用、丰田 2014 路演、QuantumScape 2020 IPO、半固态 2023 装车、CATL 凝聚态发布
+      source_hint: 综述文章 + 维基 + 公司历史 PR
+    - question: 类似前沿新能源技术的资本周期参照——液态锂电 2009-2015、钙钛矿光伏 2021-、氢燃料电池历次过山车
+      source_hint: 同行业历史复盘报告
+    - question: 中国半固态装车节奏（蔚来 2024 / 智己 2025 / 赛力斯 2025）——价格、能量密度、销量数据
+      source_hint: 公司公告 + EV 销量月报
+
+  l3_debates:
+    - question: 半固态是 5-7 年过渡技术还是长期共存？多空双方论据与时间假设
+      source_hint: 卖方深度对比，蔚来/赣锋/清陶 vs 宁德的立场差异
+      addresses: [K4]
+    - question: 硫化物 vs 氧化物路线终局——日韩为何集体押硫化物，中国氧化物路线突围概率
+      source_hint: 学术论文 + 头部企业技术发布
+      addresses: [K3]
+    - question: 车厂自研全固态 vs 专业电池厂——复制特斯拉 4680 故事还是 CATL 三元格局
+      source_hint: 丰田/日产/宁德/LG 各自路线披露
+    - question: 液态磷酸铁锂持续降本对固态经济性的威胁——为什么主流卖方研报避谈这条破坏假说
+      source_hint: SMM/鑫椤资讯月度电芯价格 + 头部厂商成本拆解
+      addresses: [K2]
+    - question: QuantumScape/Solid Power/Factorial 的"美国叙事溢价"——破灭逻辑与时间窗口
+      source_hint: 10-K cash burn + 财报 call 里程碑追踪
+      addresses: [K5]
+
+  l4_hunting:
+    # L4 直接复用 thesis K1-K5，确保狩猎层 = 验证 thesis 的 Killer Questions
+    - question: 头部车厂（丰田/日产/本田/宝马）全固态车规级 SOP 时间表是否会从 2027-2028 推迟至 2030+？当前股价/卖方共识反映了哪个时间表？
+      source_hint: 车厂 IR + 财报会 + 三方拆解
+      addresses: [K1]
+      killer_event: 任一头部车厂正式公告 SOP 推迟到 2030 之后
+    - question: 液态磷酸铁锂电芯报价何时跌破 0.2 元/Wh？届时固态在乘用车场景的经济性是否还成立？
+      source_hint: SMM 月度报价 + 头部厂商单 Wh 成本曲线
+      addresses: [K2]
+      killer_event: 2027 Q2 前液态 LFP 报价跌破 0.2 元/Wh
+    - question: 硫化物 vs 氧化物的决定性突破事件——硫化物干法电极工艺良率突破 90%、或氧化物界面阻抗降到 <50 Ω·cm²——哪类公司会受益/受损，当前估值差是否合理？
+      source_hint: 学术论文、公司技术发布、产业链调研
+      addresses: [K3]
+      killer_event: 任一路线在 2026-2027 出现可重复的工程突破
+    - question: 半固态电池装车数据在 2026-2027 是否出现重大安全事故？届时整赛道叙事会被如何重创？
+      source_hint: 国家质监总局召回数据、媒体跟踪
+      addresses: [K4]
+      killer_event: 任一头部半固态车型因电池热失控召回或着火事件
+    - question: QuantumScape/Solid Power/Factorial 谁会在 2027 年前破产或被低价收购？什么估值水平会出现 buyout 机会？
+      source_hint: 季报现金跑道 + 融资公告 + 二级市场跟踪
+      addresses: [K5]
+      killer_event: 任一家被收购、退市或申请破产
+    - question: 卖铲人订单弹性——当升/贝特瑞/先导智能 2024-2026 固态相关订单占总营收比例的真实爬坡曲线？这是 thesis v0 看多侧的核心验证项，为什么卖方至今未系统性挖掘？
+      source_hint: 公司季报 + 调研纪要 + 业绩说明会问答
+      addresses: [K3, supports_long_thesis]
+
+material_priority:
+  tier1:  # 必读，对应 thesis Killer Question 和 L4 狩猎层
+    - title: 丰田/日产/本田/宝马 2024-2026 全固态电池 SOP 时间表声明（IR/技术发布会）
+      type: industry-research
+      ticker: ""  # 日股美股 ADR 不在自动下载范围
+      source: 公司 IR 网站、NEDO 项目文件
+      why: 对应 K1——直接观测车厂自家口径是否在悄悄延期
+      addresses: [K1, L4-Q4.1]
+      info_tier: half_public
+    - title: 宁德时代 2024-2026 凝聚态/全固态公告 + 曾毓群业绩会逐字稿
+      type: annual-report
+      ticker: SZSE_300750
+      source: 巨潮 + 雪球转录
+      why: 中国电池龙头对路线判断与时间表的权威表态，对应 K3 / L3 路线分歧
+      addresses: [K3, L1-Q1.2]
+      info_tier: public
+    - title: 3 份对比卖方深度（中信建投/中金/申万宏源 2025-2026 固态电池行业报告）
+      type: sell-side-note
+      ticker: ""
+      source: 同花顺/Wind/卖方公众号
+      why: 看市场共识、出货预测口径分歧，对应 L3 多条争议
+      addresses: [K2, K3, L3-all]
+      info_tier: public
+    - title: 赣锋锂电 + 卫蓝/清陶（通过广汽/上汽/蔚来公告侧面观察）公开披露
+      type: annual-report
+      ticker: SZSE_002460
+      source: 巨潮、股东方公告
+      why: 中国氧化物/半固态主力玩家，对应 K3、K4
+      addresses: [K3, K4, L3-Q3.1]
+      info_tier: half_public
+    - title: QuantumScape + Solid Power 最新 10-K + 季报 + Earnings Call
+      type: annual-report
+      ticker: QS
+      source: SEC EDGAR
+      why: 直接观测美国玩家现金跑道 + 里程碑延期，对应 K5
+      addresses: [K5, L4-Q4.4]
+      info_tier: public
+    - title: Solid Power 最新 10-K + 季报
+      type: annual-report
+      ticker: SLDP
+      source: SEC EDGAR
+      why: 同上，K5 的另一玩家观测
+      addresses: [K5]
+      info_tier: public
+
+  tier2:  # 补充
+    - title: 先导智能 2024-2026 季报 + 业绩说明会（关注固态产线订单）
+      type: annual-report
+      ticker: SZSE_300450
+      source: 巨潮 + 调研纪要
+      why: 设备端卖铲人，验证 thesis 看多侧
+      addresses: [L4-Q4.5]
+      info_tier: half_public
+    - title: 当升科技 2024-2026 季报（高镍正极 + 固态正极进展）
+      type: annual-report
+      ticker: SZSE_300073
+      source: 巨潮
+      why: 材料端卖铲人
+      addresses: [L4-Q4.5]
+      info_tier: half_public
+    - title: 璞泰来 2024-2026 季报（负极 + 涂覆隔膜 + 设备）
+      type: annual-report
+      ticker: SSE_603659
+      source: 巨潮
+      why: 材料/设备双重卖铲人
+      addresses: [L4-Q4.5]
+      info_tier: half_public
+    - title: 容百科技 2024-2026 季报（高镍正极）
+      type: annual-report
+      ticker: SSE_688005
+      source: 巨潮
+      why: 高镍正极，固态正极路线之一
+      addresses: [L4-Q4.5]
+      info_tier: half_public
+    - title: SMM/鑫椤资讯 2024-2026 月度电芯报价 + 上游碳酸锂/镍价跟踪
+      type: data
+      ticker: ""
+      source: SMM/鑫椤资讯
+      why: K2 验证的核心数据源——液态降本曲线
+      addresses: [K2]
+      info_tier: half_public
+    - title: SAE/IEEE 2024-2025 硫化物 vs 氧化物固态电解质综述论文
+      type: industry-research
+      ticker: ""
+      source: 学术数据库
+      why: 理解技术上限，避免被 PR 话术误导
+      addresses: [K3]
+      info_tier: half_public
+    - title: 蔚来 ET7 / 智己 L6 / 赛力斯 半固态车型 2024-2026 销量 + 续航实测数据
+      type: data
+      ticker: ""
+      source: EV 销量月报 + 媒体实测
+      why: 验证半固态商业化真实需求强度
+      addresses: [L2-Q3]
+      info_tier: half_public
+
+  tier3:  # 可选
+    - title: 日本 NEDO 全固态电池项目（2024-2030 路线图）官方公开文件
+      type: policy
+      ticker: ""
+      source: NEDO 官网
+      why: 看政策资金分配，预判产业链订单流向
+      info_tier: half_public
+    - title: 美国 DOE Vehicle Technologies Office 固态电池研究项目摘要
+      type: policy
+      ticker: ""
+      source: DOE 官网
+      info_tier: half_public
+    - title: Northvolt 破产复盘（液态电池产能扩张失败给固态的启示）
+      type: industry-research
+      ticker: ""
+      source: FT/Bloomberg/Reuters 系列报道
+      why: 反向参照——产能扩张型电池公司的失败模式
+      info_tier: public
+
+key_risks_to_monitor:
+  - 头部车厂集体推迟 SOP（K1 触发）
+  - 液态电池超预期降本（K2 触发）
+  - 一线半固态车型出现安全事故（K4 触发）
+  - 头部美国玩家破产/被收购（K5 触发）
+  - 中国氧化物路线在 2027 前未实现量产突破（K3 反方触发）
+
+analogies_to_study:
+  - case: 液态锂电 2009-2015（从样品到量产的 5-7 年窗口）
+    relevance: 时间表很像——固态可能也是 2025-2031 的相似窗口
+    limit: 液态成功时是从"无"到"有"，固态是与"已成熟液态"竞争，难度更大
+  - case: 钙钛矿光伏 2021-（明星新材料叙事兴奋 vs 工程瓶颈）
+    relevance: 资本周期形态相近——技术叙事先行、装车/装机数据滞后
+    limit: 钙钛矿主要是稳定性问题，固态主要是固固界面+量产工艺问题，工程难点不同
+  - case: 氢燃料电池历次过山车（30 年间多次叙事-退潮循环）
+    relevance: 最像"硬骨头"——技术原理早已成熟，但工程化反复挫败；为投资者上了一堂"不要相信第一个时间表"的课
+    limit: 氢燃料电池受加氢站基建拖累，固态是电芯本体工艺问题，瓶颈位置不同

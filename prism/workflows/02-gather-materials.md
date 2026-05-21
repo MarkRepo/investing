@@ -62,13 +62,7 @@ print(json.dumps(read_manifest('{slug}', '{variant}'), ensure_ascii=False, inden
 对每份新文件执行：
 
 ```bash
-# 先找到文件完整路径
-python -c "
-from prism.scripts.manifest import get_material_path
-path = get_material_path('{slug}', '{filename}', '{variant}')
-print(path if path else 'FILE_NOT_FOUND')
-"
-# 登记并自动复制到 topic 的 materials 目录
+# 登记 + 自动复制到 materials/ + 必填 addresses（指向 K# 或 Q#）
 python -c "
 from pathlib import Path
 from prism.scripts.manifest import add_material
@@ -79,31 +73,116 @@ mat_id = add_material(
     notes='{notes}',
     source_path=Path('{material_full_path}'),
     variant='{variant}',
+    addresses={addresses_list},  # 例如 ['K1', 'K3'] 或 ['Q3', 'L4-Q4.5']
 )
 print(f'已登记：{filename} → {mat_id}')
 "
 ```
 
+**关于 addresses（强制）**：
+- 必须填——否则 detail 页「📚 实际收集覆盖」徽章无法把该材料映射到 Killer Question
+- K# 来自 thesis_v{N}.md；Q# 来自 roadmap.yaml 的 L1-L4 question
+- 如果材料不直接攻打任何 K/Q，可填 `['background']` 标记为背景资料
+
+**关于 dedup**：`add_material` 已内建按 filename 去重——重复调用会合并 addresses/notes 而非新增条目，安全幂等。
+
 > 注意：文件会自动复制到 prism/topics/{slug}/materials/，原 inbox 文件保留。
 
 ---
 
-## Step 6：更新 topic 状态
+## Step 4.5：自动触发 mineru 转换（**新增——sell-side/industry PDF 必做**）
+
+`add_material` 登记时已自动给 sell-side-note / industry-research / policy 类型的 PDF 标 `mineru_state=needs`。
+登记完成后立即跑 mineru 转换，避免 workflow 03 卡在转换上。
+
+```bash
+python3 << 'EOF'
+from pathlib import Path
+from prism.scripts.manifest import list_pending_mineru, set_mineru_state
+from scripts.mineru_api import convert
+
+slug = '{slug}'
+variant = '{variant}'
+mats_dir = Path(f'prism/topics/{slug}/materials')
+
+pending = list_pending_mineru(slug, variant)
+print(f'Pending mineru: {len(pending)}')
+for m in pending:
+    src = mats_dir / m['filename']
+    if not src.exists():
+        set_mineru_state(slug, variant, m['id'], 'failed')
+        continue
+    out_dir = mats_dir / (src.stem + '_vlm')
+    if (out_dir / 'full.md').exists():
+        set_mineru_state(slug, variant, m['id'], 'done')
+        continue
+    set_mineru_state(slug, variant, m['id'], 'in_progress')
+    try:
+        convert(src, out_dir, 'vlm')
+        set_mineru_state(slug, variant, m['id'], 'done')
+        print(f'  ✓ {m["filename"][:50]}')
+    except Exception as e:
+        set_mineru_state(slug, variant, m['id'], 'failed')
+        print(f'  ❌ {m["filename"][:50]}: {e}')
+EOF
+```
+
+**幂等保护**：脚本会检查 `{stem}_vlm/full.md` 是否存在，跳过已转换的文件，重复跑安全。
+
+**失败处理**：mineru 失败的会标 `failed`，detail 页会红色显示。可手动修后回设 `needs` 再跑。
+
+---
+
+## Step 5.7：校验 manifest 是否覆盖所有 K#（**新增**）
 
 ```bash
 python -c "
-from prism.scripts.topic import set_stage, set_next_actions, set_user_todos
-from prism.scripts.manifest import material_count
-counts = material_count('{slug}', '{variant}')
-set_stage('{slug}', '03-extracting' if counts['unprocessed'] > 0 else '02-gather-materials', '{variant}')
-set_next_actions('{slug}', [
-    f'已有 {counts[\"unprocessed\"]} 份资料未处理，运行 workflow 03-extract-findings',
-])
-set_user_todos('{slug}', [
-    f'已登记 {counts[\"total\"]} 份资料到 manifest',
-    f'待处理：{counts[\"unprocessed\"]} 份（说「prism 推进 {slug}」开始提取发现）',
-])
+from prism.scripts.outputs import validate_manifest_coverage
+from prism.scripts.topic import read_topic
+t = read_topic('{slug}', '{variant}')
+cur = (t.get('thesis') or {}).get('current_version')
+if cur is not None:
+    r = validate_manifest_coverage('{slug}', '{variant}', cur)
+    print(f'Manifest 覆盖率: {r[\"coverage_pct\"]}%')
+    print(f'已覆盖 K#: {r[\"covered\"]}')
+    if r['uncovered']:
+        print(f'⚠ 未覆盖 K#: {r[\"uncovered\"]} — 这些 Killer Question 在 roadmap 里规划了但实际没收集到任何材料')
+        print('  → 接下来要么补资料、要么在 thesis 里标注\"不验证此 K\"')
 "
+```
+
+⚠ **重要差异**：roadmap coverage 校验「计划要收什么」，manifest coverage 校验「实际收了什么」。两者背离说明计划落空——detail 页会显示红色 ✗ 提醒。
+
+---
+
+## Step 6：增量更新 topic 状态（**禁止 set_user_todos(list[str]) 覆写**）
+
+⚠ 与 workflow 01 Step 6 同样的纪律：不能用 list[str] 全量覆写 user_todos，会丢 priority/info_tier/addresses。
+
+```bash
+python3 << 'EOF'
+from prism.scripts.topic import (
+    set_stage, set_next_actions, read_topic, update_user_todo_status
+)
+from prism.scripts.manifest import material_count
+
+slug = '{slug}'
+variant = '{variant}'
+counts = material_count(slug, variant)
+
+# stage 升级条件：有未处理资料 → 03-extracting
+set_stage(slug, '03-extracting' if counts['unprocessed'] > 0 else '02-gather-materials', variant)
+
+# next_actions 是给 LLM 看的系统建议（不污染 user_todos）
+set_next_actions(slug, [
+    f'{counts["unprocessed"]} 份未处理资料 → 运行 workflow 03-extract-findings',
+    'detail 页查看「📚 实际收集覆盖」徽章，红色 ✗ 的 K# 优先补料',
+], variant)
+
+# 对已通过本次资料登记部分解决的 todo，update_user_todo_status 增量更新
+# 例如：登记了 4 份卖方深度 → '下载3份对比卖方深度报告' todo → in_progress 或 done
+# update_user_todo_status(slug, variant, '3份对比卖方深度', 'in_progress')
+EOF
 ```
 
 ---

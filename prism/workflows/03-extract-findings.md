@@ -24,6 +24,18 @@ for i in items:
 
 每次处理一份资料：
 
+### Subagent dispatch 规约（如果走 subagent）
+
+如果用 subagent 提取 findings：
+
+- `subagent_type`: **必须 `general-purpose`**，不能用 `Explore`（read-only 无 Write）
+- `model`: **不传**，跟随主 agent
+- prompt 开头强制加 **Step 0 (validation)**：
+  > "Step 0: 先 Write 一行 'ok' 到 `outputs/.write_test_{mat_id}` 确认权限。成功立即继续；只有 Write 工具真返回错误时才回 'BLOCKED' 并终止——主 agent 接手。**不要预判 Write 会失败而把 markdown 塞回 final message——这是已知的 subagent 行为幻觉，发生过 2/5 次。**"
+- 完成后 final message 只回："DONE: findings_{mat_id}.md written ({字数}). Key signals: {1-2 句}"
+
+如果 subagent 真触发 BLOCKED（极少数），主 agent 用返回的 markdown 直接 Write 落盘。
+
 ### 2.1 预处理：根据文件类型准备内容
 
 **判断文件类型**（从 filename 和 source_type 推断）：
@@ -37,13 +49,15 @@ from prism.scripts.manifest import get_material_path
 path = get_material_path('{slug}', '{filename}', '{variant}')
 print(path if path else 'FILE_NOT_FOUND')
 "
-# 2. 用章节提取器处理 PDF，只保留分析相关章节
+# 2. 用章节提取器处理 PDF，只保留分析相关章节（管理层讨论/主营业务等，跳过财务报表）
 python -m scripts.annual_report_extractor \
   "{material_path}" \
   --out "prism/topics/{slug}/{variant}/materials/{filename_stem}_extracted.md"
 ```
 
 提取完成后，读取 `_extracted.md` 作为分析内容（而非原始 PDF）。
+
+**段落级过滤**：故意不做。年报章节抽取后通常 50-80K tokens，单份 LLM 可以一口气消化，由 LLM 根据 thesis K# 自行识别相关段落比 keyword grep 准确得多——避免「凝聚态/麒麟」等非字面变体被漏掉。
 
 ```bash
 # 2. 从财务 API 补充财务数据（不从 PDF 解析财务数字）
@@ -71,6 +85,19 @@ test -f "prism/topics/{slug}/{variant}/materials/{filename_stem}_vlm/full.md" \
        "{material_path}" \
        --out "prism/topics/{slug}/{variant}/materials/{filename_stem}_vlm" \
        --model vlm
+
+# 3. 转换成功后翻 mineru_state 为 done（避免 manifest 长期显示 "needs"）
+python3 -c "
+from pathlib import Path
+from prism.scripts.manifest import set_mineru_state
+md = Path('prism/topics/{slug}/{variant}/materials/{filename_stem}_vlm/full.md')
+if md.exists() and md.stat().st_size > 0:
+    set_mineru_state('{slug}', '{variant}', '{mat_id}', 'done')
+    print('mineru_state → done')
+else:
+    set_mineru_state('{slug}', '{variant}', '{mat_id}', 'failed')
+    print('mineru_state → failed (full.md missing or empty)')
+"
 ```
 
 转换完成后，读取 `prism/topics/{slug}/{variant}/materials/{filename_stem}_vlm/full.md` 作为分析内容。

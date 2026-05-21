@@ -1,5 +1,7 @@
 # 产出 03 — 叙事谱系 (Narrative Ecology)
 
+> **调度提示**：本文件是 04-synthesize 的**内容规范**，不直接 dispatch。实际由 `_shared.md` 描述的单 subagent 顺序生成 01-08 时按本文件填内容。如需单独重生成本份产出，参考 `_shared.md` § Dispatch Prompt 模板调整范围即可。
+
 **定位**：市场上有哪些不同的叙事框架在竞争，各自的逻辑和证据是什么  
 **训练知识比例**：约 40%（叙事需要从资料中提取，训练知识提供框架）  
 **产出文件**：`prism/topics/{slug}/{variant}/outputs/03_narrative_ecology.md`

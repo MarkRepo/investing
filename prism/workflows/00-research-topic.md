@@ -85,7 +85,54 @@ print('manifest 创建成功')
 
 **注意**：这一步 100% 使用 LLM 训练知识，不需要外部资料。目的是帮用户快速建立研究框架。
 
-产出以下三部分（直接在对话里输出，不写文件）：
+产出以下**四部分**：5.0 thesis 表态写文件，5.1/5.2/5.3 直接在对话里输出。
+
+### 5.0 LLM 初判 thesis（强制 — thesis-driven 研究的起点）
+
+**目的**：让 LLM 在阅读任何外部资料前先把"赌注"押下，后续所有研究都是去验证或推翻这个 thesis。
+避免研究变成"百科全书式覆盖"，强制每条资料都要回答"这支持还是推翻我的初判？"
+
+**要求**：写一份 `prism/topics/{slug}/{variant}/thesis_v0.md`，必须包含以下五段（每段都要写，不能跳过）：
+
+1. **核心 thesis**：一句话（≤80 字）+ 强度评分（0-10 分，0=完全看空，10=All-in 看好）
+   - 必须有方向（看多 / 看空 / 中性 / 分化看法），不能写"取决于"
+   - 如果是分化看法，明确说"看好 X，看空 Y"
+2. **支持理由**（3-5 条）：每条一句话，给出 LLM 现在最相信的判断依据
+3. **最大反方观点**（2-3 条）：诚实列出最有力的反方逻辑——不是稻草人
+4. **会改变看法的事件 / Killer Question**（3-5 条）：必须是**可观测、可证伪**的具体事件
+   - 反例："如果技术失败" ✗
+   - 正例："任一头部车厂将全固态 SOP 时间从 2027-2028 推迟到 2030+" ✓
+5. **研究中重点验证项**（3-5 条）：把支持理由 + 反方观点 + Killer Question 转成具体待查清单，引导后续 workflow 01 的路线图
+
+写完 `thesis_v0.md` 后，调脚本登记到 topic.yaml：
+
+```bash
+python3 -c "
+from prism.scripts.topic import set_thesis
+set_thesis(
+    slug='{slug}',
+    variant='{variant}',
+    version=0,
+    summary='{一句话核心thesis，≤120字，用于yaml/web展示}',
+    stage_set_at='01-roadmap-pending',
+)
+"
+```
+
+**Coverage 闭环（必须做）**：写完 thesis_v0.md + todos 后，做一次 self-check：
+- 列出 thesis 里所有 Killer Question（K1, K2, ...）
+- 检查每个 K# 是否至少有一个 todo 的 `addresses` 引用了它
+- 如果有 K# 无 todo 攻打（uncovered），二选一：
+  1. **补一个 todo 攻打它**（推荐）
+  2. **在 thesis 中显式标注 "本次研究不验证此 K，理由是 ..."**（节约精力，但要写出来）
+
+Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` coverage strip，红色 = 未覆盖。看到红色就必须处理，不能假装看不见。
+
+**后续何时更新 thesis**：
+- workflow 04 合成完成后写 `thesis_v1.md`（基于资料修正）
+- workflow 05 critic 评审后若有重大反转写 `thesis_v2.md`
+- workflow 07 drilldown 后或 workflow 99 决策记录前写新版本
+- 每次 set_thesis 都 append 到 history，不删除旧版本——保留判断演化轨迹
 
 ### 5.1 领域概览（3-5 句话）
 - 这个行业/赛道/公司是什么
@@ -101,28 +148,62 @@ print('manifest 创建成功')
 - 有哪些历史类比案例？
 
 ### 5.3 资料获取建议（用户需要收集什么）
-按优先级列出 5-10 份关键资料，包括：
-- 哪些卖方研报（机构、标题方向）
-- 哪些公司年报/季报
-- 哪些行业协会数据
-- 哪些政策文件
-- 是否有关键的英文资料
+
+按 **优先级（P0/P1/P2）+ 信息差等级（public/half_public/hard）** 列出 5-10 份关键资料。**每条 todo 都必须标注 addresses**——指向 5.2 的问题号（Q1-Q8）或 5.0 thesis 的 Killer Question 号（K1-K5）——否则失去 thesis-driven 意义。
+
+**信息差等级定义**：
+- `public` 公开普及 — Google/Wind 一搜就有，价值低（但作为研究起点）
+- `half_public` 半公开 — 需登录/付费/外文/拼凑，是 alpha 主要来源
+- `hard` 难获取 — 专家访谈/产业链调研/圈内信息，价值最高但收集成本大
+
+**优先级原则**：
+- P0 = 缺了它整个研究无法推进的（约 3-5 项）
+- P1 = 重要补充，影响 thesis 强度但不影响方向（约 3-5 项）
+- P2 = 锦上添花，等核心研究完后补（不超过 3 项）
+
+每条 todo 必填字段：`task` / `priority` / `info_tier` / `addresses`，选填 `source_hint`。
 
 ---
 
 ## Step 6：更新 topic 状态
 
+**user_todos 必须用 dict 结构**（不能再写 list[str]）。示例：
+
 ```bash
-python3 -c "
+python3 << 'EOF'
 from prism.scripts.topic import set_stage, set_next_actions, set_user_todos
-set_stage('{slug}', '01-roadmap-pending', '{variant}')
-set_next_actions('{slug}', [
+slug = '{slug}'
+variant = '{variant}'
+set_stage(slug, '01-roadmap-pending', variant)
+set_next_actions(slug, [
     '运行 workflow 01-build-roadmap：制定详细研究路线图',
-    '收集初始资料后运行 workflow 02-gather-materials',
-], '{variant}')
-set_user_todos('{slug}', {user_todos_from_step_5_3}, '{variant}')
-"
+    '收集 P0 资料后运行 workflow 02-gather-materials',
+], variant)
+set_user_todos(slug, [
+    {
+        'task': '下载头部车厂全固态 SOP 时间表声明（IR/技术发布会）',
+        'priority': 'P0',
+        'info_tier': 'half_public',
+        'addresses': ['Q1', 'K1'],
+        'source_hint': '公司 IR 网站，需英日文阅读',
+    },
+    {
+        'task': '下载3份对比卖方深度报告（中信建投/中金/申万任选3家）',
+        'priority': 'P0',
+        'info_tier': 'public',
+        'addresses': ['Q3', 'Q6'],
+        'source_hint': '同花顺/Wind/卖方公众号',
+    },
+    # ... 更多 todo
+], variant)
+EOF
 ```
+
+字段约束（由 `_normalize_todo` 校验，不合规会直接 raise）：
+- `priority`: P0 / P1 / P2
+- `info_tier`: public / half_public / hard
+- `addresses`: list[str]，元素如 `Q1`（5.2 问题号）或 `K1`（thesis Killer Question 号）
+- `status`: pending / in_progress / done（缺省 pending）
 
 ---
 

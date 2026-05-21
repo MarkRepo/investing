@@ -1,0 +1,102 @@
+slug: global-ssb-equipment
+variant: claude-opus-4-7
+topic_type: arena
+display_name: 全球固态电池设备链
+generated: 2026-05-20 17:30:00+08:00
+data_freshness: 2025 年报
+companies:
+- name: 先导智能
+  ticker: SZSE_300450
+  score: 4.5
+  tier: shortlist
+  topic_created: true
+  topic_slug: cn-leadex-300450
+  thesis_one_liner: 全产业链最早受益的卖铲人 CR1，路线无关 + 海外 21.66% 高毛利双驱动，估值最便宜（2026E PE 24.4x），2026-2027
+    单 GWh 价值量爬升时业绩弹性最大
+  upgrade_triggers:
+  - 2026 H1 报披露固态相关订单 / 对应产能分项
+  - CATL 凝聚态首批交付设备供应商名单含先导且单 GWh 价值量披露 ≥2.5 亿
+  - 丰田 METI 9 GWh 项目设备采购名单含先导
+  quarantine: false
+- name: 利元亨
+  ticker: SHA_688499
+  score: 4.0
+  tier: shortlist
+  topic_created: true
+  topic_slug: cn-yuanli-heng-688499
+  thesis_one_liner: 全固态整线 + 等静压双引擎扭亏成长股；应收/收入 0.32x 行业最优 + OCF +665%；2026E PE 69.4x
+    反映扭亏 + 固态期权双重溢价
+  upgrade_triggers:
+  - 2026 H1 第一大客户集中度从 50.02% 下沉至 ≤35%
+  - 全固态订单转收入率 2026 H1 报披露 ≥30%
+  - 与 Quintus 等静压合作具体订单金额披露
+  quarantine: false
+- name: 联赢激光
+  ticker: SHA_688518
+  score: 3.5
+  tier: shortlist
+  topic_created: true
+  topic_slug: cn-lianying-laser-688518
+  thesis_one_liner: 细分激光焊接龙头 + 整线装配二号位；订单弹性 +70% 已爆发，利润弹性 +1% 滞后但路径明确，2026 H1 报毛利率拐点是关键
+    catalyst
+  upgrade_triggers:
+  - 2026 H1 报动力电池毛利率不破 19%（vs 2025 20.82%）
+  - 首条全固态装配线试产成功并公告客户名称
+  - 境外毛利率从 -9.42pct 修复至持平
+  quarantine: false
+- name: 海目星
+  ticker: SHA_688559
+  score: 2.5
+  tier: watch
+  topic_created: false
+  topic_slug: null
+  thesis_one_liner: K1 最强（行业首个商业量产线 4 亿/2 GWh）但 K5 FAIL（1 年以上账龄 47.83%）+ K2 实测 2 亿/GWh
+    低于卖方口径 50%；高波动期权配置 5% 不超
+  upgrade_triggers:
+  - 2026 H1 应收 1 年以上账龄稳定在 50-55% 不进一步恶化
+  - 欣界能源 2 GWh 量产线第二期订单或第二个客户名单披露
+  - 单 GWh 价值量从 2 亿爬升到 ≥2.5 亿
+  quarantine: false
+- name: 曼恩斯特
+  ticker: SZSE_301325
+  score: 3.0
+  tier: watch
+  topic_created: false
+  topic_slug: null
+  thesis_one_liner: 涂布模头进口替代已突破，但本轮仅 mat-eb8634 提供 2026E PE 42.5x；数据覆盖不足，2026 中报披露后再升级
+  upgrade_triggers:
+  - 2026 H1 收入与净利数据披露
+  - 涂布机+模头组合订单与先导/利元亨配套关系清晰
+  - 固态产线模头适配公告
+  quarantine: false
+- name: 纳科诺尔
+  ticker: BSE_832522
+  score: 3.0
+  tier: watch
+  topic_created: false
+  topic_slug: null
+  thesis_one_liner: 干法辊压 4-22 辊系列 + 等静压 600 MPa 细分潜在赢家；合资清研纳科已进入验证测试；北交所流动性折价提供小市值高弹性窗口
+  upgrade_triggers:
+  - 2026 H1 / 中报披露干法订单单价
+  - 等静压客户名单与利元亨重叠度披露
+  - 北交所流动性折价缩窄至 PE 接近行业均值 37.8x
+  quarantine: false
+- name: 信宇人
+  ticker: SHA_688573
+  score: 1.5
+  tier: eliminated
+  topic_created: false
+  topic_slug: null
+  thesis_one_liner: 卤化物路线（非主流）+ 干法成膜一体机理论自洽但无验证；2024 主业亏损 + 2025 Q1 仍亏 + 无固态客户披露；保留
+    3% 极小仓位作双重非共识赌注
+  upgrade_triggers:
+  - 卤化物路线首个量产客户披露
+  - 干法成膜一体机首单订单
+  - 2026 H1 主业扭亏
+  quarantine: false
+cluster_tags:
+- solid-state-battery
+- ev-supply-chain
+- china-equipment
+- picks-and-shovels
+- lithium-battery-equipment

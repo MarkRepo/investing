@@ -190,6 +190,17 @@ def get_quality_screen_data(slug: str, variant: str) -> dict[str, Any]:
         return {"error": "no ticker", "has_data": False}
 
     ticker, market = resolved
+    return get_quality_data_by_ticker(ticker, market)
+
+
+def get_quality_data_by_ticker(ticker: str, market: str) -> dict[str, Any]:
+    """Ticker-level variant of get_quality_screen_data — no slug required.
+
+    Use this for peer-matrix lookups where peers have only a ticker (no
+    registered company topic yet). Auto-fetches if DB is missing/stale.
+    """
+    if not _is_fresh(ticker, market):
+        _fetch_and_store(ticker, market)
     conn = fin_io.connect()
     try:
         if market in ("SSE", "SZSE", "BSE"):
@@ -277,30 +288,47 @@ def get_quality_screen_data(slug: str, variant: str) -> dict[str, Any]:
         conn.close()
 
 
+def _peer_row_from_quality(data: dict[str, Any]) -> dict[str, Any]:
+    if not data.get("has_data"):
+        return {"error": data.get("error", "no data")}
+    roic_vals = [r.get("roic") for r in data.get("roic_3y", []) if r.get("roic")]
+    avg_roic = round(sum(roic_vals) / len(roic_vals), 2) if roic_vals else None
+    return {
+        "ticker": data.get("ticker"),
+        "revenue": data.get("latest_revenue"),
+        "gross_margin": data.get("latest_gross_margin"),
+        "roic_3y_avg": avg_roic,
+        "debt_to_equity": data.get("debt_to_equity"),
+    }
+
+
 def get_peer_comparison_data(
     slug: str, variant: str, peer_slugs: list[str]
 ) -> dict[str, Any]:
-    """Return comparison data for 10-peer-matrix workflow.
+    """Return comparison data for 10-peer-matrix workflow (slug-based).
 
     For each peer slug, fetches: revenue, 3Y avg ROIC, gross_margin,
     debt_to_equity. Returns {slug: {metrics}} dict.
     """
-    result = {}
-    for ps in peer_slugs:
-        data = get_quality_screen_data(ps, variant)
-        if data.get("has_data"):
-            roic_vals = [r.get("roic") for r in data.get("roic_3y", []) if r.get("roic")]
-            avg_roic = round(sum(roic_vals) / len(roic_vals), 2) if roic_vals else None
-            result[ps] = {
-                "ticker": data.get("ticker"),
-                "revenue": data.get("latest_revenue"),
-                "gross_margin": data.get("latest_gross_margin"),
-                "roic_3y_avg": avg_roic,
-                "debt_to_equity": data.get("debt_to_equity"),
-            }
-        else:
-            result[ps] = {"error": data.get("error", "no data")}
-    return result
+    return {ps: _peer_row_from_quality(get_quality_screen_data(ps, variant)) for ps in peer_slugs}
+
+
+def get_peer_comparison_data_by_tickers(peers: list[dict[str, str]]) -> dict[str, Any]:
+    """Ticker-level peer comparison — no registered company topics required.
+
+    peers: [{"key": "利元亨", "ticker": "688499", "market": "SSE"}, ...]
+    Returns {key: {metrics}} where key = peers[i]["key"] (display name).
+    """
+    out = {}
+    for p in peers:
+        key = p["key"]
+        ticker = p.get("ticker", "")
+        market = p.get("market", "")
+        if not ticker or not market:
+            out[key] = {"error": "missing ticker/market"}
+            continue
+        out[key] = _peer_row_from_quality(get_quality_data_by_ticker(ticker, market))
+    return out
 
 
 def get_financial_context(slug: str, variant: str) -> str:

@@ -1,5 +1,7 @@
 # 产出 02 — 周期定位 (Cycle Positioning)
 
+> **调度提示**：本文件是 04-synthesize 的**内容规范**，不直接 dispatch。实际由 `_shared.md` 描述的单 subagent 顺序生成 01-08 时按本文件填内容。如需单独重生成本份产出，参考 `_shared.md` § Dispatch Prompt 模板调整范围即可。
+
 **定位**：判断「这个行业现在在周期的哪个位置」，以及「接下来 12-24 个月的方向」  
 **训练知识比例**：约 70%（历史类比靠训练，当前定位靠资料）  
 **产出文件**：`prism/topics/{slug}/{variant}/outputs/02_cycle_positioning.md`

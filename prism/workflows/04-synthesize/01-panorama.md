@@ -1,5 +1,7 @@
 # 产出 01 — 商业全景 (Business Panorama)
 
+> **调度提示**：本文件是 04-synthesize 的**内容规范**，不直接 dispatch。实际由 `_shared.md` 描述的单 subagent 顺序生成 01-08 时按本文件填内容。如需单独重生成本份产出，参考 `_shared.md` § Dispatch Prompt 模板调整范围即可。
+
 **定位**：给完全不了解这个行业的人，用 1 份文档解释「这个生意是怎么运转的」  
 **训练知识比例**：约 60%（结合资料补充最新数据）  
 **产出文件**：`prism/topics/{slug}/{variant}/outputs/01_business_panorama.md`

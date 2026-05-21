@@ -293,11 +293,32 @@ def prism_detail(request: Request, slug: str, variant: str):
     try:
         manifest = manifest_io.read_manifest(slug, variant)
         mat_counts = manifest_io.material_count(slug, variant)
+        mineru_counts = manifest_io.mineru_state_counts(slug, variant)
     except FileNotFoundError:
         manifest = {"materials": []}
-        mat_counts = {"total": 0, "processed": 0, "unprocessed": 0}
+        mat_counts = {"total": 0, "processed": 0, "unprocessed": 0, "self_total": 0, "parent_total": 0}
+        mineru_counts = {}
 
     all_variants = topic_io.list_variants(slug)
+    thesis_versions = outputs_io.list_thesis_files(slug, variant)
+
+    # P4 coverage: 基于 current_version thesis 里的 K# 计算 todo 覆盖情况
+    coverage = None
+    roadmap_coverage = None
+    manifest_coverage = None
+    k_status = None
+    cur_v = (topic.get("thesis") or {}).get("current_version")
+    if cur_v is not None:
+        ks = outputs_io.extract_killer_questions(slug, variant, cur_v)
+        if ks:
+            coverage = topic_io.thesis_coverage(slug, variant, ks)
+            coverage["all_keys"] = ks
+            # G5: K# 验证进度（仅 v>=1 才有意义；v0 全部按 unverified）
+            k_status = outputs_io.extract_k_status(slug, variant, cur_v)
+        # roadmap coverage（计划）
+        roadmap_coverage = outputs_io.validate_roadmap_thesis_coverage(slug, variant, cur_v)
+        # manifest coverage（实际收集）
+        manifest_coverage = outputs_io.validate_manifest_coverage(slug, variant, cur_v)
 
     return templates.TemplateResponse(
         request,
@@ -309,6 +330,49 @@ def prism_detail(request: Request, slug: str, variant: str):
             "mat_counts": mat_counts,
             "variant": variant,
             "all_variants": all_variants,
+            "thesis_versions": thesis_versions,
+            "coverage": coverage,
+            "roadmap_coverage": roadmap_coverage,
+            "manifest_coverage": manifest_coverage,
+            "k_status": k_status,
+            "mineru_counts": mineru_counts,
+        },
+    )
+
+
+@router.get("/{slug}/{variant}/thesis/{version}")
+def prism_thesis(request: Request, slug: str, variant: str, version: int):
+    """View a specific thesis version (thesis_v{N}.md)."""
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+
+    try:
+        html_body = outputs_io.read_thesis_html(slug, variant, version)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Thesis v{version} not yet written")
+
+    all_variants = topic_io.list_variants(slug)
+    thesis_versions = outputs_io.list_thesis_files(slug, variant)
+
+    # P3 reverse refs: 每个 K# 对应攻它的 todo
+    ks = outputs_io.extract_killer_questions(slug, variant, version)
+    coverage = topic_io.thesis_coverage(slug, variant, ks) if ks else None
+    if coverage:
+        coverage["all_keys"] = ks
+
+    return templates.TemplateResponse(
+        request,
+        "prism/thesis.html",
+        {
+            "topic": topic,
+            "version": version,
+            "html_body": html_body,
+            "variant": variant,
+            "all_variants": all_variants,
+            "thesis_versions": thesis_versions,
+            "coverage": coverage,
         },
     )
 

@@ -1,0 +1,170 @@
+slug: global-solid-state-battery
+variant: claude-opus-4-7
+topic_type: industry
+display_name: 全球固态电池
+ticker: ""
+generated: '2026-05-19T20:00:00+08:00'
+data_freshness: '2026-Q1'
+data_freshness_basis: QS 10-Q（2026-03-31）+ SLDP 10-K（2025-12-31）+ SMM 价格盘（2026-05-19）+ 先导/璞泰来 2025 年报
+
+thesis_summary:
+  stance: 看多卖铲人 + 中性偏多 CATL + 看空 QS/SLDP 叙事股 + 中性偏空半固态概念股
+  confidence: 7
+  v0_to_v1_shift: 卖铲人看多强度 6→7（先导 2025 业绩 + 璞泰来材料毛利修复确认）；QS/SLDP 看空 6→7（QS 真实现金 burn 未改善 + SLDP 持续稀释）
+  cluster_tags: [solid-state-battery, ev-supply-chain, china-tech, picks-and-shovels]
+
+positions:
+  tier_1_high_conviction:
+    - ticker: SZSE_300450
+      name: 先导智能
+      role: 设备龙头
+      logic: 锂电设备 94.7 亿 +23%、生产 +72% 显著高于销售 +19%、固态相关订单未单列但备货激进
+      target_position_pct: 8
+      evidence_mat_ids: [mat-8282a6]
+    - ticker: SHA_688499
+      name: 利元亨
+      role: 设备 #2
+      logic: 半固态量产 + 干法电极工艺设备双线在手
+      target_position_pct: 5
+      evidence_mat_ids: [mat-71ce1d, mat-5b6fbd]
+    - ticker: SZSE_300073
+      name: 当升科技
+      role: 高镍正极
+      logic: 硫化物路线高镍正极 BOM 相对液态 +30% 包覆溢价池打开
+      target_position_pct: 5
+      evidence_mat_ids: [mat-89797a, mat-818f54]
+    - ticker: SHA_688005
+      name: 容百科技
+      role: 高镍正极
+      logic: 半固态/全固态客户共用 + 高镍价位 224600 元/吨成本传导能力强
+      target_position_pct: 5
+      evidence_mat_ids: [mat-818f54, mat-89797a]
+    - ticker: SHA_603659
+      name: 璞泰来
+      role: 负极 + 涂覆隔膜
+      logic: 2025 材料毛利率 32.93% +5.73pct 修复、涂覆隔膜固态适配
+      target_position_pct: 7
+      evidence_mat_ids: [mat-7cec5b]
+  tier_2_medium_conviction:
+    - ticker: SZSE_300750
+      name: 宁德时代-A
+      role: 电芯龙头
+      logic: 凝聚态 2026 Q3 首批交付 + 合肥 5 GWh 硫化物中试线投产、当前估值未给全固态 optionality
+      target_position_pct: 10
+      evidence_mat_ids: [mat-5b6fbd, mat-71ce1d]
+    - ticker: HKG_3750
+      name: 宁德时代-H
+      role: 电芯龙头（H 股折价）
+      logic: 相对 A 股折价 + 同样持有全固态 optionality
+      target_position_pct: 5
+      evidence_mat_ids: [mat-5b6fbd]
+  tier_3_short_or_avoid:
+    - ticker: NYSE_QS
+      name: QuantumScape
+      role: 美股纯电芯叙事股
+      logic: runway 3+ 年但 2027 SOP 不可信、真实现金 burn 5950 万美元/Q 未改善、Cobra 工艺良率未公开
+      target_position_pct: -3
+      evidence_mat_ids: [mat-8dff52, mat-5b6fbd]
+    - ticker: NASDAQ_SLDP
+      name: Solid Power
+      role: 美股硫化物电解质
+      logic: 2025 稀释 +11.5%、Ford 出局、SK On 总订单 8.3M USD、CFFO -73.4M 恶化
+      target_position_pct: -2
+      evidence_mat_ids: [mat-5e83ab]
+
+kill_criteria:
+  - id: k1_oem_sop_delay
+    description: 2 家以上头部车厂（丰田/比亚迪/日产/本田/宝马）将全固态 SOP 延期到 2030+
+    status: pending
+    check_at: '2026-Q4'
+    action_if_triggered: Tier 1 减仓 30%，重排 eVTOL 标的
+  - id: k2_lfp_price_collapse
+    description: LFP 动力电芯报价跌破 0.25 元/Wh（当前压实 ≥2.55 高端约 0.34 元/Wh）
+    status: pending
+    check_at: '2027-Q2'
+    action_if_triggered: Tier 1 减至半仓，转向 eVTOL / 高端消费电子
+  - id: k3_route_dominance
+    description: 硫化物路线被日韩独家锁定（专利墙）或氧化物路线干法电极良率持续 <60%
+    status: pending
+    check_at: '2027-Q1'
+    action_if_triggered: 重排 Tier 1 内部权重，减中国氧化物概念
+  - id: k4_semisolid_safety
+    description: 任一头部半固态车型出现 ≥3 起 BMS 起火/热失控事件
+    status: pending
+    check_at: '2026-持续'
+    action_if_triggered: 清仓半固态概念股，保留卖铲人
+  - id: k5_us_player_bankruptcy
+    description: QS/SLDP 任一家 2027 年前破产、低价收购或被退市
+    status: pending
+    check_at: '2027-Q1'
+    action_if_triggered: 强化美股叙事股看空、加仓中日卖铲人
+
+signposts:
+  - date: '2026-06'
+    event: CATL IR 5 场系列电话会
+    bull_signal: 凝聚态首批交付客户名单 + 硫化物中试线良率 ≥70%
+    bear_signal: 凝聚态延期 / 客户名单空白
+    triggered: null
+  - date: '2026-07-25'
+    event: QuantumScape 2026 Q2 财报
+    bull_signal: Cobra 24 层电芯出样 + PowerCo 进展更新
+    bear_signal: 现金 burn 升 / 再融资 RDO 发布
+    triggered: null
+  - date: '2026-08-15'
+    event: Solid Power 2026 Q2 财报
+    bull_signal: SK On 验证完成 + Samsung SDI JEA 实质推进
+    bear_signal: 客户名单收缩 / DOE 资金延期
+    triggered: null
+  - date: '2026-Q3'
+    event: 蔚来 ET9 / 智己 LS9 半固态车型月销月报
+    bull_signal: 月销破 5000 辆
+    bear_signal: 月销 <1000 辆 / 召回事件
+    triggered: null
+  - date: '2026-Q3'
+    event: 海目星 / 先导固态电池设备首单交付公告
+    bull_signal: 公告披露 + 客户为头部电芯厂
+    bear_signal: 交付推迟 / 客户为非头部
+    triggered: null
+  - date: '2026-10'
+    event: 丰田 Solid-State 1 全固态车型路试展示
+    bull_signal: 续航 ≥1000 km 实测验证
+    bear_signal: 取消展示 / 改为概念车
+    triggered: null
+  - date: '2026-11'
+    event: 比亚迪仰望 U8 改款 + 汉 L 半固态版上市
+    bull_signal: 终端售价无溢价倒挂
+    bear_signal: 上市推迟 / 续航缩水
+    triggered: null
+  - date: '2027-Q1'
+    event: QS PowerCo 量产授权 first-revenue 期
+    bull_signal: 首笔授权金到账
+    bear_signal: 沉默 / 重新谈判
+    triggered: null
+
+core_assumptions:
+  - id: a1
+    text: 全固态 2027-2030 进入小批量上车 → 量产爬坡，2030 渗透率至少 5%（GGII 中性口径减半）
+    falsified_if: 头部车厂 SOP 集体推迟 / 2027 全球出货 <50 GWh
+  - id: a2
+    text: 半固态 2026-2030 装车放量到 100+ GWh，过渡期至少 5 年
+    falsified_if: 半固态出现安全事件大规模退出 / 全固态提前到 2026 量产
+  - id: a3
+    text: 中国氧化物路线不被硫化物全面挤出
+    falsified_if: 日韩硫化物干法电极工艺率先突破且专利封锁
+  - id: a4
+    text: LFP 电芯报价底部不破 0.25 元/Wh
+    falsified_if: 2027 Q2 前 LFP 高端报价跌破 0.25 元/Wh
+  - id: a5
+    text: 头部车厂自研全固态最终仍要外采 80%+ 产能
+    falsified_if: 丰田/本田自研产线良率突破 + 取消外采
+
+research_maturity:
+  information_completeness: medium
+  conviction: medium_high
+  next_steps:
+    - 深挖海目星 / 利元亨干法电极设备订单（K3 + 卖铲人验证）
+    - 跟踪蔚来 / 智己半固态车型月销（K4 + 半固态生命周期）
+    - 等待 CATL 2026 Q2 IR 电话会（K1 + 凝聚态客户名单）
+    - 补全日韩硫化物专利地图（K3 关键空白）
+
+cluster_tags: [solid-state-battery, ev-supply-chain, china-tech, picks-and-shovels, us-spac-bust]
