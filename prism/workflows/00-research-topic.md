@@ -81,16 +81,70 @@ print('manifest 创建成功')
 
 ---
 
-## Step 5：基于训练知识做初步定向
+## Step 4.3：写训练知识 baseline（**新增 — 必跑**）
 
-**注意**：这一步 100% 使用 LLM 训练知识，不需要外部资料。目的是帮用户快速建立研究框架。
+**为什么必须做**：训练知识是研究的第一层数据源（web-search 第二层、用户兜底第三层）。先把"训练时记得什么"显式写下来，后续每条 web-search hit 都能对照"我有的 vs 新拿到的差在哪"。同时这份 baseline 是 Step 4.5 prescan 的种子——盲点列表直接转成 prescan 优先 query。
+
+**执行**：参 `prism/workflows/_baseline_knowledge.md` 模版，让 LLM（即当前主 agent）写一份 `prism/topics/{slug}/{variant}/baseline_knowledge.md`，五段结构：
+
+1. 关键事实记忆（含数字/时间/主体 + 置信度 高/中/低/uncertain）
+2. 关键人物 / 公司 / 产品
+3. 产业链 / 竞争格局认知
+4. **训练知识盲点（自我承认）** — 直接喂 Step 4.5 prescan
+5. 需要 web-search 校准的优先项
+
+```bash
+# 主 agent 用 Write 工具落盘 baseline_knowledge.md
+# 落盘后调脚本核实
+python3 -c "
+from prism.scripts.topic import has_baseline_knowledge
+print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
+"
+```
+
+**例外可跳过**：concept 类 topic（纯方法论）；用户明确说"不需要 baseline"。company / industry / arena 默认必跑。
+
+**纪律**：
+- 自评置信度保守（uncertain 优于编造）
+- 第四节的盲点列表直接喂给 Step 4.5 prescan 作为优先 query
+- 后续 03/04 引用训练知识时 cite `baseline_knowledge.md` 的 `[fact-NN]` 编号
+
+---
+
+## Step 4.5：Web Pre-scan（必跑 — 校准训练知识与最新现实）
+
+**为什么必须做**：LLM 训练截止与当前时间往往有几个月到一年的差距，对**时效性强的标的**（公司财报/政策动态/股价估值/突发事件），跳过 prescan 直接靠训练知识写 thesis_v0 会把过时事实当成"初判赌注"，导致 K# 设错、user_todos 攻打错方向、后续整轮研究偏航。
+
+**执行**：调用 `prism/workflows/_web_prescan_shared.md`，参数 `recency_days=90`，`triggered_by='00-prescan'`。
+
+注意：此时 thesis 还不存在，`build_search_queries` 仅会生成 **scope + company-event / industry-event / concept-update** 系列查询（不含 K#-derived），这是预期的——本轮目的是为"写出靠谱的 thesis_v0"打地基，K# 类查询留给 workflow 01 prescan。
+
+跑完后输出汇报模板：
+```
+✅ 00-prescan 完成：N 条查询 → 高/中/低 X/Y/Z → 入库 X+Y 份
+关键事实更新：
+  - {对 thesis 影响最大的 2-3 条新事实}
+```
+
+**例外可以跳过 prescan**：concept 类 topic（纯方法论/历史回顾，与近期事件无关）；用户明确说"用你脑子里的知识就行"。**company / industry / arena 默认必跑**。
+
+---
+
+## Step 5：基于训练知识 + prescan 数据做初步定向
+
+**注意**：相较旧版"100% 训练知识"，本步要求把 Step 4.5 入库的 web-search 资料（manifest 里的 web-search source_type 条目）作为事实校准源；训练知识做"框架/逻辑/远期判断"，prescan 数据做"近 90 天事实/财务/监管/价格"。
 
 产出以下**四部分**：5.0 thesis 表态写文件，5.1/5.2/5.3 直接在对话里输出。
 
 ### 5.0 LLM 初判 thesis（强制 — thesis-driven 研究的起点）
 
-**目的**：让 LLM 在阅读任何外部资料前先把"赌注"押下，后续所有研究都是去验证或推翻这个 thesis。
+**目的**：让 LLM 在 Step 4.5 prescan 数据校准之后、阅读卖方深度研报之前先把"赌注"押下，后续所有研究都是去验证或推翻这个 thesis。
 避免研究变成"百科全书式覆盖"，强制每条资料都要回答"这支持还是推翻我的初判？"
+
+**硬约束**：
+- thesis 里的财务数字（收入/EPS/PE/股价/AUM）必须引用 Step 4.5 入库的 web-search 资料中的数据，不得用训练时记忆数字
+- 在 frontmatter 加 `revised_after_prescan: true` 标记
+- `data_freshness` 字段写明"训练知识截止 YYYY-MM + workflow 00 web-prescan（含 XX 数据）"
 
 **要求**：写一份 `prism/topics/{slug}/{variant}/thesis_v0.md`，必须包含以下五段（每段都要写，不能跳过）：
 
@@ -133,6 +187,8 @@ Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` co
 - workflow 05 critic 评审后若有重大反转写 `thesis_v2.md`
 - workflow 07 drilldown 后或 workflow 99 决策记录前写新版本
 - 每次 set_thesis 都 append 到 history，不删除旧版本——保留判断演化轨迹
+
+**v1 起的写作约定（方案 C 全快照）**：thesis_v0 是天然全快照（五段式，无 parent）；从 v1 起所有 thesis 必须是"全快照 + 顶部 changelog"格式，本版自包含、不依赖历代章节。详见 `prism/workflows/04-synthesize/_shared.md` § "Scheme C 写作约定"。
 
 ### 5.1 领域概览（3-5 句话）
 - 这个行业/赛道/公司是什么
