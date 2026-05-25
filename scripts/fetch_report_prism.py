@@ -10,6 +10,18 @@ Usage:
     python -m scripts.fetch_report_prism SSE_688066 --year 2024 --slug cn-commercial-space
 
 Returns the downloaded file path (printed to stdout).
+
+LLM 工具用法（被 03/05 sub-agent dispatch 时）:
+    主 agent 在 03-extract 或 05-critic 流程中识别到"需要补一份具体年报/季报"时，
+    可以 dispatch sub-agent 运行本脚本：
+
+    python -m scripts.fetch_report_prism {market}_{code} --year YYYY [--type annual|q1|interim|q3]
+
+    sub-agent dispatch prompt 标准格式参 prism/workflows/_subagent_fetch_material.md。
+    脚本退出码 0 = 已下载到 prism/topics/{slug}/inbox/auto/（带 --slug）或 prism/inbox/auto/；
+    非 0 = 失败（让 sub-agent 报告失败原因）。
+
+    下载完成后由主 agent 跑 workflow 02 把 PDF 登记入 manifest（含 mineru 转换）。
 """
 from __future__ import annotations
 
@@ -310,13 +322,26 @@ _JP_KEYWORD = {
 }
 
 
+_SEC_FORM_TO_REPORT_TYPE = {
+    "10-K": "annual",
+    "10-Q": "quarterly",
+    "20-F": "annual",      # foreign private issuer 年报（中概股 ADR 常见）
+    "6-K": "quarterly",    # foreign private issuer 中期/月度披露
+    "40-F": "annual",      # 加拿大 issuer 年报
+}
+
+
 def fetch_sec(
     ticker: str,
     slug: str | None = None,
     variant: str | None = None,
-    forms: tuple[str, ...] = ("10-K", "10-Q"),
+    forms: tuple[str, ...] = ("10-K", "10-Q", "20-F", "6-K", "40-F"),
 ) -> list[Path]:
-    """Download latest SEC filings for a US ticker. Auto-registers in manifest if slug given."""
+    """Download latest SEC filings for a US ticker. Auto-registers in manifest if slug given.
+
+    Default forms 同时覆盖本土公司（10-K/10-Q）和外国发行人 ADR（20-F/6-K/40-F）。
+    一般一个 issuer 只会同时存在其中一组，互不冲突。
+    """
     import json
     import os
     import urllib.request
@@ -384,7 +409,8 @@ def fetch_sec(
                 dest.write_bytes(resp.read())
             log.info("Saved → %s (%.1f MB)", dest, dest.stat().st_size / 1e6)
         if slug:
-            _register_in_prism(slug, dest, "annual" if form == "10-K" else "quarterly", company_name, variant)
+            report_type = _SEC_FORM_TO_REPORT_TYPE.get(form, "quarterly")
+            _register_in_prism(slug, dest, report_type, company_name, variant)
         saved.append(dest)
     return saved
 

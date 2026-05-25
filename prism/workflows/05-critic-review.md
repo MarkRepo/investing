@@ -157,6 +157,24 @@ print(f"web-search 兜底：高/中/低 = {summary['n_high']}/{summary['n_mid']}
 - **保溯源链**：判 critic 缺口"已被消除"时必须 cite 新入库的 mat_id
 - URL/snippet 必须来自 WebSearch 工具实际返回，不得用训练记忆补 URL
 
+### Step 6.5b：缺口涉及多子问题时升级为 sub-agent 深挖
+
+如果 critic 缺口指向"K# 论证薄弱因为缺 3 个独立子问题的数据"——主 agent 应**dispatch sub-agent 并行深挖**而不是自己串行调 5×WebSearch：
+
+执行方式（参 `prism/workflows/_subagent_deep_search.md`）：
+
+```python
+# 主 agent 同时 dispatch 多个 sub-agent（不同 K# / 不同子问题各一）
+# 每个 sub-agent 独立跑 1-3 轮深挖
+# 全部回来后批量 register_web_search_batch
+```
+
+**适用判定**：
+- critic 列出 ≥3 个独立缺口子问题 → sub-agent
+- critic 列出 1-2 个简单缺口 → 主 agent 即兴 web-search（Step 6.5 原路径）
+
+**收回 verdict**：所有 sub-agent 入库后，重新读 critic 缺口判定是否被消除——逻辑同 Step 6.5。
+
 ---
 
 ## Step 7：定 verdict 并自动跳转 stage（**修 7**）

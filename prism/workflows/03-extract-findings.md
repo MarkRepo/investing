@@ -269,6 +269,26 @@ register_web_search_batch(
 - 即兴 web-search 必须填 addresses，否则 manifest coverage 算不进
 - URL/snippet 必须来自 WebSearch 工具实际返回，不得用训练记忆补 URL
 
+### 2.4b 深挖循环升级（可选）
+
+如果 2.4 的"即兴 1-3 条" 不够（如冲突点本身需要多角度验证），主 agent **升级为 dispatch sub-agent 跑深挖循环**：
+
+```
+主 agent 判断："1-3 条 query 不足以验证此冲突 → dispatch sub-agent"
+  ↓
+按 prism/workflows/_subagent_deep_search.md 模版构造 prompt
+  ↓
+Agent 工具调用（subagent_type='general-purpose', 不传 model）
+  ↓
+sub-agent 在自己 context 跑 1-3 轮 search → 返回 final message
+  ↓
+主 agent 解析 hits → register_web_search_batch（triggered_by='03-extract'）
+```
+
+**纪律**：
+- 一份资料 03 处理过程最多 dispatch 1 次 sub-agent（防"sub-agent 套娃"）
+- sub-agent prompt **必须**原文嵌入 _subagent_deep_search.md 的硬规约（防写文件幻觉）
+
 ---
 
 ## Step 3：标记资料已处理
