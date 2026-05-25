@@ -233,6 +233,44 @@ bias: bull|bear|neutral
 
 ---
 
+### 2.4 训练知识冲突触发即兴 web-search（新增）
+
+提取 finding 时如果遇到以下情况，**主 agent 可以即兴调用 WebSearch 验证一条**（不需要回 02 让用户跑 prescan）：
+
+- 资料中数字与 LLM 训练知识冲突（如资料说 "2024 年市占率 35%"，LLM 训练记忆是 25%）
+- 资料引用的事件 LLM 训练时不知道（训练截止后的新事件）
+- 资料给出的关键定性结论与 LLM 业内常识不一致
+
+执行方式（保持原 03 主流程不被打断）：
+
+1. 主 agent 在对话里调 `WebSearch` 工具，query 围绕冲突点构造（不超过 2 条）
+2. 拿到 hit 后用 Phase 1 加的 helper 一行入库：
+
+```python
+from prism.scripts.web_prescan import register_web_search_batch
+register_web_search_batch(
+    slug='{slug}', variant='{variant}',
+    query='冲突点查询词',
+    addresses=['{相关 K# 或 Q#}'],
+    triggered_by='03-extract',
+    hits=[
+        {'title': '...', 'url': 'https://...', 'snippet': '...'},
+        # 可选: 'confidence': 0.85, 'domain_tier': 'llm-judged-official'
+    ],
+)
+```
+
+3. 入库的 web-search material 在下一轮 03 处理时会自然进入 unprocessed 队列
+4. 在当前 finding 笔记里**注明**："此处与训练知识 / 资料 X 冲突，已即兴 web-search 入库 mat-xxx 备核"
+
+**纪律**：
+- 单份资料 03 处理过程中即兴 web-search 不超过 3 条（避免变成 prescan）
+- 若冲突点超过 3 条 → 标记 user_todos，stage 回退 02-gather-materials 走完整 prescan
+- 即兴 web-search 必须填 addresses，否则 manifest coverage 算不进
+- URL/snippet 必须来自 WebSearch 工具实际返回，不得用训练记忆补 URL
+
+---
+
 ## Step 3：标记资料已处理
 
 ```bash

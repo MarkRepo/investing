@@ -111,28 +111,134 @@ generated: {timestamp}
 
 ---
 
-## Step 7：更新状态
+## Step 6.5：critic 缺口先 web-search 兜底（**新增**）
+
+如果 Step 4 的修改建议指向"需要补 X 资料"或"K# 论证薄弱因为缺 Y 数据"，**先尝试 web-search 兜一轮**再决定 verdict——而不是直接 `request-more`。
+
+判定流程：
+
+```
+critic 找到缺口
+  ↓
+该缺口能用 web-search 找到？
+  ↓ Yes → 即兴 web-search 1-3 条 query → 入库 → 重新看 critic 缺口是否还成立
+  ↓ No  → 直接 verdict = request-more（让用户上传一手资料）
+```
+
+「能用 web-search 找到」的典型场景：
+- 公开数据：行业规模、监管文件、龙头公告、公开财报
+- 半公开：卖方研报标题/摘要、新闻报道、产业协会数据
+
+「web-search 不够」的典型场景：
+- 一手专家访谈、付费墙后内容、未公开内部数据、产业链调研
+
+执行：
+
+```python
+# 主 agent 在对话里调 WebSearch 拉一批 hit，再一行入库
+from prism.scripts.web_prescan import register_web_search_batch
+summary = register_web_search_batch(
+    slug='{slug}', variant='{variant}',
+    query='critic 缺口的精准查询',
+    addresses=['{涉及的 K#}'],
+    triggered_by='05-critic',
+    hits=[...],
+)
+print(f"web-search 兜底：高/中/低 = {summary['n_high']}/{summary['n_mid']}/{summary['n_low']}")
+```
+
+入库后**重新读一次相关 finding / 产出**，看 critic 缺口是否被消除：
+- 是 → verdict 改为 `approve` 或 `request-rewrite`（让 04 用新 mat 重写部分产出）
+- 否 → verdict 仍为 `request-more`，但在 user_todos 里只列 web-search 拿不到的部分
+
+**纪律**：
+- Step 6.5 即兴 web-search 不超过 5 条 query × 5-10 hit/query = 不超过 50 hit/critic 轮
+- 即兴 web-search 入库的 mat 在 verdict='request-rewrite' 时，set_output_status 把对应 output 标 stale
+- **保溯源链**：判 critic 缺口"已被消除"时必须 cite 新入库的 mat_id
+- URL/snippet 必须来自 WebSearch 工具实际返回，不得用训练记忆补 URL
+
+---
+
+## Step 7：定 verdict 并自动跳转 stage（**修 7**）
+
+根据 Step 3 评分 + Step 4 建议，给出三选一 verdict：
+
+| verdict | 何时选 | 后效 |
+|---|---|---|
+| `approve` | 评分 ≥4 / 反方反驳"中-弱" / 无重要遗漏 | stage → `done`，进入 06-daily-monitor |
+| `request-rewrite` | 评分 ≥3 但部分 K# 论证薄弱 / 某 output（如 04 隐含预期）需重写 | stage → `04-synthesizing`，调 `set_output_status` 把目标 output 标 `stale` |
+| `request-more` | 反方提出的关键证据当前 manifest 无覆盖 / 需要新一轮 web-search 或用户上传 | stage → `02-gather-materials`，调 `set_user_todos` 列出待补资料 |
 
 ```bash
-python -c "
-from prism.scripts.topic import set_next_actions, set_user_todos, set_output_status
-# Update next actions and user todos
-set_next_actions('{slug}', [
-    '批评者评审完成，根据建议补充：{重要建议}',
-    '下次复盘时重点关注：{关键验证点}',
-])
-set_user_todos('{slug}', [
-    '批评者评审已完成',
-    '建议采纳：根据评审意见补充/修改（说「深挖 {slug} 的{{问题}}」）',
-    '或说「记录决策 {slug}」记录最终投资决策',
-])
-# Bump version on living feed
+python3 << 'EOF'
+from prism.scripts.topic import set_critic_verdict, set_next_actions, set_user_todos, set_output_status, read_topic
+
+slug = '{slug}'
+variant = '{variant}'
+
+# 写 verdict + 自动 set_stage
+verdict = '{approve|request-rewrite|request-more}'
+summary = '{一句话总结评审结论，例如：thesis_v1 在 K3 论证较弱，建议补 Q1-Q2 同业对比}'
+t = read_topic(slug, variant)
+cur_v = (t.get('thesis') or {}).get('current_version')
+critic = set_critic_verdict(slug, variant, verdict, summary=summary, thesis_version=cur_v)
+print(f'verdict={critic[\"verdict\"]} → stage={critic[\"next_stage\"]}')
+
+# next_actions / user_todos 因 verdict 而异
+if verdict == 'approve':
+    set_next_actions(slug, [
+        '研究主题已闭环，下一步「监控 {slug}」启动 daily/weekly monitor',
+        f'thesis_v{cur_v} 已通过 critic-review',
+    ], variant)
+    set_user_todos(slug, [
+        {'task': '说「监控 {slug}」启动 06-daily-monitor', 'priority': 'P0', 'info_tier': 'public'},
+        {'task': '或说「记录决策 {slug}」固化最终投资决策', 'priority': 'P1', 'info_tier': 'public'},
+    ], variant)
+
+elif verdict == 'request-rewrite':
+    # 把要重写的 output 标 stale，下次 04-synthesize 会判其为 stale 自动重写
+    for ok in ['{output_key_to_rewrite}']:  # 主 agent 按评审结果填
+        try:
+            set_output_status(slug, ok, 'stale', variant)
+        except Exception:
+            pass
+    set_next_actions(slug, [
+        '说「合成 {slug}」重新跑 04，会按增量判定只重写 stale 的 output',
+        f'critic 建议：{summary}',
+    ], variant)
+
+elif verdict == 'request-more':
+    # 缺资料：让用户/web-search 来补，回 02-gather-materials
+    set_user_todos(slug, [
+        # 主 agent 按评审结论填具体待补项
+        {'task': '补充：{具体资料 / web-search 关键词}', 'priority': 'P0', 'info_tier': 'half_public', 'addresses': ['K?']},
+    ], variant)
+    set_next_actions(slug, [
+        '说「prism 推进 {slug}」回到 02-gather-materials，先跑 web-search prescan',
+        f'critic 缺口：{summary}',
+    ], variant)
+
+# living feed bump（所有 verdict 都做）
 try:
-    from prism.scripts.topic import read_topic
-    t = read_topic('{slug}')
     current = t.get('outputs_state', {}).get('08_living_feed', {}).get('version', 1)
-    set_output_status('{slug}', '08_living_feed', 'fresh', version=current + 1)
+    set_output_status(slug, '08_living_feed', 'fresh', variant, version=current + 1)
 except Exception:
     pass
-"
+EOF
 ```
+
+**注意**：
+- `set_critic_verdict` 会直接 `set_stage`，**不需要再手动 set_stage**
+- `request-rewrite` 路径走"标 stale + 04 重跑"——配合修 1 的 list_affected_outputs，未变章节不会被无谓重写
+- `request-more` 路径走 02-gather-materials，可直接顺手跑 _web_prescan_shared.md 查 critic 提的关键词
+- **若 critic 触发新的 thesis_v{N+1}**（无论 verdict 类型），新版本必须采用 Scheme C 全快照约定（详见 `prism/workflows/04-synthesize/_shared.md` § "Scheme C 写作约定"）——禁止只写增量 delta、禁止"见 v{N} §X"引用
+
+---
+
+## Step 8：刷新仪表盘（最终一步，必跑）
+
+```bash
+python -m prism.scripts.dashboard
+```
+
+评审若调整了 thesis 强度 / kill criteria status / signpost triggered，dashboard 必须重建以反映新状态。失败允许重试一次；仍失败记入 user_todos 不阻塞主流程。

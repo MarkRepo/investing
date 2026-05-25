@@ -20,6 +20,78 @@ print('question:', t['scope']['question'])
 - **资料量**：至少 3 份已处理资料，否则提示「资料不足，建议先收集更多资料」
 - **训练知识依赖**：每份产出明确标注哪些来自训练知识，哪些来自资料
 
+## 增量重写判定（默认开启）
+
+**目的**：避免 11 份产出每次都全重写——浪费 token 且让"未变章节"也升 version 引起噪声。
+
+```bash
+python3 -c "
+from prism.scripts.outputs import list_affected_outputs
+import json
+r = list_affected_outputs('{slug}', '{variant}')
+for k, v in r.items():
+    print(f'{k}: {v[\"reason\"]} (+{len(v[\"new_mat_ids\"])} new mats)')
+"
+```
+
+判定结果：
+- `new`：从未合成 → 必须写
+- `stale`：有新材料入库 → 必须重写
+- `fresh`：全部 mat 已纳入 → **跳过**
+
+**写完每份产出后**，主 agent 必须调用以下一行注册引用：
+
+```bash
+python3 -c "
+from prism.scripts.topic import set_output_referenced_mats
+set_output_referenced_mats('{slug}', '{output_key}', {mat_ids_list}, '{variant}')
+"
+```
+
+其中 `{mat_ids_list}` 是本份产出 frontmatter `## 信息来源` 段引用的所有 mat_id 列表。**未调用 → 下次仍判为 new/stale，浪费 token**。
+
+### 触发全重写（绕过增量判定）
+
+用户说「全重写所有 output」/「忽略增量」/「--full-rewrite」时，跳过 `list_affected_outputs`，对全部 9-11 份按 new 处理。常用于 thesis 大改、统一文风、修 schema 等场景。
+
+## 断点续跑（修 9：workflow resume）
+
+**目的**：11 份产出循环，单份失败不能阻断后续 10 份；失败要可见且可重跑。
+
+**模式**：每份产出包在 try/except 里：
+
+```bash
+python3 -c "
+from prism.scripts.topic import set_output_referenced_mats, set_output_error
+try:
+    # 主 agent 已用 Write 工具落盘 outputs/{output_key}.md
+    set_output_referenced_mats('{slug}', '{output_key}', {mat_ids}, '{variant}')
+except Exception as e:
+    set_output_error('{slug}', '{output_key}', str(e), '{variant}')
+    raise  # 主 agent 看到后继续下一份，不中断 11 份循环
+"
+```
+
+实践上主 agent 是用 Write 直接落盘，"失败"通常是 frontmatter 引用错 mat_id / addresses 不合 _ADDR_RE / 文件被外部锁。失败时调 `set_output_error` 标记，下一份继续。
+
+### 重跑失败的 output
+
+```bash
+python3 -c "
+from prism.scripts.topic import list_failed_outputs
+for f in list_failed_outputs('{slug}', '{variant}'):
+    print(f'  {f[\"output_key\"]}: {f[\"last_error\"][\"message\"]} @ {f[\"last_error\"][\"at\"]}')
+"
+```
+
+主 agent 把 `list_failed_outputs` 返回的 output_key 加进重跑队列；成功一份调一次 `set_output_referenced_mats` 自动抹掉 last_error。
+
+### 不要做的事
+
+- ❌ **不要 try/except 吞异常**：失败必须 raise，让用户在汇报里看到"X 份成功 / Y 份失败"
+- ❌ **不要在中途 commit 文件**：失败应只反映在 `outputs_state.last_error`，不留半成品 markdown
+- ❌ **不要重跑全部 11 份"为了清错"**：只重跑 `list_failed_outputs` 列出的
+
 ## 写入规范
 
 输出文件路径：`prism/topics/{slug}/{variant}/outputs/{output_key}.md`
@@ -229,13 +301,37 @@ print('收尾完成')
 
 收尾时主 agent **必读** `outputs/_synthesis_brief.md`（如不存在 — 资料 <10 跳过，则直接读 06+07 合成 v1），把 K1-K5（或对应 thesis 钩子）的 v0→v1 强度调整结论 dump 到 `prism/topics/{slug}/{variant}/thesis_v1.md`。
 
-thesis_v1.md 必须包含五段（同 thesis_v0 schema，但内容是基于 findings 的修正版）：
+#### Scheme C 写作约定（v1 起所有 thesis 强制）
 
-1. **核心 thesis（1 句话）** — 修正后的核心观点
-2. **强度评分** — 整体 1-10（v0 强度 → v1 强度，明确写出变化值）
-3. **支持理由** — 来自 findings 的实证（每条注 mat_id）
-4. **反方观点（必写）** — findings 中浮现的对立信号（每条注 mat_id）
-5. **Killer Questions K1-K5 现状** — 每条标注：`已验证支持` / `已验证反驳` / `仍未确定` + 关键 mat_id
+任何 `thesis_v{N}.md`（N≥1）必须是**全快照**：包含当前完整的核心 thesis / 支持理由 / 反方观点 / K# 现状表 / 应对策略 / catalyst / 数据缺口 / 思维过程留痕，**不依赖 v{N-1} 章节即可独立阅读**。
+
+强制结构：
+
+1. **frontmatter** 加 `parent_version: {N-1}` + `writing_convention: 方案 C 全快照 + 顶部 changelog`
+2. **§ 0. v{N-1} → v{N} changelog** — 5-10 行 release notes 帮 review 者快速定位增量（仅 review 用，正文不依赖）
+3. **§ 1. 核心 thesis（当前完整版）** — 一句话观点 + 强度评分 + 估值带 + 时间维度
+4. **§ 2. 支持理由（当前完整清单）** — 累积所有看空逻辑（含历代沉淀 + 本版新增），分类编号
+5. **§ 3. 反方观点（当前完整清单）** — 累积所有看多逻辑（含历代沉淀 + 本版新增 + critic 强反驳），分类编号
+6. **§ 4. Killer Question 现状表（K1-K{n} 完整）** — 表格列：K# / 主题 / 当前状态 / 触发条件
+7. **§ 5. 应对策略矩阵** — 价格区间 × 动作
+8. **§ 6. catalyst 时点表** — 当前完整 catalyst 序列
+9. **§ 7. 数据缺口** — P0/P1/P2 分级 + 期望解决路径
+10. **§ 8. 思维过程留痕** — 已知 / 刻意避开的偏见 / 关键差异
+11. **§ 9. 信息来源** — 训练知识占比 + 关键 mat_id
+
+**硬约束**：
+- 禁止写「见 v{N-1} §X」「同 v{N-1} 不变」等需读老版本才能理解的引用
+- 禁止只写"v{N-1} → v{N} 增量"而省略其他章节
+- v0 是天然全快照（无 parent），五段式（见 00-research-topic 5.0）；v1 起改用本约定 11 段式
+
+**为什么这样写**：用户阅读 thesis_vN 时只需打开一个文件即可看到当前完整画像；老版本（thesis_v0/v1/...）作为时点 archive 保留，仅供需要还原"当时怎么想的"时翻阅，不作为日常 review 的依赖。
+
+#### thesis_v1.md 必须包含的核心内容（套用上述 11 段结构）
+
+- **核心 thesis** — 修正后的核心观点（含强度评分 v0 → v1 变化值）
+- **支持理由** — 来自 findings 的实证（每条注 mat_id）
+- **反方观点（必写）** — findings 中浮现的对立信号（每条注 mat_id）
+- **Killer Questions K1-K5 现状** — 每条标注：`已验证支持` / `已验证反驳` / `仍未确定` + 关键 mat_id
 
 写完调脚本登记：
 
@@ -255,6 +351,29 @@ print('thesis v1 已登记')
 
 如果 brief 显示「v0 与 findings 完全契合，无需修正」，仍写 v1 但 summary 注明 `[与 v0 一致]`，便于后续 critic-review 锚定时点。
 
+**stage 推进到 critic-review（修 7）**：04 完成后 stage 自动应为 `04-post-synthesis` → 由 next_stage 推到 `05-critic-review`。**company / default 类型必须跑 critic-review** 才能进 done；industry / arena 走 09/10 分支不强制（critic 是可选的）。
+
+```bash
+python3 -c "
+from prism.scripts.topic import read_topic, set_stage, next_stage
+t = read_topic('{slug}', '{variant}')
+ns = next_stage(t['type'], t['stage'])
+if ns == '05-critic-review':
+    set_stage('{slug}', '05-critic-review', '{variant}')
+    print('→ 05-critic-review 已就绪，告诉用户「评审 {slug}」启动 workflow 05')
+"
+```
+
+**刷新仪表盘（最终一步，必跑）**：
+
+任何 sidecar / thesis / stage 落盘后，dashboard.md 不会自动更新。每次 04-synthesize 完整收尾后必须重建仪表盘：
+
+```bash
+python -m prism.scripts.dashboard
+```
+
+输出 `dashboard 已生成 → prism/dashboard.md`。如失败（行情拉取超时等），允许重试一次；仍失败则记入 user_todos「手动 rebuild dashboard」，不阻塞主流程。
+
 **自动触发扩展产出**：根据 topic type 判断是否需要自动生成 09/10：
 
 - **topic_type = industry** → 自动运行 workflow `09-industry-to-arenas`（选拔 arena）
@@ -273,3 +392,35 @@ print('thesis v1 已登记')
 - [ ] 有明确的「哪里可能是错的」
 - [ ] 训练知识和资料来源有区分标注
 - [ ] 字数适当（800-2000字为宜，过长反而难用）
+
+---
+
+## 即兴 web-search（新增）
+
+合成某份产出过程中，如发现某段需要的关键事实数据**当前 manifest 缺失**（如"2025 Q3 全球 EV 销量"、"某公司最新季报营收"），主 agent 可以即兴调一次 WebSearch 而不必回退 02：
+
+适用场景（**只在以下情况**才即兴）：
+- 04 写产出时缺一个具体数字（销量/单价/市占率/估值倍数）
+- 该数字训练知识无法准确给出（时效性过新）
+- 已有 manifest 里搜了所有 findings 都没覆盖
+
+执行（与 03-extract 用同一 helper）：
+
+```python
+from prism.scripts.web_prescan import register_web_search_batch
+register_web_search_batch(
+    slug='{slug}', variant='{variant}',
+    query='缺失数据查询词，例如 "global EV sales 2025 Q3 IEA"',
+    addresses=['{对应 K# 或 Q#}'],
+    triggered_by='04-synth',
+    hits=[...],  # WebSearch 返回的 hit
+)
+```
+
+入库后在产出 frontmatter 的 `mat_ids_referenced` 列表中加入新 mat_id，确保 `set_output_referenced_mats` 调用时引用正确。
+
+**纪律**：
+- 单份产出合成过程即兴 web-search 不超过 5 条（避免膨胀）
+- 引用 web-search 入库 material 时**仍需写 mat_id**（不准直接引 WebSearch URL，保溯源链）
+- 如果即兴搜不到 → 在该段产出中标注"此处数据缺失，建议人工补充"，不要编造数字
+- URL/snippet 必须来自 WebSearch 工具实际返回，不得用训练记忆补 URL
