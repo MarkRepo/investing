@@ -1,0 +1,96 @@
+slug: global-ai-drug-gene-edit
+display_name: AI辅助药物研发与基因编辑
+type: industry
+created: '2026-05-22T07:27:21.986575+00:00'
+status: active
+stage: done
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: AI 制药与基因编辑两大前沿赛道，哪些标的值得 2-3 年维度配置？两者交叉点是否会催生新平台公司？
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-22T12:59:00.647714+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-22T12:59:00.654716+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-22T12:59:00.660690+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-22T12:59:00.666314+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-22T12:59:00.672864+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-22T12:59:00.678286+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-22T12:59:00.684233+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-22T12:59:00.689838+00:00'
+    status: fresh
+    data_freshness: null
+  09_industry_to_arenas:
+    version: 1
+    last_updated: '2026-05-22T13:06:01.974185+00:00'
+    status: fresh
+    data_freshness: null
+parent_materials: []
+next_actions:
+- 父 topic 已 done；如需上修强度可补 16 份 K3/K4/K5 资料
+- 3 个 stub arena topic 已就位 (global-in-vivo-gene-edit-rare-disease / cardiovascular
+  / global-base-editing-platform)，需用户决定推进顺序
+- 可选 workflow 06 daily monitor 启动监控
+user_todos:
+- task: 决定优先推进哪个 arena (推荐 in-vivo-rare-disease, K1 已强支持)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 是否启动 daily monitor 追踪 8 个 arena 的 monitor_metrics
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+thesis:
+  current_version: 1
+  last_updated: '2026-05-22T12:59:00.695377+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-22T07:28:51.822289+00:00'
+    summary: 分化看法（强度6/10）：看多头部已商业化平台（Vertex/CRISPR、Schrödinger、晶泰）+ 看空二线纯叙事 AI 制药；AI×基因编辑交叉点仍早期。结构性
+      alpha > 趋势性 beta。
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-22T12:59:00.695380+00:00'
+    summary: 超配 in vivo 头部 (NTLA HAELO Phase 3 阳性+rolling BLA, BEAM-302 60mg pivotal
+      H2 2026)；减配 ex vivo Casgevy 代理 CRSP (VRTX 全年仅 64 例锁死 K2)；中性 VRTX；AI 制药/中国基因编辑待
+      K3/K4/K5 校准

@@ -11,28 +11,38 @@
     {%- set _active = (_path == '/' if href == '/' else (_path == href or _path.startswith(href + '/'))) -%}
     <a href="{{ href }}" class="{{ extra }}{% if _active %}{% if extra %} {% endif %}active{% endif %}">{{ label }}</a>
   {%- endmacro %}
+  {% macro _navlink_disabled(label) -%}
+    <span class="nav-disabled" title="暂未启用">{{ label }}</span>
+  {%- endmacro %}
+  <style>
+    nav.top span.nav-disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      user-select: none;
+      pointer-events: none;
+    }
+  </style>
   <nav class="top">
     {{ _navlink('/', 'investing', 'brand') }}
     {{ _navlink('/prism', '研究') }}
-    {{ _navlink('/companies', '公司') }}
     {{ _navlink('/financials', '财务') }}
     {{ _navlink('/prices', '行情') }}
-    {{ _navlink('/earnings-review', '对照') }}
-    {{ _navlink('/catalysts', '催化剂') }}
-    {{ _navlink('/competence-map', '能力图') }}
-    {{ _navlink('/regime', '钟摆') }}
     {{ _navlink('/digest', '研报摘要') }}
-    {{ _navlink('/insights', '备忘录') }}
-    {{ _navlink('/search', '搜索') }}
     <span class="nav-sep"></span>
-    {{ _navlink('/watchlist', '观察池') }}
-    {{ _navlink('/portfolio', '持仓') }}
-    {{ _navlink('/performance', '业绩') }}
-    {{ _navlink('/review', '复盘') }}
-    {{ _navlink('/journal', '日志') }}
-    {{ _navlink('/discipline', '自律') }}
-    {{ _navlink('/qa', '告警') }}
-    <span class="kbd-hint">键盘：<kbd>g</kbd><kbd>h/c/w/p/j/e/r/f/s/m</kbd> 跳转 · <kbd>/</kbd> 搜索</span>
+    {{ _navlink_disabled('公司') }}
+    {{ _navlink_disabled('对照') }}
+    {{ _navlink_disabled('催化剂') }}
+    {{ _navlink_disabled('能力图') }}
+    {{ _navlink_disabled('钟摆') }}
+    {{ _navlink_disabled('备忘录') }}
+    {{ _navlink_disabled('搜索') }}
+    {{ _navlink_disabled('观察池') }}
+    {{ _navlink_disabled('持仓') }}
+    {{ _navlink_disabled('业绩') }}
+    {{ _navlink_disabled('复盘') }}
+    {{ _navlink_disabled('日志') }}
+    {{ _navlink_disabled('自律') }}
+    {{ _navlink_disabled('告警') }}
   </nav>
   <main class="{% block main_class %}{% endblock %}">
     {% block content %}{% endblock %}

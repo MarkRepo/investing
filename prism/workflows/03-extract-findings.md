@@ -6,6 +6,44 @@
 
 ---
 
+## Step 0：扫 topic-scope inbox（**进 03 前强制**）
+
+用户手动放的研报/年报通常落在 `prism/topics/{slug}/inbox/`，**不一定全在 manifest 里**。直接跳 Step 1 会漏掉这些文件。
+
+```bash
+python3 << 'EOF'
+from pathlib import Path
+from prism.scripts.manifest import read_manifest
+
+slug = '{slug}'
+variant = '{variant}'
+inbox = Path(f'prism/topics/{slug}/inbox')
+if not inbox.exists():
+    print('无 topic-scope inbox，跳过')
+else:
+    try:
+        m = read_manifest(slug, variant)
+        known = {x['filename'] for x in m.get('materials', [])}
+    except FileNotFoundError:
+        known = set()
+    new_files = [f for f in inbox.iterdir() if f.is_file() and f.name not in known]
+    if new_files:
+        print(f'⚠ topic-scope inbox 有 {len(new_files)} 份未登记文件:')
+        for f in new_files:
+            print(f'  {f.name}  ({f.stat().st_size/1024:.0f}KB)')
+        print()
+        print('→ 必须先跑 workflow 02-gather-materials 登记 + 改名 + 自动 mineru')
+        print('  (workflow 02 Step 2 会用 pdftotext 识别 H3_AP*.pdf 等无语义文件名;')
+        print('   Step 4.5 自动 mineru sell-side/industry/policy PDF)')
+        raise SystemExit(1)
+    print(f'✓ topic-scope inbox 全部已登记 ({len(known)} 份)')
+EOF
+```
+
+如果非 0 退出，**回 workflow 02 处理 inbox**，再回来跑 Step 1。
+
+---
+
 ## Step 1：读取未处理资料清单
 
 ```bash
@@ -26,15 +64,23 @@ for i in items:
 
 ### Subagent dispatch 规约（如果走 subagent）
 
-如果用 subagent 提取 findings：
+**架构铁律：subagent 只产内容，主 agent 落盘**
 
-- `subagent_type`: **必须 `general-purpose`**，不能用 `Explore`（read-only 无 Write）
+经 2026-05-22 4/4 测试（含原文嵌入硬规约的 retry），subagent Write findings_{mat_id}.md 时**总会幻觉出"Write 被拦截"错误**（实际不存在 hook），且声称的"Bash heredoc 绕过"/「.write_test 写入成功」也常常是幻觉。详见 [[subagent-write-hallucination]]。
+
+**所以**：subagent **不再负责写 findings 文件**——只负责产出 markdown 内容到 final message。主 agent 接收后用 Write 工具落盘。
+
+dispatch subagent 时：
+
+- `subagent_type`: **必须 `general-purpose`**
 - `model`: **不传**，跟随主 agent
-- prompt 开头强制加 **Step 0 (validation)**：
-  > "Step 0: 先 Write 一行 'ok' 到 `outputs/.write_test_{mat_id}` 确认权限。成功立即继续；只有 Write 工具真返回错误时才回 'BLOCKED' 并终止——主 agent 接手。**不要预判 Write 会失败而把 markdown 塞回 final message——这是已知的 subagent 行为幻觉，发生过 2/5 次。**"
-- 完成后 final message 只回："DONE: findings_{mat_id}.md written ({字数}). Key signals: {1-2 句}"
+- prompt 末尾必须原文加入：
+  > "**重要：你不要调用 Write/Edit 工具写文件，也不要用 Bash heredoc 写文件。** 你的全部 markdown 产出必须以 ```markdown\n...\n``` 代码块形式整体放在 final message 中。主 agent 会接收后落盘。final message 格式：(1) 1-2 句 key signals 摘要；(2) 一个完整的 markdown 代码块，包含 frontmatter + 全部 findings。"
 
-如果 subagent 真触发 BLOCKED（极少数），主 agent 用返回的 markdown 直接 Write 落盘。
+主 agent 收到 subagent final message 后：
+1. 提取 markdown 代码块内容
+2. 用 Write 工具写到 `prism/topics/{slug}/{variant}/outputs/findings_{mat_id}.md`
+3. 用 `ls -la` 验证文件 mtime + 大小
 
 ### 2.1 预处理：根据文件类型准备内容
 

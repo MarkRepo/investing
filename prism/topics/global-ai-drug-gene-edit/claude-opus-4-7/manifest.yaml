@@ -1,0 +1,172 @@
+slug: global-ai-drug-gene-edit
+variant: claude-opus-4-7
+updated: '2026-05-22T12:38:18.748222+00:00'
+materials:
+- id: mat-a66935
+  filename: 2026_CRSP_10-Q_2026-05-04.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:21.106743+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — CRISPR Therapeutics AG
+  mineru_state: not_needed
+- id: mat-ae69f9
+  filename: 2025_CRSP_10-K_2026-02-12.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:22.178703+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — CRISPR Therapeutics AG
+  mineru_state: not_needed
+- id: mat-3a51f9
+  filename: 2026_NTLA_10-Q_2026-05-11.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:24.049931+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Intellia Therapeutics, Inc.
+  mineru_state: not_needed
+- id: mat-8d4e6d
+  filename: 2025_NTLA_10-K_2026-02-26.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:24.778008+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Intellia Therapeutics, Inc.
+  mineru_state: not_needed
+- id: mat-2b431a
+  filename: 2026_BEAM_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:26.186028+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Beam Therapeutics Inc.
+  mineru_state: not_needed
+- id: mat-797ff7
+  filename: 2025_BEAM_10-K_2026-02-24.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:27.123285+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Beam Therapeutics Inc.
+  mineru_state: not_needed
+- id: mat-1fe402
+  filename: 2026_VRTX_10-Q_2026-05-05.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:28.363453+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — VERTEX PHARMACEUTICALS INC / MA
+  mineru_state: not_needed
+- id: mat-49861e
+  filename: 2025_VRTX_10-K_2026-02-13.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:29.145496+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — VERTEX PHARMACEUTICALS INC / MA
+  mineru_state: not_needed
+- id: mat-1b1169
+  filename: 2026_SDGR_10-Q_2026-05-05.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:30.873093+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Schrodinger, Inc.
+  mineru_state: not_needed
+- id: mat-f52c6f
+  filename: 2025_SDGR_10-K_2026-02-25.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:31.615225+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Schrodinger, Inc.
+  mineru_state: not_needed
+- id: mat-6075e3
+  filename: 2026_RXRX_10-Q_2026-05-06.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:32.944516+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — RECURSION PHARMACEUTICALS, INC.
+  mineru_state: not_needed
+- id: mat-2266b4
+  filename: 2025_RXRX_10-K_2026-02-25.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:33.744370+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — RECURSION PHARMACEUTICALS, INC.
+  mineru_state: not_needed
+- id: mat-2ba207
+  filename: 2026_LLY_10-Q_2026-04-30.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:35.089451+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+- id: mat-5cd89a
+  filename: 2025_LLY_10-K_2026-02-12.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:35.785283+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+- id: mat-5b9b17
+  filename: 2026_PRME_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:37.008209+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Prime Medicine, Inc.
+  mineru_state: not_needed
+- id: mat-ee9586
+  filename: 2025_PRME_10-K_2026-03-03.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:37.564499+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Prime Medicine, Inc.
+  mineru_state: not_needed
+- id: mat-dedb84
+  filename: 2026_RLAY_10-Q_2026-05-05.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:39.292002+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Relay Therapeutics, Inc.
+  mineru_state: not_needed
+- id: mat-6446ea
+  filename: 2025_RLAY_10-K_2026-02-26.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:39.883431+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Relay Therapeutics, Inc.
+  mineru_state: not_needed
+- id: mat-e1fcc0
+  filename: 2026_ABCL_10-Q_2026-05-11.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:41.163819+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — AbCellera Biologics Inc.
+  mineru_state: not_needed
+- id: mat-7f2eb1
+  filename: 2025_ABCL_10-K_2026-02-24.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:41.899610+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — AbCellera Biologics Inc.
+  mineru_state: not_needed
+- id: mat-ed8d8d
+  filename: 2026_PFE_10-Q_2026-05-05.htm
+  source_type: quarterly-report
+  added: '2026-05-22T09:06:43.335033+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — PFIZER INC
+  mineru_state: not_needed
+- id: mat-8b910c
+  filename: 2025_PFE_10-K_2026-02-26.htm
+  source_type: annual-report
+  added: '2026-05-22T09:06:44.082223+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — PFIZER INC
+  mineru_state: not_needed
+- id: mat-8d91b3
+  filename: 2025_HK02228_annual_2026-04-17_XTALPI.pdf
+  source_type: annual-report
+  added: '2026-05-22T12:24:09.742096+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — XTALPI
+  mineru_state: not_needed
+- id: mat-72fda8
+  filename: 2024_HK02228_prospectus_2024-06-04_QUANTUMPH-P.pdf
+  source_type: prospectus
+  added: '2026-05-22T12:24:16.412354+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — XTALPI
+  mineru_state: not_needed

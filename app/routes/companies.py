@@ -66,26 +66,8 @@ register_filters(templates)
 
 @router.get("")
 def list_page(request: Request):
-    rows = company_io.list_companies()
-    # annotate: which tickers are already in watchlist (any stage) / portfolio
-    wl_by_ticker: dict[str, list[str]] = {}
-    for stage in watchlist_io.STAGES:
-        for r in watchlist_io.read_watchlist(stage):
-            t = r.get("ticker", "")
-            if t:
-                wl_by_ticker.setdefault(t, []).append(stage)
-    positions = {
-        (r.get("market", ""), r.get("ticker", ""))
-        for r in portfolio_io.read_positions()
-    }
-    for row in rows:
-        row["_wl_stages"] = wl_by_ticker.get(row["ticker"], [])
-        row["_in_portfolio"] = (row["market"], row["ticker"]) in positions
-    return templates.TemplateResponse(
-        request,
-        "companies/list.html",
-        {"rows": rows},
-    )
+    """Legacy list page is retired — companies are now indexed via /prism."""
+    return RedirectResponse(url="/prism", status_code=302)
 
 
 @router.get("/new")

@@ -1,0 +1,218 @@
+slug: global-ssb-electrolyte
+output_key: 07_decision_kit
+version: 1
+generated: 2026-05-22T10:30:00+08:00
+topic_type: arena
+thesis_version: v1
+
+thesis_v1_one_line: >
+  硫化物降本与全固态量产实质从 2027 推迟至 2028-2030；上游硫化锂 + 锂金属的卖铲人逻辑仍成立但需要新的可观测节点；
+  中游正极公司估值已透支需短空 + 长多观察。
+
+k_questions:
+  - id: K1
+    claim: 硫化锂千吨级 2027 准点投产
+    v0_strength: 7
+    v1_strength: 5
+    key_evidence:
+      bull:
+        - mat-afa444  # 三井 A-SOLiD® 初期量产工场开工
+        - mat-c660fb  # 父级 H3 招股书确认 Li2S 全球<100吨稀缺
+      bear:
+        - mat-ec4e1e  # 出光高机能材 capex 仅 80.8 亿，维持水平
+        - mat-3770c8  # 三星 SDI 年报 SSB R&D 项目库 0 条
+        - mat-f6cc96  # 父级五矿明确推迟到 2030 后
+  - id: K2
+    claim: 头部正极厂硫化物中试线 2025H2 良率 ≥70%
+    v0_strength: -3
+    v1_strength: -5
+    key_evidence:
+      bear:
+        - mat-f09fd5  # 容百中试线从 2025H2 后移到 2026H2，良率 0 披露
+        - mat-cc4b89  # 当升主推氯碘卤化物而非硫化物
+  - id: K3
+    claim: LPSC 8000→4000 元/kg 2027 兑现
+    v0_strength: 7
+    v1_strength: 3
+    key_evidence:
+      bear:
+        - mat-756a01  # SLDP 隐含 ¥7,500/kg 距 ¥4,000 差 47%
+        - mat-9fb50a  # SLDP 10-Q 不给量化降本路径
+        - mat-89797a  # 父级 SMM 6 个月无独立 SKU
+      bull:
+        - mat-f6cc96  # 父级远期电解质原材料 12.3 万元/吨数学上可达
+  - id: K4
+    claim: 锂金属负极规模化
+    v0_strength: 7
+    v1_strength: 2
+    key_evidence:
+      bear:
+        - mat-ccf921  # SES 三家 OEM JDA 全部 2025 内 conclude
+        - mat-8c64a7  # SES 2026 Q1 10-Q 确认场景切换至无人机
+        - mat-fd945b  # 赣锋唯一具名装机仅沃飞 AE200 eVTOL
+      bull:
+        - mat-e62c68  # 父级赣锋全球金属锂产能第一
+
+  - id: K5
+    claim: 日韩专利墙 + 中国厂商授权/无效化诉讼
+    v0_strength: 2
+    v1_strength: 0
+    key_evidence:
+      info_gap:
+        - mat-afa444  # 三井决算短信全文无专利相关字
+        - mat-ec4e1e  # 出光决算短信全文无专利相关字
+        - mat-756a01  # SLDP 点名 CASIP 但未提诉讼
+
+kill_criteria:
+  - id: KILL-1
+    condition: 出光 2026-06-17 中计有報明确推迟硫化锂千吨级到 2028+
+    check_date: 2026-06-17
+    current_status: pending
+    action_if_triggered: 减仓 Cluster A/B 30%，清仓 Cluster D
+  - id: KILL-2
+    condition: 容百 / 当升 2026 H2 中试线良率 <50% 或继续不披露
+    check_date: 2026-12-31
+    current_status: partial_evidence
+    action_if_triggered: 加空 Cluster C
+  - id: KILL-3
+    condition: SES 或 SLDP 任一家 2026 H2 宣布现金链承压 / 裁员 ≥30%
+    check_date: 2026-12-31
+    current_status: partial_triggered_ses
+    action_if_triggered: 清仓 Cluster D
+  - id: KILL-4
+    condition: CATL 2026 H2 凝聚态新品性价比超 LPSC 路线 30%+
+    check_date: 2027-06-30
+    current_status: pending
+    action_if_triggered: 减仓 Cluster A/B 50%
+  - id: KILL-5
+    condition: SMM 至 2027 Q2 仍无独立硫化物电解质 SKU
+    check_date: 2027-06-30
+    current_status: not_triggered_yet
+    action_if_triggered: 减仓全部 cluster
+  - id: KILL-6
+    condition: 2027 全年无任何乘用车 OEM 公开锂金属负极 SOP 路线图
+    check_date: 2027-12-31
+    current_status: not_triggered_yet
+    action_if_triggered: 减仓 Cluster A 25%
+  - id: KILL-7
+    condition: DOE 暂停令实质执行 / 美国固态电池资金链断裂
+    check_date: 2026-12-31
+    current_status: risk_present
+    action_if_triggered: 清仓 Cluster D
+
+signposts:
+  - date: 2026-06-17
+    signal: 出光兴产有報披露中计 2026-2030 capex 节奏 + 硫化锂千吨级时点
+    importance: extreme
+    cluster_affected: [A, B, D]
+  - date: 2026-Q2-end
+    signal: SLDP 2026 Q2 10-Q 现金余额 + SK On pilot 出货
+    importance: high
+    cluster_affected: [A, D]
+  - date: 2026-H2
+    signal: 容百硫化物电解质中试线投产 + 良率首披
+    importance: high
+    cluster_affected: [C]
+  - date: 2026-Q3-Q4
+    signal: 三井金属 A-SOLiD® 初期量产工场投产时点 + 客户名单
+    importance: medium-high
+    cluster_affected: [B]
+  - date: 2026-H2
+    signal: SMM 是否上线独立硫化物电解质 SKU
+    importance: medium-high
+    cluster_affected: [A, B, C, D]
+  - date: 2026-H2
+    signal: CATL 凝聚态新品发布性价比
+    importance: medium
+    cluster_affected: [A, B, C, D]
+  - date: 2026-H2
+    signal: SES 2026 Q3-Q4 10-Q 现金余额 + 业务披露
+    importance: medium
+    cluster_affected: [D]
+  - date: 2027-H1
+    signal: 主流乘用车 OEM 锂金属负极 SOP 路线图
+    importance: extreme
+    cluster_affected: [A, F]
+  - date: 2027-Q2
+    signal: SMM 独立硫化物电解质 SKU 是否仍未上线
+    importance: medium
+    cluster_affected: [A, B, C, D]
+  - date: 2027-2028
+    signal: DOE $50M 里程碑兑现 + 美国新一届政府 DOE 政策连续性
+    importance: medium
+    cluster_affected: [D]
+
+cluster_tags:
+  - cluster_id: A
+    name: 上游卡点（硫化锂 + 金属锂卖铲人）
+    representative_tickers: [赣锋锂业(002460/01772.HK), 雅化集团(002497), 多氟多(002407), 新宙邦(300037)]
+    thesis_strength: 5
+    position_cap_pct: 40-50
+    key_nodes: [2026-06-17 出光中计, 2026 H2 SK On 出货]
+  - cluster_id: B
+    name: 日韩派电解质 + 设备
+    representative_tickers: [三井金属(5706.JP), 出光兴产(5019.JP), 三星SDI(006400.KS), LG化学(051910.KS)]
+    thesis_strength: 3
+    position_cap_pct: 20-25
+    key_nodes: [2026-06-17 出光有報, 三井 IR 说明会]
+  - cluster_id: C
+    name: 中国正极厂期权
+    representative_tickers: [容百科技(688005), 当升科技(300073), 振华新材(688707)]
+    thesis_strength: -3
+    position_cap_pct: 0-10
+    key_nodes: [2026 H2 容百中试线良率, 当升氯碘卤化物量产规划]
+  - cluster_id: D
+    name: 美股 SPAC 系
+    representative_tickers: [QuantumScape(QS), Solid Power(SLDP), SES AI(SES), Factorial Energy(未上市)]
+    thesis_strength: -5
+    position_cap_pct: 0-2
+    key_nodes: [现金链承压, 客户砍单, DOE 暂停]
+  - cluster_id: E
+    name: 设备商
+    representative_tickers: [先导智能(300450), 纳科诺尔(832522), 利元亨(688499), 赢合科技(300457)]
+    thesis_strength: 2
+    position_cap_pct: 10-15
+    key_nodes: [连续法 + 干法 pilot 设备订单, SLDP 2026 底 commissioning]
+  - cluster_id: F
+    name: eVTOL / 低空 / 国防场景
+    representative_tickers: [亿航智能(EH), 沃飞长空(未上市), 峰飞(未上市)]
+    thesis_strength: 1
+    position_cap_pct: 5-10
+    key_nodes: [2026-2027 eVTOL 装机量, 国防订单披露]
+
+research_maturity:
+  data_basis: 4
+  timepoint_grasp: 3
+  route_judgment: 3
+  valuation_anchor: 2
+  signal_system: 4
+  bull_bear_parity: 5
+  blindspot_recognition: 4
+  overall: 3.6
+
+blindspots:
+  - USPTO / JPO 硫化物电解质专利图谱
+  - 韩国 LGES / 三星 SDI 内部固态电池路线图
+  - 欧洲 ProLogium / Northvolt 现状
+  - 印度 / 东南亚 EV 政策对 SSB 需求拉动
+  - CASIP 内部企业排序 + 补助分配规则
+
+mat_id_index:
+  own_findings:
+    - mat-3770c8
+    - mat-756a01
+    - mat-8c64a7
+    - mat-9fb50a
+    - mat-afa444
+    - mat-cc4b89
+    - mat-ccf921
+    - mat-ec4e1e
+    - mat-f09fd5
+    - mat-fd945b
+  parent_findings:
+    - mat-c660fb
+    - mat-f6cc96
+    - mat-994a6e
+    - mat-13806e
+    - mat-89797a
+    - mat-e62c68

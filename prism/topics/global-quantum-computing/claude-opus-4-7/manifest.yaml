@@ -1,0 +1,137 @@
+slug: global-quantum-computing
+variant: claude-opus-4-7
+updated: '2026-05-23T01:47:07.808916+00:00'
+materials:
+- id: mat-902c40
+  filename: 2026_IONQ_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-05-22T12:20:49.537550+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — IonQ, Inc.
+  mineru_state: not_needed
+- id: mat-032370
+  filename: 2025_IONQ_10-K_2026-02-25.htm
+  source_type: annual-report
+  added: '2026-05-22T12:20:50.553389+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — IonQ, Inc.
+  mineru_state: not_needed
+- id: mat-030eeb
+  filename: 2026_RGTI_10-Q_2026-05-11.htm
+  source_type: quarterly-report
+  added: '2026-05-22T12:20:52.005319+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Rigetti Computing, Inc.
+  mineru_state: not_needed
+- id: mat-aa9195
+  filename: 2025_RGTI_10-K_2026-03-04.htm
+  source_type: annual-report
+  added: '2026-05-22T12:20:52.686106+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Rigetti Computing, Inc.
+  mineru_state: not_needed
+- id: mat-2e82b4
+  filename: 2026_QBTS_10-Q_2026-05-12.htm
+  source_type: quarterly-report
+  added: '2026-05-22T12:20:54.338248+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — D-Wave Quantum Inc.
+  mineru_state: not_needed
+- id: mat-55d3c2
+  filename: 2025_QBTS_10-K_2026-02-26.htm
+  source_type: annual-report
+  added: '2026-05-22T12:20:54.934547+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — D-Wave Quantum Inc.
+  mineru_state: not_needed
+- id: mat-fb02af
+  filename: 2026_QUBT_10-Q_2026-05-11.htm
+  source_type: quarterly-report
+  added: '2026-05-22T12:20:56.158635+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Quantum Computing Inc.
+  mineru_state: not_needed
+- id: mat-fa4949
+  filename: 2025_QUBT_10-K_2026-03-02.htm
+  source_type: annual-report
+  added: '2026-05-22T12:20:56.714658+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Quantum Computing Inc.
+  mineru_state: not_needed
+- id: mat-140f68
+  filename: 2024_688027_annual_2025-03-25_国盾量子.PDF
+  source_type: annual-report
+  added: '2026-05-22T12:20:57.099657+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 国盾量子
+  mineru_state: not_needed
+- id: mat-9f34e2
+  filename: 2025_LSEOXIG_annual_2025-06-13_OxfordInstrumentsPLC.html
+  source_type: annual-report
+  added: '2026-05-22T12:36:17.841074+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Oxford Instruments PLC
+  mineru_state: not_needed
+- id: mat-71e318
+  filename: 2025_LSEOXIG_semi_2025-11-11_OXFORDINSTRUMENTSPLC.html
+  source_type: quarterly-report
+  added: '2026-05-22T12:36:27.832682+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — OXFORD INSTRUMENTS PLC
+  mineru_state: not_needed
+- id: mat-d83292
+  filename: 2025-11_CAICT_量子信息技术发展与应用.pdf
+  source_type: industry-research
+  added: '2026-05-22T12:58:11.800597+00:00'
+  processed: true
+  notes: 信通院 2025 年最新版，涵盖量子计算/通信/测量产业链 + 中国政策
+  mineru_state: done
+  addresses:
+  - K2
+  - K3
+  - K4
+  - L1
+  - L2
+- id: mat-418688
+  filename: 2025-10_金元证券_量子深潜计算篇.pdf
+  source_type: sell-side-note
+  added: '2026-05-22T12:58:11.806170+00:00'
+  processed: true
+  notes: 金元证券 55 页，从比特到 Qubit 的范式转移
+  mineru_state: done
+  addresses:
+  - K1
+  - K2
+  - K4
+- id: mat-bde95b
+  filename: 2026-02_中邮证券_量子科技产业化加速推进.pdf
+  source_type: sell-side-note
+  added: '2026-05-22T12:58:11.810606+00:00'
+  processed: true
+  notes: 中邮证券专题(一)，全球产业化加速
+  mineru_state: done
+  addresses:
+  - K1
+  - K3
+  - K4
+- id: mat-c1766b
+  filename: 2023-12_CAICT_量子计算发展态势.pdf
+  source_type: industry-research
+  added: '2026-05-22T12:58:11.815351+00:00'
+  processed: true
+  notes: 信通院 2023 版（对照 2025 版看技术路线演进）
+  mineru_state: done
+  addresses:
+  - K2
+  - L1
+- id: mat-efcb7e
+  filename: 2025-06_McKinsey_Quantum_Technology_Monitor.pdf
+  source_type: industry-research
+  added: '2026-05-22T12:58:11.819902+00:00'
+  processed: true
+  notes: McKinsey 行业旗舰报告，市场规模/玩家/客户用例
+  mineru_state: done
+  addresses:
+  - K3
+  - K4
+  - K5

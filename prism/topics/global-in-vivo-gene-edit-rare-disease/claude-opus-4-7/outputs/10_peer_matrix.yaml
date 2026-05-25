@@ -1,0 +1,133 @@
+slug: global-in-vivo-gene-edit-rare-disease
+variant: claude-opus-4-7
+topic_type: arena
+display_name: In vivo CRISPR/base editing 罕见病 (HAE/AATD/HSD)
+generated: 2026-05-23T00:00:00+00:00
+data_freshness: 2026-Q1
+
+companies:
+  - name: NTLA
+    ticker: NTLA
+    score: 4.5
+    tier: shortlist
+    topic_created: false
+    topic_slug: us-intellia-ntla
+    thesis_one_liner: NTLA-2002 2027 H1 BLA 通过 + 2028 Q1 首年 $100-200M 销售 + ATTR-CM 2030 二号兑现 → EV $5-7B（current $3.0B 上行 60-130%）
+    upgrade_triggers: []
+    quarantine: false
+  - name: BEAM
+    ticker: BEAM
+    score: 4.0
+    tier: shortlist
+    topic_created: false
+    topic_slug: us-beam-therapeutics
+    thesis_one_liner: BEAM-302 60mg pivotal 2027 Q2 阳性 + risto-cel 2027 上市 + Pfizer opt-in $0.3-0.5B 期权兑现 → EV $4-6B（current $2.5B 上行 60-140%）
+    upgrade_triggers: []
+    quarantine: false
+  - name: CRSP
+    ticker: CRSP
+    score: 2.5
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - CTX-001 系列任何 in vivo 项目 Phase 2 阳性
+      - Casgevy 全球年化销售突破 $200M（漏斗破解）
+      - BP 收购 CRSP in vivo platform 信号
+    quarantine: false
+  - name: VERV
+    ticker: VERV
+    score: 3.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - Lilly 重新分拆 Verve（极低概率）
+      - VERV-101 长期数据为 NTLA/BEAM 提供 read-across（间接）
+    quarantine: false
+  - name: BCRX
+    ticker: BCRX
+    score: 3.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - ORLADEYO + STAR-0215 5 年合并销售 > $1.5B（K5-RD 全胜信号 → short hedge）
+      - BCRX 自研或 license-in in vivo 编辑（叙事翻转）
+    quarantine: false
+  - name: KALV
+    ticker: KALV
+    score: 2.5
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - Chiesi tender 流产（极低）
+      - EKTERLY 上市第二年销售 > $400M（KC4 触发，NTLA-2002 商业化重大警示）
+    quarantine: false
+  - name: VRTX
+    ticker: VRTX
+    score: 3.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - Casgevy 漏斗数据透明度回归
+      - Vertex CRISPR pipeline 内部 in vivo 项目独立披露
+    quarantine: false
+  - name: ALNY
+    ticker: ALNY
+    score: 4.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - nucresiran TRITON-CM/PN 数据 readout（影响 NTLA-2001 ATTR 竞争格局）
+      - ALNY 自研或 license-in in vivo 编辑（thesis 翻转）
+    quarantine: false
+  - name: BBIO
+    ticker: BBIO
+    score: 4.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - depleter program 时间线披露（disease reversal 第二战场）
+      - Acoramidis FY2026 全年销售 > $900M（首年商业化 base rate 强化）
+    quarantine: false
+  - name: EDIT
+    ticker: EDIT
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: true
+
+cluster_tags:
+  - gene-editing-platform
+  - rare-disease-commercialization
+  - lnp-delivery-platform
+  - rna-medicine-base-rate
+  - bp-ma-cycle
+  - hae-market
+  - aatd-market
+
+shortlist_summary:
+  total_shortlist: 2
+  total_watch: 7
+  total_eliminated: 1
+  basket_recommendation:
+    NTLA: 50%
+    BEAM: 30%
+    EDIT: 10%
+    VERV_via_LLY: 10%
+  total_portfolio_pct: 4-7%

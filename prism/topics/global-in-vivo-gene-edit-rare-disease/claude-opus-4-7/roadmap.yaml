@@ -1,0 +1,156 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: global-in-vivo-gene-edit-rare-disease
+created: 2026-05-23
+parent_topic: global-ai-drug-gene-edit
+parent_thesis_version: 1
+arena_thesis_version: 0
+arena_thesis_strength: 6
+
+learning_track:
+  l1_orientation:
+    - question: "HAE / AATD / HSD / TTR-CM 的全球患者基数、严重度分层、平均年治疗成本是多少？"
+      source_hint: "训练知识 + Orphanet/NORD 罕见病数据库；BioCryst/Takeda/CSL/Vertex 年报"
+    - question: "in vivo CRISPR/base editing 当前在罕见病的临床进展全景（NTLA/BEAM/VERVE/Editas/Caribou 等）？"
+      source_hint: "复用父 mat-8d4e6d (NTLA 10-K) + mat-797ff7 (BEAM 10-K)；外补 ASGCT 2026 conference report"
+    - question: "罕见病 in vivo 编辑产品的 BLA / NDA 监管路径（FDA RMAT / accelerated approval / breakthrough designation）和典型周期？"
+      source_hint: "FDA OTAT 罕见病基因疗法批准记录；Casgevy 2023-12 批准案例对照"
+    - question: "罕见病现有标准疗法的市场格局、价格、保险覆盖（HAE: BioCryst Orladeyo / Takeda Takhzyro / CSL Berinert; AATD: CSL Behring Prolastin/Aralast/Glassia / Grifols Liquid; TTR: BridgeBio Acoramidis / Pfizer Vyndaqel / AZ Onpattro）？"
+      source_hint: "BioCryst 10-K (BCRX) + Takeda 年报 + CSL 年报 + BridgeBio 10-K (BBIO)"
+
+  l2_history:
+    - question: "首个 HAE 预防性疗法（2008 Berinert / 2009 Cinryze / 2014 Takhzyro / 2020 Orladeyo）的市场扩张节奏、首年-第三年渗透率？"
+      source_hint: "BioCryst Orladeyo 上市后季度财报；Takeda Takhzyro 历史 sales 数据"
+    - question: "Vertex CF 商业模式（2012 Kalydeco → 2025 $11B sales）的渐进式渗透曲线，作为 NTLA HAE 长期 peak sales 的参考？"
+      source_hint: "Vertex 历史年报；Vrtx 投资者日 CF 系列产品销售拆分"
+    - question: "RNAi 药物 Onpattro（Alnylam 2018 ATTR）+ siRNA Leqvio（Novartis 2020 PCSK9）首年-第三年商业化爬坡历史，作为 in vivo 编辑首年渗透率的参考？"
+      source_hint: "Alnylam 历史年报；Novartis Leqvio 季度披露"
+    - question: "2010-2025 罕见病基因疗法 first-in-class 商业化失败案例（Glybera 2012 EMA 批准 → 2017 撤市；Strimvelis 2016 → 2023 撤市；Skysona 商业化挑战）"
+      source_hint: "训练知识 + 业内综述 (Nature Reviews Drug Discovery)"
+
+  l3_debates:
+    - question: "in vivo CRISPR 一次性给药 vs 现有终身订阅式产品（Orladeyo $700K/年）的实际价格 / 报销定位是什么？保险方愿意支付一次 $1.5-3M 还是分摊定价？"
+      source_hint: "ICER 2025-2026 cost-effectiveness 报告；CMS gene therapy reimbursement 框架"
+    - question: "首年商业化渗透率市场 bull case（Goldman Sachs 估 15-30%）vs bear case（订阅锁定推测 5-10%）的关键变量是什么？"
+      source_hint: "Goldman/Morgan Stanley/Citi 2026 NTLA 投行覆盖；BioCryst/Takeda 历史首年数据反推"
+    - question: "BEAM-302 双剂 60mg Grade 4 ALT 是 LNP 平台共性问题还是个案？是否会扩散到 NTLA HAE 单剂场景？"
+      source_hint: "复用父 mat-2b431a；外补 BEAM ASGCT 2026 prelim safety update"
+    - question: "KalVista 口服 plasma kallikrein 抑制剂（NDA 阶段）vs NTLA 一次性 in vivo 编辑的真实临床偏好（医生 + 患者双视角）？KalVista 价格 + 便利性 vs NTLA 永久性 + 高 upfront 成本"
+      source_hint: "KalVista 10-K (KALV) + KalVista NDA filings + AAAAI 2026 学会会议反馈；外补 HAEA 患者协会调研"
+    - question: "中国 in vivo 编辑公司（YolTech/博雅辑因 在 HAE / AATD 路线）的速度和成本结构能否在 ex-US 市场（特别是亚洲 + 中东）提前抢占？"
+      source_hint: "训练知识 + 港股 18A 公司公告 + CDE 受理记录"
+
+  l4_hunting:
+    - question: "L4-1: NTLA HAE BLA 接收时点 + 接收时是否触发优先审评（PRV/RMAT 加速）—— 决定 K1-RD 时间点。"
+      source_hint: "NTLA Q2 2026 10-Q (2026-08 发布) + FDA Drug Calendar 2026-2027；外补"
+      addresses: [K1-RD]
+    - question: "L4-2: BEAM-302 60mg pivotal cohort 50 例入组进度 + 中期数据可读时点 —— 决定 K2-RD AATD 时间点。"
+      source_hint: "BEAM Q3 2026 10-Q (2026-11 发布) + ATS/ASGCT 2027 学会展示；外补"
+      addresses: [K2-RD]
+    - question: "L4-3: NTLA HAE 上市后首季度 sales / 处方数 / 新换患者数 —— 决定 K3-RD 首年渗透率达成。"
+      source_hint: "NTLA Q1 2027 10-Q (2027-05 发布) + 季报 conference call 透露的 ATC 数 / patient infusion 数"
+      addresses: [K3-RD]
+    - question: "L4-4: in vivo line 2026-2027 累积 Grade 4+ ALT / death 事件率（NTLA + BEAM + VERVE 总分母）—— 决定 K4-RD 安全性继续。"
+      source_hint: "复用父 mat-3a51f9 + mat-2b431a + mat-8d4e6d；外补 NTLA/BEAM 季报 SAE 披露累计 + DSMB 公开通报"
+      addresses: [K4-RD]
+    - question: "L4-5: KalVista NDA 决定（2026 H2）+ 上市首季销售（2027 Q2）vs NTLA HAE 商业化对照 —— 决定 K5-RD 竞品占位。"
+      source_hint: "KalVista 10-K + KalVista FDA action 公告；HAEA 患者协会会刊 2027"
+      addresses: [K5-RD]
+
+material_priority:
+  tier1:
+    - title: "NTLA 2026 Q2 10-Q (HAE BLA 提交后第一份完整披露)"
+      type: "quarterly-report"
+      ticker: "NTLA"
+      source: "SEC EDGAR 自动 (fetch_report_prism US 路由) — 2026-08 后再下"
+      why: "复用父级 mat-3a51f9 + 增量；K1-RD HAE BLA 接收时点直接验证"
+      addresses: [K1-RD, K4-RD]
+      info_tier: public
+    - title: "BEAM 2026 Q2 10-Q (pivotal cohort 启动后第一份)"
+      type: "quarterly-report"
+      ticker: "BEAM"
+      source: "SEC EDGAR 自动 — 2026-08 后"
+      why: "K2-RD AATD 60mg pivotal 入组进度 + 安全性"
+      addresses: [K2-RD, K4-RD]
+      info_tier: public
+    - title: "KalVista 2025 10-K + 2026 Q2 10-Q (KALV 口服 HAE 竞品)"
+      type: "annual-report"
+      ticker: "KALV"
+      source: "SEC EDGAR 自动"
+      why: "K5-RD HAE 口服竞品 NDA + 首年商业化数据；NTLA 直接对手"
+      addresses: [K5-RD]
+      info_tier: public
+    - title: "BioCryst Pharmaceuticals 2025 10-K + 2026 Q1 10-Q (BCRX, Orladeyo HAE 现有市场领先)"
+      type: "annual-report"
+      ticker: "BCRX"
+      source: "SEC EDGAR 自动"
+      why: "L1-orientation HAE 现有市场基线 + 价格 + 渗透率历史；NTLA 商业化对照"
+      addresses: [K3-RD, K5-RD]
+      info_tier: public
+
+  tier2:
+    - title: "BridgeBio 2025 10-K + 2026 Q1 10-Q (BBIO, Acoramidis ATTR-CM 罕见病商业化对照)"
+      type: "annual-report"
+      ticker: "BBIO"
+      source: "SEC EDGAR 自动"
+      why: "罕见病 first-in-class 商业化爬坡参考（2024-12 上市，已有首年数据）"
+      addresses: [K3-RD]
+      info_tier: public
+    - title: "Alnylam 2025 10-K + 2026 Q1 10-Q (ALNY, Onpattro/Amvuttra ATTR + RNA 编辑商业化对照)"
+      type: "annual-report"
+      ticker: "ALNY"
+      source: "SEC EDGAR 自动"
+      why: "RNAi 平台 ATTR 商业化历史 5 年；in vivo 编辑首年渗透率参考"
+      addresses: [K3-RD]
+      info_tier: public
+    - title: "Takeda 2025 年度报告 (Takhzyro HAE 销售 + 全球布局)"
+      type: "industry-research"
+      source: "Takeda IR site (takeda.com/investors); 公开年报无 ticker 路由"
+      why: "现有 HAE 订阅式产品市场领导者销售曲线"
+      addresses: [K3-RD, K5-RD]
+      info_tier: public
+
+  tier3:
+    - title: "ICER (Institute for Clinical and Economic Review) 2026 gene therapy cost-effectiveness 报告"
+      type: "policy"
+      source: "ICER 官网 (icer.org); 公开报告"
+      why: "保险方对 in vivo 编辑一次性高价的支付意愿评估"
+      addresses: [K3-RD]
+      info_tier: public
+    - title: "FDA Cellular, Tissue, and Gene Therapies Advisory Committee 2026-2027 会议纪要"
+      type: "policy"
+      source: "FDA 官网 (fda.gov/advisory-committees); 公开"
+      why: "L1-orientation 监管框架 + L4-1 BLA 接收前监管态度信号"
+      addresses: [K1-RD, K4-RD]
+      info_tier: public
+    - title: "HAEA (HAE 患者协会) 2026 年度调研报告"
+      type: "industry-research"
+      source: "haea.org; 公开调研报告"
+      why: "L3-debate KalVista 口服 vs NTLA 注射 患者真实偏好"
+      addresses: [K5-RD]
+      info_tier: public
+
+key_risks_to_monitor:
+  - "NTLA HAE BLA 被 RTF (Refuse to File)"
+  - "BEAM-302 pivotal 50 例新增 ≥1 例 Grade 4+ 严重事件"
+  - "KalVista 口服 NDA 优先审评批准 早于 NTLA 6+ 月"
+  - "ICER 2026 报告对 in vivo 编辑定价显著负面"
+  - "中国 NMPA 在 HAE/AATD 抢先批准本土 in vivo 编辑"
+
+analogies_to_study:
+  - case: "Vertex CF 商业模式 (2012 Kalydeco → 2025 $11.2B sales)"
+    why_similar: "罕见病单基因 / first-in-class / 13 年渐进式渗透 / 多品种线生命周期"
+    why_different: "CF 患者基数（~80,000 全球）大于 HAE（~6,000-8,000）+ AATD severe（~100,000）；VRTX CF 是慢性给药，NTLA HAE 是一次性给药"
+  - case: "Onpattro/Patisiran (Alnylam 2018 ATTR-CM)"
+    why_similar: "RNA 干预/编辑技术 first-in-class + 一次性给药模型 + 罕见病爬坡曲线"
+    why_different: "ATTR 患者基数远小（~50,000 全球）；2022-2024 被 Vyndaqel/Acoramidis 替代；Onpattro 商业化挑战"
+  - case: "BioCryst Orladeyo (2020-12 HAE 口服批准)"
+    why_similar: "HAE 适应症 + 渐进市场进入（2022 sales $250M / 2024 $400M / Bull case 2027 $700M）"
+    why_different: "Orladeyo 是订阅式 $700K/年 + 现有 BioCryst 销售队伍；NTLA HAE 一次性 + 缺乏既有商业化能力"
+
+# Reusable parent materials (已通过 set_parent_materials 登记，自动复用)
+# - mat-3a51f9 NTLA Q1 2026 10-Q (HAELO Phase 3) → addresses [K1-RD, K4-RD]
+# - mat-8d4e6d NTLA 2025 10-K → addresses [K1-RD, K5-RD]
+# - mat-2b431a BEAM Q1 2026 10-Q (BEAM-302 60mg) → addresses [K2-RD, K4-RD]
+# - mat-797ff7 BEAM 2025 10-K → addresses [K2-RD]
+# - mat-49861e VRTX 2025 10-K (Casgevy 64 例) → addresses [K3-RD]
+# - mat-1fe402 VRTX Q1 2026 10-Q → addresses [K3-RD]

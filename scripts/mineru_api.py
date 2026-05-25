@@ -44,7 +44,7 @@ _BASE = "https://mineru.net"
 _REGISTER_URL = f"{_BASE}/api/v4/file-urls/batch"
 _RESULT_URL = f"{_BASE}/api/v4/extract-results/batch"
 _POLL_INTERVAL = 5    # seconds
-_TIMEOUT = 600        # seconds
+_TIMEOUT = int(os.environ.get("MINERU_TIMEOUT", "600"))  # seconds; override via env
 
 
 def _token() -> str:

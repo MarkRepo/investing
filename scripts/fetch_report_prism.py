@@ -85,6 +85,33 @@ def _extract_year(title: str) -> int | None:
     return int(m.group(1)) if m else None
 
 
+def _disclosure_window_hint(report_type: str, year: int) -> str:
+    """A 股披露窗口提示：当 year==今年 且未到截止日，告知用户报告可能尚未披露。
+
+    A 股截止：年报 4-30 / 半年报 8-31 / 季报 Q1 4-30、Q3 10-31。
+    quarterly 拆两段提示，避免 5-22 这种"Q1 已过、Q3 未到"时段被误报 Q1 也未披露。
+    """
+    today = date.today()
+    if year != today.year:
+        return ""
+    if report_type == "annual":
+        deadline = date(year, 4, 30)
+        if today < deadline:
+            return f" (今年年报截止 {deadline:%m-%d}，可能尚未披露)"
+    elif report_type == "semi":
+        deadline = date(year, 8, 31)
+        if today < deadline:
+            return f" (今年半年报截止 {deadline:%m-%d}，可能尚未披露)"
+    elif report_type == "quarterly":
+        q1 = date(year, 4, 30)
+        q3 = date(year, 10, 31)
+        if today < q1:
+            return f" (今年 Q1 截止 {q1:%m-%d}、Q3 截止 {q3:%m-%d}，均尚未披露)"
+        if today < q3:
+            return f" (今年 Q1 应已披露；Q3 截止 {q3:%m-%d}，尚未披露)"
+    return ""
+
+
 def _download(announcement: dict, dest_dir: Path, company_name: str,
               ticker: str = "", report_type: str = "") -> Path:
     """Download cninfo announcement to dest_dir.
@@ -253,6 +280,36 @@ def _is_us_ticker(ticker: str) -> bool:
     return bool(re.match(r"^[A-Z]{1,5}$", ticker))
 
 
+def _route(market_ticker: str) -> str:
+    """Identify market from ticker string. Returns one of: us / cn / kr / jp_tdnet / jp_edinet / hk / uk."""
+    if market_ticker.startswith(("SSE_", "SZSE_", "BSE_")):
+        return "cn"
+    if market_ticker.startswith("HK_"):
+        return "hk"
+    if market_ticker.startswith("LSE_"):
+        return "uk"
+    if market_ticker.startswith("KRX_") or re.match(r"^\d{6}$", market_ticker):
+        return "kr"
+    if market_ticker.startswith("EDINET_"):
+        return "jp_edinet"
+    if market_ticker.startswith("TSE_") or re.match(r"^\d{4}$", market_ticker):
+        return "jp_tdnet"
+    if _is_us_ticker(market_ticker):
+        return "us"
+    raise ValueError(
+        f"无法识别 ticker 格式：{market_ticker!r}\n"
+        "  支持：US (NVDA) / CN (SZSE_300750) / HK (HK_02228) / UK (LSE_OXIG) / "
+        "KR (006400 或 KRX_006400) / JP TDnet (5019 或 TSE_5019) / JP EDINET (EDINET_E00040)"
+    )
+
+
+_JP_KEYWORD = {
+    "annual":    "決算短信",       # 年度決算短信
+    "semi":      "中間決算短信",   # 中間/上期
+    "quarterly": "四半期決算短信",
+}
+
+
 def fetch_sec(
     ticker: str,
     slug: str | None = None,
@@ -341,12 +398,46 @@ def fetch(
 ) -> Path:
     """Download a financial report. Returns the local file path.
 
-    Auto-routes to SEC for US tickers (e.g. 'QS', 'NVDA') and cninfo for A-share (e.g. 'SZSE_300750').
+    Auto-routes by ticker format:
+        US (NVDA) → SEC EDGAR
+        CN (SZSE_300750) → cninfo
+        HK (HK_02228) → HKEXnews (zero-key, annual/semi/prospectus)
+        UK (LSE_OXIG) → FCA NSM (zero-key, annual/semi)
+        KR (006400 / KRX_006400) → DART
+        JP TDnet (5019 / TSE_5019) → TDnet 決算短信 (zero-key, 30-day window)
+        JP EDINET (EDINET_E00040) → EDINET v2 API (需要 EDINET_API_KEY)
     """
-    # US ticker: route to SEC
-    if _is_us_ticker(market_ticker):
+    market = _route(market_ticker)
+
+    if market == "us":
         results = fetch_sec(market_ticker, slug, variant)
         return results[0] if results else None
+
+    if market == "kr":
+        from scripts.fetch_kr_dart import fetch as _fetch_kr
+        kr_ticker = market_ticker.removeprefix("KRX_")
+        return _fetch_kr(kr_ticker, report_type, slug, variant)
+
+    if market == "jp_tdnet":
+        from scripts.fetch_jp_tdnet import fetch as _fetch_tdnet
+        jp_code = market_ticker.removeprefix("TSE_")
+        keyword = _JP_KEYWORD.get(report_type, "決算短信")
+        return _fetch_tdnet(jp_code, keyword, "earnings-flash", slug, variant)
+
+    if market == "jp_edinet":
+        from scripts.fetch_jp_edinet import fetch as _fetch_edinet
+        ed_code = market_ticker.removeprefix("EDINET_")
+        return _fetch_edinet(None, ed_code, report_type, slug, variant)
+
+    if market == "hk":
+        from scripts.fetch_hk_hkex import fetch as _fetch_hk
+        hk_code = market_ticker.removeprefix("HK_")
+        return _fetch_hk(hk_code, report_type, slug, variant)
+
+    if market == "uk":
+        from scripts.fetch_uk_fca import fetch as _fetch_uk
+        uk_ticker = market_ticker.removeprefix("LSE_")
+        return _fetch_uk(uk_ticker, report_type, slug, variant)
 
     if report_type == "prospectus":
         return _fetch_prospectus(market_ticker, slug, variant)
@@ -366,6 +457,8 @@ def fetch(
     code, org_id = info["code"], info["orgId"]
     company_name = info.get("zwjc", ticker)
     column = _column(code)
+    print(f"\033[33m⚑ COMPANY RESOLVED: {company_name} (ticker {ticker}) — verify before proceeding\033[0m",
+          file=sys.stderr)
 
     log.info("Fetching %s report list for %s (%s)…", report_type, company_name, code)
     reports = _list_reports(code, org_id, column, _CATEGORY[report_type])
@@ -373,10 +466,19 @@ def fetch(
     # Find the target year
     matches = [r for r in reports if _extract_year(r.get("announcementTitle", "")) == year]
     if not matches:
-        available = sorted({_extract_year(r.get("announcementTitle", "")) for r in reports} - {None}, reverse=True)
+        if report_type == "quarterly":
+            # 季报 Q1/Q3 同年共存，year 去重会丢季度信息——直接列标题
+            titles = [r.get("announcementTitle", "")[:30] for r in reports[:8]]
+            avail_str = f"Available quarterly reports (latest {len(titles)}): {titles}"
+        else:
+            years = sorted(
+                {_extract_year(r.get("announcementTitle", "")) for r in reports} - {None},
+                reverse=True,
+            )
+            avail_str = f"Available years: {years}"
+        hint = _disclosure_window_hint(report_type, year)
         raise ValueError(
-            f"No {report_type} report found for {year}. "
-            f"Available years: {available}"
+            f"No {report_type} report found for {year}. {avail_str}{hint}"
         )
 
     # Take the earliest (first-published, non-correction) version

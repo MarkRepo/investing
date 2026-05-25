@@ -156,7 +156,12 @@ L4 写完后做 self-check：thesis 的 N 个 K# 是否每个都有对应的 L4 
 **对 `annual-report` 类型，必须填写 `ticker` 字段**以支持自动下载：
 - A 股：`SSE_600519` / `SZSE_300750`
 - 美股：`NVDA` / `AAPL`（直接写 ticker）
-- 不可自动下载的（韩股/无代码）：留空
+- 港股：`HK_02228`（走 HKEXnews，零 key，annual/semi/prospectus）
+- 英股：`LSE_OXIG`（走 FCA NSM，零 key，annual/semi）
+- 韩股：`006400` 或 `KRX_006400`（走 DART，零 key）
+- 日股決算短信（first-look）：`5019` 或 `TSE_5019`（走 TDnet，零 key，覆盖近 30 天）
+- 日股有価証券報告書（年报正本）：`EDINET_E00040`（走 EDINET v2，需 `EDINET_API_KEY` env）
+- 不可自动下载的（非上市/退市）：留空
 
 ---
 
@@ -181,9 +186,14 @@ L4 写完后做 self-check：thesis 的 N 个 K# 是否每个都有对应的 L4 
 > **ticker 规则**：LLM 在 Step 3 写 roadmap 时，对 `annual-report` 类型材料必须填写 `ticker` 字段。
 > - A 股：`SSE_600519` / `SZSE_300750`（自动走 cninfo）
 > - 美股：`QS` / `NVDA` / `AAPL`（自动走 SEC EDGAR；自动下 10-K + 10-Q）
-> - 不可自动下载的（韩股/非上市公司）：留空
+> - 港股：`HK_02228`（自动走 HKEXnews，零 key；annual=年报 / semi=中期 / prospectus=招股章程）
+> - 英股：`LSE_OXIG`（自动走 FCA NSM，零 key；annual=Final/Preliminary Results / semi=Half-year Report；UK 不强制季报）
+> - 韩股：`006400` 或 `KRX_006400`（自动走 DART，年报/半年报/季报均可）
+> - 日股決算短信：`5019` 或 `TSE_5019`（自动走 TDnet 適時開示，零 key，30 天窗口；report_type=annual→決算短信，semi→中間決算短信，quarterly→四半期決算短信）
+> - 日股有価証券報告書：`EDINET_E00040`（自动走 EDINET v2 API，需 env `EDINET_API_KEY`；EdinetCode 不是 ticker，5019/E00040 是出光興産）
+> - 不可自动下载的（非上市/退市）：留空
 
-**统一入口**：`scripts.fetch_report_prism.fetch(ticker, slug=, variant=)` 会根据 ticker 格式自动路由到 cninfo 或 SEC，并自动登记 manifest + 更新 todo status。
+**统一入口**：`scripts.fetch_report_prism.fetch(ticker, slug=, variant=)` 根据 ticker 格式自动路由到 cninfo / SEC / HKEXnews / FCA NSM / DART / TDnet / EDINET，并登记 manifest + 更新 todo status。
 
 **多年批量**（A 股 / cninfo only — 用于 thesis 需要多年纵向对照的场景）：
 
@@ -197,7 +207,7 @@ fetch_many('SSE_688499', years=[2020, 2021, 2022, 2023, 2024], slug=slug, varian
 
 ```bash
 python3 << 'EOF'
-import yaml
+import re, yaml
 from pathlib import Path
 from scripts.fetch_report_prism import fetch
 
@@ -205,21 +215,40 @@ slug = '{slug}'
 variant = '{variant}'
 roadmap = yaml.safe_load(Path(f'prism/topics/{slug}/{variant}/roadmap.yaml').read_text())
 
+# material type → fetch() report_type
+TYPE_MAP = {
+    'annual-report':     'annual',
+    'quarterly-report':  'quarterly',
+    'semi-annual-report':'semi',
+    'semi-report':       'semi',
+    'prospectus':        'prospectus',
+}
+
+def guess_year(title: str) -> int | None:
+    # 优先抓 "2026年..." / "2024 年报"；否则取最大 4 位年
+    m = re.search(r'(20\d{{2}})\s*年', title)
+    if m:
+        return int(m.group(1))
+    years = [int(y) for y in re.findall(r'20\d{{2}}', title) if 2015 <= int(y) <= 2030]
+    return max(years) if years else None
+
 downloaded, failed = [], []
 for tier in ['tier1', 'tier2', 'tier3']:
     for mat in roadmap.get('material_priority', {}).get(tier, []) or []:
-        if mat.get('type') not in ('annual-report', 'prospectus'):
+        rtype = TYPE_MAP.get(mat.get('type'))
+        if not rtype:
             continue
         tk = (mat.get('ticker') or '').strip()
         title = mat.get('title', '')
         if not tk:
             failed.append(f'{{title[:50]}} (无 ticker)')
             continue
+        year = guess_year(title)  # None → fetch() 用 today.year - 1
         try:
-            result = fetch(tk, slug=slug, variant=variant)
-            downloaded.append(f'{{title[:50]}} → {{result}}')
+            result = fetch(tk, report_type=rtype, year=year, slug=slug, variant=variant)
+            downloaded.append(f'[{{rtype}}/{{year or "default"}}] {{title[:50]}} → {{result}}')
         except Exception as e:
-            failed.append(f'{{title[:50]}} ✗ ({{e}})')
+            failed.append(f'[{{rtype}}/{{year or "default"}}] {{title[:50]}} ✗ ({{e}})')
 
 print(f'=== DOWNLOADED ({{len(downloaded)}}) ===')
 for x in downloaded: print(f'  {{x}}')
@@ -227,6 +256,11 @@ print(f'\\n=== FAILED ({{len(failed)}}) ===')
 for x in failed: print(f'  {{x}}')
 EOF
 ```
+
+**注意**：
+- `quarterly-report` 现在会被下载。`fetch()` 对 cninfo 季报会返回最早披露的（Q1 优先于 Q3）
+- 如果 roadmap 列了 2026Q1 + 2026Q3 同年两份季报，需要在 title 里写明（如"2026 年第三季度报告"），脚本按 year 字段 + cninfo 列表里第一条匹配
+- 半年报 `semi-annual-report` 同理走 `category_bndbg_szsh`
 
 **老的内联下载代码（已废弃）—— 仅作为 fallback 参考**:
 

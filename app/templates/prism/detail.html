@@ -140,11 +140,7 @@
 </aside>
 {% endif %}
 
-{% set sc = topic.scope %}
-{% set prism_ticker = sc.get('ticker', '') %}
-{% set prism_market = sc.get('market', '') %}
-{% set prism_key = prism_market ~ '_' ~ prism_ticker %}
-{% if prism_ticker and prism_market %}
+{% if prism_key %}
 <nav class="prism-nav">
   <a class="btn btn-nav" href="/prices/{{ prism_key }}">行情 →</a>
   <a class="btn btn-nav" href="/financials/{{ prism_key }}">财务 →</a>

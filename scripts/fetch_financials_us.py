@@ -29,10 +29,8 @@ def period_for_stmt(ts: pd.Timestamp, period_type: str) -> str:
     year = ts.year
     if period_type == "annual":
         return f"{year}A"
-    q = {3: "Q1", 6: "Q2", 9: "Q3", 12: "Q4"}.get(mm)
-    if not q:
-        raise ValueError(f"unrecognized quarter month {mm}")
-    return f"{year}{q}"
+    q_num = (mm - 1) // 3 + 1
+    return f"{year}Q{q_num}"
 
 
 def _stmt_to_rows(

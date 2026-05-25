@@ -30,16 +30,22 @@ _DEFAULT_OUTPUT_STATE = {"version": 0, "last_updated": None, "status": "pending"
 
 
 def _infer_market(ticker: str, geo: str) -> str:
-    """推断股票代码所属市场。CN 股根据首位数推断，其他默认 US。"""
+    """推断股票代码所属市场。CN 股根据首位数推断，其他默认 US。
+
+    若 ticker 是旧格式（SZSE_300073 / SHA_688499 / SSE_600519），
+    剥离前缀后再推断，避免落入兜底 US 分支。
+    """
     if not ticker:
         return ""
+    if "_" in ticker:
+        ticker = ticker.split("_", 1)[1]
     if geo != "CN":
         return "US"
-    if ticker[0] in ("6", "9", "5"):
+    if ticker[:1] in ("6", "9", "5"):
         return "SSE"
-    elif ticker[0] in ("0", "3"):
+    elif ticker[:1] in ("0", "3"):
         return "SZSE"
-    elif ticker[0] == "8":
+    elif ticker[:1] == "8":
         return "BSE"
     return "US"
 

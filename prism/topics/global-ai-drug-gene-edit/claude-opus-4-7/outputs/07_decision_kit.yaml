@@ -1,0 +1,107 @@
+slug: global-ai-drug-gene-edit
+variant: claude-opus-4-7
+topic_type: industry
+display_name: AI 辅助药物研发与基因编辑
+ticker: ""
+generated: 2026-05-22T12:00:00Z
+data_freshness: 2026-Q1
+
+buy_box:
+  strong_buy_max: null
+  accumulate_min: null
+  accumulate_max: null
+  hold_min: null
+  hold_max: null
+  current_price: null
+  price_as_of: null
+  current_zone: unknown
+
+position_framework:
+  initial_max_pct: 8
+  full_max_pct: 15
+  add_ladder_prices: []
+  max_cluster_pct: 15
+
+valuation_models: []
+
+kill_criteria:
+  - id: second_in_vivo_severe_event
+    description: NTLA 或 BEAM 或 Verve-LLY 在 in vivo 项目中出现第二例 Grade 4+ 安全事件或患者死亡
+    status: pending
+    check_at: 2027-06
+  - id: ntla_hae_bla_rtf_or_delay
+    description: NTLA HAE BLA 在 2027 Q1 之前被 FDA RTF 或要求 add-on Phase 3 confirmatory study
+    status: pending
+    check_at: 2027-03
+  - id: ira_extension_gene_therapy
+    description: 美国 IRA 立法扩展至 gene therapy / cell therapy 类产品，定价管控砍 30%+
+    status: pending
+    check_at: 2027-12
+  - id: casgevy_2026_under_150
+    description: Casgevy 2026 全年实际输注 <150 例（年化 vs 2025 64 例仅 +130%）
+    status: pending
+    check_at: 2027-02
+  - id: china_nmpa_gene_editing_low_price
+    description: 中国 NMPA 批准首个 in vivo 基因编辑疗法且定价 <50 万人民币
+    status: pending
+    check_at: 2028-06
+
+signposts:
+  - date: 2026-Q2
+    event: VRTX Q2 10-Q Casgevy 收入 + 漏斗披露
+    bull_signal: Casgevy 收入 >$60M / 季度漏斗重新披露
+    bear_signal: Casgevy 收入 <$45M / 漏斗仍不披露
+    triggered: null
+  - date: 2026-Q3
+    event: NTLA Q2 10-Q HAE BLA 进度
+    bull_signal: BLA 提交进度 on track
+    bear_signal: RTF 风险 + 时间表延期
+    triggered: null
+  - date: 2026-Q3
+    event: BEAM Q2 10-Q BEAM-302 pivotal 准备
+    bull_signal: pivotal IND-clearance
+    bear_signal: 安全事件 / pivotal 启动延迟
+    triggered: null
+  - date: 2026-H2
+    event: NTLA HAE BLA 完成提交
+    bull_signal: 9 月前完成
+    bear_signal: 11 月后延迟
+    triggered: null
+  - date: 2026-H2
+    event: BEAM-302 pivotal cohort 启动
+    bull_signal: H2 启动 + 无 RT
+    bear_signal: 延迟到 2027 Q1+
+    triggered: null
+  - date: 2026-12
+    event: BEAM risto-cel BLA 递交
+    bull_signal: 年底如期递交
+    bear_signal: 延期到 2027 Q1
+    triggered: null
+  - date: 2026-12
+    event: 美国大选结果 + 政策风向
+    bull_signal: 维持现有 IRA 范围
+    bear_signal: gene therapy 进入谈判清单
+    triggered: null
+  - date: 2027-Q1
+    event: NTLA HAE Priority Review 判定
+    bull_signal: 6 月加速
+    bear_signal: 标准 12 月审评
+    triggered: null
+  - date: 2027-H1
+    event: NTLA HAE 美国上市 + 首季销售
+    bull_signal: 首季 >$30M
+    bear_signal: <$10M
+    triggered: null
+  - date: 2027-H1
+    event: LLY-Verve PCSK9 关键 Phase 2 数据
+    bull_signal: 显著降 LDL + 无肝毒性
+    bear_signal: 未达终点 / 安全事件
+    triggered: null
+
+cluster_tags:
+  - gene-editing
+  - ai-drug-discovery
+  - in-vivo-crispr
+  - base-editing
+  - biotech-platform
+  - bp-takeout

@@ -1,0 +1,124 @@
+slug: global-quantum-computing
+display_name: 全球量子计算与量子模拟产业
+type: industry
+created: '2026-05-22T09:03:56.003697+00:00'
+status: active
+stage: 04-post-synthesis
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 量子计算商业化拐点何时到来，谁先吃到第一波红利
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-23T08:19:37.281613+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-23T08:19:37.287019+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-23T08:19:37.292072+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-23T08:19:37.297112+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-23T08:19:37.302126+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-23T08:19:37.307274+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-23T08:19:37.312273+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-23T08:19:37.317428+00:00'
+    status: fresh
+    data_freshness: null
+  09_industry_to_arenas:
+    version: 1
+    last_updated: '2026-05-23T08:19:37.322464+00:00'
+    status: fresh
+    data_freshness: null
+parent_materials: []
+next_actions:
+- 01-09 产出完成；下一步：05-critic-review 评审或创建 3 个深挖档 arena stub topic
+- 2026-07-08 lock-up 解禁第一批 (IonQ) 是首个 catalyst 时点，建议进入 daily 监控
+user_todos:
+- task: 9 份产出已全部生成（v1）+ thesis v1 已登记
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 可选下一步：
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: '  1. 「评审 global-quantum-computing」—— 启动 05-critic-review 找漏洞'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: '  2. 「为 global-quantum-spac-shorts 创建 arena topic」—— 09 深挖档之一'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: '  3. 「为 global-quantum-ion-trap-ipo 创建 arena topic」—— Quantinuum IPO 短线'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: '  4. 「为 global-quantum-topological-microsoft 创建 arena topic」—— Microsoft
+    Majorana 短线'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: '  5. 「prism 推进 global-quantum-computing 监控阶段」—— 等待 2026-07 lock-up 解禁 catalyst'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+thesis:
+  current_version: 1
+  last_updated: '2026-05-23T08:19:37.327588+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-22T09:05:47.145227+00:00'
+    summary: 分化看法：看多卖铲人（稀释制冷机/低温线缆/CMOS控制/量子软件栈）+量子模拟先行应用，看空当下纯量子硬件标的估值；通用量子优势2030+，量子模拟商业PoC2027-2028起。强度6/10。
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-23T08:19:37.327591+00:00'
+    summary: 看空美股纯硬件 SPAC 量子四傻（IONQ/RGTI/QBTS/QUBT）2026 H1-H2 估值；看空 Microsoft Majorana
+      拓扑路线；中性偏空 Quantinuum IPO 高估；K1 命中概率 15-25%，K5 命中概率 65-75%；通用量子优势 2027 前不会落地。强度
+      7/10。

@@ -3,7 +3,7 @@ display_name: 全球固态电解质+锂金属上游
 type: arena
 created: '2026-05-19T15:00:35.798929+00:00'
 status: active
-stage: 00-init
+stage: 10-peer-matrix
 parent_topic: global-solid-state-battery
 monitoring_tier: dormant
 concepts: []
@@ -14,53 +14,154 @@ scope:
   depth: deep
 outputs_state:
   01_business_panorama:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-22T07:19:01.877969+00:00'
+    status: fresh
     data_freshness: null
   02_cycle_positioning:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-22T07:19:01.882395+00:00'
+    status: fresh
     data_freshness: null
   03_narrative_ecology:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-22T07:19:01.886421+00:00'
+    status: fresh
     data_freshness: null
   04_implied_expectations:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-22T07:19:01.890429+00:00'
+    status: fresh
     data_freshness: null
   05_historical_mirrors:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-22T07:19:01.894434+00:00'
+    status: fresh
     data_freshness: null
   06_risk_blindspots:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-22T07:19:01.898446+00:00'
+    status: fresh
     data_freshness: null
   07_decision_kit:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-22T07:19:01.902470+00:00'
+    status: fresh
     data_freshness: null
   08_living_feed:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-22T07:19:01.906511+00:00'
+    status: fresh
     data_freshness: null
   10_peer_matrix:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-22T07:24:11.415472+00:00'
+    status: fresh
     data_freshness: null
 next_actions:
-- 运行 workflow 01-build-roadmap
-user_todos: []
+- 6/17 出光中計有報发布后，重读 K1 校准（watch 档 → 可能升级深研档）
+- 为 cn-ganfeng-lithium-002460 + cn-dangsheng-tech-300073 启动 workflow 01-build-roadmap
+user_todos:
+- task: 决策：进入 06-daily-monitor 设 monitoring_tier=warm，跟踪 6/17 + 9 月日韩 IR 时点？
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 决策：容百/当升 Q1 季报 cninfo 未上架，是否手动从交易所/IR 邮件渠道补抓？
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: SMM 月度复跑：现有 scripts/smm_price_scraper.py 已通（零付费），每月 1 号定时复跑即可
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 推进：cn-ganfeng-lithium-002460 + cn-dangsheng-tech-300073 已建 stub，可进入对应 topic
+    跑 workflow 01-roadmap
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
 monitoring:
   enabled: false
   cadence: daily
+thesis:
+  current_version: 1
+  last_updated: '2026-05-22T07:19:54.464369+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-21T12:28:34.632499+00:00'
+    summary: 分化看法：硫化物降本（8000→4000元/kg）2027时点过乐观；上游硫化锂前驱体+锂金属负极是真错误定价（产能稀缺+无独立SKU），中游正极公司电解质期权已部分透支
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-22T07:19:54.464501+00:00'
+    summary: 硫化物降本+全固态量产实质从2027右移到2028-2030；上游硫化锂+金属锂卖铲人逻辑成立但需切换至eVTOL/SK On pilot/出光6/17等新可观测节点；中游正极估值已透支宜短空+长多观察。
+parent_materials:
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-c660fb
+  addresses:
+  - K1
+  - K3
+  note: 硫化锂前驱体硬卡点 + 出光产能时点（H3 招股书）
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-f6cc96
+  addresses:
+  - K1
+  - K3
+  note: 硫化锂前驱体工艺 + 价格曲线 8000→4000
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-994a6e
+  addresses:
+  - K2
+  note: 容百科技 2025 年报（硫化物中试线进展）
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-cf6e43
+  addresses:
+  - K2
+  note: 当升科技 2025 年报（硫化物中试线进展）
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-e62c68
+  addresses:
+  - K4
+  note: 赣锋锂业 2025 年报（锂金属负极千吨试产）
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-13806e
+  addresses:
+  - K1
+  note: 三星 SDI Interbattery 2025（氧化物-聚合物复合反方观点）
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-89797a
+  addresses:
+  - K3
+  note: SMM 电解质材料价格（K3 价格曲线锚点）
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-3e0561
+  addresses:
+  - K3
+  note: SMM 电解质材料价格（K3 价格曲线锚点）
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-736248
+  addresses:
+  - K3
+  note: SMM 电解质材料价格（K3 价格曲线锚点）
+- parent_slug: global-solid-state-battery
+  parent_variant: claude-opus-4-7
+  mat_id: mat-8e9ac1
+  addresses:
+  - K3
+  note: SMM 电解质材料价格（K3 价格曲线锚点）

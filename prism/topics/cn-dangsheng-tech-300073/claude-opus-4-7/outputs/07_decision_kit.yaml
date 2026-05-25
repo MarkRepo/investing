@@ -1,0 +1,152 @@
+slug: cn-dangsheng-tech-300073
+output_key: 07_decision_kit_yaml
+version: 1
+generated: 2026-05-23T00:00:00+08:00
+
+buy_box:
+  preferred_pe_range: [22, 26]
+  max_pe_for_normal_buy: 32
+  super_buy_pe_below: 20
+  do_not_buy_pe_above: 35
+  catalyst_triggers:
+    - id: T1
+      desc: "2026 中报电解质 capex 首次单列披露"
+      strength: high
+    - id: T2
+      desc: "单一客户卤化物订单 ≥500 吨"
+      strength: high
+    - id: T3
+      desc: "100 吨级电解质目标 2026 内达成"
+      strength: critical
+    - id: T4
+      desc: "中汽新能示范车型量产 SOP 时点公告"
+      strength: medium
+
+position_framework:
+  core_position_max: 0.05  # 5%
+  tactical_position_max: 0.07  # 7% (after catalyst)
+  extreme_opportunity_max: 0.10  # 10% (super buy condition)
+  staging:
+    - tranche: 1
+      pct_of_total: 0.30
+      condition: "当前价格区间 PE 28-32×"
+    - tranche: 2
+      pct_of_total: 0.30
+      condition: "PE 22-26×（超跌买入）"
+    - tranche: 3
+      pct_of_total: 0.25
+      condition: "T1/T2/T3 任一 catalyst 触发"
+    - tranche: 4
+      pct_of_total: 0.15
+      condition: "业绩超预期 + 100 吨级达成"
+  reduce_signals:
+    - condition: "PE >35× 无新 catalyst"
+      reduction: 0.50
+    - condition: "PE >40×"
+      reduction: 0.80
+    - condition: "R1/R2/R3 任一触发"
+      reduction: 0.40
+
+valuation_models:
+  - model: PE_2026E_Base
+    current_multiple: 30
+    fair_multiple: 25
+    upside_pct: [0, 10]
+    note: "国信 mat-f8ebd5 模型 2026E 8.26 亿"
+  - model: PE_2027E_Optimistic
+    current_multiple: 23
+    fair_multiple: 30
+    upside_pct: [40, 60]
+    note: "国信 mat-f8ebd5 模型 2027E 10.01 亿"
+  - model: PB_Cycle
+    current: 1.4
+    fair: [1.8, 2.0]
+    upside_pct: [30, 45]
+    note: "强周期股标准估值，PB 历史顶 3.7× / 底 1.0×"
+  - model: DCF_Base_with_Option
+    current_value_billion: 135  # 主业 85 + 期权 50
+    fair_value_billion: 180  # 主业 100 + 期权 80
+    upside_pct: [30, 35]
+  - model: SOTP
+    current_breakdown:
+      ternary_billion: 67
+      lmfp_sodium_billion: 68
+      lco_billion: 8
+      equipment_billion: 5
+      ssb_option_billion: 80
+      total_billion: 228
+    fair_breakdown:
+      ternary_billion: 80
+      lmfp_sodium_billion: 80
+      lco_billion: 10
+      equipment_billion: 5
+      ssb_option_billion: 100
+      total_billion: 275
+    upside_pct: [15, 20]
+  composite_fair_value_billion: 215
+  composite_upside_pct: [5, 18]
+
+kill_criteria:
+  hard_kill:
+    - id: K1
+      condition: "海外营收单季 -30% YoY 持续 2 季"
+    - id: K2
+      condition: "单吨毛利跌破 5,000 元"
+    - id: K3
+      condition: "控股股东减持 >5%"
+    - id: K4
+      condition: "卤化物路线明确败给硫化物（OEM 选择 ≥2 家硫化物）"
+  soft_kill:
+    - condition: "2026 中报仍未单列电解质 capex"
+    - condition: "中汽新能示范车型量产 SOP 推后至 2028+"
+    - condition: "A 股正极三厂分化反转（容百 R&D 反超）"
+    - condition: "管理层重大变更或战略转向"
+
+signposts:
+  quarterly:
+    - "单吨毛利（警戒 7,000 元 / Hard Kill 5,000 元）"
+    - "海外营收 YoY（警戒 -10% / Hard Kill -30%）"
+    - "电解质项目 capex 是否单列（首次单列 = T1）"
+  semiannual:
+    - "卤化物电解质规模（目标 50-80 吨级）"
+    - "单一客户卤化物订单（≥500 吨 = T2）"
+    - "中汽新能示范车型 SOP 时点"
+  annual:
+    - "100 吨级目标是否达成（T3 触发）"
+    - "海外毛利率结构性 vs 周期性判别"
+    - "固态期权独立份额披露"
+  industry:
+    - "碳酸锂价格 + 三元材料价格（每月）"
+    - "A 股正极三厂业绩对比（容百/振华，每季度）"
+    - "固态电池路线竞争（卤化物/硫化物/氧化物，每半年）"
+
+cluster_tags:
+  industry:
+    - ternary-cathode
+    - lmfp
+    - sodium-battery
+    - lithium-cobalt-oxide
+    - halide-electrolyte
+    - solid-state-battery
+  themes:
+    - ssb-option
+    - a-share-cathode-divergence
+    - controlling-shareholder-support
+    - overseas-concentration
+  risk_types:
+    - overseas-concentration
+    - commoditization
+    - route-hedging
+    - policy-risk
+  catalyst_types:
+    - earnings-disclosure
+    - oem-announcement
+    - capacity-milestone
+    - industry-policy
+
+bottom_line: |
+  当升当前是"防御性期权 + 控股股东资本支持"双重护城河的中等吸引力机会。
+  期望收益 +12-22%（12 个月）/ 期望损失 -10-15%，赔率约 1.0-1.7:1。
+  核心买入逻辑：A 股正极三厂分化护城河 + 卤化物固态期权 + 矿冶集团真金白银背书。
+  核心风险：海外集中度 + commoditization + 路线 hedging。
+  最佳买入窗口：2026 中报披露前（T1 触发概率 25-30%）。

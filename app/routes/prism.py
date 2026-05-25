@@ -336,6 +336,7 @@ def prism_detail(request: Request, slug: str, variant: str):
             "manifest_coverage": manifest_coverage,
             "k_status": k_status,
             "mineru_counts": mineru_counts,
+            "prism_key": _make_market_ticker(topic.get("scope") or {}),
         },
     )
 

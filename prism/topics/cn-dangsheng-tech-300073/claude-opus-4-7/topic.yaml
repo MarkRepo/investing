@@ -1,0 +1,126 @@
+slug: cn-dangsheng-tech-300073
+display_name: 当升科技
+type: company
+created: '2026-05-22T07:29:50.189505+00:00'
+status: active
+stage: 04-post-synthesis
+parent_topic: global-ssb-electrolyte
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 当升作为 A 股正极三厂中财务最好（ROIC 6.92% + 净现金 D/E 0%）+ 唯一具名半固态客户名单（清陶/卫蓝/辉能/赣锋/中汽新能）+
+    主推氯碘卤化物（非硫化物）路线的公司，能否在 K2 中游正极硫化物期权已透支的背景下，凭借「卤化物双路线 + 防御性期权」结构跑出相对收益？
+  depth: deep
+  ticker: SZSE_300073
+  market: US
+outputs_state:
+  00_quality_screen:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-23T02:53:55.629170+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-23T02:53:55.632936+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-23T02:53:55.636363+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-23T02:53:55.639800+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-23T02:53:55.643252+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-23T02:53:55.646703+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-23T02:53:55.650164+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-23T02:53:55.657099+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit_yaml:
+    version: 1
+    last_updated: '2026-05-23T02:53:55.653579+00:00'
+    status: fresh
+    data_freshness: null
+parent_materials:
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-cc4b89
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  note: 当升 2024 年报（自有变体），K1 卤化物 20 吨级 + K2 具名客户 + K3 电解质 capex 未单列 + K5 R&D 锚
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-f09fd5
+  addresses:
+  - K2
+  - K5
+  note: 容百 2025 年报反证当升财务质量+客户披露差异化优势
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-756a01
+  addresses:
+  - K1
+  - K3
+  note: SLDP 10-K：硫化物 LPSC $1037/kg → 反证当升卤化物路线选择正确性 + K3 capex 量级对照（$110M for 75
+    t/yr）
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-fd945b
+  addresses:
+  - K2
+  note: 赣锋 2025 年报：当升具名客户之一，验证赣锋侧固态电池量产口径
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-3770c8
+  addresses:
+  - K4
+  note: 三星 SDI 2025 年报：韩国电池厂海外业务参照系，K4 海外集中度风险锚
+next_actions:
+- 可进入 05-critic-review 评审 thesis_v1 强度逻辑一致性
+- 可进入 06-daily-monitor 设置季度/半年监控节点
+- 2026-08 中报披露后回看 K1-K5 触发器并迭代 thesis_v2
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+thesis:
+  current_version: 1
+  last_updated: '2026-05-23T02:53:55.660659+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-05-22T07:31:24.837738+00:00'
+    summary: 当升是 A 股正极三厂中唯一在 K2 强证伪背景下不被全证伪的标的：财务最好（ROIC 6.92%+净现金）+ 唯一具名半固态客户（清陶/卫蓝/辉能/赣锋/中汽新能）+
+      主推氯碘卤化物分流硫化物风险——构成防御性期权而非进攻品种。
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-23T02:53:55.660664+00:00'
+    summary: 当升是 A 股唯一具备正极厂固态期权独家锚 + 矿冶集团真金白银资本支持双重护城河的标的；K1/K3/K4 各下调 1 档，K5 上调 1
+      档（振华反证 5.15× R&D），整体净升至 +3.5

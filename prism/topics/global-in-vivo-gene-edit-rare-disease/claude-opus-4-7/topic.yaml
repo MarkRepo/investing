@@ -1,0 +1,167 @@
+slug: global-in-vivo-gene-edit-rare-disease
+display_name: In vivo CRISPR/base editing 罕见病 (HAE/AATD/HSD)
+type: arena
+created: '2026-05-22T13:11:50.662795+00:00'
+status: active
+stage: 10-peer-matrix
+parent_topic: global-ai-drug-gene-edit
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: NTLA HAELO Phase 3 阳性 + rolling BLA 启动 + BEAM-302 AATD 60mg pivotal —
+    2026-2027 in vivo 基因编辑头部能否兑现首个 NDA/BLA 且首年商业化爬坡达成 Bull case？
+  depth: deep
+outputs_state:
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-23T02:53:56.903313+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-23T02:55:15.549356+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-23T02:56:39.825351+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-23T02:58:03.964371+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-23T02:59:42.525050+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-23T03:01:17.080686+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-23T03:02:44.525576+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-23T03:03:22.995111+00:00'
+    status: fresh
+    data_freshness: null
+  10_peer_matrix:
+    version: 1
+    last_updated: '2026-05-23T03:10:22.183615+00:00'
+    status: fresh
+    data_freshness: null
+parent_materials:
+- parent_slug: global-ai-drug-gene-edit
+  parent_variant: claude-opus-4-7
+  mat_id: mat-3a51f9
+  addresses:
+  - K1-RD
+  - K4-RD
+  note: NTLA Q1 2026 10-Q — HAELO Phase 3 阳性 topline (-87% 发作 + 62% attack-free +
+    0 SAE) + rolling BLA 2026-04 启动；K1-RD 直接证据
+- parent_slug: global-ai-drug-gene-edit
+  parent_variant: claude-opus-4-7
+  mat_id: mat-8d4e6d
+  addresses:
+  - K1-RD
+  - K5-RD
+  note: NTLA 2025 10-K — HAE 全管线 + 99%/92% 调研 + KalVista 口服竞品 + 1 例 Phase 1 死亡历史；K1-RD/K5-RD
+    基础
+- parent_slug: global-ai-drug-gene-edit
+  parent_variant: claude-opus-4-7
+  mat_id: mat-2b431a
+  addresses:
+  - K2-RD
+  - K4-RD
+  note: BEAM Q1 2026 10-Q — BEAM-302 60mg 29 例 AAT/Z-AAT/M-AAT 数据 + Grade 4 ALT 双剂事件
+    + Pfizer/Apellis opt-in；K2-RD 直接证据
+- parent_slug: global-ai-drug-gene-edit
+  parent_variant: claude-opus-4-7
+  mat_id: mat-797ff7
+  addresses:
+  - K2-RD
+  note: BEAM 2025 10-K — BEAM-302/risto-cel/BEAM-301 全管线 + 现金 $1.2B + Sixth Street
+    $500M 信贷
+- parent_slug: global-ai-drug-gene-edit
+  parent_variant: claude-opus-4-7
+  mat_id: mat-49861e
+  addresses:
+  - K3-RD
+  note: VRTX 2025 10-K — Casgevy 全年仅 64 例输注（漏斗 300/147/64）；HAE/AATD 商业化爬坡反向参考类比
+- parent_slug: global-ai-drug-gene-edit
+  parent_variant: claude-opus-4-7
+  mat_id: mat-1fe402
+  addresses:
+  - K3-RD
+  note: VRTX Q1 2026 10-Q — Casgevy $42.9M / 19 例 / VRTX 不再披露漏斗；爬坡迟滞参考
+next_actions:
+- workflow 10 peer-matrix v1 完成（10 标的：NTLA/BEAM 短名单, 7 watch, EDIT 淘汰）
+- 可选：为 NTLA + BEAM 创建 stub company topic（us-intellia-ntla / us-beam-therapeutics）+
+  thesis_v0 继承
+- 可选：进入日常监控（workflow 06）— 季度检查 K1-K5 信号
+- 可选：触发 workflow 05 critic-review 自审 v1 thesis
+user_todos:
+- task: 收集 Takeda 2025 年度报告 (Takhzyro HAE 销售曲线参考)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3-RD
+  source_hint: ''
+  status: pending
+- task: 收集 ICER 2026 gene therapy cost-effectiveness 报告
+  priority: P2
+  info_tier: public
+  addresses:
+  - K3-RD
+  source_hint: ''
+  status: pending
+- task: 收集 HAEA 2026 患者协会调研报告
+  priority: P2
+  info_tier: public
+  addresses:
+  - K5-RD
+  source_hint: ''
+  status: pending
+- task: 运行 workflow 10 peer-matrix（10 标的横向）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1-RD
+  - K2-RD
+  - K3-RD
+  - K5-RD
+  source_hint: ''
+  status: pending
+- task: 运行 workflow 05 critic-review 自审 v1 thesis
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+thesis:
+  current_version: 1
+  last_updated: '2026-05-23T03:04:41.694247+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-05-22T13:13:54.231914+00:00'
+    summary: 超配 NTLA + BEAM 罕见病 in vivo 编辑：HAELO Phase 3 + rolling BLA 锁定 NTLA HAE
+      首个 in vivo CRISPR BLA (2026 H2)；BEAM-302 AATD 60mg 支持 2026 H2 pivotal 启动。风险：LNP
+      肝毒性 + KalVista 口服竞品 + 首年渗透率不确定
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-05-23T03:04:41.694354+00:00'
+    summary: 超配 NTLA+BEAM 罕见病 in vivo 编辑篮子(4-7%总组合)：HAELO P3 -87%/62%AF/0SAE 锁定 NTLA-2002
+      2027H1 BLA；BEAM-302 60mg pivotal 支撑 AATD。confidence 5→7/10。风险：Casgevy 漏斗+KalVista
+      oral+LNP长期安全。

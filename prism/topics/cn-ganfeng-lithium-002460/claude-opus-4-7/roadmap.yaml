@@ -1,0 +1,173 @@
+# roadmap.yaml — 研究路线图（workflow 01 生成 / claude-opus-4-7 变体）
+slug: cn-ganfeng-lithium-002460
+variant: claude-opus-4-7
+parent_topic: global-ssb-electrolyte
+created: 2026-05-22
+thesis_version: 0
+thesis_strength: +4
+
+learning_track:
+  l1_orientation:
+    - question: "锂上游产业链（卤水/盐湖/锂辉石 → 碳酸锂/氢氧化锂 → 金属锂/硫化锂）的边界与赣锋的卡位在哪？"
+      source_hint: "赣锋 2024 年报业务结构 + SMM 锂行业地图"
+    - question: "金属锂工艺路线（电解 vs 还原）的产能格局与赣锋青海 1000 吨的工艺归属？"
+      source_hint: "赣锋年报 + 行业研报（金属锂细分）"
+    - question: "半固态电池技术路线（聚合物/氧化物/硫化物）的能量密度区间与赣锋走的硫化物体系？"
+      source_hint: "赣锋年报 R&D 段 + 卖方半固态深度"
+    - question: "赣锋当前业务结构（锂盐 / 金属锂 / 半固态电池 / 储能）的收入占比与毛利率？"
+      source_hint: "赣锋 2024 年报分部数据"
+  l2_history:
+    - question: "2019-2025 锂价周期（6万→60万→7万）三个阶段中赣锋的资本开支节奏与 ROIC 变化？"
+      source_hint: "赣锋历年年报 + akshare 历史财务"
+    - question: "半固态电池产业化时间线（2019 蜂巢→2023 卫蓝→2024 赣锋→2025 沃飞长空）的关键拐点？"
+      source_hint: "行业研报 + 公司公告时间线"
+    - question: "赣锋从纯锂盐到半固态+金属锂的业务转型史（2017 港股上市 → 2021 半固态首次量产 → 2024 eVTOL 装机）？"
+      source_hint: "赣锋历年公告 + 招股书"
+  l3_debates:
+    - question: "争议 A — 乘用车 OEM 客户 0 披露：是商业机密保护，还是真实没有？（thesis 反方 1）"
+      source_hint: "整车厂 2025-2026 公告 + 卖方调研纪要 + 沃飞长空之外低空玩家"
+    - question: "争议 B — 半固态独立产能 40 GWh 中真实出货占比，是否被市场过度估值？（thesis 反方 2）"
+      source_hint: "赣锋 2025 中报/年报分部数据 + 半固态产业第三方调研"
+    - question: "争议 C — 锂盐主业 D/E 偏高 + ROIC 仅 2%，半固态资本开支会否拖垮主业？（thesis 反方 3）"
+      source_hint: "赣锋季度现金流 + 资产负债表 + 在建工程明细"
+    - question: "争议 D — 赣锋 vs SES vs SLDP 的锂金属路线差异化：是真壁垒还是估值陷阱？"
+      source_hint: "SES 10-K/10-Q + SLDP 10-K（已在父 manifest）+ 卖方对比"
+    - question: "争议 E — 硫化锂国标牵头是真卡位还是行业站队？标准发布后赣锋是否享受先发？"
+      source_hint: "硫化锂国标公开稿 + 同行专利 + 学术工艺文献"
+  l4_hunting:
+    - question: "K1 验证：赣锋青海金属锂 1000 吨在 2026Q4 是否给出商业化时点 + 硫化锂国标是否正式发布？"
+      addresses: [K1]
+      source_hint: "赣锋 2026 季报/中报披露 + 工信部 / 国标委公告 + 公司投资者活动记录"
+    - question: "K2 验证：赣锋 2026 中报是否首次单独拆分披露半固态电池出货量（GWh / 营收 / 毛利）？"
+      addresses: [K2]
+      source_hint: "赣锋 2026H1 中报分部数据 + 卖方业绩快评（重点抓拆分新口径）"
+    - question: "K3 验证：沃飞长空 AE200 之外，2026 年内是否新增 ≥1 家具名乘用车 OEM 半固态装机？"
+      addresses: [K3]
+      source_hint: "整车厂半固态装机公告 + 工信部新车公告（电池供应商字段）+ 沃飞 / 时的科技 / 御风未来 等 eVTOL 玩家公开装机"
+    - question: "K4 验证：赣锋 500Wh/kg 10Ah 半固态电池单位经济性（成本/良率）是否优于 SES 退出时的内部模型？"
+      addresses: [K4]
+      source_hint: "赣锋年报研发披露 + SES 10-K 历史成本曲线 + 学术文献（硫化物固态电解质成本）"
+    - question: "K5 验证：赣锋 2026Q3 之前锂盐主业经营性现金流是否覆盖半固态 + 金属锂资本开支（无需再融资）？"
+      addresses: [K5]
+      source_hint: "赣锋 2026Q1/2026H1 现金流量表 + 在建工程 + 增发/可转债公告监控"
+
+material_priority:
+  tier1:
+    - title: "赣锋锂业 2024 年度报告（已下载，复用父 manifest mat-fd945b）"
+      type: annual-report
+      ticker: ""
+      addresses: [K1, K2, K3, K4, K5]
+      info_tier: hard
+      source: "复用父 topic global-ssb-electrolyte/claude-opus-4-7 mat-fd945b"
+      why: "thesis 主资料：上游卡位 + 半固态产能 + eVTOL 装机 + 现金流五项全在年报"
+      status: "done"
+    - title: "赣锋锂业 2025 年度报告（cninfo 自动下载）"
+      type: annual-report
+      ticker: "SZSE_002460"
+      addresses: [K1, K2, K3, K4, K5]
+      info_tier: hard
+      source: "cninfo 巨潮资讯网"
+      why: "本次研究最关键纵向对照：2024 年报已显示 eVTOL 首单 + 40 GWh 产能，2025 年报必须看 K1 商业化进展 + K2 是否拆分出货 + K3 OEM 客户名单是否扩容"
+    - title: "赣锋锂业 2026Q1 季报（cninfo 自动下载）"
+      type: quarterly-report
+      ticker: "SZSE_002460"
+      addresses: [K2, K3, K5]
+      info_tier: hard
+      source: "cninfo"
+      why: "现金流时点验证 K5 + 一季度可能首次披露半固态分部 + eVTOL 订单进展（若有）"
+    - title: "沃飞长空 AE200 / 吉利低空 2026 公开装机数据"
+      type: industry-news
+      ticker: ""
+      addresses: [K3]
+      info_tier: public
+      source: "工信部新车公告 + 民航局适航证 + 沃飞长空公关稿 + 第三方 eVTOL 数据库（如 EVA News）"
+      why: "K3 唯一 ground truth：AE200 试飞后 2026 是否量产；之外是否有第二家具名 eVTOL/OEM 装赣锋半固态"
+    - title: "卖方 2026 赣锋深度报告（≥2 家头部券商）"
+      type: sell-side-note
+      ticker: ""
+      addresses: [K1, K2, K3, K4, K5]
+      info_tier: public
+      source: "中信 / 中金 / 华泰 / 招商 / 国君 等头部研究所 2026 半固态/锂业深度"
+      why: "拆分卖方对赣锋半固态独立估值方法 + 看其是否给出 K3 OEM 客户名单的私下渠道信息"
+
+  tier2:
+    - title: "赣锋青海金属锂 1000 吨试生产 → 商业化公告 + 硫化锂国标公告"
+      type: industry-news
+      ticker: ""
+      addresses: [K1]
+      info_tier: hard
+      source: "公司公告 + 工信部 / 国家标准化管理委员会"
+      why: "K1 商业化时点的官方信号；国标发布日 = 行业卡位变现起点"
+    - title: "SMM 锂价 / 硫化锂 / 金属锂月度报告"
+      type: industry-research
+      ticker: ""
+      addresses: [K1, K5]
+      info_tier: hard
+      source: "上海有色网 SMM"
+      why: "锂价底部回弹 + 硫化锂行业供需是 K1 K5 的宏观底色"
+    - title: "中国半固态电池行业 2026 规模与玩家份额报告"
+      type: industry-research
+      ticker: ""
+      addresses: [K2, K3]
+      info_tier: public
+      source: "GGII / 鑫椤锂电 / EVTank / 高工锂电"
+      why: "判断赣锋 40 GWh 在行业总盘子里的份额（K2 拆分） + 客户结构（K3 OEM 信号）"
+    - title: "三星 SDI 2024 年报（韩股侧固态对照，复用父 manifest mat-3770c8）"
+      type: annual-report
+      ticker: ""
+      addresses: [K2, K4]
+      info_tier: hard
+      source: "复用父 topic mat-3770c8"
+      why: "K4 锂金属/全固态成本路线对比的全球 anchor"
+      status: "done"
+
+  tier3:
+    - title: "Solid Power 2024 10-K（美股侧反证，复用父 mat-756a01）"
+      type: annual-report
+      ticker: ""
+      addresses: [K4]
+      info_tier: hard
+      source: "复用父 manifest mat-756a01"
+      why: "SLDP 转硅基反证赣锋金属锂路线差异化"
+      status: "done"
+    - title: "SES AI 2024 10-K + 2025 10-Q（美股侧反证，复用 mat-ccf921 / mat-8c64a7）"
+      type: annual-report
+      ticker: ""
+      addresses: [K3, K4]
+      info_tier: hard
+      source: "复用父 manifest mat-ccf921 / mat-8c64a7"
+      why: "SES 退出 EV → 转无人机线，反证赣锋 eVTOL narrative 的合理性"
+      status: "done"
+    - title: "硫化锂结晶工艺与电池级纯度学术文献"
+      type: academic
+      ticker: ""
+      addresses: [K1, K4]
+      info_tier: public
+      source: "Google Scholar / arXiv / J. Power Sources / Adv. Energy Mater."
+      why: "K1 国标卡位的技术深度 + K4 硫化物体系成本曲线学术 baseline"
+    - title: "当升科技 2024 年报（中游正极反方对照，复用父 mat-cc4b89）"
+      type: annual-report
+      ticker: ""
+      addresses: [K2]
+      info_tier: hard
+      source: "复用父 manifest mat-cc4b89"
+      why: "中游正极厂期权证伪 → 突显赣锋上游卡位的稀缺性"
+      status: "done"
+
+key_risks_to_monitor:
+  - "锂价跌破 6 万元/吨（触发 K5 主业现金流压力）"
+  - "2026 中报半固态仍合并披露（K2 估值溢价回吐）"
+  - "2026 内乘用车 OEM 仍 0 增加（K3 narrative 退化为单一 eVTOL 期权）"
+  - "青海金属锂 1000 吨延期商业化（K1 中股侧实证锚松动）"
+  - "增发/可转债公告（K5 杠杆下行 + 业务转型双杀）"
+
+analogies_to_study:
+  - case: "2015-2018 锂价周期（赣锋上一轮转型）"
+    similarity: "周期底部回弹 + 公司从锂盐扩张到锂电池中游；估值底 + 业务转型双重 catalyst"
+    divergence: "上轮是新能源车爆发驱动需求，本轮是 eVTOL/低空 + 储能驱动；上轮无半固态期权"
+  - case: "比亚迪刀片电池 2018-2020 量产前两年"
+    similarity: "narrative shift（铁锂 → 刀片）类似赣锋 narrative shift（液态 → 半固态）+ 单一龙头客户绑定（比亚迪自用 vs 赣锋绑沃飞）"
+    divergence: "比亚迪是垂直一体化自用，赣锋是 to-B 卖电池给 eVTOL；客户集中度风险方向相反"
+  - case: "宁德时代钠离子电池 2021-2024 估值期权曲线"
+    similarity: "市场对未量产新技术的期权定价 → 多次高潮 + 多次冷却；赣锋半固态 narrative 大概率复刻类似估值波动"
+    divergence: "钠电池 BOM 成本压力来自原材料，半固态压力主要来自硫化物固态电解质良率；驱动逻辑不同"

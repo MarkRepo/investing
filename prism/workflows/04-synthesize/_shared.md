@@ -31,23 +31,78 @@ print('question:', t['scope']['question'])
 
 ---
 
-## 调度模式：单 subagent 顺序生成 01-08
+## 调度模式：主 agent 直做 + 并行 Write（**默认**）
 
-**默认走单 subagent 顺序模式**，仅当资料数 <10 且主 agent 上下文宽裕时才考虑主 agent 直接生成。
+**默认走主 agent 直做模式**——主 agent 读完 findings 后直接 Write 11 份产出（01-08 + 07 sidecar yaml + thesis_v1），用 Write 工具并行批次（一次 message 发 4-5 个 Write 调用）。
 
-### 为什么单 agent 顺序
+### 为什么主 agent 直做（2026-05-22 改）
 
-8 份产出并行 dispatch 会让每个 subagent 各自加载 findings（N × 重复读取）。改成单 subagent 顺序后：
-- Findings 只读一次
-- 06/07/08 需要的 cross-mat 校准在 subagent 上下文里自然形成，不用主 agent 手搓
-- 主 agent 上下文只回流一句 DONE，不被 8 份 markdown 撑爆
-- 失败恢复：写一份落盘一份，中途断了下次从未写的接着写
+历史教训（feedback_subagent_bulk_synthesis）：用单 subagent 顺序模式 dispatch 11 份长产出，**两次测试都撞 60min subagent 硬上限被强杀，0 文件落盘**。原因：
+1. **结构性超限**：11 份 × 400 行 markdown 的 token 输出本身就要 30-50min，加 findings 读取 + 推理 + cross-mat 校准必撞 60min 硬墙。
+2. **Write 幻觉重试循环放大**（见 [[subagent-write-hallucination]]）。
+3. **黑盒无可见性**：subagent stdout 不流式，前 30min 看不到进度，等发现已超时。
 
-### Dispatch 规约
+主 agent 直做的优势：
+- **并行 Write**：一次 message 发 4-5 份产出的 Write 调用，比 subagent 串行快 3-5×
+- **无 60min 硬墙**：主 agent 没有 wallclock 上限
+- **无 Write 幻觉**：主 agent Write 工具可靠
+- **可中途救**：每份 Write 实时落盘，断了可以接着写
 
-- `subagent_type`: **必须用 `general-purpose`**。不能用 `Explore`（read-only 无 Write）、不能用 `Plan`（read-only）
+### 执行步骤
+
+主 agent 直做的标准流程：
+
+1. **读 findings**：调 `format_findings_for_prompt` helper 列出自有 + 父级 findings 路径，主 agent 用 Read 工具**并行**读完所有未读 findings（同一 message 多 Read 调用）。
+2. **读 thesis_v0**：作为强度 v0→v1 对照锚。
+3. **写 _synthesis_brief.md**：先 dump K1-K5 v0→v1 强度调整结论到 `outputs/_synthesis_brief.md`，作为后续 06/07/08 的 cross-mat 校准锚。
+4. **批次并行 Write 产出**：按 2-3 份一批的节奏 Write 01-08：
+   - 批 1：01_business_panorama + 02_cycle_positioning + 03_narrative_ecology + 04_implied_expectations（4 份并行）
+   - 批 2：05_historical_mirrors + 06_risk_blindspots + 07_decision_kit + 07_decision_kit.yaml + 08_living_feed（5 份并行）
+   - 批 3：thesis_v1.md + 状态注册 Bash（2 个调用并行）
+5. **状态注册**：用单个 Bash 脚本一次性注册 9 个 outputs status + thesis v1。
+6. **收尾**：set_stage('04-post-synthesis') + 清空 user_todos + 更新 next_actions（指向 critic-review / daily-monitor / 中报回看）。
+
+### 何时仍可考虑 subagent dispatch（**例外**）
+
+仅当**全部满足**以下条件才考虑 dispatch：
+- 主 agent 上下文已接近压缩边界（找回 findings 读取成本高）
+- 产出份数 ≤4（单次 dispatch 总 token <30K，wallclock <40min 留 buffer）
+- 任务可被切成多轮（例：先 dispatch 01-04，再 dispatch 05-08）
+
+此时仍用"subagent 返内容、主 agent 落盘"架构：
+- **subagent 只产内容、主 agent Write 落盘**——subagent 不调用 Write/Edit
+- `subagent_type`: `general-purpose`
 - `model`: **不传**，跟随主 agent
-- `isolation`: **不传**，复用主工作目录（要往 `prism/topics/{slug}/{variant}/outputs/` 落盘）
+- `isolation`: **不传**
+
+下面 dispatch prompt 模板**仅在例外路径**使用——默认走主 agent 直做。
+
+subagent 返回格式（最关键）：final message 必须包含 8 个连续的 markdown 代码块，每块前用一行 `=== {output_key} ===` 标记，例如：
+
+```
+=== 01_business_panorama ===
+```markdown
+---
+slug: ...
+output_key: 01_business_panorama
+...
+---
+（正文）
+```
+
+=== 02_cycle_positioning ===
+```markdown
+...
+```
+（依此类推到 08）
+
+=== thesis_v1 ===
+```markdown
+（thesis_v1 内容）
+```
+```
+
+主 agent 收到后用正则切分，依次 Write 到 `prism/topics/{slug}/{variant}/outputs/{output_key}.md`，然后写 thesis_v1.md。
 
 ### Dispatch 前准备 — 调 helper 列出所有 findings
 
@@ -67,8 +122,8 @@ print(format_findings_for_prompt('{slug}', '{variant}'))
 ```
 你被指派为 prism topic `{slug}` 的 variant `{variant}` 顺序生成 8 份产出（01-08）+ 07 sidecar yaml。
 
-# Step 0 (validation, 必做): 测试 Write 权限
-开头先 Write 一行 "ok" 到 outputs/.write_test 检查权限。成功立即继续；如果 Write 真被拦（极少数），返回 "BLOCKED: write tool denied" 并终止——主 agent 会接手。**不要预判 Write 会失败而把 markdown 塞回 final message——这是已知幻觉。**
+# 重要：你不要调用 Write/Edit 工具，也不要用 Bash heredoc 写文件
+所有产出 markdown 必须以 `=== {output_key} ===` 标记 + ```markdown ``` 代码块的形式整体放在 final message 中。主 agent 会接收后切分落盘。
 
 # 上下文
 - Topic question: {question}
@@ -82,23 +137,54 @@ print(format_findings_for_prompt('{slug}', '{variant}'))
 ## Step 1.5: 内部做 K1-K5（或对应 thesis 钩子）校准
 顺序生成 06/07/08 之前你必须先在上下文里形成 v0→v1 强度调整结论。建议把校准结论 dump 成 outputs/_synthesis_brief.md（供未来 critic-review/drilldown 复用，可选不强制）。
 
-## Step 2-9: 按下列顺序生成并直接 Write 落盘
-依次按对应 sub-workflow 规范填内容、Write 落盘、不要等到最后批量写：
+## Step 2-9: 按下列顺序生成 8 份产出（仅在 final message 中返，不落盘）
+依次按对应 sub-workflow 规范填内容：
 
-1. 读 prism/workflows/04-synthesize/01-panorama.md → 写 outputs/01_business_panorama.md
-2. 读 02-cycle.md → 写 outputs/02_cycle_positioning.md
-3. 读 03-narrative.md → 写 outputs/03_narrative_ecology.md
-4. 读 04-expectations.md → 写 outputs/04_implied_expectations.md
-5. 读 05-mirrors.md → 写 outputs/05_historical_mirrors.md
-6. 读 06-risks.md → 写 outputs/06_risk_blindspots.md
-7. 读 07-decision-kit.md → 写 outputs/07_decision_kit.md + outputs/07_decision_kit.yaml
-8. 读 08-feed.md → 写 outputs/08_living_feed.md
+1. 读 prism/workflows/04-synthesize/01-panorama.md → 产 01_business_panorama
+2. 读 02-cycle.md → 产 02_cycle_positioning
+3. 读 03-narrative.md → 产 03_narrative_ecology
+4. 读 04-expectations.md → 产 04_implied_expectations
+5. 读 05-mirrors.md → 产 05_historical_mirrors
+6. 读 06-risks.md → 产 06_risk_blindspots
+7. 读 07-decision-kit.md → 产 07_decision_kit（同时产 07_decision_kit_yaml 用 ```yaml 块）
+8. 读 08-feed.md → 产 08_living_feed
+9. 产 thesis_v1（5 段：核心 thesis / 强度评分 / 支持理由 / 反方观点 / K1-K5 现状）
 
-每写完一份立即 Write 落盘，不要积累到最后。
+## 返回格式
+final message 第一行：DONE 或 BLOCKED 状态行。
+然后依次输出每份产出，格式如下（严格遵守）：
 
-## 返回
-完成后返回一行：
-DONE: 8 outputs + 07 yaml written. Brief: {written|skipped}. Issues: {none|描述}
+=== 01_business_panorama ===
+```markdown
+---
+slug: {slug}
+output_key: 01_business_panorama
+version: 1
+generated: {iso_date}
+---
+
+（正文 800-2000 字）
+
+## 信息来源
+- mat-xxx (filename): 用于...
+```
+
+=== 02_cycle_positioning ===
+```markdown
+...
+```
+
+（依此类推到 08_living_feed）
+
+=== 07_decision_kit_yaml ===
+```yaml
+（07 sidecar yaml 内容）
+```
+
+=== thesis_v1 ===
+```markdown
+（thesis_v1 5 段内容）
+```
 ```
 
 主 agent 接到 DONE 后，依次调脚本更新 8 份产出的状态（见下方"更新状态"段），然后跑 _shared.md 收尾段判断是否自动触发 09/10。

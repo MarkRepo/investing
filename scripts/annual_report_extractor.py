@@ -64,6 +64,31 @@ _SKIP_KEYWORDS = [
     "非经常性损益",
 ]
 
+# Q季报 TOC 关键词集（与年报分开，因为季报 TOC 短且章节命名不同）
+_QUARTERLY_INCLUDE_KEYWORDS = [
+    "主要财务数据",
+    "经营数据",
+    "经营情况",
+    "股东信息",
+    "其他重要事项",
+    "重要事项",
+]
+_QUARTERLY_SKIP_KEYWORDS = [
+    "季度财务报表",
+    "审计报告",
+    "财务报表",
+]
+
+
+def _is_quarterly_report(toc: list) -> bool:
+    """季报特征：TOC 短（≤20 entries）且包含「季度财务报表」或「一、主要财务数据」"""
+    if not toc or len(toc) > 20:
+        return False
+    titles = [t.replace(" ", "") for _, t, _ in toc]
+    return any("季度财务报表" in t for t in titles) or any(
+        t.startswith("一、主要财务数据") for t in titles
+    )
+
 
 class Section(NamedTuple):
     level: int
@@ -72,11 +97,13 @@ class Section(NamedTuple):
     end_page: int     # inclusive, 1-based
 
 
-def _should_include(title: str) -> bool:
+def _should_include(title: str, quarterly: bool = False) -> bool:
     t = title.replace(" ", "")
-    if any(k in t for k in _SKIP_KEYWORDS):
+    skip_kw = _QUARTERLY_SKIP_KEYWORDS if quarterly else _SKIP_KEYWORDS
+    include_kw = _QUARTERLY_INCLUDE_KEYWORDS if quarterly else _INCLUDE_KEYWORDS
+    if any(k in t for k in skip_kw):
         return False
-    return any(k in t for k in _INCLUDE_KEYWORDS)
+    return any(k in t for k in include_kw)
 
 
 def _build_sections(toc: list, total_pages: int) -> list[Section]:
@@ -90,6 +117,10 @@ def _build_sections(toc: list, total_pages: int) -> list[Section]:
             if next_level <= level:
                 end = next_page - 1
                 break
+        # Edge case: when next section starts on same page (Q季报 常见),
+        # end < start → 0 页. Fallback: extract at least the start page.
+        if end < page:
+            end = page
         sections.append(Section(level, title, page, end))
     return sections
 
@@ -126,18 +157,22 @@ def extract(
         return {"全文": full} if full else {}
 
     sections = _build_sections(toc, doc.page_count)
+    quarterly = _is_quarterly_report(toc)
+    if quarterly:
+        log.info("Detected quarterly report — using Q-report section template")
+    skip_kw = _QUARTERLY_SKIP_KEYWORDS if quarterly else _SKIP_KEYWORDS
 
     result: dict[str, str] = {}
     current_l1_included = False
 
     for sec in sections:
         if sec.level == 1:
-            current_l1_included = _should_include(sec.title)
+            current_l1_included = _should_include(sec.title, quarterly=quarterly)
             if current_l1_included:
                 text = _extract_page_text(doc, sec.start_page, sec.end_page)
                 result[sec.title] = _clean_text(text)
         elif sec.level == 2 and include_subsections and current_l1_included:
-            if not any(k in sec.title.replace(" ", "") for k in _SKIP_KEYWORDS):
+            if not any(k in sec.title.replace(" ", "") for k in skip_kw):
                 text = _extract_page_text(doc, sec.start_page, sec.end_page)
                 result[f"  {sec.title}"] = _clean_text(text)
 

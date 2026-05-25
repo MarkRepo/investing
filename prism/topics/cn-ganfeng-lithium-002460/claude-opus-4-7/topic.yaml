@@ -1,0 +1,125 @@
+slug: cn-ganfeng-lithium-002460
+display_name: 赣锋锂业
+type: company
+created: '2026-05-22T07:29:50.186245+00:00'
+status: active
+stage: 04-post-synthesis
+parent_topic: global-ssb-electrolyte
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 赣锋作为全球锂盐+金属锂+硫化锂行业标准牵头者+半固态电池上下游全产业链玩家，能否在 2026-2028 锂价底部叠加 eVTOL/半固态期权三层错误定价中跑出
+    alpha？K1 上游卖铲人逻辑 + K4 中股侧仍真实的具名乘用车 OEM 是否会出现？
+  depth: deep
+  ticker: SZSE_002460
+  market: US
+outputs_state:
+  00_quality_screen:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-23T02:46:36.764743+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-23T02:46:36.771138+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-23T02:46:36.775738+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-23T02:46:36.779950+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-23T02:46:36.784224+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-23T02:46:36.788549+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-23T02:46:36.792554+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-23T02:46:36.800939+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit_yaml:
+    version: 1
+    last_updated: '2026-05-23T02:46:36.796398+00:00'
+    status: fresh
+    data_freshness: null
+parent_materials:
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-fd945b
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  note: 赣锋 2024 年报（自有），承载 K1 上游卡位 + K2 半固态产能 + K3 eVTOL + K4 500Wh/kg + K5 现金流主资料
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-ccf921
+  addresses:
+  - K4
+  note: SES 2024 10-K，反证锂金属赛道从 EV 切 eVTOL；与赣锋 K4 单位经济性对比
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-8c64a7
+  addresses:
+  - K3
+  - K4
+  note: SES 2025 10-Q，最新退出/无人机线 narrative 时点
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-756a01
+  addresses:
+  - K4
+  note: SLDP 2024 10-K，反证锂金属路线分化（SLDP 转硅基），与赣锋 vs 美股侧差异化
+- parent_slug: global-ssb-electrolyte
+  parent_variant: claude-opus-4-7
+  mat_id: mat-cc4b89
+  addresses:
+  - K2
+  note: 当升科技 2024 年报，K2 中游正极厂期权强证伪反方（父 K2 -5）
+next_actions:
+- 可进入 05-critic-review 评审 thesis_v1 强度逻辑一致性
+- 可进入 06-daily-monitor 设置季度/半年监控节点
+- 2026-08 中报披露后回看 K1-K5 触发器并迭代 thesis_v2
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+thesis:
+  current_version: 1
+  last_updated: '2026-05-23T02:46:36.805151+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-05-22T07:31:24.835575+00:00'
+    summary: 赣锋是 A 股唯一同时被父 K1（上游硫化锂/金属锂卖铲人）+ K4（中股侧锂金属负极）共同支撑的标的：锂价底部 + 上游卡位独家 + eVTOL
+      半固态期权三层错误定价，但具名乘用车 OEM 持续缺席是空头唯一支点。
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-23T02:46:36.805156+00:00'
+    summary: 赣锋是 A 股唯一被父 K1（上游金属锂/硫化锂卖铲人）+ K4（中股侧锂金属）共同支撑的标的；上游卡位独家成立，半固态期权 narrative
+      已退化到 eVTOL/低空主战场，从双轮驱动修正为上游+周期主导
