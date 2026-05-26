@@ -51,6 +51,18 @@ _CATEGORY = {
 
 _QUARTERLY_CATEGORIES = ("q1", "q3")
 
+# 高信号公告类别（cninfo category）—— 默认拉近 1 年
+_ANNOUNCEMENT_CATEGORIES = {
+    "yjygjxz": "category_yjygjxz_szsh",   # 业绩预告/业绩快报
+    "gqjl":    "category_gqjl_szsh",      # 股权激励
+    "zf":      "category_zf_szsh",        # 增发
+    "kzz":     "category_kzz_szsh",       # 可转债
+    "fxts":    "category_fxts_szsh",      # 风险提示
+    "tbclts":  "category_tbclts_szsh",    # 特别处理（ST/退市预警）
+}
+
+_ANNOUNCEMENT_WINDOW_DAYS = 365
+
 _INBOX_AUTO = Path(__file__).parent.parent / "prism" / "inbox" / "auto"
 
 
@@ -344,6 +356,7 @@ def fetch_sec(
     slug: str | None = None,
     variant: str | None = None,
     forms: tuple[str, ...] = ("10-K", "10-Q", "20-F", "6-K", "40-F"),
+    with_announcements: bool = True,
 ) -> list[Path]:
     """Download latest SEC filings for a US ticker. Auto-registers in manifest if slug given.
 
@@ -432,7 +445,350 @@ def fetch_sec(
                 except Exception as e:
                     log.warning("Section split failed for %s: %s — full htm still usable", dest.name, e)
         saved.append(dest)
+
+    if with_announcements:
+        try:
+            ann = fetch_announcements_us(ticker, slug, variant)
+            if ann:
+                log.info("Fetched %d 8-K announcement(s) for %s", len(ann), ticker)
+        except Exception as e:
+            log.warning("8-K announcement fetch failed for %s: %s", ticker, e)
+
     return saved
+
+
+def _within_window(announcement: dict, days: int) -> bool:
+    """True if announcement was published within the last `days` days."""
+    ts = announcement.get("announcementTime")
+    if not ts:
+        return False
+    from datetime import datetime, timezone
+    pub = datetime.fromtimestamp(ts / 1000, tz=timezone.utc).date()
+    return (date.today() - pub).days <= days
+
+
+def _download_announcement(announcement: dict, dest_dir: Path, company_name: str,
+                            ticker: str, category_key: str) -> Path:
+    """Download a cninfo announcement PDF — separate filename schema from financial reports.
+
+    Filename: {publish_date}_{ticker}_announce_{category}_{title}.PDF
+    """
+    url = _CNINFO_DL + announcement["adjunctUrl"]
+    ts = announcement["announcementTime"]
+    from datetime import datetime, timezone
+    dt = datetime.fromtimestamp(ts / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
+    title = announcement["announcementTitle"].replace("/", "-").replace(" ", "")
+    # Cap title to keep filename sane
+    if len(title) > 40:
+        title = title[:40]
+    name = f"{dt}_{ticker}_announce_{category_key}_{title}.PDF"
+    dest = dest_dir / name
+    if dest.exists():
+        log.info("Already exists: %s", dest.name)
+        return dest
+    log.info("Downloading announcement %s…", name)
+    r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=120)
+    r.raise_for_status()
+    dest.write_bytes(r.content)
+    log.info("Saved → %s (%.1f MB)", dest, len(r.content) / 1e6)
+    return dest
+
+
+def fetch_announcements_cn(
+    market_ticker: str,
+    slug: str | None = None,
+    variant: str | None = None,
+    days: int = _ANNOUNCEMENT_WINDOW_DAYS,
+) -> list[Path]:
+    """Download recent high-signal A-share announcements (last `days` days, default 365).
+
+    Categories: 业绩预告/股权激励/增发/可转债/风险提示/特别处理.
+    Per-category failures are logged and skipped — one bad category does not abort the rest.
+    Returns list of downloaded paths.
+    """
+    _, ticker = _parse_market_ticker(market_ticker)
+    dest_dir = _materials_dir(slug) if slug else _INBOX_AUTO
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    info = _company_info(ticker)
+    code, org_id = info["code"], info["orgId"]
+    company_name = info.get("zwjc", ticker)
+    column = _column(code)
+
+    saved: list[Path] = []
+    for key, category in _ANNOUNCEMENT_CATEGORIES.items():
+        try:
+            anns = _list_reports(code, org_id, column, category)
+        except Exception as e:
+            log.warning("Announcement category %s list failed: %s", key, e)
+            continue
+        recent = [a for a in anns if _within_window(a, days)]
+        if not recent:
+            continue
+        log.info("Category %s: %d announcement(s) within %dd", key, len(recent), days)
+        for a in recent:
+            try:
+                p = _download_announcement(a, dest_dir, company_name, ticker, key)
+                saved.append(p)
+                if slug:
+                    _register_in_prism(slug, p, "announcement", company_name, variant)
+            except Exception as e:
+                log.warning("Announcement download failed (%s): %s", a.get("announcementTitle", "?")[:30], e)
+    return saved
+
+
+def fetch_announcements_us(
+    ticker: str,
+    slug: str | None = None,
+    variant: str | None = None,
+    days: int = _ANNOUNCEMENT_WINDOW_DAYS,
+) -> list[Path]:
+    """Download recent 8-K filings (last `days` days, default 365) for a US ticker.
+
+    Reuses fetch_sec but pulls all 8-K within window (not just latest).
+    Per-filing failures are logged and skipped.
+    """
+    import json
+    import os
+    import urllib.request
+    from datetime import datetime as _dt
+
+    UA = "investment-wiki research@example.com"
+    dest_dir = _materials_dir(slug) if slug else _INBOX_AUTO
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    req = urllib.request.Request(
+        "https://www.sec.gov/files/company_tickers.json", headers={"User-Agent": UA}
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        data = json.loads(resp.read())
+    cik_map = {v["ticker"].upper(): (str(v["cik_str"]).zfill(10), v["title"]) for v in data.values()}
+    if ticker.upper() not in cik_map:
+        raise ValueError(f"SEC CIK not found for ticker {ticker}")
+    cik, company_name = cik_map[ticker.upper()]
+
+    req2 = urllib.request.Request(
+        f"https://data.sec.gov/submissions/CIK{cik}.json", headers={"User-Agent": UA}
+    )
+    with urllib.request.urlopen(req2, timeout=30) as resp:
+        sub = json.loads(resp.read())
+    recent = sub.get("filings", {}).get("recent", {})
+    f_list = recent.get("form", [])
+    dates_ = recent.get("filingDate", [])
+    accs = recent.get("accessionNumber", [])
+    docs = recent.get("primaryDocument", [])
+
+    cutoff = (date.today() - __import__("datetime").timedelta(days=days)).isoformat()
+    saved: list[Path] = []
+    for i, form in enumerate(f_list):
+        if form != "8-K":
+            continue
+        if "/A" in form:
+            continue
+        fd = dates_[i]
+        if fd < cutoff:
+            continue
+        acc_dir = accs[i].replace("-", "")
+        cik_num = str(int(cik))
+        doc = docs[i]
+        ext = os.path.splitext(doc)[1] or ".htm"
+        fname = f"{fd}_{ticker}_announce_8K{ext}"
+        dest = dest_dir / fname
+        if dest.exists():
+            log.info("%s — already exists", fname)
+        else:
+            try:
+                dl = f"https://www.sec.gov/Archives/edgar/data/{cik_num}/{acc_dir}/{doc}"
+                req3 = urllib.request.Request(dl, headers={"User-Agent": UA})
+                with urllib.request.urlopen(req3, timeout=120) as resp:
+                    dest.write_bytes(resp.read())
+                log.info("Saved → %s (%.1f MB)", dest, dest.stat().st_size / 1e6)
+            except Exception as e:
+                log.warning("8-K download failed for %s: %s", fd, e)
+                continue
+        if slug:
+            try:
+                _register_in_prism(slug, dest, "announcement", company_name, variant)
+            except Exception as e:
+                log.warning("Manifest register failed for %s: %s", fname, e)
+        saved.append(dest)
+    return saved
+
+
+def fetch_by_keyword_cn(
+    market_ticker: str,
+    keyword: str,
+    since_days: int | None = None,
+    max_hits: int = 10,
+    slug: str | None = None,
+    variant: str | None = None,
+) -> list[Path]:
+    """按需检索 — A 股按关键词在公告标题里搜索，下载命中项。
+
+    since_days: 限定近 N 天披露的；None = 不限。
+    max_hits: 最多下载 N 份（命中过多时取最新 N 份）。
+    返回：下载到本地的路径列表。
+
+    与"顺手预拉"不同：这是 subagent 研究中 ad-hoc 调用，关键词由调用方给定（如
+    "股权激励" / "股东大会" / "重大资产重组" / 公告全名匹配）。
+    """
+    _, ticker = _parse_market_ticker(market_ticker)
+    dest_dir = _materials_dir(slug) if slug else _INBOX_AUTO
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    info = _company_info(ticker)
+    code, org_id = info["code"], info["orgId"]
+    company_name = info.get("zwjc", ticker)
+    column = _column(code)
+
+    hits = _search_all_pages(code, org_id, column, keyword)
+    # 过滤掉摘要/英文/更正/修订（与 _list_reports 一致）
+    hits = [a for a in hits if not re.search(r"摘要|英文|更正|修订", a.get("announcementTitle", ""))]
+    if since_days is not None:
+        hits = [a for a in hits if _within_window(a, since_days)]
+
+    if not hits:
+        log.info("No matches for keyword %r on %s (since_days=%s)", keyword, company_name, since_days)
+        return []
+
+    # 按披露时间倒序，取最新 max_hits 份
+    hits.sort(key=lambda a: a.get("announcementTime", 0), reverse=True)
+    selected = hits[:max_hits]
+    log.info("Keyword %r matched %d announcement(s) for %s; downloading %d",
+             keyword, len(hits), company_name, len(selected))
+
+    saved: list[Path] = []
+    for a in selected:
+        try:
+            # 用关键词做 category_key 占位，方便文件名区分手动检索结果
+            safe_kw = re.sub(r"[^\w\-]", "", keyword)[:20] or "search"
+            p = _download_announcement(a, dest_dir, company_name, ticker, f"search_{safe_kw}")
+            saved.append(p)
+            if slug:
+                _register_in_prism(slug, p, "announcement", company_name, variant)
+        except Exception as e:
+            log.warning("Download failed (%s): %s", a.get("announcementTitle", "?")[:30], e)
+    return saved
+
+
+def fetch_by_keyword_us(
+    ticker: str,
+    keyword: str,
+    since_days: int | None = None,
+    max_hits: int = 10,
+    forms: tuple[str, ...] = ("8-K", "10-K", "10-Q", "20-F", "6-K", "DEF 14A"),
+    slug: str | None = None,
+    variant: str | None = None,
+) -> list[Path]:
+    """按需检索 — 美股走 EDGAR full-text search (efts.sec.gov)。
+
+    forms: 限定文件类型；默认覆盖披露+财报+代理声明。
+    返回：下载到本地的路径列表。
+    """
+    import json
+    import os
+    import urllib.parse
+    import urllib.request
+
+    UA = "investment-wiki research@example.com"
+    dest_dir = _materials_dir(slug) if slug else _INBOX_AUTO
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    # Resolve CIK
+    req = urllib.request.Request(
+        "https://www.sec.gov/files/company_tickers.json", headers={"User-Agent": UA}
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        data = json.loads(resp.read())
+    cik_map = {v["ticker"].upper(): (str(v["cik_str"]).zfill(10), v["title"]) for v in data.values()}
+    if ticker.upper() not in cik_map:
+        raise ValueError(f"SEC CIK not found for ticker {ticker}")
+    cik, company_name = cik_map[ticker.upper()]
+    cik_int = int(cik)
+
+    # efts 全文搜索：q=keyword&ciks=<10-digit>&forms=8-K,10-K&dateRange=custom&startdt=...
+    params = {
+        "q": f'"{keyword}"' if " " in keyword else keyword,
+        "ciks": cik,
+        "forms": ",".join(forms),
+    }
+    if since_days is not None:
+        from datetime import timedelta
+        start = (date.today() - timedelta(days=since_days)).isoformat()
+        params["dateRange"] = "custom"
+        params["startdt"] = start
+        params["enddt"] = date.today().isoformat()
+    url = "https://efts.sec.gov/LATEST/search-index?" + urllib.parse.urlencode(params)
+
+    req2 = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req2, timeout=30) as resp:
+        result = json.loads(resp.read())
+    hits = result.get("hits", {}).get("hits", [])
+    if not hits:
+        log.info("efts no matches for keyword %r on %s (forms=%s, since_days=%s)",
+                 keyword, ticker, forms, since_days)
+        return []
+
+    # efts 已按 relevance 排序，取前 max_hits
+    selected = hits[:max_hits]
+    log.info("Keyword %r matched %d filing(s) for %s; downloading %d",
+             keyword, len(hits), ticker, len(selected))
+
+    saved: list[Path] = []
+    for h in selected:
+        src = h.get("_source", {})
+        # _id 形如 "0001045810-26-000021:nvda-20260125.htm"
+        hit_id = h.get("_id", "")
+        if ":" not in hit_id:
+            log.warning("Skipping malformed efts hit id: %s", hit_id)
+            continue
+        acc, doc = hit_id.split(":", 1)
+        acc_dir = acc.replace("-", "")
+        form = (src.get("form") or "UNKNOWN").replace("/", "-")
+        fd = src.get("file_date") or src.get("filed", "")[:10] or "unknown"
+        ext = os.path.splitext(doc)[1] or ".htm"
+        safe_kw = re.sub(r"[^\w\-]", "", keyword)[:20] or "search"
+        fname = f"{fd}_{ticker}_search_{safe_kw}_{form}{ext}"
+        dest = dest_dir / fname
+        if dest.exists():
+            log.info("Already exists: %s", fname)
+        else:
+            dl = f"https://www.sec.gov/Archives/edgar/data/{cik_int}/{acc_dir}/{doc}"
+            try:
+                req3 = urllib.request.Request(dl, headers={"User-Agent": UA})
+                with urllib.request.urlopen(req3, timeout=120) as resp:
+                    dest.write_bytes(resp.read())
+                log.info("Saved → %s (%.1f MB)", dest, dest.stat().st_size / 1e6)
+            except Exception as e:
+                log.warning("EDGAR download failed (%s): %s", fname, e)
+                continue
+        if slug:
+            try:
+                _register_in_prism(slug, dest, "announcement", company_name, variant)
+            except Exception as e:
+                log.warning("Manifest register failed (%s): %s", fname, e)
+        saved.append(dest)
+    return saved
+
+
+def fetch_by_keyword(
+    market_ticker: str,
+    keyword: str,
+    since_days: int | None = None,
+    max_hits: int = 10,
+    slug: str | None = None,
+    variant: str | None = None,
+) -> list[Path]:
+    """按需检索路由 — 按 market_ticker 分发到 _cn / _us。其他市场暂未支持。"""
+    market = _route(market_ticker)
+    if market == "cn":
+        return fetch_by_keyword_cn(market_ticker, keyword, since_days, max_hits, slug, variant)
+    if market == "us":
+        return fetch_by_keyword_us(market_ticker, keyword, since_days, max_hits,
+                                    slug=slug, variant=variant)
+    raise NotImplementedError(
+        f"按需关键词检索暂未支持 {market} 市场（仅 cn / us）。如需，可走 mineru ingest 手动路径。"
+    )
 
 
 def fetch(
@@ -442,6 +798,7 @@ def fetch(
     slug: str | None = None,
     variant: str | None = None,
     quarter: int | None = None,
+    with_announcements: bool = True,
 ) -> Path:
     """Download a financial report. Returns the local file path.
 
@@ -461,7 +818,7 @@ def fetch(
     market = _route(market_ticker)
 
     if market == "us":
-        results = fetch_sec(market_ticker, slug, variant)
+        results = fetch_sec(market_ticker, slug, variant, with_announcements=with_announcements)
         return results[0] if results else None
 
     if market == "kr":
@@ -553,6 +910,14 @@ def fetch(
     if slug:
         _register_in_prism(slug, file_path, report_type, company_name, variant)
 
+    if with_announcements:
+        try:
+            ann = fetch_announcements_cn(market_ticker, slug, variant)
+            if ann:
+                log.info("Fetched %d announcement(s) for %s", len(ann), company_name)
+        except Exception as e:
+            log.warning("Announcement fetch failed for %s: %s", company_name, e)
+
     return file_path
 
 
@@ -563,16 +928,37 @@ def fetch_many(
     slug: str | None = None,
     variant: str | None = None,
     quarter: int | None = None,
+    with_announcements: bool = True,
 ) -> list[Path]:
-    """Batch-fetch multiple years of a single report type. CN only (SEC has its own pagination)."""
+    """Batch-fetch multiple years of a single report type. CN only (SEC has its own pagination).
+
+    Announcements are fetched once (after all years), not per-year, to avoid redundant cninfo calls.
+    """
     paths: list[Path] = []
     for y in years:
         try:
-            p = fetch(market_ticker, report_type, y, slug, variant, quarter=quarter)
+            # Suppress per-year announcement fetch — we batch it once at the end.
+            p = fetch(market_ticker, report_type, y, slug, variant,
+                      quarter=quarter, with_announcements=False)
             if p:
                 paths.append(p)
         except ValueError as e:
             log.warning("Year %d skipped: %s", y, e)
+
+    if with_announcements and paths:
+        market = _route(market_ticker)
+        try:
+            if market == "cn":
+                ann = fetch_announcements_cn(market_ticker, slug, variant)
+            elif market == "us":
+                ann = fetch_announcements_us(market_ticker, slug, variant)
+            else:
+                ann = []
+            if ann:
+                log.info("Fetched %d announcement(s) for %s", len(ann), market_ticker)
+        except Exception as e:
+            log.warning("Announcement fetch failed for %s: %s", market_ticker, e)
+
     return paths
 
 
@@ -600,18 +986,45 @@ def main() -> None:
     parser.add_argument("--quarter", type=int, choices=[1, 3], default=None,
                         help="Force Q1 or Q3 (only for --type quarterly, CN cninfo only). "
                              "Default: fan-out 查 Q1+Q3 取最新。")
+    parser.add_argument("--no-announcements", action="store_true",
+                        help="跳过近 1 年高信号公告抓取（默认顺手拉）。"
+                             "A 股: 业绩预告/股权激励/增发/可转债/风险提示/特别处理；美股: 8-K。")
+    parser.add_argument("--search", default=None, metavar="KEYWORD",
+                        help="按需检索模式：按关键词在公告标题里搜索（A 股 cninfo / 美股 EDGAR 全文）。"
+                             "与 --type/--year/--years 互斥；不下载财报，只下命中公告。")
+    parser.add_argument("--since-days", type=int, default=None,
+                        help="--search 时限定近 N 天披露的；不传 = 不限。")
+    parser.add_argument("--max-hits", type=int, default=10,
+                        help="--search 时最多下载 N 份（默认 10）。")
     args = parser.parse_args()
+
+    with_ann = not args.no_announcements
+
+    if args.search:
+        if args.year or args.years:
+            print("Error: --search 与 --year/--years 互斥", file=sys.stderr)
+            sys.exit(2)
+        try:
+            paths = fetch_by_keyword(args.ticker, args.search,
+                                     since_days=args.since_days, max_hits=args.max_hits,
+                                     slug=args.slug, variant=args.variant)
+            for p in paths:
+                print(p)
+            return
+        except (ValueError, NotImplementedError) as e:
+            print(f"Error: {e}", file=sys.stderr)
+            sys.exit(1)
 
     try:
         if args.years:
             years = _parse_years(args.years)
             paths = fetch_many(args.ticker, years, args.type, args.slug, args.variant,
-                               quarter=args.quarter)
+                               quarter=args.quarter, with_announcements=with_ann)
             for p in paths:
                 print(p)
         else:
             path = fetch(args.ticker, args.type, args.year, args.slug, args.variant,
-                         quarter=args.quarter)
+                         quarter=args.quarter, with_announcements=with_ann)
             print(path)
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)

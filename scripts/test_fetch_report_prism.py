@@ -72,7 +72,7 @@ def test_fetch_quarterly_fan_out_queries_both_categories():
                       return_value={"code": "688331", "orgId": "9900044", "zwjc": "荣昌"}), \
          patch.object(frp, "_list_reports", side_effect=_track_list), \
          patch.object(frp, "_download", return_value="/tmp/fake.pdf"):
-        result = frp.fetch("SSE_688331", "quarterly", 2025)
+        result = frp.fetch("SSE_688331", "quarterly", 2025, with_announcements=False)
     # fan-out 必须查两次
     assert calls == ["category_yjdbg_szsh", "category_sjdbg_szsh"]
     assert result == "/tmp/fake.pdf"
@@ -97,7 +97,7 @@ def test_fetch_quarterly_explicit_q1_queries_only_q1():
                       return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
          patch.object(frp, "_list_reports", side_effect=_track_list), \
          patch.object(frp, "_download", return_value="/tmp/q1.pdf"):
-        frp.fetch("SSE_688331", "quarterly", 2025, quarter=1)
+        frp.fetch("SSE_688331", "quarterly", 2025, quarter=1, with_announcements=False)
     assert calls == ["category_yjdbg_szsh"]
 
 
@@ -119,7 +119,7 @@ def test_fetch_quarterly_explicit_q3_queries_only_q3():
                       return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
          patch.object(frp, "_list_reports", side_effect=_track_list), \
          patch.object(frp, "_download", return_value="/tmp/q3.pdf"):
-        frp.fetch("SSE_688331", "quarterly", 2025, quarter=3)
+        frp.fetch("SSE_688331", "quarterly", 2025, quarter=3, with_announcements=False)
     assert calls == ["category_sjdbg_szsh"]
 
 
@@ -151,7 +151,7 @@ def test_fetch_quarterly_fan_out_picks_latest_when_both_present():
                       return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
          patch.object(frp, "_list_reports", side_effect=_list), \
          patch.object(frp, "_download", side_effect=_stub_download):
-        frp.fetch("SSE_688331", "quarterly", 2025)
+        frp.fetch("SSE_688331", "quarterly", 2025, with_announcements=False)
     assert "第三季度" in captured["title"]
 
 
@@ -183,6 +183,180 @@ def test_fetch_annual_unchanged_first_published_semantics():
                       return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
          patch.object(frp, "_list_reports", side_effect=_list), \
          patch.object(frp, "_download", side_effect=_stub_download):
-        frp.fetch("SSE_688331", "annual", 2024)
+        frp.fetch("SSE_688331", "annual", 2024, with_announcements=False)
     # 应该选首发版（earliest）
     assert "（延期披露）" not in captured["title"]
+
+
+# ----- 公告抓取（announcements）-----
+
+
+def test_announcement_categories_six_high_signal():
+    """高信号子集必须正好 6 类：业绩预告/股权激励/增发/可转债/风险提示/特别处理。"""
+    assert set(frp._ANNOUNCEMENT_CATEGORIES.keys()) == {
+        "yjygjxz", "gqjl", "zf", "kzz", "fxts", "tbclts",
+    }
+    assert frp._ANNOUNCEMENT_CATEGORIES["yjygjxz"] == "category_yjygjxz_szsh"
+
+
+def test_fetch_announcements_cn_queries_all_six_categories():
+    """fetch_announcements_cn 必须查 6 个 category，每类失败不影响其他。"""
+    queried = []
+
+    def _track(code, org_id, column, category):
+        queried.append(category)
+        if category == "category_yjygjxz_szsh":
+            raise RuntimeError("simulated cninfo timeout")
+        return []
+
+    with patch.object(frp, "_company_info",
+                      return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
+         patch.object(frp, "_list_reports", side_effect=_track):
+        result = frp.fetch_announcements_cn("SSE_688331")
+    # 即使第 1 类失败，剩 5 类还得查
+    assert len(queried) == 6
+    assert "category_yjygjxz_szsh" in queried
+    assert result == []
+
+
+def test_within_window_filters_old_announcements():
+    """_within_window 必须按 days 过滤，老公告剔除。"""
+    import time
+    now_ms = int(time.time() * 1000)
+    fresh = {"announcementTime": now_ms - 100 * 86400 * 1000}   # 100 days ago
+    stale = {"announcementTime": now_ms - 500 * 86400 * 1000}   # 500 days ago
+    assert frp._within_window(fresh, 365) is True
+    assert frp._within_window(stale, 365) is False
+
+
+def test_fetch_with_announcements_false_skips_announcement_fetch():
+    """with_announcements=False 时不调 fetch_announcements_cn。"""
+    def _list(code, org_id, column, category):
+        if category == "category_ndbg_szsh":
+            return [{
+                "announcementTitle": "X2024年年度报告",
+                "announcementTime": 1714435200000,
+                "adjunctUrl": "x.pdf",
+            }]
+        return []
+
+    with patch.object(frp, "_route", return_value="cn"), \
+         patch.object(frp, "_company_info",
+                      return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
+         patch.object(frp, "_list_reports", side_effect=_list), \
+         patch.object(frp, "_download", return_value="/tmp/x.pdf"), \
+         patch.object(frp, "fetch_announcements_cn") as mock_ann:
+        frp.fetch("SSE_688331", "annual", 2024, with_announcements=False)
+    mock_ann.assert_not_called()
+
+
+def test_fetch_with_announcements_default_triggers_cn():
+    """默认 with_announcements=True 应调 fetch_announcements_cn 一次。"""
+    def _list(code, org_id, column, category):
+        if category == "category_ndbg_szsh":
+            return [{
+                "announcementTitle": "X2024年年度报告",
+                "announcementTime": 1714435200000,
+                "adjunctUrl": "x.pdf",
+            }]
+        return []
+
+    with patch.object(frp, "_route", return_value="cn"), \
+         patch.object(frp, "_company_info",
+                      return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
+         patch.object(frp, "_list_reports", side_effect=_list), \
+         patch.object(frp, "_download", return_value="/tmp/x.pdf"), \
+         patch.object(frp, "fetch_announcements_cn", return_value=[]) as mock_ann:
+        frp.fetch("SSE_688331", "annual", 2024)
+    mock_ann.assert_called_once()
+
+
+def test_fetch_by_keyword_cn_calls_search_all_pages():
+    """A 股按需检索必须走 _search_all_pages，并过滤摘要/英文/更正/修订。"""
+    import time
+    now_ms = int(time.time() * 1000)
+    hits = [
+        {"announcementTitle": "X股权激励计划草案", "announcementTime": now_ms, "adjunctUrl": "1.pdf"},
+        {"announcementTitle": "X股权激励计划草案摘要", "announcementTime": now_ms, "adjunctUrl": "2.pdf"},
+        {"announcementTitle": "X股权激励计划英文版", "announcementTime": now_ms, "adjunctUrl": "3.pdf"},
+        {"announcementTitle": "X股权激励计划授予完成", "announcementTime": now_ms - 86400_000,
+         "adjunctUrl": "4.pdf"},
+    ]
+    downloaded = []
+
+    def _stub_dl(a, dest_dir, company_name, ticker, category_key):
+        downloaded.append(a["announcementTitle"])
+        from pathlib import Path as P
+        return P("/tmp/x.pdf")
+
+    with patch.object(frp, "_company_info",
+                      return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
+         patch.object(frp, "_search_all_pages", return_value=hits), \
+         patch.object(frp, "_download_announcement", side_effect=_stub_dl):
+        frp.fetch_by_keyword_cn("SSE_688331", "股权激励", max_hits=10)
+
+    # 摘要/英文剔除，剩 2 条
+    assert len(downloaded) == 2
+    assert all("摘要" not in t and "英文" not in t for t in downloaded)
+
+
+def test_fetch_by_keyword_cn_since_days_filter():
+    """since_days=30 必须剔除 60 天前的命中。"""
+    import time
+    now_ms = int(time.time() * 1000)
+    hits = [
+        {"announcementTitle": "X重大事项", "announcementTime": now_ms, "adjunctUrl": "fresh.pdf"},
+        {"announcementTitle": "X重大事项续", "announcementTime": now_ms - 60 * 86400_000,
+         "adjunctUrl": "stale.pdf"},
+    ]
+    downloaded = []
+
+    def _stub_dl(a, *args, **kwargs):
+        downloaded.append(a["announcementTitle"])
+        from pathlib import Path as P
+        return P("/tmp/x.pdf")
+
+    with patch.object(frp, "_company_info",
+                      return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
+         patch.object(frp, "_search_all_pages", return_value=hits), \
+         patch.object(frp, "_download_announcement", side_effect=_stub_dl):
+        frp.fetch_by_keyword_cn("SSE_688331", "重大事项", since_days=30)
+
+    assert len(downloaded) == 1
+    assert "续" not in downloaded[0]
+
+
+def test_fetch_by_keyword_routes_us_market():
+    """fetch_by_keyword(NVDA, ...) 必须路由到 fetch_by_keyword_us。"""
+    with patch.object(frp, "fetch_by_keyword_us", return_value=[]) as mock_us, \
+         patch.object(frp, "fetch_by_keyword_cn", return_value=[]) as mock_cn:
+        frp.fetch_by_keyword("NVDA", "merger")
+    mock_us.assert_called_once()
+    mock_cn.assert_not_called()
+
+
+def test_fetch_by_keyword_unsupported_market_raises():
+    """HK/UK/JP/KR 暂未支持，必须 raise NotImplementedError。"""
+    with pytest.raises(NotImplementedError, match="hk"):
+        frp.fetch_by_keyword("HK_02228", "重组")
+
+
+def test_fetch_many_calls_announcements_once_not_per_year():
+    """fetch_many(years=[2022,2023,2024]) 公告只拉一次，不是每年一次。"""
+    def _list(code, org_id, column, category):
+        if category == "category_ndbg_szsh":
+            return [
+                {"announcementTitle": "X2022年年度报告", "announcementTime": 1, "adjunctUrl": "a.pdf"},
+                {"announcementTitle": "X2023年年度报告", "announcementTime": 2, "adjunctUrl": "b.pdf"},
+                {"announcementTitle": "X2024年年度报告", "announcementTime": 3, "adjunctUrl": "c.pdf"},
+            ]
+        return []
+
+    with patch.object(frp, "_route", return_value="cn"), \
+         patch.object(frp, "_company_info",
+                      return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
+         patch.object(frp, "_list_reports", side_effect=_list), \
+         patch.object(frp, "_download", return_value="/tmp/x.pdf"), \
+         patch.object(frp, "fetch_announcements_cn", return_value=[]) as mock_ann:
+        frp.fetch_many("SSE_688331", [2022, 2023, 2024])
+    mock_ann.assert_called_once()
