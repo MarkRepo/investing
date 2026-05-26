@@ -6,7 +6,28 @@
 
 ---
 
-## Step 0：gap 体检（进 05 第一件事）
+## Step 0.0：prescan 状态门禁（**修 ISSUE-001 — 第一道门**）
+
+```bash
+python3 << 'EOF'
+from prism.scripts.topic import read_topic
+t = read_topic('{slug}', '{variant}')
+status = (t.get('thesis') or {}).get('prescan_status')
+reason = (t.get('thesis') or {}).get('prescan_failure_reason')
+print(f'prescan_status: {status}')
+print(f'prescan_failure_reason: {reason}')
+EOF
+```
+
+- **`prescan_status == 'failed'`** → **BLOCK 04-synthesize**。critic 不允许给 approve / request-more 之外的任何 verdict 前必须先要求用户二选一：
+  1. **手工 prescan 补漏**：另设备搜索 baseline 第五节优先 query 并粘贴结果入库，重跑 `check_prescan_health` 直到 `partial` 或 `full`
+  2. **接受 failed prescan 继续推进**：用户显式确认"接受训练知识赌注"，critic 在 Step 2 反方论据中**自动加重"thesis 论断脆弱"加权**，Step 3 评分对所有"time_sensitivity=快变"的 fact 强制降级 uncertain，verdict 最高只能 `request-more`，不许 `approve`
+- **`prescan_status == 'partial'`** → critic 必须在 Step 2 列出 baseline 第六节"仍未校准"清单作为反方论据起点
+- **`prescan_status == 'full'` 或 None（旧 topic）** → 正常推进
+
+---
+
+## Step 0：gap 体检（进 05 第二件事）
 
 ```bash
 python3 -c "

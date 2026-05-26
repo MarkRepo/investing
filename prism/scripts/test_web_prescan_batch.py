@@ -22,6 +22,7 @@ def tmp_topic(monkeypatch):
     topic_io.create_topic(
         slug=slug, display_name="Test", topic_type="company",
         question="Q?", geo="US", depth="quick", variant=variant,
+        short_name="Test",
         ticker="US_TEST",
     )
     create_manifest(slug, variant)

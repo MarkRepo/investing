@@ -38,16 +38,25 @@ _DEFAULT_OUTPUT_STATE = {
 }
 
 
-def _infer_market(ticker: str, geo: str) -> str:
-    """推断股票代码所属市场。CN 股根据首位数推断，其他默认 US。
+_MARKET_PREFIXES = ("SSE", "SZSE", "BSE", "HKEX", "US", "NASDAQ", "NYSE")
 
-    若 ticker 是旧格式（SZSE_300073 / SHA_688499 / SSE_600519），
-    剥离前缀后再推断，避免落入兜底 US 分支。
+
+def _infer_market(ticker: str, geo: str) -> str:
+    """推断股票代码所属市场。
+
+    优先级：显式前缀 > geo + 数字首位启发
+    - HKEX_09995 → HKEX（修：原版会落入 SZSE 兜底）
+    - SSE_688331 / SZSE_300073 → 直接用前缀
+    - 裸数字 + geo=CN → 按首位推断 SSE/SZSE/BSE
+    - 其他 → US
     """
     if not ticker:
         return ""
     if "_" in ticker:
-        ticker = ticker.split("_", 1)[1]
+        prefix, code = ticker.split("_", 1)
+        if prefix in _MARKET_PREFIXES:
+            return prefix
+        ticker = code  # 不认识的前缀，剥离后走数字启发
     if geo != "CN":
         return "US"
     if ticker[:1] in ("6", "9", "5"):
@@ -57,6 +66,17 @@ def _infer_market(ticker: str, geo: str) -> str:
     elif ticker[:1] == "8":
         return "BSE"
     return "US"
+
+
+_TICKER_RE = re.compile(r"^[A-Z]+_[A-Za-z0-9]+$")
+
+
+def _validate_ticker(ticker: str, field: str = "ticker") -> None:
+    """校验 ticker 格式 {EXCHANGE}_{CODE}。不区分 known/unknown exchange — 未知前缀走兜底。"""
+    if not isinstance(ticker, str) or not _TICKER_RE.match(ticker):
+        raise ValueError(
+            f"{field} 格式必须是 '{{EXCHANGE}}_{{CODE}}'（如 'SSE_688331' / 'HKEX_09995' / 'US_AAPL'），得到: {ticker!r}"
+        )
 
 
 def _outputs_for_type(topic_type: str) -> list[str]:
@@ -158,6 +178,25 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+_SEARCH_TERM_MAX_CHARS = 15
+_SHORT_NAME_MAX_CHARS = 12
+_LONG_QUESTION_THRESHOLD = 25
+
+
+def _validate_search_terms(search_terms: list) -> None:
+    """H3: search_terms 校验 — list[str]，每项 ≤15 字，至少非空 1 项。"""
+    if not isinstance(search_terms, list):
+        raise ValueError(f"search_terms 必须是 list[str]，得到: {search_terms!r}")
+    cleaned = [s for s in search_terms if isinstance(s, str) and s.strip()]
+    if not cleaned:
+        raise ValueError(f"search_terms 不能全空，得到: {search_terms!r}")
+    for s in cleaned:
+        if len(s) > _SEARCH_TERM_MAX_CHARS:
+            raise ValueError(
+                f"search_terms 每项 ≤{_SEARCH_TERM_MAX_CHARS} 字（避免拼出来又超长），得到: {s!r} ({len(s)} 字)"
+            )
+
+
 def create_topic(
     slug: str,
     display_name: str,
@@ -167,10 +206,70 @@ def create_topic(
     depth: str,
     variant: str,
     ticker: str | None = None,
+    extra_tickers: list[str] | None = None,
+    short_name: str | None = None,
+    search_terms: list[str] | None = None,
     parent_topic: str | None = None,
     concepts: list[str] | None = None,
     monitoring_tier: str = "dormant",
 ) -> Path:
+    """创建 topic.yaml。
+
+    H1: company 类型必须传 ticker，否则 raise ValueError —— 避免 build_search_queries
+        的 company-event 系列静默不生成。
+    M1: extra_tickers 用于 AH 双重上市 / 多市场（如 [SSE_688331, HKEX_09995] 的 H 股部分；
+        或 [HKEX_09988, US_BABA, NASDAQ_BABAF] 的 ADR 多重上市）。每项格式同 ticker。
+        写入 scope.extra_tickers + scope.extra_markets（并行 list[str]，长度一致）。
+    H3 (v2): display_name 用于 UI 展示（可长，含 ticker/英文名），short_name 用于
+        WebSearch 查询（≤12 字，纯主体名）。company 类型必须传 short_name。
+        例：display_name='荣昌生物 (RemeGen, SSE 688331)' / short_name='荣昌生物'
+    H3 (v2): question >25 字时必须传 search_terms。脚本不做关键词提取
+        （切到非关键名词反而误导）—— 让 LLM 在创建时显式提炼。
+        例：question='荣昌生物 ADC+自免双管线 商业化兑现 BD 回流' → search_terms=
+        ['ADC 商业化', 'BD 海外授权', 'IgAN 管线']
+    """
+    if topic_type == "company" and not ticker:
+        raise ValueError(
+            "topic_type='company' 必须传 ticker (格式: '{EXCHANGE}_{CODE}'，如 'SSE_688331' / 'HKEX_09995' / 'US_AAPL'). "
+            "后续 build_search_queries 的 company-event query 依赖 ticker，漏传会静默缺失。"
+        )
+    if topic_type == "company" and not short_name:
+        raise ValueError(
+            "topic_type='company' 必须传 short_name (≤12 字，纯主体名，搜索查询用). "
+            f"display_name={display_name!r} 含 ticker/英文名常超长，不能直接用于 WebSearch。"
+            f"例：display_name='荣昌生物 (RemeGen, SSE 688331)' → short_name='荣昌生物'"
+        )
+    if ticker:
+        _validate_ticker(ticker, field="ticker")
+    if extra_tickers is not None:
+        if not isinstance(extra_tickers, list):
+            raise ValueError(f"extra_tickers 必须是 list[str]，得到: {extra_tickers!r}")
+        for t in extra_tickers:
+            _validate_ticker(t, field="extra_tickers item")
+        if ticker and ticker in extra_tickers:
+            raise ValueError(
+                f"extra_tickers 不能包含主 ticker {ticker!r}（已在 scope.ticker），请去重"
+            )
+        if len(extra_tickers) != len(set(extra_tickers)):
+            raise ValueError(f"extra_tickers 内部不能重复，得到: {extra_tickers!r}")
+    if short_name is not None:
+        if not isinstance(short_name, str) or not short_name.strip():
+            raise ValueError(f"short_name 必须是非空 str，得到: {short_name!r}")
+        if len(short_name) > _SHORT_NAME_MAX_CHARS:
+            raise ValueError(
+                f"short_name ≤{_SHORT_NAME_MAX_CHARS} 字（搜索友好），得到: {short_name!r} ({len(short_name)} 字)"
+            )
+    # 长 question 的 hard gate：脚本不做关键词提取
+    if (question or "") and len((question or "").strip()) > _LONG_QUESTION_THRESHOLD and not search_terms:
+        raise ValueError(
+            f"scope.question 超 {_LONG_QUESTION_THRESHOLD} 字（{len(question)} 字）但 search_terms 未给。"
+            f"脚本不会自动提炼关键词（切到非核心名词反而误导）。"
+            f"请主 agent 从 question 中挑 2-4 个核心名词作 search_terms（每项 ≤{_SEARCH_TERM_MAX_CHARS} 字），"
+            f"例：question='荣昌生物 ADC+自免双管线 商业化兑现 BD 回流' → search_terms=['ADC 商业化', 'BD 海外授权', 'IgAN 管线']"
+        )
+    if search_terms is not None and search_terms != []:
+        _validate_search_terms(search_terms)
+
     path = _topic_path(slug, variant)
     if path.exists():
         raise FileExistsError(f"Topic already exists: {slug}/{variant}")
@@ -182,6 +281,13 @@ def create_topic(
     if ticker:
         scope["ticker"] = ticker
         scope["market"] = _infer_market(ticker, geo)
+    if extra_tickers:
+        scope["extra_tickers"] = list(extra_tickers)
+        scope["extra_markets"] = [_infer_market(t, geo) for t in extra_tickers]
+    if short_name:
+        scope["short_name"] = short_name.strip()
+    if search_terms:
+        scope["search_terms"] = [s.strip() for s in search_terms if isinstance(s, str) and s.strip()]
     data = {
         "slug": slug,
         "display_name": display_name,
@@ -404,8 +510,31 @@ def get_critic_verdict(slug: str, variant: str) -> dict | None:
     return read_topic(slug, variant).get("critic")
 
 
-def set_next_actions(slug: str, actions: list[str], variant: str) -> None:
-    update_topic(slug, variant, next_actions=actions)
+def set_next_actions(
+    slug: str,
+    actions: list[str],
+    variant: str,
+    prescan_status: str | None = None,
+    prescan_failure_reason: str | None = None,
+) -> None:
+    """更新 next_actions。
+
+    ISSUE-001：当 prescan_status='failed' 时，自动 prepend 一条警示 action，
+    迫使主 agent 在推进下一步前显式决策"补 prescan 还是接受 failed"。
+    其余 prescan_status（None / 'full' / 'partial'）行为不变（不修改 actions）。
+    """
+    final_actions = list(actions)
+    if prescan_status == "failed":
+        reason = prescan_failure_reason or "未知（疑似 WebSearch 限流或区域阻断）"
+        warning = (
+            f"⚠️  prescan FAILED (reason: {reason}) — 推进 workflow 01 前必须二选一: "
+            f"(a) 手工 prescan：用户另设备搜索 baseline 第五节优先 query 并粘贴结果给主 agent 入库；"
+            f"(b) 接受 failed prescan：thesis 中 time_sensitivity=快变 的 fact 全部降级 uncertain，"
+            f"K# 攻打 todo 优先级 P0 升级；workflow 05 critic-review 必须 block 04-synthesize 至用户复决"
+        )
+        if not final_actions or not final_actions[0].startswith("⚠️  prescan FAILED"):
+            final_actions = [warning] + final_actions
+    update_topic(slug, variant, next_actions=final_actions)
 
 
 _VALID_INFO_TIERS = ("public", "half_public", "hard")
@@ -628,27 +757,74 @@ def set_monitoring_tier(slug: str, tier: str, variant: str) -> None:
     update_topic(slug, variant, monitoring_tier=tier)
 
 
-def set_thesis(slug: str, variant: str, version: int, summary: str, stage_set_at: str) -> dict | None:
+_VALID_PRESCAN_STATUSES = ("full", "partial", "failed")
+
+
+def set_thesis(
+    slug: str,
+    variant: str,
+    version: int,
+    summary: str,
+    stage_set_at: str,
+    prescan_status: str | None = None,
+    prescan_failure_reason: str | None = None,
+    force_failed: bool = False,
+) -> dict | None:
     """记录 LLM 在特定阶段的 thesis 表态。完整 markdown 写到 thesis_v{N}.md。
 
     summary: 一句话核心 thesis（≤120 字），用于 yaml/web 列表展示
     stage_set_at: thesis 表态时的研究阶段（如 01-roadmap-pending、04-synthesizing）
+
+    ISSUE-001：prescan_status 三态（'full' / 'partial' / 'failed' / None）
+      - None      : 向后兼容，行为不变（不写 prescan_status）
+      - 'full'    : prescan 命中 100%，正常推进
+      - 'partial' : 命中 [WEB_SEARCH_FAIL_THRESHOLD, 1.0)，标 partial 但允许写入
+      - 'failed'  : 命中 <WEB_SEARCH_FAIL_THRESHOLD，**必须** force_failed=True + prescan_failure_reason
+                    否则 raise ValueError——强制主 agent 显式确认"接受 failed prescan 状态"
+        建议在 set_thesis 前调 check_prescan_health() 取 status / failure_reason
 
     副作用：升版后自动跑 reverse-check（version>=1 且 roadmap 存在时）：
       若 thesis 的 K# 在 roadmap.L4/material 中未闭环，自动写 "roadmap 需补 Kx" todo，
       并把 stage 翻成 '01-roadmap-reopen'。返回 reverse-check 结果（含 newly_added_todos）。
       version=0 或 roadmap 未建时跳过。
     """
+    if prescan_status is not None and prescan_status not in _VALID_PRESCAN_STATUSES:
+        raise ValueError(
+            f"prescan_status={prescan_status!r} 非法，必须为 "
+            f"{_VALID_PRESCAN_STATUSES} 之一或 None"
+        )
+    if prescan_status == "failed":
+        if not force_failed:
+            raise ValueError(
+                "prescan_status='failed' 但未传 force_failed=True — "
+                "主 agent 必须显式确认接受 failed prescan 状态（thesis 是训练知识赌注）。"
+                "建议先尝试串行重试 baseline 优先 query，仍失败再重调本函数时传 force_failed=True"
+            )
+        if not (prescan_failure_reason and prescan_failure_reason.strip()):
+            raise ValueError(
+                "prescan_status='failed' 必须同时传 prescan_failure_reason "
+                "（如 'WebSearch 限流静默返空' / 'API 区域阻断' / '主 agent 跳过 Step 4.5a'）"
+            )
+
     data = read_topic(slug, variant)
     thesis = data.setdefault("thesis", {"current_version": None, "last_updated": None, "history": []})
     thesis["current_version"] = version
     thesis["last_updated"] = _now_iso()
-    thesis["history"].append({
+    history_entry = {
         "version": version,
         "stage_set_at": stage_set_at,
         "set_at": _now_iso(),
         "summary": summary,
-    })
+    }
+    if prescan_status is not None:
+        history_entry["prescan_status"] = prescan_status
+        if prescan_failure_reason:
+            history_entry["prescan_failure_reason"] = prescan_failure_reason
+        # 同时写到 thesis 顶层方便 workflow 05 / web UI 快速读
+        thesis["prescan_status"] = prescan_status
+        if prescan_failure_reason:
+            thesis["prescan_failure_reason"] = prescan_failure_reason
+    thesis["history"].append(history_entry)
     _write_yaml(_topic_path(slug, variant), data)
 
     if version >= 1:

@@ -264,7 +264,7 @@ print(format_findings_for_prompt('{slug}', '{variant}'))
 6. 读 06-risks.md → 产 06_risk_blindspots
 7. 读 07-decision-kit.md → 产 07_decision_kit（同时产 07_decision_kit_yaml 用 ```yaml 块）
 8. 读 08-feed.md → 产 08_living_feed
-9. 产 thesis_v1（5 段：核心 thesis / 强度评分 / 支持理由 / 反方观点 / K1-K5 现状）
+9. 产 thesis_v1（4 段：① 核心 thesis + 强度评分 / ② 支持理由 / ③ 反方观点 / ④ K1-K5 现状；与 workflow 00 thesis_v0 段结构一致，**不再单列 V# 验证项段**）
 
 ## 返回格式
 final message 第一行：DONE 或 BLOCKED 状态行。
@@ -299,7 +299,7 @@ generated: {iso_date}
 
 === thesis_v1 ===
 ```markdown
-（thesis_v1 5 段内容）
+（thesis_v1 4 段内容：核心 thesis+强度评分 / 支持理由 / 反方观点 / K1-K5）
 ```
 ```
 

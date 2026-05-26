@@ -24,7 +24,23 @@
 
 同时需要确认当前使用的 LLM 模型变体名称（如 `gemini`、`gpt-4o` 等），后续将作为 `variant` 参数使用。默认可使用当前调用的模型名称。
 
-**如果是 company 类型，必须确认 ticker**（格式：`{market}_{code}`，如 `SZSE_000426`、`SSE_600519`、`US_AAPL`）。ticker 用于生成行情/财务页面链接。
+**如果是 company 类型，必须确认 ticker**（格式：`{market}_{code}`，如 `SZSE_000426`、`SSE_600519`、`HKEX_09995`、`US_AAPL`）。ticker 用于生成行情/财务页面链接。**company 漏传 ticker 会被 `create_topic` 直接 raise**（修 H1）。
+
+**display_name 与 short_name 分离**（修 H3 v2）：`display_name` 用于 UI 展示（可长，含 ticker 和英文名）；`short_name` 用于 WebSearch 查询（≤12 字，纯主体名）。
+- company 类型 **必填 `short_name`**（脚本 raise）；industry/arena 可选（不填走 display_name 兜底）
+- 例：`display_name='荣昌生物 (RemeGen, SSE 688331)'` (30 字 UI 友好) → `short_name='荣昌生物'` (4 字 搜索友好)
+- 例：`display_name='阿里巴巴 (BABA, HKEX 09988)'` → `short_name='阿里巴巴'`
+
+**长 question 必须同步给 `search_terms`**（修 H3 v2）：当 `question` 超 25 字（典型如生物医药/科技/复合产业的 deep 类研究），**必填** `search_terms: list[str]` — 2-4 个 WebSearch 友好的核心关键词，每项 ≤15 字。
+- 例：`question='荣昌生物作为中国领先的ADC+自免双管线创新药企业，全维度覆盖：商业化兑现节奏、海外授权回流'` → `search_terms=['ADC 商业化', 'BD 海外授权', 'IgAN 管线']`
+- 脚本不做关键词提取（标点截断常切到非核心名词反而误导）—— 长 question 漏给 search_terms 会**直接 raise** 引导主 agent 显式提炼
+- 这些关键词会成为 `scope` / `killer-question` / `l4-hunting` query 的核心组成（参 `build_search_queries`）
+
+**多市场上市（AH 双重 / ADR / 多重上市）必须确认 `extra_tickers`**（list[str]，主代码以外的所有同公司代码）：
+- 荣昌生物 A+H：`ticker='SSE_688331', extra_tickers=['HKEX_09995']`
+- 阿里巴巴 H+ADR：`ticker='HKEX_09988', extra_tickers=['NYSE_BABA']`
+- 中芯国际 A+H：`ticker='SSE_688981', extra_tickers=['HKEX_00981']`
+- 漏填 = 后续 06-daily-monitor 拿不到第二市场资金/估值/公告 → thesis 写"AH 折溢价"时无结构化字段（修 M1）
 
 ---
 
@@ -66,6 +82,14 @@ create_topic(
     geo='{geo}',
     depth='{depth}',
     variant='{variant}',
+    # company 类型必填 ticker（H1）；industry / arena / concept 不填
+    ticker='{ticker_or_None}',          # e.g. 'SSE_688331' / 'HKEX_09995' / 'US_AAPL'
+    # AH 双重 / ADR / 多重上市必填（M1）；单市场或非 company 留 None
+    extra_tickers={extra_tickers_or_None},  # e.g. ['HKEX_09995'] / ['NYSE_BABA'] / None
+    # company 必填 / industry/arena 可选（H3 v2）；≤12 字，纯主体名（搜索查询用）
+    short_name='{short_name}',  # e.g. '荣昌生物'（display_name 通常含 ticker/英文名 不能直接搜）
+    # question 超 25 字时必填（H3 v2）；脚本不做关键词提取，长 question 漏填会 raise
+    search_terms={search_terms_or_None},  # e.g. ['ADC 商业化', 'BD 海外授权', 'IgAN 管线'] / None
 )
 print('创建成功')
 "
@@ -119,7 +143,7 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 
 **执行三段：先跑 baseline 优先 query → 再跑默认模板 prescan → 回写 baseline 校准结果。三段都做完才进 Step 5。**
 
-### Step 4.5a：先跑 baseline 第五节的优先 query（**修 M4**）
+### Step 4.5a：先跑 baseline 第五节的优先 query（**修 M4 + ISSUE-001**）
 
 `build_search_queries` 只会生成 scope + 事件模板 query，**不读 baseline_knowledge.md**——主 agent 在 Step 4.3 baseline 第五节写的"自评盲点 → 想精准查的 query"必须在这一步手动落地，否则等于白写。
 
@@ -128,22 +152,27 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 sed -n '/## 五、需要 web-search 校准的优先项/,/^##/p' prism/topics/{slug}/{variant}/baseline_knowledge.md
 ```
 
-主 agent 对每条优先 query：
-1. 调 `WebSearch` 工具拉 hit
-2. 一行入库：
+主 agent 对每条优先 query 按 `_web_prescan_shared.md` Step B.1 并发限流规约跑：
+1. **5 并发一批 + 批间 10s**（不要一次 message 里塞 10 个 WebSearch 并行，会触发**静默**限流）
+2. 调 `register_web_search_batch(triggered_by='00-prescan-baseline', ...)`，**显式读返回的 `silent_failure: bool`**
+3. ≥3 条 silent_failure → 等 30s 串行重试这些失败 query（30s 一条）
+4. 串行重试仍多数失败 → 转 _web_prescan_shared.md Step B.2 兜底（WebFetch 已知权威 URL）
 
 ```python
 from prism.scripts.web_prescan import register_web_search_batch
-register_web_search_batch(
+r = register_web_search_batch(
     slug='{slug}', variant='{variant}',
     query='baseline 第五节优先项的具体 query',
-    addresses=['scope'],  # 此阶段还无 K#，先用 scope 占位；workflow 01 写完 thesis 后可补
+    addresses=['scope'],  # 此阶段还无 K#，先用 scope 占位
     triggered_by='00-prescan-baseline',
     hits=[...],
 )
+if r['silent_failure']:
+    # 等 30s 串行重试本 query；连 3 个 silent_failure 转 B.2 兜底
+    ...
 ```
 
-**纪律**：第五节 5-10 条优先 query 全部跑完才进 4.5b。漏跑等于主 agent 自评的盲点没补，thesis_v0 会基于过时认知做赌注。
+**纪律**：第五节 5-10 条优先 query 全部尝试完才进 4.5b。漏跑等于主 agent 自评的盲点没补，thesis_v0 会基于过时认知做赌注。WebSearch 长时不可用时按 B.2 降级，**不允许默默跳过**——脚本会通过 Step 5.0 的 `check_prescan_health` 自动检测并触发 `prescan_status='failed'`。
 
 ### Step 4.5b：跑默认模板 prescan
 
@@ -207,7 +236,7 @@ register_web_search_batch(
 - 在 frontmatter 加 `revised_after_prescan: true` 标记
 - `data_freshness` 字段写明"训练知识截止 YYYY-MM + workflow 00 web-prescan（含 XX 数据）"
 
-**要求**：写一份 `prism/topics/{slug}/{variant}/thesis_v0.md`，必须包含以下五段（每段都要写，不能跳过）：
+**要求**：写一份 `prism/topics/{slug}/{variant}/thesis_v0.md`，必须包含以下四段（每段都要写，不能跳过）：
 
 1. **核心 thesis**：一句话（≤80 字）+ 强度评分（0-10 分，0=完全看空，10=All-in 看好）
    - 必须有方向（看多 / 看空 / 中性 / 分化看法），不能写"取决于"
@@ -217,21 +246,47 @@ register_web_search_batch(
 4. **会改变看法的事件 / Killer Question**（3-5 条）：必须是**可观测、可证伪**的具体事件
    - 反例："如果技术失败" ✗
    - 正例："任一头部车厂将全固态 SOP 时间从 2027-2028 推迟到 2030+" ✓
-5. **研究中重点验证项**（3-5 条）：把支持理由 + 反方观点 + Killer Question 转成具体待查清单，引导后续 workflow 01 的路线图
 
-写完 `thesis_v0.md` 后，调脚本登记到 topic.yaml：
+**不再单列"研究中重点验证项 V#" 段** —— V# 本质是 K#/Q# 的派生细化，作用是引导 workflow 01 路线图，但与 user_todos 重复。改为：**user_todos 直接承担验证项角色**，每条 todo 的 `addresses=[K#, Q#]` 标明它在攻打哪个论证目标（在 Step 5.3 体现）。这样 thesis 收敛为 4 段，K# 覆盖闭环 self-check 矩阵保持二维（K × todo），不引入 V# 第三维。
+
+写完 `thesis_v0.md` 后，**先跑 prescan 健康度检查**再登记 thesis（**修 ISSUE-001**）：
 
 ```bash
-python3 -c "
+python3 << 'EOF'
+from prism.scripts.web_prescan import check_prescan_health
 from prism.scripts.topic import set_thesis
+
+# 1. 检查 prescan 健康度：expected_queries = baseline 第五节优先 query 实际条数
+h = check_prescan_health('{slug}', '{variant}',
+                          expected_queries={n_priority_queries},
+                          triggered_by_prefix='00-prescan')
+print('prescan health:', h)
+# {'status': 'full'/'partial'/'failed', 'queries_run': N, 'queries_with_hits': M,
+#  'hit_rate': float, 'failure_reason': str|None}
+
+# 2. 登记 thesis（脚本会按 status 自动校验）
 set_thesis(
     slug='{slug}',
     variant='{variant}',
     version=0,
     summary='{一句话核心thesis，≤120字，用于yaml/web展示}',
     stage_set_at='01-roadmap-pending',
+    prescan_status=h['status'],                    # 'full'/'partial'/'failed'
+    prescan_failure_reason=h['failure_reason'],    # None 或一句话原因
+    force_failed=(h['status'] == 'failed'),        # failed 必须显式 force（主 agent 承认接受赌注）
 )
-"
+EOF
+```
+
+**三态语义**：
+- `full`：prescan 入库率 100% → 正常推进 workflow 01
+- `partial`：入库率 [50%, 100%) → 标 partial 但允许写入；workflow 05 critic 会列出"未校准 fact 清单"
+- `failed`：入库率 <50% → 必须 `force_failed=True` + `prescan_failure_reason`；脚本会通过 `set_next_actions` 自动 prepend 警示，workflow 05 强制 block 04-synthesize 至用户复决
+
+**failed 时 thesis_v0.md frontmatter 必须加红字横幅**（在 Coverage Strip 上方）：
+
+```markdown
+🔴 **PRESCAN FAILED** — 本 thesis 基于训练知识赌注；time_sensitivity=快变 的 fact 全部需用户复核
 ```
 
 **Coverage 闭环（必须做）**：写完 thesis_v0.md + todos 后，做一次 self-check：
@@ -249,7 +304,7 @@ Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` co
 - workflow 07 drilldown 后或 workflow 99 决策记录前写新版本
 - 每次 set_thesis 都 append 到 history，不删除旧版本——保留判断演化轨迹
 
-**v1 起的写作约定（方案 C 全快照）**：thesis_v0 是天然全快照（五段式，无 parent）；从 v1 起所有 thesis 必须是"全快照 + 顶部 changelog"格式，本版自包含、不依赖历代章节。详见 `prism/workflows/04-synthesize/_shared.md` § "Scheme C 写作约定"。
+**v1 起的写作约定（方案 C 全快照）**：thesis_v0 是天然全快照（四段式，无 parent）；从 v1 起所有 thesis 必须是"全快照 + 顶部 changelog"格式，本版自包含、不依赖历代章节。详见 `prism/workflows/04-synthesize/_shared.md` § "Scheme C 写作约定"。
 
 ### 5.1 领域概览（3-5 句话）
 - 这个行业/赛道/公司是什么
@@ -284,18 +339,29 @@ Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` co
 
 ## Step 6：更新 topic 状态
 
-**user_todos 必须用 dict 结构**（不能再写 list[str]）。示例：
+**user_todos 必须用 dict 结构**（不能再写 list[str]）。
+
+**ISSUE-001**：`set_next_actions` 须把 Step 5.0 拿到的 `h['status']` + `h['failure_reason']` 传进去，failed 时脚本会自动 prepend ⚠️ 警示 action 到 next_actions 第一条。
+
+示例：
 
 ```bash
 python3 << 'EOF'
 from prism.scripts.topic import set_stage, set_next_actions, set_user_todos
+from prism.scripts.web_prescan import check_prescan_health
+
 slug = '{slug}'
 variant = '{variant}'
+h = check_prescan_health(slug, variant, expected_queries={n_priority_queries})
+
 set_stage(slug, '01-roadmap-pending', variant)
 set_next_actions(slug, [
     '运行 workflow 01-build-roadmap：制定详细研究路线图',
     '收集 P0 资料后运行 workflow 02-gather-materials',
-], variant)
+], variant,
+    prescan_status=h['status'],
+    prescan_failure_reason=h['failure_reason'],
+)
 set_user_todos(slug, [
     {
         'task': '下载头部车厂全固态 SOP 时间表声明（IR/技术发布会）',

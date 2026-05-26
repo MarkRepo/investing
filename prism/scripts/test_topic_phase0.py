@@ -85,7 +85,8 @@ def test_phase0():
                 depth="deep",
                 variant="sonnet",
                 parent_topic="test-industry",
-                ticker="TEST",
+                short_name="测试公司",
+                ticker="SSE_688331",
             )
             data = read_topic("test-company", "sonnet")
             assert data["parent_topic"] == "test-industry"

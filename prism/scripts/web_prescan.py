@@ -23,6 +23,16 @@ from prism.scripts.manifest import (
 PRISM_ROOT = Path(__file__).resolve().parent.parent
 
 # ---------------------------------------------------------------------------
+# WebSearch 并发限流常量（修 ISSUE-001）
+# ---------------------------------------------------------------------------
+# Anthropic WebSearch 有未文档化的窗口限流，超阈值不抛错只返空。本组常量是
+# workflow 文档 + 主 agent 行为约束的 single source of truth。
+WEB_SEARCH_BATCH_LIMIT = 5            # 单条消息最多并行的 WebSearch 调用数
+WEB_SEARCH_BATCH_INTERVAL_S = 10      # 两批之间的最小间隔（秒）
+WEB_SEARCH_SERIAL_RETRY_INTERVAL_S = 30  # 检测到限流后串行重试的间隔（秒）
+WEB_SEARCH_FAIL_THRESHOLD = 0.5       # 优先 query 入库率 <50% → prescan_status='failed'
+
+# ---------------------------------------------------------------------------
 # 域名白名单 — 命中即 high confidence
 # ---------------------------------------------------------------------------
 
@@ -85,6 +95,34 @@ WHITELIST_DOMAINS: set[str] = {
     # ---- 投资者讨论 / 侧面信号 ----
     "xueqiu.com", "jisilu.cn", "seekingalpha.com",
     "linkedin.com", "glassdoor.com",
+    # ---- 中国主流财经媒体 子域兜底（已在 endswith 匹配范围）----
+    "sina.com.cn",      # finance.sina.com.cn / cj.sina.com.cn / vip.stock.finance.sina.com.cn
+    "qq.com",           # finance.qq.com / file.finance.qq.com (券商研报托管)
+    "oeeee.com",        # 南方都市报
+    # ---- 中国医药行业垂直（2026-05 实战补 — H2 教训）----
+    "pharmcube.com",            # 医药魔方（bydrug.pharmcube.com 通过 endswith 命中）
+    "pharnexcloud.com",         # 摩熵医药（原药融云）
+    "phirda.com",               # 医药地理
+    "baogaobox.com",            # 远瞻慧库 / 报告盒子
+    "zhihuiya.com",             # 智慧芽（synapse.zhihuiya.com 通过 endswith）
+    "nephro-online.com",        # 肾科在线
+    "ihemato.com",              # 血液学
+    # ---- 中国券商研报平台 ----
+    "fxbaogao.com",     # 发现报告
+    "spdbi.com",        # 浦银国际
+    "hibor.net",        # 慧博
+    "bocomgroup.com",   # 交银国际研报托管
+    # ---- 海外医药 / Biotech 行业媒体 ----
+    "fiercebiotech.com", "fiercepharma.com",
+    "biopharmadive.com",
+    "oncologypipeline.com",     # ApexOnco
+    "endpts.com",               # Endpoints News
+    "firstwordpharma.com",
+    "thebambooworks.com",       # Bamboo Works
+    "allsci.com",
+    # ---- 政府监管补充 ----
+    "nhsa.gov.cn",      # 国家医保局
+    "nmpa.gov.cn",      # 国家药监局
 }
 
 # 子域识别 — 含这些 token 视为公司 IR 页（high）
@@ -130,6 +168,111 @@ def confidence_for_tier(domain_tier: str) -> float:
     return {"whitelist": 0.9, "llm-judged-official": 0.7, "other": 0.4}.get(domain_tier, 0.3)
 
 
+# ---------------------------------------------------------------------------
+# URL 客观特征提取 — 给主 agent 做 LLM 判断的事实依据，不做主观分类
+# ---------------------------------------------------------------------------
+# 设计原则（H2 教训, 2026-05）：脚本只做 deterministic 测量，不返回 tier/hint/confidence；
+# 所有主观判断（这个 url 是否权威源、是否值得 llm-judged-official）完全交给主 agent LLM。
+# 参 memory/feedback_prescan_domain_tier.md + _review_2026-05-26_rongchang_workflow00.md H2
+
+_LOW_SIGNAL_HOST_TOKENS = (
+    # 明确低信噪 host pattern — 这是 deterministic 黑名单（不是启发式）
+    "blog.", "bbs.", "tieba.", "zhidao.", "wenku.baidu.",
+    "csdn.net", "cnblogs.com", "jianshu.com", "douban.com",
+)
+
+_ANNOUNCE_PATH_TOKENS = (
+    # URL path 里出现这些 token 通常意味着是公告/年报/招股书等正式披露
+    "uploadfile", "announce", "disclosure", "notice", "bulletin",
+    "annualreport", "annual_report", "prospectus", "circular",
+    "pdf",  # path 含 pdf 子目录或直接 .pdf 文件
+)
+
+_NEWS_PATH_TOKENS = (
+    # 普通新闻文章路径 — 既不加分也不减分，纯标记
+    "news", "article", "story", "post", "detail",
+)
+
+
+def _extract_subdomain_tokens(url: str) -> list[str]:
+    """Return list of recognized subdomain tokens (e.g. ['ir'], ['investor'], ['finance'])."""
+    domain = _domain_of(url)
+    if not domain or "." not in domain:
+        return []
+    # subdomain = host 去掉 last 2 labels（粗略）
+    parts = domain.split(".")
+    if len(parts) <= 2:
+        return []
+    subdomain = ".".join(parts[:-2])
+    known = ("ir", "investor", "investors", "corporate", "finance",
+             "news", "blog", "bbs", "forum", "m", "mobile", "app")
+    return [tok for tok in known if tok in subdomain.split(".")]
+
+
+def _tld_class(url: str) -> str:
+    """Coarse TLD classification: 'gov' / 'gov.cn' / 'gov.hk' / 'edu' / 'org' / 'com' / 'cn' / 'other'."""
+    domain = _domain_of(url)
+    if not domain:
+        return "other"
+    if domain.endswith(".gov.cn") or domain.endswith(".gov.hk"):
+        return domain.rsplit(".", 2)[-2] + "." + domain.rsplit(".", 1)[-1]  # 'gov.cn' / 'gov.hk'
+    for suffix in (".gov", ".edu", ".org", ".com", ".cn", ".hk", ".jp", ".uk", ".eu"):
+        if domain.endswith(suffix):
+            return suffix.lstrip(".")
+    return "other"
+
+
+def _extract_path_tokens(url: str, vocabulary: tuple[str, ...]) -> list[str]:
+    """Return subset of vocabulary present in URL path (lowercase, substring match)."""
+    try:
+        path = urlparse(url).path.lower()
+    except Exception:
+        return []
+    return [tok for tok in vocabulary if tok in path]
+
+
+def _matches_low_signal_blacklist(url: str) -> bool:
+    domain = _domain_of(url)
+    return any(tok in domain for tok in _LOW_SIGNAL_HOST_TOKENS)
+
+
+def extract_url_features(urls: list[str]) -> dict[str, dict]:
+    """Return objective deterministic features per URL — for main-agent LLM judgment.
+
+    The script never returns tier / hint / confidence — those are LLM's job.
+    Main agent should combine these features with title/snippet + training
+    knowledge to decide whether to pass domain_tier='llm-judged-official'.
+
+    Per-url dict keys:
+      - in_whitelist (bool): classify_domain == 'whitelist'
+      - host (str): bare domain (no www., no port)
+      - subdomain_tokens (list[str]): recognized subdomain markers
+        (e.g. ['ir'] for ir.tencent.com, ['finance'] for finance.sina.com.cn)
+      - tld_class (str): 'gov' / 'gov.cn' / 'edu' / 'org' / 'com' / 'cn' / ...
+      - path_is_pdf (bool): URL path ends with .pdf
+      - path_announce_tokens (list[str]): path contains
+        ['uploadfile','announce','disclosure','prospectus','annual_report',...]
+      - path_news_tokens (list[str]): path contains ['news','article','detail',...]
+      - path_depth (int): number of '/' separators
+      - known_low_signal_host (bool): host matches hardcoded
+        blog/forum/Q&A blacklist (csdn / blog. / bbs. / zhidao. / ...)
+    """
+    out: dict[str, dict] = {}
+    for url in urls:
+        out[url] = {
+            "in_whitelist": classify_domain(url) == "whitelist",
+            "host": _domain_of(url),
+            "subdomain_tokens": _extract_subdomain_tokens(url),
+            "tld_class": _tld_class(url),
+            "path_is_pdf": url.lower().endswith(".pdf"),
+            "path_announce_tokens": _extract_path_tokens(url, _ANNOUNCE_PATH_TOKENS),
+            "path_news_tokens": _extract_path_tokens(url, _NEWS_PATH_TOKENS),
+            "path_depth": max(0, url.count("/") - 2),
+            "known_low_signal_host": _matches_low_signal_blacklist(url),
+        }
+    return out
+
+
 def funnel_band(confidence: float) -> str:
     """三档分流：>=0.8 high / >=0.5 mid / else low"""
     if confidence >= 0.8:
@@ -143,13 +286,58 @@ def funnel_band(confidence: float) -> str:
 # 查询词构造 — 通用 across topic types
 # ---------------------------------------------------------------------------
 
+# H3 v2：WebSearch 最佳 query 长度 5-15 词。脚本不做关键词提取（切到非核心名词反而
+# 误导），强制让主 agent 在 create_topic 时显式给 short_name + search_terms。
+# 策略（优先级）：
+#   1. search_terms 优先：short_name + 前 3 个 term
+#   2. 短 question 兜底：short_name + question
+#   3. 都没有：short_name 单独（最 dumb）
+#   4. 老 yaml 无 short_name：fall back display_name（仅向后兼容）
+_SCOPE_QUERY_MAX_CHARS = 40
+_TRAILING_NOISE_RE = re.compile(r"[，。；：、,;:\s]+$")
+
+
+def _short_scope_query(
+    display_name: str,
+    short_name: str | None,
+    question: str,
+    search_terms: list[str] | None,
+) -> str:
+    """构造 scope 主查询（H3 v2 — 不做关键词提取）。
+
+    优先级：
+      1. search_terms 给了 → short_name + 前 3 个 term（不读 question）
+      2. question 短（≤25）→ short_name + question
+      3. 都没合适的 → short_name 单独
+      4. 老 yaml 无 short_name → display_name 兜底（不截断；新 topic 会被 create_topic gate 挡住）
+
+    create_topic gate 保证新 topic 必有 short_name + 长 question 必有 search_terms，
+    故脚本永远不需要"假装聪明"地切 question。
+    """
+    name = (short_name or display_name or "").strip()
+    if search_terms:
+        terms = " ".join(s.strip() for s in search_terms[:3] if s and s.strip())
+        out = f"{name} {terms}".strip()
+    else:
+        q = (question or "").strip()
+        if q and len(q) <= 25:
+            out = f"{name} {q}"
+        else:
+            # 长 question + 缺 search_terms 仅出现于老 yaml；用 short_name/display_name 兜底
+            out = name
+    if len(out) > _SCOPE_QUERY_MAX_CHARS:
+        out = out[:_SCOPE_QUERY_MAX_CHARS]
+    out = _TRAILING_NOISE_RE.sub("", out)
+    return out
+
+
 def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> list[dict]:
     """根据 topic.yaml + thesis_v{N} + roadmap.yaml 构造查询词列表。
 
     通用 across company / industry / arena / concept：
-      - scope.question 派生主查询
+      - scope.question + scope.search_terms 派生主查询（H3：长 question 截断）
       - scope.ticker（如有）+ 近期事件子查询
-      - thesis killer questions 派生每 K# 一条
+      - thesis killer questions 派生每 K# 一条（H3：不再叠 question）
       - roadmap L4 hunting question 派生每条一查
       - concepts 派生概念扩展查询
 
@@ -158,16 +346,21 @@ def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> lis
     topic = topic_io.read_topic(slug, variant)
     scope = topic.get("scope") or {}
     display_name = topic.get("display_name") or slug
+    short_name = scope.get("short_name") or None
+    # H3 v2：query 拼接统一用 short_name（无则 fall back display_name 兜底）
+    name_for_query = short_name or display_name
     ttype = topic.get("type") or "concept"
     question = scope.get("question") or ""
     ticker = scope.get("ticker") or ""
+    search_terms = scope.get("search_terms") or None
 
     queries: list[dict] = []
 
-    # 1. 主问题查询 — 覆盖任何 topic
-    if question:
+    # 1. 主问题查询 — 覆盖任何 topic（H3 v2：short_name 优先）
+    scope_q = _short_scope_query(display_name, short_name, question, search_terms)
+    if scope_q:
         queries.append({
-            "query": f"{display_name} {question}",
+            "query": scope_q,
             "addresses": ["scope"],
             "recency_days": recency_days,
             "kind": "scope",
@@ -179,7 +372,7 @@ def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> lis
         ticker_short = ticker.split("_", 1)[-1] if "_" in ticker else ticker
         for kw in ("最新公告", "监管处罚", "业绩预告", "高管变动"):
             queries.append({
-                "query": f"{display_name} {ticker_short} {kw}",
+                "query": f"{name_for_query} {ticker_short} {kw}",
                 "addresses": ["scope"],
                 "recency_days": recency_days,
                 "kind": "company-event",
@@ -189,7 +382,7 @@ def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> lis
     if ttype in ("industry", "arena"):
         for kw in ("行业政策", "技术突破", "产能变化", "龙头新闻"):
             queries.append({
-                "query": f"{display_name} {kw}",
+                "query": f"{name_for_query} {kw}",
                 "addresses": ["scope"],
                 "recency_days": recency_days,
                 "kind": "industry-event",
@@ -214,8 +407,9 @@ def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> lis
             from prism.scripts.outputs import extract_killer_questions
             ks = extract_killer_questions(slug, variant, cur_v)
             for k in ks:
+                # H3 v2：用 short_name + K#（K# 文本指向 thesis，主 agent 会另读）
                 queries.append({
-                    "query": f"{display_name} {question} {k}",
+                    "query": f"{name_for_query} {k}",
                     "addresses": [k],
                     "recency_days": recency_days,
                     "kind": "killer-question",
@@ -234,7 +428,7 @@ def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> lis
                 addrs = q.get("addresses") or []
                 if qtext:
                     queries.append({
-                        "query": f"{display_name} {qtext}",
+                        "query": f"{name_for_query} {qtext}",
                         "addresses": addrs or ["scope"],
                         "recency_days": recency_days,
                         "kind": "l4-hunting",
@@ -410,11 +604,25 @@ def register_web_search_batch(
             'mat_ids': list[str|None],
             'resolved_todos': list[dict],
             'duplicates': int,
+            # ---- 修 H2 (2026-05) 新增：让丢弃显式 + 给主 agent 救回 kit ----
+            'n_dropped_invalid': int,    # url/title 空被丢
+            'n_dropped_low': int,        # band='low' 被丢
+            'drop_ratio': float,         # (n_dropped_invalid + n_dropped_low) / len(hits)
+            'dropped_hits': list[dict],  # 被丢的 hit 完整保留 + reason，主 agent 直接判后补登
         }
+
+    dropped_hits 每项 schema:
+        {'url': str, 'title': str, 'snippet': str,
+         'reason': 'invalid' | 'low-band',
+         'auto_domain_tier': 'whitelist' | 'other',
+         'auto_confidence': float}
     """
     full_texts = full_texts or {}
     n_high = n_mid = n_low = duplicates = 0
+    n_dropped_invalid = 0
+    n_dropped_low = 0
     mat_ids: list[str | None] = []
+    dropped_hits: list[dict] = []
 
     for hit in hits:
         url = hit.get("url", "")
@@ -423,6 +631,13 @@ def register_web_search_batch(
         if not url or not title:
             mat_ids.append(None)
             n_low += 1
+            n_dropped_invalid += 1
+            dropped_hits.append({
+                "url": url, "title": title, "snippet": snippet,
+                "reason": "invalid",
+                "auto_domain_tier": None,
+                "auto_confidence": None,
+            })
             continue
         r = register_web_search_result(
             slug=slug,
@@ -444,6 +659,13 @@ def register_web_search_batch(
             n_mid += 1
         else:
             n_low += 1
+            n_dropped_low += 1
+            dropped_hits.append({
+                "url": url, "title": title, "snippet": snippet,
+                "reason": "low-band",
+                "auto_domain_tier": r.get("domain_tier"),
+                "auto_confidence": r.get("confidence"),
+            })
         if r.get("duplicate"):
             duplicates += 1
 
@@ -457,6 +679,39 @@ def register_web_search_batch(
         triggered_by=triggered_by,
     )
 
+    total = max(1, len(hits))
+    drop_ratio = round((n_dropped_invalid + n_dropped_low) / total, 2)
+
+    # 每次都打简短摘要 — 不设硬阈值告警（参 H2 修订设计：脚本不替主 agent 判该不该救回）
+    # 主 agent 看到 drop_ratio + dropped urls 自己决定要不要扫 dropped_hits + 救回
+    import sys
+    n_in = n_high + n_mid
+    summary_line = (
+        f"register_web_search_batch[{triggered_by}]: {len(hits)} hits → "
+        f"入库 high={n_high} mid={n_mid}, dropped={n_dropped_invalid + n_dropped_low} "
+        f"(invalid={n_dropped_invalid} low={n_dropped_low}) drop_ratio={drop_ratio}"
+    )
+    print(summary_line, file=sys.stderr)
+    if drop_ratio >= 0.5 and n_dropped_low > 0:
+        # drop_ratio 高且有真正"低分丢弃"（不是 invalid）时附 dropped url 列表给主 agent 扫
+        sample_urls = [d["url"] for d in dropped_hits if d["reason"] == "low-band"][:10]
+        print(
+            f"  → drop_ratio≥0.5: 扫 dropped_hits + 调 extract_url_features 后决定救回。\n"
+            f"  → 被丢 url (前 10)：\n    - " + "\n    - ".join(sample_urls),
+            file=sys.stderr,
+        )
+
+    # ISSUE-001：silent_failure 检测——hits=0 / 全 low band 多半是 WebSearch 限流静默返空
+    silent_failure = (len(hits) == 0) or (n_in == 0)
+    if silent_failure:
+        print(
+            f"⚠️  [silent_failure] query={query!r} hits={len(hits)} 入库=0 — "
+            f"疑似 WebSearch 限流静默返空 / 全部 low band 丢弃。"
+            f"建议：等 {WEB_SEARCH_SERIAL_RETRY_INTERVAL_S}s 后串行重试本 query；"
+            f"连 3 个 query 0 入库 → 转 WebFetch 兜底已知权威 URL。",
+            file=sys.stderr,
+        )
+
     return {
         "n_high": n_high,
         "n_mid": n_mid,
@@ -464,6 +719,11 @@ def register_web_search_batch(
         "mat_ids": mat_ids,
         "resolved_todos": resolved,
         "duplicates": duplicates,
+        "n_dropped_invalid": n_dropped_invalid,
+        "n_dropped_low": n_dropped_low,
+        "drop_ratio": drop_ratio,
+        "dropped_hits": dropped_hits,
+        "silent_failure": silent_failure,
     }
 
 
@@ -584,6 +844,100 @@ def list_search_log(slug: str, variant: str) -> list[dict]:
         return []
     entries = data.get("entries") or []
     return list(reversed(entries))
+
+
+# ---------------------------------------------------------------------------
+# ISSUE-001：prescan 健康度检查（用于 set_thesis 前置）
+# ---------------------------------------------------------------------------
+
+def check_prescan_health(
+    slug: str,
+    variant: str,
+    expected_queries: int,
+    triggered_by_prefix: str = "00-prescan",
+) -> dict:
+    """统计 prescan 命中率，返回 full / partial / failed 三态判断。
+
+    Args:
+        slug, variant: topic
+        expected_queries: 主 agent 实际意图跑的 query 数（如 baseline 第五节列了 10 条优先 query）
+        triggered_by_prefix: 只统计 triggered_by 以此前缀开头的 entries（默认 '00-prescan' 同时
+            覆盖 '00-prescan-baseline'）
+
+    Returns:
+        {
+            'status': 'full' / 'partial' / 'failed',
+            'queries_run': int,         # web_search_log 中匹配前缀的实际 entry 数
+            'queries_with_hits': int,   # 其中 n_high+n_mid >= 1 的条数
+            'hit_rate': float,          # queries_with_hits / max(expected_queries, queries_run)
+            'failure_reason': str | None,  # status != 'full' 时给一句话原因
+        }
+
+    判定规则：
+      - hit_rate >= 1.0 且 queries_run >= expected_queries → 'full'
+      - hit_rate >= WEB_SEARCH_FAIL_THRESHOLD (0.5) → 'partial'
+      - hit_rate <  WEB_SEARCH_FAIL_THRESHOLD       → 'failed'
+
+      （expected_queries 取下限 1 避免除零；queries_run 不足 expected 时按 expected 算 hit_rate）
+    """
+    log = list_search_log(slug, variant)
+    matched = [
+        e for e in log
+        if isinstance(e.get("triggered_by"), str)
+        and e["triggered_by"].startswith(triggered_by_prefix)
+    ]
+    queries_run = len(matched)
+    queries_with_hits = sum(
+        1 for e in matched
+        if (e.get("n_high") or 0) + (e.get("n_mid") or 0) >= 1
+    )
+    denom = max(expected_queries, queries_run, 1)
+    hit_rate = round(queries_with_hits / denom, 3)
+
+    if queries_run == 0:
+        return {
+            "status": "failed",
+            "queries_run": 0,
+            "queries_with_hits": 0,
+            "hit_rate": 0.0,
+            "failure_reason": (
+                f"prescan 一条都没跑（expected_queries={expected_queries}）"
+                f" — WebSearch 工具可能不可用或主 agent 跳过 Step 4.5a"
+            ),
+        }
+
+    if hit_rate >= 1.0 and queries_run >= expected_queries:
+        return {
+            "status": "full",
+            "queries_run": queries_run,
+            "queries_with_hits": queries_with_hits,
+            "hit_rate": hit_rate,
+            "failure_reason": None,
+        }
+
+    if hit_rate >= WEB_SEARCH_FAIL_THRESHOLD:
+        return {
+            "status": "partial",
+            "queries_run": queries_run,
+            "queries_with_hits": queries_with_hits,
+            "hit_rate": hit_rate,
+            "failure_reason": (
+                f"prescan 入库率 {hit_rate:.0%}（{queries_with_hits}/{denom}），"
+                f"低于满分但高于失败阈值 {WEB_SEARCH_FAIL_THRESHOLD:.0%}"
+            ),
+        }
+
+    return {
+        "status": "failed",
+        "queries_run": queries_run,
+        "queries_with_hits": queries_with_hits,
+        "hit_rate": hit_rate,
+        "failure_reason": (
+            f"prescan 入库率 {hit_rate:.0%}（{queries_with_hits}/{denom}），"
+            f"低于失败阈值 {WEB_SEARCH_FAIL_THRESHOLD:.0%} — "
+            f"疑似 WebSearch 限流静默返空 / 区域阻断 / API 失效"
+        ),
+    }
 
 
 # ---------------------------------------------------------------------------

@@ -36,9 +36,55 @@ EOF
 
 每条 WebSearch 返回若干条 `{title, url, snippet}`。
 
+### B.1 并发限流（**修 ISSUE-001 — 必照做**）
+
+Anthropic WebSearch 在短时窗内并发调用过多会**静默返空**（只返回标题行 + REMINDER，无任何 search result block，无错误）。主 agent 看到的现象与"该 query 真没结果"无法区分。
+
+**硬约束**（single source of truth：`prism/scripts/web_prescan.py` 顶部常量）：
+
+```python
+WEB_SEARCH_BATCH_LIMIT = 5            # 单条消息最多 5 个 WebSearch 并行
+WEB_SEARCH_BATCH_INTERVAL_S = 10      # 两批之间至少等 10s
+WEB_SEARCH_SERIAL_RETRY_INTERVAL_S = 30  # 限流后串行重试每条间隔 30s
+WEB_SEARCH_FAIL_THRESHOLD = 0.5       # 入库率 <50% → prescan_status='failed'
+```
+
+**执行模式**：
+1. **第一轮**：N 条 query 按 5 个一批并行，批间隔 10s。每批后 register，看 stderr 是否出现 `⚠️ [silent_failure]` 告警
+2. **若 ≥3 条 silent_failure**：判定限流命中。等 30s → **串行**逐条重试这些失败 query（每条 30s 间隔），仍 register
+3. **串行重试仍多数失败**：转 Step B.2 兜底协议
+4. **register_web_search_batch 返回的 `silent_failure: bool`** 是判断信号——主 agent 必须**显式读这个字段**而不是只看 mat_ids 长度
+
+### B.2 兜底协议（WebSearch 长时不可用时）
+
+按优先级降级：
+1. **WebFetch 已知权威 URL**（手工列 5-10 个最相关一手源 — IR PDF / 学术综述 / Wikipedia 当事条目 / 政府公告页）
+2. **跳过 prescan，标 `prescan_status='failed'`**：调 `set_thesis(prescan_status='failed', force_failed=True, prescan_failure_reason='WebSearch 长时不可用，已尝试串行重试 + WebFetch 兜底均无果')`——脚本会强制 next_actions 加警示
+
+### B.3 健康度检查（写 thesis 之前必跑）
+
+```python
+from prism.scripts.web_prescan import check_prescan_health
+h = check_prescan_health('{slug}', '{variant}', expected_queries=N, triggered_by_prefix='00-prescan')
+# {'status': 'full'/'partial'/'failed', 'queries_run': N, 'queries_with_hits': M, 'hit_rate': float, 'failure_reason': str|None}
+```
+
+把 `h['status']` + `h['failure_reason']` 直接传给 `set_thesis(prescan_status=h['status'], prescan_failure_reason=h['failure_reason'], force_failed=(h['status']=='failed'))`——脚本会按状态校验并自动改 next_actions。
+
 ---
 
 ## Step C：主 agent 对每条结果判断 confidence + addresses
+
+> 🚨 **H2 失血必读**（2026-05 荣昌生物实战教训）：
+> 非 WHITELIST 域名默认 confidence=0.4 → low → **直接丢弃不入库**。
+> 实战：P0 6 条 query 首发 40 hit 仅 4 个入库（80% 失血）；救回靠主 agent 显式标 `llm-judged-official` 第二轮补登。
+>
+> **三条硬规则**（必照做）：
+> 1. **每次 register 后看 `drop_ratio`**：>0 就扫返回的 `dropped_hits` 列表；>=0.5 stderr 会自动附 url 提示
+> 2. **看不准就调脚本拿事实**：`extract_url_features(urls)` 返回每个 url 的客观特征（in_whitelist / host / subdomain_tokens / tld_class / path_is_pdf / path_announce_tokens / known_low_signal_host），LLM 据此自己判断是否升 `llm-judged-official`
+> 3. **救回模式**：救回列表带 `domain_tier='llm-judged-official'` 重新调一次 `register_web_search_batch(query=...同上..., hits=[救回的], ...)`，dedup 会自动避免重复
+>
+> 已知行业垂直/海外医药/券商研报源完整列表 → `python3 -c "from prism.scripts.web_prescan import WHITELIST_DOMAINS; print('\n'.join(sorted(WHITELIST_DOMAINS)))"`（不要把列表抄进文档/memory，避免 token 膨胀）
 
 对每条 hit，主 agent 在对话里给出：
 
@@ -80,6 +126,46 @@ EOF
 - `band='high'`（≥0.8）→ 写 `prism/topics/{slug}/inbox/web-search/{date}_{slug-of-title}.md` + 调 `add_material(source_type='web-search')`
 - `band='mid'`（≥0.5）→ 同 high 但 `notes` 追加 `待用户确认`
 - `band='low'`（<0.5）→ 跳过，不写文件不入 manifest
+
+**H2 救回闭环**（修 H2 后必走）：
+
+```python
+# 1. 第一遍 register（主 agent 没把握的 hit 不传 domain_tier）
+summary = register_web_search_batch(slug=..., query=..., hits=[...], ...)
+# 自动 stderr 摘要：
+#   register_web_search_batch[01-prescan]: 8 hits → 入库 high=1 mid=0,
+#   dropped=7 (invalid=0 low=7) drop_ratio=0.88
+#   → drop_ratio≥0.5: 扫 dropped_hits + 调 extract_url_features 后决定救回
+#   → 被丢 url (前 10)：...
+
+# 2. drop_ratio > 0 时拿事实
+if summary['drop_ratio'] > 0:
+    from prism.scripts.web_prescan import extract_url_features
+    dropped_urls = [d['url'] for d in summary['dropped_hits']
+                    if d['reason'] == 'low-band']
+    features = extract_url_features(dropped_urls)
+    # features[url] = {in_whitelist, host, subdomain_tokens, tld_class,
+    #                  path_is_pdf, path_announce_tokens, path_news_tokens,
+    #                  path_depth, known_low_signal_host}
+
+# 3. 主 agent 看 features + title + snippet，LLM 判断每条该不该救
+#    判断要点（参考非规则化）：
+#      - features['known_low_signal_host'] == True → 跳过（明确低信噪）
+#      - features['path_is_pdf'] + path_announce_tokens 非空 → 大概率公司公告/年报，标 official
+#      - features['subdomain_tokens'] 含 'ir'/'investor' → 公司 IR 页（已被 whitelist heuristic 抓但 host pattern 不匹时兜底）
+#      - host 是已知行业垂直媒体（LLM 训练知识）→ 标 official
+#      - 其余靠 title/snippet 内容判断
+
+# 4. 一行救回（dedup 自动）
+summary2 = register_web_search_batch(
+    slug=..., query=..., addresses=..., triggered_by=...,
+    hits=[
+        {**dropped[i], 'domain_tier': 'llm-judged-official'}
+        for i in 主_agent_判该救的索引
+    ],
+)
+# 救回的会按 mid 入库 (0.7 > 0.5)
+```
 
 ---
 
