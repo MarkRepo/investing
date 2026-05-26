@@ -6,6 +6,24 @@
 
 ---
 
+## Step 0：gap 体检（进 05 第一件事）
+
+```bash
+python3 -c "
+from prism.scripts.gap_detector import detect_gaps, format_summary
+print(format_summary(detect_gaps('{slug}', '{variant}')))
+"
+```
+
+把 report 输出**完整贴到对话**。看三项：
+- `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
+- `thin_evidence` 非空 → 该 K# 证据 < 2 条
+- `expired_web_materials` 非空 → web-search 材料 > 90 天（critic 阶段视为 stale，可能需刷新）
+
+gap report 是 critic 的**起手量化输入**——别只凭主观感觉判论证强弱。任一非空都应该作为 Step 2 反方论据的种子（"K# 论证薄弱因为 0 条材料 / 2 条但都来自同一份资料"），最终影响 Step 7 verdict（如 thin_evidence ≥3 个 K# → 不应给 approve）。
+
+---
+
 ## Step 1：读取核心产出
 
 ```bash

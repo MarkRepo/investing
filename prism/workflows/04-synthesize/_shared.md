@@ -20,6 +20,22 @@ print('question:', t['scope']['question'])
 - **资料量**：至少 3 份已处理资料，否则提示「资料不足，建议先收集更多资料」
 - **训练知识依赖**：每份产出明确标注哪些来自训练知识，哪些来自资料
 
+## gap 体检（进 04 第一件事）
+
+```bash
+python3 -c "
+from prism.scripts.gap_detector import detect_gaps, format_summary
+print(format_summary(detect_gaps('{slug}', '{variant}')))
+"
+```
+
+把 report 输出**完整贴到对话**。看三项：
+- `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
+- `thin_evidence` 非空 → 该 K# 证据 < 2 条
+- `expired_web_materials` 非空 → web-search 材料 > 90 天
+
+任一非空 → **不要硬合成**，否则 11 份产出全是"未充分论证"占位。先决定补救：即兴 web-search（_shared.md 末尾的"即兴 web-search"段）/ sub-agent 深挖 / 回 02 补资料。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于让 05 critic 把雷踩回来。
+
 ## 增量重写判定（默认开启）
 
 **目的**：避免 11 份产出每次都全重写——浪费 token 且让"未变章节"也升 version 引起噪声。

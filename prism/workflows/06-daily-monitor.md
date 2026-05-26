@@ -6,6 +6,25 @@
 
 ---
 
+## Step 0：gap 体检（每个 topic 扫一遍）
+
+对今天选中的每个 topic（见 Step 1）跑一次：
+
+```bash
+python3 -c "
+from prism.scripts.gap_detector import detect_gaps, format_summary
+print(format_summary(detect_gaps('{slug}', '{variant}')))
+"
+```
+
+把 report 输出**贴到对话**。重点看 `expired_web_materials`——daily-monitor 是天然的"web-search 刷新"时机：
+- expired ≥1 条 → 触发 Step 1b 的 stale 重扫
+- 顺带看 uncovered_ks / thin_evidence：如果新数据出现而 K# 仍薄弱，可在 Step 5 next_actions 里加"补 K# 证据"
+
+这是诊断不是 gate——但 06 跑得频繁，是最好的"持续校准"卡点。
+
+---
+
 ## Step 1：按 monitoring_tier 选择今日要扫的 topic
 
 ```bash
@@ -45,6 +64,37 @@ print(f'共 {len(deep) + len(watch)} 个 topic 今日需监控')
 cat prism/topics/{slug}/outputs/06_risk_blindspots.md | grep -A 20 "Kill Criteria"
 cat prism/topics/{slug}/outputs/07_decision_kit.md | grep -A 30 "Signposts"
 ```
+
+---
+
+## Step 1b：web-search 周月扫 + stale 重扫（**新增**）
+
+在等用户口头报新信息（Step 2）之前，先主动跑 `_web_prescan_shared.md`：
+
+| monitoring_tier | recency_days | 触发频率 |
+|---|---|---|
+| `deep`    | 7  | 每日 |
+| `watch`   | 14 | 每周二（Step 1 已过滤） |
+| `dormant` | —  | 不主动 |
+
+重点查询：
+- topic 的 signposts 时点 **±7 天** 内的事件（catalyst 兑现/未兑现）
+- Kill Criteria 相关关键词
+- 该 topic monitor 上一次到今天的 gap 内 K# 相关进展
+
+`triggered_by='06-daily-monitor'`。
+
+**stale 重扫**（同步做）：
+```bash
+python3 -c "
+from prism.scripts.manifest import list_expired_web_search
+exp = list_expired_web_search('{slug}', '{variant}')
+print(f'{len(exp)} 条 web-search material 已过期 (>90 天)，需用同 query 重跑')
+for m in exp:
+    print(f'  {m[\"id\"]} | query={m.get(\"search_meta\",{}).get(\"query\")}')
+"
+```
+对每条 expired 用其 `search_meta.query` 重跑 `_web_prescan_shared.md` Step B-F；dedup（按 filename）会自动刷新 `search_meta.searched_at`。
 
 ---
 
@@ -96,6 +146,16 @@ current.append('下次监控建议关注：{重点}')
 set_next_actions('{slug}', current, '{variant}')
 "
 ```
+
+---
+
+## Step 6：刷新仪表盘（最终一步，必跑）
+
+```bash
+python -m prism.scripts.dashboard
+```
+
+监控若改变了 signposts triggered / kill criteria status / 价格区间，dashboard 必须重建以反映新状态。失败允许重试一次；仍失败记入 user_todos 不阻塞主流程。
 
 ---
 

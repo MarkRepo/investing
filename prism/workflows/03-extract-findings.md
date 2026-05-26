@@ -6,6 +6,24 @@
 
 ---
 
+## Step 0a：gap 体检（进 03 第一件事）
+
+```bash
+python3 -c "
+from prism.scripts.gap_detector import detect_gaps, format_summary
+print(format_summary(detect_gaps('{slug}', '{variant}')))
+"
+```
+
+把 report 输出**完整贴到对话**。看三项：
+- `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
+- `thin_evidence` 非空 → 该 K# 证据 < 2 条
+- `expired_web_materials` 非空 → web-search 材料 > 90 天
+
+任一非空 → **不要硬干**，先决定补救路径（即兴 web-search Step 2.4 / sub-agent 深挖 Step 2.4b / set_user_todos 让用户补），再继续 Step 0 开始的既定流程。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于把"论证薄弱"留给 04/05。
+
+---
+
 ## Step 0：扫 topic-scope inbox（**进 03 前强制**）
 
 用户手动放的研报/年报通常落在 `prism/topics/{slug}/inbox/`，**不一定全在 manifest 里**。直接跳 Step 1 会漏掉这些文件。

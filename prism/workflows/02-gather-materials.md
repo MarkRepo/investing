@@ -6,6 +6,18 @@
 
 ---
 
+## Step 0：web-search 增量扫描（**新增**）
+
+在检查用户手工放进 inbox 的资料之前，先跑 `_web_prescan_shared.md`（`recency_days=30`）做增量扫描——把过去一个月的新事件/数据先自动入库，再让用户只补"训练 + web-search 都覆盖不到"的部分。
+
+- 对 manifest 中尚未覆盖的 K# 构造定向查询（参 `validate_manifest_coverage` 输出的 uncovered 列表）
+- 已被 01-prescan 处理过的 topic 走"增量"模式：跳过 `web_search_log.yaml` 里 ≤7 天的相同 query
+- `triggered_by='02-step0'`
+
+跑完 Step 0 后再进入 Step 1，把 web-search 已经搞定的 todo 从用户视野里摘掉。
+
+---
+
 ## Step 1：检查所有来源的新资料
 
 按优先级检查三个来源：
@@ -152,6 +164,24 @@ if cur is not None:
 ```
 
 ⚠ **重要差异**：roadmap coverage 校验「计划要收什么」，manifest coverage 校验「实际收了什么」。两者背离说明计划落空——detail 页会显示红色 ✗ 提醒。
+
+---
+
+## Step 5.8：gap 体检（升 stage 到 03 前必跑）
+
+```bash
+python3 -c "
+from prism.scripts.gap_detector import detect_gaps, format_summary
+print(format_summary(detect_gaps('{slug}', '{variant}')))
+"
+```
+
+把 report 输出**完整贴到对话**。看三项：
+- `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
+- `thin_evidence` 非空 → 该 K# 证据 < 2 条
+- `expired_web_materials` 非空 → 有 web-search 材料 > 90 天
+
+任一非空 → **不要硬升 stage**，先选补救：web-search 增量扫 / sub-agent 深挖 / set_user_todos 让用户补，再决定是否进 03-extracting。这是诊断不是 gate——脚本不会拒绝你升 stage，但跳过等于把"论证薄弱"留给 04/05。
 
 ---
 
