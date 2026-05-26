@@ -1,0 +1,173 @@
+slug: cn-rongchang-bio-688331
+display_name: 荣昌生物 (RemeGen, SSE 688331)
+type: company
+created: '2026-05-26T03:25:13.253382+00:00'
+status: active
+stage: 01-roadmap-pending
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 荣昌生物作为中国领先的ADC+自免双管线创新药企业，全维度覆盖：商业化兑现节奏、海外授权回流、研发管线突破、竞争格局、财务/估值，最终给出是否值得长期持有的投资判断
+  depth: deep
+  ticker: SSE_688331
+  market: SSE
+  extra_tickers:
+    - HKEX_09995
+  extra_markets:
+    - HKEX
+  short_name: 荣昌生物
+  search_terms:
+    - ADC 商业化兑现
+    - BD 海外授权回流
+    - IgAN 自免管线
+    - AH 折溢价
+outputs_state:
+  00_quality_screen:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  01_business_panorama:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  02_cycle_positioning:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  03_narrative_ecology:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  04_implied_expectations:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  05_historical_mirrors:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  06_risk_blindspots:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  07_decision_kit:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap：基于 thesis_v0 的 5 个 Killer Question 制定深度研究路线图
+- 收集 P0 资料后运行 workflow 02-gather-materials 落地 manifest
+- 同步运行 workflow 06-daily-monitor 跟踪 AbbVie/Pfizer 临床注册号 + Pfizer NCT05911295 状态
+user_todos:
+- task: 收集 RC148 全球 II 期临床数据 + AbbVie BD 港交所公告原文 (条款细节) + 康方 AK112 (PD-1/VEGF) 头对头
+    Keytruda 对照
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 荣昌生物港交所公告 PDF (hkexnews.hk)、AbbVie 2026 Q1/Q2 earnings call transcript、康方
+    09926 年报、ASCO 2024-2025 摘要
+  status: pending
+- task: 从荣昌 2024 年报 + 2025 半年报 + 2025 年报中拆分 RC18/RC48 各适应症季度销售；同行对照 efgartigimod (Vyvgart)
+    + povetacicept (Otsuka) IgAN 数据
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K4
+  source_hint: remegen.com 官网 IR / 雪球深度研报 / 浦银国际医药行业报告 PDF
+  status: pending
+- task: 下载 3 份以上对比卖方深度研报（推荐：浦银国际/交银国际/中信建投/华泰）— 重点对照"BD 兑现转化率"与"估值合理性"两个变量
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K4
+  source_hint: 同花顺/Wind 卖方研报库、各券商医药公众号、发现报告 fxbaogao.com
+  status: pending
+- task: 监控 ClinicalTrials.gov NCT05911295 (Pfizer disitamab+PD-1 1L UC 全球 III 期) 状态变化
+    + Pfizer 2026 年报 disitamab 段落原文
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: clinicaltrials.gov NCT05911295 直接订阅状态更新；Pfizer Q4 2026 earnings 10-K
+  status: pending
+- task: 深度调研荣昌生物 2025-04 上交所"五问"问询函原文 + 2025-05-24 公司回复公告 + 与控股股东荣昌制药历年关联交易明细 + 何如意离职后研发管线影响
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 上交所披露平台 / cninfo.com.cn / 公司 2024-2025 年报关联交易章节 / 界面新闻 12323014
+  status: pending
+- task: 收集 4-6 篇 BLyS/APRIL 通路 + B 细胞自免赛道学术综述（Nature Rev Drug Discov / NEJM / Lancet
+    Rheumatology）— 用于深入理解 RC18 机制壁垒和适应症拓展逻辑
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 学术数据库 / nature.com / sciencedirect.com
+  status: pending
+- task: 收集 ADC 海外授权历史案例库（DS-8201/Trodelvy/Padcev/SKB264）— 用于"BD 兑现率"基线，对照 RC148/RC48
+    case
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: 医药魔方 BD database / Endpoint News / FiercePharma
+  status: pending
+- task: 收集 2024-2026 期间 RC18/RC48 在医保谈判/续约的价格调整 + 院内推广进展（学术推广报告 / 渠道访谈）
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K2
+  - K4
+  source_hint: NHSA 官网 / 行业一线渠道访谈 / 药店调研
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+thesis:
+  current_version: 0
+  last_updated: '2026-05-26T03:41:07.093916+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-26T03:41:07.094063+00:00'
+    summary: 2025-2026 是荣昌从烧钱研发切换到BD回流+商业化兑现的拐点：RC18自免王者+RC48多适应症+RC148/AbbVie 56亿$大单驱动未来18-24个月业绩高弹性；但720亿市值已price-in多数乐观，治理/兑现/竞争三大风险使追高赔率不再吸引（评分6/10温和看多）

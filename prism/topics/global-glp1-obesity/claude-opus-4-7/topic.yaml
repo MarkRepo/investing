@@ -1,0 +1,216 @@
+slug: global-glp1-obesity
+display_name: GLP-1 减肥药
+type: arena
+created: '2026-05-26T03:25:32.952761+00:00'
+status: active
+stage: 01-roadmap-pending
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: GLP-1 减肥药这个赛道里，NVO/LLY/国内药企谁是真正的核心受益者，谁更值得长期持有？
+  depth: deep
+  short_name: GLP-1 减肥药
+  search_terms:
+    - GLP-1 销售放量
+    - 司美格鲁肽专利
+    - 国内 GLP-1 药企
+outputs_state:
+  01_business_panorama:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  02_cycle_positioning:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  03_narrative_ecology:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  04_implied_expectations:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  05_historical_mirrors:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  06_risk_blindspots:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  07_decision_kit:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  10_peer_matrix:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- workflow 01-build-roadmap：基于 thesis_v1 六大 Killer Question 制定详细研究路线图（K1-K6）
+- 用户收集 P0 资料（NVO/LLY 2026 Q1 季报、3 份 GLP-1 卖方深度、CMS BALANCE 实施细节）后 → workflow 02-gather-materials
+  入库
+- 收齐 P0 后 → workflow 03-extract 跑论据挖掘（重点 K1 下一代竞争 / K3 sema 净价衰减 / K5 LLY 单位营收）
+- → workflow 04-synthesize 出 8 份产出（business_panorama / value_chain / competitive_landscape
+  / financial / valuation / catalysts / scenarios / decision）
+- → workflow 05-critic-review（thesis_v1 prescan_status=full 不再受 ISSUE-001 block）
+- workflow 06-daily-monitor 监控：retatrutide TRIUMPH / CT-388 ENITH / VK2735 VANQUISH
+  / BALANCE 渗透率 / sema 国内仿制上市 / Viking 收购传闻 6 大事件流
+user_todos:
+- task: NVO 2025 全年报 + 2026 Q1 6-K（含 Wegovy/Ozempic 季度销售拆分 + 美国 net price + DTC NovoCare
+    实际渗透 + capex）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  - K5
+  source_hint: novonordisk.com IR / 雪球 NVO 财报中文 / SEC EDGAR 6-K
+  status: pending
+- task: LLY 2025 10-K + 2026 Q1 10-Q（含 Mounjaro/Zepbound 销售拆分 + 美国 net price + LillyDirect
+    DTC 实际占比 + 产能）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: investor.lilly.com / SEC EDGAR 0000059478
+  status: pending
+- task: 1-2 份 GS/MS/UBS/中金 GLP-1 全球深度研报（2025 H2-2026 H1，含 BALANCE 敏感性 + 第二梯队估值对比）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  - K5
+  - K6
+  source_hint: 券商研报库 / 雪球 / 同花顺
+  status: pending
+- task: CMS BALANCE Model 2026-2027 实施细节 + 实际渗透率数据 + 商保对 BALANCE 的跟价/不跟价分析
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: cms.gov / KFF / Health Affairs
+  status: pending
+- task: 信达 mazdutide 2025-2026 销售爬坡披露 + 京东健康分销数据 + 国内 GLP-1 减重药竞品上市清单
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 信达官网 / 港交所 / 米内网
+  status: pending
+- task: 司美格鲁肽美国 PTE 争议 + ANDA 申报追踪；中国九源/华东/齐鲁/正大天晴 sema 仿制 2026-2027 上市时点 + 价格
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: KEI Online / USPTO / 摩熵医药 / 医药魔方
+  status: pending
+- task: Lilly 2025/2026 Investor Day PPT（retatrutide TRIUMPH 进度 / orforglipron 商业化
+    / eloralintide / Mounjaro 全球扩张）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: investor.lilly.com
+  status: pending
+- task: 恒瑞 HRS9531 (Kailera) 全球 Phase 3 启动时间 + Kailera 商业化路径披露；恒瑞 A/H 股关于 license-out
+    里程碑确认
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 恒瑞 IR / kailera.com / Endpoints / FierceBiotech
+  status: pending
+- task: NVO 2025-12 oral Wegovy 减重上市后实际销售（美国+欧洲）+ NovoCare DTC 实际订单量 + 全球分国家定价表
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  - K5
+  source_hint: NVO IR / IQVIA / Symphony Health
+  status: pending
+- task: 2024-2026 GLP-1 二阶冲击实证（减肥手术 / 食品 / OSA 设备 / 透析）实际营收数据
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: Morgan Stanley Tobacco/Restaurant / ResMed/Inspire IR / Hershey/PepsiCo
+    季报
+  status: pending
+- task: HIMS 2026 Q1-Q2 财报 + 与 NVO 合作后的实际转化（compounded → 品牌 sema 占比、客单价、留存）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: SEC EDGAR HIMS / hims.com IR
+  status: pending
+- task: Viking / Structure / Roche CT-388 / Amgen MariTide 季度更新 + 收购传闻追踪（K6）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K6
+  source_hint: Endpoints / STAT / FierceBiotech / 各公司 IR
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+thesis:
+  current_version: 1
+  last_updated: '2026-05-26T05:30:40.625040+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-26T05:12:43.940753+00:00'
+    summary: LLY > NVO > 信达：LLY 凭替尔泊肽临床数据全面碾压+替尔泊肽 2036 长专利+管线代际接力+自建产能成 GLP-1 核心受益者；NVO
+      短期 mean reversion 但 sema 仿制开闸+定价战压制长期弹性；国产 mazdutide/恒瑞 HRS9531 是中国结构性机会非全球级
+      alpha。强度 7/10
+    prescan_status: partial
+    prescan_failure_reason: WebSearch 10/10 静默返空，转 WebFetch Wikipedia 兜底 10 份；恒瑞/Viking/Hims/CMS
+      final rule/华东等关键缺口仍未校准
+  - version: 1
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-26T05:30:40.625178+00:00'
+    summary: LLY > NVO > 信达：v1 大幅修订——美国 BALANCE Model 落地（$245/月）+ sema IRA 第二批已纳入（$274/月）+
+      中国 sema 仿制实际开闸（九源 JY29-2 减重 2026-02 受理）+ Roche CT-388 22.5% 实质入场 + HRS9531 真出海
+      Kailera $600M 资金。强度 7/10 保持但反方风险加重；加 K6 第二梯队收购
+    prescan_status: full
+  prescan_status: full
+  prescan_failure_reason: WebSearch 10/10 静默返空，转 WebFetch Wikipedia 兜底 10 份；恒瑞/Viking/Hims/CMS
+    final rule/华东等关键缺口仍未校准
