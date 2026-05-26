@@ -76,6 +76,27 @@ _10Q_DEFAULT_ADDRESSES = {
     "item_1a_risk":      ["risk", "K1", "K6"],
 }
 
+# 20-F (外国发行人年报，类比 10-K)：核心 5 个 Item
+# Item 3  Key Information (含 Item 3.D Risk Factors)
+# Item 4  Information on the Company (Business)
+# Item 5  Operating and Financial Review (MD&A)
+# Item 11 Quantitative & Qualitative Risk
+# Item 18 Financial Statements
+_20F_SECTIONS = {
+    "3":  "item_3_key_info",
+    "4":  "item_4_business",
+    "5":  "item_5_mda",
+    "11": "item_11_quant_risk",
+    "18": "item_18_financial",
+}
+_20F_DEFAULT_ADDRESSES = {
+    "item_3_key_info":    ["risk", "K1", "K6"],
+    "item_4_business":    ["scope", "Q1", "K3", "K5"],
+    "item_5_mda":         ["Q1", "K2", "K4", "K5"],
+    "item_11_quant_risk": ["risk", "K2"],
+    "item_18_financial":  ["valuation", "Q1"],
+}
+
 _ITEM_RE = re.compile(r"^\s*ITEM\s+(\d{1,2}[A-Z]?)\b", re.IGNORECASE)
 # Part 锚点必须独立成行（不能是 "Part I, Item 1" 这种 cross-reference）。
 # 后续字符必须是空白/句点/破折号/冒号/行尾——明确拒绝逗号。
@@ -363,6 +384,70 @@ def split_10q(htm_path: Path) -> dict:
     }
 
 
+def split_20f(htm_path: Path) -> dict:
+    """切 20-F（外国发行人年报）。结构与 10-K 不同：
+
+    - Items 1-19 而非 1-15
+    - body 内每页用 'ITEM N TITLE' 作 page header（同一 Item 重复出现 N 次）→
+      不能用 10-K 的"取最后一次"策略（会落到 page header tail），
+      改用"body region 内首次出现"。
+    - Risk Factors 在 Item 3.D 而非独立 Item 1A
+    """
+    lines = _extract_lines(htm_path)
+    item_hits = _find_item_anchors(lines)
+    part_hits = _find_part_anchors(lines)
+
+    # body region 起点 = 最后一个 PART I 锚点（TOC 的 PART I 在前）
+    part_i_anchors = [ln for ln, p in part_hits if p == "I"]
+    body_region_start = max(part_i_anchors) if part_i_anchors else 0
+
+    # body anchor = 首次出现在 body region 内的 lineno
+    body: dict[str, int] = {}
+    for lineno, item in item_hits:
+        if lineno >= body_region_start and item not in body:
+            body[item] = lineno
+
+    # 排序，建 end_map（同 10-K：下一个 body Item 的起点）
+    sorted_body = sorted(body.items(), key=lambda kv: kv[1])
+    end_map: dict[str, int] = {}
+    for (item, start), (_, next_start) in zip(sorted_body, sorted_body[1:]):
+        end_map[item] = next_start
+    if sorted_body:
+        end_map[sorted_body[-1][0]] = len(lines)
+
+    sections = []
+    for item_key, section_name in _20F_SECTIONS.items():
+        if item_key not in body:
+            sections.append({"item": item_key, "name": section_name, "found": False, "word_count": 0})
+            continue
+        start = body[item_key]
+        end = end_map[item_key]
+        body_lines = lines[start:end]
+        text = "\n".join(body_lines).strip()
+        sections.append({
+            "item": item_key,
+            "name": section_name,
+            "found": True,
+            "start_line": start,
+            "end_line": end,
+            "word_count": len(text.split()),
+            "text": text,
+            "addresses": _20F_DEFAULT_ADDRESSES.get(section_name, []),
+        })
+
+    found_count = sum(1 for s in sections if s["found"])
+    split_ok = found_count >= 3  # 至少切 3 段（5 核心 Item 找到 3 即过）
+
+    return {
+        "form": "20-F",
+        "split_ok": split_ok,
+        "total_lines": len(lines),
+        "item_hits": len(item_hits),
+        "body_anchors": len(body),
+        "sections": sections,
+    }
+
+
 def split_file(htm_path: Path, out_dir: Path | None = None) -> dict:
     """切单份 htm。out_dir 不传时默认 htm_path 同级的 sec/{stem}/。
 
@@ -374,6 +459,8 @@ def split_file(htm_path: Path, out_dir: Path | None = None) -> dict:
         result = split_10k(htm_path)
     elif form == "10-Q":
         result = split_10q(htm_path)
+    elif form == "20-F":
+        result = split_20f(htm_path)
     else:
         return {"form": form, "split_ok": False, "reason": f"unsupported form {form!r}"}
 
@@ -422,7 +509,7 @@ def split_dir(materials_dir: Path) -> list[dict]:
     metas = []
     for htm in sorted(materials_dir.glob("*.htm")):
         form = _detect_form(htm.name)
-        if form not in {"10-K", "10-Q"}:
+        if form not in {"10-K", "10-Q", "20-F"}:
             log.info("Skip %s (form=%s)", htm.name, form)
             continue
         try:

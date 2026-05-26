@@ -160,3 +160,75 @@ inbox/web-search 是 slug 级共享池**是设计**：filename dedup 节省下�
 **C. 中文金融搜索"2026年"等关键词带年份的查询，会被搜索引擎补"未来展望"类垃圾结果稀释** —— 建议 query 用"yyyy年 + 实证关键词（业绩/订单/发射次数）"组合，避免"2026 + 展望"类被绑定。
 
 **D. ITU 频段保留这类"已发生 but 未被市场定价"的事实** —— prescan 第一轮就能找到，但需要主 agent 在 thesis 中主动提炼为"未定价空头逻辑"。这正是 thesis-driven 研究相对于"百科全书式覆盖"的核心价值。
+
+---
+
+# Workflow 02 流程缺陷与可优化点（2026-05-26 推进时观察）
+
+## 观察 #9（架构演进后劲）：workflow 02 几乎"空跑" — **已修（2026-05-26）**
+
+**修法**：workflow 02 文件开头加 "⚠️ 前置自检" 段，含：
+- 一段脚本 echo `should_run_step0` / `list_pending_mineru` / `material_count` / inbox 残料三方现状
+- 4 条主 agent 行为约束（不要怀疑 inbox/materials 已有文件 / 不要硬找事 / Step 5.7/5.8/6 必跑）
+- 3 个"才需从 Step 0 跑起"的反例条件（用户新放料 / prescan >7d / 01 没跑 auto-download）
+
+
+**复现**：workflow 01 已完成自动下载 + prescan 入库后，跑 workflow 02：
+- Step 0：`should_run_step0` 判跳过（prescan 0 天前刚跑）
+- Step 1-4：107 mats 全部在 workflow 00/01 阶段已登记（web-search 84 + annual-report 23）
+- Step 4.5 mineru：23 份年报全 `mineru_state=not_needed`（设计：走 annual_report_extractor）
+- Step 5.7：100% K# coverage
+- Step 5.8：0 gap
+
+**实际只跑 Step 5.7/5.8/6（升 stage）。**
+
+**复盘**：这不是 bug，是 workflow 01 自动化吃掉了 02 的 80% 工作量（原设计 01=规划 / 02=收齐+登记，现在 01 已能 auto-download + prescan）。
+
+**建议轻量修法**（非阻断）：workflow 02 文件开头加一段"前置自检"：
+```
+若上一步 workflow 01 已完成 auto_download_annual_reports + prescan，
+本 workflow Step 0-4 大概率全跳过，直接进 Step 5.7。
+不要把"必须跑完每个 Step"理解为"必须重做"。
+```
+
+## 观察 #10（已实证 → 已修 2026-05-26）：annual_report_extractor 表格丢失
+
+**现状**：`_default_mineru_state` line 91 注释 "年报走 annual_report_extractor 不走 mineru"，annual_report_extractor 走 PyMuPDF + TOC 关键词圈章节。
+
+**覆盖**：管理层讨论 / 主营业务 / 行业情况 / 核心竞争力 / 风险因素 / 研发情况 / 未来发展。
+
+**SKIP 关键词**：财务数据 / 股东情况 / 公司治理 / 环境社会责任 / 债券 / 释义。
+
+**潜在丢失**：
+1. 经营段内嵌**子表格**（分产品营收占比、产能数据、客户集中度、关联交易）— PyMuPDF 抽文字时保留，**但表格行列对齐质量低**，LLM 抽数易出错
+2. 「重大事项」段（再融资 / 收购 / 诉讼 / 政府补助）有时在「公司治理」邻近，被 SKIP 规则误杀
+3. 科创板早期年报 TOC 不规范 → 章节漏匹配（电科蓝天 SSE_688818 这种新上市的特别要关注）
+
+**实证**（对比 4 份历史年报 + 1 份现场跑）：所有抽取结果 markdown 表格行数全部为 0，表格被 flatten 成纯文本流。中国卫星「主营业务分行业 11 行 × 7 列」、子公司汇总「7 行 × 9 列」全部丢结构。
+
+**修法**（已实施）：`scripts/annual_report_extractor.py:_extract_page_text` 加入 PyMuPDF `find_tables()`：
+- 每页同时抽 `get_text("blocks")` + `find_tables()`
+- 用 bbox 中心点判 block 是否落在表内 → 剔除避免重复
+- 表格转 markdown（`_table_to_markdown` 新函数）
+- 按 y_top 顺序穿插回文字流
+
+**效果对比**（铖昌科技 2025 年报）：
+| 指标 | 老版 | 新版 |
+|---|---|---|
+| markdown 表行 | 0 | 644 |
+| 数字密度 | 38 | 37（一致） |
+| 总行数 | 7798 | 2722（精简：表内文字不再重复） |
+
+**遗留限制**（暂不修）：
+- 合并表头 PDF（如铖昌「2025 年/2024 年/同比增减」三级嵌套）被 pymupdf 拆成 19 列（含 13 空列）— 数字仍按行连续可读，但视觉冗余。可后置加 "merge empty columns" 后处理
+- 同一表在「营业收入构成」+ L2 章节抽取时**重复出现两次** — 这是 `extract()` 函数 L1+L2 嵌套页范围导致的**老 bug**（老版也有，只是表是扁平文字看不出），不在本次修复范围
+
+**比 VLM 路线优势**：每页 +50ms（vs VLM 5-20s/页），23 份年报总耗时 +30s（vs VLM 12 小时）。Born-digital PDF 表格用 PyMuPDF 完全够用。
+
+## 观察 #11（低）：validate_manifest_coverage 返回 per_k 为空
+
+**现状**：脚本返回 `coverage_pct=100` + `covered=[K1...K6]`，但 `per_k` dict 为空，**无法看每个 K# 实际收料数**。
+
+**影响**：无法识别"K1 有 20 份 / K6 仅 3 份"的不均衡，"全覆盖"假象可能掩盖结构性偏科。
+
+**建议**：扩展 `validate_manifest_coverage` 返回 `per_k = {K#: [mat_id, ...]}` 而非只算 set 覆盖率；workflow 02 Step 5.7 同步打印 "min K# 收料数 / max K# 收料数 / 倍差" 三个数字，>5x 倍差时告警。

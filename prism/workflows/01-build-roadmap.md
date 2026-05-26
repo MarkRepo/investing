@@ -129,11 +129,24 @@ else:
 
 **L4 狩猎层**（3-5 个问题）：找错误定价
 - **每条必须对应一个 thesis Killer Question（K1/K2/...），addresses: [Kn]**
+- **每条必须写 `search_keywords: [...]` 字段**（H4 修订）—— 2-3 个 web-search 关键词组（每个 ≤8 字、无问号），脚本会拿这些拼成 prescan query（无此字段则该 L4 跳过，Step 8 prescan 缺这一条 query）
 - 如果市场错了，错在哪里？
 - 哪个时间节点能验证或证伪？
 - 什么样的新信息会改变当前判断？
 
 L4 写完后做 self-check：thesis 的 N 个 K# 是否每个都有对应的 L4 question？没覆盖的要么补 L4，要么回 thesis 标注"本次不验证此 K"。
+
+**示例（修 H4 后必须 search_keywords）**：
+
+```yaml
+l4_hunting:
+  - question: AbbVie RC148 全球 III 期 2026Q3-Q4 能否宣布 IND/CTA 注册？市场目前隐含的概率多少？
+    addresses: [K1]
+    search_keywords: [RC148 III 期, AbbVie 注册, PD-1 VEGF 双抗]
+    source_hint: AbbVie 2026 R&D Day + ClinicalTrials.gov 全量监控
+```
+
+注意 search_keywords 替代 question 喂给 WebSearch：question 长句问号往往返空（H4 缺陷），关键词组短促直接命中。**不要拿 question 直接当 query**。
 
 ---
 
@@ -232,6 +245,14 @@ def guess_year(title: str) -> int | None:
     years = [int(y) for y in re.findall(r'20\d{{2}}', title) if 2015 <= int(y) <= 2030]
     return max(years) if years else None
 
+def guess_quarter(title: str) -> int | None:
+    # 显式指定 Q1/Q3 时 fetch quarter 参数；不写则 fan-out 取最新
+    if re.search(r'(Q1|一季|1Q)', title, re.IGNORECASE):
+        return 1
+    if re.search(r'(Q3|三季|3Q)', title, re.IGNORECASE):
+        return 3
+    return None
+
 downloaded, failed = [], []
 for tier in ['tier1', 'tier2', 'tier3']:
     for mat in roadmap.get('material_priority', {}).get(tier, []) or []:
@@ -244,8 +265,13 @@ for tier in ['tier1', 'tier2', 'tier3']:
             failed.append(f'{{title[:50]}} (无 ticker)')
             continue
         year = guess_year(title)  # None → fetch() 用 today.year - 1
+        kwargs = {{}}
+        if rtype == 'quarterly':
+            q = guess_quarter(title)
+            if q:
+                kwargs['quarter'] = q  # 显式 Q1/Q3；否则 fan-out 取最新
         try:
-            result = fetch(tk, report_type=rtype, year=year, slug=slug, variant=variant)
+            result = fetch(tk, report_type=rtype, year=year, slug=slug, variant=variant, **kwargs)
             downloaded.append(f'[{{rtype}}/{{year or "default"}}] {{title[:50]}} → {{result}}')
         except Exception as e:
             failed.append(f'[{{rtype}}/{{year or "default"}}] {{title[:50]}} ✗ ({{e}})')
@@ -258,8 +284,9 @@ EOF
 ```
 
 **注意**：
-- `quarterly-report` 现在会被下载。`fetch()` 对 cninfo 季报会返回最早披露的（Q1 优先于 Q3）
-- 如果 roadmap 列了 2026Q1 + 2026Q3 同年两份季报，需要在 title 里写明（如"2026 年第三季度报告"），脚本按 year 字段 + cninfo 列表里第一条匹配
+- `quarterly-report` 现在会被下载。`fetch()` 对 cninfo 季报：title 含 `Q1/一季` → 强制 Q1；含 `Q3/三季` → 强制 Q3；都没写 → fan-out 查 Q1+Q3 取最新披露（修 Q1 缺陷后行为）
+- cninfo 一季报 `category_yjdbg_szsh` 与三季报 `category_sjdbg_szsh` 是独立 category，不能用同一 query 查全；fan-out 是修复方法
+- 如果 roadmap 列了 2026Q1 + 2026Q3 同年两份季报，必须在 title 里明确写"2026 Q1" / "2026 Q3"让 `guess_quarter` 区分
 - 半年报 `semi-annual-report` 同理走 `category_bndbg_szsh`
 
 **老的内联下载代码（已废弃）—— 仅作为 fallback 参考**:

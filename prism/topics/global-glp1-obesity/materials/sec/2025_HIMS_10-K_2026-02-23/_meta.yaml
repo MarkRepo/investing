@@ -1,0 +1,60 @@
+source_htm: 2025_HIMS_10-K_2026-02-23.htm
+form: 10-K
+split_ok: true
+total_lines: 7623
+sections:
+- item: '1'
+  name: item_1_business
+  found: true
+  start_line: 1809
+  end_line: 1984
+  word_count: 11791
+  addresses:
+  - scope
+  - Q1
+  - K3
+  - K5
+  file: item_1_business.md
+- item: 1A
+  name: item_1a_risk
+  found: true
+  start_line: 1984
+  end_line: 2632
+  word_count: 34634
+  addresses:
+  - risk
+  - K1
+  - K6
+  file: item_1a_risk.md
+- item: '7'
+  name: item_7_mda
+  found: true
+  start_line: 2722
+  end_line: 3561
+  word_count: 11480
+  addresses:
+  - Q1
+  - K2
+  - K4
+  - K5
+  file: item_7_mda.md
+- item: 7A
+  name: item_7a_quant_risk
+  found: true
+  start_line: 3561
+  end_line: 3571
+  word_count: 371
+  addresses:
+  - risk
+  - K2
+  file: item_7a_quant_risk.md
+- item: '8'
+  name: item_8_financial
+  found: true
+  start_line: 3571
+  end_line: 7299
+  word_count: 25402
+  addresses:
+  - valuation
+  - Q1
+  file: item_8_financial.md

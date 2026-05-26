@@ -1,12 +1,12 @@
 slug: cn-commercial-space
 variant: claude-opus-4-7
-updated: '2026-05-26T06:07:54.729156+00:00'
+updated: '2026-05-26T10:19:49.245556+00:00'
 materials:
 - id: mat-f2592e
   filename: 2026-05-26_低轨卫星-千帆星座-已完成五批次组网卫星发射-未来还有这些计划.md
   source_type: web-search
   added: '2026-05-26T03:45:37.567680+00:00'
-  processed: false
+  processed: true
   notes: query='千帆星座 G60 2026 累计发射 在轨数量 最新'
   mineru_state: not_needed
   addresses:
@@ -24,7 +24,7 @@ materials:
   filename: 2026-05-26_中国版-星链-千帆星座顺利升空入轨-未来1-4万颗组网.md
   source_type: web-search
   added: '2026-05-26T03:45:37.569508+00:00'
-  processed: false
+  processed: true
   notes: query='千帆星座 G60 2026 累计发射 在轨数量 最新' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -42,7 +42,7 @@ materials:
   filename: 2026-05-26_千帆星座---维基百科.md
   source_type: web-search
   added: '2026-05-26T03:45:37.571866+00:00'
-  processed: false
+  processed: true
   notes: query='千帆星座 G60 2026 累计发射 在轨数量 最新' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -60,7 +60,7 @@ materials:
   filename: 2026-05-26_gw星座迎来扩容-卫星互联网低轨02组卫星成功发射.md
   source_type: web-search
   added: '2026-05-26T03:45:37.577853+00:00'
-  processed: false
+  processed: true
   notes: query='中国星网 GW 星座 2026 首发 发射进度'
   mineru_state: not_needed
   addresses:
@@ -78,7 +78,7 @@ materials:
   filename: 2026-05-26_国网星座-gw-spacemapper.md
   source_type: web-search
   added: '2026-05-26T03:45:37.581786+00:00'
-  processed: false
+  processed: true
   notes: query='中国星网 GW 星座 2026 首发 发射进度' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -96,7 +96,7 @@ materials:
   filename: 2026-05-26_超20万颗-中国新增多个星座计划申请-商业航天再掀涨停潮.md
   source_type: web-search
   added: '2026-05-26T03:45:37.586702+00:00'
-  processed: false
+  processed: true
   notes: query='中国星网 GW 星座 2026 首发 发射进度' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -114,7 +114,7 @@ materials:
   filename: 2026-05-26_朱雀三号可重复运载火箭首飞-入轨成功-一级回收失利.md
   source_type: web-search
   added: '2026-05-26T03:45:37.596368+00:00'
-  processed: false
+  processed: true
   notes: query='朱雀三号 首飞 2026 蓝箭航天 可回收'
   mineru_state: not_needed
   addresses:
@@ -132,7 +132,7 @@ materials:
   filename: 2026-05-26_蓝箭航天-朱雀三号计划二季度再次挑战回收.md
   source_type: web-search
   added: '2026-05-26T03:45:37.602810+00:00'
-  processed: false
+  processed: true
   notes: query='朱雀三号 首飞 2026 蓝箭航天 可回收'
   mineru_state: not_needed
   addresses:
@@ -150,7 +150,7 @@ materials:
   filename: 2026-05-26_朱雀三号可复用火箭十公里级垂直起降飞行试验任务圆满成功.md
   source_type: web-search
   added: '2026-05-26T03:45:37.610176+00:00'
-  processed: false
+  processed: true
   notes: query='朱雀三号 首飞 2026 蓝箭航天 可回收'
   mineru_state: not_needed
   addresses:
@@ -171,7 +171,7 @@ materials:
   filename: 2026-05-26_从朱雀三号到引力二号-商业火箭的-芯级回收-走到哪一步了.md
   source_type: web-search
   added: '2026-05-26T03:45:37.618149+00:00'
-  processed: false
+  processed: true
   notes: query='朱雀三号 首飞 2026 蓝箭航天 可回收' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -189,7 +189,7 @@ materials:
   filename: 2026-05-26_中国版猎鹰9号-天龙三号商业火箭首飞失利-官方通报.md
   source_type: web-search
   added: '2026-05-26T03:45:37.632348+00:00'
-  processed: false
+  processed: true
   notes: query='天龙三号 2026 首飞 天兵科技'
   mineru_state: not_needed
   addresses:
@@ -207,7 +207,7 @@ materials:
   filename: 2026-05-26_天龙三号首飞失利-天兵科技-已严格执行归零程序并开展整改工作.md
   source_type: web-search
   added: '2026-05-26T03:45:37.642219+00:00'
-  processed: false
+  processed: true
   notes: query='天龙三号 2026 首飞 天兵科技'
   mineru_state: not_needed
   addresses:
@@ -225,7 +225,7 @@ materials:
   filename: 2026-05-26_陆石投资邓钊-商业航天须容忍-试错.md
   source_type: web-search
   added: '2026-05-26T03:45:37.656726+00:00'
-  processed: false
+  processed: true
   notes: query='天龙三号 2026 首飞 天兵科技'
   mineru_state: not_needed
   addresses:
@@ -243,7 +243,7 @@ materials:
   filename: 2026-05-26_长征十二号甲运载火箭---维基百科.md
   source_type: web-search
   added: '2026-05-26T03:45:37.677488+00:00'
-  processed: false
+  processed: true
   notes: query='长征十二号 首飞 海南商业航天发射场 2025 2026'
   mineru_state: not_needed
   addresses:
@@ -261,7 +261,7 @@ materials:
   filename: 2026-05-26_流纹岩-长征十二号甲火箭首飞-一级回收仍任重道远.md
   source_type: web-search
   added: '2026-05-26T03:45:37.691566+00:00'
-  processed: false
+  processed: true
   notes: query='长征十二号 首飞 海南商业航天发射场 2025 2026' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -279,7 +279,7 @@ materials:
   filename: 2026-05-26_海南商业航天产业蓄势起飞---新华网.md
   source_type: web-search
   added: '2026-05-26T03:45:37.704745+00:00'
-  processed: false
+  processed: true
   notes: query='长征十二号 首飞 海南商业航天发射场 2025 2026'
   mineru_state: not_needed
   addresses:
@@ -297,7 +297,7 @@ materials:
   filename: 2026-05-26_创历史新高-2025年中国航天发射次数达92次.md
   source_type: web-search
   added: '2026-05-26T03:45:37.726914+00:00'
-  processed: false
+  processed: true
   notes: query='2025 中国全年航天发射 次数 千帆 国网 占比 统计'
   mineru_state: not_needed
   addresses:
@@ -315,7 +315,7 @@ materials:
   filename: 2026-05-26_国家统计局-2025年完成92次宇航发射-商业航天占比超半数.md
   source_type: web-search
   added: '2026-05-26T03:45:37.747354+00:00'
-  processed: false
+  processed: true
   notes: query='2025 中国全年航天发射 次数 千帆 国网 占比 统计'
   mineru_state: not_needed
   addresses:
@@ -333,7 +333,7 @@ materials:
   filename: 2026-05-26_航天科技集团2025年宇航任务创佳绩.md
   source_type: web-search
   added: '2026-05-26T03:45:37.763230+00:00'
-  processed: false
+  processed: true
   notes: query='2025 中国全年航天发射 次数 千帆 国网 占比 统计'
   mineru_state: not_needed
   addresses:
@@ -351,7 +351,7 @@ materials:
   filename: 2026-05-26_中华人民共和国2025年国民经济和社会发展统计公报.md
   source_type: web-search
   added: '2026-05-26T03:45:37.780129+00:00'
-  processed: false
+  processed: true
   notes: query='2025 中国全年航天发射 次数 千帆 国网 占比 统计'
   mineru_state: not_needed
   addresses:
@@ -369,7 +369,7 @@ materials:
   filename: 2026-05-26_中国东方红卫星股份有限公司2025年年度报告.md
   source_type: web-search
   added: '2026-05-26T03:46:49.263605+00:00'
-  processed: false
+  processed: true
   notes: query='中国卫星 600118 2025年报 净利润 商业航天收入'
   mineru_state: not_needed
   addresses:
@@ -387,7 +387,7 @@ materials:
   filename: 2026-05-26_中国卫星-2025年净利润同比增长27-38-拟10派0-12元.md
   source_type: web-search
   added: '2026-05-26T03:46:49.281535+00:00'
-  processed: false
+  processed: true
   notes: query='中国卫星 600118 2025年报 净利润 商业航天收入'
   mineru_state: not_needed
   addresses:
@@ -405,7 +405,7 @@ materials:
   filename: 2026-05-26_中航证券-航天电器-002025-2025年报点评-订货创历史新高-战新产业布局取得较好成效.md
   source_type: web-search
   added: '2026-05-26T03:46:49.310711+00:00'
-  processed: false
+  processed: true
   notes: query='航天电器 002025 2025年报 商业航天 营收占比'
   mineru_state: not_needed
   addresses:
@@ -423,7 +423,7 @@ materials:
   filename: 2026-05-26_东吴证券-航天电器-002025-研究报告.md
   source_type: web-search
   added: '2026-05-26T03:46:49.330143+00:00'
-  processed: false
+  processed: true
   notes: query='航天电器 002025 2025年报 商业航天 营收占比' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -441,7 +441,7 @@ materials:
   filename: 2026-05-26_航天电器2025年增收不增利-净利润为何暴跌47.md
   source_type: web-search
   added: '2026-05-26T03:46:49.350543+00:00'
-  processed: false
+  processed: true
   notes: query='航天电器 002025 2025年报 商业航天 营收占比' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -459,7 +459,7 @@ materials:
   filename: 2026-05-26_st铖昌-2025年年度报告摘要-2026-025.md
   source_type: web-search
   added: '2026-05-26T03:46:49.382837+00:00'
-  processed: false
+  processed: true
   notes: query='铖昌科技 001270 2025年报 T/R 芯片 卫星互联网订单'
   mineru_state: not_needed
   addresses:
@@ -477,7 +477,7 @@ materials:
   filename: 2026-05-26_st铖昌-核心业务加速增长-上半年营收猛增180-16-深度参与多项国家重点项目.md
   source_type: web-search
   added: '2026-05-26T03:46:49.404786+00:00'
-  processed: false
+  processed: true
   notes: query='铖昌科技 001270 2025年报 T/R 芯片 卫星互联网订单'
   mineru_state: not_needed
   addresses:
@@ -495,7 +495,7 @@ materials:
   filename: 2026-05-26_st铖昌-投资者关系活动记录表-2025-024.md
   source_type: web-search
   added: '2026-05-26T03:46:49.427598+00:00'
-  processed: false
+  processed: true
   notes: query='铖昌科技 001270 2025年报 T/R 芯片 卫星互联网订单'
   mineru_state: not_needed
   addresses:
@@ -513,7 +513,7 @@ materials:
   filename: 2026-05-26_南京国博电子股份有限公司2025年年度报告.md
   source_type: web-search
   added: '2026-05-26T03:46:49.463409+00:00'
-  processed: false
+  processed: true
   notes: query='国博电子 688375 2025年报 卫星相控阵 营收'
   mineru_state: not_needed
   addresses:
@@ -531,7 +531,7 @@ materials:
   filename: 2026-05-26_年报-国博电子-688375-南京国博电子股份有限公司2025年年度报告摘要.md
   source_type: web-search
   added: '2026-05-26T03:46:49.488716+00:00'
-  processed: false
+  processed: true
   notes: query='国博电子 688375 2025年报 卫星相控阵 营收'
   mineru_state: not_needed
   addresses:
@@ -549,7 +549,7 @@ materials:
   filename: 2026-05-26_传统业务收缩-高额研发投入-减值计提-海格通信去年亏近8亿元-前董事长多次减持.md
   source_type: web-search
   added: '2026-05-26T03:46:49.527004+00:00'
-  processed: false
+  processed: true
   notes: query='海格通信 002465 2025年报 卫星互联网 业绩'
   mineru_state: not_needed
   addresses:
@@ -567,7 +567,7 @@ materials:
   filename: 2026-05-26_海格通信-2025年度业绩预告.md
   source_type: web-search
   added: '2026-05-26T03:46:49.553323+00:00'
-  processed: false
+  processed: true
   notes: query='海格通信 002465 2025年报 卫星互联网 业绩'
   mineru_state: not_needed
   addresses:
@@ -585,7 +585,7 @@ materials:
   filename: 2026-05-26_民生证券-海格通信2024年报及2025一季报点评.md
   source_type: web-search
   added: '2026-05-26T03:46:49.580426+00:00'
-  processed: false
+  processed: true
   notes: query='海格通信 002465 2025年报 卫星互联网 业绩' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -603,7 +603,7 @@ materials:
   filename: 2026-05-26_上海瀚讯-300762-2025年度营收增逾四成却续亏-经营性现金流转正难掩短期偿债压力.md
   source_type: web-search
   added: '2026-05-26T03:46:49.622063+00:00'
-  processed: false
+  processed: true
   notes: query='上海瀚讯 300762 2025年报 卫星通信终端 营收' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -621,7 +621,7 @@ materials:
   filename: 2026-05-26_山西证券-上海瀚讯-300762-2024卫星业务收入超1-5亿-2025-g60星链发射数量大幅增.md
   source_type: web-search
   added: '2026-05-26T03:46:49.650568+00:00'
-  processed: false
+  processed: true
   notes: query='上海瀚讯 300762 2025年报 卫星通信终端 营收' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -639,7 +639,7 @@ materials:
   filename: 2026-05-26_上海瀚讯-300762-卫星收入受发射节奏客观影响-特种通信业务有望迎来实质性拐点.md
   source_type: web-search
   added: '2026-05-26T03:46:49.680201+00:00'
-  processed: false
+  processed: true
   notes: query='上海瀚讯 300762 2025年报 卫星通信终端 营收' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -657,7 +657,7 @@ materials:
   filename: 2026-05-26_2026航天第一股-首日暴涨600-4天失守千亿市值.md
   source_type: web-search
   added: '2026-05-26T03:48:25.846656+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 A股 可投标的 alpha 主题炒作 2026 估值'
   mineru_state: not_needed
   addresses:
@@ -675,7 +675,7 @@ materials:
   filename: 2026-05-26_一天吃透一条产业链-商业航天-附股票名单.md
   source_type: web-search
   added: '2026-05-26T03:48:25.877835+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 A股 可投标的 alpha 主题炒作 2026 估值'
   mineru_state: not_needed
   addresses:
@@ -693,7 +693,7 @@ materials:
   filename: 2026-05-26_中信建投力挺-4月窗口期开启-这些航天a股标的或将受益.md
   source_type: web-search
   added: '2026-05-26T03:48:25.909572+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 A股 可投标的 alpha 主题炒作 2026 估值'
   mineru_state: not_needed
   addresses:
@@ -711,7 +711,7 @@ materials:
   filename: 2026-05-26_2026中国商业航天-要么领跑-要么出局.md
   source_type: web-search
   added: '2026-05-26T03:48:25.942050+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 A股 可投标的 alpha 主题炒作 2026 估值' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -731,7 +731,7 @@ materials:
   filename: 2026-05-26_国家航天局市场监管总局关于印发商业航天标准体系1-0版的通知.md
   source_type: web-search
   added: '2026-05-26T03:48:25.992263+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 行业政策 2026'
   mineru_state: not_needed
   addresses:
@@ -749,7 +749,7 @@ materials:
   filename: 2026-05-26_国家航天局推进商业航天高质量安全发展行动计划-2025-2027年.md
   source_type: web-search
   added: '2026-05-26T03:48:26.029705+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 行业政策 2026'
   mineru_state: not_needed
   addresses:
@@ -767,7 +767,7 @@ materials:
   filename: 2026-05-26_从技术验证迈向规模化应用-中国商业航天逐梦星辰大海.md
   source_type: web-search
   added: '2026-05-26T03:48:26.071475+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 行业政策 2026'
   mineru_state: not_needed
   addresses:
@@ -785,7 +785,7 @@ materials:
   filename: 2026-05-26_展望商业航天2026-老股或遭-疯抢-回收火箭-密集攻坚-行业从-飞起来-迈向-飞下去.md
   source_type: web-search
   added: '2026-05-26T03:48:26.129465+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 技术突破 2026 火箭回收'
   mineru_state: not_needed
   addresses:
@@ -803,7 +803,7 @@ materials:
   filename: 2026-05-26_商业火箭发射密度不断加大-可复用技术成降本关键-各环节价值量几何.md
   source_type: web-search
   added: '2026-05-26T03:48:26.167220+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 技术突破 2026 火箭回收'
   mineru_state: not_needed
   addresses:
@@ -821,7 +821,7 @@ materials:
   filename: 2026-05-26_2026中国10大商业卫星制造公司-头部格局正在固化.md
   source_type: web-search
   added: '2026-05-26T03:48:26.224430+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 产能 卫星制造产线 2026'
   mineru_state: not_needed
   addresses:
@@ -839,7 +839,7 @@ materials:
   filename: 2026-05-26_泰安市商业航天2024-2026行动计划.md
   source_type: web-search
   added: '2026-05-26T03:48:26.262536+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 产能 卫星制造产线 2026' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -857,7 +857,7 @@ materials:
   filename: 2026-05-26_完善星箭链条-多地竞速商业航天赛道.md
   source_type: web-search
   added: '2026-05-26T03:48:26.301560+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 产能 卫星制造产线 2026'
   mineru_state: not_needed
   addresses:
@@ -875,7 +875,7 @@ materials:
   filename: 2026-05-26_航天企业竞速ipo-蓝箭航天先获受理.md
   source_type: web-search
   added: '2026-05-26T03:48:26.361326+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 龙头 2026 蓝箭 星河 银河 垣信'
   mineru_state: not_needed
   addresses:
@@ -893,7 +893,7 @@ materials:
   filename: 2026-05-26_5家-中国版spacex-竞逐ipo-商业航天发展提速估值合计.md
   source_type: web-search
   added: '2026-05-26T03:48:26.442525+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 龙头 2026 蓝箭 星河 银河 垣信' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -911,7 +911,7 @@ materials:
   filename: 2026-05-26_可回收技术突破-中国商业航天迎来大考.md
   source_type: web-search
   added: '2026-05-26T03:48:26.484305+00:00'
-  processed: false
+  processed: true
   notes: query='中国商业航天 龙头 2026 蓝箭 星河 银河 垣信' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -929,168 +929,168 @@ materials:
   filename: 2025_600118_annual_2026-03-30_中国卫星.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:20.911409+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 中国卫星
   mineru_state: not_needed
 - id: mat-9ab89e
   filename: 2025_002025_annual_2026-03-30_航天电器.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:21.250441+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 航天电器
   mineru_state: not_needed
 - id: mat-194d83
   filename: 2025_001270_annual_2026-04-16_铖昌科技.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:21.591433+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 铖昌科技
   mineru_state: not_needed
 - id: mat-6da987
   filename: 2025_688375_annual_2026-04-09_国博电子.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:21.998998+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 国博电子
   mineru_state: not_needed
 - id: mat-9908ad
   filename: 2025_002465_annual_2026-03-27_海格通信.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:22.403883+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 海格通信
   mineru_state: not_needed
 - id: mat-b21a3a
   filename: 2025_300762_annual_2026-04-27_上海瀚讯.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:22.753343+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 上海瀚讯
   mineru_state: not_needed
 - id: mat-42b8e6
   filename: 2025_300699_annual_2026-03-30_光威复材.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:23.206093+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 光威复材
   mineru_state: not_needed
 - id: mat-8b765c
   filename: 2025_600893_annual_2026-04-01_航发动力.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:23.562748+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 航发动力
   mineru_state: not_needed
 - id: mat-8cb791
   filename: 2025_688122_annual_2026-04-23_西部超导.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:23.940773+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 西部超导
   mineru_state: not_needed
 - id: mat-9b3555
   filename: 2025_002049_annual_2026-04-20_紫光国微.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:24.457566+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 紫光国微
   mineru_state: not_needed
 - id: mat-faf1b0
   filename: 2025_688385_annual_2026-03-27_复旦微电.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:24.840717+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 复旦微电
   mineru_state: not_needed
 - id: mat-124c8e
   filename: 2025_688568_annual_2026-04-14_中科星图.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:25.280864+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 中科星图
   mineru_state: not_needed
 - id: mat-b4580d
   filename: 2025_688066_annual_2026-04-29_*ST航图.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:25.740451+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — *ST航图
   mineru_state: not_needed
 - id: mat-119a92
   filename: 2025_601698_annual_2026-03-31_中国卫通.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:26.084770+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 中国卫通
   mineru_state: not_needed
 - id: mat-9ff5c8
   filename: 2025_301050_annual_2026-04-23_雷电微力.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:26.565355+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 雷电微力
   mineru_state: not_needed
 - id: mat-962d65
   filename: 2025_688270_annual_2026-04-22_ST臻镭.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:27.240704+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — ST臻镭
   mineru_state: not_needed
 - id: mat-cfe817
   filename: 2025_300101_annual_2026-04-27_振芯科技.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:27.572391+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 振芯科技
   mineru_state: not_needed
 - id: mat-04a5c1
   filename: 2025_688182_annual_2026-04-20_灿勤科技.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:28.156758+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 灿勤科技
   mineru_state: not_needed
 - id: mat-0ecfe2
   filename: 2025_688387_annual_2026-04-24_信科移动.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:28.587140+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 信科移动
   mineru_state: not_needed
 - id: mat-6e1f7e
   filename: 2025_002544_annual_2026-04-24_普天科技.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:29.046714+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 普天科技
   mineru_state: not_needed
 - id: mat-ce5855
   filename: 2025_300366_annual_2026-04-28_ST创意.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:29.433907+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — ST创意
   mineru_state: not_needed
 - id: mat-26070a
   filename: 2025_002446_annual_2026-04-27_盛路通信.PDF
   source_type: annual-report
   added: '2026-05-26T06:01:29.796887+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 盛路通信
   mineru_state: not_needed
 - id: mat-7c8fc7
   filename: 2025_688818_annual_2026-04-22_电科蓝天.PDF
   source_type: annual-report
   added: '2026-05-26T06:02:09.033924+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 电科蓝天
   mineru_state: not_needed
 - id: mat-e4f149
   filename: 2026-05-26_蓝箭航天张晓东-朱雀三号今年上半年遥二箭回收.md
   source_type: web-search
   added: '2026-05-26T06:05:51.926928+00:00'
-  processed: false
+  processed: true
   notes: query='蓝箭航天 朱雀三号 2026 二季度 回收试验 天鹊-12B 最新'
   mineru_state: not_needed
   addresses:
@@ -1108,7 +1108,7 @@ materials:
   filename: 2026-05-26_完美回收只差最后一脚-朱雀三号今年上半年遥二箭再尝试.md
   source_type: web-search
   added: '2026-05-26T06:05:51.977202+00:00'
-  processed: false
+  processed: true
   notes: query='蓝箭航天 朱雀三号 2026 二季度 回收试验 天鹊-12B 最新'
   mineru_state: not_needed
   addresses:
@@ -1126,7 +1126,7 @@ materials:
   filename: 2026-05-26_蓝箭航天-2026-年回收朱雀三号.md
   source_type: web-search
   added: '2026-05-26T06:05:52.079026+00:00'
-  processed: false
+  processed: true
   notes: query='蓝箭航天 朱雀三号 2026 二季度 回收试验 天鹊-12B 最新'
   mineru_state: not_needed
   addresses:
@@ -1144,7 +1144,7 @@ materials:
   filename: 2026-05-26_千帆星座明年发射目标-600-多颗-垣信开启新一轮融资.md
   source_type: web-search
   added: '2026-05-26T06:05:52.168201+00:00'
-  processed: false
+  processed: true
   notes: query='千帆星座 2026年 第三季度 在轨数量 月度发射进度'
   mineru_state: not_needed
   addresses:
@@ -1162,7 +1162,7 @@ materials:
   filename: 2026-05-26_低轨卫星星座高频发射-星际荣耀-7-亿-d-轮融资交割.md
   source_type: web-search
   added: '2026-05-26T06:05:52.221219+00:00'
-  processed: false
+  processed: true
   notes: query='千帆星座 2026年 第三季度 在轨数量 月度发射进度'
   mineru_state: not_needed
   addresses:
@@ -1180,7 +1180,7 @@ materials:
   filename: 2026-05-26_国家航天局-长征十号低空演示验证与梦舟飞船最大动压逃逸飞行试验.md
   source_type: web-search
   added: '2026-05-26T06:05:52.311560+00:00'
-  processed: false
+  processed: true
   notes: query='长征十号 长征10号 4月28日 海上回收 验证 试验'
   mineru_state: not_needed
   addresses:
@@ -1198,7 +1198,7 @@ materials:
   filename: 2026-05-26_长征十号乙首飞验证回收.md
   source_type: web-search
   added: '2026-05-26T06:05:52.365577+00:00'
-  processed: false
+  processed: true
   notes: query='长征十号 长征10号 4月28日 海上回收 验证 试验'
   mineru_state: not_needed
   addresses:
@@ -1216,7 +1216,7 @@ materials:
   filename: 2026-05-26_国防部-长征十号低空演示验证与梦舟飞船最大动压逃逸飞行试验.md
   source_type: web-search
   added: '2026-05-26T06:05:52.420840+00:00'
-  processed: false
+  processed: true
   notes: query='长征十号 长征10号 4月28日 海上回收 验证 试验'
   mineru_state: not_needed
   addresses:
@@ -1234,7 +1234,7 @@ materials:
   filename: 2026-05-26_星际荣耀-双曲线三号可重复使用运载火箭预计-2026-年底首飞.md
   source_type: web-search
   added: '2026-05-26T06:05:52.505664+00:00'
-  processed: false
+  processed: true
   notes: query='星际荣耀 双曲线三号 中科宇航 力箭二号 2026 首飞 进度'
   mineru_state: not_needed
   addresses:
@@ -1252,7 +1252,7 @@ materials:
   filename: 2026-05-26_商业航天-2026-年迎-大年-多款新型火箭待首飞.md
   source_type: web-search
   added: '2026-05-26T06:05:52.562291+00:00'
-  processed: false
+  processed: true
   notes: query='星际荣耀 双曲线三号 中科宇航 力箭二号 2026 首飞 进度'
   mineru_state: not_needed
   addresses:
@@ -1270,7 +1270,7 @@ materials:
   filename: 2026-05-26_星际荣耀双曲线三号火箭计划-2026-上半年首飞.md
   source_type: web-search
   added: '2026-05-26T06:05:52.622814+00:00'
-  processed: false
+  processed: true
   notes: query='星际荣耀 双曲线三号 中科宇航 力箭二号 2026 首飞 进度' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -1288,7 +1288,7 @@ materials:
   filename: 2026-05-26_从千星制造到商业航天投资机会全景分析.md
   source_type: web-search
   added: '2026-05-26T06:05:52.727919+00:00'
-  processed: false
+  processed: true
   notes: query='航天电器 铖昌科技 中国卫星 2026 半年报 商业航天业务 收入预增' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -1306,7 +1306,7 @@ materials:
   filename: 2026-05-26_商业航天核心标的梳理.md
   source_type: web-search
   added: '2026-05-26T06:05:52.810269+00:00'
-  processed: false
+  processed: true
   notes: query='航天电器 铖昌科技 中国卫星 2026 半年报 商业航天业务 收入预增' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -1324,7 +1324,7 @@ materials:
   filename: 2026-05-26_2026-年商业航天公司订单预测.md
   source_type: web-search
   added: '2026-05-26T06:05:52.902819+00:00'
-  processed: false
+  processed: true
   notes: query='航天电器 铖昌科技 中国卫星 2026 半年报 商业航天业务 收入预增' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -1342,7 +1342,7 @@ materials:
   filename: 2026-05-26_中国商业航空航天板块投资机会深度研究报告.md
   source_type: web-search
   added: '2026-05-26T06:05:52.971971+00:00'
-  processed: false
+  processed: true
   notes: query='航天电器 铖昌科技 中国卫星 2026 半年报 商业航天业务 收入预增' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -1363,7 +1363,7 @@ materials:
   filename: 2026-05-26_中金-关于蓝箭航天空间科技股份有限公司首次公开发行股票并在科创板上市的辅导工作总结报告.md
   source_type: web-search
   added: '2026-05-26T06:05:53.075137+00:00'
-  processed: false
+  processed: true
   notes: query='蓝箭航天 IPO 2026 发行价 估值 电科蓝天 对比 科创板'
   mineru_state: not_needed
   addresses:
@@ -1381,7 +1381,7 @@ materials:
   filename: 2026-05-26_估值-200-亿-蓝箭航天完成-ipo-辅导-冲刺科创板-商业航天第一股.md
   source_type: web-search
   added: '2026-05-26T06:05:53.147618+00:00'
-  processed: false
+  processed: true
   notes: query='蓝箭航天 IPO 2026 发行价 估值 电科蓝天 对比 科创板'
   mineru_state: not_needed
   addresses:
@@ -1399,7 +1399,7 @@ materials:
   filename: 2026-05-26_蓝箭航天估值-750-亿亏损-34-亿-商业航天-ipo-是泡沫还是机遇.md
   source_type: web-search
   added: '2026-05-26T06:05:53.218121+00:00'
-  processed: false
+  processed: true
   notes: query='蓝箭航天 IPO 2026 发行价 估值 电科蓝天 对比 科创板' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -1417,7 +1417,7 @@ materials:
   filename: 2026-05-26_蓝箭-ipo-是科创板第五套标准扩围至商业航天领域后首单.md
   source_type: web-search
   added: '2026-05-26T06:05:53.284137+00:00'
-  processed: false
+  processed: true
   notes: query='蓝箭航天 IPO 2026 发行价 估值 电科蓝天 对比 科创板'
   mineru_state: not_needed
   addresses:
@@ -1435,7 +1435,7 @@ materials:
   filename: 2026-05-26_朱雀三号暂缓首飞-中国火箭与-spacex-的差距再被拉大.md
   source_type: web-search
   added: '2026-05-26T06:07:53.593873+00:00'
-  processed: false
+  processed: true
   notes: query='中国 火箭发射成本 美元 公斤 2025 长征 SpaceX 对比 万元'
   mineru_state: not_needed
   addresses:
@@ -1453,7 +1453,7 @@ materials:
   filename: 2026-05-26_国产商业火箭-批量上天-背后-发射成本最高.md
   source_type: web-search
   added: '2026-05-26T06:07:53.660484+00:00'
-  processed: false
+  processed: true
   notes: query='中国 火箭发射成本 美元 公斤 2025 长征 SpaceX 对比 万元'
   mineru_state: not_needed
   addresses:
@@ -1471,7 +1471,7 @@ materials:
   filename: 2026-05-26_星河动力-2025-稳步前行-迈向可重复使用火箭新时代.md
   source_type: web-search
   added: '2026-05-26T06:07:53.761217+00:00'
-  processed: false
+  processed: true
   notes: query='星河动力 谷神星一号 2025 2026 发射次数 智神星 进展'
   mineru_state: not_needed
   addresses:
@@ -1489,7 +1489,7 @@ materials:
   filename: 2026-05-26_星河动力航天谷神星二号-智神星一号.md
   source_type: web-search
   added: '2026-05-26T06:07:53.829057+00:00'
-  processed: false
+  processed: true
   notes: query='星河动力 谷神星一号 2025 2026 发射次数 智神星 进展'
   mineru_state: not_needed
   addresses:
@@ -1507,7 +1507,7 @@ materials:
   filename: 2026-05-26_商业航天2026年-首飞-谷神星一号成功发射.md
   source_type: web-search
   added: '2026-05-26T06:07:53.896436+00:00'
-  processed: false
+  processed: true
   notes: query='星河动力 谷神星一号 2025 2026 发射次数 智神星 进展'
   mineru_state: not_needed
   addresses:
@@ -1525,7 +1525,7 @@ materials:
   filename: 2026-05-26_力箭二号打响头炮-2026中国商业航天进入-密集.md
   source_type: web-search
   added: '2026-05-26T06:07:54.001131+00:00'
-  processed: false
+  processed: true
   notes: query='中科宇航 力箭一号 力箭二号 2025 2026 累计发射 千帆 订单'
   mineru_state: not_needed
   addresses:
@@ -1543,7 +1543,7 @@ materials:
   filename: 2026-05-26_中科宇航技术股份有限公司公告.md
   source_type: web-search
   added: '2026-05-26T06:07:54.071128+00:00'
-  processed: false
+  processed: true
   notes: query='中科宇航 力箭一号 力箭二号 2025 2026 累计发射 千帆 订单'
   mineru_state: not_needed
   addresses:
@@ -1561,7 +1561,7 @@ materials:
   filename: 2026-05-26_力箭一号遥十-一箭7星-再拿国际订单.md
   source_type: web-search
   added: '2026-05-26T06:07:54.141941+00:00'
-  processed: false
+  processed: true
   notes: query='中科宇航 力箭一号 力箭二号 2025 2026 累计发射 千帆 订单'
   mineru_state: not_needed
   addresses:
@@ -1579,7 +1579,7 @@ materials:
   filename: 2026-05-26_中国民营火箭急了-密集上天-扎堆上市.md
   source_type: web-search
   added: '2026-05-26T06:07:54.248050+00:00'
-  processed: false
+  processed: true
   notes: query='银河航天 2025 2026 融资 估值 D轮 千帆星座 卫星 订单'
   mineru_state: not_needed
   addresses:
@@ -1597,7 +1597,7 @@ materials:
   filename: 2026-05-26_99笔融资-200亿资金-谁在抢位商业航天.md
   source_type: web-search
   added: '2026-05-26T06:07:54.320489+00:00'
-  processed: false
+  processed: true
   notes: query='银河航天 2025 2026 融资 估值 D轮 千帆星座 卫星 订单'
   mineru_state: not_needed
   addresses:
@@ -1615,7 +1615,7 @@ materials:
   filename: 2026-05-26_200亿-谁在押注商业航天.md
   source_type: web-search
   added: '2026-05-26T06:07:54.393124+00:00'
-  processed: false
+  processed: true
   notes: query='银河航天 2025 2026 融资 估值 D轮 千帆星座 卫星 订单'
   mineru_state: not_needed
   addresses:
@@ -1633,7 +1633,7 @@ materials:
   filename: 2026-05-26_吉利未来星座-geesat-spacemapper.md
   source_type: web-search
   added: '2026-05-26T06:07:54.577982+00:00'
-  processed: false
+  processed: true
   notes: query='时空道宇 吉利 2025 2026 在轨卫星数量 GEELY 06星 累计发射' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -1651,7 +1651,7 @@ materials:
   filename: 2026-05-26_天地一体化-吉利发射-11-颗低轨卫星.md
   source_type: web-search
   added: '2026-05-26T06:07:54.652962+00:00'
-  processed: false
+  processed: true
   notes: query='时空道宇 吉利 2025 2026 在轨卫星数量 GEELY 06星 累计发射' | 待用户确认
   mineru_state: not_needed
   addresses:
@@ -1669,7 +1669,7 @@ materials:
   filename: 2026-05-26_商业航天---吉利科技集团.md
   source_type: web-search
   added: '2026-05-26T06:07:54.729147+00:00'
-  processed: false
+  processed: true
   notes: query='时空道宇 吉利 2025 2026 在轨卫星数量 GEELY 06星 累计发射' | 待用户确认
   mineru_state: not_needed
   addresses:

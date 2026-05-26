@@ -1,0 +1,34 @@
+ITEM 3        KEY INFORMATION
+A. [RESERVED]
+B. CAPITALISATION AND INDEBTEDNESS
+Not applicable.
+C. REASONS FOR THE OFFER AND USE OF PROCEEDS
+Not applicable.
+D. RISK FACTORS
+For information on risk factors, reference is made to ‘Risk management’ on pages
+41-42 of our Annual Report 2025, excluding the section ‘Mitigating actions’ on page
+42
+.
+ Outlined in greater detail below, we are subject to cybersecurity risks and the risk related to climate change.
+The potential risk on our business as a result of cybersecurity breaches
+We rely on our IT systems to protect our intellectual property, business confidential information, and personal data. Therefore, disruption as a result of cybersecurity breaches could negatively impact the Company’s business and operations or financial results.
+IT systems act as the foundation of our operations. They support processes in research & development, manufacturing, sales and supply, and business administration. As we are a global company, the size and complexity of our IT systems are significant, and our IT infrastructure and networks are spread across the geographic regions in which we operate. The dedicated cybersecurity teams who operate our global IT security infrastructure may be unable to respond sufficiently to the threats facing us or may fail to prevent service interruptions or security breaches resulting from attacks by malicious third parties. Many of these cyber threats have the potential to cause significant downtime of critical IT systems or the unintended disclosure of confidential information and personal data. Although we have not previously experienced material losses as a result of such incidents, we cannot guarantee that we will be able to prevent similar incidents from occurring or adversely affecting our business in the future.
+We are subject to data privacy regulation in the EU (including the General Data Protection Regulation) and to privacy laws in many other jurisdictions where we do business that impose obligations and restrictions on the collection and use of personal data. In the ordinary course of the Company’s business, it collects and stores personal data (including sensitive personal data) of patients, health care professionals, employees and other third parties. 
+Many third-party vendors provide support services in relation to our business processes and require access to sensitive information (including personal data) in the course of their work. Such vendors could themselves be susceptible to cybersecurity or personal data breaches. Any unauthorised access, disclosure, or other loss of personal data could result in legal claims or proceedings, liability under laws that protect the privacy of personal information, and significant regulatory penalties, disrupt the Company’s operations and damage the Company’s reputation.
+The potential risk on our business as a result of failure to meet regulatory or ethical expectations on environmental impact, including climate change
+At Novo Nordisk, material environmental risks, including material risks related to climate and water are identified and assessed through our enterprise risk management process. For climate, short- and medium-term climate risks are assessed across business areas, while long-term risks are assessed as part of our company-wide strategic risk identification process. The risk assessment includes an annual natural hazards risk rating of production sites, as well as for the majority of our suppliers for whom we have determined the location. Risk ratings are assessed related to parameters like natural events, including flooding, earthquakes, high-
+3
+Novo Nordisk Form 20-F 2025
+ITEM 3 KEY INFORMATION
+speed winds, tornados, hailstorms, and lightning. The risk assessment serves to provide input for risk mitigation and consequently prioritise actions to prevent or minimise the impact of supply disruptions on manufacturing.
+Novo Nordisk’s main production facilities are in Denmark and the United States. In Denmark the risk of natural events is assessed lower, whereas our production facilities in North Carolina, United States are exposed to extreme weather conditions such as tornadoes and hurricanes, and our production site in Indiana, United States is exposed to a higher risk of tornadoes and subsequent rainfall and lightening. The Company also has other production facilities in countries that are at greater risk of natural disasters. For example, our production facility in Koriyama, Japan is exposed to a higher risk of earthquakes, and our production facility in Tianjin, China is located in an area prone to storm surges due to rising sea levels.
+Climate related transition risks were evaluated in 2024 using an Integrated Assessment Model (IAM). The IAM captures sector- and region-specific macroeconomic shifts, energy supply, raw materials pricing, labour costs and revenue changes. In 2025, there have been no significant changes to the conclusion from 2024.
+Despite our commitment to identifying and mitigating climate-related risks, and our commitment to climate target-setting, achieving our targets depends in part on the availability of lower carbon technologies and materials that meet our quality standards as part of the general transition to a lower-carbon economy. Novo Nordisk continuously recalibrates priority areas and levers within the climate roadmap. However, many of our scope 3 decarbonisation levers have a delayed effect that will not fully materialise for several years. To reduce scope 3 emissions, Novo Nordisk is focused on our suppliers' transition to renewable electricity. Our actions are focused on the following high-impact categories:
+•
+Direct spend: Procurement of low-carbon feedstocks for key raw materials, such as e-methanol, low-carbon ammonia and glucose from regenerative agriculture;
+•
+Indirect spend: Procurement of low-carbon goods and services;
+•
+Investments: Converting to low-carbon construction materials.
+The availability of high-quality water is essential for the production of diabetes and biopharmaceutical products, and hence for the company’s operations. We withdraw a substantial amount of water from  water stressed regions, defined as regions that do not have enough water to meet the needs of all users and the local environment. Through our enterprise risk management processes, we have identified that there is a risk of future scarcity of water supply impacting our production´s ability to withdraw water. 
+Factors that may inhibit our ability to reach these climate targets or water ambitions, or a failure to maximise our environmental sustainability credentials could expose us to increased regulatory risk or reputational risk related to growing emissions. This could result in a material adverse effect on our business, financial condition, results of operations and prospects and lead to reputational damage.

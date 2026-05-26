@@ -783,6 +783,10 @@ def set_thesis(
                     否则 raise ValueError——强制主 agent 显式确认"接受 failed prescan 状态"
         建议在 set_thesis 前调 check_prescan_health() 取 status / failure_reason
 
+    H5 修订（顶层污染消除）：prescan_status 只写到 `history[N]`，**不再写 thesis 顶层**。
+      读"当前 thesis 写时 prescan 状态"用 `get_current_prescan_status(slug, variant)`。
+      后续轮次（workflow 01/02/06）的 prescan 走独立 `set_prescan_log()`，不调本函数。
+
     副作用：升版后自动跑 reverse-check（version>=1 且 roadmap 存在时）：
       若 thesis 的 K# 在 roadmap.L4/material 中未闭环，自动写 "roadmap 需补 Kx" todo，
       并把 stage 翻成 '01-roadmap-reopen'。返回 reverse-check 结果（含 newly_added_todos）。
@@ -820,10 +824,12 @@ def set_thesis(
         history_entry["prescan_status"] = prescan_status
         if prescan_failure_reason:
             history_entry["prescan_failure_reason"] = prescan_failure_reason
-        # 同时写到 thesis 顶层方便 workflow 05 / web UI 快速读
-        thesis["prescan_status"] = prescan_status
-        if prescan_failure_reason:
-            thesis["prescan_failure_reason"] = prescan_failure_reason
+        # H5 修订：不再写 thesis 顶层。后续轮次 prescan 失败如果回写顶层会污染该
+        # thesis 版本写时的 prescan 状态。读"当前写时 prescan 状态"用
+        # get_current_prescan_status() 从 history 取当前版本即可。
+    # H5 清理：旧 yaml 残留的顶层字段在本次 set_thesis 时一次性移除（迁移）
+    thesis.pop("prescan_status", None)
+    thesis.pop("prescan_failure_reason", None)
     thesis["history"].append(history_entry)
     _write_yaml(_topic_path(slug, variant), data)
 
@@ -837,6 +843,86 @@ def set_thesis(
         return rev
     _trigger_dashboard(slug, variant, f"thesis_v{version}")
     return None
+
+
+# ---------------------------------------------------------------------------
+# H5: prescan 状态读写分离 — thesis 写时 vs 后续轮次
+# ---------------------------------------------------------------------------
+
+def get_current_prescan_status(slug: str, variant: str) -> dict:
+    """读"当前 thesis 写时的 prescan 状态"（从 history[current_version] 取，不读顶层）。
+
+    返回 {'status': str|None, 'failure_reason': str|None, 'version': int|None}
+      - 无 thesis 或 thesis.history 空 → 全 None
+      - history 当前版本没有 prescan_status → status=None（向后兼容旧 thesis）
+
+    H5 修订前：调用方读 thesis.prescan_status 顶层；该顶层会被后续轮次 prescan
+    污染。H5 后顶层不再写，调用方一律走本 helper。
+    """
+    data = read_topic(slug, variant)
+    thesis = data.get("thesis") or {}
+    cur = thesis.get("current_version")
+    history = thesis.get("history") or []
+    if cur is None or not history:
+        return {"status": None, "failure_reason": None, "version": cur}
+    entry = next((h for h in history if h.get("version") == cur), None)
+    if not entry:
+        # current_version 指向不存在的版本（异常态），退化到最新 entry
+        entry = history[-1] if history else {}
+    return {
+        "status": entry.get("prescan_status"),
+        "failure_reason": entry.get("prescan_failure_reason"),
+        "version": cur,
+    }
+
+
+def set_prescan_log(
+    slug: str,
+    variant: str,
+    status: str,
+    triggered_by: str,
+    hit_rate: float | None = None,
+    queries_run: int | None = None,
+    queries_with_hits: int | None = None,
+    failure_reason: str | None = None,
+) -> dict:
+    """记录后续轮次 prescan 健康度，独立于 thesis 状态。
+
+    用于 workflow 01 Step 8 / 02 Step 0 / 06 Step 1b 等"非写 thesis"轮次的 prescan。
+    H5 修订前这些调用方按文档建议调 set_thesis(prescan_status=...) 回写顶层，
+    会污染 thesis 写时状态；H5 后这些调用走本函数，写到 topic.prescan_log 数组。
+
+    status: 'full' / 'partial' / 'failed'
+    triggered_by: 来源标识（如 '01-prescan', '02-step0', '06-daily-monitor'）
+    返回 append 的 log entry。
+    """
+    if status not in _VALID_PRESCAN_STATUSES:
+        raise ValueError(
+            f"status={status!r} 非法，必须为 {_VALID_PRESCAN_STATUSES} 之一"
+        )
+    if status == "failed" and not (failure_reason and failure_reason.strip()):
+        raise ValueError(
+            "status='failed' 必须同时传 failure_reason（如 'WebSearch 限流静默返空'）"
+        )
+
+    data = read_topic(slug, variant)
+    log_list = data.setdefault("prescan_log", [])
+    entry = {
+        "round_at": _now_iso(),
+        "status": status,
+        "triggered_by": triggered_by,
+    }
+    if hit_rate is not None:
+        entry["hit_rate"] = round(hit_rate, 3)
+    if queries_run is not None:
+        entry["queries_run"] = queries_run
+    if queries_with_hits is not None:
+        entry["queries_with_hits"] = queries_with_hits
+    if failure_reason:
+        entry["failure_reason"] = failure_reason
+    log_list.append(entry)
+    _write_yaml(_topic_path(slug, variant), data)
+    return entry
 
 
 def mark_outdated_ks(slug: str, variant: str, version: int) -> list[str]:

@@ -208,8 +208,9 @@
       <h3>你需要做的事</h3>
       {% if topic.user_todos %}
       {% set _tier_labels = {'public': ('公开', 'tier-public'), 'half_public': ('半公开', 'tier-half'), 'hard': ('难获取', 'tier-hard')} %}
-      <ul class="todo-list">
-        {% for todo in topic.user_todos %}
+      {% set _pending_todos = topic.user_todos | selectattr('status', 'equalto', 'pending') | list %}
+      {% set _other_todos = topic.user_todos | rejectattr('status', 'equalto', 'pending') | list %}
+      {% macro _render_todo(todo) %}
         {% set _tier = _tier_labels.get(todo.info_tier, ('—', 'tier-public')) %}
         <li class="todo-item todo-{{ todo.status }}{% if todo.archive_candidate %} todo-archive{% endif %}">
           <div class="todo-meta">
@@ -235,8 +236,25 @@
           {% if todo.covered_by %}<div class="todo-hint hint">↪ {{ todo.coverage_note or ('已由 ' ~ (todo.covered_by | join(', ')) ~ ' 覆盖') }}</div>{% endif %}
           {% if todo.archive_candidate %}<div class="todo-hint hint">⏏ {{ todo.archive_candidate }}</div>{% endif %}
         </li>
-        {% endfor %}
+      {% endmacro %}
+
+      {% if _pending_todos %}
+      <p class="todo-summary">⚠️ 待你手工补 <strong>{{ _pending_todos | length }}</strong> 份资料{% if _other_todos %}（其余 {{ _other_todos | length }} 条系统已自动处理或进行中）{% endif %}</p>
+      <ul class="todo-list todo-list-pending">
+        {% for todo in _pending_todos %}{{ _render_todo(todo) }}{% endfor %}
       </ul>
+      {% else %}
+      <p class="todo-summary">✅ 全部 {{ topic.user_todos | length }} 条待办均已自动处理或进行中</p>
+      {% endif %}
+
+      {% if _other_todos %}
+      <details class="todo-other">
+        <summary>已自动处理 / 进行中 / 已完成（{{ _other_todos | length }} 条）</summary>
+        <ul class="todo-list">
+          {% for todo in _other_todos %}{{ _render_todo(todo) }}{% endfor %}
+        </ul>
+      </details>
+      {% endif %}
       {% else %}
       <p class="hint">暂无待办</p>
       {% endif %}
@@ -380,6 +398,13 @@
   .todo-item:last-child { border-bottom: none; }
   .todo-done { opacity: 0.5; }
   .todo-done .todo-task { text-decoration: line-through; }
+  .todo-summary { margin: 0.3em 0 0.5em; padding: 0.5em 0.7em; background: #fdecea; border-left: 3px solid #d93025; color: #732020; font-weight: 600; font-size: 0.9em; border-radius: 2px; }
+  .todo-summary strong { color: #d93025; font-size: 1.1em; }
+  .todo-list-pending { background: #fffaf5; padding: 0.2em 0.7em; border: 1px solid #f0d896; border-radius: 3px; }
+  .todo-other { margin-top: 0.6em; }
+  .todo-other > summary { cursor: pointer; color: #666; font-size: 0.88em; padding: 0.3em 0; user-select: none; }
+  .todo-other > summary:hover { color: #333; }
+  .todo-other[open] > summary { margin-bottom: 0.3em; }
   .todo-meta { display: flex; flex-wrap: wrap; gap: 0.3em; margin-bottom: 0.3em; align-items: center; }
   .todo-task { font-size: 0.9em; color: #222; line-height: 1.4; }
   .todo-hint { margin-top: 0.2em; font-size: 0.78em; }

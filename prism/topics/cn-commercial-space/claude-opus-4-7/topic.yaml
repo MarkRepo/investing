@@ -3,7 +3,7 @@ display_name: 中国商业航天
 type: industry
 created: '2026-05-26T03:41:45.197483+00:00'
 status: active
-stage: 02-gather-materials
+stage: done
 parent_topic: null
 monitoring_tier: dormant
 concepts: []
@@ -18,73 +18,166 @@ scope:
   - A股商业航天龙头
 outputs_state:
   01_business_panorama:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-26T11:52:35.752281+00:00'
+    status: fresh
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-119a92
+    - mat-124c8e
+    - mat-194d83
+    - mat-42b8e6
+    - mat-6da987
+    - mat-7c8fc7
+    - mat-8a5ce2
+    - mat-8cb791
+    - mat-9908ad
+    - mat-9ab89e
+    - mat-9b3555
+    - mat-b21a3a
+    - mat-b4580d
+    - mat-faf1b0
+    - ws-aggregate-K1
+    - ws-aggregate-K2
+    - ws-aggregate-K3
+    - ws-aggregate-K4
+    - ws-aggregate-K5
+    - ws-aggregate-scope
     last_error: null
   02_cycle_positioning:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-26T11:52:35.770735+00:00'
+    status: fresh
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-194d83
+    - mat-6da987
+    - mat-8a5ce2
+    - mat-9908ad
+    - mat-9ab89e
+    - mat-b21a3a
+    - ws-aggregate-K1
+    - ws-aggregate-K2
+    - ws-aggregate-K3
+    - ws-aggregate-K4
+    - ws-aggregate-K5
+    - ws-aggregate-K6
+    - ws-aggregate-scope
     last_error: null
   03_narrative_ecology:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-26T11:52:35.786189+00:00'
+    status: fresh
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - ws-aggregate-K1
+    - ws-aggregate-K2
+    - ws-aggregate-K3
+    - ws-aggregate-K4
+    - ws-aggregate-K5
+    - ws-aggregate-K6
+    - ws-aggregate-scope
     last_error: null
   04_implied_expectations:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-26T11:52:35.803660+00:00'
+    status: fresh
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-119a92
+    - mat-194d83
+    - mat-6da987
+    - mat-7c8fc7
+    - mat-8a5ce2
+    - mat-9908ad
+    - mat-9ab89e
+    - mat-b21a3a
+    - ws-aggregate-K1
+    - ws-aggregate-K2
+    - ws-aggregate-K3
+    - ws-aggregate-K4
+    - ws-aggregate-K5
+    - ws-aggregate-K6
     last_error: null
   05_historical_mirrors:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-26T12:13:04.232571+00:00'
+    status: fresh
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - ws-aggregate-K1
+    - ws-aggregate-K2
+    - ws-aggregate-K5
+    - ws-aggregate-K6
+    - ws-aggregate-scope
     last_error: null
   06_risk_blindspots:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-26T12:13:04.252002+00:00'
+    status: fresh
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-194d83
+    - mat-8a5ce2
+    - mat-9908ad
+    - mat-9ab89e
+    - mat-b21a3a
+    - ws-aggregate-K1
+    - ws-aggregate-K2
+    - ws-aggregate-K3
+    - ws-aggregate-K4
+    - ws-aggregate-K5
+    - ws-aggregate-K6
+    - ws-aggregate-scope
     last_error: null
   07_decision_kit:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-26T12:13:04.267729+00:00'
+    status: fresh
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-119a92
+    - mat-194d83
+    - mat-7c8fc7
+    - mat-8a5ce2
+    - mat-9ab89e
+    - ws-aggregate-K1
+    - ws-aggregate-K2
+    - ws-aggregate-K3
+    - ws-aggregate-K4
+    - ws-aggregate-K5
+    - ws-aggregate-K6
+    - ws-aggregate-scope
     last_error: null
   08_living_feed:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-26T12:13:04.277194+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
   09_industry_to_arenas:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-05-26T12:13:04.294070+00:00'
+    status: fresh
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - ws-aggregate-K1
+    - ws-aggregate-K2
+    - ws-aggregate-K3
+    - ws-aggregate-K4
+    - ws-aggregate-K5
+    - ws-aggregate-K6
+    - ws-aggregate-scope
     last_error: null
 parent_materials: []
 next_actions:
-- ✅ 已自动下载 23 家 A 股年报到 materials/（manifest 已登记）
-- ⏳ 收集 P0 用户手工任务：蓝箭/电科蓝天招股书 + 3-5 份卖方深度 + 千帆/GW 月度发射数据
-- ▶ 运行 workflow 02-gather-materials 处理已收集资料（进入 mineru 抽取 + ingest）
+- 9 份产出 + thesis_v1 已全部生成（10 文件 .md + 2 sidecar yaml）
+- 建议下一步：
+- '  1. 「评审 cn-commercial-space」启动 critic-review 找漏洞'
+- '  2. 「创建子 topic cn-private-rockets」深挖民营火箭 arena'
+- '  3. 「创建子 topic cn-space-upstream-components」深挖上游元器件 arena'
+- '  4. 「监控 cn-commercial-space」进入日常监控（千帆月度发射 + 蓝箭 IPO 进度）'
 user_todos:
 - task: 下载蓝箭航天科创板招股说明书（含财务、客户集中度、可回收技术路线、募投项目）
   priority: P0
@@ -212,16 +305,40 @@ user_todos:
   - mat-9237d9
   - mat-dfb26b
   coverage_note: 已由 web-search mat-dfb26b, mat-9237d9 覆盖
+- task: 资料提取完成：107/107 份处理完毕（2026-05-26 修正：上轮 03 完成后 stage 未自动推进）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 8+1 份产出已全部生成（v1）+ thesis_v1 已登记
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 09 选拔出 2 个深挖档 arena（cn-private-rockets / cn-space-upstream-components），2 个观察档（cn-space-satellite-manufacturers
+    / cn-leo-constellation-operators / cn-space-launchpad-infra），1 个淘汰档（cn-space-downstream-apps）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
 monitoring:
   enabled: false
   cadence: daily
 critic: null
 thesis:
-  current_version: 0
-  last_updated: '2026-05-26T03:51:26.556609+00:00'
+  current_version: 1
+  last_updated: '2026-05-26T12:13:04.303203+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
     set_at: '2026-05-26T03:51:26.556720+00:00'
     summary: 2026 中国商业航天处于「政策/产能/IPO 三重共振 vs 业绩兑现+技术回收双重滞后」的 alpha-与-陷阱并存期；强度 5/10
       中性偏分化；最大未定价空头：千帆星座 ITU 频段缺口 83%。
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-26T12:13:04.303215+00:00'
+    summary: 2026 中国商业航天处于"政策三重共振 vs 业绩兑现+技术回收+频段政治三重滞后"的 alpha-与-陷阱并存期；强度 4.5/10
+      中性偏看空；K2 千帆 ITU 缺口 83% 为最大未定价空头；alpha 在精选业绩兑现端上游元器件，主题股仓位应为零

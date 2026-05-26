@@ -135,7 +135,12 @@ def test_h3v2_legacy_yaml_without_short_name_still_works(tmp_topic, monkeypatch)
     assert "中国宠物行业" in scope_q["query"]
 
 
-def test_h3v2_killer_question_uses_short_name(tmp_topic):
+# ---------------------------------------------------------------------------
+# H4 修订：killer-question kind 已删；l4-hunting 改为读 search_keywords
+# ---------------------------------------------------------------------------
+
+def test_h4_killer_question_kind_removed(tmp_topic):
+    """H4 修订：killer-question kind 不再生成（冗余 — scope+l4 已覆盖 K#）。"""
     _create(
         slug="rc-k", display_name="X (Y, US_X)",
         short_name="荣昌生物",
@@ -150,10 +155,84 @@ def test_h3v2_killer_question_uses_short_name(tmp_topic):
 
     qs = build_search_queries("rc-k", VARIANT)
     kq = [q for q in qs if q["kind"] == "killer-question"]
-    assert len(kq) >= 1
-    for q in kq:
-        assert q["query"].startswith("荣昌生物 K"), f"格式不对: {q['query']!r}"
-        assert "(Y, US_X)" not in q["query"]
+    assert not kq, f"killer-question 应删: {[q['query'] for q in kq]!r}"
+
+
+def test_h4_l4_uses_search_keywords(tmp_topic):
+    """H4：L4 question 必须用 search_keywords 拼 query，不再用 question 长句。"""
+    import yaml
+    _create(slug="rc-l4", short_name="荣昌生物", ticker="SSE_688331")
+    topic_dir = tmp_topic / "topics" / "rc-l4" / VARIANT
+    (topic_dir / "roadmap.yaml").write_text(yaml.dump({
+        "learning_track": {
+            "l4_hunting": [
+                {
+                    "question": "AbbVie RC148 全球 III 期 2026Q3-Q4 能否宣布 IND/CTA 注册？市场目前隐含的概率多少？",
+                    "addresses": ["K1"],
+                    "search_keywords": ["RC148 III 期", "AbbVie 注册", "PD-1 VEGF"],
+                },
+            ],
+        },
+    }, allow_unicode=True), encoding="utf-8")
+
+    qs = build_search_queries("rc-l4", VARIANT)
+    l4 = [q for q in qs if q["kind"] == "l4-hunting"]
+    assert len(l4) == 1
+    q = l4[0]
+    # 用 search_keywords 拼接，不用 question 长句
+    assert "RC148 III 期" in q["query"]
+    assert "AbbVie 注册" in q["query"]
+    assert "PD-1 VEGF" in q["query"]
+    # 不应包含问号或长 question 末段
+    assert "？" not in q["query"]
+    assert "市场目前隐含" not in q["query"]
+    assert q["addresses"] == ["K1"]
+    # 拼出 query ≤40 字
+    assert len(q["query"]) <= 40, f"l4 query 仍超长 ({len(q['query'])} 字): {q['query']!r}"
+
+
+def test_h4_l4_without_search_keywords_skipped(tmp_topic, capsys):
+    """H4 hard gate：L4 缺 search_keywords → 跳过该 query + stderr 警告。"""
+    import yaml
+    _create(slug="rc-l4-skip", short_name="荣昌", ticker="SSE_688331")
+    topic_dir = tmp_topic / "topics" / "rc-l4-skip" / VARIANT
+    (topic_dir / "roadmap.yaml").write_text(yaml.dump({
+        "learning_track": {
+            "l4_hunting": [
+                {
+                    "question": "长长长长长长长长长长长 question 没 search_keywords",
+                    "addresses": ["K1"],
+                    # 缺 search_keywords
+                },
+            ],
+        },
+    }, allow_unicode=True), encoding="utf-8")
+
+    qs = build_search_queries("rc-l4-skip", VARIANT)
+    l4 = [q for q in qs if q["kind"] == "l4-hunting"]
+    assert not l4, "缺 search_keywords 的 L4 不应生成 query"
+    # stderr 警告
+    captured = capsys.readouterr()
+    assert "search_keywords" in captured.err
+    assert "K1" in captured.err
+
+
+def test_h4_l4_empty_search_keywords_skipped(tmp_topic, capsys):
+    """search_keywords=[] 等同缺字段 → 同样跳过。"""
+    import yaml
+    _create(slug="rc-l4-empty", short_name="荣昌", ticker="SSE_688331")
+    topic_dir = tmp_topic / "topics" / "rc-l4-empty" / VARIANT
+    (topic_dir / "roadmap.yaml").write_text(yaml.dump({
+        "learning_track": {
+            "l4_hunting": [
+                {"question": "Q", "addresses": ["K2"], "search_keywords": []},
+            ],
+        },
+    }, allow_unicode=True), encoding="utf-8")
+
+    qs = build_search_queries("rc-l4-empty", VARIANT)
+    l4 = [q for q in qs if q["kind"] == "l4-hunting"]
+    assert not l4
 
 
 # ---------------------------------------------------------------------------

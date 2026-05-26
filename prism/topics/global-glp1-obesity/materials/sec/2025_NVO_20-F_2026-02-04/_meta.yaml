@@ -1,0 +1,60 @@
+source_htm: 2025_NVO_20-F_2026-02-04.htm
+form: 20-F
+split_ok: true
+total_lines: 8799
+sections:
+- item: '3'
+  name: item_3_key_info
+  found: true
+  start_line: 7462
+  end_line: 7496
+  word_count: 1021
+  addresses:
+  - risk
+  - K1
+  - K6
+  file: item_3_key_info.md
+- item: '4'
+  name: item_4_business
+  found: true
+  start_line: 7496
+  end_line: 7848
+  word_count: 4961
+  addresses:
+  - scope
+  - Q1
+  - K3
+  - K5
+  file: item_4_business.md
+- item: '5'
+  name: item_5_mda
+  found: true
+  start_line: 7850
+  end_line: 8026
+  word_count: 3429
+  addresses:
+  - Q1
+  - K2
+  - K4
+  - K5
+  file: item_5_mda.md
+- item: '11'
+  name: item_11_quant_risk
+  found: true
+  start_line: 8354
+  end_line: 8363
+  word_count: 147
+  addresses:
+  - risk
+  - K2
+  file: item_11_quant_risk.md
+- item: '18'
+  name: item_18_financial
+  found: true
+  start_line: 8577
+  end_line: 8650
+  word_count: 1688
+  addresses:
+  - valuation
+  - Q1
+  file: item_18_financial.md

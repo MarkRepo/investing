@@ -1,0 +1,60 @@
+source_htm: 2025_AMGN_10-K_2026-02-13.htm
+form: 10-K
+split_ok: true
+total_lines: 12411
+sections:
+- item: '1'
+  name: item_1_business
+  found: true
+  start_line: 3688
+  end_line: 4787
+  word_count: 16044
+  addresses:
+  - scope
+  - Q1
+  - K3
+  - K5
+  file: item_1_business.md
+- item: 1A
+  name: item_1a_risk
+  found: true
+  start_line: 4787
+  end_line: 5184
+  word_count: 23147
+  addresses:
+  - risk
+  - K1
+  - K6
+  file: item_1a_risk.md
+- item: '7'
+  name: item_7_mda
+  found: true
+  start_line: 5435
+  end_line: 6977
+  word_count: 12583
+  addresses:
+  - Q1
+  - K2
+  - K4
+  - K5
+  file: item_7_mda.md
+- item: 7A
+  name: item_7a_quant_risk
+  found: true
+  start_line: 6977
+  end_line: 6999
+  word_count: 1821
+  addresses:
+  - risk
+  - K2
+  file: item_7a_quant_risk.md
+- item: '8'
+  name: item_8_financial
+  found: true
+  start_line: 6999
+  end_line: 7002
+  word_count: 42
+  addresses:
+  - valuation
+  - Q1
+  file: item_8_financial.md

@@ -6,6 +6,48 @@
 
 ---
 
+## ⚠️ 前置自检：是否从 workflow 01 顺序推进而来？
+
+workflow 01 已演进到自动化收料阶段（`auto_download_annual_reports` + `01-prescan` 全自动入库），如果你**刚从 01 推进过来**，下面 Step 0-4 大概率全跳过——脚本会自己判：
+
+```bash
+python3 << 'EOF'
+from prism.scripts.web_prescan import should_run_step0
+from prism.scripts.manifest import list_pending_mineru, material_count
+
+slug = '{slug}'
+variant = '{variant}'
+
+step0 = should_run_step0(slug, variant)
+mineru = list_pending_mineru(slug, variant)
+counts = material_count(slug, variant)
+
+print(f"Step 0 (web 增量扫): {'跳过' if not step0['should_run'] else '需跑 recency_days='+str(step0['recency_days'])} — {step0['reason']}")
+print(f"Step 4.5 (mineru): {'跳过' if not mineru else f'有 {len(mineru)} 待办'}")
+print(f"manifest 现状: total={counts['total']} unprocessed={counts['unprocessed']}")
+print()
+print("inbox 残料检查（如果非空可能有未登记新文件，需要跑 Step 1-4）:")
+import subprocess, os
+for d in [f'prism/topics/{slug}/inbox/manual', 'prism/inbox/manual', 'prism/inbox/auto']:
+    if os.path.isdir(d):
+        files = [f for f in os.listdir(d) if not f.startswith('.')]
+        print(f"  {d}: {len(files)} 个文件")
+EOF
+```
+
+**主 agent 行为约束**：
+- 看到 `inbox/web-search/` 里有大量 `.md` 文件 **不要怀疑**——那是 workflow 01 的 prescan 自己写的，已经通过 `register_web_search_batch` 全部登记进 manifest 了
+- 看到 `materials/` 里有 23 份 `.PDF` **不要怀疑**——那是 `auto_download_annual_reports` 抓的，已经通过 `add_material` 登记完
+- 看到 Step 0-4 脚本都判"跳过 / 0 待办" **不要硬找事做**（如重跑 prescan / 反复 read_manifest / 再 add_material 一遍）
+- **Step 5.7 / 5.8 / 6 是 workflow 02 的真正价值兑现点**，不能因为前面"没事做"就连带跳过
+
+**只有以下情况才需要从 Step 0 跑起**：
+- 用户在两次 workflow 之间手放新 PDF 到 `prism/topics/{slug}/inbox/` 或全局 `prism/inbox/manual/`
+- 上次 prescan 距今 > 7 天（脚本自判）
+- workflow 01 因故没跑 auto-download
+
+---
+
 ## Step 0：web-search 智能增量扫描（**修 S1：脚本判 recency**）
 
 先调脚本判断是否要跑、跑就用多少 recency_days；不再由 LLM 拍脑袋默认 30。

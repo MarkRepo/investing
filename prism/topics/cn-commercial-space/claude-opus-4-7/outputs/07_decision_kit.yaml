@@ -1,0 +1,120 @@
+slug: cn-commercial-space
+variant: claude-opus-4-7
+topic_type: industry
+display_name: 中国商业航天
+ticker: ""
+generated: 2026-05-26T16:00:00+08:00
+data_freshness: 2026-04
+
+# industry type: no buy_box / position_framework / valuation_models 单标的字段
+# 按 09_industry_to_arenas 分流后由 arena topic 提供个股级 buy_box
+
+kill_criteria:
+  - id: itu_violation_priced
+    description: 2026-09-30 千帆星座在轨数 <200 颗 + 国际媒体首篇"中国低轨星座违约风险"专稿，ITU 频段实质性风险被市场首次定价
+    status: pending
+    check_at: 2026-09-30
+  - id: reusable_rocket_double_fail
+    description: 2026 Q2 朱雀三号回收再失败 + 2026 Q4 朱雀首次复用飞行失败，可回收 0→1 节点全年无突破
+    status: pending
+    check_at: 2026-12-31
+  - id: a_share_earnings_deep_fail
+    description: 2026 H1 中报 3 家以上 A 股核心标的（航天电器/中国卫星/铖昌/国博/海格/上海瀚讯）商业航天业务收入 yoy <30%
+    status: pending
+    check_at: 2026-08-31
+  - id: landspace_ipo_failed
+    description: 蓝箭 IPO 2026 年内流产或推迟到 2027+，5 家民营 IPO 竞速叙事破产
+    status: pending
+    check_at: 2026-12-31
+  - id: private_share_squeeze_central
+    description: 2026 Q4 之后银河航天/时空道宇 IPO 披露国网订单份额 >15%，中国卫星央企份额被实质性挤压
+    status: pending
+    check_at: 2027-06-30
+  - id: us_sanctions_expansion
+    description: 美国对中国商业航天扩大制裁（如禁运 T/R 芯片 IP 或限制 SpaceX 技术对中国转移）
+    status: pending
+    check_at: 2027-12-31
+  - id: haige_loss_systemic
+    description: 海格通信 2026 H1 中报亏损扩大到 -10 亿+ 或被 ST，业绩深度证伪从"个案"切到"系统性"
+    status: pending
+    check_at: 2026-08-31
+
+signposts:
+  - date: 2026-06-30
+    event: 朱雀三号 H1 遥二箭回收试验
+    bull_signal: 软着陆成功
+    bear_signal: 再败
+    triggered: null
+  - date: 2026-08-31
+    event: 6 家 A 股核心标的中报
+    bull_signal: 商业航天收入 yoy >100%
+    bear_signal: <50%
+    triggered: null
+  - date: 2026-09-30
+    event: 千帆星座在轨数
+    bull_signal: ≥300 颗（月均 18-20 发射节奏）
+    bear_signal: <200 颗（ITU 反向定价启动）
+    triggered: null
+  - date: 2026-09-30
+    event: 长十号乙第二次海上回收发射
+    bull_signal: 进入常态化
+    bear_signal: 仍是单次试验
+    triggered: null
+  - date: 2026-10-31
+    event: 中国卫星 Q3 季报净利率
+    bull_signal: ">1.5%（修复迹象）"
+    bear_signal: "<0.5%（持续低位）"
+    triggered: null
+  - date: 2026-12-31
+    event: 朱雀三号首次复用飞行
+    bull_signal: 一级软着陆 + 复用入轨成功
+    bear_signal: 再败
+    triggered: null
+  - date: 2026-12-31
+    event: 双曲线三号 2026 年底首飞
+    bull_signal: 成功 + 海上回收尝试
+    bear_signal: 推迟
+    triggered: null
+  - date: 2026-12-31
+    event: 蓝箭 IPO 上会/过会
+    bull_signal: 发行 PE 80-150x 区间
+    bear_signal: 推迟或流产
+    triggered: null
+  - date: 2026-12-31
+    event: 海南商发二期 60+ 次年发射能力
+    bull_signal: 投运按时
+    bear_signal: 推迟
+    triggered: null
+  - date: 2027-02-28
+    event: 政府工作报告口径
+    bull_signal: 维持"新型支柱产业"
+    bear_signal: 降级
+    triggered: null
+  - date: 2027-03-31
+    event: 长十号乙常态化海上回收
+    bull_signal: 是
+    bear_signal: 否
+    triggered: null
+  - date: 2027-06-30
+    event: 2026 年报披露完成
+    bull_signal: 多家业绩兑现 + 中国卫星净利率回升
+    bear_signal: 持续低位
+    triggered: null
+  - date: 2027-12-31
+    event: 美国对商业航天政策动向
+    bull_signal: 未扩大制裁
+    bear_signal: 扩大制裁
+    triggered: null
+  - date: 2029-12-31
+    event: ITU 季度审查（1300 颗节点）
+    bull_signal: 未触发频段回收
+    bear_signal: 触发
+    triggered: null
+
+cluster_tags:
+  - china-commercial-space
+  - china-defense
+  - low-orbit-satellite
+  - reusable-rocket
+  - ipo-rush
+  - itu-spectrum-risk

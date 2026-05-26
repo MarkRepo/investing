@@ -163,6 +163,8 @@ for f in list_failed_outputs('{slug}', '{variant}'):
    - 批 2：05_historical_mirrors + 06_risk_blindspots + 07_decision_kit + 07_decision_kit.yaml + 08_living_feed（5 份并行）
    - 批 3：thesis_v1.md + 状态注册 Bash（2 个调用并行）
 
+   ⚠️ **写 07_decision_kit.yaml 时必须严格按 07-decision-kit.md Step 3.5 schema**——dashboard.py / 监控工具直接消费，禁自创字段。必填：`ticker / display_name / topic_type / buy_box / position_framework / valuation_models / kill_criteria / signposts / cluster_tags`。常见错误：自创 `thesis_strength / killer_questions / price_actions / trim_triggers / scenarios` 字段（dashboard 不读，导致该 topic 整行为空）。critic 三口径对账等额外字段可追加在必填字段之后，与标准 schema 并存。详见下方 dispatch prompt 模板第 7 步内嵌的字段清单。
+
    **每批次开始前必做**（廉价且重要）：
 
    - **Read `outputs/_findings_index.md`**（已落盘，~3K token）—— 即使中间发生过 compact，看一眼索引也能立即定位本批次需要哪些 mat_id
@@ -263,6 +265,21 @@ print(format_findings_for_prompt('{slug}', '{variant}'))
 5. 读 05-mirrors.md → 产 05_historical_mirrors
 6. 读 06-risks.md → 产 06_risk_blindspots
 7. 读 07-decision-kit.md → 产 07_decision_kit（同时产 07_decision_kit_yaml 用 ```yaml 块）
+
+   ⚠️ **07_decision_kit_yaml 是 dashboard / 监控工具直接消费的 sidecar，schema 严格**——必须按 07-decision-kit.md Step 3.5 模板的字段名照填，**禁止自创字段**（如 thesis_strength / killer_questions / price_actions / trim_triggers / scenarios 等是禁用的，请使用模板里的 valuation_models / kill_criteria / signposts 等标准字段）。dashboard.py 只读模板字段；自创字段会让该 topic 在 dashboard 行整段为空。
+
+   **必填字段清单（company type）**：
+   - `slug` / `variant` / `topic_type` / `display_name` / `ticker` (`SSE_xxx` / `SZSE_xxx` / `HKEX_xxx` / `NASDAQ_xxx` / `NYSE_xxx` 等格式，非 company 留 `""`)
+   - `generated` (ISO8601) / `data_freshness` (期次)
+   - `buy_box` (含 `strong_buy_max` / `accumulate_min` / `accumulate_max` / `hold_min` / `hold_max` / `current_price` / `price_as_of` / `current_zone`)
+   - `position_framework` (`initial_max_pct` / `full_max_pct` / `add_ladder_prices` / `max_cluster_pct`)
+   - `valuation_models` (list of `{name, label, bull_fair_value, base_fair_value, bear_fair_value}`)
+   - `kill_criteria` (list of `{id, description, status, check_at}`)
+   - `signposts` (list of `{date, event, bull_signal, bear_signal, triggered}`)
+   - `cluster_tags` (list of slug-style 标签)
+
+   **若需保留 critic 三口径对账等额外字段**（如 `thesis_strength` / `sotp_npv` / `reconciliation`），追加在标准字段后即可，与必填字段并存不冲突。
+
 8. 读 08-feed.md → 产 08_living_feed
 9. 产 thesis_v1（4 段：① 核心 thesis + 强度评分 / ② 支持理由 / ③ 反方观点 / ④ K1-K5 现状；与 workflow 00 thesis_v0 段结构一致，**不再单列 V# 验证项段**）
 

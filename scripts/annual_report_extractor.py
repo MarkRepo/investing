@@ -64,6 +64,51 @@ _SKIP_KEYWORDS = [
     "非经常性损益",
 ]
 
+# 港股 / 海外 PDF 年报的英文 TOC keywords（小写比对）
+_INCLUDE_KEYWORDS_EN = [
+    "management discussion",
+    "md&a",
+    "business highlights",
+    "business review",
+    "business overview",
+    "operating review",
+    "operations review",
+    "operational review",
+    "chairman",
+    "ceo statement",
+    "letter to shareholder",
+    "letter from",
+    "principal risks",
+    "risk factors",
+    "strategic report",
+    "strategy",
+    "outlook",
+    "future development",
+    "research and development",
+    "r&d update",
+    "report of directors",
+]
+_SKIP_KEYWORDS_EN = [
+    "financial highlights",
+    "financial summary",
+    "financial position",
+    "financial statements",
+    "consolidated statement",
+    "cash flow",
+    "notes to",
+    "auditor",
+    "corporate governance",
+    "directors and senior management",
+    "five year",
+    "definitions",
+    "cover",
+    "contents",
+    "company profile",
+    "corporate information",
+    "shareholder information",
+    "remuneration",
+]
+
 # Q季报 TOC 关键词集（与年报分开，因为季报 TOC 短且章节命名不同）
 _QUARTERLY_INCLUDE_KEYWORDS = [
     "主要财务数据",
@@ -99,11 +144,18 @@ class Section(NamedTuple):
 
 def _should_include(title: str, quarterly: bool = False) -> bool:
     t = title.replace(" ", "")
+    t_lower = title.lower()
     skip_kw = _QUARTERLY_SKIP_KEYWORDS if quarterly else _SKIP_KEYWORDS
     include_kw = _QUARTERLY_INCLUDE_KEYWORDS if quarterly else _INCLUDE_KEYWORDS
     if any(k in t for k in skip_kw):
         return False
-    return any(k in t for k in include_kw)
+    if not quarterly and any(k in t_lower for k in _SKIP_KEYWORDS_EN):
+        return False
+    if any(k in t for k in include_kw):
+        return True
+    if not quarterly and any(k in t_lower for k in _INCLUDE_KEYWORDS_EN):
+        return True
+    return False
 
 
 def _build_sections(toc: list, total_pages: int) -> list[Section]:
@@ -125,20 +177,109 @@ def _build_sections(toc: list, total_pages: int) -> list[Section]:
     return sections
 
 
+def _table_to_markdown(rows: list[list]) -> str:
+    """Convert list-of-lists table to markdown table syntax.
+    Pads short rows, treats None as empty, escapes pipe, collapses cell newlines.
+    """
+    if not rows:
+        return ""
+    cleaned = [
+        [(str(c) if c is not None else "").replace("\n", " ").replace("|", "/").strip() for c in r]
+        for r in rows
+    ]
+    n_cols = max(len(r) for r in cleaned)
+    cleaned = [r + [""] * (n_cols - len(r)) for r in cleaned]
+    header = "| " + " | ".join(cleaned[0]) + " |"
+    sep = "| " + " | ".join(["---"] * n_cols) + " |"
+    body = "\n".join("| " + " | ".join(r) + " |" for r in cleaned[1:])
+    return f"{header}\n{sep}\n{body}" if body else f"{header}\n{sep}"
+
+
 def _extract_page_text(doc: pymupdf.Document, start: int, end: int) -> str:
-    """Extract text from pages [start, end] (1-based, inclusive)."""
+    """Extract text from pages [start, end] (1-based, inclusive).
+    Tables (via PyMuPDF find_tables) are emitted as markdown and inserted
+    at their y-position; text blocks falling inside a table bbox are suppressed
+    to avoid duplication.
+    """
     parts = []
     for p in range(start - 1, min(end, doc.page_count)):   # convert to 0-based
         page = doc[p]
-        text = page.get_text("text")
-        if text.strip():
-            parts.append(text)
+        try:
+            tabs = page.find_tables().tables
+        except Exception:
+            tabs = []
+
+        if not tabs:
+            text = page.get_text("text")
+            if text.strip():
+                parts.append(text)
+            continue
+
+        blocks = page.get_text("blocks")  # (x0, y0, x1, y1, text, block_no, block_type)
+        table_bboxes = [tab.bbox for tab in tabs]
+
+        def _inside_table(x0: float, y0: float, x1: float, y1: float) -> bool:
+            cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+            for tx0, ty0, tx1, ty1 in table_bboxes:
+                if tx0 <= cx <= tx1 and ty0 <= cy <= ty1:
+                    return True
+            return False
+
+        items: list[tuple[float, str]] = []
+        for b in blocks:
+            if len(b) < 5:
+                continue
+            x0, y0, x1, y1, text = b[0], b[1], b[2], b[3], b[4]
+            if not text or not text.strip():
+                continue
+            if _inside_table(x0, y0, x1, y1):
+                continue
+            items.append((y0, text.rstrip()))
+
+        for tab in tabs:
+            rows = tab.extract()
+            if not rows or len(rows) < 2:
+                continue
+            md = _table_to_markdown(rows)
+            if md:
+                items.append((tab.bbox[1], f"\n{md}\n"))
+
+        items.sort(key=lambda x: x[0])
+        if items:
+            parts.append("\n".join(c for _, c in items))
     return "\n".join(parts)
 
 
 def _clean_text(text: str) -> str:
     """Remove excessive blank lines."""
     return re.sub(r"\n{3,}", "\n\n", text).strip()
+
+
+def _text_heading_fallback(doc: pymupdf.Document) -> list[tuple[int, str, int]]:
+    """无 PDF outline 时，从正文文本扫"第N节 标题"作章节锚点。
+
+    返回与 doc.get_toc() 兼容的 [(level, title, page), ...] 结构。
+    每个 unique heading 取**最后一次出现**作 body anchor（首次通常在 TOC 页）。
+    """
+    heading_re = re.compile(r"^第\s*[一二三四五六七八九十百\d]+\s*节\s*\S[^\n]*", re.MULTILINE)
+    occurs: dict[str, list[int]] = {}
+    for i in range(doc.page_count):
+        txt = doc[i].get_text("text")
+        for m in heading_re.finditer(txt):
+            line = m.group(0).strip()
+            # 标准化 key：仅保留"第N节 第一个词"避免空格/换行差异
+            norm = re.match(r"^(第\s*[一二三四五六七八九十百\d]+\s*节)\s*(\S+)", line)
+            if not norm:
+                continue
+            key = f"{norm.group(1).replace(' ', '')} {norm.group(2)}"
+            occurs.setdefault(key, []).append(i + 1)  # 1-based page
+
+    if not occurs:
+        return []
+    # body anchor = 最后一次出现页（TOC 在最前）
+    toc_like = [(1, k, max(pages)) for k, pages in occurs.items()]
+    toc_like.sort(key=lambda x: x[2])
+    return toc_like
 
 
 def extract(
@@ -148,6 +289,13 @@ def extract(
     """Return {section_title: extracted_text} for investment-relevant sections."""
     doc = pymupdf.open(str(pdf_path))
     toc = doc.get_toc()
+
+    if not toc:
+        # 无 PDF outline 时，先尝试从文本提"第N节"heading 兜底
+        toc = _text_heading_fallback(doc)
+        if toc:
+            log.info("No PDF outline in %s — using text-heading fallback (%d sections)",
+                     pdf_path.name, len(toc))
 
     if not toc:
         log.warning("No TOC found in %s — falling back to full-text extraction", pdf_path.name)

@@ -3,7 +3,7 @@ display_name: GLP-1 减肥药
 type: arena
 created: '2026-05-26T03:25:32.952761+00:00'
 status: active
-stage: 01-roadmap-pending
+stage: 05-critic-review
 parent_topic: null
 monitoring_tier: dormant
 concepts: []
@@ -13,84 +13,516 @@ scope:
   depth: deep
   short_name: GLP-1 减肥药
   search_terms:
-    - GLP-1 销售放量
-    - 司美格鲁肽专利
-    - 国内 GLP-1 药企
+  - GLP-1 销售放量
+  - 司美格鲁肽专利
+  - 国内 GLP-1 药企
 outputs_state:
   01_business_panorama:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T08:37:17.716187+00:00'
     status: pending
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-03c0d4
+    - mat-0ed0b9
+    - mat-11a269
+    - mat-16065f
+    - mat-1f8d3f
+    - mat-1f9505
+    - mat-20420a
+    - mat-20e63b
+    - mat-214fbe
+    - mat-25971d
+    - mat-2a2c37
+    - mat-2bbc64
+    - mat-31e7e6
+    - mat-358505
+    - mat-36eaeb
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-524100
+    - mat-557b1c
+    - mat-55c05b
+    - mat-5804fb
+    - mat-5b9ef4
+    - mat-5d9b4d
+    - mat-606af8
+    - mat-60e1ab
+    - mat-653869
+    - mat-6672e4
+    - mat-69b291
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-6f79cc
+    - mat-7a6003
+    - mat-7edea3
+    - mat-841512
+    - mat-8a80f2
+    - mat-92bc1e
+    - mat-a070ec
+    - mat-a29026
+    - mat-a9d8a8
+    - mat-ab8919
+    - mat-c11032
+    - mat-c6ac67
+    - mat-cb3706
+    - mat-cc70d1
+    - mat-ce4112
+    - mat-d16d2f
+    - mat-d45d79
+    - mat-d48cc8
+    - mat-dc8a8e
+    - mat-de8d68
+    - mat-dfd8f0
+    - mat-e2622d
+    - mat-e2e914
+    - mat-e84be3
+    - mat-e8d389
+    - mat-ef091e
+    - mat-f0c90b
+    - mat-f38030
+    - mat-fba5b9
     last_error: null
   02_cycle_positioning:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T08:37:17.729230+00:00'
     status: pending
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-11a269
+    - mat-1f9505
+    - mat-20e63b
+    - mat-2bbc64
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-5b9ef4
+    - mat-606af8
+    - mat-653869
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-92bc1e
     last_error: null
   03_narrative_ecology:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T08:37:17.737516+00:00'
     status: pending
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-03c0d4
+    - mat-0ed0b9
+    - mat-11a269
+    - mat-16065f
+    - mat-1f8d3f
+    - mat-1f9505
+    - mat-20420a
+    - mat-20e63b
+    - mat-214fbe
+    - mat-25971d
+    - mat-2a2c37
+    - mat-2bbc64
+    - mat-31e7e6
+    - mat-358505
+    - mat-36eaeb
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-524100
+    - mat-557b1c
+    - mat-55c05b
+    - mat-5804fb
+    - mat-5b9ef4
+    - mat-5d9b4d
+    - mat-606af8
+    - mat-60e1ab
+    - mat-653869
+    - mat-6672e4
+    - mat-69b291
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-6f79cc
+    - mat-7a6003
+    - mat-7edea3
+    - mat-841512
+    - mat-8a80f2
+    - mat-92bc1e
+    - mat-a070ec
+    - mat-a29026
+    - mat-a9d8a8
+    - mat-ab8919
+    - mat-c11032
+    - mat-c6ac67
+    - mat-cb3706
+    - mat-cc70d1
+    - mat-ce4112
+    - mat-d16d2f
+    - mat-d45d79
+    - mat-d48cc8
+    - mat-dc8a8e
+    - mat-de8d68
+    - mat-dfd8f0
+    - mat-e2622d
+    - mat-e2e914
+    - mat-e84be3
+    - mat-e8d389
+    - mat-ef091e
+    - mat-f0c90b
+    - mat-f38030
+    - mat-fba5b9
     last_error: null
   04_implied_expectations:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T08:37:17.747503+00:00'
     status: pending
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-03c0d4
+    - mat-0ed0b9
+    - mat-11a269
+    - mat-16065f
+    - mat-1f8d3f
+    - mat-1f9505
+    - mat-20420a
+    - mat-20e63b
+    - mat-214fbe
+    - mat-25971d
+    - mat-2a2c37
+    - mat-2bbc64
+    - mat-31e7e6
+    - mat-358505
+    - mat-36eaeb
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-524100
+    - mat-557b1c
+    - mat-55c05b
+    - mat-5804fb
+    - mat-5b9ef4
+    - mat-5d9b4d
+    - mat-606af8
+    - mat-60e1ab
+    - mat-653869
+    - mat-6672e4
+    - mat-69b291
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-6f79cc
+    - mat-7a6003
+    - mat-7edea3
+    - mat-841512
+    - mat-8a80f2
+    - mat-92bc1e
+    - mat-a070ec
+    - mat-a29026
+    - mat-a9d8a8
+    - mat-ab8919
+    - mat-c11032
+    - mat-c6ac67
+    - mat-cb3706
+    - mat-cc70d1
+    - mat-ce4112
+    - mat-d16d2f
+    - mat-d45d79
+    - mat-d48cc8
+    - mat-dc8a8e
+    - mat-de8d68
+    - mat-dfd8f0
+    - mat-e2622d
+    - mat-e2e914
+    - mat-e84be3
+    - mat-e8d389
+    - mat-ef091e
+    - mat-f0c90b
+    - mat-f38030
+    - mat-fba5b9
     last_error: null
   05_historical_mirrors:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T08:37:17.760110+00:00'
     status: pending
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-2bbc64
+    - mat-3a4b6e
+    - mat-653869
+    - mat-6ddfd9
+    - mat-92bc1e
+    - mat-a070ec
+    - mat-e84be3
     last_error: null
   06_risk_blindspots:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T08:37:17.773999+00:00'
     status: pending
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-03c0d4
+    - mat-0ed0b9
+    - mat-11a269
+    - mat-16065f
+    - mat-1f8d3f
+    - mat-1f9505
+    - mat-20420a
+    - mat-20e63b
+    - mat-214fbe
+    - mat-25971d
+    - mat-2a2c37
+    - mat-2bbc64
+    - mat-31e7e6
+    - mat-358505
+    - mat-36eaeb
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-524100
+    - mat-557b1c
+    - mat-55c05b
+    - mat-5804fb
+    - mat-5b9ef4
+    - mat-5d9b4d
+    - mat-606af8
+    - mat-60e1ab
+    - mat-653869
+    - mat-6672e4
+    - mat-69b291
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-6f79cc
+    - mat-7a6003
+    - mat-7edea3
+    - mat-841512
+    - mat-8a80f2
+    - mat-92bc1e
+    - mat-a070ec
+    - mat-a29026
+    - mat-a9d8a8
+    - mat-ab8919
+    - mat-c11032
+    - mat-c6ac67
+    - mat-cb3706
+    - mat-cc70d1
+    - mat-ce4112
+    - mat-d16d2f
+    - mat-d45d79
+    - mat-d48cc8
+    - mat-dc8a8e
+    - mat-de8d68
+    - mat-dfd8f0
+    - mat-e2622d
+    - mat-e2e914
+    - mat-e84be3
+    - mat-e8d389
+    - mat-ef091e
+    - mat-f0c90b
+    - mat-f38030
+    - mat-fba5b9
     last_error: null
   07_decision_kit:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T08:37:17.789581+00:00'
     status: pending
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-03c0d4
+    - mat-0ed0b9
+    - mat-11a269
+    - mat-16065f
+    - mat-1f8d3f
+    - mat-1f9505
+    - mat-20420a
+    - mat-20e63b
+    - mat-214fbe
+    - mat-25971d
+    - mat-2a2c37
+    - mat-2bbc64
+    - mat-31e7e6
+    - mat-358505
+    - mat-36eaeb
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-524100
+    - mat-557b1c
+    - mat-55c05b
+    - mat-5804fb
+    - mat-5b9ef4
+    - mat-5d9b4d
+    - mat-606af8
+    - mat-60e1ab
+    - mat-653869
+    - mat-6672e4
+    - mat-69b291
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-6f79cc
+    - mat-7a6003
+    - mat-7edea3
+    - mat-841512
+    - mat-8a80f2
+    - mat-92bc1e
+    - mat-a070ec
+    - mat-a29026
+    - mat-a9d8a8
+    - mat-ab8919
+    - mat-c11032
+    - mat-c6ac67
+    - mat-cb3706
+    - mat-cc70d1
+    - mat-ce4112
+    - mat-d16d2f
+    - mat-d45d79
+    - mat-d48cc8
+    - mat-dc8a8e
+    - mat-de8d68
+    - mat-dfd8f0
+    - mat-e2622d
+    - mat-e2e914
+    - mat-e84be3
+    - mat-e8d389
+    - mat-ef091e
+    - mat-f0c90b
+    - mat-f38030
+    - mat-fba5b9
     last_error: null
   08_living_feed:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T08:37:17.801686+00:00'
     status: pending
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-03c0d4
+    - mat-0ed0b9
+    - mat-11a269
+    - mat-16065f
+    - mat-1f8d3f
+    - mat-1f9505
+    - mat-20420a
+    - mat-20e63b
+    - mat-214fbe
+    - mat-25971d
+    - mat-2a2c37
+    - mat-2bbc64
+    - mat-31e7e6
+    - mat-358505
+    - mat-36eaeb
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-524100
+    - mat-557b1c
+    - mat-55c05b
+    - mat-5804fb
+    - mat-5b9ef4
+    - mat-5d9b4d
+    - mat-606af8
+    - mat-60e1ab
+    - mat-653869
+    - mat-6672e4
+    - mat-69b291
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-6f79cc
+    - mat-7a6003
+    - mat-7edea3
+    - mat-841512
+    - mat-8a80f2
+    - mat-92bc1e
+    - mat-a070ec
+    - mat-a29026
+    - mat-a9d8a8
+    - mat-ab8919
+    - mat-c11032
+    - mat-c6ac67
+    - mat-cb3706
+    - mat-cc70d1
+    - mat-ce4112
+    - mat-d16d2f
+    - mat-d45d79
+    - mat-d48cc8
+    - mat-dc8a8e
+    - mat-de8d68
+    - mat-dfd8f0
+    - mat-e2622d
+    - mat-e2e914
+    - mat-e84be3
+    - mat-e8d389
+    - mat-ef091e
+    - mat-f0c90b
+    - mat-f38030
+    - mat-fba5b9
     last_error: null
   10_peer_matrix:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T08:37:17.823538+00:00'
     status: pending
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-03c0d4
+    - mat-0ed0b9
+    - mat-11a269
+    - mat-16065f
+    - mat-1f8d3f
+    - mat-1f9505
+    - mat-20420a
+    - mat-20e63b
+    - mat-214fbe
+    - mat-25971d
+    - mat-2a2c37
+    - mat-2bbc64
+    - mat-31e7e6
+    - mat-358505
+    - mat-36eaeb
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-524100
+    - mat-557b1c
+    - mat-55c05b
+    - mat-5804fb
+    - mat-5b9ef4
+    - mat-5d9b4d
+    - mat-606af8
+    - mat-60e1ab
+    - mat-653869
+    - mat-6672e4
+    - mat-69b291
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-6f79cc
+    - mat-7a6003
+    - mat-7edea3
+    - mat-841512
+    - mat-8a80f2
+    - mat-92bc1e
+    - mat-a070ec
+    - mat-a29026
+    - mat-a9d8a8
+    - mat-ab8919
+    - mat-c11032
+    - mat-c6ac67
+    - mat-cb3706
+    - mat-cc70d1
+    - mat-ce4112
+    - mat-d16d2f
+    - mat-d45d79
+    - mat-d48cc8
+    - mat-dc8a8e
+    - mat-de8d68
+    - mat-dfd8f0
+    - mat-e2622d
+    - mat-e2e914
+    - mat-e84be3
+    - mat-e8d389
+    - mat-ef091e
+    - mat-f0c90b
+    - mat-f38030
+    - mat-fba5b9
     last_error: null
 parent_materials: []
 next_actions:
-- workflow 01-build-roadmap：基于 thesis_v1 六大 Killer Question 制定详细研究路线图（K1-K6）
-- 用户收集 P0 资料（NVO/LLY 2026 Q1 季报、3 份 GLP-1 卖方深度、CMS BALANCE 实施细节）后 → workflow 02-gather-materials
-  入库
-- 收齐 P0 后 → workflow 03-extract 跑论据挖掘（重点 K1 下一代竞争 / K3 sema 净价衰减 / K5 LLY 单位营收）
-- → workflow 04-synthesize 出 8 份产出（business_panorama / value_chain / competitive_landscape
-  / financial / valuation / catalysts / scenarios / decision）
-- → workflow 05-critic-review（thesis_v1 prescan_status=full 不再受 ISSUE-001 block）
-- workflow 06-daily-monitor 监控：retatrutide TRIUMPH / CT-388 ENITH / VK2735 VANQUISH
-  / BALANCE 渗透率 / sema 国内仿制上市 / Viking 收购传闻 6 大事件流
+- workflow 04 完成：9 份产出（01-08 + 10_peer_matrix）+ thesis_v2.md + _synthesis_brief.md
+  全部落盘
+- thesis_v2 重大修订：信达从主题性 → Tier 1 重仓 / NVO 7.2mg 追平 tirz / LLY 量价剪刀差正向实证 / oral GLP-1
+  四家同台
+- 推荐路径：「评审 global-glp1-obesity」→ workflow 05-critic-review 对 thesis_v2 反方论据系统检验
+- 监控路径：「监控 global-glp1-obesity」→ workflow 06-daily-monitor 跟踪 6 大事件流（reta TRIUMPH-3
+  / VK2735 VANQUISH / CT-388 ENITH / BALANCE Bridge / sema 仿制 / Viking 收购）
+- 深挖路径：「深挖 global-glp1-obesity 的 K1」/ 「深挖 K4」→ workflow 07-drilldown
+- 决策记录路径：「记录决策 global-glp1-obesity」→ workflow 99-decision-record
 user_todos:
 - task: NVO 2025 全年报 + 2026 Q1 6-K（含 Wegovy/Ozempic 季度销售拆分 + 美国 net price + DTC NovoCare
     实际渗透 + capex）
@@ -100,7 +532,7 @@ user_todos:
   - K3
   - K5
   source_hint: novonordisk.com IR / 雪球 NVO 财报中文 / SEC EDGAR 6-K
-  status: pending
+  status: in_progress
 - task: LLY 2025 10-K + 2026 Q1 10-Q（含 Mounjaro/Zepbound 销售拆分 + 美国 net price + LillyDirect
     DTC 实际占比 + 产能）
   priority: P0
@@ -108,7 +540,7 @@ user_todos:
   addresses:
   - K5
   source_hint: investor.lilly.com / SEC EDGAR 0000059478
-  status: pending
+  status: in_progress
 - task: 1-2 份 GS/MS/UBS/中金 GLP-1 全球深度研报（2025 H2-2026 H1，含 BALANCE 敏感性 + 第二梯队估值对比）
   priority: P0
   info_tier: half_public
@@ -132,7 +564,7 @@ user_todos:
   addresses:
   - K4
   source_hint: 信达官网 / 港交所 / 米内网
-  status: pending
+  status: in_progress
 - task: 司美格鲁肽美国 PTE 争议 + ANDA 申报追踪；中国九源/华东/齐鲁/正大天晴 sema 仿制 2026-2027 上市时点 + 价格
   priority: P1
   info_tier: half_public
@@ -155,7 +587,7 @@ user_todos:
   addresses:
   - K4
   source_hint: 恒瑞 IR / kailera.com / Endpoints / FierceBiotech
-  status: pending
+  status: in_progress
 - task: NVO 2025-12 oral Wegovy 减重上市后实际销售（美国+欧洲）+ NovoCare DTC 实际订单量 + 全球分国家定价表
   priority: P1
   info_tier: half_public
@@ -163,7 +595,7 @@ user_todos:
   - K3
   - K5
   source_hint: NVO IR / IQVIA / Symphony Health
-  status: pending
+  status: in_progress
 - task: 2024-2026 GLP-1 二阶冲击实证（减肥手术 / 食品 / OSA 设备 / 透析）实际营收数据
   priority: P2
   info_tier: half_public
@@ -178,7 +610,7 @@ user_todos:
   addresses:
   - K3
   source_hint: SEC EDGAR HIMS / hims.com IR
-  status: pending
+  status: in_progress
 - task: Viking / Structure / Roche CT-388 / Amgen MariTide 季度更新 + 收购传闻追踪（K6）
   priority: P1
   info_tier: half_public
@@ -186,14 +618,26 @@ user_todos:
   - K1
   - K6
   source_hint: Endpoints / STAT / FierceBiotech / 各公司 IR
+  status: in_progress
+- task: 资料提取完成：98 份资料全部 mark_processed（含 28 份低 ROI sec-section 无独立 finding）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 产出生成完成（9 份），可进入 critic-review / daily-monitor / drilldown 任一路径
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
   status: pending
 monitoring:
   enabled: false
   cadence: daily
 critic: null
 thesis:
-  current_version: 1
-  last_updated: '2026-05-26T05:30:40.625040+00:00'
+  current_version: 2
+  last_updated: '2026-05-26T08:37:17.843627+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -211,6 +655,10 @@ thesis:
       中国 sema 仿制实际开闸（九源 JY29-2 减重 2026-02 受理）+ Roche CT-388 22.5% 实质入场 + HRS9531 真出海
       Kailera $600M 资金。强度 7/10 保持但反方风险加重；加 K6 第二梯队收购
     prescan_status: full
-  prescan_status: full
-  prescan_failure_reason: WebSearch 10/10 静默返空，转 WebFetch Wikipedia 兜底 10 份；恒瑞/Viking/Hims/CMS
-    final rule/华东等关键缺口仍未校准
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-26T08:37:17.843639+00:00'
+    summary: 长 LLY + 长 NVO + 长 Innovent 三轨 + 期权式 VKTX + 边际持 恒瑞。GLP-1 减肥药 2026-2030
+      仍是医药板块最大 alpha；信达 2025 拐点 / LLY 量价剪刀差实证 / NVO Wegovy 7.2mg 追平 / 第二梯队 Phase 3
+      顶线 2026-27 集中读出。强度 7.5/10。
+    prescan_status: full

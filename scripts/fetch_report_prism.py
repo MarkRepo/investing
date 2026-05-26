@@ -44,8 +44,12 @@ _HEADERS = {"User-Agent": "Mozilla/5.0", "Content-Type": "application/x-www-form
 _CATEGORY = {
     "annual":    "category_ndbg_szsh",
     "semi":      "category_bndbg_szsh",
-    "quarterly": "category_sjdbg_szsh",
+    "q1":        "category_yjdbg_szsh",    # 一季度报告（A 股截止 4-30）
+    "q3":        "category_sjdbg_szsh",    # 三季度报告（A 股截止 10-31）
+    # "quarterly" 由 fetch() 内部 fan-out 查 q1+q3 合并，不在此映射
 }
+
+_QUARTERLY_CATEGORIES = ("q1", "q3")
 
 _INBOX_AUTO = Path(__file__).parent.parent / "prism" / "inbox" / "auto"
 
@@ -415,8 +419,8 @@ def fetch_sec(
         if slug:
             report_type = _SEC_FORM_TO_REPORT_TYPE.get(form, "quarterly")
             parent_id, resolved_variant = _register_in_prism(slug, dest, report_type, company_name, variant)
-            # 10-K / 10-Q：尝试按 Item 切片，并把每节登记为 parent_mat 子条目
-            if parent_id and resolved_variant and form in {"10-K", "10-Q"} and dest.suffix.lower() in {".htm", ".html"}:
+            # 10-K / 10-Q / 20-F：尝试按 Item 切片，并把每节登记为 parent_mat 子条目
+            if parent_id and resolved_variant and form in {"10-K", "10-Q", "20-F"} and dest.suffix.lower() in {".htm", ".html"}:
                 try:
                     from prism.scripts.sec_section_split import split_file
                     from prism.scripts.manifest import add_sec_sections_from_meta
@@ -437,6 +441,7 @@ def fetch(
     year: int | None = None,
     slug: str | None = None,
     variant: str | None = None,
+    quarter: int | None = None,
 ) -> Path:
     """Download a financial report. Returns the local file path.
 
@@ -448,6 +453,10 @@ def fetch(
         KR (006400 / KRX_006400) → DART
         JP TDnet (5019 / TSE_5019) → TDnet 決算短信 (zero-key, 30-day window)
         JP EDINET (EDINET_E00040) → EDINET v2 API (需要 EDINET_API_KEY)
+
+    quarter (only for report_type='quarterly' + cninfo): 1 or 3 to force Q1/Q3;
+        None → fan-out 查 Q1+Q3 两个 category，按 announcementTime 取最新一份（避免
+        cninfo 一/三季报分属不同 category 导致 Q1 找不到）。
     """
     market = _route(market_ticker)
 
@@ -502,8 +511,18 @@ def fetch(
     print(f"\033[33m⚑ COMPANY RESOLVED: {company_name} (ticker {ticker}) — verify before proceeding\033[0m",
           file=sys.stderr)
 
-    log.info("Fetching %s report list for %s (%s)…", report_type, company_name, code)
-    reports = _list_reports(code, org_id, column, _CATEGORY[report_type])
+    if report_type == "quarterly":
+        # cninfo 一季报 (yjdbg) / 三季报 (sjdbg) 分属不同 category — 必须 fan-out
+        if quarter is not None and quarter not in (1, 3):
+            raise ValueError(f"quarter={quarter!r} 非法，必须为 1 或 3 或 None（自动取最新）")
+        cats = (f"q{quarter}",) if quarter else _QUARTERLY_CATEGORIES
+        log.info("Fetching quarterly (%s) report list for %s (%s)…", "+".join(cats), company_name, code)
+        reports: list[dict] = []
+        for ck in cats:
+            reports.extend(_list_reports(code, org_id, column, _CATEGORY[ck]))
+    else:
+        log.info("Fetching %s report list for %s (%s)…", report_type, company_name, code)
+        reports = _list_reports(code, org_id, column, _CATEGORY[report_type])
 
     # Find the target year
     matches = [r for r in reports if _extract_year(r.get("announcementTitle", "")) == year]
@@ -523,8 +542,10 @@ def fetch(
             f"No {report_type} report found for {year}. {avail_str}{hint}"
         )
 
-    # Take the earliest (first-published, non-correction) version
-    target = sorted(matches, key=lambda r: r["announcementTime"])[0]
+    # quarterly fan-out（quarter=None）：跨 Q1/Q3 时取最新一份（Q3 已披露则优先 Q3）
+    # 其他场景（annual/semi/quarterly 单 quarter）：保留原"取首发版"语义（过滤后的最早披露）
+    fan_out = report_type == "quarterly" and quarter is None
+    target = sorted(matches, key=lambda r: r["announcementTime"], reverse=fan_out)[0]
     log.info("Found: %s", target["announcementTitle"])
 
     file_path = _download(target, dest_dir, company_name, ticker=ticker, report_type=report_type)
@@ -541,12 +562,13 @@ def fetch_many(
     report_type: str = "annual",
     slug: str | None = None,
     variant: str | None = None,
+    quarter: int | None = None,
 ) -> list[Path]:
     """Batch-fetch multiple years of a single report type. CN only (SEC has its own pagination)."""
     paths: list[Path] = []
     for y in years:
         try:
-            p = fetch(market_ticker, report_type, y, slug, variant)
+            p = fetch(market_ticker, report_type, y, slug, variant, quarter=quarter)
             if p:
                 paths.append(p)
         except ValueError as e:
@@ -575,16 +597,21 @@ def main() -> None:
                         help="Prism topic slug — registers manifest + updates user_todos")
     parser.add_argument("--variant", default=None,
                         help="Model variant — registers in this variant's manifest")
+    parser.add_argument("--quarter", type=int, choices=[1, 3], default=None,
+                        help="Force Q1 or Q3 (only for --type quarterly, CN cninfo only). "
+                             "Default: fan-out 查 Q1+Q3 取最新。")
     args = parser.parse_args()
 
     try:
         if args.years:
             years = _parse_years(args.years)
-            paths = fetch_many(args.ticker, years, args.type, args.slug, args.variant)
+            paths = fetch_many(args.ticker, years, args.type, args.slug, args.variant,
+                               quarter=args.quarter)
             for p in paths:
                 print(p)
         else:
-            path = fetch(args.ticker, args.type, args.year, args.slug, args.variant)
+            path = fetch(args.ticker, args.type, args.year, args.slug, args.variant,
+                         quarter=args.quarter)
             print(path)
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)

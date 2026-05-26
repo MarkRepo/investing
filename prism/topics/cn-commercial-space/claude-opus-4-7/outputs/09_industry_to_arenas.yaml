@@ -1,0 +1,138 @@
+slug: cn-commercial-space
+variant: claude-opus-4-7
+topic_type: industry
+display_name: 中国商业航天
+generated: 2026-05-26T16:00:00+08:00
+data_freshness: 2026-04
+
+arenas:
+  - name: 民营火箭（5 家 IPO 竞速）
+    suggested_slug: cn-private-rockets
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 3
+      valuation: 2
+      cycle: 5
+      composite: 4.3
+    tier: deep
+    tier_reason: 5 家民营同步 IPO + 可回收技术 0→1 关键窗口 + 一二级估值倒挂可能引发再估值
+    upgrade_triggers:
+      - 已在 stub topic cn-private-rockets L1-L4 跟踪
+    monitor_metrics:
+      - 已在 stub topic cn-private-rockets 跟踪（朱雀三号 H1 + Q4 节点 + 蓝箭 IPO 进度）
+    revive_condition: null
+
+  - name: A 股商业航天上游元器件
+    suggested_slug: cn-space-upstream-components
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 4
+      valuation: 3
+      cycle: 4
+      composite: 3.8
+    tier: deep
+    tier_reason: 业绩兑现端最确定（铖昌 H1 +180% / 航天电器订单 +52%）+ T/R 三足 + 连接器单龙头护城河深
+    upgrade_triggers:
+      - 已在 stub topic cn-space-upstream-components L1-L4 跟踪
+    monitor_metrics:
+      - 已在 stub topic 跟踪（铖昌 / 航天电器 / 紫光国微 / 复旦微电 季报）
+    revive_condition: null
+
+  - name: A 股商业航天中游卫星整星
+    suggested_slug: cn-space-satellite-manufacturers
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 4
+      valuation: 1
+      cycle: 3
+      composite: 3.2
+    tier: watch
+    tier_reason: 中国卫星 PE 859-1031x + 净利率 0.58% 估值修复需 24-36 个月；短期 alpha 不足
+    upgrade_triggers:
+      - 中国卫星 Q3 季报净利率回升至 >1.5%
+      - 中国卫星股价回调至 PE 400x 以下
+      - 银河航天/时空道宇 IPO 披露国网订单份额 <10%（央企份额未被实质挤压）
+    monitor_metrics:
+      - 中国卫星季度净利率 + 商业航天产品毛利率
+      - 海南超工厂月度交付数（vs 2026 目标 540-720 颗）
+    revive_condition: null
+
+  - name: 低轨星座运营（千帆/GW/中国卫通）
+    suggested_slug: cn-leo-constellation-operators
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 5
+      competition: 5
+      valuation: 2
+      cycle: 2
+      composite: 3.4
+    tier: watch
+    tier_reason: 千帆 ITU 缺口 83% 是 thesis 最大未定价空头；中国卫通已纳 07 watchlist 防御性配置；GW 国资非上市
+    upgrade_triggers:
+      - 2026-09 千帆在轨数 ≥300 颗（ITU 反向风险被压制）
+      - 中国卫通 2026 H1 中报营收 yoy >10%
+      - 垣信卫星 IPO 启动
+    monitor_metrics:
+      - 千帆月度发射节奏 + 在轨数
+      - GW 月度发射节奏 + 在轨数
+      - ITU 季度审查公告
+      - 中国卫通季报营收/净利率
+    revive_condition: null
+
+  - name: 商业航天发射场基建
+    suggested_slug: cn-space-launchpad-infra
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 1
+      growth: 3
+      competition: 4
+      valuation: 4
+      cycle: 4
+      composite: 3.0
+    tier: watch
+    tier_reason: 海南商发龙头但二期投运在 2026 年底短期催化已耗散；A 股直接受益标的少
+    upgrade_triggers:
+      - 海南商发二期 60+ 次年发射能力 2026 年底按时投运
+      - 海南文昌国际航天城上市公司化
+      - 山东/北京/上海发射场基建出现具体上市公司受益
+    monitor_metrics:
+      - 海南商发月度发射数 + 二期建设进度
+      - 海南文昌国际航天城官网新闻
+    revive_condition: null
+
+  - name: 下游应用（手机直连 / 卫星遥感）
+    suggested_slug: cn-space-downstream-apps
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 2
+      competition: 2
+      valuation: 1
+      cycle: 2
+      composite: 1.8
+    tier: eliminated
+    tier_reason: 手机直连证据稀薄 + 卫星遥感 2025 业绩深度证伪（中科星图 -17.83% / *ST 航图 -71.57% / ST 创意 -46.84%）+ C 端尚未规模化
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 工信部+七部门发布"卫星通信手机直连终端管理规定"并启动牌照发放，或中国联通/移动 2027 财报披露卫星通信用户 >100 万，或中科星图/航天宏图业绩出现连续 2 个季度 yoy >20% 反弹
+
+cluster_tags:
+  - china-commercial-space
+  - china-defense
+  - low-orbit-satellite
+  - reusable-rocket
+  - ipo-rush
+  - itu-spectrum-risk

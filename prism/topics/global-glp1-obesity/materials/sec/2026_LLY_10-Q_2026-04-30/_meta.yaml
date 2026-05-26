@@ -1,0 +1,47 @@
+source_htm: 2026_LLY_10-Q_2026-04-30.htm
+form: 10-Q
+split_ok: true
+total_lines: 3139
+sections:
+- item: PartI_1
+  name: item_1_financial
+  found: true
+  start_line: 1337
+  end_line: 2700
+  word_count: 7060
+  addresses:
+  - valuation
+  - Q1
+  file: item_1_financial.md
+- item: PartI_2
+  name: item_2_mda
+  found: true
+  start_line: 2700
+  end_line: 2998
+  word_count: 3805
+  addresses:
+  - Q1
+  - K2
+  - K5
+  file: item_2_mda.md
+- item: PartI_3
+  name: item_3_quant_risk
+  found: true
+  start_line: 2998
+  end_line: 3002
+  word_count: 43
+  addresses:
+  - risk
+  - K2
+  file: item_3_quant_risk.md
+- item: PartII_1A
+  name: item_1a_risk
+  found: true
+  start_line: 3019
+  end_line: 3025
+  word_count: 58
+  addresses:
+  - risk
+  - K1
+  - K6
+  file: item_1a_risk.md

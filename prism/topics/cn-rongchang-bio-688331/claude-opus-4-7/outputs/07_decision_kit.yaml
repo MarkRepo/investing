@@ -1,0 +1,399 @@
+# 07 Decision Kit Sidecar — cn-rongchang-bio-688331 / v2
+# 机器可读版本，与 07_decision_kit.md 同步维护
+# v1 → v2 critic-rewrite (05-critic-review verdict=request-rewrite)
+
+slug: cn-rongchang-bio-688331
+variant: claude-opus-4-7
+version: 2
+generated: '2026-05-26T17:00:00+00:00'
+revised_after: 05-critic-review v1
+
+# ── dashboard.py 期望的标准 schema 字段（v2 补齐；v1 起 RongChang sidecar 自创 schema 与 dashboard 不对接）─────
+topic_type: company
+display_name: 荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)
+ticker: SSE_688331  # A 股科创板上交所；dashboard 行情拉 A 股；H 股 09995 不进 dashboard
+data_freshness: 2026-Q1
+data_freshness_basis: mat-cf360d (2026Q1 季报 2026-04-28)
+
+# 价格区间：07.md v2 全部用市值表达（亿 RMB），此处按 A 股总股本 ~5.44 亿股折算到单价（RMB/股）
+# 折算公式：unit_price ≈ market_cap_yi × 100 / 5.44 ≈ market_cap_yi × 18.4
+# 现价锚定：720 亿市值 → ~132 RMB/股（A 股，dashboard 实时拉 akshare 覆盖 current_price）
+buy_box:
+  strong_buy_max: 65    # 350 亿市值 ÷ 5.44 = 64 (v2 极度看空区间上沿)
+  accumulate_min: 65    # 350 亿
+  accumulate_max: 85    # 460 亿 (SOTP NPV 基线)
+  hold_min: 85          # 460 亿
+  hold_max: 110         # ~600 亿 (持有上限 / 小幅减仓下沿)；v2 校准：实际 A 股 114 RMB 已超 → above_hold
+  current_price: 132    # 720 亿 A+H 合并市值近似；dashboard 会用 akshare 实时行情覆盖
+  price_as_of: 2026-05-22
+  current_zone: above_hold  # 114 RMB > hold_max 110 → 触发"小幅减仓"（与 v2 07.md 矩阵一致）
+
+position_framework:
+  initial_max_pct: 2      # 温和看多 + 赔率敏感型基础仓位下沿（v2 07.md 推荐 2-4%）
+  full_max_pct: 5         # 满仓上限（高 alpha 型 4-7%，取保守 5%）
+  add_ladder_prices: [85, 95, 105]  # 单价加仓阶梯（hold 区间内）：85=SOTP 基线 / 95=520 亿 / 105=575 亿
+  max_cluster_pct: 15     # 中国 biotech BD 集群（与信达/百济/康方相关性高）
+
+# 估值模型汇总（来自 04 v2 反推 3 个口径）
+valuation_models:
+  - name: pe_2026_path_weighted
+    label: PE 反推 2026 净利路径加权（PE 100x × 期望净利 6-8 亿）
+    bull_fair_value: [800, 1100]    # 极度看多场景 1100 亿 ≈ 200 RMB；看多 800 亿 ≈ 147
+    base_fair_value: [500, 580]     # 基线 500 亿 ≈ 92；v1 580 上调一档
+    bear_fair_value: [350, 460]     # 看空 350-460 ≈ 64-85
+  - name: sotp_npv_weighted
+    label: SOTP 加权 NPV（v2 重算 460 亿，K1 150→75 / K3 30→18）
+    bull_fair_value: [600, 720]     # 含 K1 III 期阳性 + K3 surprise upside
+    base_fair_value: [460, 520]     # SOTP 中枢 460 + 长尾期权 20-60 → 480-520
+    bear_fair_value: [350, 425]     # 不含 K1 K3 期权 → 425 SOTP；含黑天鹅 → 350
+  - name: ps_2025_band
+    label: PS 估值带（A 股 18A biotech 8-15x → 22x 当前贵）
+    bull_fair_value: [580, 720]     # PS 18-22x × 40 亿 2026 营收
+    base_fair_value: [320, 480]     # PS 10-15x × 32-40 亿
+    bear_fair_value: [200, 320]     # PS 6-10x × 30-32 亿
+
+# Kill 触发条件（v2 07.md trim_triggers 中 priority=immediate / P0 升格）
+kill_criteria:
+  - id: pfizer_nct05911295_terminated
+    description: ClinicalTrials.gov NCT05911295 标"terminated" → K3 兑现归零，减仓 10%
+    status: pending
+    check_at: 2027-Q1
+  - id: abbvie_upfront_delay_6m
+    description: AbbVie USD650M 上付延期 > 6 个月（监管审批未通过）→ K1 SOTP 重估，减仓 15%
+    status: pending
+    check_at: 2026-Q4
+  - id: lockup_major_dump
+    description: 锁仓 2026-06-30 后控股股东减持 > 5% → 治理信任崩坏，减仓 30%
+    status: pending
+    check_at: 2026-Q3
+  - id: he_ruyi_departure_confirmed
+    description: 何如意被官方公告坐实离职 → 核心技术人员流失，减仓 20%
+    status: pending
+    check_at: 2026-Q4
+  - id: q2_2026_h1_excl_loss
+    description: 2026 半年报扣非主业仍亏 + Vor Bio 股价回调 -30% → K4 完全证伪，减仓 25%
+    status: pending
+    check_at: 2026-Q3
+  - id: sse_inquiry_major
+    description: 上交所新增重大问询/监管处罚 → K5 信任危机，减仓 30%
+    status: pending
+    check_at: 2026-Q4
+  - id: ak112_dominance
+    description: AK112 FDA 顺利批 + 商业化爬坡强 → RC148 me-too 标签强化，减仓 10%
+    status: pending
+    check_at: 2027-Q2
+
+# 路标事件（v2 07.md catalysts 转 dashboard 标准格式）
+signposts:
+  - date: 2026-Q2
+    event: AbbVie USD650M 上付到账（监管审批通过）
+    bull_signal: 按时入账 → K1 加仓 10%
+    bear_signal: 延期 > 6 个月 → K1 减仓 15% (kill trigger)
+    triggered: null
+  - date: 2026-06-30
+    event: 控股股东 + 核心技术人员锁仓到期
+    bull_signal: 公告自愿延长锁仓 / 不减持声明
+    bear_signal: 4-12 周内出现减持公告
+    triggered: null
+  - date: 2026-Q3
+    event: 2026 半年报披露（扣非主业是否突破盈亏平衡）
+    bull_signal: 扣非主业 > 3 亿 → K4 加仓 15%
+    bear_signal: 扣非仍亏 + Vor Bio 回调 → K4 减仓 25% (kill)
+    triggered: null
+  - date: 2026-H2
+    event: RC18 IgAN NMPA 获批
+    bull_signal: 优先审评批 → K2 兑现 +5-10%
+    bear_signal: BLA 退回 → K2 减仓 10%
+    triggered: null
+  - date: 2026-Q4
+    event: 2026 国家医保目录（IgAN/SD/BC 进医保候选）
+    bull_signal: 进医保 + 销售年化 > 5 亿 → K2 加仓 15%
+    bear_signal: 砍价 > 50% → K2 销售爬坡受抑
+    triggered: null
+  - date: 2026-H1
+    event: AK112 FDA 审评首轮 milestone
+    bull_signal: AK112 数据下修 → RC148 反向窗口 → K1 加仓 15%
+    bear_signal: AK112 顺利推进 → RC148 me-too 标签强化
+    triggered: null
+  - date: 2027
+    event: AK112 美国上市（如 FDA 顺利批）
+    bull_signal: AK112 商业化爬坡缓 → RC148 反向窗口
+    bear_signal: AK112 抢占 1L NSCLC → RC148 估值打 6-7 折
+    triggered: null
+  - date: 2027-2028
+    event: NCT05911295 中期分析 / 数据 readout
+    bull_signal: 中期分析阳性 → K3 加仓 12% (v2 从 20% 收紧)
+    bear_signal: terminated → K3 减仓 10% (kill)
+    triggered: null
+  - date: 2028
+    event: RC148 III 期 readout（最早）
+    bull_signal: PFS HR < 0.6 → K1 加仓 30%
+    bear_signal: 失败 → K1 SOTP 归零
+    triggered: null
+
+# 主题集群标签
+cluster_tags:
+  - cn-biotech-bd-out  # 中国 biotech 出海 BD（与信达/百济/康方/再鼎相关性高）
+  - adc-disitamab      # ADC 赛道（与 Pfizer-Seagen 整合相关）
+  - autoimmune-rc18    # IL-17/BLyS/APRIL 自免赛道（与 efgartigimod/argenx 相关）
+  - pd1-vegf-bispecific  # PD-1/VEGF 双抗（与康方 AK112/Summit 直接竞品）
+  - hk-a-dual-listed   # A 股 + H 股双重上市
+
+# ── 以下为 v0 起 RongChang sidecar 自创字段（保留 v2 critic 详细对账数据）─────
+# dashboard.py 不读这些字段，仅供主 agent / 后续 critic 内部对账使用
+# 与上方标准 schema 字段并存，不冲突
+
+thesis_strength: 5/10  # v1 为 6/10；v2 降级（SOTP 460 + 风险 -21.5% 同向看空）
+direction: neutral_temperate_bull  # v1 为 temperate_bull；v2 降级一档
+horizon_view:
+  short_term_12m: bear  # v1 为 neutral_bear；v2 降级（估值贵 + 锁仓减持窗 + AK112 压制）
+  mid_term_36m: neutral_bull  # v1 为 bull；v2 降级（K1 NPV 重估 + K3 my_prob 0.18）
+  long_term: speculative_bull  # 维持（K1 RC148 全球期权 + K3 Pfizer surprise upside）
+
+current_market_cap_rmb_yi: 720
+current_pe_with_warrants: 101.4
+current_pe_excl_warrants: 1059
+current_ps_2025: 22.1
+sotp_weighted_npv_rmb_yi: 460  # v1 报 540；v2 重算（K1 150→75 / K3 30→18）
+weighted_target_market_cap_rmb_yi: 480  # 含长尾期权 20 亿；中枢
+weighted_target_range_rmb_yi: [460, 520]
+
+# 现价 720 亿处方
+current_price_verdict: small_trim
+current_price_action: "立即减仓 10-20% 至基础仓位 0.85x"
+current_price_premium_vs_sotp_pct: 36  # (720 - 530) / 530 ≈ 36% 高估（取 SOTP 中枢 530 算）
+current_price_premium_vs_weighted_target_pct: 50  # (720 - 480) / 480 = 50%
+
+# 价格区间 × 动作矩阵（v2 下移）
+price_actions:
+  - market_cap_rmb_yi_max: 350
+    pe_2026_max: 44
+    action: aggressive_buy
+    position_multiplier: 1.5
+    reason: "黑天鹅同时发生 → 严重低估 SOTP 460"
+  - market_cap_rmb_yi_max: 460
+    pe_2026_max: 58
+    action: heavy_add
+    position_multiplier: 2.0
+    reason: "落入 SOTP 460 亿基线下方，赔率非常好"
+  - market_cap_rmb_yi_max: 540
+    pe_2026_max: 68
+    action: small_add
+    position_multiplier: 1.2
+    reason: "落在 SOTP 加权目标内，定价合理偏便宜"
+  - market_cap_rmb_yi_max: 650
+    pe_2026_max: 81
+    action: hold
+    position_multiplier: 1.0
+    reason: "SOTP 中枢上方 12% 范围，fair value + 上行期权"
+  - market_cap_rmb_yi_max: 800
+    pe_2026_max: 100
+    action: small_trim  # v1 为 hold；v2 关键修订
+    position_multiplier: 0.85
+    reason: "估值已 priced-in 多数乐观；K3 my_prob 0.18 不足以撑 PE 100x；当前 720 亿在此区间"
+  - market_cap_rmb_yi_max: 1000
+    pe_2026_max: 125
+    action: heavy_trim  # v1 为 small_trim
+    position_multiplier: 0.5
+    reason: "仅 K1+K3+K2 同时阳性时合理"
+  - market_cap_rmb_yi_max: 999999
+    pe_2026_max: 999
+    action: clear_or_observe
+    position_multiplier: 0.25
+    reason: "K1 III 期阳性 + AbbVie 上付 + AK112 数据下修必须同时实现"
+
+# Killer Question 现状（v2）
+killer_questions:
+  K1:
+    topic: RC148/AbbVie BD 兑现 + 全球 III 期
+    v0_strength: very_bull
+    v1_strength: neutral
+    v2_strength: neutral  # 维持；K1 SOTP 权重重估而非 my_prob 改
+    market_implied_probability: 0.50
+    my_probability: 0.30
+    sotp_npv_rmb_yi: 75  # v1 为 150
+    sotp_npv_reasoning: "30% × USD500M (中位数, 非 v1 隐含 USD500M-1B) × 8x P/Sales × DR=0.5 × 7"
+    competitive_compression: "AK112 抢首发 24 个月 → me-too 估值打 6-7 折"
+    reason: "AbbVie 协议 A 股年报未披露金额；HK 年报有数字但监管审批未完；AK112 2027 上市抢首发"
+  K2:
+    topic: RC18 自免兑现 (IgAN/SD/MG)
+    v0_strength: bull
+    v1_strength: stronger_bull
+    v2_strength: bull  # v1 stronger_bull 降级；critic 反方加权
+    market_implied_probability: 0.70
+    my_probability: 0.70  # v1 0.75 → v2 0.70（critic 建议 BLA 退回 + 医保降价 50%+ 未充分加权）
+    sotp_npv_rmb_yi: 150  # 维持
+    reason: "IgAN BLA 优先审评受理 + MG 进医保 + SD NDA 已交；但 BLA 通过率 60-65% + 医保砍价风险"
+  K3:
+    topic: RC48 海外 (Pfizer NCT05911295)
+    v0_strength: bear
+    v1_strength: neutral_bull
+    v2_strength: neutral_bear  # v1 跨度过激（critic 建议）
+    market_implied_probability: 0.10
+    my_probability: 0.18  # v1 为 0.30；critic 建议 0.15-0.20 区间，取中枢
+    sotp_npv_rmb_yi: 18  # v1 为 30
+    my_probability_decomposition: "基础 0.15 + Pfizer 1L UC 大适应症保留 +0.05 - Seagen ADC 战略转向 -0.02"
+    reason: "供应商关系 ≠ 临床合作活跃；公司年报 vs 一手报道分歧未解；24 个月窗口衰减到 0.10-0.15"
+  K4:
+    topic: 2026 业绩兑现 (主业扣非)
+    v0_strength: bull
+    v1_strength: bear
+    v2_strength: bear  # 维持
+    market_implied_probability: 0.50
+    my_probability: 0.25
+    reason: "2025 净利 7.10 亿含 8.95 亿 BD + 6.42 亿 warrants；2026Q1 扣非仍亏"
+  K5:
+    topic: 治理风险（锁仓 2026-06-30 / 何如意）
+    v0_strength: neutral
+    v1_strength: short_term_bear
+    v2_strength: short_term_bear  # 维持
+    market_implied_probability: 0.30
+    my_probability: 0.40
+    reason: "锁仓 5 周内到期；何如意名字仍在限售清单（与外部传言不一致）"
+
+# 减持触发条件（v2 加 S0 现价已触发 + K1 升 P0 + K3 降 P1）
+trim_triggers:
+  - condition: "v2-S0：现价 720 亿位于 SOTP+50% / 评分 5/10"
+    trim_pct_range: [10, 20]
+    priority: immediate
+    note: "立即；不等其他催化"
+  - condition: "K5 锁仓后控股股东减持 > 5%"
+    trim_pct: 30
+    priority: P0
+  - condition: "K5 何如意离职被官方公告坐实"
+    trim_pct: 20
+    priority: P0
+  - condition: "K4 2026 半年报扣非仍亏 + Vor Bio 股价回调 -30%"
+    trim_pct: 25
+    priority: P0
+  - condition: "K3 NCT05911295 ClinicalTrials.gov 标 terminated"
+    trim_pct: 10  # v1 为 15
+    priority: P1  # v1 为 P0；my_prob 0.18 后影响减弱
+  - condition: "K2 RC18 IgAN BLA 被退回"
+    trim_pct: 10
+    priority: P1
+  - condition: "K1 AbbVie USD650M 上付延期 > 6 个月"
+    trim_pct: 15  # v1 为 10
+    priority: P0  # v1 为 P1；K1 SOTP 权重重估下行更大
+  - condition: "K1 AK112 FDA 顺利批 + 商业化爬坡强"  # v2 新增
+    trim_pct: 10
+    priority: P1
+    note: "RC148 me-too 标签强化"
+  - condition: "上交所新增重大问询/监管处罚"
+    trim_pct: 30
+    priority: P0
+
+# 加仓触发条件（v2 K3 大幅下调 + K1 新增 AK112 反向窗口）
+add_triggers:
+  - condition: "K3 NCT05911295 中期分析阳性"
+    add_pct: 12  # v1 为 20；my_prob 0.18 后收紧
+    priority: P1  # v1 为 P0
+  - condition: "K1 RC148 III 期 PFS HR < 0.6"
+    add_pct: 30
+    priority: P0
+  - condition: "K1 AK112 数据下修 / 商业化爬坡缓"  # v2 新增
+    add_pct: 15
+    priority: P1
+    note: "RC148 反向窗口打开"
+  - condition: "K2 IgAN 进医保 + 销售年化 > 5 亿"
+    add_pct: 15
+    priority: P1
+  - condition: "K4 2026 半年报扣非主业 > 3 亿"
+    add_pct: 15
+    priority: P1
+  - condition: "AbbVie USD650M 上付到账"
+    add_pct: 10
+    priority: P1
+
+# Catalyst 时点表（v2 加 AK112 受理 + 上市压制项 + K3 upside 收紧）
+catalysts:
+  - date: '2026Q2'
+    event: AbbVie USD650M 上付到账
+    k_ref: K1
+    expected_impact_pct: 5_to_10
+  - date: '2026H1'  # v2 新增
+    event: AK112 FDA 审评首轮 milestone
+    k_ref: K1
+    expected_impact_pct: -3_to_-8
+    note: "RC148 me-too 标签强化"
+  - date: '2026-06-30'
+    event: 控股股东 + 核心技术人员锁仓到期
+    k_ref: K5
+    expected_impact_pct: depends
+  - date: '2026-07/08'
+    event: 首批减持公告窗口
+    k_ref: K5
+    expected_impact_pct: -5_to_-15
+  - date: '2026Q3'
+    event: 2026 半年报（扣非主业突破？）
+    k_ref: K4
+    expected_impact_pct: -10_to_10
+  - date: '2026H2'
+    event: RC18 IgAN NMPA 获批
+    k_ref: K2
+    expected_impact_pct: 5_to_10
+  - date: '2026Q4'
+    event: 2026 国家医保目录（IgAN/SD/BC 进医保候选）
+    k_ref: K2
+    expected_impact_pct: 3_to_5
+  - date: '2026Q3-Q4'
+    event: RC148 海外 1L sqNSCLC III 期入组进度
+    k_ref: K1
+    expected_impact_pct: -5_to_5
+  - date: '2027H1'
+    event: RC18 SD NMPA 获批
+    k_ref: K2
+    expected_impact_pct: 3_to_5
+  - date: '2027'  # v2 新增
+    event: AK112 美国上市（如 FDA 顺利批）
+    k_ref: K1
+    expected_impact_pct: -5_to_-10
+    note: "RC148 me-too 标签定型"
+  - date: '2027-2028'
+    event: NCT05911295 中期分析 / 数据 readout
+    k_ref: K3
+    expected_impact_pct: -5_to_12  # v1 为 -5_to_20；my_prob 0.18 后 upside 收紧
+  - date: '2028'
+    event: RC148 III 期 readout（最早）
+    k_ref: K1
+    expected_impact_pct: -15_to_30
+
+# 情景概率（v2 微调）
+scenarios:
+  bear: { probability: 0.30, market_cap_yi: 350 }
+  base: { probability: 0.50, market_cap_yi: 500 }  # v1 为 580；v2 K1/K3 修订后 base 中枢下移
+  bull: { probability: 0.15, market_cap_yi: 720 }  # v1 为 800；v2 修订
+  super_bull: { probability: 0.05, market_cap_yi: 1100 }  # v1 为 1200
+  weighted_target_yi: 480  # v1 为 540
+
+# 三口径对账（v2 新增）
+reconciliation:
+  sotp_npv_rmb_yi: 460
+  sotp_premium_vs_price_pct: 36  # (720-460)/720 → 36% premium
+  risk_weighted_12m_pct: -21.5  # 06_risk_blindspots Step 7 加权总风险
+  combined_downside_estimate_pct: -30  # 粗算
+  thesis_score: "5/10 neutral_temperate_bull"
+  current_price_zone: small_trim  # v2 新增；v1 模糊
+  rule: "SOTP × 风险加权 × 评分三口径必须同向；价格区间不再独立设置"
+
+# 对账纪律（v2 新增刚性约束）
+reconciliation_discipline:
+  - "SOTP 重算后超过当前市值 +/- 30% → 评分必须随同修订"
+  - "风险加权连续两期 < -15% → 价格区间必须下移一档"
+  - "三口径必须同向；任何一项独立偏离 > 15pp 触发 thesis_v3 重审"
+
+# 数据缺口（v2 加 AK112 升 P0）
+data_gaps:
+  P0:
+    - NCT05911295 实际入组数据（K3）
+    - AbbVie 公告原文 + USD650M 上付确认条件（K1）
+    - Vor Bio 当前股价 + warrants 行权细节（K4）
+    - 康方 AK112 美国上市进度 + Summit IR 季报（K1）  # v2 P2→P0
+  P1:
+    - 何如意/房健民/温庆凯任职状态（K5）
+    - RC18 IgAN BLA 审评进度（K2）
+    - RC18 单产品季度销售拆分（K2/K4）
+  P2:
+    - 2026 国家医保目录政策方向（K2）
+    - DRG/DIP 改革对生物药定价影响
+    - CT-388 / MariTide / VK2735 III 期 readout 时点  # v2 新增

@@ -162,3 +162,60 @@ entries:
   n_high: 2
   n_mid: 4
   n_low: 0
+- searched_at: '2026-05-26T06:37:41.453704+00:00'
+  query: 荣昌生物 ADC 商业化兑现 BD 海外授权回流 IgAN 自免管线
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-26T06:37:50.257788+00:00'
+  query: 荣昌生物 688331 最新公告
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-26T06:37:50.263281+00:00'
+  query: 荣昌生物 688331 监管处罚
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-26T06:37:50.268666+00:00'
+  query: 荣昌生物 688331 业绩预告
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-26T06:37:50.274206+00:00'
+  query: 荣昌生物 688331 高管变动
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-26T06:40:18.625657+00:00'
+  query: RC48 disitamab vedotin global development Pfizer collaboration
+  triggered_by: 01-prescan-webfetch-fallback
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+- searched_at: '2026-05-26T06:40:18.752108+00:00'
+  query: telitacicept RC18 SLE RA mechanism BLyS APRIL TACI
+  triggered_by: 01-prescan-webfetch-fallback
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+- searched_at: '2026-05-26T06:40:29.725317+00:00'
+  query: 01-prescan 全量（5 scope + 5 l4-hunting；WebSearch silent fail → WebFetch Wikipedia
+    兜底 2 份）
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0

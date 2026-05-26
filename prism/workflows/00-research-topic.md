@@ -278,6 +278,34 @@ set_thesis(
 EOF
 ```
 
+### 5.0a backfill：把 prescan 时标的 fact-NN 占位 → K# 标签（**修 H7**）
+
+prescan 在写 thesis 之前跑，那时还没 K#，所以 web 材料 addresses 标的是 baseline 事实编号 `fact-NN`（或 Q#）。thesis 写完后，**主 agent 必须立即提供 fact→K# 映射** 让脚本 backfill manifest，否则下游 02 gap_detector / 04 合成会误报"K# 全 0 覆盖"。
+
+```python
+from prism.scripts.manifest import backfill_addresses_by_mapping
+
+# 主 agent 写 thesis_v0 时已知道每个 K# 的论据来自哪些 fact-NN
+# （baseline_knowledge.md 第二/三节列出了 fact-NN 内容，第六节有部分校准）
+mapping = {
+    # 'fact-04': ['K3'],          # 例：RC48 适应症 → K3 (RC48 终止/续)
+    # 'fact-05': ['K3', 'K1'],    # 例：RC48-Seagen BD → K3 + K1 (RC148 BD 镜像)
+    # 'fact-17': ['K4'],          # 例：财务数据 → K4 (业绩兑现)
+    # ... 主 agent 列全 baseline 所有 fact-NN 与 K1..Kn 的映射
+}
+r = backfill_addresses_by_mapping(slug, variant, mapping)
+print(f'backfill: {r["updated_count"]} 材料更新')
+if r["unmapped_facts"]:
+    print(f'⚠ 未覆盖的 fact: {r["unmapped_facts"]} — 补到 mapping 重跑或显式标注与本 thesis 无关')
+```
+
+**纪律**：
+- 必须在 set_thesis(version=0) **之后**调（先有 thesis 再有 K#）
+- mapping 必须覆盖 baseline 里出现过且仍与本 thesis 相关的 fact-NN（脚本返回 `unmapped_facts` 给诊断）
+- 一个 fact 可对应多个 K#（如 BD 历史 ref 同时支撑 K1 镜像 + K3 历史）
+- 漏写后果：gap_detector 报误警，workflow 04 合成时 K# 找不到论据
+- 升 thesis（v1/v2）时同样调一次（K# 可能新增）
+
 **三态语义**：
 - `full`：prescan 入库率 100% → 正常推进 workflow 01
 - `partial`：入库率 [50%, 100%) → 标 partial 但允许写入；workflow 05 critic 会列出"未校准 fact 清单"

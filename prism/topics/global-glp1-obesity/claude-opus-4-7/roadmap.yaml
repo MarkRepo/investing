@@ -1,0 +1,249 @@
+slug: global-glp1-obesity
+created: 2026-05-26
+thesis_version_at_creation: 1
+note: |
+  L4 hunting 逐条对齐 thesis_v1 K1-K6（硬规则 workflow 01 Step 2）。
+  tier1/2/3 复用 thesis_v1 已写的 12 个 user_todos（P0→tier1, P1→tier2, P2→tier3）。
+
+learning_track:
+  l1_orientation:
+    - question: GLP-1 全球总市场规模 2024-2030 + 减肥/糖尿病/心衰/OSA 各适应症金额拆分
+      addresses: [scope]
+      source_hint: GS/MS GLP-1 industry primer / Evaluate Pharma / IQVIA
+    - question: 全球分子代际谱 — sema vs tirz vs cagri vs reta vs orfo vs CT-388 vs VK2735 vs HRS9531 vs maz vs MariTide 临床数据 head-to-head
+      addresses: [K1, K6]
+      source_hint: SURMOUNT / REDEFINE / TRIUMPH / ENITH / VANQUISH 论文 + 各家 IR
+    - question: 美国/欧洲/中国/日本 4 大市场支付与医保框架（商保 PBM / Medicare BALANCE / IRA / NRDL / 个人自费 DTC）
+      addresses: [K2, K3, K5]
+      source_hint: KFF / Health Affairs / CMS / 米内 / 国家医保局
+    - question: GLP-1 终端售价 / 净价 / 毛利 / 销售模式（处方 PBM / LillyDirect+NovoCare DTC / HIMS compounded → 品牌）
+      addresses: [K3, K5]
+      source_hint: NVO/LLY 季报附注 + IQVIA channel data + GoodRx / pharnexcloud
+
+  l2_history:
+    - question: GLP-1 临床代际跃迁史（byetta 2005 → 利拉鲁肽 2014 → sema 2017 → 减重 sema 2021 → tirz 减重 2023 → reta/CT-388 2026+）— 减重百分比阶梯 + 安全性
+      addresses: [scope]
+      source_hint: NEJM / Lancet 综述 + FDA approval letters
+    - question: 全球减肥药安全性退市史（西布曲明 / 利莫那班 / 氯卡色林）— 评估 GLP-1 长期安全性边界
+      addresses: [scope]
+      source_hint: FDA / EMA 撤市公告 + 大型流行病学研究
+    - question: NVO vs LLY 2010-2026 拉锯史（胰岛素时代 → GLP-1 时代）— 双 #1 反转节奏
+      addresses: [K1, K5]
+      source_hint: 两家年报 + 雪球 NVO/LLY 长文 + Bloomberg 复盘
+    - question: 中国 GLP-1 政策史（利拉鲁肽中标谈判 → 司美格鲁肽 PTE 争议 → mazdutide 首批 → 仿制大潮）
+      addresses: [K3, K4]
+      source_hint: 国家医保局 / NMPA / 米内网
+
+  l3_debates:
+    - question: LLY 估值能否消化 BALANCE + IRA + 第二梯队 + DTC 四轨同时压价？PE 50x 是否为戴维斯双杀起点？
+      addresses: [K2, K5, K6]
+      stance_long: 替尔泊肽 unit volume +50% 仍能扛 net price -20%，而 LLY 自有产能 + DTC 控价能力 ≫ NVO
+      stance_short: 第二梯队 (CT-388 22.5% / VK2735 12.2%) 已迫近 → estimation cut + multiple compression 双杀
+      source_hint: GS/MS LLY 深度 + LLY 季报 + 卖方 BALANCE 敏感性表
+    - question: NVO 是否已被 over-sold？amycretin + oral Wegovy + NovoCare DTC + HIMS 合作能否驱动均值回归？
+      addresses: [K1, K3]
+      stance_long: 当前股价 price in CagriSema 失望 + sema 仿制；amycretin 数据强 + 渠道扩张
+      stance_short: sema 全球净价 2026-2028 持续衰减；amycretin 商业化最早 2028
+      source_hint: NVO IR + 卖方 NVO 翻多/翻空报告
+    - question: GLP-1 终身服药商业可持续性 — 支付方对长期 entitlement 的政治压力会否倒逼定价持续下行？
+      addresses: [K2, K3]
+      stance_long: 净 medical cost saving (心衰/CV/OSA/CKD) 长期 ROI 正向 → 支付方愿意付
+      stance_short: 停药 1 年内反弹 50-70% → 终身付费 → 政府无法承受 → BALANCE 是开始而非终点
+      source_hint: KFF / Health Affairs / NEJM cost-effectiveness 综述
+    - question: retatrutide 真能续 LLY 下一代护城河？还是只达 22.5% 与 CT-388 持平 → 代际优势消失？
+      addresses: [K1]
+      stance_long: Phase 2 减重 24.2% 48w；Phase 3 数据预期 ≥25% + CV outcome 阳性
+      stance_short: 三靶 GLP-1/GIP/GCG 安全性边际收窄；TRIUMPH-3 顶线若 ≤22.5% → "下一代独占"叙事破裂
+      source_hint: TRIUMPH 论文 + LLY Investor Day + 卖方 next-gen GLP-1 横向对比
+    - question: 第二梯队收购溢价是否会改变 LLY/NVO 估值锚？Roche CT-388 已是先例
+      addresses: [K6]
+      stance_long: Big pharma 2026-2027 集中收购（Pfizer/Merck/AbbVie 急需 GLP-1 暴露）→ 二梯队 3-5x 溢价
+      stance_short: 临床数据未读出前不收购；Phase 3 失败概率 30-40% → 锁不住溢价
+      source_hint: Endpoints / STAT / FierceBiotech M&A 追踪 + Carmot $2.7B 复盘
+
+  l4_hunting:
+    - question: K1 — retatrutide TRIUMPH-3 / CT-388 ENITH-1/2 / VK2735 VANQUISH-1/2 三家 Phase 3 数据日历表 + headline 减重百分比谁先谁高？
+      addresses: [K1]
+      validate_threshold: |
+        retatrutide >25% + CV outcome 阳性 → LLY 一家独大叙事保留
+        retatrutide ≤22.5% (仅平 tirz 当前) → LLY 下一代护城河存疑
+        CT-388 ≥23% 且数据先出 → Roche 抢位 → LLY/NVO 双弱
+      timeline_to_resolve: 2026-12 ~ 2027-12 三家 Phase 3 顶线密集读出
+      source_hint: ClinicalTrials.gov + 各家 IR 季度披露 + Endpoints/FierceBiotech/STAT
+
+    - question: K2 — BALANCE Model 2026-2027 Medicare/Medicaid 实际加入受益人数 + $245/月对 NVO+LLY 单位营收冲击 + 商保跟价比例
+      addresses: [K2]
+      validate_threshold: |
+        BALANCE 覆盖 >1000 万 + 商保跟价 → 利空兑现
+        BALANCE 覆盖 <300 万 + 商保不跟价 → 量大于价压制 → 利好
+      timeline_to_resolve: 2026 Q3 起 CMS 月度 enrollment 数据 + 2027 Q1 NVO/LLY 季报跟价披露
+      source_hint: CMS 月报 / KFF Tracker / NVO+LLY US net realized price 季度披露
+
+    - question: K3 — sema 2026-2028 全球分国家分渠道 net price 衰减斜率 + NVO sema 总营收 2027 vs 2025 ±多少？
+      addresses: [K3]
+      validate_threshold: |
+        NVO sema 2027 营收 < 2025 → 仿制+IRA+BALANCE 三重压制兑现
+        NVO sema 2027 营收 ≥ 2025 → DTC+适应症扩展抵消
+      timeline_to_resolve: 2027 Q1 季报（覆盖 2026 全年）即可初判，2028 Q1 终局
+      source_hint: NVO 10-K segment + IQVIA Symphony + 米内 sema 仿制价格表
+
+    - question: K4 — HRS9531 全球 Phase 3 启动时点 + mazdutide 2026 季度销售爬坡 + 华东医药利鲁平国内市占率
+      addresses: [K4]
+      validate_threshold: |
+        HRS9531 美国 Phase 3 2026 Q3 前启动 → 恒瑞 $5.7B 里程碑路径打开
+        mazdutide 2026 销售 ≥¥15 亿 → 国产 GLP-1 商业化曲线验证
+      timeline_to_resolve: 2026 Q3 Kailera 启动 + 2026 H2 信达半年报 + 2026 Q3 华东季报
+      source_hint: 恒瑞 IR / kailera.com / 信达半年报 / 华东季报 / 米内分子销售榜
+
+    - question: K5 — LLY 2026-2027 tirzepatide 单位 net price 拆分（list / DTC / PBM rebate / BALANCE 渠道差）+ unit volume 增长是否覆盖跌价
+      addresses: [K5]
+      validate_threshold: |
+        unit volume +50% + unit net price -20% → 营收 +20% → 估值可承受
+        unit volume +30% + unit net price -30% → 营收 -10% → 估值杀
+      timeline_to_resolve: 2026 Q4 season pass + 2027 Q1 全年指引
+      source_hint: LLY 10-Q gross-to-net 附注 + 卖方 channel mix 模型
+
+    - question: K6 — Viking / Structure / Carmot 之后 Big pharma 是否实际收购 GLP-1 biotech？溢价倍数？
+      addresses: [K6]
+      validate_threshold: |
+        Viking 收购溢价 ≥3x ($30 → ≥$90) → 二梯队估值上修 → LLY PE 收敛压力↑
+        无收购 + 二梯队继续融资稀释 → LLY 一家独大溢价保留
+      timeline_to_resolve: 2026 H2 - 2027 H2（行业 M&A 周期窗口）
+      source_hint: Endpoints / STAT / FierceBiotech M&A 跟踪 + 各家 IR
+
+material_priority:
+  tier1:
+    - title: NVO 2025 全年报 + 2026 Q1 6-K (Wegovy/Ozempic 季度销售拆分 + 美国 net price + DTC NovoCare 渗透 + capex)
+      type: annual-report
+      ticker: NVO
+      addresses: [K3, K5]
+      info_tier: public
+      why: NVO sema 净价衰减斜率 + DTC 实际销售 → K3/K5 直接验证
+
+    - title: LLY 2025 10-K + 2026 Q1 10-Q (Mounjaro/Zepbound 销售拆分 + 美国 net price + LillyDirect DTC + 产能)
+      type: annual-report
+      ticker: LLY
+      addresses: [K5]
+      info_tier: public
+      why: LLY 单位 net price + unit volume → K5 关键验证；retatrutide 进度 → K1
+
+    - title: 1-2 份 GS/MS/UBS/中金 GLP-1 全球深度研报 (2025 H2 - 2026 H1，含 BALANCE 敏感性 + 第二梯队估值对比)
+      type: sell-side-note
+      ticker: ""
+      addresses: [K1, K2, K5, K6]
+      info_tier: half_public
+      why: 一份顶级卖方深度可同时打 K1/K2/K5/K6 四个维度；BALANCE 渗透率敏感性 + 第二梯队 SOTP 估值
+
+    - title: CMS BALANCE Model 2026-2027 实施细节 + 实际渗透率 + 商保跟价分析
+      type: policy
+      ticker: ""
+      addresses: [K2]
+      info_tier: public
+      why: K2 唯一直接验证依据；CMS 月度 enrollment 数据是 K2 leading indicator
+
+    - title: 信达 mazdutide 2025 半年报 + 2026 销售爬坡披露 + 京东健康分销 + 国内 GLP-1 减重药竞品上市清单
+      type: annual-report
+      ticker: HK_01801
+      addresses: [K4]
+      info_tier: half_public
+      why: mazdutide 季度销售 = K4 国产化进度核心指标；HKEX 自动下载
+
+  tier2:
+    - title: 司美格鲁肽美国 PTE 争议 + ANDA 申报；中国九源/华东/齐鲁/正大天晴 sema 仿制 2026-2027 上市表 + 价格
+      type: policy
+      ticker: ""
+      addresses: [K3]
+      info_tier: half_public
+      why: K3 sema 衰减斜率全球图，美国 PTE 是 sema 美国净价天花板，中国仿制是中国净价地板
+
+    - title: Lilly 2025/2026 Investor Day PPT (retatrutide TRIUMPH 进度 / orforglipron / eloralintide / Mounjaro 全球扩张)
+      type: industry-research
+      ticker: ""
+      addresses: [K1]
+      info_tier: public
+      why: K1 retatrutide 关键时间表 + 下一代储备视图，LLY 自家披露最权威
+
+    - title: 恒瑞 HRS9531 (Kailera) 全球 Phase 3 启动时间 + Kailera 商业化路径 + 恒瑞 A/H 股关于 license-out 里程碑披露
+      type: annual-report
+      ticker: SSE_600276
+      addresses: [K4]
+      info_tier: half_public
+      why: K4 HRS9531 验证依据；恒瑞 A 股 cninfo 自动下载
+
+    - title: NVO 2025-12 oral Wegovy 上市后实际销售 (US+EU) + NovoCare DTC 订单 + 全球分国家定价
+      type: industry-research
+      ticker: ""
+      addresses: [K3, K5]
+      info_tier: half_public
+      why: K3 sema 全球净价分布 + K5 渠道 mix 实证；oral Wegovy 是 NVO 反弹核心 catalyst
+
+    - title: HIMS 2026 Q1-Q2 财报 + NVO 合作后转化率 (compounded → 品牌 sema 占比 + 客单价 + 留存)
+      type: annual-report
+      ticker: HIMS
+      addresses: [K3]
+      info_tier: public
+      why: K3 DTC 实际转化率，HIMS 是行业最大 GLP-1 telehealth 平台
+
+    - title: Viking VKTX / Structure GPCR / Roche RHHBY / Amgen AMGN 季度更新 + 收购传闻追踪 (K6)
+      type: annual-report
+      ticker: VKTX
+      addresses: [K1, K6]
+      info_tier: half_public
+      why: K6 二梯队收购的最直接候选；Viking VANQUISH Phase 3 数据是核心 catalyst
+
+  tier3:
+    - title: 2024-2026 GLP-1 二阶冲击实证 (减肥手术 / 食品饮料 / OSA 设备 / 透析) 实际营收数据
+      type: industry-research
+      ticker: ""
+      addresses: [scope]
+      info_tier: half_public
+      why: 二阶冲击是 GLP-1 长 thesis 的边际验证（不在 K1-K6 直接路径上）
+
+    - title: 华东医药 2025 年报 + 利鲁平 (利拉鲁肽) 季度销售 + 国内 GLP-1 减重市场竞争格局
+      type: annual-report
+      ticker: SZSE_000963
+      addresses: [K4]
+      info_tier: half_public
+      why: 华东 2 个月达 30% 国内份额，是国内 GLP-1 商业化执行力的标杆案例
+
+    - title: Roche RHHBY / Amgen AMGN 2025 年报 (CT-388 / MariTide 进度 + 美国 GLP-1 战略披露)
+      type: annual-report
+      ticker: AMGN
+      addresses: [K1, K6]
+      info_tier: public
+      why: K1/K6 第二梯队管线披露；Amgen 自动下载，Roche 走 SIX 不强求
+
+    - title: Structure Therapeutics GPCR 2025 10-K + Phase 2/3 进度 (口服 GLP-1 第三家)
+      type: annual-report
+      ticker: GPCR
+      addresses: [K1, K6]
+      info_tier: public
+      why: K6 收购候选；GPCR 美股自动下载
+
+key_risks_to_monitor:
+  - BALANCE Model 实际入网受益人数 (CMS 月度数据)
+  - retatrutide TRIUMPH-3 Phase 3 顶线数据时间窗 (预期 2026 H2 - 2027)
+  - CT-388 ENITH-1 Phase 3 启动 + 中期数据
+  - VK2735 VANQUISH 数据 + Viking 收购溢价 (3-5x catalyst)
+  - 中国 sema 仿制 NMPA 审批节奏 (NDA → 上市 6-12 个月)
+  - retatrutide / CagriSema / amycretin 任一安全性事件 (FDA 警示)
+  - LLY/NVO 任一季度 net price 披露异常 (gross-to-net 附注)
+
+analogies_to_study:
+  - name: 2014-2018 索菲布韦 (Sovaldi/Harvoni) 政府压价
+    geo: US
+    period: 2014-2018
+    similarity: 短期单价巨高 + 政府"年复年成本"压力 → BALANCE Model 类似机制
+    difference: HCV 治愈性短疗程 (12 周)，GLP-1 终身服药 → 政府压力实际更持续
+
+  - name: 2015-2020 PCSK9 抑制剂 (Repatha/Praluent) 商保拒付
+    geo: US
+    period: 2015-2020
+    similarity: 临床数据强但定价权被支付方反噬 → 实际营收远低于预期
+    difference: PCSK9 是预防性，GLP-1 是减重个人意愿 + DTC 渠道 → 个人付费意愿强 → 不会完全复现
+
+  - name: 1990s NVO 胰岛素霸权 → 2010s 长效胰岛素被 LLY/Sanofi 侵蚀
+    geo: GLOBAL
+    period: 1990-2020
+    similarity: NVO 单一品类依赖在长周期里的脆弱性 → 现在 sema 依赖度 40%+ 是同一陷阱
+    difference: 胰岛素是仿制后被价格战吞噬，GLP-1 仍处于新分子涌现期 (reta/CT-388/VK2735)
