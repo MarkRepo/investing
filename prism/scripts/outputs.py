@@ -319,12 +319,18 @@ def validate_roadmap_thesis_coverage(slug: str, variant: str, version: int) -> d
 
 
 _DEFAULT_IGNORED_SOURCE_TYPES = ("drilldown",)
+_DEFAULT_EXCLUDED_TRIGGERED_BY = (
+    "00-prescan-baseline",
+    "00-prescan",
+    "01-prescan",
+)
 
 
 def list_affected_outputs(
     slug: str,
     variant: str,
     ignore_source_types: tuple[str, ...] = _DEFAULT_IGNORED_SOURCE_TYPES,
+    exclude_triggered_by: tuple[str, ...] = _DEFAULT_EXCLUDED_TRIGGERED_BY,
 ) -> dict:
     """判定 04-synthesize 增量重写时哪些 output 需要 refresh。
 
@@ -344,6 +350,13 @@ def list_affected_outputs(
     走 critic-stale 路径，不依赖 list_affected_outputs 自动判定。
     传 () 可包含所有 source_type（用户显式要求"全重写"时）。
 
+    `exclude_triggered_by` 默认 ('00-prescan-baseline','00-prescan','01-prescan') —
+    跳过 Role α prescan 入库的 web-search mat。原因：这些 hit 在 baseline §六
+    + roadmap 起草阶段已被消化进 thesis_v0，不应再单独触发 04 重写；它们
+    在 list_unprocessed 里同样被默认排除（保持两层一致）。Role β（02-step0）
+    / Role γ（03/04/05 即兴）正常计入 stale 判定。
+    传 () 可包含所有 triggered_by。
+
     返回：{
         '01_business_panorama': {'reason': 'stale', 'new_mat_ids': [mat-xxx, ...]},
         '04_implied_expectations': {'reason': 'critic-stale', 'new_mat_ids': []},
@@ -359,9 +372,20 @@ def list_affected_outputs(
     except FileNotFoundError:
         manifest = {"materials": []}
     ignored = set(ignore_source_types or ())
+    excluded_tb = set(exclude_triggered_by or ())
+
+    def _kept(m: dict) -> bool:
+        if not m.get("processed"):
+            return False
+        if m.get("source_type") in ignored:
+            return False
+        tb = (m.get("search_meta") or {}).get("triggered_by", "unknown")
+        if tb in excluded_tb:
+            return False
+        return True
+
     processed_ids = sorted({
-        m["id"] for m in (manifest.get("materials") or [])
-        if m.get("processed") and m.get("source_type") not in ignored
+        m["id"] for m in (manifest.get("materials") or []) if _kept(m)
     })
     out: dict = {}
     for key, state in (data.get("outputs_state") or {}).items():
@@ -370,17 +394,69 @@ def list_affected_outputs(
         if ref is None:
             out[key] = {"reason": "new", "new_mat_ids": processed_ids}
             continue
-        ref_set = set(ref)
-        new_ids = [mid for mid in processed_ids if mid not in ref_set]
-        if not new_ids and set(processed_ids) == ref_set:
-            # mat 集合一致——再看 status 字段（critic 显式标 stale）
+        expanded = _expand_aggregate_refs(slug, variant, ref)
+        # 未解析的虚拟 ID（aggregated_from 缺失/finding 不存在）→ 保守标 stale
+        unresolved = {x for x in expanded if x.startswith("ws-aggregate-")}
+        real_refs = expanded - unresolved
+        new_ids = [mid for mid in processed_ids if mid not in real_refs]
+        if not new_ids and not unresolved:
+            # mat 集合 ref 已覆盖全部 processed mat，且无未解析虚拟 ID
+            # 注：不再 strict-equality 比对 ref_set 与 processed_ids；
+            # ref 多出的 mat 可能是按 triggered_by/source_type 过滤掉的合法历史引用，
+            # 不应触发 stale 重写（修 [[feedback_addresses_granularity]] 同类陷阱）
             if status == "stale":
                 out[key] = {"reason": "critic-stale", "new_mat_ids": []}
             else:
                 out[key] = {"reason": "fresh", "new_mat_ids": []}
         else:
-            # 包含 drift 场景：mat 数变了但不是单纯新增
             out[key] = {"reason": "stale", "new_mat_ids": new_ids}
+    return out
+
+
+def _expand_aggregate_refs(slug: str, variant: str, refs: list[str]) -> set[str]:
+    """展开 referenced_mat_ids 里的聚合虚拟 ID（ws-aggregate-*）。
+
+    背景：04-synthesize 写大产出时若某 K# 收了 20+ web-search hit，主 agent 会
+    聚合写成一份 `findings_ws-aggregate-K#.md` 并把虚拟 ID 登记到 referenced_mat_ids。
+    比对 manifest 时这条虚拟 ID 不对应任何真 mat，导致 84 条真 mat 全被
+    判 new → 产出误标 stale → 04 死循环（实测 cn-commercial-space 9/9 中招）。
+
+    展开规则：
+      - 真 mat_id（不以 'ws-aggregate-' 开头）→ 原样保留
+      - 'ws-aggregate-*' → 读 `outputs/findings_{mat_id}.md` frontmatter，
+        把 `aggregated_from` 列出的真 mat_ids 加入集合
+      - finding 文件不存在 / frontmatter 缺 aggregated_from → **保留虚拟 ID**
+        （视为 unknown 集合，让 stale 判定保守地认为"覆盖不全"，触发重写而非误标 fresh）
+    """
+    from prism.scripts.findings import _read_frontmatter
+
+    out: set[str] = set()
+    findings_dir = _topic_dir(slug, variant) / "outputs"
+    for mid in refs or []:
+        if not isinstance(mid, str):
+            continue
+        if not mid.startswith("ws-aggregate-"):
+            out.add(mid)
+            continue
+        # 优先按 canonical findings_{mat_id}.md 查；找不到再 fallback 到 legacy
+        # findings_mat-{suffix}.md（cn-commercial-space 原始命名 — 'ws-aggregate-K1'
+        # 落在 'findings_mat-ws-K1.md'）
+        suffix = mid[len("ws-aggregate-"):]
+        candidates = [
+            findings_dir / f"findings_{mid}.md",
+            findings_dir / f"findings_mat-ws-{suffix}.md",
+        ]
+        fm: dict = {}
+        for cand in candidates:
+            if cand.is_file():
+                fm = _read_frontmatter(cand)
+                break
+        expanded = fm.get("aggregated_from") or []
+        if expanded and isinstance(expanded, list):
+            out.update(str(x) for x in expanded if x)
+        else:
+            # fallback：保留虚拟 ID，让上层 stale 判定保守
+            out.add(mid)
     return out
 
 

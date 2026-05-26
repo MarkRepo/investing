@@ -238,11 +238,16 @@ def make_search_meta(
     domain: str,
     domain_tier: str,
     searched_at: str | None = None,
+    triggered_by: str | None = None,
 ) -> dict:
     """Construct a search_meta dict with computed stale_at/expire_at.
 
     domain_tier ∈ {'whitelist', 'llm-judged-official', 'other'}
     searched_at defaults to now (ISO UTC).
+    triggered_by 标记本 mat 由哪一步入库（00-prescan-baseline / 00-prescan /
+    01-prescan / 02-step0 / 03-extract / 04-synth / 05-critic / 06-daily-monitor /
+    07-drilldown），下游 list_unprocessed / list_affected_outputs 按此过滤
+    Role α 的 prescan 材料。None → 落 'unknown'（兼容老 mat）。
     """
     if domain_tier not in {"whitelist", "llm-judged-official", "other"}:
         raise ValueError(f"Invalid domain_tier: {domain_tier!r}")
@@ -262,6 +267,7 @@ def make_search_meta(
         "searched_at": searched_at,
         "stale_at": stale_at,
         "expire_at": expire_at,
+        "triggered_by": triggered_by or "unknown",
     }
 
 
@@ -296,9 +302,14 @@ def refresh_web_search_meta(
     slug: str, variant: str, mat_id: str,
     query: str | None = None, searched_at: str | None = None,
     addresses: list[str] | None = None,
+    triggered_by: str | None = None,
 ) -> None:
     """对已存在的 web-search material 刷新搜索时间，并可合并 addresses + 追加新 query。
     用于 URL 命中已有条目时只更新元信息，不新建 mat。
+
+    triggered_by 传入则同步刷新 search_meta.triggered_by（重扫时把 mat 归入新阶段，
+    便于 02-step0 重命中老 prescan URL 后让其进入 Role β 处理路径）；
+    None 则保留老值。
     """
     data = read_manifest(slug, variant)
     for mat in data["materials"]:
@@ -313,6 +324,7 @@ def refresh_web_search_meta(
             domain=sm.get("domain", ""),
             domain_tier=sm.get("domain_tier", "other"),
             searched_at=searched_at,
+            triggered_by=triggered_by or sm.get("triggered_by"),
         )
         # 保留旧 query 历史
         prev_queries = sm.get("prev_queries") or []
@@ -383,6 +395,84 @@ def mineru_state_counts(slug: str, variant: str) -> dict:
     return dict(c)
 
 
+def backfill_addresses_by_mapping(
+    slug: str,
+    variant: str,
+    mapping: dict[str, list[str]],
+) -> dict:
+    """H7: 按 mapping 表把 manifest material addresses 里的 fact-NN/Q# 等占位标签
+    扩展为 K# 标签（合并，不覆盖）。
+
+    背景：prescan 在 thesis 写之前跑，那时还没 K#，主 agent 给 web 材料标的是
+    baseline 事实编号 fact-NN（或 Q#）。thesis 写完后这些占位标签到 K# 的映射
+    只有主 agent 知道；脚本不解析 thesis markdown 推断（脆弱）。
+
+    调用约定：workflow 00 Step 5 写完 thesis_v0 / workflow 04 升 thesis 后，
+    主 agent 把"baseline fact-NN → K# 列表"映射作为 dict 传入本函数，自动 merge。
+
+    输入示例：
+        mapping = {
+            'fact-04': ['K3'],          # RC48 适应症 → K3 (RC48 终止/续)
+            'fact-05': ['K3', 'K1'],    # RC48-Seagen BD → K3 + K1 (RC148 BD 镜像)
+            'fact-17': ['K4'],          # 财务数据 → K4 (业绩兑现)
+        }
+
+    行为：
+      - 遍历 manifest 每条 material，addresses 含 mapping 键 → 合并 mapping 值
+      - 已存在的 K# 不重复加；未匹配的占位标签保留（如 'scope', 'background'）
+      - 幂等：重复调用结果一致
+
+    返回：{
+        'updated_count': int,           # 被修改的 material 数
+        'changed_mat_ids': list[str],   # 变更条目 id
+        'unmatched_keys': list[str],    # mapping 里有但 manifest 中无人引用的 key
+        'unmapped_facts': list[str],    # manifest 里有 fact-* 但 mapping 没覆盖的 key
+    }
+    """
+    if not isinstance(mapping, dict):
+        raise TypeError("mapping must be dict[str, list[str]]")
+    for k, v in mapping.items():
+        if not isinstance(v, list) or not all(isinstance(x, str) for x in v):
+            raise ValueError(
+                f"mapping['{k}'] 必须是 list[str]，得到 {type(v).__name__}"
+            )
+
+    data = read_manifest(slug, variant)
+    changed: list[str] = []
+    seen_mapping_keys: set[str] = set()
+    seen_facts_in_manifest: set[str] = set()
+
+    for mat in data["materials"]:
+        addrs = list(mat.get("addresses") or [])
+        existing = set(addrs)
+        # 收集本条命中的 mapping 键 + manifest 中所有 fact-* 占位用于诊断
+        new_ks: set[str] = set()
+        for a in addrs:
+            if a.startswith("fact-"):
+                seen_facts_in_manifest.add(a)
+            if a in mapping:
+                seen_mapping_keys.add(a)
+                new_ks.update(mapping[a])
+        if not new_ks:
+            continue
+        if new_ks.issubset(existing):
+            continue
+        merged = sorted(existing | new_ks)
+        mat["addresses"] = merged
+        changed.append(mat["id"])
+
+    if changed:
+        data["updated"] = _now_iso()
+        _write_yaml(_manifest_path(slug, variant), data)
+
+    return {
+        "updated_count": len(changed),
+        "changed_mat_ids": changed,
+        "unmatched_keys": sorted(set(mapping.keys()) - seen_mapping_keys),
+        "unmapped_facts": sorted(seen_facts_in_manifest - set(mapping.keys())),
+    }
+
+
 def dedupe_manifest(slug: str, variant: str) -> int:
     """删除 manifest 中按 filename 重复的条目（保留最早的；合并 addresses/notes）。
     返回删除的条目数。"""
@@ -446,8 +536,36 @@ def mark_processed(slug: str, mat_id: str, variant: str) -> None:
     _write_yaml(_manifest_path(slug, variant), data)
 
 
-def list_unprocessed(slug: str, variant: str) -> list[dict]:
-    return [m for m in read_manifest(slug, variant)["materials"] if not m["processed"]]
+_DEFAULT_EXCLUDED_TRIGGERED_BY = (
+    "00-prescan-baseline",
+    "00-prescan",
+    "01-prescan",
+)
+
+
+def list_unprocessed(
+    slug: str,
+    variant: str,
+    exclude_triggered_by: tuple[str, ...] = _DEFAULT_EXCLUDED_TRIGGERED_BY,
+) -> list[dict]:
+    """List unprocessed materials.
+
+    exclude_triggered_by 默认排除 Role α（00/01 prescan）入库的 web-search mat —
+    这些 hit 在 baseline 第六节 + roadmap 写作阶段已被消化一次，重复进 03
+    会让主 agent 把 search snippet 当 "正式材料" 二次抽 finding 走形。
+    Role β（02-step0）/ Role γ（03/04/05 即兴）正常进 03 队列。
+    传 () 可强制处理全部（如用户显式要求"对 prescan 材料也抽 finding"）。
+    """
+    excluded = set(exclude_triggered_by or ())
+    out = []
+    for m in read_manifest(slug, variant)["materials"]:
+        if m["processed"]:
+            continue
+        tb = (m.get("search_meta") or {}).get("triggered_by", "unknown")
+        if tb in excluded:
+            continue
+        out.append(m)
+    return out
 
 
 def material_count(slug: str, variant: str) -> dict:

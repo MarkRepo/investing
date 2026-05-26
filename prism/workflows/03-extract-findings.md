@@ -149,14 +149,24 @@ inline 入库 + mineru 全跑完后直接进 Step 1，**不再退场让用户切
 ## Step 1：读取未处理资料清单
 
 ```bash
-python -c "
-import json
+python3 -c "
 from prism.scripts.manifest import list_unprocessed
 items = list_unprocessed('{slug}', '{variant}')
 for i in items:
     print(f'{i[\"id\"]} | {i[\"filename\"]} | {i[\"source_type\"]}')
 "
 ```
+
+> **Role α web-search 自动豁免**：`list_unprocessed` 默认 `exclude_triggered_by=
+> ('00-prescan-baseline','00-prescan','01-prescan')`，因此 workflow 00/01 prescan
+> 入库的 web-search hit **不会出现在本清单**——它们在 baseline §六 + roadmap
+> 起草阶段已被消化进 thesis/roadmap，再走 03 抽 finding 会让 snippet 被当作
+> 二次 "事实" 引用走形。如果需要对 Role α 强制抽 finding（罕见），显式传
+> `exclude_triggered_by=()`，或手动 Read 对应 `inbox/web-search/*.md`。
+>
+> Role β（02-step0）与 Role γ（03/04/05 即兴）正常出现。Role γ 的 mat 由
+> `register_web_search_batch(inline_finding=True)` 自动产 finding，多数时候
+> 也不会出现在 unprocessed 队列里（已被自动 mark_processed）。
 
 ---
 
@@ -435,7 +445,9 @@ register_web_search_batch(
 )
 ```
 
-3. 入库的 web-search material 在下一轮 03 处理时会自然进入 unprocessed 队列
+3. `triggered_by='03-extract'` 时 `register_web_search_batch` **自动产 inline finding** +
+   `mark_processed`（修 B2 — 消除"入库无 finding"黑洞）。返回值多了 `inline_finding_paths`
+   列表，主 agent 可直接 cat 验证。**不会再悬挂到下一轮 03 队列**。
 4. 在当前 finding 笔记里**注明**："此处与训练知识 / 资料 X 冲突，已即兴 web-search 入库 mat-xxx 备核"
 
 **纪律**：
@@ -443,6 +455,7 @@ register_web_search_batch(
 - 若冲突点超过 3 条 → 标记 user_todos，stage 回退 02-gather-materials 走完整 prescan
 - 即兴 web-search 必须填 addresses，否则 manifest coverage 算不进
 - URL/snippet 必须来自 WebSearch 工具实际返回，不得用训练记忆补 URL
+- 显式 `inline_finding=False` 可关闭自动产 finding（罕见，如只想登记 URL 留痕）
 
 ### 2.4b 深挖循环升级（可选）
 

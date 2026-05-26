@@ -10,20 +10,29 @@
 
 ```bash
 python3 << 'EOF'
-from prism.scripts.topic import read_topic
-t = read_topic('{slug}', '{variant}')
-status = (t.get('thesis') or {}).get('prescan_status')
-reason = (t.get('thesis') or {}).get('prescan_failure_reason')
-print(f'prescan_status: {status}')
+from prism.scripts.topic import get_current_prescan_status, read_topic
+# H5 修订：读 helper（取 history[current_version]），不读 thesis.prescan_status 顶层
+# （顶层已废弃 — 会被后续轮次 prescan 污染当前版本写时状态）
+info = get_current_prescan_status('{slug}', '{variant}')
+status = info["status"]
+reason = info["failure_reason"]
+print(f'prescan_status: {status} (thesis v{info["version"]} 写时)')
 print(f'prescan_failure_reason: {reason}')
+
+# 可选：扫后续轮次 prescan_log，了解 thesis 写定后 web 资料是否再 drift
+t = read_topic('{slug}', '{variant}')
+plog = t.get('prescan_log') or []
+if plog:
+    latest = plog[-1]
+    print(f'最近一次 prescan_log: {latest["triggered_by"]} {latest["round_at"][:10]} → {latest["status"]}')
 EOF
 ```
 
-- **`prescan_status == 'failed'`** → **BLOCK 04-synthesize**。critic 不允许给 approve / request-more 之外的任何 verdict 前必须先要求用户二选一：
+- **`status == 'failed'`** → **BLOCK 04-synthesize**。critic 不允许给 approve / request-more 之外的任何 verdict 前必须先要求用户二选一：
   1. **手工 prescan 补漏**：另设备搜索 baseline 第五节优先 query 并粘贴结果入库，重跑 `check_prescan_health` 直到 `partial` 或 `full`
   2. **接受 failed prescan 继续推进**：用户显式确认"接受训练知识赌注"，critic 在 Step 2 反方论据中**自动加重"thesis 论断脆弱"加权**，Step 3 评分对所有"time_sensitivity=快变"的 fact 强制降级 uncertain，verdict 最高只能 `request-more`，不许 `approve`
-- **`prescan_status == 'partial'`** → critic 必须在 Step 2 列出 baseline 第六节"仍未校准"清单作为反方论据起点
-- **`prescan_status == 'full'` 或 None（旧 topic）** → 正常推进
+- **`status == 'partial'`** → critic 必须在 Step 2 列出 baseline 第六节"仍未校准"清单作为反方论据起点
+- **`status == 'full'` 或 None（旧 topic）** → 正常推进
 
 ---
 
@@ -184,6 +193,8 @@ summary = register_web_search_batch(
     hits=[...],
 )
 print(f"web-search 兜底：高/中/低 = {summary['n_high']}/{summary['n_mid']}/{summary['n_low']}")
+# triggered_by='05-critic' 时 register_web_search_batch 自动产 inline finding
+# (修 B2)，summary['inline_finding_paths'] 直接可用 — 不需要等下一轮 03
 ```
 
 入库后**重新读一次相关 finding / 产出**，看 critic 缺口是否被消除：

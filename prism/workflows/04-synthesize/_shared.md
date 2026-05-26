@@ -458,8 +458,14 @@ register_web_search_batch(
 
 入库后在产出 frontmatter 的 `mat_ids_referenced` 列表中加入新 mat_id，确保 `set_output_referenced_mats` 调用时引用正确。
 
+**自动产 inline finding（修 B2）**：`triggered_by='04-synth'` 时
+`register_web_search_batch` 自动给每条 high/mid hit 写 `findings_{mat_id}.md`
++ `mark_processed`，返回值多 `inline_finding_paths`。**不再需要等下一轮 03 抽
+finding**，05-critic 也能直接读到论据。
+
 **纪律**：
 - 单份产出合成过程即兴 web-search 不超过 5 条（避免膨胀）
 - 引用 web-search 入库 material 时**仍需写 mat_id**（不准直接引 WebSearch URL，保溯源链）
 - 如果即兴搜不到 → 在该段产出中标注"此处数据缺失，建议人工补充"，不要编造数字
 - URL/snippet 必须来自 WebSearch 工具实际返回，不得用训练记忆补 URL
+- 显式 `inline_finding=False` 关掉自动产 finding（罕见）

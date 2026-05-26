@@ -59,7 +59,9 @@ WEB_SEARCH_FAIL_THRESHOLD = 0.5       # 入库率 <50% → prescan_status='faile
 
 按优先级降级：
 1. **WebFetch 已知权威 URL**（手工列 5-10 个最相关一手源 — IR PDF / 学术综述 / Wikipedia 当事条目 / 政府公告页）
-2. **跳过 prescan，标 `prescan_status='failed'`**：调 `set_thesis(prescan_status='failed', force_failed=True, prescan_failure_reason='WebSearch 长时不可用，已尝试串行重试 + WebFetch 兜底均无果')`——脚本会强制 next_actions 加警示
+2. **跳过 prescan，标 `prescan_status='failed'`**：
+   - **若本轮在写 thesis 之前（仅 workflow 00 Step 5.0）**：调 `set_thesis(prescan_status='failed', force_failed=True, prescan_failure_reason='WebSearch 长时不可用，已尝试串行重试 + WebFetch 兜底均无果')`——这是 thesis 写时状态，绑 history[N]
+   - **若本轮在 thesis 写定之后（workflow 01 Step 8 / 02 Step 0 / 06 Step 1b 等）**：**不要调 set_thesis**——会污染 thesis 写时 prescan 状态。改调 `set_prescan_log(slug, variant, status='failed', triggered_by='01-prescan', failure_reason='...')` 写到独立 `topic.prescan_log` 数组
 
 ### B.3 健康度检查（写 thesis 之前必跑）
 
@@ -69,7 +71,25 @@ h = check_prescan_health('{slug}', '{variant}', expected_queries=N, triggered_by
 # {'status': 'full'/'partial'/'failed', 'queries_run': N, 'queries_with_hits': M, 'hit_rate': float, 'failure_reason': str|None}
 ```
 
-把 `h['status']` + `h['failure_reason']` 直接传给 `set_thesis(prescan_status=h['status'], prescan_failure_reason=h['failure_reason'], force_failed=(h['status']=='failed'))`——脚本会按状态校验并自动改 next_actions。
+**根据调用情境分流（H5 修订）**：
+
+- **写 thesis 前的 prescan**（仅 workflow 00 Step 5.0）：把 `h['status']` + `h['failure_reason']` 传给 `set_thesis(prescan_status=h['status'], prescan_failure_reason=h['failure_reason'], force_failed=(h['status']=='failed'))`——这一轮的 prescan 状态是该 thesis 版本论据来源的凭证，绑 history[N]
+- **thesis 写定之后的 prescan**（workflow 01 Step 8 / 02 Step 0 / 06 Step 1b 等）：**不调 set_thesis**，改调：
+
+  ```python
+  from prism.scripts.topic import set_prescan_log
+  set_prescan_log(slug, variant,
+      status=h['status'], triggered_by='01-prescan',
+      hit_rate=h.get('hit_rate'),
+      queries_run=h.get('queries_run'),
+      queries_with_hits=h.get('queries_with_hits'),
+      failure_reason=h.get('failure_reason'),
+  )
+  ```
+
+  写到独立 `topic.prescan_log` 数组——不污染 thesis 写时状态，但下游（05-critic）可查最近一次 prescan 是否 drift。
+
+> 历史教训：H5 前所有 prescan 调用方都按 set_thesis 一条路写，结果 workflow 01 Step 8 末尾 prescan 失败会把 thesis_v0 写时 prescan='full' 覆盖成 'failed'，下游 05-critic 误 BLOCK 04-synthesize。修法：thesis.prescan_status 顶层删除，绑 history；后续轮次走独立 log。
 
 ---
 
@@ -166,6 +186,42 @@ summary2 = register_web_search_batch(
 )
 # 救回的会按 mid 入库 (0.7 > 0.5)
 ```
+
+### Runtime whitelist 沉淀（救回 ≥2 次同一 host 后）
+
+同一 host 在不同 topic 被救回 **2 次以上**时，主 agent 应显式 promote 到
+runtime whitelist（per-repo `prism/data/_runtime_whitelist.yaml`），下次
+`classify_domain` 直接返回 `'whitelist'`，省一遍救回。
+
+```python
+from prism.scripts.web_prescan import promote_to_whitelist
+promote_to_whitelist(
+    host='futurephecda.com',
+    reason='行业垂直媒体，已在 cn-rongchang-bio + cn-commercial-space 救回',
+    evidence_mat_ids=['mat-f82bf3', 'mat-cfa4e8'],  # ≥1，便于事后审计
+)
+```
+
+撤销用 `demote_from_whitelist(host)`。**不要手改 yaml** —— promote API 自带
+时间戳 + 证据链。
+
+---
+
+## triggered_by 字段约定（Role α/β/γ 分流根据）
+
+每次 `register_web_search_batch(triggered_by=...)` 传入的字符串会写入 mat 的
+`search_meta.triggered_by`，下游按它决定 mat 进哪一档处理：
+
+| triggered_by | Role | 下游处理（默认）|
+|---|---|---|
+| `00-prescan-baseline` / `00-prescan` / `01-prescan` | **α 背景校准** | **跳过** 03/04（baseline §六 + roadmap 已消化一次）|
+| `02-step0` | **β 研究材料** | 与卖方研报/年报并列，正常进 03 → 04 |
+| `03-extract` / `04-synth` / `05-critic` | **γ 即兴补料** | `register_web_search_batch` 自动产 inline finding + mark_processed（不再悬挂）|
+| `06-daily-monitor` / `07-drilldown` | 监控/深挖 | 按场景另行处理 |
+
+实现细节：`list_unprocessed` 与 `list_affected_outputs` 都默认
+`exclude_triggered_by=('00-prescan-baseline','00-prescan','01-prescan')`，
+保持两层一致。如确需对 Role α 强抽 finding，显式传 `exclude_triggered_by=()`。
 
 ---
 

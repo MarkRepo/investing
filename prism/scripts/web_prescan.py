@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
@@ -18,6 +19,7 @@ import yaml
 from prism.scripts import topic as topic_io
 from prism.scripts.manifest import (
     add_material, make_search_meta, find_by_url, refresh_web_search_meta,
+    mark_processed,
 )
 
 PRISM_ROOT = Path(__file__).resolve().parent.parent
@@ -129,6 +131,103 @@ WHITELIST_DOMAINS: set[str] = {
 _IR_SUBDOMAIN_TOKENS = ("ir.", "investor.", "investors.", "corporate.")
 
 
+# ---------------------------------------------------------------------------
+# Runtime whitelist — 主 agent 救回的非 hardcoded 域名沉淀（跨 topic 复用）
+# ---------------------------------------------------------------------------
+
+_RUNTIME_WHITELIST_PATH = PRISM_ROOT / "data" / "_runtime_whitelist.yaml"
+
+# (mtime, set[str]) 缓存；文件变更后 mtime 不同 → 失效重读
+_runtime_whitelist_cache: tuple[float, set[str]] | None = None
+
+
+def _load_runtime_whitelist() -> set[str]:
+    """Read promoted hosts from prism/data/_runtime_whitelist.yaml (mtime-cached)."""
+    global _runtime_whitelist_cache
+    path = _RUNTIME_WHITELIST_PATH
+    if not path.is_file():
+        return set()
+    mtime = path.stat().st_mtime
+    if _runtime_whitelist_cache and _runtime_whitelist_cache[0] == mtime:
+        return _runtime_whitelist_cache[1]
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return set()
+    hosts: set[str] = set()
+    for entry in data.get("promoted") or []:
+        if isinstance(entry, dict):
+            h = (entry.get("host") or "").strip().lower()
+            if h:
+                hosts.add(h)
+    _runtime_whitelist_cache = (mtime, hosts)
+    return hosts
+
+
+def promote_to_whitelist(host: str, reason: str, evidence_mat_ids: list[str]) -> Path:
+    """把主 agent 救回的 host 写入 runtime whitelist（跨 topic 复用）。
+
+    必填 evidence_mat_ids 便于事后审计——发现误 promote 用 demote_from_whitelist
+    撤销。主 agent 显式调用（不自动），符合 prism "脚本零 LLM" 原则。
+    """
+    host = (host or "").strip().lower().lstrip(".")
+    if not host:
+        raise ValueError("host required")
+    if not reason or not reason.strip():
+        raise ValueError("reason required (post-hoc audit)")
+    if not evidence_mat_ids:
+        raise ValueError("evidence_mat_ids required (≥1 mat that backs this host)")
+
+    path = _RUNTIME_WHITELIST_PATH
+    path.parent.mkdir(parents=True, exist_ok=True)
+    data: dict = {}
+    if path.is_file():
+        try:
+            data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        except Exception:
+            data = {}
+    promoted = list(data.get("promoted") or [])
+    # dedup by host
+    if any((isinstance(e, dict) and (e.get("host") or "").lower() == host) for e in promoted):
+        return path  # already present
+    promoted.append({
+        "host": host,
+        "promoted_at": datetime.now(timezone.utc).isoformat(),
+        "reason": reason.strip(),
+        "evidence_mat_ids": list(evidence_mat_ids),
+    })
+    data["promoted"] = promoted
+    path.write_text(yaml.dump(data, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    # 失效缓存
+    global _runtime_whitelist_cache
+    _runtime_whitelist_cache = None
+    return path
+
+
+def demote_from_whitelist(host: str) -> bool:
+    """撤销 promote。返回是否真实删除。"""
+    host = (host or "").strip().lower().lstrip(".")
+    path = _RUNTIME_WHITELIST_PATH
+    if not path.is_file():
+        return False
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return False
+    promoted = list(data.get("promoted") or [])
+    new_promoted = [
+        e for e in promoted
+        if not (isinstance(e, dict) and (e.get("host") or "").lower() == host)
+    ]
+    if len(new_promoted) == len(promoted):
+        return False
+    data["promoted"] = new_promoted
+    path.write_text(yaml.dump(data, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    global _runtime_whitelist_cache
+    _runtime_whitelist_cache = None
+    return True
+
+
 def _domain_of(url: str) -> str:
     try:
         netloc = urlparse(url).netloc.lower()
@@ -160,6 +259,13 @@ def classify_domain(url: str) -> str:
     # IR sub-domain heuristic
     if any(tok in domain for tok in _IR_SUBDOMAIN_TOKENS):
         return "whitelist"
+    # runtime whitelist (主 agent 救回沉淀)
+    runtime = _load_runtime_whitelist()
+    if domain in runtime:
+        return "whitelist"
+    for wl in runtime:
+        if domain.endswith("." + wl):
+            return "whitelist"
     return "other"
 
 
@@ -399,40 +505,35 @@ def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> lis
                 "kind": "concept-update",
             })
 
-    # 5. thesis K# 派生 — 适用所有类型
-    thesis_block = topic.get("thesis") or {}
-    cur_v = thesis_block.get("current_version")
-    if cur_v is not None:
-        try:
-            from prism.scripts.outputs import extract_killer_questions
-            ks = extract_killer_questions(slug, variant, cur_v)
-            for k in ks:
-                # H3 v2：用 short_name + K#（K# 文本指向 thesis，主 agent 会另读）
-                queries.append({
-                    "query": f"{name_for_query} {k}",
-                    "addresses": [k],
-                    "recency_days": recency_days,
-                    "kind": "killer-question",
-                })
-        except Exception:
-            pass
-
-    # 6. roadmap L4 hunting questions — 适用所有类型
+    # 5. roadmap L4 hunting questions — 适用所有类型
+    # H3 v3：删除 killer-question kind（冗余 — scope 含 search_terms 已宽覆盖，
+    #         l4-hunting 已逐条 K# 对齐）。L4 query 必须用 search_keywords，
+    #         避免 question 长句被 WebSearch 当无意义字串。
     roadmap_path = PRISM_ROOT / "topics" / slug / variant / "roadmap.yaml"
     if roadmap_path.is_file():
         try:
             roadmap = yaml.safe_load(roadmap_path.read_text(encoding="utf-8")) or {}
             l4 = ((roadmap.get("learning_track") or {}).get("l4_hunting") or [])
             for q in l4:
-                qtext = q.get("question") or q.get("text") or ""
                 addrs = q.get("addresses") or []
-                if qtext:
-                    queries.append({
-                        "query": f"{name_for_query} {qtext}",
-                        "addresses": addrs or ["scope"],
-                        "recency_days": recency_days,
-                        "kind": "l4-hunting",
-                    })
+                kws = q.get("search_keywords") or []
+                if kws:
+                    terms = " ".join(str(s).strip() for s in kws[:3] if str(s).strip())
+                    if terms:
+                        queries.append({
+                            "query": f"{name_for_query} {terms}",
+                            "addresses": addrs or ["scope"],
+                            "recency_days": recency_days,
+                            "kind": "l4-hunting",
+                        })
+                else:
+                    qtext = q.get("question") or q.get("text") or ""
+                    addr_label = ",".join(addrs) if addrs else "?"
+                    print(
+                        f"⚠ l4-hunting query 跳过 [addresses={addr_label}]：缺 search_keywords 字段；"
+                        f"原 question='{qtext[:30]}...'。回 workflow 01 Step 2 补 search_keywords。",
+                        file=sys.stderr,
+                    )
         except Exception:
             pass
 
@@ -493,6 +594,7 @@ def register_web_search_result(
     full_text: str | None = None,
     confidence: float | None = None,
     domain_tier: str | None = None,
+    triggered_by: str | None = None,
 ) -> dict:
     """Register one web-search hit: write inbox/.md + add_material.
 
@@ -536,6 +638,7 @@ def register_web_search_result(
         refresh_web_search_meta(
             slug, variant, existing["id"],
             query=query, addresses=addresses,
+            triggered_by=triggered_by,
         )
         result["mat_id"] = existing["id"]
         result["filename"] = existing.get("filename")
@@ -562,7 +665,7 @@ def register_web_search_result(
 
     search_meta = make_search_meta(
         query=query, url=url, domain=domain, domain_tier=domain_tier,
-        searched_at=searched_at,
+        searched_at=searched_at, triggered_by=triggered_by,
     )
     mat_id = add_material(
         slug=slug, filename=filename, source_type="web-search", variant=variant,
@@ -574,6 +677,58 @@ def register_web_search_result(
     return result
 
 
+# ---------------------------------------------------------------------------
+# 即兴 web-search inline finding（修 B2 — 消除"入库无 finding"黑洞）
+# ---------------------------------------------------------------------------
+
+# 03/04/05 即兴 web-search 默认自动产 inline finding 的 trigger 集合
+_INLINE_FINDING_TRIGGERS = frozenset({"03-extract", "04-synth", "05-critic"})
+
+
+def register_inline_finding(
+    slug: str,
+    variant: str,
+    mat_id: str,
+    content: str,
+    addresses: list[str],
+    quality: str = "medium",
+    bias: str = "neutral",
+    extra_frontmatter: dict | None = None,
+) -> Path:
+    """为即兴 web-search mat 写 outputs/findings_{mat_id}.md + mark_processed。
+
+    最小 frontmatter（5 字段）：mat_id / source_type / extracted / quality / bias / addresses
+    若 finding 文件已存在 → skip（不覆盖手写 finding），仅确保 processed=True。
+
+    用于 03/04/05 在合成中遇到具体缺口时点状补料的"即兴 web-search"——避免之前
+    "入库无 finding → 被产出 referenced → 05-critic 找不到论据"的黑洞。
+    """
+    from prism.scripts.topic import _topic_path
+
+    out_dir = _topic_path(slug, variant).parent / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    finding_path = out_dir / f"findings_{mat_id}.md"
+
+    if not finding_path.exists():
+        fm: dict = {
+            "mat_id": mat_id,
+            "source_type": "web-search-inline",
+            "extracted": datetime.now(timezone.utc).date().isoformat(),
+            "quality": quality,
+            "bias": bias,
+            "addresses": list(addresses or []),
+        }
+        if extra_frontmatter:
+            fm.update(extra_frontmatter)
+        fm_yaml = yaml.dump(fm, allow_unicode=True, sort_keys=False).strip()
+        body = (content or "").strip() or "(no content)"
+        finding_path.write_text(f"---\n{fm_yaml}\n---\n\n{body}\n", encoding="utf-8")
+
+    # 不论是否新写，标 processed（幂等）
+    mark_processed(slug, mat_id, variant)
+    return finding_path
+
+
 def register_web_search_batch(
     slug: str,
     variant: str,
@@ -582,6 +737,7 @@ def register_web_search_batch(
     triggered_by: str,
     hits: list[dict],
     full_texts: dict[str, str] | None = None,
+    inline_finding: bool | None = None,
 ) -> dict:
     """One-call batch wrapper for the 6-step prescan ritual.
 
@@ -597,6 +753,11 @@ def register_web_search_batch(
 
     triggered_by ∈ {'00-prescan','01-prescan','02-step0','03-extract','04-synth',
                     '05-critic','06-daily-monitor','07-drilldown'}
+
+    inline_finding: 是否对每条 high/mid mat 自动产 inline finding（修 B2 — 即兴
+      web-search 不再悬挂）。
+      - None（默认）→ triggered_by ∈ {'03-extract','04-synth','05-critic'} 自动开启
+      - True / False → 显式 override
 
     Returns:
         {
@@ -650,6 +811,7 @@ def register_web_search_batch(
             full_text=full_texts.get(url),
             confidence=hit.get("confidence"),
             domain_tier=hit.get("domain_tier"),
+            triggered_by=triggered_by,
         )
         mat_ids.append(r["mat_id"])
         band = r["band"]
@@ -671,6 +833,34 @@ def register_web_search_batch(
 
     new_ids = [m for m in mat_ids if m]
     resolved = auto_resolve_todos(slug, variant, new_ids) if new_ids else []
+
+    # 即兴 web-search 自动产 inline finding（修 B2）
+    if inline_finding is None:
+        do_inline = triggered_by in _INLINE_FINDING_TRIGGERS
+    else:
+        do_inline = bool(inline_finding)
+    inline_finding_paths: list[str] = []
+    if do_inline and new_ids:
+        for hit, mat_id in zip(hits, mat_ids):
+            if not mat_id:
+                continue
+            snippet = (hit.get("snippet") or "").strip()
+            title = (hit.get("title") or "").strip()
+            url = (hit.get("url") or "").strip()
+            full_text = (full_texts or {}).get(url, "")
+            body_parts = [f"# {title}", "", f"**URL**: {url}", "", f"**Query**: {query}", ""]
+            if snippet:
+                body_parts += ["## Snippet", "", snippet, ""]
+            if full_text:
+                body_parts += ["## Full text", "", full_text.strip(), ""]
+            body = "\n".join(body_parts).strip()
+            fp = register_inline_finding(
+                slug=slug, variant=variant, mat_id=mat_id,
+                content=body, addresses=list(addresses),
+                quality="medium", bias="neutral",
+                extra_frontmatter={"url": url, "query": query, "triggered_by": triggered_by},
+            )
+            inline_finding_paths.append(str(fp))
 
     append_search_log(
         slug=slug, variant=variant, query=query,
@@ -724,6 +914,7 @@ def register_web_search_batch(
         "drop_ratio": drop_ratio,
         "dropped_hits": dropped_hits,
         "silent_failure": silent_failure,
+        "inline_finding_paths": inline_finding_paths,
     }
 
 
