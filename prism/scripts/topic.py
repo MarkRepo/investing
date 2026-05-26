@@ -253,13 +253,19 @@ def set_output_referenced_mats(slug: str, output_key: str, mat_ids: list[str], v
     """记录某 output 本次合成所引用的 manifest mat_ids（去重排序）。
     04-synthesize 写完一份 output 后调用，让下次跑 list_affected_outputs 能判定增量。
     成功调用会清空 last_error——再跑一遍即抹掉之前的失败记录。
+    同时把 status 从 'stale' 抹回 'fresh'——闭环 critic verdict='request-rewrite'
+    路径（修 H1：避免 critic 标 stale 后即使 04 已重写，list_affected_outputs
+    仍报 critic-stale 死循环）。
     """
     data = read_topic(slug, variant)
     entry = data["outputs_state"].setdefault(output_key, dict(_DEFAULT_OUTPUT_STATE))
     entry["referenced_mat_ids"] = sorted(set(mat_ids))
     entry["last_updated"] = _now_iso()
     entry["last_error"] = None
+    if entry.get("status") == "stale":
+        entry["status"] = "fresh"
     _write_yaml(_topic_path(slug, variant), data)
+    _trigger_dashboard(slug, variant, f"output={output_key}")
 
 
 def set_output_error(slug: str, output_key: str, message: str, variant: str) -> None:
@@ -287,16 +293,59 @@ def list_failed_outputs(slug: str, variant: str) -> list[dict]:
 _VALID_CRITIC_VERDICTS = ("approve", "request-rewrite", "request-more")
 
 
+def _trigger_dashboard(slug: str, variant: str, reason: str) -> None:
+    """关键节点后异步重建 dashboard（修 S5）—— fire-and-forget subprocess。
+
+    挂载点（仅这几处，避免每个 set_stage 都触发）：
+      - set_critic_verdict（任何 verdict）
+      - set_thesis（升版）
+      - set_output_referenced_mats（每份产出收尾，覆盖 04/09/10）
+
+    用 subprocess + start_new_session 真正脱离主进程——dashboard 跑 ~25s 行情拉取
+    不能让 set_critic_verdict 阻塞主对话。失败仅 stderr 留痕，不阻塞、不写 todo
+    （fire-and-forget 模式下无法捕获 exit code）。
+    """
+    import os
+    import subprocess
+    import sys
+
+    log_dir = PRISM_ROOT / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = log_dir / "dashboard_auto.log"
+    try:
+        with open(log_path, "ab") as fout:
+            fout.write(f"\n--- {_now_iso()} triggered by {reason} ({slug}/{variant}) ---\n".encode())
+            subprocess.Popen(
+                [sys.executable, "-m", "prism.scripts.dashboard"],
+                stdout=fout, stderr=subprocess.STDOUT,
+                cwd=str(PRISM_ROOT.parent),
+                start_new_session=True,
+                close_fds=True,
+                env={**os.environ, "PRISM_DASHBOARD_AUTO": "1"},
+            )
+    except Exception:
+        # 真不能再 raise——主流程不应被 dashboard 触发逻辑搞挂
+        pass
+
+
 def set_critic_verdict(
-    slug: str, variant: str, verdict: str, summary: str = "", thesis_version: int | None = None
+    slug: str,
+    variant: str,
+    verdict: str,
+    summary: str = "",
+    thesis_version: int | None = None,
+    rewrite_keys: list[str] | None = None,
 ) -> dict:
-    """workflow 05-critic-review Step 7 调用。记录评审结论 + 自动按 verdict 跳转 stage。
+    """workflow 05-critic-review Step 7 调用。记录评审结论 + 自动按 verdict 跳转 stage
+    + 写默认 next_actions（修 S4：原 workflow 05 Step 7 大段模板化脚本下沉到此函数）。
 
     verdict:
       - 'approve'         → set_stage('done')      研究完结，可进 06-daily-monitor
       - 'request-rewrite' → set_stage('04-synthesizing')  04 部分 output 需要重写
+                            额外 rewrite_keys（list[str]）会被同步 set_output_status('stale')
       - 'request-more'    → set_stage('02-gather-materials')  缺 material，回 02
 
+    summary 会被嵌入 next_actions 作为可读理由。主 agent 仍可在本函数返回后再 append todo。
     返回写入的 critic dict（含 next_stage 字段供主 agent 汇报）。
     """
     if verdict not in _VALID_CRITIC_VERDICTS:
@@ -318,7 +367,35 @@ def set_critic_verdict(
     critic["next_stage"] = next_st
     data["critic"] = critic
     data["stage"] = next_st
+
+    summary_line = f"critic 评审：{summary}" if summary else "critic 评审完成"
+    if verdict == "approve":
+        ver_tag = f"thesis_v{thesis_version} 已通过 critic-review" if thesis_version is not None else "thesis 已通过 critic-review"
+        data["next_actions"] = [
+            "研究主题已闭环，下一步「监控 {slug}」启动 06-daily-monitor".replace("{slug}", slug),
+            ver_tag,
+            summary_line,
+        ]
+    elif verdict == "request-rewrite":
+        keys_str = ", ".join(rewrite_keys or []) or "（主 agent 未提供 rewrite_keys）"
+        data["next_actions"] = [
+            f"critic 标 stale: {keys_str}",
+            "主 agent 即将在本对话续跑 04（见 workflow 05 Step 7.5）",
+            summary_line,
+        ]
+        # 同步把 rewrite_keys 标 stale，让 04 _shared.md 走 critic-stale 路径
+        for ok in rewrite_keys or []:
+            entry = data["outputs_state"].setdefault(ok, dict(_DEFAULT_OUTPUT_STATE))
+            entry["status"] = "stale"
+            entry["last_updated"] = _now_iso()
+    else:  # request-more
+        data["next_actions"] = [
+            f"说「prism 推进 {slug}」回到 02-gather-materials，先跑 web-search prescan",
+            summary_line,
+        ]
+
     _write_yaml(_topic_path(slug, variant), data)
+    _trigger_dashboard(slug, variant, f"critic-verdict={verdict}")
     return critic
 
 
@@ -432,9 +509,48 @@ def _normalize_todo(item) -> dict:
 
 
 def set_user_todos(slug: str, todos: list, variant: str) -> None:
-    """接受 list[str | dict]，每项规范化为统一 schema 后写入。"""
+    """全量覆写 user_todos。接受 list[str | dict]，每项规范化为统一 schema 后写入。
+
+    保护（修 H2）：若 yaml 现有 todos 里**有**任何 addresses 非空的结构化项，
+    且本次传入的 todos 全部 addresses 为空（包括 str），raise ValueError——
+    强迫调用方走 `append_user_todos`（增量追加）或显式传完整 dict 列表。
+    这条规则不影响 00/01 初始化（yaml 里无结构化 todos 时不触发）。
+    """
     normalized = [_normalize_todo(t) for t in todos]
+    try:
+        existing = read_topic(slug, variant).get("user_todos", []) or []
+    except FileNotFoundError:
+        existing = []
+    existing_has_structured = any(
+        isinstance(t, dict) and t.get("addresses") for t in existing
+    )
+    new_has_structured = any(t.get("addresses") for t in normalized)
+    if existing_has_structured and not new_has_structured:
+        raise ValueError(
+            "set_user_todos 拒绝全量覆写：yaml 现有结构化 todos（含 addresses），"
+            "但本次传入项 addresses 全空。请改用 append_user_todos(slug, todos, variant) "
+            "增量追加，或传完整 dict 列表保留 addresses。"
+        )
     update_topic(slug, variant, user_todos=normalized)
+
+
+def append_user_todos(slug: str, todos: list, variant: str) -> None:
+    """追加 user_todos（按 task 字符串去重），不覆写老 todos。
+
+    新增项可以是 str（无 addresses 占位）或 dict（结构化）。
+    若 task 与现有 todo 重复，跳过该项（保留老的）。
+    用于 03/04/05 等"中间 stage"想加一条提示但不能动 01/02 结构化字段的场景。
+    """
+    try:
+        existing = read_topic(slug, variant).get("user_todos", []) or []
+    except FileNotFoundError:
+        existing = []
+    existing_tasks = {t["task"] for t in existing if isinstance(t, dict) and "task" in t}
+    new_normalized = [_normalize_todo(t) for t in todos]
+    fresh = [t for t in new_normalized if t["task"] not in existing_tasks]
+    if not fresh:
+        return
+    update_topic(slug, variant, user_todos=existing + fresh)
 
 
 def thesis_coverage(slug: str, variant: str, expected_keys: list[str]) -> dict:
@@ -541,7 +657,9 @@ def set_thesis(slug: str, variant: str, version: int, summary: str, stage_set_at
         rev = reverse_check_roadmap_coverage(slug, variant, version)
         if isinstance(rev, dict):
             rev["outdated_ks_marked"] = archived
+        _trigger_dashboard(slug, variant, f"thesis_v{version}")
         return rev
+    _trigger_dashboard(slug, variant, f"thesis_v{version}")
     return None
 
 

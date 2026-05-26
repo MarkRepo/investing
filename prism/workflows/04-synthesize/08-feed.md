@@ -100,18 +100,20 @@ output_key = `08_living_feed`，每次追加后 version+1。
 更新 user_todos：
 
 ```bash
-python -c "
-from prism.scripts.topic import set_user_todos
-set_user_todos('{slug}', [
+python3 -c "
+from prism.scripts.topic import append_user_todos
+# 用 append 不用 set——保留 01/02 结构化 todos 的 K# coverage（修 H2）
+append_user_todos('{slug}', [
     '8 份产出已全部生成（v{N}）',
-    '可选操作：',
-    '  1. 「评审 {slug}」—— 启动 critic review 找漏洞',
-    '  2. 「深挖 {slug} 的{{具体问题}}」—— 深入研究某个方向',
-    '  3. 「记录决策 {slug}」—— 记录投资决策备忘',
-    '  4. 「prism 推进 {slug}」—— 进入 monitor 阶段',
-])
+], '{variant}')
 "
 ```
+
+后续可选操作（写到对话里给用户看，不写 user_todos）：
+1. 「评审 {slug}」—— 启动 critic review 找漏洞
+2. 「深挖 {slug} 的{{具体问题}}」—— 深入研究某个方向
+3. 「记录决策 {slug}」—— 记录投资决策备忘
+4. 「prism 推进 {slug}」—— 进入 monitor 阶段
 
 ---
 

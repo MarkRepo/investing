@@ -1,0 +1,180 @@
+# Shared Sub-workflow — LLM-driven Web-search Prescan
+
+**被引用**：01-build-roadmap (Step 7) / 02-gather-materials (Step 0) / 06-daily-monitor (Step N) / 07-drilldown (Step M)
+**定位**：通用 across 所有 topic type（company / industry / arena / concept），用 LLM 主动调 WebSearch + WebFetch 把"训练截止后的新事件"和"高频小数据"自动纳入 manifest，减少用户手工收集负担
+**LLM 分工**：脚本零 LLM——查询构造 / 域名分类 / 写 inbox / 入 manifest / 更新 todo 都由 Python；WebSearch 调用 / confidence 判断 / addresses 标注由主 agent 在对话里做（参 `memory/feedback_llm_workflow.md`）
+
+---
+
+## Step A：构造查询词
+
+```bash
+python3 << 'EOF'
+from prism.scripts.web_prescan import build_search_queries
+qs = build_search_queries('{slug}', '{variant}', recency_days={recency_days})
+print(f'共 {len(qs)} 条查询：')
+for q in qs:
+    print(f'  [{q["kind"]}] addrs={q["addresses"]} → {q["query"]}')
+EOF
+```
+
+`recency_days` 调用方传：
+- 01-prescan：90（建库时一次性回看 90 天）
+- 02-step0：30（增量扫近 1 个月）
+- 06-daily-monitor：7（deep tier）/ 14（watch tier）
+- 07-drilldown：180（专项往回查更长时段）
+
+---
+
+## Step B：主 agent 调 WebSearch（**每条查询执行一次**）
+
+对每条 `qs[i]`，**主 agent 直接调用 `WebSearch` 工具**（不是脚本调），传：
+- `query`: `qs[i]['query']`
+- 可选 `allowed_domains`: 若关心政策类查询且想强约束官方域，传 `WHITELIST_DOMAINS` 子集
+
+> **硬约束**：只引用 WebSearch 工具实际返回的 search_result block。**禁止用训练知识补 URL / 编造引文**——参 plan 「风险与缓解」。
+
+每条 WebSearch 返回若干条 `{title, url, snippet}`。
+
+---
+
+## Step C：主 agent 对每条结果判断 confidence + addresses
+
+对每条 hit，主 agent 在对话里给出：
+
+| 字段 | 如何判断 |
+|---|---|
+| `domain_tier` | 命中 `WHITELIST_DOMAINS` → `whitelist`；非白名单但内容可信（如该公司官方 IR 页/微信公众号官方账号/已知财经平台） → `llm-judged-official`；其余 → `other` |
+| `confidence` | 不传 → 用 `confidence_for_tier(domain_tier)` 默认（whitelist=0.9 / llm-judged=0.7 / other=0.4）。若 snippet 内容明显高度对题，可上调；明显跑题可下调 |
+| `addresses` | 该 hit 攻打的 K# / Q# 列表（与该 query 的 `qs[i]["addresses"]` 一致或更精细）。**事件锚规则**：若 hit 内容明确绑定某个时间/事件（财报季、监管事件、产品发布），用 `K#@event-slug` 格式（如 `K1@2026Q2-earnings`、`K6@CSRC-2026-05-22`、`K7@Airstar-launch`），事件 slug 仅含 `[A-Za-z0-9_-]`。**裸 `K#`** 表示该 K# 的通用资料（财务结构、商业模式、长期数据），不绑事件。锚的作用：阻止 Q1 材料误覆盖 Q2 事件 todo——参 `memory/feedback_addresses_granularity.md` |
+| `full_text` 抓取 | `band == 'high'` 时主 agent 必须额外调 `WebFetch` 抓全文传入；mid 可选；low 跳过 |
+
+---
+
+## Step D：register 每条 hit（自动三档分流）
+
+```bash
+python3 << 'EOF'
+from prism.scripts.web_prescan import register_web_search_result
+
+# 主 agent 把 Step C 的判断填进来：
+result = register_web_search_result(
+    slug='{slug}',
+    variant='{variant}',
+    query='{query}',
+    url='{url}',
+    title='{title}',
+    snippet='{snippet}',
+    addresses={addresses_list},
+    full_text='{full_text or None}',
+    confidence={confidence_or_None},
+    domain_tier='{domain_tier_or_None}',
+)
+print(result)
+# {mat_id, band, confidence, domain, domain_tier, filename}
+# band='low' 则不入 manifest（mat_id=None），仅 log
+EOF
+```
+
+**分流规则**（脚本内置）：
+- `band='high'`（≥0.8）→ 写 `prism/topics/{slug}/inbox/web-search/{date}_{slug-of-title}.md` + 调 `add_material(source_type='web-search')`
+- `band='mid'`（≥0.5）→ 同 high 但 `notes` 追加 `待用户确认`
+- `band='low'`（<0.5）→ 跳过，不写文件不入 manifest
+
+---
+
+## Step E：auto-resolve user_todos
+
+```bash
+python3 << 'EOF'
+from prism.scripts.web_prescan import auto_resolve_todos
+# 收集本轮 Step D 所有非空 mat_id
+new_ids = [{r1.mat_id}, {r2.mat_id}, ...]  # 主 agent 累积
+resolved = auto_resolve_todos('{slug}', '{variant}', [m for m in new_ids if m])
+for r in resolved:
+    print(f'  ✓ {r["task"][:60]} ← {r["mat_ids"]}')
+EOF
+```
+
+行为：对每条 user_todo，若 `todo.addresses ∩ mat.addresses ≠ ∅`，标 `status='done'` + 追加 `covered_by` + 写 `coverage_note='已由 web-search mat-xxx 覆盖'`。
+
+---
+
+## Step F：append 搜索日志 + 汇报
+
+```bash
+python3 << 'EOF'
+from prism.scripts.web_prescan import append_search_log
+# 整轮汇总后追加一条
+append_search_log(
+    slug='{slug}', variant='{variant}',
+    query='{Step A 全部查询的汇总描述，例如 "01-prescan 全量"}',
+    n_results=<本轮 hit 总数>,
+    n_high=<band=high 数>, n_mid=<band=mid 数>, n_low=<band=low 数>,
+    triggered_by='{01-prescan|02-step0|06-daily-monitor|07-drilldown}',
+)
+EOF
+```
+
+汇报模板：
+
+```
+✅ web-search 本轮完成（triggered_by={...}）
+  查询数：N 条
+  命中：H/M/L 三档 = X/Y/Z
+  入库：X+Y 份（high 自动 / mid 待审 inbox/web-search/）
+  user_todos 自动 done：M 条
+```
+
+---
+
+## stale / expired 维护（仅 06-daily-monitor 调）
+
+```bash
+python3 << 'EOF'
+from prism.scripts.manifest import list_stale_web_search, list_expired_web_search
+stale = list_stale_web_search('{slug}', '{variant}')   # >30 天
+exp   = list_expired_web_search('{slug}', '{variant}') # >90 天
+print(f'stale={len(stale)}, expired={len(exp)}')
+# expired 条目：主 agent 用同样的 query 重跑 Step B-F，新 mat_id 会通过 dedup(filename) 合并 search_meta
+EOF
+```
+
+UI 中 `stale_at < now` 显示黄色 chip；`expire_at < now` 显示红色 chip 提示待重扫。
+
+---
+
+## 关键纪律
+
+1. **零幻觉**：URL/snippet 必须来自 WebSearch 工具实际返回；编造视为污染 manifest，需立即删除（手动 edit yaml）
+2. **band='low' 不写文件**：避免 inbox 膨胀；低质量结果仅靠 `web_search_log.yaml` 留痕
+3. **addresses 必填且语义分三态**（修 C2 全局统一约定，02/03/04/05/07 都按此处理）：
+
+   | 写法 | 语义 | 参与 K# 覆盖？ | 参与 auto_resolve_todos？ | 何时用 |
+   |---|---|---|---|---|
+   | `[]` | **禁用**——不参与任何覆盖，等同未填 | ✗ | ✗ | 不允许；老条目遇到时按 `['background']` 升级 |
+   | `['background']` | 背景资料、无具体 K# 攻打 | ✗ | ✗ | 02 登记的行业全景/历史背景；prescan scope query |
+   | `['scope']` | 与本 topic 范围相关但无具体 K# 攻打 | ✗ | ✗ | 07 drilldown 在 thesis 形成前的探索；00 prescan baseline 优先 query |
+   | `['K1', 'Q3', ...]` | 攻打具体 K# / Q# | ✓ | ✓ | 02/04/05/07 一般情况；roadmap 计划目标 |
+   | `['K1@2026Q2-earnings', ...]` | 攻打 K# 的具体事件锚 | ✓ | ✓（严格事件匹配） | 财报季/监管事件/产品发布等高时效场景 |
+
+   **三态判定流程**：(1) 资料有具体 K#/Q# 锚点 → 用 `['K#'/'Q#'/...]`；(2) 无 K# 但属于本 topic 知识背景 → `['background']`；(3) 与本 topic scope 相关但无 K# 且非背景 → `['scope']`。**禁止 `[]`**。
+
+4. **不改 thesis**：web-search 走 manifest → 03-extract → 04-synthesize → critic-review 同条路径，禁止跳过 findings 直接改 thesis_v{N}.md
+
+---
+
+## 即兴 web-search 上限对照（按知识跨度递增）
+
+整轮 prescan（01 Step 7 / 02 Step 0 / 06 Step 1b）走完整流程；**即兴 web-search** 是 03/04/05/07 等下游 workflow 在处理过程中临时调一次 WebSearch + 立即 `register_web_search_batch` 入库的简化路径，上限按 scope 设置：
+
+| 触发位置 | scope | 上限（单位异） | 整轮累计 |
+|---|---|---|---|
+| 03 (per 单份资料处理) | 训练知识冲突点验证 | ≤3 query | ~30 query (10 份资料) |
+| 04 (per 单份产出合成) | 合成时数据缺失 | ≤5 query | ~55 query (11 份产出) |
+| 05 (per critic 轮) | 反方论据缺口兜底 | ≤5 query × 5-10 hit | ≤50 hit/轮（一次性） |
+| 07 (per drilldown) | 专项深挖 | 按需，无硬上限 | drilldown 本就是 deep dive |
+
+**单位说明**：03/04 计 query 数（避免对话被 hit 列表淹没），05 计 hit 总数（critic 反方需要密度，按 hit 算更直接）。三处都是 per-N scope，不能跨 workflow 相加比较——例如"05 ≤50 hit 比 04 ≤5 query 宽松"是错觉，按整轮累计实际同量级。
+
+**升级到 sub-agent 的判定**：超 scope 上限 → 跳出即兴路径，按 `_subagent_deep_search.md` dispatch sub-agent 并行深挖（参 03 Step 2.4b / 05 Step 6.5b）。

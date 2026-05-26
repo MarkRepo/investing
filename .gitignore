@@ -41,4 +41,7 @@ prism/inbox/manual/
 prism/topics/*/inbox/
 mineru_summaries/
 
+# Runtime logs (dashboard async trigger etc.)
+prism/logs/
+
 .gitnexus

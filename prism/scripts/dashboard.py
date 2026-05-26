@@ -181,10 +181,27 @@ def _kill_triggered(kill_criteria: list[dict]) -> list[dict]:
 def _collect_company_rows() -> list[dict]:
     from prism.scripts.topic import list_topics
     rows = []
+
+    # Group by slug, then pick canonical variant (prefer one with sidecar,
+    # fall back to deepseek-v4-pro, then first) — mirrors _collect_non_company_rows.
+    slug_variants: dict[str, list[dict]] = {}
     for topic in list_topics():
         if topic.get("type") != "company":
             continue
-        slug = topic["slug"]
+        slug_variants.setdefault(topic["slug"], []).append(topic)
+
+    for slug, topics in slug_variants.items():
+        # Prefer variant whose 07_decision_kit.yaml is present
+        canonical = next(
+            (t for t in topics if _load_sidecar(t["slug"], t.get("variant", ""))),
+            None,
+        )
+        if canonical is None:
+            canonical = next(
+                (t for t in topics if t.get("variant") == "deepseek-v4-pro"),
+                topics[0],
+            )
+        topic = canonical
         variant = topic.get("variant", "")
         sidecar = _load_sidecar(slug, variant)
         if not sidecar:
@@ -374,7 +391,7 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
                 f"| — | ⚪ 缺 sidecar | — | — | — | — | — |"
             )
             continue
-        price_str = f"{r['price']}" if r.get("price") else "—"
+        price_str = f"{r['price']:.2f}" if r.get("price") is not None else "—"
         kill_str = "🚨" if r["kill_triggered"] else "✅"
         signpost_str = f"{len(r['upcoming_signposts'])} 个" if r["upcoming_signposts"] else "—"
         lines.append(
@@ -402,6 +419,7 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
 
         # Buy box summary
         bb = r["buy_box"]
+        price_str_detail = f"{r['price']:.2f}" if r.get("price") is not None else "—"
         lines += [
             "**买入框**",
             "",
@@ -411,7 +429,7 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
             f"| 🔵 可建仓 | {bb.get('accumulate_min') or '—'} – {bb.get('accumulate_max') or '—'} |",
             f"| 🟡 观望 | {bb.get('hold_min') or '—'} – {bb.get('hold_max') or '—'} |",
             f"| 🔴 高于观望 | > {bb.get('hold_max') or '—'} |",
-            f"| **当前** | **{r.get('price') or '—'}**（{r.get('price_date') or '—'}）→ {r['zone_label']} |",
+            f"| **当前** | **{price_str_detail}**（{r.get('price_date') or '—'}）→ {r['zone_label']} |",
             "",
         ]
 
@@ -435,8 +453,9 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
         if upcoming:
             lines += ["**近期路标（60天内）**", ""]
             for sp in upcoming:
+                event = sp.get('event') or sp.get('signal') or '—'
                 lines.append(
-                    f"- **{sp['date']}** {sp['event']}  "
+                    f"- **{sp['date']}** {event}  "
                     f"（多：{sp.get('bull_signal', '—')} / 空：{sp.get('bear_signal', '—')}）"
                 )
             lines.append("")
@@ -465,10 +484,11 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
     for r in other_rows:
         for sp in r.get("upcoming_signposts", []):
             all_sp.append((sp["date"], r["display_name"], sp))
-    all_sp.sort(key=lambda x: x[0])
+    all_sp.sort(key=lambda x: str(x[0]))
     if all_sp:
         for date_str, name, sp in all_sp:
-            lines.append(f"- **{date_str}** [{name}] {sp['event']}")
+            event = sp.get('event') or sp.get('signal') or '—'
+            lines.append(f"- **{date_str}** [{name}] {event}")
     else:
         lines.append("*60 天内无路标。*")
     lines.append("")
@@ -595,6 +615,8 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
     tag_map: dict[str, list[str]] = {}
     for r in company_rows + other_rows:
         for tag in r.get("cluster_tags", []):
+            if not isinstance(tag, str):
+                continue  # industry-schema sidecars store cluster dicts here; skip
             tag_map.setdefault(tag, []).append(r["display_name"])
     if tag_map:
         lines += [

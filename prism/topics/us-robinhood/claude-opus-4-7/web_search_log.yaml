@@ -1,0 +1,59 @@
+slug: us-robinhood
+variant: claude-opus-4-7
+entries:
+- searched_at: '2026-05-25T16:25:16.745888+00:00'
+  query: workflow 00 prescan 补救：scope + company-event + K1-K6 共 10 条
+  triggered_by: 01-prescan
+  n_results: 15
+  n_high: 5
+  n_mid: 10
+  n_low: 0
+- searched_at: '2026-05-25T20:06:13.798585+00:00'
+  query: '[K1] SEC Paul Atkins PFOF Order Competition Rule 2026 statement'
+  triggered_by: 01-roadmap-prescan-pending-retry
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-25T20:06:13.799563+00:00'
+  query: '[K2] Bitcoin price forecast 2026 H2 crypto cycle bear market HOOD'
+  triggered_by: 01-roadmap-prescan-pending-retry
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-25T20:06:13.800425+00:00'
+  query: '[K3] Robinhood Gold subscribers Q2 2026 monthly KPI adoption rate'
+  triggered_by: 01-roadmap-prescan-pending-retry
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-25T20:06:13.801437+00:00'
+  query: '[K4] Bitstamp Robinhood take rate institutional vs retail Q2 2026'
+  triggered_by: 01-roadmap-prescan-pending-retry
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-25T20:06:13.802667+00:00'
+  query: '[K5] Robinhood Strategies Banking AUM 2026 quarterly disclosure'
+  triggered_by: 01-roadmap-prescan-pending-retry
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-25T20:06:13.804117+00:00'
+  query: '[K6] Charles Schwab Fidelity crypto event contracts AI advisor 2026 launch'
+  triggered_by: 01-roadmap-prescan-pending-retry
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-25T20:06:13.805745+00:00'
+  query: '[K7] Kalshi Polymarket MIAXdx event contracts 2027 post-election volume'
+  triggered_by: 01-roadmap-prescan-pending-retry
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0

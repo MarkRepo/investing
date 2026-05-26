@@ -13,6 +13,14 @@
 
 至少需要：当前股价/估值数据、行业/公司盈利预测数据（来自资料）
 
+本节 addresses 维度：`[valuation, Q1, K4]`（估值锚定、隐含预期）。
+
+⚠️ 本文档下文多处"从 findings 中提取..."的措辞 = 从主 agent 已加载 context 中筛取，**不是要重读全部 findings**。写本份前：
+
+1. Read `outputs/_findings_index.md` 确认相关 mat_id 仍在记忆中
+2. 模糊则单 Read 几份补回（不要全读 22 份）
+3. 直接从 context 写——文中"从 findings 中..."字句无须再 grep 文件
+
 ---
 
 ## Step 1：按 topic.type 分支处理

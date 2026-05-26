@@ -584,3 +584,111 @@ def list_search_log(slug: str, variant: str) -> list[dict]:
         return []
     entries = data.get("entries") or []
     return list(reversed(entries))
+
+
+# ---------------------------------------------------------------------------
+# 02 Step 0 智能 recency 判定（修 S1）
+# ---------------------------------------------------------------------------
+
+_PRESCAN_TRIGGERS = {"00-prescan", "00-prescan-baseline", "01-prescan", "02-step0"}
+
+
+def should_run_step0(slug: str, variant: str) -> dict:
+    """02 Step 0 是否要跑 prescan，跑就给 recency_days；不跑给 reason。
+
+    决策表（基于 web_search_log.yaml 中最近一次 _PRESCAN_TRIGGERS 内的 entry）：
+      - 任一 prescan 距今 ≤ 7 天        → skip（紧接 01-prescan 或上一次 02-step0）
+      - 最近 02-step0 在 (7, 14] 天      → recency_days=7（增量扫近一周）
+      - 最近 02-step0 在 (14, 60] 天     → recency_days=30（按原默认）
+      - 无 02-step0 历史 或 > 60 天      → recency_days=90（首跑/久未扫，兜底回看）
+
+    Returns:
+        {
+            'should_run': bool,
+            'recency_days': int | None,   # None when should_run=False
+            'reason': str,                # 单行可读理由
+            'last_prescan': dict | None,  # 最近的 entry，便于汇报
+        }
+    """
+    log = list_search_log(slug, variant)  # newest first
+    prescans = [e for e in log if e.get("triggered_by") in _PRESCAN_TRIGGERS]
+
+    if not prescans:
+        return {
+            "should_run": True,
+            "recency_days": 90,
+            "reason": "无任何 prescan 历史，首跑回看 90 天",
+            "last_prescan": None,
+        }
+
+    latest = prescans[0]
+    latest_at = _parse_iso(latest.get("searched_at"))
+    if latest_at is None:
+        return {
+            "should_run": True,
+            "recency_days": 90,
+            "reason": "最近 prescan 时间戳无法解析，按首跑回看 90 天",
+            "last_prescan": latest,
+        }
+    now = datetime.now(timezone.utc)
+    days_since_latest = (now - latest_at).days
+
+    if days_since_latest <= 7:
+        return {
+            "should_run": False,
+            "recency_days": None,
+            "reason": f"最近 prescan 距今 {days_since_latest} 天（≤7），跳过",
+            "last_prescan": latest,
+        }
+
+    # 区分"最近是 02-step0"和"最近只是 00/01-prescan"
+    step0_entries = [e for e in prescans if e.get("triggered_by") == "02-step0"]
+    if not step0_entries:
+        # 只有 00/01-prescan 历史 → 当前算"02 首跑"，按 30 天增量
+        return {
+            "should_run": True,
+            "recency_days": 30,
+            "reason": f"无 02-step0 历史（最近 01/00-prescan 距今 {days_since_latest} 天），按 30 天增量扫",
+            "last_prescan": latest,
+        }
+
+    step0_at = _parse_iso(step0_entries[0].get("searched_at"))
+    if step0_at is None:
+        return {
+            "should_run": True,
+            "recency_days": 90,
+            "reason": "最近 02-step0 时间戳无法解析，回看 90 天兜底",
+            "last_prescan": step0_entries[0],
+        }
+    step0_days = (now - step0_at).days
+
+    if step0_days <= 14:
+        return {
+            "should_run": True,
+            "recency_days": 7,
+            "reason": f"最近 02-step0 距今 {step0_days} 天（≤14），增量扫近 7 天",
+            "last_prescan": step0_entries[0],
+        }
+    if step0_days <= 60:
+        return {
+            "should_run": True,
+            "recency_days": 30,
+            "reason": f"最近 02-step0 距今 {step0_days} 天（14-60），默认 30 天 window",
+            "last_prescan": step0_entries[0],
+        }
+    return {
+        "should_run": True,
+        "recency_days": 90,
+        "reason": f"最近 02-step0 距今 {step0_days} 天（>60），回看 90 天兜底",
+        "last_prescan": step0_entries[0],
+    }
+
+
+def _parse_iso(s):
+    """Local ISO parser (mirrors manifest._parse_iso for log timestamps)."""
+    if not s:
+        return None
+    try:
+        return datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except (ValueError, AttributeError):
+        return None

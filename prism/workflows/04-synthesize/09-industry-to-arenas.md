@@ -211,3 +211,9 @@ set_next_actions('{slug}', ['为深挖档创建 arena topic', '或进入日常�
 ```
 
 将 "09-industry-to-arenas 完成" 摘要追加到 `08_living_feed.md`。
+
+---
+
+## Step 8：仪表盘自动刷新（修 S5）
+
+`set_output_referenced_mats('09_industry_to_arenas', ...)` 已自动 fire-and-forget 触发 dashboard 异步重建，**无需手跑** `python -m prism.scripts.dashboard`。后台失败留痕在 `prism/logs/dashboard_auto.log`。

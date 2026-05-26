@@ -25,9 +25,14 @@ print('已生成产出：', fresh)
 
 ---
 
-## Step 1：读取已有产出
+## Step 1：复用主 agent 上下文中已有的 01-06（不要 cat / 不要 Read）
+
+⚠️ **不要 `cat` 或 Read 01-06 产出文件**——按 `_shared.md` 调度模式，01-06 是你刚刚（同一 04 阶段）批次 Write 出去的，已经在主 agent context 里。重新读 6 份 ≈ 1-2 万 token 浪费。
+
+唯一例外：**重跑 07 单份**（用户说"重写 07"），且 01-06 不在当前 context 中——此时才需要 cat：
 
 ```bash
+# 仅在重跑 07 单份且 01-06 不在 context 中时执行
 cat prism/topics/{slug}/{variant}/outputs/01_business_panorama.md
 cat prism/topics/{slug}/{variant}/outputs/02_cycle_positioning.md
 cat prism/topics/{slug}/{variant}/outputs/03_narrative_ecology.md

@@ -1,0 +1,816 @@
+slug: us-robinhood
+variant: claude-opus-4-7
+updated: '2026-05-26T00:59:40.933647+00:00'
+materials:
+- id: mat-a99410
+  filename: 2026-05-25_robinhood-reports-first-quarter-2026-results.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.835196+00:00'
+  processed: true
+  notes: query='Robinhood HOOD Q1 2026 earnings results revenue crypto'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Robinhood HOOD Q1 2026 earnings results revenue crypto
+    url: https://investors.robinhood.com/news-releases/news-release-details/robinhood-reports-first-quarter-2026-results
+    domain: investors.robinhood.com
+    domain_tier: whitelist
+    searched_at: '2026-05-25T16:24:37.834417+00:00'
+    stale_at: '2026-06-24T16:24:37.834417+00:00'
+    expire_at: '2026-08-23T16:24:37.834417+00:00'
+- id: mat-4c5f6e
+  filename: 2026-05-25_robinhood-reports-fourth-quarter-and-full-year-202.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.836911+00:00'
+  processed: true
+  notes: query='Robinhood Gold subscribers 2025 Q4 growth ARPU'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K4
+  - K5
+  - scope
+  confidence: 0.85
+  search_meta:
+    query: Robinhood Gold subscribers 2025 Q4 growth ARPU
+    url: https://www.globenewswire.com/news-release/2026/02/10/3235771/0/en/Robinhood-Reports-Fourth-Quarter-and-Full-Year-2025-Results.html
+    domain: globenewswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:25:05.414021+00:00'
+    stale_at: '2026-06-24T16:25:05.414021+00:00'
+    expire_at: '2026-08-23T16:25:05.414021+00:00'
+- id: mat-6abade
+  filename: 2026-05-25_sec-gov-order-competition-rule.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.839429+00:00'
+  processed: true
+  notes: query='Robinhood PFOF SEC Order Competition Rule 2026 status'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Robinhood PFOF SEC Order Competition Rule 2026 status
+    url: https://www.sec.gov/rules-regulations/2025/06/order-competition-rule
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-05-25T16:24:37.838294+00:00'
+    stale_at: '2026-06-24T16:24:37.838294+00:00'
+    expire_at: '2026-08-23T16:24:37.838294+00:00'
+- id: mat-599824
+  filename: 2026-05-25_payment-for-order-flow-pfof-and-broker-dealer-regu.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.842762+00:00'
+  processed: true
+  notes: query='Robinhood PFOF SEC Order Competition Rule 2026 status' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Robinhood PFOF SEC Order Competition Rule 2026 status
+    url: https://www.congress.gov/crs-product/IF12594
+    domain: congress.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.841321+00:00'
+    stale_at: '2026-06-24T16:24:37.841321+00:00'
+    expire_at: '2026-08-23T16:24:37.841321+00:00'
+- id: mat-188ea6
+  filename: 2026-05-25_introducing-robinhood-strategies-robinhood-banking.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.846950+00:00'
+  processed: true
+  notes: query='Robinhood Strategies AUM Banking 2026 wealth management' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Robinhood Strategies AUM Banking 2026 wealth management
+    url: https://robinhood.com/us/en/newsroom/introducing-strategies-banking-and-cortex/
+    domain: robinhood.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.845193+00:00'
+    stale_at: '2026-06-24T16:24:37.845193+00:00'
+    expire_at: '2026-08-23T16:24:37.845193+00:00'
+- id: mat-24d0dd
+  filename: 2026-05-25_robinhood-launches-prediction-markets-hub.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.851936+00:00'
+  processed: true
+  notes: query='Robinhood prediction markets Kalshi event contracts 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Robinhood prediction markets Kalshi event contracts 2026
+    url: https://robinhood.com/us/en/newsroom/robinhood-prediction-markets-hub/
+    domain: robinhood.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.849880+00:00'
+    stale_at: '2026-06-24T16:24:37.849880+00:00'
+    expire_at: '2026-08-23T16:24:37.849880+00:00'
+- id: mat-ad0673
+  filename: 2026-05-25_robinhood-extends-prediction-markets-via-joint-ven.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.857926+00:00'
+  processed: true
+  notes: query='Robinhood Markets latest news 2026 acquisitions products' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Robinhood Markets latest news 2026 acquisitions products
+    url: https://robinhood.com/us/en/newsroom/robinhood-prediction-markets-joint-venture/
+    domain: robinhood.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.855468+00:00'
+    stale_at: '2026-06-24T16:24:37.855468+00:00'
+    expire_at: '2026-08-23T16:24:37.855468+00:00'
+- id: mat-409ba8
+  filename: 2026-05-25_the-bitstamp-blog-by-robinhood.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.864653+00:00'
+  processed: true
+  notes: query='Robinhood Bitstamp integration crypto exchange take rate 2025 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Robinhood Bitstamp integration crypto exchange take rate 2025 2026
+    url: https://blog.bitstamp.net/
+    domain: blog.bitstamp.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.861900+00:00'
+    stale_at: '2026-06-24T16:24:37.861900+00:00'
+    expire_at: '2026-08-23T16:24:37.861900+00:00'
+- id: mat-7475c0
+  filename: 2026-05-25_bitstamp-flips-robinhood-crypto-trading-volumes.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.872192+00:00'
+  processed: true
+  notes: query='Robinhood Bitstamp integration crypto exchange take rate 2025 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  confidence: 0.55
+  search_meta:
+    query: Robinhood Bitstamp integration crypto exchange take rate 2025 2026
+    url: https://coinmarketcap.com/academy/article/bitstamp-flips-robinhoods-crypto-trading-volumes
+    domain: coinmarketcap.com
+    domain_tier: other
+    searched_at: '2026-05-25T16:24:37.869166+00:00'
+    stale_at: '2026-06-24T16:24:37.869166+00:00'
+    expire_at: '2026-08-23T16:24:37.869166+00:00'
+- id: mat-115c1e
+  filename: 2026-05-25_robinhood-spacex-ipo-access-and-new-products.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.880683+00:00'
+  processed: true
+  notes: query='Robinhood Markets latest news 2026 acquisitions products' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.5
+  search_meta:
+    query: Robinhood Markets latest news 2026 acquisitions products
+    url: https://simplywall.st/stocks/us/diversified-financials/nasdaq-hood/robinhood-markets/news/is-robinhoods-spacex-ipo-access-and-new-products-altering-th
+    domain: simplywall.st
+    domain_tier: other
+    searched_at: '2026-05-25T16:24:37.877265+00:00'
+    stale_at: '2026-06-24T16:24:37.877265+00:00'
+    expire_at: '2026-08-23T16:24:37.877265+00:00'
+- id: mat-e9d55a
+  filename: 2026-05-25_list-of-13-acquisitions-by-robinhood-apr-2026---tr.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.890118+00:00'
+  processed: true
+  notes: query='Robinhood Markets latest news 2026 acquisitions products' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.55
+  search_meta:
+    query: Robinhood Markets latest news 2026 acquisitions products
+    url: https://tracxn.com/d/acquisitions/acquisitions-by-robinhood/__ftFGCJ3CCjzKvgmHzIC3I7cNIjrIk2k6uypP6P1qOWk
+    domain: tracxn.com
+    domain_tier: other
+    searched_at: '2026-05-25T16:24:37.886333+00:00'
+    stale_at: '2026-06-24T16:24:37.886333+00:00'
+    expire_at: '2026-08-23T16:24:37.886333+00:00'
+- id: mat-1daa0f
+  filename: 2026-05-25_hood---robinhood-markets-pe-ratio-current-and-hist.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.900302+00:00'
+  processed: true
+  notes: query='Robinhood stock price valuation 2026 PE ratio forecast' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.55
+  search_meta:
+    query: Robinhood stock price valuation 2026 PE ratio forecast
+    url: https://fullratio.com/stocks/nasdaq-hood/pe-ratio
+    domain: fullratio.com
+    domain_tier: other
+    searched_at: '2026-05-25T16:24:37.896304+00:00'
+    stale_at: '2026-06-24T16:24:37.896304+00:00'
+    expire_at: '2026-08-23T16:24:37.896304+00:00'
+- id: mat-abea64
+  filename: 2026-05-25_robinhood-markets-hood-stock-price-overview.md
+  source_type: web-search
+  added: '2026-05-25T16:24:37.911803+00:00'
+  processed: true
+  notes: query='Robinhood Markets (HOOD) HOOD 监管处罚' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.55
+  search_meta:
+    query: Robinhood Markets (HOOD) HOOD 监管处罚
+    url: https://stockanalysis.com/stocks/hood/
+    domain: stockanalysis.com
+    domain_tier: other
+    searched_at: '2026-05-25T16:24:37.906914+00:00'
+    stale_at: '2026-06-24T16:24:37.906914+00:00'
+    expire_at: '2026-08-23T16:24:37.906914+00:00'
+- id: mat-a6e176
+  filename: 2026-05-25_robinhood-q1-2026-earnings-revenue-up-15-crypto-do.md
+  source_type: web-search
+  added: '2026-05-25T16:25:05.406081+00:00'
+  processed: true
+  notes: query='Robinhood HOOD Q1 2026 earnings results revenue crypto'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K5
+  - scope
+  confidence: 0.85
+  search_meta:
+    query: Robinhood HOOD Q1 2026 earnings results revenue crypto
+    url: https://finance.yahoo.com/markets/stocks/articles/robinhood-q1-2026-earnings-revenue-203244837.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:25:05.401147+00:00'
+    stale_at: '2026-06-24T16:25:05.401147+00:00'
+    expire_at: '2026-08-23T16:25:05.401147+00:00'
+- id: mat-8ed60a
+  filename: 2026_HOOD_10-Q_2026-04-29.htm
+  source_type: quarterly-report
+  added: '2026-05-25T20:02:53.340603+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Robinhood Markets, Inc.
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K5
+  - K7
+- id: mat-706061
+  filename: 2025_HOOD_10-K_2026-02-18.htm
+  source_type: annual-report
+  added: '2026-05-25T20:02:54.067435+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Robinhood Markets, Inc.
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  - Q1
+  - Q2
+- id: mat-0f5222
+  filename: 2026_COIN_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-05-25T20:02:57.831195+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+- id: mat-9730ab
+  filename: 2025_COIN_10-K_2026-02-12.htm
+  source_type: annual-report
+  added: '2026-05-25T20:02:58.768879+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+- id: mat-32e412
+  filename: 2026_SCHW_10-Q_2026-05-08.htm
+  source_type: quarterly-report
+  added: '2026-05-25T20:03:00.818467+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — SCHWAB CHARLES CORP
+  mineru_state: not_needed
+  addresses:
+  - K6
+- id: mat-c70cf2
+  filename: 2025_SCHW_10-K_2026-02-25.htm
+  source_type: annual-report
+  added: '2026-05-25T20:03:01.822832+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — SCHWAB CHARLES CORP
+  mineru_state: not_needed
+  addresses:
+  - K6
+- id: mat-687a1d
+  filename: 2026_IBKR_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-05-25T20:03:03.853023+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Interactive Brokers Group, Inc.
+  mineru_state: not_needed
+  addresses:
+  - K6
+- id: mat-eb3ef4
+  filename: 2025_IBKR_10-K_2026-02-27.htm
+  source_type: annual-report
+  added: '2026-05-25T20:03:04.926411+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Interactive Brokers Group, Inc.
+  mineru_state: not_needed
+  addresses:
+  - K6
+- id: mat-9de0c3
+  filename: sec/2026_HOOD_10-Q_2026-04-29/item_1_financial.md
+  source_type: sec-section
+  added: '2026-05-26T00:58:43.921289+00:00'
+  processed: false
+  notes: split from 2026_HOOD_10-Q_2026-04-29.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-8ed60a
+  sec_section: item_1_financial
+- id: mat-6a30e0
+  filename: sec/2026_HOOD_10-Q_2026-04-29/item_2_mda.md
+  source_type: sec-section
+  added: '2026-05-26T00:58:43.931634+00:00'
+  processed: false
+  notes: split from 2026_HOOD_10-Q_2026-04-29.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-8ed60a
+  sec_section: item_2_mda
+- id: mat-ec7c9d
+  filename: sec/2026_HOOD_10-Q_2026-04-29/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:58:43.942115+00:00'
+  processed: false
+  notes: split from 2026_HOOD_10-Q_2026-04-29.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-8ed60a
+  sec_section: item_3_quant_risk
+- id: mat-b4b965
+  filename: sec/2026_HOOD_10-Q_2026-04-29/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:58:43.952722+00:00'
+  processed: false
+  notes: split from 2026_HOOD_10-Q_2026-04-29.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-8ed60a
+  sec_section: item_1a_risk
+- id: mat-e6811c
+  filename: sec/2025_COIN_10-K_2026-02-12/item_1_business.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.367757+00:00'
+  processed: false
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-9730ab
+  sec_section: item_1_business
+- id: mat-51744d
+  filename: sec/2025_COIN_10-K_2026-02-12/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.379403+00:00'
+  processed: false
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-9730ab
+  sec_section: item_1a_risk
+- id: mat-c1a7a9
+  filename: sec/2025_COIN_10-K_2026-02-12/item_7_mda.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.391022+00:00'
+  processed: false
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-9730ab
+  sec_section: item_7_mda
+- id: mat-bf9b74
+  filename: sec/2025_COIN_10-K_2026-02-12/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.402931+00:00'
+  processed: false
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-9730ab
+  sec_section: item_7a_quant_risk
+- id: mat-ac7ce5
+  filename: sec/2025_COIN_10-K_2026-02-12/item_8_financial.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.415078+00:00'
+  processed: false
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-9730ab
+  sec_section: item_8_financial
+- id: mat-6a0703
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_1_business.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.428659+00:00'
+  processed: false
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-706061
+  sec_section: item_1_business
+- id: mat-063bef
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.441427+00:00'
+  processed: false
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-706061
+  sec_section: item_1a_risk
+- id: mat-202281
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_7_mda.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.454382+00:00'
+  processed: false
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-706061
+  sec_section: item_7_mda
+- id: mat-27f21c
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.467823+00:00'
+  processed: false
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-706061
+  sec_section: item_7a_quant_risk
+- id: mat-34c3a6
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_8_financial.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.481490+00:00'
+  processed: false
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-706061
+  sec_section: item_8_financial
+- id: mat-59684d
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_1_business.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.496354+00:00'
+  processed: false
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-eb3ef4
+  sec_section: item_1_business
+- id: mat-c44ae3
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.510654+00:00'
+  processed: false
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-eb3ef4
+  sec_section: item_1a_risk
+- id: mat-08cf26
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_7_mda.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.525173+00:00'
+  processed: false
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-eb3ef4
+  sec_section: item_7_mda
+- id: mat-8a41fa
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.540367+00:00'
+  processed: false
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-eb3ef4
+  sec_section: item_7a_quant_risk
+- id: mat-e5f1c8
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_8_financial.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.555564+00:00'
+  processed: false
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-eb3ef4
+  sec_section: item_8_financial
+- id: mat-51ea5d
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_1_business.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.572054+00:00'
+  processed: false
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-c70cf2
+  sec_section: item_1_business
+- id: mat-4ea286
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.588442+00:00'
+  processed: false
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-c70cf2
+  sec_section: item_1a_risk
+- id: mat-2d4e3e
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_7_mda.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.604909+00:00'
+  processed: false
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-c70cf2
+  sec_section: item_7_mda
+- id: mat-da4779
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.621342+00:00'
+  processed: false
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-c70cf2
+  sec_section: item_7a_quant_risk
+- id: mat-52f29f
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_8_financial.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.638265+00:00'
+  processed: false
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-c70cf2
+  sec_section: item_8_financial
+- id: mat-a5ceb0
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_1_financial.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.656197+00:00'
+  processed: false
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-0f5222
+  sec_section: item_1_financial
+- id: mat-f62dc3
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_2_mda.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.673545+00:00'
+  processed: false
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-0f5222
+  sec_section: item_2_mda
+- id: mat-b96f07
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.691106+00:00'
+  processed: false
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-0f5222
+  sec_section: item_3_quant_risk
+- id: mat-5b81f2
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.708978+00:00'
+  processed: false
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-0f5222
+  sec_section: item_1a_risk
+- id: mat-fd3185
+  filename: sec/2026_IBKR_10-Q_2026-05-07/item_1_financial.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.796681+00:00'
+  processed: false
+  notes: split from 2026_IBKR_10-Q_2026-05-07.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-687a1d
+  sec_section: item_1_financial
+- id: mat-f478ba
+  filename: sec/2026_IBKR_10-Q_2026-05-07/item_2_mda.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.815406+00:00'
+  processed: false
+  notes: split from 2026_IBKR_10-Q_2026-05-07.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-687a1d
+  sec_section: item_2_mda
+- id: mat-db796e
+  filename: sec/2026_IBKR_10-Q_2026-05-07/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.834199+00:00'
+  processed: false
+  notes: split from 2026_IBKR_10-Q_2026-05-07.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-687a1d
+  sec_section: item_3_quant_risk
+- id: mat-1921f5
+  filename: sec/2026_IBKR_10-Q_2026-05-07/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.853276+00:00'
+  processed: false
+  notes: split from 2026_IBKR_10-Q_2026-05-07.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-687a1d
+  sec_section: item_1a_risk
+- id: mat-3d25fe
+  filename: sec/2026_SCHW_10-Q_2026-05-08/item_1_financial.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.873419+00:00'
+  processed: false
+  notes: split from 2026_SCHW_10-Q_2026-05-08.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-32e412
+  sec_section: item_1_financial
+- id: mat-d880ab
+  filename: sec/2026_SCHW_10-Q_2026-05-08/item_2_mda.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.893193+00:00'
+  processed: false
+  notes: split from 2026_SCHW_10-Q_2026-05-08.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-32e412
+  sec_section: item_2_mda
+- id: mat-ad3718
+  filename: sec/2026_SCHW_10-Q_2026-05-08/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.913288+00:00'
+  processed: false
+  notes: split from 2026_SCHW_10-Q_2026-05-08.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-32e412
+  sec_section: item_3_quant_risk
+- id: mat-a8be35
+  filename: sec/2026_SCHW_10-Q_2026-05-08/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-05-26T00:59:40.933640+00:00'
+  processed: false
+  notes: split from 2026_SCHW_10-Q_2026-05-08.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-32e412
+  sec_section: item_1a_risk

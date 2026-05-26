@@ -1,0 +1,46 @@
+slug: global-constellation-energy
+variant: claude-opus-4-7
+updated: '2026-05-25T07:28:18.816408+00:00'
+materials:
+- id: mat-1a1d15
+  filename: 2026_VST_10-Q_2026-05-08.htm
+  source_type: quarterly-report
+  added: '2026-05-25T06:48:38.813056+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Vistra Corp.
+  mineru_state: not_needed
+- id: mat-9a190d
+  filename: 2025_VST_10-K_2026-02-27.htm
+  source_type: annual-report
+  added: '2026-05-25T06:48:40.225983+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Vistra Corp.
+  mineru_state: not_needed
+- id: mat-6f0b50
+  filename: 2026_PEG_10-Q_2026-05-05.htm
+  source_type: quarterly-report
+  added: '2026-05-25T06:48:43.903699+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — PUBLIC SERVICE ENTERPRISE GROUP INC
+  mineru_state: not_needed
+- id: mat-6a9d58
+  filename: 2025_PEG_10-K_2026-02-26.htm
+  source_type: annual-report
+  added: '2026-05-25T06:48:45.675559+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — PUBLIC SERVICE ENTERPRISE GROUP INC
+  mineru_state: not_needed
+- id: mat-57cbab
+  filename: 2026_TLN_10-Q_2026-05-05.htm
+  source_type: quarterly-report
+  added: '2026-05-25T06:48:49.027899+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Talen Energy Corp
+  mineru_state: not_needed
+- id: mat-9763b5
+  filename: 2025_TLN_10-K_2026-02-26.htm
+  source_type: annual-report
+  added: '2026-05-25T06:48:50.644708+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Talen Energy Corp
+  mineru_state: not_needed

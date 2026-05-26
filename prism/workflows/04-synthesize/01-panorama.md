@@ -14,13 +14,15 @@
 
 ---
 
-## Step 1：读取 findings
+## Step 1：聚焦商业模式维度（按索引补读，不要无脑 Read 全部 findings）
 
-```bash
-ls prism/topics/{slug}/{variant}/outputs/findings_*.md
-```
+本节 addresses 维度：`[scope, K3, K5]`（业务范围、护城河、增长驱动）。
 
-读取所有 findings 文件，提炼与「商业模式」相关的数据点。
+⚠️ **不要 `ls` 或重读全部 findings_*.md**——`_shared.md` Step 1 已一次性加载。写本份前：
+
+1. Read `outputs/_findings_index.md`（~3K token，廉价）
+2. 按 addresses=`[scope, K3, K5]` 从索引筛出相关 mat_id
+3. **自检**：能清晰回忆这些 mat_id 内容 → 直接写；模糊 → 单 Read 那几份补回（不要全读 22 份）
 
 ---
 

@@ -6,13 +6,32 @@
 
 ---
 
-## Step 0：web-search 增量扫描（**新增**）
+## Step 0：web-search 智能增量扫描（**修 S1：脚本判 recency**）
 
-在检查用户手工放进 inbox 的资料之前，先跑 `_web_prescan_shared.md`（`recency_days=30`）做增量扫描——把过去一个月的新事件/数据先自动入库，再让用户只补"训练 + web-search 都覆盖不到"的部分。
+先调脚本判断是否要跑、跑就用多少 recency_days；不再由 LLM 拍脑袋默认 30。
 
-- 对 manifest 中尚未覆盖的 K# 构造定向查询（参 `validate_manifest_coverage` 输出的 uncovered 列表）
-- 已被 01-prescan 处理过的 topic 走"增量"模式：跳过 `web_search_log.yaml` 里 ≤7 天的相同 query
-- `triggered_by='02-step0'`
+```bash
+python3 -c "
+from prism.scripts.web_prescan import should_run_step0
+r = should_run_step0('{slug}', '{variant}')
+print(f'should_run={r[\"should_run\"]}, recency_days={r[\"recency_days\"]}')
+print(f'reason: {r[\"reason\"]}')
+"
+```
+
+决策表（脚本内置，仅供参考）：
+
+| 最近 prescan 距今 | 决策 |
+|---|---|
+| ≤ 7 天（任何 triggered_by） | **跳过 Step 0**，直接进 Step 1 |
+| 无任何 prescan 历史 | recency_days=90 兜底 |
+| 仅有 01/00-prescan，无 02-step0 历史 | recency_days=30 |
+| 02-step0 距今 7-14 天 | recency_days=7 增量 |
+| 02-step0 距今 14-60 天 | recency_days=30 默认 |
+| 02-step0 距今 > 60 天 | recency_days=90 兜底 |
+
+`should_run=True` → 按脚本给的 recency_days 调用 `_web_prescan_shared.md`（`triggered_by='02-step0'`）。
+`should_run=False` → 直接进入 Step 1（理由 echo 到对话即可）。
 
 跑完 Step 0 后再进入 Step 1，把 web-search 已经搞定的 todo 从用户视野里摘掉。
 
@@ -91,10 +110,10 @@ print(f'已登记：{filename} → {mat_id}')
 "
 ```
 
-**关于 addresses（强制）**：
-- 必须填——否则 detail 页「📚 实际收集覆盖」徽章无法把该材料映射到 Killer Question
+**关于 addresses（强制三态）** — 全局约定见 `_web_prescan_shared.md` 关键纪律 3：
+- 必填，**禁止 `[]`**
 - K# 来自 thesis_v{N}.md；Q# 来自 roadmap.yaml 的 L1-L4 question
-- 如果材料不直接攻打任何 K/Q，可填 `['background']` 标记为背景资料
+- 无具体 K#/Q# 时按背景资料填 `['background']`；与 topic scope 相关但非背景填 `['scope']`
 
 **关于 dedup**：`add_material` 已内建按 filename 去重——重复调用会合并 addresses/notes 而非新增条目，安全幂等。
 
@@ -103,6 +122,8 @@ print(f'已登记：{filename} → {mat_id}')
 ---
 
 ## Step 4.5：自动触发 mineru 转换（**新增——sell-side/industry PDF 必做**）
+
+> ⚠️ **必须用 vlm 模型**——pipeline/pymupdf 会丢表格/公式/多栏排版，研报和行业报告的关键数据多在表格里。**禁止改 `convert(src, out_dir, 'vlm')` 的第三参**。详见 [[feedback_mineru_required]]。
 
 `add_material` 登记时已自动给 sell-side-note / industry-research / policy 类型的 PDF 标 `mineru_state=needs`。
 登记完成后立即跑 mineru 转换，避免 workflow 03 卡在转换上。
@@ -188,6 +209,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 ## Step 6：增量更新 topic 状态（**禁止 set_user_todos(list[str]) 覆写**）
 
 ⚠ 与 workflow 01 Step 6 同样的纪律：不能用 list[str] 全量覆写 user_todos，会丢 priority/info_tier/addresses。
+**自 H2 修后**：`set_user_todos` 在现有 todos 含 addresses 时会 raise；想加进度提示用 `append_user_todos`；想改单条状态用 `update_user_todo_status`。
 
 ```bash
 python3 << 'EOF'

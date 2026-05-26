@@ -1,0 +1,166 @@
+slug: global-constellation-energy
+variant: claude-opus-4-7
+created: 2026-05-25
+thesis_basis: thesis_v0 (PE 15-18x → 22-28x 核电估值重估，强度 7/10)
+
+learning_track:
+  l1_orientation:
+    - question: "CEG 业务结构：核电 22GW / 天然气 / 可再生 / 输配电 各 segment 的容量、营收、EBITDA 占比？"
+      source_hint: "CEG 10-K segment 表 + 投资者日 deck"
+    - question: "美国核电行业边界：96 台运营机组 / 94GW 总容量分布在哪些运营商？CEG/Vistra/PSEG/Duke 的市场份额？"
+      source_hint: "EIA / NRC reactor list / 各家 10-K"
+    - question: "PPA 市场结构：核电 PPA vs 燃气 PPA vs 可再生 PPA 在期限、价格、合同条款上的差异？"
+      source_hint: "S&P Global Platts / LevelTen Energy PPA index / hyperscaler 可持续报告"
+  l2_history:
+    - question: "美国核电过去 30 年走势：1979 三哩岛 → 2011 福岛 → 2019 三哩岛 1 号退役 → 2024 重启宣布的关键拐点与估值多重切换？"
+      source_hint: "EIA 历史数据 + S&P 公用事业指数 PE 多年时间序列"
+    - question: "Exelon 拆分到 CEG 独立上市（2022.02）后股价/估值演化？哪些催化剂触发了重估？"
+      source_hint: "CEG 上市公告 + 2022-2025 年 sell-side 报告"
+    - question: "上一轮 PPA 黄金期（2000s 美国核电与公用事业的长期 PPA）vs 当前 hyperscaler PPA 的根本差异？"
+      source_hint: "EIA 历史合同数据 + 卖方核电深度报告"
+  l3_debates:
+    - question: "核电 PE 应该是 15-18x（公用事业）还是 22-28x（科技基础设施）？多空双方核心分歧？"
+      source_hint: "Bull/Bear sell-side notes 对照 + Morningstar/Argus 估值方法对比"
+    - question: "存量核电 vs SMR 期权的估值偏差：为什么 NuScale（无收入）市值能超 $5B 而 CEG 重估困难？"
+      source_hint: "父 topic peer_matrix + NuScale FY2025 10-K + SMR 行业报告"
+    - question: "可再生 + 长时储能（LDES）2028-2030 是否能稀释核电 24/7 PPA 溢价？储能 LCOE 下降速度？"
+      source_hint: "NREL ATB cost curve + Form Energy/ESS 进展 / NEE 24/7 PPA 公告"
+    - question: "PPA 锁定后 CEG 是否丧失现货市场上行 beta？2027-2030 美国电价情景下 PPA vs 现货的机会成本？"
+      source_hint: "PJM 长期电价预测 + 卖方电力 commodity 报告"
+    - question: "Calpine 整合后核电 + 燃气混合的『绿色 + 可调度』叙事 vs 纯核电叙事，哪个估值更高？"
+      source_hint: "CEG-Calpine 合并 proxy + 卖方对 NEE/Vistra 多元能源结构的估值方法"
+  l4_hunting:
+    - question: "未来 18 个月（截至 2027-11）CEG 是否新增 ≥2 份大科技 PPA（≥500MW、≥15 年）？"
+      addresses: [K1]
+      source_hint: "CEG 8-K + hyperscaler 能源采购声明 + Bloomberg PPA tracker"
+    - question: "Crane 项目 NRC 换发许可证 2026Q4 前是否获批？2028 重启时间表是否维持？"
+      addresses: [K2]
+      source_hint: "NRC ADAMS 系统 license amendment 状态 + CEG 季报"
+    - question: "Calpine 整合后 FY2027 核电 segment EBITDA margin 是否 ≥ 55%？"
+      addresses: [K3]
+      source_hint: "FY2026/FY2027 10-K + integration call + 卖方 segment model"
+    - question: "CEG 已签 PPA 加权均价是否 ≥ $90/MWh？连续两份新 PPA 单价是否阶梯上行？"
+      addresses: [K4]
+      source_hint: "财报 PPA disclosure + Platts core earnings call commentary"
+    - question: "FY2026/FY2027 共识 EPS 12 个月内是否 ≥ +15% 上修？管理层是否给 FY2028+ 数字 guidance？"
+      addresses: [K5]
+      source_hint: "FactSet/Bloomberg 共识 + 季报 transcript"
+
+material_priority:
+  tier1:
+    - title: "Constellation Energy FY2025 10-K"
+      type: annual-report
+      ticker: CEG
+      source: "SEC EDGAR / 父 topic mat-4182c2 已下载"
+      addresses: [K1, K2, K3, K4, Q1, Q3]
+      info_tier: public
+      why: "公司 segment、PPA 披露、Microsoft 合同、Crane 项目进度、Calpine 收购全披露的核心一手资料；父 topic 已处理过，需要重新精读到 K# 颗粒度"
+    - title: "Constellation Energy Q1 2026 10-Q"
+      type: quarterly-report
+      ticker: CEG
+      source: "SEC EDGAR / 父 topic mat-d4ec44 已下载"
+      addresses: [K1, K2, K5]
+      info_tier: public
+      why: "FY2026 第一份季报，验证 PPA pipeline 进展、Calpine 整合现状、guidance 调整方向"
+    - title: "Vistra Corp FY2025 10-K（核电同业对照）"
+      type: annual-report
+      ticker: VST
+      source: "SEC EDGAR"
+      addresses: [K3, Q5]
+      info_tier: public
+      why: "Vistra 通过 Energy Harbor 收购 4 座核电站（4GW）后估值大幅重估，是 CEG 路径的真实对照样本"
+    - title: "Public Service Enterprise Group FY2025 10-K（监管核电）"
+      type: annual-report
+      ticker: PEG
+      source: "SEC EDGAR"
+      addresses: [Q1, K3]
+      info_tier: public
+      why: "PSEG 在新泽西管制环境下运营核电，定价机制（监管收益率）vs CEG 的批发市场暴露的对照"
+    - title: "Vistra-Microsoft / Vistra-AWS / Talen-AWS 等核电 PPA 历史对照"
+      type: industry-research
+      addresses: [K1, K4]
+      info_tier: half_public
+      source: "S&P Global / Platts / Bloomberg PPA tracker / 卖方深度"
+      why: "建立『核电 PPA 单价 vs 期限』的市场基准曲线，用于评估 CEG 议价权位置"
+    - title: "DOE Loan Programs Office 关于 Crane 项目的 $1B 担保函（2025-11）"
+      type: policy
+      addresses: [K2]
+      source: "DOE LPO 网站 + 公告"
+      info_tier: public
+      why: "重启项目融资条件 + DOE 监管前置条件，决定 NRC 程序节奏"
+
+  tier2:
+    - title: "NextEra Energy FY2025 10-K（24/7 可再生 PPA 替代）"
+      type: annual-report
+      ticker: NEE
+      source: "SEC EDGAR / 父 topic mat-fc68eb 已下载"
+      addresses: [Q3, Q5]
+      info_tier: public
+      why: "NEE 已签可再生 + 储能的 24/7 PPA，验证反方观点 #2（替代路径成熟度）"
+    - title: "Talen Energy FY2025 10-K（同样核电资产 + AWS PPA）"
+      type: annual-report
+      ticker: TLN
+      source: "SEC EDGAR"
+      addresses: [K1, K4, Q5]
+      info_tier: public
+      why: "Talen 与 AWS 签了 Susquehanna 核电站 PPA，重估幅度大于 CEG，是同业 high-beta 案例"
+    - title: "NRC ADVANCE Act 2024 法案 + 实施细则跟踪"
+      type: policy
+      addresses: [K2]
+      source: "NRC 官网 + 国会立法跟踪"
+      info_tier: public
+      why: "ADVANCE Act 简化 NRC 流程，影响 Crane 重启与未来核电 license 处置时间表"
+    - title: "PJM Interconnection 长期电价预测 + 容量市场报告 2025-2030"
+      type: data
+      addresses: [K4, Q4]
+      info_tier: half_public
+      source: "PJM 官网 + Wood Mackenzie / S&P 报告"
+      why: "PJM 是 CEG 主要批发电力市场，PJM 现货 + 容量市场价格曲线决定 PPA 锁定 vs 现货机会成本"
+    - title: "NREL Annual Technology Baseline 2026（储能 LCOE）"
+      type: data
+      addresses: [Q3]
+      info_tier: public
+      source: "NREL 官网"
+      why: "长时储能 LCOE 是反方观点 #2 的核心变量，权威量化数据"
+
+  tier3:
+    - title: "Microsoft / Meta / Google / Amazon 2025 年可持续发展报告（24/7 无碳承诺）"
+      type: industry-research
+      addresses: [K1, Q3]
+      info_tier: public
+      why: "hyperscaler 自身披露的『无碳负荷因子』承诺与时间表，决定 PPA 需求总量"
+    - title: "卖方深度报告 3 份：Morgan Stanley / JPMorgan / Bank of America 关于 CEG"
+      type: sell-side-note
+      addresses: [K3, K5, Q4]
+      info_tier: half_public
+      why: "卖方 segment-level 估值 model + 目标价路径，用于 thesis 强度校准"
+    - title: "EIA Form 860 (Generator Inventory) + Form 923 (Generation Output) 2024-2025"
+      type: data
+      addresses: [Q1, Q5]
+      info_tier: public
+      why: "美国所有核电机组逐一披露的发电量 + 容量 + 许可证到期时间，用于建立资产清单与到期日历"
+
+key_risks_to_monitor:
+  - "NRC 监管事故（任一）→ 行业 derate 与 CEG 重估溢价归零"
+  - "Crane 重启延期 ≥ 12 个月 → 估值时间表后移、IRR 下移"
+  - "Calpine 整合摩擦持续（2026-2027 一次性费用）→ 利润下修 + 共识 EPS 下行"
+  - "储能 LCOE 加速下降（年降 ≥ 15%）→ 核电 24/7 溢价被稀释"
+  - "PJM 现货电价下行（如果 AI 投资降温）→ PPA 锁定机会成本变小但绝对收入下行"
+  - "2026 大选政策反复 → IRA Section 45U PTC 修订或撤销"
+
+analogies_to_study:
+  - case: "Vistra (VST) 收购 Energy Harbor 重估（2024-2025）"
+    similarity: "同样是核电资产从批发市场暴露 → 通过 PPA 锁定长期收入"
+    difference: "VST 资产更小（4GW vs CEG 22GW），且 VST 同时还有大量燃气和煤电；CEG 是更纯的核电"
+  - case: "ASML / TSMC 从'制造业'到'半导体基础设施'的估值重构（2017-2021）"
+    similarity: "存量稀缺资产 + 技术不可复制 + 受益于结构性需求 → PE 倍数从 15x 区间扩张到 25-35x"
+    difference: "ASML/TSMC 是技术领先壁垒，CEG 是监管 + 资产年龄壁垒，可能上限低；且半导体没有'监管事故'风险"
+  - case: "1990s 美国铁路重组 → 重定价为'基础设施资产'（Buffett 投资 BNI 案例）"
+    similarity: "存量物理资产 + 不可复制 + 长期合同锁定 → 估值倍数扩张"
+    difference: "铁路无安全黑天鹅，核电有；铁路无替代技术压力，核电面临 SMR/储能"
+
+coverage_check:
+  thesis_ks: [K1, K2, K3, K4, K5]
+  l4_covered: [K1, K2, K3, K4, K5]
+  material_covered: [K1, K2, K3, K4, K5]
+  ok: true

@@ -33,6 +33,10 @@ def _is_drilldown_file(filename: str) -> bool:
     return filename.startswith("drilldown_") and filename.endswith(".md")
 
 
+def _is_decision_file(filename: str) -> bool:
+    return filename.startswith("decision_") and filename.endswith(".md") and "_review_" not in filename
+
+
 def _parse_drilldown_info(filepath: Path) -> dict:
     try:
         raw = filepath.read_text(encoding="utf-8")
@@ -49,6 +53,25 @@ def _parse_drilldown_info(filepath: Path) -> dict:
     except Exception:
         pass
     return {"question": "", "generated": None}
+
+
+def _parse_decision_info(filepath: Path) -> dict:
+    try:
+        raw = filepath.read_text(encoding="utf-8")
+        if raw.startswith("---"):
+            frontmatter_end = raw.find("---", 3)
+            if frontmatter_end > 0:
+                import yaml
+                frontmatter = yaml.safe_load(raw[3:frontmatter_end])
+                if isinstance(frontmatter, dict):
+                    return {
+                        "date": frontmatter.get("date"),
+                        "action": frontmatter.get("action", ""),
+                        "position_pct": frontmatter.get("position_pct"),
+                    }
+    except Exception:
+        pass
+    return {"date": None, "action": "", "position_pct": None}
 
 
 def _topic_dir(slug: str, variant: str) -> Path:
@@ -83,6 +106,7 @@ def list_outputs(slug: str, variant: str) -> list[dict]:
             "version": state.get("version", 0),
             "last_updated": last_updated,
             "file_exists": out_path.is_file(),
+            "last_error": state.get("last_error"),  # 修 9: {"at": ts, "message": ...} 或 None
         })
     # Add extra outputs that exist in the directory
     for key, label in _EXTRA_OUTPUTS_LABELS:
@@ -112,6 +136,7 @@ def list_outputs(slug: str, variant: str) -> list[dict]:
                 "version": version,
                 "last_updated": last_updated,
                 "file_exists": True,
+                "last_error": None,
             })
     # Add drilldown outputs
     out_dir = _topic_dir(slug, variant) / "outputs"
@@ -133,6 +158,39 @@ def list_outputs(slug: str, variant: str) -> list[dict]:
                 "last_updated": drilldown_updated,
                 "file_exists": True,
                 "is_drilldown": True,
+                "last_error": None,
+            })
+
+        # Add decision records (decision_YYYYMMDD.md), newest first
+        decision_files = sorted(
+            [f for f in out_dir.iterdir() if f.is_file() and _is_decision_file(f.name)],
+            reverse=True,
+        )
+        for filepath in decision_files:
+            info = _parse_decision_info(filepath)
+            d = info.get("date")
+            if isinstance(d, (date, datetime)):
+                date_str = d.isoformat()[:10]
+            elif isinstance(d, int):
+                s = str(d)
+                date_str = f"{s[:4]}-{s[4:6]}-{s[6:8]}" if len(s) == 8 else s
+            elif isinstance(d, str):
+                date_str = d
+            else:
+                date_str = filepath.name[len("decision_"):-3]
+                if len(date_str) == 8 and date_str.isdigit():
+                    date_str = f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:8]}"
+            action = info.get("action") or "—"
+            label = f"决策记录：{date_str} ({action})"
+            result.append({
+                "key": filepath.name[:-3],  # without .md
+                "label": label,
+                "status": "fresh",
+                "version": 1,
+                "last_updated": date_str,
+                "file_exists": True,
+                "is_decision": True,
+                "last_error": None,
             })
     return result
 
@@ -225,19 +283,25 @@ def validate_roadmap_thesis_coverage(slug: str, variant: str, version: int) -> d
         }
     roadmap = yaml.safe_load(roadmap_path.read_text()) or {}
 
+    # K# 匹配时去掉 @event 后缀；event 锚是 todo/mat 级精度，roadmap 规划层只到 K#
+    def _key(a: str) -> str:
+        return a.split("@", 1)[0] if isinstance(a, str) else ""
+
     l4 = (roadmap.get("learning_track") or {}).get("l4_hunting") or []
     l4_addrs: set[str] = set()
     for q in l4:
         for a in (q.get("addresses") or []):
-            if a.startswith("K"):
-                l4_addrs.add(a)
+            k = _key(a)
+            if k.startswith("K"):
+                l4_addrs.add(k)
 
     mat_addrs: set[str] = set()
     for tier in ("tier1", "tier2", "tier3"):
         for m in (roadmap.get("material_priority") or {}).get(tier) or []:
             for a in (m.get("addresses") or []):
-                if a.startswith("K"):
-                    mat_addrs.add(a)
+                k = _key(a)
+                if k.startswith("K"):
+                    mat_addrs.add(k)
 
     l4_covered = [k for k in thesis_ks if k in l4_addrs]
     mat_covered = [k for k in thesis_ks if k in mat_addrs]
@@ -252,6 +316,72 @@ def validate_roadmap_thesis_coverage(slug: str, variant: str, version: int) -> d
         "ok": not uncovered_l4 and not uncovered_mat,
         "roadmap_exists": True,
     }
+
+
+_DEFAULT_IGNORED_SOURCE_TYPES = ("drilldown",)
+
+
+def list_affected_outputs(
+    slug: str,
+    variant: str,
+    ignore_source_types: tuple[str, ...] = _DEFAULT_IGNORED_SOURCE_TYPES,
+) -> dict:
+    """判定 04-synthesize 增量重写时哪些 output 需要 refresh。
+
+    逻辑：对每个 output_key 比对
+      outputs_state[key].referenced_mat_ids  vs  manifest 当前 processed=True 的 mat_ids
+    分四种 reason：
+      - 'new'           → 从未合成过（referenced_mat_ids is None），首次必须写
+      - 'stale'         → manifest 有 mat 不在 referenced_mat_ids（新材料入库或重抽 finding）
+      - 'critic-stale'  → outputs_state[key].status == 'stale' 但无新 mat
+                          （critic verdict='request-rewrite' 显式标的，必须重写）
+      - 'fresh'         → 全部 mat 都已纳入且 status != 'stale'，无需重写
+    drift（referenced 里有 mat 但 manifest 没了 / processed 翻回 False）也归 stale。
+
+    `ignore_source_types` 默认 ('drilldown',) — 跳过 07-drilldown 入库的 mat，
+    避免每次深挖都让 ~5 份 output 标 stale 触发 04 大重写（修 M6）。
+    若 drilldown 真的动摇了 thesis，让 07 显式调 set_output_status(stale)
+    走 critic-stale 路径，不依赖 list_affected_outputs 自动判定。
+    传 () 可包含所有 source_type（用户显式要求"全重写"时）。
+
+    返回：{
+        '01_business_panorama': {'reason': 'stale', 'new_mat_ids': [mat-xxx, ...]},
+        '04_implied_expectations': {'reason': 'critic-stale', 'new_mat_ids': []},
+        '02_cycle_positioning': {'reason': 'fresh', 'new_mat_ids': []},
+        ...
+    }
+    """
+    from . import topic as topic_io
+    from . import manifest as manifest_io
+    data = topic_io.read_topic(slug, variant)
+    try:
+        manifest = manifest_io.read_manifest(slug, variant)
+    except FileNotFoundError:
+        manifest = {"materials": []}
+    ignored = set(ignore_source_types or ())
+    processed_ids = sorted({
+        m["id"] for m in (manifest.get("materials") or [])
+        if m.get("processed") and m.get("source_type") not in ignored
+    })
+    out: dict = {}
+    for key, state in (data.get("outputs_state") or {}).items():
+        ref = state.get("referenced_mat_ids")
+        status = state.get("status")
+        if ref is None:
+            out[key] = {"reason": "new", "new_mat_ids": processed_ids}
+            continue
+        ref_set = set(ref)
+        new_ids = [mid for mid in processed_ids if mid not in ref_set]
+        if not new_ids and set(processed_ids) == ref_set:
+            # mat 集合一致——再看 status 字段（critic 显式标 stale）
+            if status == "stale":
+                out[key] = {"reason": "critic-stale", "new_mat_ids": []}
+            else:
+                out[key] = {"reason": "fresh", "new_mat_ids": []}
+        else:
+            # 包含 drift 场景：mat 数变了但不是单纯新增
+            out[key] = {"reason": "stale", "new_mat_ids": new_ids}
+    return out
 
 
 def validate_manifest_coverage(slug: str, variant: str, version: int) -> dict:
@@ -281,11 +411,13 @@ def validate_manifest_coverage(slug: str, variant: str, version: int) -> dict:
             "uncovered": thesis_ks, "covered": [], "coverage_pct": 0,
             "manifest_exists": False,
         }
+    # mat address 可能含 @event 锚（如 K1@2026Q2-earnings），按 key 归桶
     by_key: dict[str, list] = {k: [] for k in thesis_ks}
     for mat in m.get("materials", []) or []:
         for a in mat.get("addresses") or []:
-            if a in by_key:
-                by_key[a].append(mat)
+            key = a.split("@", 1)[0] if isinstance(a, str) else ""
+            if key in by_key:
+                by_key[key].append(mat)
     covered = [k for k in thesis_ks if by_key[k]]
     uncovered = [k for k in thesis_ks if not by_key[k]]
     pct = round(100 * len(covered) / len(thesis_ks)) if thesis_ks else 0

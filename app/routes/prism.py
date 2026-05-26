@@ -337,6 +337,42 @@ def prism_detail(request: Request, slug: str, variant: str):
             "k_status": k_status,
             "mineru_counts": mineru_counts,
             "prism_key": _make_market_ticker(topic.get("scope") or {}),
+            "now_iso": _now_iso_z(),
+        },
+    )
+
+
+def _now_iso_z() -> str:
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).isoformat()
+
+
+@router.get("/{slug}/{variant}/web-search-log")
+def prism_web_search_log(request: Request, slug: str, variant: str):
+    """Render the web-search log for a topic variant."""
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    from prism.scripts.web_prescan import list_search_log
+    from prism.scripts.manifest import (
+        list_by_source_type, list_stale_web_search, list_expired_web_search,
+    )
+    entries = list_search_log(slug, variant)
+    ws_mats = list_by_source_type(slug, variant, "web-search")
+    stale = list_stale_web_search(slug, variant)
+    expired = list_expired_web_search(slug, variant)
+    return templates.TemplateResponse(
+        request,
+        "prism/web_search_log.html",
+        {
+            "topic": topic,
+            "variant": variant,
+            "entries": entries,
+            "ws_mats": ws_mats,
+            "n_stale": len(stale),
+            "n_expired": len(expired),
+            "now_iso": _now_iso_z(),
         },
     )
 

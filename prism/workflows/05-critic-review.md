@@ -207,51 +207,32 @@ print(f"web-search 兜底：高/中/低 = {summary['n_high']}/{summary['n_mid']}
 
 ```bash
 python3 << 'EOF'
-from prism.scripts.topic import set_critic_verdict, set_next_actions, set_user_todos, set_output_status, read_topic
+from prism.scripts.topic import set_critic_verdict, append_user_todos, set_output_status, read_topic
 
 slug = '{slug}'
 variant = '{variant}'
 
-# 写 verdict + 自动 set_stage
 verdict = '{approve|request-rewrite|request-more}'
 summary = '{一句话总结评审结论，例如：thesis_v1 在 K3 论证较弱，建议补 Q1-Q2 同业对比}'
 t = read_topic(slug, variant)
 cur_v = (t.get('thesis') or {}).get('current_version')
-critic = set_critic_verdict(slug, variant, verdict, summary=summary, thesis_version=cur_v)
-print(f'verdict={critic[\"verdict\"]} → stage={critic[\"next_stage\"]}')
 
-# next_actions / user_todos 因 verdict 而异
-if verdict == 'approve':
-    set_next_actions(slug, [
-        '研究主题已闭环，下一步「监控 {slug}」启动 daily/weekly monitor',
-        f'thesis_v{cur_v} 已通过 critic-review',
-    ], variant)
-    set_user_todos(slug, [
-        {'task': '说「监控 {slug}」启动 06-daily-monitor', 'priority': 'P0', 'info_tier': 'public'},
-        {'task': '或说「记录决策 {slug}」固化最终投资决策', 'priority': 'P1', 'info_tier': 'public'},
-    ], variant)
+# request-rewrite 时主 agent 列出要重写的 output keys；其他 verdict 留空
+rewrite_keys = []  # 例：['04_implied_expectations', '06_risk_blindspots']
 
-elif verdict == 'request-rewrite':
-    # 把要重写的 output 标 stale，下次 04-synthesize 会判其为 stale 自动重写
-    for ok in ['{output_key_to_rewrite}']:  # 主 agent 按评审结果填
-        try:
-            set_output_status(slug, ok, 'stale', variant)
-        except Exception:
-            pass
-    set_next_actions(slug, [
-        '说「合成 {slug}」重新跑 04，会按增量判定只重写 stale 的 output',
-        f'critic 建议：{summary}',
-    ], variant)
+# set_critic_verdict 内部已写默认 next_actions + 把 rewrite_keys 标 stale（修 S4）
+critic = set_critic_verdict(
+    slug, variant, verdict,
+    summary=summary, thesis_version=cur_v,
+    rewrite_keys=rewrite_keys,
+)
+print(f'verdict={critic["verdict"]} → stage={critic["next_stage"]}')
 
-elif verdict == 'request-more':
-    # 缺资料：让用户/web-search 来补，回 02-gather-materials
-    set_user_todos(slug, [
-        # 主 agent 按评审结论填具体待补项
-        {'task': '补充：{具体资料 / web-search 关键词}', 'priority': 'P0', 'info_tier': 'half_public', 'addresses': ['K?']},
-    ], variant)
-    set_next_actions(slug, [
-        '说「prism 推进 {slug}」回到 02-gather-materials，先跑 web-search prescan',
-        f'critic 缺口：{summary}',
+# 仅在 request-more 时追加具体待补 todo（主 agent 按评审结论填）
+if verdict == 'request-more':
+    append_user_todos(slug, [
+        {'task': '补充：{具体资料 / web-search 关键词}',
+         'priority': 'P0', 'info_tier': 'half_public', 'addresses': ['K?']},
     ], variant)
 
 # living feed bump（所有 verdict 都做）
@@ -264,17 +245,70 @@ EOF
 ```
 
 **注意**：
-- `set_critic_verdict` 会直接 `set_stage`，**不需要再手动 set_stage**
-- `request-rewrite` 路径走"标 stale + 04 重跑"——配合修 1 的 list_affected_outputs，未变章节不会被无谓重写
-- `request-more` 路径走 02-gather-materials，可直接顺手跑 _web_prescan_shared.md 查 critic 提的关键词
+- `set_critic_verdict` 会自动 `set_stage` + 写默认 next_actions + 标 rewrite_keys 为 stale，**不再手动 set_stage / set_next_actions / set_output_status**（修 S4 后）
+- `request-rewrite` 路径走"标 stale + 04 重跑"——配合 list_affected_outputs 读 status 字段（reason='critic-stale'），只重写 critic 点名的 output
+- `request-more` 路径回 02-gather-materials；主 agent 需 append 具体待补 todo（含 addresses，否则后续 auto_resolve 算不进）
 - **若 critic 触发新的 thesis_v{N+1}**（无论 verdict 类型），新版本必须采用 Scheme C 全快照约定（详见 `prism/workflows/04-synthesize/_shared.md` § "Scheme C 写作约定"）——禁止只写增量 delta、禁止"见 v{N} §X"引用
 
 ---
 
-## Step 8：刷新仪表盘（最终一步，必跑）
+## Step 7.5：request-rewrite 时本对话内续跑 04（**修 H1**）
+
+**仅当 verdict='request-rewrite'**：写完 verdict 后**主 agent 不退场**，立即进入 04 重写循环。
+
+### 7.5a：先报告范围 + 等用户 1 次 confirm
 
 ```bash
-python -m prism.scripts.dashboard
+python3 -c "
+from prism.scripts.outputs import list_affected_outputs
+r = list_affected_outputs('{slug}', '{variant}')
+stale = [(k, v['reason']) for k, v in r.items() if v['reason'] in ('stale', 'critic-stale')]
+print(f'将重写 {len(stale)} 份产出：')
+for k, reason in stale:
+    print(f'  - {k} ({reason})')
+"
 ```
 
-评审若调整了 thesis 强度 / kill criteria status / signpost triggered，dashboard 必须重建以反映新状态。失败允许重试一次；仍失败记入 user_todos 不阻塞主流程。
+主 agent 在对话里报告：
+> 我要重写以下 N 份产出（critic 标 stale）：
+> - 04_implied_expectations (critic-stale)
+> - ...
+>
+> 输入：critic-review.md 反方论据 + 原 findings + 现有 thesis
+> 预计 ~5-10K token/份、~3-5 min/份
+>
+> 继续吗？
+
+**等用户回 yes/ok/继续/确认 才动**——回 no/等等/我看看 则保留 stale 状态，停在 04-synthesizing stage 让用户后续手动喊重跑。
+
+### 7.5b：升 thesis 升级提示（stale ≥5 份）
+
+如果 7.5a 算出来 stale ≥5 份，**不要直接确认**，主 agent 改口提示：
+
+> critic 标 stale 的产出有 N≥5 份——这通常意味着 thesis 整体被翻案，**建议升 thesis_v{N+1} 全重写**而不是修补单份。
+>
+> 选项：
+> A. 升 thesis_v{N+1}，按 _shared.md Scheme C 全快照重写所有 11 份
+> B. 仍按修补走，重写这 N 份（成本高且可能产出与 thesis 矛盾）
+> C. 暂停，让我重看 critic 结论
+
+用户决定后再走 7.5c（A 走 thesis 升版路径、B 走原 7.5c、C 保留 stale 退场）。
+
+### 7.5c：用户 confirm 后续跑 04
+
+收到 confirm → 主 agent 直接 re-enter `prism/workflows/04-synthesize/_shared.md`：
+- list_affected_outputs 此时会算出 critic-stale，自动只跑被标的 output
+- 读 `outputs/05-critic-review.md` 作为本轮重写的补充输入（反方论据 → 强化 K# 论证）
+- 每份重写完调 `set_output_referenced_mats` 抹掉 stale 状态
+- 全部完成后 stage 自然回 `04-post-synthesis`（04 _shared.md 末尾会做），后续可再跑 05 复评
+
+**纪律**：
+- 本对话内续跑 ≤4 份产出，超 4 份必走 7.5b 提示升 thesis
+- 续跑过程中**不再 dispatch sub-agent**（参 [[feedback_subagent_bulk_synthesis]]），主 agent 直做
+- 续跑失败的 output 走 04 `list_failed_outputs` 标准路径，不污染 critic verdict
+
+---
+
+## Step 8：仪表盘自动刷新（修 S5）
+
+`set_critic_verdict` 内部已 fire-and-forget 触发 dashboard 异步重建，**无需再手跑** `python -m prism.scripts.dashboard`。后台失败留痕在 `prism/logs/dashboard_auto.log`。

@@ -1,0 +1,146 @@
+slug: global-constellation-energy
+display_name: Constellation Energy
+type: company
+created: '2026-05-25T06:42:21.838783+00:00'
+status: active
+stage: 04-post-synthesis
+parent_topic: global-ai-energy-infrastructure
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: CEG 作为美国最大核电运营商的估值重估空间？核电 PPA 从公用事业定价（PE 15-18x）→科技基础设施（PE 20-25x）的催化剂和验证节点？三哩岛重启
+    + 后续科技公司 PPA pipeline？
+  depth: deep
+  ticker: CEG
+  market: US
+outputs_state:
+  00_quality_screen:
+    version: 1
+    last_updated: '2026-05-25T08:56:26.590732+00:00'
+    status: fresh
+    data_freshness: null
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-25T08:56:26.596376+00:00'
+    status: fresh
+    data_freshness: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-25T08:56:26.601554+00:00'
+    status: fresh
+    data_freshness: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-25T08:56:26.606720+00:00'
+    status: fresh
+    data_freshness: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-25T08:56:26.611977+00:00'
+    status: fresh
+    data_freshness: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-25T08:56:26.617178+00:00'
+    status: fresh
+    data_freshness: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-25T08:56:26.622409+00:00'
+    status: fresh
+    data_freshness: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-25T08:56:26.627634+00:00'
+    status: fresh
+    data_freshness: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-25T08:56:26.632926+00:00'
+    status: fresh
+    data_freshness: null
+parent_materials:
+- parent_slug: global-ai-energy-infrastructure
+  parent_variant: claude-opus-4-7
+  mat_id: mat-4182c2
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  note: CEG FY2025 10-K — 一手公司核心资料，PPA/Crane/Calpine 全披露
+- parent_slug: global-ai-energy-infrastructure
+  parent_variant: claude-opus-4-7
+  mat_id: mat-d4ec44
+  addresses:
+  - K1
+  - K2
+  - K5
+  note: CEG Q1 2026 10-Q — FY2026 第一季报
+- parent_slug: global-ai-energy-infrastructure
+  parent_variant: claude-opus-4-7
+  mat_id: mat-2f60f2
+  addresses:
+  - K1
+  note: AMZN FY2025 10-K — hyperscaler 电力采购规模与 PPA 倾向（K1 验证语料）
+- parent_slug: global-ai-energy-infrastructure
+  parent_variant: claude-opus-4-7
+  mat_id: mat-fd88dc
+  addresses:
+  - K3
+  note: 'NuScale 10-K — SMR 同业对照（反方观点 #2，远期期权）'
+- parent_slug: global-ai-energy-infrastructure
+  parent_variant: claude-opus-4-7
+  mat_id: mat-fc68eb
+  addresses:
+  - K4
+  note: 'NEE 10-K — 可再生 24/7 PPA 替代路径（反方观点 #2）'
+- parent_slug: global-ai-energy-infrastructure
+  parent_variant: claude-opus-4-7
+  mat_id: mat-ec7f74
+  addresses:
+  - K1
+  - K4
+  note: IEA Electricity 2026 — AI 数据中心电力需求量化（建立 PPA pipeline 总量框架）
+next_actions:
+- 等 6/1 FERC 裁决后更新 K2 状态
+- Q2 财报后修正 K3（Calpine 整合协同 + 核电 EBITDA margin）
+- 寻找卖方研报/transcript 三角校验 K4（PPA 加权均价）
+- 若价格回调至 $260-280 主动加仓首仓 5%
+user_todos:
+- task: 评审 thesis_v1 + buy_box（建议 /prism critic-review）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 监控 2026-06-01 FERC CIR 裁决
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 监控 2026-Q3 CEG Q2 财报（首次完整 Calpine 并表）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+thesis:
+  current_version: 1
+  last_updated: '2026-05-25T08:56:26.638195+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-25T06:45:36.214846+00:00'
+    summary: CEG 美国最大核电运营商（55GW 不可复制存量），未来 18-30 个月经历公用事业 PE 15-18x → 科技基础设施 PE 22-28x
+      重估；三哩岛重启 + ≥2 份大科技 PPA 是关键锚点。强度 7/10。
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-25T08:56:26.638198+00:00'
+    summary: CEG 22GW核电+Calpine 20.6GW气电整合，PPA-backed基础设施平台重估，Base $310-360（vs 当前
+      $294），强度7.5/10

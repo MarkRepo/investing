@@ -1,0 +1,190 @@
+# roadmap.yaml — Robinhood Markets (HOOD)
+slug: us-robinhood
+created: 2026-05-26
+
+learning_track:
+  l1_orientation:
+    - question: "HOOD 业务结构与收入拆分？transaction-based / net interest / other 三大块 2025-2026 各自占比、增速、利润贡献？"
+      source_hint: "HOOD 10-K FY2025 + Q1 2026 10-Q（manifest mat-a99410 + mat-4c5f6e 已有摘要）"
+    - question: "HOOD 用户画像 & 客户规模？Funded customers 27.4M、Investment accounts 28.4M、Gold subscribers 4.3M 的年龄/收入/AUM 分布？"
+      source_hint: "HOOD 10-K FY2025 customer demographics 章节 + 投资者日 deck"
+    - question: "美国零售券商市场格局？HOOD 在 SCHW/FID/IBKR/COIN/Webull/Public 中的相对定位、AUM 份额、用户重叠？"
+      source_hint: "训练知识 + Cerulli/Statista 数据 + 各家 IR"
+    - question: "HOOD 商业模式机制？PFOF 计费方式、Gold $5/月权益、margin loan rate、cash sweep 分成、Bitstamp 加密 take rate 计算？"
+      source_hint: "HOOD 10-K FY2025 业务描述章节 + Gold 产品页"
+
+  l2_history:
+    - question: "HOOD 2013-2026 关键发展节点？创立 → 2019 零佣金颠覆 → 2021 GameStop 风波 + IPO peak → 2022 暴跌 → 2023-2025 重生 → 2025 Bitstamp 收购 → 2026 SpaceX 业务"
+      source_hint: "训练知识 + 创始人 Vlad Tenev 公开访谈 + Forbes/WSJ 深度"
+    - question: "美国券商赛道从佣金竞争到产品多元化的演化？2019 全行业零佣金、2020 加密上线、2022 高息存款、2024-2025 加密/银行/预测市场，HOOD 在每个节点扮演角色"
+      source_hint: "训练知识 + 行业研报"
+    - question: "HOOD 加密业务节奏？2018 上线 BTC/ETH → 2021 Q2 加密收入 $233M 峰值 → 2022 Q4 跌至 $39M → 2025 Bitstamp 收购 → 2026 Q1 加密 -47% YoY，每段周期的诱因和应对"
+      source_hint: "HOOD 历年季报 + Bitstamp 整合公告（manifest mat-409ba8）"
+    - question: "PFOF 监管历史？Reg NMS 2005 → SEC 2020 $65M 罚款 → 2022 Q4 OCR + Reg BE 提案 → 2024 EU 全面禁止 → 2025 Trump SEC 暂停推进，各阶段对 HOOD 收入的影响"
+      source_hint: "Congress CRS PFOF report (manifest mat-599824) + SEC OCR page (mat-6abade) + 训练知识"
+
+  l3_debates:
+    - question: "HOOD 估值锚到底是 IBKR PE 17-19（纯券商）还是 SaaS PE 40-60（订阅平台）？多元化收入能否撑起溢价？"
+      source_hint: "训练知识 + IBKR/SCHW/SQ/COIN 估值对比 + 卖方深度"
+    - question: "Gold 4.3M 订阅是否接近天花板？$5/月 ARPU 对比 Costco/Spotify 订阅 unit economics，funded customer 27.4M 的真实穿透率上限"
+      source_hint: "HOOD 10-K FY2025 Gold KPI + Costco/Spotify 订阅模型对标"
+    - question: "K2 已部分触发后（Q1'26 crypto -47%），市场是否充分定价加密 cycle 风险？Event Contracts +320% 能否对冲？"
+      source_hint: "Q1 2026 10-Q + 卖方下调/上调研报对比 + 股价对 Q1 业绩反应"
+    - question: "当前 PE 35-37 是否已 baked-in 所有乐观预期？10-15% 回调是合理切入点还是 PE 均值回归（→25-30）才到位？"
+      source_hint: "fullratio PE 历史 (mat-1daa0f) + analyst 目标价 $98.4 (mat-abea64) + DCF 测算"
+    - question: "管理层资本分配优先级？$1.2B 累计回购（avg $40.64 vs 现价 $76）的信号意义 vs Q1'26 单季 $250M @ avg $81 的高位回购合理性"
+      source_hint: "HOOD Q1 2026 10-Q + 投资者日资本分配章节"
+
+  l4_hunting:
+    - question: "[K1] SEC 新主席 Paul Atkins 及现任 5 委员对 PFOF/OCR 公开发言的时间线？2025-2026 是否有任何执法/审议动作？"
+      addresses: [K1]
+      source_hint: "sec.gov/news + Bloomberg/Reuters 监管报道 + congress.gov 听证记录"
+    - question: "[K2] 2026 H2 加密 cycle 走势：HOOD 加密季度收入跌破 $100M / BTC 跌破 $60K 哪个先发生？Bitstamp 是否对冲？"
+      addresses: [K2]
+      source_hint: "HOOD Q2/Q3 2026 10-Q + BTC 价格 + Bitstamp 季度 notional 拆解"
+    - question: "[K3] Gold 订阅 2026 全年净增能否维持 +25-30% YoY？Adoption rate 是否突破 20% of funded customers？"
+      addresses: [K3]
+      source_hint: "HOOD 每月运营数据 + 季报 Gold KPI"
+    - question: "[K4] Bitstamp 整合后实际 take rate 可推算否？$48B Q4'25 notional ÷ Q4 加密收入 $221M = ~46bp blended，institutional vs retail 分别多少？"
+      addresses: [K4]
+      source_hint: "HOOD 季报 + Bitstamp 单独披露 + COIN take rate 对标推算"
+    - question: "[K5] Strategies + Banking AUM 2026 年底能否分别突破 $20B / $20B？vs 训练时预测的合计 $50B 目标"
+      addresses: [K5]
+      source_hint: "HOOD 投资者日 + 季度 KPI 披露 + 卖方拆解"
+    - question: "[K6] SCHW/Fidelity 是否推出加密/事件合约/AI 投研对标产品并提供用户补贴？时间窗与产品力对标"
+      addresses: [K6]
+      source_hint: "SCHW/Fidelity 投资者日 + 产品发布 + The Information 报道"
+    - question: "[K7] Event Contracts 2027 Q1（大选后）季度收入能否维持 +50% YoY 增长？MIAXdx 整合时间表、Polymarket/Kalshi 市占变化"
+      addresses: [K7]
+      source_hint: "HOOD 2026 H2/2027 Q1 季报 + CFTC 数据 + Polymarket 链上数据"
+
+material_priority:
+  tier1:
+    - title: "Robinhood Markets 10-K FY2025"
+      type: "annual-report"
+      ticker: "HOOD"
+      source: "SEC EDGAR — 通过 fetch_report_prism 自动下载"
+      addresses: [K1, K2, K3, K5, Q1, Q2]
+      info_tier: "public"
+      why: "完整业务/财务/风险因素披露——估值锚、Gold KPI、加密拆解、PFOF 收入占比、Bitstamp 整合细节全部在 10-K Risk Factors + MD&A"
+
+    - title: "Robinhood Markets 10-Q Q1 2026"
+      type: "quarterly-report"
+      ticker: "HOOD"
+      source: "SEC EDGAR — 通过 fetch_report_prism 自动下载"
+      addresses: [K2, K3, K5, K7]
+      info_tier: "public"
+      why: "最新季度数据：加密 -47%、Event Contracts +320%、Gold 4.3M 三大关键节点验证"
+
+    - title: "HOOD Q4 2025 + Q1 2026 Earnings Call Transcripts"
+      type: "web-article"
+      ticker: "HOOD"
+      source: "Seeking Alpha / Fool / 公司 IR 网站"
+      addresses: [K2, K3, K5, K7]
+      info_tier: "public"
+      why: "管理层对加密 cycle、Event Contracts 可持续性、Banking 进度的定性指引——10-K 不会说的话"
+
+    - title: "GS/MS/JPM 任选 3 份 HOOD 深度研报（2025-2026）"
+      type: "sell-side-note"
+      ticker: ""
+      source: "彭博终端 / ResearchPool / 雪球付费"
+      addresses: [K1, K4, K6]
+      info_tier: "half_public"
+      why: "PFOF 监管影响量化、Bitstamp take rate 推算、竞品对标——三个 K# 的核心论证"
+
+    - title: "Coinbase (COIN) 10-K FY2025"
+      type: "annual-report"
+      ticker: "COIN"
+      source: "SEC EDGAR — 通过 fetch_report_prism 自动下载"
+      addresses: [K2, K4]
+      info_tier: "public"
+      why: "K4 Bitstamp take rate 对标必读——COIN take rate 历史、institutional vs retail 拆分、加密 cycle 应对"
+
+  tier2:
+    - title: "Charles Schwab (SCHW) 10-K FY2025"
+      type: "annual-report"
+      ticker: "SCHW"
+      source: "SEC EDGAR — 通过 fetch_report_prism 自动下载"
+      addresses: [K6]
+      info_tier: "public"
+      why: "K6 主要对手详细数据：客户资产 $11.77T、ARPU、净息收入、产品路线图——判断 HOOD 长期竞争位势"
+
+    - title: "Interactive Brokers (IBKR) 10-K FY2025"
+      type: "annual-report"
+      ticker: "IBKR"
+      source: "SEC EDGAR — 通过 fetch_report_prism 自动下载"
+      addresses: [K6]
+      info_tier: "public"
+      why: "估值对标：IBKR PE 17-19 是 HOOD 周期估值底；国际化执行力对比（IBKR 全球 vs HOOD 仅英国）"
+
+    - title: "Kalshi 2025-2026 IPO 筹备 / 资料 + Polymarket 链上数据"
+      type: "industry-research"
+      ticker: ""
+      source: "Kalshi $1B 融资 $11B 估值新闻（mat-e9d55a） + Dune Analytics Polymarket 数据"
+      addresses: [K7]
+      info_tier: "half_public"
+      why: "K7 必读：Event Contracts 整赛道空间、HOOD vs Kalshi vs Polymarket 三家市占演化"
+
+    - title: "SEC Order Competition Rule 现状 + Congress CRS PFOF Report"
+      type: "policy"
+      ticker: ""
+      source: "manifest mat-6abade + mat-599824 已收集"
+      addresses: [K1]
+      info_tier: "public"
+      why: "K1 直接依据：OCR 监管路径、EU 已禁 PFOF 的实际影响范围、Trump SEC 立场"
+
+    - title: "HOOD Investor Day 2025 / 2026 Deck"
+      type: "web-article"
+      ticker: "HOOD"
+      source: "investors.robinhood.com 投资者日材料 — 手工下载"
+      addresses: [K3, K5, K7]
+      info_tier: "public"
+      why: "管理层长期目标、Banking/Strategies AUM 指引、Event Contracts 战略"
+
+  tier3:
+    - title: "Vlad Tenev / Baiju Bhatt Form 4 减持记录"
+      type: "data"
+      ticker: "HOOD"
+      source: "SEC EDGAR Form 4 / DEF 14A"
+      addresses: [K1]
+      info_tier: "public"
+      why: "管理层信心信号 + dual-class 治理结构演化"
+
+    - title: "Robinhood UK Ltd Companies House 年报"
+      type: "annual-report"
+      ticker: ""
+      source: "find-and-update.company-information.service.gov.uk"
+      addresses: [K1]
+      info_tier: "public"
+      why: "国际化进展独立数据源——HOOD 美国财报不拆英国子公司"
+
+    - title: "SpaceX IPO 散户分销条款 + HOOD 投行 / 路演关系链"
+      type: "web-article"
+      ticker: ""
+      source: "彭博 IPO 报道 + Reuters/WSJ"
+      addresses: [K5]
+      info_tier: "hard"
+      why: "一次性催化分析——独家分销条款、对 HOOD 散户引流量化"
+
+key_risks_to_monitor:
+  - "PFOF 监管：Trump SEC 任期内意外重启 OCR 推进，或 2028 大选后民主党回归再启动"
+  - "加密 cycle：BTC 跌破 $60K 持续 2+ 季度，HOOD 加密季度收入跌破 $100M（Q1'26 已 $134M）"
+  - "Event Contracts：2027 大选后 demand 断崖，+320% YoY 增速跌至个位数"
+  - "Schwab/Fidelity 推出加密+预测市场+AI 投研对标 + 大规模用户补贴 → HOOD 差异化收窄"
+  - "Gold 订阅增速跌破 +15% YoY → 订阅飞轮天花板早于预期到来"
+  - "美联储 2026-2027 累计降息 ≥150bp → net interest revenue 受冲击（margin book $17B 有部分对冲）"
+  - "Bitstamp 整合协同效应不达预期 → take rate 提升 <50% → 加密垂直整合证伪"
+  - "管理层减持持续放量（Steadview Q2'26 已减持）→ 市场信心动摇"
+
+analogies_to_study:
+  - name: "Charles Schwab 1992-2008 — 折扣券商向全栈金融转型"
+    analogy: "SCHW 从纯交易券商（1990s 早期）→ 整合 mutual fund supermarket（OneSource 1992）→ 共同基金管理（1998 收购 USTrust）→ 银行业务（2003）→ 净息收入主导（2008+）。HOOD 当前 2025-2026 阶段类似 SCHW 1996-2000：从交易工具向多产品平台演化，加密/Banking/Strategies/Cortex 对应 SCHW 当年的 OneSource/银行/资管。若复制 SCHW 路径，HOOD 未来 10 年有望从 PE 35x 经历短期均值回归后重估到稳定 PE 25-30x（vs SCHW 长期 PE 20-25）"
+    limitation: "HOOD 用户基数仅 27.4M Funded（SCHW 当年类似阶段 7-10M），AUM $307B 仅 SCHW 当年 $1.5T 的 ~20%——平台扩展空间存在但绝对体量小一个数量级；且 SCHW 当年没有加密 cycle 风险"
+
+  - name: "Coinbase (COIN) 2021-2024 — 加密 cycle 估值过山车"
+    analogy: "COIN 2021-04 IPO $381 → 2021-11 peak $429 → 2022-12 低点 $33（-92%） → 2024 回升至 $200+ → 2026 ~$300。HOOD 加密收入占比 2021 Q2 峰值 ~50%（vs COIN 100% 加密暴露），2026 Q1 已降至 12.5%——但 HOOD 加密 cycle 弹性仍显著，COIN 的暴跌路径警示 K2 风险落锤后的估值幅度"
+    limitation: "HOOD 多元化对冲深度远超 COIN：Net interest 33% / Options 24% / Event Contracts 14% / Equities 8% / Gold 5% / Other 4%——加密风险敞口仅 12.5%，整体 beta 远低于 COIN"
+
+  - name: "Block (SQ) 2018-2024 — 多产品金融超级 App 估值演化"
+    analogy: "SQ 2018-2021 Cash App 加密/股票/银行多元化叙事推 PE 至 80-120x → 2022-2023 多元化故事破灭 PE 跌至 15-20x → 2024 趋稳。HOOD 当前 2025-2026 类似 SQ 2020-2021——多元化叙事强、PE 35-37 已较高；若 Event Contracts/Banking 不达预期，可能复制 SQ 估值压缩路径"
+    limitation: "HOOD 用户更聚焦（投资 vs SQ 支付+商户），且加密业务 Bitstamp 提供真正的差异化技术资产（SQ 仅 Cash App 接入 BTC，无独立交易所）；用户 LTV 显著更高"

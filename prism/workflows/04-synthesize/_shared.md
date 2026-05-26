@@ -10,7 +10,7 @@ import json
 from prism.scripts.topic import read_topic
 from prism.scripts.manifest import material_count
 t = read_topic('{slug}', '{variant}')
-counts = material_count('{slug}')
+counts = material_count('{slug}', '{variant}')
 print('stage:', t['stage'])
 print('materials:', json.dumps(counts))
 print('question:', t['scope']['question'])
@@ -53,7 +53,8 @@ for k, v in r.items():
 判定结果：
 - `new`：从未合成 → 必须写
 - `stale`：有新材料入库 → 必须重写
-- `fresh`：全部 mat 已纳入 → **跳过**
+- `critic-stale`：critic verdict='request-rewrite' 显式标 stale（无新 mat 但 status='stale'） → 必须重写，**read critic-review 的反方论据作为补充输入**
+- `fresh`：全部 mat 已纳入且未被 critic 标 stale → **跳过**
 
 **写完每份产出后**，主 agent 必须调用以下一行注册引用：
 
@@ -140,15 +141,42 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
 主 agent 直做的标准流程：
 
-1. **读 findings**：调 `format_findings_for_prompt` helper 列出自有 + 父级 findings 路径，主 agent 用 Read 工具**并行**读完所有未读 findings（同一 message 多 Read 调用）。
-2. **读 thesis_v0**：作为强度 v0→v1 对照锚。
-3. **写 _synthesis_brief.md**：先 dump K1-K5 v0→v1 强度调整结论到 `outputs/_synthesis_brief.md`，作为后续 06/07/08 的 cross-mat 校准锚。
-4. **批次并行 Write 产出**：按 2-3 份一批的节奏 Write 01-08：
+1. **读 findings（一次性全文加载）**：调 `format_findings_for_prompt` helper 列出自有 + 父级 findings 路径，主 agent 用 Read 工具**并行**读完所有未读 findings（同一 message 多 Read 调用）。
+
+2. **建轻索引（防 compact 防误读）**：
+
+   ```bash
+   python3 -c "
+   from prism.scripts.findings import build_findings_index
+   print(build_findings_index('{slug}', '{variant}'))
+   "
+   ```
+
+   落盘 `outputs/_findings_index.md`：每份 finding 一行 = `mat_id | filename | addresses=[K#] | quality/bias | 80字摘要`。22 份 ≈ 3-5K tokens，远低于全文 ~40K。**索引是主 agent 的"地图"——下面所有"按需补读"决策都基于它。**
+
+3. **读 thesis_v0**：作为强度 v0→v1 对照锚。
+
+4. **写 _synthesis_brief.md**：先 dump K1-K5 v0→v1 强度调整结论到 `outputs/_synthesis_brief.md`，作为后续 06/07/08 的 cross-mat 校准锚。
+
+5. **批次并行 Write 产出 + 按需补读 finding**：按 2-3 份一批的节奏 Write 01-08：
    - 批 1：01_business_panorama + 02_cycle_positioning + 03_narrative_ecology + 04_implied_expectations（4 份并行）
    - 批 2：05_historical_mirrors + 06_risk_blindspots + 07_decision_kit + 07_decision_kit.yaml + 08_living_feed（5 份并行）
    - 批 3：thesis_v1.md + 状态注册 Bash（2 个调用并行）
-5. **状态注册**：用单个 Bash 脚本一次性注册 9 个 outputs status + thesis v1。
-6. **收尾**：set_stage('04-post-synthesis') + 清空 user_todos + 更新 next_actions（指向 critic-review / daily-monitor / 中报回看）。
+
+   **每批次开始前必做**（廉价且重要）：
+
+   - **Read `outputs/_findings_index.md`**（已落盘，~3K token）—— 即使中间发生过 compact，看一眼索引也能立即定位本批次需要哪些 mat_id
+   - 对照本批次每份 sub-workflow 的 addresses 维度（如 06-risks → `[risk, K1, K6]`，01-panorama → `[scope, K3, K5]`），从索引筛出相关 mat_id
+   - **自检**：你是否还能清晰回忆这些 mat_id 对应 finding 的内容？
+     - **能** → 直接写，跳过 Read
+     - **不能 / 模糊 / 想不起细节** → 单独 Read 那几份 finding 补回（不是全部 22 份，只补本批次需要的）
+
+   **不要做的**：
+   - ❌ 不要每份 sub-workflow Step 1 都 Read 全部 findings（22 × 8 = 176 次重读 ≈ 30 万 token 浪费）
+   - ❌ 不要假定 findings 一定还在 context（compact 可能切掉，索引让你能验证）
+   - ❌ 不要写完 01 后立即 Read 全部 findings 准备写 02——批次内并行 Write 多份，批次之间只看索引判断
+6. **状态注册**：用单个 Bash 脚本一次性注册 9 个 outputs status + thesis v1。
+7. **收尾**：set_stage('04-post-synthesis') + 清空 user_todos + 更新 next_actions（指向 critic-review / daily-monitor / 中报回看）。
 
 ### 何时仍可考虑 subagent dispatch（**例外**）
 
@@ -299,14 +327,14 @@ print('状态已更新')
 先更新 01-08 完成状态：
 
 ```bash
-python -c "
-from prism.scripts.topic import read_topic, set_next_actions, set_user_todos
+python3 -c "
+from prism.scripts.topic import read_topic, set_next_actions, append_user_todos
 t = read_topic('{slug}', '{variant}')
-# 清除 user_todos 中「下一步：生成产出」相关行
-todos = [x for x in t.get('user_todos', []) if '生成产出' not in x and '开始 01-08' not in x]
-todos.append('全部产出完成（' + str(len(t['outputs_state'])) + ' 份），等待创建子 topic 或进入监控')
-set_user_todos('{slug}', todos, '{variant}')
-# 确认 next_actions 不再指向生成产出
+# 仅 append 一条完成提示，不动 01/02 写的结构化 todos（修 H2）
+append_user_todos('{slug}', [
+    '全部产出完成（' + str(len(t['outputs_state'])) + ' 份），等待创建子 topic 或进入监控',
+], '{variant}')
+# 确认 next_actions 不再指向生成产出（next_actions 仍是 list[str]，OK）
 actions = [x for x in t.get('next_actions', []) if '01-08' not in x and '产出' not in x]
 set_next_actions('{slug}', actions, '{variant}')
 print('收尾完成')
@@ -380,15 +408,10 @@ if ns == '05-critic-review':
 "
 ```
 
-**刷新仪表盘（最终一步，必跑）**：
+**刷新仪表盘（修 S5：自动触发，无需手跑）**：
 
-任何 sidecar / thesis / stage 落盘后，dashboard.md 不会自动更新。每次 04-synthesize 完整收尾后必须重建仪表盘：
-
-```bash
-python -m prism.scripts.dashboard
-```
-
-输出 `dashboard 已生成 → prism/dashboard.md`。如失败（行情拉取超时等），允许重试一次；仍失败则记入 user_todos「手动 rebuild dashboard」，不阻塞主流程。
+每份产出收尾调 `set_output_referenced_mats` 时已自动 fire-and-forget 重建 dashboard（异步 subprocess，~25s 在后台跑，主流程 <100ms）。**workflow 内不再需要显式 `python -m prism.scripts.dashboard`**。
+后台失败仅写 `prism/logs/dashboard_auto.log`——若发现 dashboard 长期未刷新，手动跑一次 `python -m prism.scripts.dashboard` 排查。
 
 **自动触发扩展产出**：根据 topic type 判断是否需要自动生成 09/10：
 

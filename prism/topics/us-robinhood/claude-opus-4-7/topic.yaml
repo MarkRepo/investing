@@ -1,0 +1,216 @@
+slug: us-robinhood
+display_name: Robinhood Markets (HOOD)
+type: company
+created: '2026-05-25T16:05:42.283068+00:00'
+status: active
+stage: 04-post-synthesis
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: Robinhood 是否值得长期持有？综合赛道空间、护城河、当前估值给出方向性判断
+  depth: deep
+  ticker: US_HOOD
+  market: US
+outputs_state:
+  00_quality_screen:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  01_business_panorama:
+    version: 1
+    last_updated: '2026-05-26T00:30:39.954592+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-188ea6
+    - mat-24d0dd
+    - mat-409ba8
+    - mat-706061
+    - mat-8ed60a
+    - mat-a6e176
+    - mat-ad0673
+    - mat-e9d55a
+    last_error: null
+  02_cycle_positioning:
+    version: 1
+    last_updated: '2026-05-26T00:30:39.967507+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0f5222
+    - mat-1daa0f
+    - mat-706061
+    - mat-7475c0
+    - mat-8ed60a
+    - mat-9730ab
+    - mat-a6e176
+    - mat-abea64
+    last_error: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-26T00:30:39.980545+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-115c1e
+    - mat-188ea6
+    - mat-1daa0f
+    - mat-24d0dd
+    - mat-599824
+    - mat-6abade
+    - mat-7475c0
+    - mat-abea64
+    - mat-ad0673
+    last_error: null
+  04_implied_expectations:
+    version: 1
+    last_updated: '2026-05-26T00:30:39.993840+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0f5222
+    - mat-1daa0f
+    - mat-32e412
+    - mat-4c5f6e
+    - mat-687a1d
+    - mat-706061
+    - mat-8ed60a
+    - mat-9730ab
+    - mat-a6e176
+    - mat-a99410
+    - mat-abea64
+    - mat-c70cf2
+    - mat-eb3ef4
+    last_error: null
+  05_historical_mirrors:
+    version: 1
+    last_updated: '2026-05-26T00:30:40.007473+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1daa0f
+    - mat-32e412
+    - mat-706061
+    - mat-8ed60a
+    - mat-abea64
+    - mat-c70cf2
+    last_error: null
+  06_risk_blindspots:
+    version: 1
+    last_updated: '2026-05-26T00:30:40.021153+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-24d0dd
+    - mat-32e412
+    - mat-409ba8
+    - mat-599824
+    - mat-6abade
+    - mat-706061
+    - mat-7475c0
+    - mat-8ed60a
+    - mat-a99410
+    - mat-ad0673
+    - mat-c70cf2
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-05-26T00:30:40.035316+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0f5222
+    - mat-115c1e
+    - mat-188ea6
+    - mat-1daa0f
+    - mat-24d0dd
+    - mat-32e412
+    - mat-409ba8
+    - mat-4c5f6e
+    - mat-599824
+    - mat-687a1d
+    - mat-6abade
+    - mat-706061
+    - mat-7475c0
+    - mat-8ed60a
+    - mat-9730ab
+    - mat-a6e176
+    - mat-a99410
+    - mat-abea64
+    - mat-ad0673
+    - mat-c70cf2
+    - mat-e9d55a
+    - mat-eb3ef4
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-05-26T00:30:40.049961+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-115c1e
+    - mat-24d0dd
+    - mat-32e412
+    - mat-599824
+    - mat-6abade
+    - mat-706061
+    - mat-7475c0
+    - mat-8ed60a
+    - mat-a6e176
+    - mat-a99410
+    - mat-ad0673
+    - mat-c70cf2
+    last_error: null
+parent_materials: []
+next_actions:
+- workflow 05 — critic-review：让另一个 variant 反推 thesis_v1
+- workflow 06 — daily-monitor：等 2026-07 HOOD Q2 财报 + 2026-08 Rule 605 / SCHW Q2
+- workflow 07 — drilldown：可选深挖 Bitstamp take rate / SCHW 加密 / Event Contracts 2027
+user_todos:
+- task: 检查 outputs/07_decision_kit.md 买入框是否符合自己的风险偏好
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 检查 thesis_v1.md § 2-3 支持/反方理由是否覆盖了你的疑虑
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 决定是否触发 critic-review（workflow 05）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+thesis:
+  current_version: 1
+  last_updated: '2026-05-26T00:30:40.057252+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-25T16:07:04.794482+00:00'
+    summary: 中性偏看多 6/10：HOOD 已成美国零售券商唯一一体化平台（股票+期权+加密+银行+预测市场），长期值得持有；但当前价位已大幅反映乐观预期，PFOF监管+加密周期+利率下行三重利空尚未定价，更适合金字塔分批建仓。
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-25T16:27:03.325021+00:00'
+    summary: 中性偏看多 7/10：2025 数据已部分验证 thesis（Gold +58% / Bitstamp 反超 / Event Contracts
+      +320%），但 K2 加密下行已部分触发（Q1'26 crypto -47%），当前 PE 35-37 / Forward 38 已较充分定价乐观；长期持有逻辑成立但不追高，回调
+      10-15% 分批建仓。
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-26T00:30:40.057254+00:00'
+    summary: 中性 6/10：长期持有逻辑成立但当前估值$73.64已饱满（合理中枢$55-65）。K1时间窗收窄/K4 take rate证伪/K6
+      SCHW加密反扑触发拖累v0的7/10，K5多元化兑现部分对冲。建议等2026-Q2财报或回调至$60-65区间建立首仓1-2%；强力买入区$45-55需同时满足Net
+      Income增速回升+Funded Customers不转负。

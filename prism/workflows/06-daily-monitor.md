@@ -149,13 +149,15 @@ set_next_actions('{slug}', current, '{variant}')
 
 ---
 
-## Step 6：刷新仪表盘（最终一步，必跑）
+## Step 6：仪表盘刷新（修 S5）
+
+06-daily-monitor 通常不直接动 set_output_referenced_mats / set_thesis / set_critic_verdict，所以 dashboard **不会自动重建**。若本轮监控触发了 signposts/kill-criteria 状态变化（典型来自 04/05 重跑），那些路径已自动刷新；若仅本 workflow 手动追加 living_feed 想立即看 dashboard，再手动跑：
 
 ```bash
 python -m prism.scripts.dashboard
 ```
 
-监控若改变了 signposts triggered / kill criteria status / 价格区间，dashboard 必须重建以反映新状态。失败允许重试一次；仍失败记入 user_todos 不阻塞主流程。
+否则等下次 04/05/thesis 升版自动触发即可。
 
 ---
 

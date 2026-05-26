@@ -3,10 +3,14 @@ from __future__ import annotations
 
 import shutil
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import yaml
+
+# web-search material 的过期窗口
+_WEB_SEARCH_STALE_DAYS = 30
+_WEB_SEARCH_EXPIRE_DAYS = 90
 
 _PRISM_ROOT = Path(__file__).resolve().parent.parent
 
@@ -99,11 +103,21 @@ def add_material(
     notes: str = "",
     source_path: Path | None = None,
     addresses: list[str] | None = None,
+    confidence: float | None = None,
+    search_meta: dict | None = None,
+    parent_mat: str | None = None,
+    sec_section: str | None = None,
 ) -> str:
     """Add a material to the manifest.
 
     addresses: list of K#/Q# tags this material attacks (e.g. ['K1', 'Q3']).
                Links the material back to thesis Killer Questions and roadmap questions.
+    confidence: 0.0-1.0, currently only set for web-search materials.
+    search_meta: only set for web-search materials. Required keys: query, url,
+                 searched_at, stale_at, expire_at, domain, domain_tier.
+    parent_mat: mat_id of a parent material (used for SEC section children pointing back
+                to the original htm filing).
+    sec_section: section key (e.g. 'item_1_business') when the entry is a SEC section file.
     If source_path is provided, copies the file to topic's materials directory.
     Dedup: if filename already in manifest, returns existing mat_id without re-adding.
     """
@@ -131,6 +145,13 @@ def add_material(
             if notes and notes not in (mat.get("notes") or ""):
                 mat["notes"] = ((mat.get("notes") or "") + " | " + notes).strip(" |")
                 updated = True
+            # web-search 重复登记时更新 search_meta（视为刷新搜索时间）
+            if search_meta:
+                mat["search_meta"] = search_meta
+                updated = True
+            if confidence is not None:
+                mat["confidence"] = confidence
+                updated = True
             if updated:
                 data["updated"] = _now_iso()
                 _write_yaml(_manifest_path(slug, variant), data)
@@ -148,10 +169,191 @@ def add_material(
     }
     if addresses:
         entry["addresses"] = sorted(set(addresses))
+    if confidence is not None:
+        entry["confidence"] = confidence
+    if search_meta:
+        entry["search_meta"] = search_meta
+    if parent_mat:
+        entry["parent_mat"] = parent_mat
+    if sec_section:
+        entry["sec_section"] = sec_section
     data["materials"].append(entry)
     data["updated"] = _now_iso()
     _write_yaml(_manifest_path(slug, variant), data)
     return mat_id
+
+
+def add_sec_sections_from_meta(
+    slug: str,
+    variant: str,
+    parent_mat_id: str,
+    meta_path: Path,
+    sections_root: Path | None = None,
+) -> list[str]:
+    """读 split_file 输出的 _meta.yaml，把每个 found 的 section 登记为子 mat。
+
+    parent_mat_id: 原 htm 文件的 mat_id（必须已在 manifest 中）。
+    meta_path:    sec/{stem}/_meta.yaml 绝对路径。
+    sections_root: section 文件所在目录（默认 = meta_path.parent）。
+
+    返回新增的子 mat_id 列表（按 _meta.yaml sections 顺序；跳过已存在 + 跳过 found=False）。
+    每个子 mat 的 filename 用相对 materials/ 的 POSIX 路径（含 sec/{stem}/ 前缀），
+    便于下游通过 get_material_path 解析（仍以 materials/ 为根）。
+    """
+    meta = _read_yaml(meta_path)
+    if not meta.get("split_ok"):
+        return []
+    sections_dir = sections_root or meta_path.parent
+    materials_dir = _materials_dir(slug)
+    # 子 filename 用相对 materials/ 的 POSIX 路径
+    try:
+        rel_dir = sections_dir.resolve().relative_to(materials_dir.resolve())
+    except ValueError:
+        raise ValueError(
+            f"sections dir {sections_dir} must be under {materials_dir}"
+        )
+
+    new_ids: list[str] = []
+    for s in meta.get("sections", []):
+        if not s.get("found") or not s.get("file"):
+            continue
+        section_filename = (Path(rel_dir) / s["file"]).as_posix()
+        mat_id = add_material(
+            slug=slug,
+            filename=section_filename,
+            source_type="sec-section",
+            variant=variant,
+            notes=f"split from {meta.get('source_htm')} ({s.get('item','?')})",
+            addresses=s.get("addresses") or None,
+            parent_mat=parent_mat_id,
+            sec_section=s.get("name"),
+        )
+        new_ids.append(mat_id)
+    return new_ids
+
+
+def make_search_meta(
+    query: str,
+    url: str,
+    domain: str,
+    domain_tier: str,
+    searched_at: str | None = None,
+) -> dict:
+    """Construct a search_meta dict with computed stale_at/expire_at.
+
+    domain_tier ∈ {'whitelist', 'llm-judged-official', 'other'}
+    searched_at defaults to now (ISO UTC).
+    """
+    if domain_tier not in {"whitelist", "llm-judged-official", "other"}:
+        raise ValueError(f"Invalid domain_tier: {domain_tier!r}")
+    if searched_at is None:
+        searched_at_dt = datetime.now(timezone.utc)
+        searched_at = searched_at_dt.isoformat()
+    else:
+        # parse user-supplied ISO string
+        searched_at_dt = datetime.fromisoformat(searched_at.replace("Z", "+00:00"))
+    stale_at = (searched_at_dt + timedelta(days=_WEB_SEARCH_STALE_DAYS)).isoformat()
+    expire_at = (searched_at_dt + timedelta(days=_WEB_SEARCH_EXPIRE_DAYS)).isoformat()
+    return {
+        "query": query,
+        "url": url,
+        "domain": domain,
+        "domain_tier": domain_tier,
+        "searched_at": searched_at,
+        "stale_at": stale_at,
+        "expire_at": expire_at,
+    }
+
+
+def _parse_iso(s: str | None) -> datetime | None:
+    if not s:
+        return None
+    try:
+        return datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except (ValueError, AttributeError):
+        return None
+
+
+def list_by_source_type(slug: str, variant: str, source_type: str) -> list[dict]:
+    """List all materials with the given source_type (e.g., 'web-search')."""
+    return [m for m in read_manifest(slug, variant)["materials"] if m.get("source_type") == source_type]
+
+
+def find_by_url(slug: str, variant: str, url: str) -> dict | None:
+    """按 search_meta.url 反查已存在的 web-search material。
+    用于 register_web_search_result 在 90 天 expire 重扫时避免重复入库。
+    """
+    if not url:
+        return None
+    for m in read_manifest(slug, variant)["materials"]:
+        sm = m.get("search_meta") or {}
+        if sm.get("url") == url:
+            return m
+    return None
+
+
+def refresh_web_search_meta(
+    slug: str, variant: str, mat_id: str,
+    query: str | None = None, searched_at: str | None = None,
+    addresses: list[str] | None = None,
+) -> None:
+    """对已存在的 web-search material 刷新搜索时间，并可合并 addresses + 追加新 query。
+    用于 URL 命中已有条目时只更新元信息，不新建 mat。
+    """
+    data = read_manifest(slug, variant)
+    for mat in data["materials"]:
+        if mat["id"] != mat_id:
+            continue
+        sm = mat.get("search_meta") or {}
+        if not sm:
+            return
+        new_meta = make_search_meta(
+            query=query or sm.get("query", ""),
+            url=sm.get("url", ""),
+            domain=sm.get("domain", ""),
+            domain_tier=sm.get("domain_tier", "other"),
+            searched_at=searched_at,
+        )
+        # 保留旧 query 历史
+        prev_queries = sm.get("prev_queries") or []
+        if query and query != sm.get("query"):
+            prev_queries = sorted(set(prev_queries + [sm.get("query")]))
+            new_meta["prev_queries"] = prev_queries
+        elif prev_queries:
+            new_meta["prev_queries"] = prev_queries
+        mat["search_meta"] = new_meta
+        if addresses:
+            existing = set(mat.get("addresses") or [])
+            mat["addresses"] = sorted(existing | set(addresses))
+        data["updated"] = _now_iso()
+        _write_yaml(_manifest_path(slug, variant), data)
+        return
+    raise ValueError(f"mat_id {mat_id!r} not found")
+
+
+def list_stale_web_search(slug: str, variant: str) -> list[dict]:
+    """Return web-search materials past their stale_at (30 days default)."""
+    now = datetime.now(timezone.utc)
+    out = []
+    for m in list_by_source_type(slug, variant, "web-search"):
+        sm = m.get("search_meta") or {}
+        stale_at = _parse_iso(sm.get("stale_at"))
+        if stale_at and stale_at < now:
+            out.append(m)
+    return out
+
+
+def list_expired_web_search(slug: str, variant: str) -> list[dict]:
+    """Return web-search materials past their expire_at (90 days default).
+    These should be re-scanned by daily-monitor."""
+    now = datetime.now(timezone.utc)
+    out = []
+    for m in list_by_source_type(slug, variant, "web-search"):
+        sm = m.get("search_meta") or {}
+        expire_at = _parse_iso(sm.get("expire_at"))
+        if expire_at and expire_at < now:
+            out.append(m)
+    return out
 
 
 def set_mineru_state(slug: str, variant: str, mat_id: str, state: str) -> None:

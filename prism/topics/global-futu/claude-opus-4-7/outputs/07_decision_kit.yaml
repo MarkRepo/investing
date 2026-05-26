@@ -1,0 +1,118 @@
+slug: global-futu
+variant: claude-opus-4-7
+topic_type: company
+display_name: 富途控股 FUTU
+ticker: US_FUTU
+generated: 2026-05-25T16:00:00+00:00
+data_freshness: 2026-Q1
+
+buy_box:
+  strong_buy_max: 80
+  accumulate_min: 65
+  accumulate_max: 80
+  hold_min: 80
+  hold_max: 110
+  current_price: 91.90
+  price_as_of: 2026-05-22
+  current_zone: hold
+
+position_framework:
+  initial_max_pct: 2
+  full_max_pct: 8
+  add_ladder_prices: [85, 78, 71, 65]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: Reverse PE-DCF
+    bull_fair_value: [148, 187]
+    base_fair_value: [97, 130]
+    bear_fair_value: [73, 87]
+  - name: peer_cross_section
+    label: 同业横截面
+    bull_fair_value: [228, 258]
+    base_fair_value: [104, 187]
+    bear_fair_value: [83, 104]
+  - name: nav_sotp
+    label: NAV/SOTP
+    bull_fair_value: [130, 150]
+    base_fair_value: [113, 113]
+    bear_fair_value: [85, 95]
+
+short_box:
+  strong_short_min: 110
+  strong_short_max: 125
+  short_accumulate_min: 95
+  short_accumulate_max: 110
+  short_stop: 140
+
+kill_criteria:
+  - id: implicating_executive
+    description: CSRC/CAC/公安/国安系统对李华或主要高管发起刑事调查或限制出境
+    status: pending
+    check_at: 2026-12-31
+  - id: business_model_ban
+    description: CSRC 后续行动升级到"业务模式禁止"级别（参照 2021 教培双减）
+    status: pending
+    check_at: 2026-12-31
+  - id: airstar_bank_violation
+    description: Airstar Bank 出现重大监管违规或资本不足
+    status: pending
+    check_at: 2027-03-31
+  - id: fy2026_net_decline_30
+    description: FY2026 全年净利同比下降 ≥ 30%
+    status: pending
+    check_at: 2027-03-31
+  - id: price_below_50
+    description: 股价单日跌破 $50（多因素叠加判定线）
+    status: pending
+    check_at: 2026-12-31
+
+signposts:
+  - date: 2026-06-05
+    event: CSRC 正式罚款决定
+    bull_signal: 罚款 ≤ 0% 上调，无新增条款
+    bear_signal: 上调 ≥ 30% 或追加营业资格限制
+    triggered: null
+  - date: 2026-06-30
+    event: FUTU 2026 Q1 收入披露（10-Q）
+    bull_signal: Commission +25%+ 同步 IBKR
+    bear_signal: Commission < +15%
+    triggered: null
+  - date: 2026-08-15
+    event: FUTU 2026 Q2 业绩会 + 6-K
+    bull_signal: 海外收入加速 +50%+ / Airstar Bank 贡献 ≥ 5% / 大陆账户流失温和
+    bear_signal: 海外收入 < +30% / Airstar 整合损耗 ≥ 5%
+    triggered: null
+  - date: 2026-09-15
+    event: FOMC 9 月降息决定
+    bull_signal: 不降息或仅 25 bp
+    bear_signal: 降息 ≥ 50 bp
+    triggered: null
+  - date: 2026-09-30
+    event: 港交所 9 月 ADV
+    bull_signal: 月度 ≥ 2200 亿 HKD
+    bear_signal: 月度 < 1800 亿 HKD
+    triggered: null
+  - date: 2026-Q3
+    event: SCHW 加密上线时间表
+    bull_signal: 推迟到 2027
+    bear_signal: 提前到 2026 H2
+    triggered: null
+  - date: 2026-12-31
+    event: CAC/HKMA/SFC 任一对 FUTU 行动（K5' 监控）
+    bull_signal: 无任何行动
+    bear_signal: 任何调查/处罚信号
+    triggered: null
+  - date: 2027-03-15
+    event: FUTU FY2026 全年业绩
+    bull_signal: 净利 +20%+
+    bear_signal: 净利同比下降
+    triggered: null
+
+cluster_tags:
+  - cross-border-broker
+  - china-policy-risk
+  - hk-financial
+  - crypto-broker
+  - fintech-asia

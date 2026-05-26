@@ -12,9 +12,13 @@
 
 ---
 
-## Step 1：从 findings 提取已知风险
+## Step 1：聚焦风险维度（按索引补读）
 
-从资料中找出分析师/管理层明确提及的风险。
+本节 addresses 维度：`[risk, K1, K6]`（风险因素、催化剂触发、护城河攻破）。
+
+写本份前：Read `outputs/_findings_index.md` → 按 addresses 筛 mat_id → 记忆模糊就单 Read 补回（不要重读全部 findings）。
+
+重点：分析师/管理层明确提及的风险 + Item 1A Risk Factors 章节。
 
 ---
 

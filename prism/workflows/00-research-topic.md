@@ -83,15 +83,15 @@ print('manifest 创建成功')
 
 ## Step 4.3：写训练知识 baseline（**新增 — 必跑**）
 
-**为什么必须做**：训练知识是研究的第一层数据源（web-search 第二层、用户兜底第三层）。先把"训练时记得什么"显式写下来，后续每条 web-search hit 都能对照"我有的 vs 新拿到的差在哪"。同时这份 baseline 是 Step 4.5 prescan 的种子——盲点列表直接转成 prescan 优先 query。
+**为什么必须做**：训练知识是研究的第一层数据源（web-search 第二层、用户兜底第三层）。先把"训练时记得什么"显式写下来，后续每条 web-search hit 都能对照"我有的 vs 新拿到的差在哪"。同时这份 baseline 是 Step 4.5a 优先 query 的来源——第四节盲点 → 第五节精准 query → Step 4.5a 主 agent 逐条 WebSearch 入库。
 
-**执行**：参 `prism/workflows/_baseline_knowledge.md` 模版，让 LLM（即当前主 agent）写一份 `prism/topics/{slug}/{variant}/baseline_knowledge.md`，五段结构：
+**执行**：参 `prism/workflows/_baseline_knowledge.md` 模版，让 LLM（即当前主 agent）写一份 `prism/topics/{slug}/{variant}/baseline_knowledge.md`，五段结构（第六节 4.5c 回写时再加）：
 
 1. 关键事实记忆（含数字/时间/主体 + 置信度 高/中/低/uncertain）
 2. 关键人物 / 公司 / 产品
 3. 产业链 / 竞争格局认知
-4. **训练知识盲点（自我承认）** — 直接喂 Step 4.5 prescan
-5. 需要 web-search 校准的优先项
+4. **训练知识盲点（自我承认）** — 第五节 query 的种子
+5. **需要 web-search 校准的优先项** — 必须是精准、可执行的 query 串（不是话题），Step 4.5a 会逐条跑
 
 ```bash
 # 主 agent 用 Write 工具落盘 baseline_knowledge.md
@@ -106,8 +106,10 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 
 **纪律**：
 - 自评置信度保守（uncertain 优于编造）
-- 第四节的盲点列表直接喂给 Step 4.5 prescan 作为优先 query
+- 第四节盲点 → 第五节精准 query（如"特斯拉 4680 电池 2026Q1 量产爬坡进度"，不是"电池技术进展"这种话题描述）
+- Step 4.5a 会**逐条**把第五节 query 跑 WebSearch + 入库——第五节漏写优先项 = prescan 漏校准 → thesis_v0 押过时赌注
 - 后续 03/04 引用训练知识时 cite `baseline_knowledge.md` 的 `[fact-NN]` 编号
+- 引用第六节标"被推翻"的 fact 时**必须改 cite 新 mat_id**
 
 ---
 
@@ -115,16 +117,75 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 
 **为什么必须做**：LLM 训练截止与当前时间往往有几个月到一年的差距，对**时效性强的标的**（公司财报/政策动态/股价估值/突发事件），跳过 prescan 直接靠训练知识写 thesis_v0 会把过时事实当成"初判赌注"，导致 K# 设错、user_todos 攻打错方向、后续整轮研究偏航。
 
-**执行**：调用 `prism/workflows/_web_prescan_shared.md`，参数 `recency_days=90`，`triggered_by='00-prescan'`。
+**执行三段：先跑 baseline 优先 query → 再跑默认模板 prescan → 回写 baseline 校准结果。三段都做完才进 Step 5。**
+
+### Step 4.5a：先跑 baseline 第五节的优先 query（**修 M4**）
+
+`build_search_queries` 只会生成 scope + 事件模板 query，**不读 baseline_knowledge.md**——主 agent 在 Step 4.3 baseline 第五节写的"自评盲点 → 想精准查的 query"必须在这一步手动落地，否则等于白写。
+
+```bash
+# 1. 读 baseline 第五节
+sed -n '/## 五、需要 web-search 校准的优先项/,/^##/p' prism/topics/{slug}/{variant}/baseline_knowledge.md
+```
+
+主 agent 对每条优先 query：
+1. 调 `WebSearch` 工具拉 hit
+2. 一行入库：
+
+```python
+from prism.scripts.web_prescan import register_web_search_batch
+register_web_search_batch(
+    slug='{slug}', variant='{variant}',
+    query='baseline 第五节优先项的具体 query',
+    addresses=['scope'],  # 此阶段还无 K#，先用 scope 占位；workflow 01 写完 thesis 后可补
+    triggered_by='00-prescan-baseline',
+    hits=[...],
+)
+```
+
+**纪律**：第五节 5-10 条优先 query 全部跑完才进 4.5b。漏跑等于主 agent 自评的盲点没补，thesis_v0 会基于过时认知做赌注。
+
+### Step 4.5b：跑默认模板 prescan
+
+调用 `prism/workflows/_web_prescan_shared.md`，参数 `recency_days=90`，`triggered_by='00-prescan'`。
 
 注意：此时 thesis 还不存在，`build_search_queries` 仅会生成 **scope + company-event / industry-event / concept-update** 系列查询（不含 K#-derived），这是预期的——本轮目的是为"写出靠谱的 thesis_v0"打地基，K# 类查询留给 workflow 01 prescan。
 
 跑完后输出汇报模板：
 ```
-✅ 00-prescan 完成：N 条查询 → 高/中/低 X/Y/Z → 入库 X+Y 份
+✅ 00-prescan 完成：
+  - 4.5a baseline 优先 query：M 条 → 入库 M' 份
+  - 4.5b 默认模板 prescan：N 条 → 高/中/低 X/Y/Z → 入库 X+Y 份
 关键事实更新：
   - {对 thesis 影响最大的 2-3 条新事实}
 ```
+
+### Step 4.5c：回写 baseline 校准结果（**修 M4**）
+
+跑完 4.5a + 4.5b 后，主 agent 扫一遍刚入库的 web-search material，对照 baseline 第一节的 fact-NN，把被推翻 / 被验证的条目记下来，**追加到 baseline_knowledge.md 末尾**（Edit 工具）：
+
+```markdown
+## 六、prescan 校准结果（{iso_ts} 回写）
+
+> Step 4.5 prescan 入库 N 份 web-search material 后，对照第一节 fact-NN 的更新：
+
+### 被推翻（高优先级——thesis_v0 不要再引用原 fact）
+- `[fact-03]` 训练时"2024 EV 销量 1450 万"，被 `[mat-xxxx]` 推翻：实际 1520 万 → 误差 4.8%
+- `[fact-07]` 训练时"公司 PE 18x"，被 `[mat-yyyy]` 更新：当前 28x → 估值认知必须重置
+
+### 被验证（可继续引用，置信度提升）
+- `[fact-01]` 2024 全球 EV 1450 万 → `[mat-zzzz]` 一致，置信度 高 → 高+
+
+### 仍未校准（thesis_v0 引用时标 uncertain）
+- `[fact-NN]` ...
+```
+
+**纪律**：
+- 这一步是 LLM 判断（不是脚本能做的），主 agent 必须**逐条扫**，不要漏
+- 若某 fact 在第六节标"被推翻" → Step 5.0 写 thesis_v0 时**不准**继续 cite 原 fact，必须改 cite 新 mat_id
+- 该回写让 03/04/05 后续 cite baseline 时一眼看到哪些 fact 已经过时
+
+---
 
 **例外可以跳过 prescan**：concept 类 topic（纯方法论/历史回顾，与近期事件无关）；用户明确说"用你脑子里的知识就行"。**company / industry / arena 默认必跑**。
 

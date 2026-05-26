@@ -12,7 +12,11 @@
 
 ---
 
-## Step 1：读取 findings 中的周期相关信息
+## Step 1：聚焦周期维度（按索引补读）
+
+本节 addresses 维度：`[Q1, K2]`（周期定位、财务/估值锚定）。
+
+写本份前：Read `outputs/_findings_index.md` → 按 addresses 筛 mat_id → 记忆模糊就单 Read 补回（不要重读全部 findings）。
 
 重点找：库存数据、价格数据、产能利用率、订单/出货比、ROE 趋势。
 

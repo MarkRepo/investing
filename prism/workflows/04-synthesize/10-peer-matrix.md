@@ -256,3 +256,9 @@ set_next_actions('{slug}', ['为深研档创建 company topic', '或进入日常
 ```
 
 将 "10-peer-matrix 完成" 摘要追加到 `08_living_feed.md`。
+
+---
+
+## Step 9：仪表盘自动刷新（修 S5）
+
+`set_output_referenced_mats('10_peer_matrix', ...)` 已自动 fire-and-forget 触发 dashboard 异步重建，**无需手跑** `python -m prism.scripts.dashboard`。后台失败留痕在 `prism/logs/dashboard_auto.log`。

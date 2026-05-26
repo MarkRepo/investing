@@ -2,8 +2,13 @@
 
 **触发**: company topic 完成 03-extracting（stage 为 03-extracting）
 **定位**: 在进入 04 完整研究前，先检查质量红线，过滤明显不合格的公司
-**产出文件**: `prism/topics/{slug}/outputs/00_quality_screen.md`
-**归档文件**: `prism/quarantine/{slug}.md`（若 FAIL）
+**产出文件**: `prism/topics/{slug}/{variant}/outputs/00_quality_screen.md`
+**归档文件**: `prism/quarantine/{slug}.md`（若 FAIL，归档不分 variant）
+
+> ⚠️ **修 M5**：所有 outputs / findings 路径都在 `{slug}/{variant}/outputs/` 下（**带 variant 子目录**）。
+> 多 variant 共存时不带 variant 会落到 `{slug}/outputs/`，被后续 04 找不到。
+> 脚本调用（read_topic、set_output_status 等）按位置参数 `(slug, ..., variant)` 传，
+> 主 agent **用 Write/Read 工具**操作 md 文件时必须用完整路径含 `/{variant}/`。
 
 ---
 
@@ -55,7 +60,7 @@ else:
 
 ## Step 3：读取 findings 并检查治理/业务红线
 
-读取所有 `findings_mat_*.md`，提取：
+读取 `prism/topics/{slug}/{variant}/outputs/findings_mat-*.md` 全部条目（**含 variant 子目录**），提取：
 - 大股东质押率
 - 审计意见
 - 关联交易占比
@@ -112,7 +117,7 @@ AskUserQuestion:
 
 ## Step 6：写入产出文件
 
-写入 `outputs/00_quality_screen.md`，包含 frontmatter 字段 `verdict: pass/fail/needs-review`。
+主 agent 用 Write 工具写到完整路径 `prism/topics/{slug}/{variant}/outputs/00_quality_screen.md`（**含 variant 子目录**），包含 frontmatter 字段 `verdict: pass/fail/needs-review`。
 
 ---
 
@@ -140,4 +145,4 @@ set_next_actions('{slug}', ['已 quarantine，不再继续研究'], '{variant}')
 "
 ```
 
-将 "03b-quality-screen 完成" 摘要追加到 `08_living_feed.md`。
+将 "03b-quality-screen 完成" 摘要追加到 `prism/topics/{slug}/{variant}/outputs/08_living_feed.md`（**含 variant 子目录**）。

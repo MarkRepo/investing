@@ -556,3 +556,19 @@ Tier 1 必读资料：
 
 Web 地址：http://localhost:8000/prism/{slug}/{variant}/
 ```
+
+---
+
+## Step 8：一次性 web-search prescan（**新增**）
+
+roadmap 落地后立即跑 `_web_prescan_shared.md` 一次（`recency_days=90`），目的：
+- 为每个 L3-debate 争议点 + L4 hunting question 主动拉近 90 天事件 / 数据
+- company：补 ticker 最新公告/监管/业绩 4 类
+- industry/arena：补行业政策/技术突破/产能/龙头新闻
+- concept：补每个 concept 最新进展
+- thesis K# 一次性扫覆盖度
+
+按 `_web_prescan_shared.md` Step A-F 执行，`triggered_by='01-prescan'`。
+
+完成后 user_todos 通常已自动消化掉大半 K# 级 todo——剩下的（如未公开内部数据、付费墙、专家访谈）才是真正需要用户手工去搞的清单。
+

@@ -1,0 +1,119 @@
+slug: us-robinhood
+variant: claude-opus-4-7
+topic_type: company
+display_name: Robinhood Markets (HOOD)
+ticker: NASDAQ_HOOD
+generated: 2026-05-26T00:00:00Z
+data_freshness: 2026-Q1
+
+buy_box:
+  strong_buy_max: 55
+  accumulate_min: 55
+  accumulate_max: 65
+  hold_min: 65
+  hold_max: 80
+  current_price: 73.64
+  price_as_of: 2026-05-22
+  current_zone: hold
+
+position_framework:
+  initial_max_pct: 3
+  full_max_pct: 8
+  add_ladder_prices: [43, 48, 53, 59, 66]
+  max_cluster_pct: 20
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: Reverse PE-DCF（逆向反推 5 年 CAGR + 终值 PE）
+    bull_fair_value: [99, 138]
+    base_fair_value: [64, 91]
+    bear_fair_value: [52, 72]
+  - name: foundation_plus_option
+    label: 基本盘 + 期权拆解（5 大期权独立 NPV）
+    bull_fair_value: [80, 80]
+    base_fair_value: [52, 52]
+    bear_fair_value: [35, 35]
+  - name: peer_cross_section
+    label: 同业横截面（IBKR/SCHW/COIN 中位 PE 26x 调整）
+    bull_fair_value: [63, 63]
+    base_fair_value: [45, 45]
+    bear_fair_value: [32, 32]
+
+kill_criteria:
+  - id: funded_customers_negative
+    description: Funded Customers YoY 连续 2 个季度转负（超级 App 用户飞轮证伪）
+    status: pending
+    check_at: 2026-10-31
+  - id: net_income_growth_negative
+    description: Net Income 增速 < 0% 连续 2 个季度（OpEx 失控结构性）
+    status: pending
+    check_at: 2026-10-31
+  - id: pfof_revenue_collapse
+    description: PFOF 收入 YoY -20%+（2026 H2 监管落地后兑现）
+    status: pending
+    check_at: 2027-02-28
+  - id: schw_crypto_aum_threshold
+    description: SCHW 加密 AUM > $20B（12 个月内 K6 实质性切走份额）
+    status: pending
+    check_at: 2027-04-30
+  - id: gold_subs_slowdown
+    description: Gold Subscribers YoY < +15% 连续 2 个季度（K3 飞轮证伪）
+    status: pending
+    check_at: 2026-10-31
+  - id: platform_assets_stall
+    description: Total Platform Assets YoY < +15% 连续 2 个季度（剔除收购，K5 失速）
+    status: pending
+    check_at: 2026-10-31
+  - id: event_contracts_post_election
+    description: Event Contracts Q1'27 YoY < +50%（大选脉冲证伪）
+    status: pending
+    check_at: 2027-04-30
+
+signposts:
+  - date: 2026-05-01
+    event: SIPs odd-lot 数据开始公开
+    bull_signal: 媒体/学术未抓 HOOD 负面
+    bear_signal: HOOD odd-lot 占比高 → 执行质量被质疑
+    triggered: null
+  - date: 2026-07-31
+    event: HOOD Q2 2026 财报
+    bull_signal: 收入 +20%+ / Net Income 回升 +15%
+    bear_signal: 收入 <+15% / Net Income +5% 以内
+    triggered: null
+  - date: 2026-08-01
+    event: SEC Rule 605 执行质量披露生效
+    bull_signal: HOOD 排名前 5
+    bear_signal: HOOD 排名靠后 → 监管+媒体双杀
+    triggered: null
+  - date: 2026-08-01
+    event: SCHW Q2 2026 财报（含加密上线 4 个月）
+    bull_signal: SCHW 加密 AUM <$5B
+    bear_signal: SCHW 加密 AUM >$10B
+    triggered: null
+  - date: 2026-10-31
+    event: HOOD Q3 2026 财报 + Bitstamp 1.25 年整合
+    bull_signal: Bitstamp take rate 拐头上行 / 收入贡献 >5%
+    bear_signal: Bitstamp take rate 持平 / 收入贡献仍 1-2%
+    triggered: null
+  - date: 2026-11-01
+    event: SEC tick size + access fee cap 合规
+    bull_signal: HOOD 应对预案 + PFOF 收入 Q4 <-5% QoQ
+    bear_signal: PFOF 收入 Q4 -10%+ QoQ
+    triggered: null
+  - date: 2026-11-04
+    event: 美国中期选举
+    bull_signal: 民主党未赢回参议院 → 监管立法窗口关闭
+    bear_signal: 民主党赢回参议院 → PFOF 监管立法风险升级
+    triggered: null
+  - date: 2027-02-28
+    event: HOOD FY2026 财报
+    bull_signal: 收入 +20%+ / Net Income +15%+ / Event Contracts 持续
+    bear_signal: Net Income 全年仅 +5% / Event Contracts 减速
+    triggered: null
+  - date: 2027-04-30
+    event: HOOD Q1 2027 财报（大选后第一季度）
+    bull_signal: Event Contracts >+50% YoY（K7 可持续验证）
+    bear_signal: Event Contracts <+30% YoY（大选脉冲证伪）
+    triggered: null
+
+cluster_tags: [us-fintech, retail-brokerage, crypto-exposure, prediction-markets, super-app, pfof-regulation]

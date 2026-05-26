@@ -1,0 +1,10 @@
+ITEM 3. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK 
+Market risk is the risk to our F
+inancial Statements
+ associated with the effect of changes in market factors, including risks associated with interest rates, foreign currency, derivatives, marketable and strategic investments, and crypto assets. These assets and liabilities are held for purpo
+ses other than tr
+ading, except for our marketable investments which are available for trading. 
+There have been no material changes to our market risk exposures from the information presented in Part II, Item 7A. “Quantitative and Qualitative Disclosures About Market Risk,” in the Annual Report except for our market risk exposure on our crypto assets held for investment. Though the nature of this exposure and the overall implied volatility of the crypto assets underlying this exposure have not changed since December 31, 2025, the number of units we hold and the price of the assets have changed, resulting in a material change in the output of our sensitivity analysis. 
+41
+Table of Contents
+Crypto assets held for investment are primarily held long term, and historically, we have not attempted to reduce our market risk exposure associated with these crypto assets. Crypto asset prices have been volatile, as demonstrated by the one year historical volatility of Bitcoin and Ethereum of approximately 50% implied from the annualized standard deviation of daily price returns observed in the past 24 months. A hypothetical 50% increase or decrease in crypto assets prices as of March 31, 2026 and December 31, 2025 would result in a $800.6 million and $1.0 billion impact, respectively, to the value of our Crypto assets held for investment and would have been recognized as a gain or loss in Losses on crypto assets held for investment, net in our Condensed Consolidated Statements of Operations. The decrease in the hypothetical gains or losses since December 31, 2025 primarily reflects a decrease in the prices of crypto assets held for investment.

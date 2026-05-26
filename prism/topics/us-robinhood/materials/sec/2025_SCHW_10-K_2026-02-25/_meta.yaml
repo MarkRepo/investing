@@ -1,0 +1,60 @@
+source_htm: 2025_SCHW_10-K_2026-02-25.htm
+form: 10-K
+split_ok: true
+total_lines: 16590
+sections:
+- item: '1'
+  name: item_1_business
+  found: true
+  start_line: 3806
+  end_line: 4006
+  word_count: 7204
+  addresses:
+  - scope
+  - Q1
+  - K3
+  - K5
+  file: item_1_business.md
+- item: 1A
+  name: item_1a_risk
+  found: true
+  start_line: 4006
+  end_line: 4139
+  word_count: 7517
+  addresses:
+  - risk
+  - K1
+  - K6
+  file: item_1a_risk.md
+- item: '7'
+  name: item_7_mda
+  found: true
+  start_line: 4361
+  end_line: 7256
+  word_count: 24589
+  addresses:
+  - Q1
+  - K2
+  - K4
+  - K5
+  file: item_7_mda.md
+- item: 7A
+  name: item_7a_quant_risk
+  found: true
+  start_line: 7256
+  end_line: 7260
+  word_count: 37
+  addresses:
+  - risk
+  - K2
+  file: item_7a_quant_risk.md
+- item: '8'
+  name: item_8_financial
+  found: true
+  start_line: 7260
+  end_line: 15265
+  word_count: 33424
+  addresses:
+  - valuation
+  - Q1
+  file: item_8_financial.md

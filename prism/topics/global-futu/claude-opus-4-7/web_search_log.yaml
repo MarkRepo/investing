@@ -1,0 +1,10 @@
+slug: global-futu
+variant: claude-opus-4-7
+entries:
+- searched_at: '2026-05-25T12:39:47.720034+00:00'
+  query: 01-prescan 全量（CSRC + Q1 earnings, recency_days=90）
+  triggered_by: 01-prescan
+  n_results: 8
+  n_high: 1
+  n_mid: 7
+  n_low: 0

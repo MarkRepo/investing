@@ -164,10 +164,13 @@ def _download(announcement: dict, dest_dir: Path, company_name: str,
     return dest
 
 
-def _register_in_prism(slug: str, file_path: Path, report_type: str, company_name: str, variant: str | None = None) -> None:
-    """Register downloaded report in prism manifest and update user_todos."""
+def _register_in_prism(slug: str, file_path: Path, report_type: str, company_name: str, variant: str | None = None) -> tuple[str | None, str | None]:
+    """Register downloaded report in prism manifest and update user_todos.
+
+    Returns (mat_id, resolved_variant). Either may be None if registration was skipped.
+    """
     from prism.scripts.manifest import add_material, create_manifest, read_manifest
-    from prism.scripts.topic import list_variants, read_topic, set_user_todos, update_user_todo_status
+    from prism.scripts.topic import list_variants, read_topic, update_user_todo_status
 
     # Auto-detect variant if not specified
     if not variant:
@@ -176,7 +179,7 @@ def _register_in_prism(slug: str, file_path: Path, report_type: str, company_nam
             variant = variants[0]
         else:
             log.warning("Cannot auto-detect variant for %s (found %d), skipping manifest update", slug, len(variants))
-            return
+            return (None, None)
 
     # Auto-create manifest if missing
     try:
@@ -215,6 +218,7 @@ def _register_in_prism(slug: str, file_path: Path, report_type: str, company_nam
                 log.debug("todo status update failed for %s: %s", task_text[:30], e)
     if matched:
         log.info("Updated %d matched todo(s) to in_progress (preserving schema)", matched)
+    return (mat_id, variant)
 
 
 def _search_all_pages(code: str, org_id: str, column: str, keyword: str, max_pages: int = 20) -> list[dict]:
@@ -410,7 +414,19 @@ def fetch_sec(
             log.info("Saved → %s (%.1f MB)", dest, dest.stat().st_size / 1e6)
         if slug:
             report_type = _SEC_FORM_TO_REPORT_TYPE.get(form, "quarterly")
-            _register_in_prism(slug, dest, report_type, company_name, variant)
+            parent_id, resolved_variant = _register_in_prism(slug, dest, report_type, company_name, variant)
+            # 10-K / 10-Q：尝试按 Item 切片，并把每节登记为 parent_mat 子条目
+            if parent_id and resolved_variant and form in {"10-K", "10-Q"} and dest.suffix.lower() in {".htm", ".html"}:
+                try:
+                    from prism.scripts.sec_section_split import split_file
+                    from prism.scripts.manifest import add_sec_sections_from_meta
+                    meta = split_file(dest)
+                    if meta.get("split_ok"):
+                        meta_path = dest.parent / "sec" / dest.stem / "_meta.yaml"
+                        children = add_sec_sections_from_meta(slug, resolved_variant, parent_id, meta_path)
+                        log.info("Split %s → %d section children", dest.name, len(children))
+                except Exception as e:
+                    log.warning("Section split failed for %s: %s — full htm still usable", dest.name, e)
         saved.append(dest)
     return saved
 

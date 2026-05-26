@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Web-search 日志 · {{ topic.display_name }} · {{ variant }}{% endblock %}
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
+  <a href="/prism/{{ topic.slug }}/{{ variant }}">{{ variant }}</a> /
+  <span>web-search 日志</span>
+</nav>
+
+<h2>🌐 Web-search 日志 · {{ topic.display_name }}</h2>
+<p class="hint">所有由 LLM 主动 web-search 触发的 query / 命中 / 入库情况；每轮一条；最新在前。</p>
+
+<section>
+  <h3>当前 web-search materials</h3>
+  <p>
+    共 <b>{{ ws_mats | length }}</b> 份
+    {% if n_stale %} · <span class="ws-chip ws-stale">⚠ {{ n_stale }} 条 stale</span>{% endif %}
+    {% if n_expired %} · <span class="ws-chip ws-expired">✗ {{ n_expired }} 条 expired 待重扫</span>{% endif %}
+  </p>
+  {% if ws_mats %}
+  <table class="data-table">
+    <thead><tr>
+      <th>mat_id</th><th>filename</th><th>domain</th><th>conf</th><th>addresses</th><th>searched_at</th><th>状态</th>
+    </tr></thead>
+    <tbody>
+    {% for m in ws_mats %}
+      {% set sm = m.search_meta or {} %}
+      {% set _conf = m.confidence or 0 %}
+      {% set _band = 'high' if _conf >= 0.8 else ('mid' if _conf >= 0.5 else 'low') %}
+      <tr>
+        <td class="mono">{{ m.id }}</td>
+        <td><a href="{{ sm.url }}" target="_blank" rel="noopener">{{ m.filename }}</a></td>
+        <td class="mono">{{ sm.domain }}</td>
+        <td><span class="ws-chip ws-{{ _band }}">{{ '%.2f' % _conf }}</span></td>
+        <td>{% for a in (m.addresses or []) %}<span class="mat-addr">{{ a }}</span>{% endfor %}</td>
+        <td class="mono hint">{{ (sm.searched_at or '')[:10] }}</td>
+        <td>
+          {% if sm.expire_at and sm.expire_at < now_iso %}<span class="ws-chip ws-expired">✗ expired</span>
+          {% elif sm.stale_at and sm.stale_at < now_iso %}<span class="ws-chip ws-stale">⚠ stale</span>
+          {% else %}<span class="hint">fresh</span>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="hint">还没有 web-search material。运行 workflow 01 / 02 / 06 / 07 时会自动触发。</p>
+  {% endif %}
+</section>
+
+<section style="margin-top: 2em;">
+  <h3>搜索日志（{{ entries | length }} 轮）</h3>
+  {% if entries %}
+  <table class="data-table">
+    <thead><tr>
+      <th>searched_at</th><th>triggered_by</th><th>query</th><th>n_results</th><th>high</th><th>mid</th><th>low</th>
+    </tr></thead>
+    <tbody>
+    {% for e in entries %}
+      <tr>
+        <td class="mono hint">{{ (e.searched_at or '')[:19] }}</td>
+        <td class="mono">{{ e.triggered_by }}</td>
+        <td>{{ e.query }}</td>
+        <td>{{ e.n_results }}</td>
+        <td><span class="ws-chip ws-high">{{ e.n_high }}</span></td>
+        <td><span class="ws-chip ws-mid">{{ e.n_mid }}</span></td>
+        <td><span class="ws-chip ws-low">{{ e.n_low }}</span></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="hint">尚无搜索日志。</p>
+  {% endif %}
+</section>
+
+<style>
+  .mono { font-family: monospace; font-size: 0.85em; }
+  .data-table { border-collapse: collapse; width: 100%; margin-top: 0.5em; }
+  .data-table th, .data-table td { padding: 0.4em 0.7em; border-bottom: 1px solid #eee; font-size: 0.88em; vertical-align: top; }
+  .data-table th { font-weight: 600; color: #555; background: #fafafa; }
+  .hint { color: #888; font-size: 0.85em; }
+  .ws-chip { font-size: 0.7em; padding: 0.05em 0.4em; border-radius: 3px; font-weight: 600; font-family: monospace; }
+  .ws-high { background: #e8f0ff; color: #2a5db0; border: 1px solid #b8cfe8; }
+  .ws-mid { background: #f4f4f4; color: #666; border: 1px solid #ddd; }
+  .ws-low { background: #fafafa; color: #999; border: 1px solid #eee; }
+  .ws-stale { background: #fff3e0; color: #b45309; border: 1px solid #f0d896; }
+  .ws-expired { background: #fdecea; color: #c93434; border: 1px solid #f5c2c2; }
+  .mat-addr { font-size: 0.68em; padding: 0.05em 0.3em; background: #f0f4ff; color: #2a5db0; border: 1px solid #b8cfe8; border-radius: 3px; margin-right: 0.2em; font-family: monospace; font-weight: 600; }
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 1em; }
+  .breadcrumb a { color: #555; }
+  .breadcrumb span { color: #333; }
+</style>
+{% endblock %}

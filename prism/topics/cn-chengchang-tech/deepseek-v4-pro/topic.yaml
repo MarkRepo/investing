@@ -19,57 +19,91 @@ scope:
 outputs_state:
   00_quality_screen:
     version: 0
-    last_updated: null
+    last_updated: '2026-05-26T01:32:30.942260+00:00'
     status: pending
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   01_business_panorama:
     version: 1
     last_updated: '2026-05-12T06:13:22.390529+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   02_cycle_positioning:
     version: 1
     last_updated: '2026-05-12T06:13:22.393012+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   03_narrative_ecology:
     version: 1
     last_updated: '2026-05-12T06:13:22.395017+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   04_implied_expectations:
     version: 1
     last_updated: '2026-05-12T05:58:56.118878+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   05_historical_mirrors:
     version: 1
     last_updated: '2026-05-12T06:10:40.998386+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   06_risk_blindspots:
     version: 1
     last_updated: '2026-05-12T06:11:49.591012+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   07_decision_kit:
     version: 1
     last_updated: '2026-05-12T06:12:46.552962+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   08_living_feed:
     version: 1
     last_updated: '2026-05-12T06:13:22.397037+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
 next_actions:
 - 全部 8 份产出已完成（2026-05-12），所有输出 status=fresh
 - 说「评审 cn-chengchang-tech」启动 critic review
 - 或说「监控 cn-chengchang-tech」开启 daily monitor
 user_todos:
-- 全部产出完成（8 份），等待创建子 topic 或进入监控
-- 'Tier1 遗漏: GW/千帆供应商遴选规则（需手动收集）'
-- 可选操作：评审/深挖/记录决策/进入监控
+- task: 全部产出完成（8 份），等待创建子 topic 或进入监控
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 'Tier1 遗漏: GW/千帆供应商遴选规则（需手动收集）'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+- task: 可选操作：评审/深挖/记录决策/进入监控
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
 monitoring:
   enabled: false
   cadence: daily
+critic: null

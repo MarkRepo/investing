@@ -12,7 +12,11 @@
 
 ---
 
-## Step 1：从 findings 中提取叙事材料
+## Step 1：聚焦叙事维度（按索引补读）
+
+本节 addresses 维度：`[narrative, K2, K3]`（叙事谱系、增长驱动框架）。
+
+写本份前：Read `outputs/_findings_index.md` → 按 addresses 筛 mat_id → 记忆模糊就单 Read 补回（不要重读全部 findings）。
 
 重点提取：分析师的核心逻辑、管理层的战略叙事、产业链反馈、政策方向。
 

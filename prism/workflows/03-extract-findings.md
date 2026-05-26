@@ -24,9 +24,37 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 
 ---
 
-## Step 0：扫 topic-scope inbox（**进 03 前强制**）
+## Step 0b：父级 findings 健康检查（**修 H3**）
 
-用户手动放的研报/年报通常落在 `prism/topics/{slug}/inbox/`，**不一定全在 manifest 里**。直接跳 Step 1 会漏掉这些文件。
+子 topic（在 01 Step 1.5 写过 `parent_materials`）04 合成时会通过 `list_all_findings` 自动捞父级 findings——**但若父 topic 没跑过 03，父级 `findings_{mat_id}.md` 不存在，会被静默跳过**，导致本 topic 04 时相关 K# 缺论据。
+
+```bash
+python3 -c "
+from prism.scripts.findings import list_missing_parent_findings
+miss = list_missing_parent_findings('{slug}', '{variant}')
+if not miss:
+    print('✓ 所有 parent_materials 引用的 finding 都已就位（或本 topic 无 parent_materials）')
+else:
+    print(f'⚠ 有 {len(miss)} 条 parent_materials 引用了未生成的 finding（04 时会被静默跳过）:')
+    for m in miss:
+        addr = ','.join(m['addresses']) or '-'
+        print(f'  - parent={m[\"parent_slug\"]}/{m[\"mat_id\"]} addresses=[{addr}]')
+        if m['note']: print(f'    note: {m[\"note\"]}')
+"
+```
+
+**任一缺失 → 三选一补救**：
+- A. 切到父 topic 跑 workflow 03 把缺失的 finding 补上（最严谨；相关 K# 在父 topic 也会受益）
+- B. 编辑 `topic.yaml` 把这些 ref 从 `parent_materials` 中移除（弃用引用；如父 topic 已废弃）
+- C. 忽略继续——但在本 topic 04 完成后 critic-review 会更可能命中"该 K# 论证薄弱"
+
+这是诊断不是 gate——脚本不会拒绝前进，但跳过相当于把 [[feedback_addresses_granularity]] 已经踩过的"父级 finding 假覆盖"问题留到 04/05。
+
+---
+
+## Step 0：扫 topic-scope inbox + inline 02 入库（**修 S2：不再 raise，主 agent 同对话补完**）
+
+用户手动放的研报/年报通常落在 `prism/topics/{slug}/inbox/`，**不一定全在 manifest 里**。先扫一遍并打印未登记列表：
 
 ```bash
 python3 << 'EOF'
@@ -37,28 +65,84 @@ slug = '{slug}'
 variant = '{variant}'
 inbox = Path(f'prism/topics/{slug}/inbox')
 if not inbox.exists():
-    print('无 topic-scope inbox，跳过')
+    print('无 topic-scope inbox，跳过 inline 02')
 else:
     try:
         m = read_manifest(slug, variant)
         known = {x['filename'] for x in m.get('materials', [])}
     except FileNotFoundError:
         known = set()
-    new_files = [f for f in inbox.iterdir() if f.is_file() and f.name not in known]
-    if new_files:
+    new_files = sorted([f for f in inbox.iterdir() if f.is_file() and f.name not in known])
+    if not new_files:
+        print(f'✓ topic-scope inbox 全部已登记 ({len(known)} 份)')
+    else:
         print(f'⚠ topic-scope inbox 有 {len(new_files)} 份未登记文件:')
         for f in new_files:
             print(f'  {f.name}  ({f.stat().st_size/1024:.0f}KB)')
         print()
-        print('→ 必须先跑 workflow 02-gather-materials 登记 + 改名 + 自动 mineru')
-        print('  (workflow 02 Step 2 会用 pdftotext 识别 H3_AP*.pdf 等无语义文件名;')
-        print('   Step 4.5 自动 mineru sell-side/industry/policy PDF)')
-        raise SystemExit(1)
-    print(f'✓ topic-scope inbox 全部已登记 ({len(known)} 份)')
+        print('→ 主 agent 同对话直接跑 inline 02 流程（不再 raise）：')
+        print('  1. 对每份文件用 pdftotext -l 3 抽前 3 页判 source_type（参 02 Step 2）')
+        print('  2. 主 agent 给出 addresses（按 _web_prescan_shared.md 三态约定）')
+        print('  3. 调 add_material 逐份入库（参 02 Step 4）')
+        print('  4. 跑 02 Step 4.5 mineru 批转换（vlm 模型，必须）')
+        print('  5. 入库完成后继续 03 Step 1（不离开本对话）')
 EOF
 ```
 
-如果非 0 退出，**回 workflow 02 处理 inbox**，再回来跑 Step 1。
+**inline 02 入库脚本模板**（主 agent 按列出的文件填 source_type/addresses 后跑）：
+
+```bash
+python3 << 'EOF'
+from pathlib import Path
+from prism.scripts.manifest import add_material, list_pending_mineru, set_mineru_state
+from scripts.mineru_api import convert
+
+slug = '{slug}'
+variant = '{variant}'
+inbox = Path(f'prism/topics/{slug}/inbox')
+
+# 主 agent 按上面 ls 出的文件逐份填这张表
+# (filename, source_type, addresses, notes)
+to_add = [
+    # ('某机构_某日期_某标题.pdf', 'sell-side-note', ['K1', 'K3'], '中信建投 2026-05 深度'),
+    # ('2026_SSE_600519_annual.pdf', 'annual-report', ['scope'], '茅台 2026 年报'),
+]
+for fname, stype, addrs, notes in to_add:
+    src = inbox / fname
+    if not src.exists():
+        print(f'  ✗ {fname} 不在 inbox')
+        continue
+    mat_id = add_material(
+        slug=slug, filename=fname, source_type=stype, variant=variant,
+        notes=notes, source_path=src, addresses=addrs,
+    )
+    print(f'  ✓ {fname} → {mat_id}')
+
+# 同步跑 mineru 批转换（vlm 模型，禁止改）
+mats_dir = Path(f'prism/topics/{slug}/materials')
+pending = list_pending_mineru(slug, variant)
+print(f'Pending mineru: {len(pending)}')
+for m in pending:
+    src = mats_dir / m['filename']
+    if not src.exists():
+        set_mineru_state(slug, variant, m['id'], 'failed')
+        continue
+    out_dir = mats_dir / (Path(m['filename']).stem + '_vlm')
+    if (out_dir / 'full.md').exists():
+        set_mineru_state(slug, variant, m['id'], 'done')
+        continue
+    set_mineru_state(slug, variant, m['id'], 'in_progress')
+    try:
+        convert(src, out_dir, 'vlm')
+        set_mineru_state(slug, variant, m['id'], 'done')
+        print(f'  ✓ mineru {m["filename"][:50]}')
+    except Exception as e:
+        set_mineru_state(slug, variant, m['id'], 'failed')
+        print(f'  ❌ mineru {m["filename"][:50]}: {e}')
+EOF
+```
+
+inline 入库 + mineru 全跑完后直接进 Step 1，**不再退场让用户切到 02 再回来**。
 
 ---
 
@@ -73,6 +157,32 @@ for i in items:
     print(f'{i[\"id\"]} | {i[\"filename\"]} | {i[\"source_type\"]}')
 "
 ```
+
+---
+
+## Step 1.5：跳过已切片的 SEC parent htm（强制）
+
+SEC 10-K/10-Q 下载时（`fetch_report_prism.fetch_sec`）已自动切片成 `sec/{stem}/item_*.md`，
+每节作为 `source_type=sec-section` 的子条目登记，带 `parent_mat` 指回原 htm。
+
+**parent htm 本身不再需要读**——所有有用内容都在 sec-section 子条目里，强行读全文等于退回切片前的"全 htm 60-100k token"成本。
+
+```bash
+python3 -c "
+from prism.scripts.manifest import read_manifest, mark_processed
+slug, variant = '{slug}', '{variant}'
+mats = read_manifest(slug, variant)['materials']
+parents_with_children = {m['parent_mat'] for m in mats if m.get('parent_mat')}
+skipped = 0
+for m in mats:
+    if m['id'] in parents_with_children and not m['processed'] and m['filename'].lower().endswith(('.htm', '.html')):
+        mark_processed(slug, m['id'], variant)
+        skipped += 1
+print(f'已自动跳过 {skipped} 份 SEC parent htm（其 sec-section 子条目仍在 unprocessed 队列）')
+"
+```
+
+执行后回到 Step 1 重新拉 unprocessed 清单 —— 你应该看到的是 `sec-section` 子条目，不是 `*.htm` 父文件。
 
 ---
 
@@ -110,7 +220,7 @@ dispatch subagent 时：
 # 1. 找到文件位置
 python -c "
 from prism.scripts.manifest import get_material_path
-path = get_material_path('{slug}', '{filename}', '{variant}')
+path = get_material_path('{slug}', '{filename}')
 print(path if path else 'FILE_NOT_FOUND')
 "
 # 2. 用章节提取器处理 PDF，只保留分析相关章节（管理层讨论/主营业务等，跳过财务报表）
@@ -135,11 +245,13 @@ print(get_financial_context('{slug}', '{variant}'))
 
 #### B. 研报 / 行业报告（source_type = sell-side-note 或 industry-research）
 
+> ⚠️ **必须用 vlm 模型**——CLI `--model vlm` 不能改成 pipeline/默认。研报/行业报告中表格、公式、多栏排版是核心数据，pipeline 会丢失。详见 [[feedback_mineru_required]]。
+
 ```bash
 # 1. 找到文件位置
 python -c "
 from prism.scripts.manifest import get_material_path
-path = get_material_path('{slug}', '{filename}', '{variant}')
+path = get_material_path('{slug}', '{filename}')
 print(path if path else 'FILE_NOT_FOUND')
 "
 # 2. 检查是否已转换（避免重复消耗 API 配额）
@@ -160,13 +272,31 @@ if md.exists() and md.stat().st_size > 0:
     print('mineru_state → done')
 else:
     set_mineru_state('{slug}', '{variant}', '{mat_id}', 'failed')
-    print('mineru_state → failed (full.md missing or empty)')
+    print()
+    print('=' * 60)
+    print('⛔ mineru 转换失败 — 跳过这份资料、不要硬抽 finding')
+    print('=' * 60)
+    print(f'mat_id: {mat_id}')
+    print(f'filename: {filename}')
+    print()
+    print('原因：full.md 缺失或为空——研报/行业报告无 OCR 内容，强行读 PDF')
+    print('会丢失所有表格、公式、图片数据，finding 质量会严重劣化。')
+    print()
+    print('补救：')
+    print('  1. 立即跳到下一份资料继续 03（不阻塞）')
+    print('  2. 完成本轮 03 后回 workflow 02 Step 4.5 用 list_pending_mineru')
+    print('     批量重试 failed 的；或单独跑 scripts.mineru_api 排查 API 配额/网络')
+    print('  3. 修好后回 03 重跑该 mat（unprocessed 队列里它仍在）')
+    print('=' * 60)
 "
 ```
 
 转换完成后，读取 `prism/topics/{slug}/{variant}/materials/{filename_stem}_vlm/full.md` 作为分析内容。
 
+**Mineru 失败时主 agent 必须**：（1）在对话里向用户报告失败 mat_id + 上面三条补救路径；（2）跳过该资料，不要用 pymupdf/直读 PDF 偷工（参 [[feedback_mineru_required.md]]）；（3）继续处理下一份 unprocessed。
+
 > 转换规则参见 `.claude/skills/mineru/SKILL.md`。
+> 02 Step 4.5 已批量预转换，03 这一段是"用户跳过 02 直接 03"或"02 失败漏修"时的兜底救场——不是 02 的替代品。
 
 #### C. 已是 markdown / 文本文件
 
@@ -176,12 +306,39 @@ else:
 # 找到文件位置
 python -c "
 from prism.scripts.manifest import get_material_path
-path = get_material_path('{slug}', '{filename}', '{variant}')
+path = get_material_path('{slug}', '{filename}')
 print(path if path else 'FILE_NOT_FOUND')
 "
 # 读取
 cat "{material_path}"
 ```
+
+#### D. SEC 章节（source_type = sec-section）
+
+`item_1_business.md` / `item_1a_risk.md` / `item_7_mda.md` / `item_7a_quant_risk.md` / `item_8_financial.md`（10-K）
+或 `item_1_financial.md` / `item_2_mda.md` / `item_3_quant_risk.md` / `item_1a_risk.md`（10-Q）。
+
+每个 section md 是 `sec_section_split` 切好的纯文本，直接读：
+
+```bash
+python -c "
+from prism.scripts.manifest import get_material_path
+path = get_material_path('{slug}', '{filename}')
+print(path if path else 'FILE_NOT_FOUND')
+"
+cat "{material_path}"
+```
+
+**抽 finding 时按 manifest 的 `addresses` 标签聚焦**：
+- `item_1_business` → `[scope, Q1, K3, K5]` —— 业务全景、护城河、增长驱动
+- `item_1a_risk` / `item_1a_risk` (10-Q) → `[risk, K1, K6]` —— 风险因素、催化剂触发
+- `item_7_mda` / `item_2_mda` → `[Q1, K2, K4, K5]` —— 周期定位、财务逻辑、隐含预期
+- `item_7a_quant_risk` / `item_3_quant_risk` → `[risk, K2]` —— 量化风险敞口
+- `item_8_financial` / `item_1_financial` → `[valuation, Q1]` —— 估值反推、关键数据点
+
+不要在 risk section 里硬抽估值数据，也不要在 financial section 里写定性叙事——选错 section = 浪费 LLM context。
+
+**需要跨 section 上下文**（如 MDA 引用了财报某行）→ 同目录其他 section md 都可读，`_meta.yaml` 列出全部 section + 行号区间。
 
 ---
 
@@ -323,11 +480,28 @@ print('已标记处理完成')
 
 ---
 
-## Step 4：完成所有资料后更新状态
+## Step 3.5：重建 findings 索引（所有 finding 写完后必跑）
+
+下游 workflow 04 依赖 `outputs/_findings_index.md` 做"按需补读"决策。每次新增 finding 后必须重建：
 
 ```bash
-python -c "
-from prism.scripts.topic import set_stage, set_next_actions, set_user_todos
+python3 -c "
+from prism.scripts.findings import build_findings_index
+print(build_findings_index('{slug}', '{variant}'))
+"
+```
+
+输出新索引文件路径。索引每行 ~80-120 字，22 份 ≈ 3-5K tokens，远低于全文 ~40K，是 04 阶段防 compact + 按需补读的"地图"。
+
+---
+
+## Step 4：完成所有资料后更新状态
+
+**⚠️ 用 `append_user_todos` 不用 `set_user_todos`**——01/02 写的结构化 todos（含 K# addresses）不能被进度提示覆盖（修 H2）。
+
+```bash
+python3 -c "
+from prism.scripts.topic import set_stage, set_next_actions, append_user_todos
 from prism.scripts.manifest import material_count
 counts = material_count('{slug}', '{variant}')
 if counts['unprocessed'] == 0:
@@ -336,25 +510,23 @@ if counts['unprocessed'] == 0:
         '所有资料已处理完毕，可以生成产出',
         '说「生成产出 {slug} 商业全景」开始生成第一份产出',
         '或说「prism 推进 {slug}」按顺序生成所有 8 份产出',
-    ])
-    set_user_todos('{slug}', [
+    ], '{variant}')
+    append_user_todos('{slug}', [
         f'资料提取完成：{counts[\"total\"]} 份全部处理完毕',
-        '下一步：生成产出（说「prism 推进 {slug}」按顺序生成 8 份产出）',
-    ])
+    ], '{variant}')
 else:
     set_next_actions('{slug}', [
         f'还有 {counts[\"unprocessed\"]} 份资料未处理',
-    ])
-    set_user_todos('{slug}', [
+    ], '{variant}')
+    append_user_todos('{slug}', [
         f'资料提取中：{counts[\"processed\"]}/{counts[\"total\"]} 份已处理',
-        f'剩余 {counts[\"unprocessed\"]} 份待处理',
-    ])
+    ], '{variant}')
 "
 ```
 
 ---
 
-## Step 5：选择是否更新产出
+## Step 5：选择是否更新产出 + 落地状态（**修 S3：原 Step 5/6 合并**）
 
 **AskUserQuestion**：
 
@@ -370,27 +542,20 @@ else:
 [ ] 暂时不更新（等更多资料一起）
 ```
 
----
-
-## Step 6：更新状态并汇报
-
-如果用户选择「更新产出」，设置 next_actions 为引导用户运行 synthesis。
-
-如果用户选择「暂时不更新」，设置 next_actions 说明可以后续再更新。
+收到用户选择后**同对话**直接落 stage / next_actions / todos（不再分两步）：
 
 ```bash
-python -c "
-from prism.scripts.topic import set_stage, set_next_actions, set_user_todos
+python3 -c "
+from prism.scripts.topic import set_stage, set_next_actions, append_user_todos
 from prism.scripts.manifest import material_count
 counts = material_count('{slug}', '{variant}')
 if counts['unprocessed'] == 0:
-    # 选择是否产出由用户决定，但更新状态提醒
     set_stage('{slug}', '04-synthesizing', '{variant}')
     if {user_chose_update}:
         set_next_actions('{slug}', [
             '正在更新产出...',
         ], '{variant}')
-        set_user_todos('{slug}', [
+        append_user_todos('{slug}', [
             '产出更新中...',
         ], '{variant}')
     else:
@@ -398,25 +563,22 @@ if counts['unprocessed'] == 0:
             '新资料已处理，等待后续再更新产出',
             '需要时说「prism 推进 {slug}」来更新 01-08',
         ], '{variant}')
-        set_user_todos('{slug}', [
-            '新资料已记录 ✓',
-            '产出暂未更新，等待更多资料',
-            '随时可以说「prism 推进 {slug}」来更新产出',
+        append_user_todos('{slug}', [
+            '新资料已记录，产出暂未更新',
         ], '{variant}')
 else:
     set_next_actions('{slug}', [
         f'还有 {counts[\"unprocessed\"]} 份资料未处理',
-    ])
-    set_user_todos('{slug}', [
+    ], '{variant}')
+    append_user_todos('{slug}', [
         f'资料提取中：{counts[\"processed\"]}/{counts[\"total\"]} 份已处理',
-        f'剩余 {counts[\"unprocessed\"]} 份待处理',
-    ])
+    ], '{variant}')
 "
 ```
 
 ---
 
-## Step 7：汇报
+## Step 6：汇报
 
 ```
 ✅ 资料提取完成

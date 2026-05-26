@@ -172,6 +172,9 @@
           <td class="hint">v{{ out.version }}</td>
           <td>
             <span class="badge-small badge-{{ out.status }}">{{ out.status }}</span>
+            {% if out.last_error %}
+              <span class="badge-small badge-error" title="{{ out.last_error.message }} @ {{ out.last_error.at }}">⚠ 上次失败</span>
+            {% endif %}
           </td>
           <td class="hint">{{ (out.last_updated or '')[:10] or '—' }}</td>
           {% if _other_v %}
@@ -208,13 +211,14 @@
       <ul class="todo-list">
         {% for todo in topic.user_todos %}
         {% set _tier = _tier_labels.get(todo.info_tier, ('—', 'tier-public')) %}
-        <li class="todo-item todo-{{ todo.status }}">
+        <li class="todo-item todo-{{ todo.status }}{% if todo.archive_candidate %} todo-archive{% endif %}">
           <div class="todo-meta">
             <span class="chip chip-{{ todo.priority | lower }}">{{ todo.priority }}</span>
             <span class="chip {{ _tier[1] }}" title="信息差等级">{{ _tier[0] }}</span>
             {% if todo.addresses %}
               {% for a in todo.addresses %}
-                {% if a.startswith('K') and topic.thesis and topic.thesis.current_version is not none %}
+                {% set _ak = a.split('@')[0] %}
+                {% if _ak.startswith('K') and topic.thesis and topic.thesis.current_version is not none %}
                   <a class="chip chip-addr" href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ topic.thesis.current_version }}" title="对应 Killer Question {{ a }}">{{ a }}</a>
                 {% else %}
                   <span class="chip chip-addr">{{ a }}</span>
@@ -223,9 +227,13 @@
             {% endif %}
             {% if todo.status == 'done' %}<span class="chip chip-done">✓ 已完成</span>{% endif %}
             {% if todo.status == 'in_progress' %}<span class="chip chip-prog">进行中</span>{% endif %}
+            {% if todo.covered_by %}<span class="chip chip-ws-cov" title="{{ todo.coverage_note or '' }}">🌐 web-search 已覆盖</span>{% endif %}
+            {% if todo.archive_candidate %}<span class="chip chip-archive" title="{{ todo.archive_candidate }}">⏏ 可归档</span>{% endif %}
           </div>
           <div class="todo-task">{{ todo.task }}</div>
           {% if todo.source_hint %}<div class="todo-hint hint">📍 {{ todo.source_hint }}</div>{% endif %}
+          {% if todo.covered_by %}<div class="todo-hint hint">↪ {{ todo.coverage_note or ('已由 ' ~ (todo.covered_by | join(', ')) ~ ' 覆盖') }}</div>{% endif %}
+          {% if todo.archive_candidate %}<div class="todo-hint hint">⏏ {{ todo.archive_candidate }}</div>{% endif %}
         </li>
         {% endfor %}
       </ul>
@@ -264,6 +272,20 @@
             {% elif mat.mineru_state == 'done' %}<span class="mn-chip mn-done">md ✓</span>
             {% elif mat.mineru_state == 'failed' %}<span class="mn-chip mn-failed">❌</span>
             {% elif mat.mineru_state == 'in_progress' %}<span class="mn-chip mn-prog">⏳</span>
+            {% endif %}
+            {% if mat.source_type == 'web-search' and mat.search_meta %}
+              {% set _conf = mat.confidence or 0 %}
+              {% set _band = 'high' if _conf >= 0.8 else ('mid' if _conf >= 0.5 else 'low') %}
+              <a class="ws-chip ws-{{ _band }}"
+                 href="{{ mat.search_meta.url }}" target="_blank" rel="noopener"
+                 title="{{ mat.search_meta.domain }} · conf={{ '%.2f' % _conf }} · q={{ mat.search_meta.query }}">
+                🌐 web · {{ _band }}
+              </a>
+              {% if mat.search_meta.expire_at and mat.search_meta.expire_at < now_iso %}
+                <span class="ws-chip ws-expired" title="超过 90 天，需重扫">✗ 待重扫</span>
+              {% elif mat.search_meta.stale_at and mat.search_meta.stale_at < now_iso %}
+                <span class="ws-chip ws-stale" title="超过 30 天">⚠ stale</span>
+              {% endif %}
             {% endif %}
             {% if mat.addresses %}
               {% for a in mat.addresses %}<span class="mat-addr">{{ a }}</span>{% endfor %}
@@ -317,6 +339,7 @@
   .badge-active, .badge-fresh { background: #e6f4ea; color: #2d7a3a; }
   .badge-paused, .badge-stale { background: #fff3e0; color: #b45309; }
   .badge-archived, .badge-pending { background: #f1f5f9; color: #888; }
+  .badge-error { background: #fee2e2; color: #991b1b; margin-left: 0.3em; cursor: help; }
   .data-table { border-collapse: collapse; width: 100%; }
   .data-table th, .data-table td { padding: 0.45em 0.7em; border-bottom: 1px solid #eee; font-size: 0.9em; }
   .data-table th { font-weight: 600; color: #555; }
@@ -398,6 +421,16 @@
   .mn-done { background: #e6f4ea; color: #2d7a3a; border: 1px solid #b7dfc1; }
   .mn-failed { background: #fdecea; color: #c93434; }
   .mn-prog { background: #f0f4ff; color: #2a5db0; }
+  .ws-chip { font-size: 0.7em; padding: 0.05em 0.35em; border-radius: 3px; font-weight: 600; margin-left: 0.3em; font-family: monospace; text-decoration: none; display: inline-block; }
+  .ws-high { background: #e8f0ff; color: #2a5db0; border: 1px solid #b8cfe8; }
+  .ws-mid { background: #f4f4f4; color: #666; border: 1px solid #ddd; }
+  .ws-low { background: #fafafa; color: #999; border: 1px solid #eee; }
+  .ws-stale { background: #fff3e0; color: #b45309; border: 1px solid #f0d896; }
+  .ws-expired { background: #fdecea; color: #c93434; border: 1px solid #f5c2c2; }
+  .chip-ws-cov { background: #e8f0ff; color: #2a5db0; border: 1px solid #b8cfe8; }
+  .chip-archive { background: #f4f4f4; color: #999; border: 1px solid #ddd; font-style: italic; }
+  .todo-archive { opacity: 0.6; }
+  .todo-archive .todo-task { text-decoration: line-through; }
   .mat-addr { font-size: 0.68em; padding: 0.05em 0.3em; background: #f0f4ff; color: #2a5db0; border: 1px solid #b8cfe8; border-radius: 3px; margin-left: 0.2em; font-family: monospace; font-weight: 600; }
   .mat-group { margin: 0.5em 0; }
   .mat-group-head { cursor: pointer; padding: 0.25em 0; font-size: 0.85em; color: #444; user-select: none; }

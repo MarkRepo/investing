@@ -119,14 +119,14 @@ action: buy|add|reduce|sell|pass
 ## Step 5：设置半年后复盘提醒
 
 ```bash
-python -c "
+python3 -c "
 from datetime import datetime, timedelta
-from prism.scripts.topic import set_user_todos, read_topic
-t = read_topic('{slug}', '{variant}')
+from prism.scripts.topic import append_user_todos
 review_date = (datetime.now() + timedelta(days=180)).date().isoformat()
-current_todos = t.get('user_todos', [])
-current_todos.append(f'{review_date}: 决策半年复盘 - 对比本标的 vs 替代标的实际表现')
-set_user_todos('{slug}', current_todos, '{variant}')
+# append 不动老 todos（修 H2）
+append_user_todos('{slug}', [
+    f'{review_date}: 决策半年复盘 - 对比本标的 vs 替代标的实际表现',
+], '{variant}')
 "
 ```
 
