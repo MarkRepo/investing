@@ -294,3 +294,40 @@ def test_industry_without_short_name_ok(tmp_topic):
     qs = build_search_queries("cn-pet", VARIANT)
     scope_q = next(q for q in qs if q["kind"] == "scope")
     assert "中国宠物" in scope_q["query"]
+
+
+def test_industry_event_uses_search_terms_when_present(tmp_topic):
+    """industry/arena event 模板优先用 search_terms 拼 base（短、精准），
+    而非 display_name 贪心。修法 2026-05-28。"""
+    create_topic(
+        slug="g-hvdc", display_name="跨州跨国 HVDC 输电（Prysmian/国电南瑞/特变电工）",
+        topic_type="arena",
+        question="跨州跨国 HVDC 输电的瓶颈与受益标的是什么", geo="GLOBAL", depth="deep",
+        variant=VARIANT,
+        search_terms=["HVDC 高压直流", "特高压输电", "海底电缆", "电网升级"],
+    )
+    create_manifest("g-hvdc", VARIANT)
+    qs = build_search_queries("g-hvdc", VARIANT)
+    events = [q for q in qs if q["kind"] == "industry-event"]
+    assert len(events) == 4
+    for e in events:
+        # 拼接前 2 个 search_term + kw，不应包含贪心 display_name
+        assert "HVDC 高压直流" in e["query"]
+        assert "特高压输电" in e["query"]
+        assert "（Prysmian/国电南瑞/特变电工）" not in e["query"]
+    kinds = {q["query"].split()[-1] for q in events}
+    assert kinds == {"行业政策", "技术突破", "产能变化", "龙头新闻"}
+
+
+def test_industry_event_fallback_to_display_name_without_search_terms(tmp_topic):
+    """无 search_terms 时 fallback 到 name_for_query（display_name）。"""
+    create_topic(
+        slug="cn-pet2", display_name="中国宠物", topic_type="industry",
+        question="Q?", geo="CN", depth="deep", variant=VARIANT,
+    )
+    create_manifest("cn-pet2", VARIANT)
+    qs = build_search_queries("cn-pet2", VARIANT)
+    events = [q for q in qs if q["kind"] == "industry-event"]
+    assert len(events) == 4
+    for e in events:
+        assert "中国宠物" in e["query"]

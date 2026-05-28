@@ -50,10 +50,12 @@ WEB_SEARCH_FAIL_THRESHOLD = 0.5       # 入库率 <50% → prescan_status='faile
 ```
 
 **执行模式**：
-1. **第一轮**：N 条 query 按 5 个一批并行，批间隔 10s。每批后 register，看 stderr 是否出现 `⚠️ [silent_failure]` 告警
-2. **若 ≥3 条 silent_failure**：判定限流命中。等 30s → **串行**逐条重试这些失败 query（每条 30s 间隔），仍 register
-3. **串行重试仍多数失败**：转 Step B.2 兜底协议
-4. **register_web_search_batch 返回的 `silent_failure: bool`** 是判断信号——主 agent 必须**显式读这个字段**而不是只看 mat_ids 长度
+1. **第一轮**：N 条 query 按 5 个一批并行，批间隔 10s。每批后 register，看 stderr 是否出现 `⚠️ [upstream_empty]` 或 `⚠️ [all_low_band]` 告警
+2. **读 register 返回的 `failure_mode`**（'upstream_empty' / 'all_low_band' / 'none'）—— 比单看 `silent_failure: bool` 精准：
+   - `'upstream_empty'`：hits=0，疑似 WebSearch 上游静默限流 → 等 30s 串行重试本 query；≥3 条 upstream_empty 转 Step B.2 兜底
+   - `'all_low_band'`：hits>0 全 drop low band → **不是限流，是 H2 救回未启动**。调 `extract_url_features(dropped_urls)` + LLM 判 tier + 救回列表带 `domain_tier='llm-judged-official'` 再调一次 register（Step C/D）
+   - `'none'`：至少 1 条入库，正常
+3. **`silent_failure: bool`** 字段保留向后兼容（= upstream_empty or all_low_band），但**新代码用 `failure_mode` 字符串分流**
 
 ### B.2 兜底协议（WebSearch 长时不可用时）
 

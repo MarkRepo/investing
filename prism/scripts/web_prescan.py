@@ -381,10 +381,18 @@ def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> lis
             })
 
     # 3. industry / arena 专属：行业政策 + 技术突破
+    #    H3 v2 修：优先用 search_terms 拼 base（短、精准、搜索友好），
+    #    无 search_terms 才 fallback name_for_query（避免 display_name 贪心 + 截断）
     if ttype in ("industry", "arena"):
+        if search_terms:
+            industry_base = " ".join(
+                s.strip() for s in search_terms[:2] if s and s.strip()
+            )
+        else:
+            industry_base = name_for_query
         for kw in ("行业政策", "技术突破", "产能变化", "龙头新闻"):
             queries.append({
-                "query": f"{name_for_query} {kw}",
+                "query": f"{industry_base} {kw}",
                 "addresses": ["scope"],
                 "recency_days": recency_days,
                 "kind": "industry-event",
@@ -666,6 +674,8 @@ def register_web_search_batch(
             'n_dropped_low': int,        # band='low' 被丢
             'drop_ratio': float,         # (n_dropped_invalid + n_dropped_low) / len(hits)
             'dropped_hits': list[dict],  # 被丢的 hit 完整保留 + reason，主 agent 直接判后补登
+            'silent_failure': bool,      # = failure_mode != 'none'（向后兼容字段）
+            'failure_mode': str,         # 'upstream_empty' / 'all_low_band' / 'none'（精准分流）
         }
 
     dropped_hits 每项 schema:
@@ -787,14 +797,33 @@ def register_web_search_batch(
             file=sys.stderr,
         )
 
-    # ISSUE-001：silent_failure 检测——hits=0 / 全 low band 多半是 WebSearch 限流静默返空
-    silent_failure = (len(hits) == 0) or (n_in == 0)
-    if silent_failure:
+    # failure_mode 三态（取代单 bool silent_failure 的语义混淆）：
+    #   'upstream_empty' — hits=0，疑似 WebSearch 上游静默限流，建议等 30s 串行重试
+    #   'all_low_band'   — hits>0 但 n_in=0，全 'other' tier drop，建议走 H2 救回（extract_url_features + LLM 判 tier）
+    #   'none'           — 至少有 1 条入库
+    # silent_failure: bool 保留向后兼容（仍 = upstream_empty or all_low_band）
+    if len(hits) == 0:
+        failure_mode = 'upstream_empty'
+    elif n_in == 0:
+        failure_mode = 'all_low_band'
+    else:
+        failure_mode = 'none'
+    silent_failure = failure_mode != 'none'
+
+    if failure_mode == 'upstream_empty':
         print(
-            f"⚠️  [silent_failure] query={query!r} hits={len(hits)} 入库=0 — "
-            f"疑似 WebSearch 限流静默返空 / 全部 low band 丢弃。"
+            f"⚠️  [upstream_empty] query={query!r} hits=0 — "
+            f"疑似 WebSearch 上游静默限流。"
             f"建议：等 {WEB_SEARCH_SERIAL_RETRY_INTERVAL_S}s 后串行重试本 query；"
-            f"连 3 个 query 0 入库 → 转 WebFetch 兜底已知权威 URL。",
+            f"连 3 个 query upstream_empty → 转 WebFetch 兜底已知权威 URL。",
+            file=sys.stderr,
+        )
+    elif failure_mode == 'all_low_band':
+        print(
+            f"⚠️  [all_low_band] query={query!r} hits={len(hits)} 全 drop low band — "
+            f"非限流，需走 H2 救回：调 extract_url_features(dropped_urls) → "
+            f"LLM 判 tier → 救回列表带 domain_tier='llm-judged-official' 再调一次本函数。"
+            f"若救回后仍 0 入库 → 此 query 关键词不对，换 query 而非重试。",
             file=sys.stderr,
         )
 
@@ -810,6 +839,7 @@ def register_web_search_batch(
         "drop_ratio": drop_ratio,
         "dropped_hits": dropped_hits,
         "silent_failure": silent_failure,
+        "failure_mode": failure_mode,
         "inline_finding_paths": inline_finding_paths,
     }
 

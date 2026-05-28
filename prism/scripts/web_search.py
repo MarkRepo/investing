@@ -194,6 +194,12 @@ def _cmd_search(args) -> int:
         ))
         return EXIT_OK if hits else EXIT_NO_HITS
 
+    # ---- sidecar 模式（H2-compliance 修法 2026-05-28）----
+    # 不调 register_web_search_batch！原因：adapter 不该替 LLM 做 tier 判断。
+    # 全部 hit 写到 prism/topics/{slug}/inbox/_websearch_raw/{ts}_{query_hash}.json
+    # 主 agent 读 raw 文件 → 自行判 tier → 调 register_web_search_batch 走 H2 救回。
+    # 之前的"sidecar 自动 register"会让非 WHITELIST hit 全 'other' tier → low band drop，
+    # 实质架空 H2 救回；改为只持久化 raw 数据。
     if not all([args.slug, args.variant, args.triggered_by]):
         sys.stderr.write(json.dumps({
             "status": "config_error",
@@ -201,17 +207,41 @@ def _cmd_search(args) -> int:
         }) + "\n")
         return EXIT_CONFIG
 
-    from prism.scripts.web_prescan import register_web_search_batch
-    addresses = args.addresses.split(",") if args.addresses else []
-    result = register_web_search_batch(
-        slug=args.slug,
-        variant=args.variant,
-        query=args.query,
-        addresses=addresses,
-        triggered_by=args.triggered_by,
-        hits=[h.to_dict() for h in hits],
+    import hashlib
+    from datetime import datetime, timezone
+    from pathlib import Path
+    repo_root = Path(__file__).resolve().parents[2]
+    raw_dir = (repo_root / "prism" / "topics" / args.slug
+               / "inbox" / "_websearch_raw")
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    qhash = hashlib.md5(args.query.encode("utf-8")).hexdigest()[:8]
+    raw_path = raw_dir / f"{ts}_{qhash}.json"
+    addresses = [a for a in args.addresses.split(",") if a] if args.addresses else []
+    payload = {
+        "searched_at": datetime.now(timezone.utc).isoformat(),
+        "query": args.query,
+        "intent": args.intent,
+        "days": args.days,
+        "slug": args.slug,
+        "variant": args.variant,
+        "triggered_by": args.triggered_by,
+        "addresses": addresses,
+        "n_hits": len(hits),
+        "hits": [h.to_dict() for h in hits],
+    }
+    raw_path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2),
+        encoding="utf-8",
     )
-    sys.stdout.write(json.dumps(result, ensure_ascii=False, indent=2))
+    sys.stdout.write(json.dumps({
+        "status": "sidecar_written",
+        "raw_path": str(raw_path.relative_to(repo_root)),
+        "n_hits": len(hits),
+        "next_step": (
+            "主 agent 读 raw 文件 → 判 tier → 调 register_web_search_batch（H2 救回）"
+        ),
+    }, ensure_ascii=False, indent=2))
     return EXIT_OK if hits else EXIT_NO_HITS
 
 

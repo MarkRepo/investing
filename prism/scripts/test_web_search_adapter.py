@@ -259,3 +259,99 @@ def test_cli_search_writes_json_to_stdout(monkeypatch, capsys):
     payload = json.loads(captured.out)
     assert isinstance(payload, list)
     assert payload[0]["url"] == "https://reuters.com/x"
+
+
+def test_cli_search_sidecar_writes_raw_and_does_not_register(monkeypatch, tmp_path, capsys):
+    """H2-compliance 修法 (2026-05-28)：sidecar 模式必须只写 raw 文件、不调 register。
+    否则 non-WHITELIST hit 全 'other' tier → low band drop，实质架空 H2 救回。"""
+    import json as _json
+    from prism.scripts import web_search as ws
+
+    # 守门：register 在 sidecar 模式下绝不能被调
+    register_calls = []
+    import prism.scripts.web_prescan as wp
+    monkeypatch.setattr(
+        wp, "register_web_search_batch",
+        lambda **kw: register_calls.append(kw) or {"n_high": 0, "n_mid": 0, "n_low": 0, "mat_ids": [], "duplicates": 0}
+    )
+
+    # repo_root 重定向到 tmp_path，让 sidecar 写到隔离目录
+    fake_root = tmp_path
+    (fake_root / "prism" / "scripts").mkdir(parents=True)
+    # _cmd_search 用 Path(__file__).resolve().parents[2]，无法直接 monkeypatch；
+    # 改 monkeypatch web_search 文件路径父级常量不现实，复用 Path 计算：让 slug 路径存在
+    # 实际我们直接在 monkeypatch 之外验证 raw_path 在 stdout 里 + 不调 register
+    p1 = _StubProvider("tavily", {"news"}, hits=[
+        _hit("https://example.com/article"),
+    ])
+    monkeypatch.setattr(ws, "_default_providers", lambda: [p1])
+
+    rc = ws.main([
+        "search", "test query",
+        "--intent", "news",
+        "--max-results", "1",
+        "--output", "sidecar",
+        "--slug", "test-sidecar-slug",
+        "--variant", "test-variant",
+        "--triggered-by", "00-prescan-baseline",
+        "--addresses", "scope",
+    ])
+    assert rc == 0
+    # 关键守门：sidecar 模式不能调 register
+    assert register_calls == [], "sidecar 不应自动 register（违反 H2-compliance）"
+    captured = capsys.readouterr()
+    payload = _json.loads(captured.out)
+    assert payload["status"] == "sidecar_written"
+    assert payload["n_hits"] == 1
+    assert "raw_path" in payload
+    # raw 文件落在 inbox/_websearch_raw/ 下
+    assert "_websearch_raw" in payload["raw_path"]
+
+    # 清理本测试落地的 raw 文件
+    from pathlib import Path
+    repo_root = Path(ws.__file__).resolve().parents[2]
+    raw_dir = repo_root / "prism" / "topics" / "test-sidecar-slug" / "inbox" / "_websearch_raw"
+    if raw_dir.exists():
+        import shutil
+        shutil.rmtree(repo_root / "prism" / "topics" / "test-sidecar-slug")
+
+
+def test_cli_search_sidecar_raw_file_contains_query_and_hits(monkeypatch, capsys):
+    """sidecar raw 文件内容齐全：query/triggered_by/addresses + 全部 hits。"""
+    import json as _json
+    from pathlib import Path
+    from prism.scripts import web_search as ws
+
+    p1 = _StubProvider("tavily", {"news"}, hits=[
+        _hit("https://prysmian.com/y"),
+        _hit("https://nexans.com/z"),
+    ])
+    monkeypatch.setattr(ws, "_default_providers", lambda: [p1])
+
+    rc = ws.main([
+        "search", "HVDC backlog",
+        "--intent", "news", "--days", "180",
+        "--max-results", "2",
+        "--output", "sidecar",
+        "--slug", "test-raw-payload",
+        "--variant", "test-v",
+        "--triggered-by", "00-prescan-baseline",
+        "--addresses", "scope,K1",
+    ])
+    assert rc == 0
+    captured = capsys.readouterr()
+    payload = _json.loads(captured.out)
+    repo_root = Path(ws.__file__).resolve().parents[2]
+    raw_file = repo_root / payload["raw_path"]
+    assert raw_file.exists()
+    raw = _json.loads(raw_file.read_text(encoding="utf-8"))
+    assert raw["query"] == "HVDC backlog"
+    assert raw["triggered_by"] == "00-prescan-baseline"
+    assert raw["addresses"] == ["scope", "K1"]
+    assert raw["n_hits"] == 2
+    assert len(raw["hits"]) == 2
+    assert "intent" in raw and raw["intent"] == "news"
+    assert "days" in raw and raw["days"] == 180
+
+    import shutil
+    shutil.rmtree(repo_root / "prism" / "topics" / "test-raw-payload")

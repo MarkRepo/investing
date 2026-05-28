@@ -54,6 +54,49 @@ def test_batch_registers_high_mid_skips_low(tmp_topic):
     assert len(manifest["materials"]) == len(mat_ids)
 
 
+def test_failure_mode_none_when_at_least_one_in(tmp_topic):
+    """至少 1 hit 入库时 failure_mode='none' / silent_failure=False。"""
+    from prism.scripts.web_prescan import register_web_search_batch
+    slug, variant, _ = tmp_topic
+    s = register_web_search_batch(
+        slug=slug, variant=variant, query="Q",
+        addresses=["K1"], triggered_by="01-prescan",
+        hits=[{"title": "Reuters", "url": "https://reuters.com/a", "snippet": "x"}],
+    )
+    assert s["failure_mode"] == "none"
+    assert s["silent_failure"] is False
+
+
+def test_failure_mode_upstream_empty_when_hits_zero(tmp_topic):
+    """hits=[] → failure_mode='upstream_empty'（疑似 WebSearch 限流）。"""
+    from prism.scripts.web_prescan import register_web_search_batch
+    slug, variant, _ = tmp_topic
+    s = register_web_search_batch(
+        slug=slug, variant=variant, query="Q",
+        addresses=["K1"], triggered_by="01-prescan", hits=[],
+    )
+    assert s["failure_mode"] == "upstream_empty"
+    assert s["silent_failure"] is True
+
+
+def test_failure_mode_all_low_band_when_hits_all_drop(tmp_topic):
+    """hits>0 但全 non-WHITELIST → failure_mode='all_low_band'（H2 救回信号，不是限流）。"""
+    from prism.scripts.web_prescan import register_web_search_batch
+    slug, variant, _ = tmp_topic
+    s = register_web_search_batch(
+        slug=slug, variant=variant, query="Q",
+        addresses=["K1"], triggered_by="01-prescan",
+        hits=[
+            {"title": "Blog A", "url": "https://random-no-tier.example/a", "snippet": "x"},
+            {"title": "Blog B", "url": "https://another-blog.example/b", "snippet": "y"},
+        ],
+    )
+    assert s["failure_mode"] == "all_low_band"
+    assert s["silent_failure"] is True
+    assert s["n_low"] == 2
+    assert len(s["dropped_hits"]) == 2
+
+
 def test_batch_appends_search_log(tmp_topic):
     """Batch call appends one log entry with totals."""
     from prism.scripts.web_prescan import register_web_search_batch, list_search_log

@@ -150,9 +150,10 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 >     --addresses scope
 > ```
 >
-> 每个 baseline 优先 query 用 adapter 一行命令落 sidecar，自动跑 dedup + 黑名单过滤 + KeyPool 轮换。domain_tier 由主 agent 在 H2 救回流程里判（参 `_web_prescan_shared.md` Step C），adapter 不预判权威源。
-> 退出码 40（all_exhausted）→ WebSearch tool fallback，再用 `postprocess` 子命令兜回 sidecar，
-> 详见 [[_web_search_routing]] §双向 Fallback。
+> **sidecar 模式只写 raw 不入库**（2026-05-28 修法）：上面命令会把 raw hit 写到 `prism/topics/{slug}/inbox/_websearch_raw/{ts}_{qhash}.json`，**不**调 register。主 agent 必须读 raw 文件 → 判 tier → 调 `register_web_search_batch` 入库（H2 救回闭环）。
+> 退出码 40（all_exhausted）→ WebSearch tool fallback，再用 `postprocess` 子命令兜回 sidecar（postprocess 自动调 register），详见 [[_web_search_routing]] §双向 Fallback。
+>
+> domain_tier 由主 agent 在 H2 救回流程里判（参 `_web_prescan_shared.md` Step C），adapter 不预判权威源。
 
 **为什么必须做**：LLM 训练截止与当前时间往往有几个月到一年的差距，对**时效性强的标的**（公司财报/政策动态/股价估值/突发事件），跳过 prescan 直接靠训练知识写 thesis_v0 会把过时事实当成"初判赌注"，导致 K# 设错、user_todos 攻打错方向、后续整轮研究偏航。
 
@@ -169,9 +170,9 @@ sed -n '/## 五、需要 web-search 校准的优先项/,/^##/p' prism/topics/{sl
 
 主 agent 对每条优先 query 按 `_web_prescan_shared.md` Step B.1 并发限流规约跑：
 1. **5 并发一批 + 批间 10s**（不要一次 message 里塞 10 个 WebSearch 并行，会触发**静默**限流）
-2. 调 `register_web_search_batch(triggered_by='00-prescan-baseline', ...)`，**显式读返回的 `silent_failure: bool`**
-3. ≥3 条 silent_failure → 等 30s 串行重试这些失败 query（30s 一条）
-4. 串行重试仍多数失败 → 转 _web_prescan_shared.md Step B.2 兜底（WebFetch 已知权威 URL）
+2. 调 `register_web_search_batch(triggered_by='00-prescan-baseline', ...)`，**显式读返回的 `failure_mode`**（'upstream_empty' / 'all_low_band' / 'none'）
+3. ≥3 条 `failure_mode='upstream_empty'` → 等 30s 串行重试这些 query（30s 一条）；`'all_low_band'` 走 H2 救回不是重试
+4. 串行重试仍多数 upstream_empty → 转 _web_prescan_shared.md Step B.2 兜底（WebFetch 已知权威 URL）
 
 ```python
 from prism.scripts.web_prescan import register_web_search_batch
@@ -182,8 +183,11 @@ r = register_web_search_batch(
     triggered_by='00-prescan-baseline',
     hits=[...],
 )
-if r['silent_failure']:
-    # 等 30s 串行重试本 query；连 3 个 silent_failure 转 B.2 兜底
+if r['failure_mode'] == 'upstream_empty':
+    # 真的限流——等 30s 串行重试本 query；连 3 个转 B.2 兜底
+    ...
+elif r['failure_mode'] == 'all_low_band':
+    # 非限流，H2 救回未启动——extract_url_features + LLM 判 tier + 二次 register
     ...
 ```
 
