@@ -89,6 +89,47 @@ def test_adapter_raises_when_all_providers_exhausted():
         adp.search("query")
 
 
+def test_cli_postprocess_reads_stdin_and_writes_sidecar(monkeypatch, capsys):
+    """主 agent 把 WebSearch tool 拿到的 hits 通过 stdin 喂进来，跑 dedup + domain_tier
+    后调 register_web_search_batch（mock）。
+    """
+    import json as _json
+    from prism.scripts import web_search as ws
+
+    captured_call = {}
+    def _fake_register(**kwargs):
+        captured_call.update(kwargs)
+        return {"n_high": 1, "n_mid": 0, "n_low": 0,
+                "mat_ids": ["mat-aaa"], "duplicates": 0}
+
+    import prism.scripts.web_prescan as wp
+    monkeypatch.setattr(wp, "register_web_search_batch", _fake_register)
+
+    payload = _json.dumps([
+        {"title": "T", "url": "https://reuters.com/x", "snippet": "s"},
+        {"title": "T2", "url": "https://reuters.com/x?utm_source=fb",
+         "snippet": "dup"},
+    ])
+    import io
+    monkeypatch.setattr("sys.stdin", io.StringIO(payload))
+
+    rc = ws.main([
+        "postprocess",
+        "--source", "websearch_fallback",
+        "--query", "uranium",
+        "--cluster", "uranium-nuclear",
+        "--slug", "global-uranium-supply",
+        "--variant", "claude-opus-4-7",
+        "--triggered-by", "00-prescan-fallback",
+        "--addresses", "thesis-1",
+    ])
+    assert rc == 0
+    assert len(captured_call["hits"]) == 1
+    assert captured_call["hits"][0]["source_provider"] == "websearch_fallback"
+    assert captured_call["hits"][0]["domain_tier"] == "llm-judged-official"
+    assert captured_call["triggered_by"] == "00-prescan-fallback"
+
+
 def test_cli_search_writes_json_to_stdout(monkeypatch, capsys):
     """CLI smoke: stub provider, --output stdout returns JSON."""
     from prism.scripts import web_search as ws

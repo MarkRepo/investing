@@ -136,6 +136,17 @@ def _build_arg_parser() -> argparse.ArgumentParser:
     s.add_argument("--variant", default=None)
     s.add_argument("--triggered-by", default=None)
     s.add_argument("--addresses", default=None, help="comma-separated")
+
+    pp = sub.add_parser("postprocess",
+                        help="postprocess external hits from WebSearch fallback")
+    pp.add_argument("--source", default="websearch_fallback",
+                    help="source_provider tag for these hits")
+    pp.add_argument("--query", required=True)
+    pp.add_argument("--cluster", default=None)
+    pp.add_argument("--slug", required=True)
+    pp.add_argument("--variant", required=True)
+    pp.add_argument("--triggered-by", required=True)
+    pp.add_argument("--addresses", default="")
     return p
 
 
@@ -196,10 +207,46 @@ def _cmd_search(args) -> int:
     return EXIT_OK if hits else EXIT_NO_HITS
 
 
+def _cmd_postprocess(args) -> int:
+    raw = sys.stdin.read()
+    if not raw.strip():
+        sys.stderr.write(json.dumps({"status": "no_input"}) + "\n")
+        return EXIT_CONFIG
+    items = json.loads(raw)
+    hits = [
+        Hit(
+            title=item.get("title", ""),
+            url=item.get("url", ""),
+            snippet=item.get("snippet", ""),
+            score=item.get("score"),
+            raw_content=item.get("raw_content"),
+            source_provider=args.source,
+        )
+        for item in items
+    ]
+    adp = WebSearchAdapter(providers=[], cluster=args.cluster)
+    processed = adp.postprocess_external_hits(hits)
+
+    from prism.scripts import web_prescan
+    addresses = [a for a in args.addresses.split(",") if a]
+    result = web_prescan.register_web_search_batch(
+        slug=args.slug,
+        variant=args.variant,
+        query=args.query,
+        addresses=addresses,
+        triggered_by=args.triggered_by,
+        hits=[h.to_dict() for h in processed],
+    )
+    sys.stdout.write(json.dumps(result, ensure_ascii=False, indent=2))
+    return EXIT_OK
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _build_arg_parser().parse_args(argv)
     if args.cmd == "search":
         return _cmd_search(args)
+    if args.cmd == "postprocess":
+        return _cmd_postprocess(args)
     return EXIT_CONFIG
 
 
