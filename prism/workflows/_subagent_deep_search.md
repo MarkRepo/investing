@@ -1,8 +1,23 @@
 # Sub-agent Deep Search Prompt 模版
 
-**用途**：当某个 K# 或具体问题需要多轮"看 snippet → 出新 query → 再 search"的深挖循环时，主 agent dispatch 一个 sub-agent 在独立 context 中跑这个循环，避免污染主对话。零外部 API（用 Anthropic 内置 WebSearch）。
+**用途**：当某个 K# 或具体问题需要多轮"看 snippet → 出新 query → 再 search"的深挖循环时，主 agent dispatch 一个 sub-agent 在独立 context 中跑这个循环，避免污染主对话。
 
 **调用方**：03 / 04 / 05 / 07 任意需要深挖的场景。
+
+---
+
+## 硬规约（不可省）
+
+1. **本 subagent 内所有 web 检索必须走 adapter**（即 `python -m prism.scripts.web_search`），
+   禁止调 `mcp__tavily__*` / `mcp__exa__*` / `mcp__serper__*` / Anthropic WebSearch tool。
+   理由：MCP 调用每次进 turn 预算，30+ query 撞 60min 硬墙；adapter 一次 Bash 把多 query 串
+   起来跑（`search` + 多 `--triggered-by`），且自带 KeyPool 轮换 + 失败 fallback。
+   （参 [[feedback_subagent_bulk_synthesis]] / [[feedback_subagent_write_hallucination]]）
+2. 退出码 40（all_exhausted）时本 subagent **直接 raise 给主 agent**，
+   不要自己 fallback 到 WebSearch tool —— 双向 fallback 由主 agent 编排。
+3. sidecar 入库一律 `--output sidecar` 模式；不要把 hits stdout 二次解析后再手工 register。
+
+详见 [[_web_search_routing]]。
 
 ---
 

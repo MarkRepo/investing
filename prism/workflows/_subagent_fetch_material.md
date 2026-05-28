@@ -2,6 +2,19 @@
 
 **用途**：当 web-search 拿到一个公开财报 / 公告 PDF 的 URL 后，主 agent dispatch sub-agent 跑下载脚本，让主 agent 自己不必离开当前任务流。
 
+## 硬规约（不可省）
+
+1. **本 subagent 内所有 web 检索必须走 adapter**（即 `python -m prism.scripts.web_search`），
+   禁止调 `mcp__tavily__*` / `mcp__exa__*` / `mcp__serper__*` / Anthropic WebSearch tool。
+   理由：MCP 调用每次进 turn 预算，多 query 撞 60min 硬墙；adapter 一次 Bash 把多 query 串
+   起来跑（`search` + 多 `--triggered-by`），且自带 KeyPool 轮换 + 失败 fallback。
+   （参 [[feedback_subagent_bulk_synthesis]] / [[feedback_subagent_write_hallucination]]）
+2. 退出码 40（all_exhausted）时本 subagent **直接 raise 给主 agent**，
+   不要自己 fallback 到 WebSearch tool —— 双向 fallback 由主 agent 编排。
+3. sidecar 入库一律 `--output sidecar` 模式；不要把 hits stdout 二次解析后再手工 register。
+
+详见 [[_web_search_routing]]。
+
 **调用 prompt 模版**：
 
 ```
