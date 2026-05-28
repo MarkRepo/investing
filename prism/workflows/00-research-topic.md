@@ -139,6 +139,21 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 
 ## Step 4.5：Web Pre-scan（必跑 — 校准训练知识与最新现实）
 
+> **Web 搜索路径**：本步走 **adapter**（详见 [[_web_search_routing]]）。
+>
+> ```bash
+> python -m prism.scripts.web_search search "<query>" \
+>     --intent news --cluster <cluster> --days 90 \
+>     --max-results 5 --output sidecar \
+>     --slug <slug> --variant <variant> \
+>     --triggered-by 00-prescan-baseline \
+>     --addresses scope
+> ```
+>
+> 每个 baseline 优先 query 用 adapter 一行命令落 sidecar，自动跑 dedup + domain_tier + KeyPool 轮换。
+> 退出码 40（all_exhausted）→ WebSearch tool fallback，再用 `postprocess` 子命令兜回 sidecar，
+> 详见 [[_web_search_routing]] §双向 Fallback。
+
 **为什么必须做**：LLM 训练截止与当前时间往往有几个月到一年的差距，对**时效性强的标的**（公司财报/政策动态/股价估值/突发事件），跳过 prescan 直接靠训练知识写 thesis_v0 会把过时事实当成"初判赌注"，导致 K# 设错、user_todos 攻打错方向、后续整轮研究偏航。
 
 **执行三段：先跑 baseline 优先 query → 再跑默认模板 prescan → 回写 baseline 校准结果。三段都做完才进 Step 5。**
