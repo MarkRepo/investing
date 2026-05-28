@@ -178,6 +178,71 @@ def test_cli_status_subcommand(monkeypatch, capsys):
     assert "5/33" in out
 
 
+def test_full_routing_news_picks_tavily():
+    """news intent + 三 provider 都健康 → tavily 排第一"""
+    from prism.scripts.providers.base import Hit as _H
+
+    class _P:
+        def __init__(self, name, caps):
+            self.name = name; self.capabilities = caps; self.calls = 0
+        def healthy(self): return True
+        def search(self, q, **kw):
+            self.calls += 1
+            return [_H(title="T", url=f"https://{self.name}.com",
+                       snippet="s", score=0.9, source_provider=self.name)]
+
+    tav = _P("tavily", {"news", "time_filter", "extract", "general"})
+    exa = _P("exa", {"semantic", "scholar", "general"})
+    ser = _P("serper", {"general", "news", "exact", "patent", "scholar"})
+
+    adp = WebSearchAdapter([tav, exa, ser])
+    hits = adp.search("FDA approval 2026 Q1")
+    assert hits[0].source_provider == "tavily"
+    assert tav.calls == 1
+
+
+def test_full_routing_semantic_picks_exa():
+    from prism.scripts.providers.base import Hit as _H
+
+    class _P:
+        def __init__(self, name, caps):
+            self.name = name; self.capabilities = caps; self.calls = 0
+        def healthy(self): return True
+        def search(self, q, **kw):
+            self.calls += 1
+            return [_H(title="T", url=f"https://{self.name}.com/x",
+                       snippet="s", score=0.9, source_provider=self.name)]
+
+    tav = _P("tavily", {"news", "general"})
+    exa = _P("exa", {"semantic", "general"})
+    ser = _P("serper", {"general"})
+
+    adp = WebSearchAdapter([tav, exa, ser])
+    hits = adp.search("papers similar to GLP-1 cardio outcome")
+    assert hits[0].source_provider == "exa"
+
+
+def test_full_routing_vertical_patent_picks_serper():
+    from prism.scripts.providers.base import Hit as _H
+
+    class _P:
+        def __init__(self, name, caps):
+            self.name = name; self.capabilities = caps; self.calls = 0
+        def healthy(self): return True
+        def search(self, q, **kw):
+            self.calls += 1
+            return [_H(title="T", url=f"https://{self.name}.com/x",
+                       snippet="s", score=0.9, source_provider=self.name)]
+
+    tav = _P("tavily", {"news", "general"})
+    exa = _P("exa", {"semantic", "general"})
+    ser = _P("serper", {"general", "patent"})
+
+    adp = WebSearchAdapter([tav, exa, ser])
+    hits = adp.search("patent SMR reactor cooling")
+    assert hits[0].source_provider == "serper"
+
+
 def test_cli_search_writes_json_to_stdout(monkeypatch, capsys):
     """CLI smoke: stub provider, --output stdout returns JSON."""
     from prism.scripts import web_search as ws

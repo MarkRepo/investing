@@ -111,6 +111,16 @@ def _default_providers() -> list:
         out.append(TavilyProvider())
     except (RuntimeError, ValueError):
         pass
+    try:
+        from prism.scripts.providers.exa import ExaProvider
+        out.append(ExaProvider())
+    except (RuntimeError, ValueError):
+        pass
+    try:
+        from prism.scripts.providers.serper import SerperProvider
+        out.append(SerperProvider())
+    except (RuntimeError, ValueError):
+        pass
     return out
 
 
