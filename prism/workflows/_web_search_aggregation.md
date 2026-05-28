@@ -5,6 +5,8 @@
 >
 > 复用 cn-commercial-space 2026-05 经验沉淀。
 
+> **Web 搜索路径**：见 [[_web_search_routing]]（必读）。补充检索一律走 adapter（`python -m prism.scripts.web_search`）。
+
 ## 何时聚合
 
 | 信号 | 处理 |

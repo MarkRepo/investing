@@ -4,6 +4,17 @@
 **定位**：强制用反方逻辑质疑自己的研究结论  
 **前置**：产出 04（隐含预期）和 06（风险盲点）必须已生成
 
+> **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
+> 仅事实校验类临时单查走 WebSearch tool。
+>
+> Step 6.5 request-more 兜底命令：
+> ```bash
+> python -m prism.scripts.web_search search "<反方关键词>" \
+>     --intent news --cluster <cluster> --days 60 \
+>     --output sidecar --slug <slug> --variant <variant> \
+>     --triggered-by 05-critic --addresses <K#>
+> ```
+
 ---
 
 ## Step 0.0：prescan 状态门禁（**修 ISSUE-001 — 第一道门**）

@@ -2,6 +2,9 @@
 
 每份产出工作流开始前必须完成以下检查，违反则停止并告知用户。
 
+> **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
+> 仅事实校验类临时单查走 WebSearch tool。
+
 ## 前置检查
 
 ```bash

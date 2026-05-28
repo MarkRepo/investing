@@ -4,6 +4,9 @@
 **定位**：快速扫描新信息，判断是否影响现有判断
 **耗时**：目标 5-10 分钟
 
+> **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
+> 仅事实校验类临时单查走 WebSearch tool。
+
 ---
 
 ## Step 0：gap 体检（每个 topic 扫一遍）

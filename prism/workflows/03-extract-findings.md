@@ -4,6 +4,18 @@
 **前置**：manifest.yaml 有 processed=false 的条目  
 **产出**：在 `prism/topics/{slug}/{variant}/outputs/` 中积累发现笔记（按资料 ID）
 
+> **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
+> 仅事实校验类临时单查走 WebSearch tool。
+>
+> 入库类 inline web-search 示例：
+> ```bash
+> python -m prism.scripts.web_search search "<query>" \
+>     --intent news --cluster <cluster> --output sidecar \
+>     --slug <slug> --variant <variant> \
+>     --triggered-by 03-extract --addresses K1,K3
+> ```
+> 旧 helper `register_web_search_batch` 直调路径仍可用，但 adapter 会自动跑 dedup + domain_tier，推荐统一走 adapter。
+
 ---
 
 ## Step 0a：gap 体检（进 03 第一件事）
