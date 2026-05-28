@@ -24,11 +24,9 @@ class WebSearchAdapter:
         self,
         providers: list,
         *,
-        cluster: str | None = None,
         min_score: float = 0.3,
     ):
         self.providers = providers
-        self.cluster = cluster
         self.min_score = min_score
 
     def search(
@@ -80,7 +78,7 @@ class WebSearchAdapter:
             if canon in seen:
                 continue
             seen.add(canon)
-            tier = classify_hit_domain_tier(h.url, cluster=self.cluster)
+            tier = classify_hit_domain_tier(h.url)
             if tier:
                 h.domain_tier = tier
             out.append(h)
@@ -137,7 +135,6 @@ def _build_arg_parser() -> argparse.ArgumentParser:
                    default=None)
     s.add_argument("--max-results", type=int, default=5)
     s.add_argument("--days", type=int, default=None)
-    s.add_argument("--cluster", default=None)
     s.add_argument("--include-domains", default=None, help="comma-separated")
     s.add_argument("--exclude-domains", default=None)
     s.add_argument("--need-extract", action="store_true")
@@ -152,7 +149,6 @@ def _build_arg_parser() -> argparse.ArgumentParser:
     pp.add_argument("--source", default="websearch_fallback",
                     help="source_provider tag for these hits")
     pp.add_argument("--query", required=True)
-    pp.add_argument("--cluster", default=None)
     pp.add_argument("--slug", required=True)
     pp.add_argument("--variant", required=True)
     pp.add_argument("--triggered-by", required=True)
@@ -171,7 +167,7 @@ def _cmd_search(args) -> int:
         }) + "\n")
         return EXIT_CONFIG
 
-    adp = WebSearchAdapter(providers, cluster=args.cluster)
+    adp = WebSearchAdapter(providers)
     inc = args.include_domains.split(",") if args.include_domains else None
     exc = args.exclude_domains.split(",") if args.exclude_domains else None
     try:
@@ -236,7 +232,7 @@ def _cmd_postprocess(args) -> int:
         )
         for item in items
     ]
-    adp = WebSearchAdapter(providers=[], cluster=args.cluster)
+    adp = WebSearchAdapter(providers=[])
     processed = adp.postprocess_external_hits(hits)
 
     from prism.scripts import web_prescan

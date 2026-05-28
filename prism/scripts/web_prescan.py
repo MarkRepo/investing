@@ -131,103 +131,6 @@ WHITELIST_DOMAINS: set[str] = {
 _IR_SUBDOMAIN_TOKENS = ("ir.", "investor.", "investors.", "corporate.")
 
 
-# ---------------------------------------------------------------------------
-# Runtime whitelist — 主 agent 救回的非 hardcoded 域名沉淀（跨 topic 复用）
-# ---------------------------------------------------------------------------
-
-_RUNTIME_WHITELIST_PATH = PRISM_ROOT / "data" / "_runtime_whitelist.yaml"
-
-# (mtime, set[str]) 缓存；文件变更后 mtime 不同 → 失效重读
-_runtime_whitelist_cache: tuple[float, set[str]] | None = None
-
-
-def _load_runtime_whitelist() -> set[str]:
-    """Read promoted hosts from prism/data/_runtime_whitelist.yaml (mtime-cached)."""
-    global _runtime_whitelist_cache
-    path = _RUNTIME_WHITELIST_PATH
-    if not path.is_file():
-        return set()
-    mtime = path.stat().st_mtime
-    if _runtime_whitelist_cache and _runtime_whitelist_cache[0] == mtime:
-        return _runtime_whitelist_cache[1]
-    try:
-        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-    except Exception:
-        return set()
-    hosts: set[str] = set()
-    for entry in data.get("promoted") or []:
-        if isinstance(entry, dict):
-            h = (entry.get("host") or "").strip().lower()
-            if h:
-                hosts.add(h)
-    _runtime_whitelist_cache = (mtime, hosts)
-    return hosts
-
-
-def promote_to_whitelist(host: str, reason: str, evidence_mat_ids: list[str]) -> Path:
-    """把主 agent 救回的 host 写入 runtime whitelist（跨 topic 复用）。
-
-    必填 evidence_mat_ids 便于事后审计——发现误 promote 用 demote_from_whitelist
-    撤销。主 agent 显式调用（不自动），符合 prism "脚本零 LLM" 原则。
-    """
-    host = (host or "").strip().lower().lstrip(".")
-    if not host:
-        raise ValueError("host required")
-    if not reason or not reason.strip():
-        raise ValueError("reason required (post-hoc audit)")
-    if not evidence_mat_ids:
-        raise ValueError("evidence_mat_ids required (≥1 mat that backs this host)")
-
-    path = _RUNTIME_WHITELIST_PATH
-    path.parent.mkdir(parents=True, exist_ok=True)
-    data: dict = {}
-    if path.is_file():
-        try:
-            data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-        except Exception:
-            data = {}
-    promoted = list(data.get("promoted") or [])
-    # dedup by host
-    if any((isinstance(e, dict) and (e.get("host") or "").lower() == host) for e in promoted):
-        return path  # already present
-    promoted.append({
-        "host": host,
-        "promoted_at": datetime.now(timezone.utc).isoformat(),
-        "reason": reason.strip(),
-        "evidence_mat_ids": list(evidence_mat_ids),
-    })
-    data["promoted"] = promoted
-    path.write_text(yaml.dump(data, allow_unicode=True, sort_keys=False), encoding="utf-8")
-    # 失效缓存
-    global _runtime_whitelist_cache
-    _runtime_whitelist_cache = None
-    return path
-
-
-def demote_from_whitelist(host: str) -> bool:
-    """撤销 promote。返回是否真实删除。"""
-    host = (host or "").strip().lower().lstrip(".")
-    path = _RUNTIME_WHITELIST_PATH
-    if not path.is_file():
-        return False
-    try:
-        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-    except Exception:
-        return False
-    promoted = list(data.get("promoted") or [])
-    new_promoted = [
-        e for e in promoted
-        if not (isinstance(e, dict) and (e.get("host") or "").lower() == host)
-    ]
-    if len(new_promoted) == len(promoted):
-        return False
-    data["promoted"] = new_promoted
-    path.write_text(yaml.dump(data, allow_unicode=True, sort_keys=False), encoding="utf-8")
-    global _runtime_whitelist_cache
-    _runtime_whitelist_cache = None
-    return True
-
-
 def _domain_of(url: str) -> str:
     try:
         netloc = urlparse(url).netloc.lower()
@@ -259,13 +162,6 @@ def classify_domain(url: str) -> str:
     # IR sub-domain heuristic
     if any(tok in domain for tok in _IR_SUBDOMAIN_TOKENS):
         return "whitelist"
-    # runtime whitelist (主 agent 救回沉淀)
-    runtime = _load_runtime_whitelist()
-    if domain in runtime:
-        return "whitelist"
-    for wl in runtime:
-        if domain.endswith("." + wl):
-            return "whitelist"
     return "other"
 
 

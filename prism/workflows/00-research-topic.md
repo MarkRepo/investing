@@ -143,14 +143,14 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 >
 > ```bash
 > python -m prism.scripts.web_search search "<query>" \
->     --intent news --cluster <cluster> --days 90 \
+>     --intent news --days 90 \
 >     --max-results 5 --output sidecar \
 >     --slug <slug> --variant <variant> \
 >     --triggered-by 00-prescan-baseline \
 >     --addresses scope
 > ```
 >
-> 每个 baseline 优先 query 用 adapter 一行命令落 sidecar，自动跑 dedup + domain_tier + KeyPool 轮换。
+> 每个 baseline 优先 query 用 adapter 一行命令落 sidecar，自动跑 dedup + 黑名单过滤 + KeyPool 轮换。domain_tier 由主 agent 在 H2 救回流程里判（参 `_web_prescan_shared.md` Step C），adapter 不预判权威源。
 > 退出码 40（all_exhausted）→ WebSearch tool fallback，再用 `postprocess` 子命令兜回 sidecar，
 > 详见 [[_web_search_routing]] §双向 Fallback。
 

@@ -45,26 +45,28 @@ Q3. 模型在对话里临时起意要查（探索式、单次、消化即用）�
 # 直接 search → stdout JSON
 python -m prism.scripts.web_search search "<query>" \
     --intent <news|semantic|exact|general> \
-    --cluster <cluster> --days <N> --max-results 5
+    --days <N> --max-results 5
 
 # search → 直接落 sidecar
 python -m prism.scripts.web_search search "<query>" \
-    --intent <intent> --cluster <cluster> \
+    --intent <intent> \
     --output sidecar \
     --slug <slug> --variant <variant> \
     --triggered-by <step>-<thesis> \
     --addresses K1,K3
 
-# WebSearch fallback：吃外部 hits 走 dedup + domain_tier + 落 sidecar
+# WebSearch fallback：吃外部 hits 走 dedup + 黑名单过滤 + 落 sidecar
 echo '<json hits array>' | python -m prism.scripts.web_search postprocess \
     --source websearch_fallback \
     --query "<original query>" \
-    --cluster <cluster> --slug <slug> --variant <variant> \
+    --slug <slug> --variant <variant> \
     --triggered-by <step>-fallback --addresses K1
 
 # key 池状态
 python -m prism.scripts.web_search status
 ```
+
+> **domain_tier 由谁判**：adapter 只对黑名单源（twitter/youtube/reddit 等 `LOW_SIGNAL_HOSTS`）打 `'other'` tier。其余源不预判——`register_web_search_batch` 默认走"主 agent LLM 判 tier + H2 救回闭环"流程（参 `_web_prescan_shared.md` Step C）。脚本不维护行业权威源白名单。
 
 ## 退出码契约
 

@@ -10,11 +10,11 @@
 > 入库类 inline web-search 示例：
 > ```bash
 > python -m prism.scripts.web_search search "<query>" \
->     --intent news --cluster <cluster> --output sidecar \
+>     --intent news --output sidecar \
 >     --slug <slug> --variant <variant> \
 >     --triggered-by 03-extract --addresses K1,K3
 > ```
-> 旧 helper `register_web_search_batch` 直调路径仍可用，但 adapter 会自动跑 dedup + domain_tier，推荐统一走 adapter。
+> 旧 helper `register_web_search_batch` 直调路径仍可用，但 adapter 会自动跑 dedup + 黑名单过滤，推荐统一走 adapter。domain_tier 仍由 H2 救回流程判（主 agent 看 dropped_hits 决定救回哪些）。
 
 ---
 

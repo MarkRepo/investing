@@ -7,8 +7,6 @@ from __future__ import annotations
 
 from prism.scripts.providers._domain import (
     LOW_SIGNAL_HOSTS,
-    GENERIC_AUTHORITATIVE_HOSTS,
-    CLUSTER_AUTHORITATIVE_HOSTS,
     classify_hit_domain_tier,
 )
 from prism.scripts.providers.tavily import TavilyProvider
@@ -57,5 +55,5 @@ def tavily_search_batch(
 
 __all__ = [
     "tavily_search", "tavily_search_batch", "classify_hit_domain_tier",
-    "LOW_SIGNAL_HOSTS", "GENERIC_AUTHORITATIVE_HOSTS", "CLUSTER_AUTHORITATIVE_HOSTS",
+    "LOW_SIGNAL_HOSTS",
 ]

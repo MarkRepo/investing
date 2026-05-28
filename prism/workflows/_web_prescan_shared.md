@@ -187,23 +187,14 @@ summary2 = register_web_search_batch(
 # 救回的会按 mid 入库 (0.7 > 0.5)
 ```
 
-### Runtime whitelist 沉淀（救回 ≥2 次同一 host 后）
+### 关于 runtime whitelist（2026-05-28 已删）
 
-同一 host 在不同 topic 被救回 **2 次以上**时，主 agent 应显式 promote 到
-runtime whitelist（per-repo `prism/data/_runtime_whitelist.yaml`），下次
-`classify_domain` 直接返回 `'whitelist'`，省一遍救回。
-
-```python
-from prism.scripts.web_prescan import promote_to_whitelist
-promote_to_whitelist(
-    host='futurephecda.com',
-    reason='行业垂直媒体，已在 cn-rongchang-bio + cn-commercial-space 救回',
-    evidence_mat_ids=['mat-f82bf3', 'mat-cfa4e8'],  # ≥1，便于事后审计
-)
-```
-
-撤销用 `demote_from_whitelist(host)`。**不要手改 yaml** —— promote API 自带
-时间戳 + 证据链。
+历史上有一个 `promote_to_whitelist` 沉淀机制（per-repo `_runtime_whitelist.yaml`），
+设想"救回 ≥2 次同一 host 后 promote 到全局白名单跨 topic 复用"。**已删除**——
+违反 H2 设计原则（主观分类应由 LLM 判，脚本只做 deterministic 黑名单），且无人
+持续维护，沉淀的白名单会过期。每轮 prescan **重新走 H2 救回闭环**：主 agent 看
+`dropped_hits` + `extract_url_features` 临场判 tier，**不沉淀**。重复一点 LLM
+推理远比维护一个慢慢腐烂的白名单可靠。
 
 ---
 

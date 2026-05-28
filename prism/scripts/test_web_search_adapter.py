@@ -58,15 +58,16 @@ def test_adapter_soft_fallback_on_low_score():
     assert hits[0].url == "https://b.com"
 
 
-def test_adapter_postprocess_assigns_domain_tier():
+def test_adapter_postprocess_tags_low_signal_only():
+    """H2 设计：adapter 只对黑名单源打 'other' tier；权威源不预判，留给 LLM/register 判断。"""
     p1 = _StubProvider("tavily", {"news"}, hits=[
         _hit("https://reuters.com/a"),
         _hit("https://twitter.com/b"),
     ])
-    adp = WebSearchAdapter([p1], cluster=None)
+    adp = WebSearchAdapter([p1])
     hits = adp.search("oil prices")
     tiers = {h.url: h.domain_tier for h in hits}
-    assert tiers["https://reuters.com/a"] == "llm-judged-official"
+    assert tiers["https://reuters.com/a"] is None
     assert tiers["https://twitter.com/b"] == "other"
 
 
@@ -117,7 +118,6 @@ def test_cli_postprocess_reads_stdin_and_writes_sidecar(monkeypatch, capsys):
         "postprocess",
         "--source", "websearch_fallback",
         "--query", "uranium",
-        "--cluster", "uranium-nuclear",
         "--slug", "global-uranium-supply",
         "--variant", "claude-opus-4-7",
         "--triggered-by", "00-prescan-fallback",
@@ -126,7 +126,8 @@ def test_cli_postprocess_reads_stdin_and_writes_sidecar(monkeypatch, capsys):
     assert rc == 0
     assert len(captured_call["hits"]) == 1
     assert captured_call["hits"][0]["source_provider"] == "websearch_fallback"
-    assert captured_call["hits"][0]["domain_tier"] == "llm-judged-official"
+    # H2 设计：adapter 不预判权威源；domain_tier 由 register/主 agent 判
+    assert captured_call["hits"][0].get("domain_tier") is None
     assert captured_call["triggered_by"] == "00-prescan-fallback"
 
 

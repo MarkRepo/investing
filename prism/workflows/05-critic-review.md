@@ -10,7 +10,7 @@
 > Step 6.5 request-more 兜底命令：
 > ```bash
 > python -m prism.scripts.web_search search "<反方关键词>" \
->     --intent news --cluster <cluster> --days 60 \
+>     --intent news --days 60 \
 >     --output sidecar --slug <slug> --variant <variant> \
 >     --triggered-by 05-critic --addresses <K#>
 > ```
