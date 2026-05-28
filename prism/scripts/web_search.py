@@ -89,3 +89,119 @@ class WebSearchAdapter:
     def postprocess_external_hits(self, hits: list[Hit]) -> list[Hit]:
         """供 WebSearch fallback 使用：吃外部 hit list，跑 dedup + domain_tier。"""
         return self._postprocess(hits)
+
+
+# ---------------- CLI ----------------
+
+import argparse
+
+EXIT_OK = 0
+EXIT_PARTIAL = 10
+EXIT_NO_HITS = 20
+EXIT_DEGRADED = 30
+EXIT_ALL_EXHAUSTED = 40
+EXIT_CONFIG = 50
+
+
+def _default_providers() -> list:
+    """按可用 key 决定加载哪些 provider；缺 key 的 provider 跳过。"""
+    out = []
+    try:
+        from prism.scripts.providers.tavily import TavilyProvider
+        out.append(TavilyProvider())
+    except (RuntimeError, ValueError):
+        pass
+    return out
+
+
+def _build_arg_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(prog="web_search")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    s = sub.add_parser("search", help="run web search via adapter")
+    s.add_argument("query")
+    s.add_argument("--intent",
+                   choices=["news", "semantic", "exact", "general",
+                            "vertical:patent", "vertical:scholar",
+                            "vertical:image", "vertical:map"],
+                   default=None)
+    s.add_argument("--max-results", type=int, default=5)
+    s.add_argument("--days", type=int, default=None)
+    s.add_argument("--cluster", default=None)
+    s.add_argument("--include-domains", default=None, help="comma-separated")
+    s.add_argument("--exclude-domains", default=None)
+    s.add_argument("--need-extract", action="store_true")
+    s.add_argument("--output", choices=["stdout", "sidecar"], default="stdout")
+    s.add_argument("--slug", default=None)
+    s.add_argument("--variant", default=None)
+    s.add_argument("--triggered-by", default=None)
+    s.add_argument("--addresses", default=None, help="comma-separated")
+    return p
+
+
+def _cmd_search(args) -> int:
+    providers = _default_providers()
+    if not providers:
+        sys.stderr.write(json.dumps({
+            "status": "config_error",
+            "reason": "no provider configured (check API keys)",
+        }) + "\n")
+        return EXIT_CONFIG
+
+    adp = WebSearchAdapter(providers, cluster=args.cluster)
+    inc = args.include_domains.split(",") if args.include_domains else None
+    exc = args.exclude_domains.split(",") if args.exclude_domains else None
+    try:
+        hits = adp.search(
+            args.query,
+            intent=args.intent,
+            max_results=args.max_results,
+            days=args.days,
+            include_domains=inc,
+            exclude_domains=exc,
+            need_extract=args.need_extract,
+        )
+    except RuntimeError as e:
+        sys.stderr.write(json.dumps({
+            "status": "all_exhausted",
+            "reason": str(e),
+            "fallback_hint": "use_websearch_tool",
+        }) + "\n")
+        return EXIT_ALL_EXHAUSTED
+
+    if args.output == "stdout":
+        sys.stdout.write(json.dumps(
+            [h.to_dict() for h in hits], ensure_ascii=False, indent=2,
+        ))
+        return EXIT_OK if hits else EXIT_NO_HITS
+
+    if not all([args.slug, args.variant, args.triggered_by]):
+        sys.stderr.write(json.dumps({
+            "status": "config_error",
+            "reason": "--output=sidecar 需要 --slug --variant --triggered-by",
+        }) + "\n")
+        return EXIT_CONFIG
+
+    from prism.scripts.web_prescan import register_web_search_batch
+    addresses = args.addresses.split(",") if args.addresses else []
+    result = register_web_search_batch(
+        slug=args.slug,
+        variant=args.variant,
+        query=args.query,
+        addresses=addresses,
+        triggered_by=args.triggered_by,
+        hits=[h.to_dict() for h in hits],
+    )
+    sys.stdout.write(json.dumps(result, ensure_ascii=False, indent=2))
+    return EXIT_OK if hits else EXIT_NO_HITS
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = _build_arg_parser().parse_args(argv)
+    if args.cmd == "search":
+        return _cmd_search(args)
+    return EXIT_CONFIG
+
+
+if __name__ == "__main__":
+    sys.exit(main())

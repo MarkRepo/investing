@@ -87,3 +87,20 @@ def test_adapter_raises_when_all_providers_exhausted():
     adp = WebSearchAdapter([p1, p2])
     with pytest.raises(RuntimeError):
         adp.search("query")
+
+
+def test_cli_search_writes_json_to_stdout(monkeypatch, capsys):
+    """CLI smoke: stub provider, --output stdout returns JSON."""
+    from prism.scripts import web_search as ws
+
+    p1 = _StubProvider("tavily", {"news", "general"}, hits=[
+        _hit("https://reuters.com/x"),
+    ])
+    monkeypatch.setattr(ws, "_default_providers", lambda: [p1])
+
+    rc = ws.main(["search", "uranium", "--max-results", "1", "--output", "stdout"])
+    assert rc == 0
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert isinstance(payload, list)
+    assert payload[0]["url"] == "https://reuters.com/x"
