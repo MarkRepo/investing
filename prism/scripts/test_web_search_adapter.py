@@ -130,6 +130,54 @@ def test_cli_postprocess_reads_stdin_and_writes_sidecar(monkeypatch, capsys):
     assert captured_call["triggered_by"] == "00-prescan-fallback"
 
 
+def test_cli_search_exit_40_on_all_exhausted(monkeypatch, capsys):
+    from prism.scripts import web_search as ws
+
+    err = ProviderError("dead", provider="tavily")
+    p1 = _StubProvider("tavily", {"news"}, raises=err)
+    monkeypatch.setattr(ws, "_default_providers", lambda: [p1])
+
+    rc = ws.main(["search", "uranium", "--output", "stdout"])
+    assert rc == ws.EXIT_ALL_EXHAUSTED
+    err_out = capsys.readouterr().err
+    payload = json.loads(err_out.strip())
+    assert payload["status"] == "all_exhausted"
+    assert payload["fallback_hint"] == "use_websearch_tool"
+
+
+def test_cli_search_exit_40_on_zero_hits(monkeypatch, capsys):
+    from prism.scripts import web_search as ws
+
+    p1 = _StubProvider("tavily", {"news"}, hits=[])
+    p2 = _StubProvider("serper", {"general"}, hits=[])
+    monkeypatch.setattr(ws, "_default_providers", lambda: [p1, p2])
+
+    rc = ws.main(["search", "noresult", "--output", "stdout"])
+    assert rc == ws.EXIT_ALL_EXHAUSTED
+
+
+def test_cli_status_subcommand(monkeypatch, capsys):
+    from prism.scripts import web_search as ws
+
+    p1 = _StubProvider("tavily", {"news"})
+    p1.pool = MagicMock()
+    p1.pool.status.return_value = {
+        "provider": "tavily",
+        "free_quota": 33,
+        "keys": [{"fingerprint": "aaaa1111", "used_today": 5,
+                  "disabled": False, "cooldown_until": None,
+                  "consecutive_429": 0, "last_success": None,
+                  "reset_at": None}],
+    }
+    monkeypatch.setattr(ws, "_default_providers", lambda: [p1])
+
+    rc = ws.main(["status"])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "tavily" in out
+    assert "5/33" in out
+
+
 def test_cli_search_writes_json_to_stdout(monkeypatch, capsys):
     """CLI smoke: stub provider, --output stdout returns JSON."""
     from prism.scripts import web_search as ws

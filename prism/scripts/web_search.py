@@ -147,6 +147,8 @@ def _build_arg_parser() -> argparse.ArgumentParser:
     pp.add_argument("--variant", required=True)
     pp.add_argument("--triggered-by", required=True)
     pp.add_argument("--addresses", default="")
+
+    sub.add_parser("status", help="show key pool status across providers")
     return p
 
 
@@ -241,12 +243,35 @@ def _cmd_postprocess(args) -> int:
     return EXIT_OK
 
 
+def _cmd_status() -> int:
+    providers = _default_providers()
+    if not providers:
+        sys.stderr.write(json.dumps({"status": "config_error"}) + "\n")
+        return EXIT_CONFIG
+    for p in providers:
+        if not hasattr(p, "pool"):
+            continue
+        s = p.pool.status()
+        active = sum(1 for k in s["keys"]
+                     if not k["disabled"] and not k["cooldown_until"])
+        used_total = sum(k["used_today"] for k in s["keys"])
+        cap_total = s["free_quota"] * len(s["keys"])
+        sys.stdout.write(
+            f"{s['provider']}: {len(s['keys'])} keys, "
+            f"{active} active, today {used_total}/{cap_total} "
+            f"({used_total // len(s['keys'])}/{s['free_quota']} avg)\n"
+        )
+    return EXIT_OK
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _build_arg_parser().parse_args(argv)
     if args.cmd == "search":
         return _cmd_search(args)
     if args.cmd == "postprocess":
         return _cmd_postprocess(args)
+    if args.cmd == "status":
+        return _cmd_status()
     return EXIT_CONFIG
 
 
