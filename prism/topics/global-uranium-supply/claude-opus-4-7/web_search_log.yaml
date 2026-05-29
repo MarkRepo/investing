@@ -1,0 +1,360 @@
+slug: global-uranium-supply
+variant: claude-opus-4-7
+entries:
+- searched_at: '2026-05-28T03:08:27.616281+00:00'
+  query: uranium spot price U3O8 May 2026 latest
+  triggered_by: 00-prescan-baseline
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-28T03:08:27.617212+00:00'
+  query: uranium long-term contract price 2026 term price utility
+  triggered_by: 00-prescan-baseline
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-28T03:08:27.617938+00:00'
+  query: Kazatomprom 2026 production guidance KAP annual report
+  triggered_by: 00-prescan-baseline
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-28T03:08:27.618768+00:00'
+  query: Cameco Q1 2026 earnings McArthur River production ramp
+  triggered_by: 00-prescan-baseline
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-28T03:08:27.619804+00:00'
+  query: UF6 uranium conversion price 2026 ConverDyn Orano Cameco
+  triggered_by: 00-prescan-baseline
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-28T04:07:20.674580+00:00'
+  query: uranium spot price U3O8 May 2026 latest
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:07:22.834325+00:00'
+  query: uranium long-term contract price 2026 utility
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:07:25.098240+00:00'
+  query: Kazatomprom 2026 production guidance KAP
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:07:27.262493+00:00'
+  query: Cameco Q1 2026 earnings McArthur River production
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:09:18.481796+00:00'
+  query: uranium spot price U3O8 May 2026 latest
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+- searched_at: '2026-05-28T04:09:19.955606+00:00'
+  query: uranium long-term contract price 2026 utility
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+- searched_at: '2026-05-28T04:09:21.214354+00:00'
+  query: Kazatomprom 2026 production guidance KAP
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:09:22.479365+00:00'
+  query: Cameco Q1 2026 earnings McArthur River production
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:09:23.725795+00:00'
+  query: UF6 uranium conversion price 2026 ConverDyn
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:09:26.079297+00:00'
+  query: SWU uranium enrichment price 2026 Urenco Centrus
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 2
+  n_low: 3
+- searched_at: '2026-05-28T04:09:28.034537+00:00'
+  query: Paladin Energy Langer Heinrich 2026 production ramp
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:09:30.336111+00:00'
+  query: Boss Energy Honeymoon 2026 uranium production
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:09:32.576465+00:00'
+  query: Centrus Energy HALEU 2026 production shipment
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+- searched_at: '2026-05-28T04:09:34.738257+00:00'
+  query: NexGen Energy Arrow Saskatchewan 2026 status timeline
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:09:36.962949+00:00'
+  query: Niger Orano 2026 SOMAIR uranium mine status
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 2
+  n_low: 3
+- searched_at: '2026-05-28T04:09:39.060609+00:00'
+  query: Trump 2026 Russian uranium import waiver policy
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:09:41.060890+00:00'
+  query: China nuclear reactor approval 2026 new build
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:09:43.425807+00:00'
+  query: hyperscaler nuclear PPA 2026 Microsoft Amazon Google
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+- searched_at: '2026-05-28T04:09:45.736285+00:00'
+  query: SMR small modular reactor 2026 NuScale TerraPower X-energy Oklo
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:09:47.809989+00:00'
+  query: Sprott Physical Uranium Trust SPUT 2026 purchase NAV
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 3
+  n_low: 2
+- searched_at: '2026-05-28T04:09:50.106182+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 铀矿供给 Cameco 产能 Kazatomp
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:09:52.644844+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 行业政策
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:09:55.406101+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 技术突破
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:09:57.691224+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 产能变化
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+- searched_at: '2026-05-28T04:09:59.892118+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 龙头新闻
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:11:32.504540+00:00'
+  query: uranium spot price U3O8 May 2026 latest
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+- searched_at: '2026-05-28T04:11:34.097631+00:00'
+  query: uranium long-term contract price 2026 utility
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+- searched_at: '2026-05-28T04:11:35.416542+00:00'
+  query: Kazatomprom 2026 production guidance KAP
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:11:36.718221+00:00'
+  query: Cameco Q1 2026 earnings McArthur River production
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:11:38.090401+00:00'
+  query: UF6 uranium conversion price 2026 ConverDyn
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+- searched_at: '2026-05-28T04:11:39.480827+00:00'
+  query: SWU uranium enrichment price 2026 Urenco Centrus
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+- searched_at: '2026-05-28T04:11:40.893649+00:00'
+  query: Paladin Energy Langer Heinrich 2026 production ramp
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 3
+  n_low: 2
+- searched_at: '2026-05-28T04:11:42.292587+00:00'
+  query: Boss Energy Honeymoon 2026 uranium production
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 3
+  n_low: 2
+- searched_at: '2026-05-28T04:11:43.738027+00:00'
+  query: Centrus Energy HALEU 2026 production shipment
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+- searched_at: '2026-05-28T04:11:45.166375+00:00'
+  query: NexGen Energy Arrow Saskatchewan 2026 status timeline
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+- searched_at: '2026-05-28T04:11:46.619936+00:00'
+  query: Niger Orano 2026 SOMAIR uranium mine status
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 3
+  n_low: 2
+- searched_at: '2026-05-28T04:11:48.105112+00:00'
+  query: Trump 2026 Russian uranium import waiver policy
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+- searched_at: '2026-05-28T04:11:49.469269+00:00'
+  query: China nuclear reactor approval 2026 new build
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 2
+  n_low: 3
+- searched_at: '2026-05-28T04:11:50.828324+00:00'
+  query: hyperscaler nuclear PPA 2026 Microsoft Amazon Google
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+- searched_at: '2026-05-28T04:11:52.306830+00:00'
+  query: SMR small modular reactor 2026 NuScale TerraPower X-energy Oklo
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 2
+  n_low: 3
+- searched_at: '2026-05-28T04:11:53.830977+00:00'
+  query: Sprott Physical Uranium Trust SPUT 2026 purchase NAV
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 3
+  n_low: 2
+- searched_at: '2026-05-28T04:11:55.405891+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 铀矿供给 Cameco 产能 Kazatomp
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+- searched_at: '2026-05-28T04:11:57.243476+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 行业政策
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:11:59.145879+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 技术突破
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+- searched_at: '2026-05-28T04:12:00.765603+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 产能变化
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+- searched_at: '2026-05-28T04:12:02.321217+00:00'
+  query: 全球铀供给端（铀矿/转化/浓缩） 龙头新闻
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4

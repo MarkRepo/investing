@@ -1,0 +1,1285 @@
+slug: global-hvdc-transmission
+variant: claude-opus-4-7
+updated: '2026-05-28T14:48:40.184105+00:00'
+materials:
+- id: mat-c33c73
+  filename: 2026-05-28_hitachi-energy-and-petrofac-secure-landmark-offsho.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.039886+00:00'
+  processed: false
+  notes: query='Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award
+    url: https://www.hitachienergy.com/news-and-events/press-releases/2023/03/hitachi-energy-and-petrofac-secure-landmark-offshore-wind-agreement-worth-approximately-13-billion-euros
+    domain: hitachienergy.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.038303+00:00'
+    stale_at: '2026-06-27T14:46:42.038303+00:00'
+    expire_at: '2026-08-26T14:46:42.038303+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ed801c
+  filename: 2026-05-28_ge-vernova-and-seatrium-secure-a-major-contract-fr.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.042003+00:00'
+  processed: false
+  notes: query='Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award
+    url: https://www.gevernova.com/news/press-releases/ge-vernova-seatrium-secure-major-contract-tennet
+    domain: gevernova.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.041106+00:00'
+    stale_at: '2026-06-27T14:46:42.041106+00:00'
+    expire_at: '2026-08-26T14:46:42.041106+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6d56cc
+  filename: 2026-05-28_information-for-wind-farm-developers---tennet-eu.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.044806+00:00'
+  processed: false
+  notes: query='Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award
+    url: https://www.tennet.eu/nl-en/information-wind-farm-developers-0
+    domain: tennet.eu
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.043463+00:00'
+    stale_at: '2026-06-27T14:46:42.043463+00:00'
+    expire_at: '2026-08-26T14:46:42.043463+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-75dd6a
+  filename: 2026-05-28_tennet-awards-around-5-5-billion-project-for-grid-.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.048397+00:00'
+  processed: false
+  notes: query='Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award
+    url: https://www.tgs4c.com/news/tennet-awards-around-805.5-billion-project-for-grid-expansion-nid27607.html
+    domain: tgs4c.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.046834+00:00'
+    stale_at: '2026-06-27T14:46:42.046834+00:00'
+    expire_at: '2026-08-26T14:46:42.046834+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ab4021
+  filename: 2026-05-28_tennet-2gw-land-station-program---wsp.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.052886+00:00'
+  processed: false
+  notes: query='Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tennet 2GW Programme 2025 2026 HVDC offshore wind framework award
+    url: https://www.wsp.com/en-gl/projects/tennet-land-station
+    domain: wsp.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.050974+00:00'
+    stale_at: '2026-06-27T14:46:42.050974+00:00'
+    expire_at: '2026-08-26T14:46:42.050974+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-68f6b5
+  filename: 2026-05-28_prysmian-signs-contract-for-the-delivery-of-easter.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.062990+00:00'
+  processed: false
+  notes: query='Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE
+    Prysmian' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE Prysmian
+    url: https://www.prysmian.com/en/media/press-releases/prysmian-signs-contract-for-the-delivery-of-eastern-green-link-4
+    domain: prysmian.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.060647+00:00'
+    stale_at: '2026-06-27T14:46:42.060647+00:00'
+    expire_at: '2026-08-26T14:46:42.060647+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4c371a
+  filename: 2026-05-28_eastern-green-link-1-ltd-awards-1-8bn-of-contracts.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.069296+00:00'
+  processed: false
+  notes: query='Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE
+    Prysmian' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE Prysmian
+    url: https://www.easterngreenlink1.co.uk/news/eastern-green-link-1-ltd-awards
+    domain: easterngreenlink1.co.uk
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.066694+00:00'
+    stale_at: '2026-06-27T14:46:42.066694+00:00'
+    expire_at: '2026-08-26T14:46:42.066694+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-561f09
+  filename: 2026-05-28_eastern-green-link-4-confirms-3bn-supply-chain-con.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.076854+00:00'
+  processed: false
+  notes: query='Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE
+    Prysmian' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE Prysmian
+    url: https://www.enlit.world/library/eastern-green-link-4-confirms-3bn-supply-chain-contracts
+    domain: enlit.world
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.073807+00:00'
+    stale_at: '2026-06-27T14:46:42.073807+00:00'
+    expire_at: '2026-08-26T14:46:42.073807+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-545741
+  filename: 2026-05-28_eastern-green-link-4-announces-2bn-cable-contract-.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.085244+00:00'
+  processed: false
+  notes: query='Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE
+    Prysmian' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE Prysmian
+    url: https://www.scottishpower.com/w/eastern-green-link-4-announces-2bn-cable-contract-with-prysmian
+    domain: scottishpower.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.081897+00:00'
+    stale_at: '2026-06-27T14:46:42.081897+00:00'
+    expire_at: '2026-08-26T14:46:42.081897+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a6056d
+  filename: 2026-05-28_iberdrola-awards-contracts-worth-3-5-billion-for-t.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.094643+00:00'
+  processed: false
+  notes: query='Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE
+    Prysmian' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eastern Green Link 1 2 3 4 contract award 2025 Hitachi Siemens GE Prysmian
+    url: https://www.iberdrola.com/press-room/news/detail/iberdrola-awards-contracts-worth-3500-million-for-the-eastern-green-link-4-subsea-interconnection-in-the-united-kingdom
+    domain: iberdrola.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.090903+00:00'
+    stale_at: '2026-06-27T14:46:42.090903+00:00'
+    expire_at: '2026-08-26T14:46:42.090903+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-978b2d
+  filename: 2026-05-28_first-uk-german-energy-link-takes-shape-as-neuconn.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.111141+00:00'
+  processed: false
+  notes: query='NeuConnect HVDC interconnector commissioning 2027 2028 schedule update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NeuConnect HVDC interconnector commissioning 2027 2028 schedule update
+    url: https://neuconnect-interconnector.com/first-uk-german-energy-link-takes-shape-as-neuconnect-begins-laying-140km-of-cabling-in-uk-waters/
+    domain: neuconnect-interconnector.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.106908+00:00'
+    stale_at: '2026-06-27T14:46:42.106908+00:00'
+    expire_at: '2026-08-26T14:46:42.106908+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-58b6ad
+  filename: 2026-05-28_electricity-1-4-gw-neuconnect-power-line-between-g.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.124177+00:00'
+  processed: false
+  notes: query='NeuConnect HVDC interconnector commissioning 2027 2028 schedule update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NeuConnect HVDC interconnector commissioning 2027 2028 schedule update
+    url: https://www.renewable-energy-industry.com/news/world/article-7313-electricity-14-gw-neuconnect-power-line-between-germany-and-the-uk-enters-critical-construction-phase
+    domain: renewable-energy-industry.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.119001+00:00'
+    stale_at: '2026-06-27T14:46:42.119001+00:00'
+    expire_at: '2026-08-26T14:46:42.119001+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c40bbe
+  filename: 2026-05-28_manufacturing-update---neuconnect---agentzero.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.145371+00:00'
+  processed: false
+  notes: query='NeuConnect HVDC interconnector commissioning 2027 2028 schedule update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NeuConnect HVDC interconnector commissioning 2027 2028 schedule update
+    url: https://agentzero.energy/projects/neuconnect/events/manufacturing-update-2026-2
+    domain: agentzero.energy
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.138750+00:00'
+    stale_at: '2026-06-27T14:46:42.138750+00:00'
+    expire_at: '2026-08-26T14:46:42.138750+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-56b0e3
+  filename: 2026-05-28_neuconnect---wikipedia.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.162456+00:00'
+  processed: false
+  notes: query='NeuConnect HVDC interconnector commissioning 2027 2028 schedule update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NeuConnect HVDC interconnector commissioning 2027 2028 schedule update
+    url: https://en.wikipedia.org/wiki/NeuConnect
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.156623+00:00'
+    stale_at: '2026-06-27T14:46:42.156623+00:00'
+    expire_at: '2026-08-26T14:46:42.156623+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-039762
+  filename: 2026-05-28_sumitomo-electric-secures-contract-to-supply-525-k.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.176727+00:00'
+  processed: false
+  notes: query='NeuConnect HVDC interconnector commissioning 2027 2028 schedule update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NeuConnect HVDC interconnector commissioning 2027 2028 schedule update
+    url: https://sumitomoelectric.com/press/2022/11/prs035
+    domain: sumitomoelectric.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.171141+00:00'
+    stale_at: '2026-06-27T14:46:42.171141+00:00'
+    expire_at: '2026-08-26T14:46:42.171141+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a6f776
+  filename: 2026-05-28_champlain-hudson-power-express-provides-update-on-.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.202920+00:00'
+  processed: false
+  notes: query='Champlain Hudson Power Express CHPE commercial operation 2026 update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Champlain Hudson Power Express CHPE commercial operation 2026 update
+    url: https://chpexpress.com/news/champlain-hudson-power-express-provides-update-on-anticipated-full-operation-date
+    domain: chpexpress.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.194229+00:00'
+    stale_at: '2026-06-27T14:46:42.194229+00:00'
+    expire_at: '2026-08-26T14:46:42.194229+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b24492
+  filename: 2026-05-28_home---tdi-chpexpress.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.218944+00:00'
+  processed: false
+  notes: query='Champlain Hudson Power Express CHPE commercial operation 2026 update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Champlain Hudson Power Express CHPE commercial operation 2026 update
+    url: https://chpexpress.com
+    domain: chpexpress.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.212645+00:00'
+    stale_at: '2026-06-27T14:46:42.212645+00:00'
+    expire_at: '2026-08-26T14:46:42.212645+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-58fabc
+  filename: 2026-05-28_champlain-hudson-power-express-ballston-ny.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.236918+00:00'
+  processed: false
+  notes: query='Champlain Hudson Power Express CHPE commercial operation 2026 update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Champlain Hudson Power Express CHPE commercial operation 2026 update
+    url: https://www.townofballstonny.gov/1314/Champlain-Hudson-Power-Express
+    domain: townofballstonny.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.229995+00:00'
+    stale_at: '2026-06-27T14:46:42.229995+00:00'
+    expire_at: '2026-08-26T14:46:42.229995+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f3f087
+  filename: 2026-05-28_champlain-hudson-power-express---wikipedia.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.260437+00:00'
+  processed: false
+  notes: query='Champlain Hudson Power Express CHPE commercial operation 2026 update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Champlain Hudson Power Express CHPE commercial operation 2026 update
+    url: https://en.wikipedia.org/wiki/Champlain_Hudson_Power_Express
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.251312+00:00'
+    stale_at: '2026-06-27T14:46:42.251312+00:00'
+    expire_at: '2026-08-26T14:46:42.251312+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f70e73
+  filename: 2026-05-28_news-archive---tdi-chpexpress.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.279975+00:00'
+  processed: false
+  notes: query='Champlain Hudson Power Express CHPE commercial operation 2026 update'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Champlain Hudson Power Express CHPE commercial operation 2026 update
+    url: https://chpexpress.com/news
+    domain: chpexpress.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.272523+00:00'
+    stale_at: '2026-06-27T14:46:42.272523+00:00'
+    expire_at: '2026-08-26T14:46:42.272523+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-629d70
+  filename: 2026-05-28_construction-continues-on-the-3-5-gw-sunzia-wind-a.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.311112+00:00'
+  processed: false
+  notes: query='SunZia transmission line construction progress 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SunZia transmission line construction progress 2026
+    url: https://energiesmedia.com/construction-continues-on-sunzia-wind-project
+    domain: energiesmedia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.303557+00:00'
+    stale_at: '2026-06-27T14:46:42.303557+00:00'
+    expire_at: '2026-08-26T14:46:42.303557+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e93092
+  filename: 2026-05-28_sunzia-wind-project-updates-2026.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.331972+00:00'
+  processed: false
+  notes: query='SunZia transmission line construction progress 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SunZia transmission line construction progress 2026
+    url: https://www.blackridgeresearch.com/project-profiles/sunzia-wind-farm-transmission-project-status-location-cost-contractors-details-united-states-us
+    domain: blackridgeresearch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.323757+00:00'
+    stale_at: '2026-06-27T14:46:42.323757+00:00'
+    expire_at: '2026-08-26T14:46:42.323757+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6825ec
+  filename: 2026-05-28_sunzia-wind-and-transmission---wikipedia.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.354485+00:00'
+  processed: false
+  notes: query='SunZia transmission line construction progress 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SunZia transmission line construction progress 2026
+    url: https://en.wikipedia.org/wiki/SunZia_Wind_and_Transmission
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.344773+00:00'
+    stale_at: '2026-06-27T14:46:42.344773+00:00'
+    expire_at: '2026-08-26T14:46:42.344773+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7e2690
+  filename: 2026-05-28_sunzia-southwest-transmission-project.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.377667+00:00'
+  processed: false
+  notes: query='SunZia transmission line construction progress 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SunZia transmission line construction progress 2026
+    url: https://www.wecc.org/sites/default/files/documents/progress_report/2026/SunZia%202026%20APR.pdf
+    domain: wecc.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.369088+00:00'
+    stale_at: '2026-06-27T14:46:42.369088+00:00'
+    expire_at: '2026-08-26T14:46:42.369088+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8d260c
+  filename: 2026-05-28_sunzia-transmission-project---reta-new-mexico.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.402589+00:00'
+  processed: false
+  notes: query='SunZia transmission line construction progress 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SunZia transmission line construction progress 2026
+    url: https://nmreta.com/sunzia-transmission-project
+    domain: nmreta.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.391794+00:00'
+    stale_at: '2026-06-27T14:46:42.391794+00:00'
+    expire_at: '2026-08-26T14:46:42.391794+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5e2ac3
+  filename: 2026-05-28_the-second-material-tender-for-the-2025-uhv-projec.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.439386+00:00'
+  processed: false
+  notes: query='China State Grid UHVDC tender 2025 2026 award list 特高压直流招标' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: China State Grid UHVDC tender 2025 2026 award list 特高压直流招标
+    url: https://news.metal.com/newscontent/103300146-Second-Material-Tender-for-State-Grids-2025-UHV-Project-Officially-Kicks-Off
+    domain: news.metal.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.429686+00:00'
+    stale_at: '2026-06-27T14:46:42.429686+00:00'
+    expire_at: '2026-08-26T14:46:42.429686+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3a42b2
+  filename: 2026-05-28_hualing-cable-won-bids-for-state-grid-corporation-.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.467454+00:00'
+  processed: false
+  notes: query='China State Grid UHVDC tender 2025 2026 award list 特高压直流招标' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: China State Grid UHVDC tender 2025 2026 award list 特高压直流招标
+    url: http://news.metal.com/id/newscontent/103405749
+    domain: news.metal.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.457301+00:00'
+    stale_at: '2026-06-27T14:46:42.457301+00:00'
+    expire_at: '2026-08-26T14:46:42.457301+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6b2c9c
+  filename: 2026-05-28_china-s-state-grid-pledges-4-5-billion-for-pumped-.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.494064+00:00'
+  processed: false
+  notes: query='China State Grid UHVDC tender 2025 2026 award list 特高压直流招标' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: China State Grid UHVDC tender 2025 2026 award list 特高压直流招标
+    url: https://www.energyconnects.com/news/utilities/2026/april/china-s-state-grid-pledges-45-billion-for-pumped-hydro-in-2026
+    domain: energyconnects.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.483410+00:00'
+    stale_at: '2026-06-27T14:46:42.483410+00:00'
+    expire_at: '2026-08-26T14:46:42.483410+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9f76ea
+  filename: 2026-05-28_https-www-caixin-com-2025-01-16-102279607-html-m.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.522970+00:00'
+  processed: false
+  notes: query='China State Grid UHVDC tender 2025 2026 award list 特高压直流招标'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: China State Grid UHVDC tender 2025 2026 award list 特高压直流招标
+    url: https://www.caixin.com/2025-01-16/102279607.html
+    domain: caixin.com
+    domain_tier: whitelist
+    searched_at: '2026-05-28T14:46:42.512434+00:00'
+    stale_at: '2026-06-27T14:46:42.512434+00:00'
+    expire_at: '2026-08-26T14:46:42.512434+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f08e8d
+  filename: 2026-05-28_pdf-hong-kong-exchanges-and-clearing-limited-and-t.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.550423+00:00'
+  processed: false
+  notes: query='China State Grid UHVDC tender 2025 2026 award list 特高压直流招标' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: China State Grid UHVDC tender 2025 2026 award list 特高压直流招标
+    url: https://www1.hkexnews.hk/listedco/listconews/sehk/2025/1028/2025102800299.pdf
+    domain: www1.hkexnews.hk
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.540041+00:00'
+    stale_at: '2026-06-27T14:46:42.540041+00:00'
+    expire_at: '2026-08-26T14:46:42.540041+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-21e635
+  filename: 2026-05-28_prysmian-starts-the-year-with-organic-growth-margi.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.592304+00:00'
+  processed: false
+  notes: query='Prysmian Q1 2026 results HVDC backlog Tennet order book' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Prysmian Q1 2026 results HVDC backlog Tennet order book
+    url: https://www.prysmian.com/en/media/press-releases/prysmian-starts-the-year-with-organic-growth-margin-expansion-and-strong-free-cash-flow
+    domain: prysmian.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.581324+00:00'
+    stale_at: '2026-06-27T14:46:42.581324+00:00'
+    expire_at: '2026-08-26T14:46:42.581324+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a07218
+  filename: 2026-05-28_q1-2026-financial-information---nexans.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.636493+00:00'
+  processed: false
+  notes: query='Nexans 2026 H1 results HVDC submarine cable order intake' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Nexans 2026 H1 results HVDC submarine cable order intake
+    url: https://www.nexans.com/regulated-informations/first-quarter-2026-financial-information
+    domain: nexans.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.625092+00:00'
+    stale_at: '2026-06-27T14:46:42.625092+00:00'
+    expire_at: '2026-08-26T14:46:42.625092+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-92e902
+  filename: 2026-05-28_windtech-international---nexans-reports-higher-mar.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.666720+00:00'
+  processed: false
+  notes: query='Nexans 2026 H1 results HVDC submarine cable order intake' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Nexans 2026 H1 results HVDC submarine cable order intake
+    url: https://www.windtech-international.com/company-news/nexans-reports-higher-margins-on-subsea-cables-and-grid-activity
+    domain: windtech-international.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.654909+00:00'
+    stale_at: '2026-06-27T14:46:42.654909+00:00'
+    expire_at: '2026-08-26T14:46:42.654909+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d0120c
+  filename: 2026-05-28_nexans---q1-2026-solid-start-to-2026.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.698256+00:00'
+  processed: false
+  notes: query='Nexans 2026 H1 results HVDC submarine cable order intake' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Nexans 2026 H1 results HVDC submarine cable order intake
+    url: https://www.globenewswire.com/news-release/2026/04/28/3282204/0/en/nexans-q1-2026-solid-start-to-2026.html
+    domain: globenewswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.686187+00:00'
+    stale_at: '2026-06-27T14:46:42.686187+00:00'
+    expire_at: '2026-08-26T14:46:42.686187+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8496c9
+  filename: 2026-05-28_company-presentation.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.749560+00:00'
+  processed: false
+  notes: query='Siemens Energy Grid Technologies 2026 H1 order intake HVDC' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Siemens Energy Grid Technologies 2026 H1 order intake HVDC
+    url: https://assets.siemens-energy.com/dam/292f4f99-1c6d-4799-aa7b-b12400fc58c9/Siemens-Energy_Company-Presentation-pdf_Original%20file.pdf
+    domain: assets.siemens-energy.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.736554+00:00'
+    stale_at: '2026-06-27T14:46:42.736554+00:00'
+    expire_at: '2026-08-26T14:46:42.736554+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-591efc
+  filename: 2026-05-28_distributech-international-dtech-2026---siemens-en.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.785760+00:00'
+  processed: false
+  notes: query='Siemens Energy Grid Technologies 2026 H1 order intake HVDC' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Siemens Energy Grid Technologies 2026 H1 order intake HVDC
+    url: https://www.siemens-energy.com/global/en/home/events/distributech.html
+    domain: siemens-energy.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.772051+00:00'
+    stale_at: '2026-06-27T14:46:42.772051+00:00'
+    expire_at: '2026-08-26T14:46:42.772051+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0f892c
+  filename: 2026-05-28_ge-vernova-gev-q1-2026-earnings-transcript---the-g.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.839964+00:00'
+  processed: false
+  notes: query='GE Vernova Electrification HVDC orders 2026 Q1' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GE Vernova Electrification HVDC orders 2026 Q1
+    url: https://www.theglobeandmail.com/investing/markets/markets-news/motley/1449578/ge-vernova-gev-q1-2026-earnings-transcript
+    domain: theglobeandmail.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.826329+00:00'
+    stale_at: '2026-06-27T14:46:42.826329+00:00'
+    expire_at: '2026-08-26T14:46:42.826329+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-466c17
+  filename: 2026-05-28_pdf-ge-vernova-1q-2026-financial-results-outlook.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.875816+00:00'
+  processed: false
+  notes: query='GE Vernova Electrification HVDC orders 2026 Q1' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GE Vernova Electrification HVDC orders 2026 Q1
+    url: https://www.gevernova.com/sites/default/files/gev_webcast_transcript_04222026.pdf
+    domain: gevernova.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.862277+00:00'
+    stale_at: '2026-06-27T14:46:42.862277+00:00'
+    expire_at: '2026-08-26T14:46:42.862277+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-140508
+  filename: 2026-05-28_pdf-特变电工股份有限公司投资者关系活动记录表.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.930044+00:00'
+  processed: false
+  notes: query='特变电工 2025 年报 输变电业务 ultra high voltage transformer' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 特变电工 2025 年报 输变电业务 ultra high voltage transformer
+    url: https://pdf.dfcfw.com/pdf/H22_AN202507151709349053_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.916051+00:00'
+    stale_at: '2026-06-27T14:46:42.916051+00:00'
+    expire_at: '2026-08-26T14:46:42.916051+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dcc539
+  filename: 2026-05-28_pdf-特变电工股份有限公司2025-年面向专业投资者公开发行科技创新中小.md
+  source_type: web-search
+  added: '2026-05-28T14:46:42.968221+00:00'
+  processed: false
+  notes: query='特变电工 2025 年报 输变电业务 ultra high voltage transformer' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 特变电工 2025 年报 输变电业务 ultra high voltage transformer
+    url: https://static.sse.com.cn/disclosure/bond/announcement/company/c/new/2025-07-23/243431_20250723_EGK9.pdf
+    domain: static.sse.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.952800+00:00'
+    stale_at: '2026-06-27T14:46:42.952800+00:00'
+    expire_at: '2026-08-26T14:46:42.952800+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9eb442
+  filename: 2026-05-28_2025年中国变压器出口创新高-2026年将延续--电力---低碳网.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.011868+00:00'
+  processed: false
+  notes: query='特变电工 2025 年报 输变电业务 ultra high voltage transformer' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 特变电工 2025 年报 输变电业务 ultra high voltage transformer
+    url: https://www.ditan.com/industry/elec/10434.html
+    domain: ditan.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:42.991943+00:00'
+    stale_at: '2026-06-27T14:46:42.991943+00:00'
+    expire_at: '2026-08-26T14:46:42.991943+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-71e8aa
+  filename: 2026-05-28_特变电工2025年半年报-四大产业协同增效-在逆境中实现高质量发展-特变电工官网.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.057828+00:00'
+  processed: false
+  notes: query='特变电工 2025 年报 输变电业务 ultra high voltage transformer' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 特变电工 2025 年报 输变电业务 ultra high voltage transformer
+    url: https://www.tbea.com/enterprise_detail/53.html
+    domain: tbea.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.039690+00:00'
+    stale_at: '2026-06-27T14:46:43.039690+00:00'
+    expire_at: '2026-08-26T14:46:43.039690+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-736e97
+  filename: 2026-05-28_公司公告-国电南瑞-2025年半年度报告新浪财经.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.119100+00:00'
+  processed: false
+  notes: query='国电南瑞 2025 年报 直流输电 换流阀 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 国电南瑞 2025 年报 直流输电 换流阀 营收
+    url: http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=600406&id=11386119
+    domain: money.finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.103011+00:00'
+    stale_at: '2026-06-27T14:46:43.103011+00:00'
+    expire_at: '2026-08-26T14:46:43.103011+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c59b19
+  filename: 2026-05-28_pdf-国电南瑞-600406.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.159499+00:00'
+  processed: false
+  notes: query='国电南瑞 2025 年报 直流输电 换流阀 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 国电南瑞 2025 年报 直流输电 换流阀 营收
+    url: https://pdf.dfcfw.com/pdf/H3_AP202408131639249322_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.143572+00:00'
+    stale_at: '2026-06-27T14:46:43.143572+00:00'
+    expire_at: '2026-08-26T14:46:43.143572+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5fa06e
+  filename: 2026-05-28_pdf-国电南瑞科技股份有限公司2025-年年度报告摘要.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.200683+00:00'
+  processed: false
+  notes: query='国电南瑞 2025 年报 直流输电 换流阀 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 国电南瑞 2025 年报 直流输电 换流阀 营收
+    url: http://news.10jqka.com.cn/field/sn/20260430/57846235.shtml
+    domain: news.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.184959+00:00'
+    stale_at: '2026-06-27T14:46:43.184959+00:00'
+    expire_at: '2026-08-26T14:46:43.184959+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-92324f
+  filename: 2026-05-28_国电南瑞-2025年环境-社会及公司治理-esg-报告新浪财经.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.243957+00:00'
+  processed: false
+  notes: query='国电南瑞 2025 年报 直流输电 换流阀 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 国电南瑞 2025 年报 直流输电 换流阀 营收
+    url: http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=600406&id=12278703
+    domain: money.finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.227820+00:00'
+    stale_at: '2026-06-27T14:46:43.227820+00:00'
+    expire_at: '2026-08-26T14:46:43.227820+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5d2eb1
+  filename: 2026-05-28_订单大爆发-这一产业迎来转机-国内厂家纷纷出海.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.309111+00:00'
+  processed: false
+  notes: query='中天科技 东方电缆 2025 海缆订单 海上风电' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中天科技 东方电缆 2025 海缆订单 海上风电
+    url: https://stcn.com/article/detail/1631723.html
+    domain: stcn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.292312+00:00'
+    stale_at: '2026-06-27T14:46:43.292312+00:00'
+    expire_at: '2026-08-26T14:46:43.292312+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-403a06
+  filename: 2026-05-28_morocco-uk-power-project-morocco.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.374856+00:00'
+  processed: false
+  notes: query='Xlinks Morocco UK HVDC submarine cable financing 2026 update' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Xlinks Morocco UK HVDC submarine cable financing 2026 update
+    url: https://www.power-technology.com/projects/morocco-uk-power-project-morocco
+    domain: power-technology.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.357571+00:00'
+    stale_at: '2026-06-27T14:46:43.357571+00:00'
+    expire_at: '2026-08-26T14:46:43.357571+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-efcd6a
+  filename: 2026-05-28_xlinks-morocco-uk-power-project---wikipedia.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.424406+00:00'
+  processed: false
+  notes: query='Xlinks Morocco UK HVDC submarine cable financing 2026 update' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Xlinks Morocco UK HVDC submarine cable financing 2026 update
+    url: https://en.wikipedia.org/wiki/Xlinks_Morocco%E2%80%93UK_Power_Project
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.404938+00:00'
+    stale_at: '2026-06-27T14:46:43.404938+00:00'
+    expire_at: '2026-08-26T14:46:43.404938+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9cab45
+  filename: 2026-05-28_morocco-uk-power-project-a-4-000-km-hvdc-subsea-ca.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.502773+00:00'
+  processed: false
+  notes: query='Xlinks Morocco UK HVDC submarine cable financing 2026 update'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Xlinks Morocco UK HVDC submarine cable financing 2026 update
+    url: https://www.linkedin.com/posts/xlinks_xlinks-activity-7313832746634600448-qndP
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-05-28T14:46:43.479852+00:00'
+    stale_at: '2026-06-27T14:46:43.479852+00:00'
+    expire_at: '2026-08-26T14:46:43.479852+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-893913
+  filename: 2026-05-28_uk-government-abandons-moroccan-hvdc-megaproject-p.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.565205+00:00'
+  processed: false
+  notes: query='Xlinks Morocco UK HVDC submarine cable financing 2026 update' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Xlinks Morocco UK HVDC submarine cable financing 2026 update
+    url: https://knowledge.energyinst.org/new-energy-world/article?id=139697
+    domain: knowledge.energyinst.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.539751+00:00'
+    stale_at: '2026-06-27T14:46:43.539751+00:00'
+    expire_at: '2026-08-26T14:46:43.539751+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-275218
+  filename: 2026-05-28_morocco-uk-power-project---xlinks.md
+  source_type: web-search
+  added: '2026-05-28T14:46:43.630060+00:00'
+  processed: false
+  notes: query='Xlinks Morocco UK HVDC submarine cable financing 2026 update' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Xlinks Morocco UK HVDC submarine cable financing 2026 update
+    url: https://xlinks.co/morocco-uk-power-project
+    domain: xlinks.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:46:43.604002+00:00'
+    stale_at: '2026-06-27T14:46:43.604002+00:00'
+    expire_at: '2026-08-26T14:46:43.604002+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f6b7ef
+  filename: 2026-05-28_高压直流输电-hvdc-解决方案---siemens-energy.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.151135+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 高压直流' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 高压直流
+    url: https://www.siemens-energy.com/cn/zh/home/products-services/product-offerings/high-voltage-direct-current-transmission-solutions.html
+    domain: siemens-energy.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.131520+00:00'
+    stale_at: '2026-06-27T14:48:39.131520+00:00'
+    expire_at: '2026-08-26T14:48:39.131520+00:00'
+    triggered_by: 00-prescan
+- id: mat-9d7266
+  filename: 2026-05-28_高压直流电缆市场规模及份额-2025-2034年增长预测.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.200585+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 高压直流' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 技术突破
+    url: https://www.gminsights.com/zh/industry-analysis/hvdc-cables-market
+    domain: gminsights.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.674327+00:00'
+    stale_at: '2026-06-27T14:48:39.674327+00:00'
+    expire_at: '2026-08-26T14:48:39.674327+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - 跨州跨国 HVDC 输电 行业政策
+    - 跨州跨国 HVDC 输电 高压直流
+- id: mat-1c7ed5
+  filename: 2026-05-28_2021年海外大型输电项目回顾---国复咨询---国际工程与海外投资专家.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.251970+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 高压直流' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 高压直流
+    url: https://www.goalfore.cn/a/3384.html
+    domain: goalfore.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.231691+00:00'
+    stale_at: '2026-06-27T14:48:39.231691+00:00'
+    expire_at: '2026-08-26T14:48:39.231691+00:00'
+    triggered_by: 00-prescan
+- id: mat-2ce9e2
+  filename: 2026-05-28_pdf-高壓直流輸電技術.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.304325+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 高压直流' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 高压直流
+    url: https://ea01.moeaea.gov.tw/a0101/01/api/v1/files/p/article/expert-knowledge/2014122113232.pdf
+    domain: ea01.moeaea.gov.tw
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.283866+00:00'
+    stale_at: '2026-06-27T14:48:39.283866+00:00'
+    expire_at: '2026-08-26T14:48:39.283866+00:00'
+    triggered_by: 00-prescan
+- id: mat-1b198d
+  filename: 2026-05-28_电网互联-海风送出需求共振-高压直流输电建设加速--国复咨询.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.381394+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 行业政策' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 技术突破
+    url: https://project.goalfore.cn/a/5626.html
+    domain: project.goalfore.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.619702+00:00'
+    stale_at: '2026-06-27T14:48:39.619702+00:00'
+    expire_at: '2026-08-26T14:48:39.619702+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - 跨州跨国 HVDC 输电 行业政策
+- id: mat-d8eda7
+  filename: 2026-05-28_pdf-可再生能源跨州跨省传输的挑战与经济有效的经验---publications.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.486964+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 行业政策' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 行业政策
+    url: https://docs.nrel.gov/docs/fy17osti/69067.pdf
+    domain: docs.nrel.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.466653+00:00'
+    stale_at: '2026-06-27T14:48:39.466653+00:00'
+    expire_at: '2026-08-26T14:48:39.466653+00:00'
+    triggered_by: 00-prescan
+- id: mat-155167
+  filename: 2026-05-28_hvdc-技術如何解決跨州電力損耗-並成為電網升級的關鍵.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.566194+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 技术突破' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 技术突破
+    url: https://cdn.technews.tw/ai-agent/usa-most-big-wind-farm/3892
+    domain: cdn.technews.tw
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.546000+00:00'
+    stale_at: '2026-06-27T14:48:39.546000+00:00'
+    expire_at: '2026-08-26T14:48:39.546000+00:00'
+    triggered_by: 00-prescan
+- id: mat-43bbbd
+  filename: 2026-05-28_中金-海外电力设备跟踪-电网互联-海风送出需求共振-高压直流输电建设加速-电网-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.730081+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 技术突破'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 跨州跨国 HVDC 输电 龙头新闻
+    url: https://finance.sina.com.cn/stock/stockzmt/2025-05-26/doc-inexwnvh9936661.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-05-28T14:48:40.066043+00:00'
+    stale_at: '2026-06-27T14:48:40.066043+00:00'
+    expire_at: '2026-08-26T14:48:40.066043+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - 跨州跨国 HVDC 输电 技术突破
+- id: mat-35f33e
+  filename: 2026-05-28_升级扩展电网-重塑能源未来.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.810501+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 产能变化' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 产能变化
+    url: https://www.siemens-energy.com/cn/zh/home/energy-transition/strategies/grid-modernization-expansion.html
+    domain: siemens-energy.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.789315+00:00'
+    stale_at: '2026-06-27T14:48:39.789315+00:00'
+    expire_at: '2026-08-26T14:48:39.789315+00:00'
+    triggered_by: 00-prescan
+- id: mat-f6d033
+  filename: 2026-05-28_中欧电力市场和电力系统.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.867008+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 产能变化'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 跨州跨国 HVDC 输电 产能变化
+    url: https://energy.ec.europa.eu/document/download/00bec7d7-d41c-47f6-8d36-92244e2b2513_en?filename=electricity_markets_report_cn.pdf
+    domain: energy.ec.europa.eu
+    domain_tier: whitelist
+    searched_at: '2026-05-28T14:48:39.845390+00:00'
+    stale_at: '2026-06-27T14:48:39.845390+00:00'
+    expire_at: '2026-08-26T14:48:39.845390+00:00'
+    triggered_by: 00-prescan
+- id: mat-db1a8c
+  filename: 2026-05-28_pdf-助力京津冀可再生能源的领军之旅.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.923556+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 产能变化' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 产能变化
+    url: http://www.paulsoninstitute.org/wp-content/uploads/2016/07/Championing-Renewable-Energy-CN.pdf
+    domain: paulsoninstitute.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.901915+00:00'
+    stale_at: '2026-06-27T14:48:39.901915+00:00'
+    expire_at: '2026-08-26T14:48:39.901915+00:00'
+    triggered_by: 00-prescan
+- id: mat-f5ffae
+  filename: 2026-05-28_pdf-能源转型将取决于电缆.md
+  source_type: web-search
+  added: '2026-05-28T14:48:39.980668+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 产能变化' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 产能变化
+    url: https://pdf.dfcfw.com/pdf/H3_AP202502261643517604_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:39.958890+00:00'
+    stale_at: '2026-06-27T14:48:39.958890+00:00'
+    expire_at: '2026-08-26T14:48:39.958890+00:00'
+    triggered_by: 00-prescan
+- id: mat-6d7108
+  filename: 2026-05-28_超76亿-欧洲电缆龙头nkt再获重大合同.md
+  source_type: web-search
+  added: '2026-05-28T14:48:40.124785+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 龙头新闻' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 龙头新闻
+    url: https://webadmin.chinacable.com/news/details/8866
+    domain: webadmin.chinacable.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:40.102180+00:00'
+    stale_at: '2026-06-27T14:48:40.102180+00:00'
+    expire_at: '2026-08-26T14:48:40.102180+00:00'
+    triggered_by: 00-prescan
+- id: mat-681513
+  filename: 2026-05-28_公報紀錄doc.md
+  source_type: web-search
+  added: '2026-05-28T14:48:40.184097+00:00'
+  processed: false
+  notes: query='跨州跨国 HVDC 输电 龙头新闻' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 跨州跨国 HVDC 输电 龙头新闻
+    url: https://ppg.ly.gov.tw/ppg/download/communique1/work/113/84/LCIDC01_1138401_00009.doc
+    domain: ppg.ly.gov.tw
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T14:48:40.161688+00:00'
+    stale_at: '2026-06-27T14:48:40.161688+00:00'
+    expire_at: '2026-08-26T14:48:40.161688+00:00'
+    triggered_by: 00-prescan

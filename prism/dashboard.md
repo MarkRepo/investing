@@ -1,25 +1,26 @@
 # 投资仪表盘
 
-> 生成：2026-05-26　　公司：15 个　　行业：6 个　　竞技场：14 个
+> 生成：2026-05-28　　公司：16 个　　行业：7 个　　竞技场：17 个
 
 ## 公司层：决策清单
 
 | 公司 | 当前价 | 当前区间 | 距 Buy 区间 | 仓位上限 | Kill | 近期路标 | 数据新鲜度 |
 |------|--------|---------|-----------|---------|------|---------|----------|
-| [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)](/prism/cn-rongchang-bio-688331/claude-opus-4-7) (SSE_688331) | 114.00 | 🔴 高于观望区 | +75% | 2% / 5% | ✅ | 3 个 | 🟢 0d |
-| [Robinhood Markets (HOOD)](/prism/us-robinhood/claude-opus-4-7) (NASDAQ_HOOD) | 73.64 | 🟡 观望 | +34% | 3% / 8% | ✅ | 1 个 | 🟢 0d |
+| [拼多多 (PDD Holdings, NASDAQ PDD)](/prism/global-pdd-holdings/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
+| [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)](/prism/cn-rongchang-bio-688331/claude-opus-4-7) (SSE_688331) | 112.69 | 🔴 高于观望区 | +73% | 2% / 5% | ✅ | 3 个 | 🟢 1d |
+| [Robinhood Markets (HOOD)](/prism/us-robinhood/claude-opus-4-7) (NASDAQ_HOOD) | 73.64 | 🟡 观望 | +34% | 3% / 8% | ✅ | 1 个 | 🟢 2d |
 | [Circle Internet Group (USDC)](/prism/us-circle/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [富途控股 FUTU](/prism/global-futu/claude-opus-4-7) (US_FUTU) | 103.22 | 🟡 观望 | +29% | 2% / 8% | ✅ | 3 个 | 🟢 0d |
-| [Constellation Energy](/prism/global-constellation-energy/claude-opus-4-7) (NASDAQ_CEG) | 294.07 | 🔵 可建仓 | +13% | 5% / 8% | ✅ | 1 个 | 🟢 1d |
+| [富途控股 FUTU](/prism/global-futu/claude-opus-4-7) (US_FUTU) | 110.22 | 🔴 高于观望区 | +38% | 2% / 8% | ✅ | 3 个 | 🟢 2d |
+| [Constellation Energy](/prism/global-constellation-energy/claude-opus-4-7) (NASDAQ_CEG) | 294.07 | 🔵 可建仓 | +13% | 5% / 8% | ✅ | 1 个 | 🟢 2d |
 | [当升科技](/prism/cn-dangsheng-tech-300073/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [赣锋锂业](/prism/cn-ganfeng-lithium-002460/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [联赢激光](/prism/cn-lianying-laser-688518/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [利元亨](/prism/cn-yuanli-heng-688499/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [先导智能](/prism/cn-leadex-300450/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [GE Vernova](/prism/global-ge-vernova/deepseek-v4-pro) (NYSE_GEV) | 1038.74 | 🔴 高于观望区 | +162% | 7.5% / 17.5% | ✅ | 3 个 | 🟢 8d |
+| [GE Vernova](/prism/global-ge-vernova/deepseek-v4-pro) (NYSE_GEV) | 1038.74 | 🔴 高于观望区 | +162% | 7.5% / 17.5% | ✅ | 3 个 | 🟢 10d |
 | [上海瀚讯](/prism/cn-shanghai-hanxun/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [国博电子](/prism/cn-guobo-electronics/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [铖昌科技](/prism/cn-chengchang-tech/deepseek-v4-pro) (SZSE_001270) | 143.55 | 🟡 观望 | +44% | 1.5% / 4.0% | ✅ | 2 个 | 🟢 9d |
+| [铖昌科技](/prism/cn-chengchang-tech/deepseek-v4-pro) (SZSE_001270) | 154.03 | 🟡 观望 | +54% | 1.5% / 4.0% | ✅ | 2 个 | 🟢 10d |
 | [兴业银锡](/prism/cn-xingye-yinxi/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 
 ## 公司详情
@@ -34,7 +35,7 @@
 | 🔵 可建仓 | 65 – 85 |
 | 🟡 观望 | 85 – 110 |
 | 🔴 高于观望 | > 110 |
-| **当前** | **114.00**（2026-05-26）→ 🔴 高于观望区 |
+| **当前** | **112.69**（2026-05-27）→ 🔴 高于观望区 |
 
 **估值矩阵**
 
@@ -88,7 +89,7 @@
 | 🔵 可建仓 | 65 – 80 |
 | 🟡 观望 | 80 – 110 |
 | 🔴 高于观望 | > 110 |
-| **当前** | **103.22**（2026-05-26）→ 🟡 观望 |
+| **当前** | **110.22**（2026-05-27）→ 🔴 高于观望区 |
 
 **估值矩阵**
 
@@ -170,7 +171,7 @@
 | 🔵 可建仓 | 100 – 130 |
 | 🟡 观望 | 130 – 180 |
 | 🔴 高于观望 | > 180 |
-| **当前** | **143.55**（2026-05-26）→ 🟡 观望 |
+| **当前** | **154.03**（2026-05-27）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -235,7 +236,13 @@
 
 ## 行业层：竞技场选择
 
-### 中国商业航天 [🟢 0d]
+### 中国创新药行业 [⚪ ?d]
+
+*暂无 09 sidecar，请运行 workflow 09。*
+
+---
+
+### 中国商业航天 [🟢 1d]
 
 **深度研究竞技场（Deep）**
 
@@ -256,7 +263,7 @@
 
 ---
 
-### 全球量子计算与量子模拟产业 [🟢 3d]
+### 全球量子计算与量子模拟产业 [🟢 5d]
 
 **深度研究竞技场（Deep）**
 
@@ -279,7 +286,7 @@
 
 ---
 
-### AI辅助药物研发与基因编辑 [🟢 4d]
+### AI辅助药物研发与基因编辑 [🟢 5d]
 
 **深度研究竞技场（Deep）**
 
@@ -301,7 +308,7 @@
 
 ---
 
-### 全球固态电池行业 [🟢 7d]
+### 全球固态电池行业 [🟢 8d]
 
 **深度研究竞技场（Deep）**
 
@@ -322,7 +329,7 @@
 
 ---
 
-### 人形机器人行业 [🟢 8d]
+### 人形机器人行业 [🟢 10d]
 
 **深度研究竞技场（Deep）**
 
@@ -343,7 +350,7 @@
 
 ---
 
-### AI算力基础设施行业 [🟢 8d]
+### AI算力基础设施行业 [🟢 10d]
 
 **深度研究竞技场（Deep）**
 
@@ -368,7 +375,25 @@
 
 ## 竞技场层：公司排名
 
-### GLP-1 减肥药 [🟢 0d]
+### 跨州跨国 HVDC 输电（Prysmian/国电南瑞/特变电工） [⚪ ?d]
+
+*暂无 10 sidecar，请运行 workflow 10。*
+
+---
+
+### 数据中心机房内配电与液冷（Eaton/Vertiv/Schneider） [⚪ ?d]
+
+*暂无 10 sidecar，请运行 workflow 10。*
+
+---
+
+### 全球铀供给端（铀矿/转化/浓缩） [⚪ ?d]
+
+*暂无 10 sidecar，请运行 workflow 10。*
+
+---
+
+### GLP-1 减肥药 [🟢 2d]
 
 *暂无 10 sidecar，请运行 workflow 10。*
 
@@ -386,7 +411,7 @@
 
 ---
 
-### In vivo CRISPR/base editing 罕见病 (HAE/AATD/HSD) [🟢 3d]
+### In vivo CRISPR/base editing 罕见病 (HAE/AATD/HSD) [🟢 5d]
 
 **入围（Shortlist）**
 
@@ -411,7 +436,7 @@
 
 ---
 
-### 全球固态电解质+锂金属上游 [🟢 4d]
+### 全球固态电解质+锂金属上游 [🟢 6d]
 
 **入围（Shortlist）**
 
@@ -439,7 +464,7 @@
 
 ---
 
-### 全球固态电池设备链 [🟢 6d]
+### 全球固态电池设备链 [🟢 7d]
 
 **入围（Shortlist）**
 
@@ -461,7 +486,7 @@
 
 ---
 
-### 行星滚柱丝杠/线性执行器 [🟢 8d]
+### 行星滚柱丝杠/线性执行器 [🟢 10d]
 
 **入围（Shortlist）**
 
@@ -488,7 +513,7 @@
 
 ---
 
-### AI 数据中心能源基础设施 [🟢 8d]
+### AI 数据中心能源基础设施 [🟢 10d]
 
 **入围（Shortlist）**
 
@@ -508,7 +533,7 @@
 
 ---
 
-### 先进封装 CoWoS/SoIC [🟢 8d]
+### 先进封装 CoWoS/SoIC [🟢 10d]
 
 **入围（Shortlist）**
 
@@ -533,7 +558,7 @@
 
 ---
 
-### 卫星通信载荷 [🟢 8d]
+### 卫星通信载荷 [🟢 10d]
 
 **入围（Shortlist）**
 

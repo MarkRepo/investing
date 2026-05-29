@@ -3,7 +3,7 @@ display_name: GLP-1 减肥药
 type: arena
 created: '2026-05-26T03:25:32.952761+00:00'
 status: active
-stage: 05-critic-review
+stage: 04-post-synthesis
 parent_topic: null
 monitoring_tier: dormant
 concepts: []
@@ -18,53 +18,88 @@ scope:
   - 国内 GLP-1 药企
 outputs_state:
   01_business_panorama:
-    version: 0
-    last_updated: '2026-05-26T08:37:17.716187+00:00'
-    status: pending
+    version: 1
+    last_updated: '2026-05-27T00:25:32.736044+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-03879b
     - mat-03c0d4
+    - mat-067f8f
+    - mat-0e083e
     - mat-0ed0b9
     - mat-11a269
     - mat-16065f
+    - mat-162ea5
+    - mat-1dea22
     - mat-1f8d3f
     - mat-1f9505
     - mat-20420a
     - mat-20e63b
     - mat-214fbe
+    - mat-225b91
     - mat-25971d
     - mat-2a2c37
     - mat-2bbc64
+    - mat-2fcb39
     - mat-31e7e6
     - mat-358505
     - mat-36eaeb
+    - mat-388e04
+    - mat-399271
     - mat-3a4b6e
     - mat-3c1ced
+    - mat-3d2453
+    - mat-48e184
     - mat-524100
+    - mat-5269f8
     - mat-557b1c
     - mat-55c05b
     - mat-5804fb
     - mat-5b9ef4
     - mat-5d9b4d
+    - mat-5f22f3
     - mat-606af8
     - mat-60e1ab
     - mat-653869
     - mat-6672e4
     - mat-69b291
+    - mat-6adabb
+    - mat-6b1dd0
     - mat-6c585f
     - mat-6ddfd9
     - mat-6f79cc
+    - mat-74effb
+    - mat-779160
+    - mat-779775
     - mat-7a6003
     - mat-7edea3
+    - mat-80cd52
+    - mat-83784b
     - mat-841512
+    - mat-8526dd
     - mat-8a80f2
+    - mat-90643f
     - mat-92bc1e
+    - mat-9ee20f
     - mat-a070ec
+    - mat-a08de6
+    - mat-a1e6f1
+    - mat-a24d01
     - mat-a29026
+    - mat-a3e73f
     - mat-a9d8a8
     - mat-ab8919
+    - mat-b5a44c
+    - mat-b66de5
     - mat-c11032
+    - mat-c2065b
     - mat-c6ac67
+    - mat-c6e787
+    - mat-c7681b
+    - mat-c7cc56
+    - mat-c8fb53
+    - mat-ca7684
     - mat-cb3706
     - mat-cc70d1
     - mat-ce4112
@@ -78,78 +113,98 @@ outputs_state:
     - mat-e2e914
     - mat-e84be3
     - mat-e8d389
+    - mat-ebb54e
+    - mat-ed336f
     - mat-ef091e
     - mat-f0c90b
     - mat-f38030
+    - mat-f7f638
+    - mat-f97a24
     - mat-fba5b9
     last_error: null
   02_cycle_positioning:
-    version: 0
-    last_updated: '2026-05-26T08:37:17.729230+00:00'
-    status: pending
+    version: 1
+    last_updated: '2026-05-27T00:25:32.754478+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids:
-    - mat-11a269
-    - mat-1f9505
-    - mat-20e63b
-    - mat-2bbc64
-    - mat-3a4b6e
-    - mat-3c1ced
-    - mat-5b9ef4
-    - mat-606af8
-    - mat-653869
-    - mat-6c585f
-    - mat-6ddfd9
-    - mat-92bc1e
-    last_error: null
-  03_narrative_ecology:
-    version: 0
-    last_updated: '2026-05-26T08:37:17.737516+00:00'
-    status: pending
-    data_freshness: null
-    referenced_mat_ids:
+    - mat-03879b
     - mat-03c0d4
+    - mat-067f8f
+    - mat-0e083e
     - mat-0ed0b9
     - mat-11a269
     - mat-16065f
+    - mat-162ea5
+    - mat-1dea22
     - mat-1f8d3f
     - mat-1f9505
     - mat-20420a
     - mat-20e63b
     - mat-214fbe
+    - mat-225b91
     - mat-25971d
     - mat-2a2c37
     - mat-2bbc64
+    - mat-2fcb39
     - mat-31e7e6
     - mat-358505
     - mat-36eaeb
+    - mat-388e04
+    - mat-399271
     - mat-3a4b6e
     - mat-3c1ced
+    - mat-3d2453
+    - mat-48e184
     - mat-524100
+    - mat-5269f8
     - mat-557b1c
     - mat-55c05b
     - mat-5804fb
     - mat-5b9ef4
     - mat-5d9b4d
+    - mat-5f22f3
     - mat-606af8
     - mat-60e1ab
     - mat-653869
     - mat-6672e4
     - mat-69b291
+    - mat-6adabb
+    - mat-6b1dd0
     - mat-6c585f
     - mat-6ddfd9
     - mat-6f79cc
+    - mat-74effb
+    - mat-779160
+    - mat-779775
     - mat-7a6003
     - mat-7edea3
+    - mat-80cd52
+    - mat-83784b
     - mat-841512
+    - mat-8526dd
     - mat-8a80f2
+    - mat-90643f
     - mat-92bc1e
+    - mat-9ee20f
     - mat-a070ec
+    - mat-a08de6
+    - mat-a1e6f1
+    - mat-a24d01
     - mat-a29026
+    - mat-a3e73f
     - mat-a9d8a8
     - mat-ab8919
+    - mat-b5a44c
+    - mat-b66de5
     - mat-c11032
+    - mat-c2065b
     - mat-c6ac67
+    - mat-c6e787
+    - mat-c7681b
+    - mat-c7cc56
+    - mat-c8fb53
+    - mat-ca7684
     - mat-cb3706
     - mat-cc70d1
     - mat-ce4112
@@ -163,59 +218,203 @@ outputs_state:
     - mat-e2e914
     - mat-e84be3
     - mat-e8d389
+    - mat-ebb54e
+    - mat-ed336f
     - mat-ef091e
     - mat-f0c90b
     - mat-f38030
+    - mat-f7f638
+    - mat-f97a24
+    - mat-fba5b9
+    last_error: null
+  03_narrative_ecology:
+    version: 1
+    last_updated: '2026-05-27T00:25:32.772513+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-03879b
+    - mat-03c0d4
+    - mat-067f8f
+    - mat-0e083e
+    - mat-0ed0b9
+    - mat-11a269
+    - mat-16065f
+    - mat-162ea5
+    - mat-1dea22
+    - mat-1f8d3f
+    - mat-1f9505
+    - mat-20420a
+    - mat-20e63b
+    - mat-214fbe
+    - mat-225b91
+    - mat-25971d
+    - mat-2a2c37
+    - mat-2bbc64
+    - mat-2fcb39
+    - mat-31e7e6
+    - mat-358505
+    - mat-36eaeb
+    - mat-388e04
+    - mat-399271
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-3d2453
+    - mat-48e184
+    - mat-524100
+    - mat-5269f8
+    - mat-557b1c
+    - mat-55c05b
+    - mat-5804fb
+    - mat-5b9ef4
+    - mat-5d9b4d
+    - mat-5f22f3
+    - mat-606af8
+    - mat-60e1ab
+    - mat-653869
+    - mat-6672e4
+    - mat-69b291
+    - mat-6adabb
+    - mat-6b1dd0
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-6f79cc
+    - mat-74effb
+    - mat-779160
+    - mat-779775
+    - mat-7a6003
+    - mat-7edea3
+    - mat-80cd52
+    - mat-83784b
+    - mat-841512
+    - mat-8526dd
+    - mat-8a80f2
+    - mat-90643f
+    - mat-92bc1e
+    - mat-9ee20f
+    - mat-a070ec
+    - mat-a08de6
+    - mat-a1e6f1
+    - mat-a24d01
+    - mat-a29026
+    - mat-a3e73f
+    - mat-a9d8a8
+    - mat-ab8919
+    - mat-b5a44c
+    - mat-b66de5
+    - mat-c11032
+    - mat-c2065b
+    - mat-c6ac67
+    - mat-c6e787
+    - mat-c7681b
+    - mat-c7cc56
+    - mat-c8fb53
+    - mat-ca7684
+    - mat-cb3706
+    - mat-cc70d1
+    - mat-ce4112
+    - mat-d16d2f
+    - mat-d45d79
+    - mat-d48cc8
+    - mat-dc8a8e
+    - mat-de8d68
+    - mat-dfd8f0
+    - mat-e2622d
+    - mat-e2e914
+    - mat-e84be3
+    - mat-e8d389
+    - mat-ebb54e
+    - mat-ed336f
+    - mat-ef091e
+    - mat-f0c90b
+    - mat-f38030
+    - mat-f7f638
+    - mat-f97a24
     - mat-fba5b9
     last_error: null
   04_implied_expectations:
-    version: 0
-    last_updated: '2026-05-26T08:37:17.747503+00:00'
-    status: pending
+    version: 1
+    last_updated: '2026-05-27T00:25:32.790720+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-03879b
     - mat-03c0d4
+    - mat-067f8f
+    - mat-0e083e
     - mat-0ed0b9
     - mat-11a269
     - mat-16065f
+    - mat-162ea5
+    - mat-1dea22
     - mat-1f8d3f
     - mat-1f9505
     - mat-20420a
     - mat-20e63b
     - mat-214fbe
+    - mat-225b91
     - mat-25971d
     - mat-2a2c37
     - mat-2bbc64
+    - mat-2fcb39
     - mat-31e7e6
     - mat-358505
     - mat-36eaeb
+    - mat-388e04
+    - mat-399271
     - mat-3a4b6e
     - mat-3c1ced
+    - mat-3d2453
+    - mat-48e184
     - mat-524100
+    - mat-5269f8
     - mat-557b1c
     - mat-55c05b
     - mat-5804fb
     - mat-5b9ef4
     - mat-5d9b4d
+    - mat-5f22f3
     - mat-606af8
     - mat-60e1ab
     - mat-653869
     - mat-6672e4
     - mat-69b291
+    - mat-6adabb
+    - mat-6b1dd0
     - mat-6c585f
     - mat-6ddfd9
     - mat-6f79cc
+    - mat-74effb
+    - mat-779160
+    - mat-779775
     - mat-7a6003
     - mat-7edea3
+    - mat-80cd52
+    - mat-83784b
     - mat-841512
+    - mat-8526dd
     - mat-8a80f2
+    - mat-90643f
     - mat-92bc1e
+    - mat-9ee20f
     - mat-a070ec
+    - mat-a08de6
+    - mat-a1e6f1
+    - mat-a24d01
     - mat-a29026
+    - mat-a3e73f
     - mat-a9d8a8
     - mat-ab8919
+    - mat-b5a44c
+    - mat-b66de5
     - mat-c11032
+    - mat-c2065b
     - mat-c6ac67
+    - mat-c6e787
+    - mat-c7681b
+    - mat-c7cc56
+    - mat-c8fb53
+    - mat-ca7684
     - mat-cb3706
     - mat-cc70d1
     - mat-ce4112
@@ -229,73 +428,98 @@ outputs_state:
     - mat-e2e914
     - mat-e84be3
     - mat-e8d389
+    - mat-ebb54e
+    - mat-ed336f
     - mat-ef091e
     - mat-f0c90b
     - mat-f38030
+    - mat-f7f638
+    - mat-f97a24
     - mat-fba5b9
     last_error: null
   05_historical_mirrors:
-    version: 0
-    last_updated: '2026-05-26T08:37:17.760110+00:00'
-    status: pending
+    version: 1
+    last_updated: '2026-05-27T00:25:32.808885+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids:
-    - mat-2bbc64
-    - mat-3a4b6e
-    - mat-653869
-    - mat-6ddfd9
-    - mat-92bc1e
-    - mat-a070ec
-    - mat-e84be3
-    last_error: null
-  06_risk_blindspots:
-    version: 0
-    last_updated: '2026-05-26T08:37:17.773999+00:00'
-    status: pending
-    data_freshness: null
-    referenced_mat_ids:
+    - mat-03879b
     - mat-03c0d4
+    - mat-067f8f
+    - mat-0e083e
     - mat-0ed0b9
     - mat-11a269
     - mat-16065f
+    - mat-162ea5
+    - mat-1dea22
     - mat-1f8d3f
     - mat-1f9505
     - mat-20420a
     - mat-20e63b
     - mat-214fbe
+    - mat-225b91
     - mat-25971d
     - mat-2a2c37
     - mat-2bbc64
+    - mat-2fcb39
     - mat-31e7e6
     - mat-358505
     - mat-36eaeb
+    - mat-388e04
+    - mat-399271
     - mat-3a4b6e
     - mat-3c1ced
+    - mat-3d2453
+    - mat-48e184
     - mat-524100
+    - mat-5269f8
     - mat-557b1c
     - mat-55c05b
     - mat-5804fb
     - mat-5b9ef4
     - mat-5d9b4d
+    - mat-5f22f3
     - mat-606af8
     - mat-60e1ab
     - mat-653869
     - mat-6672e4
     - mat-69b291
+    - mat-6adabb
+    - mat-6b1dd0
     - mat-6c585f
     - mat-6ddfd9
     - mat-6f79cc
+    - mat-74effb
+    - mat-779160
+    - mat-779775
     - mat-7a6003
     - mat-7edea3
+    - mat-80cd52
+    - mat-83784b
     - mat-841512
+    - mat-8526dd
     - mat-8a80f2
+    - mat-90643f
     - mat-92bc1e
+    - mat-9ee20f
     - mat-a070ec
+    - mat-a08de6
+    - mat-a1e6f1
+    - mat-a24d01
     - mat-a29026
+    - mat-a3e73f
     - mat-a9d8a8
     - mat-ab8919
+    - mat-b5a44c
+    - mat-b66de5
     - mat-c11032
+    - mat-c2065b
     - mat-c6ac67
+    - mat-c6e787
+    - mat-c7681b
+    - mat-c7cc56
+    - mat-c8fb53
+    - mat-ca7684
     - mat-cb3706
     - mat-cc70d1
     - mat-ce4112
@@ -309,59 +533,203 @@ outputs_state:
     - mat-e2e914
     - mat-e84be3
     - mat-e8d389
+    - mat-ebb54e
+    - mat-ed336f
     - mat-ef091e
     - mat-f0c90b
     - mat-f38030
+    - mat-f7f638
+    - mat-f97a24
+    - mat-fba5b9
+    last_error: null
+  06_risk_blindspots:
+    version: 2
+    last_updated: '2026-05-27T00:25:32.845221+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-03879b
+    - mat-03c0d4
+    - mat-067f8f
+    - mat-0e083e
+    - mat-0ed0b9
+    - mat-11a269
+    - mat-16065f
+    - mat-162ea5
+    - mat-1dea22
+    - mat-1f8d3f
+    - mat-1f9505
+    - mat-20420a
+    - mat-20e63b
+    - mat-214fbe
+    - mat-225b91
+    - mat-25971d
+    - mat-2a2c37
+    - mat-2bbc64
+    - mat-2fcb39
+    - mat-31e7e6
+    - mat-358505
+    - mat-36eaeb
+    - mat-388e04
+    - mat-399271
+    - mat-3a4b6e
+    - mat-3c1ced
+    - mat-3d2453
+    - mat-48e184
+    - mat-524100
+    - mat-5269f8
+    - mat-557b1c
+    - mat-55c05b
+    - mat-5804fb
+    - mat-5b9ef4
+    - mat-5d9b4d
+    - mat-5f22f3
+    - mat-606af8
+    - mat-60e1ab
+    - mat-653869
+    - mat-6672e4
+    - mat-69b291
+    - mat-6adabb
+    - mat-6b1dd0
+    - mat-6c585f
+    - mat-6ddfd9
+    - mat-6f79cc
+    - mat-74effb
+    - mat-779160
+    - mat-779775
+    - mat-7a6003
+    - mat-7edea3
+    - mat-80cd52
+    - mat-83784b
+    - mat-841512
+    - mat-8526dd
+    - mat-8a80f2
+    - mat-90643f
+    - mat-92bc1e
+    - mat-9ee20f
+    - mat-a070ec
+    - mat-a08de6
+    - mat-a1e6f1
+    - mat-a24d01
+    - mat-a29026
+    - mat-a3e73f
+    - mat-a9d8a8
+    - mat-ab8919
+    - mat-b5a44c
+    - mat-b66de5
+    - mat-c11032
+    - mat-c2065b
+    - mat-c6ac67
+    - mat-c6e787
+    - mat-c7681b
+    - mat-c7cc56
+    - mat-c8fb53
+    - mat-ca7684
+    - mat-cb3706
+    - mat-cc70d1
+    - mat-ce4112
+    - mat-d16d2f
+    - mat-d45d79
+    - mat-d48cc8
+    - mat-dc8a8e
+    - mat-de8d68
+    - mat-dfd8f0
+    - mat-e2622d
+    - mat-e2e914
+    - mat-e84be3
+    - mat-e8d389
+    - mat-ebb54e
+    - mat-ed336f
+    - mat-ef091e
+    - mat-f0c90b
+    - mat-f38030
+    - mat-f7f638
+    - mat-f97a24
     - mat-fba5b9
     last_error: null
   07_decision_kit:
-    version: 0
-    last_updated: '2026-05-26T08:37:17.789581+00:00'
-    status: pending
+    version: 2
+    last_updated: '2026-05-27T00:25:32.863669+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-03879b
     - mat-03c0d4
+    - mat-067f8f
+    - mat-0e083e
     - mat-0ed0b9
     - mat-11a269
     - mat-16065f
+    - mat-162ea5
+    - mat-1dea22
     - mat-1f8d3f
     - mat-1f9505
     - mat-20420a
     - mat-20e63b
     - mat-214fbe
+    - mat-225b91
     - mat-25971d
     - mat-2a2c37
     - mat-2bbc64
+    - mat-2fcb39
     - mat-31e7e6
     - mat-358505
     - mat-36eaeb
+    - mat-388e04
+    - mat-399271
     - mat-3a4b6e
     - mat-3c1ced
+    - mat-3d2453
+    - mat-48e184
     - mat-524100
+    - mat-5269f8
     - mat-557b1c
     - mat-55c05b
     - mat-5804fb
     - mat-5b9ef4
     - mat-5d9b4d
+    - mat-5f22f3
     - mat-606af8
     - mat-60e1ab
     - mat-653869
     - mat-6672e4
     - mat-69b291
+    - mat-6adabb
+    - mat-6b1dd0
     - mat-6c585f
     - mat-6ddfd9
     - mat-6f79cc
+    - mat-74effb
+    - mat-779160
+    - mat-779775
     - mat-7a6003
     - mat-7edea3
+    - mat-80cd52
+    - mat-83784b
     - mat-841512
+    - mat-8526dd
     - mat-8a80f2
+    - mat-90643f
     - mat-92bc1e
+    - mat-9ee20f
     - mat-a070ec
+    - mat-a08de6
+    - mat-a1e6f1
+    - mat-a24d01
     - mat-a29026
+    - mat-a3e73f
     - mat-a9d8a8
     - mat-ab8919
+    - mat-b5a44c
+    - mat-b66de5
     - mat-c11032
+    - mat-c2065b
     - mat-c6ac67
+    - mat-c6e787
+    - mat-c7681b
+    - mat-c7cc56
+    - mat-c8fb53
+    - mat-ca7684
     - mat-cb3706
     - mat-cc70d1
     - mat-ce4112
@@ -375,59 +743,98 @@ outputs_state:
     - mat-e2e914
     - mat-e84be3
     - mat-e8d389
+    - mat-ebb54e
+    - mat-ed336f
     - mat-ef091e
     - mat-f0c90b
     - mat-f38030
+    - mat-f7f638
+    - mat-f97a24
     - mat-fba5b9
     last_error: null
   08_living_feed:
-    version: 0
-    last_updated: '2026-05-26T08:37:17.801686+00:00'
-    status: pending
+    version: 1
+    last_updated: '2026-05-27T00:19:26.137182+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-03879b
     - mat-03c0d4
+    - mat-067f8f
+    - mat-0e083e
     - mat-0ed0b9
     - mat-11a269
     - mat-16065f
+    - mat-162ea5
+    - mat-1dea22
     - mat-1f8d3f
     - mat-1f9505
     - mat-20420a
     - mat-20e63b
     - mat-214fbe
+    - mat-225b91
     - mat-25971d
     - mat-2a2c37
     - mat-2bbc64
+    - mat-2fcb39
     - mat-31e7e6
     - mat-358505
     - mat-36eaeb
+    - mat-388e04
+    - mat-399271
     - mat-3a4b6e
     - mat-3c1ced
+    - mat-3d2453
+    - mat-48e184
     - mat-524100
+    - mat-5269f8
     - mat-557b1c
     - mat-55c05b
     - mat-5804fb
     - mat-5b9ef4
     - mat-5d9b4d
+    - mat-5f22f3
     - mat-606af8
     - mat-60e1ab
     - mat-653869
     - mat-6672e4
     - mat-69b291
+    - mat-6adabb
+    - mat-6b1dd0
     - mat-6c585f
     - mat-6ddfd9
     - mat-6f79cc
+    - mat-74effb
+    - mat-779160
+    - mat-779775
     - mat-7a6003
     - mat-7edea3
+    - mat-80cd52
+    - mat-83784b
     - mat-841512
+    - mat-8526dd
     - mat-8a80f2
+    - mat-90643f
     - mat-92bc1e
+    - mat-9ee20f
     - mat-a070ec
+    - mat-a08de6
+    - mat-a1e6f1
+    - mat-a24d01
     - mat-a29026
+    - mat-a3e73f
     - mat-a9d8a8
     - mat-ab8919
+    - mat-b5a44c
+    - mat-b66de5
     - mat-c11032
+    - mat-c2065b
     - mat-c6ac67
+    - mat-c6e787
+    - mat-c7681b
+    - mat-c7cc56
+    - mat-c8fb53
+    - mat-ca7684
     - mat-cb3706
     - mat-cc70d1
     - mat-ce4112
@@ -441,59 +848,98 @@ outputs_state:
     - mat-e2e914
     - mat-e84be3
     - mat-e8d389
+    - mat-ebb54e
+    - mat-ed336f
     - mat-ef091e
     - mat-f0c90b
     - mat-f38030
+    - mat-f7f638
+    - mat-f97a24
     - mat-fba5b9
     last_error: null
   10_peer_matrix:
-    version: 0
-    last_updated: '2026-05-26T08:37:17.823538+00:00'
-    status: pending
+    version: 1
+    last_updated: '2026-05-27T00:25:32.827016+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-03879b
     - mat-03c0d4
+    - mat-067f8f
+    - mat-0e083e
     - mat-0ed0b9
     - mat-11a269
     - mat-16065f
+    - mat-162ea5
+    - mat-1dea22
     - mat-1f8d3f
     - mat-1f9505
     - mat-20420a
     - mat-20e63b
     - mat-214fbe
+    - mat-225b91
     - mat-25971d
     - mat-2a2c37
     - mat-2bbc64
+    - mat-2fcb39
     - mat-31e7e6
     - mat-358505
     - mat-36eaeb
+    - mat-388e04
+    - mat-399271
     - mat-3a4b6e
     - mat-3c1ced
+    - mat-3d2453
+    - mat-48e184
     - mat-524100
+    - mat-5269f8
     - mat-557b1c
     - mat-55c05b
     - mat-5804fb
     - mat-5b9ef4
     - mat-5d9b4d
+    - mat-5f22f3
     - mat-606af8
     - mat-60e1ab
     - mat-653869
     - mat-6672e4
     - mat-69b291
+    - mat-6adabb
+    - mat-6b1dd0
     - mat-6c585f
     - mat-6ddfd9
     - mat-6f79cc
+    - mat-74effb
+    - mat-779160
+    - mat-779775
     - mat-7a6003
     - mat-7edea3
+    - mat-80cd52
+    - mat-83784b
     - mat-841512
+    - mat-8526dd
     - mat-8a80f2
+    - mat-90643f
     - mat-92bc1e
+    - mat-9ee20f
     - mat-a070ec
+    - mat-a08de6
+    - mat-a1e6f1
+    - mat-a24d01
     - mat-a29026
+    - mat-a3e73f
     - mat-a9d8a8
     - mat-ab8919
+    - mat-b5a44c
+    - mat-b66de5
     - mat-c11032
+    - mat-c2065b
     - mat-c6ac67
+    - mat-c6e787
+    - mat-c7681b
+    - mat-c7cc56
+    - mat-c8fb53
+    - mat-ca7684
     - mat-cb3706
     - mat-cc70d1
     - mat-ce4112
@@ -507,22 +953,25 @@ outputs_state:
     - mat-e2e914
     - mat-e84be3
     - mat-e8d389
+    - mat-ebb54e
+    - mat-ed336f
     - mat-ef091e
     - mat-f0c90b
     - mat-f38030
+    - mat-f7f638
+    - mat-f97a24
     - mat-fba5b9
     last_error: null
 parent_materials: []
 next_actions:
-- workflow 04 完成：9 份产出（01-08 + 10_peer_matrix）+ thesis_v2.md + _synthesis_brief.md
-  全部落盘
-- thesis_v2 重大修订：信达从主题性 → Tier 1 重仓 / NVO 7.2mg 追平 tirz / LLY 量价剪刀差正向实证 / oral GLP-1
-  四家同台
-- 推荐路径：「评审 global-glp1-obesity」→ workflow 05-critic-review 对 thesis_v2 反方论据系统检验
-- 监控路径：「监控 global-glp1-obesity」→ workflow 06-daily-monitor 跟踪 6 大事件流（reta TRIUMPH-3
-  / VK2735 VANQUISH / CT-388 ENITH / BALANCE Bridge / sema 仿制 / Viking 收购）
-- 深挖路径：「深挖 global-glp1-obesity 的 K1」/ 「深挖 K4」→ workflow 07-drilldown
+- critic-review v1 落盘（05-critic-review.md），verdict=request-rewrite，06+07 已重写
+- thesis_v2 主体保留，强度按时段拆分：2026 H2-2027 H1 8.0/10、2027 Q4-2028 H1 6.0/10、2028 H2+ 4.5/10
+- 推荐路径：「监控 global-glp1-obesity」→ workflow 06-daily-monitor 跟踪 7 大事件流（含新增 oral 第三梯队顶线
+  + Trump 政府 BALANCE 表态）
+- 深挖路径：「深挖 global-glp1-obesity 的 K# 」→ workflow 07-drilldown，建议优先 K1（reta TRIUMPH-3
+  顶线临近）+ K4（信达 mazdutide H1 验证）
 - 决策记录路径：「记录决策 global-glp1-obesity」→ workflow 99-decision-record
+- 可选：再跑「评审 global-glp1-obesity」对 v2 06+07 复评以确认反方加重充分
 user_todos:
 - task: NVO 2025 全年报 + 2026 Q1 6-K（含 Wegovy/Ozempic 季度销售拆分 + 美国 net price + DTC NovoCare
     实际渗透 + capex）
@@ -634,7 +1083,15 @@ user_todos:
 monitoring:
   enabled: false
   cadence: daily
-critic: null
+critic:
+  verdict: request-rewrite
+  summary: thesis_v2 主体保留，06_risk_blindspots + 07_decision_kit 因反方 6 条加重需重写：信达从 Tier
+    1（20-25%）→ Tier 1.5（10-15%）；thesis 强度按时段拆分（2026 H2-2027 H1 8.0/10、2027 Q4-2028
+    H1 6.0/10、2028 H2+ 4.5/10）；NVO-HIMS 合作 2026-05-22 已破裂从 catalyst 删除；VKTX 收购溢价 ≥3x
+    概率 30-40% → 15-22%。
+  at: '2026-05-27T00:08:23.768222+00:00'
+  thesis_version: 2
+  next_stage: 04-synthesizing
 thesis:
   current_version: 2
   last_updated: '2026-05-26T08:37:17.843627+00:00'

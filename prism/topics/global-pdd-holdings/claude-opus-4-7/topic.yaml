@@ -1,0 +1,194 @@
+slug: global-pdd-holdings
+display_name: 拼多多 (PDD Holdings, NASDAQ PDD)
+type: company
+created: '2026-05-28T03:08:08.403296+00:00'
+status: active
+stage: 01-roadmap-pending
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: PDD 当前估值是否合理：国内基本盘防守 + Temu 全球扩张 + 利润率三条线综合判断
+  depth: deep
+  ticker: US_PDD
+  market: US
+  short_name: 拼多多
+  search_terms:
+  - PDD 估值
+  - Temu 单位经济
+  - 国内电商竞争
+  - 利润率拐点
+outputs_state:
+  00_quality_screen:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  01_business_panorama:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  02_cycle_positioning:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  03_narrative_ecology:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  04_implied_expectations:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  05_historical_mirrors:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  06_risk_blindspots:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  07_decision_kit:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap：制定 K1-K6 详细攻打路线图（每个 K# 拆分 sub-Q + 资料映射）
+- 收集 P0 资料（PDD 2024 20-F + 2025 季报 6-K + Yahoo Finance / Bloomberg 当前估值快照）后运行 workflow
+  02-gather-materials
+- ⚠️ prescan partial (hit_rate 60%) — workflow 01 Step 8 必须重跑 WebSearch 校准估值现状（forward
+  PE/市值/2025 季度营收），WebSearch 恢复后立即跑
+user_todos:
+- task: 下载 PDD 2025 全年报 (20-F) + 2025Q1/Q2/Q3 季报 (6-K)，重点看 Temu/交易服务分项营收 + take rate
+    / contribution margin disclosure
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: SEC EDGAR (https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001737806)
+    或 PDD IR 网站 investor.pddholdings.com
+  status: pending
+- task: 搜集 Bernstein / Goldman / Morgan Stanley 任一家 Temu 单位经济模型卖方深度（2025-2026 报告），关注半托管对
+    take rate / fulfillment cost 影响
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 同花顺研报库 / Wind / Bloomberg Intelligence
+  status: pending
+- task: 查 Similarweb / Sensor Tower Temu 2025-2026 月度流量数据（DAU/MAU/访问时长/转化率）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: Similarweb / Sensor Tower / data.ai
+  status: pending
+- task: 查 QuestMobile / 极光 / Aurora Mobile 2025-2026 国内电商 MAU 月报，对比 PDD vs 淘宝 vs 抖音
+    vs 京东 用户规模变化
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: QuestMobile 公众号 / 极光官网
+  status: pending
+- task: 搜集中信建投 / 中金 / 申万 / 兴证 任 3 家国内电商行业 2025-2026 深度报告，对比 PDD 国内份额变化
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 同花顺研报库 / Wind
+  status: pending
+- task: 查 PDD 2025-2026 IR 公告（季度 earnings release + investor day），重点找 capital allocation
+    / buyback / dividend 表态
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: investor.pddholdings.com 公告 + 季报电话会 transcript
+  status: pending
+- task: 当前 PDD NASDAQ 报价快照（股价 / 市值 / forward PE / TTM PE / 52 周区间 / EV/EBITDA），与 BABA
+    / JD / AMZN 当前同期对比
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: Yahoo Finance / Bloomberg / 雪球（如能访问）
+  status: pending
+- task: 搜 European Commission 官网 Temu / Shein DSA 调查最新进展（press release + decision
+    documents）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: https://ec.europa.eu/commission/presscorner/ 搜 Temu
+  status: pending
+- task: 搜 USTR 2025-2026 对华关税最新决定 + 中国海关总署对美反制措施 + 任一权威媒体（Reuters/Bloomberg/FT）2026Q1-Q2
+    中美关税博弈深度
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: ustr.gov / Reuters / Bloomberg
+  status: pending
+- task: 查 PDD 2026-03 Xinpinmu (新拼姆) 公告原文 + 后续业务进展（如有产品发布 / 合作 / GMV 数据）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: investor.pddholdings.com / 拼多多 公众号 / 36 氪 / 晚点
+  status: pending
+- task: 查多多买菜 2025 经营状态（是否已盈利 / 是否收缩业务 / 是否合并到主站）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 36 氪 / LatePost 晚点 / 卖方电话会
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+thesis:
+  current_version: 0
+  last_updated: '2026-05-28T03:22:15.930442+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-28T03:22:15.930575+00:00'
+    summary: Temu 关税最坏出清 + 国内利润率 alpha 维持 vs Temu UE 黑盒 + 无股东回报折价的对立结构，估值 catalyst
+      押在 2026H2 Temu 半托管 UE transparency 或回购落地；中性偏多 5/10
+    prescan_status: partial
+    prescan_failure_reason: prescan 入库率 60%（12/20），低于满分但高于失败阈值 50%

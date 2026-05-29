@@ -1,0 +1,161 @@
+slug: global-datacenter-power-equip
+display_name: 数据中心机房内配电与液冷（Eaton/Vertiv/Schneider）
+type: arena
+created: '2026-05-28T02:58:23.365188+00:00'
+status: active
+stage: 01-roadmap-ready
+parent_topic: global-ai-compute-infrastructure
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 数据中心机房内配电、UPS、液冷的竞争格局与弹性
+  depth: deep
+  search_terms:
+  - 数据中心配电
+  - UPS 不间断电源
+  - 液冷服务器
+  - 机柜功率密度
+outputs_state:
+  01_business_panorama:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  02_cycle_positioning:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  03_narrative_ecology:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  04_implied_expectations:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  05_historical_mirrors:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  06_risk_blindspots:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  07_decision_kit:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  10_peer_matrix:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- thesis v1 前的必补资料：三巨头 DC 收入占比拆解、卖方目标价汇总、Boyd Thermal 客户构成
+- 运行 02-gather-materials 补抓卖方研报 + HVDC 分析报告
+- 运行 04-synthesize 生成 01-08 产出
+
+thesis:
+  current_version: 0
+  last_updated: '2026-05-28T04:00:00+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-ready
+    set_at: '2026-05-28T04:00:00+00:00'
+    summary: 做多 Vertiv (VRT) + Eaton (ETN) 双轨，配 Schneider (SU) 防御腿。AI DC 机房内配电+液冷是 AI infra 中确定性最高的物理瓶颈——机柜功率密度 10kW→132kW→1MW 的结构性升级不可逆。Vertiv 液冷市占率第一+$15B backlog 锁定增长；Eaton 配电基本盘+Boyd 液冷期权。强度 8/10。
+    prescan_status: partial
+user_todos:
+- task: Vertiv/Eaton/Schneider 数据中心收入占比精确拆解（各业务线 DC exposure%，backlog 中 DC 占比）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  - K3
+  source_hint: 公司年报/10-K segment disclosure / 卖方模型
+  status: pending
+- task: 1-2份 GS/MS/UBS 对 Vertiv/Eaton/Schneider 最新评级+目标价（2026 Q1-Q2）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K3
+  source_hint: 券商研报库 / AlphaSense / Bloomberg
+  status: pending
+- task: Boyd Thermal 详细财务+客户构成（NVIDIA依赖度/利润率/2025-2026实际增速）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: Eaton 8-K (acquisition filing) / Boyd 官网 / DCDynamics
+  status: pending
+- task: HVDC vs UPS 替代时间线权威第三方预测（Frost & Sullivan / Omdia / McKinsey）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 行业报告 / Frost & Sullivan / Omdia
+  status: pending
+- task: 中国本土玩家定量对比（科华数据/科士达/英维克/曙光数创 2025年营收+利润率+技术路线）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 各公司年报 / 券商报告 / 雪球
+  status: pending
+- task: 液冷技术路线市场份额拆解（冷板 vs 浸没 vs 两相）+ 2025-2030增速预测
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: Dell'Oro Group / Omdia / Grand View Research
+  status: pending
+- task: Vertiv 2025年 Q4 252% 订单增速的客户/区域拆解（是否有单一大客户前置loading）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K5
+  source_hint: Vertiv earnings call transcript / 卖方追问笔记
+  status: pending
+- task: Hyperscaler (MSFT/AMZN/GOOGL/META) 2027-2028 capex 前瞻指引汇总
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 各公司 earnings call / 卖方 capex tracker
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily

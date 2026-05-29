@@ -1,0 +1,58 @@
+slug: global-datacenter-power-equip
+version: 0
+updated: '2026-05-28'
+prescan_status: partial
+
+key_questions:
+  K1:
+    question: 机房功率密度从10kW→132kW→1MW的升级趋势是否不可逆？液冷渗透率提升速度？
+    thesis_bullet: 功率密度结构性升级不可逆，每翻一倍每MW基础设施支出增30-60%
+    confidence: high
+    unmet_need: 液冷渗透率时间序列数据、不同功率密度段的市场规模拆解
+  K2:
+    question: Vertiv作为唯一电源+冷却双覆盖标的，$15B backlog能否持续转化为营收和利润？
+    thesis_bullet: Vertiv是赛道最纯标的，252%订单增速+2.9x book-to-bill锁定2026-2027增长
+    confidence: high
+    unmet_need: 卖方模型(营收build-up)、客户集中度、backlog取消风险量化
+  K3:
+    question: Eaton通过Boyd Thermal进入液冷后，能否实现"配电+液冷"的交叉销售和利润率提升？
+    thesis_bullet: Eaton配电基本盘+Boyd液冷期权,$14.5B backlog+42%有机订单增速
+    confidence: medium-high
+    unmet_need: Boyd详细财务(客户构成/NVIDIA依赖度/利润率)、整合进展跟踪
+  K4:
+    question: HVDC(800V DC)架构对传统UPS业务的替代速度和程度？
+    thesis_bullet: HVDC是演进非革命,2026-2027仍是过渡期,UPS市场仍在增长
+    confidence: medium
+    unmet_need: HVDC vs UPS替代时间线权威预测、各技术路线TCO对比
+  K5:
+    question: Hyperscaler capex周期是否会在2027-2028年见顶？backlog取消风险多大？
+    thesis_bullet: $15B+ backlog提供12-18月缓冲,但2027后capex拐点是最被低估的风险
+    confidence: medium
+    unmet_need: Hyperscaler capex forecast(各家2027-2028指引)、backlog取消历史先例
+  K6:
+    question: 三大全球龙头vs中国本土玩家的技术差距和替代风险？
+    thesis_bullet: 中国玩家在国内AI算力boom有弹性,但技术差距大,不在全球配置core thesis
+    confidence: medium
+    unmet_need: 科华/科士达/英维克定量对比(营收/利润率/技术路线/海外拓展)
+
+competitive_arena:
+  tier_1:
+    - Vertiv (VRT): DC电源+冷却纯正标的, 液冷市占率第一, $15B backlog
+    - Eaton (ETN): 配电霸主, Boyd补齐液冷, 多元防御
+  tier_2:
+    - Schneider Electric (SU): 软件护城河, 端到端, 欧股估值
+  tier_3:
+    - nVent (NVT): ~30% DC exposure, NVIDIA合作伙伴
+    - Delta Electronics: 电源专家, 成本竞争力
+
+risk_flags:
+  - hyperscaler_capex_cycle: 2027后如果AI投资回报不达预期, DC capex可能拐点
+  - hvdc_disruption: 800V DC架构若2028+成主流, 传统UPS需求加速下降
+  - valuation_premium: Vertiv 53x PE假设高增长持续, 任何miss双杀
+  - boyd_integration: $9.5B收购整合执行风险
+  - geopolitics_tariff: 关税对全球电气设备供应链冲击
+
+next_steps:
+  - "运行 02-gather-materials 补抓 prescan 未校准资料(卖方研报/财务拆解/HVDC分析)"
+  - "补齐 user_todos: 三巨头 DC 收入占比拆解、卖方目标价、Boyd 财务细节"
+  - "运行 04-synthesize 生成 01-08 系列产出"

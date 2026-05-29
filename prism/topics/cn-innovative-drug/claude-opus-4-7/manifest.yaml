@@ -1,0 +1,67 @@
+slug: cn-innovative-drug
+variant: claude-opus-4-7
+updated: '2026-05-28T03:20:03.460747+00:00'
+materials:
+- id: mat-4b1d5b
+  filename: 2026-05-28_beone-medicines-wikipedia.md
+  source_type: web-search
+  added: '2026-05-28T03:16:59.054825+00:00'
+  processed: false
+  notes: query='BeiGene → BeOne Medicines 改名 2024-2025 财务数据'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - fact-11
+  - fact-37
+  - fact-38
+  confidence: 0.85
+  search_meta:
+    query: BeiGene → BeOne Medicines 改名 2024-2025 财务数据
+    url: https://en.wikipedia.org/wiki/BeOne_Medicines
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-28T03:16:59.053458+00:00'
+    stale_at: '2026-06-27T03:16:59.053458+00:00'
+    expire_at: '2026-08-26T03:16:59.053458+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-016a24
+  filename: 2026-05-28_恒瑞医药-投资者关系页面.md
+  source_type: web-search
+  added: '2026-05-28T03:16:59.060795+00:00'
+  processed: false
+  notes: query='恒瑞医药 投资者关系 2025 年报 2026Q1 报告' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - fact-10
+  confidence: 0.6
+  search_meta:
+    query: 恒瑞医药 投资者关系 2025 年报 2026Q1 报告
+    url: https://www.hengrui.com/investor
+    domain: hengrui.com
+    domain_tier: whitelist
+    searched_at: '2026-05-28T03:16:59.059869+00:00'
+    stale_at: '2026-06-27T03:16:59.059869+00:00'
+    expire_at: '2026-08-26T03:16:59.059869+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e2e8db
+  filename: 2026-05-28_国家医疗保障局官网首页-访问于-2026-05-28.md
+  source_type: web-search
+  added: '2026-05-28T03:16:59.067015+00:00'
+  processed: false
+  notes: query='国家医保局 2025 国谈 政策 最新公告 2026-05' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - fact-02
+  - fact-05
+  confidence: 0.5
+  search_meta:
+    query: 国家医保局 2025 国谈 政策 最新公告 2026-05
+    url: https://www.nhsa.gov.cn/
+    domain: nhsa.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-05-28T03:16:59.065898+00:00'
+    stale_at: '2026-06-27T03:16:59.065898+00:00'
+    expire_at: '2026-08-26T03:16:59.065898+00:00'
+    triggered_by: 00-prescan-baseline

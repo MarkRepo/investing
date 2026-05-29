@@ -110,3 +110,22 @@ training_knowledge_pct: 30
 
 - 训练知识（约 30%）：事件流监控框架
 - 全部 6 大事件流相关 mat_id（详见 _findings_index.md）
+
+---
+
+## 2026-05-27 批评者评审完成
+
+**来源**：Workflow 05-critic-review，钢人反方视角对 thesis_v2 复评
+
+**关键信息**：
+- 反方 6 条（量价剪刀差 / 信达 Tier 1 仓位矛盾 / 收购溢价基线高 / oral 替代低估 / NVO 反弹 / 5 年框架），整体评分 3.5/5，verdict=request-rewrite
+- **新发现实证**：mat-novo-drops-hims（NVO 2026-05-22 抛弃 HIMS）—— thesis O2/S6 中"HIMS-NVO 合作"反弹 catalyst 已废
+- **新发现政策**：Trump 政府 2026-05 cancel CMS Medicare GLP-1 pilot — BALANCE Bridge 续期机制更脆弱
+
+**对已有判断的影响**：
+- 支持了：LLY 一家独大叙事的脆弱性（thesis O1）/ 信达 Tier 1 重仓的逻辑张力（thesis § 7 P0 自承）/ oral GLP-1 替代风险（thesis O5）
+- 新增了：信达从 Tier 1 → Tier 1.5（10-15%）/ thesis 强度按时段拆分（2026 H2-2027 H1 8.0/10、2027 Q4-2028 H1 6.0/10、2028 H2+ 4.5/10）/ NVO 反弹胜率从 ≥50% → 30-40%
+- 调整了：HIMS 从 NVO 反弹 catalyst 列表中删除 / VKTX 收购溢价 ≥3x 概率从 30-40% → 15-22%
+
+**当前判断更新**：
+thesis_v2 主体（长 LLY + 长 NVO + 长 Innovent + VKTX 期权式 + 边际持恒瑞）保留；06_risk_blindspots + 07_decision_kit 标 critic-stale 重写以纳入反方加重。
