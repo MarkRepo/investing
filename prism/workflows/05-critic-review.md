@@ -67,11 +67,19 @@ gap report 是 critic 的**起手量化输入**——别只凭主观感觉判论
 
 ## Step 1：读取核心产出
 
+**按 topic 合成路径取文件**——company 走 `_company_case.md` 决策链路径（产 `c_investment_case`）；industry/arena 及旧 company 走 8 份分箱路径（产 04/06/07）：
+
 ```bash
-cat prism/topics/{slug}/outputs/04_implied_expectations.md
-cat prism/topics/{slug}/outputs/06_risk_blindspots.md
-cat prism/topics/{slug}/outputs/07_decision_kit.md 2>/dev/null
+# company-case 路径（存在 c_investment_case.md 即走这条）
+cat prism/topics/{slug}/{variant}/outputs/c_investment_case.md 2>/dev/null
+cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.yaml 2>/dev/null
+# 旧 8 份路径（industry / arena / 旧 company）
+cat prism/topics/{slug}/{variant}/outputs/04_implied_expectations.md 2>/dev/null
+cat prism/topics/{slug}/{variant}/outputs/06_risk_blindspots.md 2>/dev/null
+cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.md 2>/dev/null
 ```
+
+读到哪条就评哪条（c_investment_case 的反方步直接对决策链 ①→⑥ 做 steelman）；两条都为空 = 合成未完成，停止并提示先跑 04。
 
 ---
 
@@ -261,7 +269,7 @@ t = read_topic(slug, variant)
 cur_v = (t.get('thesis') or {}).get('current_version')
 
 # request-rewrite 时主 agent 列出要重写的 output keys；其他 verdict 留空
-rewrite_keys = []  # 例：['04_implied_expectations', '06_risk_blindspots']
+rewrite_keys = []  # 旧路径例：['04_implied_expectations','06_risk_blindspots']；company-case 路径用 ['c_investment_case']
 
 # set_critic_verdict 内部已写默认 next_actions + 把 rewrite_keys 标 stale（修 S4）
 critic = set_critic_verdict(

@@ -390,13 +390,6 @@ print('收尾完成')
 
 **为什么这样写**：用户阅读 thesis_vN 时只需打开一个文件即可看到当前完整画像；老版本（thesis_v0/v1/...）作为时点 archive 保留，仅供需要还原"当时怎么想的"时翻阅，不作为日常 review 的依赖。
 
-#### thesis_v1.md 必须包含的核心内容（套用上述 11 段结构）
-
-- **核心 thesis** — 修正后的核心观点（含强度评分 v0 → v1 变化值）
-- **支持理由** — 来自 findings 的实证（每条注 mat_id）
-- **反方观点（必写）** — findings 中浮现的对立信号（每条注 mat_id）
-- **Killer Questions K1-K5 现状** — 每条标注：`已验证支持` / `已验证反驳` / `仍未确定` + 关键 mat_id
-
 写完调脚本登记：
 
 ```bash
@@ -442,6 +435,19 @@ if ns == '05-critic-review':
 自动触发时，直接读对应 workflow 文件（`prism/workflows/04-synthesize/09-industry-to-arenas.md` 或 `prism/workflows/04-synthesize/10-peer-matrix.md`），按 Step 执行。完成后将 stage 设为 `done` 并追加到 living feed。
 
 **注意**：09/10 的 Tier 排序应基于 thesis_v1（不是 v0），workflow 09/10 已在 step 1 / step 2 中要求读 brief + thesis 最新版。
+
+### 收尾通用步：生成 00_primer 领域入门（所有类型）
+
+01-08 + thesis_v1（+ 按类型的 09/10）全部完成后，**所有 topic 类型**都生成一份 `00_primer.md`（门外人深度领域入门）+ 配套 `_prism_reading_guide.md`。这是**整个 04 的最后一步**——primer 消费 01-08 + thesis_v1 作为原材料，必须最后跑。
+
+读 `prism/workflows/04-synthesize/00-primer.md`，按其 Step 1-5 执行（目标生成 → 起点诊断 + 自由发挥 → 独立 critic 校验 → 落盘注册）。要点：
+- **主 agent 直做**（12000+ 字跨产出整合，不 dispatch 写）；唯一 subagent 是 Step 3 的独立 critic（只读不写）
+- critic 校验**不可省**（作者中心化偏见——自检看不到自己默认门外人懂的术语）；已验证 2 轮内收敛
+- 来源分层标注（训练知识不标 / findings 标 mat-XXX）；稀有领域 depth=shallow 诚实降级，不注水
+
+**成本提示**：primer + critic loop 比单份产出贵（~12K-15K 字输出 + 1-2 轮 critic dispatch）。若用户明示"先不要 primer / 只要核心产出"，可跳过本步，事后用「生成入门 {slug}」单独补。
+
+完成后 stage 仍按原逻辑置 `done`（primer 不改变 stage 流转）。
 
 ## 质量检验
 

@@ -13,6 +13,8 @@ allowed-tools: Bash Read Write
 | 「研究 X」/ 「开始研究 X」 | 读 `prism/workflows/00-research-topic.md` |
 | 「prism 推进 {slug}」/ 「继续研究 {slug}」 | 读 `topic.yaml` 判断当前 stage，跳转对应 workflow |
 | 「生成产出 {output}」/ 「更新 {slug} 的 {output}」 | 读对应 `prism/workflows/04-synthesize/{N}-{name}.md` |
+| 「合成 {slug}」/「生成产出 {slug}」**且 `topic.type == company`** | 读 `prism/workflows/04-synthesize/_company_case.md`（决策链驱动新路径，替代 company 的 _shared+01-08；industry/arena 仍走旧路径） |
+| 「生成入门 {slug}」/「primer {slug}」/「补 primer」 | 读 `prism/workflows/04-synthesize/00-primer.md`；原材料按 type：company 走 primer-first（findings+thesis_v0+K#，见 `_company_case.md`），industry/arena 走 primer-last（需 01-08+thesis_v1 已就绪） |
 | 「评审 {slug}」 | 读 `prism/workflows/05-critic-review.md` |
 | 「监控 {slug}」 | 读 `prism/workflows/06-daily-monitor.md` |
 | 「深挖 {slug} 的 {问题}」 | 读 `prism/workflows/07-drilldown.md` |
@@ -24,7 +26,7 @@ allowed-tools: Bash Read Write
 所有 topic 数据在 `prism/topics/{slug}/`：
 - `topic.yaml` — 主状态文件
 - `manifest.yaml` — 资料清单
-- `outputs/` — 8 份产出 markdown
+- `outputs/` — 标准产出 markdown（00_primer 领域入门 + 01-08 核心 + industry 加 09 / arena 加 10 + 配套 _prism_reading_guide）
 
 ## Python Scripts（仅用于 CRUD，零 LLM 调用）
 

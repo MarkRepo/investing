@@ -166,6 +166,29 @@ outputs_state:
     - mat-ad0673
     - mat-c70cf2
     last_error: null
+  00_primer:
+    version: 1
+    last_updated: '2026-05-29T07:40:11.183409+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  c_investment_case:
+    version: 1
+    last_updated: '2026-05-29T12:22:10.128429+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-32e412
+    - mat-599824
+    - mat-687a1d
+    - mat-706061
+    - mat-8ed60a
+    - mat-a6e176
+    - mat-abea64
+    - mat-e9d55a
+    - mat-eb3ef4
+    last_error: null
 parent_materials: []
 next_actions:
 - workflow 05 — critic-review：让另一个 variant 反推 thesis_v1

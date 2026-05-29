@@ -10,6 +10,7 @@ import yaml
 _PRISM_ROOT = Path(__file__).resolve().parent.parent
 
 _OUTPUT_KEYS_LABELS = [
+    ("00_primer", "领域入门"),
     ("01_business_panorama", "商业全景"),
     ("02_cycle_positioning", "周期定位"),
     ("03_narrative_ecology", "叙事谱系"),

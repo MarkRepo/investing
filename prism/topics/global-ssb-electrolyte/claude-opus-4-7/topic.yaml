@@ -18,46 +18,71 @@ outputs_state:
     last_updated: '2026-05-22T07:19:01.877969+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   02_cycle_positioning:
     version: 1
     last_updated: '2026-05-22T07:19:01.882395+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   03_narrative_ecology:
     version: 1
     last_updated: '2026-05-22T07:19:01.886421+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   04_implied_expectations:
     version: 1
     last_updated: '2026-05-22T07:19:01.890429+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   05_historical_mirrors:
     version: 1
     last_updated: '2026-05-22T07:19:01.894434+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   06_risk_blindspots:
     version: 1
     last_updated: '2026-05-22T07:19:01.898446+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   07_decision_kit:
     version: 1
     last_updated: '2026-05-22T07:19:01.902470+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   08_living_feed:
     version: 1
     last_updated: '2026-05-22T07:19:01.906511+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   10_peer_matrix:
     version: 1
     last_updated: '2026-05-22T07:24:11.415472+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  00_primer:
+    version: 1
+    last_updated: '2026-05-29T07:40:11.142759+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
 next_actions:
 - 6/17 出光中計有報发布后，重读 K1 校准（watch 档 → 可能升级深研档）
 - 为 cn-ganfeng-lithium-002460 + cn-dangsheng-tech-300073 启动 workflow 01-build-roadmap
@@ -165,3 +190,4 @@ parent_materials:
   addresses:
   - K3
   note: SMM 电解质材料价格（K3 价格曲线锚点）
+critic: null
