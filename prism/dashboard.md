@@ -10,7 +10,7 @@
 | [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)](/prism/cn-rongchang-bio-688331/claude-opus-4-7) (SSE_688331) | 116.03 | 🔴 高于观望区 | +79% | 2% / 5% | ✅ | 3 个 | 🟢 2d |
 | [Robinhood Markets (HOOD)](/prism/us-robinhood/claude-opus-4-7) (NASDAQ_HOOD) | 73.64 | 🟡 观望 | +34% | 3% / 8% | ✅ | 1 个 | 🟢 3d |
 | [Circle Internet Group (USDC)](/prism/us-circle/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [富途控股 FUTU](/prism/global-futu/claude-opus-4-7) (US_FUTU) | 104.91 | 🟡 观望 | +31% | 2% / 8% | ✅ | 3 个 | 🟢 3d |
+| [富途控股 FUTU](/prism/global-futu/claude-opus-4-7) (US_FUTU) | 105.62 | 🟡 观望 | +32% | 2% / 8% | ✅ | 3 个 | 🟢 3d |
 | [Constellation Energy](/prism/global-constellation-energy/claude-opus-4-7) (NASDAQ_CEG) | 294.07 | 🔵 可建仓 | +13% | 5% / 8% | ✅ | 1 个 | 🟢 4d |
 | [当升科技](/prism/cn-dangsheng-tech-300073/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [赣锋锂业](/prism/cn-ganfeng-lithium-002460/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
@@ -20,7 +20,7 @@
 | [GE Vernova](/prism/global-ge-vernova/deepseek-v4-pro) (NYSE_GEV) | 1038.74 | 🔴 高于观望区 | +162% | 7.5% / 17.5% | ✅ | 3 个 | 🟢 11d |
 | [上海瀚讯](/prism/cn-shanghai-hanxun/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [国博电子](/prism/cn-guobo-electronics/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [铖昌科技](/prism/cn-chengchang-tech/deepseek-v4-pro) (SZSE_001270) | 145.80 | 🟡 观望 | +46% | 1.5% / 4.0% | ✅ | 2 个 | 🟢 11d |
+| [铖昌科技](/prism/cn-chengchang-tech/deepseek-v4-pro) (SZSE_001270) | 145.80 | 🟡 观望 | +46% | 1.5% / 4.0% | ✅ | 2 个 | 🟢 12d |
 | [兴业银锡](/prism/cn-xingye-yinxi/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 
 ## 公司详情
@@ -89,7 +89,7 @@
 | 🔵 可建仓 | 65 – 80 |
 | 🟡 观望 | 80 – 110 |
 | 🔴 高于观望 | > 110 |
-| **当前** | **104.91**（2026-05-28）→ 🟡 观望 |
+| **当前** | **105.62**（2026-05-29）→ 🟡 观望 |
 
 **估值矩阵**
 

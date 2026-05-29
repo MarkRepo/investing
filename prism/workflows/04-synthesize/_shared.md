@@ -1,6 +1,9 @@
-# 产出合成 — 共享前置规范
+# 产出合成 — 共享前置规范 + 通用工具
 
 每份产出工作流开始前必须完成以下检查，违反则停止并告知用户。
+
+> **本文件现为"共享工具库"**：三类 topic 的合成都改走决策链路径——company → `_company_case.md`、industry → `_industry_funnel.md`、arena → `_arena_funnel.md`。它们**引用**本文件的：前置检查 / gap 体检 / 增量重写判定 / 断点续跑 / 调度模式（主 agent 直做 + findings 加载/索引）/ thesis_v1 Scheme C / 即兴 web-search。
+> **已退休（旧 8 份并列维度路径专属）**：01-08 分批 Write 清单、subagent dispatch 01-08 模板、自动触发 09/10、收尾 primer-last——均已下线，selection（09/10）折进 funnel 的环⑥、primer 改 primer-first 由各路径 Step 2 自管。磁盘上已有的旧 01-08 产出不受影响（静态文件，重合成走新路径）。
 
 > **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
 > 仅事实校验类临时单查走 WebSearch tool。
@@ -125,7 +128,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
 ## 调度模式：主 agent 直做 + 并行 Write（**默认**）
 
-**默认走主 agent 直做模式**——主 agent 读完 findings 后直接 Write 11 份产出（01-08 + 07 sidecar yaml + thesis_v1），用 Write 工具并行批次（一次 message 发 4-5 个 Write 调用）。
+**默认走主 agent 直做模式**——主 agent 读完 findings 后直接 Write case/决策链产出（`{c/i/a}_*_case` + sidecar yaml + thesis_v1，primer 已在 Step 2 先出），用 Write 工具并行批次（一次 message 发多个 Write 调用）。
 
 ### 为什么主 agent 直做（2026-05-22 改）
 
@@ -161,169 +164,20 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
 4. **写 _synthesis_brief.md**：先 dump K1-K5 v0→v1 强度调整结论到 `outputs/_synthesis_brief.md`，作为后续 06/07/08 的 cross-mat 校准锚。
 
-5. **批次并行 Write 产出 + 按需补读 finding**：按 2-3 份一批的节奏 Write 01-08：
-   - 批 1：01_business_panorama + 02_cycle_positioning + 03_narrative_ecology + 04_implied_expectations（4 份并行）
-   - 批 2：05_historical_mirrors + 06_risk_blindspots + 07_decision_kit + 07_decision_kit.yaml + 08_living_feed（5 份并行）
-   - 批 3：thesis_v1.md + 状态注册 Bash（2 个调用并行）
+5. **走本 type 的决策链写 case**：进入对应路径文档的决策链（company `_company_case.md` §3 / industry `_industry_funnel.md` §3 / arena `_arena_funnel.md` §3），按其逐环硬落地 Write。Write 节奏仍是"主 agent 直做 + 并行 Write"（一次 message 发多个 Write）。
 
-   ⚠️ **写 07_decision_kit.yaml 时必须严格按 07-decision-kit.md Step 3.5 schema**——dashboard.py / 监控工具直接消费，禁自创字段。必填：`ticker / display_name / topic_type / buy_box / position_framework / valuation_models / kill_criteria / signposts / cluster_tags`。常见错误：自创 `thesis_strength / killer_questions / price_actions / trim_triggers / scenarios` 字段（dashboard 不读，导致该 topic 整行为空）。critic 三口径对账等额外字段可追加在必填字段之后，与标准 schema 并存。详见下方 dispatch prompt 模板第 7 步内嵌的字段清单。
-
-   **每批次开始前必做**（廉价且重要）：
-
-   - **Read `outputs/_findings_index.md`**（已落盘，~3K token）—— 即使中间发生过 compact，看一眼索引也能立即定位本批次需要哪些 mat_id
-   - 对照本批次每份 sub-workflow 的 addresses 维度（如 06-risks → `[risk, K1, K6]`，01-panorama → `[scope, K3, K5]`），从索引筛出相关 mat_id
-   - **自检**：你是否还能清晰回忆这些 mat_id 对应 finding 的内容？
-     - **能** → 直接写，跳过 Read
-     - **不能 / 模糊 / 想不起细节** → 单独 Read 那几份 finding 补回（不是全部 22 份，只补本批次需要的）
+   **每批次/每环开始前必做**（廉价且重要）：
+   - **Read `outputs/_findings_index.md`**（已落盘，~3K token）—— 即使中间发生过 compact，看一眼索引也能立即定位本环需要哪些 mat_id
+   - 从索引筛出与本环 addresses 维度相关的 mat_id
+   - **自检**：还能清晰回忆这些 mat_id 对应 finding 的内容？能 → 直接写；不能/模糊 → 单独 Read 那几份补回（不是全部，只补本环需要的）
 
    **不要做的**：
-   - ❌ 不要每份 sub-workflow Step 1 都 Read 全部 findings（22 × 8 = 176 次重读 ≈ 30 万 token 浪费）
+   - ❌ 不要每环都 Read 全部 findings（重复重读浪费 token）
    - ❌ 不要假定 findings 一定还在 context（compact 可能切掉，索引让你能验证）
-   - ❌ 不要写完 01 后立即 Read 全部 findings 准备写 02——批次内并行 Write 多份，批次之间只看索引判断
-6. **状态注册**：用单个 Bash 脚本一次性注册 9 个 outputs status + thesis v1。
-7. **收尾**：set_stage('04-post-synthesis') + 清空 user_todos + 更新 next_actions（指向 critic-review / daily-monitor / 中报回看）。
 
-### 何时仍可考虑 subagent dispatch（**例外**）
-
-仅当**全部满足**以下条件才考虑 dispatch：
-- 主 agent 上下文已接近压缩边界（找回 findings 读取成本高）
-- 产出份数 ≤4（单次 dispatch 总 token <30K，wallclock <40min 留 buffer）
-- 任务可被切成多轮（例：先 dispatch 01-04，再 dispatch 05-08）
-
-此时仍用"subagent 返内容、主 agent 落盘"架构：
-- **subagent 只产内容、主 agent Write 落盘**——subagent 不调用 Write/Edit
-- `subagent_type`: `general-purpose`
-- `model`: **不传**，跟随主 agent
-- `isolation`: **不传**
-
-下面 dispatch prompt 模板**仅在例外路径**使用——默认走主 agent 直做。
-
-subagent 返回格式（最关键）：final message 必须包含 8 个连续的 markdown 代码块，每块前用一行 `=== {output_key} ===` 标记，例如：
-
-```
-=== 01_business_panorama ===
-```markdown
----
-slug: ...
-output_key: 01_business_panorama
-...
----
-（正文）
-```
-
-=== 02_cycle_positioning ===
-```markdown
-...
-```
-（依此类推到 08）
-
-=== thesis_v1 ===
-```markdown
-（thesis_v1 内容）
-```
-```
-
-主 agent 收到后用正则切分，依次 Write 到 `prism/topics/{slug}/{variant}/outputs/{output_key}.md`，然后写 thesis_v1.md。
-
-### Dispatch 前准备 — 调 helper 列出所有 findings
-
-主 agent 在 dispatch 之前先跑：
-
-```bash
-python3 -c "
-from prism.scripts.findings import format_findings_for_prompt
-print(format_findings_for_prompt('{slug}', '{variant}'))
-"
-```
-
-输出会包含**自有 findings + 父级复用 findings**（来自 topic.yaml `parent_materials` 字段，由 workflow 01 写入）。把整段输出粘到 dispatch prompt 的 Step 0。
-
-### Dispatch Prompt 模板
-
-```
-你被指派为 prism topic `{slug}` 的 variant `{variant}` 顺序生成 8 份产出（01-08）+ 07 sidecar yaml。
-
-# 重要：你不要调用 Write/Edit 工具，也不要用 Bash heredoc 写文件
-所有产出 markdown 必须以 `=== {output_key} ===` 标记 + ```markdown ``` 代码块的形式整体放在 final message 中。主 agent 会接收后切分落盘。
-
-# 上下文
-- Topic question: {question}
-- Topic type: {topic_type}（industry / arena / company）
-- 输出目录: prism/topics/{slug}/{variant}/outputs/
-- 内容规范: prism/workflows/04-synthesize/{01..08}-*.md 8 份 sub-workflow 文件
-
-# Step 1: 读所有 findings（自有 + 父级复用）
-{粘贴上面 format_findings_for_prompt 的输出}
-
-## Step 1.5: 内部做 K1-K5（或对应 thesis 钩子）校准
-顺序生成 06/07/08 之前你必须先在上下文里形成 v0→v1 强度调整结论。建议把校准结论 dump 成 outputs/_synthesis_brief.md（供未来 critic-review/drilldown 复用，可选不强制）。
-
-## Step 2-9: 按下列顺序生成 8 份产出（仅在 final message 中返，不落盘）
-依次按对应 sub-workflow 规范填内容：
-
-1. 读 prism/workflows/04-synthesize/01-panorama.md → 产 01_business_panorama
-2. 读 02-cycle.md → 产 02_cycle_positioning
-3. 读 03-narrative.md → 产 03_narrative_ecology
-4. 读 04-expectations.md → 产 04_implied_expectations
-5. 读 05-mirrors.md → 产 05_historical_mirrors
-6. 读 06-risks.md → 产 06_risk_blindspots
-7. 读 07-decision-kit.md → 产 07_decision_kit（同时产 07_decision_kit_yaml 用 ```yaml 块）
-
-   ⚠️ **07_decision_kit_yaml 是 dashboard / 监控工具直接消费的 sidecar，schema 严格**——必须按 07-decision-kit.md Step 3.5 模板的字段名照填，**禁止自创字段**（如 thesis_strength / killer_questions / price_actions / trim_triggers / scenarios 等是禁用的，请使用模板里的 valuation_models / kill_criteria / signposts 等标准字段）。dashboard.py 只读模板字段；自创字段会让该 topic 在 dashboard 行整段为空。
-
-   **必填字段清单（company type）**：
-   - `slug` / `variant` / `topic_type` / `display_name` / `ticker` (`SSE_xxx` / `SZSE_xxx` / `HKEX_xxx` / `NASDAQ_xxx` / `NYSE_xxx` 等格式，非 company 留 `""`)
-   - `generated` (ISO8601) / `data_freshness` (期次)
-   - `buy_box` (含 `strong_buy_max` / `accumulate_min` / `accumulate_max` / `hold_min` / `hold_max` / `current_price` / `price_as_of` / `current_zone`)
-   - `position_framework` (`initial_max_pct` / `full_max_pct` / `add_ladder_prices` / `max_cluster_pct`)
-   - `valuation_models` (list of `{name, label, bull_fair_value, base_fair_value, bear_fair_value}`)
-   - `kill_criteria` (list of `{id, description, status, check_at}`)
-   - `signposts` (list of `{date, event, bull_signal, bear_signal, triggered}`)
-   - `cluster_tags` (list of slug-style 标签)
-
-   **若需保留 critic 三口径对账等额外字段**（如 `thesis_strength` / `sotp_npv` / `reconciliation`），追加在标准字段后即可，与必填字段并存不冲突。
-
-8. 读 08-feed.md → 产 08_living_feed
-9. 产 thesis_v1（4 段：① 核心 thesis + 强度评分 / ② 支持理由 / ③ 反方观点 / ④ K1-K5 现状；与 workflow 00 thesis_v0 段结构一致，**不再单列 V# 验证项段**）
-
-## 返回格式
-final message 第一行：DONE 或 BLOCKED 状态行。
-然后依次输出每份产出，格式如下（严格遵守）：
-
-=== 01_business_panorama ===
-```markdown
----
-slug: {slug}
-output_key: 01_business_panorama
-version: 1
-generated: {iso_date}
----
-
-（正文 800-2000 字）
-
-## 信息来源
-- mat-xxx (filename): 用于...
-```
-
-=== 02_cycle_positioning ===
-```markdown
-...
-```
-
-（依此类推到 08_living_feed）
-
-=== 07_decision_kit_yaml ===
-```yaml
-（07 sidecar yaml 内容）
-```
-
-=== thesis_v1 ===
-```markdown
-（thesis_v1 4 段内容：核心 thesis+强度评分 / 支持理由 / 反方观点 / K1-K5）
-```
-```
-
-主 agent 接到 DONE 后，依次调脚本更新 8 份产出的状态（见下方"更新状态"段），然后跑 _shared.md 收尾段判断是否自动触发 09/10。
+   > sidecar schema（`07_decision_kit.yaml` / `09_industry_to_arenas.yaml` / `10_peer_matrix.yaml`）**严格、dashboard 直接消费、禁自创字段**——字段清单见各路径文档的 sidecar 步骤（分别引 `07-decision-kit.md` Step 3.5 / `09-industry-to-arenas.md` Step 6.5 / `10-peer-matrix.md` Step 6.5）。
+6. **状态注册**：用单个 Bash 脚本一次性注册各 output status + thesis v1（键名见各路径文档 §5）。
+7. **收尾**：照各路径文档 §4 收尾——stage 推进 + 清空 user_todos + 更新 next_actions。
 
 ---
 
@@ -344,7 +198,7 @@ print('状态已更新')
 
 ## 全部产出完成后（收尾）
 
-先更新 01-08 完成状态：
+先更新各产出完成状态：
 
 ```bash
 python3 -c "
@@ -426,28 +280,16 @@ if ns == '05-critic-review':
 每份产出收尾调 `set_output_referenced_mats` 时已自动 fire-and-forget 重建 dashboard（异步 subprocess，~25s 在后台跑，主流程 <100ms）。**workflow 内不再需要显式 `python -m prism.scripts.dashboard`**。
 后台失败仅写 `prism/logs/dashboard_auto.log`——若发现 dashboard 长期未刷新，手动跑一次 `python -m prism.scripts.dashboard` 排查。
 
-**自动触发扩展产出**：根据 topic type 判断是否需要自动生成 09/10：
+**selection（09/10）已折进 funnel 环⑥**（不再自动触发独立 workflow）：
+- **industry** → arena 选拔是 `_industry_funnel.md` 环⑥（落 `09_industry_to_arenas.yaml` + 建 arena stub），`09-industry-to-arenas.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema / stub 创建）。
+- **arena** → peer shortlist 是 `_arena_funnel.md` 环⑥（落 `10_peer_matrix.yaml` + 建 company stub），`10-peer-matrix.md` 同样降级为工具规范。
+- **company** → 无 selection 环，c_investment_case 即完整决策。
 
-- **topic_type = industry** → 自动运行 workflow `09-industry-to-arenas`（选拔 arena）
-- **topic_type = arena** → 自动运行 workflow `10-peer-matrix`（公司对比矩阵）
-- **topic_type = company** → 跳过，01-08 即为完整产出
+> Tier 排序基于本 topic 的 thesis 最新版 + 决策链 ②④（funnel 文档 Step 1 已要求读 brief + thesis）。
 
-自动触发时，直接读对应 workflow 文件（`prism/workflows/04-synthesize/09-industry-to-arenas.md` 或 `prism/workflows/04-synthesize/10-peer-matrix.md`），按 Step 执行。完成后将 stage 设为 `done` 并追加到 living feed。
+### primer 由各路径 Step 2 自管（primer-first）
 
-**注意**：09/10 的 Tier 排序应基于 thesis_v1（不是 v0），workflow 09/10 已在 step 1 / step 2 中要求读 brief + thesis 最新版。
-
-### 收尾通用步：生成 00_primer 领域入门（所有类型）
-
-01-08 + thesis_v1（+ 按类型的 09/10）全部完成后，**所有 topic 类型**都生成一份 `00_primer.md`（门外人深度领域入门）+ 配套 `_prism_reading_guide.md`。这是**整个 04 的最后一步**——primer 消费 01-08 + thesis_v1 作为原材料，必须最后跑。
-
-读 `prism/workflows/04-synthesize/00-primer.md`，按其 Step 1-5 执行（目标生成 → 起点诊断 + 自由发挥 → 独立 critic 校验 → 落盘注册）。要点：
-- **主 agent 直做**（12000+ 字跨产出整合，不 dispatch 写）；唯一 subagent 是 Step 3 的独立 critic（只读不写）
-- critic 校验**不可省**（作者中心化偏见——自检看不到自己默认门外人懂的术语）；已验证 2 轮内收敛
-- 来源分层标注（训练知识不标 / findings 标 mat-XXX）；稀有领域 depth=shallow 诚实降级，不注水
-
-**成本提示**：primer + critic loop 比单份产出贵（~12K-15K 字输出 + 1-2 轮 critic dispatch）。若用户明示"先不要 primer / 只要核心产出"，可跳过本步，事后用「生成入门 {slug}」单独补。
-
-完成后 stage 仍按原逻辑置 `done`（primer 不改变 stage 流转）。
+primer 不再是 04 的"最后一步"。三类路径都在**各自的 Step 2、case 之前**调用 `00-primer.md` 生成 `00_primer.md` + `_prism_reading_guide.md`（理解先行，case 站其上）。要点（主 agent 直做、critic 不可省、来源分层、depth 降级）见 `00-primer.md` 本身。本文件不再重复 primer 收尾逻辑。
 
 ## 质量检验
 

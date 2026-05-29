@@ -1,13 +1,13 @@
 # 产出 00 — 领域入门 (Domain Primer)
 
-> **调度提示**：本文件是 04-synthesize 的内容规范。产出文件名 `00_primer`（排最前、读者最先读）。**本文件顺序无关——生成顺序与原材料由调用方决定**：
-> - **company 路径**（`_company_case.md` Step 2）：primer **先行**，消费 findings + `thesis_v0` + K# + 财务数据（理解地基，case 站其上）。
-> - **industry / arena 路径**（`_shared.md` 收尾步）：primer **最后**，消费 01-08 + thesis_v1。
+> **调度提示**：本文件是 04-synthesize 的内容规范。产出文件名 `00_primer`（排最前、读者最先读）。**primer 一律先行（全类型统一）**：在 case/决策链之前生成，作为理解地基，case 站其上。
+> - **三类路径统一 primer-first**：company 走 `_company_case.md` Step 2、industry 走 `_industry_funnel.md` Step 2、arena 走 `_arena_funnel.md` Step 2，都在 Step 2 调用本文件。
+> - **原材料统一为** findings + `thesis_v0` + K#（+ 按类型的财务数据 / 父级 primer 等亲属产出）。**不依赖 01-08 / thesis_v1**（旧 primer-last 路径已退休）。
 >
-> 可单独触发（「生成入门 {slug}」/「primer {slug}」）——按该 topic 当前路径取原材料。
+> 可单独触发（「生成入门 {slug}」/「primer {slug}」）——若该 topic 已有 01-08/thesis_v1（旧数据），可一并作参考，但不作硬前置。
 
-**定位**：给**完全外行**（懂股票/投资常识，但没碰过本 topic 所属领域）写一份深度领域入门——读完能对"研究对象本身"建立完整心智模型，足以跟从业者聊半小时不露怯，也足以拿起 01-08 不被术语墙挡住。
-**本质区别**：01_business_panorama 是"研究产出"（给已入门者的结构化分析）；00_primer 是"领域教科书第一章"（给门外人补齐背景）。两者读者不同、深度递进方向不同，不要写重。
+**定位**：给**完全外行**（懂股票/投资常识，但没碰过本 topic 所属领域）写一份深度领域入门——读完能对"研究对象本身"建立完整心智模型，足以跟从业者聊半小时不露怯，也足以拿起下游 case/决策链产出不被术语墙挡住。
+**本质区别**：case（`c_investment_case` / `i_industry_case` / `a_arena_case`）是"研究产出/决策"（给已入门者的结构化分析与下注）；00_primer 是"领域教科书第一章"（给门外人补齐背景）。两者读者不同、深度递进方向不同，不要写重。
 **产出文件**：`prism/topics/{slug}/{variant}/outputs/00_primer.md` + 配套 `_prism_reading_guide.md`
 
 ---
@@ -26,20 +26,16 @@
 
 ## Step 0：前置检查
 
-参见 `_shared.md` 前置检查。**原材料前置由路径决定**（见头部调度提示）：
-
-- **primer-last（industry / arena）**：硬前置 01-08 + thesis_v1 已存在；缺则提示「请先完成 04 主合成」并停止。
-- **primer-first（company，`_company_case.md` Step 2）**：**不要求** 01-08 / thesis_v1；改以 findings + `thesis_v0` + K# + 财务数据为原材料，下面的缺失校验忽略。
+参见 `_shared.md` 前置检查。**primer-first 统一原材料**：findings + `thesis_v0` + K#（+ 按类型的财务/亲属产出）。**不硬前置 01-08 / thesis_v1**——它们由本 topic 的合成路径在 case 阶段才产出，primer 站在它们之前。
 
 ```bash
 python3 -c "
 from prism.scripts.topic import read_topic
+from prism.scripts.manifest import material_count
 t = read_topic('{slug}', '{variant}')
 print('type:', t['type']); print('question:', t['scope']['question'])
-# 仅 primer-last 路径校验；primer-first（company）忽略此项
-need = ['01_business_panorama','06_risk_blindspots','07_decision_kit']
-miss = [k for k in need if t['outputs_state'].get(k,{}).get('status') != 'fresh']
-print('PRIMER_LAST_PREREQ_MISSING:', miss if miss else 'none', '(primer-first 路径忽略)')
+print('materials:', material_count('{slug}', '{variant}'))   # ≥3 才合成（同 _shared 前置）
+print('thesis_v0:', (t.get('thesis') or {}).get('current_version'))
 "
 ```
 
@@ -47,7 +43,7 @@ print('PRIMER_LAST_PREREQ_MISSING:', miss if miss else 'none', '(primer-first �
 
 ## Step 1：目标生成（LLM 针对本 topic 把元目标具体化）
 
-读元目标 + `topic.yaml`（`type` / `scope.question` / `thesis` summary）+ `thesis_v1.md` + `01_business_panorama.md` 的来源说明（看 LLM 训练知识在本领域厚不厚），**输出一份"本 topic 读完应能做到 N 条"清单**（N 通常 8-13，按领域复杂度）。
+读元目标 + `topic.yaml`（`type` / `scope.question` / `thesis` summary）+ `thesis_v0.md`（或当前最新 thesis）+ `_findings_index.md` / findings 本身（看 findings 覆盖度 + LLM 训练知识在本领域厚不厚），**输出一份"本 topic 读完应能做到 N 条"清单**（N 通常 8-13，按领域复杂度）。
 
 每条必须是**门外人可观察的具体能力**（"能跟人解释 X / 能区分 Y 和 Z / 听到术语 W 知道在说什么 / 能判断 V 贵不贵"），不是知识罗列。
 
@@ -98,13 +94,13 @@ primer 混合三种来源，**必须分层标注**，否则门外人会把"研�
 |------|---------|
 | **LLM 训练知识**（行业原理/技术分类/工艺/审批流程/估值方法/政策框架/行业级玩家背景） | 不标单条出处；文末来源说明统一声明"行业稳定知识" |
 | **本研究 findings**（具体数字/时间表/公司动态/价格/产能/财务/BD 条款） | 凡引用必标 `[mat-XXX]` 或 `(mat-XXX)` |
-| **本研究特色判断**（thesis take、强度、特色叙事） | 文末点到 + 指向 thesis_v1 / 07，正文不展开重述 |
+| **本研究特色判断**（thesis take、强度、特色叙事） | 文末点到 + 指向 thesis_v1 / case sidecar（07_decision_kit / 09 / 10），正文不展开重述 |
 
 文末 `## 来源说明` 给三者大致占比 + 引用的 mat 列表（表格）。
 
 ### 2.4 depth 降级（稀有领域诚实标注，不假装深）
 
-读 `01_business_panorama` 的来源说明判断 LLM 训练知识在本领域的厚度：
+从 findings 覆盖度 + 你自己撰写时的把握判断 LLM 训练知识在本领域的厚度（primer-first 下 `01_business_panorama` 尚不存在，改据 findings 与训练知识自评）：
 
 - **行业层训练知识厚**（固态电池、券商、创新药行业原理）→ 正常写，frontmatter `depth: deep`
 - **行业层也薄**（训练截止后才热的领域 / 极冷门 arena）→ frontmatter 标 `depth: shallow` + 正文显式声明"本领域 LLM 训练知识有限，背景部分可靠性低，建议补充阅读 [外部资料]"，**不强行注水假装深**

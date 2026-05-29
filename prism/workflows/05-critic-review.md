@@ -67,19 +67,23 @@ gap report 是 critic 的**起手量化输入**——别只凭主观感觉判论
 
 ## Step 1：读取核心产出
 
-**按 topic 合成路径取文件**——company 走 `_company_case.md` 决策链路径（产 `c_investment_case`）；industry/arena 及旧 company 走 8 份分箱路径（产 04/06/07）：
+**按 topic 合成路径取文件**——三类 topic 都走决策链路径：company 产 `c_investment_case`（+`07_decision_kit.yaml`）、industry 产 `i_industry_case`（+`09_industry_to_arenas.yaml`）、arena 产 `a_arena_case`（+`10_peer_matrix.yaml`）；旧 topic 可能仍是 8 份分箱（04/06/07）：
 
 ```bash
-# company-case 路径（存在 c_investment_case.md 即走这条）
-cat prism/topics/{slug}/{variant}/outputs/c_investment_case.md 2>/dev/null
+# 决策链路径（存在哪个 *_case.md 即走哪条）
+cat prism/topics/{slug}/{variant}/outputs/c_investment_case.md 2>/dev/null   # company
+cat prism/topics/{slug}/{variant}/outputs/i_industry_case.md 2>/dev/null     # industry
+cat prism/topics/{slug}/{variant}/outputs/a_arena_case.md 2>/dev/null        # arena
 cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.yaml 2>/dev/null
-# 旧 8 份路径（industry / arena / 旧 company）
+cat prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.yaml 2>/dev/null
+cat prism/topics/{slug}/{variant}/outputs/10_peer_matrix.yaml 2>/dev/null
+# 旧 8 份分箱路径（未重合成的老 topic）
 cat prism/topics/{slug}/{variant}/outputs/04_implied_expectations.md 2>/dev/null
 cat prism/topics/{slug}/{variant}/outputs/06_risk_blindspots.md 2>/dev/null
 cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.md 2>/dev/null
 ```
 
-读到哪条就评哪条（c_investment_case 的反方步直接对决策链 ①→⑥ 做 steelman）；两条都为空 = 合成未完成，停止并提示先跑 04。
+读到哪条就评哪条（`*_case` 的反方步直接对决策链 ①→⑥ 做 steelman——含 funnel 的环⑥ 选拔逻辑）；全为空 = 合成未完成，停止并提示先跑 04。
 
 ---
 
@@ -269,7 +273,7 @@ t = read_topic(slug, variant)
 cur_v = (t.get('thesis') or {}).get('current_version')
 
 # request-rewrite 时主 agent 列出要重写的 output keys；其他 verdict 留空
-rewrite_keys = []  # 旧路径例：['04_implied_expectations','06_risk_blindspots']；company-case 路径用 ['c_investment_case']
+rewrite_keys = []  # 决策链路径用 ['c_investment_case'] / ['i_industry_case'] / ['a_arena_case']；旧分箱路径例：['04_implied_expectations','06_risk_blindspots']
 
 # set_critic_verdict 内部已写默认 next_actions + 把 rewrite_keys 标 stale（修 S4）
 critic = set_critic_verdict(

@@ -83,6 +83,27 @@ outputs_state:
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
+  a_arena_case:
+    version: 1
+    last_updated: '2026-05-29T15:33:21.847709+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-3770c8
+    - mat-756a01
+    - mat-89797a
+    - mat-8c64a7
+    - mat-9fb50a
+    - mat-afa444
+    - mat-c660fb
+    - mat-cc4b89
+    - mat-ccf921
+    - mat-e62c68
+    - mat-ec4e1e
+    - mat-f09fd5
+    - mat-f6cc96
+    - mat-fd945b
+    last_error: null
 next_actions:
 - 6/17 出光中計有報发布后，重读 K1 校准（watch 档 → 可能升级深研档）
 - 为 cn-ganfeng-lithium-002460 + cn-dangsheng-tech-300073 启动 workflow 01-build-roadmap

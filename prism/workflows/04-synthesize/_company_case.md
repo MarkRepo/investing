@@ -1,6 +1,6 @@
 # Company 投资 Case 合成（理解先行 · 决策链驱动 · 自由发挥版）
 
-> **调度提示**：本文件是 **company 类型 topic 在 04-synthesize 阶段的完整规范**，整体替代 `_shared.md` + `01-08` 的 8 份分箱 spec。`industry` / `arena` 仍走旧路径。
+> **调度提示**：本文件是 **company 类型 topic 在 04-synthesize 阶段的完整规范**，整体替代 `_shared.md` + `01-08` 的 8 份分箱 spec。`industry` 走 `_industry_funnel.md`、`arena` 走 `_arena_funnel.md`（同构的漏斗决策链）。
 >
 > **复用上游、不重写**：00-research → 01-roadmap → 02-materials → 03-findings 产出的 findings、`gap_detector`、增量重写判定、`financial_data` 财务模块、dashboard sidecar、`00-primer.md`、`thesis` 全部沿用，本文件只重做"合成"这一段。
 
@@ -31,11 +31,11 @@
 
 ### 1.2 理解先行：primer 与 case 的依赖与分工（**核心规约**）
 
-| | 谁先生成 | 读者 | 干什么 | 谁依赖谁 |
-|---|---|---|---|---|
-| **00_primer** | **先**（理解地基） | 完全门外人 | 看懂领域/公司**本身**，不被术语挡住 | 被 case 依赖 |
-| **c_investment_case** | **后**（站在 primer 上） | 要做买卖决定的人 | 看懂**该不该买、什么价、会怎么错** | 依赖 primer |
-| **thesis_v1** | **最后**（提炼快照） | 持有期追踪者 | 把下好的注，提炼成可追踪快照 | 依赖 case |
+|                       | 谁先生成               | 读者       | 干什么                  | 谁依赖谁      |
+| --------------------- | ------------------ | -------- | -------------------- | --------- |
+| **00_primer**         | **先**（理解地基）        | 完全门外人    | 看懂领域/公司**本身**，不被术语挡住 | 被 case 依赖 |
+| **c_investment_case** | **后**（站在 primer 上） | 要做买卖决定的人 | 看懂**该不该买、什么价、会怎么错**  | 依赖 primer |
+| **thesis_v1**         | **最后**（提炼快照）       | 持有期追踪者   | 把下好的注，提炼成可追踪快照       | 依赖 case   |
 
 时间轴：**学懂领域(primer) → 做决策(case) → 持续追踪(thesis)**。生成顺序 = 阅读顺序。
 
@@ -106,8 +106,8 @@
 
 按 `00-primer.md` Step 1-5 执行，产 `outputs/00_primer.md` + `_prism_reading_guide.md`。
 
-**本路径走 `00-primer.md` 的 primer-first 分支**（00-primer.md 已顺序无关，见其头部调度提示）：
-- 原材料 = **findings + `thesis_v0` + K# + 上面的财务数据**（Step 0 的 primer-last 前置校验自动忽略）。
+**走 `00-primer.md` 的 primer-first 路径**（00-primer.md 已全类型统一 primer-first，见其头部调度提示）：
+- 原材料 = **findings + `thesis_v0` + K# + 上面的财务数据**。
 - 投资加权（"该讲商业模式/估值锚/风险/催化剂"）来自元目标 + thesis_v0 + K#，**不需要等 case**。
 - primer 其余流程（目标生成 / 起点诊断 / 自由发挥 / 来源分层 / depth 降级 / **独立 critic 校验**）照走，critic 不可省。
 - primer 写完即 critic 收敛后，才进 Step 3 写 case——**case 站在已校验的 primer 上**。
@@ -273,6 +273,7 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 | critic | 05-critic（旧键） | 内嵌 chain-critic + 05（已按 type 读 c_investment_case） |
 
 **接线现状（均已落到被调用方自身，无内联兜底）**：
-1. `05-critic-review.md` Step 1 已按 type 分支读 `c_investment_case.md`（旧 8 份路径仍读 04/06/07）；rewrite_keys 注释含 company-case 键。✓
-2. `00-primer.md` 已改为**顺序无关**：company 走 primer-first 分支（findings+thesis_v0+K#），industry/arena 走 primer-last（01-08+thesis_v1）。✓
-3. `SKILL.md`：company 合成→本文件一行；primer 路由行已按 type 区分原材料。✓
+1. `05-critic-review.md` Step 1 已按 type 读 `c_investment_case` / `i_industry_case` / `a_arena_case`（旧 8 份路径仍读 04/06/07）；rewrite_keys 注释含三个决策链键。✓
+2. `00-primer.md` 已**全类型统一 primer-first**（findings+thesis_v0+K#，不依赖 01-08/thesis_v1，旧 primer-last 已退休）。✓
+3. `SKILL.md`：合成路由按 type 指向 `_company_case` / `_industry_funnel` / `_arena_funnel`；primer 路由行已统一 primer-first。✓
+4. industry/arena 同构路径见 `_industry_funnel.md` / `_arena_funnel.md`（漏斗终局，⑥ 折入旧 09/10 选拔，sidecar schema 不变）。✓
