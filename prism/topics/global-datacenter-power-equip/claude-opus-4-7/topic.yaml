@@ -3,7 +3,7 @@ display_name: 数据中心机房内配电与液冷（Eaton/Vertiv/Schneider）
 type: arena
 created: '2026-05-28T02:58:23.365188+00:00'
 status: active
-stage: 01-roadmap-ready
+stage: 04-synthesizing
 parent_topic: global-ai-compute-infrastructure
 monitoring_tier: dormant
 concepts: []
@@ -82,10 +82,8 @@ outputs_state:
     last_error: null
 parent_materials: []
 next_actions:
-- thesis v1 前的必补资料：三巨头 DC 收入占比拆解、卖方目标价汇总、Boyd Thermal 客户构成
-- 运行 02-gather-materials 补抓卖方研报 + HVDC 分析报告
-- 运行 04-synthesize 生成 01-08 产出
-
+- 所有 11 份资料已提取完成，可以生成 01-08 产出
+- 说「prism 推进 global-datacenter-power-equip」继续生成产出
 thesis:
   current_version: 0
   last_updated: '2026-05-28T04:00:00+00:00'
@@ -93,7 +91,9 @@ thesis:
   - version: 0
     stage_set_at: 01-roadmap-ready
     set_at: '2026-05-28T04:00:00+00:00'
-    summary: 做多 Vertiv (VRT) + Eaton (ETN) 双轨，配 Schneider (SU) 防御腿。AI DC 机房内配电+液冷是 AI infra 中确定性最高的物理瓶颈——机柜功率密度 10kW→132kW→1MW 的结构性升级不可逆。Vertiv 液冷市占率第一+$15B backlog 锁定增长；Eaton 配电基本盘+Boyd 液冷期权。强度 8/10。
+    summary: 做多 Vertiv (VRT) + Eaton (ETN) 双轨，配 Schneider (SU) 防御腿。AI DC 机房内配电+液冷是
+      AI infra 中确定性最高的物理瓶颈——机柜功率密度 10kW→132kW→1MW 的结构性升级不可逆。Vertiv 液冷市占率第一+$15B backlog
+      锁定增长；Eaton 配电基本盘+Boyd 液冷期权。强度 8/10。
     prescan_status: partial
 user_todos:
 - task: Vertiv/Eaton/Schneider 数据中心收入占比精确拆解（各业务线 DC exposure%，backlog 中 DC 占比）
@@ -156,6 +156,13 @@ user_todos:
   - K5
   source_hint: 各公司 earnings call / 卖方 capex tracker
   status: pending
+- task: 资料提取完成：11 份全部处理完毕
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
 monitoring:
   enabled: false
   cadence: daily
+critic: null

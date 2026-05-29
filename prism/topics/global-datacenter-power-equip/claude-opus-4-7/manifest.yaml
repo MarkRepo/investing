@@ -1,4 +1,228 @@
 slug: global-datacenter-power-equip
 variant: claude-opus-4-7
-updated: '2026-05-28T04:00:00+00:00'
-materials: []
+updated: '2026-05-29T00:44:11.654231+00:00'
+materials:
+- id: mat-61c6c0
+  filename: 2026-05-29_伊顿模方mr-多机柜模方客户交流ppt---eaton.md
+  source_type: web-search
+  added: '2026-05-29T00:37:35.183431+00:00'
+  processed: true
+  notes: query='数据中心机房内配电与液冷（Eaton/Vertiv/Schneider） 数据中心配电 UPS 不间断电源 液冷服务器 机柜功率密度
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 数据中心机房内配电与液冷（Eaton/Vertiv/Schneider） 数据中心配电 UPS 不间断电源 液冷服务器 机柜功率密度 2026
+    url: https://www.eaton.com/content/dam/eaton/products/backup-power-ups-surge-it-power-distribution/backup-power-ups/eaton-icube-mr/%E4%BC%8A%E9%A1%BF-%E6%A8%A1%E6%96%B9-MR%E5%A4%9A%E6%9C%BA%E6%9F%9C%E6%A8%A1%E6%96%B9%E5%AE%A2%E6%88%B7%E4%BA%A4%E6%B5%81ppt-zh-cn.pdf
+    domain: eaton.com
+    domain_tier: whitelist
+    searched_at: '2026-05-29T00:37:35.182355+00:00'
+    stale_at: '2026-06-28T00:37:35.182355+00:00'
+    expire_at: '2026-08-27T00:37:35.182355+00:00'
+    triggered_by: 02-step0
+- id: mat-48a51a
+  filename: 2026-05-29_数据中心电力设备专题.md
+  source_type: web-search
+  added: '2026-05-29T00:37:35.185505+00:00'
+  processed: true
+  notes: query='数据中心机房内配电与液冷（Eaton/Vertiv/Schneider） 数据中心配电 UPS 不间断电源 液冷服务器 机柜功率密度
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 数据中心配电 UPS 不间断电源 技术突破 2026
+    url: https://pdf.dfcfw.com/pdf/H3_AP202502181643205957_1.pdf?1739900659000.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-29T00:38:07.922458+00:00'
+    stale_at: '2026-06-28T00:38:07.922458+00:00'
+    expire_at: '2026-08-27T00:38:07.922458+00:00'
+    triggered_by: 02-step0
+    prev_queries:
+    - 数据中心机房内配电与液冷（Eaton/Vertiv/Schneider） 数据中心配电 UPS 不间断电源 液冷服务器 机柜功率密度 2026
+- id: mat-bdd483
+  filename: 2026-05-29_数据中心预制化电力模组---vertiv.md
+  source_type: web-search
+  added: '2026-05-29T00:37:35.188225+00:00'
+  processed: true
+  notes: query='数据中心机房内配电与液冷（Eaton/Vertiv/Schneider） 数据中心配电 UPS 不间断电源 液冷服务器 机柜功率密度
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 数据中心机房内配电与液冷（Eaton/Vertiv/Schneider） 数据中心配电 UPS 不间断电源 液冷服务器 机柜功率密度 2026
+    url: https://www.vertiv.com/4ad734/globalassets/documents/white-papers/vertiv_data_center_prefabricated_power_module_white_paper_318309_0.pdf
+    domain: vertiv.com
+    domain_tier: whitelist
+    searched_at: '2026-05-29T00:37:35.187017+00:00'
+    stale_at: '2026-06-28T00:37:35.187017+00:00'
+    expire_at: '2026-08-27T00:37:35.187017+00:00'
+    triggered_by: 02-step0
+- id: mat-acbe28
+  filename: 2026-05-29_ups市场规模-趋势和预测分析-2026-2035---research-nester.md
+  source_type: web-search
+  added: '2026-05-29T00:37:57.254124+00:00'
+  processed: true
+  notes: query='数据中心配电 UPS 不间断电源 行业政策 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 数据中心配电 UPS 不间断电源 行业政策 2026
+    url: https://www.researchnester.com/cn/reports/uninterruptible-power-supply-market/7329
+    domain: researchnester.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-29T00:37:57.252173+00:00'
+    stale_at: '2026-06-28T00:37:57.252173+00:00'
+    expire_at: '2026-08-27T00:37:57.252173+00:00'
+    triggered_by: 02-step0
+- id: mat-28a2a4
+  filename: 2026-05-29_数据中心ups-市场规模-份额和全球报告-2034.md
+  source_type: web-search
+  added: '2026-05-29T00:37:57.258722+00:00'
+  processed: true
+  notes: query='数据中心配电 UPS 不间断电源 行业政策 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 数据中心配电 UPS 不间断电源 龙头新闻 2026
+    url: https://www.fortunebusinessinsights.com/zh/data-center-ups-market-109842
+    domain: fortunebusinessinsights.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-29T00:38:24.348020+00:00'
+    stale_at: '2026-06-28T00:38:24.348020+00:00'
+    expire_at: '2026-08-27T00:38:24.348020+00:00'
+    triggered_by: 02-step0
+    prev_queries:
+    - 数据中心配电 UPS 不间断电源 行业政策 2026
+- id: mat-9e6d46
+  filename: 2026-05-29_数据中心ups-不间断电源-市场规模-份额及2035年前景预测.md
+  source_type: web-search
+  added: '2026-05-29T00:37:57.264087+00:00'
+  processed: true
+  notes: query='数据中心配电 UPS 不间断电源 行业政策 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 数据中心配电 UPS 不间断电源 行业政策 2026
+    url: https://www.globalgrowthinsights.com/zh/market-reports/data-center-ups-uninterruptible-power-supply-market-101692
+    domain: globalgrowthinsights.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-29T00:37:57.261901+00:00'
+    stale_at: '2026-06-28T00:37:57.261901+00:00'
+    expire_at: '2026-08-27T00:37:57.261901+00:00'
+    triggered_by: 02-step0
+- id: mat-7930a5
+  filename: 2026-05-29_不间断电源ups和数据中心方案---伊顿.md
+  source_type: web-search
+  added: '2026-05-29T00:38:07.929139+00:00'
+  processed: true
+  notes: query='数据中心配电 UPS 不间断电源 技术突破 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 数据中心配电 UPS 不间断电源 技术突破 2026
+    url: https://www.eaton.com.cn/cn/zh-cn/products/backup-power-ups-surge-it-power-distribution.html
+    domain: eaton.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-05-29T00:38:07.926516+00:00'
+    stale_at: '2026-06-28T00:38:07.926516+00:00'
+    expire_at: '2026-08-27T00:38:07.926516+00:00'
+    triggered_by: 02-step0
+- id: mat-eef53e
+  filename: 2026-05-29_新闻中心---山特电子-深圳-有限公司.md
+  source_type: web-search
+  added: '2026-05-29T00:38:07.936239+00:00'
+  processed: true
+  notes: query='数据中心配电 UPS 不间断电源 技术突破 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 数据中心配电 UPS 不间断电源 技术突破 2026
+    url: https://www.santak.com.cn/news/list
+    domain: santak.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-29T00:38:07.933406+00:00'
+    stale_at: '2026-06-28T00:38:07.933406+00:00'
+    expire_at: '2026-08-27T00:38:07.933406+00:00'
+    triggered_by: 02-step0
+- id: mat-de6cc8
+  filename: 2026-05-29_模块化ups-市场规模-份额和增长报告-2034-年.md
+  source_type: web-search
+  added: '2026-05-29T00:38:24.311595+00:00'
+  processed: true
+  notes: query='数据中心配电 UPS 不间断电源 产能变化 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 数据中心配电 UPS 不间断电源 产能变化 2026
+    url: https://www.fortunebusinessinsights.com/zh/modular-uninterruptible-power-supply-market-106019
+    domain: fortunebusinessinsights.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-29T00:38:24.308026+00:00'
+    stale_at: '2026-06-28T00:38:24.308026+00:00'
+    expire_at: '2026-08-27T00:38:24.308026+00:00'
+    triggered_by: 02-step0
+- id: mat-fbc12d
+  filename: 2026-05-29_预计2024年全球数据中心投资超4000亿美元.md
+  source_type: web-search
+  added: '2026-05-29T00:38:24.320841+00:00'
+  processed: true
+  notes: query='数据中心配电 UPS 不间断电源 产能变化 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 数据中心配电 UPS 不间断电源 产能变化 2026
+    url: https://pdf.dfcfw.com/pdf/H3_AP202501261642569540_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-29T00:38:24.317024+00:00'
+    stale_at: '2026-06-28T00:38:24.317024+00:00'
+    expire_at: '2026-08-27T00:38:24.317024+00:00'
+    triggered_by: 02-step0
+- id: mat-9570e5
+  filename: 2026-05-29_ai算力的隐形账单-数据中心缺电-变压器订单已排到2027年---qq.md
+  source_type: web-search
+  added: '2026-05-29T00:38:24.337889+00:00'
+  processed: true
+  notes: query='数据中心配电 UPS 不间断电源 龙头新闻 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 数据中心配电 UPS 不间断电源 龙头新闻 2026
+    url: https://news.qq.com/rain/a/20260525A03IKR00
+    domain: news.qq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-29T00:38:24.334076+00:00'
+    stale_at: '2026-06-28T00:38:24.334076+00:00'
+    expire_at: '2026-08-27T00:38:24.334076+00:00'
+    triggered_by: 02-step0
