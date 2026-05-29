@@ -39,6 +39,7 @@ companies/**/sources/*.pdf
 prism/inbox/auto/
 prism/inbox/manual/
 prism/topics/*/inbox/
+prism/topics/**/materials/
 mineru_summaries/
 
 # Runtime logs (dashboard async trigger etc.)
