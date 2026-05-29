@@ -19,6 +19,7 @@ allowed-tools: Bash Read Write
 | 「监控 {slug}」 | 读 `prism/workflows/06-daily-monitor.md` |
 | 「深挖 {slug} 的 {问题}」 | 读 `prism/workflows/07-drilldown.md` |
 | 「记录决策 {slug}」 | 读 `prism/workflows/99-decision-record.md` |
+| 「关联 {slug}」/「relink {slug}」 | 跑 `topic.suggest_relatives('{slug}','{variant}')` 出机械候选（geo/cluster_tags/ticker 跨 sidecar/slug-token 加权打分），把候选完整贴对话→**LLM 判读谁是真父/子**→调 `topic.set_parent('{slug}','{variant}', parent_slug)` 确认。可随时重跑（双向、顺序无关）。建链后合成路径 Step 1 亲属 hook 自动复用亲属成稿产出 |
 | 「查看 {slug} 进度」 | 直接读 `topic.yaml` 输出当前状态表格 |
 
 ## Prism Root

@@ -70,6 +70,14 @@
 
 **为什么是紧的**：③ 只因②产出定价才存在；④ 的 EV 加总把光谱压成一个数；⑥ 的仓位由④的 EV 决定；⑤ 只因④下注才需要。环与环是因果序、不是并列箱。
 
+### 1.4 跨层复用质量护栏（**硬规约 · 与 Step 1 亲属 hook 配套**）
+
+跨层复用是"站在肩膀上"，**不是"继承结论"**。亲属（父 arena / 父 industry；company 通常是叶子，子级多为空）的蒸馏产出只作输入/参照，质量永远按本维度、本 topic 自身的 findings + 自身的 critic 来卡：
+1. **本维度自己跑完整链**：照常跑 primer + 6 环 + critic，全程按 company 级分辨率要求。亲属产出是脚手架不是正文。
+2. **质量闸门一律本地**：`gap_detector`、chain-critic、05-critic、来源分层都对着**本 topic 自己的 K# 和 findings** 跑，不因"父 arena/industry 已覆盖"放水。
+3. **借来必标来源**：正文里 borrowed-from-relative 的内容可见地标出（对齐 mat-XXX 分层惯例），不许借来的框架冒充本 topic 自验证的结论。
+4. **冲突时本维度赢**：亲属观点与本 topic 自己的 findings 打架 → 以本 topic 为准，允许背离；背离触发向上路径把亲属标 stale（`gap_detector` 的 `relative_updated` flag 会提示亲属产出比本 case 新）。
+
 ---
 
 ## 2. 执行 — 上游准备与 primer 先行
@@ -99,6 +107,11 @@
 
    返回：最新报告期 / 营收 / 归母净利 / 毛利率 / ROE / 资产负债率 / FCF / 商誉占净资产 + **3 年 ROIC + 3 年 FCF**。这是①财务轨迹梁与②反推的一手锚；不在 findings 里手抽。市价/估值口径另调 `market_data.get_valuation_context`。
 3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整，供 ④⑤⑥ 与 critic 复用。
+
+> **亲属复用 hook（已生效）**：若本 topic 有 `parent_topic`（或 `find_child_topics` 返回非空），调 `get_relative_outputs('{slug}','{variant}')` 取亲属**成稿产出路径**并 Read。**借来内容受 §1.4 约束**——脚本只返路径不读内容，借用永远是输入/参照：必标来源、质量按本维度自跑、冲突时本 topic 赢。
+> - **向下（父 arena/industry → 本 company）**：company primer 站在父 primer 上扩写、不重教；读父最新 thesis；读**父 sidecar（`10_peer_matrix` / `09_industry_to_arenas`）里点名本公司的那行 = 本 company 的"mandate"**（父级为什么把我放深研档、预期洞见、预填狩猎问题），①从这里起、②③去验证/修正它。
+> - **向上（子 → 本 company）**：company 通常是叶子，`children` 多为空；若有（极少，如控股母子结构），按 §1.4 护栏当一等证据、本维度复核。
+> - 无亲属 → 返空 → 退化为独立合成，零特判。
 
 > **调度模式**：company case 默认**主 agent 直做 + 并行 Write**（同 `_shared.md` 默认；勿 dispatch subagent 写长产出，见 [[subagent-write-hallucination]] / feedback_subagent_bulk_synthesis）。唯一 subagent 是 critic（只读不写）。
 

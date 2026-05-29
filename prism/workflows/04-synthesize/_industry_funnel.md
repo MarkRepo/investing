@@ -103,7 +103,7 @@ industry 不是终局决策——它是**漏斗**：终点不是"买/卖一只�
 2. **拉行业层财务轨迹**（喂①的财务弧线 + ②反推口径）：对行业代表性龙头/聚合调 `financial_data`（`get_financial_context` 单家 / `get_peer_comparison_data_by_tickers` 多家聚合），取多年营收/利润率/ROIC/FCF 走势。这是①财务弧线梁与②反推的一手锚；不在 findings 里手抽。
 3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整，供 ④⑤⑥ 与 critic 复用。
 
-> **亲属复用 hook（图谱层落地后接入；当前若无亲属则跳过）**：若本 topic 有 `parent_topic` 或 `find_child_topics` 返回非空，调 `get_relative_outputs('{slug}','{variant}')` 取亲属的 primer / 最新 thesis / case·09·10 路径并 Read：
+> **亲属复用 hook（已生效）**：若本 topic 有 `parent_topic`（或 `find_child_topics` 返回非空），调 `get_relative_outputs('{slug}','{variant}')` 取亲属的 primer / 最新 thesis / case·09·10 **路径**并 Read。**借来内容受 §1.3 约束**——脚本只返路径不读内容，借用永远是输入/参照：必标来源、质量按本维度自跑、冲突时本 topic 赢。
 > - **向下（父→子）**：行业极少有父；若有（如更大产业），primer 站其上、不重教。
 > - **向上（已研究的子 arena → 本行业）**：把已研究子 arena 的成稿 case/thesis 当**一等证据**喂 ④ 的 arena 评分（让该 arena 的判断变实证而非估算），并按 §1.3 护栏标来源、本维度自己复核。
 > - 无亲属 → 返空 → 退化为独立合成，零特判。
@@ -274,5 +274,5 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 | 产出份数 | 8 份 + 09 | 默认 1 份连贯 case（可拆，⑥含旧 09 内容） |
 | 09 sidecar / arena stub | 09 内 | **不变，复用**（Step 4 引 `09-industry-to-arenas.md`） |
 | 上游 findings / 财务 / thesis | — | **不变，复用** |
-| 跨层复用 | 仅 parent_materials（raw findings） | Step1 亲属 hook：向下站父 primer、向上拿子 case 当实证（图谱层落地后接入） |
+| 跨层复用 | 仅 parent_materials（raw findings） | Step1 亲属 hook（已生效）：向下站父 primer、向上拿子 case 当实证；借用受 §1.3 约束 |
 | critic | 05（可选） | 内嵌 chain-critic + 05（已按 type 读 i_industry_case） |

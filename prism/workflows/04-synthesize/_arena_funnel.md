@@ -103,7 +103,7 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 2. **拉候选公司 peer 财务**（喂①卡位 + ②估值锚 + ④横比）：照 `10-peer-matrix.md` Step 3，对 findings 里有 ticker 的候选公司调 `financial_data.get_peer_comparison_data_by_tickers`（A股 SSE/SZSE/BSE、美股 NASDAQ/NYSE、港股 HKEX），取收入/毛利率/3年ROIC/资产负债率；非上市公司训练知识估算 + 标注。市价/PE 走 `market_data`。这是④横比的一手锚；不在 findings 里手抽。
 3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整 / **K# 校准（哪些公司被 K# 翻盘/强支持）**，供 ④⑥ 与 critic 复用。
 
-> **亲属复用 hook（图谱层落地后接入；当前若无亲属则跳过）**：若本 topic 有 `parent_topic` 或 `find_child_topics` 返回非空，调 `get_relative_outputs('{slug}','{variant}')` 取亲属产出并 Read：
+> **亲属复用 hook（已生效）**：若本 topic 有 `parent_topic`（或 `find_child_topics` 返回非空），调 `get_relative_outputs('{slug}','{variant}')` 取亲属**成稿产出路径**并 Read。**借来内容受 §1.3 约束**——脚本只返路径不读内容，借用永远是输入/参照：必标来源、质量按本维度自跑、冲突时本 topic 赢。
 > - **向下（父 industry → 本 arena）**：arena primer 站在父 industry primer 上扩写、不重教；读父最新 thesis；读**父 09 里点名本 arena 的那行 = 本 arena 的"mandate"**（industry 为什么把我放深挖档、预期洞见、预填狩猎问题），①从这里起、②③去验证/修正它。
 > - **向上（已研究的子 company → 本 arena）**：把已研究子 company 的成稿 case/thesis 当 ④ 横比的**一等证据**（让该公司在 peer matrix 里是实证而非估算），按 §1.3 护栏标来源、本维度复核。这正是"先研究 company、后研究 arena"的复用路径。
 > - 无亲属 → 返空 → 退化为独立合成，零特判。
@@ -274,5 +274,5 @@ shortlist：{深研档公司列表}
 | 产出份数 | 8 份 + 10 | 默认 1 份连贯 case（可拆，⑥含旧 10 内容） |
 | 10 sidecar / company stub | 10 内 | **不变，复用**（Step 4 引 `10-peer-matrix.md`） |
 | 上游 findings / 财务 / thesis | — | **不变，复用** |
-| 跨层复用 | 仅 parent_materials（raw findings） | Step1 亲属 hook：向下站父 primer/mandate、向上拿子 case 当实证（图谱层落地后接入） |
+| 跨层复用 | 仅 parent_materials（raw findings） | Step1 亲属 hook（已生效）：向下站父 primer/mandate、向上拿子 case 当实证；借用受 §1.3 约束 |
 | critic | 05（可选） | 内嵌 chain-critic + 05（已按 type 读 a_arena_case） |

@@ -70,8 +70,8 @@ outputs_state:
     referenced_mat_ids: null
     last_error: null
   10_peer_matrix:
-    version: 1
-    last_updated: '2026-05-22T07:24:11.415472+00:00'
+    version: 2
+    last_updated: '2026-05-29T17:27:43.731470+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -84,8 +84,8 @@ outputs_state:
     referenced_mat_ids: null
     last_error: null
   a_arena_case:
-    version: 1
-    last_updated: '2026-05-29T15:33:21.847709+00:00'
+    version: 2
+    last_updated: '2026-05-29T17:27:43.725350+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
@@ -105,8 +105,8 @@ outputs_state:
     - mat-fd945b
     last_error: null
 next_actions:
-- 6/17 出光中計有報发布后，重读 K1 校准（watch 档 → 可能升级深研档）
-- 为 cn-ganfeng-lithium-002460 + cn-dangsheng-tech-300073 启动 workflow 01-build-roadmap
+- v2 已用亲属 hook 回填赣锋/当升成稿 case 作环④一等实证（borrowed §1.3）；chain-critic 已收敛
+- 可选：05-critic-review 对抗式重审；或推进深研档 company 研究
 user_todos:
 - task: 决策：进入 06-daily-monitor 设 monitoring_tier=warm，跟踪 6/17 + 9 月日韩 IR 时点？
   priority: P1

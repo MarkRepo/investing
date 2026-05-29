@@ -1181,6 +1181,276 @@ def find_child_topics(parent_slug: str, variant: str | None = None) -> list[dict
     return children
 
 
+# ---------------------------------------------------------------------------
+# Workstream 2 — topic 图谱 / 跨层复用（set_parent / get_relative_outputs /
+# suggest_relatives）。全部零 LLM：脚本只列文件路径 + 出机械候选，
+# "谁是父" 与 "借哪段" 的判断一律由对话里的 LLM 做。
+#
+# 跨层复用受 §1.3 护栏约束（见 04-synthesize/_*_funnel.md）：亲属成稿产出仅作
+# 输入/参照，质量校验永远按本 topic 自己的 K# + findings + critic 跑。
+# get_relative_outputs 故意只返路径不读内容——借用 ≠ 结论注入。
+# ---------------------------------------------------------------------------
+
+# type tier 严格递增：company < arena < industry。父 tier 必须 > 子 tier。
+_TYPE_TIER = {"company": 0, "arena": 1, "industry": 2}
+
+# 按 type 映射成稿 case 文件名（决策链路径产出）
+_CASE_BY_TYPE = {
+    "company": "c_investment_case",
+    "industry": "i_industry_case",
+    "arena": "a_arena_case",
+}
+# 按 type 映射 dashboard sidecar（机器消费）
+_SIDECAR_BY_TYPE = {
+    "company": "07_decision_kit.yaml",
+    "industry": "09_industry_to_arenas.yaml",
+    "arena": "10_peer_matrix.yaml",
+}
+
+
+def set_parent(slug: str, variant: str, parent_slug: str | None) -> None:
+    """设/改/解 topic 父级（创建后）。parent_slug=None 解链。零 LLM。
+
+    校验（机械，非 LLM 判断）：
+      - 不能自指
+      - parent 必须存在（list_variants 非空）
+      - type tier 严格递增：company(0) < arena(1) < industry(2)，
+        父 tier 必须 > 子 tier，否则 raise ValueError
+    """
+    data = read_topic(slug, variant)
+    if parent_slug is None:
+        data["parent_topic"] = None
+        _write_yaml(_topic_path(slug, variant), data)
+        return
+    if parent_slug == slug:
+        raise ValueError(f"parent_topic 不能自指: {slug!r}")
+    parent_variants = list_variants(parent_slug)
+    if not parent_variants:
+        raise ValueError(f"父 topic 不存在: {parent_slug!r}（无任何 variant）")
+    pv = variant if variant in parent_variants else parent_variants[0]
+    parent_type = read_topic(parent_slug, pv).get("type", "")
+    child_type = data.get("type", "")
+    ct = _TYPE_TIER.get(child_type)
+    pt = _TYPE_TIER.get(parent_type)
+    if ct is not None and pt is not None and pt <= ct:
+        raise ValueError(
+            f"type tier 必须严格递增（company<arena<industry）：本 topic type={child_type!r}"
+            f"(tier {ct}) 的父必须更高层，但 {parent_slug!r} type={parent_type!r}(tier {pt})。"
+        )
+    data["parent_topic"] = parent_slug
+    _write_yaml(_topic_path(slug, variant), data)
+
+
+def _relative_output_paths(slug: str, variant: str) -> dict:
+    """收集一个 topic 的成稿产出路径（只列磁盘存在的文件）。内部 helper，零 LLM。
+
+    返回 {primer, thesis, case, sidecar} 的子集——键仅在对应文件存在时出现。
+    """
+    from . import outputs as outputs_io  # 延迟引入避免循环
+
+    base = _topic_path(slug, variant).parent
+    out_dir = base / "outputs"
+    try:
+        topic_type = read_topic(slug, variant).get("type", "")
+    except Exception:
+        topic_type = ""
+    paths: dict[str, str] = {}
+    primer = out_dir / "00_primer.md"
+    if primer.is_file():
+        paths["primer"] = str(primer)
+    try:
+        versions = outputs_io.list_thesis_files(slug, variant)
+    except Exception:
+        versions = []
+    if versions:
+        tp = base / f"thesis_v{versions[-1]}.md"
+        if tp.is_file():
+            paths["thesis"] = str(tp)
+    case_key = _CASE_BY_TYPE.get(topic_type)
+    if case_key:
+        cp = out_dir / f"{case_key}.md"
+        if cp.is_file():
+            paths["case"] = str(cp)
+    sidecar = _SIDECAR_BY_TYPE.get(topic_type)
+    if sidecar:
+        sp = out_dir / sidecar
+        if sp.is_file():
+            paths["sidecar"] = str(sp)
+    return paths
+
+
+def get_relative_outputs(slug: str, variant: str) -> dict:
+    """返回本 topic 的父+子成稿产出路径清单，供 04-synthesize Step 1 亲属 hook 复用。
+
+    脚本**只返文件路径、绝不读内容、不做任何判断**——借用永远是输入/参照，
+    受 §1.3 跨层复用护栏约束（借来必标来源、质量按本维度自跑、冲突时本 topic 赢）。
+
+    返回：{
+        'parent':   {slug, variant, type, display_name, outputs:{primer?,thesis?,case?,sidecar?}} | None,
+        'children': [ {同结构}, ... ],   # 经 find_child_topics（同 variant scope）
+    }
+    无亲属 → parent=None, children=[] → 调用方退化独立合成，零特判。
+    """
+    data = read_topic(slug, variant)
+    result: dict = {"parent": None, "children": []}
+
+    parent_slug = data.get("parent_topic")
+    if parent_slug:
+        pvs = list_variants(parent_slug)
+        if pvs:
+            pv = variant if variant in pvs else pvs[0]
+            try:
+                pdata = read_topic(parent_slug, pv)
+                result["parent"] = {
+                    "slug": parent_slug,
+                    "variant": pv,
+                    "type": pdata.get("type", ""),
+                    "display_name": pdata.get("display_name", parent_slug),
+                    "outputs": _relative_output_paths(parent_slug, pv),
+                }
+            except Exception:
+                pass
+
+    for child in find_child_topics(slug, variant=variant):
+        cslug = child.get("slug")
+        if not cslug:
+            continue
+        cvar = child.get("variant", variant)
+        result["children"].append({
+            "slug": cslug,
+            "variant": cvar,
+            "type": child.get("type", ""),
+            "display_name": child.get("display_name", cslug),
+            "outputs": _relative_output_paths(cslug, cvar),
+        })
+    return result
+
+
+# slug token 匹配时剔除的非语义前缀（geo 标记）——避免 "cn-*" 互相误命中
+_SLUG_STOP_TOKENS = {"cn", "us", "global", "eu", "jp", "kr", "hk", "uk", "tw", "in"}
+
+
+def _slug_semantic_tokens(s: str) -> set:
+    """slug 按 '-' 切后剔除 geo 前缀 + 纯数字段（ticker 码），留语义 token。
+    'cn-ganfeng-lithium-002460' → {'ganfeng','lithium'}。"""
+    return {
+        tok for tok in s.split("-")
+        if tok and tok not in _SLUG_STOP_TOKENS and not tok.isdigit()
+    }
+
+
+def _norm_ticker(t: str | None) -> str:
+    """归一化 ticker 作跨 sidecar 比对：剥交易所前缀取代码段，大写。
+    SZSE_002460 → 002460；裸 SES → SES。"""
+    if not t:
+        return ""
+    return str(t).split("_")[-1].upper()
+
+
+def _sidecar_tags_and_tickers(slug: str, variant: str) -> tuple[set, set]:
+    """读一个 topic 的 sidecar，取 cluster_tags 与 companies[].ticker（归一化）。
+    sidecar 不存在 / 无对应字段 → 返空集。容错不抛（stub 期常无 sidecar）。"""
+    tags: set = set()
+    tickers: set = set()
+    try:
+        topic_type = read_topic(slug, variant).get("type", "")
+    except Exception:
+        return tags, tickers
+    sidecar = _SIDECAR_BY_TYPE.get(topic_type)
+    if not sidecar:
+        return tags, tickers
+    sp = _topic_path(slug, variant).parent / "outputs" / sidecar
+    if not sp.is_file():
+        return tags, tickers
+    try:
+        doc = yaml.safe_load(sp.read_text(encoding="utf-8")) or {}
+        tags = {str(t) for t in (doc.get("cluster_tags") or [])}
+        for c in (doc.get("companies") or []):
+            tk = c.get("ticker")
+            if tk:
+                tickers.add(_norm_ticker(tk))
+    except Exception:
+        pass
+    return tags, tickers
+
+
+def suggest_relatives(slug: str, variant: str) -> dict:
+    """relink 机械候选发现器：纯字符串/集合匹配，**不写盘、零 LLM**。
+
+    扫同 variant 所有 topic，按机械信号**加权**打分，返回父/子候选供对话里 LLM 判读后调
+    set_parent 确认。双向、顺序无关——同时给父候选+子候选，在父端或子端跑都给一致集合。
+
+    信号权重（structural 强信号压过 geo 噪声）：
+      - ticker 跨 sidecar : 3   本 ticker ∈ 对方 peer matrix / 对方 ticker ∈ 本 peer matrix
+                                （company↔arena 最强信号）
+      - cluster_tags      : 2   双方 sidecar cluster_tags 交集（concepts 实测全空，不用）
+      - search_terms      : 2   scope.search_terms 交集
+      - slug-token        : 1   slug 按 '-' 切后 token 交集（**剔 geo 前缀 + 纯数字 ticker 码**）
+      - geo               : 1   scope.geo 相等（弱信号，同 geo topic 太多）
+    type tier 不兼容（同 tier / 未知）直接排除。只返 score≥1，按 score 降序；signals 记录命中项。
+
+    返回 {'parent_candidates': [...], 'child_candidates': [...]}，
+    每项 {slug, variant, type, signals:[...], score}。
+    """
+    me = read_topic(slug, variant)
+    my_type = me.get("type", "")
+    my_tier = _TYPE_TIER.get(my_type)
+    my_scope = me.get("scope") or {}
+    my_geo = (my_scope.get("geo") or "").strip().upper()  # 大小写无关（实测 global vs GLOBAL 混用）
+    my_ticker_norm = _norm_ticker(my_scope.get("ticker"))
+    my_terms = {str(t) for t in (my_scope.get("search_terms") or [])}
+    my_slug_tokens = _slug_semantic_tokens(slug)
+    my_tags, my_matrix_tickers = _sidecar_tags_and_tickers(slug, variant)
+
+    parent_candidates: list[dict] = []
+    child_candidates: list[dict] = []
+
+    for other in list_topics(variant=variant):
+        oslug = other.get("slug")
+        if not oslug or oslug == slug:
+            continue
+        otier = _TYPE_TIER.get(other.get("type", ""))
+        # tier 方向必须明确（父>我 或 子<我），同 tier / 未知直接排除
+        if my_tier is None or otier is None or otier == my_tier:
+            continue
+        ovar = other.get("variant", variant)
+        oscope = other.get("scope") or {}
+        signals: list[str] = []
+        score = 0
+
+        otags, oticks = _sidecar_tags_and_tickers(oslug, ovar)
+        if my_ticker_norm and my_ticker_norm in oticks:
+            signals.append("ticker-in-their-matrix"); score += 3
+        if my_matrix_tickers and _norm_ticker(oscope.get("ticker")) in my_matrix_tickers:
+            signals.append("their-ticker-in-our-matrix"); score += 3
+        if my_tags and (my_tags & otags):
+            signals.append("cluster_tags"); score += 2
+        if my_terms and (my_terms & {str(t) for t in (oscope.get("search_terms") or [])}):
+            signals.append("search_terms"); score += 2
+        if my_slug_tokens & _slug_semantic_tokens(oslug):
+            signals.append("slug-token"); score += 1
+        if my_geo and (oscope.get("geo") or "").strip().upper() == my_geo:
+            signals.append("geo"); score += 1
+
+        if not signals:
+            continue
+        entry = {
+            "slug": oslug,
+            "variant": ovar,
+            "type": other.get("type", ""),
+            "signals": signals,
+            "score": score,
+        }
+        if otier > my_tier:
+            parent_candidates.append(entry)
+        else:  # otier < my_tier
+            child_candidates.append(entry)
+
+    parent_candidates.sort(key=lambda e: e["score"], reverse=True)
+    child_candidates.sort(key=lambda e: e["score"], reverse=True)
+    return {"parent_candidates": parent_candidates, "child_candidates": child_candidates}
+
+
 def baseline_knowledge_path(slug: str, variant: str) -> Path:
     return _topic_path(slug, variant).parent / "baseline_knowledge.md"
 
