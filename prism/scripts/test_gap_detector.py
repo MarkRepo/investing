@@ -68,6 +68,87 @@ def test_gap_detects_thin_evidence(tmp_topic_with_findings):
     assert "K1" in report["thin_evidence"]
 
 
+def test_gap_counts_findings_layer_addresses(tmp_topic_with_findings):
+    """B 轴 bug 回归：证据只在 findings 层打 addresses（材料层无）时，K# 不应误报未覆盖。
+
+    旧实现只数 manifest 材料层 addresses，漏掉只在 03 抽取阶段按 findings 打标的 topic，
+    导致 B 轴误报 K# 全 0。修复后 materials ∪ own findings 取并集计数。
+    """
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    _write_thesis(tmpdir, slug, variant, "K1: X?\nK2: Y?\n")
+    topic_io.set_thesis(slug, variant, version=0, summary="t",
+                        stage_set_at="01-roadmap-pending")
+    # 材料层不打 addresses（模拟只在 findings 层打标的 topic）
+    add_material(slug=slug, filename="m1.md", source_type="web-article", variant=variant)
+    # findings 层打 addresses=[K1]
+    out_dir = tmpdir / "topics" / slug / variant / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "findings_mat-t1.md").write_text(
+        "---\naddresses:\n  - K1\n---\n- 数据点\n", encoding="utf-8")
+
+    report = detect_gaps(slug, variant)
+    assert "K1" not in report["uncovered_ks"], "findings 层 addresses 应计入覆盖"
+    assert "K2" in report["uncovered_ks"], "无任何层覆盖的 K# 仍报 uncovered"
+    assert report["evidence_count"]["K1"] >= 1
+
+
+def test_gap_dedups_material_and_its_finding(tmp_topic_with_findings):
+    """同一 mat_id 在材料层与 findings 层都打 K1 → 只计 1 个来源（去重，不假性满足 ≥2）。"""
+    from prism.scripts.gap_detector import detect_gaps
+    from prism.scripts.manifest import read_manifest
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    _write_thesis(tmpdir, slug, variant, "K1: X?\n")
+    topic_io.set_thesis(slug, variant, version=0, summary="t",
+                        stage_set_at="01-roadmap-pending")
+    add_material(slug=slug, filename="m1.md", source_type="web-article",
+                 variant=variant, addresses=["K1"])
+    mid = read_manifest(slug, variant)["materials"][0]["id"]
+    out_dir = tmpdir / "topics" / slug / variant / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / f"findings_{mid}.md").write_text(
+        "---\naddresses:\n  - K1\n---\n- 数据点\n", encoding="utf-8")
+
+    report = detect_gaps(slug, variant, min_evidence=2)
+    assert report["evidence_count"]["K1"] == 1, "材料与其 finding 同源应去重为 1"
+    assert "K1" in report["thin_evidence"]
+
+
+def test_gap_counts_reuse_parent_findings(tmp_topic_with_findings):
+    """reuse（父 parent_materials）findings 的 addresses 应计入 B 轴覆盖。
+
+    实测多数 arena/company topic 的 K# 覆盖来自父级 findings；排除 reuse 会让其误报全红。
+    """
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    _write_thesis(tmpdir, slug, variant, "K1: X?\nK2: Y?\n")
+    topic_io.set_thesis(slug, variant, version=0, summary="t",
+                        stage_set_at="01-roadmap-pending")
+    # 建父 topic + 父 finding 文件（reuse 引用要求文件存在）
+    pslug, pvar = "parent-ind", "test"
+    (tmpdir / "topics" / pslug / pvar).mkdir(parents=True)
+    topic_io.create_topic(slug=pslug, display_name="P", topic_type="industry",
+                          question="Q?", geo="US", depth="quick", variant=pvar,
+                          short_name="P")
+    pout = tmpdir / "topics" / pslug / pvar / "outputs"
+    pout.mkdir(parents=True, exist_ok=True)
+    (pout / "findings_mat-p1.md").write_text(
+        "---\naddresses:\n  - K1\n---\n- 父数据点\n", encoding="utf-8")
+    # 子 topic 引用父 finding 覆盖 K1（own 材料/findings 均无 addresses）
+    topic_io.set_parent_materials(slug, variant, [
+        {"parent_slug": pslug, "parent_variant": pvar, "mat_id": "mat-p1",
+         "addresses": ["K1"]},
+    ])
+
+    report = detect_gaps(slug, variant)
+    assert "K1" not in report["uncovered_ks"], "reuse 父 finding 应计入覆盖"
+    assert "K2" in report["uncovered_ks"]
+    assert report["evidence_count"]["K1"] >= 1
+
+
 def test_gap_detects_stale_web_search(tmp_topic_with_findings):
     """web-search material > 90d expire → flagged as stale claims."""
     from prism.scripts.gap_detector import detect_gaps

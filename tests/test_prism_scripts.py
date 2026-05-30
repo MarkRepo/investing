@@ -248,6 +248,29 @@ def test_list_outputs_file_exists_true_after_write(outputs_root, tmp_path):
     assert panorama["status"] == "fresh"
 
 
+def test_list_outputs_shows_decision_chain_case_after_synthesis(outputs_root, tmp_path):
+    """决策链新流程 case（i_industry_case 等）经 set_output_status 进 outputs_state 后应在 list_outputs 露出。
+
+    回归 §4.2：新 case 键加进 _OUTPUT_KEYS_LABELS（state-gated）——新建 topic 不 seed，
+    故 8-base 契约不变；synthesis 写入后才显示，状态/版本取自 outputs_state。
+    """
+    from prism.scripts import outputs as o
+    import prism.scripts.topic as t
+
+    out_path = tmp_path / "topics" / "cn-pet" / VARIANT / "outputs" / "i_industry_case.md"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text("# 行业 case\n\n决策链正文。", encoding="utf-8")
+    t.set_output_status("cn-pet", "i_industry_case", "fresh", VARIANT, version=2)
+
+    result = o.list_outputs("cn-pet", VARIANT)
+    case = next((r for r in result if r["key"] == "i_industry_case"), None)
+    assert case is not None, "synthesized case 键应出现在 list_outputs"
+    assert case["status"] == "fresh"
+    assert case["version"] == 2
+    assert case["file_exists"] is True
+    assert case["label"] == "行业 case（决策链）"
+
+
 def test_read_output_html_converts_markdown(outputs_root, tmp_path):
     from prism.scripts import outputs as o
 

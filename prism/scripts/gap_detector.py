@@ -195,13 +195,31 @@ def detect_gaps(
     except FileNotFoundError:
         manifest = {"materials": []}
 
-    evidence_count: dict[str, int] = {k: 0 for k in ks}
+    # B 轴证据计数：按 K# 统计"不同来源材料"数（mat_id 去重）。
+    # 证据在两层打 addresses 标签——manifest 材料层（粗）+ findings 层（细，03 抽取产出）；
+    # 取并集、按来源 mat_id 去重（同一材料与其 finding 不重复计）。
+    # 修复旧 bug：旧实现只数材料层 addresses，漏掉只在 findings 层打标的 topic（B 轴误报 K# 全 0）。
+    # 含 reuse（父 parent_materials）findings：父证据经 parent_materials 已加载进合成上下文，是
+    #   可用证据；reuse 护栏（本地复核/降信心）是合成期职责（funnel §1.3 + critic），非 gap 检测职责。
+    #   实测多数 arena/company topic 的 K# 覆盖正来自父级 findings——排除 reuse 会让其误报全红。
+    ev_sources: dict[str, set] = {k: set() for k in ks}
     for m in manifest.get("materials") or []:
-        addrs = m.get("addresses") or []
-        seen_keys = {_addr_key(a) for a in addrs}
-        for k in seen_keys:
-            if k in evidence_count:
-                evidence_count[k] += 1
+        mid = m.get("id") or f"mat:{m.get('filename')}"
+        for a in (m.get("addresses") or []):
+            k = _addr_key(a)
+            if k in ev_sources:
+                ev_sources[k].add(mid)
+    try:
+        from prism.scripts.findings import list_all_findings
+        for f in list_all_findings(slug, variant):
+            fid = f.get("mat_id") or str(f.get("path"))
+            for a in (f.get("addresses") or []):
+                k = _addr_key(a)
+                if k in ev_sources:
+                    ev_sources[k].add(fid)
+    except Exception:
+        pass
+    evidence_count: dict[str, int] = {k: len(v) for k, v in ev_sources.items()}
 
     uncovered = [k for k in ks if evidence_count[k] == 0]
     thin = [k for k in ks if 0 < evidence_count[k] < min_evidence]

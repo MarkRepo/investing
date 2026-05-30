@@ -11,6 +11,12 @@ _PRISM_ROOT = Path(__file__).resolve().parent.parent
 
 _OUTPUT_KEYS_LABELS = [
     ("00_primer", "领域入门"),
+    # 决策链新流程成稿 case（按 topic.type 三选一，见 topic._CASE_BY_TYPE）。
+    # state-gated：仅当 synthesis 经 set_output_status 写入 outputs_state 后才显示；
+    # 新建 topic 不 seed 这些 key（_outputs_for_type 不含），故 8-base 契约不变。
+    ("c_investment_case", "投资 case（决策链）"),
+    ("i_industry_case", "行业 case（决策链）"),
+    ("a_arena_case", "竞技场 case（决策链）"),
     ("01_business_panorama", "商业全景"),
     ("02_cycle_positioning", "周期定位"),
     ("03_narrative_ecology", "叙事谱系"),
