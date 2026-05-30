@@ -54,6 +54,22 @@ def test_batch_registers_high_mid_skips_low(tmp_topic):
     assert len(manifest["materials"]) == len(mat_ids)
 
 
+def test_batch_threads_rings_to_material(tmp_topic):
+    """batch 传 rings → 登记的材料带上 rings（web-source 进 ring 轴）。"""
+    from prism.scripts.web_prescan import register_web_search_batch
+
+    slug, variant, _ = tmp_topic
+    register_web_search_batch(
+        slug=slug, variant=variant, query="consensus eps",
+        addresses=["K1"], triggered_by="04-synth",
+        hits=[{"title": "Reuters consensus", "url": "https://reuters.com/c", "snippet": "x"}],
+        rings=["consensus"],
+    )
+    manifest = read_manifest(slug, variant)
+    web_mats = [m for m in manifest["materials"] if m["source_type"] == "web-search"]
+    assert web_mats and web_mats[0].get("rings") == ["consensus"]
+
+
 def test_failure_mode_none_when_at_least_one_in(tmp_topic):
     """至少 1 hit 入库时 failure_mode='none' / silent_failure=False。"""
     from prism.scripts.web_prescan import register_web_search_batch

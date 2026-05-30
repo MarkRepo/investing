@@ -82,7 +82,7 @@
 
 ## 2. 执行 — 上游准备与 primer 先行
 
-### Step 0：前置检查 + gap 体检 + 增量判定（**引用 `_shared.md`，不重抄**）
+### Step 0：前置检查 + gap 体检（双轴）+ 增量判定 + 命门 delta 重拆（**引用 `_shared.md`，不重抄**）
 
 进 04 第一件事，照 `_shared.md` 跑三段，结果完整贴对话：
 
@@ -134,6 +134,8 @@
 #### 3.1 起点诊断（写正文前必做 · 借 `00-primer.md` §2.1）
 
 因 primer 已建好领域地基，case 的起点诊断**轻量化**：只需确认 (a) 这家公司的**命门/特色点** 1-3 个（命门所在的环重点打、给足篇幅）；(b) case① 该把哪些背景"甩给 primer"、自己只留决策导向速写。
+
+> 命门**不从零拍脑袋**：以 00 的 `decomposition_v0` 为种子，读完 findings 后按 `_shared.md` §"命门有界 delta 重拆 + 收敛"做 delta 校验（新增/掉队/重排/置信度更新）→ delta 非空则有界第二收料趟（封顶 2 轮）→ 落 `decomposition_v1`（changelog 防震荡）。
 
 #### 3.2 逐环落地（链内无固定子节模板，每环给"必须落地什么"）
 
@@ -229,7 +231,7 @@ print('primer + case 产出已注册')
 "
 ```
 
-**thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。先读 `_synthesis_brief.md`，dump v0→v1 强度调整，写 `thesis_v1.md`，调 `set_thesis(version=1, ...)`。
+**thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。先读 `_synthesis_brief.md`，dump v0→v1 强度调整，写 `thesis_v1.md`，调 `set_thesis(version=1, ...)`。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, convergence_status, changelog)`**（B 层与 thesis 配对升版，见 `_shared.md` §命门有界 delta 重拆）。收尾出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单），见 `_shared.md` §终态报告。
 
 **收尾**：照 `_shared.md` § 全部产出完成后——`append_user_todos` + 清 `next_actions` + stage 推进。company 必须进 `05-critic-review` 才能 `done`：
 

@@ -107,11 +107,15 @@ def add_material(
     search_meta: dict | None = None,
     parent_mat: str | None = None,
     sec_section: str | None = None,
+    rings: list[str] | None = None,
 ) -> str:
     """Add a material to the manifest.
 
     addresses: list of K#/Q# tags this material attacks (e.g. ['K1', 'Q3']).
                Links the material back to thesis Killer Questions and roadmap questions.
+    rings: list of 决策链输入合同 codes this material serves (e.g. ['mgmt-capital-alloc',
+           'consensus']). 与 addresses **解耦**：addresses=thesis 脊柱 K#，rings=输入脊柱
+           （见 prism/scripts/input_contract.py）。gap ring 轴按此计覆盖。
     confidence: 0.0-1.0, currently only set for web-search materials.
     search_meta: only set for web-search materials. Required keys: query, url,
                  searched_at, stale_at, expire_at, domain, domain_tier.
@@ -142,6 +146,12 @@ def add_material(
                 if merged != list(existing):
                     mat["addresses"] = merged
                     updated = True
+            if rings:
+                existing_r = set(mat.get("rings") or [])
+                merged_r = sorted(existing_r | set(rings))
+                if merged_r != sorted(existing_r):
+                    mat["rings"] = merged_r
+                    updated = True
             if notes and notes not in (mat.get("notes") or ""):
                 mat["notes"] = ((mat.get("notes") or "") + " | " + notes).strip(" |")
                 updated = True
@@ -169,6 +179,8 @@ def add_material(
     }
     if addresses:
         entry["addresses"] = sorted(set(addresses))
+    if rings:
+        entry["rings"] = sorted(set(rings))
     if confidence is not None:
         entry["confidence"] = confidence
     if search_meta:
@@ -181,6 +193,12 @@ def add_material(
     data["updated"] = _now_iso()
     _write_yaml(_manifest_path(slug, variant), data)
     return mat_id
+
+
+def list_by_ring(slug: str, variant: str, ring_code: str) -> list[dict]:
+    """返回带某决策链输入合同 code（rings 标签）的材料条目。gap ring 轴 / 收料体检用。"""
+    mats = read_manifest(slug, variant).get("materials", [])
+    return [m for m in mats if ring_code in (m.get("rings") or [])]
 
 
 def add_sec_sections_from_meta(

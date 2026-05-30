@@ -43,7 +43,9 @@ print('thesis_v0:', (t.get('thesis') or {}).get('current_version'))
 
 ## Step 1：目标生成（LLM 针对本 topic 把元目标具体化）
 
-读元目标 + `topic.yaml`（`type` / `scope.question` / `thesis` summary）+ `thesis_v0.md`（或当前最新 thesis）+ `_findings_index.md` / findings 本身（看 findings 覆盖度 + LLM 训练知识在本领域厚不厚），**输出一份"本 topic 读完应能做到 N 条"清单**（N 通常 8-13，按领域复杂度）。
+读元目标 + `topic.yaml`（`type` / `scope.question` / `thesis` summary）+ `thesis_v0.md`（或当前最新 thesis）+ **`baseline_knowledge.md`（训练知识种子 · 见下）** + `_findings_index.md` / findings 本身（看 findings 覆盖度 + LLM 训练知识在本领域厚不厚），**输出一份"本 topic 读完应能做到 N 条"清单**（N 通常 8-13，按领域复杂度）。
+
+> **O2 接线 · baseline_knowledge.md 是 primer 的训练知识种子**：00-research-topic Step 4.3 写的 baseline 是本 topic 第一层数据源（行业稳定知识 + 自评盲点）。primer 的"行业原理/技术分类/工艺/估值方法"等稳定知识层应**直接复用 baseline 第一节**，避免重新凭空回忆导致前后不一致。**但必须读 baseline §六 校准结果**（Step 4.5c 回写）——被 prescan 推翻的 fact **不准**再写进 primer，必须用校准后的新事实；被验证的可放心用。baseline 缺失（旧 topic）→ 退化为纯训练知识+findings，零特判。
 
 每条必须是**门外人可观察的具体能力**（"能跟人解释 X / 能区分 Y 和 Z / 听到术语 W 知道在说什么 / 能判断 V 贵不贵"），不是知识罗列。
 

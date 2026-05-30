@@ -209,6 +209,7 @@ def _register_in_prism(slug: str, file_path: Path, report_type: str, company_nam
         else "annual-report" if report_type == "annual"
         else "quarterly-report"
     )
+    from prism.scripts.input_contract import default_report_rings
     mat_id = add_material(
         slug=slug,
         filename=file_path.name,
@@ -216,6 +217,7 @@ def _register_in_prism(slug: str, file_path: Path, report_type: str, company_nam
         variant=variant,
         notes=f"Auto-downloaded from cninfo — {company_name}",
         source_path=file_path,
+        rings=default_report_rings(report_type),
     )
     log.info("Registered in manifest: %s → %s", file_path.name, mat_id)
 

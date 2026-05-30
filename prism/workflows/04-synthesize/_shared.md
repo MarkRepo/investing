@@ -35,12 +35,15 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 "
 ```
 
-把 report 输出**完整贴到对话**。看三项：
+把 report 输出**完整贴到对话**。**双轴都看**（B 轴 = K# 脊柱，A 轴 = 决策链输入合同）：
 - `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
 - `thin_evidence` 非空 → 该 K# 证据 < 2 条
+- `uncovered_ring_inputs` 非空 → 决策链某环必带输入无料（带 🔴 = 三项真·欠供）→ 该环写作会硬伤；`api_pending_inputs` 非红（合成期自动拉）
 - `expired_web_materials` 非空 → web-search 材料 > 90 天
 
-任一非空 → **不要硬合成**，否则 11 份产出全是"未充分论证"占位。先决定补救：即兴 web-search（_shared.md 末尾的"即兴 web-search"段）/ sub-agent 深挖 / 回 02 补资料。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于让 05 critic 把雷踩回来。
+任一红项非空 → **不要硬合成**，否则 11 份产出全是"未充分论证"占位。先决定补救：即兴 web-search（_shared.md 末尾的"即兴 web-search"段）/ sub-agent 深挖 / 回 02 补资料。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于让 05 critic 把雷踩回来。
+
+> ring 轴 `uncovered_ring_inputs` 直接映射到"哪个决策环写作时缺输入硬落地"——比 K# 更早暴露断链风险。这也是下面**命门有界 delta 重拆**的输入之一。
 
 ## 增量重写判定（默认开启）
 
@@ -76,6 +79,48 @@ set_output_referenced_mats('{slug}', '{output_key}', {mat_ids_list}, '{variant}'
 ### 触发全重写（绕过增量判定）
 
 用户说「全重写所有 output」/「忽略增量」/「--full-rewrite」时，跳过 `list_affected_outputs`，对全部 9-11 份按 new 处理。常用于 thesis 大改、统一文风、修 schema 等场景。
+
+## 命门有界 delta 重拆 + 收敛（B 层 · 写作期做，配合 thesis_v1）
+
+> **为什么在写作期才做深度拆解**：00 的 `decomposition_v0` 是**薄知识**拆的（训练知识+prescan），其可靠性原理上无法认证（任何裁判也薄知识绑定）。真正的可靠性闸门是**厚料浮现后**的重拆——写 case 时读遍 findings，命门会自然浮现/移位/坍塌。这一步把它固化为 `decomposition_v1`。
+
+### 1. delta 校验（读完 findings、动笔写 case 前）
+
+对照 `decomposition_v0.md` 的命门 1-3，逐条问厚料：
+- **新命门**：findings 揭示了 v0 没料到的、能翻盘 thesis 的特化问题？
+- **掉队命门**：v0 某命门被证据证明是伪命题 / 不再决定成败？
+- **重排**：命门间的杠杆顺序变了？
+- **置信度更新**：v0 标"低/uncertain"的命门，厚料是否已能定调？
+
+delta = 新增 ∪ 掉队 ∪ 重排。**delta 为空** → v0 已够好，直接 `set_decomposition(version=1, convergence_status='converged', changelog='厚料确认 v0 命门，无变化')` 后正常写作。
+
+### 2. 第二收料趟（delta 非空时 · 双重收敛 + 硬顶）
+
+delta 非空说明厚料改写了命门图景 → 需补这一轮的料，但**严格有界**（防 decompose↔gather 无限螺旋）：
+- **只收新命门的料**（不重收已覆盖命门）——即兴 web-search / sub-agent 深挖，打对应 `rings`；
+- **只重写受影响环**：用 `list_affected_outputs` + 命门→决策环映射，**仅重写命门变动直接波及的环**，未受影响的产出不动；
+- **硬顶 2 轮**：第 1 轮收料+重拆若仍 delta 非空，再走第 2 轮；**第 2 轮后强制停**，残留命门进"诚实缺口清单"（见终态报告），不再开第 3 轮。
+
+### 3. 防震荡（changelog 对全历史去重）
+
+每次 `set_decomposition` 的 `changelog` 必须写清"**砍了什么 / 加了什么 + 为什么**"。重加一个曾被砍的命门，**必须附新证据**（changelog 注明"凭 mat-XXX 复活，区别于上次砍它的理由"）——否则视为震荡，不允许。动笔前对照 `decomposition` history 全历史，避免来回翻烙饼。
+
+### 4. 收敛判定（写 thesis_v1 时一并定）
+
+三条同时满足 → **收敛**：① delta 空；② gap 双轴绿（`uncovered_ks` + `uncovered_ring_inputs` 的红项都已补或诚实标缺）；③ 05 critic 无重大反转（critic 在 04 后跑，首轮可先标 `open`，critic 回来再定稿）。
+
+```python
+from prism.scripts.topic import set_decomposition
+set_decomposition(
+    slug='{slug}', variant='{variant}', version=1,
+    summary='{更新后的命门一句话概览}',
+    stage_set_at='04-synthesizing',
+    convergence_status='converged',   # delta空+双轴绿+critic无重大；撞2轮顶用 'capped'；待critic用 'open'
+    changelog='{砍了X(因mat-A证伪)/加了Y(凭mat-B)/命门2升信心；对照全历史无震荡}',
+)
+```
+
+- **顽固命门**（撞 2 轮顶仍未解、但确实决定成败）→ 不在 04 死磕，`convergence_status='capped'` + 踢 `07-drilldown` 专项深挖（在终态报告里列出 + set_next_actions 提示）。
 
 ## 断点续跑（修 9：workflow resume）
 
@@ -261,6 +306,18 @@ print('thesis v1 已登记')
 ```
 
 如果 brief 显示「v0 与 findings 完全契合，无需修正」，仍写 v1 但 summary 注明 `[与 v0 一致]`，便于后续 critic-review 锚定时点。
+
+**写 thesis_v1 的同时写 decomposition_v1**（B 层与 thesis 配对升版）：把"命门有界 delta 重拆 + 收敛"那一节得到的命门图景落成 `decomposition_v1.md`（命门现状 + 置信度 + 每环 B 靶点 + §changelog），并调 `set_decomposition(version=1, convergence_status=..., changelog=...)`（见该节代码块）。
+
+### 终态报告（收尾必出 · 三件套兜底）
+
+收尾在对话里给用户一份终态报告，三块：
+
+1. **双轴 gap 终态**：重跑 `detect_gaps` → B 轴（`uncovered_ks`/`thin_evidence`）+ A 轴（`uncovered_ring_inputs`，标出哪些已补、哪些仍缺）。
+2. **收敛状态**：`decomposition` 的 `convergence_status`（converged / capped / open）+ 走了几轮第二收料趟。
+3. **残留缺口清单（诚实）**：填不上的明写"**数据缺失**"或"**训练知识估算，非实证**"，**不冒充**；撞 2 轮顶的顽固命门列出 + 标记踢 `07-drilldown`。
+
+> 三件套兜底 = 残留缺口清单（本步）+ 05 critic 复核 + 用户手检。薄拆解的不确定性靠这三层兜，不假装 04 一定收敛干净。
 
 **stage 推进到 critic-review（修 7）**：04 完成后 stage 自动应为 `04-post-synthesis` → 由 next_stage 推到 `05-critic-review`。**company / default 类型必须跑 critic-review** 才能进 done；industry / arena 走 09/10 分支不强制（critic 是可选的）。
 

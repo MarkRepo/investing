@@ -545,6 +545,21 @@ def list_thesis_files(slug: str, variant: str) -> list[int]:
     return sorted(versions)
 
 
+def list_decomposition_files(slug: str, variant: str) -> list[int]:
+    """列出 variant 目录下所有 decomposition_v{N}.md 文件的 version 号，升序。"""
+    d = _topic_dir(slug, variant)
+    if not d.is_dir():
+        return []
+    versions = []
+    for p in d.iterdir():
+        if p.is_file() and p.name.startswith("decomposition_v") and p.name.endswith(".md"):
+            try:
+                versions.append(int(p.name[len("decomposition_v"):-len(".md")]))
+            except ValueError:
+                continue
+    return sorted(versions)
+
+
 def read_output_html(slug: str, output_key: str, variant: str) -> str:
     # Handle drilldown outputs
     if output_key.startswith("drilldown_"):

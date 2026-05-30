@@ -358,17 +358,22 @@ Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` co
 - 当前处于什么发展阶段
 - 市场规模量级
 
-### 5.2 关键研究维度（5-8 个问题）
-列出要深度研究这个主题，最关键的 5-8 个问题。例如：
-- 谁是核心受益者，谁是受损方？
-- 增长的核心驱动力是什么，是结构性还是周期性？
-- 当前市场共识是什么，哪里可能有分歧？
-- 风险清单里最容易被低估的是什么？
-- 有哪些历史类比案例？
+### 5.2 关键研究维度（→ 升 K# 或坍缩进 primer scope · S1 简化）
+
+> **S1 · Q# 降级**：旧版在此另生成一套 `Q1-Q8` 研究维度编号，与 thesis 的 K# 形成双轨、且与 user_todos 重复（与 5.0 删 V# 同源问题）。**新 topic 不再生成 Q#**：
+> - **能押注、可证伪的维度** → 升格为 5.0 thesis 的 **K#**（Killer Question），进入 thesis 脊柱；
+> - **纯背景/理解性维度**（"这是什么生意/技术分类/产业链长什么样"）→ **坍缩成一行 primer scope 备注**，交给 00_primer 处理，不单列编号、不进 todo addresses。
+>
+> 简言之：研究维度要么变成可下注的 K#，要么变成 primer 的讲解范围。中间态的 Q# 取消。
+> （旧 topic 已有的 Q# addresses 仍有效，gap_detector 本就只认 K#；`extract_research_questions` 保留向后兼容。）
+
+在对话里输出：① 哪些维度升成了 K#（指回 5.0）；② 一行 primer scope 备注（primer 该覆盖的背景范围）。
 
 ### 5.3 资料获取建议（用户需要收集什么）
 
-按 **优先级（P0/P1/P2）+ 信息差等级（public/half_public/hard）** 列出 5-10 份关键资料。**每条 todo 都必须标注 addresses**——指向 5.2 的问题号（Q1-Q8）或 5.0 thesis 的 Killer Question 号（K1-K5）——否则失去 thesis-driven 意义。
+按 **优先级（P0/P1/P2）+ 信息差等级（public/half_public/hard）** 列出 5-10 份关键资料。**每条 todo 都必须标注 addresses**——指向 5.0 thesis 的 Killer Question 号（K1-K5）（Q# 已降级，新 topic 不再用 Q# 作 addresses）——否则失去 thesis-driven 意义。
+
+> **A 合同视角（收料地板）**：除了攻打 K# 的 todo，还要照 `_input_contract.md` 本 type 的**必收类目**排 todo——尤其三项真·欠供：`mgmt-capital-alloc`（管理层/资本配置史）、`consensus`（一致预期/估值锚）、`historical-mirror`（历史失败镜鉴）。这些不一定挂某个 K#，但决策链环①②⑤要落地就必须收。详细排期在 workflow 01 Step 3，此处先在 todo 里显式留位。
 
 **信息差等级定义**：
 - `public` 公开普及 — Google/Wind 一搜就有，价值低（但作为研究起点）
@@ -381,6 +386,37 @@ Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` co
 - P2 = 锦上添花，等核心研究完后补（不超过 3 项）
 
 每条 todo 必填字段：`task` / `priority` / `info_tier` / `addresses`，选填 `source_hint`。
+
+---
+
+## Step 5.4：产 decomposition_v0（命门拆解前移 · 驱动收料）
+
+> **为什么前移到这里**：拆解（把"赌注"拆成 1-3 个**命门**——最决定成败、最该砸资源验证的特化问题）本是合成活动，但它**驱动收料方向**。前移到 00 用薄知识产一份 `decomposition_v0`，让 01/02 既照 A 合同地板收料、又照命门 B 靶点收料。深度版（v1）留到 04 写作期做有界 delta 重拆（见 `04-synthesize/_shared.md`）。
+>
+> **冷启动断点 = 训练知识 + baseline + prescan**：此刻还没厚资料，命门基于 thesis_v0 + K# + `baseline_knowledge.md`（含 §六 prescan 校准）拆。**薄拆解可靠性原理上无法认证**（任何裁判也薄知识绑定）→ **v0 不做 LLM critic**，只做置信度 tag（收料对冲用）+ 机械自检。真正的可靠性闸门是 04 厚料 delta 重拆。
+
+**产出 `prism/topics/{slug}/{variant}/decomposition_v0.md`**，含三块：
+
+1. **命门 1-3**（每个命门一句话 + **置信度 tag** 高/中/低/uncertain）：
+   - 命门 = "若这件事的方向错了，整个 thesis 翻盘"的特化问题（比 K# 更聚焦于**机理/兑现路径**）。
+   - 置信度低/uncertain 的命门 → 提示 01/02 **优先砸料验证**（对冲薄拆解风险）。
+2. **每环 B 靶点**（决策链 6 环各 1-2 条"为支撑命门，该环特别要挖什么"）——这是 A 合同（type 地板）之上的**命门特化补充**，指导 01 收料 priority。
+3. **机械自检**（无需 LLM 判断，照单核对）：
+   - 每个 K# 是否都被某个命门覆盖（或显式标"非命门，背景项"）？
+   - A 合同每个**必收类目**（尤其三项 hard）是否都在 5.3 / 01 排了收料优先级？
+   - 命门置信度分布（几高几低）——低置信度命门是否都进了 B 靶点优先收料？
+
+```python
+from prism.scripts.topic import set_decomposition
+set_decomposition(
+    slug='{slug}', variant='{variant}', version=0,
+    summary='{命门一句话概览，≤120字，如 "命门1=固态电解质量产良率(中); 命门2=车厂全固态认证节奏(低)"}',
+    stage_set_at='00-research-pending',
+    convergence_status='open',   # v0 默认 open（深度拆解留给 04）
+)
+```
+
+> 旧 topic 无 decomposition → 缺省空壳，下游 graceful 退化；新 topic 此步必跑（gap ring 轴据 decomposition 存在性判定是否 active）。
 
 ---
 

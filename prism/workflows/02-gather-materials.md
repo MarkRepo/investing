@@ -135,7 +135,7 @@ print(json.dumps(read_manifest('{slug}', '{variant}'), ensure_ascii=False, inden
 对每份新文件执行：
 
 ```bash
-# 登记 + 自动复制到 materials/ + 必填 addresses（指向 K# 或 Q#）
+# 登记 + 自动复制到 materials/ + 必填 addresses（指向 K#）+ 选填 rings（决策链输入合同）
 python -c "
 from pathlib import Path
 from prism.scripts.manifest import add_material
@@ -146,7 +146,8 @@ mat_id = add_material(
     notes='{notes}',
     source_path=Path('{material_full_path}'),
     variant='{variant}',
-    addresses={addresses_list},  # 例如 ['K1', 'K3'] 或 ['Q3', 'L4-Q4.5']
+    addresses={addresses_list},  # 例如 ['K1', 'K3']
+    rings={rings_list},          # 例如 ['mgmt-capital-alloc','financial-arc']，见 _input_contract.md
 )
 print(f'已登记：{filename} → {mat_id}')
 "
@@ -154,8 +155,13 @@ print(f'已登记：{filename} → {mat_id}')
 
 **关于 addresses（强制三态）** — 全局约定见 `_web_prescan_shared.md` 关键纪律 3：
 - 必填，**禁止 `[]`**
-- K# 来自 thesis_v{N}.md；Q# 来自 roadmap.yaml 的 L1-L4 question
-- 无具体 K#/Q# 时按背景资料填 `['background']`；与 topic scope 相关但非背景填 `['scope']`
+- K# 来自 thesis_v{N}.md（Q# 已降级，新 topic 不再用）
+- 无具体 K# 时按背景资料填 `['background']`；与 topic scope 相关但非背景填 `['scope']`
+
+**关于 rings（决策链输入合同标签 · 选填但强烈建议）** — 与 addresses **解耦**（addresses=thesis 脊柱 K#，rings=输入脊柱）：
+- 这份料服务哪几个决策环输入？按 `_input_contract.md` 本 type 的 code 填（如年报 → `['mgmt-capital-alloc','financial-arc','biz-moat-unit-econ']`；卖方一致预期 → `['consensus']`；行业镜鉴复盘 → `['industry-mirror']`）。
+- 财报/公告类**自动下载**的料已由 fetcher 按 report_type 默认打了 rings（见 `fetch_report_prism`），手动登记的料需自己标。
+- 喂 gap **ring 轴**（A 轴）覆盖统计；不确定填哪个就先不填，03 抽取时按实际内容在 finding frontmatter 补。
 
 **关于 dedup**：`add_material` 已内建按 filename 去重——重复调用会合并 addresses/notes 而非新增条目，安全幂等。
 
@@ -239,12 +245,19 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 "
 ```
 
-把 report 输出**完整贴到对话**。看三项：
+把 report 输出**完整贴到对话**。**双轴都看**：
+
+**B 轴（K# 脊柱）**：
 - `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
 - `thin_evidence` 非空 → 该 K# 证据 < 2 条
 - `expired_web_materials` 非空 → 有 web-search 材料 > 90 天
 
-任一非空 → **不要硬升 stage**，先选补救：web-search 增量扫 / sub-agent 深挖 / set_user_todos 让用户补，再决定是否进 03-extracting。这是诊断不是 gate——脚本不会拒绝你升 stage，但跳过等于把"论证薄弱"留给 04/05。
+**A 轴（决策链输入合同 · ring 轴）**：
+- `uncovered_ring_inputs` 非空 → 决策链某环的必带输入无材料覆盖（**带 🔴 = 三项真·欠供之一，最该补**）
+- `api_pending_inputs` → 财务/估值类，合成期自动拉，**非红**，不用管
+- `ring_axis_status == 'n/a'` → 旧 topic 未接入拆解/rings，A 轴不适用（忽略）
+
+任一红项非空 → **不要硬升 stage**，先选补救：web-search 增量扫 / sub-agent 深挖 / set_user_todos 让用户补，再决定是否进 03-extracting。这是诊断不是 gate——脚本不会拒绝你升 stage，但跳过等于把"论证薄弱"留给 04/05。`uncovered_ring_inputs` 的 hard 项尤其要在升 stage 前显式处理（收料或诚实标"数据缺失"）。
 
 ---
 

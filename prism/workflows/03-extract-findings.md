@@ -27,12 +27,13 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 "
 ```
 
-把 report 输出**完整贴到对话**。看三项：
+把 report 输出**完整贴到对话**。**双轴都看**（B 轴 = K# 脊柱，A 轴 = 决策链输入合同）：
 - `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
 - `thin_evidence` 非空 → 该 K# 证据 < 2 条
+- `uncovered_ring_inputs` 非空 → 决策链某环必带输入无料覆盖（带 🔴 = 三项真·欠供，最该补）；`api_pending_inputs` 非红
 - `expired_web_materials` 非空 → web-search 材料 > 90 天
 
-任一非空 → **不要硬干**，先决定补救路径（即兴 web-search Step 2.4 / sub-agent 深挖 Step 2.4b / set_user_todos 让用户补），再继续 Step 0 开始的既定流程。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于把"论证薄弱"留给 04/05。
+任一红项非空 → **不要硬干**，先决定补救路径（即兴 web-search Step 2.4 / sub-agent 深挖 Step 2.4b / set_user_todos 让用户补），再继续 Step 0 开始的既定流程。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于把"论证薄弱"留给 04/05。抽取阶段尤其要借 ring 轴定位"哪些决策环输入还没料喂 §2.2 F"。
 
 ---
 
@@ -393,6 +394,17 @@ cat "{material_path}"
 - 可信度（高/中/低，原因）
 - 与已有发现是否矛盾
 
+**F. 决策链专项勾（O1 · 抽取要喂下游 6 环，不只 K#）**
+
+抽取时**主动扫**以下决策链输入合同类目（见 `_input_contract.md`）——这些是合成层 6 环【必带硬落地】最依赖、且历史上最容易漏抽的维度。命中就抽成独立数据点 + 给该 finding 打对应 `rings`：
+
+- **②定价锚 / 一致预期**（`consensus` / `valuation-anchor`）：卖方目标价、隐含增速/PE、一致预期 EPS/估值倍数、历史估值区间 → 喂环②反推。**别只抽"看多看空"，要抽具体的数字锚**。
+- **①管理层 / 资本配置史**（`mgmt-capital-alloc`）：掌舵人任期/track record、回购/分红/并购的历史金额与回报、激励与治理结构 → 喂环①第二梁。年报/proxy 里常有，过去常被当背景略过，现在是一等公民。
+- **⑤历史镜鉴**（`historical-mirror` / `industry-mirror` / `arena-mirror`）：相似剧本怎么崩、利润为何没兑现、曾经赢家如何被取代 → 喂环⑤。复盘类材料命中就抽教训一句话。
+- **①生意/单位经济**（`biz-moat-unit-econ`）、**④多空/横比**（`bull-bear` / `peer-comparison-financials`）按 type 命中即抽。
+
+> 收料期材料可能已粗标 rings（02 / fetcher）；抽取时按**实际抽到的内容**在 finding frontmatter 精修——抽到了就标，没抽到的别硬标。一份料可同时服务多个 ring。
+
 ### 2.3 写入发现笔记
 
 写入 `prism/topics/{slug}/{variant}/outputs/findings_{mat_id}.md`：
@@ -405,6 +417,8 @@ source_type: {source_type}
 extracted: {timestamp}
 quality: high|medium|low
 bias: bull|bear|neutral
+addresses: [{命中的 K#}]        # thesis 脊柱；frontmatter 优先于 manifest
+rings: [{命中的决策链输入合同 code}]   # 见 §2.2 F + _input_contract.md；没命中可省略此字段
 ---
 
 ## 核心数据点与事实

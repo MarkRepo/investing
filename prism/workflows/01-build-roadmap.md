@@ -103,24 +103,18 @@ else:
 
 ---
 
-## Step 2：制定学习轨道（L1→L4 问题树）
+## Step 2：制定学习轨道（L3 争议 + L4 狩猎 · S2 简化）
+
+> **S2 · L1/L2 坍缩**：旧版 L1 定向（是什么）+ L2 历史（怎么来的）本质是**背景理解层**，与 thesis 无强对齐——这些现在由 00_primer 全权承担（primer-first）。roadmap 不再单列 L1/L2 问题树，**坍缩成一行 primer scope 备注**（"primer 该覆盖：行业边界/参与者/市场规模/发展阶段/周期"），把篇幅集中到真正驱动收料的两层：
+> - **L3 争议层 → 喂决策链环④**（多空分歧、共识可能错在哪）
+> - **L4 狩猎层 → 喂 K#**（找错误定价，逐条对齐 thesis Killer Question）
 
 **硬要求**：
 - **L4 狩猎层必须逐条对齐 thesis 的 Killer Question**（K1, K2, ...），每条 L4 question 写 `addresses: [Kn]` 字段
 - L3 争议层应反映 thesis 的"最大反方观点"——把反方逻辑展开为 3-5 个可调研的争议点
-- L1/L2 是基础知识层，与 thesis 无强对齐
+- **L1/L2 不再列问题树**：在 roadmap 顶部写一行 `primer_scope:` 备注即可（背景深度交给 00_primer，§1.2 primer↔case 分工）
 
-基于训练知识 + thesis_v0 内容，为这个研究主题制定四层问题：
-
-**L1 定向层**（3-4 个问题）：搞清楚「是什么」
-- 这个行业的边界在哪里？怎么定义市场？
-- 主要参与者有哪些（上游/中游/下游）？
-- 市场规模多大？主要增长驱动是什么？
-
-**L2 历史层**（3-4 个问题）：搞清楚「怎么来的」
-- 过去 5-10 年经历了哪几个发展阶段？
-- 有没有明显的周期性规律？
-- 关键拐点（政策/技术/需求）是什么时候？
+基于训练知识 + thesis_v0 + decomposition_v0 命门，为这个研究主题制定两层问题：
 
 **L3 争议层**（4-5 个问题）：搞清楚「分歧在哪」
 - 多空双方的核心分歧是什么？
@@ -150,11 +144,20 @@ l4_hunting:
 
 ---
 
-## Step 3：制定资料优先级
+## Step 3：制定资料优先级（A 合同地板 + B 命门靶点 双轴驱动）
+
+> **收料不再只盯 K#**。两条轴一起组织资料优先级：
+> - **A 轴（输入合同地板 · type 必收）**：照 `_input_contract.md` 本 type 的类目，**逐项确认有 todo 在收**。尤其三项真·欠供必须显式排期（旧流程从不主动收，是产出质量天花板）：
+>   - `mgmt-capital-alloc` 管理层 track record + 资本配置史（年报/proxy/治理）→ 喂环①
+>   - `consensus` 卖方一致预期/目标价模型 → 喂环②（A 股前瞻 consensus 多在付费墙后 → 可降级为 `half_public` 用户 todo + 从卖方研报抽，不假设自动拉）
+>   - `historical-mirror` / `industry-mirror` / `arena-mirror` 历史失败镜鉴（由 Step 4 类比落成）→ 喂环⑤
+>   - 结构化项（`financial-arc` / `valuation-anchor` / peer 财务）由 financial_data/market_data 在合成期自动拉，给 ticker 即可，不必单列收料 todo（gap ring 轴标 api_pending 非红）。
+> - **B 轴（命门靶点）**：照 `decomposition_v0.md` 每环 B 靶点收料，**低置信度命门优先砸料**（对冲薄拆解风险）。
 
 **硬要求**：
 - **复用 5.3 已写的 user_todos** 作为 tier1 基础——它们已带 priority/info_tier/addresses 字段
-- 每份资料填写 `addresses: [Kn, Qn]` 字段，对应 thesis K# 或 L1-L4 question 编号（不能不写）
+- 每份资料填写 `addresses: [Kn]` 字段，对应 thesis K#（Q# 已降级，不再用）
+- A 合同必收类目 + B 命门靶点 → 新增 todo 时，**在 `notes`/`source_hint` 标明服务哪个 ring code**，便于 02 登记材料时打 `rings`
 - 5.3 P0 → 默认进 tier1；P1 → tier2；P2 → tier3
 - 如果 5.3 没覆盖但路线图需要的，新增到对应 tier，**也必须写 addresses**
 
@@ -178,12 +181,22 @@ l4_hunting:
 
 ---
 
-## Step 4：识别历史类比
+## Step 4：识别历史类比（→ 落成 historical-mirror 收料 todo · O3 接线）
 
 列出 2-3 个值得研究的历史类比案例，格式：
 - 案例名称（国家+行业+时间段）
 - 类比逻辑（哪里像）
 - 类比局限（哪里不像）
+
+> **O3 接线 · 类比不再是孤儿，直接喂决策链环⑤**：历史类比正是决策链环⑤【历史失败镜鉴】（输入合同 `historical-mirror` / 行业 `industry-mirror` / arena `arena-mirror`，见 `_input_contract.md`）的输入。**每个值得研究的类比必须落成一条收料 todo**——目标是拿到"相似剧本怎么崩 / 利润为何没兑现"的实证材料（行业研报 / 复盘文章 / web-search）。这是 plan 认定的**三项真·欠供之一**（旧流程从不主动收），不可省。
+>
+> 收料阶段（02）登记该材料时打 `rings=["historical-mirror"]`（或对应 type 的 mirror code）；只能训练知识粗述、收不到实证的，明写"镜鉴待补"进 `user_todos`，不冒充实证。
+>
+> ```python
+> # 把类比落成收料 todo（示例，code 按 topic.type 选 historical/industry/arena-mirror）
+> from prism.scripts.topic import set_user_todos
+> set_user_todos('{slug}', ['收 historical-mirror 实证：{类比案例} 的崩盘/未兑现复盘（行业研报或复盘文章）'], '{variant}')
+> ```
 
 ---
 

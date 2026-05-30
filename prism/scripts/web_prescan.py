@@ -499,8 +499,12 @@ def register_web_search_result(
     confidence: float | None = None,
     domain_tier: str | None = None,
     triggered_by: str | None = None,
+    rings: list[str] | None = None,
 ) -> dict:
     """Register one web-search hit: write inbox/.md + add_material.
+
+    rings: optional 决策链输入合同 codes（如 web 收来的 consensus/historical-mirror），
+           写入 manifest 材料，使 web-source 料也进 gap ring 轴覆盖。
 
     Returns: {
         'mat_id': str | None,        # None if band=='low' (not registered)
@@ -575,6 +579,7 @@ def register_web_search_result(
         slug=slug, filename=filename, source_type="web-search", variant=variant,
         notes=notes, source_path=file_path,
         addresses=addresses, confidence=confidence, search_meta=search_meta,
+        rings=rings,
     )
     result["mat_id"] = mat_id
     result["filename"] = filename
@@ -642,8 +647,12 @@ def register_web_search_batch(
     hits: list[dict],
     full_texts: dict[str, str] | None = None,
     inline_finding: bool | None = None,
+    rings: list[str] | None = None,
 ) -> dict:
     """One-call batch wrapper for the 6-step prescan ritual.
+
+    rings: optional 决策链输入合同 codes，整批 hit 统一打（如这一轮专搜 consensus / 镜鉴）；
+           写入材料 + inline finding frontmatter，使 web-source 料进 gap ring 轴。
 
     主 agent 把一轮 WebSearch 结果整批传进来，本 helper 完成：
       - 对每条 hit 调 register_web_search_result（自动判 domain_tier + funnel band）
@@ -718,6 +727,7 @@ def register_web_search_batch(
             confidence=hit.get("confidence"),
             domain_tier=hit.get("domain_tier"),
             triggered_by=triggered_by,
+            rings=rings,
         )
         mat_ids.append(r["mat_id"])
         band = r["band"]
@@ -760,11 +770,14 @@ def register_web_search_batch(
             if full_text:
                 body_parts += ["## Full text", "", full_text.strip(), ""]
             body = "\n".join(body_parts).strip()
+            _ef = {"url": url, "query": query, "triggered_by": triggered_by}
+            if rings:
+                _ef["rings"] = sorted(set(rings))
             fp = register_inline_finding(
                 slug=slug, variant=variant, mat_id=mat_id,
                 content=body, addresses=list(addresses),
                 quality="medium", bias="neutral",
-                extra_frontmatter={"url": url, "query": query, "triggered_by": triggered_by},
+                extra_frontmatter=_ef,
             )
             inline_finding_paths.append(str(fp))
 

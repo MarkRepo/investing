@@ -322,6 +322,8 @@ def read_topic(slug: str, variant: str) -> dict:
     # 修 7: critic-review verdict 状态。set_critic_verdict 写入，next_stage 决定不依赖此字段
     # （verdict-驱动的跳转在 workflow 05 里用 set_stage 显式做）。
     data.setdefault("critic", None)
+    # 命门拆解（B 层，镜像 thesis 结构）。旧 topic 无之 → 缺省空壳，graceful。
+    data.setdefault("decomposition", {"current_version": None, "last_updated": None, "history": []})
     if "outputs_state" in data:
         for key, state in data["outputs_state"].items():
             state.setdefault("data_freshness", None)
@@ -845,6 +847,59 @@ def set_thesis(
     return None
 
 
+_VALID_CONVERGENCE_STATUSES = ("open", "converged", "capped")
+
+
+def set_decomposition(
+    slug: str,
+    variant: str,
+    version: int,
+    summary: str,
+    stage_set_at: str,
+    convergence_status: str | None = None,
+    changelog: str | None = None,
+) -> None:
+    """记录命门拆解（B 层）的版本表态。完整 markdown 写到 decomposition_v{N}.md。
+
+    镜像 `set_thesis` 的版本化结构（current_version / last_updated / history），但拆解
+    **不做 prescan / reverse-check** —— 它是合成活动的前移产物，可靠性闸门在 04 写作期的
+    有界 delta 重拆，不在此（见 plan §关键设计原理 3/4/5）。
+
+    summary: 一句话命门概览（≤120 字，如 "命门1=固态电解质量产良率; 命门2=车厂认证节奏"）。
+    stage_set_at: 拆解表态时的阶段（v0 在 '00-research-pending'；v1+ 在 '04-synthesizing'）。
+    convergence_status:
+      - None / 'open' : 仍可能再拆（v0 默认，或 delta 非空待第二趟）
+      - 'converged'   : delta 空 + gap 双轴绿 + critic 无重大
+      - 'capped'      : 撞 2 轮硬顶，残留命门进诚实缺口清单 / 踢 07-drilldown
+    changelog: v1+ 必带 —— 一句话 delta（命门 added/dropped/re-ranked + 为什么），防震荡用。
+    """
+    if convergence_status is not None and convergence_status not in _VALID_CONVERGENCE_STATUSES:
+        raise ValueError(
+            f"convergence_status={convergence_status!r} 非法，必须为 "
+            f"{_VALID_CONVERGENCE_STATUSES} 之一或 None"
+        )
+
+    data = read_topic(slug, variant)
+    decomp = data.setdefault(
+        "decomposition", {"current_version": None, "last_updated": None, "history": []}
+    )
+    decomp["current_version"] = version
+    decomp["last_updated"] = _now_iso()
+    history_entry = {
+        "version": version,
+        "stage_set_at": stage_set_at,
+        "set_at": _now_iso(),
+        "summary": summary,
+    }
+    if convergence_status is not None:
+        history_entry["convergence_status"] = convergence_status
+    if changelog:
+        history_entry["changelog"] = changelog
+    decomp["history"].append(history_entry)
+    _write_yaml(_topic_path(slug, variant), data)
+    _trigger_dashboard(slug, variant, f"decomposition_v{version}")
+
+
 # ---------------------------------------------------------------------------
 # H5: prescan 状态读写分离 — thesis 写时 vs 后续轮次
 # ---------------------------------------------------------------------------
@@ -1244,7 +1299,7 @@ def set_parent(slug: str, variant: str, parent_slug: str | None) -> None:
 def _relative_output_paths(slug: str, variant: str) -> dict:
     """收集一个 topic 的成稿产出路径（只列磁盘存在的文件）。内部 helper，零 LLM。
 
-    返回 {primer, thesis, case, sidecar} 的子集——键仅在对应文件存在时出现。
+    返回 {primer, thesis, decomposition, case, sidecar} 的子集——键仅在对应文件存在时出现。
     """
     from . import outputs as outputs_io  # 延迟引入避免循环
 
@@ -1266,6 +1321,14 @@ def _relative_output_paths(slug: str, variant: str) -> dict:
         tp = base / f"thesis_v{versions[-1]}.md"
         if tp.is_file():
             paths["thesis"] = str(tp)
+    try:
+        dversions = outputs_io.list_decomposition_files(slug, variant)
+    except Exception:
+        dversions = []
+    if dversions:
+        dp = base / f"decomposition_v{dversions[-1]}.md"
+        if dp.is_file():
+            paths["decomposition"] = str(dp)
     case_key = _CASE_BY_TYPE.get(topic_type)
     if case_key:
         cp = out_dir / f"{case_key}.md"
@@ -1286,7 +1349,7 @@ def get_relative_outputs(slug: str, variant: str) -> dict:
     受 §1.3 跨层复用护栏约束（借来必标来源、质量按本维度自跑、冲突时本 topic 赢）。
 
     返回：{
-        'parent':   {slug, variant, type, display_name, outputs:{primer?,thesis?,case?,sidecar?}} | None,
+        'parent':   {slug, variant, type, display_name, outputs:{primer?,thesis?,decomposition?,case?,sidecar?}} | None,
         'children': [ {同结构}, ... ],   # 经 find_child_topics（同 variant scope）
     }
     无亲属 → parent=None, children=[] → 调用方退化独立合成，零特判。

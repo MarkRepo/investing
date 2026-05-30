@@ -64,6 +64,16 @@ def _manifest_addresses_map(slug: str, variant: str) -> dict[str, list[str]]:
     return {m["id"]: list(m.get("addresses") or []) for m in mats}
 
 
+def _manifest_rings_map(slug: str, variant: str) -> dict[str, list[str]]:
+    """Return {mat_id: rings} from manifest.yaml. Best-effort, [] if missing."""
+    try:
+        from prism.scripts.manifest import read_manifest
+        mats = read_manifest(slug, variant).get("materials", [])
+    except Exception:
+        return {}
+    return {m["id"]: list(m.get("rings") or []) for m in mats}
+
+
 def list_all_findings(slug: str, variant: str) -> list[dict[str, Any]]:
     """Return all findings paths for synthesis: own + parent_materials.
 
@@ -86,16 +96,19 @@ def list_all_findings(slug: str, variant: str) -> list[dict[str, Any]]:
     own_dir = _own_findings_dir(slug, variant)
     if own_dir.is_dir():
         own_addr_map = _manifest_addresses_map(slug, variant)
+        own_rings_map = _manifest_rings_map(slug, variant)
         for p in sorted(own_dir.glob("findings_mat-*.md")):
             mat_id = p.stem.replace("findings_", "")
             fm = _read_frontmatter(p)
             addr = fm.get("addresses") or own_addr_map.get(mat_id) or []
+            rings = fm.get("rings") or own_rings_map.get(mat_id) or []
             out.append({
                 "mat_id": mat_id,
                 "path": p,
                 "source_slug": slug,
                 "source_variant": variant,
                 "addresses": list(addr),
+                "rings": list(rings),
                 "note": "",
                 "reuse": False,
                 "filename": fm.get("filename", ""),
@@ -120,6 +133,7 @@ def list_all_findings(slug: str, variant: str) -> list[dict[str, Any]]:
             "source_slug": psrc,
             "source_variant": pvar,
             "addresses": list(ref.get("addresses") or fm.get("addresses") or []),
+            "rings": list(ref.get("rings") or fm.get("rings") or []),
             "note": ref.get("note", ""),
             "reuse": True,
             "filename": fm.get("filename", ""),
@@ -193,27 +207,29 @@ def build_findings_index(slug: str, variant: str, write: bool = True) -> str:
     lines: list[str] = []
     lines.append(f"# Findings Index — {slug}/{variant}")
     lines.append("")
-    lines.append("> 主 agent 调度提示：写每批 output 前重读本文件，按 addresses 判断 context 是否覆盖所需维度；")
+    lines.append("> 主 agent 调度提示：写每批 output 前重读本文件，按 addresses(K# 脊柱) + rings(决策链输入合同) 判断 context 是否覆盖所需维度；")
     lines.append("> 记忆模糊的 mat_id 单独 Read `outputs/findings_{mat_id}.md` 补回。")
     lines.append("")
     lines.append(f"## 自有 findings（{len(own)} 份）")
     lines.append("")
     for x in own:
         addr = ",".join(x["addresses"]) if x["addresses"] else "-"
+        rng = ",".join(x.get("rings") or []) if x.get("rings") else "-"
         qb = f"{x['quality'] or '?'}/{x['bias'] or '?'}"
         fname = x["filename"] or x["path"].name
         summary = x["summary"] or "(no summary)"
-        lines.append(f"- `{x['mat_id']}` | {fname} | addresses=[{addr}] | {qb} | {summary}")
+        lines.append(f"- `{x['mat_id']}` | {fname} | addresses=[{addr}] | rings=[{rng}] | {qb} | {summary}")
     if reuse:
         lines.append("")
         lines.append(f"## 父级复用 findings（{len(reuse)} 份）")
         lines.append("")
         for x in reuse:
             addr = ",".join(x["addresses"]) if x["addresses"] else "-"
+            rng = ",".join(x.get("rings") or []) if x.get("rings") else "-"
             qb = f"{x['quality'] or '?'}/{x['bias'] or '?'}"
             fname = x["filename"] or x["path"].name
             summary = x["summary"] or "(no summary)"
-            lines.append(f"- `{x['mat_id']}` | {fname} | addresses=[{addr}] | {qb} | {summary} (parent={x['source_slug']})")
+            lines.append(f"- `{x['mat_id']}` | {fname} | addresses=[{addr}] | rings=[{rng}] | {qb} | {summary} (parent={x['source_slug']})")
 
     md = "\n".join(lines) + "\n"
     if write:
