@@ -3,6 +3,8 @@
 > **调度提示**：本文件是 **company 类型 topic 在 04-synthesize 阶段的完整规范**，整体替代 `_shared.md` + `01-08` 的 8 份分箱 spec。`industry` 走 `_industry_funnel.md`、`arena` 走 `_arena_funnel.md`（同构的漏斗决策链）。
 >
 > **复用上游、不重写**：00-research → 01-roadmap → 02-materials → 03-findings 产出的 findings、`gap_detector`、增量重写判定、`financial_data` 财务模块、dashboard sidecar、`00-primer.md`、`thesis` 全部沿用，本文件只重做"合成"这一段。
+>
+> **07 sidecar schema 保留**：`07-decision-kit.md` 不删——它作为 **⑥ 的 sidecar schema(Step 3.5)** 权威定义被本文件 Step 4 + `_shared.md` 逐字引用（查 schema，不照搬结构）。与 industry 的 `09-industry-to-arenas.md` / arena 的 `10-peer-matrix.md` 同性质（均为保留的工具/schema 规范）。
 
 ---
 
@@ -91,6 +93,39 @@
 3. **增量重写判定**（`list_affected_outputs` 判 new/stale/fresh；`fresh` 跳过）。company 路径 output_key 见 §5。
 
 > Web 搜索路径见 [[_web_search_routing]]；本阶段默认走 adapter。即兴 web-search 规约见 `_shared.md`。
+
+### Step 0.5：质量红线门控（company 专属 · 折自旧 03b · 写正文前先筛）
+
+进 case 正文前先过一遍质量红线，过滤明显不合格的公司——避免对早该 quarantine 的标的做完整深研。**仅 company 跑**（industry/arena 无此闸门）。
+
+1. **拉财务自动红线数据**：
+   ```bash
+   python -c "from prism.scripts.financial_data import get_quality_screen_data; print(get_quality_screen_data('{slug}', '{variant}'))"
+   ```
+   财务红线（无数据则标"数据缺失，用户判断"，不编造）：
+
+   | 红线 | 阈值 |
+   |------|------|
+   | ROIC vs WACC | 最近 3 年 ROIC > WACC |
+   | 自由现金流 | 最近 3 年 ≥2 年为正 |
+   | 资产负债率 | 行业内非 outlier（< 行业 90 分位） |
+   | 商誉占净资产 | < 30% |
+   | 经营现金流/净利润 | 3 年均值 > 0.7 |
+
+2. **从 findings 查治理 + 业务红线**：
+   - 治理：大股东质押率 < 50% / 审计意见标准无保留 / 关联交易占比 < 20% / 无重大违规立案 / 无高管 3 年内大额减持
+   - 业务：主业明确（CR1 > 50% 或多元化合理）/ 客户集中度可接受（CR5 < 80%）/ 无明显商业模式过气信号
+
+3. **综合判定**：
+   - **PASS**（全过 / 不通过 ≤1 且非致命）→ 继续 Step 1 完整合成。
+   - **FAIL**（致命红线任一触发：财务造假 / 重大违规 / ROIC 长期 < WACC）→ quarantine，不再深研：
+     ```bash
+     python -c "from prism.scripts.topic import set_stage, set_next_actions; set_stage('{slug}','quarantined','{variant}'); set_next_actions('{slug}',['已 quarantine，不再继续研究'],'{variant}')"
+     ```
+     并把 quarantine 摘要归档到 `prism/quarantine/{slug}.md`。
+   - **NEEDS-REVIEW**（1-2 项非致命不通过）→ `AskUserQuestion` 问用户是否豁免；豁免则继续，否则 quarantine。
+
+> 门控结果完整贴对话。命门若正落在某条红线上（如治理风险即命门），该红线在 case 环①管理层梁 / 环⑤证伪里要展开，不只在门控里打勾。
 
 ### Step 1：加载 findings + thesis_v0 + **财务数据（finance 模块）**
 
@@ -184,7 +219,7 @@
 **环 ⑤ 如果错了会怎样、怎么第一时间知道（证伪机制）**
 - 【元问题】判断错在哪种情形？错了亏多少？哪些信号最早告诉我错了？
 - 【为何逼出】④下注后，理性立刻要求"怎么知道我错了"——无证伪的下注是信仰。
-- 【必带硬落地】① 已知风险 + **盲点风险**各 ≥1；② **kill 触发条件**（具体、可观测、尽量价格化/数据化 → 喂 sidecar `kill_criteria`）；③ ≥1 个**历史失败镜鉴**（相似剧本怎么崩，教训一句话）；④ signpost（未来 3-12 月验证/证伪事件 → 喂 sidecar `signposts`）。治理类风险与①的管理层梁呼应。
+- 【必带硬落地】① 已知风险 + **盲点风险**各 ≥1；② **kill 触发条件**（具体、可观测、尽量价格化/数据化 → 喂 sidecar `kill_criteria`）；③ **≥2 个历史失败镜鉴**（相似剧本怎么崩）——每个标：失败模式（颠覆/周期顶/政策反转/现金流断裂/竞争击穿）+ 峰谷损失幅度% + 当年最早预警信号及"现在是否已现"，教训各一句话；**只想得到成功案例本身就是 red flag**；④ signpost（未来 3-12 月验证/证伪事件 → 喂 sidecar `signposts`）。治理类风险与①的管理层梁呼应。
 - 【别漏的 lens】旧 05 镜鉴、旧 06 风险盲点。
 - 【自由区】风险分组、镜鉴选案。
 
@@ -199,7 +234,7 @@
 
 - **来源分层**（照搬 `00-primer.md` §2.3）：训练知识不标单条 / findings 凡引必标 `[mat-XXX]` / 特色判断文末点到指向 thesis_v1。文末 `## 信息来源` 给三者占比 + mat 列表。
 - **depth 降级**（照搬 §2.4）：关键环数据缺口能训练知识粗估则标注"训练知识估算"，补不了明写"数据缺失"，**不编造**。瓶颈通常在 findings 覆盖度（robinhood/荣昌验证）。
-- **估值模型库**（环②工具箱，原样保留）：先判原型（高 PE 成长 / 订单驱动 / 成熟现金流 / 周期反转 / 资产资源 / 银行保险）再选 2-3 模型独立估值。模型算法细节查旧 `04-expectations.md` §模型库（**仅查算法，结构不照搬**）。末尾给"估值矩阵汇总"表 + 一句"分歧来自哪个假设"。
+- **估值模型库**（环②工具箱）：先判原型（高 PE 成长 / 订单驱动 / 成熟现金流 / 周期反转 / 资产资源 / 银行保险）再选 2-3 模型独立估值。原型识别表 + 模型 A–H 算法 + 估值矩阵汇总格式见 **`_valuation_models.md`**（共享规范，**仅查算法，结构不照搬**）。末尾给"估值矩阵汇总"表 + 一句"分歧来自哪个假设"。
 
 #### 3.4 产出形态（份数交给 LLM）
 
@@ -284,7 +319,7 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 | 产出份数 | 固定 8 份 | 默认 1 份连贯 case（可拆），LLM 定 |
 | sidecar | `07_decision_kit.yaml` | **不变**（硬契约） |
 | 上游 00-03 / 财务模块 / thesis | — | **不变，复用** |
-| 估值模型库 | 04 内 | **原样保留**（§3.3 工具箱） |
+| 估值模型库 | 04 内 | **抽成共享片段 `_valuation_models.md`**（§3.3 工具箱引用） |
 | critic | 05-critic（旧键） | 内嵌 chain-critic + 05（已按 type 读 c_investment_case） |
 
 **接线现状（均已落到被调用方自身，无内联兜底）**：

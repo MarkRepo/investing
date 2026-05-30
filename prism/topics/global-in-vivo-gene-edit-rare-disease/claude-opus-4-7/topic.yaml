@@ -3,7 +3,7 @@ display_name: In vivo CRISPR/base editing 罕见病 (HAE/AATD/HSD)
 type: arena
 created: '2026-05-22T13:11:50.662795+00:00'
 status: active
-stage: 10-peer-matrix
+stage: 04-post-synthesis
 parent_topic: global-ai-drug-gene-edit
 monitoring_tier: dormant
 concepts: []
@@ -18,46 +18,64 @@ outputs_state:
     last_updated: '2026-05-23T02:53:56.903313+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   02_cycle_positioning:
     version: 1
     last_updated: '2026-05-23T02:55:15.549356+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   03_narrative_ecology:
     version: 1
     last_updated: '2026-05-23T02:56:39.825351+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   04_implied_expectations:
     version: 1
     last_updated: '2026-05-23T02:58:03.964371+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   05_historical_mirrors:
     version: 1
     last_updated: '2026-05-23T02:59:42.525050+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   06_risk_blindspots:
     version: 1
     last_updated: '2026-05-23T03:01:17.080686+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   07_decision_kit:
     version: 1
     last_updated: '2026-05-23T03:02:44.525576+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   08_living_feed:
     version: 1
     last_updated: '2026-05-23T03:03:22.995111+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
   10_peer_matrix:
     version: 1
     last_updated: '2026-05-23T03:10:22.183615+00:00'
     status: fresh
     data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
 parent_materials:
 - parent_slug: global-ai-drug-gene-edit
   parent_variant: claude-opus-4-7
@@ -165,3 +183,8 @@ thesis:
     summary: 超配 NTLA+BEAM 罕见病 in vivo 编辑篮子(4-7%总组合)：HAELO P3 -87%/62%AF/0SAE 锁定 NTLA-2002
       2027H1 BLA；BEAM-302 60mg pivotal 支撑 AATD。confidence 5→7/10。风险：Casgevy 漏斗+KalVista
       oral+LNP长期安全。
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []

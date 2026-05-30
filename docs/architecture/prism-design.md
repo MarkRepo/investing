@@ -6,7 +6,7 @@
 
 ## 1. 系统定位与设计哲学
 
-Prism 是一个 **LLM 驱动的结构化投资研究系统**。用户在对话窗口指挥 Claude，Claude 按照 markdown 工作流逐步完成行业/竞技场/公司的深度研究，最终产出 8 份标准报告，可在 `/prism` Web 页面查看。
+Prism 是一个 **LLM 驱动的结构化投资研究系统**。用户在对话窗口指挥 Claude，Claude 按照 markdown 工作流逐步完成行业/竞技场/公司的深度研究，最终按 type 产出"理解先行 + 6 环决策链"的 case + 配套 sidecar，可在 `/prism` Web 页面查看。
 
 ### 1.1 核心设计原则
 
@@ -80,16 +80,16 @@ prism/
 │   ├── 01-build-roadmap.md     # 制定研究路线图
 │   ├── 02-gather-materials.md  # 登记和处理资料
 │   ├── 03-extract-findings.md  # 从资料提炼发现
-│   ├── 04-synthesize/          # 生成 8 份标准产出
-│   │   ├── _shared.md          # 前置检查规范
-│   │   ├── 01-panorama.md      # 商业全景
-│   │   ├── 02-cycle.md         # 周期定位
-│   │   ├── 03-narrative.md     # 叙事生态
-│   │   ├── 04-expectations.md  # 隐含预期
-│   │   ├── 05-mirrors.md       # 历史镜子
-│   │   ├── 06-risks.md         # 风险盲点
-│   │   ├── 07-decision-kit.md  # 决策工具箱
-│   │   └── 08-feed.md          # 持续跟踪
+│   ├── 04-synthesize/          # 决策链合成（按 topic.type 走对应路径）
+│   │   ├── _shared.md          # 共享工具库（前置检查/gap/调度/Scheme C/thesis_v1/命门 delta 重拆）
+│   │   ├── _company_case.md    # company 决策链路径（6 环）
+│   │   ├── _industry_funnel.md # industry 漏斗路径
+│   │   ├── _arena_funnel.md    # arena 漏斗路径
+│   │   ├── _valuation_models.md# 估值模型库（环②工具箱，原型表+模型 A–H）
+│   │   ├── 00-primer.md        # 领域入门（理解先行）
+│   │   ├── 07-decision-kit.md  # company sidecar schema + stub（保留为工具）
+│   │   ├── 09-industry-to-arenas.md # industry sidecar schema + arena stub（保留为工具）
+│   │   └── 10-peer-matrix.md   # arena sidecar schema + company stub（保留为工具）
 │   ├── 05-critic-review.md     # 批评者评审（Steelman）
 │   ├── 06-daily-monitor.md     # 日常监控
 │   ├── 07-drilldown.md         # 专题深挖
@@ -106,15 +106,14 @@ prism/
 │       ├── topic.yaml
 │       ├── manifest.yaml
 │       ├── roadmap.yaml
+│       ├── thesis_v{N}.md          # thesis 快照（Scheme C）
+│       ├── decomposition_v{N}.md   # 命门拆解（与 thesis 配对升版）
 │       └── outputs/
-│           ├── 01_business_panorama.md
-│           ├── 02_cycle_positioning.md
-│           ├── 03_narrative_ecology.md
-│           ├── 04_implied_expectations.md
-│           ├── 05_historical_mirrors.md
-│           ├── 06_risk_blindspots.md
-│           ├── 07_decision_kit.md
-│           └── 08_living_feed.md
+│           ├── 00_primer.md                              # 领域入门
+│           ├── {c_investment_case|i_industry_case|a_arena_case}.md  # 按 type 的决策链 case
+│           ├── {07_decision_kit|09_industry_to_arenas|10_peer_matrix}.yaml  # 按 type 的 sidecar
+│           ├── _findings_index.md / _synthesis_brief.md
+│           └── _prism_reading_guide.md
 └── inbox/
     ├── auto/                   # 脚本自动下载的资料
     └── manual/                 # 用户手动放入的资料

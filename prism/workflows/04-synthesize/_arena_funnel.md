@@ -176,7 +176,7 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 **环 ⑤ 如果错了会怎样、怎么第一时间知道（证伪机制）**
 - 【元问题】赢家判断错在哪种情形？哪些信号最早告诉我押错了？
 - 【为何逼出】④下注后，理性立刻要求"怎么知道我错了"。
-- 【必带硬落地】① 已知风险 + **盲点风险**各 ≥1；② **arena 级 kill 触发条件**（路线被颠覆 / 共识赢家失速 / 新进入者改写格局，尽量数据化）；③ ≥1 个**历史镜鉴**（曾经的赢家如何被取代——Nokia/Kodak/被新路线颠覆的龙头，教训一句话；arena 层镜鉴比 company 更值钱，给足篇幅）；④ signpost（未来 3-12 月验证/证伪事件）。
+- 【必带硬落地】① 已知风险 + **盲点风险**各 ≥1；② **arena 级 kill 触发条件**（路线被颠覆 / 共识赢家失速 / 新进入者改写格局，尽量数据化）；③ **≥2 个历史镜鉴**（曾经的赢家如何被取代——Nokia/Kodak/被新路线颠覆的龙头）——每个标：失败模式 + 峰谷损失幅度% + 当年最早预警信号及"现在是否已现"，教训各一句话；**只想得到成功案例本身就是 red flag**；arena 层镜鉴比 company 更值钱，给足篇幅；④ signpost（未来 3-12 月验证/证伪事件）。
 - 【别漏的 lens】旧 05 镜鉴、旧 06 风险盲点。
 - 【自由区】风险分组、镜鉴选案。
 
@@ -229,7 +229,7 @@ print('primer + case + 10 sidecar 已注册')
 
 **thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, convergence_status, changelog)`**（见 `_shared.md` §命门有界 delta 重拆）。
 
-**收尾**：照 `_shared.md` § 全部产出完成后——出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单）；——`append_user_todos` + 清 `next_actions` + stage 推进。arena 完成后 stage 置 `10-peer-matrix` 或 `done`（与旧 10 Step 8 一致）；critic 对 arena 非强制（可选）。
+**收尾**：照 `_shared.md` § 全部产出完成后——出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单）；——`append_user_todos` + 清 `next_actions` + stage 推进。arena 完成后 stage 置 `04-post-synthesis` 或 `done`（**不再用旧名 `10-peer-matrix`**——它会让 SKILL stage 路由找不到续跑节点）；critic 对 arena 非强制（可选）。
 
 ### Step 6：critic 校验（**对着决策链** · 写完即跑一轮内嵌 chain-critic）
 

@@ -63,9 +63,16 @@ print(f'共 {len(deep) + len(watch)} 个 topic 今日需监控')
 
 ## Step 1a：读取该 topic 的 Kill Criteria 和 Signposts
 
+新流程的 kill / signpost 不在旧 markdown（`06_risk_blindspots.md` / `07_decision_kit.md` **已不再产出**），改读 sidecar + case 环⑤/⑥：
+
+- **company**：`07_decision_kit.yaml` 的 `kill_criteria` / `signposts`
+- **industry**：`09_industry_to_arenas.yaml` 的 `upgrade_triggers` / `monitor_metrics`
+- **arena**：`10_peer_matrix.yaml` 的 `upgrade_triggers`
+- 三类都可回看 case（`c_/i_/a_*_case.md`）环⑤证伪 + 环⑥行动 的原文叙述
+
 ```bash
-cat prism/topics/{slug}/outputs/06_risk_blindspots.md | grep -A 20 "Kill Criteria"
-cat prism/topics/{slug}/outputs/07_decision_kit.md | grep -A 30 "Signposts"
+# 读对应 type 的 sidecar（示例 company）
+cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.yaml
 ```
 
 ---
@@ -132,9 +139,46 @@ for m in exp:
 
 ---
 
-## Step 4：追加到信息流
+## Step 4：追加到信息流（living feed · 追加式日志）
 
-将本次监控结果追加到产出 08（living feed），参见 workflow 04-synthesize/08-feed.md Step 2。
+`08_living_feed.md` 是**追加式日志**（不是综合产出精华汇编）：每次有新信息在末尾追加，不改历史；综合判断在 case / sidecar / brief，本文件只记"事件序列 + 触发反应"。
+
+**文件不存在时，初次创建**（控制在 800-1200 字，只记三块：研究启动 + 当下不确定性 + catalyst 时点）：
+
+```markdown
+---
+slug: {slug}
+output_key: 08_living_feed
+version: 1
+generated: {timestamp}
+---
+
+# 信息流时间线：{display_name}
+
+> 按时间顺序记录重要信息和判断变化。每次更新在末尾追加，不修改历史记录。
+> 综合判断与 K# 校准请看 case / sidecar / brief，本文件只记录"事件序列 + 触发反应"。
+
+## {YYYY-MM-DD} 研究启动 v1
+**来源**：{topic_type} 研究{父级如有}
+**主要事项**：研究问题 / v0 thesis 强度 / 资料覆盖 {N} 份 findings
+**当时已知的主要不确定性**（3-5 条，每条 ≤1 句）：…
+**已排好的 catalyst 时点**（仅时间+事件名，判断标准在 sidecar signposts）：…
+```
+
+**文件已存在时，末尾追加**（每条 200-500 字）：
+
+```markdown
+
+---
+
+## {YYYY-MM-DD} {触发更新的事件简述}
+**来源**：{资料名称 / 市场事件 / 数据发布}
+**关键信息**：{具体事实，有数据带数据}
+**对已有判断的影响**：支持了 {哪个假设} / 否定了 {哪个，或"无"} / 新增了 {哪个不确定性，或"无"}
+**当前判断更新**：{如无变化写"维持原判断"}
+```
+
+追加后 `set_output_status('{slug}', '08_living_feed', 'fresh', '{variant}', version=N+1)`。
 
 ---
 
@@ -168,6 +212,6 @@ python -m prism.scripts.dashboard
 
 | Tier | 含义 | 触发 monitor | 需要的 outputs |
 |------|------|--------------|----------------|
-| `deep` | 持仓 / 候选标的 | 每日 + 重大事件 | 全 8/9/10 份 |
-| `watch` | 值得关注但暂不投 | 每周 | 仅 01 + 02 + 06 |
+| `deep` | 持仓 / 候选标的 | 每日 + 重大事件 | 全部（00_primer + case + sidecar yaml + thesis + living_feed） |
+| `watch` | 值得关注但暂不投 | 每周 | 00_primer + case 核心环（②定价 / ⑤证伪 / ⑥行动）+ living_feed |
 | `dormant` | 历史归档 / 完成研究 | 不主动 | 全部，但不 refresh |

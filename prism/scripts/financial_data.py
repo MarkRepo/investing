@@ -179,7 +179,7 @@ def ensure_financials(slug: str, variant: str) -> dict[str, Any]:
 
 
 def get_quality_screen_data(slug: str, variant: str) -> dict[str, Any]:
-    """Return financial metrics needed by 03b-quality-screen workflow.
+    """Return financial metrics needed by _company_case Step 0.5 质量红线门控（折自旧 03b）.
 
     Returns: roic_3y (list), fcf_3y (list), debt_ratio, goodwill_pct_equity,
     ocf_quality_3y (list), has_data (bool).
@@ -334,7 +334,7 @@ def get_peer_comparison_data_by_tickers(peers: list[dict[str, str]]) -> dict[str
 def get_financial_context(slug: str, variant: str) -> str:
     """Return a markdown snippet with financial data for workflow injection.
 
-    Designed for 04-expectations and 03-extract-findings context.
+    Designed for 决策链环②定价锚 and 03-extract-findings context.
     """
     data = get_quality_screen_data(slug, variant)
     if not data.get("has_data"):

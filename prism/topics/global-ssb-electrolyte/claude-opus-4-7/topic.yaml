@@ -3,7 +3,7 @@ display_name: 全球固态电解质+锂金属上游
 type: arena
 created: '2026-05-19T15:00:35.798929+00:00'
 status: active
-stage: 10-peer-matrix
+stage: 04-post-synthesis
 parent_topic: global-solid-state-battery
 monitoring_tier: dormant
 concepts: []
@@ -212,3 +212,7 @@ parent_materials:
   - K3
   note: SMM 电解质材料价格（K3 价格曲线锚点）
 critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []

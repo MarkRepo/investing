@@ -181,7 +181,7 @@ def list_missing_parent_findings(slug: str, variant: str) -> list[dict[str, Any]
 def list_findings_by_addresses(slug: str, variant: str, address_filter: list[str]) -> list[dict[str, Any]]:
     """Return findings whose addresses intersect with `address_filter`.
 
-    用于 sub-workflow 按 K#/Q# 维度筛取相关 finding（如 06-risks 取 [risk, K1, K6]）。
+    用于 sub-workflow 按 K#/Q# 维度筛取相关 finding（如 决策链环⑤证伪 取 [risk, K1, K6]）。
     address_filter 空 → 返回全部（等价 list_all_findings）。
     """
     items = list_all_findings(slug, variant)
