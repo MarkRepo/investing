@@ -43,7 +43,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 
 任一红项非空 → **不要硬合成**，否则 11 份产出全是"未充分论证"占位。先决定补救：即兴 web-search（_shared.md 末尾的"即兴 web-search"段）/ sub-agent 深挖 / 回 02 补资料。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于让 05 critic 把雷踩回来。
 
-> ring 轴 `uncovered_ring_inputs` 直接映射到"哪个决策环写作时缺输入硬落地"——比 K# 更早暴露断链风险。这也是下面**命门有界 delta 重拆**的输入之一。
+> ring 轴 `uncovered_ring_inputs` 直接映射到"哪个决策环写作时缺输入硬落地"——比 K# 更早暴露断链风险。这也是下面**B 轴有界 delta 重拆**的输入之一。
 
 ## 增量重写判定（默认开启）
 
@@ -80,7 +80,9 @@ set_output_referenced_mats('{slug}', '{output_key}', {mat_ids_list}, '{variant}'
 
 用户说「全重写所有 output」/「忽略增量」/「--full-rewrite」时，跳过 `list_affected_outputs`，对全部 9-11 份按 new 处理。常用于 thesis 大改、统一文风、修 schema 等场景。
 
-## 命门有界 delta 重拆 + 收敛（B 层 · 写作期做，配合 thesis_v1）
+## B 轴有界 delta 重拆 + 收敛（B 层 · 写作期做，配合 thesis_v1）
+
+> **B 轴 = 命门拆解 + primer 入门目标拆解**，同住 `decomposition_v{N}.md`、共用本节这一套 delta 重拆 / changelog / 收敛判定（两者知识驱动、盲点同源，不另起第二套螺旋）。命门 delta 在写 case 时做，primer 入门目标 delta 在写 primer（各路径 Step 2）时做——两者都早于本节末尾的 `decomposition_v1` 持久化。
 
 > **为什么在写作期才做深度拆解**：00 的 `decomposition_v0` 是**薄知识**拆的（训练知识+prescan），其可靠性原理上无法认证（任何裁判也薄知识绑定）。真正的可靠性闸门是**厚料浮现后**的重拆——写 case 时读遍 findings，命门会自然浮现/移位/坍塌。这一步把它固化为 `decomposition_v1`。
 
@@ -92,7 +94,11 @@ set_output_referenced_mats('{slug}', '{output_key}', {mat_ids_list}, '{variant}'
 - **重排**：命门间的杠杆顺序变了？
 - **置信度更新**：v0 标"低/uncertain"的命门，厚料是否已能定调？
 
-delta = 新增 ∪ 掉队 ∪ 重排。**delta 为空** → v0 已够好，直接 `set_decomposition(version=1, convergence_status='converged', changelog='厚料确认 v0 命门，无变化')` 后正常写作。
+**primer 入门目标 delta**（来源 = `00-primer.md` Step 1 写 primer 时的目标精修结果，盲点常与命门同源）：
+- **新入门目标**：findings 揭示门外人会卡、v0 种子没列的入门能力？
+- **多余/坍缩目标**：v0 种子列了但其实非入门必需 / 可并入他条？
+
+delta = 命门（新增 ∪ 掉队 ∪ 重排）∪ primer 入门目标（新增 ∪ 掉队）。**delta 为空**（命门与入门目标都无变化）→ v0 已够好，直接 `set_decomposition(version=1, convergence_status='converged', changelog='厚料确认 v0 命门 + 入门目标，无变化')` 后正常写作。
 
 ### 2. 第二收料趟（delta 非空时 · 双重收敛 + 硬顶）
 
@@ -103,11 +109,11 @@ delta 非空说明厚料改写了命门图景 → 需补这一轮的料，但**�
 
 ### 3. 防震荡（changelog 对全历史去重）
 
-每次 `set_decomposition` 的 `changelog` 必须写清"**砍了什么 / 加了什么 + 为什么**"。重加一个曾被砍的命门，**必须附新证据**（changelog 注明"凭 mat-XXX 复活，区别于上次砍它的理由"）——否则视为震荡，不允许。动笔前对照 `decomposition` history 全历史，避免来回翻烙饼。
+每次 `set_decomposition` 的 `changelog` 必须写清"**砍了什么 / 加了什么 + 为什么**"——**命门与 primer 入门目标的增删都记**（这正是把 primer 目标演化做成可追溯的地方）。重加一个曾被砍的命门**或入门目标**，**必须附新证据**（changelog 注明"凭 mat-XXX 复活，区别于上次砍它的理由"）——否则视为震荡，不允许。动笔前对照 `decomposition` history 全历史，避免来回翻烙饼。
 
 ### 4. 收敛判定（写 thesis_v1 时一并定）
 
-三条同时满足 → **收敛**：① delta 空；② gap 双轴绿（`uncovered_ks` + `uncovered_ring_inputs` 的红项都已补或诚实标缺）；③ 05 critic 无重大反转（critic 在 04 后跑，首轮可先标 `open`，critic 回来再定稿）。
+三条同时满足 → **收敛**：① delta 空（**命门 delta 空 且 primer 入门目标 delta 空**——后者是必要项：漏了它，case 会在自己的命门轴上软停而放过 primer 背景缺口）；② gap 双轴绿（`uncovered_ks` + `uncovered_ring_inputs` 的红项都已补或诚实标缺）；③ 05 critic 无重大反转（critic 在 04 后跑，首轮可先标 `open`，critic 回来再定稿）。
 
 ```python
 from prism.scripts.topic import set_decomposition
@@ -307,7 +313,7 @@ print('thesis v1 已登记')
 
 如果 brief 显示「v0 与 findings 完全契合，无需修正」，仍写 v1 但 summary 注明 `[与 v0 一致]`，便于后续 critic-review 锚定时点。
 
-**写 thesis_v1 的同时写 decomposition_v1**（B 层与 thesis 配对升版）：把"命门有界 delta 重拆 + 收敛"那一节得到的命门图景落成 `decomposition_v1.md`（命门现状 + 置信度 + 每环 B 靶点 + §changelog），并调 `set_decomposition(version=1, convergence_status=..., changelog=...)`（见该节代码块）。
+**写 thesis_v1 的同时写 decomposition_v1**（B 层与 thesis 配对升版）：把"B 轴有界 delta 重拆 + 收敛"那一节得到的图景落成 `decomposition_v1.md`，含**两 section**——「命门现状」（命门 + 置信度 + 每环 B 靶点）与「primer 入门目标现状」（精修后的 N 条 + 各条覆盖情况）——加 §changelog（命门与入门目标的增删都记），并调 `set_decomposition(version=1, convergence_status=..., changelog=...)`（见该节代码块）。
 
 ### 终态报告（收尾必出 · 三件套兜底）
 
@@ -315,7 +321,7 @@ print('thesis v1 已登记')
 
 1. **双轴 gap 终态**：重跑 `detect_gaps` → B 轴（`uncovered_ks`/`thin_evidence`）+ A 轴（`uncovered_ring_inputs`，标出哪些已补、哪些仍缺）。
 2. **收敛状态**：`decomposition` 的 `convergence_status`（converged / capped / open）+ 走了几轮第二收料趟。
-3. **残留缺口清单（诚实）**：填不上的明写"**数据缺失**"或"**训练知识估算，非实证**"，**不冒充**；撞 2 轮顶的顽固命门列出 + 标记踢 `07-drilldown`。
+3. **残留缺口清单（诚实）**：填不上的明写"**数据缺失**"或"**训练知识估算，非实证**"，**不冒充**；撞 2 轮顶的顽固命门列出 + 标记踢 `07-drilldown`。**findings 撑不起的 primer 入门目标**同样列出（"入门目标 X：数据缺失 / 训练知识估算"），与 primer `depth: shallow` 降级口径一致、互为补充。
 
 > 三件套兜底 = 残留缺口清单（本步）+ 05 critic 复核 + 用户手检。薄拆解的不确定性靠这三层兜，不假装 04 一定收敛干净。
 

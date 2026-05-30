@@ -130,7 +130,7 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 
 因 primer 已建好赛道地基，case 的起点诊断**轻量化**：只需确认 (a) 这个 arena 的**命门/特色** 1-3 个（决定胜负的关键变量、路线之争的焦点，给足篇幅）；(b) case① 该把哪些背景"甩给 primer"。
 
-> 命门**不从零拍脑袋**：以 00 的 `decomposition_v0` 为种子，读完 findings 后按 `_shared.md` §"命门有界 delta 重拆 + 收敛"做 delta 校验 → delta 非空则有界第二收料趟（封顶 2 轮）→ 落 `decomposition_v1`（changelog 防震荡）。
+> 命门**不从零拍脑袋**：以 00 的 `decomposition_v0` 为种子，读完 findings 后按 `_shared.md` §"B 轴有界 delta 重拆 + 收敛"做 delta 校验 → delta 非空则有界第二收料趟（封顶 2 轮）→ 落 `decomposition_v1`（changelog 防震荡）。
 
 #### 3.2 逐环落地（链内无固定子节模板，每环给"必须落地什么"）
 
@@ -227,7 +227,7 @@ print('primer + case + 10 sidecar 已注册')
 
 > 新键 `a_arena_case` 靠 `set_output_status` 的 `setdefault` 自动注册，**不用改 topic.py**。
 
-**thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, convergence_status, changelog)`**（见 `_shared.md` §命门有界 delta 重拆）。
+**thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, convergence_status, changelog)`**（见 `_shared.md` §B 轴有界 delta 重拆）。
 
 **收尾**：照 `_shared.md` § 全部产出完成后——出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单）；——`append_user_todos` + 清 `next_actions` + stage 推进。arena 完成后 stage 置 `04-post-synthesis` 或 `done`（**不再用旧名 `10-peer-matrix`**——它会让 SKILL stage 路由找不到续跑节点）；critic 对 arena 非强制（可选）。
 

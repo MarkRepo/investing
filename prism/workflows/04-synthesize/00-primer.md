@@ -41,9 +41,13 @@ print('thesis_v0:', (t.get('thesis') or {}).get('current_version'))
 
 ---
 
-## Step 1：目标生成（LLM 针对本 topic 把元目标具体化）
+## Step 1：目标精修（读 decomposition 种子 + 厚料 delta，不凭空生成）
 
-读元目标 + `topic.yaml`（`type` / `scope.question` / `thesis` summary）+ `thesis_v0.md`（或当前最新 thesis）+ **`baseline_knowledge.md`（训练知识种子 · 见下）** + `_findings_index.md` / findings 本身（看 findings 覆盖度 + LLM 训练知识在本领域厚不厚），**输出一份"本 topic 读完应能做到 N 条"清单**（N 通常 8-13，按领域复杂度）。
+> **目标不从零拍脑袋**（与命门"以 v0 为种子"完全同构）：00 Step 5.4 的 `decomposition_v0.md` 已含一块 **「primer 入门目标 v0」**（薄知识起草的种子）。本步**读种子 → 厚料 delta 精修 → 出定稿**，而不是现场凭空生成。旧 topic 无 decomposition 种子 → 退化为凭空生成（零特判）。
+
+1. **读种子**：Read `decomposition_v{latest}.md` 的「primer 入门目标」section（连同命门，便于看盲点同源）。
+2. **delta 校验（= primer 目标的"体检"）**：读元目标 + `topic.yaml`（`type` / `scope.question` / `thesis` summary）+ `thesis_v0.md`（或最新 thesis）+ **`baseline_knowledge.md`（训练知识种子 · 见下）** + `_findings_index.md` / findings 本身，对照种子逐条问厚料：**该补的新入门目标**（findings 揭示门外人会卡、种子没列的）？**多余/可坍缩的目标**（种子列了但其实非入门必需）？因 primer 本就消费 findings，这步 delta 在动笔前自然发生。
+3. **出定稿**：得到精修后的 **"本 topic 读完应能做到 N 条"清单**（N 通常 8-13，按领域复杂度）。把目标增删（added/dropped）记下，交 Step 4 / case 路径在 `decomposition_v1` 持久化 + 进 changelog（见 `_shared.md` §B 轴有界 delta 重拆——primer 目标 delta 与命门 delta 同一螺旋、同一收敛判定）。
 
 > **O2 接线 · baseline_knowledge.md 是 primer 的训练知识种子**：00-research-topic Step 4.3 写的 baseline 是本 topic 第一层数据源（行业稳定知识 + 自评盲点）。primer 的"行业原理/技术分类/工艺/估值方法"等稳定知识层应**直接复用 baseline 第一节**，避免重新凭空回忆导致前后不一致。**但必须读 baseline §六 校准结果**（Step 4.5c 回写）——被 prescan 推翻的 fact **不准**再写进 primer，必须用校准后的新事实；被验证的可放心用。baseline 缺失（旧 topic）→ 退化为纯训练知识+findings，零特判。
 
