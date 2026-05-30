@@ -343,7 +343,7 @@ for k, reason in stale:
 > critic 标 stale 的产出有 N≥5 份——这通常意味着 thesis 整体被翻案，**建议升 thesis_v{N+1} 全重写**而不是修补单份。
 >
 > 选项：
-> A. 升 thesis_v{N+1}，按 _shared.md Scheme C 全快照重写所有 11 份
+> A. 升 thesis_v{N+1}，按 _shared.md Scheme C 全快照重写全部 3 份决策链产出
 > B. 仍按修补走，重写这 N 份（成本高且可能产出与 thesis 矛盾）
 > C. 暂停，让我重看 critic 结论
 

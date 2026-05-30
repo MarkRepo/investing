@@ -254,6 +254,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 
 **A 轴（决策链输入合同 · ring 轴）**：
 - `uncovered_ring_inputs` 非空 → 决策链某环的必带输入无材料覆盖（**带 🔴 = 三项真·欠供之一，最该补**）
+- `thin_ring_inputs` 非空 → **hard 项有料但 < min_evidence（🟡 薄输入）**：单条弱料不足以撑起三项真·欠供之一，按 `code(当前/阈值)` 补到阈值或诚实降级
 - `api_pending_inputs` → 财务/估值类，合成期自动拉，**非红**，不用管
 - `ring_axis_status == 'n/a'` → 旧 topic 未接入拆解/rings，A 轴不适用（忽略）
 

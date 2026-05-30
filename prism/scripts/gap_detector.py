@@ -81,11 +81,14 @@ def _detect_relative_updated(slug: str, variant: str, topic: dict) -> list[dict]
     return flags
 
 
-def _detect_ring_inputs(topic: dict, manifest: dict) -> dict:
+def _detect_ring_inputs(topic: dict, manifest: dict, min_evidence: int = 2) -> dict:
     """A 轴：决策链输入合同覆盖（**不依赖具体拆解**，可靠）。
 
     按 topic.type 取输入合同，逐项查"是否被实收材料的 rings 标签覆盖"：
       - 材料强制项（质性，api_satisfiable=False）无材料 → uncovered_ring_inputs（可靠红信号）
+        · 其中 hard 项（三项真·欠供）若 0 < 计数 < min_evidence → thin_ring_inputs（黄，薄输入）：
+          单条弱料足以让 hard 项"假装补齐"，三态把"有料但不足"从绿色里揪出来。
+        · 非 hard 材料强制项维持二元（有料即覆盖）——rings 粒度比 K# 还粗，开 thin 噪声大。
       - api_satisfiable 项无材料 → 多为合成期自动拉（api_pending，非红）；
         但若需 financial/market 数据却连 ticker 都没有 → 真缺口（无法自动拉、无材料）
     legacy 守门：旧 topic（无 decomposition 且无任一材料带 rings）→ status='n/a'，不刷红误报。
@@ -99,7 +102,8 @@ def _detect_ring_inputs(topic: dict, manifest: dict) -> dict:
     items = required_inputs(topic_type)
     if not items:
         return {"ring_axis_status": "n/a", "ring_coverage": {},
-                "uncovered_ring_inputs": [], "api_pending_inputs": []}
+                "uncovered_ring_inputs": [], "thin_ring_inputs": [],
+                "api_pending_inputs": []}
 
     mats = manifest.get("materials") or []
     coverage: dict[str, int] = {}
@@ -113,23 +117,25 @@ def _detect_ring_inputs(topic: dict, manifest: dict) -> dict:
         # 旧 topic：拆解/rings 都没接入过 → ring 轴不适用，避免误报
         return {"ring_axis_status": "n/a",
                 "ring_coverage": {it["code"]: 0 for it in items},
-                "uncovered_ring_inputs": [], "api_pending_inputs": []}
+                "uncovered_ring_inputs": [], "thin_ring_inputs": [],
+                "api_pending_inputs": []}
 
     scope = topic.get("scope") or {}
     has_ticker = bool(scope.get("ticker") or scope.get("extra_tickers"))
     ring_coverage: dict[str, int] = {}
     uncovered: list[dict] = []
+    thin: list[dict] = []
     api_pending: list[dict] = []
 
     for it in items:
         code = it["code"]
         cnt = coverage.get(code, 0)
         ring_coverage[code] = cnt
-        if cnt > 0:
-            continue
         entry = {"code": code, "ring": it["ring"], "label": it["label"],
                  "served_by": it.get("served_by") or [], "hard": bool(it.get("hard"))}
         if is_api_satisfiable(it):
+            if cnt > 0:
+                continue
             needs_quote = bool(set(it.get("served_by") or []) & {"financial_data", "market_data"})
             if needs_quote and not has_ticker:
                 entry["reason"] = "无材料且无 ticker，无法自动拉数"
@@ -137,11 +143,20 @@ def _detect_ring_inputs(topic: dict, manifest: dict) -> dict:
             else:
                 api_pending.append(entry)  # 合成期自动拉，信息项非红
         else:
-            entry["reason"] = "材料强制项，无任何材料覆盖"
-            uncovered.append(entry)
+            # 材料强制项
+            if cnt == 0:
+                entry["reason"] = "材料强制项，无任何材料覆盖"
+                uncovered.append(entry)
+            elif it.get("hard") and cnt < min_evidence:
+                # hard 项有料但不足阈值 → 薄输入（黄），堵单条弱料假装补齐
+                entry["count"] = cnt
+                entry["min_evidence"] = min_evidence
+                thin.append(entry)
+            # else: 覆盖充分（非 hard 有料 / hard ≥ 阈值）
 
     return {"ring_axis_status": "active", "ring_coverage": ring_coverage,
-            "uncovered_ring_inputs": uncovered, "api_pending_inputs": api_pending}
+            "uncovered_ring_inputs": uncovered, "thin_ring_inputs": thin,
+            "api_pending_inputs": api_pending}
 
 
 def detect_gaps(
@@ -167,6 +182,8 @@ def detect_gaps(
             'ring_axis_status':   'active' | 'n/a',   # 'n/a' = 旧 topic 守门
             'ring_coverage':      {code: int},        # 各合同类目的材料计数
             'uncovered_ring_inputs': [{code,ring,label,served_by,hard,reason}, ...],
+            'thin_ring_inputs':      [{code,ring,label,served_by,hard,count,min_evidence}, ...],
+                                  # hard 材料强制项有料但 < min_evidence（黄，薄输入）
             'api_pending_inputs':    [{code,ring,label,served_by}, ...],  # 合成期自动拉，非红
             # 其它
             'expired_web_materials': [...],      # web-search > 90d
@@ -230,7 +247,7 @@ def detect_gaps(
 
     relative_updated = _detect_relative_updated(slug, variant, topic)
 
-    ring = _detect_ring_inputs(topic, manifest)
+    ring = _detect_ring_inputs(topic, manifest, min_evidence)
 
     return {
         "topic": {
@@ -244,6 +261,7 @@ def detect_gaps(
         "ring_axis_status": ring["ring_axis_status"],
         "ring_coverage": ring["ring_coverage"],
         "uncovered_ring_inputs": ring["uncovered_ring_inputs"],
+        "thin_ring_inputs": ring["thin_ring_inputs"],
         "api_pending_inputs": ring["api_pending_inputs"],
         "expired_web_materials": [
             {"id": m["id"], "filename": m["filename"],
@@ -280,6 +298,12 @@ def format_summary(report: dict) -> str:
             mark = "🔴" if e.get("hard") else ""
             return f"{e['code']}(环{e['ring']}{mark})"
         lines.append("  🧩 缺输入: " + ", ".join(_fmt(e) for e in uri))
+    thin_ri = report.get("thin_ring_inputs") or []
+    if thin_ri:
+        lines.append(
+            "  🟡 薄输入(hard): "
+            + ", ".join(f"{e['code']}({e['count']}/{e['min_evidence']})" for e in thin_ri)
+        )
     api_pending = report.get("api_pending_inputs") or []
     if api_pending:
         lines.append(
@@ -297,6 +321,6 @@ def format_summary(report: dict) -> str:
             f"  🔗 relative-updated: {len(rel_upd)} 条（亲属产出比本 topic case 新，考虑复跑借用段）"
         )
     if not (report["uncovered_ks"] or report["thin_evidence"]
-            or report["expired_web_materials"] or rel_upd or uri):
+            or report["expired_web_materials"] or rel_upd or uri or thin_ri):
         lines.append("  ✅ no gaps detected")
     return "\n".join(lines)

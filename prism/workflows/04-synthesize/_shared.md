@@ -3,7 +3,7 @@
 每份产出工作流开始前必须完成以下检查，违反则停止并告知用户。
 
 > **本文件现为"共享工具库"**：三类 topic 的合成都改走决策链路径——company → `_company_case.md`、industry → `_industry_funnel.md`、arena → `_arena_funnel.md`。它们**引用**本文件的：前置检查 / gap 体检 / 增量重写判定 / 断点续跑 / 调度模式（主 agent 直做 + findings 加载/索引）/ thesis_v1 Scheme C / 即兴 web-search。
-> **已退休（旧 8 份并列维度路径专属）**：01-08 分批 Write 清单、subagent dispatch 01-08 模板、自动触发 09/10、收尾 primer-last——均已下线，selection（09/10）折进 funnel 的环⑥、primer 改 primer-first 由各路径 Step 2 自管。磁盘上已有的旧 01-08 产出不受影响（静态文件，重合成走新路径）。
+> **旧 8 份并列维度路径已全退休**（01-08 分批 Write / subagent 模板 / 09-10 自动触发 / primer-last 均下线；selection 折进 funnel 环⑥、primer 改 primer-first 由各路径 Step 2 自管）；磁盘旧产出不受影响。
 
 > **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
 > 仅事实校验类临时单查走 WebSearch tool。
@@ -41,13 +41,13 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 - `uncovered_ring_inputs` 非空 → 决策链某环必带输入无料（带 🔴 = 三项真·欠供）→ 该环写作会硬伤；`api_pending_inputs` 非红（合成期自动拉）
 - `expired_web_materials` 非空 → web-search 材料 > 90 天
 
-任一红项非空 → **不要硬合成**，否则 11 份产出全是"未充分论证"占位。先决定补救：即兴 web-search（_shared.md 末尾的"即兴 web-search"段）/ sub-agent 深挖 / 回 02 补资料。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于让 05 critic 把雷踩回来。
+任一红项非空 → **不要硬合成**，否则 3 份决策链产出全是"未充分论证"占位。先决定补救：即兴 web-search（_shared.md 末尾的"即兴 web-search"段）/ sub-agent 深挖 / 回 02 补资料。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于让 05 critic 把雷踩回来。
 
 > ring 轴 `uncovered_ring_inputs` 直接映射到"哪个决策环写作时缺输入硬落地"——比 K# 更早暴露断链风险。这也是下面**B 轴有界 delta 重拆**的输入之一。
 
 ## 增量重写判定（默认开启）
 
-**目的**：避免 11 份产出每次都全重写——浪费 token 且让"未变章节"也升 version 引起噪声。
+**目的**：避免 3 份决策链产出每次都全重写——浪费 token 且让"未变章节"也升 version 引起噪声。
 
 ```bash
 python3 -c "
@@ -78,7 +78,7 @@ set_output_referenced_mats('{slug}', '{output_key}', {mat_ids_list}, '{variant}'
 
 ### 触发全重写（绕过增量判定）
 
-用户说「全重写所有 output」/「忽略增量」/「--full-rewrite」时，跳过 `list_affected_outputs`，对全部 9-11 份按 new 处理。常用于 thesis 大改、统一文风、修 schema 等场景。
+用户说「全重写所有 output」/「忽略增量」/「--full-rewrite」时，跳过 `list_affected_outputs`，对全部产出按 new 处理。常用于 thesis 大改、统一文风、修 schema 等场景。
 
 ## B 轴有界 delta 重拆 + 收敛（B 层 · 写作期做，配合 thesis_v1）
 
@@ -130,7 +130,7 @@ set_decomposition(
 
 ## 断点续跑（修 9：workflow resume）
 
-**目的**：11 份产出循环，单份失败不能阻断后续 10 份；失败要可见且可重跑。
+**目的**：产出循环，单份失败不能阻断后续产出；失败要可见且可重跑。
 
 **模式**：每份产出包在 try/except 里：
 
@@ -142,7 +142,7 @@ try:
     set_output_referenced_mats('{slug}', '{output_key}', {mat_ids}, '{variant}')
 except Exception as e:
     set_output_error('{slug}', '{output_key}', str(e), '{variant}')
-    raise  # 主 agent 看到后继续下一份，不中断 11 份循环
+    raise  # 主 agent 看到后继续下一份，不中断产出循环
 "
 ```
 
@@ -164,7 +164,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
 - ❌ **不要 try/except 吞异常**：失败必须 raise，让用户在汇报里看到"X 份成功 / Y 份失败"
 - ❌ **不要在中途 commit 文件**：失败应只反映在 `outputs_state.last_error`，不留半成品 markdown
-- ❌ **不要重跑全部 11 份"为了清错"**：只重跑 `list_failed_outputs` 列出的
+- ❌ **不要重跑全部产出"为了清错"**：只重跑 `list_failed_outputs` 列出的
 
 ## 写入规范
 
@@ -181,18 +181,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
 **默认走主 agent 直做模式**——主 agent 读完 findings 后直接 Write case/决策链产出（`{c/i/a}_*_case` + sidecar yaml + thesis_v1，primer 已在 Step 2 先出），用 Write 工具并行批次（一次 message 发多个 Write 调用）。
 
-### 为什么主 agent 直做（2026-05-22 改）
-
-历史教训（feedback_subagent_bulk_synthesis）：用单 subagent 顺序模式 dispatch 11 份长产出，**两次测试都撞 60min subagent 硬上限被强杀，0 文件落盘**。原因：
-1. **结构性超限**：11 份 × 400 行 markdown 的 token 输出本身就要 30-50min，加 findings 读取 + 推理 + cross-mat 校准必撞 60min 硬墙。
-2. **Write 幻觉重试循环放大**（见 [[subagent-write-hallucination]]）。
-3. **黑盒无可见性**：subagent stdout 不流式，前 30min 看不到进度，等发现已超时。
-
-主 agent 直做的优势：
-- **并行 Write**：一次 message 发 4-5 份产出的 Write 调用，比 subagent 串行快 3-5×
-- **无 60min 硬墙**：主 agent 没有 wallclock 上限
-- **无 Write 幻觉**：主 agent Write 工具可靠
-- **可中途救**：每份 Write 实时落盘，断了可以接着写
+> **为什么主 agent 直做**：subagent 批量合成会撞 60min 硬墙（长产出 token 输出 + findings 读取必超时）+ Write 幻觉重试，实测两次 0 落盘。主 agent 直做无 wallclock 上限、并行 Write 快 3-5×、可中途救。详见 [[feedback_subagent_bulk_synthesis]]。
 
 ### 执行步骤
 
@@ -226,7 +215,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
    - ❌ 不要每环都 Read 全部 findings（重复重读浪费 token）
    - ❌ 不要假定 findings 一定还在 context（compact 可能切掉，索引让你能验证）
 
-   > sidecar schema（`07_decision_kit.yaml` / `09_industry_to_arenas.yaml` / `10_peer_matrix.yaml`）**严格、dashboard 直接消费、禁自创字段**——字段清单见各路径文档的 sidecar 步骤（分别引 `07-decision-kit.md` Step 3.5 / `09-industry-to-arenas.md` Step 6.5 / `10-peer-matrix.md` Step 6.5）。
+   > sidecar schema（`07_decision_kit.yaml` / `09_industry_to_arenas.yaml` / `10_peer_matrix.yaml`）**严格、dashboard 直接消费、禁自创字段**——字段清单见各路径文档的 sidecar 步骤（分别引 `_decision_kit_spec.md` Step 3.5 / `_arena_select_spec.md` Step 6.5 / `_peer_matrix_spec.md` Step 6.5）。
 6. **状态注册**：用单个 Bash 脚本一次性注册各 output status + thesis v1（键名见各路径文档 §5）。
 7. **收尾**：照各路径文档 §4 收尾——stage 推进 + 清空 user_todos + 更新 next_actions。
 
@@ -344,8 +333,8 @@ if ns == '05-critic-review':
 后台失败仅写 `prism/logs/dashboard_auto.log`——若发现 dashboard 长期未刷新，手动跑一次 `python -m prism.scripts.dashboard` 排查。
 
 **selection（09/10）已折进 funnel 环⑥**（不再自动触发独立 workflow）：
-- **industry** → arena 选拔是 `_industry_funnel.md` 环⑥（落 `09_industry_to_arenas.yaml` + 建 arena stub），`09-industry-to-arenas.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema / stub 创建）。
-- **arena** → peer shortlist 是 `_arena_funnel.md` 环⑥（落 `10_peer_matrix.yaml` + 建 company stub），`10-peer-matrix.md` 同样降级为工具规范。
+- **industry** → arena 选拔是 `_industry_funnel.md` 环⑥（落 `09_industry_to_arenas.yaml` + 建 arena stub），`_arena_select_spec.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema / stub 创建）。
+- **arena** → peer shortlist 是 `_arena_funnel.md` 环⑥（落 `10_peer_matrix.yaml` + 建 company stub），`_peer_matrix_spec.md` 同样降级为工具规范。
 - **company** → 无 selection 环，c_investment_case 即完整决策。
 
 > Tier 排序基于本 topic 的 thesis 最新版 + 决策链 ②④（funnel 文档 Step 1 已要求读 brief + thesis）。

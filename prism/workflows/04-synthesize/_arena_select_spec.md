@@ -1,41 +1,14 @@
-# Workflow 09 — Industry → Arenas 选拔
+# Industry → Arenas 选拔规范（arena 评分 / 分流 / sidecar / stub）
 
-**触发**: industry topic 完成 01-08 产出后自动触发（由 `_shared.md` 收尾逻辑判断 topic_type=industry）；也可手动说「生成产出 09」
-**定位**: 从行业研究中识别细分 arena，按 6 维度评分并强制分流
-**产出文件**: `prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.md`
-
----
-
-## Step 1：前置检查
-
-```bash
-python -c "
-from prism.scripts.topic import read_topic
-data = read_topic('{slug}', '{variant}')
-assert data['type'] == 'industry', '仅 industry topic 可运行此 workflow'
-assert data['stage'] in ('04-synthesizing', '09-arena-shortlist'), '请先完成 01-08 合成'
-print('前置检查通过')
-"
-```
-
----
-
-## Step 2：读取已有产出并提取 arena 信号
-
-读取以下文件：
-- `outputs/01_business_panorama.md`
-- `outputs/02_cycle_positioning.md`
-- `outputs/03_narrative_ecology.md`
-- `outputs/04_implied_expectations.md`
-- `outputs/06_risk_blindspots.md`
-- `outputs/07_decision_kit.md`
-- 所有 `findings_mat_*.md`
-
-从以上内容中提取至少 **5 个细分 arena**。
+> **工具规范，非独立产出步骤。** industry 的 arena 选拔已折进 `_industry_funnel.md` 决策链环④（6 维评分）+ 环⑥（三档分流 + 落 sidecar + 建 arena stub），叙事写进 `i_industry_case`。本文件只作 `_industry_funnel.md` **逐字引用**的工具规范：环④引 **Step 3**（6 维评分口径）、环⑥引 **Step 6.5**（sidecar schema）+ **Step 6/6b**（arena stub 创建 / 继承 thesis_v0）。查规范，不照搬结构。
+>
+> **不再产出**独立 markdown（旧 `09_industry_to_arenas.md`）；sidecar `09_industry_to_arenas.yaml` 是 dashboard 行业层唯一契约。
 
 ---
 
 ## Step 3：对每个 arena 进行 6 维度评分
+
+至少识别 **5 个细分 arena**（来源：findings + 决策链①③ 的价值链/迁移路径判断），每个沿 6 维评分：
 
 | 维度 | 说明 | 评分标准 (1-5) |
 |------|------|----------------|
@@ -45,6 +18,8 @@ print('前置检查通过')
 | 估值水位 | 当前 PE/PS 相对该 arena 历史 + 全球 peer | 1: 历史高位, 5: 历史低位 |
 | 周期位置 | 早期成长 / 中段加速 / 晚期分化 / 成熟饱和 | 1: 衰退/饱和, 5: 早期成长 |
 | 综合评分 | 以上维度加权平均 | 1-5 |
+
+每个数字注明来源（findings mat_id 或"训练知识假设"）。
 
 ---
 
@@ -65,24 +40,13 @@ print('前置检查通过')
 
 ## Step 4.5：填写 data_freshness
 
-在 frontmatter 写入：
+写进 sidecar（及 case frontmatter）：
 - `data_freshness`: 用到的最晚数据所在期（季度/月份）
 - `data_freshness_basis`: 该期来自哪份 finding
 
 ---
 
-## Step 5：写入产出文件
-
-使用模板 `prism/templates/industry_to_arenas.md.tmpl`，写入 `outputs/09_industry_to_arenas.md`。
-
-**强制要求**：
-- 至少 5 个 arena
-- 每档至少 1 个
-- 每个数字注明来源（"来自 01_panorama p3" 或 "训练知识假设"）
-
----
-
-## Step 6：询问用户是否创建 stub arena topic
+## Step 6：为深挖档创建 stub arena topic
 
 对每个深挖档 arena：
 
@@ -151,7 +115,7 @@ set_thesis(
 
 写入文件：`prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.yaml`
 
-从刚才写的 markdown 中提取以下字段。**数字不加引号，缺失用 null，tier 只能是 deep / watch / eliminated。**
+从决策链④/⑥ 提取以下字段。**数字不加引号，缺失用 null，tier 只能是 deep / watch / eliminated。**
 
 ```yaml
 slug: {slug}
@@ -196,24 +160,3 @@ path.write_text(content, encoding='utf-8')
 print('09 sidecar 写入完成')
 "
 ```
-
----
-
-## Step 7：更新 state 并追加到 living feed
-
-```bash
-python -c "
-from prism.scripts.topic import set_output_status, set_stage, set_next_actions
-set_output_status('{slug}', '09_industry_to_arenas', 'fresh', '{variant}', version=1)
-set_stage('{slug}', '09-arena-shortlist', '{variant}')  # 或 'done'
-set_next_actions('{slug}', ['为深挖档创建 arena topic', '或进入日常监控'], '{variant}')
-"
-```
-
-将 "09-industry-to-arenas 完成" 摘要追加到 `08_living_feed.md`。
-
----
-
-## Step 8：仪表盘自动刷新（修 S5）
-
-`set_output_referenced_mats('09_industry_to_arenas', ...)` 已自动 fire-and-forget 触发 dashboard 异步重建，**无需手跑** `python -m prism.scripts.dashboard`。后台失败留痕在 `prism/logs/dashboard_auto.log`。

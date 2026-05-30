@@ -220,6 +220,55 @@ def test_ring_axis_active_uncovered_and_api(tmp_topic_with_findings):
     assert report["ring_coverage"]["consensus"] == 1
 
 
+def test_ring_axis_hard_thin_below_threshold(tmp_topic_with_findings):
+    """hard 材料强制项被恰好 1 份料覆盖（< min_evidence=2）→ 进 thin_ring_inputs（黄），
+    不进 uncovered（红）也不算 covered（绿）；非 hard 材料强制项 1 份料即覆盖，不进 thin。"""
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, _ = tmp_topic_with_findings
+    topic_io.set_decomposition(slug, variant, version=0, summary="命门",
+                               stage_set_at="00-research-pending")
+    # hard 项 consensus 恰好 1 份料；非 hard 材料强制项 bull-bear 也 1 份料
+    add_material(slug=slug, filename="c.md", source_type="sell-side-note",
+                 variant=variant, rings=["consensus"])
+    add_material(slug=slug, filename="bb.md", source_type="sell-side-note",
+                 variant=variant, rings=["bull-bear"])
+
+    report = detect_gaps(slug, variant, min_evidence=2)
+    thin_codes = {e["code"] for e in report["thin_ring_inputs"]}
+    uncovered_codes = {e["code"] for e in report["uncovered_ring_inputs"]}
+    assert "consensus" in thin_codes, "hard 项 1 份料 → 薄输入"
+    assert "consensus" not in uncovered_codes, "有料就不是 uncovered"
+    # 薄输入条目带计数与阈值
+    consensus_entry = next(e for e in report["thin_ring_inputs"] if e["code"] == "consensus")
+    assert consensus_entry["count"] == 1
+    assert consensus_entry["min_evidence"] == 2
+    assert consensus_entry["hard"] is True
+    # 非 hard 材料强制项 1 份料 → 覆盖，不进 thin 也不进 uncovered
+    assert "bull-bear" not in thin_codes, "非 hard 项不开 thin"
+    assert "bull-bear" not in uncovered_codes
+
+
+def test_ring_axis_hard_meets_threshold_is_covered(tmp_topic_with_findings):
+    """hard 项达到 min_evidence 份料 → 既不 uncovered 也不 thin（绿）。"""
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, _ = tmp_topic_with_findings
+    topic_io.set_decomposition(slug, variant, version=0, summary="命门",
+                               stage_set_at="00-research-pending")
+    add_material(slug=slug, filename="c1.md", source_type="sell-side-note",
+                 variant=variant, rings=["consensus"])
+    add_material(slug=slug, filename="c2.md", source_type="sell-side-note",
+                 variant=variant, rings=["consensus"])
+
+    report = detect_gaps(slug, variant, min_evidence=2)
+    thin_codes = {e["code"] for e in report["thin_ring_inputs"]}
+    uncovered_codes = {e["code"] for e in report["uncovered_ring_inputs"]}
+    assert "consensus" not in thin_codes
+    assert "consensus" not in uncovered_codes
+    assert report["ring_coverage"]["consensus"] == 2
+
+
 def test_ring_axis_api_no_ticker_is_gap(tmp_topic_with_findings, monkeypatch):
     """api_satisfiable 项但无 ticker → 无法自动拉 → 计入 uncovered。"""
     from prism.scripts.gap_detector import detect_gaps

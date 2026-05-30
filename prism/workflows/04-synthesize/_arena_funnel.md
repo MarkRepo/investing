@@ -1,10 +1,10 @@
 # Arena 合成（理解先行 · 决策链驱动 · 漏斗终局 · 自由发挥版）
 
-> **调度提示**：本文件是 **arena 类型 topic 在 04-synthesize 阶段的完整规范**，整体替代 `_shared.md` + `01-08` 的 8 份分箱 spec + 旧 `10-peer-matrix.md` 的独立 markdown。`company` 走 `_company_case.md`，`industry` 走 `_industry_funnel.md`。
+> **调度提示**：本文件是 **arena 类型 topic 在 04-synthesize 阶段的完整规范**，整体替代 `_shared.md` + `01-08` 的 8 份分箱 spec + 旧 `_peer_matrix_spec.md` 的独立 markdown。`company` 走 `_company_case.md`，`industry` 走 `_industry_funnel.md`。
 >
 > **复用上游、不重写**：00-research → 01-roadmap → 02-materials → 03-findings 的 findings、`gap_detector`、增量重写判定、`financial_data`、`thesis`、`00-primer.md`、10 sidecar schema/stub 创建机制全部沿用。本文件只重做"合成"这一段。
 >
-> **10 sidecar 与 company stub 机制保留**：`10-peer-matrix.md` 不删——它作为 **④ 的 peer matrix + financial_data 横比工具** + **⑥ 的 sidecar schema(Step 6.5) + company stub 创建/继承(Step 7/7b)** 被本文件引用（查规范，不照搬结构）。
+> **10 sidecar 与 company stub 机制保留**：`_peer_matrix_spec.md` 不删——它作为 **④ 的 peer matrix + financial_data 横比工具** + **⑥ 的 sidecar schema(Step 6.5) + company stub 创建/继承(Step 7/7b)** 被本文件引用（查规范，不照搬结构）。
 
 ---
 
@@ -100,7 +100,7 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 ### Step 1：加载 findings + thesis_v0 + peer 财务 + **亲属产出（图谱层 hook）**
 
 1. 照 `_shared.md` § 调度模式：`format_findings_for_prompt` 列 findings（含 `parent_materials` 复用的父级 findings）→ 主 agent 并行 Read；`build_findings_index` 落盘 `_findings_index.md`；读 `thesis_v0.md`。
-2. **拉候选公司 peer 财务**（喂①卡位 + ②估值锚 + ④横比）：照 `10-peer-matrix.md` Step 3，对 findings 里有 ticker 的候选公司调 `financial_data.get_peer_comparison_data_by_tickers`（A股 SSE/SZSE/BSE、美股 NASDAQ/NYSE、港股 HKEX），取收入/毛利率/3年ROIC/资产负债率；非上市公司训练知识估算 + 标注。市价/PE 走 `market_data`。这是④横比的一手锚；不在 findings 里手抽。
+2. **拉候选公司 peer 财务**（喂①卡位 + ②估值锚 + ④横比）：照 `_peer_matrix_spec.md` Step 3，对 findings 里有 ticker 的候选公司调 `financial_data.get_peer_comparison_data_by_tickers`（A股 SSE/SZSE/BSE、美股 NASDAQ/NYSE、港股 HKEX），取收入/毛利率/3年ROIC/资产负债率；非上市公司训练知识估算 + 标注。市价/PE 走 `market_data`。这是④横比的一手锚；不在 findings 里手抽。
 3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整 / **K# 校准（哪些公司被 K# 翻盘/强支持）**，供 ④⑥ 与 critic 复用。
 
 > **亲属复用 hook（已生效）**：若本 topic 有 `parent_topic`（或 `find_child_topics` 返回非空），调 `get_relative_outputs('{slug}','{variant}')` 取亲属**成稿产出路径**并 Read。**借来内容受 §1.3 约束**——脚本只返路径不读内容，借用永远是输入/参照：必标来源、质量按本维度自跑、冲突时本 topic 赢。
@@ -167,7 +167,7 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 - 【为何逼出】③给了赌桌命题，这一环真正下注：横比 + 表态。
 - 【必带硬落地】
   1. **核心分歧一句话**（我和共识的赢家判断差异）；
-  2. **候选公司横比矩阵**（≥5 家，沿 业务结构/收入规模/3Y ROIC/毛利率/资产负债率/当前PE/历史PE区间/技术路线/客户结构/管理层信号 横比 + 综合分）——**现 `10-peer-matrix.md` Step 4 的 peer matrix + `financial_data` 在此作下注工具**（查矩阵维度与拉数口径，不照搬其表格结构）；评分逻辑（hard filter + 软评分权重）写清；
+  2. **候选公司横比矩阵**（≥5 家，沿 业务结构/收入规模/3Y ROIC/毛利率/资产负债率/当前PE/历史PE区间/技术路线/客户结构/管理层信号 横比 + 综合分）——**现 `_peer_matrix_spec.md` Step 4 的 peer matrix + `financial_data` 在此作下注工具**（查矩阵维度与拉数口径，不照搬其表格结构）；评分逻辑（hard filter + 软评分权重）写清；
   3. **每家挂回③的假设 + 一句话 thesis**；**K# 校准做锚**（被 K# 翻盘的公司不进 shortlist，强支持的优先）；
   4. **已研究子 company 用实证**（亲属 hook）：若某候选已有成稿 case，用其结论替代估算，按 §1.3 标来源 + 本维度复核。
 - 【别漏的 lens】旧 10 全部 + 旧 04 多空分歧。
@@ -202,8 +202,8 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 
 ⚠️ dashboard.py 的竞技场层"公司排名"只读 `10_peer_matrix.yaml`、只认这套字段名。**禁自创/改名/漏字段**。
 
-1. **写 `outputs/10_peer_matrix.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `10-peer-matrix.md` Step 6.5**（`slug / variant / topic_type=arena / display_name / generated / data_freshness / companies[{name, ticker, score, tier(shortlist/watch/eliminated), topic_created, topic_slug, thesis_one_liner, upgrade_triggers, quarantine}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
-2. **建 company stub + 继承 thesis_v0**：对每个深研档公司，照 `10-peer-matrix.md` Step 7 + 7b **逐字执行**（`create_topic(topic_type='company', parent_topic='{slug}', ticker=...)` → 收窄父 arena K# 到公司视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
+1. **写 `outputs/10_peer_matrix.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_peer_matrix_spec.md` Step 6.5**（`slug / variant / topic_type=arena / display_name / generated / data_freshness / companies[{name, ticker, score, tier(shortlist/watch/eliminated), topic_created, topic_slug, thesis_one_liner, upgrade_triggers, quarantine}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
+2. **建 company stub + 继承 thesis_v0**：对每个深研档公司，照 `_peer_matrix_spec.md` Step 7 + 7b **逐字执行**（`create_topic(topic_type='company', parent_topic='{slug}', ticker=...)` → 收窄父 arena K# 到公司视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
 
 ---
 
@@ -274,7 +274,7 @@ shortlist：{深研档公司列表}
 | tier 排序 | 主要按综合分 | **卡位/质量 × 当前定价**（②做闸门） |
 | 期望收益 | 无 | 刻意不做 EV（漏斗终点是 tier 分+触发器） |
 | 产出份数 | 8 份 + 10 | 默认 1 份连贯 case（可拆，⑥含旧 10 内容） |
-| 10 sidecar / company stub | 10 内 | **不变，复用**（Step 4 引 `10-peer-matrix.md`） |
+| 10 sidecar / company stub | 10 内 | **不变，复用**（Step 4 引 `_peer_matrix_spec.md`） |
 | 上游 findings / 财务 / thesis | — | **不变，复用** |
 | 跨层复用 | 仅 parent_materials（raw findings） | Step1 亲属 hook（已生效）：向下站父 primer/mandate、向上拿子 case 当实证；借用受 §1.3 约束 |
 | critic | 05（可选） | 内嵌 chain-critic + 05（已按 type 读 a_arena_case） |

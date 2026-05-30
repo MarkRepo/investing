@@ -305,7 +305,7 @@ def _peer_row_from_quality(data: dict[str, Any]) -> dict[str, Any]:
 def get_peer_comparison_data(
     slug: str, variant: str, peer_slugs: list[str]
 ) -> dict[str, Any]:
-    """Return comparison data for 10-peer-matrix workflow (slug-based).
+    """Return comparison data for _peer_matrix_spec workflow (slug-based).
 
     For each peer slug, fetches: revenue, 3Y avg ROIC, gross_margin,
     debt_to_equity. Returns {slug: {metrics}} dict.

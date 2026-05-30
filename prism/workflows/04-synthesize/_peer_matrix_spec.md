@@ -1,38 +1,8 @@
-# Workflow 10 — Arena → Peer Matrix 横向矩阵
+# Arena → Peer Matrix 规范（财务横比 / 矩阵 / 分流 / sidecar / stub）
 
-**触发**: arena topic 完成 01-08 产出后自动触发（由 `_shared.md` 收尾逻辑判断 topic_type=arena）；也可手动说「生成产出 10」
-**定位**: 识别 arena 内候选公司，拉取财务数据，输出对比矩阵
-**产出文件**: `prism/topics/{slug}/outputs/10_peer_matrix.md`
-
----
-
-## Step 1：前置检查
-
-```bash
-python -c "
-from prism.scripts.topic import read_topic
-data = read_topic('{slug}', '{variant}')
-assert data['type'] == 'arena', '仅 arena topic 可运行此 workflow'
-assert data['stage'] in ('04-synthesizing', '10-peer-matrix'), '请先完成 01-08 合成'
-print('前置检查通过')
-"
-```
-
----
-
-## Step 2：读取已有产出并提取候选公司
-
-**必读**（决定 Tier 排序的依据，不可跳）：
-- `outputs/_synthesis_brief.md` — K# 校准结论（v0→v1 thesis 强度调整、各 K# 翻盘/支持的 mat_id 清单）。**Tier 排序必须以 brief 的 K# 校准为锚**：被 K# 翻盘的公司不能进 shortlist；K# 强支持的公司应优先进 shortlist。如果 brief 不存在（资料 <10 跳过 brief 生成），在 Step 4 评分备注里写"无 brief 校准，纯 findings 推断"
-
-参考：
-- `outputs/01_business_panorama.md`
-- `outputs/02_cycle_positioning.md`
-- `outputs/03_narrative_ecology.md`
-- `outputs/04_implied_expectations.md`
-- 所有 `findings_mat_*.md`
-
-从以上内容中提取至少 **5 家候选公司**。
+> **工具规范，非独立产出步骤。** arena 的公司选拔已折进 `_arena_funnel.md` 决策链环④（peer 财务横比矩阵）+ 环⑥（三档分流 + 落 sidecar + 建 company stub），叙事写进 `a_arena_case`。本文件只作 `_arena_funnel.md` **逐字引用**的工具规范：环①/②/④引 **Step 3**（financial_data 拉数口径）+ **Step 4**（矩阵维度）、环⑥引 **Step 6.5**（sidecar schema）+ **Step 7/7b**（company stub 创建 / 继承 thesis_v0）。查规范，不照搬结构。
+>
+> **不再产出**独立 markdown（旧 `10_peer_matrix.md`）；sidecar `10_peer_matrix.yaml` 是 dashboard 竞技场层唯一契约。Tier 排序以 `_synthesis_brief.md` 的 K# 校准为锚（funnel Step 1 已读 brief + thesis）；brief 不存在时在评分备注写"无 brief 校准，纯 findings 推断"。
 
 ---
 
@@ -95,6 +65,8 @@ from prism.scripts.market_data import get_quote_by_ticker  # 见下方注释
 
 ## Step 4：构建对比矩阵
 
+至少 **5 家候选公司**（来源：findings + 决策链① 卡位判断）：
+
 | 公司 | Ticker | 业务结构 | 收入规模 | 3Y ROIC | 毛利率 | 资产负债率 | 当前 PE | 历史 PE 区间 | 技术路线 | 客户结构 | 管理层信号 | 综合 | 短名单 |
 |------|--------|---------|---------|--------|--------|-----------|--------|------------|---------|---------|-----------|------|--------|
 | {name} | {ticker} | {一句话} | {亿} | {%} | {%} | {%} | {x} | {x-y} | {主线} | {B/C/政府} | 看好/中性/警示 | 1-5 | ✓/✗/观察 |
@@ -108,7 +80,7 @@ from prism.scripts.market_data import get_quote_by_ticker  # 见下方注释
 
 ## Step 4.5：填写 data_freshness
 
-在 frontmatter 写入：
+写进 sidecar（及 case frontmatter）：
 - `data_freshness`: 用到的最晚数据所在期（季度/月份）
 - `data_freshness_basis`: 该期来自哪份 finding
 
@@ -129,17 +101,11 @@ from prism.scripts.market_data import get_quote_by_ticker  # 见下方注释
 
 ---
 
-## Step 6：写入产出文件
-
-使用模板 `prism/templates/peer_matrix.md.tmpl`，写入 `outputs/10_peer_matrix.md`。
-
----
-
 ## Step 6.5：生成 sidecar YAML（machine-readable 快照）
 
 写入文件：`prism/topics/{slug}/{variant}/outputs/10_peer_matrix.yaml`
 
-从刚才写的 markdown 中提取以下字段。**数字不加引号，缺失用 null，tier 只能是 shortlist / watch / eliminated。**
+从决策链④/⑥ 提取以下字段。**数字不加引号，缺失用 null，tier 只能是 shortlist / watch / eliminated。**
 
 ```yaml
 slug: {slug}
@@ -180,7 +146,7 @@ print('10 sidecar 写入完成')
 
 ---
 
-## Step 7：询问用户是否创建 stub company topic
+## Step 7：为深研档创建 stub company topic
 
 对每个深研档公司：
 
@@ -221,7 +187,7 @@ for k in ks: print(' -', k[:80])
 "
 ```
 
-也读 `prism/topics/{slug}/{variant}/outputs/thesis_v{cur_v}.md` 全文 + 该公司在 10_peer_matrix.md 中的"入选理由 / 预期 thesis"段落作为 narrowing 输入。
+也读 `prism/topics/{slug}/{variant}/outputs/thesis_v{cur_v}.md` 全文 + 该公司在决策链④矩阵中的"入选理由 / 预期 thesis"段落作为 narrowing 输入。
 
 2. **收窄到公司视角**：从父 arena K# 中挑出与该公司直接相关的 2-4 条（重写为针对本公司的版本，例如「行业是否能跑出 OEM 模式」收窄为「{公司} 能否拿下 OEM 客户份额」）；补 1-2 条公司专属 K#（管理层兑现 / 单一大客户依赖 / 估值锚等）。
 
@@ -241,24 +207,3 @@ set_thesis(
 )
 "
 ```
-
----
-
-## Step 8：更新 state 并追加到 living feed
-
-```bash
-python -c "
-from prism.scripts.topic import set_output_status, set_stage, set_next_actions
-set_output_status('{slug}', '10_peer_matrix', 'fresh', '{variant}', version=1)
-set_stage('{slug}', '10-peer-matrix', '{variant}')  # 或 'done'
-set_next_actions('{slug}', ['为深研档创建 company topic', '或进入日常监控'], '{variant}')
-"
-```
-
-将 "10-peer-matrix 完成" 摘要追加到 `08_living_feed.md`。
-
----
-
-## Step 9：仪表盘自动刷新（修 S5）
-
-`set_output_referenced_mats('10_peer_matrix', ...)` 已自动 fire-and-forget 触发 dashboard 异步重建，**无需手跑** `python -m prism.scripts.dashboard`。后台失败留痕在 `prism/logs/dashboard_auto.log`。

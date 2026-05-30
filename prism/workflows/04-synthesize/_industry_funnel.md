@@ -1,10 +1,10 @@
 # Industry 合成（理解先行 · 决策链驱动 · 漏斗终局 · 自由发挥版）
 
-> **调度提示**：本文件是 **industry 类型 topic 在 04-synthesize 阶段的完整规范**，整体替代 `_shared.md` + `01-08` 的 8 份分箱 spec + 旧 `09-industry-to-arenas.md` 的独立 markdown。`company` 走 `_company_case.md`，`arena` 走 `_arena_funnel.md`。
+> **调度提示**：本文件是 **industry 类型 topic 在 04-synthesize 阶段的完整规范**，整体替代 `_shared.md` + `01-08` 的 8 份分箱 spec + 旧 `_arena_select_spec.md` 的独立 markdown。`company` 走 `_company_case.md`，`arena` 走 `_arena_funnel.md`。
 >
 > **复用上游、不重写**：00-research → 01-roadmap → 02-materials → 03-findings 的 findings、`gap_detector`、增量重写判定、`financial_data`、`thesis`、`00-primer.md`、09 sidecar schema/stub 创建机制全部沿用。本文件只重做"合成"这一段。
 >
-> **09 sidecar 与 arena stub 机制保留**：`09-industry-to-arenas.md` 不删——它作为 **④ 的 6 维评分工具** + **⑥ 的 sidecar schema(Step 6.5) + arena stub 创建/继承(Step 6/6b)** 被本文件引用（查规范，不照搬结构）。
+> **09 sidecar 与 arena stub 机制保留**：`_arena_select_spec.md` 不删——它作为 **④ 的 6 维评分工具** + **⑥ 的 sidecar schema(Step 6.5) + arena stub 创建/继承(Step 6/6b)** 被本文件引用（查规范，不照搬结构）。
 
 ---
 
@@ -168,7 +168,7 @@ industry 不是终局决策——它是**漏斗**：终点不是"买/卖一只�
 - 【为何逼出】③给了赌桌命题，这一环真正下注：先表行业整体 stance，再把判断分解到 arena 层。
 - 【必带硬落地】
   1. **行业整体 stance 一句话**（看多/中性/谨慎）+ **我和共识的核心分歧一句话**（共识押哪条迁移路径、我押哪条、为什么）；
-  2. **各 arena 沿 6 维判断**（利润池规模 / 增速 / 竞争结构 / 估值水位 / 周期位 / 综合）——**现 `09-industry-to-arenas.md` Step 3 的 6 维评分在此作下注工具**（查评分维度与口径，不照搬其表格结构）；每个 arena 判断**挂回③的具体假设**；
+  2. **各 arena 沿 6 维判断**（利润池规模 / 增速 / 竞争结构 / 估值水位 / 周期位 / 综合）——**现 `_arena_select_spec.md` Step 3 的 6 维评分在此作下注工具**（查评分维度与口径，不照搬其表格结构）；每个 arena 判断**挂回③的具体假设**；
   3. **已研究子 arena 用实证**（亲属 hook）：若某 arena 已有成稿 case，用它的结论替代估算，按 §1.3 标来源 + 本维度复核。
 - 【别漏的 lens】旧 03 叙事、旧 04 多空分歧、旧 09 的 arena 信号提取。
 - 【自由区】arena 个数（≥5）、评分权重组合方式。
@@ -202,8 +202,8 @@ industry 不是终局决策——它是**漏斗**：终点不是"买/卖一只�
 
 ⚠️ dashboard.py 的行业层"竞技场选择"只读 `09_industry_to_arenas.yaml`、只认这套字段名。**禁自创/改名/漏字段**。
 
-1. **写 `outputs/09_industry_to_arenas.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `09-industry-to-arenas.md` Step 6.5**（`slug / variant / topic_type=industry / display_name / generated / data_freshness / arenas[{name, suggested_slug, topic_created, topic_slug, scores{profit_pool,growth,competition,valuation,cycle,composite}, tier(deep/watch/eliminated), tier_reason, upgrade_triggers, monitor_metrics, revive_condition}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
-2. **建 arena stub + 继承 thesis_v0**：对每个深挖档 arena，照 `09-industry-to-arenas.md` Step 6 + 6b **逐字执行**（`create_topic(topic_type='arena', parent_topic='{slug}')` → 收窄父 K# 到 arena 视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
+1. **写 `outputs/09_industry_to_arenas.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_arena_select_spec.md` Step 6.5**（`slug / variant / topic_type=industry / display_name / generated / data_freshness / arenas[{name, suggested_slug, topic_created, topic_slug, scores{profit_pool,growth,competition,valuation,cycle,composite}, tier(deep/watch/eliminated), tier_reason, upgrade_triggers, monitor_metrics, revive_condition}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
+2. **建 arena stub + 继承 thesis_v0**：对每个深挖档 arena，照 `_arena_select_spec.md` Step 6 + 6b **逐字执行**（`create_topic(topic_type='arena', parent_topic='{slug}')` → 收窄父 K# 到 arena 视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
 
 ---
 
@@ -274,7 +274,7 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 | tier 排序 | 主要按吸引力（估值占 1/6 权重） | **吸引力 × 当前定价**（②做闸门） |
 | 期望收益 | 无 | 刻意不做 EV（漏斗终点是 tier 分+触发器） |
 | 产出份数 | 8 份 + 09 | 默认 1 份连贯 case（可拆，⑥含旧 09 内容） |
-| 09 sidecar / arena stub | 09 内 | **不变，复用**（Step 4 引 `09-industry-to-arenas.md`） |
+| 09 sidecar / arena stub | 09 内 | **不变，复用**（Step 4 引 `_arena_select_spec.md`） |
 | 上游 findings / 财务 / thesis | — | **不变，复用** |
 | 跨层复用 | 仅 parent_materials（raw findings） | Step1 亲属 hook（已生效）：向下站父 primer、向上拿子 case 当实证；借用受 §1.3 约束 |
 | critic | 05（可选） | 内嵌 chain-critic + 05（已按 type 读 i_industry_case） |

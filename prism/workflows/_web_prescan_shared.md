@@ -306,10 +306,10 @@ UI 中 `stale_at < now` 显示黄色 chip；`expire_at < now` 显示红色 chip 
 | 触发位置 | scope | 上限（单位异） | 整轮累计 |
 |---|---|---|---|
 | 03 (per 单份资料处理) | 训练知识冲突点验证 | ≤3 query | ~30 query (10 份资料) |
-| 04 (per 单份产出合成) | 合成时数据缺失 | ≤5 query | ~55 query (11 份产出) |
+| 04 (per 决策环合成) | 合成时数据缺失 | ≤5 query/环 | ~35 query (case 6 环 + primer；sidecar 机械免搜) |
 | 05 (per critic 轮) | 反方论据缺口兜底 | ≤5 query × 5-10 hit | ≤50 hit/轮（一次性） |
 | 07 (per drilldown) | 专项深挖 | 按需，无硬上限 | drilldown 本就是 deep dive |
 
-**单位说明**：03/04 计 query 数（避免对话被 hit 列表淹没），05 计 hit 总数（critic 反方需要密度，按 hit 算更直接）。三处都是 per-N scope，不能跨 workflow 相加比较——例如"05 ≤50 hit 比 04 ≤5 query 宽松"是错觉，按整轮累计实际同量级。
+**单位说明**：03/04 计 query 数（避免对话被 hit 列表淹没），05 计 hit 总数（critic 反方需要密度，按 hit 算更直接）。**04 的计量单位是「决策环」不是「产出文件」**——单份 case 是 6 环决策链（≈ 旧 8 份维度的内容量），产出文件数（case+sidecar+primer，大小悬殊）已不是有意义的内容单位；按环算 ≤5/环、累计 ≈35，内容守恒。三处都是 per-N scope，不能跨 workflow 相加比较——例如"05 ≤50 hit 比 04 ≤5 query 宽松"是错觉，按整轮累计实际同量级。
 
 **升级到 sub-agent 的判定**：超 scope 上限 → 跳出即兴路径，按 `_subagent_deep_search.md` dispatch sub-agent 并行深挖（参 03 Step 2.4b / 05 Step 6.5b）。

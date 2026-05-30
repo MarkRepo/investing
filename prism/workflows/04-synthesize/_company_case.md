@@ -4,7 +4,7 @@
 >
 > **复用上游、不重写**：00-research → 01-roadmap → 02-materials → 03-findings 产出的 findings、`gap_detector`、增量重写判定、`financial_data` 财务模块、dashboard sidecar、`00-primer.md`、`thesis` 全部沿用，本文件只重做"合成"这一段。
 >
-> **07 sidecar schema 保留**：`07-decision-kit.md` 不删——它作为 **⑥ 的 sidecar schema(Step 3.5)** 权威定义被本文件 Step 4 + `_shared.md` 逐字引用（查 schema，不照搬结构）。与 industry 的 `09-industry-to-arenas.md` / arena 的 `10-peer-matrix.md` 同性质（均为保留的工具/schema 规范）。
+> **07 sidecar schema 保留**：`_decision_kit_spec.md` 不删——它作为 **⑥ 的 sidecar schema(Step 3.5)** 权威定义被本文件 Step 4 + `_shared.md` 逐字引用（查 schema，不照搬结构）。与 industry 的 `_arena_select_spec.md` / arena 的 `_peer_matrix_spec.md` 同性质（均为保留的工具/schema 规范）。
 
 ---
 
@@ -244,7 +244,7 @@
 
 ### Step 4：写 sidecar `07_decision_kit.yaml`（**硬契约 · schema 原样不动**）
 
-⚠️ dashboard.py 只读这一个文件、只认这套字段名。**禁自创/改名/漏字段**，否则该 topic dashboard 整行为空。文件名固定 `07_decision_kit.yaml`（即使主文档已改名）。字段从②/④/⑤/⑥提取，schema **逐字照 `07-decision-kit.md` Step 3.5**：`slug / variant / topic_type=company / display_name / ticker / generated / data_freshness / buy_box / position_framework / valuation_models / kill_criteria / signposts / cluster_tags`。数字不加引号，缺失 null。写入用 `Path(...).write_text(...)`。
+⚠️ dashboard.py 只读这一个文件、只认这套字段名。**禁自创/改名/漏字段**，否则该 topic dashboard 整行为空。文件名固定 `07_decision_kit.yaml`（即使主文档已改名）。字段从②/④/⑤/⑥提取，schema **逐字照 `_decision_kit_spec.md` Step 3.5**：`slug / variant / topic_type=company / display_name / ticker / generated / data_freshness / buy_box / position_framework / valuation_models / kill_criteria / signposts / cluster_tags`。数字不加引号，缺失 null。写入用 `Path(...).write_text(...)`。
 
 ---
 
