@@ -147,6 +147,45 @@ def test_batch_resolves_matching_todos(tmp_topic):
     assert summary["resolved_todos"][0]["task"] == "find K1 evidence"
 
 
+def test_auto_resolve_hard_todo_bare_k_not_closed(tmp_topic):
+    """F9：hard 深料 todo + 裸 K# web 命中 → 只标 in_progress，不假闭环 done。"""
+    from prism.scripts.web_prescan import register_web_search_batch
+
+    slug, variant, _ = tmp_topic
+    topic_io.set_user_todos(slug, [
+        {"task": "历史行业镜鉴 industry-mirror", "priority": "P0",
+         "info_tier": "hard", "addresses": ["K1"]},
+    ], variant)
+    summary = register_web_search_batch(
+        slug=slug, variant=variant, query="Q", addresses=["K1"],
+        triggered_by="01-prescan",
+        hits=[{"title": "T", "url": "https://reuters.com/a", "snippet": "s"}],
+    )
+    assert summary["resolved_todos"] == [], "hard 深料裸 K# 命中不得闭环"
+    todo = topic_io.read_topic(slug, variant)["user_todos"][0]
+    assert todo["status"] == "in_progress"
+    assert todo.get("covered_by"), "应记部分覆盖 covered_by"
+    assert "事件锚" in (todo.get("coverage_note") or "")
+
+
+def test_auto_resolve_hard_todo_event_anchored_closes(tmp_topic):
+    """F9：hard 深料 todo 'K#@evt' + 同事件 mat 强命中 → done。"""
+    from prism.scripts.web_prescan import register_web_search_batch
+
+    slug, variant, _ = tmp_topic
+    topic_io.set_user_todos(slug, [
+        {"task": "2026Q2 业绩会纪要", "priority": "P0",
+         "info_tier": "hard", "addresses": ["K1@2026Q2-earnings"]},
+    ], variant)
+    summary = register_web_search_batch(
+        slug=slug, variant=variant, query="Q", addresses=["K1@2026Q2-earnings"],
+        triggered_by="01-prescan",
+        hits=[{"title": "T", "url": "https://reuters.com/a", "snippet": "s"}],
+    )
+    assert len(summary["resolved_todos"]) == 1
+    assert topic_io.read_topic(slug, variant)["user_todos"][0]["status"] == "done"
+
+
 def test_batch_with_explicit_confidence_overrides(tmp_topic):
     """Caller can override confidence per hit."""
     from prism.scripts.web_prescan import register_web_search_batch

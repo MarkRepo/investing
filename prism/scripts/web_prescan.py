@@ -862,10 +862,14 @@ def register_web_search_batch(
 # ---------------------------------------------------------------------------
 
 def auto_resolve_todos(slug: str, variant: str, new_mat_ids: list[str]) -> list[dict]:
-    """扫 user_todos：若 todo.addresses 与本批新 mat 的 addresses 有交集，
-    标 status=done + 追加 covered_by + 写 coverage_note。
+    """扫 user_todos：若 todo.addresses 与本批新 mat 的 addresses 有交集则追加 covered_by。
 
-    Returns: list of {task, mat_ids} resolved this round.
+    闭环按 info_tier 分级（修 F9）：
+      - public：命中即 status=done。
+      - hard/half_public：仅事件锚强命中（todo 'K#@evt' 且 mat 同事件）才 done；
+        裸 K# 命中只标 in_progress（部分覆盖），不假闭环深料。
+
+    Returns: list of {task, mat_ids}，仅含本轮真正 **done** 的 todo（in_progress 不计入）。
     """
     if not new_mat_ids:
         return []
@@ -883,6 +887,7 @@ def auto_resolve_todos(slug: str, variant: str, new_mat_ids: list[str]) -> list[
     data = topic_io.read_topic(slug, variant)
     todos = data.get("user_todos") or []
     resolved: list[dict] = []
+    dirty = False
 
     for todo in todos:
         if not isinstance(todo, dict):
@@ -905,13 +910,30 @@ def auto_resolve_todos(slug: str, variant: str, new_mat_ids: list[str]) -> list[
         if not matched:
             continue
         existing = set(todo.get("covered_by") or [])
-        merged = sorted(existing | set(matched))
-        todo["covered_by"] = merged
-        todo["status"] = "done"
-        todo["coverage_note"] = f"已由 web-search {', '.join(matched)} 覆盖"
-        resolved.append({"task": todo.get("task", ""), "mat_ids": matched})
+        todo["covered_by"] = sorted(existing | set(matched))
+        dirty = True
 
-    if resolved:
+        # 收料 tier 分级闭环（修 F9）：public 命中即 done（不变）；hard/half_public 深料
+        # （专家访谈/镜鉴/地缘）只有**事件锚强命中**才 done，裸 K# web 命中仅标 in_progress——
+        # 否则任一 K# web 命中会把深料 todo 一键假闭环，用户以为收齐实则从未收。
+        tier = todo.get("info_tier", "public")
+        strong = tier == "public" or any(
+            topic_io.addresses_match_event_anchored(todo_addrs, mat_addr_map[mid])
+            for mid in matched
+        )
+        if strong:
+            todo["status"] = "done"
+            todo["coverage_note"] = f"已由 web-search {', '.join(matched)} 覆盖"
+            resolved.append({"task": todo.get("task", ""), "mat_ids": matched})
+        else:
+            if todo.get("status") != "in_progress":
+                todo["status"] = "in_progress"
+            todo["coverage_note"] = (
+                f"web-search {', '.join(matched)} 命中 K# 但无事件锚；"
+                f"{tier} 深料需事件锚或同 source_type 材料才闭环（未 done）"
+            )
+
+    if dirty:
         topic_io.set_user_todos(slug, todos, variant)
     return resolved
 

@@ -11,21 +11,19 @@ import yaml
 PRISM_ROOT = Path(__file__).resolve().parent.parent
 
 # 基础输出 keys（所有 type 都有）
-_BASE_OUTPUT_KEYS = [
-    "01_business_panorama",
-    "02_cycle_positioning",
-    "03_narrative_ecology",
-    "04_implied_expectations",
-    "05_historical_mirrors",
-    "06_risk_blindspots",
-    "07_decision_kit",
-    "08_living_feed",
-]
-
-# 按 topic.type 的输出 keys
-_INDUSTRY_EXTRA_KEYS = ["09_industry_to_arenas"]
-_ARENA_EXTRA_KEYS = ["10_peer_matrix"]
-_COMPANY_EXTRA_KEYS = ["00_quality_screen"]
+# 决策链产出 key（按 topic.type）—— create_topic seed 这些为 pending（修 F1）。
+# 旧 8 维并列产出（01_business_panorama … 07_decision_kit）已随决策链重构退休、
+# 不再 seed（曾经 seed 它们 → 8 个死 slot 永 pending，污染 dashboard +
+# list_affected_outputs 每个永报 reason='new'）。遗留 topic 仍可能带这些 key，
+# outputs.list_outputs 用 skip-if-absent 渲染，互不影响。
+# 08_living_feed 保留——它在决策链里仍是活的追踪时间线（06-daily / 99-decision 追加）。
+# sidecar（07/09/10 yaml）不 seed——它们是文件级产物，由合成路径 set_output_status
+# 的 setdefault 动态注册（避免又造永 pending 的死 slot）。
+_DECISION_CHAIN_OUTPUTS = {
+    "company": ["00_primer", "c_investment_case", "08_living_feed"],
+    "industry": ["00_primer", "i_industry_case", "08_living_feed"],
+    "arena": ["00_primer", "a_arena_case", "08_living_feed"],
+}
 
 _DEFAULT_OUTPUT_STATE = {
     "version": 0, "last_updated": None, "status": "pending", "data_freshness": None,
@@ -80,14 +78,11 @@ def _validate_ticker(ticker: str, field: str = "ticker") -> None:
 
 
 def _outputs_for_type(topic_type: str) -> list[str]:
-    if topic_type == "industry":
-        return _BASE_OUTPUT_KEYS + _INDUSTRY_EXTRA_KEYS
-    elif topic_type == "arena":
-        return _BASE_OUTPUT_KEYS + _ARENA_EXTRA_KEYS
-    elif topic_type == "company":
-        return ["00_quality_screen"] + _BASE_OUTPUT_KEYS
-    else:
-        return _BASE_OUTPUT_KEYS
+    """create_topic 初始 seed 的 outputs_state key（决策链产出，修 F1）。
+
+    未知 type 兜底只 seed 00_primer + 08_living_feed（最小活产出集）。
+    """
+    return _DECISION_CHAIN_OUTPUTS.get(topic_type, ["00_primer", "08_living_feed"])
 
 
 def next_stage(topic_type: str, current_stage: str) -> str | None:
@@ -347,6 +342,70 @@ def set_stage(slug: str, stage: str, variant: str) -> None:
     update_topic(slug, variant, stage=stage)
 
 
+# F17: primer 深度软门禁阈值。depth=deep 的正文字数下限——参照级 primer ~9000+ 字，
+# from-zero 赶进度跑出的 outline ~1800 字。取 6000 作保守地板，挡 outline 假冒 deep。
+_PRIMER_DEEP_MIN_CHARS = 6000
+
+
+def primer_quality_gate(slug: str, variant: str) -> dict:
+    """机械检查 00_primer 是否真够 depth=deep（零 LLM，修 F17）。
+
+    检查项：depth（frontmatter 自报）/ char_count（正文字数）/ has_controversy（争议节）
+    / has_selfcheck（自检节）/ critic_passed（机械 flag，由 set_output_critic_passed 置位）。
+    ok 规则：depth=deep → 四项全过才 ok；depth=shallow / 无 → ok=True（诚实标浅不设地板）。
+    供 set_output_status('00_primer','fresh') 软门禁用：deep 但 ok=False → 降级 'draft'。
+    """
+    primer = PRISM_ROOT / "topics" / slug / variant / "outputs" / "00_primer.md"
+    out = {"depth": None, "char_count": 0, "has_controversy": False,
+           "has_selfcheck": False, "critic_passed": False, "ok": True, "warnings": []}
+    if not primer.exists():
+        out["ok"] = False
+        out["warnings"].append("00_primer.md 不存在")
+        return out
+    raw = primer.read_text(encoding="utf-8")
+    body = raw
+    depth = None
+    if raw.startswith("---"):
+        end = raw.find("---", 3)
+        if end > 0:
+            try:
+                depth = (yaml.safe_load(raw[3:end]) or {}).get("depth")
+            except Exception:
+                depth = None
+            body = raw[end + 3:]
+    out["depth"] = depth
+    out["char_count"] = len(body)
+    out["has_controversy"] = "争议" in body
+    out["has_selfcheck"] = ("自检" in body) or ("自测" in body)
+    try:
+        st = (read_topic(slug, variant).get("outputs_state") or {}).get("00_primer") or {}
+        out["critic_passed"] = bool(st.get("critic_passed"))
+    except Exception:
+        out["critic_passed"] = False
+    if depth == "deep":
+        if out["char_count"] < _PRIMER_DEEP_MIN_CHARS:
+            out["warnings"].append(
+                f"正文 {out['char_count']} 字 < deep 地板 {_PRIMER_DEEP_MIN_CHARS}")
+        if not out["has_controversy"]:
+            out["warnings"].append("缺争议节（写作硬规约要求 5-7 条根本争议）")
+        if not out["has_selfcheck"]:
+            out["warnings"].append("缺自检清单节")
+        if not out["critic_passed"]:
+            out["warnings"].append("未过 critic（set_output_critic_passed 未置位）")
+        out["ok"] = not out["warnings"]
+    return out
+
+
+def set_output_critic_passed(slug: str, variant: str, output_key: str) -> None:
+    """机械标记某 output 已过独立 critic（修 F17）。primer Step 3 critic 收敛后**先调本函数**，
+    再调 set_output_status(fresh)——否则 depth=deep 的 primer 会被门禁降级 draft。"""
+    data = read_topic(slug, variant)
+    entry = data["outputs_state"].setdefault(output_key, dict(_DEFAULT_OUTPUT_STATE))
+    entry["critic_passed"] = True
+    entry["last_updated"] = _now_iso()
+    _write_yaml(_topic_path(slug, variant), data)
+
+
 def set_output_status(slug: str, output_key: str, status: str, variant: str, version: int | None = None) -> None:
     data = read_topic(slug, variant)
     entry = data["outputs_state"].setdefault(output_key, dict(_DEFAULT_OUTPUT_STATE))
@@ -354,6 +413,17 @@ def set_output_status(slug: str, output_key: str, status: str, variant: str, ver
     entry["last_updated"] = _now_iso()
     if version is not None:
         entry["version"] = version
+    # F17 软门禁：仅 00_primer 标 fresh 时，自报 depth=deep 但机械检查不过 → 降级 'draft'
+    # + 记 primer_gate 摘要。其余 output_key / status 路径字节不变（零回归）。
+    if output_key == "00_primer" and status == "fresh":
+        gate = primer_quality_gate(slug, variant)
+        if gate.get("depth") == "deep" and not gate.get("ok"):
+            entry["status"] = "draft"
+            entry["primer_gate"] = {
+                "downgraded_from": "fresh",
+                "checked_at": _now_iso(),
+                "warnings": gate["warnings"],
+            }
     _write_yaml(_topic_path(slug, variant), data)
 
 
@@ -578,6 +648,22 @@ def addresses_match(todo_addrs: list[str], mat_addrs: list[str]) -> bool:
             if tk != mk:
                 continue
             if te is None or te == me:
+                return True
+    return False
+
+
+def addresses_match_event_anchored(todo_addrs: list[str], mat_addrs: list[str]) -> bool:
+    """强命中：todo 带 @event 锚且 mat 同 key 同 event 才 True。
+
+    裸 K# todo（无事件锚）一律 False。用于 hard/half_public 深料 todo 的闭环判定——
+    堵"任一 K# web 命中假闭环深料"（专家访谈/镜鉴/地缘）的假阳性（修 F9）。
+    """
+    for t in todo_addrs or []:
+        tk, te = _addr_key(t), _addr_event(t)
+        if not tk or te is None:
+            continue
+        for m in mat_addrs or []:
+            if tk == _addr_key(m) and te == _addr_event(m):
                 return True
     return False
 

@@ -72,7 +72,12 @@ def test_phase0():
             assert data["parent_topic"] is None
             assert data["monitoring_tier"] == "watch"
             assert data["concepts"] == ["测试概念1", "测试概念2"]
-            assert "09_industry_to_arenas" in data["outputs_state"]
+            # F1：industry seed 决策链 key（i_industry_case + 00_primer + 08_living_feed），
+            # 不再 seed 旧 8 维 / sidecar（09 由合成路径动态注册）
+            assert "i_industry_case" in data["outputs_state"]
+            assert "00_primer" in data["outputs_state"]
+            assert "08_living_feed" in data["outputs_state"]
+            assert "01_business_panorama" not in data["outputs_state"], "旧 8 维不应再 seed"
             print("   ✓ industry topic 字段正确")
 
             # 创建 company topic
@@ -91,7 +96,10 @@ def test_phase0():
             data = read_topic("test-company", "sonnet")
             assert data["parent_topic"] == "test-industry"
             assert data["monitoring_tier"] == "dormant"  # 默认
-            assert "00_quality_screen" in data["outputs_state"]
+            # F1：company seed c_investment_case（不再是 00_quality_screen + 旧 8 维）
+            assert "c_investment_case" in data["outputs_state"]
+            assert "00_primer" in data["outputs_state"]
+            assert "00_quality_screen" not in data["outputs_state"], "旧 quality_screen 不再 seed"
             print("   ✓ company topic 字段正确\n")
 
             # 4. 测试 set_* 函数
@@ -106,9 +114,9 @@ def test_phase0():
             assert data["monitoring_tier"] == "deep"
             print("   ✓ set_monitoring_tier ok")
 
-            set_data_freshness("test-company", "01_business_panorama", "2026-Q1", "sonnet")
+            set_data_freshness("test-company", "c_investment_case", "2026-Q1", "sonnet")
             data = read_topic("test-company", "sonnet")
-            assert data["outputs_state"]["01_business_panorama"]["data_freshness"] == "2026-Q1"
+            assert data["outputs_state"]["c_investment_case"]["data_freshness"] == "2026-Q1"
             print("   ✓ set_data_freshness ok\n")
 
             print("=== 所有测试通过! ===")

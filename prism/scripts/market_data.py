@@ -126,3 +126,78 @@ def get_valuation_context(slug: str, variant: str) -> str:
         "",
     ]
     return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# F13: peer 级（只有 ticker、无 slug）倍数入口。
+# industry/arena funnel 环②/Step 1.2 用它对"代表龙头 ticker"批量拿 PE/PS/市值，
+# 无需先建 company topic。底层与 get_quote 同链路（_refresh→fetch_quotes_eod→
+# get_adapter；US/HKEX→yfinance、CN→akshare），HKEX 实测可取（HKD 计价）。
+# ---------------------------------------------------------------------------
+
+def _currency_label(market: str) -> str:
+    """市值/价格计价货币标签（HKEX→HKD、美股→USD、A股→元）。"""
+    if market == "HKEX":
+        return "HKD"
+    if market in ("US", "NASDAQ", "NYSE"):
+        return "USD"
+    return "元"
+
+
+def get_quote_by_ticker(ticker: str, market: str) -> dict[str, Any]:
+    """Ticker 级行情/倍数（无需 slug）。always-refresh，与 get_quote 同口径。
+
+    用于 peer-matrix / 行业龙头横比：peer 只有 ticker、还没注册 company topic。
+    返回 dict 含 currency（按 market 区分 HKD/USD/元）。无数据时返回 {'error',...}。
+    """
+    _refresh(ticker, market)  # _is_fresh 恒 False → 每次拉最新
+    latest = quotes_io.latest_for(ticker)
+    if not latest:
+        return {"error": f"no quote data for {ticker}", "ticker": ticker, "market": market}
+    return {
+        "ticker": ticker,
+        "market": market,
+        "currency": _currency_label(market),
+        "date": latest.get("date"),
+        "close": latest.get("close"),
+        "pe_ttm": latest.get("pe_ttm"),
+        "pe_static": latest.get("pe_static"),
+        "pb": latest.get("pb"),
+        "ps": latest.get("ps"),
+        "market_cap": latest.get("market_cap"),
+        "high_52w": latest.get("high_52w"),
+        "low_52w": latest.get("low_52w"),
+        "source": latest.get("source"),
+    }
+
+
+def get_valuation_context_by_tickers(tickers: list[dict[str, str]]) -> str:
+    """多龙头估值锚 markdown 块（喂 industry/arena 决策链环②/Step 1.2）。
+
+    tickers: [{'ticker': '600276', 'market': 'SSE', 'name': '恒瑞'}, ...]
+    （name 选填，仅展示用）。每行 PE(TTM)/PS/市值，市值按 market 标 HKD/USD/元。
+    取不到的标 *(取不到)* 而非静默漏——契合 F13 "拉不到要 log 不静默跳"。
+    """
+    if not tickers:
+        return "*(未提供 ticker)*"
+    lines = ["## 代表龙头当前估值倍数 (本地 market_data 自动获取)", ""]
+    for t in tickers:
+        ticker = t.get("ticker", "")
+        market = t.get("market", "")
+        name = t.get("name") or ticker
+        if not ticker or not market:
+            lines.append(f"- **{name}**: *(缺 ticker/market，跳过)*")
+            continue
+        q = get_quote_by_ticker(ticker, market)
+        if q.get("error"):
+            lines.append(f"- **{name}** ({ticker}/{market}): *(取不到: {q['error']})*")
+            continue
+        ccy = q["currency"]
+        mc = f"{q['market_cap']:.0f} {ccy}" if q.get("market_cap") else "n/a"
+        lines.append(
+            f"- **{name}** ({ticker}/{market}): "
+            f"PE(TTM) {q.get('pe_ttm')} / PS {q.get('ps')} / PB {q.get('pb')} / "
+            f"市值 {mc} / 价 {q.get('close')} {ccy}（{q.get('date')}，源 {q.get('source')}）"
+        )
+    lines.append("")
+    return "\n".join(lines)

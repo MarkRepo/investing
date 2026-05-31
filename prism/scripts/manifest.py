@@ -586,13 +586,32 @@ def list_unprocessed(
     return out
 
 
-def material_count(slug: str, variant: str) -> dict:
+def material_count(
+    slug: str,
+    variant: str,
+    exclude_triggered_by: tuple[str, ...] = _DEFAULT_EXCLUDED_TRIGGERED_BY,
+) -> dict:
+    """材料计数。
+
+    `unprocessed` = 全量未处理（向后兼容，含 Role α prescan web 料）。
+    `unprocessed_actionable` = 排除 Role α（00/01 prescan）后的**可处理**未处理数，
+    口径与 `list_unprocessed` 一致（修 F14）——03 Step4/5 的 advance gate
+    （`if 未处理 == 0 → 升 04`）必须读这个，否则任何跑过 prescan 的 topic
+    `unprocessed` 永 >0、永不自动升 04。
+    """
     materials = read_manifest(slug, variant)["materials"]
     processed = sum(1 for m in materials if m["processed"])
+    excluded = set(exclude_triggered_by or ())
+    actionable_unprocessed = sum(
+        1 for m in materials
+        if not m["processed"]
+        and (m.get("search_meta") or {}).get("triggered_by", "unknown") not in excluded
+    )
     out = {
         "total": len(materials),
         "processed": processed,
         "unprocessed": len(materials) - processed,
+        "unprocessed_actionable": actionable_unprocessed,
         "self_total": len(materials),
         "parent_total": 0,
     }
