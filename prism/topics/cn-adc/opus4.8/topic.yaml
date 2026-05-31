@@ -1,0 +1,101 @@
+slug: cn-adc
+display_name: 中国ADC（抗体偶联药物）arena
+type: arena
+created: '2026-05-30T14:59:15.140643+00:00'
+status: active
+stage: 00-init
+parent_topic: cn-innovative-drug
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 中国ADC赛道哪些靶点平台+龙头具可持续best-in-class壁垒值得配置
+  depth: deep
+  search_terms:
+  - ADC 靶点 平台
+  - HER2 TROP2 EGFR
+  - ADC BD 出海
+outputs_state:
+  01_business_panorama:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  02_cycle_positioning:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  03_narrative_ecology:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  04_implied_expectations:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  05_historical_mirrors:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  06_risk_blindspots:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  07_decision_kit:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  10_peer_matrix:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-05-30T15:01:52.880958+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-05-30T15:01:52.881067+00:00'
+    summary: 中国ADC是创新药出海最具全球竞争力品类，看多龙头平台但需甄别靶点扎堆vs差异化(6/10)

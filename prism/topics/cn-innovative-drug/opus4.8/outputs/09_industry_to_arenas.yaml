@@ -1,0 +1,106 @@
+slug: cn-innovative-drug
+variant: opus4.8
+topic_type: industry
+display_name: 中国创新药行业
+generated: 2026-05-30T15:00:00+00:00
+data_freshness: 2026Q1
+
+arenas:
+  - name: ADC（抗体偶联药物）
+    suggested_slug: cn-adc
+    topic_created: true
+    topic_slug: cn-adc
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 3
+      valuation: 2
+      cycle: 5
+      composite: 4.0
+    tier: deep
+    tier_reason: 中国工程化/速度全球领先、BD最热品类，但估值已不便宜，需深挖甄别龙头
+    upgrade_triggers: ["已在 stub topic cn-adc L1-L4 跟踪"]
+    monitor_metrics: ["头部ADC全球III期读出", "ADC类BD首付款季度趋势"]
+    revive_condition: null
+  - name: 双抗 PD-1/VEGF
+    suggested_slug: cn-pd1-vegf-bispecific
+    topic_created: true
+    topic_slug: cn-pd1-vegf-bispecific
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 2
+      valuation: 2
+      cycle: 5
+      composite: 3.6
+    tier: deep
+    tier_reason: 依沃西head-to-head击败K药为标杆，但辉瑞自研入局竞争升温，深挖看壁垒可持续性
+    upgrade_triggers: ["已在 stub topic cn-pd1-vegf-bispecific L1-L4 跟踪"]
+    monitor_metrics: ["依沃西全球HARMONi OS", "MNC自研PD-1/VEGF进度"]
+    revive_condition: null
+  - name: GLP-1 / 减重
+    suggested_slug: cn-glp1-obesity
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
+      growth: 5
+      competition: 1
+      valuation: 1
+      cycle: 3
+      composite: 3.0
+    tier: watch
+    tier_reason: 利润池最大但赛道拥挤+估值透支，进观察档+价格触发器，不直接深挖
+    upgrade_triggers: ["国产GLP-1出现明确差异化(口服/月制剂)读出", "估值回调至历史中位以下"]
+    monitor_metrics: ["玛仕度肽/HRS9531销售爬坡", "GLP-1赛道估值水位"]
+    revive_condition: null
+  - name: 自免（自身免疫）
+    suggested_slug: cn-autoimmune
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 3
+      valuation: 3
+      cycle: 4
+      composite: 3.3
+    tier: watch
+    tier_reason: telitacicept出海验证中，赛道增速好但国内支付与竞争待观察
+    upgrade_triggers: ["telitacicept海外关键III期阳性"]
+    monitor_metrics: ["自免类BD交易", "IgAN/MG适应症进展"]
+    revive_condition: null
+  - name: 小核酸（siRNA/ASO）
+    suggested_slug: cn-oligonucleotide
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 5
+      competition: 4
+      valuation: 3
+      cycle: 5
+      composite: 3.4
+    tier: watch
+    tier_reason: 慢病长效新方向、早期蓝海，等头部BD/临床催化
+    upgrade_triggers: ["头部小核酸再现大额BD", "慢病适应症III期启动"]
+    monitor_metrics: ["小核酸BD交易", "舶望等管线进展"]
+    revive_condition: null
+  - name: PD-1 单抗（me-too 红海）
+    suggested_slug: cn-pd1-monoclonal
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 1
+      competition: 1
+      valuation: 2
+      cycle: 1
+      composite: 1.4
+    tier: eliminated
+    tier_reason: 靶点扎堆+国谈杀价的红海，单药商业化天花板低
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 出现差异化联用或新适应症数据重塑竞争格局
+
+cluster_tags: [china-innovative-drug, biopharma, adc, bispecific, glp1]

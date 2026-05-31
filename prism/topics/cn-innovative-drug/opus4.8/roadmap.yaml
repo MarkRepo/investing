@@ -1,0 +1,120 @@
+# roadmap.yaml — 研究路线图 (workflow 01, opus4.8)
+slug: cn-innovative-drug
+created: 2026-05-30
+
+# L1/L2 已坍缩 → 背景交给 00_primer
+primer_scope: "primer 该覆盖：中国创新药行业边界（创新药 vs 仿制/CXO）、四种现金流（国内销售/BD首付/里程碑分成/CXO）、五大品类（ADC/双抗/GLP-1/自免/小核酸）技术与玩家、支付端（国谈/医保/集采/丙类）、上市机制（港股18A/科创板五套）、2021-2025板块牛熊周期"
+
+learning_track:
+  l3_debates:
+    - question: "BD出海是可持续现金流引擎，还是高预期低落地的一次性叙事？（首付仅占5-7%，里程碑/分成依赖海外临床成功率）"
+      source_hint: "西南证券BD出海总结/医药魔方；2025下半年BD利好股价反跌案例"
+    - question: "2026'业绩兑现'是真内生拐点，还是BD首付一次性粉饰利润表？"
+      source_hint: "头部药企季报产品收入vs BD收入拆分"
+    - question: "中国best-in-class是真壁垒还是会被快速跟随/MNC自研追平？（PD-1/VEGF辉瑞自研、GLP-1拥挤）"
+      source_hint: "各赛道在研管线密度/靶点扎堆/MNC自研进度"
+    - question: "国内支付天花板是否实质改善？丙类/商保能否成创新药'最大买家'还是体量有限？"
+      source_hint: "NHSA丙类目录落地数据/第一财经商保分析"
+    - question: "当前港股创新药估值是否已透支BD预期？板块β还是龙头α？（TOP10占60%交易额）"
+      source_hint: "恒生医疗估值水位/全球peer对标"
+
+  l4_hunting:
+    - question: "2026关键全球III期/OS读出兑现率——依沃西全球HARMONi OS、BL-B01D1 IZABRIGHT、sac-TMT海外注册是否如期阳性？"
+      addresses: [K1]
+      search_keywords: [依沃西 HARMONi OS, BL-B01D1 IZABRIGHT, sac-TMT 海外注册]
+      source_hint: "公司IR/WCLC/ASCO/ClinicalTrials.gov"
+    - question: "头部药企2026剔除BD首付后的产品收入内生增速+盈利可持续性？"
+      addresses: [K2]
+      search_keywords: [百济 2026Q1 产品收入, 信达 玛仕度肽 销售, 恒瑞 产品收入 增速]
+      source_hint: "2025年报+2026Q1季报"
+    - question: "2026 license-out总额/首付款能否维持2025高基数（$1357亿）？首付占比是否提升？"
+      addresses: [K3]
+      search_keywords: [2026 license-out 总额, 创新药 BD 首付款, 出海 交易 2026]
+      source_hint: "医药魔方月报/券商BD跟踪"
+    - question: "丙类目录落地后高价创新药国内放量是否兑现？商保赔付占比？"
+      addresses: [K4]
+      search_keywords: [丙类目录 落地 放量, 商保创新药 赔付, 创新药 国谈 2025 结果]
+      source_hint: "NHSA/地方医保局/第一财经"
+    - question: "五大赛道哪些龙头具可持续best-in-class壁垒vs估值透支？（直接落点→arena选拔）"
+      addresses: [K5]
+      search_keywords: [ADC 竞争格局 2026, PD-1 VEGF 双抗 格局, GLP-1 国产 竞争]
+      source_hint: "券商行业深度/智慧芽管线库"
+
+material_priority:
+  tier1:
+    - title: "恒瑞医药 2025年报"
+      type: annual-report
+      ticker: SSE_600276
+      source: cninfo
+      why: "行业最大市值/最广管线；产品收入vs BD收入拆分（命门2）"
+      addresses: [K2, K3]
+    - title: "信达生物 2025年报"
+      type: annual-report
+      ticker: HK_01801
+      source: HKEXnews
+      why: "Biopharma转型+玛仕度肽商业化+武田BD；首次全年盈利验证（命门2）"
+      addresses: [K2, K1]
+    - title: "百济神州/BeOne 2025年报+2026Q1"
+      type: annual-report
+      ticker: HK_06160
+      source: HKEXnews
+      why: "全球商业化最深、泽布替尼放量、全年盈利标杆（命门2）"
+      addresses: [K2]
+    - title: "荣昌生物 2025年报"
+      type: annual-report
+      ticker: SSE_688331
+      source: cninfo
+      why: "ADC+自免双平台+泰它西普Vor Bio出海（命门1/3）"
+      addresses: [K1, K5]
+    - title: "西南证券《2025年药品BD出海总结》"
+      type: sell-side-note
+      source: "东方财富PDF（已prescan入库）"
+      why: "BD总额/首付/分赛道结构权威数据（命门1/K3）"
+      addresses: [K3, K1]
+  tier2:
+    - title: "百利天恒 2025年报"
+      type: annual-report
+      ticker: SSE_688506
+      source: cninfo
+      why: "BL-B01D1双抗ADC全球III期（命门1/K1）"
+      addresses: [K1]
+    - title: "康方生物 2025年报"
+      type: annual-report
+      ticker: HK_09926
+      source: HKEXnews
+      why: "依沃西PD-1/VEGF双抗全球读出（命门1/3）"
+      addresses: [K1, K5]
+    - title: "五大赛道（ADC/双抗/GLP-1/自免/小核酸）竞争格局券商深度"
+      type: industry-research
+      source: "券商行业深度"
+      why: "arena 6维评分+龙头甄别（命门3/K5）"
+      addresses: [K5]
+    - title: "国谈2025+丙类目录政策原文"
+      type: policy
+      source: "NHSA gov.cn（已prescan入库）"
+      why: "支付端天花板（K4）"
+      addresses: [K4]
+  tier3:
+    - title: "科伦博泰 2025年报"
+      type: annual-report
+      ticker: HK_06990
+      source: HKEXnews
+      why: "TROP2 ADC+默沙东（K1/K5）"
+      addresses: [K1]
+
+key_risks_to_monitor:
+  - "头部资产全球III期失败（出海逻辑证伪）"
+  - "2026 BD总额同比大幅回落（持续现金流叙事弱化）"
+  - "国内支付端改善不及预期（丙类体量有限）"
+  - "板块估值透支后回调（TOP10集中、尾部拖累）"
+
+analogies_to_study:
+  - case: "中国PD-1价格战与me-too泡沫（2018-2022）"
+    logic: "同样'热门靶点扎堆→国谈降价→商业化天花板'剧本，验证me-too如何利润不兑现"
+    limit: "当下出海+best-in-class比例高于当年纯国内me-too"
+  - case: "2021上一轮港股18A泡沫破裂（2021-06高点→2024-08低点恒生医疗暴跌）"
+    logic: "同板块上一轮'估值透支→戴维斯双杀'，验证当前牛市是否重演"
+    limit: "本轮有真实BD现金流与扭亏支撑，基本面强于上一轮"
+  - case: "仿制药集采（VBP）对传统药企的利润挤压（2018起）"
+    logic: "政策定价权对行业利润池的重塑，理解为何被迫转创新"
+    limit: "针对仿制非创新；但解释创新药估值溢价来源"

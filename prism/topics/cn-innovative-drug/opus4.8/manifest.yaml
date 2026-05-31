@@ -1,0 +1,2915 @@
+slug: cn-innovative-drug
+variant: opus4.8
+updated: '2026-05-30T14:53:17.773876+00:00'
+materials:
+- id: mat-58be77
+  filename: 2026-05-30_2025年中国创新药授权事件大盘点-交易总额是2024年的2-6倍-医药-合作-行业.md
+  source_type: web-search
+  added: '2026-05-30T14:23:46.128254+00:00'
+  processed: false
+  notes: query='2025 中国创新药 License-out BD 出海 交易 总额 2025年度'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 2025 中国创新药 License-out BD 出海 交易 总额 2025年度
+    url: https://www.sohu.com/a/975240224_122547917
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-05-30T14:23:46.127192+00:00'
+    stale_at: '2026-06-29T14:23:46.127192+00:00'
+    expire_at: '2026-08-28T14:23:46.127192+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b9052b
+  filename: 2026-05-30_pdf-2025年药品bd出海总结.md
+  source_type: web-search
+  added: '2026-05-30T14:23:46.130018+00:00'
+  processed: false
+  notes: query='2025 中国创新药 License-out BD 出海 交易 总额 2025年度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 2025 中国创新药 License-out BD 出海 交易 总额 2025年度
+    url: https://pdf.dfcfw.com/pdf/H3_AP202601211818190934_1.pdf?1768988442000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:23:46.129169+00:00'
+    stale_at: '2026-06-29T14:23:46.129169+00:00'
+    expire_at: '2026-08-28T14:23:46.129169+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3f64f3
+  filename: 2026-05-30_1357亿美元-2025中国医药出海交易创记录-医药新闻-bydrug-一站式医药资源共享中心-医药.md
+  source_type: web-search
+  added: '2026-05-30T14:23:46.132467+00:00'
+  processed: false
+  notes: query='2025 中国创新药 License-out BD 出海 交易 总额 2025年度'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 2025 中国创新药 License-out BD 出海 交易 总额 2025年度
+    url: https://www.pharmcube.com/newsLibrary/detail?id=1d8cd4a52615c85b42d8456e0692d253
+    domain: pharmcube.com
+    domain_tier: whitelist
+    searched_at: '2026-05-30T14:23:46.131354+00:00'
+    stale_at: '2026-06-29T14:23:46.131354+00:00'
+    expire_at: '2026-08-28T14:23:46.131354+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-58ef6d
+  filename: 2026-05-30_国产新药-十亿美金-bd-大单爆了.md
+  source_type: web-search
+  added: '2026-05-30T14:23:46.135864+00:00'
+  processed: false
+  notes: query='2025 中国创新药 License-out BD 出海 交易 总额 2025年度'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 2025 中国创新药 License-out BD 出海 交易 总额 2025年度
+    url: https://www.phirda.com/artilce_41122.html?module=trackingCodeGenerator
+    domain: phirda.com
+    domain_tier: whitelist
+    searched_at: '2026-05-30T14:23:46.134424+00:00'
+    stale_at: '2026-06-29T14:23:46.134424+00:00'
+    expire_at: '2026-08-28T14:23:46.134424+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-28cf70
+  filename: 2026-05-30_中国创新药出海趋势已进入深度全球化阶段---东方财富.md
+  source_type: web-search
+  added: '2026-05-30T14:23:46.140166+00:00'
+  processed: false
+  notes: query='2025 中国创新药 License-out BD 出海 交易 总额 2025年度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 2025 中国创新药 License-out BD 出海 交易 总额 2025年度
+    url: https://emcreative.eastmoney.com/app_fortune/article/index.html?artCode=20260507135816893722460&postId=1704003299
+    domain: emcreative.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:23:46.138301+00:00'
+    stale_at: '2026-06-29T14:23:46.138301+00:00'
+    expire_at: '2026-08-28T14:23:46.138301+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bad5e4
+  filename: 2026-05-30_信达生物-全球首个-减重注射版-玛仕度肽-信尔美-正式获批.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.640514+00:00'
+  processed: false
+  notes: query='信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025
+    url: https://www.medbelove.com/index.php/2025/06/30/%E4%BF%A1%E8%BE%BE%E7%94%9F%E7%89%A9-%E5%85%A8%E7%90%83%E9%A6%96%E4%B8%AA%E3%80%8C%E5%87%8F%E9%87%8D%E6%B3%A8%E5%B0%84%E7%89%88%E3%80%8D%E7%8E%9B%E4%BB%95%E5%BA%A6%E8%82%BD%E3%80%8C%E4%BF%A1
+    domain: medbelove.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.637916+00:00'
+    stale_at: '2026-06-29T14:26:06.637916+00:00'
+    expire_at: '2026-08-28T14:26:06.637916+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-10ba9a
+  filename: 2026-05-30_信达生物玛仕度肽-信尔美-预充式多剂量注射笔中国获批---bydrug.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.646632+00:00'
+  processed: false
+  notes: query='信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025
+    url: https://bydrug.pharmcube.com/news/detail/d3b00a7ee23712a6ef8653949c386729
+    domain: bydrug.pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.644132+00:00'
+    stale_at: '2026-06-29T14:26:06.644132+00:00'
+    expire_at: '2026-08-28T14:26:06.644132+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9f171d
+  filename: 2026-05-30_国产glp-1破局双雄争霸-玛仕度肽靠-超级供应链-撼动千亿美元市场.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.653638+00:00'
+  processed: false
+  notes: query='信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025
+    url: https://www.ebrun.com/20251106/619934.shtml
+    domain: ebrun.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.650793+00:00'
+    stale_at: '2026-06-29T14:26:06.650793+00:00'
+    expire_at: '2026-08-28T14:26:06.650793+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e8b150
+  filename: 2026-05-30_国产减重药玛仕度肽最新-期数据公布---新华网.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.661721+00:00'
+  processed: false
+  notes: query='信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025
+    url: https://www.news.cn/health/20251031/857604c3cc384459a0a6d00b9df3d58b/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.658546+00:00'
+    stale_at: '2026-06-29T14:26:06.658546+00:00'
+    expire_at: '2026-08-28T14:26:06.658546+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bd62ba
+  filename: 2026-05-30_信达生物首次实现全年盈利-称减肥药销售稳步增长符合预期-10-公司-澎湃新闻-the-paper.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.670777+00:00'
+  processed: false
+  notes: query='信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 信达生物 玛仕度肽 mazdutide 获批 减重 销售 2025
+    url: https://www.thepaper.cn/newsDetail_forward_32842836
+    domain: thepaper.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.667082+00:00'
+    stale_at: '2026-06-29T14:26:06.667082+00:00'
+    expire_at: '2026-08-28T14:26:06.667082+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2d2873
+  filename: 2026-05-30_康方生物2025-年中报解读-依沃西单抗达os-终点---医麦智库.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.685924+00:00'
+  processed: false
+  notes: query='康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025
+    url: https://library.emedclub.com/information/view/2VR6kl4iOJnJp8AI04NFn
+    domain: library.emedclub.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.682030+00:00'
+    stale_at: '2026-06-29T14:26:06.682030+00:00'
+    expire_at: '2026-08-28T14:26:06.682030+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cb940e
+  filename: 2026-05-30_康方生物依沃西单抗harmoni研究os结果公布---雪球.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.696385+00:00'
+  processed: false
+  notes: query='康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025
+    url: https://xueqiu.com/4867657929/351565206
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-05-30T14:26:06.692275+00:00'
+    stale_at: '2026-06-29T14:26:06.692275+00:00'
+    expire_at: '2026-08-28T14:26:06.692275+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e4ee08
+  filename: 2026-05-30_pdf-final-overall-survival-analysis-harmoni-a-stud.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.707856+00:00'
+  processed: false
+  notes: query='康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025
+    url: https://www.akesobio.com/media/2707/harmoni-a-ak112-301_sitc2025.pdf
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.703250+00:00'
+    stale_at: '2026-06-29T14:26:06.703250+00:00'
+    expire_at: '2026-08-28T14:26:06.703250+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3749d1
+  filename: 2026-05-30_wclc-2025-康方生物依沃西单抗harmoni研究os结果公布医药新闻-bydrug-一站式医.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.720033+00:00'
+  processed: false
+  notes: query='康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025
+    url: https://www.pharmcube.com/newsLibrary/detail?id=1abea55fbf1cd0798fd3ca063b2b5c09
+    domain: pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.715220+00:00'
+    stale_at: '2026-06-29T14:26:06.715220+00:00'
+    expire_at: '2026-08-28T14:26:06.715220+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-123b53
+  filename: 2026-05-30_康方生物---akeso-inc-harmoni研究更新数据-os-hr-0-78-p-0-0332.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.733848+00:00'
+  processed: false
+  notes: query='康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 康方生物 依沃西 ivonescimab HARMONi 全球 OS 读出 结果 2025
+    url: https://www.akesobio.com/cn/media/akeso-news/20250907
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.727921+00:00'
+    stale_at: '2026-06-29T14:26:06.727921+00:00'
+    expire_at: '2026-08-28T14:26:06.727921+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-69711a
+  filename: 2026-05-30_重磅-恒瑞医药hrs9531注射液中国-期减重研究更多数据亮相2025.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.756806+00:00'
+  processed: false
+  notes: query='恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展
+    url: https://www.hengrui.com/media/detail-876.html
+    domain: hengrui.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.750665+00:00'
+    stale_at: '2026-06-29T14:26:06.750665+00:00'
+    expire_at: '2026-08-28T14:26:06.750665+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ea51d6
+  filename: 2026-05-30_恒瑞医药合作伙伴kailera-therapeutics公司成功在美国纳斯达克挂牌.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.774120+00:00'
+  processed: false
+  notes: query='恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展
+    url: https://www.hengrui.com/media/detail-935.html
+    domain: hengrui.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.767852+00:00'
+    stale_at: '2026-06-29T14:26:06.767852+00:00'
+    expire_at: '2026-08-28T14:26:06.767852+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8ee01e
+  filename: 2026-05-30_恒瑞医药hrs9531注射液-期减重研究新数据亮相2025年美国肥胖周.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.790140+00:00'
+  processed: false
+  notes: query='恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展
+    url: https://synapse.zhihuiya.com/blog/%E6%81%92%E7%91%9E%E5%8C%BB%E8%8D%AFhrs9531%E6%B3%A8%E5%B0%84%E6%B6%B2%E2%85%B2%E6%9C%9F%E5%87%8F%E9%87%8D%E7%A0%94%E7%A9%B6%E6%96%B0%E6%95%B0%E6%8D%AE%E4%BA%AE%E7%9B%B82025%E5%B9%B4%E7%BE%8E%E5%9B%BD%E8%82%A5%E8%83%96%E5%91%A8%E5%A4%A7%E4%BC%9A
+    domain: synapse.zhihuiya.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.783800+00:00'
+    stale_at: '2026-06-29T14:26:06.783800+00:00'
+    expire_at: '2026-08-28T14:26:06.783800+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d27999
+  filename: 2026-05-30_恒瑞医药hrs9531注射液-期减重数据将亮相2025年美国肥胖周大会.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.807136+00:00'
+  processed: false
+  notes: query='恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展
+    url: https://www.hengrui.com/media/detail-868.html
+    domain: hengrui.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.800482+00:00'
+    stale_at: '2026-06-29T14:26:06.800482+00:00'
+    expire_at: '2026-08-28T14:26:06.800482+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-266a48
+  filename: 2026-05-30_恒瑞医药-kailera启动glp-1-gip三项全球三期临床医药新闻-bydrug-一站式医药资源.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.825246+00:00'
+  processed: false
+  notes: query='恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 HRS9531 GLP-1 Kailera NewCo 2025 进展
+    url: https://bydrug.pharmcube.com/news/detail/d26e371aaa4d70406ac5b28f67484424
+    domain: bydrug.pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.818281+00:00'
+    stale_at: '2026-06-29T14:26:06.818281+00:00'
+    expire_at: '2026-08-28T14:26:06.818281+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-61e5d5
+  filename: 2026-05-30_orr率100-百利天恒在esmo-2025首发egfr-her3双抗adc全球临床数据.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.853638+00:00'
+  processed: false
+  notes: query='百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3
+    url: https://www.zhihuiya.com/news/info_11431.html
+    domain: zhihuiya.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.846295+00:00'
+    stale_at: '2026-06-29T14:26:06.846295+00:00'
+    expire_at: '2026-08-28T14:26:06.846295+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-976e07
+  filename: 2026-05-30_百利天恒-688506-sh-研究报告-pc-hsf10资料.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.873992+00:00'
+  processed: false
+  notes: query='百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3
+    url: https://emweb.eastmoney.com/ResearchReport/Index?type=soft&code=SH688506
+    domain: emweb.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.865807+00:00'
+    stale_at: '2026-06-29T14:26:06.865807+00:00'
+    expire_at: '2026-08-28T14:26:06.865807+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b917d3
+  filename: 2026-05-30_百利天恒子公司与百时美施贵宝合作协议触发里程碑付款条件.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.894867+00:00'
+  processed: false
+  notes: query='百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3
+    url: https://stcn.com/article/detail/3374927.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-05-30T14:26:06.886862+00:00'
+    stale_at: '2026-06-29T14:26:06.886862+00:00'
+    expire_at: '2026-08-28T14:26:06.886862+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fb24dc
+  filename: 2026-05-30_pdf-百利天恒-u-688506-首创双抗adc.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.916287+00:00'
+  processed: false
+  notes: query='百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3
+    url: https://pdf.dfcfw.com/pdf/H3_AP202404111630154812_1.pdf?1712861861000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.907973+00:00'
+    stale_at: '2026-06-29T14:26:06.907973+00:00'
+    expire_at: '2026-08-28T14:26:06.907973+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4bad5e
+  filename: 2026-05-30_刷新bd里程碑付款纪录-百利天恒再次领跑---bydrug.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.938426+00:00'
+  processed: false
+  notes: query='百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百利天恒 BL-B01D1 BMS 里程碑 2025 临床进展 EGFR HER3
+    url: https://bydrug.pharmcube.com/news/detail/360a34d2e8bff5b73d3cba03b3634e3e
+    domain: bydrug.pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.929880+00:00'
+    stale_at: '2026-06-29T14:26:06.929880+00:00'
+    expire_at: '2026-08-28T14:26:06.929880+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1e524f
+  filename: 2026-05-30_新闻中心---四川科倫博泰生物醫藥股份有限公司.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.972879+00:00'
+  processed: false
+  notes: query='科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026
+    url: https://tc.kelun-biotech.com/newsCenter.aspx?mid=18
+    domain: tc.kelun-biotech.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.963714+00:00'
+    stale_at: '2026-06-29T14:26:06.963714+00:00'
+    expire_at: '2026-08-28T14:26:06.963714+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a0a023
+  filename: 2026-05-30_新闻中心---四川科伦博泰生物医药股份有限公司.md
+  source_type: web-search
+  added: '2026-05-30T14:26:06.996740+00:00'
+  processed: false
+  notes: query='科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026
+    url: https://www.kelun-biotech.com/newsCenter.aspx?mid=18&page=10
+    domain: kelun-biotech.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:06.987479+00:00'
+    stale_at: '2026-06-29T14:26:06.987479+00:00'
+    expire_at: '2026-08-28T14:26:06.987479+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3aba51
+  filename: 2026-05-30_2026-asco-科倫博泰2項-註冊研究入選2026-asco非小細胞肺癌口頭報告專場.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.021699+00:00'
+  processed: false
+  notes: query='科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026
+    url: https://www.prnewswire.com/apac/zh/news-releases/2026-asco--2-2026-asco-302779207.html
+    domain: prnewswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.012084+00:00'
+    stale_at: '2026-06-29T14:26:07.012084+00:00'
+    expire_at: '2026-08-28T14:26:07.012084+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bb28dc
+  filename: 2026-05-30_科伦博泰与默沙东合作创新药芦康沙妥珠单抗取得关键临床突破.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.047709+00:00'
+  processed: false
+  notes: query='科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026
+    url: https://www.cfbond.com/2026/05/19/991131024.html
+    domain: cfbond.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.037883+00:00'
+    stale_at: '2026-06-29T14:26:07.037883+00:00'
+    expire_at: '2026-08-28T14:26:07.037883+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f5a205
+  filename: 2026-05-30_7亿美元纯粹的真爱-科伦博泰又赢麻了.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.074318+00:00'
+  processed: false
+  notes: query='科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 科伦博泰 sac-TMT 芦康沙妥珠单抗 获批 默沙东 2025 2026
+    url: https://www.phirda.com/artilce_40673.html?module=trackingCodeGenerator
+    domain: phirda.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.064036+00:00'
+    stale_at: '2026-06-29T14:26:07.064036+00:00'
+    expire_at: '2026-08-28T14:26:07.064036+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a081d6
+  filename: 2026-05-30_汉坤助力三生制药与辉瑞就pd-1-vegf双抗ssgj-707达成重磅独家许可交易.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.114902+00:00'
+  processed: false
+  notes: query='三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025
+    url: https://hankunlaw.com/portal/article/index/cid/7/id/15277
+    domain: hankunlaw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.104123+00:00'
+    stale_at: '2026-06-29T14:26:07.104123+00:00'
+    expire_at: '2026-08-28T14:26:07.104123+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-311bd6
+  filename: 2026-05-30_靠bd首付带飞业绩-双抗赛道竞争白热化-三生国健---时代财经.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.143487+00:00'
+  processed: false
+  notes: query='三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025
+    url: https://www.tfcaijing.com/article/page/445a4d436d513769754235685877717a527758626d513d3d
+    domain: tfcaijing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.132422+00:00'
+    stale_at: '2026-06-29T14:26:07.132422+00:00'
+    expire_at: '2026-08-28T14:26:07.132422+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-754d23
+  filename: 2026-05-30_三生制药与辉瑞达成pd-1-vegf双抗ssgj-707全球权益合作---聚焦大分子.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.172783+00:00'
+  processed: false
+  notes: query='三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025
+    url: https://www.bigmoleculewatch.cn/2025/06/03/%E4%B8%89%E7%94%9F%E5%88%B6%E8%8D%AF%E4%B8%8E%E8%BE%89%E7%91%9E%E8%BE%BE%E6%88%90pd-1-vegf%E5%8F%8C%E6%8A%97ssgj-707%E5%85%A8%E7%90%83%E6%9D%83%E7%9B%8A%E5%90%88%E4%BD%9C
+    domain: bigmoleculewatch.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.161491+00:00'
+    stale_at: '2026-06-29T14:26:07.161491+00:00'
+    expire_at: '2026-08-28T14:26:07.161491+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-604cdb
+  filename: 2026-05-30_pdf-內幕消息公告-1-與輝瑞就pd-1-vegf雙特異性抗體-ssgj-707-訂立.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.203056+00:00'
+  processed: false
+  notes: query='三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025
+    url: https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0520/2025052000022_c.pdf
+    domain: www1.hkexnews.hk
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.191317+00:00'
+    stale_at: '2026-06-29T14:26:07.191317+00:00'
+    expire_at: '2026-08-28T14:26:07.191317+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7132a0
+  filename: 2026-05-30_辉瑞-明牌-pd-1-vegf双抗开发思路医药新闻-bydrug-一站式医药资源共享中心-医药魔方.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.234832+00:00'
+  processed: false
+  notes: query='三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 三生制药 PD-1 VEGF 707 辉瑞 Pfizer BD 首付 2025
+    url: https://www.pharmcube.com/newsLibrary/detail?id=874ac56e7f5b6bd7c371b795afd38199
+    domain: pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.222213+00:00'
+    stale_at: '2026-06-29T14:26:07.222213+00:00'
+    expire_at: '2026-08-28T14:26:07.222213+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4d84ae
+  filename: 2026-05-30_恒瑞医药-h股股票将于2025年5月23日挂牌并上市交易---新浪财经.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.282010+00:00'
+  processed: false
+  notes: query='恒瑞医药 港股 上市 2025 H股' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 港股 上市 2025 H股
+    url: https://finance.sina.com.cn/roll/2025-05-23/doc-inexpvsa6067828.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.269650+00:00'
+    stale_at: '2026-06-29T14:26:07.269650+00:00'
+    expire_at: '2026-08-28T14:26:07.269650+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-92042e
+  filename: 2026-05-30_恒瑞医药获批港股上市-拟发行h股不超过8-15亿股---经济观察网.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.314788+00:00'
+  processed: false
+  notes: query='恒瑞医药 港股 上市 2025 H股' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 港股 上市 2025 H股
+    url: http://m.eeo.com.cn/2025/0505/724897.shtml
+    domain: m.eeo.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.302186+00:00'
+    stale_at: '2026-06-29T14:26:07.302186+00:00'
+    expire_at: '2026-08-28T14:26:07.302186+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a7a6e7
+  filename: 2026-05-30_恒瑞医药登陆港股首日股价高开29---金融--caixin.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.348797+00:00'
+  processed: false
+  notes: query='恒瑞医药 港股 上市 2025 H股' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 港股 上市 2025 H股
+    url: https://finance.caixin.com/2025-05-23/102322483.html
+    domain: finance.caixin.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.335630+00:00'
+    stale_at: '2026-06-29T14:26:07.335630+00:00'
+    expire_at: '2026-08-28T14:26:07.335630+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9b001d
+  filename: 2026-05-30_恒瑞医药正式启动h股全球公开发售最高募资额可达130-8亿港元.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.383826+00:00'
+  processed: false
+  notes: query='恒瑞医药 港股 上市 2025 H股' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 港股 上市 2025 H股
+    url: http://www.zqrb.cn/gscy/gongsi/2025-05-15/A1747274444564.html
+    domain: zqrb.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.370216+00:00'
+    stale_at: '2026-06-29T14:26:07.370216+00:00'
+    expire_at: '2026-08-28T14:26:07.370216+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-46db74
+  filename: 2026-05-30_恒瑞医药.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.419540+00:00'
+  processed: false
+  notes: query='恒瑞医药 港股 上市 2025 H股' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞医药 港股 上市 2025 H股
+    url: https://www.hengrui.com/media/detail-773.html
+    domain: hengrui.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.405564+00:00'
+    stale_at: '2026-06-29T14:26:07.405564+00:00'
+    expire_at: '2026-08-28T14:26:07.405564+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e8a7e6
+  filename: 2026-05-30_42-3亿美元-荣昌生物就-泰它西普-达成国际授权合作医药新闻-bydrug-一站式医药资源共享中心.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.472780+00:00'
+  processed: false
+  notes: query='荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025
+    url: https://bydrug.pharmcube.com/news/detail/52f9bee1811b47ebf61d8e5079083142
+    domain: bydrug.pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.458666+00:00'
+    stale_at: '2026-06-29T14:26:07.458666+00:00'
+    expire_at: '2026-08-28T14:26:07.458666+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4d0c91
+  filename: 2026-05-30_荣昌生物42-3亿美元授权泰它西普海外权益-创国产新药出海新纪录-摩熵医药.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.510235+00:00'
+  processed: false
+  notes: query='荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025
+    url: https://www.pharnexcloud.com/zixun/sx_49324
+    domain: pharnexcloud.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.495746+00:00'
+    stale_at: '2026-06-29T14:26:07.495746+00:00'
+    expire_at: '2026-08-28T14:26:07.495746+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-68cfaf
+  filename: 2026-05-30_荣昌生物-授予美国vor-bio公司泰它西普海外独家权益潜在交易总额.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.548393+00:00'
+  processed: false
+  notes: query='荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025
+    url: https://finance.sina.com.cn/stock/relnews/cn/2025-06-26/doc-infckhut3760735.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.533811+00:00'
+    stale_at: '2026-06-29T14:26:07.533811+00:00'
+    expire_at: '2026-08-28T14:26:07.533811+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a762be
+  filename: 2026-05-30_一笔42亿美元的交易-泰它西普-出海-荣昌生物陷风波---21财经.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.589483+00:00'
+  processed: false
+  notes: query='荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025
+    url: https://m.21jingji.com/article/20250626/herald/6b0cb4fc3a4b29ca0f2b02ee87415a98.html
+    domain: m.21jingji.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.573123+00:00'
+    stale_at: '2026-06-29T14:26:07.573123+00:00'
+    expire_at: '2026-08-28T14:26:07.573123+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9fc9c8
+  filename: 2026-05-30_荣昌生物重磅产品海外授权交易超40亿美元---新药情报库--智慧芽.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.633644+00:00'
+  processed: false
+  notes: query='荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 荣昌生物 泰它西普 telitacicept Vor Bio 海外授权 IgAN MG 2025
+    url: https://synapse.zhihuiya.com/blog/%E8%8D%A3%E6%98%8C%E7%94%9F%E7%89%A9%E9%87%8D%E7%A3%85%E4%BA%A7%E5%93%81%E6%B5%B7%E5%A4%96%E6%8E%88%E6%9D%83%E4%BA%A4%E6%98%93%E8%B6%8540%E4%BA%BF%E7%BE%8Eyuan
+    domain: synapse.zhihuiya.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.616805+00:00'
+    stale_at: '2026-06-29T14:26:07.616805+00:00'
+    expire_at: '2026-08-28T14:26:07.616805+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6d1043
+  filename: 2026-05-30_2025年-港股创新药暴动---新浪财经.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.697951+00:00'
+  processed: false
+  notes: query='港股 创新药 2025 行情 恒生医疗 反弹 估值 18A' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 港股 创新药 2025 行情 恒生医疗 反弹 估值 18A
+    url: https://finance.sina.com.cn/stock/stockzmt/2025-03-08/doc-inenyfta8462415.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.680887+00:00'
+    stale_at: '2026-06-29T14:26:07.680887+00:00'
+    expire_at: '2026-08-28T14:26:07.680887+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-41d505
+  filename: 2026-05-30_2025年度盘点之港股医药-个股演绎多元行情-创新药企扎堆赴港上市.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.742051+00:00'
+  processed: false
+  notes: query='港股 创新药 2025 行情 恒生医疗 反弹 估值 18A' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 港股 创新药 2025 行情 恒生医疗 反弹 估值 18A
+    url: https://9fzt.com/common/356ece43a7add96e472f0e7156dded92.html
+    domain: 9fzt.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.724889+00:00'
+    stale_at: '2026-06-29T14:26:07.724889+00:00'
+    expire_at: '2026-08-28T14:26:07.724889+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2c09b1
+  filename: 2026-05-30_多重利好共振-港股创新药迎布局窗口富国港股通医药优选今日发行.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.787845+00:00'
+  processed: false
+  notes: query='港股 创新药 2025 行情 恒生医疗 反弹 估值 18A' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 港股 创新药 2025 行情 恒生医疗 反弹 估值 18A
+    url: https://www.cnstock.com/commonDetail/712853
+    domain: cnstock.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.770229+00:00'
+    stale_at: '2026-06-29T14:26:07.770229+00:00'
+    expire_at: '2026-08-28T14:26:07.770229+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-847c1d
+  filename: 2026-05-30_港股创新药再迎反弹---搜狐.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.834209+00:00'
+  processed: false
+  notes: query='港股 创新药 2025 行情 恒生医疗 反弹 估值 18A' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 港股 创新药 2025 行情 恒生医疗 反弹 估值 18A
+    url: https://www.sohu.com/a/997309709_122014422
+    domain: sohu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.816491+00:00'
+    stale_at: '2026-06-29T14:26:07.816491+00:00'
+    expire_at: '2026-08-28T14:26:07.816491+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-98d9a5
+  filename: 2026-05-30_创新药企冲向港股---pro专享-数据深度专题.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.881273+00:00'
+  processed: false
+  notes: query='港股 创新药 2025 行情 恒生医疗 反弹 估值 18A' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 港股 创新药 2025 行情 恒生医疗 反弹 估值 18A
+    url: https://deepview.caixin.com/event/EVENT.000000665.html
+    domain: deepview.caixin.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.862953+00:00'
+    stale_at: '2026-06-29T14:26:07.862953+00:00'
+    expire_at: '2026-08-28T14:26:07.862953+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a951a1
+  filename: 2026-05-30_媒体聚焦-2025年医保目录调整正式启动-首次增设的-商保创新药目录-是什么.md
+  source_type: web-search
+  added: '2026-05-30T14:26:07.951427+00:00'
+  processed: false
+  notes: query='2025 国家医保谈判 创新药 结果 丙类 商业健康保险 创新药目录 落地' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 2025 国家医保谈判 创新药 结果 丙类 商业健康保险 创新药目录 落地
+    url: https://ybj.sh.gov.cn/ybdt/20250718/2fed0087922542cbb37abb281dcc766d.html
+    domain: ybj.sh.gov.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:07.932854+00:00'
+    stale_at: '2026-06-29T14:26:07.932854+00:00'
+    expire_at: '2026-08-28T14:26:07.932854+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9545fa
+  filename: 2026-05-30_丙类药品目录落地在即-创新药迎来新机遇-原研药回归医院-摩熵医药.md
+  source_type: web-search
+  added: '2026-05-30T14:26:08.000511+00:00'
+  processed: false
+  notes: query='2025 国家医保谈判 创新药 结果 丙类 商业健康保险 创新药目录 落地' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 丙类目录 落地 放量 商保 创新药 赔付 国谈 2025 结果
+    url: https://www.pharnexcloud.com/zixun/sd_37547
+    domain: pharnexcloud.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:13.791133+00:00'
+    stale_at: '2026-06-29T14:43:13.791133+00:00'
+    expire_at: '2026-08-28T14:43:13.791133+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - 2025 国家医保谈判 创新药 结果 丙类 商业健康保险 创新药目录 落地
+- id: mat-e6df26
+  filename: 2026-05-30_北京市医疗保障局-政务公开-政策文件-北京市医疗保障局-北京市人力资源和社会保障局-关于落实-国家基.md
+  source_type: web-search
+  added: '2026-05-30T14:26:08.050664+00:00'
+  processed: false
+  notes: query='2025 国家医保谈判 创新药 结果 丙类 商业健康保险 创新药目录 落地' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 2025 国家医保谈判 创新药 结果 丙类 商业健康保险 创新药目录 落地
+    url: https://ybj.beijing.gov.cn/zwgk/2024zcwj/202512/t20251230_4378644.html
+    domain: ybj.beijing.gov.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:08.031475+00:00'
+    stale_at: '2026-06-29T14:26:08.031475+00:00'
+    expire_at: '2026-08-28T14:26:08.031475+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fb437e
+  filename: 2026-05-30_国家医疗保障局-政策法规-国家医保局-人力资源社会保障部关于印发-国家基本医疗保险-生育保险和工伤保.md
+  source_type: web-search
+  added: '2026-05-30T14:26:08.099784+00:00'
+  processed: false
+  notes: query='2025 国家医保谈判 创新药 结果 丙类 商业健康保险 创新药目录 落地' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 2025 国家医保谈判 创新药 结果 丙类 商业健康保险 创新药目录 落地
+    url: https://www.nhsa.gov.cn/art/2025/12/7/art_104_18970.html
+    domain: nhsa.gov.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:08.081093+00:00'
+    stale_at: '2026-06-29T14:26:08.081093+00:00'
+    expire_at: '2026-08-28T14:26:08.081093+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f0b244
+  filename: 2026-05-30_创新支付2025-丙类目录9月落地-商保将成创新药最大买家.md
+  source_type: web-search
+  added: '2026-05-30T14:26:08.148909+00:00'
+  processed: false
+  notes: query='2025 国家医保谈判 创新药 结果 丙类 商业健康保险 创新药目录 落地' | 待用户确认 | query='丙类目录 落地 放量
+    商保 创新药 赔付 国谈 2025 结果' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 丙类目录 落地 放量 商保 创新药 赔付 国谈 2025 结果
+    url: https://ageclub.net/article-detail/5063
+    domain: ageclub.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:13.232878+00:00'
+    stale_at: '2026-06-29T14:43:13.232878+00:00'
+    expire_at: '2026-08-28T14:43:13.232878+00:00'
+    triggered_by: 01-prescan
+- id: mat-e9d62a
+  filename: 2026-05-30_百济神州-2025年营收超382亿元-首次实现全年盈利.md
+  source_type: web-search
+  added: '2026-05-30T14:26:08.221710+00:00'
+  processed: false
+  notes: query='百济神州 BeOne 更名 盈利 泽布替尼 2025 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百济神州 BeOne 更名 盈利 泽布替尼 2025 营收
+    url: https://www.stcn.com/article/detail/3750731.html
+    domain: stcn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:08.202215+00:00'
+    stale_at: '2026-06-29T14:26:08.202215+00:00'
+    expire_at: '2026-08-28T14:26:08.202215+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a17104
+  filename: 2026-05-30_百济神州的关键一跃.md
+  source_type: web-search
+  added: '2026-05-30T14:26:08.272861+00:00'
+  processed: false
+  notes: query='百济神州 BeOne 更名 盈利 泽布替尼 2025 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百济神州 BeOne 更名 盈利 泽布替尼 2025 营收
+    url: https://www.phirda.com/artilce_39410.html?module=trackingCodeGenerator
+    domain: phirda.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:08.253234+00:00'
+    stale_at: '2026-06-29T14:26:08.253234+00:00'
+    expire_at: '2026-08-28T14:26:08.253234+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-858252
+  filename: 2026-05-30_泽布替尼海外市场大卖百济神州首次实现季度盈利---bamboo-works.md
+  source_type: web-search
+  added: '2026-05-30T14:26:08.323917+00:00'
+  processed: false
+  notes: query='百济神州 BeOne 更名 盈利 泽布替尼 2025 营收'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 百济神州 BeOne 更名 盈利 泽布替尼 2025 营收
+    url: https://thebambooworks.com/cn/%E6%B3%BD%E5%B8%83%E6%9B%BF%E5%B0%BC%E6%B5%B7%E5%A4%96%E5%B8%82%E5%9C%BA%E5%A4%A7%E5%8D%96-%E7%99%BE%E6%B5%8E%E7%A5%9E%E5%B7%9E%E9%A6%96%E6%AC%A1%E5%AE%9E%E7%8E%B0%E5%AD%A3%E5%BA%A6%E7%9B%88-2
+    domain: thebambooworks.com
+    domain_tier: whitelist
+    searched_at: '2026-05-30T14:26:08.304397+00:00'
+    stale_at: '2026-06-29T14:26:08.304397+00:00'
+    expire_at: '2026-08-28T14:26:08.304397+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bdade7
+  filename: 2026-05-30_pdf-美国证券交易委员会表格10-k-beone-medicines-ltd-百济神州.md
+  source_type: web-search
+  added: '2026-05-30T14:26:08.376363+00:00'
+  processed: false
+  notes: query='百济神州 BeOne 更名 盈利 泽布替尼 2025 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百济神州 BeOne 更名 盈利 泽布替尼 2025 营收
+    url: https://stockmc.xueqiu.com/202602/688235_20260227_S5LB.pdf
+    domain: stockmc.xueqiu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:08.356229+00:00'
+    stale_at: '2026-06-29T14:26:08.356229+00:00'
+    expire_at: '2026-08-28T14:26:08.356229+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-773c63
+  filename: 2026-05-30_百济神州q1营收超105亿元-泽布替尼-独揽超七成收入---moomoo.md
+  source_type: web-search
+  added: '2026-05-30T14:26:08.430124+00:00'
+  processed: false
+  notes: query='百济神州 BeOne 更名 盈利 泽布替尼 2025 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百济神州 BeOne 更名 盈利 泽布替尼 2025 营收
+    url: https://www.moomoo.com/hans/news/post/69606733
+    domain: moomoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:26:08.409094+00:00'
+    stale_at: '2026-06-29T14:26:08.409094+00:00'
+    expire_at: '2026-08-28T14:26:08.409094+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-88c9ad
+  filename: 2026-05-30_新华财经调查-药企年报-回暖-背后-创新红利初步显现bd持续性.md
+  source_type: web-search
+  added: '2026-05-30T14:27:09.468002+00:00'
+  processed: false
+  notes: query='中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报
+    url: https://m.cnfin.com/hg-lb//zixun/20260428/4405777_1.html
+    domain: m.cnfin.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.446685+00:00'
+    stale_at: '2026-06-29T14:27:09.446685+00:00'
+    expire_at: '2026-08-28T14:27:09.446685+00:00'
+    triggered_by: 00-prescan
+- id: mat-0d3a6a
+  filename: 2026-05-30_2025药企创新药销售收入top10---医药魔方.md
+  source_type: web-search
+  added: '2026-05-30T14:27:09.523147+00:00'
+  processed: false
+  notes: query='中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报
+    url: https://www.pharmcube.com/newsLibrary/detail?id=67db7e8121be751e57b79c1caee21da1
+    domain: pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.501889+00:00'
+    stale_at: '2026-06-29T14:27:09.501889+00:00'
+    expire_at: '2026-08-28T14:27:09.501889+00:00'
+    triggered_by: 00-prescan
+- id: mat-d11781
+  filename: 2026-05-30_药企三重变局-创新兑现-出海盛世与资本收缩丨2025年报专题---网易.md
+  source_type: web-search
+  added: '2026-05-30T14:27:09.578202+00:00'
+  processed: false
+  notes: query='中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报
+    url: https://www.163.com/dy/article/KS307J7B0519C3MG.html
+    domain: 163.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.557079+00:00'
+    stale_at: '2026-06-29T14:27:09.557079+00:00'
+    expire_at: '2026-08-28T14:27:09.557079+00:00'
+    triggered_by: 00-prescan
+- id: mat-688672
+  filename: 2026-05-30_药企创新产品收入top10---知乎专栏.md
+  source_type: web-search
+  added: '2026-05-30T14:27:09.635409+00:00'
+  processed: false
+  notes: query='中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报
+    url: https://zhuanlan.zhihu.com/p/1894038004311491409
+    domain: zhuanlan.zhihu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.613240+00:00'
+    stale_at: '2026-06-29T14:27:09.613240+00:00'
+    expire_at: '2026-08-28T14:27:09.613240+00:00'
+    triggered_by: 00-prescan
+- id: mat-6ed2a1
+  filename: 2026-05-30_pdf-江苏恒瑞医药股份有限公司2025-年年度报告.md
+  source_type: web-search
+  added: '2026-05-30T14:27:09.694500+00:00'
+  processed: false
+  notes: query='中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 龙头 恒瑞 百济 信达 业绩 2025年报
+    url: https://stockmc.xueqiu.com/202603/600276_20260326_RAEC.pdf
+    domain: stockmc.xueqiu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.672086+00:00'
+    stale_at: '2026-06-29T14:27:09.672086+00:00'
+    expire_at: '2026-08-28T14:27:09.672086+00:00'
+    triggered_by: 00-prescan
+- id: mat-d95c01
+  filename: 2026-05-30_2025年中国创新药十大出海-释放了哪些信号--36氪.md
+  source_type: web-search
+  added: '2026-05-30T14:27:09.780131+00:00'
+  processed: false
+  notes: query='中国创新药 技术突破 双抗 ADC 小核酸 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 技术突破 双抗 ADC 小核酸 2025
+    url: https://m.36kr.com/p/3627908649370627
+    domain: m.36kr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.757234+00:00'
+    stale_at: '2026-06-29T14:27:09.757234+00:00'
+    expire_at: '2026-08-28T14:27:09.757234+00:00'
+    triggered_by: 00-prescan
+- id: mat-747972
+  filename: 2026-05-30_asco-2025揭幕在即-中国adc占据半壁江山-双抗三抗引领新突破.md
+  source_type: web-search
+  added: '2026-05-30T14:27:09.839243+00:00'
+  processed: false
+  notes: query='中国创新药 技术突破 双抗 ADC 小核酸 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 技术突破 双抗 ADC 小核酸 2025
+    url: https://www.pharnexcloud.com/zixun/sx_47291
+    domain: pharnexcloud.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.816457+00:00'
+    stale_at: '2026-06-29T14:27:09.816457+00:00'
+    expire_at: '2026-08-28T14:27:09.816457+00:00'
+    triggered_by: 00-prescan
+- id: mat-fd984b
+  filename: 2026-05-30_pd-1双抗-trop2-adc技术突破-三生制药12-5亿美元出海创纪录.md
+  source_type: web-search
+  added: '2026-05-30T14:27:09.899758+00:00'
+  processed: false
+  notes: query='中国创新药 技术突破 双抗 ADC 小核酸 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 技术突破 双抗 ADC 小核酸 2025
+    url: https://www.youtube.com/watch?v=V76xfIM6wog
+    domain: youtube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.876378+00:00'
+    stale_at: '2026-06-29T14:27:09.876378+00:00'
+    expire_at: '2026-08-28T14:27:09.876378+00:00'
+    triggered_by: 00-prescan
+- id: mat-0bd04f
+  filename: 2026-05-30_2025年度中国创新药高质量前沿创新成果top15-免疫-靶点-治疗-实体瘤-特异性-欧洲肿瘤内科学.md
+  source_type: web-search
+  added: '2026-05-30T14:27:09.961334+00:00'
+  processed: false
+  notes: query='中国创新药 技术突破 双抗 ADC 小核酸 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 技术突破 双抗 ADC 小核酸 2025
+    url: https://www.163.com/dy/article/KTMHNE7F0534Q32Z.html
+    domain: 163.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.937473+00:00'
+    stale_at: '2026-06-29T14:27:09.937473+00:00'
+    expire_at: '2026-08-28T14:27:09.937473+00:00'
+    triggered_by: 00-prescan
+- id: mat-d0df3d
+  filename: 2026-05-30_2025-aacr-中国adc创新药物-起飞-附资料---bydrug---医药魔方.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.022882+00:00'
+  processed: false
+  notes: query='中国创新药 技术突破 双抗 ADC 小核酸 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 技术突破 双抗 ADC 小核酸 2025
+    url: https://bydrug.pharmcube.com/news/detail/f6362052bbca73881110111071d60616
+    domain: bydrug.pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:09.999231+00:00'
+    stale_at: '2026-06-29T14:27:09.999231+00:00'
+    expire_at: '2026-08-28T14:27:09.999231+00:00'
+    triggered_by: 00-prescan
+- id: mat-d7d6eb
+  filename: 2026-05-30_国家医疗保障局-医保动态-国家医保局-支持创新药高质量发展的若干措施-新闻发布会实录.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.113487+00:00'
+  processed: false
+  notes: query='中国创新药 行业政策 全链条支持 审评 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 行业政策 全链条支持 审评 2025
+    url: https://www.nhsa.gov.cn/art/2025/7/1/art_14_17065.html
+    domain: nhsa.gov.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.089565+00:00'
+    stale_at: '2026-06-29T14:27:10.089565+00:00'
+    expire_at: '2026-08-28T14:27:10.089565+00:00'
+    triggered_by: 00-prescan
+- id: mat-87fd6c
+  filename: 2026-05-30_全链条支持创新医药高质量发展---经济--人民网.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.177214+00:00'
+  processed: false
+  notes: query='中国创新药 行业政策 全链条支持 审评 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 行业政策 全链条支持 审评 2025
+    url: http://finance.people.com.cn/n1/2025/0708/c1004-40516779.html
+    domain: finance.people.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.152680+00:00'
+    stale_at: '2026-06-29T14:27:10.152680+00:00'
+    expire_at: '2026-08-28T14:27:10.152680+00:00'
+    triggered_by: 00-prescan
+- id: mat-e25bdf
+  filename: 2026-05-30_北京推出32条新举措全链条支持创新医药高质量发展---中国科技网.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.242895+00:00'
+  processed: false
+  notes: query='中国创新药 行业政策 全链条支持 审评 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 行业政策 全链条支持 审评 2025
+    url: https://www.stdaily.com/web/gdxw/2025-07/07/content_366324.html
+    domain: stdaily.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.217391+00:00'
+    stale_at: '2026-06-29T14:27:10.217391+00:00'
+    expire_at: '2026-08-28T14:27:10.217391+00:00'
+    triggered_by: 00-prescan
+- id: mat-5be22b
+  filename: 2026-05-30_全链条支持创新医药高质量发展-深化改革-北京市科学技术委员会-中关村科技园区管理委员会.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.314587+00:00'
+  processed: false
+  notes: query='中国创新药 行业政策 全链条支持 审评 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 行业政策 全链条支持 审评 2025
+    url: https://kw.beijing.gov.cn/xwdt/kcyx/xwdtshgg/202507/t20250708_4144051.html
+    domain: kw.beijing.gov.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.286655+00:00'
+    stale_at: '2026-06-29T14:27:10.286655+00:00'
+    expire_at: '2026-08-28T14:27:10.286655+00:00'
+    triggered_by: 00-prescan
+- id: mat-61422c
+  filename: 2026-05-30_pdf-全链条支持创新-中国促进生物医药产业发展新政及其影响.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.385117+00:00'
+  processed: false
+  notes: query='中国创新药 行业政策 全链条支持 审评 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 行业政策 全链条支持 审评 2025
+    url: https://pdf.dfcfw.com/pdf/H3_AP202502231643406961_1.pdf?1740328650000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.358512+00:00'
+    stale_at: '2026-06-29T14:27:10.358512+00:00'
+    expire_at: '2026-08-28T14:27:10.358512+00:00'
+    triggered_by: 00-prescan
+- id: mat-1254e4
+  filename: 2026-05-30_报告-2025年中国创新药出海正当时.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.488285+00:00'
+  processed: false
+  notes: query='中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展
+    url: https://www.phirda.com/artilce_40476.html?module=trackingCodeGenerator
+    domain: phirda.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.460549+00:00'
+    stale_at: '2026-06-29T14:27:10.460549+00:00'
+    expire_at: '2026-08-28T14:27:10.460549+00:00'
+    triggered_by: 00-prescan
+- id: mat-5d8793
+  filename: 2026-05-30_中国创新药-2025-破圈-全球-国际金融报社.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.560514+00:00'
+  processed: false
+  notes: query='中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展
+    url: https://www.ifnews.com/news.html?aid=793060&cid=44
+    domain: ifnews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.532545+00:00'
+    stale_at: '2026-06-29T14:27:10.532545+00:00'
+    expire_at: '2026-08-28T14:27:10.532545+00:00'
+    triggered_by: 00-prescan
+- id: mat-1f3535
+  filename: 2026-05-30_2025年药品bd出海回顾-显著提速-关注双抗-adc-glp-1ra.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.634953+00:00'
+  processed: false
+  notes: query='中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展
+    url: https://bydrug.pharmcube.com/news/detail/09832f7e3e5d2056e5782b952ac1fb84
+    domain: bydrug.pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.607249+00:00'
+    stale_at: '2026-06-29T14:27:10.607249+00:00'
+    expire_at: '2026-08-28T14:27:10.607249+00:00'
+    triggered_by: 00-prescan
+- id: mat-aba60c
+  filename: 2026-05-30_2025中国创新药出海爆发-7大药企达成超200亿美元授权交易-摩熵医药.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.708621+00:00'
+  processed: false
+  notes: query='中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展
+    url: https://www.pharnexcloud.com/zixun/sx_49693
+    domain: pharnexcloud.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.680594+00:00'
+    stale_at: '2026-06-29T14:27:10.680594+00:00'
+    expire_at: '2026-08-28T14:27:10.680594+00:00'
+    triggered_by: 00-prescan
+- id: mat-93a675
+  filename: 2026-05-30_chinabio创新药大会-中国创新药出海实现跨越式突破-2025年交易额超9400亿登顶全球---.md
+  source_type: web-search
+  added: '2026-05-30T14:27:10.780297+00:00'
+  processed: false
+  notes: query='中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国创新药 ADC出海 国谈医保 双抗 GLP-1 自免 2025 进展
+    url: https://www.cbpfcn.com/news/7940
+    domain: cbpfcn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:27:10.752908+00:00'
+    stale_at: '2026-06-29T14:27:10.752908+00:00'
+    expire_at: '2026-08-28T14:27:10.752908+00:00'
+    triggered_by: 00-prescan
+- id: mat-e97889
+  filename: 2025_600276_annual_2026-03-25_恒瑞医药.PDF
+  source_type: annual-report
+  added: '2026-05-30T14:37:32.644759+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-e34b2e
+  filename: 2026-05-28_600276_announce_kzz_恒瑞医药关于获得药品注册批准的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:39.009187+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-6ca4f7
+  filename: 2026-05-28_600276_announce_kzz_恒瑞医药关于获得药物临床试验批准通知书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:39.164462+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-f8e967
+  filename: 2026-05-27_600276_announce_kzz_恒瑞医药关于召开2026年第一季度业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:39.311505+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-35bd32
+  filename: 2026-05-26_600276_announce_kzz_恒瑞医药关于获得药物临床试验批准通知书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:39.466592+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-40a800
+  filename: 2026-05-20_600276_announce_kzz_恒瑞医药2025年年度权益分派实施公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:39.676533+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5e4c69
+  filename: 2026-05-20_600276_announce_kzz_恒瑞医药差异化分红事项法律意见书.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:39.844902+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-df6d3b
+  filename: 2026-05-19_600276_announce_kzz_恒瑞医药关于获得药品注册批准的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:40.005555+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-d778d0
+  filename: 2026-05-14_600276_announce_kzz_恒瑞医药关于获得药物临床试验批准通知书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:40.182501+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-b68b9b
+  filename: 2026-05-13_600276_announce_kzz_恒瑞医药关于获得药物临床试验批准通知书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:40.410607+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-9a323b
+  filename: 2026-05-11_600276_announce_kzz_恒瑞医药关于与百时美施贵宝公司签署战略合作及许可协议的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:40.673647+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-57a059
+  filename: 2026-05-08_600276_announce_kzz_恒瑞医药关于获得药物临床试验批准通知书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:40.824080+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-ea8bf2
+  filename: 2026-05-07_600276_announce_kzz_恒瑞医药关于回购公司A股股份的进展公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:41.041762+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-bf5bf0
+  filename: 2026-05-07_600276_announce_kzz_H股公告-证券变动月报表.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:41.237449+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-fd0f74
+  filename: 2026-04-29_600276_announce_kzz_恒瑞医药第十届董事会第三次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:41.405339+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-bc8707
+  filename: 2026-04-28_600276_announce_kzz_恒瑞医药关于获得药物临床试验批准通知书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:41.562406+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-dee643
+  filename: 2026-04-22_600276_announce_kzz_恒瑞医药2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:41.741551+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-b019dc
+  filename: 2026-04-20_600276_announce_kzz_恒瑞医药关于药品纳入突破性治疗品种名单的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:41.914218+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-3212f2
+  filename: 2026-04-20_600276_announce_kzz_恒瑞医药关于获得药物临床试验批准通知书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:37:42.081206+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒瑞医药
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-d092a9
+  filename: 2025_HK01801_annual_2026-04-28_INNOVENTBIO.pdf
+  source_type: annual-report
+  added: '2026-05-30T14:37:55.820574+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — INNOVENT BIO
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-76caf4
+  filename: 2025_HK06160_annual_2026-04-14_BEONEMEDICINES.pdf
+  source_type: annual-report
+  added: '2026-05-30T14:38:07.468238+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — BEONE MEDICINES
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-787709
+  filename: 2025_688331_annual_2026-03-27_荣昌生物.PDF
+  source_type: annual-report
+  added: '2026-05-30T14:38:07.884209+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-619e1d
+  filename: 2026-02-27_688331_announce_yjygjxz_荣昌生物2025年度业绩快报公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:08.280035+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-fb8ee9
+  filename: 2026-01-30_688331_announce_yjygjxz_荣昌生物制药（烟台）股份有限公司2025年年度业绩预告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:08.511714+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-2feda4
+  filename: 2026-01-21_688331_announce_gqjl_荣昌生物2022年及2023年A股限制性股票激励计划相关权益对应归属期归属结果暨.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:08.796204+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-efcbec
+  filename: 2025-12-29_688331_announce_gqjl_荣昌生物董事会薪酬与考核委员会关于公司2022年、2023年A股限制性股票激励计.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:08.970328+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-b6b0de
+  filename: 2025-12-29_688331_announce_gqjl_荣昌生物关于公司2023年A股限制性股票激励计划之首次授予第一个归属期符合归属条.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:09.165799+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-eb5d37
+  filename: 2025-12-29_688331_announce_gqjl_荣昌生物关于作废部分2022年A股限制性股票激励计划已授予尚未归属的限制性股票的.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:09.343918+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-60a4d7
+  filename: 2025-12-29_688331_announce_gqjl_上海兰迪律师事务所关于荣昌生物制药（烟台）股份有限公司2023年A股限制性股票激.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:10.002885+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-b89bc7
+  filename: 2025-12-29_688331_announce_gqjl_荣昌生物关于公司2022年A股限制性股票激励计划之B类权益首次授予第二个归属期符.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:10.195382+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-55851f
+  filename: 2025-12-29_688331_announce_gqjl_荣昌生物关于作废部分2023年A股限制性股票激励计划已授予尚未归属的限制性股票的.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:10.417728+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-e38051
+  filename: 2025-12-29_688331_announce_gqjl_北京海润天睿律师事务所关于荣昌生物2022年A股限制性股票激励计划之A类权益第三.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:10.719308+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-d1d728
+  filename: 2025-12-29_688331_announce_gqjl_荣昌生物关于公司2022年A股限制性股票激励计划之A类权益第三个归属期符合归属条.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:10.910020+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-3e27eb
+  filename: 2025-11-12_688331_announce_gqjl_荣昌生物2022年A股限制性股票激励计划之B类权益预留授予第一个归属期第一次归属.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:11.099016+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-9419ac
+  filename: 2025-11-04_688331_announce_gqjl_荣昌生物关于作废部分2022年A股限制性股票激励计划已授予尚未归属的限制性股票的.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:11.282927+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-26e950
+  filename: 2025-11-04_688331_announce_gqjl_董事会薪酬与考核委员会关于公司2022年限制性股票激励计划之B类权益预留授予部分.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:11.482710+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-8404a9
+  filename: 2025-11-04_688331_announce_gqjl_北京海润天睿律师事务所关于荣昌生物制药（烟台）股份有限公司2022年A股限制性股.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:11.719794+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-3cc246
+  filename: 2025-11-04_688331_announce_gqjl_荣昌生物关于公司2022年A股限制性股票激励计划之B类权益预留授予第一个归属期符.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:11.930669+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-6ba7fa
+  filename: 2026-05-26_688331_announce_kzz_H股公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:12.669003+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-4dcda9
+  filename: 2026-05-20_688331_announce_kzz_H股公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:12.839534+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-2afeb9
+  filename: 2026-05-20_688331_announce_kzz_荣昌生物关于召开2025年年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:13.041388+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-90c554
+  filename: 2026-05-19_688331_announce_kzz_H股公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:13.212506+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-7582f4
+  filename: 2026-05-18_688331_announce_kzz_荣昌生物第二届董事会第三十八次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:13.483724+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-c17098
+  filename: 2026-05-18_688331_announce_kzz_荣昌生物董事、高级管理人员薪酬管理制度.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:13.644603+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-f040e2
+  filename: 2026-05-18_688331_announce_kzz_独立董事提名人声明与承诺（宋希亮）.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:13.816681+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-ee3a5a
+  filename: 2026-05-18_688331_announce_kzz_荣昌生物关于部分募投项目子项目变更及金额调整的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:13.993362+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-ff447f
+  filename: 2026-05-18_688331_announce_kzz_荣昌生物董事会提名委员会关于第三届董事会独立董事候选人的审核意见.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:14.159890+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-dc8413
+  filename: 2026-05-18_688331_announce_kzz_荣昌生物公司章程.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:14.467276+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-d0f03a
+  filename: 2026-05-18_688331_announce_kzz_独立董事候选人声明与承诺（黄国滨）.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:14.630015+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-7ecbe4
+  filename: 2026-05-18_688331_announce_kzz_独立董事候选人声明与承诺（陈云金）.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:14.832089+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-06e186
+  filename: 2026-05-18_688331_announce_kzz_荣昌生物董事会议事规则.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:15.003301+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-348090
+  filename: 2026-05-18_688331_announce_kzz_独立董事提名人声明与承诺（黄国滨）.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:15.179887+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-b23cd8
+  filename: 2026-05-18_688331_announce_kzz_独立董事候选人声明与承诺（宋希亮）.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:15.375851+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-7ed19a
+  filename: 2026-05-18_688331_announce_kzz_独立董事提名人声明与承诺（陈云金）.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:15.570349+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-fdeffa
+  filename: 2026-05-18_688331_announce_kzz_荣昌生物关于公司董事会换届选举的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:15.781005+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-2a9028
+  filename: 2026-05-18_688331_announce_kzz_荣昌生物信息披露管理制度.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:15.984428+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-68bbd6
+  filename: 2026-05-18_688331_announce_kzz_华泰联合证券有限责任公司关于荣昌生物制药（烟台）股份有限公司部分募投项目子项目变.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:16.178140+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-2ee550
+  filename: 2026-05-15_688331_announce_kzz_H股公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:16.363047+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-aea6cf
+  filename: 2026-05-14_688331_announce_kzz_H股公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:16.530361+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-23abe3
+  filename: 2026-05-13_688331_announce_kzz_H股公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:16.740959+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5478c1
+  filename: 2026-05-06_688331_announce_kzz_荣昌生物制药（烟台）股份有限公司关于参加“对话成长”2025年度暨2026年一季.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:16.925259+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-b13e6e
+  filename: 2026-04-28_688331_announce_kzz_荣昌生物2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:17.115555+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-f3982d
+  filename: 2026-04-27_688331_announce_kzz_荣昌生物关于参加十五五·科创惠民——科创板企业成果转化与民生赋能之2025年度制.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:17.287239+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-0614c0
+  filename: 2026-04-15_688331_announce_kzz_H股公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:17.481930+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-03d8bb
+  filename: 2026-04-10_688331_announce_kzz_华泰联合证券有限责任公司关于荣昌生物制药（烟台）股份有限公司首次公开发行股票并在.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:17.717241+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5929d0
+  filename: 2026-04-10_688331_announce_kzz_华泰联合证券有限责任公司关于荣昌生物制药（烟台）股份有限公司2025年度持续督导.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:17.932899+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 荣昌生物
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-6b6e48
+  filename: 2025_688506_annual_2026-04-27_百利天恒.PDF
+  source_type: annual-report
+  added: '2026-05-30T14:38:18.504227+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-c270e8
+  filename: 2026-02-27_688506_announce_yjygjxz_四川百利天恒药业股份有限公司2025年年度业绩快报公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:18.904052+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-4b984c
+  filename: 2026-01-30_688506_announce_yjygjxz_四川百利天恒药业股份有限公司2025年年度业绩预告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:19.115256+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-b39884
+  filename: 2025-09-26_688506_announce_zf_四川百利天恒药业股份有限公司向特定对象发行A股股票上市公告书.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:19.529505+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-3e6daf
+  filename: 2025-09-18_688506_announce_zf_四川百利天恒药业股份有限公司2025年度向特定对象发行A股股票发行情况报告书.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:19.805815+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-05fbb4
+  filename: 2025-09-18_688506_announce_zf_四川百利天恒药业股份有限公司关于向特定对象发行A股股票发行情况报告书披露的提示性.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:20.001540+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-2e0dc1
+  filename: 2025-08-29_688506_announce_zf_四川百利天恒药业股份有限公司2025年度向特定对象发行A股股票募集说明书（注册稿.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:20.321868+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-53424b
+  filename: 2025-08-07_688506_announce_zf_四川百利天恒药业股份有限公司关于向特定对象发行股票申请获得获得中国证券监督管理委.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:20.528642+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-6b4d3d
+  filename: 2025-07-13_688506_announce_zf_四川百利天恒药业股份有限公司关于向特定对象发行股票申请获得上海证券交易所审核通过.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:20.757031+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-523bb5
+  filename: 2025-05-30_688506_announce_zf_四川百利天恒药业股份有限公司关于向特定对象发行股票申请文件的审核问询函回复的提示.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:20.958677+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-3a977b
+  filename: 2026-05-21_688506_announce_kzz_中信证券股份有限公司关于四川百利天恒药业股份有限公司2025年度持续督导工作现场.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:21.291525+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-52c544
+  filename: 2026-05-21_688506_announce_kzz_中信证券股份有限公司关于四川百利天恒药业股份有限公司2025年度持续督导跟踪报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:21.513414+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-60c182
+  filename: 2026-05-19_688506_announce_kzz_四川百利天恒药业股份有限公司2025年年度股东会决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:21.689591+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-8d1ea3
+  filename: 2026-05-19_688506_announce_kzz_北京君合（成都）律师事务所关于四川百利天恒药业股份有限公司2025年年度股东会的.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:21.912322+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5eb62c
+  filename: 2026-05-14_688506_announce_kzz_四川百利天恒药业股份有限公司自愿披露关于SI-B036双特异性抗体注射液治疗局部.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:22.107868+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-fc12bc
+  filename: 2026-05-12_688506_announce_kzz_四川百利天恒药业股份有限公司2025年年度股东会会议资料.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:22.314242+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-f4f652
+  filename: 2026-05-12_688506_announce_kzz_四川百利天恒药业股份有限公司自愿披露关于注射用T-Bren（HER2ADC）用于.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:22.529799+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-6e7715
+  filename: 2026-05-12_688506_announce_kzz_四川百利天恒药业股份有限公司关于董事长代行董事会秘书职责的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:22.717759+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-bbd45c
+  filename: 2026-05-12_688506_announce_kzz_四川百利天恒药业股份有限公司自愿披露关于iza-bren（EGFR×HER3双抗.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:22.920235+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-8a60da
+  filename: 2026-05-08_688506_announce_kzz_四川百利天恒药业股份有限公司关于召开2025年度科创板生物制品行业集体业绩说明会.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:23.128838+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-bb9dc8
+  filename: 2026-04-27_688506_announce_kzz_立信会计师事务所（特殊普通合伙）关于四川百利天恒药业股份有限公司2025年度募集.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:23.422998+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-13d9f9
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司2025年度审计报告及财务报表.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:24.080260+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-866dd5
+  filename: 2026-04-27_688506_announce_kzz_董事会审计委员会2025年履职报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:24.291167+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-d20156
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司关于2025年度利润分配方案的公告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:24.482126+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-ee39a8
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司2025年独立董事述职报告（戴泽伟）.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:24.708133+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-32b3d3
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司2025年独立董事述职报告（杨敏-已离任）.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:24.925752+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-bc6d1d
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:25.119637+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-4d8e76
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司董事及高级管理人员薪酬管理制度.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:25.314564+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-18016e
+  filename: 2026-04-27_688506_announce_kzz_2025年度“提质增效重回报”行动方案评估报告暨2026年度“提质增效重回报”行.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:25.526194+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-18e783
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司2025年年度报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:25.812162+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-cc201f
+  filename: 2026-04-27_688506_announce_kzz_中信证券股份有限公司关于四川百利天恒药业股份有限公司2026年度公司及下属公司担.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:26.031532+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-a304a0
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司2025年度募集资金存放与使用情况的专项报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:26.242104+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-a0a743
+  filename: 2026-04-27_688506_announce_kzz_审计委员会关于会计师事务所履行监督职责情况报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:26.461582+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-7ed16e
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司2025年度环境、社会和公司治理报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:27.221043+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-11ca63
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司关于会计师事务所履职情况评估报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:27.432459+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5f1417
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司2025年度内部控制评价报告.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:27.658062+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-39ce0a
+  filename: 2026-04-27_688506_announce_kzz_立信会计师事务所（特殊普通合伙）关于四川百利天恒药业股份有限公司非经营性资金占用.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:27.955385+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-0c37eb
+  filename: 2026-04-27_688506_announce_kzz_四川百利天恒药业股份有限公司2025年独立董事述职报告（李明远）.PDF
+  source_type: quarterly-report
+  added: '2026-05-30T14:38:28.148572+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 百利天恒
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-079bea
+  filename: 2025_HK09926_annual_2026-04-29_AKESO.pdf
+  source_type: annual-report
+  added: '2026-05-30T14:38:46.358770+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — AKESO
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-dd55e8
+  filename: 2025_HK06990_annual_2026-04-16_SKBBIO.pdf
+  source_type: annual-report
+  added: '2026-05-30T14:39:15.570073+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — SKB BIO
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-de0fe8
+  filename: 2026-05-30_财报里的座次-中国医药上市公司50强的定价逻辑-腾讯新闻.md
+  source_type: web-search
+  added: '2026-05-30T14:43:11.341654+00:00'
+  processed: false
+  notes: query='百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026
+    url: https://news.qq.com/rain/a/20260519A02A9K00
+    domain: news.qq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:11.298105+00:00'
+    stale_at: '2026-06-29T14:43:11.298105+00:00'
+    expire_at: '2026-08-28T14:43:11.298105+00:00'
+    triggered_by: 01-prescan
+- id: mat-bef60b
+  filename: 2026-05-30_大杀器-信达生物亮出隐藏款王炸---bydrug.md
+  source_type: web-search
+  added: '2026-05-30T14:43:11.456541+00:00'
+  processed: false
+  notes: query='百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026
+    url: https://bydrug.pharmcube.com/news/detail/a6564c80ab0add5a3ec363c6053a01d8
+    domain: bydrug.pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:11.413011+00:00'
+    stale_at: '2026-06-29T14:43:11.413011+00:00'
+    expire_at: '2026-08-28T14:43:11.413011+00:00'
+    triggered_by: 01-prescan
+- id: mat-cf43d8
+  filename: 2026-05-30_hengrui-pharma-reports-q1-2026-results-with-revenu.md
+  source_type: web-search
+  added: '2026-05-30T14:43:11.578354+00:00'
+  processed: false
+  notes: query='百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026
+    url: https://www.prnewswire.com/news-releases/hengrui-pharma-reports-q1-2026-results-with-revenue-and-net-profit-growth-302750124.html
+    domain: prnewswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:11.530491+00:00'
+    stale_at: '2026-06-29T14:43:11.530491+00:00'
+    expire_at: '2026-08-28T14:43:11.530491+00:00'
+    triggered_by: 01-prescan
+- id: mat-1cc9df
+  filename: 2026-05-30_chempartner-pharmatech-co-ltd-睿智医药科技股份有限公司.md
+  source_type: web-search
+  added: '2026-05-30T14:43:11.696401+00:00'
+  processed: false
+  notes: query='百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026
+    url: https://synapse.zhihuiya.com/organization/c7b2ba1fc6588d8a4767e26bd2624a26
+    domain: synapse.zhihuiya.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:11.652087+00:00'
+    stale_at: '2026-06-29T14:43:11.652087+00:00'
+    expire_at: '2026-08-28T14:43:11.652087+00:00'
+    triggered_by: 01-prescan
+- id: mat-e1df33
+  filename: 2026-05-30_信达生物-今年6个新药上市冲刺200亿---bydrug---医药魔方.md
+  source_type: web-search
+  added: '2026-05-30T14:43:11.813308+00:00'
+  processed: false
+  notes: query='百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 百济 2026Q1 产品收入 信达 玛仕度肽 销售 恒瑞 产品收入 增速 2026
+    url: https://bydrug.pharmcube.com/news/detail/26f6371e5126935d1ffd29574fabbaff
+    domain: bydrug.pharmcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:11.768646+00:00'
+    stale_at: '2026-06-29T14:43:11.768646+00:00'
+    expire_at: '2026-08-28T14:43:11.768646+00:00'
+    triggered_by: 01-prescan
+- id: mat-c11403
+  filename: 2026-05-30_fda已受理依沃西首个海外适应症bla-治疗egfr-tki耐药nsclc.md
+  source_type: web-search
+  added: '2026-05-30T14:43:11.990654+00:00'
+  processed: false
+  notes: query='依沃西 HARMONi OS 读出 BL-B01D1 IZABRIGHT sac-TMT 海外注册 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 HARMONi OS 读出 BL-B01D1 IZABRIGHT sac-TMT 海外注册 2026
+    url: https://www.akesobio.com/cn/media/akeso-news/20260130
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:11.946421+00:00'
+    stale_at: '2026-06-29T14:43:11.946421+00:00'
+    expire_at: '2026-08-28T14:43:11.946421+00:00'
+    triggered_by: 01-prescan
+- id: mat-d5726a
+  filename: 2026-05-30_康方生物---akeso-inc-firstword-pharma-2026全球产业重塑关键药物-依.md
+  source_type: web-search
+  added: '2026-05-30T14:43:12.113239+00:00'
+  processed: false
+  notes: query='依沃西 HARMONi OS 读出 BL-B01D1 IZABRIGHT sac-TMT 海外注册 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 HARMONi OS 读出 BL-B01D1 IZABRIGHT sac-TMT 海外注册 2026
+    url: https://www.akesobio.com/cn/media/akeso-news/20260129
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:12.064903+00:00'
+    stale_at: '2026-06-29T14:43:12.064903+00:00'
+    expire_at: '2026-08-28T14:43:12.064903+00:00'
+    triggered_by: 01-prescan
+- id: mat-33721b
+  filename: 2026-05-30_akeso-inc-40-项创新研究成果将在asco盛大发布-依沃---康方生物.md
+  source_type: web-search
+  added: '2026-05-30T14:43:12.242350+00:00'
+  processed: false
+  notes: query='依沃西 HARMONi OS 读出 BL-B01D1 IZABRIGHT sac-TMT 海外注册 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 HARMONi OS 读出 BL-B01D1 IZABRIGHT sac-TMT 海外注册 2026
+    url: https://www.akesobio.com/cn/media/akeso-news/20260526
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:12.193895+00:00'
+    stale_at: '2026-06-29T14:43:12.193895+00:00'
+    expire_at: '2026-08-28T14:43:12.193895+00:00'
+    triggered_by: 01-prescan
+- id: mat-638838
+  filename: 2026-05-30_首个海外适应症bla-康方生物依沃西即将赴美上市---ofweek.md
+  source_type: web-search
+  added: '2026-05-30T14:43:12.371967+00:00'
+  processed: false
+  notes: query='依沃西 HARMONi OS 读出 BL-B01D1 IZABRIGHT sac-TMT 海外注册 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 HARMONi OS 读出 BL-B01D1 IZABRIGHT sac-TMT 海外注册 2026
+    url: https://m.ofweek.com/medical/2025-10/ART-11163-8420-30672269.html
+    domain: m.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:12.322434+00:00'
+    stale_at: '2026-06-29T14:43:12.322434+00:00'
+    expire_at: '2026-08-28T14:43:12.322434+00:00'
+    triggered_by: 01-prescan
+- id: mat-24d5b8
+  filename: 2026-05-30_aacr2026上的中国创新药---知乎专栏.md
+  source_type: web-search
+  added: '2026-05-30T14:43:12.586641+00:00'
+  processed: false
+  notes: query='创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026
+    url: https://zhuanlan.zhihu.com/p/2017939518389494462
+    domain: zhuanlan.zhihu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:12.532178+00:00'
+    stale_at: '2026-06-29T14:43:12.532178+00:00'
+    expire_at: '2026-08-28T14:43:12.532178+00:00'
+    triggered_by: 01-prescan
+- id: mat-e19f52
+  filename: 2026-05-30_2025年中国创新药上市公司收入突破1000亿元我们离全球-领跑-还有.md
+  source_type: web-search
+  added: '2026-05-30T14:43:12.716114+00:00'
+  processed: false
+  notes: query='创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026
+    url: https://kandianshare.html5.qq.com/v2/news/3237307970500979010
+    domain: kandianshare.html5.qq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:12.666180+00:00'
+    stale_at: '2026-06-29T14:43:12.666180+00:00'
+    expire_at: '2026-08-28T14:43:12.666180+00:00'
+    triggered_by: 01-prescan
+- id: mat-121d06
+  filename: 2026-05-30_4年涨10倍-2026全球406条adc管线-中国企业占据半壁江山-单抗-靶点-创新药-肿瘤治疗-a.md
+  source_type: web-search
+  added: '2026-05-30T14:43:12.841937+00:00'
+  processed: false
+  notes: query='创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026
+    url: https://www.163.com/dy/article/KTPKJF9N0552IJOG.html
+    domain: 163.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:12.794304+00:00'
+    stale_at: '2026-06-29T14:43:12.794304+00:00'
+    expire_at: '2026-08-28T14:43:12.794304+00:00'
+    triggered_by: 01-prescan
+- id: mat-c81b0a
+  filename: 2026-05-30_研判2026-全球及中国抗肿瘤药物-行业背景-发展现状-治疗方式.md
+  source_type: web-search
+  added: '2026-05-30T14:43:12.966770+00:00'
+  processed: false
+  notes: query='创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026
+    url: https://www.chyxx.com/industry/1253694.html
+    domain: chyxx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:12.919511+00:00'
+    stale_at: '2026-06-29T14:43:12.919511+00:00'
+    expire_at: '2026-08-28T14:43:12.919511+00:00'
+    triggered_by: 01-prescan
+- id: mat-232322
+  filename: 2026-05-30_2026年-中国抗肿瘤新药迎来-爆发之年-15款重磅品种全透视.md
+  source_type: web-search
+  added: '2026-05-30T14:43:13.092911+00:00'
+  processed: false
+  notes: query='创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 创新药 ADC 竞争格局 PD-1 VEGF 双抗 GLP-1 国产 管线 扎堆 2026
+    url: http://cn.media.drugdu.com/express/28054.html
+    domain: cn.media.drugdu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:13.044317+00:00'
+    stale_at: '2026-06-29T14:43:13.044317+00:00'
+    expire_at: '2026-08-28T14:43:13.044317+00:00'
+    triggered_by: 01-prescan
+- id: mat-40e5d1
+  filename: 2026-05-30_丙类目录-沉寂-两月后-国家医保局再推落地-或仍与2025国谈同步.md
+  source_type: web-search
+  added: '2026-05-30T14:43:13.406770+00:00'
+  processed: false
+  notes: query='丙类目录 落地 放量 商保 创新药 赔付 国谈 2025 结果' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 丙类目录 落地 放量 商保 创新药 赔付 国谈 2025 结果
+    url: https://www.yicai.com/news/102690863.html
+    domain: yicai.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:13.359508+00:00'
+    stale_at: '2026-06-29T14:43:13.359508+00:00'
+    expire_at: '2026-08-28T14:43:13.359508+00:00'
+    triggered_by: 01-prescan
+- id: mat-c2bfae
+  filename: 2026-05-30_国谈收官-舆论关注商保创新药目录落地问题.md
+  source_type: web-search
+  added: '2026-05-30T14:43:13.534350+00:00'
+  processed: false
+  notes: query='丙类目录 落地 放量 商保 创新药 赔付 国谈 2025 结果' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 丙类目录 落地 放量 商保 创新药 赔付 国谈 2025 结果
+    url: http://bk.cnpharm.com/zgyyb/2025/11/22/app_322773.html
+    domain: bk.cnpharm.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:13.485743+00:00'
+    stale_at: '2026-06-29T14:43:13.485743+00:00'
+    expire_at: '2026-08-28T14:43:13.485743+00:00'
+    triggered_by: 01-prescan
+- id: mat-880d11
+  filename: 2026-05-30_国家医疗保障局通知公告关于2025年国家基本医保目录及商保创新药.md
+  source_type: web-search
+  added: '2026-05-30T14:43:13.662221+00:00'
+  processed: false
+  notes: query='丙类目录 落地 放量 商保 创新药 赔付 国谈 2025 结果' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 丙类目录 落地 放量 商保 创新药 赔付 国谈 2025 结果
+    url: https://www.nhsa.gov.cn/art/2025/9/20/art_109_17965.html
+    domain: nhsa.gov.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:13.613926+00:00'
+    stale_at: '2026-06-29T14:43:13.613926+00:00'
+    expire_at: '2026-08-28T14:43:13.613926+00:00'
+    triggered_by: 01-prescan
+- id: mat-7e5007
+  filename: 2026-05-30_中国创新药一季度卖了600亿美元-第一次不用靠a股养活自己了.md
+  source_type: web-search
+  added: '2026-05-30T14:43:13.985410+00:00'
+  processed: false
+  notes: query='2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度
+    url: https://m.ofweek.com/medical/2026-04/ART-103109-8120-30685996.html
+    domain: m.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:13.935283+00:00'
+    stale_at: '2026-06-29T14:43:13.935283+00:00'
+    expire_at: '2026-08-28T14:43:13.935283+00:00'
+    triggered_by: 01-prescan
+- id: mat-3aae72
+  filename: 2026-05-30_中国创新药bd交易q1复盘-600亿美元背后的结构性变化与交易模式升级.md
+  source_type: web-search
+  added: '2026-05-30T14:43:14.115343+00:00'
+  processed: false
+  notes: query='2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度
+    url: https://chinamedglobal.com/blog/china-innovative-drug-out-licensing-q1-2026-bd-deal-structure-evolution-guide
+    domain: chinamedglobal.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:14.065416+00:00'
+    stale_at: '2026-06-29T14:43:14.065416+00:00'
+    expire_at: '2026-08-28T14:43:14.065416+00:00'
+    triggered_by: 01-prescan
+- id: mat-45fb54
+  filename: 2026-05-30_346亿-创新药bd单月超去年整季-钛媒体官方网站.md
+  source_type: web-search
+  added: '2026-05-30T14:43:14.253214+00:00'
+  processed: false
+  notes: query='2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度
+    url: https://www.tmtpost.com/7895791.html
+    domain: tmtpost.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:14.200631+00:00'
+    stale_at: '2026-06-29T14:43:14.200631+00:00'
+    expire_at: '2026-08-28T14:43:14.200631+00:00'
+    triggered_by: 01-prescan
+- id: mat-0fb42a
+  filename: 2026-05-30_600亿管线bd背后的真实账本-药企实际到手不足5-界面新闻-jmedia.md
+  source_type: web-search
+  added: '2026-05-30T14:43:14.391227+00:00'
+  processed: false
+  notes: query='2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度
+    url: https://www.jiemian.com/article/14243144.html
+    domain: jiemian.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:14.338898+00:00'
+    stale_at: '2026-06-29T14:43:14.338898+00:00'
+    expire_at: '2026-08-28T14:43:14.338898+00:00'
+    triggered_by: 01-prescan
+- id: mat-cc21bf
+  filename: 2026-05-30_600亿美元开局-2026年q1中国创新药出海bd交易全景复盘与双抗-adc-小核酸三大赛道深度解析.md
+  source_type: web-search
+  added: '2026-05-30T14:43:14.526472+00:00'
+  processed: false
+  notes: query='2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 2026 创新药 license-out 总额 BD 首付款 出海 交易 一季度
+    url: https://chinamedglobal.com/blog/china-innovative-drug-bd-q1-2026-600-billion-guide
+    domain: chinamedglobal.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-30T14:43:14.475372+00:00'
+    stale_at: '2026-06-29T14:43:14.475372+00:00'
+    expire_at: '2026-08-28T14:43:14.475372+00:00'
+    triggered_by: 01-prescan

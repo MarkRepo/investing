@@ -1,0 +1,288 @@
+slug: cn-innovative-drug
+display_name: 中国创新药行业
+type: industry
+created: '2026-05-30T14:17:25.709541+00:00'
+status: active
+stage: 02-gather-materials
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 中国创新药行业哪些细分赛道+龙头值得配置
+  depth: deep
+  short_name: 中国创新药
+  search_terms:
+  - ADC 出海 BD
+  - 创新药 国谈 医保
+  - 双抗 GLP-1 自免
+  - 管线 临床 商业化
+outputs_state:
+  01_business_panorama:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  02_cycle_positioning:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  03_narrative_ecology:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  04_implied_expectations:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  05_historical_mirrors:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  06_risk_blindspots:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  07_decision_kit:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  09_industry_to_arenas:
+    version: 1
+    last_updated: '2026-05-30T15:01:52.940152+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-58be77
+    last_error: null
+  00_primer:
+    version: 2
+    last_updated: '2026-05-31T03:13:18.633352+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-58be77
+    - mat-76caf4
+    - mat-b9052b
+    - mat-d092a9
+    - mat-e97889
+    last_error: null
+  i_industry_case:
+    version: 2
+    last_updated: '2026-05-31T03:48:56.078677+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-58be77
+    - mat-76caf4
+    - mat-d092a9
+    - mat-e97889
+    last_error: null
+parent_materials: []
+next_actions:
+- 说「prism 推进 cn-innovative-drug」回到 02-gather-materials，先跑 web-search prescan
+- critic 评审：方向稳健(看多分化7/10)，但环②估值锚因无ticker缺自动财务(定性反推)、环⑤历史镜鉴缺实证材料——建议补券商估值水位+PD-1/18A泡沫复盘实证后再升approve
+user_todos:
+- task: 头部药企2025年报+2026Q1季报(恒瑞/百济/信达/荣昌/康方/科伦博泰)——产品收入vs BD收入拆分
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 公司IR/巨潮/港交所
+  status: done
+  covered_by:
+  - mat-1cc9df
+  - mat-bef60b
+  - mat-cf43d8
+  - mat-de0fe8
+  - mat-e1df33
+  coverage_note: 已由 web-search mat-de0fe8, mat-bef60b, mat-cf43d8, mat-1cc9df, mat-e1df33
+    覆盖
+- task: 头部资产2026全球关键临床读出追踪(依沃西HARMONi OS/BL-B01D1 IZABRIGHT/sac-TMT海外注册)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 公司IR/WCLC/ASCO/ESMO/clinicaltrials.gov
+  status: done
+  covered_by:
+  - mat-33721b
+  - mat-638838
+  - mat-c11403
+  - mat-d5726a
+  coverage_note: 已由 web-search mat-c11403, mat-d5726a, mat-33721b, mat-638838 覆盖
+- task: 2025-2026 license-out交易明细+月度BD跟踪
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 医药魔方/西南证券BD出海总结PDF
+  status: done
+  covered_by:
+  - mat-0fb42a
+  - mat-3aae72
+  - mat-45fb54
+  - mat-7e5007
+  - mat-cc21bf
+  coverage_note: 已由 web-search mat-7e5007, mat-3aae72, mat-45fb54, mat-0fb42a, mat-cc21bf
+    覆盖
+- task: 五大细分赛道(ADC/双抗/GLP-1/自免/小核酸)竞争格局+在研管线密度+靶点扎堆度
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K5
+  source_hint: 券商行业深度/智慧芽管线库
+  status: done
+  covered_by:
+  - mat-121d06
+  - mat-232322
+  - mat-24d5b8
+  - mat-c81b0a
+  - mat-e19f52
+  coverage_note: 已由 web-search mat-24d5b8, mat-e19f52, mat-121d06, mat-c81b0a, mat-232322
+    覆盖
+- task: 丙类目录落地后高价创新药放量数据+商保赔付占比
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: NHSA/地方医保局/第一财经
+  status: done
+  covered_by:
+  - mat-40e5d1
+  - mat-880d11
+  - mat-9545fa
+  - mat-c2bfae
+  - mat-f0b244
+  coverage_note: 已由 web-search mat-9545fa, mat-f0b244, mat-40e5d1, mat-c2bfae, mat-880d11
+    覆盖
+- task: 历史行业镜鉴:PD-1价格战/2021 18A泡沫破裂/仿制药集采挤压(industry-mirror硬项)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 券商复盘/财新深度
+  status: done
+  covered_by:
+  - mat-121d06
+  - mat-232322
+  - mat-24d5b8
+  - mat-c81b0a
+  - mat-e19f52
+  coverage_note: 已由 web-search mat-24d5b8, mat-e19f52, mat-121d06, mat-c81b0a, mat-232322
+    覆盖
+- task: 港股18A/恒生医疗估值水位(vs2021高点/2024低点)+全球peer对标
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: Wind/同花顺/券商策略
+  status: done
+  covered_by:
+  - mat-121d06
+  - mat-232322
+  - mat-24d5b8
+  - mat-c81b0a
+  - mat-e19f52
+  coverage_note: 已由 web-search mat-24d5b8, mat-e19f52, mat-121d06, mat-c81b0a, mat-232322
+    覆盖
+- task: BIOSECURE/地缘对中国BD与CXO的影响
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 外文/政策跟踪
+  status: done
+  covered_by:
+  - mat-33721b
+  - mat-638838
+  - mat-c11403
+  - mat-d5726a
+  coverage_note: 已由 web-search mat-c11403, mat-d5726a, mat-33721b, mat-638838 覆盖
+- task: NewCo模式案例与争议(Kailera/恒瑞/康诺亚)
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 医药魔方/E药资本界
+  status: done
+  covered_by:
+  - mat-0fb42a
+  - mat-3aae72
+  - mat-45fb54
+  - mat-7e5007
+  - mat-cc21bf
+  coverage_note: 已由 web-search mat-7e5007, mat-3aae72, mat-45fb54, mat-0fb42a, mat-cc21bf
+    覆盖
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-more
+  summary: 方向稳健(看多分化7/10)，但环②估值锚因无ticker缺自动财务(定性反推)、环⑤历史镜鉴缺实证材料——建议补券商估值水位+PD-1/18A泡沫复盘实证后再升approve
+  at: '2026-05-30T15:04:22.381280+00:00'
+  thesis_version: 1
+  next_stage: 02-gather-materials
+decomposition:
+  current_version: 1
+  last_updated: '2026-05-30T15:01:52.993798+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-05-30T14:35:08.097230+00:00'
+    summary: 命门1=出海兑现路径(海外III期/OS成功率+MNC推进,中); 命门2=内生拐点真伪(剔除BD首付后产品收入增速,中); 命门3=龙头壁垒可持续性(best-in-class
+      vs 快速跟随/MNC自研,低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-05-30T15:01:52.993811+00:00'
+    summary: 命门1出海兑现路径/命门2内生拐点真伪/命门3龙头壁垒可持续性；arena漏斗已分流(深挖ADC+双抗)
+    convergence_status: converged
+    changelog: 'v0→v1: 厚料(7年报+80prescan)后命门方向未变，命门3(壁垒)落成ADC/双抗深挖；primer入门目标全覆盖'
+thesis:
+  current_version: 1
+  last_updated: '2026-05-30T15:01:52.957192+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-30T14:29:48.163706+00:00'
+    summary: 中国创新药进入"BD出海兑现+国内业绩拐点"双驱动价值重估期；看多分化(7/10)——看好ADC/双抗/GLP-1平台型龙头与出海兑现确定者，看空同质化me-too与估值透支BD预期者
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-05-30T15:01:52.957203+00:00'
+    summary: 中国创新药"BD出海兑现+业绩拐点"双驱动价值重估；看多分化(7/10)，alpha在甄别龙头(深挖ADC+双抗)，回避me-too与估值透支
+prescan_log:
+- round_at: '2026-05-30T14:43:14.684800+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 5
+  queries_with_hits: 5
