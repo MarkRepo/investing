@@ -17,9 +17,10 @@ __all__ = ["AdapterError", "Quote", "QuoteAdapter", "get_adapter"]
 def get_adapter(market: str) -> "QuoteAdapter":
     """Return the adapter module for a given market.
 
-    ``US`` → yfinance; everything else (SSE/SZSE/BSE) → akshare.
+    ``US`` / ``HKEX`` → yfinance (yfinance natively serves HK via ``.HK``
+    symbols); CN markets (SSE/SZSE/BSE) → akshare.
     """
-    if market == "US":
+    if market in ("US", "HKEX"):
         mod_name = "app.io.adapters.yfinance_adapter"
     else:
         mod_name = "app.io.adapters.akshare_adapter"

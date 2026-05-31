@@ -50,9 +50,14 @@ def test_get_adapter_a_markets_return_akshare():
         assert get_adapter(m) is akshare_adapter, f"market={m}"
 
 
+def test_get_adapter_hkex_returns_yfinance():
+    # HKEX is served by yfinance via .HK symbols.
+    assert get_adapter("HKEX") is yfinance_adapter
+
+
 def test_get_adapter_unknown_defaults_to_akshare():
-    # Non-US markets currently route to akshare; a less-common code shouldn't error.
-    assert get_adapter("HKEX") is akshare_adapter
+    # Markets that aren't US/HKEX route to akshare; a less-common code shouldn't error.
+    assert get_adapter("TWSE") is akshare_adapter
 
 
 def test_adapter_module_has_source_attr():

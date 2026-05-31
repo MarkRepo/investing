@@ -88,6 +88,46 @@ def test_run_for_ticker_writes_annual_and_quarterly(tmp_path, monkeypatch):
         conn.close()
 
 
+def test_run_for_ticker_hkex_queries_dot_hk_and_stores_bare_code(tmp_path, monkeypatch):
+    """HKEX statements go through the same yfinance fetcher into financials_us;
+    queried via .HK symbol, stored under the bare code, ratios computed."""
+    fake = _FakeTicker(
+        income=_annual_frame(), balance=_annual_frame(), cashflow=_annual_frame(),
+        qincome=_quarterly_frame(), qbalance=_quarterly_frame(), qcashflow=_quarterly_frame(),
+    )
+    seen: list[str] = []
+    import yfinance as yf
+
+    def _capture(symbol):
+        seen.append(symbol)
+        return fake
+    monkeypatch.setattr(yf, "Ticker", _capture)
+
+    n = fu.run_for_ticker("01801", "HKEX", base=tmp_path)
+    assert seen == ["1801.HK"]   # queried 4-digit .HK
+    assert n >= 3
+
+    conn = fin.connect(base=tmp_path)
+    try:
+        rows = fin.list_financials_us(conn, "01801")   # stored under bare code
+        assert {"2024A", "2023A", "2024Q3"} <= {r["period"] for r in rows}
+        # recompute_ratios(market="HKEX") must route to the US ratios SQL, not raise
+        r = conn.execute(
+            "SELECT gross_margin FROM ratios WHERE ticker='01801' AND period='2024A'"
+        ).fetchone()
+        assert r["gross_margin"] == pytest.approx(1170 / 1480, abs=1e-3)
+    finally:
+        conn.close()
+
+
+def test_run_for_ticker_rejects_unsupported_market(tmp_path, monkeypatch):
+    import yfinance as yf
+    monkeypatch.setattr(yf, "Ticker", lambda s: _FakeTicker(
+        income=pd.DataFrame(), balance=pd.DataFrame(), cashflow=pd.DataFrame()))
+    with pytest.raises(ValueError, match="US/HKEX"):
+        fu.run_for_ticker("000001", "SZSE", base=tmp_path)
+
+
 def test_unknown_us_label_uses_snake_fallback(tmp_path, monkeypatch):
     """A yfinance field not in US_COL_MAP becomes lower_snake via us_col_to_snake."""
     df = pd.DataFrame(

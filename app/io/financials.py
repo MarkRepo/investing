@@ -412,14 +412,17 @@ WHERE ticker = ?
 
 def recompute_ratios(conn: sqlite3.Connection, ticker: str, market: str) -> None:
     """Recompute ratios for a single ticker. `market` picks the source table:
-    {SSE, SZSE, BSE} → financials_cn; US → financials_us.
+    {SSE, SZSE, BSE} → financials_cn; {US, HKEX} → financials_us.
+
+    HKEX shares the financials_us table because its statements are yfinance-
+    sourced and column-identical to US (same us_col_to_snake / US_COLUMNS).
     """
     ticker = (ticker or "").strip().upper()
     if not ticker:
         raise ValueError("ticker is empty")
     if market in _CN_MARKETS:
         sql = _CN_RATIOS_SQL
-    elif market == "US":
+    elif market in ("US", "HKEX"):
         sql = _US_RATIOS_SQL
     else:
         raise ValueError(f"unsupported market {market!r}")

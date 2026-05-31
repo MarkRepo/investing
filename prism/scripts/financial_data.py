@@ -232,7 +232,8 @@ def get_quality_data_by_ticker(ticker: str, market: str) -> dict[str, Any]:
             ni = r.get("net_income_to_parent") or r.get("net_income")
             pretax = r.get("pretax_income")
             ta = r.get("total_assets")
-            cl = r.get("total_current_liab")
+            # CN schema → total_current_liab; US/HKEX (yfinance) schema → current_liabilities
+            cl = r.get("total_current_liab") or r.get("current_liabilities")
             if oi and pretax and pretax != 0 and ta and cl:
                 tax_rate = 1 - (ni / pretax) if ni and pretax else 0.15
                 ic = ta - (cl or 0)

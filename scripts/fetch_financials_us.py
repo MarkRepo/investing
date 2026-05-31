@@ -82,9 +82,20 @@ def _merge(
 
 
 def run_for_ticker(ticker: str, market: str, base: Path | None = None) -> int:
-    if market != "US":
-        raise ValueError(f"fetch_financials_us only supports US, got {market!r}")
-    t = yf.Ticker(ticker)
+    """Fetch yfinance statements → financials_us. Serves US and HKEX.
+
+    HKEX is queried via the ``.HK`` symbol (``cfg.to_yf_symbol``) but rows are
+    stored under the bare code (``01801``). NOTE on currency: HK statements come
+    back in the company's reporting currency (often CNY for HK-listed mainland
+    biotech), while the quotes pipe stores HK price/market_cap in HKD — do NOT
+    cross them (e.g. HKD price × CNY revenue). Intra-statement ratios
+    (margin/ROIC/debt-to-equity/OCF quality) are currency-neutral and safe.
+    """
+    if market not in ("US", "HKEX"):
+        raise ValueError(
+            f"fetch_financials_us only supports US/HKEX, got {market!r}"
+        )
+    t = yf.Ticker(cfg.to_yf_symbol(ticker, market))
     annuals = _merge(t.income_stmt, t.balance_sheet, t.cashflow, ticker, "annual")
     quarters = _merge(
         t.quarterly_income_stmt, t.quarterly_balance_sheet, t.quarterly_cashflow,
@@ -97,7 +108,7 @@ def run_for_ticker(ticker: str, market: str, base: Path | None = None) -> int:
     conn = fin.connect(base=base)
     try:
         n = fin.upsert_financials_us(conn, rows)
-        fin.recompute_ratios(conn, ticker, market="US")
+        fin.recompute_ratios(conn, ticker, market=market)
         log.info("%s: upserted %d periods", ticker, n)
         return n
     finally:

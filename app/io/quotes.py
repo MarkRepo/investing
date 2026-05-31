@@ -270,7 +270,7 @@ def record_error(
     ``phase`` is adapter-facing: "eod" / "snapshot" / "intraday". ``source``
     is derived from market so callers don't have to remember the mapping.
     """
-    source = "yfinance" if market == "US" else "akshare"
+    source = "akshare" if market in ("SSE", "SZSE", "BSE") else "yfinance"
     conn = fin_io.connect(base=base)
     try:
         conn.execute(

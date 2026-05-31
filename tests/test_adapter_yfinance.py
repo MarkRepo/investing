@@ -167,3 +167,73 @@ def test_fetch_snapshot_error(monkeypatch, mock_yfinance):
     monkeypatch.setattr(yf, "Ticker", _Broken)
     with pytest.raises(AdapterError):
         yfad.fetch_snapshot("HIMS", "US")
+
+
+# ---------- HKEX support (queries .HK, stores bare code + HKEX market) ----------
+
+
+def _hk_ticker_factory(seen: list[str]):
+    """Return a fake yf.Ticker that records the symbol it was constructed with."""
+    class _HKTicker:
+        def __init__(self, symbol):
+            seen.append(symbol)
+            self.symbol = symbol
+
+        @property
+        def info(self):
+            return {
+                "trailingPE": 154.35,
+                "priceToSalesTrailing12Months": 11.08,
+                "priceToBook": 6.1,
+                "marketCap": 144_580_870_144,
+                "sharesOutstanding": 1_600_000_000,
+                "fiftyTwoWeekHigh": 90.0,
+                "fiftyTwoWeekLow": 30.0,
+                "currency": "HKD",
+            }
+
+        @property
+        def fast_info(self):
+            return {"last_price": 83.35, "open": 82.0, "day_high": 84.0,
+                    "day_low": 81.5, "last_volume": 5_000_000}
+
+        def history(self, period=None, start=None, end=None, interval="1d",
+                    auto_adjust=False):
+            idx = pd.to_datetime(["2026-05-28", "2026-05-29"])
+            return pd.DataFrame(
+                {"Open": [82.0, 82.5], "High": [84.0, 84.2], "Low": [81.0, 81.5],
+                 "Close": [83.0, 83.35], "Volume": [4_800_000, 5_000_000]},
+                index=idx,
+            )
+    return _HKTicker
+
+
+def test_fetch_snapshot_hkex_queries_dot_hk_and_keeps_bare_code(monkeypatch):
+    import yfinance as yf
+    seen: list[str] = []
+    monkeypatch.setattr(yf, "Ticker", _hk_ticker_factory(seen))
+
+    q = yfad.fetch_snapshot("01801", "HKEX")
+    # queried yfinance with the 4-digit .HK symbol
+    assert seen == ["1801.HK"]
+    # stored Quote keeps the bare code and the HKEX market
+    assert q.ticker == "01801"
+    assert q.market == "HKEX"
+    assert q.pe_ttm == 154.35
+    assert q.ps == 11.08
+    assert q.market_cap == 144_580_870_144
+    assert q.source == "yfinance"
+
+
+def test_fetch_daily_hkex_queries_dot_hk_and_keeps_bare_code(monkeypatch):
+    import yfinance as yf
+    seen: list[str] = []
+    monkeypatch.setattr(yf, "Ticker", _hk_ticker_factory(seen))
+
+    rows = yfad.fetch_daily("06160", "HKEX", date(2026, 5, 28), date(2026, 5, 29))
+    assert seen == ["6160.HK"]
+    assert rows
+    assert all(r.ticker == "06160" and r.market == "HKEX" for r in rows)
+    # point-in-time fields land on the latest row
+    assert rows[-1].pe_ttm == 154.35
+    assert rows[-1].ps == 11.08

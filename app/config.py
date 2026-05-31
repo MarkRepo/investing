@@ -293,3 +293,17 @@ def us_col_to_snake(raw: str) -> str:
     if raw in US_COL_MAP:
         return US_COL_MAP[raw]
     return raw.lower().replace(" ", "_").replace("-", "_")
+
+
+def to_yf_symbol(ticker: str, market: str) -> str:
+    """裸 ticker + market → yfinance 查询符号。
+
+    US 原样返回；HKEX 转 yfinance 的港股格式——4 位数字 + ``.HK``。
+    我们存储港股是 5 位零填充（``HKEX_01801`` → 裸码 ``01801``），但 yfinance
+    只认 4 位（``1801.HK``）；5 位 ``01801.HK`` 会 404。故去前导零再补到 4 位：
+    ``01801`` → ``1801.HK``、``00700`` → ``0700.HK``、``09988`` → ``9988.HK``。
+    其余 market 原样返回（防御性）。行情管与基本面管共用此转换。
+    """
+    if market == "HKEX":
+        return f"{ticker.lstrip('0').zfill(4)}.HK"
+    return ticker

@@ -1,4 +1,8 @@
-"""yfinance adapter — US market quotes via yfinance.
+"""yfinance adapter — US + HKEX market quotes via yfinance.
+
+HKEX is served through yfinance's ``.HK`` symbols (see ``cfg.to_yf_symbol``);
+the ticker stored on the Quote stays the bare code (``01801``) while the query
+uses ``1801.HK``. HK quotes (price / PE / PS / market_cap) come back in HKD.
 
 Endpoints:
 - ``Ticker.history(start, end)``              → OHLCV history
@@ -20,6 +24,7 @@ from datetime import date, datetime, timedelta
 import pandas as pd
 import yfinance as yf
 
+from app import config as cfg
 from app.io.adapters.base import AdapterError, Quote
 
 source = "yfinance"
@@ -46,7 +51,7 @@ def fetch_daily(
     ticker: str, market: str, start: date, end: date
 ) -> list[Quote]:
     try:
-        t = yf.Ticker(ticker)
+        t = yf.Ticker(cfg.to_yf_symbol(ticker, market))
         # yfinance end is exclusive; add a day so we include the requested end.
         hist = t.history(start=start, end=end + timedelta(days=1), auto_adjust=False)
         info = t.info or {}
@@ -77,7 +82,7 @@ def fetch_daily(
             turnover = volume / float_shares * 100.0
 
         out.append(Quote(
-            ticker=ticker, date=d, market="US",
+            ticker=ticker, date=d, market=market,
             open=_f(h.get("Open")),
             high=_f(h.get("High")),
             low=_f(h.get("Low")),
@@ -118,7 +123,9 @@ def fetch_intraday_today(
     show — we filter to the last session present in the response.
     """
     try:
-        df = yf.Ticker(ticker).history(period="5d", interval="1m", auto_adjust=False)
+        df = yf.Ticker(cfg.to_yf_symbol(ticker, market)).history(
+            period="5d", interval="1m", auto_adjust=False
+        )
     except Exception as e:
         raise AdapterError(
             f"yfinance.fetch_intraday({ticker}): {type(e).__name__}: {e}"
@@ -141,7 +148,7 @@ def fetch_intraday_today(
 
 def fetch_snapshot(ticker: str, market: str) -> Quote:
     try:
-        t = yf.Ticker(ticker)
+        t = yf.Ticker(cfg.to_yf_symbol(ticker, market))
         fi = t.fast_info
         info = t.info or {}
         # Use history to learn the most recent *real* trading day. yfinance's
@@ -177,7 +184,7 @@ def fetch_snapshot(ticker: str, market: str) -> Quote:
     )
 
     return Quote(
-        ticker=ticker, date=snap_date, market="US",
+        ticker=ticker, date=snap_date, market=market,
         open=_f(_fi("open", close_f)),
         high=_f(_fi("day_high", close_f)),
         low=_f(_fi("day_low", close_f)),
