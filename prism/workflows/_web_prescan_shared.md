@@ -2,21 +2,34 @@
 
 **被引用**：01-build-roadmap (Step 7) / 02-gather-materials (Step 0) / 06-daily-monitor (Step N) / 07-drilldown (Step M)
 **定位**：通用 across 所有 topic type（company / industry / arena / concept），用 LLM 主动调 WebSearch + WebFetch 把"训练截止后的新事件"和"高频小数据"自动纳入 manifest，减少用户手工收集负担
-**LLM 分工**：脚本零 LLM——查询构造 / 域名分类 / 写 inbox / 入 manifest / 更新 todo 都由 Python；WebSearch 调用 / confidence 判断 / addresses 标注由主 agent 在对话里做（参 `memory/feedback_llm_workflow.md`）
+**LLM 分工**：脚本零 LLM——覆盖槽枚举 / 域名分类 / 写 inbox / 入 manifest / 更新 todo 都由 Python；**query 措辞** / WebSearch 调用 / confidence 判断 / addresses 标注由主 agent 在对话里做（参 `memory/feedback_llm_workflow.md`）。注意：query 文本**不再由脚本模板生成**——查什么是领域判断（旧版对创新药套死"产能变化"即 PRISM_VALIDATION F3 病根），脚本只给"需要覆盖哪些 address"的清单
 
 ---
 
-## Step A：构造查询词
+## Step A：拿覆盖清单 + 主 agent 逐槽写 query
+
+脚本只枚举"哪些 address 需要被 web 覆盖"，**不代写 query 文本**：
 
 ```bash
 python3 << 'EOF'
 from prism.scripts.web_prescan import build_search_queries
-qs = build_search_queries('{slug}', '{variant}', recency_days={recency_days})
-print(f'共 {len(qs)} 条查询：')
-for q in qs:
-    print(f'  [{q["kind"]}] addrs={q["addresses"]} → {q["query"]}')
+slots = build_search_queries('{slug}', '{variant}', recency_days={recency_days})
+print(f'共 {len(slots)} 个覆盖槽（每槽你写 ≥1 条 query，addresses 原样带回）：')
+for s in slots:
+    print(f'  [{s["kind"]}] addrs={s["addresses"]} hint={s["hint"]}')
 EOF
 ```
+
+返回的是**覆盖槽清单**，每槽含 `addresses`（绑定，原样带回）/ `kind` / `recency_days` / `hint`（原始素材）。**无 `query` 字段**——query 文本由你在对话里写。
+
+主 agent 据 `hint` + 领域知识，为每个槽写实际 query（一槽可写多条），措辞要点：
+- **`scope`**：用 `hint["short_name"]` + `hint["search_terms"]`（写 topic 时的精炼词）拼 5-15 词搜索友好串；勿把长 `hint["question"]` 整句塞进去
+- **`company-event`**：`hint["name"]` + `hint["ticker"]` + 你按该公司情形选的事件轴（最新公告 / 业绩预告 / 监管处罚 / 高管变动 / ……按行业自定）
+- **`industry-event`**：`hint["base_terms"]` + 你按**该行业**选的事件轴。创新药→医保谈判 / 临床读出 / BD 交易 / 审评进度；锂电芯片→产能 / 开工率 / 价格；金融→政策 / 利率 / 牌照……**不要套用别行业的轴**（这是 F3 的根：旧版对所有行业写死"产能变化"）
+- **`concept-update`**：`hint["concept"]` + 最新进展 / 动态
+- **`l4-hunting`**：优先用 `hint["search_keywords"]`（roadmap 已写好的精炼词）；缺则从 `hint["question"]` 提炼名词短语。一条 query 对一个 K#（`addresses` 已绑）
+
+> 完备性：清单已覆盖 scope + 每个 concept + 每条 L4 hunting（逐 K# 对齐）。**逐槽都要写 query 并执行**，漏槽 = 漏覆盖。后续 Step B/C 里的"query"均指你在此写的串；`expected_queries=N` 传你实际执行的 query 条数。
 
 `recency_days` 调用方传：
 - 01-prescan：90（建库时一次性回看 90 天）
@@ -26,10 +39,11 @@ EOF
 
 ---
 
-## Step B：主 agent 调 WebSearch（**每条查询执行一次**）
+## Step B：主 agent 调 WebSearch（**每条 query 执行一次**）
 
-对每条 `qs[i]`，**主 agent 直接调用 `WebSearch` 工具**（不是脚本调），传：
-- `query`: `qs[i]['query']`
+对你在 Step A 为各槽写的每条 query，**主 agent 直接调用 `WebSearch` 工具**（不是脚本调），传：
+- `query`: 你写的 query 串
+- 入库时 `addresses`：用该槽的 `slot["addresses"]`（或更精细的事件锚，见 Step C）
 - 可选 `allowed_domains`: 若关心政策类查询且想强约束官方域，传 `WHITELIST_DOMAINS` 子集
 
 > **硬约束**：只引用 WebSearch 工具实际返回的 search_result block。**禁止用训练知识补 URL / 编造引文**——参 plan 「风险与缓解」。
@@ -115,7 +129,7 @@ h = check_prescan_health('{slug}', '{variant}', expected_queries=N, triggered_by
 |---|---|
 | `domain_tier` | 命中 `WHITELIST_DOMAINS` → `whitelist`；非白名单但内容可信（如该公司官方 IR 页/微信公众号官方账号/已知财经平台） → `llm-judged-official`；其余 → `other` |
 | `confidence` | 不传 → 用 `confidence_for_tier(domain_tier)` 默认（whitelist=0.9 / llm-judged=0.7 / other=0.4）。若 snippet 内容明显高度对题，可上调；明显跑题可下调 |
-| `addresses` | 该 hit 攻打的 K# / Q# 列表（与该 query 的 `qs[i]["addresses"]` 一致或更精细）。**事件锚规则**：若 hit 内容明确绑定某个时间/事件（财报季、监管事件、产品发布），用 `K#@event-slug` 格式（如 `K1@2026Q2-earnings`、`K6@CSRC-2026-05-22`、`K7@Airstar-launch`），事件 slug 仅含 `[A-Za-z0-9_-]`。**裸 `K#`** 表示该 K# 的通用资料（财务结构、商业模式、长期数据），不绑事件。锚的作用：阻止 Q1 材料误覆盖 Q2 事件 todo——参 `memory/feedback_addresses_granularity.md` |
+| `addresses` | 该 hit 攻打的 K# / Q# 列表（与该 query 所属槽的 `slot["addresses"]` 一致或更精细）。**事件锚规则**：若 hit 内容明确绑定某个时间/事件（财报季、监管事件、产品发布），用 `K#@event-slug` 格式（如 `K1@2026Q2-earnings`、`K6@CSRC-2026-05-22`、`K7@Airstar-launch`），事件 slug 仅含 `[A-Za-z0-9_-]`。**裸 `K#`** 表示该 K# 的通用资料（财务结构、商业模式、长期数据），不绑事件。锚的作用：阻止 Q1 材料误覆盖 Q2 事件 todo——参 `memory/feedback_addresses_granularity.md` |
 | `full_text` 抓取 | `band == 'high'` 时主 agent 必须额外调 `WebFetch` 抓全文传入；mid 可选；low 跳过 |
 
 ---

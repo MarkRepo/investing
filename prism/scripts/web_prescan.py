@@ -421,134 +421,95 @@ def funnel_band(confidence: float) -> str:
 
 
 # ---------------------------------------------------------------------------
-# 查询词构造 — 通用 across topic types
+# 覆盖槽枚举 — 通用 across topic types
 # ---------------------------------------------------------------------------
-
-# H3 v2：WebSearch 最佳 query 长度 5-15 词。脚本不做关键词提取（切到非核心名词反而
-# 误导），强制让主 agent 在 create_topic 时显式给 short_name + search_terms。
-# 策略（优先级）：
-#   1. search_terms 优先：short_name + 前 3 个 term
-#   2. 短 question 兜底：short_name + question
-#   3. 都没有：short_name 单独（最 dumb）
-#   4. 老 yaml 无 short_name：fall back display_name（仅向后兼容）
-_SCOPE_QUERY_MAX_CHARS = 40
-_TRAILING_NOISE_RE = re.compile(r"[，。；：、,;:\s]+$")
-
-
-def _short_scope_query(
-    display_name: str,
-    short_name: str | None,
-    question: str,
-    search_terms: list[str] | None,
-) -> str:
-    """构造 scope 主查询（H3 v2 — 不做关键词提取）。
-
-    优先级：
-      1. search_terms 给了 → short_name + 前 3 个 term（不读 question）
-      2. question 短（≤25）→ short_name + question
-      3. 都没合适的 → short_name 单独
-      4. 老 yaml 无 short_name → display_name 兜底（不截断；新 topic 会被 create_topic gate 挡住）
-
-    create_topic gate 保证新 topic 必有 short_name + 长 question 必有 search_terms，
-    故脚本永远不需要"假装聪明"地切 question。
-    """
-    name = (short_name or display_name or "").strip()
-    if search_terms:
-        terms = " ".join(s.strip() for s in search_terms[:3] if s and s.strip())
-        out = f"{name} {terms}".strip()
-    else:
-        q = (question or "").strip()
-        if q and len(q) <= 25:
-            out = f"{name} {q}"
-        else:
-            # 长 question + 缺 search_terms 仅出现于老 yaml；用 short_name/display_name 兜底
-            out = name
-    if len(out) > _SCOPE_QUERY_MAX_CHARS:
-        out = out[:_SCOPE_QUERY_MAX_CHARS]
-    out = _TRAILING_NOISE_RE.sub("", out)
-    return out
 
 
 def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> list[dict]:
-    """根据 topic.yaml + thesis_v{N} + roadmap.yaml 构造查询词列表。
+    """枚举本 topic 需要 web 覆盖的"槽位"——不再拼 query 文本。
 
-    通用 across company / industry / arena / concept：
-      - scope.question + scope.search_terms 派生主查询（H3：长 question 截断）
-      - scope.ticker（如有）+ 近期事件子查询
-      - thesis killer questions 派生每 K# 一条（H3：不再叠 question）
-      - roadmap L4 hunting question 派生每条一查
-      - concepts 派生概念扩展查询
+    设计原则（见 memory feedback_llm_workflow）：query 措辞是 LLM 判断，不该写死在
+    模板里。旧版对 industry/arena 套死后缀 `行业政策/技术突破/产能变化/龙头新闻`，
+    其中"产能变化"是制造业预设，套创新药等行业即产垃圾 query（PRISM_VALIDATION F3）。
+    本函数因此只做机械记账，把"查什么"交还给对话里的主 agent：
 
-    返回 [{query, addresses, recency_days, kind}, ...]
+      - 枚举"哪些 address 需要被覆盖"：scope / company 主体 / industry 行业面 /
+        每个 concept / 每条 roadmap L4 hunting（逐条 K# 对齐）
+      - 每个槽位附 ``hint``（原始素材：名称 / ticker / question / search_terms /
+        search_keywords），供主 agent 用领域知识写 query
+      - 绑定 ``addresses`` + ``recency_days`` + ``kind``（gap_detector 的覆盖账依赖
+        addresses，故这层必须保留 + 保证 K#/L4 完备枚举）
+
+    主 agent 拿到清单后，逐槽写实际 query（addresses 原样带回），再打 adapter +
+    入库 —— 见 ``_web_prescan_shared.md``。
+
+    返回 ``[{addresses, kind, recency_days, hint}, ...]``。
+    **无 ``query`` 键**：query 文本由 LLM 在对话里产出，脚本不代笔。
     """
     topic = topic_io.read_topic(slug, variant)
     scope = topic.get("scope") or {}
     display_name = topic.get("display_name") or slug
     short_name = scope.get("short_name") or None
-    # H3 v2：query 拼接统一用 short_name（无则 fall back display_name 兜底）
-    name_for_query = short_name or display_name
+    name = short_name or display_name
     ttype = topic.get("type") or "concept"
     question = scope.get("question") or ""
     ticker = scope.get("ticker") or ""
     search_terms = scope.get("search_terms") or None
 
-    queries: list[dict] = []
+    slots: list[dict] = []
 
-    # 1. 主问题查询 — 覆盖任何 topic（H3 v2：short_name 优先）
-    scope_q = _short_scope_query(display_name, short_name, question, search_terms)
-    if scope_q:
-        queries.append({
-            "query": scope_q,
-            "addresses": ["scope"],
-            "recency_days": recency_days,
-            "kind": "scope",
-        })
+    # 1. scope 主覆盖 — 任何 topic 都有
+    slots.append({
+        "addresses": ["scope"],
+        "kind": "scope",
+        "recency_days": recency_days,
+        "hint": {
+            "short_name": short_name,
+            "display_name": display_name,
+            "question": question,
+            "search_terms": search_terms,
+        },
+    })
 
-    # 2. company 专属：ticker + 近期事件
+    # 2. company 专属：ticker 主体的近期事件（查询轴由主 agent 自定，不再写死
+    #    最新公告/监管处罚/业绩预告/高管变动 这套）
     if ttype == "company" and ticker:
         # ticker 形如 US_FUTU / SZSE_300073 — 取后段
         ticker_short = ticker.split("_", 1)[-1] if "_" in ticker else ticker
-        for kw in ("最新公告", "监管处罚", "业绩预告", "高管变动"):
-            queries.append({
-                "query": f"{name_for_query} {ticker_short} {kw}",
-                "addresses": ["scope"],
-                "recency_days": recency_days,
-                "kind": "company-event",
-            })
+        slots.append({
+            "addresses": ["scope"],
+            "kind": "company-event",
+            "recency_days": recency_days,
+            "hint": {"name": name, "ticker": ticker_short},
+        })
 
-    # 3. industry / arena 专属：行业政策 + 技术突破
-    #    H3 v2 修：优先用 search_terms 拼 base（短、精准、搜索友好），
-    #    无 search_terms 才 fallback name_for_query（避免 display_name 贪心 + 截断）
+    # 3. industry / arena 专属：行业级事件（查询轴由主 agent 按领域定，
+    #    不再写死"产能变化"等制造业预设 —— F3 修复）
     if ttype in ("industry", "arena"):
         if search_terms:
-            industry_base = " ".join(
-                s.strip() for s in search_terms[:2] if s and s.strip()
-            )
+            base_terms = [s.strip() for s in search_terms[:2] if s and s.strip()]
         else:
-            industry_base = name_for_query
-        for kw in ("行业政策", "技术突破", "产能变化", "龙头新闻"):
-            queries.append({
-                "query": f"{industry_base} {kw}",
-                "addresses": ["scope"],
-                "recency_days": recency_days,
-                "kind": "industry-event",
-            })
+            base_terms = [name]
+        slots.append({
+            "addresses": ["scope"],
+            "kind": "industry-event",
+            "recency_days": recency_days,
+            "hint": {"base_terms": base_terms},
+        })
 
-    # 4. concept 专属：概念扩展
+    # 4. concept 专属：每个 concept 一槽
     if ttype == "concept":
-        concepts = topic.get("concepts") or []
-        for c in concepts[:3]:
-            queries.append({
-                "query": f"{c} 最新进展",
+        for c in (topic.get("concepts") or [])[:3]:
+            slots.append({
                 "addresses": ["scope"],
-                "recency_days": recency_days,
                 "kind": "concept-update",
+                "recency_days": recency_days,
+                "hint": {"concept": c},
             })
 
-    # 5. roadmap L4 hunting questions — 适用所有类型
-    # H3 v3：删除 killer-question kind（冗余 — scope 含 search_terms 已宽覆盖，
-    #         l4-hunting 已逐条 K# 对齐）。L4 query 必须用 search_keywords，
-    #         避免 question 长句被 WebSearch 当无意义字串。
+    # 5. roadmap L4 hunting questions — 适用所有类型，逐条 K# 对齐。
+    #    旧版在缺 search_keywords 时整槽跳过（= 覆盖漏洞）；现统一出槽，
+    #    主 agent 拿 question + 任何已有 search_keywords 自行措辞。
     roadmap_path = PRISM_ROOT / "topics" / slug / variant / "roadmap.yaml"
     if roadmap_path.is_file():
         try:
@@ -556,28 +517,20 @@ def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> lis
             l4 = ((roadmap.get("learning_track") or {}).get("l4_hunting") or [])
             for q in l4:
                 addrs = q.get("addresses") or []
-                kws = q.get("search_keywords") or []
-                if kws:
-                    terms = " ".join(str(s).strip() for s in kws[:3] if str(s).strip())
-                    if terms:
-                        queries.append({
-                            "query": f"{name_for_query} {terms}",
-                            "addresses": addrs or ["scope"],
-                            "recency_days": recency_days,
-                            "kind": "l4-hunting",
-                        })
-                else:
-                    qtext = q.get("question") or q.get("text") or ""
-                    addr_label = ",".join(addrs) if addrs else "?"
-                    print(
-                        f"⚠ l4-hunting query 跳过 [addresses={addr_label}]：缺 search_keywords 字段；"
-                        f"原 question='{qtext[:30]}...'。回 workflow 01 Step 2 补 search_keywords。",
-                        file=sys.stderr,
-                    )
+                slots.append({
+                    "addresses": addrs or ["scope"],
+                    "kind": "l4-hunting",
+                    "recency_days": recency_days,
+                    "hint": {
+                        "name": name,
+                        "question": q.get("question") or q.get("text") or "",
+                        "search_keywords": q.get("search_keywords") or [],
+                    },
+                })
         except Exception:
             pass
 
-    return queries
+    return slots
 
 
 # ---------------------------------------------------------------------------
