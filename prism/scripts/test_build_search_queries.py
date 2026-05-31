@@ -1,9 +1,11 @@
-"""H3 v2 回归 — short_name + search_terms 强约束 + 不做关键词提取。
+"""build_search_queries 槽位枚举器回归（A 方案 / PRISM_VALIDATION F3 修复）。
 
-H3 v2 设计：
-- create_topic 强制要求 short_name（company）+ search_terms（长 question）
-- 脚本不做关键词提取（删除标点截断），让 LLM 在创建时显式提炼
-- _short_scope_query 优先级：search_terms > 短 question > short_name 兜底
+设计变更：
+- build_search_queries 不再拼 query 文本，只枚举"覆盖槽"——每槽 {addresses, kind,
+  recency_days, hint}，NO 'query' 键。query 措辞交给对话里的主 agent（feedback_llm_workflow）。
+- 因此本文件断言的是：槽位完备枚举 + addresses 绑定 + hint 携带原始素材 +
+  **不再有任何写死的领域后缀**（F3 病根：旧版对所有 industry 套死"产能变化"）。
+- create_topic 的 short_name / search_terms 强制 gate 不变（独立于 query 契约），保留其回归。
 """
 import shutil
 import tempfile
@@ -12,10 +14,17 @@ from pathlib import Path
 import pytest
 
 from prism.scripts.topic import create_topic, set_thesis
-from prism.scripts.web_prescan import build_search_queries, _short_scope_query
+from prism.scripts.web_prescan import build_search_queries
 from prism.scripts.manifest import create_manifest
 
 VARIANT = "v"
+
+# F3 病根：旧版写死在脚本里的领域后缀。新契约下这些词不该出现在任何槽里
+# （查询轴改由主 agent 按领域自定）。本集合用作回归护栏。
+_FORBIDDEN_HARDCODED_SUFFIXES = (
+    "产能变化", "行业政策", "技术突破", "龙头新闻",
+    "最新公告", "监管处罚", "业绩预告", "高管变动", "最新进展",
+)
 
 
 @pytest.fixture
@@ -42,201 +51,233 @@ def _create(slug, **kwargs):
     create_manifest(slug, VARIANT)
 
 
-# ---------------------------------------------------------------------------
-# _short_scope_query 单元测试（v2 — 4 参数签名，不再做关键词提取）
-# ---------------------------------------------------------------------------
-
-@pytest.mark.parametrize("display_name,short_name,question,terms,expected_max,expected_contains", [
-    # search_terms 优先 — 用 short_name + terms（不读 question）
-    ("荣昌生物 (RemeGen, SSE 688331)", "荣昌生物", "极长废话题问题问题问题问题",
-     ["ADC 商业化", "BD 海外授权", "IgAN 管线"], 40, "ADC 商业化"),
-    # 短 question + 无 terms → short_name + question
-    ("X (Foo, US_X)", "宁德时代", "动力电池前景如何", None, 40, "动力电池前景如何"),
-    # 长 question + 无 terms → short_name 兜底（不再切 question）
-    ("Y (Bar, US_Y)", "荣昌生物",
-     "长长长长长长长长长长长长长长长长长长长长长长长长长长", None, 40, "荣昌生物"),
-    # search_terms 多于 3 个 — 只取前 3
-    ("X", "宁德", "Q", ["a", "b", "c", "d", "e"], 40, "a b c"),
-    # short_name 缺失 → fall back display_name（向后兼容老 yaml）
-    ("中国宠物行业", None, "Q", None, 40, "中国宠物行业"),
-])
-def test_short_scope_query(display_name, short_name, question, terms, expected_max, expected_contains):
-    out = _short_scope_query(display_name, short_name, question, terms)
-    assert len(out) <= expected_max, f"got {len(out)} chars: {out!r}"
-    assert expected_contains in out
-    # 不能以噪点结尾
-    assert not out.endswith(("，", "。", "；", "：", "、", " "))
+def _assert_slot_shape(slot, recency=90):
+    """每个槽的契约：有 addresses/kind/recency_days/hint，NO query。"""
+    assert set(slot) == {"addresses", "kind", "recency_days", "hint"}, slot
+    assert "query" not in slot, f"槽不该再带 query 文本: {slot!r}"
+    assert isinstance(slot["addresses"], list) and slot["addresses"]
+    assert isinstance(slot["hint"], dict)
+    assert slot["recency_days"] == recency
 
 
-def test_short_scope_query_uses_short_name_not_display_name(tmp_topic):
-    """实战核心：scope query 用 short_name 而非长 display_name。"""
-    out = _short_scope_query(
-        display_name="荣昌生物 (RemeGen, SSE 688331)",  # 30 字
-        short_name="荣昌生物",                              # 4 字
-        question="Q",
-        search_terms=["ADC 商业化兑现", "BD 海外授权回流", "IgAN 自免管线"],
-    )
-    assert "(RemeGen, SSE" not in out, f"不该用 display_name: {out!r}"
-    assert "荣昌生物" in out
-    assert "ADC 商业化兑现" in out
-    assert "BD 海外授权回流" in out
-    assert "IgAN 自免管线" in out
-
-
-def test_short_scope_query_does_not_truncate_question(tmp_topic):
-    """v2 关键变更：不再用标点切 question 假装提炼关键词。"""
-    long_q = "ADC+自免双管线创新药企业的商业化兑现节奏与BD海外授权回流"  # 30 字
-    out = _short_scope_query("X", "荣昌", long_q, search_terms=None)
-    # 兜底应该回到 short_name 而非切 question 前 20 字
-    assert out == "荣昌"
+def _no_hardcoded_suffix(slots):
+    """F3 回归护栏：整个返回结构里不得出现任何写死的领域后缀词。"""
+    blob = repr(slots)
+    for w in _FORBIDDEN_HARDCODED_SUFFIXES:
+        assert w not in blob, f"写死后缀 {w!r} 复活了（F3 回归）: {blob}"
 
 
 # ---------------------------------------------------------------------------
-# build_search_queries 集成测试 — short_name 优先
+# 契约：槽位形状 + 无 query 键 + 无写死后缀
 # ---------------------------------------------------------------------------
 
-def test_h3v2_company_uses_short_name_in_all_query_kinds(tmp_topic):
+def test_every_slot_has_no_query_key_and_correct_shape(tmp_topic):
     _create(
-        slug="rongchang", display_name="荣昌生物 (RemeGen, SSE 688331)",
-        short_name="荣昌生物",
-        question="Q",
-        ticker="SSE_688331",
+        slug="rc", display_name="荣昌生物 (RemeGen, SSE 688331)",
+        short_name="荣昌生物", question="Q", ticker="SSE_688331",
         search_terms=["ADC 商业化", "BD 授权", "IgAN"],
     )
-    qs = build_search_queries("rongchang", VARIANT)
-    for q in qs:
-        # display_name 30 字组件不应出现在任何 query 里
-        assert "(RemeGen, SSE 688331)" not in q["query"], (
-            f"[{q['kind']}] 仍含长 display_name: {q['query']!r}"
-        )
-        assert "荣昌生物" in q["query"], f"[{q['kind']}] 缺 short_name: {q['query']!r}"
-        assert len(q["query"]) <= 40, f"[{q['kind']}] 仍超长 ({len(q['query'])} 字): {q['query']!r}"
+    slots = build_search_queries("rc", VARIANT, recency_days=45)
+    assert slots
+    for s in slots:
+        _assert_slot_shape(s, recency=45)
 
 
-def test_h3v2_legacy_yaml_without_short_name_still_works(tmp_topic, monkeypatch):
-    """老 yaml 没 short_name 字段 → 向后兼容兜底用 display_name。"""
-    # 模拟老 yaml：直接写文件绕过 create_topic gate
+def test_no_hardcoded_domain_suffix_anywhere(tmp_topic):
+    """F3 本体：industry 槽不再带'产能变化'等任何写死轴词。"""
+    create_topic(
+        slug="cn-drug", display_name="中国创新药", topic_type="industry",
+        question="创新药出海与医保格局如何", geo="CN", depth="deep", variant=VARIANT,
+        search_terms=["创新药 出海", "ADC 双抗", "医保谈判"],
+    )
+    create_manifest("cn-drug", VARIANT)
+    slots = build_search_queries("cn-drug", VARIANT)
+    _no_hardcoded_suffix(slots)
+
+
+# ---------------------------------------------------------------------------
+# scope 槽 — 任何 topic 都有，hint 携带原始素材
+# ---------------------------------------------------------------------------
+
+def test_scope_slot_always_present_with_raw_hint(tmp_topic):
+    _create(
+        slug="rc2", display_name="荣昌生物 (RemeGen, SSE 688331)",
+        short_name="荣昌生物", question="Q",
+        search_terms=["ADC 商业化", "BD 授权", "IgAN"],
+    )
+    slots = build_search_queries("rc2", VARIANT)
+    scope = [s for s in slots if s["kind"] == "scope"]
+    assert len(scope) == 1
+    h = scope[0]["hint"]
+    # hint 原样给原料，不预拼、不截断
+    assert h["short_name"] == "荣昌生物"
+    assert h["display_name"] == "荣昌生物 (RemeGen, SSE 688331)"
+    assert h["search_terms"] == ["ADC 商业化", "BD 授权", "IgAN"]
+    assert scope[0]["addresses"] == ["scope"]
+
+
+def test_legacy_yaml_without_short_name_still_enumerates(tmp_topic):
+    """老 yaml 无 short_name → scope hint 的 short_name=None，display_name 兜底，不 raise。"""
     import yaml
     topic_dir = tmp_topic / "topics" / "legacy" / VARIANT
     topic_dir.mkdir(parents=True)
     (topic_dir / "topic.yaml").write_text(yaml.dump({
-        "slug": "legacy",
-        "display_name": "中国宠物行业",
-        "type": "industry",
+        "slug": "legacy", "display_name": "中国宠物行业", "type": "industry",
         "stage": "00-init",
         "scope": {"geo": "CN", "question": "Q", "depth": "deep"},  # 无 short_name
         "outputs_state": {},
     }, allow_unicode=True), encoding="utf-8")
     create_manifest("legacy", VARIANT)
-    qs = build_search_queries("legacy", VARIANT)
-    # 不 raise，正常生成 query
-    assert qs
-    scope_q = next(q for q in qs if q["kind"] == "scope")
-    assert "中国宠物行业" in scope_q["query"]
+    slots = build_search_queries("legacy", VARIANT)
+    scope = next(s for s in slots if s["kind"] == "scope")
+    assert scope["hint"]["short_name"] is None
+    assert scope["hint"]["display_name"] == "中国宠物行业"
 
 
 # ---------------------------------------------------------------------------
-# H4 修订：killer-question kind 已删；l4-hunting 改为读 search_keywords
+# company-event 槽 — 仅 company + ticker，hint 给 name+ticker（短码）
 # ---------------------------------------------------------------------------
 
-def test_h4_killer_question_kind_removed(tmp_topic):
-    """H4 修订：killer-question kind 不再生成（冗余 — scope+l4 已覆盖 K#）。"""
-    _create(
-        slug="rc-k", display_name="X (Y, US_X)",
-        short_name="荣昌生物",
-        question="Q",
-        ticker="SSE_688331",
+def test_company_event_slot_carries_short_ticker(tmp_topic):
+    _create(slug="rc3", short_name="荣昌生物", ticker="SSE_688331")
+    slots = build_search_queries("rc3", VARIANT)
+    ce = [s for s in slots if s["kind"] == "company-event"]
+    assert len(ce) == 1
+    assert ce[0]["hint"] == {"name": "荣昌生物", "ticker": "688331"}  # 去交易所前缀
+
+
+def test_industry_has_no_company_event_slot(tmp_topic):
+    create_topic(
+        slug="ind1", display_name="中国宠物", topic_type="industry",
+        question="Q?", geo="CN", depth="deep", variant=VARIANT,
     )
+    create_manifest("ind1", VARIANT)
+    slots = build_search_queries("ind1", VARIANT)
+    assert not [s for s in slots if s["kind"] == "company-event"]
+
+
+# ---------------------------------------------------------------------------
+# industry-event 槽 — base_terms 来自 search_terms[:2]，无则 display_name 兜底
+# ---------------------------------------------------------------------------
+
+def test_industry_event_base_terms_from_search_terms(tmp_topic):
+    create_topic(
+        slug="g-hvdc", display_name="跨州跨国 HVDC 输电（Prysmian/国电南瑞/特变电工）",
+        topic_type="arena",
+        question="跨州跨国 HVDC 输电的瓶颈与受益标的是什么", geo="GLOBAL", depth="deep",
+        variant=VARIANT,
+        search_terms=["HVDC 高压直流", "特高压输电", "海底电缆", "电网升级"],
+    )
+    create_manifest("g-hvdc", VARIANT)
+    slots = build_search_queries("g-hvdc", VARIANT)
+    ev = [s for s in slots if s["kind"] == "industry-event"]
+    assert len(ev) == 1
+    # 取前 2 个 search_term，贪心 display_name 不进 hint
+    assert ev[0]["hint"]["base_terms"] == ["HVDC 高压直流", "特高压输电"]
+
+
+def test_industry_event_base_terms_fallback_without_search_terms(tmp_topic):
+    create_topic(
+        slug="cn-pet2", display_name="中国宠物", topic_type="industry",
+        question="Q?", geo="CN", depth="deep", variant=VARIANT,
+    )
+    create_manifest("cn-pet2", VARIANT)
+    slots = build_search_queries("cn-pet2", VARIANT)
+    ev = next(s for s in slots if s["kind"] == "industry-event")
+    assert ev["hint"]["base_terms"] == ["中国宠物"]
+
+
+# ---------------------------------------------------------------------------
+# concept 槽 — 每个 concept 一槽（≤3）
+# ---------------------------------------------------------------------------
+
+def test_concept_slots_one_per_concept(tmp_topic):
+    import yaml
+    topic_dir = tmp_topic / "topics" / "cpt" / VARIANT
+    topic_dir.mkdir(parents=True)
+    (topic_dir / "topic.yaml").write_text(yaml.dump({
+        "slug": "cpt", "display_name": "某主题", "type": "concept",
+        "stage": "00-init",
+        "scope": {"geo": "CN", "question": "Q", "depth": "quick"},
+        "concepts": ["固态电池", "钠离子电池", "钙钛矿", "氢能"],  # 4 个，应只取前 3
+        "outputs_state": {},
+    }, allow_unicode=True), encoding="utf-8")
+    create_manifest("cpt", VARIANT)
+    slots = build_search_queries("cpt", VARIANT)
+    cu = [s for s in slots if s["kind"] == "concept-update"]
+    assert len(cu) == 3
+    assert [s["hint"]["concept"] for s in cu] == ["固态电池", "钠离子电池", "钙钛矿"]
+
+
+# ---------------------------------------------------------------------------
+# l4-hunting 槽 — 逐条 K# 对齐；缺 search_keywords 也出槽（修覆盖漏洞）
+# ---------------------------------------------------------------------------
+
+def test_l4_slot_per_entry_with_keywords(tmp_topic):
+    import yaml
+    _create(slug="rc-l4", short_name="荣昌生物", ticker="SSE_688331")
+    topic_dir = tmp_topic / "topics" / "rc-l4" / VARIANT
+    (topic_dir / "roadmap.yaml").write_text(yaml.dump({
+        "learning_track": {"l4_hunting": [
+            {
+                "question": "AbbVie RC148 全球 III 期 2026Q3-Q4 能否宣布注册？",
+                "addresses": ["K1"],
+                "search_keywords": ["RC148 III 期", "AbbVie 注册", "PD-1 VEGF"],
+            },
+            {
+                "question": "国谈降价幅度",
+                "addresses": ["K2"],
+                "search_keywords": ["医保谈判 降价"],
+            },
+        ]},
+    }, allow_unicode=True), encoding="utf-8")
+
+    slots = build_search_queries("rc-l4", VARIANT)
+    l4 = [s for s in slots if s["kind"] == "l4-hunting"]
+    assert len(l4) == 2
+    first = l4[0]
+    assert first["addresses"] == ["K1"]
+    assert first["hint"]["search_keywords"] == ["RC148 III 期", "AbbVie 注册", "PD-1 VEGF"]
+    assert "AbbVie RC148" in first["hint"]["question"]
+    assert first["hint"]["name"] == "荣昌生物"
+
+
+def test_l4_slot_emitted_even_without_search_keywords(tmp_topic):
+    """新行为（修覆盖漏洞）：旧版缺 search_keywords 整槽跳过 → 漏覆盖该 K#；
+    现统一出槽（带 question + 空 keywords），addresses 绑定保留，主 agent 自行措辞。"""
+    import yaml
+    _create(slug="rc-l4-nokw", short_name="荣昌", ticker="SSE_688331")
+    topic_dir = tmp_topic / "topics" / "rc-l4-nokw" / VARIANT
+    (topic_dir / "roadmap.yaml").write_text(yaml.dump({
+        "learning_track": {"l4_hunting": [
+            {"question": "某无关键词的 L4 问题", "addresses": ["K3"]},  # 缺 search_keywords
+            {"question": "另一个", "addresses": ["K4"], "search_keywords": []},  # 空
+        ]},
+    }, allow_unicode=True), encoding="utf-8")
+
+    slots = build_search_queries("rc-l4-nokw", VARIANT)
+    l4 = [s for s in slots if s["kind"] == "l4-hunting"]
+    assert len(l4) == 2, "缺/空 search_keywords 仍应出槽（不再静默丢覆盖）"
+    assert l4[0]["addresses"] == ["K3"]
+    assert l4[0]["hint"]["search_keywords"] == []
+    assert l4[0]["hint"]["question"] == "某无关键词的 L4 问题"
+    assert l4[1]["addresses"] == ["K4"]
+
+
+def test_no_killer_question_kind(tmp_topic):
+    """H3 v3 起 killer-question kind 已删；K# 覆盖经 l4-hunting addresses 绑定。"""
+    _create(slug="rc-k", short_name="荣昌生物", ticker="SSE_688331")
     topic_dir = tmp_topic / "topics" / "rc-k" / VARIANT
     (topic_dir / "thesis_v1.md").write_text(
         "# Thesis v1\n\n- K1: ADC 商业化\n- K2: BD\n", encoding="utf-8",
     )
     set_thesis("rc-k", VARIANT, version=1, summary="t1", stage_set_at="01-roadmap")
-
-    qs = build_search_queries("rc-k", VARIANT)
-    kq = [q for q in qs if q["kind"] == "killer-question"]
-    assert not kq, f"killer-question 应删: {[q['query'] for q in kq]!r}"
-
-
-def test_h4_l4_uses_search_keywords(tmp_topic):
-    """H4：L4 question 必须用 search_keywords 拼 query，不再用 question 长句。"""
-    import yaml
-    _create(slug="rc-l4", short_name="荣昌生物", ticker="SSE_688331")
-    topic_dir = tmp_topic / "topics" / "rc-l4" / VARIANT
-    (topic_dir / "roadmap.yaml").write_text(yaml.dump({
-        "learning_track": {
-            "l4_hunting": [
-                {
-                    "question": "AbbVie RC148 全球 III 期 2026Q3-Q4 能否宣布 IND/CTA 注册？市场目前隐含的概率多少？",
-                    "addresses": ["K1"],
-                    "search_keywords": ["RC148 III 期", "AbbVie 注册", "PD-1 VEGF"],
-                },
-            ],
-        },
-    }, allow_unicode=True), encoding="utf-8")
-
-    qs = build_search_queries("rc-l4", VARIANT)
-    l4 = [q for q in qs if q["kind"] == "l4-hunting"]
-    assert len(l4) == 1
-    q = l4[0]
-    # 用 search_keywords 拼接，不用 question 长句
-    assert "RC148 III 期" in q["query"]
-    assert "AbbVie 注册" in q["query"]
-    assert "PD-1 VEGF" in q["query"]
-    # 不应包含问号或长 question 末段
-    assert "？" not in q["query"]
-    assert "市场目前隐含" not in q["query"]
-    assert q["addresses"] == ["K1"]
-    # 拼出 query ≤40 字
-    assert len(q["query"]) <= 40, f"l4 query 仍超长 ({len(q['query'])} 字): {q['query']!r}"
-
-
-def test_h4_l4_without_search_keywords_skipped(tmp_topic, capsys):
-    """H4 hard gate：L4 缺 search_keywords → 跳过该 query + stderr 警告。"""
-    import yaml
-    _create(slug="rc-l4-skip", short_name="荣昌", ticker="SSE_688331")
-    topic_dir = tmp_topic / "topics" / "rc-l4-skip" / VARIANT
-    (topic_dir / "roadmap.yaml").write_text(yaml.dump({
-        "learning_track": {
-            "l4_hunting": [
-                {
-                    "question": "长长长长长长长长长长长 question 没 search_keywords",
-                    "addresses": ["K1"],
-                    # 缺 search_keywords
-                },
-            ],
-        },
-    }, allow_unicode=True), encoding="utf-8")
-
-    qs = build_search_queries("rc-l4-skip", VARIANT)
-    l4 = [q for q in qs if q["kind"] == "l4-hunting"]
-    assert not l4, "缺 search_keywords 的 L4 不应生成 query"
-    # stderr 警告
-    captured = capsys.readouterr()
-    assert "search_keywords" in captured.err
-    assert "K1" in captured.err
-
-
-def test_h4_l4_empty_search_keywords_skipped(tmp_topic, capsys):
-    """search_keywords=[] 等同缺字段 → 同样跳过。"""
-    import yaml
-    _create(slug="rc-l4-empty", short_name="荣昌", ticker="SSE_688331")
-    topic_dir = tmp_topic / "topics" / "rc-l4-empty" / VARIANT
-    (topic_dir / "roadmap.yaml").write_text(yaml.dump({
-        "learning_track": {
-            "l4_hunting": [
-                {"question": "Q", "addresses": ["K2"], "search_keywords": []},
-            ],
-        },
-    }, allow_unicode=True), encoding="utf-8")
-
-    qs = build_search_queries("rc-l4-empty", VARIANT)
-    l4 = [q for q in qs if q["kind"] == "l4-hunting"]
-    assert not l4
+    slots = build_search_queries("rc-k", VARIANT)
+    assert not [s for s in slots if s["kind"] == "killer-question"]
 
 
 # ---------------------------------------------------------------------------
-# create_topic gate — short_name + search_terms 必填条件
+# create_topic gate — short_name + search_terms 必填（独立于 query 契约，保留）
 # ---------------------------------------------------------------------------
 
 def test_company_without_short_name_raises(tmp_topic):
@@ -245,7 +286,6 @@ def test_company_without_short_name_raises(tmp_topic):
             slug="no-short", display_name="X (Y, Z)", topic_type="company",
             question="Q?", geo="CN", depth="quick", variant=VARIANT,
             ticker="SSE_688331",
-            # 缺 short_name
         )
 
 
@@ -260,7 +300,6 @@ def test_short_name_empty_raises(tmp_topic):
 
 
 def test_long_question_without_search_terms_raises(tmp_topic):
-    """v2 hard gate：长 question + 缺 search_terms → 立即 raise。"""
     long_q = "荣昌生物作为中国领先的ADC+自免双管线创新药企业，全维度覆盖商业化兑现与海外授权"
     assert len(long_q) > 25
     with pytest.raises(ValueError, match="search_terms 未给"):
@@ -276,58 +315,15 @@ def test_long_question_with_search_terms_ok(tmp_topic):
 
 
 def test_short_question_no_search_terms_ok(tmp_topic):
-    """≤25 字 question 不必给 search_terms。"""
     _create(slug="short-q", question="ADC 商业化兑现节奏？")
 
 
-# ---------------------------------------------------------------------------
-# industry / arena / concept 不必传 short_name
-# ---------------------------------------------------------------------------
-
 def test_industry_without_short_name_ok(tmp_topic):
-    """industry 不强制 short_name（可选），漏给时 build 用 display_name 兜底。"""
     create_topic(
         slug="cn-pet", display_name="中国宠物", topic_type="industry",
         question="Q?", geo="CN", depth="deep", variant=VARIANT,
     )
     create_manifest("cn-pet", VARIANT)
-    qs = build_search_queries("cn-pet", VARIANT)
-    scope_q = next(q for q in qs if q["kind"] == "scope")
-    assert "中国宠物" in scope_q["query"]
-
-
-def test_industry_event_uses_search_terms_when_present(tmp_topic):
-    """industry/arena event 模板优先用 search_terms 拼 base（短、精准），
-    而非 display_name 贪心。修法 2026-05-28。"""
-    create_topic(
-        slug="g-hvdc", display_name="跨州跨国 HVDC 输电（Prysmian/国电南瑞/特变电工）",
-        topic_type="arena",
-        question="跨州跨国 HVDC 输电的瓶颈与受益标的是什么", geo="GLOBAL", depth="deep",
-        variant=VARIANT,
-        search_terms=["HVDC 高压直流", "特高压输电", "海底电缆", "电网升级"],
-    )
-    create_manifest("g-hvdc", VARIANT)
-    qs = build_search_queries("g-hvdc", VARIANT)
-    events = [q for q in qs if q["kind"] == "industry-event"]
-    assert len(events) == 4
-    for e in events:
-        # 拼接前 2 个 search_term + kw，不应包含贪心 display_name
-        assert "HVDC 高压直流" in e["query"]
-        assert "特高压输电" in e["query"]
-        assert "（Prysmian/国电南瑞/特变电工）" not in e["query"]
-    kinds = {q["query"].split()[-1] for q in events}
-    assert kinds == {"行业政策", "技术突破", "产能变化", "龙头新闻"}
-
-
-def test_industry_event_fallback_to_display_name_without_search_terms(tmp_topic):
-    """无 search_terms 时 fallback 到 name_for_query（display_name）。"""
-    create_topic(
-        slug="cn-pet2", display_name="中国宠物", topic_type="industry",
-        question="Q?", geo="CN", depth="deep", variant=VARIANT,
-    )
-    create_manifest("cn-pet2", VARIANT)
-    qs = build_search_queries("cn-pet2", VARIANT)
-    events = [q for q in qs if q["kind"] == "industry-event"]
-    assert len(events) == 4
-    for e in events:
-        assert "中国宠物" in e["query"]
+    slots = build_search_queries("cn-pet", VARIANT)
+    scope = next(s for s in slots if s["kind"] == "scope")
+    assert scope["hint"]["display_name"] == "中国宠物"

@@ -34,7 +34,7 @@
 **长 question 必须同步给 `search_terms`**（修 H3 v2）：当 `question` 超 25 字（典型如生物医药/科技/复合产业的 deep 类研究），**必填** `search_terms: list[str]` — 2-4 个 WebSearch 友好的核心关键词，每项 ≤15 字。
 - 例：`question='荣昌生物作为中国领先的ADC+自免双管线创新药企业，全维度覆盖：商业化兑现节奏、海外授权回流'` → `search_terms=['ADC 商业化', 'BD 海外授权', 'IgAN 管线']`
 - 脚本不做关键词提取（标点截断常切到非核心名词反而误导）—— 长 question 漏给 search_terms 会**直接 raise** 引导主 agent 显式提炼
-- 这些关键词会成为 `scope` / `killer-question` / `l4-hunting` query 的核心组成（参 `build_search_queries`）
+- 这些关键词会进入 `build_search_queries` 的 `scope` / `l4-hunting` 覆盖槽 hint，作为主 agent 写 query 的核心原料（脚本只给 hint，不代写 query）
 
 **多市场上市（AH 双重 / ADR / 多重上市）必须确认 `extra_tickers`**（list[str]，主代码以外的所有同公司代码）：
 - 荣昌生物 A+H：`ticker='SSE_688331', extra_tickers=['HKEX_09995']`
@@ -157,11 +157,11 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 
 **为什么必须做**：LLM 训练截止与当前时间往往有几个月到一年的差距，对**时效性强的标的**（公司财报/政策动态/股价估值/突发事件），跳过 prescan 直接靠训练知识写 thesis_v0 会把过时事实当成"初判赌注"，导致 K# 设错、user_todos 攻打错方向、后续整轮研究偏航。
 
-**执行三段：先跑 baseline 优先 query → 再跑默认模板 prescan → 回写 baseline 校准结果。三段都做完才进 Step 5。**
+**执行三段：先跑 baseline 优先 query → 再跑覆盖槽 prescan（`build_search_queries` 清单逐槽写 query）→ 回写 baseline 校准结果。三段都做完才进 Step 5。**
 
 ### Step 4.5a：先跑 baseline 第五节的优先 query（**修 M4 + ISSUE-001**）
 
-`build_search_queries` 只会生成 scope + 事件模板 query，**不读 baseline_knowledge.md**——主 agent 在 Step 4.3 baseline 第五节写的"自评盲点 → 想精准查的 query"必须在这一步手动落地，否则等于白写。
+`build_search_queries` 只枚举 scope + 事件 + L4 的**覆盖槽**（给 hint，不代写 query），**且不读 baseline_knowledge.md**——主 agent 在 Step 4.3 baseline 第五节写的"自评盲点 → 想精准查的 query"必须在这一步手动落地，否则等于白写。
 
 ```bash
 # 1. 读 baseline 第五节
@@ -193,11 +193,11 @@ elif r['failure_mode'] == 'all_low_band':
 
 **纪律**：第五节 5-10 条优先 query 全部尝试完才进 4.5b。漏跑等于主 agent 自评的盲点没补，thesis_v0 会基于过时认知做赌注。WebSearch 长时不可用时按 B.2 降级，**不允许默默跳过**——脚本会通过 Step 5.0 的 `check_prescan_health` 自动检测并触发 `prescan_status='failed'`。
 
-### Step 4.5b：跑默认模板 prescan
+### Step 4.5b：跑覆盖槽 prescan
 
 调用 `prism/workflows/_web_prescan_shared.md`，参数 `recency_days=90`，`triggered_by='00-prescan'`。
 
-注意：此时 thesis 还不存在，`build_search_queries` 仅会生成 **scope + company-event / industry-event / concept-update** 系列查询（不含 K#-derived），这是预期的——本轮目的是为"写出靠谱的 thesis_v0"打地基，K# 类查询留给 workflow 01 prescan。
+注意：此时 thesis 还不存在、roadmap 尚无 L4，`build_search_queries` 仅会枚举 **scope + company-event / industry-event / concept-update** 覆盖槽（无 l4-hunting 槽），这是预期的——本轮目的是为"写出靠谱的 thesis_v0"打地基，K# 类覆盖留给 workflow 01 prescan。逐槽 query 措辞按 `_web_prescan_shared.md` Step A 由主 agent 写。
 
 跑完后输出汇报模板：
 ```

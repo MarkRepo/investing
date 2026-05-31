@@ -211,7 +211,7 @@ def create_topic(
     """创建 topic.yaml。
 
     H1: company 类型必须传 ticker，否则 raise ValueError —— 避免 build_search_queries
-        的 company-event 系列静默不生成。
+        的 company-event 覆盖槽静默不生成。
     M1: extra_tickers 用于 AH 双重上市 / 多市场（如 [SSE_688331, HKEX_09995] 的 H 股部分；
         或 [HKEX_09988, US_BABA, NASDAQ_BABAF] 的 ADR 多重上市）。每项格式同 ticker。
         写入 scope.extra_tickers + scope.extra_markets（并行 list[str]，长度一致）。
@@ -226,7 +226,7 @@ def create_topic(
     if topic_type == "company" and not ticker:
         raise ValueError(
             "topic_type='company' 必须传 ticker (格式: '{EXCHANGE}_{CODE}'，如 'SSE_688331' / 'HKEX_09995' / 'US_AAPL'). "
-            "后续 build_search_queries 的 company-event query 依赖 ticker，漏传会静默缺失。"
+            "后续 build_search_queries 的 company-event 覆盖槽依赖 ticker，漏传会静默缺失。"
         )
     if topic_type == "company" and not short_name:
         raise ValueError(

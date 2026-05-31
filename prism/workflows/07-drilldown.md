@@ -38,7 +38,7 @@ for m in data['materials']:
 
 若 Step 2 判断"现有 material 不足"——例如 drilldown 需要 "HKEX 2026-09 月 ADV"、"某公司 2026 Q1 经营数据" 这类**高频小数据 / 训练截止后事件**——先跑 `_web_prescan_shared.md`（`recency_days=180`，往回查更长）做专项查询：
 
-- 主 agent 把钻探问题拆成 1-3 条精准 query 喂给 Step B（**覆盖** `build_search_queries` 默认生成的通用 query）
+- 主 agent 把钻探问题拆成 1-3 条精准 query 喂给 Step B（drilldown 的 query 一律手写，可不跑 `build_search_queries` 覆盖槽枚举——专项深挖问题比通用 scope 槽更聚焦）
 - 把 hit 的 addresses 按全局三态约定（参 `_web_prescan_shared.md` 关键纪律 3）填：攻打具体 K# 时填 `['K#']`/`['K#@event']`；thesis 未形成或纯探索性深挖填 `['scope']`；**禁止 `[]`**
 - `triggered_by='07-drilldown'`
 

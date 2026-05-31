@@ -448,12 +448,10 @@ Web 地址：http://localhost:8000/prism/{slug}/{variant}/
 
 roadmap 落地后立即跑 `_web_prescan_shared.md` 一次（`recency_days=90`），目的：
 - 为每个 L3-debate 争议点 + L4 hunting question 主动拉近 90 天事件 / 数据
-- company：补 ticker 最新公告/监管/业绩 4 类
-- industry/arena：补行业政策/技术突破/产能/龙头新闻
-- concept：补每个 concept 最新进展
+- 覆盖 `build_search_queries` 枚出的各槽：scope / company 主体 / industry 行业面 / 每个 concept / 每条 L4（逐 K# 对齐）
 - thesis K# 一次性扫覆盖度
 
-按 `_web_prescan_shared.md` Step A-F 执行，`triggered_by='01-prescan'`。
+各槽的事件轴（**查什么**）由主 agent 按领域自定，**不套固定后缀**——旧版对所有行业写死"产能变化"、对 company 写死"最新公告/监管/业绩"即 PRISM_VALIDATION F3 病根；措辞规约见 `_web_prescan_shared.md` Step A。按 Step A-F 执行，`triggered_by='01-prescan'`。
 
 完成后 user_todos 通常已自动消化掉大半 K# 级 todo——剩下的（如未公开内部数据、付费墙、专家访谈）才是真正需要用户手工去搞的清单。
 
