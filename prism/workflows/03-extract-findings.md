@@ -9,7 +9,7 @@
 >
 > 入库类 inline web-search 示例：
 > ```bash
-> python -m prism.scripts.web_search search "<query>" \
+> python3 -m prism.scripts.web_search search "<query>" \
 >     --intent news --output sidecar \
 >     --slug <slug> --variant <variant> \
 >     --triggered-by 03-extract --addresses K1,K3
@@ -241,13 +241,13 @@ dispatch subagent 时：
 
 ```bash
 # 1. 找到文件位置
-python -c "
+python3 -c "
 from prism.scripts.manifest import get_material_path
 path = get_material_path('{slug}', '{filename}')
 print(path if path else 'FILE_NOT_FOUND')
 "
 # 2. 用章节提取器处理 PDF，只保留分析相关章节（管理层讨论/主营业务等，跳过财务报表）
-python -m scripts.annual_report_extractor \
+python3 -m scripts.annual_report_extractor \
   "{material_path}" \
   --out "prism/topics/{slug}/materials/{filename_stem}_extracted.md"
 ```
@@ -260,7 +260,7 @@ python -m scripts.annual_report_extractor \
 
 ```bash
 # 2. 从财务 API 补充财务数据（不从 PDF 解析财务数字）
-python -c "
+python3 -c "
 from prism.scripts.financial_data import get_financial_context
 print(get_financial_context('{slug}', '{variant}'))
 "
@@ -274,7 +274,7 @@ print(get_financial_context('{slug}', '{variant}'))
 
 ```bash
 # 1. 找到文件位置
-python -c "
+python3 -c "
 from prism.scripts.manifest import get_material_path
 path = get_material_path('{slug}', '{filename}')
 print(path if path else 'FILE_NOT_FOUND')
@@ -329,7 +329,7 @@ else:
 
 ```bash
 # 找到文件位置
-python -c "
+python3 -c "
 from prism.scripts.manifest import get_material_path
 path = get_material_path('{slug}', '{filename}')
 print(path if path else 'FILE_NOT_FOUND')
@@ -346,7 +346,7 @@ cat "{material_path}"
 每个 section md 是 `sec_section_split` 切好的纯文本，直接读：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.manifest import get_material_path
 path = get_material_path('{slug}', '{filename}')
 print(path if path else 'FILE_NOT_FOUND')
@@ -510,7 +510,7 @@ sub-agent 在自己 context 跑 1-3 轮 search → 返回 final message
 ## Step 3：标记资料已处理
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.manifest import mark_processed
 mark_processed('{slug}', '{mat_id}', '{variant}')
 print('已标记处理完成')

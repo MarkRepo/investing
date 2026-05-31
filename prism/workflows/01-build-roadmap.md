@@ -9,7 +9,7 @@
 ## Step 1：读取 topic
 
 ```bash
-python -c "
+python3 -c "
 import json
 from prism.scripts.topic import read_topic
 print(json.dumps(read_topic('{slug}', '{variant}'), ensure_ascii=False, indent=2))
@@ -25,7 +25,7 @@ print(json.dumps(read_topic('{slug}', '{variant}'), ensure_ascii=False, indent=2
 如果此 topic 有 `parent_topic`，列出父 topic 已收集的 materials 并标记哪些可复用：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.topic import read_topic, list_parent_materials
 from prism.scripts.manifest import read_manifest
 import json
@@ -172,7 +172,7 @@ l4_hunting:
 **对 `annual-report` 类型，必须填写 `ticker` 字段**以支持自动下载：
 - A 股：`SSE_600519` / `SZSE_300750`
 - 美股：`NVDA` / `AAPL`（直接写 ticker）
-- 港股：`HK_02228`（走 HKEXnews，零 key，annual/semi/prospectus）
+- 港股：`HKEX_02228`（走 HKEXnews，零 key，annual/semi/prospectus；`HK_` 旧前缀仍兼容）
 - 英股：`LSE_OXIG`（走 FCA NSM，零 key，annual/semi）
 - 韩股：`006400` 或 `KRX_006400`（走 DART，零 key）
 - 日股決算短信（first-look）：`5019` 或 `TSE_5019`（走 TDnet，零 key，覆盖近 30 天）
@@ -212,7 +212,7 @@ l4_hunting:
 > **ticker 规则**：LLM 在 Step 3 写 roadmap 时，对 `annual-report` 类型材料必须填写 `ticker` 字段。
 > - A 股：`SSE_600519` / `SZSE_300750`（自动走 cninfo）
 > - 美股：`QS` / `NVDA` / `AAPL`（自动走 SEC EDGAR；自动下 10-K + 10-Q）
-> - 港股：`HK_02228`（自动走 HKEXnews，零 key；annual=年报 / semi=中期 / prospectus=招股章程）
+> - 港股：`HKEX_02228`（自动走 HKEXnews，零 key；annual=年报 / semi=中期 / prospectus=招股章程；`HK_` 旧前缀仍兼容）
 > - 英股：`LSE_OXIG`（自动走 FCA NSM，零 key；annual=Final/Preliminary Results / semi=Half-year Report；UK 不强制季报）
 > - 韩股：`006400` 或 `KRX_006400`（自动走 DART，年报/半年报/季报均可）
 > - 日股決算短信：`5019` 或 `TSE_5019`（自动走 TDnet 適時開示，零 key，30 天窗口；report_type=annual→決算短信，semi→中間決算短信，quarterly→四半期決算短信）
@@ -226,7 +226,7 @@ l4_hunting:
 ```python
 from scripts.fetch_report_prism import fetch_many
 fetch_many('SSE_688499', years=[2020, 2021, 2022, 2023, 2024], slug=slug, variant=variant)
-# 或 CLI: python -m scripts.fetch_report_prism SSE_688499 --years 2020-2024 --slug ...
+# 或 CLI: python3 -m scripts.fetch_report_prism SSE_688499 --years 2020-2024 --slug ...
 ```
 
 **文件命名规范**（E7）：年报 / 10-K 落盘后均以 `{report_year}_{ticker}_...` 开头，便于按 report_year 排序、grep 同公司多年材料。旧文件保留原名不动；只对新下载生效。

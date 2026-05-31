@@ -21,7 +21,7 @@
 ## Step 2：评估信息来源
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.manifest import read_manifest
 import json
 data = read_manifest('{slug}')

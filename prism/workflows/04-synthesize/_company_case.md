@@ -100,7 +100,7 @@
 
 1. **拉财务自动红线数据**：
    ```bash
-   python -c "from prism.scripts.financial_data import get_quality_screen_data; print(get_quality_screen_data('{slug}', '{variant}'))"
+   python3 -c "from prism.scripts.financial_data import get_quality_screen_data; print(get_quality_screen_data('{slug}', '{variant}'))"
    ```
    财务红线（无数据则标"数据缺失，用户判断"，不编造）：
 
@@ -120,7 +120,7 @@
    - **PASS**（全过 / 不通过 ≤1 且非致命）→ 继续 Step 1 完整合成。
    - **FAIL**（致命红线任一触发：财务造假 / 重大违规 / ROIC 长期 < WACC）→ quarantine，不再深研：
      ```bash
-     python -c "from prism.scripts.topic import set_stage, set_next_actions; set_stage('{slug}','quarantined','{variant}'); set_next_actions('{slug}',['已 quarantine，不再继续研究'],'{variant}')"
+     python3 -c "from prism.scripts.topic import set_stage, set_next_actions; set_stage('{slug}','quarantined','{variant}'); set_next_actions('{slug}',['已 quarantine，不再继续研究'],'{variant}')"
      ```
      并把 quarantine 摘要归档到 `prism/quarantine/{slug}.md`。
    - **NEEDS-REVIEW**（1-2 项非致命不通过）→ `AskUserQuestion` 问用户是否豁免；豁免则继续，否则 quarantine。

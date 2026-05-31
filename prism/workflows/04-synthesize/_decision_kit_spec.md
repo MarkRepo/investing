@@ -76,7 +76,7 @@ cluster_tags: [{tag1}, {tag2}]        # e.g. [ai-compute, china-defense]
 **写入命令：**
 
 ```bash
-python -c "
+python3 -c "
 from pathlib import Path
 import yaml
 

@@ -43,14 +43,14 @@ Q3. 模型在对话里临时起意要查（探索式、单次、消化即用）�
 
 ```bash
 # 直接 search → stdout JSON
-python -m prism.scripts.web_search search "<query>" \
+python3 -m prism.scripts.web_search search "<query>" \
     --intent <news|semantic|exact|general> \
     --days <N> --max-results 5
 
 # search → 落 raw sidecar 文件（**不 register**——主 agent 后续手动判 tier + 救回）
 # 写到 prism/topics/{slug}/inbox/_websearch_raw/{ts}_{qhash}.json
 # 主 agent 用 review-digest 看 index 判 tier（勿 Read 整 json）→ register_web_search_batch（见 _web_prescan_shared Step C）
-python -m prism.scripts.web_search search "<query>" \
+python3 -m prism.scripts.web_search search "<query>" \
     --intent <intent> \
     --output sidecar \
     --slug <slug> --variant <variant> \
@@ -58,14 +58,14 @@ python -m prism.scripts.web_search search "<query>" \
     --addresses K1,K3
 
 # WebSearch fallback：吃外部 hits 走 dedup + 黑名单过滤 + 落 sidecar
-echo '<json hits array>' | python -m prism.scripts.web_search postprocess \
+echo '<json hits array>' | python3 -m prism.scripts.web_search postprocess \
     --source websearch_fallback \
     --query "<original query>" \
     --slug <slug> --variant <variant> \
     --triggered-by <step>-fallback --addresses K1
 
 # key 池状态
-python -m prism.scripts.web_search status
+python3 -m prism.scripts.web_search status
 ```
 
 > **domain_tier 由谁判**：adapter 只对黑名单源（twitter/youtube/reddit 等 `LOW_SIGNAL_HOSTS`）打 `'other'` tier。其余源不预判——`register_web_search_batch` 默认走"主 agent LLM 判 tier + H2 救回闭环"流程（参 `_web_prescan_shared.md` Step C）。脚本不维护行业权威源白名单。
@@ -106,7 +106,7 @@ WebSearch 命中以下任一情况切 adapter：
 
 直接重跑同 query：
 ```
-python -m prism.scripts.web_search search "<同 query>" --intent <classified> ...
+python3 -m prism.scripts.web_search search "<同 query>" --intent <classified> ...
 ```
 
 ### 防 ping-pong

@@ -31,7 +31,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 ## Step 1：按 monitoring_tier 选择今日要扫的 topic
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.topic import list_topics
 import datetime
 today = datetime.date.today()
@@ -185,7 +185,7 @@ generated: {timestamp}
 ## Step 5：更新 next_actions
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.topic import set_next_actions, read_topic
 t = read_topic('{slug}', '{variant}')
 current = t.get('next_actions', [])
@@ -201,7 +201,7 @@ set_next_actions('{slug}', current, '{variant}')
 06-daily-monitor 通常不直接动 set_output_referenced_mats / set_thesis / set_critic_verdict，所以 dashboard **不会自动重建**。若本轮监控触发了 signposts/kill-criteria 状态变化（典型来自 04/05 重跑），那些路径已自动刷新；若仅本 workflow 手动追加 living_feed 想立即看 dashboard，再手动跑：
 
 ```bash
-python -m prism.scripts.dashboard
+python3 -m prism.scripts.dashboard
 ```
 
 否则等下次 04/05/thesis 升版自动触发即可。

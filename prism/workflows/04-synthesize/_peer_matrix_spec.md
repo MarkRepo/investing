@@ -11,7 +11,7 @@
 **默认走 ticker 模式**（不需要 stub company topic 已建）。每家候选公司只要在 findings 里有股票代码（A 股 / 港股 / 美股），都能直接拉数据：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.financial_data import get_peer_comparison_data_by_tickers
 
 # 列出所有候选 peer：A 股用 SSE/SZSE/BSE，美股用 NASDAQ/NYSE，港股用 HKEX
@@ -34,7 +34,7 @@ for k, d in data.items():
 **已注册成 stub company topic 的 peer**（如父级 industry 选拔后建好的 stub），可走 slug 模式：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.financial_data import get_peer_comparison_data
 data = get_peer_comparison_data('{slug}', '{variant}', ['cn-leadex-300450', 'cn-yuanli-heng-688499'])
 for k, d in data.items():
@@ -140,7 +140,7 @@ cluster_tags: [{tag1}, {tag2}]
 ```
 
 ```bash
-python -c "
+python3 -c "
 from pathlib import Path
 import yaml
 
@@ -160,7 +160,7 @@ print('10 sidecar 写入完成')
 对每个深研档公司：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.topic import create_topic, read_topic
 parent = read_topic('{slug}', '{variant}')
 geo = parent.get('scope', {}).get('geo', 'cn')  # 从父 topic 继承 geo
@@ -189,7 +189,7 @@ create_topic 完成后，立即为 stub 写 thesis_v0.md。
 1. 读父 arena thesis：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.outputs import extract_killer_questions
 from prism.scripts.topic import read_topic
 parent = read_topic('{slug}', '{variant}')
@@ -209,7 +209,7 @@ for k in ks: print(' -', k[:80])
 4. 落入 stub topic.yaml：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.topic import set_thesis
 set_thesis(
     slug='{geo}-{company_slug}',
