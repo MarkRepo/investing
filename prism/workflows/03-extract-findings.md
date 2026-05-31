@@ -249,10 +249,12 @@ print(path if path else 'FILE_NOT_FOUND')
 # 2. 用章节提取器处理 PDF，只保留分析相关章节（管理层讨论/主营业务等，跳过财务报表）
 python -m scripts.annual_report_extractor \
   "{material_path}" \
-  --out "prism/topics/{slug}/{variant}/materials/{filename_stem}_extracted.md"
+  --out "prism/topics/{slug}/materials/{filename_stem}_extracted.md"
 ```
 
 提取完成后，读取 `_extracted.md` 作为分析内容（而非原始 PDF）。
+
+> ⚠️ **materials/ 是 slug 级共享目录**（`prism/topics/{slug}/materials/`，跨 variant 共用），**不是** `{slug}/{variant}/materials/`（该目录不存在，写进去 extractor/mineru 直接 FileNotFoundError）。所有 `_extracted.md` / `_vlm/` 产物都落 slug 级。
 
 **段落级过滤**：故意不做。年报章节抽取后通常 50-80K tokens，单份 LLM 可以一口气消化，由 LLM 根据 thesis K# 自行识别相关段落比 keyword grep 准确得多——避免「凝聚态/麒麟」等非字面变体被漏掉。
 
@@ -278,18 +280,18 @@ path = get_material_path('{slug}', '{filename}')
 print(path if path else 'FILE_NOT_FOUND')
 "
 # 2. 检查是否已转换（避免重复消耗 API 配额）
-test -f "prism/topics/{slug}/{variant}/materials/{filename_stem}_vlm/full.md" \
+test -f "prism/topics/{slug}/materials/{filename_stem}_vlm/full.md" \
   && echo "已存在，跳过转换" \
   || .venv/bin/python -m scripts.mineru_api \
        "{material_path}" \
-       --out "prism/topics/{slug}/{variant}/materials/{filename_stem}_vlm" \
+       --out "prism/topics/{slug}/materials/{filename_stem}_vlm" \
        --model vlm
 
 # 3. 转换成功后翻 mineru_state 为 done（避免 manifest 长期显示 "needs"）
 python3 -c "
 from pathlib import Path
 from prism.scripts.manifest import set_mineru_state
-md = Path('prism/topics/{slug}/{variant}/materials/{filename_stem}_vlm/full.md')
+md = Path('prism/topics/{slug}/materials/{filename_stem}_vlm/full.md')
 if md.exists() and md.stat().st_size > 0:
     set_mineru_state('{slug}', '{variant}', '{mat_id}', 'done')
     print('mineru_state → done')
@@ -314,7 +316,7 @@ else:
 "
 ```
 
-转换完成后，读取 `prism/topics/{slug}/{variant}/materials/{filename_stem}_vlm/full.md` 作为分析内容。
+转换完成后，读取 `prism/topics/{slug}/materials/{filename_stem}_vlm/full.md` 作为分析内容。
 
 **Mineru 失败时主 agent 必须**：（1）在对话里向用户报告失败 mat_id + 上面三条补救路径；（2）跳过该资料，不要用 pymupdf/直读 PDF 偷工（参 [[feedback_mineru_required.md]]）；（3）继续处理下一份 unprocessed。
 
@@ -543,19 +545,20 @@ python3 -c "
 from prism.scripts.topic import set_stage, set_next_actions, append_user_todos
 from prism.scripts.manifest import material_count
 counts = material_count('{slug}', '{variant}')
-if counts['unprocessed'] == 0:
+# advance gate 读 unprocessed_actionable（排除 Role α prescan web 料）——修 F14：
+# 用全量 unprocessed 会让任何跑过 prescan 的 topic 永不升 04
+if counts['unprocessed_actionable'] == 0:
     set_stage('{slug}', '04-synthesizing', '{variant}')
     set_next_actions('{slug}', [
         '所有资料已处理完毕，可以生成产出',
-        '说「生成产出 {slug} 商业全景」开始生成第一份产出',
-        '或说「prism 推进 {slug}」按顺序生成所有 8 份产出',
+        '说「prism 推进 {slug}」走决策链合成（00_primer 领域入门 + {c/i/a}_case 成稿 + sidecar）',
     ], '{variant}')
     append_user_todos('{slug}', [
         f'资料提取完成：{counts[\"total\"]} 份全部处理完毕',
     ], '{variant}')
 else:
     set_next_actions('{slug}', [
-        f'还有 {counts[\"unprocessed\"]} 份资料未处理',
+        f'还有 {counts[\"unprocessed_actionable\"]} 份可处理资料未处理',
     ], '{variant}')
     append_user_todos('{slug}', [
         f'资料提取中：{counts[\"processed\"]}/{counts[\"total\"]} 份已处理',
@@ -576,8 +579,8 @@ else:
 关键发现（跨所有资料）：
 - {最重要的 3-5 条数据点}
 
-现在要不要立即更新 01-08 产出？
-[ ] 更新产出（重新生成 01-08）
+现在要不要立即更新产出？
+[ ] 更新产出（重跑决策链合成：00_primer + {c/i/a}_case + sidecar）
 [ ] 暂时不更新（等更多资料一起）
 ```
 
@@ -588,7 +591,7 @@ python3 -c "
 from prism.scripts.topic import set_stage, set_next_actions, append_user_todos
 from prism.scripts.manifest import material_count
 counts = material_count('{slug}', '{variant}')
-if counts['unprocessed'] == 0:
+if counts['unprocessed_actionable'] == 0:   # 修 F14：排除 Role α
     set_stage('{slug}', '04-synthesizing', '{variant}')
     if {user_chose_update}:
         set_next_actions('{slug}', [
@@ -600,7 +603,7 @@ if counts['unprocessed'] == 0:
     else:
         set_next_actions('{slug}', [
             '新资料已处理，等待后续再更新产出',
-            '需要时说「prism 推进 {slug}」来更新 01-08',
+            '需要时说「prism 推进 {slug}」重跑决策链合成',
         ], '{variant}')
         append_user_todos('{slug}', [
             '新资料已记录，产出暂未更新',

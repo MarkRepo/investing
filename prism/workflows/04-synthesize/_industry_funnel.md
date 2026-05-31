@@ -101,6 +101,15 @@ industry 不是终局决策——它是**漏斗**：终点不是"买/卖一只�
 
 1. 照 `_shared.md` § 调度模式：`format_findings_for_prompt` 列 findings（含 `parent_materials` 复用的父级 findings）→ 主 agent 并行 Read；`build_findings_index` 落盘 `_findings_index.md`（防 compact 地图）；读 `thesis_v0.md`（强度 v0→v1 锚）。
 2. **拉行业层财务轨迹**（喂①的财务弧线 + ②反推口径）：对行业代表性龙头/聚合调 `financial_data`（`get_financial_context` 单家 / `get_peer_comparison_data_by_tickers` 多家聚合），取多年营收/利润率/ROIC/FCF 走势。这是①财务弧线梁与②反推的一手锚；不在 findings 里手抽。
+2b. **拉龙头估值倍数**（喂②定价锚 —— 数字最硬的一环，F13 接线）：对代表龙头 ticker 调 `market_data.get_valuation_context_by_tickers([{ticker,market,name},...])` 拿 PE(TTM)/PS/PB/市值（港股经 yfinance 路由，HKD 计价；A 股 akshare，元）。这是②"当前价已 priced-in 什么"反推的一手锚，**不靠 web 现采、不在 findings 手抽**。
+   ```python
+   from prism.scripts.market_data import get_valuation_context_by_tickers
+   print(get_valuation_context_by_tickers([
+       {'ticker': '600276', 'market': 'SSE', 'name': '恒瑞'},
+       {'ticker': '01801', 'market': 'HKEX', 'name': '信达'},  # 港股可取
+   ]))
+   ```
+   > ⚠️ **硬 checkpoint（F13：拉不到要 log，不静默跳）**：函数对取不到的龙头显式标 *(取不到)*。若某龙头倍数缺，**必须在对话里 log 缺哪个 + 为何**（ticker/market 错？该标的真无行情？），再决定用研报 PE 表 fallback 或标注缺口——**不许默默让环②退化成纯定性**（这正是上轮环②脊柱塌的根因）。
 3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整，供 ④⑤⑥ 与 critic 复用。
 
 > **亲属复用 hook（已生效）**：若本 topic 有 `parent_topic`（或 `find_child_topics` 返回非空），调 `get_relative_outputs('{slug}','{variant}')` 取亲属的 primer / 最新 thesis / case·09·10 **路径**并 Read。**借来内容受 §1.3 约束**——脚本只返路径不读内容，借用永远是输入/参照：必标来源、质量按本维度自跑、冲突时本 topic 赢。

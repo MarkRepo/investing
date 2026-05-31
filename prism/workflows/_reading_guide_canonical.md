@@ -15,26 +15,21 @@ companion: 00_primer.md（领域入门）+ _glossary.md（领域术语速查，�
 
 ## 一、产出体系：每份产出在干什么
 
-prism 一个 topic 的研究输出固定为以下产出。文件名 `NN_<key>.md`：
+prism 一个 topic 的研究输出是**决策链三件套**——领域入门 + 一份成稿 case（6 个命门环）+ 一份机器消费 sidecar，外加一条追踪时间线：
 
-| # | 产出 | 一句话定位 | 何时读 |
-|---|------|-----------|--------|
-| 00 | primer | **领域入门**——给完全外行建心智模型（讲领域本身） | 第一次看这个 topic |
-| 01 | business_panorama | 商业全景：边界 / 价值链 / 玩家 / 当前阶段 | 想知道"这门生意长什么样" |
-| 02 | cycle_positioning | 周期定位：当前在哪个阶段、类比哪段历史 | 想知道"现在是不是好时机" |
-| 03 | narrative_ecology | 叙事生态：市场上几种叙事在打架、共识/分歧/盲点 | 想知道"市场在想什么" |
-| 04 | implied_expectations | 隐含预期：价格已 price-in 了什么、估值模型 | 想知道"贵不贵" |
-| 05 | historical_mirrors | 历史镜子：用类似剧本对照本剧本 | 想知道"以前发生过什么类似的" |
-| 06 | risk_blindspots | 风险与盲点：R1-Rn 风险逐条 + 盲点清单 | 想知道"会怎么死" |
-| 07 | decision_kit | 决策工具箱：thesis 强度 + K# 现状 + KILL 体系 + 买入框/仓位 | **看一份就够时看这份** |
-| 08 | living_feed | 跟踪流：接下来盯的时点 / 催化剂 / 监测信号 | 决定"接下来盯什么" |
-| 09 | industry_to_arenas | （industry 类专属）从行业切到细分战场 | industry 类研究 |
-| 10 | peer_matrix | （arena 类专属）玩家横评矩阵 | arena 类研究 |
+| 产出 | 文件 | 一句话定位 | 何时读 |
+|------|------|-----------|--------|
+| **领域入门** | `00_primer.md` | 给完全外行建心智模型（讲领域本身，不讲投资判断） | 第一次看这个 topic |
+| **成稿 case** | `c_investment_case` / `i_industry_case` / `a_arena_case`（按 type 三选一） | 决策链正文，6 个命门环串成完整论证（见下） | **核心产出，看一份就够时看这份** |
+| **sidecar** | `07_decision_kit.yaml`（company）/ `09_industry_to_arenas.yaml`（industry）/ `10_peer_matrix.yaml`（arena） | case 的机器消费面：dashboard / kill / signpost / tier / 子战场选拔直接读它 | 要结构化结论（KILL/仓位/分流）时 |
+| **追踪时间线** | `08_living_feed.md` | 接下来盯的时点 / 催化剂 / 监测信号 + 事件序列（06-daily / 99-decision 追加） | 决定"接下来盯什么" |
 
-**topic 类型决定哪几份产出有**：
-- `industry`（行业级）→ 00-08 + 09
-- `arena`（细分战场）→ 00-08 + 10
-- `company`（单家公司）→ 00-08 + 个股 buy_box（在 07）
+**成稿 case 的 6 个命门环**（按 topic.type 措辞略异，骨架一致）：
+- 环① 业务/价值链卡位 → 环② **定价锚**（当前价/倍数反推隐含预期，数字最硬的一环）→ 环③ WWHTBT（什么必须为真）→ 环④ 横比/竞争格局 → 环⑤ 证伪与历史镜鉴 → 环⑥ 决策分流 / tier（company 给个股 buy_box；industry 切子战场；arena 给玩家矩阵）
+
+辅助文件：`findings_mat-XXXXXX.md`（每份原始资料的提炼笔记）、`_synthesis_brief.md`（合成阶段内部备忘）、`_findings_index.md`（findings 轻索引）、`_glossary.md`（领域术语速查，可选）、`_prism_reading_guide.md`（本篇）。
+
+> **遗留产出（旧 topic 才有）**：决策链重构前的 topic 产 `01_business_panorama … 07_decision_kit` 八份并列维度 markdown。这套已被成稿 case 取代、不再新产；看到老 topic 仍是这八份分箱时，对应关系：01-03 业务/周期/叙事 → case 环①④；04 隐含预期 → 环②③；05 历史镜子 → 环⑤；06 风险盲点 → 环⑤；07 决策工具箱 → sidecar。`08_living_feed` 不在遗留之列——它在新流程里仍是活的追踪线。
 
 辅助文件：`findings_mat-XXXXXX.md`（每份原始资料的提炼笔记）、`_synthesis_brief.md`（合成阶段内部备忘）、`_findings_index.md`（findings 轻索引）、`_glossary.md`（领域术语速查，可选）、`_prism_reading_guide.md`（本篇）。
 
@@ -49,10 +44,10 @@ prism 一个 topic 的研究输出固定为以下产出。文件名 `NN_<key>.md
 本研究的核心赌注。每个 K# 有"看多/看空"的明确证伪条件，必须可观测、可证伪（不能是"未来不确定"这种废话）。产出里 "K1 强度 +7→+5" = "原本看多 7 分，最新资料降到 5 分"。v0（开研究前初判）vs v1（吃完资料后修正）——**变化幅度本身是信号**。
 
 ### `R1`~`Rn`：Risks（风险点）
-"可能让 thesis 破产"的风险逐条编号，集中在 `06_risk_blindspots.md`。每条必有"正方对照"，避免单边风险叙事。
+"可能让 thesis 破产"的风险逐条编号，集中在 case 环⑤（证伪与风险）+ sidecar 的 kill/risk 字段。每条必有"正方对照"，避免单边风险叙事。
 
 ### `F1`~`Fn`：Failure cases（失败案例）
-历史上"看起来一样但失败了"的案例做镜子，在 `05_historical_mirrors.md`。
+历史上"看起来一样但失败了"的案例做镜子，在 case 环⑤的历史镜鉴段。（与 PRISM_VALIDATION 报告里的 F# 编号无关，那是另一套缺陷编号。）
 
 ### `KILL-1`~`KILL-n`：Kill switches（清仓信号）
 任一触发就立刻减仓/清仓的硬信号（如"现金 runway 跌破 18 个月"/"某价格半年下行 >30%"）。是 KILL 不是 alert——触发就触发，没有"再观察"。
@@ -101,15 +96,15 @@ prism 用刻度表示对一条 thesis 的看法。两种常见表达：
 
 | 时间 | 读法 |
 |------|------|
-| **5 分钟** | 只读 07_decision_kit 第一节"一页摘要" |
-| **30 分钟** | 00_primer + 07_decision_kit + 08_living_feed |
-| **2 小时（完整）** | 00 → 01 → 02 → 03 → 04 → 05 → 06 → 07 → 09/10 → 08 |
+| **5 分钟** | 只读 case 环⑥（决策分流 / tier）+ sidecar 摘要 |
+| **30 分钟** | 00_primer + 成稿 case 全文 + 08_living_feed |
+| **2 小时（完整）** | 00_primer → case 环①→②→③→④→⑤→⑥ → sidecar → 08_living_feed |
 
 按身份：
-- **完全外行/跨领域** → 00_primer 必读 → 然后 07
-- **行业熟手** → 跳过 00，直接 03（叙事）+ 07（决策）
-- **风控视角** → 06（盲点）+ 07 第三节（KILL）+ 08（监测）
-- **估值视角** → 04（implied expectations）+ 02（cycle）
+- **完全外行/跨领域** → 00_primer 必读 → 然后 case 环⑥
+- **行业熟手** → 跳过 00，直接 case 环②（定价）+ 环⑥（决策）
+- **风控视角** → case 环⑤（证伪/风险）+ sidecar 的 KILL/signpost + 08_living_feed
+- **估值视角** → case 环②（定价锚/隐含预期）+ 环③（WWHTBT）
 
 **多 topic 联读**：若 topic 有 `parent_topic`，先读父 topic 再读子 topic（父级 K# 和 thesis 是子 topic 前提）。
 

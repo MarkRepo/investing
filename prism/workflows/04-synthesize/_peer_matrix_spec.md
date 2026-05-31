@@ -42,16 +42,19 @@ for k, d in data.items():
 "
 ```
 
-行情（当前 PE/PB）走 market_data ticker API：
+行情（当前 PE/PB/PS/市值）走 market_data ticker 级 API（**已实现，F13**）：
 
 ```bash
-python -c "
-from prism.scripts.market_data import get_quote_by_ticker  # 见下方注释
-# 该 API 不存在则跳过 live PE，用研报里的 PE 表代替
+python3 -c "
+from prism.scripts.market_data import get_valuation_context_by_tickers
+print(get_valuation_context_by_tickers([
+    {'ticker': '600276', 'market': 'SSE', 'name': '恒瑞'},
+    {'ticker': '01801', 'market': 'HKEX', 'name': '信达'},   # 港股经 yfinance 路由，HKD 计价
+]))
 "
 ```
 
-> 注：如果 `market_data.get_quote_by_ticker` 还没实现（截至当前），仍只能走 slug 模式或从研报数据 fallback。后续在批次 3 中补。
+> peer 只有 ticker（还没注册 company topic）也能拿倍数——`get_quote_by_ticker(ticker, market)` 单家 / `get_valuation_context_by_tickers([...])` 批量。底层与 get_quote 同链路（US/HKEX→yfinance、CN→akshare）；**港股盲区已闭**（HKD 计价）。取不到的会显式标 *(取不到)*，不要当成"没源"——核 ticker/market 或用研报 PE 表补，并在对话里 log。
 
 需要的指标：
 - 收入规模（亿元，最近财年） — 从 financial_data
@@ -165,9 +168,13 @@ create_topic(
     variant='{variant}',
     parent_topic='{slug}',
     ticker='{ticker}',
+    short_name='{company_short_name}',         # 简称（dashboard 显示用）
+    search_terms=['{词1}', '{词2}', '{词3}'],  # 见下 ⚠️：company question >25 字时必填
 )
 "
 ```
+
+> ⚠️ **必传 `search_terms`（否则 create_topic 直接 raise）**：`question` >25 字时 create_topic 强制要求 `search_terms`（`list[str]`，每项 ≤15 字，≥1 非空）。company stub 问题常 >25 字 → 漏传会崩。手挑 3-5 个检索词（公司名/核心产品/赛道），别整句塞。
 
 ### Step 7b：为 stub company 写入继承自父 thesis 的 thesis_v0.md
 

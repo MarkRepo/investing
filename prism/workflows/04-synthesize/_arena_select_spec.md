@@ -64,9 +64,13 @@ create_topic(
     depth='deep',
     variant='{variant}',
     parent_topic='{slug}',
+    short_name='{arena_short_name}',          # 简称（dashboard 显示用）
+    search_terms=['{词1}', '{词2}', '{词3}'],  # 见下 ⚠️：arena question 普遍 >25 字，必填
 )
 "
 ```
+
+> ⚠️ **必传 `search_terms`（否则 create_topic 直接 raise）**：当 `question` >25 字时 create_topic 强制要求 `search_terms`（避免脚本自行从长问题里乱拆关键词）。arena 问题几乎都 >25 字 → **本步漏传必崩**。规则：`list[str]`，每项 ≤15 字，至少 1 个非空项。从 arena 主题手挑 3-5 个检索词（如 `['ADC', '出海 BD', '双抗']`），别整句塞进去。
 
 ### Step 6b：为 stub 写入继承自父 thesis 的 thesis_v0.md
 

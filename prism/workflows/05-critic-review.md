@@ -2,7 +2,7 @@
 
 **触发**：用户说「评审 {slug}」或「steelman 反方」  
 **定位**：强制用反方逻辑质疑自己的研究结论  
-**前置**：产出 04（隐含预期）和 06（风险盲点）必须已生成
+**前置**：决策链成稿 case 必须已生成（company `c_investment_case` / industry `i_industry_case` / arena `a_arena_case`，含其环③隐含预期 + 环④/⑤风险与证伪）；旧 8 份分箱 topic 则需 04/06 已生成
 
 > **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
 > 仅事实校验类临时单查走 WebSearch tool。
@@ -326,7 +326,7 @@ for k, reason in stale:
 
 主 agent 在对话里报告：
 > 我要重写以下 N 份产出（critic 标 stale）：
-> - 04_implied_expectations (critic-stale)
+> - i_industry_case (critic-stale)   ← 决策链成稿（company `c_investment_case` / arena `a_arena_case`）；旧分箱 topic 才是 04_implied_expectations 等
 > - ...
 >
 > 输入：critic-review.md 反方论据 + 原 findings + 现有 thesis

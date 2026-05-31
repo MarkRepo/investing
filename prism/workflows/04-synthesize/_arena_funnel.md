@@ -100,7 +100,9 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 ### Step 1：加载 findings + thesis_v0 + peer 财务 + **亲属产出（图谱层 hook）**
 
 1. 照 `_shared.md` § 调度模式：`format_findings_for_prompt` 列 findings（含 `parent_materials` 复用的父级 findings）→ 主 agent 并行 Read；`build_findings_index` 落盘 `_findings_index.md`；读 `thesis_v0.md`。
-2. **拉候选公司 peer 财务**（喂①卡位 + ②估值锚 + ④横比）：照 `_peer_matrix_spec.md` Step 3，对 findings 里有 ticker 的候选公司调 `financial_data.get_peer_comparison_data_by_tickers`（A股 SSE/SZSE/BSE、美股 NASDAQ/NYSE、港股 HKEX），取收入/毛利率/3年ROIC/资产负债率；非上市公司训练知识估算 + 标注。市价/PE 走 `market_data`。这是④横比的一手锚；不在 findings 里手抽。
+2. **拉候选公司 peer 财务**（喂①卡位 + ④横比）：照 `_peer_matrix_spec.md` Step 3，对 findings 里有 ticker 的候选公司调 `financial_data.get_peer_comparison_data_by_tickers`（A股 SSE/SZSE/BSE、美股 NASDAQ/NYSE、港股 HKEX），取收入/毛利率/3年ROIC/资产负债率；非上市公司训练知识估算 + 标注。这是④横比的一手锚；不在 findings 里手抽。
+2b. **拉候选公司估值倍数**（喂②估值锚 + ④横比的 PE 列，F13 接线）：对候选 ticker 调 `market_data.get_valuation_context_by_tickers([{ticker,market,name},...])` 拿 PE(TTM)/PS/PB/市值（港股经 yfinance，HKD；A 股 akshare，元）。
+   > ⚠️ **硬 checkpoint（F13：拉不到要 log，不静默跳）**：取不到的会标 *(取不到)*——必须 log 缺哪个 + 为何，再 fallback 研报 PE 表或标缺口，不许默默让环②/④的估值列空着。
 3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整 / **K# 校准（哪些公司被 K# 翻盘/强支持）**，供 ④⑥ 与 critic 复用。
 
 > **亲属复用 hook（已生效）**：若本 topic 有 `parent_topic`（或 `find_child_topics` 返回非空），调 `get_relative_outputs('{slug}','{variant}')` 取亲属**成稿产出路径**并 Read。**借来内容受 §1.3 约束**——脚本只返路径不读内容，借用永远是输入/参照：必标来源、质量按本维度自跑、冲突时本 topic 赢。

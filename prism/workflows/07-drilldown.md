@@ -51,7 +51,7 @@ for m in data['materials']:
 使用训练知识 + 已有 findings，对问题进行深度分析：
 
 - 结构：问题分解 → 每个子问题的分析 → 综合结论
-- 要求：比产出 01-08 更深、更具体
+- 要求：比 case 各环（环①-⑥）更深、更具体
 - 字数：不限，以回答清楚问题为准
 
 ---
@@ -139,7 +139,9 @@ drilldown 跑完后，主 agent 自评本次结论与现有 thesis 的关系，�
 ```python
 from prism.scripts.topic import set_output_status
 # 例：drilldown 发现 K3 论证依赖的产能数据被推翻
-for output_key in ['04_implied_expectations', '06_risk_blindspots']:  # 主 agent 按受影响范围列
+# 决策链成稿 case 整份标 stale（company c_investment_case / industry i_industry_case / arena a_arena_case）
+stale_keys = ['i_industry_case']  # 主 agent 按 topic.type 与受影响范围列；旧分箱 topic 才用 ['04_implied_expectations','06_risk_blindspots']
+for output_key in stale_keys:
     set_output_status('{slug}', output_key, 'stale', '{variant}')
 print(f'drilldown 动摇 thesis：{len(stale_keys)} 份 output 标 stale，下次 04 会走 critic-stale 重写')
 ```

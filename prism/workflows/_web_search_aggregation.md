@@ -44,13 +44,13 @@ aggregated_from:                    # 强制必填 — 列出所有真 mat_id
 
 ## 引用约定
 
-写大产出（如 `01_business_panorama.md`）时，`set_output_referenced_mats` 传入 **虚拟 ID**：
+写大产出（决策链成稿 case，如 `i_industry_case`）时，`set_output_referenced_mats` 传入 **虚拟 ID**：
 
 ```python
 from prism.scripts.outputs import set_output_referenced_mats
 set_output_referenced_mats(
     slug='...', variant='...',
-    output_key='01_business_panorama',
+    output_key='i_industry_case',  # company c_investment_case / arena a_arena_case
     mat_ids=['ws-aggregate-K1', 'ws-aggregate-K2', ..., 'mat-xxxxxx'],
 )
 ```
@@ -62,7 +62,7 @@ set_output_referenced_mats(
 
 1. **不要丢 mat 引用**：聚合内每个事实 bullet 末尾保留 `[mat-xxxxxx]` 标记，便于回溯
 2. **不要伪聚合**：把 5 个 finding 拼成一份 ≠ 聚合；聚合是 30+ 同 K# finding 的紧致重述
-3. **K1→K3 etc 交叉**：聚合末尾用专门段落标"对 K3 的影响"，便于 04 写 06_risk_blindspots
+3. **K1→K3 etc 交叉**：聚合末尾用专门段落标"对 K3 的影响"，便于 04 写 case 环⑤证伪/风险
 4. **数据时间窗**：聚合 frontmatter 加 `data_window: 2024-01..2026-05`，05-critic 据此判 stale
 5. **聚合后老 finding 不删**：保留 `findings_mat-xxxxxx.md` 单体文件作为底稿，仅在大产出 prompt 里读聚合
 

@@ -278,8 +278,8 @@ slug = '{slug}'
 variant = '{variant}'
 counts = material_count(slug, variant)
 
-# stage 升级条件：有未处理资料 → 03-extracting
-set_stage(slug, '03-extracting' if counts['unprocessed'] > 0 else '02-gather-materials', variant)
+# stage 升级条件：有可处理未处理资料 → 03-extracting（修 F14：排除 Role α prescan web 料）
+set_stage(slug, '03-extracting' if counts['unprocessed_actionable'] > 0 else '02-gather-materials', variant)
 
 # next_actions 是给 LLM 看的系统建议（不污染 user_todos）
 set_next_actions(slug, [

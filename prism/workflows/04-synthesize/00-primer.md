@@ -195,14 +195,25 @@ companion: _prism_reading_guide.md
 
 状态注册（同其他产出）：
 
+> ⚠️ **顺序硬要求（F17 机械门禁）**：`depth: deep` 的 primer 注册前**必须先调 `set_output_critic_passed`**（Step 3 critic 收敛的机械凭证），且正文须含**争议节 + 自检清单节**、字数过 deep 地板。否则 `set_output_status('00_primer','fresh')` 会被门禁**自动降级为 `draft`** 并在 `outputs_state.00_primer.primer_gate.warnings` 记原因——dashboard 显示 draft 而非 fresh。这是把"critic 不可省 + 不许 outline 假冒 deep"从文档约定落成跑不过就降级的机械闸门。depth=shallow 不设字数地板（诚实标浅）。
+
 ```bash
 python3 -c "
-from prism.scripts.topic import set_output_referenced_mats, set_output_status, read_topic
+from prism.scripts.topic import (set_output_referenced_mats, set_output_status,
+                                  set_output_critic_passed, primer_quality_gate, read_topic)
+# 1. critic 已收敛 → 先置机械凭证（deep 必需；shallow 也建议置）
+set_output_critic_passed('{slug}', '{variant}', '00_primer')
+# 2. 注册 fresh（depth=deep 但门禁不过会被自动降 draft）
 t = read_topic('{slug}', '{variant}')
 cur = t['outputs_state'].get('00_primer', {}).get('version', 0)
 set_output_status('{slug}', '00_primer', 'fresh', '{variant}', version=cur+1)
 set_output_referenced_mats('{slug}', '00_primer', {mat_ids_list}, '{variant}')
-print('00_primer 状态已注册')
+# 3. 核门禁结果（被降级则按 warnings 补争议节/自检节/补长再重注册）
+g = primer_quality_gate('{slug}', '{variant}')
+final = read_topic('{slug}', '{variant}')['outputs_state']['00_primer']['status']
+print(f'00_primer 注册：status={final}（depth={g[\"depth\"]}，gate ok={g[\"ok\"]}）')
+if final == 'draft':
+    print('⚠️ 被门禁降级，原因：', g['warnings'])
 "
 ```
 
