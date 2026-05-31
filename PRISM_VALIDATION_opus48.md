@@ -141,7 +141,7 @@
 - **F17**：把 primer critic"不可省"落成机械 flag + set_output_status 对 00_primer 加 depth/结构软门禁（与 F1/F9/F15 同属"无 gate 兜底"，可一并设计）。
 
 **P2（低风险优化）**
-- F3 模板 query 分 type（pharma 去"产能变化"）；F4 白名单补 CN 医药权威源；F5 prescan review-digest 子命令；F6/F8 python3 与 ticker 前缀统一。
+- F3 模板 query 分 type（pharma 去"产能变化"）；F4 白名单补 CN 医权威源；F5 prescan review-digest 子命令；F6/F8 python3 与 ticker 前缀统一。
 
 ### 🔴 F16 — _arena_select_spec.md Step 6 arena stub 创建漏 search_terms，create_topic 直接 raise
 - **现象**：Step 6 模板 `create_topic(topic_type='arena', parent_topic=...)` 不含 `search_terms`；但 create_topic（H3 v2）对 question>25 字且无 search_terms 直接 raise。深挖 arena 问题普遍 >25 字 → funnel 说"逐字执行"Step 6 必崩。
