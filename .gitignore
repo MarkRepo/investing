@@ -47,3 +47,12 @@ prism/logs/
 
 .gitnexus
 state/
+# whitelist overlay state IS version-controlled (learned asset — un-ignore only the JSON artifacts)
+!prism/state/
+!prism/state/whitelist/
+!prism/state/whitelist/overlays/
+!prism/state/whitelist/overlays/*.json
+!prism/state/whitelist/_promotion_log.json
+# re-ignore atomic-write temp files that may be left by SIGKILL
+prism/state/whitelist/*.tmp
+prism/state/whitelist/overlays/*.tmp
