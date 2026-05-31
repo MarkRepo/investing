@@ -155,6 +155,21 @@ def _build_arg_parser() -> argparse.ArgumentParser:
     pp.add_argument("--addresses", default="")
 
     sub.add_parser("status", help="show key pool status across providers")
+
+    rd = sub.add_parser(
+        "review-digest",
+        help="紧凑 index 投影一个 _websearch_raw sidecar（判 tier 不爆上下文）",
+    )
+    rd.add_argument("--raw-path", default=None,
+                    help="search --output=sidecar 写回的 raw_path（相对/绝对皆可）")
+    rd.add_argument("--slug", default=None,
+                    help="兜底：无 --raw-path 时取 topics/{slug}/inbox/_websearch_raw 最新 json")
+    rd.add_argument("--variant", default=None,
+                    help="仅用于 family-aware 白名单判定（不参与路径解析）")
+    rd.add_argument("--show", default=None,
+                    help="逗号分隔 hit 下标，展开其 snippet 整段（默认无则只打 index）")
+    rd.add_argument("--full", action="store_true",
+                    help="与 --show 连用：额外展开该 hit 的 raw_content 整段")
     return p
 
 
@@ -279,6 +294,131 @@ def _cmd_postprocess(args) -> int:
     return EXIT_OK
 
 
+def _cmd_review_digest(args) -> int:
+    """紧凑、无损、领域中立地投影一个 _websearch_raw sidecar，供主 agent 判 tier。
+
+    判 tier 是 LLM 的活（留在对话里）；本命令只做机械切片 + 惰性展开，绝不替主
+    agent 判 tier、绝不按内容截选（避免把 F5 修成新 F3）：
+      - 默认 = index：每条 hit 一行
+        ``[idx] WL=Y/N host tld_class | title | snip=NNN raw=NNN/none [flags]``
+        —— 零正文，不灌 snippet/raw_content 进上下文。flags 透传确定性特征
+        （low_signal/pdf/announce/sub:*）+ provider 已设的 domain_tier + published_at。
+      - ``--show IDX[,IDX]``：展开指定 hit 的 snippet 整段（引擎给定，原样不截）。
+      - ``--show --full``：额外展开该 hit 的 raw_content 整段；缺失则提示走 WebFetch。
+
+    特征复用 ``web_prescan.extract_url_features``（确定性，从不返回 tier/confidence）。
+    """
+    from pathlib import Path
+    repo_root = Path(__file__).resolve().parents[2]
+
+    # 1. 解析 raw json 路径：--raw-path 优先；否则 --slug 取 _websearch_raw 最新
+    raw_path: Path | None = None
+    if args.raw_path:
+        p = Path(args.raw_path)
+        raw_path = p if p.is_absolute() else (repo_root / p)
+    elif args.slug:
+        raw_dir = (repo_root / "prism" / "topics" / args.slug
+                   / "inbox" / "_websearch_raw")
+        candidates = sorted(raw_dir.glob("*.json")) if raw_dir.is_dir() else []
+        if candidates:
+            raw_path = candidates[-1]  # 名字 {ts}_{qhash}，ts ISO 可排序 → 末位最新
+    if raw_path is None or not raw_path.is_file():
+        sys.stderr.write(json.dumps({
+            "status": "config_error",
+            "reason": f"raw json 不存在（--raw-path / --slug 二选一）: "
+                      f"{args.raw_path or args.slug}",
+        }, ensure_ascii=False) + "\n")
+        return EXIT_CONFIG
+
+    payload = json.loads(raw_path.read_text(encoding="utf-8"))
+    hits = payload.get("hits") or []
+    slug = payload.get("slug")
+    variant = payload.get("variant")
+
+    # 2. --show：惰性展开指定记录（整段，不截选）
+    if args.show is not None:
+        try:
+            idxs = [int(x) for x in args.show.split(",") if x.strip() != ""]
+        except ValueError:
+            sys.stderr.write(json.dumps({
+                "status": "config_error",
+                "reason": f"--show 需逗号分隔整数: {args.show!r}",
+            }, ensure_ascii=False) + "\n")
+            return EXIT_CONFIG
+        out: list[str] = []
+        for idx in idxs:
+            if idx < 0 or idx >= len(hits):
+                sys.stderr.write(json.dumps({
+                    "status": "config_error",
+                    "reason": f"idx {idx} 越界（n_hits={len(hits)}）",
+                }, ensure_ascii=False) + "\n")
+                return EXIT_CONFIG
+            h = hits[idx]
+            out.append(f"===== [{idx}] {(h.get('title') or '').strip()} =====")
+            out.append(f"URL: {h.get('url', '')}")
+            if args.full:
+                raw = h.get("raw_content")
+                if raw:
+                    out.append("\n--- raw_content (整段) ---")
+                    out.append(raw)
+                else:
+                    out.append(
+                        "\n[raw_content 缺失（搜索时未 --need-extract）→ "
+                        "用 WebFetch 抓该 url 全文]"
+                    )
+            else:
+                out.append("\n--- snippet (整段) ---")
+                out.append(h.get("snippet") or "")
+            out.append("")
+        sys.stdout.write("\n".join(out) + "\n")
+        return EXIT_OK
+
+    # 3. 默认 = index 投影（零正文）
+    from prism.scripts.web_prescan import extract_url_features
+    urls = [h.get("url", "") for h in hits]
+    feats = extract_url_features(urls, slug, variant)
+
+    rp_disp = (raw_path.relative_to(repo_root)
+               if raw_path.is_relative_to(repo_root) else raw_path)
+    lines = [
+        f"raw_path: {rp_disp}",
+        f"query: {payload.get('query')!r}  intent: {payload.get('intent')}  "
+        f"addresses: {payload.get('addresses')}  triggered_by: {payload.get('triggered_by')}",
+        f"n_hits: {len(hits)}  （--show IDX 展开 snippet；--show IDX --full 展开 raw_content）",
+        "",
+    ]
+    for idx, h in enumerate(hits):
+        url = h.get("url", "")
+        f = feats.get(url, {})
+        wl = "Y" if f.get("in_whitelist") else "N"
+        host = f.get("host") or "?"
+        tld = f.get("tld_class") or "?"
+        snip_len = len(h.get("snippet") or "")
+        raw = h.get("raw_content")
+        raw_repr = str(len(raw)) if raw else "none"
+        title = (h.get("title") or "").replace("\n", " ").strip()
+        flags: list[str] = []
+        if f.get("known_low_signal_host"):
+            flags.append("low_signal")
+        if f.get("path_is_pdf"):
+            flags.append("pdf")
+        if f.get("path_announce_tokens"):
+            flags.append("announce")
+        if f.get("subdomain_tokens"):
+            flags.append("sub:" + "/".join(f["subdomain_tokens"]))
+        if h.get("domain_tier"):
+            flags.append(f"tier={h['domain_tier']}")
+        if h.get("published_at"):
+            flags.append(f"pub={h['published_at']}")
+        flag_str = ("  [" + " ".join(flags) + "]") if flags else ""
+        lines.append(
+            f"[{idx}] WL={wl} {host} {tld} | {title} | "
+            f"snip={snip_len} raw={raw_repr}{flag_str}"
+        )
+    sys.stdout.write("\n".join(lines) + "\n")
+    return EXIT_OK
+
+
 def _cmd_status() -> int:
     providers = _default_providers()
     if not providers:
@@ -306,6 +446,8 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_search(args)
     if args.cmd == "postprocess":
         return _cmd_postprocess(args)
+    if args.cmd == "review-digest":
+        return _cmd_review_digest(args)
     if args.cmd == "status":
         return _cmd_status()
     return EXIT_CONFIG

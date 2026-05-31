@@ -123,14 +123,33 @@ h = check_prescan_health('{slug}', '{variant}', expected_queries=N, triggered_by
 >
 > 已知行业垂直/海外医药/券商研报源完整列表 → `python3 -c "from prism.scripts.web_prescan import WHITELIST_DOMAINS; print('\n'.join(sorted(WHITELIST_DOMAINS)))"`（不要把列表抄进文档/memory，避免 token 膨胀）
 
+### 判 tier 的操作路径（digest 优先 — 不再 Read 整个 raw json）
+
+`--output=sidecar` 把整批 hit（含可能很长的 snippet / `raw_content` 全文）写进 `_websearch_raw/{ts}_{qhash}.json`。**禁止直接 `Read` 这个 json 判 tier**——会把每条正文全灌进上下文（实测一轮 6-query prescan ≈70K+ token 纯为判 tier）。改走惰性升级阶梯：
+
+1. **看 index**（零正文）：
+   ```bash
+   python3 -m prism.scripts.web_search review-digest --raw-path {raw_path}
+   # 或省路径取该 topic 最新一次：--slug {slug}
+   ```
+   每条一行 `[idx] WL=Y/N host tld_class | title | snip=NNN raw=NNN/none [flags]`，flags 透传确定性特征（low_signal/pdf/announce/sub:ir…）+ provider 已设 domain_tier + published_at。**绝大多数 hit 在这一层就能判**：`WL=Y`→whitelist；`low_signal`→other 跳过；`sub:ir/investor` + `pdf` + `announce`→公司公告/IR，多半 `llm-judged-official`；host 是你训练知识里的行业垂直/券商/海外医药源→`llm-judged-official`。
+2. **残差才展开 snippet**（整段，引擎给定）：`review-digest --raw-path {raw_path} --show {idx}`（可 `--show 0,3,4`）。
+3. **snippet 仍判不出且该 hit 值得入库（够 high）才取全文**：`--show {idx} --full` 打 `raw_content` 整段；raw json 无 `raw_content`（未 `--need-extract`）才 `WebFetch` 抓一次。
+
+> 每跳都是在「两个完整给定字段间选哪个加载」，脚本从不替你截选片段或判 tier。碰 snippet/全文的是残差的残差。
+
 对每条 hit，主 agent 在对话里给出：
 
 | 字段 | 如何判断 |
 |---|---|
-| `domain_tier` | 命中 `WHITELIST_DOMAINS` → `whitelist`；非白名单但内容可信（如该公司官方 IR 页/微信公众号官方账号/已知财经平台） → `llm-judged-official`；其余 → `other` |
+| `domain_tier` | 命中 `WHITELIST_DOMAINS`（index `WL=Y`） → `whitelist`；非白名单但内容可信（该公司官方 IR 页/微信公众号官方账号/已知财经平台/行业垂直媒体） → `llm-judged-official`；其余 → `other` |
 | `confidence` | 不传 → 用 `confidence_for_tier(domain_tier)` 默认（whitelist=0.9 / llm-judged=0.7 / other=0.4）。若 snippet 内容明显高度对题，可上调；明显跑题可下调 |
 | `addresses` | 该 hit 攻打的 K# / Q# 列表（与该 query 所属槽的 `slot["addresses"]` 一致或更精细）。**事件锚规则**：若 hit 内容明确绑定某个时间/事件（财报季、监管事件、产品发布），用 `K#@event-slug` 格式（如 `K1@2026Q2-earnings`、`K6@CSRC-2026-05-22`、`K7@Airstar-launch`），事件 slug 仅含 `[A-Za-z0-9_-]`。**裸 `K#`** 表示该 K# 的通用资料（财务结构、商业模式、长期数据），不绑事件。锚的作用：阻止 Q1 材料误覆盖 Q2 事件 todo——参 `memory/feedback_addresses_granularity.md` |
-| `full_text` 抓取 | `band == 'high'` 时主 agent 必须额外调 `WebFetch` 抓全文传入；mid 可选；low 跳过 |
+| `full_text` | **keep 档需要全文时**优先用 raw json 已有的 `raw_content`（`--show {idx} --full` 即取到），缺失才 `WebFetch`。判 tier 时已为某条拉过的全文按下方 §复用 透传 `register_web_search_batch(full_texts={url: 全文})`，**不重拉**；low/drop 档不抓全文 |
+
+**§ full_text 复用（修重复抓取）**：为判 tier 而展开/抓取的 `raw_content` 或 WebFetch 全文，对最终 keep（high/mid）的 hit 保留，整批透传进 `register_web_search_batch(full_texts={url: 全文})` → 落 inbox md `## Full text` → 03-extract 直接复用，全程**一次抓取**。
+
+**§ drop 即沉没（硬纪律）**：tier 判 drop 的 hit——① 不进 register（或仅作 `dropped_hits` 不救回）；② **即使你已为判 tier 读了它的 `raw_content` / WebFetch 了全文，也不得据此写任何 finding**。已付的抓取成本不构成入库理由；drop 就是内容丢弃。
 
 ---
 

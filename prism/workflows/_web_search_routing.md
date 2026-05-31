@@ -49,7 +49,7 @@ python -m prism.scripts.web_search search "<query>" \
 
 # search → 落 raw sidecar 文件（**不 register**——主 agent 后续手动判 tier + 救回）
 # 写到 prism/topics/{slug}/inbox/_websearch_raw/{ts}_{qhash}.json
-# 主 agent 读 raw 文件 → 判 tier → 调 register_web_search_batch（H2 救回闭环）
+# 主 agent 用 review-digest 看 index 判 tier（勿 Read 整 json）→ register_web_search_batch（见 _web_prescan_shared Step C）
 python -m prism.scripts.web_search search "<query>" \
     --intent <intent> \
     --output sidecar \
@@ -70,7 +70,7 @@ python -m prism.scripts.web_search status
 
 > **domain_tier 由谁判**：adapter 只对黑名单源（twitter/youtube/reddit 等 `LOW_SIGNAL_HOSTS`）打 `'other'` tier。其余源不预判——`register_web_search_batch` 默认走"主 agent LLM 判 tier + H2 救回闭环"流程（参 `_web_prescan_shared.md` Step C）。脚本不维护行业权威源白名单。
 >
-> **sidecar 模式 ≠ 自动入 manifest**（2026-05-28 修法）：`--output sidecar` 只写 raw hit JSON 到 `prism/topics/{slug}/inbox/_websearch_raw/{ts}_{qhash}.json`，**不**调 `register_web_search_batch`。主 agent 必须读 raw 文件、判 tier、再手动调 register。之前 sidecar 自动 register 会让 non-WHITELIST hit 全 'other' → low band drop，实质架空 H2 救回。
+> **sidecar 模式 ≠ 自动入 manifest**（2026-05-28 修法）：`--output sidecar` 只写 raw hit JSON 到 `prism/topics/{slug}/inbox/_websearch_raw/{ts}_{qhash}.json`，**不**调 `register_web_search_batch`。主 agent 用 `review-digest` 投影判 tier（勿 Read 整 json，见 `_web_prescan_shared.md` Step C）、再手动调 register。之前 sidecar 自动 register 会让 non-WHITELIST hit 全 'other' → low band drop，实质架空 H2 救回。
 
 ## 退出码契约
 

@@ -150,7 +150,7 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 >     --addresses scope
 > ```
 >
-> **sidecar 模式只写 raw 不入库**（2026-05-28 修法）：上面命令会把 raw hit 写到 `prism/topics/{slug}/inbox/_websearch_raw/{ts}_{qhash}.json`，**不**调 register。主 agent 必须读 raw 文件 → 判 tier → 调 `register_web_search_batch` 入库（H2 救回闭环）。
+> **sidecar 模式只写 raw 不入库**（2026-05-28 修法）：上面命令会把 raw hit 写到 `prism/topics/{slug}/inbox/_websearch_raw/{ts}_{qhash}.json`，**不**调 register。主 agent 用 `review-digest` 看 index 判 tier（勿 Read 整 json，见 `_web_prescan_shared.md` Step C）→ 调 `register_web_search_batch` 入库。
 > 退出码 40（all_exhausted）→ WebSearch tool fallback，再用 `postprocess` 子命令兜回 sidecar（postprocess 自动调 register），详见 [[_web_search_routing]] §双向 Fallback。
 >
 > domain_tier 由主 agent 在 H2 救回流程里判（参 `_web_prescan_shared.md` Step C），adapter 不预判权威源。
