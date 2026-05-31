@@ -105,6 +105,7 @@ h = check_prescan_health('{slug}', '{variant}', expected_queries=N, triggered_by
 > 1. **每次 register 后看 `drop_ratio`**：>0 就扫返回的 `dropped_hits` 列表；>=0.5 stderr 会自动附 url 提示
 > 2. **看不准就调脚本拿事实**：`extract_url_features(urls)` 返回每个 url 的客观特征（in_whitelist / host / subdomain_tokens / tld_class / path_is_pdf / path_announce_tokens / known_low_signal_host），LLM 据此自己判断是否升 `llm-judged-official`
 > 3. **救回模式**：救回列表带 `domain_tier='llm-judged-official'` 重新调一次 `register_web_search_batch(query=...同上..., hits=[救回的], ...)`，dedup 会自动避免重复
+> 4. **域族收敛（F4）**：救回时带 `domain_tier='llm-judged-official'` 的 host，会被脚本按域族（`parent_topic||slug`）累计；同族跨 ≥2 个 topic 判为权威即自动晋升进 `prism/state/whitelist/overlays/{family}.json`，下次同族 topic 直接命中、不必再救。**这是脚本侧自动行为，主 agent 无需也不要 Read overlay/log 文件**（它们是 oracle 数据，非上下文材料）。
 >
 > 已知行业垂直/海外医药/券商研报源完整列表 → `python3 -c "from prism.scripts.web_prescan import WHITELIST_DOMAINS; print('\n'.join(sorted(WHITELIST_DOMAINS)))"`（不要把列表抄进文档/memory，避免 token 膨胀）
 
