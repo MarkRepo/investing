@@ -1,26 +1,26 @@
 # 投资仪表盘
 
-> 生成：2026-05-30　　公司：16 个　　行业：7 个　　竞技场：17 个
+> 生成：2026-05-31　　公司：16 个　　行业：7 个　　竞技场：19 个
 
 ## 公司层：决策清单
 
 | 公司 | 当前价 | 当前区间 | 距 Buy 区间 | 仓位上限 | Kill | 近期路标 | 数据新鲜度 |
 |------|--------|---------|-----------|---------|------|---------|----------|
 | [拼多多 (PDD Holdings, NASDAQ PDD)](/prism/global-pdd-holdings/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)](/prism/cn-rongchang-bio-688331/claude-opus-4-7) (SSE_688331) | 116.03 | 🔴 高于观望区 | +79% | 2% / 5% | ✅ | 3 个 | 🟢 3d |
-| [Robinhood Markets (HOOD)](/prism/us-robinhood/claude-opus-4-7) (NASDAQ_HOOD) | 73.64 | 🟡 观望 | +34% | 3% / 8% | ✅ | 1 个 | 🟢 4d |
+| [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)](/prism/cn-rongchang-bio-688331/claude-opus-4-7) (SSE_688331) | 116.03 | 🔴 高于观望区 | +79% | 2% / 5% | ✅ | 3 个 | 🟢 4d |
+| [Robinhood Markets (HOOD)](/prism/us-robinhood/claude-opus-4-7) (NASDAQ_HOOD) | 73.64 | 🟡 观望 | +34% | 3% / 8% | ✅ | 1 个 | 🟢 5d |
 | [Circle Internet Group (USDC)](/prism/us-circle/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [富途控股 FUTU](/prism/global-futu/claude-opus-4-7) (US_FUTU) | 104.07 | 🟡 观望 | +30% | 2% / 8% | ✅ | 3 个 | 🟢 4d |
+| [富途控股 FUTU](/prism/global-futu/claude-opus-4-7) (US_FUTU) | 104.07 | 🟡 观望 | +30% | 2% / 8% | ✅ | 3 个 | 🟢 5d |
 | [Constellation Energy](/prism/global-constellation-energy/claude-opus-4-7) (NASDAQ_CEG) | 294.07 | 🔵 可建仓 | +13% | 5% / 8% | ✅ | 1 个 | 🟢 5d |
 | [当升科技](/prism/cn-dangsheng-tech-300073/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [赣锋锂业](/prism/cn-ganfeng-lithium-002460/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [联赢激光](/prism/cn-lianying-laser-688518/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [利元亨](/prism/cn-yuanli-heng-688499/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [先导智能](/prism/cn-leadex-300450/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [GE Vernova](/prism/global-ge-vernova/deepseek-v4-pro) (NYSE_GEV) | 1038.74 | 🔴 高于观望区 | +162% | 7.5% / 17.5% | ✅ | 3 个 | 🟢 12d |
+| [GE Vernova](/prism/global-ge-vernova/deepseek-v4-pro) (NYSE_GEV) | 1038.74 | 🔴 高于观望区 | +162% | 7.5% / 17.5% | ✅ | 3 个 | 🟢 13d |
 | [上海瀚讯](/prism/cn-shanghai-hanxun/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [国博电子](/prism/cn-guobo-electronics/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [铖昌科技](/prism/cn-chengchang-tech/deepseek-v4-pro) (SZSE_001270) | 145.80 | 🟡 观望 | +46% | 1.5% / 4.0% | ✅ | 2 个 | 🟢 12d |
+| [铖昌科技](/prism/cn-chengchang-tech/deepseek-v4-pro) (SZSE_001270) | 145.80 | 🟡 观望 | +46% | 1.5% / 4.0% | ✅ | 2 个 | 🟢 13d |
 | [兴业银锡](/prism/cn-xingye-yinxi/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 
 ## 公司详情
@@ -236,9 +236,24 @@
 
 ## 行业层：竞技场选择
 
-### 中国创新药行业 [⚪ ?d]
+### 中国创新药行业 [🟢 0d]
 
-*暂无 09 sidecar，请运行 workflow 09。*
+**深度研究竞技场（Deep）**
+
+| 竞技场 | 综合评分 | 已建 topic | 核心逻辑 |
+|--------|---------|-----------|---------|
+| ADC（抗体偶联药物） | 4.0 | [✓](/prism/cn-adc/deepseek-v4-pro) | 中国工程化/速度全球领先、BD最热品类，但估值已不便宜，需深挖甄别龙头 |
+| 双抗 PD-1/VEGF | 3.6 | [✓](/prism/cn-pd1-vegf-bispecific/deepseek-v4-pro) | 依沃西head-to-head击败K药为标杆，但辉瑞自研入局竞争升温，深挖看壁垒可持续性 |
+
+**观察竞技场（Watch）**
+
+| 竞技场 | 综合评分 | 升级触发器 |
+|--------|---------|----------|
+| GLP-1 / 减重 | 3.0 | 国产GLP-1出现明确差异化(口服/月制剂)读出; 估值回调至历史中位以下 |
+| 自免（自身免疫） | 3.3 | telitacicept海外关键III期阳性 |
+| 小核酸（siRNA/ASO） | 3.4 | 头部小核酸再现大额BD; 慢病适应症III期启动 |
+
+**淘汰（Eliminated）**：PD-1 单抗（me-too 红海）
 
 ---
 
@@ -263,7 +278,7 @@
 
 ---
 
-### 全球量子计算与量子模拟产业 [🟢 7d]
+### 全球量子计算与量子模拟产业 [🟢 8d]
 
 **深度研究竞技场（Deep）**
 
@@ -329,7 +344,7 @@
 
 ---
 
-### 人形机器人行业 [🟢 12d]
+### 人形机器人行业 [🟢 13d]
 
 **深度研究竞技场（Deep）**
 
@@ -350,7 +365,7 @@
 
 ---
 
-### AI算力基础设施行业 [🟢 12d]
+### AI算力基础设施行业 [🟢 13d]
 
 **深度研究竞技场（Deep）**
 
@@ -375,6 +390,18 @@
 
 ## 竞技场层：公司排名
 
+### 中国PD-1/VEGF双抗 arena [⚪ ?d]
+
+*暂无 10 sidecar，请运行 workflow 10。*
+
+---
+
+### 中国ADC（抗体偶联药物）arena [⚪ ?d]
+
+*暂无 10 sidecar，请运行 workflow 10。*
+
+---
+
 ### 跨州跨国 HVDC 输电（Prysmian/国电南瑞/特变电工） [⚪ ?d]
 
 *暂无 10 sidecar，请运行 workflow 10。*
@@ -393,7 +420,7 @@
 
 ---
 
-### GLP-1 减肥药 [🟢 4d]
+### GLP-1 减肥药 [🟢 5d]
 
 *暂无 10 sidecar，请运行 workflow 10。*
 
@@ -411,7 +438,7 @@
 
 ---
 
-### In vivo CRISPR/base editing 罕见病 (HAE/AATD/HSD) [🟢 7d]
+### In vivo CRISPR/base editing 罕见病 (HAE/AATD/HSD) [🟢 8d]
 
 **入围（Shortlist）**
 
@@ -436,7 +463,7 @@
 
 ---
 
-### 全球固态电解质+锂金属上游 [🟢 8d]
+### 全球固态电解质+锂金属上游 [🟢 9d]
 
 **入围（Shortlist）**
 
@@ -486,7 +513,7 @@
 
 ---
 
-### 行星滚柱丝杠/线性执行器 [🟢 12d]
+### 行星滚柱丝杠/线性执行器 [🟢 13d]
 
 **入围（Shortlist）**
 
@@ -513,7 +540,7 @@
 
 ---
 
-### AI 数据中心能源基础设施 [🟢 12d]
+### AI 数据中心能源基础设施 [🟢 13d]
 
 **入围（Shortlist）**
 
@@ -533,7 +560,7 @@
 
 ---
 
-### 先进封装 CoWoS/SoIC [🟢 12d]
+### 先进封装 CoWoS/SoIC [🟢 13d]
 
 **入围（Shortlist）**
 
@@ -558,7 +585,7 @@
 
 ---
 
-### 卫星通信载荷 [🟢 12d]
+### 卫星通信载荷 [🟢 13d]
 
 **入围（Shortlist）**
 
@@ -624,6 +651,11 @@
 | `pjm-capacity` | Constellation Energy | 1 |
 | `satellite-comm` | 铖昌科技 | 1 |
 | `china-smallcap` | 铖昌科技 | 1 |
+| `china-innovative-drug` | 中国创新药行业 | 1 |
+| `biopharma` | 中国创新药行业 | 1 |
+| `adc` | 中国创新药行业 | 1 |
+| `bispecific` | 中国创新药行业 | 1 |
+| `glp1` | 中国创新药行业 | 1 |
 | `low-orbit-satellite` | 中国商业航天 | 1 |
 | `reusable-rocket` | 中国商业航天 | 1 |
 | `ipo-rush` | 中国商业航天 | 1 |
