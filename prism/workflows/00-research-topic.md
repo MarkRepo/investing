@@ -142,7 +142,7 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 > **Web 搜索路径**：本步走 **adapter**（详见 [[_web_search_routing]]）。
 >
 > ```bash
-> python -m prism.scripts.web_search search "<query>" \
+> python3 -m prism.scripts.web_search search "<query>" \
 >     --intent news --days 90 \
 >     --max-results 5 --output sidecar \
 >     --slug <slug> --variant <variant> \

@@ -335,7 +335,7 @@ def _route(market_ticker: str) -> str:
     """Identify market from ticker string. Returns one of: us / cn / kr / jp_tdnet / jp_edinet / hk / uk."""
     if market_ticker.startswith(("SSE_", "SZSE_", "BSE_")):
         return "cn"
-    if market_ticker.startswith("HK_"):
+    if market_ticker.startswith(("HKEX_", "HK_")):  # HKEX_ canonical (create_topic/market_data); HK_ legacy alias
         return "hk"
     if market_ticker.startswith("LSE_"):
         return "uk"
@@ -349,7 +349,7 @@ def _route(market_ticker: str) -> str:
         return "us"
     raise ValueError(
         f"无法识别 ticker 格式：{market_ticker!r}\n"
-        "  支持：US (NVDA) / CN (SZSE_300750) / HK (HK_02228) / UK (LSE_OXIG) / "
+        "  支持：US (NVDA) / CN (SZSE_300750) / HK (HKEX_02228，HK_ 兼容) / UK (LSE_OXIG) / "
         "KR (006400 或 KRX_006400) / JP TDnet (5019 或 TSE_5019) / JP EDINET (EDINET_E00040)"
     )
 
@@ -824,7 +824,7 @@ def fetch(
     Auto-routes by ticker format:
         US (NVDA) → SEC EDGAR
         CN (SZSE_300750) → cninfo
-        HK (HK_02228) → HKEXnews (zero-key, annual/semi/prospectus)
+        HK (HKEX_02228, HK_ legacy alias) → HKEXnews (zero-key, annual/semi/prospectus)
         UK (LSE_OXIG) → FCA NSM (zero-key, annual/semi)
         KR (006400 / KRX_006400) → DART
         JP TDnet (5019 / TSE_5019) → TDnet 決算短信 (zero-key, 30-day window)
@@ -858,7 +858,7 @@ def fetch(
 
     if market == "hk":
         from scripts.fetch_hk_hkex import fetch as _fetch_hk
-        hk_code = market_ticker.removeprefix("HK_")
+        hk_code = market_ticker.removeprefix("HKEX_").removeprefix("HK_")
         return _fetch_hk(hk_code, report_type, slug, variant)
 
     if market == "uk":

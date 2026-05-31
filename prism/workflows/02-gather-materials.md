@@ -119,7 +119,7 @@ pdftotext -l 3 "<file>" - | head -30
 ## Step 3：读当前 manifest
 
 ```bash
-python -c "
+python3 -c "
 import json
 from prism.scripts.manifest import read_manifest
 print(json.dumps(read_manifest('{slug}', '{variant}'), ensure_ascii=False, indent=2))
@@ -136,7 +136,7 @@ print(json.dumps(read_manifest('{slug}', '{variant}'), ensure_ascii=False, inden
 
 ```bash
 # 登记 + 自动复制到 materials/ + 必填 addresses（指向 K#）+ 选填 rings（决策链输入合同）
-python -c "
+python3 -c "
 from pathlib import Path
 from prism.scripts.manifest import add_material
 mat_id = add_material(
@@ -217,7 +217,7 @@ EOF
 ## Step 5.7：校验 manifest 是否覆盖所有 K#（**新增**）
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.outputs import validate_manifest_coverage
 from prism.scripts.topic import read_topic
 t = read_topic('{slug}', '{variant}')

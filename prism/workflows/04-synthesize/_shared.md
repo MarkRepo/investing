@@ -11,7 +11,7 @@
 ## 前置检查
 
 ```bash
-python -c "
+python3 -c "
 import json
 from prism.scripts.topic import read_topic
 from prism.scripts.manifest import material_count
@@ -224,7 +224,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 ## 单份产出更新状态（每份产出完成后必须执行）
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.topic import set_output_status
 set_output_status(
     slug='{slug}',
@@ -287,7 +287,7 @@ print('收尾完成')
 写完调脚本登记：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.topic import set_thesis
 set_thesis(
     slug='{slug}',
@@ -329,8 +329,8 @@ if ns == '05-critic-review':
 
 **刷新仪表盘（修 S5：自动触发，无需手跑）**：
 
-每份产出收尾调 `set_output_referenced_mats` 时已自动 fire-and-forget 重建 dashboard（异步 subprocess，~25s 在后台跑，主流程 <100ms）。**workflow 内不再需要显式 `python -m prism.scripts.dashboard`**。
-后台失败仅写 `prism/logs/dashboard_auto.log`——若发现 dashboard 长期未刷新，手动跑一次 `python -m prism.scripts.dashboard` 排查。
+每份产出收尾调 `set_output_referenced_mats` 时已自动 fire-and-forget 重建 dashboard（异步 subprocess，~25s 在后台跑，主流程 <100ms）。**workflow 内不再需要显式 `python3 -m prism.scripts.dashboard`**。
+后台失败仅写 `prism/logs/dashboard_auto.log`——若发现 dashboard 长期未刷新，手动跑一次 `python3 -m prism.scripts.dashboard` 排查。
 
 **selection（09/10）已折进 funnel 环⑥**（不再自动触发独立 workflow）：
 - **industry** → arena 选拔是 `_industry_funnel.md` 环⑥（落 `09_industry_to_arenas.yaml` + 建 arena stub），`_arena_select_spec.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema / stub 创建）。

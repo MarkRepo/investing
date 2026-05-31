@@ -51,7 +51,7 @@
 对每个深挖档 arena：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.topic import create_topic, read_topic
 parent = read_topic('{slug}', '{variant}')
 geo = parent.get('scope', {}).get('geo', 'cn')  # 从父 topic 继承 geo
@@ -79,7 +79,7 @@ create_topic 完成后，**立即**为 stub 写 thesis_v0.md，省去用户后�
 1. 读父 topic 当前 thesis：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.outputs import extract_killer_questions
 from prism.scripts.topic import read_topic
 parent = read_topic('{slug}', '{variant}')
@@ -99,7 +99,7 @@ for k in ks: print(' -', k[:80])
 4. 落入 stub 的 topic.yaml：
 
 ```bash
-python -c "
+python3 -c "
 from prism.scripts.topic import set_thesis
 set_thesis(
     slug='{geo}-{arena_slug}',
@@ -152,7 +152,7 @@ cluster_tags: [{tag1}, {tag2}]  # 继承自行业，e.g. [ai-compute, china-defe
 ```
 
 ```bash
-python -c "
+python3 -c "
 from pathlib import Path
 import yaml
 

@@ -4,7 +4,7 @@
 
 ## 硬规约（不可省）
 
-1. **本 subagent 内所有 web 检索必须走 adapter**（即 `python -m prism.scripts.web_search`），
+1. **本 subagent 内所有 web 检索必须走 adapter**（即 `python3 -m prism.scripts.web_search`），
    禁止调 `mcp__tavily__*` / `mcp__exa__*` / `mcp__serper__*` / Anthropic WebSearch tool。
    理由：MCP 调用每次进 turn 预算，多 query 撞 60min 硬墙；adapter 一次 Bash 把多 query 串
    起来跑（`search` + 多 `--triggered-by`），且自带 KeyPool 轮换 + 失败 fallback。
@@ -34,7 +34,7 @@
 **调用例**：
 
 ```bash
-python -m scripts.fetch_report_prism SZSE_300073 --year 2024 --slug {slug}
+python3 -m scripts.fetch_report_prism SZSE_300073 --year 2024 --slug {slug}
 # 或
 curl -L "{pdf_url}" -o prism/topics/{slug}/inbox/{filename}.pdf
 ```

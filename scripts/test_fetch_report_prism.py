@@ -191,16 +191,18 @@ def test_fetch_annual_unchanged_first_published_semantics():
 # ----- 公告抓取（announcements）-----
 
 
-def test_announcement_categories_six_high_signal():
-    """高信号子集必须正好 6 类：业绩预告/股权激励/增发/可转债/风险提示/特别处理。"""
+def test_announcement_categories_high_signal():
+    """高信号子集正好 5 类：业绩预告/增发/可转债/风险提示/特别处理。
+    （gqjl 股权激励经 b66a997/F7 移除——其内容被 _TITLE_NOISE_RE 黑名单清零，保留只是徒增抓取。）"""
     assert set(frp._ANNOUNCEMENT_CATEGORIES.keys()) == {
-        "yjygjxz", "gqjl", "zf", "kzz", "fxts", "tbclts",
+        "yjygjxz", "zf", "kzz", "fxts", "tbclts",
     }
     assert frp._ANNOUNCEMENT_CATEGORIES["yjygjxz"] == "category_yjygjxz_szsh"
+    assert "gqjl" not in frp._ANNOUNCEMENT_CATEGORIES
 
 
-def test_fetch_announcements_cn_queries_all_six_categories():
-    """fetch_announcements_cn 必须查 6 个 category，每类失败不影响其他。"""
+def test_fetch_announcements_cn_queries_all_categories():
+    """fetch_announcements_cn 必须查全部 5 个 category，每类失败不影响其他。"""
     queried = []
 
     def _track(code, org_id, column, category):
@@ -213,8 +215,8 @@ def test_fetch_announcements_cn_queries_all_six_categories():
                       return_value={"code": "688331", "orgId": "9", "zwjc": "X"}), \
          patch.object(frp, "_list_reports", side_effect=_track):
         result = frp.fetch_announcements_cn("SSE_688331")
-    # 即使第 1 类失败，剩 5 类还得查
-    assert len(queried) == 6
+    # 即使第 1 类失败，剩 4 类还得查
+    assert len(queried) == len(frp._ANNOUNCEMENT_CATEGORIES)
     assert "category_yjygjxz_szsh" in queried
     assert result == []
 
@@ -339,6 +341,18 @@ def test_fetch_by_keyword_unsupported_market_raises():
     """HK/UK/JP/KR 暂未支持，必须 raise NotImplementedError。"""
     with pytest.raises(NotImplementedError, match="hk"):
         frp.fetch_by_keyword("HK_02228", "重组")
+
+
+def test_route_hkex_and_hk_both_map_to_hk():
+    """F8: HKEX_ 是 canonical（create_topic/market_data 形式），HK_ 为向后兼容别名，二者都路由到 hk。"""
+    assert frp._route("HKEX_09995") == "hk"
+    assert frp._route("HK_02228") == "hk"
+
+
+def test_fetch_by_keyword_hkex_prefix_also_unsupported():
+    """F8: HKEX_ 与 HK_ 同走 hk 路径——keyword 检索对两者一致 raise NotImplementedError(hk)。"""
+    with pytest.raises(NotImplementedError, match="hk"):
+        frp.fetch_by_keyword("HKEX_09995", "重组")
 
 
 def test_fetch_many_calls_announcements_once_not_per_year():

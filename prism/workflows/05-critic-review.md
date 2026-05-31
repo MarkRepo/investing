@@ -9,7 +9,7 @@
 >
 > Step 6.5 request-more 兜底命令：
 > ```bash
-> python -m prism.scripts.web_search search "<反方关键词>" \
+> python3 -m prism.scripts.web_search search "<反方关键词>" \
 >     --intent news --days 60 \
 >     --output sidecar --slug <slug> --variant <variant> \
 >     --triggered-by 05-critic --addresses <K#>
@@ -366,4 +366,4 @@ for k, reason in stale:
 
 ## Step 8：仪表盘自动刷新（修 S5）
 
-`set_critic_verdict` 内部已 fire-and-forget 触发 dashboard 异步重建，**无需再手跑** `python -m prism.scripts.dashboard`。后台失败留痕在 `prism/logs/dashboard_auto.log`。
+`set_critic_verdict` 内部已 fire-and-forget 触发 dashboard 异步重建，**无需再手跑** `python3 -m prism.scripts.dashboard`。后台失败留痕在 `prism/logs/dashboard_auto.log`。
