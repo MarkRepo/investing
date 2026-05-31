@@ -14,6 +14,7 @@ def tmp_topic(monkeypatch):
     """Create a tmp topic with manifest, redirect PRISM_ROOT to tmp dir."""
     tmpdir = Path(tempfile.mkdtemp())
     monkeypatch.setattr("prism.scripts.web_prescan.PRISM_ROOT", tmpdir)
+    monkeypatch.setattr("prism.scripts.web_prescan._STATE_DIR", tmpdir / "state" / "whitelist")
     monkeypatch.setattr("prism.scripts.manifest._PRISM_ROOT", tmpdir)
     monkeypatch.setattr("prism.scripts.topic.PRISM_ROOT", tmpdir)
     slug = "test-slug"

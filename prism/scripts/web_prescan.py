@@ -8,6 +8,7 @@
 """
 from __future__ import annotations
 
+import json
 import re
 import sys
 from datetime import datetime, timezone
@@ -130,6 +131,141 @@ WHITELIST_DOMAINS: set[str] = {
 # 子域识别 — 含这些 token 视为公司 IR 页（high）
 _IR_SUBDOMAIN_TOKENS = ("ir.", "investor.", "investors.", "corporate.")
 
+# ---------------------------------------------------------------------------
+# 域族 overlay 收敛回路（PRISM_VALIDATION F4 修）—— 分层白名单的"族"层
+# 全局核心表 WHITELIST_DOMAINS 跨族通用、几乎不增长；族 overlay 随主 agent 的
+# llm-judged-official 判断累积。脚本当 oracle，overlay/log 永不进主 agent 上下文。
+# ---------------------------------------------------------------------------
+
+_STATE_DIR = PRISM_ROOT / "state" / "whitelist"
+PROMOTION_THRESHOLD = 2          # 同族同 host 被判 official ≥ N 次 → 晋升进 overlay
+_OVERLAY_CACHE: dict[str, set[str]] = {}   # family -> hosts，进程内内容缓存
+
+
+def _matches(domain: str, hosts: set[str]) -> bool:
+    """exact 命中或作为某 host 的子域（endswith '.<host>'）。"""
+    if not domain:
+        return False
+    if domain in hosts:
+        return True
+    return any(domain.endswith("." + h) for h in hosts)
+
+
+def _overlay_path(family: str) -> Path:
+    return _STATE_DIR / "overlays" / f"{family}.json"
+
+
+def _load_overlay(family: str) -> set[str]:
+    """读族 overlay 的 hosts 集（带进程内缓存）。缺文件 → 空集，不抛。
+    返回防御性副本，调用方对结果的任何改动都不会污染 _OVERLAY_CACHE。"""
+    if family in _OVERLAY_CACHE:
+        return set(_OVERLAY_CACHE[family])
+    hosts: set[str] = set()
+    p = _overlay_path(family)
+    if p.is_file():
+        try:
+            hosts = {str(h) for h in (json.loads(p.read_text(encoding="utf-8")).get("hosts") or [])}
+        except Exception:
+            hosts = set()
+    _OVERLAY_CACHE[family] = hosts
+    return set(hosts)
+
+
+def _family_of(slug: str, variant: str) -> str | None:
+    """域族 key = parent_topic || slug。
+
+    prescan 阶段 sidecar 未生成、cluster_tags 不可得，故用 create_topic 即写入的
+    parent_topic（无父的 industry 根 topic 用自身 slug）。读不到 topic → None
+    （= 退化为全局表 only，行为同历史）。
+    """
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except Exception:
+        return None
+    return topic.get("parent_topic") or slug
+
+
+def _promotion_log_path() -> Path:
+    return _STATE_DIR / "_promotion_log.json"
+
+
+def _read_promotion_log() -> dict:
+    p = _promotion_log_path()
+    if not p.is_file():
+        return {}
+    try:
+        data = json.loads(p.read_text(encoding="utf-8")) or {}
+    except Exception:
+        print(f"[web_prescan] WARNING: corrupt promotion log {p}, starting fresh",
+              file=sys.stderr)
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def _write_json_atomic(path: Path, data: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    try:
+        tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        tmp.replace(path)
+    except Exception:
+        tmp.unlink(missing_ok=True)   # 别把半截 tmp replace 进目标，也别留垃圾
+        raise
+
+
+def _append_to_overlay(family: str, host: str, display_name: str | None = None) -> None:
+    p = _overlay_path(family)
+    doc = {"family": family, "display_name": None, "hosts": [], "promoted_count": 0}
+    if p.is_file():
+        try:
+            loaded = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            loaded = None
+        if not isinstance(loaded, dict):
+            # 损坏/非对象 overlay：警告 + 跳过写入，绝不用空 doc 覆盖已晋升的 host
+            print(f"[web_prescan] WARNING: corrupt overlay {p}, skip write (existing preserved)",
+                  file=sys.stderr)
+            return
+        doc = loaded
+    hosts = sorted(set(doc.get("hosts") or []) | {host})
+    doc["hosts"] = hosts
+    doc["promoted_count"] = len(hosts)
+    doc["family"] = family
+    # display_name 是给人看的中文标签（机器键仍是英文 family）。仅显式传入时写/更新；
+    # _promote 自动建族时不传 → 保留已有值或置 None（人可后补），绝不覆盖已写好的中文名。
+    if display_name:
+        doc["display_name"] = display_name
+    elif "display_name" not in doc:
+        doc["display_name"] = None
+    _write_json_atomic(p, doc)
+    _OVERLAY_CACHE.pop(family, None)   # 失效内容缓存 → 下次 classify 读到新值
+
+
+def _promote(family: str, host: str, topic_id: str) -> bool:
+    """记 LLM-judged-official 一次；同族同 host 跨 ≥ PROMOTION_THRESHOLD 个不同
+    topic 被判 → 晋升进 overlay。返回 True 当且仅当本次触发了晋升。
+
+    幂等且同 topic 去重：topics 列表存放已计数的 topic_id，重复不再 +count。
+    """
+    if not family or not host:
+        return False
+    log = _read_promotion_log()
+    fam = log.setdefault(family, {})
+    entry = fam.setdefault(host, {"count": 0, "topics": [], "promoted": False})
+
+    if topic_id not in entry["topics"]:
+        entry["topics"].append(topic_id)
+        entry["count"] = len(entry["topics"])
+
+    did_promote = False
+    if not entry["promoted"] and entry["count"] >= PROMOTION_THRESHOLD:
+        _append_to_overlay(family, host)
+        entry["promoted"] = True
+        did_promote = True
+
+    _write_json_atomic(_promotion_log_path(), log)
+    return did_promote
+
 
 def _domain_of(url: str) -> str:
     try:
@@ -142,25 +278,22 @@ def _domain_of(url: str) -> str:
         return ""
 
 
-def classify_domain(url: str) -> str:
+def classify_domain(url: str, family: str | None = None) -> str:
     """Return 'whitelist' / 'llm-judged-official' / 'other'.
 
-    'llm-judged-official' is only set when the caller explicitly passes
-    domain_tier='llm-judged-official' via register_web_search_result —
-    this function alone never returns it from a URL.
+    命中顺序：① 全局核心表 WHITELIST_DOMAINS → ② 族 overlay（仅当传 family）
+    → ③ IR 子域启发式。family=None 时行为与历史完全一致（向后兼容）。
+
+    'llm-judged-official' 只在 caller 显式传 domain_tier 时出现，本函数不从 URL 产出它。
     """
     domain = _domain_of(url)
     if not domain:
         return "other"
-    # exact match
-    if domain in WHITELIST_DOMAINS:
+    if _matches(domain, WHITELIST_DOMAINS):              # ① 全局核心表
         return "whitelist"
-    # suffix match (e.g. foo.sec.gov)
-    for wl in WHITELIST_DOMAINS:
-        if domain.endswith("." + wl):
-            return "whitelist"
-    # IR sub-domain heuristic
-    if any(tok in domain for tok in _IR_SUBDOMAIN_TOKENS):
+    if family and _matches(domain, _load_overlay(family)):  # ② 族 overlay（F4 收敛）
+        return "whitelist"
+    if any(tok in domain for tok in _IR_SUBDOMAIN_TOKENS):  # ③ IR 子域启发式
         return "whitelist"
     return "other"
 
@@ -238,7 +371,9 @@ def _matches_low_signal_blacklist(url: str) -> bool:
     return any(tok in domain for tok in _LOW_SIGNAL_HOST_TOKENS)
 
 
-def extract_url_features(urls: list[str]) -> dict[str, dict]:
+def extract_url_features(
+    urls: list[str], slug: str | None = None, variant: str | None = None
+) -> dict[str, dict]:
     """Return objective deterministic features per URL — for main-agent LLM judgment.
 
     The script never returns tier / hint / confidence — those are LLM's job.
@@ -259,10 +394,11 @@ def extract_url_features(urls: list[str]) -> dict[str, dict]:
       - known_low_signal_host (bool): host matches hardcoded
         blog/forum/Q&A blacklist (csdn / blog. / bbs. / zhidao. / ...)
     """
+    family = _family_of(slug, variant) if slug else None
     out: dict[str, dict] = {}
     for url in urls:
         out[url] = {
-            "in_whitelist": classify_domain(url) == "whitelist",
+            "in_whitelist": classify_domain(url, family) == "whitelist",
             "host": _domain_of(url),
             "subdomain_tokens": _extract_subdomain_tokens(url),
             "tld_class": _tld_class(url),
@@ -522,7 +658,12 @@ def register_web_search_result(
     """
     domain = _domain_of(url)
     if domain_tier is None:
-        domain_tier = classify_domain(url)
+        domain_tier = classify_domain(url, _family_of(slug, variant))
+    elif domain_tier == "llm-judged-official":
+        family = _family_of(slug, variant)   # None if topic not found on disk
+        if family:
+            # 主 agent 显式判权威 → 喂收敛回路（跨 topic 达阈值自动晋升进 overlay）
+            _promote(family, domain, f"{slug}/{variant}")
     if confidence is None:
         confidence = confidence_for_tier(domain_tier)
     band = funnel_band(confidence)
