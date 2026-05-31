@@ -215,13 +215,22 @@ def is_api_satisfiable(item: dict) -> bool:
     return bool(item.get("api_satisfiable"))
 
 
-def default_report_rings(report_type: str) -> list[str]:
-    """财报/公告类 fetcher 自动登记材料时的默认 rings（company 取向）。
+def default_report_rings(report_type: str, topic_type: str = "company") -> list[str]:
+    """财报/公告类 fetcher 自动登记材料时的默认 rings，**按 topic.type 取向**（修 F10）。
 
-    年报/招股书是完整的生意+治理+财务载体 → 喂环①三梁；季报/公告偏时效财务 → 喂财务弧线。
+    年报/招股书是完整的生意+治理+财务载体；季报/公告偏时效财务弧线。
     这些是**收料期粗标**，03 抽取时按实际内容在 finding frontmatter 精修/补 rings。
-    标的非 company（industry/arena）时这些 code 不在其合同内 → gap 自动忽略，无害。
+    旧实现恒返 company code → industry/arena 材料被打 company rings、与其合同零交集，
+    gap A 轴永报全 uncovered（F10）。现按 type 映射到各自合同 code；未知 type 回退 company。
     """
+    is_full = report_type in ("annual", "prospectus", "10-K", "10-k", "20-F", "40-F")
+    if topic_type == "industry":
+        return (["industry-financial-arc", "value-chain-profit-pool"]
+                if is_full else ["industry-financial-arc"])
+    if topic_type == "arena":
+        return (["peer-comparison-financials", "peer-valuation-anchor"]
+                if is_full else ["peer-comparison-financials"])
+    # company（默认/兜底，行为不变）
     if report_type in ("annual", "10-K", "10-k"):
         return ["financial-arc", "mgmt-capital-alloc", "biz-moat-unit-econ"]
     if report_type == "prospectus":

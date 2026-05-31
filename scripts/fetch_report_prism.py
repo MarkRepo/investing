@@ -52,14 +52,25 @@ _CATEGORY = {
 _QUARTERLY_CATEGORIES = ("q1", "q3")
 
 # 高信号公告类别（cninfo category）—— 默认拉近 1 年
+# 注：移除 gqjl（股权激励）——经 _TITLE_NOISE_RE 黑名单后本就清零（限制性股票/归属/作废/
+# 律所/独董等纯治理噪声），保留该类目只是徒增无谓抓取。修 F7。
 _ANNOUNCEMENT_CATEGORIES = {
-    "yjygjxz": "category_yjygjxz_szsh",   # 业绩预告/业绩快报
-    "gqjl":    "category_gqjl_szsh",      # 股权激励
+    "yjygjxz": "category_yjygjxz_szsh",   # 业绩预告/业绩快报（纯金，催化剂）
     "zf":      "category_zf_szsh",        # 增发
     "kzz":     "category_kzz_szsh",       # 可转债
     "fxts":    "category_fxts_szsh",      # 风险提示
     "tbclts":  "category_tbclts_szsh",    # 特别处理（ST/退市预警）
 }
+
+# 公告标题噪声黑名单（保守·高精度，修 F7）。
+# 原则：**只删确定无投资价值的治理/中介程序性文件，催化剂（临床/BD/许可/业绩预告/快报/
+# 季报）一律留**——用黑名单而非白名单，标题刁钻的新催化剂也不会被误杀（漏催化剂的代价
+# 远高于残留少量噪声）。不收 "董事会决议" 类（可能承载重大合作审议）以免误伤。
+_TITLE_NOISE_RE = (
+    r"摘要|英文|更正|修订|"
+    r"会计师事务所|律师事务所|独立董事|薪酬与考核委员会|审计委员会|提名委员会|战略委员会|"
+    r"限制性股票|股票激励计划|激励对象|持续督导|内部控制|公司章程|H股公告|月报表"
+)
 
 _ANNOUNCEMENT_WINDOW_DAYS = 365
 
@@ -101,10 +112,11 @@ def _list_reports(code: str, org_id: str, column: str, category: str) -> list[di
     r = requests.post(_CNINFO_QUERY, headers=_HEADERS, data=data, timeout=15)
     r.raise_for_status()
     announcements = r.json().get("announcements") or []
-    # Drop summaries, English versions, corrections
+    # 丢摘要/英文/更正/修订 + 治理·中介程序性噪声（_TITLE_NOISE_RE）；未命中一律留，
+    # 保住临床/BD/业绩预告/季报等催化剂（修 F7）。年报本体标题不含黑名单词，无误伤。
     return [
         a for a in announcements
-        if not re.search(r"摘要|英文|更正|修订", a.get("announcementTitle", ""))
+        if not re.search(_TITLE_NOISE_RE, a.get("announcementTitle", ""))
     ]
 
 
@@ -210,6 +222,11 @@ def _register_in_prism(slug: str, file_path: Path, report_type: str, company_nam
         else "quarterly-report"
     )
     from prism.scripts.input_contract import default_report_rings
+    # 按 topic.type 取向打 rings（修 F10）：industry/arena 材料不再误标 company rings。
+    try:
+        topic_type = (read_topic(slug, variant) or {}).get("type", "company")
+    except Exception:
+        topic_type = "company"
     mat_id = add_material(
         slug=slug,
         filename=file_path.name,
@@ -217,7 +234,7 @@ def _register_in_prism(slug: str, file_path: Path, report_type: str, company_nam
         variant=variant,
         notes=f"Auto-downloaded from cninfo — {company_name}",
         source_path=file_path,
-        rings=default_report_rings(report_type),
+        rings=default_report_rings(report_type, topic_type),
     )
     log.info("Registered in manifest: %s → %s", file_path.name, mat_id)
 

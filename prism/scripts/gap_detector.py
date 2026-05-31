@@ -81,7 +81,8 @@ def _detect_relative_updated(slug: str, variant: str, topic: dict) -> list[dict]
     return flags
 
 
-def _detect_ring_inputs(topic: dict, manifest: dict, min_evidence: int = 2) -> dict:
+def _detect_ring_inputs(topic: dict, manifest: dict, min_evidence: int = 2,
+                        findings: list | None = None) -> dict:
     """A 轴：决策链输入合同覆盖（**不依赖具体拆解**，可靠）。
 
     按 topic.type 取输入合同，逐项查"是否被实收材料的 rings 标签覆盖"：
@@ -109,6 +110,13 @@ def _detect_ring_inputs(topic: dict, manifest: dict, min_evidence: int = 2) -> d
     coverage: dict[str, int] = {}
     for m in mats:
         for r in m.get("rings") or []:
+            coverage[r] = coverage.get(r, 0) + 1
+    # finding 层 rings 并入计数（比照 B 轴 material∪findings 修法，修 F15）：
+    # 02-doc 明示的补救"03 在 finding frontmatter 补 rings"原对 A 轴完全无效——
+    # 旧实现只数材料层 rings。叠加 F10（材料层被标 company rings）→ industry A 轴
+    # 经任何文档路径都补不绿。并入 finding rings 后该补救对 A 轴生效。
+    for f in findings or []:
+        for r in f.get("rings") or []:
             coverage[r] = coverage.get(r, 0) + 1
 
     any_rings = bool(coverage)
@@ -226,16 +234,18 @@ def detect_gaps(
             k = _addr_key(a)
             if k in ev_sources:
                 ev_sources[k].add(mid)
+    findings: list = []
     try:
         from prism.scripts.findings import list_all_findings
-        for f in list_all_findings(slug, variant):
-            fid = f.get("mat_id") or str(f.get("path"))
-            for a in (f.get("addresses") or []):
-                k = _addr_key(a)
-                if k in ev_sources:
-                    ev_sources[k].add(fid)
+        findings = list(list_all_findings(slug, variant))
     except Exception:
-        pass
+        findings = []
+    for f in findings:
+        fid = f.get("mat_id") or str(f.get("path"))
+        for a in (f.get("addresses") or []):
+            k = _addr_key(a)
+            if k in ev_sources:
+                ev_sources[k].add(fid)
     evidence_count: dict[str, int] = {k: len(v) for k, v in ev_sources.items()}
 
     uncovered = [k for k in ks if evidence_count[k] == 0]
@@ -247,7 +257,7 @@ def detect_gaps(
 
     relative_updated = _detect_relative_updated(slug, variant, topic)
 
-    ring = _detect_ring_inputs(topic, manifest, min_evidence)
+    ring = _detect_ring_inputs(topic, manifest, min_evidence, findings=findings)
 
     return {
         "topic": {

@@ -141,3 +141,23 @@ def test_findings_inherit_rings_from_manifest(tmp_topic):
     # index renders rings
     idx = findings_io.build_findings_index(slug, variant, write=False)
     assert "rings=[consensus]" in idx
+
+
+def test_default_report_rings_type_aware():
+    """F10：报告默认 rings 按 topic.type 映射；company 行为字节不变。"""
+    # industry / arena 用各自合同 code
+    assert ic.default_report_rings("annual", "industry") == [
+        "industry-financial-arc", "value-chain-profit-pool"]
+    assert ic.default_report_rings("announcement", "industry") == ["industry-financial-arc"]
+    assert ic.default_report_rings("annual", "arena") == [
+        "peer-comparison-financials", "peer-valuation-anchor"]
+    # company（默认/兜底）不变——回归护栏
+    assert ic.default_report_rings("annual", "company") == [
+        "financial-arc", "mgmt-capital-alloc", "biz-moat-unit-econ"]
+    assert ic.default_report_rings("annual") == [
+        "financial-arc", "mgmt-capital-alloc", "biz-moat-unit-econ"]
+    assert ic.default_report_rings("prospectus", "company") == [
+        "biz-moat-unit-econ", "financial-arc", "mgmt-capital-alloc"]
+    # 映射出的 code 必须落在各自合同内（与 gap A 轴闭合：F10 标对 + F15 数得到）
+    assert set(ic.default_report_rings("annual", "industry")) <= ic.ring_codes("industry")
+    assert set(ic.default_report_rings("annual", "arena")) <= ic.ring_codes("arena")

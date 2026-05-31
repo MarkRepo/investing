@@ -149,6 +149,40 @@ def test_gap_counts_reuse_parent_findings(tmp_topic_with_findings):
     assert report["evidence_count"]["K1"] >= 1
 
 
+def test_gap_ring_axis_counts_finding_layer_rings(tmp_topic_with_findings):
+    """F15：ring A 轴并入 finding 层 rings（比照 B 轴 material∪findings）。
+
+    industry 主题：材料层不带 industry rings（模拟 F10 误标/收料期未标），但 03 在 finding
+    frontmatter 补了 value-chain-profit-pool（材料强制项）+ industry-financial-arc。
+    旧实现只数材料层 rings → 这俩永报 uncovered（A 轴失灵）；修后 finding rings 被计入。
+    """
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    # 在同一 monkeypatched tmpdir 下建 industry 主题
+    islug, ivar = "test-ind", "test"
+    (tmpdir / "topics" / islug / ivar).mkdir(parents=True)
+    topic_io.create_topic(slug=islug, display_name="Ind", topic_type="industry",
+                          question="Q?", geo="CN", depth="quick", variant=ivar,
+                          short_name="Ind")
+    create_manifest(islug, ivar)
+    # 材料层不带 industry rings
+    add_material(slug=islug, filename="m1.md", source_type="annual-report", variant=ivar)
+    # finding 层带 industry rings（含一个材料强制项 value-chain-profit-pool）
+    iout = tmpdir / "topics" / islug / ivar / "outputs"
+    iout.mkdir(parents=True, exist_ok=True)
+    (iout / "findings_mat-i1.md").write_text(
+        "---\nrings:\n  - value-chain-profit-pool\n  - industry-financial-arc\n---\n- 点\n",
+        encoding="utf-8")
+
+    report = detect_gaps(islug, ivar)
+    assert report["ring_axis_status"] == "active"
+    assert report["ring_coverage"].get("value-chain-profit-pool", 0) >= 1
+    assert report["ring_coverage"].get("industry-financial-arc", 0) >= 1
+    uncovered_codes = {u["code"] for u in report["uncovered_ring_inputs"]}
+    assert "value-chain-profit-pool" not in uncovered_codes, "finding 层 ring 应让材料强制项脱离 uncovered"
+
+
 def test_gap_detects_stale_web_search(tmp_topic_with_findings):
     """web-search material > 90d expire → flagged as stale claims."""
     from prism.scripts.gap_detector import detect_gaps
