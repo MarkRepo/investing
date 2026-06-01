@@ -45,6 +45,8 @@ _REGISTER_URL = f"{_BASE}/api/v4/file-urls/batch"
 _RESULT_URL = f"{_BASE}/api/v4/extract-results/batch"
 _POLL_INTERVAL = 5    # seconds
 _TIMEOUT = int(os.environ.get("MINERU_TIMEOUT", "600"))  # seconds; override via env
+_MAX_ATTEMPTS = int(os.environ.get("MINERU_MAX_ATTEMPTS", "3"))  # total tries on transient failure
+_RETRY_BACKOFF = int(os.environ.get("MINERU_RETRY_BACKOFF", "10"))  # seconds between attempts
 
 
 def _token() -> str:
@@ -141,21 +143,8 @@ def _download_and_extract(result: dict, out_dir: Path) -> Path:
     return md_path
 
 
-def convert(pdf_path: Path, out_path: Path | None = None, model: str = "pipeline") -> Path:
-    """Convert a PDF to markdown. Returns path to full.md inside the output directory.
-
-    Output layout:
-        {out_dir}/full.md      ← returned path
-        {out_dir}/images/*.jpg ← referenced by full.md with relative paths
-        {out_dir}/layout.json
-
-    out_dir defaults to {pdf_path.stem}_mineru/ next to the PDF.
-    If out_path is given it is used as the output directory.
-    """
-    if not pdf_path.exists():
-        raise FileNotFoundError(pdf_path)
-
-    out_dir = out_path or pdf_path.parent / f"{pdf_path.stem}_mineru"
+def _convert_once(pdf_path: Path, out_dir: Path, model: str) -> Path:
+    """Run one full register → upload → poll → download cycle. Raises on failure."""
     filename = pdf_path.name
     file_size = pdf_path.stat().st_size
 
@@ -174,6 +163,45 @@ def convert(pdf_path: Path, out_path: Path | None = None, model: str = "pipeline
     md_path = _download_and_extract(result, out_dir)
     log.info("Written → %s (images in %s/images/)", md_path, out_dir.name)
     return md_path
+
+
+def convert(pdf_path: Path, out_path: Path | None = None, model: str = "pipeline") -> Path:
+    """Convert a PDF to markdown. Returns path to full.md inside the output directory.
+
+    Output layout:
+        {out_dir}/full.md      ← returned path
+        {out_dir}/images/*.jpg ← referenced by full.md with relative paths
+        {out_dir}/layout.json
+
+    out_dir defaults to {pdf_path.stem}_mineru/ next to the PDF.
+    If out_path is given it is used as the output directory.
+
+    MinerU occasionally returns a transient parse failure ("parsing failed,
+    please try again later"). Each attempt re-registers a fresh batch_id, since
+    re-polling a failed batch never recovers. Tunable via MINERU_MAX_ATTEMPTS.
+    """
+    if not pdf_path.exists():
+        raise FileNotFoundError(pdf_path)
+
+    out_dir = out_path or pdf_path.parent / f"{pdf_path.stem}_mineru"
+
+    last_err: Exception | None = None
+    for attempt in range(1, _MAX_ATTEMPTS + 1):
+        try:
+            return _convert_once(pdf_path, out_dir, model)
+        except (RuntimeError, TimeoutError, requests.RequestException) as exc:
+            last_err = exc
+            if attempt < _MAX_ATTEMPTS:
+                log.warning(
+                    "MinerU attempt %d/%d failed (%s) — retrying in %ds…",
+                    attempt, _MAX_ATTEMPTS, exc, _RETRY_BACKOFF,
+                )
+                time.sleep(_RETRY_BACKOFF)
+            else:
+                log.error("MinerU attempt %d/%d failed (%s) — giving up", attempt, _MAX_ATTEMPTS, exc)
+    raise RuntimeError(
+        f"MinerU failed after {_MAX_ATTEMPTS} attempts for {pdf_path.name}: {last_err}"
+    ) from last_err
 
 
 def main() -> None:
