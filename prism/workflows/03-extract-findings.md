@@ -247,12 +247,18 @@ path = get_material_path('{slug}', '{filename}')
 print(path if path else 'FILE_NOT_FOUND')
 "
 # 2. 用章节提取器处理 PDF，只保留分析相关章节（管理层讨论/主营业务等，跳过财务报表）
-python3 -m scripts.annual_report_extractor \
-  "{material_path}" \
-  --out "prism/topics/{slug}/materials/{filename_stem}_extracted.md"
+#    已存在则跳过——_extracted.md 是确定性 pymupdf 产物（零 LLM、与 variant 无关），
+#    落 slug 级 materials/ 可跨 variant 直接复用（与研报 _vlm/ 同为「机械转换层」，对称见 Step B）
+test -f "prism/topics/{slug}/materials/{filename_stem}_extracted.md" \
+  && echo "已存在，跳过提取（复用 slug 级转换产物）" \
+  || python3 -m scripts.annual_report_extractor \
+       "{material_path}" \
+       --out "prism/topics/{slug}/materials/{filename_stem}_extracted.md"
 ```
 
 提取完成后，读取 `_extracted.md` 作为分析内容（而非原始 PDF）。
+
+> 🔁 **跨 variant 复用（机械转换层）**：年报 `_extracted.md`（pymupdf）与研报 `_vlm/`（mineru）都是**不调本研究模型的确定性产物**，同一份 PDF 换模型重研字节级一致 → 一律落 slug 级 `materials/`、命中即跳过。**只有 `findings_mat-*.md`（LLM 按本 variant thesis 的 K# 解读）才按 variant 隔离**。详见各 topic `_process_log` P1。
 
 > ⚠️ **materials/ 是 slug 级共享目录**（`prism/topics/{slug}/materials/`，跨 variant 共用），**不是** `{slug}/{variant}/materials/`（该目录不存在，写进去 extractor/mineru 直接 FileNotFoundError）。所有 `_extracted.md` / `_vlm/` 产物都落 slug 级。
 
