@@ -173,6 +173,8 @@ print(f'已登记：{filename} → {mat_id}')
 
 > ⚠️ **必须用 vlm 模型**——pipeline/pymupdf 会丢表格/公式/多栏排版，研报和行业报告的关键数据多在表格里。**禁止改 `convert(src, out_dir, 'vlm')` 的第三参**。详见 [[feedback_mineru_required]]。
 
+> 🔑 **env 变量名是 `MINERU_TOKEN`（在 `.env`），不是 `MINERU_API_KEY`**。缺了 `mineru_api` 会直接 raise `MINERU_TOKEN not set — add it to .env`。别凭直觉找 `*_API_KEY`。
+
 `add_material` 登记时已自动给 sell-side-note / industry-research / policy 类型的 PDF 标 `mineru_state=needs`。
 登记完成后立即跑 mineru 转换，避免 workflow 03 卡在转换上。
 

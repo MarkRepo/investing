@@ -39,18 +39,37 @@ EOF
 
 ---
 
-## Step B：主 agent 调 WebSearch（**每条 query 执行一次**）
+## Step B：执行检索（**adapter-first**——每条 query 执行一次）
 
-对你在 Step A 为各槽写的每条 query，**主 agent 直接调用 `WebSearch` 工具**（不是脚本调），传：
-- `query`: 你写的 query 串
-- 入库时 `addresses`：用该槽的 `slot["addresses"]`（或更精细的事件锚，见 Step C）
-- 可选 `allowed_domains`: 若关心政策类查询且想强约束官方域，传 `WHITELIST_DOMAINS` 子集
+> 🧭 **路径选择（对齐 `_web_search_routing.md` 总则「进文件 → adapter；进上下文 → tool」）**：prescan 结果**要进文件**（sidecar → register → inbox/manifest）**且高频**（一轮十几条 query），按 routing 文档分步表，prescan 场景**默认走 adapter**。理由是 `--output sidecar` 落盘 + `review-digest` 紧凑投影判 tier，避免每条 query 把结果整坨灌进上下文（16 query = 16 坨叙事，纯防爆上下文）。**WebSearch 工具降为 fallback**（adapter `ALL_PROVIDERS_EXHAUSTED` / 无 provider key 时）。
+>
+> 注：选 adapter 不是因为 WebSearch「没结构」——本 harness WebSearch 返回的 `Links:` 是结构化 `{title,url}`（URL 真实可用）；纯粹是「进文件 + 高频 → adapter」的场景判定。
 
-> **硬约束**：只引用 WebSearch 工具实际返回的 search_result block。**禁止用训练知识补 URL / 编造引文**——参 plan 「风险与缓解」。
+**默认路径（adapter）**——对 Step A 每条 query：
 
-每条 WebSearch 返回若干条 `{title, url, snippet}`。
+```bash
+python3 -m prism.scripts.web_search search "<query>" \
+    --intent <news|semantic|exact|general> --output sidecar \
+    --slug {slug} --variant {variant}
+```
 
-### B.1 并发限流（**修 ISSUE-001 — 必照做**）
+→ 主 agent 用 `review-digest` 看 index 投影判 tier（**勿 Read 整 json**，见 Step C/D）→ 手动调 `register_web_search_batch`（入库时 `addresses` 用该槽的 `slot["addresses"]` 或更精细事件锚）。adapter 返回结构化 `{title,url,snippet,score,domain_tier}`，直接对上 register 契约。
+
+**Fallback 路径（WebSearch 工具）**——仅当 adapter 全 provider 耗尽 / 无 key：
+
+- 主 agent 直接调 `WebSearch`，取返回的 `Links:` 数组（结构化 `{title,url}`）。**本 harness WebSearch 无 per-hit snippet，且正文是跨 hit 合成叙事——snippet 一律留空，禁止从叙事里抠摘要贴给某条 URL（会错配）**。下游 dedup/domain_tier 只看 URL、register 容忍空 snippet，留空无碍。
+- 经 adapter postprocess 注入（走 dedup + 黑名单 + 落 sidecar）：
+
+  ```bash
+  echo '<json hits array>' | python3 -m prism.scripts.web_search postprocess \
+      --source websearch_fallback --slug {slug} --variant {variant} \
+      --triggered-by {step}-fallback --addresses K1
+  ```
+- **硬约束**：只引用工具实际返回的 URL，**禁止用训练知识补 URL / 编造引文**——参 plan 「风险与缓解」。
+
+> 下方 **B.1（并发限流）/ B.2（长时不可用兜底）仅在走 fallback、即实际调用 WebSearch 工具时适用**；adapter 路径不受 WebSearch 并发静默限流约束（它有自己的 provider 配额/重试，见 `web_search status`）。**B.3 健康度检查路径无关，两条路径都跑。**
+
+### B.1 并发限流（**走 WebSearch fallback 时必照做**）
 
 Anthropic WebSearch 在短时窗内并发调用过多会**静默返空**（只返回标题行 + REMINDER，无任何 search result block，无错误）。主 agent 看到的现象与"该 query 真没结果"无法区分。
 

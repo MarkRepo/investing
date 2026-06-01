@@ -278,6 +278,8 @@ print(get_financial_context('{slug}', '{variant}'))
 
 > ⚠️ **必须用 vlm 模型**——CLI `--model vlm` 不能改成 pipeline/默认。研报/行业报告中表格、公式、多栏排版是核心数据，pipeline 会丢失。详见 [[feedback_mineru_required]]。
 
+> 🔑 **env 变量名是 `MINERU_TOKEN`（在 `.env`），不是 `MINERU_API_KEY`**。缺了 `mineru_api` 会 raise `MINERU_TOKEN not set — add it to .env`。
+
 ```bash
 # 1. 找到文件位置
 python3 -c "
