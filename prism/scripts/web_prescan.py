@@ -35,6 +35,16 @@ WEB_SEARCH_BATCH_INTERVAL_S = 10      # 两批之间的最小间隔（秒）
 WEB_SEARCH_SERIAL_RETRY_INTERVAL_S = 30  # 检测到限流后串行重试的间隔（秒）
 WEB_SEARCH_FAIL_THRESHOLD = 0.5       # 优先 query 入库率 <50% → prescan_status='failed'
 
+# search-log entry 的 disposition（修 prescan-health 假阴性，2026-06）：
+# 主 agent 跑了 query 但主动没 register 时，须用 log_search_skipped 留痕并分类原因。
+# check_prescan_health 据此区分"已覆盖所以跳过"（=校准成功）vs"低质所以跳过"（=没校准）。
+DISPOSITION_REGISTERED = "registered"        # 走 register_web_search_batch 入库（默认，看 n_high/n_mid）
+# 主动跳过且"已覆盖"类 — 该 slot 的材料早在库/被别 query 覆盖，等同校准成功
+SKIP_DISPOSITIONS_COVERED = frozenset({"skipped-duplicate", "skipped-covered"})
+# 主动跳过且"低质"类 — 返回了 hit 但全非权威、无一进库，是诚实的未校准（不算 hit）
+SKIP_DISPOSITIONS_LOWTIER = frozenset({"skipped-lowtier"})
+VALID_SKIP_DISPOSITIONS = SKIP_DISPOSITIONS_COVERED | SKIP_DISPOSITIONS_LOWTIER
+
 # ---------------------------------------------------------------------------
 # 域名白名单 — 命中即 high confidence
 # ---------------------------------------------------------------------------
@@ -1049,10 +1059,15 @@ def append_search_log(
     n_mid: int,
     n_low: int,
     triggered_by: str,
+    disposition: str = DISPOSITION_REGISTERED,
 ) -> None:
     """Append a search round to per-topic web_search_log.yaml.
 
     triggered_by ∈ {'01-prescan', '02-step0', '06-daily-monitor', '07-drilldown'}
+
+    disposition：本轮 query 的处置。默认 'registered'（走 register_web_search_batch 入库，
+      健康度看 n_high/n_mid）。主动跑了但没入库的轮次由 log_search_skipped 写入
+      SKIP_DISPOSITIONS_* 之一——让 check_prescan_health 区分"已覆盖跳过"vs"低质跳过"。
     """
     path = _search_log_path(slug, variant)
     entries: list[dict] = []
@@ -1070,12 +1085,49 @@ def append_search_log(
         "n_high": n_high,
         "n_mid": n_mid,
         "n_low": n_low,
+        "disposition": disposition,
     })
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         yaml.dump({"slug": slug, "variant": variant, "entries": entries},
                   allow_unicode=True, sort_keys=False),
         encoding="utf-8",
+    )
+
+
+def log_search_skipped(
+    slug: str,
+    variant: str,
+    query: str,
+    triggered_by: str,
+    n_results: int,
+    reason: str,
+) -> None:
+    """记录一条"跑了 WebSearch 但主动没 register"的 query，让 prescan 健康度不再假阴性。
+
+    用法：主 agent 跑完一条 prescan/即兴 query、判定**无需入库**时调本函数留痕，
+    而不是静默丢弃（静默 = web_search_log 无痕 = check_prescan_health 误判为未搜到）。
+
+    reason 必须如实分类（影响健康度判定）：
+      - 'skipped-duplicate' / 'skipped-covered'：top hit 已在库 / 已被别的 query 覆盖
+        → check_prescan_health 记为命中（该 slot 已校准）
+      - 'skipped-lowtier'：返回了 hit 但全非权威、无一值得入库
+        → 不记命中（诚实的未校准，等同 all_low_band；critic 会列进"未校准清单"）
+
+    ⚠️ 不要用 'skipped-covered' 把低质 slot 刷成假覆盖——只有 top hit 确属已在库/已覆盖
+    才标 covered，判不准就标 lowtier。
+
+    n_results：本轮 WebSearch 实际返回的原始 hit 数（>0 证明工具未限流；=0 应改走限流重试）。
+    """
+    if reason not in VALID_SKIP_DISPOSITIONS:
+        raise ValueError(
+            f"reason={reason!r} 非法，必须为 "
+            f"{sorted(VALID_SKIP_DISPOSITIONS)} 之一"
+        )
+    append_search_log(
+        slug=slug, variant=variant, query=query,
+        n_results=n_results, n_high=0, n_mid=0, n_low=n_results,
+        triggered_by=triggered_by, disposition=reason,
     )
 
 
@@ -1114,10 +1166,17 @@ def check_prescan_health(
         {
             'status': 'full' / 'partial' / 'failed',
             'queries_run': int,         # web_search_log 中匹配前缀的实际 entry 数
-            'queries_with_hits': int,   # 其中 n_high+n_mid >= 1 的条数
+            'queries_with_hits': int,   # 已校准的条数：n_high+n_mid>=1 或 disposition 属"已覆盖跳过"
+            'queries_skipped_covered': int,  # 其中靠 log_search_skipped 标"已覆盖"贡献的
             'hit_rate': float,          # queries_with_hits / max(expected_queries, queries_run)
             'failure_reason': str | None,  # status != 'full' 时给一句话原因
         }
+
+    "命中"= 该 query 的 slot 已被新鲜证据校准。两种算命中（修 prescan-health 假阴性）：
+      1. register_web_search_batch 入库了 high/mid（n_high+n_mid>=1）
+      2. 主 agent 用 log_search_skipped 标 'skipped-duplicate'/'skipped-covered'
+         （top hit 已在库/已覆盖 → 该 slot 本就校准过）
+    不算命中：'skipped-lowtier'（返回了但全低质）、n_results=0（限流静默）——都是诚实的未校准。
 
     判定规则：
       - hit_rate >= 1.0 且 queries_run >= expected_queries → 'full'
@@ -1133,9 +1192,17 @@ def check_prescan_health(
         and e["triggered_by"].startswith(triggered_by_prefix)
     ]
     queries_run = len(matched)
-    queries_with_hits = sum(
-        1 for e in matched
-        if (e.get("n_high") or 0) + (e.get("n_mid") or 0) >= 1
+
+    def _is_hit(e: dict) -> bool:
+        if (e.get("n_high") or 0) + (e.get("n_mid") or 0) >= 1:
+            return True
+        # 主动跳过且属"已覆盖"类 → 该 slot 已校准，记命中（修假阴性）。
+        # 'skipped-lowtier' 与无 disposition 的限流空轮都不命中。
+        return e.get("disposition") in SKIP_DISPOSITIONS_COVERED
+
+    queries_with_hits = sum(1 for e in matched if _is_hit(e))
+    queries_skipped_covered = sum(
+        1 for e in matched if e.get("disposition") in SKIP_DISPOSITIONS_COVERED
     )
     denom = max(expected_queries, queries_run, 1)
     hit_rate = round(queries_with_hits / denom, 3)
@@ -1155,6 +1222,7 @@ def check_prescan_health(
                 "status": "inherited",
                 "queries_run": 0,
                 "queries_with_hits": len(web_mats),
+                "queries_skipped_covered": 0,
                 "hit_rate": None,
                 "failure_reason": None,
                 "note": (
@@ -1166,6 +1234,7 @@ def check_prescan_health(
             "status": "failed",
             "queries_run": 0,
             "queries_with_hits": 0,
+            "queries_skipped_covered": 0,
             "hit_rate": 0.0,
             "failure_reason": (
                 f"prescan 一条都没跑且无任何网搜料（expected_queries={expected_queries}）"
@@ -1178,6 +1247,7 @@ def check_prescan_health(
             "status": "full",
             "queries_run": queries_run,
             "queries_with_hits": queries_with_hits,
+            "queries_skipped_covered": queries_skipped_covered,
             "hit_rate": hit_rate,
             "failure_reason": None,
         }
@@ -1187,9 +1257,11 @@ def check_prescan_health(
             "status": "partial",
             "queries_run": queries_run,
             "queries_with_hits": queries_with_hits,
+            "queries_skipped_covered": queries_skipped_covered,
             "hit_rate": hit_rate,
             "failure_reason": (
-                f"prescan 入库率 {hit_rate:.0%}（{queries_with_hits}/{denom}），"
+                f"prescan 校准率 {hit_rate:.0%}（{queries_with_hits}/{denom}，"
+                f"含 {queries_skipped_covered} 条已覆盖跳过），"
                 f"低于满分但高于失败阈值 {WEB_SEARCH_FAIL_THRESHOLD:.0%}"
             ),
         }
@@ -1198,11 +1270,13 @@ def check_prescan_health(
         "status": "failed",
         "queries_run": queries_run,
         "queries_with_hits": queries_with_hits,
+        "queries_skipped_covered": queries_skipped_covered,
         "hit_rate": hit_rate,
         "failure_reason": (
-            f"prescan 入库率 {hit_rate:.0%}（{queries_with_hits}/{denom}），"
+            f"prescan 校准率 {hit_rate:.0%}（{queries_with_hits}/{denom}），"
             f"低于失败阈值 {WEB_SEARCH_FAIL_THRESHOLD:.0%} — "
-            f"疑似 WebSearch 限流静默返空 / 区域阻断 / API 失效"
+            f"疑似 WebSearch 限流静默返空 / 区域阻断 / API 失效（或主动跳过的 query 未用 "
+            f"log_search_skipped 留痕）"
         ),
     }
 

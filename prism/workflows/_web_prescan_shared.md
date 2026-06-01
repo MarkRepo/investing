@@ -103,7 +103,9 @@ WEB_SEARCH_FAIL_THRESHOLD = 0.5       # 入库率 <50% → prescan_status='faile
 ```python
 from prism.scripts.web_prescan import check_prescan_health
 h = check_prescan_health('{slug}', '{variant}', expected_queries=N, triggered_by_prefix='00-prescan')
-# {'status': 'full'/'partial'/'failed', 'queries_run': N, 'queries_with_hits': M, 'hit_rate': float, 'failure_reason': str|None}
+# {'status': 'full'/'partial'/'failed', 'queries_run': N, 'queries_with_hits': M,
+#  'queries_skipped_covered': S, 'hit_rate': float, 'failure_reason': str|None}
+# "命中"= 该 slot 已校准：入库 high/mid，或主动跳过且标了已覆盖（见 Step D §跳过留痕）。
 ```
 
 **根据调用情境分流（H5 修订）**：
@@ -169,6 +171,26 @@ h = check_prescan_health('{slug}', '{variant}', expected_queries=N, triggered_by
 **§ full_text 复用（修重复抓取）**：为判 tier 而展开/抓取的 `raw_content` 或 WebFetch 全文，对最终 keep（high/mid）的 hit 保留，整批透传进 `register_web_search_batch(full_texts={url: 全文})` → 落 inbox md `## Full text` → 03-extract 直接复用，全程**一次抓取**。
 
 **§ drop 即沉没（硬纪律）**：tier 判 drop 的 hit——① 不进 register（或仅作 `dropped_hits` 不救回）；② **即使你已为判 tier 读了它的 `raw_content` / WebFetch 了全文，也不得据此写任何 finding**。已付的抓取成本不构成入库理由；drop 就是内容丢弃。
+
+**§ 整条 query 主动不入库时必须留痕（硬纪律 — 修 prescan-health 假阴性）**：当一条 prescan query 跑完、你判定**整条无需调 `register_web_search_batch`**（best hit 已在库、或全是低质垃圾），**不许静默跳过**——静默 = `web_search_log` 无痕 = `check_prescan_health` 把它误判成"没搜到"，拖低校准率甚至误触 `failed`。改调：
+
+```python
+from prism.scripts.web_prescan import log_search_skipped
+log_search_skipped(slug, variant, query='<本条 query 原文>',
+    triggered_by='00-prescan',  # 与本轮 register 一致
+    n_results=<WebSearch 实际返回 hit 数>,
+    reason='skipped-covered',   # 或 'skipped-duplicate' / 'skipped-lowtier'
+)
+```
+
+`reason` 必须**如实分类**（直接决定该 slot 算不算校准命中）：
+
+| reason | 用于 | 健康度 |
+|---|---|---|
+| `skipped-duplicate` / `skipped-covered` | top hit 已在库 / 已被本轮别的 query 覆盖——该 slot 本就校准过 | **算命中** |
+| `skipped-lowtier` | 返回了 hit 但全非权威、无一够格入库 | **不算命中**（诚实未校准，critic 会列进"未校准清单"）|
+
+> 🚨 **不要用 covered 刷假覆盖**：只有 top hit 确属已在库/已覆盖才标 covered；判不准就标 lowtier。用 covered 把低质 slot 刷成绿，等于 `feedback_addresses_granularity` / `project_variant_reuse_gotchas` 记过的"假覆盖"坑——会让 thesis 时敏论断少了本该有的反方校准。`n_results=0`（WebSearch 返空）**不要**用本函数，那是限流，走 §B.2 串行重试。
 
 ---
 
