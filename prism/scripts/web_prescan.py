@@ -1141,13 +1141,34 @@ def check_prescan_health(
     hit_rate = round(queries_with_hits / denom, 3)
 
     if queries_run == 0:
+        # 状态感知（修 #4）：本趟 log 空 ≠ 一定失败。materials 是 slug 级共享、
+        # web_search_log 是 per-variant——复用/手动投料/重启都会"料在、log 空"。
+        # 故回退查 manifest 是否已有网搜料（search_meta 或 source_type==web-search，
+        # 后者兜底 mat_id churn 致 search_meta 未随复用带过来），有则判 'inherited' 而非 failed。
+        from prism.scripts.manifest import read_manifest
+        web_mats = [
+            m for m in read_manifest(slug, variant).get("materials", [])
+            if m.get("search_meta") or m.get("source_type") == "web-search"
+        ]
+        if web_mats:
+            return {
+                "status": "inherited",
+                "queries_run": 0,
+                "queries_with_hits": len(web_mats),
+                "hit_rate": None,
+                "failure_reason": None,
+                "note": (
+                    f"本趟未跑 prescan query，但 manifest 已有 {len(web_mats)} 条网搜料垫底"
+                    f"（复用/手动投料）。这是诊断不是 gate——按 ≥partial 处理，不阻塞升 stage。"
+                ),
+            }
         return {
             "status": "failed",
             "queries_run": 0,
             "queries_with_hits": 0,
             "hit_rate": 0.0,
             "failure_reason": (
-                f"prescan 一条都没跑（expected_queries={expected_queries}）"
+                f"prescan 一条都没跑且无任何网搜料（expected_queries={expected_queries}）"
                 f" — WebSearch 工具可能不可用或主 agent 跳过 Step 4.5a"
             ),
         }

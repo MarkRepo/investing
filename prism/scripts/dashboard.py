@@ -240,6 +240,7 @@ def _collect_company_rows() -> list[dict]:
             "gap_to_buy": gap,
             "position_initial_max": sidecar.get("position_framework", {}).get("initial_max_pct"),
             "position_full_max": sidecar.get("position_framework", {}).get("full_max_pct"),
+            "position_tier": sidecar.get("position_framework", {}).get("position_tier"),
             "valuation_models": models,
             "kill_triggered": kills,
             "upcoming_signposts": upcoming,
@@ -394,12 +395,18 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
         price_str = f"{r['price']:.2f}" if r.get("price") is not None else "—"
         kill_str = "🚨" if r["kill_triggered"] else "✅"
         signpost_str = f"{len(r['upcoming_signposts'])} 个" if r["upcoming_signposts"] else "—"
+        # #5: 优先展示仓位档位（试探/标准/重仓）；initial_max_pct 为档位的可选人工落点
+        _init, _tier, _full = r.get("position_initial_max"), r.get("position_tier"), r.get("position_full_max")
+        if _tier:
+            pos_str = _tier + (f" (≤{_init}%)" if _init else "") + f" / {_full or '—'}%"
+        else:
+            pos_str = f"{_init or '—'}% / {_full or '—'}%"
         lines.append(
             f"| [{r['display_name']}](/prism/{r['slug']}/{r['variant']}) ({r['ticker']}) "
             f"| {price_str} "
             f"| {r['zone_label']} "
             f"| {r.get('gap_to_buy') or '—'} "
-            f"| {r.get('position_initial_max') or '—'}% / {r.get('position_full_max') or '—'}% "
+            f"| {pos_str} "
             f"| {kill_str} "
             f"| {signpost_str} "
             f"| {_fmt_freshness(r)} |"

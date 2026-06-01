@@ -491,6 +491,77 @@ def backfill_addresses_by_mapping(
     }
 
 
+def retag_by_filename(
+    slug: str,
+    variant: str,
+    mapping: dict[str, dict],
+) -> dict:
+    """#1: 按 filename 或 mat_id 一次性批量 merge addresses + rings，免 N 次 add_material。
+
+    复用 add_material 的同名原地合并语义（不覆盖、幂等、新值与旧值取并集）。
+
+    mapping: {filename_或_mat_id: {'addresses': [...], 'rings': [...]}}
+        - 键可以是 manifest 里的 filename（精确匹配）或 mat_id；
+        - 值是 dict，可只给 addresses、只给 rings、或两者都给。
+
+    示例：
+        retag_by_filename('global-futu', 'opus4.8', {
+            '2025_FUTU_20-F_2026-04-15.htm': {'addresses': ['K1', 'K4'],
+                                              'rings': ['bull-bear', 'financial-arc']},
+            'mat-b01cff': {'rings': ['mgmt-capital-alloc']},
+        })
+
+    返回：{
+        'updated_count': int,           # 实际被修改的条目数
+        'changed_mat_ids': list[str],   # 变更条目 id
+        'unmatched_keys': list[str],    # mapping 里有但 manifest 中无对应 filename/mat_id 的键
+    }
+    """
+    if not isinstance(mapping, dict):
+        raise TypeError("mapping must be dict[str, dict]")
+    for k, spec in mapping.items():
+        if not isinstance(spec, dict):
+            raise ValueError(f"mapping['{k}'] 必须是 dict（含 addresses/rings），得到 {type(spec).__name__}")
+        for field in ("addresses", "rings"):
+            v = spec.get(field)
+            if v is not None and not (isinstance(v, list) and all(isinstance(x, str) for x in v)):
+                raise ValueError(f"mapping['{k}']['{field}'] 必须是 list[str]")
+
+    data = read_manifest(slug, variant)
+    changed: list[str] = []
+    matched_keys: set[str] = set()
+
+    for mat in data["materials"]:
+        spec = None
+        if mat["filename"] in mapping:
+            spec = mapping[mat["filename"]]
+            matched_keys.add(mat["filename"])
+        elif mat["id"] in mapping:
+            spec = mapping[mat["id"]]
+            matched_keys.add(mat["id"])
+        if spec is None:
+            continue
+        updated = False
+        for field in ("addresses", "rings"):
+            if spec.get(field):
+                merged = sorted(set(mat.get(field) or []) | set(spec[field]))
+                if merged != sorted(mat.get(field) or []):
+                    mat[field] = merged
+                    updated = True
+        if updated:
+            changed.append(mat["id"])
+
+    if changed:
+        data["updated"] = _now_iso()
+        _write_yaml(_manifest_path(slug, variant), data)
+
+    return {
+        "updated_count": len(changed),
+        "changed_mat_ids": changed,
+        "unmatched_keys": sorted(set(mapping.keys()) - matched_keys),
+    }
+
+
 def dedupe_manifest(slug: str, variant: str) -> int:
     """删除 manifest 中按 filename 重复的条目（保留最早的；合并 addresses/notes）。
     返回删除的条目数。"""

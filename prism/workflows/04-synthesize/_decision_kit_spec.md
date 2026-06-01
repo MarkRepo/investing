@@ -41,7 +41,12 @@ buy_box:
   current_zone: {strong_buy|accumulate|hold|above_hold|unknown}
 
 position_framework:
-  initial_max_pct: {number}             # 首仓上限 %
+  position_tier: {试探|标准|重仓}        # 仓位档位——首要字段。黑箱/低信息/低信心标的落"试探"；
+                                          # 信息充分+信心足才上"标准"，强确信+宽安全边际才"重仓"。
+  sizing_rationale: {string}            # 一句话：凭什么是这档（露出判断假设,供评审攻假设而非攻数字）
+  initial_max_pct: {number or null}     # 可选：档位对应的首仓上限 %（试探≤2-3 / 标准3-5 / 重仓>5）。
+                                          # ⚠️ 这是档位的人工落点,不是机械算出的——给不出有依据的数就填 null,
+                                          # 只留 position_tier。禁止用一个拍出来的精确 % 伪装严谨。
   full_max_pct: {number}                # 满仓上限 %
   add_ladder_prices: [{number}, ...]    # 加仓阶梯价格列表，升序
   max_cluster_pct: {number or null}     # 主题集中度约束 %

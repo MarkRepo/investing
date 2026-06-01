@@ -178,6 +178,32 @@ def ensure_financials(slug: str, variant: str) -> dict[str, Any]:
     }
 
 
+def _compute_roic(
+    oi: float | None,
+    ni: float | None,
+    pretax: float | None,
+    ta: float | None,
+    cl: float | None,
+) -> tuple[float | None, bool]:
+    """单期 ROIC = oi*(1-tax) / (total_assets - current_liab)，带金融业失真守卫。
+
+    返回 (roic_pct | None, distorted)。
+    金融业(券商/银行)客户资金并表 → 投入资本(总资产−流动负债)被净掉,残值极小致
+    ROIC 爆表(如富途 2858%)。ic 占总资产 <10% 或 |roic|>500% 判失真 → roic=None、
+    distorted=True,由 get_financial_context 切换到 ROE 口径。
+    """
+    if not (oi and pretax and pretax != 0 and ta and cl):
+        return None, False
+    tax_rate = 1 - (ni / pretax) if ni and pretax else 0.15
+    ic = ta - (cl or 0)
+    if ic <= 0:
+        return None, False
+    roic = round(oi * (1 - tax_rate) / ic * 100, 2)
+    if (ic / ta) < 0.10 or abs(roic) > 500:
+        return None, True
+    return roic, False
+
+
 def get_quality_screen_data(slug: str, variant: str) -> dict[str, Any]:
     """Return financial metrics needed by _company_case Step 0.5 质量红线门控（折自旧 03b）.
 
@@ -234,13 +260,8 @@ def get_quality_data_by_ticker(ticker: str, market: str) -> dict[str, Any]:
             ta = r.get("total_assets")
             # CN schema → total_current_liab; US/HKEX (yfinance) schema → current_liabilities
             cl = r.get("total_current_liab") or r.get("current_liabilities")
-            if oi and pretax and pretax != 0 and ta and cl:
-                tax_rate = 1 - (ni / pretax) if ni and pretax else 0.15
-                ic = ta - (cl or 0)
-                roic = round(oi * (1 - tax_rate) / ic * 100, 2) if ic > 0 else None
-            else:
-                roic = None
-            roic_3y.append({"period": period, "roic": roic})
+            roic, distorted = _compute_roic(oi, ni, pretax, ta, cl)
+            roic_3y.append({"period": period, "roic": roic, "distorted": distorted})
 
         # 3-year FCF
         fcf_3y = []
@@ -281,6 +302,7 @@ def get_quality_data_by_ticker(ticker: str, market: str) -> dict[str, Any]:
             "goodwill_pct_equity": goodwill_pct,
             "fcf": latest_ratio.get("fcf"),
             "roic_3y": roic_3y,
+            "roic_distorted": any(x.get("distorted") for x in roic_3y),
             "fcf_3y": fcf_3y,
             "ocf_quality_3y": ocf_3y,
             "total_periods": len(rows),
@@ -353,10 +375,16 @@ def get_financial_context(slug: str, variant: str) -> str:
         f"- **自由现金流**: {_fmt(data['fcf'])}",
         f"- **商誉占净资产**: {_fmt_pct(data['goodwill_pct_equity'])}",
         "",
-        "### 3年 ROIC",
     ]
-    for r in data.get("roic_3y", []):
-        lines.append(f"- {r['period']}: {_fmt_pct(r['roic'])}")
+    lines.append("### 3年 ROIC")
+    if data.get("roic_distorted"):
+        lines.append(
+            "- ⚠️ ROIC 因金融业客户资金并表致投入资本(总资产−流动负债)失真,已抑制"
+            "——改以上方 **ROE** 衡量资本回报"
+        )
+    else:
+        for r in data.get("roic_3y", []):
+            lines.append(f"- {r['period']}: {_fmt_pct(r['roic'])}")
     lines.append("")
     lines.append("### 3年自由现金流")
     for r in data.get("fcf_3y", []):
