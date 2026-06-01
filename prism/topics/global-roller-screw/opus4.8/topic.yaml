@@ -1,0 +1,60 @@
+slug: global-roller-screw
+display_name: 行星滚柱丝杠 (Planetary Roller Screw)
+type: arena
+created: '2026-05-31T17:52:19.259118+00:00'
+status: active
+stage: 00-init
+parent_topic: global-humanoid-robot
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 行星滚柱丝杠国产厂能否突破高端良率并拿到全球(含Tesla)定点，成为人形线性执行器最厚利润池的赢家？
+  depth: deep
+  short_name: 行星滚柱丝杠
+  search_terms:
+  - 行星滚柱丝杠
+  - 丝杠 国产 良率
+  - Tesla 丝杠 定点
+outputs_state:
+  00_primer:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  a_arena_case:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-05-31T17:53:02.985325+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-05-31T17:53:02.985428+00:00'
+    summary: 行星滚柱丝杠是人形线性执行器价值量最大(BOM~31%)/壁垒最高/国产最弱(~19%)的环节，高端良率+全球定点突破=最厚利润池赢家，但海外磨床卡脖子未证实。强度5/10

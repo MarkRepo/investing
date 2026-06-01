@@ -1,0 +1,203 @@
+slug: global-humanoid-robot
+display_name: 人形机器人行业 (Global Humanoid Robot)
+type: industry
+created: '2026-05-31T16:59:37.143860+00:00'
+status: active
+stage: 09-arena-shortlist
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 人形机器人产业链中哪些环节最有投资价值？核心受益标的是谁？
+  depth: deep
+  short_name: 人形机器人
+  search_terms:
+  - 人形机器人 产业链
+  - 执行器 谐波减速器
+  - Optimus 量产 进度
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-05-31T17:48:16.407279+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-215f5f
+    - mat-38d7ed
+    - mat-482dad
+    - mat-5bd1f9
+    - mat-852ece
+    - mat-ab49b1
+    - mat-ac86a8
+    - mat-b0c512
+    - mat-bd38b8
+    - mat-c5a73f
+    - mat-d1ef8c
+    last_error: null
+    critic_passed: true
+  i_industry_case:
+    version: 2
+    last_updated: '2026-05-31T18:04:13.348449+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-215f5f
+    - mat-38d7ed
+    - mat-482dad
+    - mat-529f3d
+    - mat-5bd1f9
+    - mat-852ece
+    - mat-ab49b1
+    - mat-ac86a8
+    - mat-b0c512
+    - mat-bd38b8
+    - mat-c5a73f
+    - mat-d1ef8c
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  09_industry_to_arenas:
+    version: 1
+    last_updated: '2026-05-31T17:55:08.165473+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-215f5f
+    - mat-38d7ed
+    - mat-482dad
+    - mat-529f3d
+    - mat-5bd1f9
+    - mat-852ece
+    - mat-ab49b1
+    - mat-ac86a8
+    - mat-b0c512
+    - mat-bd38b8
+    - mat-c5a73f
+    - mat-d1ef8c
+    last_error: null
+parent_materials: []
+next_actions:
+- 深挖档：行星滚柱丝杠（已建 arena stub global-roller-screw）→ 说「prism 推进 global-roller-screw」
+- 观察档（谐波/电机/六维力/灵巧手/RV）：升档触发后深挖
+- 可选：进入 05-critic 对抗式重审 或 06 监控
+user_todos:
+- task: Tesla Optimus 量产/出货/BOM 资料（10-K/10-Q + Goldman）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: 已复用 TSLA 10-K/10-Q + Goldman report
+  status: done
+- task: A股供应链龙头 2025 年报（绿的/拓普/三花/双环/鸣志）人形收入·定点
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  - K4
+  - K5
+  source_hint: 已复用 5 份年报
+  status: done
+- task: 行业全景/竞争格局/出货数据（GGII/前瞻/信通院蓝皮书）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K5
+  - K6
+  source_hint: 已复用 3 份行业报告
+  status: done
+- task: 各细分单台价值量拆解 + 丝杠国产化/定点深度
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  - K3
+  - K6
+  source_hint: 华泰雷赛 + 情绪向右 卖方研报 + 即兴web
+  status: in_progress
+  covered_by:
+  - mat-404be8
+  - mat-5fc734
+  - mat-75bf07
+  - mat-d0b8e0
+  - mat-dcf94f
+  - mat-e08152
+  - mat-e20fe9
+  coverage_note: web-search mat-e08152, mat-e20fe9, mat-75bf07, mat-dcf94f 命中 K# 但无事件锚；half_public
+    深料需事件锚或同 source_type 材料才闭环（未 done）
+- task: 历史镜鉴实证：服务/协作机器人·无人驾驶·光伏 叙事先行兑现滞后复盘
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K4
+  source_hint: industry-mirror 三项真欠供，01 即兴web补
+  status: in_progress
+  covered_by:
+  - mat-1344ef
+  - mat-4450e2
+  - mat-a5d255
+  coverage_note: web-search mat-4450e2 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
+    材料才闭环（未 done）
+- task: A股供应链估值分位（PE/PS/市值 + 历史分位）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: market_data API 合成期自动拉
+  status: done
+  covered_by:
+  - mat-1344ef
+  - mat-a5d255
+  coverage_note: 已由 web-search mat-a5d255, mat-1344ef 覆盖
+- task: 全部产出完成（primer+case+09 sidecar+thesis_v1+decomposition_v1），chain-critic 已收敛+修订
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-05-31T17:55:08.201293+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-05-31T17:12:03.077963+00:00'
+    summary: 命门1=执行器价值池能否守住(Tesla自研+整机内卷双挤压,中); 命门2=兑现-证伪时间差(低); 命门3=高端精度国产突破(丝杠良率/定点,uncertain)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-05-31T17:55:08.201308+00:00'
+    summary: 命门1=执行器价值池能否守住(中); 命门2=兑现-证伪时间差(低); 命门3=丝杠高端国产突破(uncertain,已升deep arena)。厚料确认三命门无新增/掉队
+    convergence_status: converged
+    changelog: 命门无增删,置信度微调;命门3升格deep arena global-roller-screw;primer目标无新增(补深度);对照全历史无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-05-31T17:55:08.170940+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-31T17:12:03.072861+00:00'
+    summary: 利润池集中在执行器及核心零部件(占整机~56%)，中国零部件厂是国产替代长逻辑最大受益者；但2026年中A股供应链处"产业向右、估值向左"证伪消化期。方向看多执行器核心环节，节奏谨慎。强度6/10
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-31T17:55:08.170950+00:00'
+    summary: 利润池集中执行器核心零部件(占整机~56%)，中国厂是国产替代最大受益者；但2026年中A股供应链处"产业向右估值向左"证伪消化期。赢家高度集中于"高价值×高壁垒×可国产突破×估值未透支"交集(首选行星滚柱丝杠)。方向看多节奏谨慎，强度6/10
+prescan_log:
+- round_at: '2026-05-31T17:15:02.845569+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 5
+  queries_with_hits: 5

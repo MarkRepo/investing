@@ -1,0 +1,62 @@
+slug: cn-leadex-300450
+display_name: 先导智能 (Leadex, SZSE 300450)
+type: company
+created: '2026-05-31T17:27:36.379393+00:00'
+status: active
+stage: 00-init
+parent_topic: global-ssb-equipment
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: cn
+  question: 先导智能作为全球锂电设备龙头，固态整线方案能否在2026-2028把单GWh价值量5亿+的招标订单兑现到收入，海外护城河与CATL依赖如何平衡？
+  depth: deep
+  ticker: SZSE_300450
+  market: SZSE
+  short_name: 先导智能
+  search_terms:
+  - 先导智能 固态
+  - 锂电设备 整线
+  - 固态 订单
+outputs_state:
+  00_primer:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  c_investment_case:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-05-31T17:27:36.381207+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-05-31T17:27:36.381211+00:00'
+    summary: 先导=固态整线兑现最确定载体；龙头(CR1~35%)+海外护城河(毛利40.75%)+董秘亲证价值量5亿+/Q1订单+60%；固态占订单<5%兑现极早期，6/10看多靠订单先行指标持有

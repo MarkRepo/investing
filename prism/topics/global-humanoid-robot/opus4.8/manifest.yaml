@@ -1,0 +1,773 @@
+slug: global-humanoid-robot
+variant: opus4.8
+updated: '2026-05-31T17:39:54.204745+00:00'
+materials:
+- id: mat-8f0263
+  filename: 2026-05-31_tesla-ramps-up-optimus-production-with-texas-facto.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.682365+00:00'
+  processed: false
+  notes: query='Tesla Optimus 2026 production units ramp progress' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla Optimus 2026 production units ramp progress
+    url: https://www.roic.ai/news/tesla-ramps-up-optimus-production-with-texas-factory-targeting-10-million-units-annually-01-29-2026
+    domain: roic.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.681521+00:00'
+    stale_at: '2026-06-30T17:08:19.681521+00:00'
+    expire_at: '2026-08-29T17:08:19.681521+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6f41f7
+  filename: 2026-05-31_tesla-pushes-optimus-v3-reveal-later-this-year---a.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.685034+00:00'
+  processed: false
+  notes: query='Tesla Optimus 2026 production units ramp progress' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla Optimus 2026 production units ramp progress
+    url: https://electrek.co/2026/04/22/tesla-optimus-production-fremont-model-sx-line
+    domain: electrek.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.684211+00:00'
+    stale_at: '2026-06-30T17:08:19.684211+00:00'
+    expire_at: '2026-08-29T17:08:19.684211+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cc3cf1
+  filename: 2026-05-31_agibot-shipped-a-staggering-5-000-humanoid-robots-.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.690440+00:00'
+  processed: false
+  notes: query='humanoid robot mass production 2025 2026 actual shipment units' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: humanoid robot mass production 2025 2026 actual shipment units
+    url: https://www.forbes.com/sites/johnkoetsier/2026/03/30/agibot-shipped-a-staggering-5000-humanoid-robots-in-the-last-3-months
+    domain: forbes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.689278+00:00'
+    stale_at: '2026-06-30T17:08:19.689278+00:00'
+    expire_at: '2026-08-29T17:08:19.689278+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dbb76c
+  filename: 2026-05-31_china-s-unitree-aims-to-ship-20-000-humanoid-robot.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.694800+00:00'
+  processed: false
+  notes: query='humanoid robot mass production 2025 2026 actual shipment units' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: humanoid robot mass production 2025 2026 actual shipment units
+    url: https://www.eweek.com/news/unitree-20000-humanoid-robots-2026-china
+    domain: eweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.693347+00:00'
+    stale_at: '2026-06-30T17:08:19.693347+00:00'
+    expire_at: '2026-08-29T17:08:19.693347+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-73163d
+  filename: 2026-05-31_figure-ai-valuation-funding-news-sacra.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.703117+00:00'
+  processed: false
+  notes: query='Figure AI funding valuation 2025 2026 Helix BMW deployment' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Figure AI funding valuation 2025 2026 Helix BMW deployment
+    url: https://sacra.com/c/figure-ai
+    domain: sacra.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.701215+00:00'
+    stale_at: '2026-06-30T17:08:19.701215+00:00'
+    expire_at: '2026-08-29T17:08:19.701215+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-efd262
+  filename: 2026-05-31_unitree-ranks-no-1-globally-in-humanoid-robot-ship.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.712687+00:00'
+  processed: false
+  notes: query='Unitree AgiBot UBTech humanoid 2025 2026 funding orders shipments'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Unitree AgiBot UBTech humanoid 2025 2026 funding orders shipments
+    url: https://finance.yahoo.com/news/unitree-ranks-no-1-globally-030700579.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.710563+00:00'
+    stale_at: '2026-06-30T17:08:19.710563+00:00'
+    expire_at: '2026-08-29T17:08:19.710563+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a37dfc
+  filename: 2026-05-31_chinese-firms-dominated-global-humanoid-robot-ship.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.719702+00:00'
+  processed: false
+  notes: query='Unitree AgiBot UBTech humanoid 2025 2026 funding orders shipments'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Unitree AgiBot UBTech humanoid 2025 2026 funding orders shipments
+    url: https://www.bloomberg.com/news/articles/2026-01-08/chinese-firms-dominated-global-humanoid-robot-shipments-in-2025
+    domain: bloomberg.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.717155+00:00'
+    stale_at: '2026-06-30T17:08:19.717155+00:00'
+    expire_at: '2026-08-29T17:08:19.717155+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-29a614
+  filename: 2026-05-31_pdf-宁波拓普集团股份有限公司2025-年年度报告摘要.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.732038+00:00'
+  processed: false
+  notes: query='拓普集团 2025 年报 人形机器人 执行器 收入 定点' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 拓普集团 2025 年报 人形机器人 执行器 收入 定点
+    url: http://dataclouds.cninfo.com.cn/shgonggao/hsomarket/2026/20260323/b69f8050608c48bebee446c32ee69643.PDF
+    domain: dataclouds.cninfo.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.729211+00:00'
+    stale_at: '2026-06-30T17:08:19.729211+00:00'
+    expire_at: '2026-08-29T17:08:19.729211+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-93bf01
+  filename: 2026-05-31_拓普集团的-进与退-295亿营收新高却遭利润首降-机器人百万台产能面临-证伪-考验.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.740980+00:00'
+  processed: false
+  notes: query='拓普集团 2025 年报 人形机器人 执行器 收入 定点' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 拓普集团 2025 年报 人形机器人 执行器 收入 定点
+    url: https://www.tfcaijing.com/article/page/4959484c743041363451657053325733584c794f76413d3d
+    domain: tfcaijing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.737753+00:00'
+    stale_at: '2026-06-30T17:08:19.737753+00:00'
+    expire_at: '2026-08-29T17:08:19.737753+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-32000e
+  filename: 2026-05-31_三花智控2025年净利润同比增长31-1-积极拓展仿生机器人机电执行.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.755853+00:00'
+  processed: false
+  notes: query='三花智控 2025 年报 机电执行器 人形机器人 收入' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 三花智控 2025 年报 机电执行器 人形机器人 收入
+    url: https://finance.sina.com.cn/roll/2026-03-24/doc-inhrzukz7401812.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.752345+00:00'
+    stale_at: '2026-06-30T17:08:19.752345+00:00'
+    expire_at: '2026-08-29T17:08:19.752345+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-db14d1
+  filename: 2026-05-31_三花智控2025年营收首破300亿-净利润增长三成-机器人业务-难产.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.768228+00:00'
+  processed: false
+  notes: query='三花智控 2025 年报 机电执行器 人形机器人 收入' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 三花智控 2025 年报 机电执行器 人形机器人 收入
+    url: https://news.qq.com/rain/a/20260403A064P400
+    domain: news.qq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.763811+00:00'
+    stale_at: '2026-06-30T17:08:19.763811+00:00'
+    expire_at: '2026-08-29T17:08:19.763811+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-10a11f
+  filename: 2026-05-31_具身智能打开增长新空间-绿的谐波2025年净利润同比翻倍-谐波-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.790435+00:00'
+  processed: false
+  notes: query='绿的谐波 2025 年报 谐波减速器 人形机器人 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 绿的谐波 2025 年报 谐波减速器 人形机器人 营收
+    url: https://finance.sina.com.cn/jjxw/2026-04-30/doc-inhwhzrw6106726.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.785674+00:00'
+    stale_at: '2026-06-30T17:08:19.785674+00:00'
+    expire_at: '2026-08-29T17:08:19.785674+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-97c026
+  filename: 2026-05-31_绿的谐波业绩翻倍-股价大跌-正在为这个千亿级赛道的泡沫买单-36氪.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.804624+00:00'
+  processed: false
+  notes: query='绿的谐波 2025 年报 谐波减速器 人形机器人 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 绿的谐波 2025 年报 谐波减速器 人形机器人 营收
+    url: https://m.36kr.com/p/3779191585272327
+    domain: m.36kr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.800050+00:00'
+    stale_at: '2026-06-30T17:08:19.800050+00:00'
+    expire_at: '2026-08-29T17:08:19.800050+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-29d056
+  filename: 2026-05-31_tesla-optimus-robot-s-china-supply-chain-accounts-.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.824987+00:00'
+  processed: false
+  notes: query='planetary roller screw localization 2026 yield Tesla humanoid supplier'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: planetary roller screw localization 2026 yield Tesla humanoid supplier
+    url: https://finance.biggo.com/news/gQPHv50BZk7xib5f4ox8
+    domain: finance.biggo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.820039+00:00'
+    stale_at: '2026-06-30T17:08:19.820039+00:00'
+    expire_at: '2026-08-29T17:08:19.820039+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-734972
+  filename: 2026-05-31_bom-costs---humanoid.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.846614+00:00'
+  processed: false
+  notes: query='humanoid robot BOM cost breakdown 2025 actuator value share' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: humanoid robot BOM cost breakdown 2025 actuator value share
+    url: https://thehumanoid.ai/glossary/bom-costs
+    domain: thehumanoid.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.841505+00:00'
+    stale_at: '2026-06-30T17:08:19.841505+00:00'
+    expire_at: '2026-08-29T17:08:19.841505+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-683677
+  filename: 2026-05-31_the-global-market-for-humanoid-robots-could-reach-.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.871812+00:00'
+  processed: false
+  notes: query='humanoid robot market size TAM 2025 2026 Morgan Stanley Goldman forecast'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: humanoid robot market size TAM 2025 2026 Morgan Stanley Goldman forecast
+    url: https://www.goldmansachs.com/insights/articles/the-global-market-for-robots-could-reach-38-billion-by-2035
+    domain: goldmansachs.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.866271+00:00'
+    stale_at: '2026-06-30T17:08:19.866271+00:00'
+    expire_at: '2026-08-29T17:08:19.866271+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e75215
+  filename: 2026-05-31_万联证券-人形机器人有望逐渐走向c端国产供应链或实现引领跨越.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.896667+00:00'
+  processed: false
+  notes: query='人形机器人 A股 供应链 估值 PE 2026 分位' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 人形机器人 A股 供应链 估值 PE 2026 分位
+    url: https://view.inews.qq.com/a/20260408A04TLE00
+    domain: view.inews.qq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.890573+00:00'
+    stale_at: '2026-06-30T17:08:19.890573+00:00'
+    expire_at: '2026-08-29T17:08:19.890573+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2b9017
+  filename: 2026-05-31_pdf-人形机器人产业周报-20260504-20260508.md
+  source_type: web-search
+  added: '2026-05-31T17:08:19.915366+00:00'
+  processed: false
+  notes: query='人形机器人 A股 供应链 估值 PE 2026 分位' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 人形机器人 A股 供应链 估值 PE 2026 分位
+    url: https://pdf.dfcfw.com/pdf/H3_AP202605121822205324_1.pdf?1778592147000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:08:19.908727+00:00'
+    stale_at: '2026-06-30T17:08:19.908727+00:00'
+    expire_at: '2026-08-29T17:08:19.908727+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a5d255
+  filename: 2026-05-31_周期洗牌与重整破局-中国光伏产业破产重整深度研究报告-北京金诚同达律师事务所-jt-n.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.444377+00:00'
+  processed: false
+  notes: query='光伏 产能过剩 利润崩塌 国产替代 复盘 教训' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 光伏 产能过剩 利润崩塌 国产替代 复盘 教训
+    url: https://www.jtn.com/CN/booksdetail.aspx?type=06001&keyid=00000000000000009733&PageUrl=majorbook&Lan=CN
+    domain: jtn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.437507+00:00'
+    stale_at: '2026-06-30T17:15:02.437507+00:00'
+    expire_at: '2026-08-29T17:15:02.437507+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - industry-mirror
+- id: mat-1344ef
+  filename: 2026-05-31_五大光伏企业预亏合计300亿左右-何时见底-行隆咨询.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.464485+00:00'
+  processed: false
+  notes: query='光伏 产能过剩 利润崩塌 国产替代 复盘 教训' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 光伏 产能过剩 利润崩塌 国产替代 复盘 教训
+    url: https://www.hrhr.org.cn/16644.html
+    domain: hrhr.org.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.457660+00:00'
+    stale_at: '2026-06-30T17:15:02.457660+00:00'
+    expire_at: '2026-08-29T17:15:02.457660+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - industry-mirror
+- id: mat-5eebe6
+  filename: 2026-05-31_瑞银-短期中国出现ai泡沫概率低-看好半导体与机器人上游产业链.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.502533+00:00'
+  processed: false
+  notes: query='协作机器人 服务机器人 泡沫 商业化 不及预期 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 协作机器人 服务机器人 泡沫 商业化 不及预期 复盘
+    url: https://www.stcn.com/article/detail/3595520.html
+    domain: stcn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.495281+00:00'
+    stale_at: '2026-06-30T17:15:02.495281+00:00'
+    expire_at: '2026-08-29T17:15:02.495281+00:00'
+    triggered_by: 01-prescan
+- id: mat-04f259
+  filename: 2026-05-31_人形机器人七小龙-谁真能卖-谁在讲故事.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.524507+00:00'
+  processed: false
+  notes: query='协作机器人 服务机器人 泡沫 商业化 不及预期 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 协作机器人 服务机器人 泡沫 商业化 不及预期 复盘
+    url: https://m.thepaper.cn/newsDetail_forward_33100927
+    domain: m.thepaper.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.516795+00:00'
+    stale_at: '2026-06-30T17:15:02.516795+00:00'
+    expire_at: '2026-08-29T17:15:02.516795+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - industry-mirror
+- id: mat-d870ab
+  filename: 2026-05-31_宇树机器人-科研-卖铲人-年赚6亿-极致性价比席卷全球-财富号-东方财富网.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.547093+00:00'
+  processed: false
+  notes: query='协作机器人 服务机器人 泡沫 商业化 不及预期 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 协作机器人 服务机器人 泡沫 商业化 不及预期 复盘
+    url: https://caifuhao.eastmoney.com/news/20260421140358690514520
+    domain: caifuhao.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.539202+00:00'
+    stale_at: '2026-06-30T17:15:02.539202+00:00'
+    expire_at: '2026-08-29T17:15:02.539202+00:00'
+    triggered_by: 01-prescan
+- id: mat-4450e2
+  filename: 2026-05-31_robotaxi这十年-摇摆的百度-跳票的特斯拉-渐近的拐点---新浪财经.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.582909+00:00'
+  processed: false
+  notes: query='无人驾驶 Robotaxi 量产 时间表 跳票 估值 回调' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 无人驾驶 Robotaxi 量产 时间表 跳票 估值 回调
+    url: https://finance.sina.com.cn/tech/roll/2024-10-18/doc-incsxvcc5598917.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.574735+00:00'
+    stale_at: '2026-06-30T17:15:02.574735+00:00'
+    expire_at: '2026-08-29T17:15:02.574735+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - industry-mirror
+- id: mat-d0b8e0
+  filename: 2026-05-31_国产之光-2026机器人核心硬件-平替-指南-附代表企业-电机-双环传动-optimus.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.625349+00:00'
+  processed: false
+  notes: query='行星滚柱丝杠 Tesla 定点 厂商 2026 国产 突破' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 Tesla 定点 厂商 2026 国产 突破
+    url: https://www.sohu.com/a/1023890194_122014422
+    domain: sohu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.616876+00:00'
+    stale_at: '2026-06-30T17:15:02.616876+00:00'
+    expire_at: '2026-08-29T17:15:02.616876+00:00'
+    triggered_by: 01-prescan
+- id: mat-5fc734
+  filename: 2026-05-31_水下项目-自研全球最小行星滚柱丝杠-量产价降至百元级-诺仕机器人-完成超亿元a轮融资.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.650870+00:00'
+  processed: false
+  notes: query='行星滚柱丝杠 Tesla 定点 厂商 2026 国产 突破' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 Tesla 定点 厂商 2026 国产 突破
+    url: https://eu.36kr.com/zh/p/3719335512585609
+    domain: eu.36kr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.641660+00:00'
+    stale_at: '2026-06-30T17:15:02.641660+00:00'
+    expire_at: '2026-08-29T17:15:02.641660+00:00'
+    triggered_by: 01-prescan
+- id: mat-404be8
+  filename: 2026-05-31_行星滚柱丝杠技术壁垒与国产进展---小牛行研.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.678319+00:00'
+  processed: false
+  notes: query='行星滚柱丝杠 Tesla 定点 厂商 2026 国产 突破' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 Tesla 定点 厂商 2026 国产 突破
+    url: https://www.hangyan.co/charts/3891691526476007129
+    domain: hangyan.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.668533+00:00'
+    stale_at: '2026-06-30T17:15:02.668533+00:00'
+    expire_at: '2026-08-29T17:15:02.668533+00:00'
+    triggered_by: 01-prescan
+- id: mat-e08152
+  filename: 2026-05-31_东方财富证券-人形机器人系列专题之减速器-供需缺口有望出现.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.725499+00:00'
+  processed: false
+  notes: query='人形机器人 减速器 丝杠 电机 市场规模 竞争格局 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 人形机器人 减速器 丝杠 电机 市场规模 竞争格局 2026
+    url: https://www.scribd.com/document/895398517/%E4%B8%9C%E6%96%B9%E8%B4%A2%E5%AF%8C%E8%AF%81%E5%88%B8-%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97%E4%B8%93%E9%A2%98%E4%B9%8B%E5%87%8F%E9%80%9F%E5%99%A8-%E4%BE%9B%E9%9C%80%E7%BC%BA%E5%8F%A3%E6%9C%89%E6%9C%9B%E5%87%BA%E7%8E%B0-%E5%9B%BD%E5%86%85%E5%8E%82%E5%95%86%E5%8A%A0%E9%80%9F%E5%AF%BC%E5%85%A5
+    domain: scribd.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.715781+00:00'
+    stale_at: '2026-06-30T17:15:02.715781+00:00'
+    expire_at: '2026-08-29T17:15:02.715781+00:00'
+    triggered_by: 01-prescan
+- id: mat-e20fe9
+  filename: 2026-05-31_2026年-人形机器人减速机市场谁主沉浮-top5厂家深度解---搜狐.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.754028+00:00'
+  processed: false
+  notes: query='人形机器人 减速器 丝杠 电机 市场规模 竞争格局 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 人形机器人 减速器 丝杠 电机 市场规模 竞争格局 2026
+    url: https://www.sohu.com/a/984206171_121694440
+    domain: sohu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.744126+00:00'
+    stale_at: '2026-06-30T17:15:02.744126+00:00'
+    expire_at: '2026-08-29T17:15:02.744126+00:00'
+    triggered_by: 01-prescan
+- id: mat-75bf07
+  filename: 2026-05-31_人形机器人之丝杠行业深度-行业现状-市场空间---知乎专栏.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.782877+00:00'
+  processed: false
+  notes: query='人形机器人 减速器 丝杠 电机 市场规模 竞争格局 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 人形机器人 减速器 丝杠 电机 市场规模 竞争格局 2026
+    url: https://zhuanlan.zhihu.com/p/1956019118546354462
+    domain: zhuanlan.zhihu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.772755+00:00'
+    stale_at: '2026-06-30T17:15:02.772755+00:00'
+    expire_at: '2026-08-29T17:15:02.772755+00:00'
+    triggered_by: 01-prescan
+- id: mat-dcf94f
+  filename: 2026-05-31_万亿级人形机器人赛道-哪个环节最具爆发潜力.md
+  source_type: web-search
+  added: '2026-05-31T17:15:02.812511+00:00'
+  processed: false
+  notes: query='人形机器人 减速器 丝杠 电机 市场规模 竞争格局 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 人形机器人 减速器 丝杠 电机 市场规模 竞争格局 2026
+    url: https://eu.36kr.com/zh/p/3636380217885702
+    domain: eu.36kr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:15:02.801890+00:00'
+    stale_at: '2026-06-30T17:15:02.801890+00:00'
+    expire_at: '2026-08-29T17:15:02.801890+00:00'
+    triggered_by: 01-prescan
+- id: mat-b0c512
+  filename: report.pdf
+  source_type: sell-side-note
+  added: '2026-05-31T17:15:52.433622+00:00'
+  processed: true
+  notes: Goldman Global Automation Humanoid TAM $38bn by 2035
+  mineru_state: needs
+  addresses:
+  - K2
+  - K6
+  rings:
+  - arena-scoring-inputs
+  - leader-valuation-anchor
+  - migration-path-evidence
+  - value-chain-profit-pool
+- id: mat-852ece
+  filename: s_24776443_247764432d26c07a7bf4ee825d2502d8.pdf
+  source_type: industry-research
+  added: '2026-05-31T17:15:52.454887+00:00'
+  processed: true
+  notes: GGII 中国人形机器人蓝皮书2024 163页
+  mineru_state: needs
+  addresses:
+  - K5
+  - K6
+  rings:
+  - arena-scoring-inputs
+  - migration-path-evidence
+  - value-chain-profit-pool
+- id: mat-215f5f
+  filename: 中国信通院-人形机器人产业发展研究报告.pdf.coredownload.394992768.pdf
+  source_type: industry-research
+  added: '2026-05-31T17:15:52.476163+00:00'
+  processed: true
+  notes: 信通院 中国产业链全景+政策
+  mineru_state: needs
+  addresses:
+  - K5
+  - K6
+  rings:
+  - arena-scoring-inputs
+  - value-chain-profit-pool
+- id: mat-38d7ed
+  filename: 2026-04-22_绿的谐波_2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-31T17:15:52.497940+00:00'
+  processed: true
+  notes: 绿的谐波 谐波龙头 SZSE688017
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  - K6
+  rings:
+  - arena-scoring-inputs
+  - value-chain-profit-pool
+- id: mat-ab49b1
+  filename: 2026-03-23_拓普集团_拓普集团2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-31T17:15:52.520164+00:00'
+  processed: true
+  notes: 拓普集团 Tesla供应链执行器 SZSE601689
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  rings:
+  - arena-scoring-inputs
+  - value-chain-profit-pool
+- id: mat-bd38b8
+  filename: 2026-03-23_三花智控_2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-31T17:15:52.543034+00:00'
+  processed: true
+  notes: 三花智控 机电执行器 SZSE002050
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  rings:
+  - arena-scoring-inputs
+  - value-chain-profit-pool
+- id: mat-482dad
+  filename: 2026-04-23_双环传动_2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-31T17:15:52.566394+00:00'
+  processed: true
+  notes: 双环传动 齿轮/RV减速器 SZSE002472
+  mineru_state: not_needed
+  addresses:
+  - K6
+  rings:
+  - arena-scoring-inputs
+- id: mat-d1ef8c
+  filename: 2026-04-24_鸣志电器_鸣志电器2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-31T17:15:52.589595+00:00'
+  processed: true
+  notes: 鸣志电器 空心杯/无框电机 SZSE603728
+  mineru_state: not_needed
+  addresses:
+  - K6
+  rings:
+  - arena-scoring-inputs
+- id: mat-5bd1f9
+  filename: 2026-01-29_TSLA_10-K_2025-12-31.htm
+  source_type: annual-report
+  added: '2026-05-31T17:15:52.613064+00:00'
+  processed: true
+  notes: Tesla FY2025 10-K Optimus披露
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - migration-path-evidence
+- id: mat-c5a73f
+  filename: 2026-04-23_TSLA_10-Q_2026-03-31.htm
+  source_type: annual-report
+  added: '2026-05-31T17:15:52.636805+00:00'
+  processed: true
+  notes: Tesla Q1FY2026 10-Q Optimus
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - migration-path-evidence
+- id: mat-0d452c
+  filename: H3_AP202508101724743654_1.pdf
+  source_type: sell-side-note
+  added: '2026-05-31T17:15:52.661976+00:00'
+  processed: true
+  notes: 华泰 雷赛智能首次覆盖 运动控制+人形
+  mineru_state: needs
+  addresses:
+  - K3
+  - K6
+  rings:
+  - arena-scoring-inputs
+- id: mat-ac86a8
+  filename: H3_AP202511201784809737_1.pdf
+  source_type: sell-side-note
+  added: '2026-05-31T17:15:52.686934+00:00'
+  processed: true
+  notes: 人形点评 情绪向左产业向右 2025.11
+  mineru_state: needs
+  addresses:
+  - K4
+  rings:
+  - leader-valuation-anchor
+- id: mat-529f3d
+  filename: H3_AP202412271641446309_1.pdf
+  source_type: industry-research
+  added: '2026-05-31T17:15:52.716987+00:00'
+  processed: true
+  notes: 前瞻 2025人形蓝皮书 量产商业化挑战
+  mineru_state: needs
+  addresses:
+  - K1
+  - K5
+  rings:
+  - migration-path-evidence
+  - value-chain-profit-pool

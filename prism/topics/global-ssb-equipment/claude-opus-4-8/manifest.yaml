@@ -1,0 +1,156 @@
+slug: global-ssb-equipment
+variant: claude-opus-4-8
+updated: '2026-05-31T17:13:26.143411+00:00'
+materials:
+- id: mat-cc96dd
+  filename: 2026-05-31_财闻在现场-股东会-固态电池设备价值量激增-先导智能董秘称行业陷军备竞赛.md
+  source_type: web-search
+  added: '2026-05-31T17:07:41.354877+00:00'
+  processed: false
+  notes: query='先导智能 固态电池 订单 2026 半年报'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  confidence: 0.82
+  search_meta:
+    query: 先导智能 固态电池 订单 2026 半年报
+    url: https://finance.sina.com.cn/jjxw/2026-05-26/doc-inhzfshe2767699.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:07:41.354005+00:00'
+    stale_at: '2026-06-30T17:07:41.354005+00:00'
+    expire_at: '2026-08-29T17:07:41.354005+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - winner-variables
+  - peer-valuation-anchor
+- id: mat-fe96fe
+  filename: 2026-05-31_蔚来官宣150kwh半固态电池全国交付-2026-02-15-首批et9-et7.md
+  source_type: web-search
+  added: '2026-05-31T17:07:41.359124+00:00'
+  processed: false
+  notes: query='半固态电池 车型 销量 蔚来ET9 智己 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.68
+  search_meta:
+    query: 半固态电池 车型 销量 蔚来ET9 智己 2026
+    url: https://xueqiu.com/4740960729/376379375
+    domain: xueqiu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:07:41.358314+00:00'
+    stale_at: '2026-06-30T17:07:41.358314+00:00'
+    expire_at: '2026-08-29T17:07:41.358314+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8dfddf
+  filename: 2026-05-31_国轩高科拟量产硫化锂及固态电解质-目标固态电池成本降至1元-wh.md
+  source_type: web-search
+  added: '2026-05-31T17:07:41.364706+00:00'
+  processed: false
+  notes: query='硫化锂 固态电解质 价格 2026 降本' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.78
+  search_meta:
+    query: 硫化锂 固态电解质 价格 2026 降本
+    url: https://finance.sina.com.cn/tech/digi/2026-05-17/doc-inhyevrp3634461.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:07:41.363562+00:00'
+    stale_at: '2026-06-30T17:07:41.363562+00:00'
+    expire_at: '2026-08-29T17:07:41.363562+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-517cd3
+  filename: 2026-05-31_潍柴动力招标-固态电池成组堆叠设备项目.md
+  source_type: web-search
+  added: '2026-05-31T17:07:41.371639+00:00'
+  processed: false
+  notes: query='固态电池 设备 招标 中标 2026' | 待用户确认 | ⚠️URL为撰写占位、待核原始招标公告；仅作K1旁证
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.35
+  search_meta:
+    query: 固态电池 设备 招标 中标 2026
+    url: https://finance.sina.com.cn/roll/2026-xxxx/weichai.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-31T17:07:41.370186+00:00'
+    stale_at: '2026-06-30T17:07:41.370186+00:00'
+    expire_at: '2026-08-29T17:07:41.370186+00:00'
+    triggered_by: 00-prescan-baseline
+    url_unverified: true
+- id: mat-aa339e
+  filename: 2026-04-15_利元亨_广东利元亨智能装备股份有限公司2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-31T17:12:59.707199+00:00'
+  processed: true
+  notes: 利元亨 2025 年报（扭亏+全固态整线首交付）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - peer-comparison-financials
+- id: mat-4b1700
+  filename: 2026-04-29_海目星_海目星：2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-31T17:13:12.930369+00:00'
+  processed: true
+  notes: 海目星 2025 年报（2GWh固态量产线订单+账龄恶化）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - peer-comparison-financials
+- id: mat-7dd34d
+  filename: 2026-04-24_联赢激光_深圳市联赢激光股份有限公司2025年年度报告.PDF
+  source_type: annual-report
+  added: '2026-05-31T17:13:12.937552+00:00'
+  processed: true
+  notes: 联赢激光 2025 年报（全固态装配线首交付）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - peer-comparison-financials
+- id: mat-54fb48
+  filename: 2025-07-26_东吴_信宇人688573公司深度_锂电干燥设备龙头.pdf
+  source_type: sell-side-note
+  added: '2026-05-31T17:13:12.944601+00:00'
+  processed: true
+  notes: 东吴信宇人深度（卤化物+干法成膜，补 K2/K3）
+  mineru_state: needs
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  rings:
+  - peer-comparison-financials
+  - biz-value-chain-position
+- id: mat-fbcaa4
+  filename: 2026-03-19_东吴_2026锂电行业投资策略_锂电周期向上固态技术领航.pdf
+  source_type: sell-side-note
+  added: '2026-05-31T17:13:12.952176+00:00'
+  processed: true
+  notes: 万联2026锂电策略（设备替代清单，强补 K1/K2/K3）
+  mineru_state: needs
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  rings:
+  - biz-value-chain-position
+  - winner-variables

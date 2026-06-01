@@ -1,0 +1,79 @@
+slug: global-futu
+variant: opus4.8
+topic_type: company
+display_name: 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)
+ticker: US_FUTU
+generated: 2026-06-01T00:00:00+00:00
+data_freshness: 2026-05-28  # Q1 2026 业绩已纳入,经一手 SEC EX-99.1 复核 (mat-b01cff,取代二手 mat-ebfa48)
+
+buy_box:
+  strong_buy_max: 85
+  accumulate_min: 85
+  accumulate_max: 120
+  hold_min: 120
+  hold_max: 150
+  current_price: 104.07
+  price_as_of: 2026-05-29
+  current_zone: accumulate
+  anchor_model: peer_relative_multiple
+
+position_framework:
+  initial_max_pct: 2.5
+  full_max_pct: 5
+  add_ladder_prices: [75, 85, 95]
+  max_cluster_pct: 8
+
+valuation_models:
+  - name: reverse_pe_implied_growth
+    label: 反推 PE / 隐含增长
+    bull_fair_value: [170, 195]
+    base_fair_value: [120, 145]
+    bear_fair_value: [70, 85]
+  - name: peer_relative_multiple
+    label: 同业相对倍数 (vs TIGR/IBKR/HOOD/SCHW)
+    bull_fair_value: [170, 195]
+    base_fair_value: [115, 140]
+    bear_fair_value: [70, 85]
+  - name: sotp_continuing_vs_mainland
+    label: 分部加总 (非大陆持续经营 + 一次性罚没 - 大陆清退)
+    bull_fair_value: [125, 150]
+    base_fair_value: [110, 135]
+    bear_fair_value: [85, 105]
+
+kill_criteria:
+  - id: regulatory_escalation
+    description: 2 年整治期内 CSRC/HKMA 出现任一追加动作(追加罚没/牌照吊销/责令加速清退/对李华扩大追责)
+    status: pending
+    check_at: 2028-05
+  - id: mainland_profit_disconfirm
+    description: 任一财报/披露证实大陆收入或税前利润占比 >25% (命门1 反向)。一手 SEC EX-99.1 复核:报表仅"港 vs 其他"未拆大陆;此前据二手电话会"大陆是收入重要部分"上调的偏空口径,经查不在一手 press release(系电话会转述),降回未确认。硬阈值未触发,黑箱未缩小
+    status: pending
+    check_at: 2026-Q2
+  - id: engine_stall
+    description: 非大陆付费户净增 < 50 万/年 或 海外持续亏损获客 (引擎独立性证伪)
+    status: pending
+    check_at: 2026
+
+signposts:
+  - date: 2026-Q2
+    event: 2026 Q2 业绩会披露大陆口径 + 罚没是否计提
+    bull_signal: 大陆收入/利润占比 <=15%、罚没一次性落定
+    bear_signal: 大陆利润占比 >25%、罚没追溯扩大
+    triggered: null
+  - date: 2026
+    event: 美联储 2026 降息节奏
+    bull_signal: 降息温和、利息收入靠证券借贷/规模扛住
+    bear_signal: 累计降息 >=100bp 且利息收入 YoY 转负
+    triggered: null
+  - date: 2026-Q1
+    event: 回购授权执行进度
+    bull_signal: 回购落地、资本配置兑现
+    bear_signal: 继续零执行
+    triggered: bull  # Q1 2026 实际回购 US$418M ADS(一手 EX-99.1:截至 5-27),推翻"零执行"旧判断 (mat-b01cff)
+  - date: 2026-H2
+    event: 港股+美股 ADV 走势
+    bull_signal: ADV 维持、美股接棒港股
+    bear_signal: 2026 H2 较高基数收缩 >20%
+    triggered: null
+
+cluster_tags: [china-adr, internet-brokerage, hk-fintech, cross-border-regulation, crypto-optionality]

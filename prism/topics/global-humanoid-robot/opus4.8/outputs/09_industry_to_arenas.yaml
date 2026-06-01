@@ -1,0 +1,150 @@
+slug: global-humanoid-robot
+variant: opus4.8
+topic_type: industry
+display_name: 人形机器人行业 (Global Humanoid Robot)
+generated: 2026-06-01T03:10:00Z
+data_freshness: 2026-05-29
+
+arenas:
+  - name: 行星滚柱丝杠
+    suggested_slug: global-roller-screw
+    topic_created: true
+    topic_slug: global-roller-screw
+    scores:
+      profit_pool: 5
+      growth: 5
+      competition: 3
+      valuation: 2
+      cycle: 5
+      composite: 3.9
+    tier: deep
+    tier_reason: 价值量最大(BOM 31%)+国产化最弱(~19%)+命门3所在，国产高端突破=最大alpha；深挖≠现价买入，纯玩家估值已分化(五洲326x/北特135x透支,恒立52x/贝斯特42x温和)需价格闸门
+    upgrade_triggers:
+      - Tesla 行星滚柱丝杠定点公告含中国厂
+      - 国产丝杠精度/良率突破 C3 级
+      - 头部厂人形丝杠收入开始放量
+      - 标的估值消化至合理区
+    monitor_metrics:
+      - 国产丝杠定点数量
+      - 良率/精度等级(C5→C3)
+      - 人形丝杠收入占比
+      - 纯玩家 PE 分位
+    revive_condition: null
+  - name: 谐波减速器
+    suggested_slug: global-harmonic-reducer
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 5
+      competition: 4
+      valuation: 1
+      cycle: 5
+      composite: 3.4
+    tier: watch
+    tier_reason: 国产最成熟(绿的领先)但绿的PE 410x极端透支，好生意贵价格，等估值消化或人形收入实质爬升
+    upgrade_triggers:
+      - 绿的谐波 PE 回落至 <150x
+      - 人形/具身收入占比披露 >10%
+    monitor_metrics:
+      - 绿的谐波 PE(TTM) 与人形收入占比
+      - 谐波销量与单台均价趋势
+    revive_condition: null
+  - name: 电机(无框力矩+空心杯)
+    suggested_slug: global-humanoid-motor
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 4
+      competition: 3
+      valuation: 2
+      cycle: 5
+      composite: 3.3
+    tier: watch
+    tier_reason: 空心杯灵巧手刚需但海外80%垄断(Maxon等)，鸣志379x且净利-21.5%，越南产能2026Q4才投产
+    upgrade_triggers:
+      - 国产空心杯拿到北美整机定点放量
+      - 鸣志电器净利同比转正
+    monitor_metrics:
+      - 空心杯国产份额与北美定点
+      - 无框力矩电机国产化率
+    revive_condition: null
+  - name: 六维力/力矩传感器
+    suggested_slug: global-6axis-force-sensor
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 3
+      valuation: 3
+      cycle: 5
+      composite: 3.7
+    tier: watch
+    tier_reason: 第二大价值量(BOM 10%)+高壁垒+国产空间大，但A股纯标的稀缺(多为非上市或业务占比小)
+    upgrade_triggers:
+      - 出现可投的六维力纯标的
+      - 国产六维力批量化供货突破
+    monitor_metrics:
+      - 国产六维力批量化厂商数与份额
+      - 单机用量(手腕/脚踝)
+    revive_condition: null
+  - name: 灵巧手(总成)
+    suggested_slug: global-dexterous-hand
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 2
+      valuation: 2
+      cycle: 5
+      composite: 3.4
+    tier: watch
+    tier_reason: 占整机工程量约一半、潜力大，但格局未定/同质化风险/可投标的早期
+    upgrade_triggers:
+      - DOF与触觉量产路线收敛
+      - 头部整机锁定灵巧手供应商
+    monitor_metrics:
+      - 主流灵巧手DOF(11→22)与触觉皮肤量产
+      - 头部整机灵巧手定点
+    revive_condition: null
+  - name: RV/行星减速器
+    suggested_slug: global-rv-reducer
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 3
+      competition: 3
+      valuation: 4
+      cycle: 4
+      composite: 3.1
+    tier: watch
+    tier_reason: 双环26x估值温和但人形减速器价值量低(<1%)、汽车齿轮β为主、环动RV待科创板IPO数据
+    upgrade_triggers:
+      - 环动科技科创板IPO招股书披露人形定点/收入
+      - RV在人形重载关节装机量提升
+    monitor_metrics:
+      - 环动科技人形减速器收入
+      - RV国产替代份额(vs纳博特斯克)
+    revive_condition: null
+  - name: 整机/本体
+    suggested_slug: global-humanoid-oem
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 5
+      competition: 1
+      valuation: 2
+      cycle: 5
+      composite: 2.8
+    tier: eliminated
+    tier_reason: A股投资视角下中系低价内卷无利润(宇树G1 $16k)、美系不可A股直投、格局极度分化无赢家
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 出现盈利且可A股投资的整机龙头(如宇树A股IPO落地且兑现盈利)，或整机格局收敛出现定价权
+
+cluster_tags: [humanoid-robot, actuator-supply-chain, china-localization, robotics-automation]

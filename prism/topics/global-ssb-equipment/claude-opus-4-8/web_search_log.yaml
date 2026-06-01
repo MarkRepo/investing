@@ -1,0 +1,31 @@
+slug: global-ssb-equipment
+variant: claude-opus-4-8
+entries:
+- searched_at: '2026-05-31T17:07:41.356601+00:00'
+  query: 先导智能 固态电池 订单 2026 半年报
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+- searched_at: '2026-05-31T17:07:41.361521+00:00'
+  query: 半固态电池 车型 销量 蔚来ET9 智己 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+- searched_at: '2026-05-31T17:07:41.367775+00:00'
+  query: 硫化锂 固态电解质 价格 2026 降本
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 1
+  n_low: 1
+- searched_at: '2026-05-31T17:07:41.375407+00:00'
+  query: 固态电池 设备 招标 中标 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 1
+  n_low: 1

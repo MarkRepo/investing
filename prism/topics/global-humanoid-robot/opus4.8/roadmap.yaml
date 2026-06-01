@@ -1,0 +1,146 @@
+# roadmap.yaml — 研究路线图 (workflow 01, variant=opus4.8)
+slug: global-humanoid-robot
+created: 2026-06-01T01:40:00+00:00
+
+# L1/L2 坍缩为 primer_scope（背景理解交给 00_primer）
+primer_scope: >
+  primer 该覆盖：人形机器人系统构成(执行/感知/控制/能源·DOF)、旋转vs线性执行器及核心零件
+  (谐波减速器/行星滚柱丝杠/无框电机/灵巧手/六维力传感器)、产业链三层(零部件→整机→AI算力)、
+  全球整机厂格局(美系AI vs 中系低成本)、A股供应链标的分工、国产替代逻辑、周期位(技术S曲线早期/
+  量产前夜/2025全球~13k台)、"情绪向左产业向右"含义、术语墙(VLA/具身智能/sim2real)。
+
+learning_track:
+  l3_debates:           # 争议层 → 喂决策链环④
+    - question: 利润池会留在执行器零部件，还是被 Tesla 垂直整合 + 中国整机低价内卷两头吃掉？
+      source_hint: Goldman/华泰研报 + Tesla 10-K（自研动向）+ 拓普/三花年报（毛利趋势）
+    - question: "2026 年中 A 股供应链估值崩跌（三花蒸发500亿/绿的泡沫）是过度悲观还是合理证伪？"
+      source_hint: 情绪向右研报 + 年报业绩 vs 股价背离 + market_data 估值分位
+    - question: 中国整机出货全球领先（Unitree/AgiBot）是真价值还是低价内卷无利润？
+      source_hint: GGII/前瞻蓝皮书出货与价格数据 + 整机厂毛利
+    - question: 谐波（成熟壁垒）vs 丝杠（高壁垒待国产）vs 灵巧手（瓶颈）——哪个细分利润分配最优？
+      source_hint: 各环节研报 + 单台价值量拆解 + 竞争格局
+    - question: Tesla 线性执行器丝杠路线 vs 谐波路线，对零部件价值分配的影响？
+      source_hint: Goldman/华泰 BOM 拆解 + Optimus 方案分析
+
+  l4_hunting:           # 狩猎层 → 逐 K# 对齐
+    - question: Tesla Optimus 2026 实际出货能否达数千→上万台 + 外销启动，还是 V3 再跳票？
+      addresses: [K1]
+      search_keywords: [Optimus 2026 出货, Optimus V3 量产, Tesla 机器人 产能]
+      source_hint: TSLA 10-K/10-Q + Tesla AI Day + 卖方跟踪
+    - question: 利润池是否真落在执行器核心零部件，Tesla 自研执行器份额多少？
+      addresses: [K2]
+      search_keywords: [Optimus 执行器 自研, 执行器 价值量 拆解, Tesla 56% actuator]
+      source_hint: Goldman BOM + 华泰 + Tesla 披露
+    - question: 中国零部件厂能否拿到全球 OEM 定点 + 突破行星滚柱丝杠高端良率？
+      addresses: [K3]
+      search_keywords: [行星滚柱丝杠 国产 良率, 丝杠 Tesla 定点, 谐波 国产替代]
+      source_hint: 雷赛/绿的/拓普年报定点披露 + 丝杠环节研报 + 即兴web
+    - question: A 股供应链泡沫消化后估值是否合理？龙头 PE 与人形收入占比错配多少？
+      addresses: [K4]
+      search_keywords: [人形机器人 A股 估值 PE 分位, 绿的谐波 估值, 供应链 人形 收入占比]
+      source_hint: market_data API + 年报收入拆分 + 情绪向右研报
+    - question: 中国整机出货领先是否转化为供应链利润，还是单价/毛利持续下滑？
+      addresses: [K5]
+      search_keywords: [宇树 智元 出货 单价, 人形 整机 毛利, 整机 低价 内卷]
+      source_hint: GGII/前瞻蓝皮书 + 整机厂财务
+    - question: 谐波/丝杠/电机/灵巧手/传感器各 arena 6 维（利润池/增速/竞争/估值/周期）如何排序？
+      addresses: [K6]
+      search_keywords: [人形 执行器 细分 竞争格局, 谐波 丝杠 灵巧手 市场空间, 减速器 电机 龙头]
+      source_hint: GGII/信通院/前瞻 + 各环节年报横比 + Goldman 价值链
+
+material_priority:
+  tier1:
+    - title: Goldman Sachs Global Automation - Humanoid Robot The AI accelerant (2024)
+      type: sell-side-note
+      ticker: ""
+      source: 已复用 report.pdf
+      why: TAM/BOM/价值链拆解全球视角，喂环①②③
+      addresses: [K2, K6]
+    - title: GGII 中国人形机器人产业发展蓝皮书 2024（163页）
+      type: industry-research
+      ticker: ""
+      source: 已复用 s_24776443...pdf
+      why: 产业链全景/竞争格局/出货/技术路线，喂环①④⑤
+      addresses: [K5, K6]
+    - title: 中国信通院 人形机器人产业发展研究报告
+      type: industry-research
+      ticker: ""
+      source: 已复用 信通院pdf
+      why: 中国产业链全景 + 政策导向，喂环①
+      addresses: [K5, K6]
+    - title: 绿的谐波 2025 年度报告
+      type: annual-report
+      ticker: SZSE_688017
+      source: 已复用
+      why: 谐波龙头 财务弧线 + 人形收入 + 估值锚，喂环①②④
+      addresses: [K3, K4, K6]
+    - title: 拓普集团 2025 年度报告
+      type: annual-report
+      ticker: SZSE_601689
+      source: 已复用
+      why: Tesla 供应链执行器总成 + 利润首降信号，喂环①②④
+      addresses: [K2, K4, K5]
+    - title: 三花智控 2025 年度报告
+      type: annual-report
+      ticker: SZSE_002050
+      source: 已复用
+      why: 机电执行器押注 + 机器人业务难产，喂环①④
+      addresses: [K2, K4, K5]
+  tier2:
+    - title: TSLA 10-K FY2025 + 10-Q Q1 FY2026
+      type: annual-report
+      ticker: TSLA
+      source: 已复用 2 份 htm
+      why: Optimus 量产进展/自研动向官方披露，喂环③⑤(K1/K2)
+      addresses: [K1, K2]
+    - title: 双环传动 2025 年度报告
+      type: annual-report
+      ticker: SZSE_002472
+      source: 已复用
+      why: 齿轮/RV减速器/丝杠齿轮，arena 横比料
+      addresses: [K6]
+    - title: 鸣志电器 2025 年度报告
+      type: annual-report
+      ticker: SZSE_603728
+      source: 已复用
+      why: 空心杯/无框电机环节，arena 横比料
+      addresses: [K6]
+    - title: 华泰证券 雷赛智能首次覆盖（运动控制+人形）
+      type: sell-side-note
+      ticker: ""
+      source: 已复用 H3_AP202508...pdf
+      why: 运动控制/伺服环节 + 单标的逻辑样本
+      addresses: [K3, K6]
+    - title: 人形机器人行业点评 情绪向左产业向右（2025.11）
+      type: sell-side-note
+      ticker: ""
+      source: 已复用 H3_AP202511...pdf
+      why: 估值-基本面背离的卖方视角，喂环②④(K4)
+      addresses: [K4]
+    - title: 前瞻 2025 人形机器人产业发展蓝皮书（量产商业化挑战）
+      type: industry-research
+      ticker: ""
+      source: 已复用 H3_AP202412...pdf
+      why: 量产/商业化关键挑战，喂环③⑤(K1/K5)
+      addresses: [K1, K5]
+  tier3:
+    - title: 即兴 web-search 补丝杠定点/历史镜鉴/估值分位
+      type: data
+      ticker: ""
+
+key_risks_to_monitor:
+  - Tesla 垂直整合执行器 → 供应链有定点无放量
+  - A 股估值继续证伪消化 → 基本面改善不反映股价
+  - 中国整机低价内卷 → 供应链被压价"有量无利"
+  - 量产仍千台级 → 人形收入占比长期 <5% 期权定价破灭
+
+analogies_to_study:    # → 落成 industry-mirror 收料 todo（环⑤）
+  - case: 中国光伏 2010s（叙事先行、产能过剩、利润被压）
+    logic: 政策强推 + 国产替代 + 高估值，最终产能过剩利润崩
+    limit: 人形仍在需求创造期，非过剩期
+  - case: 协作机器人/服务机器人 2015-2020（cobot 泡沫）
+    logic: 机器替人叙事先行，商业化兑现远慢于预期，估值回调
+    limit: 大模型/VLA 是本轮新变量，具身智能可行性更高
+  - case: 无人驾驶 2018-2022（Robotaxi 叙事 vs 兑现滞后）
+    logic: L4 时间表反复跳票，烧钱长、兑现晚，估值大幅回调
+    limit: 人形工业场景比开放道路更结构化，落地可能更快

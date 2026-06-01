@@ -1,29 +1,56 @@
 # 投资仪表盘
 
-> 生成：2026-05-31　　公司：16 个　　行业：7 个　　竞技场：19 个
+> 生成：2026-06-01　　公司：16 个　　行业：7 个　　竞技场：20 个
 
 ## 公司层：决策清单
 
 | 公司 | 当前价 | 当前区间 | 距 Buy 区间 | 仓位上限 | Kill | 近期路标 | 数据新鲜度 |
 |------|--------|---------|-----------|---------|------|---------|----------|
+| [利元亨 (Yuanli Heng, SSE 688499)](/prism/cn-yuanli-heng-688499/claude-opus-4-8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
+| [先导智能 (Leadex, SZSE 300450)](/prism/cn-leadex-300450/claude-opus-4-8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
+| [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)](/prism/global-futu/opus4.8) (US_FUTU) | 104.07 | 🔵 可建仓 | +22% | 2.5% / 5% | ✅ | 2 个 | 🟢 0d |
 | [拼多多 (PDD Holdings, NASDAQ PDD)](/prism/global-pdd-holdings/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)](/prism/cn-rongchang-bio-688331/claude-opus-4-7) (SSE_688331) | 116.03 | 🔴 高于观望区 | +79% | 2% / 5% | ✅ | 3 个 | 🟢 4d |
-| [Robinhood Markets (HOOD)](/prism/us-robinhood/claude-opus-4-7) (NASDAQ_HOOD) | 73.64 | 🟡 观望 | +34% | 3% / 8% | ✅ | 1 个 | 🟢 5d |
+| [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)](/prism/cn-rongchang-bio-688331/claude-opus-4-7) (SSE_688331) | 116.03 | 🔴 高于观望区 | +79% | 2% / 5% | ✅ | 3 个 | 🟢 5d |
+| [Robinhood Markets (HOOD)](/prism/us-robinhood/claude-opus-4-7) (NASDAQ_HOOD) | 73.64 | 🟡 观望 | +34% | 3% / 8% | ✅ | 2 个 | 🟢 6d |
 | [Circle Internet Group (USDC)](/prism/us-circle/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [富途控股 FUTU](/prism/global-futu/claude-opus-4-7) (US_FUTU) | 104.07 | 🟡 观望 | +30% | 2% / 8% | ✅ | 3 个 | 🟢 5d |
-| [Constellation Energy](/prism/global-constellation-energy/claude-opus-4-7) (NASDAQ_CEG) | 294.07 | 🔵 可建仓 | +13% | 5% / 8% | ✅ | 1 个 | 🟢 5d |
+| [Constellation Energy](/prism/global-constellation-energy/claude-opus-4-7) (NASDAQ_CEG) | 294.07 | 🔵 可建仓 | +13% | 5% / 8% | ✅ | 1 个 | 🟢 6d |
 | [当升科技](/prism/cn-dangsheng-tech-300073/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [赣锋锂业](/prism/cn-ganfeng-lithium-002460/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [联赢激光](/prism/cn-lianying-laser-688518/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [利元亨](/prism/cn-yuanli-heng-688499/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [先导智能](/prism/cn-leadex-300450/claude-opus-4-7) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [GE Vernova](/prism/global-ge-vernova/deepseek-v4-pro) (NYSE_GEV) | 1038.74 | 🔴 高于观望区 | +162% | 7.5% / 17.5% | ✅ | 3 个 | 🟢 13d |
+| [GE Vernova](/prism/global-ge-vernova/deepseek-v4-pro) (NYSE_GEV) | 1038.74 | 🔴 高于观望区 | +162% | 7.5% / 17.5% | ✅ | 3 个 | 🟢 14d |
 | [上海瀚讯](/prism/cn-shanghai-hanxun/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [国博电子](/prism/cn-guobo-electronics/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [铖昌科技](/prism/cn-chengchang-tech/deepseek-v4-pro) (SZSE_001270) | 145.80 | 🟡 观望 | +46% | 1.5% / 4.0% | ✅ | 2 个 | 🟢 13d |
+| [铖昌科技](/prism/cn-chengchang-tech/deepseek-v4-pro) (SZSE_001270) | 145.80 | 🟡 观望 | +46% | 1.5% / 4.0% | ✅ | 2 个 | 🟢 14d |
 | [兴业银锡](/prism/cn-xingye-yinxi/deepseek-v4-pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 
 ## 公司详情
+
+### 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) (US_FUTU)
+
+**买入框**
+
+| 区间 | 价格 |
+|------|------|
+| 🟢 强力买入 | ≤ 85 |
+| 🔵 可建仓 | 85 – 120 |
+| 🟡 观望 | 120 – 150 |
+| 🔴 高于观望 | > 150 |
+| **当前** | **104.07**（2026-05-29）→ 🔵 可建仓 |
+
+**估值矩阵**
+
+| 估值模型 | Bull 公允值 | Base 公允值 | Bear 公允值 |
+|---------|----------|----------|----------|
+| 反推 PE / 隐含增长 | 170–195 | 120–145 | 70–85 |
+| 同业相对倍数 (vs TIGR/IBKR/HOOD/SCHW) | 170–195 | 115–140 | 70–85 |
+| 分部加总 (非大陆持续经营 + 一次性罚没 - 大陆清退) | 125–150 | 110–135 | 85–105 |
+
+**近期路标（60天内）**
+
+- **2026-Q2** 2026 Q2 业绩会披露大陆口径 + 罚没是否计提  （多：大陆收入/利润占比 <=15%、罚没一次性落定 / 空：大陆利润占比 >25%、罚没追溯扩大）
+- **2026** 美联储 2026 降息节奏  （多：降息温和、利息收入靠证券借贷/规模扛住 / 空：累计降息 >=100bp 且利息收入 YoY 转负）
+
+---
 
 ### 荣昌生物 (RemeGen, SSE 688331 / HKEX 09995) (SSE_688331)
 
@@ -76,34 +103,7 @@
 **近期路标（60天内）**
 
 - **2026-05-01** SIPs odd-lot 数据开始公开  （多：媒体/学术未抓 HOOD 负面 / 空：HOOD odd-lot 占比高 → 执行质量被质疑）
-
----
-
-### 富途控股 FUTU (US_FUTU)
-
-**买入框**
-
-| 区间 | 价格 |
-|------|------|
-| 🟢 强力买入 | ≤ 80 |
-| 🔵 可建仓 | 65 – 80 |
-| 🟡 观望 | 80 – 110 |
-| 🔴 高于观望 | > 110 |
-| **当前** | **104.07**（2026-05-29）→ 🟡 观望 |
-
-**估值矩阵**
-
-| 估值模型 | Bull 公允值 | Base 公允值 | Bear 公允值 |
-|---------|----------|----------|----------|
-| Reverse PE-DCF | 148–187 | 97–130 | 73–87 |
-| 同业横截面 | 228–258 | 104–187 | 83–104 |
-| NAV/SOTP | 130–150 | 113–113 | 85–95 |
-
-**近期路标（60天内）**
-
-- **2026-06-05** CSRC 正式罚款决定  （多：罚款 ≤ 0% 上调，无新增条款 / 空：上调 ≥ 30% 或追加营业资格限制）
-- **2026-06-30** FUTU 2026 Q1 收入披露（10-Q）  （多：Commission +25%+ 同步 IBKR / 空：Commission < +15%）
-- **2026-Q3** SCHW 加密上线时间表  （多：推迟到 2027 / 空：提前到 2026 H2）
+- **2026-07-31** HOOD Q2 2026 财报  （多：收入 +20%+ / Net Income 回升 +15% / 空：收入 <+15% / Net Income +5% 以内）
 
 ---
 
@@ -194,49 +194,66 @@
 
 ## ⏰ 路标日历（60 天内）
 
+- **2026** [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)] 美联储 2026 降息节奏
 - **2026-05-01** [Robinhood Markets (HOOD)] SIPs odd-lot 数据开始公开
 - **2026-06** [全球固态电池行业] CATL IR 5 场系列电话会
 - **2026-06-01** [Constellation Energy] FERC CIR 豁免裁决
-- **2026-06-05** [富途控股 FUTU] CSRC 正式罚款决定
 - **2026-06-17** [全球固态电解质+锂金属上游] 出光兴产有報披露中计 2026-2030 capex 节奏 + 硫化锂千吨级时点
 - **2026-06-30** [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)] 控股股东 + 核心技术人员锁仓到期
-- **2026-06-30** [富途控股 FUTU] FUTU 2026 Q1 收入披露（10-Q）
 - **2026-06-30** [中国商业航天] 朱雀三号 H1 遥二箭回收试验
 - **2026-07** [GE Vernova] GEV Q2 2026 季报（GM 是否突破 20%？HA-Turbine 订单≥10 台/季？）
 - **2026-07** [GE Vernova] 云厂商 Q2 季报（AMZN/MSFT/GOOGL CAPEX 是否维持 >40% 增速）
 - **2026-07** [AI 数据中心能源基础设施] 四大云厂商 Q2 2026 季报 CAPEX 指引
 - **2026-07** [AI 数据中心能源基础设施] GEV Q2 2026 季报（燃气轮机订单 GW 数）
-- **2026-07** [人形机器人行业] Tesla Q2 2026 财报（Optimus 出货/部署数据披露）
 - **2026-07** [AI算力基础设施行业] 四大云厂商 Q2 2026 季报 CAPEX 指引（AMZN/MSFT/GOOGL/META）
 - **2026-07-08** [全球量子计算与量子模拟产业] IonQ lock-up 第一批解禁
 - **2026-07-25** [全球固态电池行业] QuantumScape 2026 Q2 财报
+- **2026-07-31** [Robinhood Markets (HOOD)] HOOD Q2 2026 财报
+- **2026-Q2** [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)] 2026 Q2 业绩会披露大陆口径 + 罚没是否计提
 - **2026-Q2** [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)] AbbVie USD650M 上付到账（监管审批通过）
 - **2026-Q2** [铖昌科技] 十五五规划发布
 - **2026-Q2** [AI辅助药物研发与基因编辑] VRTX Q2 10-Q Casgevy 收入 + 漏斗披露
 - **2026-Q2** [行星滚柱丝杠/线性执行器] Tesla Optimus 2026 生产计划更新（Q1/Q2 财报电话会）
 - **2026-Q2** [先进封装 CoWoS/SoIC] TSMC Q2 2026 法说会（CoWoS 产能利用率是否 >95%？AI 封装收入增速？）
 - **2026-Q3** [荣昌生物 (RemeGen, SSE 688331 / HKEX 09995)] 2026 半年报披露（扣非主业是否突破盈亏平衡）
-- **2026-Q3** [富途控股 FUTU] SCHW 加密上线时间表
 - **2026-Q3** [GE Vernova] GEV Q3 2026 季报（全年指引上调？Electrification 有机增速拆分披露？）
 - **2026-Q3** [铖昌科技] 铖昌 2026 半年报
 - **2026-Q3** [AI辅助药物研发与基因编辑] NTLA Q2 10-Q HAE BLA 进度
 - **2026-Q3** [AI辅助药物研发与基因编辑] BEAM Q2 10-Q BEAM-302 pivotal 准备
-- **2026-Q3** [全球固态电池设备链] CATL 凝聚态首批交付 + 设备供应商名单
-- **2026-Q3** [全球固态电池设备链] 蔚来 ET9 + 智己 LS9 + 比亚迪汉 L 月销月报（半固态 K4）
-- **2026-Q3** [全球固态电池设备链] 海目星 / 先导 固态电池设备首单交付公告
 - **2026-Q3** [全球固态电池行业] 蔚来 ET9 / 智己 LS9 半固态车型月销月报
 - **2026-Q3** [全球固态电池行业] 海目星 / 先导固态电池设备首单交付公告
 - **2026-Q3** [行星滚柱丝杠/线性执行器] 贝斯特 2026 半年报（丝杠收入和毛利率披露）
 - **2026-Q3** [AI 数据中心能源基础设施] IEA 2026 Electricity 市场报告更新（数据中心电力需求预测修订）
 - **2026-Q3** [先进封装 CoWoS/SoIC] ASE/Amkor Q3 季报封装收入增速及大客户公告
-- **2026-Q3** [人形机器人行业] 优必选 Walker S1 比亚迪工厂复购公告
 - **2026-Q3** [AI算力基础设施行业] IEA/BloombergNEF 全球 AI 电力消耗数据更新
 - **2026-Q3** [卫星通信载荷] GW/千帆首批大规模招标结果公告
 - **2026-Q3** [卫星通信载荷] 铖昌科技/国博电子半年报披露星载收入占比
 
 ## 行业层：竞技场选择
 
-### 中国创新药行业 [🟢 0d]
+### 人形机器人行业 (Global Humanoid Robot) [🟢 0d]
+
+**深度研究竞技场（Deep）**
+
+| 竞技场 | 综合评分 | 已建 topic | 核心逻辑 |
+|--------|---------|-----------|---------|
+| 行星滚柱丝杠 | 3.9 | [✓](/prism/global-roller-screw/deepseek-v4-pro) | 价值量最大(BOM 31%)+国产化最弱(~19%)+命门3所在，国产高端突破=最大alpha；深挖≠现价买入，纯玩家估 |
+
+**观察竞技场（Watch）**
+
+| 竞技场 | 综合评分 | 升级触发器 |
+|--------|---------|----------|
+| 谐波减速器 | 3.4 | 绿的谐波 PE 回落至 <150x; 人形/具身收入占比披露 >10% |
+| 电机(无框力矩+空心杯) | 3.3 | 国产空心杯拿到北美整机定点放量; 鸣志电器净利同比转正 |
+| 六维力/力矩传感器 | 3.7 | 出现可投的六维力纯标的; 国产六维力批量化供货突破 |
+| 灵巧手(总成) | 3.4 | DOF与触觉量产路线收敛; 头部整机锁定灵巧手供应商 |
+| RV/行星减速器 | 3.1 | 环动科技科创板IPO招股书披露人形定点/收入; RV在人形重载关节装机量提升 |
+
+**淘汰（Eliminated）**：整机/本体
+
+---
+
+### 中国创新药行业 [🟢 1d]
 
 **深度研究竞技场（Deep）**
 
@@ -257,7 +274,7 @@
 
 ---
 
-### 中国商业航天 [🟢 4d]
+### 中国商业航天 [🟢 5d]
 
 **深度研究竞技场（Deep）**
 
@@ -278,7 +295,7 @@
 
 ---
 
-### 全球量子计算与量子模拟产业 [🟢 8d]
+### 全球量子计算与量子模拟产业 [🟢 9d]
 
 **深度研究竞技场（Deep）**
 
@@ -301,7 +318,7 @@
 
 ---
 
-### AI辅助药物研发与基因编辑 [🟢 8d]
+### AI辅助药物研发与基因编辑 [🟢 9d]
 
 **深度研究竞技场（Deep）**
 
@@ -323,7 +340,7 @@
 
 ---
 
-### 全球固态电池行业 [🟢 11d]
+### 全球固态电池行业 [🟢 12d]
 
 **深度研究竞技场（Deep）**
 
@@ -344,28 +361,7 @@
 
 ---
 
-### 人形机器人行业 [🟢 13d]
-
-**深度研究竞技场（Deep）**
-
-| 竞技场 | 综合评分 | 已建 topic | 核心逻辑 |
-|--------|---------|-----------|---------|
-| 行星滚柱丝杠/线性执行器 | 4.2 | [✓](/prism/global-humanoid-roller-screw/deepseek-v4-pro) | 81%进口依赖意味着近乎寡头的供给侧格局，利润池有"行业增长+国产替代"双重驱动，估值尚未过度定价 |
-
-**观察竞技场（Watch）**
-
-| 竞技场 | 综合评分 | 升级触发器 |
-|--------|---------|----------|
-| 谐波减速器/旋转执行器 | 3.4 | 绿的谐波PE回调至40-60x区间; 公司正式公告获得Tesla Optimus执行器订单 |
-| 空心杯电机/灵巧手 | 3.0 | 鸣志或国产厂商宣布获得整机厂灵巧手电机批量订单; 灵巧手技术路线收敛（外购vs自研格局清晰化） |
-| 整机制造 | 3.0 | 宇树科技IPO招股书公开; 某整机厂实现千台级出货且客户复购 |
-| 碳纤维/轻量化结构件 | 2.6 | 某碳纤维/复材公司明确披露人形机器人结构件订单; 整机厂公布轻量化方案供应商 |
-
-**淘汰（Eliminated）**：感知系统/传感器
-
----
-
-### AI算力基础设施行业 [🟢 13d]
+### AI算力基础设施行业 [🟢 14d]
 
 **深度研究竞技场（Deep）**
 
@@ -389,6 +385,33 @@
 ---
 
 ## 竞技场层：公司排名
+
+### 行星滚柱丝杠 (Planetary Roller Screw) [⚪ ?d]
+
+*暂无 10 sidecar，请运行 workflow 10。*
+
+---
+
+### 全球固态电池设备链（卖铲人漏斗） [🟢 0d]
+
+**入围（Shortlist）**
+
+| 公司 | 代码 | 评分 | 已建 topic | 一句话逻辑 |
+|------|------|------|-----------|-----------|
+| 先导智能 | SZSE_300450 | 4.4 | [✓](/prism/cn-leadex-300450/deepseek-v4-pro) | 固态整线兑现最确定载体，龙头+海外护城河(毛利40.75%)+董秘亲证单GWh价值量5亿+，PS5.7已price-in但靠订单先行指标(Q |
+| 利元亨 | SSE_688499 | 3.8 | [✓](/prism/cn-yuanli-heng-688499/deepseek-v4-pro) | K5硬过滤里少数通过的弹性整线选项(应收0.32x/现金流+665%)，扭亏+全固态全工艺+等静压；存货堰塞(产销2.26x)是必盯风险，P |
+
+**观察（Watch）**
+
+| 公司 | 代码 | 评分 | 升级触发器 |
+|------|------|------|----------|
+| 赢合科技 | SZSE_300457 | 3.0 | 固态干法设备带金额订单披露; 固态收入占比突破5%; PS从1.7向同业(2.9-5.7)收敛说明市场开始给固态期权定价 |
+| 海目星 | SSE_688559 | 2.5 | 1年以上应收账龄连续两期下降(当前47.83%恶化); 经营现金流持续转正且不靠预收款堆砌; 2GWh固态量产线订单披露 |
+| 联赢激光 | SSE_688518 | 2.7 | 全固态装配线获重复订单; 激光焊接单机在固态产线的单GWh价值量提升证据 |
+
+**淘汰（Eliminated）**：~~信宇人~~
+
+---
 
 ### 中国PD-1/VEGF双抗 arena [⚪ ?d]
 
@@ -420,7 +443,7 @@
 
 ---
 
-### GLP-1 减肥药 [🟢 5d]
+### GLP-1 减肥药 [🟢 6d]
 
 *暂无 10 sidecar，请运行 workflow 10。*
 
@@ -438,7 +461,7 @@
 
 ---
 
-### In vivo CRISPR/base editing 罕见病 (HAE/AATD/HSD) [🟢 8d]
+### In vivo CRISPR/base editing 罕见病 (HAE/AATD/HSD) [🟢 9d]
 
 **入围（Shortlist）**
 
@@ -463,7 +486,7 @@
 
 ---
 
-### 全球固态电解质+锂金属上游 [🟢 9d]
+### 全球固态电解质+锂金属上游 [🟢 10d]
 
 **入围（Shortlist）**
 
@@ -491,29 +514,7 @@
 
 ---
 
-### 全球固态电池设备链 [🟢 10d]
-
-**入围（Shortlist）**
-
-| 公司 | 代码 | 评分 | 已建 topic | 一句话逻辑 |
-|------|------|------|-----------|-----------|
-| 先导智能 | SZSE_300450 | 4.5 | [✓](/prism/cn-leadex-300450/deepseek-v4-pro) | 全产业链最早受益的卖铲人 CR1，路线无关 + 海外 21.66% 高毛利双驱动，估值最便宜（2026E PE 24.4x），2026-20 |
-| 利元亨 | SHA_688499 | 4.0 | [✓](/prism/cn-yuanli-heng-688499/deepseek-v4-pro) | 全固态整线 + 等静压双引擎扭亏成长股；应收/收入 0.32x 行业最优 + OCF +665%；2026E PE 69.4x 反映扭亏 + |
-| 联赢激光 | SHA_688518 | 3.5 | [✓](/prism/cn-lianying-laser-688518/deepseek-v4-pro) | 细分激光焊接龙头 + 整线装配二号位；订单弹性 +70% 已爆发，利润弹性 +1% 滞后但路径明确，2026 H1 报毛利率拐点是关键 ca |
-
-**观察（Watch）**
-
-| 公司 | 代码 | 评分 | 升级触发器 |
-|------|------|------|----------|
-| 海目星 | SHA_688559 | 2.5 | 2026 H1 应收 1 年以上账龄稳定在 50-55% 不进一步恶化; 欣界能源 2 GWh 量产线第二期订单或第二个 |
-| 曼恩斯特 | SZSE_301325 | 3.0 | 2026 H1 收入与净利数据披露; 涂布机+模头组合订单与先导/利元亨配套关系清晰; 固态产线模头适配公告 |
-| 纳科诺尔 | BSE_832522 | 3.0 | 2026 H1 / 中报披露干法订单单价; 等静压客户名单与利元亨重叠度披露; 北交所流动性折价缩窄至 PE 接近行业均 |
-
-**淘汰（Eliminated）**：信宇人
-
----
-
-### 行星滚柱丝杠/线性执行器 [🟢 13d]
+### 行星滚柱丝杠/线性执行器 [🟢 14d]
 
 **入围（Shortlist）**
 
@@ -540,7 +541,7 @@
 
 ---
 
-### AI 数据中心能源基础设施 [🟢 13d]
+### AI 数据中心能源基础设施 [🟢 14d]
 
 **入围（Shortlist）**
 
@@ -560,7 +561,7 @@
 
 ---
 
-### 先进封装 CoWoS/SoIC [🟢 13d]
+### 先进封装 CoWoS/SoIC [🟢 14d]
 
 **入围（Shortlist）**
 
@@ -585,7 +586,7 @@
 
 ---
 
-### 卫星通信载荷 [🟢 13d]
+### 卫星通信载荷 [🟢 14d]
 
 **入围（Shortlist）**
 
@@ -620,14 +621,17 @@
 | `global-tech` | GE Vernova, AI 数据中心能源基础设施, AI算力基础设施行业 | 3 |
 | `china-defense` | 铖昌科技, 中国商业航天, 卫星通信载荷 | 3 |
 | `energy-infrastructure` | GE Vernova, AI 数据中心能源基础设施 | 2 |
+| `solid-state-battery` | 全球固态电池设备链（卖铲人漏斗）, 全球固态电池行业 | 2 |
+| `ev-supply-chain` | 全球固态电池设备链（卖铲人漏斗）, 全球固态电池行业 | 2 |
+| `picks-and-shovels` | 全球固态电池设备链（卖铲人漏斗）, 全球固态电池行业 | 2 |
+| `humanoid-robot` | 人形机器人行业 (Global Humanoid Robot), 行星滚柱丝杠/线性执行器 | 2 |
 | `china-commercial-space` | 中国商业航天, 卫星通信载荷 | 2 |
-| `solid-state-battery` | 全球固态电池设备链, 全球固态电池行业 | 2 |
-| `picks-and-shovels` | 全球固态电池设备链, 全球固态电池行业 | 2 |
-| `china-tech` | 全球固态电池设备链, 全球固态电池行业 | 2 |
-| `ev-supply-chain` | 全球固态电池设备链, 全球固态电池行业 | 2 |
-| `humanoid-robot` | 行星滚柱丝杠/线性执行器, 人形机器人行业 | 2 |
-| `china-robotics` | 行星滚柱丝杠/线性执行器, 人形机器人行业 | 2 |
 | `semiconductor` | 先进封装 CoWoS/SoIC, AI算力基础设施行业 | 2 |
+| `china-adr` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
+| `internet-brokerage` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
+| `hk-fintech` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
+| `cross-border-regulation` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
+| `crypto-optionality` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
 | `cn-biotech-bd-out` | 荣昌生物 (RemeGen, SSE 688331 / HKEX 09995) | 1 |
 | `adc-disitamab` | 荣昌生物 (RemeGen, SSE 688331 / HKEX 09995) | 1 |
 | `autoimmune-rc18` | 荣昌生物 (RemeGen, SSE 688331 / HKEX 09995) | 1 |
@@ -639,11 +643,6 @@
 | `prediction-markets` | Robinhood Markets (HOOD) | 1 |
 | `super-app` | Robinhood Markets (HOOD) | 1 |
 | `pfof-regulation` | Robinhood Markets (HOOD) | 1 |
-| `cross-border-broker` | 富途控股 FUTU | 1 |
-| `china-policy-risk` | 富途控股 FUTU | 1 |
-| `hk-financial` | 富途控股 FUTU | 1 |
-| `crypto-broker` | 富途控股 FUTU | 1 |
-| `fintech-asia` | 富途控股 FUTU | 1 |
 | `ai-infrastructure` | Constellation Energy | 1 |
 | `us-nuclear` | Constellation Energy | 1 |
 | `hyperscaler-ppa` | Constellation Energy | 1 |
@@ -651,6 +650,11 @@
 | `pjm-capacity` | Constellation Energy | 1 |
 | `satellite-comm` | 铖昌科技 | 1 |
 | `china-smallcap` | 铖昌科技 | 1 |
+| `equipment` | 全球固态电池设备链（卖铲人漏斗） | 1 |
+| `china-equipment` | 全球固态电池设备链（卖铲人漏斗） | 1 |
+| `actuator-supply-chain` | 人形机器人行业 (Global Humanoid Robot) | 1 |
+| `china-localization` | 人形机器人行业 (Global Humanoid Robot) | 1 |
+| `robotics-automation` | 人形机器人行业 (Global Humanoid Robot) | 1 |
 | `china-innovative-drug` | 中国创新药行业 | 1 |
 | `biopharma` | 中国创新药行业 | 1 |
 | `adc` | 中国创新药行业 | 1 |
@@ -677,12 +681,11 @@
 | `base-editing` | AI辅助药物研发与基因编辑 | 1 |
 | `biotech-platform` | AI辅助药物研发与基因编辑 | 1 |
 | `bp-takeout` | AI辅助药物研发与基因编辑 | 1 |
-| `battery-equipment` | 全球固态电池设备链 | 1 |
-| `cn-equipment` | 全球固态电池设备链 | 1 |
+| `china-tech` | 全球固态电池行业 | 1 |
 | `us-spac-bust` | 全球固态电池行业 | 1 |
+| `china-robotics` | 行星滚柱丝杠/线性执行器 | 1 |
 | `precision-manufacturing` | 行星滚柱丝杠/线性执行器 | 1 |
 | `advanced-packaging` | 先进封装 CoWoS/SoIC | 1 |
-| `global-robotics` | 人形机器人行业 | 1 |
 | `satellite` | 卫星通信载荷 | 1 |
 
 ## 🟡 数据过期提醒（>45 天）

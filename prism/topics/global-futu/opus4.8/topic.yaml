@@ -1,0 +1,183 @@
+slug: global-futu
+display_name: 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)
+type: company
+created: '2026-05-31T17:03:16.647852+00:00'
+status: active
+stage: 05-critic-review
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 富途控股现价是否值得买入或做空
+  depth: deep
+  ticker: US_FUTU
+  market: US
+  extra_tickers:
+  - HKEX_03588
+  extra_markets:
+  - HKEX
+  short_name: 富途控股
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-05-31T17:31:42.973999+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-11c36c
+    - mat-50b810
+    - mat-6dcbc7
+    - mat-7d7192
+    - mat-a596c8
+    - mat-a8e4f0
+    - mat-d2f5c8
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 3
+    last_updated: '2026-06-01T07:59:04.736869+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-11c36c
+    - mat-50b810
+    - mat-6dcbc7
+    - mat-7d7192
+    - mat-a596c8
+    - mat-a8e4f0
+    - mat-b01cff
+    - mat-d2f5c8
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: null
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  07_decision_kit:
+    version: 3
+    last_updated: '2026-06-01T07:59:04.748967+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-11c36c
+    - mat-50b810
+    - mat-6dcbc7
+    - mat-7d7192
+    - mat-a596c8
+    - mat-a8e4f0
+    - mat-b01cff
+    - mat-d2f5c8
+    last_error: null
+parent_materials: []
+next_actions:
+- (可选)监控 Q1/Q2 2026 业绩补命门1 黑箱
+- 研究完成：见交付报告 + _process_notes.md
+user_todos:
+- task: (已收·待析) FUTU 2025 年报/20-F + 业绩会的分部+地域营收/利润拆解，定位大陆真实利润占比
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: 已在 materials/ (20-F + 8 份业绩会)
+  status: pending
+- task: (残留 gap) FUTU Q1 2026 业绩(2026-05-28 披露)：大陆收入拆分/罚没是否计提/Q1 付费户净增
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  source_hint: 晚于资料收集日，本轮未入库；下次监控补
+  status: pending
+- task: (已收·待析) CSRC/HKMA/CAC 跨境券商监管全时间线 + 2 年整治细则
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 已在 materials/ (CSRC 归档+CAC+6-K+6 篇新闻)
+  status: pending
+- task: (已收·待析) 同业 10-K/10-Q：IBKR/HOOD/SCHW/TIGR 估值+take rate+ARPU 五维对比
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 已在 materials/ (8 份同业 SEC 文件)
+  status: pending
+- task: (部分缺) 卖方一致预期/目标价 + 大陆敞口测算 + 利率敏感模型
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  - K6
+  source_hint: market_data 有 PE/价；卖方深度模型未收
+  status: pending
+- task: (已收) 港股 ADV/恒指月度序列(2018-2026) 做佣金 beta 回归
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 已在 materials/ (3 个 HK_INDEX csv)
+  status: pending
+- task: (可选) 美联储 2026 点阵图/降息路径
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: 公开
+  status: pending
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-05-31T17:37:00.190194+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-05-31T17:12:19.899891+00:00'
+    summary: 命门1=大陆13%账户对应多少利润(中); 命门2=CSRC是出清终局还是升级campaign第二步(低); 命门3=国际化引擎能否独立盈利支撑增长(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-31T17:37:00.190313+00:00'
+    summary: 命门1=大陆13%账户对应多少利润(中-,确认黑箱); 命门2=CSRC升级campaign尾部(低); 命门3=国际化引擎独立盈利(中+,海外3.7x兑现)
+    convergence_status: converged
+    changelog: 命门1 中→中-(黑箱不可证伪); 命门3 中→中+(海外兑现); primer 新增8.5盯盘表; 残留缺口=命门1黑箱+consensus未收
+thesis:
+  current_version: 3
+  last_updated: '2026-06-01T07:59:04.697081+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-05-31T17:12:19.891699+00:00'
+    summary: 中性偏多/监管错杀后的非对称机会(6/10)：CSRC 拟罚没 RMB18.5亿后 FUTU 腰斩至 $104/PE 11.5x，市场重定价为受损周期券商；但罚没仅触及~13%
+      入金账户、franchise(+40% 付费户/ROE 28%)未损。命门=大陆真实利润占比是否远高于 13%。
+    prescan_status: partial
+    prescan_failure_reason: 复用已有 prescan 资料(8 份 web-search+CSRC 归档+业绩会+6-K+financial/market
+      data)校准充分；唯 Q1 2026 业绩(2026-05-28 披露)晚于资料收集日(5-25)未入库 = 残留 freshness gap
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-05-31T17:36:50.548718+00:00'
+    summary: 中性偏多/监管错杀后的非对称机会(6/10)：CSRC 罚没 RMB18.5亿后腰斩至 $104/PE 11.5x(低于IBKR)，但仅触及13%入金账户，franchise(+40%户/49%净利率/海外3.7x)未损。EV≈+21%(12mo)，赔率2.9:1偏多。核心赌注=大陆13%账户对应多少利润(黑箱)。
+  - version: 1
+    stage_set_at: 05-critic-reviewed
+    set_at: '2026-05-31T17:46:48.708904+00:00'
+    summary: 中性偏多但优势边际化/审慎试探的错杀机会(5/10)：CSRC 罚没 RMB18.5亿后腰斩至 $104/PE 11.5x，franchise(+40%户/49%净利率)未损但大陆真实利润占比是黑箱、罚没金额反向提示偏空。对抗式评审后
+      EV +21%→+8%(bear拉宽)、赔率1.6:1。建议试探仓≤1.5%或观望，待 Q2 财报验证命门1。
+  - version: 2
+    stage_set_at: '2026-06-01'
+    set_at: '2026-06-01T07:00:29.243921+00:00'
+    summary: '偏多/被一次性罚没错杀的高质量复利机器 6/10; EV +15% 赔率2:1; 现价$104 可建仓; 命门1 大陆精确利润占比残留黑箱;
+      首仓<=2.5% 起或观望. v2 补 Q1 2026(mat-ebfa48): 撤回回购零执行红旗(实回购US$418M)+坐实罚没一次性(ex-penalty净利+36%)+命门1偏空捅开'
+    prescan_status: partial
+    prescan_failure_reason: '单点 web 补料(Q1 2026 业绩+卖方$150目标)已回补首轮遗漏, 非全量 prescan; 残留:
+      大陆精确利润占比 + 官方卖方一致预期未覆盖'
+  - version: 3
+    stage_set_at: 05-critic-review
+    set_at: '2026-06-01T07:59:04.697205+00:00'
+    summary: 偏多/被一次性罚没错杀的高质量复利机器 6/10（EV≈+15%，赔率~2:1）；Q1 一手 SEC EX-99.1 复核：硬数全对，命门1
+      偏空降为二手未证、黑箱未缩小

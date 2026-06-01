@@ -1,0 +1,73 @@
+slug: global-ssb-equipment
+variant: claude-opus-4-8
+topic_type: arena
+display_name: 全球固态电池设备链（卖铲人漏斗）
+generated: 2026-06-01T13:45:00+08:00
+data_freshness: 2025年报(2026-03/04) + 先导董秘股东会(2026-05-26) + 估值akshare(2026-05-29)
+data_freshness_basis: 5份设备厂2025年报 + mat-cc96dd先导董秘 + financial_data/market_data
+
+companies:
+  - name: 先导智能
+    ticker: SZSE_300450
+    score: 4.4
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-leadex-300450
+    thesis_one_liner: 固态整线兑现最确定载体，龙头+海外护城河(毛利40.75%)+董秘亲证单GWh价值量5亿+，PS5.7已price-in但靠订单先行指标(Q1+60%)持有
+    upgrade_triggers: []
+    quarantine: false
+  - name: 利元亨
+    ticker: SSE_688499
+    score: 3.8
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-yuanli-heng-688499
+    thesis_one_liner: K5硬过滤里少数通过的弹性整线选项(应收0.32x/现金流+665%)，扭亏+全固态全工艺+等静压；存货堰塞(产销2.26x)是必盯风险，PE168x是基数失真非真贵(PS3.0)
+    upgrade_triggers: []
+    quarantine: false
+  - name: 赢合科技
+    ticker: SZSE_300457
+    score: 3.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 固态干法设备带金额订单披露
+      - 固态收入占比突破5%
+      - PS从1.7向同业(2.9-5.7)收敛说明市场开始给固态期权定价
+    quarantine: false
+  - name: 海目星
+    ticker: SSE_688559
+    score: 2.5
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 1年以上应收账龄连续两期下降(当前47.83%恶化)
+      - 经营现金流持续转正且不靠预收款堆砌
+      - 2GWh固态量产线订单披露客户名与金额
+    quarantine: false
+  - name: 联赢激光
+    ticker: SSE_688518
+    score: 2.7
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 全固态装配线获重复订单
+      - 激光焊接单机在固态产线的单GWh价值量提升证据
+    quarantine: false
+  - name: 信宇人
+    ticker: SSE_688573
+    score: 1.6
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: true
+
+cluster_tags: [solid-state-battery, equipment, ev-supply-chain, china-equipment, picks-and-shovels]
