@@ -40,14 +40,17 @@
 - 现象：get_peer_comparison_data_by_tickers 对每个 ticker 打几十行 "unmapped CN column '房地产销售收入'..." stderr。
 - 影响：污染上下文，需 `2>/dev/null` 过滤才能看结构化返回。
 - 优化点：未映射列降为 debug 级或汇总一行。
+- **✅ 已修**：`fetch_financials_cn.py` `_df_to_rows` 的 per-行 per-列 `log.warning` → 循环内收进 `unmapped` set、循环后一行 `log.debug` 汇总。默认 WARNING 级下完全静默；`-v` debug 时仍可见漏映射列名。未映射本是设计预期（akshare 返全字段、CN_COL_MAP 只映常用项），错在用了 warning 级。真异常 warning（缺报告日/行解析失败/无报表）不受影响。
 
 ### P6 [文档不符] get_peer_comparison_data_by_tickers 需 'key' 字段
 - 现象：funnel 文档示例只传 {ticker,market,name}，实际函数 `p["key"]` 必填，漏传 KeyError。
 - 优化点：文档示例补 'key' 字段，或函数 fallback 用 name。
+- **✅ 已修（根因比日志写的窄）**：核查后发现文档**没错**——传 `name` 的两处示例属于兄弟函数 `market_data.get_valuation_context_by_tickers`（它本来就 `.get("name") or ticker`），唯一调本函数的 `_peer_matrix_spec.md` 示例用的就是 `key`。真摩擦是两兄弟函数在文档里挨着、key/name 口径不一致易**串线**致 KeyError。修法：给 `get_peer_comparison_data_by_tickers` 加 fallback `p.get("key") or p.get("name") or p.get("ticker") or "?"`，与兄弟函数口径对齐，name/key 怎么传都不炸。`key` 全程只做输出标签、不参与抓取，纯装饰性容错零功能风险。文档未动。
 
 ### P7 [gap 语义] industry-financial-arc 拉了 API 仍报缺
 - 现象：环①已调 financial_data 拉多年弧线并写进 case，但 gap detector 仍列 industry-financial-arc(环1)。属 api_pending（非红、设计如此——结构化项不作为 material 计入 ring 覆盖），但每次体检都出现易误判为"漏做"。
 - 优化点：gap report 对 api_pending 项显式标 "(api_pending, 已合成期拉取)" 与真红项区分（🔴 已区分，但文字仍混在"缺输入"行）。
+- **✅ 已修**：数据层早已分开（api_pending 不进 uncovered 红列表、report 独立 `📈` 行印），日志说"混在缺输入行"已不成立。真病根是 `📈` 行措辞"**待合成期拉数**"带待办语气 → 环①已拉完写进 case 仍照列、误判漏做。`format_summary` 措辞改为"**结构化输入(API自供,非缺口)**"+ 副行"合成期由环①/②按需取数(缓存命中则免拉)，不计材料覆盖、无需补料"。"缓存命中则免拉"如实反映 `financials_cache` 的 DB-first 守卫（同财年内重调不打 API）。纯展示函数（LOW、0 上游）。
 
 ### P8 [转换] mineru 快但有瞬时失败
 - 现象：6 份研报 mineru 4 份一次成功(6-49s，比预期快)，report.pdf + 情绪向右 首轮 "parsing failed, please try again later"，report.pdf 重试 3 次才成。
@@ -57,6 +60,7 @@
 - 独立评价 subagent（以最终目标为基准）给 6.5/10，抓到**致命缺口**：研究答好了"哪个环节最有价值"(8/10)，但最终目标后半句"核心受益标的是谁"只停在 arena 层、没落到可买标的(4/10)，且回避了"最好环节恰恰最贵最难=暂时无解"的对抗。
 - **闭环修订**：据此给 case 加"核心受益标的指认"段（标的×质地×定价×弹性×介入纪律矩阵 + 整机 eliminated 边界反思），case 升 v2。eval→修订闭环跑通，证明"独立 subagent 评价"对最终质量是真有用的杠杆（不是走过场）。
 - 优化点：prism workflow 可考虑把"以最终目标为基准的独立 eval"固化为 04 收尾的必跑环（现仅 chain-critic 查链通、05-critic 查 steelman，缺"是否答到用户原始问题"这一维）。
+- **✅ 已固化（折进现有闸，不另起第四道）**：三道闸是**正交**的——chain-critic 查"链内自洽走通"、05 查"已陈述假设扛不扛反方"，两者都只评"在场的链/假设"，**结构上查不出"用户问了但没摆上来的维度"**；目标 eval 拿 `scope.question` 原文当外部尺子，正补这一维。落地：在 `_industry_funnel.md` + `_arena_funnel.md` 的 chain-critic（Step 6）加"🎯 目标达成核对"维度（贴 `scope.question` 逐子句核对是否答到可执行层，停浅=致命缺口），并接进**强制第二轮重修订门**（断链 OR 停浅必跑第二轮，且停浅修订须实打实补回答缺口如"标的指认"段、非改字），直到每子句落到可执行层才放行。company 路径不加（问题与 case 天然耦合，落差小）。
 
 ### 正面观察 [chain-critic 有效]
 - 内嵌 chain-critic（funnel Step 6）抓到一个真实硬伤：深挖档（行星滚柱丝杠）的 tier 锚定建立在"标的估值不如绿的夸张"的无数字断言上，环②定价锚表不含任何丝杠纯玩家 PE。补拉后发现五洲新春 326x/北特 135x **同样极端透支**——critic 直接纠正了一个会误导决策的乐观判断。embedded critic 的"只依文本判断"约束有效。

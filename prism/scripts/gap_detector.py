@@ -317,7 +317,11 @@ def format_summary(report: dict) -> str:
     api_pending = report.get("api_pending_inputs") or []
     if api_pending:
         lines.append(
-            f"  📈 待合成期拉数: {', '.join(e['code'] for e in api_pending)}（financial/market 自动）"
+            "  📈 结构化输入(API自供,非缺口): "
+            + ", ".join(e["code"] for e in api_pending)
+        )
+        lines.append(
+            "     └ 合成期由环①/②按需取数(缓存命中则免拉)，不计材料覆盖、无需补料"
         )
     if report.get("ring_axis_status") == "n/a":
         lines.append("  🧩 ring 轴: n/a（旧 topic，未接入拆解/rings）")

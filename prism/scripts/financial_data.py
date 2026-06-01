@@ -341,10 +341,14 @@ def get_peer_comparison_data_by_tickers(peers: list[dict[str, str]]) -> dict[str
 
     peers: [{"key": "利元亨", "ticker": "688499", "market": "SSE"}, ...]
     Returns {key: {metrics}} where key = peers[i]["key"] (display name).
+
+    `key` is only the output label (not used for fetching — ticker+market do
+    that), so callers may pass "name" or omit it entirely; falls back
+    name → ticker → "?".
     """
     out = {}
     for p in peers:
-        key = p["key"]
+        key = p.get("key") or p.get("name") or p.get("ticker") or "?"
         ticker = p.get("ticker", "")
         market = p.get("market", "")
         if not ticker or not market:

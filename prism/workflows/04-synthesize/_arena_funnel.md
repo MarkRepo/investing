@@ -243,8 +243,15 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 - primer↔case 是否有重复（case① 该甩 primer 的背景有没有甩）？
 - 跨层复用护栏（§1.3）：借来的判断标了来源吗、有没有冒充本维度自验证？
 - 源分层：findings 数字标 [mat-XXX]？
+- 🎯 **目标达成核对（最重要 · 独立于上面所有"链内"检查）**：把本 topic `scope.question` 原文逐子句贴出
+  ```bash
+  python3 -c "from prism.scripts.topic import read_topic; print(read_topic('{slug}','{variant}')['scope']['question'])"
+  ```
+  逐子句核对 case 是否答到**可执行层**。**funnel 链"自洽走通" ≠ "答到了用户的问题"**——arena 合同终点虽近"标的"（环⑥ 出 company shortlist），但仍可能停浅（只点名玩家却无定价/弹性/介入纪律 = 没到可执行层；或只判"哪条路线赢"没落到"哪家可买"）。这类盲区**前面所有链内检查与 05 steelman 都查不出**（它们只评"在场的链/假设"），必须在这一条抓。停浅即判**致命缺口**，不是扣分项。
 
-三段总评（链通不通 / 最严重 2-3 个断点 / 只补一处补哪），苛刻直接，1800 字内。按反馈修订（主 agent 直接 Edit）；首轮涉断链则跑第二轮。
+四段总评（链通不通 / 最严重 2-3 个断点 / **🎯 目标达成判定：原问题每个子句答到可执行层了吗、停浅在哪** / 只补一处补哪），苛刻直接，1800 字内。按反馈修订（主 agent 直接 Edit）。
+
+**强制重修订门（有牙，非建议）**：首轮若判**断链** OR **目标未达成（停浅）**，必须跑第二轮。其中"目标未达成"的修订**不是改字，是实打实补回答缺口**——例如把停在"路线/玩家"的结论补成可买标的指认：标的 × 质地 × 定价 × 弹性 × 介入纪律 + 被 eliminated 的边界诚实反思。补完重判，直到原问题每个子句都落到可执行层，chain-critic 才放行。
 
 **critic-review 阶段（05）**：arena 可选进 `05-critic-review` 做对抗式重审。`05-critic-review.md` Step 1 已按 type 读 `a_arena_case.md`、rewrite_keys 用 `a_arena_case`。
 

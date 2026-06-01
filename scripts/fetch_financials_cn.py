@@ -68,6 +68,7 @@ def _df_to_rows(df: pd.DataFrame, ticker: str, market: str) -> dict[str, dict]:
         log.warning("DataFrame has no 报告日 column; skipping")
         return {}
     out: dict[str, dict] = {}
+    unmapped: set[str] = set()
     for _, r in df.iterrows():
         rd = str(r["报告日"])[:10]
         rtype = str(r.get("类型", "")).strip()
@@ -88,7 +89,11 @@ def _df_to_rows(df: pd.DataFrame, ticker: str, market: str) -> dict[str, dict]:
                 continue
             snake = cfg.CN_COL_MAP.get(col)
             if snake is None:
-                log.warning("%s: unmapped CN column %r (value=%r)", ticker, col, val)
+                # akshare returns the full statement incl. industry-specific
+                # line items prism deliberately doesn't map. Expected, not an
+                # error — collect names and summarize once at debug level
+                # instead of warning per-row (was P5 context spam).
+                unmapped.add(str(col))
                 continue
             if snake.startswith("_"):
                 continue
@@ -97,6 +102,8 @@ def _df_to_rows(df: pd.DataFrame, ticker: str, market: str) -> dict[str, dict]:
             except (TypeError, ValueError):
                 row[snake] = None
         out[period] = row
+    if unmapped:
+        log.debug("%s: %d unmapped CN columns: %s", ticker, len(unmapped), sorted(unmapped))
     return out
 
 
