@@ -1,13 +1,20 @@
-"""Download A-share financial reports from cninfo into prism/inbox/auto/.
+"""多市场财报抓取路由器 → prism/inbox/auto/（或带 --slug 时入 topic materials）。
 
-Wraps the same cninfo API logic as the fetch-reports skill, callable from code.
+按 ticker 格式自动路由（见 _route）：
+    US  (NVDA / FUTU)      → SEC EDGAR：10-K / 10-Q / 20-F / 6-K / 40-F + 8-K + efts 全文搜索
+                             （6-K/8-K 自动取 EX-99.1 业绩稿附件，非封面壳）
+    CN  (SZSE_300750)      → cninfo（A 股年报/半年报/季报 + 高信号公告）
+    HK  (HKEX_02228)       → HKEXnews（零 key，annual/semi/prospectus）
+    UK  (LSE_OXIG)         → FCA NSM（零 key）
+    KR  (006400/KRX_…)     → DART
+    JP  (5019/EDINET_…)    → TDnet 決算短信 / EDINET v2
 
 Usage:
-    python -m scripts.fetch_report_prism SSE_688066
-    python -m scripts.fetch_report_prism SSE_688066 --year 2024
-    python -m scripts.fetch_report_prism SSE_688066 --type annual --year 2024
+    python -m scripts.fetch_report_prism FUTU                      # 美股 ADR：SEC 全套
+    python -m scripts.fetch_report_prism SSE_688066 --year 2024    # A 股年报
+    python -m scripts.fetch_report_prism HKEX_02228 --type semi    # 港股中期
     # With prism integration (registers manifest + updates todos):
-    python -m scripts.fetch_report_prism SSE_688066 --year 2024 --slug cn-commercial-space
+    python -m scripts.fetch_report_prism FUTU --slug global-futu --variant opus4.8
 
 Returns the downloaded file path (printed to stdout).
 
@@ -370,6 +377,61 @@ _SEC_FORM_TO_REPORT_TYPE = {
 }
 
 
+def _pick_filing_doc(cik_num: str, acc_dir: str, form: str, primary_doc: str, ua: str) -> tuple[str, bool]:
+    """挑一份申报里真正该下载的文档。
+
+    10-K/10-Q/20-F/40-F：primaryDocument 本身就是正文 → 直接返回。
+    6-K/8-K：primaryDocument 往往只是封面壳（如 tm…_6k.htm，几 KB），真正的业绩稿在
+        EX-99.1 附件里（可达几百 KB）。读 filing index.json，优先选 ex99-1、否则取最大的
+        .htm（排除封面壳与 R 系列 XBRL 文件），以拿到实际财务表。
+
+    返回 (doc_name, is_earnings_exhibit)。任何异常都回退到 primary_doc（容错，不抛）。
+    """
+    if form not in {"6-K", "8-K"}:
+        return primary_doc, False
+    import json
+    import urllib.request
+    try:
+        idx_url = f"https://www.sec.gov/Archives/edgar/data/{cik_num}/{acc_dir}/index.json"
+        req = urllib.request.Request(idx_url, headers={"User-Agent": ua})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            items = json.loads(resp.read()).get("directory", {}).get("item", [])
+    except Exception as e:
+        log.warning("index.json fetch failed for %s/%s: %s — fallback to primary doc", cik_num, acc_dir, e)
+        return primary_doc, False
+    return _select_doc_from_items(items, primary_doc)
+
+
+def _select_doc_from_items(items: list[dict], primary_doc: str) -> tuple[str, bool]:
+    """从 filing index 的 item 列表里挑业绩附件（纯逻辑，便于网络无关单测）。"""
+    def _is_htm(n: str) -> bool:
+        return n.lower().endswith((".htm", ".html"))
+
+    # 1) 显式 EX-99.1 附件（按文件名）
+    ex991 = [it for it in items
+             if _is_htm(it.get("name", "")) and re.search(r"ex[-_]?99[-_.]?1", it.get("name", "").lower())]
+    if ex991:
+        ex991.sort(key=lambda it: int(it.get("size") or 0), reverse=True)
+        return ex991[0]["name"], True
+    # 2) 任意 ex99* 附件
+    ex99 = [it for it in items
+            if _is_htm(it.get("name", "")) and "ex99" in it.get("name", "").lower().replace("-", "").replace("_", "")]
+    if ex99:
+        ex99.sort(key=lambda it: int(it.get("size") or 0), reverse=True)
+        return ex99[0]["name"], True
+    # 3) 回退：最大的 .htm（排除封面壳 *_6k/_8k.htm 与 R 系列 XBRL）
+    cover = primary_doc.lower()
+    bodies = [it for it in items
+              if _is_htm(it.get("name", ""))
+              and it.get("name", "").lower() != cover
+              and not re.match(r"^r\d+\.htm", it.get("name", "").lower())
+              and not re.search(r"_[68]k\.htm", it.get("name", "").lower())]
+    if bodies:
+        bodies.sort(key=lambda it: int(it.get("size") or 0), reverse=True)
+        return bodies[0]["name"], True
+    return primary_doc, False
+
+
 def fetch_sec(
     ticker: str,
     slug: str | None = None,
@@ -427,15 +489,17 @@ def fetch_sec(
     for form, idx in targets.items():
         acc_dir = accs[idx].replace("-", "")
         cik_num = str(int(cik))
-        doc = docs[idx]
+        # 6-K/8-K：取 EX-99.1 业绩稿而非封面壳；10-K/10-Q/20-F：primaryDocument 即正文
+        doc, is_earnings = _pick_filing_doc(cik_num, acc_dir, form, docs[idx], UA)
         fd = dates_[idx]
         rd = rdates[idx]
         ext = os.path.splitext(doc)[1] or ".htm"
+        form_tag = f"{form}-earnings" if is_earnings else form
         # Backward-compat dedup: check legacy name first
-        legacy = dest_dir / f"{fd}_{ticker}_{form}_{rd}{ext}"
-        # New normalized name: {report_year}_{ticker}_{form}_{filing_date}.{ext}
+        legacy = dest_dir / f"{fd}_{ticker}_{form_tag}_{rd}{ext}"
+        # New normalized name: {report_year}_{ticker}_{form_tag}_{filing_date}.{ext}
         report_year = (rd or fd)[:4]
-        fname = f"{report_year}_{ticker}_{form}_{fd}{ext}"
+        fname = f"{report_year}_{ticker}_{form_tag}_{fd}{ext}"
         dest = dest_dir / fname
         if legacy.exists():
             log.info("%s — already exists (legacy name)", legacy.name)
@@ -609,7 +673,8 @@ def fetch_announcements_us(
             continue
         acc_dir = accs[i].replace("-", "")
         cik_num = str(int(cik))
-        doc = docs[i]
+        # 8-K：业绩稿走 EX-99.1 附件而非封面壳
+        doc, _is_earn = _pick_filing_doc(cik_num, acc_dir, "8-K", docs[i], UA)
         ext = os.path.splitext(doc)[1] or ".htm"
         fname = f"{fd}_{ticker}_announce_8K{ext}"
         dest = dest_dir / fname

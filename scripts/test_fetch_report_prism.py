@@ -355,6 +355,54 @@ def test_fetch_by_keyword_hkex_prefix_also_unsupported():
         frp.fetch_by_keyword("HKEX_09995", "重组")
 
 
+# ----- SEC 6-K/8-K 业绩附件挑选（_select_doc_from_items / _pick_filing_doc）-----
+
+
+def test_select_doc_picks_ex99_1_over_cover():
+    """6-K：封面壳 10KB + EX-99.1 业绩稿 193KB → 必须选 EX-99.1（FUTU Q1 真实场景）。"""
+    items = [
+        {"name": "tm2615605d1_6k.htm", "size": "10209"},
+        {"name": "tm2615605d1_ex99-1.htm", "size": "193109"},
+    ]
+    doc, is_earnings = frp._select_doc_from_items(items, primary_doc="tm2615605d1_6k.htm")
+    assert doc == "tm2615605d1_ex99-1.htm"
+    assert is_earnings is True
+
+
+def test_select_doc_largest_htm_when_no_ex99():
+    """无 ex99 命名时：取最大 .htm，排除封面壳 *_6k.htm 与 R 系列 XBRL。"""
+    items = [
+        {"name": "tm123_6k.htm", "size": "8000"},      # 封面壳，排除
+        {"name": "R1.htm", "size": "500000"},           # XBRL R-file，排除
+        {"name": "press_release.htm", "size": "150000"},  # 真正的稿
+        {"name": "small_note.htm", "size": "2000"},
+    ]
+    doc, is_earnings = frp._select_doc_from_items(items, primary_doc="tm123_6k.htm")
+    assert doc == "press_release.htm"
+    assert is_earnings is True
+
+
+def test_pick_filing_doc_10k_returns_primary_no_network():
+    """10-K：primaryDocument 即正文，直接返回，且不触发任何网络调用。"""
+    doc, is_earnings = frp._pick_filing_doc(
+        cik_num="1754581", acc_dir="x", form="10-K",
+        primary_doc="acme-20251231x10k.htm", ua="t test@example.com",
+    )
+    assert doc == "acme-20251231x10k.htm"
+    assert is_earnings is False
+
+
+def test_select_doc_falls_back_to_primary_when_no_htm():
+    """附件里没有可用 .htm（只有 XBRL/图片）→ 回退 primary_doc，不抛。"""
+    items = [
+        {"name": "tm999_6k.htm", "size": "9000"},
+        {"name": "logo.jpg", "size": "40000"},
+    ]
+    doc, is_earnings = frp._select_doc_from_items(items, primary_doc="tm999_6k.htm")
+    assert doc == "tm999_6k.htm"
+    assert is_earnings is False
+
+
 def test_fetch_many_calls_announcements_once_not_per_year():
     """fetch_many(years=[2022,2023,2024]) 公告只拉一次，不是每年一次。"""
     def _list(code, org_id, column, category):
