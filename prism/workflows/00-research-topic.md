@@ -56,16 +56,19 @@ slug 规则：
 
 ---
 
-## Step 3：检查是否已存在
+## Step 3：检查是否已存在（结构化查重，勿凭 `ls` 肉眼判断）
 
 ```bash
-ls prism/topics/ 2>/dev/null
+python3 -c "from prism.scripts.topic import list_variants; print(list_variants('{slug}'))"
 ```
 
-如果已有同名 slug，告知用户并询问：
-- 继续已有研究并在原变体目录下推进（运行 workflow 推进）
-- 在当前 slug 下使用不同模型创建一个新变体目录（如 `gemini`、`qwen3.6-plus`）
-- 还是创建全新研究（slug 加后缀，如 `cn-pet-industry-2`）
+- 返回 `[]` → 全新 slug，直接进 Step 4。
+- 返回非空（如 `['claude-opus-4-7']`）→ slug 已存在其他变体，**这是一个意图分叉点，必须停下问用户**（不能自行默认走某条）：
+  - **续做**旧变体：不 create，读对应 `topic.yaml` 判 stage → 跳转对应 workflow 推进。
+  - **换模型/换架构重研**（新变体）：进 Step 4 用新 variant 名创建；建后按"新变体复用旧料"流程——重注册 materials + 复制 findings 改 `mat_id` frontmatter + 回写 manifest `addresses` + `set_parent_materials` 引父级 findings（详见 memory `project_variant_reuse_gotchas`）。复用同一批料可隔离变量、让模型/架构差异可苹果对苹果对比。
+  - **另一个 topic 撞名**：slug 加后缀（如 `cn-pet-industry-2`）另起。
+
+> 兜底（[skill-routing]）：即便跳过本步直奔 Step 4，`create_topic` 在 slug 已有其他变体时会打 stderr 提示——但那是最后一道防线，本步的"停下问用户"才是正解，勿依赖兜底跳步。
 
 ---
 

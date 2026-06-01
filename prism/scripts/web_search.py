@@ -313,6 +313,8 @@ def _cmd_review_digest(args) -> int:
 
     # 1. 解析 raw json 路径：--raw-path 优先；否则 --slug 取 _websearch_raw 最新
     raw_path: Path | None = None
+    auto_picked = False        # 是否走 --slug 自动选（非显式 --raw-path）
+    n_candidates = 0           # --slug 模式下同目录候选数（>1 时自动选有歧义）
     if args.raw_path:
         p = Path(args.raw_path)
         raw_path = p if p.is_absolute() else (repo_root / p)
@@ -320,8 +322,10 @@ def _cmd_review_digest(args) -> int:
         raw_dir = (repo_root / "prism" / "topics" / args.slug
                    / "inbox" / "_websearch_raw")
         candidates = sorted(raw_dir.glob("*.json")) if raw_dir.is_dir() else []
+        n_candidates = len(candidates)
         if candidates:
             raw_path = candidates[-1]  # 名字 {ts}_{qhash}，ts ISO 可排序 → 末位最新
+            auto_picked = True
     if raw_path is None or not raw_path.is_file():
         sys.stderr.write(json.dumps({
             "status": "config_error",
@@ -345,9 +349,30 @@ def _cmd_review_digest(args) -> int:
                 "reason": f"--show 需逗号分隔整数: {args.show!r}",
             }, ensure_ascii=False) + "\n")
             return EXIT_CONFIG
+        # 溯源横幅（[adapter-snippet] 修）：把"在 digest 哪个 raw / 哪条 query / 有几条 hit"
+        # 显式打到 stdout。两个作用：①--slug 自动选恒取最新 json，prescan 多 query 秒级
+        # 连发时易选错查询——横幅让选错一眼可见，不再靠重试盲猜；②即便 idx 越界（下方），
+        # stdout 也已有内容，不再"静默空输出"（错误走 stderr，被 `| sed`/`head` 丢弃时看着像空）。
+        banner = (
+            f"# raw: {raw_path.name}  query: {payload.get('query')!r}  "
+            f"n_hits: {len(hits)}"
+        )
+        if auto_picked and n_candidates > 1:
+            banner += (
+                f"  ⚠ --slug 自动选了 {n_candidates} 个 raw 里的最新一个；"
+                f"若非你要的 query，请改用 --raw-path 显式指定"
+            )
+        sys.stdout.write(banner + "\n")
         out: list[str] = []
         for idx in idxs:
             if idx < 0 or idx >= len(hits):
+                # 同时落 stdout（可见，防 `| sed` 丢 stderr 时看着像空）+ stderr（机读）
+                msg = (
+                    f"[idx {idx} 越界：该 raw 仅 {len(hits)} 条 hit]"
+                    + ("  ← --slug 可能选到了空/别的 query，用 --raw-path 指定"
+                       if auto_picked else "")
+                )
+                sys.stdout.write(msg + "\n")
                 sys.stderr.write(json.dumps({
                     "status": "config_error",
                     "reason": f"idx {idx} 越界（n_hits={len(hits)}）",

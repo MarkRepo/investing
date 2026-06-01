@@ -12,6 +12,15 @@
 
 - `[skill-routing]` SKILL.md 路由表里「研究 X」直接路由到 `00-research-topic.md`，但本 topic 已存在（claude-opus-4-7 变体）。00 Step 3 有"已存在 slug"分支（新变体），但路由表入口没提示"先检查是否已存在"。主 agent 需自己判断走"新变体"路径。→ 建议：路由表「研究 X」行加一句"先 `ls prism/topics/` 查是否已存在 → 已存在则走 Step 3 新变体分支"。
 
+  **根因复盘**：不是缺校验，而是校验落点与分叉对不上。三层：①脚本 `create_topic` 第 268-270 行有硬校验 `FileExistsError`，但键是 `_topic_path(slug, variant)` 联合键——新变体目录天然不存在故不 raise（设计如此，否则会堵死"同 slug 建新变体"这条合法复用路径）；②"slug 已存在但变体不同"该走哪条（续做/建新变体/另起 slug）本质是**用户意图判断**，不能下沉脚本，天然只能是文档提示主 agent 去问；③真正缺口是唯一的人机确认点 Step 3 是**软性文档文字、无机械强制**，主 agent 一旦自认意图明确（如本次用户原话已给 variant+复用）就会跳过 Step 3 直奔 create_topic。路由表入口加"先 ls 查重"治标（把提示从 Step 3 前移、降跳步概率），仍是软提示。
+
+  **治本方向（两层防御纵深，应同时做，非二选一）**：两者作用在流程两个不同点、各补一个失效模式，且复用同一原语 `list_variants(slug)`（**该函数 topic.py:1196 已存在**，只是没被接进创建路径/文档）。
+  - **上游（决策点）**：路由表/Step 3 显式调 `list_variants(slug)`，把查重从 `ls` 肉眼判断变成结构化返回，三分支（续做/新变体/另起 slug）基于结构化数据呈现——挡"按顺序走 Step 3"时的判断模糊。
+  - **下游（创建兜底）**：`create_topic` 在 slug 目录已存在、但 variant 是新值时打印 stderr 提示（不 raise，不堵合法路径），消息直接调 `list_variants(slug)` 生成，如 `⚠ slug={slug} 已存在变体 {list_variants(slug)}，你正在创建新变体 {variant}——确认不是想推进旧变体? 复用旧料见 clone_variant_materials`——挡"跳过 Step 3 直奔 create_topic"时的盲建（本次正是此路径）。
+  - **为什么必须两层**：上游只改文档挡不住跳步；下游只加 stderr 则每次都拖到最后一刻提示且信息不结构化。本次故障恰是"跳步"路径，缺下游就漏。两层共用 `list_variants`，故"都做"是一个原语喂两个消费点，非双倍成本。原"轻/重"分级仅按改动量，因 `list_variants` 已存在而失去意义。
+
+  **为什么这两个查重值得做（意图）**：① `FileExistsError`（slug+variant 精确）意图=防覆盖保数据完整性，纯机械、无意图判断；② Step 3 软查重（slug 存在、variant 不同）意图=在意图模糊的分叉点归一意图，核心作用**不是防创建而是解锁复用**——只有先认出旧变体存在，才会去 clone materials/findings + set_parent，本次"不收料、复用资料"能跑通全靠这步。最终意图链：认出旧变体→复用其料→隔离变量→让"换模型/换架构重研同一 topic"的模型/架构优劣可苹果对苹果对比（本次 4-7 八维并列 vs 4-8 六环决策链的干净归因即依赖此）。
+
 - `[variant-naming]` 用户说"variant opus4.8"，但既有变体目录命名是 `claude-opus-4-7`。需主 agent 推断规范化为 `claude-opus-4-8`。→ 建议：脚本层 normalize variant 名（opus4.8 → claude-opus-4-8）或在 00 Step 1 明确命名规范。
 
 ## Step 4.5 Prescan 阶段
@@ -19,8 +28,14 @@
 - `[prescan-health]` check_prescan_health 按"已 register 的 query 批次"算 queries_with_hits=4/7=57%=partial。实际 7 条 query 都 WebSearch 成功（各 5 hits），只是 3 条 query 的 best hits 与已入库重复/低 tier，主 agent 主动没 register。→ health 把"主动不入库"误判为"无 hit"，partial 信号偏悲观。建议：register_web_search_batch 增一个"query 已跑但主动判定无需入库"的显式标记，让 health 区分"限流无 hit" vs "跑了但低质不值得入库"。
 
 - `[prescan-yield]` 12 天 drift 下 prescan 仍捞到 1 条极高价值一手口径（先导董秘股东会 mat-cc96dd：单GWh价值量5亿/2-3倍、固态占订单<5%、Q1订单+60%、转收入周期）。说明即便复用旧资料、drift 很短，prescan 对"管理层最新口径/股东会问答"这类训练知识盲区仍有不可替代价值。值得保留为硬步骤。
+  - **复核确认（2026-06-01）：这一条不是缺陷，是设计验证记录（误归在"问题与可优化点"标题下）。** 无需修复；结论=prescan 应维持为硬步骤。佐证：该料原始 raw 在 `_websearch_raw/20260531T170525Z_7a00c207.json`（query='先导智能 固态电池 订单 2026 半年报'），idx0 即《财闻在现场·股东会｜固态电池设备价值量激增，先导智能董秘称行业陷"军备竞赛"》——一手董秘口径，训练知识与年报均无。
 
 - `[adapter-snippet]` review-digest `--show 0` 偶发空输出（idx 0 时），换 `--show 0,2` 或单独 `--show 0` 重试才出。疑似 sed 管道/边界问题，非阻断但需重试。
+  - **确诊（2026-06-01，已修）**：不是 `--show` 解析 bug（现有 7 个 raw 上 `--show 0` 复现，确定性正常、不空）。真因两个叠加：
+    ① **`--slug` 恒取"最新"json**（web_search.py:322 `candidates[-1]`，help 自承"取最新"）。prescan 7 条 query 秒级连发（170509Z→170537Z），`--slug --show 0` 在 digest 哪条取决于谁最后写——故"偶发选错"。若最后写的那条恰是 0-hit query（限流/无果）→ idx0 越界 → EXIT_CONFIG。实测 case A：`--show 0` 自动选到的是"海目星/利元亨"query 而非想要的"先导董秘"query，正是此坑。
+    ② **所有错误只走 stderr + 返回 EXIT_CONFIG**（web_search.py 越界/坏路径分支）。snippet 是数 KB 单行长文，agent 为防爆上下文必 `| sed`/`head`，stderr 被丢 → config_error 看着像"静默空 stdout"。重试时 `--slug` 指向有 hit 的文件 → 内容才"出"。
+  - **修复（web_search.py `_cmd_review_digest`，LOW risk，仅 main 调用）**：(a) `--show` 输出前打一行 **stdout 溯源横幅**（`# raw: <文件名> query: <q> n_hits: N`）；`--slug` 自动选且同目录候选>1 时追加 `⚠ 自动选了 N 个里最新一个，非你要的请用 --raw-path`——选错一眼可见，不再靠重试盲猜。(b) 越界时**同时写 stdout 可见标记**（`[idx X 越界：仅 N 条 hit]`）+ 原 stderr JSON + EXIT_CONFIG 不变——`| sed` 丢 stderr 也不再像空。补 2 测试（横幅必出 / 越界 stdout 非空），10 passed。
+  - **操作侧规约**：digest 特定 query 用 `--raw-path` 显式指定，勿依赖 `--slug` 自动选最新（多 query 场景必踩）。
 
 ## Step 01/02/03 复用资料阶段
 

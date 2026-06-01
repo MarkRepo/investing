@@ -10,7 +10,7 @@ allowed-tools: Bash Read Write
 
 | 用户说 | 执行 |
 |--------|------|
-| 「研究 X」/ 「开始研究 X」 | 读 `prism/workflows/00-research-topic.md` |
+| 「研究 X」/ 「开始研究 X」 | 读 `prism/workflows/00-research-topic.md`。**先查重**：定好 slug 后跑 `list_variants('{slug}')`，非空（已存在变体）则走 00 Step 3 意图分叉（续做/新变体复用/另起 slug），勿默认盲建 |
 | 「prism 推进 {slug}」/ 「继续研究 {slug}」 | 读 `topic.yaml` 判断当前 stage，跳转对应 workflow |
 | 「生成产出 {output}」/ 「更新 {slug} 的 {output}」 | primer → 见下行 `00-primer.md`；其余产出已并入单份决策链 case，按 `topic.type` 读对应路径文档（同「合成」行），由 `_shared.md` 增量重写判定（`list_affected_outputs`）只重写受影响的环/产出。**不再有 01-08/09/10 逐产出步骤文件** |
 | 「合成 {slug}」/「生成产出 {slug}」 | 按 `topic.type` 读决策链路径文档（替代 _shared+01-08）：company → `04-synthesize/_company_case.md`；industry → `04-synthesize/_industry_funnel.md`；arena → `04-synthesize/_arena_funnel.md`。三类都是"理解先行 + 6 环决策链"，funnel 的环⑥ 折入旧 09/10 选拔 |

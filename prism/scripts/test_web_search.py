@@ -120,6 +120,28 @@ def test_digest_show_out_of_range_exit_config(raw_json):
     assert rc == 50
 
 
+# --- [adapter-snippet] 修：--show 溯源横幅 + 越界 stdout 可见（防"静默空输出"）---
+
+def test_digest_show_prints_provenance_banner(raw_json, capsys):
+    """--show 必打 stdout 溯源横幅（raw 文件名 + query + n_hits）。"""
+    p, _ = raw_json
+    rc = main(["review-digest", "--raw-path", str(p), "--show", "0"])
+    out = capsys.readouterr().out
+    assert rc == 0
+    assert p.name in out          # 在 digest 哪个 raw 文件
+    assert "demo query" in out    # 哪条 query
+    assert "n_hits: 2" in out
+
+
+def test_digest_show_out_of_range_visible_on_stdout(raw_json, capsys):
+    """越界时 stdout 也留可见标记——`| sed` 丢 stderr 时不再看着像空输出。"""
+    p, _ = raw_json
+    rc = main(["review-digest", "--raw-path", str(p), "--show", "9"])
+    out = capsys.readouterr().out
+    assert rc == 50
+    assert "越界" in out and "9" in out   # stdout 非空、点明原因
+
+
 # ---------------------------------------------------------------------------
 # drop ⇒ no finding（用户硬约束 Q5）
 # ---------------------------------------------------------------------------
