@@ -207,6 +207,7 @@ def detect_gaps(
             'training_only_claims': [...],       # placeholder, requires baseline
             'relative_updated': [...],           # 亲属成稿产出比本 topic case 新（flag-only）
             'prescan_untagged': [...],           # thesis 已就位但材料只挂 scope/占位、缺 K#（flag-only）
+            'single_source': [...],              # K# 覆盖达标但来源单一(单 source_type/域名)，注意力路由器非裁决
         }
     """
     try:
@@ -238,8 +239,13 @@ def detect_gaps(
     #   可用证据；reuse 护栏（本地复核/降信心）是合成期职责（funnel §1.3 + critic），非 gap 检测职责。
     #   实测多数 arena/company topic 的 K# 覆盖正来自父级 findings——排除 reuse 会让其误报全红。
     ev_sources: dict[str, set] = {k: set() for k in ks}
+    mat_meta: dict[str, dict] = {}
     for m in manifest.get("materials") or []:
         mid = m.get("id") or f"mat:{m.get('filename')}"
+        mat_meta[mid] = {
+            "source_type": m.get("source_type"),
+            "domain": (m.get("search_meta") or {}).get("domain"),
+        }
         for a in (m.get("addresses") or []):
             k = _addr_key(a)
             if k in ev_sources:
@@ -260,6 +266,33 @@ def detect_gaps(
 
     uncovered = [k for k in ks if evidence_count[k] == 0]
     thin = [k for k in ks if 0 < evidence_count[k] < min_evidence]
+
+    # 单源 tripwire（**注意力路由器，非充分性裁决**）：覆盖达标(≥min_evidence、不在
+    # uncovered/thin)但支撑材料塌缩到单一 source_type 或单一域名 → flag。它只能廉价地把
+    # "假绿候选"(多条但近亲)指给 critic 去**读内容**判是否真独立，不替代质性判断。
+    # 来源类型全未知则不判（无从塌缩）。与 uncovered/thin 互斥：只扫绿区。
+    single_source: list[dict] = []
+    for k in ks:
+        cnt = evidence_count[k]
+        if cnt < min_evidence:
+            continue  # uncovered/thin 已另报，不重复
+        stypes = {mat_meta.get(mid, {}).get("source_type") for mid in ev_sources[k]}
+        stypes.discard(None)
+        domain_list = [mat_meta.get(mid, {}).get("domain") for mid in ev_sources[k]]
+        domain_set = {d for d in domain_list if d}
+        reasons: list[str] = []
+        if len(stypes) == 1:
+            reasons.append(f"全部来自单一来源类型 {next(iter(stypes))}")
+        # 单域名仅在"每条都带域名(全 web)且塌缩到一个"时才报，避免 web+非web 混料误判
+        if cnt >= 2 and len(domain_set) == 1 and all(domain_list):
+            reasons.append(f"全部来自单一域名 {next(iter(domain_set))}")
+        if reasons:
+            single_source.append({
+                "k": k, "count": cnt,
+                "source_types": sorted(stypes),
+                "domains": sorted(domain_set),
+                "reason": "；".join(reasons),
+            })
 
     # 坑③ prescan-addresses-scope：thesis 已就位，但仍有材料只挂 scope/background/fact-*
     # 等 prescan 占位、无任何 K# 脊柱标签 → 自动点名提醒补标（flag-only，不 gate）。
@@ -305,6 +338,7 @@ def detect_gaps(
         "training_only_claims": training_only,
         "relative_updated": relative_updated,
         "prescan_untagged": prescan_untagged,
+        "single_source": single_source,
     }
 
 
@@ -365,7 +399,14 @@ def format_summary(report: dict) -> str:
             f"  🏷 待补 K# 标签: {len(untagged)} 条（thesis 已就位，材料仍只挂 prescan 占位；"
             f"跑 backfill_addresses_by_mapping / retag_by_filename 补 K#）"
         )
+    ss = report.get("single_source") or []
+    if ss:
+        lines.append(
+            "  🟠 单源(覆盖达标但来源单一·注意力路由器非裁决,需 critic 读内容核是否真独立): "
+            + ", ".join(f"{e['k']}({e['count']}条·{e['reason']})" for e in ss)
+        )
     if not (report["uncovered_ks"] or report["thin_evidence"]
-            or report["expired_web_materials"] or rel_upd or uri or thin_ri or untagged):
+            or report["expired_web_materials"] or rel_upd or uri or thin_ri
+            or untagged or ss):
         lines.append("  ✅ no gaps detected")
     return "\n".join(lines)

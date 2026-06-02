@@ -277,6 +277,29 @@ def _promote(family: str, host: str, topic_id: str) -> bool:
     return did_promote
 
 
+# 占位/编造 URL 守卫（修 [fabricated-url]）：主 agent 注册 web 材料时 url 必须从
+# review-digest 原样拷贝，禁止凭记忆构造。命中任一明显占位特征即视为编造 → raise，
+# 逼主 agent 回去拷真链接（占位 URL 是确定性错误，不该静默入库挂假出处）。
+# 这是纯机械校验（零 LLM），符合"脚本只做校验+写入"的分工。
+_PLACEHOLDER_URL_PATTERNS: tuple[tuple[str, str], ...] = (
+    (r"[xX]{4,}", "含 xxxx 占位段"),
+    (r"(?i)example\.(com|org|net|edu)", "example.* 保留域(RFC 占位)"),
+    (r"\.\.\.|…", "含省略号(URL 被截断/未拷全)"),
+    (r"[<>{}]", "含模板尖括号/花括号占位"),
+    (r"(?i)placeholder|your-?domain|your-?url", "含 placeholder/your-* 占位词"),
+)
+
+
+def _looks_like_placeholder_url(url: str) -> str | None:
+    """命中占位/编造特征则返回原因串，否则 None。供 register_web_search_result 守卫用。"""
+    if not url:
+        return None
+    for pat, reason in _PLACEHOLDER_URL_PATTERNS:
+        if re.search(pat, url):
+            return reason
+    return None
+
+
 def _domain_of(url: str) -> str:
     try:
         netloc = urlparse(url).netloc.lower()
@@ -618,7 +641,18 @@ def register_web_search_result(
       - high (>=0.8) → write inbox + register to manifest (source_type='web-search')
       - mid  (>=0.5) → write inbox + register to manifest with notes='待用户确认'
       - low  (<0.5)  → only log, don't write inbox or manifest
+
+    Raises:
+        ValueError: url 命中占位/编造特征（xxxx / example.* / 省略号 / 模板括号 /
+            placeholder 等）。主 agent 须回 review-digest 原样拷真实 URL 再重试。
     """
+    placeholder_reason = _looks_like_placeholder_url(url)
+    if placeholder_reason:
+        raise ValueError(
+            f"占位/编造 URL 被拒（{placeholder_reason}）: {url!r}。"
+            f"web 材料的 url 必须从 review-digest 原样拷贝，不能凭记忆/构造。"
+            f"回去拷真实链接后重试。"
+        )
     domain = _domain_of(url)
     if domain_tier is None:
         domain_tier = classify_domain(url, _family_of(slug, variant))

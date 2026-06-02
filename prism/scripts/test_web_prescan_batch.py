@@ -297,3 +297,52 @@ def test_inline_finding_skips_existing_file(tmp_topic):
     assert fp.read_text(encoding="utf-8") == handcrafted
 
 
+
+
+# ───────────────── 占位/编造 URL 守卫（修 [fabricated-url]）─────────────────
+
+def test_looks_like_placeholder_url_unit():
+    """纯函数：占位特征命中返原因串，真实 URL 返 None。"""
+    from prism.scripts.web_prescan import _looks_like_placeholder_url
+
+    assert _looks_like_placeholder_url("https://gov.cn/2026-xxxx/weichai.shtml")
+    assert _looks_like_placeholder_url("https://example.com/a")
+    assert _looks_like_placeholder_url("https://example.org/path")
+    assert _looks_like_placeholder_url("https://site.com/.../trunc")
+    assert _looks_like_placeholder_url("https://site.com/…")
+    assert _looks_like_placeholder_url("https://<host>/a")
+    assert _looks_like_placeholder_url("https://site.com/{id}")
+    assert _looks_like_placeholder_url("https://your-domain.com/a")
+    assert _looks_like_placeholder_url("https://placeholder.io/a")
+    # 真实 URL 不误伤
+    assert _looks_like_placeholder_url("https://reuters.com/business/x-2026-01") is None
+    assert _looks_like_placeholder_url("https://sse.com.cn/disclosure/688518.html") is None
+    assert _looks_like_placeholder_url("") is None
+
+
+def test_batch_raises_on_placeholder_url(tmp_topic):
+    """batch 里混入编造 URL（含 xxxx）→ register_web_search_result raise，整批中止。"""
+    from prism.scripts.web_prescan import register_web_search_batch
+
+    slug, variant, _ = tmp_topic
+    hits = [
+        {"title": "潍柴招标", "url": "https://gov.cn/2026-xxxx/weichai.shtml", "snippet": "s"},
+    ]
+    with pytest.raises(ValueError, match="占位/编造 URL"):
+        register_web_search_batch(
+            slug=slug, variant=variant, query="Q", addresses=["K1"],
+            triggered_by="04-synth", hits=hits,
+        )
+
+
+def test_single_register_raises_on_placeholder_url(tmp_topic):
+    """单条入口同样守卫（batch 之外的直接调用也覆盖）。"""
+    from prism.scripts.web_prescan import register_web_search_result
+
+    slug, variant, _ = tmp_topic
+    with pytest.raises(ValueError, match="占位/编造 URL"):
+        register_web_search_result(
+            slug=slug, variant=variant, query="Q",
+            url="https://example.com/fabricated", title="T", snippet="s",
+            addresses=["K1"],
+        )

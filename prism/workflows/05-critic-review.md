@@ -56,12 +56,15 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 "
 ```
 
-把 report 输出**完整贴到对话**。看三项：
+把 report 输出**完整贴到对话**。看四项：
 - `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
 - `thin_evidence` 非空 → 该 K# 证据 < 2 条
+- `single_source` 非空 → 该 K# 条数够但**来源单一**（全同一 source_type / 域名）。这是**注意力路由器、不是裁决**：去**读那几条内容**判是否真独立（多家券商转引同一份原始报告≈单源），别因条数达标就放行
 - `expired_web_materials` 非空 → web-search 材料 > 90 天（critic 阶段视为 stale，可能需刷新）
 
 gap report 是 critic 的**起手量化输入**——别只凭主观感觉判论证强弱。任一非空都应该作为 Step 2 反方论据的种子（"K# 论证薄弱因为 0 条材料 / 2 条但都来自同一份资料"），最终影响 Step 7 verdict（如 thin_evidence ≥3 个 K# → 不应给 approve）。
+
+> **承重充分性（常驻 mandate · 质性，不是数条数）**：对每条**承重结论**——thesis 命门 K# + 各环 **hard 输入**（`input_contract` 标 hard 的项，如 arena 的 `arena-mirror`/company 的 `consensus`·`historical-mirror`·`mgmt-capital-alloc`）——必须独立判一句"证据是否足以支撑该结论"，靠**读内容**判**直接性 / 相互独立性 / 时效**对该命门的契合度。gap 的 `single_source`/`thin` 只是定量指针（可能假绿也可能假红：单条原始公告就够、五条二手转引仍不够），最终充分与否**由你读完内容质性下**。这一判断在 Step 5/7 落进 case 头横幅（见下）。
 
 ---
 
@@ -123,6 +126,8 @@ cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.md 2>/dev/null
 | 隐含假设透明度 | | |
 | 整体 | | |
 
+> **「证据充分性」按承重 mandate 打**（见 Step 0）：不是数总条数，而是逐条承重结论（命门 K# + hard 输入）读内容判够不够。任一承重结论"单线承重 / 二手转引充数 / 过期"→ 该维度 ≤3，且必须在评语里点名是哪条、缺什么。
+
 ---
 
 ## Step 4：给出修改建议
@@ -152,6 +157,22 @@ generated: {timestamp}
 
 {评审内容完整复制}
 ```
+
+---
+
+## Step 5.5：把承重充分性裁决落到 case 头一行（堵"骨架完整被误读为可执行"）
+
+critic 的承重充分性裁决（Step 0 mandate + Step 3「证据充分性」）必须**进被消费的产出本身**——否则读者只看 case 骨架完整、误当"结论可执行"（独立 critic 抓到的弱点蒸发在评审文件里）。
+
+用 Edit 在**当前 `*_case.md` 的 frontmatter 之后、正文首个引用块之前**插入（已存在则**覆盖**该行，幂等）一行横幅：
+
+```markdown
+> 🧪 **承重充分性（05-critic · {date}）**：{够 / 单线承重 / 不足} — {一句话点名最弱的承重项及缺什么，如"命门3路线无关仅 1 条二手券商料、单线承重"}。verdict={approve / request-more / request-rewrite}。
+```
+
+- 三档取值锚：所有承重结论证据直接·独立·够新 → **够**；某承重结论靠单源/二手转引充数（含 gap `single_source` 命中且读内容确认不独立）→ **单线承重**；某承重结论缺料或证伪不成立 → **不足**。
+- 与 Step 7 verdict 同向：**不足** 不得配 `approve`；**单线承重** 最高 `request-more`。
+- 这是给读者/dashboard 的诚实标签，不替代评审正文，只把最关键一句顶到 case 头。
 
 ---
 

@@ -383,3 +383,69 @@ def test_baseline_path_helpers(tmp_topic_with_findings):
     p.write_text("baseline test", encoding="utf-8")
     assert has_baseline_knowledge(slug, variant)
     assert read_baseline_knowledge(slug, variant) == "baseline test"
+
+
+# ───────────────── 单源 tripwire（注意力路由器，非裁决）─────────────────
+
+def test_single_source_flags_monoculture_source_type(tmp_topic_with_findings):
+    """K# 覆盖达标(2条)但都同一 source_type → single_source flag；混源不 flag。"""
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    _write_thesis(tmpdir, slug, variant, "## Killer Question\n\nK1: A?\nK2: B?\n")
+    topic_io.set_thesis(slug, variant, version=0, summary="t",
+                        stage_set_at="01-roadmap-pending")
+    # K1: 两条都 sell-side-note → 单一来源类型
+    add_material(slug=slug, filename="k1a.md", source_type="sell-side-note",
+                 variant=variant, addresses=["K1"])
+    add_material(slug=slug, filename="k1b.md", source_type="sell-side-note",
+                 variant=variant, addresses=["K1"])
+    # K2: 两条不同来源类型 → 不 flag
+    add_material(slug=slug, filename="k2a.md", source_type="sell-side-note",
+                 variant=variant, addresses=["K2"])
+    add_material(slug=slug, filename="k2b.md", source_type="annual-report",
+                 variant=variant, addresses=["K2"])
+
+    report = detect_gaps(slug, variant)
+    flagged = {e["k"] for e in report["single_source"]}
+    assert "K1" in flagged
+    assert "K2" not in flagged
+    k1 = next(e for e in report["single_source"] if e["k"] == "K1")
+    assert k1["source_types"] == ["sell-side-note"]
+
+
+def test_single_source_skips_thin_and_uncovered(tmp_topic_with_findings):
+    """count < min_evidence（uncovered/thin）不进 single_source（互斥，不重复报）。"""
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    _write_thesis(tmpdir, slug, variant, "## Killer Question\n\nK1: A?\n")
+    topic_io.set_thesis(slug, variant, version=0, summary="t",
+                        stage_set_at="01-roadmap-pending")
+    add_material(slug=slug, filename="k1a.md", source_type="sell-side-note",
+                 variant=variant, addresses=["K1"])  # 仅 1 条 → thin
+
+    report = detect_gaps(slug, variant)
+    assert report["single_source"] == []
+    assert "K1" in report["thin_evidence"]
+
+
+def test_single_source_flags_single_domain(tmp_topic_with_findings):
+    """两条 web-search 同域名 → 报单域名（全 web 才查域名）。"""
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    _write_thesis(tmpdir, slug, variant, "## Killer Question\n\nK1: A?\n")
+    topic_io.set_thesis(slug, variant, version=0, summary="t",
+                        stage_set_at="01-roadmap-pending")
+    add_material(slug=slug, filename="w1.md", source_type="web-search",
+                 variant=variant, addresses=["K1"],
+                 search_meta={"domain": "sina.com.cn"})
+    add_material(slug=slug, filename="w2.md", source_type="web-search",
+                 variant=variant, addresses=["K1"],
+                 search_meta={"domain": "sina.com.cn"})
+
+    report = detect_gaps(slug, variant)
+    k1 = next(e for e in report["single_source"] if e["k"] == "K1")
+    assert k1["domains"] == ["sina.com.cn"]
+    assert "单一域名" in k1["reason"]
