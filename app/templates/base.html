@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>{% block title %}investing{% endblock %} · investing</title>
-  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/style.css?v=2" />
 </head>
 <body>
   {% set _path = request.url.path if request is defined and request else '' %}
@@ -11,38 +11,11 @@
     {%- set _active = (_path == '/' if href == '/' else (_path == href or _path.startswith(href + '/'))) -%}
     <a href="{{ href }}" class="{{ extra }}{% if _active %}{% if extra %} {% endif %}active{% endif %}">{{ label }}</a>
   {%- endmacro %}
-  {% macro _navlink_disabled(label) -%}
-    <span class="nav-disabled" title="暂未启用">{{ label }}</span>
-  {%- endmacro %}
-  <style>
-    nav.top span.nav-disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      user-select: none;
-      pointer-events: none;
-    }
-  </style>
   <nav class="top">
-    {{ _navlink('/', 'investing', 'brand') }}
-    {{ _navlink('/prism', '研究') }}
+    {{ _navlink('/prism', '研究', 'brand') }}
     {{ _navlink('/financials', '财务') }}
     {{ _navlink('/prices', '行情') }}
     {{ _navlink('/digest', '研报摘要') }}
-    <span class="nav-sep"></span>
-    {{ _navlink_disabled('公司') }}
-    {{ _navlink_disabled('对照') }}
-    {{ _navlink_disabled('催化剂') }}
-    {{ _navlink_disabled('能力图') }}
-    {{ _navlink_disabled('钟摆') }}
-    {{ _navlink_disabled('备忘录') }}
-    {{ _navlink_disabled('搜索') }}
-    {{ _navlink_disabled('观察池') }}
-    {{ _navlink_disabled('持仓') }}
-    {{ _navlink_disabled('业绩') }}
-    {{ _navlink_disabled('复盘') }}
-    {{ _navlink_disabled('日志') }}
-    {{ _navlink_disabled('自律') }}
-    {{ _navlink_disabled('告警') }}
   </nav>
   <main class="{% block main_class %}{% endblock %}">
     {% block content %}{% endblock %}
@@ -58,18 +31,10 @@
       if (inField) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
 
-      if (e.key === '/') {
-        const el = document.getElementById('search-input');
-        if (el) { e.preventDefault(); el.focus(); return; }
-        e.preventDefault();
-        go('/search');
-        return;
-      }
-
       if (pending) {
         pending = false;
         if (pendingTimer) clearTimeout(pendingTimer);
-        const map = { h: '/', c: '/companies', w: '/watchlist', p: '/portfolio', j: '/journal', e: '/earnings-review', r: '/prices', f: '/performance', s: '/search', m: '/prompts' };
+        const map = { r: '/prism', f: '/financials', p: '/prices', d: '/digest' };
         if (map[e.key]) { e.preventDefault(); go(map[e.key]); }
         return;
       }

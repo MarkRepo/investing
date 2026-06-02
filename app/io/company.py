@@ -240,6 +240,7 @@ def _prism_company_topics() -> list[dict]:
             "ticker": code,
             "market": market,
             "name": t.get("display_name") or code,
+            "slug": t.get("slug"),
             "industry_slugs": [],
             "v0_status": "prism",
             "competence_score": None,

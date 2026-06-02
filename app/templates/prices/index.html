@@ -16,7 +16,8 @@
     </select>
   </form>
   <button id="refresh-btn" class="btn" data-key="{{ key }}">↻ 刷新</button>
-  <a class="btn-mini" href="/companies/{{ key }}">← 公司页</a>
+  {% set _cur = all_companies | selectattr('key', 'equalto', key) | list | first %}
+  <a class="btn-mini" href="{% if _cur and _cur.slug %}/prism/{{ _cur.slug }}{% else %}/prism{% endif %}">← 研究</a>
   <a class="btn-mini" href="/financials/{{ key }}">财务</a>
 </header>
 

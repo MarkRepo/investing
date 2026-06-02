@@ -11,7 +11,7 @@ nav.top {
   background: #fff;
   border-bottom: 1px solid #eaeaea;
   padding: 10px 20px;
-  display: flex; gap: 20px;
+  display: flex; gap: 20px; justify-content: center;
   z-index: 10;
 }
 nav.top a { color: #333; text-decoration: none; font-size: 14px; padding: 4px 2px; border-bottom: 2px solid transparent; }

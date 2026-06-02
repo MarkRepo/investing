@@ -22,20 +22,17 @@ __pycache__/
 .claude/worktrees/
 .worktrees/
 
-# V1 runtime data (local only)
+# Local derived data (financials.db — quotes/financials cache for prism data pipes)
 data/*.db
 data/*.csv
-
-# ClaimRegistry render_views output (regeneratable from registry)
-data/arenas/
-data/companies/
-data/industries/
 
 # claude lock
 .claude/scheduled_tasks.lock
 
+# /digest 研报摘要 本地数据（route 自动重建）
+mineru_summaries/
+
 # Large source materials (kept local only)
-companies/**/sources/*.pdf
 prism/inbox/auto/
 prism/inbox/manual/
 prism/topics/*/inbox/
