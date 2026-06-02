@@ -77,42 +77,9 @@ app.include_router(prism_router)
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    from app.io import catalysts as catalysts_io
-    from app.io import discipline
-    from app.io import earnings_review as er
-    from app.io import qa as qa_io
-    from app.io import quotes as quotes_io
-    from app.io import triggers as triggers_io
-    from app.io import watchlist as wl
-    pending = er.pending_reviews()
-    fired_triggers = [t for t in triggers_io.list_all() if t["triggered_at"]]
-    upcoming = catalysts_io.upcoming(within_days=7)
-    researching = wl.read_watchlist("researching")
-    overdue_research = [
-        r for r in researching if wl.researching_status(r) in ("due", "overdue")
-    ]
-    review_gaps = discipline.review_gaps()
-    big_movers = quotes_io.big_movers(threshold_pct=15.0)
-    quote_fetch_errors = quotes_io.unresolved_fetch_errors()
-    qa_rows = qa_io.summarize_by_scope()
-    qa_summary = {
-        "rows": qa_rows,
-        "total_open": sum(r["open"] for r in qa_rows),
-    }
-    return templates.TemplateResponse(
-        request,
-        "home.html",
-        {
-            "pending_reviews": pending,
-            "fired_triggers": fired_triggers,
-            "upcoming_catalysts": upcoming,
-            "overdue_research": overdue_research,
-            "review_gaps": review_gaps,
-            "big_movers": big_movers,
-            "quote_fetch_errors": quote_fetch_errors,
-            "qa_summary": qa_summary,
-        },
-    )
+    # 首页告警区块已全部移除（多为与当前 prism 流程脱节的老 app 遗留：复盘/价格触发/
+    # QA/财报对照均无活写入者，行情两告警按需手动拉取即可）。首页只留标题 + 导航。
+    return templates.TemplateResponse(request, "home.html", {})
 
 
 @app.get("/healthz")
