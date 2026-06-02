@@ -162,6 +162,7 @@ industry 不是终局决策——它是**漏斗**：终点不是"买/卖一只�
   2. **相对水位**：相对**该行业自身历史区间 + 全球 peer** 的估值水位（历史高位/中位/低位）。
   3. **叙事 + 资金流**：主流叙事一句话 + 钱在追哪个子主题（拥挤）/ 冷落哪段。
   4. **隐含预期落成一句话** + 归类。
+  5. **定价锚 × 证据强度张力（硬落地 · 与③缝合）**：②的隐含预期收口必须与③的结构性假设支持度交叉，**显式点出"市场在为③里哪条最弱的结构假设付溢价"**（定价笃定度 > 证据强度的陷阱）。不点透即视为②停在"定了什么价"、漏掉"这价踩在哪块虚地上"——chain-critic 必查。
 - 【别漏的 lens】旧 02 周期/生命周期位置（影响反推口径）、旧 04 隐含预期与估值矩阵。
 - 【自由区】用哪几个倍数、要不要同业横截面、矩阵怎么摆。
 
@@ -212,6 +213,7 @@ industry 不是终局决策——它是**漏斗**：终点不是"买/卖一只�
 ⚠️ dashboard.py 的行业层"竞技场选择"只读 `09_industry_to_arenas.yaml`、只认这套字段名。**禁自创/改名/漏字段**。
 
 1. **写 `outputs/09_industry_to_arenas.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_arena_select_spec.md` Step 6.5**（`slug / variant / topic_type=industry / display_name / generated / data_freshness / arenas[{name, suggested_slug, topic_created, topic_slug, scores{profit_pool,growth,competition,valuation,cycle,composite}, tier(deep/watch/eliminated), tier_reason, upgrade_triggers, monitor_metrics, revive_condition}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
+   > ⚠️ **写完即自检（机器↔叙事一致性 · dashboard 直接消费）**：① **composite 排序必须与 case ④综合评级同向**——同档内若 composite 与评级倒挂，必须在 case 显式写一句解释，否则 dashboard 按分排序会与叙事方向相反；② **tier 枚举 ↔ case 中文档名映射必须在 case 显式写一行**（深挖=deep / 观察=watch / 淘汰=eliminated），别让 dashboard 靠猜对齐档名。
 2. **建 arena stub + 继承 thesis_v0**：对每个深挖档 arena，照 `_arena_select_spec.md` Step 6 + 6b **逐字执行**（`create_topic(topic_type='arena', parent_topic='{slug}')` → 收窄父 K# 到 arena 视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
 
 ---
@@ -245,8 +247,8 @@ print('primer + case + 09 sidecar 已注册')
 写完即跑一轮**内嵌 chain-critic**（合成期质控，模型同 `00-primer.md` Step 3，已验证 2 轮内收敛）。它与下游 05-critic 分工：chain-critic 查"链有没有走通、有没有断"，05 做对抗式 steelman 重审。
 
 dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只读不写**），逐环校验链是否走通（文里没讲清就标"断"，不用文外知识补）：
-- ① 看懂价值链 + 利润池定位 + 财务弧线？② **有带数字反推估值倍数/水位还是定性"很热"带过**？③ 把②翻成 3-5 条可证伪结构假设？④ 行业整体 stance + 核心分歧一句话 + 各 arena 6 维评分？⑤ 有 kill+signpost+行业镜鉴？⑥ 三档齐 + **tier 锚在②的定价（不是只按好坏排）** + 注意力预算 ≤N？
-- 断链检查：④下注↔⑤证伪、⑥分流↔②定价锚、⑥ tier↔④吸引力是否一致？
+- ① 看懂价值链 + 利润池定位 + 财务弧线？② **有带数字反推估值倍数/水位还是定性"很热"带过，且是否点出②的定价在为③里哪条最弱结构假设付溢价（定价锚×证据强度）**？③ 把②翻成 3-5 条可证伪结构假设？④ 行业整体 stance + 核心分歧一句话 + 各 arena 6 维评分？⑤ 有 kill+signpost+行业镜鉴？⑥ 三档齐 + **tier 锚在②的定价（不是只按好坏排）** + 注意力预算 ≤N？
+- 断链检查：④下注↔⑤证伪、⑥分流↔②定价锚、⑥ tier↔④吸引力是否一致？**sidecar composite 排序↔case ④综合评级是否同向**（同档内倒挂必须在 case 显式解释，否则 dashboard 按分排序与叙事相反）？**tier 枚举↔case 中文档名映射**是否在 case 显式写明（深挖=deep/观察=watch/淘汰=eliminated）？
 - primer↔case 是否有重复（case① 该甩 primer 的背景有没有甩）？
 - 跨层复用护栏（§1.3）：借来的判断标了来源吗、有没有冒充本维度自验证？
 - 源分层：findings 数字标 [mat-XXX]？

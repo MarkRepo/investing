@@ -154,6 +154,7 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
   1. **关键胜负变量**（成本曲线 / 技术代差 / 客户锁定 / 规模效应 / 牌照——哪个最决定性）；
   2. **被当成赢家那几家的当前估值**：用 Step 1 peer 财务 + 市价，指出"市场是不是已经在为 X 会赢付钱"（PE/PS 相对赛道 + 相对其卡位是否已透支）；
   3. **隐含预期落成一句话**（市场共识的赢家是谁、付了多少溢价）。
+  4. **定价锚 × 证据强度张力（硬落地 · 与③缝合）**：②的赢家定价收口必须与③的 WMBT 支持度交叉，**显式点出"市场在为③里哪条最弱的假设付溢价"**（定价笃定度 > 证据强度的陷阱）。不点透即视为②停在"谁被定价"、漏掉"这定价踩在哪块虚地上"——chain-critic 必查。
 - 【别漏的 lens】旧 02 估值水位、旧 04 隐含预期。
 - 【自由区】用哪几个估值口径、要不要画赢家溢价图。
 
@@ -205,6 +206,7 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 ⚠️ dashboard.py 的竞技场层"公司排名"只读 `10_peer_matrix.yaml`、只认这套字段名。**禁自创/改名/漏字段**。
 
 1. **写 `outputs/10_peer_matrix.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_peer_matrix_spec.md` Step 6.5**（`slug / variant / topic_type=arena / display_name / generated / data_freshness / companies[{name, ticker, score, tier(shortlist/watch/eliminated), topic_created, topic_slug, thesis_one_liner, upgrade_triggers, quarantine}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
+   > ⚠️ **写完即自检（机器↔叙事一致性 · dashboard 直接消费）**：① **score 排序必须与 case ④综合评级同向**——同档内若 score 与评级倒挂（如 K5 hard-filter 把高 upside 公司压到低分），必须在 case 显式写一句解释，否则 dashboard 按 score 排序会与叙事方向相反；② **tier 枚举 ↔ case 中文档名映射必须在 case 显式写一行**（深研=shortlist / 观察=watch / 淘汰=eliminated），别让 dashboard 靠猜对齐档名。
 2. **建 company stub + 继承 thesis_v0**：对每个深研档公司，照 `_peer_matrix_spec.md` Step 7 + 7b **逐字执行**（`create_topic(topic_type='company', parent_topic='{slug}', ticker=...)` → 收窄父 arena K# 到公司视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
 
 ---
@@ -238,8 +240,8 @@ print('primer + case + 10 sidecar 已注册')
 写完即跑一轮**内嵌 chain-critic**（合成期质控，模型同 `00-primer.md` Step 3，已验证 2 轮内收敛）。与 05 分工：chain-critic 查"链通不通"，05 做对抗式 steelman。
 
 dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只读不写**），逐环校验链是否走通：
-- ① 看懂赚钱方式 + 卡位 + 路线 + 客户 + 周期位？② **指出关键胜负变量 + 用具体公司估值锚"谁被当赢家定价"还是泛泛而谈**？③ 把②翻成 3-5 条可证伪假设？④ 核心分歧一句话 + peer 横比矩阵 + K# 校准做锚 + 每家 thesis？⑤ 有 kill+signpost+赢家被取代镜鉴？⑥ 三档齐 + **tier 锚在②的定价（不是只按好坏排）** + 深研档 ≤N？
-- 断链检查：④下注↔⑤证伪、⑥分流↔②定价锚、⑥ tier↔④卡位是否一致？
+- ① 看懂赚钱方式 + 卡位 + 路线 + 客户 + 周期位？② **指出关键胜负变量 + 用具体公司估值锚"谁被当赢家定价"还是泛泛而谈，且是否点出②的定价在为③里哪条最弱假设付溢价（定价锚×证据强度）**？③ 把②翻成 3-5 条可证伪假设？④ 核心分歧一句话 + peer 横比矩阵 + K# 校准做锚 + 每家 thesis？⑤ 有 kill+signpost+赢家被取代镜鉴？⑥ 三档齐 + **tier 锚在②的定价（不是只按好坏排）** + 深研档 ≤N？
+- 断链检查：④下注↔⑤证伪、⑥分流↔②定价锚、⑥ tier↔④卡位是否一致？**sidecar score 排序↔case ④综合评级是否同向**（同档内倒挂——如 hard-filter 把高 upside 公司压低分——必须在 case 显式解释，否则 dashboard 按 score 排序与叙事相反）？**tier 枚举↔case 中文档名映射**是否在 case 显式写明（深研=shortlist/观察=watch/淘汰=eliminated）？
 - primer↔case 是否有重复（case① 该甩 primer 的背景有没有甩）？
 - 跨层复用护栏（§1.3）：借来的判断标了来源吗、有没有冒充本维度自验证？
 - 源分层：findings 数字标 [mat-XXX]？

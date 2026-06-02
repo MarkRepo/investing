@@ -116,6 +116,10 @@ print(get_valuation_context_by_tickers([
 
 从决策链④/⑥ 提取以下字段。**数字不加引号，缺失用 null，tier 只能是 shortlist / watch / eliminated。**
 
+> ⚠️ **机器↔叙事一致性（硬规约 · dashboard 直接消费 score 与 tier）**：
+> 1. **`score` 排序必须与 case ④综合评级同向**。同档内若出现倒挂（如 K5 hard-filter 把"故事最响但质量差"的公司压到低分、低于一家平庸但稳健的公司），**必须在 case 里显式写一句解释为什么倒挂**——否则 dashboard 按 score 排序展示出来的顺序会与 case 叙事方向相反，读者无从对齐。
+> 2. **`tier` 枚举 ↔ case 中文档名的映射必须在 case 里显式写明一行**（深研=shortlist / 观察=watch / 淘汰=eliminated）。sidecar 存英文枚举、case 用中文档名，二者口径不显式锁定时 dashboard 关联会对不上。
+
 ```yaml
 slug: {slug}
 variant: {variant}

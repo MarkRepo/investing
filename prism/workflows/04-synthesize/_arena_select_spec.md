@@ -121,6 +121,10 @@ set_thesis(
 
 从决策链④/⑥ 提取以下字段。**数字不加引号，缺失用 null，tier 只能是 deep / watch / eliminated。**
 
+> ⚠️ **机器↔叙事一致性（硬规约 · dashboard 直接消费 composite 与 tier）**：
+> 1. **`scores.composite` 排序必须与 case ④综合评级同向**。同档内若出现倒挂，**必须在 case 里显式写一句解释为什么倒挂**——否则 dashboard 按 composite 排序展示出来的顺序会与 case 叙事方向相反。
+> 2. **`tier` 枚举 ↔ case 中文档名的映射必须在 case 里显式写明一行**（深挖=deep / 观察=watch / 淘汰=eliminated）。sidecar 存英文枚举、case 用中文档名，二者口径不显式锁定时 dashboard 关联会对不上。
+
 ```yaml
 slug: {slug}
 variant: {variant}
