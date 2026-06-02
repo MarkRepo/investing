@@ -8,6 +8,7 @@ LLM 自己看 report 决定继续搜还是停。
 from __future__ import annotations
 
 import os
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -19,6 +20,14 @@ PRISM_ROOT = Path(__file__).resolve().parent.parent
 
 def _addr_key(addr: str) -> str:
     return addr.split("@", 1)[0] if isinstance(addr, str) else ""
+
+
+# K# 脊柱标签形如 K1 / Q3（可带 @anchor）；scope/background/fact-NN 是 prescan 占位。
+_KNUM_RE = re.compile(r"^[KQ]\d+$")
+
+
+def _is_knum(addr: str) -> bool:
+    return bool(_KNUM_RE.match(_addr_key(addr)))
 
 
 def _to_aware_dt(value) -> datetime | None:
@@ -197,6 +206,7 @@ def detect_gaps(
             'expired_web_materials': [...],      # web-search > 90d
             'training_only_claims': [...],       # placeholder, requires baseline
             'relative_updated': [...],           # 亲属成稿产出比本 topic case 新（flag-only）
+            'prescan_untagged': [...],           # thesis 已就位但材料只挂 scope/占位、缺 K#（flag-only）
         }
     """
     try:
@@ -251,6 +261,20 @@ def detect_gaps(
     uncovered = [k for k in ks if evidence_count[k] == 0]
     thin = [k for k in ks if 0 < evidence_count[k] < min_evidence]
 
+    # 坑③ prescan-addresses-scope：thesis 已就位，但仍有材料只挂 scope/background/fact-*
+    # 等 prescan 占位、无任何 K# 脊柱标签 → 自动点名提醒补标（flag-only，不 gate）。
+    # thesis 未就位（cur_v is None）时 prescan 占位是正常起手态，不点名。
+    prescan_untagged: list[dict] = []
+    if cur_v is not None:
+        for m in manifest.get("materials") or []:
+            addrs = m.get("addresses") or []
+            if addrs and not any(_is_knum(a) for a in addrs):
+                prescan_untagged.append({
+                    "id": m.get("id"),
+                    "filename": m.get("filename"),
+                    "addresses": list(addrs),
+                })
+
     expired = list_expired_web_search(slug, variant) if manifest.get("materials") else []
 
     training_only: list[str] = []
@@ -280,6 +304,7 @@ def detect_gaps(
         ],
         "training_only_claims": training_only,
         "relative_updated": relative_updated,
+        "prescan_untagged": prescan_untagged,
     }
 
 
@@ -334,7 +359,13 @@ def format_summary(report: dict) -> str:
         lines.append(
             f"  🔗 relative-updated: {len(rel_upd)} 条（亲属产出比本 topic case 新，考虑复跑借用段）"
         )
+    untagged = report.get("prescan_untagged") or []
+    if untagged:
+        lines.append(
+            f"  🏷 待补 K# 标签: {len(untagged)} 条（thesis 已就位，材料仍只挂 prescan 占位；"
+            f"跑 backfill_addresses_by_mapping / retag_by_filename 补 K#）"
+        )
     if not (report["uncovered_ks"] or report["thin_evidence"]
-            or report["expired_web_materials"] or rel_upd or uri or thin_ri):
+            or report["expired_web_materials"] or rel_upd or uri or thin_ri or untagged):
         lines.append("  ✅ no gaps detected")
     return "\n".join(lines)

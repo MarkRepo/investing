@@ -64,19 +64,33 @@ else:
 
 **关键：用脚本登记 parent_materials 字段**（让 workflow 04 自动复用，不用 dispatch prompt 手填路径）：
 
+**先预览父变体兜底**（父 topic 可能有多个模型变体，确认会引到哪个）：
+
+```bash
+python3 -c "
+from prism.scripts.topic import list_variants
+from prism.scripts.model_registry import resolve_parent_variant
+res = resolve_parent_variant('{variant}', list_variants('{父slug}'))
+print(res)
+# confident=True → 直接用 res['chosen']；confident=False → 列 candidates 问用户该用哪个变体，再显式传 parent_variant
+"
+```
+
 ```bash
 python3 -c "
 from prism.scripts.topic import set_parent_materials
 items = [
-    {'parent_slug': '{父slug}', 'mat_id': 'mat-XXXXXX', 'addresses': ['K1','K2'], 'note': '...'},
+    {'parent_slug': '{父slug}', 'parent_variant': '{父variant}', 'mat_id': 'mat-XXXXXX', 'addresses': ['K1','K2'], 'note': '...'},
     # 只列对本 topic thesis 有价值的父级 mat_id（不要全部塞）
+    # parent_variant 省略时脚本按 model_registry 兜底：同模型/唯一/全登记自动选，
+    #   多个异模型且含未登记则 raise（按上一步预览结果问用户后显式传）
 ]
 set_parent_materials('{slug}', '{variant}', items)
 print(f'已登记 {len(items)} 项父级复用')
 "
 ```
 
-mat_id 从父 topic `manifest.yaml` 拿（`prism/topics/{父slug}/{父variant}/manifest.yaml`），filename 不重要，链接通过 mat_id。
+mat_id 从父 topic `manifest.yaml` 拿（`prism/topics/{父slug}/{父variant}/manifest.yaml`），filename 不重要，链接通过 mat_id。变体名用全 model-id 式（如 `claude-opus-4-8`）；父历史目录若是旧写法（`opus4.8`），读时会经 `model_registry.same_model` 自动桥接。
 
 ---
 

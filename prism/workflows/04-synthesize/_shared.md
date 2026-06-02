@@ -40,8 +40,11 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 - `thin_evidence` 非空 → 该 K# 证据 < 2 条
 - `uncovered_ring_inputs` 非空 → 决策链某环必带输入无料（带 🔴 = 三项真·欠供）→ 该环写作会硬伤；`api_pending_inputs` 非红（合成期自动拉）
 - `expired_web_materials` 非空 → web-search 材料 > 90 天
+- `prescan_untagged` 非空 → thesis 已就位但仍有材料只挂 prescan 占位（`scope`/`background`/`fact-*`）、缺 K# 标签 → 跑 `manifest.backfill_addresses_by_mapping` / `retag_by_filename` 补标，否则 B 轴会低估覆盖（flag-only，不 gate）
 
 任一红项非空 → **不要硬合成**，否则 3 份决策链产出全是"未充分论证"占位。先决定补救：即兴 web-search（_shared.md 末尾的"即兴 web-search"段）/ sub-agent 深挖 / 回 02 补资料。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于让 05 critic 把雷踩回来。
+
+> **复用起手的 `*-mirror` 标红属预期**（坑④）：换模型/复用旧料起手时，`historical-mirror`/`industry-mirror`/`arena-mirror`（hard，环⑤）几乎必报 🔴——复用的年报/研报本就不含"曾经的赢家如何被取代"。这不是可补料缺口：环⑤ 从训练知识补镜鉴并明标 **"训练知识估算 / depth 降级"**（照搬 §2.4），不必为它回 02 搜料。其余 `*-mirror` 之外的红项才按上面的补救路径处理。
 
 > ring 轴 `uncovered_ring_inputs` 直接映射到"哪个决策环写作时缺输入硬落地"——比 K# 更早暴露断链风险。这也是下面**B 轴有界 delta 重拆**的输入之一。
 

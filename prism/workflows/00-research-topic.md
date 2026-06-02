@@ -65,7 +65,11 @@ python3 -c "from prism.scripts.topic import list_variants; print(list_variants('
 - 返回 `[]` → 全新 slug，直接进 Step 4。
 - 返回非空（如 `['claude-opus-4-7']`）→ slug 已存在其他变体，**这是一个意图分叉点，必须停下问用户**（不能自行默认走某条）：
   - **续做**旧变体：不 create，读对应 `topic.yaml` 判 stage → 跳转对应 workflow 推进。
-  - **换模型/换架构重研**（新变体）：进 Step 4 用新 variant 名创建；建后按"新变体复用旧料"流程——重注册 materials + 复制 findings 改 `mat_id` frontmatter + 回写 manifest `addresses` + `set_parent_materials` 引父级 findings（详见 memory `project_variant_reuse_gotchas`）。复用同一批料可隔离变量、让模型/架构差异可苹果对苹果对比。
+  - **换模型/换架构重研**（新变体）：进 Step 4 用新 variant 名创建（**变体名用全 model-id 式**，如 `claude-opus-4-8`，不要 `opus4.8`；历史分裂目录不迁移，靠 `model_registry` 别名表运行时识别）。建后按"新变体复用旧料"流程：
+    - **重注册 materials**——机械抽取层（年报 `_extracted.md` / 研报 `_vlm/`）是 slug 级共享、命中即跳过，**不重转 PDF**。
+    - **findings 必须本变体重抽（走 03）**，禁止复制旧变体的 `findings_mat-*.md`。findings 是"本变体 thesis 的 K# 解读"，按变体隔离；复制旧变体 findings 会①污染"苹果对苹果"模型对比（等于让新模型抄旧模型的解读）、②引发 mat_id churn（编号脱钩）。换模型的价值正在于让新模型自己读料、自己解读。
+    - **`set_parent_materials` 引父级 findings** 仍合法——那是**跨 topic 父子复用**（行业父→竞技场子），与"同 slug 跨变体复制"是两回事。省略 `parent_variant` 时脚本按 `model_registry` 兜底解析（同模型/唯一/全登记自动选，多个异模型含未登记则 raise 让你问用户）。
+    - 复用同一批 materials 可隔离变量、让模型/架构差异苹果对苹果对比（详见 memory `project_variant_reuse_gotchas`）。
   - **另一个 topic 撞名**：slug 加后缀（如 `cn-pet-industry-2`）另起。
 
 > 兜底（[skill-routing]）：即便跳过本步直奔 Step 4，`create_topic` 在 slug 已有其他变体时会打 stderr 提示——但那是最后一道防线，本步的"停下问用户"才是正解，勿依赖兜底跳步。

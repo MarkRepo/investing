@@ -321,6 +321,55 @@ def test_ring_axis_api_no_ticker_is_gap(tmp_topic_with_findings, monkeypatch):
     assert "financial-arc" in codes          # 无 ticker → 真缺口
 
 
+def test_prescan_untagged_flagged_when_thesis_ready(tmp_topic_with_findings):
+    """坑③：thesis 已就位但材料只挂 scope 占位、无 K# → prescan_untagged 点名。"""
+    from prism.scripts.gap_detector import detect_gaps, format_summary
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    _write_thesis(tmpdir, slug, variant, "K1: X?\n")
+    topic_io.set_thesis(slug, variant, version=0, summary="t",
+                        stage_set_at="01-roadmap-pending")
+    add_material(slug=slug, filename="prescan1.md", source_type="web-search",
+                 variant=variant, addresses=["scope"])
+
+    report = detect_gaps(slug, variant)
+    flagged = report["prescan_untagged"]
+    assert len(flagged) == 1
+    assert flagged[0]["filename"] == "prescan1.md"
+    assert "scope" in flagged[0]["addresses"]
+    assert "🏷 待补 K# 标签" in format_summary(report)
+
+
+def test_prescan_untagged_skips_materials_with_knum(tmp_topic_with_findings):
+    """带 K# 的材料不上 prescan_untagged 榜。"""
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    _write_thesis(tmpdir, slug, variant, "K1: X?\n")
+    topic_io.set_thesis(slug, variant, version=0, summary="t",
+                        stage_set_at="01-roadmap-pending")
+    add_material(slug=slug, filename="tagged.md", source_type="web-article",
+                 variant=variant, addresses=["K1"])
+    # 混合：含 K# 即视为已标，不点名
+    add_material(slug=slug, filename="mixed.md", source_type="web-article",
+                 variant=variant, addresses=["scope", "K1@anchor"])
+
+    report = detect_gaps(slug, variant)
+    assert report["prescan_untagged"] == []
+
+
+def test_prescan_untagged_empty_without_thesis(tmp_topic_with_findings):
+    """thesis 未就位（起手态）→ prescan 占位属正常，不点名。"""
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, _ = tmp_topic_with_findings
+    add_material(slug=slug, filename="prescan1.md", source_type="web-search",
+                 variant=variant, addresses=["scope"])
+
+    report = detect_gaps(slug, variant)
+    assert report["prescan_untagged"] == []
+
+
 def test_baseline_path_helpers(tmp_topic_with_findings):
     from prism.scripts.topic import (
         baseline_knowledge_path,

@@ -11,11 +11,27 @@ from typing import Any
 
 import yaml
 
-from prism.scripts.topic import _topic_path, _read_yaml
+from prism.scripts import model_registry
+from prism.scripts.topic import _topic_path, _read_yaml, list_variants
 
 
 def _own_findings_dir(slug: str, variant: str) -> Path:
     return _topic_path(slug, variant).parent / "outputs"
+
+
+def _bridge_parent_variant(parent_slug: str, pvar: str) -> str:
+    """读时安全网：声明的父变体目录存在就用；否则用 same_model 在父变体里兜一个
+    （桥接历史命名分裂 `opus4.8` ≡ `claude-opus-4-8`）。都没有则原样返回。"""
+    if _topic_path(parent_slug, pvar).exists():
+        return pvar
+    try:
+        pvs = list_variants(parent_slug)
+    except Exception:
+        pvs = []
+    for v in pvs:
+        if model_registry.same_model(v, pvar):
+            return v
+    return pvar
 
 
 _FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
@@ -119,10 +135,10 @@ def list_all_findings(slug: str, variant: str) -> list[dict[str, Any]]:
 
     for ref in data.get("parent_materials") or []:
         psrc = ref.get("parent_slug")
-        pvar = ref.get("parent_variant", variant)
         mat_id = ref.get("mat_id")
         if not (psrc and mat_id):
             continue
+        pvar = _bridge_parent_variant(psrc, ref.get("parent_variant", variant))
         finding_path = _topic_path(psrc, pvar).parent / "outputs" / f"findings_{mat_id}.md"
         if not finding_path.exists():
             continue
@@ -160,10 +176,10 @@ def list_missing_parent_findings(slug: str, variant: str) -> list[dict[str, Any]
     missing: list[dict[str, Any]] = []
     for ref in data.get("parent_materials") or []:
         psrc = ref.get("parent_slug")
-        pvar = ref.get("parent_variant", variant)
         mat_id = ref.get("mat_id")
         if not (psrc and mat_id):
             continue
+        pvar = _bridge_parent_variant(psrc, ref.get("parent_variant", variant))
         finding_path = _topic_path(psrc, pvar).parent / "outputs" / f"findings_{mat_id}.md"
         if finding_path.exists():
             continue

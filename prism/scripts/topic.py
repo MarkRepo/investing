@@ -9,6 +9,8 @@ from typing import Any
 
 import yaml
 
+from prism.scripts import model_registry
+
 PRISM_ROOT = Path(__file__).resolve().parent.parent
 
 # 基础输出 keys（所有 type 都有）
@@ -224,6 +226,16 @@ def create_topic(
         例：question='荣昌生物 ADC+自免双管线 商业化兑现 BD 回流' → search_terms=
         ['ADC 商业化', 'BD 海外授权', 'IgAN 管线']
     """
+    # 变体名归一：仅在创建新目录这一处做（绝不在 _topic_path 里做——会让读历史
+    # opus4.8 目录全 FileNotFoundError）。映射发生则提示原→规范；未登记模型提示加表。
+    _orig_variant = variant
+    variant = model_registry.canonical(variant)
+    if variant != _orig_variant:
+        print(f"ℹ 变体名归一: {_orig_variant!r} → {variant!r}（model_registry 别名）",
+              file=sys.stderr)
+    elif not model_registry.is_known(variant):
+        print(f"ℹ 变体 {variant!r} 未登记于 model_registry，建议加入以便父引用兜底"
+              f"（命名建议用全 model-id 式，如 'claude-opus-4-8'）", file=sys.stderr)
     if topic_type == "company" and not ticker:
         raise ValueError(
             "topic_type='company' 必须传 ticker (格式: '{EXCHANGE}_{CODE}'，如 'SSE_688331' / 'HKEX_09995' / 'US_AAPL'). "
@@ -277,7 +289,7 @@ def create_topic(
         print(
             f"⚠ slug={slug!r} 已存在变体 {existing_variants}，你正在创建新变体 {variant!r}。"
             f"\n  确认不是想推进旧变体? 推进走 workflow（读 topic.yaml 判 stage），勿盲建空变体。"
-            f"\n  若确为换模型/换架构重研：复用旧料按 00 Step 3 新变体分支（重注册 materials+findings、set_parent_materials），可隔离变量对比。",
+            f"\n  若确为换模型/换架构重研：复用旧料按 00 Step 3 新变体分支（复用 materials 机械层、findings 本变体重抽、set_parent_materials 引父级），可隔离变量对比。",
             file=sys.stderr,
         )
     scope = {
@@ -1272,10 +1284,31 @@ def list_parent_materials(slug: str, variant: str) -> list[str]:
     return []
 
 
+def _resolved_parent_variant(parent_slug: str, child_variant: str, explicit: str | None) -> str:
+    """父引用落盘时定父变体：显式给了直接用；否则按 model_registry 兜底——
+    同模型/唯一/全登记取最优（confident），拿不准（多个异模型且含未登记）则 **raise**
+    列候选（"不确定才问"的强制点：脚本拒绝瞎猜，主 agent 去问用户再显式传）。
+    父尚无任何变体目录时退回子变体名（非破坏，读时安全网再兜）。
+    """
+    if explicit:
+        return explicit
+    pvs = list_variants(parent_slug)
+    if not pvs:
+        return child_variant
+    res = model_registry.resolve_parent_variant(child_variant, pvs)
+    if res["chosen"] and res["confident"]:
+        return res["chosen"]
+    raise ValueError(
+        f"无法确定父 {parent_slug!r} 的复用变体（child={child_variant!r}, "
+        f"候选={res['candidates']}, 原因={res['reason']}）。"
+        f"请主 agent 问用户后，显式传 parent_variant。"
+    )
+
+
 def set_parent_materials(slug: str, variant: str, items: list[dict]) -> None:
     """Set parent_materials field on topic.
 
-    Each item: {parent_slug, parent_variant (optional, defaults to current),
+    Each item: {parent_slug, parent_variant (optional → model_registry 兜底解析),
     mat_id, addresses (list[str], optional), note (optional)}.
     Idempotent: full replacement.
     """
@@ -1285,7 +1318,8 @@ def set_parent_materials(slug: str, variant: str, items: list[dict]) -> None:
     for it in items:
         entry = {
             "parent_slug": it["parent_slug"],
-            "parent_variant": it.get("parent_variant", variant),
+            "parent_variant": _resolved_parent_variant(
+                it["parent_slug"], variant, it.get("parent_variant")),
             "mat_id": it["mat_id"],
         }
         if it.get("addresses"):
@@ -1313,7 +1347,7 @@ def add_parent_material(
     items = [x for x in items if x.get("mat_id") != mat_id]
     entry = {
         "parent_slug": parent_slug,
-        "parent_variant": parent_variant or variant,
+        "parent_variant": _resolved_parent_variant(parent_slug, variant, parent_variant),
         "mat_id": mat_id,
     }
     if addresses:
@@ -1380,7 +1414,10 @@ def set_parent(slug: str, variant: str, parent_slug: str | None) -> None:
     parent_variants = list_variants(parent_slug)
     if not parent_variants:
         raise ValueError(f"父 topic 不存在: {parent_slug!r}（无任何 variant）")
-    pv = variant if variant in parent_variants else parent_variants[0]
+    # 选父变体读 type：confident-or-best（同模型/唯一/全登记最优），拿不准则退回旧行为
+    # （读路径非破坏，不 raise）。
+    _res = model_registry.resolve_parent_variant(variant, parent_variants)
+    pv = _res["chosen"] or (variant if variant in parent_variants else parent_variants[0])
     parent_type = read_topic(parent_slug, pv).get("type", "")
     child_type = data.get("type", "")
     ct = _TYPE_TIER.get(child_type)
@@ -1459,7 +1496,8 @@ def get_relative_outputs(slug: str, variant: str) -> dict:
     if parent_slug:
         pvs = list_variants(parent_slug)
         if pvs:
-            pv = variant if variant in pvs else pvs[0]
+            _res = model_registry.resolve_parent_variant(variant, pvs)
+            pv = _res["chosen"] or (variant if variant in pvs else pvs[0])
             try:
                 pdata = read_topic(parent_slug, pv)
                 result["parent"] = {
