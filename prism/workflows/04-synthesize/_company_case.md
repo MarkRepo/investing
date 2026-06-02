@@ -209,7 +209,7 @@
 - 【元问题】围绕③的假设多空各怎么说？核心分歧？我信哪边、信心多少？**这注的期望收益是正是负？**
 - 【为何逼出】③给了赌桌命题，这一环真正下注：表态 + 给理由 + 把光谱算成一个数。
 - 【必带硬落地】
-  1. **核心分歧一句话**；
+  1. **核心分歧一句话——锚回环②的隐含数（edge 收口）**：把分歧落成"我 vs 市场已定价的那个数"的 delta，**咬环②同一条 driver、同一组单位**（市场隐含 X、我判 Y、delta 踩在哪块证据上）。环②有几条被定价的杠杆（如增长率 + 终值倍数）就**可几条并列，逐条点出我和价里那个数差多少**；定性的 archetype/档位判断（如"超级App PE30+ vs 券商PE22"）是倍数杠杆上的合法表达，**保留**——但须点明市场当前坐在哪端。⚠️ **只铺多空辩论、不落到"我 vs 价里那个数"的 delta = 没回答本环命门（edge：共识已在价里，照着买不赚钱），chain-critic 必查。**
   2. **观点光谱**（5 级或多空双方，每档挂到③的具体假设 + 概率 + 对应估值/回报）；
   3. **期望收益加总**（新增）：`E[return] = Σ(各档概率 × 该档回报中点)`，算出一个数并判正负。这是把定性光谱压成定量下注，**喂⑥的仓位档位**（EV≤0 → 当前价不建仓/等回调；EV 显著为正且信息充分 → 可上更高档）。**注：EV 是定量的，但 EV→仓位是档位级判断，不是机械精确 %——见⑥。**
   4. **我的判断 + 信心度（高/中/低）+ 凭什么**——资料够才下，不够明说"待 X 才判"。
@@ -323,7 +323,7 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 | critic | 05-critic（旧键） | 内嵌 chain-critic + 05（已按 type 读 c_investment_case） |
 
 **接线现状（均已落到被调用方自身，无内联兜底）**：
-1. `05-critic-review.md` Step 1 已按 type 读 `c_investment_case` / `i_industry_case` / `a_arena_case`（旧 8 份路径仍读 04/06/07）；rewrite_keys 注释含三个决策链键。✓
+1. `05-critic-review.md` Step 1 已按 type 读 `c_investment_case` / `i_industry_case` / `a_arena_case`；rewrite_keys 注释含三个决策链键。✓
 2. `00-primer.md` 已**全类型统一 primer-first**（findings+thesis_v0+K#，不依赖 01-08/thesis_v1，旧 primer-last 已退休）。✓
 3. `SKILL.md`：合成路由按 type 指向 `_company_case` / `_industry_funnel` / `_arena_funnel`；primer 路由行已统一 primer-first。✓
 4. industry/arena 同构路径见 `_industry_funnel.md` / `_arena_funnel.md`（漏斗终局，⑥ 折入旧 09/10 选拔，sidecar schema 不变）。✓

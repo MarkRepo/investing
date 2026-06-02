@@ -1,8 +1,8 @@
-# Workflow 05 — 批评者评审 (Critic Review)
+	# Workflow 05 — 批评者评审 (Critic Review)
 
 **触发**：用户说「评审 {slug}」或「steelman 反方」  
-**定位**：强制用反方逻辑质疑自己的研究结论  
-**前置**：决策链成稿 case 必须已生成（company `c_investment_case` / industry `i_industry_case` / arena `a_arena_case`，含其环③隐含预期 + 环④/⑤风险与证伪）；旧 8 份分箱 topic 则需 04/06 已生成
+**定位**：用**独立反方**（干净上下文 subagent，押与作者相反方向、只看成稿结论不看作者推理）对抗式质疑研究结论——自我批评共享盲点等于没批评（修 #1）  
+**前置**：决策链成稿 case 必须已生成（company `c_investment_case` / industry `i_industry_case` / arena `a_arena_case`，含其环③隐含预期 + 环④/⑤风险与证伪）
 
 > **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
 > 仅事实校验类临时单查走 WebSearch tool。
@@ -41,8 +41,8 @@ EOF
 
 - **`status == 'failed'`** → **BLOCK 04-synthesize**。critic 不允许给 approve / request-more 之外的任何 verdict 前必须先要求用户二选一：
   1. **手工 prescan 补漏**：另设备搜索 baseline 第五节优先 query 并粘贴结果入库，重跑 `check_prescan_health` 直到 `partial` 或 `full`
-  2. **接受 failed prescan 继续推进**：用户显式确认"接受训练知识赌注"，critic 在 Step 2 反方论据中**自动加重"thesis 论断脆弱"加权**，Step 3 评分对所有"time_sensitivity=快变"的 fact 强制降级 uncertain，verdict 最高只能 `request-more`，不许 `approve`
-- **`status == 'partial'`** → critic 必须在 Step 2 列出 baseline 第六节"仍未校准"清单作为反方论据起点
+  2. **接受 failed prescan 继续推进**：用户显式确认"接受训练知识赌注"，**Step 2 传给独立反方的输入包中显式注入"以下时敏论断未经 web 校准、按脆弱处理、加重攻击"指令**，Step 3 评分对所有"time_sensitivity=快变"的 fact 强制降级 uncertain，verdict 最高只能 `request-more`，不许 `approve`
+- **`status == 'partial'`** → **Step 2 输入包必须含 baseline 第六节"仍未校准"清单作为反方攻击起点**
 - **`status == 'full'` 或 None（旧 topic）** → 正常推进
 
 ---
@@ -70,7 +70,7 @@ gap report 是 critic 的**起手量化输入**——别只凭主观感觉判论
 
 ## Step 1：读取核心产出
 
-**按 topic 合成路径取文件**——三类 topic 都走决策链路径：company 产 `c_investment_case`（+`07_decision_kit.yaml`）、industry 产 `i_industry_case`（+`09_industry_to_arenas.yaml`）、arena 产 `a_arena_case`（+`10_peer_matrix.yaml`）；旧 topic 可能仍是 8 份分箱（04/06/07）：
+**按 topic 合成路径取文件**——三类 topic 都走决策链路径：company 产 `c_investment_case`（+`07_decision_kit.yaml`）、industry 产 `i_industry_case`（+`09_industry_to_arenas.yaml`）、arena 产 `a_arena_case`（+`10_peer_matrix.yaml`）：
 
 ```bash
 # 决策链路径（存在哪个 *_case.md 即走哪条）
@@ -80,43 +80,85 @@ cat prism/topics/{slug}/{variant}/outputs/a_arena_case.md 2>/dev/null        # a
 cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.yaml 2>/dev/null
 cat prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.yaml 2>/dev/null
 cat prism/topics/{slug}/{variant}/outputs/10_peer_matrix.yaml 2>/dev/null
-# 旧 8 份分箱路径（未重合成的老 topic）
-cat prism/topics/{slug}/{variant}/outputs/04_implied_expectations.md 2>/dev/null
-cat prism/topics/{slug}/{variant}/outputs/06_risk_blindspots.md 2>/dev/null
-cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.md 2>/dev/null
 ```
 
 读到哪条就评哪条（`*_case` 的反方步直接对决策链 ①→⑥ 做 steelman——含 funnel 的环⑥ 选拔逻辑）；全为空 = 合成未完成，停止并提示先跑 04。
 
 ---
 
-## Step 2：扮演反方（Steelman）
+## Step 2：独立反方评审（dispatch 干净上下文 subagent · 修 #1）
 
-**指令：现在切换为持有相反观点的分析师。**
+**为什么必须独立**：同一模型在同一段对话里"换帽子"做 steelman，已被前面的论证说服，反驳会手软、会回避真正致命的点——自我批评共享你的盲点等于没批评。所以反方**必须**是干净上下文的独立 subagent，只面对成稿结论 + 硬事实，不看作者的推理链。（与 04 已独立的 chain-critic / primer critic 同构——它们查"链通不通 / 目标达没达"，本步做对抗式 steelman。）
 
-如果当前研究结论偏多，现在用空方最强逻辑反驳。
-如果当前结论偏空，用多方最强逻辑反驳。
+> **方向对称(别只做空)**：反方 = **押与作者相反方向的最强对手盘**。作者看多 → 反方是空头，用空方最强逻辑;作者看空 → 反方是多头，用多方最强逻辑;作者判分化/中性 → 反方攻"分化判断本身站不住"。下面 prompt 里的"对赌 / 验尸"措辞按 case 实际方向填，**不要默认看多**。
 
-反驳格式：
+### 2.1 组装输入包（喂什么 / 瞒什么）
 
-### 对「核心假设 1」的质疑
+**喂给反方（成稿事实层）**：
+- 当前成稿 case 全文（`c_investment_case` / `i_industry_case` / `a_arena_case`）
+- 结构化财务/估值（`get_financial_context` + `get_valuation_context` / `_by_tickers` 的输出）
+- Step 0 gap report 关键项（攻击种子：哪些 K# thin / single-source）
+- prescan 状态：failed/partial 时按 Step 0.0 注入加权指令 + baseline 第六节"仍未校准"清单
 
-多方假设：{原假设}  
-反驳：{空方为什么认为这个假设不成立}  
-支撑证据：{有什么数据或逻辑}  
-强度评估：{强/中/弱} — 如果弱，说明为什么仍然值得考虑
+**不喂给反方（作者的说服层——独立性的关键）**：
+- 不喂 thesis 的推理理由 / decomposition 命门拆解的论证过程
+- 不喂 findings 的解读叙事 / primer
+- 让它只面对"结论 + 硬数据"，用自己的判断找致命伤，而非顺着作者框架点头
 
-### 对「核心假设 2」的质疑
+> case 正文里**作者自己写的**环⑤风险与证伪是**要喂**的（那是成稿的一部分，反方正好评"作者的自我证伪够不够狠"）；要瞒的是 case 之外的工作底稿（thesis 理由链 / findings 叙事）。
 
-{同格式}
+### 2.2 dispatch 独立反方（`subagent_type: general-purpose`，默认不传 model，**只读不写**）
 
-### 对「核心假设 3」的质疑
+> 可选增强独立性：主 agent 是 opus 时可给反方传 `model=sonnet`/`haiku` 换个脑子进一步降共享盲点（按 [[feedback_subagent_model]]，默认不传；仅在想进一步独立时用）。
 
-{同格式}
+prompt 模板（按 topic 填空；**先判 case 方向，{对手方向}=空头/多头、{相反操作}=做空/做多 按实际填**）：
+
+```
+你被请来做一次独立的对手盘尽调。你**没有**参与这份研究，不知道作者的推理过程，只拿到最终结论和硬数据。
+
+## 你的处境（对赌框定）
+你是作者这个判断的**对手盘**：作者看多你就重仓做空、作者看空你就重仓做多——总之你用**自己的真金白银押了与作者相反的方向**（本例作者{看多/看空}，你{相反操作}）。作者若对，你巨亏。所以你的任务不是礼貌地提反方，是**找出最可能让你这笔对赌赚钱、让作者巨亏的那几个致命点**。
+
+## 你拿到的材料
+{粘贴成稿 case 全文（含其环⑤风险与证伪）}
+{粘贴 get_financial_context / 估值数据}
+{粘贴 gap report 关键项：哪些 K# 证据薄 / 单源}
+{若 prescan failed/partial：注入"以下时敏论断未经 web 校准，按脆弱处理、加重攻击：{清单}"}
+
+## 攻击方向
+- 作者看多 → 用空方最强逻辑反驳；作者看空 → 用多方最强逻辑反驳；作者判分化/中性 → 攻"分化判断本身不成立（其实有明确赢家或全是输家）"。
+- 只攻**承重假设**（命门 K#、定价锚、各环 hard 输入），不攻边角。
+- 可用你自己的领域知识 + 上面的硬数据，但**不要默认作者框架成立**——质疑框架本身。
+- 严格只用拿到的材料 + 你的常识/领域知识，不要脑补不存在的数据。
+
+## 你要交付（纯 markdown，返回正文，**不要写文件**）
+### 一、对承重假设的质疑（逐条）
+对每条核心假设：
+- 作者假设：{原结论里的假设}
+- 反驳：{为什么可能不成立}
+- 支撑：{什么数据 / 逻辑 / 历史先例}
+- 强度：强 / 中 / 弱（弱也说明为何仍值得考虑）
+
+### 二、预先验尸（pre-mortem）
+假设一年后**作者这个判断被证伪、按它操作亏了 50%**。回头写**最可能的死因**（≤3 条，按概率排序）——具体到哪条承重假设先崩、由什么触发。
+
+### 三、致命一击候选
+若只能押一个让作者翻车的点，是哪个？为什么市场/作者会忽略它？
+
+苛刻、直接、不留情面。1800 字内。
+```
+
+### 2.3 主 agent 收稿（subagent 只返回 markdown，主 agent 落盘）
+
+按 [[feedback_subagent_write_hallucination]] 铁律：**反方 subagent 不写文件**，只把三段 markdown 返回 final message。主 agent 接收后作为 Step 3 评分、Step 5 保存、Step 7 verdict 的输入。其中：
+- "致命一击候选" + 预先验尸高概率死因 → 直接喂 Step 7：**若致命一击成立且 case 无应答 → 不得 `approve`**
+- 反方若是换模型跑的，在 Step 5 保存时标注模型，便于事后校准
 
 ---
 
 ## Step 3：给原研究评分
+
+**主 agent 据 Step 2 独立反方返回的报告打分**（不是自评）——"考虑反面观点"维度直接看 case 环⑤是否已应答反方的致命一击 / 预先验尸死因；反方点到而 case 无应答的，该维度 ≤3 并点名。
 
 | 维度 | 评分(1-5) | 评语 |
 |------|-----------|------|
@@ -153,9 +195,13 @@ generated: {timestamp}
 
 # 批评者评审：{display_name}
 
-> 生成于 {timestamp}，基于产出 04/06/07
+> 生成于 {timestamp}，基于成稿 case（独立反方 subagent{若换模型注明 model}）
 
-{评审内容完整复制}
+## 独立反方报告（subagent 原样返回）
+{Step 2 反方返回的三段 markdown 完整复制：承重假设质疑 / 预先验尸 / 致命一击}
+
+## 评分与裁决（主 agent）
+{Step 3 评分表 + Step 4 修改建议完整复制}
 ```
 
 ---
@@ -185,7 +231,7 @@ critic 的承重充分性裁决（Step 0 mandate + Step 3「证据充分性」�
 
 ## {timestamp_short} 批评者评审完成
 
-**来源**：Workflow 05-critic-review，钢人反方视角
+**来源**：Workflow 05-critic-review，独立反方 subagent（干净上下文对抗式、押相反方向）视角
 
 **关键信息**：
 - {评审摘要1}
@@ -294,7 +340,7 @@ t = read_topic(slug, variant)
 cur_v = (t.get('thesis') or {}).get('current_version')
 
 # request-rewrite 时主 agent 列出要重写的 output keys；其他 verdict 留空
-rewrite_keys = []  # 决策链路径用 ['c_investment_case'] / ['i_industry_case'] / ['a_arena_case']；旧分箱路径例：['04_implied_expectations','06_risk_blindspots']
+rewrite_keys = []  # 按 type 用 ['c_investment_case'] / ['i_industry_case'] / ['a_arena_case']
 
 # set_critic_verdict 内部已写默认 next_actions + 把 rewrite_keys 标 stale（修 S4）
 critic = set_critic_verdict(
@@ -347,7 +393,7 @@ for k, reason in stale:
 
 主 agent 在对话里报告：
 > 我要重写以下 N 份产出（critic 标 stale）：
-> - i_industry_case (critic-stale)   ← 决策链成稿（company `c_investment_case` / arena `a_arena_case`）；旧分箱 topic 才是 04_implied_expectations 等
+> - i_industry_case (critic-stale)   ← 决策链成稿（company `c_investment_case` / arena `a_arena_case`）
 > - ...
 >
 > 输入：critic-review.md 反方论据 + 原 findings + 现有 thesis

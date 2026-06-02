@@ -22,14 +22,10 @@ prism 一个 topic 的研究输出是**决策链三件套**——领域入门 + 
 | **领域入门** | `00_primer.md` | 给完全外行建心智模型（讲领域本身，不讲投资判断） | 第一次看这个 topic |
 | **成稿 case** | `c_investment_case` / `i_industry_case` / `a_arena_case`（按 type 三选一） | 决策链正文，6 个命门环串成完整论证（见下） | **核心产出，看一份就够时看这份** |
 | **sidecar** | `07_decision_kit.yaml`（company）/ `09_industry_to_arenas.yaml`（industry）/ `10_peer_matrix.yaml`（arena） | case 的机器消费面：dashboard / kill / signpost / tier / 子战场选拔直接读它 | 要结构化结论（KILL/仓位/分流）时 |
-| **追踪时间线** | `08_living_feed.md` | 接下来盯的时点 / 催化剂 / 监测信号 + 事件序列（06-daily / 99-decision 追加） | 决定"接下来盯什么" |
+| **追踪时间线** | `08_living_feed.md` | 接下来盯的时点 / 催化剂 / 监测信号 + 事件序列（06-daily 追加） | 决定"接下来盯什么" |
 
 **成稿 case 的 6 个命门环**（按 topic.type 措辞略异，骨架一致）：
 - 环① 业务/价值链卡位 → 环② **定价锚**（当前价/倍数反推隐含预期，数字最硬的一环）→ 环③ WWHTBT（什么必须为真）→ 环④ 横比/竞争格局 → 环⑤ 证伪与历史镜鉴 → 环⑥ 决策分流 / tier（company 给个股 buy_box；industry 切子战场；arena 给玩家矩阵）
-
-辅助文件：`findings_mat-XXXXXX.md`（每份原始资料的提炼笔记）、`_synthesis_brief.md`（合成阶段内部备忘）、`_findings_index.md`（findings 轻索引）、`_glossary.md`（领域术语速查，可选）、`_prism_reading_guide.md`（本篇）。
-
-> **遗留产出（旧 topic 才有）**：决策链重构前的 topic 产 `01_business_panorama … 07_decision_kit` 八份并列维度 markdown。这套已被成稿 case 取代、不再新产；看到老 topic 仍是这八份分箱时，对应关系：01-03 业务/周期/叙事 → case 环①④；04 隐含预期 → 环②③；05 历史镜子 → 环⑤；06 风险盲点 → 环⑤；07 决策工具箱 → sidecar。`08_living_feed` 不在遗留之列——它在新流程里仍是活的追踪线。
 
 辅助文件：`findings_mat-XXXXXX.md`（每份原始资料的提炼笔记）、`_synthesis_brief.md`（合成阶段内部备忘）、`_findings_index.md`（findings 轻索引）、`_glossary.md`（领域术语速查，可选）、`_prism_reading_guide.md`（本篇）。
 

@@ -3,7 +3,7 @@
 每份产出工作流开始前必须完成以下检查，违反则停止并告知用户。
 
 > **本文件现为"共享工具库"**：三类 topic 的合成都改走决策链路径——company → `_company_case.md`、industry → `_industry_funnel.md`、arena → `_arena_funnel.md`。它们**引用**本文件的：前置检查 / gap 体检 / 增量重写判定 / 断点续跑 / 调度模式（主 agent 直做 + findings 加载/索引）/ thesis_v1 Scheme C / 即兴 web-search。
-> **旧 8 份并列维度路径已全退休**（01-08 分批 Write / subagent 模板 / 09-10 自动触发 / primer-last 均下线；selection 折进 funnel 环⑥、primer 改 primer-first 由各路径 Step 2 自管）；磁盘旧产出不受影响。
+> **旧 8 份并列维度路径已全退休**（01-08 分批 Write / subagent 模板 / 09-10 自动触发 / primer-last 均下线；selection 折进 funnel 环⑥、primer 改 primer-first 由各路径 Step 2 自管）。
 
 > **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
 > 仅事实校验类临时单查走 WebSearch tool。

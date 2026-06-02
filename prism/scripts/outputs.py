@@ -11,20 +11,15 @@ _PRISM_ROOT = Path(__file__).resolve().parent.parent
 
 _OUTPUT_KEYS_LABELS = [
     ("00_primer", "领域入门"),
-    # 决策链新流程成稿 case（按 topic.type 三选一，见 topic._CASE_BY_TYPE）。
-    # 修 F1 起：create_topic 按 type seed 决策链 key（00_primer + 对应 case +
-    # 08_living_feed），不再 seed 旧 8 维（01-07 已退休）。这里 list_outputs 用
-    # skip-if-absent 渲染：本 topic 没 seed 的 key 直接跳过，遗留 8 维 topic 仍能显示。
+    # 决策链成稿 case（按 topic.type 三选一，见 topic._DECISION_CHAIN_OUTPUTS）。
+    # create_topic 按 type seed 决策链 key（00_primer + 对应 case + 08_living_feed）。
+    # 旧 8 维并列产出（01_business_panorama…07_decision_kit）已随决策链重构退休：
+    # 不再 seed、磁盘文件已清空，故不再列入 label 表（保留只会让遗留 topic 渲染出
+    # file_exists=False 的死行 + 坏链）。list_outputs 用 skip-if-absent 渲染——
+    # 遗留 topic 若 outputs_state 仍带这些 key，无 label 即自然跳过。
     ("c_investment_case", "投资 case（决策链）"),
     ("i_industry_case", "行业 case（决策链）"),
     ("a_arena_case", "竞技场 case（决策链）"),
-    ("01_business_panorama", "商业全景"),
-    ("02_cycle_positioning", "周期定位"),
-    ("03_narrative_ecology", "叙事谱系"),
-    ("04_implied_expectations", "隐含预期与观点光谱"),
-    ("05_historical_mirrors", "历史镜像"),
-    ("06_risk_blindspots", "风险盲点"),
-    ("07_decision_kit", "决策辅助"),
     ("08_living_feed", "信息流时间线"),
     ("10_peer_matrix", "同行矩阵"),
 ]
@@ -366,9 +361,9 @@ def list_affected_outputs(
     传 () 可包含所有 triggered_by。
 
     返回：{
-        '01_business_panorama': {'reason': 'stale', 'new_mat_ids': [mat-xxx, ...]},
-        '04_implied_expectations': {'reason': 'critic-stale', 'new_mat_ids': []},
-        '02_cycle_positioning': {'reason': 'fresh', 'new_mat_ids': []},
+        'c_investment_case': {'reason': 'stale', 'new_mat_ids': [mat-xxx, ...]},
+        '08_living_feed': {'reason': 'critic-stale', 'new_mat_ids': []},
+        '00_primer': {'reason': 'fresh', 'new_mat_ids': []},
         ...
     }
     """

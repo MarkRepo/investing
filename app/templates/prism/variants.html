@@ -12,7 +12,7 @@
 <p class="hint">该主题有 {{ variants | length }} 个模型在研究。选择一个模型查看其产出。
 {% if variants | length >= 2 %}
   {% set _a = variants[0].name %}{% set _b = variants[1].name %}
-  <a href="/prism/{{ slug }}/compare/01_business_panorama?source1={{ _a }}&source2={{ _b }}" class="compare-action">对比产出</a>
+  <a href="/prism/{{ slug }}/compare/{{ compare_key }}?source1={{ _a }}&source2={{ _b }}" class="compare-action">对比产出</a>
 {% endif %}
 </p>
 

@@ -56,15 +56,12 @@ def _make_market_ticker(scope: dict) -> str:
         return f"{market}_{ticker}"
     return ""
 
-# Output key → label mapping for dropdowns
+# Output key → label mapping for dropdowns（决策链产出；旧 8 维 01-07 已退休、不再列）
 _OUTPUT_OPTIONS = [
-    ("01_business_panorama", "商业全景"),
-    ("02_cycle_positioning", "周期定位"),
-    ("03_narrative_ecology", "叙事谱系"),
-    ("04_implied_expectations", "隐含预期与观点光谱"),
-    ("05_historical_mirrors", "历史镜像"),
-    ("06_risk_blindspots", "风险盲点"),
-    ("07_decision_kit", "决策辅助"),
+    ("00_primer", "领域入门"),
+    ("c_investment_case", "投资 case（决策链）"),
+    ("i_industry_case", "行业 case（决策链）"),
+    ("a_arena_case", "竞技场 case（决策链）"),
     ("08_living_feed", "信息流时间线"),
     ("09_industry_to_arenas", "产业→竞技场选拔"),
 ]
@@ -185,12 +182,22 @@ def prism_topic(request: Request, slug: str):
         except Exception:
             variant_data.append({"name": v, "stage": "", "status": "", "fresh_count": 0, "total_count": 8})
 
-    display_name = variant_data[0].get("display_name", slug) if variant_data else slug
-    # Try to get display_name from first variant's full data
+    # 从首个 variant 读 display_name + type；type 决定"对比产出"默认指向哪份 case
+    # （决策链按 type 三选一；旧的硬编码 01_business_panorama 已随旧 8 维退休删除）。
+    display_name = slug
+    topic_type = "industry"
     try:
-        display_name = topic_io.read_topic(slug, variants[0]).get("display_name", slug)
+        _data = topic_io.read_topic(slug, variants[0])
+        display_name = _data.get("display_name", slug)
+        topic_type = _data.get("type", "industry")
     except Exception:
-        display_name = slug
+        pass
+    _CASE_BY_TYPE = {
+        "company": "c_investment_case",
+        "industry": "i_industry_case",
+        "arena": "a_arena_case",
+    }
+    compare_key = _CASE_BY_TYPE.get(topic_type, "08_living_feed")
 
     return templates.TemplateResponse(
         request,
@@ -199,6 +206,7 @@ def prism_topic(request: Request, slug: str):
             "slug": slug,
             "display_name": display_name,
             "variants": variant_data,
+            "compare_key": compare_key,
         },
     )
 

@@ -19,7 +19,7 @@ PRISM_ROOT = Path(__file__).resolve().parent.parent
 # 不再 seed（曾经 seed 它们 → 8 个死 slot 永 pending，污染 dashboard +
 # list_affected_outputs 每个永报 reason='new'）。遗留 topic 仍可能带这些 key，
 # outputs.list_outputs 用 skip-if-absent 渲染，互不影响。
-# 08_living_feed 保留——它在决策链里仍是活的追踪时间线（06-daily / 99-decision 追加）。
+# 08_living_feed 保留——它在决策链里仍是活的追踪时间线（06-daily 追加）。
 # sidecar（07/09/10 yaml）不 seed——它们是文件级产物，由合成路径 set_output_status
 # 的 setdefault 动态注册（避免又造永 pending 的死 slot）。
 _DECISION_CHAIN_OUTPUTS = {
