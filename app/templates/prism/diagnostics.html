@@ -59,13 +59,14 @@
   {% if manifest.materials %}
   <table class="data-table diag-table">
     <thead><tr>
-      <th>文件</th><th>类型</th><th>可信</th><th>域名</th><th>domain_tier</th><th>conf.</th><th>addresses</th><th>处理</th><th>状态</th>
+      <th>id</th><th>文件</th><th>类型</th><th>可信</th><th>域名</th><th>domain_tier</th><th>conf.</th><th>addresses</th><th>处理</th><th>状态</th>
     </tr></thead>
     <tbody>
     {% for m in manifest.materials %}
       {% set sm = m.search_meta or {} %}
       {% set tr = material_trust(m) %}
-      <tr>
+      <tr id="{{ m.id }}">
+        <td><code class="mat-id">{{ m.id }}</code></td>
         <td class="fn">{{ m.filename }}</td>
         <td>{{ m.source_type or '—' }}</td>
         <td><span class="tier tier-{{ tr.css }}">{{ tr.label }}</span></td>
@@ -80,6 +81,7 @@
           {% elif m.mineru_state == 'failed' %}<span class="mn-chip mn-failed">❌</span>
           {% elif m.mineru_state == 'in_progress' %}<span class="mn-chip mn-prog">⏳</span>
           {% endif %}
+          {% if m.id in finding_ids %}<a class="note-jump" href="#findings-{{ m.id }}">↓ 抽取笔记</a>{% endif %}
         </td>
         <td>{% if m.id in expired_ids %}<span class="badge-expired">⚠ 过期</span>{% else %}—{% endif %}</td>
       </tr>
@@ -88,6 +90,31 @@
   </table>
   {% else %}
   <p class="empty">无 manifest / 未收料</p>
+  {% endif %}
+
+  {# ── ③′ 复用父级资料（不在本 manifest，跨 topic 继承）──────────────── #}
+  {% if parent_materials %}
+  <h3 class="sub">复用父级资料 <span class="hint">（{{ parent_materials | length }} 份 · 自 parent_topic 继承，正文 mat-XXX 落到此处本地行）</span></h3>
+  <p class="hint legend">这些料登记在本 topic 的 <code>parent_materials</code>、真身（含 findings 全文）在父 topic。本页给出本地锚点让正文引用不跳出，「父：…」列深链到父诊断页对应行 / 父 findings。</p>
+  <table class="data-table diag-table">
+    <thead><tr>
+      <th>id</th><th>父</th><th>文件</th><th>类型</th><th>可信</th><th>addresses</th><th>note</th><th>父 findings</th>
+    </tr></thead>
+    <tbody>
+    {% for pm in parent_materials %}
+      <tr id="{{ pm.mat_id }}">
+        <td><code class="mat-id">{{ pm.mat_id }}</code></td>
+        <td>{% if pm.parent_slug and pm.parent_variant %}<a href="/prism/{{ pm.parent_slug }}/{{ pm.parent_variant }}/diag#{{ pm.mat_id }}">{{ pm.parent_slug }}<span class="hint"> · {{ pm.parent_variant }}</span></a>{% else %}{{ pm.parent_slug or '—' }}{% endif %}</td>
+        <td class="fn">{{ pm.filename or '—' }}</td>
+        <td>{{ pm.source_type or '—' }}</td>
+        <td>{% if pm.trust %}<span class="tier tier-{{ pm.trust.css }}">{{ pm.trust.label }}</span>{% else %}<span class="na">—</span>{% endif %}</td>
+        <td class="addrs">{% for a in pm.addresses %}<code class="addr">{{ a }}</code>{% endfor %}{% if not pm.addresses %}—{% endif %}</td>
+        <td>{{ pm.note or '—' }}</td>
+        <td>{% if pm.has_parent_findings and pm.parent_slug and pm.parent_variant %}<a href="/prism/{{ pm.parent_slug }}/{{ pm.parent_variant }}/diag#findings-{{ pm.mat_id }}" target="_blank" rel="noopener">查看 →</a>{% else %}<span class="na">—</span>{% endif %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
   {% endif %}
 </section>
 
@@ -103,9 +130,10 @@
   {% if findings.files %}
   <h3 class="sub">逐料全文</h3>
   {% for f in findings.files %}
-  <details class="diag-fold">
+  {% set _bare = f.mat_id.replace('findings_', '') %}
+  <details class="diag-fold" id="findings-{{ _bare }}">
     <summary>
-      <code>{{ f.mat_id }}</code> · {{ f.filename }}
+      <code class="mat-id">{{ _bare }}</code> · {{ f.filename }}
       {% if f.quality %}<span class="meta-chip q-{{ f.quality }}">{{ f.quality }}</span>{% endif %}
       {% if f.bias %}<span class="meta-chip">{{ f.bias }}</span>{% endif %}
       {% if f.source_type %}<span class="meta-chip">{{ f.source_type }}</span>{% endif %}
@@ -272,5 +300,31 @@
   .markdown-body th, .markdown-body td { border: 1px solid #ddd; padding: 0.3em 0.6em; }
   .markdown-body code { background: #f4f4f4; padding: 0.1em 0.3em; border-radius: 3px; }
   .markdown-body blockquote { border-left: 3px solid #ddd; margin: 0; padding-left: 1em; color: #666; }
+  /* mat-XXX 引用落点：行/折叠锚点 + 高亮 */
+  .mat-id { font-family: monospace; font-size: 0.82em; background: #eef3ff; color: #2a5db0; padding: 0.05em 0.35em; border-radius: 3px; }
+  .note-jump { font-size: 0.78em; margin-left: 0.4em; color: #2a5db0; text-decoration: none; white-space: nowrap; }
+  .note-jump:hover { text-decoration: underline; }
+  /* sticky 面包屑/tab 不挡锚点；:target 高亮（行与折叠块通用）*/
+  .diag-table tr[id], .diag-fold[id] { scroll-margin-top: 64px; }
+  .diag-table tr[id]:target > td { background: #fff7d6; box-shadow: inset 3px 0 0 #f59e0b; animation: matflash 1.6s ease-out 1; }
+  .diag-fold[id]:target { border-color: #f59e0b; box-shadow: 0 0 0 2px #fde4a6; animation: matflash 1.6s ease-out 1; }
+  @keyframes matflash { 0% { background: #ffe9a8; } 100% { background: transparent; } }
 </style>
+<script>
+  // mat-XXX 引用跳来 #findings-mat-XXX 时，自动展开对应折叠并滚动到位（:target 高亮由 CSS 接手）。
+  (function () {
+    function openFromHash() {
+      var h = location.hash;
+      if (!h || h.length < 2) return;
+      var el;
+      try { el = document.querySelector(h); } catch (e) { return; }
+      if (!el) return;
+      var fold = el.closest ? el.closest('details') : null;
+      if (fold) fold.open = true;
+      el.scrollIntoView({ block: 'start' });
+    }
+    window.addEventListener('DOMContentLoaded', openFromHash);
+    window.addEventListener('hashchange', openFromHash);
+  })();
+</script>
 {% endblock %}

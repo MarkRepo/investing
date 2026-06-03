@@ -494,6 +494,11 @@ def prism_diag(request: Request, slug: str, variant: str):
 
     # ④ 逐料 findings
     findings = outputs_io.collect_findings(slug, variant)
+    # ③ 行「是否有抽取笔记」判定集：findings 文件名是 findings_mat-XXX，剥前缀对回来源 id
+    finding_ids = {f["mat_id"].replace("findings_", "") for f in findings["files"]}
+
+    # ③′ 复用父级资料（不在本 manifest，从 topic.yaml parent_materials 读父 manifest 渲染）
+    parent_materials = outputs_io.collect_parent_materials(slug, variant)
 
     # ⑤ gap_detector 实时诊断
     from prism.scripts.gap_detector import detect_gaps
@@ -521,6 +526,8 @@ def prism_diag(request: Request, slug: str, variant: str):
             "manifest": manifest,
             "expired_ids": expired_ids,
             "findings": findings,
+            "finding_ids": finding_ids,
+            "parent_materials": parent_materials,
             "synthesis_brief": synthesis_brief,
             "gap": gap,
             "critic": critic,

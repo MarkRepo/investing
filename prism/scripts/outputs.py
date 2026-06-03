@@ -603,6 +603,123 @@ def list_decomposition_files(slug: str, variant: str) -> list[int]:
     return sorted(versions)
 
 
+import re as _re_mat
+
+# 正文里的资料引用形如 mat-9fb50a（6 位小写 hex）。三种常见写法 [mat-x] / 裸 mat-x /
+# (mat-x) 都靠这个裸 token 正则命中——前后的方括号/圆括号不进 token，故无需分别匹配。
+_MAT_REF_RE = _re_mat.compile(r"\bmat-[0-9a-f]{6}\b")
+
+
+def linkify_mat_refs(html: str, slug: str, variant: str, valid_ids: set[str]) -> str:
+    """把已渲染 HTML 正文里的 mat-XXX 引用包成指向诊断页对应来源行的链接。
+
+    tag-safe：用 re.split 把 HTML 切成「标签段 / 文本段」交替序列，只在文本段上替换，
+    绝不动标签内部（避免污染 <h2 id="..."> 之类属性，或把 href 里的串二次包链）。
+    仅当 mid ∈ valid_ids（自有 manifest ∪ parent_materials）才成链；未知 id 保持纯文本，
+    不造死链（可能是过期/残留引用）。纯函数，可单测。
+    """
+    if not html or not valid_ids:
+        return html
+
+    def _sub_text(text: str) -> str:
+        def _repl(m: "_re_mat.Match") -> str:
+            mid = m.group(0)
+            if mid not in valid_ids:
+                return mid
+            return (f'<a class="mat-ref" '
+                    f'href="/prism/{slug}/{variant}/diag#{mid}">{mid}</a>')
+        return _MAT_REF_RE.sub(_repl, text)
+
+    parts = _re_mat.split(r"(<[^>]+>)", html)
+    # 偶数下标=文本段，奇数下标=标签段（split 用捕获组保留分隔符）
+    return "".join(
+        seg if (i % 2 == 1) else _sub_text(seg)
+        for i, seg in enumerate(parts)
+    )
+
+
+def _citable_mat_ids(slug: str, variant: str) -> set[str]:
+    """本 topic 正文里「可解析成链」的 mat id 全集：自有 manifest 的 id ∪ parent_materials
+    的 mat_id。任意来源缺失/异常一律降级为空集，绝不让取 id 这一步拖垮渲染。"""
+    ids: set[str] = set()
+    from . import manifest as manifest_io
+    from . import topic as topic_io
+    try:
+        man = manifest_io.read_manifest(slug, variant)
+        for m in man.get("materials") or []:
+            mid = m.get("id")
+            if mid:
+                ids.add(mid)
+    except Exception:
+        pass
+    try:
+        data = topic_io.read_topic(slug, variant)
+        for pm in data.get("parent_materials") or []:
+            mid = pm.get("mat_id")
+            if mid:
+                ids.add(mid)
+    except Exception:
+        pass
+    return ids
+
+
+def collect_parent_materials(slug: str, variant: str) -> list[dict]:
+    """收集本 topic 复用的父级资料行（供诊断页「复用父级资料」子区渲染）。
+
+    父级资料不在本 manifest——只在 topic.yaml: parent_materials 里登记
+    {parent_slug, parent_variant, mat_id, addresses?, note?}。逐条回父 manifest 取
+    filename/source_type/confidence/search_meta，复用 material_trust() 算可信，并探测父
+    outputs/findings_{mat_id}.md 是否存在（决定是否给「父 findings」深链）。
+
+    父 manifest 缺失/异常时降级为最小行（仅 mat_id/parent_*/addresses/note，无文件元数据、
+    has_parent_findings=False），绝不抛错（缺父 topic 不该让子 topic 诊断页 500）。
+    """
+    from . import manifest as manifest_io
+    from . import topic as topic_io
+    try:
+        data = topic_io.read_topic(slug, variant)
+    except Exception:
+        return []
+    rows: list[dict] = []
+    for pm in data.get("parent_materials") or []:
+        mid = pm.get("mat_id")
+        if not mid:
+            continue
+        p_slug = pm.get("parent_slug")
+        p_variant = pm.get("parent_variant")
+        row = {
+            "mat_id": mid,
+            "parent_slug": p_slug,
+            "parent_variant": p_variant,
+            "addresses": pm.get("addresses") or [],
+            "note": pm.get("note"),
+            "filename": None,
+            "source_type": None,
+            "confidence": None,
+            "search_meta": None,
+            "trust": None,
+            "has_parent_findings": False,
+        }
+        try:
+            p_man = manifest_io.read_manifest(p_slug, p_variant)
+            src = next((m for m in p_man.get("materials") or [] if m.get("id") == mid), None)
+            if src:
+                row["filename"] = src.get("filename")
+                row["source_type"] = src.get("source_type")
+                row["confidence"] = src.get("confidence")
+                row["search_meta"] = src.get("search_meta")
+                row["trust"] = material_trust(src)
+        except Exception:
+            pass
+        try:
+            p_find = _topic_dir(p_slug, p_variant) / "outputs" / f"findings_{mid}.md"
+            row["has_parent_findings"] = p_find.is_file()
+        except Exception:
+            pass
+        rows.append(row)
+    return rows
+
+
 def read_output_html(slug: str, output_key: str, variant: str) -> str:
     # Handle drilldown outputs
     if output_key.startswith("drilldown_"):
@@ -612,7 +729,9 @@ def read_output_html(slug: str, output_key: str, variant: str) -> str:
     if not out_path.is_file():
         raise FileNotFoundError(f"Output not yet generated: {output_key}")
     raw = out_path.read_text(encoding="utf-8")
-    return render_markdown(raw)
+    html = render_markdown(raw)
+    # 正文资料引用 mat-XXX → 诊断页对应来源行的链接（仅可解析 id 成链）
+    return linkify_mat_refs(html, slug, variant, _citable_mat_ids(slug, variant))
 
 
 # ── 诊断页（/diag）中间产物读取器 ───────────────────────────────────────────────

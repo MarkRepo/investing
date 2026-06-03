@@ -4,6 +4,17 @@
   <meta charset="utf-8" />
   <title>{% block title %}investing{% endblock %} · investing</title>
   <link rel="stylesheet" href="/static/style.css?v=2" />
+  <style>
+    /* 正文里的 mat-XXX 资料引用链（output/compare/thesis 等所有 .markdown-body 渲染处通用）：
+       小等宽徽样，跳诊断页对应来源行。 */
+    .markdown-body a.mat-ref {
+      font-family: monospace; font-size: 0.88em;
+      color: #2a5db0; background: #eef3ff;
+      padding: 0.02em 0.3em; border-radius: 3px;
+      text-decoration: none; white-space: nowrap;
+    }
+    .markdown-body a.mat-ref:hover { text-decoration: underline; background: #dde7ff; }
+  </style>
 </head>
 <body>
   {% set _path = request.url.path if request is defined and request else '' %}
