@@ -9,6 +9,47 @@ import yaml
 
 _PRISM_ROOT = Path(__file__).resolve().parent.parent
 
+# ── markdown 渲染（统一入口）────────────────────────────────────────────────
+# Python-Markdown 的 tables 扩展硬要求表格前必须有空行：表格紧跟非空文本行时
+# 不会被解析，整块退化成裸 `|` 文本。作者/LLM 漏空行很常见，故在渲染前统一归一化。
+_MD_EXTENSIONS = ["tables", "fenced_code"]
+
+
+def _is_md_table_delimiter(line: str) -> bool:
+    """是否为表格分隔行（如 `|---|:--:|`）。要求同时含 `|` 与 `-`，避免把 setext
+    下划线（`-----`）或水平线误判为表格。"""
+    s = line.strip()
+    if "|" not in s or "-" not in s:
+        return False
+    return all(ch in "|-: " for ch in s)
+
+
+def _normalize_md_tables(raw: str) -> str:
+    """在「表头行 + 分隔行」构成的表格块前补一个空行（仅当上一行非空且非表格行）。
+    跳过 fenced code 块内部，幂等。"""
+    lines = raw.split("\n")
+    out: list[str] = []
+    in_fence = False
+    for i, line in enumerate(lines):
+        stripped = line.lstrip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fence = not in_fence
+            out.append(line)
+            continue
+        if not in_fence and "|" in line and line.strip():
+            nxt = lines[i + 1] if i + 1 < len(lines) else ""
+            if _is_md_table_delimiter(nxt):
+                prev = out[-1] if out else ""
+                if prev.strip() and "|" not in prev:
+                    out.append("")
+        out.append(line)
+    return "\n".join(out)
+
+
+def render_markdown(raw: str) -> str:
+    """prism 内所有 md→HTML 的统一入口：先补表格空行再交给 markdown 扩展。"""
+    return _md.markdown(_normalize_md_tables(raw), extensions=_MD_EXTENSIONS)
+
 _OUTPUT_KEYS_LABELS = [
     ("00_primer", "领域入门"),
     # 决策链成稿 case（按 topic.type 三选一，见 topic._DECISION_CHAIN_OUTPUTS）。
@@ -519,7 +560,7 @@ def read_thesis_html(slug: str, variant: str, version: int) -> str:
     if not out_path.is_file():
         raise FileNotFoundError(f"Thesis not found: thesis_v{version}.md")
     raw = out_path.read_text(encoding="utf-8")
-    html = _md.markdown(raw, extensions=["tables", "fenced_code"])
+    html = render_markdown(raw)
     # 第一个出现的每个 K# 加 id 锚点（用于详情页 coverage strip 跳转）
     seen: set[str] = set()
     def _add_anchor(m: "re.Match") -> str:
@@ -571,4 +612,4 @@ def read_output_html(slug: str, output_key: str, variant: str) -> str:
     if not out_path.is_file():
         raise FileNotFoundError(f"Output not yet generated: {output_key}")
     raw = out_path.read_text(encoding="utf-8")
-    return _md.markdown(raw, extensions=["tables", "fenced_code"])
+    return render_markdown(raw)
