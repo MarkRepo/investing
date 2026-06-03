@@ -153,7 +153,7 @@ def next_stage(topic_type: str, current_stage: str) -> str | None:
         return None
 
 
-# ── 阶段 → 读者向进度（单一事实源；index / variants / detail 三处共用）──────
+# ── 阶段 → 读者向进度（单一事实源；index / variants / detail 三处共用）──────────
 # 把流水线的细 stage 收敛成 7 个读者看得懂的大阶段，让人「一眼看出研究完成没 + 到哪了」，
 # 替代曾经在数退休产出槽的 n/m 数字（那个分母是 outputs_state 残留的旧 8 维死 key，对读者零含义）。
 # type-agnostic：company 第 6 阶段走 05-critic-review，industry 走 09-arena-shortlist，
@@ -928,9 +928,90 @@ def set_concepts(slug: str, concepts: list[str], variant: str) -> None:
 
 
 def set_monitoring_tier(slug: str, tier: str, variant: str) -> None:
+    """设 monitoring_tier，并联动 monitoring.enabled（tier!=dormant ⇒ enabled=True）。
+
+    历史上 monitoring_tier（顶层）与 monitoring.enabled（嵌套）各写各的，
+    daily-monitor 接线后两者必须一致——否则 tier=deep 但 enabled=false 会让
+    调度逻辑与展示打架。这里一次写齐。
+    """
     if tier not in ("deep", "watch", "dormant"):
         raise ValueError(f"Invalid tier: {tier}, must be deep/watch/dormant")
-    update_topic(slug, variant, monitoring_tier=tier)
+    data = read_topic(slug, variant)
+    monitoring = data.get("monitoring") or {}
+    monitoring["enabled"] = tier != "dormant"
+    update_topic(slug, variant, monitoring_tier=tier, monitoring=monitoring)
+
+
+def set_monitoring_reviewed(slug: str, variant: str, ts: str | None = None) -> None:
+    """记录 monitoring.last_reviewed=巡检时间戳。零 LLM。
+
+    industry/arena 的 upgrade_triggers/monitor_metrics 无具体日期，靠"距上次巡检
+    >= recency"做周期重扫；本字段就是那个"上次"。ts 省略则取当前 UTC。
+    """
+    data = read_topic(slug, variant)
+    monitoring = data.get("monitoring") or {}
+    monitoring["last_reviewed"] = ts or _now_iso()
+    update_topic(slug, variant, monitoring=monitoring)
+
+
+def set_pending_thesis_review(
+    slug: str,
+    variant: str,
+    *,
+    reason: str,
+    proposal_id: str | None = None,
+    locator: str | None = None,
+    since: str | None = None,
+) -> dict:
+    """盖戳:本 topic 有一条已确认的重大监控翻牌(kill 触发 / signpost 翻 bear)
+    尚未经 04/05 消化。零 LLM。由 monitor.confirm_flip 在 requires_thesis_review
+    的 proposal 确认后调用。
+
+    多次破位覆盖式更新 since(取最新确认时间)——一次 04/05 评审能消化截至其
+    时间戳的全部破位。是否"已消化"不在这里判,靠 get_pending_thesis_review 渲染时
+    比对 critic.at / thesis.last_updated 自动判定,故横幅会在跑过 04/05 后自动消失。
+    """
+    marker = {
+        "since": since or _now_iso(),
+        "reason": reason,
+        "proposal_id": proposal_id,
+        "locator": locator,
+    }
+    update_topic(slug, variant, pending_thesis_review=marker)
+    return marker
+
+
+def pending_review_unresolved(topic_data: dict) -> dict | None:
+    """纯函数:给一份 topic.yaml dict,返回未消化的重大变更戳;若破位确认后已跑过
+    04(thesis.last_updated 更新)或 05(critic.at 更新)则视为已消化,返回 None。
+
+    无 I/O——供 get_pending_thesis_review(按 slug 读盘后调)和 web 各 chip 渲染共用
+    (列表/树/变体页已持有完整 topic.yaml dict,免再读盘)。时间戳均 topic._now_iso()
+    同格式 ISO-8601,可直接字典序比较。
+    """
+    marker = (topic_data or {}).get("pending_thesis_review")
+    if not marker or not marker.get("since"):
+        return None
+    since = marker["since"]
+    critic_at = (topic_data.get("critic") or {}).get("at")
+    thesis_updated = (topic_data.get("thesis") or {}).get("last_updated")
+    for ts in (critic_at, thesis_updated):
+        if ts and ts > since:
+            return None  # 破位确认后已有一次 04/05 → 已消化
+    return marker
+
+
+def get_pending_thesis_review(slug: str, variant: str) -> dict | None:
+    """返回未消化的重大变更戳(按 slug/variant 读盘 → pending_review_unresolved)。
+    纯读判定不写盘——横幅/chip 自动消失,无需手动 dismiss。
+    """
+    return pending_review_unresolved(read_topic(slug, variant))
+
+
+def clear_pending_thesis_review(slug: str, variant: str) -> None:
+    """显式清戳(可选;正常靠 get_pending_thesis_review 自动判定消失)。"""
+    if read_topic(slug, variant).get("pending_thesis_review") is not None:
+        update_topic(slug, variant, pending_thesis_review=None)
 
 
 _VALID_PRESCAN_STATUSES = ("full", "partial", "failed")

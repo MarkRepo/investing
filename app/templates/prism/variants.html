@@ -23,6 +23,7 @@
     <div class="variant-meta">
       <span class="badge badge-{{ v.status }}">{{ v.status }}</span>
       <span class="stage-pill stage-{{ v.progress.state }}">{% if v.progress.state == 'done' %}✅{% endif %}{{ v.progress.label }}</span>
+      {% if v.needs_review %}<span class="stage-pill stage-review" title="daily-monitor 引入未消化重大变更，待重评 thesis">⚠️待复评</span>{% endif %}
     </div>
     <div class="variant-progress">
       阶段 <strong>{{ v.progress.phase_index }}/{{ v.progress.total }}</strong>
@@ -61,6 +62,7 @@
   }
   .stage-done        { background: #eafaf0; color: #1e8a4c; border-color: #bfe9d0; }
   .stage-in_progress { background: #e8f1ff; color: #1e5bbf; border-color: #cfe0fb; }
+  .stage-review      { background: #fff3e0; color: #b45309; border-color: #f0c36d; }
   .stage-not_started { background: #f1f1f1; color: #888;    border-color: #e0e0e0; }
   .stage-quarantined { background: #fdecea; color: #c0392b; border-color: #f5c6c0; }
   .stage-unknown     { background: #fff7e6; color: #9a6b00; border-color: #f0dca8; }

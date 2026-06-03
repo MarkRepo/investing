@@ -148,8 +148,8 @@ outputs_state:
     - mat-eb3ef4
     last_error: null
   08_living_feed:
-    version: 1
-    last_updated: '2026-05-26T00:30:40.049961+00:00'
+    version: 2
+    last_updated: '2026-06-03T07:34:02.387452+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
@@ -237,3 +237,8 @@ thesis:
     summary: 中性 6/10：长期持有逻辑成立但当前估值$73.64已饱满（合理中枢$55-65）。K1时间窗收窄/K4 take rate证伪/K6
       SCHW加密反扑触发拖累v0的7/10，K5多元化兑现部分对冲。建议等2026-Q2财报或回调至$60-65区间建立首仓1-2%；强力买入区$45-55需同时满足Net
       Income增速回升+Funded Customers不转负。
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+pending_thesis_review: null

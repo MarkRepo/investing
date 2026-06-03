@@ -39,3 +39,12 @@ generated: 2026-05-26
 - 2027-04-30：HOOD Q1 2027 财报（大选后第一季度，K7 关键验证）
 
 > 后续条目只在以下情况追加：catalyst 时点真实兑现 / 出现 thesis 没预期的新数据 / K# 翻盘
+
+
+---
+
+## 2026-06-03 SIP odd-lot 数据已公开,未见针对 HOOD 执行质量的新指控
+**来源**:SEC Market Data Infrastructure Rule (Release 34-99626 / Federal Register)；SSRN 执行质量研究
+**关键信息**:SEC 市场数据基础设施规则要求 SIP 公开 odd-lot 报价,合规日 2026-01-26——到本巡检日 odd-lot 数据已公开逾 4 个月。围绕 HOOD odd-lot 占比/执行质量的新负面(媒体或学术)未检索到;排名最前的批判性文献《"Robinhood Rips You Off"——But Is That True?》为 2023-12 旧作(早于数据公开),且其本身在质疑"坑散户"叙事,非新证伪。
+**对已有判断的影响**:支持 bull_signal「媒体/学术未抓 HOOD 负面」;bear_signal「odd-lot 占比高→执行质量被质疑」暂未兑现。
+**当前判断更新**:维持原判断,该 signpost 翻 bull(弱证据:基于"未检索到新负面",属缺失性证据,需复核)

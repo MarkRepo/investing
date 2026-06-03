@@ -50,9 +50,9 @@ outputs_state:
     - mat-d2f5c8
     last_error: null
   08_living_feed:
-    version: 0
-    last_updated: null
-    status: pending
+    version: 1
+    last_updated: '2026-06-03T07:34:02.410009+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null

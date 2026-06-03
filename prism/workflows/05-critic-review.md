@@ -68,6 +68,45 @@ gap report 是 critic 的**起手量化输入**——别只凭主观感觉判论
 
 ---
 
+## Step 0.1：daily-monitor 破位喂入（**这次 05 为什么被发起的种子**）
+
+很多时候发起 05 正是因为 **06-daily-monitor 确认了一条重大翻牌**（kill 触发 / signpost 翻
+bear），详情页挂着「⚠️ 有未消化的重大变更，待重评 thesis」横幅。这条破位 + 它当时搜到的证据
+就是本轮 critic 的**起手攻击种子**——不读它等于无视触发重评的那件事。
+
+```python
+from prism.scripts.topic import get_pending_thesis_review
+from prism.scripts import monitor
+
+marker = get_pending_thesis_review('{slug}', '{variant}')
+if marker:
+    print('破位锚点:', marker.get('reason'))
+    print('locator :', marker.get('locator'), '| 确认于', marker.get('since'))
+    # 找到那条已确认 proposal，取它注册进证据库的 mat_ids + 锚点
+    for p in monitor.load_queue():
+        if p.get('proposal_id') == marker.get('proposal_id'):
+            print('已注册证据 mat_ids:', p.get('registered_mat_ids'))
+            print('证据锚点 addresses:', p.get('evidence_anchor'))
+            print('living_feed 文案:', (p.get('living_feed_entry') or '')[:400])
+            if p.get('evidence_register_error'):
+                print('⚠️ 证据注册失败:', p['evidence_register_error'], '— 该批证据未入库，需在 Step 2 现搜补')
+            break
+```
+
+- `marker` 非空 → **Step 2 独立反方输入包必须显式注入这条破位**："daily-monitor 已确认
+  {reason}，按该 bear/kill 已兑现为前提攻击 thesis，证据见 mat_ids / 锚点 `{evidence_anchor}`"。
+- 那批证据已 `triggered_by='06-daily-monitor'` 注册进 web_search 库并 addressed 到该
+  signpost/kill，**Step 0 的 `gap_detector` 已经数得到**（不再是 living_feed 里的散文）。
+  顺手 grep manifest 里 `triggered_by: 06-daily-monitor` 的材料读其 finding。
+- `evidence_register_error` 非空（极少：缺 manifest / 占位 URL）→ 该批证据没入库，Step 2 现搜补回。
+- `marker` 为空 → 本轮 05 不是被 daily-monitor 触发（常规评审），跳过本步。
+
+> 跑完 04（重合成）或本次 05（`set_critic_verdict`）后，`get_pending_thesis_review` 会因
+> `thesis.last_updated` / `critic.at` 晚于破位 `since` 自动返回 None，详情页横幅随之消失——
+> 即"这条破位已被消化"的机械依据，无需手动清。
+
+---
+
 ## Step 1：读取核心产出
 
 **按 topic 合成路径取文件**——三类 topic 都走决策链路径：company 产 `c_investment_case`（+`07_decision_kit.yaml`）、industry 产 `i_industry_case`（+`09_industry_to_arenas.yaml`）、arena 产 `a_arena_case`（+`10_peer_matrix.yaml`）：

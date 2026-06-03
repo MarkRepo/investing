@@ -1,217 +1,133 @@
-# Workflow 06 — 日常监控 (Daily Monitor)
+# Workflow 06 — 日常监控 (Daily Monitor · headless 巡检)
 
-**触发**：用户说「监控 {slug}」或每日/每周定期运行
-**定位**：快速扫描新信息，判断是否影响现有判断
+**触发**：web-server 每日 6:00 自动拉起 / web 端「立即巡检」按钮 / 用户说「监控 {slug}」
+**执行者**：headless `claude -p`（由 `app/monitor_runtime.py` 拉起）或对话里的 Claude
+**定位**：扫关注清单里到期的 event → 自动搜 → **轻判读** → 写 proposal 进 queue
 **耗时**：目标 5-10 分钟
 
-> **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
-> 仅事实校验类临时单查走 WebSearch tool。
+> **铁律（B 层分叉=只翻牌,thesis 另议）**：
+> - **只翻牌，不写 thesis 草案**。kill 触发 / 重大 signpost 翻 bear → 标
+>   `requires_thesis_review=True`，把重评留给用户在对话里发起交互式 05-critic-review。
+> - **绝不 confirm**。proposal 一律 `awaiting_confirm`，确认永远是用户在 web 端点头。
+> - 成本闸是 watchlist：本 workflow 只处理 `scan` 吐出的到期项，不全量扫 topic。
+
+> **Web 搜索路径**：见 [[_web_search_routing]]。本步默认走 adapter；事实校验单查走 WebSearch tool。
 
 ---
 
-## Step 0：gap 体检（每个 topic 扫一遍）
-
-对今天选中的每个 topic（见 Step 1）跑一次：
+## Step 1：拿到期清单（零 LLM，机械）
 
 ```bash
-python3 -c "
-from prism.scripts.gap_detector import detect_gaps, format_summary
-print(format_summary(detect_gaps('{slug}', '{variant}')))
-"
+python3 -m prism.scripts.monitor scan 14
 ```
 
-把 report 输出**贴到对话**。重点看 `expired_web_materials`——daily-monitor 是天然的"web-search 刷新"时机：
-- expired ≥1 条 → 触发 Step 1b 的 stale 重扫
-- 顺带看 uncovered_ks / thin_evidence：如果新数据出现而 K# 仍薄弱，可在 Step 5 next_actions 里加"补 K# 证据"
+输出 JSON 分桶（已只含 watchlist 内的 topic）：
 
-这是诊断不是 gate——但 06 跑得频繁，是最好的"持续校准"卡点。
-
----
-
-## Step 1：按 monitoring_tier 选择今日要扫的 topic
-
-```bash
-python3 -c "
-from prism.scripts.topic import list_topics
-import datetime
-today = datetime.date.today()
-all_topics = list_topics()
-
-# deep tier: 每日扫
-deep = [t for t in all_topics if t.get('monitoring_tier') == 'deep']
-# watch tier: 每周二扫
-watch = [t for t in all_topics if t.get('monitoring_tier') == 'watch' and today.weekday() == 1]
-# dormant: 不主动扫
-dormant = [t for t in all_topics if t.get('monitoring_tier') in (None, 'dormant')]
-
-print('=== 今日监控清单 ===')
-print('Deep tier（每日）:')
-for t in deep:
-    print(f'  - {t[\"slug\"]} ({t[\"variant\"]})')
-print()
-print('Watch tier（每周二）:')
-for t in watch:
-    print(f'  - {t[\"slug\"]} ({t[\"variant\"]})')
-print()
-print(f'共 {len(deep) + len(watch)} 个 topic 今日需监控')
-"
-```
-
-如果用户指定了具体 slug，跳过此步直接处理该 topic。
-
----
-
-## Step 1a：读取该 topic 的 Kill Criteria 和 Signposts
-
-新流程的 kill / signpost 不在旧 markdown（`06_risk_blindspots.md` / `07_decision_kit.md` **已不再产出**），改读 sidecar + case 环⑤/⑥：
-
-- **company**：`07_decision_kit.yaml` 的 `kill_criteria` / `signposts`
-- **industry**：`09_industry_to_arenas.yaml` 的 `upgrade_triggers` / `monitor_metrics`
-- **arena**：`10_peer_matrix.yaml` 的 `upgrade_triggers`
-- 三类都可回看 case（`c_/i_/a_*_case.md`）环⑤证伪 + 环⑥行动 的原文叙述
-
-```bash
-# 读对应 type 的 sidecar（示例 company）
-cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.yaml
-```
-
----
-
-## Step 1b：web-search 周月扫 + stale 重扫（**新增**）
-
-在等用户口头报新信息（Step 2）之前，先主动跑 `_web_prescan_shared.md`：
-
-| monitoring_tier | recency_days | 触发频率 |
+| 桶 | 含义 | 本步动作 |
 |---|---|---|
-| `deep`    | 7  | 每日 |
-| `watch`   | 14 | 每周二（Step 1 已过滤） |
-| `dormant` | —  | 不主动 |
+| `due_signposts` | 到期/逾期且未翻牌的 signpost | → Step 2 判读 |
+| `due_kills` | 到期且 status=pending 的 kill | → Step 2 判读 |
+| `price_breach` | 现价跌入买入框 | **跳过**——已由 web 进程零 LLM 直接 propose |
+| `recurring_review` | industry/arena 周期重扫 | → Step 3 |
+| `unparseable` | 日期写错的 event（永不触发）| **贴对话上报**，建议人工修 sidecar 日期 |
+| `price_unavailable` | 停牌/缺数/币种错配 | 记一笔，不误报 |
+| `skipped_no_sidecar` | 关注了但还没 sidecar | 记一笔 |
 
-重点查询：
-- topic 的 signposts 时点 **±7 天** 内的事件（catalyst 兑现/未兑现）
-- Kill Criteria 相关关键词
-- 该 topic monitor 上一次到今天的 gap 内 K# 相关进展
-
-`triggered_by='06-daily-monitor'`。
-
-**stale 重扫**（同步做）：
-```bash
-python3 -c "
-from prism.scripts.manifest import list_expired_web_search
-exp = list_expired_web_search('{slug}', '{variant}')
-print(f'{len(exp)} 条 web-search material 已过期 (>90 天)，需用同 query 重跑')
-for m in exp:
-    print(f'  {m[\"id\"]} | query={m.get(\"search_meta\",{}).get(\"query\")}')
-"
-```
-对每条 expired 用其 `search_meta.query` 重跑 `_web_prescan_shared.md` Step B-F；dedup（按 filename）会自动刷新 `search_meta.searched_at`。
+`due_signposts`/`due_kills` 都为空且 `recurring_review` 为空 → 无事可做，结束。
 
 ---
 
-## Step 2：用户提供新信息
+## Step 2：逐条自动搜 + 轻判读（company signpost/kill）
 
-询问用户：「今天有什么新信息需要评估？」
+对每个 `due_signposts` / `due_kills` 项：
 
-如果没有新信息，检查：
-- 是否有定期数据发布（月度销量/PMI/价格指数）
-- 公司是否有公告
-- 行业是否有政策动态
+**2a. 写 query 自动搜**（query 由你写，脚本不写）。重点查：
+- signpost：该 `event` 是否已兑现？围绕 `bull_signal` / `bear_signal` 的最新事实
+- kill：`description` 描述的证伪条件是否触发（带数据找数据）
 
----
-
-## Step 3：逐条评估新信息
-
-对每条新信息：
-
-```
-信息：{一句话描述}
-来源：{来源}
-日期：{日期}
-
-影响评估：
-□ 触发了 Kill Criteria？ 是/否
-□ 验证了哪个 Signpost？ {或"无"}
-□ 否定了哪个核心假设？ {或"无"}
-□ 需要更新哪份产出？ {或"无需"}
-
-结论：维持判断 / 小幅调整 / 需要重新评估
+```python
+from prism.scripts.web_search import WebSearchAdapter
+hits = WebSearchAdapter().search("<你写的 query>", intent="news", days=14)
 ```
 
----
+> **证据注册已下沉到 confirm（修 — 巡检不白做）**：你**不必**在这里手动调
+> `register_web_search_batch`。把判读所依据的 hits 原样塞进下面 proposal 的
+> `evidence` 字段即可；用户在 web 端**确认该翻牌时**，`monitor.confirm_flip` 会自动
+> 把这批 hits 注册进 web_search 库（`triggered_by='06-daily-monitor'`，addressed 到该
+> signpost/kill 的语义锚点，URL 去重幂等）。这样 05 重评的 `gap_detector` 数得到这批新
+> 证据、独立反方拿得到——证据不再只躺在 living_feed 散文里。**evidence 必须是从搜索结果
+> 原样拷的真实 hits（title/url/snippet），不能凭记忆构造 URL**（占位 URL 会在注册时被拒）。
 
-## Step 4：追加到信息流（living feed · 追加式日志）
+**2b. 轻判读**——只判三件事，不重写 thesis：
+```
+□ 事件兑现了吗？      未兑现/没新信息 → 不 propose（留到下次扫）
+□ 偏多还是偏空兑现？   signpost → proposed_value = "bull" | "bear"
+□ 触发 kill 了吗？     kill → proposed_value = "triggered_bull" | "triggered_bear" | "cleared"
+```
+弱证据（只命中 low-tier/other 源）→ 仍可 propose，但 `rationale` 注明「弱证据需复核」，
+web 端会标黄。
 
-`08_living_feed.md` 是**追加式日志**（不是综合产出精华汇编）：每次有新信息在末尾追加，不改历史；综合判断在 case / sidecar / brief，本文件只记"事件序列 + 触发反应"。
-
-**文件不存在时，初次创建**（控制在 800-1200 字，只记三块：研究启动 + 当下不确定性 + catalyst 时点）：
-
-```markdown
----
-slug: {slug}
-output_key: 08_living_feed
-version: 1
-generated: {timestamp}
----
-
-# 信息流时间线：{display_name}
-
-> 按时间顺序记录重要信息和判断变化。每次更新在末尾追加，不修改历史记录。
-> 综合判断与 K# 校准请看 case / sidecar / brief，本文件只记录"事件序列 + 触发反应"。
-
-## {YYYY-MM-DD} 研究启动 v1
-**来源**：{topic_type} 研究{父级如有}
-**主要事项**：研究问题 / v0 thesis 强度 / 资料覆盖 {N} 份 findings
-**当时已知的主要不确定性**（3-5 条，每条 ≤1 句）：…
-**已排好的 catalyst 时点**（仅时间+事件名，判断标准在 sidecar signposts）：…
+**2c. 写 proposal**（含预写好的 living_feed 文案）：
+```python
+from prism.scripts import monitor
+monitor.propose_flips([
+  {
+    "slug": slug, "variant": variant,
+    "kind": "signpost",                 # 或 "kill"
+    "locator": "<scan 给的 locator>",    # signpost=hash / kill=id（原样回填）
+    "proposed_value": "bull",           # signpost: bull/bear；kill: triggered_bull/triggered_bear/cleared
+    "expected_current": None,           # signpost 未翻牌时为 None；kill 为 "pending"（照 scan 的 current_*）
+    "evidence": [                       # 必带，至少 1 条：判读所依据的真实搜索 hit（confirm 时注册进证据库）
+      {"title": "<原样拷>", "url": "https://...", "snippet": "<原样拷>"},
+    ],
+    "evidence_urls": ["https://..."],   # 可选：仅供 web 端快速展示的裸链接（evidence 缺失时回退用它合成 hit）
+    "living_feed_entry": (              # 你现在就写好，confirm 时机械落盘（零 LLM）
+      "## {YYYY-MM-DD} {事件简述}\n"
+      "**来源**：{资料}\n**关键信息**：{带数据}\n"
+      "**对已有判断的影响**：支持/否定了 {假设}\n**当前判断更新**：{维持/小调}"
+    ),
+    "rationale": "一句话：为什么这么翻",
+    "requires_thesis_review": False,    # kill 触发 / signpost 翻 bear 且动摇核心论点 → True
+  },
+])
 ```
 
-**文件已存在时，末尾追加**（每条 200-500 字）：
-
-```markdown
-
----
-
-## {YYYY-MM-DD} {触发更新的事件简述}
-**来源**：{资料名称 / 市场事件 / 数据发布}
-**关键信息**：{具体事实，有数据带数据}
-**对已有判断的影响**：支持了 {哪个假设} / 否定了 {哪个，或"无"} / 新增了 {哪个不确定性，或"无"}
-**当前判断更新**：{如无变化写"维持原判断"}
-```
-
-追加后 `set_output_status('{slug}', '08_living_feed', 'fresh', '{variant}', version=N+1)`。
+**`requires_thesis_review` 规则**：
+- kill 翻成 `triggered_bull`/`triggered_bear` → **必 True**
+- signpost 翻 `bear` 且否定核心假设 → True
+- 其余 → False
+> True 不会自动跑 04/05——只在 web「建议重评 thesis」里点名，等用户在对话里发起。
 
 ---
 
-## Step 5：更新 next_actions
+## Step 3：industry / arena 周期重扫（recurring_review）
 
-```bash
-python3 -c "
-from prism.scripts.topic import set_next_actions, read_topic
-t = read_topic('{slug}', '{variant}')
-current = t.get('next_actions', [])
-current.append('下次监控建议关注：{重点}')
-set_next_actions('{slug}', current, '{variant}')
-"
+09/10 的 `upgrade_triggers` / `monitor_metrics` 无具体日期，按「距上次巡检」周期扫。
+对每个 `recurring_review` 项：自动搜该 arena 的升级触发器关键词。若触发器命中，写一条
+signpost/kill 等价的 proposal（locator 用触发器文本的 hash 或 metric 名）；判读完无论有无
+命中，都记一次复查时间：
+```python
+from prism.scripts.topic import set_monitoring_reviewed
+set_monitoring_reviewed(slug, variant)
 ```
 
 ---
 
-## Step 6：仪表盘刷新（修 S5）
+## Step 4：收尾
 
-06-daily-monitor 通常不直接动 set_output_referenced_mats / set_thesis / set_critic_verdict，所以 dashboard **不会自动重建**。若本轮监控触发了 signposts/kill-criteria 状态变化（典型来自 04/05 重跑），那些路径已自动刷新；若仅本 workflow 手动追加 living_feed 想立即看 dashboard，再手动跑：
-
-```bash
-python3 -m prism.scripts.dashboard
-```
-
-否则等下次 04/05/thesis 升版自动触发即可。
+- 把 `unparseable` / `price_unavailable` / `skipped_no_sidecar` 三桶**贴对话**（headless 模式写进 stdout），让用户知道哪些没扫到、为什么。
+- **不**调 dashboard build——web 端读 queue 实时渲染；下次 04/05/thesis 升版会自动重建 dashboard。
+- **不** confirm 任何 proposal。结束。
 
 ---
 
-## 附录：monitoring_tier 三档定义
+## 附录：monitoring_tier 三档（watchlist 之外的展示分层）
 
-| Tier | 含义 | 触发 monitor | 需要的 outputs |
-|------|------|--------------|----------------|
-| `deep` | 持仓 / 候选标的 | 每日 + 重大事件 | 全部（00_primer + case + sidecar yaml + thesis + living_feed） |
-| `watch` | 值得关注但暂不投 | 每周 | 00_primer + case 核心环（②定价 / ⑤证伪 / ⑥行动）+ living_feed |
-| `dormant` | 历史归档 / 完成研究 | 不主动 | 全部，但不 refresh |
+| Tier | 含义 | 触发频率 |
+|------|------|----------|
+| `deep` | 持仓 / 候选标的 | 每日 + 重大事件 |
+| `watch` | 值得关注但暂不投 | 每周 |
+| `dormant` | 历史归档 | 不主动 |
+
+> 实际成本闸是 **watchlist**（用户在 web 勾选）：tier 只影响展示与建议,真正决定"扫不扫"
+> 的是这个 event 在不在关注清单。`set_monitoring_tier` 已联动 `monitoring.enabled`。

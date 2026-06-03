@@ -1,0 +1,61 @@
+pending:
+- proposal_id: 923cc37c1fae
+  slug: us-robinhood
+  variant: claude-opus-4-7
+  kind: signpost
+  locator: fe1c4705
+  proposed_value: bull
+  expected_current: null
+  evidence_urls:
+  - https://www.sec.gov/files/rules/final/2024/34-99626.pdf
+  - https://www.federalregister.gov/documents/2024/05/09/2024-08999/market-data-infrastructure
+  - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4651221
+  living_feed_entry: '## 2026-06-03 SIP odd-lot 数据已公开,未见针对 HOOD 执行质量的新指控
+
+    **来源**:SEC Market Data Infrastructure Rule (Release 34-99626 / Federal Register)；SSRN
+    执行质量研究
+
+    **关键信息**:SEC 市场数据基础设施规则要求 SIP 公开 odd-lot 报价,合规日 2026-01-26——到本巡检日 odd-lot 数据已公开逾
+    4 个月。围绕 HOOD odd-lot 占比/执行质量的新负面(媒体或学术)未检索到;排名最前的批判性文献《"Robinhood Rips You Off"——But
+    Is That True?》为 2023-12 旧作(早于数据公开),且其本身在质疑"坑散户"叙事,非新证伪。
+
+    **对已有判断的影响**:支持 bull_signal「媒体/学术未抓 HOOD 负面」;bear_signal「odd-lot 占比高→执行质量被质疑」暂未兑现。
+
+    **当前判断更新**:维持原判断,该 signpost 翻 bull(弱证据:基于"未检索到新负面",属缺失性证据,需复核)'
+  rationale: 事件已兑现(odd-lot SIP 数据 2026-01-26 起公开),但未见针对 HOOD 的新执行质量指控,bull_signal
+    成立;弱证据(缺失性)需人工复核
+  requires_thesis_review: false
+  status: confirmed
+  created_at: '2026-06-03T06:06:52.815899+00:00'
+  confirmed_at: '2026-06-03T07:34:02.391703+00:00'
+  writeback_done: true
+  living_feed_appended: true
+- proposal_id: 032d634e7add
+  slug: global-futu
+  variant: opus4.8
+  kind: signpost
+  locator: 6c6a15ee
+  proposed_value: bull
+  expected_current: null
+  evidence_urls:
+  - https://finance.yahoo.com/news/federal-reserve-cuts-interest-rates-by-25-basis-points-signals-1-cut-ahead-150046493.html
+  - https://www.usbank.com/content/dam/usbank/en/documents/pdfs/wealth-management/situation-analysis-12-10-2025.pdf
+  - https://www.bondsavvy.com/fixed-income-investments-blog/fed-dot-plot
+  living_feed_entry: '## 2026-06-03 美联储 2026 降息节奏温和,远未触及 bear 阈值
+
+    **来源**:Yahoo Finance(FOMC 决议)；U.S. Bank 形势分析(2025-12-10)；2026-03 Fed 点阵图
+
+    **关键信息**:美联储连续第三次会议降息 25bp 后,对 2026 全年仅指引约 1 次降息;2026-03 点阵图显示联邦基金利率到 2027 才落至低
+    3% 区间。即 2026 累计降息预计远低于 100bp。
+
+    **对已有判断的影响**:支持 bull_signal「降息温和、利息收入靠证券借贷/规模扛住」;bear_signal「累计降息≥100bp 且利息收入
+    YoY 转负」双条件均未触发(降息幅度这一前置条件就远未达到)。
+
+    **当前判断更新**:维持原判断,该 signpost 翻 bull(宏观利率路径对 Futu 利息收入构成温和而非剧烈逆风)'
+  rationale: Fed 对 2026 仅指引约 1 次降息(温和),累计幅度远低于 bear 的 100bp 阈值,bull_signal「降息温和」成立
+  requires_thesis_review: false
+  status: confirmed
+  created_at: '2026-06-03T06:06:52.816029+00:00'
+  confirmed_at: '2026-06-03T07:34:02.413211+00:00'
+  writeback_done: true
+  living_feed_appended: true

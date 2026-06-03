@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+{% block title %}诊断 · {{ topic.display_name or topic.slug }} · {{ variant }}{% endblock %}
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
+  <a href="/prism/{{ topic.slug }}/{{ variant }}">{{ variant }}</a> /
+  <span>诊断</span>
+</nav>
+
+<div class="prism-header">
+  <h1>{{ topic.display_name or topic.slug }}</h1>
+  <span class="model-tag">{{ variant }}</span>
+  <span class="hint"> · 链路诊断 / debug</span>
+</div>
+
+<div class="diag-tabs">
+  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}">读者向</a>
+  <span class="diag-tab active">诊断 / debug</span>
+</div>
+
+<p class="hint diag-intro">workflow 链路上的中间产物，按工序顺序铺开：拆解 → 收料 → 抽取 → gap 诊断 → critic。读者向页面不展示这些。</p>
+
+{# ── ① 拆解 decomposition ─────────────────────────────────────────── #}
+<section class="diag-section">
+  <h2>① 拆解 · decomposition
+    {% if decomp_version is not none %}<span class="ver-tag">v{{ decomp_version }}</span>{% endif %}
+  </h2>
+  {% if decomp_versions | length > 1 %}
+  <p class="hint">历史版本：
+    {% for v in decomp_versions %}
+      {% if v == decomp_version %}<strong>v{{ v }}</strong>{% else %}<a href="?decomp={{ v }}">v{{ v }}</a>{% endif %}{% if not loop.last %} · {% endif %}
+    {% endfor %}
+    <span class="hint">（当前展示最新版）</span>
+  </p>
+  {% endif %}
+  {% if decomp_html %}
+  <div class="markdown-body">{{ decomp_html | safe }}</div>
+  {% else %}
+  <p class="empty">未生成 decomposition（早期 variant 或未进入拆解阶段）</p>
+  {% endif %}
+</section>
+
+{# ── ② roadmap 计划 ──────────────────────────────────────────────── #}
+<section class="diag-section">
+  <h2>② roadmap 计划 · K# 可执行版</h2>
+  {% if roadmap_text %}
+  <pre class="code-block">{{ roadmap_text }}</pre>
+  {% else %}
+  <p class="empty">未生成 roadmap.yaml</p>
+  {% endif %}
+</section>
+
+{# ── ③ 收料·来源证据 ─────────────────────────────────────────────── #}
+<section class="diag-section">
+  <h2>③ 收料 · 来源证据 <span class="hint">（{{ manifest.materials | length }} 份）</span></h2>
+  <p class="hint legend">图例：<strong>可信</strong> 列对所有料统一可信信号——一手 SEC/财报/电话会 = 一手（最高），官方政策 = 官方，web-search 按 <code>domain_tier</code> 分级。<code>domain_tier</code> 列仅 web-search 料适用，非 web 料显「—」属正常（这些料不走域名分级，可信度由来源性质定）。</p>
+  {% if manifest.materials %}
+  <table class="data-table diag-table">
+    <thead><tr>
+      <th>文件</th><th>类型</th><th>可信</th><th>域名</th><th>domain_tier</th><th>conf.</th><th>addresses</th><th>状态</th>
+    </tr></thead>
+    <tbody>
+    {% for m in manifest.materials %}
+      {% set sm = m.search_meta or {} %}
+      {% set tr = material_trust(m) %}
+      <tr>
+        <td class="fn">{{ m.filename }}</td>
+        <td>{{ m.source_type or '—' }}</td>
+        <td><span class="tier tier-{{ tr.css }}">{{ tr.label }}</span></td>
+        <td class="dom">{{ sm.domain or '—' }}</td>
+        <td>{% if sm.domain_tier %}<span class="tier tier-{{ 'official' if 'official' in sm.domain_tier else ('white' if 'whitelist' in sm.domain_tier else 'low') }}">{{ sm.domain_tier }}</span>{% else %}<span class="na">—</span>{% endif %}</td>
+        <td>{{ m.confidence if m.confidence is not none else '—' }}</td>
+        <td class="addrs">{% for a in (m.addresses or []) %}<code class="addr">{{ a }}</code>{% endfor %}{% if not m.addresses %}—{% endif %}</td>
+        <td>{% if m.id in expired_ids %}<span class="badge-expired">⚠ 过期</span>{% else %}—{% endif %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">无 manifest / 未收料</p>
+  {% endif %}
+</section>
+
+{# ── ④ 抽取 findings ─────────────────────────────────────────────── #}
+<section class="diag-section">
+  <h2>④ 抽取 · findings <span class="hint">（{{ findings.total }} 份逐料）</span></h2>
+  {% if findings.index_html %}
+  <details class="diag-fold" open>
+    <summary>证据索引（按 K# 分组，addresses 锚点）</summary>
+    <div class="markdown-body">{{ findings.index_html | safe }}</div>
+  </details>
+  {% endif %}
+  {% if findings.files %}
+  <h3 class="sub">逐料全文</h3>
+  {% for f in findings.files %}
+  <details class="diag-fold">
+    <summary>
+      <code>{{ f.mat_id }}</code> · {{ f.filename }}
+      {% if f.quality %}<span class="meta-chip q-{{ f.quality }}">{{ f.quality }}</span>{% endif %}
+      {% if f.bias %}<span class="meta-chip">{{ f.bias }}</span>{% endif %}
+      {% if f.source_type %}<span class="meta-chip">{{ f.source_type }}</span>{% endif %}
+    </summary>
+    <div class="markdown-body">{{ f.body_html | safe }}</div>
+  </details>
+  {% endfor %}
+  {% elif not findings.index_html %}
+  <p class="empty">未生成 findings</p>
+  {% endif %}
+
+  {% if synthesis_brief %}
+  <details class="diag-fold">
+    <summary>合成备忘 · _synthesis_brief.md <span class="hint">（04 合成阶段内部备忘）</span></summary>
+    <div class="markdown-body">{{ synthesis_brief | safe }}</div>
+  </details>
+  {% endif %}
+</section>
+
+{# ── ⑤ gap_detector 诊断 ─────────────────────────────────────────── #}
+<section class="diag-section">
+  <h2>⑤ gap_detector · 实时诊断</h2>
+  {% if gap.error %}
+  <p class="empty">⚠ {{ gap.error }}</p>
+  {% else %}
+  <div class="gap-grid">
+    <div class="gap-card {{ 'red' if gap.uncovered_ks else 'ok' }}">
+      <div class="gap-k">uncovered K#</div>
+      <div class="gap-v">{% for k in gap.uncovered_ks %}<code class="addr red">{{ k }}</code>{% else %}<span class="ok-txt">全覆盖</span>{% endfor %}</div>
+    </div>
+    <div class="gap-card {{ 'amber' if gap.thin_evidence else 'ok' }}">
+      <div class="gap-k">thin evidence (&lt;阈值)</div>
+      <div class="gap-v">{% for k in gap.thin_evidence %}<code class="addr amber">{{ k }}</code>{% else %}<span class="ok-txt">无</span>{% endfor %}</div>
+    </div>
+    <div class="gap-card {{ 'amber' if gap.expired_web_materials else 'ok' }}">
+      <div class="gap-k">web 料过期 (&gt;90d)</div>
+      <div class="gap-v">{{ gap.expired_web_materials | length }} 份{% if not gap.expired_web_materials %} · <span class="ok-txt">无</span>{% endif %}</div>
+    </div>
+    <div class="gap-card {{ 'amber' if gap.single_source else 'ok' }}">
+      <div class="gap-k">单源 tripwire</div>
+      <div class="gap-v">{{ gap.single_source | length }} 项{% if not gap.single_source %} · <span class="ok-txt">无</span>{% endif %}</div>
+    </div>
+    <div class="gap-card {{ 'red' if gap.uncovered_ring_inputs else 'ok' }}">
+      <div class="gap-k">环输入缺口 (uncovered)</div>
+      <div class="gap-v">{{ gap.uncovered_ring_inputs | length }} 项{% if gap.ring_axis_status == 'n/a' %} · <span class="hint">环轴 n/a</span>{% endif %}</div>
+    </div>
+    <div class="gap-card {{ 'amber' if gap.prescan_untagged else 'ok' }}">
+      <div class="gap-k">prescan 未挂 K#</div>
+      <div class="gap-v">{{ gap.prescan_untagged | length }} 份</div>
+    </div>
+  </div>
+
+  {% if gap.single_source %}
+  <h3 class="sub">单源明细</h3>
+  <table class="data-table diag-table">
+    <thead><tr><th>K#</th><th>条数</th><th>来源类型</th><th>域名</th><th>原因</th></tr></thead>
+    <tbody>
+    {% for s in gap.single_source %}
+      <tr><td><code class="addr">{{ s.k }}</code></td><td>{{ s.count }}</td><td>{{ s.source_types | join(', ') }}</td><td>{{ s.domains | join(', ') or '—' }}</td><td>{{ s.reason }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+  {% if gap.uncovered_ring_inputs or gap.thin_ring_inputs %}
+  <h3 class="sub">环输入缺口</h3>
+  <ul class="ring-list">
+    {% for r in gap.uncovered_ring_inputs %}<li><span class="ring-tag red">{{ r.code }}</span> {{ r.ring }} · {{ r.label }} — <span class="hint">{{ r.reason }}</span></li>{% endfor %}
+    {% for r in gap.thin_ring_inputs %}<li><span class="ring-tag amber">{{ r.code }}</span> {{ r.ring }} · {{ r.label }} — <span class="hint">{{ r.count }}/{{ r.min_evidence }} 薄</span></li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if gap.expired_web_materials %}
+  <h3 class="sub">过期 web 料</h3>
+  <ul class="ring-list">
+    {% for m in gap.expired_web_materials %}<li><code>{{ m.id }}</code> {{ m.filename }} <span class="hint">expire {{ (m.expire_at or '')[:10] }}</span></li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if gap.relative_updated %}
+  <h3 class="sub">亲属更新提示（flag-only）</h3>
+  <ul class="ring-list">{% for r in gap.relative_updated %}<li>{{ r }}</li>{% endfor %}</ul>
+  {% endif %}
+  {% endif %}
+</section>
+
+{# ── ⑥ critic 裁决 ───────────────────────────────────────────────── #}
+<section class="diag-section">
+  <h2>⑥ critic · 对抗式评审裁决</h2>
+  {% if critic.banner %}
+  <div class="critic-banner">{{ critic.banner }}</div>
+  {% endif %}
+  {% if critic.review_html %}
+  <details class="diag-fold" open>
+    <summary><strong>05-critic-review.md</strong> · 完整评审</summary>
+    <div class="markdown-body">{{ critic.review_html | safe }}</div>
+  </details>
+  {% elif not critic.banner %}
+  <p class="empty">未生成 critic 产物 —— 该 topic 尚未跑到 stage 05（独立反方评审）。critic 落点有二：<code>outputs/05-critic-review.md</code> 完整评审 + case 头「🧪 承重充分性」横幅。</p>
+  {% endif %}
+</section>
+
+<style>
+  main { margin-top: 0; }
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 0.5em; }
+  .breadcrumb a { color: #555; }
+  .prism-header { margin: 0.5em 0; }
+  .prism-header h1 { display: inline; font-size: 1.5em; margin-right: 0.5em; }
+  .model-tag { font-size: 0.82em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; }
+  .diag-tabs { display: flex; gap: 0; margin: 1em 0 0.3em; border-bottom: 2px solid #e5e5e5; }
+  .diag-tab { padding: 0.5em 1.1em; font-size: 0.9em; text-decoration: none; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+  .diag-tab.active { color: #c0392b; font-weight: 600; border-bottom-color: #c0392b; }
+  .diag-intro { margin: 0.6em 0 1.5em; }
+  .diag-section { margin: 2em 0; padding-top: 0.5em; border-top: 1px solid #eee; }
+  .diag-section h2 { font-size: 1.1em; color: #333; }
+  .diag-section h3.sub { font-size: 0.92em; color: #777; margin: 1.2em 0 0.4em; text-transform: uppercase; letter-spacing: 0.04em; }
+  .ver-tag { font-size: 0.7em; background: #f0f4ff; color: #2a5db0; padding: 0.1em 0.45em; border-radius: 3px; margin-left: 0.4em; font-family: monospace; }
+  .empty { color: #aaa; font-style: italic; font-size: 0.9em; }
+  .code-block { background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 4px; padding: 0.8em 1em; font-size: 0.8em; overflow-x: auto; white-space: pre; line-height: 1.45; }
+  .data-table.diag-table { border-collapse: collapse; width: 100%; font-size: 0.8em; }
+  .diag-table th, .diag-table td { border: 1px solid #e5e5e5; padding: 0.35em 0.55em; text-align: left; vertical-align: top; }
+  .diag-table th { background: #fafafa; font-weight: 600; }
+  .diag-table .fn { max-width: 260px; word-break: break-all; }
+  .diag-table .dom { color: #2a5db0; }
+  .addr { font-family: monospace; font-size: 0.85em; background: #eef; padding: 0.05em 0.3em; border-radius: 3px; margin-right: 0.2em; }
+  .addr.red { background: #fdecea; color: #c0392b; }
+  .addr.amber { background: #fef3cd; color: #b45309; }
+  .tier { font-size: 0.85em; padding: 0.05em 0.3em; border-radius: 3px; }
+  .tier-official { background: #e6f4ea; color: #2d7a3a; }
+  .tier-white { background: #eef; color: #2a5db0; }
+  .tier-low { background: #f3f3f3; color: #999; }
+  .badge-expired { color: #c0392b; font-size: 0.85em; }
+  .na { color: #ccc; }
+  .legend { background: #f8f9fa; border-left: 3px solid #d0d7de; padding: 0.5em 0.8em; margin: 0.5em 0 1em; line-height: 1.5; }
+  .critic-banner { background: #fff8e1; border: 1px solid #fce8b2; border-left: 4px solid #f59e0b; border-radius: 4px; padding: 0.6em 0.9em; margin: 0.5em 0 1em; font-size: 0.9em; }
+  .diag-fold { border: 1px solid #eee; border-radius: 4px; margin: 0.5em 0; padding: 0.3em 0.7em; }
+  .diag-fold summary { cursor: pointer; font-size: 0.88em; color: #444; }
+  .diag-fold .markdown-body { margin-top: 0.8em; font-size: 0.9em; }
+  .meta-chip { font-size: 0.72em; background: #f0f0f0; color: #666; padding: 0.05em 0.4em; border-radius: 3px; margin-left: 0.3em; }
+  .meta-chip.q-high { background: #e6f4ea; color: #2d7a3a; }
+  .meta-chip.q-low { background: #fdecea; color: #c0392b; }
+  .gap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.7em; }
+  .gap-card { border: 1px solid #e5e5e5; border-radius: 5px; padding: 0.6em 0.8em; background: #fafafa; }
+  .gap-card.red { border-color: #f5b7b1; background: #fdecea; }
+  .gap-card.amber { border-color: #fce8b2; background: #fef9ec; }
+  .gap-card.ok { border-color: #d4edda; }
+  .gap-k { font-size: 0.75em; color: #888; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.3em; }
+  .gap-v { font-size: 0.95em; }
+  .ok-txt { color: #2d7a3a; }
+  .ring-list { font-size: 0.85em; line-height: 1.6; padding-left: 1.2em; }
+  .ring-tag { font-family: monospace; font-size: 0.85em; padding: 0.05em 0.3em; border-radius: 3px; }
+  .ring-tag.red { background: #fdecea; color: #c0392b; }
+  .ring-tag.amber { background: #fef3cd; color: #b45309; }
+  .markdown-body table { border-collapse: collapse; font-size: 0.9em; }
+  .markdown-body th, .markdown-body td { border: 1px solid #ddd; padding: 0.3em 0.6em; }
+  .markdown-body code { background: #f4f4f4; padding: 0.1em 0.3em; border-radius: 3px; }
+  .markdown-body blockquote { border-left: 3px solid #ddd; margin: 0; padding-left: 1em; color: #666; }
+</style>
+{% endblock %}

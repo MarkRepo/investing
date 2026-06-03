@@ -4,10 +4,146 @@
 <div class="dash-header">
   <h1>投资仪表盘</h1>
   <a href="/prism/dashboard?refresh=true" class="refresh-btn">🔄 刷新</a>
+  <button id="monitor-run-btn" class="monitor-btn">🔍 立即巡检</button>
   <a href="/prism" class="back-link">← 研究列表</a>
 </div>
 
+{# ── 正在监控(关注清单)──────────────────────────────────────── #}
+<div class="monitor-panel">
+  <div class="monitor-panel-head">
+    <h2>🎯 正在监控 <span class="badge badge-neutral">{{ watchlist|length }}</span></h2>
+  </div>
+  {% if watchlist %}
+  <p class="monitor-hint">这些是巡检会主动扫的目标(成本闸)。勾选/取消在各 topic 研究页操作;这里可直接移除。</p>
+  <table class="monitor-table">
+    <thead><tr><th>标的</th><th>粒度</th><th>关注内容</th><th>操作</th></tr></thead>
+    <tbody>
+      {% for w in watchlist %}
+      <tr>
+        <td><a href="/prism/{{ w.slug }}/{{ w.variant }}">{{ w.slug }}</a><br><small>{{ w.variant }}</small></td>
+        <td>{{ '整个 topic' if w.scope == 'topic' else w.kind }}</td>
+        <td>{{ w.label }}</td>
+        <td>
+          <button class="mini-btn watch-remove" data-slug="{{ w.slug }}"
+                  data-scope="{{ w.scope }}" data-kind="{{ w.kind or '' }}"
+                  data-locator="{{ w.locator or '' }}">移除</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="monitor-empty">还没有关注任何 event。去 topic 研究页勾选「监控关注」即可。</p>
+  {% endif %}
+</div>
+
+{# ── 待确认监控翻牌(交互面板)─────────────────────────────────── #}
+<div class="monitor-panel">
+  <div class="monitor-panel-head">
+    <h2>🔔 待确认监控翻牌
+      <span class="badge">{{ pending_proposals|length }}</span>
+    </h2>
+    {% if pending_proposals %}
+    <button class="monitor-btn confirm-all-btn" data-confirm-all="1">✅ 全部确认</button>
+    {% endif %}
+  </div>
+  {% if pending_proposals %}
+  <p class="monitor-hint">由 daily-monitor 自动判读,确认后才机械回写 sidecar + 追加 living_feed(零 LLM)。</p>
+  <table class="monitor-table">
+    <thead>
+      <tr><th>标的</th><th>类型</th><th>建议翻牌</th><th>依据</th><th>证据</th><th>重评thesis</th><th>操作</th></tr>
+    </thead>
+    <tbody>
+      {% for p in pending_proposals %}
+      <tr data-pid="{{ p.proposal_id }}">
+        <td>{{ p.slug }}<br><small>{{ p.variant }}</small></td>
+        <td>{{ p.kind }}<br><small>{{ p.locator }}</small></td>
+        <td><strong>{{ p.proposed_value }}</strong></td>
+        <td class="rationale">{{ p.rationale }}</td>
+        <td>
+          {% if p.evidence_urls %}
+            {% for u in p.evidence_urls %}<a href="{{ u }}" target="_blank">🔗</a> {% endfor %}
+          {% else %}<span class="weak">⚠️ 无</span>{% endif %}
+        </td>
+        <td>{% if p.requires_thesis_review %}🔺{% else %}—{% endif %}</td>
+        <td>
+          <button class="mini-btn confirm-one" data-pid="{{ p.proposal_id }}">确认</button>
+          <button class="mini-btn discard-one" data-pid="{{ p.proposal_id }}">丢弃</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% set review_slugs = pending_proposals|selectattr('requires_thesis_review')|map(attribute='slug')|unique|list %}
+  {% if review_slugs %}
+  <p class="thesis-review">🔺 <strong>建议重评 thesis</strong>(kill/重大 signpost 触发,请在对话里发起交互式
+    05-critic-review / 重新合成):{{ review_slugs|join(', ') }}</p>
+  {% endif %}
+  {% else %}
+  <p class="monitor-empty">当前无待确认翻牌。</p>
+  {% endif %}
+</div>
+
 <div class="dash-body">{{ body_html | safe }}</div>
+
+<script>
+(function () {
+  async function post(url, body) {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body || {}),
+    });
+    return res.json();
+  }
+  function bind(sel, handler) {
+    document.querySelectorAll(sel).forEach((el) => el.addEventListener("click", handler));
+  }
+  // 立即巡检
+  const runBtn = document.getElementById("monitor-run-btn");
+  if (runBtn) {
+    runBtn.addEventListener("click", async () => {
+      runBtn.disabled = true;
+      runBtn.textContent = "巡检中…(可能拉起后台判读)";
+      try {
+        const r = await post("/prism/monitor/run", {});
+        if (r.ok) { location.reload(); }
+        else { alert("巡检失败"); runBtn.disabled = false; runBtn.textContent = "🔍 立即巡检"; }
+      } catch (e) {
+        alert("巡检请求失败: " + e.message);
+        runBtn.disabled = false; runBtn.textContent = "🔍 立即巡检";
+      }
+    });
+  }
+  // 单条确认
+  bind(".confirm-one", async (e) => {
+    const pid = e.target.dataset.pid;
+    const r = await post("/prism/monitor/confirm", { proposal_id: pid });
+    if (r.ok && r.status === "stale") { alert("该 proposal 已失效(sidecar 被改动): " + r.reason); }
+    location.reload();
+  });
+  // 单条丢弃
+  bind(".discard-one", async (e) => {
+    if (!confirm("确认丢弃这条翻牌建议?")) return;
+    await post("/prism/monitor/discard", { proposal_id: e.target.dataset.pid });
+    location.reload();
+  });
+  // 全部确认
+  bind(".confirm-all-btn", async () => {
+    if (!confirm("确认全部翻牌?将机械回写所有 sidecar。")) return;
+    await post("/prism/monitor/confirm", { all: true });
+    location.reload();
+  });
+  // 关注清单移除
+  bind(".watch-remove", async (e) => {
+    const d = e.target.dataset;
+    const body = { slug: d.slug, scope: d.scope };
+    if (d.scope === "event") { body.kind = d.kind; body.locator = d.locator; }
+    await post("/prism/watchlist/remove", body);
+    location.reload();
+  });
+})();
+</script>
 
 <style>
   .dash-header { display: flex; align-items: center; gap: 0.75em; margin-bottom: 0.5em; }
@@ -18,6 +154,37 @@
     font-size: 0.85em; text-decoration: none;
   }
   .refresh-btn:hover { background: #1e4a96; }
+  .monitor-btn {
+    display: inline-block; padding: 0.3em 0.8em; cursor: pointer;
+    background: #1a7f5a; color: #fff; border: none; border-radius: 4px;
+    font-size: 0.85em;
+  }
+  .monitor-btn:hover { background: #156347; }
+  .monitor-btn:disabled { background: #9bbdae; cursor: default; }
+  .monitor-panel {
+    border: 1px solid #e0e0e0; border-radius: 6px; padding: 0.5em 1em 1em;
+    margin: 0.75em 0 1.5em; background: #fcfdfc;
+  }
+  .monitor-panel-head { display: flex; align-items: center; gap: 0.75em; }
+  .monitor-panel-head h2 { font-size: 1.05em; margin: 0.4em 0; flex: 1; border: none; }
+  .monitor-panel .badge {
+    background: #e8453c; color: #fff; border-radius: 10px; padding: 0 0.5em;
+    font-size: 0.75em; vertical-align: middle;
+  }
+  .monitor-panel .badge-neutral { background: #1a7f5a; }
+  .monitor-hint, .monitor-empty { color: #666; font-size: 0.85em; margin: 0.3em 0; }
+  .monitor-table { border-collapse: collapse; width: 100%; font-size: 0.85em; margin: 0.5em 0; }
+  .monitor-table th, .monitor-table td { border: 1px solid #e6e6e6; padding: 5px 8px; text-align: left; vertical-align: top; }
+  .monitor-table th { background: #f0f5f2; }
+  .monitor-table .rationale { max-width: 280px; }
+  .monitor-table .weak { color: #c0392b; }
+  .mini-btn {
+    padding: 2px 8px; font-size: 0.8em; cursor: pointer; border-radius: 3px;
+    border: 1px solid #bbb; background: #fff; margin: 1px;
+  }
+  .mini-btn.confirm-one { border-color: #1a7f5a; color: #1a7f5a; }
+  .mini-btn.discard-one { border-color: #c0392b; color: #c0392b; }
+  .thesis-review { font-size: 0.85em; color: #b45309; background: #fff7ed; padding: 6px 10px; border-radius: 4px; }
   .back-link { font-size: 0.85em; color: #888; text-decoration: none; }
   .back-link:hover { color: #333; }
   .dash-body table { border-collapse: collapse; width: 100%; font-size: 0.88em; margin: 0.75em 0; }

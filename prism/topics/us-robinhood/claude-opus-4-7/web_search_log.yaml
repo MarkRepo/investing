@@ -57,3 +57,11 @@ entries:
   n_high: 0
   n_mid: 0
   n_low: 0
+- searched_at: '2026-06-03T06:04:17.034783+00:00'
+  query: Robinhood HOOD odd-lot trades execution quality SIP data 2026
+  triggered_by: 06-daily-monitor
+  n_results: 6
+  n_high: 0
+  n_mid: 0
+  n_low: 6
+  disposition: registered

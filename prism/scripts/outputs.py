@@ -613,3 +613,148 @@ def read_output_html(slug: str, output_key: str, variant: str) -> str:
         raise FileNotFoundError(f"Output not yet generated: {output_key}")
     raw = out_path.read_text(encoding="utf-8")
     return render_markdown(raw)
+
+
+# ── 诊断页（/diag）中间产物读取器 ───────────────────────────────────────────────
+# 这些是 workflow 链路上的中间稿，读者向页面不展示，只在诊断 tab 露出。
+# 设计原则：文件缺失一律优雅降级（返回 None / 空），永不抛错——老 topic、早期
+# variant 都可能缺任意一段。
+
+def read_decomposition_html(slug: str, variant: str, version: int) -> str:
+    """读取 decomposition_v{N}.md（命门拆解）并渲染为 HTML。文件在 variant 根目录。
+    照搬 read_thesis_html 的 K# 锚点逻辑，便于和 thesis/coverage 互跳。
+    """
+    import re
+    out_path = _topic_dir(slug, variant) / f"decomposition_v{version}.md"
+    if not out_path.is_file():
+        raise FileNotFoundError(f"Decomposition not found: decomposition_v{version}.md")
+    raw = out_path.read_text(encoding="utf-8")
+    html = render_markdown(raw)
+    seen: set[str] = set()
+    def _add_anchor(m: "re.Match") -> str:
+        k = m.group(0)
+        if k in seen:
+            return k
+        seen.add(k)
+        return f'<span id="{k}" class="k-anchor">{k}</span>'
+    return re.sub(r"\bK\d+\b", _add_anchor, html)
+
+
+def collect_findings(slug: str, variant: str) -> dict:
+    """收集逐料 findings（证据层），供诊断页展示。
+
+    返回:
+        {
+            'index_html': <_findings_index.md 渲染，含 addresses=[K#] 人读分组> | None,
+            'files': [{mat_id, filename, source_type, quality, bias, body_html}, ...],
+            'total': int,
+        }
+    分组以 _findings_index.md 自带的 K# 结构为准（它本就是按 addresses 组织的人读视图），
+    逐料全文则以折叠 <details> 形式挂在下方，避免在路由里重造一套分组逻辑。
+    """
+    import re
+    d = _topic_dir(slug, variant) / "outputs"
+    index_html = None
+    idx_path = d / "_findings_index.md"
+    if idx_path.is_file():
+        index_html = render_markdown(idx_path.read_text(encoding="utf-8"))
+
+    files: list[dict] = []
+    if d.is_dir():
+        for p in sorted(d.glob("findings_*.md")):
+            raw = p.read_text(encoding="utf-8")
+            meta = {"mat_id": p.stem, "filename": p.name,
+                    "source_type": None, "quality": None, "bias": None}
+            # 解析 frontmatter（mat_id/filename/source_type/quality/bias）
+            fm = re.match(r"^---\n(.*?)\n---\n", raw, re.DOTALL)
+            body = raw
+            if fm:
+                for line in fm.group(1).splitlines():
+                    if ":" in line:
+                        k, _, v = line.partition(":")
+                        k, v = k.strip(), v.strip()
+                        if k in meta:
+                            meta[k] = v
+                body = raw[fm.end():]
+            meta["body_html"] = render_markdown(body)
+            files.append(meta)
+
+    return {"index_html": index_html, "files": files, "total": len(files)}
+
+
+def collect_critic_artifacts(slug: str, variant: str) -> dict:
+    """收集 critic 裁决产物，两个 canonical 落点（依 05-critic-review.md 文档）：
+
+      1. 完整评审文件 outputs/05-critic-review.md（Step 5「保存评审结果」）
+      2. case 头「🧪 承重充分性」横幅（Step 5.5——裁决必须进被消费的产出本身）
+
+    刻意不收 00_quality_screen / workflow_review / _process_notes / _final_report：
+    workflow 文档 0 处提及，是测试残留而非流程产物。
+
+    返回 {'banner': str|None, 'review_html': str|None}。
+    """
+    topic_dir = _topic_dir(slug, variant)
+    review_path = topic_dir / "outputs" / "05-critic-review.md"
+    review_html = (
+        render_markdown(review_path.read_text(encoding="utf-8"))
+        if review_path.is_file() else None
+    )
+
+    # case 头「承重充分性」横幅：扫成稿 case 文件正文里那一行
+    banner = None
+    for stem in ("c_investment_case", "i_industry_case", "a_arena_case"):
+        cpath = topic_dir / "outputs" / f"{stem}.md"
+        if cpath.is_file():
+            for line in cpath.read_text(encoding="utf-8").splitlines():
+                if "承重充分性" in line:
+                    banner = line.lstrip("> ").strip()
+                    break
+        if banner:
+            break
+
+    return {"banner": banner, "review_html": review_html}
+
+
+def read_synthesis_brief_html(slug: str, variant: str) -> str | None:
+    """读取 _synthesis_brief.md（合成阶段内部备忘，canonical 辅助产物）。缺失返回 None。"""
+    path = _topic_dir(slug, variant) / "outputs" / "_synthesis_brief.md"
+    if not path.is_file():
+        return None
+    return render_markdown(path.read_text(encoding="utf-8"))
+
+
+# source_type → 可信信号（非 web 料不走 domain_tier，可信度由来源性质定）
+_SOURCE_TRUST = {
+    "quarterly-report": ("一手", "official"),
+    "annual-report": ("一手", "official"),
+    "company-filing": ("一手", "official"),
+    "sec-section": ("一手", "official"),
+    "transcript": ("一手·口径", "official"),
+    "policy": ("官方", "official"),
+    "data": ("数据", "white"),
+    "web-search": ("web", "low"),
+}
+
+
+def material_trust(m: dict) -> dict:
+    """给一份 manifest 材料返回可信信号 {label, css}。
+    web-search 料用 domain_tier；其余按 source_type 性质判（一手 SEC/财报 > web）。
+    """
+    st = m.get("source_type")
+    if st == "web-search":
+        tier = (m.get("search_meta") or {}).get("domain_tier")
+        if tier and "official" in tier:
+            return {"label": "web·官方判定", "css": "official"}
+        if tier and "whitelist" in tier:
+            return {"label": "web·白名单", "css": "white"}
+        return {"label": "web·未分级", "css": "low"}
+    label, css = _SOURCE_TRUST.get(st, ("—", "low"))
+    return {"label": label, "css": css}
+
+
+def read_roadmap_yaml(slug: str, variant: str) -> str | None:
+    """读取 roadmap.yaml 原文（K# 计划），原样返回文本供 <pre> 展示。缺失返回 None。"""
+    path = _topic_dir(slug, variant) / "roadmap.yaml"
+    if not path.is_file():
+        return None
+    return path.read_text(encoding="utf-8")

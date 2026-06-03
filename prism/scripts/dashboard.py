@@ -49,6 +49,23 @@ def _load_arena_sidecar(slug: str, variant: str) -> dict | None:
         return None
 
 
+def _load_monitor_queue() -> list[dict]:
+    """Read pending proposals from monitor_queue.yaml (daily-monitor staging).
+
+    Read directly (not via monitor.py) to avoid a circular import — monitor.py
+    imports dashboard.canonical_variant. Returns only awaiting_confirm proposals.
+    """
+    path = PRISM_ROOT / "monitor_queue.yaml"
+    if not path.exists():
+        return []
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return []
+    pending = data.get("pending") or []
+    return [p for p in pending if p.get("status") == "awaiting_confirm"]
+
+
 def _fetch_price(ticker: str) -> dict:
     """Fetch current price via the existing market_data machinery."""
     if not ticker:
@@ -143,6 +160,32 @@ def _fmt_freshness(r: dict) -> str:
     return f"{emoji} {'?d' if days is None else f'{days}d'}"
 
 
+def _parse_signpost_date(date_str: Any) -> date | None:
+    """Parse a signpost date string → date, or None on failure.
+
+    Handles "2026-Q2" (quarter→month start), "2026" (year), "2026-08" (month),
+    and ISO "2026-08-01". Shared by dashboard display (silently skips None) and
+    monitor.scan (surfaces the None ones into an `unparseable` bucket — a mistyped
+    date means the signpost would NEVER trigger, which is exactly what must be seen).
+    """
+    s = str(date_str or "").strip()
+    if not s:
+        return None
+    try:
+        if "Q" in s:
+            year, q = s.split("-Q")
+            month = (int(q) - 1) * 3 + 1
+            return date(int(year), month, 1)
+        if len(s) == 4:
+            return date(int(s), 1, 1)
+        if len(s) == 7:
+            year, month = s.split("-")
+            return date(int(year), int(month), 1)
+        return date.fromisoformat(s)
+    except Exception:
+        return None
+
+
 def _upcoming_signposts(signposts: list[dict], within_days: int = 60) -> list[dict]:
     """Filter signposts expected within `within_days` from today."""
     today = date.today()
@@ -150,24 +193,11 @@ def _upcoming_signposts(signposts: list[dict], within_days: int = 60) -> list[di
     for sp in signposts:
         if sp.get("triggered") is not None:
             continue  # already resolved
-        date_str = str(sp.get("date", ""))
-        try:
-            if "Q" in date_str:
-                # e.g. "2026-Q2" → approximate as start of quarter
-                year, q = date_str.split("-Q")
-                month = (int(q) - 1) * 3 + 1
-                sp_date = date(int(year), month, 1)
-            elif len(date_str) == 4:
-                sp_date = date(int(date_str), 1, 1)
-            elif len(date_str) == 7:
-                year, month = date_str.split("-")
-                sp_date = date(int(year), int(month), 1)
-            else:
-                sp_date = date.fromisoformat(date_str)
-            if (sp_date - today).days <= within_days:
-                result.append(sp)
-        except Exception:
-            pass
+        sp_date = _parse_signpost_date(sp.get("date"))
+        if sp_date is None:
+            continue  # unparseable — dashboard skips; monitor.scan reports it
+        if (sp_date - today).days <= within_days:
+            result.append(sp)
     return result
 
 
@@ -176,14 +206,54 @@ def _kill_triggered(kill_criteria: list[dict]) -> list[dict]:
             or k.get("status") == "triggered_bear"]
 
 
+# ── canonical variant (shared by dashboard + monitor) ─────────────────────────
+
+def _sidecar_loader_for(topic_type: str):
+    """Pick the sidecar loader matching a topic type (07 company / 09 / 10)."""
+    if topic_type == "industry":
+        return _load_industry_sidecar
+    if topic_type == "arena":
+        return _load_arena_sidecar
+    return _load_sidecar
+
+
+def _canonical_variant(topics: list[dict]) -> dict:
+    """Pick the canonical variant dict for a slug's topics.
+
+    Order: variant whose type-matched sidecar exists → deepseek-v4-pro → first.
+    Single source of truth so dashboard cards and monitor flips never land on
+    different variants of the same slug.
+    """
+    if not topics:
+        raise ValueError("topics 不能为空")
+    loader = _sidecar_loader_for(topics[0].get("type", ""))
+    for t in topics:
+        if loader(t["slug"], t.get("variant", "")):
+            return t
+    for t in topics:
+        if t.get("variant") == "deepseek-v4-pro":
+            return t
+    return topics[0]
+
+
+def canonical_variant(slug: str) -> str | None:
+    """Public: resolve a slug's canonical variant string. None if no topics.
+
+    Used by monitor/watchlist to lock onto the same variant the dashboard renders.
+    """
+    from prism.scripts.topic import list_topics
+    topics = [t for t in list_topics() if t.get("slug") == slug]
+    if not topics:
+        return None
+    return _canonical_variant(topics).get("variant", "")
+
+
 # ── topic collection ─────────────────────────────────────────────────────────
 
 def _collect_company_rows() -> list[dict]:
     from prism.scripts.topic import list_topics
     rows = []
 
-    # Group by slug, then pick canonical variant (prefer one with sidecar,
-    # fall back to deepseek-v4-pro, then first) — mirrors _collect_non_company_rows.
     slug_variants: dict[str, list[dict]] = {}
     for topic in list_topics():
         if topic.get("type") != "company":
@@ -191,17 +261,7 @@ def _collect_company_rows() -> list[dict]:
         slug_variants.setdefault(topic["slug"], []).append(topic)
 
     for slug, topics in slug_variants.items():
-        # Prefer variant whose 07_decision_kit.yaml is present
-        canonical = next(
-            (t for t in topics if _load_sidecar(t["slug"], t.get("variant", ""))),
-            None,
-        )
-        if canonical is None:
-            canonical = next(
-                (t for t in topics if t.get("variant") == "deepseek-v4-pro"),
-                topics[0],
-            )
-        topic = canonical
+        topic = _canonical_variant(topics)
         variant = topic.get("variant", "")
         sidecar = _load_sidecar(slug, variant)
         if not sidecar:
@@ -267,26 +327,9 @@ def _collect_non_company_rows() -> list[dict]:
             continue
         slug_variants.setdefault(topic["slug"], []).append(topic)
 
-    def _pick_canonical(topics: list[dict]) -> dict:
-        """Pick the best variant for a slug."""
-        topic_type = topics[0].get("type", "")
-        sidecar_loader = _load_industry_sidecar if topic_type == "industry" else _load_arena_sidecar
-        # Prefer variant with sidecar
-        for t in topics:
-            if sidecar_loader(t["slug"], t.get("variant", "")):
-                return t
-        # Fall back to deepseek-v4-pro, then first
-        for t in topics:
-            if t.get("variant") == "deepseek-v4-pro":
-                return t
-        return topics[0]
-
     rows = []
     for slug, topics in slug_variants.items():
-        topic = _pick_canonical(topics)
-        slug = topic["slug"]
-        variant = topic.get("variant", "")
-        topic_type = topic.get("type", "")
+        topic = _canonical_variant(topics)
         slug = topic["slug"]
         variant = topic.get("variant", "")
         topic_type = topic.get("type", "")
@@ -499,6 +542,43 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
     else:
         lines.append("*60 天内无路标。*")
     lines.append("")
+
+    # ── Section 4b: Pending monitor flips (daily-monitor staging) ─────────────
+    queue = _load_monitor_queue()
+    lines += ["## 🔔 待确认监控翻牌", ""]
+    if queue:
+        lines.append("> 由 daily-monitor 自动判读产出，**需在 web 端点确认后才回写**。")
+        lines.append("")
+        lines += [
+            "| 标的 | 类型 | 建议翻牌 | 依据 | 证据 | 需重评 thesis |",
+            "|------|------|---------|------|------|--------------|",
+        ]
+        thesis_review_slugs: list[str] = []
+        for p in queue:
+            kind = p.get("kind", "")
+            target = p.get("locator", "") if kind != "price" else "buy_box"
+            val = p.get("proposed_value", "—")
+            rationale = (str(p.get("rationale") or "—")).replace("|", "\\|")[:50]
+            ev = p.get("evidence_urls") or []
+            ev_str = f"{len(ev)} 条" if ev else "⚠️ 无"
+            needs = "🔺" if p.get("requires_thesis_review") else "—"
+            if p.get("requires_thesis_review"):
+                thesis_review_slugs.append(p.get("slug", ""))
+            lines.append(
+                f"| {p.get('slug', '')} | {kind} ({target}) | {val} "
+                f"| {rationale} | {ev_str} | {needs} |"
+            )
+        lines.append("")
+        review = sorted(set(s for s in thesis_review_slugs if s))
+        if review:
+            lines.append(
+                "**🔺 建议重评 thesis**（kill/重大 signpost 触发，请在对话里发起交互式 "
+                f"05-critic-review / 重新合成）：{', '.join(review)}"
+            )
+            lines.append("")
+    else:
+        lines.append("*当前无待确认翻牌。*")
+        lines.append("")
 
     # ── Section 5: Industry layer ─────────────────────────────────────────────
     industry_rows = [r for r in other_rows if r["type"] == "industry"]

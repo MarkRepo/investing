@@ -15,7 +15,6 @@
   <span class="hint"> · {{ topic.type }} · {{ topic.scope.geo }}</span>
 </div>
 
-
 {# ── 研究进度：7 大阶段进度条（替代旧的死产出计数）── #}
 <div class="stage-stepper stepper-{{ stage_progress.state }}">
   <div class="stepper-status">
@@ -25,6 +24,7 @@
     {% elif stage_progress.state == 'unknown' %}❓ {{ stage_progress.label }}
     {% else %}🔬 {{ stage_progress.label }} <span class="hint">· 阶段 {{ stage_progress.phase_index }}/{{ stage_progress.total }}</span>
     {% endif %}
+    {% if pending_thesis_review %}<span class="stepper-review">⚠️ 待复评（有未消化重大变更）</span>{% endif %}
   </div>
   <ol class="stepper-track">
     {% for name in stage_phase_names %}
@@ -37,6 +37,8 @@
 </div>
 <style>
   .stage-stepper { margin: 0.9em 0 0.4em; }
+  .stepper-review { margin-left: 0.6em; font-size: 0.82em; color: #b45309; background: #fff3e0;
+                    border: 1px solid #f0c36d; border-radius: 4px; padding: 1px 7px; }
   .stepper-status { font-size: 0.92em; font-weight: 600; color: #1e5bbf; margin-bottom: 0.55em; }
   .stepper-done .stepper-status { color: #1e8a4c; }
   .stepper-quarantined .stepper-status { color: #c0392b; }
@@ -71,6 +73,28 @@
   .stepper-quarantined .step-current .step-name { color: #c0392b; }
 </style>
 
+{% if pending_thesis_review %}
+<div class="thesis-review-banner">
+  <strong>⚠️ 有未消化的重大变更，待重评 thesis</strong>
+  <p>{{ pending_thesis_review.reason }}</p>
+  <p class="banner-meta">
+    确认于 {{ pending_thesis_review.since[:16] }}
+    {% if pending_thesis_review.locator %}· locator <code>{{ pending_thesis_review.locator }}</code>{% endif %}
+    —— 请在对话里发起 <code>评审 {{ topic.slug }}</code>（交互式 05-critic-review / 重新合成 04）。
+    跑过一次 04/05 后本横幅自动消失。
+  </p>
+</div>
+<style>
+  .thesis-review-banner {
+    border: 1px solid #f0c36d; border-left: 4px solid #d97706;
+    background: #fff7ed; border-radius: 6px; padding: 0.6em 1em; margin: 0.8em 0;
+  }
+  .thesis-review-banner strong { color: #b45309; font-size: 0.98em; }
+  .thesis-review-banner p { margin: 0.35em 0 0; font-size: 0.86em; color: #7c4a08; }
+  .thesis-review-banner .banner-meta { color: #92704a; }
+  .thesis-review-banner code { background: #fdebc8; padding: 0 0.3em; border-radius: 3px; }
+</style>
+{% endif %}
 
 {% if all_variants | length > 1 %}
 <div class="variant-switcher">
@@ -85,6 +109,17 @@
   {% endfor %}
 </div>
 {% endif %}
+
+<div class="diag-tabs">
+  <span class="diag-tab active">读者向</span>
+  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/diag">诊断 / debug →</a>
+</div>
+<style>
+  .diag-tabs { display: flex; gap: 0; margin: 0.8em 0; border-bottom: 2px solid #e5e5e5; }
+  .diag-tab { padding: 0.4em 1em; font-size: 0.88em; text-decoration: none; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+  .diag-tab.active { color: #333; font-weight: 600; border-bottom-color: #333; }
+  .diag-tab:not(.active):hover { color: #c0392b; }
+</style>
 
 <p class="scope-question">研究问题：<em>{{ topic.scope.question }}</em></p>
 
@@ -202,6 +237,107 @@
   <a class="btn btn-nav" href="/prices/{{ prism_key }}">行情 →</a>
   <a class="btn btn-nav" href="/financials/{{ prism_key }}">财务 →</a>
 </nav>
+{% endif %}
+
+{# ── 监控关注(两级粒度:topic 级 + 每条 signpost/kill)──────────────── #}
+{% if monitor_signposts or monitor_kills %}
+<section class="watch-panel" data-slug="{{ topic.slug }}" data-variant="{{ variant }}">
+  <div class="watch-head">
+    <h2>🔔 监控关注</h2>
+    <label class="watch-topic">
+      <input type="checkbox" class="watch-topic-cb" {% if monitor_topic_watched %}checked{% endif %}>
+      跟踪整个 topic（全部 event + 价格破位）
+    </label>
+  </div>
+  <div class="watch-grid">
+    <div class="watch-col">
+      <h3>路标 Signposts</h3>
+      <ul>
+        {% for sp in monitor_signposts %}
+        <li>
+          <label>
+            <input type="checkbox" class="watch-event-cb" data-kind="signpost"
+                   data-locator="{{ sp.locator }}"
+                   {% if sp.watched %}checked{% endif %}
+                   {% if monitor_topic_watched %}disabled{% endif %}>
+            <span class="watch-date">{{ sp.date }}</span> {{ sp.event }}
+            {% if sp.triggered %}<span class="watch-flag">[{{ sp.triggered }}]</span>{% endif %}
+          </label>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="watch-col">
+      <h3>Kill Criteria</h3>
+      <ul>
+        {% for k in monitor_kills %}
+        <li>
+          <label>
+            <input type="checkbox" class="watch-event-cb" data-kind="kill"
+                   data-locator="{{ k.locator }}"
+                   {% if k.watched %}checked{% endif %}
+                   {% if monitor_topic_watched %}disabled{% endif %}>
+            <code>{{ k.locator }}</code> {{ k.description }}
+            {% if k.status != 'pending' %}<span class="watch-flag">[{{ k.status }}]</span>{% endif %}
+          </label>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <p class="watch-hint">勾选整个 topic 时,逐条勾选被托管(置灰)。成本由关注清单决定——不勾的 event 不会触发自动巡检。</p>
+</section>
+<script>
+(function () {
+  const panel = document.querySelector(".watch-panel");
+  if (!panel) return;
+  const slug = panel.dataset.slug, variant = panel.dataset.variant;
+  async function post(url, body) {
+    const res = await fetch(url, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    return res.json();
+  }
+  // topic 级勾选/取消
+  const topicCb = panel.querySelector(".watch-topic-cb");
+  topicCb.addEventListener("change", async () => {
+    if (topicCb.checked) {
+      await post("/prism/watchlist/add", { slug, variant, scope: "topic" });
+    } else {
+      await post("/prism/watchlist/remove", { slug, scope: "topic" });
+    }
+    location.reload();
+  });
+  // event 级勾选/取消
+  panel.querySelectorAll(".watch-event-cb").forEach((cb) => {
+    cb.addEventListener("change", async () => {
+      const kind = cb.dataset.kind, locator = cb.dataset.locator;
+      if (cb.checked) {
+        await post("/prism/watchlist/add", { slug, variant, scope: "event", kind, locator });
+      } else {
+        await post("/prism/watchlist/remove", { slug, scope: "event", kind, locator });
+      }
+      location.reload();
+    });
+  });
+})();
+</script>
+<style>
+  .watch-panel { border: 1px solid #e0e0e0; border-radius: 6px; padding: 0.5em 1em 0.75em; margin: 1em 0; background: #fcfdfc; }
+  .watch-head { display: flex; align-items: center; gap: 1em; flex-wrap: wrap; }
+  .watch-head h2 { font-size: 1em; margin: 0.4em 0; }
+  .watch-topic { font-size: 0.88em; font-weight: 600; color: #1a7f5a; }
+  .watch-grid { display: flex; gap: 2em; flex-wrap: wrap; }
+  .watch-col { flex: 1; min-width: 280px; }
+  .watch-col h3 { font-size: 0.85em; color: #555; margin: 0.5em 0 0.3em; }
+  .watch-col ul { list-style: none; padding: 0; margin: 0; }
+  .watch-col li { font-size: 0.82em; margin: 0.25em 0; }
+  .watch-col label { cursor: pointer; }
+  .watch-date { color: #2a5db0; font-weight: 600; }
+  .watch-flag { color: #c0392b; font-size: 0.9em; }
+  .watch-hint { font-size: 0.78em; color: #888; margin: 0.5em 0 0; }
+</style>
 {% endif %}
 
 <div class="prism-columns">

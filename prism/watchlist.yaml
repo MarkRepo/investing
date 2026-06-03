@@ -1,0 +1,13 @@
+watches:
+- slug: us-robinhood
+  variant: claude-opus-4-7
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-06-03T01:53:17.089656+00:00'
+- slug: global-futu
+  variant: opus4.8
+  scope: event
+  kind: signpost
+  locator: 6c6a15ee
+  added_at: '2026-06-03T02:54:30.641211+00:00'

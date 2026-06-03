@@ -13,10 +13,10 @@ from __future__ import annotations
 import random
 from collections import defaultdict
 
-import markdown as _md
 from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel
 
 from app.config import APP_TEMPLATES_DIR
 from prism.scripts import manifest as manifest_io
@@ -114,6 +114,9 @@ def build_topic_forest(all_topics: list[dict]) -> dict:
                 "status": v.get("status", ""),
                 # 读者向阶段进度（替代曾经在数退休产出槽的 n/m 数字）
                 "progress": topic_io.stage_progress(v.get("stage", "")),
+                # daily-monitor 引入未消化重大变更 → chip 叠加「待复评」覆盖标记
+                # （不改 stage，跑过 04/05 后 pending_review_unresolved 自动判消）
+                "needs_review": bool(topic_io.pending_review_unresolved(v)),
             } for v in variants],
         }
 
@@ -165,13 +168,47 @@ def prism_dashboard(request: Request, refresh: bool = False):
     lines = raw.splitlines()
     if lines and lines[0].startswith("# "):
         raw = "\n".join(lines[1:]).lstrip("\n")
-    body_html = _md.markdown(raw, extensions=["tables", "fenced_code"])
+    body_html = outputs_io.render_markdown(raw)
+
+    from prism.scripts import monitor
+    pending = [p for p in monitor.load_queue() if p.get("status") == "awaiting_confirm"]
 
     return templates.TemplateResponse(
         request,
         "prism/dashboard.html",
-        {"body_html": body_html},
+        {
+            "body_html": body_html,
+            "pending_proposals": pending,
+            "watchlist": _enrich_watchlist(monitor.load_watchlist()),
+        },
     )
+
+
+def _enrich_watchlist(watches: list[dict]) -> list[dict]:
+    """给每条 watch 配人读标签(把 locator hash 还原成事件名),供 dashboard 列表展示。"""
+    from prism.scripts import monitor, sidecar_edit
+    out = []
+    for w in watches:
+        slug, variant = w.get("slug"), w.get("variant")
+        scope, kind, loc = w.get("scope"), w.get("kind"), w.get("locator")
+        label = "整个 topic（全部 event + 价格破位）"
+        if scope == "event":
+            if kind == "price":
+                label = "价格破位"
+            else:
+                sidecar = monitor._load_company_sidecar(slug, variant) or {}
+                if kind == "signpost":
+                    for sp in sidecar.get("signposts") or []:
+                        if sidecar_edit.signpost_locator(sp.get("date"), sp.get("event", "")) == loc:
+                            label = f"路标 · {sp.get('date')} {sp.get('event')}"
+                            break
+                    else:
+                        label = f"路标 · {loc}（已不在 sidecar）"
+                elif kind == "kill":
+                    k = next((k for k in sidecar.get("kill_criteria") or [] if k.get("id") == loc), None)
+                    label = f"Kill · {k.get('description')}" if k else f"Kill · {loc}（已不在 sidecar）"
+        out.append({**w, "label": label})
+    return out
 
 
 @router.get("/{slug}")
@@ -196,6 +233,7 @@ def prism_topic(request: Request, slug: str):
                 "stage": data.get("stage", ""),
                 "status": data.get("status", ""),
                 "progress": topic_io.stage_progress(data.get("stage", "")),
+                "needs_review": bool(topic_io.pending_review_unresolved(data)),
             })
         except Exception:
             variant_data.append({"name": v, "stage": "", "status": "",
@@ -347,6 +385,8 @@ def prism_detail(request: Request, slug: str, variant: str):
         # manifest coverage（实际收集）
         manifest_coverage = outputs_io.validate_manifest_coverage(slug, variant, cur_v)
 
+    monitor_ctx = _monitor_context(slug, variant)
+
     return templates.TemplateResponse(
         request,
         "prism/detail.html",
@@ -367,13 +407,126 @@ def prism_detail(request: Request, slug: str, variant: str):
             "now_iso": _now_iso_z(),
             "stage_progress": topic_io.stage_progress(topic.get("stage", "")),
             "stage_phase_names": topic_io.STAGE_PHASE_NAMES,
+            **monitor_ctx,
         },
     )
+
+
+def _monitor_context(slug: str, variant: str) -> dict:
+    """监控关注上下文:本 topic 的可监控 event(带 locator)+ 当前关注状态。
+
+    供 detail.html 渲染两级关注控件(topic 级勾选 + 每条 signpost/kill 勾选)。
+    """
+    from prism.scripts import monitor, sidecar_edit
+    watches = [w for w in monitor.load_watchlist() if w.get("slug") == slug]
+    topic_watched = any(w.get("scope") == "topic" for w in watches)
+    watched_locators = {
+        w.get("locator") for w in watches
+        if w.get("scope") == "event" and w.get("locator")
+    }
+    signposts, kills = [], []
+    sidecar = monitor._load_company_sidecar(slug, variant)
+    if sidecar:
+        for sp in sidecar.get("signposts") or []:
+            loc = sidecar_edit.signpost_locator(sp.get("date"), sp.get("event", ""))
+            signposts.append({
+                "locator": loc, "date": str(sp.get("date")), "event": sp.get("event"),
+                "triggered": sp.get("triggered"),
+                "watched": topic_watched or loc in watched_locators,
+            })
+        for k in sidecar.get("kill_criteria") or []:
+            kid = k.get("id")
+            kills.append({
+                "locator": kid, "description": k.get("description"),
+                "status": k.get("status"),
+                "watched": topic_watched or kid in watched_locators,
+            })
+    pending_review = None
+    try:
+        from prism.scripts.topic import get_pending_thesis_review
+        pending_review = get_pending_thesis_review(slug, variant)
+    except Exception:
+        pending_review = None
+    return {
+        "monitor_topic_watched": topic_watched,
+        "monitor_signposts": signposts,
+        "monitor_kills": kills,
+        "pending_thesis_review": pending_review,
+    }
 
 
 def _now_iso_z() -> str:
     from datetime import datetime, timezone
     return datetime.now(timezone.utc).isoformat()
+
+
+@router.get("/{slug}/{variant}/diag")
+def prism_diag(request: Request, slug: str, variant: str):
+    """诊断 / debug tab：workflow 链路上的中间产物 + 实时 gap 诊断。
+
+    读者向详情页（prism_detail）只展示最终产物 + thesis；这里把拆解、收料来源
+    证据、逐料抽取、gap_detector、critic 裁决全部铺开，供 debug 与可审计。
+    每段缺失即优雅降级，只要 topic 存在就不 404。
+    """
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+
+    # ① 拆解 decomposition（取最新版；保留版本列表供切换）
+    decomp_versions = outputs_io.list_decomposition_files(slug, variant)
+    decomp_html = None
+    decomp_version = None
+    if decomp_versions:
+        decomp_version = decomp_versions[-1]
+        decomp_html = outputs_io.read_decomposition_html(slug, variant, decomp_version)
+
+    # ② roadmap 计划原文
+    roadmap_text = outputs_io.read_roadmap_yaml(slug, variant)
+
+    # ③ 收料·来源证据
+    try:
+        manifest = manifest_io.read_manifest(slug, variant)
+    except FileNotFoundError:
+        manifest = {"materials": []}
+    from prism.scripts.manifest import list_expired_web_search
+    expired_ids = {m.get("id") for m in list_expired_web_search(slug, variant)} if manifest.get("materials") else set()
+
+    # ④ 逐料 findings
+    findings = outputs_io.collect_findings(slug, variant)
+
+    # ⑤ gap_detector 实时诊断
+    from prism.scripts.gap_detector import detect_gaps
+    try:
+        gap = detect_gaps(slug, variant)
+    except Exception as e:  # 诊断本身失败不该拖垮整页
+        gap = {"error": str(e)}
+
+    # ⑥ critic 裁决层（05-critic-review.md + case 头承重充分性横幅）
+    critic = outputs_io.collect_critic_artifacts(slug, variant)
+
+    # 合成阶段内部备忘（canonical 辅助产物）
+    synthesis_brief = outputs_io.read_synthesis_brief_html(slug, variant)
+
+    return templates.TemplateResponse(
+        request,
+        "prism/diagnostics.html",
+        {
+            "topic": topic,
+            "variant": variant,
+            "decomp_versions": decomp_versions,
+            "decomp_version": decomp_version,
+            "decomp_html": decomp_html,
+            "roadmap_text": roadmap_text,
+            "manifest": manifest,
+            "expired_ids": expired_ids,
+            "findings": findings,
+            "synthesis_brief": synthesis_brief,
+            "gap": gap,
+            "critic": critic,
+            "material_trust": outputs_io.material_trust,
+        },
+    )
 
 
 @router.get("/{slug}/{variant}/web-search-log")
@@ -473,3 +626,83 @@ def prism_output(request: Request, slug: str, variant: str, output_key: str):
             "all_variants": all_variants,
         },
     )
+
+
+# ── daily-monitor POST endpoints ──────────────────────────────────────────────
+# 照搬 prices.py/financials.py 的 POST→JSON{ok}→前端 location.reload() 模式。
+
+class WatchAddBody(BaseModel):
+    slug: str
+    scope: str = "topic"          # topic | event
+    kind: str | None = None       # event 时: signpost | kill | price
+    locator: str | None = None    # event signpost/kill 的定位符
+    variant: str | None = None    # 省略则用 canonical
+
+
+class WatchRemoveBody(BaseModel):
+    slug: str
+    scope: str | None = None
+    kind: str | None = None
+    locator: str | None = None
+
+
+class ConfirmBody(BaseModel):
+    proposal_id: str | None = None
+    all: bool = False
+
+
+class DiscardBody(BaseModel):
+    proposal_id: str
+
+
+@router.post("/monitor/run")
+async def monitor_run():
+    """手动「立即巡检」——触发与每日 6:00 同一个 monitor cycle。"""
+    from app.monitor_runtime import run_monitor_cycle
+    result = await run_monitor_cycle(trigger="manual")
+    return {"ok": True, "result": result}
+
+
+@router.post("/watchlist/add")
+def watchlist_add(body: WatchAddBody):
+    from prism.scripts import monitor
+    try:
+        entry = monitor.add_watch(
+            body.slug, scope=body.scope, kind=body.kind,
+            locator=body.locator, variant=body.variant,
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return {"ok": True, "watch": entry}
+
+
+@router.post("/watchlist/remove")
+def watchlist_remove(body: WatchRemoveBody):
+    from prism.scripts import monitor
+    removed = monitor.remove_watch(
+        body.slug, scope=body.scope, kind=body.kind, locator=body.locator,
+    )
+    return {"ok": True, "removed": removed}
+
+
+@router.post("/monitor/confirm")
+def monitor_confirm(body: ConfirmBody):
+    """确认翻牌:单条(proposal_id)或全部(all=true)。机械回写,零 LLM。"""
+    from prism.scripts import monitor
+    if body.all:
+        return {"ok": True, **monitor.confirm_all()}
+    if not body.proposal_id:
+        raise HTTPException(status_code=400, detail="需要 proposal_id 或 all=true")
+    try:
+        return {"ok": True, **monitor.confirm_flip(body.proposal_id)}
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@router.post("/monitor/discard")
+def monitor_discard(body: DiscardBody):
+    from prism.scripts import monitor
+    try:
+        return {"ok": True, **monitor.discard_flip(body.proposal_id)}
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
