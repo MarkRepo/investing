@@ -5,104 +5,109 @@
   <h1>研究主题</h1>
   <a href="/prism/dashboard" class="dashboard-btn">投资仪表盘 →</a>
 </div>
-<p class="hint">所有 Prism 研究主题。在对话窗口说「研究 X」开启新主题。</p>
+<p class="hint">所有 Prism 研究主题，按 产业 → 竞技场 → 公司 父子关系展开（共 {{ total }} 个）。在对话窗口说「研究 X」开启新主题。</p>
 
-{% if topic_groups %}
-{% for group in topic_groups %}
-{% if group.topics %}
-<section class="topic-group">
-  <h2 class="group-heading">{{ group.label }} <span class="group-count">{{ group.topics|length }}</span></h2>
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>主题</th>
-        <th>模型</th>
-        <th>数据</th>
-        <th>创建</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for t in group.topics %}
-      <tr>
-        <td><a href="/prism/{{ t.slug }}">{{ t.display_name or t.slug }}</a></td>
-        <td>
-          {% for v in t.variants %}
-            <a href="/prism/{{ t.slug }}/{{ v.name }}" class="variant-chip" title="阶段: {{ v.stage }} · 产出: {{ v.fresh_count }}/{{ v.total_count }}">
-              {{ v.name }}
-              <span class="chip-progress">{{ v.fresh_count }}/{{ v.total_count }}</span>
-            </a>
-          {% endfor %}
-        </td>
-        <td>
-          {% if t.type == 'company' and t.market_ticker %}
-            <a href="/prices/{{ t.market_ticker }}" class="data-link">行情</a>
-            <a href="/financials/{{ t.market_ticker }}" class="data-link">财务</a>
-          {% endif %}
-        </td>
-        <td class="hint">{{ (t.created or '')[:10] }}</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+{# ── 递归节点宏：渲染一行 + 其子树 ───────────────────────────────────── #}
+{% macro topic_node(t) %}
+<li class="tnode tnode-{{ t.type }}">
+  <div class="tnode-row">
+    <span class="tnode-emoji">{{ t.emoji }}</span>
+    <a class="tnode-name" href="/prism/{{ t.slug }}">{{ t.display_name or t.slug }}</a>
+    <span class="type-badge type-{{ t.type }}">{{ t.type_label }}</span>
+    {% if t.type == 'company' and t.market_ticker %}
+      <a href="/prices/{{ t.market_ticker }}" class="data-link">行情</a>
+      <a href="/financials/{{ t.market_ticker }}" class="data-link">财务</a>
+    {% endif %}
+    <span class="tnode-variants">
+      {% for v in t.variants %}
+        <a href="/prism/{{ t.slug }}/{{ v.name }}" class="variant-chip"
+           title="阶段: {{ v.stage }} · 产出: {{ v.fresh_count }}/{{ v.total_count }}">
+          {{ v.name }}<span class="chip-progress">{{ v.fresh_count }}/{{ v.total_count }}</span>
+        </a>
+      {% endfor %}
+    </span>
+  </div>
+  {% if t.children %}
+  <ul class="topic-tree">
+    {% for c in t.children %}{{ topic_node(c) }}{% endfor %}
+  </ul>
+  {% endif %}
+</li>
+{% endmacro %}
+
+{% if tree_roots %}
+<ul class="topic-tree root">
+  {% for t in tree_roots %}{{ topic_node(t) }}{% endfor %}
+</ul>
+{% endif %}
+
+{% if standalone %}
+<section class="standalone-section">
+  <h2 class="group-heading">📦 独立主题 <span class="group-count">{{ standalone|length }}</span>
+    <span class="hint" style="font-weight:400;">（无父级行业/竞技场）</span></h2>
+  <ul class="topic-tree root">
+    {% for t in standalone %}{{ topic_node(t) }}{% endfor %}
+  </ul>
 </section>
 {% endif %}
-{% endfor %}
-{% else %}
+
+{% if not tree_roots and not standalone %}
 <p class="hint">暂无研究主题。在对话窗口说「研究中国宠物行业」开启第一个主题。</p>
 {% endif %}
 
 <style>
-  .topic-group { margin: 1.5em 0 2em; }
-  .group-heading {
-    font-size: 1.1em;
-    font-weight: 600;
-    color: #333;
-    margin: 0 0 0.5em;
-    padding-bottom: 0.3em;
-    border-bottom: 2px solid #d4dff7;
+  /* ── tree ── */
+  .topic-tree { list-style: none; margin: 0; padding: 0; }
+  .topic-tree.root { margin: 1em 0 1.5em; }
+  /* 子层用左边框 + 缩进表达嵌套，连接线清晰且不依赖每行高度 */
+  .topic-tree .topic-tree { margin-left: 0.65em; padding-left: 0.95em; border-left: 2px solid #e0e7f5; }
+  .tnode { position: relative; }
+  .tnode-row {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 0.4em;
+    padding: 0.3em 0.4em; border-radius: 5px;
   }
-  .group-count { color: #888; font-weight: 400; font-size: 0.85em; }
-  .data-table { border-collapse: collapse; width: 100%; margin: 0.5em 0; }
-  .data-table th, .data-table td { padding: 0.5em 0.8em; text-align: left; border-bottom: 1px solid #eee; }
-  .data-table th { font-weight: 600; color: #555; font-size: 0.85em; }
-  .hint { color: #888; font-size: 0.85em; }
+  .tnode-row:hover { background: #f7f9ff; }
+  .tnode-emoji { font-size: 0.95em; flex: 0 0 auto; }
+  .tnode-name { font-weight: 500; color: #2a5db0; text-decoration: none; }
+  .tnode-name:hover { text-decoration: underline; }
+  /* 行业根行更醒目 */
+  .topic-tree.root > .tnode-industry > .tnode-row .tnode-name { font-size: 1.05em; font-weight: 600; color: #1e3a6e; }
+
+  /* ── type badge ── */
+  .type-badge {
+    font-size: 0.7em; padding: 0.05em 0.45em; border-radius: 3px;
+    flex: 0 0 auto; line-height: 1.5; border: 1px solid transparent;
+  }
+  .type-industry { background: #eef3ff; color: #1e4a96; border-color: #d4dff7; }
+  .type-arena    { background: #fff3e8; color: #b25e1e; border-color: #f7e0cc; }
+  .type-company  { background: #eafaf0; color: #1e8a4c; border-color: #cdeede; }
+
+  /* ── variant chips（沿用原样式词汇）── */
+  .tnode-variants { display: inline-flex; flex-wrap: wrap; align-items: center; }
   .variant-chip {
-    display: inline-block;
-    padding: 0.15em 0.45em;
-    margin: 0.12em 0.25em;
-    border-radius: 4px;
-    background: #f0f4ff;
-    color: #2a5db0;
-    font-size: 0.82em;
-    font-family: monospace;
-    text-decoration: none;
-    border: 1px solid #d4dff7;
+    display: inline-block; padding: 0.12em 0.42em; margin: 0.1em 0.2em;
+    border-radius: 4px; background: #f0f4ff; color: #2a5db0;
+    font-size: 0.78em; font-family: monospace; text-decoration: none; border: 1px solid #d4dff7;
   }
   .variant-chip:hover { background: #dce6fb; }
   .chip-progress { color: #888; margin-left: 0.3em; }
   .data-link {
-    display: inline-block;
-    padding: 0.1em 0.4em;
-    margin-right: 0.3em;
-    border-radius: 3px;
-    background: #f5f5f5;
-    color: #555;
-    font-size: 0.8em;
-    text-decoration: none;
-    border: 1px solid #ddd;
+    display: inline-block; padding: 0.08em 0.38em; margin-right: 0.1em; border-radius: 3px;
+    background: #f5f5f5; color: #555; font-size: 0.76em; text-decoration: none; border: 1px solid #ddd;
   }
   .data-link:hover { background: #e8e8e8; color: #333; }
+
+  /* ── headings ── */
+  .standalone-section { margin-top: 1.5em; padding-top: 1em; border-top: 2px solid #d4dff7; }
+  .group-heading { font-size: 1.05em; font-weight: 600; color: #333; margin: 0 0 0.5em; }
+  .group-count { color: #888; font-weight: 400; font-size: 0.85em; }
+  .hint { color: #888; font-size: 0.85em; }
+
   .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25em; }
   .page-header h1 { margin: 0; }
   .dashboard-btn {
-    display: inline-block;
-    padding: 0.35em 0.9em;
-    background: #2a5db0;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 0.88em;
-    font-weight: 500;
-    text-decoration: none;
+    display: inline-block; padding: 0.35em 0.9em; background: #2a5db0; color: #fff;
+    border-radius: 5px; font-size: 0.88em; font-weight: 500; text-decoration: none;
   }
   .dashboard-btn:hover { background: #1e4a96; }
 </style>

@@ -67,29 +67,47 @@ _OUTPUT_OPTIONS = [
 ]
 
 
-@router.get("")
-def prism_index(request: Request):
-    """List all topics grouped by slug, showing available model variants."""
-    all_topics = topic_io.list_topics()
-    # Group by slug
+_TYPE_LABEL = {"company": "公司", "arena": "竞技场", "industry": "行业"}
+_TYPE_EMOJI = {"company": "🏢", "arena": "🥊", "industry": "🏭"}
+# 树内排序：行业 < 竞技场 < 公司（同级内再按 created 倒序）
+_TYPE_ORDER = {"industry": 0, "arena": 1, "company": 2}
+
+
+def _sort_topic_nodes(lst: list[dict]) -> None:
+    """同级排序：先 created 倒序，再按类型档（稳定排序保留同档时序）。原地排序。"""
+    lst.sort(key=lambda c: c["created"], reverse=True)
+    lst.sort(key=lambda c: _TYPE_ORDER.get(c["type"], 9))
+
+
+def build_topic_forest(all_topics: list[dict]) -> dict:
+    """把 list_topics() 的扁平 variant 列表收成 产业→竞技场→公司 森林。
+
+    每个 slug 一个节点（信息取首个 variant，多 variant 收成芯片列表），按
+    parent_topic 挂树。无父级（或父级 slug 不存在）的为根：行业 / 有子节点的根
+    进 tree_roots；其余无子散户主题进 standalone——不丢任何节点。
+
+    返回 {tree_roots, standalone, total}，纯函数、无 I/O，便于测试。
+    """
     grouped: dict[str, list[dict]] = defaultdict(list)
     for t in all_topics:
         grouped[t["slug"]].append(t)
-    # Build topic summaries, grouped by type
-    TYPE_ORDER = {"company": 0, "arena": 1, "industry": 2}
-    TYPE_LABEL = {"company": "公司", "arena": "竞技场", "industry": "行业"}
 
-    groups: dict[str, list[dict]] = defaultdict(list)
+    nodes: dict[str, dict] = {}
     for slug, variants in grouped.items():
         info = variants[0]
         topic_type = info.get("type", "industry")
-        groups[topic_type].append({
+        scope = info.get("scope") or {}
+        nodes[slug] = {
             "slug": slug,
             "display_name": info.get("display_name", slug),
             "type": topic_type,
+            "type_label": _TYPE_LABEL.get(topic_type, topic_type),
+            "emoji": _TYPE_EMOJI.get(topic_type, "•"),
+            "parent": info.get("parent_topic"),
             "created": info.get("created", ""),
-            "ticker": _scope_ticker(scope := info.get("scope") or {}),
+            "ticker": _scope_ticker(scope),
             "market_ticker": _make_market_ticker(scope),
+            "children": [],
             "variants": [{
                 "name": v["variant"],
                 "stage": v.get("stage", ""),
@@ -100,26 +118,33 @@ def prism_index(request: Request):
                 ),
                 "total_count": len(v.get("outputs_state", {})),
             } for v in variants],
-        })
+        }
 
-    # Sort each group by created desc
-    for g in groups.values():
-        g.sort(key=lambda t: t["created"], reverse=True)
+    # 挂树：parent 存在则归到 parent.children，否则（None 或指向缺失 slug）为根
+    roots: list[dict] = []
+    for node in nodes.values():
+        parent = node["parent"]
+        if parent and parent in nodes:
+            nodes[parent]["children"].append(node)
+        else:
+            roots.append(node)
 
-    # Ordered groups for template
-    ordered_groups = []
-    for tp in sorted(groups.keys(), key=lambda k: TYPE_ORDER.get(k, 99)):
-        ordered_groups.append({
-            "type": tp,
-            "label": TYPE_LABEL.get(tp, tp),
-            "topics": groups[tp],
-        })
+    for node in nodes.values():
+        _sort_topic_nodes(node["children"])
 
-    return templates.TemplateResponse(
-        request,
-        "prism/index.html",
-        {"topic_groups": ordered_groups},
-    )
+    # 根分区：行业 or 有子 → 树区；其余无子散户 → 独立主题区
+    tree_roots = [r for r in roots if r["type"] == "industry" or r["children"]]
+    standalone = [r for r in roots if r["type"] != "industry" and not r["children"]]
+    _sort_topic_nodes(tree_roots)
+    _sort_topic_nodes(standalone)
+    return {"tree_roots": tree_roots, "standalone": standalone, "total": len(nodes)}
+
+
+@router.get("")
+def prism_index(request: Request):
+    """List all topics as an 产业→竞技场→公司 tree, linked via topic.yaml `parent_topic`."""
+    forest = build_topic_forest(topic_io.list_topics())
+    return templates.TemplateResponse(request, "prism/index.html", forest)
 
 
 @router.get("/dashboard")
