@@ -2,7 +2,7 @@
 
 > **工具规范，非独立产出步骤。** industry 的 arena 选拔已折进 `_industry_funnel.md` 决策链环④（6 维评分）+ 环⑥（三档分流 + 落 sidecar + 建 arena stub），叙事写进 `i_industry_case`。本文件只作 `_industry_funnel.md` **逐字引用**的工具规范：环④引 **Step 3**（6 维评分口径）、环⑥引 **Step 6.5**（sidecar schema）+ **Step 6/6b**（arena stub 创建 / 继承 thesis_v0）。查规范，不照搬结构。
 >
-> **不再产出**独立 markdown（旧 `09_industry_to_arenas.md`）；sidecar `09_industry_to_arenas.yaml` 是 dashboard 行业层唯一契约。
+> **不再产出**独立 markdown（旧 `industry_to_arenas.md`）；sidecar `industry_to_arenas.yaml` 是 dashboard 行业层唯一契约。
 
 ---
 
@@ -117,7 +117,7 @@ set_thesis(
 
 ## Step 6.5：生成 sidecar YAML（machine-readable 快照）
 
-写入文件：`prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.yaml`
+写入文件：`prism/topics/{slug}/{variant}/outputs/industry_to_arenas.yaml`
 
 从决策链④/⑥ 提取以下字段。**数字不加引号，缺失用 null，tier 只能是 deep / watch / eliminated。**
 
@@ -163,7 +163,7 @@ import yaml
 content = '''
 {上面填好的 yaml 内容}
 '''
-path = Path('prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.yaml')
+path = Path('prism/topics/{slug}/{variant}/outputs/industry_to_arenas.yaml')
 path.write_text(content, encoding='utf-8')
 print('09 sidecar 写入完成')
 "

@@ -25,6 +25,12 @@
     {% else %}🔬 {{ stage_progress.label }} <span class="hint">· 阶段 {{ stage_progress.phase_index }}/{{ stage_progress.total }}</span>
     {% endif %}
     {% if pending_thesis_review %}<span class="stepper-review">⚠️ 待复评（有未消化重大变更）</span>{% endif %}
+    {% if can_mark_done %}
+      <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/mark-done" class="mark-done-form"
+            title="行业/竞技场评审非强制——合成已完成，可直接标记完成（如需对抗式 steelman 可在对话里说「评审 {{ topic.slug }}」）">
+        <button type="submit" class="mark-done-btn">✓ 标记完成</button>
+      </form>
+    {% endif %}
   </div>
   <ol class="stepper-track">
     {% for name in stage_phase_names %}
@@ -40,6 +46,10 @@
   .stepper-review { margin-left: 0.6em; font-size: 0.82em; color: #b45309; background: #fff3e0;
                     border: 1px solid #f0c36d; border-radius: 4px; padding: 1px 7px; }
   .stepper-status { font-size: 0.92em; font-weight: 600; color: #1e5bbf; margin-bottom: 0.55em; }
+  .mark-done-form { display: inline; margin-left: 0.6em; }
+  .mark-done-btn { font-size: 0.82em; font-weight: 600; color: #1e8a4c; background: #eafbf0;
+                   border: 1px solid #a9dcbd; border-radius: 4px; padding: 2px 9px; cursor: pointer; }
+  .mark-done-btn:hover { background: #d5f3e0; border-color: #6fc593; }
   .stepper-done .stepper-status { color: #1e8a4c; }
   .stepper-quarantined .stepper-status { color: #c0392b; }
   .stepper-not_started .stepper-status, .stepper-unknown .stepper-status { color: #888; }

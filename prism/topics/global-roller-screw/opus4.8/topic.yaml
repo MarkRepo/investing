@@ -16,28 +16,7 @@ scope:
   - 行星滚柱丝杠
   - 丝杠 国产 良率
   - Tesla 丝杠 定点
-outputs_state:
-  00_primer:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  a_arena_case:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  08_living_feed:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
+outputs_state: {}
 parent_materials: []
 next_actions:
 - 运行 workflow 01-build-roadmap

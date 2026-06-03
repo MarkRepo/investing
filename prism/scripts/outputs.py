@@ -62,13 +62,17 @@ _OUTPUT_KEYS_LABELS = [
     ("i_industry_case", "行业 case（决策链）"),
     ("a_arena_case", "竞技场 case（决策链）"),
     ("08_living_feed", "信息流时间线"),
-    ("10_peer_matrix", "同行矩阵"),
+    # 注：sidecar（07_decision_kit / industry_to_arenas / peer_matrix）是 .yaml
+    # 文件、无独立 markdown 视图（见 04-synthesize/_peer_matrix_spec.md：sidecar yaml
+    # 是 dashboard 竞技场层唯一契约，不再产出 .md）。它们由 dashboard 的 _load_*_sidecar
+    # 专路渲染，**不列入本 md 产出表**——否则 list_outputs 按 {key}.md 探测必 file_exists=
+    # False，detail 页渲染出"status=fresh 但置灰无链"的死行（peer_matrix 曾误列于此）。
 ]
 
 # Additional outputs that can be generated via workflows
 _EXTRA_OUTPUTS_LABELS = [
     ("05-critic-review", "批评者评审"),
-    ("09_industry_to_arenas", "产业→竞技场选拔"),
+    ("industry_to_arenas", "产业→竞技场选拔"),
     ("_synthesis_brief", "K# 校准 brief（04 副产物）"),
 ]
 
@@ -432,7 +436,16 @@ def list_affected_outputs(
         m["id"] for m in (manifest.get("materials") or []) if _kept(m)
     })
     out: dict = {}
-    for key, state in (data.get("outputs_state") or {}).items():
+    # 枚举源 = 本 type 决策链 canonical 产出 ∪ 已有 outputs_state key（含遗留键）。
+    # create_topic 改 file-first 空 seed 后，首次合成时 outputs_state 为空 {}，
+    # 必须靠 _outputs_for_type 补出 canonical 集，否则首跑返回 {} → 漏产。
+    # canonical 里 outputs_state 缺失的 key：state={} → ref=None → reason='new'，
+    # 与旧"预置槽全 pending"行为字节等价（零回归）。
+    outputs_state = data.get("outputs_state") or {}
+    canonical = topic_io._outputs_for_type(data.get("type", ""))
+    all_keys = list(dict.fromkeys([*canonical, *outputs_state.keys()]))
+    for key in all_keys:
+        state = outputs_state.get(key) or {}
         ref = state.get("referenced_mat_ids")
         status = state.get("status")
         if ref is None:

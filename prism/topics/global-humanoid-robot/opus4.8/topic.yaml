@@ -3,7 +3,7 @@ display_name: 人形机器人行业 (Global Humanoid Robot)
 type: industry
 created: '2026-05-31T16:59:37.143860+00:00'
 status: active
-stage: 09-arena-shortlist
+stage: 05-critic-review
 parent_topic: null
 monitoring_tier: dormant
 concepts: []
@@ -55,14 +55,7 @@ outputs_state:
     - mat-c5a73f
     - mat-d1ef8c
     last_error: null
-  08_living_feed:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  09_industry_to_arenas:
+  industry_to_arenas:
     version: 1
     last_updated: '2026-05-31T17:55:08.165473+00:00'
     status: fresh

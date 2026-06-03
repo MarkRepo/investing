@@ -204,15 +204,15 @@ industry 不是终局决策——它是**漏斗**：终点不是"买/卖一只�
 
 #### 3.4 产出形态（份数交给 LLM）
 
-- **默认一份连贯文档** `i_industry_case.md`：决策链 ①→⑥ 作为主脉络，⑥ 的三档分流即旧 09 的 markdown 内容（不再单出 `09_industry_to_arenas.md`）。
+- **默认一份连贯文档** `i_industry_case.md`：决策链 ①→⑥ 作为主脉络，⑥ 的三档分流即旧 09 的 markdown 内容（不再单出 `industry_to_arenas.md`）。
 - 长度逼迫（自评 >8000 字且体验下降）可拆 2-3 份，**必须保持链序** + 每份开头交代"在链哪一环、承接上一份什么结论"。拆分键名见 §5。
 - 无论几份：**起点诊断、6 环（①三梁齐、②带数字、④含 stance + 6 维、⑥三档+tier）、09 sidecar、来源分层缺一不可**。
 
 ### Step 4：写 09 sidecar + 建 arena stub（**硬契约 · schema 原样不动**）
 
-⚠️ dashboard.py 的行业层"竞技场选择"只读 `09_industry_to_arenas.yaml`、只认这套字段名。**禁自创/改名/漏字段**。
+⚠️ dashboard.py 的行业层"竞技场选择"只读 `industry_to_arenas.yaml`、只认这套字段名。**禁自创/改名/漏字段**。
 
-1. **写 `outputs/09_industry_to_arenas.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_arena_select_spec.md` Step 6.5**（`slug / variant / topic_type=industry / display_name / generated / data_freshness / arenas[{name, suggested_slug, topic_created, topic_slug, scores{profit_pool,growth,competition,valuation,cycle,composite}, tier(deep/watch/eliminated), tier_reason, upgrade_triggers, monitor_metrics, revive_condition}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
+1. **写 `outputs/industry_to_arenas.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_arena_select_spec.md` Step 6.5**（`slug / variant / topic_type=industry / display_name / generated / data_freshness / arenas[{name, suggested_slug, topic_created, topic_slug, scores{profit_pool,growth,competition,valuation,cycle,composite}, tier(deep/watch/eliminated), tier_reason, upgrade_triggers, monitor_metrics, revive_condition}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
    > ⚠️ **写完即自检（机器↔叙事一致性 · dashboard 直接消费）**：① **composite 排序必须与 case ④综合评级同向**——同档内若 composite 与评级倒挂，必须在 case 显式写一句解释，否则 dashboard 按分排序会与叙事方向相反；② **tier 枚举 ↔ case 中文档名映射必须在 case 显式写一行**（深挖=deep / 观察=watch / 淘汰=eliminated），别让 dashboard 靠猜对齐档名。
 2. **建 arena stub + 继承 thesis_v0**：对每个深挖档 arena，照 `_arena_select_spec.md` Step 6 + 6b **逐字执行**（`create_topic(topic_type='arena', parent_topic='{slug}')` → 收窄父 K# 到 arena 视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
 
@@ -222,13 +222,13 @@ industry 不是终局决策——它是**漏斗**：终点不是"买/卖一只�
 
 ### Step 5：落盘 + 状态注册 + **thesis_v1（最后）**
 
-每份落盘后注册引用（键名：`00_primer` / `i_industry_case` / `09_industry_to_arenas`）：
+每份落盘后注册引用（键名：`00_primer` / `i_industry_case` / `industry_to_arenas`）：
 
 ```bash
 python3 -c "
 from prism.scripts.topic import set_output_status, set_output_referenced_mats, read_topic
 t = read_topic('{slug}', '{variant}')
-for key, mats in {'00_primer': [...], 'i_industry_case': [...], '09_industry_to_arenas': [...]}.items():
+for key, mats in {'00_primer': [...], 'i_industry_case': [...], 'industry_to_arenas': [...]}.items():
     cur = t['outputs_state'].get(key, {}).get('version', 0)
     set_output_status('{slug}', key, 'fresh', '{variant}', version=cur+1)
     set_output_referenced_mats('{slug}', key, mats, '{variant}')
@@ -240,7 +240,7 @@ print('primer + case + 09 sidecar 已注册')
 
 **thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。先读 `_synthesis_brief.md`，dump v0→v1 强度调整，写 `thesis_v1.md`，调 `set_thesis(version=1, ...)`。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, convergence_status, changelog)`**（见 `_shared.md` §B 轴有界 delta 重拆）。收尾出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单）。
 
-**收尾**：照 `_shared.md` § 全部产出完成后——`append_user_todos` + 清 `next_actions` + stage 推进。industry 完成后 stage 置 `09-arena-shortlist` 或 `done`（与旧 09 Step 7 一致）；critic 对 industry 非强制（可选）。
+**收尾**：照 `_shared.md` § 全部产出完成后——`append_user_todos` + 清 `next_actions` + stage 推进。industry 合成完后 stage 置 `05-critic-review`（第 6 阶段「评审」，与 company/arena 统一）；**critic 对 industry 非强制（可选）**——可在对话里说「评审 {slug}」跑对抗式 steelman，或在 web 详情页点「✓ 标记完成」直接 `done`（旧名 `09-arena-shortlist` 已退休，勿再用）。
 
 ### Step 6：critic 校验（**对着决策链** · 写完即跑一轮内嵌 chain-critic）
 
@@ -270,7 +270,7 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 ✅ Industry 合成已生成（理解先行 → 决策链 ①→⑥ → thesis）
    00_primer v{N}（depth={deep/shallow}，critic {轮}轮收敛）
    i_industry_case v{N}{若拆分列出}
-   09_industry_to_arenas.yaml（sidecar，dashboard 行业层契约）+ {n} 个 arena stub
+   industry_to_arenas.yaml（sidecar，dashboard 行业层契约）+ {n} 个 arena stub
    thesis_v1 v1{强度评分}
 
 链体检：①看懂(价值链/利润池/财务弧线) ✓ / ②定价(隐含增速 {g}%/水位 {高中低}) ✓ / ③结构假设{n}条 ✓ / ④stance({看多/中性/谨慎}, arena {n}个) ✓ / ⑤kill{n}+行业镜鉴{n} ✓ / ⑥深挖{n}/观察{n}/淘汰{n} ✓

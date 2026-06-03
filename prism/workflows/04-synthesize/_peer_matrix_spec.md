@@ -2,7 +2,7 @@
 
 > **工具规范，非独立产出步骤。** arena 的公司选拔已折进 `_arena_funnel.md` 决策链环④（peer 财务横比矩阵）+ 环⑥（三档分流 + 落 sidecar + 建 company stub），叙事写进 `a_arena_case`。本文件只作 `_arena_funnel.md` **逐字引用**的工具规范：环①/②/④引 **Step 3**（financial_data 拉数口径）+ **Step 4**（矩阵维度）、环⑥引 **Step 6.5**（sidecar schema）+ **Step 7/7b**（company stub 创建 / 继承 thesis_v0）。查规范，不照搬结构。
 >
-> **不再产出**独立 markdown（旧 `10_peer_matrix.md`）；sidecar `10_peer_matrix.yaml` 是 dashboard 竞技场层唯一契约。Tier 排序以 `_synthesis_brief.md` 的 K# 校准为锚（funnel Step 1 已读 brief + thesis）；brief 不存在时在评分备注写"无 brief 校准，纯 findings 推断"。
+> **不再产出**独立 markdown（旧 `peer_matrix.md`）；sidecar `peer_matrix.yaml` 是 dashboard 竞技场层唯一契约。Tier 排序以 `_synthesis_brief.md` 的 K# 校准为锚（funnel Step 1 已读 brief + thesis）；brief 不存在时在评分备注写"无 brief 校准，纯 findings 推断"。
 
 ---
 
@@ -112,7 +112,7 @@ print(get_valuation_context_by_tickers([
 
 ## Step 6.5：生成 sidecar YAML（machine-readable 快照）
 
-写入文件：`prism/topics/{slug}/{variant}/outputs/10_peer_matrix.yaml`
+写入文件：`prism/topics/{slug}/{variant}/outputs/peer_matrix.yaml`
 
 从决策链④/⑥ 提取以下字段。**数字不加引号，缺失用 null，tier 只能是 shortlist / watch / eliminated。**
 
@@ -151,7 +151,7 @@ import yaml
 content = '''
 {上面填好的 yaml 内容}
 '''
-path = Path('prism/topics/{slug}/{variant}/outputs/10_peer_matrix.yaml')
+path = Path('prism/topics/{slug}/{variant}/outputs/peer_matrix.yaml')
 path.write_text(content, encoding='utf-8')
 print('10 sidecar 写入完成')
 "

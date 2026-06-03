@@ -268,3 +268,15 @@ def test_collect_parent_materials_degrades_when_parent_missing(tmp_topic):
     assert r["filename"] is None
     assert r["trust"] is None
     assert r["has_parent_findings"] is False
+
+
+def test_fresh_topic_enumerates_canonical_outputs_as_new(tmp_topic):
+    """file-first：建 topic 后 outputs_state 为空 {}，但首次 list_affected_outputs
+    必须靠 _outputs_for_type 补出 canonical 决策链产出、全标 reason='new'，
+    否则首次合成会因枚举为空而漏产 primer/case。tmp_topic 是 company 类型。"""
+    slug, variant, _ = tmp_topic
+    # 前置：建表确为空 seed（file-first 的核心不变量）
+    assert topic_io.read_topic(slug, variant)["outputs_state"] == {}
+    result = list_affected_outputs(slug, variant)
+    for key in ("00_primer", "c_investment_case", "08_living_feed"):
+        assert result[key]["reason"] == "new", f"{key} 应在首次合成被枚举为 new"

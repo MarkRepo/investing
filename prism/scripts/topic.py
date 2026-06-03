@@ -13,15 +13,16 @@ from prism.scripts import model_registry
 
 PRISM_ROOT = Path(__file__).resolve().parent.parent
 
-# 基础输出 keys（所有 type 都有）
-# 决策链产出 key（按 topic.type）—— create_topic seed 这些为 pending（修 F1）。
-# 旧 8 维并列产出（01_business_panorama … 07_decision_kit）已随决策链重构退休、
-# 不再 seed（曾经 seed 它们 → 8 个死 slot 永 pending，污染 dashboard +
-# list_affected_outputs 每个永报 reason='new'）。遗留 topic 仍可能带这些 key，
-# outputs.list_outputs 用 skip-if-absent 渲染，互不影响。
-# 08_living_feed 保留——它在决策链里仍是活的追踪时间线（06-daily 追加）。
-# sidecar（07/09/10 yaml）不 seed——它们是文件级产物，由合成路径 set_output_status
-# 的 setdefault 动态注册（避免又造永 pending 的死 slot）。
+# 决策链产出 key（按 topic.type）。
+# 用途（file-first 改造后）：create_topic **不再** seed 这些为 pending——它们只在
+# 产出文件落地时由 set_output_status/set_output_referenced_mats 的 setdefault 惰性注册。
+# 本表现在只剩一个职责：给 list_affected_outputs 提供"首次合成该产哪些"的 canonical
+# 枚举源（outputs_state 为空 {} 时 union 进来，缺失 key 视作 ref=None → reason='new'，
+# 与旧"预置槽"行为字节等价）。
+# 这样既消除了"未开工却显示 pending primer/case"的死 slot 污染，又不丢首次合成枚举。
+# 旧 8 维并列产出（01_business_panorama … 07_decision_kit）已随决策链重构退休、不在表内；
+# 遗留 topic 仍可能带这些 key，list_affected_outputs 走 union 照旧处理、list_outputs
+# 用 skip-if-absent 渲染，互不影响。
 _DECISION_CHAIN_OUTPUTS = {
     "company": ["00_primer", "c_investment_case", "08_living_feed"],
     "industry": ["00_primer", "i_industry_case", "08_living_feed"],
@@ -96,24 +97,20 @@ def next_stage(topic_type: str, current_stage: str) -> str | None:
     if current_stage == "01-roadmap-reopen":
         return "02-gather-materials"
 
-    if topic_type == "industry":
+    if topic_type in ("industry", "arena"):
+        # 第 6 阶段统一 05-critic-review（与 company/default 同形）。industry/arena 的
+        # 选拔/同行矩阵已并进 04 合成期 case 环⑥ + sidecar（属第 5 阶段产物，不是定稿动作）；
+        # 唯一的定稿动作是 critic 评审，对 industry/arena 非强制——可在对话跑评审、或 web 点
+        # 「完成」直接 done（见 app/routes/prism.py mark-done）。旧名 09-arena-shortlist /
+        # 10-peer-matrix 已退休（曾破坏 SKILL stage 路由，见 _arena_funnel.md 收尾段）。
         flow = [
             "00-init",
             "01-roadmap",
             "02-gather-materials",
             "03-extracting",
             "04-synthesizing",
-            "09-arena-shortlist",
-            "done",
-        ]
-    elif topic_type == "arena":
-        flow = [
-            "00-init",
-            "01-roadmap",
-            "02-gather-materials",
-            "03-extracting",
-            "04-synthesizing",
-            "10-peer-matrix",
+            "04-post-synthesis",
+            "05-critic-review",
             "done",
         ]
     elif topic_type == "company":
@@ -156,9 +153,9 @@ def next_stage(topic_type: str, current_stage: str) -> str | None:
 # ── 阶段 → 读者向进度（单一事实源；index / variants / detail 三处共用）──────────
 # 把流水线的细 stage 收敛成 7 个读者看得懂的大阶段，让人「一眼看出研究完成没 + 到哪了」，
 # 替代曾经在数退休产出槽的 n/m 数字（那个分母是 outputs_state 残留的旧 8 维死 key，对读者零含义）。
-# type-agnostic：company 第 6 阶段走 05-critic-review，industry 走 09-arena-shortlist，
-# arena 走 10-peer-matrix，三者都归到「定稿」，进度条跨 type 对齐。
-STAGE_PHASE_NAMES = ["立项", "规划", "收料", "抽取", "合成", "定稿", "完成"]
+# type-agnostic：三类 topic 第 6 阶段统一为 05-critic-review（评审）——company 必跑、
+# industry/arena 可选（对话跑评审或 web 点完成均到 done）。进度条跨 type 对齐。
+STAGE_PHASE_NAMES = ["立项", "规划", "收料", "抽取", "合成", "评审", "完成"]
 
 # stage 串 → 大阶段序号（1..7）
 _STAGE_PHASE_INDEX = {
@@ -167,7 +164,7 @@ _STAGE_PHASE_INDEX = {
     "02-gather-materials": 3,
     "03-extracting": 4, "00-quality-screen": 4,
     "04-synthesizing": 5, "04-synthesizing-done": 5, "04-post-synthesis": 5,
-    "05-critic-review": 6, "09-arena-shortlist": 6, "10-peer-matrix": 6,
+    "05-critic-review": 6,
     "done": 7,
 }
 
@@ -178,7 +175,7 @@ _STAGE_DISPLAY_LABEL = {
     "02-gather-materials": "收料中",
     "03-extracting": "抽取中", "00-quality-screen": "质量筛查",
     "04-synthesizing": "合成中", "04-synthesizing-done": "合成中", "04-post-synthesis": "合成收尾",
-    "05-critic-review": "评审中", "09-arena-shortlist": "竞技场选拔", "10-peer-matrix": "同行矩阵",
+    "05-critic-review": "评审中",
     "done": "已完成", "quarantined": "已隔离",
 }
 
@@ -382,7 +379,12 @@ def create_topic(
         "monitoring_tier": monitoring_tier,
         "concepts": concepts or [],
         "scope": scope,
-        "outputs_state": {key: dict(_DEFAULT_OUTPUT_STATE) for key in _outputs_for_type(topic_type)},
+        # file-first：建 topic 时不预置任何产出槽（空 {}）。产出落地时由
+        # set_output_status / set_output_referenced_mats 的 setdefault 惰性注册，
+        # 保证「有文件才有 outputs_state 条目」（消除"未开工却显示 pending"的死 slot）。
+        # 首次合成"该产哪些"的枚举改由 list_affected_outputs 用 _outputs_for_type(type)
+        # 补出 canonical 集——故 outputs_state 空 ≠ 无产出计划。
+        "outputs_state": {},
         "parent_materials": [],
         "next_actions": ["运行 workflow 01-build-roadmap"],
         "user_todos": [],
@@ -1535,8 +1537,8 @@ _CASE_BY_TYPE = {
 # 按 type 映射 dashboard sidecar（机器消费）
 _SIDECAR_BY_TYPE = {
     "company": "07_decision_kit.yaml",
-    "industry": "09_industry_to_arenas.yaml",
-    "arena": "10_peer_matrix.yaml",
+    "industry": "industry_to_arenas.yaml",
+    "arena": "peer_matrix.yaml",
 }
 
 

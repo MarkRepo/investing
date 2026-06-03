@@ -144,7 +144,7 @@
 3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整，供 ④⑤⑥ 与 critic 复用。
 
 > **亲属复用 hook（已生效）**：若本 topic 有 `parent_topic`（或 `find_child_topics` 返回非空），调 `get_relative_outputs('{slug}','{variant}')` 取亲属**成稿产出路径**并 Read。**借来内容受 §1.4 约束**——脚本只返路径不读内容，借用永远是输入/参照：必标来源、质量按本维度自跑、冲突时本 topic 赢。
-> - **向下（父 arena/industry → 本 company）**：company primer 站在父 primer 上扩写、不重教；读父最新 thesis；读**父 sidecar（`10_peer_matrix` / `09_industry_to_arenas`）里点名本公司的那行 = 本 company 的"mandate"**（父级为什么把我放深研档、预期洞见、预填狩猎问题），①从这里起、②③去验证/修正它。
+> - **向下（父 arena/industry → 本 company）**：company primer 站在父 primer 上扩写、不重教；读父最新 thesis；读**父 sidecar（`peer_matrix` / `industry_to_arenas`）里点名本公司的那行 = 本 company 的"mandate"**（父级为什么把我放深研档、预期洞见、预填狩猎问题），①从这里起、②③去验证/修正它。
 > - **向上（子 → 本 company）**：company 通常是叶子，`children` 多为空；若有（极少，如控股母子结构），按 §1.4 护栏当一等证据、本维度复核。
 > - 无亲属 → 返空 → 退化为独立合成，零特判。
 

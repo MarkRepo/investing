@@ -21,7 +21,7 @@ prism 一个 topic 的研究输出是**决策链三件套**——领域入门 + 
 |------|------|-----------|--------|
 | **领域入门** | `00_primer.md` | 给完全外行建心智模型（讲领域本身，不讲投资判断） | 第一次看这个 topic |
 | **成稿 case** | `c_investment_case` / `i_industry_case` / `a_arena_case`（按 type 三选一） | 决策链正文，6 个命门环串成完整论证（见下） | **核心产出，看一份就够时看这份** |
-| **sidecar** | `07_decision_kit.yaml`（company）/ `09_industry_to_arenas.yaml`（industry）/ `10_peer_matrix.yaml`（arena） | case 的机器消费面：dashboard / kill / signpost / tier / 子战场选拔直接读它 | 要结构化结论（KILL/仓位/分流）时 |
+| **sidecar** | `07_decision_kit.yaml`（company）/ `industry_to_arenas.yaml`（industry）/ `peer_matrix.yaml`（arena） | case 的机器消费面：dashboard / kill / signpost / tier / 子战场选拔直接读它 | 要结构化结论（KILL/仓位/分流）时 |
 | **追踪时间线** | `08_living_feed.md` | 接下来盯的时点 / 催化剂 / 监测信号 + 事件序列（06-daily 追加） | 决定"接下来盯什么" |
 
 **成稿 case 的 6 个命门环**（按 topic.type 措辞略异，骨架一致）：

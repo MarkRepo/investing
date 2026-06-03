@@ -218,7 +218,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
    - ❌ 不要每环都 Read 全部 findings（重复重读浪费 token）
    - ❌ 不要假定 findings 一定还在 context（compact 可能切掉，索引让你能验证）
 
-   > sidecar schema（`07_decision_kit.yaml` / `09_industry_to_arenas.yaml` / `10_peer_matrix.yaml`）**严格、dashboard 直接消费、禁自创字段**——字段清单见各路径文档的 sidecar 步骤（分别引 `_decision_kit_spec.md` Step 3.5 / `_arena_select_spec.md` Step 6.5 / `_peer_matrix_spec.md` Step 6.5）。
+   > sidecar schema（`07_decision_kit.yaml` / `industry_to_arenas.yaml` / `peer_matrix.yaml`）**严格、dashboard 直接消费、禁自创字段**——字段清单见各路径文档的 sidecar 步骤（分别引 `_decision_kit_spec.md` Step 3.5 / `_arena_select_spec.md` Step 6.5 / `_peer_matrix_spec.md` Step 6.5）。
 6. **状态注册**：用单个 Bash 脚本一次性注册各 output status + thesis v1（键名见各路径文档 §5）。
 7. **收尾**：照各路径文档 §4 收尾——stage 推进 + 清空 user_todos + 更新 next_actions。
 
@@ -317,7 +317,7 @@ print('thesis v1 已登记')
 
 > 三件套兜底 = 残留缺口清单（本步）+ 05 critic 复核 + 用户手检。薄拆解的不确定性靠这三层兜，不假装 04 一定收敛干净。
 
-**stage 推进到 critic-review（修 7）**：04 完成后 stage 自动应为 `04-post-synthesis` → 由 next_stage 推到 `05-critic-review`。**company / default 类型必须跑 critic-review** 才能进 done；industry / arena 走 09/10 分支不强制（critic 是可选的）。
+**stage 推进到 critic-review（修 7）**：04 完成后 stage 自动应为 `04-post-synthesis` → 由 next_stage 推到 `05-critic-review`（**三类 topic 第 6 阶段统一为评审**）。**company / default 类型必须跑 critic-review** 才能进 done；**industry / arena 的评审非强制**——可在对话里跑评审，或在 web 详情页点「✓ 标记完成」直接 `done`（旧 `09-arena-shortlist` / `10-peer-matrix` stage 名已退休）。
 
 ```bash
 python3 -c "
@@ -336,8 +336,8 @@ if ns == '05-critic-review':
 后台失败仅写 `prism/logs/dashboard_auto.log`——若发现 dashboard 长期未刷新，手动跑一次 `python3 -m prism.scripts.dashboard` 排查。
 
 **selection（09/10）已折进 funnel 环⑥**（不再自动触发独立 workflow）：
-- **industry** → arena 选拔是 `_industry_funnel.md` 环⑥（落 `09_industry_to_arenas.yaml` + 建 arena stub），`_arena_select_spec.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema / stub 创建）。
-- **arena** → peer shortlist 是 `_arena_funnel.md` 环⑥（落 `10_peer_matrix.yaml` + 建 company stub），`_peer_matrix_spec.md` 同样降级为工具规范。
+- **industry** → arena 选拔是 `_industry_funnel.md` 环⑥（落 `industry_to_arenas.yaml` + 建 arena stub），`_arena_select_spec.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema / stub 创建）。
+- **arena** → peer shortlist 是 `_arena_funnel.md` 环⑥（落 `peer_matrix.yaml` + 建 company stub），`_peer_matrix_spec.md` 同样降级为工具规范。
 - **company** → 无 selection 环，c_investment_case 即完整决策。
 
 > Tier 排序基于本 topic 的 thesis 最新版 + 决策链 ②④（funnel 文档 Step 1 已要求读 brief + thesis）。

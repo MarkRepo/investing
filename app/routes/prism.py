@@ -63,7 +63,7 @@ _OUTPUT_OPTIONS = [
     ("i_industry_case", "行业 case（决策链）"),
     ("a_arena_case", "竞技场 case（决策链）"),
     ("08_living_feed", "信息流时间线"),
-    ("09_industry_to_arenas", "产业→竞技场选拔"),
+    ("industry_to_arenas", "产业→竞技场选拔"),
 ]
 
 
@@ -387,11 +387,19 @@ def prism_detail(request: Request, slug: str, variant: str):
 
     monitor_ctx = _monitor_context(slug, variant)
 
+    # industry/arena 的 05 评审非强制——合成完(04-post-synthesis/05-critic-review)即可
+    # 在 web 直接点「完成」跳 done(对话里跑评审是另一条路)。company 必须真评审,无此按钮。
+    can_mark_done = (
+        topic.get("type") in ("industry", "arena")
+        and topic.get("stage") in ("04-post-synthesis", "05-critic-review")
+    )
+
     return templates.TemplateResponse(
         request,
         "prism/detail.html",
         {
             "topic": topic,
+            "can_mark_done": can_mark_done,
             "outputs": outputs,
             "manifest": manifest,
             "mat_counts": mat_counts,
@@ -410,6 +418,25 @@ def prism_detail(request: Request, slug: str, variant: str):
             **monitor_ctx,
         },
     )
+
+
+@router.post("/{slug}/{variant}/mark-done")
+def prism_mark_done(slug: str, variant: str):
+    """industry/arena 评审可选——用户在 web 点「完成」直接置 stage=done。
+
+    守卫:仅 industry/arena 且当前处于合成完/评审阶段才放行;company 必须走真评审
+    (05 verdict=approve)才能 done,故拒绝。完成后 303 重定向回详情页。
+    """
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    if topic.get("type") not in ("industry", "arena"):
+        raise HTTPException(status_code=400, detail="仅 industry/arena 可在 web 直接完成;company 须走 05 评审")
+    if topic.get("stage") not in ("04-post-synthesis", "05-critic-review"):
+        raise HTTPException(status_code=400, detail=f"当前阶段 {topic.get('stage')!r} 不可直接完成(需先完成合成)")
+    topic_io.set_stage(slug, "done", variant)
+    return RedirectResponse(url=f"/prism/{slug}/{variant}", status_code=303)
 
 
 def _monitor_context(slug: str, variant: str) -> dict:

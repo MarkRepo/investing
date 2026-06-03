@@ -46,8 +46,6 @@ def test_known_stages_map_to_right_phase():
         ("04-synthesizing-done", 5, "合成中"),
         ("04-post-synthesis", 5, "合成收尾"),
         ("05-critic-review", 6, "评审中"),
-        ("09-arena-shortlist", 6, "竞技场选拔"),
-        ("10-peer-matrix", 6, "同行矩阵"),
     ]
     for stage, idx, label in cases:
         p = stage_progress(stage)
@@ -58,10 +56,16 @@ def test_known_stages_map_to_right_phase():
 
 
 def test_company_industry_arena_share_phase6():
-    # 三类 type 的"定稿"阶段都归到第 6 大阶段（type-agnostic 进度条对齐）
-    assert stage_progress("05-critic-review")["phase_index"] == 6   # company
-    assert stage_progress("09-arena-shortlist")["phase_index"] == 6  # industry
-    assert stage_progress("10-peer-matrix")["phase_index"] == 6      # arena
+    # 三类 type 第 6 阶段统一为 05-critic-review（评审）——退休名 09/10 已删，
+    # 走未知兜底（按数字前缀尽力猜，不再是合法节点）。
+    p = stage_progress("05-critic-review")
+    assert p["phase_index"] == 6 and p["label"] == "评审中"
+    # 大阶段第 6 名已从「定稿」改为「评审」
+    from prism.scripts.topic import STAGE_PHASE_NAMES
+    assert STAGE_PHASE_NAMES[5] == "评审"
+    # 退休的旧 stage 名不再映射为 in_progress 的合法第 6 阶段
+    assert stage_progress("09-arena-shortlist")["state"] == "unknown"
+    assert stage_progress("10-peer-matrix")["state"] == "unknown"
 
 
 def test_unknown_stage_graceful():
@@ -72,4 +76,4 @@ def test_unknown_stage_graceful():
 
 
 def test_phase_names_are_seven():
-    assert STAGE_PHASE_NAMES == ["立项", "规划", "收料", "抽取", "合成", "定稿", "完成"]
+    assert STAGE_PHASE_NAMES == ["立项", "规划", "收料", "抽取", "合成", "评审", "完成"]

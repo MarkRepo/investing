@@ -110,11 +110,11 @@ def test_get_relative_outputs():
         topic_io.set_parent("arn", "v", "ind")
         topic_io.set_parent("co", "v", "arn")
 
-        # 父 industry 落 primer + thesis_v0 + 09 sidecar；子 company 落 case
+        # 父 industry 落 primer + thesis_v0 + industry_to_arenas sidecar；子 company 落 case
         ind_dir = root / "topics" / "ind" / "v"
         _write(ind_dir / "outputs" / "00_primer.md")
         _write(ind_dir / "thesis_v0.md")
-        _write(ind_dir / "outputs" / "09_industry_to_arenas.yaml", "slug: ind\n")
+        _write(ind_dir / "outputs" / "industry_to_arenas.yaml", "slug: ind\n")
         co_dir = root / "topics" / "co" / "v"
         _write(co_dir / "outputs" / "c_investment_case.md")
 
@@ -143,10 +143,10 @@ def test_suggest_relatives_ticker_and_geo():
             "co", "公司", "company", "Q", "CN", "deep", "v",
             ticker="SZSE_002460", short_name="赣锋",
         )
-        # arena 的 10_peer_matrix 含该 ticker
+        # arena 的 peer_matrix 含该 ticker
         arn_dir = root / "topics" / "arn" / "v"
         _write(
-            arn_dir / "outputs" / "10_peer_matrix.yaml",
+            arn_dir / "outputs" / "peer_matrix.yaml",
             "companies:\n  - ticker: SZSE_002460\n",
         )
 

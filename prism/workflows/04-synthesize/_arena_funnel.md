@@ -197,15 +197,15 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 
 #### 3.4 产出形态（份数交给 LLM）
 
-- **默认一份连贯文档** `a_arena_case.md`：决策链 ①→⑥ 作为主脉络，⑥ 的三档分流即旧 10 的 markdown 内容（不再单出 `10_peer_matrix.md`）。
+- **默认一份连贯文档** `a_arena_case.md`：决策链 ①→⑥ 作为主脉络，⑥ 的三档分流即旧 10 的 markdown 内容（不再单出 `peer_matrix.md`）。
 - 长度逼迫（自评 >8000 字且体验下降）可拆 2-3 份，**必须保持链序** + 每份开头交代承接关系。拆分键名见 §5。
 - 无论几份：**起点诊断、6 环（②带估值锚、④含 peer 矩阵 + K# 校准、⑥三档+tier）、10 sidecar、来源分层缺一不可**。
 
 ### Step 4：写 10 sidecar + 建 company stub（**硬契约 · schema 原样不动**）
 
-⚠️ dashboard.py 的竞技场层"公司排名"只读 `10_peer_matrix.yaml`、只认这套字段名。**禁自创/改名/漏字段**。
+⚠️ dashboard.py 的竞技场层"公司排名"只读 `peer_matrix.yaml`、只认这套字段名。**禁自创/改名/漏字段**。
 
-1. **写 `outputs/10_peer_matrix.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_peer_matrix_spec.md` Step 6.5**（`slug / variant / topic_type=arena / display_name / generated / data_freshness / companies[{name, ticker, score, tier(shortlist/watch/eliminated), topic_created, topic_slug, thesis_one_liner, upgrade_triggers, quarantine}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
+1. **写 `outputs/peer_matrix.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_peer_matrix_spec.md` Step 6.5**（`slug / variant / topic_type=arena / display_name / generated / data_freshness / companies[{name, ticker, score, tier(shortlist/watch/eliminated), topic_created, topic_slug, thesis_one_liner, upgrade_triggers, quarantine}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
    > ⚠️ **写完即自检（机器↔叙事一致性 · dashboard 直接消费）**：① **score 排序必须与 case ④综合评级同向**——同档内若 score 与评级倒挂（如 K5 hard-filter 把高 upside 公司压到低分），必须在 case 显式写一句解释，否则 dashboard 按 score 排序会与叙事方向相反；② **tier 枚举 ↔ case 中文档名映射必须在 case 显式写一行**（深研=shortlist / 观察=watch / 淘汰=eliminated），别让 dashboard 靠猜对齐档名。
 2. **建 company stub + 继承 thesis_v0**：对每个深研档公司，照 `_peer_matrix_spec.md` Step 7 + 7b **逐字执行**（`create_topic(topic_type='company', parent_topic='{slug}', ticker=...)` → 收窄父 arena K# 到公司视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
 
@@ -215,13 +215,13 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 
 ### Step 5：落盘 + 状态注册 + **thesis_v1（最后）**
 
-每份落盘后注册引用（键名：`00_primer` / `a_arena_case` / `10_peer_matrix`）：
+每份落盘后注册引用（键名：`00_primer` / `a_arena_case` / `peer_matrix`）：
 
 ```bash
 python3 -c "
 from prism.scripts.topic import set_output_status, set_output_referenced_mats, read_topic
 t = read_topic('{slug}', '{variant}')
-for key, mats in {'00_primer': [...], 'a_arena_case': [...], '10_peer_matrix': [...]}.items():
+for key, mats in {'00_primer': [...], 'a_arena_case': [...], 'peer_matrix': [...]}.items():
     cur = t['outputs_state'].get(key, {}).get('version', 0)
     set_output_status('{slug}', key, 'fresh', '{variant}', version=cur+1)
     set_output_referenced_mats('{slug}', key, mats, '{variant}')
@@ -233,7 +233,7 @@ print('primer + case + 10 sidecar 已注册')
 
 **thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, convergence_status, changelog)`**（见 `_shared.md` §B 轴有界 delta 重拆）。
 
-**收尾**：照 `_shared.md` § 全部产出完成后——出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单）；——`append_user_todos` + 清 `next_actions` + stage 推进。arena 完成后 stage 置 `04-post-synthesis` 或 `done`（**不再用旧名 `10-peer-matrix`**——它会让 SKILL stage 路由找不到续跑节点）；critic 对 arena 非强制（可选）。
+**收尾**：照 `_shared.md` § 全部产出完成后——出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单）；——`append_user_todos` + 清 `next_actions` + stage 推进。arena 合成完后 stage 置 `05-critic-review`（第 6 阶段「评审」，与 company/industry 统一）；**critic 对 arena 非强制（可选）**——可在对话里说「评审 {slug}」跑对抗式 steelman，或在 web 详情页点「✓ 标记完成」直接 `done`（旧名 `10-peer-matrix` 已退休，勿再用）。
 
 ### Step 6：critic 校验（**对着决策链** · 写完即跑一轮内嵌 chain-critic）
 
@@ -263,7 +263,7 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 ✅ Arena 合成已生成（理解先行 → 决策链 ①→⑥ → thesis）
    00_primer v{N}（depth={deep/shallow}，critic {轮}轮收敛）
    a_arena_case v{N}{若拆分列出}
-   10_peer_matrix.yaml（sidecar，dashboard 竞技场层契约）+ {n} 个 company stub
+   peer_matrix.yaml（sidecar，dashboard 竞技场层契约）+ {n} 个 company stub
    thesis_v1 v1{强度评分}
 
 链体检：①看懂(赚钱/卡位/路线/客户/周期) ✓ / ②赢家变量+定价锚({谁被定价}) ✓ / ③假设{n}条 ✓ / ④押注({核心分歧}, peer {n}家) ✓ / ⑤kill{n}+镜鉴{n} ✓ / ⑥深研{n}/观察{n}/淘汰{n} ✓

@@ -3,7 +3,7 @@ display_name: 中国创新药行业
 type: industry
 created: '2026-05-30T14:17:25.709541+00:00'
 status: active
-stage: 02-gather-materials
+stage: 05-critic-review
 parent_topic: null
 monitoring_tier: dormant
 concepts: []
@@ -18,70 +18,6 @@ scope:
   - 双抗 GLP-1 自免
   - 管线 临床 商业化
 outputs_state:
-  01_business_panorama:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  02_cycle_positioning:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  03_narrative_ecology:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  04_implied_expectations:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  05_historical_mirrors:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  06_risk_blindspots:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  07_decision_kit:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  08_living_feed:
-    version: 0
-    last_updated: null
-    status: pending
-    data_freshness: null
-    referenced_mat_ids: null
-    last_error: null
-  09_industry_to_arenas:
-    version: 1
-    last_updated: '2026-05-30T15:01:52.940152+00:00'
-    status: fresh
-    data_freshness: null
-    referenced_mat_ids:
-    - mat-58be77
-    last_error: null
   00_primer:
     version: 2
     last_updated: '2026-05-31T03:13:18.633352+00:00'
@@ -104,6 +40,14 @@ outputs_state:
     - mat-76caf4
     - mat-d092a9
     - mat-e97889
+    last_error: null
+  industry_to_arenas:
+    version: 1
+    last_updated: '2026-05-30T15:01:52.940152+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-58be77
     last_error: null
 parent_materials: []
 next_actions:

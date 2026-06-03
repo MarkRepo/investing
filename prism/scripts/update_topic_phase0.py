@@ -19,23 +19,23 @@ topic["parent_topic"] = None
 topic["monitoring_tier"] = "watch"
 topic["concepts"] = ["商业航天"]
 
-# 更新 outputs_state，加上 data_freshness 默认值，以及 09_industry_to_arenas
+# 更新 outputs_state，加上 data_freshness 默认值，以及 industry_to_arenas sidecar
 base_output_state = {"version": 1, "last_updated": now_iso(), "status": "fresh", "data_freshness": "2026-01"}
 
 # 为现有 outputs 加上 data_freshness
 for key, state in topic["outputs_state"].items():
     state.setdefault("data_freshness", "2026-01")
 
-# 加上 09_industry_to_arenas
-topic["outputs_state"]["09_industry_to_arenas"] = {
+# 加上 industry_to_arenas（旧名 09_industry_to_arenas 已退休）
+topic["outputs_state"]["industry_to_arenas"] = {
     "version": 1,
     "last_updated": now_iso(),
     "status": "fresh",
     "data_freshness": "2026-01"
 }
 
-# 更新 stage（industry 流：04-synthesizing → 09-arena-shortlist → done）
-topic["stage"] = "09-arena-shortlist"
+# 更新 stage（industry 流：04-synthesizing → 04-post-synthesis → 05-critic-review → done）
+topic["stage"] = "05-critic-review"
 
 # 更新 next_actions
 topic["next_actions"] = [
@@ -56,5 +56,5 @@ with open(TOPIC_PATH, "w", encoding="utf-8") as f:
 
 print(f"已更新 topic.yaml: {TOPIC_PATH}")
 print(f"新字段: parent_topic={topic['parent_topic']}, monitoring_tier={topic['monitoring_tier']}, concepts={topic['concepts']}")
-print(f"outputs_state 新增: 09_industry_to_arenas")
+print(f"outputs_state 新增: industry_to_arenas")
 print(f"stage: {topic['stage']}")

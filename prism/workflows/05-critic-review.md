@@ -109,7 +109,7 @@ if marker:
 
 ## Step 1：读取核心产出
 
-**按 topic 合成路径取文件**——三类 topic 都走决策链路径：company 产 `c_investment_case`（+`07_decision_kit.yaml`）、industry 产 `i_industry_case`（+`09_industry_to_arenas.yaml`）、arena 产 `a_arena_case`（+`10_peer_matrix.yaml`）：
+**按 topic 合成路径取文件**——三类 topic 都走决策链路径：company 产 `c_investment_case`（+`07_decision_kit.yaml`）、industry 产 `i_industry_case`（+`industry_to_arenas.yaml`）、arena 产 `a_arena_case`（+`peer_matrix.yaml`）：
 
 ```bash
 # 决策链路径（存在哪个 *_case.md 即走哪条）
@@ -117,8 +117,8 @@ cat prism/topics/{slug}/{variant}/outputs/c_investment_case.md 2>/dev/null   # c
 cat prism/topics/{slug}/{variant}/outputs/i_industry_case.md 2>/dev/null     # industry
 cat prism/topics/{slug}/{variant}/outputs/a_arena_case.md 2>/dev/null        # arena
 cat prism/topics/{slug}/{variant}/outputs/07_decision_kit.yaml 2>/dev/null
-cat prism/topics/{slug}/{variant}/outputs/09_industry_to_arenas.yaml 2>/dev/null
-cat prism/topics/{slug}/{variant}/outputs/10_peer_matrix.yaml 2>/dev/null
+cat prism/topics/{slug}/{variant}/outputs/industry_to_arenas.yaml 2>/dev/null
+cat prism/topics/{slug}/{variant}/outputs/peer_matrix.yaml 2>/dev/null
 ```
 
 读到哪条就评哪条（`*_case` 的反方步直接对决策链 ①→⑥ 做 steelman——含 funnel 的环⑥ 选拔逻辑）；全为空 = 合成未完成，停止并提示先跑 04。

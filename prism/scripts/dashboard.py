@@ -30,7 +30,7 @@ def _load_sidecar(slug: str, variant: str) -> dict | None:
 
 
 def _load_industry_sidecar(slug: str, variant: str) -> dict | None:
-    path = PRISM_ROOT / "topics" / slug / variant / "outputs" / "09_industry_to_arenas.yaml"
+    path = PRISM_ROOT / "topics" / slug / variant / "outputs" / "industry_to_arenas.yaml"
     if not path.exists():
         return None
     try:
@@ -40,7 +40,7 @@ def _load_industry_sidecar(slug: str, variant: str) -> dict | None:
 
 
 def _load_arena_sidecar(slug: str, variant: str) -> dict | None:
-    path = PRISM_ROOT / "topics" / slug / variant / "outputs" / "10_peer_matrix.yaml"
+    path = PRISM_ROOT / "topics" / slug / variant / "outputs" / "peer_matrix.yaml"
     if not path.exists():
         return None
     try:
