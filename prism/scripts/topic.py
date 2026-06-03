@@ -153,6 +153,70 @@ def next_stage(topic_type: str, current_stage: str) -> str | None:
         return None
 
 
+# ── 阶段 → 读者向进度（单一事实源；index / variants / detail 三处共用）──────
+# 把流水线的细 stage 收敛成 7 个读者看得懂的大阶段，让人「一眼看出研究完成没 + 到哪了」，
+# 替代曾经在数退休产出槽的 n/m 数字（那个分母是 outputs_state 残留的旧 8 维死 key，对读者零含义）。
+# type-agnostic：company 第 6 阶段走 05-critic-review，industry 走 09-arena-shortlist，
+# arena 走 10-peer-matrix，三者都归到「定稿」，进度条跨 type 对齐。
+STAGE_PHASE_NAMES = ["立项", "规划", "收料", "抽取", "合成", "定稿", "完成"]
+
+# stage 串 → 大阶段序号（1..7）
+_STAGE_PHASE_INDEX = {
+    "00-init": 1,
+    "01-roadmap": 2, "01-roadmap-pending": 2, "01-roadmap-reopen": 2,
+    "02-gather-materials": 3,
+    "03-extracting": 4, "00-quality-screen": 4,
+    "04-synthesizing": 5, "04-synthesizing-done": 5, "04-post-synthesis": 5,
+    "05-critic-review": 6, "09-arena-shortlist": 6, "10-peer-matrix": 6,
+    "done": 7,
+}
+
+# stage 串 → 读者向 label（精确到 stage，比大阶段名更具体；前端按 state 配色，不在此塞 emoji）
+_STAGE_DISPLAY_LABEL = {
+    "00-init": "未开工",
+    "01-roadmap": "规划中", "01-roadmap-pending": "规划中", "01-roadmap-reopen": "规划补缺",
+    "02-gather-materials": "收料中",
+    "03-extracting": "抽取中", "00-quality-screen": "质量筛查",
+    "04-synthesizing": "合成中", "04-synthesizing-done": "合成中", "04-post-synthesis": "合成收尾",
+    "05-critic-review": "评审中", "09-arena-shortlist": "竞技场选拔", "10-peer-matrix": "同行矩阵",
+    "done": "已完成", "quarantined": "已隔离",
+}
+
+# 未知 stage 兜底：按数字前缀尽力猜大阶段（猜不到=0）
+_STAGE_PREFIX_GUESS = {0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 9: 6}
+
+
+def stage_progress(stage: str | None) -> dict:
+    """把 topic.stage 收敛成读者向进度。单一事实源，供 web 三处展示共用、纯函数、不抛。
+
+    返回 {label, phase_index, total, state}：
+      - label       读者向阶段名（如 '合成中' / '已完成'；emoji 由前端按 state 加）
+      - phase_index 1..7 大阶段序号；空/未知=0
+      - total       总大阶段数（=7）
+      - state       'done' | 'in_progress' | 'not_started' | 'quarantined' | 'unknown'
+
+    未知 stage 优雅降级：label=原 stage 串、state='unknown'、phase_index 按数字前缀尽力猜。
+    """
+    total = len(STAGE_PHASE_NAMES)
+    s = (stage or "").strip()
+    if not s:
+        return {"label": "未开工", "phase_index": 0, "total": total, "state": "not_started"}
+    if s == "quarantined":
+        return {"label": "已隔离", "phase_index": 0, "total": total, "state": "quarantined"}
+    if s == "done":
+        return {"label": "已完成", "phase_index": total, "total": total, "state": "done"}
+    if s == "00-init":
+        return {"label": "未开工", "phase_index": 1, "total": total, "state": "not_started"}
+    label = _STAGE_DISPLAY_LABEL.get(s)
+    idx = _STAGE_PHASE_INDEX.get(s)
+    if label is not None and idx is not None:
+        return {"label": label, "phase_index": idx, "total": total, "state": "in_progress"}
+    # 未知 stage：原串兜底 + 前缀猜阶段
+    head = s.split("-", 1)[0]
+    guess = _STAGE_PREFIX_GUESS.get(int(head), 0) if head.isdigit() else 0
+    return {"label": s, "phase_index": guess, "total": total, "state": "unknown"}
+
+
 def _topics_dir() -> Path:
     return PRISM_ROOT / "topics"
 

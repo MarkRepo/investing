@@ -21,8 +21,8 @@
     <span class="tnode-variants">
       {% for v in t.variants %}
         <a href="/prism/{{ t.slug }}/{{ v.name }}" class="variant-chip"
-           title="阶段: {{ v.stage }} · 产出: {{ v.fresh_count }}/{{ v.total_count }}">
-          {{ v.name }}<span class="chip-progress">{{ v.fresh_count }}/{{ v.total_count }}</span>
+           title="阶段 {{ v.progress.phase_index }}/{{ v.progress.total }} · {{ v.stage or '未开工' }}">
+          {{ v.name }}<span class="stage-pill stage-{{ v.progress.state }}">{% if v.progress.state == 'done' %}✅{% endif %}{{ v.progress.label }}</span>
         </a>
       {% endfor %}
     </span>
@@ -90,7 +90,17 @@
     font-size: 0.78em; font-family: monospace; text-decoration: none; border: 1px solid #d4dff7;
   }
   .variant-chip:hover { background: #dce6fb; }
-  .chip-progress { color: #888; margin-left: 0.3em; }
+  /* ── 阶段 pill：state 配色（绿=完成 / 蓝=进行中 / 灰=未开工 / 红=隔离 / 黄=未知）── */
+  .stage-pill {
+    margin-left: 0.4em; padding: 0.02em 0.4em; border-radius: 3px;
+    font-size: 0.92em; font-family: -apple-system, sans-serif; font-weight: 500;
+    border: 1px solid transparent;
+  }
+  .stage-done        { background: #eafaf0; color: #1e8a4c; border-color: #bfe9d0; }
+  .stage-in_progress { background: #e8f1ff; color: #1e5bbf; border-color: #cfe0fb; }
+  .stage-not_started { background: #f1f1f1; color: #888;    border-color: #e0e0e0; }
+  .stage-quarantined { background: #fdecea; color: #c0392b; border-color: #f5c6c0; }
+  .stage-unknown     { background: #fff7e6; color: #9a6b00; border-color: #f0dca8; }
   .data-link {
     display: inline-block; padding: 0.08em 0.38em; margin-right: 0.1em; border-radius: 3px;
     background: #f5f5f5; color: #555; font-size: 0.76em; text-decoration: none; border: 1px solid #ddd;

@@ -112,11 +112,8 @@ def build_topic_forest(all_topics: list[dict]) -> dict:
                 "name": v["variant"],
                 "stage": v.get("stage", ""),
                 "status": v.get("status", ""),
-                "fresh_count": sum(
-                    1 for s in v.get("outputs_state", {}).values()
-                    if s.get("status") == "fresh"
-                ),
-                "total_count": len(v.get("outputs_state", {})),
+                # 读者向阶段进度（替代曾经在数退休产出槽的 n/m 数字）
+                "progress": topic_io.stage_progress(v.get("stage", "")),
             } for v in variants],
         }
 
@@ -198,14 +195,11 @@ def prism_topic(request: Request, slug: str):
                 "name": v,
                 "stage": data.get("stage", ""),
                 "status": data.get("status", ""),
-                "fresh_count": sum(
-                    1 for s in data.get("outputs_state", {}).values()
-                    if s.get("status") == "fresh"
-                ),
-                "total_count": len(data.get("outputs_state", {})),
+                "progress": topic_io.stage_progress(data.get("stage", "")),
             })
         except Exception:
-            variant_data.append({"name": v, "stage": "", "status": "", "fresh_count": 0, "total_count": 8})
+            variant_data.append({"name": v, "stage": "", "status": "",
+                                 "progress": topic_io.stage_progress("")})
 
     # 从首个 variant 读 display_name + type；type 决定"对比产出"默认指向哪份 case
     # （决策链按 type 三选一；旧的硬编码 01_business_panorama 已随旧 8 维退休删除）。
@@ -371,6 +365,8 @@ def prism_detail(request: Request, slug: str, variant: str):
             "mineru_counts": mineru_counts,
             "prism_key": _make_market_ticker(topic.get("scope") or {}),
             "now_iso": _now_iso_z(),
+            "stage_progress": topic_io.stage_progress(topic.get("stage", "")),
+            "stage_phase_names": topic_io.STAGE_PHASE_NAMES,
         },
     )
 

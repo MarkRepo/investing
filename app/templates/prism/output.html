@@ -11,7 +11,7 @@
 <div class="output-layout">
   <!-- Sidebar: output nav -->
   <aside class="output-nav">
-    <h3>8 份产出</h3>
+    <h3>研究产出（{{ outputs | length }} 份）</h3>
     <ul>
     {% for out in outputs %}
       <li class="{% if out.key == output_key %}active{% endif %}">

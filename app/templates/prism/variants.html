@@ -22,10 +22,11 @@
     <div class="variant-name">{{ v.name }}</div>
     <div class="variant-meta">
       <span class="badge badge-{{ v.status }}">{{ v.status }}</span>
-      <span class="hint"> · {{ v.stage }}</span>
+      <span class="stage-pill stage-{{ v.progress.state }}">{% if v.progress.state == 'done' %}✅{% endif %}{{ v.progress.label }}</span>
     </div>
     <div class="variant-progress">
-      产出进度：<strong>{{ v.fresh_count }}/{{ v.total_count }}</strong>
+      阶段 <strong>{{ v.progress.phase_index }}/{{ v.progress.total }}</strong>
+      <span class="hint">· {{ v.stage or '未开工' }}</span>
     </div>
   </a>
 {% endfor %}
@@ -54,6 +55,15 @@
   .badge-active { background: #e6f4ea; color: #2d7a3a; }
   .badge-paused { background: #fff3e0; color: #b45309; }
   .badge-archived { background: #f1f5f9; color: #888; }
+  .stage-pill {
+    margin-left: 0.4em; padding: 0.1em 0.5em; border-radius: 3px;
+    font-size: 0.78em; font-weight: 500; border: 1px solid transparent;
+  }
+  .stage-done        { background: #eafaf0; color: #1e8a4c; border-color: #bfe9d0; }
+  .stage-in_progress { background: #e8f1ff; color: #1e5bbf; border-color: #cfe0fb; }
+  .stage-not_started { background: #f1f1f1; color: #888;    border-color: #e0e0e0; }
+  .stage-quarantined { background: #fdecea; color: #c0392b; border-color: #f5c6c0; }
+  .stage-unknown     { background: #fff7e6; color: #9a6b00; border-color: #f0dca8; }
   .hint { color: #888; font-size: 0.85em; }
   .compare-action {
     display: inline-block; margin-left: 1em;
