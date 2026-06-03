@@ -7,12 +7,15 @@
 </head>
 <body>
   {% set _path = request.url.path if request is defined and request else '' %}
-  {% macro _navlink(href, label, extra='') -%}
-    {%- set _active = (_path == '/' if href == '/' else (_path == href or _path.startswith(href + '/'))) -%}
+  {% macro _navlink(href, label, extra='', exclude='') -%}
+    {%- set _under = (_path == href or _path.startswith(href + '/')) -%}
+    {%- set _excluded = (exclude and (_path == exclude or _path.startswith(exclude + '/'))) -%}
+    {%- set _active = ((_path == '/') if href == '/' else (_under and not _excluded)) -%}
     <a href="{{ href }}" class="{{ extra }}{% if _active %}{% if extra %} {% endif %}active{% endif %}">{{ label }}</a>
   {%- endmacro %}
   <nav class="top">
-    {{ _navlink('/prism', '研究', 'brand') }}
+    {{ _navlink('/prism', '研究', 'brand', exclude='/prism/dashboard') }}
+    {{ _navlink('/prism/dashboard', '仪表盘') }}
     {{ _navlink('/financials', '财务') }}
     {{ _navlink('/prices', '行情') }}
     {{ _navlink('/digest', '研报摘要') }}
@@ -34,7 +37,7 @@
       if (pending) {
         pending = false;
         if (pendingTimer) clearTimeout(pendingTimer);
-        const map = { r: '/prism', f: '/financials', p: '/prices', d: '/digest' };
+        const map = { r: '/prism', b: '/prism/dashboard', f: '/financials', p: '/prices', d: '/digest' };
         if (map[e.key]) { e.preventDefault(); go(map[e.key]); }
         return;
       }
