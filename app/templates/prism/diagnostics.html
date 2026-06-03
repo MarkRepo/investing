@@ -15,6 +15,7 @@
 </div>
 
 <div class="diag-tabs">
+  <span class="diag-tabs-label">视图</span>
   <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}">读者向</a>
   <span class="diag-tab active">诊断 / debug</span>
 </div>
@@ -52,13 +53,13 @@
 </section>
 
 {# ── ③ 收料·来源证据 ─────────────────────────────────────────────── #}
-<section class="diag-section">
-  <h2>③ 收料 · 来源证据 <span class="hint">（{{ manifest.materials | length }} 份）</span></h2>
-  <p class="hint legend">图例：<strong>可信</strong> 列对所有料统一可信信号——一手 SEC/财报/电话会 = 一手（最高），官方政策 = 官方，web-search 按 <code>domain_tier</code> 分级。<code>domain_tier</code> 列仅 web-search 料适用，非 web 料显「—」属正常（这些料不走域名分级，可信度由来源性质定）。</p>
+<section class="diag-section" id="collect">
+  <h2>③ 收料 · 来源证据 <span class="hint">（{{ manifest.materials | length }} 份 · 逐份明细）</span></h2>
+  <p class="hint legend">读者向页面只给各类型份数与处理进度汇总；这里是逐份明细。<strong>可信</strong> 列对所有料统一可信信号——一手 SEC/财报/电话会 = 一手（最高），官方政策 = 官方，web-search 按 <code>domain_tier</code> 分级。<code>domain_tier</code> 列仅 web-search 料适用，非 web 料显「—」属正常（这些料不走域名分级，可信度由来源性质定）。<strong>处理</strong> 列 = 是否已被 findings 抽取消化。</p>
   {% if manifest.materials %}
   <table class="data-table diag-table">
     <thead><tr>
-      <th>文件</th><th>类型</th><th>可信</th><th>域名</th><th>domain_tier</th><th>conf.</th><th>addresses</th><th>状态</th>
+      <th>文件</th><th>类型</th><th>可信</th><th>域名</th><th>domain_tier</th><th>conf.</th><th>addresses</th><th>处理</th><th>状态</th>
     </tr></thead>
     <tbody>
     {% for m in manifest.materials %}
@@ -68,10 +69,18 @@
         <td class="fn">{{ m.filename }}</td>
         <td>{{ m.source_type or '—' }}</td>
         <td><span class="tier tier-{{ tr.css }}">{{ tr.label }}</span></td>
-        <td class="dom">{{ sm.domain or '—' }}</td>
+        <td class="dom">{% if sm.url %}<a href="{{ sm.url }}" target="_blank" rel="noopener">{{ sm.domain or sm.url }}</a>{% else %}{{ sm.domain or '—' }}{% endif %}</td>
         <td>{% if sm.domain_tier %}<span class="tier tier-{{ 'official' if 'official' in sm.domain_tier else ('white' if 'whitelist' in sm.domain_tier else 'low') }}">{{ sm.domain_tier }}</span>{% else %}<span class="na">—</span>{% endif %}</td>
         <td>{{ m.confidence if m.confidence is not none else '—' }}</td>
         <td class="addrs">{% for a in (m.addresses or []) %}<code class="addr">{{ a }}</code>{% endfor %}{% if not m.addresses %}—{% endif %}</td>
+        <td class="proc">
+          {% if m.processed %}<span class="proc-yes">✓ 已处理</span>{% else %}<span class="proc-no">○ 未处理</span>{% endif %}
+          {% if m.mineru_state == 'needs' %}<span class="mn-chip mn-needs">mineru?</span>
+          {% elif m.mineru_state == 'done' %}<span class="mn-chip mn-done">md✓</span>
+          {% elif m.mineru_state == 'failed' %}<span class="mn-chip mn-failed">❌</span>
+          {% elif m.mineru_state == 'in_progress' %}<span class="mn-chip mn-prog">⏳</span>
+          {% endif %}
+        </td>
         <td>{% if m.id in expired_ids %}<span class="badge-expired">⚠ 过期</span>{% else %}—{% endif %}</td>
       </tr>
     {% endfor %}
@@ -206,9 +215,11 @@
   .prism-header { margin: 0.5em 0; }
   .prism-header h1 { display: inline; font-size: 1.5em; margin-right: 0.5em; }
   .model-tag { font-size: 0.82em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; }
-  .diag-tabs { display: flex; gap: 0; margin: 1em 0 0.3em; border-bottom: 2px solid #e5e5e5; }
-  .diag-tab { padding: 0.5em 1.1em; font-size: 0.9em; text-decoration: none; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
-  .diag-tab.active { color: #c0392b; font-weight: 600; border-bottom-color: #c0392b; }
+  .diag-tabs { display: flex; align-items: center; gap: 0.1em; margin: 1em 0 0.3em; border-bottom: 2px solid #e5e5e5; }
+  .diag-tabs-label { font-size: 0.78em; color: #aaa; margin-right: 0.5em; }
+  .diag-tab { padding: 0.5em 1.1em; font-size: 0.9em; text-decoration: none; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; border-radius: 4px 4px 0 0; }
+  .diag-tab.active { color: #c0392b; font-weight: 600; background: #fbecec; border-bottom-color: #c0392b; }
+  .diag-tab:not(.active):hover { color: #c0392b; background: #fafafa; }
   .diag-intro { margin: 0.6em 0 1.5em; }
   .diag-section { margin: 2em 0; padding-top: 0.5em; border-top: 1px solid #eee; }
   .diag-section h2 { font-size: 1.1em; color: #333; }
@@ -230,6 +241,13 @@
   .tier-low { background: #f3f3f3; color: #999; }
   .badge-expired { color: #c0392b; font-size: 0.85em; }
   .na { color: #ccc; }
+  .proc .proc-yes { color: #2d7a3a; font-size: 0.85em; }
+  .proc .proc-no { color: #b45309; font-size: 0.85em; }
+  .mn-chip { font-size: 0.7em; padding: 0.05em 0.35em; border-radius: 3px; font-weight: 600; margin-left: 0.3em; font-family: monospace; }
+  .mn-needs { background: #fff3e0; color: #b45309; border: 1px solid #f0d896; }
+  .mn-done { background: #e6f4ea; color: #2d7a3a; border: 1px solid #b7dfc1; }
+  .mn-failed { background: #fdecea; color: #c93434; }
+  .mn-prog { background: #f0f4ff; color: #2a5db0; }
   .legend { background: #f8f9fa; border-left: 3px solid #d0d7de; padding: 0.5em 0.8em; margin: 0.5em 0 1em; line-height: 1.5; }
   .critic-banner { background: #fff8e1; border: 1px solid #fce8b2; border-left: 4px solid #f59e0b; border-radius: 4px; padding: 0.6em 0.9em; margin: 0.5em 0 1em; font-size: 0.9em; }
   .diag-fold { border: 1px solid #eee; border-radius: 4px; margin: 0.5em 0; padding: 0.3em 0.7em; }

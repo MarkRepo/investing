@@ -111,14 +111,16 @@
 {% endif %}
 
 <div class="diag-tabs">
+  <span class="diag-tabs-label">视图</span>
   <span class="diag-tab active">读者向</span>
-  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/diag">诊断 / debug →</a>
+  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/diag">诊断 / debug</a>
 </div>
 <style>
-  .diag-tabs { display: flex; gap: 0; margin: 0.8em 0; border-bottom: 2px solid #e5e5e5; }
-  .diag-tab { padding: 0.4em 1em; font-size: 0.88em; text-decoration: none; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
-  .diag-tab.active { color: #333; font-weight: 600; border-bottom-color: #333; }
-  .diag-tab:not(.active):hover { color: #c0392b; }
+  .diag-tabs { display: flex; align-items: center; gap: 0.1em; margin: 0.8em 0; border-bottom: 2px solid #e5e5e5; }
+  .diag-tabs-label { font-size: 0.78em; color: #aaa; margin-right: 0.5em; }
+  .diag-tab { padding: 0.4em 1em; font-size: 0.88em; text-decoration: none; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; border-radius: 4px 4px 0 0; }
+  .diag-tab.active { color: #333; font-weight: 600; background: #f1f3f5; border-bottom-color: #333; }
+  .diag-tab:not(.active):hover { color: #c0392b; background: #fafafa; }
 </style>
 
 <p class="scope-question">研究问题：<em>{{ topic.scope.question }}</em></p>
@@ -466,46 +468,28 @@
       <p class="mineru-ok">✓ {{ mineru_counts.done }} 份 PDF 已 mineru 转换</p>
       {% endif %}
       {% if manifest.materials %}
-      {% set _source_groups = manifest.materials | groupby('source_type') %}
-      {% for source_type, mats in _source_groups %}
-      <details class="mat-group" open>
-        <summary class="mat-group-head">
-          <span class="mat-group-label">{{ source_type or '未分类' }}</span>
-          <span class="hint"> · {{ mats | list | length }} 份</span>
-        </summary>
-        <ul class="material-list">
-          {% for mat in mats %}
-          <li>
-            <span class="{% if mat.processed %}processed{% else %}unprocessed{% endif %}">
-              {{ mat.filename }}
-            </span>
-            {% if mat.mineru_state == 'needs' %}<span class="mn-chip mn-needs">mineru?</span>
-            {% elif mat.mineru_state == 'done' %}<span class="mn-chip mn-done">md ✓</span>
-            {% elif mat.mineru_state == 'failed' %}<span class="mn-chip mn-failed">❌</span>
-            {% elif mat.mineru_state == 'in_progress' %}<span class="mn-chip mn-prog">⏳</span>
-            {% endif %}
-            {% if mat.source_type == 'web-search' and mat.search_meta %}
-              {% set _conf = mat.confidence or 0 %}
-              {% set _band = 'high' if _conf >= 0.8 else ('mid' if _conf >= 0.5 else 'low') %}
-              <a class="ws-chip ws-{{ _band }}"
-                 href="{{ mat.search_meta.url }}" target="_blank" rel="noopener"
-                 title="{{ mat.search_meta.domain }} · conf={{ '%.2f' % _conf }} · q={{ mat.search_meta.query }}">
-                🌐 web · {{ _band }}
-              </a>
-              {% if mat.search_meta.expire_at and mat.search_meta.expire_at < now_iso %}
-                <span class="ws-chip ws-expired" title="超过 90 天，需重扫">✗ 待重扫</span>
-              {% elif mat.search_meta.stale_at and mat.search_meta.stale_at < now_iso %}
-                <span class="ws-chip ws-stale" title="超过 30 天">⚠ stale</span>
+      {# 汇总：各类型份数 + 处理进度。逐份明细（来源/域名/可信/addresses）移到诊断页 ③，不再重复。 #}
+      <table class="mat-summary-table">
+        <thead><tr><th>类型</th><th>份</th><th>处理</th></tr></thead>
+        <tbody>
+        {% for source_type, mats in manifest.materials | groupby('source_type') %}
+          {% set _mats = mats | list %}
+          {% set _proc = _mats | selectattr('processed') | list | length %}
+          <tr>
+            <td class="mst-type">{{ source_type or '未分类' }}</td>
+            <td class="mst-n">{{ _mats | length }}</td>
+            <td>
+              {% if _proc == _mats | length %}
+                <span class="mst-ok">✓ {{ _proc }}/{{ _mats | length }}</span>
+              {% else %}
+                <span class="mst-partial">{{ _proc }}/{{ _mats | length }}</span>
               {% endif %}
-            {% endif %}
-            {% if mat.addresses %}
-              {% for a in mat.addresses %}<span class="mat-addr">{{ a }}</span>{% endfor %}
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-      </details>
-      {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <a class="mat-detail-link" href="/prism/{{ topic.slug }}/{{ variant }}/diag#collect">逐份来源证据与处理状态 →</a>
       {% else %}
       <p class="hint">暂无资料。运行 workflow 02-gather-materials 后自动更新。</p>
       {% endif %}
@@ -650,11 +634,15 @@
   .todo-archive { opacity: 0.6; }
   .todo-archive .todo-task { text-decoration: line-through; }
   .mat-addr { font-size: 0.68em; padding: 0.05em 0.3em; background: #f0f4ff; color: #2a5db0; border: 1px solid #b8cfe8; border-radius: 3px; margin-left: 0.2em; font-family: monospace; font-weight: 600; }
-  .mat-group { margin: 0.5em 0; }
-  .mat-group-head { cursor: pointer; padding: 0.25em 0; font-size: 0.85em; color: #444; user-select: none; }
-  .mat-group-head:hover { color: #111; }
-  .mat-group-label { font-weight: 600; color: #2a5db0; font-family: monospace; font-size: 0.92em; }
-  .mat-group .material-list { padding-left: 1.5em; margin: 0.3em 0; }
+  .mat-summary-table { border-collapse: collapse; width: 100%; font-size: 0.82em; margin: 0.4em 0 0.3em; }
+  .mat-summary-table th, .mat-summary-table td { padding: 0.3em 0.5em; border-bottom: 1px solid #f0f0f0; text-align: left; }
+  .mat-summary-table th { color: #888; font-weight: 600; font-size: 0.92em; }
+  .mat-summary-table .mst-type { font-family: monospace; color: #2a5db0; }
+  .mat-summary-table .mst-n { color: #555; }
+  .mst-ok { color: #2d7a3a; }
+  .mst-partial { color: #b45309; font-weight: 600; }
+  .mat-detail-link { display: inline-block; margin-top: 0.3em; font-size: 0.82em; color: #2a5db0; text-decoration: none; }
+  .mat-detail-link:hover { text-decoration: underline; }
   .k-progress-strip { margin-top: 0.4em; padding-top: 0.4em; border-top: 1px dashed #f0d896; display: flex; flex-wrap: wrap; gap: 0.35em; align-items: center; font-size: 0.85em; }
   .k-prog-chip { display: inline-flex; align-items: center; gap: 0.25em; font-size: 0.78em; padding: 0.15em 0.5em; border-radius: 3px; font-family: monospace; font-weight: 600; }
   .k-supported { background: #e6f4ea; color: #2d7a3a; border: 1px solid #b7dfc1; }
