@@ -26,6 +26,10 @@
       </li>
     {% endfor %}
     </ul>
+    <nav id="page-toc" class="page-toc" hidden>
+      <h3>本页目录</h3>
+      <ul id="page-toc-list"></ul>
+    </nav>
     <p class="hint nav-back"><a href="/prism/{{ topic.slug }}/{{ variant }}">← 返回仪表盘</a></p>
   </aside>
 
@@ -83,5 +87,101 @@
   .markdown-body pre { background: #f4f4f4; padding: 1em; border-radius: 4px; overflow-x: auto; }
   .markdown-body blockquote { border-left: 3px solid #ddd; margin: 0; padding-left: 1em; color: #666; }
   .hint { color: #888; font-size: 0.85em; }
+
+  /* ── 页内目录（ToC，JS 生成）── */
+  html { scroll-behavior: smooth; }
+  /* 让开 sticky 顶栏(41px)+面包屑，点击跳转/锚点定位时标题不被遮 */
+  .markdown-body :is(h2, h3) { scroll-margin-top: 90px; }
+  .page-toc { margin-top: 1.4em; border-top: 1px solid #eee; padding-top: 0.8em; }
+  .page-toc h3 { font-size: 0.85em; color: #888; margin: 0 0 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
+  .page-toc ul { list-style: none; padding: 0; margin: 0; max-height: calc(100vh - 200px); overflow: auto; }
+  .page-toc li { margin: 0.1em 0; }
+  .page-toc li.lvl-3 { padding-left: 0.9em; }
+  .page-toc a {
+    display: block; padding: 0.18em 0.4em; border-radius: 3px;
+    font-size: 0.85em; color: #555; text-decoration: none;
+    border-left: 2px solid transparent; line-height: 1.35;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .page-toc li.lvl-3 a { font-size: 0.8em; color: #777; }
+  .page-toc a:hover { background: #f2f5fb; color: #2a5db0; }
+  .page-toc a.toc-active { background: #eef3ff; color: #1e4a96; border-left-color: #2a5db0; font-weight: 600; }
 </style>
+
+<script>
+(function () {
+  var body = document.querySelector(".markdown-body");
+  var toc = document.getElementById("page-toc");
+  var list = document.getElementById("page-toc-list");
+  if (!body || !toc || !list) return;
+
+  var heads = Array.prototype.slice.call(body.querySelectorAll("h2, h3"));
+  // 少于 2 个标题不值得目录（短产出自动隐藏）
+  if (heads.length < 2) return;
+
+  function slugify(txt) {
+    return (txt || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[\s　]+/g, "-")          // 空白(含全角)→连字符
+      .replace(/[^\w一-鿿-]/g, "")   // 仅留字母数字下划线/中日韩/连字符
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "") || "sec";
+  }
+
+  var seen = {};
+  var links = [];
+  heads.forEach(function (h) {
+    var text = (h.textContent || "").trim();
+    if (!text) return;
+    if (!h.id) {
+      var base = slugify(text), id = base, n = 1;
+      while (seen[id] || document.getElementById(id)) { n += 1; id = base + "-" + n; }
+      h.id = id;
+    }
+    seen[h.id] = true;
+
+    var li = document.createElement("li");
+    li.className = h.tagName === "H3" ? "lvl-3" : "lvl-2";
+    var a = document.createElement("a");
+    a.href = "#" + h.id;
+    a.textContent = text;
+    a.title = text;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push({ a: a, head: h });
+  });
+  if (!links.length) return;
+  toc.hidden = false;
+
+  // 滚动高亮（scrollspy）：取当前在视口上半区最靠下的标题
+  var byId = {};
+  links.forEach(function (l) { byId[l.head.id] = l.a; });
+  var activeA = null;
+  function setActive(a) {
+    if (a === activeA) return;
+    if (activeA) activeA.classList.remove("toc-active");
+    activeA = a;
+    if (activeA) activeA.classList.add("toc-active");
+  }
+  var visible = {};
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) visible[e.target.id] = e.boundingClientRect.top;
+      else delete visible[e.target.id];
+    });
+    var ids = Object.keys(visible);
+    if (ids.length) {
+      ids.sort(function (x, y) { return visible[x] - visible[y]; });
+      setActive(byId[ids[0]]);
+    }
+  }, { rootMargin: "-80px 0px -70% 0px", threshold: 0 });
+  links.forEach(function (l) { io.observe(l.head); });
+
+  // 点击：立即高亮（平滑滚动交给 CSS scroll-behavior）
+  links.forEach(function (l) {
+    l.a.addEventListener("click", function () { setActive(l.a); });
+  });
+})();
+</script>
 {% endblock %}

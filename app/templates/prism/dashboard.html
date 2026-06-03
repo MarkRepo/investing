@@ -1,13 +1,20 @@
 {% extends "base.html" %}
 {% block title %}投资仪表盘{% endblock %}
+{% block main_class %}wide{% endblock %}
 {% block content %}
-<div class="dash-header">
-  <h1>投资仪表盘</h1>
-  <a href="/prism/dashboard?refresh=true" class="refresh-btn">🔄 刷新</a>
-  <button id="monitor-run-btn" class="monitor-btn">🔍 立即巡检</button>
-  <a href="/prism" class="back-link">← 研究列表</a>
-</div>
+<div id="dash-layout" class="dash-layout">
+<aside class="dash-rail">
+  <a href="/prism" class="rail-back">← 研究主题</a>
+  <nav id="dash-tabs" class="dash-tabs" hidden></nav>
+  <a href="/prism/dashboard?refresh=true" class="refresh-btn rail-refresh">🔄 刷新数据</a>
+</aside>
+<div class="dash-main">
 
+{# 「监控总览」=巡检/刷新 + 两个交互监控面板,作为 tab 之一(默认落点);JS 把它当首个面板挂到 tab 上 #}
+<div class="dash-panel" id="panel-monitor" data-group="monitor" data-count="{{ pending_proposals|length }}">
+<div class="monitor-actions">
+  <button id="monitor-run-btn" class="monitor-btn">🔍 立即巡检</button>
+</div>
 {# ── 正在监控(关注清单)──────────────────────────────────────── #}
 <div class="monitor-panel">
   <div class="monitor-panel-head">
@@ -83,8 +90,11 @@
   <p class="monitor-empty">当前无待确认翻牌。</p>
   {% endif %}
 </div>
+</div><!-- /#panel-monitor -->
 
 <div class="dash-body">{{ body_html | safe }}</div>
+</div><!-- /.dash-main -->
+</div><!-- /#dash-layout -->
 
 <script>
 (function () {
@@ -107,7 +117,7 @@
       runBtn.textContent = "巡检中…(可能拉起后台判读)";
       try {
         const r = await post("/prism/monitor/run", {});
-        if (r.ok) { location.reload(); }
+        if (r.ok) { try { localStorage.setItem("prism-dash-tab", "monitor"); } catch (e) {} location.reload(); }
         else { alert("巡检失败"); runBtn.disabled = false; runBtn.textContent = "🔍 立即巡检"; }
       } catch (e) {
         alert("巡检请求失败: " + e.message);
@@ -145,9 +155,110 @@
 })();
 </script>
 
+<script>
+// ── dashboard 正文按 H2 分组成 tab 子页（纯客户端，无 JS 时回退为纵向平铺）──
+(function () {
+  var dashBody = document.querySelector(".dash-body");
+  var tabBar = document.getElementById("dash-tabs");
+  if (!dashBody || !tabBar) return;
+
+  var TABS = [
+    { id: "monitor",    label: "🎯 监控总览" },
+    { id: "decisions",  label: "📋 决策" },
+    { id: "companies",  label: "🏢 公司详情" },
+    { id: "industries", label: "🏭 行业 → 竞技场" },
+    { id: "arenas",     label: "🥊 竞技场排名" },
+    { id: "themes",     label: "🧩 主题 & 数据" },
+  ];
+
+  // H2 文本 → tab 组（按优先序，独占词先判，避免「公司/竞技场」子串歧义；null=丢弃）
+  function groupFor(t) {
+    if (t.indexOf("待确认") >= 0) return null;            // 与顶部交互面板重复 → 丢弃
+    if (t.indexOf("决策清单") >= 0 || t.indexOf("Kill") >= 0 || t.indexOf("路标") >= 0) return "decisions";
+    if (t.indexOf("公司详情") >= 0) return "companies";
+    if (t.indexOf("行业层") >= 0) return "industries";
+    if (t.indexOf("竞技场层") >= 0) return "arenas";
+    return "themes";                                       // 跨层聚合 / 数据过期 / 兜底
+  }
+
+  var panels = {}, counts = {};
+
+  // 「投资仪表盘」=顶部两个交互监控面板(静态 HTML,在 dash-body 之外),挂成首个 tab——不再常显
+  var monitorPanel = document.getElementById("panel-monitor");
+  if (monitorPanel) {
+    panels["monitor"] = monitorPanel;
+    counts["monitor"] = parseInt(monitorPanel.dataset.count || "0", 10) || 0;
+  }
+
+  // 按 H2 边界切段（H2 的兄弟节点为直接子节点）
+  var sections = [], cur = null;
+  Array.prototype.slice.call(dashBody.children).forEach(function (node) {
+    if (node.tagName === "H2") { cur = { group: groupFor(node.textContent || ""), nodes: [node] }; sections.push(cur); }
+    else if (cur) { cur.nodes.push(node); }   // 首个 H2 前的前言节点保持原位
+  });
+
+  sections.forEach(function (s) {
+    if (!s.group) { s.nodes.forEach(function (n) { n.remove(); }); return; }
+    if (!panels[s.group]) {
+      var p = document.createElement("div");
+      p.className = "dash-panel"; p.dataset.group = s.group;
+      panels[s.group] = p; counts[s.group] = 0;
+      dashBody.appendChild(p);
+    }
+    s.nodes.forEach(function (n) {
+      if (n.tagName === "H3") counts[s.group] += 1;
+      panels[s.group].appendChild(n);            // appendChild 会把节点从原位移走
+    });
+  });
+
+  var present = TABS.filter(function (t) { return panels[t.id]; });
+  if (!present.length) return;
+
+  var btns = {};
+  function activate(id) {
+    present.forEach(function (t) {
+      var on = t.id === id;
+      panels[t.id].hidden = !on;
+      btns[t.id].classList.toggle("active", on);
+    });
+    try { localStorage.setItem("prism-dash-tab", id); } catch (e) {}
+  }
+
+  present.forEach(function (t) {
+    var b = document.createElement("button");
+    b.className = "dash-tab"; b.type = "button";
+    b.innerHTML = t.label + (counts[t.id] ? ' <span class="tab-count">' + counts[t.id] + "</span>" : "");
+    b.addEventListener("click", function () {
+      activate(t.id);
+      history.replaceState(null, "", "#tab-" + t.id);   // 深链，不触发滚动
+    });
+    tabBar.appendChild(b);
+    btns[t.id] = b;
+  });
+  tabBar.hidden = false;
+  var layout = document.getElementById("dash-layout");
+  if (layout) layout.classList.add("with-rail");   // 切到「sticky 侧栏 + 正文」两列
+
+  // 初始 tab：hash > localStorage > 第一个
+  var active = null;
+  var hash = (location.hash || "").replace(/^#tab-/, "");
+  present.forEach(function (t) { if (t.id === hash) active = t.id; });
+  if (!active) { var saved = null; try { saved = localStorage.getItem("prism-dash-tab"); } catch (e) {}
+    present.forEach(function (t) { if (t.id === saved) active = t.id; }); }
+  // 默认落在首个 tab(监控总览)
+  if (!active) active = present[0].id;
+  activate(active);
+})();
+</script>
+
 <style>
-  .dash-header { display: flex; align-items: center; gap: 0.75em; margin-bottom: 0.5em; }
-  .dash-header h1 { margin: 0; flex: 1; }
+  /* 侧栏：返回链 + tab 列表(监控总览也是其中一项)——纯导航 */
+  .dash-rail { position: sticky; top: 50px; align-self: start; display: flex; flex-direction: column; gap: 0.55em; }
+  .rail-back { font-size: 0.8em; color: #888; text-decoration: none; }
+  .rail-back:hover { color: #2a5db0; }
+  /* 刷新=整页重算,全局动作,放侧栏底部;巡检=监控专属,放「监控总览」tab 内顶部 */
+  .rail-refresh { width: 100%; text-align: center; box-sizing: border-box; margin-top: 0.4em; }
+  .monitor-actions { display: flex; gap: 8px; margin-bottom: 0.75em; }
   .refresh-btn {
     display: inline-block; padding: 0.3em 0.8em;
     background: #2a5db0; color: #fff; border-radius: 4px;
@@ -185,8 +296,6 @@
   .mini-btn.confirm-one { border-color: #1a7f5a; color: #1a7f5a; }
   .mini-btn.discard-one { border-color: #c0392b; color: #c0392b; }
   .thesis-review { font-size: 0.85em; color: #b45309; background: #fff7ed; padding: 6px 10px; border-radius: 4px; }
-  .back-link { font-size: 0.85em; color: #888; text-decoration: none; }
-  .back-link:hover { color: #333; }
   .dash-body table { border-collapse: collapse; width: 100%; font-size: 0.88em; margin: 0.75em 0; }
   .dash-body th, .dash-body td { border: 1px solid #e0e0e0; padding: 6px 10px; text-align: left; }
   .dash-body th { background: #f5f5f5; font-weight: 600; }
@@ -198,5 +307,36 @@
   .dash-body a { color: #2a5db0; }
   .dash-body ul { padding-left: 1.4em; }
   .dash-body li { margin: 0.3em 0; font-size: 0.9em; }
+
+  /* ── 正文分页 tab（JS 生成；header+tab 同处侧边 sticky rail，不随页面滚动）── */
+  .dash-layout.with-rail { display: grid; grid-template-columns: 200px 1fr; gap: 1.6em; align-items: start; }
+  .dash-main { min-width: 0; }   /* 防止宽表把 grid 撑破 */
+  .dash-tabs { display: flex; flex-direction: column; gap: 3px; }
+  .dash-tab {
+    padding: 0.5em 0.8em; cursor: pointer; font-size: 0.9em; text-align: left; width: 100%;
+    background: #f6f7f9; color: #555; border: 1px solid #e0e0e0;
+    border-left: 3px solid transparent; border-radius: 5px; line-height: 1.4;
+    display: flex; align-items: center; justify-content: space-between; gap: 0.4em;
+  }
+  .dash-tab:hover { background: #eef2f8; color: #2a5db0; }
+  .dash-tab.active {
+    background: #fff; color: #1e4a96; font-weight: 600;
+    border-color: #cdd9ee; border-left-color: #2a5db0;
+  }
+  .dash-tab .tab-count {
+    flex: 0 0 auto; min-width: 1.4em; padding: 0 0.35em;
+    font-size: 0.76em; line-height: 1.5; text-align: center;
+    background: #e3e9f4; color: #44638f; border-radius: 9px;
+  }
+  .dash-tab.active .tab-count { background: #2a5db0; color: #fff; }
+  .dash-panel[hidden] { display: none; }
+  /* 窄屏：rail 退回顶部横排，不再 sticky */
+  @media (max-width: 800px) {
+    .dash-layout.with-rail { grid-template-columns: 1fr; }
+    .dash-rail { position: static; }
+    .rail-refresh { width: auto; }
+    .dash-tabs { flex-direction: row; flex-wrap: wrap; margin-bottom: 0.8em; }
+    .dash-tab { width: auto; }
+  }
 </style>
 {% endblock %}
