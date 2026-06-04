@@ -90,7 +90,7 @@ print(f'已登记 {len(items)} 项父级复用')
 "
 ```
 
-mat_id 从父 topic `manifest.yaml` 拿（`prism/topics/{父slug}/{父variant}/manifest.yaml`），filename 不重要，链接通过 mat_id。变体名用全 model-id 式（如 `claude-opus-4-8`）；父历史目录若是旧写法（`opus4.8`），读时会经 `model_registry.same_model` 自动桥接。
+mat_id 从父 topic `manifest.yaml` 拿（`prism/topics/{父slug}/{父variant}/manifest.yaml`），filename 不重要，链接通过 mat_id。变体名以 `model_registry` 规范名为准（opus 4.8 为短名 `opus4.8`，其余全 model-id 式）；父历史目录若是旧写法（如 `claude-opus-4-8`），读时会经 `model_registry.same_model` 自动桥接。
 
 ---
 

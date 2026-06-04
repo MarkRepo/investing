@@ -15,13 +15,13 @@ from prism.scripts import model_registry as mr
 # --- canonical / is_known / rank -------------------------------------------
 
 def test_canonical_alias_to_canonical():
-    assert mr.canonical("opus4.8") == "claude-opus-4-8"
-    assert mr.canonical("opus-4.8") == "claude-opus-4-8"
-    assert mr.canonical("opus4.7") == "claude-opus-4-7"
+    assert mr.canonical("opus4.8") == "opus4.8"                    # 规范名自身（短名）
+    assert mr.canonical("opus-4.8") == "opus4.8"                   # 别名 → 规范名
+    assert mr.canonical("claude-opus-4-8") == "opus4.8"           # 旧 model-id 现为别名
+    assert mr.canonical("opus4.7") == "claude-opus-4-7"           # 其余模型仍全 model-id 规范名
 
 
 def test_canonical_passthrough_unknown():
-    assert mr.canonical("claude-opus-4-8") == "claude-opus-4-8"   # 规范名自身
     assert mr.canonical("totally-unknown") == "totally-unknown"   # 未登记原样返回
 
 

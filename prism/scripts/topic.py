@@ -296,7 +296,7 @@ def create_topic(
               file=sys.stderr)
     elif not model_registry.is_known(variant):
         print(f"ℹ 变体 {variant!r} 未登记于 model_registry，建议加入以便父引用兜底"
-              f"（命名建议用全 model-id 式，如 'claude-opus-4-8'）", file=sys.stderr)
+              f"（命名参照表中已登记规范名，如 'opus4.8' / 'claude-opus-4-7'）", file=sys.stderr)
     if topic_type == "company" and not ticker:
         raise ValueError(
             "topic_type='company' 必须传 ticker (格式: '{EXCHANGE}_{CODE}'，如 'SSE_688331' / 'HKEX_09995' / 'US_AAPL'). "

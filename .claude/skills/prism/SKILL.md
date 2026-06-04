@@ -32,8 +32,8 @@ allowed-tools: Bash Read Write
 ## Python Scripts（仅用于 CRUD，零 LLM 调用）
 
 ```bash
-# 创建 topic（variant 用全 model-id 式，如 'claude-opus-4-8'；别名 'opus4.8' 会被 model_registry 自动归一）
-python3 -c "from prism.scripts.topic import create_topic; create_topic('slug', '显示名', 'industry', '研究问题', 'CN', 'deep', 'claude-opus-4-8')"
+# 创建 topic（variant 以 model_registry 规范名为准，如 'opus4.8'；旧别名 'claude-opus-4-8' 会被自动归一）
+python3 -c "from prism.scripts.topic import create_topic; create_topic('slug', '显示名', 'industry', '研究问题', 'CN', 'deep', 'opus4.8')"
 
 # 读 topic
 python3 -c "from prism.scripts.topic import read_topic; import json; print(json.dumps(read_topic('slug'), ensure_ascii=False, indent=2))"

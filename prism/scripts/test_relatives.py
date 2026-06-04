@@ -221,11 +221,11 @@ def test_set_parent_materials_resolves_omitted_variant_confident():
         topic_io.create_topic("ind", "行业", "industry", "Q", "CN", "deep",
                               "claude-opus-4-7")
         topic_io.create_topic("co", "公司", "company", "Q", "CN", "deep",
-                              "claude-opus-4-8", ticker="SZSE_002460", short_name="赣锋")
-        topic_io.set_parent_materials("co", "claude-opus-4-8", [
+                              "opus4.8", ticker="SZSE_002460", short_name="赣锋")
+        topic_io.set_parent_materials("co", "opus4.8", [
             {"parent_slug": "ind", "mat_id": "mat-x"},   # 省略 parent_variant
         ])
-        pm = topic_io.read_topic("co", "claude-opus-4-8")["parent_materials"]
+        pm = topic_io.read_topic("co", "opus4.8")["parent_materials"]
         assert pm[0]["parent_variant"] == "claude-opus-4-7"   # 父唯一变体被自动选中
     print("✓ test_set_parent_materials_resolves_omitted_variant_confident")
 
@@ -249,27 +249,27 @@ def test_set_parent_materials_raises_when_not_confident():
 
 
 def test_findings_read_bridges_naming_split():
-    """读时安全网：声明的父变体 claude-opus-4-8 目录不存在，但父有历史 opus4.8 目录
+    """读时安全网：声明的父变体 opus4.8 目录不存在，但父有历史 claude-opus-4-8 目录
     （same_model）→ list_all_findings 经桥接读到父 finding。"""
     with _sandbox() as root:
-        # 子 topic（规范名变体）
+        # 子 topic（规范名变体 opus4.8）
         topic_io.create_topic("co", "公司", "company", "Q", "CN", "deep",
-                              "claude-opus-4-8", ticker="SZSE_002460", short_name="赣锋")
-        # 父历史目录名 opus4.8（手建，绕过 create_topic 归一以模拟历史分裂）
-        pdir = root / "topics" / "ind" / "opus4.8"
+                              "opus4.8", ticker="SZSE_002460", short_name="赣锋")
+        # 父历史目录名 claude-opus-4-8（手建，绕过 create_topic 归一以模拟历史分裂）
+        pdir = root / "topics" / "ind" / "claude-opus-4-8"
         (pdir / "outputs").mkdir(parents=True)
         (pdir / "topic.yaml").write_text("slug: ind\ntype: industry\n", encoding="utf-8")
         (pdir / "outputs" / "findings_mat-p1.md").write_text(
             "---\naddresses:\n  - K1\n---\n- 父数据点\n", encoding="utf-8")
-        # 子引用：显式写规范名 parent_variant（与磁盘 opus4.8 不一致，靠读时 same_model 桥接）
-        topic_io.set_parent_materials("co", "claude-opus-4-8", [
-            {"parent_slug": "ind", "parent_variant": "claude-opus-4-8",
+        # 子引用：显式写规范名 parent_variant（与磁盘 claude-opus-4-8 不一致，靠读时 same_model 桥接）
+        topic_io.set_parent_materials("co", "opus4.8", [
+            {"parent_slug": "ind", "parent_variant": "opus4.8",
              "mat_id": "mat-p1", "addresses": ["K1"]},
         ])
-        items = findings_io.list_all_findings("co", "claude-opus-4-8")
+        items = findings_io.list_all_findings("co", "opus4.8")
         reuse = [x for x in items if x["reuse"]]
-        assert len(reuse) == 1, "应经 same_model 桥接读到历史 opus4.8 目录的父 finding"
-        assert reuse[0]["source_variant"] == "opus4.8"
+        assert len(reuse) == 1, "应经 same_model 桥接读到历史 claude-opus-4-8 目录的父 finding"
+        assert reuse[0]["source_variant"] == "claude-opus-4-8"
         assert "K1" in reuse[0]["addresses"]
     print("✓ test_findings_read_bridges_naming_split")
 

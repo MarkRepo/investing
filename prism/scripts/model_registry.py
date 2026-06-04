@@ -1,8 +1,10 @@
 """模型登记表 — 变体名（= 目录名 = 路径身份）的规范化与父变体兜底选择。
 
-单一维护点：换模型重研时变体目录名应是模型 id（全 model-id 式）。历史目录命名
-分裂（同一 Opus 4.8 既有 `claude-opus-4-8` 又有 `opus4.8`），靠本表的别名做
-**运行时识别**——绝不重命名磁盘目录、绝不在 `_topic_path`/`_topic_dir` 里归一。
+单一维护点：变体目录名以本表 REGISTRY 的**规范名**为准（key 即规范名）。规范名形态
+按模型而定——opus 4.8 规范名是短名 `opus4.8`（全仓目录已统一为此），其余模型仍用
+全 model-id 式（如 `claude-opus-4-7`/`deepseek-v4-pro`）。历史目录命名分裂（同一
+Opus 4.8 既有 `opus4.8` 又有旧 `claude-opus-4-8`），靠本表的别名做 **运行时识别**
+——绝不重命名磁盘目录、绝不在 `_topic_path`/`_topic_dir` 里归一。
 
 零副作用、零 LLM。拿不准的判断（多个异模型父该借哪个）由 resolve_parent_variant
 返回 confident=False + candidates，交主 agent 在对话里问用户。
@@ -13,7 +15,7 @@ from __future__ import annotations
 
 # 规范名 → {aliases, rank}。rank 越大越优先作兜底（借异模型父时取最高）。
 REGISTRY: dict[str, dict] = {
-    "claude-opus-4-8": {"aliases": ["opus4.8", "opus-4.8"],     "rank": 100},
+    "opus4.8":         {"aliases": ["claude-opus-4-8", "opus-4.8"], "rank": 100},
     "claude-opus-4-7": {"aliases": ["opus4.7", "opus-4.7"],     "rank": 90},
     "deepseek-v4-pro": {"aliases": ["deepseek-v4", "deepseek"], "rank": 70},
     "gpt-5-4":         {"aliases": ["gpt-5.4", "gpt5.4"],       "rank": 60},
