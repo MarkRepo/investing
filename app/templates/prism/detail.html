@@ -228,11 +228,7 @@
   <div class="thesis-history-strip hint">
     历史版本：
     {% for v in thesis_versions %}
-      {% if v == _cur_v %}
-        <span class="v-current">v{{ v }}</span>
-      {% else %}
-        <a href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ v }}">v{{ v }}</a>
-      {% endif %}
+      <a href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ v }}" class="{% if v == _cur_v %}v-current{% endif %}">v{{ v }}</a>
       {% if not loop.last %}<span class="sep">·</span>{% endif %}
     {% endfor %}
   </div>

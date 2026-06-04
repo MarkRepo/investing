@@ -83,7 +83,35 @@ user_todos:
   - K1
   - K3
   source_hint: 已在 materials/ (20-F + 8 份业绩会)
-  status: pending
+  status: in_progress
+  covered_by:
+  - mat-06dbbe
+  - mat-0bdd4a
+  - mat-0ffd64
+  - mat-11c36c
+  - mat-2c176f
+  - mat-4cd7c2
+  - mat-50b810
+  - mat-59e553
+  - mat-6ade20
+  - mat-6dcbc7
+  - mat-70d868
+  - mat-7d7192
+  - mat-86ee7f
+  - mat-893e97
+  - mat-90188c
+  - mat-a8b5c1
+  - mat-a8e4f0
+  - mat-b01cff
+  - mat-bf5de0
+  - mat-c7897f
+  - mat-d2f5c8
+  - mat-e46f41
+  coverage_note: web-search mat-11c36c, mat-50b810, mat-2c176f, mat-d2f5c8, mat-6dcbc7,
+    mat-90188c, mat-7d7192, mat-0ffd64, mat-893e97, mat-bf5de0, mat-70d868, mat-86ee7f,
+    mat-a8e4f0, mat-c7897f, mat-0bdd4a, mat-4cd7c2, mat-06dbbe, mat-6ade20, mat-e46f41,
+    mat-b01cff, mat-a8b5c1, mat-59e553 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
+    材料才闭环（未 done）
 - task: (残留 gap) FUTU Q1 2026 业绩(2026-05-28 披露)：大陆收入拆分/罚没是否计提/Q1 付费户净增
   priority: P0
   info_tier: public
@@ -91,21 +119,82 @@ user_todos:
   - K1
   - K4
   source_hint: 晚于资料收集日，本轮未入库；下次监控补
-  status: pending
+  status: done
+  covered_by:
+  - mat-06dbbe
+  - mat-0bdd4a
+  - mat-0ffd64
+  - mat-11c36c
+  - mat-1d2c54
+  - mat-2c176f
+  - mat-4cd7c2
+  - mat-50b810
+  - mat-6ade20
+  - mat-6dcbc7
+  - mat-70d868
+  - mat-7d7192
+  - mat-86ee7f
+  - mat-893e97
+  - mat-90188c
+  - mat-a8b5c1
+  - mat-a8e4f0
+  - mat-b01cff
+  - mat-bf5de0
+  - mat-c7897f
+  - mat-d2f5c8
+  - mat-e46f41
+  coverage_note: 已由 web-search mat-11c36c, mat-50b810, mat-2c176f, mat-d2f5c8, mat-6dcbc7,
+    mat-90188c, mat-7d7192, mat-0ffd64, mat-893e97, mat-bf5de0, mat-70d868, mat-86ee7f,
+    mat-a8e4f0, mat-c7897f, mat-0bdd4a, mat-4cd7c2, mat-06dbbe, mat-6ade20, mat-e46f41,
+    mat-b01cff, mat-a8b5c1, mat-1d2c54 覆盖
 - task: (已收·待析) CSRC/HKMA/CAC 跨境券商监管全时间线 + 2 年整治细则
   priority: P0
   info_tier: public
   addresses:
   - K2
   source_hint: 已在 materials/ (CSRC 归档+CAC+6-K+6 篇新闻)
-  status: pending
+  status: done
+  covered_by:
+  - mat-0bdd4a
+  - mat-1052f2
+  - mat-11c36c
+  - mat-1d2c54
+  - mat-2c176f
+  - mat-4cd7c2
+  - mat-5cb9b8
+  - mat-8d7301
+  - mat-a8e4f0
+  - mat-b01cff
+  - mat-c7897f
+  - mat-d2f5c8
+  - mat-e1bfc3
+  - mat-e46f41
+  coverage_note: 已由 web-search mat-11c36c, mat-2c176f, mat-d2f5c8, mat-a8e4f0, mat-8d7301,
+    mat-1052f2, mat-c7897f, mat-0bdd4a, mat-4cd7c2, mat-e1bfc3, mat-e46f41, mat-b01cff,
+    mat-1d2c54, mat-5cb9b8 覆盖
 - task: (已收·待析) 同业 10-K/10-Q：IBKR/HOOD/SCHW/TIGR 估值+take rate+ARPU 五维对比
   priority: P1
   info_tier: public
   addresses:
   - K6
   source_hint: 已在 materials/ (8 份同业 SEC 文件)
-  status: pending
+  status: done
+  covered_by:
+  - mat-06dbbe
+  - mat-144f35
+  - mat-1c542a
+  - mat-2787c0
+  - mat-2c176f
+  - mat-59f0b8
+  - mat-5ab026
+  - mat-a596c8
+  - mat-a8b5c1
+  - mat-b01cff
+  - mat-c6d9d7
+  - mat-d2f5c8
+  coverage_note: 已由 web-search mat-5ab026, mat-a596c8, mat-144f35, mat-59f0b8, mat-2787c0,
+    mat-1c542a, mat-2c176f, mat-d2f5c8, mat-c6d9d7, mat-06dbbe, mat-b01cff, mat-a8b5c1
+    覆盖
 - task: (部分缺) 卖方一致预期/目标价 + 大陆敞口测算 + 利率敏感模型
   priority: P1
   info_tier: half_public
@@ -113,21 +202,84 @@ user_todos:
   - K4
   - K6
   source_hint: market_data 有 PE/价；卖方深度模型未收
-  status: pending
+  status: in_progress
+  covered_by:
+  - mat-06dbbe
+  - mat-0ffd64
+  - mat-144f35
+  - mat-1c542a
+  - mat-1d2c54
+  - mat-2787c0
+  - mat-2c176f
+  - mat-50b810
+  - mat-59f0b8
+  - mat-5ab026
+  - mat-6ade20
+  - mat-6dcbc7
+  - mat-70d868
+  - mat-7d7192
+  - mat-86ee7f
+  - mat-893e97
+  - mat-90188c
+  - mat-a596c8
+  - mat-a8b5c1
+  - mat-b01cff
+  - mat-bf5de0
+  - mat-c6d9d7
+  - mat-d2f5c8
+  coverage_note: web-search mat-5ab026, mat-a596c8, mat-144f35, mat-59f0b8, mat-2787c0,
+    mat-1c542a, mat-50b810, mat-2c176f, mat-d2f5c8, mat-6dcbc7, mat-90188c, mat-7d7192,
+    mat-0ffd64, mat-893e97, mat-bf5de0, mat-70d868, mat-86ee7f, mat-c6d9d7, mat-06dbbe,
+    mat-6ade20, mat-b01cff, mat-a8b5c1, mat-1d2c54 命中 K# 但无事件锚；half_public 深料需事件锚或同
+    source_type 材料才闭环（未 done）
 - task: (已收) 港股 ADV/恒指月度序列(2018-2026) 做佣金 beta 回归
   priority: P1
   info_tier: public
   addresses:
   - K5
   source_hint: 已在 materials/ (3 个 HK_INDEX csv)
-  status: pending
+  status: done
+  covered_by:
+  - mat-0ffd64
+  - mat-1d2c54
+  - mat-59e553
+  - mat-5ada41
+  - mat-5b8637
+  - mat-6dcbc7
+  - mat-70d868
+  - mat-7d7192
+  - mat-86ee7f
+  - mat-893e97
+  - mat-90188c
+  - mat-a1da9c
+  - mat-b01cff
+  - mat-bf5de0
+  coverage_note: 已由 web-search mat-6dcbc7, mat-90188c, mat-7d7192, mat-0ffd64, mat-893e97,
+    mat-bf5de0, mat-70d868, mat-86ee7f, mat-5ada41, mat-5b8637, mat-a1da9c, mat-b01cff,
+    mat-59e553, mat-1d2c54 覆盖
 - task: (可选) 美联储 2026 点阵图/降息路径
   priority: P2
   info_tier: public
   addresses:
   - K4
   source_hint: 公开
-  status: pending
+  status: done
+  covered_by:
+  - mat-0ffd64
+  - mat-1d2c54
+  - mat-50b810
+  - mat-6ade20
+  - mat-6dcbc7
+  - mat-70d868
+  - mat-7d7192
+  - mat-86ee7f
+  - mat-893e97
+  - mat-90188c
+  - mat-b01cff
+  - mat-bf5de0
+  coverage_note: 已由 web-search mat-50b810, mat-6dcbc7, mat-90188c, mat-7d7192, mat-0ffd64,
+    mat-893e97, mat-bf5de0, mat-70d868, mat-86ee7f, mat-6ade20, mat-b01cff, mat-1d2c54
+    覆盖
 monitoring:
   enabled: false
   cadence: daily

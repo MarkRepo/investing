@@ -1072,7 +1072,7 @@ def auto_resolve_todos(slug: str, variant: str, new_mat_ids: list[str]) -> list[
             )
 
     if dirty:
-        topic_io.set_user_todos(slug, todos, variant)
+        topic_io.set_user_todos(slug, todos, variant, _skip_resolve=True)
     return resolved
 
 
