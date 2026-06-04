@@ -548,6 +548,8 @@ print(build_findings_index('{slug}', '{variant}'))
 
 **⚠️ 用 `append_user_todos` 不用 `set_user_todos`**——01/02 写的结构化 todos（含 K# addresses）不能被进度提示覆盖（修 H2）。
 
+**⚠️ 进度播报必须传显式 `status`（修：播报污染"待补料"计数）**——`append_user_todos(['纯字符串'])` 会默认落 `status='pending'`，而 web 详情页把每条 pending 当"⚠️ 待你手工补 N 份资料"。**里程碑播报（已完成的事）传 `status='done'`、进行中播报传 `status='in_progress'`**，绝不让播报落进 pending（pending 仅保留给"用户须去取的真实资料"，那些一律带 `addresses`）。
+
 ```bash
 python3 -c "
 from prism.scripts.topic import set_stage, set_next_actions, append_user_todos
@@ -562,14 +564,14 @@ if counts['unprocessed_actionable'] == 0:
         '说「prism 推进 {slug}」走决策链合成（00_primer 领域入门 + {c/i/a}_case 成稿 + sidecar）',
     ], '{variant}')
     append_user_todos('{slug}', [
-        f'资料提取完成：{counts[\"total\"]} 份全部处理完毕',
+        {'task': f'资料提取完成：{counts[\"total\"]} 份全部处理完毕', 'status': 'done'},
     ], '{variant}')
 else:
     set_next_actions('{slug}', [
         f'还有 {counts[\"unprocessed_actionable\"]} 份可处理资料未处理',
     ], '{variant}')
     append_user_todos('{slug}', [
-        f'资料提取中：{counts[\"processed\"]}/{counts[\"total\"]} 份已处理',
+        {'task': f'资料提取中：{counts[\"processed\"]}/{counts[\"total\"]} 份已处理', 'status': 'in_progress'},
     ], '{variant}')
 "
 ```
@@ -606,7 +608,7 @@ if counts['unprocessed_actionable'] == 0:   # 修 F14：排除 Role α
             '正在更新产出...',
         ], '{variant}')
         append_user_todos('{slug}', [
-            '产出更新中...',
+            {'task': '产出更新中...', 'status': 'in_progress'},
         ], '{variant}')
     else:
         set_next_actions('{slug}', [
@@ -614,14 +616,14 @@ if counts['unprocessed_actionable'] == 0:   # 修 F14：排除 Role α
             '需要时说「prism 推进 {slug}」重跑决策链合成',
         ], '{variant}')
         append_user_todos('{slug}', [
-            '新资料已记录，产出暂未更新',
+            {'task': '新资料已记录，产出暂未更新', 'status': 'done'},
         ], '{variant}')
 else:
     set_next_actions('{slug}', [
         f'还有 {counts[\"unprocessed\"]} 份资料未处理',
     ], '{variant}')
     append_user_todos('{slug}', [
-        f'资料提取中：{counts[\"processed\"]}/{counts[\"total\"]} 份已处理',
+        {'task': f'资料提取中：{counts[\"processed\"]}/{counts[\"total\"]} 份已处理', 'status': 'in_progress'},
     ], '{variant}')
 "
 ```

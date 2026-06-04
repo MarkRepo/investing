@@ -257,13 +257,21 @@ def extract_killer_questions(slug: str, variant: str, version: int) -> list[str]
 def extract_k_status(slug: str, variant: str, version: int) -> dict[str, str]:
     """从 thesis_v{N}.md 解析每个 K# 的验证状态。
 
-    约定（见 04-synthesize/_shared.md 写 thesis_v1 章节）：
-      - 已验证支持 → 'supported'
-      - 已验证反驳 → 'refuted'
-      - 仍未确定   → 'unverified'
+    **真实状态源 = thesis 的「命门 / K# 现状表」第 3 列「置信度」**（04 合成约定）。
+    该列用 00 的置信度词表（高/中/低/uncertain，+ 复合如「中偏强」、描述如「平滑论成立」）。
+    旧实现只 grep「已验证支持/已反驳/待验证」关键字——而 thesis 改用置信度格式后这些词
+    一个都不出现，导致已定调的研究全部兜底 unverified（详情页假报「N 待验证」）。本版改为
+    锚定 K# 表格行、按置信度列判定，并保留散文 + 旧关键字兼容。
 
-    解析策略：在每个 K# 出现位置之后的 ~8 行内查找状态关键字，命中第一个为准。
-    无关键字命中（v0 或不含现状段）→ 'unverified' 兜底，前端可视为「待验证」。
+    判定（每个 K# 优先取「首格为该 K# 的表格行」，无表格行时退回首次出现处的 8 行散文窗口）：
+      1. 显式「已验证支持 / 已支持 / ✓支持」                → 'supported'
+      2. 显式反驳「反驳 / 证伪 / 不成立 / 已破 / 被否决」     → 'refuted'
+      3. 显式未决「uncertain / 待验证 / 未验证 / 未确定」      → 'unverified'
+      4. 否则——表格行（有实质置信度列：高/中/低/强/弱/描述判断）→ 'supported'（已定调）；
+                散文无任何关键字命中（v0 / 不含现状段）        → 'unverified' 兜底
+
+    即：只有「genuine uncertain / 散文未定调」才算待验证；表格里给了置信度判断的命门
+    一律视为已定调（方向由反驳关键字区分）。
 
     返回 {K1: status, K2: status, ...}，仅包含 thesis 中实际出现的 K#。
     """
@@ -273,26 +281,37 @@ def extract_k_status(slug: str, variant: str, version: int) -> dict[str, str]:
         return {}
     raw = path.read_text(encoding="utf-8")
     lines = raw.splitlines()
-    keywords = [
-        ("supported", re.compile(r"已验证支持|已支持|✓\s*支持")),
-        ("refuted", re.compile(r"已验证反驳|已反驳|✗\s*反驳|反驳")),
-        ("unverified", re.compile(r"仍未确定|未确定|待验证|未验证")),
-    ]
+    supported_pat = re.compile(r"已验证支持|已支持|✓\s*支持")
+    refuted_pat = re.compile(r"已验证反驳|已反驳|✗\s*反驳|反驳|证伪|不成立|已破|被否")
+    unverified_pat = re.compile(r"仍未确定|未确定|待验证|未验证|uncertain", re.IGNORECASE)
     ks_in_order = sorted(set(re.findall(r"\bK\d+\b", raw)),
                          key=lambda x: int(x[1:]))
     out: dict[str, str] = {}
     for k in ks_in_order:
-        # locate first occurrence of K#
-        idx = next((i for i, l in enumerate(lines) if re.search(rf"\b{k}\b", l)), None)
-        if idx is None:
-            continue
-        window = "\n".join(lines[idx: idx + 8])
-        status = "unverified"
-        for s, pat in keywords:
-            if pat.search(window):
-                status = s
-                break
-        out[k] = status
+        # 优先锚定「首格为该 K# 的表格行」(| K1 | 维度 | 置信度 | 看空触发 |)，
+        # 避免被散文里更早出现的 K# 引用(如顶部 changelog)误锚到无置信度的行
+        table_idx = next(
+            (i for i, l in enumerate(lines) if re.match(rf"\s*\|\s*{k}\s*\|", l)),
+            None,
+        )
+        if table_idx is not None:
+            scope, is_table = lines[table_idx], True
+        else:
+            idx = next((i for i, l in enumerate(lines) if re.search(rf"\b{k}\b", l)), None)
+            if idx is None:
+                continue
+            scope, is_table = "\n".join(lines[idx: idx + 8]), False
+        if supported_pat.search(scope):
+            out[k] = "supported"
+        elif refuted_pat.search(scope):
+            out[k] = "refuted"
+        elif unverified_pat.search(scope):
+            out[k] = "unverified"
+        elif is_table:
+            # 表格行给了实质置信度(高/中/低/强/弱/描述)但无显式支持/反驳/未决词 → 已定调
+            out[k] = "supported"
+        else:
+            out[k] = "unverified"
     return out
 
 

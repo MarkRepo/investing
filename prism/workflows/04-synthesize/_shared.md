@@ -248,8 +248,10 @@ python3 -c "
 from prism.scripts.topic import read_topic, set_next_actions, append_user_todos
 t = read_topic('{slug}', '{variant}')
 # 仅 append 一条完成提示，不动 01/02 写的结构化 todos（修 H2）
+# 播报传显式 status='done'——不能用纯字符串（默认 pending，会被详情页当"待补料"计数）
 append_user_todos('{slug}', [
-    '全部产出完成（' + str(len(t['outputs_state'])) + ' 份），等待创建子 topic 或进入监控',
+    {'task': '全部产出完成（' + str(len(t['outputs_state'])) + ' 份），等待创建子 topic 或进入监控',
+     'status': 'done'},
 ], '{variant}')
 # 确认 next_actions 不再指向生成产出（next_actions 仍是 list[str]，OK）
 actions = [x for x in t.get('next_actions', []) if '01-08' not in x and '产出' not in x]

@@ -413,8 +413,12 @@
       <h3>你需要做的事</h3>
       {% if topic.user_todos %}
       {% set _tier_labels = {'public': ('公开', 'tier-public'), 'half_public': ('半公开', 'tier-half'), 'hard': ('难获取', 'tier-hard')} %}
-      {% set _pending_todos = topic.user_todos | selectattr('status', 'equalto', 'pending') | list %}
+      {# "待你手工补资料" 只计 pending 且带 addresses 的真实资料请求；
+         无 addresses 的 pending 是进度播报漏写(应为 done/in_progress)，不计入、折叠展示 #}
+      {% set _pending_todos = topic.user_todos | selectattr('status', 'equalto', 'pending') | selectattr('addresses') | list %}
       {% set _other_todos = topic.user_todos | rejectattr('status', 'equalto', 'pending') | list %}
+      {% set _stray_pending = topic.user_todos | selectattr('status', 'equalto', 'pending') | rejectattr('addresses') | list %}
+      {% set _folded_todos = _other_todos + _stray_pending %}
       {% macro _render_todo(todo) %}
         {% set _tier = _tier_labels.get(todo.info_tier, ('—', 'tier-public')) %}
         <li class="todo-item todo-{{ todo.status }}{% if todo.archive_candidate %} todo-archive{% endif %}">
@@ -452,11 +456,11 @@
       <p class="todo-summary">✅ 全部 {{ topic.user_todos | length }} 条待办均已自动处理或进行中</p>
       {% endif %}
 
-      {% if _other_todos %}
+      {% if _folded_todos %}
       <details class="todo-other">
-        <summary>已自动处理 / 进行中 / 已完成（{{ _other_todos | length }} 条）</summary>
+        <summary>已自动处理 / 进行中 / 已完成（{{ _folded_todos | length }} 条）</summary>
         <ul class="todo-list">
-          {% for todo in _other_todos %}{{ _render_todo(todo) }}{% endfor %}
+          {% for todo in _folded_todos %}{{ _render_todo(todo) }}{% endfor %}
         </ul>
       </details>
       {% endif %}
