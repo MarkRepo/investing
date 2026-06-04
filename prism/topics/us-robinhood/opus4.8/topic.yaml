@@ -1,0 +1,312 @@
+slug: us-robinhood
+display_name: Robinhood (HOOD, NASDAQ)
+type: company
+created: '2026-06-04T03:58:47.030177+00:00'
+status: active
+stage: done
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: Robinhood (HOOD) 现价是否值得买入——综合收益多元化（加密/期货/退休金/Gold 订阅）、利润率与利率敏感度、监管风险，给出
+    long/short/中性判断
+  depth: deep
+  ticker: US_HOOD
+  market: US
+  short_name: Robinhood
+  search_terms:
+  - HOOD 估值
+  - 加密收入占比
+  - Gold 订阅 ARPU
+  - 监管 PFOF
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-04T08:01:01.157311+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0bd2d9
+    - mat-0ea800
+    - mat-156e74
+    - mat-1dd165
+    - mat-1ef1f0
+    - mat-3ae8ce
+    - mat-402035
+    - mat-470dc6
+    - mat-4f8182
+    - mat-4ff346
+    - mat-51f1da
+    - mat-6dd3c8
+    - mat-7089e3
+    - mat-79f041
+    - mat-7d7b75
+    - mat-8455d8
+    - mat-84ccf5
+    - mat-aba43c
+    - mat-b47f3b
+    - mat-b8d336
+    - mat-c10716
+    - mat-c9a2c5
+    - mat-d0a459
+    - mat-ddaac6
+    - mat-e5157e
+    - mat-ffdbb4
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-06-04T22:24:57.429008+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0bd2d9
+    - mat-0ea800
+    - mat-151402
+    - mat-156e74
+    - mat-1dd165
+    - mat-1ef1f0
+    - mat-3ae8ce
+    - mat-402035
+    - mat-470dc6
+    - mat-4f8182
+    - mat-4ff346
+    - mat-51f1da
+    - mat-6dd3c8
+    - mat-7089e3
+    - mat-79f041
+    - mat-7d7b75
+    - mat-825d24
+    - mat-8455d8
+    - mat-84ccf5
+    - mat-aba43c
+    - mat-b47f3b
+    - mat-b8d336
+    - mat-c10716
+    - mat-c9a2c5
+    - mat-d0a459
+    - mat-d76b19
+    - mat-ddaac6
+    - mat-e5157e
+    - mat-ffdbb4
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-06-04T22:26:05.774150+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0ea800
+    - mat-1dd165
+    - mat-3ae8ce
+    - mat-470dc6
+    - mat-51f1da
+    - mat-7089e3
+    - mat-7d7b75
+    - mat-aba43c
+    - mat-c9a2c5
+    - mat-d0a459
+    - mat-e5157e
+    - mat-ffdbb4
+    last_error: null
+  08_living_feed:
+    version: 4
+    last_updated: '2026-06-04T22:38:37.543217+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1dd165
+    - mat-470dc6
+    - mat-4ff346
+    - mat-aba43c
+    - mat-b47f3b
+    - mat-c10716
+    - mat-ffdbb4
+    last_error: null
+parent_materials: []
+next_actions:
+- ✅ 05 复评 approve（v2 整体4）→ stage=done，进 06-daily-monitor。监控锚：Q2 2026 财报(~2026/08)
+  验事件合约可持续性+NII趋势+倍数是否压缩
+- 增量补强(非阻断,06触发时补)：给倍数空头(全部edge)加对称证伪 signpost——"连续两季EPS beat+加密/事件合约放量但PE仍≥38x未压缩→认40x结构性、上调base倍数至33x+、buy
+  box上移"，入 07_decision_kit kill_criteria
+- 增量补强：环⑥"等回调$68-74"软化为"回调优先,但Q2平滑论第二季硬验证+倍数未压则可现价分批"——回应高beta跳跃路径踏空右尾风险
+user_todos:
+- task: 确认 PFOF / Order Competition Rule / Reg Best Execution 在 Atkins SEC 下的最新状态（撤回/搁置/仍在）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: SEC.gov 规则页 / 卖方法规 note / HOOD 10-K Item 1A
+  status: done
+  covered_by:
+  - mat-004a95
+  - mat-00ca1d
+  - mat-4d5db4
+  - mat-58c2c3
+  coverage_note: web-search mat-58c2c3, mat-00ca1d, mat-004a95, mat-4d5db4 命中 K# 但无事件锚；half_public
+    深料需事件锚或同 source_type 材料才闭环（未 done）
+- task: 抽 HOOD 收入分部逐季序列（交易 PFOF 拆期权/股票/加密 vs 净利息 vs 订阅 other），建占比趋势
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  - K4
+  source_hint: materials/sec 2026_HOOD_10-Q + 2025_HOOD_10-K item_7_mda + 业绩会
+  status: done
+  covered_by:
+  - mat-d0d146
+  coverage_note: 已由 web-search mat-d0d146 覆盖
+- task: 抽净利息收入(NII)构成 + 利率敏感度披露（每 25bp 影响、sweep/margin/证券出借余额）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 10-Q item_3 quant_risk + 10-K item_7A + 业绩会 Q&A
+  status: in_progress
+  covered_by:
+  - mat-23e58a
+  coverage_note: web-search mat-23e58a 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
+    材料才闭环（未 done）
+- task: 加密收入季度序列 + 占交易收入比 + 与 Coinbase(COIN) 同期加密营收对比
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: HOOD 10-Q + COIN 10-Q(已在 materials/sec) + qz/财报
+  status: done
+  covered_by:
+  - mat-d0d146
+  coverage_note: 已由 web-search mat-d0d146 覆盖
+- task: Gold/退休金/Legend/Banking/Strategies 的订户/AUC/ARPU 与留存数据
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 业绩会 + 10-K item_1 business + IR deck
+  status: in_progress
+  covered_by:
+  - mat-2c556e
+  coverage_note: web-search mat-2c556e 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
+    材料才闭环（未 done）
+- task: 可比公司估值横比（HOOD vs SCHW/IBKR/COIN：PE/PS/ROE/ROIC/历史区间）+ 卖方目标价分布与模型假设
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K6
+  - K2
+  source_hint: market_data + 3-5 份卖方深度(consensus, A合同hard) + 4 套竞品 10-K 已在 materials/sec
+  status: in_progress
+  covered_by:
+  - mat-051048
+  - mat-0aca1a
+  - mat-0bd2d9
+  - mat-0ea800
+  - mat-151402
+  - mat-6c984e
+  - mat-8e1267
+  - mat-a6ce60
+  - mat-c9a2c5
+  - mat-d0a459
+  - mat-d76b19
+  coverage_note: web-search mat-151402, mat-d76b19 命中 K# 但无事件锚；half_public 深料需事件锚或同
+    source_type 材料才闭环（未 done）
+- task: 事件合约(预测市场)交易量序列 + CFTC 监管框架 + 单位经济(费率/Gold 折扣)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K7
+  source_hint: WSJ/业绩会 + CFTC + robinhood event contracts 页
+  status: in_progress
+  covered_by:
+  - mat-398a4f
+  - mat-4df6b7
+  - mat-d0d146
+  - mat-d8bca3
+  coverage_note: web-search mat-398a4f, mat-d8bca3, mat-4df6b7, mat-d0d146 命中 K# 但无事件锚；half_public
+    深料需事件锚或同 source_type 材料才闭环（未 done）
+- task: 管理层 track record + 资本配置史（回购$1.5B授权执行/13起并购回报/Tenev-Verma 激励治理）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 10-K + proxy(DEF 14A) + 并购清单(已在 materials web) — A合同 mgmt-capital-alloc(hard)
+  status: in_progress
+  covered_by:
+  - mat-051048
+  - mat-0aca1a
+  - mat-151402
+  - mat-8e1267
+  - mat-d76b19
+  coverage_note: web-search mat-151402, mat-d76b19 命中 K# 但无事件锚；half_public 深料需事件锚或同
+    source_type 材料才闭环（未 done）
+- task: 历史失败镜鉴：HOOD 2021→2022($38→$7)、COIN 2021→2022 暴跌、嘉信2023现金sorting危机——高beta交易平台volume退潮双杀剧本
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 历史财报/股价 + 复盘文 — A合同 historical-mirror(hard)
+  status: done
+  covered_by:
+  - mat-8e1267
+  coverage_note: 已由 web-search mat-8e1267 覆盖
+- task: 资料提取完成：55 份 actionable 全部处理，findings 索引已重建
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+- task: 全部产出完成（00_primer + c_investment_case + 07_decision_kit + 08_living_feed），等待
+    05 对抗式评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: v2 复评 approve（整体4）：上轮三大致命一击（街口缺口/下行权重无敏感性/-46%回撤）已全闭环；本轮多头反方致命一击「28x单点故障/用错周期可比」经交叉核对为中——反方用trailing+52%，case用前瞻~15%
+    EPS CAGR+监管期权空头+PEG≈2.67化解。残留二处增量(交06跟踪)：①倍数空头缺对称证伪signpost ②"等回调"在beta2.29跳跃路径踏空右尾风险被低估。
+  at: '2026-06-04T22:38:37.530072+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-04T08:10:27.365908+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-04T04:21:13.161125+00:00'
+    summary: 命门1=多元化"平滑论"是否成立(非交易收入对冲交易/加密高beta,中); 命门2=PE34.6+beta2.29估值安全边际(低);
+      命门3=PFOF经济性监管安全(低/uncertain)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-04T08:10:27.365931+00:00'
+    summary: 命门1多元化平滑论:中→偏成立但质变(换尾部非真对冲); 命门2估值:低→中(PE40.2更贵,EV-15%@现价); 命门3 PFOF监管:低→中(近端中和+休眠可复活+2026H2节点)
+    convergence_status: open
+    changelog: 3条命门全置信度更新(命门1凭mat-1dd165 Q1硬验证/命门2凭market_data PE40.2+EV测算/命门3凭mat-c10716/ffdbb4监管定调);命门1从"平滑论真伪"重述为"平滑器质量";primer目标6/7从缺口升为已覆盖、"平滑器质量"并入目标4;无砍/重排/新增独立命门,对照全历史无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-06-04T08:10:27.326341+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-04T04:19:16.534786+00:00'
+    summary: 中性偏多 6/10：Q1-miss（加密-47%）错杀后 PE 从53.6压到34.6/价~$76，非交易引擎（NII+24%/Gold4.3M/平台资产+39%/预测市场88亿张）加速+SEC加密调查关闭，多元化结构性兑现；但beta2.29+倍数不便宜，逢弱分批吸纳非追高
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 83%（5/6，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-04T08:10:27.326361+00:00'
+    summary: 中性偏多6/10(业务方向)+现价不便宜(EV负):扭亏真实+多元化平滑论Q1硬验证,但平滑器是高beta换尾部、NII以量补价降息双杀、PE40.2缺质量支撑;5档EV≈-15%@$82.85为负→等回调至$63-74买入框分批,现价仅试探
+prescan_log:
+- round_at: '2026-06-04T06:27:45.326440+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 9
+  queries_with_hits: 9

@@ -1,16 +1,43 @@
 # 投资仪表盘
 
-> 生成：2026-06-04　　公司：3 个　　行业：2 个　　竞技场：4 个
+> 生成：2026-06-05　　公司：4 个　　行业：2 个　　竞技场：4 个
 
 ## 公司层：决策清单
 
 | 公司 | 当前价 | 当前区间 | 距 Buy 区间 | 仓位上限 | Kill | 近期路标 | 数据新鲜度 |
 |------|--------|---------|-----------|---------|------|---------|----------|
+| [Robinhood (HOOD, NASDAQ)](/prism/us-robinhood/opus4.8) (US_HOOD) | 88.33 | 🔴 高于观望区 | +30% | 试探 (≤1%) / 7% | ✅ | 2 个 | 🟢 0d |
 | [利元亨 (Yuanli Heng, SSE 688499)](/prism/cn-yuanli-heng-688499/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [先导智能 (Leadex, SZSE 300450)](/prism/cn-leadex-300450/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)](/prism/global-futu/opus4.8) (US_FUTU) | 97.39 | 🔵 可建仓 | +15% | 2.5% / 5% | ✅ | 1 个 | 🟢 2d |
+| [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)](/prism/global-futu/opus4.8) (US_FUTU) | 95.78 | 🔵 可建仓 | +13% | 2.5% / 5% | ✅ | 1 个 | 🟢 3d |
 
 ## 公司详情
+
+### Robinhood (HOOD, NASDAQ) (US_HOOD)
+
+**买入框**
+
+| 区间 | 价格 |
+|------|------|
+| 🟢 强力买入 | ≤ 68 |
+| 🔵 可建仓 | 68 – 74 |
+| 🟡 观望 | 74 – 85 |
+| 🔴 高于观望 | > 85 |
+| **当前** | **88.33**（2026-06-04）→ 🔴 高于观望区 |
+
+**估值矩阵**
+
+| 估值模型 | Bull 公允值 | Base 公允值 | Bear 公允值 |
+|---------|----------|----------|----------|
+| 情景EPS×退出倍数(24个月) | 96–129 | 65–76 | 29–46 |
+| 可比横比(HOOD vs SCHW/IBKR/COIN) | 85–100 | 62–72 | 40–55 |
+
+**近期路标（60天内）**
+
+- **2026-08** Q2 2026 财报(事件合约可持续性+NII趋势+EPS vs guidance)  （多：加密下行但总营收仍双位数增长&事件合约持续$100M+&NII同比正 / 空：事件合约回落(Q1为一次性)&NII同比转负&EPS<$0.35）
+- **2026-08** Rule 605订单执行披露首次适用RHF/RHS+小单报价透明化累积效应  （多：PFOF经济性无显著受损 / 空：价差收窄、PFOF返佣下降）
+
+---
 
 ### 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) (US_FUTU)
 
@@ -22,7 +49,7 @@
 | 🔵 可建仓 | 85 – 120 |
 | 🟡 观望 | 120 – 150 |
 | 🔴 高于观望 | > 150 |
-| **当前** | **97.39**（2026-06-03）→ 🔵 可建仓 |
+| **当前** | **95.78**（2026-06-04）→ 🔵 可建仓 |
 
 **估值矩阵**
 
@@ -44,6 +71,8 @@
 
 ## ⏰ 路标日历（60 天内）
 
+- **2026-08** [Robinhood (HOOD, NASDAQ)] Q2 2026 财报(事件合约可持续性+NII趋势+EPS vs guidance)
+- **2026-08** [Robinhood (HOOD, NASDAQ)] Rule 605订单执行披露首次适用RHF/RHS+小单报价透明化累积效应
 - **2026-Q2** [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)] 2026 Q2 业绩会披露大陆口径 + 罚没是否计提
 
 ## 🔔 待确认监控翻牌
@@ -52,7 +81,7 @@
 
 ## 行业层：竞技场选择
 
-### 人形机器人行业 (Global Humanoid Robot) [🟢 2d]
+### 人形机器人行业 (Global Humanoid Robot) [🟢 3d]
 
 **深度研究竞技场（Deep）**
 
@@ -74,7 +103,7 @@
 
 ---
 
-### 中国创新药行业 [🟢 4d]
+### 中国创新药行业 [🟢 5d]
 
 **深度研究竞技场（Deep）**
 
@@ -103,7 +132,7 @@
 
 ---
 
-### 全球固态电池设备链（卖铲人漏斗） [🟢 2d]
+### 全球固态电池设备链（卖铲人漏斗） [🟢 3d]
 
 **入围（Shortlist）**
 
@@ -140,6 +169,10 @@
 
 | 主题标签 | 涉及研究 | 数量 |
 |---------|---------|------|
+| `us-brokerage` | Robinhood (HOOD, NASDAQ) | 1 |
+| `retail-fintech` | Robinhood (HOOD, NASDAQ) | 1 |
+| `crypto-trading` | Robinhood (HOOD, NASDAQ) | 1 |
+| `prediction-markets` | Robinhood (HOOD, NASDAQ) | 1 |
 | `china-adr` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
 | `internet-brokerage` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
 | `hk-fintech` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |

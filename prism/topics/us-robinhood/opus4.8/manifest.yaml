@@ -1,0 +1,1488 @@
+slug: us-robinhood
+variant: opus4.8
+updated: '2026-06-04T11:58:23.707007+00:00'
+materials:
+- id: mat-65dd76
+  filename: 2025_COIN_10-K_2026-02-12.htm
+  source_type: annual-report
+  added: '2026-06-04T04:09:18.844384+00:00'
+  processed: true
+  notes: 复用 slug 级 SEC 抽取（2026-05 财报季收）— COIN 10-K
+  mineru_state: not_needed
+- id: mat-08f4f1
+  filename: sec/2025_COIN_10-K_2026-02-12/item_1_business.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.846639+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-65dd76
+  sec_section: item_1_business
+- id: mat-2b2b99
+  filename: sec/2025_COIN_10-K_2026-02-12/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.847429+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-65dd76
+  sec_section: item_1a_risk
+- id: mat-8455d8
+  filename: sec/2025_COIN_10-K_2026-02-12/item_7_mda.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.848506+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-65dd76
+  sec_section: item_7_mda
+- id: mat-70ac96
+  filename: sec/2025_COIN_10-K_2026-02-12/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.849910+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-65dd76
+  sec_section: item_7a_quant_risk
+- id: mat-615df7
+  filename: sec/2025_COIN_10-K_2026-02-12/item_8_financial.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.851598+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-65dd76
+  sec_section: item_8_financial
+- id: mat-d7e2f5
+  filename: 2025_HOOD_10-K_2026-02-18.htm
+  source_type: annual-report
+  added: '2026-06-04T04:09:18.853595+00:00'
+  processed: true
+  notes: 复用 slug 级 SEC 抽取（2026-05 财报季收）— HOOD 10-K
+  mineru_state: not_needed
+- id: mat-84ccf5
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_1_business.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.859139+00:00'
+  processed: true
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-d7e2f5
+  sec_section: item_1_business
+  rings:
+  - biz-moat-unit-econ
+- id: mat-ffdbb4
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.861695+00:00'
+  processed: true
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-d7e2f5
+  sec_section: item_1a_risk
+- id: mat-4ff346
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_7_mda.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.864522+00:00'
+  processed: true
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-d7e2f5
+  sec_section: item_7_mda
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-51f1da
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.867676+00:00'
+  processed: true
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-d7e2f5
+  sec_section: item_7a_quant_risk
+- id: mat-b47f3b
+  filename: sec/2025_HOOD_10-K_2026-02-18/item_8_financial.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.871105+00:00'
+  processed: true
+  notes: split from 2025_HOOD_10-K_2026-02-18.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-d7e2f5
+  sec_section: item_8_financial
+  rings:
+  - financial-arc
+- id: mat-c632b0
+  filename: 2025_IBKR_10-K_2026-02-27.htm
+  source_type: annual-report
+  added: '2026-06-04T04:09:18.874812+00:00'
+  processed: true
+  notes: 复用 slug 级 SEC 抽取（2026-05 财报季收）— IBKR 10-K
+  mineru_state: not_needed
+- id: mat-83a9b8
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_1_business.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.883828+00:00'
+  processed: true
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-c632b0
+  sec_section: item_1_business
+- id: mat-d76d72
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.888220+00:00'
+  processed: true
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-c632b0
+  sec_section: item_1a_risk
+- id: mat-7089e3
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_7_mda.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.892750+00:00'
+  processed: true
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-c632b0
+  sec_section: item_7_mda
+- id: mat-3a2847
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.897649+00:00'
+  processed: true
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-c632b0
+  sec_section: item_7a_quant_risk
+- id: mat-5a52be
+  filename: sec/2025_IBKR_10-K_2026-02-27/item_8_financial.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.902801+00:00'
+  processed: true
+  notes: split from 2025_IBKR_10-K_2026-02-27.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-c632b0
+  sec_section: item_8_financial
+- id: mat-5a7eba
+  filename: 2025_SCHW_10-K_2026-02-25.htm
+  source_type: annual-report
+  added: '2026-06-04T04:09:18.908299+00:00'
+  processed: true
+  notes: 复用 slug 级 SEC 抽取（2026-05 财报季收）— SCHW 10-K
+  mineru_state: not_needed
+- id: mat-8c3fd5
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_1_business.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.920669+00:00'
+  processed: true
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-5a7eba
+  sec_section: item_1_business
+- id: mat-5f8a1d
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.926620+00:00'
+  processed: true
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-5a7eba
+  sec_section: item_1a_risk
+- id: mat-ddaac6
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_7_mda.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.932872+00:00'
+  processed: true
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-5a7eba
+  sec_section: item_7_mda
+- id: mat-a6225d
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.939473+00:00'
+  processed: true
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-5a7eba
+  sec_section: item_7a_quant_risk
+- id: mat-7d7b75
+  filename: sec/2025_SCHW_10-K_2026-02-25/item_8_financial.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.946383+00:00'
+  processed: true
+  notes: split from 2025_SCHW_10-K_2026-02-25.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-5a7eba
+  sec_section: item_8_financial
+- id: mat-e6cacb
+  filename: 2026_COIN_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-06-04T04:09:18.953706+00:00'
+  processed: true
+  notes: 复用 slug 级 SEC 抽取（2026-05 财报季收）— COIN 10-Q
+  mineru_state: not_needed
+- id: mat-e5157e
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_1_financial.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.969640+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-e6cacb
+  sec_section: item_1_financial
+- id: mat-156e74
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_2_mda.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.977286+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-e6cacb
+  sec_section: item_2_mda
+- id: mat-79f041
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.985329+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-e6cacb
+  sec_section: item_3_quant_risk
+- id: mat-5f44ad
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:18.993818+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-e6cacb
+  sec_section: item_1a_risk
+- id: mat-07dfc3
+  filename: 2026_HOOD_10-Q_2026-04-29.htm
+  source_type: quarterly-report
+  added: '2026-06-04T04:09:19.002440+00:00'
+  processed: true
+  notes: 复用 slug 级 SEC 抽取（2026-05 财报季收）— HOOD 10-Q
+  mineru_state: not_needed
+- id: mat-aba43c
+  filename: sec/2026_HOOD_10-Q_2026-04-29/item_1_financial.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.021195+00:00'
+  processed: true
+  notes: split from 2026_HOOD_10-Q_2026-04-29.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-07dfc3
+  sec_section: item_1_financial
+- id: mat-1dd165
+  filename: sec/2026_HOOD_10-Q_2026-04-29/item_2_mda.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.030438+00:00'
+  processed: true
+  notes: split from 2026_HOOD_10-Q_2026-04-29.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-07dfc3
+  sec_section: item_2_mda
+- id: mat-3ae8ce
+  filename: sec/2026_HOOD_10-Q_2026-04-29/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.040168+00:00'
+  processed: true
+  notes: split from 2026_HOOD_10-Q_2026-04-29.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-07dfc3
+  sec_section: item_3_quant_risk
+- id: mat-470dc6
+  filename: sec/2026_HOOD_10-Q_2026-04-29/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.050657+00:00'
+  processed: true
+  notes: split from 2026_HOOD_10-Q_2026-04-29.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-07dfc3
+  sec_section: item_1a_risk
+- id: mat-c4ea6d
+  filename: 2026_IBKR_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-06-04T04:09:19.061135+00:00'
+  processed: true
+  notes: 复用 slug 级 SEC 抽取（2026-05 财报季收）— IBKR 10-Q
+  mineru_state: not_needed
+- id: mat-786236
+  filename: sec/2026_IBKR_10-Q_2026-05-07/item_1_financial.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.082845+00:00'
+  processed: true
+  notes: split from 2026_IBKR_10-Q_2026-05-07.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-c4ea6d
+  sec_section: item_1_financial
+- id: mat-9f406b
+  filename: sec/2026_IBKR_10-Q_2026-05-07/item_2_mda.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.093485+00:00'
+  processed: true
+  notes: split from 2026_IBKR_10-Q_2026-05-07.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-c4ea6d
+  sec_section: item_2_mda
+- id: mat-77feaa
+  filename: sec/2026_IBKR_10-Q_2026-05-07/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.104326+00:00'
+  processed: true
+  notes: split from 2026_IBKR_10-Q_2026-05-07.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-c4ea6d
+  sec_section: item_3_quant_risk
+- id: mat-c433cd
+  filename: sec/2026_IBKR_10-Q_2026-05-07/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.115868+00:00'
+  processed: true
+  notes: split from 2026_IBKR_10-Q_2026-05-07.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-c4ea6d
+  sec_section: item_1a_risk
+- id: mat-c85e67
+  filename: 2026_SCHW_10-Q_2026-05-08.htm
+  source_type: quarterly-report
+  added: '2026-06-04T04:09:19.127227+00:00'
+  processed: true
+  notes: 复用 slug 级 SEC 抽取（2026-05 财报季收）— SCHW 10-Q
+  mineru_state: not_needed
+- id: mat-11ef07
+  filename: sec/2026_SCHW_10-Q_2026-05-08/item_1_financial.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.151337+00:00'
+  processed: true
+  notes: split from 2026_SCHW_10-Q_2026-05-08.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-c85e67
+  sec_section: item_1_financial
+- id: mat-7b12c5
+  filename: sec/2026_SCHW_10-Q_2026-05-08/item_2_mda.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.163215+00:00'
+  processed: true
+  notes: split from 2026_SCHW_10-Q_2026-05-08.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-c85e67
+  sec_section: item_2_mda
+- id: mat-fb3bdc
+  filename: sec/2026_SCHW_10-Q_2026-05-08/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.175518+00:00'
+  processed: true
+  notes: split from 2026_SCHW_10-Q_2026-05-08.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-c85e67
+  sec_section: item_3_quant_risk
+- id: mat-8cdcd3
+  filename: sec/2026_SCHW_10-Q_2026-05-08/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-04T04:09:19.188065+00:00'
+  processed: true
+  notes: split from 2026_SCHW_10-Q_2026-05-08.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-c85e67
+  sec_section: item_1a_risk
+- id: mat-b8d336
+  filename: 2026-05-25_bitstamp-flips-robinhood-crypto-trading-volumes.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.201457+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  confidence: 0.55
+  search_meta:
+    query: Robinhood Bitstamp integration crypto exchange take rate 2025 2026
+    url: https://coinmarketcap.com/academy/article/bitstamp-flips-robinhoods-crypto-trading-volumes
+    domain: coinmarketcap.com
+    domain_tier: other
+    searched_at: '2026-05-25T16:24:37.869166+00:00'
+    stale_at: '2026-06-24T16:24:37.869166+00:00'
+    expire_at: '2026-08-23T16:24:37.869166+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-6b24e9
+  filename: 2026-05-25_hood---robinhood-markets-pe-ratio-current-and-hist.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.215208+00:00'
+  processed: false
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.55
+  search_meta:
+    query: Robinhood HOOD stock price market cap PE ratio valuation June 2026
+    url: https://fullratio.com/stocks/nasdaq-hood/pe-ratio
+    domain: fullratio.com
+    domain_tier: other
+    searched_at: '2026-06-04T04:14:40.009606+00:00'
+    stale_at: '2026-07-04T04:14:40.009606+00:00'
+    expire_at: '2026-09-02T04:14:40.009606+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Robinhood stock price valuation 2026 PE ratio forecast
+- id: mat-4f8182
+  filename: 2026-05-25_introducing-robinhood-strategies-robinhood-banking.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.229346+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Robinhood Strategies AUM Banking 2026 wealth management
+    url: https://robinhood.com/us/en/newsroom/introducing-strategies-banking-and-cortex/
+    domain: robinhood.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.845193+00:00'
+    stale_at: '2026-06-24T16:24:37.845193+00:00'
+    expire_at: '2026-08-23T16:24:37.845193+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-1ef1f0
+  filename: 2026-05-25_list-of-13-acquisitions-by-robinhood-apr-2026---tr.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.244276+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.55
+  search_meta:
+    query: Robinhood Markets latest news 2026 acquisitions products
+    url: https://tracxn.com/d/acquisitions/acquisitions-by-robinhood/__ftFGCJ3CCjzKvgmHzIC3I7cNIjrIk2k6uypP6P1qOWk
+    domain: tracxn.com
+    domain_tier: other
+    searched_at: '2026-05-25T16:24:37.886333+00:00'
+    stale_at: '2026-06-24T16:24:37.886333+00:00'
+    expire_at: '2026-08-23T16:24:37.886333+00:00'
+    triggered_by: 00-prescan-reuse
+  rings:
+  - mgmt-capital-alloc
+- id: mat-6dd3c8
+  filename: 2026-05-25_payment-for-order-flow-pfof-and-broker-dealer-regu.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.259623+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Robinhood PFOF SEC Order Competition Rule 2026 status
+    url: https://www.congress.gov/crs-product/IF12594
+    domain: www.congress.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.841321+00:00'
+    stale_at: '2026-06-24T16:24:37.841321+00:00'
+    expire_at: '2026-08-23T16:24:37.841321+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-402035
+  filename: 2026-05-25_robinhood-extends-prediction-markets-via-joint-ven.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.275553+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Robinhood Markets latest news 2026 acquisitions products
+    url: https://robinhood.com/us/en/newsroom/robinhood-prediction-markets-joint-venture/
+    domain: robinhood.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.855468+00:00'
+    stale_at: '2026-06-24T16:24:37.855468+00:00'
+    expire_at: '2026-08-23T16:24:37.855468+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-53a8df
+  filename: 2026-05-25_robinhood-launches-prediction-markets-hub.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.291977+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Robinhood prediction markets Kalshi event contracts 2026
+    url: https://robinhood.com/us/en/newsroom/robinhood-prediction-markets-hub/
+    domain: robinhood.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.849880+00:00'
+    stale_at: '2026-06-24T16:24:37.849880+00:00'
+    expire_at: '2026-08-23T16:24:37.849880+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-aaf593
+  filename: 2026-05-25_robinhood-markets-hood-stock-price-overview.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.309088+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.55
+  search_meta:
+    query: Robinhood Markets (HOOD) HOOD 监管处罚
+    url: https://stockanalysis.com/stocks/hood/
+    domain: stockanalysis.com
+    domain_tier: other
+    searched_at: '2026-05-25T16:24:37.906914+00:00'
+    stale_at: '2026-06-24T16:24:37.906914+00:00'
+    expire_at: '2026-08-23T16:24:37.906914+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-4106c6
+  filename: 2026-05-25_robinhood-q1-2026-earnings-revenue-up-15-crypto-do.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.326794+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K5
+  - scope
+  confidence: 0.85
+  search_meta:
+    query: Robinhood HOOD Q1 2026 earnings results revenue crypto
+    url: https://finance.yahoo.com/markets/stocks/articles/robinhood-q1-2026-earnings-revenue-203244837.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:25:05.401147+00:00'
+    stale_at: '2026-06-24T16:25:05.401147+00:00'
+    expire_at: '2026-08-23T16:25:05.401147+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-825d24
+  filename: 2026-05-25_robinhood-reports-first-quarter-2026-results.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.344887+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Robinhood HOOD Q1 2026 earnings results revenue crypto
+    url: https://investors.robinhood.com/news-releases/news-release-details/robinhood-reports-first-quarter-2026-results
+    domain: investors.robinhood.com
+    domain_tier: whitelist
+    searched_at: '2026-05-25T16:24:37.834417+00:00'
+    stale_at: '2026-06-24T16:24:37.834417+00:00'
+    expire_at: '2026-08-23T16:24:37.834417+00:00'
+    triggered_by: 00-prescan-reuse
+  rings:
+  - mgmt-capital-alloc
+- id: mat-af2e9c
+  filename: 2026-05-25_robinhood-reports-fourth-quarter-and-full-year-202.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.363690+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Robinhood Gold subscribers 2025 Q4 growth ARPU
+    url: https://investors.robinhood.com/news-releases/news-release-details/robinhood-reports-fourth-quarter-and-full-year-2025-results
+    domain: investors.robinhood.com
+    domain_tier: whitelist
+    searched_at: '2026-05-25T16:24:37.836078+00:00'
+    stale_at: '2026-06-24T16:24:37.836078+00:00'
+    expire_at: '2026-08-23T16:24:37.836078+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-bea46a
+  filename: 2026-05-25_robinhood-spacex-ipo-access-and-new-products.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.382973+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.5
+  search_meta:
+    query: Robinhood Markets latest news 2026 acquisitions products
+    url: https://simplywall.st/stocks/us/diversified-financials/nasdaq-hood/robinhood-markets/news/is-robinhoods-spacex-ipo-access-and-new-products-altering-th
+    domain: simplywall.st
+    domain_tier: other
+    searched_at: '2026-05-25T16:24:37.877265+00:00'
+    stale_at: '2026-06-24T16:24:37.877265+00:00'
+    expire_at: '2026-08-23T16:24:37.877265+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-c10716
+  filename: 2026-05-25_sec-gov-order-competition-rule.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.403048+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Robinhood PFOF SEC Order Competition Rule 2026 status
+    url: https://www.sec.gov/rules-regulations/2025/06/order-competition-rule
+    domain: www.sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-05-25T16:24:37.838294+00:00'
+    stale_at: '2026-06-24T16:24:37.838294+00:00'
+    expire_at: '2026-08-23T16:24:37.838294+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-1dfa8e
+  filename: 2026-05-25_the-bitstamp-blog-by-robinhood.md
+  source_type: web-search
+  added: '2026-06-04T04:09:19.423253+00:00'
+  processed: true
+  notes: 复用 slug 级 prescan 料（2026-05-25）
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Robinhood Bitstamp integration crypto exchange take rate 2025 2026
+    url: https://blog.bitstamp.net/
+    domain: blog.bitstamp.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-05-25T16:24:37.861900+00:00'
+    stale_at: '2026-06-24T16:24:37.861900+00:00'
+    expire_at: '2026-08-23T16:24:37.861900+00:00'
+    triggered_by: 00-prescan-reuse
+- id: mat-36047b
+  filename: 2026-06-04_robinhood-markets-hood-statistics-valuation.md
+  source_type: web-search
+  added: '2026-06-04T04:14:39.973971+00:00'
+  processed: false
+  notes: query='Robinhood HOOD stock price market cap PE ratio valuation June 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD stock price market cap PE ratio valuation June 2026
+    url: https://stockanalysis.com/stocks/hood/statistics
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T04:14:39.960105+00:00'
+    stale_at: '2026-07-04T04:14:39.960105+00:00'
+    expire_at: '2026-09-02T04:14:39.960105+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7a5fcf
+  filename: 2026-06-04_robinhood-hood-p-e-ratio.md
+  source_type: web-search
+  added: '2026-06-04T04:14:40.045721+00:00'
+  processed: false
+  notes: query='Robinhood HOOD stock price market cap PE ratio valuation June 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD stock price market cap PE ratio valuation June 2026
+    url: https://companiesmarketcap.com/robinhood/pe-ratio
+    domain: companiesmarketcap.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T04:14:40.032084+00:00'
+    stale_at: '2026-07-04T04:14:40.032084+00:00'
+    expire_at: '2026-09-02T04:14:40.032084+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e9bd07
+  filename: 2026-06-04_robinhood-q1-revenue-hits-1-07b-eps-0-38.md
+  source_type: web-search
+  added: '2026-06-04T04:14:40.103680+00:00'
+  processed: false
+  notes: query='Robinhood HOOD Q1 2026 net interest revenue rate cut sensitivity ARPU'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD Q1 2026 net interest revenue rate cut sensitivity ARPU
+    url: https://www.stocktitan.net/news/HOOD/robinhood-reports-first-quarter-2026-bc56vvjdeq05.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T04:14:40.087004+00:00'
+    stale_at: '2026-07-04T04:14:40.087004+00:00'
+    expire_at: '2026-09-02T04:14:40.087004+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0d99c6
+  filename: 2026-06-04_robinhood-q1-2026-earnings-revenue-up-15-crypto-do.md
+  source_type: web-search
+  added: '2026-06-04T04:14:40.148013+00:00'
+  processed: false
+  notes: query='Robinhood HOOD Q1 2026 net interest revenue rate cut sensitivity ARPU'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD Q1 2026 net interest revenue rate cut sensitivity ARPU
+    url: https://qz.com/robinhood-q1-2026-earnings-results-042826
+    domain: qz.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T04:14:40.132513+00:00'
+    stale_at: '2026-07-04T04:14:40.132513+00:00'
+    expire_at: '2026-09-02T04:14:40.132513+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8fd407
+  filename: 2026-06-04_robinhood-says-sec-closed-investigation-into-crypt.md
+  source_type: web-search
+  added: '2026-06-04T04:14:40.205821+00:00'
+  processed: false
+  notes: query='Robinhood crypto SEC investigation closed Wells notice outcome 2025
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Robinhood crypto SEC investigation closed Wells notice outcome 2025 2026
+    url: https://www.law.com/nationallawjournal/2025/02/24/robinhood-says-sec-closed-investigation-into-companys-crypto-division
+    domain: law.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T04:14:40.190916+00:00'
+    stale_at: '2026-07-04T04:14:40.190916+00:00'
+    expire_at: '2026-09-02T04:14:40.190916+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7f0afb
+  filename: 2026-06-04_robinhood-says-sec-has-closed-its-investigation.md
+  source_type: web-search
+  added: '2026-06-04T04:14:40.246422+00:00'
+  processed: false
+  notes: query='Robinhood crypto SEC investigation closed Wells notice outcome 2025
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Robinhood crypto SEC investigation closed Wells notice outcome 2025 2026
+    url: https://courthousenews.com/robinhood-says-sec-has-closed-its-investigation-into-the-company
+    domain: courthousenews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T04:14:40.231045+00:00'
+    stale_at: '2026-07-04T04:14:40.231045+00:00'
+    expire_at: '2026-09-02T04:14:40.231045+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a72e76
+  filename: 2026-06-04_robinhood-profit-rises-on-boost-from-prediction-ma.md
+  source_type: web-search
+  added: '2026-06-04T04:14:40.305270+00:00'
+  processed: false
+  notes: query='Robinhood Gold subscribers prediction markets event contracts volume
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K7
+  confidence: 0.9
+  search_meta:
+    query: Robinhood Gold subscribers prediction markets event contracts volume 2026
+    url: https://www.wsj.com/business/earnings/robinhood-profit-rises-on-boost-from-prediction-markets-gold-subscriptions-fbe5a45c
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-06-04T04:14:40.289128+00:00'
+    stale_at: '2026-07-04T04:14:40.289128+00:00'
+    expire_at: '2026-09-02T04:14:40.289128+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d473aa
+  filename: 2026-06-04_robinhood-q1-2026-misses-forecasts-stock-dips.md
+  source_type: web-search
+  added: '2026-06-04T04:15:00.557922+00:00'
+  processed: false
+  notes: query='Robinhood HOOD latest news June 2026 earnings guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD latest news June 2026 earnings guidance
+    url: https://www.investing.com/news/transcripts/earnings-call-transcript-robinhood-q1-2026-misses-forecasts-stock-dips-93CH-4643325
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T04:15:00.541117+00:00'
+    stale_at: '2026-07-04T04:15:00.541117+00:00'
+    expire_at: '2026-09-02T04:15:00.541117+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-1e5da0
+  filename: 2026-06-04_robinhood-q1-2026-earnings-recap.md
+  source_type: web-search
+  added: '2026-06-04T04:15:00.601319+00:00'
+  processed: false
+  notes: query='Robinhood HOOD latest news June 2026 earnings guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD latest news June 2026 earnings guidance
+    url: https://tickeron.com/earnings/HOOD
+    domain: tickeron.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T04:15:00.584867+00:00'
+    stale_at: '2026-07-04T04:15:00.584867+00:00'
+    expire_at: '2026-09-02T04:15:00.584867+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-58c2c3
+  filename: 2026-06-04_regulation-best-execution---sec-gov.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.205159+00:00'
+  processed: false
+  notes: query='SEC Order Competition Rule withdrawn Atkins PFOF Reg Best Execution
+    status 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: SEC Order Competition Rule withdrawn Atkins PFOF Reg Best Execution status
+      2026
+    url: https://www.sec.gov/rules-regulations/2025/06/regulation-best-execution
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-06-04T06:27:29.186822+00:00'
+    stale_at: '2026-07-04T06:27:29.186822+00:00'
+    expire_at: '2026-09-02T06:27:29.186822+00:00'
+    triggered_by: 01-prescan
+- id: mat-00ca1d
+  filename: 2026-06-04_sec-withdraws-proposed-rules-affecting-investment-.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.253989+00:00'
+  processed: false
+  notes: query='SEC Order Competition Rule withdrawn Atkins PFOF Reg Best Execution
+    status 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: SEC Order Competition Rule withdrawn Atkins PFOF Reg Best Execution status
+      2026
+    url: https://www.stinson.com/newsroom-publications-sec-withdraws-proposed-rules-affecting-investment-advisers-funds-and-broker-dealers
+    domain: stinson.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:29.236124+00:00'
+    stale_at: '2026-07-04T06:27:29.236124+00:00'
+    expire_at: '2026-09-02T06:27:29.236124+00:00'
+    triggered_by: 01-prescan
+- id: mat-004a95
+  filename: 2026-06-04_sec-rule-proposal-withdrawal-signals-regulatory-re.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.302499+00:00'
+  processed: false
+  notes: query='SEC Order Competition Rule withdrawn Atkins PFOF Reg Best Execution
+    status 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: SEC Order Competition Rule withdrawn Atkins PFOF Reg Best Execution status
+      2026
+    url: https://www.tradersmagazine.com/departments/brokerage/sec-withdraws-14-key-proposed-rules-signaling-regulatory-reset/
+    domain: tradersmagazine.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:29.284422+00:00'
+    stale_at: '2026-07-04T06:27:29.284422+00:00'
+    expire_at: '2026-09-02T06:27:29.284422+00:00'
+    triggered_by: 01-prescan
+- id: mat-4d5db4
+  filename: 2026-06-04_sec-formally-withdraws-fourteen-rule-proposals.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.351290+00:00'
+  processed: false
+  notes: query='SEC Order Competition Rule withdrawn Atkins PFOF Reg Best Execution
+    status 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: SEC Order Competition Rule withdrawn Atkins PFOF Reg Best Execution status
+      2026
+    url: https://www.regulatoryandcompliance.com/2025/06/sec-formally-withdraws-fourteen-rule-proposals/
+    domain: regulatoryandcompliance.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:29.333153+00:00'
+    stale_at: '2026-07-04T06:27:29.333153+00:00'
+    expire_at: '2026-09-02T06:27:29.333153+00:00'
+    triggered_by: 01-prescan
+- id: mat-398a4f
+  filename: 2026-06-04_prediction-markets-policy-issues-for-congress.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.433713+00:00'
+  processed: false
+  notes: query='Robinhood prediction markets event contracts volume CFTC regulation
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K7
+  confidence: 0.9
+  search_meta:
+    query: Robinhood prediction markets event contracts volume CFTC regulation 2026
+    url: https://www.congress.gov/crs-product/IF13187
+    domain: congress.gov
+    domain_tier: whitelist
+    searched_at: '2026-06-04T06:27:29.408341+00:00'
+    stale_at: '2026-07-04T06:27:29.408341+00:00'
+    expire_at: '2026-09-02T06:27:29.408341+00:00'
+    triggered_by: 01-prescan
+- id: mat-d8bca3
+  filename: 2026-06-04_cftc-reaffirms-exclusive-jurisdiction-over-predict.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.495044+00:00'
+  processed: false
+  notes: query='Robinhood prediction markets event contracts volume CFTC regulation
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K7
+  confidence: 0.9
+  search_meta:
+    query: Robinhood prediction markets event contracts volume CFTC regulation 2026
+    url: https://www.cftc.gov/PressRoom/PressReleases/9183-26
+    domain: cftc.gov
+    domain_tier: whitelist
+    searched_at: '2026-06-04T06:27:29.475278+00:00'
+    stale_at: '2026-07-04T06:27:29.475278+00:00'
+    expire_at: '2026-09-02T06:27:29.475278+00:00'
+    triggered_by: 01-prescan
+- id: mat-4df6b7
+  filename: 2026-06-04_cftc-regulatory-developments-on-prediction-markets.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.550329+00:00'
+  processed: false
+  notes: query='Robinhood prediction markets event contracts volume CFTC regulation
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  confidence: 0.7
+  search_meta:
+    query: Robinhood prediction markets event contracts volume CFTC regulation 2026
+    url: https://www.gtlaw.com/en/insights/2026/3/cftc-regulatory-developments-on-prediction-markets-and-event-contracts
+    domain: gtlaw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:29.529351+00:00'
+    stale_at: '2026-07-04T06:27:29.529351+00:00'
+    expire_at: '2026-09-02T06:27:29.529351+00:00'
+    triggered_by: 01-prescan
+- id: mat-8e1267
+  filename: 2026-06-04_hood-robinhood-markets-inc-analyst-estimates-ratin.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.629936+00:00'
+  processed: false
+  notes: query='Robinhood HOOD EPS guidance Q2 Q3 2026 analyst estimates operating
+    leverage'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: Robinhood HOOD EPS guidance Q2 Q3 2026 analyst estimates operating leverage
+    url: https://www.wsj.com/market-data/quotes/HOOD/research-ratings
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-06-04T06:27:29.610913+00:00'
+    stale_at: '2026-07-04T06:27:29.610913+00:00'
+    expire_at: '2026-09-02T06:27:29.610913+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - consensus
+  - valuation-anchor
+- id: mat-051048
+  filename: 2026-06-04_robinhood-markets-vs-interactive-brokers-group-whi.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.711774+00:00'
+  processed: false
+  notes: query='Robinhood HOOD valuation versus Schwab Interactive Brokers Coinbase
+    price target analyst 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD valuation versus Schwab Interactive Brokers Coinbase price
+      target analyst 2026
+    url: https://www.theglobeandmail.com/investing/markets/stocks/HOOD/pressreleases/2141171/robinhood-markets-vs-interactive-brokers-group-which-financial-stock-is-a-better-buy-in-2026
+    domain: theglobeandmail.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:29.692153+00:00'
+    stale_at: '2026-07-04T06:27:29.692153+00:00'
+    expire_at: '2026-09-02T06:27:29.692153+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - consensus
+- id: mat-0aca1a
+  filename: 2026-06-04_robinhood-hood-stock-forecast-analyst-ratings-pred.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.766077+00:00'
+  processed: false
+  notes: query='Robinhood HOOD valuation versus Schwab Interactive Brokers Coinbase
+    price target analyst 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD valuation versus Schwab Interactive Brokers Coinbase price
+      target analyst 2026
+    url: https://public.com/stocks/hood/forecast-price-target
+    domain: public.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:29.745855+00:00'
+    stale_at: '2026-07-04T06:27:29.745855+00:00'
+    expire_at: '2026-09-02T06:27:29.745855+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - consensus
+  - valuation-anchor
+- id: mat-d0d146
+  filename: 2026-06-04_robinhood-stock-falls-8-after-big-earnings-miss-du.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.851999+00:00'
+  processed: false
+  notes: query='Robinhood crypto revenue quarterly decline Coinbase comparison 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K7
+  confidence: 0.7
+  search_meta:
+    query: Robinhood crypto revenue quarterly decline Coinbase comparison 2026
+    url: https://www.coindesk.com/markets/2026/04/28/robinhood-stock-shrugs-off-a-47-crash-in-crypto-revenue-thanks-to-a-massive-surge-in-event-betting
+    domain: coindesk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:29.831737+00:00'
+    stale_at: '2026-07-04T06:27:29.831737+00:00'
+    expire_at: '2026-09-02T06:27:29.831737+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - bull-bear
+- id: mat-2c556e
+  filename: 2026-06-04_robinhood-gold-hits-record-subscribers-is-the-bet-.md
+  source_type: web-search
+  added: '2026-06-04T06:27:29.940095+00:00'
+  processed: false
+  notes: query='Robinhood Gold subscribers retirement ARPU Strategies assets 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Robinhood Gold subscribers retirement ARPU Strategies assets 2026
+    url: https://www.tradingview.com/news/zacks:88fcb6b10094b:0-robinhood-gold-hits-record-subscribers-is-the-bet-starting-to-pay-off
+    domain: tradingview.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:29.919776+00:00'
+    stale_at: '2026-07-04T06:27:29.919776+00:00'
+    expire_at: '2026-09-02T06:27:29.919776+00:00'
+    triggered_by: 01-prescan
+- id: mat-23e58a
+  filename: 2026-06-04_how-will-fed-rate-cuts-reshape-robinhood-s-revenue.md
+  source_type: web-search
+  added: '2026-06-04T06:27:30.029037+00:00'
+  processed: false
+  notes: query='Robinhood net interest income rate cut sensitivity net deposits 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Robinhood net interest income rate cut sensitivity net deposits 2026
+    url: https://finance.yahoo.com/news/fed-rate-cuts-reshape-robinhoods-123700463.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:30.008353+00:00'
+    stale_at: '2026-07-04T06:27:30.008353+00:00'
+    expire_at: '2026-09-02T06:27:30.008353+00:00'
+    triggered_by: 01-prescan
+- id: mat-071265
+  filename: 2026-06-04_robinhood-markets-hood-is-up-28-1-after-launching-.md
+  source_type: web-search
+  added: '2026-06-04T06:27:30.120982+00:00'
+  processed: false
+  notes: query='Robinhood HOOD latest news June 2026 earnings product launch regulation'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD latest news June 2026 earnings product launch regulation
+    url: https://finance.yahoo.com/markets/stocks/articles/robinhood-markets-hood-28-1-171324250.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:27:30.099213+00:00'
+    stale_at: '2026-07-04T06:27:30.099213+00:00'
+    expire_at: '2026-09-02T06:27:30.099213+00:00'
+    triggered_by: 01-prescan
+- id: mat-a6ce60
+  filename: 2026-06-04_robinhood-shares-fall-after-retail-broker-posts-dr.md
+  source_type: web-search
+  added: '2026-06-04T06:51:24.346380+00:00'
+  processed: true
+  notes: query='Robinhood stock crash 2021 to 2022 from 70 to 7 retail brokerage trading
+    volume collapse what happened postmortem'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: Robinhood stock crash 2021 to 2022 from 70 to 7 retail brokerage trading
+      volume collapse what happened postmortem
+    url: https://www.reuters.com/technology/robinhood-revenue-falls-43-trading-volumes-moderate-2022-04-28
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-06-04T06:51:24.323410+00:00'
+    stale_at: '2026-07-04T06:51:24.323410+00:00'
+    expire_at: '2026-09-02T06:51:24.323410+00:00'
+    triggered_by: 02-step0
+  rings:
+  - historical-mirror
+- id: mat-0ea800
+  filename: 2026-06-04_robinhood-struck-it-rich-by-turning-stock-trades-i.md
+  source_type: web-search
+  added: '2026-06-04T06:51:24.408928+00:00'
+  processed: true
+  notes: query='Robinhood stock crash 2021 to 2022 from 70 to 7 retail brokerage trading
+    volume collapse what happened postmortem' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Robinhood stock crash 2021 to 2022 from 70 to 7 retail brokerage trading
+      volume collapse what happened postmortem
+    url: https://www.businessinsider.com/robinhood-collapse-what-happened-retail-investing-meme-stocks-future-finance-2022-2
+    domain: businessinsider.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:51:24.385931+00:00'
+    stale_at: '2026-07-04T06:51:24.385931+00:00'
+    expire_at: '2026-09-02T06:51:24.385931+00:00'
+    triggered_by: 02-step0
+  rings:
+  - historical-mirror
+- id: mat-6c984e
+  filename: 2026-06-04_coinbase-trading-volumes-plummet-as-crypto-winter-.md
+  source_type: web-search
+  added: '2026-06-04T06:51:24.505163+00:00'
+  processed: true
+  notes: query='Coinbase stock crash 2021 2022 crypto winter 85 percent decline revenue
+    collapse postmortem analysis'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: Coinbase stock crash 2021 2022 crypto winter 85 percent decline revenue
+      collapse postmortem analysis
+    url: https://www.ft.com/content/7587d510-894a-4b1c-8923-b9711e3ce4d1
+    domain: ft.com
+    domain_tier: whitelist
+    searched_at: '2026-06-04T06:51:24.481838+00:00'
+    stale_at: '2026-07-04T06:51:24.481838+00:00'
+    expire_at: '2026-09-02T06:51:24.481838+00:00'
+    triggered_by: 02-step0
+  rings:
+  - historical-mirror
+- id: mat-c9a2c5
+  filename: 2026-06-04_coinbase-reports-63-drop-in-revenue-amid-crypto-in.md
+  source_type: web-search
+  added: '2026-06-04T06:51:24.567346+00:00'
+  processed: true
+  notes: query='Coinbase stock crash 2021 2022 crypto winter 85 percent decline revenue
+    collapse postmortem analysis' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Coinbase stock crash 2021 2022 crypto winter 85 percent decline revenue
+      collapse postmortem analysis
+    url: https://www.nytimes.com/2022/08/09/technology/coinbase-earnings.html
+    domain: nytimes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:51:24.544287+00:00'
+    stale_at: '2026-07-04T06:51:24.544287+00:00'
+    expire_at: '2026-09-02T06:51:24.544287+00:00'
+    triggered_by: 02-step0
+  rings:
+  - historical-mirror
+- id: mat-d0a459
+  filename: 2026-06-04_charles-schwab-shares-drop-12-even-as-the-firm-def.md
+  source_type: web-search
+  added: '2026-06-04T06:51:24.665349+00:00'
+  processed: true
+  notes: query='Charles Schwab 2023 cash sorting crisis net interest income deposit
+    flight bank stock decline'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: Charles Schwab 2023 cash sorting crisis net interest income deposit flight
+      bank stock decline
+    url: https://www.cnbc.com/2023/03/13/charles-schwab-shares-head-for-worst-day-ever-as-fears-of-banking-crisis-deepen.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-06-04T06:51:24.641258+00:00'
+    stale_at: '2026-07-04T06:51:24.641258+00:00'
+    expire_at: '2026-09-02T06:51:24.641258+00:00'
+    triggered_by: 02-step0
+  rings:
+  - historical-mirror
+- id: mat-0bd2d9
+  filename: 2026-06-04_charles-schwab-q1-2023-earnings-financial-planning.md
+  source_type: web-search
+  added: '2026-06-04T06:51:24.728807+00:00'
+  processed: true
+  notes: query='Charles Schwab 2023 cash sorting crisis net interest income deposit
+    flight bank stock decline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Charles Schwab 2023 cash sorting crisis net interest income deposit flight
+      bank stock decline
+    url: https://www.financial-planning.com/list/charles-schwab-q1-2023-earnings
+    domain: financial-planning.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T06:51:24.705522+00:00'
+    stale_at: '2026-07-04T06:51:24.705522+00:00'
+    expire_at: '2026-09-02T06:51:24.705522+00:00'
+    triggered_by: 02-step0
+  rings:
+  - historical-mirror
+- id: mat-151402
+  filename: 2026-06-04_hood-robinhood-markets-inc-analyst-estimates-marke.md
+  source_type: web-search
+  added: '2026-06-04T11:58:23.503170+00:00'
+  processed: true
+  notes: query='Robinhood HOOD analyst price target consensus 2026 EPS revenue estimates'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K6
+  rings:
+  - consensus
+  confidence: 0.75
+  search_meta:
+    query: Robinhood HOOD analyst price target consensus 2026 EPS revenue estimates
+    url: https://www.marketwatch.com/investing/stock/hood/analystestimates
+    domain: marketwatch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T11:58:23.476997+00:00'
+    stale_at: '2026-07-04T11:58:23.476997+00:00'
+    expire_at: '2026-09-02T11:58:23.476997+00:00'
+    triggered_by: 05-critic
+- id: mat-d76b19
+  filename: 2026-06-04_robinhood-markets-hood-stock-forecast-analyst-pred.md
+  source_type: web-search
+  added: '2026-06-04T11:58:23.578203+00:00'
+  processed: true
+  notes: query='Robinhood HOOD analyst price target consensus 2026 EPS revenue estimates'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K6
+  rings:
+  - consensus
+  confidence: 0.7
+  search_meta:
+    query: Robinhood HOOD analyst price target consensus 2026 EPS revenue estimates
+    url: https://simplywall.st/stocks/us/diversified-financials/nasdaq-hood/robinhood-markets/future
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-04T11:58:23.550581+00:00'
+    stale_at: '2026-07-04T11:58:23.550581+00:00'
+    expire_at: '2026-09-02T11:58:23.550581+00:00'
+    triggered_by: 05-critic

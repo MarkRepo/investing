@@ -1,0 +1,161 @@
+slug: us-robinhood
+variant: opus4.8
+entries:
+- searched_at: '2026-06-04T04:14:40.072010+00:00'
+  query: Robinhood HOOD stock price market cap PE ratio valuation June 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 0
+  n_mid: 3
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-04T04:14:40.174282+00:00'
+  query: Robinhood HOOD Q1 2026 net interest revenue rate cut sensitivity ARPU
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 2
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-04T04:14:40.175446+00:00'
+  query: Robinhood HOOD latest news June 2026 earnings guidance
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-04T04:14:40.273286+00:00'
+  query: Robinhood crypto SEC investigation closed Wells notice outcome 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T04:14:40.331492+00:00'
+  query: Robinhood Gold subscribers prediction markets event contracts volume 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T04:15:00.628868+00:00'
+  query: Robinhood HOOD latest news June 2026 earnings guidance
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:27:29.389492+00:00'
+  query: SEC Order Competition Rule withdrawn Atkins PFOF Reg Best Execution status
+    2026
+  triggered_by: 01-prescan
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:27:29.591379+00:00'
+  query: Robinhood prediction markets event contracts volume CFTC regulation 2026
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:27:29.669806+00:00'
+  query: Robinhood HOOD EPS guidance Q2 Q3 2026 analyst estimates operating leverage
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:27:29.808203+00:00'
+  query: Robinhood HOOD valuation versus Schwab Interactive Brokers Coinbase price
+    target analyst 2026
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:27:29.895203+00:00'
+  query: Robinhood crypto revenue quarterly decline Coinbase comparison 2026
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:27:29.983912+00:00'
+  query: Robinhood Gold subscribers retirement ARPU Strategies assets 2026
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:27:30.073923+00:00'
+  query: Robinhood net interest income rate cut sensitivity net deposits 2026
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:27:30.159703+00:00'
+  query: Robinhood HOOD latest news June 2026 earnings product launch regulation
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:27:45.287958+00:00'
+  query: Robinhood HOOD stock valuation crypto revenue Gold subscription PFOF regulation
+    2026
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-06-04T06:51:24.457435+00:00'
+  query: Robinhood stock crash 2021 to 2022 from 70 to 7 retail brokerage trading
+    volume collapse what happened postmortem
+  triggered_by: 02-step0
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:51:24.616635+00:00'
+  query: Coinbase stock crash 2021 2022 crypto winter 85 percent decline revenue collapse
+    postmortem analysis
+  triggered_by: 02-step0
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T06:51:24.780118+00:00'
+  query: Charles Schwab 2023 cash sorting crisis net interest income deposit flight
+    bank stock decline
+  triggered_by: 02-step0
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-04T11:58:23.725225+00:00'
+  query: Robinhood HOOD analyst price target consensus 2026 EPS revenue estimates
+  triggered_by: 05-critic
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered

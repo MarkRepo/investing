@@ -1,0 +1,178 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-robinhood
+variant: opus4.8
+created: 2026-06-04
+generated: 2026-06-04
+thesis_version: 0          # thesis-driven，L4 逐条对齐 thesis_v0 K1-K7
+
+# S2：L1 定向 + L2 历史坍缩为 primer scope 一行（背景深度交给 00_primer，不进 gap_detector）
+primer_scope: >
+  primer 该覆盖：零佣金券商商业模式（PFOF 三品类返佣机理）/ 净利息收入「类银行净息差 + sweep/保证金/证券出借」结构 /
+  券商盈利双层 beta（交易量 + 利率，为何 beta 2.29）/ Gold 订阅飞轮与 ARPU 杠杆 /
+  加密自营撮合 vs Coinbase 交易所模式 / 事件合约（CFTC 二元衍生品）机理 /
+  同业图谱（SCHW 全能·IBKR 专业全球·COIN 加密纯标的·Webull/SoFi）/
+  HOOD 从 meme 散户券商到全栈金融超 app 的演化史与 2021→2022 暴跌教训。
+
+learning_track:
+
+  # ---- L3 争议层：分歧在哪，各方逻辑（喂决策链环④ 多空）----
+  l3_debates:
+    - question: 多元化「平滑论」真伪——非交易收入（NII + Gold/订阅）究竟是逆周期对冲，还是又一堆顺周期品类的叠加？
+      source_hint: 10-Q item_2 MD&A 收入分部逐季 + 业绩会 Q&A；Q1 反例（加密 -47% 但总营收 +15%）vs 隐忧（NII 增长靠余额非利差）
+    - question: PE 34.6 + beta 2.29 在「市场/加密转熊」下行情景，是错杀后的安全边际，还是合理甚至偏贵？
+      source_hint: 与 IBKR/SCHW/COIN 横比 PE/ROE/利息效率；下行情景盈利弹性 × 倍数弹性双杀幅度
+    - question: NII「准经常性」叙事是否被高估——降息周期下单位 NIM 终将承压，余额增长能撑多久？
+      source_hint: 10-K item_7A / 10-Q item_3 利率敏感度披露（每 25bp 影响、sweep/margin/证券出借余额）
+    - question: 新增长引擎（预测市场/加密/期权）本质是否都是「顺周期高频」——所谓多元化是否在最需要时一起失灵？
+      source_hint: WSJ「预测市场波动大」+ 各引擎与市况相关性；CFTC 对事件合约的潜在限制
+    - question: PFOF 监管在 Atkins SEC 下究竟「撤回/永久搁置/仍悬」——商业模式根基是否真安全？
+      source_hint: SEC.gov 规则页 Order Competition Rule / Reg Best Execution 现状 + HOOD 10-K item_1A 风险因子
+
+  # ---- L4 狩猎层：找错误定价，逐条对齐 thesis Killer Question ----
+  l4_hunting:
+    - question: SEC（Atkins）是否已正式撤回/永久搁置 Order Competition Rule 与 Reg Best Execution？市场隐含的 PFOF 存续概率？
+      addresses: [K1]
+      search_keywords: [Order Competition Rule 撤回, SEC Atkins PFOF, Reg Best Execution 现状]
+      source_hint: SEC.gov 规则页 / 卖方法规 note / HOOD 10-K item_1A
+    - question: HOOD 营业杠杆兑现度——逐季 opex/收入比与 EPS 兑现 guidance（Q2 $0.45 / Q3 $0.50）的概率？盈利质量是否被一次性项目美化？
+      addresses: [K2]
+      search_keywords: [HOOD opex 杠杆, EPS guidance 兑现, 一致预期目标价]
+      source_hint: 10-Q item_2 MD&A + 业绩会 + 卖方 consensus
+    - question: 收入三分（交易 PFOF / NII / 订阅其它）逐季占比趋势 + NII 利率敏感度（每 25bp）——非交易腿能否平滑交易周期？
+      addresses: [K3]
+      search_keywords: [HOOD 收入分部, NII 利率敏感度, 净存入余额]
+      source_hint: 10-Q item_2 MD&A 分部 + item_3 quant_risk + 10-K item_7A
+    - question: 加密收入季度序列 + 占交易收入比 + 与 COIN 同期加密营收对比——加密去化是否被其它腿补上（总营收 beta 拆解）？
+      addresses: [K4]
+      search_keywords: [HOOD 加密收入 季度, Coinbase 营收 对比, 交易收入 拆分]
+      source_hint: HOOD 10-Q + COIN 10-Q（已在 materials/sec）+ 财报
+    - question: Gold/退休金/Legend/Banking/Strategies 的订户/AUC/ARPU 与留存——产品飞轮兑现度？
+      addresses: [K5]
+      search_keywords: [Robinhood Gold 订户, ARPU 退休金, Strategies AUC]
+      source_hint: 业绩会 + 10-K item_1 business + IR deck
+    - question: HOOD vs SCHW/IBKR/COIN 估值横比（PE/PS/ROE/ROIC + 历史区间）+ beta/回撤情景 + 卖方目标价分布（$79.79-$164）模型假设？
+      addresses: [K6, K2]
+      search_keywords: [HOOD 估值 横比, HOOD 目标价 分布, beta 回撤 情景]
+      source_hint: market_data + 3-5 份卖方深度 + 4 套竞品 10-K（已在 materials/sec）
+    - question: 事件合约（预测市场）交易量序列 + CFTC 监管框架 + 单位经济（费率/Gold 折扣）——新引擎可持续性？
+      addresses: [K7]
+      search_keywords: [Robinhood 事件合约 交易量, CFTC 预测市场 监管, prediction markets 费率]
+      source_hint: WSJ/业绩会 + CFTC + robinhood event contracts 页
+
+material_priority:
+
+  tier1:   # 必读，对结论影响最大、最难替代
+    - title: HOOD 2025 10-K（item_1 业务 / item_1A 风险 / item_7 MD&A / item_7A 利率敏感 / item_8 财务）
+      type: annual-report
+      ticker: HOOD
+      source: SEC EDGAR（已收，materials/sec/2025_HOOD_10-K_2026-02-18/）
+      why: 收入分部基线 + PFOF/监管风险因子 + 利率敏感度披露 + 管理层资本配置
+      addresses: [K1, K2, K3, K5]
+      info_tier: public
+      rings: [biz-moat-unit-econ, financial-arc, mgmt-capital-alloc]
+    - title: HOOD 2026 Q1 10-Q（item_2 MD&A 分部 / item_3 quant_risk / item_1 financial）
+      type: quarterly-report
+      ticker: HOOD
+      source: SEC EDGAR（已收，materials/sec/2026_HOOD_10-Q_2026-04-29/）
+      why: 最新逐季收入三分占比、加密 -47%、NII +24%、利率敏感度更新——命门1/K3/K4 直接证据
+      addresses: [K3, K4, K2]
+      info_tier: public
+      rings: [biz-moat-unit-econ, financial-arc]
+    - title: PFOF / Order Competition Rule / Reg Best Execution 在 Atkins SEC 下的最新状态
+      type: policy
+      source: SEC.gov 规则页 + 卖方法规 note（部分已收，web-search/sec-gov-order-competition-rule）
+      why: 命门3（PFOF 监管安全性，低置信）——交易收入根基是否动摇的定论
+      addresses: [K1]
+      info_tier: half_public
+      rings: [bull-bear]
+    - title: 可比估值横比 + 卖方一致预期/目标价模型（HOOD vs SCHW/IBKR/COIN）
+      type: sell-side-note
+      source: market_data + 3-5 份卖方深度（consensus hard，待补）+ 竞品 10-K（已收）
+      why: 命门2（估值安全边际，低置信）+ A 合同 consensus hard——隐含增长假设的对照基准
+      addresses: [K6, K2]
+      info_tier: half_public
+      rings: [valuation-anchor, consensus, valuation-percentile]
+    - title: 历史失败镜鉴实证（HOOD 2021→2022 / COIN 2021→2022 / 嘉信 2023 现金 sorting）
+      type: industry-research
+      source: 历史财报+股价 + 复盘文章 / web-search（待补实证）
+      why: A 合同 historical-mirror hard——高 beta 交易平台 volume 退潮双杀剧本，喂环⑤
+      addresses: [K6]
+      info_tier: public
+      rings: [historical-mirror]
+
+  tier2:   # 补充，有助验证非必须
+    - title: NII 构成 + 利率敏感度交叉验证（sweep/margin/证券出借余额）
+      type: quarterly-report
+      ticker: HOOD
+      source: 10-Q item_3 quant_risk + 10-K item_7A（已收）+ 业绩会 Q&A
+      why: 命门1 隐忧——NII 增长靠余额非利差，降息下 NIM 承压验证
+      addresses: [K3]
+      info_tier: half_public
+      rings: [financial-arc]
+    - title: 加密分部细节 + COIN 同期对比
+      type: quarterly-report
+      ticker: COIN
+      source: COIN 2026 10-Q（已收，materials/sec/2026_COIN_10-Q_2026-05-07/）
+      why: 加密 beta 拆解、HOOD 自营撮合 vs COIN 交易所模式差异
+      addresses: [K4]
+      info_tier: public
+      rings: [biz-moat-unit-econ]
+    - title: Gold/退休金/Legend/Banking/Strategies 订户·AUC·ARPU·留存
+      type: data
+      source: 业绩会 + 10-K item_1 + IR deck
+      why: K5 产品飞轮兑现度（背景靶点，非翻盘命门）
+      addresses: [K5]
+      info_tier: half_public
+      rings: [biz-moat-unit-econ]
+    - title: 管理层 track record + 资本配置史（回购 $1.5B 授权 / 13 起并购回报 / Tenev-Verma 激励治理）
+      type: data
+      source: 10-K + proxy(DEF 14A) + 并购清单（已收 web-search/list-of-13-acquisitions）
+      why: A 合同 mgmt-capital-alloc hard——喂环①
+      addresses: [K2]
+      info_tier: half_public
+      rings: [mgmt-capital-alloc]
+    - title: 事件合约量序列 + CFTC 监管框架 + 单位经济
+      type: data
+      source: WSJ/业绩会（已收 web-search/prediction-markets）+ CFTC + robinhood event contracts 页
+      why: K7 新引擎可持续性（支撑性增长验证）
+      addresses: [K7]
+      info_tier: half_public
+      rings: [biz-moat-unit-econ]
+
+  tier3:   # 可选，深研参考
+    - title: SCHW 2025 10-K + 2026 10-Q（全能券商对照基准）
+      type: annual-report
+      ticker: SCHW
+      source: SEC EDGAR（已收）
+      why: 估值横比 + 现金 sorting 危机镜鉴的对照
+      addresses: [K6]
+      rings: [valuation-percentile, historical-mirror]
+    - title: IBKR 2025 10-K + 2026 10-Q（专业全球券商对照基准）
+      type: annual-report
+      ticker: IBKR
+      source: SEC EDGAR（已收）
+      why: 更高 ROE/利息效率/全球化——HOOD 成长溢价是否被兑现支撑
+      addresses: [K6]
+      rings: [valuation-percentile]
+
+key_risks_to_monitor:
+  - 加密收入再现 ≥30% 同比/环比下滑且交易总收入未被期权/期货/预测市场补上（总营收转负/个位数）→ 多元化平滑论证伪（K4 命门）
+  - NII 连续两季同比转负（余额增长不再对冲降息）→「准经常性」腿证伪（K3）
+  - SEC（Atkins）重启 PFOF 限制立法/规则 → 商业模式根基动摇（K1 命门）
+  - EPS 连续 miss guidance（如 Q2 < $0.40）→ 增长叙事受损，34x 倍数难维持（K2/K6）
+  - 事件合约量连续两季环比下滑 ≥20% 或遭 CFTC 实质限制 → 新引擎熄火（K7）
+  - Gold 订户净增连续两季放缓至 <20% YoY 或 ARPU 同比转负 → 订阅飞轮失速（K5）
+
+analogies_to_study:
+  - case: HOOD 自身 2021→2022（美国·零售券商·$38→$7）
+    logic: 同一标的，meme 热潮后交易量退潮 + 倍数压缩双杀，高 beta 实证样本
+    limitation: 彼时无多元化基本盘（NII/Gold/预测市场），盈利结构已不同——正是本次 thesis 的核心争点
+    ring: historical-mirror
+  - case: Coinbase 2021→2022（美国·加密交易所·暴跌 ~85%）
+    logic: 加密 volume 周期退潮如何摧毁高估值交易平台盈利与倍数
+    limitation: COIN 纯加密敞口，HOOD 加密仅占交易收入一部分——对冲程度待 K4 量化
+    ring: historical-mirror
+  - case: 嘉信 Schwab 2023 现金 sorting 危机（美国·全能券商）
+    logic: 利率快速变动下客户现金搬家侵蚀 NII，券商「类银行」收入腿的脆弱性
+    limitation: HOOD 规模/久期错配结构不同，但 NII「准经常性」叙事面临同类利率风险
+    ring: historical-mirror
