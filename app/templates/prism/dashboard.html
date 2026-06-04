@@ -58,7 +58,7 @@
   <p class="monitor-hint">由 daily-monitor 自动判读,确认后才机械回写 sidecar + 追加 living_feed(零 LLM)。</p>
   <table class="monitor-table">
     <thead>
-      <tr><th>标的</th><th>类型</th><th>建议翻牌</th><th>依据</th><th>证据</th><th>重评thesis</th><th>操作</th></tr>
+      <tr><th>标的</th><th>类型</th><th>建议翻牌</th><th>依据</th><th>证据</th><th>重评论点 thesis</th><th>操作</th></tr>
     </thead>
     <tbody>
       {% for p in pending_proposals %}
@@ -83,7 +83,7 @@
   </table>
   {% set review_slugs = pending_proposals|selectattr('requires_thesis_review')|map(attribute='slug')|unique|list %}
   {% if review_slugs %}
-  <p class="thesis-review">🔺 <strong>建议重评 thesis</strong>(kill/重大 signpost 触发,请在对话里发起交互式
+  <p class="thesis-review">🔺 <strong>建议重评投资论点 thesis</strong>(kill/重大 signpost 触发,请在对话里发起交互式
     05-critic-review / 重新合成):{{ review_slugs|join(', ') }}</p>
   {% endif %}
   {% else %}

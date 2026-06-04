@@ -85,7 +85,7 @@
 
 {% if pending_thesis_review %}
 <div class="thesis-review-banner">
-  <strong>⚠️ 有未消化的重大变更，待重评 thesis</strong>
+  <strong>⚠️ 有未消化的重大变更，待重评投资论点 thesis</strong>
   <p>{{ pending_thesis_review.reason }}</p>
   <p class="banner-meta">
     确认于 {{ pending_thesis_review.since[:16] }}
@@ -140,16 +140,16 @@
 {% set _cur_entry = (topic.thesis.history | selectattr('version', 'equalto', _cur_v) | list | last) if topic.thesis.history else None %}
 <aside class="thesis-card">
   <div class="thesis-card-head">
-    <span class="thesis-badge">📍 THESIS v{{ _cur_v }}</span>
+    <span class="thesis-badge">📍 投资论点 THESIS v{{ _cur_v }}</span>
     {% if _cur_entry %}<span class="hint thesis-stage">@ {{ _cur_entry.stage_set_at }} · {{ (_cur_entry.set_at or '')[:10] }}</span>{% endif %}
-    <a class="thesis-link" href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ _cur_v }}">查看完整 thesis →</a>
+    <a class="thesis-link" href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ _cur_v }}">查看完整投资论点 thesis →</a>
   </div>
   {% if _cur_entry %}
   <p class="thesis-summary">{{ _cur_entry.summary }}</p>
   {% endif %}
   {% if coverage %}
   <div class="coverage-strip">
-    <span class="cov-label">🎯 Killer Question 火力覆盖 {{ coverage.coverage_pct }}%：</span>
+    <span class="cov-label">🎯 关键问题 Killer Question 火力覆盖 {{ coverage.coverage_pct }}%：</span>
     {% for k in coverage.all_keys %}
       {% set _n = coverage.by_key[k] | length %}
       {% if _n > 0 %}
@@ -158,12 +158,12 @@
         <span class="cov-chip cov-gap" title="无 todo 攻打——补 todo 或在 thesis 中明确不验证">{{ k }}<span class="cov-count">✗</span></span>
       {% endif %}
     {% endfor %}
-    {% if coverage.uncovered %}<span class="cov-warn">⚠ {{ coverage.uncovered | length }} 个 Killer Question 无 todo 攻打</span>{% endif %}
+    {% if coverage.uncovered %}<span class="cov-warn">⚠ {{ coverage.uncovered | length }} 个关键问题 Killer Question 无 todo 攻打</span>{% endif %}
   </div>
   {% endif %}
   {% if roadmap_coverage and roadmap_coverage.roadmap_exists %}
   <div class="roadmap-cov-strip">
-    <span class="cov-label">🗺 Roadmap 闭环校验：</span>
+    <span class="cov-label">🗺 路线图 Roadmap 闭环校验：</span>
     <span class="rc-section">
       L4
       {% if roadmap_coverage.uncovered_in_l4 %}
@@ -181,14 +181,14 @@
       {% endif %}
     </span>
     {% if roadmap_coverage.ok %}
-      <span class="rc-badge rc-validated">VALIDATED</span>
+      <span class="rc-badge rc-validated">闭环通过 VALIDATED</span>
     {% else %}
       <span class="rc-badge rc-broken">闭环未通过</span>
     {% endif %}
   </div>
   {% elif roadmap_coverage and not roadmap_coverage.roadmap_exists %}
   <div class="roadmap-cov-strip">
-    <span class="hint">🗺 Roadmap 未生成 — 运行 workflow 01 后会显示闭环校验</span>
+    <span class="hint">🗺 路线图 Roadmap 未生成 — 运行 workflow 01 后会显示闭环校验</span>
   </div>
   {% endif %}
   {% if manifest_coverage and manifest_coverage.manifest_exists and manifest_coverage.thesis_ks %}
@@ -280,7 +280,7 @@
       </ul>
     </div>
     <div class="watch-col">
-      <h3>Kill Criteria</h3>
+      <h3>否决条件 Kill Criteria</h3>
       <ul>
         {% for k in monitor_kills %}
         <li>
@@ -425,7 +425,7 @@
               {% for a in todo.addresses %}
                 {% set _ak = a.split('@')[0] %}
                 {% if _ak.startswith('K') and topic.thesis and topic.thesis.current_version is not none %}
-                  <a class="chip chip-addr" href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ topic.thesis.current_version }}" title="对应 Killer Question {{ a }}">{{ a }}</a>
+                  <a class="chip chip-addr" href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ topic.thesis.current_version }}" title="对应关键问题 Killer Question {{ a }}">{{ a }}</a>
                 {% else %}
                   <span class="chip chip-addr">{{ a }}</span>
                 {% endif %}

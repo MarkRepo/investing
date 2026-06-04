@@ -21,7 +21,7 @@
     <span class="tnode-variants">
       {% for v in t.variants %}
         <a href="/prism/{{ t.slug }}/{{ v.name }}" class="variant-chip"
-           title="阶段 {{ v.progress.phase_index }}/{{ v.progress.total }} · {{ v.stage or '未开工' }}{% if v.needs_review %} · ⚠️ 有未消化重大变更，待重评 thesis{% endif %}">
+           title="阶段 {{ v.progress.phase_index }}/{{ v.progress.total }} · {{ v.stage or '未开工' }}{% if v.needs_review %} · ⚠️ 有未消化重大变更，待重评投资论点 thesis{% endif %}">
           {{ v.name }}<span class="stage-pill stage-{{ v.progress.state }}">{% if v.progress.state == 'done' %}✅{% endif %}{{ v.progress.label }}</span>{% if v.needs_review %}<span class="stage-pill stage-review">⚠️待复评</span>{% endif %}
         </a>
       {% endfor %}

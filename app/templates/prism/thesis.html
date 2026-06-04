@@ -1,24 +1,24 @@
 {% extends "base.html" %}
-{% block title %}Thesis v{{ version }} · {{ topic.display_name }} · {{ variant }}{% endblock %}
+{% block title %}投资论点 thesis v{{ version }} · {{ topic.display_name }} · {{ variant }}{% endblock %}
 {% block content %}
 <nav class="breadcrumb">
   <a href="/prism">研究主题</a> /
   <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
   <a href="/prism/{{ topic.slug }}/{{ variant }}">{{ variant }}</a> /
-  <span>Thesis v{{ version }}</span>
+  <span>投资论点 thesis v{{ version }}</span>
 </nav>
 
 <div class="thesis-layout">
   <aside class="thesis-nav">
-    <h3>Thesis 版本</h3>
+    <h3>投资论点 thesis 版本</h3>
     <ul>
     {% for v in thesis_versions %}
       <li class="{% if v == version %}active{% endif %}">
-        <a href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ v }}">v{{ v }}{% if topic.thesis and topic.thesis.current_version == v %} · current{% endif %}</a>
+        <a href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ v }}">v{{ v }}{% if topic.thesis and topic.thesis.current_version == v %} · 当前 current{% endif %}</a>
       </li>
     {% endfor %}
     </ul>
-    <p class="hint nav-back"><a href="/prism/{{ topic.slug }}/{{ variant }}">← 返回仪表盘</a></p>
+    <p class="hint nav-back"><a href="/prism/{{ topic.slug }}/{{ variant }}">← 返回研究详情</a></p>
 
     {% if coverage %}
     <h3 style="margin-top:1.5em">🎯 攻打分布</h3>
@@ -64,8 +64,8 @@
   <article class="thesis-body">
     <div class="thesis-meta hint">
       模型：<span class="model-tag">{{ variant }}</span> ·
-      Thesis 表态 v{{ version }}
-      {% if topic.thesis and topic.thesis.current_version == version %}<span class="current-tag">CURRENT</span>{% endif %}
+      投资论点 thesis 表态 v{{ version }}
+      {% if topic.thesis and topic.thesis.current_version == version %}<span class="current-tag">当前 CURRENT</span>{% endif %}
     </div>
     <div class="markdown-body">
       {{ html_body | safe }}

@@ -58,9 +58,9 @@ _OUTPUT_KEYS_LABELS = [
     # 不再 seed、磁盘文件已清空，故不再列入 label 表（保留只会让遗留 topic 渲染出
     # file_exists=False 的死行 + 坏链）。list_outputs 用 skip-if-absent 渲染——
     # 遗留 topic 若 outputs_state 仍带这些 key，无 label 即自然跳过。
-    ("c_investment_case", "投资 case（决策链）"),
-    ("i_industry_case", "行业 case（决策链）"),
-    ("a_arena_case", "竞技场 case（决策链）"),
+    ("c_investment_case", "投资决策链 case"),
+    ("i_industry_case", "行业决策链 case"),
+    ("a_arena_case", "竞技场决策链 case"),
     ("08_living_feed", "信息流时间线"),
     # 注：sidecar（07_decision_kit / industry_to_arenas / peer_matrix）是 .yaml
     # 文件、无独立 markdown 视图（见 04-synthesize/_peer_matrix_spec.md：sidecar yaml
