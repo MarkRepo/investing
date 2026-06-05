@@ -38,3 +38,28 @@ def test_render_flag_summary_lists_flags(tmp_topic):
     topic_io.set_critic_verdict(slug, variant, verdict="approve")
     md = render.render_diagnostic_page(slug, variant)
     assert "05.Q1" in md   # steelman flag 进复核旗汇总
+
+
+def test_build_view_structure(tmp_topic):
+    """build_view 出结构化分组（供 web 体检 tab），字段齐、分组顺序对。"""
+    slug, variant = tmp_topic
+    view = render.build_view(slug, variant)
+    assert set(view["summary"]) >= {"pass", "fail", "flag", "na"}
+    assert view["groups"], "应至少有一组"
+    assert view["groups"][0]["title"].startswith("贯穿")
+    p = view["groups"][0]["probes"][0]
+    assert {"status", "probe_id", "label", "detail", "action"} <= set(p)
+    assert view["badge"]["pass"] == "🟢"
+    # 分组顺序：贯穿在最前，Stage 单调递增
+    stage_titles = [g["title"] for g in view["groups"] if g["title"].startswith("Stage")]
+    assert stage_titles == sorted(stage_titles)
+
+
+def test_build_view_flags_are_flag_status(tmp_topic):
+    """flags 列表只含 status==flag，且 05.Q1 steelman 在内。"""
+    slug, variant = tmp_topic
+    topic_io.set_critic_verdict(slug, variant, verdict="approve")
+    view = render.build_view(slug, variant)
+    assert view["flags"], "approve 后至少有 steelman flag"
+    assert all(p["status"] == "flag" for p in view["flags"])
+    assert any(p["probe_id"] == "05.Q1" for p in view["flags"])

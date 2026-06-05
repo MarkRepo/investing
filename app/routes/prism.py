@@ -585,6 +585,33 @@ def prism_diag(request: Request, slug: str, variant: str):
     )
 
 
+@router.get("/{slug}/{variant}/checkup")
+def prism_checkup(request: Request, slug: str, variant: str):
+    """体检 tab：被动可观测层（observability）—— 流程质量探针机械重建。
+
+    纯被动·零 LLM：从已有产物残渣算 pass/fail/flag/na，不重跑研究、不调模型。
+    topic 不存在则 404；探针自身缺残留优雅降级为 na，整层失败也不拖垮整页。
+    spec: observability.md §6。
+    """
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    from prism.scripts.observability_render import build_view
+    try:
+        view = build_view(slug, variant)
+    except Exception as e:  # 体检本身失败不该拖垮整页
+        view = {
+            "summary": {"pass": 0, "fail": 0, "flag": 0, "na": 0},
+            "groups": [], "flags": [], "badge": {}, "error": str(e),
+        }
+    return templates.TemplateResponse(
+        request,
+        "prism/checkup.html",
+        {"topic": topic, "variant": variant, "view": view},
+    )
+
+
 @router.get("/{slug}/{variant}/web-search-log")
 def prism_web_search_log(request: Request, slug: str, variant: str):
     """Render the web-search log for a topic variant."""

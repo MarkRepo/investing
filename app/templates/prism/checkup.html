@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}体检 · {{ topic.display_name or topic.slug }} · {{ variant }}{% endblock %}
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
+  <a href="/prism/{{ topic.slug }}/{{ variant }}">{{ variant }}</a> /
+  <span>体检</span>
+</nav>
+
+<div class="prism-header">
+  <h1>{{ topic.display_name or topic.slug }}</h1>
+  <span class="model-tag">{{ variant }}</span>
+  <span class="hint"> · 流程体检 / observability</span>
+</div>
+
+<div class="diag-tabs">
+  <span class="diag-tabs-label">视图</span>
+  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}">读者向</a>
+  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/diag">诊断 / debug</a>
+  <span class="diag-tab active">体检</span>
+</div>
+
+<p class="hint diag-intro">纯被动 · 零 LLM：从已有产物残渣机械重建流程质量探针，不重跑研究、不调模型。
+🟢 通过 ·　🔴 缺漏 ·　🟠 需人复核（机械判不了的真值）·　⚪ 盲点显式化（被动层给不了）。</p>
+
+<div class="checkup-bar">
+  <span class="cu cu-fail">🔴 {{ view.summary['fail'] }} <em>缺漏</em></span>
+  <span class="cu cu-flag">🟠 {{ view.summary['flag'] }} <em>待复核</em></span>
+  <span class="cu cu-pass">🟢 {{ view.summary['pass'] }} <em>通过</em></span>
+  <span class="cu cu-na">⚪ {{ view.summary['na'] }} <em>盲点</em></span>
+</div>
+
+{% for g in view.groups %}
+<section class="diag-section">
+  <h2>{{ g.title }}</h2>
+  <table class="data-table diag-table checkup-table">
+    <thead><tr><th class="c-badge"></th><th class="c-id">探针</th><th class="c-label">检查</th><th>detail</th><th class="c-action">动作</th></tr></thead>
+    <tbody>
+    {% for p in g.probes %}
+      <tr class="cu-row cu-row-{{ p.status }}">
+        <td class="c-badge">{{ view.badge[p.status] }}</td>
+        <td class="c-id"><code>{{ p.probe_id }}</code></td>
+        <td class="c-label">{{ p.label }}</td>
+        <td class="cu-detail">{{ p.detail }}</td>
+        <td class="cu-action">{{ p.action }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endfor %}
+
+<section class="diag-section">
+  <h2>复核旗汇总 <span class="hint">（🟠 待人复核 — 机械层判不了真值，必须人看一眼）</span></h2>
+  {% if view.flags %}
+  <ul class="flag-list">
+    {% for p in view.flags %}
+    <li>🟠 <strong>{{ p.probe_id }}</strong> {{ p.label }} — <span class="hint">{{ p.detail }}</span></li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="empty">无 · 没有待复核旗</p>
+  {% endif %}
+</section>
+
+<style>
+  main { margin-top: 0; }
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 0.5em; }
+  .breadcrumb a { color: #555; }
+  .prism-header { margin: 0.5em 0; }
+  .prism-header h1 { display: inline; font-size: 1.5em; margin-right: 0.5em; }
+  .model-tag { font-size: 0.82em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; }
+  .diag-tabs { display: flex; align-items: center; gap: 0.1em; margin: 1em 0 0.3em; border-bottom: 2px solid #e5e5e5; }
+  .diag-tabs-label { font-size: 0.78em; color: #aaa; margin-right: 0.5em; }
+  .diag-tab { padding: 0.5em 1.1em; font-size: 0.9em; text-decoration: none; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; border-radius: 4px 4px 0 0; }
+  .diag-tab.active { color: #c0392b; font-weight: 600; background: #fbecec; border-bottom-color: #c0392b; }
+  .diag-tab:not(.active):hover { color: #c0392b; background: #fafafa; }
+  .diag-intro { margin: 0.6em 0 1.2em; line-height: 1.5; }
+  .diag-section { margin: 1.8em 0; padding-top: 0.5em; border-top: 1px solid #eee; }
+  .diag-section h2 { font-size: 1.1em; color: #333; }
+  .empty { color: #aaa; font-style: italic; font-size: 0.9em; }
+  .checkup-bar { display: flex; gap: 1.4em; margin: 1.1em 0 1.5em; font-size: 1.1em; font-weight: 600; flex-wrap: wrap; }
+  .checkup-bar .cu em { font-style: normal; font-size: 0.62em; color: #999; font-weight: 400; margin-left: 0.1em; }
+  .data-table.diag-table { border-collapse: collapse; width: 100%; font-size: 0.82em; }
+  .diag-table th, .diag-table td { border: 1px solid #e5e5e5; padding: 0.4em 0.6em; text-align: left; vertical-align: top; }
+  .diag-table th { background: #fafafa; font-weight: 600; }
+  .checkup-table .c-badge { width: 1.6em; text-align: center; }
+  .checkup-table .c-id { white-space: nowrap; }
+  .checkup-table .c-id code { font-size: 0.95em; color: #444; }
+  .checkup-table .c-label { max-width: 16em; }
+  .checkup-table .cu-detail { font-size: 0.95em; color: #555; }
+  .checkup-table .cu-action { font-size: 0.92em; color: #c0392b; }
+  .cu-row-fail { background: #fdecea; }
+  .cu-row-flag { background: #fef9ec; }
+  .cu-row-na { color: #999; }
+  .flag-list { line-height: 1.7; padding-left: 1.2em; }
+  .flag-list li { margin-bottom: 0.35em; }
+  .flag-list .hint { color: #777; font-size: 0.9em; }
+</style>
+{% endblock %}

@@ -7,6 +7,35 @@ render_diagnostic_page(slug, variant) 调 observability.run_probes 出 Trace，
 from prism.scripts.observability import run_probes
 
 _BADGE = {"pass": "🟢", "fail": "🔴", "flag": "🟠", "na": "⚪"}
+_STAGES = ["00", "01", "02", "03", "04", "05", "06"]
+
+
+def build_view(slug: str, variant: str) -> dict:
+    """结构化分组视图，供 web「体检」tab 渲染（Jinja 消费）。
+
+    与 render_diagnostic_page 同源（run_probes）、同分组顺序（贯穿 → Stage 00-06），
+    但返回结构化 dict 而非 markdown。返回 {summary, groups, flags, badge}：
+      - groups: [{title, probes}]，按贯穿在前、Stage 升序
+      - flags: 所有 status=='flag' 的探针（复核旗汇总）
+      - badge: status→emoji 映射
+    spec: observability.md §6。
+    """
+    trace = run_probes(slug, variant)
+    probes = trace["probes"]
+    groups = []
+    cc = [p for p in probes if p["stage"] == "cross-cutting"]
+    if cc:
+        groups.append({"title": "贯穿（cross-cutting）", "probes": cc})
+    for st in _STAGES:
+        rows = [p for p in probes if p["stage"].startswith(st)]
+        if rows:
+            groups.append({"title": f"Stage {st}", "probes": rows})
+    return {
+        "summary": trace["summary"],
+        "groups": groups,
+        "flags": [p for p in probes if p["status"] == "flag"],
+        "badge": dict(_BADGE),
+    }
 
 
 def render_diagnostic_page(slug: str, variant: str) -> str:

@@ -89,3 +89,23 @@ def test_prism_output_200_after_file_written(prism_client, tmp_path):
     r = prism_client.get(f"/prism/cn-pet/{VARIANT}/01_business_panorama")
     assert r.status_code == 200
     assert "商业全景" in r.text
+
+
+def test_prism_checkup_200(prism_client):
+    # 体检 tab：observability 被动诊断页（catch-all /{output_key} 不抢此路由）
+    r = prism_client.get(f"/prism/cn-pet/{VARIANT}/checkup")
+    assert r.status_code == 200
+    assert "体检" in r.text
+    assert "复核旗" in r.text
+
+
+def test_prism_checkup_404_for_unknown(prism_client):
+    r = prism_client.get(f"/prism/does-not-exist/{VARIANT}/checkup")
+    assert r.status_code == 404
+
+
+def test_detail_page_links_checkup_tab(prism_client):
+    # 读者向页 tab 组里应有「体检」链接
+    r = prism_client.get(f"/prism/cn-pet/{VARIANT}")
+    assert r.status_code == 200
+    assert f"/prism/cn-pet/{VARIANT}/checkup" in r.text
