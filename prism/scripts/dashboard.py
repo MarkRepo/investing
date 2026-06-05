@@ -220,12 +220,15 @@ def _sidecar_loader_for(topic_type: str):
 def _canonical_variant(topics: list[dict]) -> dict:
     """Pick the canonical variant dict for a slug's topics.
 
-    Order: variant whose type-matched sidecar exists → deepseek-v4-pro → first.
+    Order: explicit canonical=true → variant with type-matched sidecar → deepseek-v4-pro → first.
     Single source of truth so dashboard cards and monitor flips never land on
-    different variants of the same slug.
+    different variants of the same slug. 用户在 /prism/{slug} 页"设为默认"会写 canonical=true。
     """
     if not topics:
         raise ValueError("topics 不能为空")
+    for t in topics:
+        if t.get("canonical"):
+            return t
     loader = _sidecar_loader_for(topics[0].get("type", ""))
     for t in topics:
         if loader(t["slug"], t.get("variant", "")):

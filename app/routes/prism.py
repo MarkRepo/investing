@@ -234,10 +234,12 @@ def prism_topic(request: Request, slug: str):
                 "status": data.get("status", ""),
                 "progress": topic_io.stage_progress(data.get("stage", "")),
                 "needs_review": bool(topic_io.pending_review_unresolved(data)),
+                "canonical": bool(data.get("canonical")),
             })
         except Exception:
             variant_data.append({"name": v, "stage": "", "status": "",
-                                 "progress": topic_io.stage_progress("")})
+                                 "progress": topic_io.stage_progress(""),
+                                 "canonical": False})
 
     # 从首个 variant 读 display_name + type；type 决定"对比产出"默认指向哪份 case
     # （决策链按 type 三选一；旧的硬编码 01_business_panorama 已随旧 8 维退休删除）。
@@ -437,6 +439,26 @@ def prism_mark_done(slug: str, variant: str):
         raise HTTPException(status_code=400, detail=f"当前阶段 {topic.get('stage')!r} 不可直接完成(需先完成合成)")
     topic_io.set_stage(slug, "done", variant)
     return RedirectResponse(url=f"/prism/{slug}/{variant}", status_code=303)
+
+
+@router.post("/{slug}/{variant}/set-canonical")
+def prism_set_canonical(slug: str, variant: str):
+    """把此 variant 标为 dashboard / monitor 默认引用的 canonical。
+
+    同 slug 其他 variant 的 canonical 字段会被清掉（set_canonical 内部处理）。
+    成功后重建 dashboard.md 并 303 回 variants 选择页。
+    """
+    try:
+        topic_io.set_canonical(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    try:
+        from prism.scripts.dashboard import build
+        build()
+    except Exception:
+        # dashboard 重建失败不影响 canonical 设置本身——下次访问 /prism/dashboard 会再触发
+        pass
+    return RedirectResponse(url=f"/prism/{slug}", status_code=303)
 
 
 def _monitor_context(slug: str, variant: str) -> dict:

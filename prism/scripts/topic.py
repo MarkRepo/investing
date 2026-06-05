@@ -368,6 +368,10 @@ def create_topic(
         scope["short_name"] = short_name.strip()
     if search_terms:
         scope["search_terms"] = [s.strip() for s in search_terms if isinstance(s, str) and s.strip()]
+    # 首个 variant 自动标 canonical（dashboard 默认展示用，避免靠迭代顺序赌）。
+    # 已有其他 variant 时不抢——保持现 canonical 不动，新建的非 canonical 直到用户在
+    # /prism/{slug} 页显式 set_canonical 才切换。
+    is_first_variant = not existing_variants
     data = {
         "slug": slug,
         "display_name": display_name,
@@ -375,6 +379,7 @@ def create_topic(
         "created": _now_iso(),
         "status": "active",
         "stage": "00-init",
+        "canonical": is_first_variant,
         "parent_topic": parent_topic,
         "monitoring_tier": monitoring_tier,
         "concepts": concepts or [],
@@ -430,6 +435,23 @@ def update_topic(slug: str, variant: str, **fields) -> None:
 
 def set_stage(slug: str, stage: str, variant: str) -> None:
     update_topic(slug, variant, stage=stage)
+
+
+def set_canonical(slug: str, variant: str) -> None:
+    """把 slug 下指定 variant 标为 canonical，同 slug 其他 variant 自动清掉。
+
+    dashboard / monitor 通过 _canonical_variant 读这个字段决定展示哪个 variant 的结论。
+    每个 slug 必须恰好有一个 canonical（_canonical_variant 兜底逻辑能容忍 0 个，
+    但显式标定是主路径）。
+    """
+    if not _topic_path(slug, variant).exists():
+        raise FileNotFoundError(f"Topic not found: {slug}/{variant}")
+    for v in list_variants(slug):
+        data = _read_yaml(_topic_path(slug, v))
+        new_val = (v == variant)
+        if data.get("canonical") != new_val:
+            data["canonical"] = new_val
+            _write_yaml(_topic_path(slug, v), data)
 
 
 # F17: primer 深度软门禁阈值。depth=deep 的正文字数下限——参照级 primer ~9000+ 字，
