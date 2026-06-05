@@ -1,6 +1,6 @@
 slug: global-futu
 variant: opus4.8
-updated: '2026-06-01T07:48:29.937339+00:00'
+updated: '2026-06-05T15:47:06.729976+00:00'
 materials:
 - id: mat-5ab026
   filename: 2026_IBKR_10-Q_2026-05-07.htm
@@ -535,3 +535,72 @@ materials:
   - valuation
   parent_mat: mat-50b810
   sec_section: item_18_financial
+- id: mat-3e4456
+  filename: 2026-06-05_futu-holdings-futu-stock-forecast-analyst-price-ta.md
+  source_type: web-search
+  added: '2026-06-05T15:47:06.598768+00:00'
+  processed: true
+  notes: query='FUTU analyst consensus price target + Q1 2026 post-earnings drop driver'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  rings:
+  - consensus
+  confidence: 0.7
+  search_meta:
+    query: FUTU analyst consensus price target + Q1 2026 post-earnings drop driver
+    url: https://stockanalysis.com/stocks/futu/forecast/
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T15:47:06.589077+00:00'
+    stale_at: '2026-07-05T15:47:06.589077+00:00'
+    expire_at: '2026-09-03T15:47:06.589077+00:00'
+    triggered_by: 05-critic
+- id: mat-8107dd
+  filename: 2026-06-05_futu-slides-as-investors-digest-post-earnings-trad.md
+  source_type: web-search
+  added: '2026-06-05T15:47:06.627152+00:00'
+  processed: true
+  notes: query='FUTU analyst consensus price target + Q1 2026 post-earnings drop driver'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  rings:
+  - consensus
+  confidence: 0.7
+  search_meta:
+    query: FUTU analyst consensus price target + Q1 2026 post-earnings drop driver
+    url: https://www.quiverquant.com/news/Futu+slides+as+investors+digest+post-earnings+trade+and+a+fresh+price-target+cut
+    domain: quiverquant.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T15:47:06.617919+00:00'
+    stale_at: '2026-07-05T15:47:06.617919+00:00'
+    expire_at: '2026-09-03T15:47:06.617919+00:00'
+    triggered_by: 05-critic
+- id: mat-83d446
+  filename: 2026-06-05_futu-q1-earnings-fall-y-y-due-to-rmb1-85b-csrc-pen.md
+  source_type: web-search
+  added: '2026-06-05T15:47:06.656608+00:00'
+  processed: true
+  notes: query='FUTU analyst consensus price target + Q1 2026 post-earnings drop driver'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  rings:
+  - consensus
+  confidence: 0.75
+  search_meta:
+    query: FUTU analyst consensus price target + Q1 2026 post-earnings drop driver
+    url: https://www.tradingview.com/news/zacks:f32d321c4094b:0-futu-q1-earnings-fall-y-y-due-to-rmb1-85b-csrc-penalty-revenues-miss/
+    domain: tradingview.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T15:47:06.647077+00:00'
+    stale_at: '2026-07-05T15:47:06.647077+00:00'
+    expire_at: '2026-09-03T15:47:06.647077+00:00'
+    triggered_by: 05-critic
