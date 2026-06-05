@@ -33,7 +33,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 - `uncovered_ring_inputs` 非空 → 决策链某环必带输入无料覆盖（带 🔴 = 三项真·欠供，最该补）；`api_pending_inputs` 非红
 - `expired_web_materials` 非空 → web-search 材料 > 90 天
 
-任一红项非空 → **不要硬干**，先决定补救路径（即兴 web-search Step 2.4 / sub-agent 深挖 Step 2.4b / set_user_todos 让用户补），再继续 Step 0 开始的既定流程。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于把"论证薄弱"留给 04/05。抽取阶段尤其要借 ring 轴定位"哪些决策环输入还没料喂 §2.2 F"。
+任一红项非空 → **不要硬干**，按 auto-fetch 规约**有先后**补救（不是平级）：**先**即兴 web-search Step 2.4 / sub-agent 深挖 Step 2.4b 尝试自动抓；**只有** attempt 真跑过且对应 todo 被 `mark_todo_fetch('empty')`（有效尝试确认公开无源）后，`set_user_todos` 让用户补才是合法最后手段（且走 empty 硬闸门）。`error` 必须重试不得降级。判定见 [`_autofetch_protocol.md`](_autofetch_protocol.md)。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于把"论证薄弱"留给 04/05。抽取阶段尤其要借 ring 轴定位"哪些决策环输入还没料喂 §2.2 F"。
 
 ---
 
@@ -429,6 +429,9 @@ quality: high|medium|low
 bias: bull|bear|neutral
 addresses: [{命中的 K#}]        # thesis 脊柱；frontmatter 优先于 manifest
 rings: [{命中的决策链输入合同 code}]   # 见 §2.2 F + _input_contract.md；没命中可省略此字段
+conflicts_with: [{冲突 finding 文件名/id}]   # 可选（B6 · observability.md §4.6）：本 finding 与
+                                              #   哪些 finding 证据相矛盾；无冲突则省略此字段
+conflict_note: {一句话：冲突在哪/暂如何取舍}   # 可选，仅 conflicts_with 非空时填；供被动探针 03.Q3 读
 ---
 
 ## 核心数据点与事实

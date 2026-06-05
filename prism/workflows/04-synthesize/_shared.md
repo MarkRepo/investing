@@ -190,6 +190,22 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
 主 agent 直做的标准流程：
 
+0. **empty 硬闸门（auto-fetch 规约 · 进决策链前必做）**：
+
+   ```bash
+   python3 -c "
+   from prism.scripts.topic import empty_undecided_todos
+   for t in empty_undecided_todos('{slug}', '{variant}'):
+       print(t.get('info_tier'), '|', t.get('addresses'), '|', t.get('last_fetch_note',''), '|', t['task'][:70])
+   "
+   ```
+
+   非空 → **必停**。用 `AskUserQuestion`（multiSelect）把每条"自动抓已确认公开无源"的项摆给用户，逐条选：
+   - **跳过(waived)** → `set_todo_disposition('{slug}','{variant}','<task子串>','waived', note='<理由>')` → 合成写"该项公开数据缺失"。
+   - **我来收(will_collect)** → `set_todo_disposition(...,'will_collect', note=...)` → 合成写"待用户补料"显式缺口，保持可见 pending（补料登记后 auto_resolve 自动翻 fetched）。
+
+   **全部决策完（`empty_undecided_todos` 空）前不进决策链、不写任何缺口**——反静默核心。AskUserQuestion 的 label/description **禁中文弯引号**（用 「」 或不加）。判定与盖戳见 [`_autofetch_protocol.md`](_autofetch_protocol.md)。
+
 1. **读 findings（一次性全文加载）**：调 `format_findings_for_prompt` helper 列出自有 + 父级 findings 路径，主 agent 用 Read 工具**并行**读完所有未读 findings（同一 message 多 Read 调用）。
 
 2. **建轻索引（防 compact 防误读）**：
@@ -212,6 +228,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
    **每批次/每环开始前必做**（廉价且重要）：
    - **Read `outputs/_findings_index.md`**（已落盘，~3K token）—— 即使中间发生过 compact，看一眼索引也能立即定位本环需要哪些 mat_id
    - 从索引筛出与本环 addresses 维度相关的 mat_id
+   - **R3 backstop（auto-fetch 规约）**：调 `pending_unfetched_todos`，筛 addresses 命中本环 K#/ring 的项。`fetch_status∈{unattempted,error}` 的**先按 [`_autofetch_protocol.md`](_autofetch_protocol.md) 跑一次 attempt + `mark_todo_fetch`** 再写本环。若某项尝试后转 `empty` → **立即走第 0 步 empty 硬闸门**（本环停下问用户），不得自动写缺口。已 `waived` 写"公开数据缺失"；`will_collect` 写"待用户补料"显式缺口。
    - **自检**：还能清晰回忆这些 mat_id 对应 finding 的内容？能 → 直接写；不能/模糊 → 单独 Read 那几份补回（不是全部，只补本环需要的）
 
    **不要做的**：
@@ -245,7 +262,15 @@ print('状态已更新')
 
 ```bash
 python3 -c "
-from prism.scripts.topic import read_topic, set_next_actions, append_user_todos
+from prism.scripts.topic import (
+    read_topic, set_next_actions, append_user_todos,
+    pending_unfetched_todos, empty_undecided_todos,
+)
+# auto-fetch 规约收尾断言：error 项不得静默变永久 user_todo；empty 必须都已被用户处置
+_err = [t for t in pending_unfetched_todos('{slug}', '{variant}') if t.get('fetch_status') == 'error']
+_undec = empty_undecided_todos('{slug}', '{variant}')
+assert not _err, f'⛔ 收尾前还有 {len(_err)} 条 fetch_status=error 未重试，回 R3 重试'
+assert not _undec, f'⛔ 收尾前还有 {len(_undec)} 条 empty 未经用户处置，回第 0 步硬闸门'
 t = read_topic('{slug}', '{variant}')
 # 仅 append 一条完成提示，不动 01/02 写的结构化 todos（修 H2）
 # 播报传显式 status='done'——不能用纯字符串（默认 pending，会被详情页当"待补料"计数）

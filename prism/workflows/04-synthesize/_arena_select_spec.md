@@ -153,6 +153,17 @@ arenas:
   # 追加更多 arena...
 
 cluster_tags: [{tag1}, {tag2}]  # 继承自行业，e.g. [ai-compute, china-defense]
+
+# ── 可观测层字段（B2/B3 · observability.md §4.2-4.3 · 漏斗收尾顺手落）──
+chain_links:                          # 决策链 6 环结构断言（被动断链探针 04.Q1 读）
+  rings_present: [1, 2, 3, 4, 5, 6]   # 实际写齐了哪几环
+  r4_anchors_r2: {true|false}         # ④6 维评分是否锚回②的隐含数
+  r6_takes_r4_ev: {true|false}        # ⑥三档分流是否接④的评分
+  r5_has_kill_signpost: {true|false}  # ⑤是否有 kill 触发 + signpost
+honest_gaps:                          # 诚实缺口标记（04.Q3 读；确无缺口写 []）
+  - ring: {1-6}
+    kind: {data-missing|training-estimate}
+    note: {一句话：缺什么 / 为何只能估}
 ```
 
 ```bash

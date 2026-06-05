@@ -320,15 +320,18 @@ EOF
 
 ## Step 5.6：深度抓取公开分析材料（**先尝试自动获取，抓不到才变 user_todos**）
 
-> **为什么必须做**：Step 5.5 只处理了 `annual-report` / `quarterly-report` 等有 ticker 的结构化文件。但 roadmap tier1/tier2 里还有很多 `sell-side-note` / `industry-research` / `policy` / `data` 类型的材料，标注了 `info_tier: public` 或 `half_public`，**实际上在公开渠道有全文或摘要可搜到**（卖方报告转载、行业研究机构公开报告、监管裁决原文、独立研究博客）。
+> **为什么必须做**：Step 5.5 只处理了 `annual-report` / `quarterly-report` 等有 ticker 的结构化文件。但 roadmap 里还有很多 `sell-side-note` / `industry-research` / `policy` / `data` 类型的材料，**实际上在公开渠道有全文或摘要可搜到**（卖方报告转载、行业研究机构公开报告、监管裁决原文、独立研究博客）。
 >
 > 如果跳过本步直接把这些写成 user_todos，等于把**本可以自动完成的工作甩给用户**。
 >
-> **硬规则**：本步跑完后，**只有确认公开不可获取的材料**（`info_tier: hard` 或所有搜索均无果）才保留为 user_todos。已自动获取的 todo 必须在 Step 6 标 `done`。
+> **硬规则（auto-fetch 规约 R1/R2，判定与盖戳见 [`_autofetch_protocol.md`](_autofetch_protocol.md)）**：
+> - 作用域 = **tier1 + tier2 + tier3 全部、所有 info_tier**（仅排除 Step 5.5 已处理的 `annual-report`/`quarterly-report`）。`info_tier` 只决定**努力顺序/强度**（hard 先上 exa advanced + 权威 URL WebFetch），**不再作为跳过门槛**。
+> - 每条尝试后**必须 `mark_todo_fetch`**：抓到 `fetched`、有效尝试确认公开无源 `empty`、工具/网络失败 `error`。
+> - 只有 `fetch_status='empty'`（**有效尝试**过）才保留为 user_todo；`error` **必须重试**，绝不降级；`fetched` 在 Step 6 标 `done`。
 
 ### 执行方法
 
-对 roadmap `material_priority.tier1` + `tier2` 中每条**非 `annual-report`**（Step 5.5 已处理）且 **`info_tier != 'hard'`** 的材料，按以下阶梯尝试：
+对 roadmap `material_priority` **tier1 + tier2 + tier3** 中每条**非 `annual-report`**（Step 5.5 已处理）的材料——**不分 info_tier**——按以下阶梯尝试（hard 类同样跑，多半 `empty` 但要由真实结果证明）：
 
 #### 阶梯 1：exa 高级搜索（最适合找分析报告全文）
 
@@ -367,31 +370,40 @@ Date: {日期}
 {全文或摘要内容}
 ```
 
-然后调 `add_material` 入库：
+然后调 `add_material` 入库，并 `mark_todo_fetch` 盖结果：
 ```python
 from prism.scripts.manifest import add_material
+from prism.scripts.topic import mark_todo_fetch
+# 抓到：
 mid = add_material('{slug}', '{filename}', '{source_type}', '{variant}',
     notes='{材料描述}', addresses={addresses}, rings={rings}, confidence=0.8)
+mark_todo_fetch('{slug}', '{variant}', '<对应 todo task 子串>', 'fetched', note='exa→{来源}')
+# 有效尝试但公开无源：
+mark_todo_fetch('{slug}', '{variant}', '<task 子串>', 'empty', note='exa+semantic 0 命中')
+# 工具/网络/限流失败（必须重试，不要降级）：
+mark_todo_fetch('{slug}', '{variant}', '<task 子串>', 'error', note='providers exhausted')
 ```
 
 ### 判定结果汇总
 
-跑完后输出一张表，明确标注每条材料的获取状态：
+跑完后输出一张表，明确标注每条材料的 `fetch_status`：
 
 ```
-| 材料 | info_tier | 获取方式 | 状态 |
-|------|-----------|----------|------|
-| Goldman Sachs PDD Report | half_public | exa search → BigGo 转载 | ✅ 已入库 mat-xxx |
-| QuestMobile 份额报告 | half_public | exa search → BXTData 全文 | ✅ 已入库 mat-xxx |
-| Temu 半托管单位经济 | hard | — | ⏳ 保留为 user_todo |
+| 材料 | info_tier | 获取方式 | fetch_status |
+|------|-----------|----------|--------------|
+| Goldman Sachs PDD Report | half_public | exa search → BigGo 转载 | fetched（mat-xxx） |
+| QuestMobile 份额报告 | half_public | exa search → BXTData 全文 | fetched（mat-xxx） |
+| Temu 半托管单位经济 | hard | exa+semantic 均无果 | empty（待用户决策） |
+| 某付费库数据 | hard | providers exhausted | error（下轮重试） |
 ```
 
 ### 纪律
 
 - **不要跳过本步**。如果 exa/adapter/WebFetch 能搜到，就没理由让用户手动找
-- **`info_tier: hard` 直接跳过**（专家访谈/产业链调研/付费数据库，确认不可自动获取）
+- **hard 也要尝试一次**（专家访谈/产业链调研/付费数据库多半 `empty`，但 empty 要由真实结果证明，不由标签预判——付费卖方深度常有公开转载，别先入为主跳过）
+- **`error` 必须重试，永不降级**（工具/网络/限流不是"公开没有"；判定见 [`_autofetch_protocol.md`](_autofetch_protocol.md) 表 A/B）
 - **exa search 的 `numResults` 不要超过 5**（控制成本）
-- **搜不到不丢人**——但要诚实记录"搜了没搜到"，而不是没搜就放弃
+- **搜不到不丢人**——但要 `mark_todo_fetch('empty')` 诚实记录"搜了没搜到"，而不是没搜就放弃
 - 本步与 prescan 的分工：prescan 校准**事实**（数字/事件），本步获取**分析材料**（报告/数据/裁决）
 
 ---

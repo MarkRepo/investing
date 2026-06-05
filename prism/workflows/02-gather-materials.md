@@ -238,6 +238,33 @@ if cur is not None:
 
 ---
 
+## Step 5.7：自动补料（auto-fetch 规约 · 降级给用户前的强制尝试）
+
+> **为什么必须做**：02 历史上把"让用户补"和"自动抓"当平级选项，缺口没尝试自动获取就甩给用户。本步堵这个漏——**凡公开可得就别甩用户**。这是 01 Step 5.6 的镜像，作用在 02 时点仍欠尝试的 todo 上。判定与盖戳全照 [`_autofetch_protocol.md`](_autofetch_protocol.md)。
+
+枚举所有仍欠一次有效尝试的 todo：
+
+```bash
+python3 -c "
+from prism.scripts.topic import pending_unfetched_todos
+import json
+for t in pending_unfetched_todos('{slug}', '{variant}'):
+    print(t['fetch_status'], '|', t.get('info_tier'), '|', t.get('addresses'), '|', t['task'][:70])
+"
+```
+
+对每条（**不分 tier/info_tier**）按 [`_autofetch_protocol.md`](_autofetch_protocol.md) 跑：
+- 有 ticker 的报告类 → `fetch_report_prism`（已内置重试；ValueError=`empty`，重试耗尽=`error`）
+- 分析材料（卖方/行业/政策/数据）→ exa advanced → adapter `--intent semantic` → WebFetch 三阶梯
+- 每条尝试后 `mark_todo_fetch(slug, variant, '<task子串>', 'fetched|empty|error', note=...)`
+
+**硬规则**：
+- `pending_unfetched_todos` 里仍有 `fetch_status='error'` 的项时，**先重试**，不得据此 `set_user_todos` 降级（error≠公开没有）。
+- 只有 `mark_todo_fetch(...,'empty')`（有效尝试确认公开无源）的 todo 才允许作为 user-todo 留给用户——且它接下来要走 **empty 硬闸门**（合成前 `empty_undecided_todos` 让用户选 waive/will_collect，见 04 路径文档）。
+- `fetched` 的会被 auto_resolve 自动标 done/in_progress，无需手动降级。
+
+---
+
 ## Step 5.8：gap 体检（升 stage 到 03 前必跑）
 
 ```bash
@@ -260,7 +287,12 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 - `api_pending_inputs` → 财务/估值类，合成期自动拉，**非红**，不用管
 - `ring_axis_status == 'n/a'` → 旧 topic 未接入拆解/rings，A 轴不适用（忽略）
 
-任一红项非空 → **不要硬升 stage**，先选补救：web-search 增量扫 / sub-agent 深挖 / set_user_todos 让用户补，再决定是否进 03-extracting。这是诊断不是 gate——脚本不会拒绝你升 stage，但跳过等于把"论证薄弱"留给 04/05。`uncovered_ring_inputs` 的 hard 项尤其要在升 stage 前显式处理（收料或诚实标"数据缺失"）。
+任一红项非空 → **不要硬升 stage**，先补救。补救顺序有**先后**，不是平级（auto-fetch 规约）：
+1. **先**走 Step 5.7 自动补料（web-search 增量扫 / `fetch_report_prism` / sub-agent 深挖）——能自动抓的绝不甩用户。
+2. **只有** Step 5.7 跑过、缺口对应 todo 被 `mark_todo_fetch('empty')`（有效尝试确认公开无源）后，`set_user_todos` 让用户补才是合法的最后手段——且该 todo 走 empty 硬闸门由用户拍板 waive/will_collect。
+3. `error` 项必须重试，不得当成"用户去收"。
+
+这是诊断不是 gate——脚本不会拒绝你升 stage，但跳过等于把"论证薄弱"留给 04/05。`uncovered_ring_inputs` 的 hard 项尤其要在升 stage 前显式处理（**先自动尝试**，确认 empty 再收料或诚实标"数据缺失"）。
 
 ---
 
@@ -272,7 +304,8 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 ```bash
 python3 << 'EOF'
 from prism.scripts.topic import (
-    set_stage, set_next_actions, read_topic, update_user_todo_status
+    set_stage, set_next_actions, read_topic, update_user_todo_status,
+    pending_unfetched_todos,
 )
 from prism.scripts.manifest import material_count
 
@@ -280,8 +313,16 @@ slug = '{slug}'
 variant = '{variant}'
 counts = material_count(slug, variant)
 
+# auto-fetch 规约守卫：升 03 前确认无 fetch_status='error' 项（transient 失败必须先重试，
+# 不带病进 03）。有 error → 回 Step 5.7 重试，不要升 stage。
+_err = [t for t in pending_unfetched_todos(slug, variant) if t.get('fetch_status') == 'error']
+if _err:
+    print(f'⛔ {len(_err)} 条 fetch_status=error 未重试 → 回 Step 5.7，勿升 03：')
+    for t in _err:
+        print('   -', t['task'][:70])
+
 # stage 升级条件：有可处理未处理资料 → 03-extracting（修 F14：排除 Role α prescan web 料）
-set_stage(slug, '03-extracting' if counts['unprocessed_actionable'] > 0 else '02-gather-materials', variant)
+set_stage(slug, '03-extracting' if counts['unprocessed_actionable'] > 0 and not _err else '02-gather-materials', variant)
 
 # next_actions 是给 LLM 看的系统建议（不污染 user_todos）
 set_next_actions(slug, [

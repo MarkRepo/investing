@@ -450,25 +450,28 @@
   },
   "pinduoduo": {
     "finance.yahoo.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "globenewswire.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "simplywall.st": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "lightyear.com": {
       "count": 1,
@@ -478,11 +481,12 @@
       "promoted": false
     },
     "seekingalpha.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "public.com": {
       "count": 1,
@@ -534,11 +538,12 @@
       "promoted": false
     },
     "techbuzzchina.substack.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "photonpay.com": {
       "count": 1,
@@ -548,11 +553,12 @@
       "promoted": false
     },
     "chinatalk.nl": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "sailerpartners.com": {
       "count": 1,
@@ -611,11 +617,12 @@
       "promoted": false
     },
     "apps.fas.usda.gov": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "marketchameleon.com": {
       "count": 1,
@@ -632,11 +639,12 @@
       "promoted": false
     },
     "stocktitan.net": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "reuters.com": {
       "count": 1,
@@ -653,11 +661,12 @@
       "promoted": false
     },
     "emarketer.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "chartmill.com": {
       "count": 1,
@@ -674,11 +683,12 @@
       "promoted": false
     },
     "chinadigitalretailreport.substack.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "pinduoduo/qwen3.7-max"
+        "pinduoduo/qwen3.7-max",
+        "pinduoduo/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "wsj.com": {
       "count": 1,
@@ -796,6 +806,155 @@
       "count": 1,
       "topics": [
         "pinduoduo/qwen3.7-max"
+      ],
+      "promoted": false
+    },
+    "stockanalysis.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pymnts.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cnn.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketplace.org": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "nytimes.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketplacepulse.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "latticework.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "sahmcapital.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "gurufocus.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "equalocean.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "lexisnexis.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "dw.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ittcnet.org": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "retail-merchandiser.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pulse2.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "modernretail.co": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ainvest.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    },
+    "retaildive.com": {
+      "count": 1,
+      "topics": [
+        "pinduoduo/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "global-futu": {
+    "stockanalysis.com": {
+      "count": 1,
+      "topics": [
+        "global-futu/opus4.8"
+      ],
+      "promoted": false
+    },
+    "quiverquant.com": {
+      "count": 1,
+      "topics": [
+        "global-futu/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tradingview.com": {
+      "count": 1,
+      "topics": [
+        "global-futu/opus4.8"
       ],
       "promoted": false
     }

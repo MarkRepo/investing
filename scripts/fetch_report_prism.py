@@ -88,6 +88,62 @@ def _materials_dir(slug: str) -> Path:
     return Path(__file__).parent.parent / "prism" / "topics" / slug / "materials"
 
 
+def _with_retry(fn, *, attempts: int = 3, backoff: tuple[int, ...] = (2, 8, 30), label: str = ""):
+    """auto-fetch 规约 R2：transient 网络错误重试，ValueError（报告确实不存在=有效空）不重试。
+
+    重试：urllib.error.URLError / requests.RequestException / TimeoutError / ConnectionError
+          （含 HTTP 429/5xx——经 raise_for_status / HTTPError 抛出，均为 RequestException/URLError 子类）。
+    不重试：ValueError —— 立即重抛，让调用方判为 fetch_status='empty'（有效空），不误判为 error。
+    重试耗尽：重抛最后一个异常，让调用方判为 fetch_status='error'（必须再试，不得降级）。
+    """
+    import time
+    import urllib.error
+
+    retryable = (
+        urllib.error.URLError,
+        requests.exceptions.RequestException,
+        TimeoutError,
+        ConnectionError,
+    )
+    last: BaseException | None = None
+    for i in range(attempts):
+        try:
+            return fn()
+        except ValueError:
+            raise
+        except retryable as e:  # type: ignore[misc]
+            last = e
+            if i < attempts - 1:
+                log.warning("transient fetch error%s (try %d/%d): %s",
+                            f" [{label}]" if label else "", i + 1, attempts, e)
+                time.sleep(backoff[min(i, len(backoff) - 1)])
+    assert last is not None
+    raise last
+
+
+def _urlopen_json(req, timeout: int):
+    """urlopen + json 解析，带 _with_retry。"""
+    import json
+    import urllib.request
+
+    def _do():
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return json.loads(resp.read())
+
+    return _with_retry(_do, label="urlopen-json")
+
+
+def _urlopen_bytes(req, timeout: int) -> bytes:
+    """urlopen + read bytes，带 _with_retry。"""
+    import urllib.request
+
+    def _do() -> bytes:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return resp.read()
+
+    return _with_retry(_do, label="urlopen-bytes")
+
+
 def _column(code: str) -> str:
     """Determine cninfo exchange column from stock code."""
     return "sse" if code.startswith(("6", "9", "5")) else "szse"
@@ -102,10 +158,12 @@ def _parse_market_ticker(key: str) -> tuple[str, str]:
 
 
 def _company_info(ticker: str) -> dict:
-    r = requests.post(_CNINFO_SEARCH, headers=_HEADERS,
-                      data=f"keyWord={ticker}&maxNum=5", timeout=15)
-    r.raise_for_status()
-    results = r.json()
+    def _do():
+        r = requests.post(_CNINFO_SEARCH, headers=_HEADERS,
+                          data=f"keyWord={ticker}&maxNum=5", timeout=15)
+        r.raise_for_status()
+        return r.json()
+    results = _with_retry(_do, label=f"cninfo company {ticker}")
     if not results:
         raise ValueError(f"Company not found on cninfo: {ticker}")
     return results[0]   # {code, orgId, zwjc, ...}
@@ -116,9 +174,11 @@ def _list_reports(code: str, org_id: str, column: str, category: str) -> list[di
         f"stock={code}%2C{org_id}&category={category}"
         f"&pageNum=1&pageSize=50&tabName=fulltext&column={column}"
     )
-    r = requests.post(_CNINFO_QUERY, headers=_HEADERS, data=data, timeout=15)
-    r.raise_for_status()
-    announcements = r.json().get("announcements") or []
+    def _do():
+        r = requests.post(_CNINFO_QUERY, headers=_HEADERS, data=data, timeout=15)
+        r.raise_for_status()
+        return r.json().get("announcements") or []
+    announcements = _with_retry(_do, label=f"cninfo list {code}")
     # 丢摘要/英文/更正/修订 + 治理·中介程序性噪声（_TITLE_NOISE_RE）；未命中一律留，
     # 保住临床/BD/业绩预告/季报等催化剂（修 F7）。年报本体标题不含黑名单词，无误伤。
     return [
@@ -192,10 +252,13 @@ def _download(announcement: dict, dest_dir: Path, company_name: str,
         return dest
 
     log.info("Downloading %s…", new_name)
-    r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=120)
-    r.raise_for_status()
-    dest.write_bytes(r.content)
-    log.info("Saved → %s (%.1f MB)", dest, len(r.content) / 1e6)
+    def _do() -> bytes:
+        r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=120)
+        r.raise_for_status()
+        return r.content
+    content = _with_retry(_do, label=f"cninfo download {new_name}")
+    dest.write_bytes(content)
+    log.info("Saved → %s (%.1f MB)", dest, len(content) / 1e6)
     return dest
 
 
@@ -456,8 +519,7 @@ def fetch_sec(
     req = urllib.request.Request(
         "https://www.sec.gov/files/company_tickers.json", headers={"User-Agent": UA}
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        data = json.loads(resp.read())
+    data = _urlopen_json(req, 30)
     cik_map = {v["ticker"].upper(): (str(v["cik_str"]).zfill(10), v["title"]) for v in data.values()}
     if ticker.upper() not in cik_map:
         raise ValueError(f"SEC CIK not found for ticker {ticker}")
@@ -467,8 +529,7 @@ def fetch_sec(
     req2 = urllib.request.Request(
         f"https://data.sec.gov/submissions/CIK{cik}.json", headers={"User-Agent": UA}
     )
-    with urllib.request.urlopen(req2, timeout=30) as resp:
-        sub = json.loads(resp.read())
+    sub = _urlopen_json(req2, 30)
     recent = sub.get("filings", {}).get("recent", {})
     f_list = recent.get("form", [])
     dates_ = recent.get("filingDate", [])
@@ -509,8 +570,7 @@ def fetch_sec(
         else:
             dl = f"https://www.sec.gov/Archives/edgar/data/{cik_num}/{acc_dir}/{doc}"
             req3 = urllib.request.Request(dl, headers={"User-Agent": UA})
-            with urllib.request.urlopen(req3, timeout=120) as resp:
-                dest.write_bytes(resp.read())
+            dest.write_bytes(_urlopen_bytes(req3, 120))
             log.info("Saved → %s (%.1f MB)", dest, dest.stat().st_size / 1e6)
         if slug:
             report_type = _SEC_FORM_TO_REPORT_TYPE.get(form, "quarterly")

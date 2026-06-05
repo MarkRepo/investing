@@ -76,7 +76,29 @@ signposts:
 
 # 主题标签（用于跨 topic 相关性分组）
 cluster_tags: [{tag1}, {tag2}]        # e.g. [ai-compute, china-defense]
+
+# ── 可观测层字段（B2/B3/B4 · observability.md §4.2-4.4 · 合成收尾顺手落）──
+# 把"质量判断的输入"机械化盖进 sidecar，让被动观测层读出来（零 LLM 复判）。
+chain_links:                          # B2：6 环结构 + 交叉引用断言（被动断链探针 04.Q1 读）
+  rings_present: [1, 2, 3, 4, 5, 6]   # 6 环 section 实际写齐了哪几环（缺哪环就别列）
+  r4_anchors_r2: {true|false}         # ④核心分歧是否引用了②的隐含数
+  r6_takes_r4_ev: {true|false}        # ⑥仓位是否接④的 EV
+  r5_has_kill_signpost: {true|false}  # ⑤是否有 kill 触发 + signpost
+honest_gaps:                          # B3：诚实缺口标记（04.Q3 读；确无缺口写 []，别省字段）
+  - ring: {1-6}
+    kind: {data-missing|training-estimate}
+    note: {一句话：缺什么 / 为何只能估}
+market_implied:                       # B4：②从现价反推的市场隐含关键变量（无则整块 null）
+  metric: {snake_case_id}             # e.g. implied_rev_cagr_3y
+  value: {number}
+my_vs_market_delta:                   # B4：④我的判断 vs 市场隐含 的差（无则整块 null）
+  metric: {snake_case_id}             # 须与 market_implied.metric 同指标（04.Q2 代理校验锚回②）
+  my_value: {number}
+  delta: {string}                     # e.g. "+7pct"
+  direction: {long|short}
 ```
+
+> **可观测层字段是 sanctioned schema 的一部分**（不算"自创字段"）。它们纯被动给诊断页用，不进 dashboard 决策视图、不设闸。`chain_links` 三个布尔 + `rings_present` 由被动探针机械判断链完整性；语义侧（是否*真*锚回命门）仍挂复核旗给人。详见 `prism/specs/observability.md` §4.2-4.4。
 
 **写入命令：**
 
