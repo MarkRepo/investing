@@ -434,7 +434,33 @@ def update_topic(slug: str, variant: str, **fields) -> None:
 
 
 def set_stage(slug: str, stage: str, variant: str) -> None:
-    update_topic(slug, variant, stage=stage)
+    """切换 stage，并维护平行 stage_history（B1 承重墙，spec observability.md §4.1）。
+
+    每次切换：① 回填上一条 history 的 exited_at；② append 新条目，盖 entered_at
+    + 进入瞬间的 detect_gaps 精简快照。同 stage 幂等（不重复 append）。快照失败返回空
+    不抛。向后兼容：旧 topic 无 stage_history → 视为空 list 起步，现有 `stage` str 不动。
+    """
+    from datetime import datetime, timezone
+    data = read_topic(slug, variant)
+    prev = data.get("stage")
+    if prev == stage:
+        update_topic(slug, variant, stage=stage)  # 同 stage：不动 history
+        return
+    hist = data.get("stage_history")
+    if not isinstance(hist, list):
+        hist = []
+    now = datetime.now(timezone.utc).isoformat()
+    if hist and hist[-1].get("exited_at") is None:
+        hist[-1]["exited_at"] = now          # 回填上一条退出
+    # 延迟 import 防循环（gap_detector imports topic）
+    from prism.scripts.gap_detector import snapshot_gaps
+    hist.append({
+        "stage": stage,
+        "entered_at": now,
+        "exited_at": None,
+        "gap_snapshot": snapshot_gaps(slug, variant),
+    })
+    update_topic(slug, variant, stage=stage, stage_history=hist)
 
 
 def set_canonical(slug: str, variant: str) -> None:
@@ -725,6 +751,16 @@ _VALID_INFO_TIERS = ("public", "half_public", "hard")
 _VALID_PRIORITIES = ("P0", "P1", "P2")
 _VALID_TODO_STATUSES = ("pending", "in_progress", "done")
 
+# 自动获取覆盖规约（auto-fetch 规约）状态位：
+#  - fetch_status：机械层"尝试的真实结果"。unattempted=从没试过（默认，R3 消费前必须先试）；
+#    fetched=抓到材料已入库；empty=有效尝试过但公开确实没有（触发用户决策，不静默跳过）；
+#    error=工具/网络/限流失败（必须重试，永不据此降级为 user_todo）。
+#  - disposition：仅 fetch_status='empty' 时有意义，记录用户对"公开抓不到"的处置。
+#    undecided=尚未决定（默认，硬闸门：阻塞合成）；waived=用户选跳过（合成写诚实缺口）；
+#    will_collect=用户选我来收（合成写待补料显式缺口，材料到位后 auto_resolve 翻 fetched）。
+_VALID_FETCH_STATUSES = ("unattempted", "fetched", "empty", "error")
+_VALID_DISPOSITIONS = ("undecided", "waived", "will_collect")
+
 # address 格式: 裸 'K1' 或带事件锚 'K1@2026Q2-earnings'。事件锚解决 K# 粒度过粗问题
 # （参 feedback_addresses_granularity）。匹配规则：
 #  - todo address 裸 'K1' → 任何同 key 的 mat address 都覆盖（向后兼容）
@@ -795,6 +831,9 @@ def _normalize_todo(item) -> dict:
             "addresses": [],
             "source_hint": "",
             "status": "pending",
+            "fetch_status": "unattempted",
+            "fetch_attempts": 0,
+            "disposition": "undecided",
         }
     if not isinstance(item, dict) or "task" not in item:
         raise ValueError(f"todo 必须是 str 或含 task 字段的 dict，得到: {item!r}")
@@ -807,6 +846,15 @@ def _normalize_todo(item) -> dict:
     status = item.get("status", "pending")
     if status not in _VALID_TODO_STATUSES:
         raise ValueError(f"status 必须是 {_VALID_TODO_STATUSES}，得到: {status!r}")
+    fetch_status = item.get("fetch_status", "unattempted")
+    if fetch_status not in _VALID_FETCH_STATUSES:
+        raise ValueError(f"fetch_status 必须是 {_VALID_FETCH_STATUSES}，得到: {fetch_status!r}")
+    fetch_attempts = item.get("fetch_attempts", 0)
+    if not isinstance(fetch_attempts, int) or fetch_attempts < 0:
+        raise ValueError(f"fetch_attempts 必须是非负 int，得到: {fetch_attempts!r}")
+    disposition = item.get("disposition", "undecided")
+    if disposition not in _VALID_DISPOSITIONS:
+        raise ValueError(f"disposition 必须是 {_VALID_DISPOSITIONS}，得到: {disposition!r}")
     addresses = item.get("addresses", [])
     if not isinstance(addresses, list):
         raise ValueError(f"addresses 必须是 list，得到: {addresses!r}")
@@ -822,6 +870,9 @@ def _normalize_todo(item) -> dict:
         "addresses": addresses,
         "source_hint": item.get("source_hint", ""),
         "status": status,
+        "fetch_status": fetch_status,
+        "fetch_attempts": fetch_attempts,
+        "disposition": disposition,
     }
     covered_by = item.get("covered_by")
     if covered_by:
@@ -834,6 +885,12 @@ def _normalize_todo(item) -> dict:
     archive_candidate = item.get("archive_candidate")
     if archive_candidate:
         out["archive_candidate"] = str(archive_candidate)
+    last_fetch_note = item.get("last_fetch_note")
+    if last_fetch_note:
+        out["last_fetch_note"] = str(last_fetch_note)
+    disposition_note = item.get("disposition_note")
+    if disposition_note:
+        out["disposition_note"] = str(disposition_note)
     return out
 
 
@@ -891,6 +948,8 @@ def _resolve_todos_against_materials(slug: str, variant: str, todos: list[dict])
             addresses_match_event_anchored(todo_addrs, mat_addr_map[mid])
             for mid in matched
         )
+        # 材料命中即视为抓取义务已了（auto-fetch 规约）：R3 不再重抓此 todo
+        todo["fetch_status"] = "fetched"
         if strong:
             todo["status"] = "done"
             todo["coverage_note"] = f"已由 materials {', '.join(matched[:3])} 覆盖"
@@ -1025,6 +1084,114 @@ def update_user_todo_status(
     if not hit:
         raise ValueError(f"未找到包含 {task_substring!r} 的 todo")
     update_topic(slug, variant, user_todos=todos)
+
+
+def mark_todo_fetch(
+    slug: str,
+    variant: str,
+    task_substring: str,
+    fetch_status: str,
+    note: str | None = None,
+    increment_attempts: bool = True,
+) -> None:
+    """auto-fetch 规约：盖一条 todo 的尝试结果（fetch_status）。子串匹配 task。
+
+    fetch_status ∈ _VALID_FETCH_STATUSES：
+      fetched=抓到入库 / empty=有效尝试但公开无源 / error=工具网络失败需重试 / unattempted=回退。
+    increment_attempts=True 时 fetch_attempts+1（仅在确实又跑了一次尝试时传 True）。
+    note 写入 last_fetch_note。无匹配 raise。
+    """
+    if fetch_status not in _VALID_FETCH_STATUSES:
+        raise ValueError(f"fetch_status 必须是 {_VALID_FETCH_STATUSES}，得到: {fetch_status!r}")
+    data = read_topic(slug, variant)
+    todos = data.get("user_todos", [])
+    hit = False
+    for t in todos:
+        if isinstance(t, dict) and task_substring in t.get("task", ""):
+            t["fetch_status"] = fetch_status
+            if increment_attempts:
+                t["fetch_attempts"] = int(t.get("fetch_attempts", 0) or 0) + 1
+            if note:
+                t["last_fetch_note"] = note
+            hit = True
+    if not hit:
+        raise ValueError(f"未找到包含 {task_substring!r} 的 todo")
+    update_topic(slug, variant, user_todos=todos)
+
+
+def set_todo_disposition(
+    slug: str,
+    variant: str,
+    task_substring: str,
+    disposition: str,
+    note: str | None = None,
+) -> None:
+    """auto-fetch 规约：记录用户对 empty todo 的处置。empty 硬闸门 AskUserQuestion 后调用。
+
+    disposition ∈ _VALID_DISPOSITIONS：
+      waived=用户选跳过（合成写诚实缺口）/ will_collect=我来收（合成写待补料显式缺口）。
+    note 写入 disposition_note（理由）。无匹配 raise。
+    """
+    if disposition not in _VALID_DISPOSITIONS:
+        raise ValueError(f"disposition 必须是 {_VALID_DISPOSITIONS}，得到: {disposition!r}")
+    data = read_topic(slug, variant)
+    todos = data.get("user_todos", [])
+    hit = False
+    for t in todos:
+        if isinstance(t, dict) and task_substring in t.get("task", ""):
+            t["disposition"] = disposition
+            if note:
+                t["disposition_note"] = note
+            hit = True
+    if not hit:
+        raise ValueError(f"未找到包含 {task_substring!r} 的 todo")
+    update_topic(slug, variant, user_todos=todos)
+
+
+def pending_unfetched_todos(slug: str, variant: str) -> list[dict]:
+    """auto-fetch 规约 R3：返回仍欠一次有效尝试的 active todo。
+
+    条件：status∈{pending,in_progress} 且 fetch_status∈{unattempted,error}；
+    排除 reverse-check（'补 roadmap' 语义、非可抓缺口，与 _resolve 一致）。
+    01/02/03/04 统一调用此清单决定"还要抓什么 / 重试什么"。
+    """
+    try:
+        todos = read_topic(slug, variant).get("user_todos", []) or []
+    except FileNotFoundError:
+        return []
+    out = []
+    for t in todos:
+        if not isinstance(t, dict):
+            continue
+        if t.get("status") not in ("pending", "in_progress"):
+            continue
+        if "reverse-check" in (t.get("source_hint") or ""):
+            continue
+        if t.get("fetch_status", "unattempted") in ("unattempted", "error"):
+            out.append(t)
+    return out
+
+
+def empty_undecided_todos(slug: str, variant: str) -> list[dict]:
+    """auto-fetch 规约 empty 硬闸门：返回自动抓已确认公开无源、但用户尚未处置的 todo。
+
+    条件：status∈{pending,in_progress} 且 fetch_status='empty' 且 disposition='undecided'。
+    合成前与逐环 R3 都查它——非空必须 AskUserQuestion 让用户逐条选 waived/will_collect，
+    否则不得进决策链、不得写缺口（反静默核心）。
+    """
+    try:
+        todos = read_topic(slug, variant).get("user_todos", []) or []
+    except FileNotFoundError:
+        return []
+    out = []
+    for t in todos:
+        if not isinstance(t, dict):
+            continue
+        if t.get("status") not in ("pending", "in_progress"):
+            continue
+        if t.get("fetch_status") == "empty" and t.get("disposition", "undecided") == "undecided":
+            out.append(t)
+    return out
 
 
 def set_concepts(slug: str, concepts: list[str], variant: str) -> None:

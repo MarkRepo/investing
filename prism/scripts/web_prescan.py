@@ -1050,6 +1050,8 @@ def auto_resolve_todos(slug: str, variant: str, new_mat_ids: list[str]) -> list[
         existing = set(todo.get("covered_by") or [])
         todo["covered_by"] = sorted(existing | set(matched))
         dirty = True
+        # 材料命中即视为抓取义务已了（auto-fetch 规约）：R3 不再重抓此 todo
+        todo["fetch_status"] = "fetched"
 
         # 收料 tier 分级闭环（修 F9）：public 命中即 done（不变）；hard/half_public 深料
         # （专家访谈/镜鉴/地缘）只有**事件锚强命中**才 done，裸 K# web 命中仅标 in_progress——

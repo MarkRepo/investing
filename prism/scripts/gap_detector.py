@@ -316,6 +316,32 @@ def detect_gaps(
 
     ring = _detect_ring_inputs(topic, manifest, min_evidence, findings=findings)
 
+    # auto-fetch 规约可观测：欠账（未/失败尝试）+ 待用户处置的 empty。
+    # 谓词须与 topic.pending_unfetched_todos / empty_undecided_todos 保持一致：
+    #   debt = active & fetch_status∈{unattempted,error} & 非 reverse-check
+    #   empty_pending = active & fetch_status='empty' & disposition='undecided'
+    autofetch_debt: list[dict] = []
+    empty_pending: list[dict] = []
+    for td in (topic.get("user_todos") or []):
+        if not isinstance(td, dict):
+            continue
+        if td.get("status") not in ("pending", "in_progress"):
+            continue
+        fs = td.get("fetch_status", "unattempted")
+        if fs in ("unattempted", "error") and "reverse-check" not in (td.get("source_hint") or ""):
+            autofetch_debt.append({
+                "task": td.get("task", ""),
+                "fetch_status": fs,
+                "info_tier": td.get("info_tier", "public"),
+                "addresses": list(td.get("addresses") or []),
+            })
+        if fs == "empty" and td.get("disposition", "undecided") == "undecided":
+            empty_pending.append({
+                "task": td.get("task", ""),
+                "info_tier": td.get("info_tier", "public"),
+                "addresses": list(td.get("addresses") or []),
+            })
+
     return {
         "topic": {
             "slug": slug,
@@ -339,6 +365,8 @@ def detect_gaps(
         "relative_updated": relative_updated,
         "prescan_untagged": prescan_untagged,
         "single_source": single_source,
+        "autofetch_debt": autofetch_debt,
+        "empty_pending_decision": empty_pending,
     }
 
 
@@ -405,8 +433,41 @@ def format_summary(report: dict) -> str:
             "  🟠 单源(覆盖达标但来源单一·注意力路由器非裁决,需 critic 读内容核是否真独立): "
             + ", ".join(f"{e['k']}({e['count']}条·{e['reason']})" for e in ss)
         )
+    # auto-fetch 规约：欠账与待用户决策（绝不隐藏，每个 checkpoint 都现）
+    debt = report.get("autofetch_debt") or []
+    if debt:
+        n_err = sum(1 for d in debt if d.get("fetch_status") == "error")
+        n_un = len(debt) - n_err
+        lines.append(
+            f"  🟤 auto-fetch 欠账: {len(debt)} 条（error={n_err} 需重试 / unattempted={n_un} 需首次尝试）"
+        )
+    empty_pending = report.get("empty_pending_decision") or []
+    if empty_pending:
+        lines.append(
+            f"  🟠 待你决定是否跳过: {len(empty_pending)} 条（自动抓已确认公开无源 → waive 跳过 / will_collect 我来收）"
+        )
     if not (report["uncovered_ks"] or report["thin_evidence"]
             or report["expired_web_materials"] or rel_upd or uri or thin_ri
-            or untagged or ss):
+            or untagged or ss or debt or empty_pending):
         lines.append("  ✅ no gaps detected")
     return "\n".join(lines)
+
+
+def snapshot_gaps(slug: str, variant: str) -> dict:
+    """进入 stage 时的精简 gap 快照（B1 承重墙用）。失败返回空，绝不抛。
+
+    供 topic.set_stage 在切换 stage 时盖进 stage_history[N].gap_snapshot，
+    让被动观测层算"红项被处理 vs 红着硬升"（02.Q2/Q3）。spec: observability.md §4.1。
+    """
+    try:
+        g = detect_gaps(slug, variant)
+    except Exception:
+        return {}
+    if "error" in g:
+        return {}
+    return {
+        "uncovered_ks": list(g.get("uncovered_ks") or []),
+        "uncovered_ring_inputs": [i.get("code") for i in (g.get("uncovered_ring_inputs") or [])],
+        "autofetch_debt": len(g.get("autofetch_debt") or []),
+        "empty_pending_decision": len(g.get("empty_pending_decision") or []),
+    }
