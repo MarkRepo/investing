@@ -1,0 +1,1033 @@
+slug: pinduoduo
+variant: opus4.8
+updated: '2026-06-05T14:27:45.615553+00:00'
+materials:
+- id: mat-a3b032
+  filename: 2026-06-05_pdd-holdings-pdd-reports-2025-revenue-of-rmb431-8b.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.784801+00:00'
+  processed: false
+  notes: query='PDD Holdings FY2025 full year revenue net income 2025 annual results'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings FY2025 full year revenue net income 2025 annual results
+    url: https://finance.yahoo.com/markets/stocks/articles/pdd-holdings-pdd-reports-2025-183115087.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.783495+00:00'
+    stale_at: '2026-07-05T09:36:33.783495+00:00'
+    expire_at: '2026-09-03T09:36:33.783495+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-726d66
+  filename: 2026-06-05_pdd-holdings-announces-fourth-quarter-2025-and-fis.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.787709+00:00'
+  processed: false
+  notes: query='PDD Holdings FY2025 full year revenue net income 2025 annual results'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings FY2025 full year revenue net income 2025 annual results
+    url: https://www.globenewswire.com/news-release/2026/03/25/3262038/0/en/pdd-holdings-announces-fourth-quarter-2025-and-fiscal-year-2025-unaudited-financial-results.html
+    domain: globenewswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.786635+00:00'
+    stale_at: '2026-07-05T09:36:33.786635+00:00'
+    expire_at: '2026-09-03T09:36:33.786635+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-55a203
+  filename: 2026-06-05_pdd-holdings-inc-adr-financial-statements---wsj.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.791100+00:00'
+  processed: false
+  notes: query='PDD Holdings FY2025 full year revenue net income 2025 annual results'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PDD Holdings FY2025 full year revenue net income 2025 annual results
+    url: https://www.wsj.com/market-data/quotes/PDD/financials
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T09:36:33.789551+00:00'
+    stale_at: '2026-07-05T09:36:33.789551+00:00'
+    expire_at: '2026-09-03T09:36:33.789551+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-06504b
+  filename: 2026-06-05_pdd-holdings-shares-slide-after-revenue-and-profit.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.796945+00:00'
+  processed: false
+  notes: query='PDD Holdings Q1 2026 earnings results revenue profit miss'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PDD Holdings Q1 2026 earnings results revenue profit miss
+    url: https://www.proactiveinvestors.com/companies/news/1092988/pdd-holdings-shares-slide-after-revenue-and-profit-miss-1092988.html
+    domain: proactiveinvestors.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T09:36:33.795323+00:00'
+    stale_at: '2026-07-05T09:36:33.795323+00:00'
+    expire_at: '2026-09-03T09:36:33.795323+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-641651
+  filename: 2026-06-05_pdd-holdings-inc-pdd-q1-2026-earnings-call-highlig.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.802660+00:00'
+  processed: false
+  notes: query='PDD Holdings Q1 2026 earnings results revenue profit miss' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings net income margin trend take rate selling expenses 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/pdd-holdings-inc-pdd-q1-190054815.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:39.780854+00:00'
+    stale_at: '2026-07-05T12:35:39.780854+00:00'
+    expire_at: '2026-09-03T12:35:39.780854+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - PDD Holdings Q1 2026 earnings results revenue profit miss
+- id: mat-a3616a
+  filename: 2026-06-05_pdd-holdings-nasdaq-pdd---stock-analysis.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.812539+00:00'
+  processed: false
+  notes: query='PDD Holdings forward PE valuation market cap 2026 analyst price target'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  - valuation
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings forward PE valuation market cap 2026 analyst price target
+    url: https://simplywall.st/stocks/us/retail/nasdaq-pdd/pdd-holdings
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.810265+00:00'
+    stale_at: '2026-07-05T09:36:33.810265+00:00'
+    expire_at: '2026-09-03T09:36:33.810265+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-percentile
+- id: mat-56129d
+  filename: 2026-06-05_pdd-holdings-pdd-statistics-valuation.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.819929+00:00'
+  processed: false
+  notes: query='PDD Holdings forward PE valuation market cap 2026 analyst price target'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  - valuation
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings forward PE valuation market cap 2026 analyst price target
+    url: https://stockanalysis.com/stocks/pdd/statistics
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.817120+00:00'
+    stale_at: '2026-07-05T09:36:33.817120+00:00'
+    expire_at: '2026-09-03T09:36:33.817120+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-percentile
+- id: mat-f8c99f
+  filename: 2026-06-05_pdd-holdings-announces-first-quarter-2026-unaudite.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.831541+00:00'
+  processed: false
+  notes: query='PDD Holdings share buyback dividend capital return 2025 2026' | query='PDD
+    Holdings share buyback dividend capital return 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings share buyback dividend capital return 2025 2026
+    url: https://www.stocktitan.net/news/PDD/pdd-holdings-announces-first-quarter-2026-unaudited-financial-2iwyuhtjni8p.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.837443+00:00'
+    stale_at: '2026-07-05T09:36:33.837443+00:00'
+    expire_at: '2026-09-03T09:36:33.837443+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a29bba
+  filename: 2026-06-05_pdd-holdings-my-top-e-com-pick-for-2026.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.849548+00:00'
+  processed: false
+  notes: query='PDD Holdings share buyback dividend capital return 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PDD Holdings share buyback dividend capital return cash reserves 2026
+    url: https://seekingalpha.com/article/4852859-pdd-holdings-my-top-e-com-stock-for-2026
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T12:35:40.157142+00:00'
+    stale_at: '2026-07-05T12:35:40.157142+00:00'
+    expire_at: '2026-09-03T12:35:40.157142+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - PDD Holdings share buyback dividend capital return 2025 2026
+- id: mat-8231b1
+  filename: 2026-06-05_retailer-temu-s-daily-us-users-nearly-halve-follow.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.866658+00:00'
+  processed: false
+  notes: query='Temu US daily active users GMV decline de minimis May 2025'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Temu US daily active users GMV decline de minimis May 2025
+    url: https://www.reuters.com/business/retail-consumer/retailer-temus-daily-us-users-halve-following-end-de-minimis-loophole-2025-06-02
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T09:36:33.862482+00:00'
+    stale_at: '2026-07-05T09:36:33.862482+00:00'
+    expire_at: '2026-09-03T09:36:33.862482+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a79273
+  filename: 2026-06-05_pymnts-report-temu-loses-58-of-us-daily-users-due-.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.886993+00:00'
+  processed: false
+  notes: query='Temu US daily active users GMV decline de minimis May 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Temu US daily active users GMV decline de minimis May 2025
+    url: https://www.pymnts.com/news/ecommerce/2025/report-temu-loses-58-of-us-daily-users-due-to-tariffs
+    domain: pymnts.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.879323+00:00'
+    stale_at: '2026-07-05T09:36:33.879323+00:00'
+    expire_at: '2026-09-03T09:36:33.879323+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bba4e3
+  filename: 2026-06-05_trump-suspends-tax-exemption-for-cheap-shipments-c.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.911914+00:00'
+  processed: false
+  notes: query='US de minimis exemption China end status 2026 tariff Temu Shein' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: US de minimis exemption China end status 2026 tariff Temu Shein
+    url: https://www.cnn.com/2025/08/03/business/trump-suspends-duty-free-shipments-temu-shein
+    domain: cnn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.906722+00:00'
+    stale_at: '2026-07-05T09:36:33.906722+00:00'
+    expire_at: '2026-09-03T09:36:33.906722+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-546060
+  filename: 2026-06-05_how-de-minimis-exemption-end-hit-businesses.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.926464+00:00'
+  processed: false
+  notes: query='US de minimis exemption China end status 2026 tariff Temu Shein' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: US de minimis exemption China end status 2026 tariff Temu Shein
+    url: https://www.marketplace.org/story/2025/12/26/how-de-minimis-exemption-end-hit-businesses
+    domain: marketplace.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.920517+00:00'
+    stale_at: '2026-07-05T09:36:33.920517+00:00'
+    expire_at: '2026-09-03T09:36:33.920517+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b5dc35
+  filename: 2026-06-05_temu-hit-with-fine-in-e-u-over-sales-of-unsafe-goo.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.952001+00:00'
+  processed: false
+  notes: query='EU DSA Temu fine penalty ruling 2026 amount' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: EU DSA Temu fine penalty ruling 2026 amount
+    url: https://www.nytimes.com/2026/05/28/business/temu-fine-european-union.html
+    domain: nytimes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.945599+00:00'
+    stale_at: '2026-07-05T09:36:33.945599+00:00'
+    expire_at: '2026-09-03T09:36:33.945599+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0ba073
+  filename: 2026-06-05_ec-fines-temu-200m-over-dsa-breaches-tied-to-illeg.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.968261+00:00'
+  processed: false
+  notes: query='EU DSA Temu fine penalty ruling 2026 amount' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: EU DSA Temu fine penalty ruling 2026 amount
+    url: https://finance.yahoo.com/economy/policy/articles/ec-fines-temu-200m-over-095634770.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.962353+00:00'
+    stale_at: '2026-07-05T09:36:33.962353+00:00'
+    expire_at: '2026-09-03T09:36:33.962353+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2e4344
+  filename: 2026-06-05_temu-watch-12-update-on-markets-advertising-logist.md
+  source_type: web-search
+  added: '2026-06-05T09:36:33.998135+00:00'
+  processed: false
+  notes: query='Temu semi-managed local fulfillment Europe expansion 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Temu semi-managed local fulfillment Europe expansion 2026
+    url: https://techbuzzchina.substack.com/p/temu-watch-12-update-on-markets-advertising
+    domain: techbuzzchina.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:33.987508+00:00'
+    stale_at: '2026-07-05T09:36:33.987508+00:00'
+    expire_at: '2026-09-03T09:36:33.987508+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-37c676
+  filename: 2026-06-05_the-great-supply-chain-reversal---marketplace-puls.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.016004+00:00'
+  processed: false
+  notes: query='Temu semi-managed local fulfillment Europe expansion 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Temu semi-managed local fulfillment Europe expansion 2026
+    url: https://www.marketplacepulse.com/articles/the-great-supply-chain-reversal
+    domain: marketplacepulse.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:34.009429+00:00'
+    stale_at: '2026-07-05T09:36:34.009429+00:00'
+    expire_at: '2026-09-03T09:36:34.009429+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d2cfb3
+  filename: 2026-06-05_china-estimated-top-online-retailers-e-commerce-ma.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.044114+00:00'
+  processed: false
+  notes: query='Pinduoduo domestic GMV market share vs Alibaba Douyin 2025 China ecommerce'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Pinduoduo domestic GMV market share vs Douyin Alibaba 2025 2026 China
+    url: https://www.statista.com/statistics/1625088/china-estimated-top-online-retailers-ecommerce-market-share
+    domain: statista.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T12:35:40.254856+00:00'
+    stale_at: '2026-07-05T12:35:40.254856+00:00'
+    expire_at: '2026-09-03T12:35:40.254856+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - Pinduoduo domestic GMV market share vs Alibaba Douyin 2025 China ecommerce
+- id: mat-3b305e
+  filename: 2026-06-05_pdf-china-e-commerce-report---strategic-insights-f.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.064507+00:00'
+  processed: false
+  notes: query='Pinduoduo domestic GMV market share vs Alibaba Douyin 2025 China ecommerce'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Pinduoduo domestic GMV market share vs Douyin Alibaba 2025 2026 China
+    url: https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=China+E-Commerce+Report+-+Strategic+Insights+for+US+Food+Agricultural+and+Beverage+Exporters_Shanghai+ATO_China+-+People%27s+Republic+of_CH2025-0146.pdf
+    domain: apps.fas.usda.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:40.333132+00:00'
+    stale_at: '2026-07-05T12:35:40.333132+00:00'
+    expire_at: '2026-09-03T12:35:40.333132+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - Pinduoduo domestic GMV market share vs Alibaba Douyin 2025 China ecommerce
+- id: mat-ce4ff5
+  filename: 2026-06-05_temu-owner-pdd-posts-profit-miss-amid-fierce-compe.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.097240+00:00'
+  processed: false
+  notes: query='PDD Holdings Temu profitability breakeven unit economics 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PDD Holdings Temu profitability breakeven unit economics 2026
+    url: https://www.wsj.com/business/earnings/temu-owner-pdd-posts-profit-miss-amid-fierce-competition-in-china-a8cf3b0a
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T09:36:34.087119+00:00'
+    stale_at: '2026-07-05T09:36:34.087119+00:00'
+    expire_at: '2026-09-03T09:36:34.087119+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-86cbac
+  filename: 2026-06-05_pdd-holdings-2026-navigating-the-efficiency-led-c2.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.119069+00:00'
+  processed: false
+  notes: query='PDD Holdings Temu profitability breakeven unit economics 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings Temu profitability breakeven unit economics 2026
+    url: https://simplywall.st/community/narratives/us/retail/nasdaq-pdd/pdd-holdings/8264hcrn-pdd-holdings-2026-navigating-the-efficiency-led-c2m-pivot-and-temus-global-cross-border-inflection-point
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:34.110768+00:00'
+    stale_at: '2026-07-05T09:36:34.110768+00:00'
+    expire_at: '2026-09-03T09:36:34.110768+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-90e18b
+  filename: 2026-06-05_a-look-at-pdd-holdings-pdd-valuation-as-temu-regul.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.141978+00:00'
+  processed: false
+  notes: query='PDD Holdings Temu profitability breakeven unit economics 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  - valuation
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings Temu profitability breakeven unit economics 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/look-pdd-holdings-pdd-valuation-080924333.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:34.132887+00:00'
+    stale_at: '2026-07-05T09:36:34.132887+00:00'
+    expire_at: '2026-09-03T09:36:34.132887+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-3c9af0
+  filename: 2026-06-05_pinduoduo-temu-undervalued-owner-operated-marketpl.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.178165+00:00'
+  processed: false
+  notes: query='PDD Holdings Pinduoduo Temu investment thesis 2026 valuation competition
+    regulation' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  - valuation
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings Pinduoduo Temu investment thesis 2026 valuation competition
+      regulation
+    url: https://www.latticework.com/p/pinduoduotemu-undervalued-owner-operated
+    domain: latticework.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:34.169532+00:00'
+    stale_at: '2026-07-05T09:36:34.169532+00:00'
+    expire_at: '2026-09-03T09:36:34.169532+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-a25298
+  filename: 2026-06-05_pdd-holdings-balances-temu-headwinds-with-pinduodu.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.204958+00:00'
+  processed: false
+  notes: query='PDD Holdings Pinduoduo Temu investment thesis 2026 valuation competition
+    regulation' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings Pinduoduo Temu investment thesis 2026 valuation competition
+      regulation
+    url: https://finance.yahoo.com/markets/stocks/articles/pdd-holdings-balances-temu-headwinds-120423516.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T09:36:34.193766+00:00'
+    stale_at: '2026-07-05T09:36:34.193766+00:00'
+    expire_at: '2026-09-03T09:36:34.193766+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-7eef43
+  filename: 2026-06-05_news-releases---pdd-holdings-investor-relations.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.241645+00:00'
+  processed: false
+  notes: query='PDD Holdings latest news 2026 earnings regulatory announcement'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PDD Holdings latest news 2026 earnings regulatory announcement
+    url: https://investor.pddholdings.com/news-releases
+    domain: investor.pddholdings.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T09:36:34.232105+00:00'
+    stale_at: '2026-07-05T09:36:34.232105+00:00'
+    expire_at: '2026-09-03T09:36:34.232105+00:00'
+    triggered_by: 00-prescan
+- id: mat-ef8afc
+  filename: 2026-06-05_pdd-holdings-inc-american-depositary-shares-pdd-ea.md
+  source_type: web-search
+  added: '2026-06-05T09:36:34.268164+00:00'
+  processed: false
+  notes: query='PDD Holdings latest news 2026 earnings regulatory announcement'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PDD Holdings latest news 2026 earnings regulatory announcement
+    url: https://www.nasdaq.com/market-activity/stocks/pdd/earnings
+    domain: nasdaq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T09:36:34.258548+00:00'
+    stale_at: '2026-07-05T09:36:34.258548+00:00'
+    expire_at: '2026-09-03T09:36:34.258548+00:00'
+    triggered_by: 00-prescan
+- id: mat-bb6c4e
+  filename: 2026-06-05_pdd-holdings-nasdaqgs-pdd-margin-compression-tests.md
+  source_type: web-search
+  added: '2026-06-05T12:35:39.754833+00:00'
+  processed: false
+  notes: query='PDD Holdings net income margin trend take rate selling expenses 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings net income margin trend take rate selling expenses 2026
+    url: https://www.sahmcapital.com/news/content/pdd-holdings-nasdaqgspdd-margin-compression-tests-bullish-earnings-narrative-in-q1-2026-2026-05-28
+    domain: sahmcapital.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:39.744420+00:00'
+    stale_at: '2026-07-05T12:35:39.744420+00:00'
+    expire_at: '2026-09-03T12:35:39.744420+00:00'
+    triggered_by: 01-prescan
+- id: mat-904134
+  filename: 2026-06-05_pdd-holdings-net-margin-11-81-gurufocus.md
+  source_type: web-search
+  added: '2026-06-05T12:35:39.809592+00:00'
+  processed: false
+  notes: query='PDD Holdings net income margin trend take rate selling expenses 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings net income margin trend take rate selling expenses 2026
+    url: https://www.gurufocus.com/term/net-margin/PDD
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:39.799447+00:00'
+    stale_at: '2026-07-05T12:35:39.799447+00:00'
+    expire_at: '2026-09-03T12:35:39.799447+00:00'
+    triggered_by: 01-prescan
+- id: mat-322267
+  filename: 2026-06-05_temu-watch-11-profitability-arrives.md
+  source_type: web-search
+  added: '2026-06-05T12:35:39.864201+00:00'
+  processed: false
+  notes: query='Temu semi-managed unit economics GMV Europe expansion 2026 loss narrowing'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: Temu semi-managed unit economics GMV Europe expansion 2026 loss narrowing
+    url: https://techbuzzchina.substack.com/p/temu-watch-11-profitability-arrives
+    domain: techbuzzchina.substack.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T12:35:39.848811+00:00'
+    stale_at: '2026-07-05T12:35:39.848811+00:00'
+    expire_at: '2026-09-03T12:35:39.848811+00:00'
+    triggered_by: 01-prescan
+- id: mat-cef08d
+  filename: 2026-06-05_report-temu-watch-13-what-to-expect-in-2026.md
+  source_type: web-search
+  added: '2026-06-05T12:35:39.896109+00:00'
+  processed: false
+  notes: query='Temu semi-managed unit economics GMV Europe expansion 2026 loss narrowing'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Temu semi-managed unit economics GMV Europe expansion 2026 loss narrowing
+    url: https://chinadigitalretailreport.substack.com/p/report-temu-watch-13-what-to-expect
+    domain: chinadigitalretailreport.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:39.885142+00:00'
+    stale_at: '2026-07-05T12:35:39.885142+00:00'
+    expire_at: '2026-09-03T12:35:39.885142+00:00'
+    triggered_by: 01-prescan
+- id: mat-8bebd0
+  filename: 2026-06-05_temu-officially-launched-its-semi-managed-business.md
+  source_type: web-search
+  added: '2026-06-05T12:35:39.933222+00:00'
+  processed: false
+  notes: query='Temu semi-managed unit economics GMV Europe expansion 2026 loss narrowing'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Temu semi-managed unit economics GMV Europe expansion 2026 loss narrowing
+    url: https://equalocean.com/briefing/20250402230148473
+    domain: equalocean.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:39.920944+00:00'
+    stale_at: '2026-07-05T12:35:39.920944+00:00'
+    expire_at: '2026-09-03T12:35:39.920944+00:00'
+    triggered_by: 01-prescan
+- id: mat-a0345e
+  filename: 2026-06-05_european-commission-fines-temu-200m-under-eu-dsa-f.md
+  source_type: web-search
+  added: '2026-06-05T12:35:39.991449+00:00'
+  processed: false
+  notes: query='Temu regulation 2026 de minimis EU DSA new fine market ban escalation'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Temu regulation 2026 de minimis EU DSA new fine market ban escalation
+    url: https://www.lexisnexis.com/en-gb/legal/news/commission-fines-temu-200-million-for-failing-to-assess-illegal-product-risks-under-eu-dsa
+    domain: lexisnexis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:39.979655+00:00'
+    stale_at: '2026-07-05T12:35:39.979655+00:00'
+    expire_at: '2026-09-03T12:35:39.979655+00:00'
+    triggered_by: 01-prescan
+- id: mat-accdcf
+  filename: 2026-06-05_eu-fines-temu-200m-over-unsafe-toys-non-compliant-.md
+  source_type: web-search
+  added: '2026-06-05T12:35:40.025648+00:00'
+  processed: false
+  notes: query='Temu regulation 2026 de minimis EU DSA new fine market ban escalation'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Temu regulation 2026 de minimis EU DSA new fine market ban escalation
+    url: https://www.dw.com/en/temu-fine-eu-europe-unsafe-toys-noncompliant-products/a-77336877
+    domain: dw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:40.013633+00:00'
+    stale_at: '2026-07-05T12:35:40.013633+00:00'
+    expire_at: '2026-09-03T12:35:40.013633+00:00'
+    triggered_by: 01-prescan
+- id: mat-200d4d
+  filename: 2026-06-05_eu-hits-temu-with-major-dsa-fine-in-escalating-cra.md
+  source_type: web-search
+  added: '2026-06-05T12:35:40.061261+00:00'
+  processed: false
+  notes: query='Temu regulation 2026 de minimis EU DSA new fine market ban escalation'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Temu regulation 2026 de minimis EU DSA new fine market ban escalation
+    url: https://ittcnet.org/insights/eu-hits-temu-with-major-dsa-fine-in-escalating-crackdown-on-cross-border-e-commerce-platforms
+    domain: ittcnet.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:40.047585+00:00'
+    stale_at: '2026-07-05T12:35:40.047585+00:00'
+    expire_at: '2026-09-03T12:35:40.047585+00:00'
+    triggered_by: 01-prescan
+- id: mat-44d4a8
+  filename: 2026-06-05_why-temu-s-parent-pdd-holdings-is-hoarding-25-bill.md
+  source_type: web-search
+  added: '2026-06-05T12:35:40.123165+00:00'
+  processed: false
+  notes: query='PDD Holdings share buyback dividend capital return cash reserves 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings share buyback dividend capital return cash reserves 2026
+    url: https://retail-merchandiser.com/news/why-temus-parent-pdd-holdings-is-hoarding-25-billion-in-cash
+    domain: retail-merchandiser.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:40.109847+00:00'
+    stale_at: '2026-07-05T12:35:40.109847+00:00'
+    expire_at: '2026-09-03T12:35:40.109847+00:00'
+    triggered_by: 01-prescan
+- id: mat-0ddcc0
+  filename: 2026-06-05_pdd-holdings-free-cash-flow---gurufocus.md
+  source_type: web-search
+  added: '2026-06-05T12:35:40.193634+00:00'
+  processed: false
+  notes: query='PDD Holdings share buyback dividend capital return cash reserves 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: PDD Holdings share buyback dividend capital return cash reserves 2026
+    url: https://www.gurufocus.com/term/total-free-cash-flow/PDD
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:40.180617+00:00'
+    stale_at: '2026-07-05T12:35:40.180617+00:00'
+    expire_at: '2026-09-03T12:35:40.180617+00:00'
+    triggered_by: 01-prescan
+- id: mat-edbdbe
+  filename: 2026-06-05_pinduoduo---reports-statistics-marketing-trends-em.md
+  source_type: web-search
+  added: '2026-06-05T12:35:40.294224+00:00'
+  processed: false
+  notes: query='Pinduoduo domestic GMV market share vs Douyin Alibaba 2025 2026 China'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Pinduoduo domestic GMV market share vs Douyin Alibaba 2025 2026 China
+    url: https://www.emarketer.com/topics/category/pinduoduo
+    domain: emarketer.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T12:35:40.279294+00:00'
+    stale_at: '2026-07-05T12:35:40.279294+00:00'
+    expire_at: '2026-09-03T12:35:40.279294+00:00'
+    triggered_by: 01-prescan
+- id: mat-d18ff9
+  filename: 2025_PDD_20-F_2026-04-29.htm
+  source_type: annual-report
+  added: '2026-06-05T12:41:27.133016+00:00'
+  processed: true
+  notes: 复用 slug 级机械抽取层（opus4.8 本变体重抽 findings）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  - K5
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-98af66
+  filename: 2026_PDD_6-K-earnings_2026-05-28.htm
+  source_type: quarterly-report
+  added: '2026-06-05T12:41:27.155524+00:00'
+  processed: true
+  notes: 复用 slug 级机械抽取层（opus4.8 本变体重抽 findings）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  - K5
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-413cbf
+  filename: item_3_key_info.md
+  source_type: sec-section
+  added: '2026-06-05T12:41:27.178697+00:00'
+  processed: true
+  notes: 复用 slug 级机械抽取层（opus4.8 本变体重抽 findings）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - risk
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+  sec_section: item_3_key_info
+- id: mat-831b98
+  filename: item_4_business.md
+  source_type: sec-section
+  added: '2026-06-05T12:41:27.203645+00:00'
+  processed: true
+  notes: 复用 slug 级机械抽取层（opus4.8 本变体重抽 findings）
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - scope
+  rings:
+  - biz-moat-unit-econ
+  sec_section: item_4_business
+- id: mat-24c21f
+  filename: item_5_mda.md
+  source_type: sec-section
+  added: '2026-06-05T12:41:27.228001+00:00'
+  processed: true
+  notes: 复用 slug 级机械抽取层（opus4.8 本变体重抽 findings）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  sec_section: item_5_mda
+- id: mat-45348a
+  filename: item_11_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-05T12:41:27.252534+00:00'
+  processed: true
+  notes: 复用 slug 级机械抽取层（opus4.8 本变体重抽 findings）
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  rings:
+  - biz-moat-unit-econ
+  sec_section: item_11_quant_risk
+- id: mat-8efd53
+  filename: item_18_financial.md
+  source_type: sec-section
+  added: '2026-06-05T12:41:27.279131+00:00'
+  processed: true
+  notes: 复用 slug 级机械抽取层（opus4.8 本变体重抽 findings）
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - valuation
+  rings:
+  - financial-arc
+  - valuation-anchor
+  sec_section: item_18_financial
+- id: mat-5c28aa
+  filename: 2026-06-04_pdd-forecast-price-target-analyst-ratings-pdd-hold.md
+  source_type: sell-side-note
+  added: '2026-06-05T12:44:22.535947+00:00'
+  processed: true
+  notes: ChartMill 一致预期聚合：均价目标$145.65(43家)/Buy%79/EPS21.12/Rev120.43B
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - valuation
+  rings:
+  - consensus
+- id: mat-0819c0
+  filename: 2026-06-04_pdd-pdd-stock-forecast-and-price-target-2026.md
+  source_type: sell-side-note
+  added: '2026-06-05T12:44:22.561001+00:00'
+  processed: true
+  notes: MarketBeat 一致预期：Moderate Buy(14家7买7持)；Benchmark$160→127、Citi$142→123(5月下调)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - valuation
+  rings:
+  - consensus
+- id: mat-2efcec
+  filename: 2026-06-05_contextlogic-why-wish-s-revenue-has-plunged-amidst.md
+  source_type: web-search
+  added: '2026-06-05T14:27:45.113252+00:00'
+  processed: true
+  notes: query='Wish ContextLogic 跨境低价直邮崩塌 单位经济 复购失败 历史镜鉴' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - historical-mirror
+  confidence: 0.6
+  search_meta:
+    query: Wish ContextLogic 跨境低价直邮崩塌 单位经济 复购失败 历史镜鉴
+    url: https://seekingalpha.com/article/4579694-contextlogic-stock-why-wish-revenue-plunged-amidst-rebrand
+    domain: seekingalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T14:27:45.094517+00:00'
+    stale_at: '2026-07-05T14:27:45.094517+00:00'
+    expire_at: '2026-09-03T14:27:45.094517+00:00'
+    triggered_by: 05-critic
+- id: mat-89ceb2
+  filename: 2026-06-05_contextlogic-to-sell-wish-to-qoo10-for-173-million.md
+  source_type: web-search
+  added: '2026-06-05T14:27:45.160633+00:00'
+  processed: true
+  notes: query='Wish ContextLogic 跨境低价直邮崩塌 单位经济 复购失败 历史镜鉴' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - historical-mirror
+  confidence: 0.6
+  search_meta:
+    query: Wish ContextLogic 跨境低价直邮崩塌 单位经济 复购失败 历史镜鉴
+    url: https://pulse2.com/contextlogic-to-sell-wish-to-qoo10-for-173-million/
+    domain: pulse2.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T14:27:45.143265+00:00'
+    stale_at: '2026-07-05T14:27:45.143265+00:00'
+    expire_at: '2026-09-03T14:27:45.143265+00:00'
+    triggered_by: 05-critic
+- id: mat-e53070
+  filename: 2026-06-05_how-wish-is-trying-to-reinvent-itself-by-focusing-.md
+  source_type: web-search
+  added: '2026-06-05T14:27:45.216158+00:00'
+  processed: true
+  notes: query='Wish ContextLogic 跨境低价直邮崩塌 单位经济 复购失败 历史镜鉴' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - historical-mirror
+  confidence: 0.55
+  search_meta:
+    query: Wish ContextLogic 跨境低价直邮崩塌 单位经济 复购失败 历史镜鉴
+    url: https://www.modernretail.co/technology/how-wish-is-trying-to-reinvent-itself-by-focusing-on-product-quality-and-retention/
+    domain: modernretail.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T14:27:45.198628+00:00'
+    stale_at: '2026-07-05T14:27:45.198628+00:00'
+    expire_at: '2026-09-03T14:27:45.198628+00:00'
+    triggered_by: 05-critic
+- id: mat-f5c8be
+  filename: 2026-06-05_end-of-de-minimis-temu-fully-managed-halved-gmv--2.md
+  source_type: web-search
+  added: '2026-06-05T14:27:45.389856+00:00'
+  processed: true
+  notes: query='Temu de minimis 取消 2025 单位经济 GMV MAU 半托管 盈利冲击' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.6
+  search_meta:
+    query: Temu de minimis 取消 2025 单位经济 GMV MAU 半托管 盈利冲击
+    url: https://www.chinatalk.nl/how-temu-is-rebounding-from-us-tariffs/
+    domain: chinatalk.nl
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T14:27:45.372627+00:00'
+    stale_at: '2026-07-05T14:27:45.372627+00:00'
+    expire_at: '2026-09-03T14:27:45.372627+00:00'
+    triggered_by: 05-critic
+- id: mat-ec51dd
+  filename: 2026-06-05_temu-s-viability-in-a-post-de-minimis-era-strategi.md
+  source_type: web-search
+  added: '2026-06-05T14:27:45.441885+00:00'
+  processed: true
+  notes: query='Temu de minimis 取消 2025 单位经济 GMV MAU 半托管 盈利冲击' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.55
+  search_meta:
+    query: Temu de minimis 取消 2025 单位经济 GMV MAU 半托管 盈利冲击
+    url: https://www.ainvest.com/news/temu-viability-post-de-minimis-era-strategic-reassessment-investors-2512/
+    domain: ainvest.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T14:27:45.423621+00:00'
+    stale_at: '2026-07-05T14:27:45.423621+00:00'
+    expire_at: '2026-09-03T14:27:45.423621+00:00'
+    triggered_by: 05-critic
+- id: mat-71d11f
+  filename: 2026-06-05_temu-and-shein-can-weather-de-minimis-changes-othe.md
+  source_type: web-search
+  added: '2026-06-05T14:27:45.494164+00:00'
+  processed: true
+  notes: query='Temu de minimis 取消 2025 单位经济 GMV MAU 半托管 盈利冲击' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.55
+  search_meta:
+    query: Temu de minimis 取消 2025 单位经济 GMV MAU 半托管 盈利冲击
+    url: https://www.retaildive.com/news/temu-shein-de-minimis-white-house-changes-impact-supply-chain/727761/
+    domain: retaildive.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T14:27:45.475504+00:00'
+    stale_at: '2026-07-05T14:27:45.475504+00:00'
+    expire_at: '2026-09-03T14:27:45.475504+00:00'
+    triggered_by: 05-critic

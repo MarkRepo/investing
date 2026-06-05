@@ -1,0 +1,79 @@
+slug: pinduoduo
+variant: opus4.8
+topic_type: company
+display_name: "PDD Holdings (拼多多, NASDAQ: PDD)"
+ticker: "US_PDD"
+generated: "2026-06-05T15:15:00+08:00"
+data_freshness: "2026-Q1 + 05-critic web-backfill"
+
+buy_box:
+  strong_buy_max: 75
+  accumulate_min: 75
+  accumulate_max: 100
+  hold_min: 100
+  hold_max: 125
+  current_price: 85.88
+  price_as_of: "2026-06-04"
+  current_zone: accumulate
+
+position_framework:
+  position_tier: "标准"
+  sizing_rationale: "质量红线全PASS + driver A一手逐行证实(营业利润+22%是营销零增长的真实经营杠杆,反方'会计腾挪'致命一击被证伪) + 可分配口径仍5-6x安全边际 → 高于试探;但Temu期权剥离(后de-minimis GMV-20~30%/MAU-46%,降为模糊拖累)+国内份额未证+催化真空(命门3确认无股东回报)+EV+12%(较v1+17%收窄) → 不上重仓且较v1更靠下沿"
+  initial_max_pct: 2.5
+  full_max_pct: 6
+  add_ladder_prices: [75, 65, 55]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: "Reverse PE-DCF (隐含增速反推)"
+    bull_fair_value: [160, null]
+    base_fair_value: [110, 140]
+    bear_fair_value: [60, 90]
+  - name: sotp
+    label: "SOTP (国内现金流+净现金可分配折后+Temu≈0)"
+    bull_fair_value: [175, null]
+    base_fair_value: [115, 150]
+    bear_fair_value: [80, 100]
+  - name: consensus_peer
+    label: "一致预期/同业PE"
+    bull_fair_value: [160, null]
+    base_fair_value: [123, 145]
+    bear_fair_value: [95, 115]
+
+kill_criteria:
+  - id: operating_profit_rollover
+    description: "连续两季营业利润(剔线下投资/汇兑项)同比转负或增速跌破个位数 → driver A证伪、主业失速。净利降幅仅辅助(含线下项失真)"
+    status: pending
+    check_at: "2026-Q3"
+  - id: margin_or_adrev_share_loss
+    description: "营业利润仍增但毛利率连续两季再压>1pct/季 或 在线营销收入转负 → driver A残核(以丢份额换利润)实锤,降档"
+    status: pending
+    check_at: "2026-Q3"
+  - id: temu_unit_econ_break
+    description: "可靠第三方显示Temu GMV持续下滑且半托管单位经济也走不通/亏损扩大 → Temu从次要拖累升为主拖累"
+    status: pending
+    check_at: "2026-Q4"
+  - id: new_major_regulation
+    description: "新增重大监管打击(欧盟扩大限制/美国进一步关税合规壁垒)"
+    status: pending
+    check_at: "2026-Q4"
+
+signposts:
+  - date: "2026-Q3"
+    event: "Q2 2026 季报(约8月)"
+    bull_signal: "营业利润延续两位数增长+毛利率企稳+在线营销收入回正,净利降幅收窄"
+    bear_signal: "营业利润转负或毛利率续压,在线营销收入持续负增长(份额流失)"
+    triggered: null
+  - date: "2026"
+    event: "首次系统性回购/分红公告"
+    bull_signal: "宣布系统性回购或分红(re-rating开关) → 升档"
+    bear_signal: "明确重申零回报、继续囤现金投入"
+    triggered: null
+  - date: "2026-Q3"
+    event: "Temu第三方GMV/MAU/留存+半托管单位经济"
+    bull_signal: "非美市场GMV企稳回升、出现减亏信号(减亏式收缩)"
+    bear_signal: "全球GMV持续下滑、留存恶化、半托管也亏(失血式收缩)"
+    triggered: null
+
+cluster_tags: [china-ecommerce, cross-border-commerce, temu-globalization, consumer-internet]

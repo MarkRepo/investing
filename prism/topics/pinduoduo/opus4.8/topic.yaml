@@ -1,0 +1,338 @@
+slug: pinduoduo
+display_name: 'PDD Holdings (拼多多, NASDAQ: PDD)'
+type: company
+created: '2026-06-05T09:28:35.809425+00:00'
+status: active
+stage: done
+canonical: false
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 拼多多作为中国电商颠覆者加Temu全球化引擎，在当前估值水平下是否值得重仓投资
+  depth: deep
+  ticker: US_PDD
+  market: US
+  short_name: 拼多多
+  search_terms:
+  - Temu全球化
+  - 拼多多估值
+  - 电商竞争格局
+  - Temu监管风险
+outputs_state:
+  roadmap:
+    version: 1
+    last_updated: '2026-06-05T12:36:23.682860+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  00_primer:
+    version: 2
+    last_updated: '2026-06-05T14:47:05.552706+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0819c0
+    - mat-24c21f
+    - mat-2efcec
+    - mat-413cbf
+    - mat-45348a
+    - mat-5c28aa
+    - mat-71d11f
+    - mat-831b98
+    - mat-89ceb2
+    - mat-8efd53
+    - mat-98af66
+    - mat-e53070
+    - mat-ec51dd
+    - mat-f5c8be
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-06-05T14:47:05.573967+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0819c0
+    - mat-24c21f
+    - mat-2efcec
+    - mat-413cbf
+    - mat-45348a
+    - mat-5c28aa
+    - mat-71d11f
+    - mat-831b98
+    - mat-89ceb2
+    - mat-8efd53
+    - mat-98af66
+    - mat-e53070
+    - mat-ec51dd
+    - mat-f5c8be
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-06-05T14:47:05.592892+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0819c0
+    - mat-24c21f
+    - mat-2efcec
+    - mat-413cbf
+    - mat-45348a
+    - mat-5c28aa
+    - mat-71d11f
+    - mat-831b98
+    - mat-89ceb2
+    - mat-8efd53
+    - mat-98af66
+    - mat-e53070
+    - mat-ec51dd
+    - mat-f5c8be
+    last_error: null
+  08_living_feed:
+    version: 3
+    last_updated: '2026-06-05T15:04:27.721028+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 pinduoduo」启动 06-daily-monitor
+- thesis_v2 已通过 critic-review
+- critic 评审：v2 复审 approve(整体3.8)：上轮致命一击"营业利润+22%会计幻觉"经Q1'26 6-K逐行一手证伪;独立反方复审未发现未应答的新致命一击——"saved
+  not earned"已在残核#1+kill阈值、"Temu吸收→4x低估"循环论证在亏损前提下部分被证伪、EV横盘修正后仍+9%。surviving critiques(其他损益经常性/营销换份额K5/横盘乐观)属已披露监控项。强度5.5/EV+12%/标准偏下档2.5%,thesis经两轮独立对抗定稿。
+user_todos:
+- task: PDD 历次财报收入/利润国内 vs Temu 归因拆解 + take-rate 走势（命门1：利润下行性质）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K5
+  source_hint: 20-F + 季度电话会（slug 已有料可复用）
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-24c21f
+  - mat-2efcec
+  - mat-3b305e
+  - mat-413cbf
+  - mat-641651
+  - mat-89ceb2
+  - mat-904134
+  - mat-98af66
+  - mat-bb6c4e
+  - mat-d2cfb3
+  - mat-e53070
+  - mat-edbdbe
+  coverage_note: web-search mat-2efcec, mat-89ceb2, mat-e53070 命中 K# 但无事件锚；half_public
+    深料需事件锚或同 source_type 材料才闭环（未 done）
+- task: Temu 第三方 GMV/MAU 估算 + 半托管单位经济 + 非美市场扩张数据（命门2：Temu 黑箱）
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K2
+  source_hint: Tech Buzz China / Marketplace Pulse（已有）/ Sensor Tower / Similarweb
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-2efcec
+  - mat-322267
+  - mat-71d11f
+  - mat-89ceb2
+  - mat-8bebd0
+  - mat-cef08d
+  - mat-e53070
+  - mat-ec51dd
+  - mat-f5c8be
+  coverage_note: web-search mat-f5c8be, mat-ec51dd, mat-71d11f 命中 K# 但无事件锚；hard 深料需事件锚或同
+    source_type 材料才闭环（未 done）
+- task: de minimis + EU DSA + 各国监管时间线，判断监管冲击边际是否见顶（命门2/K3）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 监管公告 / Reuters / 欧盟委员会（部分已有 prescan 料）
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-200d4d
+  - mat-413cbf
+  - mat-831b98
+  - mat-a0345e
+  - mat-accdcf
+  coverage_note: 20-F Item3/Item4 一手闭合：de minimis(中5/2、全球8/29)、EU DSA 2025-07初步违规+6%上限、FTC
+    $2M、越南/乌兹别克暂停。注：thesis 预设 €200M 罚单在 20-F 无对应数字，须下游消歧
+- task: PDD 资本配置史 + 回购/分红授权与执行 + 管理层资本配置表态（命门3 / mgmt-capital-alloc）
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K4
+  source_hint: 20-F / IR / 历次电话会（slug 已有 20-F 可复用）
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-0ddcc0
+  - mat-24c21f
+  - mat-413cbf
+  - mat-44d4a8
+  - mat-98af66
+  - mat-a29bba
+  coverage_note: 20-F+6-K 一手闭合：零分红零回购、RMB496bn现金(约1/4受跨境限制)、capex≈0、资金吃利差、PDD Partnership
+    把持CEO/奖金池、创始人控VIE 86.6%。结论=资本配置坚定偏增长投入、无股东回报
+- task: 国内电商份额数据：拼多多 vs 阿里 vs 京东 vs 抖音 2025（K5：国内份额攻防）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: Statista（已有）/ QuestMobile / Wind / 卖方
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-3b305e
+  - mat-d2cfb3
+  - mat-edbdbe
+  coverage_note: web-search mat-d2cfb3, mat-3b305e, mat-edbdbe 命中 K# 但无事件锚；half_public
+    深料需事件锚或同 source_type 材料才闭环（未 done）
+- task: 卖方/买方一致预期 + 估值锚区间($110-118)与多空分歧点（consensus 合同项）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: 卖方深度研报（slug 已有）/ simplywall narratives
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-0819c0
+  - mat-5c28aa
+  - mat-641651
+  - mat-904134
+  - mat-bb6c4e
+  coverage_note: ChartMill 43家均价$145.65/79%买入；MarketBeat 14家Moderate Buy，Q1 26后Benchmark$160→127、Citi$142→123下修。环②锚带~$123-145
+- task: 历史镜鉴：增长股利润见顶后价值陷阱案例 + 中国电商出海失败镜鉴（historical-mirror 合同项）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 行业史 / Wish/eBay/早期出海案例研究
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-2efcec
+  - mat-322267
+  - mat-641651
+  - mat-71d11f
+  - mat-89ceb2
+  - mat-8bebd0
+  - mat-904134
+  - mat-bb6c4e
+  - mat-cef08d
+  - mat-e53070
+  - mat-ec51dd
+  - mat-f5c8be
+  coverage_note: web-search mat-f5c8be, mat-ec51dd, mat-71d11f 命中 K# 但无事件锚；half_public
+    深料需事件锚或同 source_type 材料才闭环（未 done）
+- task: PDD FY2025 20-F 全文精读：财务结构 / 风险因子 / VIE / 现金（K1+K4 地基）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  source_hint: slug 已有 2025_PDD_20-F_2026-04-29.htm
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-641651
+  - mat-904134
+  - mat-bb6c4e
+  coverage_note: 已由 web-search mat-641651, mat-bb6c4e, mat-904134 覆盖
+- task: opus4.8 findings 提取完成：9 份可处理资料全部处理（8 findings + 20-F母文件按sec节覆盖）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: opus4.8 决策链合成完成（primer+case+sidecar+thesis_v1），chain-critic 已修2断点（K1-kill改营业利润口径+EV不对称声明）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: v2 复审 approve(整体3.8)：上轮致命一击"营业利润+22%会计幻觉"经Q1'26 6-K逐行一手证伪;独立反方复审未发现未应答的新致命一击——"saved
+    not earned"已在残核#1+kill阈值、"Temu吸收→4x低估"循环论证在亏损前提下部分被证伪、EV横盘修正后仍+9%。surviving critiques(其他损益经常性/营销换份额K5/横盘乐观)属已披露监控项。强度5.5/EV+12%/标准偏下档2.5%,thesis经两轮独立对抗定稿。
+  at: '2026-06-05T15:04:27.705969+00:00'
+  thesis_version: 2
+  next_stage: done
+decomposition:
+  current_version: 2
+  last_updated: '2026-06-05T14:47:05.645176+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-05T09:41:58.713797+00:00'
+    summary: 命门1=利润下行性质:主动投入vs增长见顶(中); 命门2=Temu监管新常态下增长期权vs持续亏损拖累(低); 命门3=资本配置是否转向系统性股东回报(低/uncertain)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-05T13:15:05.492197+00:00'
+    summary: 命门1=利润下行偏主动投入(中高,Q1 26营业利润+22%); 命门2=Temu期权vs拖累(低,黑箱capped); 命门3=资本配置已确认无股东回报(收敛偏空)
+    convergence_status: capped
+    changelog: 命门3低/uncertain→已解(偏空)收敛; 命门1中→中高(倾向主动投入); 命门2维持低标capped(一手不可证,踢drilldown);
+      primer目标无增删,4条经critic补强(#3/#6/#9/#11)。整体capped。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-05T14:47:05.645194+00:00'
+    summary: 命门1=利润下行偏主动投入(高,逐行证实致命一击被证伪); 命门2=Temu后de-minimis模糊拖累(低,capped,web偏空事件锚+反证掩盖论);
+      命门3=资本配置已确认无股东回报(收敛,新增支撑5-6x可分配折价)
+    convergence_status: capped
+    changelog: '命门1 中高→高(致命一击逐行证伪+毛利率/份额残核耦合K5); 命门2 语义重判 免费期权→后de-minimis模糊拖累; 命门3
+      维持收敛+新增可分配折价用途; primer #2/#3 背景一手度补强; 整体仍capped(命门2一手不可证)。'
+thesis:
+  current_version: 2
+  last_updated: '2026-06-05T14:47:05.604794+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-05T09:40:28.510238+00:00'
+    summary: 分化看法(强度5.5/10):看多国内拼多多现金牛+深度价值估值底,看空Temu全球化叙事+近期利润兑现;利润下行见底与Temu监管/单位经济企稳双信号出现前,当前不值得重仓,适合小仓价值埋伏。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-05T13:14:49.153812+00:00'
+    summary: 温和偏多深度价值仓(强度6.0)：扣净现金仅~4x PE、现金占市值56%、ROIC18%质量PASS；Q1 26营业利润+22%示利润下行偏主动投入而非失速。但命门3确认无股东回报催化+Temu黑箱不可证→标准偏下档建仓非重仓。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-05T14:47:05.604810+00:00'
+    summary: 温和偏多深度价值仓(强度5.5,EV+12%)：driver A 经Q1'26逐行证实(营业利润+22%是营销零增长的真实经营杠杆,反方"会计腾挪"致命一击被证伪);但Temu从免费期权降级为后de-minimis模糊拖累、扣现金4x→可分配口径5-6x、EV尾部按Wish/阿里先例上调→标准偏下档非重仓。

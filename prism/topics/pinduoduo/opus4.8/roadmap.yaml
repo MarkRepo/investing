@@ -1,0 +1,105 @@
+# roadmap.yaml — 研究路线图 (workflow 01, variant=opus4.8)
+slug: pinduoduo
+created: 2026-06-05T09:45:00Z
+variant: opus4.8
+
+# L1/L2 已坍缩 → 交给 00_primer（primer-first）
+primer_scope: "primer 覆盖：PDD 双引擎(国内拼多多+Temu)商业模式、全/半托管差异、de minimis 机制、国内电商竞争格局、VIE/中概折价、财报关键行、深度价值vs价值陷阱之争"
+
+# 材料复用说明：opus4.8 为换模型重研变体；slug 级已收 12 份实体材料（20-F+5 sec-section+4 卖方+1 季报+1 行业+1 政策）+ 63 份 qwen web-search。
+# 本变体复用机械抽取层（命中即跳过、不重转），findings 走 03 由 opus4.8 重抽（禁复制 qwen findings）。
+reuse_note: "tier1/2 标 [复用slug] 的材料无需重新获取；workflow 02 重注册进 opus4.8 manifest，03 重抽 findings"
+
+learning_track:
+  l3_debates:         # 争议层：分歧在哪（喂决策链环④）
+    - question: "利润下行是管理层主动投入(利润有弹性)还是增长见顶+竞争挤压(持续下台阶)？财报上如何区分？"
+      source_hint: "20-F 成本结构 + 历次电话会管理层口径 + 销售费用/履约成本拆解"
+    - question: "Temu 期权价值：de minimis 终止 + 半托管重构后，是减值的增长期权还是持续亏损黑洞？"
+      source_hint: "Tech Buzz China/Marketplace Pulse 第三方数据 + 监管时间线"
+    - question: "深度价值 vs 价值陷阱：低 PE 是市场错杀，还是治理黑箱/VIE/中概折价的制度性应得？"
+      source_hint: "卖方多空研报 + 估值锚区间($110-118)分歧点"
+    - question: "国内价格战终局：拼多多低价护城河被阿里/抖音全行业对标后还剩多少 take-rate 空间？"
+      source_hint: "国内份额数据 + take-rate 走势 + 竞品补贴策略"
+    - question: "催化真空：管理层明示不追短期利润、不给指引，估值何时/凭什么 re-rate？"
+      source_hint: "资本配置史 + 回购/分红信号 + 利润见底时点"
+
+  l4_hunting:         # 狩猎层：找错误定价（逐条对齐 K#）
+    - question: "FY2026 净利润(归属普通股东)同比降幅能否收窄至个位数或转正？市场当前隐含什么利润假设？"
+      addresses: [K1]
+      search_keywords: [PDD 净利润 趋势, PDD take rate, 销售费用率 2026]
+      source_hint: "季度财报 + 电话会 + 卖方盈利预测模型"
+    - question: "Temu 区域(尤其欧洲/非美)能否出现减亏或单均盈利信号？全球 GMV 在 de minimis 冲击后是否企稳？"
+      addresses: [K2]
+      search_keywords: [Temu 半托管 单位经济, Temu GMV 2026, Temu 欧洲 扩张]
+      source_hint: "Tech Buzz China Temu Watch + Marketplace Pulse + Sensor Tower"
+    - question: "未来12个月监管冲击是见顶还是继续恶化(新国别禁入/新>€200M罚单/美国进一步收紧)？"
+      addresses: [K3]
+      search_keywords: [Temu 监管 2026, de minimis 后续, EU DSA Temu 罚]
+      source_hint: "欧盟委员会公告 + 美国海关政策 + Reuters 监管线"
+    - question: "PDD 是否在 FY2026 首次宣布系统性回购或分红？现金余额与资本配置表态如何？"
+      addresses: [K4]
+      search_keywords: [PDD 回购 分红, PDD buyback 2026, PDD 资本配置]
+      source_hint: "20-F 现金/治理 + IR 公告 + 历次电话会资本配置问答"
+    - question: "拼多多国内 GMV 份额在阿里回归价格力+抖音掠夺下是守住还是系统性流失？"
+      addresses: [K5]
+      search_keywords: [拼多多 GMV 份额, 拼多多 vs 抖音, 中国电商 份额 2025]
+      source_hint: "Statista/QuestMobile 份额 + 卖方国内电商追踪"
+
+material_priority:
+  tier1:              # 必读
+    - title: "PDD FY2025 20-F 全文（财务结构/风险因子/VIE/现金）[复用slug]"
+      type: annual-report
+      ticker: US_PDD
+      source: "slug 已有 2025_PDD_20-F_2026-04-29.htm + 5 份 sec-section"
+      why: "环①理解闸门 + K1利润结构 + K4现金/资本配置地基"
+      addresses: [K1, K4]
+    - title: "PDD Q1 2026 + 历次季度电话会 transcript [复用slug]"
+      type: quarterly-report
+      ticker: US_PDD
+      source: "slug 已有 Q1 2026 earnings call transcript 等"
+      why: "K1利润趋势 + K2 Temu 口径 + K5国内 + 管理层投入逻辑"
+      addresses: [K1, K2, K5]
+    - title: "卖方深度研报 ×4（多空一致预期 + 估值锚）[复用slug · consensus 合同项]"
+      type: sell-side-note
+      source: "slug 已有 4 份 sell-side-note + simplywall narratives"
+      why: "环②定价锚 + 多空分歧($110-118) + K1/K2 共识基线"
+      addresses: [K1, K2]
+    - title: "Temu 第三方运营数据（GMV/MAU/半托管单位经济）"
+      type: industry-research
+      source: "Tech Buzz China Temu Watch + Marketplace Pulse（部分已入 prescan）/ Sensor Tower"
+      why: "命门2 Temu 黑箱 · 低置信优先砸料 · K2"
+      addresses: [K2]
+  tier2:              # 补充
+    - title: "国内电商份额数据（拼多多 vs 阿里 vs 京东 vs 抖音 2025）"
+      type: data
+      source: "Statista（已入 prescan）/ QuestMobile / Wind"
+      why: "K5国内份额攻防 · 命门1支撑维度"
+      addresses: [K5]
+    - title: "监管时间线（de minimis + EU DSA + UFLPA）[复用slug policy]"
+      type: policy
+      source: "slug 已有 EU DSA 政策料 + prescan de minimis 料"
+      why: "K3监管边际是否见顶 · 命门2"
+      addresses: [K3]
+    - title: "PDD 管理层资本配置史 [mgmt-capital-alloc 合同项]"
+      type: industry-research
+      source: "20-F 治理章节 + 历次电话会资本配置问答（公司不出 proxy）"
+      why: "环①管理层梁 + K4 · hard 类真欠供"
+      addresses: [K4]
+  tier3:              # 可选
+    - title: "历史镜鉴：跨境低价平台崩盘 + 增长股价值陷阱案例 [historical-mirror 合同项]"
+      type: industry-research
+      source: "Wish/ContextLogic 复盘 + 早期阿里/eBay re-rating 案例"
+      why: "环⑤证伪机制 · hard 类真欠供"
+      addresses: [K1, K2]
+
+key_risks_to_monitor:
+  - "净利润同比降幅持续扩大(>20%) → 确认价值陷阱"
+  - "Temu 监管升级：新国别市场禁入或 >€200M 新罚单"
+  - "国内份额连续流失 + 用户活跃走低"
+  - "中概 PCAOB/HFCAA 退市风险再起"
+  - "管理层持续治理黑箱、零股东回报"
+
+analogies_to_study:
+  - "Wish (ContextLogic) 美国低价跨境崩盘 (2020-2023)：类比 Temu 监管+单位经济崩坏；局限——Wish 无国内现金牛输血"
+  - "早期阿里/京东 增长见顶后估值重置：类比 PDD 利润见顶 derating；局限——PDD 仍握 Temu 增长期权"
+  - "eBay 从成长到成熟价值股 re-rating + 资本返还：类比深度价值修复路径；局限——eBay 无中概折价"

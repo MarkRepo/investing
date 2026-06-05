@@ -1,0 +1,156 @@
+slug: pinduoduo
+variant: opus4.8
+entries:
+- searched_at: '2026-06-05T09:36:33.793643+00:00'
+  query: PDD Holdings FY2025 full year revenue net income 2025 annual results
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:33.806738+00:00'
+  query: PDD Holdings Q1 2026 earnings results revenue profit miss
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:33.825310+00:00'
+  query: PDD Holdings forward PE valuation market cap 2026 analyst price target
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:33.856880+00:00'
+  query: PDD Holdings share buyback dividend capital return 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:33.898331+00:00'
+  query: Temu US daily active users GMV decline de minimis May 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:33.936035+00:00'
+  query: US de minimis exemption China end status 2026 tariff Temu Shein
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:33.979866+00:00'
+  query: EU DSA Temu fine penalty ruling 2026 amount
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:34.028235+00:00'
+  query: Temu semi-managed local fulfillment Europe expansion 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:34.078578+00:00'
+  query: Pinduoduo domestic GMV market share vs Alibaba Douyin 2025 China ecommerce
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:34.159299+00:00'
+  query: PDD Holdings Temu profitability breakeven unit economics 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:34.221919+00:00'
+  query: PDD Holdings Pinduoduo Temu investment thesis 2026 valuation competition
+    regulation
+  triggered_by: 00-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T09:36:34.286757+00:00'
+  query: PDD Holdings latest news 2026 earnings regulatory announcement
+  triggered_by: 00-prescan
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T12:35:39.837056+00:00'
+  query: PDD Holdings net income margin trend take rate selling expenses 2026
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T12:35:39.963724+00:00'
+  query: Temu semi-managed unit economics GMV Europe expansion 2026 loss narrowing
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T12:35:40.092395+00:00'
+  query: Temu regulation 2026 de minimis EU DSA new fine market ban escalation
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T12:35:40.226883+00:00'
+  query: PDD Holdings share buyback dividend capital return cash reserves 2026
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T12:35:40.366782+00:00'
+  query: Pinduoduo domestic GMV market share vs Douyin Alibaba 2025 2026 China
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T14:27:45.347424+00:00'
+  query: Wish ContextLogic 跨境低价直邮崩塌 单位经济 复购失败 历史镜鉴
+  triggered_by: 05-critic
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-05T14:27:45.630136+00:00'
+  query: Temu de minimis 取消 2025 单位经济 GMV MAU 半托管 盈利冲击
+  triggered_by: 05-critic
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
