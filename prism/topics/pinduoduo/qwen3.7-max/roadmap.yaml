@@ -1,0 +1,154 @@
+# roadmap.yaml — PDD Holdings 研究路线图
+slug: pinduoduo
+created: 2026-06-05
+primer_scope: "中国电商发展史（淘宝→拼多多→抖音电商三分天下）、C2M 模式原理与社交电商玩法、VIE 架构对中概股投资者的含义、跨境电商全托管/半托管模式对比"
+learning_track:
+  l3_debates:
+    - question: "PDD 利润暴跌是战略性投入还是竞争力衰退？市场是否误读了管理层意图？"
+      source_hint: "FY2025 earnings call transcript + 卖方分歧点整理"
+    - question: "Temu 全球化终局是成为 Amazon 级平台还是下一个 Wish（烧完钱就死）？"
+      source_hint: "Temu vs Shein vs Wish 对比分析 + Temu 单位经济模型数据"
+    - question: "中国电商价格战是否已到终局？拼多多/抖音/阿里三方谁能最后站着？"
+      source_hint: "Reuters/FT 电商价格战深度报道 + 各平台 take rate 变化"
+    - question: "PDD 管理层（联席CEO+黄峥）的资本配置是否在损害小股东利益？VIE+无分红+大量生态投入=代理成本？"
+      source_hint: "PDD proxy statement + 治理结构分析 + 同行回购/分红对比"
+    - question: "Temu 面临的监管围堵（de minimis取消+EU DSA罚款+各国数据安全审查）是暂时性阵痛还是结构性天花板？"
+      source_hint: "EU DSA enforcement timeline + US trade policy analysis + 各国监管动态"
+  l4_hunting:
+    - question: "Temu EU 合规整改后能否在 2026 年底前实现合规成本可控？若罚款持续升级，全球化天花板在哪？"
+      addresses: [K1]
+      search_keywords: [Temu DSA 合规, EU 罚款 电商, Temu 欧洲 监管]
+      source_hint: "EU Commission DSA enforcement page + 欧洲科技政策媒体"
+    - question: "Temu 美国 MAU -28% 是 de minimis 取消的短期冲击还是结构性下滑？2026H2 能否企稳？"
+      addresses: [K2]
+      search_keywords: [Temu 美国 用户, de minimis 影响, Temu MAU 趋势]
+      source_hint: "Sensor Tower / data.ai 月度数据 + Temu 美国价格调整跟踪"
+    - question: "拼多多国内 GMV 份额能否守住 15%+？抖音电商货架化后对拼多多的替代效应有多大？"
+      addresses: [K3]
+      search_keywords: [抖音电商 份额, 拼多多 竞争, 中国电商 GMV]
+      source_hint: "QuestMobile / 星图数据 / eMarketer 中国电商报告"
+    - question: "Temu 全托管+半托管的单位经济模型何时能转正？2027 前单季盈利概率多大？"
+      addresses: [K4]
+      search_keywords: [Temu 盈利 模型, Temu 半托管, 跨境电商 单位经济]
+      source_hint: "TechBuzzChina / ChinaTalk / 产业链调研 + PDD 财报经营费用拆分"
+    - question: "PDD 管理层是否会在 2026 年推出实质分红或大规模回购（>$5B）以回应低估值？"
+      addresses: [K5]
+      search_keywords: [PDD 回购 分红, PDD 资本回报, 拼多多 股东回报]
+      source_hint: "PDD IR + SEC filings + 13F institutional tracking"
+material_priority:
+  tier1:
+    - title: "PDD Holdings FY2025 20-F Annual Report (2025)"
+      type: annual-report
+      ticker: PDD
+      source: "SEC EDGAR"
+      why: "核心财务数据 + Temu 业务拆分 + VIE 风险因素 + 管理层讨论（环①②⑤全覆盖）"
+      addresses: [K4, K5]
+      info_tier: public
+      rings: [biz-moat-unit-econ, financial-arc, mgmt-capital-alloc, valuation-anchor]
+    - title: "PDD Q1 2026 Earnings Presentation + Call Transcript"
+      type: earnings-material
+      ticker: ""
+      source: "investor.pddholdings.com"
+      why: "最新季度数据：增速是否企稳、利润率拐点信号、管理层对 Temu 的表态"
+      addresses: [K4, K5]
+      info_tier: public
+      rings: [financial-arc, biz-moat-unit-econ]
+    - title: "卖方深度报告（3 份对比，覆盖 Temu 全球化 + 国内竞争 + 估值）"
+      type: sell-side-note
+      ticker: ""
+      source: "中金/高盛/摩根士丹利/瑞银（任选3家）"
+      why: "卖方一致预期基准 + 多空分歧点 + 估值模型（环②共识基准 + 环④多空论据）"
+      addresses: [K1, K3, K4]
+      info_tier: half_public
+      rings: [consensus, bull-bear, valuation-anchor]
+    - title: "中国电商市场份额报告 2025H1（含阿里/京东/拼多多/抖音/快手）"
+      type: industry-research
+      ticker: ""
+      source: "QuestMobile / eMarketer / 星图数据"
+      why: "K3 核心验证：拼多多份额是否在流失、抖音电商货架化的真实冲击"
+      addresses: [K3]
+      info_tier: half_public
+      rings: [bull-bear, biz-moat-unit-econ]
+    - title: "Temu 欧洲运营详情：DSA 合规进展 + 主要国家 GMV + 用户增长"
+      type: industry-research
+      ticker: ""
+      source: "EU Commission / 欧洲科技媒体 / TechBuzzChina"
+      why: "K1 核心验证：EU 监管是暂时罚款还是结构性禁入风险"
+      addresses: [K1]
+      info_tier: half_public
+      rings: [bull-bear, historical-mirror]
+  tier2:
+    - title: "Temu 半托管模式深度分析：商家数/GMV占比/单位经济"
+      type: industry-research
+      ticker: ""
+      source: "TechBuzzChina / ChinaTalk / 产业链调研"
+      why: "K4 验证关键：半托管是否改善了单位经济模型、与全托管的利润率差异"
+      addresses: [K4]
+      info_tier: hard
+      rings: [biz-moat-unit-econ]
+    - title: "PDD 管理层资本配置史：历年回购/分红/投资记录 + 黄峥实际角色"
+      type: sell-side-note
+      ticker: ""
+      source: "历年财报 Capital Allocation + 13F filings + proxy statement"
+      why: "K5 验证：管理层是否有股东回报纪律、黄峥是否仍实质控制"
+      addresses: [K5]
+      info_tier: half_public
+      rings: [mgmt-capital-alloc]
+    - title: "Temu 美国市场数据：MAU 趋势/用户留存/de minimis 后价格调整"
+      type: data
+      ticker: ""
+      source: "Sensor Tower / data.ai / SimilarWeb"
+      why: "K2 验证：美国萎缩是短期冲击还是结构性下滑"
+      addresses: [K2]
+      info_tier: half_public
+      rings: [bull-bear, valuation-anchor]
+    - title: "PDD VIE 架构详情和投资者保护条款分析"
+      type: policy
+      ticker: ""
+      source: "SEC 20-F Risk Factors / 律所分析"
+      why: "K5 治理风险：VIE 对分红/回购/投票权的实质约束"
+      addresses: [K5]
+      info_tier: public
+      rings: [mgmt-capital-alloc, valuation-percentile]
+  tier3:
+    - title: "同业估值对比：Amazon/Alibaba/Meituan/京东的 PE/EV-EBITDA/P-S"
+      type: data
+      ticker: ""
+      source: "Bloomberg / Capital IQ / Wind"
+      why: "估值锚参照系：PDD PE~10x 在同业中处于什么位置、折价是否合理"
+      addresses: [K4, K5]
+      info_tier: public
+      rings: [valuation-percentile, valuation-anchor]
+    - title: "Shein IPO 招股书 / 财务数据（如可获得）"
+      type: policy
+      ticker: ""
+      source: "HKEX filing / 媒体报道"
+      why: "Temu 最直接竞争对手的财务基准：利润率、获客成本、GMV"
+      addresses: [K1, K4]
+      info_tier: half_public
+      rings: [bull-bear, biz-moat-unit-econ]
+    - title: "Amazon 国际扩张历史复盘（2000-2020）"
+      type: industry-research
+      ticker: ""
+      source: "HBS Case / 商业史分析"
+      why: "historical-mirror：全球化电商扩张的成功/失败路径镜鉴"
+      addresses: [K1, K4]
+      info_tier: public
+      rings: [historical-mirror]
+key_risks_to_monitor:
+  - "EU DSA 对 Temu 的后续处罚力度和时间表"
+  - "美国贸易政策进一步收紧（关税/数据安全/平台责任法）"
+  - "中国消费复苏力度——若消费降级结束，拼多多低价心智优势减弱"
+  - "抖音电商货架化加速——对拼多多份额的替代效应"
+  - "PDD 管理层大规模减持或关联交易"
+  - "Temu 在新兴市场（拉美/东南亚/中东）的扩张节奏"
+analogies_to_study:
+  - name: "Amazon 国际扩张（2000-2015）"
+    analogy: "同为电商巨头的全球化扩张，Amazon 通过收购本地玩家（如 Zappos/Quidsi）+ 自建物流进入新市场"
+    limitation: "Amazon 进入时市场空白多、竞争少；Temu 面对的是已有 Amazon/Shein/AliExpress 的饱和市场"
+  - name: "Wish 的崛起与崩塌（2015-2023）"
+    analogy: "同为跨境低价电商平台，靠烧钱获客+中国供应链，一度上市估值 $17B 后暴跌 99%"
+    limitation: "Wish 缺乏拼多多的供应链深度和运营能力，Temu 的全托管模式比 Wish 的纯 marketplace 更可控"
+  - name: "Shein 的全球化路径（2020-2025）"
+    analogy: "同期、同供应链、同目标客群（Z 世代价格敏感消费者），Shein 先于 Temu 验证了跨境低价模式的可行性"
+    limitation: "Shein 以快时尚起家，品类集中、供应链更深；Temu 是全品类平台模式，获客成本和合规复杂度更高"

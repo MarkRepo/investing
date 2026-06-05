@@ -1,0 +1,326 @@
+slug: pinduoduo
+display_name: 'PDD Holdings (拼多多, NASDAQ: PDD)'
+type: company
+created: '2026-06-04T23:29:49.190569+00:00'
+status: active
+stage: 05-critic-review
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 拼多多作为中国电商颠覆者加Temu全球化引擎，在当前估值水平下是否值得重仓投资
+  depth: deep
+  ticker: US_PDD
+  market: US
+  short_name: 拼多多
+  search_terms:
+  - Temu全球化
+  - 拼多多估值
+  - 电商竞争格局
+  - Temu监管风险
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-05T00:09:32.012929+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-00c2f5
+    - mat-0aa1e5
+    - mat-2a4589
+    - mat-2ab8a2
+    - mat-2cf4e0
+    - mat-4d12b0
+    - mat-57266c
+    - mat-5c37f7
+    - mat-6f8015
+    - mat-92c2b6
+    - mat-ae2252
+    - mat-b49d21
+    - mat-f66988
+    - mat-fb9065
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-06-05T00:09:32.034107+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-00c2f5
+    - mat-0b86da
+    - mat-2a4589
+    - mat-2ab8a2
+    - mat-4d12b0
+    - mat-57266c
+    - mat-5c37f7
+    - mat-6f8015
+    - mat-ae2252
+    - mat-b49d21
+    - mat-f66988
+    - mat-fb9065
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-06-05T00:09:32.053249+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-2a4589
+    - mat-6f8015
+    - mat-ae2252
+    - mat-f66988
+    - mat-fb9065
+    last_error: null
+parent_materials: []
+next_actions:
+- 说「评审 pinduoduo」进 05 对抗式重审
+- 或说「监控 pinduoduo」开启日常监控
+user_todos:
+- task: 下载 PDD FY2025 年报 20-F 或 Q4 2025 earnings presentation（官方 IR）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  - K5
+  source_hint: investor.pddholdings.com 或 SEC EDGAR
+  status: done
+- task: 下载 3 份对比卖方深度报告（中金/高盛/摩根士丹利任选，需覆盖 Temu 全球化分析）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  - K4
+  source_hint: 卖方公众号 / Wind / Bloomberg Terminal
+  status: done
+  covered_by:
+  - mat-00c2f5
+  - mat-038f3e
+  - mat-0a278b
+  - mat-13089c
+  - mat-170950
+  - mat-1d45a7
+  - mat-3ff4aa
+  - mat-4d12b0
+  - mat-5c37f7
+  - mat-62fe49
+  - mat-6f8015
+  - mat-71db63
+  - mat-92c2b6
+  - mat-b49d21
+  - mat-b6c953
+  - mat-c77d22
+  - mat-ddcb99
+  coverage_note: web-search mat-0a278b, mat-5c37f7, mat-c77d22, mat-ddcb99, mat-1d45a7,
+    mat-170950, mat-b6c953, mat-92c2b6 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
+    材料才闭环（未 done）
+- task: 获取中国电商市场份额数据（2025H1），含阿里/京东/拼多多/抖音/快手份额变化
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: QuestMobile / eMarketer / 星图数据 / 第三方电商研究机构
+  status: done
+  covered_by:
+  - mat-0a278b
+  - mat-170950
+  - mat-1d45a7
+  - mat-5c37f7
+  - mat-92c2b6
+  - mat-b49d21
+  - mat-b6c953
+  - mat-c77d22
+  - mat-ddcb99
+  coverage_note: web-search mat-0a278b, mat-5c37f7, mat-c77d22, mat-ddcb99, mat-1d45a7,
+    mat-170950, mat-b6c953, mat-92c2b6 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
+    材料才闭环（未 done）
+- task: 获取 Temu 欧洲运营详情：主要国家 GMV 拆分、合规进展、DSA 整改计划
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: EU Commission DSA enforcement page / 欧洲科技媒体
+  status: done
+  covered_by:
+  - mat-00c2f5
+  - mat-0a278b
+  - mat-170950
+  - mat-1d45a7
+  - mat-5c37f7
+  - mat-62fe49
+  - mat-92c2b6
+  - mat-b6c953
+  - mat-c77d22
+  - mat-ddcb99
+  coverage_note: web-search mat-0a278b, mat-5c37f7, mat-c77d22, mat-ddcb99, mat-1d45a7,
+    mat-170950, mat-b6c953, mat-92c2b6 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
+    材料才闭环（未 done）
+- task: 获取 Temu 半托管模式数据：商家数量、GMV 占比、单位经济模型
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K4
+  source_hint: TechBuzzChina / ChinaTalk / 产业链调研
+  status: in_progress
+  covered_by:
+  - mat-038f3e
+  - mat-13089c
+  - mat-3ff4aa
+  - mat-4d12b0
+  - mat-6f8015
+  - mat-71db63
+  coverage_note: web-search mat-038f3e, mat-71db63, mat-3ff4aa 命中 K# 但无事件锚；hard 深料需事件锚或同
+    source_type 材料才闭环（未 done）
+  archive_candidate: thesis v1 已移除该 K#（上版 K# 集合：['K1', 'K2', 'K3', 'K4', 'K5']，本版：[]）
+- task: 获取 PDD 管理层资本配置史：分红/回购/投资记录，黄峥实际角色
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 历年财报 Capital Allocation section / 13F filings
+  status: in_progress
+  covered_by:
+  - mat-0a278b
+  - mat-13089c
+  - mat-170950
+  - mat-1d45a7
+  - mat-4d12b0
+  - mat-5c37f7
+  - mat-6f8015
+  - mat-92c2b6
+  - mat-b49d21
+  - mat-b6c953
+  - mat-c41306
+  - mat-c77d22
+  - mat-ddcb99
+  - mat-e4e31e
+  coverage_note: web-search mat-0a278b, mat-5c37f7, mat-c77d22, mat-ddcb99, mat-1d45a7,
+    mat-170950, mat-b6c953, mat-92c2b6 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
+    材料才闭环（未 done）
+  archive_candidate: thesis v1 已移除该 K#（上版 K# 集合：['K1', 'K2', 'K3', 'K4', 'K5']，本版：[]）
+- task: 获取 Temu 美国市场最新数据：MAU 趋势、用户留存、de minimis 后价格调整
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: Sensor Tower / data.ai / SimilarWeb
+  status: in_progress
+  covered_by:
+  - mat-0a278b
+  - mat-0b86da
+  - mat-170950
+  - mat-1d45a7
+  - mat-4d12b0
+  - mat-59d9a9
+  - mat-5c37f7
+  - mat-92c2b6
+  - mat-b6c953
+  - mat-c77d22
+  - mat-ddcb99
+  - mat-f46f81
+  coverage_note: web-search mat-0a278b, mat-5c37f7, mat-c77d22, mat-ddcb99, mat-1d45a7,
+    mat-170950, mat-b6c953, mat-92c2b6 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
+    材料才闭环（未 done）
+  archive_candidate: thesis v1 已移除该 K#（上版 K# 集合：['K1', 'K2', 'K3', 'K4', 'K5']，本版：[]）
+- task: 获取 PDD VIE 架构详情和投资者保护条款
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: SEC 20-F Risk Factors section / 律所分析报告
+  status: done
+  covered_by:
+  - mat-13089c
+  - mat-4d12b0
+  - mat-6f8015
+  - mat-b49d21
+  coverage_note: 已由 materials mat-6f8015, mat-13089c, mat-b49d21 覆盖
+- task: 收集 PDD 同业估值对比：Amazon/Alibaba/Meituan/京东的 PE/EV-EBITDA
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  - K5
+  source_hint: Bloomberg / Capital IQ / Wind 可比公司模块
+  status: done
+  covered_by:
+  - mat-13089c
+  - mat-4d12b0
+  - mat-6f8015
+  - mat-b49d21
+  coverage_note: 已由 materials mat-6f8015, mat-13089c, mat-b49d21 覆盖
+- task: 收集历史上类似全球化电商扩张案例（Amazon 国际扩张/Shein 崛起路径）作为镜鉴
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  source_hint: HBS Case / 商业史书籍 / 深度报道
+  status: done
+  covered_by:
+  - mat-00c2f5
+  - mat-13089c
+  - mat-4d12b0
+  - mat-6f8015
+  coverage_note: 已由 materials mat-6f8015, mat-13089c, mat-00c2f5 覆盖
+- task: 收 historical-mirror 实证：Amazon 国际扩张(2000-2015)和 Wish 崛起崩塌(2015-2023)的复盘文章
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  source_hint: HBS Case / 商业史分析 / 深度报道
+  status: done
+  covered_by:
+  - mat-00c2f5
+  - mat-13089c
+  - mat-4d12b0
+  - mat-6f8015
+  coverage_note: 已由 materials mat-6f8015, mat-13089c, mat-00c2f5 覆盖
+- task: 资料提取完成：76 份全部处理完毕（14 详细 + 10 简要 findings）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-05T00:10:47.259416+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-04T23:35:20.318787+00:00'
+    summary: 命门1=Temu非美市场规模化盈利(中); 命门2=中国主站份额守住抖音冲击(中高); 命门3=管理层资本配置纪律(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-05T00:10:47.259529+00:00'
+    summary: 命门1中→中微降/命门2中高→中/命门3低→中
+    convergence_status: open
+thesis:
+  current_version: 1
+  last_updated: '2026-06-05T00:10:36.084390+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-04T23:34:44.157519+00:00'
+    summary: PDD以PE~10x加现金$60B定价，实质是Temu全球化期权被近乎免费附赠的低估资产，看多核心在于Temu非美市场EU加74%证明模式可复制
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-05T00:10:36.084493+00:00'
+    summary: PE 9x+现金$63B(占市值52%)定价Temu不可验证+治理折价，扣除现金PE<5x下行保护极强。Temu 2027盈利拐点兑现则PE修复+33-56%，EV+36%但信息不足限试探档
+    prescan_status: full
+prescan_log:
+- round_at: '2026-06-04T23:42:22.666519+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 5
+  queries_with_hits: 5

@@ -1,17 +1,44 @@
 # 投资仪表盘
 
-> 生成：2026-06-05　　公司：4 个　　行业：2 个　　竞技场：4 个
+> 生成：2026-06-05　　公司：5 个　　行业：2 个　　竞技场：4 个
 
 ## 公司层：决策清单
 
 | 公司 | 当前价 | 当前区间 | 距 Buy 区间 | 仓位上限 | Kill | 近期路标 | 数据新鲜度 |
 |------|--------|---------|-----------|---------|------|---------|----------|
-| [Robinhood (HOOD, NASDAQ)](/prism/us-robinhood/opus4.8) (US_HOOD) | 88.33 | 🔴 高于观望区 | +30% | 试探 (≤1%) / 7% | ✅ | 2 个 | 🟢 0d |
+| [PDD Holdings (拼多多, NASDAQ: PDD)](/prism/pinduoduo/qwen3.7-max) (US_PDD) | 85.88 | 🔵 可建仓 | +15% | 试探 / 5% | ✅ | 1 个 | 🟢 0d |
+| [Robinhood (HOOD, NASDAQ)](/prism/us-robinhood/opus4.8) (US_HOOD) | 88.33 | 🔴 高于观望区 | +30% | 试探 (≤1%) / 7% | ✅ | 2 个 | 🟢 1d |
 | [利元亨 (Yuanli Heng, SSE 688499)](/prism/cn-yuanli-heng-688499/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [先导智能 (Leadex, SZSE 300450)](/prism/cn-leadex-300450/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)](/prism/global-futu/opus4.8) (US_FUTU) | 95.78 | 🔵 可建仓 | +13% | 2.5% / 5% | ✅ | 1 个 | 🟢 3d |
+| [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)](/prism/global-futu/opus4.8) (US_FUTU) | 95.78 | 🔵 可建仓 | +13% | 2.5% / 5% | ✅ | 1 个 | 🟢 4d |
 
 ## 公司详情
+
+### PDD Holdings (拼多多, NASDAQ: PDD) (US_PDD)
+
+**买入框**
+
+| 区间 | 价格 |
+|------|------|
+| 🟢 强力买入 | ≤ 75 |
+| 🔵 可建仓 | 75 – 95 |
+| 🟡 观望 | 95 – 120 |
+| 🔴 高于观望 | > 120 |
+| **当前** | **85.88**（2026-06-04）→ 🔵 可建仓 |
+
+**估值矩阵**
+
+| 估值模型 | Bull 公允值 | Base 公允值 | Bear 公允值 |
+|---------|----------|----------|----------|
+| Reverse PE-DCF | >141 | 114–141 | 68–91 |
+| SOTP (基本盘+期权+现金) | >222 | 167–222 | 119–159 |
+| 同业横截面 PE | >137 | 114–137 | 86–114 |
+
+**近期路标（60天内）**
+
+- **2026-08** Q2 2026 财报  （多：Transaction Services +25%+ (Temu驱动) / 空：S&M ratio 继续 >30%）
+
+---
 
 ### Robinhood (HOOD, NASDAQ) (US_HOOD)
 
@@ -71,6 +98,7 @@
 
 ## ⏰ 路标日历（60 天内）
 
+- **2026-08** [PDD Holdings (拼多多, NASDAQ: PDD)] Q2 2026 财报
 - **2026-08** [Robinhood (HOOD, NASDAQ)] Q2 2026 财报(事件合约可持续性+NII趋势+EPS vs guidance)
 - **2026-08** [Robinhood (HOOD, NASDAQ)] Rule 605订单执行披露首次适用RHF/RHS+小单报价透明化累积效应
 - **2026-Q2** [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)] 2026 Q2 业绩会披露大陆口径 + 罚没是否计提
@@ -169,6 +197,10 @@
 
 | 主题标签 | 涉及研究 | 数量 |
 |---------|---------|------|
+| `china-ecommerce` | PDD Holdings (拼多多, NASDAQ: PDD) | 1 |
+| `cross-border-commerce` | PDD Holdings (拼多多, NASDAQ: PDD) | 1 |
+| `temu-globalization` | PDD Holdings (拼多多, NASDAQ: PDD) | 1 |
+| `consumer-internet` | PDD Holdings (拼多多, NASDAQ: PDD) | 1 |
 | `us-brokerage` | Robinhood (HOOD, NASDAQ) | 1 |
 | `retail-fintech` | Robinhood (HOOD, NASDAQ) | 1 |
 | `crypto-trading` | Robinhood (HOOD, NASDAQ) | 1 |

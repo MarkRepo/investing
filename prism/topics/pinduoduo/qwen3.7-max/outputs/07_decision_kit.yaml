@@ -1,0 +1,94 @@
+slug: pinduoduo
+variant: qwen3.7-max
+topic_type: company
+display_name: "PDD Holdings (拼多多, NASDAQ: PDD)"
+ticker: "US_PDD"
+generated: "2026-06-05T17:00:00+08:00"
+data_freshness: "2026-03-31"
+
+buy_box:
+  strong_buy_max: 75
+  accumulate_min: 75
+  accumulate_max: 95
+  hold_min: 95
+  hold_max: 120
+  current_price: 85.88
+  price_as_of: "2026-06-04"
+  current_zone: accumulate
+
+position_framework:
+  position_tier: "试探"
+  sizing_rationale: "Temu不可验证(单segment不披露) + 治理折价(无分红无回购+VIE) + 投入期不确定 → 信息充分度不足以上标准档"
+  initial_max_pct: null
+  full_max_pct: 5
+  add_ladder_prices: [75, 65, 55]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: "Reverse PE-DCF"
+    bull_fair_value: [141, null]
+    base_fair_value: [114, 141]
+    bear_fair_value: [68, 91]
+  - name: sotp
+    label: "SOTP (基本盘+期权+现金)"
+    bull_fair_value: [222, null]
+    base_fair_value: [167, 222]
+    bear_fair_value: [119, 159]
+  - name: peer_comparison
+    label: "同业横截面 PE"
+    bull_fair_value: [137, null]
+    base_fair_value: [114, 137]
+    bear_fair_value: [86, 114]
+
+kill_criteria:
+  - id: temu_eu_mau_decline
+    description: "Temu EU MAU 连续 2 季度 YoY 负增长（当前 +74%）"
+    status: pending
+    check_at: "2026-Q4"
+  - id: domestic_share_below_12
+    description: "国内 GMV 份额降至 <12%（当前中值 ~15%）"
+    status: pending
+    check_at: "2026-Q4"
+  - id: fcf_negative
+    description: "FY2026 全年自由现金流转负（当前 3 年均 >¥1,000 亿）"
+    status: pending
+    check_at: "2027-03"
+  - id: rogue_capex
+    description: "单笔>$5B非核心投资 或 FY2028 ROIC<14%且无Temu segment披露"
+    status: pending
+    check_at: "2028-03"
+
+signposts:
+  - date: "2026-08"
+    event: "Q2 2026 财报"
+    bull_signal: "Transaction Services +25%+ (Temu驱动)"
+    bear_signal: "S&M ratio 继续 >30%"
+    triggered: null
+  - date: "2026-08-28"
+    event: "Temu EU DSA 整改计划提交"
+    bull_signal: "EU 接受整改方案"
+    bear_signal: "EU 拒绝并要求进一步措施"
+    triggered: null
+  - date: "2026-11"
+    event: "Q3 2026 财报"
+    bull_signal: "OP margin 回升至 >20%"
+    bear_signal: "利润率继续下滑"
+    triggered: null
+  - date: "2026-Q4"
+    event: "Temu EU MAU 趋势"
+    bull_signal: "维持 +50%+ YoY"
+    bear_signal: "增速降至 <20% 或转负"
+    triggered: null
+  - date: "2027-03"
+    event: "FY2026 年报"
+    bull_signal: "Temu 全年 EBIT 收窄至 <-¥3B"
+    bear_signal: "亏损扩大或持平"
+    triggered: null
+  - date: "2027"
+    event: "管理层资本回报信号"
+    bull_signal: "宣布分红或 $5B+ 回购"
+    bear_signal: "仍无实质回报"
+    triggered: null
+
+cluster_tags: [china-ecommerce, cross-border-commerce, temu-globalization, consumer-internet]

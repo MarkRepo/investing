@@ -1,13 +1,25 @@
 watches:
-- slug: us-robinhood
-  variant: claude-opus-4-7
-  scope: topic
-  kind: null
-  locator: null
-  added_at: '2026-06-03T01:53:17.089656+00:00'
 - slug: global-futu
   variant: opus4.8
   scope: event
   kind: signpost
   locator: 6c6a15ee
   added_at: '2026-06-03T02:54:30.641211+00:00'
+- slug: global-futu
+  variant: opus4.8
+  scope: event
+  kind: kill
+  locator: mainland_profit_disconfirm
+  added_at: '2026-06-04T00:45:50.920092+00:00'
+- slug: us-robinhood
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-06-04T22:20:51.956668+00:00'
+- slug: global-futu
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-06-04T23:30:43.855776+00:00'

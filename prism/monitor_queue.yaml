@@ -1,35 +1,4 @@
 pending:
-- proposal_id: 923cc37c1fae
-  slug: us-robinhood
-  variant: claude-opus-4-7
-  kind: signpost
-  locator: fe1c4705
-  proposed_value: bull
-  expected_current: null
-  evidence_urls:
-  - https://www.sec.gov/files/rules/final/2024/34-99626.pdf
-  - https://www.federalregister.gov/documents/2024/05/09/2024-08999/market-data-infrastructure
-  - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4651221
-  living_feed_entry: '## 2026-06-03 SIP odd-lot 数据已公开,未见针对 HOOD 执行质量的新指控
-
-    **来源**:SEC Market Data Infrastructure Rule (Release 34-99626 / Federal Register)；SSRN
-    执行质量研究
-
-    **关键信息**:SEC 市场数据基础设施规则要求 SIP 公开 odd-lot 报价,合规日 2026-01-26——到本巡检日 odd-lot 数据已公开逾
-    4 个月。围绕 HOOD odd-lot 占比/执行质量的新负面(媒体或学术)未检索到;排名最前的批判性文献《"Robinhood Rips You Off"——But
-    Is That True?》为 2023-12 旧作(早于数据公开),且其本身在质疑"坑散户"叙事,非新证伪。
-
-    **对已有判断的影响**:支持 bull_signal「媒体/学术未抓 HOOD 负面」;bear_signal「odd-lot 占比高→执行质量被质疑」暂未兑现。
-
-    **当前判断更新**:维持原判断,该 signpost 翻 bull(弱证据:基于"未检索到新负面",属缺失性证据,需复核)'
-  rationale: 事件已兑现(odd-lot SIP 数据 2026-01-26 起公开),但未见针对 HOOD 的新执行质量指控,bull_signal
-    成立;弱证据(缺失性)需人工复核
-  requires_thesis_review: false
-  status: confirmed
-  created_at: '2026-06-03T06:06:52.815899+00:00'
-  confirmed_at: '2026-06-03T07:34:02.391703+00:00'
-  writeback_done: true
-  living_feed_appended: true
 - proposal_id: 032d634e7add
   slug: global-futu
   variant: opus4.8

@@ -318,6 +318,84 @@ EOF
 
 ---
 
+## Step 5.6：深度抓取公开分析材料（**先尝试自动获取，抓不到才变 user_todos**）
+
+> **为什么必须做**：Step 5.5 只处理了 `annual-report` / `quarterly-report` 等有 ticker 的结构化文件。但 roadmap tier1/tier2 里还有很多 `sell-side-note` / `industry-research` / `policy` / `data` 类型的材料，标注了 `info_tier: public` 或 `half_public`，**实际上在公开渠道有全文或摘要可搜到**（卖方报告转载、行业研究机构公开报告、监管裁决原文、独立研究博客）。
+>
+> 如果跳过本步直接把这些写成 user_todos，等于把**本可以自动完成的工作甩给用户**。
+>
+> **硬规则**：本步跑完后，**只有确认公开不可获取的材料**（`info_tier: hard` 或所有搜索均无果）才保留为 user_todos。已自动获取的 todo 必须在 Step 6 标 `done`。
+
+### 执行方法
+
+对 roadmap `material_priority.tier1` + `tier2` 中每条**非 `annual-report`**（Step 5.5 已处理）且 **`info_tier != 'hard'`** 的材料，按以下阶梯尝试：
+
+#### 阶梯 1：exa 高级搜索（最适合找分析报告全文）
+
+用 `mcp__exa__web_search_advanced_exa` 工具，按材料类型选 query：
+- **卖方报告**（sell-side-note）：搜 `"{公司名} {ticker} deep research analyst report {年份}"` + 中文 `"中金 高盛 {公司名} 深度研报 {年份}"`，设 `enableHighlights=true`、`highlightsMaxCharacters=2000`、`textMaxCharacters=5000`
+- **行业研究**（industry-research）：搜 `"{行业/主题} market share data report {年份}"`，同上参数
+- **政策/监管**（policy）：搜 `"{公司名} {regulation} enforcement {年份}"`，同上参数
+- **数据**（data）：搜 `"{公司名} statistics financial data {年份}"`，同上参数
+
+每个材料跑 1 次 exa search（`numResults: 5`），**5 个一批并发**（不同材料可并行）。
+
+#### 阶梯 2：adapter semantic 搜索（补充 exa 未覆盖的）
+
+对阶梯 1 未找到满意结果的材料，用 adapter 补搜：
+```bash
+python3 -m prism.scripts.web_search search "<材料标题关键词>" \
+    --intent semantic --days 365 --max-results 5 --output sidecar \
+    --slug {slug} --variant {variant} \
+    --triggered-by 01-deep-fetch --addresses K1,K2
+```
+注意 `--intent semantic`（不是 `news`）——目的是找分析性内容，不是最新新闻。`--days 365` 因为研报/报告时效性比新闻长。
+
+#### 阶梯 3：WebFetch 抓取已知 URL
+
+对阶梯 1/2 搜到的高质量 URL（domain_tier 判为 `llm-judged-official` 的），用 `mcp__exa__web_fetch_exa` 批量抓取全文（`maxCharacters: 5000`，可一次传多个 URL）。
+
+#### 落盘与入库
+
+找到的内容写到 `prism/inbox/auto/{descriptive_name}.md`，格式：
+```markdown
+# {材料标题}
+
+Source: {来源}
+Date: {日期}
+
+{全文或摘要内容}
+```
+
+然后调 `add_material` 入库：
+```python
+from prism.scripts.manifest import add_material
+mid = add_material('{slug}', '{filename}', '{source_type}', '{variant}',
+    notes='{材料描述}', addresses={addresses}, rings={rings}, confidence=0.8)
+```
+
+### 判定结果汇总
+
+跑完后输出一张表，明确标注每条材料的获取状态：
+
+```
+| 材料 | info_tier | 获取方式 | 状态 |
+|------|-----------|----------|------|
+| Goldman Sachs PDD Report | half_public | exa search → BigGo 转载 | ✅ 已入库 mat-xxx |
+| QuestMobile 份额报告 | half_public | exa search → BXTData 全文 | ✅ 已入库 mat-xxx |
+| Temu 半托管单位经济 | hard | — | ⏳ 保留为 user_todo |
+```
+
+### 纪律
+
+- **不要跳过本步**。如果 exa/adapter/WebFetch 能搜到，就没理由让用户手动找
+- **`info_tier: hard` 直接跳过**（专家访谈/产业链调研/付费数据库，确认不可自动获取）
+- **exa search 的 `numResults` 不要超过 5**（控制成本）
+- **搜不到不丢人**——但要诚实记录"搜了没搜到"，而不是没搜就放弃
+- 本步与 prescan 的分工：prescan 校准**事实**（数字/事件），本步获取**分析材料**（报告/数据/裁决）
+
+---
+
 ## Step 5.7：自动校验 roadmap → thesis 闭环（**未通过不得进 Step 6**）
 
 ```bash
