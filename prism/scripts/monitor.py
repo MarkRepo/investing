@@ -422,8 +422,8 @@ def _anchor_for(slug: str, variant: str, kind: str, locator: str) -> str:
     """从 sidecar 取该 event 的语义锚点,作 register_web_search 的 addresses。
 
     signpost → 'signpost:{event}｜bear:{bear_signal}'；kill → 'kill:{description}'。
-    锚点是 free-text(非 K#),故注册时 auto_resolve_todos 不会误命中 K# todo
-    (避开 feedback_addresses_granularity 的假覆盖坑)。取不到回退到 '{kind}:{locator}'。
+    锚点是 free-text(非 K#),故注册时不会进任何 K# todo 的覆盖候选
+    (todo 闭环本就按文档身份、不按 K#,见 feedback_todo_closure_key)。取不到回退到 '{kind}:{locator}'。
     """
     sidecar = _load_company_sidecar(slug, variant) or {}
     if kind == "signpost":

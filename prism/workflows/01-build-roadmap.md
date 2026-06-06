@@ -62,6 +62,8 @@ else:
 
 **根据输出判断**：哪些父 topic 资料对此 arena/company 研究有直接价值？在 Step 3 中将这些可复用资料标注为 `✓ 已收集（来自父 topic）`，并在 roadmap 的 `why` 字段中注明"复用父 topic materials/{filename}"。
 
+> **复用排除边界**：复用**排除 prescan 校准层**（父 manifest 里 `addresses==['scope']` 或 `triggered_by` 为 `*-prescan*` 的 web-search 料——价/量/事件快照，时效性强）；带 `K#` addresses 的**耐久文档**（财报/研报/drilldown/findings 源 + web-search 挖到的实质文档，仍受 90 天 `expired_web_materials` 闸门约束，过期由 03 点名刷新）照复用。**新 topic 自跑 prescan**（Step 8），不复用父级 scope 校准料。
+
 **关键：用脚本登记 parent_materials 字段**（让 workflow 04 自动复用，不用 dispatch prompt 手填路径）：
 
 **先预览父变体兜底**（父 topic 可能有多个模型变体，确认会引到哪个）：
@@ -169,6 +171,7 @@ l4_hunting:
 > - **B 轴（命门靶点）**：照 `decomposition_v0.md` 每环 B 靶点收料，**低置信度命门优先砸料**（对冲薄拆解风险）。
 
 **硬要求**：
+- **建 todo 前扫 manifest 查已有料覆盖**（纪律，复用 `read_manifest`）：00 Step 4.0 早期 ingest + 父复用已把家底登记。每新增一条 todo 前，主 agent `read_manifest('{slug}','{variant}')` **按文档身份**判——已有料就是这条要的文档 → 建成 `done` 填 `covered_by=[已有mat]` 或不建；没有才建 `pending`。按文档身份判，不是 K# 撞 K#。
 - **复用 5.3 已写的 user_todos** 作为 tier1 基础——它们已带 priority/info_tier/addresses 字段
 - 每份资料填写 `addresses: [Kn]` 字段，对应 thesis K#（Q# 已降级，不再用）
 - A 合同必收类目 + B 命门靶点 → 新增 todo 时，**在 `notes`/`source_hint` 标明服务哪个 ring code**，便于 02 登记材料时打 `rings`
@@ -324,6 +327,8 @@ EOF
 >
 > 如果跳过本步直接把这些写成 user_todos，等于把**本可以自动完成的工作甩给用户**。
 >
+> **产即收衔接**：本步是 00/01 产的 todo 的**专职 eager-fetch 收料点**——00 Step 5.3 产的 todo + 01 Step 3 新增的 todo 都在这里当场抓（产即收：00→01 同一收料缝，下游不替它补抓）。闭环按**文档身份**盖戳（`mark_todo_fetch` + `update_user_todo_status`），**不靠 K# 撮合**。
+>
 > **硬规则（auto-fetch 规约 R1/R2，判定与盖戳见 [`_autofetch_protocol.md`](_autofetch_protocol.md)）**：
 > - 作用域 = **tier1 + tier2 + tier3 全部、所有 info_tier**（仅排除 Step 5.5 已处理的 `annual-report`/`quarterly-report`）。`info_tier` 只决定**努力顺序/强度**（hard 先上 exa advanced + 权威 URL WebFetch），**不再作为跳过门槛**。
 > - 每条尝试后**必须 `mark_todo_fetch`**：抓到 `fetched`、有效尝试确认公开无源 `empty`、工具/网络失败 `error`。
@@ -360,7 +365,7 @@ python3 -m prism.scripts.web_search search "<材料标题关键词>" \
 
 #### 落盘与入库
 
-找到的内容写到 `prism/inbox/auto/{descriptive_name}.md`，格式：
+找到的内容写到 `prism/topics/{slug}/inbox/{descriptive_name}.md`（资料只在 topic 层，无全局 inbox），格式：
 ```markdown
 # {材料标题}
 
@@ -455,14 +460,18 @@ from pathlib import Path
 from prism.scripts.topic import (
     read_topic, set_stage, set_next_actions, set_user_todos, update_user_todo_status
 )
+from prism.scripts.manifest import register_inbox_materials
 
 slug = '{slug}'
 variant = '{variant}'
 roadmap = yaml.safe_load(Path(f'prism/topics/{slug}/{variant}/roadmap.yaml').read_text())
 
-# 1. 收集已下载文件名（manual + auto + materials）
+# 0. 增量登记 topic 家底（用户中途放进 topics/{slug}/inbox/ 的料；幂等）
+register_inbox_materials(slug, variant)
+
+# 1. 收集已下载文件名（资料只在 topic 层：inbox + materials，无全局目录）
 downloaded = set()
-for d in ['prism/inbox/manual', 'prism/inbox/auto', f'prism/topics/{slug}/materials']:
+for d in [f'prism/topics/{slug}/inbox', f'prism/topics/{slug}/materials']:
     p = Path(d)
     if p.exists():
         downloaded.update(f.name for f in p.iterdir() if f.is_file())
@@ -539,7 +548,7 @@ Tier 1 必读资料：
 {list tier 1 items}
 
 你现在需要做的事：
-1. 收集上述资料放入 prism/inbox/manual/
+1. 收集上述资料放入 prism/topics/{slug}/inbox/
 2. 具体清单已同步到 Web 页面 "你需要做的事" 区域
 3. 完成后说「prism 推进 {slug}」继续
 

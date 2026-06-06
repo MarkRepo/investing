@@ -66,7 +66,7 @@ python3 -c "from prism.scripts.topic import list_variants; print(list_variants('
 - 返回非空（如 `['claude-opus-4-7']`）→ slug 已存在其他变体，**这是一个意图分叉点，必须停下问用户**（不能自行默认走某条）：
   - **续做**旧变体：不 create，读对应 `topic.yaml` 判 stage → 跳转对应 workflow 推进。
   - **换模型/换架构重研**（新变体）：进 Step 4 用新 variant 名创建（**变体名以 `model_registry` 规范名为准**——opus 4.8 规范名是短名 `opus4.8`，其余模型用全 model-id 式如 `claude-opus-4-7`；传别名脚本会自动归一；历史分裂目录不迁移，靠 `model_registry` 别名表运行时识别）。建后按"新变体复用旧料"流程：
-    - **重注册 materials**——机械抽取层（年报 `_extracted.md` / 研报 `_vlm/`）是 slug 级共享、命中即跳过，**不重转 PDF**。
+    - **重注册 materials**——机械抽取层（年报 `_extracted.md` / 研报 `_vlm/`）是 slug 级共享、命中即跳过，**不重转 PDF**。复用**排除 prescan 校准层**（`addresses==['scope']` 或 `triggered_by` 为 `*-prescan*` 的 web-search 料：价/量/事件快照，时效性强，机械搬运会把过时事实当新赌注，违 `feedback_thesis_after_prescan`）；带 `K#` addresses 的**耐久文档**（财报/研报/drilldown/findings 源 + web-search 挖到的实质文档，validity 锚在出版日）照复用。**新变体一律自跑 prescan**（Step 4.5；复用模式会因本轮 0 注册误报 + prescan URL 不可构造，见 `project_variant_reuse_gotchas` 坑③④）。
     - **findings 必须本变体重抽（走 03）**，禁止复制旧变体的 `findings_mat-*.md`。findings 是"本变体 thesis 的 K# 解读"，按变体隔离；复制旧变体 findings 会①污染"苹果对苹果"模型对比（等于让新模型抄旧模型的解读）、②引发 mat_id churn（编号脱钩）。换模型的价值正在于让新模型自己读料、自己解读。
     - **`set_parent_materials` 引父级 findings** 仍合法——那是**跨 topic 父子复用**（行业父→竞技场子），与"同 slug 跨变体复制"是两回事。省略 `parent_variant` 时脚本按 `model_registry` 兜底解析（同模型/唯一/全登记自动选，多个异模型含未登记则 raise 让你问用户）。
     - 复用同一批 materials 可隔离变量、让模型/架构差异苹果对苹果对比（详见 memory `project_variant_reuse_gotchas`）。
@@ -109,6 +109,23 @@ create_manifest('{slug}', '{variant}')
 print('manifest 创建成功')
 "
 ```
+
+### Step 4.0：早期 ingest — 登记 topic 家底元数据（**新增 — 必跑**）
+
+**为什么**：用户常在开研前把已有料（年报/研报/笔记）放进 `prism/topics/{slug}/inbox/`。若不在这里先登记，manifest 一直是空壳 → 00/01「建 todo 前查重」无家底可查 → 重复建已满足的 todo、重复 web-search。早期 ingest 让"建前查重"从 00 即生效。资料只在 topic 层（无全局 inbox）。
+
+```bash
+python3 -c "
+from prism.scripts.manifest import register_inbox_materials
+reg = register_inbox_materials('{slug}', '{variant}')
+print(f'早期 ingest 登记 {len(reg)} 份家底：')
+for r in reg: print(' ', r['filename'], '->', r['source_type'])
+"
+```
+
+> **红线（保 bet-first）**：本步**只登记元数据**（文件名/扩展名粗判 source_type，零正文读取），**不读正文、不进 thesis_v0**——thesis 仍是读深度材料前的赌注，正文抽取留 03。
+> **复核**：扫一眼返回清单，若年报/财报被误判（如某 PDF 标成 `sell-side-note` 实为年报），主 agent 用 `remove_material` + `add_material` 改 `source_type='annual-report'`（走 annual_report_extractor 不走 mineru）。
+> **增量幂等**：本步是第一遍；用户本轮中途交付的料仍会在 02 / "推进 {slug}" 时被同一 helper 重扫登记（已登记的跳过）。
 
 ---
 
@@ -398,6 +415,15 @@ Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` co
 
 每条 todo 必填字段：`task` / `priority` / `info_tier` / `addresses`，选填 `source_hint`。
 
+> **闭环语义（钉死）**：一条 todo = 「去收**某份具体文档**」的任务，`task` 描述那份文档。`addresses=[K#]` 只标「这份料喂哪个命门」，是**相关性标签**——多条不同 todo 可共享同一 K#（年报 / 卖方预期 / 二手价都可挂 K2），A 合同必收类目（consensus/mgmt-capital-alloc/historical-mirror）甚至**可以不挂任何 K#**。因此 todo 的闭环键是 **task/文档身份，不是 K#**：某 K# 有料 ≠ 攻打它的每条 todo 都收齐了。闭环只走 `mark_todo_fetch(task子串)` + `update_user_todo_status(task子串)`，**禁止用 K# 交集自动 done**（见 `_autofetch_protocol.md` 闭环键节 + memory `feedback_todo_closure_key`）。下面 5.3 的 Coverage self-check 是**反方向**校验（每个 K# 至少有 1 条 todo 瞄准），与「todo 收齐没」无关。
+
+> **建 todo 前查重（纪律，复用 `read_manifest`）**：Step 4.0 早期 ingest 已把家底登记进 manifest。每写一条 todo 前，主 agent 先 `read_manifest('{slug}','{variant}')` 扫已有料，**按文档身份**判：
+> - 已有料就是这条 todo 要的那份文档 → 建成 `status='done'` 并填 `covered_by=[已有mat]`，或干脆不建；
+> - 没有 → 正常建 `pending`。
+> 按文档身份判（不是 K# 撞 K#）——一份挂 K2 的旧价新闻不等于"年报全文"已收。
+>
+> **产即收衔接**：本阶段（00）产的 pending todo **不在 00 收**，紧接的 **01 Step 5.6** 是专职 eager-fetch 步、会当场抓完 00 产的全部 todo（产即收：00→01 是同一收料缝，下游不补抓）。00 只管"押对要收什么"，不把 fetch 搬进来（保 thesis bet-first）。
+
 ---
 
 ## Step 5.4：产 decomposition_v0（命门拆解前移 · 驱动收料）
@@ -501,7 +527,7 @@ Web 地址: http://localhost:8000/prism/{slug}/{variant}/
 
 下一步：
 1. 在对话里说「prism 推进 {slug}」继续制定研究路线图
-2. 或者先收集资料放入 prism/inbox/manual/ 后说「prism 推进 {slug}」
+2. 或者先收集资料放入 prism/topics/{slug}/inbox/ 后说「prism 推进 {slug}」
 
 你需要做的事：
 {user_todos_list}

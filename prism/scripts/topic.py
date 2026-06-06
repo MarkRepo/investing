@@ -781,25 +781,6 @@ def _addr_event(addr: str) -> str | None:
     return None
 
 
-def addresses_match(todo_addrs: list[str], mat_addrs: list[str]) -> bool:
-    """判定 mat 是否覆盖 todo 的某个 address。规则见 _ADDR_RE 注释。
-
-    返回 True 当且仅当存在 (t, m) ∈ todo×mat 满足：
-      key(t) == key(m) 且 (event(t) is None 或 event(t) == event(m))
-    """
-    for t in todo_addrs or []:
-        tk, te = _addr_key(t), _addr_event(t)
-        if not tk:
-            continue
-        for m in mat_addrs or []:
-            mk, me = _addr_key(m), _addr_event(m)
-            if tk != mk:
-                continue
-            if te is None or te == me:
-                return True
-    return False
-
-
 def addresses_match_event_anchored(todo_addrs: list[str], mat_addrs: list[str]) -> bool:
     """强命中：todo 带 @event 锚且 mat 同 key 同 event 才 True。
 
@@ -894,76 +875,7 @@ def _normalize_todo(item) -> dict:
     return out
 
 
-def _resolve_todos_against_materials(slug: str, variant: str, todos: list[dict]) -> bool:
-    """对 todos 列表中的 pending 项，检查 manifest 已有 materials 是否覆盖。
-
-    闭环逻辑与 web_prescan.auto_resolve_todos 一致（修 F9）：
-      - public：K# 命中即 status=done
-      - hard/half_public：仅事件锚强命中才 done，裸 K# 命中只标 in_progress
-
-    就地修改 todos 列表（不创建副本）。返回 True 如果有修改。
-    """
-    from prism.scripts.manifest import read_manifest
-
-    try:
-        manifest = read_manifest(slug, variant)
-    except (FileNotFoundError, Exception):
-        return False
-
-    # 建 mat_id → addresses 映射
-    mat_addr_map: dict[str, list[str]] = {}
-    for m in manifest.get("materials") or []:
-        addrs = m.get("addresses") or []
-        if addrs:
-            mat_addr_map[m["id"]] = addrs
-
-    if not mat_addr_map:
-        return False
-
-    dirty = False
-    for todo in todos:
-        if not isinstance(todo, dict):
-            continue
-        if todo.get("status") in ("done", "in_progress"):
-            continue
-        if "reverse-check" in (todo.get("source_hint") or ""):
-            continue
-        todo_addrs = todo.get("addresses") or []
-        if not todo_addrs:
-            continue
-
-        matched = [
-            mid for mid, addrs in mat_addr_map.items()
-            if addresses_match(todo_addrs, addrs)
-        ]
-        if not matched:
-            continue
-
-        existing = set(todo.get("covered_by") or [])
-        todo["covered_by"] = sorted(existing | set(matched))
-        dirty = True
-
-        tier = todo.get("info_tier", "public")
-        strong = tier == "public" or any(
-            addresses_match_event_anchored(todo_addrs, mat_addr_map[mid])
-            for mid in matched
-        )
-        # 材料命中即视为抓取义务已了（auto-fetch 规约）：R3 不再重抓此 todo
-        todo["fetch_status"] = "fetched"
-        if strong:
-            todo["status"] = "done"
-            todo["coverage_note"] = f"已由 materials {', '.join(matched[:3])} 覆盖"
-        else:
-            todo["status"] = "in_progress"
-            todo["coverage_note"] = (
-                f"materials {', '.join(matched[:3])} 命中 K# 但无事件锚；"
-                f"{tier} 深料需事件锚或同 source_type 材料才闭环"
-            )
-
-    return dirty
-
-
-def set_user_todos(slug: str, todos: list, variant: str, *, _skip_resolve: bool = False) -> None:
+def set_user_todos(slug: str, todos: list, variant: str) -> None:
     """全量覆写 user_todos。接受 list[str | dict]，每项规范化为统一 schema 后写入。
 
     保护（修 H2）：若 yaml 现有 todos 里**有**任何 addresses 非空的结构化项，
@@ -971,7 +883,9 @@ def set_user_todos(slug: str, todos: list, variant: str, *, _skip_resolve: bool 
     强迫调用方走 `append_user_todos`（增量追加）或显式传完整 dict 列表。
     这条规则不影响 00/01 初始化（yaml 里无结构化 todos 时不触发）。
 
-    _skip_resolve：内部参数，auto_resolve_todos 调用时传 True 避免重复 resolve。
+    不做任何"按 K# 自动 done"——todo 闭环键是 task/文档身份（见
+    memory `feedback_todo_closure_key`）。闭环走 `mark_todo_fetch` +
+    `update_user_todo_status`，由主 agent 读 todo + 读料按文档身份显式判定。
     """
     normalized = [_normalize_todo(t) for t in todos]
     try:
@@ -989,10 +903,6 @@ def set_user_todos(slug: str, todos: list, variant: str, *, _skip_resolve: bool 
             "增量追加，或传完整 dict 列表保留 addresses。"
         )
 
-    # 写入前自动 resolve：新 todo 匹配已有 materials 则标 done（修：todo 后建导致假 pending）
-    if not _skip_resolve:
-        _resolve_todos_against_materials(slug, variant, normalized)
-
     update_topic(slug, variant, user_todos=normalized)
 
 
@@ -1003,7 +913,8 @@ def append_user_todos(slug: str, todos: list, variant: str) -> None:
     若 task 与现有 todo 重复，跳过该项（保留老的）。
     用于 03/04/05 等"中间 stage"想加一条提示但不能动 01/02 结构化字段的场景。
 
-    写入前自动 resolve：新 todo 匹配已有 materials 则标 done（修：todo 后建导致假 pending）。
+    不做任何"按 K# 自动 done"——闭环键是 task/文档身份（见
+    memory `feedback_todo_closure_key`）。
     """
     try:
         existing = read_topic(slug, variant).get("user_todos", []) or []
@@ -1014,9 +925,6 @@ def append_user_todos(slug: str, todos: list, variant: str) -> None:
     fresh = [t for t in new_normalized if t["task"] not in existing_tasks]
     if not fresh:
         return
-
-    # 写入前自动 resolve：新 todo 匹配已有 materials 则标 done（修：todo 后建导致假 pending）
-    _resolve_todos_against_materials(slug, variant, fresh)
 
     update_topic(slug, variant, user_todos=existing + fresh)
 

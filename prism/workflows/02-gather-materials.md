@@ -27,11 +27,11 @@ print(f"Step 4.5 (mineru): {'跳过' if not mineru else f'有 {len(mineru)} 待�
 print(f"manifest 现状: total={counts['total']} unprocessed={counts['unprocessed']}")
 print()
 print("inbox 残料检查（如果非空可能有未登记新文件，需要跑 Step 1-4）:")
-import subprocess, os
-for d in [f'prism/topics/{slug}/inbox/manual', 'prism/inbox/manual', 'prism/inbox/auto']:
-    if os.path.isdir(d):
-        files = [f for f in os.listdir(d) if not f.startswith('.')]
-        print(f"  {d}: {len(files)} 个文件")
+import os
+d = f'prism/topics/{slug}/inbox'   # 资料只在 topic 层，无全局 inbox
+if os.path.isdir(d):
+    files = [f for f in os.listdir(d) if not f.startswith('.')]
+    print(f"  {d}: {len(files)} 个文件")
 EOF
 ```
 
@@ -42,9 +42,11 @@ EOF
 - **Step 5.7 / 5.8 / 6 是 workflow 02 的真正价值兑现点**，不能因为前面"没事做"就连带跳过
 
 **只有以下情况才需要从 Step 0 跑起**：
-- 用户在两次 workflow 之间手放新 PDF 到 `prism/topics/{slug}/inbox/` 或全局 `prism/inbox/manual/`
+- 用户在两次 workflow 之间手放新 PDF 到 `prism/topics/{slug}/inbox/`
 - 上次 prescan 距今 > 7 天（脚本自判）
 - workflow 01 因故没跑 auto-download
+
+> **早期 ingest 不替代本步**：00 Step 4.0 的 `register_inbox_materials` 只是第一遍登记家底元数据；用户**本轮中途**交付的料仍在这里登记，并按文档身份闭环对应 todo（产即收：02 是用户上传料的收料点）。`register_inbox_materials` 与本步的 Step 4 是同一套幂等登记——批量元数据登记可先调它，再在 Step 4 补 addresses/rings。
 
 ---
 
@@ -79,22 +81,16 @@ print(f'reason: {r[\"reason\"]}')
 
 ---
 
-## Step 1：检查所有来源的新资料
+## Step 1：检查本 topic 的新资料
 
-按优先级检查三个来源：
+资料只在 topic 层（已无全局 inbox），只看 topic 专属目录：
 
 ```bash
-# 1. Topic 专属 inbox（最高优先级，所有文件自动归属本 topic）
+# Topic 专属 inbox — 所有文件自动归属本 topic
 ls prism/topics/{slug}/inbox/   # 如果不存在，创建之
-
-# 2. 全局 manual inbox（需要甄别是否属于本 topic）
-ls prism/inbox/manual/
-
-# 3. 全局 auto inbox（自动下载的资料，需要甄别）
-ls prism/inbox/auto/
 ```
 
-**规则**：`prism/topics/{slug}/inbox/` 下的所有文件**默认属于本 topic，无需甄别直接全部登记**。全局 inbox 的文件仍需判断相关性。
+**规则**：`prism/topics/{slug}/inbox/` 下的所有文件**默认属于本 topic，无需甄别直接全部登记**。可先 `register_inbox_materials('{slug}','{variant}')` 批量登记元数据（幂等），再到 Step 4 给每份补 addresses/rings。
 
 ---
 

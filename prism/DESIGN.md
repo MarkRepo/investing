@@ -63,7 +63,7 @@ Prism 用**两条正交的覆盖轴**判断"料够不够、论证扎不扎实"�
 ## 0.5 三条贯穿原理（设计理念精华）
 
 1. **LLM 判断 / 脚本 CRUD 分离**（§0.1）。好处：判断质量不被脚本逻辑锁死，模型升级即受益；脚本可单测、确定性强。代价：纪律全靠 workflow 文档约束，跑偏不会被代码拦住（见原理 3）。
-2. **收料"先自动获取，抓不到才降级 user_todo"**。目标：todo 里**只剩用户才能搞到的东西**（付费墙/专家访谈/未公开数据）。实现：财报走 `fetch_report_prism` 自动下，公开分析材料走 exa/semantic/WebFetch 深抓（01 Step 5.6），prescan 后 `auto_resolve_todos` 自动核销。详见 §1.5、§1.3。
+2. **收料"先自动获取，抓不到才降级 user_todo"**。目标：todo 里**只剩用户才能搞到的东西**（付费墙/专家访谈/未公开数据）。实现：财报走 `fetch_report_prism` 自动下，公开分析材料走 exa/semantic/WebFetch 深抓（01 Step 5.6），**产即收**——产 todo 的阶段当场抓、按文档身份 `mark_todo_fetch` + `update_user_todo_status` 闭环（无 K# 自动撮合，prescan 不碰 todo）。详见 §1.5、§1.3。
 3. **收敛靠"诊断不是 gate + 诚实降级"，不靠硬闸**。`gap_detector` 报红不阻止你升 stage——它是诊断，不是门禁。哲学是：**与其用硬闸卡死流程，不如让缺口显式可见 + 强制诚实标注**（"数据缺失"/"训练知识估算，非实证"）。极少数地方才设真闸门（如 company 红线 quarantine、primer depth=deep 的 critic 门禁、04 后强制 critic）。
    > 这条原理是双刃剑：它给了流程弹性，但也是"todo 被静默忽略""薄弱论证蔓延到下游"的根因——这正是下一轮**可观测性 spec**要解决的（见 Part 4）。
 
@@ -115,17 +115,20 @@ todo 是 `topic.yaml` 里的 `user_todos`，每条是 dict：
 
 ```
 生成 ──→ 自动获取尝试 ──→ auto_resolve ──→ 状态流转
-(00 5.3 /  (01 5.5 财报 /   (prescan后        pending → in_progress → done
- 01 / 02 /  01 5.6 深抓)     addresses 交集     ↑ 进度播报必须传显式 status
- 03 / 05)                    自动标 done)         (否则污染"待补料"计数, 见 Part 3)
+(00 5.3 /  (产即收: 产 todo   (按文档身份      pending → in_progress → done
+ 01 / 02 /  的阶段当场抓——     mark_todo_fetch   ↑ 进度播报必须传显式 status
+ 03 / 05)   01 5.5/5.6 等)     +update_status)    (否则污染"待补料"计数, 见 Part 3)
 ```
+
+> **产即收 + 闭环键=文档身份**：谁产 todo 谁当场收（下游只消费、不补抓）；prescan（标 `scope`）永不碰 todo。闭环只走按 task 子串的显式 `mark_todo_fetch` + `update_user_todo_status`，**没有任何 K# 自动撮合**（旧 `auto_resolve_todos` / `suggest_*coverage*` 已删）。
 
 **关键脚本**（`topic.py`）：
 - `set_user_todos(slug, todos, variant)` — 全量写（**含 addresses 时会 raise**，防覆写丢字段，H2 修）。
 - `append_user_todos(...)` — 追加，不覆写已有结构化 todo。**进度播报用这个 + 传 `status='done'/'in_progress'`**。
-- `update_user_todo_status(slug, variant, task_substring, status, covered_by=)` — 按 task 子串匹配改单条。
-- `auto_resolve_todos(slug, variant, [mat_ids])`（`web_prescan.py`）— 新料入库后，对每条 todo 若 `todo.addresses ∩ mat.addresses ≠ ∅` 则标 done + 写 covered_by。
-- `_resolve_todos_against_materials(...)` — `public` 类 K# 命中即 done（信息差低，搜到就算）。
+- `update_user_todo_status(slug, variant, task_substring, status, covered_by=)` — 按 task 子串（文档身份）匹配改单条。**todo 闭环走这里**。
+- `mark_todo_fetch(slug, variant, task_substring, fetch_status)` — 按 task 子串盖抓取结果。
+- **prescan 与 todo 已彻底解耦**：`suggest_todo_coverage_candidates` / `suggest_coverage_candidates` / `addresses_match`（旧 `auto_resolve_todos` 一脉）**已删除**。曾经"新料入库后按共享 K# 列候选"——但 todo 闭环键是 task/文档身份不是 K#（一个 K# 常被多条 todo 共享），K# 撮合既假 done 又假 pending。闭环只走上面 `mark_todo_fetch` + `update_user_todo_status` 的显式身份判读。详见 memory `feedback_todo_closure_key`。
+- `register_inbox_materials(slug, variant)`（`manifest.py`）— **早期 ingest**：单桶扫 topic 专属目录（`topics/{slug}/inbox` + `materials`）把未登记文件批量登记元数据（零正文读取、幂等）。让"建 todo 前查重"从 00 即生效。资料只在 topic 层（已删全局 inbox）。
 
 **信息差等级（info_tier）决定命运**：`public`（一搜就有，价值低但作起点）→ 应被 01 自动获取消化；`half_public`（需登录/付费/外文/拼凑，alpha 主来源）→ 深抓尽量消化；`hard`（专家访谈/产业链调研，价值最高）→ 留给用户。**理论上跑完 01 后，user_todos 里只剩 `hard` + 搜索无果的。**
 
@@ -184,7 +187,7 @@ todo 是 `topic.yaml` 里的 `user_todos`，每条是 dict：
 ## Stage 02 · 收料（`02-gather-materials.md`）
 
 - **① 目标**：登记实收资料（用户手放 + 脚本下载），打 rings/addresses，做 gap 体检决定够不够进抽取。
-- **② LLM 怎么执行**：扫 inbox（topic-scope `topics/{slug}/inbox/` 优先于全局 `inbox/manual/`）→ `add_material` 登记打 rings → gap 体检（双轴）→ 任一红项非空则补救（web-search 增量 / sub-agent 深挖 / set_user_todos）。
+- **② LLM 怎么执行**：扫 topic inbox（`topics/{slug}/inbox/`，资料只在 topic 层、无全局 inbox）→ `register_inbox_materials` / `add_material` 登记打 rings → gap 体检（双轴）→ 任一红项非空则补救（web-search 增量 / sub-agent 深挖 / set_user_todos）。
 - **③ 产出/状态**：manifest 更新；topic.yaml stage→`03-extracting`；`append_user_todos`（进度播报传显式 status）。
 - **④ 质量看点**：
   - 每份料的 rings/addresses 标对了吗（决定它喂哪个环/哪个 K#）？

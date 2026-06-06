@@ -794,8 +794,9 @@ def register_web_search_batch(
 
     主 agent 把一轮 WebSearch 结果整批传进来，本 helper 完成：
       - 对每条 hit 调 register_web_search_result（自动判 domain_tier + funnel band）
-      - 累计 mat_ids 后调 auto_resolve_todos
       - append_search_log（按 triggered_by 标签）
+    prescan 只入库 + funnel + 写 log，**绝不碰 todo**——todo 闭环走产 todo 阶段的
+    当场 fetch + 主 agent 按文档身份 mark_todo_fetch/update_user_todo_status。
 
     每个 hit dict 必备 keys: title, url, snippet
     可选 keys: confidence (0-1, override), domain_tier ('whitelist'|'llm-judged-official'|'other')
@@ -814,7 +815,6 @@ def register_web_search_batch(
         {
             'n_high': int, 'n_mid': int, 'n_low': int,
             'mat_ids': list[str|None],
-            'resolved_todos': list[dict],
             'duplicates': int,
             # ---- 修 H2 (2026-05) 新增：让丢弃显式 + 给主 agent 救回 kit ----
             'n_dropped_invalid': int,    # url/title 空被丢
@@ -886,7 +886,8 @@ def register_web_search_batch(
             duplicates += 1
 
     new_ids = [m for m in mat_ids if m]
-    resolved = auto_resolve_todos(slug, variant, new_ids) if new_ids else []
+    # prescan 只入库 + funnel + 写 log，绝不碰 todo 闭环——todo 收齐由产 todo 的阶段
+    # 当场 fetch、主 agent 按文档身份走 mark_todo_fetch/update_user_todo_status 闭环。
 
     # 即兴 web-search 自动产 inline finding（修 B2）
     if inline_finding is None:
@@ -983,7 +984,6 @@ def register_web_search_batch(
         "n_mid": n_mid,
         "n_low": n_low,
         "mat_ids": mat_ids,
-        "resolved_todos": resolved,
         "duplicates": duplicates,
         "n_dropped_invalid": n_dropped_invalid,
         "n_dropped_low": n_dropped_low,
@@ -993,89 +993,6 @@ def register_web_search_batch(
         "failure_mode": failure_mode,
         "inline_finding_paths": inline_finding_paths,
     }
-
-
-# ---------------------------------------------------------------------------
-# todo 自动覆盖
-# ---------------------------------------------------------------------------
-
-def auto_resolve_todos(slug: str, variant: str, new_mat_ids: list[str]) -> list[dict]:
-    """扫 user_todos：若 todo.addresses 与本批新 mat 的 addresses 有交集则追加 covered_by。
-
-    闭环按 info_tier 分级（修 F9）：
-      - public：命中即 status=done。
-      - hard/half_public：仅事件锚强命中（todo 'K#@evt' 且 mat 同事件）才 done；
-        裸 K# 命中只标 in_progress（部分覆盖），不假闭环深料。
-
-    Returns: list of {task, mat_ids}，仅含本轮真正 **done** 的 todo（in_progress 不计入）。
-    """
-    if not new_mat_ids:
-        return []
-    from prism.scripts.manifest import read_manifest
-
-    manifest = read_manifest(slug, variant)
-    mat_addr_map: dict[str, list[str]] = {}
-    for m in manifest.get("materials") or []:
-        if m["id"] in new_mat_ids:
-            mat_addr_map[m["id"]] = list(m.get("addresses") or [])
-
-    if not mat_addr_map:
-        return []
-
-    data = topic_io.read_topic(slug, variant)
-    todos = data.get("user_todos") or []
-    resolved: list[dict] = []
-    dirty = False
-
-    for todo in todos:
-        if not isinstance(todo, dict):
-            continue
-        if todo.get("status") == "done":
-            continue
-        # reverse-check 写的 todo 语义是"补 roadmap.yaml"，单纯收一份 K# 材料不算闭环；
-        # 必须等用户/workflow 01 真的把 K# 加到 L4/tier 后人工标 done。
-        if "reverse-check" in (todo.get("source_hint") or ""):
-            continue
-        todo_addrs = todo.get("addresses") or []
-        if not todo_addrs:
-            continue
-        # 使用 addresses_match 严格事件匹配：todo 'K1@evt' 必须 mat 也带 'K1@evt' 才覆盖；
-        # 裸 K1 todo 接受任何 K1*（向后兼容）。修 [[feedback-addresses-granularity]] 假阳性。
-        matched = [
-            mid for mid, addrs in mat_addr_map.items()
-            if topic_io.addresses_match(todo_addrs, addrs)
-        ]
-        if not matched:
-            continue
-        existing = set(todo.get("covered_by") or [])
-        todo["covered_by"] = sorted(existing | set(matched))
-        dirty = True
-        # 材料命中即视为抓取义务已了（auto-fetch 规约）：R3 不再重抓此 todo
-        todo["fetch_status"] = "fetched"
-
-        # 收料 tier 分级闭环（修 F9）：public 命中即 done（不变）；hard/half_public 深料
-        # （专家访谈/镜鉴/地缘）只有**事件锚强命中**才 done，裸 K# web 命中仅标 in_progress——
-        # 否则任一 K# web 命中会把深料 todo 一键假闭环，用户以为收齐实则从未收。
-        tier = todo.get("info_tier", "public")
-        strong = tier == "public" or any(
-            topic_io.addresses_match_event_anchored(todo_addrs, mat_addr_map[mid])
-            for mid in matched
-        )
-        if strong:
-            todo["status"] = "done"
-            todo["coverage_note"] = f"已由 web-search {', '.join(matched)} 覆盖"
-            resolved.append({"task": todo.get("task", ""), "mat_ids": matched})
-        else:
-            if todo.get("status") != "in_progress":
-                todo["status"] = "in_progress"
-            todo["coverage_note"] = (
-                f"web-search {', '.join(matched)} 命中 K# 但无事件锚；"
-                f"{tier} 深料需事件锚或同 source_type 材料才闭环（未 done）"
-            )
-
-    if dirty:
-        topic_io.set_user_todos(slug, todos, variant, _skip_resolve=True)
-    return resolved
 
 
 # ---------------------------------------------------------------------------

@@ -57,16 +57,18 @@ def read_manifest(slug: str, variant: str) -> dict:
     return _read_yaml(path)
 
 
+def _topic_inbox_dir(slug: str) -> Path:
+    return _topics_dir() / slug / "inbox"
+
+
 def get_material_path(slug: str, filename: str) -> Path | None:
-    """Find material file in priority order:
+    """Find material file in priority order (资料只在 topic 层，无全局 inbox)：
     1. prism/topics/{slug}/materials/{filename}
-    2. prism/inbox/manual/{filename}
-    3. prism/inbox/auto/{filename}
+    2. prism/topics/{slug}/inbox/{filename}
     """
     locations = [
         _materials_dir(slug) / filename,
-        _PRISM_ROOT / "inbox" / "manual" / filename,
-        _PRISM_ROOT / "inbox" / "auto" / filename,
+        _topic_inbox_dir(slug) / filename,
     ]
     for loc in locations:
         if loc.exists():
@@ -193,6 +195,67 @@ def add_material(
     data["updated"] = _now_iso()
     _write_yaml(_manifest_path(slug, variant), data)
     return mat_id
+
+
+def _guess_source_type(filename: str) -> str:
+    """早期 ingest 用：按文件名 + 扩展名粗判 source_type。
+
+    只为给 mineru_state / 03 抽取队列一个合理默认——主 agent 在 00 Step0 复核
+    register_inbox_materials 返回清单后，可对年报/研报误判项 re-tag（remove+add）。
+    零正文读取，纯文件名启发。
+    """
+    name = filename.lower()
+    ext = Path(filename).suffix.lower()
+    # 年报/财报关键词 → annual-report（走 annual_report_extractor，不走 mineru）
+    ar_kw = (
+        "annual", "年报", "20-f", "10-k", "10-q", "8-k", "季报", "中报",
+        "interim", "quarterly", "半年报", "form-10", "form10", "财报",
+    )
+    if any(k in name for k in ar_kw):
+        return "annual-report"
+    if ext in (".htm", ".html"):
+        return "web-article"
+    if ext in (".csv", ".tsv", ".xlsx", ".xls", ".json", ".parquet"):
+        return "data"
+    if ext == ".pdf":
+        # 研报/行业类 PDF：默认走 mineru（needs）。主 agent 复核后可改。
+        return "sell-side-note"
+    # md / txt / 其它 → 手记
+    return "manual-note"
+
+
+def register_inbox_materials(slug: str, variant: str) -> list[dict]:
+    """早期 ingest：把 topic 专属目录里尚未登记的文件批量登记进 manifest（元数据）。
+
+    单桶——只扫 **topic 专属目录**（资料只在 topic 层，不扫任何全局/跨 topic 目录）：
+      - topics/{slug}/inbox/      （用户手放）
+      - topics/{slug}/materials/  （已落盘副本）
+    只看顶层文件（不递归），避开 mineru 子目录 / sec section 等派生产物。
+
+    纯 CRUD、**零正文读取**：按文件名/扩展名粗判 source_type，addresses 留空待下游
+    （03 抽取 / 主 agent）补。靠 add_material 的 filename 去重保证幂等——重扫不重登、
+    已登记文件原样跳过。
+
+    返回本次**新登记**的条目清单 [{id, filename, source_type}]（已登记的不在内）。
+    """
+    existing = {m["filename"] for m in read_manifest(slug, variant)["materials"]}
+    registered: list[dict] = []
+    for base in (_topic_inbox_dir(slug), _materials_dir(slug)):
+        if not base.exists():
+            continue
+        for fp in sorted(base.iterdir()):
+            if not fp.is_file() or fp.name.startswith("."):
+                continue
+            if fp.name in existing:
+                continue
+            src = _guess_source_type(fp.name)
+            mat_id = add_material(
+                slug=slug, filename=fp.name, source_type=src, variant=variant,
+                notes="early-ingest: 自动登记 topic 家底（元数据，未读正文）",
+            )
+            existing.add(fp.name)
+            registered.append({"id": mat_id, "filename": fp.name, "source_type": src})
+    return registered
 
 
 def list_by_ring(slug: str, variant: str, ring_code: str) -> list[dict]:

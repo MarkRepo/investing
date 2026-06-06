@@ -130,51 +130,21 @@ def test_batch_appends_search_log(tmp_topic):
     assert entries[0]["query"] == "Q"
 
 
-def test_batch_resolves_matching_todos(tmp_topic):
-    """Todos with matching addresses get auto-resolved."""
+def test_batch_never_touches_todos(tmp_topic):
+    """prescan 只入库校准事实，**绝不**碰 todo——无候选键、不翻任何 todo 状态。
+
+    prescan（事实校准，标 scope）和 todo（收某份具体文档）是两条不相干的管子。
+    旧版用 K# 撞 K# 自动撮合（auto_resolve / coverage_candidates）已彻底删除：
+    todo 闭环键是 task/文档身份，由产 todo 的阶段当场 fetch + 主 agent 按身份显式
+    mark_todo_fetch/update_user_todo_status（见 memory feedback_todo_closure_key）。
+    """
     from prism.scripts.web_prescan import register_web_search_batch
 
     slug, variant, _ = tmp_topic
+    # 故意造一条与本批 K# 相同的 pending todo——旧版会被误撮合，新版必须纹丝不动
     topic_io.set_user_todos(slug, [
         {"task": "find K1 evidence", "priority": "P0",
          "info_tier": "public", "addresses": ["K1"]},
-    ], variant)
-    summary = register_web_search_batch(
-        slug=slug, variant=variant, query="Q", addresses=["K1"],
-        triggered_by="02-step0",
-        hits=[{"title": "T", "url": "https://reuters.com/a", "snippet": "s"}],
-    )
-    assert len(summary["resolved_todos"]) == 1
-    assert summary["resolved_todos"][0]["task"] == "find K1 evidence"
-
-
-def test_auto_resolve_hard_todo_bare_k_not_closed(tmp_topic):
-    """F9：hard 深料 todo + 裸 K# web 命中 → 只标 in_progress，不假闭环 done。"""
-    from prism.scripts.web_prescan import register_web_search_batch
-
-    slug, variant, _ = tmp_topic
-    topic_io.set_user_todos(slug, [
-        {"task": "历史行业镜鉴 industry-mirror", "priority": "P0",
-         "info_tier": "hard", "addresses": ["K1"]},
-    ], variant)
-    summary = register_web_search_batch(
-        slug=slug, variant=variant, query="Q", addresses=["K1"],
-        triggered_by="01-prescan",
-        hits=[{"title": "T", "url": "https://reuters.com/a", "snippet": "s"}],
-    )
-    assert summary["resolved_todos"] == [], "hard 深料裸 K# 命中不得闭环"
-    todo = topic_io.read_topic(slug, variant)["user_todos"][0]
-    assert todo["status"] == "in_progress"
-    assert todo.get("covered_by"), "应记部分覆盖 covered_by"
-    assert "事件锚" in (todo.get("coverage_note") or "")
-
-
-def test_auto_resolve_hard_todo_event_anchored_closes(tmp_topic):
-    """F9：hard 深料 todo 'K#@evt' + 同事件 mat 强命中 → done。"""
-    from prism.scripts.web_prescan import register_web_search_batch
-
-    slug, variant, _ = tmp_topic
-    topic_io.set_user_todos(slug, [
         {"task": "2026Q2 业绩会纪要", "priority": "P0",
          "info_tier": "hard", "addresses": ["K1@2026Q2-earnings"]},
     ], variant)
@@ -183,8 +153,15 @@ def test_auto_resolve_hard_todo_event_anchored_closes(tmp_topic):
         triggered_by="01-prescan",
         hits=[{"title": "T", "url": "https://reuters.com/a", "snippet": "s"}],
     )
-    assert len(summary["resolved_todos"]) == 1
-    assert topic_io.read_topic(slug, variant)["user_todos"][0]["status"] == "done"
+    # 返回里不再有任何 todo 候选键
+    assert "coverage_candidates" not in summary
+    assert "resolved_todos" not in summary
+    # 每条 todo 状态/字段一律不动
+    todos = topic_io.read_topic(slug, variant)["user_todos"]
+    for todo in todos:
+        assert todo["status"] == "pending", "prescan 不得把 todo 翻 done/in_progress"
+        assert not todo.get("covered_by"), "prescan 不得写 covered_by"
+        assert todo["fetch_status"] == "unattempted", "prescan 不得伪造 fetch_status"
 
 
 def test_batch_with_explicit_confidence_overrides(tmp_topic):

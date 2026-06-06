@@ -293,20 +293,11 @@ summary2 = register_web_search_batch(
 
 ---
 
-## Step E：auto-resolve user_todos
+## Step E：prescan 不碰 todo
 
-```bash
-python3 << 'EOF'
-from prism.scripts.web_prescan import auto_resolve_todos
-# 收集本轮 Step D 所有非空 mat_id
-new_ids = [{r1.mat_id}, {r2.mat_id}, ...]  # 主 agent 累积
-resolved = auto_resolve_todos('{slug}', '{variant}', [m for m in new_ids if m])
-for r in resolved:
-    print(f'  ✓ {r["task"][:60]} ← {r["mat_ids"]}')
-EOF
-```
-
-行为：对每条 user_todo，若 `todo.addresses ∩ mat.addresses ≠ ∅`，标 `status='done'` + 追加 `covered_by` + 写 `coverage_note='已由 web-search mat-xxx 覆盖'`。
+> **prescan 只入库校准事实（标 `addresses=['scope']`）+ funnel + 写 log，不产生、不闭环任何 todo。** prescan（事实校准）与 todo（收某份具体文档）是两条不相干的管子——曾经的「列共享 K# 候选」（`suggest_todo_coverage_candidates` / 旧 `auto_resolve_todos`）已彻底删除。
+>
+> todo 闭环键是 **task/文档身份，不是 K#**（见 [`_autofetch_protocol.md`](_autofetch_protocol.md) 「产即收」+「闭环键」节 + memory `feedback_todo_closure_key`）。要收的文档由**产 todo 的阶段**当场 fetch、主 agent 按文档身份 `mark_todo_fetch` + `update_user_todo_status` 闭环——与本 prescan 无关。
 
 ---
 
@@ -332,8 +323,8 @@ EOF
 ✅ web-search 本轮完成（triggered_by={...}）
   查询数：N 条
   命中：H/M/L 三档 = X/Y/Z
-  入库：X+Y 份（high 自动 / mid 待审 inbox/web-search/）
-  user_todos 自动 done：M 条
+  入库：X+Y 份（high 自动 / mid 待审）
+  （prescan 只校准事实，不产生/不闭环 todo）
 ```
 
 ---
@@ -360,15 +351,17 @@ UI 中 `stale_at < now` 显示黄色 chip；`expire_at < now` 显示红色 chip 
 2. **band='low' 不写文件**：避免 inbox 膨胀；低质量结果仅靠 `web_search_log.yaml` 留痕
 3. **addresses 必填且语义分三态**（修 C2 全局统一约定，02/03/04/05/07 都按此处理）：
 
-   | 写法 | 语义 | 参与 K# 覆盖？ | 参与 auto_resolve_todos？ | 何时用 |
+   | 写法 | 语义 | 参与 K# 覆盖？ | 进 todo 覆盖**候选**？ | 何时用 |
    |---|---|---|---|---|
    | `[]` | **禁用**——不参与任何覆盖，等同未填 | ✗ | ✗ | 不允许；老条目遇到时按 `['background']` 升级 |
    | `['background']` | 背景资料、无具体 K# 攻打 | ✗ | ✗ | 02 登记的行业全景/历史背景；prescan scope query |
    | `['scope']` | 与本 topic 范围相关但无具体 K# 攻打 | ✗ | ✗ | 07 drilldown 在 thesis 形成前的探索；00 prescan baseline 优先 query |
-   | `['K1', 'Q3', ...]` | 攻打具体 K# / Q# | ✓ | ✓ | 02/04/05/07 一般情况；roadmap 计划目标 |
-   | `['K1@2026Q2-earnings', ...]` | 攻打 K# 的具体事件锚 | ✓ | ✓（严格事件匹配） | 财报季/监管事件/产品发布等高时效场景 |
+   | `['K1', 'Q3', ...]` | 攻打具体 K# / Q# | ✓ | ✓（仅出候选，不闭环） | 02/04/05/07 一般情况；roadmap 计划目标 |
+   | `['K1@2026Q2-earnings', ...]` | 攻打 K# 的具体事件锚 | ✓ | ✓（事件锚命中，仍仅候选） | 财报季/监管事件/产品发布等高时效场景 |
 
    **三态判定流程**：(1) 资料有具体 K#/Q# 锚点 → 用 `['K#'/'Q#'/...]`；(2) 无 K# 但属于本 topic 知识背景 → `['background']`；(3) 与本 topic scope 相关但无 K# 且非背景 → `['scope']`。**禁止 `[]`**。
+
+   > 注：材料的 `addresses` 标「这份料喂哪个命门」（内容覆盖 K#），与「某条 todo 是否收齐」是两回事——共享 K# 只让该 todo 进**候选**，闭环必须按 task/文档身份显式判（见 `_autofetch_protocol.md` 闭环键节）。
 
 4. **不改 thesis**：web-search 走 manifest → 03-extract → 04-synthesize → critic-review 同条路径，禁止跳过 findings 直接改 thesis_v{N}.md
 

@@ -217,7 +217,8 @@ def test_dropped_hits_empty_when_all_register(tmp_topic):
 
 
 def test_backward_compatibility_existing_fields_unchanged(tmp_topic):
-    """老调用方读 n_high/n_mid/n_low/mat_ids/resolved_todos/duplicates 必须照常工作。"""
+    """老调用方读 n_high/n_mid/n_low/mat_ids/duplicates 必须照常工作；
+    todo 候选键（coverage_candidates / resolved_todos）已彻底删除，不得再出现。"""
     from prism.scripts.web_prescan import register_web_search_batch
 
     slug, variant, _ = tmp_topic
@@ -227,11 +228,13 @@ def test_backward_compatibility_existing_fields_unchanged(tmp_topic):
         hits=[{"title": "T", "url": "https://reuters.com/a", "snippet": "s"}],
     )
     # 老字段必须仍存在且类型不变
-    for key in ("n_high", "n_mid", "n_low", "mat_ids", "resolved_todos", "duplicates"):
+    for key in ("n_high", "n_mid", "n_low", "mat_ids", "duplicates"):
         assert key in summary
     assert isinstance(summary["n_high"], int)
     assert isinstance(summary["mat_ids"], list)
-    assert isinstance(summary["resolved_todos"], list)
+    # prescan 与 todo 解耦：候选键不再存在
+    assert "coverage_candidates" not in summary
+    assert "resolved_todos" not in summary
 
 
 def test_high_drop_ratio_prints_warning_to_stderr(tmp_topic, capfd):

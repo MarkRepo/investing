@@ -6,6 +6,16 @@
 
 ---
 
+## 总规约：产即收（最高优先级）
+
+> **谁产 todo，谁当场收。** 任一阶段写下 todo，**立刻**在同一阶段跑 auto-fetch（R1/R2/R3）盖 `fetch_status`：抓到→`done`、确认公开无源→留 `pending` 交用户（empty 硬闸门）、工具失败→重试。
+>
+> - **下游阶段只消费已入库的料，绝不替上游补抓。** 00 产的 todo 由紧接的 01（专职收料步）当场抓完；01/03/05/07 产的 todo 在本阶段当场收。
+> - **prescan（事实校准）永不碰 todo 闭环。** prescan 只入库校准事实（标 `addresses=['scope']`）+ funnel + 写 log，**不产生、不闭环任何 todo**。
+> - **闭环只走文档身份**（见下「闭环键」），脚本侧**没有**任何 K# 自动撮合（旧 `auto_resolve_todos` / `suggest_*coverage*` 已彻底删除）。
+
+---
+
 ## 三条规约
 
 - **R1 全覆盖**：所有 tier（含 tier3）、所有 info_tier（含 hard）的缺口都要尝试。info_tier 只决定**努力顺序/强度**（hard 先上 exa advanced + 权威 URL WebFetch；public 可单跑 adapter），**不再作为跳过门槛**。
@@ -23,11 +33,22 @@ mark_todo_fetch(slug, variant, '<task 子串>', '<fetched|empty|error>', note='<
 
 | 盖什么 | 何时 | 后续 |
 |--------|------|------|
-| `fetched` | 抓到材料并入库（manifest 已登记） | 完结；`_resolve_todos_against_materials` 也会自动盖 |
+| `fetched` | 抓到**这条 todo 要的那份文档**并入库（manifest 已登记） | 完结：按文档身份显式盖（见下「闭环键」） |
 | `empty` | **有效尝试**确认公开无源 | 触发 empty 硬闸门 → 用户决策 `waived`/`will_collect`，**不静默写缺口** |
 | `error` | 工具/网络/限流失败 | **必须重试**；永不降级为 user-todo；R3 会在下个 checkpoint 再试 |
 
-> 已自动抓到入库的 todo，`mark_todo_fetch(...,'fetched')` 可省（resolve 路径会盖）；但 `empty`/`error` **必须显式盖**，否则规约失效。
+> 三态 `fetched`/`empty`/`error` **全部必须显式盖**——脚本不再按 K# 自动盖戳（旧 `auto_resolve_todos` 已废）。漏盖 `fetched` → R3 会以为没抓过、反复重抓。
+
+### 闭环键 = task/文档身份，**不是 K#**（必读）
+
+> todo 是「去收**某份具体文档**」的任务。`addresses=[K#]` 只是「这份料喂哪个命门」的**相关性标签**（多对多、可空），**不是 todo 的身份**。
+> 一篇挂 `K2` 的二手价 news 与一条挂 `K2` 的「年报全文」todo 共享 K2，**不代表年报到手**——多条不同 todo 常共享同一 K#（见 memory `feedback_todo_closure_key`）。
+>
+> 因此**禁止用 K# 交集闭环 todo**。闭环只走按 `task 子串`（文档身份）的显式调用：
+> - 抓到它要的那份文档 → `mark_todo_fetch(slug, variant, '<task子串>', 'fetched', note=...)`
+> - 确认覆盖、标完结 → `update_user_todo_status(slug, variant, '<task子串>', 'done', covered_by=[mat...])`
+>
+> 复用旧料同理：主 agent 读 todo + 读料，确认就是它要的那份 → `update_user_todo_status(..., 'done', covered_by=[旧mat])`。脚本**没有**任何「列共享 K# 候选」的函数（旧 `auto_resolve_todos` / `suggest_todo_coverage_candidates` 已删）——撮合是主 agent 按文档身份做的判读，不是脚本的 K# 求交。
 
 ---
 
@@ -37,7 +58,7 @@ mark_todo_fetch(slug, variant, '<task 子串>', '<fetched|empty|error>', note='<
 
 | 信号 | 含义 | 盖 | 动作 |
 |------|------|----|----|
-| `register_web_search_batch` 有 high/mid 入库（`failure_mode='none'`） | 抓到 | `fetched` | 入库，auto_resolve 接手 |
+| `register_web_search_batch` 有 high/mid 入库（`failure_mode='none'`） | 抓到 | `fetched` | 入库后主 agent 按文档身份 `update_user_todo_status(..., 'done', covered_by=[mat])` 闭环 |
 | responding-provider 返回 0 命中：CLI `EXIT_NO_HITS=20` 或 `failure_mode='upstream_empty'` 且 provider 确有响应 | **有效空** | `empty` | 触发硬闸门 |
 | CLI `EXIT_ALL_EXHAUSTED=40` / `RuntimeError('all providers exhausted')` | 所有 key 在冷却/耗尽 | —（先别盖） | 按 keypool 退避梯 **[60,300,1800]** 重试；本轮无法等就先盖 `error`，交 R3 下轮再试 |
 | CLI `EXIT_CONFIG=50` | 无可用 key（配置问题） | —（先别盖） | 修 key（见 `reference_mcp_env_location`）后重试；仍不行盖 `error` |

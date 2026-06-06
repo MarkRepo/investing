@@ -87,12 +87,11 @@ addresses: [K#, K#@event...]   # 本钻探攻打的 thesis K#，决定下方覆�
 
 ## Step 4.5：把 drilldown 注册回 manifest（**新增**）
 
-**目的**：drilldown 笔记原本只活在 `outputs/` 是孤岛，不进 manifest / 不参与三层覆盖 / 不触发 auto_resolve_todos。本步把它当作 source_type='drilldown' 的 material 入库——drilldown 本身已是结构化结论，直接 `mark_processed`，**不再走 03-extract 重抽**。
+**目的**：drilldown 笔记原本只活在 `outputs/` 是孤岛，不进 manifest / 不参与三层覆盖。本步把它当作 source_type='drilldown' 的 material 入库——drilldown 本身已是结构化结论，直接 `mark_processed`，**不再走 03-extract 重抽**。
 
 ```bash
 python3 << 'EOF'
 from prism.scripts.manifest import add_material, mark_processed
-from prism.scripts.web_prescan import auto_resolve_todos
 from pathlib import Path
 
 slug = '{slug}'
@@ -109,20 +108,18 @@ mat_id = add_material(
     addresses=addresses,
 )
 mark_processed(slug, mat_id, variant)  # drilldown 自己就是 finding，跳过 03-extract
-
-# 触发 todo 覆盖回流：drilldown 攻的 K# 若有 active todo，会被自动 done
-resolved = auto_resolve_todos(slug, variant, [mat_id])
-for r in resolved:
-    print(f'  ✓ {r["task"][:60]} ← {r["mat_ids"]}')
-print(f'drilldown 入库 mat_id={mat_id}, addresses={addresses}, 自动 resolve {len(resolved)} 条 todo')
+print(f'drilldown 入库 mat_id={mat_id}, addresses={addresses}')
 EOF
 ```
+
+> **drilldown 入库后，若它承接了某条 pending todo 要的那份文档**，主 agent 按 **task 身份**（不是 K#）显式闭环：
+> `update_user_todo_status(slug, variant, '<task子串>', 'done', covered_by=[mat_id])`；只是碰巧同 K# 的旁证则不动。
+> 没有任何「列共享 K# 候选」的脚本（已删）——撮合是主 agent 读 todo + 读料的判读。
+> 闭环键是 task/文档身份不是 K#（见 `_autofetch_protocol.md` 「产即收」+「闭环键」节 + memory `feedback_todo_closure_key`）。
 
 **修 M6 — drilldown 默认不触发 04 重写**：
 
 `list_affected_outputs` 默认在 `ignore_source_types=('drilldown',)` 模式下跑——drilldown 入库**不会**自动让相关 output 判 stale。这是为了让 drilldown 保持"高频深挖"的低成本，避免每次问一次就拖 ~5 份 output 重写（~25-50K token、15-25 min）。
-
-`auto_resolve_todos` 不受影响——drilldown 写 addresses=['K3'] 仍会自动 done 对应 K3 todo（两条路径独立）。
 
 ### Step 4.6：drilldown 是否动摇 thesis？主 agent 显式决策（**新增**）
 

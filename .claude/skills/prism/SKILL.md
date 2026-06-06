@@ -65,4 +65,4 @@ python3 -c "from prism.scripts.manifest import mark_processed; mark_processed('s
 2. **每步结束后更新 topic.yaml** — 用脚本写 stage / next_actions / user_todos
 3. **产出写入 `prism/topics/{slug}/outputs/{key}.md`**，然后调脚本更新状态
 4. **Web 自动反映最新状态** — 无需手动刷新配置
-5. **资料放 `prism/inbox/manual/`**（用户手动）或 `prism/inbox/auto/`（脚本下载）
+5. **资料只在 topic 层**：用户手动放 / 脚本下载都进 `prism/topics/{slug}/inbox/`（已无全局 inbox），`register_inbox_materials` 登记元数据后由 02/03 处理
