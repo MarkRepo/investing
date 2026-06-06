@@ -1,19 +1,49 @@
 # 投资仪表盘
 
-> 生成：2026-06-06　　公司：6 个　　行业：2 个　　竞技场：4 个
+> 生成：2026-06-06　　公司：6 个　　行业：3 个　　竞技场：5 个
 
 ## 公司层：决策清单
 
 | 公司 | 当前价 | 当前区间 | 距 Buy 区间 | 仓位上限 | Kill | 近期路标 | 数据新鲜度 |
 |------|--------|---------|-----------|---------|------|---------|----------|
-| [泡泡玛特 (Pop Mart, HKEX 09992)](/prism/cn-popmart/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [PDD Holdings (拼多多, NASDAQ: PDD)](/prism/pinduoduo/opus4.8) (US_PDD) | 85.07 | 🔵 可建仓 | +13% | 标准 (≤2.5%) / 6% | ✅ | 3 个 | 🟢 0d |
+| [泡泡玛特 (Pop Mart, HKEX 09992)](/prism/cn-popmart/opus4.8) (HKEX_09992) | 176.40 | 🟡 观望 | +31% | 观望 / 5% | ✅ | 5 个 | 🟢 0d |
+| [PDD Holdings (拼多多, NASDAQ: PDD)](/prism/pinduoduo/opus4.8) (US_PDD) | 85.07 | 🔵 可建仓 | +13% | 标准 (≤2.5%) / 6% | ✅ | 3 个 | 🟢 1d |
 | [Robinhood (HOOD, NASDAQ)](/prism/us-robinhood/opus4.8) (US_HOOD) | 82.47 | 🟡 观望 | +21% | 试探 (≤1%) / 7% | ✅ | 2 个 | 🟢 2d |
 | [利元亨 (Yuanli Heng, SSE 688499)](/prism/cn-yuanli-heng-688499/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [先导智能 (Leadex, SZSE 300450)](/prism/cn-leadex-300450/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)](/prism/global-futu/opus4.8) (US_FUTU) | 92.33 | 🟡 观望 | +32% | 2% / 4% | ✅ | 2 个 | 🟢 0d |
 
 ## 公司详情
+
+### 泡泡玛特 (Pop Mart, HKEX 09992) (HKEX_09992)
+
+**买入框**
+
+| 区间 | 价格 |
+|------|------|
+| 🟢 强力买入 | ≤ 135 |
+| 🔵 可建仓 | 135 – 150 |
+| 🟡 观望 | 150 – 195 |
+| 🔴 高于观望 | > 195 |
+| **当前** | **176.40**（2026-06-05）→ 🟡 观望 |
+
+**估值矩阵**
+
+| 估值模型 | Bull 公允值 | Base 公允值 | Bear 公允值 |
+|---------|----------|----------|----------|
+| Reverse PE-DCF(逆向反推5年净利CAGR) | 250–290 | 180–200 | 115–135 |
+| 同业/历史分位(Sanrio/Hasbro/Disney对照) | 230–260 | 175–195 | 125–140 |
+| 基本盘+期权拆解(成熟基本盘+新IP/海外/乐园期权) | 280–320 | 185–205 | 130–145 |
+
+**近期路标（60天内）**
+
+- **2026-08** 2026中报IP收入拆分披露  （多：THE MONSTERS绝对额企稳+非Labubu IP占比上升(接棒证成) / 空：Labubu绝对下滑且无IP接棒,集中度续升）
+- **2026-Q3** 季度海外增速与存量店表现  （多：美洲稳在正增长+存量店健康 / 空：海外持续减速+存量店转负）
+- **2026-Q3** 得物等二手价走势  （多：二手价止跌企稳(投机退潮见底) / 空：二手价续跌+黄牛持续抛售）
+- **2026-Q3** 传导代理—二手价跌幅 vs THE MONSTERS一级收入增速 背离/收敛(架桥最大盲点,在kill绝对下滑前提前捕捉)  （多：二者背离(二手崩但一级仍增)=投机退潮未传导,软着陆 / 空：二者收敛(一级增速跟着二手下行)=传导启动,转Sanrio式停滞预警）
+- **2026** 资本动作(回购/减持)  （多：启动大额回购(资本配置转积极) / 空：王宁/高管进一步减持）
+
+---
 
 ### PDD Holdings (拼多多, NASDAQ: PDD) (US_PDD)
 
@@ -102,11 +132,16 @@
 
 ## ⏰ 路标日历（60 天内）
 
+- **2026** [泡泡玛特 (Pop Mart, HKEX 09992)] 资本动作(回购/减持)
 - **2026** [PDD Holdings (拼多多, NASDAQ: PDD)] 首次系统性回购/分红公告
+- **2026-08** [泡泡玛特 (Pop Mart, HKEX 09992)] 2026中报IP收入拆分披露
 - **2026-08** [Robinhood (HOOD, NASDAQ)] Q2 2026 财报(事件合约可持续性+NII趋势+EPS vs guidance)
 - **2026-08** [Robinhood (HOOD, NASDAQ)] Rule 605订单执行披露首次适用RHF/RHS+小单报价透明化累积效应
 - **2026-Q2** [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)] 2026 Q2 业绩会披露大陆口径 + 罚没是否计提
 - **2026-Q2** [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)] 2026 净利 YoY 轨迹 vs 峰值 + NII(利息净收入)指引方向(盈利压缩 bear 关键 signpost)
+- **2026-Q3** [泡泡玛特 (Pop Mart, HKEX 09992)] 季度海外增速与存量店表现
+- **2026-Q3** [泡泡玛特 (Pop Mart, HKEX 09992)] 得物等二手价走势
+- **2026-Q3** [泡泡玛特 (Pop Mart, HKEX 09992)] 传导代理—二手价跌幅 vs THE MONSTERS一级收入增速 背离/收敛(架桥最大盲点,在kill绝对下滑前提前捕捉)
 - **2026-Q3** [PDD Holdings (拼多多, NASDAQ: PDD)] Q2 2026 季报(约8月)
 - **2026-Q3** [PDD Holdings (拼多多, NASDAQ: PDD)] Temu第三方GMV/MAU/留存+半托管单位经济
 
@@ -119,6 +154,12 @@
 | global-futu | price (buy_box) | accumulate | 现价 92.62000274658203 落入 accumulate（零 LLM 价格判定） | ⚠️ 无 | — |
 
 ## 行业层：竞技场选择
+
+### 中国算力行业 (AI Compute, 全产业链) [⚪ ?d]
+
+*暂无 09 sidecar，请运行 workflow 09。*
+
+---
 
 ### 人形机器人行业 (Global Humanoid Robot) [🟢 5d]
 
@@ -165,13 +206,19 @@
 
 ## 竞技场层：公司排名
 
+### 高端白酒 (Premium Baijiu — 周期拐点) [⚪ ?d]
+
+*暂无 10 sidecar，请运行 workflow 10。*
+
+---
+
 ### 行星滚柱丝杠 (Planetary Roller Screw) [⚪ ?d]
 
 *暂无 10 sidecar，请运行 workflow 10。*
 
 ---
 
-### 全球固态电池设备链（卖铲人漏斗） [🟢 4d]
+### 全球固态电池设备链（卖铲人漏斗） [🟢 5d]
 
 **入围（Shortlist）**
 
@@ -208,6 +255,11 @@
 
 | 主题标签 | 涉及研究 | 数量 |
 |---------|---------|------|
+| `china-consumer` | 泡泡玛特 (Pop Mart, HKEX 09992) | 1 |
+| `ip-collectibles` | 泡泡玛特 (Pop Mart, HKEX 09992) | 1 |
+| `blind-box` | 泡泡玛特 (Pop Mart, HKEX 09992) | 1 |
+| `china-going-global` | 泡泡玛特 (Pop Mart, HKEX 09992) | 1 |
+| `hkex` | 泡泡玛特 (Pop Mart, HKEX 09992) | 1 |
 | `china-ecommerce` | PDD Holdings (拼多多, NASDAQ: PDD) | 1 |
 | `cross-border-commerce` | PDD Holdings (拼多多, NASDAQ: PDD) | 1 |
 | `temu-globalization` | PDD Holdings (拼多多, NASDAQ: PDD) | 1 |

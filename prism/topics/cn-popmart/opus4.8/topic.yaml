@@ -3,7 +3,7 @@ display_name: 泡泡玛特 (Pop Mart, HKEX 09992)
 type: company
 created: '2026-06-05T23:18:57.237139+00:00'
 status: active
-stage: 02-gather-materials
+stage: 04-post-synthesis
 canonical: true
 parent_topic: null
 monitoring_tier: dormant
@@ -20,13 +20,70 @@ scope:
   - 海外门店扩张
   - 营收增长
   - 估值赔率
-outputs_state: {}
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-06T13:42:27.492301+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-055eed
+    - mat-1df8fa
+    - mat-45ec08
+    - mat-4f201b
+    - mat-540b26
+    - mat-5660a0
+    - mat-585ab9
+    - mat-95ff92
+    - mat-c0cbec
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-06-06T14:26:09.579018+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-055eed
+    - mat-1df8fa
+    - mat-45ec08
+    - mat-4f201b
+    - mat-540b26
+    - mat-5660a0
+    - mat-585ab9
+    - mat-95ff92
+    - mat-c0cbec
+    - mat-fac663
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-06-06T14:26:09.601474+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-055eed
+    - mat-1df8fa
+    - mat-45ec08
+    - mat-4f201b
+    - mat-540b26
+    - mat-5660a0
+    - mat-585ab9
+    - mat-95ff92
+    - mat-c0cbec
+    - mat-fac663
+    last_error: null
+  08_living_feed:
+    version: 2
+    last_updated: '2026-06-06T14:04:20.029904+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
 parent_materials: []
 next_actions:
-- 运行 workflow 03-extract-findings：先抽 FY2025 年报 PDF（scripts/annual_report_extractor.py，不走
-  mineru）的 IP/区域/品类/财务表，再抽 auto/ 5 份卖方深度+镜鉴材料
-- 03 起步先跑 gap_detector，把 uncovered_ks/thin_evidence 贴对话
-- 抽完 findings 后运行 workflow 04-synthesize 的 _company_case 路径（primer-first → 6 环决策链）
+- 已按 05 request-rewrite 重写 v2（EV→-1%、edge 证伪删除、转中性观望 4/10）
+- 可说「评审 cn-popmart」再跑一轮 05 复评拿 approve→done（v2 已纳入反方全部致命一击，预期 approve）
+- 或直接进监控：命门信号=2026中报IP拆分(8月)/二手价企稳/海外存量店；价格信号=跌入 bear 区 ≤135-150
 user_todos:
 - task: 泡泡玛特 2024 + 2025 年报全文（IP 收入拆分/海外占比/渠道结构/毛利净利率）
   priority: P0
@@ -73,10 +130,10 @@ user_todos:
   fetch_status: fetched
   fetch_attempts: 1
   disposition: undecided
-  last_fetch_note: 中金/大摩/德银/花旗/CGSI一致预期合集
   covered_by:
   - mat-5660a0
   coverage_note: 卖方一致预期合集(中金/大摩/德银/花旗/CGSI 目标价+forward PE)入库
+  last_fetch_note: 中金/大摩/德银/花旗/CGSI一致预期合集
 - task: 非 Labubu IP（星星人/CRYBABY/Molly/Dimoo）收入与增速接棒数据（去 Labubu 化证据）
   priority: P0
   info_tier: half_public
@@ -87,11 +144,11 @@ user_todos:
   fetch_status: fetched
   fetch_attempts: 1
   disposition: undecided
-  last_fetch_note: FY2025拆分:星星人/CRYBABY/MOLLY等增速占比
   covered_by:
   - mat-c0cbec
   - mat-95ff92
   coverage_note: FY2025 IP 完整拆分(星星人/CRYBABY/MOLLY 增速占比)入库
+  last_fetch_note: FY2025拆分:星星人/CRYBABY/MOLLY等增速占比
 - task: 海外门店数/区域同店增长/单店经济模型（美洲/欧洲/东南亚）
   priority: P1
   info_tier: half_public
@@ -102,12 +159,12 @@ user_todos:
   fetch_status: fetched
   fetch_attempts: 1
   disposition: undecided
-  last_fetch_note: Q1电话会区域增速+大摩坪效+德银单店对照
   covered_by:
   - mat-45ec08
   - mat-a1492f
   - mat-5d9af7
   coverage_note: 区域增速/拓店节奏覆盖；单店经济模型(坪效/同店)仍薄，需卖方海外专题续抓
+  last_fetch_note: Q1电话会区域增速+大摩坪效+德银单店对照
 - task: 内部人减持明细 + 分红/回购政策 + 上市以来资本配置史（mgmt-capital-alloc 必收）
   priority: P1
   info_tier: public
@@ -118,11 +175,11 @@ user_todos:
   fetch_status: fetched
   fetch_attempts: 1
   disposition: undecided
-  last_fetch_note: 王宁减持15亿news+年报现金流/派息/回购(公开层);CCASS明细待补
   covered_by:
   - mat-fac663
   - mat-95ff92
   coverage_note: 王宁减持套现 news + 年报现金流/派息覆盖；CCASS 逐笔明细+完整回购史待补
+  last_fetch_note: 王宁减持15亿news+年报现金流/派息/回购(公开层);CCASS明细待补
 - task: 一爆款消费品历史镜鉴：GoPro/Crocs/Fitbit（衰）vs Sanrio/乐高（耐用）的收入与估值轨迹（historical-mirror
     必收）
   priority: P1
@@ -150,12 +207,12 @@ user_todos:
   fetch_status: fetched
   fetch_attempts: 1
   disposition: undecided
-  last_fetch_note: 年报72.1%+存货周转123天+Q1原材料压力
   covered_by:
   - mat-95ff92
   - mat-c0cbec
   - mat-45ec08
   coverage_note: 年报毛利率72.1%/存货周转123天 + Q1 原材料压力入库
+  last_fetch_note: 年报72.1%+存货周转123天+Q1原材料压力
 - task: 盲盒监管（中国未成年人/概率披露）+ 美国关税政策对成本与定价的影响跟踪
   priority: P2
   info_tier: public
@@ -166,12 +223,12 @@ user_todos:
   fetch_status: fetched
   fetch_attempts: 1
   disposition: undecided
-  last_fetch_note: materials已含关税专题;监管以训练知识+公开媒体覆盖
   covered_by:
   - mat-0aabe5
   - mat-a27245
   - mat-5bc544
   coverage_note: 美国关税专题覆盖；盲盒监管(未成年人/概率披露)仅 IP 保护网+训练知识，专门监管文档未收
+  last_fetch_note: materials已含关税专题;监管以训练知识+公开媒体覆盖
 - task: POP LAND/潮流珠宝/卡牌/内容化等品类延伸进展与贡献
   priority: P2
   info_tier: half_public
@@ -182,27 +239,55 @@ user_todos:
   fetch_status: fetched
   fetch_attempts: 1
   disposition: undecided
-  last_fetch_note: Q1电话会+Finexus:POP BAKERY/乐园1.5/小家电/popop饰品
   covered_by:
   - mat-45ec08
   - mat-c3c81d
   coverage_note: POP LAND/珠宝/卡牌进展定性覆盖；各品类收入贡献量化待季报
+  last_fetch_note: Q1电话会+Finexus:POP BAKERY/乐园1.5/小家电/popop饰品
+- task: 04 合成完成：00_primer + c_investment_case + 07_decision_kit + thesis_v1 + decomposition_v1（3
+    份产出）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: false
   cadence: daily
-critic: null
+critic:
+  verdict: request-rewrite
+  summary: 反方做空尽调击中环④:熊+极熊仅38%在5个Sanrio式信号全亮下偏低、EV+8%末位调整即翻负;edge"市场高估GoPro式崩塌"攻稻草人(16x非终局倍数);资产负债表硬保护对PB9.1x是伪命题。环②④需重写,倾向下修至观望/无edge
+  at: '2026-06-06T14:04:20.016411+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
 decomposition:
-  current_version: 0
-  last_updated: '2026-06-05T23:28:00.771477+00:00'
+  current_version: 2
+  last_updated: '2026-06-06T14:26:09.647341+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
     set_at: '2026-06-05T23:28:00.771592+00:00'
     summary: 命门1=IP平台耐用性/去Labubu化(中); 命门2=真实需求vs投机需求稳态基数(低)⭐; 命门3=14x是否trailing trap/远期利润中枢(低)⭐
     convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-06T13:50:06.231096+00:00'
+    summary: 命门1=IP平台耐用性(中偏低,2025偏证伪);命门2=真实需求稳态基数(低)⭐踢drilldown;命门3=trailing trap(中,增长溢价消失非崩塌)
+    convergence_status: open
+    changelog: 命门全存活/顺序不变;命门1置信度中→中偏低(集中度反升证伪方向),命门3低→中(一致预期持平定调);无新增命门(海外并入命门2);primer目标无增删仅强化目标3;delta
+      SET空未触发二次收料
+  - version: 2
+    stage_set_at: 05-post-critic
+    set_at: '2026-06-06T14:26:09.647354+00:00'
+    summary: 命门1=IP平台耐用性(中偏低,2025偏证伪);命门2=真实需求稳态基数(低)⭐踢drilldown;命门3=trailing trap(中,16x合理偏贵非便宜)
+    convergence_status: converged
+    changelog: 命门结构经05反方held(3命门不变);v2将命门3表述从"持平非崩塌"细化为"合理偏贵+E0是峰值";stance因edge证伪从看多→观望但命门未变;命门2仍踢07-drilldown
 thesis:
-  current_version: 0
-  last_updated: '2026-06-05T23:26:42.712526+00:00'
+  current_version: 2
+  last_updated: '2026-06-06T14:26:09.611589+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -210,6 +295,14 @@ thesis:
     summary: 逆向看多(强度6/10)：市场把Labubu退烧线性外推成终局，股价-40%至约14x PE；若泡泡玛特是Sanrio式多IP全球平台而非GoPro式一爆款，赔率已转有利。核心二元=耐用IP平台
       vs 时尚一爆款。
     prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-06T13:50:06.197921+00:00'
+    summary: 逆向看多5/10(试探档):退烧-48%至16x,财务一流(72%毛利/137亿现金零负债/海外坪效媲美Lululemon)下行有硬保护;但去Labubu化2025未证成、集中度反升至38.1%,edge在赔率非对称非增长.EV+13%左偏厚尾
+  - version: 2
+    stage_set_at: 05-post-critic-rewrite
+    set_at: '2026-06-06T14:26:09.611603+00:00'
+    summary: 中性偏多·观望4/10(好公司错价位):质地一流不会GoPro式崩塌,但去Labubu化2025偏证伪(集中度反升38%)、退烧5信号全亮、16x非崩塌倍数故无估值edge、增长delta仅+1.5pct无增长edge,EV≈-1%下行47%。现价0仓,等bear区(≤135-150)或命门1/2反转
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-06-05T23:28:44.100380+00:00'
@@ -232,10 +325,34 @@ stage_history:
     empty_pending_decision: 0
 - stage: 02-gather-materials
   entered_at: '2026-06-06T04:21:06.442146+00:00'
-  exited_at: null
+  exited_at: '2026-06-06T13:30:25.312551+00:00'
   gap_snapshot:
     uncovered_ks: []
     uncovered_ring_inputs:
     - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-06-06T13:30:25.312551+00:00'
+  exited_at: '2026-06-06T13:56:46.826580+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-06T13:56:46.826580+00:00'
+  exited_at: '2026-06-06T14:26:09.662848+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-06-06T14:26:09.662848+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
     autofetch_debt: 0
     empty_pending_decision: 0

@@ -1,0 +1,155 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: cn-ai-compute
+variant: opus4.8
+created: 2026-06-06
+thesis_version: 0
+
+# S2: L1/L2 坍缩为 primer scope，背景理解交给 00_primer
+primer_scope: >
+  primer 该覆盖：中国算力六层产业链边界（芯片→HBM/制程上游→服务器整机→网络/光模块→IDC/智算中心→云调度）、
+  各层参与者与国产化率、市场规模与发展阶段、训练vs推理范式、自主可控vs全球capex-beta两条逻辑分层、
+  出口管制演变（H20/B30）、一次半导体国产替代历史周期类比。
+
+learning_track:
+  l3_debates:         # 争议层：展开 thesis 的最大反方观点
+    - question: H20/B30 回归是否会实质打断国产替代节奏？大厂会因 CUDA 生态惯性回流英伟达，还是国产已过临界点？
+      source_hint: 卖方电子/计算机组对国产替代节奏的多空报告 + 信通院自给率数据 + 大厂采购结构调研
+    - question: 光模块/服务器 ODM 的高估值（中际旭创9000亿、工业富联万亿）是周期中段还是顶部？这是国产 alpha 还是全球 beta？
+      source_hint: 英伟达 capex 指引 + 北美云厂 capex 拐点 + 800G→1.6T 出货曲线 + 卖方光模块深度
+    - question: 推理放量到底利好谁？若 DeepSeek 式效率压低单位算力的卡/网络用量，光模块 beta 逻辑是否被削弱？
+      source_hint: 卖方推理vs训练算力结构报告 + DeepSeek/Kimi 等高效模型对算力需求的影响分析
+    - question: 458+ 智算中心是真实需求还是补贴驱动的结构性过剩？谁能盈利、利用率几何？
+      source_hint: 第三方 IDC 上架率/单IT收入 + 智算中心招标价与折旧 + 通信行业 IDC 深度
+    - question: 国产 GPU 创业梯队（摩尔线程/沐曦）已上市但巨亏，二级高估值是否一二级倒挂、能否兑现规模收入？
+      source_hint: 招股书 + 上市后业绩 + 卖方对国产 GPU 商业化节奏的判断
+
+  l4_hunting:         # 狩猎层：逐 K# 对齐
+    - question: H20/B30 回归后，昇腾+寒武纪+昆仑芯等国产卡在国内数据中心新增份额，2026 全年是否延续 12%→25% 上行斜率？
+      addresses: [K1]
+      search_keywords: [国产AI芯片 份额, 昇腾 出货 2026, 信通院 算力 自给率]
+      source_hint: 信通院/各厂出货数据 + 卖方国产算力深度
+    - question: 中芯 7nm(N+2) 2026 产能是否真翻倍、国产 HBM3 是否规模量产并进入昇腾/寒武纪 BOM？
+      addresses: [K2]
+      search_keywords: [中芯国际 7nm 产能 2026, 长鑫 HBM3 量产, 昇腾 国产HBM]
+      source_hint: 中芯 IR/业绩会 + 存储行业垂直媒体 + 昇腾产业链拆解
+    - question: 推理 vs 训练算力占比演变，及单位推理的网络/光模块用量——推理是否削弱光模块 beta、利好国产推理卡？
+      addresses: [K3]
+      search_keywords: [推理 训练 算力 占比, 推理芯片 国产, 光模块 推理 需求]
+      source_hint: 卖方 AI/通信组算力结构深度
+    - question: 中际旭创/新易盛/工业富联 1.6T 光模块、GB200 机柜订单与利润 2026-2027 能否延续高增，还是英伟达周期顶部？
+      addresses: [K4]
+      search_keywords: [中际旭创 1.6T 订单 2026, 工业富联 GB200, 英伟达 capex 指引]
+      source_hint: 公司财报 + 英伟达财报电话会 + 卖方光模块/ODM 深度
+    - question: 458+ 智算中心实际利用率与单项目 ROI，第三方IDC vs运营商 vs国资谁能盈利？
+      addresses: [K5]
+      search_keywords: [智算中心 利用率 ROI, 润泽 数据港 上架率, 智算中心 招标 价格]
+      source_hint: IDC 公司年报 + 通信行业深度 + 招标网
+    - question: 字节/阿里/腾讯 2026-2027 AI capex 是否延续 25%+ 增长，还是全链通胀后透支回落？
+      addresses: [K6]
+      search_keywords: [字节 阿里 腾讯 capex 2026, 互联网大厂 资本开支, AI capex 指引]
+      source_hint: 各公司财报电话会 + 财经媒体汇总
+
+material_priority:
+  tier1:              # 必读（5.3 P0 → tier1）
+    - title: 国产算力产业链深度卖方报告（覆盖芯片+服务器+光模块全链）
+      type: sell-side-note
+      source: 同花顺/Wind/卖方公众号（中信/中金/华泰/国盛）
+      why: 全链格局与各层国产化率的基础底图，喂环①②
+      addresses: [K1, K3]
+      info_tier: public
+    - title: 昇腾产业链拆解（CloudMatrix 384/910C/920 物料表与国产化率）
+      type: industry-research
+      source: 卖方电子组深度 + 华为开发者大会材料
+      why: 命门1（国产替代产能可得性）核心证据，喂环③
+      addresses: [K1, K2]
+      info_tier: half_public
+    - title: 中芯产能指引 + 国产 HBM(长鑫) 量产专项（7nm/HBM3 硬数据）
+      type: industry-research
+      source: 中芯 IR/业绩会纪要 + 存储行业垂直媒体
+      why: 命门1 上游瓶颈是否解除，证伪/验证国产替代兑现
+      addresses: [K2]
+      info_tier: half_public
+    - title: 推理 vs 训练算力结构与价值再分配报告（含 DeepSeek 效率影响）
+      type: sell-side-note
+      source: 卖方 AI/通信组深度
+      why: 命门3（推理时代价值再分配，置信度最低最该砸料）
+      addresses: [K3]
+      info_tier: half_public
+  tier2:              # 补充（5.3 P1 → tier2）
+    - title: 寒武纪 2025 年报（国产 AI 芯片龙头业绩兑现）
+      type: annual-report
+      ticker: SSE_688256
+      source: cninfo
+      why: 国产替代兑现层财务锚，喂环④
+      addresses: [K1]
+      info_tier: public
+    - title: 工业富联 2025 年报（AI 服务器 ODM 体量与利润）
+      type: annual-report
+      ticker: SSE_601138
+      source: cninfo
+      why: capex-beta 层财务兑现，喂环④
+      addresses: [K4]
+      info_tier: public
+    - title: 中际旭创 2025 年报（光模块全球龙头）
+      type: annual-report
+      ticker: SZSE_300308
+      source: cninfo
+      why: capex-beta 层估值与兑现匹配度，喂环⑤
+      addresses: [K4]
+      info_tier: public
+    - title: 光模块/服务器 ODM 龙头业绩+估值 + 英伟达 capex 指引
+      type: sell-side-note
+      source: 公司财报 + 英伟达财报电话会
+      why: 命门2（capex-beta 周期位置）
+      addresses: [K4]
+      info_tier: public
+    - title: 第三方 IDC/智算中心回报模型（润泽/数据港上架率、招标价与折旧）
+      type: industry-research
+      source: IDC 公司年报 + 通信行业深度 + 招标网
+      why: K5 智算中心 ROI 与过剩风险
+      addresses: [K5]
+      info_tier: half_public
+    - title: BAT+字节 AI capex 指引追踪（季度同比）
+      type: data
+      source: 各公司财报电话会 + 财经媒体
+      why: K6 需求侧可持续性
+      addresses: [K6]
+      info_tier: public
+    - title: 各赛道一致预期/估值锚 consensus（PE/PS/市值横向对比）
+      type: data
+      source: Wind 一致预期 + 卖方估值表
+      why: A 合同 consensus，喂环⑤赔率判断
+      addresses: [K4, K5]
+      info_tier: half_public
+  tier3:              # 可选（5.3 P2 → tier3）
+    - title: 华为/国产算力龙头资本配置与战略史
+      type: industry-research
+      source: 年报 + 战略发布会
+      why: A 合同 mgmt-capital-alloc，喂环①
+      addresses: [K1]
+      info_tier: half_public
+    - title: 中国半导体国产替代历史镜鉴（面板/存储周期复盘）
+      type: industry-research
+      source: 行业史复盘报告
+      why: A 合同 historical-mirror，喂环⑤
+      addresses: [K1, K5]
+      info_tier: half_public
+
+key_risks_to_monitor:
+  - H20/B30 等英伟达特供品回归挤压国产替代（CUDA 生态惯性）
+  - 全球 AI capex 见顶导致 capex-beta 层戴维斯双杀
+  - 智算中心结构性过剩、利用率与 ROI 不达预期
+  - 上游产能（中芯 7nm/国产 HBM）卡住导致国产芯片有单无货
+  - 推理效率提升（DeepSeek 式）压低单位算力的硬件/网络需求
+  - 国产 GPU 创业梯队一二级估值倒挂、巨亏难兑现
+
+analogies_to_study:
+  - case: 中国面板产业国产替代（京东方 2010s，从亏损到全球第一）
+    logic: 国家意志+巨额资本+逆周期扩产实现从0到全球龙头，类比算力芯片自主可控路径
+    limit: 面板是成熟制程+标准品，算力芯片受先进制程禁运卡脖子、生态壁垒(CUDA)更高
+  - case: 中国存储（长江存储/长鑫）国产替代周期
+    logic: 同样受美国制裁、同样从落后追赶、同样资本密集，且与本研究 HBM 命门直接相关
+    limit: 存储是相对标准化品类，AI 芯片软件生态绑定更深
+  - case: 2000年光通信泡沫 / 2021 全球半导体超级周期
+    logic: capex-beta 板块（光模块/设备）在需求高峰估值见顶后的戴维斯双杀剧本，类比当前光模块位置
+    limit: 当前 AI 需求体量与持续性可能强于历史，不能简单照搬泡沫破裂时点

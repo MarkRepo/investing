@@ -1,0 +1,1184 @@
+slug: cn-premium-baijiu
+variant: opus4.8
+updated: '2026-06-06T13:40:04.259798+00:00'
+materials:
+- id: mat-da6498
+  filename: 2026-06-06_2026年飞天茅台原箱最新批价报1700元-瓶-散瓶报1565元-瓶-川观新闻.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.789267+00:00'
+  processed: false
+  notes: query='飞天茅台 2026 散瓶批价 整箱批价 最新' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 飞天茅台 2026 散瓶批价 整箱批价 最新
+    url: https://cbgc.scol.com.cn/news/7463221
+    domain: cbgc.scol.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.788430+00:00'
+    stale_at: '2026-07-06T13:38:40.788430+00:00'
+    expire_at: '2026-09-04T13:38:40.788430+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b64f2a
+  filename: 2026-06-06_2026年飞天茅台原箱最新批价报1700元-瓶-散瓶报1565元-瓶-消息-下单-贵州茅台.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.790962+00:00'
+  processed: false
+  notes: query='飞天茅台 2026 散瓶批价 整箱批价 最新'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台 2026 散瓶批价 整箱批价 最新
+    url: https://www.sohu.com/a/1005618724_122014422
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:40.790133+00:00'
+    stale_at: '2026-07-06T13:38:40.790133+00:00'
+    expire_at: '2026-09-04T13:38:40.790133+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2b8ce2
+  filename: 2026-06-06_2026年飞天茅台批价涨至1665元-瓶-官方零售价上调至1539元-瓶-腾讯新闻.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.793451+00:00'
+  processed: false
+  notes: query='飞天茅台 2026 散瓶批价 整箱批价 最新'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台 2026 散瓶批价 整箱批价 最新
+    url: https://view.inews.qq.com/a/20260415A05SD600
+    domain: view.inews.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:40.792306+00:00'
+    stale_at: '2026-07-06T13:38:40.792306+00:00'
+    expire_at: '2026-09-04T13:38:40.792306+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-493c63
+  filename: 2026-06-06_飞天茅台批发价再度失守1499元关口-终端零售均价已连跌9天---21经济网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.797147+00:00'
+  processed: false
+  notes: query='飞天茅台 2026 散瓶批价 整箱批价 最新'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台 2026 散瓶批价 整箱批价 最新
+    url: https://www.21jingji.com/article/20260104/herald/f8f4cfca18e2eb8d6a2825ac93cab6aa.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:40.795343+00:00'
+    stale_at: '2026-07-06T13:38:40.795343+00:00'
+    expire_at: '2026-09-04T13:38:40.795343+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-710e3d
+  filename: 2026-06-06_第八代普五批价涨至838元-瓶-创近一月新高-白酒---什么值得买.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.803038+00:00'
+  processed: false
+  notes: query='五粮液 第八代普五 批价 2026 价格倒挂 修复' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 五粮液 第八代普五 批价 2026 价格倒挂 修复
+    url: https://post.smzdm.com/p/al3245x8
+    domain: post.smzdm.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.801193+00:00'
+    stale_at: '2026-07-06T13:38:40.801193+00:00'
+    expire_at: '2026-09-04T13:38:40.801193+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0b0f47
+  filename: 2026-06-06_出厂价仍为1019元-瓶所谓-降价-为补贴后的价格变化---东方财富.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.808914+00:00'
+  processed: false
+  notes: query='五粮液 第八代普五 批价 2026 价格倒挂 修复' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 五粮液 第八代普五 批价 2026 价格倒挂 修复
+    url: https://wap.eastmoney.com/a/202512073584535024.html
+    domain: wap.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.806799+00:00'
+    stale_at: '2026-07-06T13:38:40.806799+00:00'
+    expire_at: '2026-09-04T13:38:40.806799+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3ed6a9
+  filename: 2026-06-06_五粮液-降价-重要信号出现---新浪财经.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.815219+00:00'
+  processed: false
+  notes: query='五粮液 第八代普五 批价 2026 价格倒挂 修复'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 五粮液 第八代普五 批价 2026 价格倒挂 修复
+    url: https://finance.sina.com.cn/wm/2025-12-07/doc-infzyhhm2797427.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:40.812657+00:00'
+    stale_at: '2026-07-06T13:38:40.812657+00:00'
+    expire_at: '2026-09-04T13:38:40.812657+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9b4b1a
+  filename: 2026-06-06_第八代五粮液突然降到800多元-公司回应了-是补贴-不是调低出厂价-有酒商称-让消费者喝掉-才是最终.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.823087+00:00'
+  processed: false
+  notes: query='五粮液 第八代普五 批价 2026 价格倒挂 修复' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 五粮液 第八代普五 批价 2026 价格倒挂 修复
+    url: https://www.nbd.com.cn/articles/2025-12-07/4171128.html
+    domain: nbd.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.820161+00:00'
+    stale_at: '2026-07-06T13:38:40.820161+00:00'
+    expire_at: '2026-09-04T13:38:40.820161+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-caad69
+  filename: 2026-06-06_新华酒业周报-五粮液回应第八代普五价格-梦之蓝m6-与春晚合作-歪马送酒门店破2000家-新华网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.831879+00:00'
+  processed: false
+  notes: query='五粮液 第八代普五 批价 2026 价格倒挂 修复' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 五粮液 第八代普五 批价 2026 价格倒挂 修复
+    url: http://www.news.cn/food/20251212/4b2d830025e3461fbabe207b73746c6c/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.828403+00:00'
+    stale_at: '2026-07-06T13:38:40.828403+00:00'
+    expire_at: '2026-09-04T13:38:40.828403+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-852a90
+  filename: 2026-06-06_动销-三管齐下-加速去库存丨春节白酒行业观察--donews专栏.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.842444+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 去库存 进度 2026 库存周期 动销' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 渠道库存 去库存 进度 2026 库存周期 动销
+    url: https://www.donews.com/article/detail/8189/97186.html
+    domain: donews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.838942+00:00'
+    stale_at: '2026-07-06T13:38:40.838942+00:00'
+    expire_at: '2026-09-04T13:38:40.838942+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a82da0
+  filename: 2026-06-06_动销-三管齐下-加速去库存丨春节白酒行业观察---qq-com.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.852436+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 去库存 进度 2026 库存周期 动销'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 渠道库存 去库存 进度 2026 库存周期 动销
+    url: https://news.qq.com/rain/a/20260224A05ZI900
+    domain: news.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:40.848307+00:00'
+    stale_at: '2026-07-06T13:38:40.848307+00:00'
+    expire_at: '2026-09-04T13:38:40.848307+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-103704
+  filename: 2026-06-06_白酒的周期走到哪了---21经济网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.864235+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 去库存 进度 2026 库存周期 动销'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 渠道库存 去库存 进度 2026 库存周期 动销
+    url: https://www.21jingji.com/article/20260426/herald/a7cbb2c63945d43769ce7a496a4855a6.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:40.858859+00:00'
+    stale_at: '2026-07-06T13:38:40.858859+00:00'
+    expire_at: '2026-09-04T13:38:40.858859+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a8e2af
+  filename: 2026-06-06_2026白酒行业大变局-库存爆仓-中间商退场-渠道-经销商-市场.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.877618+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 去库存 进度 2026 库存周期 动销'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 渠道库存 去库存 进度 2026 库存周期 动销
+    url: https://www.sohu.com/a/1029210195_122708746
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:40.872176+00:00'
+    stale_at: '2026-07-06T13:38:40.872176+00:00'
+    expire_at: '2026-09-04T13:38:40.872176+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-63960f
+  filename: 2026-06-06_周期共振下的新生-洋河2026年破局增长的三重逻辑-新华网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.906835+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 去库存 进度 2026 库存周期 动销' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 渠道库存 去库存 进度 2026 库存周期 动销
+    url: https://www.news.cn/food/20260126/2c07b88c991e4ae497422a1f3022eca3/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.893197+00:00'
+    stale_at: '2026-07-06T13:38:40.893197+00:00'
+    expire_at: '2026-09-04T13:38:40.893197+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d8a066
+  filename: 2026-06-06_合同负债下滑-利润增速放缓-茅台业绩说明会详解如何穿越行业调整期.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.926684+00:00'
+  processed: false
+  notes: query='贵州茅台 2025年报 2026一季报 营收 净利 增速 合同负债' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2025年报 2026一季报 营收 净利 增速 合同负债
+    url: https://m.10jqka.com.cn/20260511/c676603390.shtml
+    domain: m.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.921073+00:00'
+    stale_at: '2026-07-06T13:38:40.921073+00:00'
+    expire_at: '2026-09-04T13:38:40.921073+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f0db24
+  filename: 2026-06-06_合同负债下滑-利润增速放缓-茅台业绩说明会详解如何穿越行业调整期-上市公司股东-渠道-产品.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.941546+00:00'
+  processed: false
+  notes: query='贵州茅台 2025年报 2026一季报 营收 净利 增速 合同负债'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 2025年报 2026一季报 营收 净利 增速 合同负债
+    url: https://www.sohu.com/a/1021212064_121157270
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:40.935485+00:00'
+    stale_at: '2026-07-06T13:38:40.935485+00:00'
+    expire_at: '2026-09-04T13:38:40.935485+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-16bb22
+  filename: 2026-06-06_pdf-贵州茅台酒股份有限公司2025-年年度报告.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.963824+00:00'
+  processed: false
+  notes: query='贵州茅台 2025年报 2026一季报 营收 净利 增速 合同负债' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2025年报 2026一季报 营收 净利 增速 合同负债
+    url: https://www.moutaichina.com/mtgf/articleFileDir/2026-04/17/1b9fae59825c41bf9a776892a00565f7.pdf
+    domain: moutaichina.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.955480+00:00'
+    stale_at: '2026-07-06T13:38:40.955480+00:00'
+    expire_at: '2026-09-04T13:38:40.955480+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6e703a
+  filename: 2026-06-06_茅台一季度营收净利双增-c端-变革效果初显---经济观察网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:40.982984+00:00'
+  processed: false
+  notes: query='贵州茅台 2025年报 2026一季报 营收 净利 增速 合同负债' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2025年报 2026一季报 营收 净利 增速 合同负债
+    url: http://m.eeo.com.cn/2026/0425/851203.shtml
+    domain: m.eeo.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:40.974808+00:00'
+    stale_at: '2026-07-06T13:38:40.974808+00:00'
+    expire_at: '2026-09-04T13:38:40.974808+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7ce37b
+  filename: 2026-06-06_周期拐点仍待反复验证-白酒板块强势反弹背后的信号-中金在线财经号.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.013814+00:00'
+  processed: false
+  notes: query='白酒板块 2026 周期见底 拐点 卖方 观点' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒板块 2026 周期见底 拐点 卖方 观点
+    url: http://mp.cnfol.com/56191/article/1780275862-142457422.html
+    domain: mp.cnfol.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.002346+00:00'
+    stale_at: '2026-07-06T13:38:41.002346+00:00'
+    expire_at: '2026-09-04T13:38:41.002346+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4477b3
+  filename: 2026-06-06_浙商证券-白酒板块筑底明确-2026q2业绩进入底部拐点区间.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.034593+00:00'
+  processed: false
+  notes: query='白酒板块 2026 周期见底 拐点 卖方 观点' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒板块 2026 周期见底 拐点 卖方 观点
+    url: https://h5.ifeng.com/c/vivoArticle/v0029g3ozaLIya5fOGR88EaJ61psMK6zt3VbWnsiflB9elA__?isNews=1&showComments=0
+    domain: h5.ifeng.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.027290+00:00'
+    stale_at: '2026-07-06T13:38:41.027290+00:00'
+    expire_at: '2026-09-04T13:38:41.027290+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-96a9d0
+  filename: 2026-06-06_浙商证券-白酒板块筑底明确-2026q2业绩进入底部拐点区间-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.059721+00:00'
+  processed: false
+  notes: query='白酒板块 2026 周期见底 拐点 卖方 观点'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒板块 2026 周期见底 拐点 卖方 观点
+    url: https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-05-22/doc-inhyufhq6186473.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.051090+00:00'
+    stale_at: '2026-07-06T13:38:41.051090+00:00'
+    expire_at: '2026-09-04T13:38:41.051090+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-739753
+  filename: 2026-06-06_中信建投证券杨骥-消费板块边际改善显著白酒或迎十年一遇周期大底.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.079939+00:00'
+  processed: false
+  notes: query='白酒板块 2026 周期见底 拐点 卖方 观点'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒板块 2026 周期见底 拐点 卖方 观点
+    url: https://paper.cnstock.com/html/2026-05/30/content_2224364.htm
+    domain: paper.cnstock.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.072118+00:00'
+    stale_at: '2026-07-06T13:38:41.072118+00:00'
+    expire_at: '2026-09-04T13:38:41.072118+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-20e18f
+  filename: 2026-06-06_茅台5天市值涨逾2500亿元-白酒板块周期底部配置机会已来---21经济网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.102549+00:00'
+  processed: false
+  notes: query='白酒板块 2026 周期见底 拐点 卖方 观点'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒板块 2026 周期见底 拐点 卖方 观点
+    url: https://www.21jingji.com/article/20260204/herald/9f78386935954021000a27e2cf3dbdd3.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.092240+00:00'
+    stale_at: '2026-07-06T13:38:41.092240+00:00'
+    expire_at: '2026-09-04T13:38:41.092240+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0a6217
+  filename: 2026-06-06_ai整理的-2026春节白酒销量情况-所有数据都是机构-渠道公开口径-方便交叉验证-2026春节白酒.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.125724+00:00'
+  processed: false
+  notes: query='2026 春节 白酒 动销 旺季反馈 茅台 五粮液'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 2026 春节 白酒 动销 旺季反馈 茅台 五粮液
+    url: https://xueqiu.com/5693003020/376502512
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.117170+00:00'
+    stale_at: '2026-07-06T13:38:41.117170+00:00'
+    expire_at: '2026-09-04T13:38:41.117170+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cb12c4
+  filename: 2026-06-06_顺周期大反击-不仅茅台五粮液-啤酒-黄酒黑马也悄悄崛起-周刊原创-证券市场周刊.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.151926+00:00'
+  processed: false
+  notes: query='2026 春节 白酒 动销 旺季反馈 茅台 五粮液' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 2026 春节 白酒 动销 旺季反馈 茅台 五粮液
+    url: https://static.weeklyonstock.com/26/0311/wd154308.html
+    domain: static.weeklyonstock.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.140528+00:00'
+    stale_at: '2026-07-06T13:38:41.140528+00:00'
+    expire_at: '2026-09-04T13:38:41.140528+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-21c15e
+  filename: 2026-06-06_2026年白酒行业-春节白酒动销全景--茅五亮眼-结构分化中信建投.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.177113+00:00'
+  processed: false
+  notes: query='2026 春节 白酒 动销 旺季反馈 茅台 五粮液' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 2026 春节 白酒 动销 旺季反馈 茅台 五粮液
+    url: https://www.scribd.com/document/1006215235/2026%E5%B9%B4%E7%99%BD%E9%85%92%E8%A1%8C%E4%B8%9A-%E6%98%A5%E8%8A%82%E7%99%BD%E9%85%92%E5%8A%A8%E9%94%80%E5%85%A8%E6%99%AF-%E8%8C%85%E4%BA%94%E4%BA%AE%E7%9C%BC-%E7%BB%93%E6%9E%84%E5%88%86%E5%8C%96-%E4%B8%AD%E4%BF%A1%E5%BB%BA%E6%8A%95
+    domain: scribd.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.167525+00:00'
+    stale_at: '2026-07-06T13:38:41.167525+00:00'
+    expire_at: '2026-09-04T13:38:41.167525+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-91e1d1
+  filename: 2026-06-06_高端白酒暖意浓-飞天茅台逼近1800元五粮液动销稳步攀升---21经济网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.202190+00:00'
+  processed: false
+  notes: query='2026 春节 白酒 动销 旺季反馈 茅台 五粮液'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 2026 春节 白酒 动销 旺季反馈 茅台 五粮液
+    url: https://www.21jingji.com/article/20260213/herald/be74579c5778afed39879f0b8a35f023.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.191669+00:00'
+    stale_at: '2026-07-06T13:38:41.191669+00:00'
+    expire_at: '2026-09-04T13:38:41.191669+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-646f2d
+  filename: 2026-06-06_消费税改革有望今年落地-部分品目征收环节后移并下划地方---界面新闻.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.229503+00:00'
+  processed: false
+  notes: query='白酒 消费税改革 2025 2026 征收环节后移 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 消费税改革 2025 2026 征收环节后移 进展
+    url: https://www.jiemian.com/article/14073145.html
+    domain: jiemian.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.219929+00:00'
+    stale_at: '2026-07-06T13:38:41.219929+00:00'
+    expire_at: '2026-09-04T13:38:41.219929+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b76af0
+  filename: 2026-06-06_从范围到环节-消费税改革迎关键部署---东方财富.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.265429+00:00'
+  processed: false
+  notes: query='白酒 消费税改革 2025 2026 征收环节后移 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 消费税改革 2025 2026 征收环节后移 进展
+    url: https://finance.eastmoney.com/a/202603143672292838.html
+    domain: finance.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.245932+00:00'
+    stale_at: '2026-07-06T13:38:41.245932+00:00'
+    expire_at: '2026-09-04T13:38:41.245932+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-62a298
+  filename: 2026-06-06_pdf-三中全会财税解读-消费税征收环节后移-洞悉改革动向与挑战.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.295119+00:00'
+  processed: false
+  notes: query='白酒 消费税改革 2025 2026 征收环节后移 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 消费税改革 2025 2026 征收环节后移 进展
+    url: https://www.pwccn.com/zh/china-tax-news/2024q3/chinatax-news-aug2024-15.pdf
+    domain: pwccn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.284691+00:00'
+    stale_at: '2026-07-06T13:38:41.284691+00:00'
+    expire_at: '2026-09-04T13:38:41.284691+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0bf4cd
+  filename: 2026-06-06_北大经院两会笔谈-刘怡-消费税征收环节后移改革-前景与挑战.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.327702+00:00'
+  processed: false
+  notes: query='白酒 消费税改革 2025 2026 征收环节后移 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 消费税改革 2025 2026 征收环节后移 进展
+    url: https://news.pku.edu.cn/xwzh/6c952e8ad00a4901892f2e4b856f65df.htm
+    domain: news.pku.edu.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.316200+00:00'
+    stale_at: '2026-07-06T13:38:41.316200+00:00'
+    expire_at: '2026-09-04T13:38:41.316200+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-da1dae
+  filename: 2026-06-06_估值底已现-白酒行业的调整逻辑与未来增长路径---新浪财经.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.361599+00:00'
+  processed: false
+  notes: query='白酒板块 估值 PE 历史分位 2026 北向资金 机构持仓'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒板块 估值 PE 历史分位 2026 北向资金 机构持仓
+    url: https://finance.sina.com.cn/roll/2026-01-15/doc-inhhmamp3161637.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.347447+00:00'
+    stale_at: '2026-07-06T13:38:41.347447+00:00'
+    expire_at: '2026-09-04T13:38:41.347447+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b598e6
+  filename: 2026-06-06_白酒行业集体下跌-增长神话落幕-结构性分化加速2026年开年至今.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.391639+00:00'
+  processed: false
+  notes: query='白酒板块 估值 PE 历史分位 2026 北向资金 机构持仓'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒板块 估值 PE 历史分位 2026 北向资金 机构持仓
+    url: https://xueqiu.com/3903753733/377989329
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.380065+00:00'
+    stale_at: '2026-07-06T13:38:41.380065+00:00'
+    expire_at: '2026-09-04T13:38:41.380065+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4c8489
+  filename: 2026-06-06_指数估值-2026-06-03---雪球基金.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.424499+00:00'
+  processed: false
+  notes: query='白酒板块 估值 PE 历史分位 2026 北向资金 机构持仓' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒板块 估值 PE 历史分位 2026 北向资金 机构持仓
+    url: https://danjuanfunds.com/djmodule/value-center
+    domain: danjuanfunds.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.412472+00:00'
+    stale_at: '2026-07-06T13:38:41.412472+00:00'
+    expire_at: '2026-09-04T13:38:41.412472+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2b0fd9
+  filename: 2026-06-06_002304-2025.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.460821+00:00'
+  processed: false
+  notes: query='山西汾酒 洋河股份 2025年报 次高端 动销 库存'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 山西汾酒 洋河股份 2025年报 次高端 动销 库存
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002304&id=11311102
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.445986+00:00'
+    stale_at: '2026-07-06T13:38:41.445986+00:00'
+    expire_at: '2026-09-04T13:38:41.445986+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5682f9
+  filename: 2026-06-06_洋河股份营销破局-去库存-稳价盘-梦之蓝占比提升3-5个百分点.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.494391+00:00'
+  processed: false
+  notes: query='山西汾酒 洋河股份 2025年报 次高端 动销 库存'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 山西汾酒 洋河股份 2025年报 次高端 动销 库存
+    url: https://www.stcn.com/article/detail/3894406.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.481859+00:00'
+    stale_at: '2026-07-06T13:38:41.481859+00:00'
+    expire_at: '2026-09-04T13:38:41.481859+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a92aff
+  filename: 2026-06-06_稳价盘-去库存-赢人心-洋河2025年交出韧性答卷.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.531065+00:00'
+  processed: false
+  notes: query='山西汾酒 洋河股份 2025年报 次高端 动销 库存'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 山西汾酒 洋河股份 2025年报 次高端 动销 库存
+    url: https://www.yicai.com/news/103156593.html
+    domain: yicai.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.517306+00:00'
+    stale_at: '2026-07-06T13:38:41.517306+00:00'
+    expire_at: '2026-09-04T13:38:41.517306+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-77be40
+  filename: 2026-06-06_财报观察室丨以-短痛-换渠道健康-白酒能否迎来拐点---新京报.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.570128+00:00'
+  processed: false
+  notes: query='山西汾酒 洋河股份 2025年报 次高端 动销 库存' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 山西汾酒 洋河股份 2025年报 次高端 动销 库存
+    url: https://www.bjnews.com.cn/detail/1778149089169536.html
+    domain: bjnews.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.555819+00:00'
+    stale_at: '2026-07-06T13:38:41.555819+00:00'
+    expire_at: '2026-09-04T13:38:41.555819+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d7bbd3
+  filename: 2026-06-06_历史性反超-山西汾酒三季度营收利润超越五粮液-新华网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.618796+00:00'
+  processed: false
+  notes: query='山西汾酒 洋河股份 2025年报 次高端 动销 库存' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 山西汾酒 洋河股份 2025年报 次高端 动销 库存
+    url: http://www.news.cn/food/20251107/fda122658aef4de99f161b01bb8d82f3/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.602569+00:00'
+    stale_at: '2026-07-06T13:38:41.602569+00:00'
+    expire_at: '2026-09-04T13:38:41.602569+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-40b991
+  filename: 2026-06-06_pdf-新发展环境下禁酒政策调整对白酒行业影响分析.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.664114+00:00'
+  processed: false
+  notes: query='白酒 禁酒令 三公消费 商务消费 2025 2026 政策' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 禁酒令 三公消费 商务消费 2025 2026 政策
+    url: https://www.lhratings.com/file/g1182893638.pdf
+    domain: lhratings.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.647229+00:00'
+    stale_at: '2026-07-06T13:38:41.647229+00:00'
+    expire_at: '2026-09-04T13:38:41.647229+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5a7cea
+  filename: 2026-06-06_pdf-禁酒令升级-中国白酒行业如何突破困局.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.709473+00:00'
+  processed: false
+  notes: query='白酒 禁酒令 三公消费 商务消费 2025 2026 政策' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 禁酒令 三公消费 商务消费 2025 2026 政策
+    url: https://pdf.dfcfw.com/pdf/H3_AP202506241696738933_1.pdf?1750780945000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.691241+00:00'
+    stale_at: '2026-07-06T13:38:41.691241+00:00'
+    expire_at: '2026-09-04T13:38:41.691241+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-258480
+  filename: 2026-06-06_禁酒令-新规又来了-白酒板块跌幅居前.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.769228+00:00'
+  processed: false
+  notes: query='白酒 禁酒令 三公消费 商务消费 2025 2026 政策'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 禁酒令 三公消费 商务消费 2025 2026 政策
+    url: https://m.mp.oeeee.com/a/BAAFRD0000202505191087526.html
+    domain: m.mp.oeeee.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.740138+00:00'
+    stale_at: '2026-07-06T13:38:41.740138+00:00'
+    expire_at: '2026-09-04T13:38:41.740138+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8c7ff7
+  filename: 2026-06-06_2026年中国白酒行业发展现状及趋势分析-消费场景重构.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.849219+00:00'
+  processed: false
+  notes: query='白酒 禁酒令 三公消费 商务消费 2025 2026 政策' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 禁酒令 三公消费 商务消费 2025 2026 政策
+    url: https://m.huaon.com/channel/trend/1164280.html
+    domain: m.huaon.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.820744+00:00'
+    stale_at: '2026-07-06T13:38:41.820744+00:00'
+    expire_at: '2026-09-04T13:38:41.820744+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-372681
+  filename: 2026-06-06_泸州老窖谈量价策略-国窖1573并非单纯-守价---腾讯新闻.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.901302+00:00'
+  processed: false
+  notes: query='泸州老窖 国窖1573 批价 2026 千元价格带'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 国窖1573 批价 2026 千元价格带
+    url: https://view.inews.qq.com/a/20260329A02K7800
+    domain: view.inews.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.882085+00:00'
+    stale_at: '2026-07-06T13:38:41.882085+00:00'
+    expire_at: '2026-09-04T13:38:41.882085+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d386a7
+  filename: 2026-06-06_2026年泸州老窖52度价格大全-国窖1573-特曲-头曲全系列最新报价-财经头条-新浪财经.md
+  source_type: web-search
+  added: '2026-06-06T13:38:41.951105+00:00'
+  processed: false
+  notes: query='泸州老窖 国窖1573 批价 2026 千元价格带' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 国窖1573 批价 2026 千元价格带
+    url: https://cj.sina.cn/articles/view/7857141524/1d452771401901yk1y?froms=ggmp
+    domain: cj.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:38:41.931974+00:00'
+    stale_at: '2026-07-06T13:38:41.931974+00:00'
+    expire_at: '2026-09-04T13:38:41.931974+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2b226a
+  filename: 2026-06-06_贵州茅台在2025-2026-年实施了两轮股份回购-均为注.md
+  source_type: web-search
+  added: '2026-06-06T13:38:42.005434+00:00'
+  processed: false
+  notes: query='贵州茅台 五粮液 2025 2026 分红 回购 股东回报'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 五粮液 2025 2026 分红 回购 股东回报
+    url: https://ir.p5w.net/question/00015BF20A50687C4903984465B94384DBA9.shtml
+    domain: ir.p5w.net
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:41.986360+00:00'
+    stale_at: '2026-07-06T13:38:41.986360+00:00'
+    expire_at: '2026-09-04T13:38:41.986360+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9aeaff
+  filename: 2026-06-06_五粮液-000858-五粮液集团大额增持-四大举措增强股东回报-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-06-06T13:38:42.056709+00:00'
+  processed: false
+  notes: query='贵州茅台 五粮液 2025 2026 分红 回购 股东回报'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 五粮液 2025 2026 分红 回购 股东回报
+    url: https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/831484344937/index.phtml
+    domain: stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:42.037673+00:00'
+    stale_at: '2026-07-06T13:38:42.037673+00:00'
+    expire_at: '2026-09-04T13:38:42.037673+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-57e5a4
+  filename: 2026-06-06_五粮液-2025年度百亿分红两月内到账-严格兑现200亿元分红承诺.md
+  source_type: web-search
+  added: '2026-06-06T13:38:42.108466+00:00'
+  processed: false
+  notes: query='贵州茅台 五粮液 2025 2026 分红 回购 股东回报'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 五粮液 2025 2026 分红 回购 股东回报
+    url: https://www.stcn.com/article/detail/3913318.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:38:42.088986+00:00'
+    stale_at: '2026-07-06T13:38:42.088986+00:00'
+    expire_at: '2026-09-04T13:38:42.088986+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f42de7
+  filename: 2026-06-06_贵州茅台最新渠道改革-对非标茅台痛下狠手-2025-年-12-月-11-日-茅台-全国经销商会议披露.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.540011+00:00'
+  processed: false
+  notes: query='茅台 五粮液 2026 经销商大会 营销政策 控量 配额'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 五粮液 2026 经销商大会 营销政策 控量 配额
+    url: https://xueqiu.com/7617803243/365788061
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:40:03.522442+00:00'
+    stale_at: '2026-07-06T13:40:03.522442+00:00'
+    expire_at: '2026-09-04T13:40:03.522442+00:00'
+    triggered_by: 00-prescan
+- id: mat-111b9e
+  filename: 2026-06-06_pdf-茅台控量稳价-批价反弹回升.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.586789+00:00'
+  processed: false
+  notes: query='茅台 五粮液 2026 经销商大会 营销政策 控量 配额' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台 五粮液 2026 经销商大会 营销政策 控量 配额
+    url: https://pdf.dfcfw.com/pdf/H3_AP202512151801029114_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:40:03.569179+00:00'
+    stale_at: '2026-07-06T13:40:03.569179+00:00'
+    expire_at: '2026-09-04T13:40:03.569179+00:00'
+    triggered_by: 00-prescan
+- id: mat-22abf2
+  filename: 2026-06-06_业绩承压-白酒行业深度调整-经销商大会释放积极信号---证券时报.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.631858+00:00'
+  processed: false
+  notes: query='茅台 五粮液 2026 经销商大会 营销政策 控量 配额'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 2026 中报 半年报 业绩预告 龙头 增速
+    url: https://www.stcn.com/article/detail/3580000.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:40:04.034351+00:00'
+    stale_at: '2026-07-06T13:40:04.034351+00:00'
+    expire_at: '2026-09-04T13:40:04.034351+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - 茅台 五粮液 2026 经销商大会 营销政策 控量 配额
+- id: mat-66832d
+  filename: 2026-06-06_茅台拟取消分销计划-缩减非标产品-2026年或放宽招商门槛.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.678981+00:00'
+  processed: false
+  notes: query='茅台 五粮液 2026 经销商大会 营销政策 控量 配额' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台 五粮液 2026 经销商大会 营销政策 控量 配额
+    url: https://finance.sina.cn/stock/ssgs/2025-12-15/detail-inhawxxz3898253.d.html?oid=%E4%BB%A3%E6%94%B6%E6%AC%BE%E5%A7%94%E6%89%98%E4%B9%A6%E8%8C%83%E6%96%87%E6%A8%A1%E6%9D%BF%E6%80%8E%E4%B9%88%E5%86%99%E7%9A%84%28%E9%9C%80%E8%A6%81%E8%81%94%E7%B3%BBTG%3A%40HHCH8%E6%92%9E%E5%BA%93%E6%95%B0%E6%8D%AE%E6%B8%97%E9%80%8F%E6%95%B0%E6%8D%AE%E6%B5%B7%E5%A4%96%E6%94%AF%E4%BB%98%E9%80%9A%E9%81%93%29Vrkg&vt=4&cid=80775&node_id=80775
+    domain: finance.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:40:03.661219+00:00'
+    stale_at: '2026-07-06T13:40:03.661219+00:00'
+    expire_at: '2026-09-04T13:40:03.661219+00:00'
+    triggered_by: 00-prescan
+- id: mat-45746a
+  filename: 2026-06-06_飞天茅台批发价波动背后-茅台拟取消分销计划-缩减非标产品-2026年或放宽招商门槛---21经济网.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.726593+00:00'
+  processed: false
+  notes: query='茅台 五粮液 2026 经销商大会 营销政策 控量 配额'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 五粮液 2026 经销商大会 营销政策 控量 配额
+    url: https://www.21jingji.com/article/20251216/herald/e9d33d1198e77f5ac1b00bbea2e825a8.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:40:03.708053+00:00'
+    stale_at: '2026-07-06T13:40:03.708053+00:00'
+    expire_at: '2026-09-04T13:40:03.708053+00:00'
+    triggered_by: 00-prescan
+- id: mat-1878af
+  filename: 2026-06-06_行业深度调整明年如何破局-贵州茅台管理层在经销商大会-划重点.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.774986+00:00'
+  processed: false
+  notes: query='茅台 五粮液 2026 经销商大会 营销政策 控量 配额'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 五粮液 2026 经销商大会 营销政策 控量 配额
+    url: https://www.cls.cn/detail/2242154
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:40:03.756465+00:00'
+    stale_at: '2026-07-06T13:40:03.756465+00:00'
+    expire_at: '2026-09-04T13:40:03.756465+00:00'
+    triggered_by: 00-prescan
+- id: mat-442b95
+  filename: 2026-06-06_2026年-白酒行业的-春天-来了吗--钛媒体官方网站.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.828161+00:00'
+  processed: false
+  notes: query='白酒 2026 中报 半年报 业绩预告 龙头 增速'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 2026 中报 半年报 业绩预告 龙头 增速
+    url: https://www.tmtpost.com/7893363.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:40:03.808809+00:00'
+    stale_at: '2026-07-06T13:40:03.808809+00:00'
+    expire_at: '2026-09-04T13:40:03.808809+00:00'
+    triggered_by: 00-prescan
+- id: mat-bea180
+  filename: 2026-06-06_东吴证券-2026年上半年白酒行业仍延续出清筑底态势.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.878598+00:00'
+  processed: false
+  notes: query='白酒 2026 中报 半年报 业绩预告 龙头 增速'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 2026 中报 半年报 业绩预告 龙头 增速
+    url: https://m.cnstock.com/commonDetail/714927
+    domain: m.cnstock.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:40:03.858818+00:00'
+    stale_at: '2026-07-06T13:40:03.858818+00:00'
+    expire_at: '2026-09-04T13:40:03.858818+00:00'
+    triggered_by: 00-prescan
+- id: mat-bff6f2
+  filename: 2026-06-06_白酒板块一季度乍现暖意---同花顺.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.930082+00:00'
+  processed: false
+  notes: query='白酒 2026 中报 半年报 业绩预告 龙头 增速' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 2026 中报 半年报 业绩预告 龙头 增速
+    url: https://stock.10jqka.com.cn/20260602/c677134959.shtml
+    domain: stock.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:40:03.910901+00:00'
+    stale_at: '2026-07-06T13:40:03.910901+00:00'
+    expire_at: '2026-09-04T13:40:03.910901+00:00'
+    triggered_by: 00-prescan
+- id: mat-40ed19
+  filename: 2026-06-06_上半年白酒行业降速明显-但龙头集中度提升-中国基金报.md
+  source_type: web-search
+  added: '2026-06-06T13:40:03.982857+00:00'
+  processed: false
+  notes: query='白酒 2026 中报 半年报 业绩预告 龙头 增速' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 2026 中报 半年报 业绩预告 龙头 增速
+    url: https://www.chnfund.com/article/AR1ef3353e-4461-0e83-02b5-3a1c155e7c18
+    domain: chnfund.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:40:03.962938+00:00'
+    stale_at: '2026-07-06T13:40:03.962938+00:00'
+    expire_at: '2026-09-04T13:40:03.962938+00:00'
+    triggered_by: 00-prescan
+- id: mat-54806c
+  filename: 2026-06-06_白酒股年报-首只黑天鹅-口子窖净利预降50--60-弱于多数券商预估-财报解读.md
+  source_type: web-search
+  added: '2026-06-06T13:40:04.086382+00:00'
+  processed: false
+  notes: query='白酒 2026 中报 半年报 业绩预告 龙头 增速'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 2026 中报 半年报 业绩预告 龙头 增速
+    url: https://www.cls.cn/detail/2251065
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:40:04.066149+00:00'
+    stale_at: '2026-07-06T13:40:04.066149+00:00'
+    expire_at: '2026-09-04T13:40:04.066149+00:00'
+    triggered_by: 00-prescan
+- id: mat-f25ba7
+  filename: 2026-06-06_茅台1935-搅动千元档白酒江湖-资讯-派财经.md
+  source_type: web-search
+  added: '2026-06-06T13:40:04.144391+00:00'
+  processed: false
+  notes: query='茅台1935 茅台 系列酒 次高端 千元价格带 批价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台1935 茅台 系列酒 次高端 千元价格带 批价 2026
+    url: http://www.paicaijing314.com/news/1355618.html
+    domain: paicaijing314.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:40:04.123277+00:00'
+    stale_at: '2026-07-06T13:40:04.123277+00:00'
+    expire_at: '2026-09-04T13:40:04.123277+00:00'
+    triggered_by: 00-prescan
+- id: mat-70d0a4
+  filename: 2026-06-06_产品重构-消费扩容-2026年茅台酒量价趋势与长期价值增长潜力分析-财富号-东方财富网.md
+  source_type: web-search
+  added: '2026-06-06T13:40:04.201431+00:00'
+  processed: false
+  notes: query='茅台1935 茅台 系列酒 次高端 千元价格带 批价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台1935 茅台 系列酒 次高端 千元价格带 批价 2026
+    url: https://caifuhao.eastmoney.com/news/20260413155704591791540
+    domain: caifuhao.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:40:04.179584+00:00'
+    stale_at: '2026-07-06T13:40:04.179584+00:00'
+    expire_at: '2026-09-04T13:40:04.179584+00:00'
+    triggered_by: 00-prescan
+- id: mat-868533
+  filename: 2026-06-06_pdf-贵州茅台-600519-sh.md
+  source_type: web-search
+  added: '2026-06-06T13:40:04.259781+00:00'
+  processed: false
+  notes: query='茅台1935 茅台 系列酒 次高端 千元价格带 批价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台1935 茅台 系列酒 次高端 千元价格带 批价 2026
+    url: https://pdf.dfcfw.com/pdf/H3_AP202603191820648186_1.pdf?1773942674000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:40:04.236163+00:00'
+    stale_at: '2026-07-06T13:40:04.236163+00:00'
+    expire_at: '2026-09-04T13:40:04.236163+00:00'
+    triggered_by: 00-prescan

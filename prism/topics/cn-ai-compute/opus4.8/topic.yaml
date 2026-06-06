@@ -1,0 +1,226 @@
+slug: cn-ai-compute
+display_name: 中国算力行业 (AI Compute, 全产业链)
+type: industry
+created: '2026-06-06T13:16:07.428440+00:00'
+status: active
+stage: 02-gather-materials
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 中国算力全产业链（算力芯片→智算中心/IDC→服务器整机→网络/光模块→液冷散热）哪些细分赛道值得投资，国产化格局与各层卡位如何演变
+  depth: deep
+  short_name: 中国算力
+  search_terms:
+  - 国产算力芯片
+  - 智算中心 IDC
+  - 算力服务器
+  - 光模块 算力网络
+outputs_state:
+  00_primer:
+    version: 0
+    last_updated: '2026-06-06T13:29:31.349784+00:00'
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  roadmap:
+    version: 0
+    last_updated: '2026-06-06T13:41:51.612551+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 运行 workflow 03-extract-findings 处理已收集资料（3份年报+4份深度分析+28份prescan校准）
+- 剩余 P1/P2 todo（consensus估值表/华为资本配置史）为半公开，可由用户补或02深挖
+- 资料处理后运行 workflow 04-synthesize 产出 i_industry_case 决策链
+user_todos:
+- task: 国产算力产业链深度卖方报告 3 份（中信/中金/华泰/国盛任选，覆盖芯片+服务器+光模块全链）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: 同花顺/Wind/卖方公众号
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa→昇腾全链+智算中心报告已覆盖全链格局
+- task: 昇腾产业链拆解报告（CloudMatrix 384/910C/920 物料表与国产化率）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 卖方电子组深度 + 华为开发者大会材料
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa→香农/民生证券/鉅亨/新浪
+- task: 中芯国际产能指引 + 国产 HBM(长鑫)量产进展专项（7nm/HBM3 硬数据）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 中芯 IR/业绩会纪要 + 存储行业垂直媒体
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa→昇腾供应链拆解含中芯7nm月5万片+长鑫HBM;历史镜鉴含长鑫DDR5/产能
+- task: 推理 vs 训练算力结构与价值再分配卖方报告（DeepSeek 效率影响）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 卖方 AI/通信组深度
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa→36氪/贝恩/CSDN
+- task: 光模块/服务器 ODM 龙头业绩+估值（中际旭创/新易盛/工业富联）+ 英伟达 capex 指引
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: 公司财报 + 英伟达财报电话会
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 年报(中际旭创/工业富联)+prescan业绩市值已覆盖,英伟达capex待02深化
+- task: 第三方 IDC/智算中心回报模型（润泽/数据港上架率、智算中心招标价与折旧）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: IDC 公司年报 + 通信行业深度 + 招标网
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa→36氪智能涌现/vzkoo/IDC
+- task: BAT+字节 2026-2027 AI capex 指引追踪（季度同比）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 各公司财报电话会 + 财经媒体汇总
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan拿到字节25%+/600亿/腾讯阿里上调,具体季度指引待02
+- task: 各赛道一致预期/估值锚 consensus（PE/PS/市值横向对比表）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  - K5
+  source_hint: Wind 一致预期 + 卖方估值表（A 合同 consensus）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-27eea4
+  coverage_note: 公开版估值锚已抓:芯片设计层PE 154-305x/光模块PEG 0.39-0.68/产业链PEG中位0.96x;精确Wind 27-28E仍可后补
+  last_fetch_note: exa→东财/21经济/兴证策略PE-G/中信建投PEG/开源中际旭创/海光深度;PE/PS/市值横向表+PEG框架+泡沫信号已入库(mat-27eea4)
+- task: 华为/国产算力龙头资本配置与战略史（mgmt-capital-alloc）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 年报+战略发布会（A 合同 mgmt-capital-alloc）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa→华为2024/2025年报+徐直军HC2025演讲+访谈+证时;研发1923亿/21.8%/十年1.38万亿+超节点路标+战略哲学已入库(mat-9bbdca)
+  covered_by:
+  - mat-9bbdca
+  coverage_note: 华为资本配置史全公开可抓:研发强度/逆周期压强/不上市无短期压力/硬件变现开源促量/昇腾950-970+Atlas集群路标
+- task: 中国半导体国产替代历史镜鉴（面板/存储周期：替代节奏、估值陷阱、产能过剩）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  - K5
+  source_hint: 行业史复盘报告（A 合同 historical-mirror）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa→TechNews京东方+21世纪两存崛起复盘
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 0
+  last_updated: '2026-06-06T13:27:40.436865+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-06T13:27:40.436876+00:00'
+    summary: 命门1=国产替代的产能可得性(中芯7nm+国产HBM能否支撑放量·中); 命门2=capex-beta层周期位置(光模块/ODM估值已price-in·中);
+      命门3=推理时代价值再分配(推理放量给了谁·低)
+    convergence_status: open
+thesis:
+  current_version: 0
+  last_updated: '2026-06-06T13:27:40.430715+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-06T13:27:40.430825+00:00'
+    summary: 差异化看多(6.5/10)：做多国产替代兑现层(芯片/昇腾/国产HBM·上游瓶颈在解除)，对全球capex-beta层(光模块/服务器ODM·估值已高绑英伟达周期)转谨慎赚业绩不赚估值，智算中心选回报模型清晰者
+    prescan_status: full
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-06T13:29:16.529462+00:00'
+  exited_at: '2026-06-06T13:41:51.618204+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-06-06T13:41:51.618204+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks:
+    - K4
+    - K6
+    uncovered_ring_inputs:
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 2
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-06-06T13:41:51.607008+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 12
+  queries_with_hits: 12

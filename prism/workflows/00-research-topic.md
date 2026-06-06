@@ -422,7 +422,7 @@ Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` co
 > - 没有 → 正常建 `pending`。
 > 按文档身份判（不是 K# 撞 K#）——一份挂 K2 的旧价新闻不等于"年报全文"已收。
 >
-> **产即收衔接**：本阶段（00）产的 pending todo **不在 00 收**，紧接的 **01 Step 5.6** 是专职 eager-fetch 步、会当场抓完 00 产的全部 todo（产即收：00→01 是同一收料缝，下游不补抓）。00 只管"押对要收什么"，不把 fetch 搬进来（保 thesis bet-first）。
+> **产即收衔接**：本阶段（00）产的 pending todo **由 00 自己在 Step 6.5 当场抓**（产即收总规约：谁产谁收、同段闭环）。关键时序——todo 产在 thesis_v0（5.0）**之后**、赌注已锁定，此时 eager-fetch **不污染 bet-first**：bet-first 由 Step 4.5 prescan 前置（只校准事实、`scope` 入库、永不碰 todo）担保，与"fetch 放哪一步"无关。01 Step 5.6 **只补抓 01 自己 Step 2/3 新增**的 L4/A合同 todo（并按 R3 重试 00 遗留的 `error`），不重抓 00 已 `fetched`/`empty` 的。
 
 ---
 
@@ -515,6 +515,88 @@ EOF
 
 ---
 
+## Step 6.5：post-thesis eager-fetch（产即收闭环 · 必跑）
+
+> **为什么在这里**：Step 6 刚把 5.3 的 user_todos 写进 topic.yaml。按 `_autofetch_protocol.md` 总规约「谁产 todo 谁当场收」——**00 产的 todo 必须在 00 当场抓**，不甩给用户、不推给 01。本步在 thesis_v0（5.0）**之后**，赌注已锁定，eager-fetch **不污染 bet-first**（bet-first 由 4.5 prescan 前置 + prescan 不碰 todo 担保，与 fetch 置点无关）。
+>
+> 收料协议完全复用 `_autofetch_protocol.md`（R1 全覆盖 / R2 有效尝试 / R3 重试），与 workflow 01 Step 5.5/5.6 同源；闭环键 = **task/文档身份**（`mark_todo_fetch` + `update_user_todo_status`，**禁止 K# 交集自动 done**）。
+>
+> 作用域 = Step 6 写入的全部 `pending` todo（含 `hard`）。唯一与 01 的不同：00 此刻**还没有 roadmap**，收料对象是 `user_todos`（非 `roadmap.material_priority`），report 类 todo 的 ticker 由主 agent 按公司名现场映射。
+
+### 6.5a：结构化报告（年报/季报）→ ticker 直下
+
+todo 若指向可下载的上市公司年报/季报，主 agent **按公司名映射 ticker**（A股 `SSE_600519`/`SZSE_000858`；美股 `NVDA`；港股 `HKEX_02228`；韩 `KRX_006400`；日 `TSE_5019` 或 `EDINET_E00040`），调 `scripts.fetch_report_prism.fetch` / `fetch_many` 下载。一条 todo 含多家公司（如"茅五泸三家年报"）= 多个 ticker 循环 fetch。
+
+```python
+from scripts.fetch_report_prism import fetch
+from prism.scripts.topic import mark_todo_fetch, update_user_todo_status
+
+# 例：todo "下载茅五泸三家 2025 年报 + 2026Q1 季报"
+tickers = {'茅台': 'SSE_600519', '五粮液': 'SZSE_000858', '泸州老窖': 'SZSE_000568'}
+got = []
+for name, tk in tickers.items():
+    try:
+        got.append(fetch(tk, report_type='annual', year=2025, slug=slug, variant=variant))
+        got.append(fetch(tk, report_type='quarterly', year=2026, quarter=1, slug=slug, variant=variant))
+    except Exception as e:
+        print(f'{name} {tk} ✗ {e}')
+# fetch() 自己登记 manifest + 盖 todo status；主 agent 仅在跨多 ticker / 部分到位时补判 done vs in_progress
+mark_todo_fetch(slug, variant, '茅五泸三家 2025 年报', 'fetched', note=f'cninfo {len(got)} 份')
+update_user_todo_status(slug, variant, '茅五泸三家 2025 年报', 'done', covered_by=[m for m in got])
+```
+
+### 6.5b：分析材料（卖方研报/行业数据/政策/科普）→ exa→semantic→WebFetch 阶梯
+
+非报告类 todo（sell-side / industry-research / policy / data / 科普）走 workflow 01 Step 5.6 同一阶梯：
+
+1. **exa 高级搜索** `mcp__exa__web_search_advanced_exa`（`numResults:5`、`enableHighlights:true`、`highlightsMaxCharacters:2000`、`textMaxCharacters:5000`），5 条一批并发；
+2. exa 未满意 → **adapter semantic**：
+   ```bash
+   python3 -m prism.scripts.web_search search "<材料标题关键词>" \
+       --intent semantic --days 365 --max-results 5 --output sidecar \
+       --slug {slug} --variant {variant} \
+       --triggered-by 00-deep-fetch --addresses K1,K2
+   ```
+3. 搜到的权威 URL（domain_tier=`llm-judged-official`）→ `mcp__exa__web_fetch_exa`（`maxCharacters:5000`，可批量）抓全文。
+
+抓到 → 落 `prism/topics/{slug}/inbox/{descriptive_name}.md`（资料只在 topic 层）→ `add_material` 入库 → 按 task 子串 `mark_todo_fetch('fetched')` + `update_user_todo_status('done', covered_by=[mat])`。
+
+### 6.5c：盖戳纪律（照 `_autofetch_protocol.md`，三态必显式盖）
+
+- 抓到入库 → `fetched` → `done`；
+- **有效尝试**确认公开无源 → `empty`（留 `pending` 交用户，触发 empty 硬闸门，**不静默写缺口**）；
+- 工具/网络/限流失败 → `error`（**必须重试，绝不降级**；本轮等不了就先盖 `error` 交 01/R3 下轮重试）。
+- `hard` 也要尝试一次（草根纪要/付费数据多半 `empty`，但 empty 要由**真实结果**证明，不由标签预判——付费卖方深度常有公开转载）。
+- 闭环只走 task 子串（文档身份），**禁止用 K# 交集自动 done**。
+
+### 6.5d：刷新 next_actions + 输出对照表
+
+eager-fetch 跑完，**重设 next_actions**（覆盖 Step 6 的占位），让"你需要做的事"只剩真 `empty`：
+
+```python
+from prism.scripts.topic import set_next_actions, read_topic
+t = read_topic(slug, variant)
+remain = [td['task'] for td in t['user_todos'] if td.get('fetch_status') == 'empty']
+set_next_actions(slug, [
+    f'00 eager-fetch 已抓 N 份入库；剩 {len(remain)} 条公开无源待你决策（waived/will_collect）',
+    '运行 workflow 01-build-roadmap（01 只补抓自己新增的 L4/A合同 todo + 按 R3 重试 00 的 error）',
+], variant)
+```
+
+并在对话输出一张表（同 01 Step 5.6 格式），逐条标 `fetch_status`：
+
+```
+| todo | info_tier | 获取方式 | fetch_status |
+|------|-----------|----------|--------------|
+| 茅五泸 2025 年报+Q1 季报 | half_public | cninfo 直下 | fetched（mat-xxx…） |
+| 卖方拐点研报×3 | public | exa→转载全文 | fetched（mat-xxx） |
+| 飞天高频批价序列 | half_public | exa+semantic 0 命中 | empty（待你决策） |
+```
+
+> **纪律**：跑完 6.5 后，"你需要做的事"里**只应剩真·`empty`**（付费墙/App/草根纪要等有效尝试后确认公开无源的）。任何 `fetched`/能自动下的还躺在用户清单里 = 违产即收，回 6.5a/b 补抓。
+
+---
+
 ## Step 7：告知用户
 
 输出：
@@ -525,10 +607,14 @@ Slug: {slug}
 变体目录: prism/topics/{slug}/{variant}/
 Web 地址: http://localhost:8000/prism/{slug}/{variant}/
 
+00 eager-fetch（Step 6.5）：已抓 {N} 份入库 / 剩 {M} 条公开无源待你
+
 下一步：
-1. 在对话里说「prism 推进 {slug}」继续制定研究路线图
+1. 在对话里说「prism 推进 {slug}」继续制定研究路线图（01 补抓自己新增的 todo）
 2. 或者先收集资料放入 prism/topics/{slug}/inbox/ 后说「prism 推进 {slug}」
 
-你需要做的事：
-{user_todos_list}
+你需要做的事（仅剩真·公开无源 fetch_status=empty）：
+{remaining_empty_todos}
 ```
+
+> 若 {M}=0（00 eager-fetch 全抓到），"你需要做的事"应为空——直接进 01，不伪造待办。

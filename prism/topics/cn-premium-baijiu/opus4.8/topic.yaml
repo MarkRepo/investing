@@ -1,0 +1,172 @@
+slug: cn-premium-baijiu
+display_name: 高端白酒 (Premium Baijiu — 周期拐点)
+type: arena
+created: '2026-06-06T13:32:08.967975+00:00'
+status: active
+stage: 01-roadmap-pending
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 本轮白酒下行周期何时见底，高端白酒赛道（茅五泸+次高端）何时能投、投谁，库存/动销/批价拐点何时确认
+  depth: deep
+  short_name: 高端白酒
+  search_terms:
+  - 白酒批价
+  - 库存动销
+  - 次高端
+  - 周期见底
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap：制定详细研究路线图（含 01 Step 5.6 eager-fetch 把下面 P0 todo 当场抓全文）
+- 收齐 P0 资料后运行 workflow 02-gather-materials → 03-extract → 04-synthesize
+user_todos:
+- task: 下载茅五泸三家 2025 年报 + 2026Q1 季报（营收/净利/毛利率/合同负债/预收款/经营现金流全表）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  - K5
+  source_hint: 巨潮资讯 cninfo / 公司 IR；茅台2025年报PDF prescan已见 moutaichina.com
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 抓全文 2-3 份白酒周期/拐点卖方深度研报（浙商证券筑底2026Q2拐点 / 中信建投杨骥十年一遇大底 / 东吴证券出清筑底）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: 同花顺/Wind/券商研报库；prescan raw 已有 URL
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 采集飞天/普五/国窖高频批价序列（今日酒价/酒价内参，近 6-12 月散瓶+原箱+开票价）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 今日酒价 App / 酒价内参 / 财联社酒价播报
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 渠道库存与动销草根调研（高端+次高端，第三方或卖方草根，交叉验证厂家口径 vs 真实库存月数）
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K3
+  source_hint: 卖方草根纪要 / 渠道调研 / 行业自媒体动销汇总
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 茅五泸+汾酒 估值历史分位数据（PE-TTM/PB/股息率 + 近10年分位）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: Wind/理杏仁/雪球；consensus 估值锚（A合同必收）
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 次高端逐家 2025 年报 + 动销/库存（汾酒青花/洋河梦之蓝/古井古20/舍得/口子窖）判弹性 vs 陷阱
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: 巨潮 cninfo；口子窖净利预降50-60% prescan已见
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 茅五泸 分红/回购/资本配置史（近5年分红率、注销式回购、增持，判管理层股东回报取向）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 公司公告；mgmt-capital-alloc（A合同必收）
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 消费税改革对白酒影响的卖方专题测算（征收环节后移/加税对厂家+渠道净利冲击幅度）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 券商食饮/财税专题；prescan已见界面/普华永道PDF
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 2012-2015 轮白酒调整复盘（批价/估值/各家修复路径，作历史镜鉴）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 卖方复盘报告；historical-mirror（A合同必收）
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 高端白酒价格体系与批价机理科普（批价/打款价/开票价/倒挂 + 库存周期机制，喂 primer 背景）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 行业科普/卖方入门；primer 入门目标 1/3/7 背景料
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 0
+  last_updated: '2026-06-06T13:44:54.308427+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-06T13:44:54.308563+00:00'
+    summary: 命门1=拐点真伪(2026Q1降幅收窄是真企稳还是压货,中); 命门2=批价可持续性(飞天/普五底是真动销还是控货撑出,低); 命门3=alpha归属(高端龙头vs次高端陷阱,中);
+      消费税改革=外生尾部风险(K4)
+    convergence_status: open
+thesis:
+  current_version: 0
+  last_updated: '2026-06-06T13:43:00.395862+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-06T13:43:00.396011+00:00'
+    summary: 本轮白酒下行已在2026Q1出现可量化"降幅骤收窄"筑底信号，高端龙头(茅五泸)周期大底大概率已现/临近；但飞天批价二次探底与消费税改革落地是两道未拆的雷。分阶段左侧布局龙头(茅台>泸州/五粮液)、暂避次高端弹性陷阱。强度6.5/10
+    prescan_status: full
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-06T13:45:43.640863+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    - peer-comparison-financials
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0

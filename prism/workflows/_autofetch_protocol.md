@@ -1,6 +1,6 @@
 # 自动获取协议（auto-fetch 规约 · R2 有效尝试判定）
 
-> 被 `01-build-roadmap.md`(Step 5.6)、`02-gather-materials.md`(Step 5.7)、`03-extract-findings.md`(Step 2.4/2.4b)、`05-critic-review.md`(Step 6.5)共享引用。
+> 被 `00-research-topic.md`(Step 6.5)、`01-build-roadmap.md`(Step 5.6)、`02-gather-materials.md`(Step 5.7)、`03-extract-findings.md`(Step 2.4/2.4b)、`05-critic-review.md`(Step 6.5)共享引用。
 >
 > **一句话**：每个产 todo 的点，浮给用户前必须先**有效尝试**一次自动抓；留不留 user-todo、是否要重试，由**尝试的真实结果**决定，不由 tier/info_tier 标签事前 gate。
 
@@ -10,7 +10,7 @@
 
 > **谁产 todo，谁当场收。** 任一阶段写下 todo，**立刻**在同一阶段跑 auto-fetch（R1/R2/R3）盖 `fetch_status`：抓到→`done`、确认公开无源→留 `pending` 交用户（empty 硬闸门）、工具失败→重试。
 >
-> - **下游阶段只消费已入库的料，绝不替上游补抓。** 00 产的 todo 由紧接的 01（专职收料步）当场抓完；01/03/05/07 产的 todo 在本阶段当场收。
+> - **下游阶段只消费已入库的料，绝不替上游补抓。** 00 产的 todo 在 **00 Step 6.5** 当场抓（todo 产在 thesis 之后、赌注已锁，eager-fetch 不破 bet-first）；01/03/05/07 产的 todo 在本阶段当场收。01 只补抓自己 Step 2/3 新增的 todo + 按 R3 重试上游遗留的 `error`，不重抓已 `fetched`/`empty` 的。
 > - **prescan（事实校准）永不碰 todo 闭环。** prescan 只入库校准事实（标 `addresses=['scope']`）+ funnel + 写 log，**不产生、不闭环任何 todo**。
 > - **闭环只走文档身份**（见下「闭环键」），脚本侧**没有**任何 K# 自动撮合（旧 `auto_resolve_todos` / `suggest_*coverage*` 已彻底删除）。
 

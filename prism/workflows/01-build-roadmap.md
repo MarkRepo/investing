@@ -165,7 +165,7 @@ l4_hunting:
 > **收料不再只盯 K#**。两条轴一起组织资料优先级：
 > - **A 轴（输入合同地板 · type 必收）**：照 `_input_contract.md` 本 type 的类目，**逐项确认有 todo 在收**。尤其三项真·欠供必须显式排期（旧流程从不主动收，是产出质量天花板）：
 >   - `mgmt-capital-alloc` 管理层 track record + 资本配置史（年报/proxy/治理）→ 喂环①
->   - `consensus` 卖方一致预期/目标价模型 → 喂环②（A 股前瞻 consensus 多在付费墙后 → 可降级为 `half_public` 用户 todo + 从卖方研报抽，不假设自动拉）
+>   - `consensus` 卖方一致预期/目标价模型 → 喂环②（建 todo 时标 `info_tier: half_public`——**这只是努力顺序提示,不是预授权降级用户**。consensus 不走 financial_data API 自动拉,但**仍须按 R1 在 Step 5.6/5.8 自动抓**：卖方 PE-G/估值表深度、财经媒体一致预期汇总常有公开转载,exa 多能命中;只有有效尝试 `empty` 才归用户 todo。**禁止在 Step 3 就把它写成"用户去收"**）
 >   - `historical-mirror` / `industry-mirror` / `arena-mirror` 历史失败镜鉴（由 Step 4 类比落成）→ 喂环⑤
 >   - 结构化项（`financial-arc` / `valuation-anchor` / peer 财务）由 financial_data/market_data 在合成期自动拉，给 ticker 即可，不必单列收料 todo（gap ring 轴标 api_pending 非红）。
 > - **B 轴（命门靶点）**：照 `decomposition_v0.md` 每环 B 靶点收料，**低置信度命门优先砸料**（对冲薄拆解风险）。
@@ -327,7 +327,7 @@ EOF
 >
 > 如果跳过本步直接把这些写成 user_todos，等于把**本可以自动完成的工作甩给用户**。
 >
-> **产即收衔接**：本步是 00/01 产的 todo 的**专职 eager-fetch 收料点**——00 Step 5.3 产的 todo + 01 Step 3 新增的 todo 都在这里当场抓（产即收：00→01 同一收料缝，下游不替它补抓）。闭环按**文档身份**盖戳（`mark_todo_fetch` + `update_user_todo_status`），**不靠 K# 撮合**。
+> **产即收衔接**：本步抓 **01 自己 Step 2/3 新增**的 todo（L4 狩猎 / A合同必收类目）——00 产的 todo 已在 **00 Step 6.5** 当场抓过（产即收：谁产谁收），这里**只对 00 遗留的 `error` 按 R3 重试**，不重抓已 `fetched`/`empty` 的。闭环按**文档身份**盖戳（`mark_todo_fetch` + `update_user_todo_status`），**不靠 K# 撮合**。
 >
 > **硬规则（auto-fetch 规约 R1/R2，判定与盖戳见 [`_autofetch_protocol.md`](_autofetch_protocol.md)）**：
 > - 作用域 = **tier1 + tier2 + tier3 全部、所有 info_tier**（仅排除 Step 5.5 已处理的 `annual-report`/`quarterly-report`）。`info_tier` 只决定**努力顺序/强度**（hard 先上 exa advanced + 权威 URL WebFetch），**不再作为跳过门槛**。
@@ -441,6 +441,35 @@ else:
 ```
 
 如果非 0 退出，**回 Step 2/3 修 roadmap**，再回来跑 Step 5.7。
+
+---
+
+## Step 5.8：auto-fetch 全覆盖硬闸门（**未通过不得进 Step 6 / 不得 set_stage**）
+
+> **为什么必须做**：Step 5.6 的「产即收 + R1 全覆盖」此前只是散文纪律（「不要跳过本步」），没有像 5.7 coverage 那样的机器卡口——主 agent 一旦漏抓某条 todo（尤其凭 `info_tier` 先入为主跳过 half_public/hard），stage 仍会静默推进到 02，下游不替它补抓（产即收的下游不补抓原则），缺口就永久蛰伏。本闸门把已有的 `pending_unfetched_todos`（R3 清单）接成 advance 前的硬断言，精确拦截「从未尝试就推进」。
+
+```bash
+python3 -c "
+from prism.scripts.topic import pending_unfetched_todos
+p = pending_unfetched_todos('{slug}', '{variant}')
+unattempted = [t for t in p if t.get('fetch_status') == 'unattempted']
+errored     = [t for t in p if t.get('fetch_status') == 'error']
+if unattempted:
+    print('❌ 产即收违规：以下 todo 从未尝试过抓取（fetch_status=unattempted）——')
+    print('   info_tier 只决定努力顺序，不是跳过门槛（auto-fetch 规约 R1）。回 Step 5.6 逐条跑阶梯并 mark_todo_fetch：')
+    for t in unattempted:
+        print(f'   - [{t.get(\"info_tier\")}] {t[\"task\"][:60]}')
+    raise SystemExit(1)
+if errored:
+    # error 是 transient（providers exhausted / 网络）：本轮可带过，交 02/03 的 R3 下轮重试；但要响铃可见，不静默
+    print('⚠ 以下 todo 抓取失败（fetch_status=error），按退避梯重试；本轮带过将由 02/03 的 R3 续抓：')
+    for t in errored:
+        print(f'   - {t[\"task\"][:60]}')
+print('✓ auto-fetch 全覆盖通过：无 unattempted（每条 todo 都已有效尝试过）')
+"
+```
+
+如果非 0 退出（有 `unattempted`），**回 Step 5.6 把它们逐条抓完 / 盖 `empty` / 盖 `error`**，再回来跑 Step 5.8。**`unattempted` 清零是进 Step 6 的前置条件。**
 
 ---
 

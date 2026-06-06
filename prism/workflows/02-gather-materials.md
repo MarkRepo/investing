@@ -309,16 +309,24 @@ slug = '{slug}'
 variant = '{variant}'
 counts = material_count(slug, variant)
 
-# auto-fetch 规约守卫：升 03 前确认无 fetch_status='error' 项（transient 失败必须先重试，
-# 不带病进 03）。有 error → 回 Step 5.7 重试，不要升 stage。
-_err = [t for t in pending_unfetched_todos(slug, variant) if t.get('fetch_status') == 'error']
+# auto-fetch 规约守卫（升 03 前硬闸门）：pending_unfetched_todos 同时含 unattempted + error，
+# 两者都必须拦——unattempted=产即收违规(根本没试，info_tier 不是跳过门槛 R1)，error=transient 必先重试。
+# 只过滤 error 会让"从未尝试"的 todo 静默溜过 02→03（与 01 Step 5.8 同一类洞）。
+_pending = pending_unfetched_todos(slug, variant)
+_unatt = [t for t in _pending if t.get('fetch_status') == 'unattempted']
+_err   = [t for t in _pending if t.get('fetch_status') == 'error']
+_block = _unatt + _err
+if _unatt:
+    print(f'⛔ 产即收违规：{len(_unatt)} 条从未尝试(unattempted) → 回 Step 5.7 逐条跑阶梯并 mark_todo_fetch，勿升 03：')
+    for t in _unatt:
+        print(f'   - [{t.get("info_tier")}] {t["task"][:70]}')
 if _err:
     print(f'⛔ {len(_err)} 条 fetch_status=error 未重试 → 回 Step 5.7，勿升 03：')
     for t in _err:
         print('   -', t['task'][:70])
 
-# stage 升级条件：有可处理未处理资料 → 03-extracting（修 F14：排除 Role α prescan web 料）
-set_stage(slug, '03-extracting' if counts['unprocessed_actionable'] > 0 and not _err else '02-gather-materials', variant)
+# stage 升级条件：有可处理未处理资料 且 无 unattempted/error 阻断 → 03-extracting（修 F14：排除 Role α prescan web 料）
+set_stage(slug, '03-extracting' if counts['unprocessed_actionable'] > 0 and not _block else '02-gather-materials', variant)
 
 # next_actions 是给 LLM 看的系统建议（不污染 user_todos）
 set_next_actions(slug, [
