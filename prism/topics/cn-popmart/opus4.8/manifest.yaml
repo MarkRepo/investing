@@ -1,0 +1,995 @@
+slug: cn-popmart
+variant: opus4.8
+updated: '2026-06-06T04:23:41.522811+00:00'
+materials:
+- id: mat-6ca844
+  filename: 2026-06-05_泡泡玛特2025年营收首破300亿元-海外收入占比超四成---东方财富.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.684728+00:00'
+  processed: false
+  notes: query='泡泡玛特 2025 年报 营收 净利润 海外收入占比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 海外收入占比 超过 国内 2025
+    url: https://wap.eastmoney.com/a/202603253684231824.html
+    domain: wap.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:39.171088+00:00'
+    stale_at: '2026-07-05T23:23:39.171088+00:00'
+    expire_at: '2026-09-03T23:23:39.171088+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Labubu THE MONSTERS 收入占比 2025 第一大IP 集中度
+    - 泡泡玛特 2025 年报 营收 净利润 海外收入占比
+- id: mat-2c3266
+  filename: 2026-06-05_泡泡玛特2025年营收首破300亿元-海外收入占比超四成---新京报.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.687210+00:00'
+  processed: false
+  notes: query='泡泡玛特 2025 年报 营收 净利润 海外收入占比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 海外收入占比 超过 国内 2025
+    url: https://m.bjnews.com.cn/detail/1774430105129383.html
+    domain: m.bjnews.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:39.196865+00:00'
+    stale_at: '2026-07-05T23:23:39.196865+00:00'
+    expire_at: '2026-09-03T23:23:39.196865+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 泡泡玛特 2025 年报 营收 净利润 海外收入占比
+- id: mat-8e4c75
+  filename: 2026-06-05_消费insights-泡泡玛特中报点评-时间的玩具.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.690820+00:00'
+  processed: false
+  notes: query='泡泡玛特 2025 年报 营收 净利润 海外收入占比'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 2025 年报 营收 净利润 海外收入占比
+    url: https://wallstreetcn.com/articles/3751231
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.689627+00:00'
+    stale_at: '2026-07-05T23:23:38.689627+00:00'
+    expire_at: '2026-09-03T23:23:38.689627+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4ed6bb
+  filename: 2026-06-05_pdf-泡泡玛特-9992.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.695018+00:00'
+  processed: false
+  notes: query='泡泡玛特 2025 年报 营收 净利润 海外收入占比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 海外收入占比 超过 国内 2025
+    url: https://pdf.dfcfw.com/pdf/H3_AP202502281643602911_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:39.223513+00:00'
+    stale_at: '2026-07-05T23:23:39.223513+00:00'
+    expire_at: '2026-09-03T23:23:39.223513+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 泡泡玛特 2025 半年报 营收 同比增长 海外占比
+    - 泡泡玛特 2025 年报 营收 净利润 海外收入占比
+- id: mat-e9b8b4
+  filename: 2026-06-05_泡泡玛特-业绩超预期看好2025年海外成长---新浪财经.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.699745+00:00'
+  processed: false
+  notes: query='泡泡玛特 2025 年报 营收 净利润 海外收入占比'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 2025 年报 营收 净利润 海外收入占比
+    url: https://finance.sina.com.cn/stock/relnews/hk/2025-03-30/doc-inermrrs2141892.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.697969+00:00'
+    stale_at: '2026-07-05T23:23:38.697969+00:00'
+    expire_at: '2026-09-03T23:23:38.697969+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c48914
+  filename: 2026-06-05_泡泡玛特三季度收入增超2-45倍-海外营收增超3-65倍---新浪财经.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.707883+00:00'
+  processed: false
+  notes: query='泡泡玛特 2025 半年报 营收 同比增长 海外占比'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 2025 半年报 营收 同比增长 海外占比
+    url: https://finance.sina.com.cn/jjxw/2025-10-21/doc-infusekm8863550.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.705737+00:00'
+    stale_at: '2026-07-05T23:23:38.705737+00:00'
+    expire_at: '2026-09-03T23:23:38.705737+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d10347
+  filename: 2026-06-05_泡泡玛特2025年第一季度业绩分析报告一-核心财务指标---雪球.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.714913+00:00'
+  processed: false
+  notes: query='泡泡玛特 2025 半年报 营收 同比增长 海外占比'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 2025 半年报 营收 同比增长 海外占比
+    url: https://xueqiu.com/1290568231/334056409
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.712372+00:00'
+    stale_at: '2026-07-05T23:23:38.712372+00:00'
+    expire_at: '2026-09-03T23:23:38.712372+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e4f086
+  filename: 2026-06-05_泡泡瑪特-9992---investing-com-香港--股市報價-財經新聞.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.734157+00:00'
+  processed: false
+  notes: query='泡泡玛特 股价 市值 港元 2026 09992' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 股价 市值 港元 2026 09992
+    url: https://hk.investing.com/equities/pop-mart-international-group
+    domain: hk.investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:38.731416+00:00'
+    stale_at: '2026-07-05T23:23:38.731416+00:00'
+    expire_at: '2026-09-03T23:23:38.731416+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dcc028
+  filename: 2026-06-05_泡泡玛特-09992-新闻资讯-新浪港股免费实时行情.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.742276+00:00'
+  processed: false
+  notes: query='泡泡玛特 股价 市值 港元 2026 09992'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 股价 市值 港元 2026 09992
+    url: http://stock.finance.sina.com.cn/hkstock/news/09992.html
+    domain: stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.739220+00:00'
+    stale_at: '2026-07-05T23:23:38.739220+00:00'
+    expire_at: '2026-09-03T23:23:38.739220+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ad7b60
+  filename: 2026-06-05_泡泡玛特-09992-股票股价---雪球.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.751894+00:00'
+  processed: false
+  notes: query='泡泡玛特 股价 市值 港元 2026 09992'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 股价 市值 港元 2026 09992
+    url: https://xueqiu.com/S/09992
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.748394+00:00'
+    stale_at: '2026-07-05T23:23:38.748394+00:00'
+    expire_at: '2026-09-03T23:23:38.748394+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-97dd45
+  filename: 2026-06-05_泡泡瑪特國際集團有限公司-9992---hkex.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.761954+00:00'
+  processed: false
+  notes: query='泡泡玛特 股价 市值 港元 2026 09992'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 股价 市值 港元 2026 09992
+    url: https://www.hkex.com.hk/Market-Data/Securities-Prices/Equities/Equities-Quote?sym=9992&sc_lang=zh-HK
+    domain: hkex.com.hk
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.758150+00:00'
+    stale_at: '2026-07-05T23:23:38.758150+00:00'
+    expire_at: '2026-09-03T23:23:38.758150+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-eb1e5a
+  filename: 2026-06-05_泡泡玛特-9992-hk-投资深度分析报告---知乎专栏.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.778530+00:00'
+  processed: false
+  notes: query='泡泡玛特 PE PS 估值 一致预期 目标价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 PE PS 估值 一致预期 目标价 2026
+    url: https://zhuanlan.zhihu.com/p/2027848220726797988
+    domain: zhuanlan.zhihu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:38.774459+00:00'
+    stale_at: '2026-07-05T23:23:38.774459+00:00'
+    expire_at: '2026-09-03T23:23:38.774459+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-78c3de
+  filename: 2026-06-05_泡泡瑪特-9992-目標價最新2026-港股目標價至hk-372-業績.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.790789+00:00'
+  processed: false
+  notes: query='泡泡玛特 PE PS 估值 一致预期 目标价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 PE PS 估值 一致预期 目标价 2026
+    url: https://talkmoney.com.hk/%E6%B3%A1%E6%B3%A1%E7%91%AA%E7%89%B9%E7%9B%AE%E6%A8%99%E5%83%B9
+    domain: talkmoney.com.hk
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:38.786269+00:00'
+    stale_at: '2026-07-05T23:23:38.786269+00:00'
+    expire_at: '2026-09-03T23:23:38.786269+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-734960
+  filename: 2026-06-05_新消費股-泡泡瑪特業績指引失色-兩日暴跌三成-多家大行齊削目標價最多四成.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.803646+00:00'
+  processed: false
+  notes: query='泡泡玛特 PE PS 估值 一致预期 目标价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 PE PS 估值 一致预期 目标价 2026
+    url: https://hk.finance.yahoo.com/news/%E6%96%B0%E6%B6%88%E8%B2%BB%E8%82%A1-%E6%B3%A1%E6%B3%A1%E7%91%AA%E7%89%B9%E6%A5%AD%E7%B8%BE%E6%8C%87%E5%BC%95%E5%A4%B1%E8%89%B2-%E5%85%A9%E6%97%A5%E6%9A%B4%E8%B7%8C%E4%B8%89%E6%88%90-%E5%A4%9A%E5%AE%B6%E5%A4%A7%E8%A1%8C%E9%BD%8A%E5%89%8A%E7%9B%AE%E6%A8%99%E5%83%B9%E6%9C%80%E5%A4%9A%E5%9B%9B%E6%88%90-093946114.html
+    domain: hk.finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:38.798850+00:00'
+    stale_at: '2026-07-05T23:23:38.798850+00:00'
+    expire_at: '2026-09-03T23:23:38.798850+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7d1b17
+  filename: 2026-06-05_泡泡玛特-从340到149-pe回到14倍-历史踏入了同一条河流---雪球.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.819335+00:00'
+  processed: false
+  notes: query='泡泡玛特 PE PS 估值 一致预期 目标价 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 PE PS 估值 一致预期 目标价 2026
+    url: https://xueqiu.com/9543822415/381690172
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.813456+00:00'
+    stale_at: '2026-07-05T23:23:38.813456+00:00'
+    expire_at: '2026-09-03T23:23:38.813456+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-43af22
+  filename: 2026-06-05_泡泡玛特获机构上调目标价-公司股价应声涨超6.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.837632+00:00'
+  processed: false
+  notes: query='泡泡玛特 PE PS 估值 一致预期 目标价 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 PE PS 估值 一致预期 目标价 2026
+    url: https://www.cls.cn/detail/2171045
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.831140+00:00'
+    stale_at: '2026-07-05T23:23:38.831140+00:00'
+    expire_at: '2026-09-03T23:23:38.831140+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9a26d4
+  filename: 2026-06-05_讨论详情--雪球.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.862828+00:00'
+  processed: false
+  notes: query='Labubu THE MONSTERS 收入占比 2025 第一大IP 集中度'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Labubu THE MONSTERS 收入占比 2025 第一大IP 集中度
+    url: https://xueqiu.com/5638736161/383584377/402614428
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.856417+00:00'
+    stale_at: '2026-07-05T23:23:38.856417+00:00'
+    expire_at: '2026-09-03T23:23:38.856417+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6d0544
+  filename: 2026-06-05_泡泡玛特无需下一个labubu-cbndata.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.879992+00:00'
+  processed: false
+  notes: query='Labubu THE MONSTERS 收入占比 2025 第一大IP 集中度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Labubu THE MONSTERS 收入占比 2025 第一大IP 集中度
+    url: https://cbndata.com/information/295164
+    domain: cbndata.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:38.873815+00:00'
+    stale_at: '2026-07-05T23:23:38.873815+00:00'
+    expire_at: '2026-09-03T23:23:38.873815+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d78bd3
+  filename: 2026-06-05_泡泡玛特2025年营收创新高-股价跳水.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.898493+00:00'
+  processed: false
+  notes: query='Labubu THE MONSTERS 收入占比 2025 第一大IP 集中度'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Labubu THE MONSTERS 收入占比 2025 第一大IP 集中度
+    url: https://www.stcn.com/article/detail/3697512.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.891112+00:00'
+    stale_at: '2026-07-05T23:23:38.891112+00:00'
+    expire_at: '2026-09-03T23:23:38.891112+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-367433
+  filename: 2026-06-05_国产ip如何从爆红到长红-拉布布研究奢侈品逻辑要上价值.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.945206+00:00'
+  processed: false
+  notes: query='Labubu 热度 2026 退烧 持续 二手价格 得物 溢价'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Labubu 热度 2026 退烧 持续 二手价格 得物 溢价
+    url: https://m.mp.oeeee.com/a/BAAFRD0000202601091506792.html
+    domain: m.mp.oeeee.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.938334+00:00'
+    stale_at: '2026-07-05T23:23:38.938334+00:00'
+    expire_at: '2026-09-03T23:23:38.938334+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f637d1
+  filename: 2026-06-05_labubu二手价降温-星星人接棒成新顶流-它为何如此受欢迎---新闻.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.965142+00:00'
+  processed: false
+  notes: query='Labubu 热度 2026 退烧 持续 二手价格 得物 溢价' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Labubu 热度 2026 退烧 持续 二手价格 得物 溢价
+    url: https://news.ycwb.com/ikimvkjtih/content_53924493.htm
+    domain: news.ycwb.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:38.957959+00:00'
+    stale_at: '2026-07-05T23:23:38.957959+00:00'
+    expire_at: '2026-09-03T23:23:38.957959+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e4a0d6
+  filename: 2026-06-05_拉布布二手价全面回落-潮玩市场迎来理性回归---北京日报.md
+  source_type: web-search
+  added: '2026-06-05T23:23:38.986281+00:00'
+  processed: false
+  notes: query='Labubu 热度 2026 退烧 持续 二手价格 得物 溢价' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Labubu 热度 2026 退烧 持续 二手价格 得物 溢价
+    url: https://xinwen.bjd.com.cn/content/s68ca855de4b0221b9becff3a.html
+    domain: xinwen.bjd.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:38.977796+00:00'
+    stale_at: '2026-07-05T23:23:38.977796+00:00'
+    expire_at: '2026-09-03T23:23:38.977796+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5295d4
+  filename: 2026-06-05_labubu盲盒二手价跳水黄牛停收-泡泡玛特股价距年内高点跌超40.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.007149+00:00'
+  processed: false
+  notes: query='Labubu 热度 2026 退烧 持续 二手价格 得物 溢价'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Labubu 热度 2026 退烧 持续 二手价格 得物 溢价
+    url: https://www.stcn.com/article/detail/3564080.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:38.999137+00:00'
+    stale_at: '2026-07-05T23:23:38.999137+00:00'
+    expire_at: '2026-09-03T23:23:38.999137+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4f1d48
+  filename: 2026-06-05_泡泡玛特与labubu热潮---caixin.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.039123+00:00'
+  processed: false
+  notes: query='泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长
+    url: https://deepview.caixin.com/topic/BQ02.000003716.html
+    domain: deepview.caixin.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.030851+00:00'
+    stale_at: '2026-07-05T23:23:39.030851+00:00'
+    expire_at: '2026-09-03T23:23:39.030851+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a1492f
+  filename: 2026-06-05_pdf-泡泡玛特-海外拓店加速-再造增长空间.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.061510+00:00'
+  processed: false
+  notes: query='泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长
+    url: https://pdf.dfcfw.com/pdf/H3_AP202310261603990456_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:39.053085+00:00'
+    stale_at: '2026-07-05T23:23:39.053085+00:00'
+    expire_at: '2026-09-03T23:23:39.053085+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-213a2e
+  filename: 2026-06-05_泡泡玛特-成为世界的泡泡玛特---维科号v.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.084749+00:00'
+  processed: false
+  notes: query='泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长
+    url: https://mp.ofweek.com/Internet/a856714893597
+    domain: mp.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:39.076049+00:00'
+    stale_at: '2026-07-05T23:23:39.076049+00:00'
+    expire_at: '2026-09-03T23:23:39.076049+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5d9af7
+  filename: 2026-06-05_泡泡玛特去年营收翻番-东南亚增速最快-管理层披露未来海外市场怎么做.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.108570+00:00'
+  processed: false
+  notes: query='泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长
+    url: https://stcn.com/article/detail/1614614.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.099492+00:00'
+    stale_at: '2026-07-05T23:23:39.099492+00:00'
+    expire_at: '2026-09-03T23:23:39.099492+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-68a490
+  filename: 2026-06-05_泡泡玛特电话会-预期2025年销售同比增速50-以上-欧美市场是今年重点区域.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.133345+00:00'
+  processed: false
+  notes: query='泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长
+    url: https://wallstreetcn.com/articles/3743909
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.123836+00:00'
+    stale_at: '2026-07-05T23:23:39.123836+00:00'
+    expire_at: '2026-09-03T23:23:39.123836+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c3c81d
+  filename: 2026-06-05_labubu之外-泡泡玛特的系统能力有哪些变化-cbndata.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.262447+00:00'
+  processed: false
+  notes: query='泡泡玛特 新IP 2025 2026 Labubu之外 增长接力 CRYBABY' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 新IP 2025 2026 Labubu之外 增长接力 CRYBABY
+    url: https://m.cbndata.com/information/295144
+    domain: m.cbndata.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:39.252408+00:00'
+    stale_at: '2026-07-05T23:23:39.252408+00:00'
+    expire_at: '2026-09-03T23:23:39.252408+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1fd050
+  filename: 2026-06-05_2026年一季度labubu销售回落-泡泡玛特首席运营官司德---证券时报.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.289829+00:00'
+  processed: false
+  notes: query='泡泡玛特 新IP 2025 2026 Labubu之外 增长接力 CRYBABY'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 新IP 2025 2026 Labubu之外 增长接力 CRYBABY
+    url: https://www.stcn.com/article/detail/3908912.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.279136+00:00'
+    stale_at: '2026-07-05T23:23:39.279136+00:00'
+    expire_at: '2026-09-03T23:23:39.279136+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-222ee3
+  filename: 2026-06-05_力推新ip-泡泡玛特也吃劲儿-钛媒体官方网站.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.318205+00:00'
+  processed: false
+  notes: query='泡泡玛特 新IP 2025 2026 Labubu之外 增长接力 CRYBABY'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 新IP 2025 2026 Labubu之外 增长接力 CRYBABY
+    url: https://www.tmtpost.com/7925087.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.307874+00:00'
+    stale_at: '2026-07-05T23:23:39.307874+00:00'
+    expire_at: '2026-09-03T23:23:39.307874+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c7e14a
+  filename: 2026-06-05_泡泡玛特千亿反击战-王宁给labubu踩了脚刹车-36氪.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.360061+00:00'
+  processed: false
+  notes: query='泡泡玛特 回购 分红 王宁 减持 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 回购 分红 王宁 减持 2025 2026
+    url: https://m.36kr.com/p/3698271652589443
+    domain: m.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.349339+00:00'
+    stale_at: '2026-07-05T23:23:39.349339+00:00'
+    expire_at: '2026-09-03T23:23:39.349339+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-25c1f7
+  filename: 2026-06-05_业绩高增股价暴跌-泡泡玛特定调-休整-增长天花板到了吗.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.389678+00:00'
+  processed: false
+  notes: query='泡泡玛特 回购 分红 王宁 减持 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 回购 分红 王宁 减持 2025 2026
+    url: https://m.thepaper.cn/newsDetail_forward_32843105
+    domain: m.thepaper.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:39.378450+00:00'
+    stale_at: '2026-07-05T23:23:39.378450+00:00'
+    expire_at: '2026-09-03T23:23:39.378450+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-520bcd
+  filename: 2026-06-05_泡泡玛特ab面-爆款狂欢与资本暗流.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.420245+00:00'
+  processed: false
+  notes: query='泡泡玛特 回购 分红 王宁 减持 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 回购 分红 王宁 减持 2025 2026
+    url: https://www.stcn.com/article/detail/2097045.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.408558+00:00'
+    stale_at: '2026-07-05T23:23:39.408558+00:00'
+    expire_at: '2026-09-03T23:23:39.408558+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fac663
+  filename: 2026-06-05_泡泡玛特股价暴涨后创始人王宁减持高管集体套现15亿元---财联社.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.454003+00:00'
+  processed: false
+  notes: query='泡泡玛特 回购 分红 王宁 减持 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 回购 分红 王宁 减持 2025 2026
+    url: https://www.cls.cn/detail/1842771
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.441435+00:00'
+    stale_at: '2026-07-05T23:23:39.441435+00:00'
+    expire_at: '2026-09-03T23:23:39.441435+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5bc544
+  filename: 2026-06-05_中国保护知识产权网.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.506607+00:00'
+  processed: false
+  notes: query='泡泡玛特 盲盒监管 美国 关税 仿冒 风险 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 盲盒监管 美国 关税 仿冒 风险 2025 2026
+    url: https://ipr.mofcom.gov.cn/article/gjxw/zfxd/mz/202511/1993778.html
+    domain: ipr.mofcom.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.493096+00:00'
+    stale_at: '2026-07-05T23:23:39.493096+00:00'
+    expire_at: '2026-09-03T23:23:39.493096+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9c16f3
+  filename: 2026-06-05_泡泡玛特ab面-爆款狂欢与资本暗流---21经济网.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.543083+00:00'
+  processed: false
+  notes: query='泡泡玛特 盲盒监管 美国 关税 仿冒 风险 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 盲盒监管 美国 关税 仿冒 风险 2025 2026
+    url: https://www.21jingji.com/article/20250618/1f73f744ea4cc0ed10c149ed9e85b5c1.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.529571+00:00'
+    stale_at: '2026-07-05T23:23:39.529571+00:00'
+    expire_at: '2026-09-03T23:23:39.529571+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a27245
+  filename: 2026-06-05_泡泡玛特-09992-就热点的关税问题请deepseek答了疑---雪球.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.579113+00:00'
+  processed: false
+  notes: query='泡泡玛特 盲盒监管 美国 关税 仿冒 风险 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 盲盒监管 美国 关税 仿冒 风险 2025 2026
+    url: https://xueqiu.com/9293965760/329856657
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.565457+00:00'
+    stale_at: '2026-07-05T23:23:39.565457+00:00'
+    expire_at: '2026-09-03T23:23:39.565457+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0aabe5
+  filename: 2026-06-05_特朗普发出加税威胁-labubu却乐坏了---36氪.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.617390+00:00'
+  processed: false
+  notes: query='泡泡玛特 盲盒监管 美国 关税 仿冒 风险 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 盲盒监管 美国 关税 仿冒 风险 2025 2026
+    url: https://eu.36kr.com/zh/p/3507106562038658
+    domain: eu.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.603452+00:00'
+    stale_at: '2026-07-05T23:23:39.603452+00:00'
+    expire_at: '2026-09-03T23:23:39.603452+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a9447b
+  filename: 2026-06-05_泡泡瑪特-9992-hk-股價-新聞-報價和記錄---yahoo-財經.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.675211+00:00'
+  processed: false
+  notes: query='泡泡玛特 最新公告 业绩 2026 09992' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泡泡玛特 最新公告 业绩 2026 09992
+    url: https://hk.finance.yahoo.com/quote/9992.HK
+    domain: hk.finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-05T23:23:39.660649+00:00'
+    stale_at: '2026-07-05T23:23:39.660649+00:00'
+    expire_at: '2026-09-03T23:23:39.660649+00:00'
+    triggered_by: 00-prescan
+- id: mat-9c125d
+  filename: 2026-06-05_shares-of-labubu-maker-pop-mart-plunge-after-repor.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.735675+00:00'
+  processed: false
+  notes: query='Pop Mart Labubu global expansion revenue 2025 investment'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Pop Mart Labubu global expansion revenue 2025 investment
+    url: https://www.reuters.com/world/china/labubu-maker-pop-mart-meets-2025-revenue-expectations-2026-03-25
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.720852+00:00'
+    stale_at: '2026-07-05T23:23:39.720852+00:00'
+    expire_at: '2026-09-03T23:23:39.720852+00:00'
+    triggered_by: 00-prescan
+- id: mat-432843
+  filename: 2026-06-05_pop-mart-s-viral-collectibles-to-fuel-overseas-rev.md
+  source_type: web-search
+  added: '2026-06-05T23:23:39.775631+00:00'
+  processed: false
+  notes: query='Pop Mart Labubu global expansion revenue 2025 investment'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Pop Mart Labubu global expansion revenue 2025 investment
+    url: https://www.spglobal.com/market-intelligence/en/news-insights/research/pop-mart-s-viral-collectibles-to-fuel-overseas-revenue-surge
+    domain: spglobal.com
+    domain_tier: whitelist
+    searched_at: '2026-06-05T23:23:39.760279+00:00'
+    stale_at: '2026-07-05T23:23:39.760279+00:00'
+    expire_at: '2026-09-03T23:23:39.760279+00:00'
+    triggered_by: 00-prescan
+- id: mat-95ff92
+  filename: 2025_HK09992_annual_2026-04-21_POPMART.pdf
+  source_type: annual-report
+  added: '2026-06-06T04:15:29.295559+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — POP MART
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  - K6
+- id: mat-540b26
+  filename: 2025_HK09992_semi_2025-09-25_POPMART.pdf
+  source_type: quarterly-report
+  added: '2026-06-06T04:15:43.573067+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — POP MART
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K1
+  - K3
+  - K5
+- id: mat-4f201b
+  filename: 2026-06-06_DeutscheBank-fashion-fatigue-Sanrio-mirror.md
+  source_type: sell-side-note
+  added: '2026-06-06T04:19:36.783589+00:00'
+  processed: false
+  notes: 德银下调Hold,volume trap+Sanrio Hello Kitty双周期镜鉴+海外单店坪效对照
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  rings:
+  - historical-mirror
+  - valuation-anchor
+  confidence: 0.9
+- id: mat-c0cbec
+  filename: 2026-06-06_FY2025-IP完整拆分-毛绒过半-会员复购.md
+  source_type: sell-side-note
+  added: '2026-06-06T04:19:36.808737+00:00'
+  processed: false
+  notes: FY2025年报IP完整拆分(Labubu占比38.1%升)+毛绒过半+会员复购55.7%+存货周转123天
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  confidence: 0.95
+- id: mat-5660a0
+  filename: 2026-06-06_卖方一致预期-中金大摩德银花旗CGSI目标价.md
+  source_type: sell-side-note
+  added: '2026-06-06T04:19:36.833340+00:00'
+  processed: false
+  notes: 中金/大摩/德银/花旗/CGSI目标价与经调净利预测合集,中金370→248→218连续下修
+  mineru_state: not_needed
+  addresses:
+  - K4
+  rings:
+  - consensus
+  - valuation-anchor
+  confidence: 0.9
+- id: mat-45ec08
+  filename: 2026-06-06_Q1-2026电话会-原材料涨价-海外退潮-精细化.md
+  source_type: sell-side-note
+  added: '2026-06-06T04:19:36.858563+00:00'
+  processed: false
+  notes: 首次季度电话会Q1 2026区域增速+原材料涨3-5pp压毛利0.5pp+海外转精细化不再盲目开店
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - K6
+  rings:
+  - financial-arc
+  - growth-drivers
+  confidence: 0.9
+- id: mat-1df8fa
+  filename: 2026-06-06_GoPro-going-concern-一爆款衰败镜鉴.md
+  source_type: industry-research
+  added: '2026-06-06T04:19:36.884357+00:00'
+  processed: false
+  notes: GoPro 2026 going concern衰败镜鉴+Fitbit/Crocs Category King框架(historical-mirror衰败侧)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  rings:
+  - historical-mirror
+  confidence: 0.85
+- id: mat-a2b240
+  filename: 2026-06-06_labubu预售大放量-连娃衣也开始预售了-二手市场价格已松动.md
+  source_type: web-search
+  added: '2026-06-06T04:23:11.897404+00:00'
+  processed: false
+  notes: query='泡泡玛特 Labubu 得物 二手价 2026 最新'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  rings:
+  - biz-moat-unit-econ
+  confidence: 0.9
+  search_meta:
+    query: 泡泡玛特 Labubu 得物 二手价 2026 最新
+    url: https://www.cls.cn/detail/2061870
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T04:23:11.879999+00:00'
+    stale_at: '2026-07-06T04:23:11.879999+00:00'
+    expire_at: '2026-09-04T04:23:11.879999+00:00'
+    triggered_by: 01-prescan
+- id: mat-c7619b
+  filename: 2026-06-06_labubu将在6月走进世界杯赛场-下半年将推出4-0系列.md
+  source_type: web-search
+  added: '2026-06-06T04:23:11.984489+00:00'
+  processed: false
+  notes: query='Labubu 世界杯 营销 4.0 新品 2026下半年'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  rings:
+  - growth-drivers
+  confidence: 0.9
+  search_meta:
+    query: Labubu 世界杯 营销 4.0 新品 2026下半年
+    url: https://www.stcn.com/article/detail/3697350.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T04:23:11.963900+00:00'
+    stale_at: '2026-07-06T04:23:11.963900+00:00'
+    expire_at: '2026-09-04T04:23:11.963900+00:00'
+    triggered_by: 01-prescan
+- id: mat-055eed
+  filename: 2026-06-06_泡泡玛特失去labubu魔法-投中网.md
+  source_type: web-search
+  added: '2026-06-06T04:23:41.475017+00:00'
+  processed: false
+  notes: query='泡泡玛特 Labubu 二手价 退烧 需求侧复盘（鲸救回）' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  rings:
+  - biz-moat-unit-econ
+  - risk-killer
+  confidence: 0.75
+  search_meta:
+    query: 泡泡玛特 Labubu 二手价 退烧 需求侧复盘（鲸救回）
+    url: https://m.chinaventure.com.cn/news/116-20260116-389809.html
+    domain: m.chinaventure.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T04:23:41.457832+00:00'
+    stale_at: '2026-07-06T04:23:41.457832+00:00'
+    expire_at: '2026-09-04T04:23:41.457832+00:00'
+    triggered_by: 01-prescan-rescue
+- id: mat-585ab9
+  filename: 2026-06-06_labubu盲盒二手價大幅跳水-泡泡瑪特較歷史高位瀉45.md
+  source_type: web-search
+  added: '2026-06-06T04:23:41.522799+00:00'
+  processed: false
+  notes: query='泡泡玛特 Labubu 二手价 退烧 需求侧复盘（鲸救回）' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  rings:
+  - biz-moat-unit-econ
+  - risk-killer
+  confidence: 0.75
+  search_meta:
+    query: 泡泡玛特 Labubu 二手价 退烧 需求侧复盘（鲸救回）
+    url: https://businessfocus.io/article/346251/labubu%E7%9B%B2%E7%9B%92-%E8%B7%B3%E6%B0%B4-%E8%B7%8C%E7%A9%BF%E7%99%BC%E8%A1%8C%E5%83%B9-%E6%B3%A1%E6%B3%A1%E7%91%AA%E7%89%B9%E8%BC%83%E6%AD%B7%E5%8F%B2%E9%AB%98%E4%BD%8D%E7%80%8945
+    domain: businessfocus.io
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T04:23:41.505728+00:00'
+    stale_at: '2026-07-06T04:23:41.505728+00:00'
+    expire_at: '2026-09-04T04:23:41.505728+00:00'
+    triggered_by: 01-prescan-rescue

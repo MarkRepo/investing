@@ -1,0 +1,131 @@
+slug: cn-popmart
+variant: opus4.8
+entries:
+- searched_at: '2026-06-05T23:23:38.703162+00:00'
+  query: 泡泡玛特 2025 年报 营收 净利润 海外收入占比
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 2
+  n_mid: 3
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-05T23:23:38.727887+00:00'
+  query: 泡泡玛特 2025 半年报 营收 同比增长 海外占比
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 2
+  n_mid: 1
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-05T23:23:38.769495+00:00'
+  query: 泡泡玛特 股价 市值 港元 2026 09992
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 3
+  n_mid: 1
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-05T23:23:38.849763+00:00'
+  query: 泡泡玛特 PE PS 估值 一致预期 目标价 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 2
+  n_mid: 3
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-05T23:23:38.930698+00:00'
+  query: Labubu THE MONSTERS 收入占比 2025 第一大IP 集中度
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 2
+  n_mid: 2
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-05T23:23:39.021424+00:00'
+  query: Labubu 热度 2026 退烧 持续 二手价格 得物 溢价
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 2
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-05T23:23:39.150836+00:00'
+  query: 泡泡玛特 海外门店数 美国 欧洲 东南亚 2025 同店增长
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 3
+  n_mid: 2
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-05T23:23:39.241281+00:00'
+  query: 泡泡玛特 海外收入占比 超过 国内 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 0
+  n_mid: 3
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-05T23:23:39.337507+00:00'
+  query: 泡泡玛特 新IP 2025 2026 Labubu之外 增长接力 CRYBABY
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 2
+  n_mid: 1
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-05T23:23:39.477856+00:00'
+  query: 泡泡玛特 回购 分红 王宁 减持 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 3
+  n_mid: 1
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-05T23:23:39.642425+00:00'
+  query: 泡泡玛特 盲盒监管 美国 关税 仿冒 风险 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 4
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-05T23:23:39.702112+00:00'
+  query: 泡泡玛特 最新公告 业绩 2026 09992
+  triggered_by: 00-prescan
+  n_results: 6
+  n_high: 0
+  n_mid: 1
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-06-05T23:23:39.803853+00:00'
+  query: Pop Mart Labubu global expansion revenue 2025 investment
+  triggered_by: 00-prescan
+  n_results: 6
+  n_high: 2
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-06T04:23:11.942707+00:00'
+  query: 泡泡玛特 Labubu 得物 二手价 2026 最新
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 1
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-06T04:23:12.032200+00:00'
+  query: Labubu 世界杯 营销 4.0 新品 2026下半年
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T04:23:41.565166+00:00'
+  query: 泡泡玛特 Labubu 二手价 退烧 需求侧复盘（鲸救回）
+  triggered_by: 01-prescan-rescue
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered

@@ -1,0 +1,145 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-popmart
+variant: opus4.8
+created: 2026-06-06
+thesis_version: 0
+
+# L1/L2 已坍缩为 primer_scope（背景理解交给 00_primer，roadmap 集中火力在 L3/L4）
+primer_scope: >
+  primer 该覆盖：潮玩/盲盒行业边界与产业链（IP 授权-设计-制造-渠道-二级市场）、
+  主要参与者（泡泡玛特 vs TOP TOY/52TOYS/卡游/乐高/三丽鸥）、全球潮玩与 IP 衍生品市场规模与增速、
+  盲盒商业模式机制（为何 60%+ 毛利/高复购）、行业发展阶段（中国从渠道商→自有 IP 平台→全球化）、
+  以及"爆款 IP 生命周期"这一周期律（孵化-引爆-退烧-长尾）。
+
+learning_track:
+  l3_debates:         # 争议层：多空分歧在哪，各方逻辑（喂决策链环④）
+    - question: 泡泡玛特本质是"Sanrio/乐高式耐用多 IP 全球平台"还是"GoPro/Crocs 式时尚一爆款"？这是全部分歧的母题。
+      source_hint: 卖方多空双方深度研报对比 + IP 矩阵收入拆分 + 历史镜鉴对照表
+    - question: 当前约 14x PE 是"市场过度线性外推 Labubu 退烧"的估值修复机会，还是建立在 2025 高基数利润上的 trailing trap（远期更贵）？
+      source_hint: forward PE vs trailing PE 口径核对 + 2026 利润指引 + 卖方一致预期模型
+    - question: 二手价腰斩、黄牛停收意味着"投机泡沫健康出清、真实需求企稳"，还是"真实需求基数远低于 2025 表观、断崖在即"？
+      source_hint: 得物二手价时间序列 + 复购/会员数据 + 海外与国内退烧节奏差异
+    - question: 王宁减持 + 高管套现约 15 亿、叠加主动砍 2026 指引，是"正常财富多元化/预期管理"还是"内部人对景气见顶的负向确认"？
+      source_hint: HKEX 权益披露明细 + 历史减持节奏 + 管理层电话会措辞
+    - question: 「休整年」是消化高基数与渠道库存的主动预期管理，还是增长天花板已到的委婉承认？
+      source_hint: 渠道库存/存货周转数据 + 历年指引兑现 track record + 品类/海外接棒进度
+
+  l4_hunting:         # 狩猎层：找错误定价，每条对齐一个 Killer Question
+    - question: 2026 年报/季度 IP 收入拆分中，非 Labubu IP（星星人/CRYBABY/Molly/Dimoo）增速与占比能否上升、填补 Labubu 回落缺口？市场是否已对"去 Labubu 化失败"过度定价？
+      addresses: [K1]
+      search_keywords: [星星人 CRYBABY 收入, 非Labubu IP 接棒, IP 收入拆分 2026]
+      source_hint: 2025/2026 年报 IP 收入明细 + 卖方 IP 拆分专题
+    - question: 2026 全年 Labubu 系列收入是绝对下滑还是仅增速放缓？二手价是否止跌企稳？海外 Labubu 是否仍在拉新（海外/国内退烧是否同步）？
+      addresses: [K2]
+      search_keywords: [Labubu 二手价 企稳, Labubu 海外 拉新, Labubu 收入 下滑 2026]
+      source_hint: 得物二手价走势 + 卖方草根调研 + 季度运营公告
+    - question: 2026 海外收入占比能否继续向 50%+ 提升？海外单店/同店模型是否健康（非铺店冲量）？美洲/欧洲是否进入稳态增长？
+      addresses: [K3]
+      search_keywords: [泡泡玛特 海外 同店, 海外 单店模型, 美洲 欧洲 门店 2026]
+      source_hint: 卖方海外专题 + 业绩电话会纪要 + 区域开店数据
+    - question: 2026 净利润指引/实际 vs 2025 高基数？forward PE 实际是多少？若 2026 利润持平，14x trailing = 远期是否其实不便宜？
+      addresses: [K4]
+      search_keywords: [泡泡玛特 2026 利润 指引, forward PE 一致预期, 目标价 中金 大摩]
+      source_hint: 3 份卖方一致预期模型 + 目标价 + 利润中枢测算
+    - question: 休整年是否伴随毛利率/净利率下行？海外毛利率 vs 国内？存货周转与渠道库存是否健康（高企=此前压货的证据）？
+      addresses: [K5]
+      search_keywords: [泡泡玛特 毛利率 净利率, 存货周转 渠道库存, 海外 毛利率]
+      source_hint: 年报财务拆分 + 卖方财务专题
+    - question: 内部人减持是否持续/扩大？分红回购政策？是否再融资？"休整年"是否伴随真实战略调整 vs 单纯管理预期？
+      addresses: [K6]
+      search_keywords: [王宁 减持 明细, 泡泡玛特 分红 回购, 高管 套现 2026]
+      source_hint: HKEX 权益披露 + 历年现金流资本配置史
+
+material_priority:
+  tier1:              # 必读，研究不可缺
+    - title: 泡泡玛特 2024 + 2025 年报全文（IP 收入拆分/海外占比/渠道结构/毛利净利率）
+      type: annual-report
+      ticker: HKEX_09992
+      source: HKEX 披露易 / 公司 IR
+      why: A 合同 financial-arc 地板 + 命门1/2/3 共同靶点；IP 拆分是 K1 唯一硬证据来源
+      addresses: [K1, K2, K5]
+      info_tier: public
+      rings: [biz-moat-unit-econ, financial-arc]
+    - title: 2026 全年/季度 Labubu 系列收入趋势 + 得物二手价走势 + 海外拉新数据
+      type: data
+      source: 得物二手价 / 卖方草根调研 / 季度运营数据公告
+      why: 命门2（真实需求 vs 投机需求稳态基数）⭐最优先；判结构性退烧 vs 周期回调
+      addresses: [K2]
+      info_tier: half_public
+      rings: [biz-moat-unit-econ]
+    - title: 3 份对比卖方深度报告（2026 利润指引详解 + 一致预期 + forward PE）
+      type: sell-side-note
+      source: Wind/同花顺/卖方公众号（中金/中信/大摩任选）
+      why: A 合同 consensus 必收；命门3（trailing trap 与否）⭐最优先；K4 唯一锚
+      addresses: [K4]
+      info_tier: public
+      rings: [consensus, valuation-anchor]
+    - title: 非 Labubu IP（星星人/CRYBABY/Molly/Dimoo）收入与增速接棒数据
+      type: sell-side-note
+      source: 年报 IP 收入明细 + 卖方 IP 拆分专题
+      why: 命门1（去 Labubu 化系统能力）；平台论证伪/证成的核心数据
+      addresses: [K1]
+      info_tier: half_public
+      rings: [biz-moat-unit-econ]
+  tier2:              # 补充，有最好
+    - title: 海外门店数/区域同店增长/单店经济模型（美洲/欧洲/东南亚）
+      type: sell-side-note
+      source: 卖方海外专题 + 业绩电话会纪要
+      why: K3 海外兑现质量；区分铺店冲量 vs 稳态增长
+      addresses: [K3]
+      info_tier: half_public
+      rings: [growth-drivers]
+    - title: 内部人减持明细 + 分红/回购政策 + 上市以来资本配置史
+      type: data
+      source: HKEX 权益披露 / 历年年报现金流
+      why: A 合同 mgmt-capital-alloc 必收；K6 治理信号
+      addresses: [K6]
+      info_tier: public
+      rings: [mgmt-capital-alloc]
+    - title: 一爆款消费品历史镜鉴对照表（GoPro/Crocs/Fitbit 衰 vs Sanrio/乐高 耐用）
+      type: industry-research
+      source: 公开财报 + 行业研究，自建对照表
+      why: A 合同 historical-mirror 必收；喂决策链环⑤；L3 母题的实证镜鉴
+      addresses: [K4, K2]
+      info_tier: public
+      rings: [historical-mirror]
+    - title: 毛利率/净利率趋势 + 存货周转 + 渠道库存健康度
+      type: sell-side-note
+      source: 年报 + 卖方财务拆分
+      why: K5 盈利质量；休整年是否伴随利润率下行/压货
+      addresses: [K5]
+      info_tier: public
+      rings: [financial-arc]
+  tier3:              # 可选
+    - title: 盲盒监管（中国未成年人/概率披露）+ 美国关税对成本与定价的影响跟踪
+      type: policy
+      source: 监管公告 / 财经媒体专题
+      why: K6 风险尾部；环⑥ Killer
+      addresses: [K6]
+      info_tier: public
+      rings: [risk-killer]
+    - title: POP LAND/潮流珠宝/卡牌/内容化等品类延伸进展与贡献
+      type: industry-research
+      source: 公司公告 / 行业调研
+      why: K3 第二增长曲线；环④ 增长驱动冗余
+      addresses: [K3]
+      info_tier: half_public
+      rings: [growth-drivers]
+
+key_risks_to_monitor:
+  - Labubu 系列收入 2026 绝对下滑且二手价续跌（结构性退烧兑现）
+  - 非 Labubu IP 接棒在收入数据上失败（平台论证伪）
+  - 2026 利润持平/下滑使 forward PE 显著高于 14x（trailing trap 兑现）
+  - 内部人减持持续扩大 + 渠道库存高企（压货证据）
+  - 盲盒监管收紧 / 美国关税抬高成本侵蚀毛利
+
+analogies_to_study:
+  - case: GoPro（美国·运动相机·2014 IPO 后两年腰斩）
+    similar: 单一爆款驱动、投机性需求前置透支、市场早期给高成长估值后证伪
+    different: GoPro 是硬件无 IP 续作能力；泡泡玛特有多 IP 孵化与盲盒复购机制
+  - case: Crocs / Fitbit（美国·时尚单品/可穿戴·爆红后增长断层）
+    similar: 时尚潮流属性、需求波动大、一爆而衰的估值塌缩剧本
+    different: Crocs 后期靠协同 IP 联名二次增长，可双向参照
+  - case: 三丽鸥 Sanrio / 乐高 LEGO（日本/丹麦·IP 平台·数十年长青）
+    similar: 多 IP 矩阵 + 授权变现 + 全球化，泡泡玛特看多情景的对标终局
+    different: Sanrio/乐高 IP 沉淀数十年且非盲盒投机模式，泡泡玛特 IP 历史尚浅

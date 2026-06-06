@@ -3,7 +3,7 @@ display_name: 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)
 type: company
 created: '2026-05-31T17:03:16.647852+00:00'
 status: active
-stage: 04-synthesizing
+stage: 04-post-synthesis
 parent_topic: null
 monitoring_tier: dormant
 concepts: []
@@ -35,37 +35,43 @@ outputs_state:
     last_error: null
     critic_passed: true
   c_investment_case:
-    version: 3
-    last_updated: '2026-06-05T15:50:33.463286+00:00'
-    status: stale
+    version: 5
+    last_updated: '2026-06-06T04:23:59.004188+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids:
     - mat-11c36c
+    - mat-3e4456
     - mat-50b810
     - mat-6dcbc7
     - mat-7d7192
+    - mat-8107dd
+    - mat-83d446
     - mat-a596c8
     - mat-a8e4f0
     - mat-b01cff
     - mat-d2f5c8
     last_error: null
   08_living_feed:
-    version: 2
-    last_updated: '2026-06-05T15:50:33.476547+00:00'
+    version: 3
+    last_updated: '2026-06-05T23:57:01.624132+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
   07_decision_kit:
-    version: 3
-    last_updated: '2026-06-05T15:50:33.463288+00:00'
-    status: stale
+    version: 5
+    last_updated: '2026-06-06T04:23:59.012896+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids:
     - mat-11c36c
+    - mat-3e4456
     - mat-50b810
     - mat-6dcbc7
     - mat-7d7192
+    - mat-8107dd
+    - mat-83d446
     - mat-a596c8
     - mat-a8e4f0
     - mat-b01cff
@@ -73,11 +79,9 @@ outputs_state:
     last_error: null
 parent_materials: []
 next_actions:
-- 'critic 标 stale: c_investment_case, 07_decision_kit'
-- 主 agent 即将在本对话续跑 04（见 workflow 05 Step 7.5）
-- critic 评审：环④ EV 给点估计 +15% 而未做敏感性测试——独立反方按 bear-tilt 重配权 EV 即归零；环② 此前无外部 consensus
-  锚（本轮 web 补：0 sell/均价 ~$167 post-cut）；Q1 营收 miss($746.9M vs $773M) 为新负面。重写 环②consensus锚
-  + 环④EV敏感性 + 环①/⑤纳入Q1 miss。
+- 已按 05-critic 第2轮 request-rewrite 重写 c_investment_case v5 + 07_decision_kit v5 +
+  thesis_v4（环④双-bear下行轴敏感性 + 盈利压缩路径 + consensus双标修正 + 镜鉴纠错；强度6→5、观望default）
+- 可再喊「评审 global-futu」复评（验证 v5 是否拆掉本轮致命一击），或进 06-daily-monitor
 user_todos:
 - task: (已收·待析) FUTU 2025 年报/20-F + 业绩会的分部+地域营收/利润拆解，定位大陆真实利润占比
   priority: P0
@@ -309,10 +313,9 @@ monitoring:
   cadence: daily
 critic:
   verdict: request-rewrite
-  summary: 环④ EV 给点估计 +15% 而未做敏感性测试——独立反方按 bear-tilt 重配权 EV 即归零；环② 此前无外部 consensus
-    锚（本轮 web 补：0 sell/均价 ~$167 post-cut）；Q1 营收 miss($746.9M vs $773M) 为新负面。重写 环②consensus锚
-    + 环④EV敏感性 + 环①/⑤纳入Q1 miss。
-  at: '2026-06-05T15:50:33.463151+00:00'
+  summary: 第2轮复评 v4：EV 敏感性表只对概率做、bear 下行钉死 −33%，与环⑤ KILL-A "政策性杀跌无底"矛盾；按作者自己 de-rate
+    下行(−55~−58%)代回 bear-tilt EV 即翻负(−4~−13%)。另暴露独立于命门1黑箱的下行洞：EV 三档全是 multiple re-rate，无一档建模峰值TTM净利当分母+2026降息/ADV收缩致盈利下滑→前瞻13-15x。重写环④敏感性轴+新增盈利压缩情形+环②修consensus双标/环⑤修滴滴镜鉴。
+  at: '2026-06-05T23:57:01.610991+00:00'
   thesis_version: 3
   next_stage: 04-synthesizing
 decomposition:
@@ -331,8 +334,8 @@ decomposition:
     convergence_status: converged
     changelog: 命门1 中→中-(黑箱不可证伪); 命门3 中→中+(海外兑现); primer 新增8.5盯盘表; 残留缺口=命门1黑箱+consensus未收
 thesis:
-  current_version: 3
-  last_updated: '2026-06-01T07:59:04.697081+00:00'
+  current_version: 4
+  last_updated: '2026-06-06T04:23:59.021574+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -364,4 +367,28 @@ thesis:
     set_at: '2026-06-01T07:59:04.697205+00:00'
     summary: 偏多/被一次性罚没错杀的高质量复利机器 6/10（EV≈+15%，赔率~2:1）；Q1 一手 SEC EX-99.1 复核：硬数全对，命门1
       偏空降为二手未证、黑箱未缩小
+  - version: 4
+    stage_set_at: 05-critic-review
+    set_at: '2026-06-06T04:23:59.021576+00:00'
+    summary: 中性偏多但赔率双向化 5/10（自6/10下调）：质量真好但10x建立在峰值盈利+政策尾部无底之上。v4修正v3-case被掩盖的两真相——①政策de-rate
+      bear真实下行−56%(对齐KILL-A/滴滴)非v4钉死的−33%；②独立于命门1黑箱的盈利压缩bear(峰值E当分母,25Q4已触发)。EV双轴重算跨零：偏多配权+25%→bear-tilt+4%→重bear−6%→灾难−14%。默认零仓观望待2026-Q2,小仓试探≤2%仅在≤$85,绝不裸空。
 canonical: true
+stage_history:
+- stage: 04-post-synthesis
+  entered_at: '2026-06-05T23:11:02.191634+00:00'
+  exited_at: '2026-06-06T04:24:46.650277+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-06-06T04:24:46.650277+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
