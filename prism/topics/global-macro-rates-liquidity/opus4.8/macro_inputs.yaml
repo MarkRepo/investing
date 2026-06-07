@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-07T14:30:27.518167+00:00'
+updated: '2026-06-07T15:20:49.966497+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -19,6 +19,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: DFEDTARU
 - name: FOMC 点阵图(SEP)
   tier: A
   cadence_type: event
@@ -96,6 +97,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: PAYEMS
 - name: 失业率
   tier: A
   cadence_type: event
@@ -111,6 +113,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: UNRATE
 - name: 初请失业金
   tier: A
   cadence_type: event
@@ -126,6 +129,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: ICSA
 - name: JOLTS 职位空缺/离职率
   tier: A
   cadence_type: event
@@ -141,6 +145,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: JTSJOL
 - name: ISM 制造业 PMI
   tier: A
   cadence_type: event
@@ -187,6 +192,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: RSAFS
 - name: GDPNow 实时预测
   tier: B
   cadence_type: series
@@ -217,6 +223,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: CES0500000003
 - name: 核心 PCE
   tier: A
   cadence_type: event
@@ -232,6 +239,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: PCEPILFE
 - name: CPI(核心+supercore)
   tier: A
   cadence_type: event
@@ -247,6 +255,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: CPILFESL
 - name: PCE 三分项(supercore/住房/商品)
   tier: B
   cadence_type: event
@@ -262,6 +271,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: PCEPILFE
 - name: PPI
   tier: A
   cadence_type: event
@@ -277,6 +287,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: PPIFIS
 - name: WTI 油价(+供给/需求分解)
   tier: A
   cadence_type: series
@@ -293,6 +304,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: DCOILWTICO
 - name: 5y5y/breakeven 通胀预期
   tier: A
   cadence_type: series
@@ -308,6 +320,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: T5YIFR
 - name: 国债发行计划 QRA + 票/券构成
   tier: A
   cadence_type: policy
@@ -339,6 +352,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: WTREGEN
 - name: 联邦赤字
   tier: B
   cadence_type: event
@@ -354,6 +368,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: MTSDS133FMS
 - name: 美联储资产 WALCL(QT 节奏)
   tier: A
   cadence_type: series
@@ -370,6 +385,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: WALCL
 - name: RRP 逆回购
   tier: A
   cadence_type: series
@@ -385,6 +401,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: RRPONTSYD
 - name: 净流动性(=资产−TGA−RRP)
   tier: A
   cadence_type: series
@@ -400,6 +417,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: __DERIVED__
 - name: 银行准备金 + 准备金/GDP
   tier: A
   cadence_type: series
@@ -415,6 +433,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: WRESBAL
 - name: SOFR−IORB / 回购压力
   tier: A
   cadence_type: series
@@ -491,6 +510,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: DGS10
 - name: 10Y 实际利率 TIPS
   tier: A
   cadence_type: series
@@ -507,6 +527,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: DFII10
 - name: 期限溢价 ACM 分解
   tier: B
   cadence_type: series
@@ -537,6 +558,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: T10Y2Y
 - name: IG OAS
   tier: B
   cadence_type: series
@@ -552,6 +574,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: BAMLC0A0CM
 - name: HY OAS
   tier: B
   cadence_type: series
@@ -569,6 +592,7 @@ inputs:
     enabled: true
   alert_band:
     z: 2.0
+  fred_series_id: BAMLH0A0HYM2
 - name: CMBS/ABS OAS(NFCI 最高权重)
   tier: B
   cadence_type: series
@@ -618,6 +642,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: VIXCLS
 - name: 金融条件指数 FCI(NFCI/GS)
   tier: B
   cadence_type: series
@@ -633,6 +658,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: NFCI
 - name: 股票估值 CAPE
   tier: C
   cadence_type: series
@@ -712,6 +738,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: DTWEXBGS
 - name: DXY
   tier: B
   cadence_type: series
@@ -727,6 +754,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: DTWEXAFEGS
 - name: 跨币种基差(EUR/JPY-USD)
   tier: A
   cadence_type: series
@@ -763,6 +791,7 @@ inputs:
     enabled: true
   alert_band:
     delta: 3.0
+  fred_series_id: DEXJPUS
 - name: BoJ 政策 / JGB 收益率
   tier: A
   cadence_type: policy
@@ -833,8 +862,8 @@ inputs:
   - fx
   mechanism: CO
   importance: confirming
-  source: FRED
-  fetch_method: fred-api
+  source: web
+  fetch_method: llm-web
   state: 改(机制纠正,见§5)
   causal_sentence: ''
   lag: 同步
@@ -1243,6 +1272,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: DEXCHUS
 - name: PBoC 中间价 + 逆周期因子
   tier: A
   cadence_type: series
