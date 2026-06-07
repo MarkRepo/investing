@@ -27,6 +27,7 @@
   <nav class="top">
     {{ _navlink('/prism', '研究', 'brand', exclude='/prism/dashboard') }}
     {{ _navlink('/prism/dashboard', '仪表盘') }}
+    {{ _navlink('/prism/global-macro-rates-liquidity/opus4.8/macro-inputs', '宏观层') }}
     {{ _navlink('/financials', '财务') }}
     {{ _navlink('/prices', '行情') }}
     {{ _navlink('/digest', '研报摘要') }}
@@ -48,7 +49,7 @@
       if (pending) {
         pending = false;
         if (pendingTimer) clearTimeout(pendingTimer);
-        const map = { r: '/prism', b: '/prism/dashboard', f: '/financials', p: '/prices', d: '/digest' };
+        const map = { r: '/prism', b: '/prism/dashboard', m: '/prism/global-macro-rates-liquidity/opus4.8/macro-inputs', f: '/financials', p: '/prices', d: '/digest' };
         if (map[e.key]) { e.preventDefault(); go(map[e.key]); }
         return;
       }
