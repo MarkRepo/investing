@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "prism/_view_tabs.html" import view_tabs %}
 {% block title %}体检 · {{ topic.display_name or topic.slug }} · {{ variant }}{% endblock %}
 {% block content %}
 <nav class="breadcrumb">
@@ -14,12 +15,7 @@
   <span class="hint"> · 流程体检 / observability</span>
 </div>
 
-<div class="diag-tabs">
-  <span class="diag-tabs-label">视图</span>
-  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}">读者向</a>
-  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/diag">诊断 / debug</a>
-  <span class="diag-tab active">体检</span>
-</div>
+{{ view_tabs(topic, variant, 'checkup') }}
 
 <p class="hint diag-intro">纯被动 · 零 LLM：从已有产物残渣机械重建流程质量探针，不重跑研究、不调模型。
 🟢 通过 ·　🔴 缺漏 ·　🟠 需人复核（机械判不了的真值）·　⚪ 盲点显式化（被动层给不了）。</p>

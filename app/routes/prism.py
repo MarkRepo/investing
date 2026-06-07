@@ -523,6 +523,9 @@ def prism_diag(request: Request, slug: str, variant: str):
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    # 宏观层不走 拆解→收料→抽取→gap→critic 工作流，诊断页对它全是空壳；其等价诊断视图是「输入源」表
+    if topic.get("type") == "macro":
+        raise HTTPException(status_code=404, detail="宏观层不适用诊断 / debug（等价视图为输入源表 macro-inputs）")
 
     # ① 拆解 decomposition（取最新版；保留版本列表供切换）
     decomp_versions = outputs_io.list_decomposition_files(slug, variant)
@@ -599,6 +602,9 @@ def prism_checkup(request: Request, slug: str, variant: str):
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    # 宏观层无标准工作流残渣，体检探针几乎全 na；其等价诊断视图是「输入源」表
+    if topic.get("type") == "macro":
+        raise HTTPException(status_code=404, detail="宏观层不适用体检（等价视图为输入源表 macro-inputs）")
     from prism.scripts.observability_render import build_view
     try:
         view = build_view(slug, variant)

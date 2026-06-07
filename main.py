@@ -1,4 +1,10 @@
 """FastAPI app entry point for the prism research system."""
+from dotenv import load_dotenv
+
+# 最早加载 .env（FRED_API_KEY 等密钥）——否则 monitor cycle 的 FRED 自动抓取拿不到 key 而静默跳过。
+# 不覆盖已存在的真实环境变量（override=False 默认）。
+load_dotenv()
+
 import asyncio
 from contextlib import asynccontextmanager
 

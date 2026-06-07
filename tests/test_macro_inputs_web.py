@@ -61,11 +61,13 @@ def macro_web_client(tmp_path, monkeypatch):
     return TestClient(app)
 
 
-def test_nav_has_macro_link(macro_web_client):
+def test_nav_macro_points_to_detail(macro_web_client):
+    """顶部「宏观层」指向详情页（而非直接输入表）——输入表是详情页里的 tab。"""
     r = macro_web_client.get("/prism")
     assert r.status_code == 200
     assert "宏观层" in r.text
-    assert f"/prism/{SLUG}/{VARIANT}/macro-inputs" in r.text
+    assert f'href="/prism/{SLUG}/{VARIANT}"' in r.text          # detail 页
+    assert f"/prism/{SLUG}/{VARIANT}/macro-inputs" not in r.text  # 不再直挂输入表
 
 
 def test_index_shows_macro_label(macro_web_client):
@@ -90,3 +92,58 @@ def test_macro_inputs_404_for_non_macro(macro_web_client):
     m.create_manifest("cn-industry-x", VARIANT)
     r = macro_web_client.get(f"/prism/cn-industry-x/{VARIANT}/macro-inputs")
     assert r.status_code == 404
+
+
+def test_macro_inputs_shows_caveat_note(macro_web_client):
+    """带 note（口径/代理说明）的输入要在表里显示，而非只埋在 CLI smoke / 代码注释里。"""
+    import prism.scripts.macro_registry as reg
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "DXY", "source": "FRED", "fetch_method": "fred-api",
+        "fred_series_id": "DTWEXAFEGS",
+        "note": "代理 DTWEXAFEGS，非 ICE 真·DXY，数值不可直接对市场报价",
+    })
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert r.status_code == 200
+    assert "非 ICE 真·DXY" in r.text
+
+
+def test_macro_detail_shows_input_tab_not_diag(macro_web_client):
+    """macro 详情页 tab 条：读者向 + 输入源；隐藏 诊断/体检（对宏观层不适用）。"""
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}")
+    assert r.status_code == 200
+    assert "输入源" in r.text
+    assert f"/prism/{SLUG}/{VARIANT}/macro-inputs" in r.text   # 输入源 tab 链接
+    assert "诊断 / debug" not in r.text                        # 诊断 tab 不展示
+    assert "体检" not in r.text                                # 体检 tab 不展示
+
+
+def test_macro_inputs_page_has_tab_bar(macro_web_client):
+    """输入源页本身带 tab 条，可切回读者向。"""
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert r.status_code == 200
+    assert "读者向" in r.text
+    assert f'href="/prism/{SLUG}/{VARIANT}"' in r.text          # 读者向回链
+    assert "输入源" in r.text
+
+
+def test_diag_404_for_macro(macro_web_client):
+    """诊断 tab 对宏观层不适用 → 直访路由也 404。"""
+    assert macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/diag").status_code == 404
+
+
+def test_checkup_404_for_macro(macro_web_client):
+    """体检 tab 对宏观层不适用 → 直访路由也 404。"""
+    assert macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/checkup").status_code == 404
+
+
+def test_macro_nav_no_double_highlight(macro_web_client):
+    """点「宏观层」时不应同时高亮「研究」（exclude 子树修复）。"""
+    import re
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}")
+    nav = re.search(r'<nav class="top">(.*?)</nav>', r.text, re.S).group(1)
+    yanjiu = re.search(r'<a href="/prism"[^>]*>研究</a>', nav).group(0)
+    assert "active" not in yanjiu                               # 研究 不亮
+    macro_a = re.search(
+        r'<a href="/prism/global-macro-rates-liquidity/opus4\.8"[^>]*>宏观层</a>', nav
+    ).group(0)
+    assert "active" in macro_a                                  # 宏观层 亮

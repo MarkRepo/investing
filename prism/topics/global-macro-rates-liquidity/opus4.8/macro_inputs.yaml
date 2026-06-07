@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-07T15:20:49.966497+00:00'
+updated: '2026-06-07T17:11:47.420020+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -759,6 +759,7 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: DTWEXAFEGS
+  note: 代理：Fed DTWEXAFEGS（先进经济体加权美元），非 ICE 真·DXY——方向/拐点同步，但绝对数值（≈111 vs ICE≈99）不可直接对市场报价
 - name: 跨币种基差(EUR/JPY-USD)
   tier: A
   cadence_type: series
@@ -879,6 +880,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  note: FRED 无可靠日频现货金价，故不走自动抓取，靠每日 web 检索补（fetch_method=llm-web）
 - name: 比特币
   tier: C
   cadence_type: series

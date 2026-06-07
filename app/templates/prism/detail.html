@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "prism/_view_tabs.html" import view_tabs %}
 {% block title %}{{ topic.display_name or topic.slug }} · {{ variant }}{% endblock %}
 {% block content %}
 <nav class="breadcrumb">
@@ -120,12 +121,7 @@
 </div>
 {% endif %}
 
-<div class="diag-tabs">
-  <span class="diag-tabs-label">视图</span>
-  <span class="diag-tab active">读者向</span>
-  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/diag">诊断 / debug</a>
-  <a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/checkup">体检</a>
-</div>
+{{ view_tabs(topic, variant, 'reader') }}
 <style>
   .diag-tabs { display: flex; align-items: center; gap: 0.1em; margin: 0.8em 0; border-bottom: 2px solid #e5e5e5; }
   .diag-tabs-label { font-size: 0.78em; color: #aaa; margin-right: 0.5em; }

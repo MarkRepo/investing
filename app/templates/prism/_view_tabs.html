@@ -1,0 +1,17 @@
+{# 详情页视图 tab 条（单一真相，避免 detail/diagnostics/checkup/macro_inputs 四处分叉）。
+   只发标记；active 高亮样式由各页自带 CSS 决定（诊断/体检故意用红色「debug land」，
+   读者向/宏观层用中性色）。active ∈ {reader, diag, checkup, inputs}。
+   宏观层（type==macro）不走 拆解→收料→抽取→gap→critic 工作流，诊断/体检对它全是空壳，
+   故其等价诊断视图是「输入源」表，不显示 诊断/体检。 #}
+{% macro view_tabs(topic, variant, active) -%}
+<div class="diag-tabs">
+  <span class="diag-tabs-label">视图</span>
+  {% if active == 'reader' %}<span class="diag-tab active">读者向</span>{% else %}<a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}">读者向</a>{% endif %}
+  {% if topic.type == 'macro' %}
+    {% if active == 'inputs' %}<span class="diag-tab active">输入源</span>{% else %}<a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs">输入源</a>{% endif %}
+  {% else %}
+    {% if active == 'diag' %}<span class="diag-tab active">诊断 / debug</span>{% else %}<a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/diag">诊断 / debug</a>{% endif %}
+    {% if active == 'checkup' %}<span class="diag-tab active">体检</span>{% else %}<a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/checkup">体检</a>{% endif %}
+  {% endif %}
+</div>
+{%- endmacro %}

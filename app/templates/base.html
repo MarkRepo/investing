@@ -18,16 +18,20 @@
 </head>
 <body>
   {% set _path = request.url.path if request is defined and request else '' %}
-  {% macro _navlink(href, label, extra='', exclude='') -%}
+  {% macro _navlink(href, label, extra='', excludes=[]) -%}
     {%- set _under = (_path == href or _path.startswith(href + '/')) -%}
-    {%- set _excluded = (exclude and (_path == exclude or _path.startswith(exclude + '/'))) -%}
-    {%- set _active = ((_path == '/') if href == '/' else (_under and not _excluded)) -%}
+    {%- set _ns = namespace(excluded=false) -%}
+    {%- for ex in excludes -%}
+      {%- if _path == ex or _path.startswith(ex + '/') -%}{%- set _ns.excluded = true -%}{%- endif -%}
+    {%- endfor -%}
+    {%- set _active = ((_path == '/') if href == '/' else (_under and not _ns.excluded)) -%}
     <a href="{{ href }}" class="{{ extra }}{% if _active %}{% if extra %} {% endif %}active{% endif %}">{{ label }}</a>
   {%- endmacro %}
   <nav class="top">
-    {{ _navlink('/prism', '研究', 'brand', exclude='/prism/dashboard') }}
+    {# 研究 是 /prism 整段的 brand 根；仪表盘与宏观层子树各有独立 nav 入口，故从研究的高亮里排除，避免同时点亮 #}
+    {{ _navlink('/prism', '研究', 'brand', excludes=['/prism/dashboard', '/prism/global-macro-rates-liquidity']) }}
     {{ _navlink('/prism/dashboard', '仪表盘') }}
-    {{ _navlink('/prism/global-macro-rates-liquidity/opus4.8/macro-inputs', '宏观层') }}
+    {{ _navlink('/prism/global-macro-rates-liquidity/opus4.8', '宏观层') }}
     {{ _navlink('/financials', '财务') }}
     {{ _navlink('/prices', '行情') }}
     {{ _navlink('/digest', '研报摘要') }}
@@ -49,7 +53,7 @@
       if (pending) {
         pending = false;
         if (pendingTimer) clearTimeout(pendingTimer);
-        const map = { r: '/prism', b: '/prism/dashboard', m: '/prism/global-macro-rates-liquidity/opus4.8/macro-inputs', f: '/financials', p: '/prices', d: '/digest' };
+        const map = { r: '/prism', b: '/prism/dashboard', m: '/prism/global-macro-rates-liquidity/opus4.8', f: '/financials', p: '/prices', d: '/digest' };
         if (map[e.key]) { e.preventDefault(); go(map[e.key]); }
         return;
       }
