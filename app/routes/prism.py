@@ -256,6 +256,7 @@ def prism_topic(request: Request, slug: str):
         "company": "c_investment_case",
         "industry": "i_industry_case",
         "arena": "a_arena_case",
+        "macro": "m_regime_read",
     }
     compare_key = _CASE_BY_TYPE.get(topic_type, "08_living_feed")
 
