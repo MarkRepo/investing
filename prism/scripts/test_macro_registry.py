@@ -106,3 +106,20 @@ def test_validator_flags_duplicate_name(reg_env):
     mr._write_yaml(mr._registry_path(SLUG, VARIANT), data)
     errors = mr.validate_registry(SLUG, VARIANT)
     assert any("重复" in e for e in errors)
+
+
+def test_record_observation_rolls_prev_value(reg_env):
+    mr.create_registry(SLUG, VARIANT)
+    mr.upsert_input(SLUG, VARIANT, _good_A_entry())
+    mr.record_observation(SLUG, VARIANT, "非农就业 NFP", value=150.0, as_of="2026-05-02")
+    mr.record_observation(SLUG, VARIANT, "非农就业 NFP", value=90.0, as_of="2026-06-06")
+    obs = {i["name"]: i["observed"] for i in mr.read_registry(SLUG, VARIANT)["inputs"]}["非农就业 NFP"]
+    assert obs["value"] == 90.0
+    assert obs["prev_value"] == 150.0
+    assert obs["as_of"] == "2026-06-06"
+
+
+def test_record_observation_unknown_name_raises(reg_env):
+    mr.create_registry(SLUG, VARIANT)
+    with pytest.raises(ValueError):
+        mr.record_observation(SLUG, VARIANT, "不存在", value=1.0, as_of="2026-06-06")

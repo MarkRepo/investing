@@ -123,3 +123,35 @@ def validate_registry(slug: str, variant: str) -> list[str]:
         if e.get("alert_series") and e.get("cadence_type") != "series":
             errors.append(f"[{name}] alert_series=True 仅允许 cadence_type=series")
     return errors
+
+
+def record_observation(
+    slug: str, variant: str, name: str, *,
+    value: float | None = None, as_of: str | None = None,
+    z: float | None = None, next_due: str | None = None,
+) -> None:
+    """把一次观测写进某 input 的 observed；旧 value 滚成 prev_value。零 LLM。
+
+    fetcher（第二期）每次抓到新值调本函数；monitor 据 observed 判越带/到期。
+    value 给定时滚动 prev_value；z/next_due 给定则覆盖对应位。
+    """
+    data = read_registry(slug, variant)
+    for e in data["inputs"]:
+        if e["name"] == name:
+            obs = dict(e.get("observed") or {})
+            if value is not None:
+                if "value" in obs:
+                    obs["prev_value"] = obs["value"]
+                obs["value"] = value
+            if as_of is not None:
+                obs["as_of"] = as_of
+            if z is not None:
+                obs["z"] = z
+            if next_due is not None:
+                obs["next_due"] = next_due
+            obs["checked_at"] = _now_iso()
+            e["observed"] = obs
+            data["updated"] = _now_iso()
+            _write_yaml(_registry_path(slug, variant), data)
+            return
+    raise ValueError(f"input {name!r} 不在登记表中")
