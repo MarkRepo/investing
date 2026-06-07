@@ -3,7 +3,7 @@ display_name: 泡泡玛特 (Pop Mart, HKEX 09992)
 type: company
 created: '2026-06-05T23:18:57.237139+00:00'
 status: active
-stage: 04-post-synthesis
+stage: done
 canonical: true
 parent_topic: null
 monitoring_tier: dormant
@@ -73,17 +73,18 @@ outputs_state:
     - mat-fac663
     last_error: null
   08_living_feed:
-    version: 2
-    last_updated: '2026-06-06T14:04:20.029904+00:00'
+    version: 3
+    last_updated: '2026-06-06T15:32:42.542338+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
 parent_materials: []
 next_actions:
-- 已按 05 request-rewrite 重写 v2（EV→-1%、edge 证伪删除、转中性观望 4/10）
-- 可说「评审 cn-popmart」再跑一轮 05 复评拿 approve→done（v2 已纳入反方全部致命一击，预期 approve）
-- 或直接进监控：命门信号=2026中报IP拆分(8月)/二手价企稳/海外存量店；价格信号=跌入 bear 区 ≤135-150
+- 研究主题已闭环，下一步「监控 cn-popmart」启动 06-daily-monitor
+- thesis_v2 已通过 critic-review
+- critic 评审：第二轮复评(对 v2):独立做空向反方未能推翻"观望"判断——其结论方向(做空)被 case 肥上行尾(28%/+30~75%)+137亿净现金+Q1中国+100%驳回,EV≈-1%不足以做空,flat
+  同时优于买入与做空。致命一击(E0 峰值未折进 EV 基准)命中真实内部张力但仅 calibration refinement,折进后 EV -3~-5%结论仍观望/0仓。整体4/5,gap全绿,已吸收v1全部空头。
 user_todos:
 - task: 泡泡玛特 2024 + 2025 年报全文（IP 收入拆分/海外占比/渠道结构/毛利净利率）
   priority: P0
@@ -258,11 +259,12 @@ monitoring:
   enabled: false
   cadence: daily
 critic:
-  verdict: request-rewrite
-  summary: 反方做空尽调击中环④:熊+极熊仅38%在5个Sanrio式信号全亮下偏低、EV+8%末位调整即翻负;edge"市场高估GoPro式崩塌"攻稻草人(16x非终局倍数);资产负债表硬保护对PB9.1x是伪命题。环②④需重写,倾向下修至观望/无edge
-  at: '2026-06-06T14:04:20.016411+00:00'
-  thesis_version: 1
-  next_stage: 04-synthesizing
+  verdict: approve
+  summary: 第二轮复评(对 v2):独立做空向反方未能推翻"观望"判断——其结论方向(做空)被 case 肥上行尾(28%/+30~75%)+137亿净现金+Q1中国+100%驳回,EV≈-1%不足以做空,flat
+    同时优于买入与做空。致命一击(E0 峰值未折进 EV 基准)命中真实内部张力但仅 calibration refinement,折进后 EV -3~-5%结论仍观望/0仓。整体4/5,gap全绿,已吸收v1全部空头。
+  at: '2026-06-06T15:32:42.527672+00:00'
+  thesis_version: 2
+  next_stage: done
 decomposition:
   current_version: 2
   last_updated: '2026-06-06T14:26:09.647341+00:00'

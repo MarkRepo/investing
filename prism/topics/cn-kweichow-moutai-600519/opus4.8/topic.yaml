@@ -1,0 +1,44 @@
+slug: cn-kweichow-moutai-600519
+display_name: 贵州茅台
+type: company
+created: '2026-06-07T00:22:48.391437+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-premium-baijiu
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 贵州茅台在本轮白酒下行中能否维持营收正增与价盘稳定，Q1现金流/合同负债背离是否预示压货风险，左侧布局赔率如何
+  depth: deep
+  ticker: SSE_600519
+  market: SSE
+  short_name: 茅台
+  search_terms:
+  - 贵州茅台
+  - 飞天茅台
+  - 批价
+  - 直营
+  - 分红回购
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-07T00:23:56.189388+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-06-07T00:23:56.189481+00:00'
+    summary: 高端确定性最高的左侧标的：组内唯一Q1营收转正+650亿分红/60亿注销式回购托底；但Q1合同负债-62%/经现靠口径，企稳含金量待验证，市场已付确定性溢价忌追高。强度5.5

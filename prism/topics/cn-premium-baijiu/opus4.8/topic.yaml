@@ -3,7 +3,7 @@ display_name: 高端白酒 (Premium Baijiu — 周期拐点)
 type: arena
 created: '2026-06-06T13:32:08.967975+00:00'
 status: active
-stage: 01-roadmap-pending
+stage: 05-critic-review
 canonical: true
 parent_topic: null
 monitoring_tier: dormant
@@ -18,11 +18,108 @@ scope:
   - 库存动销
   - 次高端
   - 周期见底
-outputs_state: {}
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-07T00:17:52.111142+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01c06e
+    - mat-0225c4
+    - mat-08c1da
+    - mat-09dabb
+    - mat-0da1ca
+    - mat-0f2a8b
+    - mat-118a9e
+    - mat-1c6e2d
+    - mat-3a9e91
+    - mat-3bdade
+    - mat-44114b
+    - mat-48af62
+    - mat-6fe639
+    - mat-765cbf
+    - mat-78157e
+    - mat-857153
+    - mat-9519f5
+    - mat-c27f59
+    - mat-c9d516
+    - mat-d42e97
+    - mat-e04a4e
+    - mat-ec60d5
+    - mat-ef1ded
+    - mat-fee915
+    last_error: null
+    critic_passed: true
+  a_arena_case:
+    version: 1
+    last_updated: '2026-06-07T00:26:22.564474+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01c06e
+    - mat-0225c4
+    - mat-08c1da
+    - mat-09dabb
+    - mat-0da1ca
+    - mat-0f2a8b
+    - mat-118a9e
+    - mat-1c6e2d
+    - mat-3a9e91
+    - mat-3bdade
+    - mat-44114b
+    - mat-48af62
+    - mat-6fe639
+    - mat-765cbf
+    - mat-78157e
+    - mat-857153
+    - mat-9519f5
+    - mat-c27f59
+    - mat-c9d516
+    - mat-d42e97
+    - mat-e04a4e
+    - mat-ec60d5
+    - mat-ef1ded
+    - mat-fee915
+    last_error: null
+  peer_matrix:
+    version: 1
+    last_updated: '2026-06-07T00:26:22.586342+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01c06e
+    - mat-0225c4
+    - mat-08c1da
+    - mat-09dabb
+    - mat-0da1ca
+    - mat-0f2a8b
+    - mat-118a9e
+    - mat-1c6e2d
+    - mat-3a9e91
+    - mat-3bdade
+    - mat-44114b
+    - mat-48af62
+    - mat-6fe639
+    - mat-765cbf
+    - mat-78157e
+    - mat-857153
+    - mat-9519f5
+    - mat-c27f59
+    - mat-c9d516
+    - mat-d42e97
+    - mat-e04a4e
+    - mat-ec60d5
+    - mat-ef1ded
+    - mat-fee915
+    last_error: null
 parent_materials: []
 next_actions:
-- 运行 workflow 01-build-roadmap：制定详细研究路线图（含 01 Step 5.6 eager-fetch 把下面 P0 todo 当场抓全文）
-- 收齐 P0 资料后运行 workflow 02-gather-materials → 03-extract → 04-synthesize
+- Arena 合成完成：00_primer + a_arena_case(6环) + peer_matrix.yaml + thesis_v1/decomposition_v1
+  全部落盘
+- 深研档已建 company stub：cn-kweichow-moutai-600519 / cn-luzhou-laojiao-000568（继承父 thesis_v0）
+- arena 评审非强制：可说「评审 cn-premium-baijiu」跑对抗式 steelman，或 web 详情页点✓标记完成
+- 推进深研：说「prism 推进 cn-kweichow-moutai-600519」或「prism 推进 cn-luzhou-laojiao-000568」
 user_todos:
 - task: 下载茅五泸三家 2025 年报 + 2026Q1 季报（营收/净利/毛利率/合同负债/预收款/经营现金流全表）
   priority: P0
@@ -32,10 +129,12 @@ user_todos:
   - K3
   - K5
   source_hint: 巨潮资讯 cninfo / 公司 IR；茅台2025年报PDF prescan已见 moutaichina.com
-  status: pending
-  fetch_status: unattempted
-  fetch_attempts: 0
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
   disposition: undecided
+  coverage_note: 6.5a 年报/季报已入 manifest
+  last_fetch_note: 6.5a cninfo 直下
 - task: 抓全文 2-3 份白酒周期/拐点卖方深度研报（浙商证券筑底2026Q2拐点 / 中信建投杨骥十年一遇大底 / 东吴证券出清筑底）
   priority: P0
   info_tier: public
@@ -43,87 +142,139 @@ user_todos:
   - K1
   - K2
   source_hint: 同花顺/Wind/券商研报库；prescan raw 已有 URL
-  status: pending
-  fetch_status: unattempted
-  fetch_attempts: 0
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
   disposition: undecided
+  covered_by:
+  - mat-0225c4
+  coverage_note: 00 Step6.5 eager-fetch
+  last_fetch_note: exa高级搜索→公开转载/研报全文
 - task: 采集飞天/普五/国窖高频批价序列（今日酒价/酒价内参，近 6-12 月散瓶+原箱+开票价）
   priority: P0
   info_tier: half_public
   addresses:
   - K2
   source_hint: 今日酒价 App / 酒价内参 / 财联社酒价播报
-  status: pending
-  fetch_status: unattempted
-  fetch_attempts: 0
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
   disposition: undecided
+  covered_by:
+  - mat-765cbf
+  coverage_note: 00 Step6.5 eager-fetch
+  last_fetch_note: exa高级搜索→公开转载/研报全文
 - task: 渠道库存与动销草根调研（高端+次高端，第三方或卖方草根，交叉验证厂家口径 vs 真实库存月数）
   priority: P0
   info_tier: hard
   addresses:
   - K3
   source_hint: 卖方草根纪要 / 渠道调研 / 行业自媒体动销汇总
-  status: pending
-  fetch_status: unattempted
-  fetch_attempts: 0
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
   disposition: undecided
+  covered_by:
+  - mat-ec60d5
+  coverage_note: 00 Step6.5 eager-fetch
+  last_fetch_note: exa高级搜索→公开转载/研报全文
 - task: 茅五泸+汾酒 估值历史分位数据（PE-TTM/PB/股息率 + 近10年分位）
   priority: P1
   info_tier: public
   addresses:
   - K5
   source_hint: Wind/理杏仁/雪球；consensus 估值锚（A合同必收）
-  status: pending
-  fetch_status: unattempted
-  fetch_attempts: 0
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
   disposition: undecided
+  covered_by:
+  - mat-d42e97
+  coverage_note: 00 Step6.5 eager-fetch
+  last_fetch_note: exa高级搜索→公开转载/研报全文
 - task: 次高端逐家 2025 年报 + 动销/库存（汾酒青花/洋河梦之蓝/古井古20/舍得/口子窖）判弹性 vs 陷阱
   priority: P1
   info_tier: half_public
   addresses:
   - K6
   source_hint: 巨潮 cninfo；口子窖净利预降50-60% prescan已见
-  status: pending
-  fetch_status: unattempted
-  fetch_attempts: 0
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
   disposition: undecided
+  coverage_note: 6.5a 年报/季报已入 manifest
+  last_fetch_note: 6.5a cninfo 直下
 - task: 茅五泸 分红/回购/资本配置史（近5年分红率、注销式回购、增持，判管理层股东回报取向）
   priority: P1
   info_tier: public
   addresses:
   - K5
   source_hint: 公司公告；mgmt-capital-alloc（A合同必收）
-  status: pending
-  fetch_status: unattempted
-  fetch_attempts: 0
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
   disposition: undecided
+  covered_by:
+  - mat-78157e
+  coverage_note: 00 Step6.5 eager-fetch
+  last_fetch_note: exa高级搜索→公开转载/研报全文
 - task: 消费税改革对白酒影响的卖方专题测算（征收环节后移/加税对厂家+渠道净利冲击幅度）
   priority: P1
   info_tier: half_public
   addresses:
   - K4
   source_hint: 券商食饮/财税专题；prescan已见界面/普华永道PDF
-  status: pending
-  fetch_status: unattempted
-  fetch_attempts: 0
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
   disposition: undecided
+  covered_by:
+  - mat-01c06e
+  coverage_note: 00 Step6.5 eager-fetch
+  last_fetch_note: exa高级搜索→公开转载/研报全文
 - task: 2012-2015 轮白酒调整复盘（批价/估值/各家修复路径，作历史镜鉴）
   priority: P2
   info_tier: public
   addresses:
   - K1
   source_hint: 卖方复盘报告；historical-mirror（A合同必收）
-  status: pending
-  fetch_status: unattempted
-  fetch_attempts: 0
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
   disposition: undecided
+  covered_by:
+  - mat-118a9e
+  coverage_note: 00 Step6.5 eager-fetch
+  last_fetch_note: exa高级搜索→公开转载/研报全文
 - task: 高端白酒价格体系与批价机理科普（批价/打款价/开票价/倒挂 + 库存周期机制，喂 primer 背景）
   priority: P2
   info_tier: public
   addresses:
   - K2
   source_hint: 行业科普/卖方入门；primer 入门目标 1/3/7 背景料
-  status: pending
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-e04a4e
+  coverage_note: 00 Step6.5 eager-fetch
+  last_fetch_note: exa高级搜索→公开转载/研报全文
+- task: 资料提取完成：24 份核心资料全部抽出 findings（治理类公告 142 份按噪音跳过）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: Arena 合成完成（primer深度+6环决策链+peer矩阵+2个深研档company stub）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
   fetch_status: unattempted
   fetch_attempts: 0
   disposition: undecided
@@ -132,8 +283,8 @@ monitoring:
   cadence: daily
 critic: null
 decomposition:
-  current_version: 0
-  last_updated: '2026-06-06T13:44:54.308427+00:00'
+  current_version: 1
+  last_updated: '2026-06-07T00:26:22.542813+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
@@ -141,19 +292,33 @@ decomposition:
     summary: 命门1=拐点真伪(2026Q1降幅收窄是真企稳还是压货,中); 命门2=批价可持续性(飞天/普五底是真动销还是控货撑出,低); 命门3=alpha归属(高端龙头vs次高端陷阱,中);
       消费税改革=外生尾部风险(K4)
     convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-07T00:26:22.542826+00:00'
+    summary: 三命门全保留：命门1(拐点真伪)判定下移为偏未确认、命门2(批价)仍偏空、命门3(alpha归属)加强(次高端负弹性坐实)；新增古井合同负债领先信号观察点
+    convergence_status: converged
+    changelog: 命门1判定下移(中→偏未确认)、命门3加强；新增古井领先信号观察点(未升命门)；primer 10目标全保留+critic后补消费税机制/春节锚；厚料未推翻v0骨架→converged
 thesis:
-  current_version: 0
-  last_updated: '2026-06-06T13:43:00.395862+00:00'
+  current_version: 1
+  last_updated: '2026-06-07T00:26:22.516844+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
     set_at: '2026-06-06T13:43:00.396011+00:00'
     summary: 本轮白酒下行已在2026Q1出现可量化"降幅骤收窄"筑底信号，高端龙头(茅五泸)周期大底大概率已现/临近；但飞天批价二次探底与消费税改革落地是两道未拆的雷。分阶段左侧布局龙头(茅台>泸州/五粮液)、暂避次高端弹性陷阱。强度6.5/10
     prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-07T00:26:02.738583+00:00'
+    summary: 业绩底2026Q1初现、高端龙头估值历史极低位+股东回报安全垫真实→可左侧布局龙头(茅台>泸州)；但拐点确认度不足(企稳靠茅台撑+普遍压货背离)、批价二次探底与消费税两雷未拆、复苏或为缓坡非V型；坚决避次高端负弹性陷阱。强度5.5
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-07T00:26:22.516959+00:00'
+    summary: 业绩底2026Q1初现、高端龙头估值历史极低位+股东回报安全垫真实→可左侧布局龙头(茅台>泸州)；但拐点确认度不足(企稳靠茅台撑+普遍压货背离)、批价二次探底与消费税两雷未拆、复苏或为缓坡非V型；坚决避次高端负弹性陷阱。强度5.5
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-06-06T13:45:43.640863+00:00'
-  exited_at: null
+  exited_at: '2026-06-06T15:37:41.768175+00:00'
   gap_snapshot:
     uncovered_ks:
     - K1
@@ -168,5 +333,37 @@ stage_history:
     - peer-valuation-anchor
     - peer-comparison-financials
     - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-06-06T15:37:41.768175+00:00'
+  exited_at: '2026-06-06T16:08:45.930870+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K6
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-06-06T16:08:45.930870+00:00'
+  exited_at: '2026-06-07T00:29:54.651575+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-07T00:29:54.651575+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
     autofetch_debt: 0
     empty_pending_decision: 0

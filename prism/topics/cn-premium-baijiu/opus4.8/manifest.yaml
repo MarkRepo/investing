@@ -1,6 +1,6 @@
 slug: cn-premium-baijiu
 variant: opus4.8
-updated: '2026-06-06T13:40:04.259798+00:00'
+updated: '2026-06-06T16:08:12.071229+00:00'
 materials:
 - id: mat-da6498
   filename: 2026-06-06_2026年飞天茅台原箱最新批价报1700元-瓶-散瓶报1565元-瓶-川观新闻.md
@@ -1182,3 +1182,1580 @@ materials:
     stale_at: '2026-07-06T13:40:04.236163+00:00'
     expire_at: '2026-09-04T13:40:04.236163+00:00'
     triggered_by: 00-prescan
+- id: mat-6fe639
+  filename: 2025_600519_annual_2026-04-16_贵州茅台.PDF
+  source_type: annual-report
+  added: '2026-06-06T15:11:54.063108+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - mgmt-capital-alloc
+  - peer-comparison-financials
+  - peer-valuation-anchor
+  addresses:
+  - K1
+  - K3
+  - K5
+- id: mat-627c86
+  filename: 2026-06-02_600519_announce_kzz_贵州茅台关于调整2025年年度利润分配方案每股分红金额的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:54.680347+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-b711cc
+  filename: 2026-06-02_600519_announce_kzz_贵州茅台2025年度股东会会议资料.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:54.854820+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-63b19e
+  filename: 2026-05-27_600519_announce_kzz_贵州茅台关于回购股份实施结果暨股份变动的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:54.995914+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-bde885
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台关于召开2025年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:55.152650+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-66a871
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台关于聘任董事会秘书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:55.287305+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-02efe4
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台关于与关联方签订《商标许可协议》的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:55.425326+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-782a37
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台第四届董事会2026年度第八次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:55.603814+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-e9e62e
+  filename: 2026-05-07_600519_announce_kzz_贵州茅台关于回购股份实施进展的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:55.759536+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-abfe55
+  filename: 2026-04-28_600519_announce_kzz_贵州茅台关于召开2025年度及2026年第一季度业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:55.913461+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-5d7f36
+  filename: 2026-04-24_600519_announce_kzz_贵州茅台2026年第一季度主要经营数据公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:56.054303+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-5383c7
+  filename: 2026-04-24_600519_announce_kzz_贵州茅台2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:56.188712+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-6c10a2
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台关于贵州茅台集团财务有限公司的风险评估报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:56.344017+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-d2e266
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台2025年年度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:56.529659+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-13c17c
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台第四届董事会2026年度第六次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:56.678906+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-17988b
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台关于日常关联交易的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:56.839557+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-da7f4e
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台关于2025年年度利润分配方案及2026年中期利润分配安排的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:56.983106+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-48af62
+  filename: 2026_600519_quarterly_2026-04-24_贵州茅台.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:11:57.625436+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  addresses:
+  - K1
+  - K3
+- id: mat-9519f5
+  filename: 2025_000858_annual_2026-04-30_五粮液.PDF
+  source_type: annual-report
+  added: '2026-06-06T15:11:59.757740+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - mgmt-capital-alloc
+  - peer-comparison-financials
+  - peer-valuation-anchor
+  addresses:
+  - K1
+  - K3
+  - K5
+- id: mat-51cf89
+  filename: 2026-06-01_000858_announce_kzz_关于首次回购公司股份暨回购进展的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:00.712811+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-a646c6
+  filename: 2026-06-01_000858_announce_kzz_2025年度股东会议案资料.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:00.864723+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-fbc582
+  filename: 2026-06-01_000858_announce_kzz_关于召开2025年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:01.018297+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-5854c4
+  filename: 2026-06-01_000858_announce_kzz_第七届董事会2026年第5次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:01.168820+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-17599c
+  filename: 2026-05-20_000858_announce_kzz_关于以集中竞价交易方式回购公司股份的回购报告书.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:01.312753+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-6696a1
+  filename: 2026-05-18_000858_announce_kzz_关于回购股份事项通知债权人的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:01.466355+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-ba20d1
+  filename: 2026-05-18_000858_announce_kzz_《董事、高级管理人员薪酬管理制度》.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:01.625686+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-0b1e37
+  filename: 2026-05-18_000858_announce_kzz_2026年第一次临时股东会决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:01.815710+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-e87d4f
+  filename: 2026-05-15_000858_announce_kzz_关于回购股份事项前十大股东及前十大无限售条件股东持股情况的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:01.971137+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-0b1080
+  filename: 2026-05-11_000858_announce_kzz_关于回购股份事项前十大股东及前十大无限售条件股东持股情况的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:02.123914+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-2ddbf5
+  filename: 2026-05-11_000858_announce_kzz_2026年第一次临时股东会议案资料.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:02.298950+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-4ad378
+  filename: 2026-05-06_000858_announce_kzz_关于2026年第一次临时股东会增加临时提案暨股东会补充通知的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:02.484446+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-eb2e6c
+  filename: 2026-05-06_000858_announce_kzz_关于四川省宜宾五粮液集团有限公司增持公司股票计划的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:02.646593+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-26d500
+  filename: 2026-04-30_000858_announce_kzz_2025年半年度报告（更新后）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:02.822929+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-10d5c1
+  filename: 2026-04-30_000858_announce_kzz_2025年第一季度报告（更新后）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:02.986870+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-8042f9
+  filename: 2026-04-30_000858_announce_kzz_2025年第三季度报告（更新后）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:03.140727+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-b51042
+  filename: 2026-04-30_000858_announce_kzz_2025年度涉及财务公司关联交易的存款、贷款等金融业务的专项说明.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:03.818129+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-0da1ca
+  filename: 2026_000858_quarterly_2026-04-30_五粮液.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:04.534292+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  addresses:
+  - K1
+  - K3
+- id: mat-3bdade
+  filename: 2025_000568_annual_2026-04-28_泸州老窖.PDF
+  source_type: annual-report
+  added: '2026-06-06T15:12:06.752851+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - mgmt-capital-alloc
+  - peer-comparison-financials
+  - peer-valuation-anchor
+  addresses:
+  - K1
+  - K3
+  - K5
+- id: mat-8d6ab7
+  filename: 2026-05-14_000568_announce_kzz_泸州老窖股份有限公司关于召开2025年度网上业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:07.391052+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-74cfff
+  filename: 2026-04-28_000568_announce_kzz_2025年环境、社会及治理（ESG）报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:08.435051+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-7aebea
+  filename: 2026-04-28_000568_announce_kzz_关于募集资金2025年度存放与使用情况的专项报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:08.606968+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-91f322
+  filename: 2026-04-28_000568_announce_kzz_关于提请股东会授权董事会制定中期分红方案的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:08.795574+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-ae379c
+  filename: 2026-04-28_000568_announce_kzz_第十一届董事会二十四次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:08.966208+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-450135
+  filename: 2026-04-28_000568_announce_kzz_2025年度利润分配预案.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:09.132112+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-665a7e
+  filename: 2026-04-28_000568_announce_kzz_2026年一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:09.295567+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-509163
+  filename: 2026-04-28_000568_announce_kzz_募集资金年度存放与使用情况鉴证报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:09.489957+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-b049a1
+  filename: 2026-04-28_000568_announce_kzz_关于泸州老窖股份有限公司2025年度非经营性资金占用及其他关联资金往来的专项说明.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:09.683343+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-15cc7e
+  filename: 2026-04-28_000568_announce_kzz_2025年度非经营性资金占用及其他关联资金往来情况汇总表.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:09.849654+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-1bd560
+  filename: 2026-04-28_000568_announce_kzz_2025年度董事会工作报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:10.007647+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-d03f56
+  filename: 2026-04-28_000568_announce_kzz_2025年年度审计报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:10.215980+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-1ac93d
+  filename: 2026-04-28_000568_announce_kzz_2025年年度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:10.426142+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-921252
+  filename: 2026-04-08_000568_announce_kzz_泸州老窖股份有限公司信息披露暂缓与豁免管理制度.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:10.593783+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-0f2a8b
+  filename: 2026_000568_quarterly_2026-04-28_泸州老窖.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:11.656127+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  addresses:
+  - K1
+  - K3
+- id: mat-857153
+  filename: 2025_600809_annual_2026-04-22_山西汾酒.PDF
+  source_type: annual-report
+  added: '2026-06-06T15:12:55.243747+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+  addresses:
+  - K1
+  - K6
+- id: mat-63c948
+  filename: 2026-06-04_600809_announce_kzz_信息披露管理办法.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:55.878102+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-681b1d
+  filename: 2026-06-04_600809_announce_kzz_投资者关系管理办法.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:56.026224+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-e94f51
+  filename: 2026-06-04_600809_announce_kzz_第九届董事会第十二次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:56.204830+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-0af782
+  filename: 2026-06-04_600809_announce_kzz_关于2025年年度股东会增加临时提案的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:56.373052+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-57755d
+  filename: 2026-06-04_600809_announce_kzz_董事、高级管理人员持有本公司股份及其变动管理办法.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:56.537376+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-839990
+  filename: 2026-06-04_600809_announce_kzz_控股股东、实际控制人行为规范.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:56.696837+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-33e4d7
+  filename: 2026-06-04_600809_announce_kzz_募集资金管理制度.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:56.862410+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-7120fb
+  filename: 2026-06-04_600809_announce_kzz_关于控股股东与实际控制人之间产权层级减少事项完成工商变更登记的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:57.058969+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-f2129f
+  filename: 2026-05-15_600809_announce_kzz_关于参加山西辖区上市公司2026年投资者网上集体接待日暨年报业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:57.220170+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-4cc4c9
+  filename: 2026-05-13_600809_announce_kzz_关于召开2025年年度暨2026年第一季度业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:57.387101+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-eadfe2
+  filename: 2026-04-29_600809_announce_kzz_第九届董事会第九次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:57.544788+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-fb4149
+  filename: 2026-04-29_600809_announce_kzz_2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:57.731272+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-431f9a
+  filename: 2026-04-29_600809_announce_kzz_关于召开2025年年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:57.943656+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-24535e
+  filename: 2026-04-29_600809_announce_kzz_2026年第一季度经营数据公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:58.108580+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-0e2459
+  filename: 2026-04-22_600809_announce_kzz_2026年度“提质增效重回报”行动方案.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:58.280616+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-382876
+  filename: 2026-04-22_600809_announce_kzz_非经营性资金占用及其他关联资金往来情况的专项说明.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:58.756661+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-21c0f3
+  filename: 2026-04-22_600809_announce_kzz_2025年度审计报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:59.226798+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-2c7e91
+  filename: 2026-04-22_600809_announce_kzz_2025年度环境、社会和公司治理(ESG)报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:12:59.963758+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-e87115
+  filename: 2026-04-22_600809_announce_kzz_董事、高级管理人员薪酬管理制度.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:00.130965+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-ab08c8
+  filename: 2026-04-22_600809_announce_kzz_第九届董事会第八次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:00.321878+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-67d8ec
+  filename: 2026-04-22_600809_announce_kzz_关于2026年度日常关联交易计划的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:00.530043+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-4e94d0
+  filename: 2026-04-22_600809_announce_kzz_关于2025年度利润分配预案的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:00.734850+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-09dabb
+  filename: 2026_600809_quarterly_2026-04-29_山西汾酒.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:01.428232+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 山西汾酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  addresses:
+  - K1
+  - K6
+- id: mat-c27f59
+  filename: 2025_002304_annual_2026-04-27_洋河股份.PDF
+  source_type: annual-report
+  added: '2026-06-06T15:13:04.359892+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+  addresses:
+  - K1
+  - K6
+- id: mat-2fcc90
+  filename: 2026-01-23_002304_announce_yjygjxz_2025年度业绩预告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:04.818384+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-4cf302
+  filename: 2026-06-03_002304_announce_kzz_2025年度股东会法律意见书.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:05.355934+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-1a3366
+  filename: 2026-06-03_002304_announce_kzz_2025年度股东会决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:05.532633+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-bd65b2
+  filename: 2026-05-12_002304_announce_kzz_关于召开2025年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:05.731163+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-edf67d
+  filename: 2026-05-12_002304_announce_kzz_第八届董事会第二十次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:05.914002+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-7dbed6
+  filename: 2026-05-06_002304_announce_kzz_关于举行2025年度网上业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:06.086436+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-0bbc01
+  filename: 2026-04-27_002304_announce_kzz_董事和高级管理人员2026年度薪酬方案.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:06.328551+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-4f1681
+  filename: 2026-04-27_002304_announce_kzz_2025年度董事会工作报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:06.529409+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-6c8c5c
+  filename: 2026-04-27_002304_announce_kzz_2025年度环境、社会和公司治理报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:07.613469+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-2103da
+  filename: 2026-04-27_002304_announce_kzz_董事和高级管理人员薪酬与考核管理办法（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:07.781885+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-a2101d
+  filename: 2026-04-27_002304_announce_kzz_关于“质量回报双提升”行动方案的进展公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:07.973496+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-427063
+  filename: 2026-04-27_002304_announce_kzz_第八届董事会第十九次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:08.159186+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-61c40c
+  filename: 2026-04-27_002304_announce_kzz_关于2025年度利润分配预案的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:08.373671+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-4275c6
+  filename: 2026-04-27_002304_announce_kzz_2026年一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:08.585327+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-66efbc
+  filename: 2026-04-27_002304_announce_kzz_2025年度非经营性资金占用及其他关联资金往来情况的专项说明.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:09.068412+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-50d8e8
+  filename: 2026-04-27_002304_announce_kzz_2025年度非经营性资金占用及其他关联资金往来情况汇总表.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:09.263134+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-37f3c9
+  filename: 2026-04-27_002304_announce_kzz_2025年年度审计报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:09.893314+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-9391ca
+  filename: 2026-04-27_002304_announce_kzz_2025年年度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:10.211021+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-b1a6cf
+  filename: 2026-04-27_002304_announce_kzz_关于使用部分自有资金进行现金管理的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:10.382927+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-44114b
+  filename: 2026_002304_quarterly_2026-04-27_洋河股份.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:11.480286+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 洋河股份
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  addresses:
+  - K1
+  - K6
+- id: mat-08c1da
+  filename: 2025_000596_annual_2026-04-28_古井贡酒.PDF
+  source_type: annual-report
+  added: '2026-06-06T15:13:14.367377+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+  addresses:
+  - K1
+  - K6
+- id: mat-a59d64
+  filename: 2026-06-05_000596_announce_kzz_关于董事会换届选举的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:15.059626+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-aeac35
+  filename: 2026-06-05_000596_announce_kzz_关于召开2025年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:15.430849+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-66cfcb
+  filename: 2026-06-05_000596_announce_kzz_第十届董事会第十五次会议决议.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:15.610289+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-13c513
+  filename: 2026-05-08_000596_announce_kzz_关于举办2025年度网上业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:15.799128+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-bb130f
+  filename: 2026-04-28_000596_announce_kzz_关于使用闲置自有资金进行委托理财的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:15.989132+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-8d2f38
+  filename: 2026-04-28_000596_announce_kzz_信息披露暂缓与豁免管理制度（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:16.167852+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-8b65fc
+  filename: 2026-04-28_000596_announce_kzz_证券投资管理制度（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:16.383272+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-338bca
+  filename: 2026-04-28_000596_announce_kzz_信息披露管理制度（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:16.588148+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-870322
+  filename: 2026-04-28_000596_announce_kzz_外部信息报送和使用管理制度（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:16.777064+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-b8b41e
+  filename: 2026-04-28_000596_announce_kzz_投资者关系管理制度（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:16.957975+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-734263
+  filename: 2026-04-28_000596_announce_kzz_年报信息披露重大差错责任追究制度（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:17.134790+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-7d3b96
+  filename: 2026-04-28_000596_announce_kzz_内部审计工作制度（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:17.326774+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-42b230
+  filename: 2026-04-28_000596_announce_kzz_内幕信息知情人登记管理制度（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:17.538443+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-18d255
+  filename: 2026-04-28_000596_announce_kzz_累积投票制实施细则（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:17.735145+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-5c2174
+  filename: 2026-04-28_000596_announce_kzz_募集资金管理办法（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:17.949185+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-61c794
+  filename: 2026-04-28_000596_announce_kzz_关联交易管理制度（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:18.149199+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-fa9307
+  filename: 2026-04-28_000596_announce_kzz_股东会议事规则（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:18.337283+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-59c5c3
+  filename: 2026-04-28_000596_announce_kzz_董事会议事规则（2026年4月）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:18.539535+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-ef1ded
+  filename: 2026_000596_quarterly_2026-04-28_古井贡酒.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:19.351214+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 古井贡酒
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  addresses:
+  - K1
+  - K6
+- id: mat-fee915
+  filename: 2025_600702_annual_2026-03-20_舍得酒业.PDF
+  source_type: annual-report
+  added: '2026-06-06T15:13:22.400432+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+  addresses:
+  - K1
+  - K6
+- id: mat-214c89
+  filename: 2026-05-19_600702_announce_kzz_舍得酒业2025年年度权益分派实施公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:23.151887+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-b68486
+  filename: 2026-05-19_600702_announce_kzz_国浩律师（成都）事务所关于舍得酒业差异化权益分派特殊除权除息事项之法律意见书.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:23.395958+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-b9d0d9
+  filename: 2026-04-28_600702_announce_kzz_舍得酒业关于注销部分回购股份减少公司注册资本暨通知债权人的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:23.604931+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-7beda5
+  filename: 2026-04-28_600702_announce_kzz_国浩律师（成都）事务所关于舍得酒业2025年年度股东会的法律意见书.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:23.834861+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-529ba1
+  filename: 2026-04-28_600702_announce_kzz_舍得酒业2025年年度股东会决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:24.051499+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-101c79
+  filename: 2026-04-15_600702_announce_kzz_舍得酒业2025年年度股东会会议材料.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:24.272067+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-43305e
+  filename: 2026-04-15_600702_announce_kzz_舍得酒业第十一届董事会第二十一次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:24.486205+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-3483f0
+  filename: 2026-04-15_600702_announce_kzz_舍得酒业2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:24.672080+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-40fe49
+  filename: 2026-04-15_600702_announce_kzz_舍得酒业2026年第一季度经营数据公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:24.862275+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-a4f0a8
+  filename: 2026-04-15_600702_announce_kzz_舍得酒业2026年度“提质增效重回报”行动方案.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:25.057116+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-072099
+  filename: 2026-04-08_600702_announce_kzz_舍得酒业关于召开2025年度业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:25.256113+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-6bb9c8
+  filename: 2026-04-02_600702_announce_kzz_舍得酒业关于召开2025年年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:25.592051+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-27f0e3
+  filename: 2026-03-20_600702_announce_kzz_舍得酒业第十一届董事会第二十次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:25.793510+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-49d6b4
+  filename: 2026-03-20_600702_announce_kzz_舍得酒业2026年度预计日常关联交易公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:25.999159+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-d3943c
+  filename: 2026-03-20_600702_announce_kzz_舍得酒业2025年年度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:26.236026+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-8d1646
+  filename: 2026-03-20_600702_announce_kzz_舍得酒业2025年度审计报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:26.954696+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-2ee4e2
+  filename: 2026-03-20_600702_announce_kzz_舍得酒业关于调整公司部分回购股份用途并注销的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:27.159125+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-915151
+  filename: 2026-03-20_600702_announce_kzz_舍得酒业关于2026年度公司及子公司申请授信额度并为子公司提供融资担保的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:27.384093+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-df2260
+  filename: 2026-03-20_600702_announce_kzz_舍得酒业2025年度非经营性资金占用及其他关联资金往来情况汇总表的专项审核报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:27.709732+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-1c6e2d
+  filename: 2026_600702_quarterly_2026-04-15_舍得酒业.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:28.552714+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 舍得酒业
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  addresses:
+  - K1
+  - K6
+- id: mat-3a9e91
+  filename: 2025_603589_annual_2026-04-22_口子窖.PDF
+  source_type: annual-report
+  added: '2026-06-06T15:13:32.026893+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+  addresses:
+  - K1
+  - K6
+- id: mat-c9232a
+  filename: 2026-01-07_603589_announce_yjygjxz_安徽口子酒业股份有限公司2025年年度业绩预减公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:32.544085+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-853803
+  filename: 2026-05-20_603589_announce_kzz_安徽口子酒业股份有限公司关于股东部分股份补充质押的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:33.221126+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-df1323
+  filename: 2026-05-20_603589_announce_kzz_安徽口子酒业股份有限公司关于注销部分募集资金专项账户的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:33.414779+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-32bbfe
+  filename: 2026-05-19_603589_announce_kzz_安徽口子酒业股份有限公司2025年年度股东会决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:33.637802+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-a4d9ca
+  filename: 2026-05-19_603589_announce_kzz_安徽口子酒业股份有限公司第六届董事会第一次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:33.871356+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-0e42ca
+  filename: 2026-05-11_603589_announce_kzz_安徽口子酒业股份有限公司2025年年度股东会会议资料.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:34.091282+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-6fafe6
+  filename: 2026-04-30_603589_announce_kzz_安徽口子酒业股份有限公司关于股东部分股份补充质押的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:34.316205+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-5e697e
+  filename: 2026-04-22_603589_announce_kzz_华林证券股份有限公司关于安徽口子酒业股份有限公司关于终止部分募投项目并将剩余募集.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:34.546478+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-dc6e5f
+  filename: 2026-04-22_603589_announce_kzz_华林证券股份有限公司关于安徽口子酒业股份有限公司2025年度募集资金使用与存放情.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:34.762043+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-13d2f0
+  filename: 2026-04-22_603589_announce_kzz_安徽口子酒业股份有限公司2025年年度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:35.022319+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-3fa7b7
+  filename: 2026-04-22_603589_announce_kzz_安徽口子酒业股份有限公司第五届董事会第十四次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:35.229630+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-150fb8
+  filename: 2026-04-22_603589_announce_kzz_安徽口子酒业股份有限公司关于召开2025年年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:35.636409+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-cd8002
+  filename: 2026-04-22_603589_announce_kzz_安徽口子酒业股份有限公司2026年第一季度经营数据公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:35.834656+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-4202ac
+  filename: 2026-04-22_603589_announce_kzz_安徽口子酒业股份有限公司关于2025年度利润分配方案的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:36.055820+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-073927
+  filename: 2026-04-22_603589_announce_kzz_安徽口子酒业股份有限公司2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:36.275256+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-4da5ba
+  filename: 2026-04-22_603589_announce_kzz_安徽口子酒业股份有限公司关于选举职工代表董事的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:36.471278+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-e6afd1
+  filename: 2026-04-22_603589_announce_kzz_安徽口子酒业股份有限公司关于2025年年度募集资金存放、管理与实际使用情况的专项.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:36.714252+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-c9d516
+  filename: 2026_603589_quarterly_2026-04-22_口子窖.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T15:13:37.557507+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 口子窖
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  addresses:
+  - K1
+  - K6
+- id: mat-0225c4
+  filename: websearch_卖方拐点研报合集_2026-06.md
+  source_type: sell-side-note
+  added: '2026-06-06T15:20:58.930820+00:00'
+  processed: true
+  notes: exa→浙商/中信/东吴/中信建投/平安 拐点研报合集
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - consensus
+  confidence: 0.8
+- id: mat-d42e97
+  filename: websearch_估值历史分位_2026-06.md
+  source_type: data
+  added: '2026-06-06T15:20:59.034488+00:00'
+  processed: true
+  notes: exa→亿牛网/小牛行研/ddgp/中信 估值分位数据
+  mineru_state: not_needed
+  addresses:
+  - K5
+  rings:
+  - consensus
+  - valuation-anchor
+  confidence: 0.8
+- id: mat-01c06e
+  filename: websearch_消费税改革测算_2026-06.md
+  source_type: policy
+  added: '2026-06-06T15:20:59.139407+00:00'
+  processed: true
+  notes: exa→中信建投/国信/中泰/东吴/酒教主 税改测算
+  mineru_state: not_needed
+  addresses:
+  - K4
+  rings:
+  - historical-mirror
+  confidence: 0.8
+- id: mat-118a9e
+  filename: websearch_13-15轮调整复盘_2026-06.md
+  source_type: industry-research
+  added: '2026-06-06T15:20:59.237170+00:00'
+  processed: true
+  notes: exa→平安/国金/联合资信/东方/界面 历史镜鉴
+  mineru_state: not_needed
+  addresses:
+  - K1
+  rings:
+  - arena-mirror
+  - historical-mirror
+  confidence: 0.8
+- id: mat-e04a4e
+  filename: websearch_价格体系批价机理科普_2026-06.md
+  source_type: industry-research
+  added: '2026-06-06T15:20:59.336970+00:00'
+  processed: true
+  notes: exa→人人文库/证券时报/价盘治理 价格体系科普(primer背景)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.8
+- id: mat-765cbf
+  filename: websearch_高频批价序列_2026-06.md
+  source_type: data
+  added: '2026-06-06T15:20:59.436358+00:00'
+  processed: true
+  notes: exa→酒价内参/白酒早讯/云酒说/山西证券 批价序列
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.8
+- id: mat-ec60d5
+  filename: websearch_渠道库存草根调研_2026-06.md
+  source_type: channel-check
+  added: '2026-06-06T15:20:59.536606+00:00'
+  processed: true
+  notes: exa→酒业家/微酒/佳酿/招商 一线草根库存动销
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.8
+- id: mat-78157e
+  filename: websearch_茅五泸分红回购资本配置_2026-06.md
+  source_type: company-filing
+  added: '2026-06-06T15:20:59.638466+00:00'
+  processed: true
+  notes: exa→TOP5十年分红/茅台市值管理/分红规划公告
+  mineru_state: not_needed
+  addresses:
+  - K5
+  rings:
+  - mgmt-capital-alloc
+  confidence: 0.8

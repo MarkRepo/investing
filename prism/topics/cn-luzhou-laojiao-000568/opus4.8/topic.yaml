@@ -1,0 +1,44 @@
+slug: cn-luzhou-laojiao-000568
+display_name: 泸州老窖
+type: company
+created: '2026-06-07T00:22:48.392199+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-premium-baijiu
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 泸州老窖费用弹性与国窖1573价盘能否支撑拐点修复，Q1经营现金流逆势反转是否可持续，高股息安全垫赔率如何
+  depth: deep
+  ticker: SZSE_000568
+  market: SZSE
+  short_name: 泸州老窖
+  search_terms:
+  - 泸州老窖
+  - 国窖1573
+  - 批价
+  - 费用弹性
+  - 分红
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-07T00:23:56.196161+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-06-07T00:23:56.196175+00:00'
+    summary: 高端龙头赔率最优左侧选项：分红承诺逐年抬(年≥85亿)+股息6.34%最高+Q1经现逆势+37%；但营收-14%落后茅五、全年经现-62.8%最差、有2014逆势提价腰斩前科，拐点确认晚。强度5.0

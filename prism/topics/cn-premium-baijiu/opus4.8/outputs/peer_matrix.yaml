@@ -1,0 +1,107 @@
+slug: cn-premium-baijiu
+variant: opus4.8
+topic_type: arena
+display_name: 高端白酒 (Premium Baijiu — 周期拐点)
+generated: 2026-06-07T00:00:00+00:00
+data_freshness: 2026-06-07
+
+companies:
+  - name: 贵州茅台
+    ticker: SSE_600519
+    score: 4.5
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-kweichow-moutai-600519
+    thesis_one_liner: 组内唯一 Q1 营收转正 + 650亿分红/60亿注销式回购托底，左侧布局压舱石；市场已付企稳溢价、忌追高，Q1 现金流背离待深挖
+    upgrade_triggers: []
+    quarantine: false
+  - name: 泸州老窖
+    ticker: SZSE_000568
+    score: 3.8
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-luzhou-laojiao-000568
+    thesis_one_liner: 高股息(6.34%)安全垫 + Q1 现金流/税费环比改善的弱拐点信号，赔率优于茅台但拐点确认晚，待验证费用弹性与价盘
+    upgrade_triggers: []
+    quarantine: false
+  - name: 五粮液
+    ticker: SZSE_000858
+    score: 3.3
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 董事长被留置事件明确落地且无重大经营冲击
+      - 会计差错更正口径企稳、2026中报可正常同比
+      - 普五批价回到850+且倒挂收窄
+    quarantine: false
+  - name: 古井贡酒
+    ticker: SZSE_000596
+    score: 2.9
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 2026Q2营收降幅显著收窄(确认Q1合同负债+51.6%领先信号成立)
+      - 华北等省外市场止跌
+      - 古20全国化动销回暖
+    quarantine: false
+  - name: 山西汾酒
+    ticker: SZSE_600809
+    score: 2.8
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 2026Q2/Q3降幅收窄至个位数(高beta转向上)
+      - 青花20/30动销与价盘回暖
+      - 经营现金流背离收敛
+    quarantine: false
+  - name: 舍得酒业
+    ticker: SSE_600702
+    score: 2.0
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+  - name: 洋河股份
+    ticker: SZSE_002304
+    score: 1.9
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+  - name: 口子窖
+    ticker: SSE_603589
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: true
+
+cluster_tags: [高端白酒, 次高端白酒, 消费, 周期拐点, CN]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 2
+    kind: data-missing
+    note: 财务/行情API(akshare/yfinance)本环境网络阻断，ROIC/实时精确PE未自动拉取，PE用研报口径(mat-d42e97)
+  - ring: 4
+    kind: data-missing
+    note: peer矩阵ROIC列留待company深研补；五粮液同比受会计差错更正污染、需锁调整后口径
+  - ring: 5
+    kind: training-estimate
+    note: 消费税"60%孰高/穿透关联交易"为自媒体口径(mat-01c06e)待官方核实
