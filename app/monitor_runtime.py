@@ -68,6 +68,14 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
             result["price"] = {"error": str(e)}
             _log(f"price proposals failed: {e}")
 
+        # macro 输入到期/越带（零 LLM）：写 macro_input proposal
+        try:
+            macro_res = await asyncio.to_thread(monitor.propose_macro_updates)
+            _log(f"macro: scanned={macro_res.get('scanned_macro', 0)} "
+                 f"added={macro_res.get('added', 0)}")
+        except Exception as e:
+            _log(f"macro propose failed: {e}")
+
         # ② scan 看有无需判读的到期项
         try:
             scan = await asyncio.to_thread(monitor.scan_due_events)

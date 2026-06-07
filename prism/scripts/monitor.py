@@ -656,6 +656,9 @@ if __name__ == "__main__":
     elif cmd == "price":
         import json
         print(json.dumps(propose_price_breaches(within), ensure_ascii=False, indent=2))
+    elif cmd == "macro":
+        import json
+        print(json.dumps(propose_macro_updates(within), ensure_ascii=False, indent=2))
     else:
-        print(f"unknown command: {cmd}（支持 scan / price）", file=sys.stderr)
+        print(f"unknown command: {cmd}（支持 scan / price / macro）", file=sys.stderr)
         sys.exit(1)

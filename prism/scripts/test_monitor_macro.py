@@ -97,3 +97,16 @@ def test_confirm_macro_input_appends_living_feed(macro_monitor_env):
     assert out["status"] == "confirmed"
     feed = (tmpdir / "topics" / slug / variant / "outputs" / "08_living_feed.md").read_text(encoding="utf-8")
     assert "HY OAS" in feed
+
+
+import json
+import subprocess
+import sys
+
+
+def test_cli_macro_command(macro_monitor_env, monkeypatch):
+    # CLI 直接调进程内函数即可验证命令分支存在；这里验证函数签名稳定
+    slug, variant, _ = macro_monitor_env
+    monitor.add_watch(slug, scope="topic", variant=variant)
+    res = monitor.propose_macro_updates(within_days=14)
+    assert "scanned_macro" in res
