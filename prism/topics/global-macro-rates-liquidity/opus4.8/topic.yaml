@@ -6,7 +6,7 @@ status: active
 stage: done
 canonical: true
 parent_topic: null
-monitoring_tier: dormant
+monitoring_tier: watch
 concepts: []
 scope:
   geo: GLOBAL
@@ -47,7 +47,7 @@ next_actions:
 - 运行 workflow 01-build-roadmap
 user_todos: []
 monitoring:
-  enabled: false
+  enabled: true
   cadence: daily
 critic: null
 decomposition:

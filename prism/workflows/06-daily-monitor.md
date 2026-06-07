@@ -32,6 +32,8 @@ python3 -m prism.scripts.monitor scan 14
 | `unparseable` | 日期写错的 event（永不触发）| **贴对话上报**，建议人工修 sidecar 日期 |
 | `price_unavailable` | 停牌/缺数/币种错配 | 记一笔，不误报 |
 | `skipped_no_sidecar` | 关注了但还没 sidecar | 记一笔 |
+| `macro_due` | macro topic 的事件/描述型指标到期 | → Step 3.5 零 LLM 路径 |
+| `macro_alert` | macro topic 的行情型 alert_series 越带 | → Step 3.5 零 LLM 路径 |
 
 `due_signposts`/`due_kills` 都为空且 `recurring_review` 为空 → 无事可做，结束。
 
@@ -109,6 +111,24 @@ signpost/kill 等价的 proposal（locator 用触发器文本的 hash 或 metric
 ```python
 from prism.scripts.topic import set_monitoring_reviewed
 set_monitoring_reviewed(slug, variant)
+```
+
+---
+
+## Step 3.5：宏观输入（macro topic）
+
+`scan` 现多两桶 `macro_due`（事件/描述型到期）/ `macro_alert`（行情型 alert_series 越带）。
+
+这两桶走**零 LLM 路径**：`python3 -m prism.scripts.monitor macro` 或运行时自动调
+`monitor.propose_macro_updates`，机械写 `kind=macro_input` proposal（信息型，预写 living_feed 文案）。
+
+**铁律**：
+- **绝不自动改 regime_read**；承重/越带项标 `requires_thesis_review=True`，仅在 web「建议重判」点名，等用户说「合成 global-macro」走 `_macro_regime.md` 重出三件套。
+- 描述型（policy）全文抓取/findings 抽取属第二期；本期到期只提示"该取新值"。
+
+```python
+from prism.scripts import monitor
+monitor.propose_macro_updates(days=14)
 ```
 
 ---

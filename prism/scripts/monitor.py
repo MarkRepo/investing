@@ -23,6 +23,7 @@ from pathlib import Path
 
 import yaml
 
+from prism.scripts import macro_registry
 from prism.scripts import sidecar_edit
 from prism.scripts.dashboard import (
     _parse_signpost_date,
@@ -177,8 +178,12 @@ def scan_due_events(within_days: int = 14) -> dict:
       price_breach,               # 零 LLM——可直接 propose
       recurring_review,           # industry/arena 无日期触发器，按周期重扫
       unparseable,                # 日期解析失败的 signpost/kill（写错=永不触发，必须曝光）
+                                  # macro 的 unparseable 项额外带 {slug, variant,
+                                  # field:"macro_input", locator} 字段。
       price_unavailable,          # 停牌/缺数/币种错配——不误报破位
-      skipped_no_sidecar,         # 关注了但还没 sidecar
+      skipped_no_sidecar,         # 关注了但还没 sidecar（macro 无登记表时 reason="no_macro_registry"）
+      macro_due,                  # macro topic 事件/描述到期项，带 slug/variant + 登记表字段
+      macro_alert,                # macro topic 行情型 alert_series 越带项
     }
     每个 due 项带 slug/variant/locator，足够 headless 定位与判读。
     """
@@ -187,6 +192,7 @@ def scan_due_events(within_days: int = 14) -> dict:
         "due_signposts": [], "due_kills": [], "price_breach": [],
         "recurring_review": [], "unparseable": [],
         "price_unavailable": [], "skipped_no_sidecar": [],
+        "macro_due": [], "macro_alert": [],
     }
     for w in load_watchlist():
         slug = w.get("slug")
@@ -197,6 +203,26 @@ def scan_due_events(within_days: int = 14) -> dict:
         wkind = w.get("kind")
         wloc = w.get("locator")
         ttype = _topic_type(slug, variant)
+
+        # macro：无 07 sidecar，读 macro_inputs 登记表分桶（事件/描述到期 + 行情越带）
+        if ttype == "macro":
+            try:
+                reg = macro_registry.read_registry(slug, variant)
+            except FileNotFoundError:
+                out["skipped_no_sidecar"].append(
+                    {"slug": slug, "variant": variant, "reason": "no_macro_registry"})
+                continue
+            # macro 到期为"已过期"语义（overdue-only，见 scan_macro_inputs）：
+            # 仅在发布点已过才提示取新值，不做 within_days 前瞻（与 proposal 文案一致）。
+            mscan = macro_registry.scan_macro_inputs(reg, today=today)
+            for x in mscan["due_event"] + mscan["due_policy"]:
+                out["macro_due"].append({"slug": slug, "variant": variant, **x})
+            for x in mscan["alert_series"]:
+                out["macro_alert"].append({"slug": slug, "variant": variant, **x})
+            for u in mscan["unparseable"]:
+                out["unparseable"].append({"slug": slug, "variant": variant,
+                                           "field": "macro_input", "locator": u.get("name")})
+            continue
 
         # industry/arena:无 dated signpost，走周期重扫
         if ttype in ("industry", "arena"):
@@ -394,6 +420,55 @@ def propose_price_breaches(within_days: int = 14) -> dict:
     return result
 
 
+def propose_macro_updates(within_days: int = 14) -> dict:
+    """零 LLM 路径：scan macro 桶 → 写 kind='macro_input' proposal 进 queue。
+
+    macro proposal 是信息型——confirm 只追加 living_feed + 盖"建议重判"戳，
+    绝不自动改 regime_read（判断永远人在 web 端触发）。
+    importance=load_bearing 或越带 alert → requires_thesis_review=True。
+    """
+    scan = scan_due_events(within_days=within_days)
+    proposals = []
+    today_str = date.today().isoformat()
+    for item in scan["macro_due"]:
+        name = item.get("name", "")
+        imp = item.get("importance")
+        entry = (
+            f"## {today_str} 宏观输入到期：{name}\n"
+            f"**来源**：{item.get('source', '—')}（{item.get('cadence_type')}）\n"
+            f"**关键信息**：该输入已到发布/排期点，待取新值与旧读数对比\n"
+            f"**对已有判断的影响**：{item.get('causal_sentence') or '（见登记表机制句）'}\n"
+            f"**当前判断更新**：维持，等用户在 web 端决定是否重判"
+        )
+        proposals.append({
+            "slug": item["slug"], "variant": item["variant"], "kind": "macro_input",
+            "locator": name, "proposed_value": "due",
+            "living_feed_entry": entry,
+            "rationale": f"{name} 到期（{item.get('cadence_type')}）",
+            "requires_thesis_review": imp == "load_bearing",
+        })
+    for item in scan["macro_alert"]:
+        name = item.get("name", "")
+        obs = item.get("observed") or {}
+        entry = (
+            f"## {today_str} 宏观承重序列越带：{name}\n"
+            f"**来源**：{item.get('source', '—')}（行情型 alert_series）\n"
+            f"**关键信息**：最新 {obs.get('value', obs.get('z', '—'))} / 上次 {obs.get('prev_value', '—')}，越预设报警带\n"
+            f"**对已有判断的影响**：{item.get('causal_sentence') or '承重序列突变，可能预示体制切换'}\n"
+            f"**当前判断更新**：维持，强烈建议用户重判"
+        )
+        proposals.append({
+            "slug": item["slug"], "variant": item["variant"], "kind": "macro_input",
+            "locator": name, "proposed_value": "alert",
+            "living_feed_entry": entry,
+            "rationale": f"{name} 越报警带",
+            "requires_thesis_review": True,
+        })
+    result = propose_flips(proposals)
+    result["scanned_macro"] = len(scan["macro_due"]) + len(scan["macro_alert"])
+    return result
+
+
 def _append_living_feed(slug: str, variant: str, entry_md: str) -> None:
     """把一段 markdown 追加到 08_living_feed.md 末尾,并 bump output 状态。零 LLM。"""
     if not entry_md.strip():
@@ -581,6 +656,9 @@ if __name__ == "__main__":
     elif cmd == "price":
         import json
         print(json.dumps(propose_price_breaches(within), ensure_ascii=False, indent=2))
+    elif cmd == "macro":
+        import json
+        print(json.dumps(propose_macro_updates(within), ensure_ascii=False, indent=2))
     else:
-        print(f"unknown command: {cmd}（支持 scan / price）", file=sys.stderr)
+        print(f"unknown command: {cmd}（支持 scan / price / macro）", file=sys.stderr)
         sys.exit(1)

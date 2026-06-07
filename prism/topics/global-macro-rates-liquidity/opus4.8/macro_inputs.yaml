@@ -1,0 +1,1846 @@
+slug: global-macro-rates-liquidity
+variant: opus4.8
+updated: '2026-06-07T17:11:47.420020+00:00'
+inputs:
+- name: 联邦基金目标区间
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  - liquidity
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 已有
+  causal_sentence: 联邦基金目标区间设定无风险短端利率锚 → 经全曲线与美元定价 → 直接驱动利率/流动性/汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: DFEDTARU
+- name: FOMC 点阵图(SEP)
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: web(Fed)
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: 点阵图昭示 FOMC 对政策路径的中位预期 → 经市场重定价远期利率 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: CME FedWatch 隐含路径
+  tier: A
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: web(CME)
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: 期货隐含的降息/加息概率即市场对政策路径的实时定价 → 经远期利率 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: FOMC 声明/纪要
+  tier: A
+  cadence_type: policy
+  targets:
+  - rates
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: web(Fed)
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 声明/纪要措辞变化传递反应函数转向 → 经预期重置远端利率与流动性预期 → 驱动利率/流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 美联储官员讲话(主席)
+  tier: A
+  cadence_type: policy
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 改(原仅注解)
+  causal_sentence: 主席讲话前瞻指引调整市场对反应函数的认知 → 经预期重定价 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 非农就业 NFP
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 改(原仅注解)
+  causal_sentence: 就业强弱改变 Fed 对劳动力市场松紧的判断 → 经反应函数调整政策路径 → 驱动利率与美元。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: PAYEMS
+- name: 失业率
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 失业率是双重使命的就业侧读数 → 经反应函数（Sahm 触发等）调整政策 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: UNRATE
+- name: 初请失业金
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 周度初请是劳动力市场最高频前瞻 → 经领先就业拐点改变政策预期 → 驱动利率。
+  lag: 领先(周)
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: ICSA
+- name: JOLTS 职位空缺/离职率
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 空缺/离职率度量劳动力市场紧度（贝弗里奇曲线）→ 经工资与反应函数 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: JTSJOL
+- name: ISM 制造业 PMI
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: PMI 领先增长动能 → 经增长预期改变政策路径与风险偏好 → 驱动利率与美元。
+  lag: 领先
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: ISM 服务业 PMI
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 服务业 PMI 度量占比最大的服务部门动能 → 经增长/通胀预期 → 驱动利率。
+  lag: 领先
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 零售销售
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 零售销售即时反映消费动能 → 经增长与通胀路径预期 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: RSAFS
+- name: GDPNow 实时预测
+  tier: B
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CO
+  importance: confirming
+  source: web(亚特兰大联储)
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ''
+  lag: 同步(实时拼接)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 时薪 / ECI
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 工资增速是服务通胀的核心成本推手 → 经通胀粘性影响反应函数 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: CES0500000003
+- name: 核心 PCE
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 核心 PCE 是 Fed 首选通胀标尺，分期限作用（短端正/长端可反向），用超预期而非水平触发 → 经反应函数 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: PCEPILFE
+- name: CPI(核心+supercore)
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: CPI 核心/supercore 揭示通胀粘性结构 → 经通胀预期与反应函数 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: CPILFESL
+- name: PCE 三分项(supercore/住房/商品)
+  tier: B
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 分项拆解定位通胀来源（住房滞后、supercore 粘）→ 经对通胀路径的判读 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: PCEPILFE
+- name: PPI
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 改(原仅注解)
+  causal_sentence: PPI 是 CPI/PCE 的上游成本前瞻 → 经传导至终端通胀预期 → 驱动利率。
+  lag: 领先
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: PPIFIS
+- name: WTI 油价(+供给/需求分解)
+  tier: A
+  cadence_type: series
+  targets:
+  - rates
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 改
+  causal_sentence: 油价经能源与运输成本推动 headline 通胀及预期 → 经反应函数 → 驱动利率与美元。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: DCOILWTICO
+- name: 5y5y/breakeven 通胀预期
+  tier: A
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 盈亏平衡通胀（半内生于利率）度量市场长期通胀锚 → 经名义利率分解 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: T5YIFR
+- name: 国债发行计划 QRA + 票/券构成
+  tier: A
+  cadence_type: policy
+  targets:
+  - liquidity
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: web(Treasury)
+  fetch_method: llm-web
+  state: 改(升级:加构成)
+  causal_sentence: QRA 发行规模与票/券构成决定久期供给与对准备金/RRP 的抽取 → 经期限溢价与净流动性 → 驱动流动性/利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: TGA 余额
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 改(原仅净流动性内)
+  causal_sentence: TGA 增减直接吸放银行准备金 → 经净流动性 → 驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: WTREGEN
+- name: 联邦赤字
+  tier: B
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: background
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 赤字规模决定中长期国债净供给 → 经期限溢价 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: MTSDS133FMS
+- name: 美联储资产 WALCL(QT 节奏)
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 改
+  causal_sentence: QT 缩表节奏决定准备金供给收缩速度 → 经净流动性与期限溢价 → 驱动流动性/利率。
+  lag: 同步(周)
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: WALCL
+- name: RRP 逆回购
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 改
+  causal_sentence: RRP 是流动性蓄水池，余额变动反映过剩流动性吸/放 → 经净流动性 → 驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: RRPONTSYD
+- name: 净流动性(=资产−TGA−RRP)
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: FRED派生
+  fetch_method: fred-api
+  state: 改(降权重,见§5)
+  causal_sentence: 净流动性=资产−TGA−RRP，regime 条件性（RRP 耗尽后才 binding）地度量银行体系可用准备金 → 直接驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: __DERIVED__
+- name: 银行准备金 + 准备金/GDP
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: 准备金水平（相对 GDP）决定体系离稀缺区的距离 → 经回购市场压力阈值 → 驱动流动性。
+  lag: 同步(周)
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: WRESBAL
+- name: SOFR−IORB / 回购压力
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: web(NYFed)
+  fetch_method: llm-web
+  state: 改(升为binding)
+  causal_sentence: SOFR 相对 IORB 走阔即准备金稀缺的 binding 信号 → 经回购市场定价 → 驱动流动性/利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: FRA-OIS 利差
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: FRA-OIS 度量银行间无担保融资的信用/流动性溢价（尾部）→ 经美元融资压力 → 驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: Fed swap line / SRF / FIMA 动用
+  tier: A
+  cadence_type: policy
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: web(Fed)
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 互换额度/SRF/FIMA 动用即 Fed 投放美元流动性救火（尾部）→ 经离岸美元供给 → 驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: SLOOS 银行信贷标准
+  tier: A
+  cadence_type: event
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: web(Fed)
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 银行信贷标准收紧领先信用收缩 → 经信贷供给传导实体流动性 → 驱动流动性。
+  lag: 领先(季)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 2Y/10Y/30Y 国债
+  tier: A
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 已有
+  causal_sentence: 国债收益率是利率体制的直接读数与定价基准 → 直接驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: DGS10
+- name: 10Y 实际利率 TIPS
+  tier: A
+  cadence_type: series
+  targets:
+  - rates
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 已有
+  causal_sentence: 10Y 实际利率是全球资产的贴现率与美元套息基础 → 经折现与利差 → 驱动利率与美元。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: DFII10
+- name: 期限溢价 ACM 分解
+  tier: B
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: web(NYFed)
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ACM 把名义利率拆出期限溢价分量 → 经供给/风险定价归因 → 辅判利率成因。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 2s10s 曲线斜率
+  tier: B
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CO
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 新增
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: T10Y2Y
+- name: IG OAS
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CO
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 改
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: BAMLC0A0CM
+- name: HY OAS
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CO
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 改(报警序列)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: true
+  monitoring:
+    enabled: true
+  alert_band:
+    level: 4.5
+    direction: above
+    level_alarm: 5.5
+  fred_series_id: BAMLH0A0HYM2
+- name: CMBS/ABS OAS(NFCI 最高权重)
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CO
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: MOVE 债市波动率
+  tier: B
+  cadence_type: series
+  targets:
+  - rates
+  - liquidity
+  mechanism: CO
+  importance: load_bearing
+  source: web
+  fetch_method: llm-web
+  state: 新增(本对话已加)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: true
+  monitoring:
+    enabled: true
+  alert_band:
+    level: 120
+    direction: above
+    level_alarm: 140
+- name: VIX
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  - fx
+  mechanism: CO
+  importance: confirming
+  source: FRED/CBOE
+  fetch_method: fred-api
+  state: 新增(本对话已加)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: VIXCLS
+- name: 金融条件指数 FCI(NFCI/GS)
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CO
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 新增(本对话已加)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: NFCI
+- name: 股票估值 CAPE
+  tier: C
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CO
+  importance: background
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 市场内部/breadth+集中度
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CO
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: AI-capex 体制代理
+  tier: C
+  cadence_type: policy
+  targets:
+  - liquidity
+  - rates
+  mechanism: CD
+  importance: background
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: AI 资本开支体制代理增长/通胀的结构性需求与利率敏感性 → 经投资与名义增长 → 影响利率/流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 持仓拥挤(CFTC + CTA/vol-target + basis-trade规模)
+  tier: B
+  cadence_type: series
+  targets:
+  - rates
+  - fx
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 拥挤定位是 carry 渠道传感器：拥挤越极端，去杠杆平仓的非线性冲击越大 → 经强制平仓资金流 → 驱动利率/汇率/流动性。
+  lag: 同步(carry探头)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 广义/EM加权美元(Fed DTWEXBGS)
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 新增(替 DXY 做中国FX)
+  causal_sentence: 广义美元（贸易加权）是真正作用于中国/EM 的美元强弱 → 经融资条件与贸易渠道 → 驱动汇率/流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: DTWEXBGS
+- name: DXY
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CO
+  importance: confirming
+  source: FRED
+  fetch_method: fred-api
+  state: 改(中国侧降B,工具错57%欧元)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: DTWEXAFEGS
+  note: 代理：Fed DTWEXAFEGS（先进经济体加权美元），非 ICE 真·DXY——方向/拐点同步，但绝对数值（≈111 vs ICE≈99）不可直接对市场报价
+- name: 跨币种基差(EUR/JPY-USD)
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  - fx
+  mechanism: CF
+  importance: load_bearing
+  source: web
+  fetch_method: llm-web
+  state: 改(并入流动性逻辑链)
+  causal_sentence: 跨币种基差走负=离岸美元融资紧张，钱抢美元 → 经美元资金渠道 → 驱动流动性与汇率。
+  lag: 同步
+  alert_series: true
+  monitoring:
+    enabled: true
+  alert_band:
+    level: -40
+    direction: below
+    level_alarm: -60
+- name: USDJPY / 日元 carry
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  - fx
+  mechanism: CF
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 改(标条件触发)
+  causal_sentence: 日元 carry 平仓时资金回流日元、全球抛风险资产（条件/阈值尾部触发）→ 经跨资产资金搬家 → 驱动流动性与汇率。
+  lag: 同步
+  alert_series: true
+  monitoring:
+    enabled: true
+  alert_band:
+    delta: 3.0
+    level: 158
+    direction: above
+    level_alarm: 160
+  fred_series_id: DEXJPUS
+- name: BoJ 政策 / JGB 收益率
+  tier: A
+  cadence_type: policy
+  targets:
+  - rates
+  - liquidity
+  - fx
+  mechanism: CF
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: BoJ 政策与 JGB 收益率决定日元融资成本，是全球 carry 资金的源头闸门 → 经跨境资金流 → 驱动利率/流动性/汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: ECB 政策分化 / EUR-USD
+  tier: B
+  cadence_type: policy
+  targets:
+  - fx
+  mechanism: CF
+  importance: background
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 欧美政策分化驱动 EUR-USD 利差套利资金流 → 经欧元/美元仓位搬家 → 影响汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: BIS 全球流动性(USD/EUR/JPY 对非银信用)
+  tier: B
+  cadence_type: event
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: background
+  source: web(BIS)
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: BIS 全球流动性度量跨境对非银的美元/欧元/日元信用扩张 → 经离岸信用供给 → 驱动流动性。
+  lag: 滞后(季)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: TIC / 外国持美债 + 中国持美债
+  tier: B
+  cadence_type: event
+  targets:
+  - rates
+  - fx
+  mechanism: CF
+  importance: background
+  source: web(Treasury)
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 外国（含中国）增减持美债是跨境资金流读数 → 经对美债需求与美元 → 影响利率/汇率。
+  lag: 滞后(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 黄金
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CO
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 改(机制纠正,见§5)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  note: FRED 无可靠日频现货金价，故不走自动抓取，靠每日 web 检索补（fetch_method=llm-web）
+- name: 比特币
+  tier: C
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CR
+  importance: background
+  source: web
+  fetch_method: llm-web
+  state: 已有(确认正确)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 大宗(铜/铁矿)
+  tier: C
+  cadence_type: series
+  targets:
+  - rates
+  - fx
+  mechanism: CO
+  importance: background
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 官方制造业 PMI
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: 统计局
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 官方 PMI 领先工业增长动能 → 经增长预期影响货币政策与人民币 → 驱动利率与汇率。
+  lag: 领先
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 财新 PMI
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  - fx
+  mechanism: CD
+  importance: confirming
+  source: 财新
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 财新 PMI 侧重中小/出口企业，与官方互补印证增长动能 → 经政策与汇率预期 → 驱动利率与汇率。
+  lag: 领先
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 工业增加值
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: 统计局
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 工业增加值是实际产出核心读数 → 经增长动能影响货币政策 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 社会消费品零售
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: 统计局
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 社零度量内需消费强弱 → 经增长与通胀路径影响政策 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 固定资产投资
+  tier: B
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: background
+  source: 统计局
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: FAI 反映投资驱动的增长动能（含地产/基建）→ 经增长预期 → 影响利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 出口(美元计)
+  tier: A
+  cadence_type: event
+  targets:
+  - fx
+  mechanism: CD
+  importance: confirming
+  source: 海关总署
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 出口决定贸易顺差与结汇供给 → 经经常账户外汇供求 → 驱动汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 用电量/货运(克强指标)
+  tier: B
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CO
+  importance: background
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中国 CPI
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: 统计局
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 中国 CPI 度量内需通胀/通缩压力 → 经实际利率与政策空间 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中国 PPI
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: 统计局
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: PPI 持续为负是工业通缩信号 → 经企业实际利率上升与去杠杆压力 → 驱动利率与流动性需求。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 7天 OMO 逆回购利率(新锚)
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: PBoC
+  fetch_method: llm-web
+  state: 改(升为政策锚)
+  causal_sentence: 7 天 OMO 利率已升为 PBoC 政策利率新锚 → 经利率走廊传导 DR/LPR → 驱动利率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: MLF 利率
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: PBoC
+  fetch_method: llm-web
+  state: 改
+  causal_sentence: MLF 利率是中期政策利率，影响银行边际负债成本 → 经定价传导 → 驱动利率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: LPR 1Y/5Y(5Y=房贷链)
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  mechanism: CD
+  importance: load_bearing
+  source: PBoC
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: LPR（5Y 锚定房贷）是贷款定价基准 → 经信贷与房贷成本 → 驱动利率。
+  lag: 同步(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: RRR 存款准备金率
+  tier: A
+  cadence_type: policy
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: PBoC
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 降准释放长期可贷资金、降低银行负债成本 → 经准备金供给 → 驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: DR007/R007
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  - rates
+  mechanism: CO
+  importance: load_bearing
+  source: CFETS
+  fetch_method: llm-web
+  state: 已有(纪律:CO→B,见§2.1)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: true
+  monitoring:
+    enabled: true
+  alert_band:
+    level: 2.2
+    direction: above
+    level_alarm: 2.5
+    min_streak: 2
+- name: NCD 同业存单利率
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  - rates
+  mechanism: CD
+  importance: confirming
+  source: CFETS
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: NCD 利率反映银行边际负债成本与同业流动性松紧 → 经负债端定价 → 影响利率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 超额准备金率(走廊下限)
+  tier: C
+  cadence_type: policy
+  targets:
+  - rates
+  mechanism: CO
+  importance: background
+  source: PBoC
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ''
+  lag: 滞后(季)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中国 10Y CGB + 资产荒需求
+  tier: A
+  cadence_type: series
+  targets:
+  - rates
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: Chinabond
+  fetch_method: llm-web
+  state: 改(升级)
+  causal_sentence: 10Y CGB 在资产荒下被配置盘抢购压低长端，反映增长/通胀与政策预期 → 经长端定价与中美利差 → 驱动利率与汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 结构性工具 PSL/再贷款
+  tier: A
+  cadence_type: policy
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: PBoC
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: PSL/再贷款向特定领域定向投放基础货币 → 经结构性信用供给 → 驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 货币政策执行报告 MPR
+  tier: A
+  cadence_type: policy
+  targets:
+  - rates
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: PBoC
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: MPR 措辞（如'稳健'松紧、闸门提法）昭示货币政策取向变化 → 经政策预期 → 驱动利率与流动性。
+  lag: 滞后(季)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 社融 TSF
+  tier: A
+  cadence_type: event
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: PBoC
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: 社融是实体融资总量总闸 → 经信用扩张/收缩 → 驱动流动性。
+  lag: 同步(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: M1/M2/剪刀差
+  tier: A
+  cadence_type: event
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: PBoC
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: M1-M2 剪刀差度量资金活化程度（企业现金流意愿）→ 经货币流通速度 → 驱动流动性。
+  lag: 同步(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 信贷脉冲
+  tier: A
+  cadence_type: event
+  targets:
+  - liquidity
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: 派生
+  fetch_method: manual
+  state: 已有
+  causal_sentence: 信贷脉冲（新增信贷/GDP 变化）领先实体经济与资产价格 → 经信用传导 → 驱动流动性与汇率。
+  lag: 领先(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 贷款增速
+  tier: A
+  cadence_type: event
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: PBoC
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: 贷款增速是银行信用投放的直接读数 → 经信用供给 → 驱动流动性。
+  lag: 同步(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: USDCNY
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CO
+  importance: load_bearing
+  source: FRED
+  fetch_method: fred-api
+  state: 已有(纪律:CO→B,见§2.1)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  fred_series_id: DEXCHUS
+- name: PBoC 中间价 + 逆周期因子
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: PBoC/CFETS
+  fetch_method: llm-web
+  state: 已有(确认为真A)
+  causal_sentence: 中间价与逆周期因子是 PBoC 对人民币的政策意图直接表达 → 经管理浮动定价锚 → 驱动汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: CNH-CNY 价差
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CF
+  importance: load_bearing
+  source: web
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: CNH-CNY 价差走阔反映离岸贬值/资金外流压力 → 经离岸-在岸套利资金流 → 驱动汇率。
+  lag: 同步
+  alert_series: true
+  monitoring:
+    enabled: true
+  alert_band:
+    level: 0.015
+    direction: abs_above
+    level_alarm: 0.03
+- name: CNH HIBOR/离岸流动性 + 央行 HK 票
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  - liquidity
+  mechanism: CF
+  importance: confirming
+  source: HKMA
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 抬升 CNH HIBOR/发离岸央票收紧离岸人民币流动性以抬高做空成本 → 经离岸资金渠道 → 驱动汇率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 结售汇 + 外汇占款 + 代客涉外收付
+  tier: A
+  cadence_type: event
+  targets:
+  - fx
+  mechanism: CF
+  importance: load_bearing
+  source: SAFE
+  fetch_method: llm-web
+  state: 新增("最大遗漏")
+  causal_sentence: 结售汇/外汇占款/涉外收付直接计量跨境资金的实际净流入流出 → 经外汇供求 → 驱动汇率。
+  lag: 滞后(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 外汇储备(水平+变动)
+  tier: A
+  cadence_type: event
+  targets:
+  - fx
+  mechanism: CF
+  importance: load_bearing
+  source: SAFE
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 外储变动（剔除估值）反映央行干预与资金净流出规模 → 经官方外汇供求 → 驱动汇率。
+  lag: 滞后(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中美 10Y 利差
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CO
+  importance: confirming
+  source: 派生
+  fetch_method: manual
+  state: 改(A→B,见§5)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中美实际利率差
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CF
+  importance: background
+  source: 派生
+  fetch_method: manual
+  state: 新增
+  causal_sentence: 中美实际利率差影响套息资金的跨境配置方向 → 经利差套利资金流 → 影响汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 北向资金
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  - liquidity
+  mechanism: CF
+  importance: load_bearing
+  source: HKEX
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: 北向资金是境外配置 A 股的跨境资金流 → 经股市资金与结汇 → 驱动汇率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 南向港股通
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  - liquidity
+  mechanism: CF
+  importance: load_bearing
+  source: HKEX
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 南向资金是境内配置港股的换汇外流 → 经购汇与离岸人民币供给 → 驱动汇率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 外资持 CGB(债券通)
+  tier: B
+  cadence_type: event
+  targets:
+  - rates
+  - fx
+  mechanism: CF
+  importance: confirming
+  source: Chinabond
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 外资增减持中国国债是债市跨境资金流 → 经对 CGB 需求与结售汇 → 影响利率与汇率。
+  lag: 滞后(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 远期售汇风险准备金率
+  tier: B
+  cadence_type: policy
+  targets:
+  - fx
+  mechanism: CD
+  importance: background
+  source: PBoC
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 上调远期售汇风险准备金率抬高购汇远期成本以抑制贬值预期 → 经购汇成本 → 影响汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: CFETS 人民币篮子指数
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CO
+  importance: background
+  source: CFETS
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ''
+  lag: 同步(周)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 出口商结汇率
+  tier: B
+  cadence_type: event
+  targets:
+  - fx
+  mechanism: CF
+  importance: confirming
+  source: SAFE
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 出口商结汇率高低决定顺差转化为实际外汇供给的比例 → 经结汇资金流 → 影响汇率。
+  lag: 滞后(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: ADR/H 股溢价折价
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CF
+  importance: background
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ADR/H 股相对 A 股的溢折价反映跨市场套利与离岸资金偏好 → 经跨境定价资金流 → 影响汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: FDI 月度
+  tier: B
+  cadence_type: event
+  targets:
+  - fx
+  mechanism: CD
+  importance: background
+  source: 商务部
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: FDI 是直接投资项下的长期资金流入 → 经资本项外汇供求 → 影响汇率。
+  lag: 滞后(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中国专项基金 EPFR(非宽EM)
+  tier: B
+  cadence_type: event
+  targets:
+  - fx
+  - liquidity
+  mechanism: CF
+  importance: confirming
+  source: web(EPFR)
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 专投中国（非泛 EM）的基金申赎是配置盘对中国资产的跨境资金流 → 经组合资金流 → 影响汇率与流动性。
+  lag: 同步(周)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: MSCI/FTSE 中国权重调整
+  tier: B
+  cadence_type: policy
+  targets:
+  - fx
+  mechanism: CD
+  importance: background
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 指数纳入/权重调整触发被动配置盘的机械性买卖 → 经被动资金流 → 影响汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 30 城新房成交(高频)
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CO
+  importance: load_bearing
+  source: CREIS/Wind
+  fetch_method: llm-web
+  state: 已有(高频化;纪律:CO→B,见§2.1)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 二手房价/成交
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CO
+  importance: confirming
+  source: 中指/统计局
+  fetch_method: llm-web
+  state: 新增(纪律:CO→B,见§2.1)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 70 城房价
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: 统计局
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 70 城房价趋势决定居民资产负债表与抵押品价值 → 经财富效应与信贷抵押链 → 驱动利率与流动性。
+  lag: 滞后(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 房地产开发投资
+  tier: B
+  cadence_type: event
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: 统计局
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 地产开发投资是信用需求与上下游融资链条的核心 → 经信贷传导 → 驱动流动性。
+  lag: 滞后(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 土地出让金
+  tier: A
+  cadence_type: event
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: 财政部
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 土地出让金是地方政府性基金收入主体，下滑收紧地方财政与投资 → 经财政信用传导 → 驱动流动性。
+  lag: 滞后(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 开发商美元债/地产高收益
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 开发商美元债利差走阔=离岸再融资关闭与违约风险 → 经地产信用与离岸美元需求 → 驱动汇率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 地方专项债发行
+  tier: A
+  cadence_type: event
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: 财政部
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: 专项债发行节奏决定基建财政投放与对流动性的抽取/释放 → 经财政资金投放 → 驱动流动性。
+  lag: 同步(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 财政存款
+  tier: B
+  cadence_type: event
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: background
+  source: 财政部
+  fetch_method: llm-web
+  state: 已有
+  causal_sentence: 财政存款增减（缴税/支出节奏）吸放银行体系流动性 → 经基础货币 → 驱动流动性。
+  lag: 同步(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: LGFV/城投利差(TSF 质量过滤器)
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CF
+  importance: confirming
+  source: Wind
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 城投利差走阔反映地方隐性债务再融资压力，作为社融质量过滤器 → 经信用风险定价与资金流 → 影响流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中美地缘/关税
+  tier: A
+  cadence_type: policy
+  targets:
+  - fx
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 地缘/关税升级冲击贸易顺差与风险偏好（always-alert，无市场序列可 diff）→ 经贸易与避险渠道 → 驱动汇率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: ADR 退市/HFCAA/PCAOB
+  tier: A
+  cadence_type: policy
+  targets:
+  - fx
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: ADR 退市/审计监管升级触发中概股资金回撤与离岸抛压 → 经跨境股权资金流 → 驱动汇率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 美出口管制/实体清单
+  tier: A
+  cadence_type: policy
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 出口管制/实体清单冲击相关企业融资与产业链信用 → 经行业信用与风险偏好 → 驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 资本管制/SAFE 出境规则
+  tier: A
+  cadence_type: policy
+  targets:
+  - fx
+  mechanism: CD
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 资本管制/出境规则收紧直接限制资金外流 → 经资本项外汇供求 → 驱动汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中国政治局/NPC 经济信号
+  tier: A
+  cadence_type: policy
+  targets:
+  - rates
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 政治局/NPC 定调财政货币与刺激力度 → 经政策预期与信用扩张 → 驱动利率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: CSRC 监管动作
+  tier: B
+  cadence_type: policy
+  targets:
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 证监会监管动作（IPO/减持/再融资节奏）影响股市资金供求 → 经市场流动性 → 影响流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 美财政/债务上限/财政主导
+  tier: A
+  cadence_type: policy
+  targets:
+  - rates
+  - liquidity
+  mechanism: CD
+  importance: confirming
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 债务上限/财政主导风险冲击国债供给与无风险资产信用 → 经期限溢价与流动性 → 驱动利率与流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中国主权评级展望
+  tier: B
+  cadence_type: policy
+  targets:
+  - rates
+  - fx
+  mechanism: CD
+  importance: background
+  source: web
+  fetch_method: llm-web
+  state: 新增
+  causal_sentence: 主权评级展望调整影响中国资产风险溢价与外资配置意愿 → 经风险定价 → 影响利率与汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: 中美地缘/关税(尾部)
+  tier: B
+  cadence_type: event
+  targets:
+  - fx
+  - rates
+  mechanism: CR
+  importance: background
+  source: PIIE US-China Trade War Tariffs chart + Trump trade war timeline 2.0
+  fetch_method: llm-web
+  state: 新增(第二期尾部源)
+  causal_sentence: 关税/地缘冲击经风险偏好与汇率渠道情境式影响中概与出口链（情境相关，非稳定因果）。
+  lag: 事件驱动
+  alert_series: false
+  monitoring:
+    enabled: true
+- name: ADR退市/HFCAA(尾部)
+  tier: B
+  cadence_type: event
+  targets:
+  - fx
+  mechanism: CR
+  importance: background
+  source: PCAOB HFCAA determinations + SEC Commission-Identified Issuers
+  fetch_method: llm-web
+  state: 新增(第二期尾部源)
+  causal_sentence: PCAOB 新负面裁定触发 HFCAA 强制退市路径，情境式冲击中概 ADR 估值（情境相关）。
+  lag: 事件驱动
+  alert_series: false
+  monitoring:
+    enabled: true

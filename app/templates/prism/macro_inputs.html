@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% from "prism/_view_tabs.html" import view_tabs %}
+{% block title %}宏观输入源 · {{ topic.display_name }}{% endblock %}
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
+  <a href="/prism/{{ topic.slug }}/{{ variant }}">{{ variant }}</a> /
+  <span>输入源</span>
+</nav>
+
+<div class="prism-header">
+  <h1>{{ topic.display_name or topic.slug }}</h1>
+  <span class="model-tag">{{ variant }}</span>
+  <span class="hint"> · 输入源信息表</span>
+</div>
+
+{{ view_tabs(topic, variant, 'inputs') }}
+
+<p class="hint">共 {{ inputs | length }} 条输入。「自动」= FRED API 脚本拉取；其余为 llm-web / manual。</p>
+<table class="data-table">
+  <thead><tr>
+    <th>输入名</th><th>等级</th><th>频率</th><th>目标</th><th>重要性</th>
+    <th>来源</th><th>抓取</th><th>最近观测</th><th>监控</th><th>报警带</th>
+  </tr></thead>
+  <tbody>
+  {% for inp in inputs %}
+    <tr>
+      <td><code>{{ inp.name }}</code>
+        {% if inp.note %}<div class="note-caveat" title="口径/代理说明">ⓘ {{ inp.note }}</div>{% endif %}
+      </td>
+      <td>{{ inp.tier or '—' }}</td>
+      <td>{{ inp.cadence_type or '—' }}</td>
+      <td>{{ (inp.targets or []) | join(', ') }}</td>
+      <td>{{ inp.importance or '—' }}</td>
+      <td>{{ inp.source or '—' }}</td>
+      <td>
+        {% if inp.fetch_method == 'fred-api' %}
+          <span class="badge-small">自动 · FRED</span>
+          {% if inp.fred_series_id %}<code class="hint">{{ inp.fred_series_id }}</code>{% endif %}
+        {% else %}{{ inp.fetch_method or '—' }}{% endif %}
+      </td>
+      <td>
+        {% if inp.observed and inp.observed.value is not none %}
+          {{ inp.observed.value }} <span class="hint">@{{ (inp.observed.as_of or '')[:10] or '—' }}</span>
+        {% else %}<span class="hint">未抓</span>{% endif %}
+      </td>
+      <td>{% if inp.monitoring and inp.monitoring.enabled %}✓{% else %}○{% endif %}</td>
+      <td>{% if inp.alert_series and inp.alert_band %}<code class="hint">{{ inp.alert_band }}</code>{% else %}—{% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<style>
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 0.5em; }
+  .breadcrumb a { color: #555; }
+  .prism-header { margin: 0.5em 0; }
+  .prism-header h1 { display: inline; font-size: 1.5em; margin-right: 0.5em; }
+  .model-tag { font-size: 0.82em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; }
+  /* 中性 tab 高亮（与 读者向 详情页一致；非诊断/体检的红色 debug 风） */
+  .diag-tabs { display: flex; align-items: center; gap: 0.1em; margin: 0.8em 0; border-bottom: 2px solid #e5e5e5; }
+  .diag-tabs-label { font-size: 0.78em; color: #aaa; margin-right: 0.5em; }
+  .diag-tab { padding: 0.4em 1em; font-size: 0.88em; text-decoration: none; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; border-radius: 4px 4px 0 0; }
+  .diag-tab.active { color: #333; font-weight: 600; background: #f1f3f5; border-bottom-color: #333; }
+  .diag-tab:not(.active):hover { color: #c0392b; background: #fafafa; }
+  .data-table { border-collapse: collapse; width: 100%; }
+  .data-table th, .data-table td { padding: 0.4em 0.6em; border-bottom: 1px solid #eee; font-size: 0.85em; text-align: left; vertical-align: top; }
+  .data-table th { font-weight: 600; color: #555; }
+  .badge-small { font-size: 0.72em; padding: 0.15em 0.4em; border-radius: 3px; background: #e6f4ea; color: #2d7a3a; }
+  .hint { color: #888; font-size: 0.85em; }
+  .note-caveat { margin-top: 0.25em; font-size: 0.76em; color: #b45309; background: #fff7ed; border-left: 2px solid #f0c36d; padding: 0.1em 0.45em; border-radius: 2px; max-width: 22em; line-height: 1.35; }
+</style>
+{% endblock %}

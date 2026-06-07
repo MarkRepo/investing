@@ -68,6 +68,29 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
             result["price"] = {"error": str(e)}
             _log(f"price proposals failed: {e}")
 
+        # macro FRED 自动抓取（零 LLM）：在 macro scan 之前，使扫描看到最新 observed。
+        # 对每个 type==macro 的 topic 抓取（与 watchlist 解耦——抓取廉价，保持 observed 新鲜；
+        # 是否写 proposal 仍由下游 watchlist 门控）。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import fred_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                fred_summary = await asyncio.to_thread(
+                    fred_fetch.run_fred_fetch, t["slug"], t["variant"])
+                _log(f"fred fetch [{t['slug']}/{t['variant']}]: {fred_summary}")
+        except Exception as e:
+            _log(f"fred fetch failed: {e}")
+
+        # macro 输入到期/越带（零 LLM）：写 macro_input proposal
+        try:
+            macro_res = await asyncio.to_thread(monitor.propose_macro_updates)
+            _log(f"macro: scanned={macro_res.get('scanned_macro', 0)} "
+                 f"added={macro_res.get('added', 0)}")
+        except Exception as e:
+            _log(f"macro propose failed: {e}")
+
         # ② scan 看有无需判读的到期项
         try:
             scan = await asyncio.to_thread(monitor.scan_due_events)

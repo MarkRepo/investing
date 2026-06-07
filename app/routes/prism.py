@@ -68,10 +68,10 @@ _OUTPUT_OPTIONS = [
 ]
 
 
-_TYPE_LABEL = {"company": "公司", "arena": "竞技场", "industry": "行业"}
-_TYPE_EMOJI = {"company": "🏢", "arena": "🥊", "industry": "🏭"}
-# 树内排序：行业 < 竞技场 < 公司（同级内再按 created 倒序）
-_TYPE_ORDER = {"industry": 0, "arena": 1, "company": 2}
+_TYPE_LABEL = {"company": "公司", "arena": "竞技场", "industry": "行业", "macro": "宏观层"}
+_TYPE_EMOJI = {"company": "🏢", "arena": "🥊", "industry": "🏭", "macro": "🌐"}
+# 树内排序：行业 < 竞技场 < 公司 < 宏观层（同级内再按 created 倒序）
+_TYPE_ORDER = {"industry": 0, "arena": 1, "company": 2, "macro": 3}
 
 
 def _sort_topic_nodes(lst: list[dict]) -> None:
@@ -523,6 +523,9 @@ def prism_diag(request: Request, slug: str, variant: str):
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    # 宏观层不走 拆解→收料→抽取→gap→critic 工作流，诊断页对它全是空壳；其等价诊断视图是「输入源」表
+    if topic.get("type") == "macro":
+        raise HTTPException(status_code=404, detail="宏观层不适用诊断 / debug（等价视图为输入源表 macro-inputs）")
 
     # ① 拆解 decomposition（取最新版；保留版本列表供切换）
     decomp_versions = outputs_io.list_decomposition_files(slug, variant)
@@ -599,6 +602,9 @@ def prism_checkup(request: Request, slug: str, variant: str):
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    # 宏观层无标准工作流残渣，体检探针几乎全 na；其等价诊断视图是「输入源」表
+    if topic.get("type") == "macro":
+        raise HTTPException(status_code=404, detail="宏观层不适用体检（等价视图为输入源表 macro-inputs）")
     from prism.scripts.observability_render import build_view
     try:
         view = build_view(slug, variant)
@@ -679,6 +685,26 @@ def prism_thesis(request: Request, slug: str, variant: str, version: int):
             "coverage": coverage,
         },
     )
+
+
+@router.get("/{slug}/{variant}/macro-inputs")
+def prism_macro_inputs(request: Request, slug: str, variant: str):
+    """宏观输入源信息表（仅 macro topic）。必须声明在 /{output_key} 通配之前。"""
+    from prism.scripts import macro_registry as macro_reg
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    if topic.get("type") != "macro":
+        raise HTTPException(status_code=404, detail="非宏观主题")
+    try:
+        registry = macro_reg.read_registry(slug, variant)
+        inputs = registry.get("inputs", [])
+    except FileNotFoundError:
+        inputs = []
+    return templates.TemplateResponse(request, "prism/macro_inputs.html", {
+        "topic": topic, "variant": variant, "inputs": inputs,
+    })
 
 
 @router.get("/{slug}/{variant}/{output_key}")
