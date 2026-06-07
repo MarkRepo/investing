@@ -62,6 +62,7 @@ _OUTPUT_OPTIONS = [
     ("c_investment_case", "投资 case（决策链）"),
     ("i_industry_case", "行业 case（决策链）"),
     ("a_arena_case", "竞技场 case（决策链）"),
+    ("m_regime_read", "宏观体制读数"),
     ("08_living_feed", "信息流时间线"),
     ("industry_to_arenas", "产业→竞技场选拔"),
 ]
