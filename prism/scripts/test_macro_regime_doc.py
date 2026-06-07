@@ -32,3 +32,13 @@ def test_regime_read_has_fragility_and_quadrant():
     t = READ.read_text(encoding="utf-8")
     assert "脆弱" in t
     assert "象限" in t
+
+
+MONITOR_DOC = _ROOT / "prism/workflows/06-daily-monitor.md"
+
+
+def test_monitor_doc_has_macro_branch():
+    t = MONITOR_DOC.read_text(encoding="utf-8")
+    assert "macro_due" in t
+    assert "macro_alert" in t
+    assert "propose_macro_updates" in t
