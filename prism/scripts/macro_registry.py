@@ -69,3 +69,57 @@ def read_registry(slug: str, variant: str) -> dict:
     if not path.exists():
         raise FileNotFoundError(f"macro_inputs.yaml not found: {slug}/{variant}")
     return _read_yaml(path)
+
+
+def upsert_input(slug: str, variant: str, entry: dict) -> None:
+    """按 name 唯一键 upsert 一条 input（无校验，校验交 validate_registry）。零 LLM。"""
+    if not entry.get("name"):
+        raise ValueError("input entry 必须有 name")
+    data = read_registry(slug, variant)
+    for i, existing in enumerate(data["inputs"]):
+        if existing["name"] == entry["name"]:
+            data["inputs"][i] = {**existing, **entry}
+            break
+    else:
+        data["inputs"].append(entry)
+    data["updated"] = _now_iso()
+    _write_yaml(_registry_path(slug, variant), data)
+
+
+def validate_registry(slug: str, variant: str) -> list[str]:
+    """校验登记表的机制纪律（spec §2.2/§2.1）。返回错误串列表（空=通过）。零 LLM。
+
+    规则：
+      - 枚举合法：tier/cadence_type/mechanism/importance/targets。
+      - tier A ⟹ mechanism ∈ {CD, CF}（CO/CR 只能 B/C）。
+      - mechanism ∈ {CD, CF} ⟹ causal_sentence 非空。
+      - alert_series=True ⟹ cadence_type == "series"。
+      - name 不可重复。
+    """
+    data = read_registry(slug, variant)
+    errors: list[str] = []
+    seen: set[str] = set()
+    for e in data["inputs"]:
+        name = e.get("name", "<无名>")
+        if name in seen:
+            errors.append(f"[{name}] name 重复")
+        seen.add(name)
+        if e.get("tier") not in VALID_TIER:
+            errors.append(f"[{name}] tier 非法: {e.get('tier')!r}")
+        if e.get("cadence_type") not in VALID_CADENCE:
+            errors.append(f"[{name}] cadence_type 非法: {e.get('cadence_type')!r}")
+        if e.get("mechanism") not in VALID_MECHANISM:
+            errors.append(f"[{name}] mechanism 非法: {e.get('mechanism')!r}")
+        if e.get("importance") not in VALID_IMPORTANCE:
+            errors.append(f"[{name}] importance 非法: {e.get('importance')!r}")
+        for t in e.get("targets") or []:
+            if t not in VALID_TARGET:
+                errors.append(f"[{name}] target 非法: {t!r}")
+        # 因果纪律
+        if e.get("tier") == "A" and e.get("mechanism") in VALID_MECHANISM and e.get("mechanism") not in ("CD", "CF"):
+            errors.append(f"[{name}] tier A 必须 mechanism ∈ CD/CF，得到 {e.get('mechanism')!r}")
+        if e.get("mechanism") in ("CD", "CF") and not (e.get("causal_sentence") or "").strip():
+            errors.append(f"[{name}] mechanism={e.get('mechanism')} 必须填 causal_sentence")
+        if e.get("alert_series") and e.get("cadence_type") != "series":
+            errors.append(f"[{name}] alert_series=True 仅允许 cadence_type=series")
+    return errors
