@@ -181,16 +181,22 @@ slug: <slug>
 variant: <variant>
 generated: "<ISO8601>"            # 用 datetime.now(timezone.utc).isoformat()
 regime:
-  rates:     {state: ..., note: ...}   # state=利率体制读数(如 高位企稳/熊平); note=一句大白话
-  liquidity: {state: ..., note: ...}   # state=松/紧 或四象限; note=一句大白话
-  fx:        {state: ..., note: ...}   # state=人民币升/贬压力 + 外资流向; note=一句大白话
+  rates:     {state: ..., note: ..., confidence: <0-10>}   # 新增分维信心
+  liquidity: {state: ..., note: ..., confidence: <0-10>}
+  fx:        {state: ..., note: ..., confidence: <0-10>}
   composite: ...                       # 顶部综合判断一句话(= regime_read 顶部综合判断)
   conviction: <0-10>                   # 强度分(= regime_read 顶部 0-10，数字不加引号)
+  quadrant: ...        # 新增：增长/通胀象限（复苏/过热/滞胀/衰退），独立于三体制（spec §6.1）
+  fragility: ...       # 新增：脆弱度（low/mid/high）——强度越"干净"越临近崩，折减信心（spec §6.2）
 holdings:
   - {slug: ..., display_name: ..., duration: long|short, rate_beta: high|mid|low,
      usd_exposure: high|mid|low, liquidity_beta: high|mid|low, exposure_score: high|mid|low,
      regime_favor: [...], regime_hurt: [...], plain: "一句大白话传导链"}
+categorical_tail:       # 新增：spec §3.10 类别尾部 always-alert 状态快照（无市场序列可 diff）
+  - {name: ..., state: 平静|警示|触发, note: "一句话"}
 ```
+
+> **新增字段语义**：`confidence`=该体制单独的判读信心 0-10；`quadrant`=增长/通胀象限（复苏/过热/滞胀/衰退）；`fragility`=脆弱度（low/mid/high），high 时即便 conviction 高也要在 dashboard 标"信心X/脆弱度高"。
 
 字段语义（沿 spec §3 L4 四渠道 + 每持仓标签）：
 

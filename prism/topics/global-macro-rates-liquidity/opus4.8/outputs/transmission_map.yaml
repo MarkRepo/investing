@@ -7,11 +7,13 @@ variant: opus4.8
 generated: "2026-06-07T00:00:00Z"
 
 regime:
-  rates:     {state: "高位筑顶/加息风险", note: "美钱仍贵且可能更贵，中钱便宜"}
-  liquidity: {state: "偏紧脆弱", note: "美利差极窄缓冲薄，中有水鱼不出"}
-  fx:        {state: "人民币企稳", note: "深度负利差但人民币偏强，外资回流"}
+  rates:     {state: "高位筑顶/加息风险", note: "美钱仍贵且可能更贵，中钱便宜", confidence: 7}
+  liquidity: {state: "偏紧脆弱", note: "美利差极窄缓冲薄，中有水鱼不出", confidence: 6}
+  fx:        {state: "人民币企稳", note: "深度负利差但人民币偏强，外资回流", confidence: 6}
   composite: "美紧中松分化体制 — 偏防御、压久期、防美利率尾部风险"
   conviction: 6
+  quadrant: 滞胀        # 美利率高位/加息风险 + 增长无明显反弹信号 = 高通胀压力下增长放缓
+  fragility: high       # 信用利差极窄缓冲薄（注释第3行明示"脆弱"），carry 拥挤，低波动期末段特征
 
 holdings:
   # —— A股高端消费 (人民币计价, 内需防御, 受美端冲击最小) ——
@@ -55,3 +57,7 @@ holdings:
      usd_exposure: mid, liquidity_beta: high, exposure_score: high,
      regime_favor: [复苏, 中国宽货币转宽信用, 风险偏好回升], regime_hurt: [中国紧信用持续, 流动性收紧, 美利率高位],
      plain: "高久期顺周期成长 (贴现率+风险偏好渠道)；受中国宽松托底，但需宽货币真传导到宽信用才反转，当前紧信用是压制"}
+
+categorical_tail:   # spec §3.10 类别尾部 always-alert 状态快照
+  - {name: 中美地缘/关税, state: 警示, note: "美中关税战未全面停火，90天缓冲期内仍有升级风险，中概与出口链随时可能重新定价"}
+  - {name: ADR退市/HFCAA, state: 警示, note: "HFCAA审计监管摩擦尚未彻底解除，中概ADR（拼多多/富途）仍存非自愿退市尾部风险"}
