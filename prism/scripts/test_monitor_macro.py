@@ -110,3 +110,37 @@ def test_cli_macro_command(macro_monitor_env, monkeypatch):
     monitor.add_watch(slug, scope="topic", variant=variant)
     res = monitor.propose_macro_updates(within_days=14)
     assert "scanned_macro" in res
+
+
+# ── 第二期 Task 10：monitor 周期内零-LLM FRED 抓取 ──
+
+import asyncio
+
+
+def test_run_monitor_cycle_invokes_fred_fetch(monkeypatch, macro_monitor_env):
+    import app.monitor_runtime as mrt
+    from prism.scripts import fred_fetch
+    called = {}
+
+    def fake_run(s, v):
+        called["hit"] = (s, v)
+        return {"fetched": 1, "derived": 0, "skipped": 0, "failed": 0}
+
+    monkeypatch.setattr(fred_fetch, "run_fred_fetch", fake_run)
+    monkeypatch.setenv("FRED_API_KEY", "k")
+    asyncio.run(mrt.run_monitor_cycle())
+    # 抓取按 macro topic 的 slug/variant 触发（来自 fixture 创建的宏观主题）
+    assert called.get("hit") == (SLUG, VARIANT)
+
+
+def test_fred_fetch_failure_does_not_break_cycle(monkeypatch, macro_monitor_env):
+    import app.monitor_runtime as mrt
+    from prism.scripts import fred_fetch
+
+    def boom(s, v):
+        raise RuntimeError("FRED down")
+
+    monkeypatch.setattr(fred_fetch, "run_fred_fetch", boom)
+    monkeypatch.setenv("FRED_API_KEY", "k")
+    # 不抛即通过
+    asyncio.run(mrt.run_monitor_cycle())
