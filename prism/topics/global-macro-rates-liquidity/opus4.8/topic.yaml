@@ -1,0 +1,65 @@
+slug: global-macro-rates-liquidity
+display_name: 宏观层 (利率/流动性/汇率体制)
+type: macro
+created: '2026-06-07T07:52:11.830227+00:00'
+status: active
+stage: done
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 利率/流动性/汇率三体制趋势及其对组合的传导
+  depth: deep
+  search_terms:
+  - 利率
+  - 流动性
+  - 汇率
+  - 美联储
+  - 净流动性
+  - 中美利差
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-07T07:58:39.611480+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+    critic_passed: true
+  m_regime_read:
+    version: 1
+    last_updated: '2026-06-07T08:01:11.146934+00:00'
+    status: fresh
+    data_freshness: snapshot@2026-06-05
+    referenced_mat_ids: null
+    last_error: null
+  transmission_map:
+    version: 0
+    last_updated: '2026-06-07T08:02:20.129480+00:00'
+    status: pending
+    data_freshness: null
+    referenced_mat_ids: []
+    last_error: null
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+stage_history:
+- stage: done
+  entered_at: '2026-06-07T08:06:52.775725+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
