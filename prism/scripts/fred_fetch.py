@@ -47,3 +47,42 @@ def fetch_latest_observation(series_id: str, *, client=None) -> tuple[float | No
         return float(raw), as_of
     except ValueError:
         return None, as_of
+
+
+from prism.scripts import macro_registry as reg
+
+# 净流动性派生：name → (被减项构成)
+_NET_LIQ_NAME = "净流动性(=资产−TGA−RRP)"
+_NET_LIQ_PARTS = ("美联储资产 WALCL(QT 节奏)", "TGA 余额", "RRP 逆回购")  # assets, minus, minus
+
+
+def run_fred_fetch(slug: str, variant: str, *, client=None) -> dict:
+    """抓所有 fetch_method==fred-api 且有 fred_series_id 的输入，落 observed。
+    __DERIVED__（净流动性）在常规抓取后由构成项计算。返回 summary。"""
+    data = reg.read_registry(slug, variant)
+    fetched = skipped = derived = failed = 0
+    values: dict[str, float | None] = {}
+
+    for e in data["inputs"]:
+        if e.get("fetch_method") != "fred-api":
+            skipped += 1
+            continue
+        sid = e.get("fred_series_id")
+        if not sid or sid == "__DERIVED__":
+            continue
+        val, as_of = fetch_latest_observation(sid, client=client)
+        if val is None:
+            failed += 1
+            continue
+        reg.record_observation(slug, variant, e["name"], value=val, as_of=as_of)
+        values[e["name"]] = val
+        fetched += 1
+
+    # 净流动性派生
+    assets, tga, rrp = (values.get(n) for n in _NET_LIQ_PARTS)
+    if None not in (assets, tga, rrp):
+        nl = assets - tga - rrp
+        reg.record_observation(slug, variant, _NET_LIQ_NAME, value=nl)
+        derived += 1
+
+    return {"fetched": fetched, "derived": derived, "skipped": skipped, "failed": failed}
