@@ -72,3 +72,21 @@ def test_index_shows_macro_label(macro_web_client):
     r = macro_web_client.get("/prism")
     assert "宏观" in r.text          # 中文标签
     assert ">macro<" not in r.text   # 不暴露原始 type
+
+
+def test_macro_inputs_table_renders(macro_web_client):
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert r.status_code == 200
+    assert "HY OAS" in r.text          # 输入名
+    assert "FRED" in r.text            # 来源
+    assert "自动" in r.text or "fred-api" in r.text   # 抓取方式
+
+
+def test_macro_inputs_404_for_non_macro(macro_web_client):
+    # 非 macro topic 命中该路由应 404（验证类型守卫，而非通配吞掉）
+    import prism.scripts.topic as t
+    import prism.scripts.manifest as m
+    t.create_topic("cn-industry-x", "某行业", "industry", "Q", "CN", "deep", VARIANT)
+    m.create_manifest("cn-industry-x", VARIANT)
+    r = macro_web_client.get(f"/prism/cn-industry-x/{VARIANT}/macro-inputs")
+    assert r.status_code == 404

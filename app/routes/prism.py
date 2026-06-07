@@ -681,6 +681,26 @@ def prism_thesis(request: Request, slug: str, variant: str, version: int):
     )
 
 
+@router.get("/{slug}/{variant}/macro-inputs")
+def prism_macro_inputs(request: Request, slug: str, variant: str):
+    """宏观输入源信息表（仅 macro topic）。必须声明在 /{output_key} 通配之前。"""
+    from prism.scripts import macro_registry as macro_reg
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    if topic.get("type") != "macro":
+        raise HTTPException(status_code=404, detail="非宏观主题")
+    try:
+        registry = macro_reg.read_registry(slug, variant)
+        inputs = registry.get("inputs", [])
+    except FileNotFoundError:
+        inputs = []
+    return templates.TemplateResponse(request, "prism/macro_inputs.html", {
+        "topic": topic, "variant": variant, "inputs": inputs,
+    })
+
+
 @router.get("/{slug}/{variant}/{output_key}")
 def prism_output(request: Request, slug: str, variant: str, output_key: str):
     """View a specific output for a model variant."""

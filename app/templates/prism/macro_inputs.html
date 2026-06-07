@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}宏观输入源 · {{ topic.display_name }}{% endblock %}
+{% block content %}
+<h1>宏观输入源信息表</h1>
+<p class="hint">共 {{ inputs | length }} 条输入。「自动」= FRED API 脚本拉取；其余为 llm-web / manual。</p>
+<table class="data-table">
+  <thead><tr>
+    <th>输入名</th><th>等级</th><th>频率</th><th>目标</th><th>重要性</th>
+    <th>来源</th><th>抓取</th><th>最近观测</th><th>监控</th><th>报警带</th>
+  </tr></thead>
+  <tbody>
+  {% for inp in inputs %}
+    <tr>
+      <td><code>{{ inp.name }}</code></td>
+      <td>{{ inp.tier or '—' }}</td>
+      <td>{{ inp.cadence_type or '—' }}</td>
+      <td>{{ (inp.targets or []) | join(', ') }}</td>
+      <td>{{ inp.importance or '—' }}</td>
+      <td>{{ inp.source or '—' }}</td>
+      <td>
+        {% if inp.fetch_method == 'fred-api' %}
+          <span class="badge-small">自动 · FRED</span>
+          {% if inp.fred_series_id %}<code class="hint">{{ inp.fred_series_id }}</code>{% endif %}
+        {% else %}{{ inp.fetch_method or '—' }}{% endif %}
+      </td>
+      <td>
+        {% if inp.observed and inp.observed.value is not none %}
+          {{ inp.observed.value }} <span class="hint">@{{ (inp.observed.as_of or '')[:10] or '—' }}</span>
+        {% else %}<span class="hint">未抓</span>{% endif %}
+      </td>
+      <td>{% if inp.monitoring and inp.monitoring.enabled %}✓{% else %}○{% endif %}</td>
+      <td>{% if inp.alert_series and inp.alert_band %}<code class="hint">{{ inp.alert_band }}</code>{% else %}—{% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
