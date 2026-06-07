@@ -591,9 +591,9 @@ inputs:
   monitoring:
     enabled: true
   alert_band:
-    level: 450
+    level: 4.5
     direction: above
-    level_alarm: 550
+    level_alarm: 5.5
   fred_series_id: BAMLH0A0HYM2
 - name: CMBS/ABS OAS(NFCI 最高权重)
   tier: B

@@ -35,7 +35,7 @@ def test_net_liquidity_marked_derived(live_registry):
 # ── Task 5：6 条报警带 ──
 
 EXPECTED_BANDS = {
-    "HY OAS": {"level": 450, "direction": "above", "level_alarm": 550},
+    "HY OAS": {"level": 4.5, "direction": "above", "level_alarm": 5.5},  # percent（FRED 单位）
     "MOVE 债市波动率": {"level": 120, "direction": "above", "level_alarm": 140},
     "跨币种基差(EUR/JPY-USD)": {"level": -40, "direction": "below", "level_alarm": -60},
     "USDJPY / 日元 carry": {"delta": 3.0, "level": 158, "direction": "above", "level_alarm": 160},

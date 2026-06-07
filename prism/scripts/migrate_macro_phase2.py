@@ -59,7 +59,8 @@ def add_fred_series_ids(data: dict) -> dict:
 
 
 ALERT_BANDS = {
-    "HY OAS": {"level": 450, "direction": "above", "level_alarm": 550},
+    # HY OAS：FRED BAMLH0A0HYM2 以「百分点」计（如 2.74=274bps），故带用 percent：4.5%警示/5.5%报警。
+    "HY OAS": {"level": 4.5, "direction": "above", "level_alarm": 5.5},
     "MOVE 债市波动率": {"level": 120, "direction": "above", "level_alarm": 140},
     "跨币种基差(EUR/JPY-USD)": {"level": -40, "direction": "below", "level_alarm": -60},
     "USDJPY / 日元 carry": {"delta": 3.0, "level": 158, "direction": "above", "level_alarm": 160},
