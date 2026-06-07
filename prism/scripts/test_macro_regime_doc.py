@@ -42,3 +42,10 @@ def test_monitor_doc_has_macro_branch():
     assert "macro_due" in t
     assert "macro_alert" in t
     assert "propose_macro_updates" in t
+
+
+def test_primer_points_to_input_table():
+    """第二期 Task 14：领域入门须指向 Web 输入源信息表。"""
+    p = _ROOT / "prism/topics/global-macro-rates-liquidity/opus4.8/outputs/00_primer.md"
+    text = p.read_text(encoding="utf-8")
+    assert "macro-inputs" in text or "输入源信息表" in text
