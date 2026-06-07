@@ -27,6 +27,7 @@ _DECISION_CHAIN_OUTPUTS = {
     "company": ["00_primer", "c_investment_case", "08_living_feed"],
     "industry": ["00_primer", "i_industry_case", "08_living_feed"],
     "arena": ["00_primer", "a_arena_case", "08_living_feed"],
+    "macro": ["00_primer", "m_regime_read"],
 }
 
 _DEFAULT_OUTPUT_STATE = {
@@ -1710,12 +1711,14 @@ _CASE_BY_TYPE = {
     "company": "c_investment_case",
     "industry": "i_industry_case",
     "arena": "a_arena_case",
+    "macro": "m_regime_read",
 }
 # 按 type 映射 dashboard sidecar（机器消费）
 _SIDECAR_BY_TYPE = {
     "company": "07_decision_kit.yaml",
     "industry": "industry_to_arenas.yaml",
     "arena": "peer_matrix.yaml",
+    "macro": "transmission_map.yaml",
 }
 
 
