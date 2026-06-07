@@ -123,3 +123,42 @@ def test_record_observation_unknown_name_raises(reg_env):
     mr.create_registry(SLUG, VARIANT)
     with pytest.raises(ValueError):
         mr.record_observation(SLUG, VARIANT, "不存在", value=1.0, as_of="2026-06-06")
+
+
+from datetime import date
+
+
+def test_scan_macro_inputs_buckets():
+    reg = {"inputs": [
+        # event 到期（next_due 已过）
+        {"name": "NFP", "cadence_type": "event", "tier": "A", "importance": "load_bearing",
+         "monitoring": {"enabled": True}, "observed": {"next_due": "2026-06-01"}},
+        # event 未到期
+        {"name": "零售", "cadence_type": "event", "monitoring": {"enabled": True},
+         "observed": {"next_due": "2026-12-31"}},
+        # policy 到期
+        {"name": "FOMC声明", "cadence_type": "policy", "tier": "A", "importance": "load_bearing",
+         "monitoring": {"enabled": True}, "observed": {"next_due": "2026-06-05"}},
+        # series alert_series 越 delta 带
+        {"name": "HY OAS", "cadence_type": "series", "alert_series": True, "tier": "B",
+         "importance": "load_bearing", "monitoring": {"enabled": True},
+         "alert_band": {"delta": 75.0}, "observed": {"value": 400.0, "prev_value": 300.0}},
+        # series alert_series 未越带
+        {"name": "MOVE", "cadence_type": "series", "alert_series": True,
+         "monitoring": {"enabled": True}, "alert_band": {"z": 2.0},
+         "observed": {"z": 1.0}},
+        # series 非 alert（即便大动也不进桶）
+        {"name": "比特币", "cadence_type": "series", "alert_series": False,
+         "monitoring": {"enabled": True}, "observed": {"value": 100.0, "prev_value": 10.0}},
+        # 日期坏 → unparseable
+        {"name": "坏日期", "cadence_type": "event", "monitoring": {"enabled": True},
+         "observed": {"next_due": "soon"}},
+        # monitoring 关 → 跳过
+        {"name": "关掉的", "cadence_type": "event", "monitoring": {"enabled": False},
+         "observed": {"next_due": "2026-06-01"}},
+    ]}
+    out = mr.scan_macro_inputs(reg, today=date(2026, 6, 7))
+    assert {x["name"] for x in out["due_event"]} == {"NFP"}
+    assert {x["name"] for x in out["due_policy"]} == {"FOMC声明"}
+    assert {x["name"] for x in out["alert_series"]} == {"HY OAS"}
+    assert {u["name"] for u in out["unparseable"]} == {"坏日期"}

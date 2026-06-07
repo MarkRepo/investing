@@ -155,3 +155,59 @@ def record_observation(
             _write_yaml(_registry_path(slug, variant), data)
             return
     raise ValueError(f"input {name!r} 不在登记表中")
+
+
+def _parse_date(s):
+    from datetime import date as _date
+    if not s:
+        return None
+    try:
+        return _date.fromisoformat(str(s))
+    except (ValueError, TypeError):
+        return None
+
+
+def _series_breached(entry: dict) -> bool:
+    """alert_series 是否越带：delta=|value-prev_value|≥band.delta；z=|observed.z|≥band.z。"""
+    band = entry.get("alert_band") or {}
+    obs = entry.get("observed") or {}
+    if "delta" in band:
+        v, p = obs.get("value"), obs.get("prev_value")
+        if v is not None and p is not None:
+            return abs(v - p) >= band["delta"]
+    if "z" in band:
+        z = obs.get("z")
+        if z is not None:
+            return abs(z) >= band["z"]
+    return False
+
+
+def scan_macro_inputs(registry: dict, today=None) -> dict:
+    """纯函数：把登记表分桶。不读文件。零 LLM。
+
+    返回 {due_event, due_policy, alert_series, unparseable}，每项是 input entry 的浅拷贝。
+    规则：
+      - monitoring.enabled is False → 跳过。
+      - cadence_type=event/policy：observed.next_due 可解析且 ≤ today → due_*；不可解析 → unparseable。
+      - cadence_type=series 且 alert_series=True 且 _series_breached → alert_series。
+      - 其余（含非 alert 的 series 小动）→ 不进任何桶。
+    """
+    from datetime import date as _date
+    today = today or _date.today()
+    out = {"due_event": [], "due_policy": [], "alert_series": [], "unparseable": []}
+    for e in registry.get("inputs") or []:
+        if (e.get("monitoring") or {}).get("enabled") is False:
+            continue
+        ctype = e.get("cadence_type")
+        if ctype in ("event", "policy"):
+            nd_raw = (e.get("observed") or {}).get("next_due")
+            if nd_raw is None:
+                continue  # 还没排期，不报
+            d = _parse_date(nd_raw)
+            if d is None:
+                out["unparseable"].append(dict(e))
+            elif d <= today:
+                out["due_event" if ctype == "event" else "due_policy"].append(dict(e))
+        elif ctype == "series" and e.get("alert_series") and _series_breached(e):
+            out["alert_series"].append(dict(e))
+    return out
