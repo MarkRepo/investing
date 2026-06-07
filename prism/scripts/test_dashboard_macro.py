@@ -25,11 +25,13 @@ def macro_env(monkeypatch):
         "slug": "global-macro-rates-liquidity", "variant": "opus4.8",
         "generated": "2026-06-07T00:00:00Z",
         "regime": {
-            "rates": {"state": "下行", "note": "美联储转向在即"},
-            "liquidity": {"state": "偏松", "note": "净流动性回升"},
-            "fx": {"state": "人民币承压", "note": "中美利差倒挂"},
+            "rates": {"state": "下行", "note": "美联储转向在即", "confidence": 6},
+            "liquidity": {"state": "偏松", "note": "净流动性回升", "confidence": 4},
+            "fx": {"state": "人民币承压", "note": "中美利差倒挂", "confidence": 5},
             "composite": "温和宽松早期",
             "conviction": 5.5,
+            "quadrant": "复苏早期",
+            "fragility": "high",
         },
         "holdings": [
             {"slug": "cn-popmart", "display_name": "泡泡玛特",
@@ -71,6 +73,18 @@ def test_banner_rendered(macro_env):
 def test_macro_excluded_from_other_rows(macro_env):
     other_rows = dashboard._collect_non_company_rows()
     assert all(r["type"] != "macro" for r in other_rows)
+
+
+def test_banner_renders_multidim_and_fragility(macro_env):
+    company_rows = dashboard._collect_company_rows()
+    other_rows = dashboard._collect_non_company_rows()
+    banner = dashboard._collect_macro_banner()
+    md = dashboard._render_dashboard(company_rows, other_rows, banner)
+    assert "复苏早期" in md          # 象限
+    assert "脆弱度" in md            # fragility 标签词
+    assert "信心" in md              # 分维信心展示
+    assert banner["regime"]["fragility"] == "high"
+    assert banner["regime"]["quadrant"] == "复苏早期"
 
 
 def test_no_macro_topic_banner_none(monkeypatch):

@@ -478,18 +478,29 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict], macro: d
             "",
             f"> [{macro['display_name']}](/prism/{macro['slug']}/{macro['variant']})　{_fmt_freshness(fr)}",
             "",
-            "| 维度 | 体制 | 说明 |",
-            "|------|------|------|",
-            f"| 利率 | {rg.get('rates', {}).get('state', '—')} | {rg.get('rates', {}).get('note', '—')} |",
-            f"| 流动性 | {rg.get('liquidity', {}).get('state', '—')} | {rg.get('liquidity', {}).get('note', '—')} |",
-            f"| 汇率 | {rg.get('fx', {}).get('state', '—')} | {rg.get('fx', {}).get('note', '—')} |",
+            "| 维度 | 体制 | 信心 | 说明 |",
+            "|------|------|------|------|",
+            f"| 利率 | {rg.get('rates', {}).get('state', '—')} | {rg.get('rates', {}).get('confidence', '—')} | {rg.get('rates', {}).get('note', '—')} |",
+            f"| 流动性 | {rg.get('liquidity', {}).get('state', '—')} | {rg.get('liquidity', {}).get('confidence', '—')} | {rg.get('liquidity', {}).get('note', '—')} |",
+            f"| 汇率 | {rg.get('fx', {}).get('state', '—')} | {rg.get('fx', {}).get('confidence', '—')} | {rg.get('fx', {}).get('note', '—')} |",
             "",
         ]
+        quad = rg.get("quadrant")
+        if quad:
+            lines += [f"**增长/通胀象限**：{quad}", ""]
         composite = rg.get("composite")
         if composite:
             conv = rg.get("conviction")
-            conv_str = f"（强度 {conv}）" if conv is not None else ""
-            lines += [f"**综合判断{conv_str}**：{composite}", ""]
+            frag = rg.get("fragility")
+            frag_str = f" · 脆弱度 {frag}" if frag else ""
+            lines += [f"**综合判断**：{composite}（强度 {conv if conv is not None else '—'}{frag_str}）", ""]
+        # regime-decay：待确认 macro 输入更新 → 沉默≠确认，提示重判
+        n_macro_pending = sum(
+            1 for p in _load_monitor_queue()
+            if p.get("kind") == "macro_input" and p.get("slug") == macro["slug"]
+        )
+        if n_macro_pending:
+            lines += [f"**⚠️ {n_macro_pending} 项宏观输入有更新待确认 —— 建议重判（沉默≠确认）**", ""]
         if macro["exposed"]:
             names = "、".join(h.get("display_name", h.get("slug", "")) for h in macro["exposed"])
             lines += [f"**当前体制最暴露持仓**：{names}", ""]
