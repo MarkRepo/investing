@@ -68,10 +68,10 @@ _OUTPUT_OPTIONS = [
 ]
 
 
-_TYPE_LABEL = {"company": "公司", "arena": "竞技场", "industry": "行业"}
-_TYPE_EMOJI = {"company": "🏢", "arena": "🥊", "industry": "🏭"}
-# 树内排序：行业 < 竞技场 < 公司（同级内再按 created 倒序）
-_TYPE_ORDER = {"industry": 0, "arena": 1, "company": 2}
+_TYPE_LABEL = {"company": "公司", "arena": "竞技场", "industry": "行业", "macro": "宏观层"}
+_TYPE_EMOJI = {"company": "🏢", "arena": "🥊", "industry": "🏭", "macro": "🌐"}
+# 树内排序：行业 < 竞技场 < 公司 < 宏观层（同级内再按 created 倒序）
+_TYPE_ORDER = {"industry": 0, "arena": 1, "company": 2, "macro": 3}
 
 
 def _sort_topic_nodes(lst: list[dict]) -> None:

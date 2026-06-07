@@ -66,3 +66,9 @@ def test_nav_has_macro_link(macro_web_client):
     assert r.status_code == 200
     assert "宏观层" in r.text
     assert f"/prism/{SLUG}/{VARIANT}/macro-inputs" in r.text
+
+
+def test_index_shows_macro_label(macro_web_client):
+    r = macro_web_client.get("/prism")
+    assert "宏观" in r.text          # 中文标签
+    assert ">macro<" not in r.text   # 不暴露原始 type
