@@ -150,6 +150,10 @@ def record_observation(
             if next_due is not None:
                 obs["next_due"] = next_due
             obs["checked_at"] = _now_iso()
+            # 维护连续越带计数（min_streak 用）
+            if value is not None:
+                breached = _reading_breaches({**e, "observed": obs})
+                obs["streak"] = (obs.get("streak", 0) + 1) if breached else 0
             e["observed"] = obs
             data["updated"] = _now_iso()
             _write_yaml(_registry_path(slug, variant), data)
@@ -167,19 +171,37 @@ def _parse_date(s):
         return None
 
 
-def _series_breached(entry: dict) -> bool:
-    """alert_series 是否越带：delta=|value-prev_value|≥band.delta；z=|observed.z|≥band.z。"""
+def _reading_breaches(entry: dict) -> bool:
+    """单次读数是否越带：delta / z / level(+direction) 任一命中。"""
     band = entry.get("alert_band") or {}
     obs = entry.get("observed") or {}
-    if "delta" in band:
-        v, p = obs.get("value"), obs.get("prev_value")
-        if v is not None and p is not None:
-            return abs(v - p) >= band["delta"]
+    v, p = obs.get("value"), obs.get("prev_value")
+    if "delta" in band and v is not None and p is not None:
+        if abs(v - p) >= band["delta"]:
+            return True
     if "z" in band:
         z = obs.get("z")
-        if z is not None:
-            return abs(z) >= band["z"]
+        if z is not None and abs(z) >= band["z"]:
+            return True
+    if "level" in band and v is not None:
+        d = band.get("direction", "above")
+        if d == "above" and v >= band["level"]:
+            return True
+        if d == "below" and v <= band["level"]:
+            return True
+        if d == "abs_above" and abs(v) >= band["level"]:
+            return True
     return False
+
+
+def _series_breached(entry: dict) -> bool:
+    """alert_series 是否报警：当前读数越带 且 连续越带天数≥min_streak（默认1）。
+    streak 由 record_observation 维护；未维护时默认 1（向后兼容旧 delta/z 行为）。"""
+    if not _reading_breaches(entry):
+        return False
+    band = entry.get("alert_band") or {}
+    obs = entry.get("observed") or {}
+    return obs.get("streak", 1) >= band.get("min_streak", 1)
 
 
 def scan_macro_inputs(registry: dict, today=None) -> dict:

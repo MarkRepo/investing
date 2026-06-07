@@ -162,3 +162,43 @@ def test_scan_macro_inputs_buckets():
     assert {x["name"] for x in out["due_policy"]} == {"FOMC声明"}
     assert {x["name"] for x in out["alert_series"]} == {"HY OAS"}
     assert {u["name"] for u in out["unparseable"]} == {"坏日期"}
+
+
+# ── 报警带 schema 扩展（第二期 Task 4）：level/direction/min_streak ──
+
+def _entry(band, observed):
+    return {"name": "x", "alert_band": band, "observed": observed}
+
+
+def test_breach_level_above():
+    e = _entry({"level": 450, "direction": "above"}, {"value": 460})
+    assert mr._series_breached(e) is True
+    e2 = _entry({"level": 450, "direction": "above"}, {"value": 440})
+    assert mr._series_breached(e2) is False
+
+
+def test_breach_level_below():
+    e = _entry({"level": -40, "direction": "below"}, {"value": -55})
+    assert mr._series_breached(e) is True
+    e2 = _entry({"level": -40, "direction": "below"}, {"value": -30})
+    assert mr._series_breached(e2) is False
+
+
+def test_breach_abs_above():
+    e = _entry({"level": 0.015, "direction": "abs_above"}, {"value": -0.02})
+    assert mr._series_breached(e) is True
+    e2 = _entry({"level": 0.015, "direction": "abs_above"}, {"value": 0.01})
+    assert mr._series_breached(e2) is False
+
+
+def test_breach_min_streak_requires_consecutive():
+    # 当前读数越带，但 streak=1 < min_streak=2 → 不报警
+    e = _entry({"level": 2.2, "direction": "above", "min_streak": 2}, {"value": 2.3, "streak": 1})
+    assert mr._series_breached(e) is False
+    e2 = _entry({"level": 2.2, "direction": "above", "min_streak": 2}, {"value": 2.3, "streak": 2})
+    assert mr._series_breached(e2) is True
+
+
+def test_delta_band_still_works():  # 回归：旧 delta/z 行为不变
+    e = _entry({"delta": 3.0}, {"value": 160, "prev_value": 156})
+    assert mr._series_breached(e) is True
