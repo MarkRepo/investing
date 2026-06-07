@@ -23,6 +23,7 @@ from pathlib import Path
 
 import yaml
 
+from prism.scripts import macro_registry
 from prism.scripts import sidecar_edit
 from prism.scripts.dashboard import (
     _parse_signpost_date,
@@ -177,8 +178,12 @@ def scan_due_events(within_days: int = 14) -> dict:
       price_breach,               # 零 LLM——可直接 propose
       recurring_review,           # industry/arena 无日期触发器，按周期重扫
       unparseable,                # 日期解析失败的 signpost/kill（写错=永不触发，必须曝光）
+                                  # macro 的 unparseable 项额外带 {slug, variant,
+                                  # field:"macro_input", locator} 字段。
       price_unavailable,          # 停牌/缺数/币种错配——不误报破位
-      skipped_no_sidecar,         # 关注了但还没 sidecar
+      skipped_no_sidecar,         # 关注了但还没 sidecar（macro 无登记表时 reason="no_macro_registry"）
+      macro_due,                  # macro topic 事件/描述到期项，带 slug/variant + 登记表字段
+      macro_alert,                # macro topic 行情型 alert_series 越带项
     }
     每个 due 项带 slug/variant/locator，足够 headless 定位与判读。
     """
@@ -187,6 +192,7 @@ def scan_due_events(within_days: int = 14) -> dict:
         "due_signposts": [], "due_kills": [], "price_breach": [],
         "recurring_review": [], "unparseable": [],
         "price_unavailable": [], "skipped_no_sidecar": [],
+        "macro_due": [], "macro_alert": [],
     }
     for w in load_watchlist():
         slug = w.get("slug")
@@ -197,6 +203,26 @@ def scan_due_events(within_days: int = 14) -> dict:
         wkind = w.get("kind")
         wloc = w.get("locator")
         ttype = _topic_type(slug, variant)
+
+        # macro：无 07 sidecar，读 macro_inputs 登记表分桶（事件/描述到期 + 行情越带）
+        if ttype == "macro":
+            try:
+                reg = macro_registry.read_registry(slug, variant)
+            except FileNotFoundError:
+                out["skipped_no_sidecar"].append(
+                    {"slug": slug, "variant": variant, "reason": "no_macro_registry"})
+                continue
+            # macro 到期为"已过期"语义（overdue-only，见 scan_macro_inputs）：
+            # 仅在发布点已过才提示取新值，不做 within_days 前瞻（与 proposal 文案一致）。
+            mscan = macro_registry.scan_macro_inputs(reg, today=today)
+            for x in mscan["due_event"] + mscan["due_policy"]:
+                out["macro_due"].append({"slug": slug, "variant": variant, **x})
+            for x in mscan["alert_series"]:
+                out["macro_alert"].append({"slug": slug, "variant": variant, **x})
+            for u in mscan["unparseable"]:
+                out["unparseable"].append({"slug": slug, "variant": variant,
+                                           "field": "macro_input", "locator": u.get("name")})
+            continue
 
         # industry/arena:无 dated signpost，走周期重扫
         if ttype in ("industry", "arena"):
