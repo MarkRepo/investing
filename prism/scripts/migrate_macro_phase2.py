@@ -58,9 +58,29 @@ def add_fred_series_ids(data: dict) -> dict:
     return data
 
 
+ALERT_BANDS = {
+    "HY OAS": {"level": 450, "direction": "above", "level_alarm": 550},
+    "MOVE 债市波动率": {"level": 120, "direction": "above", "level_alarm": 140},
+    "跨币种基差(EUR/JPY-USD)": {"level": -40, "direction": "below", "level_alarm": -60},
+    "USDJPY / 日元 carry": {"delta": 3.0, "level": 158, "direction": "above", "level_alarm": 160},
+    "DR007/R007": {"level": 2.2, "direction": "above", "level_alarm": 2.5, "min_streak": 2},
+    "CNH-CNY 价差": {"level": 0.015, "direction": "abs_above", "level_alarm": 0.030},
+}
+
+
+def set_alert_bands(data: dict) -> dict:
+    """把 6 条 alert_series 的占位带替换为校准带。原地改并返回。"""
+    for e in data["inputs"]:
+        band = ALERT_BANDS.get(e.get("name"))
+        if band is not None:
+            e["alert_band"] = dict(band)
+    return data
+
+
 def main():
     data = reg.read_registry(SLUG, VAR)
     add_fred_series_ids(data)
+    set_alert_bands(data)
     reg._write_yaml(reg._registry_path(SLUG, VAR), data)
     errs = reg.validate_registry(SLUG, VAR)
     print(f"迁移完成；validator {len(errs)} 错")

@@ -591,7 +591,9 @@ inputs:
   monitoring:
     enabled: true
   alert_band:
-    z: 2.0
+    level: 450
+    direction: above
+    level_alarm: 550
   fred_series_id: BAMLH0A0HYM2
 - name: CMBS/ABS OAS(NFCI 最高权重)
   tier: B
@@ -625,7 +627,9 @@ inputs:
   monitoring:
     enabled: true
   alert_band:
-    z: 2.0
+    level: 120
+    direction: above
+    level_alarm: 140
 - name: VIX
   tier: B
   cadence_type: series
@@ -772,7 +776,9 @@ inputs:
   monitoring:
     enabled: true
   alert_band:
-    z: 2.0
+    level: -40
+    direction: below
+    level_alarm: -60
 - name: USDJPY / 日元 carry
   tier: A
   cadence_type: series
@@ -791,6 +797,9 @@ inputs:
     enabled: true
   alert_band:
     delta: 3.0
+    level: 158
+    direction: above
+    level_alarm: 160
   fred_series_id: DEXJPUS
 - name: BoJ 政策 / JGB 收益率
   tier: A
@@ -1117,7 +1126,10 @@ inputs:
   monitoring:
     enabled: true
   alert_band:
-    z: 2.0
+    level: 2.2
+    direction: above
+    level_alarm: 2.5
+    min_streak: 2
 - name: NCD 同业存单利率
   tier: B
   cadence_type: series
@@ -1304,7 +1316,9 @@ inputs:
   monitoring:
     enabled: true
   alert_band:
-    delta: 0.005
+    level: 0.015
+    direction: abs_above
+    level_alarm: 0.03
 - name: CNH HIBOR/离岸流动性 + 央行 HK 票
   tier: A
   cadence_type: series
