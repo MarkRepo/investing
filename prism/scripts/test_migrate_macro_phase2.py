@@ -55,3 +55,33 @@ def test_only_six_alert_series_have_bands_changed(live_registry):
     out = mig.set_alert_bands(live_registry)
     changed = {e["name"] for e in out["inputs"] if e.get("name") in EXPECTED_BANDS}
     assert changed == set(EXPECTED_BANDS)
+
+
+# ── Task 6：2 条类别尾部输入 ──
+
+TAIL_NAMES = {"中美地缘/关税(尾部)", "ADR退市/HFCAA(尾部)"}
+
+
+def test_add_tail_inputs_present_and_monitored(live_registry):
+    out = mig.add_tail_inputs(live_registry)
+    by = {e["name"]: e for e in out["inputs"]}
+    for n in TAIL_NAMES:
+        assert n in by, n
+        assert by[n]["fetch_method"] == "llm-web"
+        assert by[n]["monitoring"]["enabled"] is True
+        assert by[n]["cadence_type"] == "event"
+        assert by[n]["source"]  # 非空
+
+
+def test_add_tail_inputs_idempotent(live_registry):
+    once = mig.add_tail_inputs(live_registry)
+    n1 = len(once["inputs"])
+    twice = mig.add_tail_inputs(once)
+    assert len(twice["inputs"]) == n1  # 不重复追加
+
+
+def test_tail_sources_named(live_registry):
+    out = mig.add_tail_inputs(live_registry)
+    by = {e["name"]: e for e in out["inputs"]}
+    assert "PIIE" in by["中美地缘/关税(尾部)"]["source"]
+    assert "PCAOB" in by["ADR退市/HFCAA(尾部)"]["source"]

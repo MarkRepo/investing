@@ -77,10 +77,44 @@ def set_alert_bands(data: dict) -> dict:
     return data
 
 
+TAIL_INPUTS = [
+    {
+        "name": "中美地缘/关税(尾部)",
+        "tier": "B", "cadence_type": "event", "targets": ["fx", "rates"],
+        "mechanism": "CR", "importance": "background",
+        "source": "PIIE US-China Trade War Tariffs chart + Trump trade war timeline 2.0",
+        "fetch_method": "llm-web", "state": "新增(第二期尾部源)",
+        "causal_sentence": "关税/地缘冲击经风险偏好与汇率渠道情境式影响中概与出口链（情境相关，非稳定因果）。",
+        "lag": "事件驱动", "alert_series": False,
+        "monitoring": {"enabled": True},
+    },
+    {
+        "name": "ADR退市/HFCAA(尾部)",
+        "tier": "B", "cadence_type": "event", "targets": ["fx"],
+        "mechanism": "CR", "importance": "background",
+        "source": "PCAOB HFCAA determinations + SEC Commission-Identified Issuers",
+        "fetch_method": "llm-web", "state": "新增(第二期尾部源)",
+        "causal_sentence": "PCAOB 新负面裁定触发 HFCAA 强制退市路径，情境式冲击中概 ADR 估值（情境相关）。",
+        "lag": "事件驱动", "alert_series": False,
+        "monitoring": {"enabled": True},
+    },
+]
+
+
+def add_tail_inputs(data: dict) -> dict:
+    """把 2 条类别尾部加为在册 llm-web 监控项（幂等：按 name 去重）。"""
+    existing = {e.get("name") for e in data["inputs"]}
+    for t in TAIL_INPUTS:
+        if t["name"] not in existing:
+            data["inputs"].append(dict(t))
+    return data
+
+
 def main():
     data = reg.read_registry(SLUG, VAR)
     add_fred_series_ids(data)
     set_alert_bands(data)
+    add_tail_inputs(data)
     reg._write_yaml(reg._registry_path(SLUG, VAR), data)
     errs = reg.validate_registry(SLUG, VAR)
     print(f"迁移完成；validator {len(errs)} 错")
