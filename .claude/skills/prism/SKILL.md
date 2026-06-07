@@ -13,7 +13,7 @@ allowed-tools: Bash Read Write
 | 「研究 X」/ 「开始研究 X」 | 读 `prism/workflows/00-research-topic.md`。**先查重**：定好 slug 后跑 `list_variants('{slug}')`，非空（已存在变体）则走 00 Step 3 意图分叉（续做/新变体复用/另起 slug），勿默认盲建 |
 | 「prism 推进 {slug}」/ 「继续研究 {slug}」 | 读 `topic.yaml` 判断当前 stage，跳转对应 workflow |
 | 「生成产出 {output}」/ 「更新 {slug} 的 {output}」 | primer → 见下行 `00-primer.md`；其余产出已并入单份决策链 case，按 `topic.type` 读对应路径文档（同「合成」行），由 `_shared.md` 增量重写判定（`list_affected_outputs`）只重写受影响的环/产出。**不再有 01-08/09/10 逐产出步骤文件** |
-| 「合成 {slug}」/「生成产出 {slug}」 | 按 `topic.type` 读决策链路径文档（替代 _shared+01-08）：company → `04-synthesize/_company_case.md`；industry → `04-synthesize/_industry_funnel.md`；arena → `04-synthesize/_arena_funnel.md`。三类都是"理解先行 + 6 环决策链"，funnel 的环⑥ 折入旧 09/10 选拔 |
+| 「合成 {slug}」/「生成产出 {slug}」 | 按 `topic.type` 读决策链路径文档（替代 _shared+01-08）：company → `04-synthesize/_company_case.md`；industry → `04-synthesize/_industry_funnel.md`；arena → `04-synthesize/_arena_funnel.md`；macro → `04-synthesize/_macro_regime.md`（横切宏观层：primer 读本 + m_regime_read 三体制活读数 + transmission_map 传导地图）。三类都是"理解先行 + 6 环决策链"，funnel 的环⑥ 折入旧 09/10 选拔 |
 | 「生成入门 {slug}」/「primer {slug}」/「补 primer」 | 读 `prism/workflows/04-synthesize/00-primer.md`；**全类型统一 primer-first**——原材料 findings+thesis_v0+K#（+按 type 的财务/亲属产出），不依赖 01-08/thesis_v1。primer 由各路径 Step 2 在 case 之前调用 |
 | 「评审 {slug}」 | 读 `prism/workflows/05-critic-review.md` |
 | 「监控 {slug}」 | 读 `prism/workflows/06-daily-monitor.md` |
@@ -26,7 +26,7 @@ allowed-tools: Bash Read Write
 所有 topic 数据在 `prism/topics/{slug}/`：
 - `topic.yaml` — 主状态文件
 - `manifest.yaml` — 资料清单
-- `outputs/` — 决策链产出：00_primer 领域入门 + 按 type 的单份 case（company `c_investment_case` / industry `i_industry_case` / arena `a_arena_case`）+ sidecar yaml（company `07_decision_kit` / industry `09_industry_to_arenas` / arena `10_peer_matrix`）+ `_prism_reading_guide`（`thesis_v{N}` / `decomposition_v{N}` 在 `{variant}/` 根下）
+- `outputs/` — 决策链产出：00_primer 领域入门 + 按 type 的单份 case（company `c_investment_case` / industry `i_industry_case` / arena `a_arena_case` / macro `m_regime_read`）+ sidecar yaml（company `07_decision_kit` / industry `09_industry_to_arenas` / arena `10_peer_matrix` / macro `transmission_map`）+ `_prism_reading_guide`（`thesis_v{N}` / `decomposition_v{N}` 在 `{variant}/` 根下）
 
 ## Python Scripts（仅用于 CRUD，零 LLM 调用）
 

@@ -61,6 +61,7 @@ _OUTPUT_KEYS_LABELS = [
     ("c_investment_case", "投资决策链 case"),
     ("i_industry_case", "行业决策链 case"),
     ("a_arena_case", "竞技场决策链 case"),
+    ("m_regime_read", "宏观体制读数"),
     ("08_living_feed", "信息流时间线"),
     # 注：sidecar（07_decision_kit / industry_to_arenas / peer_matrix）是 .yaml
     # 文件、无独立 markdown 视图（见 04-synthesize/_peer_matrix_spec.md：sidecar yaml

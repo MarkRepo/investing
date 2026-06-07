@@ -49,6 +49,16 @@ def _load_arena_sidecar(slug: str, variant: str) -> dict | None:
         return None
 
 
+def _load_macro_sidecar(slug: str, variant: str) -> dict | None:
+    path = PRISM_ROOT / "topics" / slug / variant / "outputs" / "transmission_map.yaml"
+    if not path.exists():
+        return None
+    try:
+        return yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return None
+
+
 def _load_monitor_queue() -> list[dict]:
     """Read pending proposals from monitor_queue.yaml (daily-monitor staging).
 
@@ -214,6 +224,8 @@ def _sidecar_loader_for(topic_type: str):
         return _load_industry_sidecar
     if topic_type == "arena":
         return _load_arena_sidecar
+    if topic_type == "macro":
+        return _load_macro_sidecar
     return _load_sidecar
 
 
@@ -326,7 +338,7 @@ def _collect_non_company_rows() -> list[dict]:
     # Group topics by slug, keeping all variants
     slug_variants: dict[str, list[dict]] = {}
     for topic in list_topics():
-        if topic.get("type") == "company":
+        if topic.get("type") in ("company", "macro"):
             continue
         slug_variants.setdefault(topic["slug"], []).append(topic)
 
@@ -380,6 +392,38 @@ def _collect_non_company_rows() -> list[dict]:
     return rows
 
 
+def _collect_macro_banner() -> dict | None:
+    """收集唯一 macro topic 的体制读数 + 高暴露持仓，供 dashboard Section 0 banner。
+
+    只取第一个 macro slug（设计上只期望一个宏观层）。无 macro topic 或无
+    transmission_map.yaml → 返回 None（banner 整段不渲染）。
+    """
+    from prism.scripts.topic import list_topics
+    slug_variants: dict[str, list[dict]] = {}
+    for topic in list_topics():
+        if topic.get("type") != "macro":
+            continue
+        slug_variants.setdefault(topic["slug"], []).append(topic)
+    if not slug_variants:
+        return None
+    slug, topics = sorted(slug_variants.items())[0]
+    topic = _canonical_variant(topics)
+    variant = topic.get("variant", "")
+    sidecar = _load_macro_sidecar(slug, variant)
+    if not sidecar:
+        return None
+    holdings = sidecar.get("holdings", []) or []
+    exposed = [h for h in holdings if h.get("exposure_score") == "high"]
+    return {
+        "slug": slug,
+        "variant": variant,
+        "display_name": topic.get("display_name", slug),
+        "regime": sidecar.get("regime", {}) or {},
+        "exposed": exposed,
+        "freshness_days": _days_stale(sidecar.get("generated")),
+    }
+
+
 # ── markdown rendering ────────────────────────────────────────────────────────
 
 def _render_valuation_table(models: list[dict]) -> str:
@@ -410,7 +454,7 @@ def _render_valuation_table(models: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
+def _render_dashboard(company_rows: list[dict], other_rows: list[dict], macro: dict | None = None) -> str:
     today_str = date.today().isoformat()
     lines: list[str] = []
 
@@ -423,6 +467,33 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict]) -> str:
          f"行业：{n_industry} 个　　竞技场：{n_arena} 个"),
         f"",
     ]
+
+    # ── Section 0: 宏观体制 banner ───────────────────────────────────────────
+    if macro:
+        rg = macro["regime"]
+        fr = {"freshness_days": macro["freshness_days"],
+              "freshness_emoji": _freshness_emoji(macro["freshness_days"])}
+        lines += [
+            "## 🌐 宏观体制",
+            "",
+            f"> [{macro['display_name']}](/prism/{macro['slug']}/{macro['variant']})　{_fmt_freshness(fr)}",
+            "",
+            "| 维度 | 体制 | 说明 |",
+            "|------|------|------|",
+            f"| 利率 | {rg.get('rates', {}).get('state', '—')} | {rg.get('rates', {}).get('note', '—')} |",
+            f"| 流动性 | {rg.get('liquidity', {}).get('state', '—')} | {rg.get('liquidity', {}).get('note', '—')} |",
+            f"| 汇率 | {rg.get('fx', {}).get('state', '—')} | {rg.get('fx', {}).get('note', '—')} |",
+            "",
+        ]
+        composite = rg.get("composite")
+        if composite:
+            conv = rg.get("conviction")
+            conv_str = f"（强度 {conv}）" if conv is not None else ""
+            lines += [f"**综合判断{conv_str}**：{composite}", ""]
+        if macro["exposed"]:
+            names = "、".join(h.get("display_name", h.get("slug", "")) for h in macro["exposed"])
+            lines += [f"**当前体制最暴露持仓**：{names}", ""]
+        lines += ["---", ""]
 
     # ── Section 1: Company decision table ────────────────────────────────────
     lines += [
@@ -740,7 +811,8 @@ def build() -> Path:
     """Build dashboard.md and return its path."""
     company_rows = _collect_company_rows()
     other_rows = _collect_non_company_rows()
-    content = _render_dashboard(company_rows, other_rows)
+    macro = _collect_macro_banner()
+    content = _render_dashboard(company_rows, other_rows, macro)
     DASHBOARD_PATH.write_text(content, encoding="utf-8")
     print(f"✅ dashboard.md 已生成 → {DASHBOARD_PATH}")
     print(f"   公司：{len(company_rows)} 个，行业/竞技场：{len(other_rows)} 个")
