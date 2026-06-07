@@ -73,3 +73,27 @@ def test_macro_watched_but_no_registry_surfaces(macro_monitor_env):
     assert scan["macro_due"] == [] and scan["macro_alert"] == []
     assert any(s.get("reason") == "no_macro_registry"
                and s["slug"] == slug for s in scan["skipped_no_sidecar"])
+
+
+def test_propose_macro_updates_writes_queue(macro_monitor_env):
+    slug, variant, _ = macro_monitor_env
+    monitor.add_watch(slug, scope="topic", variant=variant)
+    res = monitor.propose_macro_updates(within_days=14)
+    assert res["added"] == 2  # NFP(due) + HY OAS(alert)
+    q = {p["locator"]: p for p in monitor.load_queue()}
+    assert "NFP" in q and "HY OAS" in q
+    assert q["NFP"]["kind"] == "macro_input"
+    # load_bearing → 建议重判
+    assert q["NFP"]["requires_thesis_review"] is True
+    assert q["NFP"]["living_feed_entry"]  # 预写文案非空
+
+
+def test_confirm_macro_input_appends_living_feed(macro_monitor_env):
+    slug, variant, tmpdir = macro_monitor_env
+    monitor.add_watch(slug, scope="topic", variant=variant)
+    monitor.propose_macro_updates(within_days=14)
+    pid = {p["locator"]: p["proposal_id"] for p in monitor.load_queue()}["HY OAS"]
+    out = monitor.confirm_flip(pid)
+    assert out["status"] == "confirmed"
+    feed = (tmpdir / "topics" / slug / variant / "outputs" / "08_living_feed.md").read_text(encoding="utf-8")
+    assert "HY OAS" in feed

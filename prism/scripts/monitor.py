@@ -420,6 +420,55 @@ def propose_price_breaches(within_days: int = 14) -> dict:
     return result
 
 
+def propose_macro_updates(within_days: int = 14) -> dict:
+    """零 LLM 路径：scan macro 桶 → 写 kind='macro_input' proposal 进 queue。
+
+    macro proposal 是信息型——confirm 只追加 living_feed + 盖"建议重判"戳，
+    绝不自动改 regime_read（判断永远人在 web 端触发）。
+    importance=load_bearing 或越带 alert → requires_thesis_review=True。
+    """
+    scan = scan_due_events(within_days=within_days)
+    proposals = []
+    today_str = date.today().isoformat()
+    for item in scan["macro_due"]:
+        name = item.get("name", "")
+        imp = item.get("importance")
+        entry = (
+            f"## {today_str} 宏观输入到期：{name}\n"
+            f"**来源**：{item.get('source', '—')}（{item.get('cadence_type')}）\n"
+            f"**关键信息**：该输入已到发布/排期点，待取新值与旧读数对比\n"
+            f"**对已有判断的影响**：{item.get('causal_sentence') or '（见登记表机制句）'}\n"
+            f"**当前判断更新**：维持，等用户在 web 端决定是否重判"
+        )
+        proposals.append({
+            "slug": item["slug"], "variant": item["variant"], "kind": "macro_input",
+            "locator": name, "proposed_value": "due",
+            "living_feed_entry": entry,
+            "rationale": f"{name} 到期（{item.get('cadence_type')}）",
+            "requires_thesis_review": imp == "load_bearing",
+        })
+    for item in scan["macro_alert"]:
+        name = item.get("name", "")
+        obs = item.get("observed") or {}
+        entry = (
+            f"## {today_str} 宏观承重序列越带：{name}\n"
+            f"**来源**：{item.get('source', '—')}（行情型 alert_series）\n"
+            f"**关键信息**：最新 {obs.get('value', obs.get('z', '—'))} / 上次 {obs.get('prev_value', '—')}，越预设报警带\n"
+            f"**对已有判断的影响**：{item.get('causal_sentence') or '承重序列突变，可能预示体制切换'}\n"
+            f"**当前判断更新**：维持，强烈建议用户重判"
+        )
+        proposals.append({
+            "slug": item["slug"], "variant": item["variant"], "kind": "macro_input",
+            "locator": name, "proposed_value": "alert",
+            "living_feed_entry": entry,
+            "rationale": f"{name} 越报警带",
+            "requires_thesis_review": True,
+        })
+    result = propose_flips(proposals)
+    result["scanned_macro"] = len(scan["macro_due"]) + len(scan["macro_alert"])
+    return result
+
+
 def _append_living_feed(slug: str, variant: str, entry_md: str) -> None:
     """把一段 markdown 追加到 08_living_feed.md 末尾,并 bump output 状态。零 LLM。"""
     if not entry_md.strip():
