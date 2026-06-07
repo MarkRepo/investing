@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import sys
 
 import httpx
 
@@ -86,3 +87,15 @@ def run_fred_fetch(slug: str, variant: str, *, client=None) -> dict:
         derived += 1
 
     return {"fetched": fetched, "derived": derived, "skipped": skipped, "failed": failed}
+
+
+def main(argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+    slug = argv[0] if len(argv) > 0 else "global-macro-rates-liquidity"
+    variant = argv[1] if len(argv) > 1 else "opus4.8"
+    summary = run_fred_fetch(slug, variant)
+    print(f"FRED 抓取: {summary}")
+
+
+if __name__ == "__main__":
+    main()

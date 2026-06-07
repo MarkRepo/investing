@@ -75,3 +75,17 @@ def test_run_fred_fetch_records_observations(monkeypatch, tmp_path):
     assert rec["净流动性(=资产−TGA−RRP)"] == 7000.0 - 800.0 - 200.0  # 派生算出
     assert "MOVE 债市波动率" not in rec  # web 跳过
     assert summary["fetched"] == 3 and summary["derived"] == 1 and summary["skipped"] == 1
+
+
+def test_main_invokes_run(monkeypatch, capsys):
+    monkeypatch.setenv("FRED_API_KEY", "k")
+    calls = {}
+
+    def fake_run(s, v):
+        calls["args"] = (s, v)
+        return {"fetched": 5, "derived": 1, "skipped": 80, "failed": 0}
+
+    monkeypatch.setattr(fred_fetch, "run_fred_fetch", fake_run)
+    fred_fetch.main(["global-macro-rates-liquidity", "opus4.8"])
+    assert calls["args"] == ("global-macro-rates-liquidity", "opus4.8")
+    assert "fetched" in capsys.readouterr().out
