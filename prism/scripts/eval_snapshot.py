@@ -140,6 +140,19 @@ def stamp_reeval_pending(slug: str, variant: str, brief: dict) -> None:
     _write_yaml(_log_path(slug, variant), log)
 
 
+def _stance_direction(scale, prev, cur):
+    """policy 立场方向：按档位索引差取轴方向词。无变化 / 缺档 / 未知轴 → None。"""
+    levels = reg.STANCE_SCALES.get(scale)
+    if not levels or prev is None or cur is None or prev == cur:
+        return None
+    try:
+        delta = levels.index(cur) - levels.index(prev)
+    except ValueError:
+        return None
+    up, down = reg.STANCE_DIRECTION[scale]
+    return up if delta > 0 else down
+
+
 def diff_since_last(slug: str, variant: str) -> list:
     """对登记表每条输入，比对现 observed.value 与 latest 快照值。零 LLM。
 
@@ -162,7 +175,21 @@ def diff_since_last(slug: str, variant: str) -> list:
             "delta": None, "changed": None if latest is None else False,
             "breached": False, "used": bool(snap.get("used")),
             "conclusions": conclusions_for_input(latest, name) if latest else [],
+            "stance": None, "snapshot_stance": None, "direction": None,
         }
+        scale = e.get("stance_scale")
+        if scale:                                  # policy 输入：走立场比对，不碰数值
+            live_stance = (e.get("observed") or {}).get("stance")
+            snap_stance = snap.get("stance")
+            row["snapshot_value"] = None
+            row["live_value"] = None
+            row["stance"] = live_stance
+            row["snapshot_stance"] = snap_stance
+            if latest is not None:
+                row["changed"] = live_stance != snap_stance
+                row["direction"] = _stance_direction(scale, snap_stance, live_stance)
+            out.append(row)
+            continue
         if latest is not None:
             if isinstance(live, (int, float)) and isinstance(snap_val, (int, float)):
                 row["delta"] = live - snap_val

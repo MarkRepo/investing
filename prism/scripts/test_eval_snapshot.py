@@ -134,3 +134,24 @@ def test_stamp_and_clear_reeval_pending(tmp_topic):
     assert es.read_eval_log(slug, variant)["reeval_pending"] is not None
     es.append_evaluation(slug, variant, _ev_all())          # 新评估落地清戳
     assert es.read_eval_log(slug, variant)["reeval_pending"] is None
+
+
+def test_diff_policy_stance_direction(tmp_topic):
+    slug, variant = tmp_topic
+    reg.upsert_input(slug, variant, {
+        "name": "C", "tier": "B", "cadence_type": "policy", "mechanism": "CO",
+        "importance": "confirming", "stance_scale": "hawk_dove",
+        "observed": {"stance": "偏鹰", "evidence": "x"}})
+    ev = _ev_all()
+    ev["input_snapshot"].append(                       # 上次 C 为 中性
+        {"name": "C", "stance": "中性", "as_of": "2026-05-01", "used": True})
+    es.append_evaluation(slug, variant, ev)
+    diff = {d["name"]: d for d in es.diff_since_last(slug, variant)}
+    assert diff["C"]["changed"] is True
+    assert diff["C"]["snapshot_stance"] == "中性"
+    assert diff["C"]["stance"] == "偏鹰"
+    assert diff["C"]["direction"] == "更鹰"
+    assert diff["C"]["delta"] is None                  # policy 不算数值 delta
+    assert diff["C"]["breached"] is False              # policy 无报警带
+    assert diff["A"]["stance"] is None                 # 数值输入立场字段为 None
+    assert diff["A"]["direction"] is None
