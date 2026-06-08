@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-08T15:57:14.537510+00:00'
+updated: '2026-06-08T16:45:50.645378+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -763,7 +763,7 @@ inputs:
     enabled: true
 - name: AI-capex 体制代理
   tier: C
-  cadence_type: policy
+  cadence_type: event
   targets:
   - liquidity
   - rates
@@ -777,6 +777,11 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fetch_mode: search
+  authority: secondary
+  availability: no_stable_source
+  observed:
+    next_due: '2026-08-01'
 - name: 持仓拥挤(CFTC + CTA/vol-target + basis-trade规模)
   tier: B
   cadence_type: series
@@ -1654,7 +1659,7 @@ inputs:
     enabled: true
 - name: MSCI/FTSE 中国权重调整
   tier: B
-  cadence_type: policy
+  cadence_type: event
   targets:
   - fx
   mechanism: CD
@@ -1667,6 +1672,12 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fetch_mode: direct
+  authority: primary
+  availability: scriptable_todo
+  source_url: https://www.msci.com/indexes/index-resources/index-announcements
+  observed:
+    next_due: '2026-06-23'
 - name: 30 城新房成交(高频)
   tier: B
   cadence_type: series
@@ -1806,7 +1817,7 @@ inputs:
     enabled: true
 - name: 中美地缘/关税
   tier: A
-  cadence_type: policy
+  cadence_type: event
   targets:
   - fx
   - liquidity
@@ -1820,9 +1831,15 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fetch_mode: search
+  authority: secondary
+  availability: no_stable_source
+  source_url: https://ustr.gov/about-us/policy-offices/press-office/press-releases
+  observed:
+    next_due: '2026-07-01'
 - name: ADR 退市/HFCAA/PCAOB
   tier: A
-  cadence_type: policy
+  cadence_type: event
   targets:
   - fx
   - liquidity
@@ -1836,9 +1853,15 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fetch_mode: direct
+  authority: official
+  availability: scriptable_todo
+  source_url: https://www.sec.gov/HFCAA
+  observed:
+    next_due: '2026-07-01'
 - name: 美出口管制/实体清单
   tier: A
-  cadence_type: policy
+  cadence_type: event
   targets:
   - liquidity
   mechanism: CD
@@ -1851,6 +1874,12 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fetch_mode: direct
+  authority: official
+  availability: scriptable_todo
+  source_url: https://www.bis.gov/regulations/federal-register-notices
+  observed:
+    next_due: '2026-07-01'
 - name: 资本管制/SAFE 出境规则
   tier: A
   cadence_type: policy
@@ -1919,7 +1948,7 @@ inputs:
     evidence: 2026-02-09 三大交易所优化再融资一揽子措施、证监会 2026 年系统工作会明确「提高再融资便利性」，IPO/再融资由阶段性收紧转为系统性优化回暖（资金面偏松）；减持端从严属强监管（证券时报，2026-01-16；证券市场周刊，2026-03-17）。
 - name: 美财政/债务上限/财政主导
   tier: A
-  cadence_type: policy
+  cadence_type: event
   targets:
   - rates
   - liquidity
@@ -1933,6 +1962,12 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  fetch_mode: search
+  authority: secondary
+  availability: no_stable_source
+  source_url: https://home.treasury.gov/policy-issues/financing-the-government/debt-limit
+  observed:
+    next_due: '2026-07-01'
 - name: 中国主权评级展望
   tier: B
   cadence_type: policy
