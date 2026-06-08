@@ -298,6 +298,15 @@ def test_monitoring_toggle_post_sets_enabled(macro_web_client):
     assert hy["monitoring"]["enabled"] is False
 
 
+def test_monitoring_toggle_redirect_carries_anchor(macro_web_client):
+    # 带 anchor → 重定向 Location 末尾带该行片段，浏览器滚回原行（不跳页顶）
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/monitoring",
+                              data={"name": "HY OAS", "enabled": "false", "anchor": "input-3"},
+                              follow_redirects=False)
+    assert r.status_code == 303
+    assert r.headers["location"].endswith("/macro-inputs#input-3")
+
+
 def test_monitoring_toggle_404_unknown_input(macro_web_client):
     r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/monitoring",
                               data={"name": "不存在的输入", "enabled": "true"}, follow_redirects=False)

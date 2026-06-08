@@ -712,9 +712,12 @@ def prism_macro_inputs(request: Request, slug: str, variant: str):
 
 
 @router.post("/{slug}/{variant}/macro-inputs/monitoring")
-def prism_macro_monitoring(slug: str, variant: str,
-                           name: str = Form(...), enabled: str = Form(...)):
-    """切换某输入的 monitoring.enabled（零 LLM）。输入不存在 → 404。"""
+def prism_macro_monitoring(slug: str, variant: str, name: str = Form(...),
+                           enabled: str = Form(...), anchor: str = Form("")):
+    """切换某输入的 monitoring.enabled（零 LLM）。输入不存在 → 404。
+
+    anchor：切换的行锚点，重定向后浏览器滚回该行（避免每次点都跳页顶）。
+    """
     from prism.scripts import macro_registry as macro_reg
     try:
         registry = macro_reg.read_registry(slug, variant)
@@ -723,7 +726,8 @@ def prism_macro_monitoring(slug: str, variant: str,
     if not any(e["name"] == name for e in registry.get("inputs") or []):
         raise HTTPException(status_code=404, detail=f"输入 {name!r} 不存在")
     macro_reg.upsert_input(slug, variant, {"name": name, "monitoring": {"enabled": enabled == "true"}})
-    return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs", status_code=303)
+    frag = f"#{anchor}" if anchor else ""
+    return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
 
 
 @router.post("/{slug}/{variant}/reeval")
