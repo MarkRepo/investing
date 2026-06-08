@@ -68,6 +68,24 @@ def test_append_rejects_bad_role(tmp_topic):
         es.append_evaluation(slug, variant, ev)
 
 
+def test_append_rejects_snapshot_row_missing_name(tmp_topic):
+    """快照行漏 name 键 → 拒绝（否则 None 混入名册，会让悬空检查失灵）。"""
+    slug, variant = tmp_topic
+    ev = _ev_all()
+    ev["input_snapshot"].append({"value": 1, "used": False})   # 漏 name 键
+    with pytest.raises(ValueError, match="缺 name"):
+        es.append_evaluation(slug, variant, ev)
+
+
+def test_append_rejects_based_on_missing_input_even_with_nameless_row(tmp_topic):
+    """漏 input 键的 based_on 不能因为存在漏 name 的快照行而蒙混过关（None==None 漏洞）。"""
+    slug, variant = tmp_topic
+    ev = _ev_all([{"id": "x", "label": "l", "state": "s", "causal": "c",
+                   "based_on": [{"role": "load_bearing"}]}])   # 漏 input 键
+    with pytest.raises(ValueError, match="缺 input"):
+        es.append_evaluation(slug, variant, ev)
+
+
 def test_conclusions_for_input_reverse_index(tmp_topic):
     slug, variant = tmp_topic
     es.append_evaluation(slug, variant, _ev_all())

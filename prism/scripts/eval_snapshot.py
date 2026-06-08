@@ -57,15 +57,24 @@ def _validate_evaluation(evaluation: dict, input_names: set) -> list:
     """校验一条 evaluation 的不变量。返回错误列表（空=通过）。"""
     errors = []
     snap = evaluation.get("input_snapshot") or []
-    snap_names = {s.get("name") for s in snap}
+    snap_names = set()
+    for i, s in enumerate(snap):
+        nm = s.get("name")
+        if nm is None:                    # 漏 name 键 → 不让 None 混入名册（否则悬空检查失灵）
+            errors.append(f"input_snapshot[{i}] 缺 name 键")
+        else:
+            snap_names.add(nm)
     missing = input_names - snap_names
     if missing:
         errors.append(f"input_snapshot 漏列输入: {sorted(missing)}")
     for c in evaluation.get("conclusions") or []:
         cid = c.get("id", "<无 id>")
         for b in c.get("based_on") or []:
-            if b.get("input") not in snap_names:
-                errors.append(f"[{cid}] based_on 悬空引用: {b.get('input')!r} 不在 input_snapshot")
+            inp = b.get("input")
+            if inp is None:               # 漏 input 键 → 显式拒，不靠 None 是否在名册里碰运气
+                errors.append(f"[{cid}] based_on 缺 input 键")
+            elif inp not in snap_names:
+                errors.append(f"[{cid}] based_on 悬空引用: {inp!r} 不在 input_snapshot")
             if b.get("role") not in VALID_ROLE:
                 errors.append(f"[{cid}] role 非法: {b.get('role')!r}")
     return errors
