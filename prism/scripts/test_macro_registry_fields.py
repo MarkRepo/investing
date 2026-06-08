@@ -100,3 +100,17 @@ def test_stance_without_evidence_flagged(tmp_reg):
     slug, variant = tmp_reg
     reg.upsert_input(slug, variant, _policy({"stance": "偏鹰"}))   # 无 evidence
     assert any("evidence" in m for m in reg.validate_registry(slug, variant))
+
+
+# --- fetch_mode：llm-web 取数路由（可空；给值须 ∈ {direct, search}）---
+
+def test_valid_fetch_mode_passes(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({"fetch_mode": "direct"}))
+    assert reg.validate_registry(slug, variant) == []
+
+
+def test_bad_fetch_mode_flagged(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({"fetch_mode": "crawl"}))
+    assert any("fetch_mode" in e for e in reg.validate_registry(slug, variant))
