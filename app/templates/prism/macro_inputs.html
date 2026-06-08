@@ -2,6 +2,11 @@
 {% from "prism/_view_tabs.html" import view_tabs %}
 {% block title %}宏观输入源 · {{ topic.display_name }}{% endblock %}
 {% block content %}
+{% set cadence_label = {'event': '事件', 'policy': '政策', 'series': '序列'} %}
+{% set cadence_tip = {'event': '不定期事件（如 FOMC 会议、数据发布日）', 'policy': '政策发布（如 LPR、货政报告）', 'series': '可连续抓取的常规时间序列'} %}
+{% set target_label = {'rates': '利率', 'liquidity': '流动性', 'fx': '汇率'} %}
+{% set importance_label = {'load_bearing': '承重', 'confirming': '确认', 'background': '背景'} %}
+{% set mechanism_tip = {'CD': '因果驱动', 'CF': '资金流渠道（因果子类）', 'CO': '同步读数', 'CR': '仅相关'} %}
 <nav class="breadcrumb">
   <a href="/prism">研究主题</a> /
   <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
@@ -98,7 +103,7 @@
 <p class="hint">共 {{ inputs | length }} 条输入。「自动」= FRED API 脚本拉取；其余为 llm-web / manual。</p>
 <table class="data-table">
   <thead><tr>
-    <th>输入名</th><th>等级</th><th>频率</th><th>目标</th><th>重要性</th>
+    <th>输入名</th><th>等级</th><th>频率</th><th>机制</th><th>目标</th><th>重要性</th>
     <th>来源</th><th>抓取</th><th>上次评估值</th><th>现值 / Δ</th><th>参与·支撑</th><th>监控</th><th>报警带</th>
   </tr></thead>
   <tbody>
@@ -108,9 +113,10 @@
         {% if inp.note %}<div class="note-caveat" title="口径/代理说明">ⓘ {{ inp.note }}</div>{% endif %}
       </td>
       <td>{{ inp.tier or '—' }}</td>
-      <td>{{ inp.cadence_type or '—' }}</td>
-      <td>{{ (inp.targets or []) | join(', ') }}</td>
-      <td>{{ inp.importance or '—' }}</td>
+      <td>{% if inp.cadence_type %}<span title="{{ cadence_tip.get(inp.cadence_type, '') }}">{{ cadence_label.get(inp.cadence_type, inp.cadence_type) }}</span>{% else %}—{% endif %}</td>
+      <td>{% if inp.mechanism %}<span title="{{ mechanism_tip.get(inp.mechanism, '') }}">{{ inp.mechanism }}</span>{% else %}—{% endif %}</td>
+      <td>{% for t in inp.targets or [] %}{{ target_label.get(t, t) }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
+      <td>{{ importance_label.get(inp.importance, inp.importance or '—') }}</td>
       <td>
         {% if inp.source_url %}<a href="{{ inp.source_url }}" target="_blank" rel="noopener">{{ inp.source or '源' }}</a>
         {% else %}{{ inp.source or '—' }}{% endif %}

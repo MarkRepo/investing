@@ -384,3 +384,21 @@ def test_change_summary_no_change_message(macro_web_client):
     r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
     assert "变更汇总" in r.text
     assert "自上次评估无变化" in r.text
+
+
+def test_inputs_table_chinese_labels(macro_web_client):
+    # fixture HY OAS：cadence series / targets liquidity / importance confirming
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "序列" in r.text       # cadence series → 序列
+    assert "流动性" in r.text      # target liquidity → 流动性
+    assert "确认" in r.text        # importance confirming → 确认
+
+
+def test_inputs_table_cadence_tooltip(macro_web_client):
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "可连续抓取的常规时间序列" in r.text   # series 悬停释义
+
+
+def test_inputs_table_mechanism_tooltip(macro_web_client):
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "同步读数" in r.text     # HY OAS mechanism CO → 悬停释义
