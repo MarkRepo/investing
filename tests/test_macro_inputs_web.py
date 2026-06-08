@@ -109,6 +109,25 @@ def test_macro_inputs_shows_caveat_note(macro_web_client):
     assert "非 ICE 真·DXY" in r.text
 
 
+def test_macro_inputs_shows_fetch_mode_badges(macro_web_client):
+    """llm-web 输入按 fetch_mode 区分展示：direct→直接拉取、search→检索。"""
+    import prism.scripts.macro_registry as reg
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "MPR", "tier": "A", "cadence_type": "policy", "targets": ["rates"],
+        "mechanism": "CD", "importance": "load_bearing", "causal_sentence": "x→y→z",
+        "fetch_method": "llm-web", "fetch_mode": "direct",
+    })
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "关税", "tier": "A", "cadence_type": "policy", "targets": ["fx"],
+        "mechanism": "CD", "importance": "load_bearing", "causal_sentence": "x→y→z",
+        "fetch_method": "llm-web", "fetch_mode": "search",
+    })
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert r.status_code == 200
+    assert "直接拉取" in r.text
+    assert "检索" in r.text
+
+
 def test_macro_detail_shows_input_tab_not_diag(macro_web_client):
     """macro 详情页 tab 条：读者向 + 输入源；隐藏 诊断/体检（对宏观层不适用）。"""
     r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}")

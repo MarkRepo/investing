@@ -131,6 +131,11 @@
           {% set avail_label = {'scripted': '已脚本', 'scriptable_todo': '待脚本', 'no_stable_source': '无稳定源'} %}
           <span class="badge-avail avail-{{ inp.availability }}">{{ avail_label[inp.availability] }}</span>
         {% endif %}
+        {% if inp.fetch_mode %}
+          {% set fm_label = {'direct': '直接拉取', 'search': '检索'} %}
+          {% set fm_tip = {'direct': '有稳定入口（索引/RSS/官网页），脚本固定拉取', 'search': '源头分散，每轮需检索定位最新'} %}
+          <span class="badge-fetchmode fm-{{ inp.fetch_mode }}" title="{{ fm_tip[inp.fetch_mode] }}">{{ fm_label[inp.fetch_mode] }}</span>
+        {% endif %}
       </td>
       {% set d = diff.get(inp.name) %}
       <td>{% if d and d.snapshot_value is not none %}{{ d.snapshot_value }}{% else %}<span class="hint">—</span>{% endif %}</td>
@@ -200,6 +205,9 @@
   .avail-scripted { background: #e6f4ea; color: #2d7a3a; }
   .avail-scriptable_todo { background: #fff7ed; color: #b45309; }
   .avail-no_stable_source { background: #f1f1f1; color: #888; }
+  .badge-fetchmode { font-size: 0.7em; padding: 0.1em 0.35em; border-radius: 3px; margin-left: 0.3em; }
+  .fm-direct { background: #eaf2fb; color: #2a5db0; }   /* 固定拉取 */
+  .fm-search { background: #fdf2f8; color: #9d2a6b; }   /* 每轮检索 */
 </style>
 
 <script>
