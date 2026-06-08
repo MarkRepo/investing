@@ -155,4 +155,29 @@
   .avail-scriptable_todo { background: #fff7ed; color: #b45309; }
   .avail-no_stable_source { background: #f1f1f1; color: #888; }
 </style>
+
+<script>
+// 监控开关：拦截提交、后台 fetch、原地翻转按钮 —— 不重载、不滚动。
+// 无 JS 时退回普通表单提交（路由带 anchor 重定向，仅滚到原行）。
+(function () {
+  document.querySelectorAll('form[action$="/macro-inputs/monitoring"]').forEach(function (f) {
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var btn = f.querySelector(".mon-toggle");
+      var enabledField = f.querySelector('input[name="enabled"]');
+      var turningOn = enabledField.value === "true";   // 隐藏字段存的是「目标状态」
+      btn.disabled = true;
+      fetch(f.action, { method: "POST", body: new FormData(f), redirect: "manual" })
+        .then(function () {
+          btn.textContent = turningOn ? "✓ 监控" : "○ 停";
+          btn.classList.toggle("on", turningOn);
+          btn.classList.toggle("off", !turningOn);
+          enabledField.value = turningOn ? "false" : "true";   // 下次点发反向
+          btn.disabled = false;
+        })
+        .catch(function () { f.submit(); });   // 网络异常 → 退回整页提交
+    });
+  });
+})();
+</script>
 {% endblock %}
