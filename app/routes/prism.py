@@ -691,6 +691,7 @@ def prism_thesis(request: Request, slug: str, variant: str, version: int):
 def prism_macro_inputs(request: Request, slug: str, variant: str):
     """宏观输入源信息表（仅 macro topic）。必须声明在 /{output_key} 通配之前。"""
     from prism.scripts import macro_registry as macro_reg
+    from prism.scripts import eval_snapshot as es
     try:
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
@@ -702,8 +703,11 @@ def prism_macro_inputs(request: Request, slug: str, variant: str):
         inputs = registry.get("inputs", [])
     except FileNotFoundError:
         inputs = []
+    log = es.read_eval_log(slug, variant)
+    diff = {d["name"]: d for d in es.diff_since_last(slug, variant)} if inputs else {}
     return templates.TemplateResponse(request, "prism/macro_inputs.html", {
         "topic": topic, "variant": variant, "inputs": inputs,
+        "diff": diff, "reeval_pending": log.get("reeval_pending"),
     })
 
 

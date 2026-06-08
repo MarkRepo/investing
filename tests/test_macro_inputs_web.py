@@ -256,6 +256,19 @@ def test_macro_detail_has_eval_trace_tab(macro_web_client):
     assert f"/prism/{SLUG}/{VARIANT}/eval-trace" in r.text
 
 
+def test_macro_inputs_passes_diff(macro_web_client):
+    """有快照时输入表能拿到 diff（用于 S3/S4 列）：现值与上次评估值都出现。"""
+    import prism.scripts.macro_registry as reg
+    import prism.scripts.eval_snapshot as es
+    reg.record_observation(SLUG, VARIANT, "HY OAS", value=3.5, as_of="2026-06-07")
+    es.append_evaluation(SLUG, VARIANT, {
+        "input_snapshot": [{"name": "HY OAS", "value": 3.0, "as_of": "2026-06-01", "used": True}],
+        "conclusions": [{"id": "liquidity", "based_on": [{"input": "HY OAS", "role": "confirming"}]}]})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert r.status_code == 200
+    assert "3.0" in r.text and "3.5" in r.text     # 上次评估值 + 现值
+
+
 def test_primer_uses_links_not_bare_filenames():
     """00_primer 正文里对后台产物的引用要用人话锚链，不留裸文件名（web 上不可点/看不懂）。
 
