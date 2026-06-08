@@ -402,3 +402,14 @@ def test_inputs_table_cadence_tooltip(macro_web_client):
 def test_inputs_table_mechanism_tooltip(macro_web_client):
     r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
     assert "同步读数" in r.text     # HY OAS mechanism CO → 悬停释义
+
+
+def test_eval_trace_has_logic_label(macro_web_client):
+    import prism.scripts.eval_snapshot as es
+    es.append_evaluation(SLUG, VARIANT, {
+        "input_snapshot": [{"name": "HY OAS", "value": 3.1, "as_of": "2026-06-01", "used": True}],
+        "conclusions": [{"id": "liquidity", "label": "流动性体制", "state": "偏紧",
+                         "based_on": [{"input": "HY OAS", "role": "confirming"}],
+                         "causal": "HY OAS 走阔 → 流动性偏紧"}]})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/eval-trace")
+    assert "评估逻辑" in r.text
