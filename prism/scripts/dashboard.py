@@ -825,8 +825,15 @@ def build() -> Path:
     macro = _collect_macro_banner()
     content = _render_dashboard(company_rows, other_rows, macro)
     DASHBOARD_PATH.write_text(content, encoding="utf-8")
-    print(f"✅ dashboard.md 已生成 → {DASHBOARD_PATH}")
-    print(f"   公司：{len(company_rows)} 个，行业/竞技场：{len(other_rows)} 个")
+    # 进度输出仅为 CLI 反馈。当 build() 被 web 路由调用、而服务进程的 stdout
+    # 是一个读端已关闭的管道时（例如服务在上个会话里以 `... 2>&1 |` 方式启动），
+    # print 会抛 BrokenPipeError([Errno 32])，曾导致 /prism/dashboard?refresh 返回
+    # 500。stdout 写入永远不该让构建失败 —— 管道已断时静默跳过。
+    try:
+        print(f"✅ dashboard.md 已生成 → {DASHBOARD_PATH}")
+        print(f"   公司：{len(company_rows)} 个，行业/竞技场：{len(other_rows)} 个")
+    except (BrokenPipeError, OSError):
+        pass
     return DASHBOARD_PATH
 
 
