@@ -69,12 +69,20 @@
       <td>{{ inp.cadence_type or '—' }}</td>
       <td>{{ (inp.targets or []) | join(', ') }}</td>
       <td>{{ inp.importance or '—' }}</td>
-      <td>{{ inp.source or '—' }}</td>
+      <td>
+        {% if inp.source_url %}<a href="{{ inp.source_url }}" target="_blank" rel="noopener">{{ inp.source or '源' }}</a>
+        {% else %}{{ inp.source or '—' }}{% endif %}
+        {% if inp.authority %}<span class="badge-auth">{{ inp.authority }}</span>{% endif %}
+      </td>
       <td>
         {% if inp.fetch_method == 'fred-api' %}
           <span class="badge-small">自动 · FRED</span>
           {% if inp.fred_series_id %}<code class="hint">{{ inp.fred_series_id }}</code>{% endif %}
         {% else %}{{ inp.fetch_method or '—' }}{% endif %}
+        {% if inp.availability %}
+          {% set avail_label = {'scripted': '已脚本', 'scriptable_todo': '待脚本', 'no_stable_source': '无稳定源'} %}
+          <span class="badge-avail avail-{{ inp.availability }}">{{ avail_label[inp.availability] }}</span>
+        {% endif %}
       </td>
       {% set d = diff.get(inp.name) %}
       <td>{% if d and d.snapshot_value is not none %}{{ d.snapshot_value }}{% else %}<span class="hint">—</span>{% endif %}</td>
@@ -139,5 +147,10 @@
   .reeval-btn:hover { background: #dce6fb; }
   .reeval-brief { border: 1px solid #e5e5e5; border-left: 3px solid #2a5db0; border-radius: 4px; padding: 0.6em 0.9em; margin: 0.6em 0 1em; background: #fbfcff; }
   .reeval-brief h2 { font-size: 1em; margin: 0 0 0.4em; }
+  .badge-auth { font-size: 0.7em; padding: 0.1em 0.35em; border-radius: 3px; background: #eef2f7; color: #44566b; margin-left: 0.3em; }
+  .badge-avail { font-size: 0.7em; padding: 0.1em 0.35em; border-radius: 3px; margin-left: 0.3em; }
+  .avail-scripted { background: #e6f4ea; color: #2d7a3a; }
+  .avail-scriptable_todo { background: #fff7ed; color: #b45309; }
+  .avail-no_stable_source { background: #f1f1f1; color: #888; }
 </style>
 {% endblock %}

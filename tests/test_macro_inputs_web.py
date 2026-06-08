@@ -326,3 +326,15 @@ def test_primer_uses_links_not_bare_filenames():
     assert f"](/prism/{SLUG}/{VARIANT}/transmission-map)" in body     # 传导地图锚链
     assert "transmission_map.yaml" not in body                        # 正文不留裸后台文件名
     assert "m_regime_read.md" not in body
+
+
+def test_inputs_table_shows_source_and_grades(macro_web_client):
+    import prism.scripts.macro_registry as reg
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "MOVE 债市波动率", "fetch_method": "llm-web",
+        "source": "ICE", "source_url": "https://example.com/move",
+        "authority": "primary", "availability": "scriptable_todo"})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "https://example.com/move" in r.text     # 具体源链接
+    assert "primary" in r.text                       # 权威性
+    assert "待脚本" in r.text                          # availability=scriptable_todo 的人话标签
