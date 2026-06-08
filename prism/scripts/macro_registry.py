@@ -16,7 +16,11 @@
   lag            领先/同步/滞后 + 时长（自由文本）
   importance     "load_bearing"|"confirming"|"background"
   source         FRED / web / PBoC / ... / TBD
+  source_url     具体源链接（可空）
+  authority      "official"|"primary"|"secondary"|"aggregator"（可空，权威性）
+  availability   "scripted"|"scriptable_todo"|"no_stable_source"（可空，可脚本化判定）
   fetch_method   fred-api / llm-web / manual / TBD
+  fetch_recipe   {url, parse:{json_path, date_path}}（可空，llm-web fetcher 用）
   state          "已有"|"新增"|"改"
   alert_series   bool（仅 series 可为 true）
   monitoring     {enabled: bool}            缺省视为 enabled=true
@@ -37,6 +41,8 @@ VALID_CADENCE = ("event", "series", "policy")
 VALID_MECHANISM = ("CD", "CF", "CO", "CR")
 VALID_IMPORTANCE = ("load_bearing", "confirming", "background")
 VALID_TARGET = ("rates", "liquidity", "fx")
+VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
+VALID_AVAILABILITY = ("scripted", "scriptable_todo", "no_stable_source")
 
 
 def _registry_path(slug: str, variant: str) -> Path:
@@ -135,6 +141,10 @@ def validate_registry(slug: str, variant: str) -> list[str]:
             errors.append(f"[{name}] mechanism={e.get('mechanism')} 必须填 causal_sentence")
         if e.get("alert_series") and e.get("cadence_type") != "series":
             errors.append(f"[{name}] alert_series=True 仅允许 cadence_type=series")
+        if e.get("authority") is not None and e.get("authority") not in VALID_AUTHORITY:
+            errors.append(f"[{name}] authority 非法: {e.get('authority')!r}")
+        if e.get("availability") is not None and e.get("availability") not in VALID_AVAILABILITY:
+            errors.append(f"[{name}] availability 非法: {e.get('availability')!r}")
     return errors
 
 
