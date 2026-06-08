@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-08T16:45:50.645378+00:00'
+updated: '2026-06-08T17:02:41.911753+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -55,6 +55,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: primary
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html
 - name: FOMC 声明/纪要
   tier: A
   cadence_type: policy
@@ -244,14 +248,18 @@ inputs:
   - rates
   mechanism: CO
   importance: confirming
-  source: web(亚特兰大联储)
-  fetch_method: llm-web
+  source: FRED
+  fetch_method: fred-api
   state: 新增
   causal_sentence: ''
   lag: 同步(实时拼接)
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: GDPNOW
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/GDPNOW
 - name: 时薪 / ECI
   tier: A
   cadence_type: event
@@ -511,6 +519,11 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  fetch_mode: direct
+  source_url: https://fred.stlouisfed.org/series/SOFR
+  note: 派生=FRED SOFR − IORB 两序列，待 fetcher 支持派生
 - name: FRA-OIS 利差
   tier: A
   cadence_type: series
@@ -526,6 +539,9 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: primary
+  availability: no_stable_source
+  fetch_mode: search
 - name: Fed swap line / SRF / FIMA 动用
   tier: A
   cadence_type: policy
@@ -603,14 +619,19 @@ inputs:
   - rates
   mechanism: CD
   importance: confirming
-  source: web(NYFed)
-  fetch_method: llm-web
+  source: FRED
+  fetch_method: fred-api
   state: 新增
   causal_sentence: ACM 把名义利率拆出期限溢价分量 → 经供给/风险定价归因 → 辅判利率成因。
   lag: 同步
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: THREEFYTP10
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/THREEFYTP10
+  note: Kim-Wright 代理（FRED THREEFYTP10），非 NY Fed ACM
 - name: 2s10s 曲线斜率
   tier: B
   cadence_type: series
@@ -678,6 +699,9 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: no_stable_source
+  fetch_mode: search
 - name: MOVE 债市波动率
   tier: B
   cadence_type: series
@@ -698,6 +722,10 @@ inputs:
     level: 120
     direction: above
     level_alarm: 140
+  authority: primary
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.ice.com/index
 - name: VIX
   tier: B
   cadence_type: series
@@ -746,6 +774,11 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: scriptable_todo
+  fetch_mode: direct
+  source_url: https://www.multpl.com/shiller-pe
+  note: multpl/Shiller 有公开 CSV，待写 recipe
 - name: 市场内部/breadth+集中度
   tier: B
   cadence_type: series
@@ -761,6 +794,9 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: no_stable_source
+  fetch_mode: search
 - name: AI-capex 体制代理
   tier: C
   cadence_type: event
@@ -799,6 +835,11 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  fetch_mode: direct
+  source_url: https://publicreporting.cftc.gov/
+  note: CFTC COT 有公开 API（复合指标，部分可脚本）
 - name: 广义/EM加权美元(Fed DTWEXBGS)
   tier: A
   cadence_type: series
@@ -853,6 +894,9 @@ inputs:
     level: -40
     direction: below
     level_alarm: -60
+  authority: primary
+  availability: no_stable_source
+  fetch_mode: search
 - name: USDJPY / 日元 carry
   tier: A
   cadence_type: series
@@ -968,6 +1012,10 @@ inputs:
   monitoring:
     enabled: true
   note: FRED 无可靠日频现货金价，故不走自动抓取，靠每日 web 检索补（fetch_method=llm-web）
+  authority: primary
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.lbma.org.uk/prices-and-data/precious-metal-prices
 - name: 比特币
   tier: C
   cadence_type: series
@@ -975,14 +1023,18 @@ inputs:
   - liquidity
   mechanism: CR
   importance: background
-  source: web
-  fetch_method: llm-web
+  source: FRED
+  fetch_method: fred-api
   state: 已有(确认正确)
   causal_sentence: ''
   lag: 同步
   alert_series: false
   monitoring:
     enabled: true
+  fred_series_id: CBBTCUSD
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/CBBTCUSD
 - name: 大宗(铜/铁矿)
   tier: C
   cadence_type: series
@@ -999,6 +1051,11 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  fetch_mode: direct
+  source_url: https://fred.stlouisfed.org/series/PCOPPUSDM
+  note: 派生=FRED 铜 PCOPPUSDM + 铁矿 PIORECRUSDM（月，两序列复合）
 - name: 官方制造业 PMI
   tier: A
   cadence_type: event
@@ -1226,6 +1283,10 @@ inputs:
     direction: above
     level_alarm: 2.5
     min_streak: 2
+  authority: official
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.chinamoney.com.cn/
 - name: NCD 同业存单利率
   tier: B
   cadence_type: series
@@ -1242,6 +1303,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.chinamoney.com.cn/
 - name: 超额准备金率(走廊下限)
   tier: C
   cadence_type: policy
@@ -1280,6 +1345,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.chinamoney.com.cn/
 - name: 结构性工具 PSL/再贷款
   tier: A
   cadence_type: policy
@@ -1416,6 +1485,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.chinamoney.com.cn/english/bmkovrsert/
 - name: CNH-CNY 价差
   tier: A
   cadence_type: series
@@ -1435,6 +1508,9 @@ inputs:
     level: 0.015
     direction: abs_above
     level_alarm: 0.03
+  authority: secondary
+  availability: no_stable_source
+  fetch_mode: search
 - name: CNH HIBOR/离岸流动性 + 央行 HK 票
   tier: A
   cadence_type: series
@@ -1451,6 +1527,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.hkma.gov.hk/eng/
 - name: 结售汇 + 外汇占款 + 代客涉外收付
   tier: A
   cadence_type: event
@@ -1527,6 +1607,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: primary
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.hkex.com.hk/Mutual-Market/Stock-Connect?sc_lang=en
 - name: 南向港股通
   tier: A
   cadence_type: series
@@ -1543,6 +1627,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: primary
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.hkex.com.hk/Mutual-Market/Stock-Connect?sc_lang=en
 - name: 外资持 CGB(债券通)
   tier: B
   cadence_type: event
@@ -1596,6 +1684,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.chinamoney.com.cn/english/
 - name: 出口商结汇率
   tier: B
   cadence_type: event
@@ -1626,6 +1718,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: no_stable_source
+  fetch_mode: search
+  source_url: https://www.hsi.com.hk/eng
 - name: FDI 月度
   tier: B
   cadence_type: event
@@ -1693,6 +1789,9 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: no_stable_source
+  fetch_mode: search
 - name: 二手房价/成交
   tier: B
   cadence_type: series
@@ -1708,6 +1807,9 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: no_stable_source
+  fetch_mode: search
 - name: 70 城房价
   tier: A
   cadence_type: event
@@ -1770,6 +1872,9 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: no_stable_source
+  fetch_mode: search
 - name: 地方专项债发行
   tier: A
   cadence_type: event
@@ -1815,6 +1920,9 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: no_stable_source
+  fetch_mode: search
 - name: 中美地缘/关税
   tier: A
   cadence_type: event
