@@ -17,11 +17,33 @@
 
 {{ view_tabs(topic, variant, 'inputs') }}
 
+{% set alerts = inputs | selectattr('alert_series') | list %}
+{% if alerts %}
+<section class="alert-board">
+  <h2>承重报警序列（{{ alerts | length }}）</h2>
+  <div class="alert-cards">
+  {% for a in alerts %}
+    {% set d = diff.get(a.name) %}
+    <div class="alert-card{% if d and d.breached %} breached{% endif %}">
+      <div class="ac-name"><code>{{ a.name }}</code></div>
+      <div class="ac-band hint">报警带 {{ a.alert_band }}</div>
+      <div class="ac-val">
+        {% if a.observed and a.observed.value is not none %}现 {{ a.observed.value }}{% else %}<span class="hint">未抓</span>{% endif %}
+        {% if a.observed and a.observed.streak %}<span class="hint"> · 连越 {{ a.observed.streak }}</span>{% endif %}
+      </div>
+      <div class="ac-status">{% if d and d.breached %}<span class="badge-breach">越带</span>{% else %}<span class="badge-ok">带内</span>{% endif %}</div>
+      {% if d and d.conclusions %}<div class="ac-feeds hint">支撑：{{ d.conclusions | join(', ') }}</div>{% endif %}
+    </div>
+  {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <p class="hint">共 {{ inputs | length }} 条输入。「自动」= FRED API 脚本拉取；其余为 llm-web / manual。</p>
 <table class="data-table">
   <thead><tr>
     <th>输入名</th><th>等级</th><th>频率</th><th>目标</th><th>重要性</th>
-    <th>来源</th><th>抓取</th><th>最近观测</th><th>监控</th><th>报警带</th>
+    <th>来源</th><th>抓取</th><th>上次评估值</th><th>现值 / Δ</th><th>参与·支撑</th><th>监控</th><th>报警带</th>
   </tr></thead>
   <tbody>
   {% for inp in inputs %}
@@ -40,10 +62,18 @@
           {% if inp.fred_series_id %}<code class="hint">{{ inp.fred_series_id }}</code>{% endif %}
         {% else %}{{ inp.fetch_method or '—' }}{% endif %}
       </td>
+      {% set d = diff.get(inp.name) %}
+      <td>{% if d and d.snapshot_value is not none %}{{ d.snapshot_value }}{% else %}<span class="hint">—</span>{% endif %}</td>
       <td>
-        {% if inp.observed and inp.observed.value is not none %}
-          {{ inp.observed.value }} <span class="hint">@{{ (inp.observed.as_of or '')[:10] or '—' }}</span>
+        {% if d and d.live_value is not none %}{{ d.live_value }}
+          {% if d.delta is not none and d.delta != 0 %}<span class="badge-delta">{{ '%+.4g' | format(d.delta) }}</span>{% endif %}
+          {% if d.breached %}<span class="badge-breach">越带</span>{% endif %}
+        {% elif inp.observed and inp.observed.value is not none %}{{ inp.observed.value }}
         {% else %}<span class="hint">未抓</span>{% endif %}
+      </td>
+      <td>
+        {% if d and d.used %}<span class="badge-used">参与</span>{% elif d %}<span class="badge-unused">未参与</span>{% endif %}
+        {% if d and d.conclusions %}<span class="hint">{{ d.conclusions | join(', ') }}</span>{% endif %}
       </td>
       <td>{% if inp.monitoring and inp.monitoring.enabled %}✓{% else %}○{% endif %}</td>
       <td>{% if inp.alert_series and inp.alert_band %}<code class="hint">{{ inp.alert_band }}</code>{% else %}—{% endif %}</td>
@@ -69,5 +99,17 @@
   .badge-small { font-size: 0.72em; padding: 0.15em 0.4em; border-radius: 3px; background: #e6f4ea; color: #2d7a3a; }
   .hint { color: #888; font-size: 0.85em; }
   .note-caveat { margin-top: 0.25em; font-size: 0.76em; color: #b45309; background: #fff7ed; border-left: 2px solid #f0c36d; padding: 0.1em 0.45em; border-radius: 2px; max-width: 22em; line-height: 1.35; }
+  .alert-board { margin: 0.8em 0 1.2em; }
+  .alert-board h2 { font-size: 1em; margin: 0 0 0.5em; }
+  .alert-cards { display: flex; flex-wrap: wrap; gap: 0.6em; }
+  .alert-card { border: 1px solid #e5e5e5; border-radius: 6px; padding: 0.5em 0.7em; min-width: 11em; font-size: 0.85em; }
+  .alert-card.breached { border-color: #f0a7a0; background: #fff6f5; }
+  .ac-name code { font-size: 0.95em; }
+  .ac-val { margin: 0.2em 0; }
+  .badge-breach { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #fde8e8; color: #b42318; }
+  .badge-ok { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #e6f4ea; color: #2d7a3a; }
+  .badge-delta { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #eef2f7; color: #44566b; }
+  .badge-used { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #e6f4ea; color: #2d7a3a; }
+  .badge-unused { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #f1f1f1; color: #999; }
 </style>
 {% endblock %}

@@ -269,6 +269,25 @@ def test_macro_inputs_passes_diff(macro_web_client):
     assert "3.0" in r.text and "3.5" in r.text     # 上次评估值 + 现值
 
 
+def test_alert_board_shows_alert_series(macro_web_client):
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "承重报警序列" in r.text
+    assert "HY OAS" in r.text          # 报警卡片里出现
+
+
+def test_inputs_table_shows_participation(macro_web_client):
+    import prism.scripts.macro_registry as reg
+    import prism.scripts.eval_snapshot as es
+    reg.record_observation(SLUG, VARIANT, "HY OAS", value=3.5, as_of="2026-06-07")
+    es.append_evaluation(SLUG, VARIANT, {
+        "input_snapshot": [{"name": "HY OAS", "value": 3.0, "as_of": "2026-06-01", "used": True}],
+        "conclusions": [{"id": "liquidity", "based_on": [{"input": "HY OAS", "role": "confirming"}]}]})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "参与" in r.text             # S4 参与徽章
+    assert "liquidity" in r.text        # 支撑的结论 id
+    assert "3.0" in r.text and "3.5" in r.text   # S3 上次评估值 + 现值
+
+
 def test_primer_uses_links_not_bare_filenames():
     """00_primer 正文里对后台产物的引用要用人话锚链，不留裸文件名（web 上不可点/看不懂）。
 
