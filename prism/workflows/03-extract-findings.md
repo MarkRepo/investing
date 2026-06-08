@@ -27,7 +27,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 "
 ```
 
-把 report 输出**完整贴到对话**。**双轴都看**（B 轴 = K# 脊柱，A 轴 = 决策链输入合同）：
+主 agent 直接读上面 Bash 输出的 report 做决策——**不必再整份贴/复述到对话**（Bash 输出里已有一份，actionable 项也在 web 详情页），对话只回**一句话摘要**。**若本会话刚从 02 Step 5.8 直连推进、其后未新增材料，直接沿用那次结果、不必重跑本块；新会话/隔轮回来则照常重跑本块（从磁盘重算，绝不跳过）。** **双轴都看**（B 轴 = K# 脊柱，A 轴 = 决策链输入合同）：
 - `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
 - `thin_evidence` 非空 → 该 K# 证据 < 2 条
 - `uncovered_ring_inputs` 非空 → 决策链某环必带输入无料覆盖（带 🔴 = 三项真·欠供，最该补）；`api_pending_inputs` 非红
@@ -475,7 +475,7 @@ from prism.scripts.web_prescan import register_web_search_batch
 register_web_search_batch(
     slug='{slug}', variant='{variant}',
     query='冲突点查询词',
-    addresses=['{相关 K# 或 Q#}'],
+    addresses=['{相关 K#}'],
     triggered_by='03-extract',
     hits=[
         {'title': '...', 'url': 'https://...', 'snippet': '...'},

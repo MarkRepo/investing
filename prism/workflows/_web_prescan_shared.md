@@ -165,7 +165,7 @@ h = check_prescan_health('{slug}', '{variant}', expected_queries=N, triggered_by
 |---|---|
 | `domain_tier` | 命中 `WHITELIST_DOMAINS`（index `WL=Y`） → `whitelist`；非白名单但内容可信（该公司官方 IR 页/微信公众号官方账号/已知财经平台/行业垂直媒体） → `llm-judged-official`；其余 → `other` |
 | `confidence` | 不传 → 用 `confidence_for_tier(domain_tier)` 默认（whitelist=0.9 / llm-judged=0.7 / other=0.4）。若 snippet 内容明显高度对题，可上调；明显跑题可下调 |
-| `addresses` | 该 hit 攻打的 K# / Q# 列表（与该 query 所属槽的 `slot["addresses"]` 一致或更精细）。**事件锚规则**：若 hit 内容明确绑定某个时间/事件（财报季、监管事件、产品发布），用 `K#@event-slug` 格式（如 `K1@2026Q2-earnings`、`K6@CSRC-2026-05-22`、`K7@Airstar-launch`），事件 slug 仅含 `[A-Za-z0-9_-]`。**裸 `K#`** 表示该 K# 的通用资料（财务结构、商业模式、长期数据），不绑事件。锚的作用：阻止 Q1 材料误覆盖 Q2 事件 todo——参 `memory/feedback_addresses_granularity.md` |
+| `addresses` | 该 hit 攻打的 K# 列表（与该 query 所属槽的 `slot["addresses"]` 一致或更精细）。**事件锚规则**：若 hit 内容明确绑定某个时间/事件（财报季、监管事件、产品发布），用 `K#@event-slug` 格式（如 `K1@2026Q2-earnings`、`K6@CSRC-2026-05-22`、`K7@Airstar-launch`），事件 slug 仅含 `[A-Za-z0-9_-]`。**裸 `K#`** 表示该 K# 的通用资料（财务结构、商业模式、长期数据），不绑事件。锚的作用：阻止 Q1 材料误覆盖 Q2 事件 todo——参 `memory/feedback_addresses_granularity.md` |
 | `full_text` | **keep 档需要全文时**优先用 raw json 已有的 `raw_content`（`--show {idx} --full` 即取到），缺失才 `WebFetch`。判 tier 时已为某条拉过的全文按下方 §复用 透传 `register_web_search_batch(full_texts={url: 全文})`，**不重拉**；low/drop 档不抓全文 |
 
 **§ full_text 复用（修重复抓取）**：为判 tier 而展开/抓取的 `raw_content` 或 WebFetch 全文，对最终 keep（high/mid）的 hit 保留，整批透传进 `register_web_search_batch(full_texts={url: 全文})` → 落 inbox md `## Full text` → 03-extract 直接复用，全程**一次抓取**。
@@ -356,10 +356,10 @@ UI 中 `stale_at < now` 显示黄色 chip；`expire_at < now` 显示红色 chip 
    | `[]` | **禁用**——不参与任何覆盖，等同未填 | ✗ | ✗ | 不允许；老条目遇到时按 `['background']` 升级 |
    | `['background']` | 背景资料、无具体 K# 攻打 | ✗ | ✗ | 02 登记的行业全景/历史背景；prescan scope query |
    | `['scope']` | 与本 topic 范围相关但无具体 K# 攻打 | ✗ | ✗ | 07 drilldown 在 thesis 形成前的探索；00 prescan baseline 优先 query |
-   | `['K1', 'Q3', ...]` | 攻打具体 K# / Q# | ✓ | ✓（仅出候选，不闭环） | 02/04/05/07 一般情况；roadmap 计划目标 |
+   | `['K1', 'K6', ...]` | 攻打具体 K#（旧 topic 残留 Q# 仍兼容**读**，新 topic 不再产 Q#） | ✓ | ✓（仅出候选，不闭环） | 02/04/05/07 一般情况；roadmap 计划目标 |
    | `['K1@2026Q2-earnings', ...]` | 攻打 K# 的具体事件锚 | ✓ | ✓（事件锚命中，仍仅候选） | 财报季/监管事件/产品发布等高时效场景 |
 
-   **三态判定流程**：(1) 资料有具体 K#/Q# 锚点 → 用 `['K#'/'Q#'/...]`；(2) 无 K# 但属于本 topic 知识背景 → `['background']`；(3) 与本 topic scope 相关但无 K# 且非背景 → `['scope']`。**禁止 `[]`**。
+   **三态判定流程**：(1) 资料有具体 K# 锚点 → 用 `['K#', ...]`（旧 topic 残留 Q# 仍可读，新 topic 不再产）；(2) 无 K# 但属于本 topic 知识背景 → `['background']`；(3) 与本 topic scope 相关但无 K# 且非背景 → `['scope']`。**禁止 `[]`**。
 
    > 注：材料的 `addresses` 标「这份料喂哪个命门」（内容覆盖 K#），与「某条 todo 是否收齐」是两回事——共享 K# 只让该 todo 进**候选**，闭环必须按 task/文档身份显式判（见 `_autofetch_protocol.md` 闭环键节）。
 

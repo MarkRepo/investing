@@ -35,7 +35,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 "
 ```
 
-把 report 输出**完整贴到对话**。**双轴都看**（B 轴 = K# 脊柱，A 轴 = 决策链输入合同）：
+主 agent 直接读上面 Bash 输出的 report 做决策——**不必再整份贴/复述到对话**（Bash 输出里已有一份，actionable 项也在 web 详情页），对话只回**一句话摘要**。**双轴都看**（B 轴 = K# 脊柱，A 轴 = 决策链输入合同）：
 - `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
 - `thin_evidence` 非空 → 该 K# 证据 < 2 条
 - `uncovered_ring_inputs` 非空 → 决策链某环必带输入无料（带 🔴 = 三项真·欠供）→ 该环写作会硬伤；`api_pending_inputs` 非红（合成期自动拉）
@@ -202,7 +202,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
    非空 → **必停**。用 `AskUserQuestion`（multiSelect）把每条"自动抓已确认公开无源"的项摆给用户，逐条选：
    - **跳过(waived)** → `set_todo_disposition('{slug}','{variant}','<task子串>','waived', note='<理由>')` → 合成写"该项公开数据缺失"。
-   - **我来收(will_collect)** → `set_todo_disposition(...,'will_collect', note=...)` → 合成写"待用户补料"显式缺口，保持可见 pending（补料登记后 auto_resolve 自动翻 fetched）。
+   - **我来收(will_collect)** → `set_todo_disposition(...,'will_collect', note=...)` → 合成写"待用户补料"显式缺口，保持可见 pending（补料登记后由主 agent 按文档身份显式 `update_user_todo_status(..., 'done', covered_by=)` 收口，脚本不自动翻转）。
 
    **全部决策完（`empty_undecided_todos` 空）前不进决策链、不写任何缺口**——反静默核心。AskUserQuestion 的 label/description **禁中文弯引号**（用 「」 或不加）。判定与盖戳见 [`_autofetch_protocol.md`](_autofetch_protocol.md)。
 
@@ -400,7 +400,7 @@ from prism.scripts.web_prescan import register_web_search_batch
 register_web_search_batch(
     slug='{slug}', variant='{variant}',
     query='缺失数据查询词，例如 "global EV sales 2025 Q3 IEA"',
-    addresses=['{对应 K# 或 Q#}'],
+    addresses=['{对应 K#}'],
     triggered_by='04-synth',
     hits=[...],  # WebSearch 返回的 hit
 )

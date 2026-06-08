@@ -290,7 +290,7 @@ elif r['failure_mode'] == 'all_low_band':
    - 反例："如果技术失败" ✗
    - 正例："任一头部车厂将全固态 SOP 时间从 2027-2028 推迟到 2030+" ✓
 
-**不再单列"研究中重点验证项 V#" 段** —— V# 本质是 K#/Q# 的派生细化，作用是引导 workflow 01 路线图，但与 user_todos 重复。改为：**user_todos 直接承担验证项角色**，每条 todo 的 `addresses=[K#, Q#]` 标明它在攻打哪个论证目标（在 Step 5.3 体现）。这样 thesis 收敛为 4 段，K# 覆盖闭环 self-check 矩阵保持二维（K × todo），不引入 V# 第三维。
+**不再单列"研究中重点验证项 V#" 段** —— V# 本质是 K#/Q# 的派生细化，作用是引导 workflow 01 路线图，但与 user_todos 重复。改为：**user_todos 直接承担验证项角色**，每条 todo 的 `addresses=[K#]` 标明它在攻打哪个论证目标（在 Step 5.3 体现；Q# 已降级，新 topic 不再用）。这样 thesis 收敛为 4 段，K# 覆盖闭环 self-check 矩阵保持二维（K × todo），不引入 V# 第三维。
 
 写完 `thesis_v0.md` 后，**先跑 prescan 健康度检查**再登记 thesis（**修 ISSUE-001**）：
 

@@ -39,7 +39,7 @@ if plog:
 EOF
 ```
 
-- **`status == 'failed'`** → **BLOCK 04-synthesize**。critic 不允许给 approve / request-more 之外的任何 verdict 前必须先要求用户二选一：
+- **`status == 'failed'`** → **封顶 verdict（最高只能 `request-more`，不许 `approve`）**。注意 05 在 04 之后跑、并不能回头拦 04；这道闸是卡在 critic 自己头上——出裁决前必须先要求用户二选一：
   1. **手工 prescan 补漏**：另设备搜索 baseline 第五节优先 query 并粘贴结果入库，重跑 `check_prescan_health` 直到 `partial` 或 `full`
   2. **接受 failed prescan 继续推进**：用户显式确认"接受训练知识赌注"，**Step 2 传给独立反方的输入包中显式注入"以下时敏论断未经 web 校准、按脆弱处理、加重攻击"指令**，Step 3 评分对所有"time_sensitivity=快变"的 fact 强制降级 uncertain，verdict 最高只能 `request-more`，不许 `approve`
 - **`status == 'partial'`** → **Step 2 输入包必须含 baseline 第六节"仍未校准"清单作为反方攻击起点**
@@ -56,7 +56,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 "
 ```
 
-把 report 输出**完整贴到对话**。看四项：
+主 agent 直接读上面 Bash 输出的 report 做决策——**不必再整份贴/复述到对话**（Bash 输出里已有一份，actionable 项在 web）。**若本会话刚从 04 终态报告直连推进、其后无状态变更，直接沿用其双轴 gap、不必重跑本块；新会话/隔轮回来则照常重跑本块（从磁盘重算，绝不跳过）。** 看四项：
 - `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
 - `thin_evidence` 非空 → 该 K# 证据 < 2 条
 - `single_source` 非空 → 该 K# 条数够但**来源单一**（全同一 source_type / 域名）。这是**注意力路由器、不是裁决**：去**读那几条内容**判是否真独立（多家券商转引同一份原始报告≈单源），别因条数达标就放行
@@ -363,7 +363,7 @@ print(f"web-search 兜底：高/中/低 = {summary['n_high']}/{summary['n_mid']}
 | verdict | 何时选 | 后效 |
 |---|---|---|
 | `approve` | 评分 ≥4 / 反方反驳"中-弱" / 无重要遗漏 | stage → `done`，进入 06-daily-monitor |
-| `request-rewrite` | 评分 ≥3 但部分 K# 论证薄弱 / 某 output（如 04 隐含预期）需重写 | stage → `04-synthesizing`，调 `set_output_status` 把目标 output 标 `stale` |
+| `request-rewrite` | 评分 ≥3 但部分 K# 论证薄弱 / 某 output（如 04 隐含预期）需重写（承重项为「单线承重」时**降级为 `request-more`**，见 Step 5.5/Step 0 横幅口径） | stage → `04-synthesizing`，调 `set_output_status` 把目标 output 标 `stale` |
 | `request-more` | 反方提出的关键证据当前 manifest 无覆盖 / 需要新一轮 web-search 或用户上传 | stage → `02-gather-materials`，调 `set_user_todos` 列出待补资料 |
 
 ```bash
@@ -408,7 +408,7 @@ EOF
 **注意**：
 - `set_critic_verdict` 会自动 `set_stage` + 写默认 next_actions + 标 rewrite_keys 为 stale，**不再手动 set_stage / set_next_actions / set_output_status**（修 S4 后）
 - `request-rewrite` 路径走"标 stale + 04 重跑"——配合 list_affected_outputs 读 status 字段（reason='critic-stale'），只重写 critic 点名的 output
-- `request-more` 路径回 02-gather-materials；主 agent 需 append 具体待补 todo（含 addresses，否则后续 auto_resolve 算不进）
+- `request-more` 路径回 02-gather-materials；主 agent 需 append 具体待补 todo（含 addresses，回 02 后才能挂到对应 K# 进 gap_detector B 轴覆盖；收口仍按文档身份显式 `update_user_todo_status`）
 - **若 critic 触发新的 thesis_v{N+1}**（无论 verdict 类型），新版本必须采用 Scheme C 全快照约定（详见 `prism/workflows/04-synthesize/_shared.md` § "Scheme C 写作约定"）——禁止只写增量 delta、禁止"见 v{N} §X"引用
 
 ---

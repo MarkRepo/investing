@@ -257,7 +257,7 @@ for t in pending_unfetched_todos('{slug}', '{variant}'):
 **硬规则**：
 - `pending_unfetched_todos` 里仍有 `fetch_status='error'` 的项时，**先重试**，不得据此 `set_user_todos` 降级（error≠公开没有）。
 - 只有 `mark_todo_fetch(...,'empty')`（有效尝试确认公开无源）的 todo 才允许作为 user-todo 留给用户——且它接下来要走 **empty 硬闸门**（合成前 `empty_undecided_todos` 让用户选 waive/will_collect，见 04 路径文档）。
-- `fetched` 的会被 auto_resolve 自动标 done/in_progress，无需手动降级。
+- `fetched` 的 todo 须由主 agent 在 Step 6 显式 `update_user_todo_status(..., 'done'/'in_progress', covered_by=)` 收口（脚本不自动翻转；漏盖会污染「待补料」计数）。
 
 ---
 
@@ -270,7 +270,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 "
 ```
 
-把 report 输出**完整贴到对话**。**双轴都看**：
+主 agent 直接读上面 Bash 输出的 report 做决策——**不必再整份贴/复述到对话**（Bash 输出里已有一份，actionable 项也在 web 详情页），对话只回**一句话摘要**（如『gap：2 红 K# / 1 红环，正在补』）。**双轴都看**：
 
 **B 轴（K# 脊柱）**：
 - `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖

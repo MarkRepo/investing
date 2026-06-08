@@ -88,7 +88,7 @@ mark_todo_fetch(slug, variant, '<task 子串>', '<fetched|empty|error>', note='<
 `fetch_status='empty'` 不是终点。合成前与逐环 R3 调 `empty_undecided_todos(slug, variant)`，非空必须 `AskUserQuestion`（multiSelect）逐条让用户选：
 
 - **跳过(waived)** → `set_todo_disposition(slug, variant, '<task子串>', 'waived', note='<理由>')` → 合成写"该项公开数据缺失"。
-- **我来收(will_collect)** → `set_todo_disposition(..., 'will_collect', note=...)` → 合成写"待用户补料"显式缺口，保持可见 pending；用户补的料一登记，auto_resolve 自动翻 `fetched`。
+- **我来收(will_collect)** → `set_todo_disposition(..., 'will_collect', note=...)` → 合成写"待用户补料"显式缺口，保持可见 pending；用户补的料一登记后，由主 agent 按文档身份显式 `update_user_todo_status(..., 'done', covered_by=[新mat])` 收口（脚本不再自动翻转，见本文件「闭环键」）。
 
 > AskUserQuestion 的 label/description **禁中文弯引号** `“”`（U+201C/U+201D 触发 InputValidationError），用 「」 或不加引号。
 
