@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-07T22:00:58.338224+00:00'
+updated: '2026-06-08T15:57:14.537510+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -71,6 +71,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: hawk_dove
+  fetch_mode: direct
+  source_url: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
+  observed:
+    stance: 中性
+    evidence: 美联储 4 月 28-29 日会议（声明 4/29、纪要 5/20 发布）维持联邦基金利率 3.50%-3.75% 不变，声明仍含「宽松倾向」措辞但有
+      3 位地区联储主席异议，整体中性偏观望（Fed FOMC，2026-05-20）。
 - name: 美联储官员讲话(主席)
   tier: A
   cadence_type: policy
@@ -86,6 +93,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: hawk_dove
+  fetch_mode: direct
+  source_url: https://www.federalreserve.gov/newsevents/speech/2026-speeches.htm
+  observed:
+    stance: 鹰
+    evidence: 新任主席 Kevin Warsh 于 2026-05-22 就职，公开表态「通胀是美联储的选择」「不能排除加息」，前瞻指引明显偏鹰（NYT/Reuters，2026-05-22；尚无以主席身份的正式货政演讲，as_of
+      2026-06-08）。
 - name: 非农就业 NFP
   tier: A
   cadence_type: event
@@ -377,6 +391,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: expand_contract
+  fetch_mode: direct
+  source_url: https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding/most-recent-quarterly-refunding-documents
+  observed:
+    stance: 中性
+    evidence: 财政部 2026-05-06 季度再融资公告(QRA, sb0489)称付息债与 FRN 拍卖规模「未来数季维持不变」，增量融资靠短期票据(bills)调节，净发行无明显扩张（US
+      Treasury，2026-05-06）。
 - name: TGA 余额
   tier: A
   cadence_type: series
@@ -520,6 +541,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: ease_tighten
+  fetch_mode: direct
+  source_url: https://www.federalreserve.gov/releases/h41/current/
+  observed:
+    stance: 中性
+    evidence: 美联储 H.4.1 报表（2026-06-04）显示央行流动性互换余额仅 1.16 亿美元，处历史极低闲置水平，无明显美元流动性投放（Fed
+      H.4.1，2026-06-04）。
 - name: SLOOS 银行信贷标准
   tier: A
   cadence_type: event
@@ -859,6 +887,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: ease_tighten
+  fetch_mode: direct
+  source_url: https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm
+  observed:
+    stance: 偏紧
+    evidence: BoJ 2026-04-28 以 6-3 维持政策利率 0.75%（1995 年来最高），3 名委员主张加息至 1.0%，上调 FY2026
+      核心通胀预测至 2.8% 并续缩 JGB 购债（10y JGB 约 2.5-2.8%）；处正常化通道（BoJ，2026-04-28）。
 - name: ECB 政策分化 / EUR-USD
   tier: B
   cadence_type: policy
@@ -874,6 +909,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: hawk_dove
+  fetch_mode: direct
+  source_url: https://www.ecb.europa.eu/press/govcdec/mopo/html/index.en.html
+  observed:
+    stance: 偏鹰
+    evidence: ECB 2026-04-30 决议维持三大关键利率不变（存款便利 2.00%），称「通胀上行与增长下行风险均加剧」；进入 6 月多位管委明确支持
+      6/11 加息（Reuters，2026-06-03），相对美联储呈鹰派分化。
 - name: BIS 全球流动性(USD/EUR/JPY 对非银信用)
   tier: B
   cadence_type: event
@@ -1151,6 +1193,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: ease_tighten
+  fetch_mode: search
+  source_url: http://www.pbc.gov.cn/zhengcehuobisi/125207/125213/index.html
+  observed:
+    stance: 偏松
+    evidence: PBoC 最近一次降准为 2025-05-15 落地，大型银行 RRR 由 9.5% 降至 9.0%、加权约 6.2%、释放约 1 万亿元；2026
+      Q1 货政报告未再宣布新降准，当前为降准后的偏松而非新一轮宽松（人民银行/新华网，2025-05-07）。
 - name: DR007/R007
   tier: B
   cadence_type: series
@@ -1203,6 +1252,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: ease_tighten
+  fetch_mode: search
+  source_url: http://www.pbc.gov.cn/zhengcehuobisi/125207/125213/index.html
+  observed:
+    stance: 中性
+    evidence: 超额准备金利率（利率走廊下限）现行 0.35%，自 2020-04-07 末次下调后维持至今，2026 Q1 报告期内未调整，长期低位但近年无变动，作为走廊下限呈中性（人民银行/2026
+      Q1 货政报告，as_of 2026-05-11）。
 - name: 中国 10Y CGB + 资产荒需求
   tier: A
   cadence_type: series
@@ -1234,6 +1290,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: expand_contract
+  fetch_mode: direct
+  source_url: http://www.pbc.gov.cn/zhengcehuobisi/125207/125227/3079456/index.html
+  observed:
+    stance: 中性
+    evidence: PSL 余额持续回落（2026-05 末约 8455 亿、当月净回笼 1545 亿），但同期再贷款扩张（科创 1.2 万亿、新设 1 万亿民企再贷款、增
+      5000 亿支农支小），收缩与扩张相抵，结构性工具总量基本持平（2026 Q1 货政报告，2026-05-11）。
 - name: 货币政策执行报告 MPR
   tier: A
   cadence_type: policy
@@ -1250,6 +1313,12 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: ease_tighten
+  fetch_mode: direct
+  source_url: http://www.pbc.gov.cn/zhengcehuobisi/125207/125227/125957/index.html
+  observed:
+    stance: 偏松
+    evidence: 最新《2026 年第一季度货币政策执行报告》（2026-05-11）明确「继续实施好适度宽松的货币政策」「保持流动性充裕」，定调「适度宽松」（较「稳健」更松，但无下调闸门提法），判偏松（PBoC/新华网，2026-05-11）。
 - name: 社融 TSF
   tier: A
   cadence_type: event
@@ -1500,6 +1569,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: ease_tighten
+  fetch_mode: search
+  source_url: http://www.pbc.gov.cn/goutongjiaoliu/113456/113469/index.html
+  observed:
+    stance: 中性
+    evidence: PBoC 2026-02-27 公告自 2026-03-02 起将远期售汇外汇风险准备金率由 20% 下调至 0，系人民币快速升值下逆周期退出、回归中性；当前比率为
+      0、不再对购汇加成本（央行/新华网/财新，2026-02-27）。
 - name: CFETS 人民币篮子指数
   tier: B
   cadence_type: series
@@ -1790,6 +1866,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: ease_tighten
+  fetch_mode: search
+  source_url: https://www.safe.gov.cn/safe/zcfg/index.html
+  observed:
+    stance: 偏紧
+    evidence: 2026-05-22 证监会等八部门印发跨境证券整治方案（重罚并清退富途/老虎/长桥），2026-06-01《国务院关于对外投资的规定》强化违规处罚，超六成
+      QDII 限购；个人/灰色渠道资本流出转向收紧，惟合法 QDII/互联互通仍扩容（财经/联合早报，2026-06）。
 - name: 中国政治局/NPC 经济信号
   tier: A
   cadence_type: policy
@@ -1806,6 +1889,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: ease_tighten
+  fetch_mode: search
+  source_url: https://www.news.cn/politics/leaders/20260428/002222d43f9e47d2947142a92e84a026/c.html
+  observed:
+    stance: 偏松
+    evidence: 2026 政府工作报告（2026-03-05）定调「更加积极的财政政策和适度宽松的货币政策」、赤字率约 4%；2026-04-28 政治局会议重申「加大逆周期和跨周期调节力度」，惟赤字率与
+      2025 持平、力度边际趋稳，判偏松（新华社，2026-04-28）。
 - name: CSRC 监管动作
   tier: B
   cadence_type: policy
@@ -1821,6 +1911,12 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: ease_tighten
+  fetch_mode: direct
+  source_url: https://www.csrc.gov.cn/csrc/c100039/common_list.shtml
+  observed:
+    stance: 偏松
+    evidence: 2026-02-09 三大交易所优化再融资一揽子措施、证监会 2026 年系统工作会明确「提高再融资便利性」，IPO/再融资由阶段性收紧转为系统性优化回暖（资金面偏松）；减持端从严属强监管（证券时报，2026-01-16；证券市场周刊，2026-03-17）。
 - name: 美财政/债务上限/财政主导
   tier: A
   cadence_type: policy
@@ -1853,6 +1949,13 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  stance_scale: path_shift
+  fetch_mode: search
+  source_url: https://www.chinadaily.com.cn/a/202604/27/WS69ef728da310d6866eb45d1e.html
+  observed:
+    stance: 上移
+    evidence: 最近一次评级行动为穆迪 2026-04 将中国主权评级展望由「负面」上调至「稳定」、维持 A1；S&P A+/稳定、Fitch A/稳定，方向上以穆迪展望由负转稳为最新明确的上移信号（China
+      Daily/新华社，2026-04-27）。
 - name: 中美地缘/关税(尾部)
   tier: B
   cadence_type: event
