@@ -249,6 +249,13 @@ def test_eval_trace_404_for_non_macro(macro_web_client):
     assert macro_web_client.get(f"/prism/cn-ind-z/{VARIANT}/eval-trace").status_code == 404
 
 
+def test_macro_detail_has_eval_trace_tab(macro_web_client):
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}")
+    assert r.status_code == 200
+    assert "评估溯源" in r.text
+    assert f"/prism/{SLUG}/{VARIANT}/eval-trace" in r.text
+
+
 def test_primer_uses_links_not_bare_filenames():
     """00_primer 正文里对后台产物的引用要用人话锚链，不留裸文件名（web 上不可点/看不懂）。
 

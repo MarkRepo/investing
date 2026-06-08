@@ -3,7 +3,7 @@
    读者向/宏观层用中性色）。active ∈ {reader, diag, checkup, inputs}。
    宏观层（type==macro）不走 拆解→收料→抽取→gap→critic 工作流，诊断/体检对它全是空壳，
    故其等价诊断视图是「输入源」表 +「传导地图」（L4 持仓暴露），不显示 诊断/体检。
-   active ∈ {reader, inputs, transmission} for macro。 #}
+   active ∈ {reader, inputs, transmission, eval} for macro。 #}
 {% macro view_tabs(topic, variant, active) -%}
 <div class="diag-tabs">
   <span class="diag-tabs-label">视图</span>
@@ -11,6 +11,7 @@
   {% if topic.type == 'macro' %}
     {% if active == 'inputs' %}<span class="diag-tab active">输入源</span>{% else %}<a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs">输入源</a>{% endif %}
     {% if active == 'transmission' %}<span class="diag-tab active">传导地图</span>{% else %}<a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/transmission-map">传导地图</a>{% endif %}
+    {% if active == 'eval' %}<span class="diag-tab active">评估溯源</span>{% else %}<a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/eval-trace">评估溯源</a>{% endif %}
   {% else %}
     {% if active == 'diag' %}<span class="diag-tab active">诊断 / debug</span>{% else %}<a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/diag">诊断 / debug</a>{% endif %}
     {% if active == 'checkup' %}<span class="diag-tab active">体检</span>{% else %}<a class="diag-tab" href="/prism/{{ topic.slug }}/{{ variant }}/checkup">体检</a>{% endif %}
