@@ -304,6 +304,15 @@ def test_monitoring_toggle_404_unknown_input(macro_web_client):
     assert r.status_code == 404
 
 
+def test_reeval_post_stamps_and_brief_shows(macro_web_client):
+    import prism.scripts.eval_snapshot as es
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/reeval", follow_redirects=False)
+    assert r.status_code == 303
+    assert es.read_eval_log(SLUG, VARIANT)["reeval_pending"] is not None
+    r2 = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "重估简报" in r2.text
+
+
 def test_primer_uses_links_not_bare_filenames():
     """00_primer 正文里对后台产物的引用要用人话锚链，不留裸文件名（web 上不可点/看不懂）。
 

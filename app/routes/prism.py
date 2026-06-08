@@ -726,6 +726,15 @@ def prism_macro_monitoring(slug: str, variant: str,
     return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs", status_code=303)
 
 
+@router.post("/{slug}/{variant}/reeval")
+def prism_reeval(slug: str, variant: str):
+    """组装重估简报 + 盖「待重判」戳（零 LLM）。真正重判在对话里做。"""
+    from prism.scripts import eval_snapshot as es
+    brief = es.assemble_reeval_brief(slug, variant)
+    es.stamp_reeval_pending(slug, variant, brief)
+    return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs#reeval-brief", status_code=303)
+
+
 @router.get("/{slug}/{variant}/transmission-map")
 def prism_transmission_map(request: Request, slug: str, variant: str):
     """传导地图（L4 持仓暴露表，仅 macro topic）。

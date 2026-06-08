@@ -39,6 +39,20 @@
 </section>
 {% endif %}
 
+<form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/reeval" style="margin:0.6em 0">
+  <button type="submit" class="reeval-btn">发起重估（组装简报）</button>
+</form>
+{% if reeval_pending %}
+{% set b = reeval_pending.brief %}
+<section id="reeval-brief" class="reeval-brief">
+  <h2>重估简报 <span class="hint">· 盖戳 {{ (reeval_pending.stamped_at or '')[:19] }}</span></h2>
+  <p>变化输入 {{ b.changed | length }} · 越带 {{ b.breached | length }} · 到期 {{ b.due | length }}
+     · 受影响结论：{{ b.affected_conclusions | join(', ') or '—' }}</p>
+  {% if b.unfetched %}<p class="hint">盲区（未抓、无法判断变化）：{{ b.unfetched | length }} 条</p>{% endif %}
+  <p class="hint">拿此简报到对话发起重判；重判落地（写新评估）后此戳自动清除。</p>
+</section>
+{% endif %}
+
 <p class="hint">共 {{ inputs | length }} 条输入。「自动」= FRED API 脚本拉取；其余为 llm-web / manual。</p>
 <table class="data-table">
   <thead><tr>
@@ -121,5 +135,9 @@
   .mon-toggle { font-size: 0.78em; padding: 0.15em 0.5em; border-radius: 3px; border: 1px solid #ddd; cursor: pointer; }
   .mon-toggle.on { background: #e6f4ea; color: #2d7a3a; border-color: #bfe3c8; }
   .mon-toggle.off { background: #f1f1f1; color: #999; }
+  .reeval-btn { font-size: 0.9em; padding: 0.4em 1em; border-radius: 5px; border: 1px solid #b8cfe8; background: #f0f4ff; color: #2a5db0; cursor: pointer; }
+  .reeval-btn:hover { background: #dce6fb; }
+  .reeval-brief { border: 1px solid #e5e5e5; border-left: 3px solid #2a5db0; border-radius: 4px; padding: 0.6em 0.9em; margin: 0.6em 0 1em; background: #fbfcff; }
+  .reeval-brief h2 { font-size: 1em; margin: 0 0 0.4em; }
 </style>
 {% endblock %}
