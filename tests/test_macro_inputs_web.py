@@ -288,6 +288,22 @@ def test_inputs_table_shows_participation(macro_web_client):
     assert "3.0" in r.text and "3.5" in r.text   # S3 上次评估值 + 现值
 
 
+def test_monitoring_toggle_post_sets_enabled(macro_web_client):
+    # fixture 里 HY OAS monitoring.enabled=True；POST enabled=false 关掉
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/monitoring",
+                              data={"name": "HY OAS", "enabled": "false"}, follow_redirects=False)
+    assert r.status_code == 303
+    import prism.scripts.macro_registry as reg
+    hy = next(e for e in reg.read_registry(SLUG, VARIANT)["inputs"] if e["name"] == "HY OAS")
+    assert hy["monitoring"]["enabled"] is False
+
+
+def test_monitoring_toggle_404_unknown_input(macro_web_client):
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/monitoring",
+                              data={"name": "不存在的输入", "enabled": "true"}, follow_redirects=False)
+    assert r.status_code == 404
+
+
 def test_primer_uses_links_not_bare_filenames():
     """00_primer 正文里对后台产物的引用要用人话锚链，不留裸文件名（web 上不可点/看不懂）。
 

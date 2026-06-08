@@ -75,7 +75,14 @@
         {% if d and d.used %}<span class="badge-used">参与</span>{% elif d %}<span class="badge-unused">未参与</span>{% endif %}
         {% if d and d.conclusions %}<span class="hint">{{ d.conclusions | join(', ') }}</span>{% endif %}
       </td>
-      <td>{% if inp.monitoring and inp.monitoring.enabled %}✓{% else %}○{% endif %}</td>
+      <td>
+        {% set on = (inp.monitoring or {}).get('enabled', True) %}
+        <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs/monitoring" style="margin:0">
+          <input type="hidden" name="name" value="{{ inp.name }}">
+          <input type="hidden" name="enabled" value="{{ 'false' if on else 'true' }}">
+          <button type="submit" class="mon-toggle {{ 'on' if on else 'off' }}">{{ '✓ 监控' if on else '○ 停' }}</button>
+        </form>
+      </td>
       <td>{% if inp.alert_series and inp.alert_band %}<code class="hint">{{ inp.alert_band }}</code>{% else %}—{% endif %}</td>
     </tr>
   {% endfor %}
@@ -111,5 +118,8 @@
   .badge-delta { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #eef2f7; color: #44566b; }
   .badge-used { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #e6f4ea; color: #2d7a3a; }
   .badge-unused { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #f1f1f1; color: #999; }
+  .mon-toggle { font-size: 0.78em; padding: 0.15em 0.5em; border-radius: 3px; border: 1px solid #ddd; cursor: pointer; }
+  .mon-toggle.on { background: #e6f4ea; color: #2d7a3a; border-color: #bfe3c8; }
+  .mon-toggle.off { background: #f1f1f1; color: #999; }
 </style>
 {% endblock %}

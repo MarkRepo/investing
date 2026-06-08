@@ -13,7 +13,7 @@ from __future__ import annotations
 import random
 from collections import defaultdict
 
-from fastapi import APIRouter, HTTPException, Query, Request
+from fastapi import APIRouter, Form, HTTPException, Query, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
@@ -709,6 +709,21 @@ def prism_macro_inputs(request: Request, slug: str, variant: str):
         "topic": topic, "variant": variant, "inputs": inputs,
         "diff": diff, "reeval_pending": log.get("reeval_pending"),
     })
+
+
+@router.post("/{slug}/{variant}/macro-inputs/monitoring")
+def prism_macro_monitoring(slug: str, variant: str,
+                           name: str = Form(...), enabled: str = Form(...)):
+    """切换某输入的 monitoring.enabled（零 LLM）。输入不存在 → 404。"""
+    from prism.scripts import macro_registry as macro_reg
+    try:
+        registry = macro_reg.read_registry(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="登记表不存在")
+    if not any(e["name"] == name for e in registry.get("inputs") or []):
+        raise HTTPException(status_code=404, detail=f"输入 {name!r} 不存在")
+    macro_reg.upsert_input(slug, variant, {"name": name, "monitoring": {"enabled": enabled == "true"}})
+    return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs", status_code=303)
 
 
 @router.get("/{slug}/{variant}/transmission-map")
