@@ -64,3 +64,39 @@ def test_recipe_valid_csv_passes(tmp_reg):
     reg.upsert_input(slug, variant, _base(
         {"fetch_recipe": {"kind": "csv", "url": "https://x", "parse": {"value_column": "Value"}}}))
     assert reg.validate_registry(slug, variant) == []
+
+
+def _policy(extra_obs):
+    return {"name": "货政报告", "tier": "B", "cadence_type": "policy",
+            "mechanism": "CO", "importance": "confirming",
+            "stance_scale": "hawk_dove", "observed": extra_obs}
+
+
+def test_valid_stance_passes(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _policy({"stance": "偏鹰", "evidence": "删去'保持耐心'"}))
+    assert reg.validate_registry(slug, variant) == []
+
+
+def test_bad_stance_scale_flagged(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({"stance_scale": "bogus"}))
+    assert any("stance_scale" in e for e in reg.validate_registry(slug, variant))
+
+
+def test_stance_off_scale_flagged(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _policy({"stance": "扩张", "evidence": "x"}))
+    assert any("不在轴" in e for e in reg.validate_registry(slug, variant))
+
+
+def test_stance_without_scale_flagged(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({"observed": {"stance": "偏鹰", "evidence": "x"}}))
+    assert any("未声明 stance_scale" in m for m in reg.validate_registry(slug, variant))
+
+
+def test_stance_without_evidence_flagged(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _policy({"stance": "偏鹰"}))   # 无 evidence
+    assert any("evidence" in m for m in reg.validate_registry(slug, variant))

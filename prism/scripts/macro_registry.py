@@ -46,6 +46,21 @@ VALID_AVAILABILITY = ("scripted", "scriptable_todo", "no_stable_source")
 VALID_RECIPE_KIND = ("json", "csv")   # 须与 llmweb_fetch._PARSERS 键一致
 _RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column"}  # 每 kind 的必填 parse 键
 
+# policy 立场有序轴：轴名 → 档位元组（有序，索引升=趋势的"高"端）。diff 按索引差算方向。
+STANCE_SCALES = {
+    "hawk_dove": ("鸽", "偏鸽", "中性", "偏鹰", "鹰"),
+    "ease_tighten": ("宽松", "偏松", "中性", "偏紧", "收紧"),
+    "expand_contract": ("扩张", "中性", "收缩"),
+    "path_shift": ("上移", "不变", "下移"),
+}
+# 每轴方向取词：(索引上升时词, 索引下降时词)
+STANCE_DIRECTION = {
+    "hawk_dove": ("更鹰", "更鸽"),
+    "ease_tighten": ("更紧", "更松"),
+    "expand_contract": ("更收缩", "更扩张"),
+    "path_shift": ("更下移", "更上移"),
+}
+
 
 def _registry_path(slug: str, variant: str) -> Path:
     if not variant:
@@ -156,6 +171,17 @@ def validate_registry(slug: str, variant: str) -> list[str]:
                 req = _RECIPE_REQUIRED_PARSE[kind]
                 if not (recipe.get("parse") or {}).get(req):
                     errors.append(f"[{name}] fetch_recipe kind={kind} 缺 parse.{req}")
+        scale = e.get("stance_scale")
+        if scale is not None and scale not in STANCE_SCALES:
+            errors.append(f"[{name}] stance_scale 非法: {scale!r}")
+        stance = (e.get("observed") or {}).get("stance")
+        if stance is not None:
+            if scale is None:
+                errors.append(f"[{name}] 设了 observed.stance 但未声明 stance_scale")
+            elif scale in STANCE_SCALES and stance not in STANCE_SCALES[scale]:
+                errors.append(f"[{name}] stance {stance!r} 不在轴 {scale} 档位内")
+            if not str((e.get("observed") or {}).get("evidence") or "").strip():
+                errors.append(f"[{name}] 设了 observed.stance 必须附 evidence")
     return errors
 
 
