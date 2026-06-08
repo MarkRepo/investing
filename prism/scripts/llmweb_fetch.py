@@ -6,6 +6,8 @@ availability 为 scriptable_todo / no_stable_source 的跳过并计数，绝不�
 单测 mock httpx（同 fred_fetch）。"""
 from __future__ import annotations
 
+import csv
+import io
 import sys
 
 import httpx
@@ -24,12 +26,56 @@ def _dig(obj, path):
     return obj
 
 
+def _parse_json(payload, cfg) -> tuple[float | None, str | None]:
+    """JSON 取值：json_path/date_path 是键/索引序列（原 fetch_by_recipe 逻辑）。"""
+    val = _dig(payload, cfg.get("json_path") or [])
+    as_of = _dig(payload, cfg.get("date_path") or [])
+    as_of = str(as_of) if as_of is not None else None
+    try:
+        return (float(val) if val is not None else None), as_of
+    except (ValueError, TypeError):
+        return None, as_of
+
+
+def _parse_csv(text, cfg) -> tuple[float | None, str | None]:
+    """CSV 取值：value_column 取列、row 选行（latest=末行/first=首行/整数=索引）、
+    date_column 取日期。值转 float 失败 → (None, as_of)。诚实降级，不抛。"""
+    rows = list(csv.DictReader(io.StringIO(text)))
+    if not rows:
+        return None, None
+    sel = cfg.get("row", "latest")
+    if sel == "latest":
+        r = rows[-1]
+    elif sel == "first":
+        r = rows[0]
+    else:
+        try:
+            r = rows[int(sel)]
+        except (ValueError, IndexError, TypeError):
+            return None, None
+    raw = r.get(cfg.get("value_column"))
+    date_col = cfg.get("date_column")
+    as_of = str(r.get(date_col)) if date_col and r.get(date_col) is not None else None
+    try:
+        return (float(raw) if raw not in (None, "") else None), as_of
+    except (ValueError, TypeError):
+        return None, as_of
+
+
+_PARSERS = {"json": _parse_json, "csv": _parse_csv}
+
+
 def fetch_by_recipe(recipe: dict, *, client=None) -> tuple[float | None, str | None]:
-    """按 fetch_recipe 抓一个数值。recipe: {url, parse:{json_path:[...], date_path:[...]}}。
-    仅支持 JSON 取值（json_path/date_path 是键/索引序列）。client 可注入（测试 mock）。"""
+    """按 fetch_recipe 抓一个数值。recipe: {kind?, url, parse:{...}}。
+    kind 缺省 'json'（向后兼容现有写法）；按 kind 派发解析器。未知 kind 抛 ValueError
+    （不静默）。client 可注入（测试 mock）。"""
     url = recipe.get("url")
     if not url:
         return None, None
+    kind = recipe.get("kind", "json")
+    parser = _PARSERS.get(kind)
+    if parser is None:
+        raise ValueError(f"未知 fetch_recipe.kind: {kind!r}（支持 {sorted(_PARSERS)}）")
     parse = recipe.get("parse") or {}
     owns = client is None
     if owns:
@@ -37,17 +83,11 @@ def fetch_by_recipe(recipe: dict, *, client=None) -> tuple[float | None, str | N
     try:
         resp = client.get(url, timeout=30)
         resp.raise_for_status()
-        payload = resp.json()
+        payload = resp.json() if kind == "json" else resp.text
     finally:
         if owns:
             client.close()
-    val = _dig(payload, parse.get("json_path") or [])
-    as_of = _dig(payload, parse.get("date_path") or [])
-    as_of = str(as_of) if as_of is not None else None
-    try:
-        return (float(val) if val is not None else None), as_of
-    except (ValueError, TypeError):
-        return None, as_of
+    return parser(payload, parse)
 
 
 def run_llmweb_fetch(slug: str, variant: str, *, client=None) -> dict:
