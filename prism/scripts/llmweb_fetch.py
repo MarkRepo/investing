@@ -8,7 +8,9 @@ from __future__ import annotations
 
 import csv
 import io
+import re
 import sys
+from html import unescape
 
 import httpx
 
@@ -88,6 +90,33 @@ def fetch_by_recipe(recipe: dict, *, client=None) -> tuple[float | None, str | N
         if owns:
             client.close()
     return parser(payload, parse)
+
+
+_SCRIPT_STYLE = re.compile(r"<(script|style)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
+_ANY_TAG = re.compile(r"<[^>]+>")
+_WS = re.compile(r"\s+")
+
+
+def fetch_text(url: str, *, client=None) -> str:
+    """固定 URL 取正文，喂给 llm-web 判读用（如央行声明/报告索引页）。
+    GET → 去 script/style → 去标签 → 反转义实体 → collapse 空白。
+
+    刻意不挂在 fetch_by_recipe 上：那条只管 json/csv 数值提取，保持纯粹；
+    文本是给 LLM 读的，不是 value。多跳（索引→最新条目）由 llm-web 侧 LLM 决定。
+    client 可注入（测试 mock）。"""
+    owns = client is None
+    if owns:
+        client = httpx.Client()
+    try:
+        resp = client.get(url, timeout=30)
+        resp.raise_for_status()
+        raw = resp.text
+    finally:
+        if owns:
+            client.close()
+    raw = _SCRIPT_STYLE.sub(" ", raw)
+    raw = _ANY_TAG.sub(" ", raw)
+    return _WS.sub(" ", unescape(raw)).strip()
 
 
 def run_llmweb_fetch(slug: str, variant: str, *, client=None) -> dict:

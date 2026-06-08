@@ -85,3 +85,26 @@ def test_unknown_kind_raises():
     recipe = {"kind": "xml", "url": "https://x", "parse": {}}
     with pytest.raises(ValueError, match="未知"):
         llmweb_fetch.fetch_by_recipe(recipe, client=_fake_text_client("x"))
+
+
+# --- fetch_text：固定 URL 取正文（喂 llm-web 判读），不挂 fetch_by_recipe ---
+
+def test_fetch_text_strips_html_tags():
+    html = "<html><body><h1>标题</h1><p>正文 内容</p></body></html>"
+    out = llmweb_fetch.fetch_text("https://x", client=_fake_text_client(html))
+    assert "标题" in out and "正文 内容" in out
+    assert "<" not in out and ">" not in out
+
+
+def test_fetch_text_drops_script_and_style():
+    html = "<style>.a{color:red}</style><p>看得见</p><script>var x=1;</script>"
+    out = llmweb_fetch.fetch_text("https://x", client=_fake_text_client(html))
+    assert "看得见" in out
+    assert "color:red" not in out and "var x" not in out
+
+
+def test_fetch_text_unescapes_entities_and_collapses_ws():
+    html = "<p>A&amp;B</p>\n\n   <p>C</p>"
+    out = llmweb_fetch.fetch_text("https://x", client=_fake_text_client(html))
+    assert "A&B" in out
+    assert "\n\n" not in out and "   " not in out
