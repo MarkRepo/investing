@@ -147,3 +147,95 @@ def test_macro_nav_no_double_highlight(macro_web_client):
         r'<a href="/prism/global-macro-rates-liquidity/opus4\.8"[^>]*>宏观层</a>', nav
     ).group(0)
     assert "active" in macro_a                                  # 宏观层 亮
+
+
+def _write_transmission_map(tmp_root):
+    """往 tmp topic 写一份最小传导地图 yaml（含 regime + 一只持仓 + 类别尾部）。"""
+    out = tmp_root / "prism" / "topics" / SLUG / VARIANT / "outputs"
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "transmission_map.yaml").write_text(
+        "slug: %s\nvariant: %s\ngenerated: \"2026-06-07T00:00:00Z\"\n"
+        "regime:\n"
+        "  rates: {state: \"高位筑顶\", note: \"美钱仍贵\", confidence: 7}\n"
+        "  composite: \"美紧中松分化体制 — 偏防御\"\n"
+        "  conviction: 6\n  quadrant: 滞胀\n  fragility: high\n"
+        "holdings:\n"
+        "  - {slug: cn-kweichow-moutai-600519, display_name: 贵州茅台, duration: mid,\n"
+        "     rate_beta: mid, usd_exposure: low, liquidity_beta: mid, exposure_score: mid,\n"
+        "     regime_favor: [人民币企稳], regime_hurt: [中国紧信用],\n"
+        "     plain: \"人民币内需防御票，几乎无美元暴露\"}\n"
+        "categorical_tail:\n"
+        "  - {name: 中美地缘/关税, state: 警示, note: \"关税战未停火\"}\n"
+        % (SLUG, VARIANT),
+        encoding="utf-8",
+    )
+
+
+def test_transmission_map_renders(macro_web_client, tmp_path):
+    """传导地图上 web：路由渲染 regime banner + 每只持仓暴露行（不再 404 死指针）。"""
+    _write_transmission_map(tmp_path)
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/transmission-map")
+    assert r.status_code == 200
+    assert "贵州茅台" in r.text                       # 持仓行
+    assert "美紧中松分化体制" in r.text                # regime composite banner
+    assert "滞胀" in r.text                            # 象限
+    assert "人民币内需防御票" in r.text                # plain 人话
+    assert "中美地缘/关税" in r.text                   # 类别尾部
+
+
+def test_transmission_map_404_for_non_macro(macro_web_client):
+    """非 macro topic 命中该路由应 404（类型守卫，而非通配吞掉）。"""
+    import prism.scripts.topic as t
+    import prism.scripts.manifest as m
+    t.create_topic("cn-industry-y", "某行业", "industry", "Q", "CN", "deep", VARIANT)
+    m.create_manifest("cn-industry-y", VARIANT)
+    r = macro_web_client.get(f"/prism/cn-industry-y/{VARIANT}/transmission-map")
+    assert r.status_code == 404
+
+
+def test_macro_detail_has_transmission_tab(macro_web_client):
+    """macro 详情页 tab 条新增「传导地图」，指向 transmission-map。"""
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}")
+    assert r.status_code == 200
+    assert "传导地图" in r.text
+    assert f"/prism/{SLUG}/{VARIANT}/transmission-map" in r.text
+
+
+def test_regime_read_annotations_have_alignment_hook(macro_web_client, tmp_path):
+    """m_regime_read「活注解层」三句注解（这是什么/为什么看它/现在说明什么）需带对齐样式钩子，
+    且每句渲染为以 <code> 标签起头的独立 li，供 CSS 把标签定宽成列、正文换行悬挂对齐。"""
+    out = tmp_path / "prism" / "topics" / SLUG / VARIANT / "outputs"
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "m_regime_read.md").write_text(
+        "---\nslug: x\noutput_key: m_regime_read\n---\n"
+        "### 关键输入指标\n\n"
+        "**美国政策利率：3.50%–3.75%**\n"
+        "- `这是什么`：全球资金价格的总锚。\n"
+        "- `为什么看它`：利率体制的短端发动机。\n"
+        "- `现在说明什么`：连续按兵不动，钱不会很快变便宜。\n",
+        encoding="utf-8",
+    )
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/m_regime_read")
+    assert r.status_code == 200
+    assert "regime-annot" in r.text                       # 对齐样式钩子（容器类）
+    # 即便源文件「粗体标题行」与「- 注解项」之间漏了空行，也须渲染成真正的列表项
+    # （否则退化成段落里的字面 `- ...`，既不换行也无从对齐）。
+    assert "<li><code>这是什么</code>" in r.text
+    assert "<li><code>为什么看它</code>" in r.text
+    assert "<li><code>现在说明什么</code>" in r.text
+    assert "- <code>这是什么</code>" not in r.text         # 不得留字面短横线
+
+
+def test_primer_uses_links_not_bare_filenames():
+    """00_primer 正文里对后台产物的引用要用人话锚链，不留裸文件名（web 上不可点/看不懂）。
+
+    直接读真实仓库文件做内容守卫（fixture 的 tmp topic 不含 primer）。frontmatter
+    的 companion:/sources_note: 合法命名文件，故剥掉 frontmatter 只查正文。
+    """
+    repo = Path(__file__).resolve().parent.parent
+    raw = (repo / "prism" / "topics" / SLUG / VARIANT / "outputs" / "00_primer.md").read_text("utf-8")
+    body = raw.split("---", 2)[-1]  # 剥 YAML frontmatter，只留正文
+    assert f"](/prism/{SLUG}/{VARIANT}/m_regime_read)" in body        # 活读数锚链
+    assert f"](/prism/{SLUG}/{VARIANT}/transmission-map)" in body     # 传导地图锚链
+    assert "transmission_map.yaml" not in body                        # 正文不留裸后台文件名
+    assert "m_regime_read.md" not in body

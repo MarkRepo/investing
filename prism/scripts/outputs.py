@@ -1,6 +1,7 @@
 """Query output state for topics. Zero LLM calls."""
 from __future__ import annotations
 
+import re
 from datetime import date, datetime
 from pathlib import Path
 
@@ -46,9 +47,64 @@ def _normalize_md_tables(raw: str) -> str:
     return "\n".join(out)
 
 
+# 文件开头的 YAML frontmatter 块（--- … ---）。frontmatter 是后台记账
+# （slug/output_key/version/companion 等），对读者无意义；尤其 companion 会把
+# 后台文件名泄露到网页。render_markdown 不挂 meta 扩展，否则整块会被当正文渲染
+# 成一坨 <hr>+段落。故在统一渲染入口前剥除。
+_FRONTMATTER_RE = re.compile(r"^---\n(?P<fm>.*?)\n---\n", re.DOTALL)
+_FM_KEY_RE = re.compile(r"^[A-Za-z_][\w-]*\s*:")
+
+
+def _strip_frontmatter(raw: str) -> str:
+    """剥掉文件开头的 YAML frontmatter 块。仅当开头确为 frontmatter（首行 `---`、
+    块内至少一行形如 `key: value`）才剥，避免误吃正文开头的 `---` 水平线 / setext
+    下划线。无 frontmatter 时原样返回。幂等。"""
+    m = _FRONTMATTER_RE.match(raw)
+    if not m:
+        return raw
+    if not any(_FM_KEY_RE.match(line) for line in m.group("fm").splitlines()):
+        return raw  # 看着像 frontmatter 实为正文 `---` 分隔，放过
+    return raw[m.end():]
+
+
+# 顶层无序/有序列表项（marker + 至少一个空格 + 内容）。要求行首无缩进，故只认顶层项；
+# `---`/`***` 等水平线、`-5` 这类负数行都不匹配（marker 后必须是「空白+非空」）。
+_TOP_LIST_ITEM_RE = re.compile(r"^(?:[-*+]|\d+[.)])\s+\S")
+
+
+def _normalize_md_lists(raw: str) -> str:
+    """在「段落行 + 顶层列表项」之间补一个空行。python-markdown 要求列表前有空行，
+    否则紧跟段落的 `- ` 行会被当成段落的惰性续行、渲染成字面 `- 文本`（不成列表）。
+    与 _normalize_md_tables 同源：作者/LLM 常漏这个空行。
+
+    保守规则——仅当当前行是「顶层」列表项（行首无缩进）、且上一行非空、非缩进、且本身
+    不是顶层列表项时才补空行。故：连续列表项保持紧凑、嵌套/缩进续行不被打扰、fenced
+    code 内部跳过。幂等。"""
+    lines = raw.split("\n")
+    out: list[str] = []
+    in_fence = False
+    for line in lines:
+        stripped = line.lstrip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fence = not in_fence
+            out.append(line)
+            continue
+        if not in_fence and _TOP_LIST_ITEM_RE.match(line):
+            prev = out[-1] if out else ""
+            if (
+                prev.strip()
+                and not prev.startswith((" ", "\t"))
+                and not _TOP_LIST_ITEM_RE.match(prev)
+            ):
+                out.append("")
+        out.append(line)
+    return "\n".join(out)
+
+
 def render_markdown(raw: str) -> str:
-    """prism 内所有 md→HTML 的统一入口：先补表格空行再交给 markdown 扩展。"""
-    return _md.markdown(_normalize_md_tables(raw), extensions=_MD_EXTENSIONS)
+    """prism 内所有 md→HTML 的统一入口：先剥 frontmatter、补表格/列表空行再交给 markdown 扩展。"""
+    normalized = _normalize_md_lists(_normalize_md_tables(_strip_frontmatter(raw)))
+    return _md.markdown(normalized, extensions=_MD_EXTENSIONS)
 
 _OUTPUT_KEYS_LABELS = [
     ("00_primer", "领域入门"),

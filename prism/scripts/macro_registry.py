@@ -71,6 +71,19 @@ def read_registry(slug: str, variant: str) -> dict:
     return _read_yaml(path)
 
 
+def read_transmission_map(slug: str, variant: str) -> dict:
+    """读传导地图 outputs/transmission_map.yaml（L4 持仓暴露契约）。
+
+    它是 .yaml 产物（非 .md），故走不了 outputs.read_output_html 的 markdown 视图，
+    由专属 web 路由直读渲染（同 macro_inputs 的模式）。缺文件返回 {}，让路由优雅
+    显示「未生成」而非 500。
+    """
+    path = _PRISM_ROOT / "topics" / slug / variant / "outputs" / "transmission_map.yaml"
+    if not path.exists():
+        return {}
+    return _read_yaml(path)
+
+
 def upsert_input(slug: str, variant: str, entry: dict) -> None:
     """按 name 唯一键 upsert 一条 input（无校验，校验交 validate_registry）。零 LLM。"""
     if not entry.get("name"):

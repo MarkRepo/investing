@@ -707,6 +707,30 @@ def prism_macro_inputs(request: Request, slug: str, variant: str):
     })
 
 
+@router.get("/{slug}/{variant}/transmission-map")
+def prism_transmission_map(request: Request, slug: str, variant: str):
+    """传导地图（L4 持仓暴露表，仅 macro topic）。
+
+    transmission_map.yaml 是 .yaml 产物、无 markdown 视图，故专路直读渲染。
+    必须声明在 /{output_key} 通配之前（同 macro-inputs）。
+    """
+    from prism.scripts import macro_registry as macro_reg
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    if topic.get("type") != "macro":
+        raise HTTPException(status_code=404, detail="非宏观主题")
+    tmap = macro_reg.read_transmission_map(slug, variant)
+    return templates.TemplateResponse(request, "prism/transmission_map.html", {
+        "topic": topic, "variant": variant,
+        "regime": tmap.get("regime") or {},
+        "holdings": tmap.get("holdings") or [],
+        "categorical_tail": tmap.get("categorical_tail") or [],
+        "generated": tmap.get("generated"),
+    })
+
+
 @router.get("/{slug}/{variant}/{output_key}")
 def prism_output(request: Request, slug: str, variant: str, output_key: str):
     """View a specific output for a model variant."""

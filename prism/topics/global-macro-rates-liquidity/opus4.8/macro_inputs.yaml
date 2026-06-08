@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-07T17:11:47.420020+00:00'
+updated: '2026-06-07T22:00:58.338224+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -20,6 +20,11 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: DFEDTARU
+  observed:
+    value: 3.75
+    as_of: '2026-06-07'
+    checked_at: '2026-06-07T22:00:10.912484+00:00'
+    streak: 0
 - name: FOMC 点阵图(SEP)
   tier: A
   cadence_type: event
@@ -98,6 +103,11 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: PAYEMS
+  observed:
+    value: 159001.0
+    as_of: '2026-05-01'
+    checked_at: '2026-06-07T22:00:19.936684+00:00'
+    streak: 0
 - name: 失业率
   tier: A
   cadence_type: event
@@ -114,6 +124,11 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: UNRATE
+  observed:
+    value: 4.3
+    as_of: '2026-05-01'
+    checked_at: '2026-06-07T22:00:29.106237+00:00'
+    streak: 0
 - name: 初请失业金
   tier: A
   cadence_type: event
@@ -130,6 +145,11 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: ICSA
+  observed:
+    value: 225000.0
+    as_of: '2026-05-30'
+    checked_at: '2026-06-07T22:00:32.781081+00:00'
+    streak: 0
 - name: JOLTS 职位空缺/离职率
   tier: A
   cadence_type: event
@@ -146,6 +166,11 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: JTSJOL
+  observed:
+    value: 7618.0
+    as_of: '2026-04-01'
+    checked_at: '2026-06-07T22:00:36.393544+00:00'
+    streak: 0
 - name: ISM 制造业 PMI
   tier: A
   cadence_type: event
@@ -193,6 +218,11 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: RSAFS
+  observed:
+    value: 757085.0
+    as_of: '2026-04-01'
+    checked_at: '2026-06-07T22:00:44.635884+00:00'
+    streak: 0
 - name: GDPNow 实时预测
   tier: B
   cadence_type: series
@@ -224,6 +254,11 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: CES0500000003
+  observed:
+    value: 37.53
+    as_of: '2026-05-01'
+    checked_at: '2026-06-07T22:00:51.544825+00:00'
+    streak: 0
 - name: 核心 PCE
   tier: A
   cadence_type: event
@@ -240,6 +275,11 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: PCEPILFE
+  observed:
+    value: 129.63
+    as_of: '2026-04-01'
+    checked_at: '2026-06-07T22:00:58.338216+00:00'
+    streak: 0
 - name: CPI(核心+supercore)
   tier: A
   cadence_type: event

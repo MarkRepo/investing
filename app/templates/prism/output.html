@@ -49,7 +49,7 @@
     </div>
     {% endif %}
 
-    <div class="markdown-body">
+    <div class="markdown-body{% if output_key == 'm_regime_read' %} regime-annot{% endif %}">
       {{ html_body | safe }}
     </div>
   </article>
@@ -87,6 +87,27 @@
   .markdown-body pre { background: #f4f4f4; padding: 1em; border-radius: 4px; overflow-x: auto; }
   .markdown-body blockquote { border-left: 3px solid #ddd; margin: 0; padding-left: 1em; color: #666; }
   .hint { color: #888; font-size: 0.85em; }
+
+  /* ── m_regime_read「活注解层」三句注解（这是什么/为什么看它/现在说明什么）──
+     标签定宽成列、正文（含换行）悬挂对齐。仅命中「以 <code> 起头的 li」，故体制结论/
+     象限/数据边界等普通要点（以文字或 **粗体** 起头）不受影响。:has() 现代浏览器通用。 */
+  .regime-annot ul:has(> li > code:first-child) { list-style: none; padding-left: 0.2em; }
+  .regime-annot li:has(> code:first-child) {
+    padding-left: 7em;          /* 正文列起点；换行自动悬挂到此 */
+    margin: 0.3em 0;
+    line-height: 1.6;
+  }
+  .regime-annot li:has(> code:first-child) > code:first-child {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 6.5em;               /* 标签定宽 → 跨行对齐；超长标签自动折行 */
+    margin-left: -7em;          /* 拉回左侧栏（= -(padding 7em)，含 0.5em 间距） */
+    margin-right: 0.5em;
+    vertical-align: top;
+    text-align: center;
+    background: #eef2f7;
+    color: #44566b;
+  }
 
   /* ── 页内目录（ToC，JS 生成）── */
   html { scroll-behavior: smooth; }

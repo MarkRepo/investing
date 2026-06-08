@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% from "prism/_view_tabs.html" import view_tabs %}
+{% block title %}传导地图 · {{ topic.display_name }}{% endblock %}
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
+  <a href="/prism/{{ topic.slug }}/{{ variant }}">{{ variant }}</a> /
+  <span>传导地图</span>
+</nav>
+
+<div class="prism-header">
+  <h1>{{ topic.display_name or topic.slug }}</h1>
+  <span class="model-tag">{{ variant }}</span>
+  <span class="hint"> · 传导地图（L4 持仓暴露）</span>
+</div>
+
+{{ view_tabs(topic, variant, 'transmission') }}
+
+<p class="hint">三体制读数经四条传导渠道（贴现率 / 风险偏好 / carry-久期 / 汇率）映射到每只持仓的敏感度标签。
+<code>exposure_score=high</code> 者即 dashboard 宏观 banner「最受影响」名单。
+{% if generated %}<span> · 生成 {{ generated[:10] }}</span>{% endif %}</p>
+
+{% if regime %}
+<div class="regime-banner">
+  <div class="regime-composite">{{ regime.composite or '—' }}</div>
+  <div class="regime-chips">
+    {% if regime.quadrant %}<span class="chip">象限 · {{ regime.quadrant }}</span>{% endif %}
+    {% if regime.conviction is not none %}<span class="chip">综合信心 {{ regime.conviction }}</span>{% endif %}
+    {% if regime.fragility %}<span class="chip chip-frag">脆弱度 {{ regime.fragility }}</span>{% endif %}
+    {% for k in ['rates', 'liquidity', 'fx'] %}
+      {% if regime[k] %}<span class="chip">{{ {'rates':'利率','liquidity':'流动性','fx':'汇率'}[k] }} · {{ regime[k].state }}{% if regime[k].confidence is not none %}（信心{{ regime[k].confidence }}）{% endif %}</span>{% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% if holdings %}
+<table class="data-table">
+  <thead><tr>
+    <th>持仓</th><th>久期</th><th>利率β</th><th>美元暴露</th><th>流动性β</th><th>暴露分</th>
+    <th>利好体制</th><th>受损体制</th><th>人话</th>
+  </tr></thead>
+  <tbody>
+  {% for h in holdings %}
+    <tr class="{% if h.exposure_score == 'high' %}row-high{% endif %}">
+      <td><strong>{{ h.display_name or h.slug }}</strong>
+        {% if h.slug %}<div class="hint"><code>{{ h.slug }}</code></div>{% endif %}</td>
+      <td>{{ h.duration or '—' }}</td>
+      <td>{{ h.rate_beta or '—' }}</td>
+      <td>{{ h.usd_exposure or '—' }}</td>
+      <td>{{ h.liquidity_beta or '—' }}</td>
+      <td><span class="score score-{{ h.exposure_score or 'na' }}">{{ h.exposure_score or '—' }}</span></td>
+      <td class="favor">{{ (h.regime_favor or []) | join('、') or '—' }}</td>
+      <td class="hurt">{{ (h.regime_hurt or []) | join('、') or '—' }}</td>
+      <td class="plain">{{ h.plain or '' }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="empty">传导地图尚未生成（transmission_map.yaml 缺失或为空）。</p>
+{% endif %}
+
+{% if categorical_tail %}
+<section class="tail">
+  <h2>类别尾部 <span class="hint">（always-alert 状态快照 — 机械判不了概率、长期挂警）</span></h2>
+  <ul class="tail-list">
+    {% for c in categorical_tail %}
+    <li><span class="tail-state">{{ c.state or '警示' }}</span> <strong>{{ c.name }}</strong> — <span class="hint">{{ c.note }}</span></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<style>
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 0.5em; }
+  .breadcrumb a { color: #555; }
+  .prism-header { margin: 0.5em 0; }
+  .prism-header h1 { display: inline; font-size: 1.5em; margin-right: 0.5em; }
+  .model-tag { font-size: 0.82em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; }
+  /* 中性 tab 高亮（与 读者向/输入源 一致；非诊断/体检的红色 debug 风） */
+  .diag-tabs { display: flex; align-items: center; gap: 0.1em; margin: 0.8em 0; border-bottom: 2px solid #e5e5e5; }
+  .diag-tabs-label { font-size: 0.78em; color: #aaa; margin-right: 0.5em; }
+  .diag-tab { padding: 0.4em 1em; font-size: 0.88em; text-decoration: none; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; border-radius: 4px 4px 0 0; }
+  .diag-tab.active { color: #333; font-weight: 600; background: #f1f3f5; border-bottom-color: #333; }
+  .diag-tab:not(.active):hover { color: #c0392b; background: #fafafa; }
+  .regime-banner { margin: 1em 0 1.4em; padding: 0.8em 1em; background: #f8f9fb; border-left: 3px solid #2a5db0; border-radius: 3px; }
+  .regime-composite { font-size: 1.05em; font-weight: 600; color: #1f2d3d; margin-bottom: 0.5em; }
+  .regime-chips { display: flex; flex-wrap: wrap; gap: 0.4em; }
+  .chip { font-size: 0.78em; padding: 0.15em 0.55em; border-radius: 10px; background: #eef2f7; color: #44566b; }
+  .chip-frag { background: #fdecea; color: #c0392b; }
+  .data-table { border-collapse: collapse; width: 100%; }
+  .data-table th, .data-table td { padding: 0.4em 0.6em; border-bottom: 1px solid #eee; font-size: 0.84em; text-align: left; vertical-align: top; }
+  .data-table th { font-weight: 600; color: #555; }
+  .row-high { background: #fffaf2; }
+  .score { font-size: 0.78em; padding: 0.1em 0.45em; border-radius: 3px; font-weight: 600; }
+  .score-high { background: #fdecea; color: #c0392b; }
+  .score-mid { background: #fef6e6; color: #b45309; }
+  .score-low { background: #e6f4ea; color: #2d7a3a; }
+  .score-na { background: #eee; color: #888; }
+  .favor { color: #2d7a3a; }
+  .hurt { color: #c0392b; }
+  .plain { color: #555; max-width: 26em; line-height: 1.4; }
+  .empty { color: #aaa; font-style: italic; }
+  .hint { color: #888; font-size: 0.85em; }
+  .tail { margin-top: 1.8em; padding-top: 0.6em; border-top: 1px solid #eee; }
+  .tail h2 { font-size: 1.05em; color: #333; }
+  .tail-list { line-height: 1.7; padding-left: 1.1em; }
+  .tail-list li { margin-bottom: 0.3em; }
+  .tail-state { font-size: 0.74em; padding: 0.05em 0.4em; border-radius: 3px; background: #fdecea; color: #c0392b; }
+</style>
+{% endblock %}
