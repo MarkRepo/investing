@@ -96,3 +96,23 @@ def test_diff_detects_numeric_change_and_conclusions(tmp_topic):
     assert diff["A"]["used"] is True
     assert diff["B"]["changed"] is False        # 两端都 None → 未变
     assert diff["B"]["used"] is False
+
+
+def test_assemble_brief_lists_changed_unfetched_affected(tmp_topic):
+    slug, variant = tmp_topic
+    es.append_evaluation(slug, variant, _ev_all())
+    reg.record_observation(slug, variant, "A", value=4.0)   # A 变了，支撑 rates
+    brief = es.assemble_reeval_brief(slug, variant)
+    assert "A" in [c["name"] for c in brief["changed"]]
+    assert "B" in brief["unfetched"]                        # B 从未抓到值
+    assert "rates" in brief["affected_conclusions"]
+    assert set(brief) == {"changed", "breached", "due", "alert", "unfetched", "affected_conclusions"}
+
+
+def test_stamp_and_clear_reeval_pending(tmp_topic):
+    slug, variant = tmp_topic
+    es.append_evaluation(slug, variant, _ev_all())
+    es.stamp_reeval_pending(slug, variant, {"changed": [], "affected_conclusions": []})
+    assert es.read_eval_log(slug, variant)["reeval_pending"] is not None
+    es.append_evaluation(slug, variant, _ev_all())          # 新评估落地清戳
+    assert es.read_eval_log(slug, variant)["reeval_pending"] is None

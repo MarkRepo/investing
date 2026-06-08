@@ -105,6 +105,32 @@ def conclusions_for_input(evaluation: dict, name: str) -> list:
     return out
 
 
+def assemble_reeval_brief(slug: str, variant: str) -> dict:
+    """零-LLM 组装重估简报：变化项 + 到期/越带 + 受影响结论 + 未抓盲区清单。
+
+    未抓清单是诚实盲区提示（这些输入无法判断是否变化）。供 S5 展示与对话重判消费。
+    """
+    diff = diff_since_last(slug, variant)
+    changed = [d for d in diff if d["changed"]]
+    breached = [d for d in diff if d["breached"]]
+    unfetched = [d["name"] for d in diff if d["live_value"] is None]
+    registry = reg.read_registry(slug, variant)
+    scan = reg.scan_macro_inputs(registry)
+    due = [e["name"] for e in scan["due_event"] + scan["due_policy"]]
+    alert = [e["name"] for e in scan["alert_series"]]
+    affected = sorted({c for d in (changed + breached) for c in d["conclusions"]})
+    return {"changed": changed, "breached": breached, "due": due,
+            "alert": alert, "unfetched": unfetched, "affected_conclusions": affected}
+
+
+def stamp_reeval_pending(slug: str, variant: str, brief: dict) -> None:
+    """盖「待重判」戳（写 reeval_pending）。append_evaluation 时自动清空。零 LLM。"""
+    log = read_eval_log(slug, variant)
+    log["reeval_pending"] = {"stamped_at": _now_iso(), "brief": brief}
+    log["slug"], log["variant"], log["updated"] = slug, variant, _now_iso()
+    _write_yaml(_log_path(slug, variant), log)
+
+
 def diff_since_last(slug: str, variant: str) -> list:
     """对登记表每条输入，比对现 observed.value 与 latest 快照值。零 LLM。
 
