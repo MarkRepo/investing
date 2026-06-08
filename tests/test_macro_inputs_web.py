@@ -44,6 +44,8 @@ def macro_web_client(tmp_path, monkeypatch):
     monkeypatch.setattr(m, "_PRISM_ROOT", tmp_path / "prism")
     monkeypatch.setattr(o, "_PRISM_ROOT", tmp_path / "prism")
     monkeypatch.setattr(reg, "_PRISM_ROOT", tmp_path / "prism")
+    import prism.scripts.eval_snapshot as es
+    monkeypatch.setattr(es, "_PRISM_ROOT", tmp_path / "prism")
 
     (tmp_path / "prism" / "topics").mkdir(parents=True)
     t.create_topic(SLUG, "宏观层 (利率/流动性/汇率体制)", "macro", "三体制传导", "GLOBAL", "deep", VARIANT)
@@ -224,6 +226,27 @@ def test_regime_read_annotations_have_alignment_hook(macro_web_client, tmp_path)
     assert "<li><code>为什么看它</code>" in r.text
     assert "<li><code>现在说明什么</code>" in r.text
     assert "- <code>这是什么</code>" not in r.text         # 不得留字面短横线
+
+
+def test_eval_trace_renders_conclusions(macro_web_client):
+    import prism.scripts.eval_snapshot as es
+    es.append_evaluation(SLUG, VARIANT, {
+        "input_snapshot": [{"name": "HY OAS", "value": 3.1, "as_of": "2026-06-01", "used": True}],
+        "conclusions": [{"id": "liquidity", "label": "流动性体制", "state": "偏紧",
+                         "based_on": [{"input": "HY OAS", "role": "confirming"}],
+                         "causal": "HY OAS 走阔 → 风险偏好降 → 流动性偏紧"}]})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/eval-trace")
+    assert r.status_code == 200
+    assert "流动性体制" in r.text
+    assert "HY OAS 走阔" in r.text                  # causal 句
+
+
+def test_eval_trace_404_for_non_macro(macro_web_client):
+    import prism.scripts.topic as t
+    import prism.scripts.manifest as m
+    t.create_topic("cn-ind-z", "某行业", "industry", "Q", "CN", "deep", VARIANT)
+    m.create_manifest("cn-ind-z", VARIANT)
+    assert macro_web_client.get(f"/prism/cn-ind-z/{VARIANT}/eval-trace").status_code == 404
 
 
 def test_primer_uses_links_not_bare_filenames():

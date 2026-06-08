@@ -731,6 +731,24 @@ def prism_transmission_map(request: Request, slug: str, variant: str):
     })
 
 
+@router.get("/{slug}/{variant}/eval-trace")
+def prism_eval_trace(request: Request, slug: str, variant: str):
+    """评估溯源（结论←输入←因果句 + diff，仅 macro topic）。
+    必须声明在 /{output_key} 通配之前（同 macro-inputs / transmission-map）。"""
+    from prism.scripts import eval_snapshot as es
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    if topic.get("type") != "macro":
+        raise HTTPException(status_code=404, detail="非宏观主题")
+    return templates.TemplateResponse(request, "prism/eval_trace.html", {
+        "topic": topic, "variant": variant,
+        "evaluation": es.latest_evaluation(slug, variant),
+        "diff": {d["name"]: d for d in es.diff_since_last(slug, variant)},
+    })
+
+
 @router.get("/{slug}/{variant}/{output_key}")
 def prism_output(request: Request, slug: str, variant: str, output_key: str):
     """View a specific output for a model variant."""
