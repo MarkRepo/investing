@@ -1,6 +1,7 @@
 # 宏观层「判断驾驶舱 + 评估溯源」设计 (α+β 统一)
 
 > 日期：2026-06-08 · slug `global-macro-rates-liquidity` · variant `opus4.8` · type=macro
+> 实现计划：docs/superpowers/plans/2026-06-08-macro-judgment-cockpit-and-provenance.md
 
 ## 目标
 
