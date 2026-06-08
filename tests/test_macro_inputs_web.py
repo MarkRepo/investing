@@ -354,3 +354,33 @@ def test_alert_board_is_table(macro_web_client):
     assert "承重报警序列" in r.text
     assert "支撑结论" in r.text          # 表格化后新表头列
     assert "alert-cards" not in r.text   # 卡片容器类（含 CSS）已移除
+
+
+def test_change_summary_no_snapshot_hidden(macro_web_client):
+    # fixture 未 append_evaluation → 无快照 → 不显示变更汇总
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "变更汇总" not in r.text
+
+
+def test_change_summary_lists_changed(macro_web_client):
+    import prism.scripts.macro_registry as reg
+    import prism.scripts.eval_snapshot as es
+    reg.record_observation(SLUG, VARIANT, "HY OAS", value=3.5, as_of="2026-06-07")
+    es.append_evaluation(SLUG, VARIANT, {
+        "input_snapshot": [{"name": "HY OAS", "value": 3.0, "as_of": "2026-06-01", "used": True}],
+        "conclusions": [{"id": "liquidity",
+                         "based_on": [{"input": "HY OAS", "role": "confirming"}]}]})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "变更汇总" in r.text
+    assert "3.0" in r.text and "3.5" in r.text
+
+
+def test_change_summary_no_change_message(macro_web_client):
+    import prism.scripts.eval_snapshot as es
+    # 有快照、但 HY OAS 现值仍未抓（None）→ 有快照无变化
+    es.append_evaluation(SLUG, VARIANT, {
+        "input_snapshot": [{"name": "HY OAS", "value": None, "as_of": "2026-06-01", "used": False}],
+        "conclusions": []})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "变更汇总" in r.text
+    assert "自上次评估无变化" in r.text

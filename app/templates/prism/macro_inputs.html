@@ -17,6 +17,44 @@
 
 {{ view_tabs(topic, variant, 'inputs') }}
 
+{% set graded = diff.values() | rejectattr('changed', 'none') | list %}
+{% if graded %}
+{% set changed_rows = graded | selectattr('changed') | list %}
+<section class="change-summary">
+  <h2>变更汇总 <span class="hint">· 自上次评估</span></h2>
+  {% if changed_rows %}
+  <table class="data-table">
+    <thead><tr>
+      <th>输入</th><th>上次 → 现值</th><th>Δ / 方向</th><th>越带</th><th>影响结论</th>
+    </tr></thead>
+    <tbody>
+    {% for d in changed_rows %}
+      <tr>
+        <td><code>{{ d.name }}</code></td>
+        <td>
+          {% if d.stance is not none or d.snapshot_stance is not none %}
+            {{ d.snapshot_stance or '—' }} → {{ d.stance or '—' }}
+          {% else %}
+            {{ d.snapshot_value if d.snapshot_value is not none else '—' }} → {{ d.live_value if d.live_value is not none else '—' }}
+          {% endif %}
+        </td>
+        <td>
+          {% if d.direction %}<span class="badge-delta">{{ d.direction }}</span>
+          {% elif d.delta is not none and d.delta != 0 %}<span class="badge-delta">{{ '%+.4g' | format(d.delta) }}</span>
+          {% else %}—{% endif %}
+        </td>
+        <td>{% if d.breached %}<span class="badge-breach">越带</span>{% else %}—{% endif %}</td>
+        <td>{% if d.conclusions %}{{ d.conclusions | join(', ') }}{% else %}<span class="hint">—</span>{% endif %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="hint">自上次评估无变化。</p>
+  {% endif %}
+</section>
+{% endif %}
+
 {% set alerts = inputs | selectattr('alert_series') | list %}
 {% if alerts %}
 <section class="alert-board">
@@ -134,6 +172,8 @@
   .badge-small { font-size: 0.72em; padding: 0.15em 0.4em; border-radius: 3px; background: #e6f4ea; color: #2d7a3a; }
   .hint { color: #888; font-size: 0.85em; }
   .note-caveat { margin-top: 0.25em; font-size: 0.76em; color: #b45309; background: #fff7ed; border-left: 2px solid #f0c36d; padding: 0.1em 0.45em; border-radius: 2px; max-width: 22em; line-height: 1.35; }
+  .change-summary { margin: 0.8em 0 1.2em; }
+  .change-summary h2 { font-size: 1em; margin: 0 0 0.5em; }
   .alert-board { margin: 0.8em 0 1.2em; }
   .alert-board h2 { font-size: 1em; margin: 0 0 0.5em; }
   .breached-row { background: #fff6f5; }
