@@ -347,3 +347,10 @@ def test_inputs_table_shows_source_and_grades(macro_web_client):
     assert "https://example.com/move" in r.text     # 具体源链接
     assert "primary" in r.text                       # 权威性
     assert "待脚本" in r.text                          # availability=scriptable_todo 的人话标签
+
+
+def test_alert_board_is_table(macro_web_client):
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "承重报警序列" in r.text
+    assert "支撑结论" in r.text          # 表格化后新表头列
+    assert "alert-cards" not in r.text   # 卡片容器类（含 CSS）已移除
