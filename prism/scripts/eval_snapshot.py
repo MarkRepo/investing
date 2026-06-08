@@ -94,3 +94,47 @@ def append_evaluation(slug: str, variant: str, evaluation: dict) -> int:
     log["slug"], log["variant"], log["updated"] = slug, variant, _now_iso()
     _write_yaml(_log_path(slug, variant), log)
     return version
+
+
+def conclusions_for_input(evaluation: dict, name: str) -> list:
+    """based_on 反查：该输入支撑哪些 conclusion id。"""
+    out = []
+    for c in evaluation.get("conclusions") or []:
+        if any(b.get("input") == name for b in c.get("based_on") or []):
+            out.append(c.get("id"))
+    return out
+
+
+def diff_since_last(slug: str, variant: str) -> list:
+    """对登记表每条输入，比对现 observed.value 与 latest 快照值。零 LLM。
+
+    返回每条 {name, snapshot_value, live_value, delta, changed, breached, used, conclusions}。
+    无快照 → changed=None（"首次评估，无基准"）。非数值按字符串比 changed。
+    """
+    registry = reg.read_registry(slug, variant)
+    latest = latest_evaluation(slug, variant)
+    snap_by_name = {}
+    if latest:
+        snap_by_name = {s["name"]: s for s in latest.get("input_snapshot") or []}
+    out = []
+    for e in registry.get("inputs") or []:
+        name = e["name"]
+        live = (e.get("observed") or {}).get("value")
+        snap = snap_by_name.get(name) or {}
+        snap_val = snap.get("value")
+        row = {
+            "name": name, "snapshot_value": snap_val, "live_value": live,
+            "delta": None, "changed": None if latest is None else False,
+            "breached": False, "used": bool(snap.get("used")),
+            "conclusions": conclusions_for_input(latest, name) if latest else [],
+        }
+        if latest is not None:
+            if isinstance(live, (int, float)) and isinstance(snap_val, (int, float)):
+                row["delta"] = live - snap_val
+                row["changed"] = row["delta"] != 0
+                row["breached"] = reg._reading_breaches(
+                    {**e, "observed": {"value": live, "prev_value": snap_val}})
+            else:
+                row["changed"] = live != snap_val
+        out.append(row)
+    return out

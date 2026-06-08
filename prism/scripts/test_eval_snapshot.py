@@ -66,3 +66,33 @@ def test_append_rejects_bad_role(tmp_topic):
     ev = _ev_all([{"id": "x", "based_on": [{"input": "A", "role": "bogus"}]}])
     with pytest.raises(ValueError, match="role"):
         es.append_evaluation(slug, variant, ev)
+
+
+def test_conclusions_for_input_reverse_index(tmp_topic):
+    slug, variant = tmp_topic
+    es.append_evaluation(slug, variant, _ev_all())
+    latest = es.latest_evaluation(slug, variant)
+    assert es.conclusions_for_input(latest, "A") == ["rates"]
+    assert es.conclusions_for_input(latest, "B") == []
+
+
+def test_diff_no_snapshot_is_first(tmp_topic):
+    slug, variant = tmp_topic
+    diff = es.diff_since_last(slug, variant)
+    assert {d["name"] for d in diff} == {"A", "B"}
+    assert all(d["changed"] is None for d in diff)
+
+
+def test_diff_detects_numeric_change_and_conclusions(tmp_topic):
+    slug, variant = tmp_topic
+    es.append_evaluation(slug, variant, _ev_all())
+    reg.record_observation(slug, variant, "A", value=3.5)
+    diff = {d["name"]: d for d in es.diff_since_last(slug, variant)}
+    assert diff["A"]["changed"] is True
+    assert diff["A"]["delta"] == pytest.approx(0.5)
+    assert diff["A"]["snapshot_value"] == 3.0
+    assert diff["A"]["live_value"] == 3.5
+    assert diff["A"]["conclusions"] == ["rates"]
+    assert diff["A"]["used"] is True
+    assert diff["B"]["changed"] is False        # 两端都 None → 未变
+    assert diff["B"]["used"] is False
