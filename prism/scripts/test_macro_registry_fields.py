@@ -37,3 +37,30 @@ def test_absent_fields_ok(tmp_reg):
     slug, variant = tmp_reg
     reg.upsert_input(slug, variant, _base({}))
     assert reg.validate_registry(slug, variant) == []
+
+
+def test_recipe_json_default_requires_json_path(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({"fetch_recipe": {"url": "https://x", "parse": {}}}))
+    assert any("json_path" in e for e in reg.validate_registry(slug, variant))
+
+
+def test_recipe_csv_requires_value_column(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base(
+        {"fetch_recipe": {"kind": "csv", "url": "https://x", "parse": {"date_column": "DATE"}}}))
+    assert any("value_column" in e for e in reg.validate_registry(slug, variant))
+
+
+def test_recipe_unknown_kind_flagged(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base(
+        {"fetch_recipe": {"kind": "xml", "url": "https://x", "parse": {}}}))
+    assert any("kind" in e for e in reg.validate_registry(slug, variant))
+
+
+def test_recipe_valid_csv_passes(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base(
+        {"fetch_recipe": {"kind": "csv", "url": "https://x", "parse": {"value_column": "Value"}}}))
+    assert reg.validate_registry(slug, variant) == []

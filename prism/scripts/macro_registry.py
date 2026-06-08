@@ -43,6 +43,8 @@ VALID_IMPORTANCE = ("load_bearing", "confirming", "background")
 VALID_TARGET = ("rates", "liquidity", "fx")
 VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
 VALID_AVAILABILITY = ("scripted", "scriptable_todo", "no_stable_source")
+VALID_RECIPE_KIND = ("json", "csv")   # 须与 llmweb_fetch._PARSERS 键一致
+_RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column"}  # 每 kind 的必填 parse 键
 
 
 def _registry_path(slug: str, variant: str) -> Path:
@@ -145,6 +147,15 @@ def validate_registry(slug: str, variant: str) -> list[str]:
             errors.append(f"[{name}] authority 非法: {e.get('authority')!r}")
         if e.get("availability") is not None and e.get("availability") not in VALID_AVAILABILITY:
             errors.append(f"[{name}] availability 非法: {e.get('availability')!r}")
+        recipe = e.get("fetch_recipe")
+        if recipe:
+            kind = recipe.get("kind", "json")
+            if kind not in VALID_RECIPE_KIND:
+                errors.append(f"[{name}] fetch_recipe.kind 非法: {kind!r}")
+            else:
+                req = _RECIPE_REQUIRED_PARSE[kind]
+                if not (recipe.get("parse") or {}).get(req):
+                    errors.append(f"[{name}] fetch_recipe kind={kind} 缺 parse.{req}")
     return errors
 
 
