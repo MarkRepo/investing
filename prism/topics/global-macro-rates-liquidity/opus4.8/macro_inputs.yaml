@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-09T00:37:24.448839+00:00'
+updated: '2026-06-09T00:56:46.967954+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -2492,42 +2492,3 @@ inputs:
       Daily/新华社，2026-04-27）。
   authority: secondary
   availability: no_stable_source
-- name: 中美地缘/关税(尾部)
-  tier: B
-  cadence_type: event
-  targets:
-  - fx
-  - rates
-  mechanism: CR
-  importance: background
-  source: PIIE US-China Trade War Tariffs chart + Trump trade war timeline 2.0
-  fetch_method: llm-web
-  state: 新增(第二期尾部源)
-  causal_sentence: 关税/地缘冲击经风险偏好与汇率渠道情境式影响中概与出口链（情境相关，非稳定因果）。
-  lag: 事件驱动
-  alert_series: false
-  monitoring:
-    enabled: true
-  authority: secondary
-  availability: no_stable_source
-  source_url: https://ustr.gov/about-us/policy-offices/press-office/press-releases
-  fetch_mode: search
-- name: ADR退市/HFCAA(尾部)
-  tier: B
-  cadence_type: event
-  targets:
-  - fx
-  mechanism: CR
-  importance: background
-  source: PCAOB HFCAA determinations + SEC Commission-Identified Issuers
-  fetch_method: llm-web
-  state: 新增(第二期尾部源)
-  causal_sentence: PCAOB 新负面裁定触发 HFCAA 强制退市路径，情境式冲击中概 ADR 估值（情境相关）。
-  lag: 事件驱动
-  alert_series: false
-  monitoring:
-    enabled: true
-  authority: official
-  availability: scriptable_todo
-  source_url: https://www.sec.gov/HFCAA
-  fetch_mode: direct
