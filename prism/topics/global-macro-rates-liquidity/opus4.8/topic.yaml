@@ -43,8 +43,7 @@ outputs_state:
     referenced_mat_ids: []
     last_error: null
 parent_materials: []
-next_actions:
-- 运行 workflow 01-build-roadmap
+next_actions: []
 user_todos: []
 monitoring:
   enabled: true
