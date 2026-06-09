@@ -18,7 +18,7 @@
   source         FRED / web / PBoC / ... / TBD
   source_url     具体源链接（可空）
   authority      "official"|"primary"|"secondary"|"aggregator"（可空，权威性）
-  availability   "scripted"|"scriptable_todo"|"no_stable_source"（可空，可脚本化判定）
+  availability   "scripted"|"scriptable_todo"|"llm_read"（可空，取数方式：已接脚本/待接/靠LLM读页面文本）
   fetch_method   fred-api / llm-web / manual / TBD
   fetch_recipe   {url, parse:{json_path, date_path}}（可空，llm-web fetcher 用）
   state          "已有"|"新增"|"改"
@@ -42,7 +42,7 @@ VALID_MECHANISM = ("CD", "CF", "CO", "CR")
 VALID_IMPORTANCE = ("load_bearing", "confirming", "background")
 VALID_TARGET = ("rates", "liquidity", "fx")
 VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
-VALID_AVAILABILITY = ("scripted", "scriptable_todo", "no_stable_source")
+VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm_read")
 VALID_FETCH_MODE = ("direct", "search")   # llm-web 取数路由：固定拉取 / 每轮检索
 VALID_RECIPE_KIND = ("json", "csv")   # 须与 llmweb_fetch._PARSERS 键一致
 _RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column"}  # 每 kind 的必填 parse 键

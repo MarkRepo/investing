@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-09T00:56:46.967954+00:00'
+updated: '2026-06-09T01:58:25.183536+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -45,7 +45,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
   fetch_mode: search
 - name: CME FedWatch 隐含路径
@@ -64,7 +64,7 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html
 - name: FOMC 声明/纪要
@@ -91,7 +91,7 @@ inputs:
     evidence: 美联储 4 月 28-29 日会议（声明 4/29、纪要 5/20 发布）维持联邦基金利率 3.50%-3.75% 不变，声明仍含「宽松倾向」措辞但有
       3 位地区联储主席异议，整体中性偏观望（Fed FOMC，2026-05-20）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: 美联储官员讲话(主席)
   tier: A
   cadence_type: policy
@@ -115,7 +115,7 @@ inputs:
     evidence: 新任主席 Kevin Warsh 于 2026-05-22 就职，公开表态「通胀是美联储的选择」「不能排除加息」，前瞻指引明显偏鹰（NYT/Reuters，2026-05-22；尚无以主席身份的正式货政演讲，as_of
       2026-06-08）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: 非农就业 NFP
   tier: A
   cadence_type: event
@@ -234,7 +234,7 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/
   fetch_mode: search
 - name: ISM 服务业 PMI
@@ -253,7 +253,7 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/
   fetch_mode: search
 - name: 零售销售
@@ -500,7 +500,7 @@ inputs:
     evidence: 财政部 2026-05-06 季度再融资公告(QRA, sb0489)称付息债与 FRN 拍卖规模「未来数季维持不变」，增量融资靠短期票据(bills)调节，净发行无明显扩张（US
       Treasury，2026-05-06）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: TGA 余额
   tier: A
   cadence_type: series
@@ -683,7 +683,7 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
 - name: Fed swap line / SRF / FIMA 动用
   tier: A
@@ -725,7 +725,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.federalreserve.gov/data/sloos.htm
   fetch_mode: search
 - name: 2Y/10Y/30Y 国债
@@ -894,7 +894,7 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
 - name: MOVE 债市波动率
   tier: B
@@ -917,7 +917,7 @@ inputs:
     direction: above
     level_alarm: 140
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.ice.com/index
 - name: VIX
@@ -1005,7 +1005,7 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
 - name: AI-capex 体制代理
   tier: C
@@ -1025,7 +1025,7 @@ inputs:
     enabled: true
   fetch_mode: search
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   observed:
     next_due: '2026-08-01'
 - name: 持仓拥挤(CFTC + CTA/vol-target + basis-trade规模)
@@ -1121,7 +1121,7 @@ inputs:
     direction: below
     level_alarm: -60
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
 - name: USDJPY / 日元 carry
   tier: A
@@ -1178,7 +1178,7 @@ inputs:
     evidence: BoJ 2026-04-28 以 6-3 维持政策利率 0.75%（1995 年来最高），3 名委员主张加息至 1.0%，上调 FY2026
       核心通胀预测至 2.8% 并续缩 JGB 购债（10y JGB 约 2.5-2.8%）；处正常化通道（BoJ，2026-04-28）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: ECB 政策分化 / EUR-USD
   tier: B
   cadence_type: policy
@@ -1202,7 +1202,7 @@ inputs:
     evidence: ECB 2026-04-30 决议维持三大关键利率不变（存款便利 2.00%），称「通胀上行与增长下行风险均加剧」；进入 6 月多位管委明确支持
       6/11 加息（Reuters，2026-06-03），相对美联储呈鹰派分化。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: BIS 全球流动性(USD/EUR/JPY 对非银信用)
   tier: B
   cadence_type: event
@@ -1259,7 +1259,7 @@ inputs:
     enabled: true
   note: FRED 无可靠日频现货金价，故不走自动抓取，靠每日 web 检索补（fetch_method=llm-web）
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.lbma.org.uk/prices-and-data/precious-metal-prices
 - name: 比特币
@@ -1324,7 +1324,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.stats.gov.cn/
   fetch_mode: search
 - name: 财新 PMI
@@ -1344,7 +1344,7 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.caixinglobal.com/
   fetch_mode: search
 - name: 工业增加值
@@ -1363,7 +1363,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.stats.gov.cn/
   fetch_mode: search
 - name: 社会消费品零售
@@ -1382,7 +1382,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.stats.gov.cn/
   fetch_mode: search
 - name: 固定资产投资
@@ -1401,7 +1401,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.stats.gov.cn/
   fetch_mode: search
 - name: 出口(美元计)
@@ -1420,7 +1420,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: http://www.customs.gov.cn/
   fetch_mode: search
 - name: 用电量/货运(克强指标)
@@ -1439,7 +1439,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.stats.gov.cn/
   fetch_mode: search
 - name: 中国 CPI
@@ -1458,7 +1458,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.stats.gov.cn/
   fetch_mode: search
 - name: 中国 PPI
@@ -1478,7 +1478,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.stats.gov.cn/
   fetch_mode: search
 - name: 7天 OMO 逆回购利率(新锚)
@@ -1498,7 +1498,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: http://www.pbc.gov.cn/
   fetch_mode: search
 - name: MLF 利率
@@ -1517,7 +1517,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: http://www.pbc.gov.cn/
   fetch_mode: search
 - name: LPR 1Y/5Y(5Y=房贷链)
@@ -1536,7 +1536,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.chinamoney.com.cn/
   fetch_mode: search
 - name: RRR 存款准备金率
@@ -1562,7 +1562,7 @@ inputs:
     evidence: PBoC 最近一次降准为 2025-05-15 落地，大型银行 RRR 由 9.5% 降至 9.0%、加权约 6.2%、释放约 1 万亿元；2026
       Q1 货政报告未再宣布新降准，当前为降准后的偏松而非新一轮宽松（人民银行/新华网，2025-05-07）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: DR007/R007
   tier: B
   cadence_type: series
@@ -1585,7 +1585,7 @@ inputs:
     level_alarm: 2.5
     min_streak: 2
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.chinamoney.com.cn/
 - name: NCD 同业存单利率
@@ -1605,7 +1605,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.chinamoney.com.cn/
 - name: 超额准备金率(走廊下限)
@@ -1631,7 +1631,7 @@ inputs:
     evidence: 超额准备金利率（利率走廊下限）现行 0.35%，自 2020-04-07 末次下调后维持至今，2026 Q1 报告期内未调整，长期低位但近年无变动，作为走廊下限呈中性（人民银行/2026
       Q1 货政报告，as_of 2026-05-11）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: 中国 10Y CGB + 资产荒需求
   tier: A
   cadence_type: series
@@ -1649,7 +1649,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.chinamoney.com.cn/
 - name: 结构性工具 PSL/再贷款
@@ -1668,14 +1668,14 @@ inputs:
   monitoring:
     enabled: true
   stance_scale: expand_contract
-  fetch_mode: direct
+  fetch_mode: search
   source_url: http://www.pbc.gov.cn/
   observed:
     stance: 中性
     evidence: PSL 余额持续回落（2026-05 末约 8455 亿、当月净回笼 1545 亿），但同期再贷款扩张（科创 1.2 万亿、新设 1 万亿民企再贷款、增
       5000 亿支农支小），收缩与扩张相抵，结构性工具总量基本持平（2026 Q1 货政报告，2026-05-11）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: 货币政策执行报告 MPR
   tier: A
   cadence_type: policy
@@ -1699,7 +1699,7 @@ inputs:
     stance: 偏松
     evidence: 最新《2026 年第一季度货币政策执行报告》（2026-05-11）明确「继续实施好适度宽松的货币政策」「保持流动性充裕」，定调「适度宽松」（较「稳健」更松，但无下调闸门提法），判偏松（PBoC/新华网，2026-05-11）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: 社融 TSF
   tier: A
   cadence_type: event
@@ -1716,7 +1716,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: http://www.pbc.gov.cn/
   fetch_mode: search
 - name: M1/M2/剪刀差
@@ -1735,7 +1735,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: http://www.pbc.gov.cn/
   fetch_mode: search
 - name: 信贷脉冲
@@ -1774,7 +1774,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: http://www.pbc.gov.cn/
   fetch_mode: search
 - name: USDCNY
@@ -1817,7 +1817,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.chinamoney.com.cn/english/bmkovrsert/
 - name: CNH-CNY 价差
@@ -1840,7 +1840,7 @@ inputs:
     direction: abs_above
     level_alarm: 0.03
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
 - name: CNH HIBOR/离岸流动性 + 央行 HK 票
   tier: A
@@ -1859,7 +1859,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.hkma.gov.hk/eng/
 - name: 结售汇 + 外汇占款 + 代客涉外收付
@@ -1878,7 +1878,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.safe.gov.cn/
   fetch_mode: search
 - name: 外汇储备(水平+变动)
@@ -1955,7 +1955,7 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.hkex.com.hk/Mutual-Market/Stock-Connect?sc_lang=en
 - name: 南向港股通
@@ -1975,7 +1975,7 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.hkex.com.hk/Mutual-Market/Stock-Connect?sc_lang=en
 - name: 外资持 CGB(债券通)
@@ -1995,7 +1995,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.chinabond.com.cn/
   fetch_mode: search
 - name: 远期售汇风险准备金率
@@ -2021,7 +2021,7 @@ inputs:
     evidence: PBoC 2026-02-27 公告自 2026-03-02 起将远期售汇外汇风险准备金率由 20% 下调至 0，系人民币快速升值下逆周期退出、回归中性；当前比率为
       0、不再对购汇加成本（央行/新华网/财新，2026-02-27）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: CFETS 人民币篮子指数
   tier: B
   cadence_type: series
@@ -2038,7 +2038,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.chinamoney.com.cn/english/
 - name: 出口商结汇率
@@ -2057,7 +2057,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.safe.gov.cn/
   fetch_mode: search
 - name: ADR/H 股溢价折价
@@ -2076,7 +2076,7 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
   source_url: https://www.hsi.com.hk/eng
 - name: FDI 月度
@@ -2095,7 +2095,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: http://www.mofcom.gov.cn/
   fetch_mode: search
 - name: 中国专项基金 EPFR(非宽EM)
@@ -2115,7 +2115,7 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.epfr.com/
   fetch_mode: search
 - name: MSCI/FTSE 中国权重调整
@@ -2155,7 +2155,7 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
 - name: 二手房价/成交
   tier: B
@@ -2173,7 +2173,7 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
 - name: 70 城房价
   tier: A
@@ -2192,7 +2192,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.stats.gov.cn/
   fetch_mode: search
 - name: 房地产开发投资
@@ -2211,7 +2211,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.stats.gov.cn/
   fetch_mode: search
 - name: 土地出让金
@@ -2230,7 +2230,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.mof.gov.cn/
   fetch_mode: search
 - name: 开发商美元债/地产高收益
@@ -2250,7 +2250,7 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
 - name: 地方专项债发行
   tier: A
@@ -2268,7 +2268,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://www.mof.gov.cn/
   fetch_mode: search
 - name: 财政存款
@@ -2287,7 +2287,7 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: no_stable_source
+  availability: llm_read
   source_url: http://www.pbc.gov.cn/
   fetch_mode: search
 - name: LGFV/城投利差(TSF 质量过滤器)
@@ -2306,7 +2306,7 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   fetch_mode: search
 - name: 中美地缘/关税
   tier: A
@@ -2326,7 +2326,7 @@ inputs:
     enabled: true
   fetch_mode: search
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://ustr.gov/about-us/policy-offices/press-office/press-releases
   observed:
     next_due: '2026-07-01'
@@ -2396,7 +2396,7 @@ inputs:
     evidence: 2026-05-22 证监会等八部门印发跨境证券整治方案（重罚并清退富途/老虎/长桥），2026-06-01《国务院关于对外投资的规定》强化违规处罚，超六成
       QDII 限购；个人/灰色渠道资本流出转向收紧，惟合法 QDII/互联互通仍扩容（财经/联合早报，2026-06）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: 中国政治局/NPC 经济信号
   tier: A
   cadence_type: policy
@@ -2421,7 +2421,7 @@ inputs:
     evidence: 2026 政府工作报告（2026-03-05）定调「更加积极的财政政策和适度宽松的货币政策」、赤字率约 4%；2026-04-28 政治局会议重申「加大逆周期和跨周期调节力度」，惟赤字率与
       2025 持平、力度边际趋稳，判偏松（新华社，2026-04-28）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: CSRC 监管动作
   tier: B
   cadence_type: policy
@@ -2438,13 +2438,13 @@ inputs:
   monitoring:
     enabled: true
   stance_scale: ease_tighten
-  fetch_mode: direct
+  fetch_mode: search
   source_url: http://www.csrc.gov.cn/
   observed:
     stance: 偏松
     evidence: 2026-02-09 三大交易所优化再融资一揽子措施、证监会 2026 年系统工作会明确「提高再融资便利性」，IPO/再融资由阶段性收紧转为系统性优化回暖（资金面偏松）；减持端从严属强监管（证券时报，2026-01-16；证券市场周刊，2026-03-17）。
   authority: official
-  availability: no_stable_source
+  availability: llm_read
 - name: 美财政/债务上限/财政主导
   tier: A
   cadence_type: event
@@ -2463,7 +2463,7 @@ inputs:
     enabled: true
   fetch_mode: search
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read
   source_url: https://home.treasury.gov/policy-issues/financing-the-government/debt-limit
   observed:
     next_due: '2026-07-01'
@@ -2491,4 +2491,4 @@ inputs:
     evidence: 最近一次评级行动为穆迪 2026-04 将中国主权评级展望由「负面」上调至「稳定」、维持 A1；S&P A+/稳定、Fitch A/稳定，方向上以穆迪展望由负转稳为最新明确的上移信号（China
       Daily/新华社，2026-04-27）。
   authority: secondary
-  availability: no_stable_source
+  availability: llm_read

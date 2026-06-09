@@ -35,7 +35,7 @@ def test_run_only_fetches_scripted(monkeypatch):
         {"name": "已配", "fetch_method": "llm-web", "availability": "scripted",
          "fetch_recipe": {"url": "https://x", "parse": {"json_path": ["v"]}}},
         {"name": "待脚本", "fetch_method": "llm-web", "availability": "scriptable_todo"},
-        {"name": "无源", "fetch_method": "llm-web", "availability": "no_stable_source"},
+        {"name": "LLM读", "fetch_method": "llm-web", "availability": "llm_read"},
         {"name": "FRED 的", "fetch_method": "fred-api"},
     ]}
     monkeypatch.setattr(reg, "read_registry", lambda s, v: fake)
@@ -45,7 +45,7 @@ def test_run_only_fetches_scripted(monkeypatch):
                         lambda s, v, name, **kw: recorded.append((name, kw.get("value"))))
     summary = llmweb_fetch.run_llmweb_fetch("m", "v", client=object())
     assert recorded == [("已配", 9.0)]
-    assert summary == {"fetched": 1, "skipped_todo": 1, "skipped_no_source": 1, "failed": 0}
+    assert summary == {"fetched": 1, "skipped_todo": 1, "skipped_llm_read": 1, "failed": 0}
 
 
 def _fake_text_client(text):

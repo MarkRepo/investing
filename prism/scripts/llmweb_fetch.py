@@ -1,7 +1,7 @@
 """llm-web 输入的通用抓取（β）。零 LLM：读登记表里 fetch_method=='llm-web' 且
 availability=='scripted' 且有 fetch_recipe 的输入，按 recipe 抓取 → record_observation。
 
-availability 为 scriptable_todo / no_stable_source 的跳过并计数，绝不假装抓到。判源 +
+availability 为 scriptable_todo / llm_read 的跳过并计数，绝不假装抓到。判源 +
 写 recipe + 评 authority/availability 是逐条增量的 LLM 工作（对话里做），本脚本只跑已配好的。
 单测 mock httpx（同 fred_fetch）。"""
 from __future__ import annotations
@@ -121,15 +121,15 @@ def fetch_text(url: str, *, client=None) -> str:
 
 def run_llmweb_fetch(slug: str, variant: str, *, client=None) -> dict:
     """抓所有 fetch_method=='llm-web' 且 availability=='scripted' 且有 recipe 的输入。
-    待脚本 / 无稳定源 的诚实跳过并计数。返回 summary。"""
+    待脚本 / LLM读 的诚实跳过并计数。返回 summary。"""
     data = reg.read_registry(slug, variant)
-    fetched = skipped_todo = skipped_no_source = failed = 0
+    fetched = skipped_todo = skipped_llm_read = failed = 0
     for e in data["inputs"]:
         if e.get("fetch_method") != "llm-web":
             continue
         avail = e.get("availability")
-        if avail == "no_stable_source":
-            skipped_no_source += 1
+        if avail == "llm_read":
+            skipped_llm_read += 1
             continue
         if avail != "scripted" or not e.get("fetch_recipe"):
             skipped_todo += 1
@@ -141,7 +141,7 @@ def run_llmweb_fetch(slug: str, variant: str, *, client=None) -> dict:
         reg.record_observation(slug, variant, e["name"], value=val, as_of=as_of)
         fetched += 1
     return {"fetched": fetched, "skipped_todo": skipped_todo,
-            "skipped_no_source": skipped_no_source, "failed": failed}
+            "skipped_llm_read": skipped_llm_read, "failed": failed}
 
 
 def main(argv=None):
