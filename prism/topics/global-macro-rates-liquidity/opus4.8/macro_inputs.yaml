@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-08T17:02:41.911753+00:00'
+updated: '2026-06-09T00:37:24.448839+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -22,9 +22,13 @@ inputs:
   fred_series_id: DFEDTARU
   observed:
     value: 3.75
-    as_of: '2026-06-07'
-    checked_at: '2026-06-07T22:00:10.912484+00:00'
+    as_of: '2026-06-08'
+    checked_at: '2026-06-08T22:00:17.573257+00:00'
     streak: 0
+    prev_value: 3.75
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/DFEDTARU
 - name: FOMC 点阵图(SEP)
   tier: A
   cadence_type: event
@@ -40,6 +44,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
+  fetch_mode: search
 - name: CME FedWatch 隐含路径
   tier: A
   cadence_type: series
@@ -82,6 +90,8 @@ inputs:
     stance: 中性
     evidence: 美联储 4 月 28-29 日会议（声明 4/29、纪要 5/20 发布）维持联邦基金利率 3.50%-3.75% 不变，声明仍含「宽松倾向」措辞但有
       3 位地区联储主席异议，整体中性偏观望（Fed FOMC，2026-05-20）。
+  authority: official
+  availability: no_stable_source
 - name: 美联储官员讲话(主席)
   tier: A
   cadence_type: policy
@@ -99,11 +109,13 @@ inputs:
     enabled: true
   stance_scale: hawk_dove
   fetch_mode: direct
-  source_url: https://www.federalreserve.gov/newsevents/speech/2026-speeches.htm
+  source_url: https://www.federalreserve.gov/newsevents/speeches.htm
   observed:
     stance: 鹰
     evidence: 新任主席 Kevin Warsh 于 2026-05-22 就职，公开表态「通胀是美联储的选择」「不能排除加息」，前瞻指引明显偏鹰（NYT/Reuters，2026-05-22；尚无以主席身份的正式货政演讲，as_of
       2026-06-08）。
+  authority: official
+  availability: no_stable_source
 - name: 非农就业 NFP
   tier: A
   cadence_type: event
@@ -124,8 +136,12 @@ inputs:
   observed:
     value: 159001.0
     as_of: '2026-05-01'
-    checked_at: '2026-06-07T22:00:19.936684+00:00'
+    checked_at: '2026-06-08T22:00:25.877278+00:00'
     streak: 0
+    prev_value: 159001.0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/PAYEMS
 - name: 失业率
   tier: A
   cadence_type: event
@@ -145,8 +161,12 @@ inputs:
   observed:
     value: 4.3
     as_of: '2026-05-01'
-    checked_at: '2026-06-07T22:00:29.106237+00:00'
+    checked_at: '2026-06-08T22:00:34.484862+00:00'
     streak: 0
+    prev_value: 4.3
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/UNRATE
 - name: 初请失业金
   tier: A
   cadence_type: event
@@ -166,8 +186,12 @@ inputs:
   observed:
     value: 225000.0
     as_of: '2026-05-30'
-    checked_at: '2026-06-07T22:00:32.781081+00:00'
+    checked_at: '2026-06-08T22:00:43.189883+00:00'
     streak: 0
+    prev_value: 225000.0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/ICSA
 - name: JOLTS 职位空缺/离职率
   tier: A
   cadence_type: event
@@ -187,8 +211,12 @@ inputs:
   observed:
     value: 7618.0
     as_of: '2026-04-01'
-    checked_at: '2026-06-07T22:00:36.393544+00:00'
+    checked_at: '2026-06-08T22:00:50.106320+00:00'
     streak: 0
+    prev_value: 7618.0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/JTSJOL
 - name: ISM 制造业 PMI
   tier: A
   cadence_type: event
@@ -205,6 +233,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: primary
+  availability: no_stable_source
+  source_url: https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/
+  fetch_mode: search
 - name: ISM 服务业 PMI
   tier: A
   cadence_type: event
@@ -220,6 +252,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: primary
+  availability: no_stable_source
+  source_url: https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/
+  fetch_mode: search
 - name: 零售销售
   tier: A
   cadence_type: event
@@ -239,8 +275,12 @@ inputs:
   observed:
     value: 757085.0
     as_of: '2026-04-01'
-    checked_at: '2026-06-07T22:00:44.635884+00:00'
+    checked_at: '2026-06-08T22:00:54.845692+00:00'
     streak: 0
+    prev_value: 757085.0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/RSAFS
 - name: GDPNow 实时预测
   tier: B
   cadence_type: series
@@ -260,6 +300,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/GDPNOW
+  observed:
+    value: 3.0164
+    as_of: '2026-04-01'
+    checked_at: '2026-06-08T22:01:03.803993+00:00'
+    streak: 0
 - name: 时薪 / ECI
   tier: A
   cadence_type: event
@@ -279,8 +324,12 @@ inputs:
   observed:
     value: 37.53
     as_of: '2026-05-01'
-    checked_at: '2026-06-07T22:00:51.544825+00:00'
+    checked_at: '2026-06-08T22:01:10.749996+00:00'
     streak: 0
+    prev_value: 37.53
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/CES0500000003
 - name: 核心 PCE
   tier: A
   cadence_type: event
@@ -300,8 +349,12 @@ inputs:
   observed:
     value: 129.63
     as_of: '2026-04-01'
-    checked_at: '2026-06-07T22:00:58.338216+00:00'
+    checked_at: '2026-06-08T22:01:17.875416+00:00'
     streak: 0
+    prev_value: 129.63
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/PCEPILFE
 - name: CPI(核心+supercore)
   tier: A
   cadence_type: event
@@ -318,6 +371,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: CPILFESL
+  observed:
+    value: 335.423
+    as_of: '2026-04-01'
+    checked_at: '2026-06-08T22:01:22.877512+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/CPILFESL
 - name: PCE 三分项(supercore/住房/商品)
   tier: B
   cadence_type: event
@@ -334,6 +395,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: PCEPILFE
+  observed:
+    value: 129.63
+    as_of: '2026-04-01'
+    checked_at: '2026-06-08T22:01:25.457034+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/PCEPILFE
 - name: PPI
   tier: A
   cadence_type: event
@@ -350,6 +419,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: PPIFIS
+  observed:
+    value: 156.496
+    as_of: '2026-04-01'
+    checked_at: '2026-06-08T22:01:32.205189+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/PPIFIS
 - name: WTI 油价(+供给/需求分解)
   tier: A
   cadence_type: series
@@ -367,6 +444,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: DCOILWTICO
+  observed:
+    value: 95.96
+    as_of: '2026-06-01'
+    checked_at: '2026-06-08T22:01:37.648185+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/DCOILWTICO
 - name: 5y5y/breakeven 通胀预期
   tier: A
   cadence_type: series
@@ -383,6 +468,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: T5YIFR
+  observed:
+    value: 2.23
+    as_of: '2026-06-08'
+    checked_at: '2026-06-08T22:01:41.554607+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/T5YIFR
 - name: 国债发行计划 QRA + 票/券构成
   tier: A
   cadence_type: policy
@@ -401,11 +494,13 @@ inputs:
     enabled: true
   stance_scale: expand_contract
   fetch_mode: direct
-  source_url: https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding/most-recent-quarterly-refunding-documents
+  source_url: https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding
   observed:
     stance: 中性
     evidence: 财政部 2026-05-06 季度再融资公告(QRA, sb0489)称付息债与 FRN 拍卖规模「未来数季维持不变」，增量融资靠短期票据(bills)调节，净发行无明显扩张（US
       Treasury，2026-05-06）。
+  authority: official
+  availability: no_stable_source
 - name: TGA 余额
   tier: A
   cadence_type: series
@@ -422,6 +517,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: WTREGEN
+  observed:
+    value: 875713.0
+    as_of: '2026-06-03'
+    checked_at: '2026-06-08T22:01:45.805721+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/WTREGEN
 - name: 联邦赤字
   tier: B
   cadence_type: event
@@ -438,6 +541,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: MTSDS133FMS
+  observed:
+    value: 215024.14019777
+    as_of: '2026-04-01'
+    checked_at: '2026-06-08T22:01:47.934318+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/MTSDS133FMS
 - name: 美联储资产 WALCL(QT 节奏)
   tier: A
   cadence_type: series
@@ -455,6 +566,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: WALCL
+  observed:
+    value: 6711495.0
+    as_of: '2026-06-03'
+    checked_at: '2026-06-08T22:01:51.482802+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/WALCL
 - name: RRP 逆回购
   tier: A
   cadence_type: series
@@ -471,6 +590,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: RRPONTSYD
+  observed:
+    value: 1.832
+    as_of: '2026-06-08'
+    checked_at: '2026-06-08T22:01:53.588661+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/RRPONTSYD
 - name: 净流动性(=资产−TGA−RRP)
   tier: A
   cadence_type: series
@@ -487,6 +614,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: __DERIVED__
+  observed:
+    value: 5835780.168
+    checked_at: '2026-06-08T22:02:26.833832+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: null
+  note: 派生=WALCL−TGA−RRP（fred_fetch 内置 _NET_LIQ_NAME）
 - name: 银行准备金 + 准备金/GDP
   tier: A
   cadence_type: series
@@ -503,6 +638,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: WRESBAL
+  observed:
+    value: 3013902.0
+    as_of: '2026-06-03'
+    checked_at: '2026-06-08T22:01:56.600485+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/WRESBAL
 - name: SOFR−IORB / 回购压力
   tier: A
   cadence_type: series
@@ -559,11 +702,13 @@ inputs:
     enabled: true
   stance_scale: ease_tighten
   fetch_mode: direct
-  source_url: https://www.federalreserve.gov/releases/h41/current/
+  source_url: https://www.federalreserve.gov/releases/h41/
   observed:
     stance: 中性
     evidence: 美联储 H.4.1 报表（2026-06-04）显示央行流动性互换余额仅 1.16 亿美元，处历史极低闲置水平，无明显美元流动性投放（Fed
       H.4.1，2026-06-04）。
+  authority: official
+  availability: scriptable_todo
 - name: SLOOS 银行信贷标准
   tier: A
   cadence_type: event
@@ -579,6 +724,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.federalreserve.gov/data/sloos.htm
+  fetch_mode: search
 - name: 2Y/10Y/30Y 国债
   tier: A
   cadence_type: series
@@ -595,6 +744,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: DGS10
+  observed:
+    value: 4.55
+    as_of: '2026-06-05'
+    checked_at: '2026-06-08T22:01:59.093611+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/DGS10
 - name: 10Y 实际利率 TIPS
   tier: A
   cadence_type: series
@@ -612,6 +769,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: DFII10
+  observed:
+    value: 2.19
+    as_of: '2026-06-05'
+    checked_at: '2026-06-08T22:02:02.969476+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/DFII10
 - name: 期限溢价 ACM 分解
   tier: B
   cadence_type: series
@@ -632,6 +797,11 @@ inputs:
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/THREEFYTP10
   note: Kim-Wright 代理（FRED THREEFYTP10），非 NY Fed ACM
+  observed:
+    value: 0.7541
+    as_of: '2026-05-29'
+    checked_at: '2026-06-08T22:02:07.079404+00:00'
+    streak: 0
 - name: 2s10s 曲线斜率
   tier: B
   cadence_type: series
@@ -648,6 +818,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: T10Y2Y
+  observed:
+    value: 0.41
+    as_of: '2026-06-08'
+    checked_at: '2026-06-08T22:02:10.721876+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/T10Y2Y
 - name: IG OAS
   tier: B
   cadence_type: series
@@ -664,6 +842,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: BAMLC0A0CM
+  observed:
+    value: 0.74
+    as_of: '2026-06-05'
+    checked_at: '2026-06-08T22:02:12.636815+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/BAMLC0A0CM
 - name: HY OAS
   tier: B
   cadence_type: series
@@ -684,6 +870,14 @@ inputs:
     direction: above
     level_alarm: 5.5
   fred_series_id: BAMLH0A0HYM2
+  observed:
+    value: 2.76
+    as_of: '2026-06-05'
+    checked_at: '2026-06-08T22:02:15.472953+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/BAMLH0A0HYM2
 - name: CMBS/ABS OAS(NFCI 最高权重)
   tier: B
   cadence_type: series
@@ -743,6 +937,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: VIXCLS
+  observed:
+    value: 21.51
+    as_of: '2026-06-05'
+    checked_at: '2026-06-08T22:02:18.302096+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/VIXCLS
 - name: 金融条件指数 FCI(NFCI/GS)
   tier: B
   cadence_type: series
@@ -759,6 +961,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: NFCI
+  observed:
+    value: -0.494
+    as_of: '2026-05-29'
+    checked_at: '2026-06-08T22:02:20.162129+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/NFCI
 - name: 股票估值 CAPE
   tier: C
   cadence_type: series
@@ -857,6 +1067,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: DTWEXBGS
+  observed:
+    value: 120.0831
+    as_of: '2026-06-05'
+    checked_at: '2026-06-08T22:02:22.195759+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/DTWEXBGS
 - name: DXY
   tier: B
   cadence_type: series
@@ -873,7 +1091,15 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: DTWEXAFEGS
-  note: 代理：Fed DTWEXAFEGS（先进经济体加权美元），非 ICE 真·DXY——方向/拐点同步，但绝对数值（≈111 vs ICE≈99）不可直接对市场报价
+  note: DXY 代理（Fed Advanced Foreign Economies 美元指数 DTWEXAFEGS，非 ICE DXY）
+  observed:
+    value: 112.6846
+    as_of: '2026-06-05'
+    checked_at: '2026-06-08T22:02:23.967336+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/DTWEXAFEGS
 - name: 跨币种基差(EUR/JPY-USD)
   tier: A
   cadence_type: series
@@ -919,6 +1145,14 @@ inputs:
     direction: above
     level_alarm: 160
   fred_series_id: DEXJPUS
+  observed:
+    value: 160.26
+    as_of: '2026-06-05'
+    checked_at: '2026-06-08T22:02:24.781947+00:00'
+    streak: 1
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/DEXJPUS
 - name: BoJ 政策 / JGB 收益率
   tier: A
   cadence_type: policy
@@ -938,11 +1172,13 @@ inputs:
     enabled: true
   stance_scale: ease_tighten
   fetch_mode: direct
-  source_url: https://www.boj.or.jp/en/mopo/mpmdeci/state_2026/index.htm
+  source_url: https://www.boj.or.jp/en/mopo/mpmdeci/index.htm
   observed:
     stance: 偏紧
     evidence: BoJ 2026-04-28 以 6-3 维持政策利率 0.75%（1995 年来最高），3 名委员主张加息至 1.0%，上调 FY2026
       核心通胀预测至 2.8% 并续缩 JGB 购债（10y JGB 约 2.5-2.8%）；处正常化通道（BoJ，2026-04-28）。
+  authority: official
+  availability: no_stable_source
 - name: ECB 政策分化 / EUR-USD
   tier: B
   cadence_type: policy
@@ -960,11 +1196,13 @@ inputs:
     enabled: true
   stance_scale: hawk_dove
   fetch_mode: direct
-  source_url: https://www.ecb.europa.eu/press/govcdec/mopo/html/index.en.html
+  source_url: https://www.ecb.europa.eu/press/govcdec/html/index.en.html
   observed:
     stance: 偏鹰
     evidence: ECB 2026-04-30 决议维持三大关键利率不变（存款便利 2.00%），称「通胀上行与增长下行风险均加剧」；进入 6 月多位管委明确支持
       6/11 加息（Reuters，2026-06-03），相对美联储呈鹰派分化。
+  authority: official
+  availability: no_stable_source
 - name: BIS 全球流动性(USD/EUR/JPY 对非银信用)
   tier: B
   cadence_type: event
@@ -980,6 +1218,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  source_url: https://www.bis.org/statistics/gli.htm
+  fetch_mode: search
 - name: TIC / 外国持美债 + 中国持美债
   tier: B
   cadence_type: event
@@ -996,6 +1238,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  source_url: https://home.treasury.gov/data/treasury-international-capital-tic-system
+  fetch_mode: search
 - name: 黄金
   tier: B
   cadence_type: series
@@ -1035,6 +1281,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CBBTCUSD
+  observed:
+    value: 63216.78
+    as_of: '2026-06-07'
+    checked_at: '2026-06-08T22:02:25.772540+00:00'
+    streak: 0
 - name: 大宗(铜/铁矿)
   tier: C
   cadence_type: series
@@ -1072,6 +1323,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.stats.gov.cn/
+  fetch_mode: search
 - name: 财新 PMI
   tier: A
   cadence_type: event
@@ -1088,6 +1343,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: primary
+  availability: no_stable_source
+  source_url: https://www.caixinglobal.com/
+  fetch_mode: search
 - name: 工业增加值
   tier: A
   cadence_type: event
@@ -1103,6 +1362,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.stats.gov.cn/
+  fetch_mode: search
 - name: 社会消费品零售
   tier: A
   cadence_type: event
@@ -1118,6 +1381,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.stats.gov.cn/
+  fetch_mode: search
 - name: 固定资产投资
   tier: B
   cadence_type: event
@@ -1133,6 +1400,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.stats.gov.cn/
+  fetch_mode: search
 - name: 出口(美元计)
   tier: A
   cadence_type: event
@@ -1148,6 +1419,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: http://www.customs.gov.cn/
+  fetch_mode: search
 - name: 用电量/货运(克强指标)
   tier: B
   cadence_type: event
@@ -1163,6 +1438,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.stats.gov.cn/
+  fetch_mode: search
 - name: 中国 CPI
   tier: A
   cadence_type: event
@@ -1178,6 +1457,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.stats.gov.cn/
+  fetch_mode: search
 - name: 中国 PPI
   tier: A
   cadence_type: event
@@ -1194,6 +1477,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.stats.gov.cn/
+  fetch_mode: search
 - name: 7天 OMO 逆回购利率(新锚)
   tier: A
   cadence_type: event
@@ -1210,6 +1497,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: http://www.pbc.gov.cn/
+  fetch_mode: search
 - name: MLF 利率
   tier: A
   cadence_type: event
@@ -1225,6 +1516,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: http://www.pbc.gov.cn/
+  fetch_mode: search
 - name: LPR 1Y/5Y(5Y=房贷链)
   tier: A
   cadence_type: event
@@ -1240,6 +1535,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.chinamoney.com.cn/
+  fetch_mode: search
 - name: RRR 存款准备金率
   tier: A
   cadence_type: policy
@@ -1257,11 +1556,13 @@ inputs:
     enabled: true
   stance_scale: ease_tighten
   fetch_mode: search
-  source_url: http://www.pbc.gov.cn/zhengcehuobisi/125207/125213/index.html
+  source_url: http://www.pbc.gov.cn/
   observed:
     stance: 偏松
     evidence: PBoC 最近一次降准为 2025-05-15 落地，大型银行 RRR 由 9.5% 降至 9.0%、加权约 6.2%、释放约 1 万亿元；2026
       Q1 货政报告未再宣布新降准，当前为降准后的偏松而非新一轮宽松（人民银行/新华网，2025-05-07）。
+  authority: official
+  availability: no_stable_source
 - name: DR007/R007
   tier: B
   cadence_type: series
@@ -1324,11 +1625,13 @@ inputs:
     enabled: true
   stance_scale: ease_tighten
   fetch_mode: search
-  source_url: http://www.pbc.gov.cn/zhengcehuobisi/125207/125213/index.html
+  source_url: http://www.pbc.gov.cn/
   observed:
     stance: 中性
     evidence: 超额准备金利率（利率走廊下限）现行 0.35%，自 2020-04-07 末次下调后维持至今，2026 Q1 报告期内未调整，长期低位但近年无变动，作为走廊下限呈中性（人民银行/2026
       Q1 货政报告，as_of 2026-05-11）。
+  authority: official
+  availability: no_stable_source
 - name: 中国 10Y CGB + 资产荒需求
   tier: A
   cadence_type: series
@@ -1366,11 +1669,13 @@ inputs:
     enabled: true
   stance_scale: expand_contract
   fetch_mode: direct
-  source_url: http://www.pbc.gov.cn/zhengcehuobisi/125207/125227/3079456/index.html
+  source_url: http://www.pbc.gov.cn/
   observed:
     stance: 中性
     evidence: PSL 余额持续回落（2026-05 末约 8455 亿、当月净回笼 1545 亿），但同期再贷款扩张（科创 1.2 万亿、新设 1 万亿民企再贷款、增
       5000 亿支农支小），收缩与扩张相抵，结构性工具总量基本持平（2026 Q1 货政报告，2026-05-11）。
+  authority: official
+  availability: no_stable_source
 - name: 货币政策执行报告 MPR
   tier: A
   cadence_type: policy
@@ -1389,10 +1694,12 @@ inputs:
     enabled: true
   stance_scale: ease_tighten
   fetch_mode: direct
-  source_url: http://www.pbc.gov.cn/zhengcehuobisi/125207/125227/125957/index.html
+  source_url: http://www.pbc.gov.cn/zhengcehuobisi/
   observed:
     stance: 偏松
     evidence: 最新《2026 年第一季度货币政策执行报告》（2026-05-11）明确「继续实施好适度宽松的货币政策」「保持流动性充裕」，定调「适度宽松」（较「稳健」更松，但无下调闸门提法），判偏松（PBoC/新华网，2026-05-11）。
+  authority: official
+  availability: no_stable_source
 - name: 社融 TSF
   tier: A
   cadence_type: event
@@ -1408,6 +1715,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: http://www.pbc.gov.cn/
+  fetch_mode: search
 - name: M1/M2/剪刀差
   tier: A
   cadence_type: event
@@ -1423,6 +1734,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: http://www.pbc.gov.cn/
+  fetch_mode: search
 - name: 信贷脉冲
   tier: A
   cadence_type: event
@@ -1439,6 +1754,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  source_url: http://www.pbc.gov.cn/
+  note: 派生=社融存量同比增量/名义GDP（PBoC 社融 + NBS GDP）
 - name: 贷款增速
   tier: A
   cadence_type: event
@@ -1454,6 +1773,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: http://www.pbc.gov.cn/
+  fetch_mode: search
 - name: USDCNY
   tier: B
   cadence_type: series
@@ -1470,6 +1793,14 @@ inputs:
   monitoring:
     enabled: true
   fred_series_id: DEXCHUS
+  observed:
+    value: 6.7655
+    as_of: '2026-06-05'
+    checked_at: '2026-06-08T22:02:26.774085+00:00'
+    streak: 0
+  authority: official
+  availability: scripted
+  source_url: https://fred.stlouisfed.org/series/DEXCHUS
 - name: PBoC 中间价 + 逆周期因子
   tier: A
   cadence_type: series
@@ -1546,6 +1877,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.safe.gov.cn/
+  fetch_mode: search
 - name: 外汇储备(水平+变动)
   tier: A
   cadence_type: event
@@ -1561,6 +1896,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  source_url: https://www.safe.gov.cn/
+  fetch_mode: search
 - name: 中美 10Y 利差
   tier: B
   cadence_type: series
@@ -1576,6 +1915,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  source_url: https://fred.stlouisfed.org/series/DGS10
+  note: 派生=UST10Y(FRED DGS10) − 中国10Y CGB
 - name: 中美实际利率差
   tier: B
   cadence_type: series
@@ -1591,6 +1934,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  source_url: https://fred.stlouisfed.org/series/DFII10
+  note: 派生=US 10Y TIPS(FRED DFII10) − 中国实际利率(CGB−CPI)
 - name: 北向资金
   tier: A
   cadence_type: series
@@ -1647,6 +1994,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.chinabond.com.cn/
+  fetch_mode: search
 - name: 远期售汇风险准备金率
   tier: B
   cadence_type: policy
@@ -1664,11 +2015,13 @@ inputs:
     enabled: true
   stance_scale: ease_tighten
   fetch_mode: search
-  source_url: http://www.pbc.gov.cn/goutongjiaoliu/113456/113469/index.html
+  source_url: https://www.safe.gov.cn/
   observed:
     stance: 中性
     evidence: PBoC 2026-02-27 公告自 2026-03-02 起将远期售汇外汇风险准备金率由 20% 下调至 0，系人民币快速升值下逆周期退出、回归中性；当前比率为
       0、不再对购汇加成本（央行/新华网/财新，2026-02-27）。
+  authority: official
+  availability: no_stable_source
 - name: CFETS 人民币篮子指数
   tier: B
   cadence_type: series
@@ -1703,6 +2056,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.safe.gov.cn/
+  fetch_mode: search
 - name: ADR/H 股溢价折价
   tier: B
   cadence_type: series
@@ -1737,6 +2094,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: http://www.mofcom.gov.cn/
+  fetch_mode: search
 - name: 中国专项基金 EPFR(非宽EM)
   tier: B
   cadence_type: event
@@ -1753,6 +2114,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: no_stable_source
+  source_url: https://www.epfr.com/
+  fetch_mode: search
 - name: MSCI/FTSE 中国权重调整
   tier: B
   cadence_type: event
@@ -1826,6 +2191,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.stats.gov.cn/
+  fetch_mode: search
 - name: 房地产开发投资
   tier: B
   cadence_type: event
@@ -1841,6 +2210,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.stats.gov.cn/
+  fetch_mode: search
 - name: 土地出让金
   tier: A
   cadence_type: event
@@ -1856,6 +2229,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.mof.gov.cn/
+  fetch_mode: search
 - name: 开发商美元债/地产高收益
   tier: A
   cadence_type: series
@@ -1890,6 +2267,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: https://www.mof.gov.cn/
+  fetch_mode: search
 - name: 财政存款
   tier: B
   cadence_type: event
@@ -1905,6 +2286,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: no_stable_source
+  source_url: http://www.pbc.gov.cn/
+  fetch_mode: search
 - name: LGFV/城投利差(TSF 质量过滤器)
   tier: B
   cadence_type: series
@@ -2005,11 +2390,13 @@ inputs:
     enabled: true
   stance_scale: ease_tighten
   fetch_mode: search
-  source_url: https://www.safe.gov.cn/safe/zcfg/index.html
+  source_url: https://www.safe.gov.cn/
   observed:
     stance: 偏紧
     evidence: 2026-05-22 证监会等八部门印发跨境证券整治方案（重罚并清退富途/老虎/长桥），2026-06-01《国务院关于对外投资的规定》强化违规处罚，超六成
       QDII 限购；个人/灰色渠道资本流出转向收紧，惟合法 QDII/互联互通仍扩容（财经/联合早报，2026-06）。
+  authority: official
+  availability: no_stable_source
 - name: 中国政治局/NPC 经济信号
   tier: A
   cadence_type: policy
@@ -2028,11 +2415,13 @@ inputs:
     enabled: true
   stance_scale: ease_tighten
   fetch_mode: search
-  source_url: https://www.news.cn/politics/leaders/20260428/002222d43f9e47d2947142a92e84a026/c.html
+  source_url: https://www.gov.cn/
   observed:
     stance: 偏松
     evidence: 2026 政府工作报告（2026-03-05）定调「更加积极的财政政策和适度宽松的货币政策」、赤字率约 4%；2026-04-28 政治局会议重申「加大逆周期和跨周期调节力度」，惟赤字率与
       2025 持平、力度边际趋稳，判偏松（新华社，2026-04-28）。
+  authority: official
+  availability: no_stable_source
 - name: CSRC 监管动作
   tier: B
   cadence_type: policy
@@ -2050,10 +2439,12 @@ inputs:
     enabled: true
   stance_scale: ease_tighten
   fetch_mode: direct
-  source_url: https://www.csrc.gov.cn/csrc/c100039/common_list.shtml
+  source_url: http://www.csrc.gov.cn/
   observed:
     stance: 偏松
     evidence: 2026-02-09 三大交易所优化再融资一揽子措施、证监会 2026 年系统工作会明确「提高再融资便利性」，IPO/再融资由阶段性收紧转为系统性优化回暖（资金面偏松）；减持端从严属强监管（证券时报，2026-01-16；证券市场周刊，2026-03-17）。
+  authority: official
+  availability: no_stable_source
 - name: 美财政/债务上限/财政主导
   tier: A
   cadence_type: event
@@ -2094,11 +2485,13 @@ inputs:
     enabled: true
   stance_scale: path_shift
   fetch_mode: search
-  source_url: https://www.chinadaily.com.cn/a/202604/27/WS69ef728da310d6866eb45d1e.html
+  source_url: null
   observed:
     stance: 上移
     evidence: 最近一次评级行动为穆迪 2026-04 将中国主权评级展望由「负面」上调至「稳定」、维持 A1；S&P A+/稳定、Fitch A/稳定，方向上以穆迪展望由负转稳为最新明确的上移信号（China
       Daily/新华社，2026-04-27）。
+  authority: secondary
+  availability: no_stable_source
 - name: 中美地缘/关税(尾部)
   tier: B
   cadence_type: event
@@ -2115,6 +2508,10 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: secondary
+  availability: no_stable_source
+  source_url: https://ustr.gov/about-us/policy-offices/press-office/press-releases
+  fetch_mode: search
 - name: ADR退市/HFCAA(尾部)
   tier: B
   cadence_type: event
@@ -2130,3 +2527,7 @@ inputs:
   alert_series: false
   monitoring:
     enabled: true
+  authority: official
+  availability: scriptable_todo
+  source_url: https://www.sec.gov/HFCAA
+  fetch_mode: direct
