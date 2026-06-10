@@ -1,8 +1,9 @@
-"""llm-web 输入的通用抓取（β）。零 LLM：读登记表里 fetch_method=='llm-web' 且
+"""recipe 通道的通用抓取（β）。零 LLM：读登记表里 fetch_method=='recipe' 且
 availability=='scripted' 且有 fetch_recipe 的输入，按 recipe 抓取 → record_observation。
 
-availability 为 scriptable_todo / llm_read 的跳过并计数，绝不假装抓到。判源 +
-写 recipe + 评 authority/availability 是逐条增量的 LLM 工作（对话里做），本脚本只跑已配好的。
+fetch_method 是「脚本执行通道」：fred-api 走 fred_fetch，recipe 走本模块。
+availability 为 scriptable_todo / llm 的项不在此抓（它们走 headless LLM 取数）；
+本模块只跑已配好 recipe 的 scripted 项。判源 + 写 recipe 是逐条增量的 LLM 工作（对话里做）。
 单测 mock httpx（同 fred_fetch）。"""
 from __future__ import annotations
 
@@ -98,11 +99,11 @@ _WS = re.compile(r"\s+")
 
 
 def fetch_text(url: str, *, client=None) -> str:
-    """固定 URL 取正文，喂给 llm-web 判读用（如央行声明/报告索引页）。
+    """固定 URL 取正文，喂给 headless LLM 判读用（如央行声明/报告索引页）。
     GET → 去 script/style → 去标签 → 反转义实体 → collapse 空白。
 
     刻意不挂在 fetch_by_recipe 上：那条只管 json/csv 数值提取，保持纯粹；
-    文本是给 LLM 读的，不是 value。多跳（索引→最新条目）由 llm-web 侧 LLM 决定。
+    文本是给 LLM 读的，不是 value。多跳（索引→最新条目）由 headless LLM 侧决定。
     client 可注入（测试 mock）。"""
     owns = client is None
     if owns:
@@ -119,17 +120,21 @@ def fetch_text(url: str, *, client=None) -> str:
     return _WS.sub(" ", unescape(raw)).strip()
 
 
-def run_llmweb_fetch(slug: str, variant: str, *, client=None) -> dict:
-    """抓所有 fetch_method=='llm-web' 且 availability=='scripted' 且有 recipe 的输入。
-    待脚本 / LLM读 的诚实跳过并计数。返回 summary。"""
+def run_recipe_fetch(slug: str, variant: str, *, client=None,
+                     only: set[str] | None = None) -> dict:
+    """抓所有 fetch_method=='recipe' 且 availability=='scripted' 且有 recipe 的输入。
+    待脚本 / LLM取（llm）的诚实跳过并计数（它们走 headless LLM 取数）。
+    only 给定时只抓名字在其中的项（web 单条手动抓取用）；缺省抓全部。返回 summary。"""
     data = reg.read_registry(slug, variant)
-    fetched = skipped_todo = skipped_llm_read = failed = 0
+    fetched = skipped_todo = skipped_llm = failed = 0
     for e in data["inputs"]:
-        if e.get("fetch_method") != "llm-web":
+        if e.get("fetch_method") != "recipe":
+            continue
+        if only is not None and e["name"] not in only:
             continue
         avail = e.get("availability")
-        if avail == "llm_read":
-            skipped_llm_read += 1
+        if avail == "llm":
+            skipped_llm += 1
             continue
         if avail != "scripted" or not e.get("fetch_recipe"):
             skipped_todo += 1
@@ -141,14 +146,14 @@ def run_llmweb_fetch(slug: str, variant: str, *, client=None) -> dict:
         reg.record_observation(slug, variant, e["name"], value=val, as_of=as_of)
         fetched += 1
     return {"fetched": fetched, "skipped_todo": skipped_todo,
-            "skipped_llm_read": skipped_llm_read, "failed": failed}
+            "skipped_llm": skipped_llm, "failed": failed}
 
 
 def main(argv=None):
     argv = argv if argv is not None else sys.argv[1:]
     slug = argv[0] if len(argv) > 0 else "global-macro-rates-liquidity"
     variant = argv[1] if len(argv) > 1 else "opus4.8"
-    print(f"llm-web 抓取: {run_llmweb_fetch(slug, variant)}")
+    print(f"recipe 抓取: {run_recipe_fetch(slug, variant)}")
 
 
 if __name__ == "__main__":

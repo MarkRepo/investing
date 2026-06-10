@@ -35,7 +35,7 @@ def _good_A_entry():
         "targets": ["rates", "fx"], "mechanism": "CD",
         "causal_sentence": "就业超预期 → Fed 维持限制性政策更久 → 短端利率↑",
         "lag": "同步", "importance": "load_bearing",
-        "source": "FRED", "fetch_method": "fred-api", "state": "改",
+        "source": "FRED", "fetch_method": "fred-api", "availability": "scripted", "state": "改",
         "alert_series": False,
     }
 

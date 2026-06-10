@@ -53,3 +53,133 @@ pending:
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false
+- proposal_id: 56e43a3f3d3f
+  slug: global-futu
+  variant: opus4.8
+  kind: signpost
+  locator: dfa22f80
+  proposed_value: bull
+  expected_current: null
+  evidence:
+  - title: Futu Q1 profit hit by RMB1.85 billion amount | FUTU SEC Filing - Form 6-K
+    url: https://www.stocktitan.net/sec-filings/FUTU/6-k-futu-holdings-ltd-current-report-foreign-issuer-dd251499b668.html
+    snippet: Total revenues rose 24.7% year-over-year to HK$5,855.99 million ... net
+      income fell 61.2% to HK$830.99 million ... after reflecting a one-time RMB1.85
+      billion regulatory penalty.
+  - title: Why Futu Holdings (FUTU) Is Down 11.6% After China Regulator Proposes RMB
+      1.85 Billion Penalty
+    url: https://finance.yahoo.com/markets/stocks/articles/why-futu-holdings-futu-down-080319932.html
+    snippet: Chinese regulators issued a Notice of Investigation and an Administrative
+      Penalty Pre-Notification Letter over alleged unlicensed securities, public fund
+      sales, and futures activities in mainland China, with a proposed penalty of
+      about RMB 1.85 billion (approximately US$271 million).
+  - title: Futu Holdings (FUTU US) - 1Q26 earnings missed; TP cut to US$145 on earnings
+      revision for exit of mainland accounts (CMBI)
+    url: https://hk-official.cmbi.info/upload/c06b91c6-8a16-4d86-a23f-2a1fe73467e6.pdf
+    snippet: 1Q26 earnings missed; TP cut to US$145 on earnings revision for exit
+      of mainland accounts.
+  evidence_urls:
+  - https://www.sec.gov/Archives/edgar/data/1754581/000110465926067159/tm2615605d1_ex99-1.htm
+  living_feed_entry: '## 2026-05-30 富途 Q1 业绩披露罚没与大陆退出口径
+
+    **来源**：SEC 6-K / Yahoo Finance / CMBI 研报
+
+    **关键信息**：CSRC RMB1.85B(US$271M)一次性罚没,Q1 净利 -61.2% YoY 至 HK$831M 全系此单项;CMBI 据''退出大陆账户''下修目标价至
+    US$145。报表仍仅披露''港 vs 其他'',未单列大陆 收入/利润%。
+
+    **对已有判断的影响**：支持 bull——罚没一次性落定 + 大陆敞口结构性退出;弱化命门1黑箱担忧但未给出硬性大陆%(disconfirm kill 维持
+    pending)。
+
+    **当前判断更新**：维持,signpost 翻 bull。'
+  rationale: 罚没一次性落定(Q1 RMB1.85B 单项计提致净利 -61%)+ 券商确认富途退出大陆账户→大陆敞口结构性收缩,符合 bull;硬性大陆%
+    仍未单列。
+  requires_thesis_review: false
+  status: awaiting_confirm
+  created_at: '2026-06-09T22:08:26.200580+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 36d34e02465c
+  slug: global-futu
+  variant: opus4.8
+  kind: signpost
+  locator: e4105196
+  proposed_value: bear
+  expected_current: null
+  evidence:
+  - title: Futu Holdings Net Income 2020-2026 | FUTU | MacroTrends
+    url: https://www.macrotrends.net/stocks/charts/FUTU/futu-holdings/net-income
+    snippet: Futu Holdings net income for the quarter ending March 31, 2026 was $0.108B,
+      a 60.66% decline year-over-year. Net income for the twelve months ending March
+      31, 2026 was $1.289B, a 52.8% increase year-over-year.
+  - title: 'Futu Holdings Ltd (FUTU) Q1 2026 Earnings Call Highlights: Robust Revenue
+      Growth Amid ...'
+    url: https://finance.yahoo.com/markets/stocks/articles/futu-holdings-ltd-futu-q1-230244344.html
+    snippet: 'Total Revenue: HKD5.9 billion, up 25% YoY. Interest Income: HKD2.7 billion,
+      up 28% YoY. Gross Margin: 87.2%, compared to 84% in Q1 2025.'
+  - title: Futu Holdings Limited Q1 2026 Earnings Recap | AllInvestView
+    url: https://www.allinvestview.com/earnings/FUTU/q1-2026
+    snippet: Futu's stock declined after earnings as investors reacted to cautious
+      signals on margin compression and subdued sequential growth in key revenue segments
+      despite solid client additions and market activity.
+  evidence_urls:
+  - https://hk-official.cmbi.info/upload/c06b91c6-8a16-4d86-a23f-2a1fe73467e6.pdf
+  living_feed_entry: '## 2026-05-30 富途 Q1 净利 YoY 转负 + NII 边际谨慎
+
+    **来源**：MacroTrends / Yahoo Finance / AllInvestView / CMBI
+
+    **关键信息**：Q1 报告净利 -60.66% YoY(单项罚没致);利息净收入 +28% YoY 但 QoQ -13%,纪要示 margin compression
+    谨慎、环比增长趋缓,CMBI 下修。但 TTM 净利仍 +52.8%、营业利润 +31.5%、交易额创纪录 HK$4.15T(+29% YoY)。
+
+    **对已有判断的影响**：literal bear_signal(''净利 YoY 转负''/NII 指引下修)命中;但转负系一次性罚没、底层盈利能力未坏,''10x
+    便宜''是否真作废存疑。
+
+    **当前判断更新**：signpost 翻 bear,标 requires_thesis_review 交用户重判(勿自动改 thesis)。'
+  rationale: literal bear_signal 命中(报告净利转负 + NII QoQ-13%/margin compression 谨慎);但系一次性罚没扰动、TTM
+    净利 +52.8%/营业利润 +31.5%/ADV 创纪录,核心是否作废存疑→标 review。
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-06-09T22:08:26.200677+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: cb93609ac380
+  slug: us-robinhood
+  variant: opus4.8
+  kind: kill
+  locator: crypto_drag_unmasked
+  proposed_value: cleared
+  expected_current: pending
+  evidence:
+  - title: 'Robinhood Q1 2026 earnings: revenue up 15%, crypto down 47%'
+    url: https://qz.com/robinhood-q1-2026-earnings-results-042826
+    snippet: Robinhood reported first-quarter revenue of $1.07 billion, up 15% year-over-year.
+      Cryptocurrency revenue fell 47% year-over-year to $134 million.
+  - title: Robinhood Q1 2026 revenue climbs 15% to $1.07B | HOOD 8-K Filing
+    url: https://www.stocktitan.net/sec-filings/HOOD/8-k-robinhood-markets-inc-reports-material-event-1e3101622d1f.html
+    snippet: Total net revenues rose 15% year-over-year to $1.07 billion, driven by
+      transaction-based revenues of $623 million and net interest revenues of $359
+      million. Net income increased 3% year-over-year to $346 million.
+  - title: Robinhood Reports First Quarter 2026 Results
+    url: https://www.globenewswire.com/news-release/2026/04/28/3283181/0/en/robinhood-reports-first-quarter-2026-results.html
+    snippet: Revenues up 15% year-over-year to $1.07 billion. Diluted EPS up 3% year-over-year
+      to $0.38. Net Deposits were $18 billion, a 22% annualized growth rate.
+  evidence_urls: []
+  living_feed_entry: '## 2026-04-28 Robinhood Q1:加密 -47% 但总营收 +15%,平滑成立
+
+    **来源**：QZ / StockTitan(HOOD 8-K)/ GlobeNewswire(官方)
+
+    **关键信息**：加密收入 -47% YoY 至 $134M(达≥30%下滑门槛),但总净营收 +15% YoY 至 $1.07B、交易性收入 +7% 至
+    $623M、净利 +3% 至 $346M。
+
+    **对已有判断的影响**：kill 双条件需同时成立(加密≥30%下滑 且 总营收转负/个位数);第二条件未满足(总营收 +15% 双位数),多元化平滑论得到正面验证。
+
+    **当前判断更新**：kill 条件证伪→cleared。'
+  rationale: kill 需'加密≥30%下滑 且 总营收转负/个位数'同时成立;Q1 加密 -47% 但总营收 +15%(双位数)、交易性 +7%、净利
+    +3%→平滑成立,第二条件未满足→cleared。
+  requires_thesis_review: false
+  status: awaiting_confirm
+  created_at: '2026-06-09T22:08:26.200680+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false

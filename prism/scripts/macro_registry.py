@@ -16,11 +16,20 @@
   lag            领先/同步/滞后 + 时长（自由文本）
   importance     "load_bearing"|"confirming"|"background"
   source         FRED / web / PBoC / ... / TBD
-  source_url     具体源链接（可空）
+  source_url     源链接（可空）。语义随 availability：
+                 · scripted   = 真实数据端点（脚本直拉的 URL）
+                 · llm 有值    = 固定页起点（索引/落地页，executor 从此起抓，读返回内容判下一跳）
+                 · llm 无值    = 检索式（无稳定起点，executor 构造 query 发起 web 检索，采用源记入 observed.evidence 引文）
+                 取数方式由 source_url 在不在派生，见 llm_acquisition_mode()——单一真相，UI 与未来 executor 共用
   authority      "official"|"primary"|"secondary"|"aggregator"（可空，权威性）
-  availability   "scripted"|"scriptable_todo"|"llm_read"（可空，取数方式：已接脚本/待接/靠LLM读页面文本）
-  fetch_method   fred-api / llm-web / manual / TBD
-  fetch_recipe   {url, parse:{json_path, date_path}}（可空，llm-web fetcher 用）
+  availability   "scripted"|"scriptable_todo"|"llm"（可空，取数成本轴：
+                 scripted=固定脚本直拉零LLM便宜 / scriptable_todo=能转脚本但recipe待写(降本待办,note记缺什么) /
+                 llm=无法稳定脚本化,每轮LLM读或检索判(贵,note记原因)）
+  derived        {op:"sub"|"add", series:[FRED series,...]}（可空，fred_series_id=="__DERIVED__" 时由各 series 计算，如 SOFR−IORB）
+  fetch_method   脚本执行通道，仅对 availability=='scripted' 有意义：fred-api（走 fred_fetch）
+                 / recipe（走 recipe_fetch，须配 fetch_recipe）。非 scripted 项不设 fetch_method
+                 （其取数走 headless LLM，取法由 source_url 派生，见 llm_acquisition_mode）。
+  fetch_recipe   {url, parse:{json_path, date_path}}（可空，recipe 通道 fetcher 用）
   state          "已有"|"新增"|"改"
   alert_series   bool（仅 series 可为 true）
   monitoring     {enabled: bool}            缺省视为 enabled=true
@@ -42,9 +51,9 @@ VALID_MECHANISM = ("CD", "CF", "CO", "CR")
 VALID_IMPORTANCE = ("load_bearing", "confirming", "background")
 VALID_TARGET = ("rates", "liquidity", "fx")
 VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
-VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm_read")
-VALID_FETCH_MODE = ("direct", "search")   # llm-web 取数路由：固定拉取 / 每轮检索
-VALID_RECIPE_KIND = ("json", "csv")   # 须与 llmweb_fetch._PARSERS 键一致
+VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm")
+VALID_FETCH_METHOD = ("fred-api", "recipe")   # 脚本执行通道，仅 scripted 项可设
+VALID_RECIPE_KIND = ("json", "csv")   # 须与 recipe_fetch._PARSERS 键一致
 _RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column"}  # 每 kind 的必填 parse 键
 
 # policy 立场有序轴：轴名 → 档位元组（有序，索引升=趋势的"高"端）。diff 按索引差算方向。
@@ -108,6 +117,32 @@ def read_transmission_map(slug: str, variant: str) -> dict:
     return _read_yaml(path)
 
 
+def llm_acquisition_mode(entry: dict) -> str | None:
+    """llm 项的取数方式，从 source_url 在不在派生（单一真相，UI 与未来 executor 共用）。
+    仅 availability=='llm' 有意义：
+      有 source_url → "fixed_page"：从固定页(索引/落地页)起抓，LLM 读返回内容判下一跳。
+      无 source_url → "search"     ：无稳定起点，LLM 构造 query 发起 web 检索，采用源记入 observed.evidence。
+    非 llm 返回 None（其取数由 fetch_method/availability 决定，与本轴无关）。"""
+    if entry.get("availability") != "llm":
+        return None
+    return "fixed_page" if entry.get("source_url") else "search"
+
+
+def monitoring_enabled(entry: dict) -> bool:
+    """该输入是否在监控中。缺省随 rung：scripted 默认开（脚本抓廉价）、其余默认关
+    （llm/scriptable_todo 走 headless LLM，烧钱，按项 opt-in）。显式 monitoring.enabled 覆盖缺省。"""
+    m = entry.get("monitoring") or {}
+    if "enabled" in m:
+        return bool(m["enabled"])
+    return entry.get("availability") == "scripted"
+
+
+def monitor_mode(entry: dict) -> str:
+    """被监控时怎么自动执行：scripted → "script"（fred-api/recipe 脚本直拉，零 LLM）；
+    其余 → "headless_llm"（拉起 headless claude 取数+判 promote）。"""
+    return "script" if entry.get("availability") == "scripted" else "headless_llm"
+
+
 def upsert_input(slug: str, variant: str, entry: dict) -> None:
     """按 name 唯一键 upsert 一条 input（无校验，校验交 validate_registry）。零 LLM。"""
     if not entry.get("name"):
@@ -163,8 +198,13 @@ def validate_registry(slug: str, variant: str) -> list[str]:
             errors.append(f"[{name}] authority 非法: {e.get('authority')!r}")
         if e.get("availability") is not None and e.get("availability") not in VALID_AVAILABILITY:
             errors.append(f"[{name}] availability 非法: {e.get('availability')!r}")
-        if e.get("fetch_mode") is not None and e.get("fetch_mode") not in VALID_FETCH_MODE:
-            errors.append(f"[{name}] fetch_mode 非法: {e.get('fetch_mode')!r}")
+        fm = e.get("fetch_method")
+        if fm is not None:
+            if fm not in VALID_FETCH_METHOD:
+                errors.append(f"[{name}] fetch_method 非法: {fm!r}（仅 {list(VALID_FETCH_METHOD)}）")
+            if e.get("availability") != "scripted":
+                errors.append(f"[{name}] fetch_method 只能出现在 scripted 项（取数通道），"
+                              f"当前 availability={e.get('availability')!r}")
         recipe = e.get("fetch_recipe")
         if recipe:
             kind = recipe.get("kind", "json")
@@ -192,11 +232,14 @@ def record_observation(
     slug: str, variant: str, name: str, *,
     value: float | None = None, as_of: str | None = None,
     z: float | None = None, next_due: str | None = None,
+    evidence: str | None = None, acq_note: str | None = None,
 ) -> None:
     """把一次观测写进某 input 的 observed；旧 value 滚成 prev_value。零 LLM。
 
     fetcher（第二期）每次抓到新值调本函数；monitor 据 observed 判越带/到期。
     value 给定时滚动 prev_value；z/next_due 给定则覆盖对应位。
+    evidence 给定则写 observed.evidence（headless LLM 取数记采用源/引文，尤其 search 模式）。
+    acq_note 给定则写 observed.acq_note（本次取数/可否脚本化的判定留痕——无论是否 promote 都记）。
     """
     data = read_registry(slug, variant)
     for e in data["inputs"]:
@@ -212,6 +255,10 @@ def record_observation(
                 obs["z"] = z
             if next_due is not None:
                 obs["next_due"] = next_due
+            if evidence is not None:
+                obs["evidence"] = evidence
+            if acq_note is not None:
+                obs["acq_note"] = acq_note
             obs["checked_at"] = _now_iso()
             # 维护连续越带计数（min_streak 用）
             if value is not None:
@@ -221,6 +268,30 @@ def record_observation(
             data["updated"] = _now_iso()
             _write_yaml(_registry_path(slug, variant), data)
             return
+    raise ValueError(f"input {name!r} 不在登记表中")
+
+
+def flag_scriptable(slug: str, variant: str, name: str, *, note: str) -> bool:
+    """promote 闸门：llm 项经 headless LLM 判定可脚本化、且已实拉到数据后，
+    升 availability llm→scriptable_todo + 写 note（提醒后台实现 recipe）。零 LLM。
+
+    闸门读**已落盘的 observed.value**：仅当 availability=='llm' 且 observed.value 非空才升，
+    否则返回 False、不动——杜绝「嘴上说能 script、其实没数据」。只有 evidence 无 value 的
+    event/policy 立场项会被正确拒绝。升档成功返回 True。
+    """
+    data = read_registry(slug, variant)
+    for e in data["inputs"]:
+        if e["name"] == name:
+            if e.get("availability") != "llm":
+                return False
+            if (e.get("observed") or {}).get("value") is None:
+                return False
+            e["availability"] = "scriptable_todo"
+            if note:
+                e["note"] = note
+            data["updated"] = _now_iso()
+            _write_yaml(_registry_path(slug, variant), data)
+            return True
     raise ValueError(f"input {name!r} 不在登记表中")
 
 
@@ -265,6 +336,38 @@ def _series_breached(entry: dict) -> bool:
     band = entry.get("alert_band") or {}
     obs = entry.get("observed") or {}
     return obs.get("streak", 1) >= band.get("min_streak", 1)
+
+
+def due_llm_monitor_names(registry: dict, today=None) -> list[str]:
+    """纯函数：选出「监控中」且走 headless LLM 的输入名（供定时循环批量取数）。零 LLM。
+
+    规则（与 scan_macro_inputs 的报警语义平行，但只管 headless 轴）：
+      - 仅 availability∈{llm, scriptable_todo} 且 monitoring_enabled(e)（缺省随 rung → 默认关）。
+      - **今天已拉过的不再催**：observed.checked_at 的日期 ≥ today 即视为新鲜、跳过
+        （否则拉完仍显示「到期·待拉取」——series 无到期概念，靠这条收口）。
+      - event/policy：observed.next_due 可解析且 ≤ today 才取（到期才烧 token）。
+      - series（及其余 cadence）：未当天拉过即取（无到期概念，新鲜度由 checked_at 兜底）。
+    """
+    from datetime import date as _date
+    today = today or _date.today()
+    names: list[str] = []
+    for e in registry.get("inputs") or []:
+        if e.get("availability") not in ("llm", "scriptable_todo"):
+            continue
+        if not monitoring_enabled(e):
+            continue
+        obs = e.get("observed") or {}
+        # 今天已拉过 → 新鲜，不再催（checked_at 为 UTC isoformat，取日期段比对）
+        checked = _parse_date(str(obs.get("checked_at") or "")[:10])
+        if checked is not None and checked >= today:
+            continue
+        ctype = e.get("cadence_type")
+        if ctype in ("event", "policy"):
+            d = _parse_date(obs.get("next_due"))
+            if d is None or d > today:
+                continue
+        names.append(e["name"])
+    return names
 
 
 def scan_macro_inputs(registry: dict, today=None) -> dict:

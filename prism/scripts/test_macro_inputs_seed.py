@@ -64,11 +64,16 @@ def test_seed_registry_passes_validator():
     assert errors == [], f"登记表机制纪律不过：{errors}"
 
 
-def test_six_alert_series_marked():
+def test_alert_series_only_on_autofed_inputs():
+    """越带报警只挂在能自动取数的输入上。MOVE/基差/DR007/CNH-CNY 因无可脚本化的
+    免费结构化源(avail=llm)关带,降级为到期人工看——否则 observed.value 永不更新、
+    报警永不触发(死带)。本测试同时作为'不许再有死带'的不变量。"""
     inputs = mr.read_registry(SLUG, VARIANT)["inputs"]
     alert = {i["name"] for i in inputs if i.get("alert_series")}
-    expected = {
-        "MOVE 债市波动率", "HY OAS", "跨币种基差(EUR/JPY-USD)",
-        "USDJPY / 日元 carry", "CNH-CNY 价差", "DR007/R007",
-    }
-    assert expected == alert, f"报警序列不符 — 缺少: {expected - alert}  多余: {alert - expected}"
+    assert alert == {"HY OAS", "USDJPY / 日元 carry"}, f"越带集合变了: {alert}"
+    # 不变量：凡开越带，必须自动抓得到（fred-api 或 已写 recipe 的 scripted），不得是死带
+    for i in inputs:
+        if i.get("alert_series"):
+            auto = i.get("fetch_method") == "fred-api" or (
+                i.get("availability") == "scripted" and i.get("fetch_recipe"))
+            assert auto, f"死带：{i['name']} 开了 alert_series 却不自动抓数"

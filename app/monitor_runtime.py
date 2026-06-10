@@ -83,6 +83,21 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
         except Exception as e:
             _log(f"fred fetch failed: {e}")
 
+        # macro recipe 自动抓取（零 LLM）：fetch_method=='recipe' 的 scripted 项按 recipe 直拉。
+        # 与 fred 同为脚本通道，故同样在 macro scan 之前刷新 observed。当前 0 条 recipe 项 →
+        # no-op，但通道打通：promote 出 recipe 项后下一轮即自动抓。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import recipe_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                rec_summary = await asyncio.to_thread(
+                    recipe_fetch.run_recipe_fetch, t["slug"], t["variant"])
+                _log(f"recipe fetch [{t['slug']}/{t['variant']}]: {rec_summary}")
+        except Exception as e:
+            _log(f"recipe fetch failed: {e}")
+
         # macro 输入到期/越带（零 LLM）：写 macro_input proposal
         try:
             macro_res = await asyncio.to_thread(monitor.propose_macro_updates)
@@ -90,6 +105,27 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
                  f"added={macro_res.get('added', 0)}")
         except Exception as e:
             _log(f"macro propose failed: {e}")
+
+        # macro headless LLM 取数：定时巡检**不再自动拉**（出于成本/耗时）——只算「到期待手动拉取」
+        # 提示，由用户在 web 端点击 ⟳ 拉取（走 app.macro_jobs 后台 job）。零 LLM、零 token。
+        # event/policy 仅到期入提示、series 恒入（见 due_llm_monitor_names）。
+        try:
+            from prism.scripts import macro_registry as reg
+            from prism.scripts import topic as topic_io
+            due_reminder: list[str] = []
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                try:
+                    registry = await asyncio.to_thread(reg.read_registry, t["slug"], t["variant"])
+                except FileNotFoundError:
+                    continue
+                due_reminder.extend(reg.due_llm_monitor_names(registry))
+            if due_reminder:
+                result["macro_due_reminder"] = due_reminder
+                _log(f"{len(due_reminder)} 条 llm/event 到期待手动拉取: {due_reminder}")
+        except Exception as e:
+            _log(f"macro due reminder failed: {e}")
 
         # ② scan 看有无需判读的到期项
         try:
@@ -128,7 +164,8 @@ async def _launch_headless() -> str:
         rc, out, err = await claude_runner.run_headless_async(HEADLESS_PROMPT)
         if rc == 0:
             return "ok"
-        _log(f"headless exit={rc} stderr={err[:500]}")
+        # claude -p 把报错（如 401 Invalid bearer token）写到 stdout，不是 stderr——两路都记
+        _log(f"headless exit={rc} stdout={out[-500:].strip()} stderr={err[:500].strip()}")
         return f"exit_{rc}"
     except asyncio.TimeoutError:
         _log("headless 超时被 kill")
@@ -136,6 +173,53 @@ async def _launch_headless() -> str:
     except Exception as e:
         _log(f"headless 拉起失败: {e}")
         return f"error: {e}"
+
+
+def _build_macro_llm_prompt(slug: str, variant: str, entries: list[dict]) -> str:
+    """组 headless LLM 取数 prompt（纯函数，可测）。每个输入按 source_url 在不在派生取法：
+    fixed_page=用 WebFetch 读固定页判读 / search=用 WebSearch 检索定位最新官方值。
+
+    降本要点（去 Bash 回合）：claude **不调用任何 Bash/macro_record/写文件工具**——逐条检索判读后，
+    **最后只输出一个 fenced ```json 数组**，由 Python 解析直接落盘（少 1–2 个 agent 回合、不重读上下文）。
+    检索一律用内置 **WebSearch**（必要时 **WebFetch** 读固定页），不再用 MCP adaptor（取数 headless 已零 MCP）。
+    web 后台 job（单条）与 resume 重判路径共用本 prompt。"""
+    from prism.scripts import macro_registry as reg
+    lines = [
+        "你在 headless 模式下为 prism 宏观输入表执行 LLM 取数。逐条处理下列输入，"
+        "用内置 WebSearch 检索（需要读固定页时用 WebFetch）定位最新官方值后判读。"
+        "绝不编造：某条拉不到就令其 value=null，不要写值、不要猜。",
+        "",
+        f"主题：{slug} / {variant}",
+        "",
+        "工具限制：只用 WebSearch / WebFetch。**不要调用 Bash、不要写或改任何文件、不要试图自行落盘**——"
+        "落盘由调用方的 Python 程序读你输出的 JSON 完成。",
+        "",
+        "promote（降本待办）：处理每条时判断「该源能否用稳定脚本/recipe（固定 JSON/CSV 端点）自动拉取」，"
+        "把结论放进该条的 scriptable(true/false) 与 note（缺什么 recipe/端点）字段；"
+        "拉不到数值（value=null）时 scriptable 一律 false。",
+        "",
+        "输出格式（**全部处理完后，整段回复的最后只放这一个代码块，不要再有多余文字**）：",
+        "```json",
+        "[",
+        '  {"name": "<输入名，与下表一致>", "value": <数值或 null>, "as_of": "<YYYY-MM-DD 或 null>",',
+        '   "evidence": "<采用源 URL/引文>", "acq_note": "<本次取数判定理由，供 web 表「原因/判定」列>",',
+        '   "scriptable": <true/false>, "note": "<若 scriptable：缺什么 recipe/端点；否则空串>"}',
+        "]",
+        "```",
+        "",
+        "待取输入：",
+    ]
+    for e in entries:
+        name = e.get("name", "")
+        mode = reg.llm_acquisition_mode(e) or "search"
+        if mode == "fixed_page":
+            how = (f"固定页起点 {e.get('source_url')} —— 用 WebFetch 读该索引/落地页正文判读，"
+                   "顺最新条目找数值。")
+        else:
+            how = ("检索式 —— 无稳定起点，用 WebSearch 构造 query 定位最新官方值，"
+                   "把采用的源 URL/出处写进 evidence。")
+        lines.append(f"- {name}：{how}")
+    return "\n".join(lines)
 
 
 async def scheduler_loop() -> None:

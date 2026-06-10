@@ -14,7 +14,7 @@ import random
 from collections import defaultdict
 
 from fastapi import APIRouter, Form, HTTPException, Query, Request
-from fastapi.responses import RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
@@ -25,6 +25,21 @@ from prism.scripts import topic as topic_io
 
 router = APIRouter(prefix="/prism", tags=["prism"])
 templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
+
+
+def _fmt_shanghai(iso: str | None) -> str:
+    """ISO 时间串 → 上海时区 'YYYY-MM-DD HH:MM'。存储为 UTC（macro_registry._now_iso），展示按 Asia/Shanghai。"""
+    if not iso:
+        return ""
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    try:
+        return datetime.fromisoformat(iso).astimezone(ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d %H:%M")
+    except (ValueError, TypeError):
+        return str(iso)[:16].replace("T", " ")
+
+
+templates.env.filters["shanghai"] = _fmt_shanghai
 
 
 def _scope_ticker(scope: dict) -> str:
@@ -692,6 +707,7 @@ def prism_macro_inputs(request: Request, slug: str, variant: str):
     """宏观输入源信息表（仅 macro topic）。必须声明在 /{output_key} 通配之前。"""
     from prism.scripts import macro_registry as macro_reg
     from prism.scripts import eval_snapshot as es
+    from app import macro_jobs
     try:
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
@@ -702,12 +718,23 @@ def prism_macro_inputs(request: Request, slug: str, variant: str):
         registry = macro_reg.read_registry(slug, variant)
         inputs = registry.get("inputs", [])
     except FileNotFoundError:
+        registry = {"inputs": []}
         inputs = []
     log = es.read_eval_log(slug, variant)
     diff = {d["name"]: d for d in es.diff_since_last(slug, variant)} if inputs else {}
+    # 在途 job（刷新后状态一致）+ 到期待手动拉取提示（定时巡检不再自动拉 LLM）
+    jobs = macro_jobs.status(slug, variant)
+    due = set(macro_reg.due_llm_monitor_names(registry)) if inputs else set()
+    # 各行上次取数的落盘 meta（cost/时间）→ 表里只读展示「上次 $X · 时间」，补 cost 闪一下就没的审计缺口
+    last_meta = {}
+    for e in inputs:
+        m = macro_jobs.read_meta(slug, variant, e["name"])
+        if m and m.get("cost") is not None:
+            last_meta[e["name"]] = {"cost": m.get("cost"), "ended_at": m.get("ended_at")}
     return templates.TemplateResponse(request, "prism/macro_inputs.html", {
         "topic": topic, "variant": variant, "inputs": inputs,
         "diff": diff, "reeval_pending": log.get("reeval_pending"),
+        "jobs": jobs, "due": due, "last_meta": last_meta,
     })
 
 
@@ -730,12 +757,161 @@ def prism_macro_monitoring(slug: str, variant: str, name: str = Form(...),
     return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
 
 
+@router.post("/{slug}/{variant}/macro-inputs/fetch-llm")
+async def prism_macro_fetch_llm(slug: str, variant: str, request: Request,
+                                names: list[str] = Form(default=[]), anchor: str = Form("")):
+    """web 手动拉起 headless LLM 取数：每个合格输入一个**后台 job**，立即返回（不阻塞）。
+
+    点击即返回 job ids；服务端 app.macro_jobs 持有在途真相（刷新后仍正确），并发由 Semaphore 闸。
+    names 为空时默认全部 llm/scriptable_todo 项。非 macro 主题 / 登记表缺失 → 404。
+    Accept: application/json → 202 + {started, jobs:{name:job_id}}（前端起轮询/弹框 SSE）；
+    否则 303 回锚点（无 JS 回退，job 仍在后台跑）。
+    """
+    from prism.scripts import macro_registry as macro_reg
+    from app import macro_jobs
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    if topic.get("type") != "macro":
+        raise HTTPException(status_code=404, detail="非宏观主题")
+    try:
+        registry = macro_reg.read_registry(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="登记表不存在")
+    by_name = {e["name"]: e for e in registry.get("inputs") or []}
+    eligible = [n for n, e in by_name.items()
+                if e.get("availability") in ("llm", "scriptable_todo")]
+    picked = [n for n in names if n in eligible] if names else eligible
+    jobs = {n: macro_jobs.launch(slug, variant, n, entry=by_name[n]).id for n in picked}
+    if "application/json" in (request.headers.get("accept") or ""):
+        return JSONResponse({"started": picked, "jobs": jobs}, status_code=202)
+    frag = f"#{anchor}" if anchor else ""
+    return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
+
+
+@router.get("/{slug}/{variant}/macro-inputs/jobs")
+def prism_macro_jobs_status(slug: str, variant: str):
+    """前端轮询：返回该主题在途/近期 job 的状态 {name: {status, job_id, started_at, inflight}}。"""
+    from app import macro_jobs
+    return JSONResponse(macro_jobs.status(slug, variant))
+
+
+@router.get("/{slug}/{variant}/macro-inputs/jobs/{job_id}/stream")
+async def prism_macro_job_stream(slug: str, variant: str, job_id: str):
+    """SSE：实时推送某 job 的 claude 输出行（先重放缓冲再续播，终态收尾后结束）。未知 job → 404。
+
+    关弹框 = 浏览器关 EventSource，只断流、不杀后台 job；重开新建 EventSource 从缓冲重放再续。
+    """
+    from app import macro_jobs
+    if macro_jobs.get(job_id) is None:
+        raise HTTPException(status_code=404, detail="job 不存在或已过期")
+
+    async def _sse():
+        async for line in macro_jobs.subscribe(job_id):
+            yield macro_jobs._sse_data(line)   # 多行回答按 SSE 规范逐行加 data: 前缀（避免裸 \n 截断）
+
+    return StreamingResponse(_sse(), media_type="text/event-stream")
+
+
+@router.post("/{slug}/{variant}/macro-inputs/fetch-script")
+def prism_macro_fetch_script(slug: str, variant: str, request: Request,
+                             name: str = Form(...), anchor: str = Form("")):
+    """web 手动跑单条 scripted 项的脚本抓取（零 LLM：fred-api / recipe）。
+
+    自动巡检每天 6:00 已抓全部 scripted；本端点让用户对某条立即重抓、不必等次日。
+    输入须 availability=='scripted'；否则 400。非 macro 主题 / 登记表缺失 / 输入不存在 → 404。
+    Accept: application/json → 回 {method, fetched, summary}；否则 303 回锚点（无 JS 回退）。
+    """
+    from prism.scripts import macro_registry as macro_reg
+    from prism.scripts import fred_fetch, recipe_fetch
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    if topic.get("type") != "macro":
+        raise HTTPException(status_code=404, detail="非宏观主题")
+    try:
+        registry = macro_reg.read_registry(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="登记表不存在")
+    entry = next((e for e in registry.get("inputs") or [] if e["name"] == name), None)
+    if entry is None:
+        raise HTTPException(status_code=404, detail=f"输入 {name!r} 不存在")
+    if entry.get("availability") != "scripted":
+        raise HTTPException(status_code=400, detail="仅 scripted 项可脚本抓取")
+    method = entry.get("fetch_method")
+    if method == "fred-api":
+        summary = fred_fetch.run_fred_fetch(slug, variant, only={name})
+    elif method == "recipe":
+        summary = recipe_fetch.run_recipe_fetch(slug, variant, only={name})
+    else:
+        raise HTTPException(status_code=400, detail=f"该项无脚本抓取通道（fetch_method={method!r}）")
+    fetched = (summary.get("fetched", 0) or 0) + (summary.get("derived", 0) or 0)
+    if "application/json" in (request.headers.get("accept") or ""):
+        return JSONResponse({"method": method, "fetched": fetched, "summary": summary})
+    frag = f"#{anchor}" if anchor else ""
+    return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
+
+
+@router.post("/{slug}/{variant}/macro-inputs/fetch-script-all")
+def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anchor: str = Form("")):
+    """批量「刷新脚本项」：跑全量 fred + recipe（零 LLM、零成本）。LLM 项一律行内单条手动拉。
+
+    非 macro 主题 / 登记表缺失 → 404。Accept: application/json → {fred, recipe, fetched}；否则 303 回锚点。
+    """
+    from prism.scripts import macro_registry as macro_reg
+    from prism.scripts import fred_fetch, recipe_fetch
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    if topic.get("type") != "macro":
+        raise HTTPException(status_code=404, detail="非宏观主题")
+    try:
+        macro_reg.read_registry(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="登记表不存在")
+    fred_sum = fred_fetch.run_fred_fetch(slug, variant)
+    recipe_sum = recipe_fetch.run_recipe_fetch(slug, variant)
+    fred_n = (fred_sum.get("fetched", 0) or 0) + (fred_sum.get("derived", 0) or 0)
+    recipe_n = recipe_sum.get("fetched", 0) or 0
+    if "application/json" in (request.headers.get("accept") or ""):
+        return JSONResponse({"fred": fred_n, "recipe": recipe_n, "fetched": fred_n + recipe_n,
+                             "fred_summary": fred_sum, "recipe_summary": recipe_sum})
+    frag = f"#{anchor}" if anchor else ""
+    return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
+
+
+@router.post("/{slug}/{variant}/macro-inputs/jobs/say")
+async def prism_macro_job_say(slug: str, variant: str,
+                              name: str = Form(...), message: str = Form(...),
+                              model: str = Form("")):
+    """弹框续问 / 换模型重判：macro_jobs.say 用已存 session_id `--resume` 续上同一上下文（不重搜）。
+
+    say 返回 None（内存无 job 且无落盘 meta = 无可续会话）→ 404；否则 202 {job_id}，前端重连 SSE 看续播。
+    """
+    from app import macro_jobs
+    job = await macro_jobs.say(slug, variant, name, message, model=(model or None))
+    if job is None:
+        raise HTTPException(status_code=404, detail="无可续会话（请先拉取一次再重判）")
+    return JSONResponse({"job_id": job.id}, status_code=202)
+
+
 @router.post("/{slug}/{variant}/reeval")
-def prism_reeval(slug: str, variant: str):
-    """组装重估简报 + 盖「待重判」戳（零 LLM）。真正重判在对话里做。"""
+def prism_reeval(slug: str, variant: str, request: Request):
+    """组装重估简报 + 盖「待重判」戳（零 LLM）。真正重判在对话里做。
+
+    Accept: application/json → 回简报计数（前端展进度/结果）；否则 303 回 #reeval-brief（无 JS 回退）。
+    """
     from prism.scripts import eval_snapshot as es
     brief = es.assemble_reeval_brief(slug, variant)
     es.stamp_reeval_pending(slug, variant, brief)
+    if "application/json" in (request.headers.get("accept") or ""):
+        return JSONResponse({"changed": len(brief.get("changed") or []),
+                             "breached": len(brief.get("breached") or []),
+                             "due": len(brief.get("due") or []),
+                             "affected": brief.get("affected_conclusions") or []})
     return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs#reeval-brief", status_code=303)
 
 

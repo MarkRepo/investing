@@ -175,7 +175,7 @@ todo 是 `topic.yaml` 里的 `user_todos`，每条是 dict：
 ## Stage 01 · 规划（`01-build-roadmap.md`）
 
 - **① 目标**：把 thesis 的 K# + 输入合同地板 + 命门靶点，组织成三档资料计划；**并尽最大努力自动获取**，让 todo 只剩用户才能搞的。
-- **② LLM 怎么执行**：A 轴（输入合同必收类目，尤其三项真·欠供）+ B 轴（命门靶点）双轴排资料 → Step 4 把历史类比落成 `*-mirror` 收料 todo → **Step 5.5 自动下财报**（fetch_report_prism）→ **Step 5.6 深抓公开分析材料**（exa/semantic/WebFetch）→ Step 5.7 校验 roadmap→thesis 闭环 → Step 8 prescan + auto_resolve。
+- **② LLM 怎么执行**：A 轴（输入合同必收类目，尤其三项真·欠供）+ B 轴（命门靶点）双轴排资料 → Step 4 把历史类比落成 `*-mirror` 收料 todo → **Step 5.5 自动下财报**（fetch_report_prism）→ **Step 5.6 深抓公开分析材料**（exa/semantic/WebFetch）→ Step 5.7 校验 roadmap→thesis 闭环 → Step 5.8 auto-fetch 全覆盖硬闸门（无 unattempted 才许进 Step 6）→ Step 8 一次性 prescan（todo 收口走显式 `update_user_todo_status`，无 auto_resolve）。
 - **③ 产出/状态**：`roadmap.yaml`；自动下的料入 manifest；已获取 todo 标 done；stage→`02-gather-materials`。
 - **④ 质量看点**：
   - **Step 5.6 跑了没**？`public`/`half_public` 的 todo 是否真的过了自动获取（而不是直接甩给用户）？

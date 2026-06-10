@@ -144,3 +144,98 @@ def test_fred_fetch_failure_does_not_break_cycle(monkeypatch, macro_monitor_env)
     monkeypatch.setenv("FRED_API_KEY", "k")
     # 不抛即通过
     asyncio.run(mrt.run_monitor_cycle())
+
+
+def test_run_monitor_cycle_invokes_recipe_fetch(monkeypatch, macro_monitor_env):
+    import app.monitor_runtime as mrt
+    from prism.scripts import fred_fetch, recipe_fetch
+    called = {}
+
+    monkeypatch.setattr(fred_fetch, "run_fred_fetch",
+                        lambda s, v: {"fetched": 0, "derived": 0, "skipped": 0, "failed": 0})
+
+    def fake_recipe(s, v):
+        called["hit"] = (s, v)
+        return {"fetched": 0, "skipped_todo": 0, "skipped_llm": 0, "failed": 0}
+
+    monkeypatch.setattr(recipe_fetch, "run_recipe_fetch", fake_recipe)
+    monkeypatch.setenv("FRED_API_KEY", "k")
+    asyncio.run(mrt.run_monitor_cycle())
+    assert called.get("hit") == (SLUG, VARIANT)
+
+
+def test_recipe_fetch_failure_does_not_break_cycle(monkeypatch, macro_monitor_env):
+    import app.monitor_runtime as mrt
+    from prism.scripts import fred_fetch, recipe_fetch
+
+    monkeypatch.setattr(fred_fetch, "run_fred_fetch",
+                        lambda s, v: {"fetched": 0, "derived": 0, "skipped": 0, "failed": 0})
+
+    def boom(s, v):
+        raise RuntimeError("recipe source down")
+
+    monkeypatch.setattr(recipe_fetch, "run_recipe_fetch", boom)
+    monkeypatch.setenv("FRED_API_KEY", "k")
+    # 不抛即通过
+    asyncio.run(mrt.run_monitor_cycle())
+
+
+# --- 统一 headless LLM 取数 ---
+
+def test_build_macro_llm_prompt_native_search_and_json_return(macro_monitor_env):
+    import app.monitor_runtime as mrt
+    entries = [
+        {"name": "固定页项", "availability": "llm", "source_url": "https://x/idx"},
+        {"name": "检索项", "availability": "llm"},
+    ]
+    p = mrt._build_macro_llm_prompt(SLUG, VARIANT, entries)
+    # 仍逐条列名 + 区分固定页/检索取法
+    assert "固定页项" in p and "检索项" in p
+    assert "固定页起点" in p and "检索式" in p
+    # 原生检索：用 WebSearch/WebFetch，砍掉 MCP adaptor
+    assert "WebSearch" in p
+    assert "tavily" not in p and "exa" not in p and "serper" not in p
+    # 去 Bash 回合：不调 macro_record/Bash，末尾只吐一个 JSON 数组
+    assert "macro_record" not in p
+    assert "json" in p.lower()
+    assert "--acq-note" not in p and "--scriptable" not in p
+    # JSON 字段约定（Python 落盘解析依赖这些键）
+    for field in ("name", "value", "as_of", "evidence", "acq_note", "scriptable"):
+        assert field in p
+
+
+def test_cycle_does_not_launch_llm_only_reminds(monkeypatch, macro_monitor_env):
+    """巡检对到期 llm/event 项**不拉任何 headless**，只在 cycle 结果给 macro_due_reminder 提示。
+
+    出于成本/耗时：定时路径只跑 scripted（fred/recipe），LLM 取数改为用户手动点拉。
+    """
+    import app.monitor_runtime as mrt
+    from prism.scripts import fred_fetch, recipe_fetch, claude_runner
+    monkeypatch.setattr(fred_fetch, "run_fred_fetch",
+                        lambda s, v: {"fetched": 0, "derived": 0, "skipped": 0, "failed": 0})
+    monkeypatch.setattr(recipe_fetch, "run_recipe_fetch",
+                        lambda s, v: {"fetched": 0, "skipped_todo": 0, "skipped_llm": 0, "failed": 0})
+    # 开监控的 llm series 项 → due_llm_monitor_names 选中（series 恒取）
+    mr.upsert_input(SLUG, VARIANT, {
+        "name": "MOVE", "tier": "B", "cadence_type": "series", "targets": ["rates"],
+        "mechanism": "CO", "importance": "confirming",
+        "availability": "llm", "monitoring": {"enabled": True}})
+
+    calls = {"n": 0}
+
+    async def boom_streaming(*a, **k):
+        calls["n"] += 1
+        return ("ok", 0)
+
+    async def boom_async(*a, **k):
+        calls["n"] += 1
+        return (0, "", "")
+
+    monkeypatch.setattr(claude_runner, "run_headless_streaming", boom_streaming)
+    monkeypatch.setattr(claude_runner, "run_headless_async", boom_async)
+    monkeypatch.setenv("FRED_API_KEY", "k")
+    result = asyncio.run(mrt.run_monitor_cycle())
+
+    assert "MOVE" in result.get("macro_due_reminder", [])   # 出提示
+    assert "macro_llm" not in result                        # 不再自动拉
+    assert calls["n"] == 0                                   # 零 headless、零 token（本 fixture 无 company 到期）

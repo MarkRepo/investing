@@ -55,7 +55,7 @@ def macro_web_client(tmp_path, monkeypatch):
     reg.upsert_input(SLUG, VARIANT, {
         "name": "HY OAS", "tier": "B", "cadence_type": "series", "targets": ["liquidity"],
         "mechanism": "CO", "importance": "confirming", "source": "FRED", "fetch_method": "fred-api",
-        "fred_series_id": "BAMLH0A0HYM2", "alert_series": True,
+        "availability": "scripted", "fred_series_id": "BAMLH0A0HYM2", "alert_series": True,
         "alert_band": {"level": 4.5, "direction": "above"}, "monitoring": {"enabled": True},
     })
 
@@ -109,22 +109,22 @@ def test_macro_inputs_shows_caveat_note(macro_web_client):
     assert "非 ICE 真·DXY" in r.text
 
 
-def test_macro_inputs_shows_fetch_mode_badges(macro_web_client):
-    """llm-web 输入按 fetch_mode 区分展示：direct→直接拉取、search→检索。"""
+def test_macro_inputs_shows_llm_mode_badges(macro_web_client):
+    """llm 输入按 source_url 在不在派生取数方式：有→固定页、无→检索（镜像 llm_acquisition_mode）。"""
     import prism.scripts.macro_registry as reg
     reg.upsert_input(SLUG, VARIANT, {
         "name": "MPR", "tier": "A", "cadence_type": "policy", "targets": ["rates"],
         "mechanism": "CD", "importance": "load_bearing", "causal_sentence": "x→y→z",
-        "fetch_method": "llm-web", "fetch_mode": "direct",
+        "availability": "llm", "source_url": "https://example.gov/mpr.htm",
     })
     reg.upsert_input(SLUG, VARIANT, {
         "name": "关税", "tier": "A", "cadence_type": "policy", "targets": ["fx"],
         "mechanism": "CD", "importance": "load_bearing", "causal_sentence": "x→y→z",
-        "fetch_method": "llm-web", "fetch_mode": "search",
+        "availability": "llm",   # 无 source_url → 检索
     })
     r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
     assert r.status_code == 200
-    assert "直接拉取" in r.text
+    assert "固定页" in r.text
     assert "检索" in r.text
 
 
@@ -359,7 +359,7 @@ def test_primer_uses_links_not_bare_filenames():
 def test_inputs_table_shows_source_and_grades(macro_web_client):
     import prism.scripts.macro_registry as reg
     reg.upsert_input(SLUG, VARIANT, {
-        "name": "MOVE 债市波动率", "fetch_method": "llm-web",
+        "name": "MOVE 债市波动率",
         "source": "ICE", "source_url": "https://example.com/move",
         "authority": "primary", "availability": "scriptable_todo"})
     r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
@@ -379,6 +379,159 @@ def test_change_summary_no_snapshot_hidden(macro_web_client):
     # fixture 未 append_evaluation → 无快照 → 不显示变更汇总
     r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
     assert "变更汇总" not in r.text
+
+
+# --- 手动 headless LLM 取数端点（后台 job 化）---
+
+class _FakeJob:
+    def __init__(self, jid):
+        self.id = jid
+
+
+def test_macro_fetch_llm_launches_jobs(macro_web_client, monkeypatch):
+    """POST 对每个合格输入 launch 一个后台 job，立即 202 返回 {jobs: {name: job_id}}，不阻塞。"""
+    import prism.scripts.macro_registry as reg
+    import app.macro_jobs as mj
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "ISM PMI", "tier": "A", "cadence_type": "series", "targets": ["rates"],
+        "mechanism": "CD", "causal_sentence": "x", "importance": "load_bearing",
+        "availability": "llm", "source_url": "https://ism"})
+    launched = []
+
+    def fake_launch(slug, variant, name, *, entry):
+        launched.append((slug, variant, name, entry.get("availability")))
+        return _FakeJob(f"job-{name}")
+
+    monkeypatch.setattr(mj, "launch", fake_launch)
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-llm",
+                              data={"names": "ISM PMI", "anchor": "input-0"},
+                              headers={"Accept": "application/json"})
+    assert r.status_code == 202
+    body = r.json()
+    assert body["jobs"] == {"ISM PMI": "job-ISM PMI"}
+    assert body["started"] == ["ISM PMI"]
+    assert launched and launched[0][2] == "ISM PMI" and launched[0][3] == "llm"
+
+
+def test_macro_fetch_llm_filters_ineligible(macro_web_client, monkeypatch):
+    """HY OAS 是 scripted（fixture）→ 不在 llm/todo 轴；传它应被过滤、launch 不被调用。"""
+    import app.macro_jobs as mj
+    seen = {"n": 0}
+
+    def fake_launch(slug, variant, name, *, entry):
+        seen["n"] += 1
+        return _FakeJob("x")
+
+    monkeypatch.setattr(mj, "launch", fake_launch)
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-llm",
+                              data={"names": "HY OAS"}, headers={"Accept": "application/json"})
+    assert r.status_code == 202
+    assert seen["n"] == 0
+    assert r.json()["jobs"] == {}
+
+
+def test_macro_fetch_llm_no_js_fallback_redirects(macro_web_client, monkeypatch):
+    """无 JS（非 JSON Accept）→ 303 回锚点（仍 launch 后台 job）。"""
+    import prism.scripts.macro_registry as reg
+    import app.macro_jobs as mj
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "ISM PMI", "tier": "A", "cadence_type": "series",
+        "mechanism": "CD", "importance": "confirming", "availability": "llm"})
+    monkeypatch.setattr(mj, "launch",
+                        lambda s, v, n, *, entry: _FakeJob(f"job-{n}"))
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-llm",
+                              data={"names": "ISM PMI", "anchor": "input-0"},
+                              follow_redirects=False)
+    assert r.status_code == 303
+    assert r.headers["location"].endswith("/macro-inputs#input-0")
+
+
+def test_macro_jobs_status_and_stream_endpoints(macro_web_client, monkeypatch):
+    """端到端（假 runner）：POST → /jobs 反映该 job → SSE 流重放输出行 + 终态。"""
+    import prism.scripts.macro_registry as reg
+    from prism.scripts import claude_runner
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "ISM PMI", "tier": "A", "cadence_type": "series",
+        "mechanism": "CD", "importance": "confirming", "availability": "llm"})
+
+    async def fake_runner(prompt, *, on_event, **kw):
+        on_event({"type": "assistant",
+                  "message": {"content": [{"type": "text", "text": "检索中"}]}})
+        # 末尾合法空 JSON → parse 成功 → 终态 done（不触发 registry 写入）
+        on_event({"type": "result", "total_cost_usd": 0.02, "duration_ms": 1500,
+                  "session_id": "sid-w", "result": "```json\n[]\n```"})
+        return ("ok", 0)
+
+    monkeypatch.setattr(claude_runner, "run_headless_streaming", fake_runner)
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-llm",
+                              data={"names": "ISM PMI"}, headers={"Accept": "application/json"})
+    assert r.status_code == 202
+    job_id = r.json()["jobs"]["ISM PMI"]
+
+    st = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs/jobs").json()
+    assert "ISM PMI" in st and st["ISM PMI"]["job_id"] == job_id
+
+    # SSE 流：subscribe 在终态吐收尾行后结束 → TestClient 拿到完整 body
+    s = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs/jobs/{job_id}/stream")
+    assert s.status_code == 200
+    assert "text/event-stream" in s.headers["content-type"]
+    assert "检索中" in s.text
+    assert "完成" in s.text          # 终态收尾行
+
+
+def test_macro_jobs_stream_404_unknown(macro_web_client):
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs/jobs/job-nope/stream")
+    assert r.status_code == 404
+
+
+def test_inputs_table_shows_evidence_and_acq_note(macro_web_client):
+    """observed.evidence（原因）与 acq_note（promote 判定）要在表里显示。"""
+    import prism.scripts.macro_registry as reg
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "ISM PMI", "tier": "A", "cadence_type": "series",
+        "mechanism": "CD", "importance": "confirming", "availability": "llm",
+        "observed": {"value": 48.7, "as_of": "2026-06-02",
+                     "evidence": "ISM 官网 6 月制造业 PMI 报告",
+                     "acq_note": "无固定 JSON 端点，须人工检索，暂不可脚本化"}})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "原因：" in r.text and "ISM 官网" in r.text
+    assert "判定：" in r.text and "不可脚本化" in r.text
+
+
+def test_inputs_table_shows_due_badge(macro_web_client):
+    """开监控的 llm series 项 → due_llm_monitor_names 选中 → 渲染「到期·待拉取」提示徽章。"""
+    import prism.scripts.macro_registry as reg
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "MOVE", "tier": "B", "cadence_type": "series",
+        "mechanism": "CO", "importance": "confirming",
+        "availability": "llm", "monitoring": {"enabled": True}})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "到期·待拉取" in r.text
+
+
+def test_inputs_table_shows_inflight_badge_from_jobs(macro_web_client, monkeypatch):
+    """服务端 macro_jobs.status 报某项在途 → 表里出现「拉取中」徽章 + 查看输出按钮（刷新后状态一致）。"""
+    import prism.scripts.macro_registry as reg
+    import app.macro_jobs as mj
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "ISM PMI", "tier": "A", "cadence_type": "series",
+        "mechanism": "CD", "importance": "confirming", "availability": "llm"})
+    monkeypatch.setattr(mj, "status", lambda s, v: {
+        "ISM PMI": {"status": "running", "job_id": "job-7", "started_at": 1.0, "inflight": True}})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "拉取中" in r.text
+    assert 'data-job-id="job-7"' in r.text
+    assert "查看输出" in r.text
+
+
+def test_macro_fetch_llm_404_non_macro(macro_web_client):
+    import prism.scripts.topic as t
+    import prism.scripts.manifest as m
+    t.create_topic("cn-ind-y", "某行业", "industry", "Q", "CN", "deep", VARIANT)
+    m.create_manifest("cn-ind-y", VARIANT)
+    r = macro_web_client.post(f"/prism/cn-ind-y/{VARIANT}/macro-inputs/fetch-llm",
+                              data={"names": "x"}, follow_redirects=False)
+    assert r.status_code == 404
 
 
 def test_change_summary_lists_changed(macro_web_client):
@@ -432,3 +585,224 @@ def test_eval_trace_has_logic_label(macro_web_client):
                          "causal": "HY OAS 走阔 → 流动性偏紧"}]})
     r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/eval-trace")
     assert "评估逻辑" in r.text
+
+
+# --- 单条脚本抓取端点（scripted 行手动「抓取」键）---
+
+def test_macro_fetch_script_invokes_fred_with_only(macro_web_client, monkeypatch):
+    """scripted/fred-api 项 → 调 run_fred_fetch(only={该项})，零 LLM。"""
+    from prism.scripts import fred_fetch
+    seen = {}
+
+    def fake(slug, variant, *, client=None, only=None):
+        seen["call"] = (slug, variant, only)
+        return {"fetched": 1, "derived": 0, "skipped": 0, "failed": 0}
+
+    monkeypatch.setattr(fred_fetch, "run_fred_fetch", fake)
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-script",
+                              data={"name": "HY OAS", "anchor": "input-0"},
+                              follow_redirects=False)
+    assert r.status_code == 303
+    assert seen["call"][2] == {"HY OAS"}   # only 限定单条
+
+
+def test_macro_fetch_script_json_returns_summary(macro_web_client, monkeypatch):
+    from prism.scripts import fred_fetch
+    monkeypatch.setattr(fred_fetch, "run_fred_fetch",
+                        lambda s, v, *, client=None, only=None:
+                        {"fetched": 1, "derived": 0, "skipped": 0, "failed": 0})
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-script",
+                              data={"name": "HY OAS"}, headers={"Accept": "application/json"})
+    assert r.status_code == 200
+    body = r.json()
+    assert body["method"] == "fred-api" and body["fetched"] == 1
+
+
+def test_macro_fetch_script_400_non_scripted(macro_web_client):
+    import prism.scripts.macro_registry as reg
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "LLM项", "tier": "B", "cadence_type": "series",
+        "mechanism": "CO", "importance": "confirming", "availability": "llm"})
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-script",
+                              data={"name": "LLM项"}, follow_redirects=False)
+    assert r.status_code == 400
+
+
+def test_macro_fetch_script_404_unknown_input(macro_web_client):
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-script",
+                              data={"name": "查无此项"}, follow_redirects=False)
+    assert r.status_code == 404
+
+
+# --- JSON 回包（前端展进度/结果用，Accept: application/json）---
+
+def test_fetch_llm_json_returns_jobs(macro_web_client, monkeypatch):
+    import prism.scripts.macro_registry as reg
+    import app.macro_jobs as mj
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "ISM PMI", "tier": "A", "cadence_type": "series",
+        "mechanism": "CD", "importance": "confirming", "availability": "llm"})
+
+    monkeypatch.setattr(mj, "launch",
+                        lambda s, v, n, *, entry: _FakeJob(f"job-{n}"))
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-llm",
+                              data={"names": "ISM PMI"}, headers={"Accept": "application/json"})
+    assert r.status_code == 202
+    body = r.json()
+    assert body["jobs"] == {"ISM PMI": "job-ISM PMI"} and body["started"] == ["ISM PMI"]
+
+
+def test_reeval_json_returns_counts(macro_web_client):
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/reeval",
+                              headers={"Accept": "application/json"})
+    assert r.status_code == 200
+    body = r.json()
+    assert {"changed", "breached", "due", "affected"}.issubset(body.keys())
+
+
+# --- 展示细节：上海时区 / 列图例 / 结果横幅默认隐藏 ---
+
+def test_shanghai_filter_converts_utc():
+    from app.routes.prism import _fmt_shanghai
+    assert _fmt_shanghai("2026-06-09T00:30:00+00:00") == "2026-06-09 08:30"   # UTC→上海 +8
+    assert _fmt_shanghai("") == "" and _fmt_shanghai(None) == ""
+
+
+def test_inputs_table_shows_checked_at_in_shanghai(macro_web_client):
+    import prism.scripts.macro_registry as reg
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "HY OAS", "observed": {"value": 4.0, "checked_at": "2026-06-09T00:30:00+00:00"}})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "2026-06-09 08:30" in r.text   # 上次拉取按上海时区展示
+
+
+def test_inputs_table_has_column_legend(macro_web_client):
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "列含义说明" in r.text
+    assert "因果驱动" in r.text          # 机制 CD 释义在图例里
+
+
+def test_flash_banner_hidden_by_default(macro_web_client):
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert 'id="flash-banner"' in r.text and "hidden" in r.text   # 默认隐藏，点操作后才显示
+
+
+# --- 批量按钮 = 只跑 scripted（零 LLM）---
+
+def test_fetch_script_all_runs_fred_and_recipe(macro_web_client, monkeypatch):
+    """批量端点跑 fred + recipe 全量（不传 only），合并计数回 {fred,recipe,fetched}；零 headless。"""
+    from prism.scripts import fred_fetch, recipe_fetch
+    calls = {}
+
+    def fake_fred(slug, variant, *, client=None, only=None):
+        calls["fred"] = (slug, variant, only)
+        return {"fetched": 2, "derived": 0, "skipped": 0, "failed": 0}
+
+    def fake_recipe(slug, variant, *, client=None, only=None):
+        calls["recipe"] = (slug, variant, only)
+        return {"fetched": 1, "skipped_todo": 0, "skipped_llm": 0, "failed": 0}
+
+    monkeypatch.setattr(fred_fetch, "run_fred_fetch", fake_fred)
+    monkeypatch.setattr(recipe_fetch, "run_recipe_fetch", fake_recipe)
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/fetch-script-all",
+                              headers={"Accept": "application/json"})
+    assert r.status_code == 200
+    body = r.json()
+    assert body["fred"] == 2 and body["recipe"] == 1 and body["fetched"] == 3
+    assert calls["fred"][2] is None and calls["recipe"][2] is None   # 不传 only = 全量
+
+
+def test_fetch_script_all_404_non_macro(macro_web_client):
+    import prism.scripts.topic as t
+    import prism.scripts.manifest as m
+    t.create_topic("cn-ind-sa", "某行业", "industry", "Q", "CN", "deep", VARIANT)
+    m.create_manifest("cn-ind-sa", VARIANT)
+    r = macro_web_client.post(f"/prism/cn-ind-sa/{VARIANT}/macro-inputs/fetch-script-all",
+                              follow_redirects=False)
+    assert r.status_code == 404
+
+
+def test_batch_button_targets_fetch_script_all(macro_web_client):
+    """顶部批量按钮指向 fetch-script-all，文案标明只刷脚本项、零成本。"""
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "fetch-script-all" in r.text
+    assert "批量刷新脚本项" in r.text
+
+
+# --- 弹框 resume 重判端点 + composer ---
+
+def test_jobs_say_returns_202(macro_web_client, monkeypatch):
+    """POST /jobs/say（name+message[+model]）→ macro_jobs.say → 202 {job_id}。"""
+    import app.macro_jobs as mj
+    captured = {}
+
+    async def fake_say(slug, variant, name, message, *, model=None):
+        captured.update(slug=slug, variant=variant, name=name, message=message, model=model)
+        return _FakeJob("job-r1")
+
+    monkeypatch.setattr(mj, "say", fake_say)
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/jobs/say",
+                              data={"name": "HY OAS", "message": "用 sonnet 重判", "model": "sonnet"},
+                              headers={"Accept": "application/json"})
+    assert r.status_code == 202
+    assert r.json()["job_id"] == "job-r1"
+    assert captured["name"] == "HY OAS" and captured["model"] == "sonnet"
+    assert captured["message"] == "用 sonnet 重判"
+
+
+def test_jobs_say_404_when_no_session(macro_web_client, monkeypatch):
+    """无可续会话（say 返回 None）→ 404。"""
+    import app.macro_jobs as mj
+
+    async def fake_say(slug, variant, name, message, *, model=None):
+        return None
+
+    monkeypatch.setattr(mj, "say", fake_say)
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/macro-inputs/jobs/say",
+                              data={"name": "HY OAS", "message": "x"})
+    assert r.status_code == 404
+
+
+def test_modal_has_resume_composer(macro_web_client):
+    """弹框底部有重判 composer：无模型下拉（改用 /model 指令切换）+ say 端点。"""
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "重判" in r.text
+    assert "jobs/say" in r.text or "/say" in r.text
+    assert "/model" in r.text                       # 提示用 /model 指令切换模型
+    assert 'class="compose-model"' not in r.text    # 不再有模型下拉
+
+
+def test_poll_defers_reload_while_modal_open(macro_web_client):
+    """轮询检测到拉取完成时，若弹框正打开，不得整页 reload（会冲掉对话窗口/历史）；
+    改为标记 pendingReload，等用户主动关闭弹框再刷新。"""
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "pendingReload" in r.text                 # 存在延迟刷新标记
+    # 轮询的 done 分支不再无条件 reload：必须先判 modal.open
+    poll_done = r.text.split("if (done)", 1)[1].split("}", 1)[0]
+    assert "modal.open" in poll_done or "pendingReload" in poll_done
+
+
+def test_compose_enter_ignores_ime_composition(macro_web_client):
+    """输入法选词回车不得被当成发送：keydown 处理 Enter 时必须排除 IME 组字态
+    （isComposing / keyCode 229），否则中文选字回车就误发。"""
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    # Enter 分支需带组字态守卫
+    enter_branch = r.text.split('e.key === "Enter"', 1)[1].split(")", 1)[0]
+    assert "isComposing" in enter_branch or "229" in enter_branch
+
+
+# --- 表格审计：上次 $X · 时间（解决 cost 闪一下就没）---
+
+def test_inputs_table_shows_last_cost(macro_web_client, monkeypatch, tmp_path):
+    import json
+    import app.macro_jobs as mj
+    root = tmp_path / "mf"
+    monkeypatch.setattr(mj, "LOG_ROOT", root)
+    d = root / SLUG / VARIANT
+    d.mkdir(parents=True)
+    safe = mj._safe("HY OAS")
+    (d / f"{safe}.meta.json").write_text(json.dumps(
+        {"name": "HY OAS", "cost": 0.0123,
+         "ended_at": "2026-06-09T00:30:00+00:00", "session_id": "s"}), encoding="utf-8")
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "上次 $0.0123" in r.text
