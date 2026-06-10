@@ -223,7 +223,8 @@ regime:
 holdings:
   - {slug: ..., display_name: ..., duration: long|short, rate_beta: high|mid|low,
      usd_exposure: high|mid|low, liquidity_beta: high|mid|low, exposure_score: high|mid|low,
-     regime_favor: [...], regime_hurt: [...], plain: "一句大白话传导链"}
+     regime_favor: [...], regime_hurt: [...], plain: "一句大白话传导链",
+     source: macro_synth, provisional: false, as_of_regime: vN}   # 新增三字段(3a)
 categorical_tail:       # 新增：spec §3.10 类别尾部 always-alert 状态快照（无市场序列可 diff）
   - {name: ..., state: 平静|警示|触发, note: "一句话"}
 ```
@@ -237,6 +238,7 @@ categorical_tail:       # 新增：spec §3.10 类别尾部 always-alert 状态�
 - `exposure_score`：综合暴露分（high/mid/low）。**`exposure_score: high` → 该持仓进 banner 的「最受影响」列表**（dashboard 直接消费这条规则）。
 - `regime_favor` / `regime_hurt`：当前哪些体制利好 / 利空它（list，元素如 `rates_down`、`liquidity_tight`、`cny_weak`）。
 - `plain`：一句大白话传导链（如"美元走强 → 中概外资流出 → 拼多多承压"）。
+- `source`=`macro_synth`（macro 合成判）/ `self_registered`（company 自注册待复核）；`provisional`=self_registered 未复核；`as_of_regime`=依据哪版 regime eval。**macro 合成时必复核 provisional 行：确认/改写标签 → 清 provisional → 更新 as_of_regime**。
 
 **覆盖范围（硬要求）**：`holdings` 数组**必须覆盖每一个现存 company 持仓**。先枚举当前所有 company-type topic 再逐个填，别漏：
 
@@ -325,6 +327,20 @@ print(f'评估快照已写 v{v}，reeval_pending 已自动清')
 ```
 
 > 不确定某结论挂哪些输入时，宁可多挂 `confirming`/`background`，但**承重输入必须标 `load_bearing`**——表头「承重漏判」红字（load_bearing 却未参与）就是查这个。
+
+**复核 provisional + 体制变扫失鲜（硬要求 · 写完评估快照后跑）**：record_evaluation 落新版后，跑横切回路——给依赖体制状态已变的持仓盖 stale 旗 + 写 `macro_regime` proposal（stage 不动）：
+
+```bash
+python3 -c "
+from prism.scripts import macro_xcut as mx
+res = mx.apply_holding_staleness('{slug}', '{variant}')
+cov = mx.coverage_gaps('{slug}', '{variant}')
+print(f'体制变扫失鲜：{res[\"applied\"]}/{res[\"scanned\"]} 持仓标 stale')
+print(f'覆盖率：{cov[\"covered_count\"]}/{cov[\"total_company\"]} company 已入表；漏注册={cov[\"missing\"]}；待复核 provisional={cov[\"provisional\"]}')
+"
+```
+
+> provisional 行的复核是 LLM 动作（在本合成对话里做）：对 `coverage_gaps` 报出的 provisional 持仓，逐行确认/改写四渠道标签、清 `provisional`、更新 `as_of_regime`，写回 transmission_map（照 §4 落盘惯例）。
 
 ### Step 6：critic 校验 + stage 推进
 
