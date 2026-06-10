@@ -304,6 +304,28 @@ print('decomposition_v1 已记录')
 "
 ```
 
+**写评估快照（闭环重估 · 硬要求）**：regime_read/transmission_map 落地后，调 `eval_snapshot.record_evaluation` 把「输入→判断」写回 `regime_eval_log.yaml`——这是 web「发起重估」与 diff/简报基准的脊梁，**漏写则 `reeval_pending` 戳永不自动清、「上次合成时间」不更新、下次 diff 失基准**。`record_evaluation` 用 `snapshot_inputs` 自动列全所有输入、据 `based_on` 标 `used`、自增 version、写 `evaluated_at`、**自动清 `reeval_pending`**；不变量校验（input_snapshot 列全 + based_on 不悬空 + role 合法）全程不放松。
+
+conclusions 覆盖本轮三体制读数与象限/脆弱度，每条带 `id` + 中文 `label` + `state` + `causal`（一句因果）+ `based_on:[{input, role}]`（`role` ∈ load_bearing/confirming/background；`input` 必须是 registry 里的真实输入名，否则校验报错）。本轮**有变化/越带的受影响结论必须重判**（见简报）；无变化的可沿用上版判读但仍要登记。
+
+```bash
+python3 -c "
+from prism.scripts.eval_snapshot import record_evaluation
+v = record_evaluation('{slug}', '{variant}', [
+    {'id': 'overall',      'label': '综合判断',     'state': '偏防御·压久期', 'causal': '...', 'based_on': [{'input': '<名>', 'role': 'load_bearing'}]},
+    {'id': 'rates_us',     'label': '美国利率体制', 'state': '高位企稳',     'causal': '...', 'based_on': [{'input': '<名>', 'role': 'load_bearing'}]},
+    {'id': 'rates_cn',     'label': '中国利率体制', 'state': '...',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'confirming'}]},
+    {'id': 'liquidity_us', 'label': '美国流动性体制','state': '...',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'load_bearing'}]},
+    {'id': 'fx_cny',       'label': '人民币汇率体制','state': '...',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'confirming'}]},
+    {'id': 'quadrant',     'label': '增长/通胀象限','state': '滞胀',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'background'}]},
+    {'id': 'fragility',    'label': '脆弱度',       'state': 'high',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'background'}]},
+], note='S5 合成/重估')
+print(f'评估快照已写 v{v}，reeval_pending 已自动清')
+"
+```
+
+> 不确定某结论挂哪些输入时，宁可多挂 `confirming`/`background`，但**承重输入必须标 `load_bearing`**——表头「承重漏判」红字（load_bearing 却未参与）就是查这个。
+
 ### Step 6：critic 校验 + stage 推进
 
 写完即跑一轮**内嵌 chain-critic**（模型同 `00-primer.md` Step 3，只读不写 subagent，`subagent_type: general-purpose` 不传 model），逐层校验因果链是否走通：

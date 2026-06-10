@@ -51,7 +51,7 @@
           {% else %}—{% endif %}
         </td>
         <td>{% if d.breached %}<span class="badge-breach">越带</span>{% else %}—{% endif %}</td>
-        <td>{% if d.conclusions %}{{ d.conclusions | join(', ') }}{% else %}<span class="hint">—</span>{% endif %}</td>
+        <td>{% if d.conclusions %}{% for cid in d.conclusions %}{{ clabels.get(cid, cid) }}{% if not loop.last %}、{% endif %}{% endfor %}{% else %}<span class="hint">—</span>{% endif %}</td>
       </tr>
     {% endfor %}
     </tbody>
@@ -80,7 +80,7 @@
         <td>{% if a.observed and a.observed.value is not none %}{{ a.observed.value }}{% else %}<span class="hint">未抓</span>{% endif %}</td>
         <td>{% if d and d.delta is not none and d.delta != 0 %}<span class="badge-delta">{{ '%+.4g' | format(d.delta) }}</span>{% else %}—{% endif %}</td>
         <td>{% if d and d.breached %}<span class="badge-breach">越带</span>{% else %}<span class="badge-ok">带内</span>{% endif %}</td>
-        <td>{% if d and d.conclusions %}{{ d.conclusions | join(', ') }}{% else %}<span class="hint">—</span>{% endif %}</td>
+        <td>{% if d and d.conclusions %}{% for cid in d.conclusions %}{{ clabels.get(cid, cid) }}{% if not loop.last %}、{% endif %}{% endfor %}{% else %}<span class="hint">—</span>{% endif %}</td>
       </tr>
     {% endfor %}
     </tbody>
@@ -89,22 +89,37 @@
 {% endif %}
 
 <div class="macro-toolbar">
-  <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/reeval" style="margin:0">
-    <button type="submit" class="reeval-btn">发起重估（组装简报）</button>
+  {% set rj = jobs.get('__reeval__') %}
+  {% if rj and rj.inflight %}
+    <span class="badge-inflight" data-job-id="{{ rj.job_id }}" title="重估合成进行中（刷新页面也保持此状态）">重估中…</span>
+    <button type="button" class="view-output-btn" data-job-id="{{ rj.job_id }}" data-name="__reeval__">查看重估输出</button>
+  {% else %}
+  <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/reeval" style="margin:0"
+        data-confirm="发起重估：盖简报戳 + 拉起一次真实合成（headless Claude 跑 _macro_regime 全流程，有 token 成本）。继续？">
+    <select name="model" class="reeval-model" title="重估合成所用模型（默认 opus4.8，可选）">
+      <option value="claude-opus-4-8" selected>opus4.8（默认）</option>
+      <option value="claude-sonnet-4-6">sonnet4.6</option>
+      <option value="claude-haiku-4-5">haiku4.5</option>
+    </select>
+    <button type="submit" class="reeval-btn">发起重估（简报+合成）</button>
   </form>
+  {% if reeval_cached %}
+    <button type="button" class="view-output-btn" data-name="__reeval__" title="查看上次重估合成的落盘输出（缓存，仍可在弹框续问驱动该会话）">查看重估输出</button>
+  {% endif %}
+  {% endif %}
   <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs/fetch-script-all" style="margin:0"
         data-confirm="跑全部脚本项（FRED / recipe）刷新——零 LLM、零成本。继续？">
     <button type="submit" class="batch-fetch-btn">⟳ 批量刷新脚本项（FRED/recipe·免费）</button>
   </form>
 </div>
-<p class="hint toolbar-hint">「发起重估」组装变更简报供对话重判；「批量刷新脚本项」只跑脚本通道（FRED / recipe）刷新全部 scripted 项，零 LLM、零成本。LLM 项请逐条点行内「⟳ 拉取」手动取（有 token 成本，默认 haiku·原生检索；不满意可在弹框换模型「重判」）。定时巡检也只跑脚本项、不自动跑 LLM。</p>
+<p class="hint toolbar-hint">「发起重估」盖变更简报戳 + 拉起一次真实合成（headless Claude 跑 _macro_regime 全流程、默认 opus4.8 可选，有 token 成本），自动弹出输出框可实时看 + 续问驱动；「批量刷新脚本项」只跑脚本通道（FRED / recipe）刷新全部 scripted 项，零 LLM、零成本。LLM 项请逐条点行内「⟳ 拉取」手动取（有 token 成本，默认 haiku·原生检索；不满意可在弹框换模型「重判」）。定时巡检也只跑脚本项、不自动跑 LLM。</p>
 
 {% if reeval_pending %}
 {% set b = reeval_pending.brief %}
 <section id="reeval-brief" class="reeval-brief">
   <h2>重估简报 <span class="hint">· 盖戳 {{ (reeval_pending.stamped_at or '')[:19] }}</span></h2>
   <p>变化输入 {{ b.changed | length }} · 越带 {{ b.breached | length }} · 到期 {{ b.due | length }}
-     · 受影响结论：{{ b.affected_conclusions | join(', ') or '—' }}</p>
+     · 受影响结论：{{ b.affected_conclusion_labels | join('、') or '—' }}</p>
   {% if b.unfetched %}<p class="hint">盲区（未抓、无法判断变化）：{{ b.unfetched | length }} 条</p>{% endif %}
   <p class="hint">拿此简报到对话发起重判；重判落地（写新评估）后此戳自动清除。</p>
 </section>
@@ -120,14 +135,39 @@
     <li><b>重要性</b>（importance）：<b>承重</b> = 结论的承重输入（变动需重判）；<b>确认</b> = 确认性；<b>背景</b> = 背景参考。</li>
   </ul>
 </details>
+
+{% if coverage_summary %}
+<div class="coverage-bar">
+  本轮体制重判 <b>v{{ coverage_summary.version }}</b>
+  {% if coverage_summary.evaluated_at %}<span class="hint">· {{ coverage_summary.evaluated_at }}</span>{% endif %}
+  用到 <b>{{ coverage_summary.used }}/{{ coverage_summary.total }}</b> 项输入
+  {% if coverage_summary.lb_unused %}
+    · <span class="cov-warn" title="承重输入却未在本轮重判中参与——疑似漏判">承重漏判 {{ coverage_summary.lb_unused | length }}/{{ coverage_summary.lb_total }}</span>
+    <span class="hint">（{{ coverage_summary.lb_unused | join('、') }}）</span>
+  {% else %}
+    · <span class="cov-ok">{{ coverage_summary.lb_total }} 项承重全部参与</span>
+  {% endif %}
+</div>
+{% endif %}
+
+<div class="cov-filter" role="group" aria-label="按本轮参与筛选">
+  <span class="hint">筛选：</span>
+  <button type="button" class="cov-chip active" data-filter="all">全部</button>
+  <button type="button" class="cov-chip" data-filter="used">只看参与</button>
+  <button type="button" class="cov-chip" data-filter="unused">只看未参与</button>
+  <button type="button" class="cov-chip" data-filter="lb-unused">承重漏判</button>
+</div>
 <table class="data-table">
   <thead><tr>
     <th>输入名</th><th>等级</th><th>频率</th><th>机制</th><th>目标</th><th>重要性</th>
-    <th>来源</th><th>抓取</th><th>上次评估值</th><th>现值 / Δ</th><th>上次拉取</th><th>参与·支撑</th><th>监控</th>
+    <th title="本轮体制重判（regime_eval_log 最新一版）是否用到该输入。绿=用到、灰=未用到、红=承重却未用到（疑似漏判）">本轮参与</th>
+    <th>来源</th><th>抓取</th><th>上次评估值</th><th>现值 / Δ</th><th>上次拉取</th><th>监控</th>
   </tr></thead>
   <tbody>
   {% for inp in inputs %}
-    <tr id="input-{{ loop.index0 }}">
+    {% set d = diff.get(inp.name) %}
+    {% set lb_gap = inp.importance == 'load_bearing' and not (d and d.used) %}
+    <tr id="input-{{ loop.index0 }}" data-used="{{ '1' if d and d.used else '0' }}" data-lbunused="{{ '1' if lb_gap else '0' }}"{% if lb_gap %} class="lb-unused-row"{% endif %}>
       <td><code>{{ inp.name }}</code>
         {% if inp.note %}<div class="note-caveat" title="口径/代理说明">ⓘ {{ inp.note }}</div>{% endif %}
       </td>
@@ -136,6 +176,12 @@
       <td>{% if inp.mechanism %}<span title="{{ mechanism_tip.get(inp.mechanism, '') }}">{{ inp.mechanism }}</span>{% else %}—{% endif %}</td>
       <td>{% for t in inp.targets or [] %}{{ target_label.get(t, t) }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
       <td>{{ importance_label.get(inp.importance, inp.importance or '—') }}</td>
+      <td>
+        {% if d and d.used %}<span class="badge-used">参与</span>
+        {% elif d %}<span class="badge-unused">未参与</span>{% endif %}
+        {% if lb_gap %}<span class="badge-lb-gap" title="承重输入但本轮未参与判读——疑似漏判，建议复核">承重漏判</span>{% endif %}
+        {% if d and d.conclusions %}<div class="hint">{% for cid in d.conclusions %}{{ clabels.get(cid, cid) }}{% if not loop.last %}、{% endif %}{% endfor %}</div>{% endif %}
+      </td>
       <td>
         {% if inp.source_url %}<a href="{{ inp.source_url }}" target="_blank" rel="noopener">{{ inp.source or '源' }}</a>
         {% else %}{{ inp.source or '—' }}{% endif %}
@@ -162,7 +208,6 @@
         {% set lm = last_meta.get(inp.name) if last_meta else none %}
         {% if lm %}<div class="hint last-cost" title="上次 LLM 取数花费 / 时间（落盘 meta，下次拉取覆盖）">上次 ${{ '%.4f' | format(lm.cost) }}{% if lm.ended_at %} · {{ lm.ended_at | shanghai }}{% endif %}</div>{% endif %}
       </td>
-      {% set d = diff.get(inp.name) %}
       <td>{% if d and d.snapshot_value is not none %}{{ d.snapshot_value }}{% else %}<span class="hint">—</span>{% endif %}</td>
       <td>
         {% if d and d.live_value is not none %}{{ d.live_value }}
@@ -173,10 +218,6 @@
         {% if inp.observed and inp.observed.evidence %}<div class="hint evidence-line" title="{{ inp.observed.evidence }}">原因：{{ inp.observed.evidence | truncate(40, true) }}</div>{% endif %}
       </td>
       <td>{% if inp.observed and inp.observed.checked_at %}<span class="hint" title="上次成功落值时间（checked_at，上海时区）">{{ inp.observed.checked_at | shanghai }}</span>{% else %}<span class="hint">未拉取</span>{% endif %}</td>
-      <td>
-        {% if d and d.used %}<span class="badge-used">参与</span>{% elif d %}<span class="badge-unused">未参与</span>{% endif %}
-        {% if d and d.conclusions %}<span class="hint">{{ d.conclusions | join(', ') }}</span>{% endif %}
-      </td>
       <td>
         {# 监控缺省随 rung：scripted 默认开、其余默认关（镜像 macro_registry.monitoring_enabled）。 #}
         {% set mon = inp.monitoring or {} %}
@@ -203,7 +244,8 @@
           <button type="submit" class="llm-fetch-btn" title="拉起一次 Claude headless 取数+判可脚本化（有 token 成本）">⟳ 拉取</button>
         </form>
         {% endif %}
-        {% if job %}<button type="button" class="view-output-btn" data-job-id="{{ job.job_id }}" data-name="{{ inp.name }}" title="查看该任务的 Claude 实时/最终输出">查看输出</button>{% endif %}
+        {% if job %}<button type="button" class="view-output-btn" data-job-id="{{ job.job_id }}" data-name="{{ inp.name }}" title="查看该任务的 Claude 实时/最终输出">查看输出</button>
+        {% elif inp.name in cached %}<button type="button" class="view-output-btn" data-name="{{ inp.name }}" title="查看上次落盘的取数输出（缓存，仍可在弹框续问该行会话）">查看输出</button>{% endif %}
         {% if inp.name in due %}<span class="badge-due" title="到期/恒取，建议手动拉取（定时巡检不再自动跑 LLM，出于成本/耗时）">到期·待拉取</span>{% endif %}
         {% elif inp.availability == 'scripted' %}
         <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs/fetch-script" style="margin:0">
@@ -325,6 +367,17 @@
   .compose-hint { padding: 0 .9em .6em; background: #fafbfc; font-size: .74em; line-height: 1.4; }
   .compose-hint code { background: #eef2ff; color: #4338ca; padding: 0 .25em; border-radius: 3px; }
   .last-cost { margin-top: .3em; font-size: .72em; }
+  /* 本轮参与：覆盖汇总条 + 筛选 chips + 承重漏判高亮 */
+  .coverage-bar { margin: .2em 0 .6em; padding: .5em .85em; border-radius: 5px; background: #f6f8fc; border: 1px solid #e3e9f2; font-size: .9em; line-height: 1.6; }
+  .coverage-bar .cov-warn { color: #b42318; font-weight: 600; }
+  .coverage-bar .cov-ok { color: #2d7a3a; font-weight: 600; }
+  .cov-filter { display: flex; gap: .4em; align-items: center; margin: 0 0 .6em; flex-wrap: wrap; }
+  .cov-chip { font-size: .8em; padding: .2em .8em; border-radius: 12px; border: 1px solid #d0d7de; background: #fff; color: #555; cursor: pointer; }
+  .cov-chip:hover { background: #f1f3f5; }
+  .cov-chip.active { background: #2a5db0; color: #fff; border-color: #2a5db0; }
+  .lb-unused-row { background: #fff6f0; }
+  .lb-unused-row > td:first-child { box-shadow: inset 3px 0 0 #e8843c; }
+  .badge-lb-gap { font-size: .72em; padding: .1em .4em; border-radius: 3px; background: #fde8d8; color: #b45309; border: 1px solid #f0c36d; margin-left: .25em; white-space: nowrap; }
 </style>
 
 <script>
@@ -348,6 +401,29 @@
       var raw = sessionStorage.getItem(FLASH_KEY);
       if (raw) { sessionStorage.removeItem(FLASH_KEY); var f = JSON.parse(raw); showFlash(f.kind, f.msg); }
     } catch (e) {}
+  })();
+
+  // ── 本轮参与筛选：按 data-used / data-lbunused 显隐行（纯前端，不重载）──
+  (function () {
+    var chips = document.querySelectorAll(".cov-chip");
+    if (!chips.length) return;
+    var rows = document.querySelectorAll("table.data-table tbody tr[id^='input-']");
+    function apply(mode) {
+      rows.forEach(function (r) {
+        var used = r.dataset.used === "1";
+        var lbu = r.dataset.lbunused === "1";
+        var show = mode === "all" || (mode === "used" && used) ||
+                   (mode === "unused" && !used) || (mode === "lb-unused" && lbu);
+        r.style.display = show ? "" : "none";
+      });
+    }
+    chips.forEach(function (c) {
+      c.addEventListener("click", function () {
+        chips.forEach(function (x) { x.classList.remove("active"); });
+        c.classList.add("active");
+        apply(c.dataset.filter);
+      });
+    });
   })();
 
   // ── 监控开关：拦截提交、后台 fetch、原地翻转 —— 不重载、不滚动 ──
@@ -428,14 +504,33 @@
     };
     es.onerror = function () { closeStream(); setBusy(false); modalStatus.textContent = "（输出流已结束）"; };
   }
-  function openOutput(jobId, name) {        // 点「查看输出」：清空 + 标题 + 连流
+  function showModalEl() {                  // 打开 <dialog>（兼容无 showModal 的老浏览器）
+    if (typeof modal.showModal === "function") { if (!modal.open) modal.showModal(); }
+    else { modal.setAttribute("open", ""); }
+  }
+  function openOutput(jobId, name) {        // 有在途/在内存 job：清空 + 标题 + 连实时流（含缓冲重放）
     curName = name;
     modalOut.textContent = "";
     modalTitle.textContent = "会话 · " + (name || "");
     setBusy(false);                          // 重置本次会话态
-    if (typeof modal.showModal === "function") { if (!modal.open) modal.showModal(); }
-    else { modal.setAttribute("open", ""); }
+    showModalEl();
     attachStream(jobId);
+  }
+  function openCached(name) {               // 无 job（已超 TTL/重启）：读落盘 .log 静态展示；composer 仍可续问（say 回落 meta session）
+    curName = name;
+    modalOut.textContent = "";
+    modalTitle.textContent = "会话 · " + (name || "");
+    setBusy(false);
+    closeStream();
+    showModalEl();
+    modalStatus.textContent = "读取缓存…";
+    fetch(BASE + "/macro-inputs/output?name=" + encodeURIComponent(name), { headers: { "Accept": "application/json" } })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function (d) {
+        appendOut(d.text || "（空）");
+        modalStatus.textContent = "缓存输出（" + (d.model || "?") + "）——可在下方续问该行会话";
+      })
+      .catch(function (s) { modalStatus.textContent = (s === 404) ? "无缓存输出。" : "读取失败（" + s + "）。"; });
   }
   function closeModal() { closeStream(); if (modal.open && modal.close) modal.close(); else modal.removeAttribute("open"); }
   modal.querySelector(".task-modal-x").addEventListener("click", closeModal);
@@ -443,7 +538,12 @@
     closeStream();
     if (pendingReload) { pendingReload = false; location.reload(); }  // 仅当期间有拉取完成时，关弹框后刷新出新值
   });
-  function wireViewButton(b) { b.addEventListener("click", function () { openOutput(b.dataset.jobId, b.dataset.name); }); }
+  function wireViewButton(b) {              // 有 job-id → 连实时流；只有缓存（data-name）→ 读落盘
+    b.addEventListener("click", function () {
+      if (b.dataset.jobId) openOutput(b.dataset.jobId, b.dataset.name);
+      else openCached(b.dataset.name);
+    });
+  }
   document.querySelectorAll(".view-output-btn").forEach(wireViewButton);
 
   // 弹框 = 对该行 claude 会话的 REPL（shell 式）：消息原样 resume 续发，无任何默认操作。
@@ -551,9 +651,10 @@
           var jobs = data.jobs || {}, names = Object.keys(jobs);
           if (!names.length) { showFlash("warn", "没有可取数的 LLM / 待脚本项。"); restore(btn, original); return; }
           names.forEach(function (n) { watching[jobs[n]] = true; markRowInflight(n, jobs[n]); });
-          showFlash("ok", "已在后台启动 " + names.length + " 条取数（点「查看输出」看实时进度；完成后自动刷新）。");
+          showFlash("ok", "已在后台启动 " + names.length + " 条取数（完成后自动刷新表格）。");
           restore(btn, original);
           startPolling();
+          if (names.length === 1) { openOutput(jobs[names[0]], names[0]); }   // 单条拉取：自动弹出实时输出框
         })
         .catch(function () { restore(btn, original); showFlash("err", "启动失败：请求未成功（可重试，或查看 prism/logs/monitor.log）。"); });
     });
@@ -586,14 +687,29 @@
     done: function () { location.reload(); }
   });
 
-  wireAction('form[action$="/reeval"]', {
-    loading: "⏳ 重估中…",
-    errMsg: "重估失败：请求未成功。",
-    onResult: function (d) {
-      return { kind: "ok", msg: "✓ 重估简报已生成：变化 " + (d.changed || 0) + " · 越带 " + (d.breached || 0)
-                                + " · 到期 " + (d.due || 0) + " 条。见下方简报。" };
-    },
-    done: function () { location.hash = "#reeval-brief"; location.reload(); }
+  // 发起重估：盖戳 + 拉起真实合成 job → 自动弹输出框流式 + 续问驱动。不整页 reload（会冲掉弹框）；
+  // 把 job 纳入 watching + 起轮询，合成转终态后（若弹框已关）才刷新出新简报/覆盖率。
+  document.querySelectorAll('form[action$="/reeval"]').forEach(function (f) {
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (f.dataset.confirm && !window.confirm(f.dataset.confirm)) return;
+      var btn = f.querySelector('button[type="submit"]');
+      var original = btn ? btn.innerHTML : "";
+      if (btn) { btn.disabled = true; btn.classList.add("btn-loading"); btn.textContent = "⏳ 启动…"; }
+      fetch(f.action, { method: "POST", body: new FormData(f), headers: { "Accept": "application/json" } })
+        .then(function (r) { return r.status === 202 ? r.json() : Promise.reject(r.status); })
+        .then(function (data) {
+          showFlash("ok", "✓ 重估简报已生成（变化 " + (data.changed || 0) + " · 越带 " + (data.breached || 0)
+                          + " · 到期 " + (data.due || 0) + " 条）+ 已拉起真实合成（" + (data.model || "") + "），见输出框。");
+          restore(btn, original);
+          if (data.job_id) {
+            watching[data.job_id] = true;
+            openOutput(data.job_id, data.name);   // 自动弹出实时输出框（同一弹框栈，可续问驱动）
+            startPolling();
+          }
+        })
+        .catch(function () { restore(btn, original); showFlash("err", "重估失败：请求未成功。"); });
+    });
   });
 })();
 </script>

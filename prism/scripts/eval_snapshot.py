@@ -105,6 +105,56 @@ def append_evaluation(slug: str, variant: str, evaluation: dict) -> int:
     return version
 
 
+def conclusion_labels(slug: str, variant: str) -> dict:
+    """最近评估里 {结论 id: 中文 label}；无评估 / 无 label 的项不收 → {}（调用方回落 id）。"""
+    latest = latest_evaluation(slug, variant)
+    if not latest:
+        return {}
+    out = {}
+    for c in latest.get("conclusions") or []:
+        cid, label = c.get("id"), c.get("label")
+        if cid and label:
+            out[cid] = label
+    return out
+
+
+def snapshot_inputs(slug: str, variant: str) -> list:
+    """枚举全部 registry 输入，组 append_evaluation 的 input_snapshot 骨架（零 LLM）。
+
+    返回 [{name, value, as_of, used:False}]，policy 项另带 stance。used 默认 False，
+    由 record_evaluation 据 conclusions.based_on 标 True。消除 headless 手工列全 ~114 条的漏列面。
+    """
+    registry = reg.read_registry(slug, variant)
+    out = []
+    for e in registry.get("inputs") or []:
+        obs = e.get("observed") or {}
+        row = {"name": e["name"], "value": obs.get("value"),
+               "as_of": obs.get("as_of"), "used": False}
+        if e.get("stance_scale"):
+            row["stance"] = obs.get("stance")
+        out.append(row)
+    return out
+
+
+def record_evaluation(slug: str, variant: str, conclusions: list, *, note: str | None = None) -> int:
+    """便利写回：用 snapshot_inputs 自动列全输入 + 据 based_on 标 used，再走 append_evaluation。
+
+    降低 headless 闭环手工拼 input_snapshot 的漏列/悬空风险；不变量校验仍由 append_evaluation 全程把关
+    （列全 + based_on 不悬空 + role 合法），并自动清 reeval_pending、version 自增、写 evaluated_at。
+    """
+    used_names = {b.get("input")
+                  for c in (conclusions or [])
+                  for b in (c.get("based_on") or []) if b.get("input")}
+    snapshot = snapshot_inputs(slug, variant)
+    for s in snapshot:
+        if s["name"] in used_names:
+            s["used"] = True
+    evaluation = {"input_snapshot": snapshot, "conclusions": conclusions or []}
+    if note:
+        evaluation["note"] = note
+    return append_evaluation(slug, variant, evaluation)
+
+
 def conclusions_for_input(evaluation: dict, name: str) -> list:
     """based_on 反查：该输入支撑哪些 conclusion id。"""
     out = []
@@ -128,8 +178,11 @@ def assemble_reeval_brief(slug: str, variant: str) -> dict:
     due = [e["name"] for e in scan["due_event"] + scan["due_policy"]]
     alert = [e["name"] for e in scan["alert_series"]]
     affected = sorted({c for d in (changed + breached) for c in d["conclusions"]})
+    labels = conclusion_labels(slug, variant)
+    affected_labels = [labels.get(cid, cid) for cid in affected]   # 缺 label 回落 id
     return {"changed": changed, "breached": breached, "due": due,
-            "alert": alert, "unfetched": unfetched, "affected_conclusions": affected}
+            "alert": alert, "unfetched": unfetched, "affected_conclusions": affected,
+            "affected_conclusion_labels": affected_labels}
 
 
 def stamp_reeval_pending(slug: str, variant: str, brief: dict) -> None:

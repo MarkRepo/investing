@@ -32,6 +32,13 @@ MACRO_FETCH_MODEL = os.environ.get("MACRO_FETCH_MODEL", "haiku")  # 降本：默
 # 禁 Bash/Write/Edit → 强制只能检索 + 末尾返回 JSON，杜绝 rogue 落盘/改文件（去 Bash 回合）。
 DISALLOWED_TOOLS = ["Bash", "Write", "Edit"]
 
+# 发起重估：拉起真实合成（跑 _macro_regime 全流程）。与取数相反——全能力会话（放开 Bash/Write/Edit + MCP）
+# 才能写产出 + 调 append_evaluation 闭环；默认 opus4.8 完整 id（别名 opus 经网关解析成 4.7，与要求不符）；
+# 单独长超时（合成远比单条取数久）。复用 job 系统，保留名 __reeval__ 走同一弹框/SSE/续问/缓存栈。
+REEVAL_NAME = "__reeval__"
+REEVAL_MODEL = os.environ.get("MACRO_REEVAL_MODEL", "claude-opus-4-8")
+REEVAL_TIMEOUT = float(os.environ.get("MACRO_REEVAL_TIMEOUT", "2700"))  # 45min
+
 # 输出 + session_id + cost 落盘根目录（prism/logs/ 已 gitignore）。同名覆盖；供 resume-after-restart 与表格审计。
 LOG_ROOT = claude_runner.REPO_ROOT / "prism" / "logs" / "macro_fetch"
 
@@ -161,6 +168,58 @@ def launch(slug: str, variant: str, name: str, *, entry: dict) -> Job:
     return job
 
 
+def _make_reeval_prompt(slug: str, variant: str) -> str:
+    """重估启动语：注入现算简报（中文受影响结论）+ 指令读 _macro_regime.md 全流程执行 + 收尾闭环写评估。"""
+    brief_block = ""
+    try:                                   # 简报组装失败不应阻断重估启动（合成内部也会自查）
+        from prism.scripts import eval_snapshot as es
+        b = es.assemble_reeval_brief(slug, variant)
+        changed = "、".join(c["name"] for c in b.get("changed") or []) or "—"
+        breached = "、".join(c["name"] for c in b.get("breached") or []) or "—"
+        labels = "、".join(b.get("affected_conclusion_labels") or []) or "—"
+        unfetched = len(b.get("unfetched") or [])
+        brief_block = (f"\n## 现算重估简报（零-LLM diff）\n"
+                       f"- 变化输入：{changed}\n- 越带：{breached}\n"
+                       f"- 受影响结论：{labels}\n- 盲区（未抓、无法判断变化）：{unfetched} 条\n")
+    except Exception:
+        brief_block = "\n（重估简报现算失败，请在合成内自行跑 eval_snapshot.diff_since_last 体检。）\n"
+    return (
+        f"你在 headless 模式下为 prism 执行宏观 regime **真实重估/合成**。topic={slug} variant={variant}。\n"
+        f"这是全能力会话（可 Read/Bash/Write/Edit + MCP，cwd=仓库根）。\n"
+        f"{brief_block}\n"
+        f"步骤：\n"
+        f"1. 读 `prism/workflows/04-synthesize/_macro_regime.md` 并对本 topic **严格全流程执行**"
+        f"（Step 0 前置检查/gap/增量判定 → primer → m_regime_read → transmission_map → thesis/decomposition → critic）。\n"
+        f"2. 上面简报的「变化输入/越带」对应的「受影响结论」本轮必须重判；无变化的可判 fresh、轻量或跳过重写。\n"
+        f"3. **收尾闭环（硬要求）**：合成落地后调 `eval_snapshot.record_evaluation(slug, variant, conclusions, note=...)` "
+        f"写评估快照——它用 snapshot_inputs 自动列全输入、据 based_on 标 used、自增 version、自动清 reeval_pending。"
+        f"conclusions 覆盖三体制读数（overall/rates_us/rates_cn/liquidity_us/fx_cny/quadrant/fragility），"
+        f"每条带中文 label + state + based_on:[{{input, role}}]（role ∈ load_bearing/confirming/background）。\n"
+    )
+
+
+def launch_reeval(slug: str, variant: str, *, model: str | None = None) -> Job:
+    """点「发起重估」拉起的真实合成 job：全能力非沙箱、默认 opus4.8、长超时、不写 registry（自己落盘）。
+
+    复用 job 系统，保留名 __reeval__ → 弹框/SSE/续问/缓存栈零改动直接用。同名在途 → 返现有 job（去重）。
+    必须在事件循环内调用（路由 async）。
+    """
+    _prune()
+    key = (slug, variant, REEVAL_NAME)
+    existing = _inflight.get(key)
+    if existing and existing in _jobs:
+        return _jobs[existing]
+    job = Job(id=f"job-{next(_seq)}", slug=slug, variant=variant, name=REEVAL_NAME,
+              entry={"name": REEVAL_NAME}, status="queued", started_at=time.monotonic())
+    _jobs[job.id] = job
+    _inflight[key] = job.id
+    prompt = _make_reeval_prompt(slug, variant)
+    job.task = asyncio.create_task(_run(
+        job, prompt=prompt, model=model or REEVAL_MODEL, chat=True,
+        sandbox=False, timeout=REEVAL_TIMEOUT, apply_json=False))
+    return job
+
+
 def _parse_model_directive(message: str) -> tuple[str | None, str]:
     """解析消息开头的 `/model <名> [剩余]`（仿 Claude Code /model）。
 
@@ -205,17 +264,25 @@ async def say(slug: str, variant: str, name: str, message: str,
               session_id=session_id)
     _jobs[job.id] = job
     _inflight[(slug, variant, name)] = job.id
-    job.task = asyncio.create_task(_run(job, prompt=message, resume=session_id, model=model, chat=True))
+    reeval = name == REEVAL_NAME              # 续问重估会话 → 同样全能力非沙箱、长超时、不写 registry
+    job.task = asyncio.create_task(_run(
+        job, prompt=message, resume=session_id, model=model, chat=True,
+        sandbox=not reeval,
+        timeout=REEVAL_TIMEOUT if reeval else SINGLE_TIMEOUT,
+        apply_json=not reeval))
     return job
 
 
 async def _run(job: Job, *, prompt: str | None = None,
                resume: str | None = None, model: str | None = None,
-               chat: bool = False) -> None:
+               chat: bool = False, sandbox: bool = True,
+               timeout: float = SINGLE_TIMEOUT, apply_json: bool = True) -> None:
     """跑一条 headless：初次取数 prompt=None（用 _make_prompt），对话/重判则传 prompt=消息 + resume=sid。
 
     chat=False（取数）：status=="ok" 时必须解析出 JSON → 写 registry；解析失败 = 不落值、标 failed、留 raw。
     chat=True（弹框对话）：有 JSON 则照常 apply（显式重判会更新值），无 JSON 也算 done（普通问答，不写、不报错）。
+    sandbox=True（取数/对话）：strict_mcp 零 MCP + 禁 Bash/Write/Edit；sandbox=False（重估合成）：全能力会话。
+    apply_json=False（重估）：跳过末尾 JSON 解析——重估靠自己的 Write/Bash 落盘，绝不误当取数 payload 覆盖 registry。
     session_id 从任一带它的事件捕获（system/init 必带；result 视网关可能不带）。无论成败，终态都 _persist。
     """
     sem = _get_sem()
@@ -242,19 +309,20 @@ async def _run(job: Job, *, prompt: str | None = None,
             status, rc = await claude_runner.run_headless_streaming(
                 p, on_event=_append,
                 model=model or MACRO_FETCH_MODEL,
-                mcp_config=None, strict_mcp=True,        # 原生检索：零 MCP server
-                disallowed_tools=DISALLOWED_TOOLS,        # 禁 Bash/Write/Edit
+                mcp_config=None,
+                strict_mcp=sandbox,                                   # 沙箱：零 MCP server；重估：放开
+                disallowed_tools=DISALLOWED_TOOLS if sandbox else None,  # 沙箱禁工具；重估放开 Bash/Write/Edit
                 resume=resume,
-                timeout=SINGLE_TIMEOUT)
+                timeout=timeout)
             job.result["status"] = status
             job.result["returncode"] = rc
             if status == "ok":
-                items = _parse_json_payload(job.result.get("final_text") or "")
+                items = _parse_json_payload(job.result.get("final_text") or "") if apply_json else None
                 if items is not None:
                     _apply_payload(job, items)      # 有 JSON：取数 / 显式重判都更新 registry
                     job.status = "done"
-                elif chat:
-                    job.status = "done"             # 对话回合无 JSON 不算失败（普通问答）
+                elif chat or not apply_json:
+                    job.status = "done"             # 对话回合 / 重估无 JSON 不算失败（重估自己落盘）
                 else:
                     job.status = "failed"           # 取数必须吐 JSON：解析失败 = 不落值、可在弹框对话补救
                     job.result["parse_error"] = True
@@ -348,6 +416,17 @@ def read_meta(slug: str, variant: str, name: str) -> dict | None:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
+        return None
+
+
+def read_log(slug: str, variant: str, name: str) -> str | None:
+    """读某行上次落盘的 .log 全文（取数输出）；无则 None。供「查看输出」在 job 超 TTL/重启后仍看缓存。"""
+    path = LOG_ROOT / slug / variant / f"{_safe(name)}.log"
+    if not path.exists():
+        return None
+    try:
+        return path.read_text(encoding="utf-8")
+    except OSError:
         return None
 
 

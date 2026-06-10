@@ -124,7 +124,8 @@ def test_assemble_brief_lists_changed_unfetched_affected(tmp_topic):
     assert "A" in [c["name"] for c in brief["changed"]]
     assert "B" in brief["unfetched"]                        # B 从未抓到值
     assert "rates" in brief["affected_conclusions"]
-    assert set(brief) == {"changed", "breached", "due", "alert", "unfetched", "affected_conclusions"}
+    assert set(brief) == {"changed", "breached", "due", "alert", "unfetched",
+                          "affected_conclusions", "affected_conclusion_labels"}
 
 
 def test_stamp_and_clear_reeval_pending(tmp_topic):
@@ -134,6 +135,61 @@ def test_stamp_and_clear_reeval_pending(tmp_topic):
     assert es.read_eval_log(slug, variant)["reeval_pending"] is not None
     es.append_evaluation(slug, variant, _ev_all())          # 新评估落地清戳
     assert es.read_eval_log(slug, variant)["reeval_pending"] is None
+
+
+def test_snapshot_inputs_lists_all_registry_inputs(tmp_topic):
+    slug, variant = tmp_topic
+    reg.record_observation(slug, variant, "A", value=3.0, as_of="2026-05-01")
+    by = {s["name"]: s for s in es.snapshot_inputs(slug, variant)}
+    assert set(by) == {"A", "B"}
+    assert by["A"]["value"] == 3.0
+    assert by["A"]["as_of"] == "2026-05-01"
+    assert by["A"]["used"] is False          # 默认未用，调用方/record_evaluation 据 based_on 标
+    assert by["B"]["value"] is None
+
+
+def test_snapshot_inputs_policy_carries_stance(tmp_topic):
+    slug, variant = tmp_topic
+    reg.upsert_input(slug, variant, {
+        "name": "C", "tier": "B", "cadence_type": "policy", "mechanism": "CO",
+        "importance": "confirming", "stance_scale": "hawk_dove",
+        "observed": {"stance": "偏鹰", "evidence": "x"}})
+    by = {s["name"]: s for s in es.snapshot_inputs(slug, variant)}
+    assert by["C"]["stance"] == "偏鹰"
+
+
+def test_record_evaluation_builds_snapshot_and_clears_pending(tmp_topic):
+    slug, variant = tmp_topic
+    reg.record_observation(slug, variant, "A", value=3.0, as_of="2026-05-01")
+    es.stamp_reeval_pending(slug, variant, {"changed": [], "affected_conclusions": []})
+    conclusions = [{"id": "rates", "label": "利率体制", "state": "紧",
+                    "based_on": [{"input": "A", "role": "load_bearing"}], "causal": "A→紧"}]
+    assert es.record_evaluation(slug, variant, conclusions, note="重估") == 1
+    log = es.read_eval_log(slug, variant)
+    assert log["reeval_pending"] is None                  # 闭环自动清戳
+    latest = es.latest_evaluation(slug, variant)
+    snap = {s["name"]: s for s in latest["input_snapshot"]}
+    assert set(snap) == {"A", "B"}                        # input_snapshot 列全
+    assert snap["A"]["used"] is True                      # based_on 命中 → used
+    assert snap["B"]["used"] is False
+    assert latest["conclusions"][0]["id"] == "rates"
+    assert latest.get("note") == "重估"
+
+
+def test_conclusion_labels_maps_id_to_label(tmp_topic):
+    slug, variant = tmp_topic
+    assert es.conclusion_labels(slug, variant) == {}      # 无评估 → 空
+    es.append_evaluation(slug, variant, _ev_all())
+    assert es.conclusion_labels(slug, variant) == {"rates": "利率"}
+
+
+def test_brief_includes_chinese_labels(tmp_topic):
+    slug, variant = tmp_topic
+    es.append_evaluation(slug, variant, _ev_all())
+    reg.record_observation(slug, variant, "A", value=4.0)
+    brief = es.assemble_reeval_brief(slug, variant)
+    assert brief["affected_conclusions"] == ["rates"]
+    assert brief["affected_conclusion_labels"] == ["利率"]    # id→中文 label
 
 
 def test_diff_policy_stance_direction(tmp_topic):

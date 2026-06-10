@@ -332,13 +332,74 @@ def test_monitoring_toggle_404_unknown_input(macro_web_client):
     assert r.status_code == 404
 
 
-def test_reeval_post_stamps_and_brief_shows(macro_web_client):
+def test_reeval_post_stamps_and_brief_shows(macro_web_client, monkeypatch):
     import prism.scripts.eval_snapshot as es
+    import app.macro_jobs as mj
+    monkeypatch.setattr(mj, "launch_reeval", lambda s, v, *, model=None: _FakeJob("job-re"))
     r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/reeval", follow_redirects=False)
     assert r.status_code == 303
     assert es.read_eval_log(SLUG, VARIANT)["reeval_pending"] is not None
     r2 = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
     assert "重估简报" in r2.text
+
+
+def test_reeval_launches_real_synthesis_job(macro_web_client, monkeypatch):
+    """发起重估除盖戳外，还拉起一个真实合成 job（默认 opus4.8），JSON 回 job_id/name 供前端弹框。"""
+    import app.macro_jobs as mj
+    cap = {}
+
+    def fake_launch_reeval(slug, variant, *, model=None):
+        cap.update(slug=slug, variant=variant, model=model)
+        return _FakeJob("job-re1")
+
+    monkeypatch.setattr(mj, "launch_reeval", fake_launch_reeval)
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/reeval",
+                              headers={"Accept": "application/json"})
+    assert r.status_code == 202
+    body = r.json()
+    assert body["job_id"] == "job-re1"
+    assert body["name"] == mj.REEVAL_NAME == "__reeval__"
+    assert body["model"] == mj.REEVAL_MODEL          # 默认 opus4.8
+    assert cap["model"] == mj.REEVAL_MODEL
+
+
+def test_reeval_passes_selected_model(macro_web_client, monkeypatch):
+    """模型下拉选了 sonnet → 透传给 launch_reeval。"""
+    import app.macro_jobs as mj
+    cap = {}
+    monkeypatch.setattr(mj, "launch_reeval",
+                        lambda s, v, *, model=None: cap.update(model=model) or _FakeJob("j"))
+    r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/reeval",
+                              data={"model": "claude-sonnet-4-6"},
+                              headers={"Accept": "application/json"})
+    assert r.status_code == 202
+    assert cap["model"] == "claude-sonnet-4-6"
+
+
+def test_reeval_output_endpoint_serves_reeval_cache(macro_web_client, monkeypatch, tmp_path):
+    """重估输出走同一缓存端点（name=__reeval__）。"""
+    import app.macro_jobs as mj
+    _seed_cache(monkeypatch, tmp_path, mj.REEVAL_NAME, text="合成日志第一行\n第二行")
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs/output",
+                             params={"name": mj.REEVAL_NAME})
+    assert r.status_code == 200
+    assert r.json()["text"] == "合成日志第一行\n第二行"
+
+
+def test_affected_conclusions_render_chinese(macro_web_client):
+    """变更汇总/重估简报的「受影响结论」显示中文 label（综合判断…），不再是裸 id。"""
+    import prism.scripts.macro_registry as reg
+    import prism.scripts.eval_snapshot as es
+    reg.record_observation(SLUG, VARIANT, "HY OAS", value=3.5, as_of="2026-06-07")
+    es.append_evaluation(SLUG, VARIANT, {
+        "input_snapshot": [{"name": "HY OAS", "value": 3.0, "as_of": "2026-06-01", "used": True}],
+        "conclusions": [{"id": "liquidity_us", "label": "美国流动性体制", "state": "偏紧",
+                         "based_on": [{"input": "HY OAS", "role": "confirming"}],
+                         "causal": "HY OAS 走阔 → 流动性偏紧"}]})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert r.status_code == 200
+    assert "美国流动性体制" in r.text          # 中文 label
+    assert ">liquidity_us<" not in r.text       # 不再裸露英文 id
 
 
 def test_primer_uses_links_not_bare_filenames():
@@ -652,10 +713,12 @@ def test_fetch_llm_json_returns_jobs(macro_web_client, monkeypatch):
     assert body["jobs"] == {"ISM PMI": "job-ISM PMI"} and body["started"] == ["ISM PMI"]
 
 
-def test_reeval_json_returns_counts(macro_web_client):
+def test_reeval_json_returns_counts(macro_web_client, monkeypatch):
+    import app.macro_jobs as mj
+    monkeypatch.setattr(mj, "launch_reeval", lambda s, v, *, model=None: _FakeJob("job-rc"))
     r = macro_web_client.post(f"/prism/{SLUG}/{VARIANT}/reeval",
                               headers={"Accept": "application/json"})
-    assert r.status_code == 200
+    assert r.status_code == 202
     body = r.json()
     assert {"changed", "breached", "due", "affected"}.issubset(body.keys())
 
@@ -806,3 +869,56 @@ def test_inputs_table_shows_last_cost(macro_web_client, monkeypatch, tmp_path):
          "ended_at": "2026-06-09T00:30:00+00:00", "session_id": "s"}), encoding="utf-8")
     r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
     assert "上次 $0.0123" in r.text
+
+
+# --- 「查看输出」常驻：只要落盘缓存在就显示，可看缓存输出 ---
+
+def _seed_cache(monkeypatch, tmp_path, name, *, text="· 模型 claude-haiku-4.5\n值=50", cost=0.02):
+    import json
+    import app.macro_jobs as mj
+    root = tmp_path / "mf"
+    monkeypatch.setattr(mj, "LOG_ROOT", root)
+    d = root / SLUG / VARIANT
+    d.mkdir(parents=True, exist_ok=True)
+    safe = mj._safe(name)
+    (d / f"{safe}.log").write_text(text, encoding="utf-8")
+    (d / f"{safe}.meta.json").write_text(json.dumps(
+        {"name": name, "cost": cost, "status": "done",
+         "ended_at": "2026-06-09T00:30:00+00:00", "session_id": "s",
+         "model": "claude-haiku-4.5"}), encoding="utf-8")
+
+
+def test_output_endpoint_returns_cached_log(macro_web_client, monkeypatch, tmp_path):
+    """GET …/macro-inputs/output?name= 回落盘 .log 全文（job 超 TTL 后仍可看）。"""
+    _seed_cache(monkeypatch, tmp_path, "ISM 制造业 PMI", text="第一行\n第二行")
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs/output",
+                             params={"name": "ISM 制造业 PMI"})
+    assert r.status_code == 200
+    assert r.json()["text"] == "第一行\n第二行"
+
+
+def test_output_endpoint_404_when_no_cache(macro_web_client, monkeypatch, tmp_path):
+    import app.macro_jobs as mj
+    monkeypatch.setattr(mj, "LOG_ROOT", tmp_path / "empty")
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs/output",
+                             params={"name": "查无此项"})
+    assert r.status_code == 404
+
+
+def test_view_output_button_shows_for_cached_row_without_live_job(macro_web_client, monkeypatch, tmp_path):
+    """无在途 job、但有落盘缓存的 llm 行，也要渲染「查看输出」（按 data-name 读缓存）。"""
+    import prism.scripts.macro_registry as reg
+    reg.upsert_input(SLUG, VARIANT, {
+        "name": "MPR", "tier": "A", "cadence_type": "policy", "targets": ["rates"],
+        "mechanism": "CD", "importance": "load_bearing", "causal_sentence": "x→y→z",
+        "availability": "llm", "source_url": "https://example.gov/mpr.htm",
+    })
+    _seed_cache(monkeypatch, tmp_path, "MPR")
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert 'class="view-output-btn" data-name="MPR"' in r.text
+
+
+def test_pull_auto_opens_output_modal(macro_web_client):
+    """点「⟳ 拉取」（单条）后自动弹出输出框：fetch-llm 成功分支调用 openOutput。"""
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
+    assert "openOutput(jobs[names[0]]" in r.text

@@ -727,14 +727,37 @@ def prism_macro_inputs(request: Request, slug: str, variant: str):
     due = set(macro_reg.due_llm_monitor_names(registry)) if inputs else set()
     # 各行上次取数的落盘 meta（cost/时间）→ 表里只读展示「上次 $X · 时间」，补 cost 闪一下就没的审计缺口
     last_meta = {}
+    cached = set()                       # 有落盘输出的行 → 即便 job 已超 TTL，也常驻「查看输出」（读缓存）
     for e in inputs:
         m = macro_jobs.read_meta(slug, variant, e["name"])
-        if m and m.get("cost") is not None:
+        if m is None:
+            continue
+        cached.add(e["name"])
+        if m.get("cost") is not None:
             last_meta[e["name"]] = {"cost": m.get("cost"), "ended_at": m.get("ended_at")}
+    # 本轮重判覆盖汇总：最新评估版本 + used 计数 + 承重漏判（load_bearing 却未参与），暴露在表头上方
+    evals = log.get("evaluations") or []
+    latest_eval = evals[-1] if evals else None
+    coverage_summary = None
+    if latest_eval:
+        lb_inputs = [e for e in inputs if e.get("importance") == "load_bearing"]
+        lb_unused = [e["name"] for e in lb_inputs
+                     if not (diff.get(e["name"]) or {}).get("used")]
+        coverage_summary = {
+            "version": latest_eval.get("version"),
+            "evaluated_at": latest_eval.get("evaluated_at"),
+            "used": sum(1 for d in diff.values() if d.get("used")),
+            "total": len(inputs),
+            "lb_total": len(lb_inputs),
+            "lb_unused": lb_unused,
+        }
     return templates.TemplateResponse(request, "prism/macro_inputs.html", {
         "topic": topic, "variant": variant, "inputs": inputs,
         "diff": diff, "reeval_pending": log.get("reeval_pending"),
-        "jobs": jobs, "due": due, "last_meta": last_meta,
+        "jobs": jobs, "due": due, "last_meta": last_meta, "cached": cached,
+        "coverage_summary": coverage_summary,
+        "clabels": es.conclusion_labels(slug, variant),   # 结论 id→中文 label（受影响结论展示）
+        "reeval_cached": macro_jobs.read_meta(slug, variant, macro_jobs.REEVAL_NAME) is not None,
     })
 
 
@@ -814,6 +837,22 @@ async def prism_macro_job_stream(slug: str, variant: str, job_id: str):
     return StreamingResponse(_sse(), media_type="text/event-stream")
 
 
+@router.get("/{slug}/{variant}/macro-inputs/output")
+def prism_macro_job_output(slug: str, variant: str, name: str):
+    """读某行落盘的取数输出（.log 全文 + meta 概要）。供「查看输出」在 job 超 TTL/重启后看缓存。
+
+    无缓存 → 404。在途 job 的实时输出走 SSE /stream（此处只服务已落盘的终态缓存）。
+    """
+    from app import macro_jobs
+    text = macro_jobs.read_log(slug, variant, name)
+    if text is None:
+        raise HTTPException(status_code=404, detail="无缓存输出")
+    meta = macro_jobs.read_meta(slug, variant, name) or {}
+    return JSONResponse({"name": name, "text": text,
+                         "status": meta.get("status"), "model": meta.get("model"),
+                         "cost": meta.get("cost"), "ended_at": meta.get("ended_at")})
+
+
 @router.post("/{slug}/{variant}/macro-inputs/fetch-script")
 def prism_macro_fetch_script(slug: str, variant: str, request: Request,
                              name: str = Form(...), anchor: str = Form("")):
@@ -875,7 +914,7 @@ def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anch
     fred_sum = fred_fetch.run_fred_fetch(slug, variant)
     recipe_sum = recipe_fetch.run_recipe_fetch(slug, variant)
     fred_n = (fred_sum.get("fetched", 0) or 0) + (fred_sum.get("derived", 0) or 0)
-    recipe_n = recipe_sum.get("fetched", 0) or 0
+    recipe_n = (recipe_sum.get("fetched", 0) or 0) + (recipe_sum.get("derived", 0) or 0)
     if "application/json" in (request.headers.get("accept") or ""):
         return JSONResponse({"fred": fred_n, "recipe": recipe_n, "fetched": fred_n + recipe_n,
                              "fred_summary": fred_sum, "recipe_summary": recipe_sum})
@@ -899,19 +938,26 @@ async def prism_macro_job_say(slug: str, variant: str,
 
 
 @router.post("/{slug}/{variant}/reeval")
-def prism_reeval(slug: str, variant: str, request: Request):
-    """组装重估简报 + 盖「待重判」戳（零 LLM）。真正重判在对话里做。
+async def prism_reeval(slug: str, variant: str, request: Request,
+                       model: str = Form("")):
+    """组装重估简报 + 盖戳（零 LLM）+ 拉起一个真实合成 job（跑 _macro_regime 全流程）。
 
-    Accept: application/json → 回简报计数（前端展进度/结果）；否则 303 回 #reeval-brief（无 JS 回退）。
+    简报照旧零 LLM；真重判由后台 headless（全能力会话、默认 opus4.8）落地，弹框可看流式 + 续问驱动。
+    Accept: application/json → 202 + 简报计数 + job_id/name/model（前端弹输出框）；否则 303 回 #reeval-brief。
     """
     from prism.scripts import eval_snapshot as es
+    from app import macro_jobs
     brief = es.assemble_reeval_brief(slug, variant)
     es.stamp_reeval_pending(slug, variant, brief)
+    model = model or macro_jobs.REEVAL_MODEL
+    job = macro_jobs.launch_reeval(slug, variant, model=model)
     if "application/json" in (request.headers.get("accept") or ""):
         return JSONResponse({"changed": len(brief.get("changed") or []),
                              "breached": len(brief.get("breached") or []),
                              "due": len(brief.get("due") or []),
-                             "affected": brief.get("affected_conclusions") or []})
+                             "affected": brief.get("affected_conclusions") or [],
+                             "job_id": job.id, "name": macro_jobs.REEVAL_NAME,
+                             "model": model}, status_code=202)
     return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs#reeval-brief", status_code=303)
 
 

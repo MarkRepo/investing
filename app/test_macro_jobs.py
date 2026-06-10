@@ -63,6 +63,18 @@ def test_event_to_lines_init_without_model_silent():
     assert macro_jobs._event_to_lines({"type": "system", "subtype": "init"}) == []
 
 
+def test_read_log_returns_persisted_text():
+    """read_log 读回落盘的 .log 全文（供「查看输出」在 job 已超 TTL 后仍能看缓存）。"""
+    d = macro_jobs.LOG_ROOT / "s" / "v"
+    d.mkdir(parents=True)
+    (d / f"{macro_jobs._safe('ISM PMI')}.log").write_text("第一行\n第二行", encoding="utf-8")
+    assert macro_jobs.read_log("s", "v", "ISM PMI") == "第一行\n第二行"
+
+
+def test_read_log_missing_returns_none():
+    assert macro_jobs.read_log("s", "v", "不存在") is None
+
+
 def test_sse_data_splits_multiline():
     """多行文本编码为合法 SSE：每物理行各加 data: 前缀，避免裸 \\n 截断（修「答案只剩第一行」）。"""
     out = macro_jobs._sse_data("第一行\n第二行\n第三行")
@@ -502,6 +514,107 @@ def test_run_captures_model_from_init_event(monkeypatch):
         meta = json.loads((macro_jobs.LOG_ROOT / "s" / "v"
                            / f"{macro_jobs._safe('ISM PMI')}.meta.json").read_text(encoding="utf-8"))
         assert meta.get("model") == "claude-haiku-4.5"
+
+    asyncio.run(inner())
+
+
+# --- 发起重估：拉起真实合成 job（全能力、非沙箱、opus4.8 默认、不写 registry）---
+
+def test_launch_reeval_creates_job_with_reserved_name(monkeypatch):
+    cap = {}
+    monkeypatch.setattr(claude_runner, "run_headless_streaming",
+                        _json_runner("合成完成", capture=cap))
+
+    async def inner():
+        job = macro_jobs.launch_reeval("s", "v")
+        assert job.name == macro_jobs.REEVAL_NAME == "__reeval__"
+        assert job.status == "queued"
+        await job.task
+
+    asyncio.run(inner())
+
+
+def test_launch_reeval_runs_full_capability_non_sandbox(monkeypatch):
+    """重估是全能力会话：非沙箱（strict_mcp False、不禁工具）、长超时、默认 opus4.8 完整 id。"""
+    cap = {}
+    monkeypatch.setattr(claude_runner, "run_headless_streaming",
+                        _json_runner("ok", capture=cap))
+
+    async def inner():
+        job = macro_jobs.launch_reeval("s", "v")
+        await job.task
+        kw = cap["kw"]
+        assert kw["strict_mcp"] is False             # 放开 MCP
+        assert kw["disallowed_tools"] is None        # 放开 Bash/Write/Edit
+        assert kw["timeout"] == macro_jobs.REEVAL_TIMEOUT
+        assert kw["model"] == macro_jobs.REEVAL_MODEL == "claude-opus-4-8"
+
+    asyncio.run(inner())
+
+
+def test_launch_reeval_model_override(monkeypatch):
+    cap = {}
+    monkeypatch.setattr(claude_runner, "run_headless_streaming",
+                        _json_runner("ok", capture=cap))
+
+    async def inner():
+        job = macro_jobs.launch_reeval("s", "v", model="claude-sonnet-4-6")
+        await job.task
+        assert cap["kw"]["model"] == "claude-sonnet-4-6"
+
+    asyncio.run(inner())
+
+
+def test_launch_reeval_does_not_write_registry(monkeypatch):
+    """重估靠自己的 Write/Bash 落盘——即便输出含 JSON 也绝不当取数 payload 覆盖 registry。"""
+    from prism.scripts import macro_registry as reg
+    recorded = []
+    monkeypatch.setattr(reg, "record_observation", lambda *a, **k: recorded.append(1))
+    payload = '```json\n[{"name":"ISM PMI","value":48.0}]\n```'
+    monkeypatch.setattr(claude_runner, "run_headless_streaming", _json_runner(payload))
+
+    async def inner():
+        job = macro_jobs.launch_reeval("s", "v")
+        await job.task
+        assert job.status == "done"
+        assert not recorded                          # apply_json=False → 不写 registry
+
+    asyncio.run(inner())
+
+
+def test_launch_reeval_dedupes_inflight(monkeypatch):
+    async def inner():
+        g = asyncio.Event()
+        monkeypatch.setattr(claude_runner, "run_headless_streaming", _fake_runner(gate=g))
+        j1 = macro_jobs.launch_reeval("s", "v")
+        await asyncio.sleep(0.02)
+        j2 = macro_jobs.launch_reeval("s", "v")       # 在途再点 → 同一 job
+        assert j2.id == j1.id
+        g.set()
+        await j1.task
+
+    asyncio.run(inner())
+
+
+def test_say_reeval_continuation_is_non_sandbox(monkeypatch):
+    """弹框续问重估会话：name==__reeval__ → 同样全能力非沙箱（不被重新沙箱化）。"""
+    cap = {}
+
+    async def inner():
+        monkeypatch.setattr(claude_runner, "run_headless_streaming",
+                            _json_runner("ok", session_id="sid-r"))
+        job = macro_jobs.launch_reeval("s", "v")
+        await job.task
+        assert job.session_id == "sid-r"
+        monkeypatch.setattr(claude_runner, "run_headless_streaming",
+                            _json_runner("ok", session_id="sid-r", capture=cap))
+        rj = await macro_jobs.say("s", "v", macro_jobs.REEVAL_NAME, "只重判 rates_us，其余跳过")
+        assert rj is not None
+        await rj.task
+        assert cap["kw"]["resume"] == "sid-r"
+        assert cap["kw"]["strict_mcp"] is False
+        assert cap["kw"]["disallowed_tools"] is None
+        assert cap["kw"]["timeout"] == macro_jobs.REEVAL_TIMEOUT
 
     asyncio.run(inner())
 
