@@ -314,10 +314,10 @@ conclusions 覆盖本轮三体制读数与象限/脆弱度，每条带 `id` + �
 python3 -c "
 from prism.scripts.eval_snapshot import record_evaluation
 v = record_evaluation('{slug}', '{variant}', [
-    {'id': 'overall',      'label': '综合判断',     'state': '偏防御·压久期', 'causal': '...', 'based_on': [{'input': '<名>', 'role': 'load_bearing'}]},
-    {'id': 'rates_us',     'label': '美国利率体制', 'state': '高位企稳',     'causal': '...', 'based_on': [{'input': '<名>', 'role': 'load_bearing'}]},
+    {'id': 'overall',      'label': '综合判断',     'state': '偏防御·压久期', 'causal': '...', 'based_on': [{'input': '<名>', 'role': 'load_bearing', 'expected': 'up_or_flat'}]},
+    {'id': 'rates_us',     'label': '美国利率体制', 'state': '高位企稳',     'causal': '...', 'based_on': [{'input': '<名>', 'role': 'load_bearing', 'expected': 'up_or_flat'}]},
     {'id': 'rates_cn',     'label': '中国利率体制', 'state': '...',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'confirming'}]},
-    {'id': 'liquidity_us', 'label': '美国流动性体制','state': '...',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'load_bearing'}]},
+    {'id': 'liquidity_us', 'label': '美国流动性体制','state': '...',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'load_bearing', 'expected': 'down_or_flat'}]},
     {'id': 'fx_cny',       'label': '人民币汇率体制','state': '...',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'confirming'}]},
     {'id': 'quadrant',     'label': '增长/通胀象限','state': '滞胀',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'background'}]},
     {'id': 'fragility',    'label': '脆弱度',       'state': 'high',          'causal': '...', 'based_on': [{'input': '<名>', 'role': 'background'}]},
@@ -327,6 +327,8 @@ print(f'评估快照已写 v{v}，reeval_pending 已自动清')
 ```
 
 > 不确定某结论挂哪些输入时，宁可多挂 `confirming`/`background`，但**承重输入必须标 `load_bearing`**——表头「承重漏判」红字（load_bearing 却未参与）就是查这个。
+
+> **可证伪预测（硬要求 · 仅承重边）**：每条结论的 `load_bearing` 边、且该输入有数值或立场基准时，**必须**带 `expected` 方向预测（缺则 `record_evaluation` 校验报错）。方向词表：数值型 `up / down / flat / up_or_flat / down_or_flat`；立场型用对应轴方向词（`更鹰/更鸽`、`更紧/更松`、`更收缩/更扩张`、`更下移/更上移`）。这是日后机器拿 FRED 序列机械裁决「判得对不对」的钉子——预测提前钉死、数据说话。confirming/background 边可不带。
 
 **复核 provisional + 体制变扫失鲜（硬要求 · 写完评估快照后跑）**：record_evaluation 落新版后，跑横切回路——给依赖体制状态已变的持仓盖 stale 旗 + 写 `macro_regime` proposal（stage 不动）：
 
@@ -341,6 +343,23 @@ print(f'覆盖率：{cov[\"covered_count\"]}/{cov[\"total_company\"]} company �
 ```
 
 > provisional 行的复核是 LLM 动作（在本合成对话里做）：对 `coverage_gaps` 报出的 provisional 持仓，逐行确认/改写四渠道标签、清 `provisional`、更新 `as_of_regime`，写回 transmission_map（照 §4 落盘惯例）。
+
+**带上版战绩裁定（重估时 · 软要求）**：本轮若是**重估**（已有上一版评估），重判前先看上版机械战绩，据此对每条结论落 `prior_verdict`（held/partial/wrong），写在本（新）评估条目上（append-only、不改旧）：
+
+```bash
+python3 -c "
+from prism.scripts import eval_score as sc
+s = sc.score_evaluation('{slug}', '{variant}')   # 上版整版战绩卡
+print('上版占对：', s.get('hits'), '/', (s.get('hits') or 0)+(s.get('misses') or 0), '·', s.get('days'), '天')
+for c in s.get('conclusions') or []:
+    print(' -', c['label'], c['hits'], 'hit /', c['misses'], 'miss', '· 占对', c['hit_rate'])
+led = sc.edge_ledger('{slug}', '{variant}')        # 跨版边台账 → 降级候选
+for r in led[:5]:
+    print('   边', r['conclusion_id'], r['input'], r['track'], r['hits'], '/', r['hits']+r['misses'])
+"
+```
+
+据此在 `record_evaluation(...)` 调用补 `prior_verdict=[{'conclusion_id': '<id>', 'verdict': 'held|partial|wrong', 'note': '...'}]`。**机制边降级**＝一次普通 registry 编辑：对 `edge_ledger` 报「降级候选」的边，按需调 `macro_registry.upsert_input` 改该输入 `tier`（A→B）或调它在 based_on 的 `role`（load_bearing→confirming）。不发明新台账文件。
 
 ### Step 6：critic 校验 + stage 推进
 
