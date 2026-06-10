@@ -414,6 +414,16 @@ def _collect_macro_banner() -> dict | None:
         return None
     holdings = sidecar.get("holdings", []) or []
     exposed = [h for h in holdings if h.get("exposure_score") == "high"]
+    # —— 横切（3a）：过期持仓 + 覆盖率。零-LLM 派生，失败不拖垮 banner ——
+    from prism.scripts import macro_xcut
+    try:
+        stale = [r for r in macro_xcut.scan_holding_staleness(slug, variant) if r.get("stale")]
+    except Exception:
+        stale = []
+    try:
+        coverage = macro_xcut.coverage_gaps(slug, variant)
+    except Exception:
+        coverage = {"missing": [], "provisional": [], "covered_count": 0, "total_company": 0}
     return {
         "slug": slug,
         "variant": variant,
@@ -421,6 +431,8 @@ def _collect_macro_banner() -> dict | None:
         "regime": sidecar.get("regime", {}) or {},
         "exposed": exposed,
         "freshness_days": _days_stale(sidecar.get("generated")),
+        "stale_holdings": stale,
+        "coverage": coverage,
     }
 
 
