@@ -110,3 +110,31 @@ def test_staleness_no_regime_eval_marks_no_basis(tmp_world):
         "depends_on_states": [{"conclusion": "fx_cny", "state": "稳", "role": "load_bearing"}]})
     out = mx.scan_holding_staleness("gm", "v")
     assert out[0]["stale"] is False and out[0]["basis"] == "no_regime_eval"
+
+
+def _write_transmission_map(root, slug, variant, holdings):
+    d = root / "topics" / slug / variant / "outputs"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "transmission_map.yaml").write_text(
+        yaml.dump({"slug": slug, "variant": variant, "holdings": holdings},
+                  allow_unicode=True, sort_keys=False), encoding="utf-8")
+
+
+def test_coverage_gaps_reports_missing_and_provisional(tmp_world):
+    gm, v = "gm", "v"
+    _write_topic_yaml(tmp_world, "pdd", v, "company")
+    _write_topic_yaml(tmp_world, "futu", v, "company")
+    _write_topic_yaml(tmp_world, "baijiu", v, "arena")  # 非 company 不计
+    _write_transmission_map(tmp_world, gm, v, [
+        {"slug": "pdd", "provisional": True},   # 已覆盖但临时
+    ])
+    cov = mx.coverage_gaps(gm, v)
+    assert cov["missing"] == ["futu"]
+    assert cov["provisional"] == ["pdd"]
+    assert cov["covered_count"] == 1 and cov["total_company"] == 2
+
+
+def test_coverage_gaps_no_transmission_map(tmp_world):
+    _write_topic_yaml(tmp_world, "pdd", "v", "company")
+    cov = mx.coverage_gaps("gm", "v")
+    assert cov["missing"] == ["pdd"] and cov["covered_count"] == 0

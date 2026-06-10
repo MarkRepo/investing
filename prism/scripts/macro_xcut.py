@@ -111,3 +111,21 @@ def scan_holding_staleness(macro_slug: str, macro_variant: str) -> list:
                     "as_of_regime_version": stamp.get("as_of_regime_version"),
                     "latest_regime_version": version})
     return out
+
+
+def coverage_gaps(macro_slug: str, macro_variant: str) -> dict:
+    """company-type topic vs transmission_map holdings → 漏注册 + provisional。零 LLM。
+
+    呼应"输入不能有遗漏、沉默≠确认"：漏覆盖被显式暴露。slug 匹配（holdings 行无 variant）。
+    """
+    tm = reg.read_transmission_map(macro_slug, macro_variant)
+    holdings = tm.get("holdings") or []
+    covered = {h.get("slug") for h in holdings if h.get("slug")}
+    provisional = sorted(h.get("slug") for h in holdings
+                         if h.get("provisional") and h.get("slug"))
+    company_slugs = {t.get("slug") for t in topic_mod.list_topics(macro_variant)
+                     if t.get("type") == "company"}
+    return {"missing": sorted(company_slugs - covered),
+            "provisional": provisional,
+            "covered_count": len(company_slugs & covered),
+            "total_company": len(company_slugs)}
