@@ -114,3 +114,62 @@ def score_evaluation(slug: str, variant: str, version: int | None = None) -> dic
             "hits": tot_hit, "misses": tot_miss, "neutrals": tot_neu,
             "hit_rate": (tot_hit / tot_denom) if tot_denom else None,
             "conclusions": conclusions_out}
+
+
+def _track_label(hits: int, misses: int) -> str:
+    denom = hits + misses
+    if denom == 0:
+        return "无裁定"
+    rate = hits / denom
+    if denom >= 2 and rate < 0.5:
+        return "降级候选"
+    if rate >= 0.7:
+        return "可靠"
+    return "观察"
+
+
+def edge_ledger(slug: str, variant: str) -> list:
+    """跨所有评估版本按 (conclusion_id, input) 累计 hit/miss/neutral → 降级候选浮出。零 LLM。
+
+    每版 expected 的「实现值」取下一版快照；末版用当前 live observed。只算 load_bearing 边。
+    返回按 hit_rate 升序（差的在前；None 垫底），每行 {conclusion_id, input, hits, misses,
+    neutrals, hit_rate, track}。
+    """
+    log = es.read_eval_log(slug, variant)
+    evals = log.get("evaluations") or []
+    registry = reg.read_registry(slug, variant)
+    entry_by_name = {e["name"]: e for e in registry.get("inputs") or []}
+    acc: dict = {}
+    for i, ev in enumerate(evals):
+        snap_by_name = {s.get("name"): s for s in ev.get("input_snapshot") or []}
+        nxt_by_name = ({s.get("name"): s for s in evals[i + 1].get("input_snapshot") or []}
+                       if i + 1 < len(evals) else None)
+        for c in ev.get("conclusions") or []:
+            cid = c.get("id")
+            for b in c.get("based_on") or []:
+                if b.get("role") != "load_bearing" or not b.get("expected"):
+                    continue
+                name = b.get("input")
+                entry = entry_by_name.get(name) or {}
+                scale = entry.get("stance_scale")
+                tol = (entry.get("alert_band") or {}).get("delta", 0.0) or 0.0
+                snap_row = snap_by_name.get(name) or {}
+                snap_v = snap_row.get("stance") if scale else snap_row.get("value")
+                if nxt_by_name is not None:                       # 实现值=下一版快照
+                    nrow = nxt_by_name.get(name) or {}
+                    live_v = nrow.get("stance") if scale else nrow.get("value")
+                else:                                             # 末版=当前 live
+                    obs = entry.get("observed") or {}
+                    live_v = obs.get("stance") if scale else obs.get("value")
+                verdict = score_edge(b.get("expected"), snap_v, live_v, scale=scale, tol=tol)
+                a = acc.setdefault((cid, name), {"hits": 0, "misses": 0, "neutrals": 0})
+                a[{"hit": "hits", "miss": "misses", "neutral": "neutrals"}[verdict]] += 1
+    out = []
+    for (cid, name), a in acc.items():
+        denom = a["hits"] + a["misses"]
+        out.append({"conclusion_id": cid, "input": name,
+                    "hits": a["hits"], "misses": a["misses"], "neutrals": a["neutrals"],
+                    "hit_rate": (a["hits"] / denom) if denom else None,
+                    "track": _track_label(a["hits"], a["misses"])})
+    out.sort(key=lambda r: (r["hit_rate"] is None, r["hit_rate"] if r["hit_rate"] is not None else 1.0))
+    return out
