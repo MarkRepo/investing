@@ -148,6 +148,45 @@
 > - **向上（子 → 本 company）**：company 通常是叶子，`children` 多为空；若有（极少，如控股母子结构），按 §1.4 护栏当一等证据、本维度复核。
 > - 无亲属 → 返空 → 退化为独立合成，零特判。
 
+> **宏观横切 hook（company 强制 · 紧随亲属 hook）**：company case 必接入 macro 体制。
+>
+> 1. **读 macro 产出**：`python3 -c "from prism.scripts import macro_registry as r; import json; tm=r.read_transmission_map('global-macro-rates-liquidity','{variant}'); print(json.dumps([h for h in tm.get('holdings',[]) if h.get('slug')=='{slug}'], ensure_ascii=False))"` 取本持仓行；并 Read `topics/global-macro-rates-liquidity/{variant}/outputs/m_regime_read.md` 的相关体制节。
+> 2. **织进决策链**：把四渠道敏感度（贴现率/风险偏好/carry-久期/汇率）+ `regime_favor/hurt` 织进 ⑤风险 与 ②估值——**定性为主**。
+> 3. **DCF 锚（仅当 case 跑 DCF）**：取 macro 的 10Y 实际利率（regime_read / 登记表「10Y 实际利率 TIPS」），作无风险腿 → 跑**贴现率 ±50bp 估值弹性**；落进 `macro_stamp.discount_rate`。
+> 4. **落 `macro_stamp.yaml`**（反查锚 · 硬要求）：记站在哪版 regime + 依赖哪些体制状态 + 贴现率：
+>
+> ```bash
+> python3 -c "
+> from prism.scripts import macro_xcut as mx, eval_snapshot as es
+> latest = es.latest_evaluation('global-macro-rates-liquidity', '{variant}')
+> mx.write_macro_stamp('{slug}', '{variant}', {
+>     'as_of_regime_version': (latest or {}).get('version'),
+>     'regime_composite': '<合成时综合判断一句话>',
+>     'depends_on_states': [  # 本 case 倚赖的体制状态；conclusion 须是 regime eval 里的真实 id
+>         {'conclusion': 'fx_cny',   'state': '<现读数>', 'role': 'load_bearing'},
+>         {'conclusion': 'rates_us', 'state': '<现读数>', 'role': 'confirming'},
+>     ],
+>     'discount_rate': None,  # 跑 DCF 则填 {risk_free, applied_wacc, rate_sensitivity, source_input}
+> })
+> print('macro_stamp 已落')
+> "
+> ```
+> 5. **不在表则自注册**：若 step 1 取回空（本持仓不在 transmission_map）→ 就着当下 regime **自判一行四渠道标签**，写回（标 provisional 待 macro 复核）：
+>
+> ```bash
+> python3 -c "
+> from prism.scripts import macro_xcut as mx, eval_snapshot as es
+> latest = es.latest_evaluation('global-macro-rates-liquidity', '{variant}')
+> ver = f\"v{(latest or {}).get('version')}\" if latest else None
+> print(mx.register_holding_row('global-macro-rates-liquidity', '{variant}', {
+>     'slug': '{slug}', 'display_name': '<名>', 'duration': 'long|short',
+>     'rate_beta': 'high|mid|low', 'liquidity_beta': 'high|mid|low',
+>     'usd_exposure': 'high|mid|low', 'exposure_score': 'high|mid|low',
+>     'regime_favor': [...], 'regime_hurt': [...], 'plain': '一句传导链', 'as_of_regime': ver}))
+> "
+> ```
+> **软降级**：无 macro topic / 无 regime eval（`latest is None`）→ 标"无宏观基准"，仍落 stamp（`as_of_regime_version: null`、`depends_on_states: []`），**不阻塞 case 合成**。
+
 > **调度模式**：company case 默认**主 agent 直做 + 并行 Write**（同 `_shared.md` 默认；勿 dispatch subagent 写长产出，见 [[subagent-write-hallucination]] / feedback_subagent_bulk_synthesis）。唯一 subagent 是 critic（只读不写）。
 
 ### Step 2：**先出 `00_primer`（理解地基）**

@@ -242,6 +242,8 @@ print('primer + case + 09 sidecar 已注册')
 
 **收尾**：照 `_shared.md` § 全部产出完成后——`append_user_todos` + 清 `next_actions` + stage 推进。industry 合成完后 stage 置 `05-critic-review`（第 6 阶段「评审」，与 company/arena 统一）；**critic 对 industry 非强制（可选）**——可在对话里说「评审 {slug}」跑对抗式 steelman，或在 web 详情页点「✓ 标记完成」直接 `done`（旧名 `09-arena-shortlist` 已退休，勿再用）。
 
+> **宏观横切（软提示 · 不强制）**：赛道/行业层多跨标的，宏观敏感度偏糊；如该赛道有显著利率/流动性/汇率暴露，**建议**（非强制）跑一遍 macro hook（见 `_company_case.md` Step 1 宏观横切 hook）补一段体制敏感度。不落 macro_stamp、不参与 staleness/coverage。
+
 ### Step 6：critic 校验（**对着决策链** · 写完即跑一轮内嵌 chain-critic）
 
 写完即跑一轮**内嵌 chain-critic**（合成期质控，模型同 `00-primer.md` Step 3，已验证 2 轮内收敛）。它与下游 05-critic 分工：chain-critic 查"链有没有走通、有没有断"，05 做对抗式 steelman 重审。
