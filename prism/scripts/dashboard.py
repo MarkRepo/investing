@@ -516,6 +516,21 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict], macro: d
         if macro["exposed"]:
             names = "、".join(h.get("display_name", h.get("slug", "")) for h in macro["exposed"])
             lines += [f"**当前体制最暴露持仓**：{names}", ""]
+        # 横切（3a）：过期持仓（体制已变，建议重判）+ 覆盖率
+        stale_holdings = macro.get("stale_holdings") or []
+        if stale_holdings:
+            lines += ["**⚠️ 过期持仓（体制已变，建议重判）**", ""]
+            for h in stale_holdings:
+                lines += [f"- {h.get('slug')}：{h.get('reason') or ''}"]
+            lines += [""]
+        cov = macro.get("coverage") or {}
+        if cov.get("total_company"):
+            cov_line = f"**横切覆盖率**：{cov.get('covered_count', 0)}/{cov.get('total_company', 0)} company 已入表"
+            if cov.get("missing"):
+                cov_line += "　·　漏注册：" + "、".join(cov["missing"])
+            if cov.get("provisional"):
+                cov_line += "　·　待复核：" + "、".join(cov["provisional"])
+            lines += [cov_line, ""]
         lines += ["---", ""]
 
     # ── Section 1: Company decision table ────────────────────────────────────

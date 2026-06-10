@@ -125,6 +125,29 @@
 </style>
 {% endif %}
 
+{% if macro_stamp %}
+<section class="macro-context">
+  <h3>🌐 宏观背景 <small>as_of regime v{{ macro_stamp.as_of_regime_version or '—' }}</small></h3>
+  <p>{{ macro_stamp.regime_composite or '（未记录综合判断）' }}</p>
+  {% if macro_stamp.stale %}
+    <p class="stale-flag">⚠️ 已过期：{{ macro_stamp.stale_reason }}（说「重判 {{ macro_stamp.slug }}」重跑合成以刷新）</p>
+  {% endif %}
+  {% if macro_stamp.discount_rate %}
+    <p>贴现率锚：无风险 {{ macro_stamp.discount_rate.risk_free }} · {{ macro_stamp.discount_rate.rate_sensitivity }}</p>
+  {% endif %}
+</section>
+<style>
+  .macro-context {
+    border: 1px solid #bfdbfe; border-left: 4px solid #2563eb;
+    background: #eff6ff; border-radius: 6px; padding: 0.6em 1em; margin: 0.8em 0;
+  }
+  .macro-context h3 { margin: 0; font-size: 0.98em; color: #1e40af; }
+  .macro-context h3 small { color: #60a5fa; font-weight: normal; }
+  .macro-context p { margin: 0.35em 0 0; font-size: 0.86em; color: #1e3a5f; }
+  .macro-context .stale-flag { color: #b45309; }
+</style>
+{% endif %}
+
 {% if all_variants | length > 1 %}
 <div class="variant-switcher">
   模型：

@@ -143,3 +143,18 @@ def test_macro_banner_includes_stale_and_coverage(tmp_path, monkeypatch):
     stale_slugs = [h["slug"] for h in banner["stale_holdings"]]
     assert "pdd" in stale_slugs
     assert banner["coverage"]["missing"] == ["futu"]
+
+
+def test_render_dashboard_shows_stale_and_coverage():
+    """_render_dashboard 把 banner 的 stale_holdings + coverage 渲进宏观区。"""
+    banner = {
+        "slug": "gm", "variant": "v", "display_name": "宏观层",
+        "regime": {"composite": "x", "conviction": 6}, "exposed": [],
+        "freshness_days": 1,
+        "stale_holdings": [{"slug": "pdd", "reason": "依赖的『人民币企稳』已变『贬压重来』"}],
+        "coverage": {"missing": ["futu"], "provisional": ["xpev"],
+                     "covered_count": 3, "total_company": 5},
+    }
+    md = dashboard._render_dashboard([], [], banner)
+    assert "过期持仓" in md and "pdd" in md and "贬压重来" in md
+    assert "3/5" in md and "futu" in md and "xpev" in md

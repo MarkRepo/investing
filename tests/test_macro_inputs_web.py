@@ -922,3 +922,22 @@ def test_pull_auto_opens_output_modal(macro_web_client):
     """点「⟳ 拉取」（单条）后自动弹出输出框：fetch-llm 成功分支调用 openOutput。"""
     r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/macro-inputs")
     assert "openOutput(jobs[names[0]]" in r.text
+
+
+def test_company_page_shows_macro_stamp(macro_web_client, monkeypatch):
+    """company 详情页渲染宏观背景印章（含 stale 提示）。"""
+    import prism.scripts.topic as t
+    import prism.scripts.manifest as m
+    import prism.scripts.macro_xcut as mx
+    monkeypatch.setattr(mx, "_PRISM_ROOT", t.PRISM_ROOT)
+    t.create_topic("pdd", "拼多多", "company", "Q", "CN", "deep", VARIANT,
+                   ticker="NASDAQ_PDD", short_name="拼多多")
+    m.create_manifest("pdd", VARIANT)
+    mx.write_macro_stamp("pdd", VARIANT, {
+        "as_of_regime_version": 1, "regime_composite": "美紧中松分化",
+        "depends_on_states": [{"conclusion": "fx_cny", "state": "人民币企稳", "role": "load_bearing"}],
+        "stale": True, "stale_reason": "依赖的『人民币企稳』已变『贬压重来』(regime v1→v2)"})
+    resp = macro_web_client.get(f"/prism/pdd/{VARIANT}")
+    assert resp.status_code == 200
+    assert "美紧中松分化" in resp.text
+    assert "已过期" in resp.text and "贬压重来" in resp.text

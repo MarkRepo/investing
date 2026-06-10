@@ -406,6 +406,12 @@ def prism_detail(request: Request, slug: str, variant: str):
 
     monitor_ctx = _monitor_context(slug, variant)
 
+    # 横切（3a）：company 详情页显示宏观背景印章（含 stale 提示）。非 company 不显示。
+    macro_stamp = None
+    if topic.get("type") == "company":
+        from prism.scripts import macro_xcut
+        macro_stamp = macro_xcut.read_macro_stamp(slug, variant) or None
+
     # industry/arena 的 05 评审非强制——合成完(04-post-synthesis/05-critic-review)即可
     # 在 web 直接点「完成」跳 done(对话里跑评审是另一条路)。company 必须真评审,无此按钮。
     can_mark_done = (
@@ -419,6 +425,7 @@ def prism_detail(request: Request, slug: str, variant: str):
         {
             "topic": topic,
             "can_mark_done": can_mark_done,
+            "macro_stamp": macro_stamp,
             "outputs": outputs,
             "manifest": manifest,
             "mat_counts": mat_counts,
