@@ -58,10 +58,12 @@ VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm")
 VALID_FETCH_METHOD = ("fred-api", "recipe")   # 脚本「数值」通道，仅 scripted 项可设
 VALID_TEXT_FETCH = ("fomc",)   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
                                # 立场判读仍走 LLM，故仅 llm/scriptable_todo 项可设，与 fetch_method 互斥
-VALID_RECIPE_KIND = ("json", "csv", "matrix")   # 须与 recipe_fetch._PARSERS 键一致
+VALID_RECIPE_KIND = ("json", "csv", "matrix", "html")   # 须与 recipe_fetch._PARSERS 键一致
 # 每 kind 的必填 parse 键（缺则取不到值）：matrix 须 row_label（解析器靠它定位数据行；
-# header_label/col_index/delimiter 有默认或仅影响日期）。
-_RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column", "matrix": "row_label"}
+# header_label/col_index/delimiter 有默认或仅影响日期）。html 须 value_regex（第 1 捕获组=值；
+# date_regex 选填）。
+_RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column", "matrix": "row_label",
+                          "html": "value_regex"}
 
 # policy 立场有序轴：轴名 → 档位元组（有序，索引升=趋势的"高"端）。diff 按索引差算方向。
 STANCE_SCALES = {
@@ -287,6 +289,7 @@ def record_observation(
                 obs["stance"] = stance
             if fingerprint is not None:
                 obs["fingerprint"] = fingerprint
+            obs.pop("fetch_error", None)  # 抓到本次观测=成功，清除上次失败标记
             obs["checked_at"] = _now_iso()
             # 维护连续越带计数（min_streak 用）
             if value is not None:
@@ -312,6 +315,31 @@ def mark_verified(slug: str, variant: str, name: str, *, fingerprint: str | None
             obs["verified_at"] = _now_iso()
             if fingerprint is not None:
                 obs["fingerprint"] = fingerprint
+            e["observed"] = obs
+            data["updated"] = _now_iso()
+            _write_yaml(_registry_path(slug, variant), data)
+            return
+
+
+def record_fetch_error(slug: str, variant: str, name: str, *, msg: str | None) -> None:
+    """记/清一次脚本抓取失败到 observed.fetch_error（零 LLM）。fred/recipe/取文三通道共用。
+
+    msg 给定 → 写 observed.fetch_error={msg, at}（at=失败时刻）：留痕「哪条、何时、何因」，
+      供 web 顶部告警板提醒去修脚本或换源。**不动 value/checked_at**——失败时旧值保留、
+      仅标记陈旧，而非污染（值的新鲜度看 checked_at，失败看 fetch_error.at）。
+    msg=None → 清除 fetch_error（修好/成功时）。fred/recipe 成功走 record_observation 自动清，
+      故本路径主要给取文通道（成功不调 record_observation）显式清错用。
+    无变化（要清但本就没有）则不写盘。input 不存在则静默跳过（非致命，批量抓取里一条不连累其余）。"""
+    data = read_registry(slug, variant)
+    for e in data["inputs"]:
+        if e["name"] == name:
+            obs = dict(e.get("observed") or {})
+            if msg is None:
+                if "fetch_error" not in obs:
+                    return  # 本就无错、无需清 → 不写盘
+                obs.pop("fetch_error", None)
+            else:
+                obs["fetch_error"] = {"msg": str(msg)[:500], "at": _now_iso()}
             e["observed"] = obs
             data["updated"] = _now_iso()
             _write_yaml(_registry_path(slug, variant), data)

@@ -89,8 +89,14 @@ def run_fred_fetch(slug: str, variant: str, *, client=None,
         sid = e.get("fred_series_id")
         if not sid or sid == "__DERIVED__":
             continue
-        val, as_of = fetch_latest_observation(sid, client=client)
+        try:
+            val, as_of = fetch_latest_observation(sid, client=client)
+        except Exception as exc:           # HTTP/网络异常：记错、跳过，不连累其余 series
+            reg.record_fetch_error(slug, variant, e["name"], msg=f"{sid}: {exc}")
+            failed += 1
+            continue
         if val is None:
+            reg.record_fetch_error(slug, variant, e["name"], msg=f"{sid}: API 返回空值")
             failed += 1
             continue
         reg.record_observation(slug, variant, e["name"], value=val, as_of=as_of)
@@ -102,7 +108,10 @@ def run_fred_fetch(slug: str, variant: str, *, client=None,
 
     def _series(sid: str) -> float | None:
         if sid not in series_cache:
-            v, _ = fetch_latest_observation(sid, client=client)
+            try:
+                v, _ = fetch_latest_observation(sid, client=client)
+            except Exception:              # 异常等同取不到，归一为 None；具体记错在派生项处
+                v = None
             series_cache[sid] = v
         return series_cache[sid]
 
@@ -114,8 +123,12 @@ def run_fred_fetch(slug: str, variant: str, *, client=None,
         spec = e.get("derived")
         if not spec:
             continue
-        legs = [_series(s) for s in (spec.get("series") or [])]
+        series_ids = spec.get("series") or []
+        legs = [_series(s) for s in series_ids]
         if not legs or any(v is None for v in legs):
+            missing = [s for s, v in zip(series_ids, legs) if v is None] or ["无 series 配置"]
+            reg.record_fetch_error(slug, variant, e["name"],
+                                   msg=f"派生腿取数失败: {', '.join(missing)}")
             failed += 1
             continue
         reg.record_observation(slug, variant, e["name"], value=_apply_op(spec.get("op"), legs))

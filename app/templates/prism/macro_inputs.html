@@ -88,6 +88,26 @@
 </section>
 {% endif %}
 
+{% set fetch_errs = inputs | selectattr('observed') | selectattr('observed.fetch_error') | list %}
+{% if fetch_errs %}
+<section class="fetcherr-board">
+  <h2>脚本抓取失败（{{ fetch_errs | length }}）</h2>
+  <p class="hint">FRED / recipe / 取文通道上次抓取失败的输入。现值仍为上次成功值（已陈旧，看「上次拉取」时间），需去修脚本或换源。</p>
+  <table class="data-table">
+    <thead><tr><th>输入</th><th>失败时间</th><th>原因</th></tr></thead>
+    <tbody>
+    {% for f in fetch_errs %}
+      <tr>
+        <td><code>{{ f.name }}</code></td>
+        <td class="hint" title="失败时刻（上海时区）">{{ f.observed.fetch_error.at | shanghai }}</td>
+        <td><code class="hint">{{ f.observed.fetch_error.msg }}</code></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endif %}
+
 <div class="macro-toolbar">
   {% set rj = jobs.get('__reeval__') %}
   {% if rj and rj.inflight %}
@@ -226,7 +246,8 @@
         {% else %}<span class="hint">未抓</span>{% endif %}
         {% if inp.observed and inp.observed.evidence %}<div class="hint evidence-line" title="{{ inp.observed.evidence }}">原因：{{ inp.observed.evidence | truncate(40, true) }}</div>{% endif %}
       </td>
-      <td>{% if inp.observed and inp.observed.verified_at and (not inp.observed.checked_at or inp.observed.verified_at > inp.observed.checked_at) %}<span class="hint" title="最近核对资料未变（verified_at，未起 LLM 重判，上海时区）">{{ inp.observed.verified_at | shanghai }}<span class="badge-delta">未变</span></span>{% elif inp.observed and inp.observed.checked_at %}<span class="hint" title="上次成功落值时间（checked_at，上海时区）">{{ inp.observed.checked_at | shanghai }}</span>{% else %}<span class="hint">未拉取</span>{% endif %}</td>
+      <td>{% if inp.observed and inp.observed.verified_at and (not inp.observed.checked_at or inp.observed.verified_at > inp.observed.checked_at) %}<span class="hint" title="最近核对资料未变（verified_at，未起 LLM 重判，上海时区）">{{ inp.observed.verified_at | shanghai }}<span class="badge-delta">未变</span></span>{% elif inp.observed and inp.observed.checked_at %}<span class="hint" title="上次成功落值时间（checked_at，上海时区）">{{ inp.observed.checked_at | shanghai }}</span>{% else %}<span class="hint">未拉取</span>{% endif %}
+        {% if inp.observed and inp.observed.fetch_error %}<div class="badge-fetcherr" title="上次脚本抓取失败 {{ inp.observed.fetch_error.at | shanghai }}：{{ inp.observed.fetch_error.msg }}（现值为上次成功值，已陈旧）">⚠ 抓取失败</div>{% endif %}</td>
       <td>
         {# 监控缺省随 rung：scripted 默认开、其余默认关（镜像 macro_registry.monitoring_enabled）。 #}
         {% set mon = inp.monitoring or {} %}
@@ -310,6 +331,10 @@
   .change-summary h2 { font-size: 1em; margin: 0 0 0.5em; }
   .alert-board { margin: 0.8em 0 1.2em; }
   .alert-board h2 { font-size: 1em; margin: 0 0 0.5em; }
+  .fetcherr-board { margin: 0.8em 0 1.2em; border: 1px solid #f3b4b4; background: #fef6f6; border-radius: 6px; padding: 0.6em 0.9em; }
+  .fetcherr-board h2 { font-size: 1em; margin: 0 0 0.3em; color: #b42318; }
+  .fetcherr-board p.hint { margin: 0 0 0.5em; }
+  .badge-fetcherr { display: inline-block; margin-top: 0.2em; font-size: 0.72em; padding: 0.1em 0.4em; border-radius: 3px; background: #fde8e8; color: #b42318; border: 1px solid #f3b4b4; cursor: help; }
   .breached-row { background: #fff6f5; }
   .badge-breach { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #fde8e8; color: #b42318; }
   .badge-ok { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #e6f4ea; color: #2d7a3a; }

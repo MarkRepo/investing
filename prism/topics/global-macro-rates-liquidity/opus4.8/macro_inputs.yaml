@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-10T14:35:33.604070+00:00'
+updated: '2026-06-10T15:31:32.508665+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -261,17 +261,29 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: llm
+  availability: scripted
+  fetch_method: recipe
+  fetch_recipe:
+    kind: html
+    url: https://sc.macromicro.me/series/265/ism-pmi
+    headers:
+      User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/124.0 Safari/537.36
+    parse:
+      value_regex: chart-stat-lastrows.*?<span class="val">([\d.,]+)
+      date_regex: chart-stat-lastrows.*?date-label">(\d{4}-\d{2})
   source_url: https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/
   observed:
     value: 54.0
-    as_of: '2026-06-01'
+    as_of: 2026-05
     evidence: https://www.prnewswire.com/news-releases/manufacturing-pmi-at-54-may-2026-ism-manufacturing-pmi-report-302786165.html
     acq_note: ISM 官网 redirect 至付费墙登录页；值从 PRNewswire 新闻稿确认。5月值 54.0，发布于 2026-06-01。
-    checked_at: '2026-06-10T00:27:51.311656+00:00'
+    checked_at: '2026-06-10T15:31:31.223242+00:00'
     streak: 0
-  note: 无免费脚本源——FRED NAPM 已停更(API 返 400),ISM 官网付费墙,DBnomics 镜像尾值损坏(给 ~10 垃圾值)。由 LLM
-    从月初新闻稿读取,故为 llm(2026-06-10 核)。
+    prev_value: 54.0
+  note: macromicro 镜像(series/265)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
+    chart-stat-lastrows 侧栏取最新期值。原 FRED NAPM 停更/ISM 官网付费墙/DBnomics 坏尾,故曾退回 LLM 读新闻稿(2026-06-10
+    改脚本)。
 - name: ISM 服务业 PMI
   tier: A
   cadence_type: event
@@ -287,17 +299,30 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: llm
+  availability: scripted
+  fetch_method: recipe
+  fetch_recipe:
+    kind: html
+    url: https://sc.macromicro.me/series/293/ism-nmi
+    headers:
+      User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/124.0 Safari/537.36
+    parse:
+      value_regex: chart-stat-lastrows.*?<span class="val">([\d.,]+)
+      date_regex: chart-stat-lastrows.*?date-label">(\d{4}-\d{2})
   source_url: https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/
   observed:
     value: 54.5
-    as_of: '2026-05-31'
+    as_of: 2026-05
     evidence: https://www.prnewswire.com/news-releases/services-pmi-at-54-5-may-2026-ism-services-pmi-report-302789082.html
     acq_note: ISM 官网有 SSO 墙无法直接抓，转从 PR Newswire 新闻稿取得。2026年5月服务业 PMI = 54.5（前值53.6），为连续第23个月扩张。Business
       Activity 57.7%，New Orders 57.3%，Employment 47.9%。
-    checked_at: '2026-06-10T00:37:20.109668+00:00'
+    checked_at: '2026-06-10T15:31:32.508665+00:00'
     streak: 0
     prev_value: 54.5
+  note: macromicro 镜像(series/293, NMI)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
+    chart-stat-lastrows 侧栏取最新期值。ISM 官网 SSO 墙,故曾退回 LLM 读 PRNewswire 新闻稿(2026-06-10
+    改脚本)。
 - name: 零售销售
   tier: A
   cadence_type: event

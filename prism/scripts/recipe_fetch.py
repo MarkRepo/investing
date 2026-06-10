@@ -93,8 +93,30 @@ def _parse_matrix(text, cfg) -> tuple[float | None, str | None]:
     return None, as_of
 
 
-_PARSERS = {"json": _parse_json, "csv": _parse_csv, "matrix": _parse_matrix}
-_TEXT_KINDS = {"csv", "matrix"}  # 这些 kind 喂 resp.text；json 喂 resp.json()
+def _parse_html(text, cfg) -> tuple[float | None, str | None]:
+    """HTML 正则取值：value_regex 必填（第 1 捕获组=值），date_regex 选填（第 1 捕获组=日期）。
+    两条正则都对**整页原文**跑（带 re.DOTALL），故可把区段锚点写进正则自身
+    （如 'chart-stat-lastrows.*?<span class="val">([\\d.,]+)' 避开页头同名块）。
+    值去千分位逗号后转 float；任何对不上 → 诚实 (None, as_of)，不抛。
+    供「固定 URL、值嵌在静态 HTML、无免费 json/csv 接口」的第三方镜像（如 macromicro）。"""
+    vr = cfg.get("value_regex")
+    if not vr:
+        return None, None
+    vm = re.search(vr, text, re.DOTALL)
+    raw = vm.group(1) if vm else None
+    as_of = None
+    dr = cfg.get("date_regex")
+    if dr:
+        dm = re.search(dr, text, re.DOTALL)
+        as_of = dm.group(1) if dm else None
+    try:
+        return (float(raw.replace(",", "")) if raw not in (None, "") else None), as_of
+    except (ValueError, TypeError, AttributeError):
+        return None, as_of
+
+
+_PARSERS = {"json": _parse_json, "csv": _parse_csv, "matrix": _parse_matrix, "html": _parse_html}
+_TEXT_KINDS = {"csv", "matrix", "html"}  # 这些 kind 喂 resp.text；json 喂 resp.json()
 
 
 def fetch_by_recipe(recipe: dict, *, client=None) -> tuple[float | None, str | None]:
@@ -180,8 +202,16 @@ def run_recipe_fetch(slug: str, variant: str, *, client=None,
         if avail != "scripted" or not e.get("fetch_recipe"):
             skipped_todo += 1
             continue
-        val, as_of = fetch_by_recipe(e["fetch_recipe"], client=client)
+        try:
+            val, as_of = fetch_by_recipe(e["fetch_recipe"], client=client)
+        except Exception as exc:           # HTTP 403/404/超时/未知 kind 等：记错、跳过，不连累其余源
+            reg.record_fetch_error(slug, variant, e["name"], msg=str(exc))
+            failed += 1
+            continue
         if val is None:
+            url = (e.get("fetch_recipe") or {}).get("url", "")
+            reg.record_fetch_error(slug, variant, e["name"],
+                                   msg=f"recipe 解析未取到值（源结构可能变更）: {url}")
             failed += 1
             continue
         reg.record_observation(slug, variant, e["name"], value=val, as_of=as_of)
@@ -204,6 +234,9 @@ def run_recipe_fetch(slug: str, variant: str, *, client=None,
             legs = [((by_name.get(n) or {}).get("observed") or {}).get("value")
                     for n in spec["from_inputs"]]
             if any(v is None for v in legs):
+                missing = [n for n, v in zip(spec["from_inputs"], legs) if v is None]
+                reg.record_fetch_error(slug, variant, e["name"],
+                                       msg=f"派生腿缺值: {', '.join(missing)}")
                 failed += 1
                 continue
             reg.record_observation(slug, variant, e["name"], value=_apply_op(spec["op"], legs))

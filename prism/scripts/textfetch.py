@@ -51,12 +51,23 @@ def run_textfetch(slug: str, variant: str, *, client=None,
         if only is not None and e["name"] not in only:
             continue
         if e["text_fetch"] not in _FETCHERS:
-            results[e["name"]] = {"error": f"未注册的 text_fetch: {e['text_fetch']!r}"}
+            msg = f"未注册的 text_fetch: {e['text_fetch']!r}"
+            results[e["name"]] = {"error": msg}
+            reg.record_fetch_error(slug, variant, e["name"], msg=msg)
             continue
         try:
-            results[e["name"]] = _FETCHERS[e["text_fetch"]](slug, variant, e, client=client)
+            res = _FETCHERS[e["text_fetch"]](slug, variant, e, client=client)
+            results[e["name"]] = res
         except Exception as exc:                       # 网络/解析失败：记一行、跳过，不连累其余取文源
             results[e["name"]] = {"error": str(exc)}
+            reg.record_fetch_error(slug, variant, e["name"], msg=str(exc))
+            continue
+        # 失败标记持久化到 observed（fred/recipe 走 record_observation 自动清，取文不调它故在此显式清/记）
+        if res.get("error") or not res.get("ok"):
+            reg.record_fetch_error(slug, variant, e["name"],
+                                   msg=res.get("error") or "取文未成功（fetcher 返回 ok=False）")
+        else:
+            reg.record_fetch_error(slug, variant, e["name"], msg=None)  # 成功 → 清错
     return results
 
 
