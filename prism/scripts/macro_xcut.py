@@ -61,3 +61,53 @@ def write_macro_stamp(slug: str, variant: str, stamp: dict) -> Path:
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(yaml.dump(out, allow_unicode=True, sort_keys=False), encoding="utf-8")
     return p
+
+
+def _latest_regime_states(macro_slug: str, macro_variant: str):
+    """最新 regime eval 的 (version, {conclusion_id: state})；无 eval → (None, {})。"""
+    latest = es.latest_evaluation(macro_slug, macro_variant)
+    if not latest:
+        return None, {}
+    states = {c.get("id"): c.get("state") for c in (latest.get("conclusions") or [])}
+    return latest.get("version"), states
+
+
+def scan_holding_staleness(macro_slug: str, macro_variant: str) -> list:
+    """枚举带 macro_stamp 的 company topic，比依赖体制状态 vs 最新 regime。零 LLM。
+
+    返回 [{slug, variant, stale, reason, changed_states:[{conclusion,from,to,role}],
+           as_of_regime_version, latest_regime_version}]。
+    无 regime eval → stale=False + basis='no_regime_eval'（无基准，不报错）。
+    没盖印章的 company 不收（归 coverage_gaps）。
+    """
+    version, states = _latest_regime_states(macro_slug, macro_variant)
+    out = []
+    for t in topic_mod.list_topics(macro_variant):
+        if t.get("type") != "company":
+            continue
+        cslug, cvar = t.get("slug"), t.get("variant")
+        stamp = read_macro_stamp(cslug, cvar)
+        if not stamp:
+            continue
+        if version is None:
+            out.append({"slug": cslug, "variant": cvar, "stale": False, "reason": None,
+                        "changed_states": [], "basis": "no_regime_eval"})
+            continue
+        changed = []
+        for d in stamp.get("depends_on_states") or []:
+            cid = d.get("conclusion")
+            now_state = states.get(cid)
+            if now_state is not None and now_state != d.get("state"):
+                changed.append({"conclusion": cid, "from": d.get("state"),
+                                "to": now_state, "role": d.get("role")})
+        stale = bool(changed)
+        reason = None
+        if stale:
+            f = changed[0]
+            reason = (f"依赖的『{f['from']}』已变『{f['to']}』"
+                      f"(regime v{stamp.get('as_of_regime_version')}→v{version})")
+        out.append({"slug": cslug, "variant": cvar, "stale": stale, "reason": reason,
+                    "changed_states": changed,
+                    "as_of_regime_version": stamp.get("as_of_regime_version"),
+                    "latest_regime_version": version})
+    return out
