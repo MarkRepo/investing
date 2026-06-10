@@ -165,3 +165,35 @@ def test_register_holding_row_existing_is_skipped(tmp_world):
 def test_register_holding_row_no_map(tmp_world):
     res = mx.register_holding_row("gm", "v", {"slug": "pdd"})
     assert res["registered"] is False and res["reason"] == "no_transmission_map"
+
+
+def test_apply_staleness_flags_stamp_and_writes_proposal(tmp_world):
+    gm, v = _seed_macro(tmp_world)
+    _write_topic_yaml(tmp_world, "pdd", v, "company")
+    mx.write_macro_stamp("pdd", v, {"as_of_regime_version": 1,
+        "depends_on_states": [{"conclusion": "fx_cny", "state": "人民币企稳", "role": "load_bearing"}]})
+    es.record_evaluation(gm, v, [
+        {"id": "fx_cny", "label": "人民币汇率体制", "state": "贬压重来", "causal": "y",
+         "based_on": [{"input": "USDCNY", "role": "load_bearing"}]}], note="v2")
+
+    res = mx.apply_holding_staleness(gm, v)
+    assert res["applied"] == 1
+    # 印章被盖 stale
+    stamp = mx.read_macro_stamp("pdd", v)
+    assert stamp["stale"] is True and "贬压重来" in stamp["stale_reason"]
+    # queue 里有一条 macro_regime proposal 指向 pdd
+    pending = monitor.load_queue()
+    macro_regime = [p for p in pending if p["kind"] == "macro_regime"]
+    assert len(macro_regime) == 1
+    assert macro_regime[0]["slug"] == "pdd" and macro_regime[0]["status"] == "awaiting_confirm"
+    assert macro_regime[0]["requires_thesis_review"] is True
+
+
+def test_apply_staleness_noop_when_nothing_stale(tmp_world):
+    gm, v = _seed_macro(tmp_world)
+    _write_topic_yaml(tmp_world, "pdd", v, "company")
+    mx.write_macro_stamp("pdd", v, {"as_of_regime_version": 1,
+        "depends_on_states": [{"conclusion": "fx_cny", "state": "人民币企稳", "role": "load_bearing"}]})
+    res = mx.apply_holding_staleness(gm, v)
+    assert res["applied"] == 0
+    assert monitor.load_queue() == []

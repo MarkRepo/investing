@@ -154,3 +154,40 @@ def register_holding_row(macro_slug: str, macro_variant: str, row: dict) -> dict
     p = _transmission_path(macro_slug, macro_variant)
     p.write_text(yaml.dump(tm, allow_unicode=True, sort_keys=False), encoding="utf-8")
     return {"registered": True, "slug": row.get("slug")}
+
+
+def apply_holding_staleness(macro_slug: str, macro_variant: str) -> dict:
+    """落地 staleness：给 stale 持仓盖 stamp.stale 旗 + 写 kind='macro_regime' proposal。
+
+    stage 不动（沿 monitor 信息型回路；confirm 走 confirm_flip 的未知-kind 通道）。
+    返回 {applied, scanned}。零 LLM。
+    """
+    results = scan_holding_staleness(macro_slug, macro_variant)
+    labels = es.conclusion_labels(macro_slug, macro_variant)
+    today = datetime.now(timezone.utc).date().isoformat()
+    proposals = []
+    applied = 0
+    for r in results:
+        if not r.get("stale"):
+            continue
+        stamp = read_macro_stamp(r["slug"], r["variant"])
+        stamp["stale"] = True
+        stamp["stale_reason"] = r["reason"]
+        write_macro_stamp(r["slug"], r["variant"], stamp)
+        applied += 1
+        f = r["changed_states"][0]
+        clabel = labels.get(f["conclusion"], f["conclusion"])
+        entry = (
+            f"## {today} 宏观体制变化：{clabel}\n"
+            f"**来源**：宏观层 regime 重合成（v{r['as_of_regime_version']}→v{r['latest_regime_version']}）\n"
+            f"**关键信息**：你依赖的『{f['from']}』已变『{f['to']}』\n"
+            f"**对已有判断的影响**：该 case 的宏观背景已过期，建议重判\n"
+            f"**当前判断更新**：维持，等用户在 web 端决定是否重跑合成")
+        proposals.append({
+            "slug": r["slug"], "variant": r["variant"], "kind": "macro_regime",
+            "locator": f["conclusion"], "proposed_value": "regime_shift",
+            "living_feed_entry": entry,
+            "rationale": r["reason"], "requires_thesis_review": True})
+    if proposals:
+        monitor.propose_flips(proposals)
+    return {"applied": applied, "scanned": len(results)}
