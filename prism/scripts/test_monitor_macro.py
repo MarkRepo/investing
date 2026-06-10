@@ -239,3 +239,24 @@ def test_cycle_does_not_launch_llm_only_reminds(monkeypatch, macro_monitor_env):
     assert "MOVE" in result.get("macro_due_reminder", [])   # 出提示
     assert "macro_llm" not in result                        # 不再自动拉
     assert calls["n"] == 0                                   # 零 headless、零 token（本 fixture 无 company 到期）
+
+
+def test_confirm_macro_regime_is_informational(tmp_path, monkeypatch):
+    import yaml
+    from prism.scripts import monitor
+    from prism.scripts import topic as topic_mod
+    monkeypatch.setattr(monitor, "PRISM_ROOT", tmp_path)
+    monkeypatch.setattr(monitor, "QUEUE_PATH", tmp_path / "monitor_queue.yaml")
+    monkeypatch.setattr(topic_mod, "PRISM_ROOT", tmp_path)
+    d = tmp_path / "topics" / "pdd" / "v" / "outputs"
+    d.mkdir(parents=True, exist_ok=True)
+    monitor.propose_flips([{
+        "slug": "pdd", "variant": "v", "kind": "macro_regime", "locator": "fx_cny",
+        "proposed_value": "regime_shift", "living_feed_entry": "## t 宏观体制变化\nx",
+        "rationale": "r", "requires_thesis_review": True}])
+    pid = monitor.load_queue()[0]["proposal_id"]
+    res = monitor.confirm_flip(pid)
+    assert res["status"] == "confirmed"
+    # 信息型：living_feed 被追加，无 sidecar 翻牌报错
+    feed = (d / "08_living_feed.md")
+    assert feed.exists() and "宏观体制变化" in feed.read_text(encoding="utf-8")
