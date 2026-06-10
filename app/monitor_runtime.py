@@ -98,6 +98,22 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
         except Exception as e:
             _log(f"recipe fetch failed: {e}")
 
+        # macro 取文自动下载（零 LLM）：带 text_fetch 的输入按其值路由 fetcher 下原文存本地缓存。
+        # 与 fred/recipe 同为脚本通道——立场判读仍走 LLM（不在此跑），但原文缓存随定时保持新鲜，
+        # 故和它们并列在 macro scan 之前刷新。失败吞掉、不阻断周期。加新取文源自动纳入本循环。
+        try:
+            from prism.scripts import textfetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                text_summary = await asyncio.to_thread(
+                    textfetch.run_textfetch, t["slug"], t["variant"])
+                if text_summary:
+                    _log(f"text fetch [{t['slug']}/{t['variant']}]: {text_summary}")
+        except Exception as e:
+            _log(f"text fetch failed: {e}")
+
         # macro 输入到期/越带（零 LLM）：写 macro_input proposal
         try:
             macro_res = await asyncio.to_thread(monitor.propose_macro_updates)
@@ -176,34 +192,44 @@ async def _launch_headless() -> str:
 
 
 def _build_macro_llm_prompt(slug: str, variant: str, entries: list[dict]) -> str:
-    """组 headless LLM 取数 prompt（纯函数，可测）。每个输入按 source_url 在不在派生取法：
-    fixed_page=用 WebFetch 读固定页判读 / search=用 WebSearch 检索定位最新官方值。
+    """组 headless LLM 取数 prompt（纯函数，可测）。每个输入按 llm_acquisition_mode 派发：
+    local_file=Read 本地缓存文件判读 / fixed_page=WebFetch 固定页判读 / search=WebSearch 检索。
 
     降本要点（去 Bash 回合）：claude **不调用任何 Bash/macro_record/写文件工具**——逐条检索判读后，
     **最后只输出一个 fenced ```json 数组**，由 Python 解析直接落盘（少 1–2 个 agent 回合、不重读上下文）。
-    检索一律用内置 **WebSearch**（必要时 **WebFetch** 读固定页），不再用 MCP adaptor（取数 headless 已零 MCP）。
+    检索一律用内置 WebSearch（必要时 WebFetch 读固定页），local_file 模式用 Read 读本地文件。
     web 后台 job（单条）与 resume 重判路径共用本 prompt。"""
     from prism.scripts import macro_registry as reg
+    from prism.scripts.macro_registry import _PRISM_ROOT, STANCE_SCALES
+    has_local = any(reg.llm_acquisition_mode(e) == "local_file" for e in entries)
+    has_web = any(reg.llm_acquisition_mode(e) in ("fixed_page", "search") for e in entries)
+    tool_limit = []
+    if has_local:
+        tool_limit.append("Read（读本地缓存文件）")
+    if has_web:
+        tool_limit.append("WebSearch / WebFetch")
     lines = [
         "你在 headless 模式下为 prism 宏观输入表执行 LLM 取数。逐条处理下列输入，"
-        "用内置 WebSearch 检索（需要读固定页时用 WebFetch）定位最新官方值后判读。"
-        "绝不编造：某条拉不到就令其 value=null，不要写值、不要猜。",
+        "按各条指定方式取数后判读。绝不编造：某条拉不到就令其 value=null，不要写值、不要猜。",
         "",
         f"主题：{slug} / {variant}",
         "",
-        "工具限制：只用 WebSearch / WebFetch。**不要调用 Bash、不要写或改任何文件、不要试图自行落盘**——"
+        f"工具限制：只用 {'、'.join(tool_limit) or 'WebSearch / WebFetch'}。"
+        "**不要调用 Bash、不要写或改任何文件、不要试图自行落盘**——"
         "落盘由调用方的 Python 程序读你输出的 JSON 完成。",
         "",
-        "promote（降本待办）：处理每条时判断「该源能否用稳定脚本/recipe（固定 JSON/CSV 端点）自动拉取」，"
-        "把结论放进该条的 scriptable(true/false) 与 note（缺什么 recipe/端点）字段；"
+        "promote（降本待办）：处理每条时判断「该源能否用稳定脚本/recipe 自动拉取」，"
+        "把结论放进 scriptable(true/false) 与 note 字段；"
         "拉不到数值（value=null）时 scriptable 一律 false。",
         "",
         "输出格式（**全部处理完后，整段回复的最后只放这一个代码块，不要再有多余文字**）：",
         "```json",
         "[",
-        '  {"name": "<输入名，与下表一致>", "value": <数值或 null>, "as_of": "<YYYY-MM-DD 或 null>",',
-        '   "evidence": "<采用源 URL/引文>", "acq_note": "<本次取数判定理由，供 web 表「原因/判定」列>",',
-        '   "scriptable": <true/false>, "note": "<若 scriptable：缺什么 recipe/端点；否则空串>"}',
+        '  {"name": "<输入名，与下表一致>", "value": <数值或 null>,',
+        '   "stance": "<鹰鸽/松紧档位或 null，仅 policy 输入填写>",',
+        '   "as_of": "<YYYY-MM-DD 或 null>",',
+        '   "evidence": "<采用源 URL/引文>", "acq_note": "<本次取数判定理由>",',
+        '   "scriptable": <true/false>, "note": "<若 scriptable：缺什么 recipe；否则空串>"}',
         "]",
         "```",
         "",
@@ -212,7 +238,16 @@ def _build_macro_llm_prompt(slug: str, variant: str, entries: list[dict]) -> str
     for e in entries:
         name = e.get("name", "")
         mode = reg.llm_acquisition_mode(e) or "search"
-        if mode == "fixed_page":
+        scale = e.get("stance_scale")
+        if mode == "local_file":
+            abs_path = str(_PRISM_ROOT / e["local_cache_path"])
+            scale_hint = (f"判断鹰鸽/松紧立场，填入 stance 字段（轴：{scale}，"
+                          f"档位：{'、'.join(STANCE_SCALES[scale])}）。value 填 null。"
+                          if scale and scale in STANCE_SCALES else "")
+            how = (f"本地缓存文件 —— 用 Read 工具读 {abs_path}，"
+                   f"根据文件内容判读最新状态。{scale_hint}"
+                   "evidence 填文件中的来源 URL 或日期。")
+        elif mode == "fixed_page":
             how = (f"固定页起点 {e.get('source_url')} —— 用 WebFetch 读该索引/落地页正文判读，"
                    "顺最新条目找数值。")
         else:

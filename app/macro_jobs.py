@@ -369,8 +369,18 @@ def _parse_json_payload(text: str) -> list[dict] | None:
 
 def _apply_payload(job: Job, items: list[dict]) -> None:
     """逐条把解析结果写进 registry：record_observation（含 value=null 的诚实留空），
-    scriptable&value 非空再 flag_scriptable（registry 闸门兜底）。单条异常不连累其余。"""
+    scriptable&value 非空再 flag_scriptable（registry 闸门兜底）。单条异常不连累其余。
+
+    名字容错：LLM 偶尔改动输入名（如漏 "FOMC 声明/纪要" 的空格→"FOMC声明/纪要"）。
+    精确名匹配不上时，用「去空白归一化」回退映射到登记表真实名，避免观测被静默丢弃。"""
     from prism.scripts import macro_registry as reg
+    # 登记表真实名 + 归一化索引（去所有空白），供 LLM 名字漂移时回退匹配
+    try:
+        reg_names = [e["name"] for e in reg.read_registry(job.slug, job.variant).get("inputs") or []]
+    except Exception:
+        reg_names = []
+    _norm = lambda s: re.sub(r"\s+", "", s or "")
+    canon = {_norm(n): n for n in reg_names}
     applied = 0
     for item in items:
         if not isinstance(item, dict):
@@ -378,13 +388,19 @@ def _apply_payload(job: Job, items: list[dict]) -> None:
         nm = item.get("name")
         if not nm:
             continue
+        if nm not in reg_names:              # 精确匹配不上 → 归一化回退
+            nm = canon.get(_norm(nm), nm)
         value = item.get("value")
         as_of = item.get("as_of")
         try:
             reg.record_observation(
                 job.slug, job.variant, nm,
                 value=value, as_of=as_of,
-                evidence=item.get("evidence"), acq_note=item.get("acq_note"))
+                evidence=item.get("evidence"), acq_note=item.get("acq_note"),
+                stance=item.get("stance") or None,
+                # 去重指纹：路由起 job 前已塞进 entry（见 prism.py fetch-llm）。
+                # 落盘后下次取数对比，相同即跳过二次判读。无则不写（向后兼容）。
+                fingerprint=job.entry.get("_pending_fingerprint"))
         except Exception as e:           # 未知输入/读写异常：记一行、跳过，不毁整 job
             job.lines.append(f"⚠️ 跳过「{nm}」：{e}")
             continue

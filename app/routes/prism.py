@@ -789,14 +789,20 @@ def prism_macro_monitoring(slug: str, variant: str, name: str = Form(...),
 
 @router.post("/{slug}/{variant}/macro-inputs/fetch-llm")
 async def prism_macro_fetch_llm(slug: str, variant: str, request: Request,
-                                names: list[str] = Form(default=[]), anchor: str = Form("")):
+                                names: list[str] = Form(default=[]), anchor: str = Form(""),
+                                force: bool = Form(False), plan: bool = Form(False)):
     """web 手动拉起 headless LLM 取数：每个合格输入一个**后台 job**，立即返回（不阻塞）。
 
     点击即返回 job ids；服务端 app.macro_jobs 持有在途真相（刷新后仍正确），并发由 Semaphore 闸。
     names 为空时默认全部 llm/scriptable_todo 项。非 macro 主题 / 登记表缺失 → 404。
     Accept: application/json → 202 + {started, jobs:{name:job_id}}（前端起轮询/弹框 SSE）；
     否则 303 回锚点（无 JS 回退，job 仍在后台跑）。
+
+    plan=true（脚本取文类的两段式）：只做预抓+去重判定、**不起 LLM job**，返回
+    {would_start, skipped_unchanged}。前端据此「仅在 would_start 非空（内容有变、确需 LLM）时才弹确认」，
+    确认后再以 plan=false 提交真正起 job。检索/固定页类无廉价预检，前端仍先确认后直接 plan=false 提交。
     """
+    import asyncio
     from prism.scripts import macro_registry as macro_reg
     from app import macro_jobs
     try:
@@ -813,9 +819,55 @@ async def prism_macro_fetch_llm(slug: str, variant: str, request: Request,
     eligible = [n for n, e in by_name.items()
                 if e.get("availability") in ("llm", "scriptable_todo")]
     picked = [n for n in names if n in eligible] if names else eligible
+    # 取文项（带 text_fetch）：先同步刷新各自的本地缓存再起 LLM job。逐条按 text_fetch 路由抓，
+    # 拿回该项自己的 fingerprint——不再假设全局单源同一指纹（多取文源时各源指纹独立）。
+    needs_prefetch = [n for n in picked if by_name[n].get("text_fetch")]
+    prefetch_warn: str | None = None
+    fingerprints: dict[str, str] = {}   # {name: 本次取数的稳定指纹}，去重门据此判内容是否变化
+    if needs_prefetch:
+        from prism.scripts import textfetch as _textfetch
+        loop = asyncio.get_event_loop()
+        for n in needs_prefetch:
+            try:
+                _fres = await loop.run_in_executor(
+                    None, _textfetch.fetch_entry, slug, variant, by_name[n])
+                _fp = (_fres or {}).get("fingerprint")
+                if _fp:
+                    fingerprints[n] = _fp
+            except Exception as _exc:
+                prefetch_warn = str(_exc)  # 网络失败不阻塞 LLM（降级读旧缓存或 web fetch）
+    # 去重门：内容未变（新指纹 == 上次判读指纹）且未强制 → 跳过 LLM，沿用上次 observed、仅记 verified_at
+    skipped_unchanged: list[str] = []
+    if not force:
+        survivors = []
+        for n in picked:
+            new_fp = fingerprints.get(n)
+            obs = by_name[n].get("observed") or {}
+            old_fp = obs.get("fingerprint")
+            if new_fp and old_fp and new_fp == old_fp and obs:
+                skipped_unchanged.append(n)
+                macro_reg.mark_verified(slug, variant, n, fingerprint=new_fp)
+            else:
+                if new_fp:
+                    by_name[n]["_pending_fingerprint"] = new_fp   # 透传给 _apply_payload 落盘
+                survivors.append(n)
+        picked = survivors
+    else:
+        for n in picked:                 # 强制：仍把指纹塞进 entry，判读后照常落盘更新
+            if fingerprints.get(n):
+                by_name[n]["_pending_fingerprint"] = fingerprints[n]
+    # plan 模式：只回报「将起哪些 / 已因未变跳过哪些」，不起 job。前端据此决定是否弹确认。
+    if plan:
+        plan_resp: dict = {"would_start": picked, "skipped_unchanged": skipped_unchanged}
+        if prefetch_warn is not None:
+            plan_resp["prefetch_warn"] = prefetch_warn
+        return JSONResponse(plan_resp, status_code=202)
     jobs = {n: macro_jobs.launch(slug, variant, n, entry=by_name[n]).id for n in picked}
     if "application/json" in (request.headers.get("accept") or ""):
-        return JSONResponse({"started": picked, "jobs": jobs}, status_code=202)
+        resp: dict = {"started": picked, "jobs": jobs, "skipped_unchanged": skipped_unchanged}
+        if prefetch_warn is not None:
+            resp["prefetch_warn"] = prefetch_warn
+        return JSONResponse(resp, status_code=202)
     frag = f"#{anchor}" if anchor else ""
     return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
 
@@ -902,29 +954,35 @@ def prism_macro_fetch_script(slug: str, variant: str, request: Request,
 
 @router.post("/{slug}/{variant}/macro-inputs/fetch-script-all")
 def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anchor: str = Form("")):
-    """批量「刷新脚本项」：跑全量 fred + recipe（零 LLM、零成本）。LLM 项一律行内单条手动拉。
+    """批量「刷新脚本项」：跑全量 fred + recipe + 取文（零 LLM、零成本）。LLM 判读项一律行内单条手动拉。
 
-    非 macro 主题 / 登记表缺失 → 404。Accept: application/json → {fred, recipe, fetched}；否则 303 回锚点。
+    「取文」= 下载原文存本地缓存的脚本通道，登记表驱动：扫所有带 text_fetch 的输入、按其值路由到
+    对应 fetcher（见 textfetch.run_textfetch）。加新取文源无需改本路由。整通道失败吞掉、不毁整批
+    （FRED/recipe 仍生效）。非 macro 主题 / 登记表缺失 → 404。
+    Accept: application/json → {fred, recipe, text, fetched}；否则 303 回锚点。
     """
-    from prism.scripts import macro_registry as macro_reg
-    from prism.scripts import fred_fetch, recipe_fetch
+    from prism.scripts import fred_fetch, recipe_fetch, textfetch
     try:
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
     if topic.get("type") != "macro":
         raise HTTPException(status_code=404, detail="非宏观主题")
-    try:
-        macro_reg.read_registry(slug, variant)
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="登记表不存在")
     fred_sum = fred_fetch.run_fred_fetch(slug, variant)
     recipe_sum = recipe_fetch.run_recipe_fetch(slug, variant)
+    # 取文：登记表驱动，逐条按 text_fetch 路由；整通道失败吞掉不毁整批（FRED/recipe 仍生效）
+    try:
+        text_sum = textfetch.run_textfetch(slug, variant)
+    except Exception as _exc:
+        text_sum = {"_error": str(_exc)}
     fred_n = (fred_sum.get("fetched", 0) or 0) + (fred_sum.get("derived", 0) or 0)
     recipe_n = (recipe_sum.get("fetched", 0) or 0) + (recipe_sum.get("derived", 0) or 0)
+    text_n = sum(1 for r in text_sum.values() if isinstance(r, dict) and r.get("ok"))
     if "application/json" in (request.headers.get("accept") or ""):
-        return JSONResponse({"fred": fred_n, "recipe": recipe_n, "fetched": fred_n + recipe_n,
-                             "fred_summary": fred_sum, "recipe_summary": recipe_sum})
+        return JSONResponse({"fred": fred_n, "recipe": recipe_n, "text": text_n,
+                             "fetched": fred_n + recipe_n + text_n,
+                             "fred_summary": fred_sum, "recipe_summary": recipe_sum,
+                             "text_summary": text_sum})
     frag = f"#{anchor}" if anchor else ""
     return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
 

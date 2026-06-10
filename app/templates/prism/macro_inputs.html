@@ -108,11 +108,11 @@
   {% endif %}
   {% endif %}
   <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs/fetch-script-all" style="margin:0"
-        data-confirm="跑全部脚本项（FRED / recipe）刷新——零 LLM、零成本。继续？">
-    <button type="submit" class="batch-fetch-btn">⟳ 批量刷新脚本项（FRED/recipe·免费）</button>
+        data-confirm="跑全部脚本项（FRED / recipe / 取文）刷新——零 LLM、零成本。继续？">
+    <button type="submit" class="batch-fetch-btn">⟳ 批量刷新脚本项（FRED/recipe/取文·免费）</button>
   </form>
 </div>
-<p class="hint toolbar-hint">「发起重估」盖变更简报戳 + 拉起一次真实合成（headless Claude 跑 _macro_regime 全流程、默认 opus4.8 可选，有 token 成本），自动弹出输出框可实时看 + 续问驱动；「批量刷新脚本项」只跑脚本通道（FRED / recipe）刷新全部 scripted 项，零 LLM、零成本。LLM 项请逐条点行内「⟳ 拉取」手动取（有 token 成本，默认 haiku·原生检索；不满意可在弹框换模型「重判」）。定时巡检也只跑脚本项、不自动跑 LLM。</p>
+<p class="hint toolbar-hint">「发起重估」盖变更简报戳 + 拉起一次真实合成（headless Claude 跑 _macro_regime 全流程、默认 opus4.8 可选，有 token 成本），自动弹出输出框可实时看 + 续问驱动；「批量刷新脚本项」只跑脚本通道（FRED / recipe / 取文）刷新全部 scripted 项，零 LLM、零成本（取文类如 FOMC 仅下载原文存本地，立场判读仍需行内点「⟳ 拉取」起 LLM）。LLM 项请逐条点行内「⟳ 拉取」手动取（有 token 成本，默认 haiku·原生检索；不满意可在弹框换模型「重判」）。定时巡检也只跑脚本项、不自动跑 LLM。</p>
 
 {% if reeval_pending %}
 {% set b = reeval_pending.brief %}
@@ -198,9 +198,10 @@
           {% set avail_label = {'scripted': '已脚本', 'scriptable_todo': '待脚本', 'llm': 'LLM取'} %}
           {% set avail_tip = {'scripted': '固定脚本直拉，零 LLM，便宜快', 'scriptable_todo': '能转脚本但 recipe 待写（降本待办，见 note）', 'llm': '无法稳定脚本化，每轮 LLM 读/检索判（贵，原因见 note）'} %}
           <span class="badge-avail avail-{{ inp.availability }}" title="{{ avail_tip[inp.availability] }}">{{ avail_label[inp.availability] }}</span>
-          {# llm 取数方式：派生自 source_url 在不在，镜像 macro_registry.llm_acquisition_mode #}
+          {# llm 取数方式：镜像 macro_registry.llm_acquisition_mode（local_cache_path 优先 → 固定页 → 检索）#}
           {% if inp.availability == 'llm' %}
-            {% if inp.source_url %}<span class="badge-mode mode-page" title="固定页起点：从该索引/落地页起抓，LLM 读返回内容判下一跳">固定页</span>
+            {% if inp.local_cache_path %}<span class="badge-mode mode-localfile" title="脚本取文+LLM判：脚本下载原文存本地缓存（取数零 LLM、可去重免重判），LLM 仅读本地文件判读立场">脚本取文</span>
+            {% elif inp.source_url %}<span class="badge-mode mode-page" title="固定页起点：从该索引/落地页起抓，LLM 读返回内容判下一跳">固定页</span>
             {% else %}<span class="badge-mode mode-search" title="检索式：无稳定起点，LLM 构造 query 发起 web 检索，采用源记入 evidence">检索</span>{% endif %}
           {% endif %}
         {% endif %}
@@ -208,16 +209,24 @@
         {% set lm = last_meta.get(inp.name) if last_meta else none %}
         {% if lm %}<div class="hint last-cost" title="上次 LLM 取数花费 / 时间（落盘 meta，下次拉取覆盖）">上次 ${{ '%.4f' | format(lm.cost) }}{% if lm.ended_at %} · {{ lm.ended_at | shanghai }}{% endif %}</div>{% endif %}
       </td>
-      <td>{% if d and d.snapshot_value is not none %}{{ d.snapshot_value }}{% else %}<span class="hint">—</span>{% endif %}</td>
       <td>
-        {% if d and d.live_value is not none %}{{ d.live_value }}
+        {%- if inp.stance_scale -%}
+          {{ (d.snapshot_stance if d else none) or '—' }}
+        {%- elif d and d.snapshot_value is not none -%}{{ d.snapshot_value }}{%- else -%}<span class="hint">—</span>{%- endif -%}
+      </td>
+      <td>
+        {% if inp.stance_scale %}
+          {% set live_stance = (d.stance if d else none) or (inp.observed.stance if inp.observed else none) %}
+          {% if live_stance %}{{ live_stance }}{% if d and d.direction %}<span class="badge-delta">{{ d.direction }}</span>{% endif %}
+          {% else %}<span class="hint">未判</span>{% endif %}
+        {% elif d and d.live_value is not none %}{{ d.live_value }}
           {% if d.delta is not none and d.delta != 0 %}<span class="badge-delta">{{ '%+.4g' | format(d.delta) }}</span>{% endif %}
           {% if d.breached %}<span class="badge-breach">越带</span>{% endif %}
         {% elif inp.observed and inp.observed.value is not none %}{{ inp.observed.value }}
         {% else %}<span class="hint">未抓</span>{% endif %}
         {% if inp.observed and inp.observed.evidence %}<div class="hint evidence-line" title="{{ inp.observed.evidence }}">原因：{{ inp.observed.evidence | truncate(40, true) }}</div>{% endif %}
       </td>
-      <td>{% if inp.observed and inp.observed.checked_at %}<span class="hint" title="上次成功落值时间（checked_at，上海时区）">{{ inp.observed.checked_at | shanghai }}</span>{% else %}<span class="hint">未拉取</span>{% endif %}</td>
+      <td>{% if inp.observed and inp.observed.verified_at and (not inp.observed.checked_at or inp.observed.verified_at > inp.observed.checked_at) %}<span class="hint" title="最近核对资料未变（verified_at，未起 LLM 重判，上海时区）">{{ inp.observed.verified_at | shanghai }}<span class="badge-delta">未变</span></span>{% elif inp.observed and inp.observed.checked_at %}<span class="hint" title="上次成功落值时间（checked_at，上海时区）">{{ inp.observed.checked_at | shanghai }}</span>{% else %}<span class="hint">未拉取</span>{% endif %}</td>
       <td>
         {# 监控缺省随 rung：scripted 默认开、其余默认关（镜像 macro_registry.monitoring_enabled）。 #}
         {% set mon = inp.monitoring or {} %}
@@ -238,6 +247,7 @@
         {% else %}
         <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs/fetch-llm" style="margin:0"
               data-input-name="{{ inp.name }}"
+              {% if inp.local_cache_path %}data-local-file="1"{% endif %}
               data-confirm="对该项拉起一次 headless Claude 取数（有 token 成本）。继续？">
           <input type="hidden" name="names" value="{{ inp.name }}">
           <input type="hidden" name="anchor" value="input-{{ loop.index0 }}">
@@ -344,6 +354,7 @@
   .badge-mode { font-size: .72em; padding: 1px 5px; border-radius: 3px; margin-left: 3px; }
   .mode-page { background: #eef2ff; color: #4338ca; }    /* 固定页起点 */
   .mode-search { background: #fdf2f8; color: #be185d; }  /* 检索式 */
+  .mode-localfile { background: #ecfdf5; color: #047857; }  /* 脚本取文+LLM判（取数零 LLM） */
   /* 在途/到期/查看输出（沿用 flash-warn 琥珀色系） */
   .badge-inflight { font-size: .78em; padding: .15em .55em; border-radius: 3px; background: #fff7ed; color: #b45309; border: 1px solid #f0c36d; white-space: nowrap; }
   .badge-due { font-size: .72em; padding: .1em .4em; border-radius: 3px; background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; white-space: nowrap; }
@@ -639,24 +650,74 @@
   function restore(btn, label) { if (!btn) return; btn.disabled = false; btn.classList.remove("btn-loading"); if (label != null) btn.innerHTML = label; }
 
   document.querySelectorAll('form[action$="/macro-inputs/fetch-llm"]').forEach(function (f) {
+    var isLocalFile = f.dataset.localFile === "1";   // 脚本取文+LLM判：可廉价预检去重
+
+    // 发一次请求（plan=true 仅预检不起 job；plan=false 真正起 job）
+    function post(plan) {
+      var fd = new FormData(f);
+      fd.set("plan", plan ? "true" : "false");
+      return fetch(f.action, { method: "POST", body: fd, headers: { "Accept": "application/json" } })
+        .then(function (r) { return r.status === 202 ? r.json() : Promise.reject(r.status); });
+    }
+
+    // 处理「真正起了 job」的响应（原有逻辑）
+    function onStarted(btn, original, data) {
+      var jobs = data.jobs || {}, names = Object.keys(jobs);
+      var skipped = data.skipped_unchanged || [];
+      if (!names.length) {
+        if (skipped.length) { showFlash("ok", skipped.length + " 条内容未变，沿用上次判读：" + skipped.join("、") + "（零 token）"); }
+        else { showFlash("warn", "没有可取数的 LLM / 待脚本项。"); }
+        restore(btn, original); return;
+      }
+      names.forEach(function (n) { watching[jobs[n]] = true; markRowInflight(n, jobs[n]); });
+      var skipNote = skipped.length ? "；另 " + skipped.length + " 条内容未变已沿用" : "";
+      if (data.prefetch_warn) {
+        showFlash("warn", "已启动 " + names.length + " 条取数；FOMC 预抓失败：" + data.prefetch_warn + "（LLM 将降级读旧缓存）" + skipNote);
+      } else {
+        showFlash("ok", "已在后台启动 " + names.length + " 条取数（完成后自动刷新表格）。" + skipNote);
+      }
+      restore(btn, original);
+      startPolling();
+      if (names.length === 1) { openOutput(jobs[names[0]], names[0]); }   // 单条拉取：自动弹出实时输出框
+    }
+
+    // 真正起 job：plan=false 提交
+    function commit(btn, original) {
+      if (btn) { btn.disabled = true; btn.classList.add("btn-loading"); btn.textContent = "⏳ 启动…"; }
+      post(false)
+        .then(function (data) { onStarted(btn, original, data); })
+        .catch(function () { restore(btn, original); showFlash("err", "启动失败：请求未成功（可重试，或查看 prism/logs/monitor.log）。"); });
+    }
+
     f.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (f.dataset.confirm && !window.confirm(f.dataset.confirm)) return;
       var btn = f.querySelector('button[type="submit"]');
       var original = btn ? btn.innerHTML : "";
-      if (btn) { btn.disabled = true; btn.classList.add("btn-loading"); btn.textContent = "⏳ 启动…"; }
-      fetch(f.action, { method: "POST", body: new FormData(f), headers: { "Accept": "application/json" } })
-        .then(function (r) { return r.status === 202 ? r.json() : Promise.reject(r.status); })
-        .then(function (data) {
-          var jobs = data.jobs || {}, names = Object.keys(jobs);
-          if (!names.length) { showFlash("warn", "没有可取数的 LLM / 待脚本项。"); restore(btn, original); return; }
-          names.forEach(function (n) { watching[jobs[n]] = true; markRowInflight(n, jobs[n]); });
-          showFlash("ok", "已在后台启动 " + names.length + " 条取数（完成后自动刷新表格）。");
-          restore(btn, original);
-          startPolling();
-          if (names.length === 1) { openOutput(jobs[names[0]], names[0]); }   // 单条拉取：自动弹出实时输出框
-        })
-        .catch(function () { restore(btn, original); showFlash("err", "启动失败：请求未成功（可重试，或查看 prism/logs/monitor.log）。"); });
+
+      if (isLocalFile) {
+        // 两段式：先预检（不弹确认、不起 claude）。仅当内容有变、确需 LLM 时才弹确认。
+        if (btn) { btn.disabled = true; btn.classList.add("btn-loading"); btn.textContent = "⏳ 检查…"; }
+        post(true)
+          .then(function (data) {
+            var would = data.would_start || [], skipped = data.skipped_unchanged || [];
+            restore(btn, original);
+            if (!would.length) {   // 内容未变：不起 claude、不弹确认，直接告知沿用
+              if (skipped.length) { showFlash("ok", skipped.length + " 条内容未变，沿用上次判读（零 token）。"); }
+              else if (data.prefetch_warn) { showFlash("warn", "预抓失败：" + data.prefetch_warn); }
+              else { showFlash("warn", "没有可取数项。"); }
+              return;
+            }
+            // 内容有变 → 此刻才确认是否拉起 LLM 判读
+            var msg = "「" + would.join("、") + "」内容有更新，将拉起 Claude 读取并判读（有 token 成本）。继续？";
+            if (data.prefetch_warn) { msg = "预抓异常（" + data.prefetch_warn + "），仍可让 Claude 读旧缓存判读（有 token 成本）。继续？"; }
+            if (window.confirm(msg)) { commit(btn, original); }
+          })
+          .catch(function () { restore(btn, original); showFlash("err", "预检失败：请求未成功（可重试，或查看 prism/logs/monitor.log）。"); });
+      } else {
+        // 检索/固定页：LLM 必跑、无廉价预检 → 沿用「先确认后起」
+        if (f.dataset.confirm && !window.confirm(f.dataset.confirm)) return;
+        commit(btn, original);
+      }
     });
   });
 
@@ -682,7 +743,8 @@
       var n = d.fetched || 0;
       return { kind: n > 0 ? "ok" : "warn",
                msg: (n > 0 ? "✓ " : "") + "脚本刷新完成：FRED " + (d.fred || 0) + " · recipe "
-                    + (d.recipe || 0) + " 条（零 LLM、零成本）。" + (n > 0 ? "新值见下表（已刷新）。" : "源未返回新数据。") };
+                    + (d.recipe || 0) + " · 取文 " + (d.text || 0)
+                    + " 条（零 LLM、零成本）。" + (n > 0 ? "新值见下表（已刷新）。" : "源未返回新数据。") };
     },
     done: function () { location.reload(); }
   });

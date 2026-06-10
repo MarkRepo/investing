@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-10T04:45:38.824264+00:00'
+updated: '2026-06-10T14:35:33.604070+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -106,13 +106,17 @@ inputs:
     value: 3.75
     as_of: '2026-04-29'
     acq_note: FOMC 4月声明利率维持3.50–3.75%（取上限3.75），措辞基本中性；纪要5/20发布，多数委员反对声明中保留宽松偏向措辞，实际略偏鹰但利率不变。下次会议6/16–17（尚未发生），无需更新。
-    checked_at: '2026-06-10T00:26:14.584273+00:00'
+    checked_at: '2026-06-10T12:27:42.151984+00:00'
     streak: 0
     prev_value: 3.75
+    fingerprint: /newsevents/pressreleases/monetary20260429a.htm|/monetarypolicy/fomcminutes20260429.htm
+    verified_at: '2026-06-10T12:33:17.782958+00:00'
   authority: official
   availability: llm
   note: 多跳文本判读(索引页→最新会议→声明/纪要正文→措辞鹰鸽),非单值数据,宜 LLM 判读而非脚本;利率目标区间虽可脚本抓,但本项核心是 stance
     措辞,故归 llm(2026-06-10 核)。
+  local_cache_path: topics/global-macro-rates-liquidity/inbox/fomc_latest.md
+  text_fetch: fomc
 - name: 美联储官员讲话(主席)
   tier: A
   cadence_type: policy

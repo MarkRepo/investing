@@ -30,6 +30,9 @@
                  / recipe（走 recipe_fetch，须配 fetch_recipe）。非 scripted 项不设 fetch_method
                  （其取数走 headless LLM，取法由 source_url 派生，见 llm_acquisition_mode）。
   fetch_recipe   {url, parse:{json_path, date_path}}（可空，recipe 通道 fetcher 用）
+  text_fetch     脚本「取文」通道（可空）：值∈VALID_TEXT_FETCH，登记表驱动地把该输入路由到
+                 textfetch._FETCHERS 对应 fetcher 下载原文存 local_cache_path。与 fetch_method（数值通道）
+                 不同——取文只下原文、立场判读仍走 LLM，故仅 llm/scriptable_todo 项可设，且不可与 fetch_method 并存。
   state          "已有"|"新增"|"改"
   alert_series   bool（仅 series 可为 true）
   monitoring     {enabled: bool}            缺省视为 enabled=true
@@ -52,9 +55,13 @@ VALID_IMPORTANCE = ("load_bearing", "confirming", "background")
 VALID_TARGET = ("rates", "liquidity", "fx")
 VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
 VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm")
-VALID_FETCH_METHOD = ("fred-api", "recipe")   # 脚本执行通道，仅 scripted 项可设
-VALID_RECIPE_KIND = ("json", "csv")   # 须与 recipe_fetch._PARSERS 键一致
-_RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column"}  # 每 kind 的必填 parse 键
+VALID_FETCH_METHOD = ("fred-api", "recipe")   # 脚本「数值」通道，仅 scripted 项可设
+VALID_TEXT_FETCH = ("fomc",)   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
+                               # 立场判读仍走 LLM，故仅 llm/scriptable_todo 项可设，与 fetch_method 互斥
+VALID_RECIPE_KIND = ("json", "csv", "matrix")   # 须与 recipe_fetch._PARSERS 键一致
+# 每 kind 的必填 parse 键（缺则取不到值）：matrix 须 row_label（解析器靠它定位数据行；
+# header_label/col_index/delimiter 有默认或仅影响日期）。
+_RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column", "matrix": "row_label"}
 
 # policy 立场有序轴：轴名 → 档位元组（有序，索引升=趋势的"高"端）。diff 按索引差算方向。
 STANCE_SCALES = {
@@ -118,13 +125,17 @@ def read_transmission_map(slug: str, variant: str) -> dict:
 
 
 def llm_acquisition_mode(entry: dict) -> str | None:
-    """llm 项的取数方式，从 source_url 在不在派生（单一真相，UI 与未来 executor 共用）。
-    仅 availability=='llm' 有意义：
-      有 source_url → "fixed_page"：从固定页(索引/落地页)起抓，LLM 读返回内容判下一跳。
-      无 source_url → "search"     ：无稳定起点，LLM 构造 query 发起 web 检索，采用源记入 observed.evidence。
-    非 llm 返回 None（其取数由 fetch_method/availability 决定，与本轴无关）。"""
+    """llm 项的取数方式（单一真相，UI 与 executor 共用）。
+    优先级：local_file > fixed_page > search。
+      local_cache_path 存在且文件落盘 → "local_file"：用 Read 读本地缓存文件（最廉价）。
+      有 source_url                  → "fixed_page"：从固定页起抓，LLM WebFetch 判读。
+      无 source_url                  → "search"    ：LLM 构造 query 检索，采用源记入 evidence。
+    非 llm 返回 None。"""
     if entry.get("availability") != "llm":
         return None
+    path = entry.get("local_cache_path")
+    if path and (_PRISM_ROOT / path).exists():
+        return "local_file"
     return "fixed_page" if entry.get("source_url") else "search"
 
 
@@ -205,6 +216,15 @@ def validate_registry(slug: str, variant: str) -> list[str]:
             if e.get("availability") != "scripted":
                 errors.append(f"[{name}] fetch_method 只能出现在 scripted 项（取数通道），"
                               f"当前 availability={e.get('availability')!r}")
+        tf = e.get("text_fetch")
+        if tf is not None:
+            if tf not in VALID_TEXT_FETCH:
+                errors.append(f"[{name}] text_fetch 非法: {tf!r}（仅 {list(VALID_TEXT_FETCH)}）")
+            if e.get("availability") not in ("llm", "scriptable_todo"):
+                errors.append(f"[{name}] text_fetch 取文项立场判读走 LLM，availability 须 llm/scriptable_todo，"
+                              f"当前 {e.get('availability')!r}")
+            if e.get("fetch_method"):
+                errors.append(f"[{name}] text_fetch（取文）与 fetch_method（取数值）互斥，勿同设")
         recipe = e.get("fetch_recipe")
         if recipe:
             kind = recipe.get("kind", "json")
@@ -233,6 +253,7 @@ def record_observation(
     value: float | None = None, as_of: str | None = None,
     z: float | None = None, next_due: str | None = None,
     evidence: str | None = None, acq_note: str | None = None,
+    stance: str | None = None, fingerprint: str | None = None,
 ) -> None:
     """把一次观测写进某 input 的 observed；旧 value 滚成 prev_value。零 LLM。
 
@@ -240,6 +261,9 @@ def record_observation(
     value 给定时滚动 prev_value；z/next_due 给定则覆盖对应位。
     evidence 给定则写 observed.evidence（headless LLM 取数记采用源/引文，尤其 search 模式）。
     acq_note 给定则写 observed.acq_note（本次取数/可否脚本化的判定留痕——无论是否 promote 都记）。
+    stance 给定则写 observed.stance（policy 输入的鹰鸽/松紧立场档位，须在 stance_scale 轴内）。
+    fingerprint 给定则写 observed.fingerprint（本次判读所依据的资料身份，如 FOMC=声明/纪要 URL；
+        下次取数前对比，相同则视为内容未变、不再二次判读，见 mark_verified）。
     """
     data = read_registry(slug, variant)
     for e in data["inputs"]:
@@ -259,6 +283,10 @@ def record_observation(
                 obs["evidence"] = evidence
             if acq_note is not None:
                 obs["acq_note"] = acq_note
+            if stance is not None:
+                obs["stance"] = stance
+            if fingerprint is not None:
+                obs["fingerprint"] = fingerprint
             obs["checked_at"] = _now_iso()
             # 维护连续越带计数（min_streak 用）
             if value is not None:
@@ -269,6 +297,25 @@ def record_observation(
             _write_yaml(_registry_path(slug, variant), data)
             return
     raise ValueError(f"input {name!r} 不在登记表中")
+
+
+def mark_verified(slug: str, variant: str, name: str, *, fingerprint: str | None = None) -> None:
+    """记一次「已核对、内容未变」：bump observed.verified_at（零 LLM）。
+
+    去重降本路径用：取数前对比指纹，未变则跳过 LLM 重判、调本函数留痕。
+    与 checked_at（=上次真正判读落值时间）语义区分——verified_at 表「最近一次确认资料未变」。
+    fingerprint 给定则一并写入（补齐历史缺失指纹的 entry）。input 不存在则静默跳过（非致命）。"""
+    data = read_registry(slug, variant)
+    for e in data["inputs"]:
+        if e["name"] == name:
+            obs = dict(e.get("observed") or {})
+            obs["verified_at"] = _now_iso()
+            if fingerprint is not None:
+                obs["fingerprint"] = fingerprint
+            e["observed"] = obs
+            data["updated"] = _now_iso()
+            _write_yaml(_registry_path(slug, variant), data)
+            return
 
 
 def flag_scriptable(slug: str, variant: str, name: str, *, note: str) -> bool:
@@ -292,6 +339,19 @@ def flag_scriptable(slug: str, variant: str, name: str, *, note: str) -> bool:
             data["updated"] = _now_iso()
             _write_yaml(_registry_path(slug, variant), data)
             return True
+    raise ValueError(f"input {name!r} 不在登记表中")
+
+
+def set_local_cache_path(slug: str, variant: str, name: str, rel_path: str) -> None:
+    """写入 local_cache_path（相对 _PRISM_ROOT）。供文本缓存脚本（fomc_fetch 等）在下载后调用。
+    llm_acquisition_mode 读此字段：文件存在 → 返回 local_file，优先于 fixed_page/search。"""
+    data = read_registry(slug, variant)
+    for e in data["inputs"]:
+        if e["name"] == name:
+            e["local_cache_path"] = rel_path
+            data["updated"] = _now_iso()
+            _write_yaml(_registry_path(slug, variant), data)
+            return
     raise ValueError(f"input {name!r} 不在登记表中")
 
 
