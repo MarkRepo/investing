@@ -138,3 +138,30 @@ def test_coverage_gaps_no_transmission_map(tmp_world):
     _write_topic_yaml(tmp_world, "pdd", "v", "company")
     cov = mx.coverage_gaps("gm", "v")
     assert cov["missing"] == ["pdd"] and cov["covered_count"] == 0
+
+
+def test_register_holding_row_appends_with_provisional(tmp_world):
+    gm, v = "gm", "v"
+    _write_transmission_map(tmp_world, gm, v, [{"slug": "pdd"}])
+    res = mx.register_holding_row(gm, v, {
+        "slug": "futu", "display_name": "富途控股", "duration": "long",
+        "rate_beta": "high", "as_of_regime": "v3"})
+    assert res["registered"] is True
+    tm = reg.read_transmission_map(gm, v)
+    futu = next(h for h in tm["holdings"] if h["slug"] == "futu")
+    assert futu["source"] == "self_registered" and futu["provisional"] is True
+    assert futu["as_of_regime"] == "v3"
+
+
+def test_register_holding_row_existing_is_skipped(tmp_world):
+    gm, v = "gm", "v"
+    _write_transmission_map(tmp_world, gm, v, [{"slug": "pdd", "source": "macro_synth"}])
+    res = mx.register_holding_row(gm, v, {"slug": "pdd", "duration": "mid"})
+    assert res["registered"] is False and res["reason"] == "exists"
+    tm = reg.read_transmission_map(gm, v)
+    assert len(tm["holdings"]) == 1  # 未覆盖既有行
+
+
+def test_register_holding_row_no_map(tmp_world):
+    res = mx.register_holding_row("gm", "v", {"slug": "pdd"})
+    assert res["registered"] is False and res["reason"] == "no_transmission_map"

@@ -129,3 +129,28 @@ def coverage_gaps(macro_slug: str, macro_variant: str) -> dict:
             "provisional": provisional,
             "covered_count": len(company_slugs & covered),
             "total_company": len(company_slugs)}
+
+
+def _transmission_path(slug: str, variant: str) -> Path:
+    return _PRISM_ROOT / "topics" / slug / variant / "outputs" / "transmission_map.yaml"
+
+
+def register_holding_row(macro_slug: str, macro_variant: str, row: dict) -> dict:
+    """新持仓自注册进 transmission_map。撞已存在 slug → 跳过+不覆盖。零 LLM。
+
+    补默认 source=self_registered / provisional=True。注：yaml 回写丢顶部注释，
+    由下次 _macro_regime 全量合成复核 provisional 时重生成，可接受。
+    """
+    tm = reg.read_transmission_map(macro_slug, macro_variant)
+    if not tm:
+        return {"registered": False, "reason": "no_transmission_map"}
+    holdings = tm.setdefault("holdings", [])
+    if any(h.get("slug") == row.get("slug") for h in holdings):
+        return {"registered": False, "reason": "exists", "slug": row.get("slug")}
+    new_row = dict(row)
+    new_row.setdefault("source", "self_registered")
+    new_row.setdefault("provisional", True)
+    holdings.append(new_row)
+    p = _transmission_path(macro_slug, macro_variant)
+    p.write_text(yaml.dump(tm, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    return {"registered": True, "slug": row.get("slug")}
