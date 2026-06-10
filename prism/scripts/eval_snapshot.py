@@ -17,6 +17,16 @@ _PRISM_ROOT = Path(__file__).resolve().parent.parent
 
 VALID_ROLE = ("load_bearing", "confirming", "background")
 
+NUMERIC_DIRECTIONS = ("up", "down", "flat", "up_or_flat", "down_or_flat")
+
+
+def _valid_expected_words() -> set:
+    """合法 expected 方向词：数值型 + 全部立场轴方向词（复用 registry 单一真相）。"""
+    words = set(NUMERIC_DIRECTIONS)
+    for pair in reg.STANCE_DIRECTION.values():
+        words.update(pair)
+    return words
+
 
 def _log_path(slug: str, variant: str) -> Path:
     if not variant:
@@ -67,6 +77,8 @@ def _validate_evaluation(evaluation: dict, input_names: set) -> list:
     missing = input_names - snap_names
     if missing:
         errors.append(f"input_snapshot 漏列输入: {sorted(missing)}")
+    valid_dirs = _valid_expected_words()
+    snap_by_name = {s.get("name"): s for s in snap if s.get("name") is not None}
     for c in evaluation.get("conclusions") or []:
         cid = c.get("id", "<无 id>")
         for b in c.get("based_on") or []:
@@ -77,6 +89,15 @@ def _validate_evaluation(evaluation: dict, input_names: set) -> list:
                 errors.append(f"[{cid}] based_on 悬空引用: {inp!r} 不在 input_snapshot")
             if b.get("role") not in VALID_ROLE:
                 errors.append(f"[{cid}] role 非法: {b.get('role')!r}")
+            exp = b.get("expected")
+            if exp is not None and exp not in valid_dirs:
+                errors.append(f"[{cid}] expected 非法方向词: {exp!r}")
+            if b.get("role") == "load_bearing" and exp is None and inp is not None:
+                row = snap_by_name.get(inp) or {}
+                has_numeric = isinstance(row.get("value"), (int, float))
+                has_stance = row.get("stance") is not None
+                if has_numeric or has_stance:
+                    errors.append(f"[{cid}] load_bearing 边 {inp!r} 缺 expected 方向预测")
     return errors
 
 

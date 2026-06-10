@@ -27,7 +27,8 @@ def _ev_all(extra_conclusions=None):
         ],
         "conclusions": extra_conclusions if extra_conclusions is not None else [
             {"id": "rates", "label": "利率", "state": "紧",
-             "based_on": [{"input": "A", "role": "load_bearing"}], "causal": "A→紧"}],
+             "based_on": [{"input": "A", "role": "load_bearing", "expected": "up_or_flat"}],
+             "causal": "A→紧"}],
     }
 
 
@@ -163,7 +164,8 @@ def test_record_evaluation_builds_snapshot_and_clears_pending(tmp_topic):
     reg.record_observation(slug, variant, "A", value=3.0, as_of="2026-05-01")
     es.stamp_reeval_pending(slug, variant, {"changed": [], "affected_conclusions": []})
     conclusions = [{"id": "rates", "label": "利率体制", "state": "紧",
-                    "based_on": [{"input": "A", "role": "load_bearing"}], "causal": "A→紧"}]
+                    "based_on": [{"input": "A", "role": "load_bearing", "expected": "up_or_flat"}],
+                    "causal": "A→紧"}]
     assert es.record_evaluation(slug, variant, conclusions, note="重估") == 1
     log = es.read_eval_log(slug, variant)
     assert log["reeval_pending"] is None                  # 闭环自动清戳
@@ -211,3 +213,56 @@ def test_diff_policy_stance_direction(tmp_topic):
     assert diff["C"]["breached"] is False              # policy 无报警带
     assert diff["A"]["stance"] is None                 # 数值输入立场字段为 None
     assert diff["A"]["direction"] is None
+
+
+def test_load_bearing_numeric_edge_requires_expected(tmp_topic):
+    """承重边且该输入有数值 → 缺 expected 报错。"""
+    slug, variant = tmp_topic
+    ev = _ev_all([{"id": "rates", "label": "利率", "state": "紧", "causal": "c",
+                   "based_on": [{"input": "A", "role": "load_bearing"}]}])  # A 有数值、缺 expected
+    with pytest.raises(ValueError, match="expected"):
+        es.append_evaluation(slug, variant, ev)
+
+
+def test_expected_illegal_direction_word_rejected(tmp_topic):
+    slug, variant = tmp_topic
+    ev = _ev_all([{"id": "rates", "label": "利率", "state": "紧", "causal": "c",
+                   "based_on": [{"input": "A", "role": "load_bearing", "expected": "sideways"}]}])
+    with pytest.raises(ValueError, match="方向词"):
+        es.append_evaluation(slug, variant, ev)
+
+
+def test_load_bearing_nonnumeric_edge_expected_optional(tmp_topic):
+    """承重边但该输入无数值无立场（B 是 None）→ expected 可空，不报错。"""
+    slug, variant = tmp_topic
+    ev = _ev_all([{"id": "x", "label": "x", "state": "s", "causal": "c",
+                   "based_on": [{"input": "B", "role": "load_bearing"}]}])  # B value=None
+    assert es.append_evaluation(slug, variant, ev) == 1
+
+
+def test_confirming_edge_expected_optional(tmp_topic):
+    """confirming 边永不强制 expected。"""
+    slug, variant = tmp_topic
+    ev = _ev_all([{"id": "x", "label": "x", "state": "s", "causal": "c",
+                   "based_on": [{"input": "A", "role": "confirming"}]}])
+    assert es.append_evaluation(slug, variant, ev) == 1
+
+
+def test_stance_load_bearing_edge_requires_expected(tmp_topic):
+    """承重边且该输入有 stance → 缺 expected 报错。"""
+    slug, variant = tmp_topic
+    ev = {
+        "input_snapshot": [
+            {"name": "A", "value": 3.0, "as_of": "2026-05-01", "used": False},
+            {"name": "B", "value": None, "used": False},
+            {"name": "C", "stance": "偏鹰", "as_of": "2026-05-01", "used": True},
+        ],
+        "conclusions": [{"id": "p", "label": "政策", "state": "鹰", "causal": "c",
+                         "based_on": [{"input": "C", "role": "load_bearing"}]}],  # 缺 expected
+    }
+    reg.upsert_input(slug, variant, {
+        "name": "C", "tier": "B", "cadence_type": "policy", "mechanism": "CO",
+        "importance": "load_bearing", "stance_scale": "hawk_dove",
+        "observed": {"stance": "偏鹰", "evidence": "x"}})
+    with pytest.raises(ValueError, match="expected"):
+        es.append_evaluation(slug, variant, ev)
