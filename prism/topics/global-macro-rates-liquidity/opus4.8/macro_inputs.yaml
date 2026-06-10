@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-10T15:31:32.508665+00:00'
+updated: '2026-06-10T16:17:32.480486+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -22,8 +22,8 @@ inputs:
   fred_series_id: DFEDTARU
   observed:
     value: 3.75
-    as_of: '2026-06-09'
-    checked_at: '2026-06-09T22:00:07.123453+00:00'
+    as_of: '2026-06-10'
+    checked_at: '2026-06-10T16:15:47.390147+00:00'
     streak: 0
     prev_value: 3.75
   authority: official
@@ -164,7 +164,7 @@ inputs:
   observed:
     value: 159001.0
     as_of: '2026-05-01'
-    checked_at: '2026-06-09T22:00:17.554944+00:00'
+    checked_at: '2026-06-10T16:15:48.335818+00:00'
     streak: 0
     prev_value: 159001.0
   authority: official
@@ -189,7 +189,7 @@ inputs:
   observed:
     value: 4.3
     as_of: '2026-05-01'
-    checked_at: '2026-06-09T22:00:23.768547+00:00'
+    checked_at: '2026-06-10T16:15:49.342733+00:00'
     streak: 0
     prev_value: 4.3
   authority: official
@@ -214,7 +214,7 @@ inputs:
   observed:
     value: 225000.0
     as_of: '2026-05-30'
-    checked_at: '2026-06-09T22:00:30.956949+00:00'
+    checked_at: '2026-06-10T16:15:50.598335+00:00'
     streak: 0
     prev_value: 225000.0
   authority: official
@@ -239,7 +239,7 @@ inputs:
   observed:
     value: 7618.0
     as_of: '2026-04-01'
-    checked_at: '2026-06-09T22:00:33.795240+00:00'
+    checked_at: '2026-06-10T16:15:51.640216+00:00'
     streak: 0
     prev_value: 7618.0
   authority: official
@@ -278,7 +278,7 @@ inputs:
     as_of: 2026-05
     evidence: https://www.prnewswire.com/news-releases/manufacturing-pmi-at-54-may-2026-ism-manufacturing-pmi-report-302786165.html
     acq_note: ISM 官网 redirect 至付费墙登录页；值从 PRNewswire 新闻稿确认。5月值 54.0，发布于 2026-06-01。
-    checked_at: '2026-06-10T15:31:31.223242+00:00'
+    checked_at: '2026-06-10T16:17:09.280665+00:00'
     streak: 0
     prev_value: 54.0
   note: macromicro 镜像(series/265)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
@@ -317,7 +317,7 @@ inputs:
     evidence: https://www.prnewswire.com/news-releases/services-pmi-at-54-5-may-2026-ism-services-pmi-report-302789082.html
     acq_note: ISM 官网有 SSO 墙无法直接抓，转从 PR Newswire 新闻稿取得。2026年5月服务业 PMI = 54.5（前值53.6），为连续第23个月扩张。Business
       Activity 57.7%，New Orders 57.3%，Employment 47.9%。
-    checked_at: '2026-06-10T15:31:32.508665+00:00'
+    checked_at: '2026-06-10T16:17:11.338811+00:00'
     streak: 0
     prev_value: 54.5
   note: macromicro 镜像(series/293, NMI)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
@@ -342,7 +342,7 @@ inputs:
   observed:
     value: 757085.0
     as_of: '2026-04-01'
-    checked_at: '2026-06-09T22:00:40.199549+00:00'
+    checked_at: '2026-06-10T16:15:52.969432+00:00'
     streak: 0
     prev_value: 757085.0
   authority: official
@@ -370,7 +370,7 @@ inputs:
   observed:
     value: 3.2906
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T02:54:42.518233+00:00'
+    checked_at: '2026-06-10T16:15:53.960201+00:00'
     streak: 0
     prev_value: 3.2906
 - name: 时薪 / ECI
@@ -392,7 +392,7 @@ inputs:
   observed:
     value: 37.53
     as_of: '2026-05-01'
-    checked_at: '2026-06-09T22:00:48.562725+00:00'
+    checked_at: '2026-06-10T16:15:58.525007+00:00'
     streak: 0
     prev_value: 37.53
   authority: official
@@ -417,7 +417,7 @@ inputs:
   observed:
     value: 129.63
     as_of: '2026-04-01'
-    checked_at: '2026-06-09T22:00:49.962878+00:00'
+    checked_at: '2026-06-10T16:15:59.554724+00:00'
     streak: 0
     prev_value: 129.63
   authority: official
@@ -440,9 +440,9 @@ inputs:
     enabled: true
   fred_series_id: CPILFESL
   observed:
-    value: 335.423
-    as_of: '2026-04-01'
-    checked_at: '2026-06-09T22:00:52.370313+00:00'
+    value: 336.121
+    as_of: '2026-05-01'
+    checked_at: '2026-06-10T16:16:03.958497+00:00'
     streak: 0
     prev_value: 335.423
   authority: official
@@ -467,7 +467,7 @@ inputs:
   observed:
     value: 129.63
     as_of: '2026-04-01'
-    checked_at: '2026-06-09T22:00:56.469856+00:00'
+    checked_at: '2026-06-10T16:16:04.957333+00:00'
     streak: 0
     prev_value: 129.63
   authority: official
@@ -492,7 +492,7 @@ inputs:
   observed:
     value: 156.496
     as_of: '2026-04-01'
-    checked_at: '2026-06-09T22:01:01.905456+00:00'
+    checked_at: '2026-06-10T16:16:05.927960+00:00'
     streak: 0
     prev_value: 156.496
   authority: official
@@ -518,7 +518,7 @@ inputs:
   observed:
     value: 95.96
     as_of: '2026-06-01'
-    checked_at: '2026-06-09T22:01:06.538068+00:00'
+    checked_at: '2026-06-10T16:16:06.894739+00:00'
     streak: 0
     prev_value: 95.96
   authority: official
@@ -543,9 +543,9 @@ inputs:
   observed:
     value: 2.22
     as_of: '2026-06-09'
-    checked_at: '2026-06-09T22:01:09.375011+00:00'
+    checked_at: '2026-06-10T16:16:07.911095+00:00'
     streak: 0
-    prev_value: 2.23
+    prev_value: 2.22
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T5YIFR
@@ -600,7 +600,7 @@ inputs:
   observed:
     value: 875713.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-09T22:01:12.899096+00:00'
+    checked_at: '2026-06-10T16:16:13.857649+00:00'
     streak: 0
     prev_value: 875713.0
   authority: official
@@ -625,7 +625,7 @@ inputs:
   observed:
     value: 215024.14019777
     as_of: '2026-04-01'
-    checked_at: '2026-06-09T22:01:16.292577+00:00'
+    checked_at: '2026-06-10T16:16:14.836176+00:00'
     streak: 0
     prev_value: 215024.14019777
   authority: official
@@ -651,7 +651,7 @@ inputs:
   observed:
     value: 6711495.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-09T22:01:18.023344+00:00'
+    checked_at: '2026-06-10T16:16:16.977205+00:00'
     streak: 0
     prev_value: 6711495.0
   authority: official
@@ -676,9 +676,9 @@ inputs:
   observed:
     value: 0.577
     as_of: '2026-06-09'
-    checked_at: '2026-06-09T22:01:19.863678+00:00'
+    checked_at: '2026-06-10T16:16:22.990341+00:00'
     streak: 0
-    prev_value: 1.832
+    prev_value: 0.577
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/RRPONTSYD
@@ -700,9 +700,9 @@ inputs:
   fred_series_id: __DERIVED__
   observed:
     value: 5835781.423
-    checked_at: '2026-06-09T22:01:46.462223+00:00'
+    checked_at: '2026-06-10T16:17:07.713468+00:00'
     streak: 0
-    prev_value: 5835780.168
+    prev_value: 5835781.423
   authority: official
   availability: scripted
   source_url: null
@@ -726,7 +726,7 @@ inputs:
   observed:
     value: 3013902.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-09T22:01:23.122694+00:00'
+    checked_at: '2026-06-10T16:16:24.024680+00:00'
     streak: 0
     prev_value: 3013902.0
   authority: official
@@ -759,9 +759,10 @@ inputs:
     - SOFR
     - IORB
   observed:
-    value: -0.020000000000000018
-    checked_at: '2026-06-09T22:01:46.401505+00:00'
+    value: -0.04999999999999982
+    checked_at: '2026-06-10T16:17:07.642318+00:00'
     streak: 0
+    prev_value: -0.020000000000000018
 - name: FRA-OIS 利差
   tier: A
   cadence_type: series
@@ -801,8 +802,9 @@ inputs:
       H.4.1，2026-06-04）。
     value: 116.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-09T22:01:26.268949+00:00'
+    checked_at: '2026-06-10T16:16:25.041322+00:00'
     streak: 0
+    prev_value: 116.0
   authority: official
   availability: scripted
   fred_series_id: SWPT
@@ -855,9 +857,9 @@ inputs:
   observed:
     value: 4.56
     as_of: '2026-06-08'
-    checked_at: '2026-06-09T22:01:28.081384+00:00'
+    checked_at: '2026-06-10T16:16:26.018242+00:00'
     streak: 0
-    prev_value: 4.55
+    prev_value: 4.56
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DGS10
@@ -881,9 +883,9 @@ inputs:
   observed:
     value: 2.21
     as_of: '2026-06-08'
-    checked_at: '2026-06-09T22:01:28.876571+00:00'
+    checked_at: '2026-06-10T16:16:32.030646+00:00'
     streak: 0
-    prev_value: 2.19
+    prev_value: 2.21
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DFII10
@@ -910,9 +912,9 @@ inputs:
   observed:
     value: 0.8019
     as_of: '2026-06-05'
-    checked_at: '2026-06-09T22:01:29.570632+00:00'
+    checked_at: '2026-06-10T16:16:33.092392+00:00'
     streak: 0
-    prev_value: 0.7541
+    prev_value: 0.8019
 - name: 2s10s 曲线斜率
   tier: B
   cadence_type: series
@@ -932,9 +934,9 @@ inputs:
   observed:
     value: 0.4
     as_of: '2026-06-09'
-    checked_at: '2026-06-09T22:01:31.283192+00:00'
+    checked_at: '2026-06-10T16:16:34.233026+00:00'
     streak: 0
-    prev_value: 0.41
+    prev_value: 0.4
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T10Y2Y
@@ -956,10 +958,10 @@ inputs:
   fred_series_id: BAMLC0A0CM
   observed:
     value: 0.75
-    as_of: '2026-06-08'
-    checked_at: '2026-06-09T22:01:34.308683+00:00'
+    as_of: '2026-06-09'
+    checked_at: '2026-06-10T16:16:40.575392+00:00'
     streak: 0
-    prev_value: 0.74
+    prev_value: 0.75
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/BAMLC0A0CM
@@ -984,11 +986,11 @@ inputs:
     level_alarm: 5.5
   fred_series_id: BAMLH0A0HYM2
   observed:
-    value: 2.75
-    as_of: '2026-06-08'
-    checked_at: '2026-06-09T22:01:35.927663+00:00'
+    value: 2.78
+    as_of: '2026-06-09'
+    checked_at: '2026-06-10T16:16:41.495572+00:00'
     streak: 0
-    prev_value: 2.76
+    prev_value: 2.75
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/BAMLH0A0HYM2
@@ -1049,11 +1051,11 @@ inputs:
     enabled: true
   fred_series_id: VIXCLS
   observed:
-    value: 18.92
-    as_of: '2026-06-08'
-    checked_at: '2026-06-09T22:01:37.850585+00:00'
+    value: 19.87
+    as_of: '2026-06-09'
+    checked_at: '2026-06-10T16:16:42.498080+00:00'
     streak: 0
-    prev_value: 21.51
+    prev_value: 18.92
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/VIXCLS
@@ -1074,9 +1076,9 @@ inputs:
     enabled: true
   fred_series_id: NFCI
   observed:
-    value: -0.494
-    as_of: '2026-05-29'
-    checked_at: '2026-06-09T22:01:40.056043+00:00'
+    value: -0.506
+    as_of: '2026-06-05'
+    checked_at: '2026-06-10T16:16:43.507904+00:00'
     streak: 0
     prev_value: -0.494
   authority: official
@@ -1112,8 +1114,9 @@ inputs:
   observed:
     value: 39.41935320301406
     as_of: '2025-12-01'
-    checked_at: '2026-06-10T03:52:34.668040+00:00'
+    checked_at: '2026-06-10T16:17:16.428967+00:00'
     streak: 0
+    prev_value: 39.41935320301406
 - name: 市场内部/breadth+集中度
   tier: B
   cadence_type: series
@@ -1191,7 +1194,7 @@ inputs:
   observed:
     value: 120.0831
     as_of: '2026-06-05'
-    checked_at: '2026-06-09T22:01:41.167058+00:00'
+    checked_at: '2026-06-10T16:16:44.456531+00:00'
     streak: 0
     prev_value: 120.0831
   authority: official
@@ -1217,7 +1220,7 @@ inputs:
   observed:
     value: 112.6846
     as_of: '2026-06-05'
-    checked_at: '2026-06-09T22:01:41.865085+00:00'
+    checked_at: '2026-06-10T16:16:45.689954+00:00'
     streak: 0
     prev_value: 112.6846
   authority: official
@@ -1275,8 +1278,8 @@ inputs:
   observed:
     value: 160.26
     as_of: '2026-06-05'
-    checked_at: '2026-06-09T22:01:42.502150+00:00'
-    streak: 2
+    checked_at: '2026-06-10T16:16:51.618029+00:00'
+    streak: 3
     prev_value: 160.26
   authority: official
   availability: scripted
@@ -1357,8 +1360,9 @@ inputs:
   observed:
     value: 8.465
     as_of: 2025-Q4
-    checked_at: '2026-06-10T03:52:35.831189+00:00'
+    checked_at: '2026-06-10T16:17:19.419747+00:00'
     streak: 0
+    prev_value: 8.465
 - name: TIC / 外国持美债 + 中国持美债
   tier: B
   cadence_type: event
@@ -1391,8 +1395,9 @@ inputs:
   observed:
     value: 652.3
     as_of: 2026-03
-    checked_at: '2026-06-10T03:52:44.929479+00:00'
+    checked_at: '2026-06-10T16:17:29.821209+00:00'
     streak: 0
+    prev_value: 652.3
 - name: 黄金
   tier: B
   cadence_type: series
@@ -1431,11 +1436,11 @@ inputs:
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CBBTCUSD
   observed:
-    value: 63049.86
-    as_of: '2026-06-08'
-    checked_at: '2026-06-09T22:01:43.166867+00:00'
+    value: 61751.94
+    as_of: '2026-06-09'
+    checked_at: '2026-06-10T16:16:52.539742+00:00'
     streak: 0
-    prev_value: 63216.78
+    prev_value: 63049.86
 - name: 大宗(铜/铁矿)
   tier: C
   cadence_type: series
@@ -1460,8 +1465,9 @@ inputs:
   observed:
     value: 13483.75153846154
     as_of: '2026-05-01'
-    checked_at: '2026-06-09T22:01:43.723436+00:00'
+    checked_at: '2026-06-10T16:16:53.514025+00:00'
     streak: 0
+    prev_value: 13483.75153846154
 - name: 官方制造业 PMI
   tier: A
   cadence_type: event
@@ -1500,8 +1506,9 @@ inputs:
   observed:
     value: 50.0
     as_of: '2026-05-01 00:00:00'
-    checked_at: '2026-06-10T03:52:45.126741+00:00'
+    checked_at: '2026-06-10T16:17:30.012561+00:00'
     streak: 0
+    prev_value: 50.0
 - name: 财新 PMI
   tier: A
   cadence_type: event
@@ -1642,8 +1649,9 @@ inputs:
   observed:
     value: 1.2
     as_of: '2026-05-01 00:00:00'
-    checked_at: '2026-06-10T03:52:45.447551+00:00'
+    checked_at: '2026-06-10T16:17:30.180196+00:00'
     streak: 0
+    prev_value: 1.2
 - name: 中国 PPI
   tier: A
   cadence_type: event
@@ -1682,8 +1690,9 @@ inputs:
   observed:
     value: 3.9
     as_of: '2026-05-01 00:00:00'
-    checked_at: '2026-06-10T03:52:45.652085+00:00'
+    checked_at: '2026-06-10T16:17:30.354842+00:00'
     streak: 0
+    prev_value: 3.9
 - name: 7天 OMO 逆回购利率(新锚)
   tier: A
   cadence_type: event
@@ -1870,10 +1879,11 @@ inputs:
   note: eastmoney RPTA_WEB_TREASURYYIELD,中国 10Y CGB 收益率(EMM00166466)/SOLAR_DATE 取最新(同行
     EMG00001310 为美 10Y)。2026-06-10 实测通。非官方端点,失效则回落 llm。
   observed:
-    value: 1.7376
-    as_of: '2026-06-09 00:00:00'
-    checked_at: '2026-06-10T03:52:45.824527+00:00'
+    value: 1.7476
+    as_of: '2026-06-10 00:00:00'
+    checked_at: '2026-06-10T16:17:30.538853+00:00'
     streak: 0
+    prev_value: 1.7376
 - name: 结构性工具 PSL/再贷款
   tier: A
   cadence_type: policy
@@ -2018,7 +2028,7 @@ inputs:
   observed:
     value: 6.7655
     as_of: '2026-06-05'
-    checked_at: '2026-06-09T22:01:44.299996+00:00'
+    checked_at: '2026-06-10T16:16:54.444971+00:00'
     streak: 0
     prev_value: 6.7655
   authority: official
@@ -2128,8 +2138,9 @@ inputs:
   observed:
     value: 3477516.923138242
     as_of: '2026-04-01'
-    checked_at: '2026-06-09T22:01:44.867060+00:00'
+    checked_at: '2026-06-10T16:16:55.614455+00:00'
     streak: 0
+    prev_value: 3477516.923138242
 - name: 中美 10Y 利差
   tier: B
   cadence_type: series
@@ -2156,9 +2167,10 @@ inputs:
   note: 派生=中国 10Y(eastmoney recipe)−美国 10Y(2Y/10Y/30Y 国债 的 DGS10)。两腿落盘后在 recipe 抓取末段算。中国腿已有源
     → 转 scripted 派生。
   observed:
-    value: -2.8223999999999996
-    checked_at: '2026-06-10T03:52:45.930876+00:00'
+    value: -2.8123999999999993
+    checked_at: '2026-06-10T16:17:30.650862+00:00'
     streak: 0
+    prev_value: -2.8223999999999996
 - name: 中美实际利率差
   tier: B
   cadence_type: series
