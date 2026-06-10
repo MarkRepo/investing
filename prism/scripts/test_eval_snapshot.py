@@ -266,3 +266,27 @@ def test_stance_load_bearing_edge_requires_expected(tmp_topic):
         "observed": {"stance": "偏鹰", "evidence": "x"}})
     with pytest.raises(ValueError, match="expected"):
         es.append_evaluation(slug, variant, ev)
+
+
+def test_prior_verdict_written_on_new_entry_not_old(tmp_topic):
+    """prior_verdict 落新条目，不改旧条目（append-only 不可变）。"""
+    slug, variant = tmp_topic
+    es.append_evaluation(slug, variant, _ev_all())                       # v1：无 verdict
+    conclusions = [{"id": "rates", "label": "利率", "state": "紧", "causal": "c",
+                    "based_on": [{"input": "A", "role": "load_bearing", "expected": "up_or_flat"}]}]
+    v2 = es.record_evaluation(slug, variant, conclusions,
+                              prior_verdict=[{"conclusion_id": "rates", "verdict": "held",
+                                              "note": "利率确按预测维持"}])
+    assert v2 == 2
+    evals = es.read_eval_log(slug, variant)["evaluations"]
+    assert "prior_verdict" not in evals[0]                               # 旧条目没动
+    assert evals[1]["prior_verdict"][0]["verdict"] == "held"             # 新条目带裁定
+
+
+def test_prior_verdict_illegal_value_rejected(tmp_topic):
+    slug, variant = tmp_topic
+    conclusions = [{"id": "rates", "label": "利率", "state": "紧", "causal": "c",
+                    "based_on": [{"input": "A", "role": "load_bearing", "expected": "up_or_flat"}]}]
+    with pytest.raises(ValueError, match="verdict"):
+        es.record_evaluation(slug, variant, conclusions,
+                             prior_verdict=[{"conclusion_id": "rates", "verdict": "bogus"}])

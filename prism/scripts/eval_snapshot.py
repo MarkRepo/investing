@@ -19,6 +19,8 @@ VALID_ROLE = ("load_bearing", "confirming", "background")
 
 NUMERIC_DIRECTIONS = ("up", "down", "flat", "up_or_flat", "down_or_flat")
 
+VALID_VERDICT = ("held", "partial", "wrong")
+
 
 def _valid_expected_words() -> set:
     """合法 expected 方向词：数值型 + 全部立场轴方向词（复用 registry 单一真相）。"""
@@ -98,6 +100,9 @@ def _validate_evaluation(evaluation: dict, input_names: set) -> list:
                 has_stance = row.get("stance") is not None
                 if has_numeric or has_stance:
                     errors.append(f"[{cid}] load_bearing 边 {inp!r} 缺 expected 方向预测")
+    for i, pv in enumerate(evaluation.get("prior_verdict") or []):
+        if pv.get("verdict") not in VALID_VERDICT:
+            errors.append(f"prior_verdict[{i}] verdict 非法: {pv.get('verdict')!r}")
     return errors
 
 
@@ -119,6 +124,8 @@ def append_evaluation(slug: str, variant: str, evaluation: dict) -> int:
         entry["note"] = evaluation["note"]
     entry["input_snapshot"] = evaluation.get("input_snapshot") or []
     entry["conclusions"] = evaluation.get("conclusions") or []
+    if evaluation.get("prior_verdict"):
+        entry["prior_verdict"] = evaluation["prior_verdict"]
     log["evaluations"].append(entry)
     log["reeval_pending"] = None
     log["slug"], log["variant"], log["updated"] = slug, variant, _now_iso()
@@ -157,11 +164,14 @@ def snapshot_inputs(slug: str, variant: str) -> list:
     return out
 
 
-def record_evaluation(slug: str, variant: str, conclusions: list, *, note: str | None = None) -> int:
+def record_evaluation(slug: str, variant: str, conclusions: list, *,
+                      note: str | None = None, prior_verdict: list | None = None) -> int:
     """便利写回：用 snapshot_inputs 自动列全输入 + 据 based_on 标 used，再走 append_evaluation。
 
-    降低 headless 闭环手工拼 input_snapshot 的漏列/悬空风险；不变量校验仍由 append_evaluation 全程把关
-    （列全 + based_on 不悬空 + role 合法），并自动清 reeval_pending、version 自增、写 evaluated_at。
+    prior_verdict（可选）= [{conclusion_id, verdict: held|partial|wrong, note?}]，对上一版判断的
+    人工裁定，落在本（新）条目上、append-only 不改旧条目。降低 headless 闭环手工拼 input_snapshot 的
+    漏列/悬空风险；不变量校验仍由 append_evaluation 全程把关（列全 + based_on 不悬空 + role 合法 +
+    expected/verdict 合法），并自动清 reeval_pending、version 自增、写 evaluated_at。
     """
     used_names = {b.get("input")
                   for c in (conclusions or [])
@@ -173,6 +183,8 @@ def record_evaluation(slug: str, variant: str, conclusions: list, *, note: str |
     evaluation = {"input_snapshot": snapshot, "conclusions": conclusions or []}
     if note:
         evaluation["note"] = note
+    if prior_verdict:
+        evaluation["prior_verdict"] = prior_verdict
     return append_evaluation(slug, variant, evaluation)
 
 
