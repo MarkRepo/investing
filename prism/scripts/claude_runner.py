@@ -181,6 +181,11 @@ async def run_headless_streaming(
         env=os.environ.copy(),
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.STDOUT,  # 合流：stdout 报错（如 401）也被逐行捕获
+        # stream-json 单行可能很大（如 Read 读大文件，文件内容整段塞进一个 tool_result 事件行）。
+        # asyncio StreamReader 默认 buffer 仅 64KB，超长行 readline() 会抛
+        # LimitOverrunError: "Separator is not found, and chunk exceed the limit" → job 崩。
+        # 提到 32MB，覆盖任何正常文件/工具输出。
+        limit=32 * 1024 * 1024,
     )
     deadline = time.monotonic() + timeout
     try:
