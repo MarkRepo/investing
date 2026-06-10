@@ -1055,6 +1055,7 @@ def prism_eval_trace(request: Request, slug: str, variant: str):
     """评估溯源（结论←输入←因果句 + diff，仅 macro topic）。
     必须声明在 /{output_key} 通配之前（同 macro-inputs / transmission-map）。"""
     from prism.scripts import eval_snapshot as es
+    from prism.scripts import eval_score as sc
     try:
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
@@ -1065,6 +1066,8 @@ def prism_eval_trace(request: Request, slug: str, variant: str):
         "topic": topic, "variant": variant,
         "evaluation": es.latest_evaluation(slug, variant),
         "diff": {d["name"]: d for d in es.diff_since_last(slug, variant)},
+        "score": sc.score_evaluation(slug, variant),
+        "ledger": {(r["conclusion_id"], r["input"]): r for r in sc.edge_ledger(slug, variant)},
     })
 
 

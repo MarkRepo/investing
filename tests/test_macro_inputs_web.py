@@ -260,6 +260,23 @@ def test_eval_trace_renders_conclusions(macro_web_client):
     assert "HY OAS 走阔" in r.text                  # causal 句
 
 
+def test_eval_trace_shows_track_record_card(macro_web_client):
+    """承重边带 expected + 现值走对 → eval-trace 渲战绩卡（占对率 + 预测词 + 命中）。"""
+    import prism.scripts.macro_registry as reg
+    import prism.scripts.eval_snapshot as es
+    reg.record_observation(SLUG, VARIANT, "HY OAS", value=3.6, as_of="2026-06-07")  # 现值走高
+    es.append_evaluation(SLUG, VARIANT, {
+        "input_snapshot": [{"name": "HY OAS", "value": 3.0, "as_of": "2026-06-01", "used": True}],
+        "conclusions": [{"id": "liquidity_us", "label": "美国流动性体制", "state": "偏紧",
+                         "based_on": [{"input": "HY OAS", "role": "load_bearing", "expected": "up"}],
+                         "causal": "HY OAS 走阔 → 流动性偏紧"}]})
+    r = macro_web_client.get(f"/prism/{SLUG}/{VARIANT}/eval-trace")
+    assert r.status_code == 200
+    assert "战绩" in r.text                       # 战绩卡标题词
+    assert "占对" in r.text                       # 占对率措辞
+    assert "up" in r.text                         # 该边的 expected 方向词
+
+
 def test_eval_trace_404_for_non_macro(macro_web_client):
     import prism.scripts.topic as t
     import prism.scripts.manifest as m

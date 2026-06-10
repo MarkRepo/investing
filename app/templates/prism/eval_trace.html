@@ -20,15 +20,24 @@
 {% else %}
   <p class="hint">评估 v{{ evaluation.version }} · {{ (evaluation.evaluated_at or '')[:19] }}
     {% if evaluation.note %} · {{ evaluation.note }}{% endif %}</p>
+  {% if score and score.scored and score.hit_rate is not none %}
+  <section class="track-card">
+    <h2>📊 上版战绩 <span class="hint">（v{{ score.version }} 预测 vs 现序列 · {{ score.days }} 天）</span></h2>
+    <p>承重输入占对：<strong>{{ score.hits }}/{{ score.hits + score.misses }}</strong>
+      （{{ (score.hit_rate * 100) | round(0) | int }}% 占对）
+      {% if score.neutrals %}· {{ score.neutrals }} 边无基准/未抓{% endif %}</p>
+  </section>
+  {% endif %}
   {% for c in evaluation.conclusions %}
   <section class="concl">
     <h2>{{ c.label or c.id }} <span class="concl-state">{{ c.state or '' }}</span></h2>
     {% if c.causal %}<p class="concl-causal"><span class="logic-label">评估逻辑</span> {{ c.causal }}</p>{% endif %}
     <table class="data-table">
-      <thead><tr><th>依赖输入</th><th>角色</th><th>上次评估值</th><th>现值 / Δ</th></tr></thead>
+      <thead><tr><th>依赖输入</th><th>角色</th><th>上次评估值</th><th>现值 / Δ</th><th>预测 / 战绩</th></tr></thead>
       <tbody>
       {% for b in c.based_on %}
         {% set d = diff.get(b.input) %}
+        {% set lg = ledger.get((c.id, b.input)) %}
         <tr>
           <td><code>{{ b.input }}</code></td>
           <td>{{ b.role }}</td>
@@ -38,6 +47,11 @@
               {% if d.delta is not none and d.delta != 0 %}<span class="badge-delta">{{ '%+.4g' | format(d.delta) }}</span>{% endif %}
               {% if d.breached %}<span class="badge-breach">越带</span>{% endif %}
             {% else %}<span class="hint">未抓</span>{% endif %}
+          </td>
+          <td>
+            {% if b.expected %}<code class="exp">{{ b.expected }}</code>{% else %}<span class="hint">—</span>{% endif %}
+            {% if lg %}<span class="track-{{ lg.track }}">{{ lg.track }}</span>
+              <span class="hint">{{ lg.hits }}/{{ lg.hits + lg.misses }}</span>{% endif %}
           </td>
         </tr>
       {% endfor %}
@@ -66,5 +80,11 @@
   .hint { color: #888; font-size: 0.85em; }
   .badge-delta { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #eef2f7; color: #44566b; }
   .badge-breach { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #fde8e8; color: #b42318; }
+  .track-card { margin: 1em 0; padding: 0.6em 0.9em; background: #f6f9f4; border-left: 3px solid #5a8f3c; border-radius: 4px; }
+  .track-card h2 { font-size: 1em; margin: 0 0 0.3em; border: none; }
+  .exp { font-size: 0.78em; background: #eef4ff; color: #2a5db0; padding: 0.1em 0.35em; border-radius: 3px; }
+  .track-降级候选 { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #fde8e8; color: #b42318; margin-left: 0.3em; }
+  .track-可靠 { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #e7f5e7; color: #2f7d2f; margin-left: 0.3em; }
+  .track-观察, .track-无裁定 { font-size: 0.72em; padding: 0.1em 0.35em; border-radius: 3px; background: #f0f0f0; color: #666; margin-left: 0.3em; }
 </style>
 {% endblock %}
