@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-10T01:31:46.601123+00:00'
+updated: '2026-06-10T04:45:38.824264+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -81,8 +81,8 @@ inputs:
     acq_note: 从 Investing.com Fed Rate Monitor 获取 Dec 2026 联邦基金期货价格 96.145，隐含利率 100-96.145
       = 3.855%，四舍五入 3.86%。当前目标区间 3.50-3.75%，Dec 隐含 3.86% 反映市场定价年内约一次加息 (25bp)；数据截至于
       2026-06-09。
-  note: 可用 recipe 抓取 investing.com/central-banks/fed-rate-monitor 的概率表（或 StreetStats）；CME
-    官方路径需 FedWatch API 付费订阅
+  note: 暂无稳定免费单值源——CME 官方 FedWatch API 付费,investing.com Fed Rate Monitor 为 JS 渲染+反爬(recipe
+    取不到)。当前由 LLM 从期货价反推隐含利率。待找到稳定 JSON 端点再写 recipe(2026-06-10 核)。
 - name: FOMC 声明/纪要
   tier: A
   cadence_type: policy
@@ -110,8 +110,9 @@ inputs:
     streak: 0
     prev_value: 3.75
   authority: official
-  availability: scriptable_todo
-  note: recipe 需按 fomccalendars.htm 索引动态发现最新会议日期，再拼 monetary{date}a.htm 抓正文解析联邦基金利率目标区间
+  availability: llm
+  note: 多跳文本判读(索引页→最新会议→声明/纪要正文→措辞鹰鸽),非单值数据,宜 LLM 判读而非脚本;利率目标区间虽可脚本抓,但本项核心是 stance
+    措辞,故归 llm(2026-06-10 核)。
 - name: 美联储官员讲话(主席)
   tier: A
   cadence_type: policy
@@ -256,7 +257,7 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: scriptable_todo
+  availability: llm
   source_url: https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/
   observed:
     value: 54.0
@@ -265,8 +266,8 @@ inputs:
     acq_note: ISM 官网 redirect 至付费墙登录页；值从 PRNewswire 新闻稿确认。5月值 54.0，发布于 2026-06-01。
     checked_at: '2026-06-10T00:27:51.311656+00:00'
     streak: 0
-  note: FRED series NAPM（ISM Manufacturing PMI），API /fred/series/observations?series_id=NAPM
-    即可稳定拉取。
+  note: 无免费脚本源——FRED NAPM 已停更(API 返 400),ISM 官网付费墙,DBnomics 镜像尾值损坏(给 ~10 垃圾值)。由 LLM
+    从月初新闻稿读取,故为 llm(2026-06-10 核)。
 - name: ISM 服务业 PMI
   tier: A
   cadence_type: event
@@ -340,9 +341,9 @@ inputs:
   observed:
     value: 3.2906
     as_of: '2026-04-01'
-    checked_at: '2026-06-09T22:00:45.972535+00:00'
+    checked_at: '2026-06-10T02:54:42.518233+00:00'
     streak: 0
-    prev_value: 3.0164
+    prev_value: 3.2906
 - name: 时薪 / ECI
   tier: A
   cadence_type: event
@@ -792,8 +793,20 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scriptable_todo
   source_url: https://www.federalreserve.gov/data/sloos.htm
+  observed:
+    value: 1.5
+    as_of: '2026-04-30'
+    evidence: Federal Reserve, Senior Loan Officer Opinion Survey on Bank Lending
+      Practices (April 2026); FRED series SUBLPDMBSXWBNQ
+    acq_note: Net percentage of domestic banks tightening standards on business loans,
+      weighted by outstanding loan balances. Positive value indicates net tightening.
+      Released May 4, 2026.
+    checked_at: '2026-06-10T03:57:14.481686+00:00'
+    streak: 0
+  note: 'FRED API endpoint: https://fred.stlouisfed.org/series/SUBLPDMBSXWBNQ (supports
+    JSON/CSV download)'
 - name: 2Y/10Y/30Y 国债
   tier: A
   cadence_type: series
@@ -1055,9 +1068,23 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: scriptable_todo
+  availability: scripted
   source_url: https://www.multpl.com/shiller-pe
-  note: multpl 为 HTML 表,recipe 暂仅支 json/csv;待加 html 解析或找 Shiller CSV 源后转 scripted
+  fetch_method: recipe
+  fetch_recipe:
+    kind: csv
+    url: https://posix4e.github.io/shiller_wrapper_data/data/stock_market_data.csv
+    parse:
+      value_column: cape
+      date_column: date_string
+      row: latest
+  note: Shiller CAPE 社区镜像 CSV(月频),取 cape/date_string 末行。2026-06-10 实测通(最新 2025-12
+    ≈ 39.4)。非官方镜像,失效则回落 llm。
+  observed:
+    value: 39.41935320301406
+    as_of: '2025-12-01'
+    checked_at: '2026-06-10T03:52:34.668040+00:00'
+    streak: 0
 - name: 市场内部/breadth+集中度
   tier: B
   cadence_type: series
@@ -1112,7 +1139,9 @@ inputs:
   authority: official
   availability: scriptable_todo
   source_url: https://publicreporting.cftc.gov/
-  note: CFTC 有 Socrata JSON API,但本项为复合(CFTC+CTA+basis)难单值化;待定主指标后写 recipe
+  note: 复合指标(CFTC 持仓+CTA/vol-target+basis-trade 规模)难单值化——CFTC 有 Socrata JSON API 可抓持仓腿,但
+    CTA/basis 无公开单值源。保留 scriptable_todo:待定一个主腿(如 CFTC 杠杆基金净头寸)后可写部分 recipe(2026-06-10
+    核)。
 - name: 广义/EM加权美元(Fed DTWEXBGS)
   tier: A
   cadence_type: series
@@ -1187,6 +1216,11 @@ inputs:
   authority: primary
   availability: llm
   note: 基差需掉期/Bloomberg 报价,无免费源→关带,到期人工看
+  observed:
+    evidence: 'CME EUR/USD basis (XEURBI): -1.04bp as of 2026-06-09 (https://www.cmegroup.com/market-data/cme-group-benchmark-administration/eur-usd-cross-currency-basis-index.html);
+      JPY/USD cross-currency basis current value not available from public web sources'
+    acq_note: EUR/USD基差可获取（-1.04bp），但JPY/USD跨币种基差在公开来源无最新值，通常需Bloomberg终端。本复合指标无法完整取数。
+    checked_at: '2026-06-10T04:03:26.539220+00:00'
 - name: USDJPY / 日元 carry
   tier: A
   cadence_type: series
@@ -1279,9 +1313,23 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: scriptable_todo
+  availability: scripted
   source_url: https://www.bis.org/statistics/gli.htm
-  note: BIS 有 SDMX API(季频),待写 json recipe
+  fetch_method: recipe
+  fetch_recipe:
+    kind: csv
+    url: https://stats.bis.org/api/v1/data/WS_GLI/Q.USD.3P.N.A.I.B.771.A/all?lastNObservations=1&format=csv
+    parse:
+      value_column: OBS_VALUE
+      date_column: TIME_PERIOD
+      row: latest
+  note: BIS SDMX REST CSV(季频,USD 对非银信用 YoY%),取 OBS_VALUE/TIME_PERIOD 最新一季。2026-06-10
+    实测通。
+  observed:
+    value: 8.465
+    as_of: 2025-Q4
+    checked_at: '2026-06-10T03:52:35.831189+00:00'
+    streak: 0
 - name: TIC / 外国持美债 + 中国持美债
   tier: B
   cadence_type: event
@@ -1298,9 +1346,24 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: scriptable_todo
+  availability: scripted
   source_url: https://home.treasury.gov/data/treasury-international-capital-tic-system
-  note: Treasury TIC 有月度 CSV,待写 csv recipe 取中国持仓
+  fetch_method: recipe
+  fetch_recipe:
+    kind: matrix
+    url: https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt
+    parse:
+      delimiter: "\t"
+      header_label: Country
+      row_label: China, Mainland
+      col_index: 1
+  note: Treasury TIC Table5(月频,Tab 分隔,十亿美元),取 China, Mainland 行最新一列(中国持美债)。2026-06-10
+    实测通。旧 mfh.txt 已冻结勿用。
+  observed:
+    value: 652.3
+    as_of: 2026-03
+    checked_at: '2026-06-10T03:52:44.929479+00:00'
+    streak: 0
 - name: 黄金
   tier: B
   cadence_type: series
@@ -1386,8 +1449,30 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: https://www.stats.gov.cn/
+  fetch_method: recipe
+  fetch_recipe:
+    kind: json
+    url: https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_ECONOMY_PMI&columns=ALL&pageSize=1&sortColumns=REPORT_DATE&sortTypes=-1
+    parse:
+      json_path:
+      - result
+      - data
+      - 0
+      - MAKE_INDEX
+      date_path:
+      - result
+      - data
+      - 0
+      - REPORT_DATE
+  note: eastmoney RPT_ECONOMY_PMI,官方制造业 PMI(MAKE_INDEX)/REPORT_DATE 取最新。2026-06-10
+    实测通。非官方端点,失效则回落 llm。
+  observed:
+    value: 50.0
+    as_of: '2026-05-01 00:00:00'
+    checked_at: '2026-06-10T03:52:45.126741+00:00'
+    streak: 0
 - name: 财新 PMI
   tier: A
   cadence_type: event
@@ -1506,8 +1591,30 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: https://www.stats.gov.cn/
+  fetch_method: recipe
+  fetch_recipe:
+    kind: json
+    url: https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_ECONOMY_CPI&columns=ALL&pageSize=1&sortColumns=REPORT_DATE&sortTypes=-1
+    parse:
+      json_path:
+      - result
+      - data
+      - 0
+      - NATIONAL_SAME
+      date_path:
+      - result
+      - data
+      - 0
+      - REPORT_DATE
+  note: eastmoney 数据中心 RPT_ECONOMY_CPI,全国 CPI 同比%(NATIONAL_SAME)/REPORT_DATE 取最新。2026-06-10
+    实测通。非官方端点,失效则回落 llm。
+  observed:
+    value: 1.2
+    as_of: '2026-05-01 00:00:00'
+    checked_at: '2026-06-10T03:52:45.447551+00:00'
+    streak: 0
 - name: 中国 PPI
   tier: A
   cadence_type: event
@@ -1524,8 +1631,30 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: https://www.stats.gov.cn/
+  fetch_method: recipe
+  fetch_recipe:
+    kind: json
+    url: https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPT_ECONOMY_PPI&columns=ALL&pageSize=1&sortColumns=REPORT_DATE&sortTypes=-1
+    parse:
+      json_path:
+      - result
+      - data
+      - 0
+      - BASE_SAME
+      date_path:
+      - result
+      - data
+      - 0
+      - REPORT_DATE
+  note: eastmoney RPT_ECONOMY_PPI,PPI 同比%(BASE_SAME)/REPORT_DATE 取最新。2026-06-10 实测通。非官方端点,失效则回落
+    llm。
+  observed:
+    value: 3.9
+    as_of: '2026-05-01 00:00:00'
+    checked_at: '2026-06-10T03:52:45.652085+00:00'
+    streak: 0
 - name: 7天 OMO 逆回购利率(新锚)
   tier: A
   cadence_type: event
@@ -1542,8 +1671,16 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scriptable_todo
   source_url: http://www.pbc.gov.cn/
+  observed:
+    value: 1.4
+    as_of: '2026-06-08'
+    evidence: https://www.nbd.com.cn/articles/2026-06-08/4419578.html - 央行6月8日开展2185亿元7天期逆回购操作，操作利率为1.40%
+    acq_note: 央行6月8日公开市场操作公告；该利率自2025年5月8日起设定为1.40%，目前为政策利率锚点
+    checked_at: '2026-06-10T04:04:42.012046+00:00'
+    streak: 0
+  note: 央行官网 http://www.pbc.gov.cn/ 每日发布公开市场业务交易公告，7天期逆回购操作均有固定JSON/XML数据端点，可自动抓取
 - name: MLF 利率
   tier: A
   cadence_type: event
@@ -1596,8 +1733,12 @@ inputs:
   source_url: http://www.pbc.gov.cn/
   observed:
     stance: 偏松
-    evidence: PBoC 最近一次降准为 2025-05-15 落地，大型银行 RRR 由 9.5% 降至 9.0%、加权约 6.2%、释放约 1 万亿元；2026
-      Q1 货政报告未再宣布新降准，当前为降准后的偏松而非新一轮宽松（人民银行/新华网，2025-05-07）。
+    evidence: https://www.ceicdata.com/zh-hans/china/required-reserve-ratio | https://zh.tradingeconomics.com/china/cash-reserve-ratio
+    value: 7.5
+    as_of: '2026-05-05'
+    acq_note: 大型商业银行法定准备金率；CEIC 数据来自央行，日更；最后确认维持不变（5月维持4月水平）
+    checked_at: '2026-06-10T04:13:24.845498+00:00'
+    streak: 0
   authority: official
   availability: llm
 - name: DR007/R007
@@ -1680,8 +1821,30 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: https://www.chinamoney.com.cn/
+  fetch_method: recipe
+  fetch_recipe:
+    kind: json
+    url: https://datacenter-web.eastmoney.com/api/data/v1/get?reportName=RPTA_WEB_TREASURYYIELD&columns=ALL&pageSize=1&sortColumns=SOLAR_DATE&sortTypes=-1
+    parse:
+      json_path:
+      - result
+      - data
+      - 0
+      - EMM00166466
+      date_path:
+      - result
+      - data
+      - 0
+      - SOLAR_DATE
+  note: eastmoney RPTA_WEB_TREASURYYIELD,中国 10Y CGB 收益率(EMM00166466)/SOLAR_DATE 取最新(同行
+    EMG00001310 为美 10Y)。2026-06-10 实测通。非官方端点,失效则回落 llm。
+  observed:
+    value: 1.7376
+    as_of: '2026-06-09 00:00:00'
+    checked_at: '2026-06-10T03:52:45.824527+00:00'
+    streak: 0
 - name: 结构性工具 PSL/再贷款
   tier: A
   cadence_type: policy
@@ -1723,7 +1886,10 @@ inputs:
   source_url: http://www.pbc.gov.cn/zhengcehuobisi/
   observed:
     stance: 偏松
-    evidence: 最新《2026 年第一季度货币政策执行报告》（2026-05-11）明确「继续实施好适度宽松的货币政策」「保持流动性充裕」，定调「适度宽松」（较「稳健」更松，但无下调闸门提法），判偏松（PBoC/新华网，2026-05-11）。
+    evidence: https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026051118520164705/index.html
+    as_of: '2026-03-31'
+    acq_note: 央行2026年Q1货币政策执行报告已发布(2026-05-11)，内含GDP增长5%、M2增长8.5%、企业贷款利率3.1%等指标，但输入项名称「MPR」未指明具体数值指标，无法归一
+    checked_at: '2026-06-10T04:18:23.198491+00:00'
   authority: official
   availability: llm
 - name: 社融 TSF
@@ -1743,6 +1909,13 @@ inputs:
   authority: official
   availability: llm
   source_url: http://www.pbc.gov.cn/
+  observed:
+    value: 456.89
+    as_of: '2026-04-30'
+    evidence: http://www.pbc.gov.cn/diaochatongjisi/116219/116319/2026ntjsj/shrzgm/index.html
+    acq_note: 央行发布的 2026 年 4 月金融统计数据报告，社会融资规模存量统计表（AFRE Stock）4 月末余额
+    checked_at: '2026-06-10T04:22:23.754946+00:00'
+    streak: 0
 - name: M1/M2/剪刀差
   tier: A
   cadence_type: event
@@ -1778,7 +1951,8 @@ inputs:
   authority: official
   availability: scriptable_todo
   source_url: http://www.pbc.gov.cn/
-  note: 需 PBoC 社融派生,无清洁源,待构造数据后转派生
+  note: 信贷脉冲=新增社融(TSF flow)滚动12月/名义GDP 的差分,需社融流量存量序列构造,无现成单值源。mofcom shrzgmQuery 端点
+    2026-06-10 实测 SSL 握手失败(不可用);待找到稳定社融流量序列后转派生。保留 scriptable_todo。
 - name: 贷款增速
   tier: A
   cadence_type: event
@@ -1859,6 +2033,14 @@ inputs:
   authority: secondary
   availability: llm
   note: CNH 离岸无 FRED 源(CNY=DEXCHUS 有),价差无法自动→关带
+  observed:
+    value: 0.81
+    as_of: '2026-06-08'
+    evidence: 中国外汇交易中心公布：2026年6月8日，USD/CNY=6.8198，USD/CNH=6.7648（新浪财经2026年5月市场综述数据）;
+      XE.com实时数据；CME Group USD/CNH期货行情
+    acq_note: 按5月29日官方报告，日均平均价差为41BP。6月8日最新中间价显示CNY贬于CNH约81BP，基于最权威的中国外汇交易中心与新浪财经联合官方数据。
+    checked_at: '2026-06-10T04:27:10.870977+00:00'
+    streak: 1
 - name: CNH HIBOR/离岸流动性 + 央行 HK 票
   tier: A
   cadence_type: series
@@ -1934,9 +2116,20 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: scriptable_todo
+  availability: scripted
   source_url: https://fred.stlouisfed.org/series/DGS10
-  note: 美腿 DGS10(FRED 有);中国10Y 暂无 FRED 源(IRLTLT01CNM156N 返400),待找源后转 __DERIVED__
+  fetch_method: recipe
+  derived:
+    op: sub
+    from_inputs:
+    - 中国 10Y CGB + 资产荒需求
+    - 2Y/10Y/30Y 国债
+  note: 派生=中国 10Y(eastmoney recipe)−美国 10Y(2Y/10Y/30Y 国债 的 DGS10)。两腿落盘后在 recipe 抓取末段算。中国腿已有源
+    → 转 scripted 派生。
+  observed:
+    value: -2.8223999999999996
+    checked_at: '2026-06-10T03:52:45.930876+00:00'
+    streak: 0
 - name: 中美实际利率差
   tier: B
   cadence_type: series
@@ -1954,7 +2147,9 @@ inputs:
   authority: official
   availability: scriptable_todo
   source_url: https://fred.stlouisfed.org/series/DFII10
-  note: 美腿 DFII10(FRED 有);中国实际利率无现成源,待构造后转派生
+  note: 派生公式=美实际利率(DFII10)−中国实际利率(中国10Y−中国CPI),为含嵌套的线性组合,现有 derived.op(仅 sub/add 平铺)表达不了。中国两腿现已有
+    recipe 源,待 recipe_fetch 支持加权线性组合(linComb)后即可转 scripted 派生。保留 scriptable_todo(2026-06-10
+    核)。
 - name: 北向资金
   tier: A
   cadence_type: series
@@ -1973,6 +2168,13 @@ inputs:
   authority: primary
   availability: llm
   source_url: https://www.hkex.com.hk/Mutual-Market/Stock-Connect?sc_lang=en
+  observed:
+    value: 10998
+    as_of: '2026-06-10'
+    evidence: HKEX Stock Connect 沪深港通官方数据；截至6月9日历史累计净买入10882亿元（创历史新高），6月10日单日净买入116.22亿元（沪股通85.45亿+深股通30.78亿）
+    acq_note: HKEX官网最新市场数据，6月10日16:10 HKT更新的交易统计。北向资金持续净流入，创下同期新纪录，外资配置A股意愿强烈。
+    checked_at: '2026-06-10T04:30:56.002362+00:00'
+    streak: 0
 - name: 南向港股通
   tier: A
   cadence_type: series
@@ -2308,6 +2510,12 @@ inputs:
   source_url: https://ustr.gov/about-us/policy-offices/press-office/press-releases
   observed:
     next_due: '2026-07-01'
+    evidence: https://ustr.gov/about/policy-offices/press-office/press-releases/2026/may/president-trumps-state-visit-china-delivers-historic-deals-and-greater-market-access-american;
+      https://ustr.gov/about/policy-offices/press-office/press-releases/2026/june/ustr-makes-findings-and-proposes-action-60-section-301-investigations-relating-failures-take-action
+    acq_note: May 18 Trump-Xi State Visit 涉及农产品$17B/year、Boeing 200架订单、rare earths供应链承诺，以及建立Board
+      of Trade与Board of Investment，但未提及具体关税税率。June 2 USTR提议对华12.5%关税系针对强迫劳动Section
+      301调查，而非直接贸易协议关税。该项指标名称过于宽泛，官方源中无单一明确「中美关税」数值。
+    checked_at: '2026-06-10T04:41:38.654563+00:00'
 - name: ADR 退市/HFCAA/PCAOB
   tier: A
   cadence_type: event
@@ -2328,6 +2536,11 @@ inputs:
   source_url: https://www.sec.gov/HFCAA
   observed:
     next_due: '2026-07-01'
+    as_of: '2026-06-10'
+    evidence: https://www.sec.gov/rules-regulations/holding-foreign-companies-accountable-act
+      (via Tavily extract); PCAOB vacated determinations 2022-12-15
+    acq_note: SEC HFCAA 页面确认：Provisional list 无任何发行人；2022 年 PCAOB 撤销对中国大陆/香港的检查无法确定，故当前无发行人面临交易禁令或退市风险。无具体退市数值可取（为制度性为零，非取数失败）
+    checked_at: '2026-06-10T04:45:38.824243+00:00'
   note: 事件型,无可解析数值;到期 LLM 读 SEC HFCAA 页
 - name: 美出口管制/实体清单
   tier: A

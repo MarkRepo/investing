@@ -47,7 +47,8 @@ def test_run_only_fetches_scripted(monkeypatch):
     summary = recipe_fetch.run_recipe_fetch("m", "v", client=object())
     assert recorded == [("已配", 9.0)]
     # 待脚本/LLM 项已无 fetch_method（取法走 headless LLM），不在 recipe 闸门内 → 全不计
-    assert summary == {"fetched": 1, "skipped_todo": 0, "skipped_llm": 0, "failed": 0}
+    assert summary == {"fetched": 1, "derived": 0, "skipped_todo": 0,
+                       "skipped_llm": 0, "failed": 0}
 
 
 def test_run_recipe_only_filters_to_named(monkeypatch):
@@ -78,7 +79,8 @@ def test_run_skips_todo_and_llm_marked_recipe(monkeypatch):
     ]}
     monkeypatch.setattr(reg, "read_registry", lambda s, v: fake)
     summary = recipe_fetch.run_recipe_fetch("m", "v", client=object())
-    assert summary == {"fetched": 0, "skipped_todo": 1, "skipped_llm": 1, "failed": 0}
+    assert summary == {"fetched": 0, "derived": 0, "skipped_todo": 1,
+                       "skipped_llm": 1, "failed": 0}
 
 
 def _fake_text_client(text):
@@ -118,6 +120,94 @@ def test_unknown_kind_raises():
     recipe = {"kind": "xml", "url": "https://x", "parse": {}}
     with pytest.raises(ValueError, match="未知"):
         recipe_fetch.fetch_by_recipe(recipe, client=_fake_text_client("x"))
+
+
+# --- POST + headers 透传 ---
+
+def test_fetch_by_recipe_post_passes_body_and_headers():
+    seen = {}
+    class _Resp:
+        def raise_for_status(self): pass
+        def json(self): return {"v": 7.0}
+    class _Client:
+        def post(self, url, json=None, timeout=None, headers=None):
+            seen.update(url=url, json=json, headers=headers, timeout=timeout)
+            return _Resp()
+    recipe = {"url": "https://x", "method": "POST", "body": {"a": 1},
+              "headers": {"H": "1"}, "parse": {"json_path": ["v"]}}
+    val, _ = recipe_fetch.fetch_by_recipe(recipe, client=_Client())
+    assert val == 7.0
+    assert seen["json"] == {"a": 1} and seen["headers"] == {"H": "1"} and seen["url"] == "https://x"
+
+
+def test_fetch_by_recipe_get_omits_headers_when_absent():
+    """无 headers 时不传 headers=（保持与既有 mock client get(url, timeout=) 兼容）。"""
+    client = _fake_client({"v": 3.0})  # 其 get 只接受 (url, timeout)
+    recipe = {"url": "https://x", "parse": {"json_path": ["v"]}}
+    val, _ = recipe_fetch.fetch_by_recipe(recipe, client=client)
+    assert val == 3.0
+
+
+# --- matrix kind：透视表（行=实体、列=周期）---
+
+def test_fetch_matrix_picks_row_and_dated_col():
+    text = ("Table 5\nCountry\t2026-03\t2026-02\n"
+            "Japan\t1191.6\t1239.3\nChina, Mainland\t652.3\t660.1\n")
+    recipe = {"kind": "matrix", "url": "https://x",
+              "parse": {"delimiter": "\t", "header_label": "Country",
+                        "row_label": "China, Mainland", "col_index": 1}}
+    val, as_of = recipe_fetch.fetch_by_recipe(recipe, client=_fake_text_client(text))
+    assert val == 652.3 and as_of == "2026-03"
+
+
+def test_fetch_matrix_missing_row_returns_none():
+    text = "Country\t2026-03\nJapan\t1191.6\n"
+    recipe = {"kind": "matrix", "url": "https://x",
+              "parse": {"delimiter": "\t", "header_label": "Country",
+                        "row_label": "China, Mainland", "col_index": 1}}
+    val, as_of = recipe_fetch.fetch_by_recipe(recipe, client=_fake_text_client(text))
+    assert val is None
+
+
+# --- 按输入名派生：derived.from_inputs ---
+
+def test_run_recipe_derives_from_named_inputs(monkeypatch):
+    """中美利差式派生：读各腿最新 observed.value 后按 op 算，记一条 derived。"""
+    from prism.scripts import macro_registry as reg
+    drive = {"inputs": [
+        {"name": "利差", "fetch_method": "recipe", "availability": "scripted",
+         "derived": {"op": "sub", "from_inputs": ["甲", "乙"]}},
+    ]}
+    legs = {"inputs": [
+        {"name": "利差"},
+        {"name": "甲", "observed": {"value": 2.0}},
+        {"name": "乙", "observed": {"value": 0.5}},
+    ]}
+    seq = [drive, legs]  # 第一次读驱动主循环；派生段重读取各腿
+    monkeypatch.setattr(reg, "read_registry", lambda s, v: seq.pop(0) if seq else legs)
+    recorded = []
+    monkeypatch.setattr(reg, "record_observation",
+                        lambda s, v, name, **kw: recorded.append((name, kw.get("value"))))
+    summary = recipe_fetch.run_recipe_fetch("m", "v", client=object())
+    assert recorded == [("利差", 1.5)]
+    assert summary["derived"] == 1 and summary["fetched"] == 0
+
+
+def test_run_recipe_derive_skips_when_leg_missing(monkeypatch):
+    """任一腿无 observed.value → 不记派生、计 failed，诚实留空。"""
+    from prism.scripts import macro_registry as reg
+    drive = {"inputs": [
+        {"name": "利差", "fetch_method": "recipe", "availability": "scripted",
+         "derived": {"op": "sub", "from_inputs": ["甲", "乙"]}},
+    ]}
+    legs = {"inputs": [{"name": "甲", "observed": {"value": 2.0}}, {"name": "乙"}]}
+    seq = [drive, legs]
+    monkeypatch.setattr(reg, "read_registry", lambda s, v: seq.pop(0) if seq else legs)
+    recorded = []
+    monkeypatch.setattr(reg, "record_observation",
+                        lambda s, v, name, **kw: recorded.append(name))
+    summary = recipe_fetch.run_recipe_fetch("m", "v", client=object())
+    assert recorded == [] and summary["derived"] == 0 and summary["failed"] == 1
 
 
 # --- fetch_text：固定 URL 取正文（喂 headless LLM 判读），不挂 fetch_by_recipe ---

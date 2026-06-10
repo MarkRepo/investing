@@ -65,13 +65,42 @@ def _parse_csv(text, cfg) -> tuple[float | None, str | None]:
         return None, as_of
 
 
-_PARSERS = {"json": _parse_json, "csv": _parse_csv}
+def _parse_matrix(text, cfg) -> tuple[float | None, str | None]:
+    """透视表（实体作行、周期作列）取值：找首格 == row_label 的数据行，取第 col_index 列（0=标签）。
+    日期从首格 == header_label 的表头行同列取。供 Treasury TIC（Tab 分隔、前置元数据行）这类表。
+    参数 {delimiter='\\t', header_label, row_label, col_index=1}。任何对不上 → 诚实 (None, as_of)。"""
+    delim = cfg.get("delimiter", "\t")
+    col = cfg.get("col_index", 1)
+    header_label = cfg.get("header_label")
+    row_label = cfg.get("row_label")
+    header_cells = None
+    as_of = None
+    for line in text.splitlines():
+        cells = [c.strip() for c in line.split(delim)]
+        if not cells or not cells[0]:
+            continue
+        if header_label and cells[0] == header_label:
+            header_cells = cells
+            continue
+        if row_label and cells[0] == row_label:
+            if header_cells and col < len(header_cells):
+                as_of = header_cells[col]
+            raw = cells[col] if col < len(cells) else None
+            try:
+                return (float(raw) if raw not in (None, "") else None), as_of
+            except (ValueError, TypeError):
+                return None, as_of
+    return None, as_of
+
+
+_PARSERS = {"json": _parse_json, "csv": _parse_csv, "matrix": _parse_matrix}
+_TEXT_KINDS = {"csv", "matrix"}  # 这些 kind 喂 resp.text；json 喂 resp.json()
 
 
 def fetch_by_recipe(recipe: dict, *, client=None) -> tuple[float | None, str | None]:
-    """按 fetch_recipe 抓一个数值。recipe: {kind?, url, parse:{...}}。
-    kind 缺省 'json'（向后兼容现有写法）；按 kind 派发解析器。未知 kind 抛 ValueError
-    （不静默）。client 可注入（测试 mock）。"""
+    """按 fetch_recipe 抓一个数值。recipe: {kind?, url, method?, headers?, body?, parse:{...}}。
+    kind 缺省 'json'（向后兼容现有写法）；按 kind 派发解析器。未知 kind 抛 ValueError（不静默）。
+    method 缺省 GET；POST 传 body（json）。headers 可选。client 可注入（测试 mock）。"""
     url = recipe.get("url")
     if not url:
         return None, None
@@ -80,13 +109,23 @@ def fetch_by_recipe(recipe: dict, *, client=None) -> tuple[float | None, str | N
     if parser is None:
         raise ValueError(f"未知 fetch_recipe.kind: {kind!r}（支持 {sorted(_PARSERS)}）")
     parse = recipe.get("parse") or {}
+    method = (recipe.get("method") or "GET").upper()
+    headers = recipe.get("headers")
+    body = recipe.get("body")
+    # 仅在显式给定时才传 headers/json，保持与既有 mock client（get(url, timeout=)）的兼容。
+    kw: dict = {"timeout": 30}
+    if headers:
+        kw["headers"] = headers
     owns = client is None
     if owns:
         client = httpx.Client()
     try:
-        resp = client.get(url, timeout=30)
+        if method == "POST":
+            resp = client.post(url, json=body, **kw)
+        else:
+            resp = client.get(url, **kw)
         resp.raise_for_status()
-        payload = resp.json() if kind == "json" else resp.text
+        payload = resp.text if kind in _TEXT_KINDS else resp.json()
     finally:
         if owns:
             client.close()
@@ -126,12 +165,14 @@ def run_recipe_fetch(slug: str, variant: str, *, client=None,
     待脚本 / LLM取（llm）的诚实跳过并计数（它们走 headless LLM 取数）。
     only 给定时只抓名字在其中的项（web 单条手动抓取用）；缺省抓全部。返回 summary。"""
     data = reg.read_registry(slug, variant)
-    fetched = skipped_todo = skipped_llm = failed = 0
+    fetched = derived = skipped_todo = skipped_llm = failed = 0
     for e in data["inputs"]:
         if e.get("fetch_method") != "recipe":
             continue
         if only is not None and e["name"] not in only:
             continue
+        if e.get("derived", {}).get("from_inputs"):
+            continue  # 按名派生项在下方单独跑（待各腿 observed 落盘后）
         avail = e.get("availability")
         if avail == "llm":
             skipped_llm += 1
@@ -145,7 +186,30 @@ def run_recipe_fetch(slug: str, variant: str, *, client=None,
             continue
         reg.record_observation(slug, variant, e["name"], value=val, as_of=as_of)
         fetched += 1
-    return {"fetched": fetched, "skipped_todo": skipped_todo,
+
+    # 按名派生：derived:{op, from_inputs:[名…]} —— 读各腿最新 observed.value 后按 op 算。
+    # 在 recipe 抓取之后跑、且重读登记表，确保本轮 recipe 腿与更早 fred run 的腿都已落盘可见。
+    derived_specs = [e for e in data["inputs"]
+                     if e.get("fetch_method") == "recipe" and e.get("derived", {}).get("from_inputs")
+                     and (only is None or e["name"] in only)]
+    if derived_specs:
+        from prism.scripts.fred_fetch import _apply_op
+        fresh = reg.read_registry(slug, variant)
+        by_name = {x["name"]: x for x in fresh["inputs"]}
+        for e in derived_specs:
+            spec = e["derived"]
+            if e.get("availability") != "scripted":
+                skipped_todo += 1
+                continue
+            legs = [((by_name.get(n) or {}).get("observed") or {}).get("value")
+                    for n in spec["from_inputs"]]
+            if any(v is None for v in legs):
+                failed += 1
+                continue
+            reg.record_observation(slug, variant, e["name"], value=_apply_op(spec["op"], legs))
+            derived += 1
+
+    return {"fetched": fetched, "derived": derived, "skipped_todo": skipped_todo,
             "skipped_llm": skipped_llm, "failed": failed}
 
 
