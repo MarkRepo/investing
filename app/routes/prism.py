@@ -758,8 +758,11 @@ def prism_macro_inputs(request: Request, slug: str, variant: str):
             "lb_total": len(lb_inputs),
             "lb_unused": lb_unused,
         }
+    from prism.scripts import input_glossary as ig
+    grouped_inputs = ig.group_by_family(inputs)
     return templates.TemplateResponse(request, "prism/macro_inputs.html", {
         "topic": topic, "variant": variant, "inputs": inputs,
+        "grouped_inputs": grouped_inputs,
         "diff": diff, "reeval_pending": log.get("reeval_pending"),
         "jobs": jobs, "due": due, "last_meta": last_meta, "cached": cached,
         "coverage_summary": coverage_summary,
@@ -946,6 +949,18 @@ def prism_macro_fetch_script(slug: str, variant: str, request: Request,
     elif method == "akshare":
         from prism.scripts import akshare_fetch
         summary = akshare_fetch.run_akshare_fetch(slug, variant, only={name})
+    elif method == "yfinance":
+        from prism.scripts import yfinance_fetch
+        summary = yfinance_fetch.run_yfinance_fetch(slug, variant, only={name})
+    elif method == "macromicro":
+        from prism.scripts import macromicro_fetch
+        summary = macromicro_fetch.run_macromicro_fetch(slug, variant, only={name})
+    elif method == "barchart":
+        from prism.scripts import barchart_fetch
+        summary = barchart_fetch.run_barchart_fetch(slug, variant, only={name})
+    elif method == "ecb":
+        from prism.scripts import ecb_fetch
+        summary = ecb_fetch.run_ecb_fetch(slug, variant, only={name})
     else:
         raise HTTPException(status_code=400, detail=f"该项无脚本抓取通道（fetch_method={method!r}）")
     fetched = (summary.get("fetched", 0) or 0) + (summary.get("derived", 0) or 0)
@@ -962,23 +977,47 @@ def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anch
     「取文」= 下载原文存本地缓存的脚本通道，登记表驱动：扫所有带 text_fetch 的输入、按其值路由到
     对应 fetcher（见 textfetch.run_textfetch）。加新取文源无需改本路由。各通道失败吞掉、不毁整批
     （其余通道仍生效）。非 macro 主题 / 登记表缺失 → 404。
-    Accept: application/json → {fred, recipe, akshare, text, fetched}；否则 303 回锚点。
+    Accept: application/json → {fred, recipe, akshare, yfinance, text, fetched}；否则 303 回锚点。
     """
-    from prism.scripts import fred_fetch, recipe_fetch, textfetch, akshare_fetch
+    from prism.scripts import (fred_fetch, recipe_fetch, textfetch, akshare_fetch,
+                               yfinance_fetch, macromicro_fetch, barchart_fetch, ecb_fetch)
     try:
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
     if topic.get("type") != "macro":
         raise HTTPException(status_code=404, detail="非宏观主题")
+    # 顺序要紧：recipe 含「按名派生」（如 CIP 基差 = 多腿合成），须在所有腿通道之后跑，才能读到当轮新腿。
+    # 故 fred → akshare → yfinance → macromicro → barchart → ecb → **recipe**（最后）→ text。
     fred_sum = fred_fetch.run_fred_fetch(slug, variant)
-    recipe_sum = recipe_fetch.run_recipe_fetch(slug, variant)
-    # akshare（中国宏观）：与 fred/recipe 同为脚本数值通道；整通道失败吞掉不毁整批
+    # akshare（中国宏观）：脚本数值通道；整通道失败吞掉不毁整批
     try:
         akshare_sum = akshare_fetch.run_akshare_fetch(slug, variant)
     except Exception as _exc:
         akshare_sum = {"_error": str(_exc), "fetched": 0}
-    # 取文：登记表驱动，逐条按 text_fetch 路由；整通道失败吞掉不毁整批（FRED/recipe 仍生效）
+    # yfinance（市场行情：MOVE/DXY/^TNX 等专有指数）：脚本数值通道；整通道失败吞掉不毁整批
+    try:
+        yfin_sum = yfinance_fetch.run_yfinance_fetch(slug, variant)
+    except Exception as _exc:
+        yfin_sum = {"_error": str(_exc), "fetched": 0}
+    # macromicro（FRED/akshare/yfinance 都缺的专有序列，如日频 JPY 3M OIS）：脚本数值通道；失败吞掉不毁整批
+    try:
+        mm_sum = macromicro_fetch.run_macromicro_fetch(slug, variant)
+    except Exception as _exc:
+        mm_sum = {"_error": str(_exc), "fetched": 0}
+    # barchart（外汇 3M 远期点，CIP 基差远期腿）：脚本数值通道；失败吞掉不毁整批
+    try:
+        bc_sum = barchart_fetch.run_barchart_fetch(slug, variant)
+    except Exception as _exc:
+        bc_sum = {"_error": str(_exc), "fetched": 0}
+    # ecb（日频 EUR 3M OIS 混合，CIP 基差欧元腿）：脚本数值通道；失败吞掉不毁整批
+    try:
+        ecb_sum = ecb_fetch.run_ecb_fetch(slug, variant)
+    except Exception as _exc:
+        ecb_sum = {"_error": str(_exc), "fetched": 0}
+    # recipe：含 CIP 基差等按名派生，须在上述各腿之后跑（读最新 observed 合成）
+    recipe_sum = recipe_fetch.run_recipe_fetch(slug, variant)
+    # 取文：登记表驱动，逐条按 text_fetch 路由；整通道失败吞掉不毁整批（其余仍生效）
     try:
         text_sum = textfetch.run_textfetch(slug, variant)
     except Exception as _exc:
@@ -986,12 +1025,20 @@ def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anch
     fred_n = (fred_sum.get("fetched", 0) or 0) + (fred_sum.get("derived", 0) or 0)
     recipe_n = (recipe_sum.get("fetched", 0) or 0) + (recipe_sum.get("derived", 0) or 0)
     akshare_n = akshare_sum.get("fetched", 0) or 0
+    yfin_n = yfin_sum.get("fetched", 0) or 0
+    mm_n = mm_sum.get("fetched", 0) or 0
+    bc_n = bc_sum.get("fetched", 0) or 0
+    ecb_n = ecb_sum.get("fetched", 0) or 0
     text_n = sum(1 for r in text_sum.values() if isinstance(r, dict) and r.get("ok"))
     if "application/json" in (request.headers.get("accept") or ""):
-        return JSONResponse({"fred": fred_n, "recipe": recipe_n, "akshare": akshare_n, "text": text_n,
-                             "fetched": fred_n + recipe_n + akshare_n + text_n,
+        return JSONResponse({"fred": fred_n, "recipe": recipe_n, "akshare": akshare_n,
+                             "yfinance": yfin_n, "macromicro": mm_n, "barchart": bc_n,
+                             "ecb": ecb_n, "text": text_n,
+                             "fetched": fred_n + recipe_n + akshare_n + yfin_n + mm_n + bc_n + ecb_n + text_n,
                              "fred_summary": fred_sum, "recipe_summary": recipe_sum,
-                             "akshare_summary": akshare_sum, "text_summary": text_sum})
+                             "akshare_summary": akshare_sum, "yfinance_summary": yfin_sum,
+                             "macromicro_summary": mm_sum, "barchart_summary": bc_sum,
+                             "ecb_summary": ecb_sum, "text_summary": text_sum})
     frag = f"#{anchor}" if anchor else ""
     return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
 

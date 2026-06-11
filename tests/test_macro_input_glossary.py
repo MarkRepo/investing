@@ -103,3 +103,18 @@ def test_glossary_key_registered():
     from prism.scripts import outputs as o
     keys = [k for k, _ in o._EXTRA_OUTPUTS_LABELS]
     assert "00b_input_glossary" in keys
+
+
+def test_group_by_family_orders_and_buckets_unknown():
+    from prism.scripts import input_glossary as ig
+    inputs = [
+        {"name": "a", "family": "通胀"},
+        {"name": "b", "family": "增长就业"},
+        {"name": "c", "family": None},
+    ]
+    grouped = ig.group_by_family(inputs)
+    labels = [fam for fam, _ in grouped]
+    assert labels[0] == "增长就业" and "通胀" in labels
+    # 未知/缺 family 落「其他」桶，且在最后
+    assert labels[-1] == "其他"
+    assert [i["name"] for i in dict(grouped)["其他"]] == ["c"]

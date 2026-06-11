@@ -52,6 +52,19 @@ def build_body(registry: dict) -> str:
     return "\n".join(lines)
 
 
+def group_by_family(inputs: list[dict]) -> list[tuple[str, list[dict]]]:
+    """按 CANONICAL_FAMILIES 顺序分组；未知/缺 family 落「其他」桶置末。保序、不丢条。"""
+    buckets: dict[str, list] = {f: [] for f in mr.CANONICAL_FAMILIES}
+    other: list[dict] = []
+    for e in inputs:
+        fam = e.get("family")
+        (buckets[fam] if fam in buckets else other).append(e)
+    out = [(f, buckets[f]) for f in mr.CANONICAL_FAMILIES if buckets[f]]
+    if other:
+        out.append(("其他", other))
+    return out
+
+
 _BEGIN = "<!-- BEGIN auto:gloss-pointer -->"
 _END = "<!-- END auto:gloss-pointer -->"
 
