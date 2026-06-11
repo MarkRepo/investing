@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-11T11:31:04.258730+00:00'
+updated: '2026-06-11T11:34:54.711454+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -433,6 +433,11 @@ inputs:
     checked_at: '2026-06-11T10:35:08.314694+00:00'
     streak: 0
     prev_value: 3.2906
+  family: 增长就业
+  gloss:
+    define: 亚特兰大联储基于已公布数据实时拼出的当季 GDP 估计
+    read: 不靠预测、随数据滚动更新的增长实时仪表
+    use: 持续下修=增长走弱降息预期升；上修=增长强偏鹰
 - name: 时薪 / ECI
   tier: A
   cadence_type: event
@@ -548,6 +553,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PCEPILFE
+  family: 通胀
+  gloss:
+    define: 核心 PCE 拆成 supercore 服务、住房、商品三块（BEA 月度）
+    read: 定位通胀来源——住房滞后、supercore 最粘、商品先松
+    use: supercore 不降=通胀粘 Fed 难松压估值；住房回落=通胀见顶
 - name: PPI
   tier: A
   cadence_type: event
@@ -731,6 +741,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/MTSDS133FMS
+  family: 流动性·数量
+  gloss:
+    define: 美国联邦财政赤字规模（财政部月度）
+    read: 决定中长期国债净供给的总量
+    use: 赤字扩大=发债增、期限溢价上行压长端债；收窄=供给压力缓
 - name: 美联储资产 WALCL(QT 节奏)
   tier: A
   cadence_type: series
@@ -1069,6 +1084,11 @@ inputs:
     checked_at: '2026-06-11T10:35:39.753218+00:00'
     streak: 0
     prev_value: 0.8019
+  family: 利率·曲线结构
+  gloss:
+    define: 把名义利率拆出期限溢价分量（Kim-Wright 代理 THREEFYTP10）
+    read: 长端利率里「非预期」的补偿部分有多大
+    use: 期限溢价升=嫌国债发太多要补偿、长端独立上行；降=供给担忧缓
 - name: 2s10s 曲线斜率
   tier: B
   cadence_type: series
@@ -1094,6 +1114,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T10Y2Y
+  family: 利率·曲线结构
+  gloss:
+    define: 10 年减 2 年国债收益率之差（FRED 日频）
+    read: 曲线陡平的核心读数（机制见 primer 曲线四形态）
+    use: 倒挂=衰退预警；倒挂后转陡=衰退临近；走陡看牛熊主导
 - name: IG OAS
   tier: B
   cadence_type: series
@@ -1119,6 +1144,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/BAMLC0A0CM
+  family: 信用与风险偏好
+  gloss:
+    define: 投资级公司债期权调整利差（FRED 日频）
+    read: 信用好的公司借钱比政府多付多少，恐惧温度计
+    use: 走阔=避险升温压风险；收窄=胆大估值能撑（机制见 primer 信用利差）
 - name: HY OAS
   tier: B
   cadence_type: series
@@ -1148,6 +1178,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/BAMLH0A0HYM2
+  family: 信用与风险偏好
+  gloss:
+    define: 高收益（垃圾）债期权调整利差（FRED 日频）
+    read: 信用最差公司的违约恐惧，比 IG 更灵敏
+    use: 快速走阔=风险偏好崩、常先于股市见顶；收窄=risk-on
 - name: CMBS/ABS OAS(NFCI 最高权重)
   tier: B
   cadence_type: series
@@ -1164,6 +1199,11 @@ inputs:
     enabled: true
   authority: secondary
   availability: llm
+  family: 信用与风险偏好
+  gloss:
+    define: 商业地产抵押债/资产支持证券利差（NFCI 权重最高项）
+    read: 结构性信用与商业地产压力的探针
+    use: 走阔=商业地产/结构信用承压、金融条件收紧；收窄=缓和
 - name: MOVE 债市波动率
   tier: B
   cadence_type: series
@@ -1196,6 +1236,11 @@ inputs:
     as_of: '2026-06-10'
     checked_at: '2026-06-11T03:49:02.089235+00:00'
     streak: 0
+  family: 信用与风险偏好
+  gloss:
+    define: 美债期权隐含波动率指数（债市的 VIX）
+    read: 利率市场的恐慌度，飙升=债市动荡
+    use: 飙升=利率不确定性高、压估值与 carry；回落=债市企稳
 - name: VIX
   tier: B
   cadence_type: series
@@ -1222,6 +1267,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/VIXCLS
+  family: 信用与风险偏好
+  gloss:
+    define: 标普 500 期权隐含波动率指数（股市恐慌指数）
+    read: 股市的恐惧温度计
+    use: 飙升=避险、风险资产抛售、carry 平仓；低位=risk-on
 - name: 金融条件指数 FCI(NFCI/GS)
   tier: B
   cadence_type: series
@@ -1247,6 +1297,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/NFCI
+  family: 信用与风险偏好
+  gloss:
+    define: 芝加哥联储 NFCI / 高盛 FCI，综合利率信用波动的松紧总指标
+    read: 一个数概括整体金融条件松还是紧
+    use: 收紧=融资环境差压风险；宽松=顺风利好估值
 - name: 股票估值 CAPE
   tier: C
   cadence_type: series
@@ -1296,6 +1351,11 @@ inputs:
     enabled: true
   authority: secondary
   availability: llm
+  family: 跨资产代理
+  gloss:
+    define: 股指上涨的广度与少数权重股的集中度
+    read: 涨势是普涨还是被几只大票撑着（脆弱性）
+    use: 集中度极高+breadth 差=上涨脆弱易回调；普涨=健康
 - name: AI-capex 体制代理
   tier: C
   cadence_type: event
@@ -1337,6 +1397,11 @@ inputs:
   note: 复合指标(CFTC 持仓+CTA/vol-target+basis-trade 规模)难单值化——CFTC 有 Socrata JSON API 可抓持仓腿,但
     CTA/basis 无公开单值源。保留 scriptable_todo:待定一个主腿(如 CFTC 杠杆基金净头寸)后可写部分 recipe(2026-06-10
     核)。
+  family: 跨资产代理
+  gloss:
+    define: 期货持仓+CTA/波动率目标+基差交易规模的复合拥挤度
+    read: carry/杠杆交易有多拥挤，去杠杆冲击的传感器
+    use: 极端拥挤=强平踩踏风险大、尾部脆弱；分散=缓冲厚
 - name: 广义/EM加权美元(Fed DTWEXBGS)
   tier: A
   cadence_type: series
@@ -1394,6 +1459,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DTWEXAFEGS
+  family: 汇率·跨境套利
+  gloss:
+    define: 美元对一篮子发达货币指数（此处用 Fed AFE 代理 DTWEXAFEGS）
+    read: 美元强弱总开关（机制见 primer DXY）
+    use: 走强=全球美元回流、EM 与风险承压；走弱=EM 顺风
 - name: Spot EURUSD
   tier: B
   cadence_type: series
@@ -1419,6 +1489,11 @@ inputs:
     as_of: '2026-06-05'
     checked_at: '2026-06-11T10:35:54.168841+00:00'
     streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 欧元兑美元即期汇率（CIP 远期腿的基准即期）
+    read: 供 EUR/USD 基差合成的底料，本身不单独读
+    use: 仅作 CIP 基差合成输入、不单独下判
 - name: Spot USDJPY
   tier: B
   cadence_type: series
@@ -1444,6 +1519,11 @@ inputs:
     as_of: '2026-06-05'
     checked_at: '2026-06-11T10:35:55.610424+00:00'
     streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 美元兑日元即期汇率（CIP 远期腿的基准即期）
+    read: 供 JPY/USD 基差合成的底料，本身不单独读
+    use: 仅作 CIP 基差合成输入、不单独下判
 - name: EURUSD 3M远期点
   tier: B
   cadence_type: series
@@ -1470,6 +1550,11 @@ inputs:
     as_of: '2026-06-11'
     checked_at: '2026-06-11T10:36:09.426443+00:00'
     streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 欧元兑美元 3 个月远期点（barchart，pips）
+    read: 即期与远期之差，供基差合成
+    use: 仅作 EUR/USD 基差合成输入、不单独读
 - name: USDJPY 3M远期点
   tier: B
   cadence_type: series
@@ -1496,6 +1581,11 @@ inputs:
     as_of: '2026-06-11'
     checked_at: '2026-06-11T10:36:11.463922+00:00'
     streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 美元兑日元 3 个月远期点（barchart，pips）
+    read: 即期与远期之差，供基差合成
+    use: 仅作 JPY/USD 基差合成输入、不单独读
 - name: USD 3M OIS
   tier: B
   cadence_type: series
@@ -1529,6 +1619,11 @@ inputs:
     as_of: '2026-06-09'
     checked_at: '2026-06-11T10:36:22.053244+00:00'
     streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 美元 3 个月隔夜指数掉期利率（两对基差共用 USD 腿）
+    read: 美元无风险 3M 利率基准，供基差合成
+    use: 仅作 CIP 基差合成输入、不单独读
 - name: EUR 3M OIS
   tier: B
   cadence_type: series
@@ -1558,6 +1653,11 @@ inputs:
     as_of: '2026-06-10'
     checked_at: '2026-06-11T10:36:15.020704+00:00'
     streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 欧元 3 个月 OIS（€STR 锚混合估计，日频）
+    read: 欧元无风险 3M 利率，供 EUR/USD 基差合成
+    use: 仅作合成输入；锚间 ECB 重定价时会欠真值、基差不可信
 - name: JPY 3M OIS
   tier: B
   cadence_type: series
@@ -1585,6 +1685,11 @@ inputs:
     as_of: '2026-06-09'
     checked_at: '2026-06-11T10:36:07.403113+00:00'
     streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 日元 3 个月 TONA OIS（MM 图 95219）
+    read: 日元无风险 3M 利率，供 JPY/USD 基差合成
+    use: 仅作 CIP 基差合成输入、不单独读
 - name: EUR/USD 3M 基差
   tier: A
   cadence_type: series
@@ -1761,6 +1866,11 @@ inputs:
       6/11 加息（Reuters，2026-06-03），相对美联储呈鹰派分化。
   authority: official
   availability: llm
+  family: 汇率·跨境套利
+  gloss:
+    define: 欧央行与美联储政策分化（政策型）
+    read: 欧美利差驱动 EUR-USD 套利资金流
+    use: ECB 比 Fed 更鹰=欧元走强美元偏弱；更鸽=美元偏强
 - name: BIS 全球流动性(USD/EUR/JPY 对非银信用)
   tier: B
   cadence_type: event
@@ -1794,6 +1904,11 @@ inputs:
     checked_at: '2026-06-11T10:36:23.725790+00:00'
     streak: 0
     prev_value: 8.465
+  family: 流动性·数量
+  gloss:
+    define: BIS 季度跨境对非银的美元/欧元/日元信用（YoY%）
+    read: 离岸美元信用扩张的全球总量
+    use: 扩张=全球流动性顺风利好风险；收缩=离岸信用紧
 - name: TIC / 外国持美债 + 中国持美债
   tier: B
   cadence_type: event
@@ -1829,6 +1944,11 @@ inputs:
     checked_at: '2026-06-11T10:36:34.070077+00:00'
     streak: 0
     prev_value: 652.3
+  family: 汇率·跨境套利
+  gloss:
+    define: 美财政部 TIC 月度外国（含中国）持美债数据
+    read: 跨境对美债的增减持资金流
+    use: 中国/外国大幅减持=美债需求弱、美元与利率扰动；增持=回流
 - name: 黄金
   tier: B
   cadence_type: series
@@ -1847,6 +1967,11 @@ inputs:
   authority: primary
   availability: llm
   source_url: https://www.lbma.org.uk/prices-and-data/precious-metal-prices
+  family: 跨资产代理
+  gloss:
+    define: 伦敦金现货价（LBMA，LLM 取）
+    read: 实际利率与美元的镜像、避险与去美元化代理
+    use: 上涨=实际利率降/避险/去美元；与实际利率背离=结构性配置
 - name: 比特币
   tier: C
   cadence_type: series
@@ -2041,6 +2166,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.stats.gov.cn/
+  family: 中国增长·外需
+  gloss:
+    define: 国家统计局月度固定资产投资累计同比（含地产/基建/制造）
+    read: 投资驱动的增长动能
+    use: 走弱=投资乏力需刺激；回升=基建/制造发力利好周期
 - name: 出口(美元计)
   tier: A
   cadence_type: event
@@ -2080,6 +2210,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.stats.gov.cn/
+  family: 中国增长·外需
+  gloss:
+    define: 全社会用电量与货运量（「克强指标」实物量）
+    read: 绕开统计水分的实物经济活动度
+    use: 走弱=实体活动真降温；回升=实体回暖印证增长
 - name: 中国 CPI
   tier: A
   cadence_type: event
@@ -2376,6 +2511,11 @@ inputs:
     checked_at: '2026-06-11T10:36:35.201101+00:00'
     streak: 0
     prev_value: 1.4152
+  family: 中国货币·流动性
+  gloss:
+    define: 银行间存款类机构 7 天质押回购加权利率（chinamoney 日频）
+    read: 央行实际松紧手的最灵敏窗口（机制见 primer DR007）
+    use: 走低=银行间钱松、宽松；跳升=资金面紧、收紧信号
 - name: R007(全市场7天回购)
   tier: B
   cadence_type: series
@@ -2416,6 +2556,11 @@ inputs:
     checked_at: '2026-06-11T10:36:35.487083+00:00'
     streak: 0
     prev_value: 1.4156
+  family: 中国货币·流动性
+  gloss:
+    define: 全市场（含非银）7 天质押回购加权利率（日频）
+    read: 含非银的融资成本，高于 DR007 部分=非银分层
+    use: 飙升=非银缺钱、流动性分层；与 DR007 同步=全面紧
 - name: R007−DR007 利差
   tier: B
   cadence_type: series
@@ -2445,6 +2590,11 @@ inputs:
     checked_at: '2026-06-11T10:36:37.576639+00:00'
     streak: 0
     prev_value: 0.00039999999999995595
+  family: 中国货币·流动性
+  gloss:
+    define: R007 减 DR007 的利差（同源派生）
+    read: 非银相对银行的融资成本溢价
+    use: 走阔=流动性分层加剧、非银承压（压力信号）；收窄=分层缓
 - name: NCD 同业存单利率
   tier: B
   cadence_type: series
@@ -2483,6 +2633,11 @@ inputs:
     checked_at: '2026-06-11T11:11:05.235783+00:00'
     streak: 0
     prev_value: 1.465
+  family: 中国货币·流动性
+  gloss:
+    define: 银行同业存单发行利率（日频）
+    read: 银行边际负债成本与同业流动性松紧
+    use: 上行=银行缺负债、资金面趋紧；下行=负债宽松
 - name: 超额准备金率(走廊下限)
   tier: C
   cadence_type: policy
@@ -2744,6 +2899,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DEXCHUS
+  family: 汇率·跨境套利
+  gloss:
+    define: 在岸人民币兑美元汇率（机制见 primer USDCNY）
+    read: 被管理的价格、是结果不是独立信号
+    use: 数字变大=人民币贬值压力；配合 CNH 价差/结售汇验证
 - name: PBoC 中间价 + 逆周期因子
   tier: A
   cadence_type: series
@@ -2798,6 +2958,11 @@ inputs:
     checked_at: '2026-06-11T10:36:36.069260+00:00'
     streak: 0
     prev_value: 6.777
+  family: 汇率·跨境套利
+  gloss:
+    define: 离岸人民币兑美元即期汇率
+    read: 更市场化的人民币定价，CNH-CNY 价差的离岸腿
+    use: 比在岸更贬=离岸贬值预期与外流压力
 - name: USDCNY(在岸即期)
   tier: B
   cadence_type: series
@@ -2830,6 +2995,11 @@ inputs:
     checked_at: '2026-06-11T10:36:36.349508+00:00'
     streak: 0
     prev_value: 6.7755
+  family: 汇率·跨境套利
+  gloss:
+    define: 在岸人民币兑美元即期成交价
+    read: CNH-CNY 价差的在岸腿
+    use: 与离岸价差扩大=压力被摁住多少的探针
 - name: CNH-CNY 价差
   tier: A
   cadence_type: series
@@ -2951,6 +3121,11 @@ inputs:
     checked_at: '2026-06-11T10:36:37.963655+00:00'
     streak: 0
     prev_value: -2.7824
+  family: 汇率·跨境套利
+  gloss:
+    define: 中国 10Y 减美国 10Y 国债收益率（派生）
+    read: 套利资金的指南针（机制见 primer 中美利差）
+    use: 负且深=资金有动机流向美元、压人民币（2025-26 不必然灵）
 - name: 中美实际利率差
   tier: B
   cadence_type: series
@@ -2971,6 +3146,11 @@ inputs:
   note: 派生公式=美实际利率(DFII10)−中国实际利率(中国10Y−中国CPI),为含嵌套的线性组合,现有 derived.op(仅 sub/add 平铺)表达不了。中国两腿现已有
     recipe 源,待 recipe_fetch 支持加权线性组合(linComb)后即可转 scripted 派生。保留 scriptable_todo(2026-06-10
     核)。
+  family: 汇率·跨境套利
+  gloss:
+    define: 美实际利率减中国实际利率（派生）
+    read: 剔通胀后的真实利差，影响套息配置方向
+    use: 美高于中=资金偏美元、压人民币；收窄=人民币减压
 - name: 北向资金
   tier: A
   cadence_type: series
@@ -3057,6 +3237,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.chinabond.com.cn/
+  family: 汇率·跨境套利
+  gloss:
+    define: 境外机构经债券通持有中国国债托管量（月度）
+    read: 债市跨境资金流的脚投票
+    use: 增持=外资配置中国债、支撑汇率；减持=外流压人民币
 - name: 远期售汇风险准备金率
   tier: B
   cadence_type: policy
@@ -3079,6 +3264,11 @@ inputs:
       0、不再对购汇加成本（央行/新华网/财新，2026-02-27）。
   authority: official
   availability: llm
+  family: 汇率·跨境套利
+  gloss:
+    define: 央行对银行远期售汇征收的风险准备金率（政策型）
+    read: 上调=抬高购汇远期成本以压贬值预期的逆周期闸门
+    use: 上调（如 0→20%）=明确稳汇率信号；下调=贬值压力缓
 - name: CFETS 人民币篮子指数
   tier: B
   cadence_type: series
@@ -3096,6 +3286,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.chinamoney.com.cn/english/
+  family: 汇率·跨境套利
+  gloss:
+    define: 人民币对一篮子货币的汇率指数（CFETS）
+    read: 看人民币对篮子而非只盯美元的强弱
+    use: 篮子走弱=有效汇率贬值；对美元稳但篮子弱=跟随美元走强
 - name: 出口商结汇率
   tier: B
   cadence_type: event
@@ -3113,6 +3308,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.safe.gov.cn/
+  family: 汇率·跨境套利
+  gloss:
+    define: 出口商把外汇收入结成人民币的比例（外汇局口径）
+    read: 顺差转化为实际外汇供给的比例
+    use: 结汇率高=外汇供给足支撑人民币；囤汇=供给少压汇率
 - name: ADR/H 股溢价折价
   tier: B
   cadence_type: series
@@ -3130,6 +3330,11 @@ inputs:
   authority: secondary
   availability: llm
   source_url: https://www.hsi.com.hk/eng
+  family: 汇率·跨境套利
+  gloss:
+    define: 中概 ADR 或 H 股相对 A 股的溢价/折价
+    read: 跨市场套利与离岸资金对中国资产的偏好
+    use: H 股大幅折价=离岸悲观/资金外流；溢价收敛=离岸回暖
 - name: FDI 月度
   tier: B
   cadence_type: event
@@ -3147,6 +3352,11 @@ inputs:
   authority: official
   availability: llm
   source_url: http://www.mofcom.gov.cn/
+  family: 汇率·跨境套利
+  gloss:
+    define: 月度外商直接投资（商务部/外汇局口径）
+    read: 直接投资项下的长期资金流入
+    use: 持续下滑=长期资金撤离压人民币；回升=信心与外汇供给改善
 - name: 中国专项基金 EPFR(非宽EM)
   tier: B
   cadence_type: event
@@ -3165,6 +3375,11 @@ inputs:
   authority: secondary
   availability: llm
   source_url: https://www.epfr.com/
+  family: 汇率·跨境套利
+  gloss:
+    define: 专投中国（非泛 EM）的基金申赎数据（EPFR）
+    read: 配置盘对中国资产的跨境资金流向
+    use: 持续赎回=外资减配压 A/港股与汇率；申购=回流
 - name: MSCI/FTSE 中国权重调整
   tier: B
   cadence_type: event
@@ -3185,6 +3400,11 @@ inputs:
   observed:
     next_due: '2026-06-23'
   note: 事件型,无可解析数值;到期 LLM 读指数公告页判定
+  family: 汇率·跨境套利
+  gloss:
+    define: 国际指数对中国股的纳入/权重调整（事件型）
+    read: 触发被动配置盘的机械买卖
+    use: 上调=被动增量买盘利好；下调/剔除=被动流出压股与汇率
 - name: 30 城新房成交(高频)
   tier: B
   cadence_type: series
@@ -3227,6 +3447,11 @@ inputs:
     checked_at: '2026-06-11T10:36:36.820067+00:00'
     streak: 0
     prev_value: 24.98
+  family: 中国增长·外需
+  gloss:
+    define: 30 个典型城市新房网签面积（周环比%）
+    read: 地产需求最高频的探针（单周噪声大，看多周方向）
+    use: 多周持续回暖=地产企稳利好地产链；持续低迷=拖累信用与增长
 - name: 二手房价/成交
   tier: B
   cadence_type: series
@@ -3243,6 +3468,11 @@ inputs:
     enabled: true
   authority: secondary
   availability: llm
+  family: 中国增长·外需
+  gloss:
+    define: 重点城市二手房价格与成交（高频/月度）
+    read: 比新房更真实的地产需求与价格信号
+    use: 量价齐跌=居民资产负债表承压、消费谨慎；企稳=信心修复
 - name: 70 城房价
   tier: A
   cadence_type: event
@@ -3296,6 +3526,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.stats.gov.cn/
+  family: 中国增长·外需
+  gloss:
+    define: 国家统计局月度房地产开发投资累计同比
+    read: 地产信用需求与上下游融资链条的核心
+    use: 深度负增=地产拖累信用与增长压流动性；回升=链条修复
 - name: 土地出让金
   tier: A
   cadence_type: event
@@ -3379,6 +3614,11 @@ inputs:
   authority: official
   availability: llm
   source_url: http://www.pbc.gov.cn/
+  family: 中国货币·流动性
+  gloss:
+    define: 政府在央行/银行的财政存款（缴税/支出节奏）
+    read: 增减吸放银行体系流动性
+    use: 缴税季回升=抽流动性；财政支出投放=释放流动性
 - name: LGFV/城投利差(TSF 质量过滤器)
   tier: B
   cadence_type: series
@@ -3395,6 +3635,11 @@ inputs:
     enabled: true
   authority: secondary
   availability: llm
+  family: 中国货币·流动性
+  gloss:
+    define: 城投债相对国债的信用利差
+    read: 地方隐性债务再融资压力，社融质量过滤器
+    use: 走阔=城投再融资紧、地方债务风险升压信用；收窄=化债见效
 - name: 中美地缘/关税
   tier: A
   cadence_type: event
@@ -3574,6 +3819,11 @@ inputs:
     evidence: 2026-02-09 三大交易所优化再融资一揽子措施、证监会 2026 年系统工作会明确「提高再融资便利性」，IPO/再融资由阶段性收紧转为系统性优化回暖（资金面偏松）；减持端从严属强监管（证券时报，2026-01-16；证券市场周刊，2026-03-17）。
   authority: official
   availability: llm
+  family: 中国货币·流动性
+  gloss:
+    define: 证监会 IPO/减持/再融资等监管动作（政策型）
+    read: 影响股市资金供求的政策闸门
+    use: 收紧 IPO/减持=呵护股市资金面利好；放量供给=抽血
 - name: 美财政/债务上限/财政主导
   tier: A
   cadence_type: event
@@ -3622,6 +3872,11 @@ inputs:
       Daily/新华社，2026-04-27）。
   authority: secondary
   availability: llm
+  family: 汇率·跨境套利
+  gloss:
+    define: 国际评级机构对中国主权评级及展望（政策/事件型）
+    read: 影响中国资产风险溢价与外资配置意愿
+    use: 下调展望=风险溢价升、外资谨慎压利率与汇率；上调=改善
 - name: 外汇占款
   tier: B
   cadence_type: series
@@ -3648,6 +3903,11 @@ inputs:
     as_of: 2026-04
     checked_at: '2026-06-11T11:11:16.598153+00:00'
     streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 央行购汇投放的基础货币存量（人行月度）
+    read: 结售汇净额经央行的沉淀，反映外汇供求
+    use: 持续下降=资金外流/央行卖汇压人民币与流动性；回升=回流
 - name: 银行结售汇差额
   tier: A
   cadence_type: series
