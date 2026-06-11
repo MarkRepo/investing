@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-11T11:34:54.711454+00:00'
+updated: '2026-06-11T11:35:37.277864+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -1335,6 +1335,11 @@ inputs:
     checked_at: '2026-06-11T10:36:20.273046+00:00'
     streak: 0
     prev_value: 39.41935320301406
+  family: 跨资产代理
+  gloss:
+    define: 席勒周期调整市盈率（10 年通胀调整 EPS，月频）
+    read: 美股整体估值的长周期标尺
+    use: 极高（如~39）=估值透支、长期回报低、对利率脆弱；回落=安全垫增
 - name: 市场内部/breadth+集中度
   tier: B
   cadence_type: series
@@ -1375,6 +1380,11 @@ inputs:
   availability: llm
   observed:
     next_due: '2026-08-01'
+  family: 跨资产代理
+  gloss:
+    define: AI 资本开支体制的结构性需求代理（事件/叙事型）
+    read: AI 投资潮对增长/通胀的结构性拉动与利率敏感性
+    use: capex 加速=名义增长与利率支撑、利好 AI 链；退潮=主题降温
 - name: 持仓拥挤(CFTC + CTA/vol-target + basis-trade规模)
   tier: B
   cadence_type: series
@@ -1997,6 +2007,11 @@ inputs:
     checked_at: '2026-06-11T10:35:57.890712+00:00'
     streak: 0
     prev_value: 61751.94
+  family: 跨资产代理
+  gloss:
+    define: 比特币价格（流动性与风险偏好的边际代理）
+    read: 全球过剩流动性与投机风险偏好的高 beta 镜像
+    use: 大涨=流动性宽松/risk-on 边际信号；崩跌=去风险（仅相关非因果）
 - name: 大宗(铜/铁矿)
   tier: C
   cadence_type: series
@@ -2024,6 +2039,11 @@ inputs:
     checked_at: '2026-06-11T10:35:59.101382+00:00'
     streak: 0
     prev_value: 13483.75153846154
+  family: 跨资产代理
+  gloss:
+    define: 铜（头条）与铁矿石价格（FRED 月频）
+    read: 全球（尤其中国）工业需求的实物景气代理
+    use: 上涨=工业需求/再通胀、利好周期与人民币；跌=需求弱信号
 - name: 官方制造业 PMI
   tier: A
   cadence_type: event
@@ -2660,6 +2680,11 @@ inputs:
       Q1 货政报告，as_of 2026-05-11）。
   authority: official
   availability: llm
+  family: 中国货币·流动性
+  gloss:
+    define: 央行对超额准备金支付的利率，利率走廊的下限
+    read: 银行间利率的地板，DR007 不会长期低于它
+    use: 下调=打开利率下行空间、宽松信号；为走廊底锚定资金面
 - name: 中国 10Y CGB + 资产荒需求
   tier: A
   cadence_type: series

@@ -123,7 +123,6 @@ def test_group_by_family_orders_and_buckets_unknown():
 REAL_SLUG, REAL_VARIANT = "global-macro-rates-liquidity", "opus4.8"
 
 
-@pytest.mark.xfail(reason="gloss 填充进行中，补齐后删此 xfail 转硬门禁", strict=False)
 def test_real_registry_full_gloss_coverage():
     from prism.scripts import macro_registry as m
     reg = m.read_registry(REAL_SLUG, REAL_VARIANT)
