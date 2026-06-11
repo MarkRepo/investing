@@ -56,3 +56,25 @@ def test_inputs_missing_gloss_lists_incomplete(reg):
     mr.upsert_input(slug, variant, bare)
     missing = mr.inputs_missing_gloss(mr.read_registry(slug, variant))
     assert missing == ["缺词条"]
+
+
+def test_build_body_groups_by_family_order(reg):
+    slug, variant = reg
+    from prism.scripts import input_glossary as ig
+    mr.upsert_input(slug, variant, _good_entry(name="核心PCE", family="通胀",
+        gloss={"define": "Fed 首选通胀尺", "read": "通胀粘不粘", "use": "超预期→偏鹰→压成长"}))
+    mr.upsert_input(slug, variant, _good_entry(name="JOLTS", family="增长就业"))
+    body = ig.build_body(mr.read_registry(slug, variant))
+    # 族系标题按 CANONICAL_FAMILIES 顺序：增长就业 在 通胀 之前
+    assert body.index("### 增长就业") < body.index("### 通胀")
+    # 三层都渲染
+    assert "BLS 月度职位空缺" in body and "离职回落" in body
+
+
+def test_build_body_marks_missing(reg):
+    slug, variant = reg
+    from prism.scripts import input_glossary as ig
+    bare = _good_entry(name="缺条"); bare.pop("gloss"); bare.pop("family")
+    mr.upsert_input(slug, variant, bare)
+    body = ig.build_body(mr.read_registry(slug, variant))
+    assert "尚缺 1 条" in body and "缺条" in body
