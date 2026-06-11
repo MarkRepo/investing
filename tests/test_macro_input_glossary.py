@@ -118,3 +118,14 @@ def test_group_by_family_orders_and_buckets_unknown():
     # 未知/缺 family 落「其他」桶，且在最后
     assert labels[-1] == "其他"
     assert [i["name"] for i in dict(grouped)["其他"]] == ["c"]
+
+
+REAL_SLUG, REAL_VARIANT = "global-macro-rates-liquidity", "opus4.8"
+
+
+@pytest.mark.xfail(reason="gloss 填充进行中，补齐后删此 xfail 转硬门禁", strict=False)
+def test_real_registry_full_gloss_coverage():
+    from prism.scripts import macro_registry as m
+    reg = m.read_registry(REAL_SLUG, REAL_VARIANT)
+    missing = m.inputs_missing_gloss(reg)
+    assert missing == [], f"尚缺 {len(missing)} 条 gloss/family：{missing}"
