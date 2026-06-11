@@ -13,6 +13,8 @@
   targets        ["rates"|"liquidity"|"fx", ...]
   mechanism      "CD"|"CF"|"CO"|"CR"
   causal_sentence  一句话因果链（CD/CF 必填）
+  family         输入源族系（CANONICAL_FAMILIES 之一），词典/Web 表分组键
+  gloss          {define, read, use} 门外汉三层词条（定义/为什么看/怎么用），与 causal_sentence 并存
   lag            领先/同步/滞后 + 时长（自由文本）
   importance     "load_bearing"|"confirming"|"background"
   source         FRED / web / PBoC / ... / TBD
@@ -56,15 +58,22 @@ VALID_IMPORTANCE = ("load_bearing", "confirming", "background")
 VALID_TARGET = ("rates", "liquidity", "fx")
 VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
 VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm")
-VALID_FETCH_METHOD = ("fred-api", "recipe", "akshare")   # 脚本「数值」通道，仅 scripted 项可设
-VALID_TEXT_FETCH = ("fomc",)   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
+VALID_FETCH_METHOD = ("fred-api", "recipe", "akshare", "yfinance", "macromicro", "barchart", "ecb", "safe")   # 脚本「数值」通道，仅 scripted 项可设
+VALID_TEXT_FETCH = ("fomc", "qra", "china_us", "hfcaa", "politburo")   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
                                # 立场判读仍走 LLM，故仅 llm/scriptable_todo 项可设，与 fetch_method 互斥
-VALID_RECIPE_KIND = ("json", "csv", "matrix", "html")   # 须与 recipe_fetch._PARSERS 键一致
+VALID_RECIPE_KIND = ("json", "csv", "matrix", "html", "json_scan")   # 须与 recipe_fetch._PARSERS 键一致
+
+# 输入源族系（input_glossary 词典/Web 表分组键，顺序=展示顺序，单一真相）
+CANONICAL_FAMILIES = (
+    "增长就业", "通胀", "货币政策", "流动性·数量", "利率·曲线结构",
+    "信用与风险偏好", "资金面咬合", "汇率·跨境套利",
+    "中国货币·流动性", "中国增长·外需", "跨资产代理",
+)
 # 每 kind 的必填 parse 键（缺则取不到值）：matrix 须 row_label（解析器靠它定位数据行；
 # header_label/col_index/delimiter 有默认或仅影响日期）。html 须 value_regex（第 1 捕获组=值；
 # date_regex 选填）。
 _RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column", "matrix": "row_label",
-                          "html": "value_regex"}
+                          "html": "value_regex", "json_scan": "match_regex"}
 
 # policy 立场有序轴：轴名 → 档位元组（有序，索引升=趋势的"高"端）。diff 按索引差算方向。
 STANCE_SCALES = {
@@ -72,6 +81,9 @@ STANCE_SCALES = {
     "ease_tighten": ("宽松", "偏松", "中性", "偏紧", "收紧"),
     "expand_contract": ("扩张", "中性", "收缩"),
     "path_shift": ("上移", "不变", "下移"),
+    # 地缘/关税轴：无市场序列可 diff 的事件叙事型输入（如中美地缘/关税），把「升级↔缓和」判读
+    # 落成可 diff 的立场档位（索引升=更紧张），使 LLM 结论进 observed.stance → 被 eval 战绩/翻牌消费。
+    "geo_escalation": ("缓和", "偏缓", "中性", "偏紧", "升级"),
 }
 # 每轴方向取词：(索引上升时词, 索引下降时词)
 STANCE_DIRECTION = {
@@ -79,6 +91,7 @@ STANCE_DIRECTION = {
     "ease_tighten": ("更紧", "更松"),
     "expand_contract": ("更收缩", "更扩张"),
     "path_shift": ("更下移", "更上移"),
+    "geo_escalation": ("更升级", "更缓和"),
 }
 
 
@@ -172,6 +185,19 @@ def upsert_input(slug: str, variant: str, entry: dict) -> None:
     _write_yaml(_registry_path(slug, variant), data)
 
 
+def remove_input(slug: str, variant: str, name: str) -> bool:
+    """按 name 删一条 input（零 LLM）。删到返回 True，不存在返回 False（非致命）。
+    拆分/重命名输入时用（upsert 按 name 合并、不能改名，故删旧+加新走本函数）。"""
+    data = read_registry(slug, variant)
+    before = len(data["inputs"])
+    data["inputs"] = [e for e in data["inputs"] if e.get("name") != name]
+    if len(data["inputs"]) == before:
+        return False
+    data["updated"] = _now_iso()
+    _write_yaml(_registry_path(slug, variant), data)
+    return True
+
+
 def validate_registry(slug: str, variant: str) -> list[str]:
     """校验登记表的机制纪律（spec §2.2/§2.1）。返回错误串列表（空=通过）。零 LLM。
 
@@ -245,6 +271,40 @@ def validate_registry(slug: str, variant: str) -> list[str]:
                 for k in ("func", "date_column", "value_column"):
                     if not ak.get(k):
                         errors.append(f"[{name}] akshare 块缺 {k}")
+        if fm == "yfinance":
+            yfc = e.get("yfinance")
+            if not yfc:
+                errors.append(f"[{name}] fetch_method=yfinance 须配 yfinance 块")
+            elif not yfc.get("ticker"):
+                errors.append(f"[{name}] yfinance 块缺 ticker")
+        if fm == "macromicro":
+            mmc = e.get("macromicro")
+            if not mmc:
+                errors.append(f"[{name}] fetch_method=macromicro 须配 macromicro 块")
+            else:
+                for k in ("chart_id", "page_url"):
+                    if not mmc.get(k):
+                        errors.append(f"[{name}] macromicro 块缺 {k}")
+        if fm == "barchart":
+            bc = e.get("barchart")
+            if not bc:
+                errors.append(f"[{name}] fetch_method=barchart 须配 barchart 块")
+            elif not bc.get("symbol"):
+                errors.append(f"[{name}] barchart 块缺 symbol")
+        if fm == "ecb":
+            ec = e.get("ecb")
+            if not ec:
+                errors.append(f"[{name}] fetch_method=ecb 须配 ecb 块")
+            elif not ec.get("mode"):
+                errors.append(f"[{name}] ecb 块缺 mode")
+        if fm == "safe":
+            sf = e.get("safe")
+            if not sf:
+                errors.append(f"[{name}] fetch_method=safe 须配 safe 块")
+            else:
+                for k in ("article_url", "sheet", "row_label"):
+                    if not sf.get(k):
+                        errors.append(f"[{name}] safe 块缺 {k}")
         scale = e.get("stance_scale")
         if scale is not None and scale not in STANCE_SCALES:
             errors.append(f"[{name}] stance_scale 非法: {scale!r}")
@@ -256,7 +316,33 @@ def validate_registry(slug: str, variant: str) -> list[str]:
                 errors.append(f"[{name}] stance {stance!r} 不在轴 {scale} 档位内")
             if not str((e.get("observed") or {}).get("evidence") or "").strip():
                 errors.append(f"[{name}] 设了 observed.stance 必须附 evidence")
+        fam = e.get("family")
+        if fam is not None and fam not in CANONICAL_FAMILIES:
+            errors.append(f"[{name}] family 非法: {fam!r}（须在 CANONICAL_FAMILIES 内）")
+        g = e.get("gloss")
+        if g is not None:
+            if not isinstance(g, dict):
+                errors.append(f"[{name}] gloss 须为 dict")
+            else:
+                for k in ("define", "read", "use"):
+                    if not str(g.get(k) or "").strip():
+                        errors.append(f"[{name}] gloss 缺 {k}（三键 define/read/use 须齐全非空）")
     return errors
+
+
+def inputs_missing_gloss(registry: dict) -> list[str]:
+    """列出「被追踪却缺 gloss/family」的 input name（覆盖闸门 + 生成器共用）。零 LLM。
+
+    被追踪=登记表 inputs 全集（含 monitoring=false 的 CIP 腿）。
+    缺=无 family，或 gloss 三键(define/read/use)任一空缺。
+    """
+    missing = []
+    for e in registry.get("inputs") or []:
+        g = e.get("gloss") or {}
+        ok = e.get("family") and all(str(g.get(k) or "").strip() for k in ("define", "read", "use"))
+        if not ok:
+            missing.append(e.get("name", "<无名>"))
+    return missing
 
 
 def record_observation(
