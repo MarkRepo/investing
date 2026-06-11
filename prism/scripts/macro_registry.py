@@ -27,7 +27,8 @@
                  llm=无法稳定脚本化,每轮LLM读或检索判(贵,note记原因)）
   derived        {op:"sub"|"add", series:[FRED series,...]}（可空，fred_series_id=="__DERIVED__" 时由各 series 计算，如 SOFR−IORB）
   fetch_method   脚本执行通道，仅对 availability=='scripted' 有意义：fred-api（走 fred_fetch）
-                 / recipe（走 recipe_fetch，须配 fetch_recipe）。非 scripted 项不设 fetch_method
+                 / recipe（走 recipe_fetch，须配 fetch_recipe）/ akshare（走 akshare_fetch，须配
+                 akshare 块{func,date_column,value_column}）。非 scripted 项不设 fetch_method
                  （其取数走 headless LLM，取法由 source_url 派生，见 llm_acquisition_mode）。
   fetch_recipe   {url, parse:{json_path, date_path}}（可空，recipe 通道 fetcher 用）
   text_fetch     脚本「取文」通道（可空）：值∈VALID_TEXT_FETCH，登记表驱动地把该输入路由到
@@ -55,7 +56,7 @@ VALID_IMPORTANCE = ("load_bearing", "confirming", "background")
 VALID_TARGET = ("rates", "liquidity", "fx")
 VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
 VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm")
-VALID_FETCH_METHOD = ("fred-api", "recipe")   # 脚本「数值」通道，仅 scripted 项可设
+VALID_FETCH_METHOD = ("fred-api", "recipe", "akshare")   # 脚本「数值」通道，仅 scripted 项可设
 VALID_TEXT_FETCH = ("fomc",)   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
                                # 立场判读仍走 LLM，故仅 llm/scriptable_todo 项可设，与 fetch_method 互斥
 VALID_RECIPE_KIND = ("json", "csv", "matrix", "html")   # 须与 recipe_fetch._PARSERS 键一致
@@ -236,6 +237,14 @@ def validate_registry(slug: str, variant: str) -> list[str]:
                 req = _RECIPE_REQUIRED_PARSE[kind]
                 if not (recipe.get("parse") or {}).get(req):
                     errors.append(f"[{name}] fetch_recipe kind={kind} 缺 parse.{req}")
+        if fm == "akshare":
+            ak = e.get("akshare")
+            if not ak:
+                errors.append(f"[{name}] fetch_method=akshare 须配 akshare 块")
+            else:
+                for k in ("func", "date_column", "value_column"):
+                    if not ak.get(k):
+                        errors.append(f"[{name}] akshare 块缺 {k}")
         scale = e.get("stance_scale")
         if scale is not None and scale not in STANCE_SCALES:
             errors.append(f"[{name}] stance_scale 非法: {scale!r}")

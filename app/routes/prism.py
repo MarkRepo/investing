@@ -943,6 +943,9 @@ def prism_macro_fetch_script(slug: str, variant: str, request: Request,
         summary = fred_fetch.run_fred_fetch(slug, variant, only={name})
     elif method == "recipe":
         summary = recipe_fetch.run_recipe_fetch(slug, variant, only={name})
+    elif method == "akshare":
+        from prism.scripts import akshare_fetch
+        summary = akshare_fetch.run_akshare_fetch(slug, variant, only={name})
     else:
         raise HTTPException(status_code=400, detail=f"该项无脚本抓取通道（fetch_method={method!r}）")
     fetched = (summary.get("fetched", 0) or 0) + (summary.get("derived", 0) or 0)
@@ -954,14 +957,14 @@ def prism_macro_fetch_script(slug: str, variant: str, request: Request,
 
 @router.post("/{slug}/{variant}/macro-inputs/fetch-script-all")
 def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anchor: str = Form("")):
-    """批量「刷新脚本项」：跑全量 fred + recipe + 取文（零 LLM、零成本）。LLM 判读项一律行内单条手动拉。
+    """批量「刷新脚本项」：跑全量 fred + recipe + akshare + 取文（零 LLM、零成本）。LLM 判读项一律行内单条手动拉。
 
     「取文」= 下载原文存本地缓存的脚本通道，登记表驱动：扫所有带 text_fetch 的输入、按其值路由到
-    对应 fetcher（见 textfetch.run_textfetch）。加新取文源无需改本路由。整通道失败吞掉、不毁整批
-    （FRED/recipe 仍生效）。非 macro 主题 / 登记表缺失 → 404。
-    Accept: application/json → {fred, recipe, text, fetched}；否则 303 回锚点。
+    对应 fetcher（见 textfetch.run_textfetch）。加新取文源无需改本路由。各通道失败吞掉、不毁整批
+    （其余通道仍生效）。非 macro 主题 / 登记表缺失 → 404。
+    Accept: application/json → {fred, recipe, akshare, text, fetched}；否则 303 回锚点。
     """
-    from prism.scripts import fred_fetch, recipe_fetch, textfetch
+    from prism.scripts import fred_fetch, recipe_fetch, textfetch, akshare_fetch
     try:
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
@@ -970,6 +973,11 @@ def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anch
         raise HTTPException(status_code=404, detail="非宏观主题")
     fred_sum = fred_fetch.run_fred_fetch(slug, variant)
     recipe_sum = recipe_fetch.run_recipe_fetch(slug, variant)
+    # akshare（中国宏观）：与 fred/recipe 同为脚本数值通道；整通道失败吞掉不毁整批
+    try:
+        akshare_sum = akshare_fetch.run_akshare_fetch(slug, variant)
+    except Exception as _exc:
+        akshare_sum = {"_error": str(_exc), "fetched": 0}
     # 取文：登记表驱动，逐条按 text_fetch 路由；整通道失败吞掉不毁整批（FRED/recipe 仍生效）
     try:
         text_sum = textfetch.run_textfetch(slug, variant)
@@ -977,12 +985,13 @@ def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anch
         text_sum = {"_error": str(_exc)}
     fred_n = (fred_sum.get("fetched", 0) or 0) + (fred_sum.get("derived", 0) or 0)
     recipe_n = (recipe_sum.get("fetched", 0) or 0) + (recipe_sum.get("derived", 0) or 0)
+    akshare_n = akshare_sum.get("fetched", 0) or 0
     text_n = sum(1 for r in text_sum.values() if isinstance(r, dict) and r.get("ok"))
     if "application/json" in (request.headers.get("accept") or ""):
-        return JSONResponse({"fred": fred_n, "recipe": recipe_n, "text": text_n,
-                             "fetched": fred_n + recipe_n + text_n,
+        return JSONResponse({"fred": fred_n, "recipe": recipe_n, "akshare": akshare_n, "text": text_n,
+                             "fetched": fred_n + recipe_n + akshare_n + text_n,
                              "fred_summary": fred_sum, "recipe_summary": recipe_sum,
-                             "text_summary": text_sum})
+                             "akshare_summary": akshare_sum, "text_summary": text_sum})
     frag = f"#{anchor}" if anchor else ""
     return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
 

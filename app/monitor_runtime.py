@@ -98,6 +98,20 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
         except Exception as e:
             _log(f"recipe fetch failed: {e}")
 
+        # macro akshare 自动抓取（零 LLM）：中国宏观，fetch_method=='akshare' 的 scripted 项调 akshare 函数。
+        # 与 fred/recipe 同为脚本通道，故同样在 macro scan 之前刷新 observed。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import akshare_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                ak_summary = await asyncio.to_thread(
+                    akshare_fetch.run_akshare_fetch, t["slug"], t["variant"])
+                _log(f"akshare fetch [{t['slug']}/{t['variant']}]: {ak_summary}")
+        except Exception as e:
+            _log(f"akshare fetch failed: {e}")
+
         # macro 取文自动下载（零 LLM）：带 text_fetch 的输入按其值路由 fetcher 下原文存本地缓存。
         # 与 fred/recipe 同为脚本通道——立场判读仍走 LLM（不在此跑），但原文缓存随定时保持新鲜，
         # 故和它们并列在 macro scan 之前刷新。失败吞掉、不阻断周期。加新取文源自动纳入本循环。

@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-10T16:17:32.480486+00:00'
+updated: '2026-06-11T02:42:28.104815+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -23,7 +23,7 @@ inputs:
   observed:
     value: 3.75
     as_of: '2026-06-10'
-    checked_at: '2026-06-10T16:15:47.390147+00:00'
+    checked_at: '2026-06-10T22:00:13.254812+00:00'
     streak: 0
     prev_value: 3.75
   authority: official
@@ -164,7 +164,7 @@ inputs:
   observed:
     value: 159001.0
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T16:15:48.335818+00:00'
+    checked_at: '2026-06-10T22:00:23.353913+00:00'
     streak: 0
     prev_value: 159001.0
   authority: official
@@ -189,7 +189,7 @@ inputs:
   observed:
     value: 4.3
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T16:15:49.342733+00:00'
+    checked_at: '2026-06-10T22:00:32.062587+00:00'
     streak: 0
     prev_value: 4.3
   authority: official
@@ -214,7 +214,7 @@ inputs:
   observed:
     value: 225000.0
     as_of: '2026-05-30'
-    checked_at: '2026-06-10T16:15:50.598335+00:00'
+    checked_at: '2026-06-10T22:00:39.734638+00:00'
     streak: 0
     prev_value: 225000.0
   authority: official
@@ -239,7 +239,7 @@ inputs:
   observed:
     value: 7618.0
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T16:15:51.640216+00:00'
+    checked_at: '2026-06-10T22:00:46.209359+00:00'
     streak: 0
     prev_value: 7618.0
   authority: official
@@ -278,7 +278,7 @@ inputs:
     as_of: 2026-05
     evidence: https://www.prnewswire.com/news-releases/manufacturing-pmi-at-54-may-2026-ism-manufacturing-pmi-report-302786165.html
     acq_note: ISM 官网 redirect 至付费墙登录页；值从 PRNewswire 新闻稿确认。5月值 54.0，发布于 2026-06-01。
-    checked_at: '2026-06-10T16:17:09.280665+00:00'
+    checked_at: '2026-06-10T22:01:46.546369+00:00'
     streak: 0
     prev_value: 54.0
   note: macromicro 镜像(series/265)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
@@ -317,7 +317,7 @@ inputs:
     evidence: https://www.prnewswire.com/news-releases/services-pmi-at-54-5-may-2026-ism-services-pmi-report-302789082.html
     acq_note: ISM 官网有 SSO 墙无法直接抓，转从 PR Newswire 新闻稿取得。2026年5月服务业 PMI = 54.5（前值53.6），为连续第23个月扩张。Business
       Activity 57.7%，New Orders 57.3%，Employment 47.9%。
-    checked_at: '2026-06-10T16:17:11.338811+00:00'
+    checked_at: '2026-06-10T22:01:47.993129+00:00'
     streak: 0
     prev_value: 54.5
   note: macromicro 镜像(series/293, NMI)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
@@ -342,7 +342,7 @@ inputs:
   observed:
     value: 757085.0
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T16:15:52.969432+00:00'
+    checked_at: '2026-06-10T22:00:50.272005+00:00'
     streak: 0
     prev_value: 757085.0
   authority: official
@@ -370,7 +370,7 @@ inputs:
   observed:
     value: 3.2906
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T16:15:53.960201+00:00'
+    checked_at: '2026-06-10T22:00:53.625949+00:00'
     streak: 0
     prev_value: 3.2906
 - name: 时薪 / ECI
@@ -392,7 +392,7 @@ inputs:
   observed:
     value: 37.53
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T16:15:58.525007+00:00'
+    checked_at: '2026-06-10T22:00:54.990372+00:00'
     streak: 0
     prev_value: 37.53
   authority: official
@@ -417,7 +417,7 @@ inputs:
   observed:
     value: 129.63
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T16:15:59.554724+00:00'
+    checked_at: '2026-06-10T22:00:58.549511+00:00'
     streak: 0
     prev_value: 129.63
   authority: official
@@ -442,9 +442,9 @@ inputs:
   observed:
     value: 336.121
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T16:16:03.958497+00:00'
+    checked_at: '2026-06-10T22:00:59.503374+00:00'
     streak: 0
-    prev_value: 335.423
+    prev_value: 336.121
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CPILFESL
@@ -467,7 +467,7 @@ inputs:
   observed:
     value: 129.63
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T16:16:04.957333+00:00'
+    checked_at: '2026-06-10T22:01:03.235070+00:00'
     streak: 0
     prev_value: 129.63
   authority: official
@@ -492,7 +492,7 @@ inputs:
   observed:
     value: 156.496
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T16:16:05.927960+00:00'
+    checked_at: '2026-06-10T22:01:10.211425+00:00'
     streak: 0
     prev_value: 156.496
   authority: official
@@ -516,9 +516,9 @@ inputs:
     enabled: true
   fred_series_id: DCOILWTICO
   observed:
-    value: 95.96
-    as_of: '2026-06-01'
-    checked_at: '2026-06-10T16:16:06.894739+00:00'
+    value: 95.0
+    as_of: '2026-06-08'
+    checked_at: '2026-06-10T22:01:12.622835+00:00'
     streak: 0
     prev_value: 95.96
   authority: official
@@ -541,9 +541,9 @@ inputs:
     enabled: true
   fred_series_id: T5YIFR
   observed:
-    value: 2.22
-    as_of: '2026-06-09'
-    checked_at: '2026-06-10T16:16:07.911095+00:00'
+    value: 2.24
+    as_of: '2026-06-10'
+    checked_at: '2026-06-10T22:01:16.020251+00:00'
     streak: 0
     prev_value: 2.22
   authority: official
@@ -600,7 +600,7 @@ inputs:
   observed:
     value: 875713.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-10T16:16:13.857649+00:00'
+    checked_at: '2026-06-10T22:01:17.845800+00:00'
     streak: 0
     prev_value: 875713.0
   authority: official
@@ -623,9 +623,9 @@ inputs:
     enabled: true
   fred_series_id: MTSDS133FMS
   observed:
-    value: 215024.14019777
-    as_of: '2026-04-01'
-    checked_at: '2026-06-10T16:16:14.836176+00:00'
+    value: -292648.46208374
+    as_of: '2026-05-01'
+    checked_at: '2026-06-10T22:01:19.447024+00:00'
     streak: 0
     prev_value: 215024.14019777
   authority: official
@@ -651,7 +651,7 @@ inputs:
   observed:
     value: 6711495.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-10T16:16:16.977205+00:00'
+    checked_at: '2026-06-10T22:01:21.683663+00:00'
     streak: 0
     prev_value: 6711495.0
   authority: official
@@ -674,9 +674,9 @@ inputs:
     enabled: true
   fred_series_id: RRPONTSYD
   observed:
-    value: 0.577
-    as_of: '2026-06-09'
-    checked_at: '2026-06-10T16:16:22.990341+00:00'
+    value: 0.387
+    as_of: '2026-06-10'
+    checked_at: '2026-06-10T22:01:24.700839+00:00'
     streak: 0
     prev_value: 0.577
   authority: official
@@ -699,8 +699,8 @@ inputs:
     enabled: true
   fred_series_id: __DERIVED__
   observed:
-    value: 5835781.423
-    checked_at: '2026-06-10T16:17:07.713468+00:00'
+    value: 5835781.613
+    checked_at: '2026-06-10T22:01:44.867077+00:00'
     streak: 0
     prev_value: 5835781.423
   authority: official
@@ -726,7 +726,7 @@ inputs:
   observed:
     value: 3013902.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-10T16:16:24.024680+00:00'
+    checked_at: '2026-06-10T22:01:26.303645+00:00'
     streak: 0
     prev_value: 3013902.0
   authority: official
@@ -760,9 +760,9 @@ inputs:
     - IORB
   observed:
     value: -0.04999999999999982
-    checked_at: '2026-06-10T16:17:07.642318+00:00'
+    checked_at: '2026-06-10T22:01:44.799407+00:00'
     streak: 0
-    prev_value: -0.020000000000000018
+    prev_value: -0.04999999999999982
 - name: FRA-OIS 利差
   tier: A
   cadence_type: series
@@ -802,7 +802,7 @@ inputs:
       H.4.1，2026-06-04）。
     value: 116.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-10T16:16:25.041322+00:00'
+    checked_at: '2026-06-10T22:01:27.632662+00:00'
     streak: 0
     prev_value: 116.0
   authority: official
@@ -855,9 +855,9 @@ inputs:
     enabled: true
   fred_series_id: DGS10
   observed:
-    value: 4.56
-    as_of: '2026-06-08'
-    checked_at: '2026-06-10T16:16:26.018242+00:00'
+    value: 4.53
+    as_of: '2026-06-09'
+    checked_at: '2026-06-10T22:01:28.638569+00:00'
     streak: 0
     prev_value: 4.56
   authority: official
@@ -881,9 +881,9 @@ inputs:
     enabled: true
   fred_series_id: DFII10
   observed:
-    value: 2.21
-    as_of: '2026-06-08'
-    checked_at: '2026-06-10T16:16:32.030646+00:00'
+    value: 2.2
+    as_of: '2026-06-09'
+    checked_at: '2026-06-10T22:01:29.583135+00:00'
     streak: 0
     prev_value: 2.21
   authority: official
@@ -912,7 +912,7 @@ inputs:
   observed:
     value: 0.8019
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T16:16:33.092392+00:00'
+    checked_at: '2026-06-10T22:01:30.761535+00:00'
     streak: 0
     prev_value: 0.8019
 - name: 2s10s 曲线斜率
@@ -932,9 +932,9 @@ inputs:
     enabled: true
   fred_series_id: T10Y2Y
   observed:
-    value: 0.4
-    as_of: '2026-06-09'
-    checked_at: '2026-06-10T16:16:34.233026+00:00'
+    value: 0.42
+    as_of: '2026-06-10'
+    checked_at: '2026-06-10T22:01:31.672369+00:00'
     streak: 0
     prev_value: 0.4
   authority: official
@@ -959,7 +959,7 @@ inputs:
   observed:
     value: 0.75
     as_of: '2026-06-09'
-    checked_at: '2026-06-10T16:16:40.575392+00:00'
+    checked_at: '2026-06-10T22:01:32.621861+00:00'
     streak: 0
     prev_value: 0.75
   authority: official
@@ -988,9 +988,9 @@ inputs:
   observed:
     value: 2.78
     as_of: '2026-06-09'
-    checked_at: '2026-06-10T16:16:41.495572+00:00'
+    checked_at: '2026-06-10T22:01:33.665482+00:00'
     streak: 0
-    prev_value: 2.75
+    prev_value: 2.78
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/BAMLH0A0HYM2
@@ -1053,9 +1053,9 @@ inputs:
   observed:
     value: 19.87
     as_of: '2026-06-09'
-    checked_at: '2026-06-10T16:16:42.498080+00:00'
+    checked_at: '2026-06-10T22:01:34.612724+00:00'
     streak: 0
-    prev_value: 18.92
+    prev_value: 19.87
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/VIXCLS
@@ -1078,9 +1078,9 @@ inputs:
   observed:
     value: -0.506
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T16:16:43.507904+00:00'
+    checked_at: '2026-06-10T22:01:35.660068+00:00'
     streak: 0
-    prev_value: -0.494
+    prev_value: -0.506
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/NFCI
@@ -1114,7 +1114,7 @@ inputs:
   observed:
     value: 39.41935320301406
     as_of: '2025-12-01'
-    checked_at: '2026-06-10T16:17:16.428967+00:00'
+    checked_at: '2026-06-10T22:01:49.053337+00:00'
     streak: 0
     prev_value: 39.41935320301406
 - name: 市场内部/breadth+集中度
@@ -1194,7 +1194,7 @@ inputs:
   observed:
     value: 120.0831
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T16:16:44.456531+00:00'
+    checked_at: '2026-06-10T22:01:36.664528+00:00'
     streak: 0
     prev_value: 120.0831
   authority: official
@@ -1220,7 +1220,7 @@ inputs:
   observed:
     value: 112.6846
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T16:16:45.689954+00:00'
+    checked_at: '2026-06-10T22:01:37.571574+00:00'
     streak: 0
     prev_value: 112.6846
   authority: official
@@ -1278,8 +1278,8 @@ inputs:
   observed:
     value: 160.26
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T16:16:51.618029+00:00'
-    streak: 3
+    checked_at: '2026-06-10T22:01:38.556064+00:00'
+    streak: 4
     prev_value: 160.26
   authority: official
   availability: scripted
@@ -1360,7 +1360,7 @@ inputs:
   observed:
     value: 8.465
     as_of: 2025-Q4
-    checked_at: '2026-06-10T16:17:19.419747+00:00'
+    checked_at: '2026-06-10T22:01:50.190360+00:00'
     streak: 0
     prev_value: 8.465
 - name: TIC / 外国持美债 + 中国持美债
@@ -1395,7 +1395,7 @@ inputs:
   observed:
     value: 652.3
     as_of: 2026-03
-    checked_at: '2026-06-10T16:17:29.821209+00:00'
+    checked_at: '2026-06-10T22:02:00.102887+00:00'
     streak: 0
     prev_value: 652.3
 - name: 黄金
@@ -1438,9 +1438,9 @@ inputs:
   observed:
     value: 61751.94
     as_of: '2026-06-09'
-    checked_at: '2026-06-10T16:16:52.539742+00:00'
+    checked_at: '2026-06-10T22:01:39.543588+00:00'
     streak: 0
-    prev_value: 63049.86
+    prev_value: 61751.94
 - name: 大宗(铜/铁矿)
   tier: C
   cadence_type: series
@@ -1465,7 +1465,7 @@ inputs:
   observed:
     value: 13483.75153846154
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T16:16:53.514025+00:00'
+    checked_at: '2026-06-10T22:01:40.693550+00:00'
     streak: 0
     prev_value: 13483.75153846154
 - name: 官方制造业 PMI
@@ -1506,7 +1506,7 @@ inputs:
   observed:
     value: 50.0
     as_of: '2026-05-01 00:00:00'
-    checked_at: '2026-06-10T16:17:30.012561+00:00'
+    checked_at: '2026-06-10T22:02:00.283548+00:00'
     streak: 0
     prev_value: 50.0
 - name: 财新 PMI
@@ -1559,8 +1559,19 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: https://www.stats.gov.cn/
+  fetch_method: akshare
+  akshare:
+    func: macro_china_consumer_goods_retail
+    date_column: 月份
+    value_column: 同比增长
+  observed:
+    acq_note: akshare macro_china_consumer_goods_retail（统计局直连），取「同比增长」月率。
+    value: 0.2
+    as_of: 2026-04
+    checked_at: '2026-06-11T02:42:26.136859+00:00'
+    streak: 0
 - name: 固定资产投资
   tier: B
   cadence_type: event
@@ -1649,7 +1660,7 @@ inputs:
   observed:
     value: 1.2
     as_of: '2026-05-01 00:00:00'
-    checked_at: '2026-06-10T16:17:30.180196+00:00'
+    checked_at: '2026-06-10T22:02:00.471895+00:00'
     streak: 0
     prev_value: 1.2
 - name: 中国 PPI
@@ -1690,7 +1701,7 @@ inputs:
   observed:
     value: 3.9
     as_of: '2026-05-01 00:00:00'
-    checked_at: '2026-06-10T16:17:30.354842+00:00'
+    checked_at: '2026-06-10T22:02:00.715979+00:00'
     streak: 0
     prev_value: 3.9
 - name: 7天 OMO 逆回购利率(新锚)
@@ -1751,8 +1762,19 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: https://www.chinamoney.com.cn/
+  fetch_method: akshare
+  akshare:
+    func: macro_china_lpr
+    date_column: TRADE_DATE
+    value_column: LPR1Y
+  observed:
+    acq_note: akshare macro_china_lpr，value=LPR1Y（政策锚）；5Y(房贷链)同表 LPR5Y 列，单值字段暂存 1Y。
+    value: 3.0
+    as_of: '2026-05-20'
+    checked_at: '2026-06-11T02:42:27.100460+00:00'
+    streak: 0
 - name: RRR 存款准备金率
   tier: A
   cadence_type: policy
@@ -1772,13 +1794,19 @@ inputs:
   observed:
     stance: 偏松
     evidence: https://www.ceicdata.com/zh-hans/china/required-reserve-ratio | https://zh.tradingeconomics.com/china/cash-reserve-ratio
-    value: 7.5
-    as_of: '2026-05-05'
-    acq_note: 大型商业银行法定准备金率；CEIC 数据来自央行，日更；最后确认维持不变（5月维持4月水平）
-    checked_at: '2026-06-10T04:13:24.845498+00:00'
+    value: 9.0
+    as_of: '2025-05-07'
+    acq_note: akshare macro_china_reserve_requirement_ratio，value=大型金融机构调整后存准率（事件，最近一次降准）。
+    checked_at: '2026-06-11T02:42:27.324616+00:00'
     streak: 0
+    prev_value: 7.5
   authority: official
-  availability: llm
+  availability: scripted
+  fetch_method: akshare
+  akshare:
+    func: macro_china_reserve_requirement_ratio
+    date_column: 公布时间
+    value_column: 大型金融机构-调整后
 - name: DR007/R007
   tier: B
   cadence_type: series
@@ -1881,9 +1909,9 @@ inputs:
   observed:
     value: 1.7476
     as_of: '2026-06-10 00:00:00'
-    checked_at: '2026-06-10T16:17:30.538853+00:00'
+    checked_at: '2026-06-10T22:02:00.960733+00:00'
     streak: 0
-    prev_value: 1.7376
+    prev_value: 1.7476
 - name: 结构性工具 PSL/再贷款
   tier: A
   cadence_type: policy
@@ -1970,8 +1998,20 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: http://www.pbc.gov.cn/
+  fetch_method: akshare
+  akshare:
+    func: macro_china_money_supply
+    date_column: 月份
+    value_column: 货币和准货币(M2)-同比增长
+  observed:
+    acq_note: akshare macro_china_money_supply，value=M2 同比增长；剪刀差(M1−M2)需双列派生，暂存 M2
+      同比。
+    value: 8.6
+    as_of: 2026-04
+    checked_at: '2026-06-11T02:42:27.566577+00:00'
+    streak: 0
 - name: 信贷脉冲
   tier: A
   cadence_type: event
@@ -2028,7 +2068,7 @@ inputs:
   observed:
     value: 6.7655
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T16:16:54.444971+00:00'
+    checked_at: '2026-06-10T22:01:41.709744+00:00'
     streak: 0
     prev_value: 6.7655
   authority: official
@@ -2138,7 +2178,7 @@ inputs:
   observed:
     value: 3477516.923138242
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T16:16:55.614455+00:00'
+    checked_at: '2026-06-10T22:01:42.714193+00:00'
     streak: 0
     prev_value: 3477516.923138242
 - name: 中美 10Y 利差
@@ -2167,10 +2207,10 @@ inputs:
   note: 派生=中国 10Y(eastmoney recipe)−美国 10Y(2Y/10Y/30Y 国债 的 DGS10)。两腿落盘后在 recipe 抓取末段算。中国腿已有源
     → 转 scripted 派生。
   observed:
-    value: -2.8123999999999993
-    checked_at: '2026-06-10T16:17:30.650862+00:00'
+    value: -2.7824
+    checked_at: '2026-06-10T22:02:01.068601+00:00'
     streak: 0
-    prev_value: -2.8223999999999996
+    prev_value: -2.8123999999999993
 - name: 中美实际利率差
   tier: B
   cadence_type: series
@@ -2232,8 +2272,22 @@ inputs:
   monitoring:
     enabled: true
   authority: primary
-  availability: llm
+  availability: scripted
   source_url: https://www.hkex.com.hk/Mutual-Market/Stock-Connect?sc_lang=en
+  fetch_method: akshare
+  akshare:
+    func: stock_hsgt_fund_flow_summary_em
+    date_column: 交易日
+    value_column: 成交净买额
+    row_filter:
+      资金方向: 南向
+    agg: sum
+  observed:
+    acq_note: akshare stock_hsgt_fund_flow_summary_em，南向(港股通沪+深)成交净买额求和（日，亿元）。注：北向自2024停发、不可用。
+    value: 6.792101
+    as_of: '2026-06-11'
+    checked_at: '2026-06-11T02:42:27.747937+00:00'
+    streak: 0
 - name: 外资持 CGB(债券通)
   tier: B
   cadence_type: event
@@ -2428,8 +2482,20 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: https://www.stats.gov.cn/
+  fetch_method: akshare
+  akshare:
+    func: macro_china_new_house_price
+    date_column: 日期
+    value_column: 新建商品住宅价格指数-环比
+    agg: mean
+  observed:
+    acq_note: akshare macro_china_new_house_price，70城新建商品住宅价格指数-环比的城市均值（100=持平，月）。
+    value: 100.1
+    as_of: '2026-04-01'
+    checked_at: '2026-06-11T02:42:28.104803+00:00'
+    streak: 0
 - name: 房地产开发投资
   tier: B
   cadence_type: event

@@ -129,10 +129,10 @@
   {% endif %}
   <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs/fetch-script-all" style="margin:0"
         data-confirm="跑全部脚本项（FRED / recipe / 取文）刷新——零 LLM、零成本。继续？">
-    <button type="submit" class="batch-fetch-btn">⟳ 批量刷新脚本项（FRED/recipe/取文·免费）</button>
+    <button type="submit" class="batch-fetch-btn">⟳ 批量刷新脚本项（FRED/recipe/akshare/取文·免费）</button>
   </form>
 </div>
-<p class="hint toolbar-hint">「发起重估」盖变更简报戳 + 拉起一次真实合成（headless Claude 跑 _macro_regime 全流程、默认 opus4.8 可选，有 token 成本），自动弹出输出框可实时看 + 续问驱动；「批量刷新脚本项」只跑脚本通道（FRED / recipe / 取文）刷新全部 scripted 项，零 LLM、零成本（取文类如 FOMC 仅下载原文存本地，立场判读仍需行内点「⟳ 拉取」起 LLM）。LLM 项请逐条点行内「⟳ 拉取」手动取（有 token 成本，默认 haiku·原生检索；不满意可在弹框换模型「重判」）。定时巡检也只跑脚本项、不自动跑 LLM。</p>
+<p class="hint toolbar-hint">「发起重估」盖变更简报戳 + 拉起一次真实合成（headless Claude 跑 _macro_regime 全流程、默认 opus4.8 可选，有 token 成本），自动弹出输出框可实时看 + 续问驱动；「批量刷新脚本项」只跑脚本通道（FRED / recipe / akshare / 取文）刷新全部 scripted 项，零 LLM、零成本（取文类如 FOMC 仅下载原文存本地，立场判读仍需行内点「⟳ 拉取」起 LLM）。LLM 项请逐条点行内「⟳ 拉取」手动取（有 token 成本，默认 haiku·原生检索；不满意可在弹框换模型「重判」）。定时巡检也只跑脚本项、不自动跑 LLM。</p>
 
 {% if reeval_pending %}
 {% set b = reeval_pending.brief %}
