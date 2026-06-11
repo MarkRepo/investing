@@ -97,3 +97,9 @@ def test_inject_pointer_missing_markers_raises(tmp_path):
     import pytest as _pt
     with _pt.raises(ValueError):
         ig.inject_primer_pointer(p, "X")
+
+
+def test_glossary_key_registered():
+    from prism.scripts import outputs as o
+    keys = [k for k, _ in o._EXTRA_OUTPUTS_LABELS]
+    assert "00b_input_glossary" in keys

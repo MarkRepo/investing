@@ -131,6 +131,7 @@ _EXTRA_OUTPUTS_LABELS = [
     ("05-critic-review", "批评者评审"),
     ("industry_to_arenas", "产业→竞技场选拔"),
     ("_synthesis_brief", "K# 校准 brief（04 副产物）"),
+    ("00b_input_glossary", "输入源词典"),
 ]
 
 
