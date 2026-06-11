@@ -122,6 +122,40 @@ def test_unknown_kind_raises():
         recipe_fetch.fetch_by_recipe(recipe, client=_fake_text_client("x"))
 
 
+def _scan_recipe():
+    return {"kind": "json_scan", "url": "https://x", "parse": {
+        "list_path": ["data"], "match_field": "title",
+        "match_regex": "成交总面积环比",
+        "value_regex": r"环比(?:增加|减少|下降)([0-9.]+)%",
+        "sign_negative_regex": "(减少|下降)",
+        "date_field": "url", "date_regex": r"(\d{4}-\d{2}-\d{2})"}}
+
+
+def test_json_scan_picks_first_match_and_signs_positive():
+    client = _fake_client({"data": [
+        {"title": "无关项", "url": "http://x/2026-06-11/9.html"},
+        {"title": "市场周报|第20周——典型城市商品住宅成交总面积环比增加24.98%",
+         "url": "http://x/2026-05-21/1.html"},
+        {"title": "市场周报|第19周——典型城市商品住宅成交总面积环比减少7.11%",
+         "url": "http://x/2026-05-13/2.html"}]})
+    val, as_of = recipe_fetch.fetch_by_recipe(_scan_recipe(), client=client)
+    assert val == 24.98 and as_of == "2026-05-21"
+
+
+def test_json_scan_negates_on_decrease():
+    client = _fake_client({"data": [
+        {"title": "市场周报|第19周——典型城市商品住宅成交总面积环比减少7.11%",
+         "url": "http://x/2026-05-13/2.html"}]})
+    val, as_of = recipe_fetch.fetch_by_recipe(_scan_recipe(), client=client)
+    assert val == -7.11 and as_of == "2026-05-13"
+
+
+def test_json_scan_no_match_returns_none():
+    client = _fake_client({"data": [{"title": "全是无关项", "url": "http://x/2026-01-01/3.html"}]})
+    val, as_of = recipe_fetch.fetch_by_recipe(_scan_recipe(), client=client)
+    assert val is None
+
+
 # --- POST + headers 透传 ---
 
 def test_fetch_by_recipe_post_passes_body_and_headers():
@@ -208,6 +242,69 @@ def test_run_recipe_derive_skips_when_leg_missing(monkeypatch):
                         lambda s, v, name, **kw: recorded.append(name))
     summary = recipe_fetch.run_recipe_fetch("m", "v", client=object())
     assert recorded == [] and summary["derived"] == 0 and summary["failed"] == 1
+
+
+# --- cip_basis：抛补利率平价跨币种基差派生算子 ---
+
+def test_cip_basis_eurusd_quote_role():
+    """EURUSD(usd_role=quote)：S=1.0, fwd=100pips/1e4 → F=1.01；(1+r_usd·τ) 恰=F/S → 主项归零，
+    基差 = −r_for = −2% = −200bps。手算可验。"""
+    legs = [1.0, 100.0, 4.0, 2.0]  # spot, fwd_pips, usd_ois%, eur_ois%
+    b = recipe_fetch._cip_basis(legs, {"tau": 0.25, "pip_scale": 10000, "usd_role": "quote"})
+    assert abs(b - (-200.0)) < 1e-6
+
+
+def test_cip_basis_usdjpy_base_role():
+    """USDJPY(usd_role=base)：S=150, fwd=−150pips/1e2 → F=148.5；F/S=0.99，×1.01=0.9999，
+    (0.9999−1)/0.25 − 0.01 = −0.0104 → −104bps。手算可验。"""
+    legs = [150.0, -150.0, 4.0, 1.0]  # spot, fwd_pips, usd_ois%, jpy_ois%
+    b = recipe_fetch._cip_basis(legs, {"tau": 0.25, "pip_scale": 100, "usd_role": "base"})
+    assert abs(b - (-104.0)) < 1e-6
+
+
+def test_cip_basis_zero_when_parity_holds():
+    """fwd=0 且两腿利率相等 → 基差严格 0。"""
+    b = recipe_fetch._cip_basis([1.0, 0.0, 4.0, 4.0], {"usd_role": "quote"})
+    assert abs(b) < 1e-9
+
+
+def test_cip_basis_bad_role_raises():
+    with pytest.raises(ValueError, match="usd_role"):
+        recipe_fetch._cip_basis([1.0, 0.0, 4.0, 4.0], {"usd_role": "x"})
+
+
+def test_cip_basis_wrong_leg_count_raises():
+    with pytest.raises(ValueError, match="4 腿"):
+        recipe_fetch._cip_basis([1.0, 0.0, 4.0], {"usd_role": "quote"})
+
+
+def test_run_recipe_cip_basis_derives_and_dates(monkeypatch):
+    """派生路径 op=cip_basis：读 4 腿 observed.value 算基差、记 derived、as_of 取最旧腿日期。"""
+    from prism.scripts import macro_registry as reg
+    drive = {"inputs": [
+        {"name": "EUR/USD 3M 基差", "fetch_method": "recipe", "availability": "scripted",
+         "derived": {"op": "cip_basis",
+                     "from_inputs": ["spot", "fwd", "usd_ois", "eur_ois"],
+                     "params": {"tau": 0.25, "pip_scale": 10000, "usd_role": "quote"}}},
+    ]}
+    legs = {"inputs": [
+        {"name": "EUR/USD 3M 基差"},
+        {"name": "spot", "observed": {"value": 1.0, "as_of": "2026-06-11"}},
+        {"name": "fwd", "observed": {"value": 100.0, "as_of": "2026-06-11"}},
+        {"name": "usd_ois", "observed": {"value": 4.0, "as_of": "2026-06-09"}},
+        {"name": "eur_ois", "observed": {"value": 2.0, "as_of": "2026-06-10"}},
+    ]}
+    seq = [drive, legs]
+    monkeypatch.setattr(reg, "read_registry", lambda s, v: seq.pop(0) if seq else legs)
+    recorded = []
+    monkeypatch.setattr(reg, "record_observation",
+                        lambda s, v, name, **kw: recorded.append((name, kw.get("value"), kw.get("as_of"))))
+    summary = recipe_fetch.run_recipe_fetch("m", "v", client=object())
+    assert len(recorded) == 1
+    name, val, as_of = recorded[0]
+    assert name == "EUR/USD 3M 基差" and abs(val - (-200.0)) < 1e-6
+    assert as_of == "2026-06-09"  # 最旧腿
+    assert summary["derived"] == 1
 
 
 # --- fetch_text：固定 URL 取正文（喂 headless LLM 判读），不挂 fetch_by_recipe ---

@@ -284,9 +284,18 @@ INPUTS = [
     E("CNH HIBOR/离岸流动性 + 央行 HK 票", "A", "series", ["fx", "liquidity"], "CF",
       "confirming", "HKMA", "llm-web", "新增",
       causal_sentence="抬升 CNH HIBOR/发离岸央票收紧离岸人民币流动性以抬高做空成本 → 经离岸资金渠道 → 驱动汇率与流动性。"),
-    E("结售汇 + 外汇占款 + 代客涉外收付", "A", "event", ["fx"], "CF",
-      "load_bearing", "SAFE", "llm-web", "新增(\"最大遗漏\")", lag="滞后(月)",
-      causal_sentence="结售汇/外汇占款/涉外收付直接计量跨境资金的实际净流入流出 → 经外汇供求 → 驱动汇率。"),
+    # 「结售汇 + 外汇占款 + 代客涉外收付」拆成 3 条脚本数值项（各自独立 observed.value）：
+    # 结售汇差额/涉外收付差额走新建 SAFE-Excel 通道、外汇占款走 akshare。fetch 配置块（safe/akshare）
+    # 由 live upsert 富化（同其余脚本项），seed 仅记粗粒度框架行。
+    E("银行结售汇差额", "A", "series", ["fx"], "CF",
+      "load_bearing", "SAFE", "safe", "拆分(\"最大遗漏\";脚本化)", lag="滞后(月)",
+      causal_sentence="银行结售汇差额=企业/居民经银行的净结汇（结汇−售汇）实际购售汇净额 → 直接计量境内外汇供求 → 驱动汇率。"),
+    E("银行代客涉外收付差额", "A", "series", ["fx"], "CF",
+      "load_bearing", "SAFE", "safe", "拆分(脚本化)", lag="滞后(月)",
+      causal_sentence="银行代客涉外收付差额=银行代客户的跨境收入−支出净额，计量实际跨境资金净流入流出 → 经外汇供求 → 驱动汇率。"),
+    E("外汇占款", "B", "series", ["fx"], "CF",
+      "confirming", "PBoC", "akshare", "拆分(akshare 脚本化)", lag="滞后(月)",
+      causal_sentence="外汇占款=央行购汇投放的基础货币存量，其月度增减反映结售汇净额经央行的沉淀 → 经外汇供求与基础货币 → 驱动汇率与流动性。"),
     E("外汇储备(水平+变动)", "A", "event", ["fx"], "CF",
       "load_bearing", "SAFE", "llm-web", "新增", lag="滞后(月)",
       causal_sentence="外储变动（剔除估值）反映央行干预与资金净流出规模 → 经官方外汇供求 → 驱动汇率。"),

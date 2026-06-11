@@ -1,0 +1,40 @@
+slug: _sandbox-3b
+variant: opus4.8
+updated: '2026-06-10T16:14:13.875901+00:00'
+inputs:
+- name: hy_oas
+  tier: A
+  mechanism: CD
+  importance: high
+  cadence_type: series
+  causal_sentence: 信用利差走阔→风险偏好收缩
+  alert_band:
+    delta: 0.1
+  observed:
+    value: 4.4
+    checked_at: '2026-06-10T16:14:13.874575+00:00'
+    streak: 2
+    prev_value: 4.0
+- name: fed_stance
+  tier: A
+  mechanism: CD
+  importance: high
+  cadence_type: event
+  causal_sentence: 联储更鹰→流动性更紧
+  stance_scale: hawk_dove
+  observed:
+    stance: 偏鹰
+    checked_at: '2026-06-10T16:14:13.869141+00:00'
+- name: dxy
+  tier: B
+  mechanism: CO
+  importance: med
+  cadence_type: series
+  causal_sentence: 美元走强→新兴市场承压
+  alert_band:
+    delta: 0.5
+  observed:
+    value: 108.0
+    checked_at: '2026-06-10T16:14:13.875899+00:00'
+    streak: 2
+    prev_value: 106.0

@@ -151,35 +151,78 @@ pending:
   proposed_value: cleared
   expected_current: pending
   evidence:
-  - title: 'Robinhood Q1 2026 earnings: revenue up 15%, crypto down 47%'
-    url: https://qz.com/robinhood-q1-2026-earnings-results-042826
-    snippet: Robinhood reported first-quarter revenue of $1.07 billion, up 15% year-over-year.
-      Cryptocurrency revenue fell 47% year-over-year to $134 million.
-  - title: Robinhood Q1 2026 revenue climbs 15% to $1.07B | HOOD 8-K Filing
-    url: https://www.stocktitan.net/sec-filings/HOOD/8-k-robinhood-markets-inc-reports-material-event-1e3101622d1f.html
-    snippet: Total net revenues rose 15% year-over-year to $1.07 billion, driven by
-      transaction-based revenues of $623 million and net interest revenues of $359
-      million. Net income increased 3% year-over-year to $346 million.
-  - title: Robinhood Reports First Quarter 2026 Results
-    url: https://www.globenewswire.com/news-release/2026/04/28/3283181/0/en/robinhood-reports-first-quarter-2026-results.html
-    snippet: Revenues up 15% year-over-year to $1.07 billion. Diluted EPS up 3% year-over-year
-      to $0.38. Net Deposits were $18 billion, a 22% annualized growth rate.
-  evidence_urls: []
-  living_feed_entry: '## 2026-04-28 Robinhood Q1:加密 -47% 但总营收 +15%,平滑成立
+  - title: Robinhood’s Q1 Crypto Revenue and Trading Volume Fell Nearly 50%
+    url: https://www.binance.com/en/square/post/317705042534066
+    snippet: Robinhood Q1 revenue rose 15% to $1.07B, but crypto revenue dropped 47%
+      to $134M. Crypto trading volume on the platform fell 48% year over year to $24
+      billion.
+  - title: Robinhood's $1.07bn revenue fails to hit market estimates
+    url: https://paymentexpert.com/2026/04/29/robinhood-q1-2026-financial-results
+    snippet: In its Q1' 2026 financial report released on 28 April, Robinhood posted
+      transaction-based revenues of $623m (+6.8% YoY), net interest revenues ... total
+      revenue $1.07bn up 15% YoY.
+  evidence_urls:
+  - https://www.binance.com/en/square/post/317705042534066
+  - https://paymentexpert.com/2026/04/29/robinhood-q1-2026-financial-results
+  living_feed_entry: '## 2026-04-28 Robinhood Q1''26:加密 −47% 但总营收仍 +15%
 
-    **来源**：QZ / StockTitan(HOOD 8-K)/ GlobeNewswire(官方)
+    **来源**:Robinhood Q1 2026 财报(4/28 披露)/ CoinEdition / PaymentExpert
 
-    **关键信息**：加密收入 -47% YoY 至 $134M(达≥30%下滑门槛),但总净营收 +15% YoY 至 $1.07B、交易性收入 +7% 至
-    $623M、净利 +3% 至 $346M。
+    **关键信息**:加密收入同比 −47% 至 $134M、加密交易量 −48% 至 $24B;但交易型收入 $623M(+6.8% YoY)、总营收 $1.07B
+    **+15% YoY**(双位数,未转负/未掉个位数)
 
-    **对已有判断的影响**：kill 双条件需同时成立(加密≥30%下滑 且 总营收转负/个位数);第二条件未满足(总营收 +15% 双位数),多元化平滑论得到正面验证。
+    **对已有判断的影响**:**支持**「多元化平滑」论——加密单腿大幅下滑被交易型+净息差补上,总营收照样双位数增长;kill 的双重条件第二腿(总营收转负或个位数)未达成
 
-    **当前判断更新**：kill 条件证伪→cleared。'
-  rationale: kill 需'加密≥30%下滑 且 总营收转负/个位数'同时成立;Q1 加密 -47% 但总营收 +15%(双位数)、交易性 +7%、净利
-    +3%→平滑成立,第二条件未满足→cleared。
+    **当前判断更新**:维持。crypto_drag_unmasked 本期复核未触发 → cleared'
+  rationale: kill 需『加密≥30%下滑 AND 总营收未被补上』双成立;加密 −47% 成立但总营收 +15%(双位数)→ 第二腿不成立,多元化平滑论本期被验证而非证伪。
   requires_thesis_review: false
   status: awaiting_confirm
-  created_at: '2026-06-09T22:08:26.200680+00:00'
+  created_at: '2026-06-10T22:10:20.181813+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 8fcf1f7b7b05
+  slug: global-futu
+  variant: opus4.8
+  kind: kill
+  locator: engine_stall
+  proposed_value: cleared
+  expected_current: pending
+  evidence:
+  - title: Futu Announces First Quarter 2026 Unaudited Financial Results
+    url: https://www.globenewswire.com/news-release/2026/05/28/3302546/0/en/futu-announces-first-quarter-2026-unaudited-financial-results.html
+    snippet: Total number of funded accounts increased 34.3% year-over-year to 3,590,325
+      as of March 31, 2026. Total client assets increased 47.2% year-over-year to
+      HK$1.22 trillion.
+  - title: Futu (FUTU) Q1 2026 Earnings Call Transcript - AOL
+    url: https://www.aol.com/articles/futu-futu-q1-2026-earnings-185340152.html
+    snippet: Total Funding Accounts -- 3.59 million, up 34% year over year and 7%
+      quarter over quarter, with net new additions of 225,000. Trading Volume -- Record
+      HKD 4.15 trillion, up 29% year over year; U.S. stock trading volume grew.
+  - title: Futu Q1 Earnings Call Highlights - Barchart
+    url: https://www.barchart.com/story/news/2199924/futu-q1-earnings-call-highlights
+    snippet: Futu added 225,000 net new funded accounts during the quarter, bringing
+      total funded accounts to 3.59 million, up 34% from a year earlier and 7% from
+      the prior quarter, with continued international account growth.
+  evidence_urls:
+  - https://www.globenewswire.com/news-release/2026/05/28/3302546/0/en/futu-announces-first-quarter-2026-unaudited-financial-results.html
+  - https://www.aol.com/articles/futu-futu-q1-2026-earnings-185340152.html
+  - https://www.barchart.com/story/news/2199924/futu-q1-earnings-call-highlights
+  living_feed_entry: '## 2026-05-28 Futu Q1''26:funded +34% YoY、单季净增 22.5 万,获客引擎未熄火
+
+    **来源**:Futu Q1 2026 press release(GlobeNewswire/SEC EX-99.1)+ 财报电话会
+
+    **关键信息**:funded accounts 359 万(+34.3% YoY / +7% QoQ),**单季净增 22.5 万**(年化≈90 万);客户资产
+    +47% YoY;毛利率升至 87.2%、经营利润 +31% YoY——无『海外亏损获客』迹象
+
+    **对已有判断的影响**:**否定** engine_stall(非大陆付费户净增<50万/年)——总 funded YoY 净增 ~91.7 万,且公司同期在**退出大陆账户**(大陆净贡献为负),故非大陆净增必
+    ≫ 50 万;引擎独立性本期成立
+
+    **当前判断更新**:维持。engine_stall 本期复核未触发 → cleared(注:非大陆口径未单独披露,系按总口径+退陆背景推断)'
+  rationale: engine_stall 双条件均不成立:funded YoY 净增~91.7万、单季净增22.5万且同期退出大陆(非大陆净增必≫50万/年);经营利润+31%、毛利率升至87.2%,无海外亏损获客。非大陆拆分未单独披露,为总口径+退陆背景的强推断。
+  requires_thesis_review: false
+  status: awaiting_confirm
+  created_at: '2026-06-10T22:10:20.181911+00:00'
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false

@@ -1,0 +1,70 @@
+slug: _sandbox-3b
+variant: opus4.8
+evaluations:
+- version: 1
+  evaluated_at: '2026-06-10T16:14:13.866764+00:00'
+  note: 演示 v1
+  input_snapshot:
+  - name: hy_oas
+    value: 3.6
+    as_of: null
+    used: true
+  - name: fed_stance
+    value: null
+    as_of: null
+    used: true
+    stance: 中性
+  - name: dxy
+    value: 104.0
+    as_of: null
+    used: true
+  conclusions:
+  - id: C1
+    label: 信用体制：收缩
+    state: warming
+    causal: 利差走阔确认风险偏好回落
+    based_on:
+    - input: hy_oas
+      role: load_bearing
+      expected: up
+    - input: fed_stance
+      role: load_bearing
+      expected: 更鹰
+    - input: dxy
+      role: load_bearing
+      expected: down
+- version: 2
+  evaluated_at: '2026-06-10T16:14:13.873012+00:00'
+  note: 演示 v2
+  input_snapshot:
+  - name: hy_oas
+    value: 4.0
+    as_of: null
+    used: true
+  - name: fed_stance
+    value: null
+    as_of: null
+    used: false
+    stance: 偏鹰
+  - name: dxy
+    value: 106.0
+    as_of: null
+    used: true
+  conclusions:
+  - id: C1
+    label: 信用体制：收缩
+    state: hot
+    causal: 利差续升+政策偏鹰
+    based_on:
+    - input: hy_oas
+      role: load_bearing
+      expected: up
+    - input: dxy
+      role: load_bearing
+      expected: down
+  prior_verdict:
+  - conclusion_id: C1
+    verdict: held
+    note: 上版收缩判断成立
+reeval_pending: null
+updated: '2026-06-10T16:14:13.873015+00:00'

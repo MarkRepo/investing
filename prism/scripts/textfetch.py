@@ -20,12 +20,20 @@ from __future__ import annotations
 
 import sys
 
+from prism.scripts import china_us_fetch
 from prism.scripts import fomc_fetch
+from prism.scripts import hfcaa_fetch
 from prism.scripts import macro_registry as reg
+from prism.scripts import politburo_fetch
+from prism.scripts import qra_fetch
 
 # text_fetch 取值 → 该源的 fetcher。键须 ⊆ macro_registry.VALID_TEXT_FETCH（validator 据后者校验登记表）。
 _FETCHERS = {
     "fomc": fomc_fetch.fetch_one,
+    "qra": qra_fetch.fetch_one,
+    "china_us": china_us_fetch.fetch_one,
+    "hfcaa": hfcaa_fetch.fetch_one,
+    "politburo": politburo_fetch.fetch_one,
 }
 
 

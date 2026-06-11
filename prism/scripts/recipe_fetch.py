@@ -115,8 +115,85 @@ def _parse_html(text, cfg) -> tuple[float | None, str | None]:
         return None, as_of
 
 
-_PARSERS = {"json": _parse_json, "csv": _parse_csv, "matrix": _parse_matrix, "html": _parse_html}
-_TEXT_KINDS = {"csv", "matrix", "html"}  # 这些 kind 喂 resp.text；json 喂 resp.json()
+def _parse_json_scan(payload, cfg) -> tuple[float | None, str | None]:
+    """JSON 列表扫描取值（供「取列表里首个命中项」的 feed，如中房网周报 datalist）。
+    在 list_path 定位的列表里找首个 match_field 命中 match_regex 的项；从该项 value_field
+    （缺省=match_field）用 value_regex（第 1 组）抽数值；sign_negative_regex 命中则取负
+    （中文涨跌词无 +/−，靠它给「下降/减少」判负）；date_field（+可选 date_regex）取日期。
+    列表新→旧排序时即取最新一条。吃 resp.json()（非 _TEXT_KINDS）。任何对不上 → 诚实
+    (None, as_of)，不抛。"""
+    items = _dig(payload, cfg.get("list_path") or [])
+    if not isinstance(items, list):
+        return None, None
+    mf, mr = cfg.get("match_field"), cfg.get("match_regex")
+    vf = cfg.get("value_field") or mf
+    vr = cfg.get("value_regex")
+    df, dr = cfg.get("date_field"), cfg.get("date_regex")
+    neg = cfg.get("sign_negative_regex")
+    mrx = re.compile(mr) if mr else None
+    for it in items:
+        if not isinstance(it, dict):
+            continue
+        mval = str(it.get(mf, "")) if mf else ""
+        if mrx and not mrx.search(mval):
+            continue
+        sval = str(it.get(vf, "")) if vf else mval
+        as_of = None
+        if df:
+            dsrc = str(it.get(df, ""))
+            if dr:
+                dm = re.search(dr, dsrc)
+                as_of = dm.group(1) if dm else None
+            else:
+                as_of = dsrc or None
+        if not vr:
+            return None, as_of
+        vm = re.search(vr, sval)
+        if not vm:
+            return None, as_of
+        try:
+            num = float(vm.group(1))
+        except (ValueError, IndexError, TypeError):
+            return None, as_of
+        if neg and re.search(neg, sval):
+            num = -num
+        return num, as_of
+    return None, None
+
+
+_PARSERS = {"json": _parse_json, "csv": _parse_csv, "matrix": _parse_matrix,
+            "html": _parse_html, "json_scan": _parse_json_scan}
+_TEXT_KINDS = {"csv", "matrix", "html"}  # 这些 kind 喂 resp.text；json/json_scan 喂 resp.json()
+
+
+def _cip_basis(legs: list[float], params: dict) -> float:
+    """抛补利率平价（CIP）3M 跨币种基差，返回 bps。供按名派生 op=='cip_basis'。
+    legs 顺序固定 [spot, fwd_pips, usd_3m_ois%, foreign_3m_ois%]；
+    params: {tau=0.25, pip_scale, usd_role:'quote'|'base'}。
+
+    远期 F = S + fwd_pips/pip_scale；r 由百分点转小数。基差挂在非美元腿上：
+      usd_role=='quote'（如 EURUSD，USD 在报价侧、外币=基准 EUR）:
+          b = ((1+r_usd·τ)·(S/F) − 1)/τ − r_for
+      usd_role=='base' （如 USDJPY，USD 在基准侧、外币=报价 JPY）:
+          b = ((F/S)·(1+r_usd·τ) − 1)/τ − r_for
+    返回 b·1e4（bps）。usd_role 非法或腿数 ≠4 抛 ValueError。"""
+    if len(legs) != 4:
+        raise ValueError(f"cip_basis 须 4 腿 [spot, fwd_pips, usd_ois, foreign_ois]，得到 {len(legs)}")
+    spot, fwd_pips, usd_ois, for_ois = legs
+    tau = float(params.get("tau", 0.25))
+    pip_scale = float(params.get("pip_scale", 10000))
+    usd_role = params.get("usd_role", "quote")
+    S = float(spot)
+    F = S + float(fwd_pips) / pip_scale
+    r_usd = float(usd_ois) / 100.0
+    r_for = float(for_ois) / 100.0
+    if usd_role == "quote":
+        b = ((1 + r_usd * tau) * (S / F) - 1) / tau - r_for
+    elif usd_role == "base":
+        b = ((F / S) * (1 + r_usd * tau) - 1) / tau - r_for
+    else:
+        raise ValueError(f"未知 cip_basis usd_role: {usd_role!r}（支持 quote/base）")
+    return b * 1e4
 
 
 def fetch_by_recipe(recipe: dict, *, client=None) -> tuple[float | None, str | None]:
@@ -239,7 +316,22 @@ def run_recipe_fetch(slug: str, variant: str, *, client=None,
                                        msg=f"派生腿缺值: {', '.join(missing)}")
                 failed += 1
                 continue
-            reg.record_observation(slug, variant, e["name"], value=_apply_op(spec["op"], legs))
+            op = spec["op"]
+            if op == "cip_basis":
+                # CIP 基差：除算值外，as_of 取各腿日期最小值（暴露最旧腿的陈旧度）
+                try:
+                    val = _cip_basis(legs, spec.get("params") or {})
+                except Exception as exc:
+                    reg.record_fetch_error(slug, variant, e["name"], msg=f"cip_basis 计算失败: {exc}")
+                    failed += 1
+                    continue
+                as_ofs = [a for a in
+                          (((by_name.get(n) or {}).get("observed") or {}).get("as_of")
+                           for n in spec["from_inputs"]) if a]
+                reg.record_observation(slug, variant, e["name"], value=val,
+                                       as_of=(min(as_ofs) if as_ofs else None))
+            else:
+                reg.record_observation(slug, variant, e["name"], value=_apply_op(op, legs))
             derived += 1
 
     return {"fetched": fetched, "derived": derived, "skipped_todo": skipped_todo,

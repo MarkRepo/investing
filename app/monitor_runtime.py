@@ -83,21 +83,6 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
         except Exception as e:
             _log(f"fred fetch failed: {e}")
 
-        # macro recipe 自动抓取（零 LLM）：fetch_method=='recipe' 的 scripted 项按 recipe 直拉。
-        # 与 fred 同为脚本通道，故同样在 macro scan 之前刷新 observed。当前 0 条 recipe 项 →
-        # no-op，但通道打通：promote 出 recipe 项后下一轮即自动抓。失败吞掉、不阻断周期。
-        try:
-            from prism.scripts import recipe_fetch
-            from prism.scripts import topic as topic_io
-            for t in topic_io.list_topics():
-                if t.get("type") != "macro":
-                    continue
-                rec_summary = await asyncio.to_thread(
-                    recipe_fetch.run_recipe_fetch, t["slug"], t["variant"])
-                _log(f"recipe fetch [{t['slug']}/{t['variant']}]: {rec_summary}")
-        except Exception as e:
-            _log(f"recipe fetch failed: {e}")
-
         # macro akshare 自动抓取（零 LLM）：中国宏观，fetch_method=='akshare' 的 scripted 项调 akshare 函数。
         # 与 fred/recipe 同为脚本通道，故同样在 macro scan 之前刷新 observed。失败吞掉、不阻断周期。
         try:
@@ -111,6 +96,93 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
                 _log(f"akshare fetch [{t['slug']}/{t['variant']}]: {ak_summary}")
         except Exception as e:
             _log(f"akshare fetch failed: {e}")
+
+        # macro yfinance 自动抓取（零 LLM）：市场行情序列（MOVE/DXY/^TNX 等专有指数），
+        # fetch_method=='yfinance' 的 scripted 项。与 fred/recipe/akshare 同为脚本通道，
+        # 故同样在 macro scan 之前刷新 observed。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import yfinance_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                yfin_summary = await asyncio.to_thread(
+                    yfinance_fetch.run_yfinance_fetch, t["slug"], t["variant"])
+                _log(f"yfinance fetch [{t['slug']}/{t['variant']}]: {yfin_summary}")
+        except Exception as e:
+            _log(f"yfinance fetch failed: {e}")
+
+        # macro macromicro 自动抓取（零 LLM）：FRED/akshare/yfinance 都缺的专有序列（如日频 JPY 3M OIS）。
+        # fetch_method=='macromicro' 的 scripted 项，两步法（token+数据接口）。内建限流退避，每日 1 次不触发。
+        # 与其余脚本数值通道同样在 macro scan 之前刷新 observed。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import macromicro_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                mm_summary = await asyncio.to_thread(
+                    macromicro_fetch.run_macromicro_fetch, t["slug"], t["variant"])
+                _log(f"macromicro fetch [{t['slug']}/{t['variant']}]: {mm_summary}")
+        except Exception as e:
+            _log(f"macromicro fetch failed: {e}")
+
+        # macro barchart 自动抓取（零 LLM）：外汇 3M 远期点（EURUSD.H/USDJPY.H），CIP 基差远期腿。
+        # fetch_method=='barchart' 的 scripted 项，两步法（XSRF cookie+core-api）。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import barchart_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                bc_summary = await asyncio.to_thread(
+                    barchart_fetch.run_barchart_fetch, t["slug"], t["variant"])
+                _log(f"barchart fetch [{t['slug']}/{t['variant']}]: {bc_summary}")
+        except Exception as e:
+            _log(f"barchart fetch failed: {e}")
+
+        # macro ecb 自动抓取（零 LLM）：日频 EUR 3M OIS 混合（MMSR 锚+€STR 顺延），CIP 基差欧元腿。
+        # fetch_method=='ecb' 的 scripted 项，ECB SDMX CSV。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import ecb_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                ecb_summary = await asyncio.to_thread(
+                    ecb_fetch.run_ecb_fetch, t["slug"], t["variant"])
+                _log(f"ecb fetch [{t['slug']}/{t['variant']}]: {ecb_summary}")
+        except Exception as e:
+            _log(f"ecb fetch failed: {e}")
+
+        # macro SAFE 自动抓取（零 LLM）：外管局 Excel 月度表（银行结售汇差额 / 代客涉外收付差额），
+        # fetch_method=='safe' 的 scripted 项，2 跳（文章页→最新 Excel）。与其余脚本数值通道同样在 macro scan 之前刷新 observed。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import safe_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                safe_summary = await asyncio.to_thread(
+                    safe_fetch.run_safe_fetch, t["slug"], t["variant"])
+                _log(f"safe fetch [{t['slug']}/{t['variant']}]: {safe_summary}")
+        except Exception as e:
+            _log(f"safe fetch failed: {e}")
+
+        # macro recipe 自动抓取（零 LLM）：fetch_method=='recipe' 的 scripted 项（含按名派生，如 CIP 基差）。
+        # **必须在上述各腿通道之后**跑——派生项读最新 observed 合成；故在此（macro scan 之前）末位刷新。
+        # 失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import recipe_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                rec_summary = await asyncio.to_thread(
+                    recipe_fetch.run_recipe_fetch, t["slug"], t["variant"])
+                _log(f"recipe fetch [{t['slug']}/{t['variant']}]: {rec_summary}")
+        except Exception as e:
+            _log(f"recipe fetch failed: {e}")
 
         # macro 取文自动下载（零 LLM）：带 text_fetch 的输入按其值路由 fetcher 下原文存本地缓存。
         # 与 fred/recipe 同为脚本通道——立场判读仍走 LLM（不在此跑），但原文缓存随定时保持新鲜，
@@ -240,7 +312,7 @@ def _build_macro_llm_prompt(slug: str, variant: str, entries: list[dict]) -> str
         "```json",
         "[",
         '  {"name": "<输入名，与下表一致>", "value": <数值或 null>,',
-        '   "stance": "<鹰鸽/松紧档位或 null，仅 policy 输入填写>",',
+        '   "stance": "<立场档位或 null，仅下方注明了立场轴的输入填写>",',
         '   "as_of": "<YYYY-MM-DD 或 null>",',
         '   "evidence": "<采用源 URL/引文>", "acq_note": "<本次取数判定理由>",',
         '   "scriptable": <true/false>, "note": "<若 scriptable：缺什么 recipe；否则空串>"}',

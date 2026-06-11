@@ -36,6 +36,8 @@ ALLOWED_FUNCS = {
     "macro_china_new_house_price",           # 70 城房价（月，多城/期）
     "rate_interbank",                         # Shibor / HIBOR（日，带 market/symbol/indicator 参数）
     "stock_hsgt_fund_flow_summary_em",        # 北向/南向资金（日，多行需 filter+sum）
+    "bond_china_close_return",                # 中债收盘收益率曲线（日，整条曲线→row_filter 取某期限点）
+    "macro_china_central_bank_balance",      # 央行资产负债表（月，列「外汇」=外汇占款；Sina 偶发限流）
 }
 
 
@@ -64,6 +66,12 @@ def _norm_date(raw) -> tuple[tuple[int, int, int], str | None]:
         y, mo = int(m.group(1)), int(m.group(2))
         d = int(m.group(3)) if m.group(3) else 0
         return (y, mo, d), f"{y:04d}-{mo:02d}" + (f"-{d:02d}" if d else "")
+    # Sina Mac 接口的月份格式 'YYYY.M'（如 macro_china_central_bank_balance 的「统计时间」=2026.4）。
+    # 不识别会全行落 (0,0,0) 并列、误取首行——故显式归一。
+    m = re.match(r"(\d{4})\.(\d{1,2})$", s)
+    if m:
+        y, mo = int(m.group(1)), int(m.group(2))
+        return (y, mo, 0), f"{y:04d}-{mo:02d}"
     return (0, 0, 0), s
 
 
@@ -82,6 +90,29 @@ def _to_float(v) -> float | None:
     return None if math.isnan(f) else f
 
 
+def _resolve_dynamic_args(args: dict) -> dict:
+    """解析 args 里的动态日期占位符（取数时算，避免写死日期过期）。
+    支持 '@today' 与 '@days_ago:N' → YYYYMMDD（akshare 多数日期参数的格式）。
+    需要「最近日期窗」的函数（如 bond_china_close_return 必传 start/end）靠它保鲜；
+    其余值原样透传。未知 '@' 占位符抛 ValueError（不静默吞）。"""
+    if not args:
+        return args
+    today = datetime.date.today()
+    out: dict = {}
+    for k, v in args.items():
+        if isinstance(v, str) and v.startswith("@"):
+            if v == "@today":
+                out[k] = today.strftime("%Y%m%d")
+            elif v.startswith("@days_ago:"):
+                n = int(v.split(":", 1)[1])
+                out[k] = (today - datetime.timedelta(days=n)).strftime("%Y%m%d")
+            else:
+                raise ValueError(f"未知日期占位符: {v!r}（仅 @today / @days_ago:N）")
+        else:
+            out[k] = v
+    return out
+
+
 def _import_akshare():
     import akshare as ak  # 惰性导入：akshare 启动慢，仅取数时才加载
     return ak
@@ -89,7 +120,8 @@ def _import_akshare():
 
 def fetch_by_akshare(cfg: dict, *, ak_module=None) -> tuple[float | None, str | None]:
     """按 akshare 配置抓一个数值。cfg: {func, args?, date_column, value_column, row_filter?, agg?}。
-    func 须在 ALLOWED_FUNCS（白名单，否则 ValueError 不静默）。args 作 kwargs 传函数（如 rate_interbank）。
+    func 须在 ALLOWED_FUNCS（白名单，否则 ValueError 不静默）。args 作 kwargs 传函数（如 rate_interbank）；
+    args 值支持动态日期占位符 @today / @days_ago:N（取数时算，见 _resolve_dynamic_args）。
     row_filter（可选 dict）逐列 == 过滤；解析 date_column 取 max 那（些）行；value_column 取值；
     同期多行按 agg 聚合：first（默认）/ sum / mean。任何对不上 → 诚实 (None, as_of)，不抛。
     ak_module 可注入（测试 mock）。"""
@@ -102,7 +134,7 @@ def fetch_by_akshare(cfg: dict, *, ak_module=None) -> tuple[float | None, str | 
     fn = getattr(ak, func_name, None)
     if fn is None or not callable(fn):
         raise ValueError(f"akshare 无此函数: {func_name!r}")
-    df = fn(**(cfg.get("args") or {}))
+    df = fn(**_resolve_dynamic_args(cfg.get("args") or {}))
     if df is None or len(df) == 0:
         return None, None
     dcol = cfg.get("date_column")

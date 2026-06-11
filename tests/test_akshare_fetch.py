@@ -33,6 +33,17 @@ class FakeAk:
         return pd.DataFrame({"日期": ["2026-04-01", "2026-04-01", "2026-03-01"],
                              "环比": [100.2, 100.0, 99.9]})
 
+    def bond_china_close_return(self, **kwargs):  # 整条曲线：多档期限/多日，须按 row_filter 取某期限点
+        self.last_kwargs = kwargs  # 捕获以验证动态日期占位符已解析
+        return pd.DataFrame({
+            "日期": ["2026-06-09", "2026-06-09", "2026-06-10", "2026-06-10"],
+            "期限": [0.5, 1.0, 0.5, 1.0],
+            "到期收益率": [1.40, 1.4617, 1.41, 1.4650]})
+
+    def macro_china_central_bank_balance(self):  # 央行资产负债表：Sina 'YYYY.M' 月份、降序（新在头）
+        return pd.DataFrame({"统计时间": ["2026.4", "2026.3", "2025.12"],
+                             "外汇": [215381.08, 214425.31, 212391.23]})
+
 
 @pytest.fixture
 def ak():
@@ -82,10 +93,49 @@ def test_missing_column_raises(ak):
             {"func": "macro_china_cpi", "date_column": "月份", "value_column": "不存在列"}, ak_module=ak)
 
 
+def test_curve_row_filter_picks_tenor_point(ak):
+    # NCD：整条曲线按 期限==1.0 取 1 年期点，再取最新日期的到期收益率
+    v, d = af.fetch_by_akshare(
+        {"func": "bond_china_close_return",
+         "args": {"symbol": "同业存单(AAA)", "period": "1",
+                  "start_date": "@days_ago:20", "end_date": "@today"},
+         "row_filter": {"期限": 1.0}, "date_column": "日期", "value_column": "到期收益率"},
+        ak_module=ak)
+    assert abs(v - 1.4650) < 1e-9 and d == "2026-06-10"
+    # 动态日期占位符在传入 akshare 前已解析成 YYYYMMDD（非 '@...'）
+    assert ak.last_kwargs["end_date"].isdigit() and len(ak.last_kwargs["end_date"]) == 8
+    assert not ak.last_kwargs["start_date"].startswith("@")
+
+
+def test_resolve_dynamic_args():
+    import datetime
+    today = datetime.date.today()
+    out = af._resolve_dynamic_args(
+        {"symbol": "x", "start_date": "@days_ago:20", "end_date": "@today"})
+    assert out["symbol"] == "x"  # 非占位符原样透传
+    assert out["end_date"] == today.strftime("%Y%m%d")
+    assert out["start_date"] == (today - datetime.timedelta(days=20)).strftime("%Y%m%d")
+
+
+def test_resolve_dynamic_args_unknown_placeholder_raises():
+    with pytest.raises(ValueError, match="未知日期占位符"):
+        af._resolve_dynamic_args({"d": "@yesterday"})
+
+
 def test_norm_date_formats():
     assert af._norm_date("2026年05月份")[1] == "2026-05"
     assert af._norm_date("2026年第3季度")[1] == "2026-Q3"
     assert af._norm_date("2026年05月07日")[1] == "2026-05-07"
     assert af._norm_date("2026-05-20")[1] == "2026-05-20"
+    assert af._norm_date("2026.4")[1] == "2026-04"     # Sina Mac 'YYYY.M'（外汇占款）
+    assert af._norm_date("2025.12")[1] == "2025-12"
     import datetime
     assert af._norm_date(datetime.date(2026, 4, 1))[1] == "2026-04-01"
+
+
+def test_central_bank_balance_picks_latest_month(ak):
+    # 外汇占款：'YYYY.M' 月份须正确归一取最新（否则全行落 (0,0,0) 并列误取首行）
+    v, d = af.fetch_by_akshare(
+        {"func": "macro_china_central_bank_balance", "date_column": "统计时间", "value_column": "外汇"},
+        ak_module=ak)
+    assert abs(v - 215381.08) < 1e-9 and d == "2026-04"

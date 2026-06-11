@@ -1,0 +1,22 @@
+slug: _sandbox-3b
+display_name: 【沙盒】3b 判断台账演示
+type: macro
+created: '2026-06-10T16:14:13.859565+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: Global
+  question: 演示战绩卡/降级候选/立场边裁决
+  depth: deep
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily

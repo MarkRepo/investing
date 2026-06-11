@@ -50,7 +50,9 @@ def test_spec_block_parsing_sane():
     # §3 表约 114 行；低于 110 说明解析漏了块或 spec 被改瘦
     assert len(names) >= 110, f"只解析到 {len(names)} 个输入名，疑似漏块"
     assert "非农就业 NFP" in names
-    assert "结售汇 + 外汇占款 + 代客涉外收付" in names
+    # 「结售汇 + 外汇占款 + 代客涉外收付」已拆成 3 条脚本数值项（见 §3 FX 表）
+    assert "银行结售汇差额" in names
+    assert "外汇占款" in names
 
 
 def test_registry_covers_every_spec_input():
