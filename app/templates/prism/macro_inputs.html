@@ -128,11 +128,11 @@
   {% endif %}
   {% endif %}
   <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs/fetch-script-all" style="margin:0"
-        data-confirm="跑全部脚本项（FRED / recipe / 取文）刷新——零 LLM、零成本。继续？">
-    <button type="submit" class="batch-fetch-btn">⟳ 批量刷新脚本项（FRED/recipe/akshare/取文·免费）</button>
+        data-confirm="跑全部脚本项（FRED / recipe / akshare / yfinance / macromicro / 取文）刷新——零 LLM、零成本。继续？">
+    <button type="submit" class="batch-fetch-btn">⟳ 批量刷新脚本项（FRED/recipe/akshare/yfinance/macromicro/取文·免费）</button>
   </form>
 </div>
-<p class="hint toolbar-hint">「发起重估」盖变更简报戳 + 拉起一次真实合成（headless Claude 跑 _macro_regime 全流程、默认 opus4.8 可选，有 token 成本），自动弹出输出框可实时看 + 续问驱动；「批量刷新脚本项」只跑脚本通道（FRED / recipe / akshare / 取文）刷新全部 scripted 项，零 LLM、零成本（取文类如 FOMC 仅下载原文存本地，立场判读仍需行内点「⟳ 拉取」起 LLM）。LLM 项请逐条点行内「⟳ 拉取」手动取（有 token 成本，默认 haiku·原生检索；不满意可在弹框换模型「重判」）。定时巡检也只跑脚本项、不自动跑 LLM。</p>
+<p class="hint toolbar-hint">「发起重估」盖变更简报戳 + 拉起一次真实合成（headless Claude 跑 _macro_regime 全流程、默认 opus4.8 可选，有 token 成本），自动弹出输出框可实时看 + 续问驱动；「批量刷新脚本项」只跑脚本通道（FRED / recipe / akshare / yfinance / macromicro / 取文）刷新全部 scripted 项，零 LLM、零成本（取文类如 FOMC 仅下载原文存本地，立场判读仍需行内点「⟳ 拉取」起 LLM）。LLM 项请逐条点行内「⟳ 拉取」手动取（有 token 成本，默认 haiku·原生检索；不满意可在弹框换模型「重判」）。定时巡检也只跑脚本项、不自动跑 LLM。</p>
 
 {% if reeval_pending %}
 {% set b = reeval_pending.brief %}
@@ -184,12 +184,23 @@
     <th>来源</th><th>抓取</th><th>上次评估值</th><th>现值 / Δ</th><th>上次拉取</th><th>监控</th>
   </tr></thead>
   <tbody>
-  {% for inp in inputs %}
+  {% set ns = namespace(i=-1) %}
+  {% for fam, fam_inputs in grouped_inputs %}
+    <tr class="family-header"><td colspan="13"><b>{{ fam }}</b> <span class="hint">· {{ fam_inputs|length }} 项</span></td></tr>
+    {% for inp in fam_inputs %}
+    {% set ns.i = ns.i + 1 %}
     {% set d = diff.get(inp.name) %}
     {% set lb_gap = inp.importance == 'load_bearing' and not (d and d.used) %}
-    <tr id="input-{{ loop.index0 }}" data-used="{{ '1' if d and d.used else '0' }}" data-lbunused="{{ '1' if lb_gap else '0' }}"{% if lb_gap %} class="lb-unused-row"{% endif %}>
+    <tr id="input-{{ ns.i }}" data-used="{{ '1' if d and d.used else '0' }}" data-lbunused="{{ '1' if lb_gap else '0' }}"{% if lb_gap %} class="lb-unused-row"{% endif %}>
       <td><code>{{ inp.name }}</code>
         {% if inp.note %}<div class="note-caveat" title="口径/代理说明">ⓘ {{ inp.note }}</div>{% endif %}
+        {% if inp.gloss and inp.gloss.define %}
+        <details class="gloss-box"><summary>门外汉词条</summary>
+          <div class="gloss-line"><b>是什么</b>：{{ inp.gloss.define }}</div>
+          <div class="gloss-line"><b>为什么看</b>：{{ inp.gloss.read }}</div>
+          <div class="gloss-line"><b>怎么用</b>：{{ inp.gloss.use }}</div>
+        </details>
+        {% else %}<div class="hint gloss-todo">词条待补</div>{% endif %}
       </td>
       <td>{{ inp.tier or '—' }}</td>
       <td>{% if inp.cadence_type %}<span title="{{ cadence_tip.get(inp.cadence_type, '') }}">{{ cadence_label.get(inp.cadence_type, inp.cadence_type) }}</span>{% else %}—{% endif %}</td>
@@ -257,7 +268,7 @@
         <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs/monitoring" style="margin:0">
           <input type="hidden" name="name" value="{{ inp.name }}">
           <input type="hidden" name="enabled" value="{{ 'false' if on else 'true' }}">
-          <input type="hidden" name="anchor" value="input-{{ loop.index0 }}">
+          <input type="hidden" name="anchor" value="input-{{ ns.i }}">
           <button type="submit" class="mon-toggle {{ 'on' if on else 'off' }}" data-mode="{{ mode }}"
                   title="{{ '点击关闭监控' if on else ('点击开启监控（' + mode + '）') }}">{{ ('✓ 监控中·' + mode) if on else '○ 未监控' }}</button>
         </form>
@@ -271,7 +282,7 @@
               {% if inp.local_cache_path %}data-local-file="1"{% endif %}
               data-confirm="对该项拉起一次 headless Claude 取数（有 token 成本）。继续？">
           <input type="hidden" name="names" value="{{ inp.name }}">
-          <input type="hidden" name="anchor" value="input-{{ loop.index0 }}">
+          <input type="hidden" name="anchor" value="input-{{ ns.i }}">
           <button type="submit" class="llm-fetch-btn" title="拉起一次 Claude headless 取数+判可脚本化（有 token 成本）">⟳ 拉取</button>
         </form>
         {% endif %}
@@ -281,13 +292,14 @@
         {% elif inp.availability == 'scripted' %}
         <form method="post" action="/prism/{{ topic.slug }}/{{ variant }}/macro-inputs/fetch-script" style="margin:0">
           <input type="hidden" name="name" value="{{ inp.name }}">
-          <input type="hidden" name="anchor" value="input-{{ loop.index0 }}">
-          <button type="submit" class="script-fetch-btn" title="立即跑脚本抓取该项（fred-api / recipe，零 LLM、免费）">⟳ 抓取</button>
+          <input type="hidden" name="anchor" value="input-{{ ns.i }}">
+          <button type="submit" class="script-fetch-btn" title="立即跑脚本抓取该项（fred-api / recipe / akshare / yfinance / macromicro，零 LLM、免费）">⟳ 抓取</button>
         </form>
         {% endif %}
         </div>
       </td>
     </tr>
+    {% endfor %}
   {% endfor %}
   </tbody>
 </table>
@@ -414,6 +426,11 @@
   .lb-unused-row { background: #fff6f0; }
   .lb-unused-row > td:first-child { box-shadow: inset 3px 0 0 #e8843c; }
   .badge-lb-gap { font-size: .72em; padding: .1em .4em; border-radius: 3px; background: #fde8d8; color: #b45309; border: 1px solid #f0c36d; margin-left: .25em; white-space: nowrap; }
+  .family-header td { background:#f3f6fb; border-top:2px solid #d6deea; font-size:.92em; }
+  .gloss-box { margin-top:.3em; font-size:.82em; }
+  .gloss-box summary { cursor:pointer; color:#2a5db0; }
+  .gloss-line { margin:.15em 0; line-height:1.4; }
+  .gloss-todo { font-size:.78em; color:#b08; }
 </style>
 
 <script>
