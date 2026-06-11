@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-11T11:28:39.996822+00:00'
+updated: '2026-06-11T11:31:04.258730+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -164,6 +164,11 @@ inputs:
     checked_at: '2026-06-10T01:18:12.899529+00:00'
   authority: official
   availability: llm
+  family: 货币政策
+  gloss:
+    define: 美联储主席及票委的公开讲话与前瞻指引（不定期）
+    read: 在会议之外微调市场对反应函数的认知
+    use: 偏鹰措辞=利率预期上行压债与成长；偏鸽=宽松预期升温
 - name: 非农就业 NFP
   tier: A
   cadence_type: event
@@ -250,6 +255,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/ICSA
+  family: 增长就业
+  gloss:
+    define: 美国劳工部周度首次申领失业金人数（每周四）
+    read: 劳动力市场最高频的前瞻，领先就业拐点
+    use: 持续抬升=就业转弱降息预期升利好债；走低=就业稳偏鹰
 - name: JOLTS 职位空缺/离职率
   tier: A
   cadence_type: event
@@ -275,6 +285,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/JTSJOL
+  family: 增长就业
+  gloss:
+    define: 美国劳工部月度职位空缺与离职率调查
+    read: 劳动力市场紧度，离职率是打工人跳槽信心温度计
+    use: 空缺/离职回落=就业降温、Fed 有降息空间利好成长；高企=偏鹰
 - name: ISM 制造业 PMI
   tier: A
   cadence_type: event
@@ -358,6 +373,11 @@ inputs:
   note: macromicro 镜像(series/293, NMI)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
     chart-stat-lastrows 侧栏取最新期值。ISM 官网 SSO 墙,故曾退回 LLM 读 PRNewswire 新闻稿(2026-06-10
     改脚本)。
+  family: 增长就业
+  gloss:
+    define: 供应管理协会月度服务业景气调查，50 荣枯线（占比最大部门）
+    read: 服务部门动能，比制造业更代表美国经济
+    use: 走弱=增长降温降息预期升；强=服务通胀韧偏鹰
 - name: 零售销售
   tier: A
   cadence_type: event
@@ -383,6 +403,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/RSAFS
+  family: 增长就业
+  gloss:
+    define: 美国商务部月度零售销售额
+    read: 消费动能的即时读数，美国经济主引擎
+    use: 超预期=消费强通胀韧偏鹰；走弱=增长降温利好债
 - name: GDPNow 实时预测
   tier: B
   cadence_type: series
@@ -433,6 +458,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CES0500000003
+  family: 增长就业
+  gloss:
+    define: 平均时薪与雇佣成本指数（劳工部月/季度）
+    read: 工资增速，服务通胀的核心成本推手
+    use: 工资加速=通胀粘性、Fed 难松压估值；降温=降息空间
 - name: 核心 PCE
   tier: A
   cadence_type: event
@@ -543,6 +573,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PPIFIS
+  family: 通胀
+  gloss:
+    define: 美国劳工部月度生产者价格指数
+    read: CPI/PCE 的上游成本前瞻
+    use: 上行=通胀压力前兆偏鹰；回落=终端通胀降温利好债
 - name: WTI 油价(+供给/需求分解)
   tier: A
   cadence_type: series
@@ -599,6 +634,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T5YIFR
+  family: 通胀
+  gloss:
+    define: 国债与 TIPS 利差隐含的市场通胀预期（5y5y 远期）
+    read: 市场长期通胀锚是否脱锚
+    use: 抬升=通胀预期升、名义利率上行压债；回落=通胀预期稳
 - name: 国债发行计划 QRA + 票/券构成
   tier: A
   cadence_type: policy
@@ -747,6 +787,11 @@ inputs:
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/RRPONTSYD
+  family: 流动性·数量
+  gloss:
+    define: 货币基金等存放美联储的隔夜逆回购余额（Fed 日频）
+    read: 过剩流动性的蓄水池，余额=停在央行没进市场的钱
+    use: 余额下降=钱回流市场缓冲流动性；回升=流动性退场
 - name: 净流动性(=资产−TGA−RRP)
   tier: A
   cadence_type: series
@@ -859,6 +904,11 @@ inputs:
     enabled: true
   authority: primary
   availability: llm
+  family: 资金面咬合
+  gloss:
+    define: 远期利率协议减 OIS 的利差（日频）
+    read: 银行间无担保美元融资的信用/流动性溢价
+    use: 走阔=美元融资压力、银行间紧张预警；收窄=资金面缓和
 - name: Fed swap line / SRF / FIMA 动用
   tier: A
   cadence_type: policy
@@ -889,6 +939,11 @@ inputs:
   availability: scripted
   fred_series_id: SWPT
   note: SWPT=央行流动性互换周度水平(压力主信号);SRF/FIMA 动用属叙述,到期 LLM 补
+  family: 资金面咬合
+  gloss:
+    define: 美联储美元互换额度/常备回购/FIMA 工具的动用（周频+叙述）
+    read: 动用即 Fed 投放美元流动性救火，尾部压力信号
+    use: 动用骤增=离岸美元荒、危机模式；归零=压力解除
 - name: SLOOS 银行信贷标准
   tier: A
   cadence_type: event
@@ -1679,6 +1734,11 @@ inputs:
       核心通胀预测至 2.8% 并续缩 JGB 购债（10y JGB 约 2.5-2.8%）；处正常化通道（BoJ，2026-04-28）。
   authority: official
   availability: llm
+  family: 汇率·跨境套利
+  gloss:
+    define: 日本央行政策与日本国债收益率（政策型）
+    read: 日元融资成本，全球 carry 资金的源头闸门
+    use: BoJ 转鹰/JGB 上行=日元 carry 平仓、全球去风险；宽松=套息顺风
 - name: ECB 政策分化 / EUR-USD
   tier: B
   cadence_type: policy
@@ -1903,6 +1963,11 @@ inputs:
   authority: primary
   availability: llm
   source_url: https://www.caixinglobal.com/
+  family: 中国增长·外需
+  gloss:
+    define: 财新月度制造业 PMI，侧重中小/出口企业
+    read: 与官方 PMI 互补，更贴出口与民营动能
+    use: 与官方背离=结构分化信号；同向走弱=增长确认转冷
 - name: 工业增加值
   tier: A
   cadence_type: event
@@ -1920,6 +1985,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.stats.gov.cn/
+  family: 中国增长·外需
+  gloss:
+    define: 国家统计局月度规模以上工业增加值同比
+    read: 实际产出的核心读数
+    use: 走弱=增长动能弱、宽松预期升；回升=工业企稳利好周期
 - name: 社会消费品零售
   tier: A
   cadence_type: event
@@ -1949,6 +2019,11 @@ inputs:
     checked_at: '2026-06-11T11:10:58.000712+00:00'
     streak: 0
     prev_value: 0.2
+  family: 中国增长·外需
+  gloss:
+    define: 国家统计局月度社会消费品零售总额
+    read: 内需消费强弱
+    use: 疲软=内需不足、需刺激；回暖=消费修复利好消费链
 - name: 固定资产投资
   tier: B
   cadence_type: event
@@ -1983,6 +2058,11 @@ inputs:
   authority: official
   availability: llm
   source_url: http://www.customs.gov.cn/
+  family: 中国增长·外需
+  gloss:
+    define: 海关总署月度出口金额（美元计）
+    read: 外需强弱与贸易顺差/结汇供给来源
+    use: 走强=顺差与结汇支撑人民币；走弱=外需转冷压增长与汇率
 - name: 用电量/货运(克强指标)
   tier: B
   cadence_type: event
@@ -2139,6 +2219,11 @@ inputs:
   authority: official
   availability: llm
   source_url: http://www.pbc.gov.cn/
+  family: 中国货币·流动性
+  gloss:
+    define: 央行中期借贷便利操作利率
+    read: 中期政策利率，影响银行边际负债成本
+    use: 下调=降融资成本宽松信号；不动=政策观望
 - name: LPR 1Y(政策锚)
   tier: A
   cadence_type: event
@@ -2488,6 +2573,11 @@ inputs:
       5000 亿支农支小），收缩与扩张相抵，结构性工具总量基本持平（2026 Q1 货政报告，2026-05-11）。
   authority: official
   availability: llm
+  family: 中国货币·流动性
+  gloss:
+    define: 抵押补充贷款与各类再贷款（央行定向投放）
+    read: 向特定领域定向投放基础货币的结构性放水
+    use: 放量=定向宽松利好相关板块（基建/地产）；缩量=收力
 - name: 货币政策执行报告 MPR
   tier: A
   cadence_type: policy
@@ -2624,6 +2714,11 @@ inputs:
   authority: official
   availability: llm
   source_url: http://www.pbc.gov.cn/
+  family: 中国货币·流动性
+  gloss:
+    define: 人行月度金融机构人民币贷款余额同比
+    read: 银行信用投放的直接读数
+    use: 回升=信用扩张利好风险；放缓=信用收缩压增长
 - name: USDCNY
   tier: B
   cadence_type: series
@@ -2790,6 +2885,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.hkma.gov.hk/eng/
+  family: 汇率·跨境套利
+  gloss:
+    define: 离岸人民币香港银行间利率及央行离岸央票发行
+    read: 抬升 HIBOR/发央票=收紧离岸流动性、抬高做空成本
+    use: HIBOR 飙升=央行护盘挤空头；宽松=做空成本低贬值压力增
 - name: 外汇储备(水平+变动)
   tier: A
   cadence_type: event
@@ -3213,6 +3313,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.mof.gov.cn/
+  family: 中国货币·流动性
+  gloss:
+    define: 地方政府国有土地出让收入（月度/财政口径）
+    read: 地方政府性基金收入主体，下滑=地方财政吃紧
+    use: 持续下滑=地方财政与基建收缩压流动性；回暖=财政松
 - name: 开发商美元债/地产高收益
   tier: A
   cadence_type: series
@@ -3230,6 +3335,11 @@ inputs:
     enabled: true
   authority: secondary
   availability: llm
+  family: 汇率·跨境套利
+  gloss:
+    define: 中资地产商离岸美元债收益率/利差
+    read: 走阔=离岸再融资关闭与违约风险
+    use: 利差飙升=地产信用危机、压港股与汇率；收窄=修复
 - name: 地方专项债发行
   tier: A
   cadence_type: event
@@ -3247,6 +3357,11 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.mof.gov.cn/
+  family: 中国货币·流动性
+  gloss:
+    define: 地方政府专项债券发行规模与节奏（财政口径）
+    read: 基建财政投放力度，发行抽水、投放放水
+    use: 发行提速=基建发力利好周期；缴款期=阶段性抽流动性
 - name: 财政存款
   tier: B
   cadence_type: event
@@ -3374,6 +3489,11 @@ inputs:
   observed:
     next_due: '2026-07-01'
   note: 事件型,无可解析数值;到期 LLM 读 Federal Register
+  family: 中国增长·外需
+  gloss:
+    define: 美国对华出口管制与实体清单（事件型）
+    read: 冲击相关企业融资与产业链信用
+    use: 升级=科技/制造链承压、风险偏好降；缓和=压制解除
 - name: 资本管制/SAFE 出境规则
   tier: A
   cadence_type: policy
@@ -3396,6 +3516,11 @@ inputs:
       QDII 限购；个人/灰色渠道资本流出转向收紧，惟合法 QDII/互联互通仍扩容（财经/联合早报，2026-06）。
   authority: official
   availability: llm
+  family: 汇率·跨境套利
+  gloss:
+    define: 外汇局资本项目与出境购汇规则（政策型）
+    read: 收紧直接限制资金外流
+    use: 收紧=堵外流护汇率信号；放松=资金外流压力或信心回升
 - name: 中国政治局/NPC 经济信号
   tier: A
   cadence_type: policy
@@ -3469,6 +3594,11 @@ inputs:
   source_url: https://home.treasury.gov/policy-issues/financing-the-government/debt-limit
   observed:
     next_due: '2026-07-01'
+  family: 流动性·数量
+  gloss:
+    define: 美国债务上限与财政主导风险（事件型）
+    read: 冲击国债供给与无风险资产信用
+    use: 僵局/财政扩张=期限溢价上行压长端、TGA 波动扰流动性
 - name: 中国主权评级展望
   tier: B
   cadence_type: policy
