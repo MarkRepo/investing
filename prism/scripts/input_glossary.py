@@ -50,3 +50,47 @@ def build_body(registry: dict) -> str:
             lines.append(f"- 为什么看：{g['read']}")
             lines.append(f"- 怎么用：{g['use']}{link} · [表内追踪](macro-inputs)\n")
     return "\n".join(lines)
+
+
+_BEGIN = "<!-- BEGIN auto:gloss-pointer -->"
+_END = "<!-- END auto:gloss-pointer -->"
+
+
+def inject_primer_pointer(primer_path: Path, pointer_md: str) -> None:
+    """幂等替换 primer §1 标记间内容。标记缺失则报错（须先一次性加标记）。"""
+    text = primer_path.read_text(encoding="utf-8")
+    if _BEGIN not in text or _END not in text:
+        raise ValueError(f"primer 缺注入标记 {_BEGIN}/{_END}，须先一次性加入")
+    pre, rest = text.split(_BEGIN, 1)
+    _, post = rest.split(_END, 1)
+    primer_path.write_text(f"{pre}{_BEGIN}\n{pointer_md}\n{_END}{post}", encoding="utf-8")
+
+
+def build_glossary_md(slug: str, variant: str) -> str:
+    reg = mr.read_registry(slug, variant)
+    fm = ("---\n"
+          f"slug: {slug}\nvariant: {variant}\noutput_key: 00b_input_glossary\n"
+          "type: macro-input-glossary\nversion: 1\n"
+          "title: 输入源词典 — 每个宏观输入「定义·为什么看·怎么用」\n"
+          "companion: 00_primer.md / m_regime_read.md\n"
+          "note: 本文件由 prism.scripts.input_glossary 机读自动生成，勿手改；改 macro_inputs.yaml 的 gloss 字段后重跑。\n"
+          "---\n\n# 输入源词典\n\n"
+          "> 配套 [领域入门 §1](00_primer)（概念/机制词典）。本文逐**输入源**讲「是什么/为什么看/怎么用」，按族系分组，源自 macro_inputs 登记表的 gloss 字段。\n\n")
+    return fm + build_body(reg)
+
+
+def write_glossary(slug: str, variant: str) -> Path:
+    out = _PRISM_ROOT / "topics" / slug / variant / "outputs" / "00b_input_glossary.md"
+    out.write_text(build_glossary_md(slug, variant), encoding="utf-8")
+    primer = _PRISM_ROOT / "topics" / slug / variant / "outputs" / "00_primer.md"
+    if primer.exists():
+        ptr = ("> 📖 以上为**概念/机制**词典。每个具体**输入源**的「定义·为什么看·怎么用」"
+               "见姊妹文件 [输入源词典](00b_input_glossary)（按族系分组，机读自动生成）。")
+        inject_primer_pointer(primer, ptr)
+    return out
+
+
+if __name__ == "__main__":
+    import sys
+    slug, variant = sys.argv[1], sys.argv[2]
+    print("written:", write_glossary(slug, variant))

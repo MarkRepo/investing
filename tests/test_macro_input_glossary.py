@@ -78,3 +78,22 @@ def test_build_body_marks_missing(reg):
     mr.upsert_input(slug, variant, bare)
     body = ig.build_body(mr.read_registry(slug, variant))
     assert "尚缺 1 条" in body and "缺条" in body
+
+
+def test_inject_pointer_replaces_between_markers(tmp_path):
+    from prism.scripts import input_glossary as ig
+    p = tmp_path / "00_primer.md"
+    p.write_text("# P\n## 1. 术语表\n<!-- BEGIN auto:gloss-pointer -->\nOLD\n<!-- END auto:gloss-pointer -->\n## 2. 下一节\n", encoding="utf-8")
+    ig.inject_primer_pointer(p, "NEWLINE")
+    out = p.read_text(encoding="utf-8")
+    assert "NEWLINE" in out and "OLD" not in out
+    assert "## 2. 下一节" in out  # 标记外正文不动
+
+
+def test_inject_pointer_missing_markers_raises(tmp_path):
+    from prism.scripts import input_glossary as ig
+    p = tmp_path / "00_primer.md"
+    p.write_text("# P\n无标记\n", encoding="utf-8")
+    import pytest as _pt
+    with _pt.raises(ValueError):
+        ig.inject_primer_pointer(p, "X")
