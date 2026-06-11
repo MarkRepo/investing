@@ -50,7 +50,7 @@ companion: m_regime_read.md / transmission_map.yaml
 ## 1. 术语表（大白话词典 — 后面所有注解都建在这上面）
 
 <!-- BEGIN auto:gloss-pointer -->
-> 📖 以上为**概念/机制**词典。每个具体**输入源**（NFP/JOLTS/SLOOS/CIP 基差/克强指标…）的「定义·为什么看·怎么用」见姊妹文件 [输入源词典](00b_input_glossary)（按族系分组，机读自动生成）。
+> 📖 以上为**概念/机制**词典。每个具体**输入源**的「定义·为什么看·怎么用」见姊妹文件 [输入源词典](00b_input_glossary)（按族系分组，机读自动生成）。
 <!-- END auto:gloss-pointer -->
 
 第一次读不用背，读到后面遇到再回来查。每个词都用"一句人话 + 为什么你要在乎"的方式讲。

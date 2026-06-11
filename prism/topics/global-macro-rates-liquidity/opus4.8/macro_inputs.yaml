@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-11T02:42:28.104815+00:00'
+updated: '2026-06-11T11:28:39.996822+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -23,12 +23,17 @@ inputs:
   observed:
     value: 3.75
     as_of: '2026-06-10'
-    checked_at: '2026-06-10T22:00:13.254812+00:00'
+    checked_at: '2026-06-11T10:34:59.705465+00:00'
     streak: 0
     prev_value: 3.75
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DFEDTARU
+  family: 货币政策
+  gloss:
+    define: 美联储 FOMC 设定的隔夜政策利率区间，每次议息会议公布
+    read: 全球无风险短端利率的锚，所有资产定价的地基
+    use: 升=收紧、压估值与长久期；降=宽松、利好成长股与风险资产
 - name: FOMC 点阵图(SEP)
   tier: A
   cadence_type: event
@@ -53,6 +58,11 @@ inputs:
       2028=3.1%, 长期=3.1%（较 12 月点阵图持平）。源：Fed fomcprojtabl20260318.htm
     checked_at: '2026-06-09T12:03:46.796972+00:00'
     streak: 0
+  family: 货币政策
+  gloss:
+    define: FOMC 季度经济预测里各委员对未来政策利率的点状预期
+    read: 官方自己昭示的利率路径中位预期，看 Fed 想走多远
+    use: 点位上移=偏鹰、远端利率走高压债；下移=偏鸽利好久期
 - name: CME FedWatch 隐含路径
   tier: A
   cadence_type: series
@@ -83,6 +93,11 @@ inputs:
       2026-06-09。
   note: 暂无稳定免费单值源——CME 官方 FedWatch API 付费,investing.com Fed Rate Monitor 为 JS 渲染+反爬(recipe
     取不到)。当前由 LLM 从期货价反推隐含利率。待找到稳定 JSON 端点再写 recipe(2026-06-10 核)。
+  family: 货币政策
+  gloss:
+    define: 由联邦基金期货价格反推的市场降/加息概率（CME 口径）
+    read: 市场实时定价的政策路径，与点阵图比可见预期差
+    use: 降息概率升=市场抢跑宽松利好风险；骤降=紧缩预期回摆
 - name: FOMC 声明/纪要
   tier: A
   cadence_type: policy
@@ -117,6 +132,11 @@ inputs:
     措辞,故归 llm(2026-06-10 核)。
   local_cache_path: topics/global-macro-rates-liquidity/inbox/fomc_latest.md
   text_fetch: fomc
+  family: 货币政策
+  gloss:
+    define: 每次议息后的政策声明与三周后纪要全文（美联储发布）
+    read: 措辞变化透露反应函数转向，比点位更早露风向
+    use: 转鹰措辞=远端利率上行压债与成长；转鸽=宽松预期升温
 - name: 美联储官员讲话(主席)
   tier: A
   cadence_type: policy
@@ -164,12 +184,17 @@ inputs:
   observed:
     value: 159001.0
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T22:00:23.353913+00:00'
+    checked_at: '2026-06-11T10:35:02.452788+00:00'
     streak: 0
     prev_value: 159001.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PAYEMS
+  family: 增长就业
+  gloss:
+    define: 美国劳工部月度非农新增就业人数（每月首个周五）
+    read: 劳动力市场松紧的头条读数，Fed 双重使命的就业侧
+    use: 大超预期=就业过热偏鹰压债；骤冷=降息预期升利好久期
 - name: 失业率
   tier: A
   cadence_type: event
@@ -189,12 +214,17 @@ inputs:
   observed:
     value: 4.3
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T22:00:32.062587+00:00'
+    checked_at: '2026-06-11T10:35:03.691079+00:00'
     streak: 0
     prev_value: 4.3
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/UNRATE
+  family: 增长就业
+  gloss:
+    define: 美国劳工部月度失业率（与 NFP 同日发布）
+    read: 就业侧的另一面，Sahm 规则触发即衰退预警
+    use: 快速上行=衰退/降息信号利好债；走低=就业紧偏鹰
 - name: 初请失业金
   tier: A
   cadence_type: event
@@ -214,7 +244,7 @@ inputs:
   observed:
     value: 225000.0
     as_of: '2026-05-30'
-    checked_at: '2026-06-10T22:00:39.734638+00:00'
+    checked_at: '2026-06-11T10:35:04.848907+00:00'
     streak: 0
     prev_value: 225000.0
   authority: official
@@ -239,7 +269,7 @@ inputs:
   observed:
     value: 7618.0
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T22:00:46.209359+00:00'
+    checked_at: '2026-06-11T10:35:05.949733+00:00'
     streak: 0
     prev_value: 7618.0
   authority: official
@@ -278,12 +308,17 @@ inputs:
     as_of: 2026-05
     evidence: https://www.prnewswire.com/news-releases/manufacturing-pmi-at-54-may-2026-ism-manufacturing-pmi-report-302786165.html
     acq_note: ISM 官网 redirect 至付费墙登录页；值从 PRNewswire 新闻稿确认。5月值 54.0，发布于 2026-06-01。
-    checked_at: '2026-06-10T22:01:46.546369+00:00'
+    checked_at: '2026-06-11T10:36:16.811323+00:00'
     streak: 0
     prev_value: 54.0
   note: macromicro 镜像(series/265)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
     chart-stat-lastrows 侧栏取最新期值。原 FRED NAPM 停更/ISM 官网付费墙/DBnomics 坏尾,故曾退回 LLM 读新闻稿(2026-06-10
     改脚本)。
+  family: 增长就业
+  gloss:
+    define: 供应管理协会月度制造业景气调查，50 为荣枯线
+    read: 领先增长动能的扩张/收缩信号
+    use: 跌破 50=增长走弱降息预期升；回升=企稳利好周期股
 - name: ISM 服务业 PMI
   tier: A
   cadence_type: event
@@ -317,7 +352,7 @@ inputs:
     evidence: https://www.prnewswire.com/news-releases/services-pmi-at-54-5-may-2026-ism-services-pmi-report-302789082.html
     acq_note: ISM 官网有 SSO 墙无法直接抓，转从 PR Newswire 新闻稿取得。2026年5月服务业 PMI = 54.5（前值53.6），为连续第23个月扩张。Business
       Activity 57.7%，New Orders 57.3%，Employment 47.9%。
-    checked_at: '2026-06-10T22:01:47.993129+00:00'
+    checked_at: '2026-06-11T10:36:18.859726+00:00'
     streak: 0
     prev_value: 54.5
   note: macromicro 镜像(series/293, NMI)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
@@ -342,7 +377,7 @@ inputs:
   observed:
     value: 757085.0
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T22:00:50.272005+00:00'
+    checked_at: '2026-06-11T10:35:07.115683+00:00'
     streak: 0
     prev_value: 757085.0
   authority: official
@@ -370,7 +405,7 @@ inputs:
   observed:
     value: 3.2906
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T22:00:53.625949+00:00'
+    checked_at: '2026-06-11T10:35:08.314694+00:00'
     streak: 0
     prev_value: 3.2906
 - name: 时薪 / ECI
@@ -392,7 +427,7 @@ inputs:
   observed:
     value: 37.53
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T22:00:54.990372+00:00'
+    checked_at: '2026-06-11T10:35:09.415871+00:00'
     streak: 0
     prev_value: 37.53
   authority: official
@@ -417,12 +452,17 @@ inputs:
   observed:
     value: 129.63
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T22:00:58.549511+00:00'
+    checked_at: '2026-06-11T10:35:10.564215+00:00'
     streak: 0
     prev_value: 129.63
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PCEPILFE
+  family: 通胀
+  gloss:
+    define: 美联储最看重的通胀尺，剔除食品能源（BEA 月度）
+    read: 通胀粘不粘的首选标尺，用超预期而非水平触发
+    use: 超预期=偏鹰压成长与债；回落=宽松空间利好久期
 - name: CPI(核心+supercore)
   tier: A
   cadence_type: event
@@ -442,12 +482,17 @@ inputs:
   observed:
     value: 336.121
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T22:00:59.503374+00:00'
+    checked_at: '2026-06-11T10:35:11.710176+00:00'
     streak: 0
     prev_value: 336.121
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CPILFESL
+  family: 通胀
+  gloss:
+    define: 美国劳工部月度物价，核心剔食品能源、supercore 再剔房租
+    read: 通胀粘性的结构拆解，supercore 看服务通胀韧性
+    use: 粘住=Fed 难松压估值；降温=降息交易利好成长与债
 - name: PCE 三分项(supercore/住房/商品)
   tier: B
   cadence_type: event
@@ -467,7 +512,7 @@ inputs:
   observed:
     value: 129.63
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T22:01:03.235070+00:00'
+    checked_at: '2026-06-11T10:35:12.836527+00:00'
     streak: 0
     prev_value: 129.63
   authority: official
@@ -492,7 +537,7 @@ inputs:
   observed:
     value: 156.496
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T22:01:10.211425+00:00'
+    checked_at: '2026-06-11T10:35:13.994613+00:00'
     streak: 0
     prev_value: 156.496
   authority: official
@@ -518,12 +563,17 @@ inputs:
   observed:
     value: 95.0
     as_of: '2026-06-08'
-    checked_at: '2026-06-10T22:01:12.622835+00:00'
+    checked_at: '2026-06-11T10:35:15.178923+00:00'
     streak: 0
-    prev_value: 95.96
+    prev_value: 95.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DCOILWTICO
+  family: 通胀
+  gloss:
+    define: 西德州原油期货价，区分供给冲击与需求拉动
+    read: 头条通胀与通胀预期的成本推手
+    use: 供给驱动暴涨=滞胀压估值；跌=通胀降温利好债
 - name: 5y5y/breakeven 通胀预期
   tier: A
   cadence_type: series
@@ -543,9 +593,9 @@ inputs:
   observed:
     value: 2.24
     as_of: '2026-06-10'
-    checked_at: '2026-06-10T22:01:16.020251+00:00'
+    checked_at: '2026-06-11T10:35:16.328741+00:00'
     streak: 0
-    prev_value: 2.22
+    prev_value: 2.24
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T5YIFR
@@ -568,19 +618,24 @@ inputs:
   source_url: https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding
   observed:
     stance: 中性
-    evidence: https://home.treasury.gov/news/press-releases/sb0489 ; https://mariemontcapital.com/treasury-quarterly-refunding-may-2026-stagflation/
+    evidence: https://home.treasury.gov/news/press-releases/sb0489
     value: 125
     as_of: '2026-05-06'
-    acq_note: 2026年5月6日公布的 Q2 2026 季度再融资公告（QRA）：票息券合计 $125B（3年期 $58B + 10年期 $42B +
-      30年期 $25B）；再融资约 $83.3B 到期券，净新融资约 $41.7B。Q2（4–6月）全季私人持有净借款估计 $189B（较2月估计上调 $79B）。Bills
-      方面：维持每周常规国库券拍卖及现金管理券（CMB），4周期票面规模约 $101B/期；1个月至2年期回购操作规模压缩至 $25B（前次 $75B）。票息及FRN拍卖规模维持不变，预计至少数个季度保持稳定。
-    checked_at: '2026-06-10T01:31:46.524889+00:00'
+    acq_note: QRA 季度再融资声明（2026Q2，5月6日发布）——票/券拍卖规模全线维持不变，未做任何增减；Treasury 明确表示至少未来数个季度维持现有
+      coupon/FRN 拍卖规模，仅评估潜在未来增加。Q3 净借款预估跃升至 $671B，但主要通过短期 bill/CMB 满足，非票券端主动扩张。立场判为中性。
+    checked_at: '2026-06-11T03:41:31.748297+00:00'
     streak: 0
+    fingerprint: /news/press-releases/sb0489|/news/press-releases/sb0485
+    verified_at: '2026-06-11T03:43:14.735227+00:00'
   authority: official
-  availability: scriptable_todo
-  note: Treasury 官方提供结构化数据端点：https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding/most-recent-quarterly-refunding-documents
-    可定期 WebFetch 抓最新 QRA 页面；或对 https://home.treasury.gov/news/press-releases/sb0489
-    类 URL 按季拉取（需跟踪最新 press-release ID）。建议 recipe 改为抓 'Most Recent QRA Documents' 索引页解析最新链接再读正文。
+  availability: llm
+  text_fetch: qra
+  local_cache_path: topics/global-macro-rates-liquidity/inbox/qra_latest.md
+  family: 流动性·数量
+  gloss:
+    define: 财政部季度再融资公告，定发债规模与长短期债占比
+    read: 久期供给与对准备金/RRP 抽水的总闸
+    use: 长债占比升=期限溢价上行压长端；偏短债=抽 RRP 缓冲流动性
 - name: TGA 余额
   tier: A
   cadence_type: series
@@ -600,12 +655,17 @@ inputs:
   observed:
     value: 875713.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-10T22:01:17.845800+00:00'
+    checked_at: '2026-06-11T10:35:17.591059+00:00'
     streak: 0
     prev_value: 875713.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/WTREGEN
+  family: 流动性·数量
+  gloss:
+    define: 财政部在美联储的现金账户余额（Fed 日频）
+    read: TGA 升=从银行体系抽走准备金，降=放水
+    use: 大幅回补=净流动性收紧压风险；释放=流动性宽松利好
 - name: 联邦赤字
   tier: B
   cadence_type: event
@@ -625,9 +685,9 @@ inputs:
   observed:
     value: -292648.46208374
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T22:01:19.447024+00:00'
+    checked_at: '2026-06-11T10:35:18.889965+00:00'
     streak: 0
-    prev_value: 215024.14019777
+    prev_value: -292648.46208374
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/MTSDS133FMS
@@ -651,12 +711,17 @@ inputs:
   observed:
     value: 6711495.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-10T22:01:21.683663+00:00'
+    checked_at: '2026-06-11T10:35:20.110877+00:00'
     streak: 0
     prev_value: 6711495.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/WALCL
+  family: 流动性·数量
+  gloss:
+    define: 美联储资产负债表总规模（每周三公布）
+    read: 缩表速度决定准备金供给收缩快慢
+    use: QT 加速=准备金收缩压流动性；放缓/停=利好风险资产
 - name: RRP 逆回购
   tier: A
   cadence_type: series
@@ -676,9 +741,9 @@ inputs:
   observed:
     value: 0.387
     as_of: '2026-06-10'
-    checked_at: '2026-06-10T22:01:24.700839+00:00'
+    checked_at: '2026-06-11T10:35:21.220736+00:00'
     streak: 0
-    prev_value: 0.577
+    prev_value: 0.387
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/RRPONTSYD
@@ -700,13 +765,18 @@ inputs:
   fred_series_id: __DERIVED__
   observed:
     value: 5835781.613
-    checked_at: '2026-06-10T22:01:44.867077+00:00'
+    checked_at: '2026-06-11T10:36:04.707225+00:00'
     streak: 0
-    prev_value: 5835781.423
+    prev_value: 5835781.613
   authority: official
   availability: scripted
   source_url: null
   note: 派生=WALCL−TGA−RRP（fred_fetch 内置 _NET_LIQ_NAME）
+  family: 流动性·数量
+  gloss:
+    define: 美联储资产减 TGA 减 RRP 的派生指标
+    read: 银行体系真正可用的准备金，RRP 耗尽后才真咬合
+    use: 趋势向上=流动性顺风利好风险；向下=逆风压估值
 - name: 银行准备金 + 准备金/GDP
   tier: A
   cadence_type: series
@@ -726,12 +796,17 @@ inputs:
   observed:
     value: 3013902.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-10T22:01:26.303645+00:00'
+    checked_at: '2026-06-11T10:35:27.344770+00:00'
     streak: 0
     prev_value: 3013902.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/WRESBAL
+  family: 流动性·数量
+  gloss:
+    define: 银行在美联储的准备金余额及其占 GDP 比（Fed 周频）
+    read: 体系离「准备金稀缺」红线还有多远
+    use: 逼近稀缺=回购易爆、流动性脆弱；充裕=缓冲厚
 - name: SOFR−IORB / 回购压力
   tier: A
   cadence_type: series
@@ -760,9 +835,14 @@ inputs:
     - IORB
   observed:
     value: -0.04999999999999982
-    checked_at: '2026-06-10T22:01:44.799407+00:00'
+    checked_at: '2026-06-11T10:36:04.587214+00:00'
     streak: 0
     prev_value: -0.04999999999999982
+  family: 资金面咬合
+  gloss:
+    define: 担保隔夜利率减准备金利率的利差（FRED 日频）
+    read: 走阔=准备金稀缺、回购市场吃紧的咬合信号
+    use: 持续为正/跳升=资金面紧张预警；回落=流动性宽松
 - name: FRA-OIS 利差
   tier: A
   cadence_type: series
@@ -802,7 +882,7 @@ inputs:
       H.4.1，2026-06-04）。
     value: 116.0
     as_of: '2026-06-03'
-    checked_at: '2026-06-10T22:01:27.632662+00:00'
+    checked_at: '2026-06-11T10:35:33.461274+00:00'
     streak: 0
     prev_value: 116.0
   authority: official
@@ -816,7 +896,8 @@ inputs:
   - liquidity
   mechanism: CD
   importance: load_bearing
-  source: web(Fed)
+  source: FRED
+  fetch_method: fred-api
   state: 新增
   causal_sentence: 银行信贷标准收紧领先信用收缩 → 经信贷供给传导实体流动性 → 驱动流动性。
   lag: 领先(季)
@@ -824,20 +905,28 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: scriptable_todo
-  source_url: https://www.federalreserve.gov/data/sloos.htm
+  availability: scripted
+  fred_series_id: SUBLPDMBSXWBNQ
+  source_url: https://fred.stlouisfed.org/series/SUBLPDMBSXWBNQ
   observed:
     value: 1.5
-    as_of: '2026-04-30'
+    as_of: '2026-04-01'
     evidence: Federal Reserve, Senior Loan Officer Opinion Survey on Bank Lending
       Practices (April 2026); FRED series SUBLPDMBSXWBNQ
     acq_note: Net percentage of domestic banks tightening standards on business loans,
       weighted by outstanding loan balances. Positive value indicates net tightening.
       Released May 4, 2026.
-    checked_at: '2026-06-10T03:57:14.481686+00:00'
+    checked_at: '2026-06-11T10:35:34.649608+00:00'
     streak: 0
-  note: 'FRED API endpoint: https://fred.stlouisfed.org/series/SUBLPDMBSXWBNQ (supports
-    JSON/CSV download)'
+    prev_value: 1.5
+  note: 已转脚本(fred-api 通道)：FRED series SUBLPDMBSXWBNQ=净占比国内银行收紧企业贷款标准(按未偿余额加权), 季度,正值=净收紧。零
+    LLM 直拉(2026-06-11 核,尾值 2026-04-01=1.5 与 LLM 取值一致)。 官方 SLOOS 页 https://www.federalreserve.gov/data/sloos.htm
+    仅作背景，单值取数走 FRED。
+  family: 信用与风险偏好
+  gloss:
+    define: 美联储季度银行高级信贷官调查，净收紧占比
+    read: 银行放贷意愿，领先信用扩张/收缩
+    use: 收紧抬升=信用收缩、衰退前兆压风险；放松=信用回暖
 - name: 2Y/10Y/30Y 国债
   tier: A
   cadence_type: series
@@ -857,12 +946,17 @@ inputs:
   observed:
     value: 4.53
     as_of: '2026-06-09'
-    checked_at: '2026-06-10T22:01:28.638569+00:00'
+    checked_at: '2026-06-11T10:35:35.802799+00:00'
     streak: 0
-    prev_value: 4.56
+    prev_value: 4.53
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DGS10
+  family: 利率·曲线结构
+  gloss:
+    define: 美国国债 2/10/30 年期收益率（FRED 日频）
+    read: 利率体制的直接读数与全市场定价基准
+    use: 长端上行压长久期股债；曲线形态见 primer 曲线四形态
 - name: 10Y 实际利率 TIPS
   tier: A
   cadence_type: series
@@ -883,12 +977,17 @@ inputs:
   observed:
     value: 2.2
     as_of: '2026-06-09'
-    checked_at: '2026-06-10T22:01:29.583135+00:00'
+    checked_at: '2026-06-11T10:35:36.949589+00:00'
     streak: 0
-    prev_value: 2.21
+    prev_value: 2.2
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DFII10
+  family: 利率·曲线结构
+  gloss:
+    define: 10 年期通胀挂钩债收益率（FRED 日频）
+    read: 全球资产的真实贴现率与美元套息基础
+    use: 实际利率升=贵估值/黄金承压；降=利好成长与黄金
 - name: 期限溢价 ACM 分解
   tier: B
   cadence_type: series
@@ -912,7 +1011,7 @@ inputs:
   observed:
     value: 0.8019
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T22:01:30.761535+00:00'
+    checked_at: '2026-06-11T10:35:39.753218+00:00'
     streak: 0
     prev_value: 0.8019
 - name: 2s10s 曲线斜率
@@ -934,9 +1033,9 @@ inputs:
   observed:
     value: 0.42
     as_of: '2026-06-10'
-    checked_at: '2026-06-10T22:01:31.672369+00:00'
+    checked_at: '2026-06-11T10:35:45.889332+00:00'
     streak: 0
-    prev_value: 0.4
+    prev_value: 0.42
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T10Y2Y
@@ -959,7 +1058,7 @@ inputs:
   observed:
     value: 0.75
     as_of: '2026-06-09'
-    checked_at: '2026-06-10T22:01:32.621861+00:00'
+    checked_at: '2026-06-11T10:35:47.098201+00:00'
     streak: 0
     prev_value: 0.75
   authority: official
@@ -988,7 +1087,7 @@ inputs:
   observed:
     value: 2.78
     as_of: '2026-06-09'
-    checked_at: '2026-06-10T22:01:33.665482+00:00'
+    checked_at: '2026-06-11T10:35:48.471070+00:00'
     streak: 0
     prev_value: 2.78
   authority: official
@@ -1030,9 +1129,18 @@ inputs:
     direction: above
     level_alarm: 140
   authority: primary
-  availability: llm
-  source_url: https://www.ice.com/index
-  note: ICE 专有指数无免费结构化源→无法脚本喂带;越带报警关闭,series 到期人工看
+  availability: scripted
+  source_url: https://finance.yahoo.com/quote/%5EMOVE
+  fetch_method: yfinance
+  yfinance:
+    ticker: ^MOVE
+    field: Close
+  observed:
+    acq_note: yfinance ^MOVE（ICE BofA MOVE 指数，日频收盘）；Yahoo 发布、免费结构化，替代原"无源"判断。
+    value: 73.94629669189453
+    as_of: '2026-06-10'
+    checked_at: '2026-06-11T03:49:02.089235+00:00'
+    streak: 0
 - name: VIX
   tier: B
   cadence_type: series
@@ -1053,7 +1161,7 @@ inputs:
   observed:
     value: 19.87
     as_of: '2026-06-09'
-    checked_at: '2026-06-10T22:01:34.612724+00:00'
+    checked_at: '2026-06-11T10:35:49.568875+00:00'
     streak: 0
     prev_value: 19.87
   authority: official
@@ -1078,7 +1186,7 @@ inputs:
   observed:
     value: -0.506
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T22:01:35.660068+00:00'
+    checked_at: '2026-06-11T10:35:50.677392+00:00'
     streak: 0
     prev_value: -0.506
   authority: official
@@ -1114,7 +1222,7 @@ inputs:
   observed:
     value: 39.41935320301406
     as_of: '2025-12-01'
-    checked_at: '2026-06-10T22:01:49.053337+00:00'
+    checked_at: '2026-06-11T10:36:20.273046+00:00'
     streak: 0
     prev_value: 39.41935320301406
 - name: 市场内部/breadth+集中度
@@ -1194,12 +1302,17 @@ inputs:
   observed:
     value: 120.0831
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T22:01:36.664528+00:00'
+    checked_at: '2026-06-11T10:35:51.869390+00:00'
     streak: 0
     prev_value: 120.0831
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DTWEXBGS
+  family: 汇率·跨境套利
+  gloss:
+    define: 美联储广义贸易加权美元指数（含 EM，日频）
+    read: 真正作用于中国/EM 的美元强弱，比 DXY 更全
+    use: 走强=EM 融资紧、压人民币与风险；走弱=EM 顺风
 - name: DXY
   tier: B
   cadence_type: series
@@ -1220,13 +1333,204 @@ inputs:
   observed:
     value: 112.6846
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T22:01:37.571574+00:00'
+    checked_at: '2026-06-11T10:35:53.026450+00:00'
     streak: 0
     prev_value: 112.6846
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DTWEXAFEGS
-- name: 跨币种基差(EUR/JPY-USD)
+- name: Spot EURUSD
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CO
+  importance: background
+  source: FRED
+  state: 新增(CIP腿)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: false
+  authority: official
+  availability: scripted
+  fetch_method: fred-api
+  fred_series_id: DEXUSEU
+  note: CIP 远期腿基准即期（USD/EUR）
+  source_url: https://fred.stlouisfed.org/series/DEXUSEU
+  observed:
+    value: 1.1533
+    as_of: '2026-06-05'
+    checked_at: '2026-06-11T10:35:54.168841+00:00'
+    streak: 0
+- name: Spot USDJPY
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CO
+  importance: background
+  source: FRED
+  state: 新增(CIP腿)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: false
+  authority: official
+  availability: scripted
+  fetch_method: fred-api
+  fred_series_id: DEXJPUS
+  note: CIP 远期腿基准即期（JPY/USD）
+  source_url: https://fred.stlouisfed.org/series/DEXJPUS
+  observed:
+    value: 160.26
+    as_of: '2026-06-05'
+    checked_at: '2026-06-11T10:35:55.610424+00:00'
+    streak: 0
+- name: EURUSD 3M远期点
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CO
+  importance: background
+  source: web
+  state: 新增(CIP腿)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: false
+  authority: secondary
+  availability: scripted
+  fetch_method: barchart
+  barchart:
+    symbol: EURUSD.H
+  note: barchart .H = 3M 远期点(pips, ×1e-4)
+  source_url: https://www.barchart.com/forex/quotes/EURUSD.H/price-history/historical
+  observed:
+    value: 42.222
+    as_of: '2026-06-11'
+    checked_at: '2026-06-11T10:36:09.426443+00:00'
+    streak: 0
+- name: USDJPY 3M远期点
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CO
+  importance: background
+  source: web
+  state: 新增(CIP腿)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: false
+  authority: secondary
+  availability: scripted
+  fetch_method: barchart
+  barchart:
+    symbol: USDJPY.H
+  note: barchart .H = 3M 远期点(pips, ×1e-2)
+  source_url: https://www.barchart.com/forex/quotes/USDJPY.H/price-history/historical
+  observed:
+    value: -116.465
+    as_of: '2026-06-11'
+    checked_at: '2026-06-11T10:36:11.463922+00:00'
+    streak: 0
+- name: USD 3M OIS
+  tier: B
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CO
+  importance: background
+  source: web
+  state: 新增(CIP腿)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: false
+  authority: secondary
+  availability: scripted
+  fetch_method: recipe
+  fetch_recipe:
+    kind: html
+    url: https://en.macromicro.me/series/43597/us-overnight-indexed-swaps-3-months
+    headers:
+      User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
+      Accept-Language: en-US,en;q=0.9
+    parse:
+      value_regex: class="val"[^>]*>([\d.,]+)
+      date_regex: date-label[^>]*>\s*<time>(\d{4}-\d{2}-\d{2})
+  note: CIP 两对共用的 USD 腿；MM 图 115044 数据 API 付费墙(#1165)→爬单序列 43597 HTML
+  observed:
+    value: 3.67
+    as_of: '2026-06-09'
+    checked_at: '2026-06-11T10:36:22.053244+00:00'
+    streak: 0
+- name: EUR 3M OIS
+  tier: B
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CO
+  importance: background
+  source: web
+  state: 新增(CIP腿)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: false
+  authority: official
+  availability: scripted
+  fetch_method: ecb
+  ecb:
+    mode: hybrid_3m_ois
+    ois_key: B.U2._X._Z.S1ZV._Z.O._X.WR._X.FE._Z._Z.EUR._Z
+    estr_key: B.EU000A2X2A25.WT
+  note: 日频混合=€STR + (真3M_OIS−€STR)@最近MMSR(MP)锚点;锚 ~6 周一更,锚间用 €STR 顺延。注意：锚间若 ECB 重定价加息预期,本值会欠真值(实测
+    ~13bp)→EUR/USD 基差算-层不可信
+  source_url: https://data.ecb.europa.eu/data/datasets/MMSR
+  observed:
+    value: 2.0759999999999996
+    as_of: '2026-06-10'
+    checked_at: '2026-06-11T10:36:15.020704+00:00'
+    streak: 0
+- name: JPY 3M OIS
+  tier: B
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CO
+  importance: background
+  source: web
+  state: 新增(CIP腿)
+  causal_sentence: ''
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: false
+  authority: secondary
+  availability: scripted
+  fetch_method: macromicro
+  macromicro:
+    chart_id: '95219'
+    series_index: 1
+    page_url: https://sc.macromicro.me/charts/95219/japan-ois
+  note: MM 图 95219 第 2 档(series_index=1)=3M JPY TONA OIS
+  observed:
+    value: 0.9525
+    as_of: '2026-06-09'
+    checked_at: '2026-06-11T10:36:07.403113+00:00'
+    streak: 0
+- name: EUR/USD 3M 基差
   tier: A
   cadence_type: series
   targets:
@@ -1235,7 +1539,52 @@ inputs:
   mechanism: CF
   importance: load_bearing
   source: web
-  state: 改(并入流动性逻辑链)
+  state: 改(CIP合成,旧合并条拆出)
+  causal_sentence: 跨币种基差走负=离岸美元融资紧张，钱抢美元 → 经美元资金渠道 → 驱动流动性与汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  alert_band:
+    level: -60
+    direction: below
+    level_alarm: -90
+  authority: primary
+  availability: scripted
+  fetch_method: recipe
+  derived:
+    op: cip_basis
+    from_inputs:
+    - Spot EURUSD
+    - EURUSD 3M远期点
+    - USD 3M OIS
+    - EUR 3M OIS
+    params:
+      tau: 0.25
+      pip_scale: 10000
+      usd_role: quote
+  note: CIP 合成(bps)。基差近零、EUR-OIS 混合带 ~±13bp 噪声→日常 level 不可信,仅极端走阔(危机)可信;故宽带只测危机。免费数据无法精算近零基差,CME
+    指数(XEURBI)反爬不可脚本化。
+  observed:
+    value: 12.156562768296277
+    as_of: '2026-06-05'
+    checked_at: '2026-06-11T10:36:37.168354+00:00'
+    streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 欧元兑美元 3 个月跨币种基差，CIP 合成（bps）
+    read: 离岸美元融资松紧，走负=抢美元（机制见 primer 基差）
+    use: 仅极端走阔（危机）可信→美元荒避险；日常近零噪声不读
+- name: JPY/USD 3M 基差
+  tier: A
+  cadence_type: series
+  targets:
+  - liquidity
+  - fx
+  mechanism: CF
+  importance: load_bearing
+  source: web
+  state: 改(CIP合成,旧合并条拆出)
   causal_sentence: 跨币种基差走负=离岸美元融资紧张，钱抢美元 → 经美元资金渠道 → 驱动流动性与汇率。
   lag: 同步
   alert_series: false
@@ -1246,13 +1595,30 @@ inputs:
     direction: below
     level_alarm: -60
   authority: primary
-  availability: llm
-  note: 基差需掉期/Bloomberg 报价,无免费源→关带,到期人工看
+  availability: scripted
+  fetch_method: recipe
+  derived:
+    op: cip_basis
+    from_inputs:
+    - Spot USDJPY
+    - USDJPY 3M远期点
+    - USD 3M OIS
+    - JPY 3M OIS
+    params:
+      tau: 0.25
+      pip_scale: 100
+      usd_role: base
+  note: CIP 合成(bps)。信号较大(常态 ~-30/-50),合成验证 -21bp 量级合理。USD 腿与 EUR/USD 共用。
   observed:
-    evidence: 'CME EUR/USD basis (XEURBI): -1.04bp as of 2026-06-09 (https://www.cmegroup.com/market-data/cme-group-benchmark-administration/eur-usd-cross-currency-basis-index.html);
-      JPY/USD cross-currency basis current value not available from public web sources'
-    acq_note: EUR/USD基差可获取（-1.04bp），但JPY/USD跨币种基差在公开来源无最新值，通常需Bloomberg终端。本复合指标无法完整取数。
-    checked_at: '2026-06-10T04:03:26.539220+00:00'
+    value: -21.607210470486695
+    as_of: '2026-06-05'
+    checked_at: '2026-06-11T10:36:37.374959+00:00'
+    streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 日元兑美元 3 个月跨币种基差，CIP 合成（bps）
+    read: 离岸美元融资松紧，日元信号比欧元清晰
+    use: 大幅走负=美元荒、全球去风险；收窄=融资缓和
 - name: USDJPY / 日元 carry
   tier: A
   cadence_type: series
@@ -1278,12 +1644,17 @@ inputs:
   observed:
     value: 160.26
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T22:01:38.556064+00:00'
-    streak: 4
+    checked_at: '2026-06-11T10:35:56.735280+00:00'
+    streak: 5
     prev_value: 160.26
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DEXJPUS
+  family: 汇率·跨境套利
+  gloss:
+    define: 美元兑日元汇率，日元套息交易的温度计
+    read: carry 平仓时资金回流日元、全球抛风险（机制见 primer carry）
+    use: 日元急升=carry 平仓、风险资产承压；稳=套息顺风
 - name: BoJ 政策 / JGB 收益率
   tier: A
   cadence_type: policy
@@ -1360,7 +1731,7 @@ inputs:
   observed:
     value: 8.465
     as_of: 2025-Q4
-    checked_at: '2026-06-10T22:01:50.190360+00:00'
+    checked_at: '2026-06-11T10:36:23.725790+00:00'
     streak: 0
     prev_value: 8.465
 - name: TIC / 外国持美债 + 中国持美债
@@ -1395,7 +1766,7 @@ inputs:
   observed:
     value: 652.3
     as_of: 2026-03
-    checked_at: '2026-06-10T22:02:00.102887+00:00'
+    checked_at: '2026-06-11T10:36:34.070077+00:00'
     streak: 0
     prev_value: 652.3
 - name: 黄金
@@ -1436,9 +1807,9 @@ inputs:
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CBBTCUSD
   observed:
-    value: 61751.94
-    as_of: '2026-06-09'
-    checked_at: '2026-06-10T22:01:39.543588+00:00'
+    value: 61570.02
+    as_of: '2026-06-10'
+    checked_at: '2026-06-11T10:35:57.890712+00:00'
     streak: 0
     prev_value: 61751.94
 - name: 大宗(铜/铁矿)
@@ -1465,7 +1836,7 @@ inputs:
   observed:
     value: 13483.75153846154
     as_of: '2026-05-01'
-    checked_at: '2026-06-10T22:01:40.693550+00:00'
+    checked_at: '2026-06-11T10:35:59.101382+00:00'
     streak: 0
     prev_value: 13483.75153846154
 - name: 官方制造业 PMI
@@ -1506,9 +1877,14 @@ inputs:
   observed:
     value: 50.0
     as_of: '2026-05-01 00:00:00'
-    checked_at: '2026-06-10T22:02:00.283548+00:00'
+    checked_at: '2026-06-11T10:36:34.358832+00:00'
     streak: 0
     prev_value: 50.0
+  family: 中国增长·外需
+  gloss:
+    define: 国家统计局月度官方制造业 PMI，50 荣枯线（偏大中企业）
+    read: 领先中国工业增长动能
+    use: 跌破 50=增长走弱宽松预期升；回升=企稳利好周期与人民币
 - name: 财新 PMI
   tier: A
   cadence_type: event
@@ -1570,8 +1946,9 @@ inputs:
     acq_note: akshare macro_china_consumer_goods_retail（统计局直连），取「同比增长」月率。
     value: 0.2
     as_of: 2026-04
-    checked_at: '2026-06-11T02:42:26.136859+00:00'
+    checked_at: '2026-06-11T11:10:58.000712+00:00'
     streak: 0
+    prev_value: 0.2
 - name: 固定资产投资
   tier: B
   cadence_type: event
@@ -1660,9 +2037,14 @@ inputs:
   observed:
     value: 1.2
     as_of: '2026-05-01 00:00:00'
-    checked_at: '2026-06-10T22:02:00.471895+00:00'
+    checked_at: '2026-06-11T10:36:34.646247+00:00'
     streak: 0
     prev_value: 1.2
+  family: 中国增长·外需
+  gloss:
+    define: 国家统计局月度居民消费价格同比
+    read: 内需通胀/通缩压力，长期低位=需求不足
+    use: 持续低/负=通缩、实际利率高压增长；回升=内需修复
 - name: 中国 PPI
   tier: A
   cadence_type: event
@@ -1701,9 +2083,14 @@ inputs:
   observed:
     value: 3.9
     as_of: '2026-05-01 00:00:00'
-    checked_at: '2026-06-10T22:02:00.715979+00:00'
+    checked_at: '2026-06-11T10:36:34.932450+00:00'
     streak: 0
     prev_value: 3.9
+  family: 中国增长·外需
+  gloss:
+    define: 国家统计局月度工业生产者出厂价同比
+    read: 工业品通缩信号，连续为负=企业盈利与去杠杆压力
+    use: 深度负=工业通缩、需更多宽松；转正=再通胀利好周期
 - name: 7天 OMO 逆回购利率(新锚)
   tier: A
   cadence_type: event
@@ -1730,6 +2117,11 @@ inputs:
     checked_at: '2026-06-10T04:04:42.012046+00:00'
     streak: 0
   note: 央行官网 http://www.pbc.gov.cn/ 每日发布公开市场业务交易公告，7天期逆回购操作均有固定JSON/XML数据端点，可自动抓取
+  family: 中国货币·流动性
+  gloss:
+    define: 央行 7 天逆回购操作利率，已升为政策利率新锚（每日）
+    read: PBoC 政策意图的价格锚，传导 DR007 与 LPR
+    use: 下调=宽松利好债与风险；上调=收紧信号
 - name: MLF 利率
   tier: A
   cadence_type: event
@@ -1747,7 +2139,7 @@ inputs:
   authority: official
   availability: llm
   source_url: http://www.pbc.gov.cn/
-- name: LPR 1Y/5Y(5Y=房贷链)
+- name: LPR 1Y(政策锚)
   tier: A
   cadence_type: event
   targets:
@@ -1756,7 +2148,7 @@ inputs:
   importance: load_bearing
   source: PBoC
   state: 已有
-  causal_sentence: LPR（5Y 锚定房贷）是贷款定价基准 → 经信贷与房贷成本 → 驱动利率。
+  causal_sentence: LPR 1Y 是企业贷款定价基准 → 经信贷成本 → 驱动利率。
   lag: 同步(月)
   alert_series: false
   monitoring:
@@ -1770,11 +2162,52 @@ inputs:
     date_column: TRADE_DATE
     value_column: LPR1Y
   observed:
-    acq_note: akshare macro_china_lpr，value=LPR1Y（政策锚）；5Y(房贷链)同表 LPR5Y 列，单值字段暂存 1Y。
+    acq_note: akshare macro_china_lpr，value=LPR1Y（政策锚，企业贷款基准）；5Y(房贷锚)见独立项「LPR 5Y(房贷锚)」。
     value: 3.0
     as_of: '2026-05-20'
-    checked_at: '2026-06-11T02:42:27.100460+00:00'
+    checked_at: '2026-06-11T11:10:59.133849+00:00'
     streak: 0
+    prev_value: 3.0
+  family: 中国货币·流动性
+  gloss:
+    define: 全国银行间 1 年期贷款市场报价利率（每月 20 日）
+    read: 企业贷款定价基准
+    use: 下调=降企业融资成本利好信用；不动=宽松观望
+- name: LPR 5Y(房贷锚)
+  tier: A
+  cadence_type: event
+  targets:
+  - rates
+  - liquidity
+  mechanism: CD
+  importance: load_bearing
+  source: PBoC
+  state: 新增
+  causal_sentence: LPR 5Y 是房贷定价基准 → 经房贷成本与地产信贷 → 驱动利率与流动性。
+  lag: 同步(月)
+  alert_series: false
+  monitoring:
+    enabled: true
+  authority: official
+  availability: scripted
+  source_url: https://www.chinamoney.com.cn/
+  fetch_method: akshare
+  akshare:
+    func: macro_china_lpr
+    date_column: TRADE_DATE
+    value_column: LPR5Y
+  observed:
+    acq_note: akshare macro_china_lpr，value=LPR5Y（房贷锚，房贷/地产信贷基准）；1Y(政策锚)见独立项「LPR 1Y(政策锚)」。
+    value: 3.5
+    as_of: '2026-05-20'
+    checked_at: '2026-06-11T11:11:04.373415+00:00'
+    streak: 0
+    prev_value: 3.5
+  family: 中国货币·流动性
+  gloss:
+    define: 5 年期以上 LPR，房贷定价基准（每月 20 日）
+    read: 房贷成本与地产信贷的锚
+    use: 下调=刺激地产与按揭利好地产链；不动=地产承压
 - name: RRR 存款准备金率
   tier: A
   cadence_type: policy
@@ -1797,9 +2230,9 @@ inputs:
     value: 9.0
     as_of: '2025-05-07'
     acq_note: akshare macro_china_reserve_requirement_ratio，value=大型金融机构调整后存准率（事件，最近一次降准）。
-    checked_at: '2026-06-11T02:42:27.324616+00:00'
+    checked_at: '2026-06-11T11:11:04.593995+00:00'
     streak: 0
-    prev_value: 7.5
+    prev_value: 9.0
   authority: official
   availability: scripted
   fetch_method: akshare
@@ -1807,6 +2240,11 @@ inputs:
     func: macro_china_reserve_requirement_ratio
     date_column: 公布时间
     value_column: 大型金融机构-调整后
+  family: 中国货币·流动性
+  gloss:
+    define: 央行规定的银行存款准备金比率
+    read: 降准释放长期可贷资金、降银行负债成本
+    use: 降准=放长钱利好流动性与信用；上调=收紧（罕见）
 - name: DR007/R007
   tier: B
   cadence_type: series
@@ -1828,9 +2266,100 @@ inputs:
     level_alarm: 2.5
     min_streak: 2
   authority: official
-  availability: llm
-  source_url: https://www.chinamoney.com.cn/
-  note: chinamoney 无稳定免费 API→关带,到期人工看
+  availability: scripted
+  fetch_method: recipe
+  fetch_recipe:
+    kind: json
+    url: https://www.chinamoney.com.cn/r/cms/www/chinamoney/data/currency/pr-dly-bltn-interbank-mark.json
+    parse:
+      json_path:
+      - records
+      - 1
+      - wghtdAvgRepoRate
+      date_path:
+      - data
+      - lastDate
+  source_url: https://www.chinamoney.com.cn/chinese/mtdexdaily/
+  note: 已转脚本(recipe/json)：chinamoney「货币市场每日成交统计」官方结算日报静态 JSON pr-dly-bltn-interbank-mark.json(存款类机构
+    DR 系列),取 DR007 加权平均回购利率(wghtdAvgRepoRate,真·成交量加权,非定盘 FR/FDR)。 records 按期限升序 DR001/DR007/DR014/...,DR007
+    恒在 index 1；若产品增删换位在此改 index。 日报为 T-1 结算值(date=data.lastDate);与同源 R007(pr-dly-bltn-mark.json)同口径,供派生「R007−DR007
+    利差」。 DR007 为央行政策锚(带 2.2/2.5 即按 DR007 标定)。2026-06-11 实测尾值 2026-06-10 DR007=1.4152。
+    实时盘中值另见 prr-md.json/weightedRate,本项改用结算日报以与 R007 同口径算利差。失效则回落 llm。
+  observed:
+    value: 1.4152
+    as_of: '2026-06-10'
+    checked_at: '2026-06-11T10:36:35.201101+00:00'
+    streak: 0
+    prev_value: 1.4152
+- name: R007(全市场7天回购)
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  - rates
+  mechanism: CO
+  importance: confirming
+  source: CFETS
+  state: 新增
+  causal_sentence: R007 含非银机构融资成本,高于 DR007 部分即非银流动性分层 → 经回购市场分层 → 驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  authority: official
+  availability: scripted
+  fetch_method: recipe
+  fetch_recipe:
+    kind: json
+    url: https://www.chinamoney.com.cn/r/cms/www/chinamoney/data/currency/pr-dly-bltn-mark.json
+    parse:
+      json_path:
+      - records
+      - 1
+      - wghtdAvgRepoRate
+      date_path:
+      - data
+      - lastDate
+  source_url: https://www.chinamoney.com.cn/chinese/mtdexdaily/
+  note: 已转脚本(recipe/json)：chinamoney「货币市场每日成交统计」官方结算日报静态 JSON pr-dly-bltn-mark.json(全市场
+    R 系列,含非银),取 R007 加权平均回购利率(wghtdAvgRepoRate)。 records 按期限升序 R001/R007/R014/...,R007
+    恒在 index 1；若产品增删换位在此改 index。 日报为 T-1 结算值(date=data.lastDate),与 DR007(pr-dly-bltn-interbank-mark.json)同源同口径。
+    2026-06-11 实测尾值 2026-06-10 R007=1.4156。失效则回落 llm。
+  observed:
+    value: 1.4156
+    as_of: '2026-06-10'
+    checked_at: '2026-06-11T10:36:35.487083+00:00'
+    streak: 0
+    prev_value: 1.4156
+- name: R007−DR007 利差
+  tier: B
+  cadence_type: series
+  targets:
+  - liquidity
+  mechanism: CO
+  importance: confirming
+  source: 派生
+  state: 新增
+  causal_sentence: R007 与 DR007 之差衡量非银相对银行的融资成本溢价 → 利差走阔即流动性分层加剧 → 驱动流动性。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  authority: official
+  availability: scripted
+  source_url: https://www.chinamoney.com.cn/chinese/mtdexdaily/
+  fetch_method: recipe
+  derived:
+    op: sub
+    from_inputs:
+    - R007(全市场7天回购)
+    - DR007/R007
+  note: 派生=R007−DR007(同源结算日报,同口径加权)。利差走阔=非银融资成本相对走高、流动性分层加剧(压力信号)。 两腿落盘后在 recipe 抓取末段算。
+  observed:
+    value: 0.00039999999999995595
+    checked_at: '2026-06-11T10:36:37.576639+00:00'
+    streak: 0
+    prev_value: 0.00039999999999995595
 - name: NCD 同业存单利率
   tier: B
   cadence_type: series
@@ -1847,8 +2376,28 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: https://www.chinamoney.com.cn/
+  fetch_method: akshare
+  akshare:
+    func: bond_china_close_return
+    args:
+      symbol: 同业存单(AAA)
+      period: '1'
+      start_date: '@days_ago:20'
+      end_date: '@today'
+    row_filter:
+      期限: 1.0
+    date_column: 日期
+    value_column: 到期收益率
+  observed:
+    acq_note: akshare bond_china_close_return，中债同业存单(AAA)到期收益率曲线、取 1 年期点（row_filter
+      期限==1.0），@days_ago:20→@today 滚动窗取最新；CFETS/中债日频、约滞后 1 日。
+    value: 1.4825
+    as_of: '2026-06-11'
+    checked_at: '2026-06-11T11:11:05.235783+00:00'
+    streak: 0
+    prev_value: 1.465
 - name: 超额准备金率(走廊下限)
   tier: C
   cadence_type: policy
@@ -1907,11 +2456,16 @@ inputs:
   note: eastmoney RPTA_WEB_TREASURYYIELD,中国 10Y CGB 收益率(EMM00166466)/SOLAR_DATE 取最新(同行
     EMG00001310 为美 10Y)。2026-06-10 实测通。非官方端点,失效则回落 llm。
   observed:
-    value: 1.7476
-    as_of: '2026-06-10 00:00:00'
-    checked_at: '2026-06-10T22:02:00.960733+00:00'
+    value: 1.7475
+    as_of: '2026-06-11 00:00:00'
+    checked_at: '2026-06-11T10:36:35.792619+00:00'
     streak: 0
     prev_value: 1.7476
+  family: 中国货币·流动性
+  gloss:
+    define: 中国 10 年期国债收益率及配置盘需求（日频）
+    read: 资产荒下被抢购压低，反映增长/通胀与政策预期
+    use: 下行=资产荒/增长弱；上行=再通胀或收紧；牵动中美利差
 - name: 结构性工具 PSL/再贷款
   tier: A
   cadence_type: policy
@@ -1959,6 +2513,11 @@ inputs:
     checked_at: '2026-06-10T04:18:23.198491+00:00'
   authority: official
   availability: llm
+  family: 中国货币·流动性
+  gloss:
+    define: 央行季度货币政策执行报告全文
+    read: 「稳健」松紧、闸门等措辞昭示政策取向
+    use: 转松措辞=宽松预期利好债与风险；转紧=收紧信号
 - name: 社融 TSF
   tier: A
   cadence_type: event
@@ -1983,6 +2542,11 @@ inputs:
     acq_note: 央行发布的 2026 年 4 月金融统计数据报告，社会融资规模存量统计表（AFRE Stock）4 月末余额
     checked_at: '2026-06-10T04:22:23.754946+00:00'
     streak: 0
+  family: 中国货币·流动性
+  gloss:
+    define: 社会融资规模，实体融资总量总闸（人行月度）
+    read: 信用扩张/收缩的总量信号
+    use: 超预期放量=信用扩张利好风险；萎缩=信用收缩压增长
 - name: M1/M2/剪刀差
   tier: A
   cadence_type: event
@@ -2010,8 +2574,14 @@ inputs:
       同比。
     value: 8.6
     as_of: 2026-04
-    checked_at: '2026-06-11T02:42:27.566577+00:00'
+    checked_at: '2026-06-11T11:11:05.533413+00:00'
     streak: 0
+    prev_value: 8.6
+  family: 中国货币·流动性
+  gloss:
+    define: M1 与 M2 同比及其差（人行月度）
+    read: 剪刀差度量资金活化、企业现金流意愿
+    use: M1-M2 走阔=资金活化经济转暖；走负=资金趴账需求弱
 - name: 信贷脉冲
   tier: A
   cadence_type: event
@@ -2032,6 +2602,11 @@ inputs:
   source_url: http://www.pbc.gov.cn/
   note: 信贷脉冲=新增社融(TSF flow)滚动12月/名义GDP 的差分,需社融流量存量序列构造,无现成单值源。mofcom shrzgmQuery 端点
     2026-06-10 实测 SSL 握手失败(不可用);待找到稳定社融流量序列后转派生。保留 scriptable_todo。
+  family: 中国货币·流动性
+  gloss:
+    define: 新增社融滚动 12 月/GDP 的差分，派生指标
+    read: 领先实体经济与资产价格约半年
+    use: 转正回升=未来增长与盈利改善利好；下行=领先放缓
 - name: 贷款增速
   tier: A
   cadence_type: event
@@ -2068,7 +2643,7 @@ inputs:
   observed:
     value: 6.7655
     as_of: '2026-06-05'
-    checked_at: '2026-06-10T22:01:41.709744+00:00'
+    checked_at: '2026-06-11T10:36:01.169292+00:00'
     streak: 0
     prev_value: 6.7655
   authority: official
@@ -2091,6 +2666,75 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.chinamoney.com.cn/english/bmkovrsert/
+  family: 汇率·跨境套利
+  gloss:
+    define: 央行每日人民币兑美元中间价及逆周期调节因子
+    read: PBoC 对汇率的政策意图直接表达
+    use: 中间价偏强设定=稳汇率信号；逆周期因子启用=对抗贬值
+- name: USDCNH(离岸即期)
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CF
+  importance: confirming
+  source: 新浪财经
+  state: 新增
+  causal_sentence: USD/CNH 离岸即期汇率,作 CNH-CNY 价差的离岸腿 → 经离岸即期定价 → 驱动汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  authority: secondary
+  availability: scripted
+  fetch_method: recipe
+  fetch_recipe:
+    kind: html
+    url: https://hq.sinajs.cn/list=fx_susdcnh,fx_susdcny
+    headers:
+      Referer: https://finance.sina.com.cn
+    parse:
+      value_regex: fx_susdcnh="(?:[^,]*,){8}([0-9.]+)
+      date_regex: fx_susdcnh="[^"]*?(\d{4}-\d{2}-\d{2})";
+  source_url: https://finance.sina.com.cn/money/forex/hq/USDCNH.shtml
+  observed:
+    value: 6.7803
+    as_of: '2026-06-11'
+    checked_at: '2026-06-11T10:36:36.069260+00:00'
+    streak: 0
+    prev_value: 6.777
+- name: USDCNY(在岸即期)
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CF
+  importance: confirming
+  source: 新浪财经
+  state: 新增
+  causal_sentence: USD/CNY 在岸即期汇率,作 CNH-CNY 价差的在岸腿 → 经在岸即期定价 → 驱动汇率。
+  lag: 同步
+  alert_series: false
+  monitoring:
+    enabled: true
+  authority: secondary
+  availability: scripted
+  fetch_method: recipe
+  fetch_recipe:
+    kind: html
+    url: https://hq.sinajs.cn/list=fx_susdcnh,fx_susdcny
+    headers:
+      Referer: https://finance.sina.com.cn
+    parse:
+      value_regex: fx_susdcny="(?:[^,]*,){8}([0-9.]+)
+      date_regex: fx_susdcny="[^"]*?(\d{4}-\d{2}-\d{2})";
+  source_url: https://finance.sina.com.cn/money/forex/hq/USDCNY.shtml
+  observed:
+    value: 6.7766
+    as_of: '2026-06-11'
+    checked_at: '2026-06-11T10:36:36.349508+00:00'
+    streak: 0
+    prev_value: 6.7755
 - name: CNH-CNY 价差
   tier: A
   cadence_type: series
@@ -2098,7 +2742,7 @@ inputs:
   - fx
   mechanism: CF
   importance: load_bearing
-  source: web
+  source: 派生
   state: 已有
   causal_sentence: CNH-CNY 价差走阔反映离岸贬值/资金外流压力 → 经离岸-在岸套利资金流 → 驱动汇率。
   lag: 同步
@@ -2110,16 +2754,24 @@ inputs:
     direction: abs_above
     level_alarm: 0.03
   authority: secondary
-  availability: llm
-  note: CNH 离岸无 FRED 源(CNY=DEXCHUS 有),价差无法自动→关带
+  availability: scripted
+  note: USD/CNH−USD/CNY 离岸/在岸即期同源(新浪财经)、同口径(idx8 最新价)、同日相减,带自动可算;正值=离岸偏贬。
+  fetch_method: recipe
+  derived:
+    op: sub
+    from_inputs:
+    - USDCNH(离岸即期)
+    - USDCNY(在岸即期)
   observed:
-    value: 0.81
-    as_of: '2026-06-08'
-    evidence: 中国外汇交易中心公布：2026年6月8日，USD/CNY=6.8198，USD/CNH=6.7648（新浪财经2026年5月市场综述数据）;
-      XE.com实时数据；CME Group USD/CNH期货行情
-    acq_note: 按5月29日官方报告，日均平均价差为41BP。6月8日最新中间价显示CNY贬于CNH约81BP，基于最权威的中国外汇交易中心与新浪财经联合官方数据。
-    checked_at: '2026-06-10T04:27:10.870977+00:00'
-    streak: 1
+    value: 0.0037000000000002586
+    checked_at: '2026-06-11T10:36:37.766059+00:00'
+    streak: 0
+    prev_value: 0.0015000000000000568
+  family: 汇率·跨境套利
+  gloss:
+    define: 离岸减在岸人民币汇率价差（同源日频）
+    read: 走阔=离岸贬值/资金外流压力
+    use: 离岸大幅偏贬=贬值预期与外流；收敛=预期稳
 - name: CNH HIBOR/离岸流动性 + 央行 HK 票
   tier: A
   cadence_type: series
@@ -2138,23 +2790,6 @@ inputs:
   authority: official
   availability: llm
   source_url: https://www.hkma.gov.hk/eng/
-- name: 结售汇 + 外汇占款 + 代客涉外收付
-  tier: A
-  cadence_type: event
-  targets:
-  - fx
-  mechanism: CF
-  importance: load_bearing
-  source: SAFE
-  state: 新增("最大遗漏")
-  causal_sentence: 结售汇/外汇占款/涉外收付直接计量跨境资金的实际净流入流出 → 经外汇供求 → 驱动汇率。
-  lag: 滞后(月)
-  alert_series: false
-  monitoring:
-    enabled: true
-  authority: official
-  availability: llm
-  source_url: https://www.safe.gov.cn/
 - name: 外汇储备(水平+变动)
   tier: A
   cadence_type: event
@@ -2178,9 +2813,14 @@ inputs:
   observed:
     value: 3477516.923138242
     as_of: '2026-04-01'
-    checked_at: '2026-06-10T22:01:42.714193+00:00'
+    checked_at: '2026-06-11T10:36:02.454124+00:00'
     streak: 0
     prev_value: 3477516.923138242
+  family: 汇率·跨境套利
+  gloss:
+    define: 中国官方外汇储备余额及月度变动（FRED 月频）
+    read: 剔估值后变动反映央行干预与资金净流出
+    use: 大幅缩水=外流/干预压人民币；回升=资金回流
 - name: 中美 10Y 利差
   tier: B
   cadence_type: series
@@ -2207,10 +2847,10 @@ inputs:
   note: 派生=中国 10Y(eastmoney recipe)−美国 10Y(2Y/10Y/30Y 国债 的 DGS10)。两腿落盘后在 recipe 抓取末段算。中国腿已有源
     → 转 scripted 派生。
   observed:
-    value: -2.7824
-    checked_at: '2026-06-10T22:02:01.068601+00:00'
+    value: -2.7825
+    checked_at: '2026-06-11T10:36:37.963655+00:00'
     streak: 0
-    prev_value: -2.8123999999999993
+    prev_value: -2.7824
 - name: 中美实际利率差
   tier: B
   cadence_type: series
@@ -2256,6 +2896,11 @@ inputs:
     acq_note: HKEX官网最新市场数据，6月10日16:10 HKT更新的交易统计。北向资金持续净流入，创下同期新纪录，外资配置A股意愿强烈。
     checked_at: '2026-06-10T04:30:56.002362+00:00'
     streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 经陆股通流入 A 股的境外资金（日频）
+    read: 境外配置 A 股的跨境流向
+    use: 持续流入=外资增配利好 A 股与结汇；流出=风险偏好降
 - name: 南向港股通
   tier: A
   cadence_type: series
@@ -2284,10 +2929,16 @@ inputs:
     agg: sum
   observed:
     acq_note: akshare stock_hsgt_fund_flow_summary_em，南向(港股通沪+深)成交净买额求和（日，亿元）。注：北向自2024停发、不可用。
-    value: 6.792101
+    value: -27.543079
     as_of: '2026-06-11'
-    checked_at: '2026-06-11T02:42:27.747937+00:00'
+    checked_at: '2026-06-11T11:11:13.841823+00:00'
     streak: 0
+    prev_value: 6.792101
+  family: 汇率·跨境套利
+  gloss:
+    define: 经港股通南下配置港股的境内资金（日频）
+    read: 境内换汇买港股的外流
+    use: 大幅南下=购汇外流压离岸人民币；放缓=外流减压
 - name: 外资持 CGB(债券通)
   tier: B
   cadence_type: event
@@ -2441,7 +3092,7 @@ inputs:
   - liquidity
   mechanism: CO
   importance: load_bearing
-  source: CREIS/Wind
+  source: 中房网(CREIS)
   state: 已有(高频化;纪律:CO→B,见§2.1)
   causal_sentence: ''
   lag: 同步
@@ -2449,7 +3100,33 @@ inputs:
   monitoring:
     enabled: true
   authority: secondary
-  availability: llm
+  availability: scripted
+  note: 值=典型城市新房网签面积『周环比%』(非水平/非同比;增加+减少-)。单周噪声大(假期/低基数,如第19周-7.11% 致第20周+24.98%多为填坑),宏观上低权重:只看多周方向与政策宽松后的拐头,勿据单周下判;regime
+    更宜用同比/趋势(本免费源仅给环比%,同比需进正文两跳或付费源)。底层30城成交本身领先统计局月度销售2-3周、是房地产→居民中长贷/社融的nowcast。
+    取数:真·日度30城系Wind/中指专有源,免费无干净接口(i问财captcha墙、东财/akshare/GitHub均无);降级用中房网周报datalist.json,json_scan单取最新一条「典型城市商品住宅成交总面积环比%」。要真日度需Wind/中指/iFinD
+    token。
+  fetch_method: recipe
+  fetch_recipe:
+    kind: json_scan
+    url: http://news.fangchan.com/api/datalist.json?subcolumn=市场报告&pagesize=50
+    headers:
+      User-Agent: Mozilla/5.0
+    parse:
+      list_path:
+      - data
+      match_field: title
+      match_regex: 典型城市商品住宅成交总面积环比
+      value_regex: 环比(?:增加|增长|减少|下降)([0-9.]+)%
+      sign_negative_regex: (减少|下降)
+      date_field: url
+      date_regex: (\d{4}-\d{2}-\d{2})
+  source_url: http://www.fangchan.com/data/13/
+  observed:
+    value: 24.98
+    as_of: '2026-05-21'
+    checked_at: '2026-06-11T10:36:36.820067+00:00'
+    streak: 0
+    prev_value: 24.98
 - name: 二手房价/成交
   tier: B
   cadence_type: series
@@ -2494,8 +3171,14 @@ inputs:
     acq_note: akshare macro_china_new_house_price，70城新建商品住宅价格指数-环比的城市均值（100=持平，月）。
     value: 100.1
     as_of: '2026-04-01'
-    checked_at: '2026-06-11T02:42:28.104803+00:00'
+    checked_at: '2026-06-11T11:11:14.163915+00:00'
     streak: 0
+    prev_value: 100.1
+  family: 中国增长·外需
+  gloss:
+    define: 国家统计局 70 个大中城市住宅价格指数（月度）
+    read: 居民资产负债表与抵押品价值的趋势
+    use: 持续下跌=财富缩水、抵押链承压压信用；企稳=地产修复
 - name: 房地产开发投资
   tier: B
   cadence_type: event
@@ -2617,12 +3300,21 @@ inputs:
   source_url: https://ustr.gov/about-us/policy-offices/press-office/press-releases
   observed:
     next_due: '2026-07-01'
-    evidence: https://ustr.gov/about/policy-offices/press-office/press-releases/2026/may/president-trumps-state-visit-china-delivers-historic-deals-and-greater-market-access-american;
-      https://ustr.gov/about/policy-offices/press-office/press-releases/2026/june/ustr-makes-findings-and-proposes-action-60-section-301-investigations-relating-failures-take-action
-    acq_note: May 18 Trump-Xi State Visit 涉及农产品$17B/year、Boeing 200架订单、rare earths供应链承诺，以及建立Board
-      of Trade与Board of Investment，但未提及具体关税税率。June 2 USTR提议对华12.5%关税系针对强迫劳动Section
-      301调查，而非直接贸易协议关税。该项指标名称过于宽泛，官方源中无单一明确「中美关税」数值。
-    checked_at: '2026-06-10T04:41:38.654563+00:00'
+    evidence: USTR 2026-06-02 U.S.-China Board of Trade 征求意见 + 2026-05-18 访华历史性协议；project44
+      双边税率均回落至10%基线
+    acq_note: 关税双边降至10%、Section301海事调查暂停1年、178项技术转移豁免延至2026-11、设立Board of Trade →
+      关税/贸易维度明显缓和(de-escalation)，对fx偏支撑、对liquidity尾部风险下降。台海/科技管制/制裁不在缓存、本轮无信息，为贸易读数非完整地缘读数。
+    checked_at: '2026-06-11T09:00:26.178005+00:00'
+    as_of: '2026-06-02'
+    stance: 缓和
+  text_fetch: china_us
+  local_cache_path: topics/global-macro-rates-liquidity/inbox/china_us_tariff_latest.md
+  stance_scale: geo_escalation
+  family: 中国增长·外需
+  gloss:
+    define: 中美地缘政治与关税摩擦事件（事件型，无市场序列）
+    read: 升级冲击贸易顺差与风险偏好
+    use: 升级=避险、压人民币与风险资产；缓和=风险偏好回升
 - name: ADR 退市/HFCAA/PCAOB
   tier: A
   cadence_type: event
@@ -2640,15 +3332,28 @@ inputs:
     enabled: true
   authority: official
   availability: llm
-  source_url: https://www.sec.gov/HFCAA
+  stance_scale: geo_escalation
+  source_url: https://www.sec.gov/rules-regulations/holding-foreign-companies-accountable-act
+  text_fetch: hfcaa
+  local_cache_path: topics/global-macro-rates-liquidity/inbox/hfcaa_latest.md
   observed:
     next_due: '2026-07-01'
     as_of: '2026-06-10'
     evidence: https://www.sec.gov/rules-regulations/holding-foreign-companies-accountable-act
       (via Tavily extract); PCAOB vacated determinations 2022-12-15
-    acq_note: SEC HFCAA 页面确认：Provisional list 无任何发行人；2022 年 PCAOB 撤销对中国大陆/香港的检查无法确定，故当前无发行人面临交易禁令或退市风险。无具体退市数值可取（为制度性为零，非取数失败）
+    acq_note: SEC HFCAA 页面确认：Provisional list 无任何发行人；2022 年 PCAOB 撤销对中国大陆/香港的检查无法确定，故当前无发行人面临交易禁令或退市风险。无具体退市数值可取（为制度性为零，非取数失败）。脚本派生：临时清单空、最终清单174家但
+      current trading prohibition 全 Not applicable、PCAOB 对华/港完全准入 → 退市监管处缓和端(de-escalation)，对中概股/离岸资金偏支撑。升级触发=临时清单非空或任一行禁令生效或
+      PCAOB 出新认定。
+    stance: 缓和
     checked_at: '2026-06-10T04:45:38.824243+00:00'
-  note: 事件型,无可解析数值;到期 LLM 读 SEC HFCAA 页
+  note: 事件型,无可解析数值;已转取文通道(text_fetch=hfcaa,2026-06-11)——脚本零LLM下 SEC 临时/最终清单+交易禁令状态
+    及 PCAOB 对华/港认定叙述存本地缓存,LLM 读本地判退市风险升降(stance_scale=geo_escalation,缓和↔升级),不再每轮 live
+    检索。
+  family: 汇率·跨境套利
+  gloss:
+    define: 中概股审计监管与退市风险（HFCAA/PCAOB，事件型）
+    read: 监管升级触发中概资金回撤与离岸抛压
+    use: 退市风险升=中概与港股承压、外流；缓和=估值修复
 - name: 美出口管制/实体清单
   tier: A
   cadence_type: event
@@ -2710,10 +3415,19 @@ inputs:
   source_url: https://www.gov.cn/
   observed:
     stance: 偏松
-    evidence: 2026 政府工作报告（2026-03-05）定调「更加积极的财政政策和适度宽松的货币政策」、赤字率约 4%；2026-04-28 政治局会议重申「加大逆周期和跨周期调节力度」，惟赤字率与
-      2025 持平、力度边际趋稳，判偏松（新华社，2026-04-28）。
+    evidence: https://english.www.gov.cn/news/ — 缓存文件内无新 readout
+    acq_note: 缓存文件 politburo_npc_latest.md 内无可取数据：本轮 feed 窗口无新政治局经济会议 readout，需等下次会议自动补抓
+    fingerprint: 'polit:'
+    checked_at: '2026-06-11T10:16:02.553674+00:00'
   authority: official
   availability: llm
+  text_fetch: politburo
+  local_cache_path: topics/global-macro-rates-liquidity/inbox/politburo_npc_latest.md
+  family: 中国货币·流动性
+  gloss:
+    define: 政治局会议与全国人大的经济政策定调（政策型）
+    read: 财政货币与刺激力度的最高层信号
+    use: 加码刺激=信用扩张预期利好风险；偏紧/克制=承压
 - name: CSRC 监管动作
   tier: B
   cadence_type: policy
@@ -2778,3 +3492,93 @@ inputs:
       Daily/新华社，2026-04-27）。
   authority: secondary
   availability: llm
+- name: 外汇占款
+  tier: B
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CF
+  importance: confirming
+  source: PBoC
+  authority: official
+  availability: scripted
+  fetch_method: akshare
+  akshare:
+    func: macro_china_central_bank_balance
+    date_column: 统计时间
+    value_column: 外汇
+  alert_series: false
+  monitoring:
+    enabled: true
+  lag: 滞后(月)
+  state: 拆分自「结售汇 + 外汇占款 + 代客涉外收付」
+  causal_sentence: 外汇占款=央行购汇投放的基础货币存量，其月度增减反映结售汇净额经央行的沉淀 → 经外汇供求与基础货币 → 驱动汇率与流动性。
+  observed:
+    value: 215381.08
+    as_of: 2026-04
+    checked_at: '2026-06-11T11:11:16.598153+00:00'
+    streak: 0
+- name: 银行结售汇差额
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CF
+  importance: load_bearing
+  source: SAFE
+  authority: official
+  availability: scripted
+  fetch_method: safe
+  safe:
+    article_url: https://www.safe.gov.cn/safe/2023/0215/22329.html
+    sheet: 以美元计价（月度）
+    row_label: 三、差额
+    unit: 亿美元
+  alert_series: false
+  monitoring:
+    enabled: true
+  lag: 滞后(月)
+  state: 拆分自「结售汇 + 外汇占款 + 代客涉外收付」
+  causal_sentence: 银行结售汇差额=企业/居民经银行的净结汇（结汇−售汇）实际购售汇净额 → 直接计量境内外汇供求 → 驱动汇率。
+  observed:
+    value: 400.799
+    as_of: 2026-04
+    checked_at: '2026-06-11T11:10:07.600008+00:00'
+    streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 银行代客及自身结汇减售汇的净额（外汇局月度）
+    read: 境内实际购售汇净额，直接计量外汇供求
+    use: 持续逆差=购汇压力压人民币；顺差=结汇支撑
+- name: 银行代客涉外收付差额
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CF
+  importance: load_bearing
+  source: SAFE
+  authority: official
+  availability: scripted
+  fetch_method: safe
+  safe:
+    article_url: https://www.safe.gov.cn/safe/2018/0419/8806.html
+    sheet: 以美元计值（月度）
+    row_label: 三、收支差额
+    unit: 亿美元
+  alert_series: false
+  monitoring:
+    enabled: true
+  lag: 滞后(月)
+  state: 拆分自「结售汇 + 外汇占款 + 代客涉外收付」
+  causal_sentence: 银行代客涉外收付差额=银行代客户的跨境收入−支出净额，计量实际跨境资金净流入流出 → 经外汇供求 → 驱动汇率。
+  observed:
+    value: 619.4466128197
+    as_of: 2026-04
+    checked_at: '2026-06-11T11:10:09.014757+00:00'
+    streak: 0
+  family: 汇率·跨境套利
+  gloss:
+    define: 银行代客户跨境收入减支出净额（外汇局月度）
+    read: 实际跨境资金净流入/流出
+    use: 净流出=资金外流压汇率；净流入=支撑人民币
