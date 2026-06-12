@@ -35,6 +35,43 @@ def test_extract_body_strips_tags_and_footer():
     assert "Last Update" not in body
 
 
+def test_extract_body_not_truncated_by_header_phrase():
+    """真实 Fed 页：页头 banner 含 'Board of Governors...'，不得当作正文结尾把正文切掉。
+    正文在 id=article 容器内，页头/导航样板须被锚点跳过，真 footer 'Last Update:' 截断。"""
+    html = (
+        "<header><span>Board of Governors of the Federal Reserve System</span></header>"
+        "<nav>Skip to main content Back to Home</nav>"
+        '<div id="article"><h3>Acceptance Remarks</h3>'
+        "<p>Good morning. Inflation has eased and policy is well positioned.</p>"
+        "<p>Thank you again for this honor.</p></div>"
+        "<div>Last Update: March 21, 2026</div>"
+    )
+    body = fs._extract_body(html)
+    assert "Good morning" in body
+    assert "policy is well positioned" in body
+    assert "Thank you again" in body
+    assert "Skip to main content" not in body   # 页头/导航样板被锚点跳过
+    assert "Last Update" not in body            # 真 footer 截断
+    assert 'id="article"' not in body           # 锚点切在开标签之后，不留属性残迹
+
+
+def test_extract_body_drops_video_player_boilerplate():
+    """视频讲话页的 sr-only 键盘帮助块（'Accessible Keys for Video...'）须被剥除——
+    Fed 实际结构：正文容器内 <div class="sr-only"><p><strong>...</strong></p>...</div>。"""
+    html = (
+        '<div id="article"><h3>Remarks</h3>'
+        '<div class="sr-only"><p><strong>Accessible Keys for Video</strong></p>'
+        "<p>[Space Bar] toggles play/pause;</p>"
+        "<p>[Tab] navigate, caption on/off.</p></div>"
+        "<p>The labor market remains solid and inflation is near target.</p></div>"
+        "<div>Last Update: June 1, 2026</div>"
+    )
+    body = fs._extract_body(html)
+    assert "labor market remains solid" in body
+    assert "Accessible Keys for Video" not in body
+    assert "toggles play/pause" not in body
+
+
 import json
 import pytest
 from prism.scripts import macro_registry as reg

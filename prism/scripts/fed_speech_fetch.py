@@ -36,18 +36,32 @@ _CHROME_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.3
               "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
 
 # ── HTML helper（按本仓约定各 fetcher 自带一份，不交叉 import） ──
-_SCRIPT_STYLE = re.compile(r"<(script|style)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
+# 注：<video> 一并剥除——Fed 讲话页正文容器内嵌播放器，连同 <script> 噪声一起去掉。
+_SCRIPT_STYLE = re.compile(r"<(script|style|video)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
+# 视频播放器的键盘帮助块（"Accessible Keys for Video..."）是 <div class="sr-only">（屏幕阅读器专用，
+# 视觉隐藏的样板），剥除以免污染正文。非嵌套，非贪婪匹配到首个 </div> 即正确收尾。
+_SR_ONLY = re.compile(r'<div\b[^>]*\bclass="[^"]*\bsr-only\b[^"]*"[^>]*>.*?</div>',
+                      re.IGNORECASE | re.DOTALL)
 _PARA_TAG = re.compile(r"</?(?:p|h[1-6]|blockquote|section|article)\b[^>]*/?>", re.IGNORECASE)
 _BLOCK_TAG = re.compile(r"</?(?:div|li|tr|header|footer)\b[^>]*/?>|<br\b[^>]*/?>", re.IGNORECASE)
 _ANY_TAG = re.compile(r"<[^>]+>")
 _INLINE_WS = re.compile(r"[ \t]+")
 _MULTI_NL = re.compile(r"\n{3,}")
-_BODY_ENDS = ["Last Update:", "Board of Governors of the Federal Reserve System",
-              "Accessibility | Contact Us | Disclaimer"]
+# 正文容器起点锚点：Fed 讲话正文在 <div id="article">（次选 id="content"）内。匹配整个开标签并从其
+# **之后**起截，跳过页头 banner / 导航 / "Skip to main content" 样板，且不在正文首行留 `id="article">` 残迹。
+# article 优先（更贴正文）、content 兜底；都无则全文兜底（保留旧行为）。
+_BODY_START_RES = (
+    re.compile(r'<[a-z]+\b[^>]*\bid="article"[^>]*>', re.IGNORECASE),
+    re.compile(r'<[a-z]+\b[^>]*\bid="content"[^>]*>', re.IGNORECASE),
+)
+# footer 截断线索。**不含** "Board of Governors of the Federal Reserve System"——该串也出现在页头
+# banner（偏移极早），会把整篇正文误截掉（实测 powell20260321 页 banner 在偏移 533）。
+_BODY_ENDS = ["Last Update:", "Accessibility | Contact Us | Disclaimer"]
 
 
 def _strip_html(raw: str) -> str:
     raw = _SCRIPT_STYLE.sub(" ", raw)
+    raw = _SR_ONLY.sub(" ", raw)
     raw = _PARA_TAG.sub("\n\n", raw)
     raw = _BLOCK_TAG.sub("\n", raw)
     raw = _ANY_TAG.sub(" ", raw)
@@ -58,8 +72,15 @@ def _strip_html(raw: str) -> str:
 
 
 def _extract_body(report_html: str) -> str:
-    """剥标签 → 截 footer 线索。返回正文（诚实兜底：无 footer 标记则全文）。"""
-    text = _strip_html(report_html)
+    """先定位正文容器锚点（id=article/content）跳过页头/导航样板，再剥标签、截尾部 footer 线索。
+    无锚点则全文兜底（诚实降级）；无 footer 标记则保留到结尾。"""
+    html = report_html
+    for rx in _BODY_START_RES:
+        m = rx.search(html)
+        if m:
+            html = html[m.end():]
+            break
+    text = _strip_html(html)
     cut = len(text)
     for end in _BODY_ENDS:
         j = text.find(end)
