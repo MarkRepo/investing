@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-12T04:39:08.963365+00:00'
+updated: '2026-06-12T04:45:45.513946+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -175,6 +175,8 @@ inputs:
     define: 美联储主席及票委的公开讲话与前瞻指引（不定期）
     read: 在会议之外微调市场对反应函数的认知
     use: 偏鹰措辞=利率预期上行压债与成长；偏鸽=宽松预期升温
+  local_cache_path: topics/global-macro-rates-liquidity/inbox/fed_speech_latest.md
+  text_fetch: fed_speech
 - name: 非农就业 NFP
   tier: A
   cadence_type: event
