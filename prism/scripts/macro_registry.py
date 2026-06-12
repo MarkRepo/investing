@@ -58,7 +58,7 @@ VALID_IMPORTANCE = ("load_bearing", "confirming", "background")
 VALID_TARGET = ("rates", "liquidity", "fx")
 VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
 VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm")
-VALID_FETCH_METHOD = ("fred-api", "recipe", "akshare", "yfinance", "macromicro", "barchart", "ecb", "safe")   # 脚本「数值」通道，仅 scripted 项可设
+VALID_FETCH_METHOD = ("fred-api", "recipe", "akshare", "yfinance", "macromicro", "barchart", "ecb", "safe", "cftc")   # 脚本「数值」通道，仅 scripted 项可设
 VALID_TEXT_FETCH = ("fomc", "qra", "china_us", "hfcaa", "politburo")   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
                                # 立场判读仍走 LLM，故仅 llm/scriptable_todo 项可设，与 fetch_method 互斥
 VALID_RECIPE_KIND = ("json", "csv", "matrix", "html", "json_scan")   # 须与 recipe_fetch._PARSERS 键一致
@@ -305,6 +305,14 @@ def validate_registry(slug: str, variant: str) -> list[str]:
                 for k in ("article_url", "sheet", "row_label"):
                     if not sf.get(k):
                         errors.append(f"[{name}] safe 块缺 {k}")
+        if fm == "cftc":
+            cc = e.get("cftc")
+            if not cc:
+                errors.append(f"[{name}] fetch_method=cftc 须配 cftc 块")
+            else:
+                for k in ("dataset", "contract"):
+                    if not cc.get(k):
+                        errors.append(f"[{name}] cftc 块缺 {k}")
         scale = e.get("stance_scale")
         if scale is not None and scale not in STANCE_SCALES:
             errors.append(f"[{name}] stance_scale 非法: {scale!r}")

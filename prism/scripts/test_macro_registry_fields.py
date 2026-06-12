@@ -257,3 +257,27 @@ def test_llm_mode_none_for_non_llm(avail):
     """非 llm 项不在本轴上（取数由 fetch_method/availability 决定）。"""
     assert reg.llm_acquisition_mode(
         {"availability": avail, "source_url": "https://x"}) is None
+
+
+# --- cftc 通道块校验：scripted + fetch_method=cftc 须配 cftc 块（dataset/contract 必填）---
+
+def test_cftc_valid_block_passes(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({
+        "availability": "scripted", "fetch_method": "cftc",
+        "cftc": {"dataset": "gpe5-46if", "contract": "UST 10Y NOTE"}}))
+    assert reg.validate_registry(slug, variant) == []
+
+
+def test_cftc_missing_block_flagged(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({"availability": "scripted", "fetch_method": "cftc"}))
+    assert any("cftc 须配 cftc 块" in e for e in reg.validate_registry(slug, variant))
+
+
+def test_cftc_missing_contract_flagged(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({
+        "availability": "scripted", "fetch_method": "cftc",
+        "cftc": {"dataset": "gpe5-46if"}}))   # 缺 contract
+    assert any("cftc 块缺 contract" in e for e in reg.validate_registry(slug, variant))
