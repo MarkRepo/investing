@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-12T01:39:59.165947+00:00'
+updated: '2026-06-12T01:57:21.225030+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -1421,6 +1421,12 @@ inputs:
     min_obs: 30
   alert_band:
     z: 2.0
+  observed:
+    value: -1963094.0
+    as_of: '2026-06-02'
+    z: -0.5831741174283106
+    checked_at: '2026-06-12T01:57:21.225017+00:00'
+    streak: 0
 - name: 广义/EM加权美元(Fed DTWEXBGS)
   tier: A
   cadence_type: series
