@@ -289,3 +289,11 @@ def test_fomc_sep_method_validates_without_config_block(tmp_reg):
     slug, variant = tmp_reg
     reg.upsert_input(slug, variant, _base({"availability": "scripted", "fetch_method": "fomc_sep"}))
     assert reg.validate_registry(slug, variant) == []
+
+
+# --- fed_speech 取文通道：立场判读仍 LLM，挂在 llm 项上须校验全清 ---
+
+def test_fed_speech_text_fetch_validates_on_llm(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({"availability": "llm", "text_fetch": "fed_speech"}))
+    assert reg.validate_registry(slug, variant) == []

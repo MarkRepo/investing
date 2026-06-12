@@ -60,7 +60,7 @@ VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
 VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm")
 VALID_FETCH_METHOD = ("fred-api", "recipe", "akshare", "yfinance", "macromicro", "barchart", "ecb", "safe", "cftc", "mofcom", "fedwatch", "fomc_sep")   # 脚本「数值」通道，仅 scripted 项可设
 VALID_FEDWATCH_METRIC = ("next_cut_prob", "next_rate", "eoy_rate", "eoy_cuts")   # FedWatch 隐含路径可落标量
-VALID_TEXT_FETCH = ("fomc", "qra", "china_us", "hfcaa", "politburo", "pbc_mpr")   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
+VALID_TEXT_FETCH = ("fomc", "qra", "china_us", "hfcaa", "politburo", "pbc_mpr", "fed_speech")   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
                                # 立场判读仍走 LLM，故仅 llm/scriptable_todo 项可设，与 fetch_method 互斥
 VALID_RECIPE_KIND = ("json", "csv", "matrix", "html", "json_scan")   # 须与 recipe_fetch._PARSERS 键一致
 VALID_MOFCOM_METRIC = ("credit_impulse",)   # 须与 mofcom_fetch._KNOWN_METRICS 键一致（mofcom 块按 metric 分派派生）
