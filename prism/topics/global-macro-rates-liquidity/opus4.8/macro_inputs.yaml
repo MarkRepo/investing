@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-12T01:57:21.225030+00:00'
+updated: '2026-06-12T04:39:08.963365+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -49,20 +49,22 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
   observed:
     value: 3.4
     as_of: '2026-03-18'
     evidence: March 17-18, 2026 SEP（2026-03-18 发布）Table 1 中位联邦基金利率：2026=3.4%, 2027=3.1%,
       2028=3.1%, 长期=3.1%（较 12 月点阵图持平）。源：Fed fomcprojtabl20260318.htm
-    checked_at: '2026-06-09T12:03:46.796972+00:00'
+    checked_at: '2026-06-12T04:39:08.963355+00:00'
     streak: 0
+    prev_value: 3.4
   family: 货币政策
   gloss:
     define: FOMC 季度经济预测里各委员对未来政策利率的点状预期
     read: 官方自己昭示的利率路径中位预期，看 Fed 想走多远
     use: 点位上移=偏鹰、远端利率走高压债；下移=偏鸽利好久期
+  fetch_method: fomc_sep
 - name: CME FedWatch 隐含路径
   tier: A
   cadence_type: series
@@ -71,23 +73,23 @@ inputs:
   mechanism: CD
   importance: load_bearing
   source: web(CME)
-  state: 已有
+  state: 升 scripted(fedwatch 通道, eoy_rate=年底会后隐含利率)
   causal_sentence: 期货隐含的降息/加息概率即市场对政策路径的实时定价 → 经远期利率 → 驱动利率。
-  lag: 同步
+  lag: 领先(前瞻预期)
   alert_series: false
   monitoring:
     enabled: true
   authority: primary
-  availability: scriptable_todo
+  availability: scripted
   source_url: https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html
   observed:
-    value: 3.86
-    as_of: '2026-06-09'
+    value: 3.81
+    as_of: '2026-06-11'
     evidence: Investing.com Fed Rate Monitor (mirrors CME FedWatch 30-Day Fed Fund
       futures), Dec 2026 contract price 96.145 → 隐含利率 3.855%
-    checked_at: '2026-06-10T00:21:06.992362+00:00'
+    checked_at: '2026-06-12T03:54:11.455207+00:00'
     streak: 0
-    prev_value: 3.85
+    prev_value: 3.86
     acq_note: 从 Investing.com Fed Rate Monitor 获取 Dec 2026 联邦基金期货价格 96.145，隐含利率 100-96.145
       = 3.855%，四舍五入 3.86%。当前目标区间 3.50-3.75%，Dec 隐含 3.86% 反映市场定价年内约一次加息 (25bp)；数据截至于
       2026-06-09。
@@ -98,6 +100,10 @@ inputs:
     define: 由联邦基金期货价格反推的市场降/加息概率（CME 口径）
     read: 市场实时定价的政策路径，与点阵图比可见预期差
     use: 降息概率升=市场抢跑宽松利好风险；骤降=紧缩预期回摆
+  fetch_method: fedwatch
+  fedwatch:
+    metric: eoy_rate
+    current_rate: 3.625
 - name: FOMC 声明/纪要
   tier: A
   cadence_type: policy
@@ -1386,7 +1392,7 @@ inputs:
     define: AI 资本开支体制的结构性需求代理（事件/叙事型）
     read: AI 投资潮对增长/通胀的结构性拉动与利率敏感性
     use: capex 加速=名义增长与利率支撑、利好 AI 链；退潮=主题降温
-- name: 持仓拥挤(CFTC + CTA/vol-target + basis-trade规模)
+- name: 持仓拥挤(杠杆基金UST10Y净头寸/basis-trade代理)
   tier: B
   cadence_type: series
   targets:
@@ -1714,7 +1720,7 @@ inputs:
   observed:
     value: 0.9525
     as_of: '2026-06-09'
-    checked_at: '2026-06-11T22:02:23.290590+00:00'
+    checked_at: '2026-06-12T02:44:02.141524+00:00'
     streak: 0
     prev_value: 0.9525
   family: 汇率·跨境套利
@@ -2365,10 +2371,10 @@ inputs:
     page_url: https://sc.macromicro.me/series/23233/china-reverse-repo-rate-7-day
   observed:
     value: 1.4
-    as_of: '2026-06-11'
+    as_of: '2026-06-12'
     evidence: https://www.nbd.com.cn/articles/2026-06-08/4419578.html - 央行6月8日开展2185亿元7天期逆回购操作，操作利率为1.40%
     acq_note: 央行6月8日公开市场操作公告；该利率自2025年5月8日起设定为1.40%，目前为政策利率锚点
-    checked_at: '2026-06-12T01:09:15.659709+00:00'
+    checked_at: '2026-06-12T02:44:05.136418+00:00'
     streak: 0
     prev_value: 1.4
   note: 操作利率原始来源=PBoC 每日公开市场业务交易公告(http://www.pbc.gov.cn/)；官方/chinamoney 端点无稳定免费 JSON(akshare
@@ -2805,11 +2811,19 @@ inputs:
     checked_at: '2026-06-10T04:18:23.198491+00:00'
   authority: official
   availability: llm
+  text_fetch: pbc_mpr
+  note: 定性政策立场输入（无单一数值，stance_scale=ease_tighten；下游 regime_eval_log 只读 stance/state）。取文通道
+    pbc_mpr 零-LLM 自 PBoC 货政司列表页（…/125957/index.html，静态 utf-8、newest-first）定位最新季报「YYYY年第N季度中国货币政策执行报告」、下
+    id="zoom" 正文 + PubDate 存 inbox/pbc_mpr_latest.md、写 local_cache_path → headless
+    LLM 用 Read 读本地文件判「适度宽松/稳健/收紧」立场（取文降本，同 fomc/politburo 先例）。指纹=mpr:YYYYQN（发布即定型）→
+    新季度报自动发现 → 去重门触发立场重判。availability 保持 llm（立场判读归 LLM，非 scripted）；text_fetch 与 fetch_method
+    互斥，勿加 fetch_method。
   family: 中国货币·流动性
   gloss:
-    define: 央行季度货币政策执行报告全文
-    read: 「稳健」松紧、闸门等措辞昭示政策取向
+    define: 央行季度货币政策执行报告全文（脚本下原文存本地缓存，立场由 LLM 判）
+    read: 「适度宽松/稳健/收紧」松紧、闸门等措辞昭示政策取向
     use: 转松措辞=宽松预期利好债与风险；转紧=收紧信号
+  local_cache_path: topics/global-macro-rates-liquidity/inbox/pbc_mpr_latest.md
 - name: 社融 TSF
   tier: A
   cadence_type: event
@@ -2825,20 +2839,29 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: llm
+  availability: scripted
   source_url: http://www.pbc.gov.cn/
+  fetch_method: macromicro
+  macromicro:
+    chart_id: '133274'
+    series_index: 0
+    page_url: https://sc.macromicro.me/charts/133274/China-Total-Social-Financing-amp-M2-M1-amp-10Year-Yield
+  note: 追踪口径＝社会融资规模**存量同比%**（下游 m_regime_read/regime_eval_log/00_primer 一律读"社融存量增速~7.8%"，绝对存量余额无人消费且无免费可脚本源）。经
+    MacroMicro 图 133274 取数——series_index=0=社融存量同比(%)，idx1=M2-M1 同比(倒置)，idx2=中国10Y收益率（series
+    漂移时据此排查）。MM 为商业镜像源、低频自用，已知 ToS 灰区（同 OMO 图53839/JPY-OIS 图95219 先例）。
   observed:
-    value: 456.89
-    as_of: '2026-04-30'
-    evidence: http://www.pbc.gov.cn/diaochatongjisi/116219/116319/2026ntjsj/shrzgm/index.html
-    acq_note: 央行发布的 2026 年 4 月金融统计数据报告，社会融资规模存量统计表（AFRE Stock）4 月末余额
-    checked_at: '2026-06-10T04:22:23.754946+00:00'
+    value: 7.8
+    as_of: '2026-04-01'
+    evidence: https://sc.macromicro.me/charts/133274/China-Total-Social-Financing-amp-M2-M1-amp-10Year-Yield
+    acq_note: MacroMicro 图 133274 series0＝社融存量同比（口径由"存量余额456.89万亿"修正为下游真正消费的存量同比%）
+    checked_at: '2026-06-12T02:44:07.660007+00:00'
     streak: 0
+    prev_value: 7.8
   family: 中国货币·流动性
   gloss:
-    define: 社会融资规模，实体融资总量总闸（人行月度）
+    define: 社会融资规模存量同比增速（人行月度，实体融资总量总闸）
     read: 信用扩张/收缩的总量信号
-    use: 超预期放量=信用扩张利好风险；萎缩=信用收缩压增长
+    use: 同比回升/超预期=信用扩张利好风险；回落=信用收缩压增长
 - name: M1/M2/剪刀差
   tier: A
   cadence_type: event
@@ -2890,15 +2913,26 @@ inputs:
   monitoring:
     enabled: true
   authority: official
-  availability: scriptable_todo
+  availability: scripted
   source_url: http://www.pbc.gov.cn/
-  note: 信贷脉冲=新增社融(TSF flow)滚动12月/名义GDP 的差分,需社融流量存量序列构造,无现成单值源。mofcom shrzgmQuery 端点
-    2026-06-10 实测 SSL 握手失败(不可用);待找到稳定社融流量序列后转派生。保留 scriptable_todo。
+  fetch_method: mofcom
+  mofcom:
+    metric: credit_impulse
+    flow_field: tiosfs
+    window_months: 12
+  note: 信贷脉冲=新增社融(TSF flow)滚动12月/名义GDP 的同比差分(pp,占GDP百分点),无现成单值源,故自算。流量序列经 mofcom shrzgmQuery(data.mofcom.gov.cn,tiosfs=社融增量当月值)——该端点
+    OpenSSL3 默认握手失败,mofcom_fetch 用 SECLEVEL=1+legacy-reneg 的 SSLContext 进程内解锁;名义GDP
+    分母经 akshare macro_china_gdp(季度累计YTD) 还原滚动4季年化。口径=(Σ12月社融/年化GDP)(t)−同(t−12),×100。
   family: 中国货币·流动性
   gloss:
-    define: 新增社融滚动 12 月/GDP 的差分，派生指标
+    define: 新增社融滚动 12 月/名义GDP 的同比差分（pp），派生指标
     read: 领先实体经济与资产价格约半年
-    use: 转正回升=未来增长与盈利改善利好；下行=领先放缓
+    use: 转正回升=未来增长与盈利改善利好；下行/转负=信用动能放缓压增长
+  observed:
+    value: -1.8500370005641809
+    as_of: 2026-04
+    checked_at: '2026-06-12T02:05:18.234004+00:00'
+    streak: 0
 - name: 贷款增速
   tier: A
   cadence_type: event
@@ -2951,28 +2985,87 @@ inputs:
     define: 在岸人民币兑美元汇率（机制见 primer USDCNY）
     read: 被管理的价格、是结果不是独立信号
     use: 数字变大=人民币贬值压力；配合 CNH 价差/结售汇验证
-- name: PBoC 中间价 + 逆周期因子
+- name: PBoC USD/CNY 中间价
   tier: A
   cadence_type: series
   targets:
   - fx
   mechanism: CD
   importance: load_bearing
-  source: PBoC/CFETS
+  source: CFETS
   state: 已有(确认为真A)
-  causal_sentence: 中间价与逆周期因子是 PBoC 对人民币的政策意图直接表达 → 经管理浮动定价锚 → 驱动汇率。
+  causal_sentence: 中间价是 PBoC 对人民币的政策意图直接表达 → 经管理浮动定价锚 → 驱动汇率。
   lag: 同步
   alert_series: false
   monitoring:
     enabled: true
   authority: official
-  availability: llm
-  source_url: https://www.chinamoney.com.cn/english/bmkovrsert/
+  availability: scripted
+  fetch_method: recipe
+  fetch_recipe:
+    kind: json
+    url: https://www.chinamoney.com.cn/r/cms/www/chinamoney/data/fx/ccpr.json
+    headers:
+      Referer: https://www.chinamoney.com.cn/
+      User-Agent: Mozilla/5.0
+    parse:
+      json_path:
+      - records
+      - 0
+      - price
+      date_path:
+      - data
+      - lastDate
+  source_url: https://www.chinamoney.com.cn/chinese/bkccpr/
+  family: 汇率·跨境套利
+  note: CFETS 每日 09:15 发布中间价 ccpr.json（官方、免鉴权）；records[0]=USD/CNY(vrtCode 1 恒为首条)；as_of
+    带 09:15 发布时点（新鲜度看 checked_at，不影响逻辑）。逆周期因子不公开,其信号见派生「中间价偏离」。
+  gloss:
+    define: CFETS 每日发布的人民币兑美元中间价（管理浮动定价锚，09:15 发布）
+    read: PBoC 对汇率的政策意图直接表达；被管理的价格、是锚不是市场出清价
+    use: 数字变大=中间价引导贬值；偏强(低)设定=稳汇率信号
+  observed:
+    value: 6.8109
+    as_of: 2026-06-12 9:15
+    checked_at: '2026-06-12T02:48:32.925002+00:00'
+    streak: 0
+- name: 中间价偏离(逆周期因子代理)
+  tier: A
+  cadence_type: series
+  targets:
+  - fx
+  mechanism: CD
+  importance: load_bearing
+  source: 派生
+  state: 新增
+  causal_sentence: 中间价相对在岸即期的偏离=逆周期因子的经验代理 → 经管理浮动的政策意图 → 驱动汇率。
+  lag: 同步
+  alert_series: true
+  monitoring:
+    enabled: true
+  alert_band:
+    level: 0.015
+    direction: abs_above
+    level_alarm: 0.03
+  authority: secondary
+  availability: scripted
+  note: 逆周期因子不公开;用 中间价−USDCNY(在岸即期) 残差作经验代理(同为人民币计价、同日相减)。**符号定方向、绝对值定力度**:负=中间价比市场强=对抗贬值(逆周期因子顶贬);正=中间价比市场弱=对抗升值(顶升)。绝对偏离走阔=管理浮动政策干预增强。阈值
+    0.015 警/0.03 报为经验标定(常态±50~150pips、强干预>300pips),非公开口径。两腿落盘后在 recipe 抓取末段算。
+  fetch_method: recipe
+  derived:
+    op: sub
+    from_inputs:
+    - PBoC USD/CNY 中间价
+    - USDCNY(在岸即期)
   family: 汇率·跨境套利
   gloss:
-    define: 央行每日人民币兑美元中间价及逆周期调节因子
-    read: PBoC 对汇率的政策意图直接表达
-    use: 中间价偏强设定=稳汇率信号；逆周期因子启用=对抗贬值
+    define: 中间价减在岸即期(逆周期因子的经验残差代理)
+    read: 负=中间价偏强/对抗贬值；正=中间价偏弱/对抗升值
+    use: 绝对值走阔=PBoC 管理意图增强、稳汇率发力；符号给方向
+  observed:
+    value: 0.038899999999999935
+    checked_at: '2026-06-12T02:48:33.710071+00:00'
+    streak: 1
 - name: USDCNH(离岸即期)
   tier: B
   cadence_type: series
@@ -3208,26 +3301,37 @@ inputs:
   importance: load_bearing
   source: HKEX
   state: 已有
-  causal_sentence: 北向资金是境外配置 A 股的跨境资金流 → 经股市资金与结汇 → 驱动汇率与流动性。
+  causal_sentence: 北向成交额是外资参与 A 股的换手强度（活跃度）→ 经股市资金参与度 → 关联汇率与流动性环境（注：净买/卖方向信号已停发，此为活跃度代理、非方向）。
   lag: 同步
   alert_series: false
   monitoring:
     enabled: true
   authority: primary
-  availability: llm
+  availability: scripted
   source_url: https://www.hkex.com.hk/Mutual-Market/Stock-Connect?sc_lang=en
+  fetch_method: macromicro
+  macromicro:
+    chart_id: '15249'
+    series_index: 0
+    page_url: https://sc.macromicro.me/charts/15249/cn-northbound-funds-and-sse-composite-index
+  note: 口径＝北向**成交额（成交活跃度，日频）**，非净流入方向。①北向**净买/卖（日频净额、历史累计）自约 2026-04-08 在原生源冻结、停发**——eastmoney
+    实时 dayNetAmtIn=0、RPT_MUTUAL_DEAL_HISTORY 北向 NET_DEAL_AMT=null/HOLD_MARKET_CAP=0、kamt.kline
+    累计 s2n 末次变化 2026-04-08 后恒定；akshare stock_hsgt_hist_em/hold_stock 北向亦全 NaN/报错。净流入无任何免费可脚本源可再刷新。②故口径改追踪
+    MacroMicro 图 15249 idx0=北向成交额（零负值=非方向、2017 起日频、鲜）；idx1=上证综指（series 漂移时据此排查）。MM
+    为商业镜像源、低频自用，已知 ToS 灰区（同 TSF 图133274 / OMO 图53839 / JPY-OIS 图95219 先例）。下游 m_regime_read/regime_eval_log
+    旧文案「北向~10998 创纪录净流入」属旧净流入口径，待下次合成/监控由 LLM 据本口径重写。
   observed:
-    value: 10998
-    as_of: '2026-06-10'
-    evidence: HKEX Stock Connect 沪深港通官方数据；截至6月9日历史累计净买入10882亿元（创历史新高），6月10日单日净买入116.22亿元（沪股通85.45亿+深股通30.78亿）
-    acq_note: HKEX官网最新市场数据，6月10日16:10 HKT更新的交易统计。北向资金持续净流入，创下同期新纪录，外资配置A股意愿强烈。
-    checked_at: '2026-06-10T04:30:56.002362+00:00'
+    acq_note: 口径由「累计净买入 10998（已冻结的旧净流入口径）」修正为下游可持续消费的「北向成交额（活跃度）」，经 MacroMicro 图 15249
+      series0 取数（单位以源为准）。value/as_of 由脚本实拉回填。
+    value: 339321.25
+    as_of: '2026-06-11'
+    checked_at: '2026-06-12T02:44:09.825354+00:00'
     streak: 0
   family: 汇率·跨境套利
   gloss:
-    define: 经陆股通流入 A 股的境外资金（日频）
-    read: 境外配置 A 股的跨境流向
-    use: 持续流入=外资增配利好 A 股与结汇；流出=风险偏好降
+    define: 经陆股通的北向**成交额**（活跃度，日频）——净买/卖方向自约 2026-04 停发，改追踪成交额
+    read: 外资参与 A 股的换手强度（非净买/净卖方向信号）
+    use: 放量=外资参与活跃（方向须结合价格/CNH/结售汇等脚投票判）；缩量=参与度降
 - name: 南向港股通
   tier: A
   cadence_type: series
@@ -4022,3 +4126,93 @@ inputs:
     define: 银行代客户跨境收入减支出净额（外汇局月度）
     read: 实际跨境资金净流入/流出
     use: 净流出=资金外流压汇率；净流入=支撑人民币
+- tier: B
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CD
+  source: CME 30D Fed Funds Futures (ZQ, via Yahoo)
+  authority: aggregator
+  availability: scripted
+  fetch_method: fedwatch
+  lag: 领先(前瞻预期)
+  state: 新增(FedWatch通道)
+  monitoring:
+    enabled: true
+  name: FedWatch下次会议隐含利率
+  importance: confirming
+  causal_sentence: 市场对下次 FOMC 会后目标利率的定价 → 经政策预期渠道 → 驱动短端利率与利率路径预期。
+  fedwatch:
+    metric: next_rate
+    current_rate: 3.625
+  gloss:
+    define: CME ZQ 反解的下次 FOMC 会后隐含目标利率%（路径近端点）
+    read: 市场认为下次会议后政策利率落在哪
+    use: 与当前利率比＝下次会议的方向与幅度定价
+  observed:
+    value: 3.6135
+    as_of: '2026-06-11'
+    checked_at: '2026-06-12T03:54:11.586050+00:00'
+    streak: 0
+    prev_value: 3.6135
+  family: 货币政策
+- tier: B
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CD
+  source: CME 30D Fed Funds Futures (ZQ, via Yahoo)
+  authority: aggregator
+  availability: scripted
+  fetch_method: fedwatch
+  lag: 领先(前瞻预期)
+  state: 新增(FedWatch通道)
+  monitoring:
+    enabled: true
+  name: FedWatch下次会议降息概率
+  importance: confirming
+  causal_sentence: 下次会议降息概率是市场宽松预期的即时温度计 → 经政策预期与风险偏好渠道 → 驱动利率与流动性。
+  fedwatch:
+    metric: next_cut_prob
+    current_rate: 3.625
+  gloss:
+    define: 下次 FOMC P(≥25bp 降息)%，按 25bp 线性插值（持稳/加息定价→0）
+    read: 市场给下次会议降息押了多大概率
+    use: 概率骤升=宽松预期升温；与实际点阵/数据背离时是预期差交易点
+  observed:
+    value: 4.61
+    as_of: '2026-06-11'
+    checked_at: '2026-06-12T03:54:11.695145+00:00'
+    streak: 0
+    prev_value: 4.61
+  family: 货币政策
+- tier: B
+  cadence_type: series
+  targets:
+  - rates
+  mechanism: CD
+  source: CME 30D Fed Funds Futures (ZQ, via Yahoo)
+  authority: aggregator
+  availability: scripted
+  fetch_method: fedwatch
+  lag: 领先(前瞻预期)
+  state: 新增(FedWatch通道)
+  monitoring:
+    enabled: true
+  name: FedWatch年内累计降息计价
+  importance: load_bearing
+  causal_sentence: 年内被定价的累计降息次数是前瞻宽松总量 → 经政策路径与金融条件渠道 → 驱动利率/流动性/风险资产。
+  fedwatch:
+    metric: eoy_cuts
+    current_rate: 3.625
+  gloss:
+    define: (当前利率 − 年底隐含利率)/0.25 = 年内被定价的 25bp 降息次数（负=净加息计价）
+    read: 市场总共给今年押了几次降息
+    use: 前瞻宽松总量；转负=市场计价净加息，higher-for-longer 的硬证据
+  observed:
+    value: -0.74
+    as_of: '2026-06-11'
+    checked_at: '2026-06-12T03:54:11.802302+00:00'
+    streak: 0
+    prev_value: -0.74
+  family: 货币政策
