@@ -58,10 +58,12 @@ VALID_IMPORTANCE = ("load_bearing", "confirming", "background")
 VALID_TARGET = ("rates", "liquidity", "fx")
 VALID_AUTHORITY = ("official", "primary", "secondary", "aggregator")
 VALID_AVAILABILITY = ("scripted", "scriptable_todo", "llm")
-VALID_FETCH_METHOD = ("fred-api", "recipe", "akshare", "yfinance", "macromicro", "barchart", "ecb", "safe", "cftc")   # 脚本「数值」通道，仅 scripted 项可设
-VALID_TEXT_FETCH = ("fomc", "qra", "china_us", "hfcaa", "politburo")   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
+VALID_FETCH_METHOD = ("fred-api", "recipe", "akshare", "yfinance", "macromicro", "barchart", "ecb", "safe", "cftc", "mofcom", "fedwatch", "fomc_sep")   # 脚本「数值」通道，仅 scripted 项可设
+VALID_FEDWATCH_METRIC = ("next_cut_prob", "next_rate", "eoy_rate", "eoy_cuts")   # FedWatch 隐含路径可落标量
+VALID_TEXT_FETCH = ("fomc", "qra", "china_us", "hfcaa", "politburo", "pbc_mpr")   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
                                # 立场判读仍走 LLM，故仅 llm/scriptable_todo 项可设，与 fetch_method 互斥
 VALID_RECIPE_KIND = ("json", "csv", "matrix", "html", "json_scan")   # 须与 recipe_fetch._PARSERS 键一致
+VALID_MOFCOM_METRIC = ("credit_impulse",)   # 须与 mofcom_fetch._KNOWN_METRICS 键一致（mofcom 块按 metric 分派派生）
 
 # 输入源族系（input_glossary 词典/Web 表分组键，顺序=展示顺序，单一真相）
 CANONICAL_FAMILIES = (
@@ -313,6 +315,20 @@ def validate_registry(slug: str, variant: str) -> list[str]:
                 for k in ("dataset", "contract"):
                     if not cc.get(k):
                         errors.append(f"[{name}] cftc 块缺 {k}")
+        if fm == "mofcom":
+            mo = e.get("mofcom")
+            if not mo:
+                errors.append(f"[{name}] fetch_method=mofcom 须配 mofcom 块")
+            elif mo.get("metric") not in VALID_MOFCOM_METRIC:
+                errors.append(f"[{name}] mofcom 块 metric 非法: {mo.get('metric')!r}"
+                              f"（须在 {list(VALID_MOFCOM_METRIC)}）")
+        if fm == "fedwatch":
+            fw = e.get("fedwatch")
+            if not fw:
+                errors.append(f"[{name}] fetch_method=fedwatch 须配 fedwatch 块")
+            elif fw.get("metric") not in VALID_FEDWATCH_METRIC:
+                errors.append(f"[{name}] fedwatch 块 metric 非法: {fw.get('metric')!r}"
+                              f"（须在 {list(VALID_FEDWATCH_METRIC)}）")
         scale = e.get("stance_scale")
         if scale is not None and scale not in STANCE_SCALES:
             errors.append(f"[{name}] stance_scale 非法: {scale!r}")

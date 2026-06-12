@@ -281,3 +281,11 @@ def test_cftc_missing_contract_flagged(tmp_reg):
         "availability": "scripted", "fetch_method": "cftc",
         "cftc": {"dataset": "gpe5-46if"}}))   # 缺 contract
     assert any("cftc 块缺 contract" in e for e in reg.validate_registry(slug, variant))
+
+
+# --- fomc_sep 通道：无参数值通道（点阵图近年中位 FFR），validator 不强制 config 块 ---
+
+def test_fomc_sep_method_validates_without_config_block(tmp_reg):
+    slug, variant = tmp_reg
+    reg.upsert_input(slug, variant, _base({"availability": "scripted", "fetch_method": "fomc_sep"}))
+    assert reg.validate_registry(slug, variant) == []
