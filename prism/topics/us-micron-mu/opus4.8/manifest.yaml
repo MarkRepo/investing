@@ -1,0 +1,925 @@
+slug: us-micron-mu
+variant: opus4.8
+updated: '2026-06-12T02:35:47.950146+00:00'
+materials:
+- id: mat-f03161
+  filename: 2026-06-12_micron-mu-q2-fy2026-earnings-report.md
+  source_type: web-search
+  added: '2026-06-12T01:37:42.960047+00:00'
+  processed: false
+  notes: query='Micron MU latest quarter earnings revenue gross margin guidance 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Micron MU latest quarter earnings revenue gross margin guidance 2026
+    url: https://www.cnbc.com/2026/03/18/micron-mu-q2-earnings-report-2026.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T01:37:42.958891+00:00'
+    stale_at: '2026-07-12T01:37:42.958891+00:00'
+    expire_at: '2026-09-10T01:37:42.958891+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f9de4d
+  filename: 2026-06-12_micron-reports-results-for-q2-fiscal-2026.md
+  source_type: web-search
+  added: '2026-06-12T01:37:42.964731+00:00'
+  processed: false
+  notes: query='Micron MU latest quarter earnings revenue gross margin guidance 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Micron MU latest quarter earnings revenue gross margin guidance 2026
+    url: https://finance.yahoo.com/news/micron-technology-inc-reports-results-200100050.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:42.963347+00:00'
+    stale_at: '2026-07-12T01:37:42.963347+00:00'
+    expire_at: '2026-09-10T01:37:42.963347+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-82e143
+  filename: 2026-06-12_skyrocketing-hbm-will-push-micron-through-45-billi.md
+  source_type: web-search
+  added: '2026-06-12T01:37:42.970032+00:00'
+  processed: false
+  notes: query='Micron HBM3E HBM4 market share 2026 ramp NVIDIA' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Micron HBM3E HBM4 market share 2026 ramp NVIDIA
+    url: https://www.nextplatform.com/2026/skyrocketing-hbm-micron-45-billion/
+    domain: nextplatform.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:42.968305+00:00'
+    stale_at: '2026-07-12T01:37:42.968305+00:00'
+    expire_at: '2026-09-10T01:37:42.968305+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5830f9
+  filename: 2026-06-12_micron-stock-up-120-ytd-what-the-hbm-memory-leader.md
+  source_type: web-search
+  added: '2026-06-12T01:37:42.976298+00:00'
+  processed: false
+  notes: query='Micron HBM3E HBM4 market share 2026 ramp NVIDIA' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Micron HBM3E HBM4 market share 2026 ramp NVIDIA
+    url: https://www.io-fund.com/semiconductors/micron-stock-up-120-ytd-hbm-memory-leader
+    domain: io-fund.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:42.973946+00:00'
+    stale_at: '2026-07-12T01:37:42.973946+00:00'
+    expire_at: '2026-09-10T01:37:42.973946+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-baf4bf
+  filename: 2026-06-12_micron-earnings-power-still-looks-undervalued-at-1.md
+  source_type: web-search
+  added: '2026-06-12T01:37:42.985200+00:00'
+  processed: false
+  notes: query='Micron MU stock price market cap forward PE valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Micron MU stock price market cap forward PE valuation 2026
+    url: https://www.investing.com/analysis/micron-earnings-power-still-looks-undervalued-at-107x-forward-pe-200676559
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:42.982454+00:00'
+    stale_at: '2026-07-12T01:37:42.982454+00:00'
+    expire_at: '2026-09-10T01:37:42.982454+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-145d4e
+  filename: 2026-06-12_micron-technology-mu-statistics-valuation.md
+  source_type: web-search
+  added: '2026-06-12T01:37:42.994116+00:00'
+  processed: false
+  notes: query='Micron MU stock price market cap forward PE valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Micron MU stock price market cap forward PE valuation 2026
+    url: https://stockanalysis.com/stocks/mu/statistics
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:42.990853+00:00'
+    stale_at: '2026-07-12T01:37:42.990853+00:00'
+    expire_at: '2026-09-10T01:37:42.990853+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-67909a
+  filename: 2026-06-12_micron-technology-pe-ratio-2012-2026-mu---macrotre.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.005076+00:00'
+  processed: false
+  notes: query='Micron MU stock price market cap forward PE valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Micron MU stock price market cap forward PE valuation 2026
+    url: https://www.macrotrends.net/stocks/charts/MU/micron-technology/pe-ratio
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:43.001067+00:00'
+    stale_at: '2026-07-12T01:37:43.001067+00:00'
+    expire_at: '2026-09-10T01:37:43.001067+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5cf26c
+  filename: 2026-06-12_micron-investor-relations-financial-results-pdf.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.020018+00:00'
+  processed: false
+  notes: query='Micron capex fiscal 2026 guidance New York Idaho fab schedule'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Micron capex fiscal 2026 guidance New York Idaho fab schedule
+    url: https://investors.micron.com/financial-results
+    domain: investors.micron.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T01:37:43.013850+00:00'
+    stale_at: '2026-07-12T01:37:43.013850+00:00'
+    expire_at: '2026-09-10T01:37:43.013850+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dc56cb
+  filename: 2026-06-12_dram-price-trends-trendforce.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.037794+00:00'
+  processed: false
+  notes: query='DRAM NAND price trend 2026 TrendForce contract DDR5 spot'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: DRAM NAND price trend 2026 TrendForce contract DDR5 spot
+    url: https://www.trendforce.com/news/dram-price-trends
+    domain: trendforce.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T01:37:43.032689+00:00'
+    stale_at: '2026-07-12T01:37:43.032689+00:00'
+    expire_at: '2026-09-10T01:37:43.032689+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-49bf37
+  filename: 2026-06-12_dramexchange-dram-and-nand-flash-market.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.085378+00:00'
+  processed: false
+  notes: query='DRAM NAND price trend 2026 TrendForce contract DDR5 spot' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: DRAM NAND price trend 2026 TrendForce contract DDR5 spot
+    url: https://www.dramexchange.com/
+    domain: dramexchange.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:43.053828+00:00'
+    stale_at: '2026-07-12T01:37:43.053828+00:00'
+    expire_at: '2026-09-10T01:37:43.053828+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8f0602
+  filename: 2026-06-12_cxmt-unveils-aggressive-expansion-of-domestic-memo.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.110622+00:00'
+  processed: false
+  notes: query='CXMT ChangXin DRAM DDR5 capacity 2026 competition' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: CXMT ChangXin DRAM DDR5 capacity 2026 competition
+    url: https://autonews.gasgoo.com/cxmt-aggressive-expansion-domestic-memory
+    domain: autonews.gasgoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:43.101516+00:00'
+    stale_at: '2026-07-12T01:37:43.101516+00:00'
+    expire_at: '2026-09-10T01:37:43.101516+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8494eb
+  filename: 2026-06-12_micron-technology-q1-fy2026-sets-records-strong-q2.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.139814+00:00'
+  processed: false
+  notes: query='Micron HBM revenue percentage data center 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Micron HBM revenue percentage data center 2026
+    url: https://futurumgroup.com/insights/micron-technology-q1-fy-2026-sets-records-strong-q2-outlook/
+    domain: futurumgroup.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:43.131362+00:00'
+    stale_at: '2026-07-12T01:37:43.131362+00:00'
+    expire_at: '2026-09-10T01:37:43.131362+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ac10a1
+  filename: 2026-06-12_bofa-nearly-doubled-micron-price-target-to-950.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.174941+00:00'
+  processed: false
+  notes: query='memory super cycle 2026 outlook peak Micron analyst' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: memory super cycle 2026 outlook peak Micron analyst
+    url: https://247wallst.com/investing/2026/05/13/bofa-just-nearly-doubled-micron-price-target-to-950-memory-supercycle-just-got-bigger
+    domain: 247wallst.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:43.161419+00:00'
+    stale_at: '2026-07-12T01:37:43.161419+00:00'
+    expire_at: '2026-09-10T01:37:43.161419+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-124837
+  filename: 2026-06-12_how-high-can-micron-go-in-the-memory-supercycle-he.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.203111+00:00'
+  processed: false
+  notes: query='memory super cycle 2026 outlook peak Micron analyst' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: memory super cycle 2026 outlook peak Micron analyst
+    url: https://www.fool.com/investing/micron-memory-supercycle-history/
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:43.192187+00:00'
+    stale_at: '2026-07-12T01:37:43.192187+00:00'
+    expire_at: '2026-09-10T01:37:43.192187+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2abb63
+  filename: 2026-06-12_micron-q2-fy2026-10-q-profit-surges-on-23-9b-reven.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.236663+00:00'
+  processed: false
+  notes: query='Micron share buyback dividend capital return 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Micron share buyback dividend capital return 2026
+    url: https://www.stocktitan.net/sec-filings/MU/10-q-micron-technology-inc-quarterly-earnings-report-360c726cbcb3.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:37:43.226933+00:00'
+    stale_at: '2026-07-12T01:37:43.226933+00:00'
+    expire_at: '2026-09-10T01:37:43.226933+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-253833
+  filename: 2026-06-12_micron-the-setup-into-2027-nasdaq-mu.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.262643+00:00'
+  processed: false
+  notes: query='Micron share buyback dividend capital return 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Micron share buyback dividend capital return 2026
+    url: https://seekingalpha.com/article/micron-the-setup-into-2027
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T01:37:43.252715+00:00'
+    stale_at: '2026-07-12T01:37:43.252715+00:00'
+    expire_at: '2026-09-10T01:37:43.252715+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fe28d7
+  filename: 2026-06-12_micron-pushes-us-congress-to-crack-down-on-chinese.md
+  source_type: web-search
+  added: '2026-06-12T01:37:43.297249+00:00'
+  processed: false
+  notes: query='Micron China CXMT tariff export control memory 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Micron China CXMT tariff export control memory 2026
+    url: https://www.reuters.com/technology/micron-pushes-us-congress-crack-down-chip-tool-china
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T01:37:43.286408+00:00'
+    stale_at: '2026-07-12T01:37:43.286408+00:00'
+    expire_at: '2026-09-10T01:37:43.286408+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-df36de
+  filename: 2026_MU_10-Q_2026-03-19.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:25.376187+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-4783c9
+  filename: sec/2026_MU_10-Q_2026-03-19/item_1_financial.md
+  source_type: sec-section
+  added: '2026-06-12T01:42:25.524379+00:00'
+  processed: true
+  notes: split from 2026_MU_10-Q_2026-03-19.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-df36de
+  sec_section: item_1_financial
+- id: mat-dd8b66
+  filename: sec/2026_MU_10-Q_2026-03-19/item_2_mda.md
+  source_type: sec-section
+  added: '2026-06-12T01:42:25.534645+00:00'
+  processed: true
+  notes: split from 2026_MU_10-Q_2026-03-19.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-df36de
+  sec_section: item_2_mda
+- id: mat-10587f
+  filename: sec/2026_MU_10-Q_2026-03-19/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-12T01:42:25.545371+00:00'
+  processed: true
+  notes: split from 2026_MU_10-Q_2026-03-19.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-df36de
+  sec_section: item_3_quant_risk
+- id: mat-64ca13
+  filename: sec/2026_MU_10-Q_2026-03-19/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-12T01:42:25.556287+00:00'
+  processed: true
+  notes: split from 2026_MU_10-Q_2026-03-19.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-df36de
+  sec_section: item_1a_risk
+- id: mat-45a51a
+  filename: 2025_MU_10-K_2025-10-03.htm
+  source_type: annual-report
+  added: '2026-06-12T01:42:28.039080+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-47a4a0
+  filename: sec/2025_MU_10-K_2025-10-03/item_1_business.md
+  source_type: sec-section
+  added: '2026-06-12T01:42:28.211450+00:00'
+  processed: true
+  notes: split from 2025_MU_10-K_2025-10-03.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-45a51a
+  sec_section: item_1_business
+- id: mat-c6503b
+  filename: sec/2025_MU_10-K_2025-10-03/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-12T01:42:28.223401+00:00'
+  processed: true
+  notes: split from 2025_MU_10-K_2025-10-03.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-45a51a
+  sec_section: item_1a_risk
+- id: mat-037039
+  filename: sec/2025_MU_10-K_2025-10-03/item_7_mda.md
+  source_type: sec-section
+  added: '2026-06-12T01:42:28.238556+00:00'
+  processed: true
+  notes: split from 2025_MU_10-K_2025-10-03.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-45a51a
+  sec_section: item_7_mda
+- id: mat-7780df
+  filename: sec/2025_MU_10-K_2025-10-03/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-12T01:42:28.251030+00:00'
+  processed: true
+  notes: split from 2025_MU_10-K_2025-10-03.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-45a51a
+  sec_section: item_7a_quant_risk
+- id: mat-5a387b
+  filename: sec/2025_MU_10-K_2025-10-03/item_8_financial.md
+  source_type: sec-section
+  added: '2026-06-12T01:42:28.275211+00:00'
+  processed: true
+  notes: split from 2025_MU_10-K_2025-10-03.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-45a51a
+  sec_section: item_8_financial
+- id: mat-69536e
+  filename: 2026-06-09_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:34.654554+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-3415b7
+  filename: 2026-04-01_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:36.936820+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-85c1a9
+  filename: 2026-03-25_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:39.055663+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-ccb3b0
+  filename: 2026-03-18_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:41.968604+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-37d3ad
+  filename: 2026-01-21_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:44.094634+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-c9f32f
+  filename: 2025-12-17_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:46.942829+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-ba0222
+  filename: 2025-10-21_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:48.815939+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-e28d1e
+  filename: 2025-09-23_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:51.463026+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-a7555c
+  filename: 2025-08-11_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:42:59.077236+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5085c1
+  filename: 2025-07-18_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:43:02.925169+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-856986
+  filename: 2025-06-25_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:43:06.032850+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-672d40
+  filename: 2025-06-12_MU_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T01:43:08.629016+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MICRON TECHNOLOGY INC
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-dda82b
+  filename: 2026-06-12_ubs-tripled-micron-target-to-1-625-tikr.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.160534+00:00'
+  processed: true
+  notes: query='Micron sell-side deep dive HBM cycle valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Micron sell-side deep dive HBM cycle valuation 2026
+    url: https://www.tikr.com/blog/ubs-tripled-its-micron-target-to-1625-heres-what-the-data-actually-shows
+    domain: tikr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.150066+00:00'
+    stale_at: '2026-07-12T01:46:14.150066+00:00'
+    expire_at: '2026-09-10T01:46:14.150066+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-85c74c
+  filename: 2026-06-12_micron-at-14x-bargain-or-cycle-trap.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.191411+00:00'
+  processed: true
+  notes: query='Micron sell-side deep dive HBM cycle valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Micron sell-side deep dive HBM cycle valuation 2026
+    url: https://stockwirex.com/analysis/micron-stock-analysis-hbm-cycle/
+    domain: stockwirex.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.180735+00:00'
+    stale_at: '2026-07-12T01:46:14.180735+00:00'
+    expire_at: '2026-09-10T01:46:14.180735+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8dc9dc
+  filename: 2026-06-12_micron-sold-out-hbm-bull-case.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.222854+00:00'
+  processed: true
+  notes: query='Micron sell-side deep dive HBM cycle valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Micron sell-side deep dive HBM cycle valuation 2026
+    url: https://www.investing.com/analysis/microns-soldout-hbm-supply-makes-the-bull-case-hard-to-dismiss-200681391
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.211888+00:00'
+    stale_at: '2026-07-12T01:46:14.211888+00:00'
+    expire_at: '2026-09-10T01:46:14.211888+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-398207
+  filename: 2026-06-12_micron-1t-on-ubs-northland-says-borrowed-time.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.255380+00:00'
+  processed: true
+  notes: query='Micron sell-side deep dive HBM cycle valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Micron sell-side deep dive HBM cycle valuation 2026
+    url: https://baptistaresearch.com/micron-hbm-valuation-hyperscaler-capex-risk/
+    domain: baptistaresearch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.243892+00:00'
+    stale_at: '2026-07-12T01:46:14.243892+00:00'
+    expire_at: '2026-09-10T01:46:14.243892+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3824d5
+  filename: 2026-06-12_goldman-lifts-micron-pt-to-900-neutral.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.289104+00:00'
+  processed: true
+  notes: query='Micron sell-side deep dive HBM cycle valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Micron sell-side deep dive HBM cycle valuation 2026
+    url: https://tradevae.com/news/stock-markets/goldman-lifts-micron-estimates-predicts-another-strong-quarter/
+    domain: tradevae.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.277035+00:00'
+    stale_at: '2026-07-12T01:46:14.277035+00:00'
+    expire_at: '2026-09-10T01:46:14.277035+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f3679c
+  filename: 2026-06-12_micron-surged-9x-but-history-suggests-caution-tref.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.326952+00:00'
+  processed: true
+  notes: query='memory DRAM cycle crash history peak to trough Micron' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: memory DRAM cycle crash history peak to trough Micron
+    url: https://www.trefis.com/stock/mu/articles/599100/micron-stock-surged-9x-but-history-suggests-caution/2026-05-12
+    domain: trefis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.314384+00:00'
+    stale_at: '2026-07-12T01:46:14.314384+00:00'
+    expire_at: '2026-09-10T01:46:14.314384+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b1a3bc
+  filename: 2026-06-12_dram-worst-business-now-micron-1t-6-cycles.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.362491+00:00'
+  processed: true
+  notes: query='memory DRAM cycle crash history peak to trough Micron' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: memory DRAM cycle crash history peak to trough Micron
+    url: https://www.chiplog.io/p/dram-was-the-worst-business-in-chips
+    domain: chiplog.io
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.349616+00:00'
+    stale_at: '2026-07-12T01:46:14.349616+00:00'
+    expire_at: '2026-09-10T01:46:14.349616+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-bc352c
+  filename: 2026-06-12_it-s-ugly-micron-2022-downturn-detail.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.399663+00:00'
+  processed: true
+  notes: query='memory DRAM cycle crash history peak to trough Micron' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: memory DRAM cycle crash history peak to trough Micron
+    url: https://www.blocksandfiles.com/flash/2022/12/22/its-ugly-micron-dram-and-nand-revenues-down-layoffs-coming/1590160
+    domain: blocksandfiles.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.386791+00:00'
+    stale_at: '2026-07-12T01:46:14.386791+00:00'
+    expire_at: '2026-09-10T01:46:14.386791+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6a8149
+  filename: 2026-06-12_memory-price-collapse-history-wsts-memory-guy.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.437132+00:00'
+  processed: true
+  notes: query='memory DRAM cycle crash history peak to trough Micron' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: memory DRAM cycle crash history peak to trough Micron
+    url: https://thememoryguy.com/todays-unprecedented-collapses/
+    domain: thememoryguy.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.423686+00:00'
+    stale_at: '2026-07-12T01:46:14.423686+00:00'
+    expire_at: '2026-09-10T01:46:14.423686+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e85217
+  filename: 2026-06-12_hbm-qualification-race-2022-2026-silicon-analysts.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.478533+00:00'
+  processed: true
+  notes: query='HBM market share SK Hynix Micron Samsung HBM4 yield qualification'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: HBM market share SK Hynix Micron Samsung HBM4 yield qualification
+    url: https://siliconanalysts.com/analysis/hbm-qualification-race-2022-2026
+    domain: siliconanalysts.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.465298+00:00'
+    stale_at: '2026-07-12T01:46:14.465298+00:00'
+    expire_at: '2026-09-10T01:46:14.465298+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-1aae1a
+  filename: 2026-06-12_2026-hbm-supply-demand-forecast-isaiah-research.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.517481+00:00'
+  processed: true
+  notes: query='HBM market share SK Hynix Micron Samsung HBM4 yield qualification'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: HBM market share SK Hynix Micron Samsung HBM4 yield qualification
+    url: https://www.isaiahresearch.com/Insight/Detail/120
+    domain: isaiahresearch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.503584+00:00'
+    stale_at: '2026-07-12T01:46:14.503584+00:00'
+    expire_at: '2026-09-10T01:46:14.503584+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-14a5a4
+  filename: 2026-06-12_battle-for-vera-rubin-hbm4-sk-hynix-vs-samsung.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.557181+00:00'
+  processed: true
+  notes: query='HBM market share SK Hynix Micron Samsung HBM4 yield qualification'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: HBM market share SK Hynix Micron Samsung HBM4 yield qualification
+    url: https://www.businesskorea.co.kr/news/articleView.html?idxno=270907
+    domain: businesskorea.co.kr
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.543151+00:00'
+    stale_at: '2026-07-12T01:46:14.543151+00:00'
+    expire_at: '2026-09-10T01:46:14.543151+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-247497
+  filename: 2026-06-12_global-dram-and-hbm-market-share-quarterly-counter.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.598227+00:00'
+  processed: true
+  notes: query='HBM market share SK Hynix Micron Samsung HBM4 yield qualification'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: HBM market share SK Hynix Micron Samsung HBM4 yield qualification
+    url: https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share
+    domain: counterpointresearch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.583761+00:00'
+    stale_at: '2026-07-12T01:46:14.583761+00:00'
+    expire_at: '2026-09-10T01:46:14.583761+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-035fad
+  filename: 2026-06-12_memory-industry-cautious-capex-2026-trendforce.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.643371+00:00'
+  processed: true
+  notes: query='DRAM supply bit growth capex demand balance oversupply TrendForce'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: DRAM supply bit growth capex demand balance oversupply TrendForce
+    url: https://www.trendforce.com/presscenter/news/20251113-12780.html
+    domain: trendforce.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.628427+00:00'
+    stale_at: '2026-07-12T01:46:14.628427+00:00'
+    expire_at: '2026-09-10T01:46:14.628427+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c3ac1f
+  filename: 2026-06-12_tight-dram-gives-hbm-pricing-power-hbm-prices-surg.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.686251+00:00'
+  processed: true
+  notes: query='DRAM supply bit growth capex demand balance oversupply TrendForce'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: DRAM supply bit growth capex demand balance oversupply TrendForce
+    url: https://www.trendforce.com/presscenter/news/20260602-13074.html
+    domain: trendforce.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.670892+00:00'
+    stale_at: '2026-07-12T01:46:14.670892+00:00'
+    expire_at: '2026-09-10T01:46:14.670892+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6f9b97
+  filename: 2026-06-12_dram-market-bulletin-jun-3-2026-trendforce.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.729732+00:00'
+  processed: true
+  notes: query='DRAM supply bit growth capex demand balance oversupply TrendForce'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: DRAM supply bit growth capex demand balance oversupply TrendForce
+    url: https://www.trendforce.com/research/download/RP260603NS
+    domain: trendforce.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.714358+00:00'
+    stale_at: '2026-07-12T01:46:14.714358+00:00'
+    expire_at: '2026-09-10T01:46:14.714358+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-feabed
+  filename: 2026-06-12_dram-nand-2026-capex-ai-driven-trendforce.md
+  source_type: web-search
+  added: '2026-06-12T01:46:14.773989+00:00'
+  processed: true
+  notes: query='DRAM supply bit growth capex demand balance oversupply TrendForce'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: DRAM supply bit growth capex demand balance oversupply TrendForce
+    url: https://www.trendforce.com/research/download/RP251107WW
+    domain: trendforce.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T01:46:14.758022+00:00'
+    stale_at: '2026-07-12T01:46:14.758022+00:00'
+    expire_at: '2026-09-10T01:46:14.758022+00:00'
+    triggered_by: 00-deep-fetch

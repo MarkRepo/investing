@@ -181,7 +181,7 @@ evaluations:
     value: null
     as_of: null
     used: false
-  - name: 持仓拥挤(CFTC + CTA/vol-target + basis-trade规模)
+  - name: 持仓拥挤(杠杆基金UST10Y净头寸/basis-trade代理)
     value: null
     as_of: null
     used: true
@@ -593,7 +593,7 @@ evaluations:
       role: load_bearing
     - input: IG OAS
       role: confirming
-    - input: 持仓拥挤(CFTC + CTA/vol-target + basis-trade规模)
+    - input: 持仓拥挤(杠杆基金UST10Y净头寸/basis-trade代理)
       role: confirming
     - input: USDJPY / 日元 carry
       role: confirming
@@ -602,5 +602,721 @@ evaluations:
     causal: 2Y/10Y 利差压到近一年最窄 + IG/HY OAS 处历史极窄 → 缓冲极薄；风险偏好亢奋、波动率压低 = 低波动末段；深度负利差下
       carry 头寸拥挤（日元 carry 为阈值尾部触发），一旦反转易踩踏；PBoC 保汇率/Fed 通胀优先/人民币企稳延续等承重假设叠加，任一证伪即强制重判
       → 脆弱度高，综合信心要被它折减。
+- version: 2
+  evaluated_at: '2026-06-11T12:37:33.767340+00:00'
+  note: S5 合成/重估 v2：象限滞胀→过热、纠Warsh误判、FX口径澄清、新增日元carry张力
+  input_snapshot:
+  - name: 联邦基金目标区间
+    value: 3.75
+    as_of: '2026-06-10'
+    used: true
+  - name: FOMC 点阵图(SEP)
+    value: 3.4
+    as_of: '2026-03-18'
+    used: true
+  - name: CME FedWatch 隐含路径
+    value: 3.86
+    as_of: '2026-06-09'
+    used: true
+  - name: FOMC 声明/纪要
+    value: 3.75
+    as_of: '2026-04-29'
+    used: false
+    stance: 中性
+  - name: 美联储官员讲话(主席)
+    value: null
+    as_of: '2026-06-01'
+    used: true
+    stance: 鹰
+  - name: 非农就业 NFP
+    value: 159001.0
+    as_of: '2026-05-01'
+    used: false
+  - name: 失业率
+    value: 4.3
+    as_of: '2026-05-01'
+    used: false
+  - name: 初请失业金
+    value: 225000.0
+    as_of: '2026-05-30'
+    used: false
+  - name: JOLTS 职位空缺/离职率
+    value: 7618.0
+    as_of: '2026-04-01'
+    used: false
+  - name: ISM 制造业 PMI
+    value: 54.0
+    as_of: 2026-05
+    used: true
+  - name: ISM 服务业 PMI
+    value: 54.5
+    as_of: 2026-05
+    used: true
+  - name: 零售销售
+    value: 757085.0
+    as_of: '2026-04-01'
+    used: false
+  - name: GDPNow 实时预测
+    value: 3.2906
+    as_of: '2026-04-01'
+    used: true
+  - name: 时薪 / ECI
+    value: 37.53
+    as_of: '2026-05-01'
+    used: false
+  - name: 核心 PCE
+    value: 129.63
+    as_of: '2026-04-01'
+    used: true
+  - name: CPI(核心+supercore)
+    value: 336.121
+    as_of: '2026-05-01'
+    used: true
+  - name: PCE 三分项(supercore/住房/商品)
+    value: 129.63
+    as_of: '2026-04-01'
+    used: false
+  - name: PPI
+    value: 156.496
+    as_of: '2026-04-01'
+    used: false
+  - name: WTI 油价(+供给/需求分解)
+    value: 95.0
+    as_of: '2026-06-08'
+    used: true
+  - name: 5y5y/breakeven 通胀预期
+    value: 2.24
+    as_of: '2026-06-10'
+    used: true
+  - name: 国债发行计划 QRA + 票/券构成
+    value: 125
+    as_of: '2026-05-06'
+    used: false
+    stance: 中性
+  - name: TGA 余额
+    value: 875713.0
+    as_of: '2026-06-03'
+    used: false
+  - name: 联邦赤字
+    value: -292648.46208374
+    as_of: '2026-05-01'
+    used: false
+  - name: 美联储资产 WALCL(QT 节奏)
+    value: 6711495.0
+    as_of: '2026-06-03'
+    used: true
+  - name: RRP 逆回购
+    value: 0.387
+    as_of: '2026-06-10'
+    used: true
+  - name: 净流动性(=资产−TGA−RRP)
+    value: 5835781.613
+    as_of: null
+    used: true
+  - name: 银行准备金 + 准备金/GDP
+    value: 3013902.0
+    as_of: '2026-06-03'
+    used: false
+  - name: SOFR−IORB / 回购压力
+    value: -0.04999999999999982
+    as_of: null
+    used: true
+  - name: FRA-OIS 利差
+    value: null
+    as_of: null
+    used: false
+  - name: Fed swap line / SRF / FIMA 动用
+    value: 116.0
+    as_of: '2026-06-03'
+    used: false
+    stance: 中性
+  - name: SLOOS 银行信贷标准
+    value: 1.5
+    as_of: '2026-04-01'
+    used: false
+  - name: 2Y/10Y/30Y 国债
+    value: 4.53
+    as_of: '2026-06-09'
+    used: true
+  - name: 10Y 实际利率 TIPS
+    value: 2.2
+    as_of: '2026-06-09'
+    used: true
+  - name: 期限溢价 ACM 分解
+    value: 0.8019
+    as_of: '2026-06-05'
+    used: false
+  - name: 2s10s 曲线斜率
+    value: 0.42
+    as_of: '2026-06-10'
+    used: true
+  - name: IG OAS
+    value: 0.75
+    as_of: '2026-06-09'
+    used: true
+  - name: HY OAS
+    value: 2.78
+    as_of: '2026-06-09'
+    used: true
+  - name: CMBS/ABS OAS(NFCI 最高权重)
+    value: null
+    as_of: null
+    used: false
+  - name: MOVE 债市波动率
+    value: 73.94629669189453
+    as_of: '2026-06-10'
+    used: true
+  - name: VIX
+    value: 19.87
+    as_of: '2026-06-09'
+    used: true
+  - name: 金融条件指数 FCI(NFCI/GS)
+    value: -0.506
+    as_of: '2026-06-05'
+    used: true
+  - name: 股票估值 CAPE
+    value: 39.41935320301406
+    as_of: '2025-12-01'
+    used: true
+  - name: 市场内部/breadth+集中度
+    value: null
+    as_of: null
+    used: false
+  - name: AI-capex 体制代理
+    value: null
+    as_of: null
+    used: false
+  - name: 持仓拥挤(杠杆基金UST10Y净头寸/basis-trade代理)
+    value: null
+    as_of: null
+    used: true
+  - name: 广义/EM加权美元(Fed DTWEXBGS)
+    value: 120.0831
+    as_of: '2026-06-05'
+    used: true
+  - name: DXY
+    value: 112.6846
+    as_of: '2026-06-05'
+    used: false
+  - name: Spot EURUSD
+    value: 1.1533
+    as_of: '2026-06-05'
+    used: false
+  - name: Spot USDJPY
+    value: 160.26
+    as_of: '2026-06-05'
+    used: false
+  - name: EURUSD 3M远期点
+    value: 42.222
+    as_of: '2026-06-11'
+    used: false
+  - name: USDJPY 3M远期点
+    value: -116.465
+    as_of: '2026-06-11'
+    used: false
+  - name: USD 3M OIS
+    value: 3.67
+    as_of: '2026-06-09'
+    used: false
+  - name: EUR 3M OIS
+    value: 2.0759999999999996
+    as_of: '2026-06-10'
+    used: false
+  - name: JPY 3M OIS
+    value: 0.9525
+    as_of: '2026-06-09'
+    used: false
+  - name: EUR/USD 3M 基差
+    value: -2.01
+    as_of: '2026-06-10'
+    used: false
+  - name: JPY/USD 3M 基差
+    value: -21.607210470486695
+    as_of: '2026-06-05'
+    used: false
+  - name: USDJPY / 日元 carry
+    value: 160.26
+    as_of: '2026-06-05'
+    used: true
+  - name: BoJ 政策 / JGB 收益率
+    value: null
+    as_of: null
+    used: false
+    stance: 偏紧
+  - name: ECB 政策分化 / EUR-USD
+    value: null
+    as_of: null
+    used: false
+    stance: 偏鹰
+  - name: BIS 全球流动性(USD/EUR/JPY 对非银信用)
+    value: 8.465
+    as_of: 2025-Q4
+    used: false
+  - name: TIC / 外国持美债 + 中国持美债
+    value: 652.3
+    as_of: 2026-03
+    used: false
+  - name: 黄金
+    value: null
+    as_of: null
+    used: false
+  - name: 比特币
+    value: 61570.02
+    as_of: '2026-06-10'
+    used: false
+  - name: 大宗(铜/铁矿)
+    value: 13483.75153846154
+    as_of: '2026-05-01'
+    used: false
+  - name: 官方制造业 PMI
+    value: 50.0
+    as_of: '2026-05-01 00:00:00'
+    used: false
+  - name: 财新 PMI
+    value: null
+    as_of: null
+    used: false
+  - name: 工业增加值
+    value: null
+    as_of: null
+    used: false
+  - name: 社会消费品零售
+    value: 0.2
+    as_of: 2026-04
+    used: false
+  - name: 固定资产投资
+    value: null
+    as_of: null
+    used: false
+  - name: 出口(美元计)
+    value: null
+    as_of: null
+    used: false
+  - name: 用电量/货运(克强指标)
+    value: null
+    as_of: null
+    used: false
+  - name: 中国 CPI
+    value: 1.2
+    as_of: '2026-05-01 00:00:00'
+    used: false
+  - name: 中国 PPI
+    value: 3.9
+    as_of: '2026-05-01 00:00:00'
+    used: false
+  - name: 7天 OMO 逆回购利率(新锚)
+    value: 1.4
+    as_of: '2026-06-08'
+    used: true
+  - name: MLF 利率
+    value: null
+    as_of: null
+    used: false
+  - name: LPR 1Y(政策锚)
+    value: 3.0
+    as_of: '2026-05-20'
+    used: false
+  - name: LPR 5Y(房贷锚)
+    value: 3.5
+    as_of: '2026-05-20'
+    used: true
+  - name: RRR 存款准备金率
+    value: 9.0
+    as_of: '2025-05-07'
+    used: false
+    stance: 偏松
+  - name: DR007/R007
+    value: 1.4152
+    as_of: '2026-06-10'
+    used: true
+  - name: R007(全市场7天回购)
+    value: 1.4156
+    as_of: '2026-06-10'
+    used: false
+  - name: R007−DR007 利差
+    value: 0.00039999999999995595
+    as_of: null
+    used: false
+  - name: NCD 同业存单利率
+    value: 1.4825
+    as_of: '2026-06-11'
+    used: false
+  - name: 超额准备金率(走廊下限)
+    value: null
+    as_of: null
+    used: false
+    stance: 中性
+  - name: 中国 10Y CGB + 资产荒需求
+    value: 1.7475
+    as_of: '2026-06-11 00:00:00'
+    used: true
+  - name: 结构性工具 PSL/再贷款
+    value: null
+    as_of: null
+    used: false
+    stance: 中性
+  - name: 货币政策执行报告 MPR
+    value: null
+    as_of: '2026-03-31'
+    used: true
+    stance: 偏松
+  - name: 社融 TSF
+    value: 456.89
+    as_of: '2026-04-30'
+    used: true
+  - name: M1/M2/剪刀差
+    value: 8.6
+    as_of: 2026-04
+    used: true
+  - name: 信贷脉冲
+    value: null
+    as_of: null
+    used: false
+  - name: 贷款增速
+    value: null
+    as_of: null
+    used: false
+  - name: USDCNY
+    value: 6.7655
+    as_of: '2026-06-05'
+    used: true
+  - name: PBoC 中间价 + 逆周期因子
+    value: null
+    as_of: null
+    used: true
+  - name: USDCNH(离岸即期)
+    value: 6.7803
+    as_of: '2026-06-11'
+    used: false
+  - name: USDCNY(在岸即期)
+    value: 6.7766
+    as_of: '2026-06-11'
+    used: false
+  - name: CNH-CNY 价差
+    value: 0.0037000000000002586
+    as_of: null
+    used: false
+  - name: CNH HIBOR/离岸流动性 + 央行 HK 票
+    value: null
+    as_of: null
+    used: false
+  - name: 外汇储备(水平+变动)
+    value: 3477516.923138242
+    as_of: '2026-04-01'
+    used: true
+  - name: 中美 10Y 利差
+    value: -2.7825
+    as_of: null
+    used: true
+  - name: 中美实际利率差
+    value: null
+    as_of: null
+    used: false
+  - name: 北向资金
+    value: 339321.25
+    as_of: '2026-06-11'
+    used: true
+    note: 口径已改＝北向成交额(活跃度,非净流入)；净买/卖方向自约2026-04-08交易所停发,前值10998(累计净流入)为已冻结旧口径,不再续。
+  - name: 南向港股通
+    value: -27.543079
+    as_of: '2026-06-11'
+    used: false
+  - name: 外资持 CGB(债券通)
+    value: null
+    as_of: null
+    used: false
+  - name: 远期售汇风险准备金率
+    value: null
+    as_of: null
+    used: false
+    stance: 中性
+  - name: CFETS 人民币篮子指数
+    value: null
+    as_of: null
+    used: false
+  - name: 出口商结汇率
+    value: null
+    as_of: null
+    used: false
+  - name: ADR/H 股溢价折价
+    value: null
+    as_of: null
+    used: false
+  - name: FDI 月度
+    value: null
+    as_of: null
+    used: false
+  - name: 中国专项基金 EPFR(非宽EM)
+    value: null
+    as_of: null
+    used: false
+  - name: MSCI/FTSE 中国权重调整
+    value: null
+    as_of: null
+    used: false
+  - name: 30 城新房成交(高频)
+    value: 24.98
+    as_of: '2026-05-21'
+    used: false
+  - name: 二手房价/成交
+    value: null
+    as_of: null
+    used: false
+  - name: 70 城房价
+    value: 100.1
+    as_of: '2026-04-01'
+    used: false
+  - name: 房地产开发投资
+    value: null
+    as_of: null
+    used: false
+  - name: 土地出让金
+    value: null
+    as_of: null
+    used: false
+  - name: 开发商美元债/地产高收益
+    value: null
+    as_of: null
+    used: false
+  - name: 地方专项债发行
+    value: null
+    as_of: null
+    used: false
+  - name: 财政存款
+    value: null
+    as_of: null
+    used: false
+  - name: LGFV/城投利差(TSF 质量过滤器)
+    value: null
+    as_of: null
+    used: false
+  - name: 中美地缘/关税
+    value: null
+    as_of: '2026-06-02'
+    used: false
+    stance: 缓和
+  - name: ADR 退市/HFCAA/PCAOB
+    value: null
+    as_of: '2026-06-10'
+    used: false
+    stance: 缓和
+  - name: 美出口管制/实体清单
+    value: null
+    as_of: null
+    used: false
+  - name: 资本管制/SAFE 出境规则
+    value: null
+    as_of: null
+    used: false
+    stance: 偏紧
+  - name: 中国政治局/NPC 经济信号
+    value: null
+    as_of: null
+    used: false
+    stance: 偏松
+  - name: CSRC 监管动作
+    value: null
+    as_of: null
+    used: false
+    stance: 偏松
+  - name: 美财政/债务上限/财政主导
+    value: null
+    as_of: null
+    used: false
+  - name: 中国主权评级展望
+    value: null
+    as_of: null
+    used: false
+    stance: 上移
+  - name: 外汇占款
+    value: 215381.08
+    as_of: 2026-04
+    used: false
+  - name: 银行结售汇差额
+    value: 400.799
+    as_of: 2026-04
+    used: false
+  - name: 银行代客涉外收付差额
+    value: 619.4466128197
+    as_of: 2026-04
+    used: false
+  conclusions:
+  - id: overall
+    label: 综合判断
+    state: 中美背离·美higher-for-longer×risk-on但脆弱/中宽货币紧信用（强度6/10·脆弱度高）
+    causal: 美增长稳健+通胀粘+政策按兵+金融条件偏松+信用利差极窄=risk-on但缓冲薄；中宽货币紧信用、人民币企稳。组合偏防御、压久期、防美利率与carry尾部。
+    based_on:
+    - input: 联邦基金目标区间
+      role: load_bearing
+      expected: up_or_flat
+    - input: 2Y/10Y/30Y 国债
+      role: load_bearing
+      expected: up_or_flat
+    - input: HY OAS
+      role: confirming
+    - input: 金融条件指数 FCI(NFCI/GS)
+      role: confirming
+    - input: 社融 TSF
+      role: confirming
+    - input: USDCNY
+      role: confirming
+  - id: rates_us
+    label: 美国利率体制
+    state: 高位企稳·双向风险(市场押微幅加息vs点阵图仍含降息)·曲线低斜率正向·长端受期限溢价/发债支撑
+    causal: 政策3.50-3.75按兵；FedWatch Dec隐含3.86押约一次加息，点阵图中位3.4仍含降息→预期差。10Y4.53、实际利率2.2%高位、2s10s+42bp低斜率正向。主席仍Powell(纠正v1
+      Warsh误判)。
+    based_on:
+    - input: 联邦基金目标区间
+      role: load_bearing
+      expected: up_or_flat
+    - input: CME FedWatch 隐含路径
+      role: load_bearing
+      expected: up_or_flat
+    - input: 2Y/10Y/30Y 国债
+      role: load_bearing
+      expected: up_or_flat
+    - input: 10Y 实际利率 TIPS
+      role: load_bearing
+      expected: up_or_flat
+    - input: 核心 PCE
+      role: load_bearing
+      expected: up_or_flat
+    - input: FOMC 点阵图(SEP)
+      role: confirming
+    - input: 美联储官员讲话(主席)
+      role: confirming
+    - input: 2s10s 曲线斜率
+      role: confirming
+  - id: rates_cn
+    label: 中国利率体制
+    state: 低位偏松·中性偏下·结构性工具为主
+    causal: 10Y CGB~1.75%历史低位、DR007~1.42%资金面松、OMO7天1.40锚、LPR 3.0/3.5；货政报告定调适度宽松、短期更可能用结构性工具而非全面降准降息。
+    based_on:
+    - input: 中国 10Y CGB + 资产荒需求
+      role: load_bearing
+      expected: down_or_flat
+    - input: DR007/R007
+      role: load_bearing
+      expected: down_or_flat
+    - input: 7天 OMO 逆回购利率(新锚)
+      role: confirming
+    - input: LPR 5Y(房贷锚)
+      role: confirming
+    - input: 货币政策执行报告 MPR
+      role: confirming
+  - id: liquidity_us
+    label: 美国流动性体制
+    state: 金融条件偏松·信用利差历史极窄·资金面无压但临界(RRP耗尽)·风险偏好亢奋但脆弱
+    causal: NFCI-0.51宽松区、SOFR-IORB-5bp无稀缺压、RRP归零、准备金3.01万亿临界；IG75/HY278历史极窄几乎不补偿违约。条件端松、缓冲薄=脆弱顺风后期。净流动性已按§5降权。
+    based_on:
+    - input: HY OAS
+      role: load_bearing
+      expected: down_or_flat
+    - input: IG OAS
+      role: load_bearing
+      expected: down_or_flat
+    - input: 金融条件指数 FCI(NFCI/GS)
+      role: load_bearing
+      expected: down_or_flat
+    - input: SOFR−IORB / 回购压力
+      role: load_bearing
+      expected: flat
+    - input: 净流动性(=资产−TGA−RRP)
+      role: confirming
+    - input: RRP 逆回购
+      role: confirming
+    - input: 美联储资产 WALCL(QT 节奏)
+      role: confirming
+  - id: liquidity_cn
+    label: 中国流动性体制
+    state: 宽货币×紧信用(有水鱼不出)·M1-M2边际改善
+    causal: 央行→银行水足(DR007低、社融/M2合理)，但社融增速历史低位附近、贷款增速记录低、居民贷款萎缩→银行→实体堵住；M1-M2剪刀差负但收窄是边际改善。推绳子风险。
+    based_on:
+    - input: 社融 TSF
+      role: load_bearing
+      expected: up_or_flat
+    - input: M1/M2/剪刀差
+      role: load_bearing
+      expected: up_or_flat
+    - input: DR007/R007
+      role: confirming
+  - id: fx_cny
+    label: 人民币汇率体制
+    state: 企稳偏强·外资偏回流(硬度下降:北向净流入停发、仅海外主动基金+人民币企稳佐证)·中性偏友好(强广义美元120+深度负利差+日元carry160为悬顶)
+    causal: USDCNY~6.77偏升、外资偏回流(海外主动基金转净流入);利差(-278bp)已降为压力表(§5#1)，真驱动是中间价/逆周期+管制+顺差。强广义美元(120)与日元carry(160)是外部张力，一旦广义美元再上台阶或carry平仓即反转。注:北向净买/卖方向自约2026-04-08停发,现仅余成交活跃度(非方向),方向性"脚投票"已失明、该结论硬度下降。
+    based_on:
+    - input: USDCNY
+      role: load_bearing
+      expected: down_or_flat
+    - input: 北向资金
+      role: confirming
+      expected: any
+      note: 口径已改＝成交额(活跃度,非方向);净流入停发,不再作方向性load_bearing,亦不按up_or_flat计分。
+    - input: 广义/EM加权美元(Fed DTWEXBGS)
+      role: confirming
+    - input: 中美 10Y 利差
+      role: confirming
+    - input: PBoC 中间价 + 逆周期因子
+      role: confirming
+    - input: 外汇储备(水平+变动)
+      role: background
+  - id: quadrant
+    label: 增长/通胀象限
+    state: 过热（overheat）
+    causal: 增长稳健偏热(GDPNow+3.29%、ISM制造54/服务54.5、零售为正、失业率4.3%低)×通胀粘但锚定(核心PCE/CPI粘、WTI95、5y5y2.24)=过热格。v1滞胀系缺增长实测的估算，本轮数据落地改判。
+    based_on:
+    - input: GDPNow 实时预测
+      role: load_bearing
+      expected: up_or_flat
+    - input: ISM 制造业 PMI
+      role: load_bearing
+      expected: up_or_flat
+    - input: 核心 PCE
+      role: load_bearing
+      expected: up_or_flat
+    - input: ISM 服务业 PMI
+      role: confirming
+    - input: CPI(核心+supercore)
+      role: confirming
+    - input: WTI 油价(+供给/需求分解)
+      role: confirming
+    - input: 5y5y/breakeven 通胀预期
+      role: confirming
+  - id: fragility
+    label: 脆弱度
+    state: high
+    causal: IG75/HY278历史极窄(缓冲薄)+MOVE74/VIX19.9低波动末段+USDJPY160日元carry极拥挤(阈值尾部§5#6)+CAPE39.4估值透支+多承重假设(保汇率/通胀优先/企稳延续/利差不走阔)→综合信心需折减。
+    based_on:
+    - input: HY OAS
+      role: load_bearing
+      expected: down_or_flat
+    - input: USDJPY / 日元 carry
+      role: load_bearing
+      expected: up_or_flat
+    - input: IG OAS
+      role: confirming
+    - input: 2s10s 曲线斜率
+      role: confirming
+    - input: 股票估值 CAPE
+      role: confirming
+    - input: VIX
+      role: background
+    - input: MOVE 债市波动率
+      role: background
+    - input: 持仓拥挤(杠杆基金UST10Y净头寸/basis-trade代理)
+      role: confirming
+  prior_verdict:
+  - conclusion_id: quadrant
+    verdict: wrong
+    note: v1滞胀系缺增长实测的训练知识估算；GDPNow3.3%+ISM双54落地后改判过热
+  - conclusion_id: rates_us
+    verdict: partial
+    note: higher-for-longer/熊平方向held，但v1所依"Warsh换帅转鹰"系误判(主席仍Powell)，已删除
+  - conclusion_id: liquidity_us
+    verdict: partial
+    note: 信用利差极窄/脆弱held，但"美紧"修正为"条件偏松"(NFCI-0.51、资金面无压)
+  - conclusion_id: fx_cny
+    verdict: held
+    note: 人民币企稳+外资回流延续；澄清"DXY96→112"为AFE代理口径假象、非翻转
 reeval_pending: null
-updated: '2026-06-08T08:54:29.684722+00:00'
+updated: '2026-06-11T12:37:33.767523+00:00'

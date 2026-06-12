@@ -3,7 +3,7 @@ display_name: 宏观层 (利率/流动性/汇率体制)
 type: macro
 created: '2026-06-07T07:52:11.830227+00:00'
 status: active
-stage: done
+stage: 05-critic-review
 canonical: true
 parent_topic: null
 monitoring_tier: watch
@@ -29,16 +29,16 @@ outputs_state:
     last_error: null
     critic_passed: true
   m_regime_read:
-    version: 1
-    last_updated: '2026-06-07T08:01:11.146934+00:00'
+    version: 2
+    last_updated: '2026-06-11T12:35:10.492453+00:00'
     status: fresh
-    data_freshness: snapshot@2026-06-05
-    referenced_mat_ids: null
+    data_freshness: snapshot@2026-06-10
+    referenced_mat_ids: []
     last_error: null
   transmission_map:
-    version: 0
-    last_updated: '2026-06-07T08:02:20.129480+00:00'
-    status: pending
+    version: 1
+    last_updated: '2026-06-11T12:35:21.299115+00:00'
+    status: fresh
     data_freshness: null
     referenced_mat_ids: []
     last_error: null
@@ -50,15 +50,37 @@ monitoring:
   cadence: daily
 critic: null
 decomposition:
-  current_version: null
-  last_updated: null
-  history: []
+  current_version: 2
+  last_updated: '2026-06-11T12:36:34.216270+00:00'
+  history:
+  - version: 2
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-11T12:36:34.216290+00:00'
+    summary: 命门1=过热可持续还是滑向滞胀/衰退; 命门2=美极窄利差/估值/carry缓冲何时破; 命门3=人民币企稳+外资回流能否扛住强广义美元
+    convergence_status: converged
+    changelog: 'v2相对v1: 命门1升级为过热可持续性(象限滞胀→过热); 命门2收敛为极窄利差/carry缓冲(挂HY报警带); 命门3锚从中美利差改为强广义美元vs政策对冲(利差降为压力表)'
 stage_history:
 - stage: done
   entered_at: '2026-06-07T08:06:52.775725+00:00'
+  exited_at: '2026-06-11T12:39:48.023768+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-11T12:39:48.023768+00:00'
   exited_at: null
   gap_snapshot:
     uncovered_ks: []
     uncovered_ring_inputs: []
     autofetch_debt: 0
     empty_pending_decision: 0
+thesis:
+  current_version: 2
+  last_updated: '2026-06-11T12:36:34.189973+00:00'
+  history:
+  - version: 2
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-11T12:36:34.190070+00:00'
+    summary: 中美背离延续：美higher-for-longer×risk-on但脆弱(条件偏松/利差极窄/估值carry极端)，中宽货币紧信用、人民币企稳。象限改判过热、脆弱度高、强度6/10

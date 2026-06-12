@@ -80,7 +80,7 @@ CONCLUSIONS = [
          {"input": "2Y/10Y/30Y 国债", "role": "load_bearing"},
          {"input": "HY OAS", "role": "load_bearing"},
          {"input": "IG OAS", "role": "confirming"},
-         {"input": "持仓拥挤(CFTC + CTA/vol-target + basis-trade规模)", "role": "confirming"},
+         {"input": "持仓拥挤(杠杆基金UST10Y净头寸/basis-trade代理)", "role": "confirming"},
          {"input": "USDJPY / 日元 carry", "role": "confirming"},
          {"input": "VIX", "role": "background"}],
      "causal": "2Y/10Y 利差压到近一年最窄 + IG/HY OAS 处历史极窄 → 缓冲极薄；风险偏好亢奋、波动率压低 = 低波动末段；深度负利差下 carry 头寸拥挤（日元 carry 为阈值尾部触发），一旦反转易踩踏；PBoC 保汇率/Fed 通胀优先/人民币企稳延续等承重假设叠加，任一证伪即强制重判 → 脆弱度高，综合信心要被它折减。"},

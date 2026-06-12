@@ -1,0 +1,106 @@
+slug: us-micron-mu
+variant: opus4.8
+topic_type: company
+display_name: 美光科技 (Micron, MU)
+ticker: US_MU
+generated: 2026-06-12T00:00:00+00:00
+data_freshness: 2026-06-11
+
+buy_box:
+  strong_buy_max: 420
+  accumulate_min: 420
+  accumulate_max: 620
+  hold_min: 620
+  hold_max: 900
+  current_price: 996
+  price_as_of: 2026-06-11
+  current_zone: above_hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 生意一流但现价 EV≈-10%(负)、顶部时点低信心、$996 远超 base 估值带——新资金当前只配试探/不动，建仓发生在≤$620 回调
+  initial_max_pct: null
+  full_max_pct: 5
+  add_ladder_prices: [600, 480, 380]
+  max_cluster_pct: 15
+
+valuation_models:
+  - name: normalized_earnings_power
+    label: Normalized 盈利能力 (normalized EPS × mid-cycle 倍数)
+    bull_fair_value: [900, 1300]
+    base_fair_value: [480, 650]
+    bear_fair_value: [200, 300]
+  - name: pb_through_cycle
+    label: P/B 穿越周期带 (BVPS × 周期 P/B)
+    bull_fair_value: [840, null]
+    base_fair_value: [490, 630]
+    bear_fair_value: [280, 350]
+  - name: scenario_weighted_target
+    label: 情景加权目标价
+    bull_fair_value: [1400, 1625]
+    base_fair_value: [600, 700]
+    bear_fair_value: [300, 450]
+
+kill_criteria:
+  - id: gm_rollover_contract_negative
+    description: 连续≥2季 GAAP 毛利率从74%见顶下行 且 DRAM 合约价环比转负——周期顶确认
+    status: pending
+    check_at: 2026-Q4
+  - id: hbm4_yield_share_lag
+    description: HBM4 量产良率/客户分配明确落后 SK Hynix 一代——命门②(护城河)证伪
+    status: pending
+    check_at: 2026-Q4
+  - id: capex_2027_cut_or_first_sell
+    description: 2027 hyperscaler capex 指引下修 / 出现首个卖方 Sell / 客户取消或推迟 HBM 预付款
+    status: pending
+    check_at: 2027
+  - id: bull_normalized_gm_holds
+    description: (反向/我错)normalized GM 站稳≥60% 连续≥3季 + HBM 份额破20% + 2027 SCA 上修——应认错上修 thesis
+    status: pending
+    check_at: 2027
+
+signposts:
+  - date: 2026-06-24
+    event: Q3 FY26 财报(最近试金石)
+    bull_signal: GM 达指引~81% + Q4 指引强 + HBM4 进展超预期
+    bear_signal: GM 不及指引或环比见顶 + 给出谨慎 Q4 指引
+    triggered: null
+  - date: 2026
+    event: 2027 HBM4 SCA(供货协议)谈判 + HBM vs DDR5 单wafer经济性走向
+    bull_signal: 2027 HBM 合约价锁定翻倍、产能不回流
+    bear_signal: HBM 经济性继续被 DDR5 反超、产能回流标准 DRAM
+    triggered: null
+  - date: 2027
+    event: 命门交汇年——TrendForce营收见顶/Northland datacenter支出下降 是否兑现
+    bull_signal: 2027 HBM 需求预测继续上修、capex 维持
+    bear_signal: hyperscaler capex 减速、HBM 售罄逆转
+    triggered: null
+
+cluster_tags: [ai-compute, memory-semis, deep-cyclical, hbm]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    note: 纯 HBM 营收/毛利无法从年报拆出(年报按客户重组),份额用第三方区间(TrendForce/Isaiah)替代
+  - ring: 4
+    kind: training-estimate
+    note: normalized EPS $35-45 与 normalized GM 区间为训练知识+历史弧线估算,非实证点值
+  - ring: 5
+    kind: data-missing
+    note: 周期顶时点本质不可精确预测(命门③低信心);Visible Alpha 级 segment 模型付费墙未取
+
+market_implied:
+  metric: implied_sustained_eps
+  value: 90
+
+my_vs_market_delta:
+  metric: implied_sustained_eps
+  my_value: 40
+  delta: "-50 (我判 normalized ~$40 vs 市场隐含近峰值 ~$90)"
+  direction: short

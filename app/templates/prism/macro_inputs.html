@@ -172,8 +172,8 @@
 
 <div class="cov-filter" role="group" aria-label="按本轮参与筛选">
   <span class="hint">筛选：</span>
-  <button type="button" class="cov-chip active" data-filter="all">全部</button>
-  <button type="button" class="cov-chip" data-filter="used">只看参与</button>
+  <button type="button" class="cov-chip" data-filter="all">全部</button>
+  <button type="button" class="cov-chip active" data-filter="used">只看参与</button>
   <button type="button" class="cov-chip" data-filter="unused">只看未参与</button>
   <button type="button" class="cov-chip" data-filter="lb-unused">承重漏判</button>
 </div>
@@ -470,13 +470,16 @@
         r.style.display = show ? "" : "none";
       });
     }
+    function activate(mode) {
+      chips.forEach(function (x) { x.classList.toggle("active", x.dataset.filter === mode); });
+      apply(mode);
+    }
     chips.forEach(function (c) {
-      c.addEventListener("click", function () {
-        chips.forEach(function (x) { x.classList.remove("active"); });
-        c.classList.add("active");
-        apply(c.dataset.filter);
-      });
+      c.addEventListener("click", function () { activate(c.dataset.filter); });
     });
+    // 默认「只看参与」；若本轮无任何参与项（尚无 regime_eval_log），回落到「全部」避免空表
+    var anyUsed = Array.prototype.some.call(rows, function (r) { return r.dataset.used === "1"; });
+    activate(anyUsed ? "used" : "all");
   })();
 
   // ── 监控开关：拦截提交、后台 fetch、原地翻转 —— 不重载、不滚动 ──

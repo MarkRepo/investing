@@ -1,0 +1,115 @@
+slug: us-micron-mu
+variant: opus4.8
+entries:
+- searched_at: '2026-06-12T01:37:42.965622+00:00'
+  query: Micron MU latest quarter earnings revenue gross margin guidance 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:37:42.978308+00:00'
+  query: Micron HBM3E HBM4 market share 2026 ramp NVIDIA
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:37:43.008229+00:00'
+  query: Micron MU stock price market cap forward PE valuation 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:37:43.025677+00:00'
+  query: Micron capex fiscal 2026 guidance New York Idaho fab schedule
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:37:43.092768+00:00'
+  query: DRAM NAND price trend 2026 TrendForce contract DDR5 spot
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:37:43.120539+00:00'
+  query: CXMT ChangXin DRAM DDR5 capacity 2026 competition
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:37:43.148614+00:00'
+  query: Micron HBM revenue percentage data center 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:37:43.210810+00:00'
+  query: memory super cycle 2026 outlook peak Micron analyst
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:37:43.272430+00:00'
+  query: Micron share buyback dividend capital return 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:37:43.306737+00:00'
+  query: Micron China CXMT tariff export control memory 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:46:14.298232+00:00'
+  query: Micron sell-side deep dive HBM cycle valuation 2026
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:46:14.447350+00:00'
+  query: memory DRAM cycle crash history peak to trough Micron
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:46:14.609376+00:00'
+  query: HBM market share SK Hynix Micron Samsung HBM4 yield qualification
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T01:46:14.785953+00:00'
+  query: DRAM supply bit growth capex demand balance oversupply TrendForce
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered

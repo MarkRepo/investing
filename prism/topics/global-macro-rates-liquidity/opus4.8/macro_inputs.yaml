@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-12T04:45:45.513946+00:00'
+updated: '2026-06-12T05:02:38.864677+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -56,7 +56,7 @@ inputs:
     as_of: '2026-03-18'
     evidence: March 17-18, 2026 SEP（2026-03-18 发布）Table 1 中位联邦基金利率：2026=3.4%, 2027=3.1%,
       2028=3.1%, 长期=3.1%（较 12 月点阵图持平）。源：Fed fomcprojtabl20260318.htm
-    checked_at: '2026-06-12T04:39:08.963355+00:00'
+    checked_at: '2026-06-12T04:46:41.537009+00:00'
     streak: 0
     prev_value: 3.4
   family: 货币政策
@@ -161,13 +161,12 @@ inputs:
   source_url: https://www.federalreserve.gov/newsevents/speeches.htm
   observed:
     stance: 鹰
-    evidence: https://www.federalreserve.gov/newsevents/2026-speeches.htm (索引页) +
-      https://www.bankingdive.com/news/federal-reserve-profile-courage-award-kennedy-trump/821617/
-      (讲话摘要)
-    as_of: '2026-06-01'
-    acq_note: 最新主席讲话为 Jerome Powell 在 JFK 档案勇气奖典礼上的接受致辞（2026-06-01），讲话主题为中央银行独立性和民主机构，不含具体宏观经济指标数值。若需讲话日期作为数值，应为
-      2026-06-01；若需其他具体指标，请澄清字段定义。
-    checked_at: '2026-06-10T01:18:12.899529+00:00'
+    evidence: https://www.federalreserve.gov/newsevents/speech/powell20260321a.htm
+    as_of: '2026-03-21'
+    acq_note: 缓存文件仅含讲话元数据（人、日期、URL），正文内容缺失，无法判读鹰鸽立场
+    checked_at: '2026-06-12T04:52:18.598146+00:00'
+    fingerprint: /newsevents/speech/powell20260321a.htm
+    verified_at: '2026-06-12T05:02:38.864668+00:00'
   authority: official
   availability: llm
   family: 货币政策

@@ -1,0 +1,161 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-micron-mu
+variant: opus4.8
+created: 2026-06-12
+thesis_version: 0
+decomposition_version: 0
+
+# L1/L2 已坍缩为 primer scope 备注（背景理解交给 00_primer，primer-first）
+primer_scope: >
+  primer 该覆盖：内存为何是周期商品（供需边际定价）/ DRAM·NAND·HBM 三类边界与毛利分层 /
+  三大寡头格局（Samsung·SK Hynix·Micron）+ CXMT 位置 / Micron 财年特殊性与季报关键指标 /
+  HBM 为何是 AI 关键 + 3:1 wafer 折算对标准 DRAM 的双重收紧 / 内存周期历史节奏与
+  "低 PE 反而危险"的周期股估值常识 / capex 与未来供给的滞后关系。
+
+learning_track:
+  # ── L3 争议层：把 thesis"最大反方观点"展开为可调研的分歧点 ──
+  l3_debates:
+    - question: 74% 毛利率是周期峰值的数学不可持续，还是 AI 结构性需求使盈利"高位钝化"而非断崖回撤？这是整份 thesis 4/10 评分的命门。
+      maps_to: [命门1, K2, K5]
+      source_hint: 多年财务弧线(10-K/历史财报) + 上轮 2022-23 下行回撤幅度 [mat-bc352c][mat-6a8149] + 卖方 normalized 测算
+    - question: 26/27 分析师 Buy、0 Sell、目标价 $900-$1,625 的极端一致——是反向风险信号(利好定满)，还是真实盈利能见度支撑？
+      maps_to: [K2, K5]
+      source_hint: 卖方目标价分布 [mat-dda82b][mat-3824d5][mat-ac10a1] vs 历史"卖方狂热即顶"复盘 [mat-f3679c]
+    - question: 今天 $20B capex + CXMT $4.1B IPO 扩产，是否在 18-24 个月后(2027-2028)复制"高 capex→供给洪水→价格崩塌"的内存铁律？
+      maps_to: [命门3, K3]
+      source_hint: 行业 capex 总量与节奏 [mat-feabed][mat-035fad] + CXMT 爬坡 [mat-8f0602] + 历史 capex-崩塌弧线
+    - question: HBM"CY2026 售罄"能否延伸到 CY2027，还是 2027 AI capex 增速放缓会让"售罄"迅速逆转？(Northland 已警告"借来的时间")
+      maps_to: [命门3, K4]
+      source_hint: hyperscaler capex 指引 + HBM 需求预测 [mat-1aae1a] + Northland 警告 [mat-398207]
+    - question: Micron 的 HBM 是相对 SK Hynix 的真结构性差异化(HBM4 良率/能效/认证领先)，还是周期红利里"水涨船高的第三名"，下行期最先被挤出？
+      maps_to: [命门2, K1]
+      source_hint: HBM 认证竞赛 [mat-e85217] + 份额拆分 [mat-247497][mat-14a5a4]
+
+  # ── L4 狩猎层：逐条对齐 thesis Killer Question，找错误定价 ──
+  l4_hunting:
+    - question: Micron HBM3E/HBM4 份额能否守住/扩大(vs SK Hynix)，"售罄"能否延伸到 CY2027？HBM4(>11Gbps)良率与客户认证进度是否领先或落后一代？
+      addresses: [K1]
+      search_keywords: [HBM4 良率认证, Micron HBM 份额, SK Hynix HBM4]
+      source_hint: TrendForce HBM 报告 [mat-247497] + 认证竞赛 [mat-e85217] + Vera Rubin HBM4 [mat-14a5a4]
+    - question: 毛利率/ASP 何时见顶回落？季度毛利率是否从 74% 见顶下行、DRAM 合约价环比是否转负、TrendForce 价格指数是否拐头？
+      addresses: [K2]
+      search_keywords: [DRAM 合约价拐点, 内存毛利率见顶, TrendForce 价格指数]
+      source_hint: TrendForce DRAM bulletin [mat-6f9b97][mat-c3ac1f] + 10-Q MD&A 毛利率轨迹 [mat-dd8b66]
+    - question: 三大厂+CXMT 的 capex/产能是否在 2027-2028 形成过剩？bit 供给增速 vs 需求增速的剪刀差何时翻转？
+      addresses: [K3]
+      search_keywords: [内存 capex 2026, bit 供给增速, CXMT DDR5 产能]
+      source_hint: TrendForce capex/供需 [mat-feabed][mat-035fad] + CXMT 扩产 [mat-8f0602]
+    - question: AI capex/HBM 需求是否在 2027 放缓？hyperscaler capex 指引、AI 服务器出货、第三方 HBM 需求预测是否下修？
+      addresses: [K4]
+      search_keywords: [hyperscaler AI capex 2027, HBM 需求预测, AI 服务器出货]
+      source_hint: HBM 供需预测 [mat-1aae1a] + Northland 2027 下滑警告 [mat-398207]
+    - question: forward PE 10.7x 是"便宜"还是峰值陷阱？mid-cycle normalized EPS/FCF 多少？穿越周期 PE 能否仍 <15x？P/B 在历史周期带什么位置？
+      addresses: [K5]
+      search_keywords: [Micron normalized EPS, 周期股 PE 陷阱, Micron P/B 历史]
+      source_hint: PE 史 [mat-67909a] + 估值统计 [mat-145d4e] + 历史周期镜鉴 [mat-b1a3bc][mat-f3679c]
+
+  # self-check: K1→L4#1✓ K2→L4#2✓ K3→L4#3✓ K4→L4#4✓ K5→L4#5✓ —— 5/5 全覆盖
+
+material_priority:
+  # 说明：所有材料已由 workflow 00 eager-fetch 收齐(57 份，2026-06-12 入库)。
+  # 本表记录优先级与 mat 锚，不再触发新抓取。
+  tier1:              # 必读，研究不可缺
+    - title: Micron 10-K FY2025 + 10-Q Q2 FY2026（业务/MD&A/财务/风险全章节）
+      type: annual-report
+      ticker: MU
+      source: SEC EDGAR
+      why: 环①财务弧线 + 业务护城河 + 资本配置史的源头；命门1 normalized 锚的多年数据底座
+      addresses: [K2, K5]
+      covered_by: [mat-45a51a, mat-df36de, mat-037039, mat-5a387b, mat-dd8b66, mat-47a4a0]
+      status: done
+    - title: 卖方多空深度（UBS$1625 / Goldman$900 / BofA$950 / Northland"借来的时间" / "14x 便宜还是陷阱"）
+      type: sell-side-note
+      source: UBS/Goldman/BofA/Northland/Mizuho 全文转载
+      why: 环②估值锚 + 环④多空双方逻辑；覆盖目标价分布与一致预期狂热(L3#2)
+      addresses: [K1, K2, K4, K5]
+      covered_by: [mat-dda82b, mat-3824d5, mat-8dc9dc, mat-398207, mat-85c74c]
+      status: done
+    - title: 历史周期崩塌镜鉴（2022顶→2023负毛利细节 / 9x 历史警示 / 内存价格崩塌史 / 6 周期 PE 陷阱）
+      type: industry-research
+      source: chiplog/Trefis/blocksandfiles/MemoryGuy
+      why: 环⑤历史失败镜鉴的实证；命门1 下行回撤幅度与节奏校准（historical-mirror）
+      addresses: [K2, K5]
+      covered_by: [mat-bc352c, mat-f3679c, mat-6a8149, mat-b1a3bc]
+      status: done
+    - title: TrendForce/DRAMeXchange DRAM·NAND·HBM 价格趋势（现货+合约+周期位置）
+      type: data
+      source: TrendForce / DRAMeXchange
+      why: 命门1/K2 周期位置实时校准；判断 ASP 拐点的核心指标
+      addresses: [K2, K3]
+      covered_by: [mat-dc56cb, mat-49bf37, mat-6f9b97, mat-c3ac1f]
+      status: done
+    - title: HBM 份额拆分 + HBM4 良率/认证进度（Micron vs SK Hynix vs Samsung）
+      type: industry-research
+      source: TrendForce/SiliconAnalysts/Counterpoint
+      why: 命门2 护城河耐久性的核心证据；L3#5 判定"真差异化 vs 水涨船高"
+      addresses: [K1]
+      covered_by: [mat-247497, mat-e85217, mat-14a5a4, mat-1aae1a]
+      status: done
+  tier2:              # 补充，有最好
+    - title: 行业供给侧 capex 与供需平衡（三大厂 $53.7→61.3B + CXMT 扩产 + ID1 节奏）
+      type: industry-research
+      source: TrendForce 供需平衡表 + CXMT IPO 材料
+      why: 命门3 供给拐点时机；K3 过剩判定
+      addresses: [K3, K4]
+      covered_by: [mat-feabed, mat-035fad, mat-8f0602]
+      status: done
+    - title: AI/HBM 需求侧追踪（hyperscaler ~$700B capex + NVIDIA 订单能见度 + 2027 下滑警告）
+      type: industry-research
+      source: hyperscaler 财报 capex 段 + 卖方 AI 需求预测
+      why: 命门3/K4 需求结构性 vs 泡沫
+      addresses: [K4]
+      covered_by: [mat-1aae1a, mat-398207]
+      status: done
+    - title: 估值与一致预期基准（PE 史 2012-2026 / forward PE 10.7x / 44 分析师均值 / Goldman 点估）
+      type: data
+      source: macrotrends/wisesheets/卖方汇总
+      why: 环②估值锚 + 环③WMBT 反推基准；K5 mid-cycle 测算对照
+      addresses: [K5]
+      covered_by: [mat-67909a, mat-145d4e, mat-baf4bf]
+      status: done
+    - title: 管理层 track record + 资本配置史（回购$650M/股息上调/去杠杆 + Mehrotra 穿越2022）
+      type: annual-report
+      ticker: MU
+      source: 10-K capital allocation 段 + 10-Q
+      why: 环①管理层评估（mgmt-capital-alloc）；周期决策质量
+      addresses: [K5]
+      covered_by: [mat-45a51a, mat-df36de]
+      status: done
+  tier3:              # 可选
+    - title: CXMT 竞争威胁与地缘（Micron 推动国会限制 CXMT / 国产替代叙事）
+      type: policy
+      source: 财经媒体转载
+      why: 竞争格局边界 + 地缘变量
+      addresses: [K1, K3]
+      covered_by: [mat-fe28d7, mat-8f0602]
+      status: done
+
+key_risks_to_monitor:
+  - 季度毛利率从 74% 见顶下行 + DRAM 合约价环比转负（K2 周期顶确认信号）
+  - HBM4 良率/客户认证落后 SK Hynix 一代（K1 护城河证伪）
+  - 2027 AI capex 增速放缓 / "AI 泡沫"叙事松动导致 HBM"售罄"逆转（K4）
+  - 行业 capex 持续高位 + CXMT/三星产能爬坡使 bit 供给增速反超需求（K3 供给洪水）
+  - 卖方目标价集体下修 / 出现首个 Sell 评级（一致预期裂缝）
+
+analogies_to_study:
+  # → 每条落成 historical-mirror 收料 todo（环⑤输入），实证已收齐
+  - case: 美国/内存/2018 顶 → 2019 崩
+    logic: 同样由"超级周期"叙事(当年云/数据中心)推高 ASP 与毛利率至峰值后，供给过剩使价格断崖
+    limit: 2018 缺 HBM 这类 wafer 折算双重收紧的结构性内核；当年无 AI 量级需求
+    covered_by: [mat-6a8149, mat-b1a3bc]
+    status: done
+  - case: 美国/内存/2022 顶 → 2023 负毛利
+    logic: 最近一轮完整 boom-bust，Micron 经历负毛利、减产、capex 急刹；命门1 下行回撤幅度的最佳锚
+    limit: 2022 下行由需求骤冷(PC/手机/疫情退潮)驱动；本轮 AI 需求结构不同
+    covered_by: [mat-bc352c, mat-f3679c]
+    status: done
+  - case: 内存行业/6 轮周期的"低 PE 陷阱"复盘
+    logic: 历史上内存股在周期顶部 forward PE 最低(峰值 EPS×低倍数)，恰是最危险买点——直击当前 10.7x"便宜"叙事
+    limit: 样本中无 HBM 这类结构性新需求层；本轮是否"这次不同"正是 thesis 焦点
+    covered_by: [mat-b1a3bc]
+    status: done

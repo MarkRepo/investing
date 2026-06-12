@@ -1,0 +1,334 @@
+slug: us-micron-mu
+display_name: '美光科技 (Micron, NASDAQ: MU)'
+type: company
+created: '2026-06-12T01:32:35.519582+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: 美光科技作为存储芯片龙头的全周期投资价值：内存周期位置、HBM/AI 内存结构性成长、资本开支与自由现金流、竞争格局与估值锚
+  depth: deep
+  ticker: US_MU
+  market: US
+  short_name: 美光科技
+  search_terms:
+  - HBM 份额
+  - DRAM 周期
+  - NAND 价格
+  - 存储 资本开支
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-12T02:50:53.757258+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-035fad
+    - mat-037039
+    - mat-14a5a4
+    - mat-1aae1a
+    - mat-247497
+    - mat-3824d5
+    - mat-398207
+    - mat-4783c9
+    - mat-47a4a0
+    - mat-5a387b
+    - mat-64ca13
+    - mat-6a8149
+    - mat-7780df
+    - mat-85c74c
+    - mat-8dc9dc
+    - mat-b1a3bc
+    - mat-bc352c
+    - mat-c3ac1f
+    - mat-c6503b
+    - mat-dd8b66
+    - mat-dda82b
+    - mat-e85217
+    - mat-f3679c
+    - mat-feabed
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-06-12T02:55:26.059503+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-035fad
+    - mat-037039
+    - mat-14a5a4
+    - mat-1aae1a
+    - mat-3824d5
+    - mat-398207
+    - mat-4783c9
+    - mat-47a4a0
+    - mat-5a387b
+    - mat-64ca13
+    - mat-69536e
+    - mat-6a8149
+    - mat-7780df
+    - mat-85c74c
+    - mat-8dc9dc
+    - mat-b1a3bc
+    - mat-ba0222
+    - mat-bc352c
+    - mat-c3ac1f
+    - mat-c6503b
+    - mat-dd8b66
+    - mat-dda82b
+    - mat-e85217
+    - mat-f3679c
+    - mat-feabed
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-06-12T02:55:26.080188+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-035fad
+    - mat-037039
+    - mat-14a5a4
+    - mat-1aae1a
+    - mat-3824d5
+    - mat-398207
+    - mat-4783c9
+    - mat-47a4a0
+    - mat-5a387b
+    - mat-64ca13
+    - mat-69536e
+    - mat-6a8149
+    - mat-7780df
+    - mat-85c74c
+    - mat-8dc9dc
+    - mat-b1a3bc
+    - mat-ba0222
+    - mat-bc352c
+    - mat-c3ac1f
+    - mat-c6503b
+    - mat-dd8b66
+    - mat-dda82b
+    - mat-e85217
+    - mat-f3679c
+    - mat-feabed
+    last_error: null
+parent_materials: []
+next_actions:
+- 资料提取完成：38 份 actionable 全部抽成 findings（40/57 processed，17 份 prescan 自动豁免）
+- gap 全清：consensus/bull-bear/historical-mirror/mgmt-capital-alloc 四环已覆盖
+user_todos:
+- task: 下载 Micron 最新年报 10-K (FY2025) + 最新季报 10-Q (Q2 FY2026)
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K5
+  source_hint: SEC EDGAR / investors.micron.com，US_MU
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-037039
+  - mat-45a51a
+  - mat-5a387b
+  - mat-df36de
+  last_fetch_note: 'SEC EDGAR: 10-K FY2025 + 10-Q Q2FY2026 + 自动抽取章节 + 13份8-K'
+- task: 收集 3 份卖方深度报告（HBM 兑现 / 周期判断 / 估值，覆盖多空）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K4
+  source_hint: 美银/摩根/高盛/DA Davidson；exa 搜全文转载
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: UBS/Goldman/Mizuho/Northland/DA Davidson + 框架文(stockwirex/tikr/investing/baptista)
+- task: 获取 TrendForce/DRAMeXchange DRAM·NAND·HBM 价格趋势（现货+合约，周期位置）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K3
+  source_hint: trendforce.com / dramexchange.com
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: TrendForce DRAM 2Q26/HBM 2Q26/capex/周报 + DDR5现货走强
+- task: 管理层 track record + 资本配置史（回购/分红/并购回报 + Mehrotra 周期决策 + 激励治理）
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K5
+  source_hint: 历年年报 capital allocation 段 + proxy statement（A合同 mgmt-capital-alloc）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 10-K FY2025 资本配置段 + 回购$650M/股息上调/去杠杆(10-Q) + Mehrotra穿越2022周期记录
+- task: 卖方一致预期/目标价模型（consensus EPS·revenue·目标价，反推对照基准）
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K5
+  source_hint: Visible Alpha / 卖方汇总 / Koyfin（A合同 consensus）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 44分析师均值~$717 / Goldman点估Q3 rev$37.6B GM83.4% EPS$22.07 / 街值$34.4B/81.9%/$19.74；深层segment模型(Visible
+    Alpha)付费墙未取
+- task: 内存历史周期崩塌镜鉴（2018顶→2019崩、2022顶→2023负毛利的回撤幅度与节奏）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  - K5
+  source_hint: 历史财报弧线 + 行业复盘（A合同 historical-mirror）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: Trefis(6周期+PE陷阱)/chiplog/blocksandfiles(2022细节)/MemoryGuy
+- task: HBM 份额拆分（Micron vs SK Hynix vs Samsung）+ HBM4 良率/认证进度深度
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: TrendForce HBM 报告 / 卖方供应链拆分
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: SiliconAnalysts(qual race)/Isaiah(份额10-20%)/Counterpoint/BusinessKorea(HBM4
+    Vera Rubin)
+- task: 行业供给侧数据：三大厂+CXMT capex、bit 供给增速 vs 需求增速、产能爬坡节奏
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  - K4
+  source_hint: TrendForce/卖方供需平衡表；CXMT IPO 招股材料
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: TrendForce capex($53.7->61.3B)/ID1不早于2027/HBM wafer 18-22-30%/CXMT技术不确定
+- task: AI/HBM 需求侧追踪：hyperscaler capex 指引 + NVIDIA 订单能见度 + HBM 需求预测
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: hyperscaler 财报 capex 段 / 卖方 AI 需求预测
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: hyperscaler ~$700B AI capex / Northland CY2027下滑警告 / 预付款锁产能
+- task: 资料提取完成：38 份 actionable findings 全部落地
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成（3 份），等待 05 评审或进入监控
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-12T03:00:08.911762+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-12T01:41:22.785900+00:00'
+    summary: 命门1=盈利可持续性/周期顶判定(中); 命门2=HBM护城河耐久性(中); 命门3=供给拐点时机(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-12T03:00:08.911781+00:00'
+    summary: 命门1=盈利可持续/周期顶(中高·确认偏空); 命门2=HBM护城河耐久(中·已过认证但仍第三名); 命门3=供给/需求2027拐点(中·收敛到单一变量2027
+      hyperscaler capex)
+    convergence_status: converged
+    changelog: 命门无砍无加,仅置信度更新(命门1中→中高凭mat-dd8b66全ASP+mat-bc352c 2022量化;命门3低→中凭2027单变量收敛mat-398207/feabed;命门2维持中);primer入门目标净增1条(HBM认证逻辑/第三名定位凭mat-e85217/14a5a4);对照全历史无震荡。收敛:delta空+gap双轴绿+chain-critic无重大反转。
+thesis:
+  current_version: 1
+  last_updated: '2026-06-12T03:00:08.874351+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-12T01:40:08.627617+00:00'
+    summary: 一流存储franchise，但 $406/$1.12T市值/74%毛利率/forward PE 10.7x 已计入"AI内存周期不再下行"乐观情景；生意看好(8/10)、当前入场风险收益不对称(3/10)，加权强度
+      4/10——耐久价值属买在下一周期底者。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-12T03:00:08.874470+00:00'
+    summary: 一流存储franchise，但/.12T/74%峰值GM/PB15.5x/股价已高于卖方一致目标已把AI内存周期不再反转定满；生意8/10、入场3/10、加权4/10，EV≈-10%——耐久价值属买在下一周期底者，非此刻追ATH。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-12T01:41:53.652767+00:00'
+  exited_at: '2026-06-12T02:07:16.638307+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-06-12T02:07:16.638307+00:00'
+  exited_at: '2026-06-12T02:36:13.010616+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-06-12T02:36:13.010616+00:00'
+  exited_at: '2026-06-12T03:00:28.294773+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-12T03:00:28.294773+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
