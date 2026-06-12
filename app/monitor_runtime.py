@@ -169,6 +169,20 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
         except Exception as e:
             _log(f"safe fetch failed: {e}")
 
+        # macro CFTC 自动抓取（零 LLM）：杠杆基金净头寸 + z 拥挤度（持仓拥挤探头/basis-trade 代理），
+        # fetch_method=='cftc' 的 scripted 项，CFTC Socrata 周报。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import cftc_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                cftc_summary = await asyncio.to_thread(
+                    cftc_fetch.run_cftc_fetch, t["slug"], t["variant"])
+                _log(f"cftc fetch [{t['slug']}/{t['variant']}]: {cftc_summary}")
+        except Exception as e:
+            _log(f"cftc fetch failed: {e}")
+
         # macro recipe 自动抓取（零 LLM）：fetch_method=='recipe' 的 scripted 项（含按名派生，如 CIP 基差）。
         # **必须在上述各腿通道之后**跑——派生项读最新 observed 合成；故在此（macro scan 之前）末位刷新。
         # 失败吞掉、不阻断周期。
