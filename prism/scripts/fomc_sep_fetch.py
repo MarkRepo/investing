@@ -49,3 +49,90 @@ def parse_median_funds_rate(projtabl_html: str) -> float | None:
             if m:
                 return float(m.group(0))
     return None
+
+
+def fetch_fomc_sep(slug: str, variant: str, *, client: httpx.Client | None = None,
+                   input_name: str | None = None) -> dict:
+    """发现最新投影表→解析近年中位→record_observation。返回 {value, as_of, url, ok}；
+    任一步取不到 → {"error": ...}（真失败，调度器据此记 fetch_error）。"""
+    target = input_name or _INPUT_NAME
+    owns = client is None
+    if owns:
+        client = httpx.Client()
+    try:
+        try:
+            cal = client.get(_CALENDAR_URL, timeout=30, follow_redirects=True,
+                             headers={"User-Agent": "Mozilla/5.0"})
+            cal.raise_for_status()
+        except httpx.HTTPError as exc:
+            return {"error": f"FOMC 日历页抓取失败：{exc}"}
+        url, as_of = find_latest_projtabl(cal.text)
+        if url is None:
+            return {"error": "日历页未找到投影表链接（站点结构可能变更）"}
+        try:
+            tbl = client.get(url, timeout=30, follow_redirects=True,
+                             headers={"User-Agent": "Mozilla/5.0"})
+            tbl.raise_for_status()
+        except httpx.HTTPError as exc:
+            return {"error": f"投影表抓取失败（{url}）：{exc}"}
+        median = parse_median_funds_rate(tbl.text)
+        if median is None:
+            return {"error": f"投影表未解析到 Federal funds rate 中位行（{url}）"}
+        reg.record_observation(slug, variant, target, value=median, as_of=as_of)
+        return {"value": median, "as_of": as_of, "url": url, "ok": True}
+    finally:
+        if owns:
+            client.close()
+
+
+def run_fomc_sep_fetch(slug: str, variant: str, *, only: set[str] | None = None,
+                       client: httpx.Client | None = None) -> dict:
+    """抓所有 fetch_method=='fomc_sep' 且 availability=='scripted' 的输入（一般仅 1 条）。
+    失败记 record_fetch_error 计数、不连累其余。返回 {fetched, skipped_todo, failed}。"""
+    data = reg.read_registry(slug, variant)
+    fetched = skipped_todo = failed = 0
+    owns = client is None
+    if owns:
+        client = httpx.Client()
+    try:
+        for e in data["inputs"]:
+            if e.get("fetch_method") != "fomc_sep":
+                continue
+            if only is not None and e["name"] not in only:
+                continue
+            if e.get("availability") != "scripted":
+                skipped_todo += 1
+                continue
+            res = fetch_fomc_sep(slug, variant, client=client, input_name=e["name"])
+            if res.get("error"):
+                reg.record_fetch_error(slug, variant, e["name"], msg=res["error"])
+                failed += 1
+            else:
+                fetched += 1
+        return {"fetched": fetched, "skipped_todo": skipped_todo, "failed": failed}
+    finally:
+        if owns:
+            client.close()
+
+
+def main(argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+    if not argv:  # 活体冒烟：拉真表打印中位
+        url, as_of = find_latest_projtabl(
+            httpx.get(_CALENDAR_URL, timeout=30, follow_redirects=True,
+                      headers={"User-Agent": "Mozilla/5.0"}).text)
+        if url is None:
+            print("未找到投影表链接")
+            return
+        tbl = httpx.get(url, timeout=30, follow_redirects=True,
+                        headers={"User-Agent": "Mozilla/5.0"})
+        print(f"最新投影表 {url}（as_of {as_of}）")
+        print(f"  近年中位联邦基金利率 = {parse_median_funds_rate(tbl.text)}")
+        return
+    slug = argv[0]
+    variant = argv[1] if len(argv) > 1 else "opus4.8"
+    print(f"fomc_sep 抓取: {run_fomc_sep_fetch(slug, variant)}")
+
+
+if __name__ == "__main__":
+    main()

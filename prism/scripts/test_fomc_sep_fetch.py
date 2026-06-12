@@ -37,3 +37,55 @@ def test_parse_median_funds_rate_takes_first_number_of_ffr_row():
 
 def test_parse_median_funds_rate_none_when_no_ffr_row():
     assert sep.parse_median_funds_rate("<table><tr><td>GDP</td><td>2.0</td></tr></table>") is None
+
+
+import pytest
+from prism.scripts import macro_registry as reg
+
+
+class _FakeResp:
+    def __init__(self, text):
+        self.text = text
+    def raise_for_status(self):
+        pass
+
+
+class _FakeClient:
+    """按 URL 返回日历页或投影表样本。"""
+    def __init__(self, calendar, projtabl):
+        self._cal, self._proj = calendar, projtabl
+    def get(self, url, **kw):
+        return _FakeResp(self._cal if "fomccalendars" in url else self._proj)
+    def close(self):
+        pass
+
+
+@pytest.fixture
+def sep_topic(tmp_path, monkeypatch):
+    # 把 _PRISM_ROOT 指向临时目录，建一个登记表 + 一条 fomc_sep 输入
+    monkeypatch.setattr(reg, "_PRISM_ROOT", tmp_path)
+    monkeypatch.setattr(sep, "_PRISM_ROOT", tmp_path, raising=False)
+    slug, variant = "t-macro", "opus4.8"
+    reg.create_registry(slug, variant)
+    reg.upsert_input(slug, variant, {
+        "name": sep._INPUT_NAME, "tier": "A", "cadence_type": "event",
+        "targets": ["rates"], "mechanism": "CD", "importance": "load_bearing",
+        "causal_sentence": "x→y→z。", "availability": "scripted", "fetch_method": "fomc_sep",
+    })
+    return slug, variant
+
+
+def test_fetch_fomc_sep_records_median(sep_topic):
+    slug, variant = sep_topic
+    client = _FakeClient(_CALENDAR, _PROJTABL)
+    res = sep.fetch_fomc_sep(slug, variant, client=client)
+    assert res["ok"] and res["value"] == 3.4 and res["as_of"] == "2026-03-18"
+    obs = next(e for e in reg.read_registry(slug, variant)["inputs"]
+               if e["name"] == sep._INPUT_NAME)["observed"]
+    assert obs["value"] == 3.4 and obs["as_of"] == "2026-03-18"
+
+
+def test_run_fomc_sep_fetch_counts(sep_topic):
+    slug, variant = sep_topic
+    summary = sep.run_fomc_sep_fetch(slug, variant, client=_FakeClient(_CALENDAR, _PROJTABL))
+    assert summary["fetched"] == 1 and summary["failed"] == 0
