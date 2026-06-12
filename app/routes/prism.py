@@ -964,6 +964,12 @@ def prism_macro_fetch_script(slug: str, variant: str, request: Request,
     elif method == "cftc":
         from prism.scripts import cftc_fetch
         summary = cftc_fetch.run_cftc_fetch(slug, variant, only={name})
+    elif method == "fedwatch":
+        from prism.scripts import fedwatch_fetch
+        summary = fedwatch_fetch.run_fedwatch_fetch(slug, variant, only={name})
+    elif method == "fomc_sep":
+        from prism.scripts import fomc_sep_fetch
+        summary = fomc_sep_fetch.run_fomc_sep_fetch(slug, variant, only={name})
     else:
         raise HTTPException(status_code=400, detail=f"该项无脚本抓取通道（fetch_method={method!r}）")
     fetched = (summary.get("fetched", 0) or 0) + (summary.get("derived", 0) or 0)
@@ -984,7 +990,7 @@ def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anch
     """
     from prism.scripts import (fred_fetch, recipe_fetch, textfetch, akshare_fetch,
                                yfinance_fetch, macromicro_fetch, barchart_fetch, ecb_fetch,
-                               cftc_fetch)
+                               cftc_fetch, fedwatch_fetch, fomc_sep_fetch)
     try:
         topic = topic_io.read_topic(slug, variant)
     except FileNotFoundError:
@@ -1024,6 +1030,16 @@ def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anch
         cftc_sum = cftc_fetch.run_cftc_fetch(slug, variant)
     except Exception as _exc:
         cftc_sum = {"_error": str(_exc), "fetched": 0}
+    # fedwatch（CME ZQ 反解隐含政策路径：前瞻降息预期/概率）：脚本数值通道；失败吞掉不毁整批
+    try:
+        fedwatch_sum = fedwatch_fetch.run_fedwatch_fetch(slug, variant)
+    except Exception as _exc:
+        fedwatch_sum = {"_error": str(_exc), "fetched": 0}
+    # fomc_sep（点阵图近年中位联邦基金利率：Fed 自己昭示的政策路径，与 fedwatch 隐含路径互补）：脚本数值通道；失败吞掉不毁整批
+    try:
+        fomc_sep_sum = fomc_sep_fetch.run_fomc_sep_fetch(slug, variant)
+    except Exception as _exc:
+        fomc_sep_sum = {"_error": str(_exc), "fetched": 0}
     # recipe：含 CIP 基差等按名派生，须在上述各腿之后跑（读最新 observed 合成）
     recipe_sum = recipe_fetch.run_recipe_fetch(slug, variant)
     # 取文：登记表驱动，逐条按 text_fetch 路由；整通道失败吞掉不毁整批（其余仍生效）
@@ -1039,16 +1055,21 @@ def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anch
     bc_n = bc_sum.get("fetched", 0) or 0
     ecb_n = ecb_sum.get("fetched", 0) or 0
     cftc_n = cftc_sum.get("fetched", 0) or 0
+    fedwatch_n = fedwatch_sum.get("fetched", 0) or 0
+    fomc_sep_n = fomc_sep_sum.get("fetched", 0) or 0
     text_n = sum(1 for r in text_sum.values() if isinstance(r, dict) and r.get("ok"))
     if "application/json" in (request.headers.get("accept") or ""):
         return JSONResponse({"fred": fred_n, "recipe": recipe_n, "akshare": akshare_n,
                              "yfinance": yfin_n, "macromicro": mm_n, "barchart": bc_n,
-                             "ecb": ecb_n, "cftc": cftc_n, "text": text_n,
-                             "fetched": fred_n + recipe_n + akshare_n + yfin_n + mm_n + bc_n + ecb_n + cftc_n + text_n,
+                             "ecb": ecb_n, "cftc": cftc_n, "fedwatch": fedwatch_n,
+                             "fomc_sep": fomc_sep_n, "text": text_n,
+                             "fetched": fred_n + recipe_n + akshare_n + yfin_n + mm_n + bc_n + ecb_n + cftc_n + fedwatch_n + fomc_sep_n + text_n,
                              "fred_summary": fred_sum, "recipe_summary": recipe_sum,
                              "akshare_summary": akshare_sum, "yfinance_summary": yfin_sum,
                              "macromicro_summary": mm_sum, "barchart_summary": bc_sum,
-                             "ecb_summary": ecb_sum, "cftc_summary": cftc_sum, "text_summary": text_sum})
+                             "ecb_summary": ecb_sum, "cftc_summary": cftc_sum,
+                             "fedwatch_summary": fedwatch_sum, "fomc_sep_summary": fomc_sep_sum,
+                             "text_summary": text_sum})
     frag = f"#{anchor}" if anchor else ""
     return RedirectResponse(f"/prism/{slug}/{variant}/macro-inputs{frag}", status_code=303)
 
