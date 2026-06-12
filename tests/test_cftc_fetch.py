@@ -118,3 +118,55 @@ def test_unknown_cohort_raises():
     with pytest.raises(ValueError, match="cohort"):
         cf.fetch_by_cftc({"dataset": "d", "contract": "c", "cohort": "retail"},
                          client=FakeClient([]))
+
+
+# --- run_cftc_fetch 派发 ---
+
+def _patch_reg(monkeypatch, inputs):
+    from prism.scripts import macro_registry as reg
+    monkeypatch.setattr(reg, "read_registry", lambda s, v: {"inputs": inputs})
+    obs, errs = [], []
+    monkeypatch.setattr(reg, "record_observation",
+                        lambda s, v, name, **kw: obs.append((name, kw.get("value"), kw.get("z"))))
+    monkeypatch.setattr(reg, "record_fetch_error",
+                        lambda s, v, name, **kw: errs.append((name, kw.get("msg"))))
+    return obs, errs
+
+
+def test_run_records_observation(monkeypatch):
+    rows = [_row("2026-06-02", 400, 500), _row("2026-05-26", 420, 500)]
+    obs, errs = _patch_reg(monkeypatch, [
+        {"name": "持仓拥挤", "fetch_method": "cftc", "availability": "scripted",
+         "cftc": {"dataset": "d", "contract": "c", "min_obs": 2}},
+        {"name": "别的", "fetch_method": "fred-api"},   # 非 cftc → 跳过
+    ])
+    summary = cf.run_cftc_fetch("m", "v", client=FakeClient(rows))
+    assert obs and obs[0][0] == "持仓拥挤" and obs[0][1] == -100
+    assert summary["fetched"] == 1 and not errs
+
+
+def test_run_records_error_on_empty(monkeypatch):
+    obs, errs = _patch_reg(monkeypatch, [
+        {"name": "持仓拥挤", "fetch_method": "cftc", "availability": "scripted",
+         "cftc": {"dataset": "d", "contract": "c"}}])
+    summary = cf.run_cftc_fetch("m", "v", client=FakeClient([]))
+    assert not obs and errs and summary["failed"] == 1
+
+
+def test_run_only_filters(monkeypatch):
+    rows = [_row("2026-06-02", 400, 500)]
+    obs, _ = _patch_reg(monkeypatch, [
+        {"name": "A", "fetch_method": "cftc", "availability": "scripted",
+         "cftc": {"dataset": "d", "contract": "c", "min_obs": 99}},
+        {"name": "B", "fetch_method": "cftc", "availability": "scripted",
+         "cftc": {"dataset": "d", "contract": "c", "min_obs": 99}}])
+    summary = cf.run_cftc_fetch("m", "v", only={"A"}, client=FakeClient(rows))
+    assert [o[0] for o in obs] == ["A"] and summary["fetched"] == 1
+
+
+def test_run_skips_non_scripted(monkeypatch):
+    obs, _ = _patch_reg(monkeypatch, [
+        {"name": "待办", "fetch_method": "cftc", "availability": "scriptable_todo",
+         "cftc": {"dataset": "d", "contract": "c"}}])
+    summary = cf.run_cftc_fetch("m", "v", client=FakeClient([]))
+    assert not obs and summary["skipped_todo"] == 1

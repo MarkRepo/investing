@@ -112,3 +112,56 @@ def fetch_by_cftc(cfg: dict, *, client=None) -> tuple[float | None, float | None
         if sd > 0:
             z = (value - statistics.fmean(nets)) / sd
     return value, z, as_of
+
+
+def run_cftc_fetch(slug: str, variant: str, *, only: set[str] | None = None,
+                   client=None) -> dict:
+    """抓所有 fetch_method=='cftc' 且 availability=='scripted' 且有 cftc 配置的输入。
+    llm 项诚实跳过计数（走 headless LLM）。only 给定时只抓名字在其中的项（web 单条手动抓）。
+    失败（抛异常/取不到值）记 record_fetch_error 并计数，不连累其余。返回 summary。"""
+    data = reg.read_registry(slug, variant)
+    fetched = skipped_todo = skipped_llm = failed = 0
+    for e in data["inputs"]:
+        if e.get("fetch_method") != "cftc":
+            continue
+        if only is not None and e["name"] not in only:
+            continue
+        avail = e.get("availability")
+        if avail == "llm":
+            skipped_llm += 1
+            continue
+        if avail != "scripted" or not e.get("cftc"):
+            skipped_todo += 1
+            continue
+        try:
+            val, z, as_of = fetch_by_cftc(e["cftc"], client=client)
+        except Exception as exc:               # 配置/网络/结构等：记错、跳过，不连累其余
+            reg.record_fetch_error(slug, variant, e["name"], msg=str(exc))
+            failed += 1
+            continue
+        if val is None:
+            reg.record_fetch_error(slug, variant, e["name"],
+                                   msg=f"cftc 未取到值（限流或源变更）: {e['cftc'].get('contract')}")
+            failed += 1
+            continue
+        reg.record_observation(slug, variant, e["name"], value=val, z=z, as_of=as_of)
+        fetched += 1
+    return {"fetched": fetched, "skipped_todo": skipped_todo,
+            "skipped_llm": skipped_llm, "failed": failed}
+
+
+def main(argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+    # 自带活体冒烟：无参时直接拉 UST 10Y NOTE 杠杆基金净头寸 + z
+    if not argv:
+        v, z, d = fetch_by_cftc({"dataset": "gpe5-46if", "contract": "UST 10Y NOTE"})
+        zs = f"{z:.2f}" if z is not None else "None"
+        print(f"UST 10Y NOTE lev_money net: {v} (z={zs}) @ {d}")
+        return
+    slug = argv[0]
+    variant = argv[1] if len(argv) > 1 else "opus4.8"
+    print(f"cftc 抓取: {run_cftc_fetch(slug, variant)}")
+
+
+if __name__ == "__main__":
+    main()
