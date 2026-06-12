@@ -93,3 +93,101 @@ def pick_latest_chair(entries: list[dict]) -> dict | None:
         if best_dt is None or dt > best_dt:
             best, best_dt = e, dt
     return best
+
+
+def _get(client: httpx.Client, url: str) -> httpx.Response:
+    resp = client.get(url, timeout=30, follow_redirects=True,
+                      headers={"User-Agent": _CHROME_UA})
+    resp.raise_for_status()
+    return resp
+
+
+def fetch_fed_speech(slug: str, variant: str, *, client: httpx.Client | None = None,
+                     input_name: str | None = None) -> dict:
+    """下载最新主席讲话全文，存 inbox/fed_speech_latest.md，写 local_cache_path。
+
+    返回 {title, speaker, date, url, cache_path, ok, fingerprint}。
+    feed 抓取失败 / 无主席条 / 讲话页抓取失败 → {"error": ...}（真失败，调度器记 fetch_error 回落 llm）。
+    fingerprint = 讲话相对链接（内嵌日期，发布即定型）→ 新讲话 → 指纹变 → 去重门触发 LLM 重判立场。
+    """
+    target = input_name or _INPUT_NAME
+    owns = client is None
+    if owns:
+        client = httpx.Client()
+    try:
+        try:
+            feed_resp = _get(client, _FEED_URL)
+        except httpx.HTTPError as exc:
+            return {"error": f"讲话 feed 抓取失败：{exc}"}
+        try:
+            entries = json.loads(feed_resp.content.decode("utf-8-sig"))
+        except (ValueError, UnicodeDecodeError) as exc:
+            return {"error": f"讲话 feed 解析失败：{exc}"}
+
+        latest = pick_latest_chair(entries)
+        if latest is None:
+            return {"error": "feed 未找到主席讲话（站点结构可能变更）"}
+        rel_link = latest.get("l", "")
+        url = rel_link if rel_link.startswith("http") else _FED_BASE + rel_link
+        title = latest.get("t", "")
+        speaker = latest.get("s", "")
+        date = latest.get("d", "")
+
+        try:
+            speech_html = _get(client, url).text
+        except httpx.HTTPError as exc:
+            return {"error": f"讲话页抓取失败（{title}）：{exc}"}
+        body = _extract_body(speech_html)
+
+        inbox_dir = _PRISM_ROOT / "topics" / slug / "inbox"
+        inbox_dir.mkdir(parents=True, exist_ok=True)
+        out_path = inbox_dir / "fed_speech_latest.md"
+        lines = [
+            f"# {title}",
+            f"讲话人：{speaker}",
+            f"日期：{date}",
+            f"来源：{url}",
+            "",
+            body or "（正文抓取失败，仅留标题/链接——LLM 可据来源 URL 回落现场检索）",
+            "",
+            "---",
+            "> 注：脚本零-LLM 自 Fed 讲话 feed 定位最新主席讲话并下原文存本地缓存；"
+            "鹰鸽立场判读仍由 LLM 读本文件给出（observed.stance）。",
+        ]
+        out_path.write_text("\n".join(lines), encoding="utf-8")
+
+        rel = str(out_path.relative_to(_PRISM_ROOT))
+        reg.set_local_cache_path(slug, variant, target, rel)
+
+        return {
+            "title": title, "speaker": speaker, "date": date, "url": url,
+            "cache_path": str(out_path), "ok": bool(body), "fingerprint": rel_link,
+        }
+    finally:
+        if owns:
+            client.close()
+
+
+def fetch_one(slug: str, variant: str, entry: dict, *, client: httpx.Client | None = None) -> dict:
+    """取文调度器入口（text_fetch=='fed_speech' 路由到此）。用 entry['name'] 作目标输入名。"""
+    return fetch_fed_speech(slug, variant, client=client, input_name=entry.get("name"))
+
+
+def main(argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+    slug = argv[0] if len(argv) > 0 else "global-macro-rates-liquidity"
+    variant = argv[1] if len(argv) > 1 else "opus4.8"
+    result = fetch_fed_speech(slug, variant)
+    if "error" in result:
+        print(f"错误: {result['error']}")
+        sys.exit(1)
+    print(f"最新主席讲话: {result['title']}（{result['speaker']}，{result['date']}）"
+          f"{'✓' if result['ok'] else '✗'}")
+    print(f"来源: {result['url']}")
+    print(f"缓存: {result['cache_path']}")
+    print(f"指纹: {result['fingerprint']}")
+    print("local_cache_path 已更新 → LLM 下次拉取将读本地文件判鹰鸽立场")
+
+
+if __name__ == "__main__":
+    main()

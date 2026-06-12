@@ -33,3 +33,65 @@ def test_extract_body_strips_tags_and_footer():
     body = fs._extract_body(html)
     assert "economy remains resilient" in body
     assert "Last Update" not in body
+
+
+import json
+import pytest
+from prism.scripts import macro_registry as reg
+
+
+class _FakeResp:
+    def __init__(self, *, text=None, content=None):
+        self.text = text or ""
+        self.content = content if content is not None else (text or "").encode()
+    def raise_for_status(self):
+        pass
+
+
+class _FakeClient:
+    """feed URL 返回 JSON（带 BOM），讲话页返回 HTML。"""
+    def __init__(self, entries, speech_html):
+        self._feed = ("﻿" + json.dumps(entries)).encode("utf-8")
+        self._html = speech_html
+    def get(self, url, **kw):
+        if url.endswith(".json"):
+            return _FakeResp(content=self._feed, text=self._feed.decode("utf-8-sig"))
+        return _FakeResp(text=self._html)
+    def close(self):
+        pass
+
+
+@pytest.fixture
+def speech_topic(tmp_path, monkeypatch):
+    monkeypatch.setattr(reg, "_PRISM_ROOT", tmp_path)
+    monkeypatch.setattr(fs, "_PRISM_ROOT", tmp_path)
+    slug, variant = "t-macro", "opus4.8"
+    reg.create_registry(slug, variant)
+    reg.upsert_input(slug, variant, {
+        "name": fs._INPUT_NAME, "tier": "A", "cadence_type": "policy",
+        "targets": ["rates"], "mechanism": "CD", "importance": "confirming",
+        "causal_sentence": "x→y→z。", "availability": "llm",
+        "stance_scale": "hawk_dove", "text_fetch": "fed_speech",
+    })
+    return slug, variant
+
+
+def test_fetch_fed_speech_writes_cache_and_sets_path(speech_topic, tmp_path):
+    slug, variant = speech_topic
+    html = "<html><body><p>Policy is well positioned; inflation eased.</p></body></html>"
+    res = fs.fetch_fed_speech(slug, variant, client=_FakeClient(_ENTRIES, html))
+    assert res["ok"]
+    assert res["fingerprint"] == "/newsevents/speech/powell20260321a.htm"
+    cache = tmp_path / "topics" / slug / "inbox" / "fed_speech_latest.md"
+    assert cache.exists() and "inflation eased" in cache.read_text(encoding="utf-8")
+    entry = next(e for e in reg.read_registry(slug, variant)["inputs"]
+                 if e["name"] == fs._INPUT_NAME)
+    assert entry["local_cache_path"].endswith("fed_speech_latest.md")
+
+
+def test_fetch_one_routes_with_entry_name(speech_topic):
+    slug, variant = speech_topic
+    entry = {"name": fs._INPUT_NAME, "text_fetch": "fed_speech"}
+    res = fs.fetch_one(slug, variant, entry,
+                       client=_FakeClient(_ENTRIES, "<p>hawkish tone</p>"))
+    assert res["ok"] and res["speaker"] == "Chair Jerome H. Powell"
