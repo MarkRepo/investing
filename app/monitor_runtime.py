@@ -183,6 +183,49 @@ async def run_monitor_cycle(trigger: str = "scheduled") -> dict:
         except Exception as e:
             _log(f"cftc fetch failed: {e}")
 
+        # macro FedWatch 自动抓取（零 LLM）：CME ZQ 期货反解隐含政策路径（前瞻降息预期/概率），
+        # fetch_method=='fedwatch' 的 scripted 项，整条路径只算一次再按 metric 分发。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import fedwatch_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                fw_summary = await asyncio.to_thread(
+                    fedwatch_fetch.run_fedwatch_fetch, t["slug"], t["variant"])
+                _log(f"fedwatch fetch [{t['slug']}/{t['variant']}]: {fw_summary}")
+        except Exception as e:
+            _log(f"fedwatch fetch failed: {e}")
+
+        # macro FOMC SEP 自动抓取（零 LLM）：点阵图近年中位联邦基金利率（Fed 季度投影表），
+        # fetch_method=='fomc_sep' 的 scripted 项。与 fedwatch 互补（Fed 昭示 vs 市场隐含），在 recipe 派生之前刷新。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import fomc_sep_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                sep_summary = await asyncio.to_thread(
+                    fomc_sep_fetch.run_fomc_sep_fetch, t["slug"], t["variant"])
+                _log(f"fomc_sep fetch [{t['slug']}/{t['variant']}]: {sep_summary}")
+        except Exception as e:
+            _log(f"fomc_sep fetch failed: {e}")
+
+        # macro mofcom 自动抓取（零 LLM）：商务部社融增量序列 → 派生（信贷脉冲＝滚动12月社融/名义GDP 同比差分）。
+        # fetch_method=='mofcom' 的 scripted 项，自带 SECLEVEL=1 TLS 解锁 data.mofcom.gov.cn + akshare GDP 分母。
+        # 自含（不依赖其它 observed），故在 recipe 之前刷新即可。失败吞掉、不阻断周期。
+        try:
+            from prism.scripts import mofcom_fetch
+            from prism.scripts import topic as topic_io
+            for t in topic_io.list_topics():
+                if t.get("type") != "macro":
+                    continue
+                mof_summary = await asyncio.to_thread(
+                    mofcom_fetch.run_mofcom_fetch, t["slug"], t["variant"])
+                _log(f"mofcom fetch [{t['slug']}/{t['variant']}]: {mof_summary}")
+        except Exception as e:
+            _log(f"mofcom fetch failed: {e}")
+
         # macro recipe 自动抓取（零 LLM）：fetch_method=='recipe' 的 scripted 项（含按名派生，如 CIP 基差）。
         # **必须在上述各腿通道之后**跑——派生项读最新 observed 合成；故在此（macro scan 之前）末位刷新。
         # 失败吞掉、不阻断周期。
