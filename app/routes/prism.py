@@ -22,6 +22,7 @@ from app.config import APP_TEMPLATES_DIR
 from prism.scripts import manifest as manifest_io
 from prism.scripts import outputs as outputs_io
 from prism.scripts import topic as topic_io
+from prism.scripts import wechat_export as wechat_export
 
 router = APIRouter(prefix="/prism", tags=["prism"])
 templates = Jinja2Templates(directory=str(APP_TEMPLATES_DIR))
@@ -1156,6 +1157,34 @@ def prism_eval_trace(request: Request, slug: str, variant: str):
         "score": sc.score_evaluation(slug, variant),
         "ledger": {(r["conclusion_id"], r["input"]): r for r in sc.edge_ledger(slug, variant)},
     })
+
+
+@router.get("/{slug}/{variant}/{output_key}/wechat")
+def prism_output_wechat(request: Request, slug: str, variant: str, output_key: str):
+    """某产出的微信公众号版（纯显示层清洗 + 内联样式 + 复制按钮）。仅 primer/case 开放。"""
+    if output_key not in wechat_export.WECHAT_OUTPUT_KEYS:
+        raise HTTPException(status_code=404, detail="公众号版仅支持 primer / case 产出")
+    try:
+        topic = topic_io.read_topic(slug, variant)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Topic {slug!r}/{variant!r} not found")
+    try:
+        article_html = wechat_export.to_wechat_html(slug, variant, output_key)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Output {output_key!r} not yet generated")
+    outputs = outputs_io.list_outputs(slug, variant)
+    current_output = next((o for o in outputs if o["key"] == output_key), None)
+    return templates.TemplateResponse(
+        request,
+        "prism/wechat.html",
+        {
+            "topic": topic,
+            "output_key": output_key,
+            "current_output": current_output,
+            "variant": variant,
+            "article_html": article_html,
+        },
+    )
 
 
 @router.get("/{slug}/{variant}/{output_key}")
