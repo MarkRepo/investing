@@ -63,3 +63,36 @@ def test_strip_blockquote_lines_keeps_normal_quotes():
     # 普通 blockquote（术语锚定、提示）不误删
     src = "> 术语锚定：bps = 0.01%。\n\n正文。"
     assert "术语锚定" in wx.strip_blockquote_lines(src)
+
+
+def test_strip_sources_section_to_eof():
+    src = "## 8. 估值\n\n正文。\n\n## 来源说明\n\n| 来源 | 占比 |\n|---|---|\n引用 mat：mat-50b810。"
+    out = wx.strip_sources_section(src)
+    assert "来源说明" not in out
+    assert "引用 mat" not in out
+    assert "## 8. 估值" in out and "正文。" in out
+
+
+def test_strip_sources_section_bounded_by_next_h2():
+    # 信息来源 后还有 链体检：只删 信息来源 段，链体检 保留（交验证步定夺）
+    src = "## 正文\n\nX。\n\n## 信息来源\n\n- findings：mat-b01cff。\n\n## 链体检\n\nY。"
+    out = wx.strip_sources_section(src)
+    assert "信息来源" not in out and "findings" not in out
+    assert "## 链体检" in out and "Y。" in out
+
+
+def test_strip_sources_section_absent():
+    src = "## 正文\n\n没有出处段。"
+    assert wx.strip_sources_section(src) == src
+
+
+def test_strip_inline_output_refs():
+    src = "见 `c_investment_case` 与 `00_primer.md`，详见 `thesis_v5.md`。"
+    out = wx.strip_inline_output_refs(src)
+    for tok in ("c_investment_case", "00_primer", "thesis_v5", "`"):
+        assert tok not in out
+
+
+def test_strip_inline_output_refs_keeps_normal_code():
+    src = "用 `ROIC` 与 `funded account` 这两个词。"
+    assert wx.strip_inline_output_refs(src) == src
