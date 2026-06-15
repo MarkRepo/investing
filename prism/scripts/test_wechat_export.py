@@ -1,4 +1,6 @@
 """wechat_export 纯函数单测。零 LLM、零 I/O（除显式读真实 topic 的集成测试）。"""
+import pytest
+
 from prism.scripts import wechat_export as wx
 
 
@@ -134,3 +136,33 @@ def test_inline_styles_table_and_code():
 def test_inline_styles_no_style_or_script_blocks():
     out = wx.inline_styles("<p>x</p>")
     assert "<style" not in out and "<script" not in out
+
+
+@pytest.mark.parametrize("slug,variant,key", [
+    ("global-futu", "opus4.8", "00_primer"),
+    ("global-futu", "opus4.8", "c_investment_case"),
+])
+def test_to_wechat_html_real_topic_clean(slug, variant, key):
+    out = wx.to_wechat_html(slug, variant, key)
+    # ① 无 mat 引用残留
+    assert "mat-" not in out
+    # ② 无内部架子
+    assert "承重充分性" not in out
+    assert "changelog" not in out
+    assert "来源说明" not in out and "信息来源" not in out
+    # ③ 已内联样式、无 class/id/style 块
+    assert 'style="' in out
+    assert "<style" not in out and "<script" not in out
+    # ④ K# 对照表已追加（futu 正文含 K#）
+    assert "命门编号对照" in out
+
+
+def test_to_wechat_html_stable_replayable():
+    a = wx.to_wechat_html("global-futu", "opus4.8", "00_primer")
+    b = wx.to_wechat_html("global-futu", "opus4.8", "00_primer")
+    assert a == b  # 纯函数、可重放
+
+
+def test_to_wechat_html_missing_output_raises():
+    with pytest.raises(FileNotFoundError):
+        wx.to_wechat_html("global-futu", "opus4.8", "00_primer_does_not_exist")

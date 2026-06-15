@@ -169,3 +169,29 @@ def inline_styles(html: str) -> str:
         tag.attrs.pop("class", None)
         tag.attrs.pop("id", None)
     return str(soup)
+
+
+def clean_markdown(raw: str) -> str:
+    """对原始 .md 文本做全部 markdown 层清洗（渲染前）。纯函数、幂等。"""
+    text = outputs_io._strip_frontmatter(raw)
+    text = strip_sources_section(text)
+    text = strip_blockquote_lines(text)
+    text = strip_inline_output_refs(text)
+    text = strip_mat_refs(text)
+    return text
+
+
+def to_wechat_html(slug: str, variant: str, output_key: str) -> str:
+    """生成某产出的微信公众号版自包含内联样式 HTML 片段。纯函数、零 LLM、可重放。
+
+    流水线：读 .md → markdown 层清洗 → 追加 K# 对照表 → render_markdown（不 linkify）→ bs4 内联样式。
+    """
+    out_path = _PRISM_ROOT / "topics" / slug / variant / "outputs" / f"{output_key}.md"
+    if not out_path.is_file():
+        raise FileNotFoundError(f"Output not found: {slug}/{variant}/{output_key}")
+    text = clean_markdown(out_path.read_text(encoding="utf-8"))
+    legend_md = build_k_legend_md(text, slug, variant)
+    if legend_md:
+        text = text.rstrip() + "\n\n" + legend_md + "\n"
+    html = outputs_io.render_markdown(text)  # 复用现有渲染；不调 linkify_mat_refs
+    return inline_styles(html)
