@@ -152,6 +152,12 @@ def test_strip_inline_output_refs_keeps_content_paren():
     assert wx.strip_inline_output_refs("### 仓位框架（首仓参考④的 EV）") == "### 仓位框架（首仓参考④的 EV）"
 
 
+def test_strip_inline_output_refs_file_pointer_paren():
+    # 括号内含「见 内部文件」指针（非纯 key）→ 整括号删，保留前面正文
+    src = "K6 次高端弹性vs陷阱（完整定义与现状见 thesis_v1 §4）。"
+    assert wx.strip_inline_output_refs(src) == "K6 次高端弹性vs陷阱。"
+
+
 def test_build_toc_md_lists_h2_as_bullets():
     text = "# 标题\n\n## 0. 起点\n\n正文\n\n## 1. 飞轮\n\n## 2. 估值\n"
     toc = wx.build_toc_md(text)

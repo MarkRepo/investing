@@ -72,8 +72,10 @@ _OUTPUT_KEY_ALT = (
     r"|peer_matrix|industry_to_arenas"
 )
 _INLINE_OUTPUT_REF = re.compile(r"`\s*(?:" + _OUTPUT_KEY_ALT + r")(?:\.\w+)?\s*`")
-# 括号内「只含」一个产出 key（非反引号，如标题尾 投资决策链（i_industry_case））→ 整括号删。
-_PAREN_OUTPUT_REF = re.compile(r"[（(]\s*(?:" + _OUTPUT_KEY_ALT + r")(?:\.\w+)?\s*[）)]")
+# 括号内「含」内部文件 token（产出 key / thesis_vN 等）即整括号删，无论是纯 key
+# （标题尾 投资决策链（i_industry_case））还是「见 X」指针（（完整定义与现状见 thesis_v1 §4））。
+# 内部不允许嵌套括号（[^（()）]*），故只吃单层括号，不波及无 token 的内容括号（如（首仓参考④的 EV））。
+_PAREN_OUTPUT_REF = re.compile(r"[（(][^（()）]*(?:" + _OUTPUT_KEY_ALT + r")[^（()）]*[）)]")
 # 标题/句尾的「→ sidecar <key>」内部 sidecar yaml key 指针（保留前面的标题/内容散文）。
 _SIDECAR_POINTER = re.compile(r"\s*→\s*sidecar\s+[a-z_]+")
 
