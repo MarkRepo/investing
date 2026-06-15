@@ -92,3 +92,46 @@ def strip_inline_output_refs(text: str) -> str:
     # 删后常见残留：成对空括号——只收拾明确的空括号。
     text = re.sub(r"（\s*）|\(\s*\)", "", text)
     return text
+
+
+def parse_thesis_k_meanings(slug: str, variant: str) -> dict[str, str]:
+    """从该 variant 最新 thesis_v{N}.md 的 K# 表抽 {K#: 含义}。
+
+    容忍多种表格格式：首格可能是 `K1` 或带装饰的 `**命门1 / K1**`；取首格含 K# 的行，
+    第二格（去 ** 后）作为含义。与 outputs.extract_k_status 同源（锚定 K# 表格行）。
+    无 thesis / 无表 → 返回 {}（绝不抛错）。
+    """
+    versions = outputs_io.list_thesis_files(slug, variant)
+    if not versions:
+        return {}
+    path = _PRISM_ROOT / "topics" / slug / variant / f"thesis_v{max(versions)}.md"
+    if not path.is_file():
+        return {}
+    out: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.lstrip().startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 2:
+            continue
+        m = re.search(r"\bK\d+\b", cells[0])
+        if not m or m.group(0) in out:
+            continue
+        meaning = re.sub(r"\*\*", "", cells[1]).strip()
+        if meaning and not set(meaning) <= set("-: "):  # 跳过分隔行 |---|
+            out[m.group(0)] = meaning
+    return out
+
+
+def build_k_legend_md(body_text: str, slug: str, variant: str) -> str:
+    """为正文中出现的 K# 生成「命门编号对照」markdown 表。正文无 K# / 抽不到含义 → 返回 ""。"""
+    ks = sorted(set(re.findall(r"\bK\d+\b", body_text)), key=lambda k: int(k[1:]))
+    if not ks:
+        return ""
+    meanings = parse_thesis_k_meanings(slug, variant)
+    rows = [(k, meanings[k]) for k in ks if k in meanings]
+    if not rows:
+        return ""
+    lines = ["## 命门编号对照（K#）", "", "| 编号 | 含义 |", "|---|---|"]
+    lines += [f"| {k} | {meaning} |" for k, meaning in rows]
+    return "\n".join(lines)

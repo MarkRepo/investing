@@ -96,3 +96,22 @@ def test_strip_inline_output_refs():
 def test_strip_inline_output_refs_keeps_normal_code():
     src = "用 `ROIC` 与 `funded account` 这两个词。"
     assert wx.strip_inline_output_refs(src) == src
+
+
+def test_build_k_legend_md_real_futu():
+    # 真实 topic：正文里 K1/K2/K3 应能从 thesis_v5 抽出含义并成表
+    body = "命门 K1 是总开关，K2 监管尾部，K3 引擎独立性。"
+    md = wx.build_k_legend_md(body, "global-futu", "opus4.8")
+    assert "命门编号对照" in md
+    assert "K1" in md and "K2" in md and "K3" in md
+    assert "| 编号 | 含义 |" in md
+
+
+def test_build_k_legend_md_no_k_in_body():
+    # 正文无 K# → 不生成图例
+    assert wx.build_k_legend_md("纯散文，无编号。", "global-futu", "opus4.8") == ""
+
+
+def test_build_k_legend_md_no_thesis():
+    # 不存在的 topic → 静默返回空
+    assert wx.build_k_legend_md("提到 K1。", "no-such-slug", "no-variant") == ""
