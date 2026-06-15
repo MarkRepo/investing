@@ -159,12 +159,14 @@ def test_strip_inline_output_refs_file_pointer_paren():
 
 
 def test_build_toc_md_lists_h2_as_bullets():
+    from prism.scripts import outputs as outs
     text = "# 标题\n\n## 0. 起点\n\n正文\n\n## 1. 飞轮\n\n## 2. 估值\n"
     toc = wx.build_toc_md(text)
     assert toc.startswith("## 目录")
-    assert "- 0. 起点" in toc and "- 1. 飞轮" in toc and "- 2. 估值" in toc
-    # 不重新编号（标题自带序号），用无序列表
-    assert "1. 0. 起点" not in toc
+    # 标题自带序号；leading enumerator 的点须转义，避免被当成有序列表标记（否则全渲染成 1.）
+    html = outs.render_markdown(toc)
+    assert "<ol>" not in html  # 不得出现嵌套有序列表
+    assert "<li>0. 起点</li>" in html and "<li>1. 飞轮</li>" in html and "<li>2. 估值</li>" in html
 
 
 def test_build_toc_md_strips_emphasis_in_titles():

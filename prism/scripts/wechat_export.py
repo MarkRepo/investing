@@ -219,7 +219,12 @@ def build_toc_md(text: str) -> str:
     titles = [m.group(1).strip() for line in text.splitlines() if (m := _H2_TITLE.match(line))]
     if len(titles) < 3:
         return ""
-    items = [f"- {re.sub(r'[*`]', '', t).strip()}" for t in titles]
+    items = []
+    for t in titles:
+        clean = re.sub(r"[*`]", "", t).strip()
+        # 转义行首「数字.」的点：否则 `- 1. 标题` 被当成嵌套有序列表，序号全渲染成 1.。
+        clean = re.sub(r"^(\d+)\.", r"\1\\.", clean)
+        items.append(f"- {clean}")
     return "## 目录\n\n" + "\n".join(items)
 
 
