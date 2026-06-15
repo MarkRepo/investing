@@ -67,6 +67,29 @@ def test_strip_blockquote_lines_keeps_normal_quotes():
     assert "术语锚定" in wx.strip_blockquote_lines(src)
 
 
+def test_strip_tier_name_mapping_pointer():
+    # 档名↔dashboard/sidecar 内部映射指针（blockquote）删除
+    src = ("正文。\n\n> **档名映射（dashboard 对齐）**：深挖=deep / 观察=watch / 淘汰=eliminated。\n\n"
+           "> **档名↔sidecar 映射（dashboard 对齐用）**：深研档 = `shortlist`。\n\n续。")
+    out = wx.strip_blockquote_lines(src)
+    assert "档名" not in out and "dashboard" not in out
+    assert "正文。" in out and "续。" in out
+
+
+def test_strip_inline_tier_mapping_keeps_definition():
+    # 混合行：保留 tier 定义（内容），只删末尾「档名↔sidecar：…」内部映射子句
+    src = "> **tier = 卡位/质量 × 当前定价**（不是只按好坏排）。档名↔sidecar：深研=`shortlist`/观察=`watch`/淘汰=`eliminated`。"
+    out = wx.strip_inline_tier_mapping(src)
+    assert "tier = 卡位/质量 × 当前定价" in out
+    assert "不是只按好坏排" in out
+    assert "档名" not in out and "shortlist" not in out
+
+
+def test_strip_inline_tier_mapping_absent():
+    src = "> **tier = 卡位/质量 × 当前定价**（不是只按好坏排）。"
+    assert wx.strip_inline_tier_mapping(src) == src
+
+
 def test_strip_sources_section_to_eof():
     src = "## 8. 估值\n\n正文。\n\n## 来源说明\n\n| 来源 | 占比 |\n|---|---|\n引用 mat：mat-50b810。"
     out = wx.strip_sources_section(src)
@@ -98,6 +121,53 @@ def test_strip_inline_output_refs():
 def test_strip_inline_output_refs_keeps_normal_code():
     src = "用 `ROIC` 与 `funded account` 这两个词。"
     assert wx.strip_inline_output_refs(src) == src
+
+
+def test_strip_inline_output_refs_sidecar_pointer_paren_only():
+    # 标题尾「（→ sidecar key）」整体是内部指针 → 删空括号后只剩标题
+    src = "### kill 触发条件（→ sidecar kill_criteria）"
+    assert wx.strip_inline_output_refs(src) == "### kill 触发条件"
+
+
+def test_strip_inline_output_refs_sidecar_pointer_mixed_paren():
+    # 括号里前半是内容、后半是指针 → 只删指针，保留内容
+    src = "### 仓位框架（首仓参考④的 EV → sidecar position_framework）"
+    assert wx.strip_inline_output_refs(src) == "### 仓位框架（首仓参考④的 EV）"
+
+
+def test_strip_inline_output_refs_keeps_bare_sidecar_word():
+    # 裸词 sidecar（无 → key 指针）不误删
+    src = "这个 sidecar 设计很巧。"
+    assert wx.strip_inline_output_refs(src) == src
+
+
+def test_strip_self_check_chain():
+    # industry 文末 链体检（self-check）整段删除
+    src = "## 环⑥\n\n正文。\n\n## 链体检（self-check）\n\n①看懂 ✓ / ②定价 ✓\n"
+    out = wx.strip_self_check_sections(src)
+    assert "链体检" not in out and "①看懂" not in out
+    assert "## 环⑥" in out and "正文。" in out
+
+
+def test_strip_self_check_tier_consistency():
+    # arena 文末 tier ↔ 一致性说明（dashboard 对齐）整段删除
+    src = "## 环⑥\n\n正文。\n\n## tier ↔ 综合分一致性说明（dashboard 对齐）\n\nscore 排序同向。\n"
+    out = wx.strip_self_check_sections(src)
+    assert "一致性说明" not in out and "score 排序" not in out
+    assert "## 环⑥" in out and "正文。" in out
+
+
+def test_strip_self_check_bounded_by_next_h2():
+    # 只删命名段，相邻小节保留
+    src = "## 链体检\n\n自检。\n\n## 真正文\n\nY。"
+    out = wx.strip_self_check_sections(src)
+    assert "链体检" not in out and "自检" not in out
+    assert "## 真正文" in out and "Y。" in out
+
+
+def test_strip_self_check_absent():
+    src = "## 正文\n\n没有自检段。"
+    assert wx.strip_self_check_sections(src) == src
 
 
 def test_build_k_legend_md_real_futu():

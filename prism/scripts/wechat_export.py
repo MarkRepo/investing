@@ -46,6 +46,7 @@ _DROP_BLOCKQUOTE_PATTERNS = (
     re.compile(r"^\s*>\s*\*\*v\d+\s*changelog", re.I),  # vN changelog 修订史
     re.compile(r"^\s*>\s*读者画像"),                  # primer 读者画像
     re.compile(r"^\s*>\s*本文假定读者"),              # case 阅读假定指针
+    re.compile(r"^\s*>\s*\*\*档名"),                  # 档名↔dashboard/sidecar 内部映射指针
 )
 
 
@@ -70,28 +71,58 @@ _INLINE_OUTPUT_REF = re.compile(
     r"|\d{2}[a-z]?_[a-z_]+|[cia]_[a-z_]+case|[a-z_]*decision_kit"
     r"|peer_matrix|industry_to_arenas)(?:\.\w+)?\s*`"
 )
+# 标题/句尾的「→ sidecar <key>」内部 sidecar yaml key 指针（保留前面的标题/内容散文）。
+_SIDECAR_POINTER = re.compile(r"\s*→\s*sidecar\s+[a-z_]+")
+
+
+# 文末内部自检段标题：industry 的 链体检（self-check）、arena 的 tier ↔ …一致性说明（dashboard 对齐）。
+# 纯内部 QA / dashboard 对齐记账，对独立读者无意义。
+_SELF_CHECK_HEADING = re.compile(r"^#{2,3}\s*(链体检|tier\s*↔.*一致性说明)")
+
+
+def _strip_section_by_heading(text: str, heading_re: re.Pattern) -> str:
+    """删除 heading_re 命中的段：从其标题删到下一个 H2 标题或文末。可重复命中（逐个删）。
+    只删命名段本身，不波及相邻小节。"""
+    while True:
+        lines = text.split("\n")
+        start = next((i for i, l in enumerate(lines) if heading_re.match(l)), None)
+        if start is None:
+            return text
+        end = next((j for j in range(start + 1, len(lines)) if _H2.match(lines[j])), len(lines))
+        del lines[start:end]
+        text = "\n".join(lines).rstrip() + "\n"
 
 
 def strip_sources_section(text: str) -> str:
     """删除文末「来源说明/信息来源/数据来源」整段：从其标题删到下一个 H2 标题或文末。
     只删命名段本身，不波及相邻小节（如 industry case 的 链体检）。"""
-    lines = text.split("\n")
-    start = next((i for i, l in enumerate(lines) if _SOURCES_HEADING.match(l)), None)
-    if start is None:
-        return text
-    end = next((j for j in range(start + 1, len(lines)) if _H2.match(lines[j])), len(lines))
-    del lines[start:end]
-    # 收尾去掉因删段尾留下的多余空行
-    return "\n".join(lines).rstrip() + "\n"
+    return _strip_section_by_heading(text, _SOURCES_HEADING)
+
+
+def strip_self_check_sections(text: str) -> str:
+    """删除文末内部自检段（链体检 self-check / tier ↔ 一致性说明 dashboard 对齐）。
+    从其标题删到下一个 H2 或文末，只删命名段，不波及相邻分析小节。"""
+    return _strip_section_by_heading(text, _SELF_CHECK_HEADING)
 
 
 def strip_inline_output_refs(text: str) -> str:
     """去除反引号包裹的内部产出 key / 文件名引用（独立文章里是文件名乱码）。
     普通行内代码（业务术语 `ROIC` 等）不命中。"""
     text = _INLINE_OUTPUT_REF.sub("", text)
+    text = _SIDECAR_POINTER.sub("", text)
     # 删后常见残留：成对空括号——只收拾明确的空括号。
     text = re.sub(r"（\s*）|\(\s*\)", "", text)
     return text
+
+
+# 行内末尾的「档名↔sidecar：…」内部 key 映射子句（紧跟在 tier 定义之后）。
+# 只吃从「档名↔sidecar」到行末，保留前面的 tier 定义散文（内容不动）。
+_INLINE_TIER_MAPPING = re.compile(r"\s*档名↔sidecar[：:][^\n]*", re.M)
+
+
+def strip_inline_tier_mapping(text: str) -> str:
+    """删除行内末尾「档名↔sidecar：深研=…/观察=…/淘汰=…」内部 key 映射子句，保留前面的 tier 定义。"""
+    return _INLINE_TIER_MAPPING.sub("", text)
 
 
 def parse_thesis_k_meanings(slug: str, variant: str) -> dict[str, str]:
@@ -175,7 +206,9 @@ def clean_markdown(raw: str) -> str:
     """对原始 .md 文本做全部 markdown 层清洗（渲染前）。纯函数、幂等。"""
     text = outputs_io._strip_frontmatter(raw)
     text = strip_sources_section(text)
+    text = strip_self_check_sections(text)
     text = strip_blockquote_lines(text)
+    text = strip_inline_tier_mapping(text)
     text = strip_inline_output_refs(text)
     text = strip_mat_refs(text)
     return text
