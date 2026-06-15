@@ -1,1 +1,72 @@
-{% extends "base.html" %}{% block content %}{{ article_html | safe }}{% endblock %}
+{% extends "base.html" %}
+{% block title %}公众号版 · {{ current_output.label if current_output else output_key }} · {{ topic.display_name }}{% endblock %}
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/{{ topic.slug }}">{{ topic.display_name or topic.slug }}</a> /
+  <a href="/prism/{{ topic.slug }}/{{ variant }}/{{ output_key }}">{{ current_output.label if current_output else output_key }}</a> /
+  <span>公众号版</span>
+</nav>
+
+<div class="wx-toolbar">
+  <div class="wx-hint">纯显示层清洗版（去引用/内部架子、保留 K# 并附对照表）。点下方按钮复制富文本，到公众号编辑器直接粘贴。正文内容与系统版完全一致。</div>
+  <div class="wx-actions">
+    <button id="wx-copy" class="wx-btn">📋 复制到公众号</button>
+    <a class="wx-back" href="/prism/{{ topic.slug }}/{{ variant }}/{{ output_key }}">← 返回系统版</a>
+  </div>
+</div>
+
+<div id="wx-article">
+  {{ article_html | safe }}
+</div>
+
+<style>
+  main { margin-top: 0; }
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 0.5em; }
+  .breadcrumb a { color: #555; }
+  .wx-toolbar { position: sticky; top: 41px; background: #fafafa; z-index: 9; padding: 0.7em 0; border-bottom: 1px solid #eee; margin-bottom: 1.4em; }
+  .wx-hint { font-size: 0.8em; color: #999; margin-bottom: 0.6em; line-height: 1.5; }
+  .wx-actions { display: flex; align-items: center; gap: 1em; }
+  .wx-btn { font-size: 0.9em; padding: 0.4em 1em; border: 1px solid #07c160; border-radius: 4px; background: #07c160; color: #fff; cursor: pointer; }
+  .wx-btn:hover { background: #06ad56; }
+  .wx-btn.copied { background: #888; border-color: #888; }
+  .wx-back { font-size: 0.85em; color: #576b95; text-decoration: none; }
+  /* 正文区靠内联样式保真；这里给个最大宽度模拟公众号阅读宽度 */
+  #wx-article { max-width: 677px; margin: 0 auto; }
+</style>
+
+<script>
+(function () {
+  var btn = document.getElementById("wx-copy");
+  var article = document.getElementById("wx-article");
+  if (!btn || !article) return;
+  btn.addEventListener("click", function () {
+    var html = article.innerHTML;
+    var text = article.innerText;
+    function done() {
+      btn.textContent = "✓ 已复制";
+      btn.classList.add("copied");
+      setTimeout(function () { btn.textContent = "📋 复制到公众号"; btn.classList.remove("copied"); }, 2000);
+    }
+    function fallback() {
+      // 退化：选中正文，提示手动 Ctrl/Cmd+C
+      var range = document.createRange();
+      range.selectNodeContents(article);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = "已选中，请按 Ctrl/Cmd+C";
+    }
+    if (navigator.clipboard && window.ClipboardItem) {
+      var item = new ClipboardItem({
+        "text/html": new Blob([html], { type: "text/html" }),
+        "text/plain": new Blob([text], { type: "text/plain" })
+      });
+      navigator.clipboard.write([item]).then(done).catch(fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+{% endblock %}
