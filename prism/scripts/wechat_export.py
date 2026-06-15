@@ -66,11 +66,14 @@ _H2 = re.compile(r"^#{2}\s")
 
 # 反引号包裹的内部产出 key / 文件名（c_investment_case / 00_primer(.md) / thesis_vN(.md) /
 # _prism_reading_guide.md / *_decision_kit / a_arena_case / i_industry_case 等）。
-_INLINE_OUTPUT_REF = re.compile(
-    r"`\s*(?:_prism_reading_guide|thesis_v\d+|decomposition_v\d+|roadmap"
+_OUTPUT_KEY_ALT = (
+    r"_prism_reading_guide|thesis_v\d+|decomposition_v\d+|roadmap"
     r"|\d{2}[a-z]?_[a-z_]+|[cia]_[a-z_]+case|[a-z_]*decision_kit"
-    r"|peer_matrix|industry_to_arenas)(?:\.\w+)?\s*`"
+    r"|peer_matrix|industry_to_arenas"
 )
+_INLINE_OUTPUT_REF = re.compile(r"`\s*(?:" + _OUTPUT_KEY_ALT + r")(?:\.\w+)?\s*`")
+# 括号内「只含」一个产出 key（非反引号，如标题尾 投资决策链（i_industry_case））→ 整括号删。
+_PAREN_OUTPUT_REF = re.compile(r"[（(]\s*(?:" + _OUTPUT_KEY_ALT + r")(?:\.\w+)?\s*[）)]")
 # 标题/句尾的「→ sidecar <key>」内部 sidecar yaml key 指针（保留前面的标题/内容散文）。
 _SIDECAR_POINTER = re.compile(r"\s*→\s*sidecar\s+[a-z_]+")
 
@@ -108,6 +111,7 @@ def strip_self_check_sections(text: str) -> str:
 def strip_inline_output_refs(text: str) -> str:
     """去除反引号包裹的内部产出 key / 文件名引用（独立文章里是文件名乱码）。
     普通行内代码（业务术语 `ROIC` 等）不命中。"""
+    text = _PAREN_OUTPUT_REF.sub("", text)
     text = _INLINE_OUTPUT_REF.sub("", text)
     text = _SIDECAR_POINTER.sub("", text)
     # 删后常见残留：成对空括号——只收拾明确的空括号。
@@ -202,6 +206,33 @@ def inline_styles(html: str) -> str:
     return str(soup)
 
 
+# 仅 H2（章节级）。`^##\s` 不匹配 H1（一个 #）或 H3（### 后非空白）。
+_H2_TITLE = re.compile(r"^##\s+(.+?)\s*$")
+_H1_LINE = re.compile(r"^#\s")
+
+
+def build_toc_md(text: str) -> str:
+    """从正文 H2 章节标题生成「目录」markdown（纯文本无序列表，不可点——公众号会丢 id/锚点）。
+    标题自带序号（0./环①），故用无序列表不重复编号。少于 3 个 H2 → 返回 ""（不值得加目录）。"""
+    titles = [m.group(1).strip() for line in text.splitlines() if (m := _H2_TITLE.match(line))]
+    if len(titles) < 3:
+        return ""
+    items = [f"- {re.sub(r'[*`]', '', t).strip()}" for t in titles]
+    return "## 目录\n\n" + "\n".join(items)
+
+
+def _insert_toc(text: str, toc_md: str) -> str:
+    """把目录插到 H1 标题之后、首个 H2 之前；无 H1 则置于全文最前。"""
+    if not toc_md:
+        return text
+    lines = text.split("\n")
+    h1 = next((i for i, l in enumerate(lines) if _H1_LINE.match(l)), None)
+    if h1 is None:
+        return toc_md + "\n\n" + text
+    lines[h1 + 1:h1 + 1] = ["", toc_md, ""]
+    return "\n".join(lines)
+
+
 def clean_markdown(raw: str) -> str:
     """对原始 .md 文本做全部 markdown 层清洗（渲染前）。纯函数、幂等。"""
     text = outputs_io._strip_frontmatter(raw)
@@ -226,5 +257,6 @@ def to_wechat_html(slug: str, variant: str, output_key: str) -> str:
     legend_md = build_k_legend_md(text, slug, variant)
     if legend_md:
         text = text.rstrip() + "\n\n" + legend_md + "\n"
+    text = _insert_toc(text, build_toc_md(text))  # 目录建于 H2（含 K# 图例段），插到 H1 后
     html = outputs_io.render_markdown(text)  # 复用现有渲染；不调 linkify_mat_refs
     return inline_styles(html)
