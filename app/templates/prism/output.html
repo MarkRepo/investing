@@ -46,6 +46,10 @@
       <a href="/prism/{{ topic.slug }}/compare/{{ output_key }}?source1={{ variant }}&source2={{ _other_v }}"
          class="compare-btn">对比 {{ _other_v }}</a>
       {% endif %}
+      {% if output_key in ['00_primer', 'c_investment_case', 'i_industry_case', 'a_arena_case'] %}
+      <a href="/prism/{{ topic.slug }}/{{ variant }}/{{ output_key }}/wechat"
+         class="compare-btn">公众号版</a>
+      {% endif %}
     </div>
     {% endif %}
 
