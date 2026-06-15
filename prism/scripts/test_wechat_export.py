@@ -115,3 +115,22 @@ def test_build_k_legend_md_no_k_in_body():
 def test_build_k_legend_md_no_thesis():
     # 不存在的 topic → 静默返回空
     assert wx.build_k_legend_md("提到 K1。", "no-such-slug", "no-variant") == ""
+
+
+def test_inline_styles_adds_style_and_strips_class_id():
+    html = '<h2 class="x" id="y">标题</h2><p>正文</p>'
+    out = wx.inline_styles(html)
+    assert 'style="' in out
+    assert "class=" not in out and "id=" not in out
+
+
+def test_inline_styles_table_and_code():
+    html = "<table><tr><th>列</th><td>值</td></tr></table><p><code>x</code></p>"
+    out = wx.inline_styles(html)
+    assert "border-collapse" in out          # table 样式
+    assert out.count("border:1px solid") >= 2  # th + td
+
+
+def test_inline_styles_no_style_or_script_blocks():
+    out = wx.inline_styles("<p>x</p>")
+    assert "<style" not in out and "<script" not in out

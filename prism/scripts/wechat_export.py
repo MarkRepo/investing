@@ -135,3 +135,37 @@ def build_k_legend_md(body_text: str, slug: str, variant: str) -> str:
     lines = ["## 命门编号对照（K#）", "", "| 编号 | 含义 |", "|---|---|"]
     lines += [f"| {k} | {meaning} |" for k, meaning in rows]
     return "\n".join(lines)
+
+
+# 公众号编辑器会丢弃 <style>/class/id，故逐标签内联。这张表是 WeChat-safe 的最小可保留集。
+_WECHAT_STYLES = {
+    "h1": "font-size:22px;font-weight:700;margin:24px 0 16px;line-height:1.4;",
+    "h2": "font-size:19px;font-weight:700;margin:22px 0 12px;line-height:1.4;border-bottom:1px solid #eee;padding-bottom:6px;",
+    "h3": "font-size:17px;font-weight:600;margin:18px 0 10px;line-height:1.4;",
+    "p": "font-size:15px;line-height:1.75;margin:14px 0;color:#333;",
+    "ul": "margin:12px 0;padding-left:22px;",
+    "ol": "margin:12px 0;padding-left:22px;",
+    "li": "font-size:15px;line-height:1.75;margin:6px 0;color:#333;",
+    "blockquote": "border-left:3px solid #cbd5e0;padding:4px 14px;margin:14px 0;color:#666;background:#f7f8fa;",
+    "table": "border-collapse:collapse;width:100%;margin:16px 0;font-size:14px;",
+    "th": "border:1px solid #ddd;padding:7px 10px;background:#f5f5f5;font-weight:600;text-align:left;",
+    "td": "border:1px solid #ddd;padding:7px 10px;",
+    "code": "background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:13px;",
+    "pre": "background:#f6f6f6;padding:12px;border-radius:4px;overflow-x:auto;font-size:13px;",
+    "strong": "font-weight:700;",
+    "em": "font-style:italic;",
+    "hr": "border:none;border-top:1px solid #e2e2e2;margin:22px 0;",
+    "a": "color:#576b95;text-decoration:none;",
+}
+
+
+def inline_styles(html: str) -> str:
+    """把渲染后 HTML 的样式逐标签内联，并删除 class/id（公众号会丢弃）。无 <style>/<script>。"""
+    soup = BeautifulSoup(html, "html.parser")
+    for tag in soup.find_all(True):
+        style = _WECHAT_STYLES.get(tag.name)
+        if style:
+            tag["style"] = style + tag.get("style", "")
+        tag.attrs.pop("class", None)
+        tag.attrs.pop("id", None)
+    return str(soup)
