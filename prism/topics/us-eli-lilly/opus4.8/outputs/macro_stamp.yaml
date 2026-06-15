@@ -1,0 +1,19 @@
+as_of_regime_version: 2
+regime_composite: 美 higher-for-longer×risk-on但脆弱；10Y实际利率2.2%高位是长久期高估值成长股的倍数逆风，但医疗需求防御性+GLP-1结构性放量部分对冲，命门在增速换挡/商品化而非宏观
+depends_on_states:
+- conclusion: rates_us
+  state: 高位企稳·双向风险·10Y实际利率2.2%
+  role: load_bearing
+- conclusion: liquidity_us
+  state: risk-on亢奋但脆弱·信用利差极窄
+  role: confirming
+discount_rate:
+  risk_free: 2.2
+  applied_wacc: 8.5
+  rate_sensitivity: +50bp WACC → 公允价约 −7~9%（长久期成长股倍数敏感）；环②模型C已含
+  source_input: 10Y 实际利率 TIPS
+slug: us-eli-lilly
+variant: opus4.8
+stamped_at: '2026-06-12T07:38:47.059345+00:00'
+stale: false
+stale_reason: null

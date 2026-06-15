@@ -1,0 +1,367 @@
+slug: us-eli-lilly
+display_name: '礼来 (Eli Lilly, NYSE: LLY)'
+type: company
+created: '2026-06-12T06:12:03.972744+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 礼来作为GLP-1减重降糖全球龙头，全管线全周期质量视角：franchise护城河兑现、阿尔茨海默/肿瘤/免疫管线深度、产能与口服GLP-1竞争、高估值下的安全边际与长期FCF
+  depth: deep
+  ticker: US_LLY
+  market: US
+  short_name: 礼来
+  search_terms:
+  - GLP-1 减重降糖
+  - donanemab 管线
+  - 口服GLP-1 竞争
+  - 高估值 FCF兑现
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-12T07:34:22.621205+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-059241
+    - mat-07afed
+    - mat-0fe91c
+    - mat-1c0c11
+    - mat-4c9c90
+    - mat-4d2bd0
+    - mat-4d5659
+    - mat-54ada3
+    - mat-57f5d9
+    - mat-5c51a8
+    - mat-5c7637
+    - mat-5ee5ff
+    - mat-685abe
+    - mat-6eee8f
+    - mat-6fe5ab
+    - mat-79ee55
+    - mat-88aa99
+    - mat-9dd265
+    - mat-a3e10f
+    - mat-a4c0f3
+    - mat-aebdac
+    - mat-e43b00
+    - mat-ed75a6
+    - mat-f6b1d0
+    - mat-fb28e6
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-06-12T07:40:09.545048+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-059241
+    - mat-07afed
+    - mat-0fe91c
+    - mat-1c0c11
+    - mat-4c9c90
+    - mat-4d2bd0
+    - mat-4d5659
+    - mat-54ada3
+    - mat-57f5d9
+    - mat-5c51a8
+    - mat-5c7637
+    - mat-5ee5ff
+    - mat-685abe
+    - mat-6eee8f
+    - mat-79ee55
+    - mat-88aa99
+    - mat-a3e10f
+    - mat-a4c0f3
+    - mat-aebdac
+    - mat-e43b00
+    - mat-f6b1d0
+    - mat-fb28e6
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-06-12T07:40:09.568528+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-4c9c90
+    - mat-4d2bd0
+    - mat-a3e10f
+    - mat-fb28e6
+    last_error: null
+parent_materials: []
+next_actions:
+- 32 份实质料已抽成 findings（9 SEC 章节 + 8 份 8-K + 15 条 web），索引已重建
+- gap：ring 缺口(consensus/historical-mirror/bull-bear)全关闭、无 uncovered K#
+- 说「prism 推进 us-eli-lilly」走决策链合成：00_primer 领域入门 + c_investment_case 成稿 + 07_decision_kit
+  sidecar
+user_todos:
+- task: 下载 LLY 2025 年报(10-K) + 2026 Q1 季报(10-Q)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K4
+  source_hint: SEC EDGAR / investor.lilly.com（年报含财务质量+capex+资本配置）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-059241
+  - mat-1ac535
+  - mat-1c0c11
+  - mat-2e9cd7
+  - mat-aebdac
+  - mat-b06701
+  last_fetch_note: SEC EDGAR 10-K+10-Q+8 份8-K，自动分节
+- task: 收集 3 份卖方深度报告做一致预期/估值锚（摩根士丹利/高盛/摩根大通任选3）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  - K1
+  source_hint: consensus 必收类目；卖方 PT/营收EPS模型/隐含增长
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4c9c90
+  - mat-4d2bd0
+  - mat-a3e10f
+  last_fetch_note: exa 取一致预期/估值锚（Yahoo/MarketScreener/Investing）
+- task: orforglipron + retatrutide Phase 3 完整数据集（NEJM 论文 + Lilly IR deck）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: NEJM / lilly.gcs-web.com；效力/安全/亚组完整数据
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-11d170
+  - mat-484fca
+  - mat-629fe7
+  - mat-9eea24
+  - mat-b63ac0
+  - mat-f5ade3
+  last_fetch_note: ATTAIN-1 NEJM + retatrutide IR 已入库；完整亚组/安全表深挖留 02/drilldown
+- task: GLP-1 净价(net price)/rebate 趋势 + incretin 市场份额序列
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: 命门1 核心；IQVIA/SSR Health/卖方渠道调研，多半付费/草根
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4d5659
+  - mat-685abe
+  last_fetch_note: 取到 GLP-1 pricing reform/value-based 语境；精确 SSR net price 序列仍 hard(付费)
+- task: tirzepatide/Zepbound/Mounjaro 各国 COM 专利到期表 + 仿制/biosimilar 路径
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: drugpatentwatch / 卖方专利分析 / Orange Book
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-57f5d9
+  - mat-6eee8f
+  - mat-a4c0f3
+  last_fetch_note: patsnap/i-mak/pharsight 专利景观
+- task: LLY 资本配置史 + M&A 记录 + $50B+ capex 计划明细与投产时间表
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: mgmt-capital-alloc 必收类目；年报+IR+卖方产能模型
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-048055
+  - mat-1c0c11
+  - mat-4bdb51
+  - mat-d9588d
+  - mat-eeecf3
+  last_fetch_note: 10-K item7 MD&A + capex prescan($27B/$50B/Texas) + M&A windfall
+- task: 历史镜鉴：重磅药峰值后专利悬崖案例 + 高估值成长股增速换挡杀估值案例
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  - K1
+  source_hint: historical-mirror 必收类目；如 Humira/Gilead HCV/Lipitor + 成长股 de-rate 史
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-12b379
+  - mat-5c7637
+  - mat-5ee5ff
+  - mat-ef37a7
+  last_fetch_note: 2026-29 专利悬崖榜 + AbbVie/Humira 镜鉴
+- task: Medicare GLP-1 Bridge 后续 + IRA 第二批名单 + 商保覆盖现状
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: CMS / KFF / 卖方政策评论；2027 Bridge 到期路径
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3fc7d5
+  - mat-5a7906
+  - mat-633bc1
+  - mat-bb7b7a
+  - mat-d48fb3
+  last_fetch_note: prescan 已入库 CMS/KFF/medicareadvocacy
+- task: GLP-1 长期安全性证据（NAION/肌肉流失/停药反弹）学术综述 + FDA 态度
+  priority: P2
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: NANOS/AAO 共识 + NEJM/Lancet + FDA 标签
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0f8bef
+  - mat-15394f
+  last_fetch_note: prescan 已入库 NANOS/AAO 共识 + Sentinel
+- task: 第二梯队竞争管线 readout 日历（Viking/Amgen/Roche/Pfizer/中国玩家）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: 公司 IR + clinicaltrials.gov + 卖方竞争跟踪
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-07afed
+  - mat-5c51a8
+  - mat-ed75a6
+  last_fetch_note: ADA26 竞品 + obesity pipeline 2026-27
+- task: 资料提取完成：32 份实质料处理完毕（另 37 份 prescan 占位料豁免）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成(3 份),等待 05 对抗式重审或进入监控
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-12T07:42:11.505366+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-12T06:24:38.227324+00:00'
+    summary: 命门1=减重franchise单位经济性(口服化/竞争/专利侵蚀)(中); 命门2=第二曲线兑现 vs GLP-1增速换挡(中低); 命门3=~31x/$1T隐含增长
+      vs 真实可持续(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-12T07:42:11.505385+00:00'
+    summary: 命门1=减重单位经济性商品化(中,承重墙)；命门2=第二曲线兑现(中,reframe:实为下一代incretin非真多元化)；命门3=~31x隐含2028E净利率41%史高赌注
+      vs 真实可持续(中,已量化)
+    convergence_status: converged
+    changelog: 无命门增删(序1>2>3不变);命门2置信度中低→中(凭mat-07afed retatrutide P3+mat-fb28e6 orforglipron获批)+reframe为incretin延伸;命门3量化新增load-bearing假设2028E净利率41%(凭mat-a3e10f);primer入门目标无增删,目标5
+      reframe+目标9 sharpen,目标11安全性仍shallow;对照v0全历史无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-06-12T07:42:11.469969+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-12T06:22:51.832811+00:00'
+    summary: 全球最高质量制药 franchise：GLP-1 最佳分子组合+真实第二曲线，forward PE 已从峰值 50-60x 降至 ~31x(PEG<0.6)。生意一流、估值合理化，但
+      ~$1T 市值嵌入"高增长延续+减重不商品化"两个未证伪赌注。强度 6/10。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-12T07:42:11.470092+00:00'
+    summary: 全球最高质量制药franchise(GLP-1最佳分子+真实接棒管线),fwd PE已de-rate到~31x;但$1,144/~$1T已计入一致预期全兑现+净利率扩到史高41%+终值倍数不压缩,安全边际薄。强度6/10,建设性看多但当前价无安全边际。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-12T06:25:31.021158+00:00'
+  exited_at: '2026-06-12T06:38:33.022008+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-06-12T06:38:33.022008+00:00'
+  exited_at: '2026-06-12T07:03:07.588956+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-06-12T07:03:07.588956+00:00'
+  exited_at: '2026-06-12T07:45:10.043098+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-12T07:45:10.043098+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

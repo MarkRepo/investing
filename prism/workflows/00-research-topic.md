@@ -597,6 +597,36 @@ set_next_actions(slug, [
 
 ---
 
+## Step 6.5e：auto-fetch 全覆盖硬闸门（**未通过不得进 Step 7**）
+
+> **为什么必须做**：Step 6.5b/c 的「产即收 + R1 全覆盖」如果只靠散文纪律（「不要跳过本步」），主 agent 容易在 prescan 已跑完 10+ query 后产生"已经够了"的 shortcut 偏见，凭 `info_tier` 先入为主跳过 half_public/hard todo、或只象征性抓 1 份就宣布完成——导致大量 unattempted todo 被包装成"剩 N 条待你"甩给用户。本闸门把 `pending_unfetched_todos` 接成进 Step 7 前的硬断言，精确拦截"从未尝试就推进"。
+>
+> **与 01 Step 5.8 同源**：01 已有等效闸门（unattempted → SystemExit(1)），00 之前缺失，导致 00 产的 todo 可以被跳过而无人卡口。本步补齐。
+
+```bash
+python3 -c "
+from prism.scripts.topic import pending_unfetched_todos
+p = pending_unfetched_todos('{slug}', '{variant}')
+unattempted = [t for t in p if t.get('fetch_status') == 'unattempted']
+errored     = [t for t in p if t.get('fetch_status') == 'error']
+if unattempted:
+    print('❌ 00 产即收违规：以下 todo 从未尝试过抓取（fetch_status=unattempted）——')
+    print('   info_tier 只决定努力顺序，不是跳过门槛（auto-fetch 规约 R1）。回 Step 6.5b 逐条跑阶梯并 mark_todo_fetch：')
+    for t in unattempted:
+        print(f'   - [{t.get(\"info_tier\")}] {t[\"task\"][:60]}')
+    raise SystemExit(1)
+if errored:
+    print('⚠ 以下 todo 抓取失败（fetch_status=error），按退避梯重试；本轮带过将由 01 的 R3 续抓：')
+    for t in errored:
+        print(f'   - {t[\"task\"][:60]}')
+print('✓ 00 auto-fetch 全覆盖通过：无 unattempted（每条 todo 都已有效尝试过）')
+"
+```
+
+如果非 0 退出（有 `unattempted`），**回 Step 6.5b 把它们逐条跑完阶梯 / 盖 `empty` / 盖 `error`**，再回来跑 Step 6.5e。**`unattempted` 清零是进 Step 7 的前置条件。**
+
+---
+
 ## Step 7：告知用户
 
 输出：

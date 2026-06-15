@@ -189,6 +189,24 @@ holdings:
   as_of_regime: v2
   provisional: true
   source: self_registered
+- slug: us-eli-lilly
+  display_name: 礼来 (LLY)
+  duration: long
+  rate_beta: high
+  liquidity_beta: mid
+  usd_exposure: mid
+  exposure_score: mid-high
+  regime_favor:
+  - 防御性医疗需求(GLP-1结构性放量与经济周期弱相关)
+  - franchise定价权抗通胀
+  regime_hurt:
+  - higher-for-longer压长久期成长股估值倍数
+  - risk-on脆弱:任何readout/指引miss放大回撤
+  - 强美元拖累~40%海外营收折算
+  plain: 长久期高估值成长股:10Y实际利率2.2%高位是估值倍数逆风,但医疗需求防御性+GLP-1结构性放量部分对冲;命门在增速换挡而非宏观
+  as_of_regime: v2
+  source: self_registered
+  provisional: true
 categorical_tail:
 - name: 中美地缘/关税
   state: 平静

@@ -1,0 +1,517 @@
+slug: cn-commercial-aerospace
+variant: qwen3.7-max
+updated: '2026-06-15T06:28:36.753508+00:00'
+materials:
+- id: mat-680846
+  filename: 2026-06-13_机构-商业航天产业正进入新一轮高速发展期.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.107858+00:00'
+  processed: false
+  notes: query='中国商业航天 2024 年市场规模 增速'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国商业航天 2024 年市场规模 增速
+    url: https://www.stcn.com/article/detail/3555016.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.106959+00:00'
+    stale_at: '2026-07-13T00:54:20.106959+00:00'
+    expire_at: '2026-09-11T00:54:20.106959+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d72dd1
+  filename: 2026-06-13_专家观点-把握商业航天黄金机遇期--国家发展和改革委员会.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.110634+00:00'
+  processed: false
+  notes: query='中国商业航天 2024 年市场规模 增速'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国商业航天 2024 年市场规模 增速
+    url: https://www.ndrc.gov.cn/wsdwhfz/202508/t20250819_1399892.html
+    domain: ndrc.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.109743+00:00'
+    stale_at: '2026-07-13T00:54:20.109743+00:00'
+    expire_at: '2026-09-11T00:54:20.109743+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6dffea
+  filename: 2026-06-13_商业航天25年展望-星座加速部署-关注火箭首飞---新浪财经.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.116402+00:00'
+  processed: false
+  notes: query='2024 2025 中国商业火箭发射次数 成功率'
+  mineru_state: not_needed
+  addresses: &id001
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 2024 2025 中国商业火箭发射次数 成功率
+    url: https://finance.sina.com.cn/stock/relnews/cn/2025-01-11/doc-ineeqwqx4413673.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.115058+00:00'
+    stale_at: '2026-07-13T00:54:20.115058+00:00'
+    expire_at: '2026-09-11T00:54:20.115058+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-44902d
+  filename: 2026-06-13_朱雀三号可重复运载火箭首飞-入轨成功-一级回收失利.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.122484+00:00'
+  processed: true
+  notes: query='蓝箭朱雀三号 可复用 2025 首飞进度'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 朱雀三号 首飞 入轨 技术验证 蓝箭航天 2025
+    url: https://stcn.com/article/detail/3523300.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:57:40.010308+00:00'
+    stale_at: '2026-07-13T00:57:40.010308+00:00'
+    expire_at: '2026-09-11T00:57:40.010308+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 蓝箭朱雀三号 可复用 2025 首飞进度
+- id: mat-074806
+  filename: 2026-06-13_朱雀三号重复使用运载火箭发射入轨---国家航天局.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.127275+00:00'
+  processed: true
+  notes: query='蓝箭朱雀三号 可复用 2025 首飞进度'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 朱雀三号 首飞 入轨 技术验证 蓝箭航天 2025
+    url: https://www.cnsa.gov.cn/n6758823/n6758838/c10720622/content.html
+    domain: cnsa.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:57:40.027617+00:00'
+    stale_at: '2026-07-13T00:57:40.027617+00:00'
+    expire_at: '2026-09-11T00:57:40.027617+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 蓝箭朱雀三号 可复用 2025 首飞进度
+- id: mat-4380ad
+  filename: 2026-06-13_3月航天大爆发-国内外火箭回收预告2026年3月真的是航天迷的狂欢月-rocket-国内外火箭密集发.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.134955+00:00'
+  processed: false
+  notes: query='天兵科技 天龙三号 深蓝航天 星云一号 回收试验'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 天兵科技 天龙三号 深蓝航天 星云一号 回收试验
+    url: https://xueqiu.com/9565107424/377651715
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.132704+00:00'
+    stale_at: '2026-07-13T00:54:20.132704+00:00'
+    expire_at: '2026-09-11T00:54:20.132704+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-34935d
+  filename: 2026-06-13_商业航天2026年迎-大年-多款新型火箭待首飞-发射工位快速扩容.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.141305+00:00'
+  processed: false
+  notes: query='天兵科技 天龙三号 深蓝航天 星云一号 回收试验'
+  mineru_state: not_needed
+  addresses: *id001
+  confidence: 0.9
+  search_meta:
+    query: 天兵科技 天龙三号 深蓝航天 星云一号 回收试验
+    url: https://www.cls.cn/detail/2247238
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.138868+00:00'
+    stale_at: '2026-07-13T00:54:20.138868+00:00'
+    expire_at: '2026-09-11T00:54:20.138868+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-aa77ca
+  filename: 2026-06-13_中国版-星链-即将起航-商业航天将迎万亿级别市场.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.151222+00:00'
+  processed: false
+  notes: query='GW星座 G60星链 2024 2025 发射部署进度'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: GW星座 G60星链 2024 2025 发射部署进度
+    url: https://www.cls.cn/detail/1746544
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.148285+00:00'
+    stale_at: '2026-07-13T00:54:20.148285+00:00'
+    expire_at: '2026-09-11T00:54:20.148285+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d41bd0
+  filename: 2026-06-13_目标星辰大海-商业航天ipo抢滩正酣.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.162453+00:00'
+  processed: false
+  notes: query='中国商业航天 一级市场 融资 估值 2024 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国商业航天 一级市场 融资 估值 2024 2025
+    url: https://stcn.com/article/detail/2474109.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.159350+00:00'
+    stale_at: '2026-07-13T00:54:20.159350+00:00'
+    expire_at: '2026-09-11T00:54:20.159350+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d2a65d
+  filename: 2026-06-13_spacex估值强刺激-商业航天热力四射.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.175747+00:00'
+  processed: false
+  notes: query='商业航天 A股 估值 PE PS 2025'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: 商业航天 A股 估值 PE PS 2025
+    url: https://www.stcn.com/article/detail/3530736.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.172290+00:00'
+    stale_at: '2026-07-13T00:54:20.172290+00:00'
+    expire_at: '2026-09-11T00:54:20.172290+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ff411f
+  filename: 2026-06-13_推动商业航天高质量发展行动---深圳市政府数据开放平台.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.189409+00:00'
+  processed: false
+  notes: query='商业航天政策 2024 2025 补贴 发射许可'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 商业航天政策 2024 2025 补贴 发射许可
+    url: https://opendata.sz.gov.cn/article/article/toArticleDetails/1845744600525344768
+    domain: opendata.sz.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.185220+00:00'
+    stale_at: '2026-07-13T00:54:20.185220+00:00'
+    expire_at: '2026-09-11T00:54:20.185220+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4f2d1a
+  filename: 2026-06-13_问-我国对商业航天的政策支持有哪些关键举措-答---雪球.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.206454+00:00'
+  processed: false
+  notes: query='商业航天政策 2024 2025 补贴 发射许可'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 商业航天政策 2024 2025 补贴 发射许可
+    url: https://xueqiu.com/1334287437/366270045
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.199253+00:00'
+    stale_at: '2026-07-13T00:54:20.199253+00:00'
+    expire_at: '2026-09-11T00:54:20.199253+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3fcfc7
+  filename: 2026-06-13_广东省人民政府办公厅关于印发-广东省推动商业航天高质量发展.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.224556+00:00'
+  processed: false
+  notes: query='商业航天政策 2024 2025 补贴 发射许可'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 商业航天政策 2024 2025 补贴 发射许可
+    url: http://www.cnts.gov.cn/tssrmzf/jdhy/sdszc/content/post_3406143.html
+    domain: cnts.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.218636+00:00'
+    stale_at: '2026-07-13T00:54:20.218636+00:00'
+    expire_at: '2026-09-11T00:54:20.218636+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-008fbb
+  filename: 2026-06-13_液氧甲烷火箭发展概览.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.246263+00:00'
+  processed: false
+  notes: query='液氧甲烷火箭 vs 液氧煤油 成本对比'
+  mineru_state: not_needed
+  addresses: &id002
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 液氧甲烷火箭 vs 液氧煤油 成本对比
+    url: https://www.cnsa.gov.cn/n6758968/n6758973/c10070202/content.html
+    domain: cnsa.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.240965+00:00'
+    stale_at: '2026-07-13T00:54:20.240965+00:00'
+    expire_at: '2026-09-11T00:54:20.240965+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-968ec5
+  filename: 2026-06-13_破晓时刻-液氧甲烷火箭全球首次成功发射---泉州市人民政府.md
+  source_type: web-search
+  added: '2026-06-13T00:54:20.260805+00:00'
+  processed: false
+  notes: query='液氧甲烷火箭 vs 液氧煤油 成本对比'
+  mineru_state: not_needed
+  addresses: *id002
+  confidence: 0.9
+  search_meta:
+    query: 液氧甲烷火箭 vs 液氧煤油 成本对比
+    url: https://www.quanzhou.gov.cn/zfb/xxgk/zfxxgkzl/ztzl/kpzl/kxts/202307/t20230712_2903529.htm
+    domain: quanzhou.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:54:20.255381+00:00'
+    stale_at: '2026-07-13T00:54:20.255381+00:00'
+    expire_at: '2026-09-11T00:54:20.255381+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-04ee9f
+  filename: 2026-06-13_朱雀三号首飞试验任务第一阶段完成.md
+  source_type: web-search
+  added: '2026-06-13T00:57:39.993378+00:00'
+  processed: true
+  notes: query='朱雀三号 首飞 入轨 技术验证 蓝箭航天 2025'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 朱雀三号 首飞 入轨 技术验证 蓝箭航天 2025
+    url: https://www.ncsti.gov.cn/kjdt/scyq/bjjjjskfq/jkdt/202510/t20251022_222786.html
+    domain: ncsti.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:57:39.987645+00:00'
+    stale_at: '2026-07-13T00:57:39.987645+00:00'
+    expire_at: '2026-09-11T00:57:39.987645+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ff52a5
+  filename: 2026-06-13_机构密集调研商业航天概念股-龙头11天7板-11月接待量居前热门股名单来了.md
+  source_type: web-search
+  added: '2026-06-13T00:57:40.048646+00:00'
+  processed: true
+  notes: query='商业航天 深度研报 2025 产业链 中信 中金 中泰'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: 商业航天 深度研报 2025 产业链 中信 中金 中泰
+    url: https://www.cls.cn/detail/2214838
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:57:40.042443+00:00'
+    stale_at: '2026-07-13T00:57:40.042443+00:00'
+    expire_at: '2026-09-11T00:57:40.042443+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-83b5c1
+  filename: 2026-06-13_中信证券-商业航天的投资主线地位即将得到确认.md
+  source_type: web-search
+  added: '2026-06-13T00:57:40.076085+00:00'
+  processed: true
+  notes: query='商业航天 深度研报 2025 产业链 中信 中金 中泰'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: 商业航天 深度研报 2025 产业链 中信 中金 中泰
+    url: https://www.stcn.com/article/detail/3550406.html?u_atoken=8d5af2108eda801ab239a653a1d8fb16&u_asig=ffbfd
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:57:40.069716+00:00'
+    stale_at: '2026-07-13T00:57:40.069716+00:00'
+    expire_at: '2026-09-11T00:57:40.069716+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b48c2b
+  filename: 2026-06-13_关于印发-国家航天局推进商业航天高质量安全发展行动计划-2025.md
+  source_type: web-search
+  added: '2026-06-13T00:57:40.098947+00:00'
+  processed: true
+  notes: query='推进商业航天高质量安全发展行动计划 2025-2027 22条 全文'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 推进商业航天高质量安全发展行动计划 2025-2027 22条 全文
+    url: https://www.cnsa.gov.cn/n6758823/n6758839/c10719382/content.html
+    domain: cnsa.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:57:40.091977+00:00'
+    stale_at: '2026-07-13T00:57:40.091977+00:00'
+    expire_at: '2026-09-11T00:57:40.091977+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d5d212
+  filename: 2026-06-13_国家航天局印发商业航天三年行动计划-业内看好行业政策窗口期.md
+  source_type: web-search
+  added: '2026-06-13T00:57:40.122302+00:00'
+  processed: true
+  notes: query='推进商业航天高质量安全发展行动计划 2025-2027 22条 全文'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 推进商业航天高质量安全发展行动计划 2025-2027 22条 全文
+    url: https://stcn.com/article/detail/3512602.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:57:40.114895+00:00'
+    stale_at: '2026-07-13T00:57:40.114895+00:00'
+    expire_at: '2026-09-11T00:57:40.114895+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a6525b
+  filename: 2026-06-13_文字解读-青岛市推动商业航天高质量发展行动计划-2026-2027年-政策解读-青岛政务网.md
+  source_type: web-search
+  added: '2026-06-13T00:57:40.146435+00:00'
+  processed: true
+  notes: query='推进商业航天高质量安全发展行动计划 2025-2027 22条 全文'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 推进商业航天高质量安全发展行动计划 2025-2027 22条 全文
+    url: http://www.qingdao.gov.cn/zwgk/xxgk/bgt/gkml/zcjd/202604/t20260420_10568404.shtml
+    domain: qingdao.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-13T00:57:40.138998+00:00'
+    stale_at: '2026-07-13T00:57:40.138998+00:00'
+    expire_at: '2026-09-11T00:57:40.138998+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f33f66
+  filename: zhuque3_first_flight_deep_dive.md
+  source_type: industry-analysis
+  added: '2026-06-13T00:58:35.297039+00:00'
+  processed: true
+  notes: 界面新闻深度：朱雀三号首飞入轨成功+回收失利+技术参数+成本目标+竞争格局
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - migration-path-evidence
+  - value-chain-profit-pool
+- id: mat-b7ddcb
+  filename: 2026_rocket_first_flights.md
+  source_type: industry-analysis
+  added: '2026-06-13T01:01:52.163725+00:00'
+  processed: true
+  notes: 2026H1 至少5枚民营液体火箭首飞全景：力箭二号/天龙三号/星云一号/智神星一号/引力二号 + 下半年双曲线三号/元行者一号 + 朱雀三号遥二回收试验
+    + IPO进度
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - value-chain-profit-pool
+  - migration-path-evidence
+- id: mat-87d082
+  filename: constellation_deployment_progress.md
+  source_type: industry-analysis
+  added: '2026-06-13T01:01:52.190971+00:00'
+  processed: true
+  notes: GW+千帆截至2026-06在轨进度：千帆200颗/GW136+颗；2028目标7600颗；新增ITU 20.3万颗申报；运力瓶颈"星多箭少"
+  mineru_state: not_needed
+  addresses:
+  - K3
+  rings:
+  - arena-scoring-inputs
+  - value-chain-profit-pool
+- id: mat-f11ab9
+  filename: spacex_status_and_valuation.md
+  source_type: industry-analysis
+  added: '2026-06-13T01:01:52.218344+00:00'
+  processed: true
+  notes: SpaceX IPO(Project Apex $1.75-2T)/2025年167次发射/Starlink 10627颗在轨/成本$2000kg→Starship
+    $50-200/kg
+  mineru_state: not_needed
+  addresses:
+  - K5
+  rings:
+  - leader-valuation-anchor
+  - migration-path-evidence
+- id: mat-529ab5
+  filename: a_share_valuations.md
+  source_type: industry-analysis
+  added: '2026-06-13T01:01:52.245951+00:00'
+  processed: true
+  notes: 航天宏图PE亏损/PS 11.8x目标85亿；中科星图PE 168x历史98分位；可比估值表（均值PE26E 56x）
+  mineru_state: not_needed
+  addresses:
+  - K4
+  rings:
+  - leader-valuation-anchor
+  - industry-financial-arc
+- id: mat-2e8c9e
+  filename: landspace_ipo_prospectus.md
+  source_type: financial-report
+  added: '2026-06-13T01:10:44.720920+00:00'
+  processed: true
+  notes: 蓝箭航天科创板招股说明书(申报稿)全文：2022-2025H1财务+估值200亿胡润+募资用途+第五套标准
+  mineru_state: not_needed
+  addresses:
+  - K4
+  rings:
+  - leader-valuation-anchor
+  - industry-financial-arc
+- id: mat-4590a8
+  filename: policy_22_articles_full_text.md
+  source_type: policy
+  added: '2026-06-13T01:10:44.751411+00:00'
+  processed: true
+  notes: 国家航天局22条行动计划全文(2025-11-25)：5大方面22项举措+国家基金+政府采购+航天法立法
+  mineru_state: not_needed
+  addresses:
+  - K3
+- id: mat-509e4f
+  filename: historical_mirror_cn_aerospace.md
+  source_type: industry-analysis
+  added: '2026-06-13T01:10:44.781907+00:00'
+  processed: true
+  notes: 中国航天商业发射历史回顾(1990s)：澳星/亚太二号/长三乙708事故+鑫诺二号+5条镜鉴
+  mineru_state: not_needed
+  rings:
+  - industry-mirror
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - background

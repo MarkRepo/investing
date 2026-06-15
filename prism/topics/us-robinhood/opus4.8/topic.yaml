@@ -111,8 +111,8 @@ outputs_state:
     - mat-ffdbb4
     last_error: null
   08_living_feed:
-    version: 4
-    last_updated: '2026-06-04T22:38:37.543217+00:00'
+    version: 5
+    last_updated: '2026-06-14T08:59:14.025194+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
@@ -139,6 +139,9 @@ user_todos:
   - K1
   source_hint: SEC.gov 规则页 / 卖方法规 note / HOOD 10-K Item 1A
   status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
   covered_by:
   - mat-004a95
   - mat-00ca1d
@@ -154,6 +157,9 @@ user_todos:
   - K4
   source_hint: materials/sec 2026_HOOD_10-Q + 2025_HOOD_10-K item_7_mda + 业绩会
   status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
   covered_by:
   - mat-d0d146
   coverage_note: 已由 web-search mat-d0d146 覆盖
@@ -164,6 +170,9 @@ user_todos:
   - K3
   source_hint: 10-Q item_3 quant_risk + 10-K item_7A + 业绩会 Q&A
   status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
   covered_by:
   - mat-23e58a
   coverage_note: web-search mat-23e58a 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
@@ -175,6 +184,9 @@ user_todos:
   - K4
   source_hint: HOOD 10-Q + COIN 10-Q(已在 materials/sec) + qz/财报
   status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
   covered_by:
   - mat-d0d146
   coverage_note: 已由 web-search mat-d0d146 覆盖
@@ -185,6 +197,9 @@ user_todos:
   - K5
   source_hint: 业绩会 + 10-K item_1 business + IR deck
   status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
   covered_by:
   - mat-2c556e
   coverage_note: web-search mat-2c556e 命中 K# 但无事件锚；half_public 深料需事件锚或同 source_type
@@ -197,6 +212,9 @@ user_todos:
   - K2
   source_hint: market_data + 3-5 份卖方深度(consensus, A合同hard) + 4 套竞品 10-K 已在 materials/sec
   status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
   covered_by:
   - mat-051048
   - mat-0aca1a
@@ -218,6 +236,9 @@ user_todos:
   - K7
   source_hint: WSJ/业绩会 + CFTC + robinhood event contracts 页
   status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
   covered_by:
   - mat-398a4f
   - mat-4df6b7
@@ -232,6 +253,9 @@ user_todos:
   - K2
   source_hint: 10-K + proxy(DEF 14A) + 并购清单(已在 materials web) — A合同 mgmt-capital-alloc(hard)
   status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
   covered_by:
   - mat-051048
   - mat-0aca1a
@@ -247,6 +271,9 @@ user_todos:
   - K6
   source_hint: 历史财报/股价 + 复盘文 — A合同 historical-mirror(hard)
   status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
   covered_by:
   - mat-8e1267
   coverage_note: 已由 web-search mat-8e1267 覆盖
@@ -256,6 +283,9 @@ user_todos:
   addresses: []
   source_hint: ''
   status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 - task: 全部产出完成（00_primer + c_investment_case + 07_decision_kit + 08_living_feed），等待
     05 对抗式评审
   priority: P1
@@ -263,6 +293,9 @@ user_todos:
   addresses: []
   source_hint: ''
   status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: false
   cadence: daily

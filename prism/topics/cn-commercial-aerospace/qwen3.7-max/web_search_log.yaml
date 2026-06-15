@@ -1,0 +1,107 @@
+slug: cn-commercial-aerospace
+variant: qwen3.7-max
+entries:
+- searched_at: '2026-06-13T00:54:20.112136+00:00'
+  query: 中国商业航天 2024 年市场规模 增速
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-13T00:54:20.117884+00:00'
+  query: 2024 2025 中国商业火箭发射次数 成功率
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-13T00:54:20.128859+00:00'
+  query: 蓝箭朱雀三号 可复用 2025 首飞进度
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-13T00:54:20.143936+00:00'
+  query: 天兵科技 天龙三号 深蓝航天 星云一号 回收试验
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-13T00:54:20.154675+00:00'
+  query: GW星座 G60星链 2024 2025 发射部署进度
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-13T00:54:20.166407+00:00'
+  query: 中国商业航天 一级市场 融资 估值 2024 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-13T00:54:20.178885+00:00'
+  query: 商业航天 A股 估值 PE PS 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-13T00:54:20.232202+00:00'
+  query: 商业航天政策 2024 2025 补贴 发射许可
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-13T00:54:20.265779+00:00'
+  query: 液氧甲烷火箭 vs 液氧煤油 成本对比
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-13T00:54:20.272111+00:00'
+  query: SpaceX 星舰 对中国商业航天影响
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-06-13T00:57:40.032742+00:00'
+  query: 朱雀三号 首飞 入轨 技术验证 蓝箭航天 2025
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-13T00:57:40.081949+00:00'
+  query: 商业航天 深度研报 2025 产业链 中信 中金 中泰
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-13T00:57:40.153076+00:00'
+  query: 推进商业航天高质量安全发展行动计划 2025-2027 22条 全文
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered

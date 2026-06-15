@@ -1,0 +1,289 @@
+slug: cn-kweichow-moutai-600519
+display_name: 贵州茅台
+type: company
+created: '2026-06-13T03:06:40.835167+00:00'
+status: active
+stage: 04-synthesize
+canonical: false
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 贵州茅台在本轮白酒下行中能否维持营收正增与价盘稳定，Q1现金流/合同负债背离是否预示压货风险，左侧布局赔率如何
+  depth: deep
+  ticker: SSE_600519
+  market: SSE
+  short_name: 茅台
+  search_terms:
+  - 贵州茅台
+  - 飞天茅台
+  - 批价
+  - 直营
+  - 分红回购
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-13T06:12:30.302297+00:00'
+    status: draft
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-37920a
+    - mat-38500a
+    - mat-4b60fd
+    - mat-54df78
+    - mat-663061
+    - mat-7ee50b
+    - mat-a772e3
+    - mat-af1263
+    - mat-c2ebed
+    - mat-d30216
+    - mat-e11e0f
+    - mat-f50084
+    - mat-f65331
+    - mat-fb879c
+    - mat-fdd514
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-06-13T06:12:30.296228+00:00'
+      warnings:
+      - 缺自检清单节
+      - 未过 critic（set_output_critic_passed 未置位）
+  c_investment_case:
+    version: 1
+    last_updated: '2026-06-13T06:14:42.991055+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-37920a
+    - mat-38500a
+    - mat-4b60fd
+    - mat-54df78
+    - mat-663061
+    - mat-7ee50b
+    - mat-a772e3
+    - mat-af1263
+    - mat-c2ebed
+    - mat-d30216
+    - mat-e11e0f
+    - mat-f50084
+    - mat-f65331
+    - mat-fb879c
+    - mat-fdd514
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-06-13T06:16:45.707950+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-37920a
+    - mat-54df78
+    - mat-663061
+    - mat-7ee50b
+    - mat-a772e3
+    - mat-c2ebed
+    - mat-d30216
+    - mat-e11e0f
+    - mat-f50084
+    - mat-f65331
+    - mat-fdd514
+    last_error: null
+parent_materials: []
+next_actions:
+- 运行 05-critic-review 校验 primer + case 质量
+- 补共识材料：搜索含目标价+DCF的卖方深度报告（consensus环②补强）
+- 监控飞天批价（¥1800验证窗口：2026年7-9月）
+- 可选：运行 06-daily-monitor 设置自动监控
+user_todos:
+- task: 下载茅五泸三家 2025 年报 + 2026Q1 季报（6份）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: cninfo / 巨潮资讯
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - prism/topics/cn-kweichow-moutai-600519/materials/2025_000568_annual_2026-04-28_泸州老窖.PDF
+  - prism/topics/cn-kweichow-moutai-600519/materials/2025_000858_annual_2026-04-30_五粮液.PDF
+  - prism/topics/cn-kweichow-moutai-600519/materials/2025_600519_annual_2026-04-16_贵州茅台.PDF
+  - prism/topics/cn-kweichow-moutai-600519/materials/2026_000568_quarterly_2026-04-28_泸州老窖.PDF
+  - prism/topics/cn-kweichow-moutai-600519/materials/2026_000858_quarterly_2026-04-30_五粮液.PDF
+  - prism/topics/cn-kweichow-moutai-600519/materials/2026_600519_quarterly_2026-04-24_贵州茅台.PDF
+  last_fetch_note: 6份到位
+- task: 飞天茅台 2024-2026 高频批价序列（周频或日频）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 今日酒价/酒仙网/经销商报价平台
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: 3份对比卖方深度报告（中金/中信建投/东吴任选3家，含目标价和DCF）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K5
+  source_hint: 卖方公众号/Wind/同花顺
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: 中国酒业协会×毕马威《2025中国白酒市场中期研究报告》全文
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: KPMG官网/酒业协会
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: PDF已下载+21经济/腾讯摘要
+- task: 消费税改革最新政策草案或财政部/税务总局表态（2025-2026）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 财政部网站/税总公告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: 新董事长陈华背景资料 + 茅台管理层换届全记录
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 公司公告/第一财经/财经杂志
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: i茅台 2023-2025 运营数据（GMV/MAU/客单价/品类占比）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 年报+公司IR/卖方拆解
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 年报i茅台130亿+卖方拆解
+- task: 2013-2014 白酒反腐调整期复盘报告（三公消费禁令→批价→股价）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: Wind行业研究/券商历史复盘
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: 01 prescan+主agent汇编
+- task: 白酒经销商库存调研（草根纪要/经销商访谈 2-3 份）
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: 专家网络/行业圈子
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: 酒业家2026.3一线调研(东方财富号)
+- task: 茅台 2024-2025 分红/回购明细（含特别分红/注销回购时间表）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 公司公告/cninfo
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 年报+中信建投研报已覆盖
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-13T14:30:00+08:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-13T03:13:28.535382+00:00'
+    summary: 命门1=飞天批价¥1800企稳(低); 命门2=2025首亏周期vs结构(中); 命门3=渠道去库存时长(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesize
+    set_at: '2026-06-13T14:30:00+08:00'
+    summary: 4命门：K1批价¥1800(中)、K2营收正增长(中高)、K3消费税(低)、治理连续性(高·v1新增)
+    convergence_status: converging
+thesis:
+  current_version: 1
+  last_updated: '2026-06-13T14:30:00+08:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-13T03:12:17.379002+00:00'
+    summary: 茅台最高质量franchise遇24年首次下行周期；19xPE+批价崩盘+库存危机=市场过度悲观，但批价能否¥1800企稳是命门。强度5.5
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 50%（4/8，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-synthesize
+    set_at: '2026-06-13T14:30:00+08:00'
+    summary: 茅台最强franchise遇首亏周期；19xPE+3.5%股息率提供安全垫，批价¥1770距¥1800一步之遥；建设性看多（6.0/10），等验证后加仓。强度从v0的5.5上调至6.0
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-13T03:13:28.542717+00:00'
+  exited_at: '2026-06-13T03:48:55.343952+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-06-13T03:48:55.343952+00:00'
+  exited_at: '2026-06-13T05:14:34.108767+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K4
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 2
+- stage: 03-extract-findings
+  entered_at: '2026-06-13T05:14:34.108767+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0

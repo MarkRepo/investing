@@ -1,0 +1,182 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-eli-lilly
+variant: opus4.8
+created: 2026-06-12
+thesis_version: 0
+
+# L1/L2 已坍缩为 primer_scope 备注（背景理解层交给 00_primer，primer-first）
+primer_scope: >
+  00_primer 须覆盖：制药/incretin 赛道边界与参与者（LLY/Novo 双寡头 + 第二梯队）、
+  GLP-1/GIP/glucagon 多靶点机制与效力梯队（注射~20% / 口服~12% / 三靶点~28.7%）、
+  LLY 收入结构（GLP-1 占比~65%）与从胰岛素老业务到 GLP-1 的转型曲线、
+  减重药支付/可及性链条（商保 vs Medicare GLP-1 Bridge vs 自费）、
+  GLP-1 之外第二曲线资产（Kisunla/Verzenio/免疫管线）量级、
+  当前估值水位（~31x forward、~$1T 市值）在制药/成长股里的位置、
+  减重药安全性争议（NAION/肌肉流失/停药反弹）现状与未决性、
+  专利悬崖与口服化对长期 franchise 的侵蚀路径。
+
+learning_track:
+  # L3 争议层 → 喂决策链环④（多空分歧、共识可能错在哪）
+  l3_debates:
+    - question: >
+        减重市场会随"口服化 + 仿制 + 竞争"结构性商品化，还是 LLY/Novo 高利润双寡头
+        维持 5-10 年？口服 orforglipron ~12% 效力远低于注射 ~20%——市场是会分层为
+        "低价口服走量 + 高价注射保效"（拖低整体 ASP），还是口服扩 TAM 而注射守高利润？
+      source_hint: 卖方 incretin 单位经济模型 + IQVIA 处方份额序列 + net price 历史；命门1 主战场
+    - question: >
+        ~$1T 市值 / ~31x forward 是否已计入"高增长延续到 2028+"？56% 同比数学上必然回落，
+        若 2027-2028 增速从 40%+ 降到 15-20%，是否触发成长股最痛的"增速换挡杀估值"？
+        市场对"减重 TAM $1000 亿+"的乐观若被支付/可及性现实打折，叙事会松动到什么程度？
+      source_hint: 卖方一致预期 trend + 估值拆分（隐含 CAGR/终值PE）；命门3 收口
+    - question: >
+        $50B+ 美国产能超级周期是放量杠杆还是折旧拖累？为追需求砸的 4 新厂 + 德州 API，
+        一旦口服化/竞争使注射需求或价格回落，新厂折旧会否从"放量杠杆"变"毛利拖累"
+        （制药版"周期顶建厂"）？产能利用率与 performance margin 守得住 50% 吗？
+      source_hint: 年报 capex 明细 + 投产时间表 + 卖方产能/利用率模型；命门2/环②
+    - question: >
+        第二曲线是真接棒还是 LLY = 单一 GLP-1 豪赌？retatrutide/Kisunla/肿瘤免疫管线
+        能否在 GLP-1 增速换挡时提供新增长极？任一非 GLP-1 资产 2027 前做到年销 >$3B 增量？
+        管线 readout 时间/结果是训练知识盲点最大处（薄拆解最弱环）。
+      source_hint: retatrutide P3 时间表 + Kisunla 放量曲线 + 并购管线 readout 日历；命门2
+    - question: >
+        政策/安全性尾部：Medicare GLP-1 Bridge 2027 到期后转常规覆盖还是收回？IRA 第二批
+        是否纳入更多 LLY 产品长期压利润？NAION/肌肉流失/停药反弹是否升级为 FDA 标签/REMS
+        或触发需求逆转？低概率但高杀伤——美国 TAM 天花板会否被下压？
+      source_hint: CMS 后续规则 + IRA 名单 + FDA 安全行动 + 真实世界停药率；环⑤ signpost
+
+  # L4 狩猎层 → 喂 K#（逐条对齐 thesis Killer Question，找错误定价）
+  l4_hunting:
+    - question: >
+        orforglipron 口服上市后 18-24 月内，Zepbound/Mounjaro 净价(net price)与 incretin
+        市场份额走向如何？若注射净价年降 >15% 或 LLY+Novo 合计份额跌破 80%，则"高利润双寡头"被证伪。
+      addresses: [K1]
+      search_keywords: [GLP-1 净价 趋势, Zepbound net price rebate, incretin 市场份额 IQVIA]
+      source_hint: 季度净价披露 / IQVIA 处方份额 / SSR Health net price 序列（多半付费）
+    - question: >
+        $50B+ 新产能（4 新厂 + 德州 API）的投产时间表与产能利用率？若 2027-2028 出现
+        "产能到位但需求/价格回落"，毛利率/performance margin 从当前高位回撤 >5pct。
+      addresses: [K2]
+      search_keywords: [Lilly 50B capex 投产时间, 礼来 德州 API 产能, performance margin 50%]
+      source_hint: 10-K MD&A capex 明细 + 卖方产能模型 + 新厂 SOP 时间
+    - question: >
+        retatrutide Phase 3 完整读出 + 适应症外延（MASH/OA/CV/HFpEF）能否如期？Kisunla
+        阿尔茨海默放量曲线？任一非 GLP-1 资产 2027 前年销 >$3B 增量？全部延迟则 = 单一 GLP-1 豪赌。
+      addresses: [K3]
+      search_keywords: [retatrutide Phase 3 读出 时间, Kisunla 销售 放量, Lilly 管线 readout 2026 2027]
+      source_hint: ClinicalTrials.gov + Lilly IR + 卖方管线跟踪
+    - question: >
+        2026-2027 营收/EPS 兑现 vs 指引（$80-83B / EPS $35.5-37），卖方一致预期修正方向？
+        若连续两季 miss 指引或增速从 40%+ 骤降到 <15%，~31x forward 的成长定价被证伪。
+      addresses: [K4]
+      search_keywords: [Lilly 2026 指引 EPS, LLY 一致预期 修正, 礼来 forward PE 估值]
+      source_hint: 季度业绩 vs 指引 + 卖方一致预期 trend + performance margin 守稳
+    - question: >
+        Medicare GLP-1 Bridge 2027 到期后是否转常规覆盖/收回？IRA 第二批是否纳入更多 LLY 产品？
+        NAION/肌肉流失等安全信号是否触发 FDA 标签/REMS 或需求逆转？任一向坏 = 美国 TAM 天花板下压。
+      addresses: [K5]
+      search_keywords: [Medicare GLP-1 Bridge 2027, IRA 谈判 第二批 名单, GLP-1 NAION FDA 安全性]
+      source_hint: CMS 规则 + KFF 政策评论 + FDA 标签 + NANOS/AAO 共识
+
+material_priority:
+  # 注：00 eager-fetch 已抓 71 份料、K1-K5 全覆盖（addresses）。以下 tier 标注已有 covered_by，
+  # 不重复建 todo；A 合同三项真·欠供（mgmt-capital-alloc/consensus/historical-mirror）均已有料。
+  tier1:
+    - title: LLY 2025 10-K + 2026 Q1 10-Q + 8-K（财务质量/capex/资本配置）
+      type: annual-report
+      ticker: LLY
+      source: SEC EDGAR / investor.lilly.com
+      why: 环① financial-arc + mgmt-capital-alloc + 环②估值地基；K2/K4 核心
+      addresses: [K2, K4]
+      rings: [financial-arc, mgmt-capital-alloc, biz-moat-unit-econ]
+      covered_by: [mat-059241, mat-1ac535, mat-1c0c11, mat-2e9cd7, mat-aebdac, mat-b06701]
+      status: done
+    - title: 卖方一致预期/估值锚（PT/营收EPS模型/隐含增长）
+      type: sell-side-note
+      source: Yahoo/MarketScreener/Investing（exa 取）
+      why: A 合同 consensus（hard）→ 环②隐含路径反推；K4/K1
+      addresses: [K4, K1]
+      rings: [consensus, valuation-anchor]
+      covered_by: [mat-4c9c90, mat-4d2bd0, mat-a3e10f]
+      status: done
+    - title: orforglipron + retatrutide Phase 3 完整数据集（NEJM + IR deck）
+      type: industry-research
+      source: NEJM / lilly.gcs-web.com
+      why: 命门1+2 地基；K1/K3 效力/安全/亚组
+      addresses: [K1, K3]
+      rings: [biz-moat-unit-econ]
+      covered_by: [mat-11d170, mat-484fca, mat-629fe7, mat-9eea24, mat-b63ac0, mat-f5ade3]
+      status: done
+  tier2:
+    - title: GLP-1 净价(net price)/rebate 趋势 + incretin 份额序列
+      type: data
+      source: IQVIA/SSR Health/卖方渠道（部分付费）
+      why: 命门1 核心证据；K1 证伪闸门
+      addresses: [K1]
+      rings: [biz-moat-unit-econ]
+      covered_by: [mat-4d5659, mat-685abe]
+      status: done
+      note: 精确 SSR net price 序列仍 hard（付费），留 03/drilldown 深挖
+    - title: tirzepatide COM 专利到期表 + 仿制/biosimilar 路径
+      type: data
+      source: drugpatentwatch/i-mak/Orange Book
+      why: 命门1 长期侵蚀路径；K1
+      addresses: [K1]
+      covered_by: [mat-57f5d9, mat-6eee8f, mat-a4c0f3]
+      status: done
+    - title: 资本配置史 + M&A 记录 + $50B+ capex 明细与投产时间表
+      type: sell-side-note
+      source: 年报 item7 MD&A + IR + 卖方产能模型
+      why: A 合同 mgmt-capital-alloc（hard）+ 命门2；K2
+      addresses: [K2]
+      rings: [mgmt-capital-alloc]
+      covered_by: [mat-048055, mat-1c0c11, mat-4bdb51, mat-d9588d, mat-eeecf3]
+      status: done
+    - title: Medicare GLP-1 Bridge 后续 + IRA 第二批 + 商保覆盖现状
+      type: policy
+      source: CMS/KFF/卖方政策评论
+      why: K5 政策天花板；2027 Bridge 到期路径
+      addresses: [K5]
+      covered_by: [mat-3fc7d5, mat-5a7906, mat-633bc1, mat-bb7b7a, mat-d48fb3]
+      status: done
+  tier3:
+    - title: 历史镜鉴——重磅药峰值后专利悬崖 + 高估值成长股增速换挡杀估值
+      type: industry-research
+      source: AbbVie/Humira + 2026-29 专利悬崖榜
+      why: A 合同 historical-mirror（hard）→ 环⑤；K4/K1
+      addresses: [K4, K1]
+      rings: [historical-mirror]
+      covered_by: [mat-12b379, mat-5c7637, mat-5ee5ff, mat-ef37a7]
+      status: done
+    - title: GLP-1 长期安全性证据（NAION/肌肉流失/停药反弹）综述 + FDA 态度
+      type: industry-research
+      source: NANOS/AAO 共识 + NEJM/Lancet + FDA 标签
+      why: K5 安全性尾部 signpost
+      addresses: [K5]
+      covered_by: [mat-0f8bef, mat-15394f]
+      status: done
+    - title: 第二梯队竞争管线 readout 日历（Viking/Amgen/Roche/Pfizer/中国）
+      type: industry-research
+      source: 公司 IR + clinicaltrials.gov + 卖方竞争跟踪
+      why: K1/K3 竞争格局；环④EV 情景树
+      addresses: [K1, K3]
+      covered_by: [mat-07afed, mat-5c51a8, mat-ed75a6]
+      status: done
+
+key_risks_to_monitor:
+  - orforglipron 上市后 Zepbound/Mounjaro 净价季度走向（K1 商品化早警）
+  - 季度营收/EPS vs 指引 $80-83B / $35.5-37（K4 增速换挡早警）
+  - retatrutide P3 完整读出与 MASH/OA/CV 外延时间表（K3 第二曲线）
+  - $50B capex 新厂 SOP 时间 + performance margin 守 50%（K2 折旧拖累）
+  - Medicare GLP-1 Bridge 2027 到期路径 + IRA 第二批名单 + FDA 安全行动（K5 尾部）
+
+# 历史类比 → 落成 historical-mirror 收料 todo（O3 接线，喂决策链环⑤）
+analogies_to_study:
+  - case: AbbVie / Humira 专利悬崖（美国 2023 生物类似药侵蚀）
+    parallel: 单一重磅药占公司收入大头、峰值后被生物类似药快速侵蚀——映射 LLY GLP-1 集中度风险
+    limitation: Humira 是单分子单适应症；LLY 是多分子（注射+口服+三靶点）多适应症组合，护城河更宽
+  - case: Gilead / HCV（Sovaldi/Harvoni 治愈型药物销售断崖）
+    parallel: 极速达峰后极速衰退——警示"高增长不等于高耐久"，市场对峰值后曲线的误判
+    limitation: HCV 是治愈型（治好即流失存量），GLP-1 是慢病长期用药、复购属性强，断崖逻辑不直接套用
+  - case: 高估值成长股增速换挡杀估值（如疫情红利股 / 2000 年高 PE 成长股 de-rate）
+    parallel: ~31x forward 对 50% 增速看似便宜，但"便宜"建立在增速延续假设——增速换挡时 PEG 重定价
+    limitation: LLY 有真实在售现金流与第二曲线，非纯叙事估值；de-rate 幅度应小于无盈利成长股

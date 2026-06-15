@@ -1,0 +1,109 @@
+slug: us-eli-lilly
+variant: opus4.8
+topic_type: company
+display_name: "礼来 (Eli Lilly, NYSE: LLY)"
+ticker: US_LLY
+generated: 2026-06-12T00:00:00Z
+data_freshness: 2026-Q1
+
+buy_box:
+  strong_buy_max: 950
+  accumulate_min: 950
+  accumulate_max: 1060
+  hold_min: 1060
+  hold_max: 1250
+  current_price: 1144
+  price_as_of: 2026-06-09
+  current_zone: hold
+
+position_framework:
+  position_tier: 标准
+  sizing_rationale: 商业质量9/10且EV正(+7%)支持标准档；但EV薄、命门1净价数据缺口、当前价无安全边际→不上重仓
+  initial_max_pct: null
+  full_max_pct: 6
+  add_ladder_prices: [900, 980, 1060]
+  max_cluster_pct: 12
+
+valuation_models:
+  - name: reverse_terminal_pe
+    label: 反推终值PE（2028E EPS ~$50）
+    bull_fair_value: [1400, 1400]
+    base_fair_value: [1100, 1100]
+    bear_fair_value: [900, 900]
+  - name: fwd_pe_2027
+    label: 2027E forward PE 锚（EPS $44.49）
+    bull_fair_value: [1335, 1335]
+    base_fair_value: [1157, 1157]
+    bear_fair_value: [979, 979]
+  - name: simplified_dcf
+    label: 简化DCF（10Y实际利率2.2%起,WACC~8.5%）
+    bull_fair_value: [1450, 1450]
+    base_fair_value: [1150, 1150]
+    bear_fair_value: [960, 960]
+
+kill_criteria:
+  - id: net_price_commoditization
+    description: 连续两季注射tirzepatide净价年降>15%,或LLY+Novo合计incretin份额跌破80%→商品化坐实,thesis降到4/10
+    status: pending
+    check_at: 2026-Q3
+  - id: guidance_miss_margin_retreat
+    description: 连续两季营收/EPS miss指引($82-85B/EPS$35.5-37),或performance margin从47-48%回撤>3pct
+    status: pending
+    check_at: 2026-Q3
+  - id: second_curve_stall
+    description: retatrutide P3完整读出受挫/申报延迟+无任一非GLP-1资产2027前做到>$3B增量→单一franchise豪赌
+    status: pending
+    check_at: 2027-Q2
+  - id: safety_tail
+    description: FDA对incretin类下安全性标签警告/REMS,或真实世界停药率显著恶化
+    status: pending
+    check_at: 2027-Q2
+
+signposts:
+  - date: 2026-Q2
+    event: 2026 Q2 业绩 — 净价趋势 + orforglipron 上市放量斜率
+    bull_signal: 净价跌幅企稳在−10%以内、orforglipron放量且为增量(非蚕食Zepbound)
+    bear_signal: 净价继续趋陡(>−15%)、orforglipron低价分流注射致单位经济摊薄
+    triggered: null
+  - date: 2026-12
+    event: retatrutide 完整 P3 读出 + 监管申报；Medicare GLP-1 Bridge uptake
+    bull_signal: retatrutide读出超预期、Bridge uptake强
+    bear_signal: 读出/申报延迟、Bridge uptake弱
+    triggered: null
+  - date: 2027-12
+    event: IRA第二批名单 + GLP-1 Bridge到期路径(转常规覆盖 vs 收回)
+    bull_signal: Bridge转常规Medicare覆盖、IRA未超预期纳入
+    bear_signal: Bridge收回、IRA纳入更多LLY重磅加速侵蚀
+    triggered: null
+
+cluster_tags: [glp1-obesity, big-pharma, us-growth-equity]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    note: 减重药分产品净价/单位经济性公司不披露,仅合并GM;命门1最硬证据缺失
+  - ring: 4
+    kind: data-missing
+    note: 净价(net price)绝对美元序列hard/付费,仅有量价拆分%,商品化速度只能定性
+  - ring: 5
+    kind: data-missing
+    note: 安全性NAION/肌肉流失/停药反弹缺流行病学量化,仅bear定性框架
+  - ring: 2
+    kind: training-estimate
+    note: 终值PE/DCF的WACC与终值倍数为训练知识估算,$50B capex逐厂投产时间表缺
+
+market_implied:
+  metric: implied_2028e_net_margin
+  value: 41
+
+my_vs_market_delta:
+  metric: implied_2028e_net_margin
+  my_value: 38
+  delta: "-3pct"
+  direction: short

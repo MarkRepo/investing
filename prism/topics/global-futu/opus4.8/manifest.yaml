@@ -1,6 +1,6 @@
 slug: global-futu
 variant: opus4.8
-updated: '2026-06-05T15:47:06.729976+00:00'
+updated: '2026-06-14T09:15:56.080556+00:00'
 materials:
 - id: mat-5ab026
   filename: 2026_IBKR_10-Q_2026-05-07.htm
@@ -603,4 +603,79 @@ materials:
     searched_at: '2026-06-05T15:47:06.647077+00:00'
     stale_at: '2026-07-05T15:47:06.647077+00:00'
     expire_at: '2026-09-03T15:47:06.647077+00:00'
+    triggered_by: 05-critic
+- id: mat-631393
+  filename: 2026-06-14_futu-targets-800-000-net-new-funding-accounts-in-2.md
+  source_type: web-search
+  added: '2026-06-14T08:58:46.468604+00:00'
+  processed: false
+  notes: query='[daily-monitor] signpost:2026 Q2 业绩会披露大陆口径 + 罚没是否计提｜bear:大陆利润占比 >25%、罚没追溯扩大'
+  mineru_state: not_needed
+  addresses:
+  - kill:任一财报/披露证实大陆收入或税前利润占比 >25% (命门1 反向)。一手 SEC EX-99.1 复核:报表仅"港 vs 其他"未拆大陆;此前据二手电话会"大陆是收入重要部分"上调的偏空口径,经查不在一手
+    press release(系电话会转述),降回未确认。硬阈值未触发,黑箱未缩小
+  - kill:非大陆付费户净增 < 50 万/年 或 海外持续亏损获客 (引擎独立性证伪)
+  - signpost:2026 Q2 业绩会披露大陆口径 + 罚没是否计提｜bear:大陆利润占比 >25%、罚没追溯扩大
+  confidence: 0.9
+  search_meta:
+    query: '[daily-monitor] kill:任一财报/披露证实大陆收入或税前利润占比 >25% (命门1 反向)。一手 SEC EX-99.1
+      复核:报表仅"港 vs 其他"未拆大陆;此前据二手电话会"大陆是收入重要部分"上调的偏空口径,经查不在一手 press release(系电话会转述),降回未确认。硬阈值未触发,黑箱未缩小'
+    url: https://seekingalpha.com/news/4598196-futu-targets-800000-net-new-funding-accounts-in-2026-while-expecting-malaysia-to-reach
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-06-14T08:59:10.597192+00:00'
+    stale_at: '2026-07-14T08:59:10.597192+00:00'
+    expire_at: '2026-09-12T08:59:10.597192+00:00'
+    triggered_by: 06-daily-monitor
+    prev_queries:
+    - '[daily-monitor] kill:非大陆付费户净增 < 50 万/年 或 海外持续亏损获客 (引擎独立性证伪)'
+    - '[daily-monitor] signpost:2026 Q2 业绩会披露大陆口径 + 罚没是否计提｜bear:大陆利润占比 >25%、罚没追溯扩大'
+- id: mat-6eae54
+  filename: 2026-06-14_futu-announces-first-quarter-2026-unaudited-financ.md
+  source_type: web-search
+  added: '2026-06-14T08:58:46.512660+00:00'
+  processed: false
+  notes: query='[daily-monitor] signpost:2026 Q2 业绩会披露大陆口径 + 罚没是否计提｜bear:大陆利润占比 >25%、罚没追溯扩大'
+  mineru_state: not_needed
+  addresses:
+  - kill:非大陆付费户净增 < 50 万/年 或 海外持续亏损获客 (引擎独立性证伪)
+  - signpost:2026 Q2 业绩会披露大陆口径 + 罚没是否计提｜bear:大陆利润占比 >25%、罚没追溯扩大
+  - signpost:2026 净利 YoY 轨迹 vs 峰值 + NII(利息净收入)指引方向(盈利压缩 bear 关键 signpost)｜bear:净利
+    YoY 转负 或 NII 指引下修——"10x 便宜"立论作废(无需命门1 输)
+  confidence: 0.9
+  search_meta:
+    query: '[daily-monitor] kill:非大陆付费户净增 < 50 万/年 或 海外持续亏损获客 (引擎独立性证伪)'
+    url: https://www.sec.gov/Archives/edgar/data/1754581/000110465926067159/tm2615605d1_ex99-1.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-06-14T08:59:03.940153+00:00'
+    stale_at: '2026-07-14T08:59:03.940153+00:00'
+    expire_at: '2026-09-12T08:59:03.940153+00:00'
+    triggered_by: 06-daily-monitor
+    prev_queries:
+    - '[daily-monitor] signpost:2026 Q2 业绩会披露大陆口径 + 罚没是否计提｜bear:大陆利润占比 >25%、罚没追溯扩大'
+    - '[daily-monitor] signpost:2026 净利 YoY 轨迹 vs 峰值 + NII(利息净收入)指引方向(盈利压缩 bear 关键
+      signpost)｜bear:净利 YoY 转负 或 NII 指引下修——"10x 便宜"立论作废(无需命门1 输)'
+- id: mat-4d2cb9
+  filename: 2026-06-14_futu-announces-plan-for-app-removal-in-mainland-ch.md
+  source_type: web-search
+  added: '2026-06-14T09:15:56.062203+00:00'
+  processed: true
+  notes: query='FUTU 2026-06 卖方评级下修(GS Neutral $102/JPM Neutral $87/MS OW $225) +
+    JPM 大陆敞口测算(营收-20%/盈利-30%) + 大陆App下架'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: FUTU 2026-06 卖方评级下修(GS Neutral $102/JPM Neutral $87/MS OW $225) + JPM 大陆敞口测算(营收-20%/盈利-30%)
+      + 大陆App下架
+    url: https://ir.futuholdings.com/news-releases/news-release-details/futu-announces-plan-app-removal-mainland-china-app-stores/
+    domain: ir.futuholdings.com
+    domain_tier: whitelist
+    searched_at: '2026-06-14T09:15:56.050222+00:00'
+    stale_at: '2026-07-14T09:15:56.050222+00:00'
+    expire_at: '2026-09-12T09:15:56.050222+00:00'
     triggered_by: 05-critic

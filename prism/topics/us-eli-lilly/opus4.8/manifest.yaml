@@ -1,0 +1,1281 @@
+slug: us-eli-lilly
+variant: opus4.8
+updated: '2026-06-12T07:02:14.308724+00:00'
+materials:
+- id: mat-11d170
+  filename: 2026-06-12_lilly-s-oral-glp-1-orforglipron-delivers-weight-lo.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.363228+00:00'
+  processed: false
+  notes: query='Eli Lilly orforglipron Phase 3 ATTAIN ACHIEVE results weight loss
+    data 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly orforglipron Phase 3 ATTAIN ACHIEVE results weight loss data
+      2025 2026
+    url: https://www.prnewswire.com/news-releases/lillys-oral-glp-1--orforglipron-delivers-weight-loss-of-up-to-an-average-of-27-3-lbs-in-first-of-two-pivotal-phase-3-trials-in-adults-with-obesity-302523649.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:16:27.362360+00:00'
+    stale_at: '2026-07-12T06:16:27.362360+00:00'
+    expire_at: '2026-09-10T06:16:27.362360+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f5ade3
+  filename: 2026-06-12_lilly-s-oral-glp-1-orforglipron-demonstrated-meani.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.366578+00:00'
+  processed: false
+  notes: query='Eli Lilly orforglipron Phase 3 ATTAIN ACHIEVE results weight loss
+    data 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly orforglipron Phase 3 ATTAIN ACHIEVE results weight loss data
+      2025 2026
+    url: https://lilly.gcs-web.com/news-releases/news-release-details/lillys-oral-glp-1-orforglipron-demonstrated-meaningful-weight
+    domain: lilly.gcs-web.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.365528+00:00'
+    stale_at: '2026-07-12T06:16:27.365528+00:00'
+    expire_at: '2026-09-10T06:16:27.365528+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-629fe7
+  filename: 2026-06-12_attain-1-orforglipron-achieves-up-to-12-weight-los.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.370425+00:00'
+  processed: false
+  notes: query='Eli Lilly orforglipron Phase 3 ATTAIN ACHIEVE results weight loss
+    data 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly orforglipron Phase 3 ATTAIN ACHIEVE results weight loss data
+      2025 2026
+    url: https://www.hcplive.com/view/attain-1-orforglipron-achieves-up-to-12-weight-loss-in-phase-3-obesity-trial
+    domain: hcplive.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.369091+00:00'
+    stale_at: '2026-07-12T06:16:27.369091+00:00'
+    expire_at: '2026-09-10T06:16:27.369091+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2f80fb
+  filename: 2026-06-12_eli-lilly-and-co-forward-pe-ratio-30-91-gurufocus.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.376016+00:00'
+  processed: false
+  notes: query='Eli Lilly LLY stock price market cap forward PE valuation 2026' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly LLY stock price market cap forward PE valuation 2026
+    url: https://www.gurufocus.com/term/forward-pe-ratio/LLY
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.373979+00:00'
+    stale_at: '2026-07-12T06:16:27.373979+00:00'
+    expire_at: '2026-09-10T06:16:27.373979+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f69cfe
+  filename: 2026-06-12_eli-lilly-pe-ratio-2012-2026-lly-macrotrends.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.381580+00:00'
+  processed: false
+  notes: query='Eli Lilly LLY stock price market cap forward PE valuation 2026' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly LLY stock price market cap forward PE valuation 2026
+    url: https://www.macrotrends.net/stocks/charts/LLY/eli-lilly/pe-ratio
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.379637+00:00'
+    stale_at: '2026-07-12T06:16:27.379637+00:00'
+    expire_at: '2026-09-10T06:16:27.379637+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f804e6
+  filename: 2026-06-12_eli-lilly-lly-earnings-q1-2026.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.388663+00:00'
+  processed: false
+  notes: query='Eli Lilly Q1 2026 earnings revenue Mounjaro Zepbound sales results'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly Q1 2026 earnings revenue Mounjaro Zepbound sales results
+    url: https://www.cnbc.com/2026/04/30/eli-lilly-lly-earnings-q1-2026.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:16:27.386038+00:00'
+    stale_at: '2026-07-12T06:16:27.386038+00:00'
+    expire_at: '2026-09-10T06:16:27.386038+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-499ce0
+  filename: 2026-06-12_eli-lilly-lifts-2026-revenue-guidance-as-q1-marks-.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.397015+00:00'
+  processed: false
+  notes: query='Eli Lilly Q1 2026 earnings revenue Mounjaro Zepbound sales results'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly Q1 2026 earnings revenue Mounjaro Zepbound sales results
+    url: https://www.pharmaceutical-technology.com/news/eli-lilly-lifts-2026-revenue-guidance-as-q1-marks-dominant-opening
+    domain: pharmaceutical-technology.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.394316+00:00'
+    stale_at: '2026-07-12T06:16:27.394316+00:00'
+    expire_at: '2026-09-10T06:16:27.394316+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-08e1e4
+  filename: 2026-06-12_eli-lilly-reports-19-8b-q1-revenue-as-glp-1-sales-.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.405895+00:00'
+  processed: false
+  notes: query='Eli Lilly Q1 2026 earnings revenue Mounjaro Zepbound sales results'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly Q1 2026 earnings revenue Mounjaro Zepbound sales results
+    url: https://www.tikr.com/blog/eli-lilly-reports-19-8b-q1-revenue-as-glp-1-sales-surge-56-year-over-year
+    domain: tikr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.402827+00:00'
+    stale_at: '2026-07-12T06:16:27.402827+00:00'
+    expire_at: '2026-09-10T06:16:27.402827+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cdd684
+  filename: 2026-06-12_pdf-q4-2025-lilly-presentation.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.415538+00:00'
+  processed: false
+  notes: query='Eli Lilly 2025 full year revenue results tirzepatide annual sales'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly 2025 full year revenue results tirzepatide annual sales
+    url: https://investor.lilly.com/static-files/45a92498-43d0-4e2d-a4e6-a9131841cfd6
+    domain: investor.lilly.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:16:27.412072+00:00'
+    stale_at: '2026-07-12T06:16:27.412072+00:00'
+    expire_at: '2026-09-10T06:16:27.412072+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d2634b
+  filename: 2026-06-12_lilly-hikes-revenue-forecasts-on-booming-obesity-d.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.426049+00:00'
+  processed: false
+  notes: query='Eli Lilly 2025 full year revenue results tirzepatide annual sales'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly 2025 full year revenue results tirzepatide annual sales
+    url: https://www.biopharmadive.com/news/lilly-third-quarter-2025-earnings-zepbound-mounjaro-obesity-sales/804232
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:16:27.421766+00:00'
+    stale_at: '2026-07-12T06:16:27.421766+00:00'
+    expire_at: '2026-09-10T06:16:27.421766+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-114ad2
+  filename: 2026-06-12_eli-lilly-soars-past-expectations-to-hit-45-sales-.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.439116+00:00'
+  processed: false
+  notes: query='Eli Lilly 2025 full year revenue results tirzepatide annual sales'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly 2025 full year revenue results tirzepatide annual sales
+    url: https://www.pharmaceutical-technology.com/news/eli-lilly-soars-past-expectations-to-hit-45-sales-growth-in-2025
+    domain: pharmaceutical-technology.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.433655+00:00'
+    stale_at: '2026-07-12T06:16:27.433655+00:00'
+    expire_at: '2026-09-10T06:16:27.433655+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-633bc1
+  filename: 2026-06-12_medicare-glp-1-bridge-cms.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.462835+00:00'
+  processed: false
+  notes: query='Medicare coverage anti-obesity drugs CMS final rule GLP-1 2025 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Medicare coverage anti-obesity drugs CMS final rule GLP-1 2025 2026
+    url: https://www.cms.gov/medicare/coverage/prescription-drug-coverage/medicare-glp-1-bridge
+    domain: cms.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.452415+00:00'
+    stale_at: '2026-07-12T06:16:27.452415+00:00'
+    expire_at: '2026-09-10T06:16:27.452415+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3fc7d5
+  filename: 2026-06-12_what-to-know-about-the-balance-model-for-glp-1s-in.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.484606+00:00'
+  processed: false
+  notes: query='Medicare coverage anti-obesity drugs CMS final rule GLP-1 2025 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Medicare coverage anti-obesity drugs CMS final rule GLP-1 2025 2026
+    url: https://www.kff.org/medicare/what-to-know-about-the-balance-model-for-glp-1s-in-medicare-and-medicaid
+    domain: kff.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.476353+00:00'
+    stale_at: '2026-07-12T06:16:27.476353+00:00'
+    expire_at: '2026-09-10T06:16:27.476353+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d48fb3
+  filename: 2026-06-12_cms-excludes-anti-obesity-drug-coverage-under-medi.md
+  source_type: web-search
+  added: '2026-06-12T06:16:27.512285+00:00'
+  processed: false
+  notes: query='Medicare coverage anti-obesity drugs CMS final rule GLP-1 2025 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Medicare coverage anti-obesity drugs CMS final rule GLP-1 2025 2026
+    url: https://www.fiercehealthcare.com/payers/medicare-advantage-final-rule-excludes-anti-obesity-drug-coverage-under-medicare-medicaid
+    domain: fiercehealthcare.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:16:27.505850+00:00'
+    stale_at: '2026-07-12T06:16:27.505850+00:00'
+    expire_at: '2026-09-10T06:16:27.505850+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-484fca
+  filename: 2026-06-12_lilly-s-triple-agonist-retatrutide-delivered-weigh.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.130945+00:00'
+  processed: false
+  notes: query='Eli Lilly retatrutide Phase 3 triple agonist results timeline 2025
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly retatrutide Phase 3 triple agonist results timeline 2025 2026
+    url: https://investor.lilly.com/news-releases/news-release-details/lillys-triple-agonist-retatrutide-delivered-weight-loss-average
+    domain: investor.lilly.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:02.124486+00:00'
+    stale_at: '2026-07-12T06:18:02.124486+00:00'
+    expire_at: '2026-09-10T06:18:02.124486+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b63ac0
+  filename: 2026-06-12_lilly-s-triple-g-agonist-boasts-28-7-weight-loss-i.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.147653+00:00'
+  processed: false
+  notes: query='Eli Lilly retatrutide Phase 3 triple agonist results timeline 2025
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly retatrutide Phase 3 triple agonist results timeline 2025 2026
+    url: https://www.clinicaltrialsarena.com/news/lilly-retatrutide-data-phase-iii-trial
+    domain: clinicaltrialsarena.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.141629+00:00'
+    stale_at: '2026-07-12T06:18:02.141629+00:00'
+    expire_at: '2026-09-10T06:18:02.141629+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6a2b41
+  filename: 2026-06-12_novo-next-generation-obesity-shot-falls-short-of-l.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.166089+00:00'
+  processed: false
+  notes: query='Novo Nordisk CagriSema next gen obesity pipeline vs Lilly competition
+    2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Novo Nordisk CagriSema next gen obesity pipeline vs Lilly competition 2025
+      2026
+    url: https://www.bloomberg.com/news/articles/2026-02-23/novo-s-next-generation-obesity-shot-falls-short-of-lilly-rival
+    domain: bloomberg.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:02.159405+00:00'
+    stale_at: '2026-07-12T06:18:02.159405+00:00'
+    expire_at: '2026-09-10T06:18:02.159405+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-54dabf
+  filename: 2026-06-12_lilly-vs-novo-nordisk-obesity-drug-giants-face-off.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.185165+00:00'
+  processed: false
+  notes: query='Novo Nordisk CagriSema next gen obesity pipeline vs Lilly competition
+    2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Novo Nordisk CagriSema next gen obesity pipeline vs Lilly competition 2025
+      2026
+    url: https://www.tradingview.com/news/zacks:879758555094b:0-lilly-vs-novo-nordisk-obesity-drug-giants-face-off-in-2026
+    domain: tradingview.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.178085+00:00'
+    stale_at: '2026-07-12T06:18:02.178085+00:00'
+    expire_at: '2026-09-10T06:18:02.178085+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0364f2
+  filename: 2026-06-12_viking-therapeutics-announces-completion-of-enroll.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.206115+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 results Viking VK2735 obesity competition 2025
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Amgen MariTide Phase 3 results Viking VK2735 obesity competition 2025 2026
+    url: https://ir.vikingtherapeutics.com/2025-11-19-Viking-Therapeutics-Announces-Completion-of-Enrollment-in-Phase-3-VANQUISH-1-Trial-of-VK2735
+    domain: ir.vikingtherapeutics.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:02.198509+00:00'
+    stale_at: '2026-07-12T06:18:02.198509+00:00'
+    expire_at: '2026-09-10T06:18:02.198509+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c8cff3
+  filename: 2026-06-12_weekly-subcutaneous-vk2735-a-gip-glp-1-receptor-du.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.234335+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 results Viking VK2735 obesity competition 2025
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Amgen MariTide Phase 3 results Viking VK2735 obesity competition 2025 2026
+    url: https://pubmed.ncbi.nlm.nih.gov/41508550
+    domain: pubmed.ncbi.nlm.nih.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.225086+00:00'
+    stale_at: '2026-07-12T06:18:02.225086+00:00'
+    expire_at: '2026-09-10T06:18:02.225086+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b77ae5
+  filename: 2026-06-12_inside-amgen-s-phase-3-maritime-program-advancing-.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.263876+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 results Viking VK2735 obesity competition 2025
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Amgen MariTide Phase 3 results Viking VK2735 obesity competition 2025 2026
+    url: https://www.amgen.com/stories/2025/06/inside-amgens-phase-3-maritime-program---advancing-the-future-of-obesity-care
+    domain: amgen.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.254649+00:00'
+    stale_at: '2026-07-12T06:18:02.254649+00:00'
+    expire_at: '2026-09-10T06:18:02.254649+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-048055
+  filename: 2026-06-12_eli-lilly-to-invest-27-billion-in-new-u-s-manufact.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.293729+00:00'
+  processed: false
+  notes: query='Eli Lilly manufacturing capacity expansion 2025 2026 new plants investment
+    progress'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly manufacturing capacity expansion 2025 2026 new plants investment
+      progress
+    url: https://www.cnbc.com/2025/02/26/eli-lilly-to-invest-27-billion-in-new-us-manufacturing.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:02.282363+00:00'
+    stale_at: '2026-07-12T06:18:02.282363+00:00'
+    expire_at: '2026-09-10T06:18:02.282363+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-eeecf3
+  filename: 2026-06-12_lilly-plans-to-more-than-double-u-s-manufacturing-.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.322072+00:00'
+  processed: false
+  notes: query='Eli Lilly manufacturing capacity expansion 2025 2026 new plants investment
+    progress'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly manufacturing capacity expansion 2025 2026 new plants investment
+      progress
+    url: https://www.prnewswire.com/news-releases/lilly-plans-to-more-than-double-us-manufacturing-investment-since-2020-exceeding-50-billion-302385372.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:02.310265+00:00'
+    stale_at: '2026-07-12T06:18:02.310265+00:00'
+    expire_at: '2026-09-10T06:18:02.310265+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4bdb51
+  filename: 2026-06-12_lilly-plans-to-build-a-new-6-5-billion-facility-to.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.357218+00:00'
+  processed: false
+  notes: query='Eli Lilly manufacturing capacity expansion 2025 2026 new plants investment
+    progress'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly manufacturing capacity expansion 2025 2026 new plants investment
+      progress
+    url: https://investor.lilly.com/news-releases/news-release-details/lilly-plans-build-new-65-billion-facility-manufacture-active
+    domain: investor.lilly.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:02.340614+00:00'
+    stale_at: '2026-07-12T06:18:02.340614+00:00'
+    expire_at: '2026-09-10T06:18:02.340614+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d9a504
+  filename: 2026-06-12_when-do-the-patents-on-zepbound-expire-and-when-wi.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.398101+00:00'
+  processed: false
+  notes: query='tirzepatide patent expiration loss of exclusivity Mounjaro Zepbound
+    LLY' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: tirzepatide patent expiration loss of exclusivity Mounjaro Zepbound LLY
+    url: https://www.drugpatentwatch.com/p/tradename/ZEPBOUND
+    domain: drugpatentwatch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.382675+00:00'
+    stale_at: '2026-07-12T06:18:02.382675+00:00'
+    expire_at: '2026-09-10T06:18:02.382675+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cec370
+  filename: 2026-06-12_republican-administration-maintains-exclusivity-st.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.437217+00:00'
+  processed: false
+  notes: query='tirzepatide patent expiration loss of exclusivity Mounjaro Zepbound
+    LLY' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: tirzepatide patent expiration loss of exclusivity Mounjaro Zepbound LLY
+    url: https://patentlyo.com/patent/2025/02/administration-exclusivity-tirzepatide.html
+    domain: patentlyo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.422664+00:00'
+    stale_at: '2026-07-12T06:18:02.422664+00:00'
+    expire_at: '2026-09-10T06:18:02.422664+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3e0c97
+  filename: 2026-06-12_lilly-s-kisunla-donanemab-receives-marketing-autho.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.493729+00:00'
+  processed: false
+  notes: query='Eli Lilly donanemab Kisunla sales launch EU Japan approval Alzheimer
+    2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly donanemab Kisunla sales launch EU Japan approval Alzheimer 2025
+      2026
+    url: https://investor.lilly.com/news-releases/news-release-details/lillys-kisunla-donanemab-receives-marketing-authorization-0
+    domain: investor.lilly.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:02.473836+00:00'
+    stale_at: '2026-07-12T06:18:02.473836+00:00'
+    expire_at: '2026-09-10T06:18:02.473836+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-471461
+  filename: 2026-06-12_lilly-wins-european-alzheimer-s-approval-for-kisun.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.551375+00:00'
+  processed: false
+  notes: query='Eli Lilly donanemab Kisunla sales launch EU Japan approval Alzheimer
+    2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly donanemab Kisunla sales launch EU Japan approval Alzheimer 2025
+      2026
+    url: https://www.europeanpharmaceuticalreview.com/news/lilly-wins-european-alzheimers-approval-for-kisunla-after-regulatory-setbacks/265972.article
+    domain: europeanpharmaceuticalreview.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.530114+00:00'
+    stale_at: '2026-07-12T06:18:02.530114+00:00'
+    expire_at: '2026-09-10T06:18:02.530114+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5a7906
+  filename: 2026-06-12_medicare-announces-results-of-first-round-of-histo.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.615425+00:00'
+  processed: false
+  notes: query='IRA Medicare drug price negotiation Eli Lilly Jardiance 2026 second
+    batch' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IRA Medicare drug price negotiation Eli Lilly Jardiance 2026 second batch
+    url: https://medicareadvocacy.org/medicare-announces-results-of-first-round-of-historic-drug-price-negotiations-effective-2026
+    domain: medicareadvocacy.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.590226+00:00'
+    stale_at: '2026-07-12T06:18:02.590226+00:00'
+    expire_at: '2026-09-10T06:18:02.590226+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ea147b
+  filename: 2026-06-12_pdf-medicare-drug-price-negotiation-program---cms.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.689372+00:00'
+  processed: false
+  notes: query='IRA Medicare drug price negotiation Eli Lilly Jardiance 2026 second
+    batch' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IRA Medicare drug price negotiation Eli Lilly Jardiance 2026 second batch
+    url: https://www.cms.gov/files/document/fact-sheet-negotiated-prices-initial-price-applicability-year-2026.pdf
+    domain: cms.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.661419+00:00'
+    stale_at: '2026-07-12T06:18:02.661419+00:00'
+    expire_at: '2026-09-10T06:18:02.661419+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bb7b7a
+  filename: 2026-06-12_key-facts-about-medicare-drug-price-negotiation.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.777831+00:00'
+  processed: false
+  notes: query='IRA Medicare drug price negotiation Eli Lilly Jardiance 2026 second
+    batch' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IRA Medicare drug price negotiation Eli Lilly Jardiance 2026 second batch
+    url: https://www.kff.org/medicare/key-facts-about-medicare-drug-price-negotiation
+    domain: kff.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.740806+00:00'
+    stale_at: '2026-07-12T06:18:02.740806+00:00'
+    expire_at: '2026-09-10T06:18:02.740806+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-15394f
+  filename: 2026-06-12_glucagon-like-peptide-1-receptor-agonists-and-the-.md
+  source_type: web-search
+  added: '2026-06-12T06:18:02.903433+00:00'
+  processed: false
+  notes: query='GLP-1 safety long term NAION muscle loss discontinuation rebound 2025
+    FDA' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GLP-1 safety long term NAION muscle loss discontinuation rebound 2025 FDA
+    url: https://www.aao.org/education/clinical-statement/glucagon-like-peptide-1-receptor-agonists-risk-of-
+    domain: aao.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:02.859182+00:00'
+    stale_at: '2026-07-12T06:18:02.859182+00:00'
+    expire_at: '2026-09-10T06:18:02.859182+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0f8bef
+  filename: 2026-06-12_risk-of-naion-following-glp-1-receptor-agonist-use.md
+  source_type: web-search
+  added: '2026-06-12T06:18:03.052916+00:00'
+  processed: false
+  notes: query='GLP-1 safety long term NAION muscle loss discontinuation rebound 2025
+    FDA' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GLP-1 safety long term NAION muscle loss discontinuation rebound 2025 FDA
+    url: https://www.sentinelinitiative.org/sites/default/files/documents/Risk-of-NAION-Following-GLP-1-Receptor-Agonist-Use-in-Patients-with-Type-2-Diabetes-Mellitus_v2.0_Final.pdf
+    domain: sentinelinitiative.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:03.001213+00:00'
+    stale_at: '2026-07-12T06:18:03.001213+00:00'
+    expire_at: '2026-09-10T06:18:03.001213+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9eea24
+  filename: 2026-06-12_lilly-chasing-novo-expects-second-quarter-fda-deci.md
+  source_type: web-search
+  added: '2026-06-12T06:18:03.524841+00:00'
+  processed: false
+  notes: query='Eli Lilly orforglipron oral GLP-1 FDA approval filing timeline 2026
+    launch'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly orforglipron oral GLP-1 FDA approval filing timeline 2026 launch
+    url: https://www.biopharmadive.com/news/lilly-obesity-pill-orforglipron-fda-decision-dtc-sales/809598
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:03.251967+00:00'
+    stale_at: '2026-07-12T06:18:03.251967+00:00'
+    expire_at: '2026-09-10T06:18:03.251967+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f73ee6
+  filename: 2026-06-12_eli-lilly-s-orforglipron-and-the-fda-s-new-review-.md
+  source_type: web-search
+  added: '2026-06-12T06:18:04.161678+00:00'
+  processed: false
+  notes: query='Eli Lilly orforglipron oral GLP-1 FDA approval filing timeline 2026
+    launch' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly orforglipron oral GLP-1 FDA approval filing timeline 2026 launch
+    url: https://www.linkedin.com/posts/jack-shuang-hou-75314a2b3_exclusive-fda-leaders-pushed-to-cut-lilly-activity-7405699297243172864-oOVF
+    domain: linkedin.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:18:03.868074+00:00'
+    stale_at: '2026-07-12T06:18:03.868074+00:00'
+    expire_at: '2026-09-10T06:18:03.868074+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d9588d
+  filename: 2026-06-12_eli-lilly-to-use-glp-1-windfall-to-fund-m-a-and-di.md
+  source_type: web-search
+  added: '2026-06-12T06:18:44.936313+00:00'
+  processed: false
+  notes: query='Eli Lilly LLY latest news developments 2026 obesity pipeline catalysts'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly LLY announcement May June 2026 deal acquisition guidance FDA
+    url: https://www.cnbc.com/2026/06/03/eli-lilly-to-use-glp-1-windfall-to-fund-ma-and-diversify-pipeline.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:52.499502+00:00'
+    stale_at: '2026-07-12T06:18:52.499502+00:00'
+    expire_at: '2026-09-10T06:18:52.499502+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - Eli Lilly LLY latest news developments 2026 obesity pipeline catalysts
+- id: mat-fbcd3f
+  filename: 2026-06-12_fda-approves-lilly-s-ebglyss-lebrikizumab-lbkz-for.md
+  source_type: web-search
+  added: '2026-06-12T06:18:52.535922+00:00'
+  processed: false
+  notes: query='Eli Lilly LLY announcement May June 2026 deal acquisition guidance
+    FDA'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly LLY announcement May June 2026 deal acquisition guidance FDA
+    url: https://www.prnewswire.com/news-releases/fda-approves-lillys-ebglyss-lebrikizumab-lbkz-for-one-maintenance-dose-every-eight-weeks-in-patients-with-moderate-to-severe-atopic-dermatitis-302795876.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:18:52.522006+00:00'
+    stale_at: '2026-07-12T06:18:52.522006+00:00'
+    expire_at: '2026-09-10T06:18:52.522006+00:00'
+    triggered_by: 00-prescan
+- id: mat-1ac535
+  filename: 2026_LLY_10-Q_2026-04-30.htm
+  source_type: quarterly-report
+  added: '2026-06-12T06:25:52.582075+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-aebdac
+  filename: sec/2026_LLY_10-Q_2026-04-30/item_1_financial.md
+  source_type: sec-section
+  added: '2026-06-12T06:25:52.713273+00:00'
+  processed: true
+  notes: split from 2026_LLY_10-Q_2026-04-30.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-1ac535
+  sec_section: item_1_financial
+- id: mat-79ee55
+  filename: sec/2026_LLY_10-Q_2026-04-30/item_2_mda.md
+  source_type: sec-section
+  added: '2026-06-12T06:25:52.744091+00:00'
+  processed: true
+  notes: split from 2026_LLY_10-Q_2026-04-30.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-1ac535
+  sec_section: item_2_mda
+- id: mat-7355a6
+  filename: sec/2026_LLY_10-Q_2026-04-30/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-12T06:25:52.774080+00:00'
+  processed: true
+  notes: split from 2026_LLY_10-Q_2026-04-30.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-1ac535
+  sec_section: item_3_quant_risk
+- id: mat-b570f1
+  filename: sec/2026_LLY_10-Q_2026-04-30/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-12T06:25:52.804123+00:00'
+  processed: true
+  notes: split from 2026_LLY_10-Q_2026-04-30.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-1ac535
+  sec_section: item_1a_risk
+- id: mat-b06701
+  filename: 2025_LLY_10-K_2026-02-12.htm
+  source_type: annual-report
+  added: '2026-06-12T06:25:56.390692+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-e43b00
+  filename: sec/2025_LLY_10-K_2026-02-12/item_1_business.md
+  source_type: sec-section
+  added: '2026-06-12T06:25:56.620525+00:00'
+  processed: true
+  notes: split from 2025_LLY_10-K_2026-02-12.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-b06701
+  sec_section: item_1_business
+- id: mat-f6b1d0
+  filename: sec/2025_LLY_10-K_2026-02-12/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-06-12T06:25:56.655650+00:00'
+  processed: true
+  notes: split from 2025_LLY_10-K_2026-02-12.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-b06701
+  sec_section: item_1a_risk
+- id: mat-1c0c11
+  filename: sec/2025_LLY_10-K_2026-02-12/item_7_mda.md
+  source_type: sec-section
+  added: '2026-06-12T06:25:56.693117+00:00'
+  processed: true
+  notes: split from 2025_LLY_10-K_2026-02-12.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-b06701
+  sec_section: item_7_mda
+- id: mat-2e9cd7
+  filename: sec/2025_LLY_10-K_2026-02-12/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-12T06:25:56.734472+00:00'
+  processed: true
+  notes: split from 2025_LLY_10-K_2026-02-12.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-b06701
+  sec_section: item_7a_quant_risk
+- id: mat-059241
+  filename: sec/2025_LLY_10-K_2026-02-12/item_8_financial.md
+  source_type: sec-section
+  added: '2026-06-12T06:25:56.776872+00:00'
+  processed: true
+  notes: split from 2025_LLY_10-K_2026-02-12.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-b06701
+  sec_section: item_8_financial
+- id: mat-6fe5ab
+  filename: 2026-05-20_LLY_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T06:26:03.502931+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5c2d00
+  filename: 2026-05-07_LLY_announce_8K.html
+  source_type: quarterly-report
+  added: '2026-06-12T06:26:05.513261+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-fb28e6
+  filename: 2026-04-30_LLY_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T06:26:07.778785+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-54ada3
+  filename: 2026-02-04_LLY_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T06:26:10.097393+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-6539a3
+  filename: 2025-11-21_LLY_announce_8K.html
+  source_type: quarterly-report
+  added: '2026-06-12T06:26:12.069744+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-88aa99
+  filename: 2025-10-30_LLY_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T06:26:14.281850+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-9dd265
+  filename: 2025-08-20_LLY_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T06:26:16.735216+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-0fe91c
+  filename: 2025-08-07_LLY_announce_8K.htm
+  source_type: quarterly-report
+  added: '2026-06-12T06:26:19.104486+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — ELI LILLY & Co
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-4c9c90
+  filename: 2026-06-12_eli-lilly-lly-analyst-estimates-forecasts-yahoo-fi.md
+  source_type: web-search
+  added: '2026-06-12T06:28:13.434423+00:00'
+  processed: true
+  notes: query='Eli Lilly LLY analyst consensus price target revenue EPS estimates
+    2026 2027' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly LLY analyst consensus price target revenue EPS estimates 2026
+      2027
+    url: https://finance.yahoo.com/quote/LLY/analysis/
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:28:13.414827+00:00'
+    stale_at: '2026-07-12T06:28:13.414827+00:00'
+    expire_at: '2026-09-10T06:28:13.414827+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a3e10f
+  filename: 2026-06-12_eli-lilly-预测损益表-2021-2028-marketscreener.md
+  source_type: web-search
+  added: '2026-06-12T06:28:13.489981+00:00'
+  processed: true
+  notes: query='Eli Lilly LLY analyst consensus price target revenue EPS estimates
+    2026 2027' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly LLY analyst consensus price target revenue EPS estimates 2026
+      2027
+    url: https://www.marketscreener.com/quote/stock/ELI-LILLY-AND-COMPANY-13401/finances/
+    domain: marketscreener.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:28:13.469509+00:00'
+    stale_at: '2026-07-12T06:28:13.469509+00:00'
+    expire_at: '2026-09-10T06:28:13.469509+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4d2bd0
+  filename: 2026-06-12_eli-lilly-lly-价格目标与-fair-value-investing-com.md
+  source_type: web-search
+  added: '2026-06-12T06:28:13.548431+00:00'
+  processed: true
+  notes: query='Eli Lilly LLY analyst consensus price target revenue EPS estimates
+    2026 2027' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly LLY analyst consensus price target revenue EPS estimates 2026
+      2027
+    url: https://uk.investing.com/equities/eli-lilly-and-co-consensus-estimates
+    domain: uk.investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:28:13.527322+00:00'
+    stale_at: '2026-07-12T06:28:13.527322+00:00'
+    expire_at: '2026-09-10T06:28:13.527322+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-57f5d9
+  filename: 2026-06-12_lilly-vs-novo-glp-1-patent-landscape-2010-2026---p.md
+  source_type: web-search
+  added: '2026-06-12T06:29:32.884337+00:00'
+  processed: true
+  notes: query='tirzepatide Zepbound Mounjaro patent expiration date Orange Book composition
+    of matter generic biosimilar timeline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: tirzepatide Zepbound Mounjaro patent expiration date Orange Book composition
+      of matter generic biosimilar timeline
+    url: https://www.patsnap.com/resources/blog/articles/lilly-vs-novo-glp-1-patent-landscape-2010-2026
+    domain: patsnap.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:29:32.865361+00:00'
+    stale_at: '2026-07-12T06:29:32.865361+00:00'
+    expire_at: '2026-09-10T06:29:32.865361+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6eee8f
+  filename: 2026-06-12_the-heavy-price-of-glp-1-drugs---i-mak.md
+  source_type: web-search
+  added: '2026-06-12T06:29:32.940132+00:00'
+  processed: true
+  notes: query='tirzepatide Zepbound Mounjaro patent expiration date Orange Book composition
+    of matter generic biosimilar timeline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: tirzepatide Zepbound Mounjaro patent expiration date Orange Book composition
+      of matter generic biosimilar timeline
+    url: https://www.i-mak.org/glp-1
+    domain: i-mak.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:29:32.921313+00:00'
+    stale_at: '2026-07-12T06:29:32.921313+00:00'
+    expire_at: '2026-09-10T06:29:32.921313+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a4c0f3
+  filename: 2026-06-12_zepbound-autoinjector-patent-expiration---pharsigh.md
+  source_type: web-search
+  added: '2026-06-12T06:29:32.997631+00:00'
+  processed: true
+  notes: query='tirzepatide Zepbound Mounjaro patent expiration date Orange Book composition
+    of matter generic biosimilar timeline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: tirzepatide Zepbound Mounjaro patent expiration date Orange Book composition
+      of matter generic biosimilar timeline
+    url: https://pharsight.greyb.com/drug/zepbound-(autoinjector)-patent-expiration
+    domain: pharsight.greyb.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:29:32.978491+00:00'
+    stale_at: '2026-07-12T06:29:32.978491+00:00'
+    expire_at: '2026-09-10T06:29:32.978491+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-12b379
+  filename: 2026-06-12_blockbuster-drugs-face-a-massive-patent-cliff-in-2.md
+  source_type: web-search
+  added: '2026-06-12T06:29:33.061698+00:00'
+  processed: true
+  notes: query='blockbuster drug patent cliff revenue decline case study Humira Lipitor
+    Gilead sovaldi; high growth pharma stock de-rating peak earnings' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: blockbuster drug patent cliff revenue decline case study Humira Lipitor
+      Gilead sovaldi; high growth pharma stock de-rating peak earnings
+    url: https://www.drugdiscoverynews.com/blockbuster-drugs-face-a-massive-patent-cliff-in-2026-17019
+    domain: drugdiscoverynews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:29:33.041671+00:00'
+    stale_at: '2026-07-12T06:29:33.041671+00:00'
+    expire_at: '2026-09-10T06:29:33.041671+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5ee5ff
+  filename: 2026-06-12_top-20-drugs-heading-for-the-patent-cliff-2026-202.md
+  source_type: web-search
+  added: '2026-06-12T06:29:33.123758+00:00'
+  processed: true
+  notes: query='blockbuster drug patent cliff revenue decline case study Humira Lipitor
+    Gilead sovaldi; high growth pharma stock de-rating peak earnings' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: blockbuster drug patent cliff revenue decline case study Humira Lipitor
+      Gilead sovaldi; high growth pharma stock de-rating peak earnings
+    url: https://www.genengnews.com/topics/drug-discovery/top-20-drugs-heading-for-the-patent-cliff-2026-2029
+    domain: genengnews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:29:33.104023+00:00'
+    stale_at: '2026-07-12T06:29:33.104023+00:00'
+    expire_at: '2026-09-10T06:29:33.104023+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ef37a7
+  filename: 2026-06-12_big-pharma-s-looming-threat-a-patent-cliff-of-tect.md
+  source_type: web-search
+  added: '2026-06-12T06:29:33.179766+00:00'
+  processed: true
+  notes: query='blockbuster drug patent cliff revenue decline case study Humira Lipitor
+    Gilead sovaldi; high growth pharma stock de-rating peak earnings'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: blockbuster drug patent cliff revenue decline case study Humira Lipitor
+      Gilead sovaldi; high growth pharma stock de-rating peak earnings
+    url: https://www.biopharmadive.com/news/pharma-patent-cliff-biologic-drugs-humira-keytruda/642660
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:29:33.159603+00:00'
+    stale_at: '2026-07-12T06:29:33.159603+00:00'
+    expire_at: '2026-09-10T06:29:33.159603+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5c7637
+  filename: 2026-06-12_abbvie-2026-outlook-humira-patent-cliff-skyrizi-ri.md
+  source_type: web-search
+  added: '2026-06-12T06:29:33.237666+00:00'
+  processed: true
+  notes: query='blockbuster drug patent cliff revenue decline case study Humira Lipitor
+    Gilead sovaldi; high growth pharma stock de-rating peak earnings' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: blockbuster drug patent cliff revenue decline case study Humira Lipitor
+      Gilead sovaldi; high growth pharma stock de-rating peak earnings
+    url: https://www.syneticx.com/blog/abbvie.html
+    domain: syneticx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:29:33.216785+00:00'
+    stale_at: '2026-07-12T06:29:33.216785+00:00'
+    expire_at: '2026-09-10T06:29:33.216785+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-07afed
+  filename: 2026-06-12_ada-26-lilly-s-dominance-pfizer-s-foundational-dru.md
+  source_type: web-search
+  added: '2026-06-12T06:29:33.306709+00:00'
+  processed: true
+  notes: query='obesity drug pipeline 2026 2027 readout calendar Pfizer Roche Amgen
+    MariTide Viking Structure Boehringer next gen'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: obesity drug pipeline 2026 2027 readout calendar Pfizer Roche Amgen MariTide
+      Viking Structure Boehringer next gen
+    url: https://www.biopharmadive.com/news/ada-2026-lilly-retatrutide-pfizer-berobenatide-roche-enicepatide/822208
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:29:33.284615+00:00'
+    stale_at: '2026-07-12T06:29:33.284615+00:00'
+    expire_at: '2026-09-10T06:29:33.284615+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ed75a6
+  filename: 2026-06-12_10-obesity-drug-companies-to-watch-in-2026---xtalk.md
+  source_type: web-search
+  added: '2026-06-12T06:29:33.369279+00:00'
+  processed: true
+  notes: query='obesity drug pipeline 2026 2027 readout calendar Pfizer Roche Amgen
+    MariTide Viking Structure Boehringer next gen' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: obesity drug pipeline 2026 2027 readout calendar Pfizer Roche Amgen MariTide
+      Viking Structure Boehringer next gen
+    url: https://xtalks.com/10-obesity-drug-companies-to-watch-in-2026-4683
+    domain: xtalks.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:29:33.345486+00:00'
+    stale_at: '2026-07-12T06:29:33.345486+00:00'
+    expire_at: '2026-09-10T06:29:33.345486+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5c51a8
+  filename: 2026-06-12_9-obesity-drugs-to-be-launch-by-2027.md
+  source_type: web-search
+  added: '2026-06-12T06:29:33.428961+00:00'
+  processed: true
+  notes: query='obesity drug pipeline 2026 2027 readout calendar Pfizer Roche Amgen
+    MariTide Viking Structure Boehringer next gen' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: obesity drug pipeline 2026 2027 readout calendar Pfizer Roche Amgen MariTide
+      Viking Structure Boehringer next gen
+    url: https://www.delveinsight.com/blog/obesity-drugs-launch
+    domain: delveinsight.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:29:33.407388+00:00'
+    stale_at: '2026-07-12T06:29:33.407388+00:00'
+    expire_at: '2026-09-10T06:29:33.407388+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4d5659
+  filename: 2026-06-12_key-glp-1-statistics-trends-in-2026---health---for.md
+  source_type: web-search
+  added: '2026-06-12T06:29:33.491139+00:00'
+  processed: true
+  notes: query='GLP-1 net price trend rebate gross-to-net Zepbound Mounjaro Wegovy
+    SSR Health 2025 2026 pricing erosion'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: GLP-1 net price trend rebate gross-to-net Zepbound Mounjaro Wegovy SSR
+      Health 2025 2026 pricing erosion
+    url: https://www.forbes.com/health/weight-loss/glp-1-statistics
+    domain: forbes.com
+    domain_tier: whitelist
+    searched_at: '2026-06-12T06:29:33.469611+00:00'
+    stale_at: '2026-07-12T06:29:33.469611+00:00'
+    expire_at: '2026-09-10T06:29:33.469611+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-685abe
+  filename: 2026-06-12_glp-1-pricing-reform-what-s-changing-and-why-it-ma.md
+  source_type: web-search
+  added: '2026-06-12T06:29:33.551989+00:00'
+  processed: true
+  notes: query='GLP-1 net price trend rebate gross-to-net Zepbound Mounjaro Wegovy
+    SSR Health 2025 2026 pricing erosion' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: GLP-1 net price trend rebate gross-to-net Zepbound Mounjaro Wegovy SSR
+      Health 2025 2026 pricing erosion
+    url: https://innovativerxstrategies.com/glp-1-pricing-reform-whats-changing-and-why-it-matters-for-plan-sponsors
+    domain: innovativerxstrategies.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-12T06:29:33.529872+00:00'
+    stale_at: '2026-07-12T06:29:33.529872+00:00'
+    expire_at: '2026-09-10T06:29:33.529872+00:00'
+    triggered_by: 00-deep-fetch

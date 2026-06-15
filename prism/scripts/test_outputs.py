@@ -17,6 +17,7 @@ from prism.scripts import topic as topic_io
 from prism.scripts.manifest import create_manifest, add_material, mark_processed, make_search_meta
 from prism.scripts.outputs import (
     list_affected_outputs, linkify_mat_refs, collect_parent_materials,
+    validate_manifest_coverage,
 )
 
 
@@ -280,3 +281,35 @@ def test_fresh_topic_enumerates_canonical_outputs_as_new(tmp_topic):
     result = list_affected_outputs(slug, variant)
     for key in ("00_primer", "c_investment_case", "08_living_feed"):
         assert result[key]["reason"] == "new", f"{key} 应在首次合成被枚举为 new"
+
+
+def test_manifest_coverage_counts_findings_layer(tmp_topic):
+    """回归：findings 层打的 K# 必须计入「实际收集覆盖」。
+
+    线上 bug（cn-commercial-aerospace）：prescan 入库的材料层只挂 scope 占位，
+    真正的 K# 归属在 findings 层（03 抽取产出）。旧实现只数材料层 addresses →
+    误报覆盖 0%。本测试锁定：材料层只挂 scope、K# 仅在 findings 层时，
+    validate_manifest_coverage 仍应判该 K# 已覆盖。"""
+    slug, variant, tmpdir = tmp_topic
+    # thesis_v1 定义 K1/K2
+    (tmpdir / "topics" / slug / variant / "thesis_v1.md").write_text(
+        "# thesis\n\n| K1 | 维度A | 中 | 触发 |\n| K2 | 维度B | 中 | 触发 |\n",
+        encoding="utf-8",
+    )
+    # 材料层只挂 scope 占位（模拟 prescan 入库）
+    sm = make_search_meta(query="q", url="https://example.com/s", domain="example.com",
+                          domain_tier="other", triggered_by="01-prescan")
+    mat_id = add_material(slug=slug, filename="scope_only.md", source_type="web-search",
+                          variant=variant, addresses=["scope"], search_meta=sm)
+    mark_processed(slug, mat_id, variant)
+    # findings 层把该材料挂到 K1（材料层完全没有 K1）
+    out_dir = tmpdir / "topics" / slug / variant / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / f"findings_{mat_id}.md").write_text(
+        f"---\nmat_id: {mat_id}\naddresses:\n  - K1\n---\n\nbody\n", encoding="utf-8")
+
+    cov = validate_manifest_coverage(slug, variant, 1)
+    assert cov["coverage_pct"] == 50, cov          # K1 覆盖、K2 未覆盖
+    assert "K1" in cov["covered"]                   # 经 findings 层救回，非材料层
+    assert cov["uncovered"] == ["K2"]
+    assert len(cov["by_key"]["K1"]) == 1            # 同一来源去重，不重复计

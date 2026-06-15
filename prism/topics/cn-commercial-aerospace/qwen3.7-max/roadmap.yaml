@@ -1,0 +1,187 @@
+# roadmap.yaml — 中国商业航天研究路线图
+slug: cn-commercial-aerospace
+created: '2026-06-13'
+
+primer_scope: >
+  商业航天四子赛道区分（火箭制造/卫星制造/发射服务/卫星应用）；
+  国家队vs民营分工（航天科技/科工 vs 蓝箭/天兵/星河动力等）；
+  可复用火箭原理与成本模型（SpaceX猎鹰9 vs 朱雀三号）；
+  GW/千帆/G60三大星座对比；发射工位瓶颈；
+  液氧甲烷 vs 液氧煤油 vs 固体推进剂路线
+
+learning_track:
+
+  l3_debates:
+    - question: >
+        2026年8+款民营液体火箭密集首飞，是"技术验证大年"还是"集体试错大年"？
+        多头认为产能释放+星座需求驱动拐点；空头认为首飞失利概率高（朱雀三号回收已失败、
+        谷神星二号首飞失利），一次重大失败可能重创整个板块信心。
+      source_hint: 各公司首飞进展跟踪 + 1996年长三乙"708"事故镜鉴
+
+    - question: >
+        "万星星座"叙事是战略卡位还是真实商业需求？
+        多头认为ITU频轨资源"先到先得"必须加速部署（2028年7600颗目标）；
+        空头指出千帆2025年底仅108颗（目标648颗，完成率17%），且垣信持续亏损（2024年亏8.1亿），
+        实际部署远落后于规划，"星多箭少"瓶颈未解。
+      source_hint: 千帆/GW发射频率数据 + 垣信财务报表 + 运力缺口分析
+
+    - question: >
+        中国商业航天估值锚在哪里？SpaceX $1.75T IPO 能否映射到A股？
+        多头认为SpaceX上市重置全球comp set（ASTS/RKLB市值>$300亿），
+        中国标的严重低估；空头指出SpaceX年收入$187亿+EBITDA 63%，
+        而中国头部公司（蓝箭亏损、航天宏图亏13.9亿）基本面完全不在一个量级，
+        中科星图PE 168x（历史98分位）已透支。
+      source_hint: SpaceX S-1 + A股可比估值表 + 卖方目标价
+
+    - question: >
+        政策红利是"真金白银"还是"文件驱动"？
+        多头：22条行动计划设立国家基金+扩大政府采购+航天法立法；
+        空头：此前多份文件未落地（2014年《关于国家重大科技专项》等），
+        商业航天司刚设立、实际执行力待验证，地方补贴可能退坡。
+      source_hint: 22条全文 + 各地政策对比 + 商业航天司编制/预算
+
+    - question: >
+        民营火箭赛道"10进3"淘汰赛何时开始？谁会被淘汰？
+        多头认为2026-2027是分化年（有入轨能力的5家 vs 仍在PPT的）；
+        空头认为多数公司仍依赖VC输血，若IPO窗口收窄+首飞连续失利，
+        尾部公司可能在12-18个月内面临资金断裂。
+      source_hint: 各公司融资/IPO进度 + 发射记录 + 产能数据
+
+  l4_hunting:
+    - question: >
+        朱雀三号遥二 2026Q2 回收试验能否成功？若成功，蓝箭航天是否立刻建立
+        国内独家可复用成本优势（<2万元/kg），形成赢家通吃格局？
+      addresses: [K1, K2]
+      search_keywords: [朱雀三号遥二, 蓝箭回收试验, 可复用火箭成本]
+      source_hint: 蓝箭航天官方公告 + 东风试验区动态
+
+    - question: >
+        千帆星座2026年能否达到324颗在轨目标？当前162颗（50%），
+        剩余162颗需6个月内完成——发射频率需从月均2次提升至月均4次以上。
+        如果达标，证明需求侧刚性，火箭订单确定性大幅上升。
+      addresses: [K3]
+      search_keywords: [千帆星座 在轨数量, 垣信卫星 发射频率, 一箭18星]
+      source_hint: 垣信卫星官网 + 海南/太原发射场排期
+
+    - question: >
+        蓝箭航天科创板IPO定价区间多少？若以200亿胡润估值为锚、
+        对标SpaceX PS ~10x，合理定价应是多少？当前科创板商业火箭
+        第五套标准下，市场对"未盈利+硬科技"的定价逻辑是什么？
+      addresses: [K4]
+      search_keywords: [蓝箭航天 IPO定价, 科创板第五套标准, 商业火箭估值]
+      source_hint: 招股书 + 中金保荐书 + 科创板同类IPO定价
+
+    - question: >
+        SpaceX星舰V3 2026年首次商业载荷发射成功概率多大？若成功，
+        $50-200/kg的成本目标将使中国所有在研火箭（即使可复用后~$2800/kg）
+        面临代际差距。中国是否需要直接跳过猎鹰级、对标星舰级？
+      addresses: [K5]
+      search_keywords: [SpaceX 星舰V3 商业发射, Starship cost per kg, 星舰对中国影响]
+      source_hint: SpaceX S-1 + NASASpaceflight + 国内航天智库
+
+    - question: >
+        2026年是否有民营火箭公司因连续首飞失利而面临融资困难或裁员？
+        尾部公司（如深蓝航天、箭元科技）的首飞即回收策略风险极高——
+        若失败，是否触发行业"去泡沫"？
+      addresses: [K1, K4]
+      search_keywords: [民营火箭 融资 裁员, 星云一号 首飞, 商业航天 洗牌]
+      source_hint: 投资界/36氪融资动态 + 公司裁员/诉讼信息
+
+material_priority:
+  tier1:
+    - title: 蓝箭航天科创板招股说明书（申报稿）
+      type: financial-report
+      source: 上交所官网 PDF
+      why: 唯一公开的头部的火箭公司全量财务+技术+估值数据
+      addresses: [K4]
+      info_tier: public
+
+    - title: 中信建投/国金证券 商业航天2026年策略报告
+      type: sell-side-note
+      source: 中信建投57页深度 + 国金证券"阿尔法元年"
+      why: 头部卖方框架：产业拐点判断+估值体系+标的筛选
+      addresses: [K1, K3, K4]
+      info_tier: public
+
+    - title: GW+千帆星座组网进度数据
+      type: data
+      source: 文昌论坛PPT + 21世纪经济报道 + 证券时报
+      why: 验证K3：需求侧是否如预期刚性
+      addresses: [K3]
+      info_tier: half_public
+
+    - title: 2026年民营火箭首飞全景
+      type: industry-analysis
+      source: 界面新闻/财联社/澎湃
+      why: 验证K1/K2：技术验证节奏+首飞成功率
+      addresses: [K1, K2]
+      info_tier: half_public
+
+    - title: SpaceX IPO招股书 + S-1关键数据
+      type: financial-report
+      source: Morningstar/SpaceXNow/NAVADHI
+      why: 验证K5：全球估值锚+技术代差
+      addresses: [K5]
+      info_tier: public
+
+  tier2:
+    - title: A股商业航天标的估值表
+      type: data
+      source: 理杏仁/东吴/德邦/国泰海通
+      why: K4估值对标：航天宏图/中科星图/中国卫星PE/PS
+      addresses: [K4]
+      info_tier: public
+
+    - title: 国家航天局22条行动计划全文
+      type: policy
+      source: CNSA官网
+      why: 验证政策红利含金量（国家基金/政府采购/航天法）
+      addresses: [K3]
+      info_tier: public
+
+    - title: 中国航天商业发射历史回顾（1990s）
+      type: industry-analysis
+      source: 科普中国/中科院/央视网
+      why: 镜鉴：首飞失败对行业信心的冲击模式
+      addresses: []
+      info_tier: public
+      rings: [industry-mirror]
+
+  tier3:
+    - title: 各地方商业航天专项政策（广东/深圳/上海/山东）
+      type: policy
+      source: 地方政府官网
+      why: 补充地方补贴力度差异
+      addresses: [K3]
+      info_tier: public
+
+    - title: 垣信卫星增资预披露 + 财务报表
+      type: financial-report
+      source: 上海联交所
+      why: 星座运营方财务实况（亏损/资产/收入）
+      addresses: [K3]
+      info_tier: half_public
+
+key_risks_to_monitor:
+  - 朱雀三号遥二回收试验（2026Q2）：成功=行业里程碑，失败=短期信心打击
+  - 天龙三号/星云一号首飞（2026-03）：首飞即回收策略成败
+  - 千帆星座发射频率（2026H2）：月均2次→4次是否可行
+  - 蓝箭航天IPO定价+首日表现（2026-06/07）
+  - SpaceX星舰V3首次商业载荷（2026H2）：代际差距是否拉大
+  - 尾部火箭公司融资断裂风险（深蓝/箭元/星际荣耀）
+
+analogies_to_study:
+  - case: 中国长征火箭1990s国际商业发射挫折
+    similarity: 首飞/早期发射连续失利→国际信誉崩塌→市场退出
+    difference: 当前是国内市场、政策强力支撑、非国际竞争场景
+    lesson: 一次重大失败可摧毁整条赛道的市场信心（1996"708"事故后休斯终止合作、保险费率飙升）
+
+  - case: SpaceX猎鹰9号2010-2015年从首飞到回收
+    similarity: 多次试错→最终成功→成本断崖下降→赢家通吃
+    difference: SpaceX有NASA巨额合同兜底+美国资本市场深度；中国公司融资环境更脆弱
+    lesson: 可复用火箭的成功需要"持续资金+容忍失败+工程迭代"三条件同时满足
+
+  - case: 中国光伏产业2010-2015年产能过剩→洗牌
+    similarity: 政策补贴驱动→大量企业涌入→产能过剩→价格战→尾部出清
+    difference: 航天技术壁垒远高于光伏、进入门槛高、不太可能出现"全民造火箭"
+    lesson: 即使赛道确定性好，尾部公司仍可能在行业整合中归零

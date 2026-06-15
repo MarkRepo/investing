@@ -3,10 +3,9 @@ variant: opus4.8
 topic_type: company
 display_name: Robinhood (HOOD, NASDAQ)
 ticker: US_HOOD
-generated: 2026-06-04T00:00:00Z
+generated: 2026-06-04 00:00:00+00:00
 data_freshness: 2026-Q1
 data_freshness_basis: mat-1dd165 / mat-aba43c (HOOD 2026 Q1 10-Q)
-
 buy_box:
   strong_buy_max: 68
   accumulate_min: 68
@@ -16,69 +15,85 @@ buy_box:
   current_price: 82.85
   price_as_of: 2026-06-03
   current_zone: hold
-
 position_framework:
   position_tier: 试探
-  sizing_rationale: 现价 $82.85 概率加权 EV≈-12% 轻度为负(v2 经街口共识校准)；与街口增长无分歧(都~15%)，唯一 edge=对街口的单一倍数 driver 空头(我 28-33x vs 街口 40x，比 mean 目标价 $101 低 33%)；EV 转正分水岭=退出倍数≥33x。beta 2.29 + 少数派逆共识 + 信心中 → 不具备标准/重仓条件，等回调至买入框($68-74，我的28x base下EV≈0点~$73)再上标准档
+  sizing_rationale: 现价 $82.85 概率加权 EV≈-12% 轻度为负(v2 经街口共识校准)；与街口增长无分歧(都~15%)，唯一 edge=对街口的单一倍数
+    driver 空头(我 28-33x vs 街口 40x，比 mean 目标价 $101 低 33%)；EV 转正分水岭=退出倍数≥33x。beta 2.29
+    + 少数派逆共识 + 信心中 → 不具备标准/重仓条件，等回调至买入框($68-74，我的28x base下EV≈0点~$73)再上标准档
   initial_max_pct: 1
   full_max_pct: 7
-  add_ladder_prices: [73, 68, 63]
+  add_ladder_prices:
+  - 73
+  - 68
+  - 63
   max_cluster_pct: 10
-
 valuation_models:
-  - name: scenario_eps_exit_pe
-    label: 情景EPS×退出倍数(24个月)
-    bull_fair_value: [96, 129]
-    base_fair_value: [65, 76]
-    bear_fair_value: [29, 46]
-  - name: peer_relative_comps
-    label: 可比横比(HOOD vs SCHW/IBKR/COIN)
-    bull_fair_value: [85, 100]
-    base_fair_value: [62, 72]
-    bear_fair_value: [40, 55]
-
+- name: scenario_eps_exit_pe
+  label: 情景EPS×退出倍数(24个月)
+  bull_fair_value:
+  - 96
+  - 129
+  base_fair_value:
+  - 65
+  - 76
+  bear_fair_value:
+  - 29
+  - 46
+- name: peer_relative_comps
+  label: 可比横比(HOOD vs SCHW/IBKR/COIN)
+  bull_fair_value:
+  - 85
+  - 100
+  base_fair_value:
+  - 62
+  - 72
+  bear_fair_value:
+  - 40
+  - 55
 kill_criteria:
-  - id: crypto_drag_unmasked
-    description: 加密收入再现≥30%同比/环比下滑且交易总收入未被补上(总营收同比转负或个位数)→多元化平滑论证伪
-    status: pending
-    check_at: 2026-Q2
-  - id: nii_two_q_negative
-    description: NII连续两季同比转负(余额增长不再抵消降息)→准经常性腿证伪
-    status: pending
-    check_at: 2026-Q4
-  - id: event_contracts_banned
-    description: 事件合约被联邦立法禁/连续两季环比-20%→增长最快腿熄火(占营收10%)
-    status: pending
-    check_at: 2026-Q4
-  - id: eps_miss_streak
-    description: 连续两季EPS显著miss(季度EPS<$0.35)→营运杠杆/增长叙事受损,40x倍数难维持
-    status: pending
-    check_at: 2026-Q3
-  - id: pfof_rule_revival
-    description: SEC重启PFOF限制规则(OCR激活或新立法)→商业模式根基动摇
-    status: pending
-    check_at: 2026-Q4
-
+- id: crypto_drag_unmasked
+  description: 加密收入再现≥30%同比/环比下滑且交易总收入未被补上(总营收同比转负或个位数)→多元化平滑论证伪
+  status: cleared
+  check_at: 2026-Q2
+- id: nii_two_q_negative
+  description: NII连续两季同比转负(余额增长不再抵消降息)→准经常性腿证伪
+  status: pending
+  check_at: 2026-Q4
+- id: event_contracts_banned
+  description: 事件合约被联邦立法禁/连续两季环比-20%→增长最快腿熄火(占营收10%)
+  status: pending
+  check_at: 2026-Q4
+- id: eps_miss_streak
+  description: 连续两季EPS显著miss(季度EPS<$0.35)→营运杠杆/增长叙事受损,40x倍数难维持
+  status: pending
+  check_at: 2026-Q3
+- id: pfof_rule_revival
+  description: SEC重启PFOF限制规则(OCR激活或新立法)→商业模式根基动摇
+  status: pending
+  check_at: 2026-Q4
 signposts:
-  - date: 2026-08
-    event: Q2 2026 财报(事件合约可持续性+NII趋势+EPS vs guidance)
-    bull_signal: 加密下行但总营收仍双位数增长&事件合约持续$100M+&NII同比正
-    bear_signal: 事件合约回落(Q1为一次性)&NII同比转负&EPS<$0.35
-    triggered: null
-  - date: 2026-08
-    event: Rule 605订单执行披露首次适用RHF/RHS+小单报价透明化累积效应
-    bull_signal: PFOF经济性无显著受损
-    bear_signal: 价差收窄、PFOF返佣下降
-    triggered: null
-  - date: 2026-Q4
-    event: 美联储降息路径(每25bp≈-$76M税前营收)
-    bull_signal: 降息暂停/温和,余额增长抵消
-    bear_signal: 降息加速,NII量价双杀
-    triggered: null
-  - date: 2026-Q4
-    event: 《预测市场即赌博法案》立法进展+各州体育合约诉讼判决
-    bull_signal: 法案搁置/CFTC明确管辖,事件合约存续
-    bear_signal: 法案推进/州禁扩大,事件合约被迫收缩
-    triggered: null
-
-cluster_tags: [us-brokerage, retail-fintech, crypto-trading, prediction-markets]
+- date: 2026-08
+  event: Q2 2026 财报(事件合约可持续性+NII趋势+EPS vs guidance)
+  bull_signal: 加密下行但总营收仍双位数增长&事件合约持续$100M+&NII同比正
+  bear_signal: 事件合约回落(Q1为一次性)&NII同比转负&EPS<$0.35
+  triggered: null
+- date: 2026-08
+  event: Rule 605订单执行披露首次适用RHF/RHS+小单报价透明化累积效应
+  bull_signal: PFOF经济性无显著受损
+  bear_signal: 价差收窄、PFOF返佣下降
+  triggered: null
+- date: 2026-Q4
+  event: 美联储降息路径(每25bp≈-$76M税前营收)
+  bull_signal: 降息暂停/温和,余额增长抵消
+  bear_signal: 降息加速,NII量价双杀
+  triggered: null
+- date: 2026-Q4
+  event: 《预测市场即赌博法案》立法进展+各州体育合约诉讼判决
+  bull_signal: 法案搁置/CFTC明确管辖,事件合约存续
+  bear_signal: 法案推进/州禁扩大,事件合约被迫收缩
+  triggered: null
+cluster_tags:
+- us-brokerage
+- retail-fintech
+- crypto-trading
+- prediction-markets

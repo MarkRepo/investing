@@ -1,0 +1,136 @@
+slug: cn-commercial-aerospace
+variant: qwen3.7-max
+topic_type: industry
+display_name: 中国商业航天
+generated: '2026-06-13'
+data_freshness: 'findings 8份 + akshare 2026-06-12'
+
+arenas:
+  - name: 可复用火箭
+    suggested_slug: cn-reusable-rocket
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 9
+      growth: 10
+      competition: 7
+      valuation: 3
+      cycle: 4
+      composite: 7.0
+    tier: deep
+    tier_reason: 利润池最大的 arena（发射服务万亿级），可复用是成本断崖下降的唯一路径。但一级市场估值极贵（蓝箭200亿），A股无纯正标的。
+    upgrade_triggers:
+      - 朱雀三号 Q2 回收成功
+      - 蓝箭 IPO 定价 ≥200 亿
+      - 任一民营火箭实现复用发射
+    monitor_metrics:
+      - 每月回收试验进展
+      - 各公司融资 runway
+      - 发射工位排期
+
+  - name: 卫星制造批产
+    suggested_slug: cn-satellite-manufacturing
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 7
+      growth: 8
+      competition: 5
+      valuation: 4
+      cycle: 5
+      composite: 5.8
+    tier: deep
+    tier_reason: 星座驱动刚需（2.8万颗），批产能力是瓶颈，A股有标的。但当前估值贵（PS 10-15x），需等业绩验证。
+    upgrade_triggers:
+      - 千帆月部署 >100 颗
+      - 民营火箭进入商业化发射
+      - 垣信卫星首次确认收入
+    monitor_metrics:
+      - 千帆/GW 月度在轨数
+      - 卫星工厂产能利用率
+      - 垣信财务报表
+
+  - name: 上游核心配套
+    suggested_slug: cn-aerospace-components
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 6
+      growth: 8
+      competition: 8
+      valuation: 5
+      cycle: 6
+      composite: 6.6
+    tier: deep
+    tier_reason: 技术壁垒最高（发动机3D打印/相控阵/激光通信），量价齐升逻辑最清晰，A股标的业绩兑现度最好。
+    upgrade_triggers:
+      - 蓝箭/天兵发动机批产订单确认
+      - 卫星载荷国产化率 >80%
+      - 激光通信终端批量出货
+    monitor_metrics:
+      - 天鹊发动机月产量
+      - 相控阵 T/R 组件出货量
+      - 激光通信终端订单
+
+  - name: 卫星应用与数据
+    suggested_slug: cn-satellite-applications
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 6
+      growth: 5
+      competition: 3
+      valuation: 3
+      cycle: 5
+      composite: 4.4
+    tier: watch
+    tier_reason: 最接近盈利但受军采/政策影响大，估值已贵（PS 9-15x），需等回调或业绩确认。
+    upgrade_triggers:
+      - 航天宏图海外大单确认收入
+      - PS 降至 5x 以下
+    monitor_metrics:
+      - 航天宏图海外大单确认收入节奏
+      - 中科星图低空经济订单
+
+  - name: 发射场与测控
+    suggested_slug: cn-launch-infrastructure
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 6
+      valuation: null
+      cycle: 4
+      composite: 4.2
+    tier: watch
+    tier_reason: 政策垄断+非上市为主，投资通道有限。
+    upgrade_triggers:
+      - 海南商业发射场二期投用
+      - 新增 5+ 个商业发射工位
+    monitor_metrics:
+      - 海南商业发射场二期进度
+      - 新增发射工位数量
+
+  - name: 太空新业态
+    suggested_slug: cn-space-new-economy
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 9
+      competition: 1
+      valuation: null
+      cycle: 1
+      composite: 2.6
+    tier: eliminated
+    tier_reason: 概念太远（10年+），无可见商业化路径。
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 星舰 $50-200/kg 常态化 + 太空制造有实证商业案例
+
+cluster_tags:
+  - commercial-aerospace
+  - cn-space
+  - reusable-rocket
+  - satellite-constellation

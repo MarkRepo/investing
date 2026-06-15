@@ -18,3 +18,46 @@ entries:
   n_mid: 3
   n_low: 0
   disposition: registered
+- searched_at: '2026-06-14T08:58:46.519753+00:00'
+  query: '[daily-monitor] signpost:2026 Q2 业绩会披露大陆口径 + 罚没是否计提｜bear:大陆利润占比 >25%、罚没追溯扩大'
+  triggered_by: 06-daily-monitor
+  n_results: 4
+  n_high: 2
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-14T08:58:56.943050+00:00'
+  query: '[daily-monitor] signpost:2026 净利 YoY 轨迹 vs 峰值 + NII(利息净收入)指引方向(盈利压缩 bear
+    关键 signpost)｜bear:净利 YoY 转负 或 NII 指引下修——"10x 便宜"立论作废(无需命门1 输)'
+  triggered_by: 06-daily-monitor
+  n_results: 3
+  n_high: 1
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-14T08:59:03.947542+00:00'
+  query: '[daily-monitor] kill:非大陆付费户净增 < 50 万/年 或 海外持续亏损获客 (引擎独立性证伪)'
+  triggered_by: 06-daily-monitor
+  n_results: 3
+  n_high: 2
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-14T08:59:10.611079+00:00'
+  query: '[daily-monitor] kill:任一财报/披露证实大陆收入或税前利润占比 >25% (命门1 反向)。一手 SEC EX-99.1 复核:报表仅"港
+    vs 其他"未拆大陆;此前据二手电话会"大陆是收入重要部分"上调的偏空口径,经查不在一手 press release(系电话会转述),降回未确认。硬阈值未触发,黑箱未缩小'
+  triggered_by: 06-daily-monitor
+  n_results: 2
+  n_high: 1
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-14T09:15:56.088682+00:00'
+  query: FUTU 2026-06 卖方评级下修(GS Neutral $102/JPM Neutral $87/MS OW $225) + JPM 大陆敞口测算(营收-20%/盈利-30%)
+    + 大陆App下架
+  triggered_by: 05-critic
+  n_results: 4
+  n_high: 1
+  n_mid: 0
+  n_low: 3
+  disposition: registered

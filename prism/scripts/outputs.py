@@ -621,13 +621,37 @@ def validate_manifest_coverage(slug: str, variant: str, version: int) -> dict:
             "uncovered": thesis_ks, "covered": [], "coverage_pct": 0,
             "manifest_exists": False,
         }
-    # mat address 可能含 @event 锚（如 K1@2026Q2-earnings），按 key 归桶
-    by_key: dict[str, list] = {k: [] for k in thesis_ks}
-    for mat in m.get("materials", []) or []:
+    # 证据按 K# 归桶，**与 gap_detector 同源**：manifest 材料层（粗）∪ findings 层（细，
+    # 03 抽取产出），按来源 id 去重（同一材料与其 finding 不重复计）。mat address 可能含
+    # @event 锚（如 K1@2026Q2-earnings），按 key 归桶。
+    # 旧 bug：只数材料层 addresses，漏掉只在 findings 层打 K# 标的 topic（prescan 入库的
+    # 材料层多为 scope/background 占位）→ 误报「实际收集覆盖 0%」。本版对齐 gap_detector
+    # 的 ev_sources 取并逻辑，使徽章反映真实收集证据。
+    materials = m.get("materials", []) or []
+    by_id: dict[str, dict] = {
+        (mat.get("id") or f"mat:{mat.get('filename')}"): mat for mat in materials
+    }
+    ev: dict[str, dict] = {k: {} for k in thesis_ks}  # k -> {source_id: entry}
+    for mat in materials:
+        mid = mat.get("id") or f"mat:{mat.get('filename')}"
         for a in mat.get("addresses") or []:
             key = a.split("@", 1)[0] if isinstance(a, str) else ""
-            if key in by_key:
-                by_key[key].append(mat)
+            if key in ev:
+                ev[key].setdefault(mid, mat)
+    try:
+        from .findings import list_all_findings
+        for f in list_all_findings(slug, variant):
+            fid = f.get("mat_id") or str(f.get("path"))
+            entry = by_id.get(fid) or {
+                "id": fid, "filename": f.get("path"), "source_type": "finding",
+            }
+            for a in f.get("addresses") or []:
+                key = a.split("@", 1)[0] if isinstance(a, str) else ""
+                if key in ev:
+                    ev[key].setdefault(fid, entry)
+    except Exception:
+        pass
+    by_key: dict[str, list] = {k: list(ev[k].values()) for k in thesis_ks}
     covered = [k for k in thesis_ks if by_key[k]]
     uncovered = [k for k in thesis_ks if not by_key[k]]
     pct = round(100 * len(covered) / len(thesis_ks)) if thesis_ks else 0

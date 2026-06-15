@@ -3,7 +3,7 @@ display_name: 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)
 type: company
 created: '2026-05-31T17:03:16.647852+00:00'
 status: active
-stage: 04-post-synthesis
+stage: done
 parent_topic: null
 monitoring_tier: dormant
 concepts: []
@@ -20,28 +20,34 @@ scope:
   short_name: 富途控股
 outputs_state:
   00_primer:
-    version: 1
-    last_updated: '2026-05-31T17:31:42.973999+00:00'
-    status: fresh
-    data_freshness: null
-    referenced_mat_ids:
-    - mat-11c36c
-    - mat-50b810
-    - mat-6dcbc7
-    - mat-7d7192
-    - mat-a596c8
-    - mat-a8e4f0
-    - mat-d2f5c8
-    last_error: null
-    critic_passed: true
-  c_investment_case:
-    version: 5
-    last_updated: '2026-06-06T04:23:59.004188+00:00'
+    version: 2
+    last_updated: '2026-06-14T10:58:38.036304+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
     - mat-11c36c
     - mat-3e4456
+    - mat-4d2cb9
+    - mat-50b810
+    - mat-6dcbc7
+    - mat-7d7192
+    - mat-8107dd
+    - mat-83d446
+    - mat-a596c8
+    - mat-a8e4f0
+    - mat-b01cff
+    - mat-d2f5c8
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 6
+    last_updated: '2026-06-14T10:57:36.545286+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-11c36c
+    - mat-3e4456
+    - mat-4d2cb9
     - mat-50b810
     - mat-6dcbc7
     - mat-7d7192
@@ -53,20 +59,21 @@ outputs_state:
     - mat-d2f5c8
     last_error: null
   08_living_feed:
-    version: 3
-    last_updated: '2026-06-05T23:57:01.624132+00:00'
+    version: 11
+    last_updated: '2026-06-15T00:19:03.537178+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
   07_decision_kit:
-    version: 5
-    last_updated: '2026-06-06T04:23:59.012896+00:00'
+    version: 6
+    last_updated: '2026-06-14T10:57:36.568640+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
     - mat-11c36c
     - mat-3e4456
+    - mat-4d2cb9
     - mat-50b810
     - mat-6dcbc7
     - mat-7d7192
@@ -79,9 +86,9 @@ outputs_state:
     last_error: null
 parent_materials: []
 next_actions:
-- 已按 05-critic 第2轮 request-rewrite 重写 c_investment_case v5 + 07_decision_kit v5 +
-  thesis_v4（环④双-bear下行轴敏感性 + 盈利压缩路径 + consensus双标修正 + 镜鉴纠错；强度6→5、观望default）
-- 可再喊「评审 global-futu」复评（验证 v5 是否拆掉本轮致命一击），或进 06-daily-monitor
+- 研究主题已闭环，下一步「监控 global-futu」启动 06-daily-monitor
+- thesis_v5 已通过 critic-review
+- critic 评审：第4轮复评 v6(独立多头反方,与第3轮空头相反方向):第3轮致命一击峰值-E双标已被v6实质拆除;本轮多头最强点(Q1经营加速被偏空不对称处理/Base中点偏低)case已大体应答(取midpoint非bear底+明文Q1未兑现压缩+设H2上修signpost),属配权分歧非框架漏洞,反方亦偏早(Q1仅降息第一leg)。评分逻辑4/证据4/反面5/透明5/整体4。"中性4/10/现价基本公允/观望/绝不裸空"经复评成立,分歧仅在再偏多半档配权。approve→done。
 user_todos:
 - task: (已收·待析) FUTU 2025 年报/20-F + 业绩会的分部+地域营收/利润拆解，定位大陆真实利润占比
   priority: P0
@@ -312,12 +319,11 @@ monitoring:
   enabled: false
   cadence: daily
 critic:
-  verdict: request-rewrite
-  summary: 第2轮复评 v4：EV 敏感性表只对概率做、bear 下行钉死 −33%，与环⑤ KILL-A "政策性杀跌无底"矛盾；按作者自己 de-rate
-    下行(−55~−58%)代回 bear-tilt EV 即翻负(−4~−13%)。另暴露独立于命门1黑箱的下行洞：EV 三档全是 multiple re-rate，无一档建模峰值TTM净利当分母+2026降息/ADV收缩致盈利下滑→前瞻13-15x。重写环④敏感性轴+新增盈利压缩情形+环②修consensus双标/环⑤修滴滴镜鉴。
-  at: '2026-06-05T23:57:01.610991+00:00'
-  thesis_version: 3
-  next_stage: 04-synthesizing
+  verdict: approve
+  summary: 第4轮复评 v6(独立多头反方,与第3轮空头相反方向):第3轮致命一击峰值-E双标已被v6实质拆除;本轮多头最强点(Q1经营加速被偏空不对称处理/Base中点偏低)case已大体应答(取midpoint非bear底+明文Q1未兑现压缩+设H2上修signpost),属配权分歧非框架漏洞,反方亦偏早(Q1仅降息第一leg)。评分逻辑4/证据4/反面5/透明5/整体4。"中性4/10/现价基本公允/观望/绝不裸空"经复评成立,分歧仅在再偏多半档配权。approve→done。
+  at: '2026-06-15T00:19:03.520572+00:00'
+  thesis_version: 5
+  next_stage: done
 decomposition:
   current_version: 1
   last_updated: '2026-05-31T17:37:00.190194+00:00'
@@ -334,8 +340,8 @@ decomposition:
     convergence_status: converged
     changelog: 命门1 中→中-(黑箱不可证伪); 命门3 中→中+(海外兑现); primer 新增8.5盯盘表; 残留缺口=命门1黑箱+consensus未收
 thesis:
-  current_version: 4
-  last_updated: '2026-06-06T04:23:59.021574+00:00'
+  current_version: 5
+  last_updated: '2026-06-14T10:57:36.622389+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -372,6 +378,10 @@ thesis:
     set_at: '2026-06-06T04:23:59.021576+00:00'
     summary: 中性偏多但赔率双向化 5/10（自6/10下调）：质量真好但10x建立在峰值盈利+政策尾部无底之上。v4修正v3-case被掩盖的两真相——①政策de-rate
       bear真实下行−56%(对齐KILL-A/滴滴)非v4钉死的−33%；②独立于命门1黑箱的盈利压缩bear(峰值E当分母,25Q4已触发)。EV双轴重算跨零：偏多配权+25%→bear-tilt+4%→重bear−6%→灾难−14%。默认零仓观望待2026-Q2,小仓试探≤2%仅在≤$85,绝不裸空。
+  - version: 5
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-14T10:57:36.622397+00:00'
+    summary: 中性/现价基本公允非错杀 4/10(自5/10下调):Base去峰值-E后正常化~$110(+13%),错杀安全垫蒸发;EV偏多+12%→bear-tilt-6%→灾难-22%(中位贴零偏负);consensus纠偏后bear档$87-102已落现价之下。franchise仍优/罚没一次性/Q1经营加速→不看空、绝不裸空,但质量高≠现价值得买。默认零仓观望待2026-Q2/H2,小仓≤2%仅在≤$80。
 canonical: true
 stage_history:
 - stage: 04-post-synthesis
@@ -385,6 +395,15 @@ stage_history:
     empty_pending_decision: 0
 - stage: 04-post-synthesis
   entered_at: '2026-06-06T04:24:46.650277+00:00'
+  exited_at: '2026-06-14T10:57:36.672449+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-06-14T10:57:36.672449+00:00'
   exited_at: null
   gap_snapshot:
     uncovered_ks: []
@@ -392,3 +411,8 @@ stage_history:
     - historical-mirror
     autofetch_debt: 0
     empty_pending_decision: 0
+pending_thesis_review:
+  since: '2026-06-14T08:58:56.946618+00:00'
+  reason: 报表净利YoY -61%,bull'维持正增'证伪→翻bear;但纯一次性CSRC罚没驱动,营收反+25%,留thesis review判10x立论存续。
+  proposal_id: 36d34e02465c
+  locator: e4105196

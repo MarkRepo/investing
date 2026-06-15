@@ -1,0 +1,41 @@
+slug: cn-reusable-rocket
+display_name: 中国可复用商业火箭
+type: arena
+created: '2026-06-14T14:07:17.537334+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-commercial-aerospace
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 中国民营可复用商业火箭赛道：头部梯队（蓝箭/天兵/星河动力等）可复用闭环2026-2027兑现节奏、单位经济性与降本曲线、星座采购份额、蓝箭IPO定价与一级退出健康度
+  depth: deep
+  short_name: 可复用火箭
+  search_terms:
+  - 可复用火箭
+  - 朱雀三号 复飞
+  - 火箭 一级回收
+  - 蓝箭 IPO
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-14T14:08:19.842265+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-06-14T14:08:19.842383+00:00'
+    summary: 可复用火箭是中国商业航天胜负手，方向定但闭环未兑现（朱雀三号回收失败/天龙三号解体）、当前不占可投性价比；价值取决于2026-2027复飞节奏与蓝箭IPO定价（强度5/10）

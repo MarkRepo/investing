@@ -159,3 +159,11 @@ entries:
   n_mid: 2
   n_low: 0
   disposition: registered
+- searched_at: '2026-06-14T08:59:14.072926+00:00'
+  query: '[daily-monitor] kill:加密收入再现≥30%同比/环比下滑且交易总收入未被补上(总营收同比转负或个位数)→多元化平滑论证伪'
+  triggered_by: 06-daily-monitor
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered

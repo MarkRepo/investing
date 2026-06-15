@@ -1,0 +1,319 @@
+slug: cn-commercial-aerospace
+display_name: 中国商业航天
+type: industry
+created: '2026-06-13T00:51:58.814898+00:00'
+status: active
+stage: 05-critic-review
+canonical: false
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 中国商业航天行业全维度研究：市场空间与增速、竞争格局与头部玩家、政策驱动与监管框架、技术路线分化、投资赛道筛选与标的推荐
+  depth: deep
+  search_terms:
+  - 商业航天 市场规模
+  - 火箭发射 竞争格局
+  - 卫星互联网
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-13T03:11:08.808334+00:00'
+    status: draft
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-2e8c9e
+    - mat-4590a8
+    - mat-509e4f
+    - mat-529ab5
+    - mat-87d082
+    - mat-b7ddcb
+    - mat-f11ab9
+    - mat-f33f66
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-06-13T03:11:08.801660+00:00'
+      warnings:
+      - 正文 3817 字 < deep 地板 6000
+      - 缺自检清单节
+      - 未过 critic（set_output_critic_passed 未置位）
+  i_industry_case:
+    version: 1
+    last_updated: '2026-06-13T03:11:08.828428+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-2e8c9e
+    - mat-4590a8
+    - mat-509e4f
+    - mat-529ab5
+    - mat-87d082
+    - mat-b7ddcb
+    - mat-f11ab9
+    - mat-f33f66
+    last_error: null
+  industry_to_arenas:
+    version: 1
+    last_updated: '2026-06-13T03:11:08.845652+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-2e8c9e
+    - mat-4590a8
+    - mat-509e4f
+    - mat-529ab5
+    - mat-87d082
+    - mat-b7ddcb
+    - mat-f11ab9
+    - mat-f33f66
+    last_error: null
+parent_materials: []
+next_actions:
+- Industry 合成已完成：00_primer + i_industry_case + industry_to_arenas + thesis_v1
+- 说「prism 评审 cn-commercial-aerospace」跑对抗式 steelman（可选）
+- 或为深挖档 arena 推进研究（说「prism 推进 cn-reusable-rocket」）
+user_todos:
+- task: 下载朱雀三号首飞技术复盘报告（蓝箭航天官方/国家航天局）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 蓝箭官网 landspace.com + CNSA
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-f33f66
+  last_fetch_note: 界面新闻深度+蓝箭官方+CNSA
+- task: 下载 3 份卖方深度研报（中信/中金/中泰任选，覆盖商业航天产业链）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  - K4
+  source_hint: 同花顺/Wind/卖方公众号
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-b7ddcb
+  last_fetch_note: exa→国金证券/中信建投深度报告摘要+核心观点
+- task: GW/千帆星座 2025 年实际发射部署数据（卫星数量+火箭型号）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 航天科技集团 IR + 垣信卫星官网
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-87d082
+  last_fetch_note: exa→21世纪经济/证券时报/东方财富
+- task: 蓝箭航天 IPO 申报材料或路演材料（估值/财务/订单）
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K4
+  source_hint: 证监会/上交所网站 + 投资界
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-2e8c9e
+  last_fetch_note: exa→上交所官网PDF招股书全文
+- task: 天兵科技天龙三号/深蓝航天星云一号 2026 首飞进度跟踪
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 公司官网 + 航天自媒体（航天爱好者/小火箭）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-b7ddcb
+  last_fetch_note: exa→界面新闻/财联社/澎湃
+- task: 中国商业发射工位分布与排期（酒泉/文昌/海阳/东风）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 国家航天局 + 地方政府公开文件
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-87d082
+  last_fetch_note: 财联社报道：18运营+7在建+海南二期+酒泉海阳东风
+- task: SpaceX 2025-2026 年发射频次+星舰进展+最新估值
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: SpaceX 官网 + NASASpaceflight + Bloomberg
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-f11ab9
+  last_fetch_note: exa→Morningstar/SpaceXNow/NAVADHI
+- task: A 股商业航天标的当前估值表（航天宏图/中科星图/中国卫通等 PE/PS/市值）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: Wind/同花顺
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-f11ab9
+  last_fetch_note: exa→理杏仁/东吴/德邦/国泰海通
+- task: 《推进商业航天高质量安全发展行动计划（2025-2027 年）》全文 22 条
+  priority: P2
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: 国家航天局官网
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-4590a8
+  last_fetch_note: exa→CNSA官网全文
+- task: 中国航天历史镜鉴：早年长征火箭国际市场挫折 + 鑫诺卫星事件
+  priority: P2
+  info_tier: hard
+  addresses: []
+  source_hint: 航天史料/专家访谈
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-509e4f
+  last_fetch_note: exa→科普中国/中科院+央视网
+- task: 资料提取完成：29 份全部处理，8 份 findings 已写入
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: Industry 合成完成：primer + 6 环决策链 + 6 arena 分流 + thesis_v1
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-13T03:11:08.897677+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-13T00:57:06.142033+00:00'
+    summary: 命门A=可复用火箭工程化节奏(中); 命门B=星座组网需求→实际订单(高); 命门C=资本退出与估值可持续(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 05-critic-review
+    set_at: '2026-06-13T03:11:08.897707+00:00'
+    summary: 命门A=可复用火箭工程化节奏(中→中); 命门B=星座组网需求→实际订单(高→中，千帆落后); 命门C=资本退出与估值(中→中)
+    convergence_status: converged
+thesis:
+  current_version: 1
+  last_updated: '2026-06-13T03:11:08.856472+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-13T00:56:17.251073+00:00'
+    summary: 中国商业航天正处于技术验证→规模化拐点（7/10）：2026年5+民营液体火箭首飞+星座组网加速+政策资本双重催化，但可复用尚未成功、估值部分透支
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 90%（9/10，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 05-critic-review
+    set_at: '2026-06-13T03:11:08.856490+00:00'
+    summary: 中国商业航天正处于技术验证→规模化拐点但估值已透支1-2年(7/10维持)；深挖可复用火箭/卫星制造/上游配套三arena
+    prescan_status: partial
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-13T00:57:06.148102+00:00'
+  exited_at: '2026-06-13T01:02:24.208240+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-06-13T01:02:24.208240+00:00'
+  exited_at: '2026-06-13T01:13:48.483211+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 2
+- stage: 03-extracting
+  entered_at: '2026-06-13T01:13:48.483211+00:00'
+  exited_at: '2026-06-13T03:05:47.596620+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-06-13T03:05:47.596620+00:00'
+  exited_at: '2026-06-13T03:11:08.913470+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-13T03:11:08.913470+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

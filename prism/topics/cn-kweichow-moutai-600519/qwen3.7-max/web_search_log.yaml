@@ -1,0 +1,99 @@
+slug: cn-kweichow-moutai-600519
+variant: qwen3.7-max
+entries:
+- searched_at: '2026-06-13T03:09:56.406695+00:00'
+  query: 贵州茅台 2025年一季报 营收 合同负债
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-06-13T03:09:56.407732+00:00'
+  query: 飞天茅台 批价 2025年6月
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-06-13T03:09:56.418798+00:00'
+  query: 贵州茅台 2024年报 营收 净利润 分红
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 3
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-13T03:09:56.424292+00:00'
+  query: 贵州茅台 丁雄军 董事长 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-13T03:09:56.431067+00:00'
+  query: 贵州茅台 PE TTM 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-13T03:10:50.539019+00:00'
+  query: 茅台1935 销售 2024 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-06-13T03:10:50.547881+00:00'
+  query: 白酒行业 消费税 改革 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-13T03:10:50.549711+00:00'
+  query: 白酒 经销商库存 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-06-13T03:50:35.402101+00:00'
+  query: 2013 2014 白酒 反腐 三公消费 茅台 批价 调整期
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-06-13T03:50:35.441613+00:00'
+  query: 贵州茅台 2026年 二季度 动销 恢复
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 1
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-13T03:50:35.444188+00:00'
+  query: i茅台 2026 月活 MAU 成交额
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-06-13T03:50:35.447026+00:00'
+  query: 白酒 LVMH 奢侈品 品牌力 对比 估值
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered

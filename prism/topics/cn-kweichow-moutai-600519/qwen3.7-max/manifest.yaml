@@ -1,0 +1,906 @@
+slug: cn-kweichow-moutai-600519
+variant: qwen3.7-max
+updated: '2026-06-13T05:22:40.650924+00:00'
+materials:
+- id: mat-c8db4f
+  filename: 2026-06-13_贵州茅台2024年营收净利同比双增拟分红346-7亿元---半月谈.md
+  source_type: web-search
+  added: '2026-06-13T03:09:56.411111+00:00'
+  processed: false
+  notes: query='贵州茅台 2024年报 营收 净利润 分红' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2024年报 营收 净利润 分红
+    url: http://www.banyuetan.org/qyzx/detail/20250403/1000200033137541743668582359892534_1.html
+    domain: banyuetan.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-13T03:09:56.410467+00:00'
+    stale_at: '2026-07-13T03:09:56.410467+00:00'
+    expire_at: '2026-09-11T03:09:56.410467+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1343c7
+  filename: 2026-06-13_贵州茅台-业绩连续24年增长-预收款稳超百亿-分红-回购-双轮驱动.md
+  source_type: web-search
+  added: '2026-06-13T03:09:56.414204+00:00'
+  processed: false
+  notes: query='贵州茅台 2024年报 营收 净利润 分红' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2024年报 营收 净利润 分红
+    url: https://www.stcn.com/article/detail/1641111.html
+    domain: stcn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-13T03:09:56.413251+00:00'
+    stale_at: '2026-07-13T03:09:56.413251+00:00'
+    expire_at: '2026-09-11T03:09:56.413251+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ec0261
+  filename: 2026-06-13_贵州茅台2024年实现营收1708-99亿元---酒类流通监测统计与管理.md
+  source_type: web-search
+  added: '2026-06-13T03:09:56.417631+00:00'
+  processed: false
+  notes: query='贵州茅台 2024年报 营收 净利润 分红' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2024年报 营收 净利润 分红
+    url: https://jljcscyxs.mofcom.gov.cn/efile/html/yjbg/2025/4/1745214927379205.html
+    domain: jljcscyxs.mofcom.gov.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-13T03:09:56.416440+00:00'
+    stale_at: '2026-07-13T03:09:56.416440+00:00'
+    expire_at: '2026-09-11T03:09:56.416440+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-854cb1
+  filename: 2026-06-13_贵州茅台原董事长丁雄军涉嫌受贿-洗钱---证券时报.md
+  source_type: web-search
+  added: '2026-06-13T03:09:56.422778+00:00'
+  processed: false
+  notes: query='贵州茅台 丁雄军 董事长 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 丁雄军 董事长 2025
+    url: https://www.stcn.com/article/detail/3900362.html
+    domain: stcn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-13T03:09:56.421239+00:00'
+    stale_at: '2026-07-13T03:09:56.421239+00:00'
+    expire_at: '2026-09-11T03:09:56.421239+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8c16e0
+  filename: 2026-06-13_贵州茅台2025年年报出炉茅台酒保持增长态势---新华网.md
+  source_type: web-search
+  added: '2026-06-13T03:09:56.429208+00:00'
+  processed: false
+  notes: query='贵州茅台 PE TTM 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 PE TTM 2025
+    url: https://www.news.cn/enterprise/20260417/340a7d4e5e114425938635001a79efe4/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-13T03:09:56.427207+00:00'
+    stale_at: '2026-07-13T03:09:56.427207+00:00'
+    expire_at: '2026-09-11T03:09:56.427207+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f768c3
+  filename: 2026-06-13_白酒行业2025年终观察-深水区破局前行-重构中锚定新增长曲线.md
+  source_type: web-search
+  added: '2026-06-13T03:10:50.545450+00:00'
+  processed: false
+  notes: query='白酒行业 消费税 改革 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒行业 消费税 改革 2025
+    url: https://www.news.cn/food/20251231/970071d1a546486ea04b216e3667c66c/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-13T03:10:50.542991+00:00'
+    stale_at: '2026-07-13T03:10:50.542991+00:00'
+    expire_at: '2026-09-11T03:10:50.542991+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-663061
+  filename: 2025_600519_annual_2026-04-16_贵州茅台.PDF
+  source_type: annual-report
+  added: '2026-06-13T03:13:58.387761+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+  - K2
+- id: mat-7de391
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台关于职工董事选举结果的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:58.932609+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-c6184f
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台2025年度股东会决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.025912+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-3f8252
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台第五届董事会2026年度第一次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.112815+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-0ae7c3
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台董事、高级管理人员考核和薪酬管理办法.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.207118+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-24b21d
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台关于聘任董事会秘书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.285842+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-f50084
+  filename: 2026-06-02_600519_announce_kzz_贵州茅台关于调整2025年年度利润分配方案每股分红金额的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.373087+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K5
+- id: mat-0e8086
+  filename: 2026-06-02_600519_announce_kzz_贵州茅台2025年度股东会会议资料.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.471981+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-7ee50b
+  filename: 2026-05-27_600519_announce_kzz_贵州茅台关于回购股份实施结果暨股份变动的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.591810+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K5
+- id: mat-b06822
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台关于召开2025年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.697690+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-39073f
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台关于聘任董事会秘书的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.786534+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-dd8273
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台关于与关联方签订《商标许可协议》的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.884446+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-03a742
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台第四届董事会2026年度第八次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:13:59.988672+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-51d89d
+  filename: 2026-05-07_600519_announce_kzz_贵州茅台关于回购股份实施进展的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:00.082144+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K5
+- id: mat-a82e5b
+  filename: 2026-04-28_600519_announce_kzz_贵州茅台关于召开2025年度及2026年第一季度业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:00.201892+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K1
+  - K2
+- id: mat-4b60fd
+  filename: 2026-04-24_600519_announce_kzz_贵州茅台2026年第一季度主要经营数据公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:00.300683+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K1
+  - K2
+- id: mat-c9b23c
+  filename: 2026-04-24_600519_announce_kzz_贵州茅台2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:00.401777+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K1
+  - K2
+- id: mat-a8cb1c
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台关于贵州茅台集团财务有限公司的风险评估报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:00.511912+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-ff85db
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台2025年年度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:00.649222+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K1
+  - K2
+- id: mat-6d6a5f
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台第四届董事会2026年度第六次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:00.767692+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-2c1036
+  filename: 2026_600519_quarterly_2026-04-24_贵州茅台.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:01.344223+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K1
+  - K2
+- id: mat-fb879c
+  filename: 2025_000858_annual_2026-04-30_五粮液.PDF
+  source_type: annual-report
+  added: '2026-06-13T03:14:03.283069+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K2
+- id: mat-992fb3
+  filename: 2026-06-08_000858_announce_kzz_2025年度股东会议案资料（更新后）.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.003348+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-f05b0b
+  filename: 2026-06-08_000858_announce_kzz_关于2025年度股东会增加临时提案暨股东会补充通知的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.113211+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-243d3a
+  filename: 2026-06-08_000858_announce_kzz_第七届董事会2026年第6次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.217265+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-ab58f2
+  filename: 2026-06-01_000858_announce_kzz_关于首次回购公司股份暨回购进展的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.317300+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+  - K5
+- id: mat-e88591
+  filename: 2026-06-01_000858_announce_kzz_2025年度股东会议案资料（更新前）.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.425190+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-8080b5
+  filename: 2026-06-01_000858_announce_kzz_关于召开2025年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.536285+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-1bd69e
+  filename: 2026-06-01_000858_announce_kzz_第七届董事会2026年第5次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.642444+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-368986
+  filename: 2026-05-20_000858_announce_kzz_关于以集中竞价交易方式回购公司股份的回购报告书.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.749177+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+  - K5
+- id: mat-3a0de7
+  filename: 2026-05-18_000858_announce_kzz_关于回购股份事项通知债权人的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.859870+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+  - K5
+- id: mat-d35beb
+  filename: 2026-05-18_000858_announce_kzz_《董事、高级管理人员薪酬管理制度》.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:04.971441+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-1416da
+  filename: 2026-05-18_000858_announce_kzz_2026年第一次临时股东会决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:05.078724+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-6b3a65
+  filename: 2026-05-15_000858_announce_kzz_关于回购股份事项前十大股东及前十大无限售条件股东持股情况的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:05.169591+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+  - K5
+- id: mat-569ff6
+  filename: 2026-05-11_000858_announce_kzz_关于回购股份事项前十大股东及前十大无限售条件股东持股情况的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:05.259386+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+  - K5
+- id: mat-636fc9
+  filename: 2026-05-11_000858_announce_kzz_2026年第一次临时股东会议案资料.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:05.367972+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-d8a0e3
+  filename: 2026-05-06_000858_announce_kzz_关于2026年第一次临时股东会增加临时提案暨股东会补充通知的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:05.475977+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-ed1e98
+  filename: 2026-05-06_000858_announce_kzz_关于四川省宜宾五粮液集团有限公司增持公司股票计划的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:05.575194+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-52f487
+  filename: 2026-04-30_000858_announce_kzz_2025年半年度报告（更新后）.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:05.707748+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-8c507d
+  filename: 2026-04-30_000858_announce_kzz_2025年第一季度报告（更新后）.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:05.835353+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-400a4c
+  filename: 2026-04-30_000858_announce_kzz_2025年第三季度报告（更新后）.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:05.937068+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-381951
+  filename: 2026-04-30_000858_announce_kzz_2025年度涉及财务公司关联交易的存款、贷款等金融业务的专项说明.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:06.436709+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - scope
+- id: mat-ae4288
+  filename: 2026_000858_quarterly_2026-04-30_五粮液.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:07.076221+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-38500a
+  filename: 2025_000568_annual_2026-04-28_泸州老窖.PDF
+  source_type: annual-report
+  added: '2026-06-13T03:14:08.764274+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K2
+- id: mat-c19ff8
+  filename: 2026-06-08_000568_announce_kzz_关于泸州老窖浓香国酒体验营销中心建设项目关联交易的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:09.440249+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - scope
+- id: mat-387e53
+  filename: 2026-06-08_000568_announce_kzz_2025年度股东会议案资料.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:09.581944+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-581386
+  filename: 2026-06-08_000568_announce_kzz_关于召开2025年度股东会的通知.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:09.713086+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-c02911
+  filename: 2026-06-08_000568_announce_kzz_第十一届董事会二十五次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:09.821169+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-f50439
+  filename: 2026-05-14_000568_announce_kzz_泸州老窖股份有限公司关于召开2025年度网上业绩说明会的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:09.935922+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - scope
+- id: mat-5856a5
+  filename: 2026-04-28_000568_announce_kzz_2025年环境、社会及治理（ESG）报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:10.854080+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-ef57d4
+  filename: 2026-04-28_000568_announce_kzz_关于募集资金2025年度存放与使用情况的专项报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:10.996872+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - scope
+- id: mat-6b72de
+  filename: 2026-04-28_000568_announce_kzz_关于提请股东会授权董事会制定中期分红方案的公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:11.097028+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+  - K5
+- id: mat-7bd616
+  filename: 2026-04-28_000568_announce_kzz_第十一届董事会二十四次会议决议公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:11.196837+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-af1263
+  filename: 2026-04-28_000568_announce_kzz_2025年度利润分配预案.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:11.326699+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+  - K5
+- id: mat-2b4016
+  filename: 2026-04-28_000568_announce_kzz_2026年一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:11.456023+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-8bbde0
+  filename: 2026-04-28_000568_announce_kzz_募集资金年度存放与使用情况鉴证报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:11.599568+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - scope
+- id: mat-0b6f75
+  filename: 2026-04-28_000568_announce_kzz_关于泸州老窖股份有限公司2025年度非经营性资金占用及其他关联资金往来的专项说明.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:11.729276+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - scope
+- id: mat-a678f6
+  filename: 2026-04-28_000568_announce_kzz_2025年度非经营性资金占用及其他关联资金往来情况汇总表.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:11.865308+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - scope
+- id: mat-594b5b
+  filename: 2026-04-28_000568_announce_kzz_2025年度董事会工作报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:11.992022+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-4157a3
+  filename: 2026_000568_quarterly_2026-04-28_泸州老窖.PDF
+  source_type: quarterly-report
+  added: '2026-06-13T03:14:12.672218+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+  addresses:
+  - K2
+- id: mat-d4833f
+  filename: 2025白酒中期研究报告_中酒协_毕马威.pdf
+  source_type: industry-research
+  added: '2026-06-13T03:16:18.215878+00:00'
+  processed: true
+  notes: 中国酒业协会×毕马威 2025-06
+  mineru_state: needs
+  addresses:
+  - K1
+  - K2
+- id: mat-a772e3
+  filename: 中信建投_茅台25Q4业绩出清_20260417.md
+  source_type: sell-side-note
+  added: '2026-06-13T03:16:18.235223+00:00'
+  processed: true
+  notes: 中信建投 2026-04-17
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+- id: mat-e11e0f
+  filename: 卖方观点汇总_中金_华源_第一上海.md
+  source_type: sell-side-note
+  added: '2026-06-13T03:17:51.611839+00:00'
+  processed: true
+  notes: 中金/华源/第一上海
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+- id: mat-54df78
+  filename: 飞天茅台批价走势_2024-2026.md
+  source_type: market-data
+  added: '2026-06-13T03:17:51.631972+00:00'
+  processed: true
+  notes: 批价关键节点汇总
+  mineru_state: not_needed
+  addresses:
+  - K1
+- id: mat-c2ebed
+  filename: 茅台管理层变动_陈华_2025.md
+  source_type: company-governance
+  added: '2026-06-13T03:17:51.651897+00:00'
+  processed: true
+  notes: 陈华背景+5年4任董事长
+  mineru_state: not_needed
+  addresses:
+  - K2
+- id: mat-d30216
+  filename: 白酒消费税改革_2025-2026.md
+  source_type: policy
+  added: '2026-06-13T03:17:51.672056+00:00'
+  processed: true
+  notes: 消费税后移+影响测算
+  mineru_state: not_needed
+  addresses:
+  - K3
+- id: mat-c3536a
+  filename: 2026-06-13_白酒业绩说明会释放了哪些信号.md
+  source_type: web-search
+  added: '2026-06-13T03:50:35.432150+00:00'
+  processed: false
+  notes: query='贵州茅台 2026年 二季度 动销 恢复' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2026年 二季度 动销 恢复
+    url: https://www.stcn.com/article/detail/3908742.html
+    domain: stcn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-13T03:50:35.419673+00:00'
+    stale_at: '2026-07-13T03:50:35.419673+00:00'
+    expire_at: '2026-09-11T03:50:35.419673+00:00'
+    triggered_by: 01-prescan
+- id: mat-37920a
+  filename: 贵州茅台2026Q1详解_增速转正.md
+  source_type: sell-side-note
+  added: '2026-06-13T03:50:35.460596+00:00'
+  processed: true
+  notes: 2026Q1营收+6.34%/净利+1.47%/毛利率89.76%/i茅台1月月活1531万
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+- id: mat-fdd514
+  filename: 2013-2014白酒反腐调整期复盘.md
+  source_type: industry-research
+  added: '2026-06-13T03:50:35.481513+00:00'
+  processed: true
+  notes: historical-mirror：上轮调整期批价-60%/PE-55%/恢复3年
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - historical-mirror
+- id: mat-f65331
+  filename: 酒业家_白酒渠道库存调研_20260307.md
+  source_type: industry-research
+  added: '2026-06-13T04:57:12.561046+00:00'
+  processed: true
+  notes: 酒业家一线调研：80%+经销商库存缓解，部分低于2019年，茅台经销商零库存
+  mineru_state: not_needed
+  addresses:
+  - K1
+  rings:
+  - biz-moat-unit-econ

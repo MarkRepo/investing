@@ -1,0 +1,187 @@
+slug: us-eli-lilly
+variant: opus4.8
+entries:
+- searched_at: '2026-06-12T06:16:27.371310+00:00'
+  query: Eli Lilly orforglipron Phase 3 ATTAIN ACHIEVE results weight loss data 2025
+    2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:16:27.383293+00:00'
+  query: Eli Lilly LLY stock price market cap forward PE valuation 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:16:27.408314+00:00'
+  query: Eli Lilly Q1 2026 earnings revenue Mounjaro Zepbound sales results
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:16:27.444347+00:00'
+  query: Eli Lilly 2025 full year revenue results tirzepatide annual sales
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:16:27.517836+00:00'
+  query: Medicare coverage anti-obesity drugs CMS final rule GLP-1 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:02.152768+00:00'
+  query: Eli Lilly retatrutide Phase 3 triple agonist results timeline 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:02.190644+00:00'
+  query: Novo Nordisk CagriSema next gen obesity pipeline vs Lilly competition 2025
+    2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:02.271802+00:00'
+  query: Amgen MariTide Phase 3 results Viking VK2735 obesity competition 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:02.367750+00:00'
+  query: Eli Lilly manufacturing capacity expansion 2025 2026 new plants investment
+    progress
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:02.454756+00:00'
+  query: tirzepatide patent expiration loss of exclusivity Mounjaro Zepbound LLY
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:02.567257+00:00'
+  query: Eli Lilly donanemab Kisunla sales launch EU Japan approval Alzheimer 2025
+    2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:02.808753+00:00'
+  query: IRA Medicare drug price negotiation Eli Lilly Jardiance 2026 second batch
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:03.119958+00:00'
+  query: GLP-1 safety long term NAION muscle loss discontinuation rebound 2025 FDA
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:04.253902+00:00'
+  query: Eli Lilly orforglipron oral GLP-1 FDA approval filing timeline 2026 launch
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:44.947124+00:00'
+  query: Eli Lilly LLY latest news developments 2026 obesity pipeline catalysts
+  triggered_by: 00-prescan
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:18:52.547049+00:00'
+  query: Eli Lilly LLY announcement May June 2026 deal acquisition guidance FDA
+  triggered_by: 00-prescan
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:19:03.574831+00:00'
+  query: 00-prescan 全量（4.5a 14条优先 query + 4.5b 2 覆盖槽）
+  triggered_by: 00-prescan
+  n_results: 80
+  n_high: 15
+  n_mid: 18
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:28:13.565031+00:00'
+  query: Eli Lilly LLY analyst consensus price target revenue EPS estimates 2026 2027
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:29:33.012529+00:00'
+  query: tirzepatide Zepbound Mounjaro patent expiration date Orange Book composition
+    of matter generic biosimilar timeline
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:29:33.261450+00:00'
+  query: blockbuster drug patent cliff revenue decline case study Humira Lipitor Gilead
+    sovaldi; high growth pharma stock de-rating peak earnings
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:29:33.445645+00:00'
+  query: obesity drug pipeline 2026 2027 readout calendar Pfizer Roche Amgen MariTide
+    Viking Structure Boehringer next gen
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-12T06:29:33.569281+00:00'
+  query: GLP-1 net price trend rebate gross-to-net Zepbound Mounjaro Wegovy SSR Health
+    2025 2026 pricing erosion
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered

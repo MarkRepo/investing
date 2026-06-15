@@ -1,0 +1,41 @@
+slug: cn-aerospace-components
+display_name: 中国商业航天上游核心零部件
+type: arena
+created: '2026-06-14T14:07:17.536530+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-commercial-aerospace
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 商业航天上游核心零部件（火箭发动机/材料/3D打印/轴承）赛道：发射放量下的业绩兑现斜率、单标的真实暴露与壁垒、复用降本对单发价值量的反噬、可投标的纯度排序
+  depth: deep
+  short_name: 航天零部件
+  search_terms:
+  - 火箭发动机 零部件
+  - 3D打印 航天
+  - 推力室 锻件
+  - 商业航天 供应链
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-14T14:08:19.849892+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-06-14T14:08:19.849905+00:00'
+    summary: 上游核心零部件是链上业绩兑现最实、壁垒最真的一段，契合价值兑现次序错配判断；但单标的真实暴露小、估值偏高、存复用摊薄单发价值量反噬（强度5/10）

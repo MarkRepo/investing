@@ -1,0 +1,126 @@
+slug: cn-kweichow-moutai-600519
+variant: qwen3.7-max
+topic_type: company
+display_name: 贵州茅台
+ticker: SSE_600519
+generated: "2026-06-13T14:00:00+08:00"
+data_freshness: "2026-06"
+data_freshness_basis: "飞天批价¥1770 (Yahoo财经 2026-06); Q1财报 2026-04-24"
+
+buy_box:
+  strong_buy_max: 1200
+  accumulate_min: 1200
+  accumulate_max: 1400
+  hold_min: 1400
+  hold_max: 1600
+  current_price: 1400
+  price_as_of: "2026-06-13"
+  current_zone: accumulate
+
+position_framework:
+  position_tier: 标准
+  sizing_rationale: "护城河完整+3.5%股息率提供安全垫，但治理风险+批价未验证限制仓位上限；等K1/K2验证后升至重仓"
+  initial_max_pct: 5
+  full_max_pct: 13
+  add_ladder_prices: [1300, 1400, 1500]
+  max_cluster_pct: 20
+
+valuation_models:
+  - name: pe_historical_percentile
+    label: PE历史分位法
+    bull_fair_value: [1650, 1800]
+    base_fair_value: [1350, 1450]
+    bear_fair_value: [1000, 1100]
+  - name: dcf_10y
+    label: 10年DCF模型
+    bull_fair_value: [1700, 1900]
+    base_fair_value: [1400, 1600]
+    bear_fair_value: [1000, 1200]
+  - name: dividend_yield_inverse
+    label: 股息率倒推法
+    bull_fair_value: [1600, 1700]
+    base_fair_value: [1380, 1450]
+    bear_fair_value: [1200, 1300]
+
+kill_criteria:
+  - id: batch_price_below_1500
+    description: "飞天批价跌破¥1500并持续2周以上"
+    status: pending
+    check_at: "2026-09"
+  - id: revenue_negative_growth
+    description: "2026Q2或Q3营收再次负增长"
+    status: pending
+    check_at: "2026-10"
+  - id: consumption_tax_reform
+    description: "消费税改革正式公布落地时间表"
+    status: pending
+    check_at: "2026-11"
+  - id: dividend_below_400b
+    description: "年度分红+回购降至¥300亿以下"
+    status: pending
+    check_at: "2027-04"
+
+signposts:
+  - date: "2026-08"
+    event: "端午→中秋旺季批价观测"
+    bull_signal: "飞天批价突破¥1800并持稳2周以上"
+    bear_signal: "批价回落至¥1600以下"
+    triggered: null
+  - date: "2026-08"
+    event: "2026Q2财报"
+    bull_signal: "营收同比+5%以上，毛利率企稳89%+"
+    bear_signal: "营收同比<0%或毛利率继续下滑"
+    triggered: null
+  - date: "2026-10"
+    event: "中秋/国庆动销数据"
+    bull_signal: "经销商库存持续低位，动销超预期"
+    bear_signal: "库存重新积累，动销不及预期"
+    triggered: null
+  - date: "2026-11"
+    event: "消费税政策风向"
+    bull_signal: "财政部无新增消费税改革表态"
+    bear_signal: "二十届四中全会写入具体时间表"
+    triggered: null
+  - date: "2027-01"
+    event: "i茅台2026年度运营数据"
+    bull_signal: "全年收入>¥150亿，MAU维持1500万+"
+    bear_signal: "全年收入<¥100亿，直销战略被证伪"
+    triggered: null
+  - date: "2027-04"
+    event: "2026年报"
+    bull_signal: "全年营收正增长+分红>¥600亿"
+    bear_signal: "全年营收再次负增长+现金流持续恶化"
+    triggered: null
+
+cluster_tags:
+  - cn-premium-baijiu
+  - cn-consumer-staples
+  - dividend-yield
+  - value-trap-vs-value-play
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 2
+    kind: data-missing
+    note: "缺乏茅台精确的合同负债/预收款季度数据（年报摘录版未含完整资产负债表），影响渠道打款先行指标的精确判断"
+  - ring: 2
+    kind: training-estimate
+    note: "DCF模型的WACC和永续增长率假设基于训练知识估算，缺乏精确的beta/风险溢价数据"
+  - ring: 5
+    kind: training-estimate
+    note: "2013-2014调整期的精确月度批价/出货量数据来自训练知识+复盘笔记，缺乏机构级历史数据库"
+
+market_implied:
+  metric: implied_net_profit_2026e
+  value: 880
+
+my_vs_market_delta:
+  metric: implied_net_profit_2026e
+  my_value: 880
+  delta: "+0%"
+  direction: long
