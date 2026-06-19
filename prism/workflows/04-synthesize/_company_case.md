@@ -308,7 +308,7 @@ print('primer + case 产出已注册')
 
 **thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。先读 `_synthesis_brief.md`，dump v0→v1 强度调整，写 `thesis_v1.md`，调 `set_thesis(version=1, ...)`。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, convergence_status, changelog)`**（B 层与 thesis 配对升版，见 `_shared.md` §B 轴有界 delta 重拆）。收尾出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单），见 `_shared.md` §终态报告。
 
-**收尾**：照 `_shared.md` § 全部产出完成后——`append_user_todos` + 清 `next_actions` + stage 推进。company 必须进 `05-critic-review` 才能 `done`：
+**收尾**：照 `_shared.md` § 全部产出完成后（含 capped→suggested_drilldowns 回流）——`append_user_todos` + 清 `next_actions` + stage 推进。company 必须进 `05-critic-review` 才能 `done`：
 
 ```bash
 python3 -c "from prism.scripts.topic import set_stage; set_stage('{slug}', '05-critic-review', '{variant}'); print('→ 评审 {slug}')"
@@ -325,8 +325,14 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 - 断链检查：④下注↔⑤证伪、⑥行动↔②锚、⑥仓位↔④的 EV 是否一致？
 - primer↔case 是否有重复（case① 该甩 primer 的背景有没有甩）？
 - 源分层：findings 数字标 [mat-XXX]？
+- 🔒 **type-contract 终局证据强度核对（终局对齐 · 新增）**：不管 thesis 怎么写，**强制**检查终局环（环④ EV + 目标价）的判断有几维靠**定性/data-missing**。
+  - 逐维度核：估值锚（consensus/业务倍数/DCF）/ 管理层能力 / 财务轨迹 / 竞争壁垒——各判 `定量` / `定性有据` / `定性/data-missing`
+  - **终局证据强度判定**：
+    - ≥3 维 定量 → **强度可接受**，放行
+    - 估值锚或管理层双定性 → 判 **「终局证据薄」**
+  - **终局证据薄时的 escalate**：不放行浅终局，将薄弱维度翻成 `suggested_drilldowns`（`source=critic_weak_k`，`priority=P0`），附在 critic 修订清单中让主 agent 调 `set_suggested_drilldowns(mode='append')` 挂上。若 decomposition 对应命门已两轮未解 → 必要时 `set_decomposition(convergence_status='capped')`。
 
-三段总评（链通不通 / 最严重 2-3 个断点 / 只补一处补哪），苛刻直接，1800 字内。按反馈修订（主 agent 直接 Edit）；首轮涉断链则跑第二轮。
+四段总评（链通不通 / 最严重 2-3 个断点 / **🔒 终局证据强度：定量{}/定性有据{}/定性{}/，可接受或证据薄** / 只补一处补哪），苛刻直接，1800 字内。按反馈修订（主 agent 直接 Edit）；首轮涉断链**或终局证据薄**则跑第二轮。
 
 **critic-review 阶段（05）**：仍按 company 规则进 `05-critic-review` 做对抗式重审。`05-critic-review.md` Step 1 已按 type 读 `c_investment_case.md`、rewrite_keys 用 `c_investment_case`——用户说「评审 {slug}」直接跑，无需手动替换。
 

@@ -1750,18 +1750,20 @@
   },
   "cn-commercial-aerospace": {
     "news.cn": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "cn-commercial-aerospace/opus4.8"
+        "cn-commercial-aerospace/opus4.8",
+        "cn-commercial-aerospace/deepseekv4pro"
       ],
-      "promoted": false
+      "promoted": true
     },
     "pdf.dfcfw.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "cn-commercial-aerospace/opus4.8"
+        "cn-commercial-aerospace/opus4.8",
+        "cn-commercial-aerospace/deepseekv4pro"
       ],
-      "promoted": false
+      "promoted": true
     },
     "cww.net.cn": {
       "count": 1,
@@ -1785,11 +1787,12 @@
       "promoted": false
     },
     "finance.eastmoney.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "cn-commercial-aerospace/opus4.8"
+        "cn-commercial-aerospace/opus4.8",
+        "cn-commercial-aerospace/deepseekv4pro"
       ],
-      "promoted": false
+      "promoted": true
     },
     "eeo.com.cn": {
       "count": 1,
@@ -1799,18 +1802,20 @@
       "promoted": false
     },
     "tiu.taibo.cn": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "cn-commercial-aerospace/opus4.8"
+        "cn-commercial-aerospace/opus4.8",
+        "cn-commercial-aerospace/deepseekv4pro"
       ],
-      "promoted": false
+      "promoted": true
     },
     "caifuhao.eastmoney.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "cn-commercial-aerospace/opus4.8"
+        "cn-commercial-aerospace/opus4.8",
+        "cn-commercial-aerospace/deepseekv4pro"
       ],
-      "promoted": false
+      "promoted": true
     },
     "managertoday.com.tw": {
       "count": 1,
@@ -1827,6 +1832,270 @@
       "promoted": false
     },
     "app.xinhuanet.com": {
+      "count": 2,
+      "topics": [
+        "cn-commercial-aerospace/opus4.8",
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": true
+    },
+    "cls.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "finance.sina.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "guancha.cn": {
+      "count": 2,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro",
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": true
+    },
+    "stcn.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "news.cctv.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "stdaily.com": {
+      "count": 2,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro",
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": true
+    },
+    "companies.caixin.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "eet-china.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "thepaper.cn": {
+      "count": 2,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro",
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": true
+    },
+    "tech.cnr.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "mycaijing.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "finance.sina.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "21jingji.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "wedoany.com": {
+      "count": 2,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro",
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": true
+    },
+    "m.bjnews.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "futurephecda.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "finance.people.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "cnsa.gov.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "taian.gov.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "wap.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "news.qq.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "taibo.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "renrendoc.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "note.hibor.net": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "newmarketpitch.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "36kr.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "guangfu.bjx.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "sastind.gov.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "c.m.163.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "fool.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "m.thecover.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": false
+    },
+    "business.cctv.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cinn.cn": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": false
+    },
+    "jwview.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": false
+    },
+    "emcreative.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": false
+    },
+    "panewslab.com": {
+      "count": 1,
+      "topics": [
+        "cn-commercial-aerospace/opus4.8"
+      ],
+      "promoted": false
+    },
+    "bbc.com": {
       "count": 1,
       "topics": [
         "cn-commercial-aerospace/opus4.8"

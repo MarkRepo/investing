@@ -47,11 +47,12 @@ print('thesis_v0:', (t.get('thesis') or {}).get('current_version'))
 
 1. **读种子**：Read `decomposition_v{latest}.md` 的「primer 入门目标」section（连同命门，便于看盲点同源）。
 2. **delta 校验（= primer 目标的"体检"）**：读元目标 + `topic.yaml`（`type` / `scope.question` / `thesis` summary）+ `thesis_v0.md`（或最新 thesis）+ **`baseline_knowledge.md`（训练知识种子 · 见下）** + `_findings_index.md` / findings 本身，对照种子逐条问厚料：**该补的新入门目标**（findings 揭示门外人会卡、种子没列的）？**多余/可坍缩的目标**（种子列了但其实非入门必需）？因 primer 本就消费 findings，这步 delta 在动笔前自然发生。
-3. **出定稿**：得到精修后的 **"本 topic 读完应能做到 N 条"清单**（N 通常 8-13，按领域复杂度）。把目标增删（added/dropped）记下，交 Step 4 / case 路径在 `decomposition_v1` 持久化 + 进 changelog（见 `_shared.md` §B 轴有界 delta 重拆——primer 目标 delta 与命门 delta 同一螺旋、同一收敛判定）。
+3. **性质校验（primer 回归 · 必守）**：逐条审入门目标性质——**理解性/教学性**（说清/解释/区分/教方法 X 是什么、理解双面性、列出可观测信号）保留；**决策性**（复述 arena 分流结论/判断投资含义/给 stance/定 tier）**改写为理解性或剔除**。入门目标是"读懂这门生意"的能力，不是"做终局决策"的能力——终局贯穿到 K#/命门/case，但**不贯穿到 primer 入门目标**（终局豁免）。
+4. **出定稿**：得到精修后的 **"本 topic 读完应能做到 N 条"清单**（N 通常 8-13，按领域复杂度）。把目标增删（added/dropped）记下，交 Step 4 / case 路径在 `decomposition_v1` 持久化 + 进 changelog（见 `_shared.md` §B 轴有界 delta 重拆——primer 目标 delta 与命门 delta 同一螺旋、同一收敛判定）。
 
 > **O2 接线 · baseline_knowledge.md 是 primer 的训练知识种子**：00-research-topic Step 4.3 写的 baseline 是本 topic 第一层数据源（行业稳定知识 + 自评盲点）。primer 的"行业原理/技术分类/工艺/估值方法"等稳定知识层应**直接复用 baseline 第一节**，避免重新凭空回忆导致前后不一致。**但必须读 baseline §六 校准结果**（Step 4.5c 回写）——被 prescan 推翻的 fact **不准**再写进 primer，必须用校准后的新事实；被验证的可放心用。baseline 缺失（旧 topic）→ 退化为纯训练知识+findings，零特判。
 
-每条必须是**门外人可观察的具体能力**（"能跟人解释 X / 能区分 Y 和 Z / 听到术语 W 知道在说什么 / 能判断 V 贵不贵"），不是知识罗列。
+每条必须是**门外人可观察的具体能力**（"能跟人解释 X / 能区分 Y 和 Z / 听到术语 W 知道在说什么 / 能读懂 V 的估值倍数含义"），不是知识罗列，**也不是决策**（"能判断 V 贵不贵/该不该投"是 case 的活，不入入门目标——见 Step 1 性质校验）。
 
 **LLM 自行按 type 适配视角**（不要硬套，让模型读 type+scope 自己判断）：
 - `industry` / `arena`（领域型）→ 目标偏"层层递进理解这门生意/技术/赛道本身"（科学原理 → 路线 → 产业链 → 玩家 → 争议）

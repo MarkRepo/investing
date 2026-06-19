@@ -129,7 +129,9 @@ set_decomposition(
 )
 ```
 
-- **顽固命门**（撞 2 轮顶仍未解、但确实决定成败）→ 不在 04 死磕，`convergence_status='capped'` + 踢 `07-drilldown` 专项深挖（在终态报告里列出 + set_next_actions 提示）。
+- **顽固命门**（撞 2 轮顶仍未解、但确实决定成败）→ 不在 04 死磕，`convergence_status='capped'` + 踢 `07-drilldown` 专项深挖。**收尾时必须执行 capped→suggested_drilldowns 回流（硬步骤）**：LLM 把每条残留命门翻成 1 条建议结构化写入（`source=capped_decomposition`、related 填命门覆盖的 K#），调 `set_suggested_drilldowns(mode='replace')`——建议从此不再是塞进 next_actions 的纯文本，而是 topic.yaml 的独立字段，web 独立「🔍 建议深挖」块展示。
+
+  > **三类型差异说明（防混淆）**：此 drilldown 是「同 topic 内专题深挖」，与 industry 环⑥「派生 arena/company 子 topic」**两条线、不重叠**——命门指向某子赛道/子公司证据不足→优先建子 topic stub（环⑥已管）；`suggested_drilldowns` 专管「留在本 topic、一篇 07 笔记就能补强」的未收敛命门。
 
 ## 断点续跑（修 9：workflow resume）
 
@@ -272,7 +274,7 @@ _undec = empty_undecided_todos('{slug}', '{variant}')
 assert not _err, f'⛔ 收尾前还有 {len(_err)} 条 fetch_status=error 未重试，回 R3 重试'
 assert not _undec, f'⛔ 收尾前还有 {len(_undec)} 条 empty 未经用户处置，回第 0 步硬闸门'
 t = read_topic('{slug}', '{variant}')
-# 仅 append 一条完成提示，不动 01/02 写的结构化 todos（修 H2）
+# 仅 append 一条完成提示，不动 01/02 写的结构化 todos
 # 播报传显式 status='done'——不能用纯字符串（默认 pending，会被详情页当"待补料"计数）
 append_user_todos('{slug}', [
     {'task': '全部产出完成（' + str(len(t['outputs_state'])) + ' 份），等待创建子 topic 或进入监控',
@@ -285,7 +287,35 @@ print('收尾完成')
 "
 ```
 
-**写 thesis_v1（基于资料的修正版）**：
+### 收尾：capped 命门 → suggested_drilldowns 回流（硬步骤 · 终局对齐）
+
+**在写 thesis_v1 / 终态报告之前执行**——确保建议不回漏：
+
+```bash
+python3 << 'EOF'
+from prism.scripts.topic import detect_drilldown_candidates, set_suggested_drilldowns
+
+c = detect_drilldown_candidates('{slug}', '{variant}')
+print(f'capped={c["capped"]}, has_signal={c["has_signal"]}')
+EOF
+```
+
+**若 `capped=True`**：LLM 把 decomposition 的每条残留命门翻成一条结构化建议，调：
+
+```bash
+python3 -c "
+from prism.scripts.topic import set_suggested_drilldowns
+set_suggested_drilldowns('{slug}', '{variant}', [
+    # 每条一个 dict:
+    # {'question': '深挖问题', 'rationale': '为什么深挖', 'source': 'capped_decomposition',
+    #  'related': ['K#', ...], 'priority': 'P0|P1|P2'},
+], mode='replace')
+"
+```
+
+**收尾断言（提醒不卡死）**：`detect_drilldown_candidates().has_signal and not suggested_drilldowns` → 打印提醒 LLM 补，不强 raise——避免卡死合成。
+
+### 写 thesis_v1（基于资料的修正版）：
 
 收尾时主 agent **必读** `outputs/_synthesis_brief.md`（如不存在 — 资料 <10 跳过，则直接读 06+07 合成 v1），把 K1-K5（或对应 thesis 钩子）的 v0→v1 强度调整结论 dump 到 `prism/topics/{slug}/{variant}/thesis_v1.md`。
 
@@ -357,7 +387,7 @@ if ns == '05-critic-review':
 "
 ```
 
-**刷新仪表盘（修 S5：自动触发，无需手跑）**：
+**刷新仪表盘（自动触发，无需手跑）**：
 
 每份产出收尾调 `set_output_referenced_mats` 时已自动 fire-and-forget 重建 dashboard（异步 subprocess，~25s 在后台跑，主流程 <100ms）。**workflow 内不再需要显式 `python3 -m prism.scripts.dashboard`**。
 后台失败仅写 `prism/logs/dashboard_auto.log`——若发现 dashboard 长期未刷新，手动跑一次 `python3 -m prism.scripts.dashboard` 排查。
@@ -408,7 +438,7 @@ register_web_search_batch(
 
 入库后在产出 frontmatter 的 `mat_ids_referenced` 列表中加入新 mat_id，确保 `set_output_referenced_mats` 调用时引用正确。
 
-**自动产 inline finding（修 B2）**：`triggered_by='04-synth'` 时
+**自动产 inline finding**：`triggered_by='04-synth'` 时
 `register_web_search_batch` 自动给每条 high/mid hit 写 `findings_{mat_id}.md`
 + `mark_processed`，返回值多 `inline_finding_paths`。**不再需要等下一轮 03 抽
 finding**，05-critic 也能直接读到论据。

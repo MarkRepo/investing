@@ -6,7 +6,7 @@
 
 ---
 
-## Step 1：明确钻探问题
+## Step 1：明确钻探问题 + 深度分级
 
 用户的问题可能是：
 - 「深挖 {slug} 的竞争格局」
@@ -15,6 +15,24 @@
 - 「{slug} 在利率上行环境的历史表现」
 
 如果问题不够具体，AskUserQuestion 细化。
+
+### 深度分级（quick vs load-bearing）
+
+**分级依据**：本次深挖是日常问答（quick）还是攻 capped 命门 / thin_evidence 薄弱 K# / 可能动摇 thesis（load-bearing）？
+- **quick**：用户好奇、不承载 thesis 承重、纯背景探索
+- **load-bearing**：深挖问题来自 `suggested_drilldowns`（`source=capped_decomposition` / `critic_weak_k`）/ 攻击 capped 命门 / 补 thin_evidence K# / 结论可能动摇现有 thesis
+
+**判定时机**：用户说「深挖 X」时主 agent 主动判断，若来自 `suggested_drilldowns` 则默认 load-bearing；若是用户自发则默认 quick 但问一句"这个结论会影响 thesis 吗？"
+
+**写入 frontmatter**（Step 4 笔记顶部）：
+```yaml
+weight: quick   # 或 load-bearing
+```
+
+load-bearing 专属：
+- Step 3 → 4 之间插单轮自检（见下方 Step 3.5）
+- Step 4.6 升级为强制回答"命门解没解决"（见下方）
+- Step 4.7 必须闭环 `resolve_suggested_drilldown`
 
 ---
 
@@ -53,6 +71,24 @@ for m in data['materials']:
 - 结构：问题分解 → 每个子问题的分析 → 综合结论
 - 要求：比 case 各环（环①-⑥）更深、更具体
 - 字数：不限，以回答清楚问题为准
+
+### Step 3.5：load-bearing 单轮自检（仅 weight=load-bearing 跑 · quick 跳过）
+
+> load-bearing 深挖质量不稳的根因——缺独立校验、全靠 Step 4.6 软自评。本步加轻闸门。
+
+**方式二选一**（主 agent 自行判断复杂度）：
+1. **简单场景**（单条 K# / 问题聚焦）：主 agent 自己跑一次性自查清单
+2. **复杂场景**（多条 K# / 结论可能动摇 thesis）：dispatch 独立 subagent（`subagent_type: general-purpose`，**只读不写**，照 `feedback_subagent_write_hallucination`），单轮反方，只查：
+   - **单线承重**：结论是否只依赖单一源/单一类型源？
+   - **证据够不够**：核心论断有硬数据支撑还是靠推理链？
+   - **是否过度外推**：从有限证据推到了过宽的结论？
+
+自查清单（无论方式）：
+- 本 deep drilldown 的关键结论每条都有**至少 1 条 manifest 材料**支撑吗？
+- 有没有结论纯粹靠训练知识或推理链、无实证锚？
+- 如果有数字（规模/增速/份额），来源是实收料还是估算？
+
+**发现致命弱项不要静默跳过**——在笔记里标「⚠️ 证据薄：...」并降级结论置信度。
 
 ---
 
@@ -117,13 +153,13 @@ EOF
 > 没有任何「列共享 K# 候选」的脚本（已删）——撮合是主 agent 读 todo + 读料的判读。
 > 闭环键是 task/文档身份不是 K#（见 `_autofetch_protocol.md` 「产即收」+「闭环键」节 + memory `feedback_todo_closure_key`）。
 
-**修 M6 — drilldown 默认不触发 04 重写**：
+drilldown 默认不触发 04 重写：
 
 `list_affected_outputs` 默认在 `ignore_source_types=('drilldown',)` 模式下跑——drilldown 入库**不会**自动让相关 output 判 stale。这是为了让 drilldown 保持"高频深挖"的低成本，避免每次问一次就拖 ~5 份 output 重写（~25-50K token、15-25 min）。
 
-### Step 4.6：drilldown 是否动摇 thesis？主 agent 显式决策（**新增**）
+### Step 4.6：drilldown 是否动摇 thesis？主 agent 显式决策（**强制**）
 
-drilldown 跑完后，主 agent 自评本次结论与现有 thesis 的关系，分三类处理：
+**load-bearing 场景升级为强制**：必须显式回答「我 `addresses` 的那条 capped 命门 / 薄弱 K#，这次解没解决」，据此走三类处理；quick 维持现状（默认走第一类）。
 
 | 类型 | 表现 | 处理 |
 |---|---|---|
@@ -147,6 +183,31 @@ print(f'drilldown 动摇 thesis：{len(stale_keys)} 份 output 标 stale，下�
 - 默认走"补佐证"（第一类）——drilldown 大多数是日常问答，不应触发重写
 - 若 drilldown 摘要里含"推翻 / 纠正 / 矛盾 / 改变方向"等强信号词 → 升级到第三类
 - 升级第三类时**必须在 living feed 写明哪条 K# 被动摇、为什么标 stale**，方便后续 04 重写时主 agent 读到
+- **load-bearing 场景**：必须显式输出一句话——「本次深挖的目标（capped 命门 X / thin K# Y）：已收敛 / 部分收敛（缺口 Z）/ 未收敛」→ 写入笔记 § 结论的第一句
+
+### Step 4.7：闭环 —— resolve suggested_drilldown（仅 weight=load-bearing 且来自 suggested_drilldowns 时跑）
+
+**目的**：如果这条 drilldown 是被 `suggested_drilldowns` 触发的（web 用户看到「🔍 建议深挖」块点的），做完后必须把建议标 done——否则建议永远挂 web。
+
+```bash
+python3 -c "
+from prism.scripts.topic import resolve_suggested_drilldown
+
+# question_substr 匹配 suggested_drilldown 的 question 字段（子串匹配）
+resolve_suggested_drilldown(
+    '{slug}', '{variant}',
+    '{question_substr}',          # 与触发建议的 question 子串匹配
+    status='done',
+    drilldown_file='drilldown_{ts}_{kw}.md',
+)
+print('suggested_drilldown → done ✓')
+"
+```
+
+**纪律**：
+- Step 4.6 判「命门已解」→ `status='done'`
+- 判「部分收敛 / 未收敛」→ 仍标 `done`（本次深挖尝试了），在 `rationale` 里显式留 why 未解（不影响 resolve，只影响下次 05 是否再触发 thin_evidence/capped → 自动转建议时是否需要新一条）
+- quick 深挖如果不来自 suggested_drilldowns → 跳过本步
 
 ---
 

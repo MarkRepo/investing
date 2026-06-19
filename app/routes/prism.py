@@ -407,6 +407,14 @@ def prism_detail(request: Request, slug: str, variant: str):
 
     monitor_ctx = _monitor_context(slug, variant)
 
+    # suggested_drilldowns 兜底信号（零推断，LLM 漏写时 web 仍提示）
+    drilldown_candidates = None
+    try:
+        from prism.scripts.topic import detect_drilldown_candidates
+        drilldown_candidates = detect_drilldown_candidates(slug, variant)
+    except Exception:
+        drilldown_candidates = None
+
     # 横切（3a）：company 详情页显示宏观背景印章（含 stale 提示）。非 company 不显示。
     macro_stamp = None
     if topic.get("type") == "company":
@@ -442,6 +450,8 @@ def prism_detail(request: Request, slug: str, variant: str):
             "now_iso": _now_iso_z(),
             "stage_progress": topic_io.stage_progress(topic.get("stage", "")),
             "stage_phase_names": topic_io.STAGE_PHASE_NAMES,
+            "monitor_ctx": monitor_ctx,
+            "drilldown_candidates": drilldown_candidates,
             **monitor_ctx,
         },
     )

@@ -50,7 +50,7 @@ EOF
 
 ---
 
-## Step 0：web-search 智能增量扫描（**修 S1：脚本判 recency**）
+## Step 0：web-search 智能增量扫描
 
 先调脚本判断是否要跑、跑就用多少 recency_days；不再由 LLM 拍脑袋默认 30。
 
@@ -325,7 +325,7 @@ if _err:
     for t in _err:
         print('   -', t['task'][:70])
 
-# stage 升级条件：有可处理未处理资料 且 无 unattempted/error 阻断 → 03-extracting（修 F14：排除 Role α prescan web 料）
+# stage 升级条件：有可处理未处理资料 且 无 unattempted/error 阻断 → 03-extracting（排除 Role α prescan web 料）
 set_stage(slug, '03-extracting' if counts['unprocessed_actionable'] > 0 and not _block else '02-gather-materials', variant)
 
 # next_actions 是给 LLM 看的系统建议（不污染 user_todos）

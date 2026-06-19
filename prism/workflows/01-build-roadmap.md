@@ -146,7 +146,7 @@ else:
 
 L4 写完后做 self-check：thesis 的 N 个 K# 是否每个都有对应的 L4 question？没覆盖的要么补 L4，要么回 thesis 标注"本次不验证此 K"。
 
-**示例（修 H4 后必须 search_keywords）**：
+**示例**：
 
 ```yaml
 l4_hunting:
@@ -168,7 +168,7 @@ l4_hunting:
 >   - `consensus` 卖方一致预期/目标价模型 → 喂环②（建 todo 时标 `info_tier: half_public`——**这只是努力顺序提示,不是预授权降级用户**。consensus 不走 financial_data API 自动拉,但**仍须按 R1 在 Step 5.6/5.8 自动抓**：卖方 PE-G/估值表深度、财经媒体一致预期汇总常有公开转载,exa 多能命中;只有有效尝试 `empty` 才归用户 todo。**禁止在 Step 3 就把它写成"用户去收"**）
 >   - `historical-mirror` / `industry-mirror` / `arena-mirror` 历史失败镜鉴（由 Step 4 类比落成）→ 喂环⑤
 >   - 结构化项（`financial-arc` / `valuation-anchor` / peer 财务）由 financial_data/market_data 在合成期自动拉，给 ticker 即可，不必单列收料 todo（gap ring 轴标 api_pending 非红）。
-> - **B 轴（命门靶点）**：照 `decomposition_v0.md` 每环 B 靶点收料，**低置信度命门优先砸料**（对冲薄拆解风险）。
+> - **B 轴（命门靶点 + 入门目标背景靶点）**：照 `decomposition_v0.md` 每环 B 靶点收料（**低置信度命门优先砸料**，对冲薄拆解风险）+ 照 §三「primer 入门目标」每条标 uncertain/缺口的收**背景料**（入门目标与命门同属 B 轴、并列驱动收料；区别是命门喂 case 决策环、入门目标喂 primer 理解地基）。**入门目标收的是背景料（产业链/机理/玩家/沿革），不是决策料——入门目标理解性约束（00 Step 5.4 性质约束）保证这点。**
 
 **硬要求**：
 - **建 todo 前扫 manifest 查已有料覆盖**（纪律，复用 `read_manifest`）：00 Step 4.0 早期 ingest + 父复用已把家底登记。每新增一条 todo 前，主 agent `read_manifest('{slug}','{variant}')` **按文档身份**判——已有料就是这条要的文档 → 建成 `done` 填 `covered_by=[已有mat]` 或不建；没有才建 `pending`。按文档身份判，不是 K# 撞 K#。
@@ -314,7 +314,7 @@ EOF
 ```
 
 **注意**：
-- `quarterly-report` 现在会被下载。`fetch()` 对 cninfo 季报：title 含 `Q1/一季` → 强制 Q1；含 `Q3/三季` → 强制 Q3；都没写 → fan-out 查 Q1+Q3 取最新披露（修 Q1 缺陷后行为）
+- `quarterly-report` 现在会被下载。`fetch()` 对 cninfo 季报：title 含 `Q1/一季` → 强制 Q1；含 `Q3/三季` → 强制 Q3；都没写 → fan-out 查 Q1+Q3 取最新披露
 - cninfo 一季报 `category_yjdbg_szsh` 与三季报 `category_sjdbg_szsh` 是独立 category，不能用同一 query 查全；fan-out 是修复方法
 - 如果 roadmap 列了 2026Q1 + 2026Q3 同年两份季报，必须在 title 里明确写"2026 Q1" / "2026 Q3"让 `guess_quarter` 区分
 - 半年报 `semi-annual-report` 同理走 `category_bndbg_szsh`

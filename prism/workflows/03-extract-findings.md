@@ -37,7 +37,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 
 ---
 
-## Step 0b：父级 findings 健康检查（**修 H3**）
+## Step 0b：父级 findings 健康检查
 
 子 topic（在 01 Step 1.5 写过 `parent_materials`）04 合成时会通过 `list_all_findings` 自动捞父级 findings——**但若父 topic 没跑过 03，父级 `findings_{mat_id}.md` 不存在，会被静默跳过**，导致本 topic 04 时相关 K# 缺论据。
 
@@ -65,7 +65,7 @@ else:
 
 ---
 
-## Step 0：扫 topic-scope inbox + inline 02 入库（**修 S2：不再 raise，主 agent 同对话补完**）
+## Step 0：扫 topic-scope inbox + inline 02 入库（不再 raise，主 agent 同对话补完）
 
 用户手动放的研报/年报通常落在 `prism/topics/{slug}/inbox/`，**不一定全在 manifest 里**。先扫一遍并打印未登记列表：
 
@@ -363,11 +363,11 @@ cat "{material_path}"
 ```
 
 **抽 finding 时按 manifest 的 `addresses` 标签聚焦**：
-- `item_1_business` → `[scope, Q1, K3, K5]` —— 业务全景、护城河、增长驱动
+- `item_1_business` → `[scope, K3, K5]` —— 业务全景、护城河、增长驱动
 - `item_1a_risk` / `item_1a_risk` (10-Q) → `[risk, K1, K6]` —— 风险因素、催化剂触发
-- `item_7_mda` / `item_2_mda` → `[Q1, K2, K4, K5]` —— 周期定位、财务逻辑、隐含预期
+- `item_7_mda` / `item_2_mda` → `[K2, K4, K5]` —— 周期定位、财务逻辑、隐含预期
 - `item_7a_quant_risk` / `item_3_quant_risk` → `[risk, K2]` —— 量化风险敞口
-- `item_8_financial` / `item_1_financial` → `[valuation, Q1]` —— 估值反推、关键数据点
+- `item_8_financial` / `item_1_financial` → `[valuation, K1]` —— 估值反推、关键数据点
 
 不要在 risk section 里硬抽估值数据，也不要在 financial section 里写定性叙事——选错 section = 浪费 LLM context。
 
@@ -485,7 +485,7 @@ register_web_search_batch(
 ```
 
 3. `triggered_by='03-extract'` 时 `register_web_search_batch` **自动产 inline finding** +
-   `mark_processed`（修 B2 — 消除"入库无 finding"黑洞）。返回值多了 `inline_finding_paths`
+   `mark_processed`。返回值多了 `inline_finding_paths`
    列表，主 agent 可直接 cat 验证。**不会再悬挂到下一轮 03 队列**。
 4. 在当前 finding 笔记里**注明**："此处与训练知识 / 资料 X 冲突，已即兴 web-search 入库 mat-xxx 备核"
 
@@ -549,7 +549,7 @@ print(build_findings_index('{slug}', '{variant}'))
 
 ## Step 4：完成所有资料后更新状态
 
-**⚠️ 用 `append_user_todos` 不用 `set_user_todos`**——01/02 写的结构化 todos（含 K# addresses）不能被进度提示覆盖（修 H2）。
+**⚠️ 用 `append_user_todos` 不用 `set_user_todos`**——01/02 写的结构化 todos（含 K# addresses）不能被进度提示覆盖。
 
 **⚠️ 进度播报必须传显式 `status`（修：播报污染"待补料"计数）**——`append_user_todos(['纯字符串'])` 会默认落 `status='pending'`，而 web 详情页把每条 pending 当"⚠️ 待你手工补 N 份资料"。**里程碑播报（已完成的事）传 `status='done'`、进行中播报传 `status='in_progress'`**，绝不让播报落进 pending（pending 仅保留给"用户须去取的真实资料"，那些一律带 `addresses`）。
 
@@ -558,7 +558,7 @@ python3 -c "
 from prism.scripts.topic import set_stage, set_next_actions, append_user_todos
 from prism.scripts.manifest import material_count
 counts = material_count('{slug}', '{variant}')
-# advance gate 读 unprocessed_actionable（排除 Role α prescan web 料）——修 F14：
+# advance gate 读 unprocessed_actionable（排除 Role α prescan web 料）：
 # 用全量 unprocessed 会让任何跑过 prescan 的 topic 永不升 04
 if counts['unprocessed_actionable'] == 0:
     set_stage('{slug}', '04-synthesizing', '{variant}')
@@ -581,7 +581,7 @@ else:
 
 ---
 
-## Step 5：选择是否更新产出 + 落地状态（**修 S3：原 Step 5/6 合并**）
+## Step 5：选择是否更新产出 + 落地状态
 
 **AskUserQuestion**：
 
@@ -604,7 +604,7 @@ python3 -c "
 from prism.scripts.topic import set_stage, set_next_actions, append_user_todos
 from prism.scripts.manifest import material_count
 counts = material_count('{slug}', '{variant}')
-if counts['unprocessed_actionable'] == 0:   # 修 F14：排除 Role α
+if counts['unprocessed_actionable'] == 0:   # 排除 Role α
     set_stage('{slug}', '04-synthesizing', '{variant}')
     if {user_chose_update}:
         set_next_actions('{slug}', [

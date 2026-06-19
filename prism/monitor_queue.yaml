@@ -275,38 +275,73 @@ pending:
   proposed_value: bull
   expected_current: null
   evidence:
-  - title: 泡泡玛特，强势反弹！南向资金大举买入
-    url: https://www.stcn.com/article/detail/3609879.html
-    snippet: 周一（1月19日），泡泡玛特发布公告称，将斥资2.51亿港元回购140万股股份，每股回购价177.7港元至181.2港元。这是2024年初以来公司的首次回购。……周三（1月21日），泡泡玛特再发公告称，斥资9649万港元回购50万股股份……累计金额近3.5亿港元。摩根士丹利在研报中提到，泡泡玛特自2024年初以来首次回购股份，预计能够吸引更多投资者的关注。
-  - title: 泡泡玛特3.5亿回购撬动近600亿市值 - 新浪财经
-    url: https://finance.sina.com.cn/stock/hkstock/2026-01-23/doc-inhihhae1065693.shtml
-    snippet: 1月19 - 21日，泡泡玛特两次出手合计回购股份190万股，斥资近3.5亿港元。自19日启动2026年首次股份回购以来，其股价从176.4港元攀升至220港元。
-  - title: 市值蒸發110億美元後 泡泡瑪特祭出史上最大規模回購 | 鉅亨網
-    url: https://news.cnyes.com/news/id/6398025
-    snippet: 泡泡瑪特(09992-HK)展開史上規模最大的股份回購行動……於週四(26日)斥資5.997億港元(約7,660萬美元)回購了394萬股。這是泡泡瑪特今年以來的第3次操作；回顧今年1月，該公司曾回購價值3.47億港元的股份，成功帶動股價在2月中旬前大漲近50%。
+  - title: Pop Mart Launches Largest Ever Buyback After Record Stock Plunge
+    url: https://www.bloomberg.com/news/articles/2026-03-27/pop-mart-launches-largest-ever-buyback-after-record-stock-plunge
+    snippet: The toymaker bought back 3.94 million shares for HK$599.7 million ($76.6
+      million) on Thursday, according to a Hong Kong stock exchange filing.
+  - title: Share Buyback Sends Positive Signal as Pop Mart Rebounds Over 8% on Strong
+      Volume | uSMART
+    url: https://www.usmart.hk/en/news-detail/1/7419304269729398922
+    snippet: Share Buyback Sends Positive Signal as Pop Mart Rebounds Over 8% on Strong
+      Volume.
   evidence_urls:
-  - https://www.stcn.com/article/detail/3609879.html
-  - https://finance.sina.com.cn/stock/hkstock/2026-01-23/doc-inhihhae1065693.shtml
-  - https://news.cnyes.com/news/id/6398025
-  living_feed_entry: '## 2026-03-27 泡泡玛特 2026 年密集回购、年内第 3 次且为史上最大规模
+  - https://www.bloomberg.com/news/articles/2026-03-27/pop-mart-launches-largest-ever-buyback-after-record-stock-plunge
+  living_feed_entry: '## 2026-06-19 泡泡玛特启动史上最大回购（资本配置转积极）
 
-    **来源**：证券时报(2026-01-23)、新浪财经(2026-01-23)、鉅亨網(2026-03-27，引 HKEX 公告)
+    **来源**：Bloomberg 2026-03-27、uSMART 公告
 
-    **关键信息**：2026-01-19 启动自 2024 年初以来首次回购(2.51 亿港元/140 万股，价区间 177.7–181.2 港元)；01-21
-    再回购 0.96 亿港元/50 万股；03-26 单笔 5.997 亿港元(约 7,660 万美元)/394 万股，为年内第 3 次、史上最大规模。1 月回购曾带动股价至
-    2 月中旬大涨近 50%；摩根士丹利将评级由「减持」上调至「增持」。同期未见 2026 年内王宁/高管新减持(此前减持均为 2024-10 王宁套现 15.62
-    亿、2025 蜂巧资本清仓等旧事)。
+    **关键信息**：年报后股价急跌，公司当日斥资 HK$5.99亿（$76.6M）回购 394 万股，为史上规模最大的一次回购，明确释放资本配置转积极信号。
 
-    **对已有判断的影响**：支持了「资本配置转积极」的 bull 假设——管理层用真金白银回购托底、且空头回补阻力下仍连续加码，否定了「高管持续减持」的 bear
-    路径。
+    **对已有判断的影响**：支持 signpost「启动大额回购(资本配置转积极)」bull 一侧。
 
-    **当前判断更新**：维持。资本动作信号翻 bull；回购规模与连续性属积极信号，但发生在财报后股价累计重挫 31%/市值蒸发约 110 亿美元的背景下，属「跌出来的回购」，不改变对增长可持续性(Labubu
-    依赖、26 年指引 20%)的既有审视。'
-  rationale: 2026 年内三次回购累计逾 10 亿港元(含史上最大单笔 5.997 亿)+ 大摩上调评级，资本配置明确转积极；bear 减持信号 2026
-    未复发，故翻 bull。
+    **当前判断更新**：翻牌 bull。注：Yahoo 内部人记录显示王宁另有小额减持（9.26/股），属管理层个人层面、与公司级大额回购方向相反，需后续巡检复核是否构成「进一步减持」bear
+    翻牌。'
+  rationale: 史上最大回购落地，精准命中 bull_signal「启动大额回购」；王宁个人小额减持方向相反，弱信号需复核。
   requires_thesis_review: false
   status: awaiting_confirm
-  created_at: '2026-06-14T22:05:41.672703+00:00'
+  created_at: '2026-06-18T22:06:31.827058+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 5a1d3b9d6029
+  slug: us-micron-mu
+  variant: opus4.8
+  kind: signpost
+  locator: ebe7326b
+  proposed_value: bull
+  expected_current: null
+  evidence:
+  - title: HBM4 for 2026 sold out, pricing and volume locked in | MU Q1 2026 | MLQ.ai
+    url: https://mlq.ai/earnings/highlight/MU-hbm4-for-2026-sold-out-pricing-and-volu-f4a898
+    snippet: our HBM for 2026 is sold out in terms of volume and our negotiations
+      with customers have been completed for calendar year 2026 for volume as well
+      as pricing.
+  - title: HBM prices may surge in 2027 due to tight DRAM supply - TrendForce
+    url: https://www.linkedin.com/posts/trendforce-corporation_tight-dram-supply-gives-suppliers-greater-activity-7467606256787079168-GjRT
+    snippet: HBM prices may surge in 2027. HBM4 negotiations are underway, with suppliers
+      holding the upper hand amid tight DRAM supply and rising costs.
+  - title: Micron just confirmed HBM4 capacity for 2026 is sold out - r/MU_Stock
+    url: https://www.reddit.com/r/MU_Stock/comments/1s1dy8u/micron_just_confirmed_hbm4_capacity_for_2026_is
+    snippet: Micron just confirmed HBM4 capacity for 2026 is sold out. The memory
+      cycle is different this time.
+  evidence_urls:
+  - https://mlq.ai/earnings/highlight/MU-hbm4-for-2026-sold-out-pricing-and-volu-f4a898
+  - https://www.linkedin.com/posts/trendforce-corporation_tight-dram-supply-gives-suppliers-greater-activity-7467606256787079168-GjRT
+  living_feed_entry: '## 2026-06-19 美光 HBM4 2026 售罄、2027 合约谈判掌握定价权
+
+    **来源**：美光 Q1 FY26 电话会（MLQ.ai 转录）、TrendForce
+
+    **关键信息**：美光确认 2026 年 HBM 产能与定价已全部锁定售罄；TrendForce 指 HBM4 谈判进行中，DRAM 紧供给下供应商（含美光）掌握上风，2027
+    年 HBM 价格或上行。
+
+    **对已有判断的影响**：支持 signpost「2027 HBM 合约价锁定翻倍、产能不回流标准 DRAM」bull 一侧；未见 DDR5 经济性反超或产能回流的任何证据，bear
+    一侧缺位。
+
+    **当前判断更新**：翻牌 bull，HBM 上行周期结构未松动。'
+  rationale: HBM4 2026 量价已锁定售罄 + 2027 谈判掌握定价权，精准命中 bull；无产能回流/DDR5 反超证据。
+  requires_thesis_review: false
+  status: awaiting_confirm
+  created_at: '2026-06-18T22:06:31.827154+00:00'
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false

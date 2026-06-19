@@ -17,7 +17,7 @@
 
 ---
 
-## Step 0.0：prescan 状态门禁（**修 ISSUE-001 — 第一道门**）
+## Step 0.0：prescan 状态门禁
 
 ```bash
 python3 << 'EOF'
@@ -323,7 +323,8 @@ summary = register_web_search_batch(
 )
 print(f"web-search 兜底：高/中/低 = {summary['n_high']}/{summary['n_mid']}/{summary['n_low']}")
 # triggered_by='05-critic' 时 register_web_search_batch 自动产 inline finding
-# (修 B2)，summary['inline_finding_paths'] 直接可用 — 不需要等下一轮 03
+# triggered_by='05-critic' 时 register_web_search_batch 自动产 inline finding
+# summary['inline_finding_paths'] 直接可用 — 不需要等下一轮 03
 ```
 
 入库后**重新读一次相关 finding / 产出**，看 critic 缺口是否被消除：
@@ -381,7 +382,7 @@ cur_v = (t.get('thesis') or {}).get('current_version')
 # request-rewrite 时主 agent 列出要重写的 output keys；其他 verdict 留空
 rewrite_keys = []  # 按 type 用 ['c_investment_case'] / ['i_industry_case'] / ['a_arena_case']
 
-# set_critic_verdict 内部已写默认 next_actions + 把 rewrite_keys 标 stale（修 S4）
+# set_critic_verdict 内部已写默认 next_actions + 把 rewrite_keys 标 stale
 critic = set_critic_verdict(
     slug, variant, verdict,
     summary=summary, thesis_version=cur_v,
@@ -406,14 +407,40 @@ EOF
 ```
 
 **注意**：
-- `set_critic_verdict` 会自动 `set_stage` + 写默认 next_actions + 标 rewrite_keys 为 stale，**不再手动 set_stage / set_next_actions / set_output_status**（修 S4 后）
+- `set_critic_verdict` 会自动 `set_stage` + 写默认 next_actions + 标 rewrite_keys 为 stale，**不再手动 set_stage / set_next_actions / set_output_status**
 - `request-rewrite` 路径走"标 stale + 04 重跑"——配合 list_affected_outputs 读 status 字段（reason='critic-stale'），只重写 critic 点名的 output
 - `request-more` 路径回 02-gather-materials；主 agent 需 append 具体待补 todo（含 addresses，回 02 后才能挂到对应 K# 进 gap_detector B 轴覆盖；收口仍按文档身份显式 `update_user_todo_status`）
 - **若 critic 触发新的 thesis_v{N+1}**（无论 verdict 类型），新版本必须采用 Scheme C 全快照约定（详见 `prism/workflows/04-synthesize/_shared.md` § "Scheme C 写作约定"）——禁止只写增量 delta、禁止"见 v{N} §X"引用
 
+### Step 7a：thin_evidence / 单线承重 → suggested_drilldowns 回流（终局对齐 · 新增）
+
+**写完 verdict 后，扫 Step 0 gap report + Step 5.5 承重结论**：
+
+```bash
+python3 -c "
+from prism.scripts.topic import detect_drilldown_candidates
+c = detect_drilldown_candidates('{slug}', '{variant}')
+print(f'thin_evidence={c[\"thin_evidence\"]}, uncovered_ks={c[\"uncovered_ks\"]}')
+"
+```
+
+**若 `thin_evidence` ≥1 或 Step 5.5 判「单线承重」**：LLM 把每条薄弱 K# / 承重不足项翻成建议，调 `set_suggested_drilldowns(mode='append')`（**不覆盖 04 的**）：
+
+```bash
+python3 -c "
+from prism.scripts.topic import set_suggested_drilldowns
+set_suggested_drilldowns('{slug}', '{variant}', [
+    {'question': '深挖问题', 'rationale': 'K3 thin_evidence 仅1条二手料', 'source': 'critic_weak_k',
+     'related': ['K3'], 'priority': 'P0'},
+], mode='append')
+"
+```
+
+> **并行挂建议**：`request-more / request-rewrite` 走主线时**可并行挂建议**——建议深挖不替代主线判定，只作为"这些薄弱项值得抽空 07 专项深挖"的结构化备忘。
+
 ---
 
-## Step 7.5：request-rewrite 时本对话内续跑 04（**修 H1**）
+## Step 7.5：request-rewrite 时本对话内续跑 04
 
 **仅当 verdict='request-rewrite'**：写完 verdict 后**主 agent 不退场**，立即进入 04 重写循环。
 
@@ -470,6 +497,6 @@ for k, reason in stale:
 
 ---
 
-## Step 8：仪表盘自动刷新（修 S5）
+## Step 8：仪表盘自动刷新
 
 `set_critic_verdict` 内部已 fire-and-forget 触发 dashboard 异步重建，**无需再手跑** `python3 -m prism.scripts.dashboard`。后台失败留痕在 `prism/logs/dashboard_auto.log`。

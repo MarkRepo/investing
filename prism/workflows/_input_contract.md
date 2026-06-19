@@ -2,6 +2,7 @@
 
 > 与 `prism/scripts/input_contract.py` **同源维护**——改一处必须改另一处，且回溯到三条 case 路径
 > （`04-synthesize/_company_case.md` / `_industry_funnel.md` / `_arena_funnel.md`）§3.2【必带硬落地】。
+> **终环（type 终局合同）与 `prism/scripts/topic._TYPE_TERMINALS` 同源**——改终环语义必须同步改 `_TYPE_TERMINALS`，反之亦然。
 > 本文件给 **LLM 读**（收料/抽料/gap 时对照）；`.py` 给脚本读（gap_detector 双轴）。
 
 ## 它是什么

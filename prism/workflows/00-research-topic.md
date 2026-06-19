@@ -14,33 +14,71 @@
    - industry：整个行业（宠物、储能、机器人）
    - arena：细分竞技场（宠物食品、人形机器人执行器）
    - company：单家公司
-3. **核心研究问题**（例如「中国宠物行业哪些细分赛道值得投资」）
-4. **研究深度**（quick = 1-2 天 / standard = 1 周 / deep = 持续跟踪）
-5. **地理范围**（CN / US / GLOBAL）
+3. **研究深度**（quick = 1-2 天 / standard = 1 周 / deep = 持续跟踪）
+4. **地理范围**（CN / US / GLOBAL）
 
-如果用户直接说「研究中国宠物行业」，可以推断：type=industry, geo=CN，然后只确认研究问题和深度。
+如果用户直接说「研究中国宠物行业」，可以推断：type=industry, geo=CN，然后只确认研究深度。
+
+---
+
+### Step 1a：type→终局倒推（确认 type 后立刻做 · 终局归 type 独占）
+
+**确认 type 后，主 agent 必须显式读出本 type 的合同终局**（`terminal_for_type`），并在对话中向用户声明：
+
+```bash
+python3 -c "from prism.scripts.topic import terminal_for_type; print(terminal_for_type('{type}'))"
+```
+
+**终局由 type 独占**——这是 a priori 不可协商的交付结构，研究任何标的之前已知：
+- `industry` → 把资本/注意力分配给哪几个细分 arena（深挖/观察/淘汰三档分流）
+- `arena` → 在候选标的里选出 shortlist——谁是赢家、介入纪律
+- `company` → 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+- `macro` → 体制定位 + 传导地图下的资产含义
+
+**终局不是 user 可选的**（type 锁死），后续所有环节（question / thesis K# / 命门 / 收料 / critic）都围绕这个终局倒推。
+
+### Step 1b：核心研究问题 — 终局上的赌注（三段式收集）
+
+**question 不再是自由散文**——它是「对 type 终局的先验赌注 + scope 切片」：
+
+**主 agent 必须按三段式收集并写出 question**：
+
+1. **标的身份 + scope 切片**（geo/depth/研究哪一刀）：
+   - 例：「中国商业航天行业，deep 深度，不含军工邻接/一级 pre-IPO」
+2. **对终局的先验赌注**（核心提问，按 type 改写——这是 alpha 本身）：
+   - industry → 「你预判利润池会落到哪几个 arena？押哪条迁移路径？共识押哪条、你和它哪里分歧？」
+   - arena → 「候选里你赌谁是赢家、凭哪个胜负变量？」
+   - company → 「你赌买还是卖？核心命门是什么？目标价区间的赌注？」
+3. **红线（不可违反）**：
+   - question **不得**重新枚举/降格终局（如 industry 写「全维度…赛道筛选作其一」即违规——终局已由 type 独占、永远在场，question 只能往这个固定终局里灌赌注）
+   - question **不得**用「全维度/百科式」一词——这是 thesis-driven 设计明令禁止的百科框法（00 Step 5.0 原文：先押赌注「避免研究变成百科全书式覆盖」）
+
+**全维度/百科式 question 的软警告规约**：若用户给的是「全维度/百科式」question，主 agent **不硬收窄**（宽行业地图有时本身是目的），但**必须**：
+- 把 question 改写成「以终局赌注为主轴 + 宽覆盖作 scope 备注」
+- 在对话显式回述改写后的终局赌注，让用户确认
+- 例：用户说「全维度研究中国商业航天：市场空间、竞争格局、政策、技术路线、赛道筛选」
+  → 改写为「中国商业航天（deep/CN/不含军工邻接）：预判利润池会落到火箭制造/卫星制造/卫星应用哪几个 arena，押可复用火箭迁移路径为分歧点——共识押卫星应用量产降本，我看好上游零部件标准化受益更确定。宽覆盖（市场空间/竞争/政策/技术）作 scope 背景备注。」
 
 **重要**：如果用户没有明确说地域（如「研究AI算力基础设施行业」），不得默认 CN，必须将地理范围列入 AskUserQuestion 让用户选择。
 
 同时需要确认当前使用的 LLM 模型变体名称（如 `gemini`、`gpt-4o` 等），后续将作为 `variant` 参数使用。默认可使用当前调用的模型名称。
 
-**如果是 company 类型，必须确认 ticker**（格式：`{market}_{code}`，如 `SZSE_000426`、`SSE_600519`、`HKEX_09995`、`US_AAPL`）。ticker 用于生成行情/财务页面链接。**company 漏传 ticker 会被 `create_topic` 直接 raise**（修 H1）。
+**如果是 company 类型，必须确认 ticker**（格式：`{market}_{code}`，如 `SZSE_000426`、`SSE_600519`、`HKEX_09995`、`US_AAPL`）。ticker 用于生成行情/财务页面链接。**company 漏传 ticker 会被 `create_topic` 直接 raise**。
 
-**display_name 与 short_name 分离**（修 H3 v2）：`display_name` 用于 UI 展示（可长，含 ticker 和英文名）；`short_name` 用于 WebSearch 查询（≤12 字，纯主体名）。
+**display_name 与 short_name 分离**：`display_name` 用于 UI 展示（可长，含 ticker 和英文名）；`short_name` 用于 WebSearch 查询（≤12 字，纯主体名）。
 - company 类型 **必填 `short_name`**（脚本 raise）；industry/arena 可选（不填走 display_name 兜底）
 - 例：`display_name='荣昌生物 (RemeGen, SSE 688331)'` (30 字 UI 友好) → `short_name='荣昌生物'` (4 字 搜索友好)
 - 例：`display_name='阿里巴巴 (BABA, HKEX 09988)'` → `short_name='阿里巴巴'`
 
-**长 question 必须同步给 `search_terms`**（修 H3 v2）：当 `question` 超 25 字（典型如生物医药/科技/复合产业的 deep 类研究），**必填** `search_terms: list[str]` — 2-4 个 WebSearch 友好的核心关键词，每项 ≤15 字。
+**长 question 必须同步给 `search_terms`**：当 `question` 超 25 字（典型如生物医药/科技/复合产业的 deep 类研究），**必填** `search_terms: list[str]` — 2-4 个 WebSearch 友好的核心关键词，每项 ≤15 字。**漏填会被 `create_topic` 直接 raise**（`topic.py:333`）——脚本不做关键词提取，标点截断常切到非核心名词反而误导，由主 agent 显式提炼。
 - 例：`question='荣昌生物作为中国领先的ADC+自免双管线创新药企业，全维度覆盖：商业化兑现节奏、海外授权回流'` → `search_terms=['ADC 商业化', 'BD 海外授权', 'IgAN 管线']`
-- 脚本不做关键词提取（标点截断常切到非核心名词反而误导）—— 长 question 漏给 search_terms 会**直接 raise** 引导主 agent 显式提炼
-- 这些关键词会进入 `build_search_queries` 的 `scope` / `l4-hunting` 覆盖槽 hint，作为主 agent 写 query 的核心原料（脚本只给 hint，不代写 query）
+- 这些关键词写入 `topic.yaml` 的 `scope.search_terms`，后续由 `build_search_queries` 作为 prescan 覆盖槽 hint 消费（脚本只给 hint，不代写 query）
 
 **多市场上市（AH 双重 / ADR / 多重上市）必须确认 `extra_tickers`**（list[str]，主代码以外的所有同公司代码）：
 - 荣昌生物 A+H：`ticker='SSE_688331', extra_tickers=['HKEX_09995']`
 - 阿里巴巴 H+ADR：`ticker='HKEX_09988', extra_tickers=['NYSE_BABA']`
 - 中芯国际 A+H：`ticker='SSE_688981', extra_tickers=['HKEX_00981']`
-- 漏填 = 后续 06-daily-monitor 拿不到第二市场资金/估值/公告 → thesis 写"AH 折溢价"时无结构化字段（修 M1）
+- 漏填 = 后续 06-daily-monitor 拿不到第二市场资金/估值/公告 → thesis 写"AH 折溢价"时无结构化字段
 
 ---
 
@@ -89,13 +127,13 @@ create_topic(
     geo='{geo}',
     depth='{depth}',
     variant='{variant}',
-    # company 类型必填 ticker（H1）；industry / arena / concept 不填
+    # company 类型必填 ticker；industry / arena / concept 不填
     ticker='{ticker_or_None}',          # e.g. 'SSE_688331' / 'HKEX_09995' / 'US_AAPL'
-    # AH 双重 / ADR / 多重上市必填（M1）；单市场或非 company 留 None
+    # AH 双重 / ADR / 多重上市必填；单市场或非 company 留 None
     extra_tickers={extra_tickers_or_None},  # e.g. ['HKEX_09995'] / ['NYSE_BABA'] / None
-    # company 必填 / industry/arena 可选（H3 v2）；≤12 字，纯主体名（搜索查询用）
+    # company 必填 / industry/arena 可选；≤12 字，纯主体名（搜索查询用）
     short_name='{short_name}',  # e.g. '荣昌生物'（display_name 通常含 ticker/英文名 不能直接搜）
-    # question 超 25 字时必填（H3 v2）；脚本不做关键词提取，长 question 漏填会 raise
+    # question 超 25 字时必填；脚本不做关键词提取，长 question 漏填会 raise
     search_terms={search_terms_or_None},  # e.g. ['ADC 商业化', 'BD 海外授权', 'IgAN 管线'] / None
 )
 print('创建成功')
@@ -183,7 +221,7 @@ print('baseline 已落盘:', has_baseline_knowledge('{slug}', '{variant}'))
 
 **执行三段：先跑 baseline 优先 query → 再跑覆盖槽 prescan（`build_search_queries` 清单逐槽写 query）→ 回写 baseline 校准结果。三段都做完才进 Step 5。**
 
-### Step 4.5a：先跑 baseline 第五节的优先 query（**修 M4 + ISSUE-001**）
+### Step 4.5a：先跑 baseline 第五节的优先 query
 
 `build_search_queries` 只枚举 scope + 事件 + L4 的**覆盖槽**（给 hint，不代写 query），**且不读 baseline_knowledge.md**——主 agent 在 Step 4.3 baseline 第五节写的"自评盲点 → 想精准查的 query"必须在这一步手动落地，否则等于白写。
 
@@ -232,7 +270,7 @@ elif r['failure_mode'] == 'all_low_band':
   - {对 thesis 影响最大的 2-3 条新事实}
 ```
 
-### Step 4.5c：回写 baseline 校准结果（**修 M4**）
+### Step 4.5c：回写 baseline 校准结果
 
 跑完 4.5a + 4.5b 后，主 agent 扫一遍刚入库的 web-search material，对照 baseline 第一节的 fact-NN，把被推翻 / 被验证的条目记下来，**追加到 baseline_knowledge.md 末尾**（Edit 工具）：
 
@@ -284,6 +322,11 @@ elif r['failure_mode'] == 'all_low_band':
 1. **核心 thesis**：一句话（≤80 字）+ 强度评分（0-10 分，0=完全看空，10=All-in 看好）
    - 必须有方向（看多 / 看空 / 中性 / 分化看法），不能写"取决于"
    - 如果是分化看法，明确说"看好 X，看空 Y"
+   - **thesis 必须是「终局上的立场」**——落在 type 终局上：
+     - industry → 倾向哪几个 arena / 哪条迁移路径（不能只写「看多行业」）
+     - arena → 赌谁是赢家、凭哪个胜负变量
+     - company → 赌买还是卖、核心命门 + 目标价区间
+     - macro → 体制定位 + 资产含义
 2. **支持理由**（3-5 条）：每条一句话，给出 LLM 现在最相信的判断依据
 3. **最大反方观点**（2-3 条）：诚实列出最有力的反方逻辑——不是稻草人
 4. **会改变看法的事件 / Killer Question**（3-5 条）：必须是**可观测、可证伪**的具体事件
@@ -292,7 +335,7 @@ elif r['failure_mode'] == 'all_low_band':
 
 **不再单列"研究中重点验证项 V#" 段** —— V# 本质是 K#/Q# 的派生细化，作用是引导 workflow 01 路线图，但与 user_todos 重复。改为：**user_todos 直接承担验证项角色**，每条 todo 的 `addresses=[K#]` 标明它在攻打哪个论证目标（在 Step 5.3 体现；Q# 已降级，新 topic 不再用）。这样 thesis 收敛为 4 段，K# 覆盖闭环 self-check 矩阵保持二维（K × todo），不引入 V# 第三维。
 
-写完 `thesis_v0.md` 后，**先跑 prescan 健康度检查**再登记 thesis（**修 ISSUE-001**）：
+写完 `thesis_v0.md` 后，**先跑 prescan 健康度检查**再登记 thesis：
 
 ```bash
 python3 << 'EOF'
@@ -370,6 +413,10 @@ if r["unmapped_facts"]:
 - 如果有 K# 无 todo 攻打（uncovered），二选一：
   1. **补一个 todo 攻打它**（推荐）
   2. **在 thesis 中显式标注 "本次研究不验证此 K，理由是 ..."**（节约精力，但要写出来）
+- **终局命门自检（新增 · 终局对齐）**：thesis 的 K# 谱系 **或** decomposition 命门里，必须有**至少一条直接服务于 type 终局决策**；否则在对话报警并补。（语义判断归 LLM；`terminal_for_type` 作核对锚。）
+  - industry 需有 arena 倾向/迁移路径相关 K# 或命门
+  - arena 需有 shortlist/赢家判定相关 K# 或命门
+  - company 需有买/卖 + 目标价相关 K# 或命门
 
 Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` coverage strip，红色 = 未覆盖。看到红色就必须处理，不能假装看不见。
 
@@ -438,15 +485,23 @@ Web 端会在详情页 thesis 卡片下显示 `K1✓ K2✓ K3✗ K4✓ K5✗` co
    - 命门 = "若这件事的方向错了，整个 thesis 翻盘"的特化问题（比 K# 更聚焦于**机理/兑现路径**）。
    - 置信度低/uncertain 的命门 → 提示 01/02 **优先砸料验证**（对冲薄拆解风险）。
 2. **每环 B 靶点**（决策链 6 环各 1-2 条"为支撑命门，该环特别要挖什么"）——这是 A 合同（type 地板）之上的**命门特化补充**，指导 01 收料 priority。
+   - **终局环 B 靶点强制非空**（终局对齐 · 新增）：type 终局指向的环必须写出并排进 5.3/01 收料优先级（不能空着等环⑥「必产」硬挤）：
+     - industry → 环⑥ arena 比较料靶点（跨 arena 同口径可比，用于分流）
+     - arena → 环⑥ shortlist 料靶点（候选标的横向比较，用于选出赢家）
+     - company → 环④ EV 输入料靶点（估值锚 + 一致预期 + 目标价支撑）
 3. **primer 入门目标 v0（种子，非定稿）**——"门外人为投资读完本 topic 应能做到的 N 条具体能力"清单（N 通常 8-13，门外人可观察的能力，不是知识罗列；形态见 `04-synthesize/00-primer.md` Step 1）：
    - 用薄知识起草（thesis_v0 + K# + `baseline_knowledge.md`），每条标置信度/缺口 tag（标 uncertain/缺口的 → 提示该条需收背景料）。
    - **这是把 primer 目标前移、驱动背景收料**——与命门同属 B 轴，区别只是消费者（命门喂 case 决策环，入门目标喂 primer 理解地基）。
+   - **性质约束（primer 回归 · 必守）**：入门目标必须是**理解性/教学性能力**（说清/解释/区分/教方法 X 是什么、理解双面性、列出可观测信号），**不得是决策性能力**（复述 arena 分流结论/判断投资含义/给 stance/定 tier）——后者归 case 决策环。
+   - **终局豁免**：terminal-alignment 的终局贯穿到 K#/命门/case（正确），但**不贯穿到 primer 入门目标**。入门目标服务"门外人读懂这门生意"，不服务"做终局决策"——不得因 5.2 终局命门自检/5.4 终局环 B 靶点而把入门目标终局化（如"复述 arena 分流结论"是 case 环⑥的活，不是入门目标）。
    - **v0 只是种子**：粗清单即可，厚料浮现后的精修留 04 primer Step 1（同命门的有界 delta 重拆，见 `04-synthesize/_shared.md`）。
 4. **机械自检**（无需 LLM 判断，照单核对）：
    - 每个 K# 是否都被某个命门覆盖（或显式标"非命门，背景项"）？
    - A 合同每个**必收类目**（尤其三项 hard）是否都在 5.3 / 01 排了收料优先级？
    - 命门置信度分布（几高几低）——低置信度命门是否都进了 B 靶点优先收料？
    - **每条 primer 入门目标**是否都在 5.3 / 01 排了对应背景资料源（或显式标"训练知识可覆盖，无需收料"）？——避免 primer 目标只生成、不驱动收料。
+   - **每条 primer 入门目标是否理解性/教学性（非决策性）？**（primer 回归 · 必守）——决策性条目（复述 arena 分流结论/判断投资含义/给 stance/定 tier）必须改写为理解性（"说清 X 是什么/解释 X 机理"）或剔除。终局决策归 case，不入入门目标（终局豁免见上）。
+   - **「type 终局环的 B 靶点是否非空？」是否在 5.3/01 排了对应收料优先级？**（终局对齐 · 新增）——否则报警。形态对齐第 4 条「每条 primer 入门目标是否排了背景料」。
 
 ```python
 from prism.scripts.topic import set_decomposition
@@ -466,7 +521,7 @@ set_decomposition(
 
 **user_todos 必须用 dict 结构**（不能再写 list[str]）。
 
-**ISSUE-001**：`set_next_actions` 须把 Step 5.0 拿到的 `h['status']` + `h['failure_reason']` 传进去，failed 时脚本会自动 prepend ⚠️ 警示 action 到 next_actions 第一条。
+`set_next_actions` 须把 Step 5.0 拿到的 `h['status']` + `h['failure_reason']` 传进去，failed 时脚本会自动 prepend ⚠️ 警示 action 到 next_actions 第一条。
 
 示例：
 
@@ -492,14 +547,14 @@ set_user_todos(slug, [
         'task': '下载头部车厂全固态 SOP 时间表声明（IR/技术发布会）',
         'priority': 'P0',
         'info_tier': 'half_public',
-        'addresses': ['Q1', 'K1'],
+        'addresses': ['K1'],
         'source_hint': '公司 IR 网站，需英日文阅读',
     },
     {
         'task': '下载3份对比卖方深度报告（中信建投/中金/申万任选3家）',
         'priority': 'P0',
         'info_tier': 'public',
-        'addresses': ['Q3', 'Q6'],
+        'addresses': ['K3', 'K6'],
         'source_hint': '同花顺/Wind/卖方公众号',
     },
     # ... 更多 todo
@@ -510,7 +565,7 @@ EOF
 字段约束（由 `_normalize_todo` 校验，不合规会直接 raise）：
 - `priority`: P0 / P1 / P2
 - `info_tier`: public / half_public / hard
-- `addresses`: list[str]，元素如 `Q1`（5.2 问题号）或 `K1`（thesis Killer Question 号）
+- `addresses`: list[str]，元素为 `K#`（thesis Killer Question 号）
 - `status`: pending / in_progress / done（缺省 pending）
 
 ---

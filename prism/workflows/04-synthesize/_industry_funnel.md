@@ -240,7 +240,7 @@ print('primer + case + 09 sidecar 已注册')
 
 **thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。先读 `_synthesis_brief.md`，dump v0→v1 强度调整，写 `thesis_v1.md`，调 `set_thesis(version=1, ...)`。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, convergence_status, changelog)`**（见 `_shared.md` §B 轴有界 delta 重拆）。收尾出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单）。
 
-**收尾**：照 `_shared.md` § 全部产出完成后——`append_user_todos` + 清 `next_actions` + stage 推进。industry 合成完后 stage 置 `05-critic-review`（第 6 阶段「评审」，与 company/arena 统一）；**critic 对 industry 非强制（可选）**——可在对话里说「评审 {slug}」跑对抗式 steelman，或在 web 详情页点「✓ 标记完成」直接 `done`（旧名 `09-arena-shortlist` 已退休，勿再用）。
+**收尾**：照 `_shared.md` § 全部产出完成后（含 capped→suggested_drilldowns 回流）——`append_user_todos` + 清 `next_actions` + stage 推进。industry 合成完后 stage 置 `05-critic-review`（第 6 阶段「评审」，与 company/arena 统一）；**critic 对 industry 非强制（可选）**——可在对话里说「评审 {slug}」跑对抗式 steelman，或在 web 详情页点「✓ 标记完成」直接 `done`（旧名 `09-arena-shortlist` 已退休，勿再用）。
 
 > **宏观横切（软提示 · 不强制）**：赛道/行业层多跨标的，宏观敏感度偏糊；如该赛道有显著利率/流动性/汇率暴露，**建议**（非强制）跑一遍 macro hook（见 `_company_case.md` Step 1 宏观横切 hook）补一段体制敏感度。不落 macro_stamp、不参与 staleness/coverage。
 
@@ -259,10 +259,17 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
   python3 -c "from prism.scripts.topic import read_topic; print(read_topic('{slug}','{variant}')['scope']['question'])"
   ```
   逐子句核对 case 是否答到**可执行层**。**funnel 链"自洽走通" ≠ "答到了用户的问题"**——若问题终点超出 funnel 合同终点（典型：问"核心受益标的是谁"，而环⑥ 只停在 arena/赛道分流没落到可买标的），这是**结构性盲区，前面所有链内检查与 05 steelman 都查不出**（它们只评"在场的链/假设"，查不出"没摆上来但用户问了的维度"），必须在这一条抓。停浅即判**致命缺口**，不是扣分项。
+- 🔒 **type-contract 终局证据强度核对（终局对齐 · 新增 · 独立于 question）**：不管 question 怎么写，**强制**检查终局环（环④ stance + 环⑥ arena 分流）的判断有几维靠**定性/data-missing**。
+  - 读 sidecar `industry_to_arenas.yaml`（若存在）的 `honest_gaps` + case 环④/环⑥ 自述
+  - 逐终局维度核：competition（竞争格局）/ valuation（估值水位）/ moat（护城河）/ growth（增长）——各判 `定量` / `定性有据` / `定性/data-missing`
+  - **终局证据强度判定**：
+    - ≥3 维 定量 → **强度可接受**，放行
+    - ≥2 维 定性/data-missing（尤其 competition/valuation 双定性）→ 判 **「终局证据薄」**
+  - **终局证据薄时的 escalate**：不放行浅终局，将薄弱维度翻成 `suggested_drilldowns`（`source=critic_weak_k`，`priority=P0`），附在 critic 修订清单中让主 agent 调 `set_suggested_drilldowns(mode='append')` 挂上。若 decomposition 对应命门已两轮未解 → 必要时 `set_decomposition(convergence_status='capped')`。
 
-四段总评（链通不通 / 最严重 2-3 个断点 / **🎯 目标达成判定：原问题每个子句答到可执行层了吗、停浅在哪** / 只补一处补哪），苛刻直接，1800 字内。按反馈修订（主 agent 直接 Edit）。
+四段总评（链通不通 / 最严重 2-3 个断点 / **🎯 目标达成判定：原问题每个子句答到可执行层了吗、停浅在哪** / **🔒 终局证据强度：定量{}/定性有据{}/定性{}/，可接受或证据薄** / 只补一处补哪），苛刻直接，1800 字内。按反馈修订（主 agent 直接 Edit）。
 
-**强制重修订门（有牙，非建议）**：首轮若判**断链** OR **目标未达成（停浅）**，必须跑第二轮。其中"目标未达成"的修订**不是改字，是实打实补回答缺口**——例如补"核心受益标的指认"段：标的 × 质地 × 定价 × 弹性 × 介入纪律矩阵 + 被 eliminated 的边界诚实反思（这正是本 variant eval→case v2 跑通的闭环）。补完重判，直到原问题每个子句都落到可执行层，chain-critic 才放行。
+**强制重修订门（有牙，非建议）**：首轮若判**断链** OR **目标未达成（停浅）** OR **终局证据薄**，必须跑第二轮。其中"目标未达成"的修订**不是改字，是实打实补回答缺口**——例如补"核心受益标的指认"段：标的 × 质地 × 定价 × 弹性 × 介入纪律矩阵 + 被 eliminated 的边界诚实反思（这正是本 variant eval→case v2 跑通的闭环）。"终局证据薄"时**不放行浅终局**——将薄弱维度翻成 `suggested_drilldowns`（`source=critic_weak_k`，`priority=P0`），主 agent 调 `set_suggested_drilldowns(mode='append')`；若 decomposition 对应命门已两轮未解，必要时 `set_decomposition(convergence_status='capped')`。补完重判，直到原问题每个子句都落到可执行层 + 终局证据可接受，chain-critic 才放行。
 
 **critic-review 阶段（05）**：industry 可选进 `05-critic-review` 做对抗式重审。`05-critic-review.md` Step 1 已按 type 读 `i_industry_case.md`、rewrite_keys 用 `i_industry_case`。
 

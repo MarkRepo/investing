@@ -30,6 +30,33 @@ _DECISION_CHAIN_OUTPUTS = {
     "macro": ["00_primer", "m_regime_read"],
 }
 
+# 终局合同（type 常量，a priori 不可协商）。
+# 与 _input_contract.md 终环同源——改一处必须改另一处。
+# 用途：① create_topic 注入 scope.terminal ② 工作流/critic/web 引用作核对锚。
+# 未知 type 走 terminal_for_type 兜底通用句。
+_TYPE_TERMINALS: dict[str, str] = {
+    "industry": "把资本/注意力分配给哪几个细分 arena（深挖/观察/淘汰三档分流）",
+    "arena": "在候选标的里选出 shortlist——谁是赢家、介入纪律",
+    "company": "买/卖/持有 + 期望收益(EV) + 目标价/介入纪律",
+    "macro": "体制定位 + 传导地图下的资产含义",
+}
+
+
+def terminal_for_type(topic_type: str) -> str:
+    """返回 type 对应的合同终局一句话（纯查表，零推断）。
+
+    topic_type 未知时返回兜底通用句 + stderr 提示，不 raise——保向后兼容。
+    """
+    t = _TYPE_TERMINALS.get(topic_type)
+    if t:
+        return t
+    print(
+        f"⚠ terminal_for_type: 未知 type {topic_type!r}，使用兜底通用句",
+        file=sys.stderr,
+    )
+    return "研究结论 + 可执行投资判断"
+
+
 _DEFAULT_OUTPUT_STATE = {
     "version": 0, "last_updated": None, "status": "pending", "data_freshness": None,
     # 04-synthesize 写入：本 output 上次合成时引用的 manifest mat_ids。
@@ -358,6 +385,7 @@ def create_topic(
         "geo": geo,
         "question": question,
         "depth": depth,
+        "terminal": terminal_for_type(topic_type),
     }
     if ticker:
         scope["ticker"] = ticker
@@ -394,6 +422,9 @@ def create_topic(
         "parent_materials": [],
         "next_actions": ["运行 workflow 01-build-roadmap"],
         "user_todos": [],
+        # 建议深挖（07-drilldown 钩子）：04/05 收尾发现 capped 命门 / thin_evidence 薄弱 K#
+        # 时由 LLM 写入结构化建议；web 详情页单列「🔍 建议深挖」块。详见 set_suggested_drilldowns。
+        "suggested_drilldowns": [],
         "monitoring": {"enabled": False, "cadence": "daily"},
     }
     _write_yaml(path, data)
@@ -415,6 +446,11 @@ def read_topic(slug: str, variant: str) -> dict:
     data.setdefault("critic", None)
     # 命门拆解（B 层，镜像 thesis 结构）。旧 topic 无之 → 缺省空壳，graceful。
     data.setdefault("decomposition", {"current_version": None, "last_updated": None, "history": []})
+    # 建议深挖（07-drilldown 钩子）。旧 topic 无之 → 缺省空列表，向后兼容。
+    data.setdefault("suggested_drilldowns", [])
+    # 终局合同（type 常量，终局归 type 独占）。旧 topic scope 无 terminal → 按 type 派生，不写盘。
+    data.setdefault("scope", {})
+    data["scope"].setdefault("terminal", terminal_for_type(data.get("type", "")))
     if "outputs_state" in data:
         for key, state in data["outputs_state"].items():
             state.setdefault("data_freshness", None)
@@ -1991,3 +2027,198 @@ def read_baseline_knowledge(slug: str, variant: str) -> str | None:
 
 def has_baseline_knowledge(slug: str, variant: str) -> bool:
     return baseline_knowledge_path(slug, variant).is_file()
+
+
+# ── 建议深挖（suggested_drilldowns）─────────────────────────────────
+# 把「capped 命门 / critic 薄弱 K#」升级为结构化建议，自动回流 topic.yaml
+# 并在 web 醒目提示。LLM 漏写时脚本兜底信号仍提示。
+# spec: prism/specs/suggested-drilldown-plan.md
+
+_VALID_DRILLDOWN_SOURCES = (
+    "capped_decomposition",
+    "critic_weak_k",
+    "auto_capped",
+    "auto_thin",
+)
+_VALID_DRILLDOWN_PRIORITIES = ("P0", "P1", "P2")
+_VALID_DRILLDOWN_STATUSES = ("open", "done", "dismissed")
+
+
+def set_suggested_drilldowns(
+    slug: str,
+    variant: str,
+    items: list[dict],
+    *,
+    mode: str = "replace",
+) -> None:
+    """写入建议深挖（纯文件写，零推断）。
+
+    mode='replace' 全量覆写（04 合成用）；mode='append' 按 question 去重追加
+    （05 critic 用，不冲掉 04 的）。末尾 _trigger_dashboard 刷新 web。
+
+    每项规范化：
+      - question: str        # 深挖问题（LLM 写）
+      - rationale: str       # 为什么深挖
+      - source: str          # capped_decomposition | critic_weak_k | auto_capped | auto_thin
+      - related: [K#, ...]   # 关联命门/论证目标
+      - priority: P0|P1|P2
+      - status: open         # 脚本强制写 open（后续由 resolve_suggested_drilldown 翻）
+      - suggested_at: iso    # 脚本自动盖（无视传入值）
+    """
+    if mode not in ("replace", "append"):
+        raise ValueError(f"mode 必须是 'replace' 或 'append'，得到 {mode!r}")
+
+    validated: list[dict] = []
+    now_ts = _now_iso()
+    for item in items:
+        if not isinstance(item, dict):
+            raise ValueError(f"每条建议必须是 dict，得到 {type(item).__name__}: {item!r}")
+        q = (item.get("question") or "").strip()
+        if not q:
+            raise ValueError(f"suggested_drilldown 缺 question: {item!r}")
+        source = item.get("source", "")
+        if source not in _VALID_DRILLDOWN_SOURCES:
+            raise ValueError(
+                f"source={source!r} 非法，必须为 {_VALID_DRILLDOWN_SOURCES} 之一"
+            )
+        priority = item.get("priority", "P1")
+        if priority not in _VALID_DRILLDOWN_PRIORITIES:
+            raise ValueError(
+                f"priority={priority!r} 非法，必须为 {_VALID_DRILLDOWN_PRIORITIES} 之一"
+            )
+        validated.append({
+            "question": q,
+            "rationale": (item.get("rationale") or "").strip(),
+            "source": source,
+            "related": [str(r) for r in (item.get("related") or [])],
+            "priority": priority,
+            "status": "open",
+            "suggested_at": now_ts,
+        })
+
+    data = read_topic(slug, variant)
+    if mode == "replace":
+        merged = validated
+    else:  # append — 按 question 去重
+        existing = list(data.get("suggested_drilldowns") or [])
+        seen_qs = {d.get("question", "").strip() for d in existing if isinstance(d, dict)}
+        for v in validated:
+            if v["question"] not in seen_qs:
+                existing.append(v)
+                seen_qs.add(v["question"])
+        merged = existing
+
+    update_topic(slug, variant, suggested_drilldowns=merged)
+    _trigger_dashboard(slug, variant, f"set_suggested_drilldowns({mode})")
+
+
+def detect_drilldown_candidates(slug: str, variant: str) -> dict:
+    """零推断、只读兜底信号：检测是否存在未收敛命门/薄弱 K#。
+
+    读三处数据源：
+      - decomposition.history[-1].convergence_status == 'capped'
+      - gap_detector.detect_gaps() 的 thin_evidence / uncovered_ks
+      - critic.verdict（仅在包含 'request-more' 时作弱信号）
+
+    返回 {'has_signal': bool, 'capped': bool, 'capped_summary': str,
+           'thin_evidence': [K#, ...], 'uncovered_ks': [K#, ...], 'reason': str}
+    失败返回空（不抛）——这是兜底信号，不应卡住主流程。
+    """
+    reason_parts: list[str] = []
+    capped = False
+    capped_summary = ""
+    thin_evidence: list[str] = []
+    uncovered_ks: list[str] = []
+
+    try:
+        data = read_topic(slug, variant)
+
+        # 1. decomposition capped
+        decomp = data.get("decomposition") or {}
+        history = decomp.get("history") or []
+        if history:
+            latest = history[-1]
+            if latest.get("convergence_status") == "capped":
+                capped = True
+                capped_summary = (latest.get("summary") or "").strip()
+                reason_parts.append("decomposition capped（撞 2 轮顶）")
+
+        # 2. gap_detector — 不抛，兜底
+        try:
+            from prism.scripts.gap_detector import detect_gaps as _detect_gaps
+            gaps = _detect_gaps(slug, variant)
+            if "error" not in gaps:
+                te = gaps.get("thin_evidence") or []
+                if te:
+                    thin_evidence = [str(k) for k in te]
+                    reason_parts.append(f"thin_evidence: {', '.join(thin_evidence)}")
+                uk = gaps.get("uncovered_ks") or []
+                if uk:
+                    uncovered_ks = [str(k) for k in uk]
+                    reason_parts.append(f"uncovered_ks: {', '.join(uncovered_ks)}")
+        except Exception:
+            pass
+
+        # 3. critic verdict（弱信号，仅 request-more 时提示）
+        critic = data.get("critic") or {}
+        verdict = (critic.get("verdict") or "").strip() if isinstance(critic, dict) else ""
+        if verdict and "request-more" in verdict:
+            reason_parts.append(f"critic verdict={verdict}（可能有未解问题）")
+
+    except Exception:
+        return {
+            "has_signal": False,
+            "capped": False,
+            "capped_summary": "",
+            "thin_evidence": [],
+            "uncovered_ks": [],
+            "reason": "",
+        }
+
+    has_signal = capped or bool(thin_evidence) or bool(uncovered_ks)
+    return {
+        "has_signal": has_signal,
+        "capped": capped,
+        "capped_summary": capped_summary,
+        "thin_evidence": thin_evidence,
+        "uncovered_ks": uncovered_ks,
+        "reason": "; ".join(reason_parts) if reason_parts else "",
+    }
+
+
+def resolve_suggested_drilldown(
+    slug: str,
+    variant: str,
+    question_substr: str,
+    *,
+    status: str = "done",
+    drilldown_file: str | None = None,
+) -> None:
+    """把某条建议深挖 open→done/dismissed + 关联 drilldown 文件名。
+
+    question_substr 做子串匹配（仿 update_user_todo_status），命中第一条匹配项。
+    未命中 raise ValueError（避免静默失败——建议永远挂着更差）。
+    drilldown_file 可选，关联 07-drilldown 产出文件名。
+    """
+    if status not in _VALID_DRILLDOWN_STATUSES:
+        raise ValueError(
+            f"status 必须是 {_VALID_DRILLDOWN_STATUSES} 之一，得到 {status!r}"
+        )
+    data = read_topic(slug, variant)
+    items = data.get("suggested_drilldowns") or []
+    hit = False
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        if question_substr in item.get("question", ""):
+            item["status"] = status
+            if drilldown_file:
+                item["drilldown_file"] = drilldown_file
+            hit = True
+            break
+    if not hit:
+        raise ValueError(
+            f"未找到 question 包含 {question_substr!r} 的建议深挖"
+        )
+    update_topic(slug, variant, suggested_drilldowns=items)
+    _trigger_dashboard(slug, variant, f"resolve_suggested_drilldown({status})")

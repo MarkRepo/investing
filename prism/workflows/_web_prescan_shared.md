@@ -224,7 +224,7 @@ EOF
 - `band='mid'`（≥0.5）→ 同 high 但 `notes` 追加 `待用户确认`
 - `band='low'`（<0.5）→ 跳过，不写文件不入 manifest
 
-**H2 救回闭环**（修 H2 后必走）：
+**救回闭环**：
 
 ```python
 # 1. 第一遍 register（主 agent 没把握的 hit 不传 domain_tier）
@@ -349,7 +349,7 @@ UI 中 `stale_at < now` 显示黄色 chip；`expire_at < now` 显示红色 chip 
 
 1. **零幻觉**：URL/snippet 必须来自 WebSearch 工具实际返回；编造视为污染 manifest，需立即删除（手动 edit yaml）
 2. **band='low' 不写文件**：避免 inbox 膨胀；低质量结果仅靠 `web_search_log.yaml` 留痕
-3. **addresses 必填且语义分三态**（修 C2 全局统一约定，02/03/04/05/07 都按此处理）：
+3. **addresses 必填且语义分三态**（全局统一约定，02/03/04/05/07 都按此处理）：
 
    | 写法 | 语义 | 参与 K# 覆盖？ | 进 todo 覆盖**候选**？ | 何时用 |
    |---|---|---|---|---|

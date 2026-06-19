@@ -484,7 +484,7 @@ def list_periods_with_ratios(
     ticker = ticker.strip().upper()
     if market in _CN_MARKETS:
         fins = list_financials_cn(conn, ticker)
-    elif market == "US":
+    elif market in ("US", "HKEX"):
         fins = list_financials_us(conn, ticker)
     else:
         raise ValueError(f"unsupported market {market!r}")

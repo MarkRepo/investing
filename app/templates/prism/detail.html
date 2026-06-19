@@ -172,6 +172,9 @@
 </style>
 
 <p class="scope-question">研究问题：<em>{{ topic.scope.question }}</em></p>
+{% if topic.scope.terminal %}
+<p class="scope-terminal">📌 合同终局：{{ topic.scope.terminal }}</p>
+{% endif %}
 
 {% if topic.thesis and topic.thesis.current_version is not none %}
 {% set _cur_v = topic.thesis.current_version %}
@@ -550,6 +553,57 @@
       <h3>当前阶段</h3>
       <p class="hint stage-badge">{{ topic.stage }}</p>
     </section>
+
+    {# 🔍 建议深挖（suggested_drilldowns） #}
+    {% set _drills = topic.suggested_drilldowns or [] %}
+    {% set _open_drills = _drills | selectattr('status', 'equalto', 'open') | list %}
+    {% if _open_drills %}
+    <section class="drilldown-section">
+      <h3>🔍 建议深挖</h3>
+      <ul class="drilldown-list">
+        {% for d in _open_drills %}
+        <li class="drilldown-item">
+          <div class="drilldown-question">{{ d.question }}</div>
+          <div class="drilldown-meta">
+            <span class="chip chip-{{ d.priority | lower }}">{{ d.priority }}</span>
+            <span class="chip chip-drilldown-source">{{ d.source }}</span>
+            {% for r in d.related %}
+              {% set _rk = r.split('@')[0] %}
+              {% if _rk.startswith('K') and topic.thesis and topic.thesis.current_version is not none %}
+                <a class="chip chip-addr" href="/prism/{{ topic.slug }}/{{ variant }}/thesis/{{ topic.thesis.current_version }}">{{ r }}</a>
+              {% else %}
+                <span class="chip chip-addr">{{ r }}</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% if d.rationale %}<div class="drilldown-rationale hint">{{ d.rationale }}</div>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% if _drills | length > _open_drills | length %}
+      <details class="drilldown-done">
+        <summary>已处理 / 已忽略（{{ _drills | length - _open_drills | length }} 条）</summary>
+        <ul class="drilldown-list">
+          {% for d in _drills if d.status != 'open' %}
+          <li class="drilldown-item drilldown-resolved">
+            <span class="drilldown-status">{{ '✓' if d.status == 'done' else '✗' }}</span>
+            <span>{{ d.question }}</span>
+            {% if d.drilldown_file %}<span class="hint">→ {{ d.drilldown_file }}</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </details>
+      {% endif %}
+    </section>
+    {% elif drilldown_candidates and drilldown_candidates.has_signal %}
+    <section class="drilldown-section">
+      <h3>🔍 建议深挖</h3>
+      <div class="drilldown-fallback">
+        <p>⚠️ 有未收敛命门 / 薄弱 K#：{{ drilldown_candidates.reason }}</p>
+        <p class="hint">可对主 agent 说「深挖 {{ topic.slug }} 的 {问题}」</p>
+      </div>
+    </section>
+    {% endif %}
   </aside>
 
 </div>
@@ -568,6 +622,7 @@
   .variant-current { font-weight: 700; color: #111; background: #f0f0f0; padding: 0.1em 0.35em; border-radius: 3px; font-family: monospace; }
   .sep { color: #ccc; margin: 0 0.3em; }
   .scope-question { color: #444; margin: 0.5em 0 1.5em; }
+  .scope-terminal { color: #6b7280; margin: -1em 0 1.5em; font-size: 0.9em; }
   .prism-columns { display: grid; grid-template-columns: 1fr 320px; gap: 2em; align-items: start; }
   @media (max-width: 900px) { .prism-columns { grid-template-columns: 1fr; } }
   .outputs-panel h2, .actions-panel h3 { margin: 0 0 0.5em; font-size: 1em; color: #333; }
@@ -575,6 +630,19 @@
   .actions-panel section { margin-bottom: 1.5em; }
   .actions-panel ul { padding-left: 1.2em; margin: 0.3em 0; }
   .actions-panel li { margin: 0.3em 0; font-size: 0.9em; }
+  .drilldown-section { border-top: 1px solid #f0e6d3; padding-top: 1em; }
+  .drilldown-list { list-style: none; padding: 0; }
+  .drilldown-item { margin-bottom: 0.8em; padding: 0.5em; background: #fefdf8; border-radius: 4px; border-left: 3px solid #e6a817; }
+  .drilldown-question { font-weight: 600; color: #333; font-size: 0.92em; margin-bottom: 0.3em; }
+  .drilldown-meta { display: flex; gap: 0.3em; flex-wrap: wrap; margin-bottom: 0.2em; }
+  .drilldown-rationale { font-size: 0.83em; }
+  .chip-drilldown-source { background: #fef3c7; color: #92400e; font-size: 0.75em; }
+  .drilldown-fallback { background: #fffbeb; border: 1px solid #fde68a; border-radius: 4px; padding: 0.6em 0.8em; }
+  .drilldown-fallback p { margin: 0.2em 0; font-size: 0.88em; color: #92400e; }
+  .drilldown-resolved { opacity: 0.6; border-left-color: #ccc; }
+  .drilldown-status { margin-right: 0.4em; font-weight: 600; }
+  .drilldown-done { margin-top: 0.5em; }
+  .drilldown-done summary { font-size: 0.85em; color: #888; cursor: pointer; }
   .material-list { padding-left: 1em; }
   .material-list li { margin: 0.25em 0; font-size: 0.85em; }
   .processed { color: #888; }
