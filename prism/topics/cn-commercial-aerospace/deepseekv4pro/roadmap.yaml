@@ -1,0 +1,216 @@
+# 研究路线图 — 中国商业航天
+# topic: cn-commercial-aerospace / variant: deepseekv4pro
+
+meta:
+  created: 2026-06-17
+  thesis_version: 0
+  decomposition_version: 0
+
+primer_scope: >-
+  产业链全景（星/箭/场/测/用）、主要玩家图谱（蓝箭/天兵/星河动力/中科宇航/东方空间）、
+  GW vs 千帆星座规划、液氧甲烷 vs 液氧煤油技术路线对比、SpaceX 参照系、政策演进时间线（2014-2026）、
+  市场规模量级与增速
+
+learning_track:
+
+  # ── L3 争议层（喂决策链环④） ──
+  l3_debates:
+  - question: >
+      可回收火箭"2026 年元年"预期是否过于乐观？朱雀三号 Q2 回收再试 + 长征十号甲低空验证成功 =
+      成本曲线即将陡降？还是 SpaceX 用了 8 年（2015→2023 盈利）的规律也适用于中国？
+    debate_stakes: 若回收再失败→时间表推至 2028+，发射成本居高不下→星座组网进度滞后→频轨 deadline 违约风险
+
+  - question: >
+      蓝箭航天的"烧钱换规模"模式能否持续？年亏损 8-12 亿 vs 2026 年目标营收 5 亿、
+      年固定成本 6-10 亿——资本市场给不给这个"5-7 年才能盈利"的窗口？SpaceX IPO $2 万亿
+      是提估值还是吸流动性？
+    debate_stakes: 若蓝箭 IPO 受阻/估值大幅低于预期→整个赛道融资环境恶化→火箭制造 arena 投资价值打折
+
+  - question: >
+      卫星制造 7360 颗/年产能 vs 2025 年仅发射 377 颗——产能利用率 <10% 是"火箭运力瓶颈"还是"需求根本没形成"？
+      如果星座组网进度持续不及预期，卫星制造环节是不是先发优势变沉没成本？
+    debate_stakes: 若卫星制造出现价格战/产能过剩→制造环节利润率崩塌→价值向火箭+应用迁移
+
+  - question: >
+      国家队（长征十号甲/中国商星）介入对民营格局的挤压效应有多大？民营火箭企业
+      靠"成本优势+灵活迭代"的逻辑，在国家队同样发力可回收的背景下是否成立？
+    debate_stakes: 若国家队通过行政订单锁定星座发射份额→民营火箭"市场化竞争"叙事打折
+
+  - question: >
+      中国商业航天对标 SpaceX 的估值溢价是否合理？SpaceX $2 万亿估值有 Starlink $113 亿营收+
+      $44 亿营业利润支撑，中国商业火箭企业累计营收不足 1 亿却冲刺 200 亿估值——
+      泡沫还是"国家战略溢价"？
+    debate_stakes: 若 SpaceX 上市后估值回调→中国商业航天估值锚下移→A股映射承压
+
+  # ── L4 狩猎层（找错误定价，逐 K# 对齐） ──
+  l4_hunting:
+  - question: >
+      朱雀三号 2026Q2 回收试验的时间窗口和成功概率——当前市场是否高估了"回收元年"叙事？
+      长征十号甲的低空验证成功是否被误读为"可回收已解决"？
+    addresses: [K1]
+    search_keywords: [朱雀三号 回收试验, 长征十号甲 回收, 中国可回收火箭进展]
+    source_hint: CCTV/科技日报/蓝箭官方渠道 + 航天爱好者社区技术分析
+
+  - question: >
+      蓝箭航天招股书关键财务假设的合理性——2026 年营收 5 亿/2027 年 10 亿的达成路径？
+      在手订单（星网+垣信）能否支撑？年固定成本 6-10 亿的降本空间？
+    addresses: [K2]
+    search_keywords: [蓝箭航天 营收预测, 朱雀三号 订单, 商业火箭 盈利模型]
+    source_hint: 招股书（已收）+ 卖方财务模型 + 行业可比公司分析
+
+  - question: >
+      SpaceX 上市后 P/S 估值倍数对蓝箭/天兵的映射——Starlink 部分 vs 发射部分的拆分估值逻辑？
+      中国商业火箭企业该用 P/S（尚无收入）、P/B（重资产）还是 DCF（远期现金流）估值？
+    addresses: [K3]
+    search_keywords: [SpaceX 估值, 商业航天 估值方法, 蓝箭航天 可比估值]
+    source_hint: SpaceX S-1 招股书 + 华尔街分析师估值报告
+
+  - question: >
+      2026 年全年可回收火箭验证时间表汇总——朱雀三号 Q2/Q4、长征十号甲后续、
+      天龙三号归零后复飞、双曲线三号首飞、元行者一号首飞——哪个节点最可能超预期/低于预期？
+    addresses: [K4]
+    search_keywords: [2026 可回收火箭时间表, 商业火箭首飞计划, 发射场排期]
+    source_hint: 各企业官方公告 + 航天爱好者社区发射日历
+
+  - question: >
+      卫星制造环节当前实际毛利率和价格趋势——200-300kg 级 1200-1500 万/颗是否在持续下降？
+      55 个工厂的开工率变化——已有工厂是否在减产/转产？
+    addresses: [K5]
+    search_keywords: [卫星制造 毛利率, 卫星价格 下降, 卫星工厂 开工率]
+    source_hint: 中国卫星/长光卫星/银河航天年报 + 行业调研数据
+
+# ── 资料优先级（A 合同地板 + B 命门靶点） ──
+
+material_priority:
+  tier1:
+    # ── 00 5.3 已有的 P0（全部 fetched）──
+    - title: 蓝箭航天招股书关键财务/技术/竞争章节提取
+      type: annual-report
+      info_tier: half_public
+      addresses: [K2]
+      rings: [leader-valuation-anchor, value-chain-profit-pool]
+      source_hint: 上交所科创板审核网站，inbox 已有 landspace_ipo_prospectus.md
+      ticker: null
+      status: done
+      covered_by: [landspace_ipo_prospectus.md]
+
+    - title: 卖方深度研报（华龙证券 2026-02 + 爱建证券 2026-01 + 艾瑞 2026）
+      type: sell-side-note
+      info_tier: half_public
+      addresses: [K2, K4]
+      rings: [value-chain-profit-pool, migration-path-evidence, arena-scoring-inputs]
+      source_hint: 东财/Wind 研报平台，已通过 exa 获取
+      status: done
+      covered_by: [eager-fetch-exa]
+
+    # ── A 合同必收类目（新增） ──
+
+    - title: 产业链利润池分析——火箭/卫星/应用各环节的收入规模、利润率、竞争壁垒对比
+      type: industry-research
+      info_tier: half_public
+      addresses: [K5]
+      rings: [value-chain-profit-pool]
+      source_hint: 赛迪智库/中投顾问/华龙证券 行业报告（已有部分覆盖）
+      status: done
+      covered_by: [prescan + eager-fetch]
+
+    - title: 各 arena 6 维评分原始数据（利润池规模/增速/竞争格局/估值/周期位/进入壁垒）
+      type: industry-research
+      info_tier: half_public
+      addresses: [K4, K5]
+      rings: [arena-scoring-inputs]
+      source_hint: 已有 prescan + 研报覆盖，需 03 提取结构化数据
+
+    - title: 发射成本降本路径验证证据——各组回收试验的实际成本数据和里程碑对照
+      type: data
+      info_tier: half_public
+      addresses: [K1]
+      rings: [migration-path-evidence]
+      source_hint: 爱建证券成本模型 + SpaceX 参照数据（已有）
+
+  tier2:
+    # ── A 合同必收：industry-mirror（硬·欠供） ──
+    - title: 行业历史镜鉴——SpaceX 2015-2023 可回收商业化全历程对照（时间线+关键节点+盈利拐点）
+      type: industry-research
+      info_tier: public
+      addresses: [K1]
+      rings: [industry-mirror]
+      source_hint: Wikipedia + SpaceX Milestone Tracker 已收，需整理成对照时间线
+      status: done
+      covered_by: [eager-fetch-exa]
+
+    - title: 行业历史镜鉴——中国光伏/动力电池产能过剩的利润崩塌对照（卫星制造 7360 颗产能的警示）
+      type: industry-research
+      info_tier: public
+      addresses: [K5]
+      rings: [industry-mirror]
+      source_hint: 光伏 2010-2012/动力电池 2023-2024 产能过剩复盘文章（公开可搜）
+
+    # ── B 轴命门靶点（低置信度命门优先） ──
+    - title: 可回收火箭技术路径对比——液氧甲烷（朱雀三号）vs 液氧煤油（天龙三号/智神星一号）的回收成功率/成本差异
+      type: industry-research
+      info_tier: half_public
+      addresses: [K1]
+      rings: [migration-path-evidence]
+      source_hint: 技术论文/行业分析/华龙证券报告
+
+    - title: 蓝箭航天 vs 天兵科技 vs 星河动力 融资历史+估值+投资人对比
+      type: data
+      info_tier: half_public
+      addresses: [K2]
+      rings: [leader-valuation-anchor]
+      source_hint: 天眼查/企查查 + 招股书（已有部分覆盖）
+
+    - title: 发射工位产能利用率与瓶颈分析——6 个商业工位的实际周转率、排队时间和扩容计划
+      type: data
+      info_tier: half_public
+      addresses: [K4]
+      rings: [migration-path-evidence]
+      source_hint: 已有 prescan 覆盖（财经 2026-02-27 深度），需 03 提取结构化数据
+
+  tier3:
+    - title: 全球主要商业火箭企业估值对比（SpaceX/Rocket Lab/蓝箭/天兵/星河动力）
+      type: data
+      info_tier: public
+      addresses: [K3]
+      rings: [leader-valuation-anchor]
+      source_hint: 公开市场数据 + SpaceX S-1
+
+    - title: 手机直连卫星/车联网商业化时间表——2026-2030 用户数和收入预测
+      type: industry-research
+      info_tier: public
+      addresses: [K4]
+      rings: [value-chain-profit-pool]
+      source_hint: 已有 eager-fetch 覆盖（36氪/央视/行业报告），需 03 提取
+      status: done
+
+    - title: 可回收火箭产业链上游核心供应商映射（发动机/箭体结构/3D打印/测试环节 A 股标的）
+      type: industry-research
+      info_tier: public
+      addresses: [K1, K4]
+      rings: [value-chain-profit-pool]
+      source_hint: 爱建/华龙证券推荐标的 + Wind 产业链数据
+
+# ── 历史类比 ──
+
+historical_analogies:
+  - case: SpaceX Falcon 9 可回收发展史（美国，2011-2023）
+    analogy_logic: >
+      从首次宣布可回收计划（2011）→首次成功回收（2015-12）→首次复用（2017-03）→
+      首次盈利（2023-Q1），历时 12 年。中国可回收火箭从朱雀二号甲烷入轨（2023-07）
+      起算，当前处于 SpaceX 2014-2015 阶段（回收试验中，尚未成功）。
+      关键参考：SpaceX 盈利拐点何时到来？Starlink 自身造血后发射业务才摆脱亏损。
+    analogy_limits: >
+      中国有国家队运力兜底（长征系列）、政策驱动更强、资本市场更"耐心"；
+      但缺乏 NASA/DoD 的"锚定客户"模式——中国星座运营商（星网/垣信）采购机制尚不成熟。
+    todo: 收 SpaceX 可回收发展史实证材料（已收 Wikipedia + Milestone Tracker）
+
+  - case: 中国光伏产业产能过剩与价格战（中国，2010-2012）
+    analogy_logic: >
+      光伏 2010 年产能大扩张→2012 年产能过剩→价格暴跌→龙头企业亏损→行业洗牌。
+      卫星制造当前 7360 颗产能 vs 377 颗实际发射，产能利用率 <10%，
+      若星座组网持续不及预期，可能出现类似的"产能竞赛→价格战→亏损"轨迹。
+    analogy_limits: >
+      卫星制造的下游需求（星座组网）确定性高于当年光伏（依赖海外补贴）；
+      但"产能超前于需求"的结构性风险相似。
+    todo: 收集光伏产能过剩复盘实证材料

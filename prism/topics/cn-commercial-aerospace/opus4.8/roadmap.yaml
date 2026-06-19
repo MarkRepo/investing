@@ -1,148 +1,117 @@
-# roadmap.yaml — 研究路线图 (workflow 01 · thesis-driven)
+# roadmap.yaml — 研究路线图 (workflow 01 · opus4.8 · 全新重跑 2026-06-17)
 slug: cn-commercial-aerospace
 variant: opus4.8
-created: 2026-06-13
-thesis_version: 0          # 路线图对齐 thesis_v0（K1-K5）
-decomposition_version: 0   # 命门1可复用闭环 / 命门2民营份额(低置信) / 命门3标的纯度vs估值
+created: 2026-06-17
 
-# ── primer scope（S2：L1/L2 坍缩成一行，背景深度交给 00_primer）──────────────
+# S2: L1/L2 坍缩为 primer_scope（背景理解层交 00_primer）
 primer_scope: >
-  00_primer 须覆盖：产业链四段（发射服务/卫星制造/星座运营/卫星应用）及各段玩家位次；
-  可复用火箭为何是胜负手（降本曲线机理）；液体(液氧甲烷)vs固体路线之争；民营火箭第一梯队
-  （蓝箭/天兵/星河动力/星际荣耀/深蓝）型号与进度；国网+千帆两大万颗级星座规模/归属/运力拉动；
-  2.8万亿市场规模口径与水分；2025 发射节奏（92次/商业50次）；当前处"政策+主题驱动"阶段及距正现金流距离。
+  primer 该覆盖：①产业链四段边界（上游精密零部件/火箭整箭/卫星制造/卫星互联网应用）各自怎么赚钱；
+  ②参与者格局（国家队航天科技/科工 + 民营头部蓝箭/天兵/星河动力/中科宇航/东方空间 + 卫星侧银河航天/格思/长光）；
+  ③市场规模口径（核心产业>万亿 vs 宽口径2.8万亿，勿混用）；④发展阶段（双星座组网期+可复用降本兑现前夜）；
+  ⑤周期位（政策三年行动计划+资本催化期，SpaceX IPO 情绪共振）。
 
 learning_track:
-  # L1/L2 不再列问题树（见 primer_scope）
-
-  # ── L3 争议层：分歧在哪、共识可能错在哪（喂决策链环④）────────────────────
+  # L3 争议层（thesis 反方展开 4-5）
   l3_debates:
-    - question: "可复用闭环是'时间问题'还是'代差问题'？多方认为朱雀三号已入轨、复用是工程迭代时间问题；空方认为一级回收是另一个数量级的工程难度，中国民营距 SpaceX 成熟复用仍以年计、2025 两次旗舰首飞均未兑现已是证据。"
-      source_hint: 朱雀三号回收失败复盘 + 天龙三号归零整改 + SpaceX 复用成熟度对标
-    - question: "万颗级星座的运力需求，民营到底能吃到多少？多方把国网+千帆 TAM 整体记给民营；空方认为运力订单大概率优先给国家队长征系列，民营份额是'画饼'而非'在手'（命门2，低置信）。"
-      source_hint: 国网/千帆采购招标披露 + 长征系列 vs 民营发射占比
-    - question: "A 股'商业航天'板块是 alpha 兑现年还是主题映射高位？多方（国金'阿尔法元年'）认为 2026 从题材转向供应链业绩兑现；空方认为多数标的纯度低、真实收入暴露小、估值已 price-in 多年成功（中科星图 PE 168 历史98分位）。"
-      source_hint: A 股标的分部收入暴露 + 历史 PE 分位 + 板块回调幅度
-    - question: "SpaceX IPO（传 $1.5-1.75 万亿）+ 蓝箭 IPO 对 A 股是'价值锚重估'还是'情绪顶部信号'？多方视为估值锚上修利好；空方视为一级退出兑现期的顶部共振，蓝箭定价/首日表现是关键试金石。"
-      source_hint: SpaceX 估值传闻 + 蓝箭 IPO 进度/定价 + 历史主题泡沫镜鉴
-    - question: "行业'盈利在地平线'，资本为何抢先买单？是政策输血/补贴依赖的脆弱繁荣，还是真实需求拉动的早周期布局？距正现金流距离决定了估值容忍度。"
-      source_hint: 头部公司现金流/订单结构 + 政策补贴量化 + 一级融资节奏
+    - question: 上游"按发射次数"受益逻辑是否被可复用反噬？复用兑现=少造多飞，单箭价值量被压缩，上游需求究竟净增还是净减？
+      source_hint: 卖方降本单位经济深度（爱建第一性原理/国信）+ 斯瑞单箭价值量跃升数据交叉验证
+    - question: 上游标的商业航天纯度太低（数千万~10%量级），能否支撑 PS 10-15x 概念估值？"确定受益"≠"可投资标的"？
+      source_hint: 斯瑞/航宇/派克 2025 年报分部数据 + A股概念股估值快照
+    - question: 万颗星座运力订单是否仍被国家队主导？民营中标≠民营兑现（2026 长征系仍承担 80%），火箭 arena 利润池是真还是叙事？
+      source_hint: 千帆/国网招标记录 + 蓝箭招股书发射服务合同 + 2026 实际发射执行方统计
+    - question: 整箭量产降本是市场共识主线，但 2026 密集首飞失败率高（朱雀回收失利/天龙首飞失利），共识是否高估兑现速度？
+      source_hint: 2026 火箭首飞清单 + 历次首飞/回收成败复盘
+    - question: 主题炒作（SpaceX IPO 情绪+政策催化）vs 真实兑现的背离有多大？历史镜鉴（光伏/5G）会否重演"叙事先行利润不兑现"？
+      source_hint: 历史镜鉴复盘 + SpaceX 估值/IPO 进展 + 概念股资金面
 
-  # ── L4 狩猎层：找错误定价，逐条对齐 thesis Killer Question ─────────────────
+  # L4 狩猎层（逐条对齐 thesis K#）
   l4_hunting:
-    - question: "朱雀三号/天龙三号/智神星等头部民营火箭能否在 2026-2027 实现一级回收+复飞成功并进入低成本高频发射？市场目前隐含的成功概率是多少？"
+    - question: 朱雀三号 2026 Q2 遥二箭回收试验是否成功、Q4 是否实现首次复用飞行？天龙三号归零后能否复飞？市场隐含成功概率多少？
       addresses: [K1]
-      search_keywords: [朱雀三号 复飞, 天龙三号 归零, 火箭 一级回收]
-      source_hint: 蓝箭官方/CNSA 复飞预告 + 2026-2027 火箭首飞清单 + 天兵归零整改进展
-    - question: "国网+千帆万颗级组网 2026-2028 年发射需求 vs 现有运力缺口多大？民营火箭实际拿到的采购订单/招标份额是多少？"
+      search_keywords: [朱雀三号 回收试验, 天龙三号 复飞, 可复用 复用飞行]
+      source_hint: 蓝箭/天兵官方 + 航天年度会议 + ITHome/证券时报跟踪
+    - question: 国网GW/千帆已发订单中民营火箭占比是否>0且上升？2026 下半年蓝箭朱雀三号能否落地组网首单（已中标一箭18星，交付节点）？
       addresses: [K2]
-      search_keywords: [千帆 采购, 国网 招标, 民营火箭 订单]
-      source_hint: 垣信/中国星网采购公告 + 民营 vs 长征系列发射占比 + 运力缺口测算
-    - question: "全行业（火箭/卫星/应用）距正现金流多远？每公斤入轨成本下降曲线斜率多大？复用后边际成本测算是否成立、是市场化收入还是补贴/订单驱动？"
+      search_keywords: [民营火箭 组网 中标, 蓝箭 千帆 一箭18星, 民营 发射份额]
+      source_hint: 垣信/国网招标公告 + 蓝箭招股书供应商名单 + 卖方策略点评
+    - question: 可复用降本单位经济曲线（每公斤入轨成本下降幅度）？复用后单箭零部件价值量塌缩 vs 发射次数增长，上游需求净影响？
       addresses: [K3]
-      search_keywords: [入轨成本 下降, 火箭 复用 边际成本, 单位经济性]
-      source_hint: 卖方降本曲线深度（已收 mat-e3c065）+ 头部公司单次发射报价 + SpaceX 单位成本对标
-    - question: "哪些 A 股上市标的有真实商业航天收入暴露、占比多少？当前 PE/PS 相对历史分位与全球 peer 是否已 price-in？纯度排序如何？"
+      search_keywords: [每公斤入轨成本, 复用 降本曲线, 单箭价值量]
+      source_hint: 爱建/国信/中信降本深度 + 斯瑞单箭价值量数据
+    - question: 上游标的（斯瑞/航宇/派克/国机/星图测控）商业航天分部收入占比与 PS 水位？纯度倒挂程度，哪家>30% 可深挖？
       addresses: [K4]
-      search_keywords: [商业航天 分部收入, A股 标的 纯度, 航天 估值 分位]
-      source_hint: A 股龙头 2025 年报商业航天分部收入 + 理杏仁估值分位（已收 mat-adaa19）
-    - question: "三年行动计划有无可量化承诺（工位/补贴/政府采购订单）？蓝箭 IPO 定价是健康融资还是顶部信号？SpaceX IPO 如何传导 A 股估值？"
+      search_keywords: [斯瑞新材 商业航天 占比, 航天锻件 分部, 上游 PS 估值]
+      source_hint: 各标的 2025 年报分部 + 投资者互动 + 概念股业绩
+    - question: 主题催化（SpaceX IPO 落地/三年行动计划兑现）可持续性 vs 历史镜鉴回撤风险？哪个事件触发主题退潮？
       addresses: [K5]
-      search_keywords: [商业航天 三年行动, 蓝箭 IPO 定价, SpaceX 上市 估值]
-      source_hint: 政策22条/地方政策量化条款（已收 mat-d45cc4）+ 蓝箭科创板进度 + SpaceX IPO 传闻
+      search_keywords: [SpaceX IPO 落地, 商业航天 炒作 回撤, 光伏 产能过剩 复盘]
+      source_hint: SpaceX IPO 进展 + 历史镜鉴复盘 + 政策落地兑现跟踪
 
-# ── 资料优先级（A 合同地板 + B 命门靶点；多数家底已收，标 covered_by）────────
+  l4_self_check: "K1-K5 五个 K# 各有 ≥1 条 L4 question 覆盖 ✓"
+
 material_priority:
+  # tier1 = P0（复用 5.3 todos，已全部 fetched）
   tier1:
-    - title: "卖方降本曲线与单位经济性深度（每公斤入轨成本、复用后边际成本测算）"
+    - title: 可复用火箭首飞与回收试验复盘（朱雀Q2回收+Q4复用、天龙归零、2026首飞清单）
+      type: industry-research
+      addresses: [K1]
+      rings: [migration-path-evidence]
+      why: 命门1·决定可复用整箭 arena 升降级与降本时点
+    - title: 民营火箭星座组网量化份额硬证据（中标/采购协议/2026执行方占比）
+      type: industry-research
+      addresses: [K2]
+      rings: [migration-path-evidence, arena-scoring-inputs]
+      why: 命门2·决定火箭/发射服务 arena 利润池真实性
+    - title: 可复用降本单位经济曲线（每公斤入轨成本+对单箭价值量净影响·卖方深度）
       type: sell-side-note
-      source: 中信/中金/国金/爱建 行业深度
       addresses: [K3]
-      rings: [migration-path-evidence, value-chain-profit-pool]
-      why: "命门1经济性落点；降本曲线斜率决定整条复用逻辑是否成立。已收 mat-e3c065。"
-    - title: "A 股商业航天标的估值与分部收入暴露快照（PE/PS/历史分位/纯度排序）"
+      rings: [value-chain-profit-pool, migration-path-evidence]
+      why: 命门3·决定上游vs整箭兑现次序+自反验证
+    - title: A股上游标的逐一商业航天分部收入占比+PS（斯瑞/航宇/派克/星图测控2025年报）
       type: data
-      source: 理杏仁/卖方可比表
       addresses: [K4]
       rings: [leader-valuation-anchor]
-      why: "命门3落地——区分真实暴露 vs 主题映射；含航天宏图/中科星图/超图/中国卫星估值水位。已收 mat-adaa19。"
-    - title: "可复用火箭首飞与回收试验复盘（朱雀三号回收失败/天龙三号首飞失利+归零整改）"
+      why: 命门3·纯度倒挂量化·决定可介入标的
+    - title: 行业价值链利润池+市场规模口径拆解（核心产业>万亿 vs 宽口径2.8万亿·四段谁赚走）
       type: industry-research
-      source: 蓝箭官方/CNSA/财新/经观深度
-      addresses: [K1]
+      addresses: [K3, K4]
       rings: [value-chain-profit-pool]
-      why: "命门1咽喉证据——技术前提是否兑现。已收 mat-b3eba3/mat-ecd17e/mat-e37446。"
-    - title: "政策三年行动计划全文 + 地方政策量化承诺（工位/补贴/采购）"
-      type: policy
-      source: CNSA/广东/上海/深圳/青岛政府
-      addresses: [K5]
-      rings: [migration-path-evidence]
-      why: "环②区分'表态'vs'真金白银'；命门2政策量化部分。已收 mat-d45cc4。"
-
+      why: 环①基础·利润池定位
+  # tier2 = P1
   tier2:
-    - title: "国网+千帆双星座组网进度与运力缺口（在轨数/年发射节奏/民营份额）"
+    - title: 蓝箭航天一级估值锚（科创板IPO受理/募75亿/估值200亿·招股书）
       type: industry-research
-      source: 垣信/中国星网 + 组网跟踪
+      addresses: [K4]
+      rings: [leader-valuation-anchor]
+      why: 一级估值锚·对照A股二级
+    - title: 卫星制造+应用 arena 评分料（卫星工厂产能55个·卫星直连应用·组网162→324颗）
+      type: industry-research
       addresses: [K2]
       rings: [arena-scoring-inputs]
-      why: "命门2（低置信优先）——星座需求节奏与民营可获份额。已收 mat-e0ce38。"
-    - title: "行业一致预期与市场规模口径拆解（2.8万亿结构/2026-2030 CAGR/TAM）"
+      why: 环④·卫星制造/应用 arena 比较输入
+    - title: 历史行业镜鉴（光伏2010-12过剩价格战、5G/卫星概念叙事先行）
       type: industry-research
-      source: 卖方/赛迪/泰伯智库
-      addresses: [K3, K4]
-      rings: [value-chain-profit-pool, leader-valuation-anchor]
-      why: "环①③口径可信度 + consensus 一致预期基准。已收 mat-5ba38e。"
-    - title: "SpaceX 对标基准（复用成熟度/单位成本/Starlink经济性/IPO估值锚）"
-      type: industry-research
-      source: 公开资料
-      addresses: [K1, K3]
-      rings: [value-chain-profit-pool]
-      why: "代差标尺 + 估值锚传导（命门1+K5）。已收 mat-e954a8。"
-    - title: "历史主题泡沫镜鉴（同类政策/技术主题炒作的兑现与回撤史）"
-      type: industry-research
-      source: 历史复盘
-      addresses: [K4, K5]
+      addresses: [K5]
       rings: [industry-mirror]
-      why: "决策链环⑤【行业镜鉴】输入——相似剧本如何崩/利润为何没兑现。已收 mat-6f89f3。"
-
-  tier3:
-    - title: "蓝箭航天科创板 IPO 招股材料与定价进度"
-      type: industry-research
-      source: 上交所/东方财富/财联社
+      why: 环⑤·历史镜鉴(hard)
+    - title: SpaceX估值锚+行业一致预期（2万亿IPO·情绪驱动·RocketLab对比）
+      type: data
       addresses: [K5]
       rings: [leader-valuation-anchor]
-      why: "一级退出信号 + 商业火箭第一股估值锚；定价/首日表现待 IPO 落地（监控项）。已收 landspace_ipo_prospectus。"
-
-# ── 合成期结构化数据（financial_data/market_data 自动拉，给 ticker 即可）──────
-financial_data_tickers:   # 环① industry-financial-arc / 环② leader-valuation-anchor 自动拉
-  - name: 航天宏图
-    ticker: SSE_688066
-    note: 卫星应用/数字地球；2024亏损扩大、2025E扭亏，纯度参照
-  - name: 中科星图
-    ticker: SSE_688568
-    note: 数字地球龙头；PE 168 历史98分位，估值高位参照
-  - name: 超图软件
-    ticker: SZSE_300036
-    note: GIS/卫星应用 peer
-  - name: 中国卫星
-    ticker: SSE_600118
-    note: 卫星制造国家队系；PE 全行业最高位参照
+      why: 全球估值锚+consensus
+    - title: 政策行动计划全文+地方量化承诺（三年行动计划+发射场扩容）
+      type: policy
+      addresses: [K5]
+      rings: [migration-path-evidence]
+      why: 政策驱动·真订单vs画饼
 
 key_risks_to_monitor:
-  - "2026-2027 头部民营火箭复飞结果（朱雀三号/天龙三号）——命门1翻多/翻空触发器"
-  - "国网/千帆对民营火箭采购订单/招标份额披露——命门2低置信开关"
-  - "A 股龙头 2025 年报商业航天分部收入占比披露——命门3证伪/证实"
-  - "蓝箭 IPO 定价与上市首日表现（破发 vs 爆炒）——一级退出健康度信号"
-  - "SpaceX IPO 落地及其对 A 股估值锚的传导"
-  - "政策三年行动计划可量化承诺的兑现进度（工位扩容/补贴落地）"
+  - 朱雀三号Q2回收试验再度失利 → 可复用迁移路径证伪、整箭arena降级
+  - 民营组网首单交付再延期 → 火箭arena利润池叙事化
+  - SpaceX IPO落地兑现利空 + 概念股主题退潮（历史镜鉴重演）
+  - 上游标的纯度持续<15% + PS不降 → 无可介入标的
 
 analogies_to_study:
-  - name: "光伏/锂电产业链（中国制造 0→1→产能过剩，2020-2023）"
-    likeness: "国家意志驱动 + 资本蜂拥 + 政策补贴 → 早期估值狂热"
-    limits: "光伏需求已验证可规模化盈利；商业航天复用前提尚未兑现、需求侧国资主导更刚性但份额不透明"
-  - name: "卫星互联网/铱星（1990s 美国，技术领先但商业坍塌）"
-    likeness: "星座组网资本开支巨大、单位经济性依赖规模、盈利地平线遥远"
-    limits: "今日 LEO 成本/复用经济性远优于铱星时代；中国国资需求托底"
-  - name: "5G/特高压等政策主题映射炒作（A 股历史）"
-    likeness: "政策催化 → 主题映射标的暴涨 → 业绩不兑现回撤；纯度陷阱"
-    limits: "商业航天部分头部确有真实订单/收入，非纯概念，需逐标的辨别纯度"
+  - 光伏 2010-2012 产能过剩价格战（CN·光伏·叙事先行/三头在外/350家破产）— 喂 industry-mirror
+  - 5G/卫星通信概念 2019-2020 炒作（CN·通信·主题先行利润后兑现）— 喂 industry-mirror
+  - 新能源车补贴退坡周期（CN·EV·政策驱动主题的兑现与回撤）— 类比局限：航天兑现周期更长

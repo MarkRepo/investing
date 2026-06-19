@@ -1,0 +1,382 @@
+slug: cn-commercial-aerospace
+display_name: 中国商业航天
+type: industry
+created: '2026-06-17T02:58:48.988740+00:00'
+status: active
+stage: done
+canonical: false
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 中国商业航天（deep/CN/不含军工邻接）：预判利润池会落到火箭制造/卫星制造/卫星应用哪几个 arena，押可复用火箭迁移路径为分歧点——共识押卫星应用量产降本，我看好上游零部件标准化受益更确定。宽覆盖（市场空间/竞争/政策/技术）作
+    scope 背景备注。
+  depth: deep
+  terminal: 把资本/注意力分配给哪几个细分 arena（深挖/观察/淘汰三档分流）
+  search_terms:
+  - 商业航天 市场规模
+  - 火箭发射 竞争格局
+  - 卫星互联网
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-17T06:43:45.678639+00:00'
+    status: draft
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0f7705
+    - mat-16add6
+    - mat-16d4e2
+    - mat-2e3496
+    - mat-4a3083
+    - mat-4ae9d0
+    - mat-4da878
+    - mat-63e752
+    - mat-8fce3a
+    - mat-976341
+    - mat-c3144e
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-06-17T06:43:45.671984+00:00'
+      warnings:
+      - 缺自检清单节
+      - 未过 critic（set_output_critic_passed 未置位）
+  i_industry_case:
+    version: 3
+    last_updated: '2026-06-17T08:12:01.810435+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0f7705
+    - mat-16add6
+    - mat-16d4e2
+    - mat-2e3496
+    - mat-4a3083
+    - mat-4ae9d0
+    - mat-4da878
+    - mat-63e752
+    - mat-8fce3a
+    - mat-976341
+    - mat-c3144e
+    last_error: null
+  industry_to_arenas:
+    version: 1
+    last_updated: '2026-06-17T06:49:16.680655+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0f7705
+    - mat-16add6
+    - mat-16d4e2
+    - mat-2e3496
+    - mat-4a3083
+    - mat-4ae9d0
+    - mat-4da878
+    - mat-63e752
+    - mat-8fce3a
+    - mat-976341
+    - mat-c3144e
+    last_error: null
+parent_materials: []
+next_actions:
+- i_industry_case v3 + thesis v2(v3 revisions) + sidecar 全部更新完成
+- 两轮 05-critic 致命一击已嵌入，verdict=approve
+- 上游=观察(等K1触发)、火箭制造=深挖(跟踪研究不下注)
+- 可手动标记 done 或说「评审」再次复评
+user_todos:
+- task: 下载蓝箭航天招股书（科创板IPO，2025-12-31递交）全文，提取关键财务/技术/竞争章节
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 上交所科创板审核网站，已有 landspace_ipo_prospectus.md 在 inbox 待 03 提取
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - prescan-web-search
+  last_fetch_note: 已有 landspace_ipo_prospectus.md + 蓝箭IPO web-search 料 6 份，待 03 提取
+- task: 收集3份卖方深度研报（中金/中信建投/申万宏源任选），覆盖行业空间+竞争格局+估值
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K4
+  source_hint: Wind/同花顺/东方财富研报平台
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - eager-fetch-exa
+  last_fetch_note: exa 发现 7 份研报（中投/华龙/爱建/艾瑞/前瞻/中研/三个皮匠），已入库 4 份核心
+- task: 收集朱雀三号2026Q2回收试验结果（新闻/技术分析）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 央视新闻/科技日报/蓝箭航天官方渠道
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - prescan-web-search
+  last_fetch_note: prescan 已覆盖：CCTV/科技日报 2026-02-25 报道 Q2 计划 + 财经 2026-02-27 深度分析
+- task: 收集中国商业航天行业一致预期数据（2026-2028市场规模/发射次数/卫星数）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 赛迪智库/泰伯智库/中关村领创商业航天联盟报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - eager-fetch-exa
+  last_fetch_note: 华龙/爱建/证券时报/科技日报 含 2026-2030 预测数据，已入库
+- task: 收集蓝箭航天管理层背景+资本配置历史（融资轮次/估值/投资人/资金用途）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 招股书管理层章节+天眼查/企查查融资记录
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - prescan-web-search
+  last_fetch_note: 招股书管理层章节+蓝箭IPO web-search 料含融资轮次/投资人详情
+- task: 收集SpaceX可回收火箭发展史对照（2015首次回收到2023盈利的时间线+关键里程碑）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: SpaceX官网/SpaceNews/public reports
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - eager-fetch-exa
+  last_fetch_note: exa 发现 Wikipedia + Popular Timelines + SpaceX Milestone Tracker，已入库
+- task: 收集卫星制造环节竞争格局+利润率数据（主要企业产能/价格/毛利率）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 中国卫星/长光卫星/银河航天/时空道宇公开信息
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - eager-fetch-exa
+  last_fetch_note: exa 发现 55卫星工厂/10大卫星制造/产业链图谱/盈利企业 4 份，已入库
+- task: 收集中国商业航天发射工位详细数据（6个工位的位置/容量/周转时间/归属）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: 海南/酒泉/东方航天港公开资料
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - prescan-web-search
+  last_fetch_note: prescan 已覆盖：财经 2026-02-27 深度（6工位详情+周转时间）+ 21世纪经济报道
+- task: 收集A股商业航天概念股2025年报+2026Q1业绩+最新估值
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: Wind/同花顺，已有 a_share_valuations.md 待更新
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - eager-fetch-exa
+  last_fetch_note: exa 发现 OFweek 46家盈利分析 + 证券时报 11只筹码集中股，已入库
+- task: 收集卫星应用端（手机直连卫星/车联网）商业化进展+用户数据
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: 中国卫通/中国电信/吉利时空道宇公开信息
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - eager-fetch-exa
+  last_fetch_note: exa 发现 36氪车联网/央视卫星直联/手机直连卫星/车载终端 4 份，已入库
+- task: 资料提取完成：11 份核心 findings + 102 份 prescan 背景料已消化
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '全部产出完成（4份: 00_primer + i_industry_case + industry_to_arenas + thesis_v1）+
+    2个 arena stub'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 'critic request-rewrite 完成: i_industry_case v2(假设4b+三类场景+止损线)+thesis v2(K1-K3耦合正视化)'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 'critic 二轮 request-rewrite 完成: i_industry_case v3(诚实概率+上游降档)+thesis v2(v3修订)+sidecar同步'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: 'v3 诚实概率重算(牛市~12%不再35%)→承认无edge→上游降为观察→行动层与认知层最终对齐。两轮 critic 的致命一击已全部嵌入(v1:
+    K1-K3解耦→v2假设4b; v2: 调参到想要的答案→v3条件概率链)。case+sidecar+thesis已同步更新'
+  at: '2026-06-17T08:12:01.861176+00:00'
+  thesis_version: 2
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-17T07:14:24.389489+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-17T03:08:16.353924+00:00'
+    summary: 命门1=可回收火箭2026-2027工程验证闭环(uncertain); 命门2=蓝箭烧钱换规模模式商业化(低); 命门3=卫星制造量产降本利润率(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-17T07:14:24.389501+00:00'
+    summary: 命门1可复用闭环未兑现(低,证据加厚:朱雀回收失败+天龙失利+7枚新箭首飞);命门2蓝箭商业化未兑现(低,加厚:招股书零收入/IP0现场检查/垣信0收入);命门3卫星制造利润率存疑(中,维持);新增上游分层打破逻辑循环(无条件受益vs条件受益vs受损三层)
+    convergence_status: open
+    changelog: 命门1维持(证据加厚:天龙详报+朱雀深度+7枚首飞全景);命门2维持(加厚:招股书细节+天兵估值vs发射记录背离);命门3维持(11家年产超100颗);新增上游结构性分层(无条件受益层破除逻辑循环,回应opus4.8
+      critic);对照全历史无震荡
+thesis:
+  current_version: 2
+  last_updated: '2026-06-17T08:12:01.825817+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-17T03:06:24.440753+00:00'
+    summary: 看好火箭制造（可回收液体火箭）arena为最大价值捕获者，卫星制造受益确定但壁垒不足，上游零部件标准化是A股最佳映射路径。强度6/10，看多战术谨慎。
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 92%（22/24，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-17T07:14:24.353656+00:00'
+    summary: 结构性看多战术谨慎(6/10)：频轨deadline倒逼真实需求+政策赋能+上游试样转批产拐点，但可复用零成功/A股纯正度不足/一级估值price-in回收成功。利润池迁移押上游精密零部件无条件受益层为最确定路径，可复用火箭等回收闭环验证后重仓
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-17T07:47:00.616806+00:00'
+    summary: '结构性看多战术谨慎(6/10概率加权): K1-K3耦合正视化——上游受益于发射量增长不依赖回收(不归零)，但估值依赖回收(不腰斩)。牛市场景(K1
+      2027)35%·基准(K1 2029)35%·熊市(永不兑现)30%，上游仓位≤15-20%+K1止损纪律。05-critic致命一击伤疤已嵌入假设4b+环⑤止损线'
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-17T08:12:01.825838+00:00'
+    summary: '结构性看多战术谨慎(6/10): 诚实概率重算后概率加权CAGR≈15-16%<市场隐含23-25%→当前价格无edge。上游从深挖降为观察等K1触发(朱雀Q2→Q4双成功)。唯一深挖档=可复用火箭制造(长期赢家,当前不下注,跟踪研究)。05-critic二轮致命一击伤疤已嵌入'
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-17T03:08:16.363533+00:00'
+  exited_at: '2026-06-17T03:36:56.756418+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-06-17T03:36:56.756418+00:00'
+  exited_at: '2026-06-17T04:06:11.624859+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-06-17T04:06:11.624859+00:00'
+  exited_at: '2026-06-17T07:14:48.886633+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-17T07:14:48.886633+00:00'
+  exited_at: '2026-06-17T07:47:10.957353+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-17T07:47:10.957353+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0

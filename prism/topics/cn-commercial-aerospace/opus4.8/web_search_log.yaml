@@ -1,107 +1,155 @@
 slug: cn-commercial-aerospace
 variant: opus4.8
 entries:
-- searched_at: '2026-06-13T05:07:04.675439+00:00'
-  query: 朱雀三号 首飞 入轨 一级回收 结果 蓝箭航天
-  triggered_by: 00-prescan-baseline
-  n_results: 4
-  n_high: 3
-  n_mid: 1
-  n_low: 0
-  disposition: registered
-- searched_at: '2026-06-13T05:07:04.810915+00:00'
-  query: 千帆星座 G60 在轨卫星 数量 组网进度 2025
-  triggered_by: 00-prescan-baseline
-  n_results: 4
-  n_high: 2
-  n_mid: 2
-  n_low: 0
-  disposition: registered
-- searched_at: '2026-06-13T05:07:04.929255+00:00'
-  query: 国网 GW星座 中国星网 发射 部署进度 2025
-  triggered_by: 00-prescan-baseline
-  n_results: 3
-  n_high: 2
-  n_mid: 1
-  n_low: 0
-  disposition: registered
-- searched_at: '2026-06-13T05:07:05.062774+00:00'
-  query: 中国 商业火箭 2025 全年 发射次数 成功率 民营
+- searched_at: '2026-06-17T08:55:00.784869+00:00'
+  query: 朱雀三号 2026 二季度 回收试验 结果 蓝箭航天
   triggered_by: 00-prescan-baseline
   n_results: 3
   n_high: 1
   n_mid: 2
   n_low: 0
   disposition: registered
-- searched_at: '2026-06-13T05:07:05.261205+00:00'
-  query: 蓝箭航天 IPO 科创板 上市 进度 估值
-  triggered_by: 00-prescan-baseline
-  n_results: 4
-  n_high: 3
-  n_mid: 1
-  n_low: 0
-  disposition: registered
-- searched_at: '2026-06-13T05:07:05.440587+00:00'
-  query: 天兵科技 天龙三号 首飞 进展 2025 2026
+- searched_at: '2026-06-17T08:55:00.928584+00:00'
+  query: 天龙三号 首飞失利 归零整改 进展 2026 天兵科技
   triggered_by: 00-prescan-baseline
   n_results: 3
   n_high: 2
   n_mid: 1
   n_low: 0
   disposition: registered
-- searched_at: '2026-06-13T05:07:05.822352+00:00'
-  query: 中国商业航天 市场规模 万亿 口径 2025
+- searched_at: '2026-06-17T08:55:01.076149+00:00'
+  query: 2026 中国商业航天 可复用火箭 首飞清单 长征十二甲 力箭二号
   triggered_by: 00-prescan-baseline
   n_results: 3
   n_high: 2
   n_mid: 1
   n_low: 0
   disposition: registered
-- searched_at: '2026-06-13T05:07:06.444748+00:00'
-  query: 商业航天 A股 受益标的 估值 龙头 2025
+- searched_at: '2026-06-17T08:55:01.340947+00:00'
+  query: 千帆星座 国网GW星座 2026 在轨卫星数量 组网进度
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 4
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-17T08:55:01.663426+00:00'
+  query: 民营火箭 星座组网 订单 份额 国网 千帆 采购 招标
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-17T08:55:01.933929+00:00'
+  query: A股 商业航天 上游标的 商业航天 收入占比 分部 2025年报
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 4
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-17T08:55:02.216762+00:00'
+  query: 蓝箭航天 科创板 IPO 进展 估值 募资 2026
   triggered_by: 00-prescan-baseline
   n_results: 4
   n_high: 3
   n_mid: 1
   n_low: 0
   disposition: registered
-- searched_at: '2026-06-13T05:07:06.811497+00:00'
-  query: SpaceX 估值 Starlink 收入 Starship 进展 2025
+- searched_at: '2026-06-17T08:55:02.354924+00:00'
+  query: SpaceX 估值 2026 IPO 时间表 万亿美元
   triggered_by: 00-prescan-baseline
   n_results: 2
-  n_high: 0
-  n_mid: 2
-  n_low: 0
-  disposition: registered
-- searched_at: '2026-06-13T05:07:07.489159+00:00'
-  query: 商业航天 三年行动计划 政策 量化目标 发射工位 2025
-  triggered_by: 00-prescan-baseline
-  n_results: 4
-  n_high: 3
+  n_high: 1
   n_mid: 1
   n_low: 0
   disposition: registered
-- searched_at: '2026-06-13T05:07:08.511883+00:00'
-  query: 深蓝航天 星际荣耀 星河动力 回收试验 可复用 进展 2025
+- searched_at: '2026-06-17T08:55:02.702097+00:00'
+  query: 中国商业航天 2025 产业规模 发射次数 终值 统计局
   triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 4
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-17T08:55:03.005626+00:00'
+  query: 商业航天 单位经济 每公斤入轨成本 降本 卖方深度 测算
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 4
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-17T09:01:49.984922+00:00'
+  query: 民营火箭 星座组网 订单 份额 国网 千帆 采购 招标
+  triggered_by: 00-deep-fetch
   n_results: 4
   n_high: 2
   n_mid: 2
   n_low: 0
   disposition: registered
-- searched_at: '2026-06-13T05:07:35.310018+00:00'
-  query: 商业航天 市场规模/竞争格局/卫星互联网 [scope槽]
-  triggered_by: 00-prescan
+- searched_at: '2026-06-17T09:01:50.224462+00:00'
+  query: A股商业航天上游标的分部收入占比 斯瑞新材 航宇科技 派克新材
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-17T09:05:37.938215+00:00'
+  query: 朱雀三号 遥二 回收试验 结果 2026年6月
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-17T09:05:37.941987+00:00'
+  query: 国网/千帆 民营火箭份额(K2)
+  triggered_by: 01-prescan
   n_results: 5
   n_high: 0
   n_mid: 0
   n_low: 5
   disposition: skipped-covered
-- searched_at: '2026-06-13T05:07:35.320973+00:00'
-  query: 火箭发射 竞争格局 [industry-event槽]
-  triggered_by: 00-prescan
+- searched_at: '2026-06-17T09:05:37.945693+00:00'
+  query: 可复用降本单位经济曲线(K3)
+  triggered_by: 01-prescan
   n_results: 5
   n_high: 0
   n_mid: 0
   n_low: 5
   disposition: skipped-covered
+- searched_at: '2026-06-17T09:05:37.949280+00:00'
+  query: 上游标的分部收入占比 PS(K4)
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-06-17T09:05:37.953113+00:00'
+  query: scope 商业航天概览
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-06-17T09:05:37.957063+00:00'
+  query: industry-event 可复用/组网
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-06-17T09:05:37.961321+00:00'
+  query: 01-prescan L4(K1朱雀Q2未出结果+K5 SpaceX无新落地;K2/K3/K4/scope/industry已覆盖)
+  triggered_by: 01-prescan
+  n_results: 10
+  n_high: 1
+  n_mid: 2
+  n_low: 2
+  disposition: registered

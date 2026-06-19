@@ -3,35 +3,32 @@
 > 主 agent 调度提示：写每批 output 前重读本文件，按 addresses(K# 脊柱) + rings(决策链输入合同) 判断 context 是否覆盖所需维度；
 > 记忆模糊的 mat_id 单独 Read `outputs/findings_{mat_id}.md` 补回。
 
-## 自有 findings（30 份）
+## 自有 findings（27 份）
 
-- `mat-0a1a4c` | 2026-06-13_朱雀三号重复使用运载火箭发射入轨---国家航天局.md | addresses=[K1] | rings=[value-chain-profit-pool] | high/neutral | [国家航天局(CNSA)][2025-12-03][朱雀三号定位][蓝箭自主研制的新一代低成本、大运力、高频次、可重复使用液氧甲烷运载火箭] —— 官方背书定位
-- `mat-115b36` | 2026-06-13_目标星辰大海-商业航天ipo抢滩正酣.md | addresses=[K5,K4] | rings=[leader-valuation-anchor,value-chain-profit-pool,arena-scoring-inputs] | medium/bull | [21世纪/睿兽分析][2024][行业][商业航天融资事件138个，合计202.39亿元；截至2025Q1独角兽12家]
-- `mat-188b58` | 2026-06-13_商业航天25年展望-星座加速部署-关注火箭首飞---新浪财经.md | addresses=[K2] | rings=[industry-mirror] | low/neutral | [新浪财经][2024][全球发射频次][2024全球共265次发射创新高,SpaceX占总量50%]。
-- `mat-25b202` | 2026-06-13_广东省人民政府办公厅关于印发-广东省推动商业航天高质量发展.md | addresses=[K5] | rings=[migration-path-evidence,value-chain-profit-pool,industry-mirror] | high/bull | [广东省政府][2025—2028政策措施][#2地面站网][按投资总额给10%资金支持；单站网节点≤200万元；单企业年度累计≤1000万元——明确金额，可执行]
-- `mat-379077` | 2026-06-13_机构-商业航天产业正进入新一轮高速发展期.md | addresses=[K3,K5] | rings=[value-chain-profit-pool,leader-valuation-anchor,migration-path-evidence] | medium/bull | [证券时报/机构][2025][全球市场规模][2025 年全球商业航天市场规模将突破 7000 亿美元]
-- `mat-3c629b` | 2026-06-13_spacex估值强刺激-商业航天热力四射.md | addresses=[K5,K3] | rings=[leader-valuation-anchor,migration-path-evidence,value-chain-profit-pool] | medium/bull | [21世纪经济报道/证券时报][2025-12-09][SpaceX 估值传闻][CFO 称二次售股估值达 $8000 亿（前值两倍）；马斯克 12/7 称该消息"not accurate"，未否认下…
-- `mat-484394` | 2026-06-13_3月航天大爆发-国内外火箭回收预告2026年3月真的是航天迷的狂欢月-rocket-国内外火箭密集发.md | addresses=[K1,K2,K5] | rings=[value-chain-profit-pool,arena-scoring-inputs] | low/bull | [雪球@长安空空空空][2026-03-02][力箭二号(中科宇航)][3 月下旬首飞、同步验证陆上回收、LEO 12t]
-- `mat-4b58ce` | 2026-06-13_文字解读-青岛市推动商业航天高质量发展行动计划-2026-2027年-政策解读-青岛政务网.md | addresses=[K5] | rings=[migration-path-evidence,industry-mirror] | medium/bull | [青岛市政府][2026-04-17][行动计划2026—2027][到2027年全市商业航天产业规模突破100亿元]
-- `mat-523151` | 2026-06-13_朱雀三号首飞试验任务第一阶段完成.md | addresses=[K1] | rings=[value-chain-profit-pool] | medium/neutral | [北京亦庄/北京经开区][2025-10-22][首飞第一阶段][10/18-20 在东风液氧甲烷 2 号工位完成朱雀三号遥一加注合练及静态点火试验] —— 首飞前最后一项大型地面试验
-- `mat-5ba38e` | industry_consensus_marketsize.md | addresses=[K3,K2,K4] | rings=[value-chain-profit-pool,arena-scoring-inputs,leader-valuation-anchor,migration-path-evidence] | high/neutral | [SIA第29份报告][2025][全球航天经济][总收入$4290亿(+3%)，商业卫星$3030亿(占71%)]；结构：地面设备$1652亿(54.5%)/卫星服务$1050亿(34.7%)/卫星…
-- `mat-6f89f3` | historical_mirror_cn_aerospace.md | addresses=[K1,K3] | rings=[industry-mirror] | high/bear | [科普中国/中科院自然科学史所][1986-1990][入市窗口][1986 挑战者号失事→航天飞机退出商业市场→全球运力短缺；中国火箭价格比市场低 30-40% 抓住窗口；1988 中美签三份备忘录…
-- `mat-7059be` | 2026-06-13_破晓时刻-液氧甲烷火箭全球首次成功发射---泉州市人民政府.md | addresses=[-] | rings=[-] | low/neutral | [泉州市政府转中国航天报][2023-07-12][密度][液氧甲烷组合密度比液氧煤油低~20%、能量密度不如煤油] —— 与 mat-76b458 同源同句、仅截取片段
-- `mat-7433d4` | 2026-06-13_朱雀三号可重复运载火箭首飞-入轨成功-一级回收失利.md | addresses=[K1,K2,K3] | rings=[value-chain-profit-pool,industry-mirror] | high/neutral | [界面/证券时报][2025-12-03][朱雀三号遥一][入轨成功；一级回收异常燃烧、未软着陆、失败；本次检验了全过程方案正确性、获取真实飞行关键工程数据]
-- `mat-76b458` | 2026-06-13_液氧甲烷火箭发展概览.md | addresses=[K1,K3] | rings=[value-chain-profit-pool,industry-mirror] | medium/neutral | [中国航天报/CNSA][2023-07-12][密度劣势][相同设计下液氧甲烷组合密度比液氧煤油低~20%，能量密度不如煤油]
-- `mat-945a53` | 2026-06-13_国家航天局印发商业航天三年行动计划-业内看好行业政策窗口期.md | addresses=[K5,K2] | rings=[migration-path-evidence,leader-valuation-anchor] | medium/bull | [证券时报·黄翔][2025-11-26][行动计划][到2027年"基本实现高质量发展"，22条重点举措——与mat-d45cc4同源，无量化指标]
-- `mat-adaa19` | a_share_valuations.md | addresses=[K4] | rings=[leader-valuation-anchor,value-chain-profit-pool,arena-scoring-inputs] | high/neutral | [理杏仁/东吴][2026-02-13][航天宏图 688066][股价24.27元，从1月高点44.50回落45%；市值63.41亿；PE -4.12(亏损)；PB 15.13]
-- `mat-b0d9a6` | landspace_ipo_prospectus.md | addresses=[K5,K4] | rings=[leader-valuation-anchor,arena-scoring-inputs] | high/neutral | [上交所招股书][2025-12-31][蓝箭航天][拟科创板上市，保荐中金(CICC)；发行≥4000万股(≥发行后总股本10%)，发行后总股本≥40000万股]
-- `mat-b3eba3` | 2026_rocket_first_flights.md | addresses=[K1,K2,K4,K5] | rings=[value-chain-profit-pool,arena-scoring-inputs] | high/neutral | [界面/腾讯][2026-02-04][2026H1 首飞清单][至少 5 枚民营火箭排队：力箭二号、天龙三号、星云一号、智神星一号、引力二号]
-- `mat-bfebb3` | 2026-06-13_中国版-星链-即将起航-商业航天将迎万亿级别市场.md | addresses=[K2] | rings=[arena-scoring-inputs] | low/bull | [财联社/G60][2024-08][G60(千帆)星座设计][全频段、多层多轨道；2024计划发射108颗；2027前完成一期1296颗部署]——早期(2024)一期规划口径,与后续1.5万颗三期总…
-- `mat-ce5f4b` | 2026-06-13_问-我国对商业航天的政策支持有哪些关键举措-答---雪球.md | addresses=[K5] | rings=[migration-path-evidence] | low/neutral | [雪球用户][①][2024年商业航天作为"新质生产力"写入政府工作报告；2025年提出推动其"安全发展"]
-- `mat-d45cc4` | policy_22_articles_full_text.md | addresses=[K5,K2] | rings=[migration-path-evidence,value-chain-profit-pool] | high/neutral | [国家航天局][2025-11-25][总体目标][到2027年商业航天"基本实现高质量发展"，无产业规模/发射次数量化指标]
-- `mat-e0ce38` | constellation_deployment_progress.md | addresses=[K2,K1] | rings=[arena-scoring-inputs,value-chain-profit-pool] | high/neutral | [综合][2026-06-08][千帆星座(垣信)][在轨200颗 / 规划总量1.5万颗(三期)]；2026目标年中324→年底648颗。
-- `mat-e37446` | tianbing_tianlong3_failure.md | addresses=[K1,K3,K4,K5] | rings=[value-chain-profit-pool,leader-valuation-anchor,industry-mirror] | high/bear | [经观/澎湃/财新/央视][2026-04-03 12:17][天龙三号遥一][酒泉点火，升空后不久飞行异常、尾焰冒白烟、参数偏离，空中解体、未入轨、首飞失利] —— 第一梯队第二枚可复用大火箭失利
-- `mat-e3c065` | sellside_costdown_aijian.md | addresses=[K3,K1] | rings=[value-chain-profit-pool,migration-path-evidence,leader-valuation-anchor] | high/bull | [爱建证券][2026-01-21][火箭发射服务市场规模][2025 年 102.6 亿元 → 2030 年 473.9 亿元，CAGR 约 35.8%]（拉动力=低轨星座密集组网的高频发射需求）
-- `mat-e734e1` | 2026-06-13_专家观点-把握商业航天黄金机遇期--国家发展和改革委员会.md | addresses=[K5,K2] | rings=[industry-mirror,value-chain-profit-pool] | medium/bull | [发改委网/经济日报·张晓兰(国家信息中心)][2025-08][市场规模][从2015年3764.2亿元增至2024年超2.3万亿元，2025年或破2.5万亿元]
-- `mat-e769e9` | 2026-06-13_中信证券-商业航天的投资主线地位即将得到确认.md | addresses=[K1,K3,K5] | rings=[leader-valuation-anchor,migration-path-evidence] | low/bull | [中信证券][2025-12-22][SpaceX 进度][截至 2025-12 中已成功将 3095 颗星链卫星送入轨道]
-- `mat-e954a8` | spacex_status_and_valuation.md | addresses=[K1,K5,K3] | rings=[leader-valuation-anchor,value-chain-profit-pool,migration-path-evidence] | high/neutral | [Morningstar 等][2026-06][SpaceX IPO][Project Apex；S-1 提交 2026-05-20（机密申报 4/1）；6/4 路演、6/12 正式上市；纳斯达克 …
-- `mat-ecd17e` | zhuque3_first_flight_deep_dive.md | addresses=[K1,K2,K3] | rings=[value-chain-profit-pool,leader-valuation-anchor,industry-mirror] | high/neutral | [界面/证券时报][2025-12-03][朱雀三号遥一][二级入轨成功；一级回收验证发生异常燃烧、未软着陆、回收失败，原因排查中] —— 命门1关键：入轨成功 ≠ 回收成功
-- `mat-fb516a` | 2026-06-13_推动商业航天高质量发展行动---深圳市政府数据开放平台.md | addresses=[K5] | rings=[migration-path-evidence] | low/neutral | [广东省政府办公厅][2024-10-14][行动方案2024—2028][到2026年全省商业航天及关联产业规模力争3000亿元]
-- `mat-fc025f` | 2026-06-13_机构密集调研商业航天概念股-龙头11天7板-11月接待量居前热门股名单来了.md | addresses=[K4] | rings=[leader-valuation-anchor,value-chain-profit-pool,arena-scoring-inputs] | high/neutral | [财联社][2025-11-29][连板][航天发展11天7板，雷科防务5天4板，通宇通讯2连板，乾照光电/航天环宇20CM涨停，顺灏股份/四川金顶一字涨停]
+- `mat-1d3daf` | a_share_valuations.md | addresses=[K4] | rings=[leader-valuation-anchor,value-chain-profit-pool] | medium/bull | 航天宏图(688066)：股价24.27元(2026-02-13)，较1月高点44.50回落45%；市值63.41亿。
+- `mat-2e63a7` | constellation_deployment_progress.md | addresses=[K2] | rings=[value-chain-profit-pool,migration-path-evidence,industry-mirror] | medium/neutral | 规划总量 1.5 万颗（三步走：一期648/二期再648/三期1.5万+）。
+- `mat-300fb7` | 2026-06-17_可回收火箭耗材赛道全景-发动机热端单箭1500万-结构3d打印800万-热防护500万.md | addresses=[K1,K5,K3] | rings=[value-chain-profit-pool,migration-path-evidence,arena-scoring-inputs] | medium/bull | 发动机热端：当前天花板 1500万/箭（放量后2000万+）
+- `mat-350204` | historical_mirror_cn_aerospace.md | addresses=[K5] | rings=[industry-mirror] | high/neutral | 挑战者号失事 → 航天飞机退出商业市场 → 全球运力短缺，中国火箭借价格低30-40%抓住窗口。
+- `mat-38fadb` | 2026-06-17_中投顾问2026年度中国商业航天行业深度分析报告.md | addresses=[K2,K4,K5] | rings=[value-chain-profit-pool,arena-scoring-inputs] | low/bull | 中国市场规模(广义口径)：2025 约 2.83万亿，2026 约 3.5万亿，2030 约 7.8–10万亿。
+- `mat-3ddde1` | landspace_ipo_prospectus.md | addresses=[K4] | rings=[leader-valuation-anchor,value-chain-profit-pool] | high/neutral | 主体：蓝箭航天空间科技股份有限公司，成立2015-06-01，注册资本3.6亿元。
+- `mat-3eb6d6` | sellside_costdown_aijian.md | addresses=[K3,K1,K5] | rings=[value-chain-profit-pool,migration-path-evidence,arena-scoring-inputs] | high/bull | 单位入轨成本下降阶梯（对标猎鹰9演进，元/kg）— K3命门核心锚
+- `mat-555278` | 2026-06-17_斯瑞新材-688102-2025年报及2026一季报解读-被航天标签掩盖的铜基新材料平台型龙头.md | addresses=[K4] | rings=[leader-valuation-anchor,value-chain-profit-pool] | medium/bull | 斯瑞新材(688102)2025营收15.72亿(+18.19%)，归母1.48亿(+29.2%)。
+- `mat-5b74d1` | spacex_status_and_valuation.md | addresses=[K5] | rings=[leader-valuation-anchor] | medium/bull | IPO(Project Apex)：S-1 提交2026-05-20(机密申报SEC 4/1)；纳斯达克代码SPCX。
+- `mat-673dcd` | 2026-06-17_蓝箭航天朱雀二号e遥六发射成功-计划进行手机直连卫星试验---21财经.md | addresses=[K1,K2,K4] | rings=[migration-path-evidence,value-chain-profit-pool,leader-valuation-anchor] | high/bull | :23 朱雀二号改进型遥六(ZQ-2E Y6)在东风液氧甲烷发射工位点火，一箭双星将千帆DTC 01星+中国移动02星送入预定轨道,圆满成功;为朱雀二号第8次飞行。
+- `mat-6a1ebc` | 2026-06-17_2026中国10大商业卫星制造公司-你好太空-2026-02.md | addresses=[K2,K4,K5] | rings=[arena-scoring-inputs,industry-mirror,value-chain-profit-pool] | medium/neutral | 年商业卫星发射 309 颗，同比 +54%；近5年 CAGR 70.8%。
+- `mat-7cc5dd` | 2026-06-17_千帆星座今年首次成功入轨-中国民商火箭何时能吃到低轨卫星互联网蛋糕.md | addresses=[K2] | rings=[migration-path-evidence,value-chain-profit-pool] | medium/neutral | 截至2026/4，千帆累计发射用长八(2次)+长六甲(5次)，共7次，均为国家队火箭。
+- `mat-8f7e80` | 2026-06-17_可回收火箭-中國連續兩次返回失敗為何被視為-局部成功---bbc-news-中文.md | addresses=[K1,K5] | rings=[migration-path-evidence,industry-mirror] | medium/neutral | 新华社对朱雀三号(12-03)与长征十二号甲(12-23)两次试射均称"二子级进入预定轨道、一子级未能成功回收、飞行试验任务获得基本成功"。
+- `mat-93ab47` | 2026-06-17_爱建证券-以第一性原理推演中国商业航天降本革命-2026-01-21.md | addresses=[K3] | rings=[value-chain-profit-pool,migration-path-evidence] | low/bull | 发射服务市场：102.6亿 → 473.9亿元（CAGR 35.8%）
+- `mat-958ec1` | 2026-06-17_光伏产业产能过剩与价格战复盘-2010-2012-三头在外-双反-350家企业破产.md | addresses=[K5,K1,K3] | rings=[industry-mirror] | low/bear | 复盘窗口：2010-2012 年中国光伏产业。
+- `mat-9f35f7` | 2026_rocket_first_flights.md | addresses=[K1,K2,K4] | rings=[migration-path-evidence,arena-scoring-inputs,value-chain-profit-pool] | medium/neutral | H1 首飞清单(≥5枚)及回收验证状态：
+- `mat-a10490` | industry_consensus_marketsize.md | addresses=[K2,K4,K5] | rings=[value-chain-profit-pool,arena-scoring-inputs] | high/bull | 中国广义口径：2025 约 2.83 万亿元（+21.7%）；含全产业链+应用拉动。
+- `mat-a8844f` | zhuque3_first_flight_deep_dive.md | addresses=[K1,K3,K4] | rings=[migration-path-evidence,value-chain-profit-pool,industry-mirror] | high/bull | 朱雀三号遥一在东风商业航天创新试验区(酒泉)发射；二级入轨成功，一级回收验证中异常燃烧、未软着陆、回收试验失败(原因排查中)。
+- `mat-ab02db` | 2026-06-17_蓝箭航天与中国星网-垣信卫星签署正式发射服务合同.md | addresses=[K2] | rings=[migration-path-evidence,value-chain-profit-pool,leader-valuation-anchor] | medium/neutral | 蓝箭招股书：朱雀三号已入选中国星网 GW 星座核心供应商名单；已中标垣信千帆《2025运载火箭发射服务采购项目》一箭18星。
+- `mat-b39b03` | tianbing_tianlong3_failure.md | addresses=[K1,K4,K5] | rings=[migration-path-evidence,industry-mirror,leader-valuation-anchor] | high/bear | :17 天龙三号遥一在酒泉点火，升空后不久飞行异常、尾焰冒白烟、参数偏离、空中解体、未入轨、首飞失利；天兵已执行归零并整改。
+- `mat-b47e23` | 2026-06-17_55个卫星工厂背后的真实产能-你好太空-2026-04.md | addresses=[K2,K4,K5] | rings=[arena-scoring-inputs,industry-mirror] | medium/bear | 卫星工厂 55 个，设计总产能约 7360 颗/年。
+- `mat-ca1278` | 2026-06-17_千帆星座2026年冲刺324颗在轨目标-民营火箭破解运力瓶颈---通信世界.md | addresses=[K2] | rings=[value-chain-profit-pool,migration-path-evidence,industry-mirror] | high/neutral | 中科院微小卫星创新院院长胡海鹰：千帆2026力争累计在轨 324 颗("2026年底324颗"，与 mat-f09aeb 一致)。
+- `mat-d7ced5` | 2026-06-17_航宇科技2025年报解读-营收增12-64-净利微降1-40.md | addresses=[K4] | rings=[value-chain-profit-pool,leader-valuation-anchor] | medium/neutral | 航宇科技2025营收20.34亿(+12.64%)，归母1.86亿(-1.4%，增收不增利)。
+- `mat-f09aeb` | 2026-06-17_新动向-千帆星座步入全球组网快车道-国产商业火箭正加紧补上.md | addresses=[K2] | rings=[value-chain-profit-pool,migration-path-evidence,industry-mirror,arena-scoring-inputs] | high/neutral | 首批18颗(长六改/太原)，中国首个正式组网巨型商业低轨星座。
+- `mat-f15549` | 2026-06-17_华龙证券-商业航天快速发展-火箭及卫星制造率先受益-2026-02-25.md | addresses=[K3,K4] | rings=[value-chain-profit-pool,arena-scoring-inputs] | low/bull | 年（中国商业航天）市场规模突破 2.5万亿元（疑为产业规模宽口径）
+- `mat-f58c23` | 2026-06-17_派克新材2025年报解读.md | addresses=[K4] | rings=[value-chain-profit-pool,leader-valuation-anchor] | medium/neutral | 派克新材2025营收35.43亿(+10.28%)，归母2.52亿(-4.37%，增收不增利)。
+- `mat-fb6fbb` | policy_22_articles_full_text.md | addresses=[K1,K5] | rings=[migration-path-evidence] | high/neutral | 文件：《国家航天局推进商业航天高质量安全发展行动计划(2025-2027年)》，发布2025-11-25。

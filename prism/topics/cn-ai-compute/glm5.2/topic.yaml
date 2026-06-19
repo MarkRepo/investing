@@ -1,0 +1,177 @@
+slug: cn-ai-compute
+display_name: 中国算力行业 (AI Compute, 全产业链)
+type: industry
+created: '2026-06-17T23:35:43.349992+00:00'
+status: active
+stage: 02-gather-materials
+canonical: false
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 中国算力全产业链（算力芯片→智算中心/IDC→服务器整机→网络/光模块→液冷散热）哪些细分赛道值得投资，国产化格局与各层卡位如何演变
+  depth: deep
+  terminal: 把资本/注意力分配给哪几个细分 arena（深挖/观察/淘汰三档分流）
+  short_name: 中国算力
+  search_terms:
+  - 国产算力芯片
+  - 智算中心 IDC
+  - 算力服务器
+  - 光模块 算力网络
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-18T00:00:56.606371+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1d1f97
+    - mat-27eea4
+    - mat-9bbdca
+    - mat-b8e80c
+    - mat-bcc950
+    - mat-c61645
+    - mat-capex-gpu
+    - mat-f3c41b
+    - mat-f82211
+    - mat-fd3250
+    - mat-hbm-upstream
+    last_error: null
+    critic_passed: true
+  i_industry_case:
+    version: 1
+    last_updated: '2026-06-18T00:04:55.745956+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1d1f97
+    - mat-27eea4
+    - mat-9bbdca
+    - mat-b8e80c
+    - mat-bcc950
+    - mat-c61645
+    - mat-capex-gpu
+    - mat-f3c41b
+    - mat-f82211
+    - mat-fd3250
+    - mat-hbm-upstream
+    last_error: null
+  industry_to_arenas:
+    version: 1
+    last_updated: '2026-06-18T00:04:55.753806+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  05-critic-review:
+    version: 1
+    last_updated: '2026-06-18T00:08:01.236946+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-06-18T00:08:01.241737+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 说「prism 推进 cn-ai-compute」回到 02-gather-materials，先跑 web-search prescan
+- critic 评审：命门1(国产化率真相)单线承重+命门3(推理价值再分配)单线承重，致命一击(制裁堵死Sophgo)被低估；方向稳健(分层看多A1+A2、对A3转谨慎)，待补官方产能数据+推理硬件用量测算，非方向翻案
+user_todos:
+- task: 中芯7nm官方产能指引/良率 + 长鑫HBM3量产官宣 + 昇腾物料表官方核验
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 单位推理网络/光模块用量测算 + 杰文斯悖论AI实证 + 推理vs训练算力结构硬数据
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 制裁堵死Sophgo绕道情景分析与A1/A3估值冲击量化
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 910C BOM 国产化率真相：中芯7nm实际放量节奏+长鑫HBM3量产时点+制裁堵死Sophgo的冲击量化
+  rationale: 命门1单线承重(mat-bcc950供应链估算非官方)，国产化率叙事vs BOM真相落差是thesis物理地基
+  source: critic_weak_k
+  related:
+  - K1
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-06-18T00:08:01.243209+00:00'
+- question: 推理时代价值再分配：DeepSeek效率对单位推理硬件用量的净影响+杰文斯悖论AI实证+光模块beta量逻辑是否被削弱
+  rationale: 命门3单线承重(mat-f82211+贝恩情景)，置信度最低最该砸料，决定A2最高分是否成立
+  source: critic_weak_k
+  related:
+  - K3
+  priority: P0
+  status: open
+  suggested_at: '2026-06-18T00:08:01.243209+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-more
+  summary: 命门1(国产化率真相)单线承重+命门3(推理价值再分配)单线承重，致命一击(制裁堵死Sophgo)被低估；方向稳健(分层看多A1+A2、对A3转谨慎)，待补官方产能数据+推理硬件用量测算，非方向翻案
+  at: '2026-06-18T00:08:01.220564+00:00'
+  thesis_version: null
+  next_stage: 02-gather-materials
+decomposition:
+  current_version: 0
+  last_updated: '2026-06-18T00:11:18.490454+00:00'
+  history:
+  - version: 0
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-18T00:11:18.490472+00:00'
+    summary: 三命门：1国产替代产能可得性×国产化率真相(中) 2 capex-beta周期位置×估值已消化(中) 3推理时代价值再分配×效率压量(低)
+stage_history:
+- stage: 02-gather-materials
+  entered_at: '2026-06-17T23:37:17.597483+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+thesis:
+  current_version: 0
+  last_updated: '2026-06-18T00:11:18.481256+00:00'
+  history:
+  - version: 0
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-18T00:10:48.092779+00:00'
+    summary: 中国算力分化看多6/10：看多上游高壁垒耗材+capex-beta已消化龙头，对5x英伟达的芯片设计层转谨慎，智算中心挑回报模型
+    prescan_status: full
+  - version: 0
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-18T00:11:18.481405+00:00'
+    summary: 中国算力分化看多6/10：看多上游高壁垒耗材+capex-beta已消化龙头，对5x英伟达的芯片设计层转谨慎，智算中心挑回报模型
+    prescan_status: full

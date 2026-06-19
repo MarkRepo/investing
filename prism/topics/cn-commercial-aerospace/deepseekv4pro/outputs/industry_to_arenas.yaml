@@ -1,0 +1,130 @@
+slug: cn-commercial-aerospace
+variant: deepseekv4pro
+topic_type: industry
+display_name: 中国商业航天
+generated: 2026-06-17
+data_freshness: 2026-06-17
+arenas:
+  - name: 上游精密零部件/材料标准化
+    suggested_slug: cn-commercial-aerospace-upstream
+    topic_created: true
+    topic_slug: cn-commercial-aerospace-upstream
+    scores:
+      profit_pool: 3
+      growth: 3
+      competition: 4
+      valuation: 2
+      cycle: 3
+      composite: 3.0
+    tier: watch
+    tier_reason: A股最佳映射有收入有利润有壁垒，但概率加权CAGR 15-16% < 56x PE隐含23-25%→当前价格无edge。等K1触发(朱雀Q2→Q4双成功)确认牛市路径后再建仓。无条件受益层不依赖回收不会归零，但估值依赖回收不会腰斩
+    upgrade_triggers:
+      - 朱雀三号2026Q2回收成功 + Q4复用成功双确认
+    monitor_metrics:
+      - 各家商业航天分部收入季报
+      - 发射次数月度跟踪
+      - 上游企业在手订单公告
+    revive_condition: null
+  - name: 可复用液体火箭制造
+    suggested_slug: cn-reusable-rocket
+    topic_created: true
+    topic_slug: cn-reusable-rocket
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 2
+      valuation: 2
+      cycle: 4
+      composite: 3.5
+    tier: deep
+    tier_reason: 长期最大赢家但当前一级市场极贵——蓝箭200亿(0收入)/天兵225亿(1次成功发射)。等至少一家跑通回收闭环后再重仓
+    upgrade_triggers:
+      - 朱雀三号2026Q2回收试验成功
+      - 或长征十号甲首次商业发射成功
+    monitor_metrics:
+      - 各家可复用火箭首飞/回收日历
+      - 蓝箭/天兵IPO进展
+      - 全球发射成本对标
+    revive_condition: null
+  - name: 卫星制造
+    suggested_slug: cn-satellite-manufacturing
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 2
+      valuation: 3
+      cycle: 3
+      composite: 3.0
+    tier: watch
+    tier_reason: 需求确定(3.7万颗星座)但壁垒存疑(11家企业年产超100颗/产线可复制)。等竞争格局明朗化或价格给出安全边际
+    upgrade_triggers:
+      - 行业集中度提升至CR3>60%
+      - 或卫星价格大跌20%+可考虑抄底优质产能
+    monitor_metrics:
+      - 卫星招标价格
+      - 各厂商产能利用率
+      - 星座组网实际年发射量
+    revive_condition: null
+  - name: 卫星应用——遥感/数字地球
+    suggested_slug: cn-satellite-application
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 3
+      competition: 3
+      valuation: 3
+      cycle: 3
+      composite: 3.0
+    tier: watch
+    tier_reason: 板块内估值严重分化——航天宏图26E PE 15.8x已有安全边际但扭亏未验证，中科星图168x PE/98分位太贵。精选个股可投
+    upgrade_triggers:
+      - 航天宏图2025年报扭亏验证(归母净利>0)
+    monitor_metrics:
+      - 海外订单执行进度
+      - 女娲星座运营数据
+      - 中科星图PE回归
+    revive_condition: null
+  - name: 星座运营
+    suggested_slug: cn-constellation-operator
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
+      growth: 4
+      competition: 4
+      valuation: 1
+      cycle: 1
+      composite: 2.5
+    tier: eliminated
+    tier_reason: 远期最大但当前不可投——垣信0收入年亏4-8亿、A股无纯正标的、商业化至少3-5年
+    upgrade_triggers: null
+    monitor_metrics: null
+    revive_condition: 垣信/中国星网产生1亿+商业化收入(至少等2028年)
+  - name: 发射服务/工位运营
+    suggested_slug: cn-launch-infrastructure
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 4
+      competition: 3
+      valuation: null
+      cycle: 3
+      composite: 2.5
+    tier: eliminated
+    tier_reason: 基础设施型利润池最薄(全球仅$124亿)、无纯上市标的
+    upgrade_triggers: null
+    monitor_metrics: null
+    revive_condition: 出现工位收费市场化定价机制或工位REITs
+cluster_tags:
+  - 硬科技
+  - 航天
+  - 高端制造
+  - 政策驱动
+honest_gaps:
+  - A股上游标的最新季报分部收入需逐家查阅2025年报/2026Q1
+  - 国家商业航天发展基金规模未公开
+  - 各家民营火箭在手订单和客户结构未公开

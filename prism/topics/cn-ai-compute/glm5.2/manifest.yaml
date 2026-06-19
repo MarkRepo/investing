@@ -1,0 +1,746 @@
+slug: cn-ai-compute
+variant: glm5.2
+updated: '2026-06-17T23:55:11.312070+00:00'
+materials:
+- id: mat-75ef85
+  filename: 2026-06-06_寒武纪-688256-全年业绩高增.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.223927+00:00'
+  processed: false
+  notes: query='寒武纪 2026 业绩 营收 净利润 思元690' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 寒武纪 2026 业绩 营收 净利润 思元690
+    url: https://pdf.dfcfw.com/pdf/H3_AP_寒武纪
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:24:11.223144+00:00'
+    stale_at: '2026-07-06T13:24:11.223144+00:00'
+    expire_at: '2026-09-04T13:24:11.223144+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3dcfcb
+  filename: 2026-06-06_寒武纪一季报炸裂-商业客户开始接力-护城河正在显现.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.225595+00:00'
+  processed: false
+  notes: query='寒武纪 2026 业绩 营收 净利润 思元690'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 寒武纪 2026 业绩 营收 净利润 思元690
+    url: https://wallstreetcn.com/articles/cambricon-q1
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.224788+00:00'
+    stale_at: '2026-07-06T13:24:11.224788+00:00'
+    expire_at: '2026-09-04T13:24:11.224788+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fa65e6
+  filename: 2026-06-06_寒武纪-紧急公告.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.228082+00:00'
+  processed: false
+  notes: query='寒武纪 2026 业绩 营收 净利润 思元690'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 寒武纪 2026 业绩 营收 净利润 思元690
+    url: https://www.stcn.com/article/cambricon-urgent
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.226978+00:00'
+    stale_at: '2026-07-06T13:24:11.226978+00:00'
+    expire_at: '2026-09-04T13:24:11.226978+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-94a1e5
+  filename: 2026-06-06_华为cloudmatrix-384-中国对gb200-nvl72的回应.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.231678+00:00'
+  processed: false
+  notes: query='华为昇腾 910C CloudMatrix 384 2026 出货 量产'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 华为昇腾 910C CloudMatrix 384 2026 出货 量产
+    url: https://www.eet-china.com/news/cloudmatrix384.html
+    domain: eet-china.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.230217+00:00'
+    stale_at: '2026-07-06T13:24:11.230217+00:00'
+    expire_at: '2026-09-04T13:24:11.230217+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d1dc32
+  filename: 2026-06-06_华为昇腾384超节点部署超500套-950超节点接棒在即.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.236240+00:00'
+  processed: false
+  notes: query='华为昇腾 910C CloudMatrix 384 2026 出货 量产'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 华为昇腾 910C CloudMatrix 384 2026 出货 量产
+    url: https://www.sohu.com/a/ascend384
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.234348+00:00'
+    stale_at: '2026-07-06T13:24:11.234348+00:00'
+    expire_at: '2026-09-04T13:24:11.234348+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dcbf5f
+  filename: 2026-06-06_华为下半年发布昇腾920实现对英伟达h20的国产替代.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.242128+00:00'
+  processed: false
+  notes: query='华为昇腾 910C CloudMatrix 384 2026 出货 量产' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为昇腾 910C CloudMatrix 384 2026 出货 量产
+    url: https://www.eefocus.com/article/ascend920
+    domain: eefocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:24:11.240021+00:00'
+    stale_at: '2026-07-06T13:24:11.240021+00:00'
+    expire_at: '2026-09-04T13:24:11.240021+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-86fb61
+  filename: 2026-06-06_h20芯片解禁-怎么看-人民日报海外版.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.249569+00:00'
+  processed: false
+  notes: query='英伟达 H20 对华 禁售 恢复 2026 出口管制' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 英伟达 H20 对华 禁售 恢复 2026 出口管制
+    url: http://paper.people.com.cn/rmrbhwb/pc/content/202507/22/content_30089382.html
+    domain: paper.people.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:24:11.247116+00:00'
+    stale_at: '2026-07-06T13:24:11.247116+00:00'
+    expire_at: '2026-09-04T13:24:11.247116+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-52fc16
+  filename: 2026-06-06_英伟达-amd恢复向中国销售ai芯片-中国只能买第四等货.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.256506+00:00'
+  processed: false
+  notes: query='英伟达 H20 对华 禁售 恢复 2026 出口管制'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 英伟达 H20 对华 禁售 恢复 2026 出口管制
+    url: https://www.tmtpost.com/7627572.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.253635+00:00'
+    stale_at: '2026-07-06T13:24:11.253635+00:00'
+    expire_at: '2026-09-04T13:24:11.253635+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-185d20
+  filename: 2026-06-06_中国出口管制信息网.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.264213+00:00'
+  processed: false
+  notes: query='英伟达 H20 对华 禁售 恢复 2026 出口管制'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 英伟达 H20 对华 禁售 恢复 2026 出口管制
+    url: https://exportcontrol.mofcom.gov.cn/
+    domain: exportcontrol.mofcom.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.261132+00:00'
+    stale_at: '2026-07-06T13:24:11.261132+00:00'
+    expire_at: '2026-09-04T13:24:11.261132+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2f100f
+  filename: 2026-06-06_海光信息-中科曙光重大资产重组终止.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.273542+00:00'
+  processed: false
+  notes: query='海光信息 中科曙光 合并 进展 2026 终止'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 海光信息 中科曙光 合并 进展 2026 终止
+    url: https://www.cls.cn/detail/2224587
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.270093+00:00'
+    stale_at: '2026-07-06T13:24:11.270093+00:00'
+    expire_at: '2026-09-04T13:24:11.270093+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c50f87
+  filename: 2026-06-06_重组新规后首单-海光信息拟换股吸收合并中科曙光.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.283887+00:00'
+  processed: false
+  notes: query='海光信息 中科曙光 合并 进展 2026 终止' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 海光信息 中科曙光 合并 进展 2026 终止
+    url: https://www.21jingji.com/article/20250525/merger.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.290081+00:00'
+    stale_at: '2026-07-06T13:24:11.290081+00:00'
+    expire_at: '2026-09-04T13:24:11.290081+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f42081
+  filename: 2026-06-06_摩尔线程今日上市.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.306709+00:00'
+  processed: false
+  notes: query='摩尔线程 沐曦 科创板 IPO 上市 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 摩尔线程 沐曦 科创板 IPO 上市 2026
+    url: https://www.stcn.com/article/moore-ipo.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.301917+00:00'
+    stale_at: '2026-07-06T13:24:11.301917+00:00'
+    expire_at: '2026-09-04T13:24:11.301917+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-29bd2b
+  filename: 2026-06-06_沐曦股份申购热度超摩尔线程-2026年盈利预期值多少溢价.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.325106+00:00'
+  processed: false
+  notes: query='摩尔线程 沐曦 科创板 IPO 上市 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 摩尔线程 沐曦 科创板 IPO 上市 2026
+    url: https://www.yicai.com/news/metax-ipo.html
+    domain: yicai.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.317127+00:00'
+    stale_at: '2026-07-06T13:24:11.317127+00:00'
+    expire_at: '2026-09-04T13:24:11.317127+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-90fafe
+  filename: 2026-06-06_接力摩尔线程-沐曦科创板ipo将于10月24日上会.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.342593+00:00'
+  processed: false
+  notes: query='摩尔线程 沐曦 科创板 IPO 上市 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 摩尔线程 沐曦 科创板 IPO 上市 2026
+    url: https://www.21jingji.com/article/metax-meeting.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.334665+00:00'
+    stale_at: '2026-07-06T13:24:11.334665+00:00'
+    expire_at: '2026-09-04T13:24:11.334665+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a737f0
+  filename: 2026-06-06_大摩-ubs将ai目光转向富士康-上调gb200出货预期.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.358651+00:00'
+  processed: false
+  notes: query='工业富联 2026 AI服务器 营收 GB200 订单'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 工业富联 2026 AI服务器 营收 GB200 订单
+    url: https://wallstreetcn.com/articles/foxconn-gb200
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.353008+00:00'
+    stale_at: '2026-07-06T13:24:11.353008+00:00'
+    expire_at: '2026-09-04T13:24:11.353008+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5eb11a
+  filename: 2026-06-06_果链巨头卖ai服务器-3个月收入千亿.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.373287+00:00'
+  processed: false
+  notes: query='工业富联 2026 AI服务器 营收 GB200 订单'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 工业富联 2026 AI服务器 营收 GB200 订单
+    url: https://36kr.com/p/foxconn-ai-server
+    domain: 36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.367628+00:00'
+    stale_at: '2026-07-06T13:24:11.367628+00:00'
+    expire_at: '2026-09-04T13:24:11.367628+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c29f36
+  filename: 2026-06-06_中际旭创大赚百亿1-6t新浪潮下易中天高增能否持续.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.392947+00:00'
+  processed: false
+  notes: query='中际旭创 新易盛 2026 业绩 1.6T 光模块 订单'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中际旭创 新易盛 2026 业绩 1.6T 光模块 订单
+    url: https://www.stcn.com/article/innolight-1.6t
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.387004+00:00'
+    stale_at: '2026-07-06T13:24:11.387004+00:00'
+    expire_at: '2026-09-04T13:24:11.387004+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-42606b
+  filename: 2026-06-06_ai算力引爆科创板-中际旭创市值破9000亿-单季利润57亿超2024全年.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.408660+00:00'
+  processed: false
+  notes: query='中际旭创 新易盛 2026 业绩 1.6T 光模块 订单'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中际旭创 新易盛 2026 业绩 1.6T 光模块 订单
+    url: https://www.21jingji.com/article/innolight-mktcap.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.402530+00:00'
+    stale_at: '2026-07-06T13:24:11.402530+00:00'
+    expire_at: '2026-09-04T13:24:11.402530+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-df82d0
+  filename: 2026-06-06_字节再加码-全球ai资本开支持续上修算力步入全链通胀.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.427610+00:00'
+  processed: false
+  notes: query='字节跳动 阿里 腾讯 2026 AI capex 资本开支'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 字节跳动 阿里 腾讯 2026 AI capex 资本开支
+    url: https://www.cls.cn/detail/capex-uptrend
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.420615+00:00'
+    stale_at: '2026-07-06T13:24:11.420615+00:00'
+    expire_at: '2026-09-04T13:24:11.420615+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2d95f5
+  filename: 2026-06-06_字节率先增加25-资本开支-ai全链路通胀元年开启.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.452035+00:00'
+  processed: false
+  notes: query='字节跳动 阿里 腾讯 2026 AI capex 资本开支'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 字节跳动 阿里 腾讯 2026 AI capex 资本开支
+    url: https://news.qq.com/rain/a/bytedance-capex
+    domain: news.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.443813+00:00'
+    stale_at: '2026-07-06T13:24:11.443813+00:00'
+    expire_at: '2026-09-04T13:24:11.443813+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dfc930
+  filename: 2026-06-06_首次官宣-国产hbm2e实现量产-hbm3正在流片之中.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.472599+00:00'
+  processed: false
+  notes: query='国产HBM 长鑫存储 量产 2026 进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 国产HBM 长鑫存储 量产 2026 进展
+    url: https://www.eet-china.com/news/hbm2e.html
+    domain: eet-china.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.465438+00:00'
+    stale_at: '2026-07-06T13:24:11.465438+00:00'
+    expire_at: '2026-09-04T13:24:11.465438+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c9944f
+  filename: 2026-06-06_长鑫存储向华为交付hbm3样品-国产高带宽存储取得突破.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.495349+00:00'
+  processed: false
+  notes: query='国产HBM 长鑫存储 量产 2026 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 国产HBM 长鑫存储 量产 2026 进展
+    url: https://www.dram.com.cn/cxmt-hbm3
+    domain: dram.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:24:11.487702+00:00'
+    stale_at: '2026-07-06T13:24:11.487702+00:00'
+    expire_at: '2026-09-04T13:24:11.487702+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6b287f
+  filename: 2026-06-06_国产算力g端篇-地方智算接力运营商.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.518892+00:00'
+  processed: false
+  notes: query='中国 智算中心 2026 政策 东数西算 招标' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国 智算中心 2026 政策 东数西算 招标
+    url: https://pdf.dfcfw.com/pdf/gov-compute.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:24:11.510868+00:00'
+    stale_at: '2026-07-06T13:24:11.510868+00:00'
+    expire_at: '2026-09-04T13:24:11.510868+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dd1c97
+  filename: 2026-06-06_2026年中国智算中心行业发展现状及趋势分析.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.544180+00:00'
+  processed: false
+  notes: query='中国 智算中心 2026 政策 东数西算 招标' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国 智算中心 2026 政策 东数西算 招标
+    url: https://www.huaon.com/channel/trend/compute2026.html
+    domain: huaon.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:24:11.533810+00:00'
+    stale_at: '2026-07-06T13:24:11.533810+00:00'
+    expire_at: '2026-09-04T13:24:11.533810+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-91171e
+  filename: 2026-06-06_中芯国际-688981-深度报告-制程升级产能扩张晶圆代工龙头.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.570248+00:00'
+  processed: false
+  notes: query='中芯国际 先进制程 7nm 产能 2026 扩产'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中芯国际 先进制程 7nm 产能 2026 扩产
+    url: https://stock.finance.sina.com.cn/report/smic-deep.html
+    domain: stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.560962+00:00'
+    stale_at: '2026-07-06T13:24:11.560962+00:00'
+    expire_at: '2026-09-04T13:24:11.560962+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3f8fd0
+  filename: 2026-06-06_中国芯-制造崛起.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.596705+00:00'
+  processed: false
+  notes: query='中芯国际 先进制程 7nm 产能 2026 扩产'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中芯国际 先进制程 7nm 产能 2026 扩产
+    url: https://www.eet-china.com/news/smic-rise.html
+    domain: eet-china.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.586735+00:00'
+    stale_at: '2026-07-06T13:24:11.586735+00:00'
+    expire_at: '2026-09-04T13:24:11.586735+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-75cf08
+  filename: 2026-06-06_中芯国际涨超9-寒武纪-中微再创新高-半导体设备龙头估值全景.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.624593+00:00'
+  processed: false
+  notes: query='中国算力 国产芯片 2026 估值 市值 寒武纪 海光'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国算力 国产芯片 2026 估值 市值 寒武纪 海光
+    url: https://www.21jingji.com/article/semi-valuation.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-06T13:24:11.614973+00:00'
+    stale_at: '2026-07-06T13:24:11.614973+00:00'
+    expire_at: '2026-09-04T13:24:11.614973+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cd862c
+  filename: 2026-06-06_华为韬定律引爆热点-寒武纪市值突破9000亿创新高.md
+  source_type: web-search
+  added: '2026-06-06T13:24:11.653010+00:00'
+  processed: false
+  notes: query='中国算力 国产芯片 2026 估值 市值 寒武纪 海光' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中国算力 国产芯片 2026 估值 市值 寒武纪 海光
+    url: https://www.sfccn.com/article/cambricon-9000.html
+    domain: sfccn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-06T13:24:11.642948+00:00'
+    stale_at: '2026-07-06T13:24:11.642948+00:00'
+    expire_at: '2026-09-04T13:24:11.642948+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fd3250
+  filename: 2024_688256_annual_2025-04-18_寒武纪.PDF
+  source_type: annual-report
+  added: '2026-06-06T13:33:08.331193+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 寒武纪
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+  - value-chain-profit-pool
+- id: mat-566b9a
+  filename: 2026-02-27_688256_announce_yjygjxz_2025年度业绩快报公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:08.714216+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 寒武纪
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-7a9acb
+  filename: 2026-01-30_688256_announce_yjygjxz_2025年年度业绩预告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:08.843638+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 寒武纪
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-19e0fd
+  filename: 2025-09-16_688256_announce_zf_2025年度向特定对象发行A股股票募集说明书（注册稿）.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:09.725492+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 寒武纪
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-cf9c9a
+  filename: 2026-04-29_688256_announce_kzz_2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:11.060530+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 寒武纪
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-b8e80c
+  filename: 2024_601138_annual_2025-04-29_工业富联.PDF
+  source_type: annual-report
+  added: '2026-06-06T13:33:14.038078+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 工业富联
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+  - value-chain-profit-pool
+- id: mat-fca9a3
+  filename: 2026-01-28_601138_announce_yjygjxz_富士康工业互联网股份有限公司2025年度业绩预增公告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:14.453655+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 工业富联
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-4c50ed
+  filename: 2025-07-07_601138_announce_yjygjxz_富士康工业互联网股份有限公司2025年半年度业绩预告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:14.645796+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 工业富联
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-5e8cad
+  filename: 2026-04-28_601138_announce_kzz_富士康工业互联网股份有限公司2026年第一季度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:17.292477+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 工业富联
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-6f8e0c
+  filename: 2026-03-10_601138_announce_kzz_富士康工业互联网股份有限公司2025年度财务报表及审计报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:18.304809+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 工业富联
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-3a5f2a
+  filename: 2026-03-10_601138_announce_kzz_富士康工业互联网股份有限公司2025年年度报告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:18.839309+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 工业富联
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-c61645
+  filename: 2024_300308_annual_2025-04-20_中际旭创.PDF
+  source_type: annual-report
+  added: '2026-06-06T13:33:21.116613+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 中际旭创
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+  - value-chain-profit-pool
+- id: mat-5cd92d
+  filename: 2026-02-27_300308_announce_yjygjxz_2025年度业绩快报.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:21.544015+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 中际旭创
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-c6fcc3
+  filename: 2026-01-30_300308_announce_yjygjxz_2025年度业绩预告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:21.714371+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 中际旭创
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-623729
+  filename: 2025-07-15_300308_announce_yjygjxz_2025年半年度业绩预告.PDF
+  source_type: quarterly-report
+  added: '2026-06-06T13:33:22.050150+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 中际旭创
+  mineru_state: not_needed
+  rings:
+  - industry-financial-arc
+- id: mat-bcc950
+  filename: 2026_昇腾产业链拆解_供应链国产化率.md
+  source_type: industry-research
+  added: '2026-06-06T13:37:02.173748+00:00'
+  processed: true
+  notes: 昇腾全产业链+CloudMatrix384供应链国产化率(台积电80%/三星HBM95%/中芯7nm月5万片)+A股标的金字塔
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - mgmt-capital-alloc
+  confidence: 0.8
+- id: mat-f82211
+  filename: 2026_推理范式_DeepSeek效率_价值再分配.md
+  source_type: industry-research
+  added: '2026-06-06T13:37:02.208853+00:00'
+  processed: true
+  notes: DeepSeek-V4效率(推理FLOPs-73%/KV-90%)+推理占比9:1→40-50%+贝恩三情景+价值流向存储
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.8
+- id: mat-f3c41b
+  filename: 2026_智算中心利用率_回报模型_过剩.md
+  source_type: industry-research
+  added: '2026-06-06T13:37:02.243050+00:00'
+  processed: true
+  notes: 智算中心出租率20-30%/国产卡闲置70-80%+H100千卡3.5亿前期7年回本+结构性错配+第三方IDC格局
+  mineru_state: not_needed
+  addresses:
+  - K5
+  rings:
+  - historical-mirror
+  confidence: 0.8
+- id: mat-1d1f97
+  filename: 2026_半导体国产替代历史镜鉴_面板存储.md
+  source_type: industry-research
+  added: '2026-06-06T13:40:01.139271+00:00'
+  processed: true
+  notes: 京东方利润率2.7%(替代成功≠盈利)+长鑫长江跳代研发/逆周期/国资托底方法论+周期顶部估值风险
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - historical-mirror
+  confidence: 0.8
+- id: mat-9bbdca
+  filename: 2026_华为资本配置与战略史_mgmt_capital_alloc.md
+  source_type: manual-note
+  added: '2026-06-06T14:25:41.142577+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  rings:
+  - mgmt-capital-alloc
+- id: mat-27eea4
+  filename: 2026_算力链估值锚_consensus_PE_PS_市值横向对比.md
+  source_type: manual-note
+  added: '2026-06-06T14:25:41.166629+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  - K5
+  rings:
+  - consensus

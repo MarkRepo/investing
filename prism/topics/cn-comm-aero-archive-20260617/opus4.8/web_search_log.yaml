@@ -1,0 +1,107 @@
+slug: cn-commercial-aerospace
+variant: opus4.8
+entries:
+- searched_at: '2026-06-13T05:07:04.675439+00:00'
+  query: 朱雀三号 首飞 入轨 一级回收 结果 蓝箭航天
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 3
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:04.810915+00:00'
+  query: 千帆星座 G60 在轨卫星 数量 组网进度 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:04.929255+00:00'
+  query: 国网 GW星座 中国星网 发射 部署进度 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:05.062774+00:00'
+  query: 中国 商业火箭 2025 全年 发射次数 成功率 民营
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:05.261205+00:00'
+  query: 蓝箭航天 IPO 科创板 上市 进度 估值
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 3
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:05.440587+00:00'
+  query: 天兵科技 天龙三号 首飞 进展 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:05.822352+00:00'
+  query: 中国商业航天 市场规模 万亿 口径 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:06.444748+00:00'
+  query: 商业航天 A股 受益标的 估值 龙头 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 3
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:06.811497+00:00'
+  query: SpaceX 估值 Starlink 收入 Starship 进展 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:07.489159+00:00'
+  query: 商业航天 三年行动计划 政策 量化目标 发射工位 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 3
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:08.511883+00:00'
+  query: 深蓝航天 星际荣耀 星河动力 回收试验 可复用 进展 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-13T05:07:35.310018+00:00'
+  query: 商业航天 市场规模/竞争格局/卫星互联网 [scope槽]
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-06-13T05:07:35.320973+00:00'
+  query: 火箭发射 竞争格局 [industry-event槽]
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered

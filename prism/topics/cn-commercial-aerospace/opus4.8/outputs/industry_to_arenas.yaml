@@ -2,47 +2,37 @@ slug: cn-commercial-aerospace
 variant: opus4.8
 topic_type: industry
 display_name: 中国商业航天
-generated: 2026-06-14T00:00:00+00:00
-data_freshness: 2026-06
-data_freshness_basis: 一手 market_data/financial_data（2026-06-12）+ findings（朱雀三号2025-12/天龙三号2026-04/千帆2026-06组网）
+generated: 2026-06-17
+data_freshness: "findings 截至 2026-06-17（含 6-17 web 料）+ 估值倍数 market_data 2026-06-17 akshare"
 
+# 档名映射：深挖=deep / 观察=watch / 淘汰=eliminated
+# tier = 吸引力(composite) × 当前定价；composite 排序与 case 环④综合评级同向
 arenas:
-  - name: 上游核心零部件（发动机/材料/3D打印/轴承）
-    suggested_slug: cn-aerospace-components
+  - name: 上游精密零部件-耗材型+独家壁垒
+    suggested_slug: cn-commercial-aerospace-upstream
     topic_created: true
-    topic_slug: cn-aerospace-components
+    topic_slug: cn-commercial-aerospace-upstream
     scores:
       profit_pool: 3
-      growth: 4
+      growth: 5
       competition: 4
       valuation: 2
       cycle: 4
-      composite: 3.4
+      composite: 3.8
     tier: deep
-    tier_reason: 唯一"业绩已实证兑现+真实壁垒（定型后替代成本极高）"的一段，最契合价值兑现次序错配的核心分歧；发射放量直接受益
-    upgrade_triggers: ["已在 stub topic L1-L4 跟踪", "单标的商业航天分部收入放量斜率确认", "发射次数持续超预期"]
-    monitor_metrics: ["头部供应商商业航天收入占比", "年度发射次数", "在手订单/产能利用率"]
+    tier_reason: "增速/竞争/周期三维最强，且不依赖最弱假设 H1(民营份额)；H3 证据偏强(斯瑞单箭价值6倍跃升反例)。但②判贵(斯瑞PS19.5x/PE206x已透支)→深挖基本面、介入等估值消化"
+    upgrade_triggers:
+      - "斯瑞等估值回调至 PS<12x"
+      - "2026H1 商航订单交付兑现/分部占比提升"
+    monitor_metrics:
+      - "斯瑞/光启/铂力特 PS 水位"
+      - "推力室内壁/热防护单箭价值量与订单交付节奏"
     revive_condition: null
-  - name: 可复用火箭（发射服务）
+
+  - name: 可复用火箭整箭
     suggested_slug: cn-reusable-rocket
     topic_created: true
     topic_slug: cn-reusable-rocket
-    scores:
-      profit_pool: 2
-      growth: 5
-      competition: 3
-      valuation: 2
-      cycle: 2
-      composite: 2.8
-    tier: deep
-    tier_reason: 行业胜负手、命门1全部押在此；综合分不高源于利润池小+一级估值高+闭环未兑现三重折让，深挖是"判断闭环兑现"而非现在追高，入口=蓝箭IPO
-    upgrade_triggers: ["已在 stub topic L1-L4 跟踪", "朱雀三号遥二回收试验结果", "蓝箭IPO定价合理"]
-    monitor_metrics: ["头部民营复飞成功率", "每公斤入轨成本台阶", "民营获星座采购份额"]
-    revive_condition: null
-  - name: 卫星通信/终端（直连手机/相控阵）
-    suggested_slug: cn-satellite-comm-terminal
-    topic_created: false
-    topic_slug: null
     scores:
       profit_pool: 3
       growth: 4
@@ -50,77 +40,106 @@ arenas:
       valuation: 2
       cycle: 3
       composite: 3.0
-    tier: watch
-    tier_reason: 直连手机催化强、增速好，但估值已贵；等催化兑现+回调
-    upgrade_triggers: ["直连手机商用落地/订单兑现", "估值回调"]
-    monitor_metrics: ["直连手机渗透/订单", "相控阵T/R组件出货"]
+    tier: deep
+    tier_reason: "分歧点、2026 是 H2 兑现年、最高赔率(事件驱动二元期权)；盯朱雀三号遥二回收。但估值2(蓝箭纯故事估值/巨亏)、闭环未兑现、国家队长十号乙下场抢可复用大运力是盲点风险"
+    upgrade_triggers:
+      - "朱雀三号遥二回收试验成功(H2 兑现)"
+      - "蓝箭航天 IPO 重启定价"
+    monitor_metrics:
+      - "朱雀三号遥二回收/Q4复用结果"
+      - "天龙三号归零复飞"
     revive_condition: null
-  - name: 卫星应用（遥感/数字地球）
-    suggested_slug: cn-satellite-application
-    topic_created: false
-    topic_slug: null
-    scores:
-      profit_pool: 3
-      growth: 3
-      competition: 3
-      valuation: 1
-      cycle: 3
-      composite: 2.6
-    tier: watch
-    tier_reason: 长期受益星座数据放量，但 PS 10-15x 最贵、盈利薄；等回调至 PS<8x + 分部收入加速
-    upgrade_triggers: ["板块回调至 PS<8x", "2025年报商业航天分部收入加速兑现"]
-    monitor_metrics: ["龙头 PS 水位", "分部收入占比", "净利率修复"]
-    revive_condition: null
-  - name: 卫星制造/总装
-    suggested_slug: cn-satellite-manufacturing
-    topic_created: false
-    topic_slug: null
-    scores:
-      profit_pool: 3
-      growth: 3
-      competition: 2
-      valuation: 2
-      cycle: 3
-      composite: 2.6
-    tier: eliminated
-    tier_reason: 国家队主导、薄毛利（中国卫星毛利8.8%/ROIC近零）、民营难分羹、弹性盈利双弱
-    upgrade_triggers: []
-    monitor_metrics: []
-    revive_condition: 民营卫星量产商规模化盈利、或制造环节出现高毛利细分
-  - name: 卫星互联网运营（星座）
-    suggested_slug: cn-satellite-constellation-operator
+
+  - name: 上游精密零部件-整箭型
+    suggested_slug: cn-rocket-forging-upstream
     topic_created: false
     topic_slug: null
     scores:
       profit_pool: 4
+      growth: 2
+      competition: 3
+      valuation: 3
+      cycle: 3
+      composite: 2.6
+    tier: watch
+    tier_reason: "发动机本体/箭体锻件占整箭价值量大(发动机54%)，但被 H2 复用反噬；H2 未兑现期受益于扩产、兑现后被反噬→观察复用进度做多空切换。派克PS3.3x便宜但商航纯度极小"
+    upgrade_triggers:
+      - "可复用兑现进度明朗(决定多空方向)"
+    monitor_metrics:
+      - "派克/航宇商航分部占比"
+      - "整箭年产量(新造需求)"
+    revive_condition: null
+
+  - name: 卫星互联网应用-运营
+    suggested_slug: cn-satellite-internet-ops
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
       growth: 4
-      competition: 2
+      competition: 3
       valuation: 2
       cycle: 2
-      composite: 2.8
+      composite: 2.5
+    tier: watch
+    tier_reason: "终局价值池最大(SIA下游89%)，但远期+多数亏损(垣信当前收入≈0)；观察运营商商业化收入是否启动"
+    upgrade_triggers:
+      - "运营商商业化收入启动"
+      - "手机直连卫星商用落地"
+    monitor_metrics:
+      - "垣信/星网营收"
+      - "千帆/GW 在轨数与服务上线进度"
+    revive_condition: null
+
+  - name: 卫星制造
+    suggested_slug: cn-satellite-manufacturing
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 3
+      competition: 2
+      valuation: 2
+      cycle: 3
+      composite: 2.2
+    tier: watch
+    tier_reason: "名义产能严重过剩(55工厂/设计7360颗-年/利用率<10%)、头部格局固化、价值池被稀释；观察利用率回升+头部出清，当前不碰"
+    upgrade_triggers:
+      - "卫星工厂利用率回升 >15%"
+      - "头部出清"
+    monitor_metrics:
+      - "卫星工厂产能利用率"
+      - "组网年发射卫星数"
+    revive_condition: null
+
+  - name: 卫星应用-数据/地面(沾边炒作)
+    suggested_slug: null
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 3
+      competition: 2
+      valuation: 1
+      cycle: 2
+      composite: 1.8
     tier: eliminated
-    tier_reason: 终局利润池最大但国资垄断（国网/垣信）、A股难直接投、长期烧钱（垣信2025前11月收入0元）
+    tier_reason: "纯度倒挂+情绪驱动的沾边标的(中科星图PE168x历史98分位、商航分部<10%靠SpaceX情绪驱动)，估值无安全边际"
     upgrade_triggers: []
     monitor_metrics: []
-    revive_condition: 垣信/星网分拆上市或出现可投纯运营标的 + 现金流转正路径清晰
+    revive_condition: "商航分部收入占比升至 >30% 且估值回到行业中位以下"
 
-cluster_tags: [china-aerospace, satellite-internet, reusable-rocket, china-defense, hard-tech]
-
-chain_links:
-  rings_present: [1, 2, 3, 4, 5, 6]
-  r4_anchors_r2: true
-  r6_takes_r4_ev: true
-  r5_has_kill_signpost: true
 honest_gaps:
-  - ring: 4
-    kind: data-missing
-    note: 民营各家2025发射次数/成功率拆分缺（仅总数50次），arena评分中竞争结构靠定性
-  - ring: 4
-    kind: data-missing
-    note: 各A股标的"商业航天"分部收入占比未充分披露，纯度排序靠调研数千万级口径
-  - ring: 2
-    kind: data-missing
-    note: 国网/千帆对民营采购份额硬数据半公开，命门2看空判断靠2026组网执行结构推断
-  - ring: 6
-    kind: data-missing
-    note: 蓝箭IPO定价未落地，可复用火箭arena的一级退出健康度待验证
+  - "industry-financial-arc: 无结构化财务 API(industry 无单一 ticker)，以代表主体定性替代"
+  - "命门1(可复用闭环): 朱雀三号遥二回收结果截至2026-06-17未公开，H2 二元事件未触发"
+  - "命门2(民营份额): 已中标但执行端0民营，H1 兑现要等2027-2028，最弱假设"
+  - "上游标的商航分部精确占比: 斯瑞含在21%新兴业务内未单列，部分为snippet口径待年报核"
+
+cluster_tags:
+  - 商业航天
+  - 可复用火箭
+  - 卫星互联网
+  - 低轨星座
+  - 精密零部件
+  - 液氧甲烷
+  - 国产替代

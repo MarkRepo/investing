@@ -1,0 +1,27 @@
+slug: cn-commercial-aerospace-upstream
+display_name: 中国商业航天·上游精密零部件
+type: arena
+created: '2026-06-17T06:48:49.982157+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-commercial-aerospace
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 商业航天上游零部件行业：哪些标的有真实航天暴露和护城河？利润池增长路径？估值合理吗？
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  search_terms:
+  - 商业航天 上游供应链
+  - 推力室 3D打印 火箭
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily

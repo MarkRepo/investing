@@ -1,0 +1,27 @@
+slug: cn-reusable-rocket
+display_name: 中国可复用液体火箭
+type: arena
+created: '2026-06-17T06:48:49.983505+00:00'
+status: active
+stage: 00-init
+canonical: false
+parent_topic: cn-commercial-aerospace
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 中国可复用液体火箭：蓝箭/天兵/星河动力谁最可能跑通回收闭环？合理估值框架？
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  search_terms:
+  - 可复用火箭 朱雀三号
+  - 天龙三号 归零
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily

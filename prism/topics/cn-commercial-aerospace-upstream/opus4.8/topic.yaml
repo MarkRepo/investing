@@ -1,0 +1,44 @@
+slug: cn-commercial-aerospace-upstream
+display_name: 中国商业航天上游精密零部件(耗材型+独家壁垒)
+type: arena
+created: '2026-06-17T09:44:49.310110+00:00'
+status: active
+stage: 00-init
+canonical: false
+parent_topic: cn-commercial-aerospace
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 商业航天上游精密零部件 arena：在"耗材型(热防护/推力室内壁/推进剂,随发射频次放量、复用量价齐升) vs 整箭型(发动机本体/箭体锻件,被复用反噬)"二分下，赌谁是赢家——押耗材属性+独家技术壁垒标的(斯瑞/光启/铂力特)；胜负变量=独家壁垒×纯度×估值安全边际。父行业押本arena确定性最高、兑现最早但估值已透支。
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  short_name: 商业航天上游
+  search_terms:
+  - 推力室内壁 铜铬铌
+  - 热防护 超材料 火箭
+  - 3D打印 火箭 耗材
+  - 斯瑞新材 商业航天
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-17T09:44:49.311671+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-17T09:44:49.311673+00:00'
+    summary: 押耗材型+独家壁垒上游(热防护/推力室内壁),规避整箭型(被复用反噬);胜负变量=壁垒×纯度×估值;继承父强度-1=5/10,等估值安全边际
+    prescan_status: full

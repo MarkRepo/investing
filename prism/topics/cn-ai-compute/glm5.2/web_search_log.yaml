@@ -1,0 +1,107 @@
+slug: cn-ai-compute
+variant: opus4.8
+entries:
+- searched_at: '2026-06-06T13:24:11.228871+00:00'
+  query: 寒武纪 2026 业绩 营收 净利润 思元690
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.243923+00:00'
+  query: 华为昇腾 910C CloudMatrix 384 2026 出货 量产
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.266671+00:00'
+  query: 英伟达 H20 对华 禁售 恢复 2026 出口管制
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.297178+00:00'
+  query: 海光信息 中科曙光 合并 进展 2026 终止
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.347164+00:00'
+  query: 摩尔线程 沐曦 科创板 IPO 上市 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.377969+00:00'
+  query: 工业富联 2026 AI服务器 营收 GB200 订单
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.413620+00:00'
+  query: 中际旭创 新易盛 2026 业绩 1.6T 光模块 订单
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.457827+00:00'
+  query: 字节跳动 阿里 腾讯 2026 AI capex 资本开支
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.501616+00:00'
+  query: 国产HBM 长鑫存储 量产 2026 进展
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.551451+00:00'
+  query: 中国 智算中心 2026 政策 东数西算 招标
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.604515+00:00'
+  query: 中芯国际 先进制程 7nm 产能 2026 扩产
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:11.661517+00:00'
+  query: 中国算力 国产芯片 2026 估值 市值 寒武纪 海光
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-06T13:24:41.616569+00:00'
+  query: 00-prescan-baseline 全量（12 条优先 query：芯片/昇腾/H20/合并/IPO/服务器/光模块/capex/HBM/智算中心/中芯/估值）
+  triggered_by: 00-prescan-baseline
+  n_results: 60
+  n_high: 21
+  n_mid: 9
+  n_low: 30
+  disposition: registered

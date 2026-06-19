@@ -1,0 +1,152 @@
+slug: cn-ai-compute
+variant: glm5.2
+topic_type: industry
+display_name: 中国算力行业
+generated: 2026-06-18
+data_freshness: "findings 截至 2026-06-18（11 份 findings）+ 估值倍数 market_data 2026-06-17 akshare"
+
+# 档名映射：深挖=deep / 观察=watch / 淘汰=eliminated
+# tier = 吸引力(composite) × 当前定价；composite 排序与 case 环④综合评级同向
+arenas:
+  - name: capex-beta 已消化龙头（光模块/ODM）
+    suggested_slug: cn-ai-compute-capex-beta
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
+      growth: 4
+      competition: 4
+      valuation: 4
+      cycle: 3
+      composite: 4.0
+    tier: deep
+    tier_reason: "利润池规模5(万亿体量)+估值水位4(PEG<1已消化：中际旭创26E PE25x/27E12x、工业富联PE35x/PS1.45x、新易盛27E PE6-10x)+竞争4(全球龙头)。赚业绩不赌估值，命门转为英伟达capex是否见顶(H2中强)。AI算力链PEG中位数0.96x远低于历史见顶2-3x"
+    upgrade_triggers:
+      - "英伟达capex指引延续高增+1.6T出货曲线兑现"
+      - "中际旭创/工业富联2026-2027业绩延续高增"
+    monitor_metrics:
+      - "英伟达capex指引+北美云厂capex拐点"
+      - "800G→1.6T出货曲线"
+      - "中际旭创/新易盛/工业富联季度净利同比"
+    revive_condition: null
+
+  - name: 上游高壁垒耗材型（ABF载板/连接器/封测/HBM/液冷）
+    suggested_slug: cn-ai-compute-upstream-consumables
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 5
+      competition: 4
+      valuation: 3
+      cycle: 4
+      composite: 3.8
+    tier: deep
+    tier_reason: "增速5(份额确定上行+复用量价齐升)+竞争4(独家壁垒：兴森ABF载板70%供昇腾、华丰224G市占70%+)+周期4(兑现最早、不依赖最弱H3)。毛利60%+。但估值3(部分标的如英维克PE197x/中芯PE214x偏高，需挑壁垒+估值匹配者如沪电PEG0.96/澜起毛利62%)"
+    upgrade_triggers:
+      - "中芯7nm产能放量+长鑫HBM3量产进入昇腾BOM(命门1真自主兑现)"
+      - "上游标的估值回调至匹配水位"
+    monitor_metrics:
+      - "中芯7nm月产能+长鑫HBM3量产进度"
+      - "ABF载板/连接器/封测订单与国产化率"
+      - "兴森/华丰/澜起/沪电估值水位"
+    revive_condition: null
+
+  - name: 国产芯片设计（寒武纪/海光）
+    suggested_slug: cn-ai-compute-chip-design
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 3
+      valuation: 1
+      cycle: 4
+      composite: 3.0
+    tier: watch
+    tier_reason: "增速5+周期4(方向对、份额质变21%→86% by 2030)但估值1(5x英伟达：寒武纪PE305x/PS100x、海光PE263x，无安全边际)。寒武纪2025扭亏净利20.59亿已兑现但客户集中88.66%+研发占营收91%+2024毛利率下滑12.59pct。方向对买点贵，等回调或兑现证伪"
+    upgrade_triggers:
+      - "寒武纪/海光PE回落至26E 60x以下(回调介入)"
+      - "H20/B30回归未实质打断国产份额25%斜率(H1兑现)"
+    monitor_metrics:
+      - "寒武纪/海光季度净利+客户集中度+毛利率"
+      - "国产卡数据中心份额(信通院/各厂出货)"
+      - "H20/B30回归后大厂采购结构"
+    revive_condition: "PE回落至26E 60x以下 且 客户集中度下降 且 毛利率企稳"
+
+  - name: 智算中心-第三方IDC龙头（润泽）
+    suggested_slug: cn-ai-compute-idc-leader
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 3
+      competition: 3
+      valuation: 4
+      cycle: 2
+      composite: 2.8
+    tier: watch
+    tier_reason: "估值4(润泽PE26x算力链最便宜之一)+竞争3(头部马太效应)但周期2(行业过剩：利用率20-30%、千卡7年回本)。挑回报模型清晰者，仅第三方IDC龙头(润泽/万国/世纪互联)有规模+上架率优势，国资项目规避"
+    upgrade_triggers:
+      - "智算中心利用率回升>30%+第三方IDC龙头上架率提升"
+      - "推理井喷持续消化闲置(某运营商万卡池DeepSeek后租满)"
+    monitor_metrics:
+      - "润泽/万国/数据港上架率与单IT收入"
+      - "智算中心招标价与折旧"
+      - "行业利用率与跨界玩家退场情况"
+    revive_condition: null
+
+  - name: 智算中心-国资/跨界
+    suggested_slug: null
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 2
+      competition: 2
+      valuation: 2
+      cycle: 1
+      composite: 1.8
+    tier: eliminated
+    tier_reason: "补贴驱动过剩(60%+国资/地方政府主导、2025Q1 165项目仅16投产)、京东方份额≠利润剧本(2.7%利润率)、跨界玩家退场(莲花7亿合同只交付12台)。回报模型未验证，规避"
+    upgrade_triggers: []
+    monitor_metrics:
+      - "国资智算中心投产率与利用率"
+      - "跨界玩家退场/烂尾情况"
+    revive_condition: "市场化需求占比>50% 且 行业利用率回升>40%"
+
+  - name: 国产GPU创业梯队（摩尔线程/沐曦）
+    suggested_slug: null
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 4
+      competition: 2
+      valuation: 1
+      cycle: 2
+      composite: 1.8
+    tier: eliminated
+    tier_reason: "一二级估值倒挂(摩尔线程投前246亿/3年净亏50亿、沐曦投后211亿/净亏33亿)、招股书自述早期+被卡脖子、已上市仍巨亏。方向对但兑现远、估值无安全边际，规避"
+    upgrade_triggers: []
+    monitor_metrics:
+      - "摩尔线程/沐曦上市后业绩兑现"
+      - "国产GPU商业化收入节奏"
+    revive_condition: "单季扭亏 且 营收规模化(>10亿/季) 且 估值回落至行业中位"
+
+honest_gaps:
+  - "命门3(推理价值再分配): 仅1份DeepSeek效率finding+贝恩情景预测，效率对硬件用量净影响未定论(杰文斯悖论双向)，最弱承重项"
+  - "命门1(国产化率真相): 依赖1份供应链拆解估算(mat-bcc950非官方披露)，80%台积电/95%三星精确比例可能漂移"
+  - "industry-financial-arc: 无结构化行业财务API(industry无单一ticker)，以代表主体定性替代"
+  - "2027-2028E一致预期: PE/PS多为媒体/卖方转引，精确Wind终端数值待核；液冷/IDC/连接器细分层估值未系统覆盖"
+
+cluster_tags:
+  - AI算力
+  - 国产替代
+  - 光模块
+  - AI服务器
+  - 智算中心
+  - HBM
+  - 昇腾
+  - 推理算力
+  - capex-beta
