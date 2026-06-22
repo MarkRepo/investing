@@ -1,0 +1,53 @@
+---
+slug: cn-commercial-aerospace-upstream
+variant: glm5.2
+output: peer_matrix
+written_at: 2026-06-19
+data_source: financial_data (akshare, freshness checked) + prescan + findings
+---
+# 商业航天上游 peer matrix（喂 a_arena_case 环⑥ 分流）
+
+peers:
+  - key: 斯瑞新材
+    ticker: SSE_688102
+    revenue_2025: 15.72亿  # 1,571,594,825 (financial_data) — 与年报 15.72亿吻合 ✓
+    revenue_yoy: +18.19%
+    gross_margin: 24.3%
+    roic_3y_avg: 7.1%
+    debt_to_equity: 0.228
+    归母净利润: 1.48亿 (+29.20%)
+    商航暴露: 高（Cu-Cr-Nb 推力室内壁独家，单台 500万+，销量 41→125套 CAGR 74.6%）
+    PE_2026e: 44-62x（华泰目标）
+    PE_2025隐含: ~98.7x
+    tier: 深研档·首选赢家
+    decision: 进 company 深研；等 2026 PE 回落至 40-50x 或商航占比>15% 介入
+
+  - key: 铂力特
+    ticker: SSE_688333
+    revenue_2024: 12.40亿  # financial_data 1,851,668,118 ≈18.5亿(最新口径)
+    gross_margin: 37.7%
+    roic_3y_avg: 2.54%
+    debt_to_equity: 0.319
+    商航暴露: 中（金属 3D 打印龙头，朱雀三号核心供应商；航天是其一档，跨航空/医疗/消费电子）
+    PE_2026e: 24x
+    tier: 深研档·备选（工艺侧）
+    decision: 估值消化快可分批；需确认航天件收入增速非消费电子驱动
+
+  - key: 光启技术
+    ticker: SZSE_002625
+    revenue: 20.46亿  # financial_data 2,045,720,515
+    gross_margin: 49.0%
+    roic_3y_avg: 6.98%
+    debt_to_equity: 0.0
+    商航暴露: 无（公司自称暂无商业航天业务；在手订单 34.85 亿全为军品）
+    tier: 淘汰档
+    decision: 从候选 shortlist 剔除——商航纯度=0，定价与基本面错配
+
+shortlist_to_company:
+  - 斯瑞新材（688102）— 首选
+  - 铂力特（688333）— 备选
+
+# 横比观察：
+# - 斯瑞商航纯度最高但估值最贵（PE 透支），铂力特估值合理但纯度分散——典型的纯度×估值权衡。
+# - 光启财务最优（毛利率 49% / 零负债）但无商航暴露——证明"好公司≠好赛道押注"，剔除是对的。
+# - ROIC：斯瑞 7.1% > 铂力特 2.54%，斯瑞现金牛底盘质素更好（但商航扩张期 ROIC 可能摊薄）。

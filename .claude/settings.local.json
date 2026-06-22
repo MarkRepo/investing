@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p .claude/skills/ingest/prompts/_v1_archived)",
+      "Bash(git mv *)"
+    ]
+  }
+}

@@ -1,0 +1,249 @@
+slug: cn-commercial-aerospace-upstream
+display_name: 中国商业航天上游精密零部件(耗材型+独家壁垒)
+type: arena
+created: '2026-06-19T15:05:47.443331+00:00'
+status: active
+stage: 05-critic-review
+canonical: false
+parent_topic: cn-commercial-aerospace
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 商业航天上游精密零部件 arena：在"耗材型(热防护/推力室内壁/推进剂,随发射频次放量) vs 整箭型(被复用反噬)"二分下，赌谁是赢家；胜负变量=独家壁垒×纯度×估值安全边际
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  short_name: 商业航天上游
+  search_terms:
+  - 推力室内壁 铜铬铌
+  - 热防护 超材料 火箭
+  - 3D打印 火箭 耗材
+  - 斯瑞新材 商业航天
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-19T15:41:07.289218+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-079551
+    - mat-2587a6
+    - mat-3a52b0
+    - mat-717ab5
+    - mat-a6df91
+    - mat-beda07
+    - mat-c19fd5
+    - mat-f278d8
+    last_error: null
+  a_arena_case:
+    version: 1
+    last_updated: '2026-06-19T15:41:07.304823+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-079551
+    - mat-2587a6
+    - mat-3a52b0
+    - mat-717ab5
+    - mat-a6df91
+    - mat-beda07
+    - mat-c19fd5
+    - mat-f278d8
+    last_error: null
+  critic_review:
+    version: 1
+    last_updated: '2026-06-19T15:43:27.248012+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- critic 下修完成; 待办:K3推力室耐用品vs耗材硬尽调(Falcon9更换频次)、K2独家性独立信源核验
+- '可选: 斯瑞/铂力特 company 深研'
+user_todos:
+- task: 下载斯瑞新材(688102) 2025年报全文 — 拆商航推力室收入绝对值与占比
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  source_hint: cninfo annual
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: cninfo annual 直下
+- task: 下载斯瑞新材 2026Q1季报 — 单箭价值量与销量延续性
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: cninfo quarterly 直下
+- task: 下载铂力特(688333) 2025年报 — 航天件收入占比与市占
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: cninfo annual 直下
+- task: 收 Cu-Cr-Nb 全球量产厂家对照(NASA GRCop-84路线 vs 国内)— 证伪/证实"全球仅两家"
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: NASA GRCop路线实证
+- task: 收 3D打印铜合金推力室内壁 热试车/认证进展 — 工艺替代威胁
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: GRCop就是SLM增材——3D打印即铜铬铌内壁的主制造路线,非替代关系
+- task: 收 SpaceX复用对上游供应链价值量重塑(2015-2020)复盘 — 历史镜鉴
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa+websearch
+- task: 收 斯瑞/铂力特一致预期PE/PS表+目标价分布(中信/华泰/中航) — consensus
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 华泰/同花顺presan已覆盖(mat-ed4f78/e3cb09)
+- task: 收 朱雀三号复用进展与2026复用量产时间表 — 复用分化实证
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan mat-c19fd5/35ff5a
+- task: 收 斯瑞定增/产业化项目投资节奏+管理层资本配置史 — mgmt-capital-alloc
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 年报产业化项目累计投资5587万(mat-7450af)+presan
+- task: 收 中国商业航天2026发射频次/星座组网计划 — 放量斜率宏观锚
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: presan mat-a6df91(2025发射50次)
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 0
+  last_updated: '2026-06-19T15:30:36.098282+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-19T15:30:36.098433+00:00'
+    summary: M1耗材放量斜率可持续性(中); M2 CuCrNb独家vs3D打印替代(低,最该砸料); M3估值安全边际阈值(中)
+    convergence_status: open
+thesis:
+  current_version: 2
+  last_updated: '2026-06-19T15:43:27.254970+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-19T15:30:06.394416+00:00'
+    summary: 押耗材型+独家壁垒上游(斯瑞CuCrNb推力室/铂力特3D打印),剔除光启(无商航暴露);胜负=壁垒×纯度×估值;强度6/10,等估值安全边际
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 83%（10/12，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-synthesize-done
+    set_at: '2026-06-19T15:41:07.312051+00:00'
+    summary: 押耗材型(斯瑞CuCrNb/铂力特3D打印)剔除光启;K1放量实证、K2独家/GRCop即SLM、K3待朱雀三号回收、K4估值透支等40-50x;强度6/10
+    prescan_status: partial
+  - version: 2
+    stage_set_at: 05-critic-done
+    set_at: '2026-06-19T15:43:27.254975+00:00'
+    summary: '[critic后下修至4/10]K3复用vs耐用品矛盾+K2锻造/SLM代际脆弱+垂直整合反噬=thesis级风险;斯瑞降为待尽调,光启改观察档;短期不建议介入,先K3硬尽调'
+    prescan_status: partial
+stage_history:
+- stage: 00-research-pending
+  entered_at: '2026-06-19T15:30:36.110449+00:00'
+  exited_at: '2026-06-19T15:39:09.318983+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K2
+    - K3
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    - peer-comparison-financials
+    - arena-mirror
+    autofetch_debt: 10
+    empty_pending_decision: 0
+- stage: 03-extract-findings
+  entered_at: '2026-06-19T15:39:09.318983+00:00'
+  exited_at: '2026-06-19T15:43:27.275961+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-19T15:43:27.275961+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0

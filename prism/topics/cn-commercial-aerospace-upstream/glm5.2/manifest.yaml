@@ -1,0 +1,535 @@
+slug: cn-commercial-aerospace-upstream
+variant: glm5.2
+updated: '2026-06-19T15:39:01.211201+00:00'
+materials:
+- id: mat-2587a6
+  filename: 2026-06-19_斯瑞新材2025年年度报告摘要.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.895477+00:00'
+  processed: false
+  notes: query='斯瑞新材 688102 2025年报 商业航天收入占比 铜铬铌 推力室'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 斯瑞新材 688102 2025年报 商业航天收入占比 铜铬铌 推力室
+    url: https://finance.sina.com.cn/roll/2026-04-28/doc-inhvzmyk8574210.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.894470+00:00'
+    stale_at: '2026-07-19T15:25:21.894470+00:00'
+    expire_at: '2026-09-17T15:25:21.894470+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-717ab5
+  filename: 2026-06-19_斯瑞新材2024年年度报告.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.898110+00:00'
+  processed: false
+  notes: query='斯瑞新材 688102 2025年报 商业航天收入占比 铜铬铌 推力室'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 斯瑞新材 688102 2025年报 商业航天收入占比 铜铬铌 推力室
+    url: http://static.cninfo.com.cn/finalpage/2025-04-29/1223387479.PDF
+    domain: static.cninfo.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.897141+00:00'
+    stale_at: '2026-07-19T15:25:21.897141+00:00'
+    expire_at: '2026-09-17T15:25:21.897141+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-079551
+  filename: 2026-06-19_斯瑞新材2025半年报.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.901523+00:00'
+  processed: false
+  notes: query='斯瑞新材 688102 2025年报 商业航天收入占比 铜铬铌 推力室'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 斯瑞新材 688102 2025年报 商业航天收入占比 铜铬铌 推力室
+    url: http://static.cninfo.com.cn/finalpage/2025-08-28/1224594205.PDF
+    domain: static.cninfo.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.900245+00:00'
+    stale_at: '2026-07-19T15:25:21.900245+00:00'
+    expire_at: '2026-09-17T15:25:21.900245+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f278d8
+  filename: 2026-06-19_斯瑞新材2025年报及2026一季报解读.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.906592+00:00'
+  processed: false
+  notes: query='斯瑞新材 688102 2025年 市值 PS 估值 商业航天'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 斯瑞新材 688102 2025年 市值 PS 估值 商业航天
+    url: https://caifuhao.eastmoney.com/news/20260427205319244070580
+    domain: caifuhao.eastmoney.com
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.905035+00:00'
+    stale_at: '2026-07-19T15:25:21.905035+00:00'
+    expire_at: '2026-09-17T15:25:21.905035+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3a52b0
+  filename: 2026-06-19_铂力特2025半年报.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.913691+00:00'
+  processed: false
+  notes: query='铂力特 688333 2025年报 3D打印 火箭发动机 市占率'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 铂力特 688333 2025年报 3D打印 火箭发动机 市占率
+    url: https://stockmc.xueqiu.com/202508/688333_20250828_FLZT.pdf
+    domain: stockmc.xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.911858+00:00'
+    stale_at: '2026-07-19T15:25:21.911858+00:00'
+    expire_at: '2026-09-17T15:25:21.911858+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a6df91
+  filename: 2026-06-19_2025年度商业航天发射达50次.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.920788+00:00'
+  processed: false
+  notes: query='中国商业航天 2025 2026 发射次数 可复用火箭 朱雀三号 进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国商业航天 2025 2026 发射次数 可复用火箭 朱雀三号 进展
+    url: https://www.cnsa.gov.cn/n6758823/n6758838/c10726402/content.html
+    domain: cnsa.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.918653+00:00'
+    stale_at: '2026-07-19T15:25:21.918653+00:00'
+    expire_at: '2026-09-17T15:25:21.918653+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c19fd5
+  filename: 2026-06-19_朱雀三号可重复运载火箭首飞.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.927438+00:00'
+  processed: false
+  notes: query='中国商业航天 2025 2026 发射次数 可复用火箭 朱雀三号 进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国商业航天 2025 2026 发射次数 可复用火箭 朱雀三号 进展
+    url: https://stcn.com/article/detail/3523300.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.924838+00:00'
+    stale_at: '2026-07-19T15:25:21.924838+00:00'
+    expire_at: '2026-09-17T15:25:21.924838+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-beda07
+  filename: 2026-06-19_中国商业航天年度成绩单-产业规模2-8万亿.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.937168+00:00'
+  processed: false
+  notes: query='商业航天产业规模 2025 2.8万亿 政策 十五五规划'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 商业航天产业规模 2025 2.8万亿 政策 十五五规划
+    url: https://finance.sina.com.cn/jjxw/2025-12-26/doc-inheawxv1033532.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.934061+00:00'
+    stale_at: '2026-07-19T15:25:21.934061+00:00'
+    expire_at: '2026-09-17T15:25:21.934061+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-60b4ee
+  filename: 2026-06-19_国家航天局商业航天行动计划2025-2027.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.945628+00:00'
+  processed: false
+  notes: query='商业航天产业规模 2025 2.8万亿 政策 十五五规划'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 商业航天产业规模 2025 2.8万亿 政策 十五五规划
+    url: https://www.cnsa.gov.cn/n6758823/n6758839/c10719382/content.html
+    domain: cnsa.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.942327+00:00'
+    stale_at: '2026-07-19T15:25:21.942327+00:00'
+    expire_at: '2026-09-17T15:25:21.942327+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0ebfd1
+  filename: 2026-06-19_2025-2030铜合金市场空间.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.958589+00:00'
+  processed: false
+  notes: query='推力室内壁 铜铬铌 全球量产厂家 NASA认证 独家壁垒'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 推力室内壁 铜铬铌 全球量产厂家 NASA认证 独家壁垒
+    url: https://caifuhao.eastmoney.com/news/20260111102044587311980
+    domain: caifuhao.eastmoney.com
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.954737+00:00'
+    stale_at: '2026-07-19T15:25:21.954737+00:00'
+    expire_at: '2026-09-17T15:25:21.954737+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-21db04
+  filename: 2026-06-19_蓝箭航天ipo辅导完成.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.972197+00:00'
+  processed: false
+  notes: query='蓝箭航天 IPO 科创板 辅导 进展 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 蓝箭航天 IPO 科创板 辅导 进展 2026
+    url: https://news.qq.com/rain/a/20260523A03UZG00
+    domain: news.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.967614+00:00'
+    stale_at: '2026-07-19T15:25:21.967614+00:00'
+    expire_at: '2026-09-17T15:25:21.967614+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-aa06e6
+  filename: 2026-06-19_蓝箭航天科创板ipo中止.md
+  source_type: web-search
+  added: '2026-06-19T15:25:21.988001+00:00'
+  processed: false
+  notes: query='蓝箭航天 IPO 科创板 辅导 进展 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 蓝箭航天 IPO 科创板 辅导 进展 2026
+    url: https://caifuhao.eastmoney.com/news/20260401095903743134800
+    domain: caifuhao.eastmoney.com
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.982188+00:00'
+    stale_at: '2026-07-19T15:25:21.982188+00:00'
+    expire_at: '2026-09-17T15:25:21.982188+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9a44a7
+  filename: 2026-06-19_蓝箭被抽中现场检查-3年累亏34亿.md
+  source_type: web-search
+  added: '2026-06-19T15:25:22.001645+00:00'
+  processed: false
+  notes: query='蓝箭航天 IPO 科创板 辅导 进展 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 蓝箭航天 IPO 科创板 辅导 进展 2026
+    url: https://finance.sina.com.cn/roll/2026-01-06/doc-inhfkfum1280719.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:25:21.996108+00:00'
+    stale_at: '2026-07-19T15:25:21.996108+00:00'
+    expire_at: '2026-09-17T15:25:21.996108+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-07b187
+  filename: 2026-06-19_打破垄断斯瑞新材一战成名.md
+  source_type: web-search
+  added: '2026-06-19T15:26:19.494000+00:00'
+  processed: false
+  notes: query='推力室内壁 铜铬铌 商业航天 2026 量产 产能 斯瑞 铂力特'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 推力室内壁 铜铬铌 商业航天 2026 量产 产能 斯瑞 铂力特
+    url: https://cj.sina.com.cn/articles/view/7899391998/1d6d727fe00101a02a
+    domain: cj.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:26:19.487333+00:00'
+    stale_at: '2026-07-19T15:26:19.487333+00:00'
+    expire_at: '2026-09-17T15:26:19.487333+00:00'
+    triggered_by: 00-prescan
+- id: mat-55bc7d
+  filename: 2026-06-19_斯瑞新材推力室产业化项目可研报告.md
+  source_type: web-search
+  added: '2026-06-19T15:26:19.509713+00:00'
+  processed: false
+  notes: query='推力室内壁 铜铬铌 商业航天 2026 量产 产能 斯瑞 铂力特'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 推力室内壁 铜铬铌 商业航天 2026 量产 产能 斯瑞 铂力特
+    url: https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=688102&id=9829215
+    domain: vip.stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:26:19.503910+00:00'
+    stale_at: '2026-07-19T15:26:19.503910+00:00'
+    expire_at: '2026-09-17T15:26:19.503910+00:00'
+    triggered_by: 00-prescan
+- id: mat-d0c328
+  filename: 2026-06-19_斯瑞新材投资者关系活动记录.md
+  source_type: web-search
+  added: '2026-06-19T15:26:19.528423+00:00'
+  processed: false
+  notes: query='斯瑞新材 推力室 单箭价值量 单价 放量 复用复购'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 斯瑞新材 推力室 单箭价值量 单价 放量 复用复购
+    url: https://file.finance.qq.com/finance/hs/pdf/2025/09/19/294eddd4952b11f0a03cfa163e39923a.pdf
+    domain: file.finance.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-19T15:26:19.522470+00:00'
+    stale_at: '2026-07-19T15:26:19.522470+00:00'
+    expire_at: '2026-09-17T15:26:19.522470+00:00'
+    triggered_by: 00-prescan
+- id: mat-ed4f78
+  filename: 2026-06-19_华泰证券斯瑞新材看好铜合金业务突破.md
+  source_type: web-search
+  added: '2026-06-19T15:29:12.015532+00:00'
+  processed: false
+  notes: query='斯瑞新材 铂力特 估值 PS PE 安全边际 介入 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.85
+  search_meta:
+    query: 斯瑞新材 铂力特 估值 PS PE 安全边际 介入 2026
+    url: https://www.hibor.com.cn/data/ea40ae353e89e613da6b4b7075771697.html
+    domain: hibor.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-19T15:29:12.008896+00:00'
+    stale_at: '2026-07-19T15:29:12.008896+00:00'
+    expire_at: '2026-09-17T15:29:12.008896+00:00'
+    triggered_by: 00-prescan
+- id: mat-e3cb09
+  filename: 2026-06-19_铂力特盈利预测-同花顺f10.md
+  source_type: web-search
+  added: '2026-06-19T15:29:12.032485+00:00'
+  processed: false
+  notes: query='斯瑞新材 铂力特 估值 PS PE 安全边际 介入 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.8
+  search_meta:
+    query: 斯瑞新材 铂力特 估值 PS PE 安全边际 介入 2026
+    url: http://basic.10jqka.com.cn/688333/worth.html
+    domain: basic.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-19T15:29:12.026113+00:00'
+    stale_at: '2026-07-19T15:29:12.026113+00:00'
+    expire_at: '2026-09-17T15:29:12.026113+00:00'
+    triggered_by: 00-prescan
+- id: mat-7450af
+  filename: 2025_688102_annual_2026-04-27_斯瑞新材.PDF
+  source_type: annual-report
+  added: '2026-06-19T15:30:44.889588+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 斯瑞新材
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-2a19b8
+  filename: 2026_688102_quarterly_2026-04-27_斯瑞新材.PDF
+  source_type: quarterly-report
+  added: '2026-06-19T15:31:13.596885+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 斯瑞新材
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-3c0def
+  filename: 2025_688333_annual_2026-04-29_铂力特.PDF
+  source_type: annual-report
+  added: '2026-06-19T15:31:20.400740+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 铂力特
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-2a79cc
+  filename: 朱雀三号首飞
+  source_type: web-search
+  added: '2026-06-19T15:38:14.973275+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.85
+- id: mat-8b7ea0
+  filename: 打破垄断斯瑞
+  source_type: web-search
+  added: '2026-06-19T15:38:14.985844+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+- id: mat-372fd7
+  filename: 推力室产业化可研
+  source_type: web-search
+  added: '2026-06-19T15:38:14.997552+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.85
+- id: mat-130676
+  filename: 华泰斯瑞估值
+  source_type: web-search
+  added: '2026-06-19T15:38:15.009071+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.85
+- id: mat-404a4c
+  filename: 铂力特盈利预测
+  source_type: web-search
+  added: '2026-06-19T15:38:15.020425+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.85
+- id: mat-22798c
+  filename: 2025发射50次
+  source_type: web-search
+  added: '2026-06-19T15:38:15.032092+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.85
+- id: mat-16f626
+  filename: 产业规模2.83万亿
+  source_type: web-search
+  added: '2026-06-19T15:38:15.044054+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.85
+- id: mat-46b0b8
+  filename: 2025-2030铜合金市场
+  source_type: web-search
+  added: '2026-06-19T15:38:15.056835+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.85
+- id: mat-35ff5a
+  filename: 2026-06-19_spacex-reusability-economic-impact.md
+  source_type: web-search
+  added: '2026-06-19T15:39:01.068473+00:00'
+  processed: true
+  notes: query='SpaceX reusable rocket effect on upstream supply chain 2015-2020'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: SpaceX reusable rocket effect on upstream supply chain 2015-2020
+    url: https://www.mountbonnell.info/boca-chica-blastoff/analyzing-spacexs-rocket-reusability-environmental-and-economic-effects
+    domain: mountbonnell.info
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-19T15:39:01.058906+00:00'
+    stale_at: '2026-07-19T15:39:01.058906+00:00'
+    expire_at: '2026-09-17T15:39:01.058906+00:00'
+    triggered_by: 03-extract
+- id: mat-9551ed
+  filename: 2026-06-19_spacex-reusable-launch-system-development-program.md
+  source_type: web-search
+  added: '2026-06-19T15:39:01.094924+00:00'
+  processed: true
+  notes: query='SpaceX reusable rocket effect on upstream supply chain 2015-2020'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: SpaceX reusable rocket effect on upstream supply chain 2015-2020
+    url: https://en.wikipedia.org/wiki/SpaceX_reusable_launch_system_development_program
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-19T15:39:01.085933+00:00'
+    stale_at: '2026-07-19T15:39:01.085933+00:00'
+    expire_at: '2026-09-17T15:39:01.085933+00:00'
+    triggered_by: 03-extract
+- id: mat-aad295
+  filename: 2026-06-19_the-grcop-story-nasa-rocket-engine-alloys-am.md
+  source_type: web-search
+  added: '2026-06-19T15:39:01.153252+00:00'
+  processed: true
+  notes: query='GRCop-84 copper alloy manufacturers global NASA thrust chamber liner'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.8
+  search_meta:
+    query: GRCop-84 copper alloy manufacturers global NASA thrust chamber liner
+    url: https://www.metal-am.com/articles/the-grcop-storythe-development-production-and-additive-manufacturing-of-nasas-rocket-engine-alloys/
+    domain: metal-am.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-19T15:39:01.144059+00:00'
+    stale_at: '2026-07-19T15:39:01.144059+00:00'
+    expire_at: '2026-09-17T15:39:01.144059+00:00'
+    triggered_by: 03-extract
+- id: mat-402c46
+  filename: 2026-06-19_nasa-grcop-42-84-additively-manufactured-chambers-.md
+  source_type: web-search
+  added: '2026-06-19T15:39:01.180880+00:00'
+  processed: true
+  notes: query='GRCop-84 copper alloy manufacturers global NASA thrust chamber liner'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: GRCop-84 copper alloy manufacturers global NASA thrust chamber liner
+    url: https://ntrs.nasa.gov/citations/20190033311
+    domain: ntrs.nasa.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-19T15:39:01.171191+00:00'
+    stale_at: '2026-07-19T15:39:01.171191+00:00'
+    expire_at: '2026-09-17T15:39:01.171191+00:00'
+    triggered_by: 03-extract

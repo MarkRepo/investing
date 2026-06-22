@@ -345,3 +345,90 @@ pending:
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false
+- proposal_id: 56ce3b881aae
+  slug: cn-popmart
+  variant: opus4.8
+  kind: signpost
+  locator: a1545f23
+  proposed_value: bear
+  expected_current: null
+  evidence:
+  - title: Pop Mart's US sales fall 45% as it struggles to find next Labubu — The
+      Business Times
+    url: https://www.businesstimes.com.sg/companies-markets/consumer-healthcare/pop-marts-us-sales-fall-45-it-struggles-find-next-labubu
+    snippet: POP Mart International Group's overseas growth engine is showing signs
+      of strain... US sales fell 45 per cent year on year in March, reversing gains
+      of 41 per cent in February and 130 per cent in January, according to Bloomberg
+      Second Measure, which tracks credit and debit card transactions.
+  - title: 'Pop Mart Q1 Revenue Surges Over 75%: China Doubles, Overseas Shifts Gears,
+      Management Warns of Cost and Traffic Headwinds — BigGo Finance'
+    url: https://finance.biggo.com/news/k9JNIZ4B-PfaabXfbfnD
+    snippet: Pop Mart reported overall revenue growth of 75% to 80% year-on-year for
+      the first quarter of 2026, with China's market doubling... a significant sales
+      pullback overseas following the waning of traffic driven by core IP LABUBU,
+      described as the biggest current challenge.
+  - title: 'Pop Mart: Strong performance in China in Q1 2026 — 富途资讯'
+    url: https://news.futunn.com/en/post/73224726/pop-mart-strong-performance-in-china-during-q1-2026-with
+    snippet: On May 12, 2026, the company announced its unaudited operating results
+      for Q1 2026, projecting a year-over-year revenue growth of 75%–80% for the quarter.
+  evidence_urls:
+  - https://www.businesstimes.com.sg/companies-markets/consumer-healthcare/pop-marts-us-sales-fall-45-it-struggles-find-next-labubu
+  - https://finance.biggo.com/news/k9JNIZ4B-PfaabXfbfnD
+  living_feed_entry: '## 2026-06-22 PopMart Q1 2026 海外增速显著减速，美国3月卡数据-45%
+
+    **来源**：The Business Times（援引 Bloomberg Second Measure）、BigGo Finance、富途资讯
+
+    **关键信息**：Q1 2026（5/12 公告）整体收入 +75%-80% YoY，中国翻倍、线上 +150%-155%；但海外换挡——美国 3 月卡交易数据
+    YoY -45%（1 月 +130%、2 月 +41% 后逆转），管理层预警 Labubu 流量退潮后海外销售回落，列为当前最大挑战。
+
+    **对已有判断的影响**：支持 bear_signal「海外持续减速」；存量店转负尚未由官方同店数据证实（弱证据）
+
+    **当前判断更新**：建议翻 bear，标记需 thesis 复核'
+  rationale: 海外减速已兑现（美国3月-45%、管理层预警），存量店转负未证实——弱证据需复核；bear 翻牌且动摇海外增长引擎核心假设，标记 thesis
+    复核
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-06-21T22:10:14.444207+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 2fbb711e0500
+  slug: cn-popmart
+  variant: opus4.8
+  kind: signpost
+  locator: c9f97082
+  proposed_value: bear
+  expected_current: null
+  evidence:
+  - title: Labubu盲盒二手价跳水黄牛停收，泡泡玛特股价距年内高点跌超40% — 证券时报
+    url: https://www.stcn.com/article/detail/3564080.html
+    snippet: 股价持续下挫的背后，是核心IP热度的显著退潮。12月29日，「泡泡玛特开始5折甩卖了」的词条登上微博热搜，曾被炒至天价的Labubu盲盒二手价格大幅回落。
+  - title: 二手价大跳水，LABUBU放量任买 — 光明网
+    url: https://m.gmw.cn/2026-01/05/content_1304291838.htm
+    snippet: LABUBU降温的同时，泡泡玛特股价也呈现整体走低态势。与其2025年8月底339港元/股的股价相比，截至目前泡泡玛特股价已经跌超30%。
+  - title: 泡泡玛特失去Labubu魔法 — 投中网
+    url: https://m.chinaventure.com.cn/news/116-20260116-389809.html
+    snippet: 自2025年底开始，Labubu市场价格逐渐崩盘。如今，Labubu二手价雪崩，「泡泡玛特开始五折甩卖」的话题连续多日刷屏。
+  - title: 从十倍溢价到价格腰斩，泡泡玛特要凉？ — 上观新闻
+    url: https://www.jfdaily.com/news/detail?id=936466
+    snippet: 6月18日，泡泡玛特调整了预售策略，开始全渠道大量补货；热得发烫的LABUBU在618这天突然降温。
+  evidence_urls:
+  - https://www.stcn.com/article/detail/3564080.html
+  - https://m.gmw.cn/2026-01/05/content_1304291838.htm
+  - https://m.chinaventure.com.cn/news/116-20260116-389809.html
+  living_feed_entry: '## 2026-06-22 LABUBU 二手价较峰值腰斩，黄牛停收、未见企稳
+
+    **来源**：证券时报、光明网、投中网、上观新闻
+
+    **关键信息**：自2025年底起 Labubu 二手价雪崩，「5折甩卖」连续刷屏、黄牛停收；618 期间泡泡玛特全渠道大量补货，LABUBU 进一步降温。未见系统性止跌信号。
+
+    **对已有判断的影响**：偏 bear_signal「二手价续跌」兑现；黄牛为停收而非持续抛售，且投机退潮进行中但未见底企稳——信号混合偏空
+
+    **当前判断更新**：建议翻 bear（弱证据），标记需 thesis 复核'
+  rationale: 二手价续跌兑现、黄牛停收（弱证据，非持续抛售），无止跌企稳信号；bear 翻牌触及 IP 变现核心假设，标记 thesis 复核
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-06-21T22:10:14.444383+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false

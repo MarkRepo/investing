@@ -1,0 +1,131 @@
+slug: cn-commercial-aerospace-upstream
+variant: glm5.2
+entries:
+- searched_at: '2026-06-19T15:25:21.902363+00:00'
+  query: 斯瑞新材 688102 2025年报 商业航天收入占比 铜铬铌 推力室
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-19T15:25:21.907762+00:00'
+  query: 斯瑞新材 688102 2025年 市值 PS 估值 商业航天
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-19T15:25:21.909492+00:00'
+  query: 光启技术 002625 2025年报 超材料 航天收入 商业航天
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-19T15:25:21.915854+00:00'
+  query: 铂力特 688333 2025年报 3D打印 火箭发动机 市占率
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-19T15:25:21.930219+00:00'
+  query: 中国商业航天 2025 2026 发射次数 可复用火箭 朱雀三号 进展
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-19T15:25:21.949030+00:00'
+  query: 商业航天产业规模 2025 2.8万亿 政策 十五五规划
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-19T15:25:21.962112+00:00'
+  query: 推力室内壁 铜铬铌 全球量产厂家 NASA认证 独家壁垒
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-19T15:25:22.005984+00:00'
+  query: 蓝箭航天 IPO 科创板 辅导 进展 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-19T15:26:19.514768+00:00'
+  query: 推力室内壁 铜铬铌 商业航天 2026 量产 产能 斯瑞 铂力特
+  triggered_by: 00-prescan
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-19T15:26:19.533832+00:00'
+  query: 斯瑞新材 推力室 单箭价值量 单价 放量 复用复购
+  triggered_by: 00-prescan
+  n_results: 2
+  n_high: 1
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-19T15:26:19.537917+00:00'
+  query: 斯瑞新材 铂力特 估值 PS PE 安全边际 介入 2026
+  triggered_by: 00-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-19T15:29:12.038223+00:00'
+  query: 斯瑞新材 铂力特 估值 PS PE 安全边际 介入 2026
+  triggered_by: 00-prescan
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-19T15:38:51.555689+00:00'
+  query: SpaceX reusable rocket effect on upstream supply chain 2015-2020
+  triggered_by: 03-extract
+  n_results: 2
+  n_high: 0
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-19T15:38:51.565899+00:00'
+  query: GRCop-84 copper alloy manufacturers global NASA thrust chamber liner
+  triggered_by: 03-extract
+  n_results: 2
+  n_high: 0
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-19T15:39:01.129993+00:00'
+  query: SpaceX reusable rocket effect on upstream supply chain 2015-2020
+  triggered_by: 03-extract
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-19T15:39:01.218975+00:00'
+  query: GRCop-84 copper alloy manufacturers global NASA thrust chamber liner
+  triggered_by: 03-extract
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered

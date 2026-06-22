@@ -1,0 +1,70 @@
+slug: cn-commercial-aerospace-upstream
+variant: glm5.2
+created: 2026-06-19
+primer_scope: 商业航天上游精密零部件——行业边界/参与者(斯瑞/光启/铂力特)/耗材型 vs 整箭型二分/发射频次放量曲线/3D打印与铜铬铌工艺/估值锚(PS)
+learning_track:
+  l1_orientation: []
+  l2_history: []
+  l3_debates:
+    - question: 耗材型单箭价值量能否随发射频次放量、且不被整箭型复用反噬？
+      source_hint: 中信证券商业航天投资主线
+    - question: 斯瑞推力室内壁"独家"是否真实、可替代性几许（全球仅2-3家量产说）？
+      source_hint: 公司公告/研报
+    - question: 3D打印(铂力特)100%市占是否等于技术壁垒，还是工程化先发？
+      source_hint: 行业研报
+    - question: 商航纯度：斯瑞/光启/铂力特当前航天收入占比与利润兑现节奏
+      source_hint: 年报拆分
+  l4_hunting:
+    - question: 斯瑞新材商航耗材单箭价值量、放量斜率与可持续性（K1）
+      addresses: [K1]
+      search_keywords: [斯瑞新材 推力室, 铜铬铌 商业航天, 斯瑞 单箭价值]
+      source_hint: 斯瑞年报 + 研报
+    - question: 斯瑞PS19.5x/铂力特PS12.6x透支度，什么估值安全边际才介入（K4）
+      addresses: [K4]
+      search_keywords: [斯瑞新材 PS 估值, 铂力特 估值, 商业航天 估值]
+      source_hint: 卖方估值表
+material_priority:
+  tier1:
+    - title: 斯瑞新材 2025 年报
+      type: annual-report
+      ticker: SSE_688102
+      source: cninfo
+      addresses: [K1, K4]
+      why: 耗材单箭价值量与商航收入拆分主证据
+    - title: 铂力特 2025 年报
+      type: annual-report
+      ticker: SSE_688333
+      source: cninfo
+      addresses: [K4]
+      why: 3D打印火箭市占与估值锚
+    - title: 光启技术 2025 年报
+      type: annual-report
+      ticker: SZSE_002625
+      source: cninfo
+      addresses: [K4]
+      why: 超材料热防护国内唯一性
+    - title: 中信证券-商业航天的投资主线地位即将得到确认
+      type: sell-side-note
+      source: 复用父 cn-commercial-aerospace materials
+      addresses: [K1]
+      why: 投资主线与上游耗材逻辑
+  tier2:
+    - title: 运载火箭行业专题报告(商业航天基石)
+      type: industry-research
+      source: 复用父 materials
+      addresses: [K1]
+      why: 技术发展与降本曲线
+    - title: 斯瑞新材深度研报
+      type: sell-side-note
+      source: exa/卖方转载
+      addresses: [K1, K4]
+      why: 单箭价值量测算
+  tier3: []
+key_risks_to_monitor:
+  - 复用火箭商业化使整箭型(发动机本体/箭体锻件)价值量反噬耗材型
+  - 独家壁垒被3D打印工艺替代
+  - 估值 PS 持续透支、介入纪律被忽视
+analogies_to_study:
+  - 案例:美国 SpaceX 复用火箭对上游供应链价值量重塑(2015-2020)
+    逻辑:复用率提升→单箭耗材价值量随发射频次放量、整箭型被反噬
+    局限:美中发射频次与卫星组网节奏差异
