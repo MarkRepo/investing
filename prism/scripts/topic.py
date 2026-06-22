@@ -470,12 +470,21 @@ def update_topic(slug: str, variant: str, **fields) -> None:
     _write_yaml(_topic_path(slug, variant), data)
 
 
+_STAGES_REQUIRING_I4 = frozenset({
+    "03-extracting", "04-synthesizing", "04-post-synthesis",
+    "00-quality-screen", "05-critic-review", "done",
+})
+
+
 def set_stage(slug: str, stage: str, variant: str) -> None:
     """切换 stage，并维护平行 stage_history（B1 承重墙，spec observability.md §4.1）。
 
     每次切换：① 回填上一条 history 的 exited_at；② append 新条目，盖 entered_at
     + 进入瞬间的 detect_gaps 精简快照。同 stage 幂等（不重复 append）。快照失败返回空
     不抛。向后兼容：旧 topic 无 stage_history → 视为空 list 起步，现有 `stage` str 不动。
+
+    Guard (I4/F10/R3)：推进到 03-extracting 或之后的 stage 时，检查是否有 unattempted/
+    error fetch_status 的 todo——有则拒绝（消费材料前必须先有效尝试）。
     """
     from datetime import datetime, timezone
     data = read_topic(slug, variant)
@@ -483,6 +492,16 @@ def set_stage(slug: str, stage: str, variant: str) -> None:
     if prev == stage:
         update_topic(slug, variant, stage=stage)  # 同 stage：不动 history
         return
+    # I4 guard：推进到抽料/合成/之后阶段前，确认 todos 已有效尝试
+    if stage in _STAGES_REQUIRING_I4:
+        pending = pending_unfetched_todos(slug, variant)
+        if pending:
+            tasks = [t.get("task", "?")[:50] for t in pending[:3]]
+            more = f" (+ {len(pending) - 3} 条)" if len(pending) > 3 else ""
+            raise ValueError(
+                f"I4 guard 拒绝：{len(pending)} 条 todo 仍有 unattempted/error fetch_status，"
+                f"不得进入 {stage}。先处理：{tasks}{more}"
+            )
     hist = data.get("stage_history")
     if not isinstance(hist, list):
         hist = []
@@ -1014,6 +1033,13 @@ def update_user_todo_status(
     """
     if status not in _VALID_TODO_STATUSES:
         raise ValueError(f"status 必须是 {_VALID_TODO_STATUSES}")
+    # F5 guard：todo 身份=文档，非 K#。禁止用纯 K#/Q# 标签作 task 匹配键
+    if re.fullmatch(r"[KQ]\d+", task_substring.strip()):
+        raise ValueError(
+            f"F5 违反：task_substring {task_substring!r} 是纯 K#/Q# 标签，"
+            f"禁止用 K# 作 todo 闭环键（todo 身份=文档描述，不是 K#）。"
+            f"请用更具体的文档描述子串。"
+        )
     data = read_topic(slug, variant)
     todos = data.get("user_todos", [])
     hit = False

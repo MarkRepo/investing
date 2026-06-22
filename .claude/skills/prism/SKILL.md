@@ -8,18 +8,22 @@ allowed-tools: Bash Read Write
 
 ## 触发场景与路由
 
+> **B 模式（doctor 驱动）**：不再依赖 stage 状态机，改用 `prism doctor` 报告哪些不变量（I1-I8）未满足，
+> LLM 自行决定下一步。四份核心文档：`_arc.md`（推荐弧线+不变量）/ `_contracts.md`（产物契约）/
+> `_knowledge.md`（投资 IP：六环/估值/宏观/primer 规约）/ `_floor.md`（血教训 F1-F11）。
+
 | 用户说 | 执行 |
 |--------|------|
-| 「研究 X」/ 「开始研究 X」 | 读 `prism/workflows/00-research-topic.md`。**先查重**：定好 slug 后跑 `list_variants('{slug}')`，非空（已存在变体）则走 00 Step 3 意图分叉（续做/新变体复用/另起 slug），勿默认盲建 |
-| 「prism 推进 {slug}」/ 「继续研究 {slug}」 | 读 `topic.yaml` 判断当前 stage，跳转对应 workflow |
-| 「生成产出 {output}」/ 「更新 {slug} 的 {output}」 | primer → 见下行 `00-primer.md`；其余产出已并入单份决策链 case，按 `topic.type` 读对应路径文档（同「合成」行），由 `_shared.md` 增量重写判定（`list_affected_outputs`）只重写受影响的环/产出。**不再有 01-08/09/10 逐产出步骤文件** |
-| 「合成 {slug}」/「生成产出 {slug}」 | 按 `topic.type` 读决策链路径文档（替代 _shared+01-08）：company → `04-synthesize/_company_case.md`；industry → `04-synthesize/_industry_funnel.md`；arena → `04-synthesize/_arena_funnel.md`；macro → `04-synthesize/_macro_regime.md`（横切宏观层：primer 读本 + m_regime_read 三体制活读数 + transmission_map 传导地图）。三类都是"理解先行 + 6 环决策链"，funnel 的环⑥ 折入旧 09/10 选拔 |
-| 「生成入门 {slug}」/「primer {slug}」/「补 primer」 | 读 `prism/workflows/04-synthesize/00-primer.md`；**全类型统一 primer-first**——原材料 findings+thesis_v0+K#（+按 type 的财务/亲属产出），不依赖 01-08/thesis_v1。primer 由各路径 Step 2 在 case 之前调用 |
+| 「研究 X」/ 「开始研究 X」 | 读 `prism/workflows/_arc.md`（立题/I1）。**先查重**：定好 slug 后跑 `list_variants('{slug}')`，非空则问用户意图（续做/新变体/另起 slug），勿默认盲建 |
+| 「prism 推进 {slug}」/ 「继续研究 {slug}」 | 跑 `prism doctor`（见下方），读诊断报告决定下一步 |
+| 「prism doctor {slug}/{variant}」 | `python3 -c "from prism.scripts.doctor import doctor; import json; print(json.dumps(doctor('{slug}','{variant}'), ensure_ascii=False, indent=2))"` 报告 I1-I8 满足状态 + 建议下一步 |
+| 「合成 {slug}」/「生成产出 {slug}」 | 读 `prism/workflows/_knowledge.md`（§一 六环决策链 + §二 估值模型）。三类 type 共用六环骨架，差异见 §一.4；primer 规约见 §四。sidecar schema 见 `_contracts.md` §六 |
+| 「生成入门 {slug}」/「primer {slug}」/「补 primer」 | 读 `prism/workflows/_knowledge.md` §四（primer 规约）；**全类型统一 primer-first**——原材料 findings+thesis_v0+K#（+按 type 的财务/亲属产出），primer 在 case 之前生成 |
 | 「评审 {slug}」 | 读 `prism/workflows/05-critic-review.md` |
 | 「监控 {slug}」 | 读 `prism/workflows/06-daily-monitor.md` |
 | 「深挖 {slug} 的 {问题}」 | 读 `prism/workflows/07-drilldown.md` |
 | 「关联 {slug}」/「relink {slug}」 | 跑 `topic.suggest_relatives('{slug}','{variant}')` 出机械候选（geo/cluster_tags/ticker 跨 sidecar/slug-token 加权打分），把候选完整贴对话→**LLM 判读谁是真父/子**→调 `topic.set_parent('{slug}','{variant}', parent_slug)` 确认。可随时重跑（双向、顺序无关）。建链后合成路径 Step 1 亲属 hook 自动复用亲属成稿产出 |
-| 「查看 {slug} 进度」 | 直接读 `topic.yaml` 输出当前状态表格 |
+| 「查看 {slug} 进度」 | 跑 `prism doctor` 输出 I1-I8 满足状态 + arc 当前位置 |
 
 ## Prism Root
 

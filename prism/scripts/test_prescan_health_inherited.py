@@ -35,7 +35,7 @@ def tmp_topic(monkeypatch):
 
 def test_inherited_when_log_empty_but_web_material_present(tmp_topic):
     """本趟未跑 prescan query，但 manifest 有 web-search 料 → 'inherited' 不是 'failed'。"""
-    add_material(slug="rc", filename="hit.md", source_type="web-search", variant=VARIANT)
+    add_material(slug="rc", filename="hit.md", source_type="web-search", variant=VARIANT, _bypass_address_guard=True)
     r = check_prescan_health("rc", VARIANT, expected_queries=5)
     assert r["status"] == "inherited"
     assert r["queries_run"] == 0

@@ -110,6 +110,7 @@ def add_material(
     parent_mat: str | None = None,
     sec_section: str | None = None,
     rings: list[str] | None = None,
+    _bypass_address_guard: bool = False,
 ) -> str:
     """Add a material to the manifest.
 
@@ -169,6 +170,17 @@ def add_material(
                 _write_yaml(_manifest_path(slug, variant), data)
             return mat["id"]
 
+    # Guard：非 bypass 路径登记新条目时，web-search 类型必须提供 addresses
+    # （register_inbox_materials / add_sec_sections_from_meta 走 _bypass_address_guard=True）
+    if (
+        not _bypass_address_guard
+        and not addresses
+        and source_type == "web-search"
+    ):
+        raise ValueError(
+            f"add_material guard：source_type='web-search' 的新条目必须提供 addresses（K#/Q#）。"
+            f"若是早期 ingest 或 sec-section，传 _bypass_address_guard=True。"
+        )
     mat_id = f"mat-{uuid.uuid4().hex[:6]}"
     entry = {
         "id": mat_id,
@@ -252,6 +264,7 @@ def register_inbox_materials(slug: str, variant: str) -> list[dict]:
             mat_id = add_material(
                 slug=slug, filename=fp.name, source_type=src, variant=variant,
                 notes="early-ingest: 自动登记 topic 家底（元数据，未读正文）",
+                _bypass_address_guard=True,
             )
             existing.add(fp.name)
             registered.append({"id": mat_id, "filename": fp.name, "source_type": src})
@@ -308,6 +321,7 @@ def add_sec_sections_from_meta(
             addresses=s.get("addresses") or None,
             parent_mat=parent_mat_id,
             sec_section=s.get("name"),
+            _bypass_address_guard=True,
         )
         new_ids.append(mat_id)
     return new_ids

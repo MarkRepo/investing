@@ -1,6 +1,6 @@
 slug: cn-ai-compute
 variant: opus4.8
-updated: '2026-06-06T14:26:35.064995+00:00'
+updated: '2026-06-22T16:56:53.764224+00:00'
 materials:
 - id: mat-75ef85
   filename: 2026-06-06_寒武纪-688256-全年业绩高增.md
@@ -538,17 +538,20 @@ materials:
   filename: 2024_688256_annual_2025-04-18_寒武纪.PDF
   source_type: annual-report
   added: '2026-06-06T13:33:08.331193+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 寒武纪
   mineru_state: not_needed
   rings:
   - industry-financial-arc
   - value-chain-profit-pool
+  addresses:
+  - K1
+  - K2
 - id: mat-566b9a
   filename: 2026-02-27_688256_announce_yjygjxz_2025年度业绩快报公告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:08.714216+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 寒武纪
   mineru_state: not_needed
   rings:
@@ -557,16 +560,19 @@ materials:
   filename: 2026-01-30_688256_announce_yjygjxz_2025年年度业绩预告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:08.843638+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 寒武纪
   mineru_state: not_needed
   rings:
   - industry-financial-arc
+  addresses:
+  - K1
+  - K2
 - id: mat-19e0fd
   filename: 2025-09-16_688256_announce_zf_2025年度向特定对象发行A股股票募集说明书（注册稿）.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:09.725492+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 寒武纪
   mineru_state: not_needed
   rings:
@@ -575,26 +581,31 @@ materials:
   filename: 2026-04-29_688256_announce_kzz_2026年第一季度报告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:11.060530+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 寒武纪
   mineru_state: not_needed
   rings:
   - industry-financial-arc
+  addresses:
+  - K1
+  - K4
 - id: mat-b8e80c
   filename: 2024_601138_annual_2025-04-29_工业富联.PDF
   source_type: annual-report
   added: '2026-06-06T13:33:14.038078+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 工业富联
   mineru_state: not_needed
   rings:
   - industry-financial-arc
   - value-chain-profit-pool
+  addresses:
+  - K4
 - id: mat-fca9a3
   filename: 2026-01-28_601138_announce_yjygjxz_富士康工业互联网股份有限公司2025年度业绩预增公告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:14.453655+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 工业富联
   mineru_state: not_needed
   rings:
@@ -603,7 +614,7 @@ materials:
   filename: 2025-07-07_601138_announce_yjygjxz_富士康工业互联网股份有限公司2025年半年度业绩预告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:14.645796+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 工业富联
   mineru_state: not_needed
   rings:
@@ -612,7 +623,7 @@ materials:
   filename: 2026-04-28_601138_announce_kzz_富士康工业互联网股份有限公司2026年第一季度报告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:17.292477+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 工业富联
   mineru_state: not_needed
   rings:
@@ -621,7 +632,7 @@ materials:
   filename: 2026-03-10_601138_announce_kzz_富士康工业互联网股份有限公司2025年度财务报表及审计报告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:18.304809+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 工业富联
   mineru_state: not_needed
   rings:
@@ -630,7 +641,7 @@ materials:
   filename: 2026-03-10_601138_announce_kzz_富士康工业互联网股份有限公司2025年年度报告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:18.839309+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 工业富联
   mineru_state: not_needed
   rings:
@@ -639,35 +650,41 @@ materials:
   filename: 2024_300308_annual_2025-04-20_中际旭创.PDF
   source_type: annual-report
   added: '2026-06-06T13:33:21.116613+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 中际旭创
   mineru_state: not_needed
   rings:
   - industry-financial-arc
   - value-chain-profit-pool
+  addresses:
+  - K4
 - id: mat-5cd92d
   filename: 2026-02-27_300308_announce_yjygjxz_2025年度业绩快报.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:21.544015+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 中际旭创
   mineru_state: not_needed
   rings:
   - industry-financial-arc
+  addresses:
+  - K4
 - id: mat-c6fcc3
   filename: 2026-01-30_300308_announce_yjygjxz_2025年度业绩预告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:21.714371+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 中际旭创
   mineru_state: not_needed
   rings:
   - industry-financial-arc
+  addresses:
+  - K4
 - id: mat-623729
   filename: 2025-07-15_300308_announce_yjygjxz_2025年半年度业绩预告.PDF
   source_type: quarterly-report
   added: '2026-06-06T13:33:22.050150+00:00'
-  processed: false
+  processed: true
   notes: Auto-downloaded from cninfo — 中际旭创
   mineru_state: not_needed
   rings:
@@ -744,3 +761,67 @@ materials:
   - K5
   rings:
   - consensus
+- id: mat-f5ce4f
+  filename: 2026-02-27_688256_announce_yjygjxz_2025年度业绩快报公告.PD
+  source_type: quarterly-report
+  added: '2026-06-22T16:51:31.923434+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+- id: mat-712f4b
+  filename: 2025-09-16_688256_announce_zf_2025年度向特定对象发行A股股票募集说
+  source_type: quarterly-report
+  added: '2026-06-22T16:51:31.964896+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K2
+- id: mat-7a74c6
+  filename: 2026-01-28_601138_announce_yjygjxz_富士康工业互联网股份有限公司2
+  source_type: quarterly-report
+  added: '2026-06-22T16:51:32.006829+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K4
+- id: mat-f89a48
+  filename: 2025-07-07_601138_announce_yjygjxz_富士康工业互联网股份有限公司2
+  source_type: quarterly-report
+  added: '2026-06-22T16:51:32.028305+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K4
+- id: mat-330df4
+  filename: 2026-04-28_601138_announce_kzz_富士康工业互联网股份有限公司2026年
+  source_type: quarterly-report
+  added: '2026-06-22T16:51:32.049877+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K4
+- id: mat-ddb529
+  filename: 2026-03-10_601138_announce_kzz_富士康工业互联网股份有限公司2025年
+  source_type: quarterly-report
+  added: '2026-06-22T16:51:32.071544+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K4
+- id: mat-6f8e6c
+  filename: 2025-07-15_300308_announce_yjygjxz_2025年半年度业绩预告.PD
+  source_type: quarterly-report
+  added: '2026-06-22T16:51:32.154199+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  addresses:
+  - K4

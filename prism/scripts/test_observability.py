@@ -73,7 +73,8 @@ def test_cc6_p0_pending_at_stage04_flags(tmp_topic):
     topic_io.append_user_todos(slug, [
         {"task": "P0 没收敛", "priority": "P0", "addresses": ["K1"]},
     ], variant=variant)
-    topic_io.set_stage(slug, "04-synthesizing", variant)
+    # 直接注入 stage（跳过 set_stage guard），测 CC6 探针能检测存量违规状态
+    topic_io.update_topic(slug, variant, stage="04-synthesizing")
     p = _probe(obs.run_probes(slug, variant)["probes"], "CC6")
     assert p["status"] == "fail"
 
