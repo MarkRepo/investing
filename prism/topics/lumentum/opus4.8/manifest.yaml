@@ -1,0 +1,218 @@
+slug: lumentum
+variant: opus4.8
+updated: '2026-06-23T12:45:10.807634+00:00'
+materials:
+- id: mat-0d19cf
+  filename: 2026-06-23_lumentum-q3-fy2026-financial-results.md
+  source_type: web-search
+  added: '2026-06-23T12:16:58.507846+00:00'
+  processed: true
+  notes: query='Lumentum LITE FY2026 quarterly earnings revenue gross margin guidance'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - financial-arc
+  confidence: 0.9
+  search_meta:
+    query: Lumentum LITE FY2026 quarterly earnings revenue gross margin guidance
+    url: https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Third-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx
+    domain: investor.lumentum.com
+    domain_tier: whitelist
+    searched_at: '2026-06-23T12:16:58.506769+00:00'
+    stale_at: '2026-07-23T12:16:58.506769+00:00'
+    expire_at: '2026-09-21T12:16:58.506769+00:00'
+    triggered_by: 00-prescan
+- id: mat-01c8d2
+  filename: 2026-06-23_lumentum-q2-fy2026-financial-results.md
+  source_type: web-search
+  added: '2026-06-23T12:16:58.510745+00:00'
+  processed: true
+  notes: query='Lumentum LITE FY2026 quarterly earnings revenue gross margin guidance'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - financial-arc
+  confidence: 0.9
+  search_meta:
+    query: Lumentum LITE FY2026 quarterly earnings revenue gross margin guidance
+    url: https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Second-Quarter-of-Fiscal-Year-2026-Financial-Results/default.aspx
+    domain: investor.lumentum.com
+    domain_tier: whitelist
+    searched_at: '2026-06-23T12:16:58.509732+00:00'
+    stale_at: '2026-07-23T12:16:58.509732+00:00'
+    expire_at: '2026-09-21T12:16:58.509732+00:00'
+    triggered_by: 00-prescan
+- id: mat-95ad42
+  filename: 2026-06-23_nvidia-strategic-partnership-with-lumentum.md
+  source_type: web-search
+  added: '2026-06-23T12:17:58.137413+00:00'
+  processed: true
+  notes: query='H2-rescue prescan' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  confidence: 0.7
+  search_meta:
+    query: H2-rescue prescan
+    url: http://nvidianews.nvidia.com/news/nvidia-announces-strategic-partnership-with-lumentum-to-develop-state-of-the-art-optics-technology
+    domain: nvidianews.nvidia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-23T12:17:58.135576+00:00'
+    stale_at: '2026-07-23T12:17:58.135576+00:00'
+    expire_at: '2026-09-21T12:17:58.135576+00:00'
+    triggered_by: 00-prescan-h2
+- id: mat-6deb5b
+  filename: 2026-06-23_coherent-ofc-2026-investor-deck.md
+  source_type: web-search
+  added: '2026-06-23T12:17:58.142639+00:00'
+  processed: true
+  notes: query='H2-rescue prescan' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - bull-bear
+  confidence: 0.7
+  search_meta:
+    query: H2-rescue prescan
+    url: https://www.coherent.com/content/dam/coherent/site/en/documents/investors/investor-presentations/2026/march-17/OFC-2026-Investor%20event-deck-vf.pdf
+    domain: coherent.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-23T12:17:58.140942+00:00'
+    stale_at: '2026-07-23T12:17:58.140942+00:00'
+    expire_at: '2026-09-21T12:17:58.140942+00:00'
+    triggered_by: 00-prescan-h2
+- id: mat-5e2bd1
+  filename: 2026-06-23_lumentum-q2-fy26-q3-guide-trade-press.md
+  source_type: web-search
+  added: '2026-06-23T12:17:58.148538+00:00'
+  processed: true
+  notes: query='H2-rescue prescan' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - financial-arc
+  confidence: 0.7
+  search_meta:
+    query: H2-rescue prescan
+    url: https://www.semiconductor-today.com/news_items/2026/feb/lumentum-090226.shtml
+    domain: semiconductor-today.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-23T12:17:58.146503+00:00'
+    stale_at: '2026-07-23T12:17:58.146503+00:00'
+    expire_at: '2026-09-21T12:17:58.146503+00:00'
+    triggered_by: 00-prescan-h2
+- id: mat-5e9afc
+  filename: 2026-06-23_lumentum-q4-fy25-segments-trade-press.md
+  source_type: web-search
+  added: '2026-06-23T12:17:58.155278+00:00'
+  processed: true
+  notes: query='H2-rescue prescan' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - biz-moat-unit-econ
+  confidence: 0.7
+  search_meta:
+    query: H2-rescue prescan
+    url: https://www.semiconductor-today.com/news_items/2025/aug/lumentum-220825.shtml
+    domain: semiconductor-today.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-23T12:17:58.152900+00:00'
+    stale_at: '2026-07-23T12:17:58.152900+00:00'
+    expire_at: '2026-09-21T12:17:58.152900+00:00'
+    triggered_by: 00-prescan-h2
+- id: mat-6d2dc1
+  filename: 2026-06-23_lumentum-statistics-valuation.md
+  source_type: web-search
+  added: '2026-06-23T12:17:58.162999+00:00'
+  processed: true
+  notes: query='H2-rescue prescan' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - consensus
+  - valuation-anchor
+  confidence: 0.7
+  search_meta:
+    query: H2-rescue prescan
+    url: https://stockanalysis.com/stocks/lite/statistics
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-23T12:17:58.160312+00:00'
+    stale_at: '2026-07-23T12:17:58.160312+00:00'
+    expire_at: '2026-09-21T12:17:58.160312+00:00'
+    triggered_by: 00-prescan-h2
+- id: mat-f8057b
+  filename: 2026-06-23_lumentum-lite-quote.md
+  source_type: web-search
+  added: '2026-06-23T12:17:58.171348+00:00'
+  processed: true
+  notes: query='H2-rescue prescan' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - consensus
+  - valuation-anchor
+  confidence: 0.7
+  search_meta:
+    query: H2-rescue prescan
+    url: https://finance.yahoo.com/quote/LITE
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-23T12:17:58.168365+00:00'
+    stale_at: '2026-07-23T12:17:58.168365+00:00'
+    expire_at: '2026-09-21T12:17:58.168365+00:00'
+    triggered_by: 00-prescan-h2
+- id: mat-b4a168
+  filename: 2026-06-23_lumentum-trefis-consensus-financials.md
+  source_type: web-search
+  added: '2026-06-23T12:17:58.180681+00:00'
+  processed: true
+  notes: query='H2-rescue prescan' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - financial-arc
+  - valuation-anchor
+  confidence: 0.7
+  search_meta:
+    query: H2-rescue prescan
+    url: https://www.trefis.com/data/companies/LITE
+    domain: trefis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-23T12:17:58.177348+00:00'
+    stale_at: '2026-07-23T12:17:58.177348+00:00'
+    expire_at: '2026-09-21T12:17:58.177348+00:00'
+    triggered_by: 00-prescan-h2
+- id: mat-d832fb
+  filename: 2026-06-23_lumentum-quarterly-revenue-history.md
+  source_type: web-search
+  added: '2026-06-23T12:17:58.190868+00:00'
+  processed: true
+  notes: query='H2-rescue prescan' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  rings:
+  - financial-arc
+  confidence: 0.7
+  search_meta:
+    query: H2-rescue prescan
+    url: https://www.macrotrends.net/stocks/charts/LITE/lumentum-holdings/revenue
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-23T12:17:58.187234+00:00'
+    stale_at: '2026-07-23T12:17:58.187234+00:00'
+    expire_at: '2026-09-21T12:17:58.187234+00:00'
+    triggered_by: 00-prescan-h2

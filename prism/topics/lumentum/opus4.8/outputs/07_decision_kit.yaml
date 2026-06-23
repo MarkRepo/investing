@@ -1,0 +1,109 @@
+slug: lumentum
+variant: opus4.8
+topic_type: company
+display_name: Lumentum (LITE)
+ticker: US_LITE
+generated: 2026-06-23T00:00:00+00:00
+data_freshness: 2026-06-22
+
+buy_box:
+  strong_buy_max: 450
+  accumulate_min: 450
+  accumulate_max: 650
+  hold_min: 650
+  hold_max: 950
+  current_price: 880
+  price_as_of: 2026-06-22
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 生意/卡位 7.5/10 但估值 3/10——~$880(50x FY27 PE/27x sales)对新资金 EV≈+4%(中性偏负)、命门1(Coherent 6寸InP)未解+承重单线、内部人高位减持；现价只配观察/试探，建仓发生在≤$650 回调且命门1 收料硬化后
+  initial_max_pct: null
+  full_max_pct: 4
+  add_ladder_prices: [650, 480, 380]
+  max_cluster_pct: 12
+
+valuation_models:
+  - name: scenario_weighted_target
+    label: 情景加权目标价 (稀缺存续 × 引擎兑现)
+    bull_fair_value: [1250, 1600]
+    base_fair_value: [700, 950]
+    bear_fair_value: [350, 600]
+  - name: reverse_pe_dcf
+    label: Reverse PE-DCF (现价隐含 FY28 EPS/增速)
+    bull_fair_value: [1100, 1400]
+    base_fair_value: [650, 880]
+    bear_fair_value: [300, 500]
+  - name: ev_sales_peers
+    label: EV/Sales 同业横截面 (vs Coherent ~7-8x)
+    bull_fair_value: [1000, 1300]
+    base_fair_value: [650, 900]
+    bear_fair_value: [300, 500]
+
+kill_criteria:
+  - id: coherent_6inch_closes_gap
+    description: Coherent 公布 6寸 InP 良率追平 LITE 3寸 且 行业 EML 缺口收窄到 <10%——命门1(稀缺定价)证伪
+    status: pending
+    check_at: 2026-Q4
+  - id: gm_rollover
+    description: 连续≥2季 非GAAP 毛利率从~48% 见顶下行 且 EML ASP 环比转负——稀缺峰值确认
+    status: pending
+    check_at: 2026-Q4
+  - id: demand_reversal_capex_cut
+    description: 1.6T 出货预测下修 + hyperscaler/NVIDIA AI capex 指引降速 + LTA 出现重谈/取消
+    status: pending
+    check_at: 2027
+  - id: bull_scarcity_holds
+    description: (反向/我错)缺口维持 + LITE 守 200G/lane 独家≥3季 + OCS 兑现 $100M/季 + CPO H2 CY26 放量——应认错上修 thesis
+    status: pending
+    check_at: 2027
+
+signposts:
+  - date: 2026-08-12
+    event: Q4 FY26 财报(最近试金石)
+    bull_signal: 毛利率维持~48% + Q1 FY27 指引强 + OCS/CPO 进展超预期
+    bear_signal: 毛利率环比见顶 或 给出谨慎指引 + EML ASP 松动
+    triggered: null
+  - date: 2026-H2
+    event: CPO 收入拐点 + OCS 是否达 $100M/季
+    bull_signal: CPO 在 H2 CY26 产生 material revenue、OCS 兑现年化 $400M+
+    bear_signal: CPO/OCS 爬坡延迟或毛利不及预期
+    triggered: null
+  - date: 2026-2027
+    event: Coherent 6寸 InP 良率/产能披露(OFC/分析师日)
+    bull_signal: Coherent 6寸良率仍落后、LITE 维持 200G/lane 独家
+    bear_signal: Coherent 6寸良率追平 + 大规模量产 → 稀缺终结
+    triggered: null
+
+cluster_tags: [ai-compute, optical-networking, ai-optics, deep-cyclical, nvidia-supply-chain]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    note: EML 份额三方口径(LightCounting/Yole)缺，双方各自宣称第一(conflicts)，用 50-60% 区间占位；mgmt 资本配置史无专门料
+  - ring: 2
+    kind: data-missing
+    note: 卖方一手模型(Mizuho/JPM/MS segment 拆解)未取，仅有一致目标价 $1,113；无历史估值带(营收史无前例)
+  - ring: 4
+    kind: training-estimate
+    note: normalized/mid-cycle EPS、Bear 概率 25%、EV +4% 为情景估算+历史回撤推算，非实证点值
+  - ring: 5
+    kind: data-missing
+    note: 历史镜鉴(JDSU 2000/LITE 2022-24 回撤)偏训练知识(仅1条材料)；Coherent 6寸良率硬证据缺
+
+market_implied:
+  metric: implied_fwd_pe_fy27
+  value: 47
+
+my_vs_market_delta:
+  metric: implied_fwd_pe_fy27
+  my_value: 30
+  delta: "-17x (市场付 47x FY27 PE 计入稀缺永续+三引擎全兑现；我判 Coherent 6寸追赶应折到 ~30x，Bear 概率被市场低估)"
+  direction: short

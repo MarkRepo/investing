@@ -1,23 +1,50 @@
 # 投资仪表盘
 
-> 生成：2026-06-23　　公司：10 个　　行业：5 个　　竞技场：8 个
+> 生成：2026-06-23　　公司：11 个　　行业：5 个　　竞技场：8 个
 
 ## 公司层：决策清单
 
 | 公司 | 当前价 | 当前区间 | 距 Buy 区间 | 仓位上限 | Kill | 近期路标 | 数据新鲜度 |
 |------|--------|---------|-----------|---------|------|---------|----------|
+| [Lumentum (LITE)](/prism/lumentum/opus4.8) (US_LITE) | 880.00 | 🟡 观望 | +96% | 试探 / 4% | ✅ | 1 个 | 🟢 0d |
 | [贵州茅台](/prism/cn-kweichow-moutai-600519/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [礼来 (Eli Lilly, NYSE: LLY)](/prism/us-eli-lilly/opus4.8) (US_LLY) | 1102.08 | 🟡 观望 | +16% | 标准 / 6% | ✅ | 1 个 | 🟢 11d |
 | [美光科技 (Micron, MU)](/prism/us-micron-mu/opus4.8) (US_MU) | 1211.38 | 🔴 高于观望区 | +188% | 试探 / 5% | ✅ | 2 个 | 🟢 11d |
 | [泸州老窖](/prism/cn-luzhou-laojiao-000568/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [泡泡玛特 (Pop Mart, HKEX 09992)](/prism/cn-popmart/opus4.8) (HKEX_09992) | 160.00 | 🟡 观望 | +19% | 观望 / 5% | ✅ | 5 个 | 🟡 17d |
-| [PDD Holdings (拼多多, NASDAQ: PDD)](/prism/pinduoduo/opus4.8) (US_PDD) | 79.56 | 🔵 可建仓 | +6% | 标准 (≤2.5%) / 6% | ✅ | 3 个 | 🟡 17d |
+| [泡泡玛特 (Pop Mart, HKEX 09992)](/prism/cn-popmart/opus4.8) (HKEX_09992) | 156.70 | 🟡 观望 | +16% | 观望 / 5% | ✅ | 5 个 | 🟡 17d |
+| [PDD Holdings (拼多多, NASDAQ: PDD)](/prism/pinduoduo/opus4.8) (US_PDD) | 78.11 | 🔵 可建仓 | +4% | 标准 (≤2.5%) / 6% | ✅ | 3 个 | 🟡 18d |
 | [Robinhood (HOOD, NASDAQ)](/prism/us-robinhood/opus4.8) (US_HOOD) | 105.71 | 🔴 高于观望区 | +55% | 试探 (≤1%) / 7% | ✅ | 2 个 | 🟡 19d |
 | [利元亨 (Yuanli Heng, SSE 688499)](/prism/cn-yuanli-heng-688499/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [先导智能 (Leadex, SZSE 300450)](/prism/cn-leadex-300450/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)](/prism/global-futu/opus4.8) (US_FUTU) | 99.97 | 🟡 观望 | +54% | 2% / 3% | ✅ | — | 🟢 9d |
 
 ## 公司详情
+
+### Lumentum (LITE) (US_LITE)
+
+**买入框**
+
+| 区间 | 价格 |
+|------|------|
+| 🟢 强力买入 | ≤ 450 |
+| 🔵 可建仓 | 450 – 650 |
+| 🟡 观望 | 650 – 950 |
+| 🔴 高于观望 | > 950 |
+| **当前** | **880.00**（2026-06-22）→ 🟡 观望 |
+
+**估值矩阵**
+
+| 估值模型 | Bull 公允值 | Base 公允值 | Bear 公允值 |
+|---------|----------|----------|----------|
+| 情景加权目标价 (稀缺存续 × 引擎兑现) | 1250–1600 | 700–950 | 350–600 |
+| Reverse PE-DCF (现价隐含 FY28 EPS/增速) | 1100–1400 | 650–880 | 300–500 |
+| EV/Sales 同业横截面 (vs Coherent ~7-8x) | 1000–1300 | 650–900 | 300–500 |
+
+**近期路标（60天内）**
+
+- **2026-08-12** Q4 FY26 财报(最近试金石)  （多：毛利率维持~48% + Q1 FY27 指引强 + OCS/CPO 进展超预期 / 空：毛利率环比见顶 或 给出谨慎指引 + EML ASP 松动）
+
+---
 
 ### 礼来 (Eli Lilly, NYSE: LLY) (US_LLY)
 
@@ -82,7 +109,7 @@
 | 🔵 可建仓 | 135 – 150 |
 | 🟡 观望 | 150 – 195 |
 | 🔴 高于观望 | > 195 |
-| **当前** | **160.00**（2026-06-22）→ 🟡 观望 |
+| **当前** | **156.70**（2026-06-23）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -112,7 +139,7 @@
 | 🔵 可建仓 | 75 – 100 |
 | 🟡 观望 | 100 – 125 |
 | 🔴 高于观望 | > 125 |
-| **当前** | **79.56**（2026-06-18）→ 🔵 可建仓 |
+| **当前** | **78.11**（2026-06-22）→ 🔵 可建仓 |
 
 **估值矩阵**
 
@@ -191,6 +218,7 @@
 - **2026-08** [泡泡玛特 (Pop Mart, HKEX 09992)] 2026中报IP收入拆分披露
 - **2026-08** [Robinhood (HOOD, NASDAQ)] Q2 2026 财报(事件合约可持续性+NII趋势+EPS vs guidance)
 - **2026-08** [Robinhood (HOOD, NASDAQ)] Rule 605订单执行披露首次适用RHF/RHS+小单报价透明化累积效应
+- **2026-08-12** [Lumentum (LITE)] Q4 FY26 财报(最近试金石)
 - **2026-Q2** [礼来 (Eli Lilly, NYSE: LLY)] 2026 Q2 业绩 — 净价趋势 + orforglipron 上市放量斜率
 - **2026-Q3** [泡泡玛特 (Pop Mart, HKEX 09992)] 季度海外增速与存量店表现
 - **2026-Q3** [泡泡玛特 (Pop Mart, HKEX 09992)] 得物等二手价走势
@@ -213,24 +241,22 @@
 
 ## 行业层：竞技场选择
 
-### 中国创新药行业 [🟡 23d]
+### 中国创新药行业 [🟢 0d]
 
 **深度研究竞技场（Deep）**
 
 | 竞技场 | 综合评分 | 已建 topic | 核心逻辑 |
 |--------|---------|-----------|---------|
-| ADC（抗体偶联药物） | 4.0 | [✓](/prism/cn-adc/deepseek-v4-pro) | 中国工程化/速度全球领先、BD最热品类，但估值已不便宜，需深挖甄别龙头 |
-| 双抗 PD-1/VEGF | 3.6 | [✓](/prism/cn-pd1-vegf-bispecific/deepseek-v4-pro) | 依沃西head-to-head击败K药为标杆，但辉瑞自研入局竞争升温，深挖看壁垒可持续性 |
+| ADC 赛道 | 4.0 | — | 中国全球优势最强品类，BD 变现最确定（BMS $84亿/默沙东 ~$90亿+），BL-B01D1 三个III期成功+F |
+| 双抗赛道 | 4.0 | — | 全球绝对领先（III期近7成来自中国），依沃西标杆效应（HARMONi-6 OS HR=0.66），FDA BLA已受理 |
 
 **观察竞技场（Watch）**
 
 | 竞技场 | 综合评分 | 升级触发器 |
 |--------|---------|----------|
-| GLP-1 / 减重 | 3.0 | 国产GLP-1出现明确差异化(口服/月制剂)读出; 估值回调至历史中位以下 |
-| 自免（自身免疫） | 3.3 | telitacicept海外关键III期阳性 |
-| 小核酸（siRNA/ASO） | 3.4 | 头部小核酸再现大额BD; 慢病适应症III期启动 |
-
-**淘汰（Eliminated）**：PD-1 单抗（me-too 红海）
+| 小核酸赛道 | 4.0 | 首个国产 siRNA III 期成功; 又一大额 BD（>$20 亿总包）; 中国小核酸公司海外上市/被收购 |
+| GLP-1/代谢赛道 | 3.6 | 国产 GLP-1 海外 III 期启动并获 MNC 合作; 口服 GLP-1 中国公司取得突破; 赛道整合出清（<10  |
+| 自免赛道 | 3.6 | 国产自免新药海外获批; 泰它西普 Vor Bio 合作推进至 III 期; 中国自免 BD 交易额突破 $50 亿 |
 
 ---
 
@@ -281,7 +307,7 @@
 
 ---
 
-### 人形机器人行业 (Global Humanoid Robot) [🟡 21d]
+### 人形机器人行业 (Global Humanoid Robot) [🟡 22d]
 
 **深度研究竞技场（Deep）**
 
@@ -350,7 +376,7 @@
 
 ---
 
-### 全球固态电池设备链（卖铲人漏斗） [🟡 21d]
+### 全球固态电池设备链（卖铲人漏斗） [🟡 22d]
 
 **入围（Shortlist）**
 
@@ -387,12 +413,15 @@
 
 | 主题标签 | 涉及研究 | 数量 |
 |---------|---------|------|
+| `ai-compute` | Lumentum (LITE), 美光科技 (Micron, MU) | 2 |
+| `deep-cyclical` | Lumentum (LITE), 美光科技 (Micron, MU) | 2 |
+| `optical-networking` | Lumentum (LITE) | 1 |
+| `ai-optics` | Lumentum (LITE) | 1 |
+| `nvidia-supply-chain` | Lumentum (LITE) | 1 |
 | `glp1-obesity` | 礼来 (Eli Lilly, NYSE: LLY) | 1 |
 | `big-pharma` | 礼来 (Eli Lilly, NYSE: LLY) | 1 |
 | `us-growth-equity` | 礼来 (Eli Lilly, NYSE: LLY) | 1 |
-| `ai-compute` | 美光科技 (Micron, MU) | 1 |
 | `memory-semis` | 美光科技 (Micron, MU) | 1 |
-| `deep-cyclical` | 美光科技 (Micron, MU) | 1 |
 | `hbm` | 美光科技 (Micron, MU) | 1 |
 | `china-consumer` | 泡泡玛特 (Pop Mart, HKEX 09992) | 1 |
 | `ip-collectibles` | 泡泡玛特 (Pop Mart, HKEX 09992) | 1 |
@@ -412,11 +441,15 @@
 | `hk-fintech` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
 | `cross-border-regulation` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
 | `crypto-optionality` | 富途控股 (FUTU, NASDAQ FUTU / HKEX 03588) | 1 |
-| `china-innovative-drug` | 中国创新药行业 | 1 |
-| `biopharma` | 中国创新药行业 | 1 |
-| `adc` | 中国创新药行业 | 1 |
-| `bispecific` | 中国创新药行业 | 1 |
-| `glp1` | 中国创新药行业 | 1 |
+| `创新药` | 中国创新药行业 | 1 |
+| `生物科技` | 中国创新药行业 | 1 |
+| `BD出海` | 中国创新药行业 | 1 |
+| `港股18A` | 中国创新药行业 | 1 |
+| `ADC` | 中国创新药行业 | 1 |
+| `双抗` | 中国创新药行业 | 1 |
+| `GLP-1` | 中国创新药行业 | 1 |
+| `小核酸` | 中国创新药行业 | 1 |
+| `自免` | 中国创新药行业 | 1 |
 | `商业航天` | 中国商业航天 | 1 |
 | `可复用火箭` | 中国商业航天 | 1 |
 | `卫星互联网` | 中国商业航天 | 1 |

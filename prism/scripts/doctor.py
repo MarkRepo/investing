@@ -96,9 +96,10 @@ def doctor(slug: str, variant: str) -> dict:
         i1_issues.append("question >25字 但 search_terms 为空")
 
     if topic_type == "company":
-        if not topic.get("ticker"):
+        # create_topic 把 ticker/short_name 写在 scope 下；兼容旧顶层字段
+        if not (scope.get("ticker") or topic.get("ticker")):
             i1_issues.append("company 缺 ticker")
-        if not topic.get("short_name"):
+        if not (scope.get("short_name") or topic.get("short_name")):
             i1_issues.append("company 缺 short_name")
 
     if not i1_issues:
@@ -185,6 +186,18 @@ def doctor(slug: str, variant: str) -> dict:
             f"{', '.join(tasks)}{suffix}"
         )
 
+    # 空态检测：manifest 无任何 material 时，I4 不可能满足
+    _mats_i4: list[dict] = []
+    try:
+        _mats_i4 = read_manifest(slug, variant).get("materials", [])
+    except Exception:
+        pass
+    if len(_mats_i4) == 0:
+        i4_issues.append(
+            "manifest 为空，未收料（新变体需 register material + add_material；"
+            "prescan/搜索命中需落地为 manifest 条目）"
+        )
+
     if not i4_issues:
         satisfied.append("I4")
     else:
@@ -210,15 +223,21 @@ def doctor(slug: str, variant: str) -> dict:
 
     # findings index check (only relevant if there are materials)
     findings_index = _outputs_dir / "_findings_index.md"
-    if not findings_index.exists() and not unprocessed:
-        try:
-            mats = read_manifest(slug, variant).get("materials", [])
-            actionable = [m for m in mats if m.get("addresses") and
-                          m.get("addresses") != ["scope"]]
-            if actionable:
-                i5_issues.append("_findings_index.md 不存在（有已处理资料但无索引）")
-        except Exception:
-            pass
+    _mats_i5: list[dict] = []
+    try:
+        _mats_i5 = read_manifest(slug, variant).get("materials", [])
+    except Exception:
+        pass
+    # 空态检测：manifest 无 material → 无料可抽，I5 不满足
+    if len(_mats_i5) == 0:
+        i5_issues.append(
+            "manifest 为空，无资料可抽（需先 I4 收料 → 注册 material → 再逐份写 findings）"
+        )
+    elif not findings_index.exists() and not unprocessed:
+        actionable = [m for m in _mats_i5 if m.get("addresses") and
+                      m.get("addresses") != ["scope"]]
+        if actionable:
+            i5_issues.append("_findings_index.md 不存在（有已处理资料但无索引）")
 
     if not i5_issues:
         satisfied.append("I5")
@@ -358,7 +377,7 @@ def doctor(slug: str, variant: str) -> dict:
     # ------------------------------------------------------------------ #
     # Suggested next (simple rule templates)                               #
     # ------------------------------------------------------------------ #
-    suggested_next = _suggest_next(arc, pending_fetch, empty_undecided, unprocessed)
+    suggested_next = _suggest_next(arc, pending_fetch, empty_undecided, unprocessed, diag)
 
     return {
         "topic": {
@@ -401,6 +420,7 @@ def _suggest_next(
     pending_fetch: list[dict],
     empty_undecided: list[dict],
     unprocessed: list[dict],
+    diagnostics: dict | None = None,
 ) -> str:
     if arc == "done":
         return "所有不变量已满足 → 进入监控循环（I8 daily-monitor）"
@@ -427,6 +447,18 @@ def _suggest_next(
             return f"抽 {', '.join(ids)}{more} ({n} 份) → mark_processed + build_findings_index → 满足 I5"
         return "重建 findings index (build_findings_index) → 满足 I5"
     if arc == "I6":
+        # 若 diagnostics 显示大面积未覆盖，说明上游 I4/I5 实际未完成（只是真空满足）
+        # 应回 I4 收料，而非进合成
+        if diagnostics and not isinstance(diagnostics.get("error"), str):
+            uncovered_ks = diagnostics.get("uncovered_ks") or []
+            uncovered_rings = diagnostics.get("uncovered_ring_inputs") or []
+            # 全未覆盖 → 实质上是 I4 未做
+            if len(uncovered_ks) >= 3 or len(uncovered_rings) >= 4:
+                return (
+                    f"⚠️ 诊断显示 {len(uncovered_ks)} 个 K# + {len(uncovered_rings)} 个 ring "
+                    f"无覆盖 → 实质上 I4/I5 未完成。先回 I4 收料（register material + add_material + "
+                    f"prism search）→ I5 抽料（逐份写 findings）→ 再进 I6 合成"
+                )
         return "写 primer + case + sidecar + thesis_v1 (Scheme C 全快照) → set_output_status fresh → 满足 I6"
     if arc == "I7":
         return "跑 critic 评审 → set_critic_verdict(approve/request-rewrite/request-more) → 满足 I7"

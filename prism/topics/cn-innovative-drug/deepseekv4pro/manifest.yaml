@@ -1,0 +1,103 @@
+slug: cn-innovative-drug
+variant: deepseekv4pro
+updated: '2026-06-23T10:40:04.459007+00:00'
+materials:
+- id: mat-96e57e
+  filename: 2025_600276_annual_2026-03-25_恒瑞医药.PDF
+  source_type: annual-report
+  added: '2026-06-23T10:35:44.059653+00:00'
+  processed: true
+  notes: 恒瑞医药 2025年报 — 行业最大市值/最广管线；产品收入vs BD收入拆分
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+- id: mat-40f6ac
+  filename: 2025_HK01801_annual_2026-04-28_INNOVENTBIO.pdf
+  source_type: annual-report
+  added: '2026-06-23T10:35:44.060962+00:00'
+  processed: true
+  notes: 信达生物 2025年报 — Biopharma转型+玛仕度肽商业化+首次全年盈利
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+- id: mat-727989
+  filename: 2025_HK06160_annual_2026-04-14_BEONEMEDICINES.pdf
+  source_type: annual-report
+  added: '2026-06-23T10:35:44.061929+00:00'
+  processed: true
+  notes: 百济神州/BeOne 2025年报 — 全球商业化最深、泽布替尼放量
+  mineru_state: not_needed
+  addresses:
+  - K2
+- id: mat-1b04f8
+  filename: 2025_688331_annual_2026-03-27_荣昌生物.PDF
+  source_type: annual-report
+  added: '2026-06-23T10:35:44.063104+00:00'
+  processed: true
+  notes: 荣昌生物 2025年报 — ADC+自免双平台
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+- id: mat-8aced9
+  filename: 2025_688506_annual_2026-04-27_百利天恒.PDF
+  source_type: annual-report
+  added: '2026-06-23T10:35:44.064476+00:00'
+  processed: true
+  notes: 百利天恒 2025年报 — BL-B01D1双抗ADC全球III期
+  mineru_state: not_needed
+  addresses:
+  - K1
+- id: mat-76633c
+  filename: 2025_HK09926_annual_2026-04-29_AKESO.pdf
+  source_type: annual-report
+  added: '2026-06-23T10:35:44.066085+00:00'
+  processed: true
+  notes: 康方生物 2025年报 — 依沃西PD-1/VEGF双抗
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+- id: mat-3005df
+  filename: 2025_HK06990_annual_2026-04-16_SKBBIO.pdf
+  source_type: annual-report
+  added: '2026-06-23T10:35:44.067984+00:00'
+  processed: true
+  notes: 科伦博泰 2025年报 — TROP2 ADC+默沙东
+  mineru_state: not_needed
+  addresses:
+  - K1
+- id: mat-5bf034
+  filename: 2026-05-09_nhsa_2026医保目录调整方案解读.md
+  source_type: web-search
+  added: '2026-06-23T10:39:31.701888+00:00'
+  processed: true
+  notes: NHSA 2026年医保目录+商保目录调整方案官方解读；丙类目录落地+预申报+双目录衔接
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.95
+  search_meta:
+    query: 2026 医保目录 商保目录 丙类 创新药 支付
+    url: https://www.nhsa.gov.cn/art/2026/5/9/art_105_20455.html
+    domain: nhsa.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-23T00:00:00Z'
+- id: mat-2490a1
+  filename: 2025-12-07_nhsa_2025国谈结果_新增114种+商保19种.md
+  source_type: web-search
+  added: '2026-06-23T10:39:31.705185+00:00'
+  processed: true
+  notes: 2025国谈结果：新增114种药品（50种1类创新药），成功率88%；首版商保目录19种
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.95
+  search_meta:
+    query: 2025 国谈 结果 114 19 创新药 谈判
+    url: https://www.cls.cn/detail/2222043
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-23T00:00:00Z'

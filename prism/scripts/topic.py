@@ -371,14 +371,17 @@ def create_topic(
     if path.exists():
         raise FileExistsError(f"Topic already exists: {slug}/{variant}")
     # 下游兜底（[skill-routing]）：slug 已存在其他变体而本变体是新建时，打印 stderr
-    # 提示——挡"跳过 00 Step 3 直奔 create_topic"时的盲建。不 raise（同 slug 新变体
+    # 提示——挡"跳过收料抽料直奔合成"时的盲建。不 raise（同 slug 新变体
     # 是合法复用路径），只把"这是个分叉点 + 有复用机会"从沉默变可见。
     existing_variants = list_variants(slug)
     if existing_variants:
         print(
-            f"⚠ slug={slug!r} 已存在变体 {existing_variants}，你正在创建新变体 {variant!r}。"
-            f"\n  确认不是想推进旧变体? 推进走 workflow（读 topic.yaml 判 stage），勿盲建空变体。"
-            f"\n  若确为换模型/换架构重研：复用旧料按 00 Step 3 新变体分支（复用 materials 机械层、findings 本变体重抽、set_parent_materials 引父级），可隔离变量对比。",
+            f"⚠ slug={slug!r} 已存在变体 {existing_variants}，你正在创建新变体 {variant!r}。\n"
+            f"  确认不是想推进旧变体? 推进走 workflow（读 topic.yaml 判 stage），勿盲建空变体。\n"
+            f"  若确为换模型/换架构重研：materials/（PDF/_vlm/_extracted）slug 级共享、可复用；\n"
+            f"  manifest / findings / thesis / decomposition / roadmap / outputs 在 variant 目录内、\n"
+            f"  必须本变体自建。新变体起点是 I1 立题（create_topic 已做），下一站是 I2 定向（thesis_v0\n"
+            f"  + decomposition_v0 + baseline_knowledge），经 I3-I5 收料抽料后才能进 I6 合成。",
             file=sys.stderr,
         )
     scope = {

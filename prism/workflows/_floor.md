@@ -60,6 +60,15 @@
 - **当前强制**：散文 + 幂等跳过（已有则不重跑）；`add_material` 校验路径属 slug 级 materials/
 - **可否机械化**：低
 
+**变体复用与隔离边界（物理目录即规则）**：
+
+| 产物 | 目录 | 共享/隔离 |
+|------|------|---------|
+| `materials/`（PDF、`_vlm/full.md`、`_extracted.md`） | `prism/topics/{slug}/materials/` | slug 级共享 |
+| 其余一切——`manifest.yaml`、`findings_*.md`、`roadmap.yaml`、`thesis_v*.md`、`decomposition_v*.md`、`outputs/`（primer/case/sidecar）、`topic.yaml` | `prism/topics/{slug}/{variant}/` | variant 级隔离 |
+
+**硬规则**：同 slug 不同 variant **禁止跨 variant 目录引用**（如 deepseekv4pro 产出不得引 opus4.8 的 findings）。父 topic 借料见 F7，父级复用指定 variant 规则见 `set_parent_materials`（`parent_variant` 显式传或 `model_registry` 兜底解析；不确定时不猜、AskUserQuestion）。
+
 ---
 
 ## F5 — todo 身份=文档，非 K#；脚本零自动撮合，闭环须显式

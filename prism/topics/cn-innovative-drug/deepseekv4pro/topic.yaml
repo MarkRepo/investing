@@ -1,0 +1,176 @@
+slug: cn-innovative-drug
+display_name: 中国创新药行业
+type: industry
+created: '2026-06-23T07:33:44.606503+00:00'
+status: active
+stage: done
+canonical: true
+parent_topic: null
+monitoring_tier: deep
+concepts: []
+scope:
+  geo: CN
+  question: 中国创新药行业哪些细分赛道+龙头值得配置
+  depth: deep
+  terminal: 把资本/注意力分配给哪几个细分 arena（深挖/观察/淘汰三档分流）
+  search_terms:
+  - ADC 出海 BD
+  - 创新药 国谈 医保
+  - 双抗 GLP-1 自免
+  - 管线 临床 商业化
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-23T11:59:09.371869+00:00'
+    status: fresh
+    data_freshness: 🟢 1d
+    referenced_mat_ids:
+    - mat-1b04f8
+    - mat-2490a1
+    - mat-3005df
+    - mat-40f6ac
+    - mat-5bf034
+    - mat-727989
+    - mat-76633c
+    - mat-8aced9
+    - mat-96e57e
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-06-23T07:44:10.120219+00:00'
+      warnings:
+      - 未过 critic（set_output_critic_passed 未置位）
+    critic_passed: true
+  i_industry_case:
+    version: 1
+    last_updated: '2026-06-23T11:59:09.381893+00:00'
+    status: fresh
+    data_freshness: 🟢 1d
+    referenced_mat_ids:
+    - mat-1b04f8
+    - mat-2490a1
+    - mat-3005df
+    - mat-40f6ac
+    - mat-5bf034
+    - mat-727989
+    - mat-76633c
+    - mat-8aced9
+    - mat-96e57e
+    last_error: null
+  industry_to_arenas:
+    version: 1
+    last_updated: '2026-06-23T11:59:09.387659+00:00'
+    status: fresh
+    data_freshness: 🟢 1d
+    referenced_mat_ids:
+    - mat-1b04f8
+    - mat-2490a1
+    - mat-3005df
+    - mat-40f6ac
+    - mat-5bf034
+    - mat-727989
+    - mat-76633c
+    - mat-8aced9
+    - mat-96e57e
+    last_error: null
+  08_living_feed:
+    version: 0
+    last_updated: '2026-06-23T10:41:10.846629+00:00'
+    status: pending
+    data_freshness: 🟢 1d
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 cn-innovative-drug」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：thesis_v1 经年报+政策双料验证：K1出海部分兑现(K药头对头阳性+FDA BLA已受理)、K2业绩趋势确认(百济/信达首次盈利)、K3
+  BD 2026Q1 $600亿积极、K4支付端国谈+丙类双轨推进、K5 arena三档分流落地。7份年报findings+2份政策材料覆盖5个K#。no kill触发。建议维持7/10看多+强分化stance。
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: true
+  cadence: daily
+critic:
+  verdict: approve
+  summary: thesis_v1 经年报+政策双料验证：K1出海部分兑现(K药头对头阳性+FDA BLA已受理)、K2业绩趋势确认(百济/信达首次盈利)、K3
+    BD 2026Q1 $600亿积极、K4支付端国谈+丙类双轨推进、K5 arena三档分流落地。7份年报findings+2份政策材料覆盖5个K#。no kill触发。建议维持7/10看多+强分化stance。
+  at: '2026-06-23T10:39:43.531993+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-23T07:44:17.826255+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-23T07:36:45.065592+00:00'
+    summary: 命门1=出海兑现路径(中); 命门2=内生拐点真伪(中); 命门3=龙头壁垒可持续性(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-23T07:44:17.826431+00:00'
+    summary: 命门1出海兑现(部分兑现→置信度升中高)/命门2内生拐点(趋势确认→置信度升中)/命门3龙头壁垒(ADC+双抗→deep)
+    convergence_status: converged
+    changelog: 'v0→v1: prescan 厚料校准后命门方向未变，命门1/2置信度升级，命门3落成arena三档分流'
+thesis:
+  current_version: 1
+  last_updated: '2026-06-23T07:44:10.127735+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-23T07:36:45.052992+00:00'
+    summary: 中国创新药全球BD兑现+国内业绩拐点双驱动，看多分化7/10，alpha在甄别ADC/双抗龙头，回避me-too与估值透支
+  - version: 0
+    stage_set_at: 02-gather-materials
+    set_at: '2026-06-23T07:39:32.749478+00:00'
+    summary: '中国创新药全球BD兑现+国内业绩拐点双驱动，看多分化7/10，alpha在甄别ADC/双抗龙头，回避me-too与估值透支。2026 prescan:
+      BD Q1破亿/依沃西OS阳性/百济信达盈利跃升'
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-23T07:44:10.127737+00:00'
+    summary: 中国创新药BD出海+业绩拐点双驱动，看多分化7/10。2026 prescan确认：BD Q1破600亿/依沃西OS阳性/百济信达盈利跃升。ADC+双抗→deep，小核酸/GLP-1/自免→watch
+stage_history:
+- stage: 02-gather-materials
+  entered_at: '2026-06-23T10:39:43.414632+00:00'
+  exited_at: '2026-06-23T10:39:43.457921+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 03-extracting
+  entered_at: '2026-06-23T10:39:43.457921+00:00'
+  exited_at: '2026-06-23T10:39:43.487291+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-06-23T10:39:43.487291+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0

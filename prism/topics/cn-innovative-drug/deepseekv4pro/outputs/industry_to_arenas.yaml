@@ -1,0 +1,133 @@
+slug: cn-innovative-drug
+variant: deepseekv4pro
+topic_type: industry
+display_name: 中国创新药行业
+generated: 2026-06-23
+data_freshness: 2026-06-23
+
+arenas:
+  - name: ADC 赛道
+    suggested_slug: cn-adc-arena
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
+      growth: 5
+      competition: 3
+      valuation: 3
+      cycle: 4
+      composite: 4.0
+    tier: deep
+    tier_reason: 中国全球优势最强品类，BD 变现最确定（BMS $84亿/默沙东 ~$90亿+），BL-B01D1 三个III期成功+FDA突破性疗法认定
+    upgrade_triggers:
+      - BL-B01D1 全球注册获批（FDA）
+      - 科伦博泰 sac-TMT 海外获批
+      - 新靶点 ADC（非 HER2/TROP2/EGFR）III 期成功
+    monitor_metrics:
+      - 2026 全球 ADC BD 交易总额与首付占比
+      - BL-B01D1 IZABRIGHT 关键 III 期读出
+      - 科伦博泰 sac-TMT 默沙东推进进度
+      - ADC 靶点扎堆度（新 IND 申报的靶点重复率）
+
+  - name: 双抗赛道
+    suggested_slug: cn-bispecific-antibody-arena
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 4
+      valuation: 3
+      cycle: 4
+      composite: 4.0
+    tier: deep
+    tier_reason: 全球绝对领先（III期近7成来自中国），依沃西标杆效应（HARMONi-6 OS HR=0.66），FDA BLA已受理（PDUFA 2026-11-14）
+    upgrade_triggers:
+      - 依沃西 FDA 获批（2026-11-14 PDUFA）
+      - HARMONi-3 sq cohort PFS 阳性（2026H2）
+      - 其他双抗（非 PD-1/VEGF）全球 III 期成功
+    monitor_metrics:
+      - 依沃西全球 HARMONi-3 读出时间表
+      - FDA 审评进展
+      - 辉瑞 PD-1/VEGF 自研进度（竞争威胁）
+      - 全球双抗 III 期管线中国占比变化
+
+  - name: 小核酸赛道
+    suggested_slug: cn-oligo-arena
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 5
+      competition: 4
+      valuation: 3
+      cycle: 5
+      composite: 4.0
+    tier: watch
+    tier_reason: 2026Q1 爆发（三笔交易超过去5年总和），产业起步晚但差异化突围（MASH/高血脂慢病赛道），待更多临床数据验证
+    upgrade_triggers:
+      - 首个国产 siRNA III 期成功
+      - 又一大额 BD（>$20 亿总包）
+      - 中国小核酸公司海外上市/被收购
+    monitor_metrics:
+      - 2026 小核酸 BD 交易数量与金额
+      - 瑞博生物/Madrigal 合作进展
+      - 圣因生物/罗氏合作里程碑
+      - 中国小核酸管线 III 期启动数量
+
+  - name: GLP-1/代谢赛道
+    suggested_slug: cn-glp1-metabolic-arena
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
+      growth: 5
+      competition: 2
+      valuation: 3
+      cycle: 3
+      composite: 3.6
+    tier: watch
+    tier_reason: 全球最大市场（$1000亿+），但MNC巨头主导+国内>20家在研拥挤，alpha需精选（信达玛仕度肽已商业化）
+    upgrade_triggers:
+      - 国产 GLP-1 海外 III 期启动并获 MNC 合作
+      - 口服 GLP-1 中国公司取得突破
+      - 赛道整合出清（<10 家主要玩家）
+    monitor_metrics:
+      - 信达玛仕度肽销售放量曲线
+      - 恒瑞 HRS9531 Kailera 全球 III 期进展
+      - 石药-AZ 长效多肽平台合作进展
+      - 国产 GLP-1 在研管线数量变化
+
+  - name: 自免赛道
+    suggested_slug: cn-autoimmune-arena
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
+      growth: 3
+      competition: 3
+      valuation: 4
+      cycle: 3
+      composite: 3.6
+    tier: watch
+    tier_reason: 全球$1500亿+长期赛道，中国起步阶段，荣昌泰它西普/Vor Bio $42.3亿是标杆，但整体成熟度低
+    upgrade_triggers:
+      - 国产自免新药海外获批
+      - 泰它西普 Vor Bio 合作推进至 III 期
+      - 中国自免 BD 交易额突破 $50 亿
+    monitor_metrics:
+      - 荣昌泰它西普 Vor Bio 临床进展
+      - 荃信生物/Caldera 自免双抗进展
+      - 中国自免创新药 IND 数量趋势
+      - 全球自免 BD 交易中中国占比
+
+cluster_tags:
+  - 创新药
+  - 生物科技
+  - BD出海
+  - 港股18A
+  - ADC
+  - 双抗
+  - GLP-1
+  - 小核酸
+  - 自免

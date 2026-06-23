@@ -1,0 +1,74 @@
+# roadmap.yaml — 研究路线图 (B 模式 I3)
+slug: lumentum
+variant: opus4.8
+created: 2026-06-23
+thesis_version: 0
+decomposition_version: 0
+
+# L1/L2 已坍缩为 primer scope 备注（背景理解交给 00_primer，primer-first）
+primer_scope: >
+  primer 该覆盖：光通信价值链（芯片 EML/CW/VCSEL → 模块收发器 → 系统交换/传输）与 Lumentum 卡位 /
+  EML 是什么、为何是 800G/1.6T 收发器核心瓶颈、200G-per-lane 意义 / InP 晶圆尺寸(3→4→6 寸)与良率
+  如何决定成本-稀缺-定价权 / Lumentum 三身份变迁(JDSU 分拆→telecom+3D 感测→AI 光学龙头) /
+  毛利率为何从 ~16% 跳到 ~48%、稀缺定价机制 / 四大增长引擎(EML/Cloud 收发器/OCS/CPO) /
+  NVIDIA $2B 入股结构(优先股+采购承诺+双供应商)为何双刃 / 竞争格局(Coherent 头号/日系 EML/
+  中国模块厂旭创·新易盛/SiPho 替代) / 财年特殊性(FY 截 6 月底) + Components vs Systems 分部 /
+  AI 光学股估值为何用 PS/EV-Sales/forward PE、~50x forward PE 计入了什么 / CPO·OCS 路线之争对
+  可插拔光模块价值链的中长期重构。
+
+learning_track:
+  # ── L3 争议层：把 thesis"最大反方观点"展开为可调研的分歧点 ──
+  l3_debates:
+    - question: Lumentum 的 ~48% 毛利率与定价权由 EML 稀缺(~25-30% 缺口)驱动，而 Coherent 正用 6 寸 InP(4x dies/wafer+更低成本)主动消灭稀缺并同获 NVIDIA $2B——稀缺定价能撑到 CY2027 吗？这是整份 thesis 的命门。
+      maps_to: [命门1, K1, K2]
+      source_hint: Coherent OFC 2026 deck [mat-6deb5b] + chipstrat 激光瓶颈分析 + OFC 技术披露 + LightCounting/Yole 份额拆分(待收)
+    - question: ~$900、forward PE 50x、PS 27x、PEG 0.40、24 位分析师 Buy/0 Sell、目标价 $1,113——是反向风险信号(利好定满)，还是真实盈利能见度支撑？
+      maps_to: [命门2, K2, K4]
+      source_hint: 估值统计 [mat-6d2dc1] + 一致预期 [mat-f8057b][mat-b4a168] + 历史"卖方狂热即顶"复盘(待收)
+    - question: 股价计入了 OCS(CY27 $1B)+ CPO(H2 CY26 拐点)两个尚未规模兑现的引擎——是真实增量还是已被过度计价的期权？
+      maps_to: [命门3, K3]
+      source_hint: OCS backlog/协议 [mat-95ad42] + 卖方引擎拆解(待收) + 逐季兑现跟踪
+    - question: 需求高度集中在 NVIDIA + 2-3 家 hyperscaler，NVIDIA 双供应商(同投 Coherent)本身暗示不想给任一方定价权——客户集中+不对称议价是否在产能释放后压制毛利？
+      maps_to: [命门3, K5]
+      source_hint: NVIDIA 采购承诺条款 [mat-95ad42] + 10-K 客户集中度披露(待收) + hyperscaler capex 指引
+    - question: 这轮是否复制光通信史上的崩塌剧本——JDSU dot-com 泡沫(本体即 LITE 前身)与 LITE 自身 2022-24 telecom+3D 下行(营收 $17.7→$13.6 亿、连续巨亏)？哪里相同/不同？
+      maps_to: [命门2, K4]
+      source_hint: 历史镜鉴(JDSU 2000-02 + LITE 2021-24 10-K) + macrotrends 周期史 [mat-d832fb]
+
+  # ── L4 狩猎层：逐条对齐 thesis Killer Question，找错误定价 ──
+  l4_hunting:
+    - question: Lumentum 3 寸 InP vs Coherent 6 寸 InP 的良率/成本赛跑现状？Coherent 6 寸良率是否真追平、200G/400G EML 产能与认证进度、行业供给缺口是否从 ~30% 收窄、LITE EML ASP 季度走势？(承重命门，最高优先级)
+      addresses: [K1]
+      search_keywords: [Coherent 6-inch InP yield, EML 200G capacity, Lumentum EML market share LightCounting, EML supply shortage 2026, Coherent vs Lumentum EML, InP 晶圆良率]
+      source_hint: Coherent OFC deck [mat-6deb5b] + chipstrat + 卖方(Mizuho/JPM/MS)深度(待收) + LightCounting/Yole 份额(待收, half_public)
+    - question: ~48% 非 GAAP 毛利率、35% 营业利润率是结构性新常态还是稀缺峰值？产能(行业+40%、Coherent 爬坡)释放后毛利率是否维持/回落？cloud module 低毛利稀释多少？
+      addresses: [K2]
+      search_keywords: [Lumentum gross margin sustainability, 200G EML pricing, Lumentum operating margin guidance, cloud module margin dilution, OCS margin]
+      source_hint: IR 财报毛利率轨迹 [mat-0d19cf][mat-5e2bd1] + 卖方 margin 模型(待收) + 10-Q MD&A(待收)
+    - question: OCS(目标 CY26 $100M/季)与 CPO(H2 CY26 material revenue)的实际兑现节奏与毛利？backlog→收入转化率、新 hyperscaler 客户数？
+      addresses: [K3]
+      search_keywords: [Lumentum OCS revenue ramp, optical circuit switch backlog, Lumentum CPO co-packaged optics 2026, OCS hyperscaler]
+      source_hint: NVIDIA/OCS 协议 [mat-95ad42] + 季度 earnings call transcript(待收) + 卖方引擎拆解(待收)
+    - question: ~$900、50x FY27 PE、27x sales 隐含什么营收/毛利轨迹(Reverse PE-DCF)？vs 一致预期(FY27 ~$4.8-5.7B/EPS ~$18.5)？bear 情景(增长降速+毛利回落)公允价 + mid-cycle normalized EPS？
+      addresses: [K4]
+      search_keywords: [Lumentum DCF fair value, LITE forward PE peers, Lumentum normalized EPS, EV/Sales optical peers Coherent Innolight, Lumentum price target model]
+      source_hint: 估值统计 [mat-6d2dc1][mat-b4a168] + 一致预期 [mat-f8057b] + bear narrative($433) + peer 横比(待收)
+    - question: AI 光互连需求是结构性多年还是随 AI capex 周期回撤？1.6T 收发器 CY26-27 出货预测(曾 10M→20M→35M)续升或下修？NVIDIA 采购承诺金额/期限、LITE 前 3 大客户占比？
+      addresses: [K5]
+      search_keywords: [1.6T transceiver shipment forecast 2026 2027, hyperscaler AI capex 2027, Lumentum customer concentration 10-K, NVIDIA purchase commitment Lumentum, LightCounting optical TAM]
+      source_hint: NVIDIA deal [mat-95ad42] + LightCounting/Dell'Oro TAM(待收) + 10-K 客户集中度(待收, hard) + hyperscaler capex 指引
+
+# ── hard 料显式排期（不默认自动获取，见 F10 R1）──
+hard_materials:
+  - item: mgmt-capital-alloc — Hurlston 资本配置史 + NVIDIA Series A 优先股结构/条款 + 内部人减持($860-1,000)
+    info_tier: hard
+    priority: P1
+  - item: "consensus — 卖方目标价分布与盈利模型(已部分 PT $1,113 [mat-6d2dc1])，补 Mizuho/JPM/MS/Northland 模型"
+    info_tier: hard
+    priority: P1
+  - item: historical-mirror — JDSU dot-com 崩塌(2000-02) + LITE 自身 2022-24 telecom+3D 下行回撤幅度
+    info_tier: hard
+    priority: P1
+  - item: EML 份额三方口径 — LightCounting/Yole/Dell'Oro 的 EML vs Coherent 份额拆分
+    info_tier: half_public
+    priority: P0
