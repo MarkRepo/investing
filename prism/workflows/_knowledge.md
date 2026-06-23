@@ -63,6 +63,7 @@ EV = P_bull×Bull + P_base×Base + P_bear×Bear
 > ⚠️ EV 加总是**结构化思维工具**，不是精度承诺——概率主观，诚实标注
 
 **环⑤ 证伪（company 特有质量红线）**
+> 这些红线是**环⑤ 证伪/kill 诊断内容，不是进 case 前的 quarantine 门控**——用户既已选定研究本公司（默认已过基础调研），红线落地为风险条目 / kill 触发，不自动否决立项（合 F6：诊断非 gate）。
 - ROIC vs WACC：ROIC 持续 < WACC = 价值毁灭，无论 PE 多低
 - FCF 转化率：净利润 > 0 但 FCF < 0 连续 2Y+ → 盈利质量存疑
 - 治理红线：关联交易规模 / 控股股东占款 / 审计师意见
@@ -71,11 +72,12 @@ EV = P_bull×Bull + P_base×Base + P_bear×Bear
 
 **环⑥ 行动（company 特有：买入框 + 仓位档）**
 - buy_box 四区（强买·累积·持有·高于持有区）+ 对应当前价区间
-- 仓位档（三档）：
-  - **试探**：新进入/不确定性高，初始 ≤3%，论证后加仓
-  - **标准**：正常 conviction，初始 ≤5%，目标仓 ≤8%
-  - **重仓**：极强 conviction + 高安全边际，初始 ≤8%，目标仓 ≤12%
-- 加仓阶梯价（$PRICE_1, $PRICE_2, ...）
+- 仓位档（三档，`position_tier` 是首要字段）：
+  - **试探**：黑箱/低信息/低信心标的，首仓上限 ≤2-3%，论证后加仓
+  - **标准**：信息充分 + 信心足，首仓上限 3-5%
+  - **重仓**：强确信 + 宽安全边际，首仓上限 >5%
+  > ⚠️ `initial_max_pct` 是档位的人工落点，**不是机械算出的**——给不出有依据的数就填 `null`、只留 `position_tier`；禁止用一个拍出来的精确 % 伪装严谨。满仓上限走 `full_max_pct`。
+- 加仓阶梯价（`add_ladder_prices`，升序）
 - 输出 sidecar：`07_decision_kit.yaml`（见 `_contracts.md` §六）
 
 ---
@@ -98,13 +100,13 @@ EV = P_bull×Bull + P_base×Base + P_bear×Bear
 
 **环④ 下注（industry 特有：arena 6维评分）**
 
-6维评分口径（详见 §五）：
-- `profit_pool`（0-10）：利润池规模 + 护城河深度
-- `growth`（0-10）：行业成长率 + 渗透空间
-- `competition`（0-10）：竞争集中度（反向：越集中越高分）
-- `valuation`（0-10）：当前估值相对性价比（反向：越低估越高分）
-- `cycle`（0-10）：周期位有利程度（向上拐点期高分）
-- `composite`（0-10）：加权综合（权重由命门判断）
+6维评分口径（**1-5 标度**，详见 §五；sidecar `industry_to_arenas.yaml` 同标度）：
+- `profit_pool`（1-5）：利润池规模 + 护城河深度
+- `growth`（1-5）：行业成长率 + 渗透空间
+- `competition`（1-5）：竞争集中度（反向：越集中越高分）
+- `valuation`（1-5）：当前估值相对性价比（反向：越低估越高分）
+- `cycle`（1-5）：周期位有利程度（向上拐点期高分）
+- `composite`（1-5，float）：加权综合（权重由命门判断）
 
 每个 arena 出评分 + tier（deep/watch/eliminated）+ tier_reason
 
@@ -278,12 +280,12 @@ EV = P_bull×Bull + P_base×Base + P_bear×Bear
 
 > 这是校准红队推翻/修正后的**硬约束**，写 `m_regime_read.md` 时必须照此落，不得回退旧机制：
 
-1. **中美10Y利差 → 人民币贬（carry）**：现 regime 下该链路**断裂/反向因果**（高信）。降为**压力表**（只读不当成因）；人民币真 A 级驱动是**中间价/逆周期因子 + 资本管制 + 贸易顺差**
-2. **黄金 = 实际利率 + DXY**：机制过时（高信）。**机制改写**——2023-25 黄金与实际利率/DXY **脱钩**（央行购金主导），是更好的**去美元化读数**，**不得再当实际利率代理**
+1. **中美10Y利差 → 人民币贬（carry）**：现 regime 下该链路**断裂/反向因果**（高信）。**A→B**，由因果驱动降为**压力表**（只读不当成因）；人民币真 A 级驱动是**中间价/逆周期因子 + 资本管制 + 贸易顺差**
+2. **黄金 = 实际利率 + DXY**：机制过时（高信）。**层级保留 B，但机制改写**——2023-25 黄金与实际利率/DXY **脱钩**（央行购金主导），是更好的**去美元化读数**，**不得再当实际利率代理**
 3. **信用利差 OAS**：删去"领先"标签，改标**同步**（高信）
-4. **净流动性 → 风险偏好**：**SOFR−IORB** 升为 **binding driver**（资金面真正咬合处）；RRP 已基本耗尽（中高信）
+4. **净流动性 → 风险偏好**：A 级**保留但降权**；**SOFR−IORB** 升为 **binding driver**（资金面真正咬合处）；RRP 已基本耗尽（中高信）
 5. **核心 PCE/CPI → 利率↑**：维持 A，须**分期限**读（短端正相关/长端可反向）；触发条件用**超预期**（surprise）而非绝对水平
-6. **日元 carry**：标为**条件/阈值的尾部触发**（拥挤平仓型），非常态驱动（高信）
+6. **日元 carry**：**A 级保留**，但标为**条件/阈值的尾部触发**（拥挤平仓型），非常态驱动（高信）
 7. **DXY → 中国 FX**：改用 **CFETS/广义美元** 指数；DXY 降为 B（DXY 约 57% 是欧元权重）
 8. **比特币**：**维持 C**（被利率驱动的相关资产，非独立因果，红队确认）
 
@@ -292,6 +294,17 @@ EV = P_bull×Bull + P_base×Base + P_bear×Bear
 - **三体制各自给读数 + 分维信心**（per-dimension confidence 0-10，落 `transmission_map.regime.*.confidence`）
 - **增长/通胀象限**（独立于三体制）：复苏 / 过热 / 滞胀 / 衰退（落 `transmission_map.regime.quadrant`）
 - **fragility 罚分**：强度分与突变风险反相关——脆弱度由 **利差极窄 + 低波动 + carry 拥挤 + 承重假设数** 构成；high 时明示"**信心X / 脆弱度高**"（落 `transmission_map.regime.fragility`）
+
+### 闭环重估（macro 的质量护城河，每次 regime_read 改版必做）
+
+> macro 是高频重估 type。判断不存档、不对账，就退回"讲故事"。这套闭环让宏观读数**可对账、可打分、随体制变化自动联动持仓**。脚本零 LLM、全在 `eval_snapshot` / `eval_score` / `macro_xcut`，合成/重估时按下面纪律调用——不是可选项。
+
+- **存快照（`eval_snapshot.record_evaluation`）**：每出一版 regime_read，把当时读的输入 + 每条结论落一份带时间戳的快照（`regime_eval_log.yaml`，version 自增、append-only）。`snapshot_inputs` 自动列全 registry 输入（不许手工漏列），结论用 `based_on` 把每条挂到它依赖的输入上。
+- **可证伪预测（硬要求，缺则 `record_evaluation` 直接 raise）**：每条**承重边**（`role=load_bearing` 且该输入有数值/stance）必须带 `expected` 方向词（如 利率 `up` / 流动性 `tighten`）。没有方向就无法事后判对错——这是把宏观从玄学变成可打分的关键，校验在 `_validate_evaluation` 强制。
+- **战绩对账（`prior_verdict` + `eval_score.score_evaluation` / `edge_ledger`）**：下一版重估时，对上一版每条预测盖章 `held` / `partial` / `wrong`，落在**新**条目上（旧条目不可变）。`edge_ledger` 跨所有版本按 (结论, 输入) 累计命中/落空，老判错的机制边浮成**降级候选**——客观决定哪条机制该降权，而不是拍脑袋。
+- **体制变 → 持仓盖戳（`macro_xcut.scan_holding_staleness` / `apply_holding_staleness`）**：某体制读数翻向（如 流动性 宽→紧）时，自动找出所有依赖该体制的持仓，盖 `stale / 待重判` 戳 + 写 proposal（仍 `awaiting_confirm`，人工确认）。防止"宏观变了、具体持仓判断还停在旧体制"。
+- **持仓全覆盖（`macro_xcut.coverage_gaps`）**：transmission_map.holdings 必须覆盖**每个现存 company 持仓**——先 `topic.list_topics` 枚举 company-type，再逐个填；缺料标"数据缺失"，漏注册/provisional 被显式暴露（沉默≠确认，合 F1）。
+- **待重判戳（`assemble_reeval_brief` / `stamp_reeval_pending` → `reeval_pending`）**：监控发现输入到期/越带/变化时，零 LLM 组装重估简报并盖 `reeval_pending` 戳（doctor/monitor 会暴露）；下次 `record_evaluation` 落新版后自动清戳。
 
 ---
 
@@ -373,27 +386,27 @@ EV = P_bull×Bull + P_base×Base + P_bear×Bear
 
 ## 五、arena 6维评分 + peer 财务脊柱
 
-> 来源：`04-synthesize/_arena_funnel.md` §3.2 环④知识段。
+> 来源：`04-synthesize/_arena_select_spec.md` Step 3（6维评分口径）+ Step 4（强制三档分流）。
 
 ### 6维评分口径（industry 环④喂 arena tier，详见 §一.2 环④）
 
-每个维度 0-10，权重按命门判断（不强制等权）：
+至少识别 **5 个细分 arena**（来源：findings + 决策链①③ 的价值链/迁移路径判断），每维 **1-5** 评分；每个数字注明来源（findings mat_id 或"训练知识假设"）：
 
-| 维度 | 0分描述 | 10分描述 | 典型判断依据 |
-|------|---------|---------|------------|
-| `profit_pool` | 利润极薄或流向上下游 | 行业深厚护城河，利润高度集中在本层 | 历史毛利率/ROIC/与上下游议价 |
-| `growth` | 市场萎缩/成熟停滞 | 高速增长 + 渗透率仍低 | 行业复合增速/TAM 渗透率 |
-| `competition` | 极度分散，无定价权 | 寡头/双寡头，份额高度集中 | CR3/CR5/竞争强度反向打分 |
-| `valuation` | 极度高估，EV/EBITDA 在历史90% 分位 | 被市场低估/被误解，估值历史低位 | 相对同类赛道估值分位 |
-| `cycle` | 周期顶部，产能过剩 | 周期底部向上拐点，需求复苏 | PMI/库存周期/价格拐点 |
-| `composite` | — | — | 加权综合（权重写清楚） |
+| 维度 | 说明 | 评分标准 (1-5) |
+|------|------|----------------|
+| `profit_pool` 利润池规模 | 当前及 5 年期 arena 总利润（亿元，区间） | 1: <10亿, 5: >1000亿 |
+| `growth` 增速预期 | 3 年 CAGR | 1: <5%, 5: >30% |
+| `competition` 竞争结构 | CR3 / 是否自然垄断 / 是否同质化 | 1: 完全竞争, 5: 自然垄断 |
+| `valuation` 估值水位 | 当前 PE/PS 相对该 arena 历史 + 全球 peer | 1: 历史高位, 5: 历史低位 |
+| `cycle` 周期位置 | 早期成长/中段加速/晚期分化/成熟饱和 | 1: 衰退/饱和, 5: 早期成长 |
+| `composite` 综合评分 | 以上维度加权平均（权重按命门判断，不强制等权） | 1-5（float） |
 
-**tier 判定逻辑**：
-- `deep`：`composite ≥ 7` 且 `profit_pool ≥ 6`（行业结构好 + 利润池有料）
-- `watch`：`composite 5-7` 或 有 1 维在 4 以下（有潜力但有明显缺陷）
-- `eliminated`：`composite < 5` 或 `competition < 4`（结构太差/太分散）
+**tier 判定（强制三档，每档至少 1 个 arena）**：
+- `deep` 深挖档：综合评分 **≥ 4**，或有强催化剂
+- `watch` 观察档：综合评分 **2-3**，或有不确定性
+- `eliminated` 淘汰档：综合评分 **≤ 2**，或有硬伤
 
-> 以上 tier 判定只是参考基准——命门判断可调整（写清楚为什么偏离）
+> 以上为参考基准——命门判断可调整（写清楚为什么偏离）。深挖/观察档必填非空 `upgrade_triggers` + `monitor_metrics`；淘汰档写复活条件（如有）。
 
 ### peer 财务脊柱选择（arena 环④ 横比矩阵维度）
 

@@ -8,8 +8,8 @@
   - **type 常量、不依赖具体标的知识** —— 研究任何 company/industry/arena 之前就已知，无循环依赖。
     （命门特化深度是 B 层 decomposition，知识驱动、迭代，不在本文件。）
   - 与 thesis 的 K# **解耦**：K# 是 thesis 脊柱（addresses 字段），本合同是输入脊柱（rings 字段）。
-  - **不新发明**：每项都能在对应 case 文档 §3.2【必带硬落地】找到出处；改合同必须同步改
-    `_company_case.md`/`_industry_funnel.md`/`_arena_funnel.md` 与 prose 版 `_input_contract.md`。
+  - **不新发明**：每项都能在 `_knowledge.md` §一 六环【必带硬落地】找到出处；改合同必须同步改
+    `_contracts.md` §二（input_contract 表）与 `_knowledge.md` §一。
 
 字段：
   code          : 稳定标识（材料/findings 的 `rings` 标签用此），全小写 kebab，type 内唯一

@@ -1,0 +1,120 @@
+slug: cn-innovative-drug
+variant: sonnet4.6
+topic_type: industry
+display_name: 中国创新药行业
+generated: 2026-06-23
+data_freshness: 训练知识截止 2026-01（prescan未运行，评分须校准）
+
+arenas:
+  - name: ADC（抗体偶联药物）
+    suggested_slug: cn-adc-drug
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 8
+      growth: 9
+      competition: 5
+      valuation: 4
+      cycle: 7
+      composite: 7
+    tier: deep
+    tier_reason: 中国具全球best-in-class资产（BL-B01D1/泰它西普ADC），BD定价权已验证，优先深研龙头
+    upgrade_triggers:
+      - BL-B01D1全球III期IZABRIGHT OS数据阳性且优于标准治疗
+      - 中国ADC品种在欧美获首个正式批准（非FTD）
+    monitor_metrics:
+      - 百利天恒BL-B01D1全球入组进度及中期数据
+      - 科伦博泰ADC管线BD交易总额及首付款占比
+      - 荣昌泰它西普ADC全球III期入组进度
+    revive_condition: null
+
+  - name: 双特异性抗体（双抗）
+    suggested_slug: cn-bispecific-ab
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 8
+      growth: 8
+      competition: 6
+      valuation: 4
+      cycle: 7
+      composite: 7
+    tier: deep
+    tier_reason: 依沃西头对头数据已部分验证全球竞争力，2026年系列OS数据是关键确认节点
+    upgrade_triggers:
+      - HARMONi全球系列OS数据全部阳性且FDA批准申请提交
+      - 第二个中国双抗品种实现全球头对头优效
+    monitor_metrics:
+      - 依沃西HARMONi-A/HARMONi-2全球OS最终数据读出时间
+      - 康方生物授权阿斯利康里程碑付款进度
+      - PD-1×VEGF以外的双抗管线BD动态
+    revive_condition: null
+
+  - name: GLP-1（减重与代谢）
+    suggested_slug: cn-glp1-drug
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 6
+      growth: 9
+      competition: 3
+      valuation: 6
+      cycle: 7
+      composite: 5
+    tier: watch
+    tier_reason: 全球需求巨大但国内竞争拥挤、差异化窗口窄；等待国产差异化品种临床数据 + 商保支付确认
+    upgrade_triggers:
+      - 国产口服GLP-1或长效周制剂在头对头临床中达到优效/非劣效
+      - 丙类商保GLP-1赔付比例超过5%
+    monitor_metrics:
+      - 信达生物GLP-1（与礼来合作）2026H1销售额及医保准入进度
+      - 华东医药口服GLP-1临床II/III期进展
+      - 诺和诺德/礼来中国产能扩张及国内定价
+    revive_condition: null
+
+  - name: 自身免疫疾病（自免）
+    suggested_slug: cn-autoimmune-drug
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 7
+      growth: 7
+      competition: 6
+      valuation: 5
+      cycle: 6
+      composite: 6
+    tier: watch
+    tier_reason: 荣昌泰它西普已有中国批准和出海BD，但全球III期和商保支付需确认；竞争相对温和
+    upgrade_triggers:
+      - 泰它西普全球SLE/IgAN III期OS数据阳性且FDA提交BLA
+      - 自免品种进入丙类商保赔付且年赔付规模>¥20亿
+    monitor_metrics:
+      - 荣昌生物2026年自免产品国内销售及出海里程碑进展
+      - 亿帆医药艾贝格司亭-α/自免管线BD动态
+      - 全球主要自免MNC（AbbVie/UCB）对中国资产的收购/授权意向
+    revive_condition: null
+
+  - name: 小核酸（RNAi/ASO）
+    suggested_slug: cn-rna-drug
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
+      growth: 8
+      competition: 4
+      valuation: 7
+      cycle: 4
+      composite: 4
+    tier: eliminated
+    tier_reason: 中国LNP递送技术落后5-10年，无当前配置窗口；全球由Alnylam/诺华主导
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 国产LNP技术取得监管认可的重大突破 OR 中国公司获Alnylam等头部企业技术授权
+
+cluster_tags:
+  - 创新药
+  - 出海BD
+  - ADC
+  - 双抗
+  - 港股18A
+  - 国谈医保

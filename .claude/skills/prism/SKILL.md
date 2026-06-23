@@ -19,9 +19,9 @@ allowed-tools: Bash Read Write
 | 「prism doctor {slug}/{variant}」 | `python3 -c "from prism.scripts.doctor import doctor; import json; print(json.dumps(doctor('{slug}','{variant}'), ensure_ascii=False, indent=2))"` 报告 I1-I8 满足状态 + 建议下一步 |
 | 「合成 {slug}」/「生成产出 {slug}」 | 读 `prism/workflows/_knowledge.md`（§一 六环决策链 + §二 估值模型）。三类 type 共用六环骨架，差异见 §一.4；primer 规约见 §四。sidecar schema 见 `_contracts.md` §六 |
 | 「生成入门 {slug}」/「primer {slug}」/「补 primer」 | 读 `prism/workflows/_knowledge.md` §四（primer 规约）；**全类型统一 primer-first**——原材料 findings+thesis_v0+K#（+按 type 的财务/亲属产出），primer 在 case 之前生成 |
-| 「评审 {slug}」 | 读 `prism/workflows/05-critic-review.md` |
-| 「监控 {slug}」 | 读 `prism/workflows/06-daily-monitor.md` |
-| 「深挖 {slug} 的 {问题}」 | 读 `prism/workflows/07-drilldown.md` |
+| 「评审 {slug}」 | 读 `prism/workflows/_arc.md` I7（评审）+ dispatch 独立反方用 `prism/prompts/critic_independent.md`；落 `set_critic_verdict` |
+| 「监控 {slug}」 | 读 `prism/workflows/_arc.md` I8（监控）+ daily-monitor CLI（`python -m prism.scripts.monitor scan/price/macro`）；proposal 一律 awaiting_confirm |
+| 「深挖 {slug} 的 {问题}」 | 读 `prism/workflows/_arc.md` 深挖（drilldown）段；多子问题用 `prism/prompts/deep_search.md` |
 | 「关联 {slug}」/「relink {slug}」 | 跑 `topic.suggest_relatives('{slug}','{variant}')` 出机械候选（geo/cluster_tags/ticker 跨 sidecar/slug-token 加权打分），把候选完整贴对话→**LLM 判读谁是真父/子**→调 `topic.set_parent('{slug}','{variant}', parent_slug)` 确认。可随时重跑（双向、顺序无关）。建链后合成路径 Step 1 亲属 hook 自动复用亲属成稿产出 |
 | 「查看 {slug} 进度」 | 跑 `prism doctor` 输出 I1-I8 满足状态 + arc 当前位置 |
 

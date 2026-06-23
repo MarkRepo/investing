@@ -474,7 +474,7 @@ def build_search_queries(slug: str, variant: str, recency_days: int = 90) -> lis
         addresses，故这层必须保留 + 保证 K#/L4 完备枚举）
 
     主 agent 拿到清单后，逐槽写实际 query（addresses 原样带回），再打 adapter +
-    入库 —— 见 ``_web_prescan_shared.md``。
+    入库 —— 见 ``_arc.md`` I4（收料）+ ``_floor.md`` F9（H2 救回）。
 
     返回 ``[{addresses, kind, recency_days, hint}, ...]``。
     **无 ``query`` 键**：query 文本由 LLM 在对话里产出，脚本不代笔。

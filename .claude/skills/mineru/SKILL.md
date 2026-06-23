@@ -61,5 +61,5 @@ test -f "{out_dir}/full.md" && echo "已存在" || echo "需要转换"
 
 ## 使用此 skill 的场景
 
-- `prism/workflows/03-extract-findings.md`：研报预处理
+- `prism/workflows/_arc.md` I5（抽料）+ `_floor.md` F3：研报预处理
 - `ingest` skill：研报 bundle 提取前的 PDF 转换

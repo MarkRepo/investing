@@ -54,6 +54,7 @@ v0（开研究前初判）vs v1（吃完资料后修正）——**变化幅度�
 ## 二、决策链输入合同（Input Contract）
 
 > 与 `prism/scripts/input_contract.py` **同源维护**。改一处必须改另一处。
+> **终环（type 终局合同）与 `prism/scripts/topic._TYPE_TERMINALS` 同源**——改终环语义必须同步改 `_TYPE_TERMINALS`，反之亦然。
 > `rings` 字段对应 `add_material(..., rings=[...])` 和 `gap_detector` 双轴。
 > **训练知识不计覆盖**：合同项只认实收料/API；缺料只能标"训练知识估算"或"数据缺失"。
 > **三项真·欠供**（标 hard，旧流程从不产出，收料须显式排期）：管理层/资本配置史、一致预期/估值锚、历史失败镜鉴。
@@ -206,6 +207,20 @@ conflict_note: {一句话：冲突在哪/暂如何取舍}   # 可选，仅 confl
 {可选，偏差/数据局限/样本说明}
 ```
 
+### 聚合 finding（单 K# 累积 >30 条 web hit 时）
+
+> 来源：旧 `_web_search_aggregation.md`。单 K# 的 web finding ≤10 不聚合、正常读；11-30 可写分主题摘要压 ~5K token；**>30 必须聚合**成一份 K# 级 finding（同 K# 内容大量重复，逐份读进 context 会 OOM）。
+
+文件 `outputs/findings_ws-aggregate-{K#}.md`，frontmatter 在上方通用 schema 上改/加：
+- `mat_id: ws-aggregate-{K#}` —— 虚拟 ID，前缀**必须** `ws-aggregate-`
+- `source_type: web-search-aggregate`
+- `aggregated_from: [真 mat_id, ...]` —— **强制必填**。缺失 → `list_affected_outputs` 把虚拟 ID 当 unknown → 所有真 mat 被标 new → 产出全 stale → 04 死循环（cn-commercial-space 9/9 实测）
+- `data_window: 2024-01..2026-05` —— 05-critic 据此判 stale
+
+**引用**：写 case 时 `set_output_referenced_mats` 传**虚拟 ID**（`ws-aggregate-K1` 等），脚本自动展开 `aggregated_from` 与 manifest processed_ids 比对。
+
+**写作纪律**：① 每个事实 bullet 末保留 `[mat-xxxxxx]` 可回溯 ② 不伪聚合（5 份拼接 ≠ 聚合，是 30+ 同 K# 的紧致重述）③ 末尾专段标"对 K# 的影响"喂环⑤ ④ 聚合后老单体 finding 不删（留底稿，仅大产出 prompt 读聚合）。老数据回填：`python3 -m prism.scripts._migrations.migrate_aggregate_findings <slug> <variant>`。
+
 ---
 
 ## 六、sidecar schema
@@ -235,12 +250,12 @@ buy_box:
   current_zone: {strong_buy|accumulate|hold|above_hold|unknown}
 
 position_framework:
-  position_tier: {试探|标准|重仓}  # 档位—首要字段；给不出有据数就 null 只留 tier
-  sizing_rationale: {string}
-  initial_max_pct: {number or null}  # ⚠️ 人工落点不是算出来的
-  full_max_pct: {number}
-  add_ladder_prices: [{number}, ...]
-  max_cluster_pct: {number or null}
+  position_tier: {试探|标准|重仓}  # 档位—首要字段。黑箱/低信息/低信心→试探；信息充分+信心足→标准；强确信+宽安全边际→重仓
+  sizing_rationale: {string}        # 一句话：凭什么是这档（露出判断假设，供评审攻假设而非攻数字）
+  initial_max_pct: {number or null}  # 档位首仓上限 %（试探≤2-3 / 标准3-5 / 重仓>5）。⚠️ 人工落点非机械算出——给不出有据数就填 null 只留 position_tier，禁止拍精确 % 伪装严谨
+  full_max_pct: {number}             # 满仓上限 %
+  add_ladder_prices: [{number}, ...]  # 加仓阶梯价，升序
+  max_cluster_pct: {number or null}  # 主题集中度约束 %
 
 valuation_models:
   - name: {snake_case_id}
@@ -289,6 +304,11 @@ my_vs_market_delta:
 ### industry：`industry_to_arenas.yaml`
 
 > dashboard.py 的行业层"竞技场选择"只读 `industry_to_arenas.yaml`、只认这套字段名。
+> **评分标度 1-5（5=最值得深挖）**，与模板 `industry_to_arenas.md.tmpl` 同源，勿写 0-10。
+>
+> ⚠️ **机器↔叙事一致性（硬规约 · dashboard 直接消费 composite 与 tier）**：
+> 1. `scores.composite` 排序必须与 case ④综合评级**同向**；同档内若倒挂，必须在 case 里显式写一句解释为什么倒挂（否则 dashboard 按 composite 排序与 case 叙事相反）。
+> 2. `tier` 枚举 ↔ case 中文档名的映射必须在 case 里显式写明一行（深挖=deep / 观察=watch / 淘汰=eliminated）。
 
 ```yaml
 slug: {slug}
@@ -303,12 +323,12 @@ arenas:
     topic_created: {bool}
     topic_slug: {str or null}
     scores:
-      profit_pool: {0-10}
-      growth: {0-10}
-      competition: {0-10}
-      valuation: {0-10}
-      cycle: {0-10}
-      composite: {0-10}
+      profit_pool: {1-5}
+      growth: {1-5}
+      competition: {1-5}
+      valuation: {1-5}
+      cycle: {1-5}
+      composite: {float}        # 1-5 加权综合
     tier: deep|watch|eliminated
     tier_reason: {一句话}
     upgrade_triggers: [{str}]    # 深挖/观察必填非空
@@ -320,6 +340,11 @@ cluster_tags: [{tag1}, {tag2}]
 ### arena：`peer_matrix.yaml`
 
 > dashboard.py 的竞技场层"公司排名"只读 `peer_matrix.yaml`、只认这套字段名。
+> **`score` 标度 float 1-5**（与模板 `peer_matrix.md.tmpl` 同源，勿写 0-10）。
+>
+> ⚠️ **机器↔叙事一致性（硬规约 · dashboard 直接消费 score 与 tier）**：
+> 1. `score` 排序必须与 case ④综合评级**同向**；同档内若倒挂（如 hard-filter 把"故事响但质量差"的公司压低），必须在 case 里显式写一句解释为什么倒挂。
+> 2. `tier` 枚举 ↔ case 中文档名映射必须在 case 里显式写明一行（深研=shortlist / 观察=watch / 淘汰=eliminated）。
 
 ```yaml
 slug: {slug}
@@ -331,7 +356,7 @@ data_freshness: {date}
 companies:
   - name: {公司名}
     ticker: {str or null}
-    score: {0-10}
+    score: {float 1-5}
     tier: shortlist|watch|eliminated
     topic_created: {bool}
     topic_slug: {str or null}

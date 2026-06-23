@@ -1,9 +1,11 @@
-"""结构闸：_macro_regime.md 必须含 spec §5 机制纠错 + §6 多维/fragility 条款。
-markdown 无逻辑可单测，用关键短语存在性钉住规范不被漏写。"""
+"""结构闸：_knowledge.md §三 宏观 必须含 spec §5 机制纠错 + §6 多维/fragility 条款。
+markdown 无逻辑可单测，用关键短语存在性钉住规范不被漏写。
+（B 模式：宏观知识从 04-synthesize/_macro_regime.md 搬进 workflows/_knowledge.md §三；
+监控分支从 06-daily-monitor.md 搬进 workflows/_arc.md I8。）"""
 from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parent.parent.parent
-DOC = _ROOT / "prism/workflows/04-synthesize/_macro_regime.md"
+DOC = _ROOT / "prism/workflows/_knowledge.md"
 READ = _ROOT / "prism/topics/global-macro-rates-liquidity/opus4.8/outputs/m_regime_read.md"
 
 
@@ -34,7 +36,7 @@ def test_regime_read_has_fragility_and_quadrant():
     assert "象限" in t
 
 
-MONITOR_DOC = _ROOT / "prism/workflows/06-daily-monitor.md"
+MONITOR_DOC = _ROOT / "prism/workflows/_arc.md"
 
 
 def test_monitor_doc_has_macro_branch():

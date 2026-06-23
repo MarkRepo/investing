@@ -1,0 +1,36 @@
+slug: cn-innovative-drug
+variant: sonnet4.6
+created: 2026-06-23
+
+primer_scope: "中国创新药行业边界（创新药/CXO/仿制）、四类现金流（国内销售/BD首付/里程碑/CXO）、五大品类（ADC/双抗/GLP-1/自免/小核酸）技术与主要玩家、支付端（国谈/医保/丙类商保）、港股18A/科创板上市机制、2021-2026板块牛熊周期"
+
+l4_hunting:
+  - question: "2026全年中国ADC/双抗 license-out总额 + 首付款能否维持or超越2025基数（$1357亿）？关键资产全球III期读出节点？"
+    addresses: [K1]
+    info_tier: public
+    search_keywords: ["2026 license-out 总额", "创新药 BD 首付款 2026", "依沃西 HARMONi OS 读出", "BL-B01D1 全球 III 期"]
+    source_hint: "医药魔方月报/券商BD跟踪/ASCO/WCLC"
+
+  - question: "头部药企2026H1产品收入（剔除BD首付）增速 + 各品种毛利率——判断国内业绩拐点是否实质"
+    addresses: [K2]
+    info_tier: public
+    search_keywords: ["百济神州 2026Q1 产品收入", "信达生物 玛仕度肽 销售额", "恒瑞 产品收入 内生增速", "荣昌生物 盈利"]
+    source_hint: "2025年报 + 2026Q1季报"
+
+  - question: "丙类商业健康险目录落地后，高价创新药（≥¥20万/年）赔付规模 + 渗透率实际数据"
+    addresses: [K3]
+    info_tier: half_public
+    search_keywords: ["丙类目录 落地 创新药 赔付", "商保 创新药 2026 渗透率", "NHSA 丙类 参保人数"]
+    source_hint: "NHSA官网/保险行业协会/医药报"
+
+  - question: "当前百济/信达/荣昌等龙头估值是否能被3年DCF内生价值支撑——反推隐含增速是否合理"
+    addresses: [K4]
+    info_tier: public
+    search_keywords: ["百济神州 估值 DCF", "恒瑞医药 PE 历史区间", "港股创新药 估值水位 2026"]
+    source_hint: "Bloomberg/FactSet/卖方估值模型"
+
+  - question: "ADC / 双抗 / GLP-1 / 自免 / 小核酸 各赛道：竞争格局（集中度）+ 利润池归属 + 技术壁垒 → 哪些进deep哪些eliminated"
+    addresses: [K5]
+    info_tier: public
+    search_keywords: ["ADC 竞争格局 2026 国内", "GLP-1 司美格鲁肽 国产 进度", "自免 荣昌 亿帆 竞争", "小核酸 RNAi 国产管线"]
+    source_hint: "券商行业深度/智慧芽管线库/各公司年报"

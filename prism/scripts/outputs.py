@@ -120,7 +120,7 @@ _OUTPUT_KEYS_LABELS = [
     ("m_regime_read", "宏观体制读数"),
     ("08_living_feed", "信息流时间线"),
     # 注：sidecar（07_decision_kit / industry_to_arenas / peer_matrix）是 .yaml
-    # 文件、无独立 markdown 视图（见 04-synthesize/_peer_matrix_spec.md：sidecar yaml
+    # 文件、无独立 markdown 视图（见 _contracts.md §六：sidecar yaml
     # 是 dashboard 竞技场层唯一契约，不再产出 .md）。它们由 dashboard 的 _load_*_sidecar
     # 专路渲染，**不列入本 md 产出表**——否则 list_outputs 按 {key}.md 探测必 file_exists=
     # False，detail 页渲染出"status=fresh 但置灰无链"的死行（peer_matrix 曾误列于此）。

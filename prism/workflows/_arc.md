@@ -89,6 +89,7 @@ Floor 关联：无直接关联，F11（多市场口径）在此初始化
 **目标**：thesis_v0 + prescan 定出"赌什么"，decomposition_v0 定出"命门拆解"。
 
 LLM 特有判断：
+- **训练知识 baseline（prescan 前先做，质量地基）**：写 thesis_v0 前，先把训练记忆里关于本 topic 的关键事实逐条列出，每条带**双标签**——置信度（高/中/低/uncertain）× time_sensitivity（静态/慢变/快变，见 `_floor.md` F11）——再自承认盲点。**硬规则：所有「快变 + 高/中置信」的 fact 必须在 prescan 有对应校准 query**（这是"自以为确定但极可能过时"、最易蒙蔽 thesis 的子集）；prescan 跑完回写「被推翻/验证/未校准」，被推翻的 fact 禁止再进 thesis_v0。落 `{variant}/baseline_knowledge.md`（后续 findings/case 用 `[fact-NN]` 引用，禁散文化重述）。company 额外标多市场口径（A/H/ADR，见 F11）。三类通用、company 最吃重（快变 fact 最多）。脚本：`has_baseline_knowledge` / `read_baseline_knowledge`
 - **prescan 的目的是校准训练知识**，不是收料——prescan 完成前，thesis_v0 是训练知识初判（v0 强度仅凭训练记忆）；prescan 完成后，必须用校准事实修订 `revised_after_prescan` 字段
 - K# 可证伪性检查：K# 不能是"未来不确定"（废话），必须有可观测触发条件。判断方法：能不能在 6 个月内验证？能=合格
 - prescan_status=partial/failed 时，next_actions 首条提示需先完善 prescan；但 partial 情况下可继续（非硬 gate）
@@ -172,14 +173,16 @@ Floor 关联：F6（gap 诊断）F7（跨层借料）F11（time_sensitivity）
 **目标**：独立 critic 对 case 给出 verdict，承重充分性横幅写进 case 头部。
 
 LLM 特有判断：
-- **独立 critic**：不能自己既写 case 又做 critic——必须切换角色（或 dispatch subagent）以对抗视角重读；prompt 模板见 `prism/prompts/`
-- **承重充分性横幅**：case 头 5 行必须有"当前最重要的未回答问题/数据缺口"横幅（reviewer 约定）；critic 通过不删横幅，保留至下次 daily-monitor 覆盖
-- **verdict 三选一**：`approve`（case 可用）/ `request-rewrite`（重大逻辑漏洞，case 须返工）/ `request-more`（有关键数据缺口，需补料后再评）
-- **request-more 处理**：critic 指出缺口 → 回 I4（补料）→ 抽料 → 重写相关 case 段 → 再 critic；不是整份重写
+- **独立 critic**：不能自己既写 case 又做 critic——必须 dispatch 干净上下文 subagent 以对抗视角重读。**喂成稿结论 + 硬数据，瞒 thesis 理由链/findings 叙事/primer**（独立性的关键）；押与作者相反方向（别只做空）。dispatch 模板见 `prism/prompts/critic_independent.md`
+- **prescan 门禁**：`get_current_prescan_status`=`failed` → verdict **封顶 `request-more`（不许 `approve`）**，且把时敏论断按脆弱加重攻击；`partial` → 反方攻击起点须含 baseline"仍未校准"清单
+- **承重充分性横幅**：case 头必须有"当前最重要的未回答问题/数据缺口 + 承重充分性（够/单线承重/不足）"横幅；**不足 不得配 approve，单线承重 最高 request-more**；critic 通过不删横幅，保留至下次 daily-monitor 覆盖
+- **verdict 三选一**：`approve`（case 可用）/ `request-rewrite`（重大逻辑漏洞，case 须返工，调 `set_output_status` 标目标 output `stale`）/ `request-more`（有关键数据缺口，回 I4 补料后再评）
+- **request-more 处理**：critic 指出缺口 → 回 I4（补料）→ 抽料 → 重写相关 case 段 → 再 critic；不是整份重写。缺口可 web-search 兜到的先兜一轮再定 verdict
 - **对话历史 critic**：若合成在当前 session，critic 必须"假设自己刚读完 case，之前没看写作过程"（避免确认偏差）
+- **suggested_drilldowns 回流**：写完 verdict 后扫 gap report——`thin_evidence`≥1 或承重判"单线承重" → 调 `set_suggested_drilldowns(mode='append')`（不覆盖合成阶段的）把薄弱 K# 翻成深挖建议
 
-主动词：`set_critic_verdict` + Write case（更新承重横幅）
-Prompt ref：`prism/prompts/output_quality_rubric.md`
+主动词：`set_critic_verdict`（自动 set_stage + 标 rewrite_keys stale）+ Write case（更新承重横幅）+（按需）`set_suggested_drilldowns`
+Prompt ref：`prism/prompts/critic_independent.md` · `prism/prompts/output_quality_rubric.md`
 
 ---
 
@@ -194,8 +197,36 @@ LLM 特有判断：
 - **深挖回路**：monitoring 发现 K# 信号命中 → 可触发 drilldown（回到 I4 补料 → I5 抽料 → 局部 I6 更新）；不是全盘重跑，只更新受影响章节和 sidecar signpost
 - **daily-monitor 重入**：`prescan_status` 每次 monitor 刷新（校准快变 fact）；thesis_v1 在信号触发后升为 thesis_v2（Scheme C 全快照升版，不打补丁）
 
-主动词：`set_monitoring_tier` + `monitor.propose_flips` + Write living_feed + （必要时）`set_thesis`（v2+）
+**daily-monitor CLI（零 LLM 提案，绝不 confirm）**：
+```bash
+python -m prism.scripts.monitor scan [14]    # scan_due_events → {due_signposts, due_kills, price_breach, macro_due, macro_alert, ...}
+python -m prism.scripts.monitor price [14]   # propose_price_breaches（零 LLM）
+python -m prism.scripts.monitor macro [14]   # propose_macro_updates（零 LLM，macro topic 的事件/行情指标到期）
+```
+- `macro_due`（事件/描述型到期）/ `macro_alert`（行情型 alert_series 越带）两桶走**零 LLM 路径**：`propose_macro_updates` 机械写 `kind=macro_input` proposal（信息型，预写 living_feed 文案）。
+- `monitor.confirm_flip(id)` 仅在用户 web 端点头时调（零 LLM 机械回写 sidecar + append living_feed + 注册证据）；`discard_flip(id)` 丢弃。**proposal 一律 `awaiting_confirm`，确认永远是用户**。
+
+**macro 闭环重估（macro topic 改版必做，非可选）**：每版 regime_read 走存快照→可证伪预测→战绩对账→体制变盖持仓戳的闭环（`eval_snapshot.record_evaluation` 含可证伪 `expected` 硬校验 / `eval_score.edge_ledger` 浮降级候选 / `macro_xcut.apply_holding_staleness` 联动持仓 / `coverage_gaps` 持仓全覆盖）。纪律与字段见 `_knowledge.md §三·闭环重估`。`reeval_pending` 戳由 monitor 盖、`record_evaluation` 落新版后清。
+
+主动词：`set_monitoring_tier` + `monitor.propose_flips` / `propose_macro_updates` / `confirm_flip` + Write living_feed + （必要时）`set_thesis`（v2+）+ （macro 重估）`record_evaluation` / `apply_holding_staleness`
 Floor 关联：F11（快变 fact 须实收料）
+
+---
+
+### 深挖（drilldown · I8 循环内的专项研究）
+
+**目标**：对某个具体问题做专项深度研究，产出专题笔记 `outputs/drilldown_{timestamp}_{keyword}.md`。触发：用户说「深挖 {slug} 的 {问题}」或监控信号命中。
+
+LLM 特有判断：
+- **深度分级（quick vs load-bearing）**：
+  - `quick`：用户好奇/纯背景探索，不承载 thesis 承重
+  - `load-bearing`：深挖问题来自 `suggested_drilldowns`（`source=capped_decomposition` / `critic_weak_k`）/ 攻 capped 命门 / 补 thin_evidence K# / 结论可能动摇 thesis
+  - 判定时机：来自 `suggested_drilldowns` 默认 load-bearing；用户自发默认 quick，但问一句"这个结论会影响 thesis 吗？"；写进笔记 frontmatter `weight: quick|load-bearing`
+- **load-bearing 专属**：必须回答"命门解没解决"，并闭环 `resolve_suggested_drilldown`；结论动摇 thesis 时回 I6 局部更新（不全盘重跑，只改受影响章节 + sidecar signpost）+ 升 thesis_v{N+1}（Scheme C 全快照）
+- 问题不够具体 → AskUserQuestion 细化；多子问题深挖可 dispatch sub-agent（≤1 层，见 `prism/prompts/deep_search.md`）
+
+主动词：Write drilldown 笔记 + `set_suggested_drilldowns` / `resolve_suggested_drilldown` + （动摇 thesis 时）`set_thesis`
+Floor 关联：F1（URL 真实）F2（subagent 不写文件）
 
 ---
 

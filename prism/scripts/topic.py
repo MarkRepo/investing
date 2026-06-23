@@ -31,7 +31,7 @@ _DECISION_CHAIN_OUTPUTS = {
 }
 
 # 终局合同（type 常量，a priori 不可协商）。
-# 与 _input_contract.md 终环同源——改一处必须改另一处。
+# 与 _contracts.md §二 终环同源——改一处必须改另一处。
 # 用途：① create_topic 注入 scope.terminal ② 工作流/critic/web 引用作核对锚。
 # 未知 type 走 terminal_for_type 兜底通用句。
 _TYPE_TERMINALS: dict[str, str] = {
@@ -130,7 +130,7 @@ def next_stage(topic_type: str, current_stage: str) -> str | None:
         # 选拔/同行矩阵已并进 04 合成期 case 环⑥ + sidecar（属第 5 阶段产物，不是定稿动作）；
         # 唯一的定稿动作是 critic 评审，对 industry/arena 非强制——可在对话跑评审、或 web 点
         # 「完成」直接 done（见 app/routes/prism.py mark-done）。旧名 09-arena-shortlist /
-        # 10-peer-matrix 已退休（曾破坏 SKILL stage 路由，见 _arena_funnel.md 收尾段）。
+        # 10-peer-matrix 已退休（曾破坏 SKILL stage 路由，见 _knowledge.md §一.3 arena 环⑥）。
         flow = [
             "00-init",
             "01-roadmap",
@@ -1760,7 +1760,7 @@ def find_child_topics(parent_slug: str, variant: str | None = None) -> list[dict
 # suggest_relatives）。全部零 LLM：脚本只列文件路径 + 出机械候选，
 # "谁是父" 与 "借哪段" 的判断一律由对话里的 LLM 做。
 #
-# 跨层复用受 §1.3 护栏约束（见 04-synthesize/_*_funnel.md）：亲属成稿产出仅作
+# 跨层复用受护栏约束（见 _knowledge.md §一 / _floor.md F7）：亲属成稿产出仅作
 # 输入/参照，质量校验永远按本 topic 自己的 K# + findings + critic 跑。
 # get_relative_outputs 故意只返路径不读内容——借用 ≠ 结论注入。
 # ---------------------------------------------------------------------------

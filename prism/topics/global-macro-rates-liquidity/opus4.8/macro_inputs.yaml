@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-06-21T22:00:53.369586+00:00'
+updated: '2026-06-22T22:03:16.632534+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -29,7 +29,7 @@ inputs:
     fetch_error:
       msg: 'DFEDTARU: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:09.541612+00:00'
+      at: '2026-06-22T22:02:55.231445+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DFEDTARU
@@ -88,12 +88,12 @@ inputs:
   source_url: https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html
   observed:
     value: 4.055
-    as_of: '2026-06-19'
+    as_of: '2026-06-22'
     evidence: Investing.com Fed Rate Monitor (mirrors CME FedWatch 30-Day Fed Fund
       futures), Dec 2026 contract price 96.145 → 隐含利率 3.855%
-    checked_at: '2026-06-21T22:00:47.055643+00:00'
+    checked_at: '2026-06-22T22:03:11.879184+00:00'
     streak: 0
-    prev_value: 4.025
+    prev_value: 4.055
     acq_note: 从 Investing.com Fed Rate Monitor 获取 Dec 2026 联邦基金期货价格 96.145，隐含利率 100-96.145
       = 3.855%，四舍五入 3.86%。当前目标区间 3.50-3.75%，Dec 隐含 3.86% 反映市场定价年内约一次加息 (25bp)；数据截至于
       2026-06-09。
@@ -139,7 +139,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:52.017074+00:00'
+      at: '2026-06-22T22:03:15.860306+00:00'
   authority: official
   availability: llm
   note: 多跳文本判读(索引页→最新会议→声明/纪要正文→措辞鹰鸽),非单值数据,宜 LLM 判读而非脚本;利率目标区间虽可脚本抓,但本项核心是 stance
@@ -178,7 +178,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:52.230037+00:00'
+      at: '2026-06-22T22:03:15.980255+00:00'
   authority: official
   availability: llm
   family: 货币政策
@@ -214,7 +214,7 @@ inputs:
     fetch_error:
       msg: 'PAYEMS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:10.086803+00:00'
+      at: '2026-06-22T22:02:55.353783+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PAYEMS
@@ -248,7 +248,7 @@ inputs:
     fetch_error:
       msg: 'UNRATE: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:10.680189+00:00'
+      at: '2026-06-22T22:02:55.490120+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/UNRATE
@@ -282,7 +282,7 @@ inputs:
     fetch_error:
       msg: 'ICSA: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:11.226064+00:00'
+      at: '2026-06-22T22:02:55.610580+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/ICSA
@@ -316,7 +316,7 @@ inputs:
     fetch_error:
       msg: 'JTSJOL: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:11.820784+00:00'
+      at: '2026-06-22T22:02:55.748782+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/JTSJOL
@@ -364,7 +364,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:48.178331+00:00'
+      at: '2026-06-22T22:03:12.963353+00:00'
   note: macromicro 镜像(series/265)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
     chart-stat-lastrows 侧栏取最新期值。原 FRED NAPM 停更/ISM 官网付费墙/DBnomics 坏尾,故曾退回 LLM 读新闻稿(2026-06-10
     改脚本)。
@@ -412,7 +412,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:48.313389+00:00'
+      at: '2026-06-22T22:03:13.084456+00:00'
   note: macromicro 镜像(series/293, NMI)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
     chart-stat-lastrows 侧栏取最新期值。ISM 官网 SSO 墙,故曾退回 LLM 读 PRNewswire 新闻稿(2026-06-10
     改脚本)。
@@ -446,7 +446,7 @@ inputs:
     fetch_error:
       msg: 'RSAFS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:12.367935+00:00'
+      at: '2026-06-22T22:02:55.869091+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/RSAFS
@@ -483,7 +483,7 @@ inputs:
     fetch_error:
       msg: 'GDPNOW: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:12.913720+00:00'
+      at: '2026-06-22T22:02:56.006786+00:00'
   family: 增长就业
   gloss:
     define: 亚特兰大联储基于已公布数据实时拼出的当季 GDP 估计
@@ -514,7 +514,7 @@ inputs:
     fetch_error:
       msg: 'CES0500000003: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:13.507561+00:00'
+      at: '2026-06-22T22:02:56.128683+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CES0500000003
@@ -548,7 +548,7 @@ inputs:
     fetch_error:
       msg: 'PCEPILFE: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:14.053592+00:00'
+      at: '2026-06-22T22:02:56.248726+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PCEPILFE
@@ -582,7 +582,7 @@ inputs:
     fetch_error:
       msg: 'CPILFESL: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:14.649859+00:00'
+      at: '2026-06-22T22:02:56.385403+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CPILFESL
@@ -616,7 +616,7 @@ inputs:
     fetch_error:
       msg: 'PCEPILFE: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:15.198138+00:00'
+      at: '2026-06-22T22:02:56.505961+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PCEPILFE
@@ -650,7 +650,7 @@ inputs:
     fetch_error:
       msg: 'PPIFIS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:15.799277+00:00'
+      at: '2026-06-22T22:02:56.644137+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PPIFIS
@@ -685,7 +685,7 @@ inputs:
     fetch_error:
       msg: 'DCOILWTICO: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:16.348704+00:00'
+      at: '2026-06-22T22:02:56.764591+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DCOILWTICO
@@ -719,7 +719,7 @@ inputs:
     fetch_error:
       msg: 'T5YIFR: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:16.946783+00:00'
+      at: '2026-06-22T22:02:56.901635+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T5YIFR
@@ -759,7 +759,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:52.465447+00:00'
+      at: '2026-06-22T22:03:16.117300+00:00'
   authority: official
   availability: llm
   text_fetch: qra
@@ -794,7 +794,7 @@ inputs:
     fetch_error:
       msg: 'WTREGEN: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:17.495458+00:00'
+      at: '2026-06-22T22:02:57.022347+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/WTREGEN
@@ -828,7 +828,7 @@ inputs:
     fetch_error:
       msg: 'MTSDS133FMS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:18.093466+00:00'
+      at: '2026-06-22T22:02:57.162600+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/MTSDS133FMS
@@ -863,7 +863,7 @@ inputs:
     fetch_error:
       msg: 'WALCL: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:18.637378+00:00'
+      at: '2026-06-22T22:02:57.286956+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/WALCL
@@ -897,7 +897,7 @@ inputs:
     fetch_error:
       msg: 'RRPONTSYD: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:19.115036+00:00'
+      at: '2026-06-22T22:02:57.427316+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/RRPONTSYD
@@ -961,7 +961,7 @@ inputs:
     fetch_error:
       msg: 'WRESBAL: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:19.606759+00:00'
+      at: '2026-06-22T22:02:57.550132+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/WRESBAL
@@ -1003,7 +1003,7 @@ inputs:
     prev_value: -0.020000000000000018
     fetch_error:
       msg: '派生腿取数失败: SOFR, IORB'
-      at: '2026-06-21T22:00:29.182131+00:00'
+      at: '2026-06-22T22:03:00.127343+00:00'
   family: 资金面咬合
   gloss:
     define: 担保隔夜利率减准备金利率的利差（FRED 日频）
@@ -1059,7 +1059,7 @@ inputs:
     fetch_error:
       msg: 'SWPT: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:20.051425+00:00'
+      at: '2026-06-22T22:02:57.673269+00:00'
   authority: official
   availability: scripted
   fred_series_id: SWPT
@@ -1102,7 +1102,7 @@ inputs:
     fetch_error:
       msg: 'SUBLPDMBSXWBNQ: Using SOCKS proxy, but the ''socksio'' package is not
         installed. Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:20.543021+00:00'
+      at: '2026-06-22T22:02:57.814465+00:00'
   note: 已转脚本(fred-api 通道)：FRED series SUBLPDMBSXWBNQ=净占比国内银行收紧企业贷款标准(按未偿余额加权), 季度,正值=净收紧。零
     LLM 直拉(2026-06-11 核,尾值 2026-04-01=1.5 与 LLM 取值一致)。 官方 SLOOS 页 https://www.federalreserve.gov/data/sloos.htm
     仅作背景，单值取数走 FRED。
@@ -1136,7 +1136,7 @@ inputs:
     fetch_error:
       msg: 'DGS10: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:20.987067+00:00'
+      at: '2026-06-22T22:02:57.937661+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DGS10
@@ -1171,7 +1171,7 @@ inputs:
     fetch_error:
       msg: 'DFII10: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:21.582553+00:00'
+      at: '2026-06-22T22:02:58.074091+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DFII10
@@ -1209,7 +1209,7 @@ inputs:
     fetch_error:
       msg: 'THREEFYTP10: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:22.129931+00:00'
+      at: '2026-06-22T22:02:58.194036+00:00'
   family: 利率·曲线结构
   gloss:
     define: 把名义利率拆出期限溢价分量（Kim-Wright 代理 THREEFYTP10）
@@ -1240,7 +1240,7 @@ inputs:
     fetch_error:
       msg: 'T10Y2Y: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:22.724579+00:00'
+      at: '2026-06-22T22:02:58.330297+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T10Y2Y
@@ -1274,7 +1274,7 @@ inputs:
     fetch_error:
       msg: 'BAMLC0A0CM: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:23.272069+00:00'
+      at: '2026-06-22T22:02:58.450757+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/BAMLC0A0CM
@@ -1312,7 +1312,7 @@ inputs:
     fetch_error:
       msg: 'BAMLH0A0HYM2: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:23.818254+00:00'
+      at: '2026-06-22T22:02:58.589995+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/BAMLH0A0HYM2
@@ -1370,11 +1370,11 @@ inputs:
     field: Close
   observed:
     acq_note: yfinance ^MOVE（ICE BofA MOVE 指数，日频收盘）；Yahoo 发布、免费结构化，替代原"无源"判断。
-    value: 65.38999938964844
-    as_of: '2026-06-18'
-    checked_at: '2026-06-21T22:00:42.385160+00:00'
+    value: 70.01499938964844
+    as_of: '2026-06-22'
+    checked_at: '2026-06-22T22:03:08.171983+00:00'
     streak: 0
-    prev_value: 65.38510131835938
+    prev_value: 65.38999938964844
   family: 信用与风险偏好
   gloss:
     define: 美债期权隐含波动率指数（债市的 VIX）
@@ -1406,7 +1406,7 @@ inputs:
     fetch_error:
       msg: 'VIXCLS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:24.410287+00:00'
+      at: '2026-06-22T22:02:58.711277+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/VIXCLS
@@ -1440,7 +1440,7 @@ inputs:
     fetch_error:
       msg: 'NFCI: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:24.955124+00:00'
+      at: '2026-06-22T22:02:58.831316+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/NFCI
@@ -1485,7 +1485,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:48.470088+00:00'
+      at: '2026-06-22T22:03:13.221427+00:00'
   family: 跨资产代理
   gloss:
     define: 席勒周期调整市盈率（10 年通胀调整 EPS，月频）
@@ -1581,7 +1581,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:44.608660+00:00'
+      at: '2026-06-22T22:03:10.335479+00:00'
 - name: 广义/EM加权美元(Fed DTWEXBGS)
   tier: A
   cadence_type: series
@@ -1608,7 +1608,7 @@ inputs:
     fetch_error:
       msg: 'DTWEXBGS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:25.543840+00:00'
+      at: '2026-06-22T22:02:58.968252+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DTWEXBGS
@@ -1643,7 +1643,7 @@ inputs:
     fetch_error:
       msg: 'DTWEXAFEGS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:25.998413+00:00'
+      at: '2026-06-22T22:02:59.088864+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DTWEXAFEGS
@@ -1681,7 +1681,7 @@ inputs:
     fetch_error:
       msg: 'DEXUSEU: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:26.462185+00:00'
+      at: '2026-06-22T22:02:59.224968+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 欧元兑美元即期汇率（CIP 远期腿的基准即期）
@@ -1716,7 +1716,7 @@ inputs:
     fetch_error:
       msg: 'DEXJPUS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:26.833686+00:00'
+      at: '2026-06-22T22:02:59.345012+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 美元兑日元即期汇率（CIP 远期腿的基准即期）
@@ -1752,7 +1752,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:43.403978+00:00'
+      at: '2026-06-22T22:03:09.161657+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 欧元兑美元 3 个月远期点（barchart，pips）
@@ -1788,7 +1788,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:43.525279+00:00'
+      at: '2026-06-22T22:03:09.281365+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 美元兑日元 3 个月远期点（barchart，pips）
@@ -1831,7 +1831,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:48.608771+00:00'
+      at: '2026-06-22T22:03:13.342102+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 美元 3 个月隔夜指数掉期利率（两对基差共用 USD 腿）
@@ -1870,7 +1870,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:43.832544+00:00'
+      at: '2026-06-22T22:03:09.586638+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 欧元 3 个月 OIS（€STR 锚混合估计，日频）
@@ -1907,7 +1907,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:42.708221+00:00'
+      at: '2026-06-22T22:03:08.477773+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 日元 3 个月 TONA OIS（MM 图 95219）
@@ -1986,7 +1986,7 @@ inputs:
   observed:
     value: -33.729827571142536
     as_of: '2026-06-12'
-    checked_at: '2026-06-21T22:00:50.768342+00:00'
+    checked_at: '2026-06-22T22:03:15.073189+00:00'
     streak: 0
     prev_value: -33.729827571142536
   family: 汇率·跨境套利
@@ -2025,7 +2025,7 @@ inputs:
     fetch_error:
       msg: 'DEXJPUS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:27.242670+00:00'
+      at: '2026-06-22T22:02:59.481443+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DEXJPUS
@@ -2126,7 +2126,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:48.747217+00:00'
+      at: '2026-06-22T22:03:13.461963+00:00'
   family: 流动性·数量
   gloss:
     define: BIS 季度跨境对非银的美元/欧元/日元信用（YoY%）
@@ -2170,7 +2170,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:48.903420+00:00'
+      at: '2026-06-22T22:03:13.599771+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 美财政部 TIC 月度外国（含中国）持美债数据
@@ -2227,7 +2227,7 @@ inputs:
     fetch_error:
       msg: 'CBBTCUSD: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:27.613679+00:00'
+      at: '2026-06-22T22:02:59.601912+00:00'
   family: 跨资产代理
   gloss:
     define: 比特币价格（流动性与风险偏好的边际代理）
@@ -2263,7 +2263,7 @@ inputs:
     fetch_error:
       msg: 'PCOPPUSDM: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:27.980955+00:00'
+      at: '2026-06-22T22:02:59.740502+00:00'
   family: 跨资产代理
   gloss:
     define: 铜（头条）与铁矿石价格（FRED 月频）
@@ -2313,7 +2313,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:49.045479+00:00'
+      at: '2026-06-22T22:03:13.721256+00:00'
   family: 中国增长·外需
   gloss:
     define: 国家统计局月度官方制造业 PMI，50 荣枯线（偏大中企业）
@@ -2390,7 +2390,7 @@ inputs:
     acq_note: akshare macro_china_consumer_goods_retail（统计局直连），取「同比增长」月率。
     value: -0.6
     as_of: 2026-05
-    checked_at: '2026-06-21T22:00:30.351407+00:00'
+    checked_at: '2026-06-22T22:03:00.593247+00:00'
     streak: 0
     prev_value: -0.6
   family: 中国增长·外需
@@ -2507,7 +2507,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:49.206889+00:00'
+      at: '2026-06-22T22:03:13.857834+00:00'
   family: 中国增长·外需
   gloss:
     define: 国家统计局月度居民消费价格同比
@@ -2557,7 +2557,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:49.351290+00:00'
+      at: '2026-06-22T22:03:13.978088+00:00'
   family: 中国增长·外需
   gloss:
     define: 国家统计局月度工业生产者出厂价同比
@@ -2597,7 +2597,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:42.829499+00:00'
+      at: '2026-06-22T22:03:08.598459+00:00'
   note: 操作利率原始来源=PBoC 每日公开市场业务交易公告(http://www.pbc.gov.cn/)；官方/chinamoney 端点无稳定免费 JSON(akshare
     原 macro_china_gksccz 已下线)，故经 MacroMicro 图 53839 取数—— series_index=0=7天逆回购操作利率(%)，series_index=1=操作量(亿)。MM
     为商业镜像源、低频自用，已知 ToS 灰区。
@@ -2653,8 +2653,8 @@ inputs:
   observed:
     acq_note: akshare macro_china_lpr，value=LPR1Y（政策锚，企业贷款基准）；5Y(房贷锚)见独立项「LPR 5Y(房贷锚)」。
     value: 3.0
-    as_of: '2026-05-20'
-    checked_at: '2026-06-21T22:00:34.958454+00:00'
+    as_of: '2026-06-22'
+    checked_at: '2026-06-22T22:03:01.615450+00:00'
     streak: 0
     prev_value: 3.0
   family: 中国货币·流动性
@@ -2688,8 +2688,8 @@ inputs:
   observed:
     acq_note: akshare macro_china_lpr，value=LPR5Y（房贷锚，房贷/地产信贷基准）；1Y(政策锚)见独立项「LPR 1Y(政策锚)」。
     value: 3.5
-    as_of: '2026-05-20'
-    checked_at: '2026-06-21T22:00:36.161364+00:00'
+    as_of: '2026-06-22'
+    checked_at: '2026-06-22T22:03:02.423328+00:00'
     streak: 0
     prev_value: 3.5
   family: 中国货币·流动性
@@ -2719,7 +2719,7 @@ inputs:
     value: 9.0
     as_of: '2025-05-07'
     acq_note: akshare macro_china_reserve_requirement_ratio，value=大型金融机构调整后存准率（事件，最近一次降准）。
-    checked_at: '2026-06-21T22:00:36.489560+00:00'
+    checked_at: '2026-06-22T22:03:02.655838+00:00'
     streak: 0
     prev_value: 9.0
   authority: official
@@ -2783,7 +2783,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:49.513090+00:00'
+      at: '2026-06-22T22:03:14.115401+00:00'
   family: 中国货币·流动性
   gloss:
     define: 银行间存款类机构 7 天质押回购加权利率（chinamoney 日频）
@@ -2832,7 +2832,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:49.657613+00:00'
+      at: '2026-06-22T22:03:14.236135+00:00'
   family: 中国货币·流动性
   gloss:
     define: 全市场（含非银）7 天质押回购加权利率（日频）
@@ -2864,7 +2864,7 @@ inputs:
   note: 派生=R007−DR007(同源结算日报,同口径加权)。利差走阔=非银融资成本相对走高、流动性分层加剧(压力信号)。 两腿落盘后在 recipe 抓取末段算。
   observed:
     value: 0.0123000000000002
-    checked_at: '2026-06-21T22:00:50.968432+00:00'
+    checked_at: '2026-06-22T22:03:15.202194+00:00'
     streak: 0
     prev_value: 0.0123000000000002
   family: 中国货币·流动性
@@ -2905,9 +2905,9 @@ inputs:
   observed:
     acq_note: akshare bond_china_close_return，中债同业存单(AAA)到期收益率曲线、取 1 年期点（row_filter
       期限==1.0），@days_ago:20→@today 滚动窗取最新；CFETS/中债日频、约滞后 1 日。
-    value: 1.4775
-    as_of: '2026-06-18'
-    checked_at: '2026-06-21T22:00:37.021540+00:00'
+    value: 1.49
+    as_of: '2026-06-22'
+    checked_at: '2026-06-22T22:03:03.059909+00:00'
     streak: 0
     prev_value: 1.4775
   family: 中国货币·流动性
@@ -2986,7 +2986,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:49.828018+00:00'
+      at: '2026-06-22T22:03:14.373407+00:00'
   family: 中国货币·流动性
   gloss:
     define: 中国 10 年期国债收益率及配置盘需求（日频）
@@ -3045,7 +3045,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:52.678460+00:00'
+      at: '2026-06-22T22:03:16.237464+00:00'
   authority: official
   availability: llm
   text_fetch: pbc_mpr
@@ -3097,7 +3097,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:42.950284+00:00'
+      at: '2026-06-22T22:03:08.719090+00:00'
   family: 中国货币·流动性
   gloss:
     define: 社会融资规模存量同比增速（人行月度，实体融资总量总闸）
@@ -3130,7 +3130,7 @@ inputs:
       同比。
     value: 8.6
     as_of: 2026-05
-    checked_at: '2026-06-21T22:00:37.388364+00:00'
+    checked_at: '2026-06-22T22:03:03.392123+00:00'
     streak: 0
     prev_value: 8.6
   family: 中国货币·流动性
@@ -3178,7 +3178,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:47.850094+00:00'
+      at: '2026-06-22T22:03:12.654142+00:00'
 - name: 贷款增速
   tier: A
   cadence_type: event
@@ -3226,7 +3226,7 @@ inputs:
     fetch_error:
       msg: 'DEXCHUS: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:28.387864+00:00'
+      at: '2026-06-22T22:02:59.860868+00:00'
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DEXCHUS
@@ -3283,7 +3283,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:49.979400+00:00'
+      at: '2026-06-22T22:03:14.494598+00:00'
 - name: 中间价偏离(逆周期因子代理)
   tier: A
   cadence_type: series
@@ -3319,8 +3319,8 @@ inputs:
     use: 绝对值走阔=PBoC 管理意图增强、稳汇率发力；符号给方向
   observed:
     value: 0.04019999999999957
-    checked_at: '2026-06-21T22:00:51.146559+00:00'
-    streak: 13
+    checked_at: '2026-06-22T22:03:15.314262+00:00'
+    streak: 14
     prev_value: 0.04019999999999957
 - name: USDCNH(离岸即期)
   tier: B
@@ -3357,7 +3357,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:50.130858+00:00'
+      at: '2026-06-22T22:03:14.615225+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 离岸人民币兑美元即期汇率
@@ -3398,7 +3398,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:50.310489+00:00'
+      at: '2026-06-22T22:03:14.751931+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 在岸人民币兑美元即期成交价
@@ -3433,7 +3433,7 @@ inputs:
     - USDCNY(在岸即期)
   observed:
     value: 0.005600000000000271
-    checked_at: '2026-06-21T22:00:51.323785+00:00'
+    checked_at: '2026-06-22T22:03:15.426064+00:00'
     streak: 0
     prev_value: 0.005600000000000271
   family: 汇率·跨境套利
@@ -3493,7 +3493,7 @@ inputs:
     fetch_error:
       msg: 'TRESEGCNM052N: Using SOCKS proxy, but the ''socksio'' package is not installed.
         Make sure to install httpx using `pip install httpx[socks]`.'
-      at: '2026-06-21T22:00:28.756262+00:00'
+      at: '2026-06-22T22:02:59.980983+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 中国官方外汇储备余额及月度变动（FRED 月频）
@@ -3526,7 +3526,7 @@ inputs:
     → 转 scripted 派生。
   observed:
     value: -2.7601000000000004
-    checked_at: '2026-06-21T22:00:51.522535+00:00'
+    checked_at: '2026-06-22T22:03:15.554323+00:00'
     streak: 0
     prev_value: -2.7601000000000004
   family: 汇率·跨境套利
@@ -3599,7 +3599,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:43.089851+00:00'
+      at: '2026-06-22T22:03:08.855966+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 经陆股通的北向**成交额**（活跃度，日频）——净买/卖方向自约 2026-04 停发，改追踪成交额
@@ -3633,9 +3633,9 @@ inputs:
     agg: sum
   observed:
     acq_note: akshare stock_hsgt_fund_flow_summary_em，南向(港股通沪+深)成交净买额求和（日，亿元）。注：北向自2024停发、不可用。
-    value: -67.921204
-    as_of: '2026-06-21'
-    checked_at: '2026-06-21T22:00:37.685210+00:00'
+    value: -58.195375
+    as_of: '2026-06-22'
+    checked_at: '2026-06-22T22:03:03.614784+00:00'
     streak: 0
     prev_value: -67.921204
   family: 汇率·跨境套利
@@ -3874,7 +3874,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:50.475816+00:00'
+      at: '2026-06-22T22:03:14.871953+00:00'
   family: 中国增长·外需
   gloss:
     define: 30 个典型城市新房网签面积（周环比%）
@@ -3929,7 +3929,7 @@ inputs:
     acq_note: akshare macro_china_new_house_price，70城新建商品住宅价格指数-环比的城市均值（100=持平，月）。
     value: 100.0
     as_of: '2026-05-01'
-    checked_at: '2026-06-21T22:00:38.018837+00:00'
+    checked_at: '2026-06-22T22:03:03.940083+00:00'
     streak: 0
     prev_value: 100.0
   family: 中国增长·外需
@@ -4098,7 +4098,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:52.916302+00:00'
+      at: '2026-06-22T22:03:16.373920+00:00'
   text_fetch: china_us
   local_cache_path: topics/global-macro-rates-liquidity/inbox/china_us_tariff_latest.md
   stance_scale: geo_escalation
@@ -4141,7 +4141,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:53.129615+00:00'
+      at: '2026-06-22T22:03:16.494655+00:00'
   note: 事件型,无可解析数值;已转取文通道(text_fetch=hfcaa,2026-06-11)——脚本零LLM下 SEC 临时/最终清单+交易禁令状态
     及 PCAOB 对华/港认定叙述存本地缓存,LLM 读本地判退市风险升降(stance_scale=geo_escalation,缓和↔升级),不再每轮 live
     检索。
@@ -4228,7 +4228,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:53.369578+00:00'
+      at: '2026-06-22T22:03:16.632528+00:00'
   authority: official
   availability: llm
   text_fetch: politburo
@@ -4341,7 +4341,7 @@ inputs:
   observed:
     value: 216306.85
     as_of: 2026-05
-    checked_at: '2026-06-21T22:00:41.702802+00:00'
+    checked_at: '2026-06-22T22:03:07.581982+00:00'
     streak: 0
     prev_value: 216306.85
   family: 汇率·跨境套利
@@ -4380,7 +4380,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:44.143009+00:00'
+      at: '2026-06-22T22:03:09.892473+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 银行代客及自身结汇减售汇的净额（外汇局月度）
@@ -4417,7 +4417,7 @@ inputs:
     fetch_error:
       msg: Using SOCKS proxy, but the 'socksio' package is not installed. Make sure
         to install httpx using `pip install httpx[socks]`.
-      at: '2026-06-21T22:00:44.284176+00:00'
+      at: '2026-06-22T22:03:10.029259+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 银行代客户跨境收入减支出净额（外汇局月度）
@@ -4448,10 +4448,10 @@ inputs:
     use: 与当前利率比＝下次会议的方向与幅度定价
   observed:
     value: 3.735
-    as_of: '2026-06-19'
-    checked_at: '2026-06-21T22:00:47.168233+00:00'
+    as_of: '2026-06-22'
+    checked_at: '2026-06-22T22:03:11.991480+00:00'
     streak: 0
-    prev_value: 3.725
+    prev_value: 3.735
   family: 货币政策
 - tier: B
   cadence_type: series
@@ -4478,8 +4478,8 @@ inputs:
     use: 概率骤升=宽松预期升温；与实际点阵/数据背离时是预期差交易点
   observed:
     value: 0.0
-    as_of: '2026-06-19'
-    checked_at: '2026-06-21T22:00:47.296618+00:00'
+    as_of: '2026-06-22'
+    checked_at: '2026-06-22T22:03:12.121688+00:00'
     streak: 0
     prev_value: 0.0
   family: 货币政策
@@ -4508,8 +4508,8 @@ inputs:
     use: 前瞻宽松总量；转负=市场计价净加息，higher-for-longer 的硬证据
   observed:
     value: -1.72
-    as_of: '2026-06-19'
-    checked_at: '2026-06-21T22:00:47.409241+00:00'
+    as_of: '2026-06-22'
+    checked_at: '2026-06-22T22:03:12.233687+00:00'
     streak: 0
-    prev_value: -1.6
+    prev_value: -1.72
   family: 货币政策

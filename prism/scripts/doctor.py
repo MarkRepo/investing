@@ -89,9 +89,10 @@ def doctor(slug: str, variant: str) -> dict:
 
     scope = topic.get("scope") or {}
     question = (scope.get("question") or "").strip()
+    _search_terms = scope.get("search_terms") or topic.get("search_terms") or []
     if not question:
         i1_issues.append("scope.question 为空")
-    elif len(question) > 25 and not (topic.get("search_terms") or []):
+    elif len(question) > 25 and not _search_terms:
         i1_issues.append("question >25字 但 search_terms 为空")
 
     if topic_type == "company":
@@ -133,8 +134,26 @@ def doctor(slug: str, variant: str) -> dict:
 
     if not (_variant_dir / "roadmap.yaml").exists():
         i3_issues.append("roadmap.yaml 不存在")
+    else:
+        # 每个 thesis K# 必须被 ≥1 条 L4 狩猎 addresses 覆盖（read-only：
+        # 用 validate_roadmap_thesis_coverage，不调会写 todo/翻 stage 的 reverse_check）。
+        thesis_meta = topic.get("thesis") or {}
+        thesis_ver = thesis_meta.get("current_version")
+        if thesis_ver is None:
+            _vers = _list_thesis_versions(_variant_dir)
+            thesis_ver = max(_vers) if _vers else 0
+        try:
+            from prism.scripts.outputs import validate_roadmap_thesis_coverage
+            cov = validate_roadmap_thesis_coverage(slug, variant, thesis_ver)
+            uncovered = cov.get("uncovered_in_l4") or []
+            if cov.get("thesis_ks") and uncovered:
+                shown = ", ".join(uncovered[:5])
+                more = f" (+{len(uncovered) - 5})" if len(uncovered) > 5 else ""
+                i3_issues.append(f"roadmap 未覆盖 K#（L4 狩猎缺）: {shown}{more}")
+        except Exception as exc:
+            i3_issues.append(f"roadmap 覆盖检查异常: {exc}")
 
-    if not (topic.get("search_terms") or []):
+    if not _search_terms:
         i3_issues.append("search_terms 为空")
 
     if not i3_issues:
