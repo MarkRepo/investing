@@ -35,7 +35,7 @@ allowed-tools: Bash Read Write
 python3 -c "from prism.scripts.topic import create_topic; create_topic('slug', '显示名', 'industry', '研究问题', 'CN', 'deep', 'opus4.8')"
 
 # 读 topic
-python3 -c "from prism.scripts.topic import read_topic; import json; print(json.dumps(read_topic('slug'), ensure_ascii=False, indent=2))"
+python3 -c "from prism.scripts.topic import read_topic; import json; print(json.dumps(read_topic('slug', 'opus4.8'), ensure_ascii=False, indent=2))"  # read_topic(slug, variant)：variant 必填，缺则 TypeError
 
 # 更新阶段
 python3 -c "from prism.scripts.topic import set_stage; set_stage('slug', '02-gather-materials')"
@@ -65,4 +65,4 @@ python3 -c "from prism.scripts.manifest import mark_processed; mark_processed('s
 2. **每步结束后更新 topic.yaml** — 用脚本写 stage / next_actions / user_todos
 3. **产出写入 `prism/topics/{slug}/outputs/{key}.md`**，然后调脚本更新状态
 4. **Web 自动反映最新状态** — 无需手动刷新配置
-5. **资料只在 topic 层**：用户手动放 / 脚本下载都进 `prism/topics/{slug}/inbox/`（已无全局 inbox），`register_inbox_materials` 登记元数据后由 02/03 处理
+5. **资料只在 topic 层**：用户手放进 `prism/topics/{slug}/inbox/`；脚本自动下载的年报/财报落 `prism/topics/{slug}/materials/`（已无全局 inbox）。`register_inbox_materials` **两个目录都扫**，`fetch_report_prism` 还会自登记 manifest——元数据登记后由 02/03 处理

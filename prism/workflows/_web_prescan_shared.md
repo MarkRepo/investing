@@ -196,6 +196,8 @@ log_search_skipped(slug, variant, query='<本条 query 原文>',
 
 ## Step D：register 每条 hit（自动三档分流）
 
+> **`register_web_search_batch` 返回 dict 的计数 key 是 `n_high`/`n_mid`/`n_low`/`n_dropped_low`/`drop_ratio`/`dropped_hits`/`failure_mode`（不是 `high`/`mid`）**——读它判救回时勿用 `r['high']`（会 KeyError/None）。单条版 `register_web_search_result` 才返回 `{mat_id, band, confidence, domain, domain_tier, filename}`。
+
 ```bash
 python3 << 'EOF'
 from prism.scripts.web_prescan import register_web_search_result

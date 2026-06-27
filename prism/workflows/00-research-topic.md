@@ -5,6 +5,31 @@
 
 ---
 
+## 00 速览（先读这块，再看细节步骤）
+
+**4 幕 / 3 思考产物**（步骤号是落地细节，幕是心智模型）：
+
+| 幕 | 步骤 | 产出 | 一句话 |
+|----|------|------|--------|
+| ① 立框 | Step 1-4 | topic.yaml + manifest | type→终局倒推 + question 押注 + slug + 早期 ingest |
+| ② 认知 | Step 4.3 | `baseline_knowledge.md` | 训练知识先验（fact 账本 + 置信度 + 时效标签）+ 盲点→query |
+| ② 校准 | Step 4.5 a/b/c | 入库 web-search + baseline §6 | prescan 把时敏 fact 对齐最新现实（防把过期事实当赌注） |
+| ③ 下注 | Step 5.0 | `thesis_v0.md` | 落在 type 终局上的赌注 + K#（可证伪）+ 反方 |
+| ③ 拆解 | Step 5.4 | `decomposition_v0.md` | 从终局拆命门（机理/兑现路径）+ 每环 B 靶点 + primer 入门目标种子 |
+| ④ 收料 | Step 6 / 6.5 | user_todos + 抓料入库 | K# + A 合同 派 todo → 产即收 eager-fetch → no-unattempted 硬闸门 |
+
+**三个思考产物是三条不同轴、互不替代、且都喂下游——不要合并 / 删除 / 下放**（已核实下游消费）：
+
+| 产物 | 轴 | 下游消费者 |
+|------|----|-----------|
+| `baseline_knowledge.md` | 训练知识先验 | 03-extract（findings cite `[fact-NN]`）、05-critic（列未校准 fact 清单）、04 primer |
+| `thesis_v{N}.md` 的 **K#** | 论点 / 覆盖轴 | gap_detector 算 K# 覆盖率、01-roadmap、05-critic |
+| `decomposition_v{N}.md` 的 **命门 / B 靶点 / primer 目标** | 终局拆解轴 | **04 `_shared.md` 的「B 轴有界 delta 重拆」以 v0 为基线逐条 diff** → v1；04 各 funnel/case 决策环；05-critic；未收敛命门 capped→07-drilldown。primer 入门目标是 04 primer 的种子，"入门目标 delta 空"是 04 收敛的必要条件 |
+
+> **命门 ≠ K# 换个说法**：K# 是可证伪的"会改变看法的事件"（覆盖轴，喂 gap_detector）；命门是"机理/兑现路径上方向错了就翻盘"的特化问题（终局拆解轴，映射到决策环）。写 `decomposition_v0` 时**不要把命门写成"覆盖 K1/K3"的复述**——那是把终局拆解轴退化成 K# 的影子，会让 04 的 delta 重拆失去真实基线。
+
+---
+
 ## Step 1：确认研究对象
 
 向用户确认以下信息（如果用户没说清楚则 AskUserQuestion）：
@@ -109,6 +134,7 @@ python3 -c "from prism.scripts.topic import list_variants; print(list_variants('
     - **`set_parent_materials` 引父级 findings** 仍合法——那是**跨 topic 父子复用**（行业父→竞技场子），与"同 slug 跨变体复制"是两回事。省略 `parent_variant` 时脚本按 `model_registry` 兜底解析（同模型/唯一/全登记自动选，多个异模型含未登记则 raise 让你问用户）。
     - 复用同一批 materials 可隔离变量、让模型/架构差异苹果对苹果对比（详见 memory `project_variant_reuse_gotchas`）。
   - **另一个 topic 撞名**：slug 加后缀（如 `cn-pet-industry-2`）另起。
+  - **本变体已存在但只是父级 init 种的空壳 stub**（industry 环⑥派生 arena 时 `set_thesis(version=0, stage_set_at='00-init-from-parent')` 种下继承 thesis_v0，stage 仍 `00-init`、无 baseline/prescan/decomposition/todos、manifest 0 料）→ **不是另起变体，而是续做本变体**：在现有 stub 上正常跑 Step 4.3→6.5（baseline → prescan → 把继承的 stub thesis **重写为 prescan 校准版 thesis_v0** → decomposition_v0 → todos → eager-fetch）。判据：`read_topic` 显示 thesis 有 history 但 `outputs_state` 几乎空、`manifest` 0 料。
 
 > 兜底（[skill-routing]）：即便跳过本步直奔 Step 4，`create_topic` 在 slug 已有其他变体时会打 stderr 提示——但那是最后一道防线，本步的"停下问用户"才是正解，勿依赖兜底跳步。
 
@@ -256,6 +282,8 @@ elif r['failure_mode'] == 'all_low_band':
 **纪律**：第五节 5-10 条优先 query 全部尝试完才进 4.5b。漏跑等于主 agent 自评的盲点没补，thesis_v0 会基于过时认知做赌注。WebSearch 长时不可用时按 B.2 降级，**不允许默默跳过**——脚本会通过 Step 5.0 的 `check_prescan_health` 自动检测并触发 `prescan_status='failed'`。
 
 ### Step 4.5b：跑覆盖槽 prescan
+
+> **4.5b 是兜底地板，不是与 4.5a 并列的第二轮普查。** 若 4.5a 的 baseline §5 优先 query 已覆盖 `build_search_queries` 吐的槽（scope / industry-event 等），4.5b 只需确认覆盖、补未被覆盖的边角槽即可，**不必为已覆盖槽另写 query**。它的作用是兜住"§5 写薄"的情况（机械枚举不依赖 agent 想没想到）。
 
 调用 `prism/workflows/_web_prescan_shared.md`，参数 `recency_days=90`，`triggered_by='00-prescan'`。
 
@@ -582,6 +610,8 @@ EOF
 
 todo 若指向可下载的上市公司年报/季报，主 agent **按公司名映射 ticker**（A股 `SSE_600519`/`SZSE_000858`；美股 `NVDA`；港股 `HKEX_02228`；韩 `KRX_006400`；日 `TSE_5019` 或 `EDINET_E00040`），调 `scripts.fetch_report_prism.fetch` / `fetch_many` 下载。一条 todo 含多家公司（如"茅五泸三家年报"）= 多个 ticker 循环 fetch。
 
+> ⚠️ **本段必须用 `./.venv/bin/python` 跑**：`fetch_report_prism` 依赖 `requests`，仓库默认 `python3` 未装，裸跑会 `ModuleNotFoundError: No module named 'requests'`。纯 CRUD 脚本（`prism.scripts.topic` / `prism.scripts.manifest`）才可用裸 `python3`。
+
 ```python
 from scripts.fetch_report_prism import fetch
 from prism.scripts.topic import mark_todo_fetch, update_user_todo_status
@@ -595,9 +625,14 @@ for name, tk in tickers.items():
         got.append(fetch(tk, report_type='quarterly', year=2026, quarter=1, slug=slug, variant=variant))
     except Exception as e:
         print(f'{name} {tk} ✗ {e}')
-# fetch() 自己登记 manifest + 盖 todo status；主 agent 仅在跨多 ticker / 部分到位时补判 done vs in_progress
+# fetch() 登记 manifest，并按公司名把命中 todo 的 status 置 in_progress；但**不设 fetch_status、不闭环 done**
+# → 必须由下面的 mark_todo_fetch + update_user_todo_status 显式闭环（闭环键 = task 子串/文档身份）
 mark_todo_fetch(slug, variant, '茅五泸三家 2025 年报', 'fetched', note=f'cninfo {len(got)} 份')
-update_user_todo_status(slug, variant, '茅五泸三家 2025 年报', 'done', covered_by=[m for m in got])
+# covered_by 要 manifest 主键：material dict 的字段名是 `id`（不是 `mat_id`）；fetch() 返回 Path，需按 filename 反查
+from prism.scripts.manifest import read_manifest
+_idx = {m['filename']: m['id'] for m in read_manifest(slug, variant)['materials']}
+covered_ids = [_idx[p.name] for p in got if p.name in _idx]
+update_user_todo_status(slug, variant, '茅五泸三家 2025 年报', 'done', covered_by=covered_ids)
 ```
 
 ### 6.5b：分析材料（卖方研报/行业数据/政策/科普）→ exa→semantic→WebFetch 阶梯
