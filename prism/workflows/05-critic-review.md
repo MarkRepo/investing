@@ -127,7 +127,7 @@ cat prism/topics/{slug}/{variant}/outputs/peer_matrix.yaml 2>/dev/null
 
 ## Step 2：独立反方评审（dispatch 干净上下文 subagent · 修 #1）
 
-**为什么必须独立**：同一模型在同一段对话里"换帽子"做 steelman，已被前面的论证说服，反驳会手软、会回避真正致命的点——自我批评共享你的盲点等于没批评。所以反方**必须**是干净上下文的独立 subagent，只面对成稿结论 + 硬事实，不看作者的推理链。（与 04 已独立的 chain-critic / primer critic 同构——它们查"链通不通 / 目标达没达"，本步做对抗式 steelman。）
+> 📎 *为什么必须独立（自我批评共享盲点）→ 附录 A2（执行时可跳过）*
 
 > **方向对称(别只做空)**：反方 = **押与作者相反方向的最强对手盘**。作者看多 → 反方是空头，用空方最强逻辑;作者看空 → 反方是多头，用多方最强逻辑;作者判分化/中性 → 反方攻"分化判断本身站不住"。下面 prompt 里的"对赌 / 验尸"措辞按 case 实际方向填，**不要默认看多**。
 
@@ -148,7 +148,7 @@ cat prism/topics/{slug}/{variant}/outputs/peer_matrix.yaml 2>/dev/null
 
 ### 2.2 dispatch 独立反方（`subagent_type: general-purpose`，默认不传 model，**只读不写**）
 
-> 可选增强独立性：主 agent 是 opus 时可给反方传 `model=sonnet`/`haiku` 换个脑子进一步降共享盲点（按 [[feedback_subagent_model]]，默认不传；仅在想进一步独立时用）。
+> 📎 *可选换模型增强独立性 → 附录 A2.2（执行时可跳过）*
 
 prompt 模板（按 topic 填空；**先判 case 方向，{对手方向}=空头/多头、{相反操作}=做空/做多 按实际填**）：
 
@@ -247,7 +247,7 @@ generated: {timestamp}
 
 ## Step 5.5：把承重充分性裁决落到 case 头一行（堵"骨架完整被误读为可执行"）
 
-critic 的承重充分性裁决（Step 0 mandate + Step 3「证据充分性」）必须**进被消费的产出本身**——否则读者只看 case 骨架完整、误当"结论可执行"（独立 critic 抓到的弱点蒸发在评审文件里）。
+> 📎 *为什么裁决必须进产出本身 → 附录 A5.5（执行时可跳过）*
 
 用 Edit 在**当前 `*_case.md` 的 frontmatter 之后、正文首个引用块之前**插入（已存在则**覆盖**该行，幂等）一行横幅：
 
@@ -500,3 +500,21 @@ for k, reason in stale:
 ## Step 8：仪表盘自动刷新
 
 `set_critic_verdict` 内部已 fire-and-forget 触发 dashboard 异步重建，**无需再手跑** `python3 -m prism.scripts.dashboard`。后台失败留痕在 `prism/logs/dashboard_auto.log`。
+
+---
+
+## 附录 A — rationale / 反例 / 历史教训（执行时可跳过，调试 / 维护时查）
+
+> 本附录收纳从各步主流程搬出的"为什么 / 反例 / 历史教训 / memory 链接 / inline worked example"。**主流程逐字未删、只是移出执行动线**；要看某步的来龙去脉，按对应小节查。
+
+### 附录 A2 — 为什么必须独立（自我批评共享盲点）
+
+**为什么必须独立**：同一模型在同一段对话里"换帽子"做 steelman，已被前面的论证说服，反驳会手软、会回避真正致命的点——自我批评共享你的盲点等于没批评。所以反方**必须**是干净上下文的独立 subagent，只面对成稿结论 + 硬事实，不看作者的推理链。（与 04 已独立的 chain-critic / primer critic 同构——它们查"链通不通 / 目标达没达"，本步做对抗式 steelman。）
+
+### 附录 A2.2 — 可选换模型增强独立性
+
+> 可选增强独立性：主 agent 是 opus 时可给反方传 `model=sonnet`/`haiku` 换个脑子进一步降共享盲点（按 [[feedback_subagent_model]]，默认不传；仅在想进一步独立时用）。
+
+### 附录 A5.5 — 为什么裁决必须进产出本身
+
+critic 的承重充分性裁决（Step 0 mandate + Step 3「证据充分性」）必须**进被消费的产出本身**——否则读者只看 case 骨架完整、误当"结论可执行"（独立 critic 抓到的弱点蒸发在评审文件里）。
