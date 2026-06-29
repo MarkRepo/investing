@@ -62,7 +62,7 @@ else:
 
 **根据输出判断**：哪些父 topic 资料对此 arena/company 研究有直接价值？在 Step 3 中将这些可复用资料标注为 `✓ 已收集（来自父 topic）`，并在 roadmap 的 `why` 字段中注明"复用父 topic materials/{filename}"。
 
-> **复用排除边界**：复用**排除 prescan 校准层**（父 manifest 里 `addresses==['scope']` 或 `triggered_by` 为 `*-prescan*` 的 web-search 料——价/量/事件快照，时效性强）；带 `K#` addresses 的**耐久文档**（财报/研报/drilldown/findings 源 + web-search 挖到的实质文档，仍受 90 天 `expired_web_materials` 闸门约束，过期由 03 点名刷新）照复用。**新 topic 自跑 prescan**（Step 8），不复用父级 scope 校准料。
+> 📎 *复用排除边界（prescan 校准层）→ 附录 A1.5（执行时可跳过）*
 
 **关键：用脚本登记 parent_materials 字段**（让 workflow 04 自动复用，不用 dispatch prompt 手填路径）：
 
@@ -121,9 +121,7 @@ else:
 
 ## Step 2：制定学习轨道（L3 争议 + L4 狩猎 · S2 简化）
 
-> **S2 · L1/L2 坍缩**：旧版 L1 定向（是什么）+ L2 历史（怎么来的）本质是**背景理解层**，与 thesis 无强对齐——这些现在由 00_primer 全权承担（primer-first）。roadmap 不再单列 L1/L2 问题树，**坍缩成一行 primer scope 备注**（"primer 该覆盖：行业边界/参与者/市场规模/发展阶段/周期"），把篇幅集中到真正驱动收料的两层：
-> - **L3 争议层 → 喂决策链环④**（多空分歧、共识可能错在哪）
-> - **L4 狩猎层 → 喂 K#**（找错误定价，逐条对齐 thesis Killer Question）
+> 📎 *L1/L2 坍缩缘由 → 附录 A2（执行时可跳过）*
 
 **硬要求**：
 - **L4 狩猎层必须逐条对齐 thesis 的 Killer Question**（K1, K2, ...），每条 L4 question 写 `addresses: [Kn]` 字段
@@ -162,13 +160,7 @@ l4_hunting:
 
 ## Step 3：制定资料优先级（A 合同地板 + B 命门靶点 双轴驱动）
 
-> **收料不再只盯 K#**。两条轴一起组织资料优先级：
-> - **A 轴（输入合同地板 · type 必收）**：照 `_input_contract.md` 本 type 的类目，**逐项确认有 todo 在收**。尤其三项真·欠供必须显式排期（旧流程从不主动收，是产出质量天花板）：
->   - `mgmt-capital-alloc` 管理层 track record + 资本配置史（年报/proxy/治理）→ 喂环①
->   - `consensus` 卖方一致预期/目标价模型 → 喂环②（建 todo 时标 `info_tier: half_public`——**这只是努力顺序提示,不是预授权降级用户**。consensus 不走 financial_data API 自动拉,但**仍须按 R1 在 Step 5.6/5.8 自动抓**：卖方 PE-G/估值表深度、财经媒体一致预期汇总常有公开转载,exa 多能命中;只有有效尝试 `empty` 才归用户 todo。**禁止在 Step 3 就把它写成"用户去收"**）
->   - `historical-mirror` / `industry-mirror` / `arena-mirror` 历史失败镜鉴（由 Step 4 类比落成）→ 喂环⑤
->   - 结构化项（`financial-arc` / `valuation-anchor` / peer 财务）由 financial_data/market_data 在合成期自动拉，给 ticker 即可，不必单列收料 todo（gap ring 轴标 api_pending 非红）。
-> - **B 轴（命门靶点 + 入门目标背景靶点）**：照 `decomposition_v0.md` 每环 B 靶点收料（**低置信度命门优先砸料**，对冲薄拆解风险）+ 照 §三「primer 入门目标」每条标 uncertain/缺口的收**背景料**（入门目标与命门同属 B 轴、并列驱动收料；区别是命门喂 case 决策环、入门目标喂 primer 理解地基）。**入门目标收的是背景料（产业链/机理/玩家/沿革），不是决策料——入门目标理解性约束（00 Step 5.4 性质约束）保证这点。**
+> 📎 *A 轴/B 轴双轴 rationale → 附录 A3（执行时可跳过）*
 
 **硬要求**：
 - **建 todo 前扫 manifest 查已有料覆盖**（纪律，复用 `read_manifest`）：00 Step 4.0 早期 ingest + 父复用已把家底登记。每新增一条 todo 前，主 agent `read_manifest('{slug}','{variant}')` **按文档身份**判——已有料就是这条要的文档 → 建成 `done` 填 `covered_by=[已有mat]` 或不建；没有才建 `pending`。按文档身份判，不是 K# 撞 K#。
@@ -205,15 +197,7 @@ l4_hunting:
 - 类比逻辑（哪里像）
 - 类比局限（哪里不像）
 
-> **O3 接线 · 类比不再是孤儿，直接喂决策链环⑤**：历史类比正是决策链环⑤【历史失败镜鉴】（输入合同 `historical-mirror` / 行业 `industry-mirror` / arena `arena-mirror`，见 `_input_contract.md`）的输入。**每个值得研究的类比必须落成一条收料 todo**——目标是拿到"相似剧本怎么崩 / 利润为何没兑现"的实证材料（行业研报 / 复盘文章 / web-search）。这是 plan 认定的**三项真·欠供之一**（旧流程从不主动收），不可省。
->
-> 收料阶段（02）登记该材料时打 `rings=["historical-mirror"]`（或对应 type 的 mirror code）；只能训练知识粗述、收不到实证的，明写"镜鉴待补"进 `user_todos`，不冒充实证。
->
-> ```python
-> # 把类比落成收料 todo（示例，code 按 topic.type 选 historical/industry/arena-mirror）
-> from prism.scripts.topic import set_user_todos
-> set_user_todos('{slug}', ['收 historical-mirror 实证：{类比案例} 的崩盘/未兑现复盘（行业研报或复盘文章）'], '{variant}')
-> ```
+> 📎 *为什么类比喂环⑤ → 附录 A4（执行时可跳过）*
 
 ---
 
@@ -324,12 +308,8 @@ EOF
 
 ## Step 5.6：深度抓取公开分析材料（**先尝试自动获取，抓不到才变 user_todos**）
 
-> **为什么必须做**：Step 5.5 只处理了 `annual-report` / `quarterly-report` 等有 ticker 的结构化文件。但 roadmap 里还有很多 `sell-side-note` / `industry-research` / `policy` / `data` 类型的材料，**实际上在公开渠道有全文或摘要可搜到**（卖方报告转载、行业研究机构公开报告、监管裁决原文、独立研究博客）。
->
-> 如果跳过本步直接把这些写成 user_todos，等于把**本可以自动完成的工作甩给用户**。
->
-> **产即收衔接**：本步抓 **01 自己 Step 2/3 新增**的 todo（L4 狩猎 / A合同必收类目）——00 产的 todo 已在 **00 Step 6.5** 当场抓过（产即收：谁产谁收），这里**只对 00 遗留的 `error` 按 R3 重试**，不重抓已 `fetched`/`empty` 的。闭环按**文档身份**盖戳（`mark_todo_fetch` + `update_user_todo_status`），**不靠 K# 撮合**。
->
+> 📎 *为什么必须做 / 产即收衔接 → 附录 A5.6（执行时可跳过）*
+
 > **硬规则（auto-fetch 规约 R1/R2，判定与盖戳见 [`_autofetch_protocol.md`](_autofetch_protocol.md)）**：
 > - 作用域 = **tier1 + tier2 + tier3 全部、所有 info_tier**（仅排除 Step 5.5 已处理的 `annual-report`/`quarterly-report`）。`info_tier` 只决定**努力顺序/强度**（hard 先上 exa advanced + 权威 URL WebFetch），**不再作为跳过门槛**。
 > - 每条尝试后**必须 `mark_todo_fetch`**：抓到 `fetched`、有效尝试确认公开无源 `empty`、工具/网络失败 `error`。
@@ -449,7 +429,7 @@ else:
 
 ## Step 5.8：auto-fetch 全覆盖硬闸门（**未通过不得进 Step 6 / 不得 set_stage**）
 
-> **为什么必须做**：Step 5.6 的「产即收 + R1 全覆盖」此前只是散文纪律（「不要跳过本步」），没有像 5.7 coverage 那样的机器卡口——主 agent 一旦漏抓某条 todo（尤其凭 `info_tier` 先入为主跳过 half_public/hard），stage 仍会静默推进到 02，下游不替它补抓（产即收的下游不补抓原则），缺口就永久蛰伏。本闸门把已有的 `pending_unfetched_todos`（R3 清单）接成 advance 前的硬断言，精确拦截「从未尝试就推进」。
+> 📎 *为什么必须做 / 静默推进教训 → 附录 A5.8（执行时可跳过）*
 
 ```bash
 python3 -c "
@@ -599,4 +579,54 @@ roadmap 落地后立即跑 `_web_prescan_shared.md` 一次（`recency_days=90`�
 各槽的事件轴（**查什么**）由主 agent 按领域自定，**不套固定后缀**——旧版对所有行业写死"产能变化"、对 company 写死"最新公告/监管/业绩"即 PRISM_VALIDATION F3 病根；措辞规约见 `_web_prescan_shared.md` Step A。按 Step A-F 执行，`triggered_by='01-prescan'`。
 
 完成后 user_todos 通常已自动消化掉大半 K# 级 todo——剩下的（如未公开内部数据、付费墙、专家访谈）才是真正需要用户手工去搞的清单。
+
+---
+
+## 附录 A — rationale / 反例 / 历史教训（执行时可跳过，调试 / 维护时查）
+
+> 本附录收纳从各步主流程搬出的"为什么 / 反例 / 历史教训 / memory 链接 / inline worked example"。**主流程逐字未删、只是移出执行动线**；要看某步的来龙去脉，按对应小节查。
+
+### 附录 A1.5 — 复用排除边界（prescan 校准层）
+
+> **复用排除边界**：复用**排除 prescan 校准层**（父 manifest 里 `addresses==['scope']` 或 `triggered_by` 为 `*-prescan*` 的 web-search 料——价/量/事件快照，时效性强）；带 `K#` addresses 的**耐久文档**（财报/研报/drilldown/findings 源 + web-search 挖到的实质文档，仍受 90 天 `expired_web_materials` 闸门约束，过期由 03 点名刷新）照复用。**新 topic 自跑 prescan**（Step 8），不复用父级 scope 校准料。
+
+### 附录 A2 — 为何 L1/L2 坍缩进 primer_scope
+
+> **S2 · L1/L2 坍缩**：旧版 L1 定向（是什么）+ L2 历史（怎么来的）本质是**背景理解层**，与 thesis 无强对齐——这些现在由 00_primer 全权承担（primer-first）。roadmap 不再单列 L1/L2 问题树，**坍缩成一行 primer scope 备注**（"primer 该覆盖：行业边界/参与者/市场规模/发展阶段/周期"），把篇幅集中到真正驱动收料的两层：
+> - **L3 争议层 → 喂决策链环④**（多空分歧、共识可能错在哪）
+> - **L4 狩猎层 → 喂 K#**（找错误定价，逐条对齐 thesis Killer Question）
+
+### 附录 A3 — A 轴/B 轴双轴 rationale
+
+> **收料不再只盯 K#**。两条轴一起组织资料优先级：
+> - **A 轴（输入合同地板 · type 必收）**：照 `_input_contract.md` 本 type 的类目，**逐项确认有 todo 在收**。尤其三项真·欠供必须显式排期（旧流程从不主动收，是产出质量天花板）：
+>   - `mgmt-capital-alloc` 管理层 track record + 资本配置史（年报/proxy/治理）→ 喂环①
+>   - `consensus` 卖方一致预期/目标价模型 → 喂环②（建 todo 时标 `info_tier: half_public`——**这只是努力顺序提示,不是预授权降级用户**。consensus 不走 financial_data API 自动拉,但**仍须按 R1 在 Step 5.6/5.8 自动抓**：卖方 PE-G/估值表深度、财经媒体一致预期汇总常有公开转载,exa 多能命中;只有有效尝试 `empty` 才归用户 todo。**禁止在 Step 3 就把它写成"用户去收"**）
+>   - `historical-mirror` / `industry-mirror` / `arena-mirror` 历史失败镜鉴（由 Step 4 类比落成）→ 喂环⑤
+>   - 结构化项（`financial-arc` / `valuation-anchor` / peer 财务）由 financial_data/market_data 在合成期自动拉，给 ticker 即可，不必单列收料 todo（gap ring 轴标 api_pending 非红）。
+> - **B 轴（命门靶点 + 入门目标背景靶点）**：照 `decomposition_v0.md` 每环 B 靶点收料（**低置信度命门优先砸料**，对冲薄拆解风险）+ 照 §三「primer 入门目标」每条标 uncertain/缺口的收**背景料**（入门目标与命门同属 B 轴、并列驱动收料；区别是命门喂 case 决策环、入门目标喂 primer 理解地基）。**入门目标收的是背景料（产业链/机理/玩家/沿革），不是决策料——入门目标理解性约束（00 Step 5.4 性质约束）保证这点。**
+
+### 附录 A4 — 为什么类比喂环⑤
+
+> **O3 接线 · 类比不再是孤儿，直接喂决策链环⑤**：历史类比正是决策链环⑤【历史失败镜鉴】（输入合同 `historical-mirror` / 行业 `industry-mirror` / arena `arena-mirror`，见 `_input_contract.md`）的输入。**每个值得研究的类比必须落成一条收料 todo**——目标是拿到"相似剧本怎么崩 / 利润为何没兑现"的实证材料（行业研报 / 复盘文章 / web-search）。这是 plan 认定的**三项真·欠供之一**（旧流程从不主动收），不可省。
+>
+> 收料阶段（02）登记该材料时打 `rings=["historical-mirror"]`（或对应 type 的 mirror code）；只能训练知识粗述、收不到实证的，明写"镜鉴待补"进 `user_todos`，不冒充实证。
+>
+> ```python
+> # 把类比落成收料 todo（示例，code 按 topic.type 选 historical/industry/arena-mirror）
+> from prism.scripts.topic import set_user_todos
+> set_user_todos('{slug}', ['收 historical-mirror 实证：{类比案例} 的崩盘/未兑现复盘（行业研报或复盘文章）'], '{variant}')
+> ```
+
+### 附录 A5.6 — 为什么必须做 / 产即收衔接
+
+> **为什么必须做**：Step 5.5 只处理了 `annual-report` / `quarterly-report` 等有 ticker 的结构化文件。但 roadmap 里还有很多 `sell-side-note` / `industry-research` / `policy` / `data` 类型的材料，**实际上在公开渠道有全文或摘要可搜到**（卖方报告转载、行业研究机构公开报告、监管裁决原文、独立研究博客）。
+>
+> 如果跳过本步直接把这些写成 user_todos，等于把**本可以自动完成的工作甩给用户**。
+>
+> **产即收衔接**：本步抓 **01 自己 Step 2/3 新增**的 todo（L4 狩猎 / A合同必收类目）——00 产的 todo 已在 **00 Step 6.5** 当场抓过（产即收：谁产谁收），这里**只对 00 遗留的 `error` 按 R3 重试**，不重抓已 `fetched`/`empty` 的。闭环按**文档身份**盖戳（`mark_todo_fetch` + `update_user_todo_status`），**不靠 K# 撮合**。
+
+### 附录 A5.8 — 为什么必须做 / 静默推进教训
+
+> **为什么必须做**：Step 5.6 的「产即收 + R1 全覆盖」此前只是散文纪律（「不要跳过本步」），没有像 5.7 coverage 那样的机器卡口——主 agent 一旦漏抓某条 todo（尤其凭 `info_tier` 先入为主跳过 half_public/hard），stage 仍会静默推进到 02，下游不替它补抓（产即收的下游不补抓原则），缺口就永久蛰伏。本闸门把已有的 `pending_unfetched_todos`（R3 清单）接成 advance 前的硬断言，精确拦截「从未尝试就推进」。
 
