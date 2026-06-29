@@ -61,7 +61,7 @@ else:
 - B. 编辑 `topic.yaml` 把这些 ref 从 `parent_materials` 中移除（弃用引用；如父 topic 已废弃）
 - C. 忽略继续——但在本 topic 04 完成后 critic-review 会更可能命中"该 K# 论证薄弱"
 
-这是诊断不是 gate——脚本不会拒绝前进，但跳过相当于把 [[feedback_addresses_granularity]] 已经踩过的"父级 finding 假覆盖"问题留到 04/05。
+> 📎 *父级 finding 假覆盖教训 → 附录 A0b（执行时可跳过）*
 
 ---
 
@@ -217,7 +217,7 @@ print(f'已自动跳过 {skipped} 份 SEC parent htm（其 sec-section 子条目
 
 **架构铁律：subagent 只产内容，主 agent 落盘**
 
-经 2026-05-22 4/4 测试（含原文嵌入硬规约的 retry），subagent Write findings_{mat_id}.md 时**总会幻觉出"Write 被拦截"错误**（实际不存在 hook），且声称的"Bash heredoc 绕过"/「.write_test 写入成功」也常常是幻觉。详见 [[subagent-write-hallucination]]。
+> 📎 *subagent 写文件幻觉测试始末 → 附录 A2-sub（执行时可跳过）*
 
 **所以**：subagent **不再负责写 findings 文件**——只负责产出 markdown 内容到 final message。主 agent 接收后用 Write 工具落盘。
 
@@ -258,11 +258,9 @@ test -f "prism/topics/{slug}/materials/{filename_stem}_extracted.md" \
 
 提取完成后，读取 `_extracted.md` 作为分析内容（而非原始 PDF）。
 
-> 🔁 **跨 variant 复用（机械转换层）**：年报 `_extracted.md`（pymupdf）与研报 `_vlm/`（mineru）都是**不调本研究模型的确定性产物**，同一份 PDF 换模型重研字节级一致 → 一律落 slug 级 `materials/`、命中即跳过。**只有 `findings_mat-*.md`（LLM 按本 variant thesis 的 K# 解读）才按 variant 隔离**。详见各 topic `_process_log` P1。
+> 📎 *跨 variant 复用原理 / 段落级过滤为何不做 → 附录 A2.1A（执行时可跳过）*
 
 > ⚠️ **materials/ 是 slug 级共享目录**（`prism/topics/{slug}/materials/`，跨 variant 共用），**不是** `{slug}/{variant}/materials/`（该目录不存在，写进去 extractor/mineru 直接 FileNotFoundError）。所有 `_extracted.md` / `_vlm/` 产物都落 slug 级。
-
-**段落级过滤**：故意不做。年报章节抽取后通常 50-80K tokens，单份 LLM 可以一口气消化，由 LLM 根据 thesis K# 自行识别相关段落比 keyword grep 准确得多——避免「凝聚态/麒麟」等非字面变体被漏掉。
 
 ```bash
 # 2. 从财务 API 补充财务数据（不从 PDF 解析财务数字）
@@ -276,7 +274,7 @@ print(get_financial_context('{slug}', '{variant}'))
 
 #### B. 研报 / 行业报告（source_type = sell-side-note 或 industry-research）
 
-> ⚠️ **必须用 vlm 模型**——CLI `--model vlm` 不能改成 pipeline/默认。研报/行业报告中表格、公式、多栏排版是核心数据，pipeline 会丢失。详见 [[feedback_mineru_required]]。
+> 📎 *为什么必须 vlm / mineru 失败教训 → 附录 A2.1B（执行时可跳过）*
 
 > 🔑 **env 变量名是 `MINERU_TOKEN`（在 `.env`），不是 `MINERU_API_KEY`**。缺了 `mineru_api` 会 raise `MINERU_TOKEN not set — add it to .env`。
 
@@ -645,3 +643,27 @@ else:
 
 你选择了「{用户选择}」
 ```
+
+---
+
+## 附录 A — rationale / 反例 / 历史教训（执行时可跳过，调试 / 维护时查）
+
+> 本附录收纳从各步主流程搬出的"为什么 / 反例 / 历史教训 / memory 链接 / inline worked example"。**主流程逐字未删、只是移出执行动线**；要看某步的来龙去脉，按对应小节查。
+
+### 附录 A0b — 父级 finding 假覆盖教训
+
+这是诊断不是 gate——脚本不会拒绝前进，但跳过相当于把 [[feedback_addresses_granularity]] 已经踩过的"父级 finding 假覆盖"问题留到 04/05。
+
+### 附录 A2-sub — subagent 写文件幻觉测试始末
+
+经 2026-05-22 4/4 测试（含原文嵌入硬规约的 retry），subagent Write findings_{mat_id}.md 时**总会幻觉出"Write 被拦截"错误**（实际不存在 hook），且声称的"Bash heredoc 绕过"/「.write_test 写入成功」也常常是幻觉。详见 [[subagent-write-hallucination]]。
+
+### 附录 A2.1A — 跨 variant 复用原理 + 段落级过滤为何不做
+
+> 🔁 **跨 variant 复用（机械转换层）**：年报 `_extracted.md`（pymupdf）与研报 `_vlm/`（mineru）都是**不调本研究模型的确定性产物**，同一份 PDF 换模型重研字节级一致 → 一律落 slug 级 `materials/`、命中即跳过。**只有 `findings_mat-*.md`（LLM 按本 variant thesis 的 K# 解读）才按 variant 隔离**。详见各 topic `_process_log` P1。
+
+**段落级过滤**：故意不做。年报章节抽取后通常 50-80K tokens，单份 LLM 可以一口气消化，由 LLM 根据 thesis K# 自行识别相关段落比 keyword grep 准确得多——避免「凝聚态/麒麟」等非字面变体被漏掉。
+
+### 附录 A2.1B — 为什么必须 vlm + mineru 失败教训
+
+> ⚠️ **必须用 vlm 模型**——CLI `--model vlm` 不能改成 pipeline/默认。研报/行业报告中表格、公式、多栏排版是核心数据，pipeline 会丢失。详见 [[feedback_mineru_required]]。
