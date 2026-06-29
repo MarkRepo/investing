@@ -10,16 +10,7 @@
 
 ## 0. 定位与边界
 
-旧的 company 合成把内容切成 8 份**并列研究维度**，骨架按 industry 形状刻、company 硬套；且把"领域入门(primer)"放在**最后**生成——等于先下结论、再补领域解释，让决策建在作者未经校验的隐式理解上。
-
-本文件两处根本改动：
-
-1. **理解先行**：先出 `00_primer`（领域/公司理解地基，critic 校验"门外人真懂了"），**决策链显式站在它之上**。理解永远在决策上游——你不能给看不懂的生意估值。
-2. **按决策因果链组织**（不是并列维度）：每一环都是上一环**逼出来的**，读者顺着读就是顺着一次完整的买卖决策在想。
-
-- **不变的是骨架（理解先行 + 决策链 6 环 + sidecar schema）**——保证逻辑紧、决策机制不丢、跨 topic 可比。
-- **自由的是血肉**——每环问什么子问题、怎么组织、详略、用什么方式让门外人最好懂、产出拆几份，交给 LLM 针对这家公司的命门判断。
-- 01-08 不再是骨架，降级成一张"别漏维度"的对照清单。
+> 📎 *company case 的定位/边界、与旧路径的根本改动 → 附录 A0（执行时可跳过）*
 
 ---
 
@@ -70,7 +61,7 @@
    └─ 买入框 + 仓位框架(接④的EV) + 加减仓阶梯 + 时间维度 + 什么会让我改主意。这是行动。
 ```
 
-**为什么是紧的**：③ 只因②产出定价才存在；④ 的 EV 加总把光谱压成一个数；⑥ 的仓位由④的 EV 决定；⑤ 只因④下注才需要。环与环是因果序、不是并列箱。
+> 📎 *为什么链是紧的 → 附录 A1.3（执行时可跳过）*
 
 ### 1.4 跨层复用质量护栏（**硬规约 · 与 Step 1 亲属 hook 配套**）
 
@@ -354,6 +345,39 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 
 ## 附：与旧路径关系 + follow-up
 
+> 📎 *与旧 8-份路径的逐项对照 → 附录 A附（执行时可跳过）*
+
+**接线现状（均已落到被调用方自身，无内联兜底）**：
+1. `05-critic-review.md` Step 1 已按 type 读 `c_investment_case` / `i_industry_case` / `a_arena_case`；rewrite_keys 注释含三个决策链键。✓
+2. `00-primer.md` 已**全类型统一 primer-first**（findings+thesis_v0+K#，不依赖 01-08/thesis_v1，旧 primer-last 已退休）。✓
+3. `SKILL.md`：合成路由按 type 指向 `_company_case` / `_industry_funnel` / `_arena_funnel`；primer 路由行已统一 primer-first。✓
+4. industry/arena 同构路径见 `_industry_funnel.md` / `_arena_funnel.md`（漏斗终局，⑥ 折入旧 09/10 选拔，sidecar schema 不变）。✓
+
+---
+
+## 附录 A — rationale / 反例 / 历史教训（执行时可跳过，调试 / 维护时查）
+
+> 本附录收纳从各步主流程搬出的"为什么 / 反例 / 历史教训 / memory 链接 / inline worked example"。**主流程逐字未删、只是移出执行动线**；要看某步的来龙去脉，按对应小节查。
+
+### 附录 A0 — company case 的定位/边界、与旧路径的根本改动
+
+旧的 company 合成把内容切成 8 份**并列研究维度**，骨架按 industry 形状刻、company 硬套；且把"领域入门(primer)"放在**最后**生成——等于先下结论、再补领域解释，让决策建在作者未经校验的隐式理解上。
+
+本文件两处根本改动：
+
+1. **理解先行**：先出 `00_primer`（领域/公司理解地基，critic 校验"门外人真懂了"），**决策链显式站在它之上**。理解永远在决策上游——你不能给看不懂的生意估值。
+2. **按决策因果链组织**（不是并列维度）：每一环都是上一环**逼出来的**，读者顺着读就是顺着一次完整的买卖决策在想。
+
+- **不变的是骨架（理解先行 + 决策链 6 环 + sidecar schema）**——保证逻辑紧、决策机制不丢、跨 topic 可比。
+- **自由的是血肉**——每环问什么子问题、怎么组织、详略、用什么方式让门外人最好懂、产出拆几份，交给 LLM 针对这家公司的命门判断。
+- 01-08 不再是骨架，降级成一张"别漏维度"的对照清单。
+
+### 附录 A1.3 — 为什么链是紧的
+
+**为什么是紧的**：③ 只因②产出定价才存在；④ 的 EV 加总把光谱压成一个数；⑥ 的仓位由④的 EV 决定；⑤ 只因④下注才需要。环与环是因果序、不是并列箱。
+
+### 附录 A附 — 与旧 8-份路径的逐项对照
+
 | | 旧 company 路径 | 本路径 |
 |---|---|---|
 | 组织原则 | 8 份并列维度 | 理解先行 + 6 环决策链 |
@@ -367,9 +391,3 @@ dispatch 独立 critic（`subagent_type: general-purpose`，不传 model，**只
 | 上游 00-03 / 财务模块 / thesis | — | **不变，复用** |
 | 估值模型库 | 04 内 | **抽成共享片段 `_valuation_models.md`**（§3.3 工具箱引用） |
 | critic | 05-critic（旧键） | 内嵌 chain-critic + 05（已按 type 读 c_investment_case） |
-
-**接线现状（均已落到被调用方自身，无内联兜底）**：
-1. `05-critic-review.md` Step 1 已按 type 读 `c_investment_case` / `i_industry_case` / `a_arena_case`；rewrite_keys 注释含三个决策链键。✓
-2. `00-primer.md` 已**全类型统一 primer-first**（findings+thesis_v0+K#，不依赖 01-08/thesis_v1，旧 primer-last 已退休）。✓
-3. `SKILL.md`：合成路由按 type 指向 `_company_case` / `_industry_funnel` / `_arena_funnel`；primer 路由行已统一 primer-first。✓
-4. industry/arena 同构路径见 `_industry_funnel.md` / `_arena_funnel.md`（漏斗终局，⑥ 折入旧 09/10 选拔，sidecar schema 不变）。✓
