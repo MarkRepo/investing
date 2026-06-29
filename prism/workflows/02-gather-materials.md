@@ -46,7 +46,7 @@ EOF
 - 上次 prescan 距今 > 7 天（脚本自判）
 - workflow 01 因故没跑 auto-download
 
-> **早期 ingest 不替代本步**：00 Step 4.0 的 `register_inbox_materials` 只是第一遍登记家底元数据；用户**本轮中途**交付的料仍在这里登记，并按文档身份闭环对应 todo（产即收：02 是用户上传料的收料点）。`register_inbox_materials` 与本步的 Step 4 是同一套幂等登记——批量元数据登记可先调它，再在 Step 4 补 addresses/rings。
+> 📎 *早期 ingest 不替代本步 → 附录 A-early（执行时可跳过）*
 
 ---
 
@@ -167,7 +167,7 @@ print(f'已登记：{filename} → {mat_id}')
 
 ## Step 4.5：自动触发 mineru 转换（**新增——sell-side/industry PDF 必做**）
 
-> ⚠️ **必须用 vlm 模型**——pipeline/pymupdf 会丢表格/公式/多栏排版，研报和行业报告的关键数据多在表格里。**禁止改 `convert(src, out_dir, 'vlm')` 的第三参**。详见 [[feedback_mineru_required]]。
+> 📎 *为什么必须 vlm + [[feedback_mineru_required]] → 附录 A-mineru（执行时可跳过）*
 
 > 🔑 **env 变量名是 `MINERU_TOKEN`（在 `.env`），不是 `MINERU_API_KEY`**。缺了 `mineru_api` 会直接 raise `MINERU_TOKEN not set — add it to .env`。别凭直觉找 `*_API_KEY`。
 
@@ -236,7 +236,9 @@ if cur is not None:
 
 ## Step 5.7：自动补料（auto-fetch 规约 · 降级给用户前的强制尝试）
 
-> **为什么必须做**：02 历史上把"让用户补"和"自动抓"当平级选项，缺口没尝试自动获取就甩给用户。本步堵这个漏——**凡公开可得就别甩用户**。这是 01 Step 5.6 的镜像，作用在 02 时点仍欠尝试的 todo 上。判定与盖戳全照 [`_autofetch_protocol.md`](_autofetch_protocol.md)。
+> 📎 *auto-fetch 历史教训 → 附录 A-autofetch（执行时可跳过）*
+
+判定与盖戳全照 [`_autofetch_protocol.md`](_autofetch_protocol.md)。
 
 枚举所有仍欠一次有效尝试的 todo：
 
@@ -353,3 +355,21 @@ EOF
 下一步：
 说「prism 推进 {slug}」或「提取发现 {slug}」继续
 ```
+
+---
+
+## 附录 A — rationale / 反例 / 历史教训（执行时可跳过，调试 / 维护时查）
+
+> 本附录收纳从各步主流程搬出的"为什么 / 反例 / 历史教训 / memory 链接 / inline worked example"。**主流程逐字未删、只是移出执行动线**；要看某步的来龙去脉，按对应小节查。
+
+### 附录 A-autofetch — Step 5.7 auto-fetch 历史教训
+
+> **为什么必须做**：02 历史上把"让用户补"和"自动抓"当平级选项，缺口没尝试自动获取就甩给用户。本步堵这个漏——**凡公开可得就别甩用户**。这是 01 Step 5.6 的镜像，作用在 02 时点仍欠尝试的 todo 上。
+
+### 附录 A-early — 早期 ingest 不替代本步
+
+> **早期 ingest 不替代本步**：00 Step 4.0 的 `register_inbox_materials` 只是第一遍登记家底元数据；用户**本轮中途**交付的料仍在这里登记，并按文档身份闭环对应 todo（产即收：02 是用户上传料的收料点）。`register_inbox_materials` 与本步的 Step 4 是同一套幂等登记——批量元数据登记可先调它，再在 Step 4 补 addresses/rings。
+
+### 附录 A-mineru — 为什么必须 vlm + [[feedback_mineru_required]]
+
+> ⚠️ **必须用 vlm 模型**——pipeline/pymupdf 会丢表格/公式/多栏排版，研报和行业报告的关键数据多在表格里。**禁止改 `convert(src, out_dir, 'vlm')` 的第三参**。详见 [[feedback_mineru_required]]。
