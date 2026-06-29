@@ -3,6 +3,8 @@
 > 被 `00-research-topic.md`(Step 6.5)、`01-build-roadmap.md`(Step 5.6)、`02-gather-materials.md`(Step 5.7)、`03-extract-findings.md`(Step 2.4/2.4b)、`05-critic-review.md`(Step 6.5)共享引用。
 >
 > **一句话**：每个产 todo 的点，浮给用户前必须先**有效尝试**一次自动抓；留不留 user-todo、是否要重试，由**尝试的真实结果**决定，不由 tier/info_tier 标签事前 gate。
+>
+> ⚠️ **venv 硬约定**：凡命令 import 第三方包——`fetch_report_prism`/`annual_report_extractor`/`financial_data`/`market_data`/`mineru_api`（依赖 requests/pymupdf/akshare/yfinance）——一律用 `./.venv/bin/python`（含 `python3 -c "…"` 里 import 这些模块的块）。裸 `python3` 仅用于纯 CRUD（`prism.scripts.topic`/`manifest`/`outputs`/`findings`/`gap_detector`）。裸跑 fetcher/extractor 会 `ModuleNotFoundError: No module named 'requests'/'pymupdf'/'akshare'`。
 
 ---
 

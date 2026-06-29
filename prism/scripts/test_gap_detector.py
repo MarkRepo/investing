@@ -449,3 +449,31 @@ def test_single_source_flags_single_domain(tmp_topic_with_findings):
     k1 = next(e for e in report["single_source"] if e["k"] == "K1")
     assert k1["domains"] == ["sina.com.cn"]
     assert "单一域名" in k1["reason"]
+
+
+def test_prescan_material_exempt_from_untagged_gap(tmp_topic_with_findings):
+    """prescan 料（triggered_by ∈ _DEFAULT_EXCLUDED_TRIGGERED_BY）不出现在 prescan_untagged。
+    非 prescan 料（triggered_by='03-extract'）应出现。
+    """
+    from prism.scripts.gap_detector import detect_gaps
+
+    slug, variant, tmpdir = tmp_topic_with_findings
+    _write_thesis(tmpdir, slug, variant, "## Killer Question\n\nK1: A?\n")
+    topic_io.set_thesis(slug, variant, version=0, summary="t",
+                        stage_set_at="01-roadmap-pending")
+
+    # prescan 料 — only scope placeholder, no K#; should be exempt
+    add_material(slug=slug, filename="prescan_item.md", source_type="web-article",
+                 variant=variant, addresses=["scope"],
+                 search_meta={"triggered_by": "00-prescan"})
+
+    # non-prescan 料 — only scope placeholder, no K#; should be flagged
+    add_material(slug=slug, filename="extract_item.md", source_type="web-article",
+                 variant=variant, addresses=["scope"],
+                 search_meta={"triggered_by": "03-extract"})
+
+    report = detect_gaps(slug, variant)
+    untagged_filenames = [u["filename"] for u in report.get("prescan_untagged", [])]
+
+    assert "extract_item.md" in untagged_filenames, "非 prescan 料应被点名待补 K#"
+    assert "prescan_item.md" not in untagged_filenames, "prescan 料应豁免，不出现在 prescan_untagged"

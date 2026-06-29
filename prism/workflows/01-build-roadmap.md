@@ -243,7 +243,7 @@ l4_hunting:
 ```python
 from scripts.fetch_report_prism import fetch_many
 fetch_many('SSE_688499', years=[2020, 2021, 2022, 2023, 2024], slug=slug, variant=variant)
-# 或 CLI: python3 -m scripts.fetch_report_prism SSE_688499 --years 2020-2024 --slug ...
+# 或 CLI: ./.venv/bin/python -m scripts.fetch_report_prism SSE_688499 --years 2020-2024 --slug ...
 ```
 
 **文件命名规范**（E7）：年报 / 10-K 落盘后均以 `{report_year}_{ticker}_...` 开头，便于按 report_year 排序、grep 同公司多年材料。旧文件保留原名不动；只对新下载生效。
@@ -318,6 +318,7 @@ EOF
 - cninfo 一季报 `category_yjdbg_szsh` 与三季报 `category_sjdbg_szsh` 是独立 category，不能用同一 query 查全；fan-out 是修复方法
 - 如果 roadmap 列了 2026Q1 + 2026Q3 同年两份季报，必须在 title 里明确写"2026 Q1" / "2026 Q3"让 `guess_quarter` 区分
 - 半年报 `semi-annual-report` 同理走 `category_bndbg_szsh`
+- **A 股临时公告**：`fetch()`/`fetch_many()` 默认不再带公告（`with_announcements=False`）。公告走显式 `list_announcements_cn`→主 agent 标题分诊→`download_announcements_cn`，见 `00-research-topic.md` §6.5a-ann（关键词过滤杀不准，改 LLM 看标题）
 
 ---
 
@@ -362,6 +363,8 @@ python3 -m prism.scripts.web_search search "<材料标题关键词>" \
 #### 阶梯 3：WebFetch 抓取已知 URL
 
 对阶梯 1/2 搜到的高质量 URL（domain_tier 判为 `llm-judged-official` 的），用 `mcp__exa__web_fetch_exa` 批量抓取全文（`maxCharacters: 5000`，可一次传多个 URL）。
+
+> **snippet 兜底（修 cn-adc C）**：`sell-side-note`/`industry-research` 类落盘后若正文 < ~1500 字（疑似仅 title+snippet），**必须**对其权威 URL 再跑一次 `mcp__exa__web_fetch_exa`（`maxCharacters:5000`）抓正文；仍抓不到全文则 `add_material` 时显式标 `quality` 降级 + `notes='snippet-only, full text not fetched'`，**不得让 snippet 冒充深度材料进 03**（cn-adc 实测：浦银目标价等只存了标题行，定价锚踩在 snippet 上、时点不明）。
 
 #### 落盘与入库
 

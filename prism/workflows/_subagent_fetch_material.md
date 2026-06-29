@@ -34,7 +34,7 @@
 **调用例**：
 
 ```bash
-python3 -m scripts.fetch_report_prism SZSE_300073 --year 2024 --slug {slug}
+./.venv/bin/python -m scripts.fetch_report_prism SZSE_300073 --year 2024 --slug {slug}
 # 或
 curl -L "{pdf_url}" -o prism/topics/{slug}/inbox/{filename}.pdf
 ```

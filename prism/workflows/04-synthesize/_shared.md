@@ -101,7 +101,7 @@ set_output_referenced_mats('{slug}', '{output_key}', {mat_ids_list}, '{variant}'
 - **新入门目标**：findings 揭示门外人会卡、v0 种子没列的入门能力？
 - **多余/坍缩目标**：v0 种子列了但其实非入门必需 / 可并入他条？
 
-delta = 命门（新增 ∪ 掉队 ∪ 重排）∪ primer 入门目标（新增 ∪ 掉队）。**delta 为空**（命门与入门目标都无变化）→ v0 已够好，直接 `set_decomposition(version=1, convergence_status='converged', changelog='厚料确认 v0 命门 + 入门目标，无变化')` 后正常写作。
+delta = 命门（新增 ∪ 掉队 ∪ 重排）∪ primer 入门目标（新增 ∪ 掉队）。**delta 为空**（命门与入门目标都无变化）→ v0 已够好，直接 `set_decomposition(version=1, summary=..., stage_set_at='04-synthesizing', convergence_status='converged', changelog='厚料确认 v0 命门 + 入门目标，无变化')` 后正常写作（`summary`/`stage_set_at` 必填；`convergence_status ∈ {open, converged, capped}`，无 'converging'）。
 
 ### 2. 第二收料趟（delta 非空时 · 双重收敛 + 硬顶）
 

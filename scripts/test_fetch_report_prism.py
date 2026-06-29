@@ -269,7 +269,7 @@ def test_fetch_with_announcements_default_triggers_cn():
          patch.object(frp, "_list_reports", side_effect=_list), \
          patch.object(frp, "_download", return_value="/tmp/x.pdf"), \
          patch.object(frp, "fetch_announcements_cn", return_value=[]) as mock_ann:
-        frp.fetch("SSE_688331", "annual", 2024)
+        frp.fetch("SSE_688331", "annual", 2024, with_announcements=True)
     mock_ann.assert_called_once()
 
 
@@ -420,5 +420,128 @@ def test_fetch_many_calls_announcements_once_not_per_year():
          patch.object(frp, "_list_reports", side_effect=_list), \
          patch.object(frp, "_download", return_value="/tmp/x.pdf"), \
          patch.object(frp, "fetch_announcements_cn", return_value=[]) as mock_ann:
-        frp.fetch_many("SSE_688331", [2022, 2023, 2024])
+        frp.fetch_many("SSE_688331", [2022, 2023, 2024], with_announcements=True)
     mock_ann.assert_called_once()
+
+
+# ---------------------------------------------------------------------------
+# Task A5: list_announcements_cn / download_announcements_cn / _register_in_prism
+# ---------------------------------------------------------------------------
+
+def test_list_announcements_dedup_and_prefilter():
+    """list_announcements_cn dedup by adjunctUrl + 预剪纯冗余件、保留治理件。"""
+    # category_key → list of announcements returned by _list_reports
+    by_category = {
+        "category_yjygjxz_szsh": [
+            {"announcementId": "1", "announcementTitle": "百利天恒2024年业绩预告",
+             "announcementTime": 1704067200000, "adjunctUrl": "a.pdf"},
+            {"announcementId": "2", "announcementTitle": "百利天恒2024年业绩预告摘要",
+             "announcementTime": 1704067200000, "adjunctUrl": "b.pdf"},
+        ],
+        "category_kzz_szsh": [
+            # same adjunctUrl as first entry above → dedup
+            {"announcementId": "1", "announcementTitle": "百利天恒2024年业绩预告",
+             "announcementTime": 1704067200000, "adjunctUrl": "a.pdf"},
+            # governance item — must be retained (no _DUP_NOISE_RE terms in title)
+            {"announcementId": "3", "announcementTitle": "百利天恒关于董事辞职的公告",
+             "announcementTime": 1704067300000, "adjunctUrl": "c.pdf"},
+        ],
+    }
+
+    def _stub_list_reports(code, org_id, column, category, noise_re=frp._TITLE_NOISE_RE):
+        return [
+            a for a in by_category.get(category, [])
+            if not __import__("re").search(noise_re, a.get("announcementTitle", ""))
+        ]
+
+    with patch.object(frp, "_parse_market_ticker", return_value=("SSE", "688506")), \
+         patch.object(frp, "_company_info",
+                      return_value={"code": "688506", "orgId": "x", "zwjc": "百利天恒"}), \
+         patch.object(frp, "_column", return_value="sse"), \
+         patch.object(frp, "_list_reports", side_effect=_stub_list_reports), \
+         patch.object(frp, "_within_window", return_value=True), \
+         patch.dict(frp._ANNOUNCEMENT_CATEGORIES,
+                    {"yjygjxz": "category_yjygjxz_szsh", "kzz": "category_kzz_szsh"},
+                    clear=True):
+        result = frp.list_announcements_cn("SSE_688506", days=180)
+
+    titles = [r["title"] for r in result]
+    urls = [r["adjunct_url"] for r in result]
+
+    # dedup: a.pdf appears only once
+    assert urls.count("a.pdf") == 1
+    # 摘要 (b.pdf) must be stripped by _DUP_NOISE_RE
+    assert "b.pdf" not in urls
+    # governance item must be retained
+    assert any("辞职" in t for t in titles), "治理件应保留交 LLM 判"
+    # each item has required keys
+    for item in result:
+        for key in ("title", "date", "category_key", "adjunct_url"):
+            assert key in item
+
+
+def test_download_announcements_selected_only():
+    """download_announcements_cn only downloads selected items and registers with report_type='announcement'."""
+    from pathlib import Path
+
+    registered = []
+    downloaded = []
+
+    def _stub_download(ann, dest_dir, company_name, ticker, category_key):
+        downloaded.append(ann["announcementTitle"])
+        return Path(f"/tmp/{ticker}_{category_key}.pdf")
+
+    def _stub_register(slug, file_path, report_type, company_name, variant):
+        registered.append(report_type)
+        return ("mat_001", variant)
+
+    selected = [
+        {"adjunct_url": "x.pdf", "announcement_time": 1704067200000,
+         "title": "百利天恒BLA受理公告", "category_key": "yjygjxz",
+         "ticker": "688506", "company_name": "百利天恒"},
+        {"adjunct_url": "y.pdf", "announcement_time": 1704067300000,
+         "title": "百利天恒NDA获批公告", "category_key": "yjygjxz",
+         "ticker": "688506", "company_name": "百利天恒"},
+    ]
+
+    with patch.object(frp, "_download_announcement", side_effect=_stub_download), \
+         patch.object(frp, "_register_in_prism", side_effect=_stub_register), \
+         patch.object(frp, "_materials_dir", return_value=Path("/tmp")):
+        got = frp.download_announcements_cn("SSE_688506", "cn-baili-688506", "opus4.8", selected)
+
+    assert len(got) == 2
+    assert len(downloaded) == 2
+    assert all(rt == "announcement" for rt in registered), (
+        f"_register_in_prism 应收到 report_type='announcement'，实际: {registered}"
+    )
+
+
+def test_register_announcement_source_type():
+    """_register_in_prism with report_type='announcement' → source_type='announcement' (回归 mislabel bug)."""
+    from pathlib import Path
+    from unittest.mock import MagicMock
+
+    captured = {}
+
+    def _stub_add_material(slug, filename, source_type, variant, notes, source_path, rings):
+        captured["source_type"] = source_type
+        return "mat_ann_001"
+
+    with patch("prism.scripts.manifest.add_material", side_effect=_stub_add_material), \
+         patch("prism.scripts.manifest.read_manifest", return_value={}), \
+         patch("prism.scripts.manifest.create_manifest", return_value=None), \
+         patch("prism.scripts.topic.list_variants", return_value=["opus4.8"]), \
+         patch("prism.scripts.topic.read_topic", return_value={"type": "company", "user_todos": []}), \
+         patch("prism.scripts.topic.update_user_todo_status", return_value=None), \
+         patch("prism.scripts.input_contract.default_report_rings", return_value=["financial-arc"]):
+        frp._register_in_prism(
+            "cn-baili-688506",
+            Path("x_announce_kzz_y.PDF"),
+            "announcement",
+            "百利天恒",
+            "opus4.8",
+        )
+
+    assert captured.get("source_type") == "announcement", (
+        f"source_type mislabel bug: got '{captured.get('source_type')}', want 'announcement'"
+    )

@@ -567,6 +567,33 @@ covered_ids = [_idx[p.name] for p in got if p.name in _idx]
 update_user_todo_status(slug, variant, '茅五泸三家 2025 年报', 'done', covered_by=covered_ids)
 ```
 
+### 6.5a-ann：A 股临时公告 → list → LLM 标题分诊 → 按选下载（**不要一把梭全拉**）
+
+> `fetch()` 默认 `with_announcements=False`，**不再隐式拉全年公告**（旧默认会把可转债发行人的
+> `kzz` 全量公告流——临床/回购/董事会/辞职/议事规则——全灌进抽取队列）。公告改走显式三步，
+> 由 LLM 看标题决定拉哪些（关键词黑名单杀不准催化剂、也漏不掉治理噪音）。**本段用 `./.venv/bin/python`。**
+
+```python
+from scripts.fetch_report_prism import list_announcements_cn, download_announcements_cn
+
+# 1) 列表（只拿标题，不下载）——对每个目标 ticker
+anns = list_announcements_cn('SSE_688506', days=180)
+for i, a in enumerate(anns):
+    print(i, a['date'], a['category_key'], a['title'])
+```
+
+2) **主 agent 读标题清单，按 thesis/K# 判定 selected**（判断留对话里，不写进脚本）：
+   - **拉**：临床读出/适应症获批/BLA·NDA 受理/BD·License/重大合作/业绩预告·快报/与命门直接相关的自愿披露；
+   - **丢**：议事规则/信息披露·薪酬管理制度/辞职·换届/股东会通知·会议资料/利润分配·权益分派/回购进展/募投变更/独董提名等程序治理件。
+   - 清单 >50 条时按日期窗口 + 标题**批量**判定，不逐条纠结。
+
+```python
+# 3) 只下载选中的（download + register，source_type='announcement'）
+selected = [anns[i] for i in (0, 3, 7)]   # ← 主 agent 判定的下标
+got = download_announcements_cn('SSE_688506', slug, variant, selected)
+# 盖 fetch_status / 闭环 todo 照 _autofetch_protocol.md（按 task 子串/文档身份，不用 K# 求交）
+```
+
 ### 6.5b：分析材料（卖方研报/行业数据/政策/科普）→ exa→semantic→WebFetch 阶梯
 
 非报告类 todo（sell-side / industry-research / policy / data / 科普）走 workflow 01 Step 5.6 同一阶梯：

@@ -251,7 +251,7 @@ print(path if path else 'FILE_NOT_FOUND')
 #    落 slug 级 materials/ 可跨 variant 直接复用（与研报 _vlm/ 同为「机械转换层」，对称见 Step B）
 test -f "prism/topics/{slug}/materials/{filename_stem}_extracted.md" \
   && echo "已存在，跳过提取（复用 slug 级转换产物）" \
-  || python3 -m scripts.annual_report_extractor \
+  || ./.venv/bin/python -m scripts.annual_report_extractor \
        "{material_path}" \
        --out "prism/topics/{slug}/materials/{filename_stem}_extracted.md"
 ```
@@ -385,6 +385,7 @@ cat "{material_path}"
   - **保留**：有具体数字的事实（量、价、时间、占比）；与其他资料有分歧或矛盾的信息；具体公司进展/合同/客户关系；报告独有的测算逻辑（降本路径、市场空间拆分）
   - **省略**：无数据支撑的泛泛判断；行业背景铺垫（常识性知识）；风险提示套话；中间推导步骤（保留起终点即可）；多份资料共同出现的共识数据
 - 目标 15-20 条；超过需说明原因
+- **例外（按 source_type 分流强度）**：`annual-report`/`sell-side-note`/`industry-research` 才按上面深度抽取；`source_type=announcement` 是 1-2 页催化件，**按事件抽 1-3 条 finding 即可**，不强求数据点数（残留少量漏网公告也不会被"15-20 条"误导去硬榨 1 页公告）
 
 **B. 叙事主线**（报告核心论证链，3 句以内）
 - 格式：「因为 X（数据依据）→ 所以研报判断 Y → 对投资意味着 Z」

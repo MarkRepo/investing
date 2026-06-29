@@ -79,6 +79,10 @@ _TITLE_NOISE_RE = (
     r"限制性股票|股票激励计划|激励对象|持续督导|内部控制|公司章程|H股公告|月报表"
 )
 
+# 仅"纯冗余重复件"——同一公告的摘要/英文/更正/修订版。list_announcements_cn 用它做最小
+# 预剪（LLM 看了也是丢），治理/程序性件全部保留交 LLM 标题分诊判断（不再用关键词杀治理件）。
+_DUP_NOISE_RE = r"摘要|英文版|英文|更正|修订"
+
 _ANNOUNCEMENT_WINDOW_DAYS = 365
 
 _INBOX_AUTO = Path(__file__).parent.parent / "prism" / "inbox" / "auto"
@@ -169,7 +173,8 @@ def _company_info(ticker: str) -> dict:
     return results[0]   # {code, orgId, zwjc, ...}
 
 
-def _list_reports(code: str, org_id: str, column: str, category: str) -> list[dict]:
+def _list_reports(code: str, org_id: str, column: str, category: str,
+                  noise_re: str = _TITLE_NOISE_RE) -> list[dict]:
     data = (
         f"stock={code}%2C{org_id}&category={category}"
         f"&pageNum=1&pageSize=50&tabName=fulltext&column={column}"
@@ -179,11 +184,11 @@ def _list_reports(code: str, org_id: str, column: str, category: str) -> list[di
         r.raise_for_status()
         return r.json().get("announcements") or []
     announcements = _with_retry(_do, label=f"cninfo list {code}")
-    # 丢摘要/英文/更正/修订 + 治理·中介程序性噪声（_TITLE_NOISE_RE）；未命中一律留，
-    # 保住临床/BD/业绩预告/季报等催化剂（修 F7）。年报本体标题不含黑名单词，无误伤。
+    # 默认丢治理·中介程序性噪声（_TITLE_NOISE_RE，报告抓取路径用，年报本体不含黑名单词无误伤）；
+    # list_announcements_cn 传 _DUP_NOISE_RE 只丢纯冗余件，把治理件留给 LLM 标题分诊。未命中一律留。
     return [
         a for a in announcements
-        if not re.search(_TITLE_NOISE_RE, a.get("announcementTitle", ""))
+        if not re.search(noise_re, a.get("announcementTitle", ""))
     ]
 
 
@@ -289,6 +294,7 @@ def _register_in_prism(slug: str, file_path: Path, report_type: str, company_nam
     source_type = (
         "prospectus" if report_type == "prospectus"
         else "annual-report" if report_type == "annual"
+        else "announcement" if report_type == "announcement"
         else "quarterly-report"
     )
     from prism.scripts.input_contract import default_report_rings
@@ -637,6 +643,99 @@ def _download_announcement(announcement: dict, dest_dir: Path, company_name: str
     return dest
 
 
+def list_announcements_cn(
+    market_ticker: str,
+    days: int = _ANNOUNCEMENT_WINDOW_DAYS,
+) -> list[dict]:
+    """List recent A-share announcements (titles only — NO download, NO manifest register).
+
+    供 workflow "列表→LLM 标题分诊→按选下载" 用：主 agent 读返回的标题清单，按 thesis/K#
+    判定哪些值得拉，再调 download_announcements_cn(selected=...)。判断留在对话里（prism
+    原则：Python 只做 CRUD/IO，不做投研判断）。
+
+    只做最小预剪（_DUP_NOISE_RE：摘要/英文/更正/修订纯冗余件）；治理/程序性件全部保留交 LLM。
+    跨类目按 adjunctUrl 去重（同一公告常同时落 kzz 全量流 + yjygjxz）。date 倒序返回。
+    每项: {announcement_id, title, date, category_key, adjunct_url, announcement_time,
+           org_id, code, column, company_name, ticker}
+    """
+    from datetime import datetime, timezone
+    _, ticker = _parse_market_ticker(market_ticker)
+    info = _company_info(ticker)
+    code, org_id = info["code"], info["orgId"]
+    company_name = info.get("zwjc", ticker)
+    column = _column(code)
+
+    seen: set[str] = set()
+    out: list[dict] = []
+    for key, category in _ANNOUNCEMENT_CATEGORIES.items():
+        try:
+            anns = _list_reports(code, org_id, column, category, noise_re=_DUP_NOISE_RE)
+        except Exception as e:
+            log.warning("Announcement category %s list failed: %s", key, e)
+            continue
+        for a in anns:
+            if not _within_window(a, days):
+                continue
+            url = a.get("adjunctUrl") or ""
+            if not url or url in seen:
+                continue
+            seen.add(url)
+            ts = a.get("announcementTime")
+            dt = (datetime.fromtimestamp(ts / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
+                  if ts else "")
+            out.append({
+                "announcement_id": a.get("announcementId"),
+                "title": a.get("announcementTitle", ""),
+                "date": dt,
+                "category_key": key,
+                "adjunct_url": url,
+                "announcement_time": ts,
+                "org_id": org_id,
+                "code": code,
+                "column": column,
+                "company_name": company_name,
+                "ticker": ticker,
+            })
+    out.sort(key=lambda x: x.get("announcement_time") or 0, reverse=True)
+    return out
+
+
+def download_announcements_cn(
+    market_ticker: str,
+    slug: str,
+    variant: str | None,
+    selected: list[dict],
+) -> list[Path]:
+    """Download + register the LLM-selected subset from list_announcements_cn.
+
+    selected = list_announcements_cn 返回项的子集（需含 adjunct_url/announcement_time/
+    title/category_key/ticker/company_name）。每条 download + _register_in_prism(
+    report_type="announcement") → source_type='announcement'。fetch_status 由主 agent 按
+    todo 文档身份盖（见 _autofetch_protocol.md），本函数不碰 todo 闭环。
+    """
+    dest_dir = _materials_dir(slug) if slug else _INBOX_AUTO
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    saved: list[Path] = []
+    for sel in selected:
+        ann = {
+            "adjunctUrl": sel["adjunct_url"],
+            "announcementTime": sel.get("announcement_time"),
+            "announcementTitle": sel.get("title", ""),
+        }
+        try:
+            p = _download_announcement(
+                ann, dest_dir,
+                sel.get("company_name", ""), sel.get("ticker", ""),
+                sel.get("category_key", "sel"),
+            )
+            saved.append(p)
+            if slug:
+                _register_in_prism(slug, p, "announcement", sel.get("company_name", ""), variant)
+        except Exception as e:
+            log.warning("Announcement download failed (%s): %s", sel.get("title", "?")[:30], e)
+    return saved
+
+
 def fetch_announcements_cn(
     market_ticker: str,
     slug: str | None = None,
@@ -942,7 +1041,8 @@ def fetch(
     slug: str | None = None,
     variant: str | None = None,
     quarter: int | None = None,
-    with_announcements: bool = True,
+    with_announcements: bool = False,   # 公告改走显式 list_announcements_cn→LLM分诊→download_announcements_cn；
+                                        # report fetch 不再隐式拉全年公告（根除治理噪音灌入抽取队列）
 ) -> Path:
     """Download a financial report. Returns the local file path.
 
@@ -1072,7 +1172,7 @@ def fetch_many(
     slug: str | None = None,
     variant: str | None = None,
     quarter: int | None = None,
-    with_announcements: bool = True,
+    with_announcements: bool = False,   # 同 fetch：公告改走显式 list→分诊→download
 ) -> list[Path]:
     """Batch-fetch multiple years of a single report type. CN only (SEC has its own pagination).
 

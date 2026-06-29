@@ -13,7 +13,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from prism.scripts import topic as topic_io
-from prism.scripts.manifest import list_expired_web_search, read_manifest
+from prism.scripts.manifest import (
+    _DEFAULT_EXCLUDED_TRIGGERED_BY,
+    list_expired_web_search,
+    read_manifest,
+)
 
 PRISM_ROOT = Path(__file__).resolve().parent.parent
 
@@ -300,6 +304,11 @@ def detect_gaps(
     prescan_untagged: list[dict] = []
     if cur_v is not None:
         for m in manifest.get("materials") or []:
+            # Role α prescan 料（00/01 prescan 入库）合法只挂 scope 占位且豁免抽取——
+            # 不点名待补 K#（否则每轮报永久假缺口，cn-adc 实测噪音）。
+            tb = (m.get("search_meta") or {}).get("triggered_by", "unknown")
+            if tb in _DEFAULT_EXCLUDED_TRIGGERED_BY:
+                continue
             addrs = m.get("addresses") or []
             if addrs and not any(_is_knum(a) for a in addrs):
                 prescan_untagged.append({
