@@ -1,0 +1,103 @@
+slug: cn-kweichow-moutai-600519
+variant: deepseek-v4-pro
+topic_type: company
+display_name: 贵州茅台
+ticker: SSE_600519
+generated: '2026-06-29T08:20:53.386895'
+data_freshness: 2026-06
+data_freshness_basis: mat-60ad2c (华创端午动销跟踪 2026-06) + mat-83b16f (2026Q1季报)
+buy_box:
+  strong_buy_max: 1000
+  accumulate_min: 1000
+  accumulate_max: 1200
+  hold_min: 1200
+  hold_max: 1600
+  current_price: 1168
+  price_as_of: '2026-06-29'
+  current_zone: accumulate
+position_framework:
+  position_tier: 标准
+  sizing_rationale: 信息充分度中等偏上(16份findings覆盖K1-K5全脊柱)、EV正向显著(+13.4%)、信心度中等。管理层治理风险(不可量化)和合同负债性质未决(Q2验证)限制仓位上限
+  initial_max_pct: null
+  full_max_pct: 15
+  add_ladder_prices:
+  - 1000
+  max_cluster_pct: null
+valuation_models:
+- name: pe_central
+  label: PE中枢法（情景锚）
+  bull_fair_value:
+  - 1750
+  - 2100
+  base_fair_value:
+  - 1300
+  - 1550
+  bear_fair_value:
+  - 900
+  - 1100
+- name: ddm
+  label: DDM（分红回报锚）
+  bull_fair_value:
+  - 1200
+  - 1300
+  base_fair_value:
+  - 1000
+  - 1200
+  bear_fair_value:
+  - 800
+  - 900
+- name: implied_irr
+  label: 反推隐含IRR（3年持有期）
+  bull_fair_value:
+  - 2100
+  - 2300
+  base_fair_value:
+  - 1500
+  - 1750
+  bear_fair_value:
+  - 1100
+  - 1300
+kill_criteria:
+- id: batch_price_breach_1500
+  description: 飞天散瓶批价跌破1500元且持续2周以上 → 减仓50%
+  status: pending
+  check_at: 2026-09
+- id: h1_2026_revenue_negative
+  description: 2026年半年报营收同比负增长 → 减仓50%
+  status: pending
+  check_at: 2026-08
+- id: contract_liability_no_recovery
+  description: 2026年三季报合同负债未环比回升（仍<40亿）→ 重新评估thesis
+  status: pending
+  check_at: 2026-10
+- id: management_investigation
+  description: 陈华或茅台其他高管被调查/留置 → 立即清仓
+  status: pending
+  check_at: null
+signposts:
+- date: 2026-08
+  event: 半年报发布
+  bull_signal: Q2营收+3%+、合同负债>40亿、i茅台Q2收入>150亿
+  bear_signal: Q2营收转负、合同负债<30亿、i茅台收入断崖下跌
+  triggered: null
+- date: 2026-09
+  event: 中秋国庆备货旺季
+  bull_signal: 飞天批价站稳1650+、渠道反馈积极、经销商打款意愿恢复
+  bear_signal: 批价跌破1500、经销商观望情绪浓厚
+  triggered: null
+- date: 2026-10
+  event: 三季报发布
+  bull_signal: Q3营收+5%+、合同负债环比回升、前三季度累计营收正增长
+  bear_signal: Q3营收减速、合同负债继续下滑
+  triggered: null
+- date: 2026-12
+  event: 全年业绩明朗
+  bull_signal: 全年营收+5%左右、批价稳定在1600+
+  bear_signal: 全年营收可能负增长、批价未企稳
+  triggered: null
+cluster_tags:
+- cn-consumer
+- baijiu
+- luxury-brands
+- state-owned
+- defensive

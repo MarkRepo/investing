@@ -1,0 +1,47 @@
+slug: cn-baili-688506
+display_name: 百利天恒
+type: company
+created: '2026-06-28T11:47:18.817233+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-adc
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 百利天恒双抗ADC平台(iza-bren全球首个获批+一平台6 ADC)差异化壁垒的天花板有多高，iza-bren放量与BMS里程碑能否兑现支撑千亿市值(PS
+    42x)
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_688506
+  market: SSE
+  short_name: 百利天恒
+  search_terms:
+  - 百利天恒
+  - iza-bren
+  - BL-B01D1
+  - EGFR HER3双抗ADC
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-28T11:49:00.486165+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-06-28T11:49:00.486178+00:00'
+    summary: 百利天恒平台差异化壁垒最硬(全球首个获批EGFR×HER3双抗ADC+一平台6 ADC+BMS 84亿)，命门2最强样本；但千亿市值PS
+      42x踩在一次性BD上、剔BD重回亏损，估值不给安全边际。5/10

@@ -1,0 +1,150 @@
+# roadmap.yaml — 研究路线图 (workflow 01 生成, glm5.2)
+slug: global-roller-screw
+created: 2026-06-25
+
+# S2 简化：L1/L2 坍缩成 primer_scope 一行（背景深度交给 00_primer）
+primer_scope: 行业边界=人形机器人线性执行器行星滚柱丝杠(PRS); 参与者=新剑传动/五洲新春/双林股份/恒而达/秦川机床/贝斯特(国产) + Rollvis/GSA/Schaeffler/Ewellix(海外); 市场规模=2030 PRS 229-450亿元; 发展阶段=量产前夜(Gen3 2026夏投产); 周期=技术S曲线早期→量产拐点
+
+learning_track:
+  l3_debates:
+    - question: "国产高端PRS良率:突破在即(新剑/五洲/恒而达已审厂/量产) vs 仍停留样品/送样阶段(公开无定量良率)?"
+      source_hint: "券商研报良率曲线 + 公司公告/互动易 + 专家访谈"
+    - question: "Gen3量产时点:2026夏7-8月投产可信(产线已改造/Model S/X让路) vs 6月静默=有问题再延期?"
+      source_hint: "特斯拉IR/财报电话会 + Counterpoint报告 + 产业链调研"
+    - question: "估值:五洲新春PE340x/涨幅183%是国产替代确定性溢价 vs 业绩未兑现已透支泡沫?"
+      source_hint: "卖方一致预期/目标价 + 历史估值区间 + 业绩兑现节奏"
+    - question: "一级(新剑)vs二级(五洲)谁攫最厚利润:一级绑定+IPO产能天花板 vs 二级已审厂+98万套定增?"
+      source_hint: "新剑招股书 + 五洲定增预案 + 价值量分配披露"
+    - question: "海外反扑:Rollvis/Schaeffler扩产+墨西哥本地化挤压中国窗口 vs 中国一小时产业圈集群优势不可复制?"
+      source_hint: "海外厂官网/年报 + 特斯拉墨西哥工厂进展 + Rollvis29%/GSA27%市占现状"
+
+  l4_hunting:
+    - question: "Gen3 2026 7-8月投产能否如期启动?爬坡合格率数据是否公开?2026Q4首条10万台级产线完成爬坡?"
+      addresses: [K1]
+      search_keywords: ["Optimus Gen3 投产", "爬坡合格率", "2026 量产"]
+      source_hint: "特斯拉Q2财报电话会 + 产业链调研 + Counterpoint"
+    - question: "新剑传动2026 IPO能否完成?招股书披露的实际产能/客户/单价能否验证一级绑定深度?"
+      addresses: [K2]
+      search_keywords: ["新剑传动 招股书", "IPO 进展", "产能 客户"]
+      source_hint: "浙江证监局辅导公告 + 招股书(若已申报)"
+    - question: "五洲新春98万套PRS定增达产进度+实际向特斯拉交付合格率/放量节奏?2026机器人收入占比能否跳升?"
+      addresses: [K3]
+      search_keywords: ["五洲新春 定增", "98万套 达产", "特斯拉 交付"]
+      source_hint: "cninfo定增进度公告 + 年报机器人业务拆分"
+    - question: "国产高端PRS良率/单根成本能否从样品降到规模化量产区间?螺纹磨床国产突破(长坂2亿→2000万)?"
+      addresses: [K4]
+      search_keywords: ["行星滚柱丝杠 良率", "单根成本", "螺纹磨床 国产"]
+      source_hint: "券商深度研报良率曲线 + 设备厂公告 + 专家访谈"
+    - question: "Rollvis/GSA/Schaeffler是否为人形需求扩产锁产能?特斯拉墨西哥工厂本地化是否挤压中国供应商份额?"
+      addresses: [K5]
+      search_keywords: ["Rollvis 扩产", "Schaeffler 人形", "墨西哥 本地化"]
+      source_hint: "海外厂官网/年报 + 特斯拉墨西哥工厂 + Counterpoint供应链报告"
+
+material_priority:
+  tier1:
+    - title: "五洲新春2025年报 + 98万套PRS定增募投公告"
+      type: "annual-report"
+      ticker: "SSE_603667"
+      source: "cninfo（年报已下载；定增公告待补）"
+      why: "已审厂二供的财务轨迹+产能天花板,喂环①财务梁+环②反推+K3业绩兑现"
+      addresses: [K3]
+      rings: [mgmt-capital-alloc, biz-value-chain-position, peer-comparison-financials]
+    - title: "新剑传动IPO招股书/辅导备案材料"
+      type: "sell-side-note"
+      ticker: ""
+      source: "浙江证监局辅导公告(已入库);招股书待IPO申报"
+      why: "一级供应商产能/客户/单价最权威源,喂环④peer横比+K2透明度"
+      addresses: [K2]
+      rings: [peer-comparison-financials, biz-value-chain-position, mgmt-capital-alloc]
+    - title: "3份券商深度研报(华金/华鑫/开源,已下载)"
+      type: "sell-side-note"
+      ticker: ""
+      source: "pdf.dfcfw.com(已入库mat-91c1f1/8241d9/228d8e)"
+      why: "良率/成本曲线/国产替代/玩家全景,喂环②定价锚+环④横比+K4良率+consensus"
+      addresses: [K1, K2, K3, K4, K5]
+      rings: [consensus, peer-comparison-financials, winner-variables, arena-mirror]
+    - title: "TSLA 10-K 2025 + 10-Q 2026Q1(父topic复用)"
+      type: "annual-report"
+      ticker: "US_TSLA"
+      source: "父global-humanoid-robot复用(mat-5bd1f9/c5a73f)"
+      why: "Tesla需求侧一手,Optimus量产/定点披露,喂K1/K2"
+      addresses: [K1, K2]
+      rings: [winner-variables, biz-value-chain-position]
+    - title: "与非网/蓝鲸/澎湃Tesla量产报道(已入库)"
+      type: "web-article"
+      ticker: ""
+      source: "已入库mat-4aa49d/bb9600/1f0242等"
+      why: "Gen3 7-8月投产/6万美元成本/Counterpoint供应链,喂K1/K5"
+      addresses: [K1, K5]
+      rings: [winner-variables, peer-valuation-anchor]
+
+  tier2:
+    - title: "双林股份反向式PRS量产进展+样件交付公告"
+      type: "annual-report"
+      ticker: "SZSE_300100"
+      source: "cninfo公告(4.5b已入库报道)"
+      why: "国产首款反向式,peer横比候选,喂环④+K3"
+      addresses: [K3]
+      rings: [peer-comparison-financials]
+    - title: "恒而达磨床/PRS布局+欧洲技术合作方"
+      type: "annual-report"
+      ticker: "SZSE_300946"
+      source: "cninfo+互动易(4.5b已入库报道,代码待校验)"
+      why: "磨床壁垒+反向式量产,peer横比候选,喂环④+K4"
+      addresses: [K4]
+      rings: [peer-comparison-financials, winner-variables]
+    - title: "中国信通院人形机器人产业报告(父复用)"
+      type: "industry-research"
+      ticker: ""
+      source: "父复用mat-215f5f"
+      why: "行业背景/利润池格局,喂环①价值链+K5"
+      addresses: [K5]
+      rings: [biz-value-chain-position]
+    - title: "卖方一致预期/目标价(consensus·hard)"
+      type: "sell-side-note"
+      ticker: ""
+      source: "研报含评级(华鑫贝斯特买入PE26.88);Wind/同花顺深度"
+      why: "环②定价锚反推对照基准,三项真欠供之一"
+      addresses: [K2, K3]
+      rings: [consensus, peer-valuation-anchor]
+
+  tier3:
+    - title: "海外Rollvis/GSA/Schaeffler扩产动作"
+      type: "web-article"
+      ticker: ""
+      source: "海外官网/年报(基础已覆盖,扩产动作待深挖)"
+      why: "K5海外反扑,喂环⑤证伪"
+      addresses: [K5]
+      rings: [arena-mirror]
+    - title: "螺纹磨床国产突破(长坂/秦川设备端)"
+      type: "web-article"
+      ticker: ""
+      source: "研报+与非网(长坂2亿→2000万已覆盖)"
+      why: "K4磨床壁垒,喂环①卡位+环⑤"
+      addresses: [K4]
+      rings: [winner-variables]
+    - title: "管理层track record+资本配置史(mgmt-capital-alloc·hard,empty)"
+      type: "sell-side-note"
+      ticker: ""
+      source: "新剑招股书未公开(IPO辅导中);五洲年报含管理层讨论"
+      why: "环①一等公民,三项真欠供之一,公开无源待用户决策"
+      addresses: [K2, K3]
+      rings: [mgmt-capital-alloc]
+
+key_risks_to_monitor:
+  - Gen3量产延迟(6月静默信号)
+  - 国产高端良率不达标(公开无定量)
+  - 海外Rollvis/Schaeffler反扑+墨西哥本地化挤压
+  - 技术路线替代(线性执行器→全旋转谐波/摆线,PRS单机用量下修)
+  - 估值透支(五洲PE340x,业绩未兑现)
+
+analogies_to_study:
+  - name: "滚珠丝杠→行星滚柱丝杠技术替代段"
+    logic: "同为精密传动件,PRS凭线接触/高承载/小型化正在人形场景替代滚珠丝杠;看替代发生时旧龙头如何应对、新进入者如何卡位"
+    limit: "替代边界限于人形高负载关节,工业场景滚珠仍主流;替代节奏取决于量产成本曲线"
+  - name: "绿的谐波打破日本Harmonic Drive垄断(国产替代成功镜鉴)"
+    logic: "同为精密传动件国产替代,绿的谐波凭成本+规模化打破日企垄断,全球市占35%;看国产替代成功路径(认证周期/产能爬坡/价格战)"
+    limit: "谐波减速器认证周期/客户结构不同于PRS;绿的已成熟,PRS尚处起步,可类比路径不可类比阶段"
+  - name: "光伏/电动车零件国产替代后利润未兑现案例(利润池陷阱,arena-mirror·empty待补)"
+    logic: "国产替代兑现但利润池被价格战/扩产反噬的案例(如光伏玻璃/锂电隔膜);警示PRS量产兑现后利润可能不兑现"
+    limit: "需07专项深挖具体案例实证(当前empty)"

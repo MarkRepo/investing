@@ -1,0 +1,211 @@
+slug: cn-kweichow-moutai-600519
+variant: deepseek-v4-pro
+entries:
+- searched_at: '2026-06-28T13:54:32.094115+00:00'
+  query: 飞天茅台 2026年6月 批价 散瓶 原箱 最新价格
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-28T13:54:32.168115+00:00'
+  query: 贵州茅台 2025年报 营收 净利润 分红 直营占比
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-28T13:54:32.210741+00:00'
+  query: 贵州茅台 2026年一季报 合同负债 经营活动现金流
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-28T13:54:32.332868+00:00'
+  query: 茅台 陈华 董事长 2025 2026 股东会 分红 回购 最新表态
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-28T13:54:32.462383+00:00'
+  query: 白酒行业 2026 渠道库存 去化进度 动销 端午
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-28T13:55:37.568461+00:00'
+  query: 茅台 五粮液 泸州老窖 2026年 卖方一致预期 EPS 目标价
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-28T13:55:37.699221+00:00'
+  query: 白酒消费税改革 2025 2026 最新进展 政策
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-28T13:55:37.839661+00:00'
+  query: 飞天茅台批价 2026年 跌破2000 风险 渠道反馈
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-28T13:55:37.936238+00:00'
+  query: 贵州茅台 2025 股东会 决议 回购进展 分红率
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-28T13:55:37.941162+00:00'
+  query: 茅台 2026年 基酒产能 产量 系列酒 1935 批价
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-06-28T13:57:08.109363+00:00'
+  query: 贵州茅台 2025年报 营收 净利润 分红 直营占比
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-28T13:57:08.214373+00:00'
+  query: 贵州茅台 2026年一季报 合同负债 经营活动现金流
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-28T13:57:08.325885+00:00'
+  query: 茅台 2026年 基酒产能 产量 系列酒 1935 批价
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-28T13:57:49.198690+00:00'
+  query: 贵州茅台 600519 2026年6月 最新公告 业绩说明会 股价
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-28T13:57:49.324610+00:00'
+  query: 茅台 直营 i茅台 渠道改革 2026 最新进展
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-28T13:57:59.533412+00:00'
+  query: 茅台 直营 i茅台 渠道改革 2026 最新进展
+  triggered_by: 00-prescan
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-28T14:04:09.923719+00:00'
+  query: 飞天茅台 批价 日频 2025 2026 散瓶 原箱 价格序列
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-28T14:04:10.005001+00:00'
+  query: 贵州茅台 600519 卖方 深度研报 2026 展望 目标价 中金 华创
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-28T14:04:10.153777+00:00'
+  query: 贵州茅台 600519 一致预期 2026 2027 EPS 营收 目标价 Wind Bloomberg
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-28T14:04:10.239173+00:00'
+  query: 贵州茅台 历史PE 估值区间 月度序列 2010-2026 市盈率 分位
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-28T14:11:36.781866+00:00'
+  query: 2013-2014 茅台 批价 营收 PE 月度 序列 量化 复盘
+  triggered_by: 01-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-28T14:11:36.864822+00:00'
+  query: Japanese whisky price bubble 1990 Yamazaki Hibiki index collapse
+  triggered_by: 01-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-06-28T14:12:20.575938+00:00'
+  query: 飞天批价 1500 茅台投资性库存 渠道抛售压力
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-28T14:12:20.743003+00:00'
+  query: 茅台 2026年Q2 业绩 合同负债 经销商打款意愿
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-06-28T14:12:20.988573+00:00'
+  query: 茅台 分红率 提升 陈华 股东回报 贵州财政
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-06-28T14:12:21.088796+00:00'
+  query: 茅台 五粮液 分化 中秋 白酒 动销 底部 2026
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered

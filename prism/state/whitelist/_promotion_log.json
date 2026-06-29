@@ -17,7 +17,8 @@
     "thepaper.cn": {
       "count": 2,
       "topics": [
-        "seed:F4"
+        "seed:F4",
+        "cn-adc/opus4.8"
       ],
       "promoted": true
     },
@@ -76,6 +77,202 @@
         "seed:F4"
       ],
       "promoted": true
+    },
+    "news.bms.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ascopost.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pubmed.ncbi.nlm.nih.gov": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "aigc.idigital.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "chinamedglobal.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "notice.10jqka.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "static.weeklyonstock.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cls.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ofweek.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "bydrug.pharmcube.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "zhihuiya.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "spdbi.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "astrazeneca.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stcn.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.sina.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "medsci.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "drugtimes.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "21jingji.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "news.qq.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tmtpost.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "bioon.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "medchemexpress.bioon.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "163.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "financeun.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "m8.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hibor.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "36kr.com": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
+    },
+    "d2n738oon34np4.cloudfront.net": {
+      "count": 1,
+      "topics": [
+        "cn-adc/opus4.8"
+      ],
+      "promoted": false
     }
   },
   "global-ssb-equipment": {
@@ -243,11 +440,12 @@
       "promoted": false
     },
     "caifuhao.eastmoney.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-humanoid-robot/opus4.8"
+        "global-humanoid-robot/opus4.8",
+        "global-roller-screw/glm5.2"
       ],
-      "promoted": false
+      "promoted": true
     },
     "sohu.com": {
       "count": 1,
@@ -281,6 +479,83 @@
       "count": 1,
       "topics": [
         "global-humanoid-robot/opus4.8"
+      ],
+      "promoted": false
+    },
+    "news.sina.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "donews.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "ccidnet.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "bbtnews.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "wap.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "leaderobot.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "stock.10jqka.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "m.capwhale.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "finance.sina.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "zhongzhihui.oss-cn-beijing.aliyuncs.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "schaeffler.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
       ],
       "promoted": false
     }
@@ -1741,9 +2016,52 @@
       "promoted": false
     },
     "news.cn": {
+      "count": 2,
+      "topics": [
+        "cn-kweichow-moutai-600519/qwen3.7-max",
+        "cn-kweichow-moutai-600519/deepseek-v4-pro"
+      ],
+      "promoted": true
+    },
+    "moutaichina.com": {
       "count": 1,
       "topics": [
-        "cn-kweichow-moutai-600519/qwen3.7-max"
+        "cn-kweichow-moutai-600519/deepseek-v4-pro"
+      ],
+      "promoted": false
+    },
+    "m.thepaper.cn": {
+      "count": 1,
+      "topics": [
+        "cn-kweichow-moutai-600519/deepseek-v4-pro"
+      ],
+      "promoted": false
+    },
+    "chnfund.com": {
+      "count": 1,
+      "topics": [
+        "cn-kweichow-moutai-600519/deepseek-v4-pro"
+      ],
+      "promoted": false
+    },
+    "lanjinger.com": {
+      "count": 1,
+      "topics": [
+        "cn-kweichow-moutai-600519/deepseek-v4-pro"
+      ],
+      "promoted": false
+    },
+    "pdf.dfcfw.com": {
+      "count": 1,
+      "topics": [
+        "cn-kweichow-moutai-600519/deepseek-v4-pro"
+      ],
+      "promoted": false
+    },
+    "jiemian.com": {
+      "count": 1,
+      "topics": [
+        "cn-kweichow-moutai-600519/deepseek-v4-pro"
       ],
       "promoted": false
     }
@@ -2141,6 +2459,176 @@
       "count": 1,
       "topics": [
         "cn-commercial-aerospace-upstream/glm5.2"
+      ],
+      "promoted": false
+    }
+  },
+  "global-roller-screw": {
+    "sina.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "m.thepaper.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "lanjinger.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "aibangbots.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "pdf.dfcfw.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "file.iyanbao.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "aigc.idigital.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "chyxx.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "m.tech.china.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "static.weeklyonstock.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "cinn.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "m-robo.datayes.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "9fzt.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "xuangubao.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "caifuhao.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "rollvis.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "lim-tec.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "rollvis-beijing.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "jnexpert.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "m.10jqka.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "geartoutiao.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "user.guancha.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "cs.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "wap.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/glm5.2"
       ],
       "promoted": false
     }

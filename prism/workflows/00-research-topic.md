@@ -9,22 +9,22 @@
 
 **4 幕 / 3 思考产物**（步骤号是落地细节，幕是心智模型）：
 
-| 幕 | 步骤 | 产出 | 一句话 |
-|----|------|------|--------|
-| ① 立框 | Step 1-4 | topic.yaml + manifest | type→终局倒推 + question 押注 + slug + 早期 ingest |
-| ② 认知 | Step 4.3 | `baseline_knowledge.md` | 训练知识先验（fact 账本 + 置信度 + 时效标签）+ 盲点→query |
-| ② 校准 | Step 4.5 a/b/c | 入库 web-search + baseline §6 | prescan 把时敏 fact 对齐最新现实（防把过期事实当赌注） |
-| ③ 下注 | Step 5.0 | `thesis_v0.md` | 落在 type 终局上的赌注 + K#（可证伪）+ 反方 |
-| ③ 拆解 | Step 5.4 | `decomposition_v0.md` | 从终局拆命门（机理/兑现路径）+ 每环 B 靶点 + primer 入门目标种子 |
-| ④ 收料 | Step 6 / 6.5 | user_todos + 抓料入库 | K# + A 合同 派 todo → 产即收 eager-fetch → no-unattempted 硬闸门 |
+| 幕    | 步骤             | 产出                          | 一句话                                                     |
+| ---- | -------------- | --------------------------- | ------------------------------------------------------- |
+| ① 立框 | Step 1-4       | topic.yaml + manifest       | type→终局倒推 + question 押注 + slug + 早期 ingest              |
+| ② 认知 | Step 4.3       | `baseline_knowledge.md`     | 训练知识先验（fact 账本 + 置信度 + 时效标签）+ 盲点→query                  |
+| ② 校准 | Step 4.5 a/b/c | 入库 web-search + baseline §6 | prescan 把时敏 fact 对齐最新现实（防把过期事实当赌注）                      |
+| ③ 下注 | Step 5.0       | `thesis_v0.md`              | 落在 type 终局上的赌注 + K#（可证伪）+ 反方                            |
+| ③ 拆解 | Step 5.4       | `decomposition_v0.md`       | 从终局拆命门（机理/兑现路径）+ 每环 B 靶点 + primer 入门目标种子                |
+| ④ 收料 | Step 6 / 6.5   | user_todos + 抓料入库           | K# + A 合同 派 todo → 产即收 eager-fetch → no-unattempted 硬闸门 |
 
 **三个思考产物是三条不同轴、互不替代、且都喂下游——不要合并 / 删除 / 下放**（已核实下游消费）：
 
-| 产物 | 轴 | 下游消费者 |
-|------|----|-----------|
-| `baseline_knowledge.md` | 训练知识先验 | 03-extract（findings cite `[fact-NN]`）、05-critic（列未校准 fact 清单）、04 primer |
-| `thesis_v{N}.md` 的 **K#** | 论点 / 覆盖轴 | gap_detector 算 K# 覆盖率、01-roadmap、05-critic |
-| `decomposition_v{N}.md` 的 **命门 / B 靶点 / primer 目标** | 终局拆解轴 | **04 `_shared.md` 的「B 轴有界 delta 重拆」以 v0 为基线逐条 diff** → v1；04 各 funnel/case 决策环；05-critic；未收敛命门 capped→07-drilldown。primer 入门目标是 04 primer 的种子，"入门目标 delta 空"是 04 收敛的必要条件 |
+| 产物                                                  | 轴        | 下游消费者                                                                                                                                                                    |
+| --------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `baseline_knowledge.md`                             | 训练知识先验   | 03-extract（findings cite `[fact-NN]`）、05-critic（列未校准 fact 清单）、04 primer                                                                                                  |
+| `thesis_v{N}.md` 的 **K#**                           | 论点 / 覆盖轴 | gap_detector 算 K# 覆盖率、01-roadmap、05-critic                                                                                                                               |
+| `decomposition_v{N}.md` 的 **命门 / B 靶点 / primer 目标** | 终局拆解轴    | **04 `_shared.md` 的「B 轴有界 delta 重拆」以 v0 为基线逐条 diff** → v1；04 各 funnel/case 决策环；05-critic；未收敛命门 capped→07-drilldown。primer 入门目标是 04 primer 的种子，"入门目标 delta 空"是 04 收敛的必要条件 |
 
 > **命门 ≠ K# 换个说法**：K# 是可证伪的"会改变看法的事件"（覆盖轴，喂 gap_detector）；命门是"机理/兑现路径上方向错了就翻盘"的特化问题（终局拆解轴，映射到决策环）。写 `decomposition_v0` 时**不要把命门写成"覆盖 K1/K3"的复述**——那是把终局拆解轴退化成 K# 的影子，会让 04 的 delta 重拆失去真实基线。
 

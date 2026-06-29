@@ -1,0 +1,45 @@
+slug: cn-wuzhou-xinchun-603667
+display_name: 五洲新春 (Wuzhou Xinchun, SSE 603667)
+type: company
+created: '2026-06-25T09:35:43.772263+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: global-roller-screw
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 五洲新春作为PRS T链二供(2025-12审厂通过+98万套定增+泰国工厂)，能否兑现业绩弹性、当前PE300是否合理？
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_603667
+  market: SSE
+  short_name: 五洲新春
+  search_terms:
+  - 五洲新春 PRS
+  - 五洲新春 特斯拉
+  - 五洲新春 定增
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-25T09:35:43.780304+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-25T09:35:43.780307+00:00'
+    summary: '[stub from arena] 强度父级-1: 五洲新春作为PRS T链二供(2025-12审厂通过+98万套定增+泰国工厂)，能否兑现业绩弹性、当前PE300是否合理'
+    prescan_status: full

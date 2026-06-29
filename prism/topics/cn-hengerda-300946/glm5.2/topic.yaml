@@ -1,0 +1,45 @@
+slug: cn-hengerda-300946
+display_name: 恒而达 (Hengerda, SZSE 300946)
+type: company
+created: '2026-06-25T09:35:43.784983+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: global-roller-screw
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 恒而达磨床+PRS双卡位("欧洲技术中国制造")能否兑现卖铲+量产双逻辑、PE212是否合理？
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SZSE_300946
+  market: SZSE
+  short_name: 恒而达
+  search_terms:
+  - 恒而达 磨床
+  - 恒而达 PRS
+  - 恒而达 欧洲
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-25T09:35:43.792741+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-25T09:35:43.792744+00:00'
+    summary: '[stub from arena] 强度父级-1: 恒而达磨床+PRS双卡位("欧洲技术中国制造")能否兑现卖铲+量产双逻辑、PE212是否合理？'
+    prescan_status: full

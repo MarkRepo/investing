@@ -1,0 +1,46 @@
+slug: cn-wuxixdc-02268
+display_name: 药明合联
+type: company
+created: '2026-06-28T11:47:18.816704+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-adc
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 药明合联作为全球No.1 ADC CRDMO卖水人，份额>24%与backlog增长能否持续，地缘(北美51%收入)与下游砍管线风险如何影响其确定性溢价
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: HKEX_02268
+  market: HKEX
+  short_name: 药明合联
+  search_terms:
+  - 药明合联
+  - WuXi XDC
+  - ADC CRDMO
+  - ADC外包
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-28T11:49:00.483529+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-06-28T11:49:00.483542+00:00'
+    summary: 药明合联是ADC唯一盈利卖水人(全球No.1份额>24%/backlog+50%)，不承担单一临床二元风险的最优arena beta；核心风险在地缘(北美51%收入)与PE
+      43x估值。5/10

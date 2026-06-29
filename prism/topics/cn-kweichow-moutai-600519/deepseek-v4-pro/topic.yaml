@@ -1,0 +1,399 @@
+slug: cn-kweichow-moutai-600519
+display_name: 贵州茅台
+type: company
+created: '2026-06-28T13:51:07.239604+00:00'
+status: active
+stage: done
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 贵州茅台（SSE 600519），deep 深度，CN，聚焦本轮白酒下行周期中茅台的价盘韧性、渠道库存真实性与左侧布局赔率。赌买——茅台在本轮下行中不会重演
+    2013-2014 崩盘，价盘（飞天批价）有底、营收正增可维持，当前估值已部分定价悲观预期；核心命门是 Q1 合同负债 −62% / 经现靠口径调整到底是主动去库存还是需求塌方的前兆，若为后者则翻空。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_600519
+  market: SSE
+  short_name: 茅台
+  search_terms:
+  - 贵州茅台
+  - 飞天茅台
+  - 批价
+  - 直营
+  - 分红回购
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-29T00:18:37.154407+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01c60c
+    - mat-11c045
+    - mat-1b1e9a
+    - mat-43873e
+    - mat-490ec0
+    - mat-504c25
+    - mat-58d62f
+    - mat-5c5f9d
+    - mat-60ad2c
+    - mat-70a63b
+    - mat-73abae
+    - mat-83b16f
+    - mat-a7450a
+    - mat-b32cec
+    - mat-e6af0c
+    - mat-eaf273
+    last_error: null
+  c_investment_case:
+    version: 1
+    last_updated: '2026-06-29T00:20:36.286682+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01c60c
+    - mat-11c045
+    - mat-1b1e9a
+    - mat-43873e
+    - mat-490ec0
+    - mat-504c25
+    - mat-58d62f
+    - mat-5c5f9d
+    - mat-60ad2c
+    - mat-70a63b
+    - mat-73abae
+    - mat-83b16f
+    - mat-a7450a
+    - mat-b32cec
+    - mat-e6af0c
+    - mat-eaf273
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-06-29T00:20:59.930389+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01c60c
+    - mat-11c045
+    - mat-1b1e9a
+    - mat-43873e
+    - mat-490ec0
+    - mat-504c25
+    - mat-58d62f
+    - mat-5c5f9d
+    - mat-60ad2c
+    - mat-70a63b
+    - mat-73abae
+    - mat-83b16f
+    - mat-a7450a
+    - mat-b32cec
+    - mat-e6af0c
+    - mat-eaf273
+    last_error: null
+  05-critic-review:
+    version: 1
+    last_updated: '2026-06-29T00:29:40.045269+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-06-29T00:31:04.118598+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 cn-kweichow-moutai-600519」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：chain-critic 6环全通 + 独立反方做空报告核心攻击点（合同负债-62%=经销商踩踏撤离）已在case环⑤盲点+环③假设3中预答，但Q2数据才是真正裁判。case诚实自知其短（信心度中、证据支持度偏低），不确定性是Q2待验证的真问题而非分析缺陷。批准通过，进入监控。
+user_todos:
+- task: 茅台 2025 年报完整财务数据提取（营收/净利/现金流/合同负债/直营占比/基酒产量）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K3
+  source_hint: 已下 SSE_600519 年报 PDF，需用 annual_report_extractor 提取关键表
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-504c25
+  last_fetch_note: eager-fetch 已有料覆盖
+- task: 茅台 2026Q1 季报合同负债与经营现金流拆解（口径调整细节）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K3
+  source_hint: 已下 Q1 季报 PDF，需提取附注中口径调整说明
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-c898d0
+  last_fetch_note: eager-fetch 已有料覆盖
+- task: 飞天茅台批价高频序列（日频，2024-2026，散瓶+原箱分开）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 今日酒价/酒价参考/华致酒行等渠道数据，部分需付费
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 00-deep-fetch web-search 已尝试
+- task: 卖方深度研报 ×3（茅台 2026 年展望 + 一致预期 + 目标价分布）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K5
+  source_hint: 中金/华创/中信建投等，Wind/同花顺/公众号可获取
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 00-deep-fetch web-search 已尝试
+- task: i茅台运营数据（MAU/GMV/500ml 飞天上线时间表/放量节奏）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 公司公告/业绩说明会/36氪等科技媒体
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4d304b
+  last_fetch_note: eager-fetch 已有料覆盖
+- task: 茅台管理层资本配置史（2015-2026 分红率/回购/提价/直营改革决策时间线）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 年报+股东会决议+卖方复盘报告，拼凑可得
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4d304b
+  last_fetch_note: eager-fetch 已有料覆盖
+- task: 2013-2014 白酒熊市茅台详细复盘（批价/营收/利润/PE 月度序列）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K5
+  source_hint: 已有 2013-2014白酒反腐调整期复盘.md 笔记，需补充量化数据
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5c5f9d
+  last_fetch_note: eager-fetch 已有料覆盖
+- task: 白酒消费税改革影响测算（从量→从价，或生产端→批发端，对茅台净利润影响）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 卖方专题报告（如中信建投消费税专题），已有白酒消费税改革_2025-2026.md
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-a7450a
+  last_fetch_note: eager-fetch 已有料覆盖
+- task: 茅台 1935 批价与渠道库存渠道调研（降价后动销反馈）
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: 酒业家/微酒/经销商草根调研，已有部分信息
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-40dcca
+  last_fetch_note: eager-fetch 已有料覆盖
+- task: 五粮液/泸州老窖横向对比（2025 年报 + Q1 批价/库存/业绩）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 年报已下（000858/000568），需提取对比；用于判断茅台相对优势
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1b1e9a
+  - mat-43873e
+  last_fetch_note: eager-fetch 已有料覆盖
+- task: 茅台一致预期数据（2026E/2027E EPS、营收、目标价，Bloomberg/Wind 口径）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: Wind/同花顺一致预期，或英为财情/雪球汇总
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 00-deep-fetch web-search 已尝试
+- task: 茅台历史估值区间复盘（PE/PB/EV/EBITDA 月度序列，2010-2026）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: Wind/同花顺估值数据，或卖方估值复盘报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 00-deep-fetch web-search 已尝试
+- task: 收 historical-mirror 实证：2013-2014 茅台批价/营收/利润/PE 月度量化序列 + 复苏路径复盘
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K5
+  source_hint: Wind/同花顺历史数据 + 卖方复盘报告（中金/中信建投白酒周期专题）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 01-deep-fetch web-search 已尝试
+- task: 收 historical-mirror 实证：日本高端威士忌 1990-2000 价格序列 + 品牌复苏路径（山崎/響）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 英文/日文资料，日威价格指数（Rare Whisky 101 或类似）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 01-deep-fetch web-search 已尝试
+- task: 资料提取中：8/140 份已处理（88 份待处理但多为 PDF 公告/会议通知，ROI 递减）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: waived
+  disposition_note: 进度跟踪项，非数据缺口
+- task: 资料提取中：16/140 份核心材料已处理（80 份剩余，多为PDF公告/会议通知，ROI递减）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: waived
+  disposition_note: 进度跟踪项，非数据缺口
+- task: 04 合成全部完成（primer v1 + case v1 + thesis v1 + decomposition v1），chain-critic
+    通过，等待 05 评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: chain-critic 6环全通 + 独立反方做空报告核心攻击点（合同负债-62%=经销商踩踏撤离）已在case环⑤盲点+环③假设3中预答，但Q2数据才是真正裁判。case诚实自知其短（信心度中、证据支持度偏低），不确定性是Q2待验证的真问题而非分析缺陷。批准通过，进入监控。
+  at: '2026-06-29T00:29:19.819246+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-29T00:22:11.896853+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-28T14:01:51.481610+00:00'
+    summary: 命门1=飞天批价底部(1500还是1169)(低); 命门2=合同负债-62%是主动去库存还是需求塌方(中); 命门3=i茅台500ml飞天是定价权重塑还是渠道自杀(uncertain)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-29T00:22:11.897047+00:00'
+    summary: 命门1(批价底部,置信度低→中)+命门2(合同负债性质,叙事演进为渠道模式切换+部分需求弱化);命门3(i茅台渠道自杀)已降格为常规K4跟踪;管理层治理风险浮现为独立风险维度
+    convergence_status: converged
+    changelog: 砍命门3(i茅台渠道自杀已证伪,降格为K4跟踪);加管理层治理风险(归入环①+环⑤,非独立命门);命门1置信度低→中(厚料丰富证据);命门2叙事演进(二元对立→复合判断);primer入门目标11条中第11条置信度低→高;对照全历史无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-06-29T00:21:42.025286+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-28T13:59:23.081238+00:00'
+    summary: 批价见底+业绩触底+改革加速三重底部共振，左侧买入赔率显著。飞天批价1565-1700接近出厂价，i茅台500ml飞天上线是渠道改革最后一公里，300亿分红+30亿回购提供股息率底部。目标价1400-1600元（2026E
+      PE 22-25x），当前~1168元，上行空间20-37%。强度6.5
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 94%（15/16，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-29T00:21:42.025504+00:00'
+    summary: 茅台三重底部共振(批价见底+业绩触底+渠道改革质变)，左侧买入赔率显著。i茅台执行超预期(批价不跌反涨)、渠道自杀已证伪。当前1168元/18x
+      PE定价零增长悲观预期，预期差在i茅台改革的结构性红利被低估。强度7.0/10
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-28T14:00:05.733491+00:00'
+  exited_at: '2026-06-28T14:11:07.396526+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-06-28T14:11:07.396526+00:00'
+  exited_at: '2026-06-29T00:24:39.123652+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K3
+    - K4
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 2
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-29T00:24:39.123652+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 2
+    empty_pending_decision: 0

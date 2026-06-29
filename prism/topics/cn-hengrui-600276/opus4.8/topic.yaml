@@ -1,0 +1,46 @@
+slug: cn-hengrui-600276
+display_name: 恒瑞医药
+type: company
+created: '2026-06-28T11:47:18.815810+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-adc
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 恒瑞作为大平台全管线龙头，ADC平台(12款临床+SHR-A1811)能否撑起差异化壁垒，剔BD后真实盈利与PS 9.9x安全边际是否构成最优ADC配置
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_600276
+  market: SSE
+  short_name: 恒瑞医药
+  search_terms:
+  - 恒瑞医药
+  - SHR-A1811
+  - 恒瑞ADC
+  - 瑞康曲妥珠单抗
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-06-28T11:49:00.477432+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-06-28T11:49:00.477603+00:00'
+    summary: 恒瑞是中国ADC arena唯一真盈利大平台(净利77亿/ROIC+12.6%/PS 9.9x最低)，12款临床ADC+SHR-A1811+BMS
+      152亿背书，安全边际最高的ADC配置，但ADC占总盘子比例小、边际贡献待验。6/10

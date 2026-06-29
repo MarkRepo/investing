@@ -1,0 +1,114 @@
+slug: global-roller-screw
+variant: glm5.2
+topic_type: arena
+display_name: 行星滚柱丝杠 (Planetary Roller Screw)
+generated: 2026-06-25
+data_freshness: 2026-06-25（peer 估值 2026-06-24 akshare；findings 截至 2026-06-23）
+# score 排序与 case ④综合评级同向（新剑>五洲>恒而达>双林>秦川>贝斯特>恒立>鼎智>长盛）
+# tier 枚举映射：深研=shortlist / 观察=watch / 淘汰=eliminated（case ⑥显式写明）
+companies:
+  - name: 新剑传动
+    ticker: null  # 未上市，IPO辅导中(2026-01启动)，待IPO后建stub
+    score: 5.0
+    tier: shortlist
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: T链一级供应商(总成+PRS)，350万套产能，IPO招股书将提供估值锚催化；押总成溢价+透明度上修
+    upgrade_triggers:
+      - IPO招股书披露(产能/客户/单价透明化)
+      - 特斯拉千台级灵巧手订单放量
+    quarantine: null
+  - name: 五洲新春
+    ticker: SSE_603667
+    score: 4.5
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-wuzhou-xinchun-603667
+    thesis_one_liner: 已审厂二供，98万套PRS定增+泰国工厂2026投产；押二阶业绩兑现，但PE300已透支需良率超预期
+    upgrade_triggers:
+      - 98万套定增达产进度
+      - 特斯拉交付放量数据
+      - 2026机器人收入占比跳升
+    quarantine: null
+  - name: 恒而达
+    ticker: SZSE_300946
+    score: 3.5
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-hengerda-300946
+    thesis_one_liner: 磨床+PRS双卡位，"欧洲技术中国制造"，具备批量反向式PRS能力；押卖铲+量产双逻辑
+    upgrade_triggers:
+      - 磨床量产+PRS规模化订单
+      - 合作方(欧洲技术)披露
+    quarantine: null
+  - name: 双林股份
+    ticker: SZSE_300100
+    score: 2.3
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: 国产首款反向式PRS，样件订单2026-04交付；PE39便宜但送样阶段
+    upgrade_triggers:
+      - 样件交付+定点落地
+      - 量产产能公告
+    quarantine: null
+  - name: 秦川机床
+    ticker: SZSE_000837
+    score: 2.7
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: 螺纹磨床卖铲人(汉江机床P0级)，丝杠产能10→38万件/年；卖铲逻辑
+    upgrade_triggers:
+      - 丝杠产能爬坡
+      - 螺纹磨床外销订单
+    quarantine: null
+  - name: 贝斯特
+    ticker: SZSE_300580
+    score: 2.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: 特斯拉汽车供应商延伸丝杠，宇华精机12亿投资；待滚珠→PRS延伸验证
+    upgrade_triggers:
+      - PRS送样定点
+      - 宇华精机达产
+    quarantine: null
+  - name: 恒立液压
+    ticker: SSE_601100
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: PRS占比极小(750根/年)，主业液压；PRS弹性不足
+    upgrade_triggers: []
+    quarantine: null
+  - name: 鼎智科技
+    ticker: BJSE_873593
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: 微型PRS(灵巧手)非主线；主线PRS用量在腿部
+    upgrade_triggers: []
+    quarantine: null
+  - name: 长盛轴承
+    ticker: SSE_688347
+    score: 1.0
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: 滚珠丝杠未用于人形；路线不符
+    upgrade_triggers: []
+    quarantine: null
+cluster_tags:
+  - 人形机器人
+  - 行星滚柱丝杠
+  - 线性执行器
+  - Tesla供应链
+  - 国产替代
+honest_gaps:
+  - 命门2(良率/单根成本)公开无定量，环②/④单线承重
+  - K2新剑IPO招股书未公开，产能/估值靠华鑫2024数据
+  - arena-mirror(hard)waived，环⑤训练知识估算/depth降级
+  - mgmt-capital-alloc(hard)waived，环①管理层梁用五洲年报+训练知识

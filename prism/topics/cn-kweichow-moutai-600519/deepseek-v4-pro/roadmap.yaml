@@ -1,0 +1,156 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-kweichow-moutai-600519
+created: 2026-06-28
+primer_scope: "茅台商业模式（基酒时间价值/渠道双轨制/奢侈品三重属性）、白酒行业周期规律（库存周期/价格正负反馈）、2013-2014 vs 本轮异同、茅台估值方法论（PE中枢/DDM/渠道库存调整）"
+
+learning_track:
+  l3_debates:
+    - question: "飞天批价底部究竟在哪——1500 元还是 1169 元（出厂价）？投资性库存规模是否被低估？"
+      source_hint: "批价日频序列 + 渠道库存调研 + 2013-2014 批价底部复盘"
+    - question: "2026Q1 营收转正是否意味着业绩底部确认？合同负债 −62% 是主动控货还是需求塌方？"
+      source_hint: "Q2 财报/业绩预告 + 经销商草根调研 + 五粮液/老窖对比"
+    - question: "i茅台 500ml 飞天上线是定价权重塑还是渠道自杀？经销商反水风险有多大？"
+      source_hint: "i茅台运营数据 + 经销商利润模型 + 渠道改革历史案例"
+    - question: "当前 PE 18-19x 是历史底部还是价值陷阱？负增长背景下合理 PE 中枢应下移多少？"
+      source_hint: "历史 PE 月度序列 + 一致预期 EPS + DDM 交叉验证"
+    - question: "白酒行业本轮下行是 V 型反转还是 L 型磨底？2026 下半年能否确认底部？"
+      source_hint: "端午/中秋动销数据 + 渠道库存去化进度 + 宏观消费数据"
+
+  l4_hunting:
+    - question: "飞天批价能否在 2026Q3 中秋旺季前稳定在 1500 元以上？投资性库存规模究竟多大、会在什么价位集中抛售？"
+      addresses: [K1]
+      search_keywords: ["飞天批价 1500", "茅台投资性库存", "渠道抛售压力"]
+      source_hint: "批价日频序列 + 酒业家/微酒渠道调研 + 2013-2014 批价月度序列对比"
+
+    - question: "2026Q2 营收是否同比正增长？合同负债是否环比回升？这两个指标能否在 Q2 同时转正？"
+      addresses: [K2, K3]
+      search_keywords: ["茅台 Q2 业绩", "合同负债 回升", "经销商打款意愿"]
+      source_hint: "2026 半年报 + 业绩预告 + 渠道反馈"
+
+    - question: "i茅台 500ml 飞天定价策略（1499 建议零售价？1799 变相提价？）和放量节奏（每月多少吨）？"
+      addresses: [K4]
+      search_keywords: ["i茅台 500ml 飞天", "飞天 直营 定价", "茅台 渠道改革 2026"]
+      source_hint: "公司公告 + 业绩说明会实录 + 36氪/蓝鲸财经报道"
+
+    - question: "陈华管理层是否会将常规分红率从 51.9% 提升至 75%+？贵州省财政压力下分红意愿是否持续增强？"
+      addresses: [K3]
+      search_keywords: ["茅台 分红率 提升", "陈华 股东回报", "贵州 财政 茅台"]
+      source_hint: "股东会决议 + 分红公告 + 贵州省财政收支数据"
+
+    - question: "2026 中秋/国庆旺季动销数据是否确认行业底部？茅台相对五粮液/老窖的动销优势是否扩大？"
+      addresses: [K5]
+      search_keywords: ["中秋 白酒 动销", "茅台 五粮液 分化", "白酒 渠道库存 底部"]
+      source_hint: "华创/中金等卖方旺季跟踪报告 + 酒业家渠道调研"
+
+material_priority:
+  tier1:
+    - title: "茅台 2025 年报完整财务数据提取（营收/净利/现金流/合同负债/直营占比/基酒产量/分产品营收）"
+      type: annual-report
+      ticker: SSE_600519
+      addresses: [K2, K3]
+      source: "已下载 PDF（2025_600519_annual），需 annual_report_extractor 提取关键表"
+      why: "支撑命门 2（业绩触底判断）+ 环③B1；2025 年报是首次双降，需逐项拆解"
+
+    - title: "茅台 2026Q1 季报合同负债与经营现金流拆解（口径调整细节 + 分产品营收 + 直营占比变动）"
+      type: quarterly-report
+      ticker: SSE_600519
+      addresses: [K2, K3]
+      source: "已下载 PDF（2026_600519_quarterly），需提取附注"
+      why: "支撑命门 2（合同负债 −62% 原因）+ 环③B1；口径调整是市场核心分歧"
+
+    - title: "飞天茅台批价高频序列（日频，2024-2026，散瓶+原箱分开，多源交叉验证）"
+      type: data
+      ticker: ""
+      addresses: [K1]
+      source: "今日酒价/酒价参考/华致酒行/百荣市场等渠道，web-search 已有部分"
+      why: "支撑命门 1（批价底部）+ 环①B1；批价是 thesis 基石变量"
+
+    - title: "卖方深度研报 ×3（中金/华创/中信建投 2026 年茅台展望 + 目标价 + 一致预期）"
+      type: sell-side-note
+      ticker: ""
+      addresses: [K2, K5]
+      source: "Wind/同花顺/公众号，web-search 已有部分命中"
+      why: "支撑命门 2（一致预期锚）+ 环④B1；需要卖方模型作为估值参照"
+
+    - title: "i茅台运营数据 + 500ml 飞天上线公告（MAU/GMV/放量节奏/定价策略/经销商补偿）"
+      type: data
+      ticker: ""
+      addresses: [K4]
+      source: "公司公告 + 业绩说明会 + 36氪/蓝鲸财经/界面新闻"
+      why: "支撑命门 3（渠道改革执行）+ 环①B2；决定 thesis 强度能否升到 8/10"
+
+  tier2:
+    - title: "茅台管理层资本配置史（2015-2026 分红率/回购/提价/直营改革时间线 + 陈华风格分析）"
+      type: data
+      ticker: ""
+      addresses: [K4]
+      source: "年报 + 股东会决议 + 卖方复盘"
+      why: "支撑命门 3（管理层意愿）+ 环②B2 + A合同 mgmt-capital-alloc"
+
+    - title: "2013-2014 白酒熊市茅台量化复盘（批价/营收/利润/PE/合同负债月度序列）"
+      type: industry-research
+      ticker: ""
+      addresses: [K1, K5]
+      source: "已有定性笔记，需补充量化数据（Wind/同花顺/卖方复盘报告）"
+      why: "支撑命门 1（历史类比）+ 环②B1 + A合同 historical-mirror"
+
+    - title: "白酒消费税改革影响测算（从量→从价 vs 生产端→批发端，茅台净利润敏感性分析）"
+      type: policy
+      ticker: ""
+      addresses: [K2]
+      source: "卖方专题报告（中信建投/中金消费税专题），已有部分资料"
+      why: "支撑命门 2（政策风险）+ 环⑤B1；消费税是行业长期悬顶之剑"
+
+    - title: "茅台一致预期数据（2026E/2027E EPS/营收/目标价分布，Bloomberg/Wind/同花顺口径）"
+      type: data
+      ticker: ""
+      addresses: [K2]
+      source: "Wind/同花顺/英为财情/雪球汇总，web-search 已有部分"
+      why: "支撑命门 2（估值锚）+ 环④B1 + A合同 consensus"
+
+    - title: "茅台历史估值区间复盘（PE/PB/EV/EBITDA 月度序列，2010-2026，含分位和情景分析）"
+      type: data
+      ticker: ""
+      addresses: [K5]
+      source: "Wind/同花顺估值数据，web-search 已有部分"
+      why: "支撑命门 1（批价→PE 映射）+ 环④B2；为介入纪律提供估值锚"
+
+    - title: "五粮液/泸州老窖横向对比（2025 年报 + Q1 批价/合同负债/营收增速/直营占比）"
+      type: annual-report
+      ticker: SZSE_000858
+      addresses: [K5]
+      source: "已下载 000858/000568 年报 PDF，需提取对比"
+      why: "支撑命门 2（茅台相对优势）+ 环③B2；判断茅台是否'最后一个倒下'"
+
+  tier3:
+    - title: "茅台 1935 渠道深度调研（降价后动销反馈 + 千元价格带竞争格局）"
+      type: data
+      ticker: ""
+      addresses: [K1]
+      source: "酒业家/微酒/经销商草根调研"
+      why: "支撑命门 1（系列酒压力）+ 环①B1 补充"
+
+    - title: "白酒行业 2025-2026 深度报告（渠道库存量化测算 + 消费结构变迁 + 产能周期）"
+      type: industry-research
+      ticker: ""
+      addresses: [K1, K2]
+      source: "中酒协/毕马威 2025 白酒中期报告（已下载 PDF）+ 卖方行业深度"
+      why: "支撑命门 1/2（行业背景）+ 环②B1 补充"
+
+key_risks_to_monitor:
+  - "飞天批价单日跌幅 >30 元或连续 5 日下跌"
+  - "Q2 营收同比继续负增长"
+  - "i茅台 500ml 飞天以 1499 元大量放量导致批价加速下跌"
+  - "消费税改革方案正式出台（从量→从价或生产端→批发端）"
+  - "陈华管理层变动或分红政策转向"
+
+analogies_to_study:
+  - name: "2013-2014 中国白酒反腐调整期"
+    logic: "最直接的历史类比——批价暴跌（2000→850）、营收个位数下滑、PE 从 25x 跌至 10x、反腐+塑化剂双杀后 2015-2016 强势复苏。本轮是否有类似剧本？"
+    limitation: "本轮无塑化剂式黑天鹅、茅台品牌力远强于 2013 年、直营占比从 ~14%→44%+ 改变了渠道结构、投资性库存规模远大于当时"
+    todo: "收 historical-mirror 实证：2013-2014 茅台批价/营收/利润/PE 月度量化序列 + 复苏路径复盘"
+
+  - name: "日本 1990s 高端清酒/威士忌去泡沫"
+    logic: "奢侈品+投资品双重属性在资产价格下行期的去泡沫过程——日本高端威士忌（山崎/響）在 1990s 的价格崩塌与品牌重塑，可作为茅台'投资品属性'去化的参考"
+    limitation: "中日消费文化差异、茅台社交货币属性在日本无直接对标、中国白酒无海外参照"
+    todo: "收 historical-mirror 实证：日本高端威士忌 1990-2000 价格序列 + 品牌复苏路径（英文/日文资料）"

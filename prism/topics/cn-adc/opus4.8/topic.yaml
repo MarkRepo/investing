@@ -3,7 +3,7 @@ display_name: 中国ADC（抗体偶联药物）arena
 type: arena
 created: '2026-05-30T14:59:15.140643+00:00'
 status: active
-stage: 00-init
+stage: 05-critic-review
 parent_topic: cn-innovative-drug
 monitoring_tier: dormant
 concepts: []
@@ -15,25 +15,351 @@ scope:
   - ADC 靶点 平台
   - HER2 TROP2 EGFR
   - ADC BD 出海
-outputs_state: {}
-parent_materials: []
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-28T11:41:57.986298+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0318df
+    - mat-16d39b
+    - mat-239a5c
+    - mat-314acb
+    - mat-31dd47
+    - mat-374d66
+    - mat-4273c9
+    - mat-5ce1dd
+    - mat-8292c1
+    - mat-8a6432
+    - mat-a10280
+    - mat-b010e0
+    - mat-b5bb28
+    - mat-cd1dfc
+    - mat-d3b452
+    - mat-ea14bb
+    - mat-f07d13
+    last_error: null
+    critic_passed: true
+  a_arena_case:
+    version: 1
+    last_updated: '2026-06-28T11:49:28.302201+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0318df
+    - mat-16d39b
+    - mat-239a5c
+    - mat-314acb
+    - mat-31dd47
+    - mat-374d66
+    - mat-4273c9
+    - mat-54b654
+    - mat-5ce1dd
+    - mat-8292c1
+    - mat-8a6432
+    - mat-a10280
+    - mat-b010e0
+    - mat-b5bb28
+    - mat-cd1dfc
+    - mat-d3b452
+    - mat-ea14bb
+    - mat-ed47a3
+    - mat-f07d13
+    last_error: null
+  peer_matrix:
+    version: 1
+    last_updated: '2026-06-28T11:49:28.320979+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0318df
+    - mat-16d39b
+    - mat-239a5c
+    - mat-314acb
+    - mat-31dd47
+    - mat-374d66
+    - mat-4273c9
+    - mat-54b654
+    - mat-5ce1dd
+    - mat-8292c1
+    - mat-8a6432
+    - mat-a10280
+    - mat-b010e0
+    - mat-b5bb28
+    - mat-cd1dfc
+    - mat-d3b452
+    - mat-ea14bb
+    - mat-ed47a3
+    - mat-f07d13
+    last_error: null
+parent_materials:
+- parent_slug: cn-innovative-drug
+  parent_variant: opus4.8
+  mat_id: mat-e97889
+  addresses:
+  - K2
+  note: 恒瑞2025年报：扣非归母¥79.52亿(+22%)，含ADC管线(SHR-A1811 HER2等)；行业财务弧线+龙头估值锚
+- parent_slug: cn-innovative-drug
+  parent_variant: opus4.8
+  mat_id: mat-d092a9
+  addresses:
+  - K2
+  note: 信达2025首次全年盈利；创新药业绩兑现标杆(ADC邻接对照)
+- parent_slug: cn-innovative-drug
+  parent_variant: opus4.8
+  mat_id: mat-76caf4
+  addresses:
+  - K2
+  note: 百济神州2025营收>¥382亿首次全年盈利；中国创新药业绩兑现最强标杆
 next_actions:
-- 运行 workflow 01-build-roadmap
-user_todos: []
+- arena合成完成：00_primer + a_arena_case(6环) + peer_matrix(6家) + 3 company stub + thesis_v1
+  + decomposition_v1
+- 可选：说「评审 cn-adc」跑对抗式steelman，或web点「✓标记完成」
+- 深研档推进：说「prism 推进 cn-hengrui-600276 / cn-wuxixdc-02268 / cn-baili-688506」
+user_todos:
+- task: 下载百利天恒 2025年报 + 2026Q1季报（拆BD首付vs产品收入/亏损/研发/现金流）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K4
+  source_hint: SSE_688506 cninfo
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4bbb50
+  - mat-ea14bb
+  last_fetch_note: 年报直下 0份
+- task: 下载科伦博泰 2025年报（sac-TMT销售额/商业化/管线梯队）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: HKEX_06990 hkexnews
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-239a5c
+  last_fetch_note: 年报直下 0份
+- task: 下载荣昌生物 2025年报（RC48维迪西妥单抗销售/盈利兑现）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K3
+  source_hint: SSE_688331 cninfo
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-a10280
+  last_fetch_note: 年报直下 0份
+- task: 获取浦银国际《ADC行业：中国力量，大有可为》券商深度报告（arena全景+靶点扎堆量化+竞争格局）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: spdbi.com 已知URL
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa全文
+- task: 收集各候选标的同口径横向比较数据（市值/PS分位/全球III期状态/平台资产数/估值锚 一致预期）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  - K5
+  source_hint: Wind/卖方/财经平台
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa 4份:市值50强+6家财务+恒瑞SOTP+国泰海通
+- task: 获取BL-B01D1 III期完整数据 + sac-TMT海外(默沙东)注册节奏（ASCO2026/BMS官方/FDA）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: news.bms.com/ASCO/默沙东IR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: ASCO2026+chinamedglobal sac-TMT子宫内膜癌全球III阳性 已覆盖
+- task: 下载恒瑞医药 2025年报 + SHR-A1811 head-to-head vs DS-8201 进展
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: SSE_600276 cninfo
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-b5bb28
+  last_fetch_note: 年报直下 0份
+- task: 下载映恩生物年报/招股书（12款ADC平台资产 + 估值回调 + A+H募资用途）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  - K4
+  source_hint: HKEX_09606 hkexnews
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-16d39b
+  last_fetch_note: 年报直下 0份
+- task: 下载药明合联 2025年报（ADC CRDMO 在手订单/营收/客户结构）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: HKEX_02268 hkexnews
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-8a6432
+  last_fetch_note: 年报直下 0份
+- task: 收集双抗ADC/双载荷/新payload 差异化临床头对头证据 + 平台资产可复用实证（命门2优先）
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K3
+  source_hint: ASCO/AACR/专家纪要/缔码生物
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa 5份深度料
+- task: 整理PD-1 me-too内卷历史镜鉴（靶点扎堆→价格战→商业化天花板，对照ADC）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: 卖方复盘/历史国谈数据
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa 3份:36氪国谈+大纪元ADC泡沫+澎湃PD-1红海
+- task: 整理ADC国谈/医保双目录定价对国内商业化兑现的影响（2025国谈19+114）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 医保局/卖方解读
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan 医保双目录4份+36氪国谈砍价史 已覆盖
+- task: 资料提取完成：19份核心findings(6年报+13分析)已落盘，67份程序公告折入/标记完成
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: arena决策链合成完成：shortlist=恒瑞/药明合联/百利天恒(深研)，科伦/映恩(观察)，荣昌(淘汰)；已建3 company stub
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: false
   cadence: daily
 critic: null
 decomposition:
-  current_version: null
-  last_updated: null
-  history: []
+  current_version: 1
+  last_updated: '2026-06-28T13:50:46.281226+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-26T16:52:43.195654+00:00'
+    summary: 命门1=头部资产全球III期/海外注册兑现(中,BL-B01D1已部分阳性); 命门2=靶点扎堆下平台差异化壁垒是否真实(低,优先砸料);
+      命门3=剔BD后产品盈利曲线×估值安全边际(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-28T13:50:46.281391+00:00'
+    summary: 命门1=头部资产全球兑现(中高,已部分转正);命门2=平台差异化(中,有硬实证但保留红海限定,分公司成立);命门3=剔BD盈利曲线×估值(中,6家分层明确)
+    convergence_status: open
+    changelog: 命门1中→中高;命门2低→中(平台复用硬实证);命门3分化强化;primer目标+1条(次蓝海靶点内涵);环⑥落成6家peer matrix+三档分流
 thesis:
-  current_version: 0
-  last_updated: '2026-05-30T15:01:52.880958+00:00'
+  current_version: 1
+  last_updated: '2026-06-28T13:49:09.277749+00:00'
   history:
   - version: 0
     stage_set_at: 00-init-from-parent
     set_at: '2026-05-30T15:01:52.881067+00:00'
     summary: 中国ADC是创新药出海最具全球竞争力品类，看多龙头平台但需甄别靶点扎堆vs差异化(6/10)
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-26T16:51:16.643429+00:00'
+    summary: 中国ADC进入分化甄别期：看多已de-risk龙头(百利天恒BL-B01D1 III期阳性/科伦博泰sac-TMT已商业化)+卖水人药明合联，看空靶点扎堆me-too+估值透支次新股；胜负=全球III期×剔BD后产品收入×平台壁垒(6/10)
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-06-28T13:49:09.277894+00:00'
+    summary: 中国ADC进入分化甄别期：差异化是真命题(头部资产兑现+平台复用硬实证)，但市场已把溢价price-in在加冕龙头(科伦PS47x/百利天恒PS42x)。最优配置=差异化已兑现+估值最实的恒瑞(PS9.9x真盈利)+卖水人药明合联；纯期权龙头等回调。6/10
 canonical: true
+suggested_drilldowns:
+- question: 各ADC龙头剔除BD首付后的季度产品收入放量曲线(科伦sac-TMT/百利天恒iza-bren/荣昌RC48) — 区分"该等回调"vs"已开始兑现该介入"的定量扳机
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-06-28T13:53:34.099581+00:00'
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-26T16:53:31.280069+00:00'
+  exited_at: '2026-06-28T11:34:17.557569+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    - peer-comparison-financials
+    - arena-mirror
+    autofetch_debt: 12
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-06-28T11:34:17.557569+00:00'
+  exited_at: '2026-06-28T13:53:34.125863+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-28T13:53:34.125863+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

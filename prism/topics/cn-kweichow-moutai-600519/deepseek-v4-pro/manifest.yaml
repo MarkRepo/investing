@@ -1,0 +1,1603 @@
+slug: cn-kweichow-moutai-600519
+variant: deepseek-v4-pro
+updated: '2026-06-29T00:10:14.119556+00:00'
+materials:
+- id: mat-5c5f9d
+  filename: 2013-2014白酒反腐调整期复盘.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.578326+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-64dffd
+  filename: 2025白酒中期研究报告_中酒协_毕马威.pdf
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.579218+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-e6af0c
+  filename: 中信建投_茅台25Q4业绩出清_20260417.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.579922+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-60ad2c
+  filename: 卖方观点汇总_中金_华源_第一上海.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.580765+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-a7450a
+  filename: 白酒消费税改革_2025-2026.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.581824+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-eaf273
+  filename: 茅台管理层变动_陈华_2025.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.583034+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-490ec0
+  filename: 贵州茅台2026Q1详解_增速转正.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.584381+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-b32cec
+  filename: 酒业家_白酒渠道库存调研_20260307.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.585926+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-11c045
+  filename: 飞天茅台批价走势_2024-2026.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.587665+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-fae6ac
+  filename: 2025_000568_annual_2026-04-28_泸州老窖.PDF
+  source_type: annual-report
+  added: '2026-06-28T13:51:19.590318+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-43873e
+  filename: 2025_000568_annual_2026-04-28_泸州老窖_extracted.md
+  source_type: annual-report
+  added: '2026-06-28T13:51:19.592604+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-81ed71
+  filename: 2025_000858_annual_2026-04-30_五粮液.PDF
+  source_type: annual-report
+  added: '2026-06-28T13:51:19.594956+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-1b1e9a
+  filename: 2025_000858_annual_2026-04-30_五粮液_extracted.md
+  source_type: annual-report
+  added: '2026-06-28T13:51:19.597467+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-05cffd
+  filename: 2025_600519_annual_2026-04-16_贵州茅台.PDF
+  source_type: annual-report
+  added: '2026-06-28T13:51:19.600247+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-504c25
+  filename: 2025_600519_annual_2026-04-16_贵州茅台_extracted.md
+  source_type: annual-report
+  added: '2026-06-28T13:51:19.603229+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-156850
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台2025年年度报告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.606386+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-c2814e
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台关于贵州茅台集团财务有限公司的风险评估报告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.609892+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-3ea913
+  filename: 2026-04-16_600519_announce_kzz_贵州茅台第四届董事会2026年度第六次会议决议公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.613570+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-13fb13
+  filename: 2026-04-24_600519_announce_kzz_贵州茅台2026年第一季度主要经营数据公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.617324+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-919a8a
+  filename: 2026-04-24_600519_announce_kzz_贵州茅台2026年第一季度主要经营数据公告_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.621486+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-f2828b
+  filename: 2026-04-24_600519_announce_kzz_贵州茅台2026年第一季度报告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.625935+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-83b16f
+  filename: 2026-04-24_600519_announce_kzz_贵州茅台2026年第一季度报告_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.630690+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-678d66
+  filename: 2026-04-28_000568_announce_kzz_2025年度利润分配预案.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.635393+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-f2750b
+  filename: 2026-04-28_000568_announce_kzz_2025年度利润分配预案_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.640419+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-16ac70
+  filename: 2026-04-28_000568_announce_kzz_2025年度董事会工作报告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.645663+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-4093f4
+  filename: 2026-04-28_000568_announce_kzz_2025年度非经营性资金占用及其他关联资金往来情况汇总表.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.650939+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-39a5d6
+  filename: 2026-04-28_000568_announce_kzz_2025年环境、社会及治理（ESG）报告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.656431+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-c0e219
+  filename: 2026-04-28_000568_announce_kzz_2026年一季度报告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.662693+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-ecb661
+  filename: 2026-04-28_000568_announce_kzz_2026年一季度报告_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.669528+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-f236cc
+  filename: 2026-04-28_000568_announce_kzz_关于募集资金2025年度存放与使用情况的专项报告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.676169+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-2971ac
+  filename: 2026-04-28_000568_announce_kzz_关于提请股东会授权董事会制定中期分红方案的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.682640+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-6d45e1
+  filename: 2026-04-28_000568_announce_kzz_关于泸州老窖股份有限公司2025年度非经营性资金占用及其他关联资金往来的专项说明.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.689535+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-79d6b7
+  filename: 2026-04-28_000568_announce_kzz_募集资金年度存放与使用情况鉴证报告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.696644+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-163454
+  filename: 2026-04-28_000568_announce_kzz_第十一届董事会二十四次会议决议公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.704300+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-5b4c16
+  filename: 2026-04-28_600519_announce_kzz_贵州茅台关于召开2025年度及2026年第一季度业绩说明会的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.714347+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-9d2f6f
+  filename: 2026-04-28_600519_announce_kzz_贵州茅台关于召开2025年度及2026年第一季度业绩说明会的公告_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.723723+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-89f7b3
+  filename: 2026-04-30_000858_announce_kzz_2025年半年度报告（更新后）.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.732786+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-98b700
+  filename: 2026-04-30_000858_announce_kzz_2025年度涉及财务公司关联交易的存款、贷款等金融业务的专项说明.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.741282+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-ad8701
+  filename: 2026-04-30_000858_announce_kzz_2025年第一季度报告（更新后）.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.750112+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-c120dd
+  filename: 2026-04-30_000858_announce_kzz_2025年第一季度报告（更新后）_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.759255+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-b13f0c
+  filename: 2026-04-30_000858_announce_kzz_2025年第三季度报告（更新后）.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.768431+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-163fd7
+  filename: 2026-04-30_000858_announce_kzz_2025年第三季度报告（更新后）_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.778332+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-7331f1
+  filename: 2026-05-06_000858_announce_kzz_关于2026年第一次临时股东会增加临时提案暨股东会补充通知的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.788452+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-3fe472
+  filename: 2026-05-06_000858_announce_kzz_关于四川省宜宾五粮液集团有限公司增持公司股票计划的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.798630+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-e18c76
+  filename: 2026-05-07_600519_announce_kzz_贵州茅台关于回购股份实施进展的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.810823+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-3de93e
+  filename: 2026-05-07_600519_announce_kzz_贵州茅台关于回购股份实施进展的公告_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.821492+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c4cb6e
+  filename: 2026-05-11_000858_announce_kzz_2026年第一次临时股东会议案资料.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.832783+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-92c9ee
+  filename: 2026-05-11_000858_announce_kzz_关于回购股份事项前十大股东及前十大无限售条件股东持股情况的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.844392+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-fb9bd8
+  filename: 2026-05-14_000568_announce_kzz_泸州老窖股份有限公司关于召开2025年度网上业绩说明会的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.855650+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-4c79c0
+  filename: 2026-05-15_000858_announce_kzz_关于回购股份事项前十大股东及前十大无限售条件股东持股情况的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.867376+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-f62d08
+  filename: 2026-05-18_000858_announce_kzz_2026年第一次临时股东会决议公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.879373+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-9281b2
+  filename: 2026-05-18_000858_announce_kzz_《董事、高级管理人员薪酬管理制度》.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.891582+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-e49b63
+  filename: 2026-05-18_000858_announce_kzz_关于回购股份事项通知债权人的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.904736+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-af044f
+  filename: 2026-05-20_000858_announce_kzz_关于以集中竞价交易方式回购公司股份的回购报告书.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.917366+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-05447f
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台关于与关联方签订《商标许可协议》的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.929818+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-e5a0fb
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台关于召开2025年度股东会的通知.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.942192+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-b8670e
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台关于聘任董事会秘书的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.954396+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-2829d4
+  filename: 2026-05-21_600519_announce_kzz_贵州茅台第四届董事会2026年度第八次会议决议公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.966982+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-0fc7f6
+  filename: 2026-05-27_600519_announce_kzz_贵州茅台关于回购股份实施结果暨股份变动的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:19.980023+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-f97d3f
+  filename: 2026-05-27_600519_announce_kzz_贵州茅台关于回购股份实施结果暨股份变动的公告_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:19.992892+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-12a38c
+  filename: 2026-06-01_000858_announce_kzz_2025年度股东会议案资料（更新前）.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.006159+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-aa42df
+  filename: 2026-06-01_000858_announce_kzz_关于召开2025年度股东会的通知.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.019777+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-26153c
+  filename: 2026-06-01_000858_announce_kzz_关于首次回购公司股份暨回购进展的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.033829+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-212238
+  filename: 2026-06-01_000858_announce_kzz_第七届董事会2026年第5次会议决议公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.048019+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-78372a
+  filename: 2026-06-02_600519_announce_kzz_贵州茅台2025年度股东会会议资料.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.062551+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-962c0f
+  filename: 2026-06-02_600519_announce_kzz_贵州茅台关于调整2025年年度利润分配方案每股分红金额的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.076881+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-5d9080
+  filename: 2026-06-02_600519_announce_kzz_贵州茅台关于调整2025年年度利润分配方案每股分红金额的公告_text.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:20.092118+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-83a78f
+  filename: 2026-06-08_000568_announce_kzz_2025年度股东会议案资料.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.107362+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-2bd9c0
+  filename: 2026-06-08_000568_announce_kzz_关于召开2025年度股东会的通知.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.122626+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-2ca30a
+  filename: 2026-06-08_000568_announce_kzz_关于泸州老窖浓香国酒体验营销中心建设项目关联交易的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.138508+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-1d83a0
+  filename: 2026-06-08_000568_announce_kzz_第十一届董事会二十五次会议决议公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.155405+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-1f0216
+  filename: 2026-06-08_000858_announce_kzz_2025年度股东会议案资料（更新后）.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.173021+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-813778
+  filename: 2026-06-08_000858_announce_kzz_关于2025年度股东会增加临时提案暨股东会补充通知的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.190409+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-18feb0
+  filename: 2026-06-08_000858_announce_kzz_第七届董事会2026年第6次会议决议公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.207105+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-81e451
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台2025年度股东会决议公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.223622+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-0044ca
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台关于职工董事选举结果的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.241352+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-156e82
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台关于聘任董事会秘书的公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.259055+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-4e8473
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台第五届董事会2026年度第一次会议决议公告.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.277103+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-5989bf
+  filename: 2026-06-11_600519_announce_kzz_贵州茅台董事、高级管理人员考核和薪酬管理办法.PDF
+  source_type: sell-side-note
+  added: '2026-06-28T13:51:20.294810+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-01c60c
+  filename: 2026-06-13_白酒业绩说明会释放了哪些信号.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:20.311698+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-73abae
+  filename: 2026-06-13_白酒行业2025年终观察-深水区破局前行-重构中锚定新增长曲线.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:20.328558+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-70a63b
+  filename: 2026-06-13_贵州茅台-业绩连续24年增长-预收款稳超百亿-分红-回购-双轮驱动.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:20.346208+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-0678d4
+  filename: 2026-06-13_贵州茅台2024年实现营收1708-99亿元---酒类流通监测统计与管理.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:20.364475+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-8d4954
+  filename: 2026-06-13_贵州茅台2024年营收净利同比双增拟分红346-7亿元---半月谈.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:20.382009+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-58d62f
+  filename: 2026-06-13_贵州茅台原董事长丁雄军涉嫌受贿-洗钱---证券时报.md
+  source_type: manual-note
+  added: '2026-06-28T13:51:20.417441+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-85ea5b
+  filename: 2026_000568_quarterly_2026-04-28_泸州老窖.PDF
+  source_type: annual-report
+  added: '2026-06-28T13:51:20.435674+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-105ce7
+  filename: 2026_000858_quarterly_2026-04-30_五粮液.PDF
+  source_type: annual-report
+  added: '2026-06-28T13:51:20.453308+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c898d0
+  filename: 2026_600519_quarterly_2026-04-24_贵州茅台.PDF
+  source_type: annual-report
+  added: '2026-06-28T13:51:20.471959+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-8e3963
+  filename: 2026-06-13_贵州茅台2025年年报出炉茅台酒保持增长态势---新华网.md
+  source_type: manual-note
+  added: '2026-06-28T13:52:02.684040+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+- id: mat-e0f447
+  filename: 2026-06-28_2026年飞天茅台原箱最新批价报1700元-瓶-散瓶报1565元-瓶---搜狐.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.022488+00:00'
+  processed: false
+  notes: query='飞天茅台 2026年6月 批价 散瓶 原箱 最新价格'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台 2026年6月 批价 散瓶 原箱 最新价格
+    url: https://www.sohu.com/a/1005618724_122014422
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.009391+00:00'
+    stale_at: '2026-07-28T13:54:32.009391+00:00'
+    expire_at: '2026-09-26T13:54:32.009391+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d9ebe4
+  filename: 2026-06-28_2026年飞天茅台原箱最新批价报1700元-瓶-散瓶报1565元-瓶-飞天茅台-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.053005+00:00'
+  processed: false
+  notes: query='飞天茅台 2026年6月 批价 散瓶 原箱 最新价格'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台 2026年6月 批价 散瓶 原箱 最新价格
+    url: http://finance.sina.com.cn/wm/2026-04-05/doc-inhtmhff7192446.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.041311+00:00'
+    stale_at: '2026-07-28T13:54:32.041311+00:00'
+    expire_at: '2026-09-26T13:54:32.041311+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6b3c60
+  filename: 2026-06-28_2026年飞天茅台批价涨至1665元-瓶-官方零售价上调至1539元-瓶-腾讯新闻.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.085549+00:00'
+  processed: false
+  notes: query='飞天茅台 2026年6月 批价 散瓶 原箱 最新价格'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台 2026年6月 批价 散瓶 原箱 最新价格
+    url: https://view.inews.qq.com/a/20260415A05SD600
+    domain: view.inews.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.072879+00:00'
+    stale_at: '2026-07-28T13:54:32.072879+00:00'
+    expire_at: '2026-09-26T13:54:32.072879+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-908d57
+  filename: 2026-06-28_贵州茅台首次年收入和净利润双负增长2025全年分红比例提高4个百分点.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.119666+00:00'
+  processed: false
+  notes: query='贵州茅台 2025年报 营收 净利润 分红 直营占比'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 2025年报 营收 净利润 分红 直营占比
+    url: https://companies.caixin.com/2026-04-17/102434889.html
+    domain: companies.caixin.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.107298+00:00'
+    stale_at: '2026-07-28T13:54:32.107298+00:00'
+    expire_at: '2026-09-26T13:54:32.107298+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c4f824
+  filename: 2026-06-28_贵州茅台年报深度拆解-告别20余年业绩增长神话---21财经.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.158882+00:00'
+  processed: false
+  notes: query='贵州茅台 2025年报 营收 净利润 分红 直营占比'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 2025年报 营收 净利润 分红 直营占比
+    url: https://www.21jingji.com/article/20260419/herald/4a189d0c7d33e9bb30f2a77574814948.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.143493+00:00'
+    stale_at: '2026-07-28T13:54:32.143493+00:00'
+    expire_at: '2026-09-26T13:54:32.143493+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e4e678
+  filename: 2026-06-28_一季报-贵州茅台的天变了---雪球.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.200863+00:00'
+  processed: false
+  notes: query='贵州茅台 2026年一季报 合同负债 经营活动现金流'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 2026年一季报 合同负债 经营活动现金流
+    url: https://xueqiu.com/6056806984/385779054
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.187564+00:00'
+    stale_at: '2026-07-28T13:54:32.187564+00:00'
+    expire_at: '2026-09-26T13:54:32.187564+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-06cc7c
+  filename: 2026-06-28_茅台董事长陈华-分红依然惊人-分红总额创历史新高-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.238004+00:00'
+  processed: false
+  notes: query='茅台 陈华 董事长 2025 2026 股东会 分红 回购 最新表态'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 陈华 董事长 2025 2026 股东会 分红 回购 最新表态
+    url: https://finance.sina.com.cn/roll/2026-06-11/doc-iniaziht4085955.shtml?cre=tianyi&mod=pchp&loc=5&r=0&rfunc=6&tj=cxvertical_pc_hp&tr=12
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.224361+00:00'
+    stale_at: '2026-07-28T13:54:32.224361+00:00'
+    expire_at: '2026-09-26T13:54:32.224361+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-39e363
+  filename: 2026-06-28_茅台年度股东会-最新定调---21经济网.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.279192+00:00'
+  processed: false
+  notes: query='茅台 陈华 董事长 2025 2026 股东会 分红 回购 最新表态'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 陈华 董事长 2025 2026 股东会 分红 回购 最新表态
+    url: https://www.21jingji.com/article/20260612/herald/66b4f3e7d858846bc4fe708e1cd5db09.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.261877+00:00'
+    stale_at: '2026-07-28T13:54:32.261877+00:00'
+    expire_at: '2026-09-26T13:54:32.261877+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-faf76f
+  filename: 2026-06-28_贵州茅台陈华-价格调整继续坚持供需适配-尽可能多生产基酒-直击股东会-钛媒体官方网站.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.320854+00:00'
+  processed: false
+  notes: query='茅台 陈华 董事长 2025 2026 股东会 分红 回购 最新表态'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 陈华 董事长 2025 2026 股东会 分红 回购 最新表态
+    url: https://www.tmtpost.com/8024983.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.305773+00:00'
+    stale_at: '2026-07-28T13:54:32.305773+00:00'
+    expire_at: '2026-09-26T13:54:32.305773+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9bdaa8
+  filename: 2026-06-28_华创证券-端午白酒动销局部拐点初显-下半年板块有望边际修复-腾讯新闻.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.364295+00:00'
+  processed: false
+  notes: query='白酒行业 2026 渠道库存 去化进度 动销 端午'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒行业 2026 渠道库存 去化进度 动销 端午
+    url: https://news.qq.com/rain/a/20260622A03ZSW00
+    domain: news.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.349061+00:00'
+    stale_at: '2026-07-28T13:54:32.349061+00:00'
+    expire_at: '2026-09-26T13:54:32.349061+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bace99
+  filename: 2026-06-28_端午白酒动销平淡-分化加剧-茅台能否率先筑底.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.407414+00:00'
+  processed: false
+  notes: query='白酒行业 2026 渠道库存 去化进度 动销 端午' | query='茅台 五粮液 分化 中秋 白酒 动销 底部 2026'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 五粮液 分化 中秋 白酒 动销 底部 2026
+    url: https://m.cls.cn/detail/2402860
+    domain: m.cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:12:21.026589+00:00'
+    stale_at: '2026-07-28T14:12:21.026589+00:00'
+    expire_at: '2026-09-26T14:12:21.026589+00:00'
+    triggered_by: 01-prescan
+- id: mat-eaf988
+  filename: 2026-06-28_华创证券-白酒端午动销跟踪-端午局部拐点初现-行业底部夯实---发现报告.md
+  source_type: web-search
+  added: '2026-06-28T13:54:32.451602+00:00'
+  processed: false
+  notes: query='白酒行业 2026 渠道库存 去化进度 动销 端午'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒行业 2026 渠道库存 去化进度 动销 端午
+    url: https://www.fxbaogao.com/detail/5486707
+    domain: fxbaogao.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:54:32.435434+00:00'
+    stale_at: '2026-07-28T13:54:32.435434+00:00'
+    expire_at: '2026-09-26T13:54:32.435434+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8b8a74
+  filename: 2026-06-28_茅台-五粮液-泸州老窖-汾酒2026年业绩预测与投资分析报告-一-研究背景与分析框架2026年-中国.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.514926+00:00'
+  processed: false
+  notes: query='茅台 五粮液 泸州老窖 2026年 卖方一致预期 EPS 目标价'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 五粮液 泸州老窖 2026年 卖方一致预期 EPS 目标价
+    url: https://xueqiu.com/1282816035/371568935
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.498608+00:00'
+    stale_at: '2026-07-28T13:55:37.498608+00:00'
+    expire_at: '2026-09-26T13:55:37.498608+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-69961d
+  filename: 2026-06-28_a股-突现两大重磅---证券时报.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.557672+00:00'
+  processed: false
+  notes: query='茅台 五粮液 泸州老窖 2026年 卖方一致预期 EPS 目标价'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 五粮液 泸州老窖 2026年 卖方一致预期 EPS 目标价
+    url: https://www.stcn.com/article/detail/1197563.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.542208+00:00'
+    stale_at: '2026-07-28T13:55:37.542208+00:00'
+    expire_at: '2026-09-26T13:55:37.542208+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4d304b
+  filename: 2026-06-28_2026-年白酒行业最新动态-5-6月-消费税-茅台-市场.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.601199+00:00'
+  processed: false
+  notes: query='白酒消费税改革 2025 2026 最新进展 政策'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒消费税改革 2025 2026 最新进展 政策
+    url: https://www.sohu.com/a/1030451906_122708746
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.585270+00:00'
+    stale_at: '2026-07-28T13:55:37.585270+00:00'
+    expire_at: '2026-09-26T13:55:37.585270+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-09d4f6
+  filename: 2026-06-28_白酒消费税纳税申报新规施行.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.644018+00:00'
+  processed: false
+  notes: query='白酒消费税改革 2025 2026 最新进展 政策'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒消费税改革 2025 2026 最新进展 政策
+    url: https://www.stcn.com/article/detail/3938173.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.627730+00:00'
+    stale_at: '2026-07-28T13:55:37.627730+00:00'
+    expire_at: '2026-09-26T13:55:37.627730+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-11fde0
+  filename: 2026-06-28_国家税务总局关于调整消费税纳税申报表有关事项的公告.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.686956+00:00'
+  processed: false
+  notes: query='白酒消费税改革 2025 2026 最新进展 政策'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒消费税改革 2025 2026 最新进展 政策
+    url: https://fgk.chinatax.gov.cn/zcfgk/c100012/c5249181/content.html
+    domain: fgk.chinatax.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.670404+00:00'
+    stale_at: '2026-07-28T13:55:37.670404+00:00'
+    expire_at: '2026-09-26T13:55:37.670404+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-05630b
+  filename: 2026-06-28_茅台-一场迟到多年的自救-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.735083+00:00'
+  processed: false
+  notes: query='飞天茅台批价 2026年 跌破2000 风险 渠道反馈'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台批价 2026年 跌破2000 风险 渠道反馈
+    url: https://finance.sina.com.cn/stock/s/2026-01-12/doc-inhhaeyi8213734.shtml?cre=tianyi&mod=pchp&loc=13&r=0&rfunc=2&tj=cxvertical_pc_hp&tr=12
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.717581+00:00'
+    stale_at: '2026-07-28T13:55:37.717581+00:00'
+    expire_at: '2026-09-26T13:55:37.717581+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a8902a
+  filename: 2026-06-28_飞天茅台散瓶批发价跌破2000元-背后原因揭秘---21经济网.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.782222+00:00'
+  processed: false
+  notes: query='飞天茅台批价 2026年 跌破2000 风险 渠道反馈'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台批价 2026年 跌破2000 风险 渠道反馈
+    url: https://www.21jingji.com/article/20250611/herald/4f75100901b0dee8cafd052d4da5a2ea.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.764993+00:00'
+    stale_at: '2026-07-28T13:55:37.764993+00:00'
+    expire_at: '2026-09-26T13:55:37.764993+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2040b1
+  filename: 2026-06-28_飞天茅台部分地区批发价跌破2000元---财联社.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.827151+00:00'
+  processed: false
+  notes: query='飞天茅台批价 2026年 跌破2000 风险 渠道反馈'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台批价 2026年 跌破2000 风险 渠道反馈
+    url: https://www.cls.cn/detail/2049762
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.810332+00:00'
+    stale_at: '2026-07-28T13:55:37.810332+00:00'
+    expire_at: '2026-09-26T13:55:37.810332+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-56148e
+  filename: 2026-06-28_300亿-30亿-茅台宣布新一轮股份回购-中期分红---21经济网.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.875391+00:00'
+  processed: false
+  notes: query='贵州茅台 2025 股东会 决议 回购进展 分红率'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 2025 股东会 决议 回购进展 分红率
+    url: https://www.21jingji.com/article/20251105/herald/7e9d2675e88152a602257929da969f87.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.857963+00:00'
+    stale_at: '2026-07-28T13:55:37.857963+00:00'
+    expire_at: '2026-09-26T13:55:37.857963+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-62a93f
+  filename: 2026-06-28_贵州茅台-中期分红300亿元-斥资15亿至30亿元-回购注销股份.md
+  source_type: web-search
+  added: '2026-06-28T13:55:37.923604+00:00'
+  processed: false
+  notes: query='贵州茅台 2025 股东会 决议 回购进展 分红率'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 2025 股东会 决议 回购进展 分红率
+    url: https://stcn.com/article/detail/3480686.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:55:37.905793+00:00'
+    stale_at: '2026-07-28T13:55:37.905793+00:00'
+    expire_at: '2026-09-26T13:55:37.905793+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-65df11
+  filename: 2026-06-28_贵州茅台2025年年度报告摘要-官方pdf.md
+  source_type: web-search
+  added: '2026-06-28T13:57:07.995307+00:00'
+  processed: false
+  notes: query='贵州茅台 2025年报 营收 净利润 分红 直营占比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2025年报 营收 净利润 分红 直营占比
+    url: https://www.moutaichina.com/mtgf/articleFileDir/2026-04/17/2c718d1ccb3d4ff986db336b10cc7ed6.pdf
+    domain: moutaichina.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:07.976087+00:00'
+    stale_at: '2026-07-28T13:57:07.976087+00:00'
+    expire_at: '2026-09-26T13:57:07.976087+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-aac0a6
+  filename: 2026-06-28_上市以来首次年度业绩下滑-贵州茅台去年净利降4-53.md
+  source_type: web-search
+  added: '2026-06-28T13:57:08.044918+00:00'
+  processed: false
+  notes: query='贵州茅台 2025年报 营收 净利润 分红 直营占比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2025年报 营收 净利润 分红 直营占比
+    url: https://m.thepaper.cn/newsDetail_forward_32988235
+    domain: m.thepaper.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:08.026406+00:00'
+    stale_at: '2026-07-28T13:57:08.026406+00:00'
+    expire_at: '2026-09-26T13:57:08.026406+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2ebcef
+  filename: 2026-06-28_贵州茅台2025年营收-净利双降.md
+  source_type: web-search
+  added: '2026-06-28T13:57:08.095366+00:00'
+  processed: false
+  notes: query='贵州茅台 2025年报 营收 净利润 分红 直营占比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2025年报 营收 净利润 分红 直营占比
+    url: https://www.chnfund.com/article/AR49975dac-92d9-d810-5258-3a20ab546699
+    domain: chnfund.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:08.075826+00:00'
+    stale_at: '2026-07-28T13:57:08.075826+00:00'
+    expire_at: '2026-09-26T13:57:08.075826+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3b32bf
+  filename: 2026-06-28_贵州茅台2026年第一季度报告-官方pdf.md
+  source_type: web-search
+  added: '2026-06-28T13:57:08.148790+00:00'
+  processed: false
+  notes: query='贵州茅台 2026年一季报 合同负债 经营活动现金流' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2026年一季报 合同负债 经营活动现金流
+    url: https://www.moutaichina.com/mtgf/articleFileDir/2026-04/27/3b584de59d4349158f5907e25e7a4b3e.pdf
+    domain: moutaichina.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:08.129776+00:00'
+    stale_at: '2026-07-28T13:57:08.129776+00:00'
+    expire_at: '2026-09-26T13:57:08.129776+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-55eccd
+  filename: 2026-06-28_贵州茅台一季报出炉-总营收约547-03亿元.md
+  source_type: web-search
+  added: '2026-06-28T13:57:08.199701+00:00'
+  processed: false
+  notes: query='贵州茅台 2026年一季报 合同负债 经营活动现金流' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 贵州茅台 2026年一季报 合同负债 经营活动现金流
+    url: http://www.news.cn/enterprise/20260424/2c5a81efc8ad4110840f7f48a83fe2ef/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:08.180491+00:00'
+    stale_at: '2026-07-28T13:57:08.180491+00:00'
+    expire_at: '2026-09-26T13:57:08.180491+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-40dcca
+  filename: 2026-06-28_独家-茅台1935降出厂价至668元-瓶-每瓶降130元.md
+  source_type: web-search
+  added: '2026-06-28T13:57:08.258037+00:00'
+  processed: false
+  notes: query='茅台 2026年 基酒产能 产量 系列酒 1935 批价' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台 2026年 基酒产能 产量 系列酒 1935 批价
+    url: https://www.lanjinger.com/d/1768200839086714396
+    domain: lanjinger.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:08.237531+00:00'
+    stale_at: '2026-07-28T13:57:08.237531+00:00'
+    expire_at: '2026-09-26T13:57:08.237531+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cbf503
+  filename: 2026-06-28_贵州茅台-600519-sh-卖方研报.md
+  source_type: web-search
+  added: '2026-06-28T13:57:08.311214+00:00'
+  processed: false
+  notes: query='茅台 2026年 基酒产能 产量 系列酒 1935 批价' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台 2026年 基酒产能 产量 系列酒 1935 批价
+    url: https://pdf.dfcfw.com/pdf/H3_AP202603191820648186_1.pdf?1773942674000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:08.291132+00:00'
+    stale_at: '2026-07-28T13:57:08.291132+00:00'
+    expire_at: '2026-09-26T13:57:08.291132+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3ea608
+  filename: 2026-06-28_股票行情快报-贵州茅台-600519-6月22日主力资金净买入2-65亿元.md
+  source_type: web-search
+  added: '2026-06-28T13:57:49.063586+00:00'
+  processed: false
+  notes: query='贵州茅台 600519 2026年6月 最新公告 业绩说明会 股价'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 600519 2026年6月 最新公告 业绩说明会 股价
+    url: https://m.sohu.com/a/1040066418_121319643?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334
+    domain: m.sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:57:49.041506+00:00'
+    stale_at: '2026-07-28T13:57:49.041506+00:00'
+    expire_at: '2026-09-26T13:57:49.041506+00:00'
+    triggered_by: 00-prescan
+- id: mat-fc51b2
+  filename: 2026-06-28_xd贵州茅1168-63--1-30-公司公告---新浪.md
+  source_type: web-search
+  added: '2026-06-28T13:57:49.123859+00:00'
+  processed: false
+  notes: query='贵州茅台 600519 2026年6月 最新公告 业绩说明会 股价'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 600519 2026年6月 最新公告 业绩说明会 股价
+    url: https://money.finance.sina.com.cn/corp/go.php/vCB_AllBulletin/stockid/600519.phtml
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:57:49.101722+00:00'
+    stale_at: '2026-07-28T13:57:49.101722+00:00'
+    expire_at: '2026-09-26T13:57:49.101722+00:00'
+    triggered_by: 00-prescan
+- id: mat-a527fe
+  filename: 2026-06-28_贵州茅台-600519---重大事项备忘--股票行情中心--搜狐证券.md
+  source_type: web-search
+  added: '2026-06-28T13:57:49.182731+00:00'
+  processed: false
+  notes: query='贵州茅台 600519 2026年6月 最新公告 业绩说明会 股价'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 600519 2026年6月 最新公告 业绩说明会 股价
+    url: https://q.stock.sohu.com/cn/600519/bw.shtml
+    domain: q.stock.sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:57:49.160317+00:00'
+    stale_at: '2026-07-28T13:57:49.160317+00:00'
+    expire_at: '2026-09-26T13:57:49.160317+00:00'
+    triggered_by: 00-prescan
+- id: mat-28b6ae
+  filename: 2026-06-28_i茅台月活破1500万-飞天批价上涨百余元-茅台市场化改革成功-回血--36氪.md
+  source_type: web-search
+  added: '2026-06-28T13:57:49.246721+00:00'
+  processed: false
+  notes: query='茅台 直营 i茅台 渠道改革 2026 最新进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 直营 i茅台 渠道改革 2026 最新进展
+    url: https://m.36kr.com/p/3680192568619524
+    domain: m.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:57:49.224017+00:00'
+    stale_at: '2026-07-28T13:57:49.224017+00:00'
+    expire_at: '2026-09-26T13:57:49.224017+00:00'
+    triggered_by: 00-prescan
+- id: mat-f5dffc
+  filename: 2026-06-28_茅台经销模式大变革-直营红利-渠道重塑与股价价值重估路径---雪球.md
+  source_type: web-search
+  added: '2026-06-28T13:57:49.307966+00:00'
+  processed: false
+  notes: query='茅台 直营 i茅台 渠道改革 2026 最新进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 茅台 直营 i茅台 渠道改革 2026 最新进展
+    url: https://xueqiu.com/4124808674/379937466
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T13:57:49.284802+00:00'
+    stale_at: '2026-07-28T13:57:49.284802+00:00'
+    expire_at: '2026-09-26T13:57:49.284802+00:00'
+    triggered_by: 00-prescan
+- id: mat-bde7c2
+  filename: 2026-06-28_以消费者为中心-全面驱动推进渠道体系市场化变革.md
+  source_type: web-search
+  added: '2026-06-28T13:57:59.384572+00:00'
+  processed: false
+  notes: query='茅台 直营 i茅台 渠道改革 2026 最新进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台 直营 i茅台 渠道改革 2026 最新进展
+    url: https://www.moutaichina.com/mtgf/2026-01/09/article_2026010921215256657.html
+    domain: moutaichina.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:59.360080+00:00'
+    stale_at: '2026-07-28T13:57:59.360080+00:00'
+    expire_at: '2026-09-26T13:57:59.360080+00:00'
+    triggered_by: 00-prescan
+- id: mat-5aa1cb
+  filename: 2026-06-28_深度-i茅台重塑贵州茅台.md
+  source_type: web-search
+  added: '2026-06-28T13:57:59.450698+00:00'
+  processed: false
+  notes: query='茅台 直营 i茅台 渠道改革 2026 最新进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台 直营 i茅台 渠道改革 2026 最新进展
+    url: https://www.jiemian.com/article/13870647.html
+    domain: jiemian.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:59.426064+00:00'
+    stale_at: '2026-07-28T13:57:59.426064+00:00'
+    expire_at: '2026-09-26T13:57:59.426064+00:00'
+    triggered_by: 00-prescan
+- id: mat-1b68d9
+  filename: 2026-06-28_茅台2026年市场化转型落地-i茅台将上线500ml飞天.md
+  source_type: web-search
+  added: '2026-06-28T13:57:59.515914+00:00'
+  processed: false
+  notes: query='茅台 直营 i茅台 渠道改革 2026 最新进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 茅台 直营 i茅台 渠道改革 2026 最新进展
+    url: https://www.lanjinger.com/d/1767101012008497759
+    domain: lanjinger.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-28T13:57:59.491023+00:00'
+    stale_at: '2026-07-28T13:57:59.491023+00:00'
+    expire_at: '2026-09-26T13:57:59.491023+00:00'
+    triggered_by: 00-prescan
+- id: mat-e1f629
+  filename: 2026-06-28_飞天茅台批发价再度失守1499元关口-终端零售均价已连跌9天---21经济网.md
+  source_type: web-search
+  added: '2026-06-28T14:04:09.832464+00:00'
+  processed: false
+  notes: query='飞天茅台 批价 日频 2025 2026 散瓶 原箱 价格序列'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台 批价 日频 2025 2026 散瓶 原箱 价格序列
+    url: https://www.21jingji.com/article/20260104/herald/f8f4cfca18e2eb8d6a2825ac93cab6aa.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:04:09.808640+00:00'
+    stale_at: '2026-07-28T14:04:09.808640+00:00'
+    expire_at: '2026-09-26T14:04:09.808640+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a228e1
+  filename: 2026-06-28_跌破1499-飞天茅台-飞不动了.md
+  source_type: web-search
+  added: '2026-06-28T14:04:09.903158+00:00'
+  processed: false
+  notes: query='飞天茅台 批价 日频 2025 2026 散瓶 原箱 价格序列'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 飞天茅台 批价 日频 2025 2026 散瓶 原箱 价格序列
+    url: https://www.stcn.com/article/detail/3552833.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:04:09.879436+00:00'
+    stale_at: '2026-07-28T14:04:09.879436+00:00'
+    expire_at: '2026-09-26T14:04:09.879436+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d90bd1
+  filename: 2026-06-28_华创证券-贵州茅台600519深度研究报告雄关漫道真如铁-而今迈步从头越---发现报告.md
+  source_type: web-search
+  added: '2026-06-28T14:04:09.978057+00:00'
+  processed: false
+  notes: query='贵州茅台 600519 卖方 深度研报 2026 展望 目标价 中金 华创'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 600519 卖方 深度研报 2026 展望 目标价 中金 华创
+    url: https://www.fxbaogao.com/detail/5469598
+    domain: fxbaogao.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:04:09.954462+00:00'
+    stale_at: '2026-07-28T14:04:09.954462+00:00'
+    expire_at: '2026-09-26T14:04:09.954462+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3d33cd
+  filename: 2026-06-28_贵州茅台-sh600519-研究报告-研究评级-机构研报-新浪财经.md
+  source_type: web-search
+  added: '2026-06-28T14:04:10.068750+00:00'
+  processed: false
+  notes: query='贵州茅台 600519 一致预期 2026 2027 EPS 营收 目标价 Wind Bloomberg'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 600519 一致预期 2026 2027 EPS 营收 目标价 Wind Bloomberg
+    url: http://vip.stock.finance.sina.com.cn/q/go.php/vReport_List/kind/search/index.phtml?symbol=sh600519&orgname=&industry=&title=&t1=all
+    domain: vip.stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:04:10.043684+00:00'
+    stale_at: '2026-07-28T14:04:10.043684+00:00'
+    expire_at: '2026-09-26T14:04:10.043684+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d597ca
+  filename: 2026-06-28_贵州茅台-600519-未来5年-2026-2031-股价-核心看业绩稳健.md
+  source_type: web-search
+  added: '2026-06-28T14:04:10.135495+00:00'
+  processed: false
+  notes: query='贵州茅台 600519 一致预期 2026 2027 EPS 营收 目标价 Wind Bloomberg'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 贵州茅台 600519 一致预期 2026 2027 EPS 营收 目标价 Wind Bloomberg
+    url: https://xueqiu.com/6501328045/376868258
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:04:10.111136+00:00'
+    stale_at: '2026-07-28T14:04:10.111136+00:00'
+    expire_at: '2026-09-26T14:04:10.111136+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b9693f
+  filename: 2026-06-28_贵州茅台历年pe分析和投资建议---雪球.md
+  source_type: web-search
+  added: '2026-06-28T14:04:10.211142+00:00'
+  processed: false
+  notes: query='贵州茅台 历史PE 估值区间 月度序列 2010-2026 市盈率 分位'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 2013-2014 茅台 批价 营收 PE 月度 序列 量化 复盘
+    url: https://xueqiu.com/1978016341/344772805
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:11:36.747309+00:00'
+    stale_at: '2026-07-28T14:11:36.747309+00:00'
+    expire_at: '2026-09-26T14:11:36.747309+00:00'
+    triggered_by: 01-deep-fetch
+    prev_queries:
+    - 贵州茅台 历史PE 估值区间 月度序列 2010-2026 市盈率 分位
+- id: mat-b25d3e
+  filename: 2026-06-28_japan-s-whisky-bubble-goes-flat-as-chinese-demand-.md
+  source_type: web-search
+  added: '2026-06-28T14:11:36.837753+00:00'
+  processed: false
+  notes: query='Japanese whisky price bubble 1990 Yamazaki Hibiki index collapse'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Japanese whisky price bubble 1990 Yamazaki Hibiki index collapse
+    url: https://asia.nikkei.com/business/food-beverage/japan-s-whisky-bubble-goes-flat-as-chinese-demand-dries-up
+    domain: asia.nikkei.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:11:36.812341+00:00'
+    stale_at: '2026-07-28T14:11:36.812341+00:00'
+    expire_at: '2026-09-26T14:11:36.812341+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-5c8a1c
+  filename: 2026-06-28_飞天茅台价格失守1500关口-行业转型压力初步浮现---新浪财经.md
+  source_type: web-search
+  added: '2026-06-28T14:12:20.471741+00:00'
+  processed: false
+  notes: query='飞天批价 1500 茅台投资性库存 渠道抛售压力'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 飞天批价 1500 茅台投资性库存 渠道抛售压力
+    url: https://finance.sina.com.cn/stock/aigcy/2025-12-17/doc-inhcazqi7483121.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:12:20.445899+00:00'
+    stale_at: '2026-07-28T14:12:20.445899+00:00'
+    expire_at: '2026-09-26T14:12:20.445899+00:00'
+    triggered_by: 01-prescan
+- id: mat-8ddffa
+  filename: 2026-06-28_茅台批发价跌破1499元-业内-1300元附近才有-硬支撑---21经济网.md
+  source_type: web-search
+  added: '2026-06-28T14:12:20.551843+00:00'
+  processed: false
+  notes: query='飞天批价 1500 茅台投资性库存 渠道抛售压力'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 飞天批价 1500 茅台投资性库存 渠道抛售压力
+    url: https://www.21jingji.com/article/20251212/herald/c15fa26656908fae1e51f290d4950149.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:12:20.525834+00:00'
+    stale_at: '2026-07-28T14:12:20.525834+00:00'
+    expire_at: '2026-09-26T14:12:20.525834+00:00'
+    triggered_by: 01-prescan
+- id: mat-97a489
+  filename: 2026-06-28_茅台前三季度净利润近650亿元-合同负债环比大增逾40---21经济网.md
+  source_type: web-search
+  added: '2026-06-28T14:12:20.638451+00:00'
+  processed: false
+  notes: query='茅台 2026年Q2 业绩 合同负债 经销商打款意愿'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 茅台 2026年Q2 业绩 合同负债 经销商打款意愿
+    url: https://www.21jingji.com/article/20251030/herald/c37e2667cc2be92de61b33d031e475cd.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:12:20.611691+00:00'
+    stale_at: '2026-07-28T14:12:20.611691+00:00'
+    expire_at: '2026-09-26T14:12:20.611691+00:00'
+    triggered_by: 01-prescan
+- id: mat-1697bd
+  filename: 2026-06-28_合同负债骤降65-茅台回应-渠道大变革-茅台-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-06-28T14:12:20.718489+00:00'
+  processed: false
+  notes: query='茅台 2026年Q2 业绩 合同负债 经销商打款意愿'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 茅台 2026年Q2 业绩 合同负债 经销商打款意愿
+    url: https://finance.sina.com.cn/wm/2026-05-11/doc-inhxpxwx1728102.shtml?froms=ggmp
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:12:20.690925+00:00'
+    stale_at: '2026-07-28T14:12:20.690925+00:00'
+    expire_at: '2026-09-26T14:12:20.690925+00:00'
+    triggered_by: 01-prescan
+- id: mat-19b7a4
+  filename: 2026-06-28_直击茅台股东大会-回应i茅台抢不到酒-上市以来分红超4000亿-陈华喊话股东保持耐心-新浪财经-新浪.md
+  source_type: web-search
+  added: '2026-06-28T14:12:20.803597+00:00'
+  processed: false
+  notes: query='茅台 分红率 提升 陈华 股东回报 贵州财政'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 茅台 分红率 提升 陈华 股东回报 贵州财政
+    url: https://finance.sina.com.cn/jjxw/2026-06-11/doc-inicaenm0663499.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:12:20.775988+00:00'
+    stale_at: '2026-07-28T14:12:20.775988+00:00'
+    expire_at: '2026-09-26T14:12:20.775988+00:00'
+    triggered_by: 01-prescan
+- id: mat-5b6a82
+  filename: 2026-06-28_陈华回应i茅台难抢-喊话对股价保持耐心-36氪.md
+  source_type: web-search
+  added: '2026-06-28T14:12:20.880806+00:00'
+  processed: false
+  notes: query='茅台 分红率 提升 陈华 股东回报 贵州财政'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 茅台 分红率 提升 陈华 股东回报 贵州财政
+    url: https://m.36kr.com/p/3849657136698375
+    domain: m.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:12:20.851448+00:00'
+    stale_at: '2026-07-28T14:12:20.851448+00:00'
+    expire_at: '2026-09-26T14:12:20.851448+00:00'
+    triggered_by: 01-prescan
+- id: mat-40d3f8
+  filename: 2026-06-28_三年分红率不低于75-贵州茅台-真金白银-回报投资者---上海证券报.md
+  source_type: web-search
+  added: '2026-06-28T14:12:20.963843+00:00'
+  processed: false
+  notes: query='茅台 分红率 提升 陈华 股东回报 贵州财政'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 茅台 分红率 提升 陈华 股东回报 贵州财政
+    url: https://m.cnstock.com/commonDetail/228659
+    domain: m.cnstock.com
+    domain_tier: whitelist
+    searched_at: '2026-06-28T14:12:20.935893+00:00'
+    stale_at: '2026-07-28T14:12:20.935893+00:00'
+    expire_at: '2026-09-26T14:12:20.935893+00:00'
+    triggered_by: 01-prescan
