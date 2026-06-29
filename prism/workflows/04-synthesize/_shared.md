@@ -44,9 +44,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 
 任一红项非空 → **不要硬合成**，否则 3 份决策链产出全是"未充分论证"占位。先决定补救：即兴 web-search（_shared.md 末尾的"即兴 web-search"段）/ sub-agent 深挖 / 回 02 补资料。这是诊断不是 gate——脚本不会拒绝前进，但跳过等于让 05 critic 把雷踩回来。
 
-> **复用起手的 `*-mirror` 标红属预期**（坑④）：换模型/复用旧料起手时，`historical-mirror`/`industry-mirror`/`arena-mirror`（hard，环⑤）几乎必报 🔴——复用的年报/研报本就不含"曾经的赢家如何被取代"。这不是可补料缺口：环⑤ 从训练知识补镜鉴并明标 **"训练知识估算 / depth 降级"**（照搬 §2.4），不必为它回 02 搜料。其余 `*-mirror` 之外的红项才按上面的补救路径处理。
-
-> ring 轴 `uncovered_ring_inputs` 直接映射到"哪个决策环写作时缺输入硬落地"——比 K# 更早暴露断链风险。这也是下面**B 轴有界 delta 重拆**的输入之一。
+> 📎 *复用 \*-mirror 标红属预期 / ring 轴语义 → 附录 A-gap（执行时可跳过）*
 
 ## 增量重写判定（默认开启）
 
@@ -87,7 +85,7 @@ set_output_referenced_mats('{slug}', '{output_key}', {mat_ids_list}, '{variant}'
 
 > **B 轴 = 命门拆解 + primer 入门目标拆解**，同住 `decomposition_v{N}.md`、共用本节这一套 delta 重拆 / changelog / 收敛判定（两者知识驱动、盲点同源，不另起第二套螺旋）。命门 delta 在写 case 时做，primer 入门目标 delta 在写 primer（各路径 Step 2）时做——两者都早于本节末尾的 `decomposition_v1` 持久化。
 
-> **为什么在写作期才做深度拆解**：00 的 `decomposition_v0` 是**薄知识**拆的（训练知识+prescan），其可靠性原理上无法认证（任何裁判也薄知识绑定）。真正的可靠性闸门是**厚料浮现后**的重拆——写 case 时读遍 findings，命门会自然浮现/移位/坍塌。这一步把它固化为 `decomposition_v1`。
+> 📎 *为什么写作期才深拆 → 附录 A-whyB（执行时可跳过）*
 
 ### 1. delta 校验（读完 findings、动笔写 case 前）
 
@@ -131,7 +129,7 @@ set_decomposition(
 
 - **顽固命门**（撞 2 轮顶仍未解、但确实决定成败）→ 不在 04 死磕，`convergence_status='capped'` + 踢 `07-drilldown` 专项深挖。**收尾时必须执行 capped→suggested_drilldowns 回流（硬步骤）**：LLM 把每条残留命门翻成 1 条建议结构化写入（`source=capped_decomposition`、related 填命门覆盖的 K#），调 `set_suggested_drilldowns(mode='replace')`——建议从此不再是塞进 next_actions 的纯文本，而是 topic.yaml 的独立字段，web 独立「🔍 建议深挖」块展示。
 
-  > **三类型差异说明（防混淆）**：此 drilldown 是「同 topic 内专题深挖」，与 industry 环⑥「派生 arena/company 子 topic」**两条线、不重叠**——命门指向某子赛道/子公司证据不足→优先建子 topic stub（环⑥已管）；`suggested_drilldowns` 专管「留在本 topic、一篇 07 笔记就能补强」的未收敛命门。
+  > 📎 *三类型 drilldown 差异（防混淆）→ 附录 A-drilltype（执行时可跳过）*
 
 ## 断点续跑（修 9：workflow resume）
 
@@ -186,7 +184,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
 **默认走主 agent 直做模式**——主 agent 读完 findings 后直接 Write case/决策链产出（`{c/i/a}_*_case` + sidecar yaml + thesis_v1，primer 已在 Step 2 先出），用 Write 工具并行批次（一次 message 发多个 Write 调用）。
 
-> **为什么主 agent 直做**：subagent 批量合成会撞 60min 硬墙（长产出 token 输出 + findings 读取必超时）+ Write 幻觉重试，实测两次 0 落盘。主 agent 直做无 wallclock 上限、并行 Write 快 3-5×、可中途救。详见 [[feedback_subagent_bulk_synthesis]]。
+> 📎 *为什么主 agent 直做 → 附录 A-mainagent（执行时可跳过）*
 
 ### 执行步骤
 
@@ -342,7 +340,7 @@ set_suggested_drilldowns('{slug}', '{variant}', [
 - 禁止只写"v{N-1} → v{N} 增量"而省略其他章节
 - v0 是天然全快照（无 parent），五段式（见 00-research-topic 5.0）；v1 起改用本约定 11 段式
 
-**为什么这样写**：用户阅读 thesis_vN 时只需打开一个文件即可看到当前完整画像；老版本（thesis_v0/v1/...）作为时点 archive 保留，仅供需要还原"当时怎么想的"时翻阅，不作为日常 review 的依赖。
+> 📎 *为什么全快照写法 → 附录 A-schemeC（执行时可跳过）*
 
 写完调脚本登记：
 
@@ -372,7 +370,7 @@ print('thesis v1 已登记')
 2. **收敛状态**：`decomposition` 的 `convergence_status`（converged / capped / open）+ 走了几轮第二收料趟。
 3. **残留缺口清单（诚实）**：填不上的明写"**数据缺失**"或"**训练知识估算，非实证**"，**不冒充**；撞 2 轮顶的顽固命门列出 + 标记踢 `07-drilldown`。**findings 撑不起的 primer 入门目标**同样列出（"入门目标 X：数据缺失 / 训练知识估算"），与 primer `depth: shallow` 降级口径一致、互为补充。
 
-> 三件套兜底 = 残留缺口清单（本步）+ 05 critic 复核 + 用户手检。薄拆解的不确定性靠这三层兜，不假装 04 一定收敛干净。
+> 📎 *三件套兜底哲学 → 附录 A-triple（执行时可跳过）*
 
 **stage 推进到 critic-review（修 7）**：04 完成后 stage 自动应为 `04-post-synthesis` → 由 next_stage 推到 `05-critic-review`（**三类 topic 第 6 阶段统一为评审**）。**company / default 类型必须跑 critic-review** 才能进 done；**industry / arena 的评审非强制**——可在对话里跑评审，或在 web 详情页点「✓ 标记完成」直接 `done`（旧 `09-arena-shortlist` / `10-peer-matrix` stage 名已退休）。
 
@@ -397,7 +395,7 @@ if ns == '05-critic-review':
 - **arena** → peer shortlist 是 `_arena_funnel.md` 环⑥（落 `peer_matrix.yaml` + 建 company stub），`_peer_matrix_spec.md` 同样降级为工具规范。
 - **company** → 无 selection 环，c_investment_case 即完整决策。
 
-> Tier 排序基于本 topic 的 thesis 最新版 + 决策链 ②④（funnel 文档 Step 1 已要求读 brief + thesis）。
+> 📎 *Tier 排序依据 → 附录 A-tier（执行时可跳过）*
 
 ### primer 由各路径 Step 2 自管（primer-first）
 
@@ -449,3 +447,39 @@ finding**，05-critic 也能直接读到论据。
 - 如果即兴搜不到 → 在该段产出中标注"此处数据缺失，建议人工补充"，不要编造数字
 - URL/snippet 必须来自 WebSearch 工具实际返回，不得用训练记忆补 URL
 - 显式 `inline_finding=False` 关掉自动产 finding（罕见）
+
+---
+
+## 附录 A — rationale / 反例 / 历史教训（执行时可跳过，调试 / 维护时查）
+
+> 本附录收纳从各步主流程搬出的"为什么 / 反例 / 历史教训 / memory 链接 / inline worked example"。**主流程逐字未删、只是移出执行动线**；要看某步的来龙去脉，按对应小节查。
+
+### 附录 A-gap — `*-mirror` 标红属预期 + ring 轴语义
+
+> **复用起手的 `*-mirror` 标红属预期**（坑④）：换模型/复用旧料起手时，`historical-mirror`/`industry-mirror`/`arena-mirror`（hard，环⑤）几乎必报 🔴——复用的年报/研报本就不含"曾经的赢家如何被取代"。这不是可补料缺口：环⑤ 从训练知识补镜鉴并明标 **"训练知识估算 / depth 降级"**（照搬 §2.4），不必为它回 02 搜料。其余 `*-mirror` 之外的红项才按上面的补救路径处理。
+
+> ring 轴 `uncovered_ring_inputs` 直接映射到"哪个决策环写作时缺输入硬落地"——比 K# 更早暴露断链风险。这也是下面**B 轴有界 delta 重拆**的输入之一。
+
+### 附录 A-whyB — 为什么写作期才做深度拆解
+
+> **为什么在写作期才做深度拆解**：00 的 `decomposition_v0` 是**薄知识**拆的（训练知识+prescan），其可靠性原理上无法认证（任何裁判也薄知识绑定）。真正的可靠性闸门是**厚料浮现后**的重拆——写 case 时读遍 findings，命门会自然浮现/移位/坍塌。这一步把它固化为 `decomposition_v1`。
+
+### 附录 A-drilltype — 三类型 drilldown 差异（防混淆）
+
+> **三类型差异说明（防混淆）**：此 drilldown 是「同 topic 内专题深挖」，与 industry 环⑥「派生 arena/company 子 topic」**两条线、不重叠**——命门指向某子赛道/子公司证据不足→优先建子 topic stub（环⑥已管）；`suggested_drilldowns` 专管「留在本 topic、一篇 07 笔记就能补强」的未收敛命门。
+
+### 附录 A-mainagent — 为什么主 agent 直做
+
+> **为什么主 agent 直做**：subagent 批量合成会撞 60min 硬墙（长产出 token 输出 + findings 读取必超时）+ Write 幻觉重试，实测两次 0 落盘。主 agent 直做无 wallclock 上限、并行 Write 快 3-5×、可中途救。详见 [[feedback_subagent_bulk_synthesis]]。
+
+### 附录 A-schemeC — 为什么全快照写法
+
+**为什么这样写**：用户阅读 thesis_vN 时只需打开一个文件即可看到当前完整画像；老版本（thesis_v0/v1/...）作为时点 archive 保留，仅供需要还原"当时怎么想的"时翻阅，不作为日常 review 的依赖。
+
+### 附录 A-triple — 三件套兜底哲学
+
+> 三件套兜底 = 残留缺口清单（本步）+ 05 critic 复核 + 用户手检。薄拆解的不确定性靠这三层兜，不假装 04 一定收敛干净。
+
+### 附录 A-tier — Tier 排序依据
+
+> Tier 排序基于本 topic 的 thesis 最新版 + 决策链 ②④（funnel 文档 Step 1 已要求读 brief + thesis）。
