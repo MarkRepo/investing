@@ -407,6 +407,16 @@ print('m_regime_read 数据时效已标记')
 
 ## 附：与 arena/company 路径的关系
 
+> 📎 *与 arena/company 路径的对照表 → 附录 A附（执行时可跳过）*
+
+---
+
+## 附录 A — rationale / 反例 / 历史教训（执行时可跳过，调试 / 维护时查）
+
+> 本附录收纳从各步主流程搬出的"为什么 / 反例 / 历史教训 / memory 链接 / inline worked example"。**主流程逐字未删、只是移出执行动线**；要看某步的来龙去脉，按对应小节查。
+
+### 附录 A附 — 与 arena/company 路径对照表
+
 | | arena `_arena_funnel.md` | company `_company_case.md` | **macro 本文件** |
 |---|---|---|---|
 | 组织原则 | 理解先行 + 6 环决策漏斗 | 理解先行 + 决策链 | **理解先行 + 四层因果链（L1→L4）** |
