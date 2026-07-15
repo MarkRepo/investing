@@ -1,0 +1,159 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-baili-688506
+variant: sonnet5
+type: company
+created: 2026-07-03
+thesis_version: 0
+decomposition_version: 0
+
+# L1/L2 已坍缩为 primer_scope（背景理解层交给 00_primer，primer-first）
+primer_scope: >
+  00_primer 须覆盖：双特异性抗体偶联药物(bispecific ADC)技术原理及与传统单抗ADC的核心区别；
+  BD交易"首付款+里程碑款+销售分成"财务确认机制及其对营收造成的大幅波动（如2025营收-56.72%的会计成因）；
+  "药物获批"与"商业化放量"两阶段的本质差异及各自观测指标；
+  biotech PS估值逻辑及不同商业化阶段的合理PS区间参照；
+  EGFR×HER3双靶点机理及鼻咽癌/NSCLC适应症临床意义；
+  港股IPO各阶段含义（递表→失效→重新递表→聆讯通过→发售），H股"三度受挫"具体卡点；
+  创始人集中持股(74.35%)对公司治理的双面性；
+  A股定增(37.64亿元)常见用途及对现有股东的稀释影响；
+  FDA突破性疗法认定(BTD)与"获批"的区别；
+  公司三大技术平台(HIRE-ADC/GNC多特异性抗体/HIRE-ARC核药偶联)各自路线及成熟度差异。
+
+learning_track:
+  # L3 争议层 → 喂决策链环④（多空分歧、共识可能错在哪）
+  l3_debates:
+    - question: >
+        PS(TTM)~43.6x是否已隐含"商业化零瑕疵放量+BMS里程碑连续兑现"的近乎完美假设？
+        2025年营收-56.72%、归母净利润转亏10.54亿、BMS 84亿美元里目前仅兑现2.5亿(~12.5%)，
+        实证节奏与估值隐含节奏之间的裂口有多宽、多久能补上？
+      source_hint: 2025年报/2026Q1季报财务数据 + BMS里程碑详细条款(mat-65b873) + 卖方目标价模型(mat-6a4f36)；命门1/2 主战场
+    - question: >
+        传统仿制药"现金压舱石"持续失血（化药制剂2022-2025从5.35亿降至2.84亿，中成药同期从1.67亿降至0.96亿）
+        叠加H股三度受挫（2025-10/2025-11-12再度延迟）+ 37.64亿定增尚未完成——
+        公司在iza-bren真正放量前的资金链弹性，是否比"10年10亿投入"的故事讲得更紧？
+      source_hint: 定增募集说明书注册稿(mat-55c5b7) + H股延迟进展(mat-1d9460) + 年报现金流/研发占比数据；命门3 主战场
+    - question: >
+        平台叙事目前是否高度依赖iza-bren单一资产？T-Bren/BL-M07D1/SI-B001等第二梯队资产
+        能否在未来12个月内产出显著III期读出，验证"平台型多资产"而非"单资产赌注"？
+        若iza-bren放量不及预期，公司是否缺乏立即可替补的第二增长曲线？
+      source_hint: T-Bren III期公告(mat-a71814) + 卖方深度报告T-Bren进展(mat-6a4f36)
+    - question: >
+        卖方一致目标价336-386元 vs thesis自定安全边际190-230元——分歧根源是否在于
+        卖方对BMS后续里程碑兑现确定性/iza-bren peak sales假设过于线性外推，
+        还是thesis对"获批初期即遇冷"的假设过于保守？
+      source_hint: 卖方深度报告目标价共识(mat-6a4f36) + 可比中国biotech(荣昌生物/科伦博泰)历史PS轨迹（缺口，需补）
+    - question: >
+        创始人朱义74.35%绝对控股——利益绑定优势(2021-2023亏损期未现资金链断裂)
+        vs 关键人/治理集中风险——在H股上市/定增等重大资本运作决策上，
+        是否存在中小股东利益可能被牺牲的治理隐患？
+      source_hint: 创始人资本投入史(mat-696b65/mat-682fda/mat-0bd93c) + 定增条款(mat-55c5b7)
+
+  # L4 狩猎层 → 喂 K#（找错误定价，逐条对齐 thesis Killer Question）
+  l4_hunting:
+    - question: >
+        iza-bren获批后2026年"商业化元年"Q3/Q4单季度收入能否出现实质性、非一次性里程碑款驱动的正增长放量？
+      addresses: [K1]
+      search_keywords: [iza-bren 商业化, 伦康依隆妥单抗 销售, 百利天恒 Q3业绩]
+      source_hint: 2026Q3/Q4季报 + 医保准入/院内准入进展公告（获批太新，本轮多半仍是"待观测"而非"可收料"）
+    - question: >
+        BMS后续里程碑（84亿美元总额中尚未触发的部分）能否在2026-2027年内按可观测节奏继续触发，
+        还是长期停滞在"仅2.5亿美元"水平？
+      addresses: [K2]
+      search_keywords: [BMS 里程碑 触发, BL-B01D1 milestone, 百利天恒 BMS 付款]
+      source_hint: BMS 10-K/10-Q披露 + 公司自愿披露公告；已有里程碑条款(mat-65b873)，本轮跟踪新触发事件
+    - question: >
+        H股上市能否在2026年内重启并实际完成挂牌（而非再度延迟）？
+      addresses: [K3]
+      search_keywords: [百利天恒 H股 上市, 港交所 挂牌 进展, 百利天恒 招股]
+      source_hint: 港交所披露易公告 + 公司公告；已有延迟进展(mat-1d9460)，本轮跟踪重启信号
+    - question: >
+        T-Bren/BL-M07D1/SI-B001等第二梯队资产能否在未来12个月内产出显著III期积极读出？
+      addresses: [K4]
+      search_keywords: [T-Bren III期, BL-M07D1 临床, SI-B001 数据]
+      source_hint: ASCO/ESMO会议摘要 + 公司公告；已有T-Bren III期进展(mat-a71814/mat-6a4f36)
+    - question: >
+        FDA BLA提交时间是否较原定2028-2029年预期提前（或进一步推迟）？
+      addresses: [K5]
+      search_keywords: [iza-bren FDA BLA, 全球注册临床, BL-B01D1 美国上市]
+      source_hint: 投资者交流记录/业绩说明会问答；已有时间线判断(mat-e560cb)，本轮跟踪管理层最新表态
+
+material_priority:
+  tier1:
+    - title: 2025年年度报告（全文）
+      type: annual-report
+      ticker: SSE_688506
+      source: cninfo（已自动下载）
+      why: 2025营收-56.72%/转亏10.54亿/研发占比99.75%的一手数据来源，命门1-3共用底座
+      addresses: [K1, K2, K3]
+    - title: 2026年一季度报告
+      type: quarterly-report
+      ticker: SSE_688506
+      source: cninfo（已自动下载）
+      why: iza-bren获批前最后一份季报，作为放量前基线对照
+      addresses: [K1]
+    - title: BMS BD协议里程碑详细条款
+      type: data
+      source: 公司公告/财经媒体（已收，mat-65b873）
+      why: 84亿美元总额构成+触发条件，是K2判断的直接依据
+      addresses: [K2]
+    - title: H股上市延迟最新进展
+      type: policy
+      source: 财经媒体（已收，mat-1d9460）
+      why: 三度受挫的具体卡点(2025-11-12/2026-02-10)，K3直接依据
+      addresses: [K3]
+    - title: 卖方深度报告目标价与T-Bren进展
+      type: sell-side-note
+      source: 卖方研报转载（已收，mat-6a4f36）
+      why: 一致目标价336-386元 vs thesis自定190-230元的分歧对照，环③一致预期锚点
+      addresses: [K2, K4]
+    - title: 荣昌生物/Vor Bio 历史BD镜鉴
+      type: industry-research
+      source: 财经媒体复盘（已收，mat-73c26d）
+      why: 首付款过低/交易对手困境导致股价暴跌15-25%的历史类比，喂环⑤historical-mirror
+      addresses: [K2]
+    - title: 可比中国biotech历史PS轨迹（荣昌生物/科伦博泰/行业均值）
+      type: industry-research
+      source: 知了财报网+卖方深度报告（已收，mat-863746）
+      why: 荣昌生物2023年PS峰值39-51x→2024-25回落至18x的历史模式，是K1/K2判断"估值腰斩空间"的直接量化对标；行业PS均值9.7x(国内)/18x(美股)显示百利天恒43.6x的溢价幅度
+      addresses: [K1, K2]
+  tier2:
+    - title: 创始人朱义资本投入史 + 股权结构
+      type: data
+      source: 公开报道（已收，mat-696b65/mat-682fda/mat-0bd93c/mat-015de5）
+      why: 环⑤管理层资本配置track record，验证"10年10亿"打法的历史执行力
+      addresses: [K3]
+    - title: 定增募集说明书（注册稿）
+      type: prospectus
+      ticker: SSE_688506
+      source: cninfo（已自动下载，mat-55c5b7）
+      why: 37.64亿定增具体用途/发行价/稀释比例，资金链缓冲的直接条款依据
+      addresses: [K3]
+    - title: FDA BLA全球注册临床时间线
+      type: data
+      source: 行业媒体（已收，mat-e560cb）
+      why: 预期2029年美国上市（晚中国3年）的时点判断依据
+      addresses: [K5]
+    - title: T-Bren/iza-bren自愿披露公告
+      type: announcement
+      ticker: SSE_688506
+      source: cninfo（已自动下载，mat-267ba6/mat-41932c/mat-a71814）
+      why: 官方一手披露的临床/监管进展节点
+      addresses: [K1, K4]
+  tier3: []
+
+analogies_to_study:
+  - name: 荣昌生物RC48(维迪西妥单抗)授权Seagen — 首付款/临床进展不及预期后估值回落
+    logic: 同为中国ADC/biotech授权海外MNC模式，授权后临床或商业化节奏不及预期引发估值重估
+    limitation: RC48靶点(HER2)与商业化阶段与iza-bren(EGFR×HER3，刚获批)不完全对应，需甄别节奏差异
+  - name: Vor Bio泰它西普授权镜鉴（已收，mat-73c26d）
+    logic: 首付款相对偏低+交易对手自身陷入困境，导致授权方股价单日暴跌15-25%
+    limitation: 非ADC资产、交易对手非BMS级别大药厂，风险传导路径与本案不完全类比，仅作"BD兑现不确定性"的风险幅度参照
+  - name: 科伦博泰与默沙东多款ADC授权 — 商业化里程碑兑现节奏对照（已收，mat-863746）
+    logic: 同为中国ADC平台型公司+海外MNC多资产打包授权（2022年起4笔交易最高118亿美元），可对照里程碑触发/项目中止的实际分布
+    limitation: 2023-10默沙东终止其中2款临床前项目（无需退还/无终止费），当日科伦系股价跌6.9-7.2%——提示"总额百亿美元"里个别子项目中止是常见现象但仍冲击股价，需跟踪BMS的具体项目层面进展而非只看总额数字
+
+key_risks_to_monitor:
+  - iza-bren医保准入谈判结果与定价（获批太新，本轮无法收料，仅列入监控）
+  - BMS下一笔里程碑触发的具体时点公告
+  - H股是否在2026年内给出新的确定发售日期
+  - 37.64亿定增审批进度

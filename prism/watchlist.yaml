@@ -41,3 +41,21 @@ watches:
   kind: null
   locator: null
   added_at: '2026-06-18T14:23:53.388295+00:00'
+- slug: cn-momenta
+  variant: deepseek-v4-pro
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-06-30T05:56:51.187307+00:00'
+- slug: cn-montage-688008
+  variant: opus4.8
+  scope: event
+  kind: signpost
+  locator: d8476f72
+  added_at: '2026-07-14T13:52:15.887167+00:00'
+- slug: pinduoduo
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-07-14T16:27:45.524456+00:00'

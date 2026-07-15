@@ -1,0 +1,464 @@
+slug: cn-advanced-mfg-hbm
+display_name: 中国算力上游制造（先进制程/国产HBM/先进封装）
+type: arena
+created: '2026-07-01T07:36:49.805530+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: cn-ai-compute
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 中国算力上游制造（中芯7nm先进制程、长鑫国产HBM、先进封装/ABF载板/内存接口）哪些环节产能瓶颈受益最确定、利润池最厚、国产化兑现节奏如何
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  short_name: 上游制造
+  search_terms:
+  - 中芯7nm产能
+  - 长鑫HBM
+  - 先进封装
+  - ABF载板
+  - 澜起内存接口
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-02T06:18:59.880457+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-080ac4
+    - mat-20fbcc
+    - mat-29e511
+    - mat-3d9a5f
+    - mat-4fa915
+    - mat-6616e5
+    - mat-717b7c
+    - mat-753e59
+    - mat-990889
+    - mat-a97cd1
+    - mat-ab6480
+    - mat-b487ac
+    - mat-c06719
+    - mat-c2ec5a
+    - mat-d0b3dd
+    - mat-d57d3d
+    - mat-e654e9
+    - mat-f729d8
+    last_error: null
+    critic_passed: true
+  a_arena_case:
+    version: 1
+    last_updated: '2026-07-02T06:25:59.519427+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-080ac4
+    - mat-20fbcc
+    - mat-2307da
+    - mat-29e511
+    - mat-2b3a57
+    - mat-2d0527
+    - mat-3d9a5f
+    - mat-47d25e
+    - mat-4fa915
+    - mat-6616e5
+    - mat-717b7c
+    - mat-745d0f
+    - mat-746a53
+    - mat-753e59
+    - mat-990889
+    - mat-9b6657
+    - mat-a97cd1
+    - mat-ab6480
+    - mat-b487ac
+    - mat-bd53c5
+    - mat-c06719
+    - mat-c2ec5a
+    - mat-d0b3dd
+    - mat-d1c9db
+    - mat-d57d3d
+    - mat-e654e9
+    - mat-ed7074
+    - mat-f729d8
+    last_error: null
+  peer_matrix:
+    version: 1
+    last_updated: '2026-07-02T06:25:59.543956+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-080ac4
+    - mat-20fbcc
+    - mat-2307da
+    - mat-29e511
+    - mat-2b3a57
+    - mat-2d0527
+    - mat-3d9a5f
+    - mat-47d25e
+    - mat-4fa915
+    - mat-6616e5
+    - mat-717b7c
+    - mat-745d0f
+    - mat-746a53
+    - mat-753e59
+    - mat-990889
+    - mat-9b6657
+    - mat-a97cd1
+    - mat-ab6480
+    - mat-b487ac
+    - mat-bd53c5
+    - mat-c06719
+    - mat-c2ec5a
+    - mat-d0b3dd
+    - mat-d1c9db
+    - mat-d57d3d
+    - mat-e654e9
+    - mat-ed7074
+    - mat-f729d8
+    last_error: null
+parent_materials:
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-bcc950
+  addresses:
+  - K1
+  - K2
+  - K3
+  note: 昇腾产业链拆解+上游国产化率——arena 上游各环节国产化率地基
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-1d1f97
+  addresses:
+  - K4
+  - K5
+  note: 半导体国产替代历史镜鉴(面板/存储)——直接喂 K4 京东方式份额≠利润 + historical-mirror 合同
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-9bbdca
+  addresses:
+  - K1
+  note: 华为资本配置与战略史——mgmt-capital-alloc 合同(华为=昇腾BOM需求方)
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-27eea4
+  addresses:
+  - K4
+  - K5
+  note: 算力链估值锚 consensus PE/PS——consensus 合同 + K5 估值折价修复锚
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-f3c41b
+  addresses:
+  - K1
+  note: 智算中心利用率/过剩——需求侧下行风险(反方#3 产能过剩)
+next_actions:
+- arena合成完成：00_primer(deep,critic1轮收敛)+a_arena_case(6环链,chain-critic放行)+peer_matrix+thesis_v1(强度5.5)
+- shortlist深研档3家已建stub：通富(cn-tfme-002156)/长电(cn-jcet-600584)/澜起(cn-montage-688008)——说「prism
+  推进 {company-slug}」深研
+- 可选：说「评审 cn-advanced-mfg-hbm」跑05对抗式steelman；或web详情页点✓标记完成
+user_todos:
+- task: 下载澜起科技 2025年报 + 2026Q1季报（SSE_688008）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  - K5
+  source_hint: cninfo/上交所
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-717b7c
+  - mat-c06719
+  last_fetch_note: cninfo 2份
+- task: 下载中芯国际 2025年报 + 2026Q1季报（SSE_688981）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  source_hint: cninfo/上交所
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-c2ec5a
+  - mat-e654e9
+  last_fetch_note: cninfo 2份
+- task: 下载通富微电 2025年报 + 2026Q1季报（SZSE_002156）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: cninfo/深交所
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2b3a57
+  - mat-b487ac
+  last_fetch_note: cninfo 2份
+- task: 下载长电科技 2025年报 + 2026Q1季报（SSE_600584）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: cninfo/上交所
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2d0527
+  - mat-bd53c5
+  last_fetch_note: cninfo 2份
+- task: 下载兴森科技 2025年报 + 2026Q1季报（SZSE_002436）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: cninfo/深交所
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4fa915
+  - mat-9b6657
+  last_fetch_note: cninfo 2份
+- task: 下载华丰科技 2025年报 + 2026Q1季报（SSE_688629）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: cninfo/上交所
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3d9a5f
+  - mat-ed7074
+  last_fetch_note: cninfo 2份
+- task: 长鑫HBM3进昇腾/寒武纪BOM时间表与容量 + "华为自研HBM"里长鑫DRAM份额构成
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K2
+  source_hint: digitimes/产业链纪要/卖方存储深度
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-080ac4
+  - mat-a97cd1
+  - mat-d0b3dd
+  - mat-d57d3d
+  last_fetch_note: exa深度4份
+- task: 澜起科技AI增量(PCIe Retimer/CKD/MRCD/MRDIMM)营收拆分与增长可持续性卖方深度
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  - K5
+  source_hint: Bernstein/花旗/中金内存接口深度
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2307da
+  - mat-29e511
+  - mat-47d25e
+  - mat-746a53
+  last_fetch_note: exa券商深度4份
+- task: 中芯先进制程(N+2)良率/产能爬坡 + 昇腾超节点系统战对先进制程需求的影响卖方深度
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K4
+  source_hint: 卖方半导体制造深度/昇腾950拆解
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-20fbcc
+  - mat-745d0f
+  - mat-ab6480
+  - mat-f729d8
+  last_fetch_note: exa深度4份
+- task: 国产先进封装CoWoS等效(通富/长电)2.5D/TSV良率与产能进度 + 玻璃基板路线
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 华西/卖方先进封装深度
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6616e5
+  - mat-753e59
+  - mat-990889
+  - mat-d1c9db
+  last_fetch_note: exa深度4份
+- task: 各候选(澜起/中芯/通富/长电/兴森/华丰)当前估值与卖方目标价consensus横比
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: Wind/同花顺/卖方一致预期
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-20fbcc
+  - mat-2307da
+  - mat-27eea4
+  - mat-29e511
+  - mat-47d25e
+  - mat-745d0f
+  - mat-746a53
+  - mat-ab6480
+  - mat-f729d8
+  last_fetch_note: 估值锚内嵌澜起/中芯券商深度+父consensus
+- task: 兴森/深南ABF载板认证/良率/订单进度
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 已由prescan兴森投关+深南对比覆盖
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-cc6e50
+  - mat-7732d7
+- task: CMP耗材/光刻胶国产化率背景
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 已由prescan材料国产替代覆盖
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-40a9d9
+  - mat-09eaef
+- task: 资料提取完成：28份可处理材料全部处理完毕(总47份，另19份为prescan已消化web料)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 产出合成中...
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: arena决策链合成完成(primer+case+peer_matrix+thesis_v1),深研档3家stub已建
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-02T06:28:17.784104+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-02T02:25:11.419067+00:00'
+    summary: 命门1=长鑫HBM3+国产先进封装集成兑现进昇腾BOM(中); 命门2=澜起内存接口铲子利润可持续×估值安全边际(中); 命门3=中芯先进制程份额≠利润被系统战/管制/重资产三杀(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-02T06:28:17.784116+00:00'
+    summary: 三命门全保留并锐化：命门1补红利归属(封测端被沛顿稀释)/命门2收敛到估值纪律/命门3从难判变强证看空;primer 12目标保留强化澜起≠HBM。收敛converged,残留K1/K2结构性单源
+    convergence_status: converged
+    changelog: 命门无增删(3条全保留,均附新证据锐化非震荡);primer目标无删,强化目标7(澜起≠HBM)+新增长鑫红利归属理解点;delta均为锐化非新缺口,双轴仅剩K1/K2结构性单源(官方不披露/未上市),chain-critic无重大断链→converged
+thesis:
+  current_version: 1
+  last_updated: '2026-07-02T06:28:17.749497+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-01T07:38:07.348839+00:00'
+    summary: 上游制造是算力链利润最厚却被冷落的一层(毛利60%+),卖铲人不赌单一赢家;命门在产能可得性(中芯7nm/长鑫HBM3能否规模兑现进BOM),看多赔率但产能证伪风险高。强度5.5
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-02T02:22:55.810833+00:00'
+    summary: 上游制造是算力链利润最厚却被冷落的一层，卖铲人不赌单芯片赢家；但alpha在层内分档——澜起(内存接口,moat已验证+Q1净利+60%)/先进封装/长鑫HBM3(已送样华为冲2026量产)是确定侧，中芯先进制程是卡点但份额≠利润的观察项(昇腾950系统战部分绕过)。命门=产能可得性×利润可捕获性。强度5.5
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 91%（10/11，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-02T06:28:17.749670+00:00'
+    summary: 上游制造利润最厚但层内分化+估值纪律：押证据最强估值最温和的先进封装确定侧(通富/长电)，对最贵共识赢家(中芯PE262,份额≠利润活样本)回避，澜起moat最真但透支等买点。强度5.5
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-02T02:26:16.389210+00:00'
+  exited_at: '2026-07-02T02:48:58.093269+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-02T02:48:58.093269+00:00'
+  exited_at: '2026-07-02T04:31:29.773387+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-02T04:31:29.773387+00:00'
+  exited_at: '2026-07-02T06:30:50.680076+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-02T06:30:50.680076+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 0

@@ -1,0 +1,160 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-baili-688506
+variant: opus4.8
+type: company
+created: 2026-07-03
+thesis_version: 0
+decomposition_version: 0
+
+# L1/L2 已坍缩为 primer_scope（背景理解层交给 00_primer，primer-first）
+primer_scope: >
+  00_primer 须覆盖：双特异性抗体偶联药物(bispecific ADC)技术原理及与传统单抗ADC的核心区别(1+1>2/耐药规避)；
+  EGFR×HER3双靶机理及为何广谱覆盖上皮源肿瘤(阻断同源+异源二聚体)；iza-bren关键技术参数含义(8:1 DAR/可裂解四肽linker/topo I payload Ed-04)；
+  平台型biotech(SEBA+payload+HIRE-ADC三平台协同)vs单资产biotech的商业模式差异；
+  BD授权"首付款+里程碑款+销售分成"三类现金流确认机制及其对营收的大幅扰动(2024营收+936%、2025-56.72%的会计成因)；
+  中国创新药License-out"高总额低首付"模式+里程碑达成率(~22%)/退货率(~40%)现实；
+  "药物获批"与"商业化放量"两阶段本质差异及各自观测指标；各适应症(NPC/NSCLC/ESCC/TNBC/尿路上皮)临床意义与市场量级差异；
+  创新药"烧钱-融资-商业化"周期及研发费用占营收99.75%、经营现金流为负的机理；鼻咽癌后线治疗临床背景与未满足需求；
+  PS/PB对未盈利biotech的估值局限+为何用rNPV/管线期权而非PE；突破性疗法/优先审评/NDA受理→获批的监管路径含义；
+  可比中国biotech(信达/荣昌/百济)BD后估值消化的历史模式(作理解锚)；港股IPO各阶段含义(递表→失效→重递→聆讯→发售/延迟)。
+
+learning_track:
+  # L3 争议层 → 喂决策链环④（多空分歧、共识可能错在哪）
+  l3_debates:
+    - question: >
+        PS(TTM)~55x/市值1404亿是否已隐含"iza-bren全适应症零瑕疵放量+BMS里程碑连续兑现"的近乎完美假设？
+        2025营收-56.72%、归母净利-10.54亿、BMS 84亿美元仅兑现10.5亿(~12.5%)，
+        实证节奏与估值隐含节奏之间的裂口有多宽、多久能补上？(命门1主战场)
+      source_hint: 2025年报/2026Q1季报(mat-4987d2/mat-006a17) + BMS里程碑条款(mat-97a852) + 卖方目标价(mat-620a12) + 父级定价逻辑(cn-adc mat-5ce1dd)
+    - question: >
+        平台叙事目前是否高度依赖iza-bren单一资产？T-Bren/BL-M05D1/BL-M14D1/SI-B001等第二梯队
+        能否在未来12-18个月产出显著III期读出，验证"平台型多资产"而非"单资产赌注"？
+        叠加下一代ADC(双抗/双载荷超100款)同质化内卷，平台代差还能维持多久？(命门2主战场)
+      source_hint: T-Bren公告(mat-f3c310) + 卖方T-Bren进展(mat-620a12) + 父级ADC拥挤内卷(cn-adc mat-b010e0/mat-d3b452/mat-8292c1)
+    - question: >
+        H股2025-10过聆讯但以"现行市况"延迟 + 定增37.64亿 + 年burn~30亿+ + 经营现金流-7.98亿——
+        iza-bren真正大适应症放量前的资金链弹性有多大？下一轮融资/摊薄时点与代价？(命门3主战场)
+      source_hint: H股延迟(mat-7b19b6) + 定增募集说明书(mat-cc7255) + 年报现金流(mat-4987d2)
+    - question: >
+        卖方一致目标价 vs 自定安全边际——分歧根源是否在于卖方对BMS后续里程碑兑现确定性/
+        iza-bren peak sales假设过于线性外推，还是本thesis对"获批初期即遇冷+小适应症天花板"的假设过于保守？
+      source_hint: 卖方目标价共识(mat-620a12) + 可比biotech PS轨迹(mat-8782d9) + 父级创新药见底信号(cn-adc mat-314acb)
+    - question: >
+        最大de-risk催化(2026-06-22获批)已兑现且股价贴52周高——是否"利好出尽"？
+        后续需要何种量级的新台阶(大适应症获批/大额里程碑/第二资产成药)才能续估值，这些台阶最早何时可观测？
+      source_hint: FDA-BLA全球注册时间线(mat-73d044) + iza-bren适应症公告(mat-1fe5b6) + 父级ASCO复盘(cn-adc mat-4273c9)
+
+  # L4 狩猎层 → 喂 K#（找错误定价，逐条对齐 thesis Killer Question）
+  l4_hunting:
+    - question: >
+        iza-bren末线鼻咽癌获批后2026Q3/Q4单季度能否出现实质性、非里程碑款驱动的产品收入放量？
+        末线NPC是小适应症，能否证伪"获批≠放量"？
+      addresses: [K1]
+      search_keywords: [iza-bren 商业化, 伦康依隆妥单抗 销售, 百利天恒 Q3业绩]
+      source_hint: 2026Q3/Q4季报 + 医保/院内准入公告(获批太新，本轮多为"待观测"而非"可收料")
+    - question: >
+        大适应症(NSCLC EGFR突变/食管鳞癌/TNBC)NDA获批时点与全球III期readout？这是撑起1404亿的估值主体。
+      addresses: [K2]
+      search_keywords: [iza-bren 食管鳞癌 上市申请, IZABRIGHT NSCLC III期, 百利天恒 三阴乳腺癌 NDA]
+      source_hint: FDA-BLA时间线(mat-73d044) + 06-14适应症公告(mat-1fe5b6) + 父级双抗ADC浪潮(cn-adc mat-ed47a3)
+    - question: >
+        BL-M05D1/BL-M14D1/T-Bren/SI-B001哪个能第二次成药？平台可复用性是真壁垒还是单资产幸运？
+        双抗ADC靶点集中HER2/HER3/EGFR，历史ZW49/MEDI4276折戟，平台代差可持续性存疑。
+      addresses: [K3]
+      search_keywords: [百利天恒 BL-M05D1, T-Bren HER2 ADC III期, SEBA 平台 双抗]
+      source_hint: T-Bren公告(mat-f3c310) + 父级ADC同质化内卷(cn-adc mat-b010e0)
+    - question: >
+        1404亿/PS 55x在何种放量+里程碑假设下合理？回调到什么市值/PS分位(如PS 30-35x/市值800-900亿)才具安全边际？
+      addresses: [K4]
+      search_keywords: [百利天恒 目标价 估值, 中国biotech BD后 PS, 创新药 市值分位]
+      source_hint: 可比biotech PS轨迹(mat-8782d9) + 卖方目标价(mat-620a12) + 父级50强定价/竞争力(cn-adc mat-5ce1dd/mat-f07d13)
+    - question: >
+        BMS剩余$2.5亿近期或有+最高$71亿开发/注册/销售里程碑的确认节奏？历史里程碑达成率仅22%，哪些触发、何时？
+      addresses: [K5]
+      search_keywords: [百利天恒 BMS 里程碑, IZABRIGHT-Breast01, BL-B01D1 里程碑 触发]
+      source_hint: BMS里程碑条款(mat-97a852) + 荣昌vorbio镜鉴(mat-e22a4d) + 父级PD-1到ADC启示(cn-adc mat-31dd47)
+    - question: >
+        H股延迟后定增37.64亿+里程碑能撑多久？下一次融资/摊薄时点？年末现金余额与burn rate的缺口？
+      addresses: [K6]
+      search_keywords: [百利天恒 H股 重启, 百利天恒 现金 融资, 688506 定增 摊薄]
+      source_hint: H股延迟(mat-7b19b6) + 定增说明书(mat-cc7255) + 年报现金流(mat-4987d2)
+
+material_priority:
+  tier1:              # 必读，研究不可缺（全部已 covered，见 user_todos）
+    - title: "FY2025年报+2026Q1季报(营收25.2亿/-56.72%、归母净利-10.54亿、研发99.75%、经营现金流-7.98亿)"
+      type: annual-report
+      ticker: SSE_688506
+      source: cninfo（已下载 extracted）
+      why: 剔BD后真实基本面+现金消耗，喂K1/K6+估值环④
+      addresses: [K1, K6]
+    - title: "iza-bren鼻咽癌2026-06-22获批公告+PANKU-NPC01疗效(ORR54.6%vs27%、mPFS8.4vs4.3)"
+      type: announcement
+      ticker: SSE_688506
+      source: NMPA/新华网/公司公告（已下载）
+      why: 最大de-risk催化，K1放量起点
+      addresses: [K1]
+    - title: "BMS里程碑详细条款($800M首付+$500M近期或有[已付$250M]+最高$71亿里程碑)"
+      type: sell-side-note
+      source: inbox手备料（已下载）
+      why: K5确认节奏+估值or有性
+      addresses: [K5]
+    - title: "可比中国biotech(信达/荣昌/百济)BD后PS估值消化历史轨迹"
+      type: industry-research
+      source: inbox手备料 + 父级cn-adc定价逻辑复用
+      why: K4估值锚+historical-mirror
+      addresses: [K4]
+    - title: "卖方深度报告目标价与一致预期+T-Bren进展"
+      type: sell-side-note
+      source: inbox手备料（已下载）
+      why: K4 consensus锚 + K3平台第二资产
+      addresses: [K4, K3]
+  tier2:              # 补充
+    - title: "iza-bren大适应症(ESCC/TNBC/NSCLC)NDA受理+FDA BLA全球注册临床时间线"
+      type: sell-side-note
+      source: inbox手备料 + 06-14公告（已下载）
+      why: K2估值主体节奏
+      addresses: [K2]
+    - title: "荣昌生物Vorbio(RC48)历史BD镜鉴(退货率40%/里程碑达成率22%)"
+      type: industry-research
+      source: inbox手备料（已下载）
+      why: K5/K3 historical-mirror
+      addresses: [K5, K3]
+    - title: "H股上市延迟最新进展+融资/现金可持续性"
+      type: sell-side-note
+      source: inbox手备料 + 定增说明书（已下载）
+      why: K6资金链
+      addresses: [K6]
+    - title: "朱义资本配置史:定增用途/6月回购/MNC野心可信度"
+      type: policy
+      source: 回购报告书+定增说明书+创始人web-search（已下载）
+      why: mgmt-capital-alloc，喂环③
+      addresses: [K6]
+  tier3:              # 可选（父级cn-adc复用）
+    - title: "ADC行业竞争格局:浦银深度/ASCO2026复盘/下一代ADC同质化内卷/双payload靶点"
+      type: industry-research
+      source: 父级cn-adc复用(mat-374d66/mat-4273c9/mat-b010e0/mat-d3b452)
+      why: K2/K3竞争位+平台壁垒风险
+      addresses: [K2, K3]
+    - title: "中国ADC热潮泡沫/PD-1到ADC启示录/国谈以价换量PD-1降70-85%"
+      type: industry-research
+      source: 父级cn-adc复用(mat-31dd47/mat-8292c1/mat-0318df)
+      why: K4泡沫镜鉴 + K1医保放量镜鉴
+      addresses: [K1, K4]
+
+key_risks_to_monitor:
+  - "利好出尽:最大催化(获批)已兑现且股价贴52周高，后续需更高台阶续估值"
+  - "小适应症天花板:末线鼻咽癌市场量级有限，大适应症放量是2027+的事"
+  - "里程碑或有性:历史达成率仅22%，$71亿里程碑高度不确定"
+  - "融资/摊薄:H股延迟+年burn30亿+，下一轮定增稀释风险"
+  - "平台同质化:下一代双抗/双载荷ADC超100款内卷，代差可能收窄"
+
+analogies_to_study:
+  - case: "荣昌生物RC48/维迪西妥单抗 BD后估值消化(2020 Seagen授权→估值回落)"
+    logic: "同为中国ADC出海BD标杆，BD兴奋后进入商业化兑现检验期，估值从期权定价回归基本面"
+    limit: "RC48为单抗ADC、适应症/临床数据不同；百利双抗代差更硬、BMS总额更大"
+  - case: "PD-1从蓝海到红海(2018-2023四小龙国谈降价70-85%)"
+    logic: "创新靶点从'全球首个/差异化'到'拥挤内卷/以价换量'的路径，映射双抗ADC未来"
+    limit: "PD-1同质化程度极高；双抗ADC技术壁垒更高、玩家更少(短期)"
+  - case: "信达/百济BD后估值路径 + 中国医药50强定价逻辑(市值前十)"
+    logic: "可比创新药企在'商业化元年'前后的PS分位与市值消化节奏，作估值锚"
+    limit: "百济已盈利、信达管线更宽；百利仍单资产依赖、剔BD深亏"

@@ -1,0 +1,18 @@
+as_of_regime_version: 3
+regime_composite: risk-on但脆弱(强度6·脆弱度high)+利率高位企稳零降息计价：短端支撑稳定币利息、但高实际利率压长久期估值、risk-off刺破时加密高beta首当其冲
+depends_on_states:
+- conclusion: liquidity_us
+  state: 条件偏松·风险偏好亢奋但脆弱
+  role: load_bearing
+- conclusion: rates_us
+  state: 高位企稳·双双转鹰·零降息计价·10Y实际利率2.16%
+  role: load_bearing
+- conclusion: fragility
+  state: high(本轮加剧)
+  role: confirming
+discount_rate: null
+slug: us-coinbase
+variant: opus4.8
+stamped_at: '2026-07-14T16:11:14.458028+00:00'
+stale: false
+stale_reason: null

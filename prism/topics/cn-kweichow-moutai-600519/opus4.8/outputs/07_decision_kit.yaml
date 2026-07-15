@@ -1,0 +1,117 @@
+slug: cn-kweichow-moutai-600519
+variant: opus4.8
+topic_type: company
+display_name: 贵州茅台
+ticker: SSE_600519
+generated: 2026-07-01T00:00:00+00:00
+data_freshness: 2026-06
+data_freshness_basis: 批价/估值到 2026-06（mat-29efa2/market_data 2026-06-30），财报到 2026Q1（mat-f18803）
+
+buy_box:
+  strong_buy_max: 1100
+  accumulate_min: 1100
+  accumulate_max: 1250
+  hold_min: 1250
+  hold_max: 1550
+  current_price: 1185.49
+  price_as_of: 2026-06-30
+  current_zone: accumulate
+
+position_framework:
+  position_tier: 标准
+  sizing_rationale: EV~+11.6%(含日本化深空+r上抬de-rating尾部)为正、信息充分(含36家卖方共识)够标准档；命门1(稳态盈利中枢)与命门3(拐点真伪)未证实+治理(5年4任/空降)减分+12%深空尾部+r=9%敏感(r10.5%→~865)，故不上重仓、左侧分批且留弹药给1000元以下极值档
+  initial_max_pct: null
+  full_max_pct: 10
+  add_ladder_prices: [1185, 1100, 1000]
+  max_cluster_pct: null
+
+valuation_models:
+  - name: pe_eps
+    label: PE×EPS（2026E EPS 67.74，华创）
+    bull_fair_value: [1694, 1897]
+    base_fair_value: [1150, 1355]
+    bear_fair_value: [1016, 1100]
+  - name: gordon_ddm
+    label: Gordon 股息贴现（payout 75%，r~9%）
+    bull_fair_value: [1500, 1650]
+    base_fair_value: [1100, 1250]
+    bear_fair_value: [780, 900]
+  - name: peer_cross_section
+    label: 同业横截面（帝亚吉欧17x / 泸窖11.5x / 五粮22.8x）
+    bull_fair_value: [1543, null]
+    base_fair_value: [1150, 1355]
+    bear_fair_value: [778, 1016]
+
+kill_criteria:
+  - id: batch_price_break_1400
+    description: 飞天散瓶批价跌破 1400 并持续 1 个季度（1499 已破过，1400 为新 kill 线）
+    status: pending
+    check_at: 2026-09
+  - id: gross_margin_break_85
+    description: 稳态毛利率（季度口径）跌破 85% 且无回升，稳态盈利中枢结构性下移
+    status: pending
+    check_at: 2026-08
+  - id: revenue_reverse_negative
+    description: 2026Q3 营收重新转负，拐点证伪
+    status: pending
+    check_at: 2026-10
+  - id: governance_or_dividend_cut
+    description: 董事长/核心高管重大违规立案，或分红政策下修破 75%
+    status: pending
+    check_at: 2027-04
+
+signposts:
+  - date: 2026-08
+    event: 2026 中报披露
+    bull_signal: 营收/归母维持正增、毛利率企稳回升 ≥90%、合同负债口径企稳、直营占比稳
+    bear_signal: 营收增速走阔转负或毛利率续降破 88%、增收不增利加剧
+    triggered: null
+  - date: 2026-09
+    event: 月度飞天批价跟踪（散瓶/原箱）
+    bull_signal: 散瓶站稳 1600+、原箱/散瓶价差走阔（投资需求回暖）
+    bear_signal: 散瓶跌回 1500 以下、价差收敛至倒挂边缘
+    triggered: null
+  - date: 2026-10
+    event: 中秋/国庆终端动销
+    bull_signal: 终端动销同比转正（现苏皖 -10~20%）、库存去化
+    bear_signal: 动销同比仍双位数下滑、渠道被动抛货
+    triggered: null
+  - date: 2026-10
+    event: i茅台 月活/复购运营数据更新
+    bull_signal: 复购率提升、真实消费置换投机需求成立
+    bear_signal: 月活见顶、成交/复购停滞，仅是渠道搬运
+    triggered: null
+  - date: 2026-12
+    event: 消费税立法进度 / 征收环节是否后移
+    bull_signal: 维持生产环节征收、税率不变（利好一线名酒挤出中小）
+    bear_signal: 征收环节后移落地、酒类税负实质上升
+    triggered: null
+
+cluster_tags: [premium-baijiu, china-consumer-staples, shareholder-yield, cn-rmb-defensive]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 2
+    kind: analyst-anchoring
+    note: 36家卖方均值目标1841(~24-27x)远高于市价1185(17.9x)，disconnect~55%；本case判卖方后视镜锚定、采信打折，若判错则上行远不止20-22x(街面看到1841)
+  - ring: 1
+    kind: data-missing
+    note: i茅台真实复购数据不足(mat-0ea1fa正文缺失)，直营"真实消费置换投机需求"(D)未证实——是"批价企稳含金量/开瓶率<40%"的关键未决项
+  - ring: 4
+    kind: training-estimate
+    note: 合理PE20-22x/g5-5.5%及r=9%为训练框架估算；已补r敏感性(r10.5%→~13x/865)，但命门1/3本质需Q2/Q3财报裁判
+
+market_implied:
+  metric: implied_perpetual_growth_pct
+  value: 4.5
+
+my_vs_market_delta:
+  metric: implied_perpetual_growth_pct
+  my_value: 5.25
+  delta: "+0.75pct"
+  direction: long

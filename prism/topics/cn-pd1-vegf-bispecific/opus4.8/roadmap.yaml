@@ -1,0 +1,147 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-pd1-vegf-bispecific
+created: 2026-07-10
+# S2：L1/L2 坍缩为一行 primer scope 备注（背景理解交给 00_primer）
+primer_scope: >
+  primer 该覆盖：PD-1/VEGF 双抗机理（协同假设 + avidity）、为何是"后 PD-1"IO 骨架升级、
+  PD-1/VEGF vs PD-L1/VEGF 机理差别、OS vs PFS 终点与 nominal-p 争议、
+  5 款出海分子全景 + BD 范式（首付/里程碑/权益分割）、海外(Summit)vs 大中华(康方)权益分割与可投标的映射、
+  中国 PD-1 单抗价格战镜鉴、VEGF 类效安全性（出血/蛋白尿，鳞癌尤重）。
+
+learning_track:
+  # L1/L2 已坍缩进 primer_scope（见上）
+
+  l3_debates:         # 争议层：分歧在哪，各方逻辑（映射 thesis §三 最大反方）
+    - question: 全球 HARMONi(2L EGFRm) OS 正式终点未达标(HR=0.79 p=0.057)，nominal-p=0.0332 是否足以支持 FDA 批准与 OS 标签声称？东西方人群不一致(亚洲24%>西方16%)是设计缺陷(Leerink)还是真实生物学差异？
+      source_hint: FDA 审评动态 / ODAC / Leerink·Truist 空方原文 / nominal-p 学界跨试验比较讨论
+      covered_by: [mat-7e536c, mat-6f4b3e, mat-511037, mat-324d63, mat-45c870, mat-cb4949, mat-75e63f, mat-9bd5be, mat-63e194]
+    - question: 「赢了 K 药却没赢市场」——依沃西中国商业化兑现慢，是结构性(支付端天花板+医保压价)还是暂时性(准入爬坡期)？2024 中国销售~20 亿对标 K 药体量仍小的 gap 会否收窄？
+      source_hint: 康方 2025H1/年报销售爬坡 + 医院准入 + 医保放量节奏
+      covered_by: [mat-9e9ca8, mat-37c6e1, mat-6afaec, mat-62cfc9, mat-8b2afc]
+    - question: 后来者(辉瑞707/BMS·BNT327/默沙东LM-299)携 MNC 全球临床+商业化火力，2-3 年内能否在 1L NSCLC 头对头/OS 追平依沃西？~2 年先发时间窗能否转化为不可逆的适应症卡位/处方习惯/医保占位？
+      source_hint: 707/BNT327/LM-299 临床阶段与 readout 时间表 + 赛道横向对比
+      covered_by: [mat-3a625c, mat-66df8d, mat-8e29ac, mat-64f554, mat-b8a4bd, mat-e10124]
+    - question: 康方(09926.HK)/三生(01530.HK)港股估值是否已 price in 全部利好？以 rNPV/峰值销售折现对照现价，风险回报是否仍对称，还是上行已被透支？
+      source_hint: 卖方 rNPV/峰值销售/目标价 vs 当前市值
+      covered_by: [mat-4202b2, mat-ed27ba, mat-f239ae, mat-0573a8, mat-c1956a, mat-0c470e]
+    - question: PD-1/VEGF 赛道会否重演中国 PD-1 单抗扎堆杀价——≥5 家国产同赛道 III 期 + 首个医保谈判降幅是否>50%？先发者利润池会否被后来者+医保双向摧毁？
+      source_hint: 中国 PD-1 单抗价格战/医保谈判降价史 + 本赛道 III 期玩家计数
+      covered_by: [mat-b7ef81, mat-eca0de, mat-6efbc9]
+
+  l4_hunting:         # 狩猎层：找错误定价，逐条对齐 thesis Killer Question
+    - question: 依沃西全球 HARMONi 的 OS 优势能否转化为 FDA 批准(PDUFA 2026-11-14)+欧美实际放量？nominal-p 争议是否影响标签或医生处方？市场当前隐含批准概率多少？
+      addresses: [K1]
+      search_keywords: [ivonescimab FDA PDUFA, HARMONi OS 标签, Summit BLA 审评]
+      source_hint: FDA/PDUFA 2026-11-14 审评结论 + Summit IR + ODAC 排期
+      covered_by: [mat-7e536c, mat-6f4b3e, mat-511037, mat-324d63, mat-43d5ae, mat-284c4c, mat-6b37f5]
+    - question: 面对 MNC 收编的后来者(707/BNT327/LM-299)，依沃西 ~2 年先发+OS 数据壁垒能否守住可持续份额——任一后来者在 1L NSCLC 头对头/OS 追平依沃西即证伪。各后来者最近的临床阶段与 readout 里程碑是什么？
+      addresses: [K2]
+      search_keywords: [SSGJ-707 三期 进展, BNT327 III 期 readout, LM-299 临床阶段]
+      source_hint: ClinicalTrials.gov + 辉瑞/BMS/默沙东 R&D 更新 + 赛道横向对比
+      covered_by: [mat-3a625c, mat-66df8d, mat-8e29ac, mat-64f554]
+    - question: PD-1/VEGF 赛道会否重演 PD-1 单抗中国扎堆杀价——出现 ≥5 家国产同赛道 III 期 + 首个医保谈判降幅>50% 即预警。本赛道已有多少家进 III 期？
+      addresses: [K3]
+      search_keywords: [PD-1 VEGF 双抗 医保谈判, 国产 双抗 III期 数量, 双抗 价格战]
+      source_hint: 医保局公告 + 赛道 III 期玩家计数 + PD-1 单抗价格战镜鉴
+      covered_by: [mat-b7ef81, mat-eca0de, mat-6efbc9, mat-3a625c]
+    - question: 依沃西中国商业化爬坡能否加速——2025/2026 年销售同比增速能否维持 >40% 且医院准入显著扩张(否则"赢数据不赢市场"坐实)？
+      addresses: [K4]
+      search_keywords: [依沃西 2025 销售 同比, 康方 商业化 放量, 依沃西 医院准入]
+      source_hint: 康方 2025H1/年报销售明细 + 卖方放量预测
+      covered_by: [mat-6afaec, mat-62cfc9, mat-37c6e1, mat-9e9ca8, mat-8b2afc, mat-f239ae]
+    - question: 康方(09926.HK)/三生(01530.HK)当前估值是否已 price in 全部利好——以 rNPV/峰值销售折现对照现价，风险回报是否仍对称？
+      addresses: [K5]
+      search_keywords: [康方 目标价 rNPV, 三生 估值 峰值销售, 康方 三生 市值]
+      source_hint: 卖方深度 DCF/rNPV + 当前市值对照
+      covered_by: [mat-4202b2, mat-ed27ba, mat-f239ae, mat-0573a8, mat-c1956a]
+
+material_priority:
+  tier1:              # 必读，研究不可缺（全部已收集）
+    - title: PD-(L)1/VEGF 赛道同口径横向对比料（依沃西vs707vsBNT327vsLM-299vsIMM2510：阶段/OS·PFS/适应症/交易条款/可投标的）
+      type: industry-research
+      source: 同写意/医麦智库/dfcfw
+      why: 环⑥ shortlist 选拔 + 命门2(先发壁垒时间窗) 核心料 · addresses K2 · 已收集 mat-3a625c/66df8d/8e29ac/64f554
+      addresses: [K2]
+      info_tier: half_public
+    - title: 康方生物 2025 年报（依沃西销售/管线/现金/资本配置）
+      type: annual-report
+      ticker: HKEX_09926
+      source: HKEXnews 09926
+      why: peer 财务锚 + K4 商业化兑现 + mgmt-capital-alloc(环①) · 已收集 mat-8b2afc
+      addresses: [K4, K5]
+      info_tier: half_public
+    - title: 三生制药 2025 年报 + 辉瑞 SSGJ-707 交易条款
+      type: annual-report
+      ticker: HKEX_01530
+      source: HKEXnews 01530
+      why: peer 财务锚 + 707 BD 质量(K2) · 已收集 mat-ea3ff5 + 交易料 mat-b26c1c/52552d/8e29ac
+      addresses: [K2, K5]
+      info_tier: half_public
+    - title: 卖方深度×4（康方/依沃西：一致预期、rNPV、峰值销售、目标价）
+      type: sell-side-note
+      source: 东吴/交银/太平洋/华福
+      why: consensus + 估值锚(环④/K5) + OS 数据解读(K1) · 已收集 mat-4202b2/ed27ba/f239ae/0573a8
+      addresses: [K1, K5]
+      info_tier: public
+    - title: HARMONi 全球 OS 详情 + nominal-p 争议 + FDA 路径原文
+      type: industry-research
+      source: FiercePharma/MedCity/Leerink/同写意
+      why: 命门1(OS 真实性) + K1 核心争议料 · 已收集 mat-7e536c/6f4b3e/511037/324d63/45c870
+      addresses: [K1]
+      info_tier: half_public
+
+  tier2:              # 补充（全部已收集）
+    - title: 康方 2025H1 业绩 + 依沃西中国商业化爬坡（销售/准入）
+      type: industry-research
+      source: 康方 IR/bydrug/中华网
+      why: K4 商业化兑现 + L3 debate"赢数据不赢市场" · 已收集 mat-6afaec/62cfc9/37c6e1/9e9ca8
+      addresses: [K4]
+      info_tier: public
+    - title: 中国 PD-1 单抗价格战 + 医保谈判降价历史镜鉴
+      type: industry-research
+      source: 医保局公告/行业复盘
+      why: 环⑤ historical-mirror(arena-mirror) + K3 · 已收集 mat-b7ef81/eca0de/6efbc9
+      addresses: [K3]
+      info_tier: public
+    - title: PD-1/VEGF 双抗 VEGF 类效安全性（出血/蛋白尿，鳞癌尤重）
+      type: industry-research
+      source: ASCO/WCLC 摘要/期刊
+      why: 环①机理双面性(协同 vs 安全代价) + primer 目标11 · 已收集 mat-36211e/0b2947/9dd8e5
+      addresses: [K1, K2]
+      info_tier: half_public
+    - title: Summit Therapeutics 10-K/10-Q（海外权益方财务 + 风险披露）
+      type: annual-report
+      ticker: SMMT
+      source: SEC EDGAR
+      why: peer 财务(海外权益方) + K1/K2 风险披露 · 已收集 mat-f3f4e2/d44dd5 + 拆分 sec-section
+      addresses: [K1, K2]
+      info_tier: public
+
+  tier3:              # 可选（已收集）
+    - title: HARMONi-2/3/6/7 临床数据详情 + 头颈鳞癌新辅助 readout
+      type: industry-research
+      source: ASCO 2026 Plenary/WCLC/康方 IR
+      why: 管线深度(环①/②) + primer 目标4 · 已收集 mat-44c22e/5c8eef/9a805b/900e7b
+      addresses: [K1, K2]
+    - title: 2026 双抗/ADC 行业深度 + IO 2.0 骨架升级叙事
+      type: industry-research
+      source: 摩熵医药/行业深度
+      why: primer 背景(为何是骨架升级而非 me-too) · 已收集 mat-b7243e/4c5439/07b790
+      addresses: [K2]
+
+key_risks_to_monitor:
+  - FDA PDUFA 2026-11-14 审评结论 / ODAC 排期（K1 · 命门1 翻盘点）
+  - 707/BNT327/LM-299 任一在 1L NSCLC 头对头/OS 追平依沃西（K2 · 命门2 证伪点）
+  - 首个 PD-1/VEGF 医保谈判降幅 >50% 或赛道 ≥5 家国产 III 期（K3 · 命门3 价格战预警）
+  - 依沃西 2025/2026 中国销售同比增速跌破 40% 或医院准入停滞（K4 · "赢数据不赢市场"坐实）
+  - NYT 报 Trump 拟审查中国分子授权（K1 · 授权变现前景外部冲击）
+
+analogies_to_study:
+  - 案例: 中国 PD-1 单抗内卷价格战（2019-2023，君实/信达/恒瑞/百济）
+    类比逻辑: 同为 IO 一线骨架、国产扎堆、医保谈判压价摧毁利润池——本赛道最直接镜鉴
+    类比局限: PD-1/VEGF 双抗壁垒(分子复杂度+专利+OS 数据)高于单抗 me-too，出海权益提供第二增长曲线
+    covered_by: [mat-b7ef81, mat-eca0de, mat-6efbc9]
+  - 案例: 中国创新药出海 BD 范式（百济泽布替尼、传奇西达基奥仑赛授权/合作）
+    类比逻辑: 首付确定性 vs 里程碑或有性对 biotech 估值的意义——本赛道 5 款全出海的估值锚镜鉴
+    类比局限: PD-1/VEGF 首付创纪录(三生$12.5亿/康方总额$50亿)，量级与既往不同
+    covered_by: [mat-c77e25, mat-a2afa3]

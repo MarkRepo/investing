@@ -1,0 +1,107 @@
+slug: cn-kweichow-moutai-600519
+variant: opus4.8
+entries:
+- searched_at: '2026-07-01T03:24:45.418308+00:00'
+  query: 贵州茅台 2025年 全年 营收 净利润 首次 下滑
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 3
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-01T03:24:45.684677+00:00'
+  query: 贵州茅台 2026 第一季度 合同负债 直销 i茅台 占比
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-01T03:24:45.863055+00:00'
+  query: 飞天茅台 2026 6月 批价 散瓶 原箱 最新
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 3
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-01T03:24:46.161481+00:00'
+  query: 贵州茅台 2025 分红率 75% 回购 注销 中期分红
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-01T03:24:46.479776+00:00'
+  query: 白酒 消费税 改革 2025 2026 征收环节 落地
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-01T03:24:46.751157+00:00'
+  query: 贵州茅台 董事长 陈华 丁雄军 涉案 治理变动 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-01T03:24:46.964675+00:00'
+  query: 贵州茅台 2026 PE 市盈率 历史分位 估值
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 3
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-01T03:24:47.185770+00:00'
+  query: 白酒 行业 2026 端午 动销 库存 拐点
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 1
+  n_mid: 2
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-01T03:24:47.495201+00:00'
+  query: 贵州茅台 系列酒 茅台1935 出厂价 下调 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-01T03:24:47.896226+00:00'
+  query: i茅台 2026 月活 500ml飞天 平价投放 直销
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-01T03:32:07.009686+00:00'
+  query: 贵州茅台 2013 2014 2015 调整期 股价 最低 PE 估值 批价 底部 复苏
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-01T07:28:16.136595+00:00'
+  query: 贵州茅台 2026 券商目标价 EPS 净利 一致预期
+  triggered_by: 05-critic
+  n_results: 4
+  n_high: 2
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-01T07:28:16.608161+00:00'
+  query: 贵州茅台 飞天批价 2026 散瓶 原箱 官方提价 i茅台
+  triggered_by: 05-critic
+  n_results: 4
+  n_high: 3
+  n_mid: 0
+  n_low: 1
+  disposition: registered

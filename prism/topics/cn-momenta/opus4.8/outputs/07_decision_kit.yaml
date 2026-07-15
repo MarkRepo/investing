@@ -1,0 +1,141 @@
+slug: cn-momenta
+variant: opus4.8
+topic_type: company
+display_name: Momenta 魔门塔 (HKEX 06880)
+ticker: HKEX_06880
+generated: 2026-06-30 11:00:00+00:00
+data_freshness: 2025-FY (基本面) + 2026-06-30 (peer 实时行情)
+buy_box:
+  strong_buy_max: 150
+  accumulate_min: 150
+  accumulate_max: 200
+  hold_min: 200
+  hold_max: 250
+  current_price: 295.6
+  price_as_of: '2026-07-08'
+  current_zone: above_hold
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 现价EV≈-6%(负):地平线13.7x,Momenta25.0x溢价~83%.现价(295.6,above_hold)暂缓建仓,试探仓(≤2-3%)等回调进accumulate(150-200)或上市后财报验证(毛利守65%+客户无切换)再启动
+  initial_max_pct: null
+  full_max_pct: 5
+  add_ladder_prices:
+  - 200
+  - 175
+  - 150
+  max_cluster_pct: 10
+valuation_models:
+- name: peer_ps_crosssection
+  label: 同业P/S横截面(实时peer锚6/30)
+  bull_fair_value:
+  - 265
+  - 310
+  base_fair_value:
+  - 155
+  - 200
+  bear_fair_value:
+  - 88
+  - 132
+- name: base_plus_l4_option
+  label: 基本盘+L4期权拆解
+  bull_fair_value:
+  - 280
+  - 340
+  base_fair_value:
+  - 190
+  - 230
+  bear_fair_value:
+  - 130
+  - 170
+- name: reverse_ps_growth
+  label: 逆向P/S-增速反推
+  bull_fair_value:
+  - 300
+  - 350
+  base_fair_value:
+  - 200
+  - 250
+  bear_fair_value:
+  - 130
+  - 180
+kill_criteria:
+- id: margin_break
+  description: 上市后首份财报混合毛利率跌破60%(命门1破)
+  status: pending
+  check_at: 2026-Q3
+- id: customer_self_research
+  description: 前五大某客户(比亚迪系/上汽)公开切自研或订单绝对额显著下滑(命门2破);A3最弱假设证伪点前置
+  status: pending
+  check_at: 2026-Q4
+- id: share_loss
+  description: 第三方城市NOA份额(中汽协口径)跌破50%
+  status: pending
+  check_at: 2026-Q4
+- id: valuation_floor_entry
+  description: 股价回调进accumulate(150-200,~13-17x P/S,贴近已derate地平线13.7x)且基本面无恶化→赔率转正/价值买入触发
+  status: pending
+  check_at: 2026-Q4
+- id: bull_upgrade
+  description: 毛利率守65%+且大客户加单/新增头部定点→上修thesis升档
+  status: pending
+  check_at: 2026-Q4
+signposts:
+- date: 2026-07-08
+  event: 港股上市首日
+  bull_signal: 高开溢价并守住发行价295.6
+  bear_signal: 破发跌破295.6(参WRD/Pony)
+  triggered: null
+- date: 2026-Q3
+  event: 上市后首份中报(毛利率/许可占比)
+  bull_signal: 毛利率守65%+许可占比继续升
+  bear_signal: 毛利率<60%+许可占比停滞
+  triggered: null
+- date: 2026-12
+  event: 比亚迪B平台智驾动向
+  bull_signal: 续约/扩量Momenta算法
+  bear_signal: 启动自研替换路线图
+  triggered: null
+- date: 2026-Q4
+  event: 中汽协城市NOA份额更新
+  bull_signal: 独立口径守住60%
+  bear_signal: 华为逼近/份额跌破50%
+  triggered: null
+- date: 2027
+  event: L4阿布扎比/慕尼黑商业化里程碑
+  bull_signal: 单位经济可量化改善+车队规模增长
+  bear_signal: 延期/股东OEM撤资(复刻Argo/Cruise)
+  triggered: null
+cluster_tags:
+- adas-intelligent-driving
+- china-auto-tech
+- physical-ai
+- hk-ipo
+chain_links:
+  rings_present:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+- ring: 2
+  kind: data-missing
+  note: 正式卖方一致预期/首覆目标价pre-IPO客观不存在(已waive),上市后06监控补
+- ring: 1
+  kind: data-missing
+  note: 单车许可ASP精确值+按客户/产品毛利率拆分招股书只给量级
+- ring: 5
+  kind: training-estimate
+  note: L4 cost-per-mile构成/盈亏平衡车队规模全行业披露稀薄,为同业类比+训练知识估算
+market_implied:
+  metric: implied_rev_cagr_3y
+  value: 38
+my_vs_market_delta:
+  metric: implied_rev_cagr_3y
+  my_value: 30
+  delta: -8pct
+  direction: short

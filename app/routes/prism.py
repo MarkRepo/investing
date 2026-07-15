@@ -13,11 +13,12 @@ from __future__ import annotations
 import random
 from collections import defaultdict
 
-from fastapi import APIRouter, Form, HTTPException, Query, Request
+from fastapi import APIRouter, Depends, Form, HTTPException, Query, Request
 from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
+from app.auth import require_auth
 from app.config import APP_TEMPLATES_DIR
 from prism.scripts import manifest as manifest_io
 from prism.scripts import outputs as outputs_io
@@ -804,7 +805,8 @@ def prism_macro_monitoring(slug: str, variant: str, name: str = Form(...),
 @router.post("/{slug}/{variant}/macro-inputs/fetch-llm")
 async def prism_macro_fetch_llm(slug: str, variant: str, request: Request,
                                 names: list[str] = Form(default=[]), anchor: str = Form(""),
-                                force: bool = Form(False), plan: bool = Form(False)):
+                                force: bool = Form(False), plan: bool = Form(False),
+                                _auth: None = Depends(require_auth)):
     """web 手动拉起 headless LLM 取数：每个合格输入一个**后台 job**，立即返回（不阻塞）。
 
     点击即返回 job ids；服务端 app.macro_jobs 持有在途真相（刷新后仍正确），并发由 Semaphore 闸。
@@ -1088,7 +1090,8 @@ def prism_macro_fetch_script_all(slug: str, variant: str, request: Request, anch
 @router.post("/{slug}/{variant}/macro-inputs/jobs/say")
 async def prism_macro_job_say(slug: str, variant: str,
                               name: str = Form(...), message: str = Form(...),
-                              model: str = Form("")):
+                              model: str = Form(""),
+                              _auth: None = Depends(require_auth)):
     """弹框续问 / 换模型重判：macro_jobs.say 用已存 session_id `--resume` 续上同一上下文（不重搜）。
 
     say 返回 None（内存无 job 且无落盘 meta = 无可续会话）→ 404；否则 202 {job_id}，前端重连 SSE 看续播。
@@ -1102,7 +1105,8 @@ async def prism_macro_job_say(slug: str, variant: str,
 
 @router.post("/{slug}/{variant}/reeval")
 async def prism_reeval(slug: str, variant: str, request: Request,
-                       model: str = Form("")):
+                       model: str = Form(""),
+                       _auth: None = Depends(require_auth)):
     """组装重估简报 + 盖戳（零 LLM）+ 拉起一个真实合成 job（跑 _macro_regime 全流程）。
 
     简报照旧零 LLM；真重判由后台 headless（全能力会话、默认 opus4.8）落地，弹框可看流式 + 续问驱动。
@@ -1256,8 +1260,25 @@ class DiscardBody(BaseModel):
     proposal_id: str
 
 
+class AuthBody(BaseModel):
+    token: str
+
+
+@router.post("/auth")
+def prism_auth(body: AuthBody):
+    """验证 token，通过后写 30 天 cookie。"""
+    import os
+    from fastapi.responses import Response
+    expected = os.environ.get("PRISM_AUTH_TOKEN", "")
+    if not expected or body.token != expected:
+        raise HTTPException(status_code=401, detail="token 错误")
+    resp = Response(content='{"ok":true}', media_type="application/json")
+    resp.set_cookie("prism_auth", body.token, max_age=60 * 60 * 24 * 30, httponly=True, samesite="strict")
+    return resp
+
+
 @router.post("/monitor/run")
-async def monitor_run():
+async def monitor_run(_auth: None = Depends(require_auth)):
     """手动「立即巡检」——触发与每日 6:00 同一个 monitor cycle。"""
     from app.monitor_runtime import run_monitor_cycle
     result = await run_monitor_cycle(trigger="manual")

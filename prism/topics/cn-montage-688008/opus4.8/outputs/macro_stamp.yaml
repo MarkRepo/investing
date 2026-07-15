@@ -1,0 +1,22 @@
+as_of_regime_version: 3
+regime_composite: 中美背离·risk-on但脆弱+中宽货币紧信用+人民币企稳微贬;对高PE半导体动量龙头=顺风但悬顶(流动性亢奋脆弱、急杀无缓冲)
+depends_on_states:
+- conclusion: liquidity_us
+  state: 条件偏松·信用利差地板·风险偏好亢奋但脆弱
+  role: load_bearing
+- conclusion: fx_cny
+  state: 企稳偏弱·区间震荡
+  role: confirming
+- conclusion: rates_us
+  state: 高位企稳·10Y实际利率2.16%边际回落
+  role: confirming
+discount_rate:
+  risk_free: 2.16
+  applied_wacc: 10.0
+  rate_sensitivity: 逆向PE-DCF用r=10%(CNY口径);美10Y实际利率2.16%回落对高久期成长股折现边际友好,±50bp对终值影响约±8-10%
+  source_input: 10Y 实际利率 TIPS
+slug: cn-montage-688008
+variant: opus4.8
+stamped_at: '2026-07-14T08:21:30.422280+00:00'
+stale: false
+stale_reason: null

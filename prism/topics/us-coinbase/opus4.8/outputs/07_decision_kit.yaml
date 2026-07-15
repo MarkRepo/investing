@@ -1,0 +1,107 @@
+slug: us-coinbase
+variant: opus4.8
+topic_type: company
+display_name: Coinbase (COIN, NASDAQ)
+ticker: US_COIN
+generated: 2026-07-15T00:00:00Z
+data_freshness: 2026-07-14
+
+buy_box:
+  strong_buy_max: 130
+  accumulate_min: 100
+  accumulate_max: 130
+  hold_min: 130
+  hold_max: 210
+  current_price: 159.5
+  price_as_of: 2026-07-14
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 05-critic 后 base 下调至 $170-180、现价 EV 仅 +3-4%、安全边际薄——现价仅极小试探/观望，主力仓位等 ≤$130 强力买入区（该价位 EV~+27%）。K1 利润地板降级为缓冲垫、K3/K4 未解、beta 3.35 高波动。
+  initial_max_pct: null
+  full_max_pct: 5
+  add_ladder_prices: [95, 110, 130]
+  max_cluster_pct: null
+
+valuation_models:
+  - name: normalized_earnings_pe
+    label: 正常化盈利 × 周期中枢 PE（主模型·base 用经营性正常化 ~$2.0B）
+    bull_fair_value: [310, 310]
+    base_fair_value: [160, 185]
+    bear_fair_value: [60, 75]
+  - name: ev_ebitda_cross_cycle
+    label: EV/EBITDA 跨周期
+    bull_fair_value: [310, 310]
+    base_fair_value: [158, 158]
+    bear_fair_value: [63, 63]
+  - name: ps_cross_section
+    label: P/S 同业横截面（vs Robinhood 21.7 / Circle 5.9）
+    bull_fair_value: [380, 380]
+    base_fair_value: [187, 187]
+    bear_fair_value: [73, 73]
+
+kill_criteria:
+  - id: k1_ss_floor_break
+    description: 黄灯已亮(Q1'26 S&S 绝对额单季 -14%)；红灯翻牌=Q2'26 财报 S&S 绝对额再度同比负增长(连续2季)，坐实 S&S 是斜坡非地板→下修 base 退出
+    status: pending
+    check_at: 2026-07-30
+  - id: k2_yield_ban_closes_hole
+    description: GENIUS/CLARITY 最终细则把"分销方返奖/间接收益"并入禁令口径，补上 Coinbase-shaped hole
+    status: pending
+    check_at: 2026
+  - id: k4_take_rate_structural_erosion
+    description: consumer-only 费率(Consumer交易收入÷Consumer交易量,本季1.575%)连续2季下滑且非用户主动迁向Advanced/One可解释
+    status: pending
+    check_at: 2026-Q4
+  - id: cycle_double_dip
+    description: BTC 跌破关键支撑引发全市场交易量二次探底，Coinbase 交易量再降 >30%
+    status: pending
+    check_at: 2026-Q4
+
+signposts:
+  - date: 2026-07-30
+    event: Q2'26 财报（K1 决胜点）
+    bull_signal: S&S 绝对额恢复正增长且占比升、交易量触底回升、Deribit 完整季度放量、亏损收窄/转正
+    bear_signal: S&S 绝对额再度负增长(K1红灯)、交易量二次探底、续亏扩大、consumer 费率下滑
+  - date: 2026
+    event: CLARITY Act 参议院最终文本 + GENIUS 实施细则终稿
+    bull_signal: 明确保住分销方 rewards 链条（Coinbase-shaped hole 幸存）
+    bear_signal: 把间接收益/分销方返奖并入禁令口径
+  - date: 2026
+    event: 美联储利率路径
+    bull_signal: 降息提振风险偏好/币价、交易量回暖盖过稳定币息差压缩
+    bear_signal: 深度降息压缩稳定币息差且币价未回暖
+  - date: 2026
+    event: BTC 价格/全市场交易量周期拐点
+    bull_signal: BTC 站稳更高位、全市场成交量回升
+    bear_signal: BTC 破位、成交量持续探底
+
+cluster_tags: [crypto, us-fintech, stablecoin, crypto-exchange]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 3
+    kind: data-missing
+    note: K3 加密周期拐点本质不可提前证实，只能观察 BTC/交易量 signpost
+  - ring: 2
+    kind: training-estimate
+    note: 衍生品与现货 take rate 无法完全分离，K4 改用 consumer-only 费率代理观测
+  - ring: 5
+    kind: data-missing
+    note: K2 收益禁令最终实施细则（NPRM）未定稿，Coinbase-shaped hole 能否幸存悬而未决
+
+market_implied:
+  metric: implied_ev_ebitda_midcycle
+  value: 14
+
+my_vs_market_delta:
+  metric: implied_ev_ebitda_midcycle
+  my_value: 17
+  delta: "+3x"
+  direction: long

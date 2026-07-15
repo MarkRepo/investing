@@ -1,0 +1,100 @@
+slug: cn-momenta
+variant: deepseek-v4-pro
+topic_type: company
+display_name: Momenta 魔门塔 (HKEX 06880)
+ticker: HKEX_06880
+generated: "2026-06-30T00:00:00Z"
+data_freshness: "2025-12"
+
+buy_box:
+  strong_buy_max: 250
+  accumulate_min: 250
+  accumulate_max: 310
+  hold_min: 310
+  hold_max: 380
+  current_price: 295.60
+  price_as_of: "2026-06-30"
+  current_zone: accumulate
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: "IPO新股，无公开市场交易记录，Q3首份财报是关键验证点。EV为正(+35.75% 3年)但信心度中，安全边际不厚。试探档位，等Q3财报验证许可收入增速后再评估升级。"
+  initial_max_pct: null
+  full_max_pct: 5
+  add_ladder_prices: [250, 220]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: Reverse PE-DCF（3年反推）
+    bull_fair_value: [1070, 1510]
+    base_fair_value: [650, 710]
+    bear_fair_value: [520, 520]
+  - name: base_plus_option
+    label: 基本盘+期权拆解
+    bull_fair_value: [220, 220]
+    base_fair_value: [180, 180]
+    bear_fair_value: [150, 150]
+  - name: peer_ps
+    label: 可比PS（地平线锚）
+    bull_fair_value: [850, 850]
+    base_fair_value: [650, 650]
+    bear_fair_value: [450, 450]
+
+kill_criteria:
+  - id: kill-1
+    description: "2026H2许可收入增速<30%"
+    status: pending
+    check_at: "2026-11"
+  - id: kill-2
+    description: "比亚迪/上汽/奔驰任一家宣布主力车型全面转向自研"
+    status: pending
+    check_at: null
+  - id: kill-3
+    description: "华为城市NOA市占率与Momenta差距缩小至<15pp"
+    status: pending
+    check_at: "2027-Q1"
+  - id: kill-4
+    description: "L3法规明确延期至2028年以后"
+    status: pending
+    check_at: null
+
+signposts:
+  - date: "2026-07-08"
+    event: "IPO首日交易"
+    bull_signal: "首日涨>15%，机构抢筹"
+    bear_signal: "首日破发"
+    triggered: null
+  - date: "2026-Q3"
+    event: "首份上市财报（H1 2026）"
+    bull_signal: "许可收入增速>50%，亏损率<10%"
+    bear_signal: "许可收入增速<30%"
+    triggered: null
+  - date: "2026-Q3"
+    event: "慕尼黑Robotaxi启动"
+    bull_signal: "Uber合作顺利启动，获正面媒体"
+    bear_signal: "延期或启动规模低于预期"
+    triggered: null
+  - date: "2026-H2"
+    event: "比亚迪天神之眼B新车型方案选择"
+    bull_signal: "继续用Momenta方案"
+    bear_signal: "改用自研或其他供应商"
+    triggered: null
+  - date: "2027-Q1"
+    event: "中汽协2026年度NOA份额报告"
+    bull_signal: "Momenta份额>60%"
+    bear_signal: "份额<50%或华为差距<15pp"
+    triggered: null
+  - date: "2027-07"
+    event: "L3法规落地"
+    bull_signal: "如期落地，Momenta获首批准入"
+    bear_signal: "延期或Momenta未获准入"
+    triggered: null
+
+cluster_tags:
+  - "autonomous-driving"
+  - "china-ai"
+  - "ad-solution-provider"
+  - "robotaxi"
+  - "hkex-ipo"
+  - "smart-ev"

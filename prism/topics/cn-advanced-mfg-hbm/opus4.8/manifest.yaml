@@ -1,0 +1,795 @@
+slug: cn-advanced-mfg-hbm
+variant: opus4.8
+updated: '2026-07-02T04:30:55.525766+00:00'
+materials:
+- id: mat-1c5036
+  filename: 2026-07-02_中國長鑫搶攻ai成長列車-hbm3送樣華為拚2026年量產.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.162499+00:00'
+  processed: false
+  notes: query='长鑫存储 HBM3 量产 交样 华为 昇腾 2026 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 长鑫存储 HBM3 量产 交样 华为 昇腾 2026 进展
+    url: https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000735900_HCM8IFYR1PEQQ2LN2KFB2
+    domain: digitimes.com.tw
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.161455+00:00'
+    stale_at: '2026-08-01T02:18:42.161455+00:00'
+    expire_at: '2026-09-30T02:18:42.161455+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0271ec
+  filename: 2026-07-02_长鑫存储向华为交付hbm3样品-国产高带宽存储取得突破-----中国ic交易网.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.167192+00:00'
+  processed: false
+  notes: query='长鑫存储 HBM3 量产 交样 华为 昇腾 2026 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 长鑫存储 HBM3 量产 交样 华为 昇腾 2026 进展
+    url: http://www.dram.com.cn/page/views.asp?menuid=34&id=83868
+    domain: dram.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.166250+00:00'
+    stale_at: '2026-08-01T02:18:42.166250+00:00'
+    expire_at: '2026-09-30T02:18:42.166250+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9cb671
+  filename: 2026-07-02_pdf-国产替代中军-先进工艺之光.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.173433+00:00'
+  processed: false
+  notes: query='中芯国际 7nm N+2 良率 2026 先进产能扩张 昇腾' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中芯国际 7nm N+2 良率 2026 先进产能扩张 昇腾
+    url: https://pdf.dfcfw.com/pdf/H3_AP202402031620260848_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.172154+00:00'
+    stale_at: '2026-08-01T02:18:42.172154+00:00'
+    expire_at: '2026-09-30T02:18:42.172154+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7732d7
+  filename: 2026-07-02_ds问答-先进封装基板上市公司对比-深南电路vs-兴森科技.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.186099+00:00'
+  processed: false
+  notes: query='兴森科技 深南电路 ABF FCBGA 载板 量产 认证 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴森科技 深南电路 ABF FCBGA 载板 量产 认证 2026
+    url: https://www.eet-china.com/mp/a406980.html
+    domain: eet-china.com
+    domain_tier: whitelist
+    searched_at: '2026-07-02T02:18:42.184555+00:00'
+    stale_at: '2026-08-01T02:18:42.184555+00:00'
+    expire_at: '2026-09-30T02:18:42.184555+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cc6e50
+  filename: 2026-07-02_公司公告-兴森科技-2026年5月8日投资者关系活动记录表.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.192242+00:00'
+  processed: false
+  notes: query='兴森科技 深南电路 ABF FCBGA 载板 量产 认证 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 兴森科技 深南电路 ABF FCBGA 载板 量产 认证 2026
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002436&id=12305437
+    domain: money.finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.190356+00:00'
+    stale_at: '2026-08-01T02:18:42.190356+00:00'
+    expire_at: '2026-09-30T02:18:42.190356+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d107ad
+  filename: 2026-07-02_一天吃透一个行业221-先进封装-核心股票名单-精简版---新浪财经.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.200155+00:00'
+  processed: false
+  notes: query='国产 先进封装 CoWoS 2.5D HBM 集成 通富微电 长电 2026 进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 国产 先进封装 CoWoS 2.5D HBM 集成 通富微电 长电 2026 进展
+    url: http://finance.sina.com.cn/wm/2026-05-26/doc-inhzctrk1974807.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-02T02:18:42.197912+00:00'
+    stale_at: '2026-08-01T02:18:42.197912+00:00'
+    expire_at: '2026-09-30T02:18:42.197912+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fbccf9
+  filename: 2026-07-02_华西证券-先进封装设备深度报告-ai等驱动先进封装加速发展-关注优质-卖铲人---发现报告.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.208217+00:00'
+  processed: false
+  notes: query='国产 先进封装 CoWoS 2.5D HBM 集成 通富微电 长电 2026 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 国产 先进封装 CoWoS 2.5D HBM 集成 通富微电 长电 2026 进展
+    url: https://www.fxbaogao.com/detail/4199710
+    domain: fxbaogao.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.205598+00:00'
+    stale_at: '2026-08-01T02:18:42.205598+00:00'
+    expire_at: '2026-09-30T02:18:42.205598+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ad1222
+  filename: 2026-07-02_澜起科技第一季度净利润同比增长逾六成ddr5-rcd芯片出货量显著.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.222465+00:00'
+  processed: false
+  notes: query='澜起科技 2026 一季报 PCIe Retimer MRCD CKD 营收 增速' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 澜起科技 2026 一季报 PCIe Retimer MRCD CKD 营收 增速
+    url: https://news.qq.com/rain/a/20260427A07UHY00
+    domain: news.qq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.219343+00:00'
+    stale_at: '2026-08-01T02:18:42.219343+00:00'
+    expire_at: '2026-09-30T02:18:42.219343+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ba4c3a
+  filename: 2026-07-02_公司公告-澜起科技-投资者关系活动记录表-2026-002-新浪财经.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.234007+00:00'
+  processed: false
+  notes: query='澜起科技 2026 一季报 PCIe Retimer MRCD CKD 营收 增速' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 澜起科技 2026 一季报 PCIe Retimer MRCD CKD 营收 增速
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=688008&id=12062132
+    domain: money.finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.230218+00:00'
+    stale_at: '2026-08-01T02:18:42.230218+00:00'
+    expire_at: '2026-09-30T02:18:42.230218+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ee93a7
+  filename: 2026-07-02_华为升腾950-将搭载自研hbm.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.249512+00:00'
+  processed: false
+  notes: query='华为 昇腾 920 950 上游 BOM 国产 制程 HBM 供应链 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为 昇腾 920 950 上游 BOM 国产 制程 HBM 供应链 2026
+    url: https://www.eet-china.com/mp/a439477.html
+    domain: eet-china.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.245395+00:00'
+    stale_at: '2026-08-01T02:18:42.245395+00:00'
+    expire_at: '2026-09-30T02:18:42.245395+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4adf58
+  filename: 2026-07-02_为何说昇腾950pr是2026年下半年的投资主线---虎嗅.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.264595+00:00'
+  processed: false
+  notes: query='华为 昇腾 920 950 上游 BOM 国产 制程 HBM 供应链 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 华为 昇腾 920 950 上游 BOM 国产 制程 HBM 供应链 2026
+    url: https://www.huxiu.com/article/4866300.html
+    domain: huxiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-02T02:18:42.260339+00:00'
+    stale_at: '2026-08-01T02:18:42.260339+00:00'
+    expire_at: '2026-09-30T02:18:42.260339+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b0d964
+  filename: 2026-07-02_至顶智库-2026全球ai算力发展研究报告.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.284019+00:00'
+  processed: false
+  notes: query='国产 AI 算力 需求 智算中心 利用率 产能过剩 H20 B30 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 国产 AI 算力 需求 智算中心 利用率 产能过剩 H20 B30 2026
+    url: https://www.fxbaogao.com/detail/5475428
+    domain: fxbaogao.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.279511+00:00'
+    stale_at: '2026-08-01T02:18:42.279511+00:00'
+    expire_at: '2026-09-30T02:18:42.279511+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-40a9d9
+  filename: 2026-07-02_一天吃透一个行业87-半导体材料国产替代-附核心股票名单-收藏版-股票-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.301075+00:00'
+  processed: false
+  notes: query='CMP 耗材 光刻胶 国产化率 半导体材料 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: CMP 耗材 光刻胶 国产化率 半导体材料 2026
+    url: https://finance.sina.com.cn/wm/2026-05-03/doc-inhwpucu9359247.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-02T02:18:42.296058+00:00'
+    stale_at: '2026-08-01T02:18:42.296058+00:00'
+    expire_at: '2026-09-30T02:18:42.296058+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-09eaef
+  filename: 2026-07-02_半导体芯片之巅-光刻胶材料亟待国产化曙光---36氪.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.319046+00:00'
+  processed: false
+  notes: query='CMP 耗材 光刻胶 国产化率 半导体材料 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: CMP 耗材 光刻胶 国产化率 半导体材料 2026
+    url: https://m.36kr.com/p/2438627518099718
+    domain: m.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-07-02T02:18:42.312847+00:00'
+    stale_at: '2026-08-01T02:18:42.312847+00:00'
+    expire_at: '2026-09-30T02:18:42.312847+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-24fb09
+  filename: 2026-07-02_pdf-中芯国际集成电路制造有限公司2026-年第一季度报告.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.340629+00:00'
+  processed: false
+  notes: query='中芯国际 2026 一季报 毛利率 ROIC 资本开支 产能利用率' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中芯国际 2026 一季报 毛利率 ROIC 资本开支 产能利用率
+    url: http://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESH_STOCK/2026/2026-5/2026-05-15/12320692.PDF
+    domain: file.finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.335033+00:00'
+    stale_at: '2026-08-01T02:18:42.335033+00:00'
+    expire_at: '2026-09-30T02:18:42.335033+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-18adcf
+  filename: 2026-07-02_pdf-中芯国际-688981-国产替代加速-资本开支持续高位.md
+  source_type: web-search
+  added: '2026-07-02T02:18:42.357757+00:00'
+  processed: false
+  notes: query='中芯国际 2026 一季报 毛利率 ROIC 资本开支 产能利用率' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 中芯国际 2026 一季报 毛利率 ROIC 资本开支 产能利用率
+    url: https://pdf.dfcfw.com/pdf/H3_AP202512171802170753_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:18:42.351649+00:00'
+    stale_at: '2026-08-01T02:18:42.351649+00:00'
+    expire_at: '2026-09-30T02:18:42.351649+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-537599
+  filename: 2026-07-02_美国批准三星-sk-海力士-2026-年对华出口芯片设备---lem-莱姆电子-电流传感器ic模块供.md
+  source_type: web-search
+  added: '2026-07-02T02:19:01.462866+00:00'
+  processed: false
+  notes: query='美国 出口管制 HBM 三星 海力士 对华 供应 限制 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 美国 出口管制 HBM 三星 海力士 对华 供应 限制 2026
+    url: https://lem.yibeiic.com/xinpianzixun/118614.html
+    domain: lem.yibeiic.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:19:01.456300+00:00'
+    stale_at: '2026-08-01T02:19:01.456300+00:00'
+    expire_at: '2026-09-30T02:19:01.456300+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fb2fdf
+  filename: 2026-07-02_路透-中国企业囤积三星高端芯片-因应美国将出台新规.md
+  source_type: web-search
+  added: '2026-07-02T02:19:01.482471+00:00'
+  processed: false
+  notes: query='美国 出口管制 HBM 三星 海力士 对华 供应 限制 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 美国 出口管制 HBM 三星 海力士 对华 供应 限制 2026
+    url: https://www.voachinese.com/a/chinese-firms-stockpile-high-end-samsung-chips/7731569.html
+    domain: voachinese.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:19:01.474646+00:00'
+    stale_at: '2026-08-01T02:19:01.474646+00:00'
+    expire_at: '2026-09-30T02:19:01.474646+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5aa0f8
+  filename: 2026-07-02_美国会放松对半导体设备的管制吗---安全内参-决策者的网络安全知识库.md
+  source_type: web-search
+  added: '2026-07-02T02:19:01.501952+00:00'
+  processed: false
+  notes: query='美国 出口管制 HBM 三星 海力士 对华 供应 限制 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 美国 出口管制 HBM 三星 海力士 对华 供应 限制 2026
+    url: https://www.secrss.com/articles/86599
+    domain: secrss.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:19:01.495002+00:00'
+    stale_at: '2026-08-01T02:19:01.495002+00:00'
+    expire_at: '2026-09-30T02:19:01.495002+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-717b7c
+  filename: 2025_688008_annual_2026-03-30_澜起科技.PDF
+  source_type: annual-report
+  added: '2026-07-02T02:26:30.498827+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 澜起科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-c06719
+  filename: 2026_688008_quarterly_2026-04-27_澜起科技.PDF
+  source_type: quarterly-report
+  added: '2026-07-02T02:26:30.920233+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 澜起科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-e654e9
+  filename: 2025_688981_annual_2026-03-26_中芯国际.PDF
+  source_type: annual-report
+  added: '2026-07-02T02:26:31.535763+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 中芯国际
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-c2ec5a
+  filename: 2026_688981_quarterly_2026-05-14_中芯国际.PDF
+  source_type: quarterly-report
+  added: '2026-07-02T02:26:32.016897+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 中芯国际
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-b487ac
+  filename: 2025_002156_annual_2026-04-16_通富微电.PDF
+  source_type: annual-report
+  added: '2026-07-02T02:26:32.519858+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 通富微电
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-2b3a57
+  filename: 2026_002156_quarterly_2026-04-29_通富微电.PDF
+  source_type: quarterly-report
+  added: '2026-07-02T02:26:33.223544+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 通富微电
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-bd53c5
+  filename: 2025_600584_annual_2026-04-09_长电科技.PDF
+  source_type: annual-report
+  added: '2026-07-02T02:26:33.691828+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 长电科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-2d0527
+  filename: 2026_600584_quarterly_2026-04-28_长电科技.PDF
+  source_type: quarterly-report
+  added: '2026-07-02T02:26:34.164206+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 长电科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-4fa915
+  filename: 2025_002436_annual_2026-04-24_兴森科技.PDF
+  source_type: annual-report
+  added: '2026-07-02T02:26:34.653170+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴森科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-9b6657
+  filename: 2026_002436_quarterly_2026-04-24_兴森科技.PDF
+  source_type: quarterly-report
+  added: '2026-07-02T02:26:35.314447+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴森科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-3d9a5f
+  filename: 2025_688629_annual_2026-04-14_华丰科技.PDF
+  source_type: annual-report
+  added: '2026-07-02T02:26:35.810238+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 华丰科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-ed7074
+  filename: 2026_688629_quarterly_2026-04-27_华丰科技.PDF
+  source_type: quarterly-report
+  added: '2026-07-02T02:26:36.226489+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 华丰科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-d57d3d
+  filename: 2026-07-02_国产hbm3突破-长鑫向华为交付hbm3样品-与非网.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.462028+00:00'
+  processed: true
+  notes: query='长鑫HBM3进昇腾BOM时间表容量+华为自研HBM构成' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 长鑫HBM3进昇腾BOM时间表容量+华为自研HBM构成
+    url: https://www.eefocus.com/article/1885937.html
+    domain: eefocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.451289+00:00'
+    stale_at: '2026-08-01T02:33:12.451289+00:00'
+    expire_at: '2026-09-30T02:33:12.451289+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a97cd1
+  filename: 2026-07-02_长鑫把中国半导体带进-重工业时代-网易-逻辑与常识.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.491302+00:00'
+  processed: true
+  notes: query='长鑫HBM3进昇腾BOM时间表容量+华为自研HBM构成' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 长鑫HBM3进昇腾BOM时间表容量+华为自研HBM构成
+    url: https://www.163.com/dy/article/KT9AEOSM0556BWUL.html
+    domain: 163.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.481536+00:00'
+    stale_at: '2026-08-01T02:33:12.481536+00:00'
+    expire_at: '2026-09-30T02:33:12.481536+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-080ac4
+  filename: 2026-07-02_借长鑫科技东风把存储讲透-长鑫招股书深度.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.522759+00:00'
+  processed: true
+  notes: query='长鑫HBM3进昇腾BOM时间表容量+华为自研HBM构成' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 长鑫HBM3进昇腾BOM时间表容量+华为自研HBM构成
+    url: https://www.chenxiaosheng.com/posts/2026-05-17/changxin-storage-dram.html
+    domain: chenxiaosheng.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.512879+00:00'
+    stale_at: '2026-08-01T02:33:12.512879+00:00'
+    expire_at: '2026-09-30T02:33:12.512879+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d0b3dd
+  filename: 2026-07-02_长鑫拟2027量产12层hbm3e-差距缩至2-3年-腾讯-cnmo.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.553450+00:00'
+  processed: true
+  notes: query='长鑫HBM3进昇腾BOM时间表容量+华为自研HBM构成' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 长鑫HBM3进昇腾BOM时间表容量+华为自研HBM构成
+    url: https://news.qq.com/rain/a/20260528A047PH00
+    domain: news.qq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.543428+00:00'
+    stale_at: '2026-08-01T02:33:12.543428+00:00'
+    expire_at: '2026-09-30T02:33:12.543428+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-746a53
+  filename: 2026-07-02_澜起25年报点评-国元证券-目标价152-30-pe26-64x.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.589111+00:00'
+  processed: true
+  notes: query='澜起AI增量PCIe Retimer/CKD/MRCD营收拆分与可持续性卖方深度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 澜起AI增量PCIe Retimer/CKD/MRCD营收拆分与可持续性卖方深度
+    url: https://pdf.dfcfw.com/pdf/H3_AP202604151821219263_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.578758+00:00'
+    stale_at: '2026-08-01T02:33:12.578758+00:00'
+    expire_at: '2026-09-30T02:33:12.578758+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-2307da
+  filename: 2026-07-02_澜起科技2026年第一季度报告-官方.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.623930+00:00'
+  processed: true
+  notes: query='澜起AI增量PCIe Retimer/CKD/MRCD营收拆分与可持续性卖方深度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 澜起AI增量PCIe Retimer/CKD/MRCD营收拆分与可持续性卖方深度
+    url: https://ea-cdn.eurolandir.com/press-releases-attachments./4022000/688008_20260428_JP30.pdf
+    domain: ea-cdn.eurolandir.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.612041+00:00'
+    stale_at: '2026-08-01T02:33:12.612041+00:00'
+    expire_at: '2026-09-30T02:33:12.612041+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-29e511
+  filename: 2026-07-02_澜起深度-内存互连全球龙头发力ai运力-开源证券.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.657607+00:00'
+  processed: true
+  notes: query='澜起AI增量PCIe Retimer/CKD/MRCD营收拆分与可持续性卖方深度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 澜起AI增量PCIe Retimer/CKD/MRCD营收拆分与可持续性卖方深度
+    url: https://www.hangyan.co/reports/3894553883539671031
+    domain: hangyan.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.646313+00:00'
+    stale_at: '2026-08-01T02:33:12.646313+00:00'
+    expire_at: '2026-09-30T02:33:12.646313+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-47d25e
+  filename: 2026-07-02_澜起深度-retimer全球前二cxl可期-国海证券.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.694614+00:00'
+  processed: true
+  notes: query='澜起AI增量PCIe Retimer/CKD/MRCD营收拆分与可持续性卖方深度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 澜起AI增量PCIe Retimer/CKD/MRCD营收拆分与可持续性卖方深度
+    url: http://www.glybw.com/doc-32478c09c9d0767ed66377f29444a92e.html
+    domain: glybw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.682874+00:00'
+    stale_at: '2026-08-01T02:33:12.682874+00:00'
+    expire_at: '2026-09-30T02:33:12.682874+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f729d8
+  filename: 2026-07-02_中芯国际-0981-hk-深度-扩产与先进制程突破-m8.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.735314+00:00'
+  processed: true
+  notes: query='中芯N+2良率产能+昇腾系统战对先进制程需求+份额≠利润' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 中芯N+2良率产能+昇腾系统战对先进制程需求+份额≠利润
+    url: https://m8.com.cn/article/csmc-0981hk-ics-domestic-2026-deep
+    domain: m8.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.722904+00:00'
+    stale_at: '2026-08-01T02:33:12.722904+00:00'
+    expire_at: '2026-09-30T02:33:12.722904+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-20fbcc
+  filename: 2026-07-02_中芯横纵深度-战略重要生意薄价格贵-纵横-现价hk-86合理-hk-42.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.774160+00:00'
+  processed: true
+  notes: query='中芯N+2良率产能+昇腾系统战对先进制程需求+份额≠利润' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 中芯N+2良率产能+昇腾系统战对先进制程需求+份额≠利润
+    url: https://zh.app/r/smic-2026-06-05
+    domain: zh.app
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.761526+00:00'
+    stale_at: '2026-08-01T02:33:12.761526+00:00'
+    expire_at: '2026-09-30T02:33:12.761526+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ab6480
+  filename: 2026-07-02_中芯深度-受益本土崛起-国信证券-合理75-78-86-61港元.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.814134+00:00'
+  processed: true
+  notes: query='中芯N+2良率产能+昇腾系统战对先进制程需求+份额≠利润' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 中芯N+2良率产能+昇腾系统战对先进制程需求+份额≠利润
+    url: https://pdf.dfcfw.com/pdf/H3_AP202603061820345660_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.800055+00:00'
+    stale_at: '2026-08-01T02:33:12.800055+00:00'
+    expire_at: '2026-09-30T02:33:12.800055+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-745d0f
+  filename: 2026-07-02_中芯-688981-再上新台阶-中邮证券-26q1点评.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.853746+00:00'
+  processed: true
+  notes: query='中芯N+2良率产能+昇腾系统战对先进制程需求+份额≠利润' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 中芯N+2良率产能+昇腾系统战对先进制程需求+份额≠利润
+    url: https://www.hibor.com.cn/repinfodetail_5152225.html
+    domain: hibor.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.840476+00:00'
+    stale_at: '2026-08-01T02:33:12.840476+00:00'
+    expire_at: '2026-09-30T02:33:12.840476+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d1c9db
+  filename: 2026-07-02_长电78亿落子临港-高端封测扩产-ofweek.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.899394+00:00'
+  processed: true
+  notes: query='国产先进封装通富/长电 CoWoS/TSV/HBM集成良率产能+玻璃基板' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 国产先进封装通富/长电 CoWoS/TSV/HBM集成良率产能+玻璃基板
+    url: https://semi.ofweek.com/2026-06/ART-202530-12001-30692061.html
+    domain: semi.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.885895+00:00'
+    stale_at: '2026-08-01T02:33:12.885895+00:00'
+    expire_at: '2026-09-30T02:33:12.885895+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-990889
+  filename: 2026-07-02_cowos-3d封装技术交流-君实财经-梯队-良率-产能.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.941133+00:00'
+  processed: true
+  notes: query='国产先进封装通富/长电 CoWoS/TSV/HBM集成良率产能+玻璃基板' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 国产先进封装通富/长电 CoWoS/TSV/HBM集成良率产能+玻璃基板
+    url: https://www.163.com/dy/article/KLBPOOTE05568W0A.html
+    domain: 163.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.927247+00:00'
+    stale_at: '2026-08-01T02:33:12.927247+00:00'
+    expire_at: '2026-09-30T02:33:12.927247+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6616e5
+  filename: 2026-07-02_ai芯片先进封装-hbm-测试深度-复合瓶颈-纵横研报.md
+  source_type: web-search
+  added: '2026-07-02T02:33:12.982612+00:00'
+  processed: true
+  notes: query='国产先进封装通富/长电 CoWoS/TSV/HBM集成良率产能+玻璃基板' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 国产先进封装通富/长电 CoWoS/TSV/HBM集成良率产能+玻璃基板
+    url: https://zh.app/r/ai-packaging-2026-05-18
+    domain: zh.app
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:12.968641+00:00'
+    stale_at: '2026-08-01T02:33:12.968641+00:00'
+    expire_at: '2026-09-30T02:33:12.968641+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-753e59
+  filename: 2026-07-02_长电高端封装提速-cpo样品出货-玻璃基板fcbga突破-爱集微.md
+  source_type: web-search
+  added: '2026-07-02T02:33:13.024951+00:00'
+  processed: true
+  notes: query='国产先进封装通富/长电 CoWoS/TSV/HBM集成良率产能+玻璃基板' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 国产先进封装通富/长电 CoWoS/TSV/HBM集成良率产能+玻璃基板
+    url: https://www.seccw.com/document/detail/id/43944.html
+    domain: seccw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-02T02:33:13.010147+00:00'
+    stale_at: '2026-08-01T02:33:13.010147+00:00'
+    expire_at: '2026-09-30T02:33:13.010147+00:00'
+    triggered_by: 00-deep-fetch

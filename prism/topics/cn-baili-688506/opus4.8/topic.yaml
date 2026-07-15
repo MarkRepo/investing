@@ -3,7 +3,7 @@ display_name: 百利天恒
 type: company
 created: '2026-06-28T11:47:18.817233+00:00'
 status: active
-stage: 00-init
+stage: 05-critic-review
 canonical: true
 parent_topic: cn-adc
 monitoring_tier: dormant
@@ -22,26 +22,429 @@ scope:
   - iza-bren
   - BL-B01D1
   - EGFR HER3双抗ADC
-outputs_state: {}
-parent_materials: []
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-03T09:36:01.170979+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-006a17
+    - mat-0318df
+    - mat-0adf02
+    - mat-0eadec
+    - mat-1fe5b6
+    - mat-2e0bd2
+    - mat-36f3f7
+    - mat-4987d2
+    - mat-4ad13d
+    - mat-520c4c
+    - mat-620a12
+    - mat-654ac1
+    - mat-7122c2
+    - mat-7238ee
+    - mat-7b19b6
+    - mat-8782d9
+    - mat-90ff30
+    - mat-97a852
+    - mat-a91c7c
+    - mat-bc4849
+    - mat-cc7255
+    - mat-e22a4d
+    - mat-f3c310
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-03T09:50:44.897700+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-006a17
+    - mat-0318df
+    - mat-0eadec
+    - mat-1fe5b6
+    - mat-4987d2
+    - mat-4ad13d
+    - mat-520c4c
+    - mat-620a12
+    - mat-654ac1
+    - mat-7122c2
+    - mat-7238ee
+    - mat-73d044
+    - mat-7b19b6
+    - mat-8782d9
+    - mat-90ff30
+    - mat-97a852
+    - mat-cc7255
+    - mat-e22a4d
+    - mat-f3c310
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-03T09:53:53.237976+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-006a17
+    - mat-0318df
+    - mat-0eadec
+    - mat-1fe5b6
+    - mat-4987d2
+    - mat-4ad13d
+    - mat-520c4c
+    - mat-620a12
+    - mat-654ac1
+    - mat-7122c2
+    - mat-7238ee
+    - mat-73d044
+    - mat-7b19b6
+    - mat-8782d9
+    - mat-90ff30
+    - mat-97a852
+    - mat-cc7255
+    - mat-e22a4d
+    - mat-f3c310
+    last_error: null
+parent_materials:
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-374d66
+  addresses:
+  - K3
+  - K4
+  note: 浦银ADC行业深度(科伦博泰/恒瑞/药明合联目标价)—竞争位+估值锚
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-ed47a3
+  addresses:
+  - K2
+  - K3
+  note: 双抗ADC新浪潮:百利iza-bren食管癌全球首个PFS/OS双阳—直接命中K2大适应症
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-4273c9
+  addresses:
+  - K2
+  - K3
+  note: ASCO2026 ADC复盘—竞争格局
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-b010e0
+  addresses:
+  - K3
+  note: 下一代ADC拥挤:双抗/双载荷超100款同质化内卷—平台壁垒风险(命门2反面)
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-d3b452
+  addresses:
+  - K3
+  note: 双payload ADC靶点布局—平台竞品
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-5ce1dd
+  addresses:
+  - K4
+  note: 中国医药50强定价逻辑(市值前十)—估值锚/分位
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-f07d13
+  addresses:
+  - K4
+  note: 6家创新药企竞争力报告(百济/恒瑞对标)—可比估值
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-314acb
+  addresses:
+  - K4
+  note: 国泰海通创新药见底信号—板块估值周期
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-31dd47
+  addresses:
+  - K4
+  note: 中国ADC热潮泡沫/PD-1到ADC启示录—historical-mirror泡沫镜鉴
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-0318df
+  addresses:
+  - K1
+  note: 天价抗癌药国谈以价换量PD-1降70-85%—医保放量镜鉴(K1)
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-8292c1
+  addresses:
+  - K3
+  note: PD-1靶点红海—靶点拥挤镜鉴(命门2)
 next_actions:
-- 运行 workflow 01-build-roadmap
-user_todos: []
-suggested_drilldowns: []
+- 29份资料已抽成findings+重建索引；gap:K1-K6全覆盖,mgmt-capital-alloc环①🔴已解除
+- 说「prism 推进 cn-baili-688506」走决策链合成(company路径 04-synthesize/_company_case)：00_primer领域入门
+  + c_investment_case成稿 + 07_decision_kit sidecar
+user_todos:
+- task: FY2025年报+2026Q1季报核心财务(营收/归母净利/研发费用/现金/剔BD产品收入)
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-006a17
+  - mat-36f3f7
+  - mat-4987d2
+  last_fetch_note: annual+quarterly extracted
+- task: iza-bren鼻咽癌2026-06-22获批公告+PANKU-NPC01疗效数据(ORR/mPFS)
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4ad13d
+  last_fetch_note: 获批公告+新华网
+- task: iza-bren大适应症(ESCC/TNBC/NSCLC)NDA受理时点+FDA BLA全球注册临床时间线
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1fe5b6
+  - mat-73d044
+  last_fetch_note: fda-bla时间线note+06-14公告
+- task: 平台可复用性:T-Bren及BL-M系列(05D1/14D1)/SI-B001进展+卖方对平台判断
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-620a12
+  - mat-f3c310
+  last_fetch_note: 卖方深度note+T-Bren公告
+- task: 估值锚:可比中国biotech(信达/荣昌/百济)BD后PS估值消化历史轨迹
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-8782d9
+  last_fetch_note: 可比biotech PS轨迹note
+- task: 卖方深度报告目标价与一致预期(consensus估值锚)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-620a12
+  last_fetch_note: 卖方深度note
+- task: BMS里程碑详细条款(结构/触发条件/剩余$2.5亿+$71亿确认节奏)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-97a852
+  last_fetch_note: bms里程碑条款note
+- task: 荣昌生物Vorbio(RC48)历史BD镜鉴(退货率/里程碑达成率现实)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-e22a4d
+  last_fetch_note: 荣昌vorbio镜鉴note
+- task: H股上市延迟最新进展+融资/现金可持续性(定增37.64亿+里程碑能撑多久)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-7b19b6
+  - mat-cc7255
+  last_fetch_note: h股延迟note+定增说明书
+- task: 朱义资本配置史:定增用途/6月回购/MNC野心可信度(mgmt-capital-alloc)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-7122c2
+  - mat-cc7255
+  last_fetch_note: 回购报告书+定增说明书
+- task: 资料提取完成：29份actionable全部处理(总51份,含11父级+9prescan豁免)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成(00_primer+c_investment_case+07_decision_kit+thesis_v1+decomposition_v1),等待05评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: iza-bren大适应症(TNBC/ESCC/NSCLC)放量斜率与海外峰值销售的量化锚：获批时点、医保准入/定价、峰值销售区间
+  rationale: chain-critic判终局证据薄——EV最敏感的放量斜率/海外峰值销售是data-missing,仅靠卖方DCF+训练估算;这是决定PS
+    55x能否兑现的核心变量
+  source: critic_weak_k
+  related:
+  - K1
+  - K2
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-07-03T09:51:21.199505+00:00'
+- question: BMS后续71亿美元里程碑的分层结构与触发时点(开发/注册/销售各档)
+  rationale: K5目前单源(manual-note),87.5%里程碑未兑现,分层结构不明,影响K5兑现节奏判断
+  source: critic_weak_k
+  related:
+  - K5
+  priority: P1
+  status: open
+  suggested_at: '2026-07-03T09:51:21.199505+00:00'
 monitoring:
   enabled: false
   cadence: daily
 critic: null
 decomposition:
-  current_version: null
-  last_updated: null
-  history: []
+  current_version: 1
+  last_updated: '2026-07-03T09:42:30.744956+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-03T08:52:49.784692+00:00'
+    summary: 命门1=估值-放量剪刀差(中); 命门2=平台可复用性是否真壁垒(中低); 命门3=现金消耗vs融资节奏(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-03T09:42:30.744977+00:00'
+    summary: 命门1估值-放量剪刀差(中·强化);命门2平台可复用性(中低→硬实证成立);命门3现金消耗vs融资(中·维持)
+    convergence_status: converged
+    changelog: 命门2上调置信(凭mat-654ac1/f3c310/0eadec硬实证);命门1/3维持;primer加监管支付背景(§1.4);对照全历史无震荡;05critic未跑首轮标converged
 thesis:
-  current_version: 0
-  last_updated: '2026-06-28T11:49:00.486165+00:00'
+  current_version: 1
+  last_updated: '2026-07-03T09:50:44.863870+00:00'
   history:
   - version: 0
     stage_set_at: 00-init-from-parent
     set_at: '2026-06-28T11:49:00.486178+00:00'
     summary: 百利天恒平台差异化壁垒最硬(全球首个获批EGFR×HER3双抗ADC+一平台6 ADC+BMS 84亿)，命门2最强样本；但千亿市值PS
       42x踩在一次性BD上、剔BD重回亏损，估值不给安全边际。5/10
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-03T08:49:54.431698+00:00'
+    summary: 生意顶级（全球首个获批双抗ADC iza-bren 2026-06-22获批+一平台6+资产+BMS $84亿已落袋$10.5亿），但当前340元/市值1404亿/PS(TTM)55x贴52周高、催化已兑现、剔BD深亏10.5亿——股票已完美定价，持有不追高等回调。4/10
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-03T09:42:30.709158+00:00'
+    summary: 生意arena最硬(全球首个获批双抗ADC+一平台多ADC,命门2硬实证),但340元/PS55.1x(全ADC宇宙最高)/市值1404亿已price-in完美放量+里程碑,贴52周高、催化已出、剔BD深亏、EV≈0。深研≠现在买,持有不追高等回调(<260有边际/<200强力买入)。4/10
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-03T09:50:44.864053+00:00'
+    summary: 生意arena最硬(全球首个获批双抗ADC+一平台多ADC,命门2硬实证),但340元/PS55.1x(全ADC宇宙最高)高于我方公允(42x≈259)约31%、贴52周高、催化已出、剔BD深亏,EV≈-11%(负)。回避/等回调(不建仓),已持有偏减,<260重估。4/10
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-03T08:54:33.895769+00:00'
+  exited_at: '2026-07-03T09:01:28.512573+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-03T09:01:28.512573+00:00'
+  exited_at: '2026-07-03T09:22:12.443513+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-03T09:22:12.443513+00:00'
+  exited_at: '2026-07-03T09:54:06.862734+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-03T09:54:06.862734+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0

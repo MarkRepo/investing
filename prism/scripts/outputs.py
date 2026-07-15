@@ -13,7 +13,7 @@ _PRISM_ROOT = Path(__file__).resolve().parent.parent
 # ── markdown 渲染（统一入口）────────────────────────────────────────────────
 # Python-Markdown 的 tables 扩展硬要求表格前必须有空行：表格紧跟非空文本行时
 # 不会被解析，整块退化成裸 `|` 文本。作者/LLM 漏空行很常见，故在渲染前统一归一化。
-_MD_EXTENSIONS = ["tables", "fenced_code"]
+_MD_EXTENSIONS = ["tables", "fenced_code", "mdx_truly_sane_lists"]
 
 
 def _is_md_table_delimiter(line: str) -> bool:
@@ -393,17 +393,25 @@ def validate_roadmap_thesis_coverage(slug: str, variant: str, version: int) -> d
         'material_covered': [K1, K2],       # tier1/tier2/tier3 material 的 addresses 字段引用的 K#
         'uncovered_in_l4': [K2, K4, K5],    # L4 没有 question 对应的 K#
         'uncovered_in_material': [K3, K4],  # 没有任何 material 攻打的 K#
-        'ok': bool,                          # 全部覆盖 == True
+        'thesis_missing': bool,              # thesis_ks 为空（文件缺失/错位/格式坏）→ ok 强制 False
+        'ok': bool,                          # thesis 存在 且 全部覆盖 == True
         'roadmap_exists': bool,
     }
+
+    注意：thesis_missing=True 时 ok 恒为 False。读不到 thesis 的 K# 不是"零缺口"，
+    是"缺 thesis 本身"——历史上把它当 ok=True 空过，让错位到 outputs/ 的 thesis 静默过 01 闸门。
     """
     import yaml
     roadmap_path = _topic_dir(slug, variant) / "roadmap.yaml"
     thesis_ks = extract_killer_questions(slug, variant, version)
+    # thesis_ks 为空 = thesis_v{version}.md 读不到 K#（文件缺失 / 错位到 outputs/ / 格式坏）。
+    # 绝不能当"完美覆盖"空过（历史 bug：ok=not[]and not[]=True，让错位 thesis 静默过闸）。
+    thesis_missing = not thesis_ks
     if not roadmap_path.is_file():
         return {
             "thesis_ks": thesis_ks, "l4_covered": [], "material_covered": [],
             "uncovered_in_l4": thesis_ks, "uncovered_in_material": thesis_ks,
+            "thesis_missing": thesis_missing,
             "ok": False, "roadmap_exists": False,
         }
     roadmap = yaml.safe_load(roadmap_path.read_text()) or {}
@@ -438,7 +446,9 @@ def validate_roadmap_thesis_coverage(slug: str, variant: str, version: int) -> d
         "material_covered": mat_covered,
         "uncovered_in_l4": uncovered_l4,
         "uncovered_in_material": uncovered_mat,
-        "ok": not uncovered_l4 and not uncovered_mat,
+        "thesis_missing": thesis_missing,
+        # thesis_missing 时强制 False：读不到 thesis 不是"覆盖完美"，是缺 thesis 本身
+        "ok": (not thesis_missing) and not uncovered_l4 and not uncovered_mat,
         "roadmap_exists": True,
     }
 

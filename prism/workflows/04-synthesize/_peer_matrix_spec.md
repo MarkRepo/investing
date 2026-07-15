@@ -215,11 +215,11 @@ for k in ks: print(' -', k[:80])
 "
 ```
 
-也读 `prism/topics/{slug}/{variant}/outputs/thesis_v{cur_v}.md` 全文 + 该公司在决策链④矩阵中的"入选理由 / 预期 thesis"段落作为 narrowing 输入。
+也读 `prism/topics/{slug}/{variant}/thesis_v{cur_v}.md`（**variant 根下，非 outputs/**）全文 + 该公司在决策链④矩阵中的"入选理由 / 预期 thesis"段落作为 narrowing 输入。
 
 2. **收窄到公司视角**：从父 arena K# 中挑出与该公司直接相关的 2-4 条（重写为针对本公司的版本，例如「行业是否能跑出 OEM 模式」收窄为「{公司} 能否拿下 OEM 客户份额」）；补 1-2 条公司专属 K#（管理层兑现 / 单一大客户依赖 / 估值锚等）。
 
-3. 按 thesis_v0 四段式（① 核心 thesis + 强度评分 / ② 支持理由 / ③ 反方观点 / ④ K1-K5；**不单列 V# 验证项**，与 workflow 00 Step 5.0 一致）写入 `prism/topics/{geo}-{company_slug}/{variant}/outputs/thesis_v0.md`。**核心 thesis ≤120 字**，强度按父 arena 强度 -1 起估。每条 K# 末尾标注「(继承自父 K#)」或「(新增)」。
+3. 按 thesis_v0 四段式（① 核心 thesis + 强度评分 / ② 支持理由 / ③ 反方观点 / ④ K1-K5；**不单列 V# 验证项**，与 workflow 00 Step 5.0 一致）写入 `prism/topics/{geo}-{company_slug}/{variant}/thesis_v0.md`（**variant 根下，非 outputs/** —— 与 decomposition_v{N} 同级；错位到 outputs/ 会让 extract_killer_questions/5.7 闸门/web 全部读不到）。**核心 thesis ≤120 字**，强度按父 arena 强度 -1 起估。每条 K# 末尾标注「(继承自父 K#)」或「(新增)」。
 
 4. 落入 stub topic.yaml：
 

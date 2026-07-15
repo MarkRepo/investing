@@ -1,0 +1,114 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-coinbase
+created: 2026-07-14
+
+# L1/L2 已坍缩为 primer_scope（背景交给 00_primer）
+primer_scope: >
+  primer 该覆盖：Coinbase 三大收入引擎(交易/订阅与服务/其他)如何赚钱、加密交易所 take rate 机制、
+  USDC 稳定币利息分成与 Circle 关系、加密牛熊周期到财务的放大传导、ETF 托管"卖铲子"逻辑、
+  美国加密监管框架演进(SEC→GENIUS→CLARITY)、稳定币收益禁令争议、竞争格局(Binance/Kraken/Robinhood)、
+  加密公司估值特殊性(beta 3.35)、Base(L2)/Deribit 衍生品阶段、降息双向影响。
+
+learning_track:
+  l3_debates:         # 争议层：分歧在哪（thesis 反方展开）
+    - question: 收入本质仍高度顺周期——"收入多元化"能否在熊市真正对冲交易崩塌？还是 Q1'26 转亏证明地板尚未夯实？
+      source_hint: 10-K/10-Q 分部收入 + S&S 占比季度序列
+    - question: 稳定币"抗周期第二曲线"叙事是否被三重挤压（收益禁令/降息/稳定币市场收缩）而地基动摇？
+      source_hint: GENIUS/CLARITY 收益条款 + 稳定币收入息差拆分 + USDC 余额趋势
+    - question: 当前 take rate/收入崩塌，多少是周期性(会回来)、多少是竞争性结构下滑(不回来)？
+      source_hint: 隐含混合费率季度趋势 + Robinhood/Binance 费率对比
+    - question: 亏损期 forward PE 59.66、市值 $41B——是周期底部机会还是价值陷阱？分析师 $292-316 目标价的假设站得住吗？
+      source_hint: 卖方估值模型假设拆解 + 2022 熊市估值对照
+    - question: 监管确定性是双刃——既是合规护城河，又降低壁垒引入传统金融竞争者，净效应偏哪边？
+      source_hint: CLARITY 最终文本 + 传统金融(PayPal/Stripe/银行)入场动作
+
+  l4_hunting:         # 狩猎层：逐条对齐 K#
+    - question: 非交易收入(订阅与服务)占总收入比例能否在未来 2-4 季持续抬升(尤其熊市)？市场隐含什么假设？
+      addresses: [K1]
+      search_keywords: [Coinbase subscription revenue mix, S&S revenue percentage, 非交易收入占比]
+      source_hint: Q2'26 财报(2026-07-30) + 股东信 S&S 拆分
+    - question: GENIUS/CLARITY 最终文本是否禁止稳定币收益奖励，击穿 USDC rewards→余额→收入链条？
+      addresses: [K2]
+      search_keywords: [stablecoin yield ban CLARITY, GENIUS reward prohibition, USDC rewards Coinbase]
+      source_hint: 参议院银行委员会最终文本 + OCC/联邦公报 rulemaking
+    - question: 加密周期是否/何时触底——BTC 能否 12 个月内站上 $90K+ 带动交易量恢复？
+      addresses: [K3]
+      search_keywords: [Bitcoin price forecast 2026, crypto trading volume recovery, 加密周期底部]
+      source_hint: BTC 价格/全市场交易量 + 链上/ETF 资金流
+    - question: Coinbase 混合交易 take rate 是否结构性下滑(非周期性)？
+      addresses: [K4]
+      search_keywords: [Coinbase take rate trend, crypto exchange fee compression, Robinhood fee comparison]
+      source_hint: 交易收入/交易量隐含费率序列 + 竞争费率对比
+    - question: 管理层熊市中如何配置净现金($2.47B)——增值并购/回购 vs 烧钱稀释？
+      addresses: [K5]
+      search_keywords: [Coinbase buyback capital allocation, Deribit acquisition funding, 资本配置]
+      source_hint: 历年现金流量表 + Deribit 整合 + 回购公告
+
+material_priority:
+  tier1:              # 必读（P0，已收）
+    - title: Coinbase FY2025 10-K + Q1'26 10-Q（分部收入/风险/MD&A/财务报表）
+      type: annual-report
+      ticker: COIN
+      source: SEC EDGAR（已抓，9 份 sec-section 抽取）
+      why: 分部收入/S&S 拆分/take rate/现金流——K1/K4/K5 核心一手源
+      addresses: [K1, K4, K5]
+    - title: Coinbase Q3'25/Q4'25 股东信（S&S 四项拆分）
+      type: sell-side-note
+      source: investor.coinbase.com / sec.gov（已抓）
+      why: 稳定币/staking/托管/One 占比与增速——K1 命门
+      addresses: [K1]
+    - title: 卖方深度研报×3（估值锚 + $292-316 目标价假设）
+      type: sell-side-note
+      source: TIKR/Morningstar/public.com（已抓）
+      why: 环④ EV 输入 + consensus——K1/K3
+      addresses: [K1, K3]
+  tier2:              # 补充（P1，已收）
+    - title: 稳定币收益禁令追踪（GENIUS 细则 + CLARITY 收益条款 + Forbes 缺口分析）
+      type: policy
+      source: whitehouse.gov/forbes/federalregister（已抓）
+      why: K2 监管天花板命门（低置信度，优先）
+      addresses: [K2]
+    - title: 2022 加密熊市 COIN 跌幅与恢复镜鉴 + 2023 10-K
+      type: industry-research
+      source: morningstar/sec.gov coin-20231231（已抓）
+      why: 环⑤ historical-mirror——K3/K5
+      addresses: [K3, K5]
+    - title: 管理层资本配置史/并购记录
+      type: data
+      source: 10-K 现金流 + Deribit 披露（已抓）
+      why: 环① mgmt-capital-alloc——K5
+      addresses: [K5]
+    - title: take rate 竞争分析（Robinhood/Binance/传统金融费率对比）
+      type: industry-research
+      source: insights4vc/coinbureau（已抓）
+      why: K4 竞争命门
+      addresses: [K4]
+  tier3:              # 可选（P2，已收）
+    - title: Base(L2)链上收入 + Deribit 衍生品规模数据
+      type: data
+      source: talos/siddhants flywheel 分析（已抓）
+      why: K1 长期期权变现阶段
+      addresses: [K1]
+    - title: USDC 余额与稳定币市场份额跟踪
+      type: data
+      source: defillama/yahoo finance（已抓）
+      why: K2 稳定币格局
+      addresses: [K2]
+
+key_risks_to_monitor:
+  - Q2'26 财报(2026-07-30)：S&S 占比是否续升、交易量是否触底、是否续亏
+  - CLARITY Act 参议院最终文本对稳定币收益的裁决
+  - BTC 跌破关键支撑引发交易量二次探底
+  - take rate 连续 2 季下滑（结构性侵蚀信号）
+  - 降息路径压缩稳定币利息收入
+
+analogies_to_study:
+  - 案例: Coinbase 自身 2022 加密熊市（美国/加密交易所/2022-2023）
+    类比逻辑: 上一轮周期崩塌中收入/股价跌幅与后续恢复路径，检验"周期底部买入"均值回归假设
+    类比局限: 2022 时收入多元化程度更低、无 ETF 托管/Deribit/S&P500，franchise 更弱
+  - 案例: 传统券商/交易所周期底部（如 2008-09 嘉信/ICE、2020 疫情低点）
+    类比逻辑: 顺周期金融平台在成交低谷期的估值与恢复弹性
+    类比局限: 加密波动率与监管不确定性远高，beta 3.35 非传统金融可比
+  - 案例: 顺周期平台的价值陷阱（如部分 fintech/交易平台高估值后长期不兑现）
+    类比逻辑: 警惕"周期底部"实为结构性衰退（take rate 侵蚀/去中介化）
+    类比局限: Coinbase 合规龙头地位与机构基础设施护城河可能使其区别于纯价值陷阱

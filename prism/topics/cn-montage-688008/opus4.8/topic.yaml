@@ -1,0 +1,350 @@
+slug: cn-montage-688008
+display_name: 澜起科技
+type: company
+created: '2026-07-02T06:24:07.430607+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: cn-advanced-mfg-hbm
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 澜起AI增量(PCIe Retimer/CKD/MRCD/CXL)增长可持续性与当前估值(TTM PE~151、扣非减速)下的介入买点纪律
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_688008
+  market: SSE
+  short_name: 澜起科技
+  search_terms:
+  - 澜起科技
+  - 内存接口
+  - PCIe Retimer
+  - CXL
+  - 估值买点
+  extra_tickers:
+  - HKEX_06809
+  extra_markets:
+  - HKEX
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-14T08:30:05.847293+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-19b71a
+    - mat-3627da
+    - mat-563186
+    - mat-6af232
+    - mat-7bbe51
+    - mat-9c90cc
+    - mat-ad144f
+    - mat-b9410f
+    - mat-c06e18
+    - mat-cd5307
+    - mat-de5e3c
+    - mat-fd2913
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-14T08:36:20.884173+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-007aa9
+    - mat-19b71a
+    - mat-1d7248
+    - mat-3627da
+    - mat-4b1b6a
+    - mat-563186
+    - mat-609b0a
+    - mat-6af232
+    - mat-7bbe51
+    - mat-7c0e5d
+    - mat-9c90cc
+    - mat-ad144f
+    - mat-c06e18
+    - mat-c0da02
+    - mat-d52791
+    - mat-dd5397
+    - mat-de5e3c
+    - mat-fd2913
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-14T08:36:20.907580+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-007aa9
+    - mat-19b71a
+    - mat-3627da
+    - mat-563186
+    - mat-609b0a
+    - mat-c0da02
+    - mat-de5e3c
+    last_error: null
+parent_materials: []
+next_actions:
+- 说「prism 推进 cn-montage-688008」走决策链合成（00_primer 领域入门 + c_investment_case 成稿 + 07_decision_kit
+  sidecar）
+user_todos:
+- task: 澜起科技 2025 年报全文（营收/毛利拆分/前五大客户/境外收入/AI互连收入占比/分部）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  - K4
+  source_hint: cninfo/巨潮 SSE_688008 2025 年报直下
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-563186
+  last_fetch_note: cninfo 直下
+- task: 澜起科技 2026 一季报 + 2026 半年报/业绩预告全文（扣非质量、一次性收益拆分、毛利率环比）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: cninfo SSE_688008 季报/半年报
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2495cd
+  - mat-de5e3c
+  - mat-f55236
+  last_fetch_note: Q1直下;H1半年报未披露仅业绩预告(prescan已收)
+- task: 3份卖方深度研报（2026-2027 盈利预测+目标价+AI新品放量假设）= 一致预期锚
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 中金/中信建投/申万等，同花顺/卖方公众号/研报站
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-dd5397
+  last_fetch_note: 深度研究+机构调研(consensus正式模型待01深化)
+- task: 港股 H 股招股说明书 + 上市公告（募资用途/H股定价/AH结构/发行细节）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K4
+  source_hint: hkexnews.hk / sse star H股招股书
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-3627da
+  - mat-3cdbd9
+  - mat-b9410f
+  - mat-cd5307
+  last_fetch_note: hkexnews H06809 招股书全文直下
+- task: Astera Labs 最新财报+业绩会（PCIe Retimer/CXL 竞争基准 + 可比估值 EV/S、PE）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: Astera Labs IR / SEC 10-Q，英文
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-c06e18
+  - mat-fd2913
+  last_fetch_note: Aries6 Gen6竞争+prescan futurum Q1FY26
+- task: 澜起科技 分红/回购/减持/股权激励历史（2019上市至今）= 管理层资本配置史
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  - K4
+  source_hint: SSE公告/年报，A股临时公告分诊
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1d7248
+  - mat-4b1b6a
+  - mat-7c0e5d
+  last_fetch_note: 回购结果+H股激励+大股东减持公告
+- task: AI 互连产业研报（PCIe Retimer/CXL/MRDIMM 市场空间+玩家份额+MRDIMM 2027时间表）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K5
+  source_hint: 卖方行业研报/TrendForce
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-ad144f
+  - mat-c0da02
+  - mat-d52791
+  last_fetch_note: 发现报告机构调研纪要+长江电子call+主营分析
+- task: 内存周期+DDR5 服务器渗透率+云资本开支数据（判断量驱动与周期位置）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: TrendForce/集邦/卖方数据
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6af232
+  - mat-7bbe51
+  - mat-a34477
+  last_fetch_note: TrendForce DDR5 2026利润超HBM3e+十大趋势
+- task: 历史失败镜鉴：半导体高估值标的均值回归 + Astera Labs 上市后估值波动史
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 历史行情/研报复盘
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-007aa9
+  - mat-19b71a
+  last_fetch_note: Astera回调/芯片股泡沫复盘
+- task: 澜起业绩说明会/投资者关系记录（管理层对减速、AI放量、PCIe Switch转向的表态）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K3
+  - K5
+  source_hint: sina 投资者关系记录/业绩会纪要
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-40096e
+  - mat-609b0a
+  - mat-9c90cc
+  last_fetch_note: stcn新品引擎+sina IR记录+21jingji
+- task: 资料提取完成：62 份全部处理完毕（22 份 actionable 各产 finding）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成（00_primer + c_investment_case + 07_decision_kit + thesis_v1 + decomposition_v1），进入评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-14T08:39:20.388775+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-14T07:13:24.145339+00:00'
+    summary: 命门1=极端估值能否被增长消化(中,终局); 命门2=AI互连第二曲线放量斜率(中低); 命门3=增长含金量/扣非真实增速(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-14T08:39:20.388786+00:00'
+    summary: 命门①极端估值能否消化(高,终局)=现价EV负、等回调; 命门②AI二曲线斜率(中)=占比19%放量强但基数小竞争加剧; 命门③扣非含金量(中,已定调)=真实~20%
+    convergence_status: converged
+    changelog: 结构delta空(三命门全保留无增删重排); 置信度更新:①中→高(现价翻倍EV负)/②中低→中/③低→中(扣非~20%定调,凭mat-de5e3c/d52791);
+      primer12目标无增删,critic驱动3处写作修订; 对照全历史无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-07-14T08:39:20.355555+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-02T06:25:43.905424+00:00'
+    summary: 全球内存接口寡头(市占36.8%第一/毛利65%+/ROIC最高)，moat真已验证；但Q1扣非仅+20%(主业减速)、TTM PE~151透支——命门不在质量在估值纪律与AI新品接棒DDR5。强度4.5
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-14T07:11:53.476861+00:00'
+    summary: 全球内存接口寡头(DDR5全球第一/毛利60%+),质量强验证且2026增长加速(2025营收+50%/净利+58%,H1预增85-102%),但估值极端(A股PE三位数/港股市值>6000亿"半导体新王")。命门=极端估值下介入纪律,倾向持有/等回调分批。强度5.0
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 74%（14/19，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-14T08:39:20.355756+00:00'
+    summary: 全球内存接口寡头(DDR5全球第一36.8%/ROIC17.2%/净现金),质量强验证、管理层可托付;但可持续增速约20-25%(扣非)非现价隐含的45-50%,现价252.79(4个月翻倍/PE120)三模型公允中枢95-105均低于现价、EV≈-13%。好生意错价位:现价不建仓,等回调130-175分批。强度5.5
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-14T07:14:11.509616+00:00'
+  exited_at: '2026-07-14T07:35:35.890464+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-14T07:35:35.890464+00:00'
+  exited_at: '2026-07-14T08:13:48.240511+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-14T08:13:48.240511+00:00'
+  exited_at: '2026-07-14T08:44:55.415548+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-14T08:44:55.415548+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

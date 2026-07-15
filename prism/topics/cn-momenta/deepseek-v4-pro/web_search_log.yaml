@@ -1,0 +1,99 @@
+slug: cn-momenta
+variant: deepseek-v4-pro
+entries:
+- searched_at: '2026-06-29T16:19:07.504824+00:00'
+  query: Momenta 06880 HKEX IPO 发行价 估值 基石
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:19:07.527880+00:00'
+  query: Momenta 魔门塔 2025 2026 收入 毛利率 亏损 财务
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:19:07.569041+00:00'
+  query: Momenta 比亚迪 智驾 量产 定点 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:19:07.610712+00:00'
+  query: Momenta 端到端 自动驾驶 竞争对手 市场份额 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:19:31.590221+00:00'
+  query: Momenta 奔驰 丰田 通用 智驾 合作 量产 进展
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:19:31.648513+00:00'
+  query: Momenta Robotaxi 运营 车队 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:19:31.707147+00:00'
+  query: 中国 L3 L4 自动驾驶 法规 2025 2026 政策
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:19:53.120093+00:00'
+  query: Momenta IPO 招股书 风险 分析 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:20:39.962144+00:00'
+  query: Momenta 06880 最新 公告 事件 2026年6月 7月
+  triggered_by: 00-prescan
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:28:21.677783+00:00'
+  query: 曹旭东 Momenta 创始人 履历 清华 微软 商汤 创业 管理团队
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:28:21.754897+00:00'
+  query: Waymo Robotaxi unit economics cost per mile 2025 2026
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-29T16:28:21.833711+00:00'
+  query: Momenta IPO 首覆 研报 估值 目标价 2026
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered

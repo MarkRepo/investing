@@ -14,5 +14,6 @@ discount_rate: null
 slug: us-micron-mu
 variant: opus4.8
 stamped_at: '2026-06-12T02:44:38.422714+00:00'
-stale: false
-stale_reason: null
+stale: true
+stale_reason: 依赖的『金融条件偏松·信用利差极窄·风险偏好亢奋但脆弱』已变『条件偏松·信用利差历史地板·资金面无压但临界(RRP小幅回补)·风险偏好亢奋但脆弱』(regime
+  v2→v3)

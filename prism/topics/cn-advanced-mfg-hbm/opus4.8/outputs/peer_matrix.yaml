@@ -1,0 +1,88 @@
+slug: cn-advanced-mfg-hbm
+variant: opus4.8
+topic_type: arena
+display_name: 中国算力上游制造（先进制程/国产HBM/先进封装）
+generated: 2026-07-02T00:00:00Z
+data_freshness: 2026-07-01
+
+# score 1-5（5最优，=卡位质量×当前定价的研究吸引力），与 a_arena_case 环④综合分同向。
+# ⚠️ 澜起 score 最高(4.0)但估值透支：该分反映"卡位质量×研究价值"，非"现在便宜"——
+#    进深研为定买点纪律(命门2)，非当前买入信号。详见 case 环⑥ score↔tier 说明。
+# tier 档名映射：深研=shortlist / 观察=watch / 淘汰=eliminated
+companies:
+  - name: 澜起科技
+    ticker: SSE_688008
+    score: 4.0
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-montage-688008
+    thesis_one_liner: 全球内存接口寡头、moat最真ROIC最高；深研以定买点纪律(命门2)，非现在追高
+    upgrade_triggers: []
+    quarantine: false
+  - name: 长电科技
+    ticker: SSE_600584
+    score: 3.7
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-jcet-600584
+    thesis_one_liner: 全球第三OSAT、XDFOI/CPO/玻璃基板全栈+Q1盈利拐点，直卡HBM后段封测(命门1 A股捕获点)，估值相对温和
+    upgrade_triggers: []
+    quarantine: false
+  - name: 通富微电
+    ticker: SZSE_002156
+    score: 3.5
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-tfme-002156
+    thesis_one_liner: 国产2.5D产能第一、绑AMD吃HPC封装超周期，arena内PE最低(77x)，确定侧risk/reward最佳
+    upgrade_triggers: []
+    quarantine: false
+  - name: 华丰科技
+    ticker: SSE_688629
+    score: 2.8
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - 华为占比降至<50%（客户分散化）
+      - 估值回落至PE<80
+      - 高速连接进入非华为大客户
+    quarantine: false
+  - name: 中芯国际
+    ticker: SSE_688981
+    score: 1.8
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: true
+  - name: 兴森科技
+    ticker: SZSE_002436
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: true
+
+cluster_tags: [半导体, AI算力, 先进封装, HBM, 内存接口, 国产替代, 晶圆代工, ABF载板]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 2
+    kind: data-missing
+    note: 中芯先进制程(7nm/N+2)良率与可分配昇腾产能上限官方回避披露，K1仅靠券商定性推断
+  - ring: 3
+    kind: data-missing
+    note: 长鑫HBM3进昇腾BOM的确切容量/时点未闭合，且A股封测捕获份额被未上市沛顿(>50%)稀释、未量化
+  - ring: 4
+    kind: data-missing
+    note: 通富/长电先进封装(2.5D/3D)单独营收占比与该细分毛利率年报未拆分，利润弹性只能间接推断

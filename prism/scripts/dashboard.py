@@ -90,8 +90,19 @@ def _fetch_price(ticker: str) -> dict:
         pass
     try:
         from app.io import quotes as quotes_io
+        import datetime
         latest = quotes_io.latest_for(code)
         if latest:
+            # 丢弃明显过时的行情（超过 60 天）：yfinance 可能把 pre-IPO ticker
+            # 匹配到已有老公司，返回数月前的零成交数据，导致显示错误的历史价格。
+            raw_date = latest.get("date")
+            if raw_date:
+                if isinstance(raw_date, str):
+                    quote_date = datetime.date.fromisoformat(raw_date[:10])
+                else:
+                    quote_date = raw_date
+                if (datetime.date.today() - quote_date).days > 60:
+                    return {}
             return {
                 "close": latest.get("close"),
                 "date": str(latest.get("date", "")),

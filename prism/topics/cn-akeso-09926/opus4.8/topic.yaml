@@ -1,0 +1,46 @@
+slug: cn-akeso-09926
+display_name: 康方生物
+type: company
+created: '2026-07-10T08:08:40.604474+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-pd1-vegf-bispecific
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 依沃西的临床/管线/权益领先能否兑现为可持续全球份额与利润，当前估值回调后风险回报是否对称
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: HKEX_09926
+  market: HKEX
+  short_name: 康方生物
+  search_terms:
+  - 康方生物
+  - 依沃西
+  - AK112
+  - 09926
+  - PD-1/VEGF双抗
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-10T08:09:51.179794+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-10T08:09:51.179974+00:00'
+    summary: IO 2.0全球先发龙头，依沃西临床/管线/权益三重领先，现价97.45已挤出溢价；赌点=全球OS获批(PDUFA 2026-11-14二元)+中国商业化兑现。强度5/10。

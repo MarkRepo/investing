@@ -1,0 +1,145 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: cn-montage-688008
+variant: opus4.8
+created: '2026-07-14'
+parent_topic: cn-advanced-mfg-hbm
+parent_reuse_note: >-
+  父 topic 为 HBM 供应链 arena，其料多聚焦长鑫/中芯/先进封装/载板，与澜起"内存接口+AI互连"投资案关联弱；
+  澜起专属父料（年报/季报）本变体已抓新版，AI互连 web-search 属 prescan 校准层（附录 A1.5 排除复用）。
+  故不做正式 set_parent_materials；HBM 供应链背景仅作 K4"被当 HBM 概念股"叙事的旁证。
+
+primer_scope: >-
+  primer 该覆盖：内存接口芯片(RCD/DB)是什么、装在哪(服务器 RDIMM/LRDIMM)、DDR 世代升级如何量价齐升；
+  全球三强寡头格局与 JEDEC/原厂认证壁垒；四款 AI 互连新品(MRCD/MDB、PCIe Retimer、CKD、CXL MXC)各自用途；
+  内存接口 vs HBM 的区别(为何非 HBM 概念股)；fabless 轻资产模式双面性；全球生意客户结构；A+H 两地上市基本含义。
+
+learning_track:
+  l3_debates:
+    - question: 极端估值(A股 TTM PE 三位数 / 港股市值超 6000 亿)是否已透支未来 3 年增长？牛熊双方对合理估值中枢的分歧在哪？
+      source_hint: 卖方估值表 + 历史 PE-band 分位 + 可比 Astera Labs
+    - question: 2026H1 预增 85-102% 的"含金量"之争——多头看主业 AI 放量，空头看一次性收益(Q1 含 2.4 亿)+内存周期高点，剔非后真实增速几何？
+      source_hint: 半年报扣非明细 + 分季度收入结构
+    - question: AI 互连第二曲线(Retimer/CXL)是澜起的真增量，还是 Astera Labs 主导下的边缘份额？CXL 商用延后是否证伪估值隐含的放量斜率？
+      source_hint: 产业研报 + Astera 财报 + 机构调研纪要
+    - question: '被当 HBM 概念股的预期差——市场叙事(AI/HBM 运力芯片)与实际 BOM(内存接口，与 HBM 无直接关系)的偏离，是 alpha 还是估值陷阱？'
+      source_hint: 年报业务拆分 + 卖方对标的定位
+    - question: A/H 两地估值分化——港股情绪定价(半导体新王)与 A 股定价谁更接近内在价值？折溢价如何收敛？
+      source_hint: A/H 折溢价序列 + 南向资金
+
+  l4_hunting:
+    - question: AI 互连新品从 2.69 亿基数，2026-2027 季度收入占比/绝对额的爬坡曲线如何？Retimer 客户导入名单与 PCIe Switch 送样节点？
+      addresses: [K1]
+      search_keywords: [澜起 互连芯片 收入, PCIe Retimer 客户, PCIe Switch 送样]
+      source_hint: 半年报/季报分部收入 + 业绩说明会 + 卖方拆分
+    - question: A 股/港股当前 PE-band 处历史什么分位？卖方 2026-2027 EPS 一致预期与目标价分布？可比 Astera Labs 的 EV/Sales、PE 对照下澜起贵还是便宜？
+      addresses: [K2]
+      search_keywords: [澜起 目标价 一致预期, 澜起 估值 历史分位, Astera Labs 估值对比]
+      source_hint: 卖方深度模型 + Wind 一致预期 + 可比估值表
+    - question: 2026H1 半年报扣非同比(剔除 2.4 亿一次性)与毛利率环比趋势？内存周期位置(DDR5 现货价/DRAM 周期)是见顶还是主升？
+      addresses: [K3]
+      search_keywords: [澜起 半年报 扣非, DDR5 价格 2026, DRAM 内存周期]
+      source_hint: 半年报正文 + TrendForce 内存价格
+    - question: 前五大客户 2025 最新占比与境外收入结构？A/H 折溢价序列如何演变？集中/地缘风险是否因 AI 服务器需求分散而改善？
+      addresses: [K4]
+      search_keywords: [澜起 前五大客户 占比, 澜起 境外收入, 澜起 AH 折溢价]
+      source_hint: 2025 年报客户/地区分部 + A/H 行情
+    - question: PCIe Switch 战略转向的收入/客户支撑？"暂缓部分 AI 芯片开发"放弃了什么、机会成本多大？
+      addresses: [K5]
+      search_keywords: [澜起 PCIe Switch 产品, 澜起 暂缓 AI 芯片, 运力芯片 战略]
+      source_hint: 业绩说明会 + 投资者关系记录 + 研发投入拆分
+
+material_priority:
+  tier1:
+    - title: 澜起科技 2025 年报（营收/毛利拆分/前五大客户/境外收入/AI互连收入占比/分部）
+      type: annual-report
+      ticker: SSE_688008
+      source: cninfo/巨潮
+      why: 环①③④基础数据 + K1/K3/K4 事实锚
+      addresses: [K1, K3, K4]
+      status: done
+      covered_by: [mat-563186]
+    - title: 澜起科技 2026 一季报（扣非质量、一次性收益拆分）
+      type: quarterly-report
+      ticker: SSE_688008
+      source: cninfo
+      why: K3 减速/含金量的最新读数
+      addresses: [K3]
+      status: done
+      covered_by: [mat-de5e3c]
+    - title: 3 份卖方深度研报（2026-2027 EPS 预测 + 目标价 + AI 新品放量假设）= 一致预期锚
+      type: sell-side-note
+      source: 中金/中信建投/申万，研报站/卖方公众号
+      why: 环④ EV 输入（终局环）——K2 介入买点核心
+      addresses: [K1, K2]
+      status: done
+      covered_by: [mat-3cdbd9, mat-471465]
+    - title: 港股 H 股招股说明书 + 上市文件（募资用途/H 股定价/AH 结构/17 家基石）
+      type: prospectus
+      ticker: HKEX_06809
+      source: hkexnews.hk / sse star
+      why: K2/K4 估值与 AH 分化 + 治理/募资
+      addresses: [K2, K4]
+      status: in_progress
+      covered_by: [mat-3cdbd9]
+  tier2:
+    - title: Astera Labs 最新财报 + 业绩会（PCIe Retimer/CXL 竞争基准 + 可比估值 EV/S、PE）
+      type: sell-side-note
+      source: Astera Labs IR / SEC 10-Q
+      why: K1 竞争 + K2 可比估值锚
+      addresses: [K1, K2]
+      status: done
+      covered_by: [mat-1fabc5, mat-4374f8]
+    - title: 澜起 分红/回购/减持/股权激励历史 = 管理层资本配置史
+      type: data
+      source: SSE 公告
+      why: 环⑤资本配置 track record
+      addresses: [K2, K4]
+      status: done
+      covered_by: [mat-7c0e5d, mat-4b1b6a, mat-1d7248]
+    - title: AI 互连产业研报（PCIe Retimer/CXL/MRDIMM 市场空间 + 玩家份额 + MRDIMM 2027 时间表）
+      type: industry-research
+      source: 卖方行业研报 / 发现报告机构调研
+      why: 环③兑现路径 + K1/K5
+      addresses: [K1, K5]
+      status: done
+      covered_by: [mat-9f9061]
+    - title: 内存周期 + DDR5 服务器渗透率 + 云资本开支数据
+      type: data
+      source: TrendForce/集邦
+      why: 环①需求端 + K3 周期位置
+      addresses: [K1, K3]
+      status: done
+      covered_by: [mat-7b416e]
+  tier3:
+    - title: 历史失败镜鉴：半导体高估值均值回归 + Astera Labs 上市后估值波动史
+      type: industry-research
+      source: 历史行情/研报复盘
+      why: 环⑤历史镜鉴 — historical-mirror
+      addresses: [K2]
+      status: done
+      covered_by: []
+    - title: 澜起业绩说明会/投资者关系记录（管理层对减速、AI放量、PCIe Switch 转向表态）
+      type: data
+      source: sina 投资者关系记录/业绩会纪要
+      why: K3/K5 管理层口径
+      addresses: [K3, K5]
+      status: done
+      covered_by: []
+
+key_risks_to_monitor:
+  - 极端估值下任一增速/毛利证伪触发戴维斯双杀
+  - Q1 一次性收益掩盖主业真实增速（扣非含金量）
+  - CXL 商用继续延后 / Retimer 被 Astera 压制，第二曲线放量不及预期
+  - 前五大客户 77% + 境外 71.6% 的集中/地缘敞口
+  - A/H 情绪定价透支，折溢价剧烈波动
+
+analogies_to_study:
+  - 案例: Astera Labs（美国·PCIe Retimer/CXL 互连芯片·2024 IPO–2026）
+    类比逻辑: 同赛道龙头，AI 互连高成长高估值，上市后股价暴涨暴跌
+    类比局限: 纯 fabless 互连、无内存接口现金牛，估值波动更极端
+  - 案例: A 股半导体高估值成长股（兆易创新/圣邦股份等·2020–2022 周期）
+    类比逻辑: 内存/模拟高 PE 在周期与流动性回落中的消化/双杀过程
+    类比局限: 澜起 moat 更强、寡头格局更稳，杀估值幅度或较小
+  - 案例: 澜起自身 2021–2023 内存周期下行（营收从高点回落）
+    类比逻辑: 内存接口生意对服务器/DRAM 周期的敏感性镜鉴
+    类比局限: 当前 AI 互连第二曲线为过去所无，周期敏感性或被稀释

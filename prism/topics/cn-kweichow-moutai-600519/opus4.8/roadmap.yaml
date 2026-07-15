@@ -1,0 +1,163 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-kweichow-moutai-600519
+variant: opus4.8
+created: 2026-07-01
+thesis_version: 0
+decomposition_version: 0
+
+# L1/L2 已坍缩为 primer scope 备注（背景理解交给 00_primer，primer-first）
+primer_scope: >
+  00_primer 须覆盖：茅台收入/利润结构（飞天 / 非标生肖·精品·年份 / 系列酒·茅台1935）；
+  飞天"出厂价 vs 官方指导价 1499 vs 市场批价"三价体系与价差含义；批价为何是行业景气晴雨表
+  （散瓶 / 原箱 / 整件价差各反映什么）；直销（i茅台）vs 经销（批发）的吨价·毛利差与渠道扁平化；
+  "合同负债=业绩蓄水池"含义及压货式 vs 动销式增长之别；护城河来源（品牌 / 稀缺 / 产能周期 /
+  酱香 5 年窖藏）；白酒"金融属性·硬通货"现象及其对需求的双面性；白酒行业周期
+  （2012-15 调整 / 2016-21 牛市 / 2023 起下行）驱动因子；消费税从量+从价复合机制与征收环节
+  后移的报表传导路径；资本配置工具箱（分红 / 注销式回购 / 控股股东增持）如何影响每股价值；
+  茅台 vs 五粮液·泸州老窖·汾酒的价格带错位；PE 历史区间与估值中枢上下移的关键因素。
+
+learning_track:
+  # ── L3 争议层：把 thesis"最有力反方观点"展开为可调研的分歧点 → 喂决策链环④ ──
+  l3_debates:
+    - question: >
+        2025 上市以来首次营收净利双降（归母 -4.53%）——是行业下行期的一次性坑，还是"增长神话"
+        终结、长期增速中枢须系统性下修？25 年高增长估值锚被证伪后，市场愿意给什么增速定价？
+      maps_to: [命门3, K1]
+      source_hint: mat-e5d2c0（首次双降）+ mat-a45f30（2025年报）+ mat-f18803（2026Q1）+ 卖方 2026-28 增速一致预期 mat-3ec7c6/mat-767315
+    - question: >
+        直营化（飞天 1499 直销）+ 出厂价/合同价下调（茅台1935 降至 668）后稳态毛利率落在哪——
+        89.76% 是转型期一次性成本触底，还是结构性下移起点？若稳态毛利率跌破 ~85% 不回升，
+        "高盈利+高确定性"根基是否动摇、估值中枢须再降一台阶？（thesis 4/10 评分的命门核）
+      maps_to: [命门1, K3]
+      source_hint: mat-959a57（合同负债骤降/渠道变革）+ mat-dbaa5f（出厂价下调）+ mat-a45f30 年报毛利拆解 + mat-bba278 华创深度
+    - question: >
+        飞天 2013 年来首次价格倒挂——"硬通货/理财"金融属性是暂时受损还是永久瓦解？投机性囤货
+        需求盘子若不可逆收缩，则量价双杀、直营也托不住；i茅台 全面向 C 能否把投机需求置换为
+        真实消费需求，还是只是把批发蓄水池的水搬到了终端？
+      maps_to: [命门2, K2, K5]
+      source_hint: mat-4e6618（批价破1499/硬支撑1300）+ mat-42827f（批价走势2024-26）+ mat-0ea1fa（i茅台重塑）+ mat-29efa2 端午动销
+    - question: >
+        当前 ~1400 元 / PE 20.3x / 近十年 9% 分位——是"跌出安全边际的黄金坑"，还是"便宜不等于止跌、
+        价值陷阱刚开始"？~4.5% 股东回报硬底（650 亿分红 + 注销式回购 + 增持）能否托住股价，
+        还是盈利若续降则回报率的分母本身在缩水？
+      maps_to: [K4]
+      source_hint: mat-6984ab（历年PE）+ mat-9c305d（14x黄金坑）+ mat-b931b3（成长→价值转型）+ mat-28bd36/mat-923266/mat-5fb934 分红回购增持
+    - question: >
+        2026Q1 +6.34% 拐点的含金量：是 i茅台 上线飞天的一次性改革红利/低基数释放，还是新增长
+        曲线起点？合同负债"蓄水池"消失（-65%）后，靠真实终端动销的增长可持续性到底几何——
+        Q2/Q3 是唯一裁判，端午仅局部拐点、江苏/安徽仍 -10~20%。
+      maps_to: [命门3, K1]
+      source_hint: mat-f18803（Q1报）+ mat-959a57（蓄水池消失）+ mat-29efa2（端午局部拐点）+ Q2/Q3 财报属 06 监控
+
+  # ── L4 狩猎层：逐条对齐 thesis Killer Question，找错误定价 ──
+  l4_hunting:
+    - question: >
+        2026Q2/Q3 营收能否维持正增、降幅不重新走阔转负？直销占比 54.6% 后单季营收兑现是否可持续，
+        还是低基数一过即回落？（实际财报 ~08/10 披露属 06 监控）
+      addresses: [K1]
+      search_keywords: [贵州茅台 2026 半年报 营收, 茅台 Q2 动销, 白酒 中秋 旺季 动销]
+      source_hint: mat-f18803（Q1）+ mat-29efa2（端午动销）+ Q2/Q3 财报（06 监控续抓）
+    - question: >
+        飞天散瓶批价能否守住 ~1600 不重新跌破 1499？直营吨价 + 出厂价调整后价盘能否稳定，
+        原箱/散瓶价差、渠道库存周转是否恶化？跌破 1400 触发 kill。
+      addresses: [K2]
+      search_keywords: [飞天茅台 批价 2026, 茅台 散瓶 原箱 价差, 茅台 渠道 库存]
+      source_hint: mat-4e6618 + mat-42827f（批价序列）+ mat-29efa2 端午挺价
+    - question: >
+        直营化 + 出厂价/合同价下调后稳态毛利率落点：89.76% 是底还是继续下探？蓄水池消失后靠真实
+        动销的增长可持续吗？系列酒（茅台1935 降价）对整体毛利的拖累幅度？
+      addresses: [K3]
+      search_keywords: [茅台 毛利率 2026Q1, 茅台1935 出厂价 下调, 茅台 直销 吨价]
+      source_hint: mat-959a57 + mat-dbaa5f + mat-a45f30 年报毛利拆解 + mat-bba278 深度
+    - question: >
+        当前 20x / 近十年 9% 分位是否已 price-in 双降？卖方 2026-2028 营收/EPS 一致预期与目标价
+        分布如何？向上 re-rate 空间 vs 向下（批价再破 + 盈利再降）风险的赔率与目标价区间？
+      addresses: [K4]
+      search_keywords: [贵州茅台 目标价 2026, 茅台 一致预期 EPS, 茅台 PE 历史分位]
+      source_hint: mat-6984ab（PE史）+ mat-3ec7c6/mat-767315（卖方一致预期/目标价）+ mat-9c305d/mat-b931b3 估值镜鉴
+    - question: >
+        飞天金融属性受损是否永久压低需求天花板？i茅台 全面向 C（Q1 收入 +267%）能否把投机需求
+        置换为真实消费需求，月活/成交/复购数据是否支撑"需求置换成立"？
+      addresses: [K5]
+      search_keywords: [i茅台 月活 数据, 茅台 直销 需求 置换, 茅台 金融属性 收藏 需求]
+      source_hint: mat-0ea1fa（i茅台重塑）+ mat-923266（股东大会i茅台抢酒）+ mat-4e6618 金融属性
+
+  # self-check: K1→L4#1✓ K2→L4#2✓ K3→L4#3✓ K4→L4#4✓ K5→L4#5✓ —— 5/5 全覆盖
+  # L3↔命门: L3#1→命门3 L3#2→命门1 L3#3→命门2 L3#4→环④EV L3#5→命门3 ——三命门全触
+
+material_priority:
+  # 说明：workflow 00 bootstrap 已 eager-fetch/prescan 收齐 184 份料（2026-06/07 入库），
+  # K1-K5 + A 合同三项真·欠供（mgmt-capital-alloc/consensus/historical-mirror）均已有料覆盖。
+  # 本表记录优先级与 mat 锚，status=done，不再触发新抓取；正文读取留 03-extract。
+  tier1:              # 必读，研究不可缺
+    - title: 茅台 2025 年报 PDF + 2026Q1 季报（财务弧线/毛利拆解/合同负债/资本配置源头）
+      type: annual-report
+      ticker: SSE_600519
+      source: cninfo 巨潮
+      why: 环①financial-arc + 首次双降结构归因 + 环②估值地基；K1/K3 核心源头
+      addresses: [K1, K3, K4]
+      rings: [financial-arc, biz-moat-unit-econ, mgmt-capital-alloc]
+      covered_by: [mat-a45f30, mat-f18803, mat-e5d2c0]
+      status: done
+    - title: 渠道变革/直营化深度（合同负债骤降65% + i茅台重塑 + 出厂价下调）
+      type: sell-side-note
+      source: 新浪财经 / 深度报道
+      why: 命门1（稳态盈利中枢）+ 命门3（动销 vs 压货）主战场；K3/K5 核心
+      addresses: [K3, K5]
+      rings: [biz-moat-unit-econ]
+      covered_by: [mat-959a57, mat-0ea1fa, mat-dbaa5f]
+      status: done
+    - title: 卖方一致预期与目标价（茅五泸汾2026-28预测 + 华创深度 + 卖方研报汇总）
+      type: sell-side-note
+      source: 华创/研报汇总
+      why: 环②反推隐含预期 + 环④EV 一致预期/目标价（consensus 真·欠供项）；K4 收口
+      addresses: [K4]
+      rings: [consensus]
+      covered_by: [mat-3ec7c6, mat-767315, mat-bba278]
+      status: done
+    - title: 飞天批价序列 + 端午动销（批价破1499硬支撑1300 + 批价走势2024-26 + 华创端午）
+      type: data
+      source: 21世纪/华创/渠道跟踪
+      why: 命门2（批价与金融属性）signpost 源头；K2 核心 + kill 触发监测
+      addresses: [K2, K5]
+      rings: [biz-moat-unit-econ]
+      covered_by: [mat-4e6618, mat-42827f, mat-29efa2]
+      status: done
+  tier2:              # 补充，有最好
+    - title: 估值史与历史镜鉴（历年PE分析 + 14x黄金坑 + 成长→价值转型 + 2013-14反腐调整期复盘）
+      type: sell-side-note
+      source: 雪球/东方财富/复盘文章
+      why: 环④估值锚 + 环⑤historical-mirror（2013-15 调整期跌幅/估值底/复苏路径，真·欠供项）
+      addresses: [K4]
+      rings: [valuation-anchor, historical-mirror]
+      covered_by: [mat-6984ab, mat-9c305d, mat-b931b3, mat-04e7ce]
+      status: done
+    - title: 资本配置史（三年分红≥75% + 股东大会分红超4000亿 + 注销式回购实施 + 管理层变动陈华）
+      type: sell-side-note
+      source: 上海证券报/公告
+      why: 环①mgmt-capital-alloc（分红回购增持轨迹，真·欠供项）+ 股东回报硬底量化
+      addresses: [K4]
+      rings: [mgmt-capital-alloc]
+      covered_by: [mat-28bd36, mat-923266, mat-5fb934, mat-2da927]
+      status: done
+  tier3:              # 可选
+    - title: 消费税改革传导（消费税法落地/酒类税率不变/征收环节后移）
+      type: policy
+      source: 财经媒体/政策解读
+      why: 尾部风险边际缓解项；环⑤ signpost（税改路径）
+      addresses: [K3]
+      covered_by: [mat-5f9912]
+      status: done
+
+key_risks_to_monitor:
+  - 飞天散瓶批价重新跌破 1499 并持续（命门2 恶化 / 破 1400 触发 kill）
+  - 2026Q2/Q3 营收增速重新走阔转负（命门3 拐点证伪）
+  - 稳态毛利率系统性跌破 ~85% 不回升（命门1 根基动摇）
+  - 合同负债续降 + 直销吨价对冲失败（蓄水池消失后真实动销不足）
+  - 消费税征收环节后移最终纳入酒类（尾部政策风险 re-open）
+
+analogies_to_study:
+  - 案例: 2013-2015 白酒反腐调整期茅台（CN·白酒·2013-2015）
+    类比逻辑: 上一轮行业下行茅台跌幅/估值底（曾至 ~8-9x PE）/批价倒挂/复苏路径与时长——本轮的"历史镜鉴"直接对标
+    类比局限: 上轮系政务需求崩塌（三公消费禁令），本轮系宏观消费走弱+金融属性瓦解，需求结构与政策外生冲击性质不同；且当前直营化/i茅台渠道结构与彼时纯批发不可同日而语
+    covered_by: [mat-04e7ce, mat-9c305d]

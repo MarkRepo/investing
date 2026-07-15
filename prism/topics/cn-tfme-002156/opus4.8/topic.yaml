@@ -1,0 +1,46 @@
+slug: cn-tfme-002156
+display_name: 通富微电
+type: company
+created: '2026-07-02T06:24:07.432150+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-advanced-mfg-hbm
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 通富2.5D先进封装产能与AMD绑定能否在薄毛利(14%)下兑现利润弹性、单一客户依赖52%的风险
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SZSE_002156
+  market: SZSE
+  short_name: 通富微电
+  search_terms:
+  - 通富微电
+  - 2.5D封装
+  - AMD
+  - 先进封装
+  - 客户集中
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-02T06:25:43.915150+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-02T06:25:43.915156+00:00'
+    summary: 国产2.5D产能第一、绑AMD(占营收52%)吃HPC封装超周期，arena内PE最低(77x)；但薄毛利14%零改善、净利暴增靠非经常项——命门在2.5D产能能否转成利润弹性而非仅规模。强度4.5

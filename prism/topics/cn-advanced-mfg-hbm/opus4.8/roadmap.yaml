@@ -1,0 +1,192 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-advanced-mfg-hbm
+variant: opus4.8
+created: 2026-07-02
+thesis_driven: true
+thesis_version: 0
+decomposition_version: 0
+
+# L1/L2 坍缩为一行 primer scope（背景理解交给 00_primer，见 S2/附录A2）
+primer_scope: >-
+  primer 该覆盖：上游制造链分层（先进制程代工→存储/HBM→先进封装→载板→内存接口/高速连接→设备材料）、
+  各层商业模式与盈利质量差异、"卖铲人"逻辑、HBM/先进封装/ABF载板/内存接口机理、
+  超节点系统战 vs 单颗先进制程两条路线、出口管制双向影响、"份额≠利润"产业规律、各环节可观测兑现信号。
+  详见 decomposition_v0 §三 12 条 primer 入门目标。
+
+learning_track:
+  # L1/L2 见 primer_scope（不再单列问题树）
+
+  l3_debates:         # 争议层：分歧在哪，各方逻辑（展开 thesis §三 反方观点）
+    - question: 中芯腿"产能/利润证伪"——7nm(N+2)良率坊间传仅~30%、重资产+capex持续高位、成熟制程内卷，ROIC 极低会否长期卡住？替代成功≠赚钱（京东方镜鉴）
+      source_hint: 中芯年报/季报 [mat-e654e9/mat-c2ec5a] + 券商深度 [mat-f729d8/mat-20fbcc/mat-ab6480/mat-745d0f] + 镜鉴父 [mat-1d1f97]
+    - question: 昇腾系统战是否反噬"先进制程命门"叙事——若昇腾950果真"不靠单颗先进制程、走超节点系统战"，中芯先进产能的稀缺性议价被削弱多少？
+      source_hint: 昇腾950系统战 [mat-ee93a7/mat-4adf58] + 中芯深度对制程需求判断 [mat-f729d8]
+    - question: 龙头(澜起)估值是否已透支——单日暴涨+目标价连番上调后，最确定的铲子还剩多少安全边际？
+      source_hint: 澜起卖方深度/目标价 [mat-746a53/mat-29e511/mat-47d25e] + 一季报 [mat-2307da] + 父估值锚 [mat-27eea4]
+    - question: 需求证伪→上游过剩——若芯片层需求不及预期（H20/B30挤压、智算中心闲置率高），上游产能扩张会否变过剩？
+      source_hint: 算力需求/过剩 [mat-b0d964] + 父需求侧 [mat-f3c41b]
+    - question: 「华为自研HBM」是否稀释长鑫价值——若昇腾HBM由华为主导封装集成、长鑫仅供DRAM颗粒，长鑫在昇腾链的价值捕获会否低于预期？
+      source_hint: 华为自研HBM [mat-ee93a7] + 长鑫HBM3送样/份额 [mat-d57d3d/mat-a97cd1/mat-080ac4/mat-d0b3dd]
+
+  l4_hunting:         # 狩猎层：逐条对齐 thesis Killer Question K1-K5
+    - question: 中芯7nm(N+2)实际良率与可分配昇腾的产能上限？传"2年扩5倍"是否真兑现？市场隐含了多少产能预期？
+      addresses: [K1]
+      search_keywords: [中芯 N+2 良率, 中芯 7nm 扩产 产能, 昇腾 中芯 代工 产能]
+      source_hint: 中芯季报capex/利用率 [mat-24fb09/mat-18adcf] + 良率传言 [mat-9cb671] + 券商产能测算 [mat-f729d8]
+    - question: 长鑫HBM3进昇腾/寒武纪BOM的时间表与容量，能否在三星断供下补位？"华为自研HBM"里长鑫DRAM份额几何？
+      addresses: [K2]
+      search_keywords: [长鑫 HBM3 量产, 长鑫 华为 昇腾 BOM, 华为 自研 HBM 长鑫 份额]
+      source_hint: 长鑫送样/量产节奏 [mat-d57d3d/mat-a97cd1/mat-080ac4/mat-d0b3dd] + 三星对华限制 [mat-fb2fdf/mat-537599]
+    - question: 内存接口(澜起)/ABF载板(兴森)/先进封装(通富·长电)/高速连接(华丰)里，谁壁垒最真、利润弹性最大、且估值未透支？
+      addresses: [K3]
+      search_keywords: [澜起 内存接口 壁垒 份额, 兴森 ABF 载板 量产 认证, 通富 长电 先进封装 良率]
+      source_hint: 澜起深度 [mat-746a53/mat-29e511/mat-47d25e] + 兴森ABF [mat-7732d7/mat-cc6e50] + 封装深度 [mat-fbccf9/mat-990889/mat-6616e5/mat-753e59/mat-d1c9db] + 6候选年报季报
+    - question: 中芯ROIC极低的重资产低回报会否复制京东方"份额≠利润"？先进制程"卡点"是否被昇腾超节点系统战部分绕过而削弱议价？
+      addresses: [K4]
+      search_keywords: [中芯 ROIC 资本开支 折旧, 昇腾 系统战 先进制程 削弱, 面板 份额 利润 镜鉴]
+      source_hint: 中芯capex/ROIC [mat-18adcf/mat-24fb09] + 系统战 [mat-ee93a7] + 京东方镜鉴父 [mat-1d1f97]
+    - question: 上游制造相对芯片设计层的估值折价能否随产能兑现修复？澜起等已大涨，估值安全边际还剩多少？各候选当前估值分位横比如何？
+      addresses: [K5]
+      search_keywords: [算力上游 估值 折价 修复, 澜起 目标价 PE, 中芯 PB 估值 分位]
+      source_hint: 各候选估值/目标价 [mat-746a53/mat-20fbcc/mat-ab6480] + 父估值锚 [mat-27eea4] + 6候选年报peer-valuation-anchor
+
+material_priority:
+  # ⚠ 本 arena 收料已在 workflow 00 前置完成（47 份材料入库，全部 todo 闭环）。
+  # 下列 tier 标 ✓ 已收集，链接已入库 mat_id；01 未新增收料 todo（无产即收缺口）。
+  tier1:              # 必读，研究不可缺 —— 6 候选财务底座 + K1-K5 核心深度
+    - title: 澜起科技 2025年报 + 2026Q1季报（内存接口铲子，命门2主体）
+      type: annual-report
+      ticker: SSE_688008
+      status: 已收集
+      mats: [mat-717b7c, mat-c06719]
+      addresses: [K3, K5]
+      why: 环④peer横比+环②估值锚基座；澜起AI增量与moat验证 → K3/K5
+    - title: 中芯国际 2025年报 + 2026Q1季报（先进制程，命门3主体）
+      type: annual-report
+      ticker: SSE_688981
+      status: 已收集
+      mats: [mat-e654e9, mat-c2ec5a]
+      addresses: [K1, K4]
+      why: capex/ROIC/利用率实证 → K1/K4"份额≠利润"判定核心
+    - title: 通富微电 2025年报 + 2026Q1季报（先进封装）
+      type: annual-report
+      ticker: SZSE_002156
+      status: 已收集
+      mats: [mat-b487ac, mat-2b3a57]
+      addresses: [K3]
+      why: 环④peer横比；CoWoS等效2.5D/TSV集成 → K3
+    - title: 长电科技 2025年报 + 2026Q1季报（先进封装）
+      type: annual-report
+      ticker: SSE_600584
+      status: 已收集
+      mats: [mat-bd53c5, mat-2d0527]
+      addresses: [K3]
+      why: 环④peer横比；高端封测扩产 → K3
+    - title: 兴森科技 2025年报 + 2026Q1季报（ABF载板）
+      type: annual-report
+      ticker: SZSE_002436
+      status: 已收集
+      mats: [mat-4fa915, mat-9b6657]
+      addresses: [K3]
+      why: 国内唯一ABF量产企业，K3壁垒真伪
+    - title: 华丰科技 2025年报 + 2026Q1季报（高速连接）
+      type: annual-report
+      ticker: SSE_688629
+      status: 已收集
+      mats: [mat-3d9a5f, mat-ed7074]
+      addresses: [K3]
+      why: 超节点高速互联受益，环④peer横比 → K3
+    - title: 长鑫HBM3进BOM时间表容量 + 华为自研HBM份额（命门1深度）
+      type: industry-research
+      status: 已收集
+      mats: [mat-d57d3d, mat-a97cd1, mat-080ac4, mat-d0b3dd]
+      addresses: [K2]
+      why: 命门1"送样→量产→上BOM"三级跳兑现节奏 → K2
+    - title: 澜起AI增量拆分与可持续性卖方深度（命门2深度）
+      type: sell-side-note
+      status: 已收集
+      mats: [mat-746a53, mat-29e511, mat-47d25e, mat-2307da]
+      addresses: [K3, K5]
+      why: PCIe Retimer/CKD/MRCD营收拆分+目标价/估值 → K3/K5
+    - title: 中芯N+2良率产能+系统战对制程需求+份额≠利润卖方深度（命门3深度）
+      type: sell-side-note
+      status: 已收集
+      mats: [mat-f729d8, mat-20fbcc, mat-ab6480, mat-745d0f]
+      addresses: [K1, K4, K5]
+      why: 中芯产能/良率/估值+系统战绕过判断 → K1/K4/K5
+    - title: 国产先进封装(通富/长电)良率产能+玻璃基板卖方深度
+      type: sell-side-note
+      status: 已收集
+      mats: [mat-fbccf9, mat-990889, mat-6616e5, mat-753e59, mat-d1c9db]
+      addresses: [K3]
+      why: 先进封装集成良率与产能进度 → K3命门1封装闸
+  tier2:              # 补充 —— prescan scope 事件/背景料
+    - title: 长鑫HBM3送样华为拚2026量产（事件）
+      type: data
+      status: 已收集
+      mats: [mat-1c5036, mat-0271ec]
+      addresses: [K2]
+      why: 命门1兑现前移锚点 → K2
+    - title: 昇腾950系统战/自研HBM（路线之争）
+      type: industry-research
+      status: 已收集
+      mats: [mat-ee93a7, mat-4adf58]
+      addresses: [K4]
+      why: 弱化单颗先进制程命门、抬互联+封装+HBM权重 → K4
+    - title: 兴森/深南ABF载板对比 + 投关记录
+      type: industry-research
+      status: 已收集
+      mats: [mat-7732d7, mat-cc6e50]
+      addresses: [K3]
+      why: K3载板壁垒真伪
+    - title: 澜起Q1净利+60%/投关记录（moat验证事件）
+      type: data
+      status: 已收集
+      mats: [mat-ad1222, mat-ba4c3a]
+      addresses: [K3, K5]
+      why: 命门2质量侧验证 → K3/K5
+    - title: 出口管制双向（设备端松/HBM成品端紧）
+      type: policy
+      status: 已收集
+      mats: [mat-537599, mat-fb2fdf, mat-5aa0f8]
+      addresses: [K2]
+      why: 国产替代窗口 + 长鑫补位空间 → K2
+    - title: AI算力需求/智算中心利用率/过剩（需求侧下行风险）
+      type: industry-research
+      status: 已收集
+      mats: [mat-b0d964]
+      addresses: [K5]
+      why: 反方#4上游过剩风险
+  tier3:              # 可选 —— 设备材料"上游的上游"背景
+    - title: 半导体材料/CMP耗材/光刻胶国产化率背景
+      type: industry-research
+      status: 已收集
+      mats: [mat-40a9d9, mat-09eaef]
+      why: primer §12 设备材料层背景（非决策料）
+    - title: 先进封装核心股票名单/行业速览
+      type: industry-research
+      status: 已收集
+      mats: [mat-d107ad]
+      why: primer 封装环节玩家谱背景
+
+key_risks_to_monitor:
+  - 中芯7nm良率证伪（~30%传言若坐实）+ ROIC长期低位 → 命门3翻盘
+  - 澜起等龙头估值透支，最确定铲子安全边际收窄 → 命门2买点纪律
+  - 「华为自研HBM」稀释长鑫价值捕获 → 命门1价值归属
+  - 芯片层需求不及预期（H20/B30/智算中心闲置）→ 上游过剩
+  - 出口管制HBM成品端进一步收紧 or 设备端意外松动改变竞争格局
+
+analogies_to_study:
+  # 落成 historical-mirror 收料（O3 接线，喂决策链环⑤）—— 父级已复用，本 arena 用 arena-mirror code
+  - name: 中国面板/京东方（份额登顶但ROIC长期低迷）
+    logic: 国产替代份额兑现≠利润兑现，重资产+价格战吞噬回报
+    limit: 面板是完全竞争大宗品，先进制程/HBM/接口有更强技术壁垒与管制护城河，未必同样内卷
+    mirror_material: 父 [mat-1d1f97]（已复用，addresses K4）
+  - name: DRAM存储周期（三星/海力士/长鑫追赶）
+    logic: 存储是强周期重资产，后发者靠份额难赚钱，价格由龙头产能节奏主导
+    limit: HBM因AI需求呈结构性紧缺+对华管制制造隔离市场，国产HBM短期定价环境优于普通DRAM
+    mirror_material: 长鑫招股书深度 [mat-080ac4] 含存储行业周期镜鉴
+
+# prescan 状态：workflow 00 已跑（校准率91%，thesis prescan_status=partial）；
+# 本 roadmap L4 逐条重述 K1-K5，与00 prescan 已覆盖范围完全重叠，无新狩猎角度 → 01 不重跑 prescan（见 next_actions）
+prescan_note: covered_by_00_prescan

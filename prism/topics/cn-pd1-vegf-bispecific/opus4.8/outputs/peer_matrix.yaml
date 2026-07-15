@@ -1,0 +1,76 @@
+slug: cn-pd1-vegf-bispecific
+variant: opus4.8
+topic_type: arena
+display_name: 中国PD-1/VEGF双抗 arena
+generated: 2026-07-10T00:00:00+00:00
+data_freshness: 2026Q1
+data_freshness_basis: mat-2cc57c(SMMT Q1'26 10-Q) / mat-8b2afc(康方FY25) / mat-ea3ff5(三生FY25) / market_data 2026-07-10
+
+companies:
+  - name: 康方生物
+    ticker: HKEX_09926
+    score: 4.2
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-akeso-09926
+    thesis_one_liner: IO 2.0 全球先发龙头，临床/管线/权益结构三重领先，现价97.45已较配售149.54挤出溢价，带全球OS二元对冲的核心持仓。
+    upgrade_triggers: []
+    quarantine: false
+  - name: 三生制药
+    ticker: HKEX_01530
+    score: 3.5
+    tier: shortlist
+    topic_created: true
+    topic_slug: cn-3sbio-01530
+    thesis_one_liner: 剔除辉瑞一次性授权后估值极低(PS2.2/PB1.4)+成熟品种现金流+净现金，以估值安全边际与首付确定性入选的次选，看低估值修复而非临床领先。
+    upgrade_triggers: []
+    quarantine: false
+  - name: BioNTech
+    ticker: NASDAQ_BNTX
+    score: 2.8
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - BNT327在1L NSCLC/CRC读出优效、PD-L1/VEGF路线证明不劣于PD-1/VEGF
+      - 作为两条format路线对冲需要建仓时
+    quarantine: false
+  - name: Summit Therapeutics
+    ticker: NASDAQ_SMMT
+    score: 2.6
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - PDUFA 2026-11-14 获批后转为依沃西全球放量纯暴露标的再评估
+      - 股价因二元事件超跌至现金价值附近
+    quarantine: false
+  - name: 普米斯生物
+    ticker: ""
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: true
+
+cluster_tags: [china-innovative-drug, bispecific, pd1-vegf, io-2.0, oncology]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 4
+    kind: data-missing
+    note: K4依沃西中国销售爬坡无一手数据，康方年报不单独披露依沃西销售额，仅合并口径
+  - ring: 5
+    kind: data-missing
+    note: 医保价格战镜鉴3份为web stub，历轮降幅/四大PD-1销售额未量化
+  - ring: 2
+    kind: data-missing
+    note: 赛道横向料多为snippet(quality=low)，"VEGF抑制7.5x"[mat-8e29ac]、赛道产品计数[mat-3a625c]待核实

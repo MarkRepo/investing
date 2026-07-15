@@ -41,7 +41,7 @@ python3 -c "from prism.scripts.topic import read_topic; import json; print(json.
 python3 -c "from prism.scripts.topic import set_stage; set_stage('slug', '02-gather-materials')"
 
 # 更新产出状态
-python3 -c "from prism.scripts.topic import set_output_status; set_output_status('slug', '00_primer', 'fresh', version=1)"
+python3 -c "from prism.scripts.topic import set_output_status; set_output_status('slug', '00_primer', 'fresh', 'variant', version=1)"  # variant 必填 positional
 
 # 更新 next_actions
 python3 -c "from prism.scripts.topic import set_next_actions; set_next_actions('slug', ['下一步内容'])"

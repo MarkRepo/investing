@@ -1,0 +1,150 @@
+slug: cn-pd1-vegf-bispecific
+variant: opus4.8
+entries:
+- searched_at: '2026-07-10T04:10:59.242106+00:00'
+  query: 康方 依沃西 ivonescimab HARMONi 全球三期 OS 最终结果 Summit 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.263769+00:00'
+  query: 依沃西 HARMONi-2 OS overall survival 一线 NSCLC 帕博利珠单抗 head to head 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.293362+00:00'
+  query: Summit Therapeutics ivonescimab FDA BLA submission registration timeline
+    2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.329787+00:00'
+  query: Pfizer 三生制药 3SBio SSGJ-707 PD-1 VEGF 授权 deal upfront milestone 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.376967+00:00'
+  query: BioNTech BMS Bristol Myers BNT327 PM8002 global collaboration deal value
+    2025
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.431657+00:00'
+  query: Merck 默克 礼新 LaNova LM-299 PD-1 VEGF bispecific license deal 2024 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.519011+00:00'
+  query: 依沃西 康方 中国 获批 适应症 销售额 2025 半年报 商业化
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.618312+00:00'
+  query: PD-1 VEGF 双抗 出海 授权 交易 汇总 2025 2026 MNC license bispecific China
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 3
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.674631+00:00'
+  query: 康方生物 09926 三生制药 01530 市值 估值 现金 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.767024+00:00'
+  query: PD-1 VEGF 双抗 安全性 出血 鳞癌 ivonescimab bleeding safety concern HARMONi
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.867664+00:00'
+  query: ivonescimab 依沃西 HARMONi-3 HARMONi-6 HARMONi-7 readout 结果 进展 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:10:59.983251+00:00'
+  query: ivonescimab 依沃西 vs Keytruda 头对头 数据 质疑 争议 skepticism cross-trial ASCO WCLC
+    2025
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:11:53.720808+00:00'
+  query: PD-1 VEGF 双抗 依沃西 康方 最新 进展 催化 2026 2季度 3季度
+  triggered_by: 00-prescan
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:11:53.850965+00:00'
+  query: MNC 自研 PD-1 VEGF 双抗 辉瑞 阿斯利康 罗氏 in-house 竞争 China bispecific pipeline
+  triggered_by: 00-prescan
+  n_results: 4
+  n_high: 1
+  n_mid: 2
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-10T04:21:28.155243+00:00'
+  query: HARMONi 全球 OS 详情 FDA 路径
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:21:28.403092+00:00'
+  query: 康方 卖方深度 DCF 目标价 峰值销售
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:21:28.668661+00:00'
+  query: PD-1/VEGF 赛道横向 依沃西vs707vsBNT327
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-10T04:22:09.680078+00:00'
+  query: 中国PD-1单抗价格战医保谈判历史镜鉴
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered

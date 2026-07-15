@@ -1,0 +1,1098 @@
+slug: us-coinbase
+variant: opus4.8
+updated: '2026-07-14T15:14:40.001662+00:00'
+materials:
+- id: mat-e17bc8
+  filename: 2026-07-14_coinbase-s-q1-earnings-jump-to-1-6-billion-as-tran.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.621209+00:00'
+  processed: false
+  notes: query='Coinbase Q1 earnings revenue transaction subscription breakdown' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase Q1 earnings revenue transaction subscription breakdown
+    url: https://www.theblock.co/post/292265/coinbases-q1-earnings-jump-to-1-6-billion-as-transaction-revenue-soars
+    domain: theblock.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.620218+00:00'
+    stale_at: '2026-08-13T14:09:33.620218+00:00'
+    expire_at: '2026-10-12T14:09:33.620218+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2c617e
+  filename: 2026-07-14_coinbase-misses-q1-earnings-and-revenue-estimates-.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.625453+00:00'
+  processed: false
+  notes: query='Coinbase Q1 earnings revenue transaction subscription breakdown' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase Q1 earnings revenue transaction subscription breakdown
+    url: https://www.theblock.co/post/353683/coinbase-misses-q1-earnings-revenue-estimates-trading-activity-dips
+    domain: theblock.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.624489+00:00'
+    stale_at: '2026-08-13T14:09:33.624489+00:00'
+    expire_at: '2026-10-12T14:09:33.624489+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-65b330
+  filename: 2026-07-14_coinbase-revenue-breakdown-transaction-and-subscri.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.630613+00:00'
+  processed: false
+  notes: query='Coinbase Q1 earnings revenue transaction subscription breakdown' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase Q1 earnings revenue transaction subscription breakdown
+    url: https://stockdividendscreener.com/financial-services/coinbase-revenue-breakdown-profit-and-margin
+    domain: stockdividendscreener.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.629248+00:00'
+    stale_at: '2026-08-13T14:09:33.629248+00:00'
+    expire_at: '2026-10-12T14:09:33.629248+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-45be58
+  filename: 2026-07-14_coinbase-global-coin-statistics-valuation.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.636801+00:00'
+  processed: false
+  notes: query='Coinbase stock price market cap valuation P/E 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase stock price market cap valuation P/E 2026
+    url: https://stockanalysis.com/stocks/coin/statistics
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.635187+00:00'
+    stale_at: '2026-08-13T14:09:33.635187+00:00'
+    expire_at: '2026-10-12T14:09:33.635187+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-53aae8
+  filename: 2026-07-14_is-coinbase-stock-undervalued-after-q1-2026-here-s.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.643563+00:00'
+  processed: true
+  notes: query='Coinbase stock price market cap valuation P/E 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase COIN analyst price target valuation 2026
+    url: https://www.tikr.com/blog/is-coinbase-stock-undervalued-after-q1-2026-heres-what-its-income-statement-says
+    domain: tikr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:21:05.308339+00:00'
+    stale_at: '2026-08-13T14:21:05.308339+00:00'
+    expire_at: '2026-10-12T14:21:05.308339+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Coinbase stock price market cap valuation P/E 2026
+- id: mat-7045e4
+  filename: 2026-07-14_current-price-of-bitcoin-for-july-6-2026.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.652235+00:00'
+  processed: false
+  notes: query='Bitcoin price July 2026 crypto market cap' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Bitcoin price July 2026 crypto market cap
+    url: https://fortune.com/article/price-of-bitcoin-07-06-2026
+    domain: fortune.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.649843+00:00'
+    stale_at: '2026-08-13T14:09:33.649843+00:00'
+    expire_at: '2026-10-12T14:09:33.649843+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-79fd92
+  filename: 2026-07-14_bitcoin-price-history-and-historical-data.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.660817+00:00'
+  processed: false
+  notes: query='Bitcoin price July 2026 crypto market cap' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Bitcoin price July 2026 crypto market cap
+    url: https://coinmarketcap.com/currencies/bitcoin/historical-data
+    domain: coinmarketcap.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.658027+00:00'
+    stale_at: '2026-08-13T14:09:33.658027+00:00'
+    expire_at: '2026-10-12T14:09:33.658027+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b127fd
+  filename: 2026-07-14_bill-hughes-on-x-since-stablecoin-yields-and-coinb.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.672194+00:00'
+  processed: false
+  notes: query='Coinbase subscription services stablecoin USDC revenue mix' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase subscription services stablecoin USDC revenue mix
+    url: https://x.com/BillHughesDC/status/2012600501322314224
+    domain: x.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.668520+00:00'
+    stale_at: '2026-08-13T14:09:33.668520+00:00'
+    expire_at: '2026-10-12T14:09:33.668520+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d3cdb5
+  filename: 2026-07-14_coinbase-q2-2025-earnings-show-mixed-results-with-.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.683323+00:00'
+  processed: false
+  notes: query='Coinbase subscription services stablecoin USDC revenue mix' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase subscription services stablecoin USDC revenue mix
+    url: https://en.coinotag.com/coinbase-q2-2025-earnings-show-mixed-results-with-stablecoin-revenue-growth-amid-market-slowdown
+    domain: en.coinotag.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.679495+00:00'
+    stale_at: '2026-08-13T14:09:33.679495+00:00'
+    expire_at: '2026-10-12T14:09:33.679495+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1da505
+  filename: 2026-07-14_circle-has-usdc-revenue-sharing-deal-with-second-l.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.696493+00:00'
+  processed: false
+  notes: query='Coinbase Circle USDC revenue sharing agreement' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase Circle USDC revenue sharing agreement
+    url: https://www.coindesk.com/business/2025/07/09/circle-has-usdc-revenue-sharing-deal-with-second-largest-crypto-exchange-bybit-sources
+    domain: coindesk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.692550+00:00'
+    stale_at: '2026-08-13T14:09:33.692550+00:00'
+    expire_at: '2026-10-12T14:09:33.692550+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ae9cca
+  filename: 2026-07-14_genius-act-regulations-notice-of-proposed-rulemaki.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.710570+00:00'
+  processed: false
+  notes: query='GENIUS Act stablecoin law implementation Coinbase' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GENIUS Act stablecoin law implementation Coinbase
+    url: https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-3.html
+    domain: occ.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.706304+00:00'
+    stale_at: '2026-08-13T14:09:33.706304+00:00'
+    expire_at: '2026-10-12T14:09:33.706304+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0399c7
+  filename: 2026-07-14_the-genius-act-a-comprehensive-guide-to-us-stablec.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.723860+00:00'
+  processed: false
+  notes: query='GENIUS Act stablecoin law implementation Coinbase' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GENIUS Act stablecoin law implementation Coinbase
+    url: https://www.paulhastings.com/insights/crypto-policy-tracker/the-genius-act-a-comprehensive-guide-to-us-stablecoin-regulation
+    domain: paulhastings.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.719185+00:00'
+    stale_at: '2026-08-13T14:09:33.719185+00:00'
+    expire_at: '2026-10-12T14:09:33.719185+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b1fd3e
+  filename: 2026-07-14_coinbase-pulls-support-night-before-senate-markup-.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.738687+00:00'
+  processed: false
+  notes: query='Coinbase CLARITY Act market structure bill status 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Coinbase CLARITY Act market structure bill status 2026
+    url: https://www.forbes.com/sites/jasonbrett/2026/01/14/coinbase-pulls-support-night-before-senate-markup-of-market-structure
+    domain: forbes.com
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:09:33.733569+00:00'
+    stale_at: '2026-08-13T14:09:33.733569+00:00'
+    expire_at: '2026-10-12T14:09:33.733569+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a56bbd
+  filename: 2026-07-14_clarity-act-2026-senate-banking-markup-stablecoin-.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.754274+00:00'
+  processed: false
+  notes: query='Coinbase CLARITY Act market structure bill status 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase CLARITY Act market structure bill status 2026
+    url: https://www.galaxy.com/insights/research/clarity-act-update-final-push
+    domain: galaxy.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.748759+00:00'
+    stale_at: '2026-08-13T14:09:33.748759+00:00'
+    expire_at: '2026-10-12T14:09:33.748759+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-008730
+  filename: 2026-07-14_deribit-joins-coinbase-unlocking-the-future-of-glo.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.771488+00:00'
+  processed: true
+  notes: query='Coinbase Deribit acquisition derivatives 2.9B' | query='Coinbase Deribit
+    acquisition derivatives 2.9B' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase capital allocation buyback M&A history Deribit
+    url: https://www.coinbase.com/blog/deribit-joins-coinbase-unlocking-the-future-of-global-crypto-derivatives
+    domain: coinbase.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:23:02.032581+00:00'
+    stale_at: '2026-08-13T14:23:02.032581+00:00'
+    expire_at: '2026-10-12T14:23:02.032581+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Coinbase Deribit acquisition derivatives 2.9B
+- id: mat-70e3da
+  filename: 2026-07-14_coinbase-global-set-to-join-s-p-500---may-12-2025.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.807282+00:00'
+  processed: false
+  notes: query='Coinbase S&P 500 inclusion 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Coinbase S&P 500 inclusion 2025
+    url: https://press.spglobal.com/2025-05-12-Coinbase-Global-Set-to-Join-S-P-500
+    domain: press.spglobal.com
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:09:33.800922+00:00'
+    stale_at: '2026-08-13T14:09:33.800922+00:00'
+    expire_at: '2026-10-12T14:09:33.800922+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-568367
+  filename: 2026-07-14_coinbase-jumps-24-after-s-p-500-inclusion.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.824232+00:00'
+  processed: false
+  notes: query='Coinbase S&P 500 inclusion 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Coinbase S&P 500 inclusion 2025
+    url: https://www.cnbc.com/2025/05/13/coinbase-jumps-sp-500-inclusion.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:09:33.817672+00:00'
+    stale_at: '2026-08-13T14:09:33.817672+00:00'
+    expire_at: '2026-10-12T14:09:33.817672+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3124fe
+  filename: 2026-07-14_coinbase-coin-stock-forecast-analyst-ratings-predi.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.845687+00:00'
+  processed: true
+  notes: query='Coinbase analyst rating price target consensus 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase COIN analyst price target valuation 2026
+    url: https://public.com/stocks/coin/forecast-price-target
+    domain: public.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:21:05.377923+00:00'
+    stale_at: '2026-08-13T14:21:05.377923+00:00'
+    expire_at: '2026-10-12T14:21:05.377923+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Coinbase analyst rating price target consensus 2026
+- id: mat-eed625
+  filename: 2026-07-14_coinbase-global-coin-stock-forecast-price-target.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.865931+00:00'
+  processed: true
+  notes: query='Coinbase analyst rating price target consensus 2026' | 待用户确认 | query='Coinbase
+    COIN analyst price target valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Coinbase COIN analyst price target valuation 2026
+    url: https://www.marketbeat.com/stocks/NASDAQ/COIN/forecast/
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:21:05.331347+00:00'
+    stale_at: '2026-08-13T14:21:05.331347+00:00'
+    expire_at: '2026-10-12T14:21:05.331347+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3ae873
+  filename: 2026-07-14_top-stablecoins-shrink-as-crypto-cash-flees-posing.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.889977+00:00'
+  processed: false
+  notes: query='USDC market cap stablecoin market share Tether 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: USDC market cap stablecoin market share Tether 2026
+    url: https://www.coindesk.com/markets/2026/01/28/top-stablecoins-tether-and-usd-coin-shrink-as-crypto-cash-flees-pose-risk-to-bitcoin
+    domain: coindesk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.882261+00:00'
+    stale_at: '2026-08-13T14:09:33.882261+00:00'
+    expire_at: '2026-10-12T14:09:33.882261+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-42c987
+  filename: 2026-07-14_despite-usdt-s-lead-of-184-billion-usdc-is-winning.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.912207+00:00'
+  processed: false
+  notes: query='USDC market cap stablecoin market share Tether 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: USDC market cap stablecoin market share Tether 2026
+    url: https://www.binance.com/en/square/post/301932850038433
+    domain: binance.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.904272+00:00'
+    stale_at: '2026-08-13T14:09:33.904272+00:00'
+    expire_at: '2026-10-12T14:09:33.904272+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3a0ccf
+  filename: 2026-07-14_effects-of-stablecoin-yield-prohibition-on-bank-le.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.938271+00:00'
+  processed: true
+  notes: query='Fed rate cuts Coinbase stablecoin interest income' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: stablecoin yield prohibition GENIUS CLARITY Coinbase USDC
+    url: https://www.whitehouse.gov/wp-content/uploads/2026/04/Effects-of-Stablecoin-Yield-Prohibition-on-Bank-Lending.pdf
+    domain: whitehouse.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:21:05.466296+00:00'
+    stale_at: '2026-08-13T14:21:05.466296+00:00'
+    expire_at: '2026-10-12T14:21:05.466296+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Fed rate cuts Coinbase stablecoin interest income
+- id: mat-6127f5
+  filename: 2026-07-14_why-the-fed-will-lower-interest-rates-next-week-co.md
+  source_type: web-search
+  added: '2026-07-14T14:09:33.962483+00:00'
+  processed: false
+  notes: query='Fed rate cuts Coinbase stablecoin interest income' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Fed rate cuts Coinbase stablecoin interest income
+    url: https://www.dlnews.com/articles/markets/fed-interest-rate-cuts-coinbase-morgan-stanley-bitcoin-etfs/
+    domain: dlnews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:09:33.953573+00:00'
+    stale_at: '2026-08-13T14:09:33.953573+00:00'
+    expire_at: '2026-10-12T14:09:33.953573+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e88d9d
+  filename: 2026_COIN_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-07-14T14:18:21.212886+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-fe0dd9
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_1_financial.md
+  source_type: sec-section
+  added: '2026-07-14T14:18:21.381105+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-e88d9d
+  sec_section: item_1_financial
+- id: mat-22fcff
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_2_mda.md
+  source_type: sec-section
+  added: '2026-07-14T14:18:21.394977+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-e88d9d
+  sec_section: item_2_mda
+- id: mat-efc570
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-14T14:18:21.409065+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-e88d9d
+  sec_section: item_3_quant_risk
+- id: mat-0483ab
+  filename: sec/2026_COIN_10-Q_2026-05-07/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-14T14:18:21.423492+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-05-07.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-e88d9d
+  sec_section: item_1a_risk
+- id: mat-125d28
+  filename: 2025_COIN_10-K_2026-02-12.htm
+  source_type: annual-report
+  added: '2026-07-14T14:18:25.849444+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-977fb4
+  filename: sec/2025_COIN_10-K_2026-02-12/item_1_business.md
+  source_type: sec-section
+  added: '2026-07-14T14:18:26.070796+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-125d28
+  sec_section: item_1_business
+- id: mat-9b32e2
+  filename: sec/2025_COIN_10-K_2026-02-12/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-14T14:18:26.085731+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-125d28
+  sec_section: item_1a_risk
+- id: mat-0ded80
+  filename: sec/2025_COIN_10-K_2026-02-12/item_7_mda.md
+  source_type: sec-section
+  added: '2026-07-14T14:18:26.101072+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-125d28
+  sec_section: item_7_mda
+- id: mat-abfc11
+  filename: sec/2025_COIN_10-K_2026-02-12/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-14T14:18:26.116593+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-125d28
+  sec_section: item_7a_quant_risk
+- id: mat-2c07c9
+  filename: sec/2025_COIN_10-K_2026-02-12/item_8_financial.md
+  source_type: sec-section
+  added: '2026-07-14T14:18:26.132364+00:00'
+  processed: true
+  notes: split from 2025_COIN_10-K_2026-02-12.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-125d28
+  sec_section: item_8_financial
+- id: mat-4db1e9
+  filename: 2026-07-14_q3-25-shareholder-letter.md
+  source_type: web-search
+  added: '2026-07-14T14:21:05.189641+00:00'
+  processed: true
+  notes: query='Coinbase Q3/Q4 2025 shareholder letter S&S revenue breakdown'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Coinbase Q3/Q4 2025 shareholder letter S&S revenue breakdown
+    url: https://investor.coinbase.com/files/doc_financials/2025/q3/Q3-25-Shareholder-Letter.pdf
+    domain: investor.coinbase.com
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:21:05.178550+00:00'
+    stale_at: '2026-08-13T14:21:05.178550+00:00'
+    expire_at: '2026-10-12T14:21:05.178550+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0e760c
+  filename: 2026-07-14_q4-25-shareholder-letter.md
+  source_type: web-search
+  added: '2026-07-14T14:21:05.221200+00:00'
+  processed: true
+  notes: query='Coinbase Q3/Q4 2025 shareholder letter S&S revenue breakdown'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Coinbase Q3/Q4 2025 shareholder letter S&S revenue breakdown
+    url: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000011/q425shareholderletter.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:21:05.210069+00:00'
+    stale_at: '2026-08-13T14:21:05.210069+00:00'
+    expire_at: '2026-10-12T14:21:05.210069+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-04a072
+  filename: 2026-07-14_the-q2-2025-shareholder-letter.md
+  source_type: web-search
+  added: '2026-07-14T14:21:05.254681+00:00'
+  processed: true
+  notes: query='Coinbase Q3/Q4 2025 shareholder letter S&S revenue breakdown' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Coinbase Q3/Q4 2025 shareholder letter S&S revenue breakdown
+    url: https://s27.q4cdn.com/397450999/files/doc_financials/2025/q2/Q2-2025-Shareholder-Letter.pdf
+    domain: s27.q4cdn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:21:05.242882+00:00'
+    stale_at: '2026-08-13T14:21:05.242882+00:00'
+    expire_at: '2026-10-12T14:21:05.242882+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c4de6d
+  filename: 2026-07-14_the-genius-act-stablecoin-yield-ban-has-a-coinbase.md
+  source_type: web-search
+  added: '2026-07-14T14:21:05.430354+00:00'
+  processed: true
+  notes: query='stablecoin yield prohibition GENIUS CLARITY Coinbase USDC'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: stablecoin yield prohibition GENIUS CLARITY Coinbase USDC
+    url: https://www.forbes.com/sites/digital-assets/2026/05/20/the-genius-act-stablecoin-yield-ban-has-a-coinbase-shaped-hole/
+    domain: forbes.com
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:21:05.417535+00:00'
+    stale_at: '2026-08-13T14:21:05.417535+00:00'
+    expire_at: '2026-10-12T14:21:05.417535+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-adcede
+  filename: 2026-07-14_proposed-rule.md
+  source_type: web-search
+  added: '2026-07-14T14:21:05.503456+00:00'
+  processed: true
+  notes: query='stablecoin yield prohibition GENIUS CLARITY Coinbase USDC' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: stablecoin yield prohibition GENIUS CLARITY Coinbase USDC
+    url: https://www.federalregister.gov/documents/2026/03/02/2026-04089/implementing-the-guiding-and-establishing-national-innovation-for-us-stablecoins-act-for-the
+    domain: federalregister.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:21:05.491145+00:00'
+    stale_at: '2026-08-13T14:21:05.491145+00:00'
+    expire_at: '2026-10-12T14:21:05.491145+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b0635b
+  filename: 2026-07-14_after-earnings-is-coinbase-stock-a-buy-a-sell-or-f.md
+  source_type: web-search
+  added: '2026-07-14T14:21:05.559053+00:00'
+  processed: true
+  notes: query='Coinbase 2022 bear market decline recovery history' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Coinbase 2022 bear market decline recovery history
+    url: https://global.morningstar.com/en-gb/stocks/after-earnings-is-coinbase-stock-buy-sell-or-fairly-valued
+    domain: global.morningstar.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:21:05.546019+00:00'
+    stale_at: '2026-08-13T14:21:05.546019+00:00'
+    expire_at: '2026-10-12T14:21:05.546019+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b285bd
+  filename: 2026-07-14_coin-20231231.md
+  source_type: web-search
+  added: '2026-07-14T14:21:05.596429+00:00'
+  processed: true
+  notes: query='Coinbase 2022 bear market decline recovery history'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Coinbase 2022 bear market decline recovery history
+    url: https://www.sec.gov/Archives/edgar/data/1679788/000167978824000022/coin-20231231.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:21:05.582703+00:00'
+    stale_at: '2026-08-13T14:21:05.582703+00:00'
+    expire_at: '2026-10-12T14:21:05.582703+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4529fe
+  filename: 2026-07-14_coinbase-robinhood-financial-performance-overview-.md
+  source_type: web-search
+  added: '2026-07-14T14:21:05.654189+00:00'
+  processed: true
+  notes: query='Coinbase take rate retail institutional Robinhood Binance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Coinbase take rate retail institutional Robinhood Binance
+    url: https://insights4vc.substack.com/p/coinbase-robinhood-financial-performance
+    domain: insights4vc.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:21:05.640702+00:00'
+    stale_at: '2026-08-13T14:21:05.640702+00:00'
+    expire_at: '2026-10-12T14:21:05.640702+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-385c35
+  filename: 2026-07-14_coinbase-vs-robinhood-2026-fees-features-safety-wh.md
+  source_type: web-search
+  added: '2026-07-14T14:21:05.694772+00:00'
+  processed: false
+  notes: query='Coinbase take rate retail institutional Robinhood Binance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Coinbase take rate Robinhood competition 2026
+    url: https://coinbureau.com/analysis/coinbase-vs-robinhood
+    domain: coinbureau.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:35:21.069271+00:00'
+    stale_at: '2026-08-13T14:35:21.069271+00:00'
+    expire_at: '2026-10-12T14:35:21.069271+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - Coinbase take rate retail institutional Robinhood Binance
+- id: mat-b4e2c4
+  filename: 2026-07-14_the-flywheel-hidden-inside-coinbase-s-income-state.md
+  source_type: web-search
+  added: '2026-07-14T14:22:09.153936+00:00'
+  processed: true
+  notes: query='Coinbase Base L2 Deribit derivatives volume revenue 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Coinbase Base L2 Deribit derivatives volume revenue 2026
+    url: https://siddhants.com/blog/coin-research-202603/
+    domain: siddhants.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:22:09.139251+00:00'
+    stale_at: '2026-08-13T14:22:09.139251+00:00'
+    expire_at: '2026-10-12T14:22:09.139251+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f64190
+  filename: 2026-07-14_state-of-the-network-coinbase-q4-2025-earnings-out.md
+  source_type: web-search
+  added: '2026-07-14T14:22:09.196365+00:00'
+  processed: true
+  notes: query='Coinbase Base L2 Deribit derivatives volume revenue 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Coinbase Base L2 Deribit derivatives volume revenue 2026
+    url: https://www.talos.com/insights/state-of-the-network-350
+    domain: talos.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:22:09.181543+00:00'
+    stale_at: '2026-08-13T14:22:09.181543+00:00'
+    expire_at: '2026-10-12T14:22:09.181543+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-1fd27c
+  filename: 2026-07-14_market-data-derivatives.md
+  source_type: web-search
+  added: '2026-07-14T14:22:09.239087+00:00'
+  processed: true
+  notes: query='Coinbase Base L2 Deribit derivatives volume revenue 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Coinbase Base L2 Deribit derivatives volume revenue 2026
+    url: https://www.coinbase.com/market-data/derivatives?country=US&currency=USD&mobile=true&japan_bespoke_content=false&logged_in=false&0fad35da_page=2&1aa987e3_page=15&617b332e_page=14&c17ab9be_page=4&page=
+    domain: coinbase.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:22:09.224216+00:00'
+    stale_at: '2026-08-13T14:22:09.224216+00:00'
+    expire_at: '2026-10-12T14:22:09.224216+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b8209b
+  filename: 2026-07-14_stablecoin-market-cap-chart-supply-peg-data.md
+  source_type: web-search
+  added: '2026-07-14T14:22:09.301197+00:00'
+  processed: true
+  notes: query='USDC circulating supply market cap stablecoin share 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: USDC circulating supply market cap stablecoin share 2026
+    url: https://defillama.com/stablecoins
+    domain: defillama.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:22:09.285863+00:00'
+    stale_at: '2026-08-13T14:22:09.285863+00:00'
+    expire_at: '2026-10-12T14:22:09.285863+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-afdaca
+  filename: 2026-07-14_usdc-dominated-10-trillion-stablecoin-surge-in-jan.md
+  source_type: web-search
+  added: '2026-07-14T14:22:09.344965+00:00'
+  processed: true
+  notes: query='USDC circulating supply market cap stablecoin share 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: USDC circulating supply market cap stablecoin share 2026
+    url: https://finance.yahoo.com/news/usdc-dominated-10-trillion-stablecoin-101030372.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:22:09.329439+00:00'
+    stale_at: '2026-08-13T14:22:09.329439+00:00'
+    expire_at: '2026-10-12T14:22:09.329439+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c02351
+  filename: 2026-07-14_coinbase-acquires-crypto-derivatives-exchange-deri.md
+  source_type: web-search
+  added: '2026-07-14T14:23:01.934258+00:00'
+  processed: true
+  notes: query='Coinbase capital allocation buyback M&A history Deribit'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Coinbase capital allocation buyback M&A history Deribit
+    url: https://www.cnbc.com/amp/2025/05/08/coinbase-acquires-crypto-derivatives-exchange-deribit-for-2point9-billion.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:23:01.916922+00:00'
+    stale_at: '2026-08-13T14:23:01.916922+00:00'
+    expire_at: '2026-10-12T14:23:01.916922+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-74564c
+  filename: 2026-07-14_coinbase-to-acquire-deribit-becoming-the-most-comp.md
+  source_type: web-search
+  added: '2026-07-14T14:23:01.983441+00:00'
+  processed: true
+  notes: query='Coinbase capital allocation buyback M&A history Deribit' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Coinbase capital allocation buyback M&A history Deribit
+    url: https://www.coinbase.com/blog/coinbase-to-acquire-deribit-becoming-the-most-comprehensive-global-crypto-derivatives-platform
+    domain: coinbase.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:23:01.965424+00:00'
+    stale_at: '2026-08-13T14:23:01.965424+00:00'
+    expire_at: '2026-10-12T14:23:01.965424+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-779c80
+  filename: 2026-07-14_coinbase-decaying-subscription-and-services-revenu.md
+  source_type: web-search
+  added: '2026-07-14T14:35:20.645570+00:00'
+  processed: false
+  notes: query='Coinbase S&S revenue percentage Q2 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Coinbase S&S revenue percentage Q2 2026
+    url: https://seekingalpha.com/article/4908213-coinbase-decaying-subscription-and-services-revenue-red-flag
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:35:20.628474+00:00'
+    stale_at: '2026-08-13T14:35:20.628474+00:00'
+    expire_at: '2026-10-12T14:35:20.628474+00:00'
+    triggered_by: 01-prescan
+- id: mat-ea0c0a
+  filename: 2026-07-14_coinbase-q1-financial-results-show-resilient.md
+  source_type: web-search
+  added: '2026-07-14T14:35:20.691958+00:00'
+  processed: false
+  notes: query='Coinbase S&S revenue percentage Q2 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Coinbase capital allocation strategy 2026
+    url: https://investor.coinbase.com/news/news-details/2026/Coinbase-Q1-Financial-Results-Show-Resilient-Financial-Performance-Driven-by-New-All-Time-High-Crypto-Trading-Volume-Market-Share/default.aspx
+    domain: investor.coinbase.com
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:35:21.126664+00:00'
+    stale_at: '2026-08-13T14:35:21.126664+00:00'
+    expire_at: '2026-10-12T14:35:21.126664+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - Coinbase S&S revenue percentage Q2 2026
+- id: mat-372112
+  filename: 2026-07-14_coinbase-q1-2026-earnings-results-revenue-miss-394.md
+  source_type: web-search
+  added: '2026-07-14T14:35:20.740512+00:00'
+  processed: false
+  notes: query='Coinbase S&S revenue percentage Q2 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Coinbase S&S revenue percentage Q2 2026
+    url: https://coindcx.com/blog/us-stock/coinbase-q1-2026-earnings-results/
+    domain: coindcx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:35:20.722769+00:00'
+    stale_at: '2026-08-13T14:35:20.722769+00:00'
+    expire_at: '2026-10-12T14:35:20.722769+00:00'
+    triggered_by: 01-prescan
+- id: mat-e39dc0
+  filename: 2026-07-14_clarity-act-text-lets-crypto-firms-offer-stablecoi.md
+  source_type: web-search
+  added: '2026-07-14T14:35:20.794758+00:00'
+  processed: false
+  notes: query='CLARITY Act stablecoin rewards final text 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: CLARITY Act stablecoin rewards final text 2026
+    url: https://www.coindesk.com/policy/2026/05/01/clarity-act-text-lets-crypto-firms-offer-stablecoin-rewards-while-shielding-bank-yield
+    domain: coindesk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:35:20.777033+00:00'
+    stale_at: '2026-08-13T14:35:20.777033+00:00'
+    expire_at: '2026-10-12T14:35:20.777033+00:00'
+    triggered_by: 01-prescan
+- id: mat-b55fc6
+  filename: 2026-07-14_clarity-act-update-senate-banking-releases-new-tex.md
+  source_type: web-search
+  added: '2026-07-14T14:35:20.845108+00:00'
+  processed: false
+  notes: query='CLARITY Act stablecoin rewards final text 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: CLARITY Act stablecoin rewards final text 2026
+    url: https://www.galaxy.com/insights/research/clarity-act-senate-banking-markup-may-2026-analysis
+    domain: galaxy.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:35:20.827129+00:00'
+    stale_at: '2026-08-13T14:35:20.827129+00:00'
+    expire_at: '2026-10-12T14:35:20.827129+00:00'
+    triggered_by: 01-prescan
+- id: mat-6c293c
+  filename: 2026-07-14_h2-2026-bitcoin-outlook-one-more-quarter-of-pain-b.md
+  source_type: web-search
+  added: '2026-07-14T14:35:20.904732+00:00'
+  processed: false
+  notes: query='Bitcoin Q2 2026 volume recovery bottom' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Bitcoin Q2 2026 volume recovery bottom
+    url: https://www.stonex.com/en/insights/h2-2026-bitcoin-outlook-one-more-quarter-of-pain-before-a-major-bottom-2026-06-29/
+    domain: stonex.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:35:20.884962+00:00'
+    stale_at: '2026-08-13T14:35:20.884962+00:00'
+    expire_at: '2026-10-12T14:35:20.884962+00:00'
+    triggered_by: 01-prescan
+- id: mat-50a6cc
+  filename: 2026-07-14_bitcoin-h2-2026-outlook-another-quarter-of-pain-be.md
+  source_type: web-search
+  added: '2026-07-14T14:35:20.956783+00:00'
+  processed: false
+  notes: query='Bitcoin Q2 2026 volume recovery bottom' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Bitcoin Q2 2026 volume recovery bottom
+    url: https://www.investing.com/analysis/bitcoin-h2-outlook-1-more-quarter-of-pain-before-a-major-bottom-200682824
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:35:20.938287+00:00'
+    stale_at: '2026-08-13T14:35:20.938287+00:00'
+    expire_at: '2026-10-12T14:35:20.938287+00:00'
+    triggered_by: 01-prescan
+- id: mat-f79f58
+  filename: 2026-07-14_fintech-the-12b-hole-in-coinbase-and-robinhood-s-q.md
+  source_type: web-search
+  added: '2026-07-14T14:35:21.015744+00:00'
+  processed: false
+  notes: query='Coinbase take rate Robinhood competition 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Coinbase take rate Robinhood competition 2026
+    url: https://lex.substack.com/p/fintech-the-12b-hole-in-coinbase
+    domain: lex.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:35:20.996229+00:00'
+    stale_at: '2026-08-13T14:35:20.996229+00:00'
+    expire_at: '2026-10-12T14:35:20.996229+00:00'
+    triggered_by: 01-prescan
+- id: mat-c1a86f
+  filename: 2026-07-14_coinbase-s-2026-strategy-revealed-tokenized-securi.md
+  source_type: web-search
+  added: '2026-07-14T14:35:21.180318+00:00'
+  processed: false
+  notes: query='Coinbase capital allocation strategy 2026'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Coinbase capital allocation strategy 2026
+    url: https://www.linkedin.com/posts/mcarrelli_most-people-missed-coinbases-everything-activity-7408974454682198016-rlC5
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-14T14:35:21.160277+00:00'
+    stale_at: '2026-08-13T14:35:21.160277+00:00'
+    expire_at: '2026-10-12T14:35:21.160277+00:00'
+    triggered_by: 01-prescan
+- id: mat-53d96c
+  filename: 2026-07-14_coinbase-posts-1-4b-revenue-swings-to-loss.md
+  source_type: web-search
+  added: '2026-07-14T14:35:21.237252+00:00'
+  processed: false
+  notes: query='Coinbase capital allocation strategy 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Coinbase capital allocation strategy 2026
+    url: https://www.stocktitan.net/sec-filings/COIN/10-q-coinbase-global-inc-quarterly-earnings-report-f736bb8bfb07.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-14T14:35:21.217322+00:00'
+    stale_at: '2026-08-13T14:35:21.217322+00:00'
+    expire_at: '2026-10-12T14:35:21.217322+00:00'
+    triggered_by: 01-prescan

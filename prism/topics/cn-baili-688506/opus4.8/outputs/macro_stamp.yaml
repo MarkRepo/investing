@@ -1,0 +1,22 @@
+as_of_regime_version: 3
+regime_composite: 中美背离·risk-on但脆弱(fragility high)/中宽货币紧信用；对高久期pre-profit创新药：美实际利率高位是估值硬约束、风险偏好脆弱放大生物科技波动、命门在管线读出而非宏观
+depends_on_states:
+- conclusion: fx_cny
+  state: 企稳偏弱·区间震荡·中性偏友好转弱
+  role: confirming
+- conclusion: rates_us
+  state: 高位企稳·长端牛平·曲线续平
+  role: load_bearing
+- conclusion: liquidity_cn
+  state: 宽货币×紧信用·信贷脉冲转负
+  role: confirming
+discount_rate:
+  risk_free: 2.16
+  applied_wacc: 7.1
+  rate_sensitivity: 高久期pre-profit：贴现率+50bp对rNPV/DCF估值弹性大(定性,现金流极远置);华泰DCF用WACC7.1%/永续3%
+  source_input: macro 10Y实际利率(TIPS)2.16% + 华泰卖方DCF口径
+slug: cn-baili-688506
+variant: opus4.8
+stamped_at: '2026-07-03T09:29:16.634905+00:00'
+stale: false
+stale_reason: null

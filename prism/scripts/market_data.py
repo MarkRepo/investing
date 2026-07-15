@@ -44,11 +44,28 @@ def _is_fresh(ticker: str) -> bool:
 
 
 def _refresh(ticker: str, market: str) -> bool:
-    """Fetch latest quote data and store to DB. Returns True on success."""
+    """Fetch latest quote data and store to DB. Returns True on success.
+
+    依赖/解释器缺失（ImportError）与"真的没行情"是两类故障，必须区分：
+    前者几乎总是「用了系统 python3 而非 .venv/bin/python」——jinja2/pandas/
+    yfinance 只装在 .venv。静默吞掉会伪装成"no quote data"，导致改用 stale
+    findings 倍数（cn-momenta 2026-06 即栽在此）。故对 ImportError 大声告警、
+    不沉默。返回契约仍为 bool，调用方不变。
+    """
     try:
         from scripts.fetch_quotes_eod import run_for_ticker
         run_for_ticker(ticker, market)
         return True
+    except ImportError as e:
+        import sys
+        print(
+            f"[market_data] ⚠️ 依赖缺失（{e}）——几乎可以肯定是用了系统 python3 "
+            f"而非 .venv/bin/python。行情/财务依赖只装在 .venv。"
+            f"请用 `cd <repo> && .venv/bin/python ...` 重跑。"
+            f"此次 {ticker}/{market} 返回的'no quote data'是假象，不是真没源。",
+            file=sys.stderr,
+        )
+        return False
     except Exception:
         return False
 

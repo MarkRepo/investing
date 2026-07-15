@@ -319,32 +319,29 @@ EOF
 
 对 roadmap `material_priority` **tier1 + tier2 + tier3** 中每条**非 `annual-report`**（Step 5.5 已处理）的材料——**不分 info_tier**——按以下阶梯尝试（hard 类同样跑，多半 `empty` 但要由真实结果证明）：
 
-#### 阶梯 1：exa 高级搜索（最适合找分析报告全文）
+> **默认 sidecar-first（token 中性质量）**：搜索正文默认落盘、context 只承载 review-digest 投影——判 tier 靠 host/标题/flags（不需全文），关键数字在 highlights/snippet。exa `web_search_advanced` 的 `text` 字段是把全部候选全文无差别直灌 context，是本步**最大自造 token 成本**（作用域 tier1+2+3 全部材料，直灌成本比 00 更重），默认不取；需通读的少数走 `web_fetch_exa` 精准抓选定 URL（落盘复用）。质量不减：tier 判断 / 关键数字 / 反方识别只需投影+摘要，通读走惰性展开，snippet 兜底纪律照旧（见阶梯 3）。
 
-用 `mcp__exa__web_search_advanced_exa` 工具，按材料类型选 query：
-- **卖方报告**（sell-side-note）：搜 `"{公司名} {ticker} deep research analyst report {年份}"` + 中文 `"中金 高盛 {公司名} 深度研报 {年份}"`，设 `enableHighlights=true`、`highlightsMaxCharacters=2000`、`textMaxCharacters=5000`
-- **行业研究**（industry-research）：搜 `"{行业/主题} market share data report {年份}"`，同上参数
-- **政策/监管**（policy）：搜 `"{公司名} {regulation} enforcement {年份}"`，同上参数
-- **数据**（data）：搜 `"{公司名} statistics financial data {年份}"`，同上参数
+#### 阶梯 1：adapter sidecar 搜索（默认首选，正文落盘不进 context）
 
-每个材料跑 1 次 exa search（`numResults: 5`），**5 个一批并发**（不同材料可并行）。
-
-#### 阶梯 2：adapter semantic 搜索（补充 exa 未覆盖的）
-
-对阶梯 1 未找到满意结果的材料，用 adapter 补搜：
+用 adapter 搜，按 `--intent semantic`（找分析性内容不是最新新闻）、`--days 365`（研报时效比新闻长）：
 ```bash
 python3 -m prism.scripts.web_search search "<材料标题关键词>" \
     --intent semantic --days 365 --max-results 5 --output sidecar \
     --slug {slug} --variant {variant} \
     --triggered-by 01-deep-fetch --addresses K1,K2
 ```
-注意 `--intent semantic`（不是 `news`）——目的是找分析性内容，不是最新新闻。`--days 365` 因为研报/报告时效性比新闻长。
+query 措辞按材料类型：卖方报告 `"中金 高盛 {公司名} 深度研报 {年份}"`；行业研究 `"{行业/主题} market share data {年份}"`；政策 `"{公司名} {regulation} enforcement {年份}"`；数据 `"{公司名} statistics financial data {年份}"`。
+→ `review-digest --raw-path {raw_path}`（或 `--slug` 取最新）看投影判 tier，**零正文进 context**；判不出的残差 `--show IDX`（单条 snippet），确认入库且需正文的少数 `--show IDX --full`。
 
-#### 阶梯 3：WebFetch 抓取已知 URL
+#### 阶梯 2：exa 高级搜索（仅补充——sidecar 命中差 / provider 耗尽时）
 
-对阶梯 1/2 搜到的高质量 URL（domain_tier 判为 `llm-judged-official` 的），用 `mcp__exa__web_fetch_exa` 批量抓取全文（`maxCharacters: 5000`，可一次传多个 URL）。
+`mcp__exa__web_search_advanced_exa`（`numResults:3`、`enableHighlights:true`、`highlightsMaxCharacters:2000`，**不取 `text`**——省略 `textMaxCharacters`），5 个材料一批并发。highlights 是引擎按 query 抽的高信句，判 tier + 抓数字已够；要全文走阶梯 3。
 
-> **snippet 兜底（修 cn-adc C）**：`sell-side-note`/`industry-research` 类落盘后若正文 < ~1500 字（疑似仅 title+snippet），**必须**对其权威 URL 再跑一次 `mcp__exa__web_fetch_exa`（`maxCharacters:5000`）抓正文；仍抓不到全文则 `add_material` 时显式标 `quality` 降级 + `notes='snippet-only, full text not fetched'`，**不得让 snippet 冒充深度材料进 03**（cn-adc 实测：浦银目标价等只存了标题行，定价锚踩在 snippet 上、时点不明）。
+#### 阶梯 3：精准取全文（只对确认入库的权威 URL）
+
+对阶梯 1/2 判定要入库的高质量 URL（domain_tier=`llm-judged-official`），用 `mcp__exa__web_fetch_exa` 批量抓全文（`maxCharacters: 5000`，可一次传多个 URL）→ register/入库时透传 `full_texts={url: 全文}` 落盘，03 复用（一次抓取）。**只抓 keep 档，不是全批**。
+
+> **snippet 兜底（修 cn-adc C）**：`sell-side-note`/`industry-research` 类落盘后若正文 < ~1500 字（疑似仅 title+snippet），**必须**对其权威 URL 跑本阶梯 `mcp__exa__web_fetch_exa`（`maxCharacters:5000`）抓正文；仍抓不到全文则 `add_material` 时显式标 `quality` 降级 + `notes='snippet-only, full text not fetched'`，**不得让 snippet 冒充深度材料进 03**（cn-adc 实测：浦银目标价等只存了标题行，定价锚踩在 snippet 上、时点不明）。
 
 #### 落盘与入库
 
@@ -390,7 +387,7 @@ mark_todo_fetch('{slug}', '{variant}', '<task 子串>', 'error', note='providers
 - **不要跳过本步**。如果 exa/adapter/WebFetch 能搜到，就没理由让用户手动找
 - **hard 也要尝试一次**（专家访谈/产业链调研/付费数据库多半 `empty`，但 empty 要由真实结果证明，不由标签预判——付费卖方深度常有公开转载，别先入为主跳过）
 - **`error` 必须重试，永不降级**（工具/网络/限流不是"公开没有"；判定见 [`_autofetch_protocol.md`](_autofetch_protocol.md) 表 A/B）
-- **exa search 的 `numResults` 不要超过 5**（控制成本）
+- **默认 sidecar-first**：搜索走 adapter `--output sidecar` + review-digest 判 tier，exa `web_search_advanced` 仅作补充且 `numResults≤3`、**不取 `text`**（全文走 `web_fetch_exa` 精准抓选定 URL）——避免全文直灌 context 的自造 token 成本
 - **搜不到不丢人**——但要 `mark_todo_fetch('empty')` 诚实记录"搜了没搜到"，而不是没搜就放弃
 - 本步与 prescan 的分工：prescan 校准**事实**（数字/事件），本步获取**分析材料**（报告/数据/裁决）
 
@@ -411,6 +408,11 @@ else:
     print(f'Thesis K#: {r[\"thesis_ks\"]}')
     print(f'L4 covered: {r[\"l4_covered\"]}')
     print(f'Material covered: {r[\"material_covered\"]}')
+    if r.get('thesis_missing'):
+        print()
+        print(f'❌ thesis_v{cur}.md 读不到 K#（thesis_ks 为空）——文件缺失 / 错位到 outputs/ / 格式坏。')
+        print(f'   必须先把 thesis_v{cur}.md 放回 prism/topics/{{slug}}/{{variant}}/ 根下（与 decomposition 同级），再跑本步。')
+        raise SystemExit(1)
     if not r['ok']:
         print()
         if r['uncovered_in_l4']:
@@ -423,7 +425,7 @@ else:
 "
 ```
 
-如果非 0 退出，**回 Step 2/3 修 roadmap**，再回来跑 Step 5.7。
+如果非 0 退出：`thesis_missing` → 把 thesis 文件放回根下；否则 **回 Step 2/3 修 roadmap**，再回来跑 Step 5.7。
 
 ---
 

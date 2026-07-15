@@ -1,0 +1,46 @@
+slug: cn-3sbio-01530
+display_name: 三生制药
+type: company
+created: '2026-07-10T08:08:40.605512+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-pd1-vegf-bispecific
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 剔除辉瑞707一次性授权后核心业务估值修复空间，与707被收编后保留权益的长期价值
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: HKEX_01530
+  market: HKEX
+  short_name: 三生制药
+  search_terms:
+  - 三生制药
+  - SSGJ-707
+  - 特比澳
+  - '01530'
+  - 辉瑞授权
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-10T08:09:51.186663+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-10T08:09:51.186682+00:00'
+    summary: 本arena次选，看点是估值修复非临床领先：剔除辉瑞707一次性授权后核心业务PS~2.2/PB~1.4+成熟品种现金流+净现金；但707卖辉瑞全球权、落后~2年。强度4/10。

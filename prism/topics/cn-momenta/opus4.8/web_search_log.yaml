@@ -1,0 +1,99 @@
+slug: cn-momenta
+variant: opus4.8
+entries:
+- searched_at: '2026-06-30T07:21:47.729204+00:00'
+  query: Momenta 港股 IPO 招股 定价 募资额 估值 2026 7月
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-30T07:21:47.980536+00:00'
+  query: Momenta 2025 年报 营收 毛利率 经营亏损 经调整净亏
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-30T07:21:48.252404+00:00'
+  query: Momenta 第三方 城市NOA 市占率 2025 中汽协 报告
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-30T07:21:48.548734+00:00'
+  query: Momenta IPO 基石投资者 奔驰 GIC 比亚迪 认购
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-30T07:21:48.797801+00:00'
+  query: 比亚迪 天神之眼 自研智驾 进展 2026 供应商替代
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-30T07:21:49.051784+00:00'
+  query: L3 自动驾驶 新国标 工信部 2026 落地 时间表 试点
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-30T07:21:49.315681+00:00'
+  query: Momenta 估值 90亿美元 vs 地平线 小马智行 可比估值
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-30T07:21:49.594369+00:00'
+  query: 华为 ADS 智驾 城市NOA 市占率 2026 竞争格局
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-30T07:21:49.883741+00:00'
+  query: 智驾平权 2025 城市NOA 价格 降本 方案商 毛利
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 4
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-06-30T08:22:07.951565+00:00'
+  query: Momenta 估值 目标价 卖方 研报 P/S 倍数 招股 295.6港元
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 0
+  n_mid: 5
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-30T08:22:55.396023+00:00'
+  query: Momenta 一致预期 卖方首覆 覆盖报告 目标价 估值锚 上市后
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-06-30T08:25:22.712683+00:00'
+  query: Momenta 一致预期/卖方首覆覆盖报告 目标价 估值锚 上市后
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered

@@ -40,6 +40,37 @@
     {% block content %}{% endblock %}
   </main>
   <script>
+  /* LLM 操作鉴权：fetch 收到 401 → 弹 token 输入框 → POST /prism/auth 写 cookie → 重试原请求 */
+  (function () {
+    const _origFetch = window.fetch;
+    let _authPromise = null;   // 同时有多个 401 时复用同一个弹框
+
+    function askToken() {
+      if (_authPromise) return _authPromise;
+      _authPromise = new Promise(function (resolve, reject) {
+        var tok = window.prompt("需要鉴权，请输入 Token：");
+        if (!tok) { _authPromise = null; reject(new Error("cancelled")); return; }
+        _origFetch("/prism/auth", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: tok }),
+        }).then(function (r) {
+          _authPromise = null;
+          if (r.ok) { resolve(); } else { alert("Token 错误"); reject(new Error("bad token")); }
+        }).catch(function (e) { _authPromise = null; reject(e); });
+      });
+      return _authPromise;
+    }
+
+    window.fetch = function (input, init) {
+      return _origFetch(input, init).then(function (resp) {
+        if (resp.status !== 401) return resp;
+        return askToken().then(function () {
+          return _origFetch(input, init);   // 写入 cookie 后重试
+        });
+      });
+    };
+  })();
   (function () {
     let pending = false;
     let pendingTimer = null;

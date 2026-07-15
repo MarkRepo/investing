@@ -1,0 +1,116 @@
+slug: cn-baili-688506
+variant: opus4.8
+topic_type: company
+display_name: 百利天恒
+ticker: SSE_688506
+generated: 2026-07-03T00:00:00+00:00
+data_freshness: 2026-Q1
+data_freshness_basis: mat-006a17 (2026Q1季报) + market_data 2026-07-03 实时倍数
+
+buy_box:
+  strong_buy_max: 200
+  accumulate_min: 200
+  accumulate_max: 260
+  hold_min: 260
+  hold_max: 300
+  current_price: 340
+  price_as_of: 2026-07-03
+  current_zone: above_hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 双抗ADC核心壁垒未发表=黑箱+终局证据部分定性(海外峰值/里程碑data-missing)+当前340高于我方公允(PS42x≈259)约31%、EV≈-11%(负)；当前不建仓,已持有者偏减/不加,回调至200-260(我方公允下)再按试探档起步
+  initial_max_pct: null
+  full_max_pct: 4
+  add_ladder_prices: [200, 260]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: peer_ps_cross_section
+    label: 同业PS横截面(实时2026-07-03,全ADC宇宙最高55.1x;我方公允42x≈259)
+    bull_fair_value: [340, null]
+    base_fair_value: [240, 300]
+    bear_fair_value: [155, 240]
+  - name: sellside_rnpv_dcf
+    label: 卖方rNPV/DCF一致目标价(华泰336/国投386,押海外峰值)
+    bull_fair_value: [386, null]
+    base_fair_value: [336, 386]
+    bear_fair_value: [null, null]
+  - name: implied_scenario
+    label: 简化情景(当前市值隐含需百亿级营收支撑;base=我方公允259)
+    bull_fair_value: [450, null]
+    base_fair_value: [259, 259]
+    bear_fair_value: [155, 265]
+
+kill_criteria:
+  - id: pivotal_p3_fail_or_nda_reject
+    description: iza-bren任一大适应症(TNBC/ESCC/NSCLC)III期正式失败或NDA被拒
+    status: pending
+    check_at: 2027
+  - id: bms_milestone_stall_or_terminate
+    description: BMS终止核心iza-bren项目,或后续里程碑显著延迟(超12个月无新触发)
+    status: pending
+    check_at: 2027
+  - id: launch_ramp_weak_or_nrdl_gut
+    description: iza-bren获批2-3季后季度销售仍微弱,或医保国谈降幅>75%且未换来放量
+    status: pending
+    check_at: 2027-Q1
+  - id: ps_derate_break_key_level
+    description: PS向科伦48.9x/荣昌25x持续回落,股价跌破260元(合理买入区上沿)
+    status: pending
+    check_at: 2026-Q4
+
+signposts:
+  - date: 2027
+    event: iza-bren TNBC/ESCC NDA获批时点+定价
+    bull_signal: 2026H2-2027快速获批+定价坚挺
+    bear_signal: 审评延迟或获批后定价疲弱
+    triggered: null
+  - date: 2026-Q4
+    event: iza-bren鼻咽癌上市后首1-2季销售
+    bull_signal: 放量斜率陡,超市场预期
+    bear_signal: 小适应症起步微弱,验证放量平缓
+    triggered: null
+  - date: 2027
+    event: BMS下一笔里程碑触发公告
+    bull_signal: 按临床/销售节点持续触发(87.5%未兑现开始兑现)
+    bear_signal: 12个月以上无新触发或项目中止
+    triggered: null
+  - date: 2026
+    event: 2026年底医保国谈iza-bren是否纳入+降幅
+    bull_signal: 纳入且降幅温和,换来放量
+    bear_signal: 降幅>75%(重演PD-1 70-85%剧本)
+    triggered: null
+  - date: 2027
+    event: 第二梯队BL-M14D1全球III期/T-Bren III期数据读出
+    bull_signal: 优效读出,平台复用(WMBT-3)强化
+    bear_signal: 数据不及/延迟,平台叙事受挫
+    triggered: null
+
+cluster_tags: [china-innovative-drug, adc, bispecific-adc, cn-adc]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 2
+    kind: data-missing
+    note: 海外峰值销售/BMS里程碑分层无实证,卖方DCF目标价336-386对假设极敏感
+  - ring: 4
+    kind: data-missing
+    note: iza-bren大适应症放量斜率无历史锚,靠卖方DCF+训练估算
+  - ring: 5
+    kind: data-missing
+    note: K5(BMS里程碑)目前单源(manual-note mat-97a852),待05 critic核是否真独立
+
+market_implied:
+  metric: ps_ttm
+  value: 55.1
+my_vs_market_delta:
+  metric: ps_ttm
+  my_value: 42
+  delta: "-13x/约-24%"
+  direction: short

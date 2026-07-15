@@ -306,6 +306,7 @@ from prism.scripts.topic import (
     pending_unfetched_todos,
 )
 from prism.scripts.manifest import material_count
+from prism.scripts.web_prescan import verify_empty_todos_searched
 
 slug = '{slug}'
 variant = '{variant}'
@@ -327,7 +328,15 @@ if _err:
     for t in _err:
         print('   -', t['task'][:70])
 
-# stage 升级条件：有可处理未处理资料 且 无 unattempted/error 阻断 → 03-extracting（排除 Role α prescan web 料）
+# 搜索证据校验：empty 的 todo 必须在 web_search_log 中有对应记录
+v = verify_empty_todos_searched(slug, variant)
+if v['unverified']:
+    print(f'⛔ empty 证据缺失：{len(v["unverified"])} 条 todo 标了 empty 但 web_search_log 无痕——')
+    for t in v['unverified']:
+        print(f'   - {t["task"][:70]}')
+    _block = _block or True  # 确保阻塞
+
+# stage 升级条件：有可处理未处理资料 且 无 unattempted/error/empty证据 阻断 → 03-extracting（排除 Role α prescan web 料）
 set_stage(slug, '03-extracting' if counts['unprocessed_actionable'] > 0 and not _block else '02-gather-materials', variant)
 
 # next_actions 是给 LLM 看的系统建议（不污染 user_todos）

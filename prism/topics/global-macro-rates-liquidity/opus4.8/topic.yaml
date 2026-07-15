@@ -19,6 +19,7 @@ scope:
   - 美联储
   - 净流动性
   - 中美利差
+  terminal: 体制定位 + 传导地图下的资产含义
 outputs_state:
   00_primer:
     version: 1
@@ -29,29 +30,38 @@ outputs_state:
     last_error: null
     critic_passed: true
   m_regime_read:
-    version: 2
-    last_updated: '2026-06-11T12:35:10.492453+00:00'
+    version: 3
+    last_updated: '2026-07-01T03:59:45.585317+00:00'
     status: fresh
-    data_freshness: snapshot@2026-06-10
+    data_freshness: snapshot@2026-06-30
     referenced_mat_ids: []
     last_error: null
   transmission_map:
-    version: 1
-    last_updated: '2026-06-11T12:35:21.299115+00:00'
+    version: 3
+    last_updated: '2026-07-01T04:09:19.354592+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: []
     last_error: null
 parent_materials: []
 next_actions: []
-user_todos: []
+user_todos:
+- task: v3 重估完成（m_regime_read/transmission_map/thesis_v3/decomposition_v3 + eval快照v3），已过内嵌critic两轮，stage→评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: true
   cadence: daily
 critic: null
 decomposition:
-  current_version: 2
-  last_updated: '2026-06-11T12:36:34.216270+00:00'
+  current_version: 3
+  last_updated: '2026-07-01T04:03:43.077259+00:00'
   history:
   - version: 2
     stage_set_at: 04-synthesizing
@@ -59,6 +69,12 @@ decomposition:
     summary: 命门1=过热可持续还是滑向滞胀/衰退; 命门2=美极窄利差/估值/carry缓冲何时破; 命门3=人民币企稳+外资回流能否扛住强广义美元
     convergence_status: converged
     changelog: 'v2相对v1: 命门1升级为过热可持续性(象限滞胀→过热); 命门2收敛为极窄利差/carry缓冲(挂HY报警带); 命门3锚从中美利差改为强广义美元vs政策对冲(利差降为压力表)'
+  - version: 3
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-01T04:03:43.077265+00:00'
+    summary: 命门1=过热降温是软着陆还是硬着陆前奏(升首要); 命门2=极窄利差/低波动/carry缓冲何时被刺破; 命门3=人民币企稳能否扛住走强的广义美元
+    convergence_status: converged
+    changelog: v3相对v2:①命门1具体化为软/硬着陆(象限已给降温票,升首要);②命门2更新读数(carry越带161.7/波动压缩/杠杆UST净空),翻盘清单加百利天恒/药明合联/Momenta;③命门3锚更新为走强广义美元正侵蚀对冲(人民币已微贬).无增删/复活,无震荡
 stage_history:
 - stage: done
   entered_at: '2026-06-07T08:06:52.775725+00:00'
@@ -77,10 +93,15 @@ stage_history:
     autofetch_debt: 0
     empty_pending_decision: 0
 thesis:
-  current_version: 2
-  last_updated: '2026-06-11T12:36:34.189973+00:00'
+  current_version: 3
+  last_updated: '2026-07-01T04:03:43.059610+00:00'
   history:
   - version: 2
     stage_set_at: 04-synthesizing
     set_at: '2026-06-11T12:36:34.190070+00:00'
     summary: 中美背离延续：美higher-for-longer×risk-on但脆弱(条件偏松/利差极窄/估值carry极端)，中宽货币紧信用、人民币企稳。象限改判过热、脆弱度高、强度6/10
+  - version: 3
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-01T04:03:43.059771+00:00'
+    summary: 中美背离延续叠加反通胀式增长降温：GDPNow2.5/油价塌/长端牛平vs官方市场双双转鹰；组合偏防御压久期，真雷从利率再上转向极窄利差/carry/低波动缓冲被刺破。强度6·脆弱度高
+suggested_drilldowns: []

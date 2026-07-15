@@ -1,0 +1,339 @@
+slug: us-coinbase
+display_name: Coinbase (COIN, NASDAQ)
+type: company
+created: '2026-07-14T14:02:49.237224+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: Coinbase(COIN/US/deep)：赌买入——押加密结构性渗透+收入多元化(订阅服务/USDC稳定币/衍生品/托管)降低对交易佣金顺周期依赖、支撑估值重估；核心命门=非交易收入占比能否持续抬升
+    + 监管框架落地(GENIUS/稳定币立法)是护城河还是天花板；目标价区间待厚料校准。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_COIN
+  market: US
+  short_name: Coinbase
+  search_terms:
+  - Coinbase 收入多元化
+  - USDC 稳定币收入
+  - Coinbase 交易佣金
+  - 稳定币监管 GENIUS
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-14T16:25:35.972972+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-008730
+    - mat-0ded80
+    - mat-22fcff
+    - mat-2c07c9
+    - mat-3124fe
+    - mat-3a0ccf
+    - mat-4529fe
+    - mat-53aae8
+    - mat-74564c
+    - mat-977fb4
+    - mat-9b32e2
+    - mat-abfc11
+    - mat-adcede
+    - mat-b0635b
+    - mat-b4e2c4
+    - mat-c02351
+    - mat-c4de6d
+    - mat-eed625
+    - mat-efc570
+    - mat-f64190
+    - mat-fe0dd9
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-07-15T02:04:27.523118+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-008730
+    - mat-0ded80
+    - mat-22fcff
+    - mat-2c07c9
+    - mat-3124fe
+    - mat-4529fe
+    - mat-53aae8
+    - mat-74564c
+    - mat-977fb4
+    - mat-9b32e2
+    - mat-abfc11
+    - mat-adcede
+    - mat-b0635b
+    - mat-b4e2c4
+    - mat-c02351
+    - mat-c4de6d
+    - mat-eed625
+    - mat-efc570
+    - mat-f64190
+    - mat-fe0dd9
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-07-15T02:04:27.537697+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-07-15T01:54:41.976215+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 'critic 标 stale: c_investment_case'
+- 主 agent 即将在本对话续跑 04（见 workflow 05 Step 7.5）
+- critic 评审：thesis方向维持,但定价锚②base正常化净利$2.7B偏高(逼近2024峰值)+致命一击"S&S抗周期地板是会计幻觉"未完整应答+K1
+  kill"连续2季"缓冲按住Q1单季-14%证伪信号→定点重写c_investment_case环②base盈利+④EV+⑤K1 kill
+user_todos:
+- task: Coinbase FY2025 年报(10-K) + Q1 2026 季报(10-Q)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K4
+  - K5
+  source_hint: SEC EDGAR / investor.coinbase.com；US_COIN 直下
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-125d28
+  - mat-e88d9d
+  last_fetch_note: 2 份
+- task: 3份卖方深度研报(估值锚+一致预期拆解，攻打环④consensus)
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: 大行/独立研究：$292-316目标价背后假设
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web 3份
+- task: Coinbase Q3/Q4 2025 股东信(shareholder letter)——S&S收入四项拆分
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: investor.coinbase.com quarterly results
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web 3份
+- task: 稳定币监管最终文本追踪(GENIUS实施细则+CLARITY稳定币收益条款)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: occ.gov NPRM / 参议院银行委员会 / 法律事务所tracker
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web 3份
+- task: 历史失败镜鉴：2022加密熊市COIN跌幅与恢复路径(historical-mirror)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  - K5
+  source_hint: 2022熊市COIN股价/收入序列 + 顺周期金融平台价值陷阱案例
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web 2份
+- task: 管理层资本配置史/并购记录(Deribit整合+回购+现金使用,mgmt-capital-alloc)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 历年10-K现金流量表 + Deribit整合披露
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2c07c9
+  last_fetch_note: web+10-K现金流
+- task: take rate竞争分析：Robinhood/Binance/传统金融费率对比(K4)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 各家费率结构 + Coinbase隐含混合费率趋势
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web 2份
+- task: Base(L2)链上收入/衍生品(Deribit)规模数据
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: L2 sequencer收入 / 衍生品交易量
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web 3份
+- task: USDC余额与稳定币市场份额跟踪数据
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: USDC流通市值 / vs USDT份额
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web 2份
+- task: 资料提取完成：29 份 actionable findings 全部抽取并落盘、索引已重建
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 产出合成完成：primer(deep,critic收敛) + 决策链case(6环闭合,EV+13%) + sidecar + thesis_v1；chain-critic放行(终局2/4硬定量+护城河补量化)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: thesis方向维持,但定价锚②base正常化净利$2.7B偏高(逼近2024峰值)+致命一击"S&S抗周期地板是会计幻觉"未完整应答+K1
+    kill"连续2季"缓冲按住Q1单季-14%证伪信号→定点重写c_investment_case环②base盈利+④EV+⑤K1 kill
+  at: '2026-07-15T01:54:41.959556+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-14T16:34:34.495926+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-14T14:16:06.000289+00:00'
+    summary: 命门1=多元化利润地板真实性(中); 命门2=稳定币监管方向护城河vs天花板(低); 命门3=周期性崩塌vs竞争性take rate侵蚀区分(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-14T16:34:34.495934+00:00'
+    summary: 命门1多元化利润地板(中·被动多元化打折) + 命门2稳定币监管(低→中·Coinbase-shaped hole暂保链条,悬念NPRM)
+      + 命门3周期vs竞争侵蚀(中·未分离)
+    convergence_status: open
+    changelog: 命门2置信度低→中(凭mat-c4de6d Coinbase-shaped hole,非震荡);命门1表述精修(被动多元化,kill改占比+绝对额双看);无新增/掉队命门;primer入门目标delta空。05-critic未跑故open
+thesis:
+  current_version: 1
+  last_updated: '2026-07-14T16:34:34.471905+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-14T14:13:54.961488+00:00'
+    summary: 逆周期看多(6/10)：加密寒冬底部买入 COIN，押多元化+监管确定性驱动重估；命门=非交易收入占比(K1)+稳定币监管(K2)+周期触底(K3)；目标价
+      bear$90/base$180-220/bull$300
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-14T16:34:34.472080+00:00'
+    summary: 逆周期看多(6/10)：加密寒冬底部分批买入COIN，押franchise质量+逆周期资本配置被Q1转亏账面噪声($482M自持币重估)低估；命门K1多元化(被动多元化打折)/K2监管(Coinbase-shaped
+      hole暂幸存)/K3周期未定；base$195-200、EV+13%、试探档逢低分批
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-14T14:17:33.511821+00:00'
+  exited_at: '2026-07-14T14:35:34.799381+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-14T14:35:34.799381+00:00'
+  exited_at: '2026-07-14T15:14:51.032169+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-14T15:14:51.032169+00:00'
+  exited_at: '2026-07-14T16:34:48.938481+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-14T16:34:48.938481+00:00'
+  exited_at: '2026-07-14T16:34:49.187505+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-14T16:34:49.187505+00:00'
+  exited_at: '2026-07-15T02:04:27.546432+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-15T02:04:27.546432+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-14T14:35:21.261228+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 5
+  queries_with_hits: 5

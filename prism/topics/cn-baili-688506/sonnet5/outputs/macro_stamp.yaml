@@ -1,0 +1,24 @@
+as_of_regime_version: 3
+regime_composite: 美higher-for-longer(10Y实际利率2.16%边际回落但仍为高久期pre-profit biotech估值硬约束)+中宽货币紧信用(资产荒推高成长股估值分母承受力)+人民币企稳偏弱(BD美元里程碑款折算存汇率暴露)——宏观对本topic是放大器而非命门本身，命门在管线数据读出/BMS里程碑兑现节奏。
+depends_on_states:
+- conclusion: rates_us
+  state: 高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平；10Y实际利率(TIPS)2.16%
+  role: load_bearing
+- conclusion: fx_cny
+  state: 企稳偏弱·区间震荡·外资流向硬度低
+  role: confirming
+- conclusion: liquidity_cn
+  state: 宽货币×紧信用(有水鱼不出)·信贷脉冲转负
+  role: confirming
+discount_rate:
+  risk_free: 0.0216
+  applied_wacc: 0.071
+  rate_sensitivity: 卖方DCF(华泰WACC 7.1%/永续增速3.0%)目标价336.12元；若10Y实际利率±50bp(1.66%-2.66%)传导至WACC同向±50bp，对应DCF公允值弹性约±12-18%（高久期pre-profit
+    biotech对折现率的凸性敏感）
+  source_input: 10Y 实际利率 TIPS（global-macro-rates-liquidity v3 rates_us 结论）+ 卖方DCF
+    WACC假设(mat-6a4f36)
+slug: cn-baili-688506
+variant: sonnet5
+stamped_at: '2026-07-03T03:19:27.760124+00:00'
+stale: false
+stale_reason: null

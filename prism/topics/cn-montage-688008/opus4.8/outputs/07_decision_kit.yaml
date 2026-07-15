@@ -1,0 +1,111 @@
+slug: cn-montage-688008
+variant: opus4.8
+topic_type: company
+display_name: 澜起科技
+ticker: SSE_688008
+generated: 2026-07-14T00:00:00+00:00
+data_freshness: 2026-Q1
+
+buy_box:
+  strong_buy_max: 110
+  accumulate_min: 110
+  accumulate_max: 155
+  hold_min: 155
+  hold_max: 200
+  current_price: 252.79
+  price_as_of: 2026-07-13
+  current_zone: above_hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 好生意但现价EV≈-24.5%显著为负,三模型base中枢95-105/bull上沿176均低于现价252.79;买入框锚回公允价(accumulate下沿110≈base中枢),现价较accumulate上沿155仍高63%;质量已验证但现价赔率不对称向下,现价仓位=0观察,回调至accumulate区(110-155)再升标准档
+  initial_max_pct: null
+  full_max_pct: 8
+  add_ladder_prices: [110, 130, 155]
+  max_cluster_pct: 15
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: 逆向PE-DCF(r=10%,终值PE 25-35x,扣非基数~22亿)
+    bull_fair_value: [176, 176]
+    base_fair_value: [95, 105]
+    bear_fair_value: [56, 56]
+  - name: base_plus_option
+    label: 基本盘+AI期权拆解(期权成功概率60%/2030收入80-100亿)
+    bull_fair_value: [130, 130]
+    base_fair_value: [95, 95]
+    bear_fair_value: [57, 57]
+  - name: peer_cross_section
+    label: 同业横截面(合理PS 20-30x,增速调整;Astera PS62/Rambus PS15.5)
+    bull_fair_value: [140, 140]
+    base_fair_value: [105, 105]
+    bear_fair_value: [70, 70]
+
+kill_criteria:
+  - id: kill_bear_1_extract_growth
+    description: 连续两季扣非归母同比<15%(真实经营减速证实,现价隐含45-50%CAGR证伪)
+    status: pending
+    check_at: 2026-Q3
+  - id: kill_bear_2_ai_stall
+    description: AI互连新品收入占互连类比例连续两季停滞在<22%(第二曲线证伪,现19%)
+    status: pending
+    check_at: 2026-Q4
+  - id: kill_bull_1_ai_breakout
+    description: AI新品占比单季跳过30%且PCIe Switch贡献收入(上修可持续增速假设至30%+,抬高买入框)
+    status: pending
+    check_at: 2027-Q1
+  - id: kill_macro_derating
+    description: 半导体板块系统性去杠杆致急跌至accumulate区(<175,参Astera单日-12%),反为建仓信号
+    status: pending
+    check_at: 2026-Q4
+
+signposts:
+  - date: 2026-08
+    event: 2026 H1 半年报
+    bull_signal: 扣非同比>25%且毛利率环比持稳/上行
+    bear_signal: 扣非同比<15%,一次性收益退潮后真实增速掉档
+    triggered: null
+  - date: 2026-08-04
+    event: Astera Labs Q2 财报(AI连接龙头完美预期压力测试)
+    bull_signal: Astera超预期,板块AI互连情绪维持
+    bear_signal: Astera不及指引,高估值AI连接股外溢急杀
+    triggered: null
+  - date: 2026-Q4
+    event: PCIe Switch 年内流片/送样进度
+    bull_signal: 如期流片并有客户导入,第二曲线储备兑现
+    bear_signal: 流片延后/无客户,真AI战场落后Astera/博通
+    triggered: null
+  - date: 2027
+    event: MRDIMM + DDR5 Gen5 Intel/AMD新平台放量
+    bull_signal: MRCD/MDB(每条1+10颗)如期接棒DDR5
+    bear_signal: 平台延后,2026-27成长青黄不接
+    triggered: null
+
+cluster_tags: [ai-compute, memory-interface, semiconductor, ah-listed, china-semi]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 4
+    kind: data-missing
+    note: AI互连新品内部结构(Retimer vs MRCD/MDB vs CKD vs CXL各自占比)未拆分,期权价值分品类精度受限
+  - ring: 2
+    kind: training-estimate
+    note: 逆向PE-DCF的终值PE与AI期权成功概率(60%)为训练知识框架下的情景假设,非实证
+  - ring: 4
+    kind: data-missing
+    note: 正式卖方一致预期EPS/目标价数字锚仍偏弱(consensus多为聚合站/单一卖方长江电子30x),缺多机构覆盖分布
+
+market_implied:
+  metric: implied_net_income_cagr_5y
+  value: 47
+
+my_vs_market_delta:
+  metric: implied_net_income_cagr_5y
+  my_value: 22
+  delta: "-25pct"
+  direction: short

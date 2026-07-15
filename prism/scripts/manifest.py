@@ -213,6 +213,11 @@ def _guess_source_type(filename: str) -> str:
     )
     if any(k in name for k in ar_kw):
         return "annual-report"
+    # A 股临时公告（cninfo/巨潮命名含 announce/_kzz_/公告）→ announcement，
+    # 不走 mineru（治理噪音多，抽取分诊由 02 Step 6.5a-ann 的 LLM 标题判定）。
+    # 置于 ar_kw 之后：真·年报/季报仍归 annual-report 走 annual_report_extractor。
+    if any(k in name for k in ("announce", "_kzz_", "公告")):
+        return "announcement"
     if ext in (".htm", ".html"):
         return "web-article"
     if ext in (".csv", ".tsv", ".xlsx", ".xls", ".json", ".parquet"):
@@ -224,6 +229,41 @@ def _guess_source_type(filename: str) -> str:
     return "manual-note"
 
 
+def _peek_frontmatter_websearch(fp: Path) -> dict | None:
+    """轻量读 .md 的 YAML frontmatter 元数据块（**不读正文**），识别 web-search 料。
+
+    web-search sidecar 落盘的 .md 带 frontmatter：source/query/url/searched_at/confidence。
+    仅当 `source: web-search` 时返回 {source_type, search_meta, confidence}，否则 None。
+    只扫首块 `---...---`（≤30 行），任何异常吞掉退回 None——保持 register 的健壮性。
+    """
+    try:
+        if fp.suffix.lower() != ".md":
+            return None
+        meta: dict[str, str] = {}
+        with fp.open("r", encoding="utf-8") as fh:
+            first = fh.readline()
+            if first.strip() != "---":
+                return None
+            for _ in range(30):
+                line = fh.readline()
+                if line == "" or line.strip() == "---":
+                    break
+                if ":" in line and not line.startswith((" ", "-", "\t")):
+                    k, _, v = line.partition(":")
+                    meta[k.strip()] = v.strip().strip("'\"")
+        if meta.get("source") != "web-search":
+            return None
+        search_meta = {k: meta[k] for k in ("query", "url", "searched_at") if meta.get(k)}
+        conf = None
+        try:
+            conf = float(meta["confidence"]) if meta.get("confidence") else None
+        except ValueError:
+            conf = None
+        return {"source_type": "web-search", "search_meta": search_meta or None, "confidence": conf}
+    except Exception:
+        return None
+
+
 def register_inbox_materials(slug: str, variant: str) -> list[dict]:
     """早期 ingest：把 topic 专属目录里尚未登记的文件批量登记进 manifest（元数据）。
 
@@ -232,9 +272,11 @@ def register_inbox_materials(slug: str, variant: str) -> list[dict]:
       - topics/{slug}/materials/  （已落盘副本）
     只看顶层文件（不递归），避开 mineru 子目录 / sec section 等派生产物。
 
-    纯 CRUD、**零正文读取**：按文件名/扩展名粗判 source_type，addresses 留空待下游
-    （03 抽取 / 主 agent）补。靠 add_material 的 filename 去重保证幂等——重扫不重登、
-    已登记文件原样跳过。
+    纯 CRUD、**只读 .md 的 YAML frontmatter 元数据块、不读正文**：先按 frontmatter
+    `source: web-search` 精确识别网搜料（连带 search_meta，让 check_prescan_health 的
+    'inherited' 回退能认出复用旧料）；否则按文件名/扩展名粗判 source_type。addresses
+    留空待下游（03 抽取 / 主 agent）补。靠 add_material 的 filename 去重保证幂等——
+    重扫不重登、已登记文件原样跳过。
 
     返回本次**新登记**的条目清单 [{id, filename, source_type}]（已登记的不在内）。
     """
@@ -248,11 +290,20 @@ def register_inbox_materials(slug: str, variant: str) -> list[dict]:
                 continue
             if fp.name in existing:
                 continue
-            src = _guess_source_type(fp.name)
-            mat_id = add_material(
-                slug=slug, filename=fp.name, source_type=src, variant=variant,
-                notes="early-ingest: 自动登记 topic 家底（元数据，未读正文）",
-            )
+            ws = _peek_frontmatter_websearch(fp)
+            if ws is not None:
+                src = ws["source_type"]
+                mat_id = add_material(
+                    slug=slug, filename=fp.name, source_type=src, variant=variant,
+                    confidence=ws["confidence"], search_meta=ws["search_meta"],
+                    notes="early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）",
+                )
+            else:
+                src = _guess_source_type(fp.name)
+                mat_id = add_material(
+                    slug=slug, filename=fp.name, source_type=src, variant=variant,
+                    notes="early-ingest: 自动登记 topic 家底（元数据，未读正文）",
+                )
             existing.add(fp.name)
             registered.append({"id": mat_id, "filename": fp.name, "source_type": src})
     return registered

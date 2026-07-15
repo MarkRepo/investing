@@ -1,0 +1,19 @@
+as_of_regime_version: 2
+regime_composite: 中美背离·美higher-for-longer×risk-on但脆弱/中宽货币紧信用(强度6/10,脆弱度高);对高久期pre-profit成长IPO偏逆风
+depends_on_states:
+- conclusion: rates_us
+  state: 高位企稳·10Y4.53%·10Y实际利率2.2%高位(压高久期成长估值)
+  role: load_bearing
+- conclusion: fx_cny
+  state: 人民币企稳偏强·外资回流(利港股流动性/外资基石)
+  role: confirming
+- conclusion: overall
+  state: risk-on但脆弱·CAPE39.4估值透支(反转时投机标的先杀)
+  role: confirming
+discount_rate: null
+slug: cn-momenta
+variant: opus4.8
+stamped_at: '2026-06-30T09:37:20.133961+00:00'
+stale: true
+stale_reason: 依赖的『高位企稳·10Y4.53%·10Y实际利率2.2%高位(压高久期成长估值)』已变『高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平(2s10s+30bp)』(regime
+  v2→v3)

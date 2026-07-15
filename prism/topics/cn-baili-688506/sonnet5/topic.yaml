@@ -1,0 +1,383 @@
+slug: cn-baili-688506
+display_name: 百利天恒 (SSE 688506)
+type: company
+created: '2026-07-03T02:14:32.867949+00:00'
+status: active
+stage: 05-critic-review
+canonical: false
+parent_topic: cn-adc
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 百利天恒双抗ADC平台(iza-bren全球首个获批+一平台6 ADC)差异化壁垒的天花板有多高，iza-bren放量与BMS里程碑能否兑现支撑千亿市值(PS
+    42x)
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_688506
+  market: SSE
+  short_name: 百利天恒
+  search_terms:
+  - 百利天恒
+  - iza-bren
+  - BL-B01D1
+  - EGFR HER3双抗ADC
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-03T03:46:55.362195+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1d9460
+    - mat-267ba6
+    - mat-41932c
+    - mat-55c5b7
+    - mat-65b873
+    - mat-697099
+    - mat-6a4f36
+    - mat-863746
+    - mat-a71814
+    - mat-ca10f6
+    - mat-d18746
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-03T03:47:03.185567+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1d9460
+    - mat-267ba6
+    - mat-41932c
+    - mat-53c9a4
+    - mat-55c5b7
+    - mat-65b873
+    - mat-697099
+    - mat-6a4f36
+    - mat-73c26d
+    - mat-863746
+    - mat-a71814
+    - mat-ca10f6
+    - mat-d18746
+    - mat-e560cb
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-03T03:47:03.212511+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1d9460
+    - mat-267ba6
+    - mat-41932c
+    - mat-53c9a4
+    - mat-55c5b7
+    - mat-65b873
+    - mat-697099
+    - mat-6a4f36
+    - mat-73c26d
+    - mat-863746
+    - mat-a71814
+    - mat-ca10f6
+    - mat-d18746
+    - mat-e560cb
+    last_error: null
+parent_materials:
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-a10280
+  addresses:
+  - K1
+  - K2
+  note: 荣昌生物2025年报——PS历史轨迹分析的财务底座
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-239a5c
+  addresses:
+  - K1
+  - K2
+  note: 科伦博泰(6990.HK)2025年报——获批到放量节奏对照的财务底座
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-374d66
+  addresses:
+  - K2
+  note: 浦银国际ADC行业覆盖含科伦博泰/恒瑞/药明合联目标价——估值对标（00-deep-fetch，非prescan快照）
+- parent_slug: cn-adc
+  parent_variant: opus4.8
+  mat_id: mat-31dd47
+  addresses:
+  - K1
+  - K4
+  note: 中国ADC热潮泡沫前车之鉴(PD-1启示录)——historical-mirror，直接对应thesis争议4叙事vs兑现（00-deep-fetch，非prescan快照）
+next_actions:
+- 所有资料已处理完毕（14份新增finding，K1-K5全覆盖，K3资金链判断已用年报数据精化）
+- 发现2处需在04合成/critic-review阶段处理的重要更新：①37.64亿定增已完成到账+新增26亿长期借款(资金链好于原判但新增短期到期压力)；②BMS单一客户集中度84.79%(新风险点)；③卖方目标价336-386元
+  vs thesis 190-230元的分歧
+- 说「prism 推进 cn-baili-688506」走决策链合成（00_primer + c_investment_case + 07_decision_kit）
+user_todos:
+- task: 下载百利天恒2025年年报全文（PDF）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: 上交所/公司IR网站
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-697099
+- task: 下载百利天恒2026Q1季报
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 上交所/公司IR网站
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-ca10f6
+- task: 查iza-bren获批后商业化条款公告（定价/医保准入谈判/院内准入/销售团队组建进度）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 公司公告/医保局公示/行业媒体
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-267ba6
+  - mat-41932c
+- task: 查BMS BD协议里程碑触发详细条款及BMS方SEC filing/公告披露的进展
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: BMS 10-K/10-Q, 需英文阅读
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2aacb2
+  - mat-3018c1
+  - mat-65b873
+- task: 查港交所/公司关于H股上市最新进展公告（是否重启及具体卡点）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: 港交所披露易/公司公告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-08b147
+  - mat-1d9460
+- task: 查T-Bren/BL-M07D1/SI-B001等第二梯队资产最新临床进展披露
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: ASCO/ESMO会议摘要/公司公告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6a4f36
+  - mat-a71814
+- task: 查管理层关于FDA BLA提交计划最新表态
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 投资者交流记录/业绩说明会问答
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-e560cb
+- task: 收集2-3份卖方深度报告，重点看估值模型/可比biotech PS对标
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 同花顺/Wind/卖方公众号
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6a4f36
+- task: 查创始人朱义过去10年资本投入节奏及历次融资历史访谈报道
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 公开报道/招股书历史沿革章节
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-015de5
+  - mat-0bd93c
+  - mat-682fda
+- task: 查定增（37.64亿元）预案具体条款（用途/发行价/稀释比例）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: 公司定增预案公告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-55c5b7
+- task: 查历史上其他中国biotech（荣昌生物/科伦博泰）BD交易后估值回落案例作为镜鉴
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 卖方报告/行业媒体复盘
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-73c26d
+- task: 资料提取完成：36份材料中14份已处理（22份Role α prescan快照按设计豁免）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成(3 份:00_primer/c_investment_case/07_decision_kit)，已进05-critic-review
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: iza-bren鼻咽癌适应症商业化条款(定价/医保准入谈判/院内准入/销售团队爬坡进度)首次可观测后，实际放量斜率与本篇模型隐含的18-30%营收CAGR假设相比处于哪个区间？
+  rationale: K1核心观测项，获批太新(2026-06-22)，目前完全无commercialization实际数据，是本篇最大的诚实缺口，直接决定环②③④的假设能否被验证
+  source: auto_thin
+  related:
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-07-03T03:45:56.515200+00:00'
+- question: FDA BLA申报时间线(当前媒体口径2029年)是否有新的公司官方指引更新，及其对海外商业化/BMS销售分成时点判断的影响
+  rationale: K5证据薄(仅1条findings mat-e560cb，来源为财经媒体推测性判断，非公司官方直接指引)，gap_detector持续标thin
+  source: auto_thin
+  related:
+  - K5
+  priority: P2
+  status: open
+  suggested_at: '2026-07-03T03:45:56.515200+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-03T03:47:25.744917+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-03T02:33:21.722618+00:00'
+    summary: 命门1=iza-bren商业化放量节奏(低); 命门2=BMS里程碑兑现节奏(中); 命门3=资金链能否撑到放量转正(中低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-03T03:47:25.745116+00:00'
+    summary: 命门1(放量节奏)置信度低→低中(管线厚度上修); 命门2(BMS里程碑)置信度中→中低(新增BMS客户集中度84.79%风险); 命门3(资金链)置信度中低→中(定增到账/新增借款上调
+      vs 到期负债暴增/经营现金流转负下调，双向修正)
+    convergence_status: converged
+    changelog: 命门2置信度下调(凭mat-697099新披露BMS客户集中度84.79%,此前未覆盖); 命门1置信度上调(凭mat-267ba6/mat-a71814三阴乳腺癌PFS/OS双阳性+T-Bren8项III期);
+      命门3置信度上调但内涵复杂化(凭mat-697099定增到账+新增借款 vs 到期负债+238.74%/经营现金流转负,双向); primer入门目标新增2条(BD里程碑分类+客户集中度;DCF分歧成因),均已在primer
+      critic两轮收敛后覆盖; 对照全历史无震荡,无重加曾被砍命门
+thesis:
+  current_version: 1
+  last_updated: '2026-07-03T03:47:12.582390+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-03T02:31:31.036111+00:00'
+    summary: 平台技术壁垒真实（iza-bren全球首个获批双抗ADC已兑现），但PS~43.6x隐含近乎完美商业化节奏，实证节奏（2025营收-56.72%/转亏/BMS里程碑仅兑现12.5%）明显落后于估值假设。强度4/10偏谨慎，不追高，等PS回落25-30x再介入。
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 90%（9/10，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-03T03:47:12.582651+00:00'
+    summary: 技术壁垒真实且持续增强(iza-bren全球首个获批+多适应症并行+T-Bren8项III期)，但现价PS(TTM)54.38x已超厚料反推Base估值(156-217元)1.5-2x，EV=-40.9%明确为负。强度3/10(较v0下修)，不追高、当前above_hold，等价格回落至54-156元区间再分批介入。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-03T02:33:40.040873+00:00'
+  exited_at: '2026-07-03T02:59:01.813257+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-03T02:59:01.813257+00:00'
+  exited_at: '2026-07-03T03:14:08.003722+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-03T03:14:08.003722+00:00'
+  exited_at: '2026-07-03T03:47:52.343420+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-03T03:47:52.343420+00:00'
+  exited_at: '2026-07-03T03:47:52.466185+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-03T03:47:52.466185+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

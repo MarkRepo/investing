@@ -3,7 +3,7 @@ display_name: 中国PD-1/VEGF双抗 arena
 type: arena
 created: '2026-05-30T14:59:15.142308+00:00'
 status: active
-stage: 00-init
+stage: 05-critic-review
 parent_topic: cn-innovative-drug
 monitoring_tier: dormant
 concepts: []
@@ -15,25 +15,364 @@ scope:
   - PD-1 VEGF 双抗
   - 依沃西 HARMONi
   - 辉瑞 自研
-outputs_state: {}
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-10T08:08:13.580922+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0573a8
+    - mat-0b2da8
+    - mat-208b58
+    - mat-2cc57c
+    - mat-324d63
+    - mat-329811
+    - mat-3a625c
+    - mat-4202b2
+    - mat-4c44f3
+    - mat-4faca1
+    - mat-511037
+    - mat-520ca8
+    - mat-63e194
+    - mat-64f554
+    - mat-66df8d
+    - mat-6efbc9
+    - mat-6f4b3e
+    - mat-77b3da
+    - mat-7dc1f3
+    - mat-7e536c
+    - mat-8b2afc
+    - mat-8e29ac
+    - mat-993c25
+    - mat-9bd5be
+    - mat-b7ef81
+    - mat-c30c24
+    - mat-d02073
+    - mat-d3f689
+    - mat-ea3ff5
+    - mat-eca0de
+    - mat-ed27ba
+    - mat-f239ae
+    last_error: null
+    critic_passed: true
+  a_arena_case:
+    version: 1
+    last_updated: '2026-07-10T08:08:13.602568+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0573a8
+    - mat-0b2da8
+    - mat-208b58
+    - mat-2cc57c
+    - mat-324d63
+    - mat-329811
+    - mat-3a625c
+    - mat-4202b2
+    - mat-4c44f3
+    - mat-4faca1
+    - mat-511037
+    - mat-520ca8
+    - mat-63e194
+    - mat-64f554
+    - mat-66df8d
+    - mat-6efbc9
+    - mat-6f4b3e
+    - mat-77b3da
+    - mat-7dc1f3
+    - mat-7e536c
+    - mat-8b2afc
+    - mat-8e29ac
+    - mat-993c25
+    - mat-9bd5be
+    - mat-b7ef81
+    - mat-c30c24
+    - mat-d02073
+    - mat-d3f689
+    - mat-ea3ff5
+    - mat-eca0de
+    - mat-ed27ba
+    - mat-f239ae
+    last_error: null
+  peer_matrix:
+    version: 1
+    last_updated: '2026-07-10T08:08:13.620061+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-2cc57c
+    - mat-324d63
+    - mat-3a625c
+    - mat-77b3da
+    - mat-8b2afc
+    - mat-ea3ff5
+    last_error: null
 parent_materials: []
 next_actions:
-- 运行 workflow 01-build-roadmap
-user_todos: []
+- arena 决策链合成完成：00_primer(deep,critic 1轮收敛) + a_arena_case(6环,chain-critic 2轮闭合) +
+  peer_matrix + thesis_v1/decomposition_v1
+- shortlist：康方09926(首选)+三生01530(次选)已建 company stub；可说「prism 推进 cn-akeso-09926」深研
+- arena critic(05)非强制——可说「评审 cn-pd1-vegf-bispecific」跑对抗式steelman，或在web点✓标记完成
+user_todos:
+- task: 康方生物 2024 年报 + 2025 中期/年报（依沃西销售/管线/现金/资本配置）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  - K5
+  source_hint: HKEX 09926 / cninfo
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-8b2afc
+  last_fetch_note: HKEX FY2025 年报
+- task: 三生制药 2024 年报 + 辉瑞 SSGJ-707 交易公告（707 阶段/条款/资本配置）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K5
+  source_hint: HKEX 01530
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-ea3ff5
+  last_fetch_note: HKEX FY2025 年报
+- task: Summit Therapeutics HARMONi 全球 OS 详细数据 + FDA BLA/PDUFA 进展（10-K/8-K/IR）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: SMMT SEC filings / smmttx.com IR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0b2da8
+  - mat-208b58
+  - mat-2cc57c
+  - mat-329811
+  - mat-4c44f3
+  - mat-4faca1
+  - mat-520ca8
+  - mat-63e194
+  - mat-77b3da
+  - mat-7dc1f3
+  - mat-993c25
+  - mat-9bd5be
+  - mat-c30c24
+  - mat-d02073
+  - mat-d3f689
+  - mat-d44dd5
+  - mat-e45555
+  - mat-f3f4e2
+  last_fetch_note: SMMT 10-Q + prescan IR/OS/BLA 料
+- task: 卖方深度报告×3（康方/三生/PD-1VEGF赛道，中金/中信/摩根任选）——一致预期与目标价锚
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K5
+  source_hint: 同花顺/Wind/dfcfw/卖方公众号
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0573a8
+  - mat-4202b2
+  - mat-ed27ba
+  - mat-f239ae
+  last_fetch_note: 'fetched: 东吴/交银/太平洋/华福 深度 DCF+目标价'
+- task: PD-(L)1/VEGF 赛道横向对比料（依沃西vs707vsBNT327vsLM-299vsIMM2510：阶段/OS·PFS/适应症/交易条款/可投标的）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 终局环⑥ shortlist 选拔；医药魔方/dfcfw/同写意
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3a625c
+  - mat-64f554
+  - mat-66df8d
+  - mat-8e29ac
+  last_fetch_note: 'fetched: 竞争格局+707vsAK112+三步走'
+- task: 中国医保谈判机制 + PD-1 单抗价格战历史镜鉴资料
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: historical-mirror；医保局公告/行业复盘
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6efbc9
+  - mat-b7ef81
+  - mat-eca0de
+  last_fetch_note: 'fetched: PD-1价格战历史镜鉴'
+- task: HARMONi-2/3/6/7 临床数据详情 + OS nominal-p 争议学界讨论原文
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: ASCO/WCLC 摘要/firstwordpharma/同写意
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-324d63
+  - mat-511037
+  - mat-6f4b3e
+  - mat-7e536c
+  last_fetch_note: 'fetched: OS详情+FDA路径+nominal-p争议'
+- task: 康方/三生估值锚（rNPV、峰值销售假设、卖方目标价区间）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: consensus；卖方模型
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0573a8
+  - mat-4202b2
+  - mat-ed27ba
+  - mat-f239ae
+  last_fetch_note: 'fetched: 卖方DCF/峰值销售/目标价(复用卖方深度)'
+- task: 资料提取完成：32 份全部处理完毕，findings 索引已重建，gap=0
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: arena 决策链合成中...
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: arena 合成完成：primer+case+peer_matrix+thesis_v1 全部落盘，chain-critic 2轮放行
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: false
   cadence: daily
 critic: null
 decomposition:
-  current_version: null
-  last_updated: null
-  history: []
+  current_version: 1
+  last_updated: '2026-07-10T08:12:05.313114+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-10T04:17:23.212098+00:00'
+    summary: 命门1=依沃西OS优势真实性/nominal-p(中); 命门2=先发壁垒时间窗vs MNC收编后来者追赶(低); 命门3=中国利润池可维系性/商业化兑现(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-10T08:12:05.313140+00:00'
+    summary: 命门1=依沃西全球OS真实性/nominal-p(中,二元); 命门2=先发壁垒vs MNC收编后来者(低→中); 命门3=中国利润池/商业化兑现(中)
+    convergence_status: open
+    changelog: 厚料重拆：命门2置信度低→中(mat-66df8d后来者火力+mat-8b2afc依沃西管线深度双双证实); 命门1/3维持中未闭合;
+      入门目标无增删仅补术语; 无震荡
 thesis:
-  current_version: 0
-  last_updated: '2026-05-30T15:01:52.888959+00:00'
+  current_version: 1
+  last_updated: '2026-07-10T08:12:05.279627+00:00'
   history:
   - version: 0
     stage_set_at: 00-init-from-parent
     set_at: '2026-05-30T15:01:52.888970+00:00'
     summary: 依沃西证PD-1/VEGF双抗可胜K药，但MNC自研入局，壁垒可持续性是核心赌点(5/10)
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-10T04:15:47.980817+00:00'
+    summary: 看多PD-1/VEGF双抗arena；shortlist首选康方(依沃西OS转正+FDA受理BLA)，三生次选但临床落后+估值透支；赌点=先发/OS壁垒能否抵御MNC收编的后来者+商业化兑现(6/10)
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-10T08:12:05.279834+00:00'
+    summary: 看多arena；shortlist首选康方(临床/管线/权益三重领先+现价已挤出溢价)、三生次选(估值安全边际+首付确定性但落后~2年)；赌点=先发/OS壁垒抵御MNC收编后来者+商业化兑现。强度6/10。
 canonical: true
+suggested_drilldowns:
+- question: 依沃西中国销售爬坡一手数据（季度销售额/增速/入院医院数）——官方年报不单独披露，需券商拆分/渠道调研，是K4/WMBT-4兑现命门
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-07-10T08:19:02.226139+00:00'
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-10T04:17:52.211853+00:00'
+  exited_at: '2026-07-10T07:19:19.939674+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    - peer-comparison-financials
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-10T07:19:19.939674+00:00'
+  exited_at: '2026-07-10T07:41:04.949507+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-10T07:41:04.949507+00:00'
+  exited_at: '2026-07-10T08:19:02.250233+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-10T08:19:02.250233+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 0

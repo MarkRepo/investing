@@ -47,6 +47,49 @@ def _f(val) -> float | None:
     return f
 
 
+_FX_CACHE: dict[str, float] = {}
+
+
+def _fx_rate(from_ccy: str, to_ccy: str) -> float | None:
+    """1 单位 from_ccy 折合多少 to_ccy（经 yfinance FX 对，进程内缓存）。取不到回 None。"""
+    if from_ccy == to_ccy:
+        return 1.0
+    key = f"{from_ccy}{to_ccy}"
+    if key in _FX_CACHE:
+        return _FX_CACHE[key]
+    try:
+        h = yf.Ticker(f"{from_ccy}{to_ccy}=X").history(period="5d")
+        rate = _f(h["Close"].dropna().iloc[-1]) if h is not None and not h.empty else None
+    except Exception:
+        rate = None
+    if rate:
+        _FX_CACHE[key] = rate
+    return rate
+
+
+def _ps_normalized(info: dict) -> float | None:
+    """汇率归一后的 trailing P/S。
+
+    yfinance 的 ``priceToSalesTrailing12Months`` = marketCap / totalRevenue **不换汇**。
+    对「财报币种 ≠ 股价币种」的标的（中概 ADR/CNY 报表的港股，如 WeRide：CNY 营收 +
+    USD 股价 → 原值 2.6x，正确 17.6x）原值错一个汇率倍数。仅在两币种都在且不同、且
+    mc/rev/汇率俱全时重算；任一缺失则回退 yfinance 原值（不退化既有行为）。
+    """
+    raw = _f(info.get("priceToSalesTrailing12Months"))
+    price_ccy = info.get("currency")
+    fin_ccy = info.get("financialCurrency")
+    if not price_ccy or not fin_ccy or price_ccy == fin_ccy:
+        return raw
+    mc = _f(info.get("marketCap"))
+    rev = _f(info.get("totalRevenue"))
+    if not mc or not rev:
+        return raw
+    fx = _fx_rate(fin_ccy, price_ccy)  # 1 fin_ccy = fx price_ccy
+    if not fx:
+        return raw
+    return mc / (rev * fx)
+
+
 def fetch_daily(
     ticker: str, market: str, start: date, end: date
 ) -> list[Quote]:
@@ -94,7 +137,7 @@ def fetch_daily(
             pe_static=None,
             pe_forward=_f(info.get("forwardPE")) if is_latest else None,
             pb=_f(info.get("priceToBook")) if is_latest else None,
-            ps=_f(info.get("priceToSalesTrailing12Months")) if is_latest else None,
+            ps=_ps_normalized(info) if is_latest else None,
             peg=_f(info.get("trailingPegRatio")) if is_latest else None,
             dividend_yield=(
                 ((_f(info.get("dividendYield")) or 0.0) * 100.0)
@@ -196,7 +239,7 @@ def fetch_snapshot(ticker: str, market: str) -> Quote:
         pe_static=None,
         pe_forward=_f(info.get("forwardPE")),
         pb=_f(info.get("priceToBook")),
-        ps=_f(info.get("priceToSalesTrailing12Months")),
+        ps=_ps_normalized(info),
         peg=_f(info.get("trailingPegRatio")),
         dividend_yield=(_f(info.get("dividendYield")) or 0.0) * 100.0,
         market_cap=_f(info.get("marketCap")),

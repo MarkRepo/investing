@@ -432,3 +432,131 @@ pending:
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false
+- proposal_id: 27f2f9b63de3
+  slug: cn-momenta
+  variant: deepseek-v4-pro
+  kind: price
+  locator: buy_box
+  proposed_value: accumulate
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-15 价格破位:跌入买入框
+
+    **来源**:market_data 自动行情
+
+    **关键信息**:现价 295.6000061035156（2026-07-14）落入 **accumulate** 区间（强买≤250 / 可建仓 250-310）
+
+    **对已有判断的影响**:触及预设买入区,需按 position_framework 复核建仓
+
+    **当前判断更新**:维持原判断,价格信号待人工确认'
+  rationale: 现价 295.6000061035156 落入 accumulate（零 LLM 价格判定）
+  requires_thesis_review: false
+  status: awaiting_confirm
+  created_at: '2026-07-14T22:09:34.500204+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: ed357d8d0574
+  slug: cn-momenta
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-01 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v2→v3）
+
+    **关键信息**：你依赖的『高位企稳·10Y4.53%·10Y实际利率2.2%高位(压高久期成长估值)』已变『高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平(2s10s+30bp)』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『高位企稳·10Y4.53%·10Y实际利率2.2%高位(压高久期成长估值)』已变『高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平(2s10s+30bp)』(regime
+    v2→v3)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-01T04:04:55.432452+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 074b486d3893
+  slug: us-eli-lilly
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-01 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v2→v3）
+
+    **关键信息**：你依赖的『高位企稳·双向风险·10Y实际利率2.2%』已变『高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平(2s10s+30bp)』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『高位企稳·双向风险·10Y实际利率2.2%』已变『高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平(2s10s+30bp)』(regime
+    v2→v3)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-01T04:04:55.432460+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 17104a9beb39
+  slug: us-micron-mu
+  variant: opus4.8
+  kind: macro_regime
+  locator: liquidity_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-01 宏观体制变化：美国流动性体制
+
+    **来源**：宏观层 regime 重合成（v2→v3）
+
+    **关键信息**：你依赖的『金融条件偏松·信用利差极窄·风险偏好亢奋但脆弱』已变『条件偏松·信用利差历史地板·资金面无压但临界(RRP小幅回补)·风险偏好亢奋但脆弱』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『金融条件偏松·信用利差极窄·风险偏好亢奋但脆弱』已变『条件偏松·信用利差历史地板·资金面无压但临界(RRP小幅回补)·风险偏好亢奋但脆弱』(regime
+    v2→v3)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-01T04:04:55.432463+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: ae2195f6d1cc
+  slug: pinduoduo
+  variant: opus4.8
+  kind: price
+  locator: buy_box
+  proposed_value: accumulate
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-15 价格破位:跌入买入框
+
+    **来源**:market_data 自动行情
+
+    **关键信息**:现价 84.5（2026-07-14）落入 **accumulate** 区间（强买≤75 / 可建仓 75-100）
+
+    **对已有判断的影响**:触及预设买入区,需按 position_framework 复核建仓
+
+    **当前判断更新**:维持原判断,价格信号待人工确认'
+  rationale: 现价 84.5 落入 accumulate（零 LLM 价格判定）
+  requires_thesis_review: false
+  status: awaiting_confirm
+  created_at: '2026-07-14T22:09:34.500210+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false

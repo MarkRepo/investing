@@ -3,8 +3,8 @@ display_name: 贵州茅台
 type: company
 created: '2026-06-07T00:22:48.391437+00:00'
 status: active
-stage: 00-init
-canonical: false
+stage: 04-post-synthesis
+canonical: true
 parent_topic: cn-premium-baijiu
 monitoring_tier: dormant
 concepts: []
@@ -21,24 +21,366 @@ scope:
   - 批价
   - 直营
   - 分红回购
-outputs_state: {}
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+outputs_state:
+  thesis_v0:
+    version: 0
+    last_updated: '2026-07-01T03:33:41.291710+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  00_primer:
+    version: 1
+    last_updated: '2026-07-01T06:49:46.562565+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-04e7ce
+    - mat-0ea1fa
+    - mat-28bd36
+    - mat-29efa2
+    - mat-2da927
+    - mat-3ec7c6
+    - mat-42827f
+    - mat-4e6618
+    - mat-5f9912
+    - mat-5fb934
+    - mat-6984ab
+    - mat-767315
+    - mat-923266
+    - mat-959a57
+    - mat-9c305d
+    - mat-a45f30
+    - mat-b931b3
+    - mat-bba278
+    - mat-dbaa5f
+    - mat-e5d2c0
+    - mat-f18803
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-07-01T07:43:33.058436+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-005273
+    - mat-04e7ce
+    - mat-0ea1fa
+    - mat-135baf
+    - mat-28bd36
+    - mat-29efa2
+    - mat-2da927
+    - mat-3ec7c6
+    - mat-42827f
+    - mat-4e6618
+    - mat-5195d0
+    - mat-5f9912
+    - mat-5fb934
+    - mat-67bdcc
+    - mat-6984ab
+    - mat-767315
+    - mat-923266
+    - mat-959a57
+    - mat-9c305d
+    - mat-a45f30
+    - mat-b72691
+    - mat-b931b3
+    - mat-bba278
+    - mat-dbaa5f
+    - mat-e5d2c0
+    - mat-f18803
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-07-01T07:44:43.673162+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-005273
+    - mat-04e7ce
+    - mat-0ea1fa
+    - mat-135baf
+    - mat-28bd36
+    - mat-29efa2
+    - mat-2da927
+    - mat-3ec7c6
+    - mat-42827f
+    - mat-4e6618
+    - mat-5195d0
+    - mat-5f9912
+    - mat-5fb934
+    - mat-67bdcc
+    - mat-6984ab
+    - mat-767315
+    - mat-923266
+    - mat-959a57
+    - mat-9c305d
+    - mat-a45f30
+    - mat-b72691
+    - mat-b931b3
+    - mat-bba278
+    - mat-dbaa5f
+    - mat-e5d2c0
+    - mat-f18803
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-07-01T07:31:46.795784+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
 parent_materials: []
 next_actions:
-- 运行 workflow 01-build-roadmap
-user_todos: []
+- 05-critic request-rewrite 已本对话内续跑完：ring②纳入36家卖方共识+r敏感性+解估值锚矛盾；ring④应答开瓶率×批价企稳致命一击+重估EV+11.6%
+- c_investment_case v2 + 07_decision_kit v2 已fresh；00_primer保留stale(critic未faultprimer,5条决策层web料非入门必要,重生成时可纳入)
+- 说「评审 cn-kweichow-moutai-600519」再跑一轮05复评(可换模型增强独立性)；或说「监控」进06
+user_todos:
+- task: 卖方2026-2028营收/EPS一致预期+目标价(环②④consensus)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3ec7c6
+  - mat-767315
+  - mat-bba278
+  last_fetch_note: 共享料/prescan 覆盖 3 份
+- task: 2013-2015调整期茅台估值/批价/股价底部镜鉴(环⑤historical-mirror)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  - K5
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-04e7ce
+  - mat-9c305d
+  - mat-b931b3
+  last_fetch_note: 共享料/prescan 覆盖 3 份
+- task: 飞天散瓶/原箱批价监测序列(K2价盘)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-29efa2
+  - mat-42827f
+  - mat-4e6618
+  last_fetch_note: 共享料/prescan 覆盖 3 份
+- task: 稳态毛利率/盈利中枢:2025年报+2026Q1+深度研报(K3命门)
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-959a57
+  - mat-a45f30
+  - mat-bba278
+  - mat-f18803
+  last_fetch_note: 共享料/prescan 覆盖 4 份
+- task: 管理层/资本配置史:分红回购增持轨迹(mgmt-capital-alloc)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-28bd36
+  - mat-2da927
+  - mat-5fb934
+  - mat-923266
+  last_fetch_note: 共享料/prescan 覆盖 4 份
+- task: i茅台直营化/需求置换/月活运营数据(K5需求天花板)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0ea1fa
+  - mat-923266
+  - mat-959a57
+  last_fetch_note: 共享料/prescan 覆盖 3 份
+- task: 2026Q2/Q3营收兑现持续性验证(K1拐点)-实际财报~08/10披露属06监控
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-bba278
+  - mat-f18803
+  last_fetch_note: 共享料/prescan 覆盖 2 份
+- task: 资料提取(锚点优先)完成：21份决策链锚点已处理，gap无缺口；126份近重复料延后
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 2份正文缺失待重抓(mat-0ea1fa i茅台深度/mat-767315 卖方研报PDF)——数据已由兄弟锚点覆盖,非阻塞
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 04投资Case已生成(primer+6环case+sidecar+thesis_v1 强度6.5,EV+11%);chain-critic修断链完成
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: false
   cadence: daily
-critic: null
+critic:
+  verdict: request-rewrite
+  summary: 独立空头三强攻击(r=9%偏低/估值锚内部矛盾、毛利89.76%逼近85%kill、开瓶率×批价企稳=投机虚增)。Step6.5 web兜底推翻consensus单线承重(真实36家均值目标1841/25买入)并部分反驳致命一击(官方3/31提价+i茅台秒光)。方向经验证反被reinforced，但ring②/④两处分析缺口：真实consensus分布未消化+r敏感性/估值锚矛盾未解→重写c_investment_case
+    ring②④
+  at: '2026-07-01T07:31:46.782698+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
 decomposition:
-  current_version: null
-  last_updated: null
-  history: []
+  current_version: 1
+  last_updated: '2026-07-01T06:44:14.779799+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-01T03:30:10.034774+00:00'
+    summary: 命门1=稳态盈利中枢(直营化+出厂价下调后毛利率落点,中); 命门2=飞天批价与金融属性(能否守1600不倒挂,中); 命门3=拐点真伪(蓄水池消失后动销式增长可持续性,低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-01T06:44:14.779808+00:00'
+    summary: 命门1稳态盈利中枢(中,毛利91.2%→89.76%仍降待验);命门2批价与金融属性(中,破1499后企稳~1630但结构vs周期未定);命门3拐点真伪(低→中,Q1+6.54%回正但增收不增利)
+    convergence_status: open
+    changelog: 命门3置信度低→中(Q1回正);环①新增掌舵人track record减分;环②定价定量化(17.9x+Gordon+可比);环④新增EV+22.3%;环⑤新增日本化镜鉴;primer目标无增删
 thesis:
-  current_version: 0
-  last_updated: '2026-06-07T00:23:56.189388+00:00'
+  current_version: 1
+  last_updated: '2026-07-01T06:48:18.825265+00:00'
   history:
   - version: 0
     stage_set_at: 00-init-from-parent
     set_at: '2026-06-07T00:23:56.189481+00:00'
     summary: 高端确定性最高的左侧标的：组内唯一Q1营收转正+650亿分红/60亿注销式回购托底；但Q1合同负债-62%/经现靠口径，企稳含金量待验证，市场已付确定性溢价忌追高。强度5.5
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-01T03:28:14.533211+00:00'
+    summary: 确定性最强+估值历史低位(PE20.3x/近十年9%分位)左侧标的：~4.5%股东回报硬底，但2025首现双降、批价2013来首次倒挂、直营化+出厂价下调压毛利，稳态盈利中枢待验；持有/逢弱左侧增持不追高。强度6.0
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-01T06:44:14.754636+00:00'
+    summary: 现价1185(PE17.9x/近10年9%分位)已largely price-in增长结束+续跌;~4.5%股东回报硬底+供给刚性+批价企稳1499上方构成左侧安全边际,但稳态盈利中枢/金融属性/治理三命门待Q2Q3裁判;EV~+22%,逢弱左侧增持不追高。强度6.5
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-01T06:48:18.825429+00:00'
+    summary: 现价1185(PE17.9x/近10年9%分位)已largely price-in增长结束+续跌;~4.5%股东回报硬底+供给刚性+批价企稳1499上方构成左侧安全边际,但稳态盈利中枢/金融属性/治理三命门待Q2Q3裁判;EV~+11%(含12%日本化结构性深空尾部),逢弱左侧分批增持不追高留弹药。强度6.5
+suggested_drilldowns:
+- question: 补≥2家券商独立目标价/EPS预测分布(现仅华创单深度2030,mat-767315正文缺失),把"合理20-22x"从训练框架升级为市场交叉验证
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-07-01T06:48:18.844254+00:00'
+- question: 陈华空降后首份完整季度的执行动作/战略表态跟踪,把掌舵人"未经检验"往"初步可判"推(终局管理层维度定性)
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-07-01T06:48:18.844254+00:00'
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-01T03:33:41.296775+00:00'
+  exited_at: '2026-07-01T05:59:17.099697+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-01T05:59:17.099697+00:00'
+  exited_at: '2026-07-01T06:20:37.813439+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-01T06:20:37.813439+00:00'
+  exited_at: '2026-07-01T06:48:31.619996+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-01T06:48:31.619996+00:00'
+  exited_at: '2026-07-01T07:43:33.091552+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-01T07:43:33.091552+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

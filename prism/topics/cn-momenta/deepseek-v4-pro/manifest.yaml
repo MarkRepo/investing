@@ -1,0 +1,931 @@
+slug: cn-momenta
+variant: deepseek-v4-pro
+updated: '2026-06-30T00:15:56.106580+00:00'
+materials:
+- id: mat-c40eb1
+  filename: 2026-06-29_momenta开启招股-拟募资59亿港元-7月8日上市-gic奔驰比亚迪认购.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.496193+00:00'
+  processed: false
+  notes: query='Momenta 06880 HKEX IPO 发行价 估值 基石'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Momenta 06880 HKEX IPO 发行价 估值 基石
+    url: https://m.sohu.com/a/1043040027_430392
+    domain: m.sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:19:07.495070+00:00'
+    stale_at: '2026-07-29T16:19:07.495070+00:00'
+    expire_at: '2026-09-27T16:19:07.495070+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c91ce7
+  filename: 2026-06-29_momenta-06880-hk-启动招股-发售价295-6港元-募资58-94亿.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.500111+00:00'
+  processed: false
+  notes: query='Momenta 06880 HKEX IPO 发行价 估值 基石' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 06880 HKEX IPO 发行价 估值 基石
+    url: https://www.163.com/dy/article/L0J9UK0A0552LIRB.html
+    domain: 163.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.499028+00:00'
+    stale_at: '2026-07-29T16:19:07.499028+00:00'
+    expire_at: '2026-09-27T16:19:07.499028+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-36002d
+  filename: 2026-06-29_momenta香港ipo基石投资者据悉包括梅赛德斯-奔驰和新加坡gic.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.503996+00:00'
+  processed: false
+  notes: query='Momenta 06880 HKEX IPO 发行价 估值 基石' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 06880 HKEX IPO 发行价 估值 基石
+    url: https://wap.eastmoney.com/a/202606273785189473.html
+    domain: wap.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.502775+00:00'
+    stale_at: '2026-07-29T16:19:07.502775+00:00'
+    expire_at: '2026-09-27T16:19:07.502775+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-12ba00
+  filename: 2026-06-29_毛利率两年翻四倍-momenta这套赚钱魔术能变多久.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.507832+00:00'
+  processed: false
+  notes: query='Momenta 魔门塔 2025 2026 收入 毛利率 亏损 财务'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Momenta 魔门塔 2025 2026 收入 毛利率 亏损 财务
+    url: https://wallstreetcn.com/articles/3775308
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:19:07.506234+00:00'
+    stale_at: '2026-07-29T16:19:07.506234+00:00'
+    expire_at: '2026-09-27T16:19:07.506234+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3176b0
+  filename: 2026-06-29_momenta通过港交所聆讯-去年经调整净亏3亿-毛利率增至71-6.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.513353+00:00'
+  processed: false
+  notes: query='Momenta 魔门塔 2025 2026 收入 毛利率 亏损 财务' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 魔门塔 2025 2026 收入 毛利率 亏损 财务
+    url: https://m.thepaper.cn/newsDetail_forward_33444190
+    domain: m.thepaper.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.511504+00:00'
+    stale_at: '2026-07-29T16:19:07.511504+00:00'
+    expire_at: '2026-09-27T16:19:07.511504+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4382b3
+  filename: 2026-06-29_momenta通过港交所聆讯-2025年经营亏损3亿元.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.519040+00:00'
+  processed: false
+  notes: query='Momenta 魔门塔 2025 2026 收入 毛利率 亏损 财务'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Momenta 魔门塔 2025 2026 收入 毛利率 亏损 财务
+    url: https://companies.caixin.com/m/2026-06-23/102456782.html
+    domain: companies.caixin.com
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:19:07.516612+00:00'
+    stale_at: '2026-07-29T16:19:07.516612+00:00'
+    expire_at: '2026-09-27T16:19:07.516612+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8b1265
+  filename: 2026-06-29_momenta通过港交所聆讯-2025年前5大客户收入占比62-6.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.526058+00:00'
+  processed: false
+  notes: query='Momenta 魔门塔 2025 2026 收入 毛利率 亏损 财务' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 魔门塔 2025 2026 收入 毛利率 亏损 财务
+    url: http://www.paicaijing314.com/news/1364528.html
+    domain: paicaijing314.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.523641+00:00'
+    stale_at: '2026-07-29T16:19:07.523641+00:00'
+    expire_at: '2026-09-27T16:19:07.523641+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-40e5b5
+  filename: 2026-06-29_momenta通过港交所聆讯-明星股东云集.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.533511+00:00'
+  processed: false
+  notes: query='Momenta 比亚迪 智驾 量产 定点 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Momenta 比亚迪 智驾 量产 定点 2025 2026
+    url: https://www.stcn.com/article/detail/3975430.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:19:07.530631+00:00'
+    stale_at: '2026-07-29T16:19:07.530631+00:00'
+    expire_at: '2026-09-27T16:19:07.530631+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-116f0e
+  filename: 2026-06-29_千億估值的智駕獨角獸-momenta赴港ipo背後的格局與隱憂.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.543078+00:00'
+  processed: false
+  notes: query='Momenta 比亚迪 智驾 量产 定点 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 比亚迪 智驾 量产 定点 2025 2026
+    url: https://www.bitauto.hk/zh/news/20031000231.html
+    domain: bitauto.hk
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.539718+00:00'
+    stale_at: '2026-07-29T16:19:07.539718+00:00'
+    expire_at: '2026-09-27T16:19:07.539718+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2e4a4d
+  filename: 2026-06-29_momenta-r7世界模型量产首发-端到端智驾从看见走向理解.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.553671+00:00'
+  processed: false
+  notes: query='Momenta 比亚迪 智驾 量产 定点 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 比亚迪 智驾 量产 定点 2025 2026
+    url: http://auto.news18a.com/news/storys_262933.html
+    domain: auto.news18a.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.549503+00:00'
+    stale_at: '2026-07-29T16:19:07.549503+00:00'
+    expire_at: '2026-09-27T16:19:07.549503+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dec66f
+  filename: 2026-06-29_momenta全明星车型阵容齐聚广州车展.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.565736+00:00'
+  processed: false
+  notes: query='Momenta 比亚迪 智驾 量产 定点 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 比亚迪 智驾 量产 定点 2025 2026
+    url: https://www.momenta.ai/article/366.html
+    domain: momenta.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.561483+00:00'
+    stale_at: '2026-07-29T16:19:07.561483+00:00'
+    expire_at: '2026-09-27T16:19:07.561483+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-758332
+  filename: 2026-06-29_中汽协2025城市noa报告-momenta第三方供应商市占率超60.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.579476+00:00'
+  processed: false
+  notes: query='Momenta 端到端 自动驾驶 竞争对手 市场份额 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 端到端 自动驾驶 竞争对手 市场份额 2025
+    url: https://cn.chinadaily.com.cn/a/202601/15/WS69688dbaa310942cc499b5fa.html
+    domain: cn.chinadaily.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.574893+00:00'
+    stale_at: '2026-07-29T16:19:07.574893+00:00'
+    expire_at: '2026-09-27T16:19:07.574893+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d73263
+  filename: 2026-06-29_三年亏损超90亿元-momenta需要更多安全感.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.592840+00:00'
+  processed: false
+  notes: query='Momenta 端到端 自动驾驶 竞争对手 市场份额 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 端到端 自动驾驶 竞争对手 市场份额 2025
+    url: https://app.myzaker.com/news/article.php?pk=6a3e5ff2b15ec03d95249e1a
+    domain: app.myzaker.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.587996+00:00'
+    stale_at: '2026-07-29T16:19:07.587996+00:00'
+    expire_at: '2026-09-27T16:19:07.587996+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-09caee
+  filename: 2026-06-29_momenta曹旭东-智能驾驶竞争-两年内定格局.md
+  source_type: web-search
+  added: '2026-06-29T16:19:07.606583+00:00'
+  processed: false
+  notes: query='Momenta 端到端 自动驾驶 竞争对手 市场份额 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 端到端 自动驾驶 竞争对手 市场份额 2025
+    url: https://letschuhai.com/05ca4dea
+    domain: letschuhai.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:07.601577+00:00'
+    stale_at: '2026-07-29T16:19:07.601577+00:00'
+    expire_at: '2026-09-27T16:19:07.601577+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-29ccf7
+  filename: 2026-06-29_momenta港股闯关-物理ai第一股即将登场.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.552034+00:00'
+  processed: false
+  notes: query='Momenta 奔驰 丰田 通用 智驾 合作 量产 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 奔驰 丰田 通用 智驾 合作 量产 进展
+    url: https://www.bjnews.com.cn/detail/1782729095169621.html
+    domain: bjnews.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:31.545692+00:00'
+    stale_at: '2026-07-29T16:19:31.545692+00:00'
+    expire_at: '2026-09-27T16:19:31.545692+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f2ca25
+  filename: 2026-06-29_momenta荣获技术开发-丰采奖-推动一汽丰田智能化进程.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.568236+00:00'
+  processed: false
+  notes: query='Momenta 奔驰 丰田 通用 智驾 合作 量产 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 奔驰 丰田 通用 智驾 合作 量产 进展
+    url: https://www.momenta.ai/article/255.html
+    domain: momenta.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:31.562394+00:00'
+    stale_at: '2026-07-29T16:19:31.562394+00:00'
+    expire_at: '2026-09-27T16:19:31.562394+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-74ad85
+  filename: 2026-06-29_momenta赢得bba大满贯-始于奔驰严选.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.585504+00:00'
+  processed: false
+  notes: query='Momenta 奔驰 丰田 通用 智驾 合作 量产 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta 奔驰 丰田 通用 智驾 合作 量产 进展
+    url: https://www.autobit.xyz/news/4524.html
+    domain: autobit.xyz
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:31.579157+00:00'
+    stale_at: '2026-07-29T16:19:31.579157+00:00'
+    expire_at: '2026-09-27T16:19:31.579157+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a19825
+  filename: 2026-06-29_中美robotaxi狂飙量产-自动驾驶进入deepseek时刻.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.605861+00:00'
+  processed: false
+  notes: query='Momenta Robotaxi 运营 车队 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta Robotaxi 运营 车队 2025 2026
+    url: https://www.automotiveworld.cn/zh-cn/_6/_0/2025/5/39.html
+    domain: automotiveworld.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:31.599118+00:00'
+    stale_at: '2026-07-29T16:19:31.599118+00:00'
+    expire_at: '2026-09-27T16:19:31.599118+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-957cc6
+  filename: 2026-06-29_上汽享道出行与momenta达成战略合作-推动前装量产robotaxi车队落沪.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.624668+00:00'
+  processed: false
+  notes: query='Momenta Robotaxi 运营 车队 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta Robotaxi 运营 车队 2025 2026
+    url: http://www.news.cn/tech/20250512/29c0aa3f66434bdaaaf1ca9b33824017/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:31.617606+00:00'
+    stale_at: '2026-07-29T16:19:31.617606+00:00'
+    expire_at: '2026-09-27T16:19:31.617606+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3455d5
+  filename: 2026-06-29_八大头部玩家近半月内连发七则进展-robotaxi赛道掀全球扩张潮.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.643075+00:00'
+  processed: false
+  notes: query='Momenta Robotaxi 运营 车队 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Momenta Robotaxi 运营 车队 2025 2026
+    url: https://m.cls.cn/detail/2143297
+    domain: m.cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:19:31.636004+00:00'
+    stale_at: '2026-07-29T16:19:31.636004+00:00'
+    expire_at: '2026-09-27T16:19:31.636004+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f0a4dc
+  filename: 2026-06-29_首批l3车型合规上路-中国自动驾驶能否迎来chatgpt时刻.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.663269+00:00'
+  processed: false
+  notes: query='中国 L3 L4 自动驾驶 法规 2025 2026 政策'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国 L3 L4 自动驾驶 法规 2025 2026 政策
+    url: https://www.stcn.com/article/detail/3559473.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:19:31.655976+00:00'
+    stale_at: '2026-07-29T16:19:31.655976+00:00'
+    expire_at: '2026-09-27T16:19:31.655976+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-272411
+  filename: 2026-06-29_l3级自动驾驶落地在即-新国标公示.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.681979+00:00'
+  processed: false
+  notes: query='中国 L3 L4 自动驾驶 法规 2025 2026 政策'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国 L3 L4 自动驾驶 法规 2025 2026 政策
+    url: https://www.cls.cn/detail/2402154
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:19:31.674710+00:00'
+    stale_at: '2026-07-29T16:19:31.674710+00:00'
+    expire_at: '2026-09-27T16:19:31.674710+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dec087
+  filename: 2026-06-29_工信部定调高级别自动驾驶-l3级产业化按下快进键.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.701344+00:00'
+  processed: false
+  notes: query='中国 L3 L4 自动驾驶 法规 2025 2026 政策'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国 L3 L4 自动驾驶 法规 2025 2026 政策
+    url: https://www.21jingji.com/article/20260115/herald/fdc6d909a6bec13fcc4cb3d12adfe368.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:19:31.693818+00:00'
+    stale_at: '2026-07-29T16:19:31.693818+00:00'
+    expire_at: '2026-09-27T16:19:31.693818+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-914b96
+  filename: 2026-06-29_ipo观察-momenta冲刺港交所-全球十大车企九家是客户-但缺乏议价能力.md
+  source_type: web-search
+  added: '2026-06-29T16:19:31.724087+00:00'
+  processed: false
+  notes: query='Momenta IPO 招股书 风险 分析 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta IPO 招股书 风险 分析 2026
+    url: http://mp.cnfol.com/53562/article/1782298823-142514917.html
+    domain: mp.cnfol.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:31.716341+00:00'
+    stale_at: '2026-07-29T16:19:31.716341+00:00'
+    expire_at: '2026-09-27T16:19:31.716341+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c157af
+  filename: 2026-06-29_momenta聆讯后资料集-招股书.md
+  source_type: web-search
+  added: '2026-06-29T16:19:53.066974+00:00'
+  processed: false
+  notes: query='Momenta IPO 招股书 风险 分析 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta IPO 招股书 风险 分析 2026
+    url: https://www1.hkexnews.hk/app/sehk/2026/108670/documents/sehk26062300175_c.pdf
+    domain: www1.hkexnews.hk
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:53.057063+00:00'
+    stale_at: '2026-07-29T16:19:53.057063+00:00'
+    expire_at: '2026-09-27T16:19:53.057063+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2ff1de
+  filename: 2026-06-29_一个飞轮两条腿-momenta的招股书讲了一个什么样的故事.md
+  source_type: web-search
+  added: '2026-06-29T16:19:53.090507+00:00'
+  processed: false
+  notes: query='Momenta IPO 招股书 风险 分析 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta IPO 招股书 风险 分析 2026
+    url: https://app.myzaker.com/news/article.php?pk=6a3e6006b15ec03d697900eb
+    domain: app.myzaker.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:19:53.081702+00:00'
+    stale_at: '2026-07-29T16:19:53.081702+00:00'
+    expire_at: '2026-09-27T16:19:53.081702+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-70376a
+  filename: 2026-06-29_momenta招股书中-被忽视的两个细节和一个预期.md
+  source_type: web-search
+  added: '2026-06-29T16:19:53.113323+00:00'
+  processed: false
+  notes: query='Momenta IPO 招股书 风险 分析 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Momenta IPO 招股书 风险 分析 2026
+    url: https://news.qq.com/rain/a/20260626A0BCUI00
+    domain: news.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:19:53.104292+00:00'
+    stale_at: '2026-07-29T16:19:53.104292+00:00'
+    expire_at: '2026-09-27T16:19:53.104292+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b65c0d
+  filename: 2026-06-29_momenta-w-06880-6月29日至7月3日招股-拟全球发售1993-83万股.md
+  source_type: web-search
+  added: '2026-06-29T16:20:39.955004+00:00'
+  processed: false
+  notes: query='Momenta 06880 最新 公告 事件 2026年6月 7月'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Momenta 06880 最新 公告 事件 2026年6月 7月
+    url: https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-06-29/doc-inieznpi0344551.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:20:39.943773+00:00'
+    stale_at: '2026-07-29T16:20:39.943773+00:00'
+    expire_at: '2026-09-27T16:20:39.943773+00:00'
+    triggered_by: 00-prescan
+- id: mat-17d88d
+  filename: 2025_HK09660_annual_2026-04-30_HORIZONROBOT-W.pdf
+  source_type: annual-report
+  added: '2026-06-29T16:23:51.425013+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — HORIZONROBOT-W
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-df5080
+  filename: 2026_PONY_6-K-earnings_2026-06-10.htm
+  source_type: quarterly-report
+  added: '2026-06-29T16:24:02.300050+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Pony AI Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-636431
+  filename: 2025_PONY_20-F_2026-04-22.htm
+  source_type: annual-report
+  added: '2026-06-29T16:24:03.520804+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Pony AI Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-690006
+  filename: sec/2025_PONY_20-F_2026-04-22/item_3_key_info.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:03.920982+00:00'
+  processed: true
+  notes: split from 2025_PONY_20-F_2026-04-22.htm (3)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-636431
+  sec_section: item_3_key_info
+- id: mat-5f0b68
+  filename: sec/2025_PONY_20-F_2026-04-22/item_4_business.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:03.938100+00:00'
+  processed: true
+  notes: split from 2025_PONY_20-F_2026-04-22.htm (4)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-636431
+  sec_section: item_4_business
+- id: mat-36233b
+  filename: sec/2025_PONY_20-F_2026-04-22/item_5_mda.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:03.955819+00:00'
+  processed: true
+  notes: split from 2025_PONY_20-F_2026-04-22.htm (5)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-636431
+  sec_section: item_5_mda
+- id: mat-205a7c
+  filename: sec/2025_PONY_20-F_2026-04-22/item_11_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:03.973770+00:00'
+  processed: true
+  notes: split from 2025_PONY_20-F_2026-04-22.htm (11)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-636431
+  sec_section: item_11_quant_risk
+- id: mat-fbe9d7
+  filename: sec/2025_PONY_20-F_2026-04-22/item_18_financial.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:03.992213+00:00'
+  processed: true
+  notes: split from 2025_PONY_20-F_2026-04-22.htm (18)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-636431
+  sec_section: item_18_financial
+- id: mat-666373
+  filename: 2026_WRD_6-K-earnings_2026-06-29.htm
+  source_type: quarterly-report
+  added: '2026-06-29T16:24:07.245145+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — WeRide Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-506973
+  filename: 2025_WRD_20-F_2026-04-23.htm
+  source_type: annual-report
+  added: '2026-06-29T16:24:11.600080+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — WeRide Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-986f3c
+  filename: sec/2025_WRD_20-F_2026-04-23/item_3_key_info.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:12.051159+00:00'
+  processed: true
+  notes: split from 2025_WRD_20-F_2026-04-23.htm (3)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-506973
+  sec_section: item_3_key_info
+- id: mat-2acc22
+  filename: sec/2025_WRD_20-F_2026-04-23/item_4_business.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:12.069928+00:00'
+  processed: true
+  notes: split from 2025_WRD_20-F_2026-04-23.htm (4)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-506973
+  sec_section: item_4_business
+- id: mat-478b0c
+  filename: sec/2025_WRD_20-F_2026-04-23/item_5_mda.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:12.089394+00:00'
+  processed: true
+  notes: split from 2025_WRD_20-F_2026-04-23.htm (5)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-506973
+  sec_section: item_5_mda
+- id: mat-f0db64
+  filename: sec/2025_WRD_20-F_2026-04-23/item_11_quant_risk.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:12.109187+00:00'
+  processed: true
+  notes: split from 2025_WRD_20-F_2026-04-23.htm (11)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-506973
+  sec_section: item_11_quant_risk
+- id: mat-e24f1c
+  filename: sec/2025_WRD_20-F_2026-04-23/item_18_financial.md
+  source_type: sec-section
+  added: '2026-06-29T16:24:12.156455+00:00'
+  processed: true
+  notes: split from 2025_WRD_20-F_2026-04-23.htm (18)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-506973
+  sec_section: item_18_financial
+- id: mat-264896
+  filename: 2026-06-29_曹旭东-momenta创始人-ceo-完整履历及创业经历.md
+  source_type: web-search
+  added: '2026-06-29T16:28:21.604067+00:00'
+  processed: true
+  notes: query='曹旭东 Momenta 创始人 履历 清华 微软 商汤 创业 管理团队' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 曹旭东 Momenta 创始人 履历 清华 微软 商汤 创业 管理团队
+    url: https://www.jili20.com/article/1989119894559993858
+    domain: jili20.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:28:21.591525+00:00'
+    stale_at: '2026-07-29T16:28:21.591525+00:00'
+    expire_at: '2026-09-27T16:28:21.591525+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-48a1d3
+  filename: 2026-06-29_21对话-momenta曹旭东-大逃杀时刻-中国智驾公司只剩3家.md
+  source_type: web-search
+  added: '2026-06-29T16:28:21.636073+00:00'
+  processed: true
+  notes: query='曹旭东 Momenta 创始人 履历 清华 微软 商汤 创业 管理团队'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 曹旭东 Momenta 创始人 履历 清华 微软 商汤 创业 管理团队
+    url: https://www.21jingji.com/article/20250124/herald/d9e423de57a581925c84e7ac7f333fb0.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:28:21.623448+00:00'
+    stale_at: '2026-07-29T16:28:21.623448+00:00'
+    expire_at: '2026-09-27T16:28:21.623448+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-62846c
+  filename: 2026-06-29_对话曹旭东-创业8年-为何选择-一个飞轮两条腿-战略.md
+  source_type: web-search
+  added: '2026-06-29T16:28:21.668687+00:00'
+  processed: true
+  notes: query='曹旭东 Momenta 创始人 履历 清华 微软 商汤 创业 管理团队'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 曹旭东 Momenta 创始人 履历 清华 微软 商汤 创业 管理团队
+    url: https://finance.sina.com.cn/tech/roll/2025-03-05/doc-inennutf9766757.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:28:21.656106+00:00'
+    stale_at: '2026-07-29T16:28:21.656106+00:00'
+    expire_at: '2026-09-27T16:28:21.656106+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-432c7b
+  filename: 2026-06-29_robotaxi-cost-per-mile-2026-0-18-target-breakdown.md
+  source_type: web-search
+  added: '2026-06-29T16:28:21.707625+00:00'
+  processed: true
+  notes: query='Waymo Robotaxi unit economics cost per mile 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Waymo Robotaxi unit economics cost per mile 2025 2026
+    url: https://sdvguru.com/blog/robotaxi-cost-per-mile-2026-tesla-0-18-target
+    domain: sdvguru.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:28:21.694744+00:00'
+    stale_at: '2026-07-29T16:28:21.694744+00:00'
+    expire_at: '2026-09-27T16:28:21.694744+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-16b021
+  filename: 2026-06-29_2026-the-first-year-of-robotaxis-waymo-tesla-uber三.md
+  source_type: web-search
+  added: '2026-06-29T16:28:21.745232+00:00'
+  processed: true
+  notes: query='Waymo Robotaxi unit economics cost per mile 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Waymo Robotaxi unit economics cost per mile 2025 2026
+    url: https://note.com/jrs1188/n/n54d1877f9e20
+    domain: note.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:28:21.732192+00:00'
+    stale_at: '2026-07-29T16:28:21.732192+00:00'
+    expire_at: '2026-09-27T16:28:21.732192+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a6dcac
+  filename: 2026-06-29_千亿独角兽即将ipo-momenta估值90亿美元-募资约10亿美元.md
+  source_type: web-search
+  added: '2026-06-29T16:28:21.786625+00:00'
+  processed: true
+  notes: query='Momenta IPO 首覆 研报 估值 目标价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Momenta IPO 首覆 研报 估值 目标价 2026
+    url: https://finance.sina.cn/2026-06-26/detail-iniesqzy0596085.d.html
+    domain: finance.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-06-29T16:28:21.772910+00:00'
+    stale_at: '2026-07-29T16:28:21.772910+00:00'
+    expire_at: '2026-09-27T16:28:21.772910+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-75eb22
+  filename: 2026-06-29_momenta港股ipo-物理ai第一股的估值叙事与智驾赛道分析.md
+  source_type: web-search
+  added: '2026-06-29T16:28:21.822863+00:00'
+  processed: true
+  notes: query='Momenta IPO 首覆 研报 估值 目标价 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Momenta IPO 首覆 研报 估值 目标价 2026
+    url: https://www.sohu.com/a/1041319946_100195095
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-06-29T16:28:21.808779+00:00'
+    stale_at: '2026-07-29T16:28:21.808779+00:00'
+    expire_at: '2026-09-27T16:28:21.808779+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-aa82d8
+  filename: 2026_HK06880_prospectus_2026-06-29_MOMENTA-W.pdf
+  source_type: prospectus
+  added: '2026-06-29T17:59:54.997985+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — MOMENTA-W
+  mineru_state: done
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-21332f
+  filename: 2026-03-04_东吴证券-2026年智驾平权之车企智驾方案梳理.md
+  source_type: industry-research
+  added: '2026-06-29T18:01:14.427380+00:00'
+  processed: true
+  notes: 东吴证券深度研报——比亚迪天神之眼ABC三级方案及车企智驾供应商全景。关键发现：天神之眼A/B用Momenta，C自研；比亚迪杨冬生表态两条腿走路
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  confidence: 0.9
+- id: mat-11a1c2
+  filename: 2025-03-31_华为引望估值1150亿-工商变更与财务数据.md
+  source_type: industry-research
+  added: '2026-06-29T18:01:14.451757+00:00'
+  processed: true
+  notes: 华为引望估值1150亿(约158亿美元)工商变更完成。阿维塔+赛力斯各115亿购10%。2024H1首盈22.31亿净利。关键竞对估值锚定
+  mineru_state: not_needed
+  addresses:
+  - K3
+  rings:
+  - bull-bear
+  - valuation-anchor
+  confidence: 0.9
+- id: mat-f997d9
+  filename: 2026-06_城市NOA市场份额更新-Momenta华为元戎三强.md
+  source_type: industry-research
+  added: '2026-06-29T18:01:14.475093+00:00'
+  processed: true
+  notes: 2026H1城市NOA市场份额汇总——CIC灼识(Momenta 65%)、佐思(三强>93%)、经济观察报(元戎追赶)等多源交叉验证。含2026年1月分价位段市占率拆解
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  confidence: 0.9
+- id: mat-12eadb
+  filename: historical-mirror-argo-cruise-uber-atg-failures.md
+  source_type: industry-research
+  added: '2026-06-29T18:03:53.087090+00:00'
+  processed: true
+  notes: 历史失败镜鉴——Argo AI(2016-2022)福特/大众36亿美元后关闭；Cruise(2013-2024)GM 100亿美元后关闭；Uber
+    ATG(2015-2020)致命事故后出售。共同教训：纯L4烧钱不可持续、主机厂耐心有限、安全事件可瞬间清零
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  rings:
+  - bull-bear
+  - historical-mirror
+  confidence: 0.9
+- id: mat-657deb
+  filename: historical-mirror-mobileye-cycle.md
+  source_type: industry-research
+  added: '2026-06-29T18:03:53.112886+00:00'
+  processed: true
+  notes: 历史镜鉴——Mobileye从独立供应商(1999)→Intel 153亿美元收购(2017)→再IPO(2022)→市值暴跌的完整周期。对Momenta三个启示：软硬一体趋势、被收购风险、估值泡沫风险
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  rings:
+  - historical-mirror
+  - valuation-anchor
+  confidence: 0.9

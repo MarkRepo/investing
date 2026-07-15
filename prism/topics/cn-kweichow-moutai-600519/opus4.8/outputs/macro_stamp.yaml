@@ -1,0 +1,18 @@
+as_of_regime_version: 3
+regime_composite: 人民币内需防御票：主看国内流动性(宽货币favor)与风险偏好(走弱hurt)，美元暴露低、对美长端利率间接；本轮美长端牛平对其基本无影响
+depends_on_states:
+- conclusion: fx_cny
+  state: 人民币企稳(favor)
+  role: confirming
+- conclusion: liquidity_cn
+  state: 中国宽货币(favor)/紧信用(hurt)拉锯
+  role: load_bearing
+- conclusion: risk_appetite
+  state: 风险偏好走弱(hurt)
+  role: load_bearing
+discount_rate: null
+slug: cn-kweichow-moutai-600519
+variant: opus4.8
+stamped_at: '2026-07-01T06:34:49.997630+00:00'
+stale: false
+stale_reason: null

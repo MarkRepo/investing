@@ -1,0 +1,143 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-momenta
+created: '2026-06-30'
+primer_scope: >
+  L1/L2 坍缩为 primer scope：自动驾驶 L0-L5 分级标准、端到端大模型技术演进、中国智驾产业链
+  结构、Momenta「一个飞轮两条腿」战略逻辑、收入模式拆解（许可 vs 技术开发）、可比公司商业
+  模式对比（华为/地平线/Pony/WeRide）、客户图谱、Robotaxi 单位经济、L3 法规时间线、
+  纯软件 vs 软硬一体争议。以上由 00_primer 全权承担，roadmap 集中 L3+L4。
+learning_track:
+  l3_debates:
+    - question: "纯软件方案商的护城河争议：Momenta 纯算法路线 vs 华为/地平线软硬一体，谁的终局胜率更高？纯软件的高毛利能否在价格战中持续？"
+      source_hint: 华为 ADS 4.0 技术白皮书、地平线征程 6 芯片发布、行业深度研报（中金/中信）软硬一体专题
+      addresses: [K2, K3]
+    - question: "第三方方案商 TAM 收缩风险：比亚迪（天神之眼）、上汽（零束）、奔驰（在华 2000+ 自研团队）都在自研——「不自研的车企」这个 TAM 在 2026-2028 年是扩大还是缩小？"
+      source_hint: 各车企技术发布会/IR、招股书客户集中度趋势、灼识咨询行业报告
+      addresses: [K2]
+    - question: "估值定价合理性：Momenta 75-90 亿美元 vs 地平线 1060 亿港元 vs 华为引望 1150 亿人民币——Momenta 的市占率溢价是否合理？不同商业模式应给不同估值倍数吗？"
+      source_hint: 地平线 2025 年报、赛力斯/长安公告引望估值细节、Momenta 招股书财务对比
+      addresses: [K1, K3]
+    - question: "智驾「白菜价」趋势：比亚迪将城市 NOA 下放至 10 万级车型，单车许可费从千元级向百元级下探——Momenta 的「量增价跌」能否实现总收入持续高增长？"
+      source_hint: 比亚迪天神之眼 C 方案定价/搭载量、Momenta 招股书 ASP 趋势、行业定价数据
+      addresses: [K1]
+    - question: "Robotaxi 商业化节奏分歧：前装量产 Robotaxi（Momenta/Uber/享道）vs 专门 Robotaxi（Waymo/Cruise）——谁的路径更快实现正向单位经济？Momenta 轻资产模式是否真的更低成本？"
+      source_hint: Waymo 运营数据、Uber/Momenta 慕尼黑合作细节、享道 Robotaxi 上海运营数据
+      addresses: [K4]
+  l4_hunting:
+    - question: "Momenta 2026H2 许可收入增速能否持续 >50%？招股书 2025 年许可收入 9.68 亿（+180% YoY），2026H1 的隐含增速是多少？市场对 2026 全年许可收入的隐含预期是多少？"
+      addresses: [K1]
+      search_keywords: ["Momenta 许可收入 2026", "Momenta 半年报 业绩", "06880 招股书 财务预测"]
+      source_hint: 招股书管理层讨论章节、2026 年 8 月首份半年报、卖方首覆财务模型
+    - question: "比亚迪天神之眼与 Momenta 的真实关系——同一车型上是否两套方案并存？2026 年比亚迪新车型中 Momenta 方案占比是升是降？"
+      addresses: [K2]
+      search_keywords: ["比亚迪 天神之眼 Momenta", "比亚迪 智驾 供应商 2026", "天神之眼 技术路线 自研"]
+      source_hint: 比亚迪新车公告/配置表、汽车之家/懂车帝车型智驾方案标注、财经媒体深度报道
+    - question: "华为 ADS 2026 年新定点 vs Momenta 新定点——谁在抢谁的客户？华为 2026 年新增了哪些主机厂定点？Momenta 失去了哪些客户？"
+      addresses: [K3]
+      search_keywords: ["华为 ADS 定点 2026", "Momenta 新客户 定点 2026", "城市 NOA 市场份额 2026"]
+      source_hint: 各车企技术发布会/定点公告、中汽协 2026H1 报告、灼识咨询更新
+    - question: "Momenta/Uber 慕尼黑 Robotaxi 2026 年运营数据——车队规模、日订单量、单车日收入、乘客评分？是否产生可量化的收入贡献？"
+      addresses: [K4]
+      search_keywords: ["Uber Momenta 慕尼黑 Robotaxi", "享道出行 Momenta 上海 运营", "Momenta Robotaxi 收入 2026"]
+      source_hint: Uber 季度更新/Momenta 自愿公告、享道出行运营数据、德国/上海交通部门许可文件
+    - question: "L3 法规落地时间线与 Momenta 首批 L3 准入概率——工信部 2027 年 7 月目标是否可靠？Momenta 是否有车型进入 L3 准入测试？"
+      addresses: [K5]
+      search_keywords: ["L3 自动驾驶法规 2027", "Momenta L3 准入", "工信部 自动驾驶 准入 车型"]
+      source_hint: 工信部公告、Momenta 合作车企 L3 测试公告（上汽/奔驰/丰田）、行业政策跟踪
+material_priority:
+  tier1:
+    - title: "Momenta HKEX 聆讯后资料集（招股书）PDF 全文精读——财务章节、收入拆分、风险因素、管理层讨论"
+      type: prospectus
+      ticker: "HKEX_06880"
+      source: "HKEX 披露易 https://www1.hkexnews.hk/"
+      why: "公司研究最核心一手资料，覆盖 A 合同 biz-moat-unit-econ / financial-arc / mgmt-capital-alloc / bull-bear"
+      addresses: [K1, K2, K3, K4, K5]
+      info_tier: public
+    - title: "地平线 (09660.HK) 2025 年报及最新券商覆盖——做可比估值分析"
+      type: annual-report
+      ticker: "HKEX_09660"
+      source: "地平线 IR 网站 / 同花顺 / 卖方报告"
+      why: "最直接可比标的（港股上市智驾方案商），用于环④估值锚定。A 合同 valuation-anchor"
+      addresses: [K3]
+      info_tier: half_public
+    - title: "比亚迪天神之眼方案与 Momenta 关系深度分析——技术路线对比、搭载车型拆分、2026 新车型方案选择"
+      type: industry-research
+      ticker: ""
+      source: "汽车之家/懂车帝配置库 + 比亚迪技术发布会 + 财经媒体深度报道"
+      why: "命门 2（客户自研替代）核心验证物料——比亚迪占 Momenta 收入 21.6%，是最大单一客户风险。B 轴环①"
+      addresses: [K2]
+      info_tier: half_public
+    - title: "华为引望（车 BU）估值细节及 2026 年 ADS 业务进展——赛力斯/阿维塔入股公告 + 华为车 BU 新定点/ADS 4.0"
+      type: industry-research
+      ticker: ""
+      source: "赛力斯/长安汽车公告 + 华为车 BU 发布会 + 财经媒体报道"
+      why: "命门 3（华为竞争）核心物料——确定 Momenta 的竞争格局和估值参照系。A 合同 valuation-anchor"
+      addresses: [K3]
+      info_tier: half_public
+  tier2:
+    - title: "中汽协/灼识咨询 2026H1 中国城市 NOA 市场份额更新——Momenta vs 华为 vs 其他 最新市占率"
+      type: data
+      ticker: ""
+      source: "中汽协官网 / 灼识咨询报告 / 财经媒体引用"
+      why: "命门 3 实时验证——2025 全年 Momenta 64.5% vs 华为 19.76%，2026H1 差距是否缩小？"
+      addresses: [K3]
+      info_tier: half_public
+    - title: "全球 Robotaxi 竞对单位经济与运营数据对比——Waymo/Zoox/Cruise/百度萝卜快跑 vs Momenta/Uber"
+      type: industry-research
+      ticker: ""
+      source: "Waymo 博客 / 百度财报 / Cruise GM 财报 / 行业研究报告"
+      why: "命门 1 Robotaxi 期权估值支撑——确定 Momenta 轻资产模式的相对成本优势。A 合同 bull-bear"
+      addresses: [K4]
+      info_tier: half_public
+    - title: "Momenta 核心管理层深度评估——曹旭东战略定力、核心团队稳定性、股权激励、历史决策记录"
+      type: industry-research
+      ticker: ""
+      source: "招股书管理层章节 + 财经人物专访（21财经/36氪/晚点）+ 天眼查/企查查"
+      why: "A 合同 mgmt-capital-alloc 落地——判断管理层质量和资本配置纪律。已知任少卿已离职去蔚来"
+      addresses: [K2]
+      info_tier: half_public
+    - title: "上市后首轮卖方覆盖报告收集——中金/德意志银行（联席保荐人）首覆 + 一致预期数据"
+      type: sell-side-note
+      ticker: ""
+      source: "中金/德意志银行首覆报告（预计 2026 年 7-8 月发布）+ 同花顺一致预期"
+      why: "A 合同 consensus 落地——盈利预测和估值锚基准。IPO 2026-07-08，首覆约 30-40 天后"
+      addresses: [K1, K2, K3, K4]
+      info_tier: half_public
+  tier3:
+    - title: "自动驾驶行业历史失败镜鉴深度——Argo AI 关闭、Cruise 暂停运营、Uber ATG 出售、Mobileye 估值变迁"
+      type: industry-research
+      ticker: ""
+      source: "维基百科/Wired/The Verge/财经媒体复盘 + Mobileye 招股书/年报"
+      why: "A 合同 historical-mirror 落地——理解「第三方智驾方案商」从独立→被收购→再独立的完整周期"
+      addresses: [K2, K4]
+      info_tier: public
+    - title: "Momenta 招股书前 5 大客户逐年收入拆分细节及单车 ASP 趋势"
+      type: data
+      ticker: ""
+      source: "招股书财务章节（已获取 PDF 链接——需精读提取）"
+      why: "命门 1 量化验证——许可收入增速驱动因素（量×价拆解）。B 轴环③"
+      addresses: [K1, K2]
+      info_tier: half_public
+    - title: "Pony.ai (NASDAQ: PONY) + WeRide (NASDAQ: WRD) 最新财报及业务模式深度对比"
+      type: quarterly-report
+      ticker: "PONY"
+      source: "SEC EDGAR / 各公司 IR"
+      why: "横向可比——Robotaxi 优先 vs 量产反哺两种路线的财务表现差异。A 合同 valuation-anchor 补充"
+      addresses: [K3, K4]
+      info_tier: public
+key_risks_to_monitor:
+  - "比亚迪自研「天神之眼」在主力车型上替代 Momenta 方案——触发 kill"
+  - "华为城市 NOA 市占率在 2026 年突破 30%——竞争格局从一家独大变双寡头"
+  - "许可收入增速在 2026H2 降至 <30%——核心增长逻辑断裂"
+  - "L3 法规落地延迟至 2028+——Robotaxi/L3 估值期权价值大幅缩水"
+  - "Momenta 上市后首个财报季毛利率出现环比下滑——商业模式质变逻辑遭质疑"
+analogies_to_study:
+  - name: "Mobileye (以色列→Intel 收购→再 IPO，2014-2024)"
+    logic: "第三方智驾方案商的完整生命周期：独立成长→被芯片巨头收购→再独立上市。验证「纯算法方案商能否长期独立存在」这一核心命题。Mobileye 最终靠 EyeQ 芯片实现软硬一体——Momenta 自研 BMC 7X 芯片是否是同一剧本？"
+    limitation: "Mobileye 是视觉芯片+算法绑定，Momenta 是纯软件；Mobileye 的历程跨越 20 年+，Momenta 才 10 年"
+  - name: "3dfx/ATI 被 NVIDIA/AMD 收购 (1990s-2000s)"
+    logic: "软硬一体（NVIDIA）最终胜出 vs 纯软件（3dfx Glide API）或纯硬件（早期 ATI）被淘汰/收购。类比智驾行业「软硬一体才是终局」的争议——如果这个历史剧本在智驾重演，Momenta 纯软件路线将面临生存危机"
+    limitation: "消费显卡市场竞争逻辑与汽车 Tier 1 供应链不完全可比——车企有分散供应商的动机"
+  - name: "Argo AI (关闭) / Cruise (暂停运营) / Uber ATG (出售) — 自动驾驶烧钱→商业化不及预期"
+    logic: "三家自动驾驶公司累计烧掉 >200 亿美元后关闭/暂停/出售。验证：(1) 纯 L4 路线（不靠量产反哺）的现金流不可持续；(2) 主机厂对自动驾驶投入的耐心有限。Momenta 的「量产反哺」正是针对这个失败剧本的对冲设计"
+    limitation: "Momenta 不是纯 L4 公司——量产收入已占主导（许可+技术服务 >95%），历史失败案例可能不直接适用"

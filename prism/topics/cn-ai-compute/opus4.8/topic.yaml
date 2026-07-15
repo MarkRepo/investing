@@ -3,7 +3,7 @@ display_name: 中国算力行业 (AI Compute, 全产业链)
 type: industry
 created: '2026-06-06T13:16:07.428440+00:00'
 status: active
-stage: 02-gather-materials
+stage: 05-critic-review
 canonical: true
 parent_topic: null
 monitoring_tier: dormant
@@ -18,14 +18,29 @@ scope:
   - 智算中心 IDC
   - 算力服务器
   - 光模块 算力网络
+  terminal: 把资本/注意力分配给哪几个细分 arena（深挖/观察/淘汰三档分流）
 outputs_state:
   00_primer:
-    version: 0
-    last_updated: '2026-06-06T13:29:31.349784+00:00'
-    status: pending
+    version: 1
+    last_updated: '2026-07-01T07:29:56.638149+00:00'
+    status: fresh
     data_freshness: null
-    referenced_mat_ids: null
+    referenced_mat_ids:
+    - mat-1d1f97
+    - mat-27eea4
+    - mat-3a5f2a
+    - mat-566b9a
+    - mat-5cd92d
+    - mat-5e8cad
+    - mat-9bbdca
+    - mat-bcc950
+    - mat-c61645
+    - mat-c6fcc3
+    - mat-cf9c9a
+    - mat-f3c41b
+    - mat-f82211
     last_error: null
+    critic_passed: true
   roadmap:
     version: 0
     last_updated: '2026-06-06T13:41:51.612551+00:00'
@@ -33,11 +48,45 @@ outputs_state:
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
+  i_industry_case:
+    version: 1
+    last_updated: '2026-07-01T07:38:33.681581+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1d1f97
+    - mat-27eea4
+    - mat-3a5f2a
+    - mat-566b9a
+    - mat-5cd92d
+    - mat-5e8cad
+    - mat-9bbdca
+    - mat-bcc950
+    - mat-c61645
+    - mat-c6fcc3
+    - mat-cf9c9a
+    - mat-f3c41b
+    - mat-f82211
+    - mat-fd3250
+    last_error: null
+  industry_to_arenas:
+    version: 1
+    last_updated: '2026-07-01T07:38:33.701871+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-27eea4
+    - mat-3a5f2a
+    - mat-5cd92d
+    - mat-bcc950
+    - mat-f3c41b
+    last_error: null
 parent_materials: []
 next_actions:
-- 运行 workflow 03-extract-findings 处理已收集资料（3份年报+4份深度分析+28份prescan校准）
-- 剩余 P1/P2 todo（consensus估值表/华为资本配置史）为半公开，可由用户补或02深挖
-- 资料处理后运行 workflow 04-synthesize 产出 i_industry_case 决策链
+- 合成完成：00_primer + i_industry_case(6环) + industry_to_arenas.yaml(7 arena) + thesis_v1
+  + 2 个深挖档 arena stub
+- industry 评审非强制：说「评审 cn-ai-compute」跑对抗式 steelman，或在 web 详情页点「✓ 标记完成」直接 done
+- 或推进深挖档：说「prism 推进 cn-advanced-mfg-hbm」/「prism 推进 cn-domestic-ai-chip」
 user_todos:
 - task: 国产算力产业链深度卖方报告 3 份（中信/中金/华泰/国盛任选，覆盖芯片+服务器+光模块全链）
   priority: P0
@@ -143,10 +192,10 @@ user_todos:
   fetch_status: fetched
   fetch_attempts: 1
   disposition: undecided
-  last_fetch_note: exa→华为2024/2025年报+徐直军HC2025演讲+访谈+证时;研发1923亿/21.8%/十年1.38万亿+超节点路标+战略哲学已入库(mat-9bbdca)
   covered_by:
   - mat-9bbdca
   coverage_note: 华为资本配置史全公开可抓:研发强度/逆周期压强/不上市无短期压力/硬件变现开源促量/昇腾950-970+Atlas集群路标
+  last_fetch_note: exa→华为2024/2025年报+徐直军HC2025演讲+访谈+证时;研发1923亿/21.8%/十年1.38万亿+超节点路标+战略哲学已入库(mat-9bbdca)
 - task: 中国半导体国产替代历史镜鉴（面板/存储周期：替代节奏、估值陷阱、产能过剩）
   priority: P2
   info_tier: half_public
@@ -159,13 +208,58 @@ user_todos:
   fetch_attempts: 1
   disposition: undecided
   last_fetch_note: exa→TechNews京东方+21世纪两存崛起复盘
+- task: 资料提取完成：21 份 actionable 资料全部处理完毕（累计 manifest 49 份，含 prescan web 料）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 资料提取完成：21 份 actionable 全部处理完毕（另 28 份 prescan web 料已在00/01消化）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 产出合成中（04）...
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 决策链合成进行中（primer + i_industry_case + 09 sidecar）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 决策链合成完成（primer+case+sidecar+thesis_v1，chain-critic 一轮通过，6环无断链）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: false
   cadence: daily
 critic: null
 decomposition:
-  current_version: 0
-  last_updated: '2026-06-06T13:27:40.436865+00:00'
+  current_version: 1
+  last_updated: '2026-07-01T07:40:46.657200+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
@@ -173,15 +267,25 @@ decomposition:
     summary: 命门1=国产替代的产能可得性(中芯7nm+国产HBM能否支撑放量·中); 命门2=capex-beta层周期位置(光模块/ODM估值已price-in·中);
       命门3=推理时代价值再分配(推理放量给了谁·低)
     convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-01T07:40:46.657215+00:00'
+    summary: 3命门经厚料验证成立：命门1(产能可得性)证据下修为"未解除仅缓冲";命门2(capex周期位)维持中;命门3(推理价值再分配)置信度低→中。11条primer目标全覆盖(除产能硬数据残缺)
+    convergence_status: open
+    changelog: 命门1证据方向下修(瓶颈解除→仅缓冲);命门3置信度低→中(DeepSeek效率落地);新增实时估值锚;未新增/分裂命门;未撞2轮顶仍open
 thesis:
-  current_version: 0
-  last_updated: '2026-06-06T13:27:40.430715+00:00'
+  current_version: 1
+  last_updated: '2026-07-01T07:40:46.625072+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
     set_at: '2026-06-06T13:27:40.430825+00:00'
     summary: 差异化看多(6.5/10)：做多国产替代兑现层(芯片/昇腾/国产HBM·上游瓶颈在解除)，对全球capex-beta层(光模块/服务器ODM·估值已高绑英伟达周期)转谨慎赚业绩不赚估值，智算中心选回报模型清晰者
     prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-01T07:40:46.625238+00:00'
+    summary: 差异化看多(6.5/10)：做多国产替代兑现层+命门层(芯片/上游制造·赌份额与产能),对capex-beta层(光模块/ODM·赌全球周期)谨慎赚业绩不赚估值,智算中心挑回报清晰者。命门1产能下修为"未解除仅缓冲"
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-06-06T13:29:16.529462+00:00'
@@ -205,7 +309,7 @@ stage_history:
     empty_pending_decision: 0
 - stage: 02-gather-materials
   entered_at: '2026-06-06T13:41:51.618204+00:00'
-  exited_at: null
+  exited_at: '2026-07-01T07:05:04.393280+00:00'
   gap_snapshot:
     uncovered_ks:
     - K4
@@ -217,6 +321,22 @@ stage_history:
     - industry-mirror
     autofetch_debt: 2
     empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-01T07:05:04.393280+00:00'
+  exited_at: '2026-07-01T07:43:56.499091+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-01T07:43:56.499091+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 2
+    empty_pending_decision: 0
 prescan_log:
 - round_at: '2026-06-06T13:41:51.607008+00:00'
   status: full
@@ -224,3 +344,4 @@ prescan_log:
   hit_rate: 1.0
   queries_run: 12
   queries_with_hits: 12
+suggested_drilldowns: []

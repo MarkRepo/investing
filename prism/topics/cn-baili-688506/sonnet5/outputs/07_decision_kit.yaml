@@ -1,0 +1,111 @@
+slug: cn-baili-688506
+variant: sonnet5
+topic_type: company
+display_name: 百利天恒 (SSE 688506)
+ticker: "SSE_688506"
+generated: "2026-07-03T05:00:00+00:00"
+data_freshness: "2026-07-02"
+
+buy_box:
+  strong_buy_max: 54
+  accumulate_min: 54
+  accumulate_max: 156
+  hold_min: 156
+  hold_max: 217
+  current_price: 335.5
+  price_as_of: "2026-07-02"
+  current_zone: above_hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: "EV显著为负(-40.9%)+当前价335.5元已高于所有估值模型Base情形(156-217元)+iza-bren商业化实际数据几乎为零(信息不完整)，不满足'标准/重仓'所需的信息充分+信心足条件；只有价格回落到可建仓区间且K1/K2出现实质性正面signpost后才考虑升档"
+  initial_max_pct: null
+  full_max_pct: 5
+  add_ladder_prices: [54, 100, 156]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: reverse_ps_dcf_scenario
+    label: Reverse PS-DCF情景法(WACC 10%,5年营收CAGR×terminal PS)
+    bull_fair_value: [492, 492]
+    base_fair_value: [156, 156]
+    bear_fair_value: [54, 54]
+  - name: peer_cross_section
+    label: 同业横截面(现采荣昌23.45x/科伦博泰47.56x均值±30%溢折价)
+    bull_fair_value: [282, 282]
+    base_fair_value: [217, 217]
+    bear_fair_value: [152, 152]
+  - name: sotp_option_decomposition
+    label: 基本盘+期权拆解(训练知识估算,精度最低,仅方向性佐证)
+    bull_fair_value: [111, 111]
+    base_fair_value: [65, 65]
+    bear_fair_value: [22, 22]
+
+kill_criteria:
+  - id: commercial_revenue_stall
+    description: "2026H2起，iza-bren剔除BD/里程碑款后的商业化销售收入，连续2个季度环比负增长或增速<10%"
+    status: pending
+    check_at: "2027-01-31"
+  - id: bms_next_milestone_stall
+    description: "BMS另一笔最高2.5亿美元近期里程碑，在2027年底前仍未触发"
+    status: pending
+    check_at: "2027-12-31"
+  - id: refinancing_distress
+    description: "一年内到期负债出现展期困难，或公司需通过新一轮股权融资(股本稀释>10%)紧急补血"
+    status: pending
+    check_at: "2027-06-30"
+  - id: bms_relationship_deteriorates
+    description: "BMS公开宣布终止或大幅调整该合作条款"
+    status: pending
+    check_at: "2027-12-31"
+
+signposts:
+  - date: "2026-10-31"
+    event: "2026Q3财报披露"
+    bull_signal: "剔除BD后commercialization收入首次可观测且环比加速"
+    bear_signal: "收入几乎为零或环比转弱"
+    triggered: null
+  - date: "2027-06-30"
+    event: "三阴乳腺癌NDA审批结果"
+    bull_signal: "顺利获批且患者可及性数据好"
+    bear_signal: "延迟/被要求补充数据"
+    triggered: null
+  - date: "2027-12-31"
+    event: "BMS下一笔里程碑(另一笔最高2.5亿美元)触发情况"
+    bull_signal: "按期触发甚至提前"
+    bear_signal: "逾期未触发"
+    triggered: null
+  - date: "2026-12-31"
+    event: "H股新挂牌时间表"
+    bull_signal: "公布确定日期且顺利完成"
+    bear_signal: "继续无时间表/再度延期"
+    triggered: null
+
+cluster_tags: [china-biotech, adc, bispecific-antibody, license-out-bd, cn-adc-arena]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    note: "iza-bren首个适应症(鼻咽癌)商业化实际数据(定价/医保准入/院内准入/销售团队进度)缺失，获批太新，市场本身也无答案"
+  - ring: 2
+    kind: training-estimate
+    note: "模型B(基本盘+期权拆解)的期权NPV为训练知识粗估，成功概率假设主观性大，跨度极宽(22-111元)，仅作方向性佐证不作精确锚"
+  - ring: 5
+    kind: data-missing
+    note: "创新药医保准入谈判降价幅度数据缺失，历史同类案例常见50%+降价，可能显著压低'获批'到'实际放量收入'的转化率，当前反推估值未充分计入这层折价"
+
+market_implied:
+  metric: implied_rev_cagr_5y_at_ps25x
+  value: 28.8
+
+my_vs_market_delta:
+  metric: implied_rev_cagr_5y_at_ps25x
+  my_value: 18
+  delta: "-10.8pct"
+  direction: short

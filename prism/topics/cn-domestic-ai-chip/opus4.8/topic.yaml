@@ -1,0 +1,44 @@
+slug: cn-domestic-ai-chip
+display_name: 国产AI芯片（昇腾链/寒武纪/海光）
+type: arena
+created: '2026-07-01T07:36:49.806491+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-ai-compute
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 国产AI芯片（华为昇腾产业链、寒武纪、海光DCU）里A股可买的最优卡位是谁、份额兑现节奏与估值时点如何、客户集中度风险多大
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  short_name: 国产AI芯片
+  search_terms:
+  - 昇腾产业链
+  - 寒武纪
+  - 海光DCU
+  - 国产AI芯片份额
+  - 华鲲振宇
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-01T07:38:07.359603+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-01T07:38:07.359619+00:00'
+    summary: 国产AI芯片是替代兑现层核心(寒武纪FY25+453%已证实)但估值极端(PE369x);命门=华为不上市下A股最优卡位+份额是否被H20/B30挤压+估值消化时点。看多兑现但需价格纪律。强度5.5

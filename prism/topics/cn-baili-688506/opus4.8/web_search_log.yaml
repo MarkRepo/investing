@@ -1,0 +1,99 @@
+slug: cn-baili-688506
+variant: opus4.8
+entries:
+- searched_at: '2026-07-03T08:44:19.779152+00:00'
+  query: 百利天恒 2025年年报 营收 净利润 研发费用 现金余额
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 3
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-03T08:44:19.801743+00:00'
+  query: 百利天恒 688506 2026 最新市值 总股本 PS估值 股价
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-03T08:44:19.830641+00:00'
+  query: iza-bren BL-B01D1 2026 获批 鼻咽癌 上市申请 受理 NMPA 适应症
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-03T08:44:19.931138+00:00'
+  query: 百利天恒 BMS BL-B01D1 里程碑付款 2026 金额 2.5亿美元
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 4
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-03T08:44:20.007257+00:00'
+  query: 百利天恒 iza-bren FDA BLA 全球注册临床 时间线 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-03T08:44:20.124794+00:00'
+  query: 百利天恒 港股 H股 上市 2026 进展 聆讯 延迟
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-03T08:44:20.189638+00:00'
+  query: 百利天恒 BL-M系列 T-Bren HER2 ADC 临床进展 2026 突破性疗法
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-03T08:44:20.223715+00:00'
+  query: iza-bren 食管癌 三阴乳腺癌 NSCLC 临床数据 PFS OS ORR 双终点
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-03T08:44:20.291577+00:00'
+  query: 中国创新药 BD授权 后 估值 PS 消化 信达 荣昌生物 历史轨迹
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-03T09:02:22.700512+00:00'
+  query: 百利天恒 iza-bren 宜泽康 商业化 放量 销售 医保 2026
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 0
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-03T09:02:22.753667+00:00'
+  query: 百利天恒 BL-M05D1 BL-M14D1 SI-B001 第二资产 III期 进展
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 1
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-03T09:02:22.800821+00:00'
+  query: 百利天恒 688506 卖方 目标价 研报 估值 2026 中金 中信
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 1
+  n_mid: 0
+  n_low: 1
+  disposition: registered

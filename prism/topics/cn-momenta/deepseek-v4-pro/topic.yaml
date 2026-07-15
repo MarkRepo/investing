@@ -1,0 +1,357 @@
+slug: cn-momenta
+display_name: Momenta 魔门塔 (HKEX 06880)
+type: company
+created: '2026-06-29T16:14:06.945212+00:00'
+status: active
+stage: done
+canonical: false
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: Momenta（魔门塔，HKEX 06880），2026-07-08 港股 IPO，deep 深度。预判：中性偏多——Momenta 作为中国高阶智驾方案龙头（端到端算法+与比亚迪/上汽深度绑定），IPO
+    后短期可能因稀缺性溢价，但需验证 2026H2 量产交付爬坡和毛利率拐点。分歧点在于 Robotaxi 商业化节奏 vs 方案商毛利率天花板。估值锚待 IPO
+    定价后确认。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: HKEX_06880
+  market: HKEX
+  short_name: Momenta
+  search_terms:
+  - Momenta 港股 IPO
+  - 魔门塔 自动驾驶
+  - 端到端智驾 方案商
+  - 06880 HKEX
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-06-30T00:35:39.989742+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-11a1c2
+    - mat-12eadb
+    - mat-17d88d
+    - mat-21332f
+    - mat-2acc22
+    - mat-36233b
+    - mat-478b0c
+    - mat-5f0b68
+    - mat-657deb
+    - mat-75eb22
+    - mat-aa82d8
+    - mat-f997d9
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-06-30T00:47:44.929731+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-11a1c2
+    - mat-12eadb
+    - mat-17d88d
+    - mat-21332f
+    - mat-2acc22
+    - mat-36233b
+    - mat-478b0c
+    - mat-48a1d3
+    - mat-5f0b68
+    - mat-657deb
+    - mat-75eb22
+    - mat-aa82d8
+    - mat-f997d9
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-06-30T00:47:44.953485+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-11a1c2
+    - mat-12eadb
+    - mat-17d88d
+    - mat-21332f
+    - mat-2acc22
+    - mat-36233b
+    - mat-478b0c
+    - mat-48a1d3
+    - mat-5f0b68
+    - mat-657deb
+    - mat-75eb22
+    - mat-aa82d8
+    - mat-f997d9
+    last_error: null
+  08_living_feed:
+    version: 2
+    last_updated: '2026-06-30T00:52:50.732701+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 cn-momenta」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：反方最强论点(SBC 20-30亿)被数据证伪(SBC实际~3亿/年)。case框架完整、证据充分、链逻辑自洽。consensus薄(1/2)是pre-IPO常态。approve。
+user_todos:
+- task: 下载 Momenta HKEX 聆讯后资料集（招股书）PDF 全文并精读
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: HKEX 披露易 https://www1.hkexnews.hk/，已获取 PDF 链接
+  status: pending
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  archive_candidate: thesis v1 已移除该 K#（上版 K# 集合：['K1', 'K2', 'K3', 'K4', 'K5']，本版：[]）
+  last_fetch_note: prescan 27 份材料已覆盖招股书核心数据；HKEX PDF 链接已获取
+- task: 收集地平线 (09660.HK) 2025 年报及最新券商覆盖，做可比估值分析
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 地平线 IR 网站 / 同花顺 / 卖方报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-17d88d
+  last_fetch_note: HKEX 直下 1 份
+- task: 收集华为引望（赛力斯/阿维塔入股）估值细节及华为车 BU 业务数据
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 赛力斯/长安汽车公告 / 财经媒体报道
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: exa search → 深度分析入库
+- task: 整理 Momenta 主要客户（比亚迪/上汽/奔驰/丰田/通用）各自的自研智驾进展和路线图
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 各车企技术发布会/IR/财经媒体深度报道
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web search 已执行，比亚迪天神之眼等自研进展
+- task: 获取 Momenta 招股书中前 5 大客户逐年收入拆分及单车 ASP 数据
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 招股书财务章节（已获取 PDF 链接）
+  status: pending
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  archive_candidate: thesis v1 已移除该 K#（上版 K# 集合：['K1', 'K2', 'K3', 'K4', 'K5']，本版：[]）
+  last_fetch_note: prescan 材料已覆盖前5大客户收入占比及逐年变化
+- task: 收集曹旭东及核心管理层履历、持股、过往决策记录（管理层质量评估）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 招股书管理层章节 / 财经人物专访 / 36氪/晚点报道
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-48a1d3
+  - mat-62846c
+  last_fetch_note: web search 3 份入库
+- task: 等待上市后首轮卖方覆盖报告（预计 2026 年 7-8 月），收集一致预期数据
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  - K4
+  source_hint: 中金/德意志银行（联席保荐人）首覆 / 同花顺一致预期
+  status: pending
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  archive_candidate: thesis v1 已移除该 K#（上版 K# 集合：['K1', 'K2', 'K3', 'K4', 'K5']，本版：[]）
+  last_fetch_note: pre-IPO 分析 2 份入库；正式卖方覆盖需等 7/8 上市后
+- task: 研究自动驾驶行业历史失败案例（Argo AI 关闭、Cruise 暂停运营、Uber ATG 出售等）作为历史镜鉴
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  - K4
+  source_hint: 维基百科/Wired/The Verge/财经媒体报道
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web search 已执行
+- task: 收集 Robotaxi 单位经济模型数据：Waymo/Zoox/百度萝卜快跑的单车成本、运营成本、定价
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: Waymo 博客 / 百度财报 / 行业研究报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-16b021
+  - mat-432c7b
+  last_fetch_note: web search 2 份入库
+- task: '收集 Pony.ai (NASDAQ: PONY) 和 WeRide (NASDAQ: WRD) 最新财报，做业务模式对比'
+  priority: P2
+  info_tier: public
+  addresses:
+  - K3
+  - K4
+  source_hint: SEC EDGAR / 各公司 IR 网站
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-666373
+  - mat-df5080
+  last_fetch_note: SEC EDGAR 1 份
+- task: 收 historical-mirror 实证：Argo AI/Cruise/Uber ATG 的崩盘/未兑现复盘（行业深度研报或英文复盘文章）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  - K4
+  source_hint: Wired/The Verge/财经媒体复盘 + Mobileye 招股书
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa search → 历史镜鉴入库
+- task: 收 historical-mirror 实证：Mobileye 从独立→Intel收购→再IPO的完整周期复盘
+  priority: P2
+  info_tier: public
+  addresses:
+  - K2
+  - K3
+  source_hint: Mobileye IPO prospectus + Intel annual reports
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: exa search → 历史镜鉴入库
+- task: 资料提取完成：56 份全部处理完毕
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: 反方最强论点(SBC 20-30亿)被数据证伪(SBC实际~3亿/年)。case框架完整、证据充分、链逻辑自洽。consensus薄(1/2)是pre-IPO常态。approve。
+  at: '2026-06-30T00:52:50.718046+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-06-30T00:48:21.679141+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-06-29T16:23:05.391405+00:00'
+    summary: 命门1=许可收入增速能否持续>50%推动2027H1盈亏平衡(中); 命门2=头部客户自研是否实质挤压份额(uncertain); 命门3=华为市占率是否显著逼近(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-30T00:48:21.679162+00:00'
+    summary: '命门1=许可收入增速(中→中+)厚料验证2025年+231%远超预期; 命门2=客户自研替代(uncertain→中)比亚迪"两条腿走路"短期缓冲;
+      命门3=华为竞争(中)待2026年数据。primer入门目标delta: 新增IPO结构与治理+财务解读+估值锚3条目标。'
+    convergence_status: open
+thesis:
+  current_version: 1
+  last_updated: '2026-06-30T00:48:21.631401+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-06-29T16:22:24.058787+00:00'
+    summary: 看多——Momenta是中国第三方城市NOA绝对龙头(市占率64.5%)，毛利率71.6%证明软件授权商业模式已跑通，经调整亏损率仅12.6%即将盈亏平衡。295.6港元IPO价对应约75-90亿美元估值，稀缺性溢价合理。目标价320-380港元(6-12月)。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-06-30T00:48:21.631580+00:00'
+    summary: 看多——Momenta第三方城市NOA市占率64.5%+毛利率71.6%+亏损率12.6%即将盈亏平衡。295.6港元IPO价对应650亿RMB，隐含CAGR
+      40%+净利率12%，我判增速50%但利润率存疑。EV+35.75%(3年)为正，试探档位入场。目标价310-380港元。
+    prescan_status: full
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-06-29T16:23:32.416279+00:00'
+  exited_at: '2026-06-29T18:01:32.779279+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-06-29T18:01:32.779279+00:00'
+  exited_at: '2026-06-29T18:04:05.624015+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - historical-mirror
+    autofetch_debt: 2
+    empty_pending_decision: 0
+- stage: 03-extracting
+  entered_at: '2026-06-29T18:04:05.624015+00:00'
+  exited_at: '2026-06-29T18:17:56.566655+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-06-29T18:17:56.566655+00:00'
+  exited_at: '2026-06-30T00:48:21.689335+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-06-30T00:48:21.689335+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

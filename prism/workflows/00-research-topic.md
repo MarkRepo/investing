@@ -594,19 +594,22 @@ got = download_announcements_cn('SSE_688506', slug, variant, selected)
 # 盖 fetch_status / 闭环 todo 照 _autofetch_protocol.md（按 task 子串/文档身份，不用 K# 求交）
 ```
 
-### 6.5b：分析材料（卖方研报/行业数据/政策/科普）→ exa→semantic→WebFetch 阶梯
+### 6.5b：分析材料（卖方研报/行业数据/政策/科普）→ sidecar-first 惰性阶梯
 
-非报告类 todo（sell-side / industry-research / policy / data / 科普）走 workflow 01 Step 5.6 同一阶梯：
+非报告类 todo（sell-side / industry-research / policy / data / 科普）走 workflow 01 Step 5.6 同一阶梯——**默认 sidecar-first，搜索正文落盘不进 context**：
 
-1. **exa 高级搜索** `mcp__exa__web_search_advanced_exa`（`numResults:5`、`enableHighlights:true`、`highlightsMaxCharacters:2000`、`textMaxCharacters:5000`），5 条一批并发；
-2. exa 未满意 → **adapter semantic**：
+1. **adapter sidecar 搜索（默认首选）**：
    ```bash
    python3 -m prism.scripts.web_search search "<材料标题关键词>" \
        --intent semantic --days 365 --max-results 5 --output sidecar \
        --slug {slug} --variant {variant} \
        --triggered-by 00-deep-fetch --addresses K1,K2
    ```
-3. 搜到的权威 URL（domain_tier=`llm-judged-official`）→ `mcp__exa__web_fetch_exa`（`maxCharacters:5000`，可批量）抓全文。
+   → `review-digest --raw-path {raw_path}`（或省路径用 `--slug` 取最新）看投影判 tier，**零正文进 context**；判不出的残差才 `--show IDX`（单条 snippet），确认要入库且需正文的少数才 `--show IDX --full`。
+2. **精准取全文（只对确认入库的权威 URL）**：`mcp__exa__web_fetch_exa`（`maxCharacters:5000`，可批量传选定 URL）→ `register_web_search_batch(..., full_texts={url: 全文})` 透传落盘，03 复用（一次抓取）。
+3. **exa 高级搜索仅作补充**（sidecar 命中差 / provider 耗尽时）：`mcp__exa__web_search_advanced_exa`（`numResults:3`、`enableHighlights:true`、`highlightsMaxCharacters:2000`，**不取 `text`**——省略 `textMaxCharacters`；全文走上面阶梯 2 的 web_fetch）。highlights 是引擎按 query 抽的高信句，判 tier + 抓数字已够。
+
+> **为什么 sidecar-first（token 中性质量）**：搜索正文默认落盘、context 只承载 review-digest 投影——判 tier 靠 host/标题/flags（不需全文），关键数字在 highlights/snippet。exa `web_search_advanced` 的 `text` 字段是把全部候选全文无差别直灌 context，是本步**最大自造 token 成本**（实测 cn-pd1-vegf 一轮 4 次 exa 直灌 ~40-60K tok，利用率 <20%），默认不取；需通读的少数走 `web_fetch_exa` 精准抓选定 URL（同样落盘复用）。质量不减：tier 判断 / 关键数字 / 反方识别都只需投影+摘要，通读走惰性展开，snippet 兜底纪律照旧（见 01 Step 5.6）。
 
 抓到 → 落 `prism/topics/{slug}/inbox/{descriptive_name}.md`（资料只在 topic 层）→ `add_material` 入库 → 按 task 子串 `mark_todo_fetch('fetched')` + `update_user_todo_status('done', covered_by=[mat])`。
 
@@ -617,6 +620,7 @@ got = download_announcements_cn('SSE_688506', slug, variant, selected)
 - 工具/网络/限流失败 → `error`（**必须重试，绝不降级**；本轮等不了就先盖 `error` 交 01/R3 下轮重试）。
 - `hard` 也要尝试一次（草根纪要/付费数据多半 `empty`，但 empty 要由**真实结果**证明，不由标签预判——付费卖方深度常有公开转载）。
 - 闭环只走 task 子串（文档身份），**禁止用 K# 交集自动 done**。
+- **标 `empty` 前必须实际搜索**：adapter 搜 `--output sidecar`（自动写 `web_search_log`）或原生 WebSearch tool 搜完调 `log_native_websearch()`。**6.5e 闸门脚本会校验**——`web_search_log` 无痕的 `empty` 会被 `verify_empty_todos_searched` 拦截。
 
 ### 6.5d：刷新 next_actions + 输出对照表
 
@@ -651,26 +655,43 @@ set_next_actions(slug, [
 > 📎 *为什么必须做 / 与 01 同源 → 附录 A6.5e（执行时可跳过）*
 
 ```bash
-python3 -c "
+python3 << 'EOF'
 from prism.scripts.topic import pending_unfetched_todos
+from prism.scripts.web_prescan import verify_empty_todos_searched
+
 p = pending_unfetched_todos('{slug}', '{variant}')
 unattempted = [t for t in p if t.get('fetch_status') == 'unattempted']
 errored     = [t for t in p if t.get('fetch_status') == 'error']
+
 if unattempted:
     print('❌ 00 产即收违规：以下 todo 从未尝试过抓取（fetch_status=unattempted）——')
     print('   info_tier 只决定努力顺序，不是跳过门槛（auto-fetch 规约 R1）。回 Step 6.5b 逐条跑阶梯并 mark_todo_fetch：')
     for t in unattempted:
-        print(f'   - [{t.get(\"info_tier\")}] {t[\"task\"][:60]}')
+        print(f'   - [{t.get("info_tier")}] {t["task"][:60]}')
     raise SystemExit(1)
+
 if errored:
     print('⚠ 以下 todo 抓取失败（fetch_status=error），按退避梯重试；本轮带过将由 01 的 R3 续抓：')
     for t in errored:
-        print(f'   - {t[\"task\"][:60]}')
+        print(f'   - {t["task"][:60]}')
+
+# 搜索证据校验：empty 的 todo 必须在 web_search_log 中有对应记录
+v = verify_empty_todos_searched('{slug}', '{variant}')
+if v['unverified']:
+    print(f'❌ empty 证据缺失：{len(v["unverified"])} 条 todo 标了 empty 但 web_search_log 中无对应搜索记录——')
+    print('   adapter 搜索会自动留痕；用原生 WebSearch tool 搜完需调 log_native_websearch() 留痕。')
+    for t in v['unverified']:
+        print(f'   - {t["task"][:60]}')
+    raise SystemExit(1)
+
+if v['empty_todos']:
+    print(f'✅ {len(v["empty_todos"])} 条 empty todo 已通过搜索证据校验')
+
 print('✓ 00 auto-fetch 全覆盖通过：无 unattempted（每条 todo 都已有效尝试过）')
-"
+EOF
 ```
 
-如果非 0 退出（有 `unattempted`），**回 Step 6.5b 把它们逐条跑完阶梯 / 盖 `empty` / 盖 `error`**，再回来跑 Step 6.5e。**`unattempted` 清零是进 Step 7 的前置条件。**
+如果非 0 退出，回 Step 6.5b 补搜。**`unattempted`+`empty` 证据两条都通过才能进 Step 7。**
 
 ---
 
@@ -843,6 +864,10 @@ if r["unmapped_facts"]:
 
 ### 附录 A6.5e — 硬闸门为什么必须做 + 与 01 同源
 
-> **为什么必须做**：Step 6.5b/c 的「产即收 + R1 全覆盖」如果只靠散文纪律（「不要跳过本步」），主 agent 容易在 prescan 已跑完 10+ query 后产生"已经够了"的 shortcut 偏见，凭 `info_tier` 先入为主跳过 half_public/hard todo、或只象征性抓 1 份就宣布完成——导致大量 unattempted todo 被包装成"剩 N 条待你"甩给用户。本闸门把 `pending_unfetched_todos` 接成进 Step 7 前的硬断言，精确拦截"从未尝试就推进"。
+> **为什么必须做**：Step 6.5b/c 的「产即收 + R1 全覆盖」如果只靠散文纪律，主 agent 容易在 prescan 已跑完 10+ query 后把「我觉得搜不到」标记为 `empty`，跳过实际搜索。6.5e 硬闸门现在做了两层校验：
+> 1. `pending_unfetched_todos` 拦截 `unattempted`（从未调到过 `mark_todo_fetch`）
+> 2. `verify_empty_todos_searched` 拦截无痕 `empty`（`web_search_log` 中找不到对应搜索记录，adapter 自动留痕，原生 WebSearch tool 需调 `log_native_websearch()`）
 >
-> **与 01 Step 5.8 同源**：01 已有等效闸门（unattempted → SystemExit(1)），00 之前缺失，导致 00 产的 todo 可以被跳过而无人卡口。本步补齐。
+> **Momenta 实战案例**：3 条 `empty` 中 2 条是伪 empty——补搜后全部命中。如果有这道脚本校验，标 `empty` 时就会因为 `web_search_log` 无痕而 `SystemExit(1)`，提前阻断。
+>
+> **与 01 Step 5.8 同源**：01 已有等效闸门，02 Step 6 也接入了同一套 `verify_empty_todos_searched`。

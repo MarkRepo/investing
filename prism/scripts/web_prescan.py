@@ -1098,6 +1098,87 @@ def list_search_log(slug: str, variant: str) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
+# 原生 WebSearch tool 痕迹记录 + empty todo 搜索证据校验
+# ---------------------------------------------------------------------------
+
+def log_native_websearch(
+    slug: str, variant: str, query: str,
+    n_results: int, triggered_by: str = "00-deep-fetch",
+    disposition: str = "native-websearch-tool",
+) -> None:
+    """原生 WebSearch tool 搜完后调此函数留痕，让 verify_empty_todos_searched 可查。
+
+    adapter 走 register_web_search_batch 时会自动写 web_search_log；
+    但原生 WebSearch tool 不经过 adapter，需主 agent 显式调本函数留痕。
+    """
+    append_search_log(
+        slug=slug, variant=variant, query=query,
+        n_results=n_results, n_high=0, n_mid=0, n_low=n_results,
+        triggered_by=triggered_by, disposition=disposition,
+    )
+
+
+def verify_empty_todos_searched(
+    slug: str, variant: str,
+) -> dict:
+    """检查每条 fetch_status='empty' 的 todo 是否有对应搜索痕迹。
+
+    搜索痕迹来源：
+      - adapter: web_search_log 中的 entry（register_web_search_batch 自动写入）
+      - 原生 WebSearch tool: log_native_websearch 写入的 entry
+      - 手动 fetch: fetch_report_prism 在 manifest 中的记录（仅当 note 引用时）
+
+    返回 dict：
+      - verified: bool — 是否所有 empty todo 都有搜索痕迹
+      - empty_todos: list[dict] — 所有 empty todo
+      - unverified: list[dict] — 无搜索痕迹的 empty todo
+    """
+    from prism.scripts.topic import read_topic
+
+    try:
+        todos = read_topic(slug, variant).get("user_todos", []) or []
+    except FileNotFoundError:
+        return {"verified": True, "empty_todos": [], "unverified": []}
+
+    empty_todos = [
+        t for t in todos
+        if isinstance(t, dict)
+        and t.get("fetch_status") == "empty"
+        and t.get("status") in ("pending", "in_progress")
+    ]
+
+    if not empty_todos:
+        return {"verified": True, "empty_todos": [], "unverified": []}
+
+    # 收集所有搜索痕迹：web_search_log 的 query 字段
+    log_entries = list_search_log(slug, variant)
+    searched_queries = {e.get("query", "") for e in log_entries}
+
+    # 对每条 empty todo，查 task 关键词是否在任一搜索 query 中出现
+    unverified = []
+    for t in empty_todos:
+        task = t.get("task", "")
+        # 从 task 中取核心名词作为搜索关键词（取前 8 个字作为最小匹配单元）
+        task_core = task[:8] if len(task) >= 4 else task
+        # 检查是否有搜索 query 包含 task 的核心关键词
+        found = any(
+            task_core in q or any(
+                word in q for word in task_core.replace("（", " ").replace("）", " ").replace("：", " ").replace(":", " ").split()
+                if len(word) >= 2
+            )
+            for q in searched_queries
+        )
+        if not found:
+            unverified.append(t)
+
+    return {
+        "verified": len(unverified) == 0,
+        "empty_todos": empty_todos,
+        "unverified": unverified,
+    }
+
+
+# ---------------------------------------------------------------------------
 # ISSUE-001：prescan 健康度检查（用于 set_thesis 前置）
 # ---------------------------------------------------------------------------
 

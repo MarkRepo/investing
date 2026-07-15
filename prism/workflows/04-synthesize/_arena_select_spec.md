@@ -90,11 +90,11 @@ for k in ks: print(' -', k[:80])
 "
 ```
 
-也读 `prism/topics/{slug}/{variant}/outputs/thesis_v{cur_v}.md` 全文用作 narrowing 参考。
+也读 `prism/topics/{slug}/{variant}/thesis_v{cur_v}.md`（**variant 根下，非 outputs/**）全文用作 narrowing 参考。
 
 2. 在对话里**收窄到 arena 视角**：从父 K# 中挑出与该 arena 直接相关的 2-4 条，重写措辞使其聚焦本 arena（公司/路线/客户）；如父 K# 不足，补 1-2 条 arena 专属的待验证假设。
 
-3. 按 thesis_v0 四段式（① 核心 thesis + 强度评分 / ② 支持理由 / ③ 反方观点 / ④ K1-K5；**不单列 V# 验证项**，与 workflow 00 Step 5.0 一致）写入 stub 的 `prism/topics/{geo}-{arena_slug}/{variant}/outputs/thesis_v0.md`。**核心 thesis ≤120 字**，强度先按父级强度 -1 起估（继承可信度低于亲自验证）。每条 K# 末尾标注「(继承自父 K#)」或「(新增)」。
+3. 按 thesis_v0 四段式（① 核心 thesis + 强度评分 / ② 支持理由 / ③ 反方观点 / ④ K1-K5；**不单列 V# 验证项**，与 workflow 00 Step 5.0 一致）写入 stub 的 `prism/topics/{geo}-{arena_slug}/{variant}/thesis_v0.md`（**variant 根下，非 outputs/** —— 与 decomposition_v{N} 同级；错位到 outputs/ 会让 extract_killer_questions/5.7 闸门/web 全部读不到）。**核心 thesis ≤120 字**，强度先按父级强度 -1 起估（继承可信度低于亲自验证）。每条 K# 末尾标注「(继承自父 K#)」或「(新增)」。
 
 4. 落入 stub 的 topic.yaml：
 

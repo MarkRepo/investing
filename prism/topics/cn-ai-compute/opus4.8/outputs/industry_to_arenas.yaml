@@ -1,0 +1,167 @@
+slug: cn-ai-compute
+variant: opus4.8
+topic_type: industry
+display_name: 中国算力行业 (AI Compute, 全产业链)
+generated: 2026-07-01T00:00:00+00:00
+data_freshness: 2026Q1
+data_freshness_basis: mat-5e8cad/mat-cf9c9a(2026Q1业绩) + market_data(2026-06-30估值)
+
+arenas:
+  - name: 上游制造（先进制程/国产HBM/先进封装）
+    suggested_slug: cn-advanced-mfg-hbm
+    topic_created: true
+    topic_slug: cn-advanced-mfg-hbm
+    scores:
+      profit_pool: 5
+      growth: 5
+      competition: 5
+      valuation: 2
+      cycle: 5
+      composite: 4.4
+    tier: deep
+    tier_reason: 利润池最厚(毛利60%+)却被市场冷落,命门A1直接受益者,卖铲人不赌单一芯片赢家,优先级第一
+    upgrade_triggers:
+      - 中芯7nm 2026产能翻倍确认
+      - 长鑫HBM3规模量产官宣并进入昇腾/寒武纪BOM
+    monitor_metrics:
+      - 中芯7nm月产能与良率
+      - 长鑫HBM出货量
+      - 澜起HBM相关收入占比
+    revive_condition: null
+  - name: 国产AI芯片主力（昇腾链/寒武纪/海光）
+    suggested_slug: cn-domestic-ai-chip
+    topic_created: true
+    topic_slug: cn-domestic-ai-chip
+    scores:
+      profit_pool: 5
+      growth: 5
+      competition: 4
+      valuation: 1
+      cycle: 4
+      composite: 3.8
+    tier: deep
+    tier_reason: 国产替代兑现层核心(寒武纪FY25+453%已证实),但估值维度仅1分(PE369x),深挖为选真受益者+等产能验证与估值消化后入场,非现在买
+    upgrade_triggers:
+      - 估值回调至26E PE<80x 且 命门A1产能验证兑现
+      - 国产卡国内新增数据中心份额延续上行(未被H20/B30挤回落)
+    monitor_metrics:
+      - 寒武纪季度营收与客户集中度
+      - 昇腾出货量草根调研
+      - 国产卡vs H20/B30份额斜率
+    revive_condition: null
+  - name: 光模块（中际旭创/新易盛）
+    suggested_slug: cn-optical-module
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 4
+      competition: 4
+      valuation: 2
+      cycle: 3
+      composite: 3.4
+    tier: watch
+    tier_reason: 业绩强(净利破百亿)但全球capex-beta绑英伟达周期,DeepSeek效率威胁量逻辑,增速斜率放缓,赚业绩不赚估值
+    upgrade_triggers:
+      - 北美云厂2027 capex指引确认延续高增(A3坐实)且估值回到PEG<0.5
+    monitor_metrics:
+      - 英伟达capex指引
+      - 800G→1.6T出货曲线
+      - 中际旭创海外收入占比与汇兑
+    revive_condition: null
+  - name: 配套硬件（液冷/连接器/内存接口/PCB）
+    suggested_slug: cn-ai-compute-components
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 4
+      valuation: 2
+      cycle: 4
+      composite: 3.4
+    tier: watch
+    tier_reason: 内部分化大,连接器(华丰)/内存接口(澜起)有真国产壁垒值得单拆,液冷/PCB是纯capex增量,整体暂观察
+    upgrade_triggers:
+      - 某细分(如高速连接器)被证实是昇腾链国产化率跃升的瓶颈受益者
+    monitor_metrics:
+      - 华丰/澜起昇腾相关订单
+      - 液冷渗透率
+    revive_condition: null
+  - name: AI服务器ODM（工业富联/华鲲振宇/浪潮）
+    suggested_slug: cn-ai-server-odm
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 4
+      growth: 4
+      competition: 3
+      valuation: 3
+      cycle: 3
+      composite: 3.4
+    tier: watch
+    tier_reason: 估值最不贵(工业富联PE35x/PS1.44x)但毛利仅7%靠短债垫资,纯capex-beta质量差,作为beta最便宜表达备选非主攻
+    upgrade_triggers:
+      - consign模式转换带来的毛利率结构性改善被证实可持续
+    monitor_metrics:
+      - AI服务器毛利率
+      - GB200出货份额
+      - 经营现金流质量
+    revive_condition: null
+  - name: 智算中心/IDC（润泽/万国/世纪互联）
+    suggested_slug: cn-idc-compute-center
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 3
+      valuation: 3
+      cycle: 2
+      composite: 3.0
+    tier: watch
+    tier_reason: 出租率20-30%国产卡闲置70-80%,多数靠补贴回报模型未普遍验证,仅头部第三方IDC有马太效应
+    upgrade_triggers:
+      - 某头部IDC上架率突破70%且单IT收入企稳
+    monitor_metrics:
+      - 润泽/万国上架率
+      - 智算中心招标价与折旧
+      - 推理需求对闲置的盘活率
+    revive_condition: null
+  - name: 国产GPU创业梯队（摩尔线程/沐曦/壁仞/燧原）
+    suggested_slug: cn-gpu-startups
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 3
+      competition: 2
+      valuation: 1
+      cycle: 3
+      composite: 2.2
+    tier: eliminated
+    tier_reason: 巨亏(沐曦净亏33亿/摩尔线程净亏50亿)+一二级估值倒挂+落后昇腾寒武纪+短期被卡脖子
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 某家实现规模营收+毛利转正,或拿到昇腾之外第二大客户生态
+
+cluster_tags: [ai-compute, china-domestic-substitution, semiconductor]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 2
+    kind: data-missing
+    note: 精确Wind 2027-28E一致预期缺,PE/PS多为媒体/卖方转引(mat-27eea4自述),27E后估值反推口径偏软
+  - ring: 1
+    kind: data-missing
+    note: 命门A1硬数据缺——中芯7nm实际良率/可分配昇腾产能上限、长鑫HBM3进BOM时间表容量均传闻多官方少(mat-bcc950)
+  - ring: 4
+    kind: data-missing
+    note: IDC层单项目ROI/头部上架率精确值缺,智算中心估值维度靠润泽单一标的代表
+  - ring: 4
+    kind: training-estimate
+    note: 7个arena的周期定位维度为训练知识+findings综合判断,非逐一findings实测

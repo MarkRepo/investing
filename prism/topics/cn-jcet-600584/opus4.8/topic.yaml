@@ -1,0 +1,46 @@
+slug: cn-jcet-600584
+display_name: 长电科技
+type: company
+created: '2026-07-02T06:24:07.431582+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-advanced-mfg-hbm
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 长电高端封装(XDFOI/CPO/玻璃基板)与HBM后段封测能否把全球第三OSAT地位转成利润弹性、盈利拐点可持续性
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_600584
+  market: SSE
+  short_name: 长电科技
+  search_terms:
+  - 长电科技
+  - 先进封装
+  - XDFOI
+  - HBM封测
+  - 盈利拐点
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-02T06:25:43.912578+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-02T06:25:43.912583+00:00'
+    summary: 全球第三OSAT，XDFOI/CPO/玻璃基板全栈+Q1盈利拐点，直卡HBM后段封测；但净利率仅4%、高端主平台仍亏损——命门在高端封装能否从营收放量转成利润弹性。强度4.5

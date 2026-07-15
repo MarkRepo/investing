@@ -1,4 +1,1401 @@
 slug: cn-pd1-vegf-bispecific
 variant: opus4.8
-updated: '2026-05-30T14:59:15.143395+00:00'
-materials: []
+updated: '2026-07-10T07:40:48.499369+00:00'
+materials:
+- id: mat-b27f17
+  filename: 2026-07-10_summit-therapeutics-inc---ivonescimab-data-from-gl.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.231528+00:00'
+  processed: false
+  notes: query='康方 依沃西 ivonescimab HARMONi 全球三期 OS 最终结果 Summit 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 康方 依沃西 ivonescimab HARMONi 全球三期 OS 最终结果 Summit 2025 2026
+    url: https://smmttx.com/news/press-releases/news-details/2025/Ivonescimab-Data-from-Global-Phase-III-HARMONi-Study-to-be-Showcased-at-Presidential-Symposium-at-WCLC-2025/default.aspx
+    domain: smmttx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.230511+00:00'
+    stale_at: '2026-08-09T04:10:59.230511+00:00'
+    expire_at: '2026-10-08T04:10:59.230511+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-420b27
+  filename: 2026-07-10_ivonescimab-harmoni-a-study-final-os-analysis-resu.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.236118+00:00'
+  processed: false
+  notes: query='康方 依沃西 ivonescimab HARMONi 全球三期 OS 最终结果 Summit 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 康方 依沃西 ivonescimab HARMONi 全球三期 OS 最终结果 Summit 2025 2026
+    url: https://www.prnewswire.com/news-releases/ivonescimab-harmoni-a-study-final-os-analysis-results-presented-at-sitc-2025-with-os-hr0-74--302608764.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.233610+00:00'
+    stale_at: '2026-08-09T04:10:59.233610+00:00'
+    expire_at: '2026-10-08T04:10:59.233610+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-85c754
+  filename: 2026-07-10_akeso-inc-ivonescimab-plus-chemotherapy-demonstrat.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.241181+00:00'
+  processed: false
+  notes: query='康方 依沃西 ivonescimab HARMONi 全球三期 OS 最终结果 Summit 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 康方 依沃西 ivonescimab HARMONi 全球三期 OS 最终结果 Summit 2025 2026
+    url: https://www.akesobio.com/en/media/akeso-news/250907
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.239856+00:00'
+    stale_at: '2026-08-09T04:10:59.239856+00:00'
+    expire_at: '2026-10-08T04:10:59.239856+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1c56f5
+  filename: 2026-07-10_harmoni-2-demonstrating-significant-improvement-in.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.247748+00:00'
+  processed: false
+  notes: query='依沃西 HARMONi-2 OS overall survival 一线 NSCLC 帕博利珠单抗 head to head 2025'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 HARMONi-2 OS overall survival 一线 NSCLC 帕博利珠单抗 head to head 2025
+    url: https://www.jhoponline.com/web-exclusives/harmoni-2-demonstrating-significant-improvement-in-pfs-with-ivonescimab-over-pembrolizumab
+    domain: jhoponline.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.246014+00:00'
+    stale_at: '2026-08-09T04:10:59.246014+00:00'
+    expire_at: '2026-10-08T04:10:59.246014+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1ce90f
+  filename: 2026-07-10_summit-therapeutics-inc---interim-overall-survival.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.254559+00:00'
+  processed: false
+  notes: query='依沃西 HARMONi-2 OS overall survival 一线 NSCLC 帕博利珠单抗 head to head 2025'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 HARMONi-2 OS overall survival 一线 NSCLC 帕博利珠单抗 head to head 2025
+    url: https://smmttx.com/news/press-releases/news-details/2025/Interim-Overall-Survival-Analysis-Requested-from-Chinese-Health-Authorities-Shows-a-Clinically-Meaningful-Positive-Trend-Favoring-Ivonescimab-Compared-to-Pembrolizumab-in-PD-L1-Positive-Advanced-NSCLC-from-HARMONi-2-Study-Conducted-by-Akeso-in-China/default.aspx
+    domain: smmttx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.252469+00:00'
+    stale_at: '2026-08-09T04:10:59.252469+00:00'
+    expire_at: '2026-10-08T04:10:59.252469+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-116199
+  filename: 2026-07-10_harmoni-2-ivonescimab-outperforms-pembrolizumab-in.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.261981+00:00'
+  processed: false
+  notes: query='依沃西 HARMONi-2 OS overall survival 一线 NSCLC 帕博利珠单抗 head to head 2025'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 HARMONi-2 OS overall survival 一线 NSCLC 帕博利珠单抗 head to head 2025
+    url: https://www.cancertherapyadvisor.com/reports/harmoni-2-ivonescimab-outperforms-pembrolizumab-in-advanced-nsclc
+    domain: cancertherapyadvisor.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.259652+00:00'
+    stale_at: '2026-08-09T04:10:59.259652+00:00'
+    expire_at: '2026-10-08T04:10:59.259652+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-43d5ae
+  filename: 2026-07-10_fda-accepts-bla-for-ivonescimab-plus-chemotherapy-.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.271071+00:00'
+  processed: false
+  notes: query='Summit Therapeutics ivonescimab FDA BLA submission registration timeline
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Summit Therapeutics ivonescimab FDA BLA submission registration timeline
+      2026
+    url: https://oncodaily.com/fda-approvals/ivonescimab
+    domain: oncodaily.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.268354+00:00'
+    stale_at: '2026-08-09T04:10:59.268354+00:00'
+    expire_at: '2026-10-08T04:10:59.268354+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-284c4c
+  filename: 2026-07-10_summit-therapeutics-inc---summit-therapeutics-anno.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.280475+00:00'
+  processed: false
+  notes: query='Summit Therapeutics ivonescimab FDA BLA submission registration timeline
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Summit Therapeutics ivonescimab FDA BLA submission registration timeline
+      2026
+    url: https://smmttx.com/news/press-releases/news-details/2026/Summit-Therapeutics-Announces-Submission-of-Biologics-License-Application-BLA-to-U-S--FDA-Seeking-Approval-for-Ivonescimab-in-Combination-with-Chemotherapy-in-2L-Treatment-of-Patients-with-EGFRm-NSCLC/default.aspx
+    domain: smmttx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.277331+00:00'
+    stale_at: '2026-08-09T04:10:59.277331+00:00'
+    expire_at: '2026-10-08T04:10:59.277331+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6b37f5
+  filename: 2026-07-10_fda-accepts-ivonescimab-application-for-egfr-lung-.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.290788+00:00'
+  processed: false
+  notes: query='Summit Therapeutics ivonescimab FDA BLA submission registration timeline
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Summit Therapeutics ivonescimab FDA BLA submission registration timeline
+      2026
+    url: https://www.curetoday.com/view/fda-accepts-ivonescimab-application-for-egfr-lung-cancer
+    domain: curetoday.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.287387+00:00'
+    stale_at: '2026-08-09T04:10:59.287387+00:00'
+    expire_at: '2026-10-08T04:10:59.287387+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b26c1c
+  filename: 2026-07-10_pfizer-pays-3sbio-1-25b-for-pd-1xvegf-bispecific.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.301665+00:00'
+  processed: false
+  notes: query='Pfizer 三生制药 3SBio SSGJ-707 PD-1 VEGF 授权 deal upfront milestone 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Pfizer 三生制药 3SBio SSGJ-707 PD-1 VEGF 授权 deal upfront milestone 2025
+    url: https://www.fiercebiotech.com/biotech/pfizer-pays-3sbio-125b-pd-1xvegf-bispecific-joining-biontech-merck-and-summit-red-hot-race
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.297913+00:00'
+    stale_at: '2026-08-09T04:10:59.297913+00:00'
+    expire_at: '2026-10-08T04:10:59.297913+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-52552d
+  filename: 2026-07-10_pfizer-pays-1-25b-upfront-for-rights-to-pd-1-vegf-.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.312710+00:00'
+  processed: false
+  notes: query='Pfizer 三生制药 3SBio SSGJ-707 PD-1 VEGF 授权 deal upfront milestone 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Pfizer 三生制药 3SBio SSGJ-707 PD-1 VEGF 授权 deal upfront milestone 2025
+    url: https://firstwordpharma.com/story/5963396
+    domain: firstwordpharma.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.308580+00:00'
+    stale_at: '2026-08-09T04:10:59.308580+00:00'
+    expire_at: '2026-10-08T04:10:59.308580+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bf1674
+  filename: 2026-07-10_pfizer-enters-into-exclusive-licensing-agreement-w.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.326026+00:00'
+  processed: false
+  notes: query='Pfizer 三生制药 3SBio SSGJ-707 PD-1 VEGF 授权 deal upfront milestone 2025'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Pfizer 三生制药 3SBio SSGJ-707 PD-1 VEGF 授权 deal upfront milestone 2025
+    url: https://www.pfizer.com/news/press-release/press-release-detail/pfizer-enters-exclusive-licensing-agreement-3sbio
+    domain: pfizer.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.321359+00:00'
+    stale_at: '2026-08-09T04:10:59.321359+00:00'
+    expire_at: '2026-10-08T04:10:59.321359+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-13ad79
+  filename: 2026-07-10_biontech-and-bristol-myers-squibb-announce-global.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.341913+00:00'
+  processed: false
+  notes: query='BioNTech BMS Bristol Myers BNT327 PM8002 global collaboration deal
+    value 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: BioNTech BMS Bristol Myers BNT327 PM8002 global collaboration deal value
+      2025
+    url: https://www.biontech.com/int/en/home/mediaroom/news/press-releases/2025/06/biontech-and-bristol-myers-squibb-announce-global-strategic.html
+    domain: biontech.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.336870+00:00'
+    stale_at: '2026-08-09T04:10:59.336870+00:00'
+    expire_at: '2026-10-08T04:10:59.336870+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ecdeaf
+  filename: 2026-07-10_pdf-a-transformative-global-partnership-for-bnt327.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.356960+00:00'
+  processed: false
+  notes: query='BioNTech BMS Bristol Myers BNT327 PM8002 global collaboration deal
+    value 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: BioNTech BMS Bristol Myers BNT327 PM8002 global collaboration deal value
+      2025
+    url: https://www.bms.com/assets/bms/us/en-us/pdf/investor-info/doc_presentations/2025/BioNTech-BMS-Partnership-Presentation.pdf
+    domain: bms.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.351694+00:00'
+    stale_at: '2026-08-09T04:10:59.351694+00:00'
+    expire_at: '2026-10-08T04:10:59.351694+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5b1086
+  filename: 2026-07-10_biontech-to-receive-up-to-11-1-billion-in-deal-wit.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.372794+00:00'
+  processed: false
+  notes: query='BioNTech BMS Bristol Myers BNT327 PM8002 global collaboration deal
+    value 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: BioNTech BMS Bristol Myers BNT327 PM8002 global collaboration deal value
+      2025
+    url: https://www.biopharminternational.com/view/biontech-to-receive-up-to-11-1-billion-in-deal-with-bms-to-develop-immuno-oncology-agent
+    domain: biopharminternational.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.367234+00:00'
+    stale_at: '2026-08-09T04:10:59.367234+00:00'
+    expire_at: '2026-10-08T04:10:59.367234+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3d97cc
+  filename: 2026-07-10_merck-enters-into-exclusive-global-license-for-lm-.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.390702+00:00'
+  processed: false
+  notes: query='Merck 默克 礼新 LaNova LM-299 PD-1 VEGF bispecific license deal 2024 2025'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Merck 默克 礼新 LaNova LM-299 PD-1 VEGF bispecific license deal 2024 2025
+    url: https://www.merck.com/news/merck-enters-into-exclusive-global-license-for-lm-299-an-investigational-anti-pd-1-vegf-bispecific-antibody-from-lanova-medicines-ltd
+    domain: merck.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.384851+00:00'
+    stale_at: '2026-08-09T04:10:59.384851+00:00'
+    expire_at: '2026-10-08T04:10:59.384851+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-aca99b
+  filename: 2026-07-10_merck-closes-exclusive-global-license-agreement-fo.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.408194+00:00'
+  processed: false
+  notes: query='Merck 默克 礼新 LaNova LM-299 PD-1 VEGF bispecific license deal 2024 2025'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Merck 默克 礼新 LaNova LM-299 PD-1 VEGF bispecific license deal 2024 2025
+    url: https://www.merck.com/news/merck-closes-exclusive-global-license-agreement-for-lm-299-an-investigational-anti-pd-1-vegf-bispecific-antibody
+    domain: merck.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.402037+00:00'
+    stale_at: '2026-08-09T04:10:59.402037+00:00'
+    expire_at: '2026-10-08T04:10:59.402037+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ce3825
+  filename: 2026-07-10_merck-hops-onto-pd-1-vegf-train-committing-up-to-3.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.426707+00:00'
+  processed: false
+  notes: query='Merck 默克 礼新 LaNova LM-299 PD-1 VEGF bispecific license deal 2024 2025'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Merck 默克 礼新 LaNova LM-299 PD-1 VEGF bispecific license deal 2024 2025
+    url: https://www.biospace.com/business/merck-hops-onto-pd-1-vegf-train-committing-up-to-3b-plus-in-lanova-deal
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.420094+00:00'
+    stale_at: '2026-08-09T04:10:59.420094+00:00'
+    expire_at: '2026-10-08T04:10:59.420094+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6afaec
+  filename: 2026-07-10_pdf-康方生物2025-年报业绩演示材料.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.447970+00:00'
+  processed: false
+  notes: query='依沃西 康方 中国 获批 适应症 销售额 2025 半年报 商业化' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 康方 中国 获批 适应症 销售额 2025 半年报 商业化
+    url: https://www.akesobio.com/media/2808/akeso%E8%B7%AF%E6%BC%94%E6%9D%90%E6%96%99-20260327-final-%E7%BD%91%E7%BB%9C%E7%89%88.pdf
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.440937+00:00'
+    stale_at: '2026-08-09T04:10:59.440937+00:00'
+    expire_at: '2026-10-08T04:10:59.440937+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-62cfc9
+  filename: 2026-07-10_pdf-2025年h1业绩发布---康方生物.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.468309+00:00'
+  processed: false
+  notes: query='依沃西 康方 中国 获批 适应症 销售额 2025 半年报 商业化' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 康方 中国 获批 适应症 销售额 2025 半年报 商业化
+    url: https://www.akesobio.com/media/2655/2025%E5%B9%B4%E5%BA%A6%E4%B8%AD%E6%9C%9F%E4%B8%9A%E7%BB%A9.pdf
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.461056+00:00'
+    stale_at: '2026-08-09T04:10:59.461056+00:00'
+    expire_at: '2026-10-08T04:10:59.461056+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-37c6e1
+  filename: 2026-07-10_双抗出击-康方新药商业化销售突破20亿-研发成果大爆发医药新闻-bydrug-一站式医药资源共享中心.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.488760+00:00'
+  processed: false
+  notes: query='依沃西 康方 中国 获批 适应症 销售额 2025 半年报 商业化'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 依沃西 康方 中国 获批 适应症 销售额 2025 半年报 商业化
+    url: https://bydrug.pharmcube.com/news/detail/20d03595e04f6369efb1ef37a0f7a68b
+    domain: bydrug.pharmcube.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.480705+00:00'
+    stale_at: '2026-08-09T04:10:59.480705+00:00'
+    expire_at: '2026-10-08T04:10:59.480705+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9e9ca8
+  filename: 2026-07-10_康方赢了k药却没赢市场-夏瑜-2025数据一定好看-财经频道-中华网.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.512571+00:00'
+  processed: false
+  notes: query='依沃西 康方 中国 获批 适应症 销售额 2025 半年报 商业化' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 依沃西 康方 中国 获批 适应症 销售额 2025 半年报 商业化
+    url: https://finance.china.com/yiyao/13004692/20250403/48166781.html
+    domain: finance.china.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.503884+00:00'
+    stale_at: '2026-08-09T04:10:59.503884+00:00'
+    expire_at: '2026-10-08T04:10:59.503884+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-75aa7f
+  filename: 2026-07-10_400亿-天价-大单-国产pd-1-vegf双抗有新斩获-创新药出海热潮涌动.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.537185+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 出海 授权 交易 汇总 2025 2026 MNC license bispecific China'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PD-1 VEGF 双抗 出海 授权 交易 汇总 2025 2026 MNC license bispecific China
+    url: https://www.cls.cn/detail/2035849
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.528684+00:00'
+    stale_at: '2026-08-09T04:10:59.528684+00:00'
+    expire_at: '2026-10-08T04:10:59.528684+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c77e25
+  filename: 2026-07-10_license-out首付款超一级市场融资-2025h1全球医药交易要点总结-附报告下载医药新闻-b.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.560648+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 出海 授权 交易 汇总 2025 2026 MNC license bispecific China'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PD-1 VEGF 双抗 出海 授权 交易 汇总 2025 2026 MNC license bispecific China
+    url: https://www.pharmcube.com/newsLibrary/detail?id=e3e01be03eb3daff1a53fb1741efe704
+    domain: pharmcube.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.551701+00:00'
+    stale_at: '2026-08-09T04:10:59.551701+00:00'
+    expire_at: '2026-10-08T04:10:59.551701+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a2afa3
+  filename: 2026-07-10_mnc-不断加码io-双抗-2026-年重磅催化有望持续.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.584414+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 出海 授权 交易 汇总 2025 2026 MNC license bispecific China'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PD-1 VEGF 双抗 出海 授权 交易 汇总 2025 2026 MNC license bispecific China
+    url: https://pdf.dfcfw.com/pdf/H3_AP202601191818096137_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.575282+00:00'
+    stale_at: '2026-08-09T04:10:59.575282+00:00'
+    expire_at: '2026-10-08T04:10:59.575282+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-45c870
+  filename: 2026-07-10_闯关fda-pd--l-1-vegf双抗的十字路口-同写意--领航中国新药-赋能创新发展.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.611327+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 出海 授权 交易 汇总 2025 2026 MNC license bispecific China' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PD-1 VEGF 双抗 出海 授权 交易 汇总 2025 2026 MNC license bispecific China
+    url: https://www.tonacea.com/HUIYI_1/859.html
+    domain: tonacea.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.601760+00:00'
+    stale_at: '2026-08-09T04:10:59.601760+00:00'
+    expire_at: '2026-10-08T04:10:59.601760+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c1956a
+  filename: 2026-07-10_三生制药-01530-hk.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.639916+00:00'
+  processed: false
+  notes: query='康方生物 09926 三生制药 01530 市值 估值 现金 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 康方生物 09926 三生制药 01530 市值 估值 现金 2025 2026
+    url: https://pdf.dfcfw.com/pdf/H3_AP202504021650159591_1.pdf?1743579308000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.629972+00:00'
+    stale_at: '2026-08-09T04:10:59.629972+00:00'
+    expire_at: '2026-10-08T04:10:59.629972+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0c470e
+  filename: 2026-07-10_告别普涨-哪些创新药企-真金不怕火炼-丨-前瞻专题---21经济网.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.667054+00:00'
+  processed: false
+  notes: query='康方生物 09926 三生制药 01530 市值 估值 现金 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 康方生物 09926 三生制药 01530 市值 估值 现金 2025 2026
+    url: https://www.21jingji.com/article/20260124/herald/97feee37305326e6f1b23a864cbbdc69.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.656670+00:00'
+    stale_at: '2026-08-09T04:10:59.656670+00:00'
+    expire_at: '2026-10-08T04:10:59.656670+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-36211e
+  filename: 2026-07-10_akeso-s-pd-1-vegf-bispecific-antibody-demonstrates.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.698241+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 安全性 出血 鳞癌 ivonescimab bleeding safety concern HARMONi'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PD-1 VEGF 双抗 安全性 出血 鳞癌 ivonescimab bleeding safety concern HARMONi
+    url: https://www.pharmexec.com/view/akeso-pd-1-vegf-bispecific-antibody-demonstrates-meaningful-progression-free-survival-benefits-advanced-squamous-nsclc
+    domain: pharmexec.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.687518+00:00'
+    stale_at: '2026-08-09T04:10:59.687518+00:00'
+    expire_at: '2026-10-08T04:10:59.687518+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0b2947
+  filename: 2026-07-10_safety-pharmacokinetics-and-pharmacodynamics-evalu.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.727828+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 安全性 出血 鳞癌 ivonescimab bleeding safety concern HARMONi'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PD-1 VEGF 双抗 安全性 出血 鳞癌 ivonescimab bleeding safety concern HARMONi
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11925807
+    domain: pmc.ncbi.nlm.nih.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.717036+00:00'
+    stale_at: '2026-08-09T04:10:59.717036+00:00'
+    expire_at: '2026-10-08T04:10:59.717036+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9dd8e5
+  filename: 2026-07-10_ivonescimab-a-pd-1-vegf-bispecific-antibody-challe.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.758280+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 安全性 出血 鳞癌 ivonescimab bleeding safety concern HARMONi'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PD-1 VEGF 双抗 安全性 出血 鳞癌 ivonescimab bleeding safety concern HARMONi
+    url: https://actr.amegroups.org/article/view/13121/html
+    domain: actr.amegroups.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.747111+00:00'
+    stale_at: '2026-08-09T04:10:59.747111+00:00'
+    expire_at: '2026-10-08T04:10:59.747111+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-44c22e
+  filename: 2026-07-10_康方生物---akeso-inc-依沃西一线治疗pd-l1高表达nsclc国际多中心-期-vs帕博利.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.792692+00:00'
+  processed: false
+  notes: query='ivonescimab 依沃西 HARMONi-3 HARMONi-6 HARMONi-7 readout 结果 进展 2025 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ivonescimab 依沃西 HARMONi-3 HARMONi-6 HARMONi-7 readout 结果 进展 2025 2026
+    url: https://www.akesobio.com/cn/media/akeso-news/20250829
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.781192+00:00'
+    stale_at: '2026-08-09T04:10:59.781192+00:00'
+    expire_at: '2026-10-08T04:10:59.781192+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5c8eef
+  filename: 2026-07-10_康方生物---akeso-inc-40-项创新研究成果将在asco盛大发布-依沃西harmoni-6.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.824880+00:00'
+  processed: false
+  notes: query='ivonescimab 依沃西 HARMONi-3 HARMONi-6 HARMONi-7 readout 结果 进展 2025 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ivonescimab 依沃西 HARMONi-3 HARMONi-6 HARMONi-7 readout 结果 进展 2025 2026
+    url: https://www.akesobio.com/cn/media/akeso-news/20260526
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.813019+00:00'
+    stale_at: '2026-08-09T04:10:59.813019+00:00'
+    expire_at: '2026-10-08T04:10:59.813019+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9a805b
+  filename: 2026-07-10_数据向好-康方跌倒--同写意--领航中国新药-赋能创新发展.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.858061+00:00'
+  processed: false
+  notes: query='ivonescimab 依沃西 HARMONi-3 HARMONi-6 HARMONi-7 readout 结果 进展 2025 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ivonescimab 依沃西 HARMONi-3 HARMONi-6 HARMONi-7 readout 结果 进展 2025 2026
+    url: https://www.tonacea.com/HUIYI_1/741.html
+    domain: tonacea.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.845759+00:00'
+    stale_at: '2026-08-09T04:10:59.845759+00:00'
+    expire_at: '2026-10-08T04:10:59.845759+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cb4949
+  filename: 2026-07-10_summit-s-checkpoint-inhibitor-trumps-keytruda-in-l.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.897003+00:00'
+  processed: false
+  notes: query='ivonescimab 依沃西 vs Keytruda 头对头 数据 质疑 争议 skepticism cross-trial ASCO
+    WCLC 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ivonescimab 依沃西 vs Keytruda 头对头 数据 质疑 争议 skepticism cross-trial ASCO WCLC
+      2025
+    url: https://www.clinicaltrialsarena.com/news/summits-checkpoint-inhibitor-trumps-keytruda-in-lung-cancer-trial
+    domain: clinicaltrialsarena.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.883454+00:00'
+    stale_at: '2026-08-09T04:10:59.883454+00:00'
+    expire_at: '2026-10-08T04:10:59.883454+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-75e63f
+  filename: 2026-07-10_summit-s-keytruda-challenger-faces-more-questions-.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.933982+00:00'
+  processed: false
+  notes: query='ivonescimab 依沃西 vs Keytruda 头对头 数据 质疑 争议 skepticism cross-trial ASCO
+    WCLC 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: ivonescimab 依沃西 vs Keytruda 头对头 数据 质疑 争议 skepticism cross-trial ASCO WCLC
+      2025
+    url: https://firstwordpharma.com/story/5995374
+    domain: firstwordpharma.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:10:59.919750+00:00'
+    stale_at: '2026-08-09T04:10:59.919750+00:00'
+    expire_at: '2026-10-08T04:10:59.919750+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cb4d24
+  filename: 2026-07-10_advanced-pd-l1-positive-nsclc-ivonescimab-vs-pembr.md
+  source_type: web-search
+  added: '2026-07-10T04:10:59.973198+00:00'
+  processed: false
+  notes: query='ivonescimab 依沃西 vs Keytruda 头对头 数据 质疑 争议 skepticism cross-trial ASCO
+    WCLC 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ivonescimab 依沃西 vs Keytruda 头对头 数据 质疑 争议 skepticism cross-trial ASCO WCLC
+      2025
+    url: https://ascopost.com/news/march-2025/advanced-pd-l1-positive-nsclc-ivonescimab-vs-pembrolizumab
+    domain: ascopost.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:10:59.958598+00:00'
+    stale_at: '2026-08-09T04:10:59.958598+00:00'
+    expire_at: '2026-10-08T04:10:59.958598+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-900e7b
+  filename: 2026-07-10_康方生物---akeso-inc-asco口头报告-依沃西联合方案新辅助治疗可切除局部晚期头颈鳞癌i.md
+  source_type: web-search
+  added: '2026-07-10T04:11:53.593680+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 依沃西 康方 最新 进展 催化 2026 2季度 3季度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PD-1 VEGF 双抗 依沃西 康方 最新 进展 催化 2026 2季度 3季度
+    url: https://www.akesobio.com/cn/media/akeso-news/20260604
+    domain: akesobio.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:11:53.578518+00:00'
+    stale_at: '2026-08-09T04:11:53.578518+00:00'
+    expire_at: '2026-10-08T04:11:53.578518+00:00'
+    triggered_by: 00-prescan
+- id: mat-b7243e
+  filename: 2026-07-10_2026年全球双特异性抗体核心管线深度解析-依沃西单抗os碾压pd-1-双抗adc强势崛起-摩熵医药.md
+  source_type: web-search
+  added: '2026-07-10T04:11:53.632358+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 依沃西 康方 最新 进展 催化 2026 2季度 3季度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PD-1 VEGF 双抗 依沃西 康方 最新 进展 催化 2026 2季度 3季度
+    url: https://www.pharnexcloud.com/zixun/sd_324276
+    domain: pharnexcloud.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:11:53.617664+00:00'
+    stale_at: '2026-08-09T04:11:53.617664+00:00'
+    expire_at: '2026-10-08T04:11:53.617664+00:00'
+    triggered_by: 00-prescan
+- id: mat-4c5439
+  filename: 2026-07-10_pdf-全球肿瘤免疫研发进入双抗-adc-联用新阶段.md
+  source_type: web-search
+  added: '2026-07-10T04:11:53.670695+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 依沃西 康方 最新 进展 催化 2026 2季度 3季度'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: PD-1 VEGF 双抗 依沃西 康方 最新 进展 催化 2026 2季度 3季度
+    url: https://pdf.dfcfw.com/pdf/H3_AP202503021643657079_1.pdf?1740933894000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:11:53.656310+00:00'
+    stale_at: '2026-08-09T04:11:53.656310+00:00'
+    expire_at: '2026-10-08T04:11:53.656310+00:00'
+    triggered_by: 00-prescan
+- id: mat-07b790
+  filename: 2026-07-10_pd-1-vegf双抗与claudin-18-2-adc联合疗法开发.md
+  source_type: web-search
+  added: '2026-07-10T04:11:53.710200+00:00'
+  processed: false
+  notes: query='PD-1 VEGF 双抗 依沃西 康方 最新 进展 催化 2026 2季度 3季度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: PD-1 VEGF 双抗 依沃西 康方 最新 进展 催化 2026 2季度 3季度
+    url: https://www.lanovamedicines.com/news-center/press-release/51.html
+    domain: lanovamedicines.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:11:53.695527+00:00'
+    stale_at: '2026-08-09T04:11:53.695527+00:00'
+    expire_at: '2026-10-08T04:11:53.695527+00:00'
+    triggered_by: 00-prescan
+- id: mat-b8a4bd
+  filename: 2026-07-10_下一代io-竞争进入深水区-pd--l-1-vegf-双抗成mnc-必争之地.md
+  source_type: web-search
+  added: '2026-07-10T04:11:53.753380+00:00'
+  processed: false
+  notes: query='MNC 自研 PD-1 VEGF 双抗 辉瑞 阿斯利康 罗氏 in-house 竞争 China bispecific pipeline'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: MNC 自研 PD-1 VEGF 双抗 辉瑞 阿斯利康 罗氏 in-house 竞争 China bispecific pipeline
+    url: https://www.emedclub.com/information/view/g3rgGWc1TuvsMpKOi_vFO
+    domain: emedclub.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:11:53.738135+00:00'
+    stale_at: '2026-08-09T04:11:53.738135+00:00'
+    expire_at: '2026-10-08T04:11:53.738135+00:00'
+    triggered_by: 00-prescan
+- id: mat-e10124
+  filename: 2026-07-10_pd-1-vegf双抗的-一盆冷水.md
+  source_type: web-search
+  added: '2026-07-10T04:11:53.793620+00:00'
+  processed: false
+  notes: query='MNC 自研 PD-1 VEGF 双抗 辉瑞 阿斯利康 罗氏 in-house 竞争 China bispecific pipeline'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: MNC 自研 PD-1 VEGF 双抗 辉瑞 阿斯利康 罗氏 in-house 竞争 China bispecific pipeline
+    url: https://www.phirda.com/artilce_40750.html?module=trackingCodeGenerator
+    domain: phirda.com
+    domain_tier: whitelist
+    searched_at: '2026-07-10T04:11:53.778190+00:00'
+    stale_at: '2026-08-09T04:11:53.778190+00:00'
+    expire_at: '2026-10-08T04:11:53.778190+00:00'
+    triggered_by: 00-prescan
+- id: mat-e2cd0f
+  filename: 2026-07-10_leveraging-a-us-chinese-biotech-collaboration-to-d.md
+  source_type: web-search
+  added: '2026-07-10T04:11:53.838300+00:00'
+  processed: false
+  notes: query='MNC 自研 PD-1 VEGF 双抗 辉瑞 阿斯利康 罗氏 in-house 竞争 China bispecific pipeline'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: MNC 自研 PD-1 VEGF 双抗 辉瑞 阿斯利康 罗氏 in-house 竞争 China bispecific pipeline
+    url: https://www.fiercebiotech.com/editorial/leveraging-a-us-chinese-biotech-collaboration-to-develop-a-pd-1vegf-bispecific-antibody
+    domain: fiercebiotech.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:11:53.821147+00:00'
+    stale_at: '2026-08-09T04:11:53.821147+00:00'
+    expire_at: '2026-10-08T04:11:53.821147+00:00'
+    triggered_by: 00-prescan
+- id: mat-8b2afc
+  filename: 2025_HK09926_annual_2026-04-29_AKESO.pdf
+  source_type: annual-report
+  added: '2026-07-10T04:18:10.243625+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — AKESO
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-ea3ff5
+  filename: 2025_HK01530_annual_2026-04-29_3SBIO.pdf
+  source_type: annual-report
+  added: '2026-07-10T04:18:15.225402+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 3SBIO
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-d44dd5
+  filename: 2026_SMMT_10-Q_2026-04-30.htm
+  source_type: quarterly-report
+  added: '2026-07-10T04:18:35.051426+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Summit Therapeutics Inc.
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-2cc57c
+  filename: sec/2026_SMMT_10-Q_2026-04-30/item_1_financial.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:35.167051+00:00'
+  processed: true
+  notes: split from 2026_SMMT_10-Q_2026-04-30.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-d44dd5
+  sec_section: item_1_financial
+- id: mat-4faca1
+  filename: sec/2026_SMMT_10-Q_2026-04-30/item_2_mda.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:35.194171+00:00'
+  processed: true
+  notes: split from 2026_SMMT_10-Q_2026-04-30.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-d44dd5
+  sec_section: item_2_mda
+- id: mat-520ca8
+  filename: sec/2026_SMMT_10-Q_2026-04-30/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:35.221401+00:00'
+  processed: true
+  notes: split from 2026_SMMT_10-Q_2026-04-30.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-d44dd5
+  sec_section: item_3_quant_risk
+- id: mat-9bd5be
+  filename: sec/2026_SMMT_10-Q_2026-04-30/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:35.248833+00:00'
+  processed: true
+  notes: split from 2026_SMMT_10-Q_2026-04-30.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-d44dd5
+  sec_section: item_1a_risk
+- id: mat-f3f4e2
+  filename: 2025_SMMT_10-K_2026-02-23.htm
+  source_type: annual-report
+  added: '2026-07-10T04:18:35.745997+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Summit Therapeutics Inc.
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-4c44f3
+  filename: sec/2025_SMMT_10-K_2026-02-23/item_1_business.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:35.894586+00:00'
+  processed: true
+  notes: split from 2025_SMMT_10-K_2026-02-23.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-f3f4e2
+  sec_section: item_1_business
+- id: mat-63e194
+  filename: sec/2025_SMMT_10-K_2026-02-23/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:35.923042+00:00'
+  processed: true
+  notes: split from 2025_SMMT_10-K_2026-02-23.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-f3f4e2
+  sec_section: item_1a_risk
+- id: mat-77b3da
+  filename: sec/2025_SMMT_10-K_2026-02-23/item_7_mda.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:35.951586+00:00'
+  processed: true
+  notes: split from 2025_SMMT_10-K_2026-02-23.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-f3f4e2
+  sec_section: item_7_mda
+- id: mat-d3f689
+  filename: sec/2025_SMMT_10-K_2026-02-23/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:35.990726+00:00'
+  processed: true
+  notes: split from 2025_SMMT_10-K_2026-02-23.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-f3f4e2
+  sec_section: item_7a_quant_risk
+- id: mat-7dc1f3
+  filename: sec/2025_SMMT_10-K_2026-02-23/item_8_financial.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:36.020227+00:00'
+  processed: true
+  notes: split from 2025_SMMT_10-K_2026-02-23.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-f3f4e2
+  sec_section: item_8_financial
+- id: mat-d02073
+  filename: 2020_SMMT_6-K-earnings_2020-09-17.htm
+  source_type: quarterly-report
+  added: '2026-07-10T04:18:37.041476+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Summit Therapeutics Inc.
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-e45555
+  filename: 2019_SMMT_20-F_2020-04-30.htm
+  source_type: annual-report
+  added: '2026-07-10T04:18:37.694222+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Summit Therapeutics Inc.
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-329811
+  filename: sec/2019_SMMT_20-F_2020-04-30/item_3_key_info.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:38.251962+00:00'
+  processed: true
+  notes: split from 2019_SMMT_20-F_2020-04-30.htm (3)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-e45555
+  sec_section: item_3_key_info
+- id: mat-993c25
+  filename: sec/2019_SMMT_20-F_2020-04-30/item_4_business.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:38.305767+00:00'
+  processed: true
+  notes: split from 2019_SMMT_20-F_2020-04-30.htm (4)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-e45555
+  sec_section: item_4_business
+- id: mat-208b58
+  filename: sec/2019_SMMT_20-F_2020-04-30/item_5_mda.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:38.336982+00:00'
+  processed: true
+  notes: split from 2019_SMMT_20-F_2020-04-30.htm (5)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-e45555
+  sec_section: item_5_mda
+- id: mat-0b2da8
+  filename: sec/2019_SMMT_20-F_2020-04-30/item_11_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:38.368149+00:00'
+  processed: true
+  notes: split from 2019_SMMT_20-F_2020-04-30.htm (11)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-e45555
+  sec_section: item_11_quant_risk
+- id: mat-c30c24
+  filename: sec/2019_SMMT_20-F_2020-04-30/item_18_financial.md
+  source_type: sec-section
+  added: '2026-07-10T04:18:38.399818+00:00'
+  processed: true
+  notes: split from 2019_SMMT_20-F_2020-04-30.htm (18)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-e45555
+  sec_section: item_18_financial
+- id: mat-7e536c
+  filename: 2026-07-10_summit-harmoni-全球os-延长随访-nominal-p-0-0332-hr-0-78-.md
+  source_type: web-search
+  added: '2026-07-10T04:21:27.969729+00:00'
+  processed: true
+  notes: query='HARMONi 全球 OS 详情 FDA 路径' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: HARMONi 全球 OS 详情 FDA 路径
+    url: https://smmttx.com/news/press-releases/news-details/2025/Longer-Term-Follow-Up-of-Western-Patients-Showed-Improving-Favorable-Trend-in-Overall-Survival-in-Global-Phase-III-HARMONi-Clinical-Trial-for-Ivonescimab-Plus-Chemotherapy-in-2L-EGFRm-NSCLC/default.aspx
+    domain: smmttx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:27.949552+00:00'
+    stale_at: '2026-08-09T04:21:27.949552+00:00'
+    expire_at: '2026-10-08T04:21:27.949552+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6f4b3e
+  filename: 2026-07-10_summit-跨国人群一致性问题-raising-us-approval-questions.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.026750+00:00'
+  processed: true
+  notes: query='HARMONi 全球 OS 详情 FDA 路径' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: HARMONi 全球 OS 详情 FDA 路径
+    url: https://www.biospace.com/drug-development/summits-keytruda-challenger-hits-cross-country-consistency-problems-raising-us-approval-questions
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.005911+00:00'
+    stale_at: '2026-08-09T04:21:28.005911+00:00'
+    expire_at: '2026-10-08T04:21:28.005911+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-511037
+  filename: 2026-07-10_fiercepharma-summit-must-submit-to-big-pharma-25-股.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.083138+00:00'
+  processed: true
+  notes: query='HARMONi 全球 OS 详情 FDA 路径' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: HARMONi 全球 OS 详情 FDA 路径
+    url: https://www.fiercepharma.com/pharma/first-pd-1xvegfs-sake-summit-must-submit-big-pharma-stat
+    domain: fiercepharma.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.062691+00:00'
+    stale_at: '2026-08-09T04:21:28.062691+00:00'
+    expire_at: '2026-10-08T04:21:28.062691+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-324d63
+  filename: 2026-07-10_medcity-summit-os未达关键终点-fda批准存疑-leerink质疑.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.140848+00:00'
+  processed: true
+  notes: query='HARMONi 全球 OS 详情 FDA 路径' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: HARMONi 全球 OS 详情 FDA 路径
+    url: https://medcitynews.com/2025/09/lung-cancer-summit-therapeuitcs-ivonescimab-bispecific-antibody-pd1-vegf-smmt/
+    domain: medcitynews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.119873+00:00'
+    stale_at: '2026-08-09T04:21:28.119873+00:00'
+    expire_at: '2026-10-08T04:21:28.119873+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4202b2
+  filename: 2026-07-10_东吴证券-康方09926-深度-依沃西io2-0-os强阳性-目标价177-34元-买入.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.205364+00:00'
+  processed: true
+  notes: query='康方 卖方深度 DCF 目标价 峰值销售' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 康方 卖方深度 DCF 目标价 峰值销售
+    url: https://pdf.dfcfw.com/pdf/H3_AP202606161823592171_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.181220+00:00'
+    stale_at: '2026-08-09T04:21:28.181220+00:00'
+    expire_at: '2026-10-08T04:21:28.181220+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ed27ba
+  filename: 2026-07-10_交银国际-康方9926-目标价175港元-峰值经pos调整132亿-买入.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.266608+00:00'
+  processed: true
+  notes: query='康方 卖方深度 DCF 目标价 峰值销售' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 康方 卖方深度 DCF 目标价 峰值销售
+    url: https://pdf.dfcfw.com/pdf/H3_AP202603311820899460_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.244980+00:00'
+    stale_at: '2026-08-09T04:21:28.244980+00:00'
+    expire_at: '2026-10-08T04:21:28.244980+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f239ae
+  filename: 2026-07-10_太平洋证券-康方-商业化快速放量-目标价156-07元-买入.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.326836+00:00'
+  processed: true
+  notes: query='康方 卖方深度 DCF 目标价 峰值销售' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 康方 卖方深度 DCF 目标价 峰值销售
+    url: https://pdf.dfcfw.com/pdf/H3_AP202604081821072817_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.304612+00:00'
+    stale_at: '2026-08-09T04:21:28.304612+00:00'
+    expire_at: '2026-10-08T04:21:28.304612+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0573a8
+  filename: 2026-07-10_华福证券-康方-依沃西鳞癌os-asco揭晓-目标价206港元-买入.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.387721+00:00'
+  processed: true
+  notes: query='康方 卖方深度 DCF 目标价 峰值销售' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 康方 卖方深度 DCF 目标价 峰值销售
+    url: https://mb.hibor.com.cn/data/e668c258c2968e90b2c4894ef4f6c214.html
+    domain: mb.hibor.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.365598+00:00'
+    stale_at: '2026-08-09T04:21:28.365598+00:00'
+    expire_at: '2026-10-08T04:21:28.365598+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3a625c
+  filename: 2026-07-10_同写意-pd--l-1-vegf双抗-竞争格局-format-专利布局-深度.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.453542+00:00'
+  processed: true
+  notes: query='PD-1/VEGF 赛道横向 依沃西vs707vsBNT327' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: PD-1/VEGF 赛道横向 依沃西vs707vsBNT327
+    url: https://www.tonacea.com/HUIYI_1/707.html
+    domain: tonacea.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.430813+00:00'
+    stale_at: '2026-08-09T04:21:28.430813+00:00'
+    expire_at: '2026-10-08T04:21:28.430813+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-66df8d
+  filename: 2026-07-10_pd--l-1-vegf双抗三步走-辉瑞-biontech-bms全速入局.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.517742+00:00'
+  processed: true
+  notes: query='PD-1/VEGF 赛道横向 依沃西vs707vsBNT327' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: PD-1/VEGF 赛道横向 依沃西vs707vsBNT327
+    url: https://m.ofweek.com/medical/2025-11/ART-11163-8420-30673876.html
+    domain: m.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.492981+00:00'
+    stale_at: '2026-08-09T04:21:28.492981+00:00'
+    expire_at: '2026-10-08T04:21:28.492981+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8e29ac
+  filename: 2026-07-10_辉瑞为何买三生707而非ak112-pm8002-底层逻辑-707vsak112对比.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.585862+00:00'
+  processed: true
+  notes: query='PD-1/VEGF 赛道横向 依沃西vs707vsBNT327' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: PD-1/VEGF 赛道横向 依沃西vs707vsBNT327
+    url: http://www.xlifesc.com/m/newcenter/newshow.aspx?a=n&id=100000381788948&m=118002
+    domain: xlifesc.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.561108+00:00'
+    stale_at: '2026-08-09T04:21:28.561108+00:00'
+    expire_at: '2026-10-08T04:21:28.561108+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-64f554
+  filename: 2026-07-10_医麦智库-下一代io-pd--l-1-vegf成mnc必争之地.md
+  source_type: web-search
+  added: '2026-07-10T04:21:28.652147+00:00'
+  processed: true
+  notes: query='PD-1/VEGF 赛道横向 依沃西vs707vsBNT327' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: PD-1/VEGF 赛道横向 依沃西vs707vsBNT327
+    url: https://library.emedclub.com/information/view/g3rgGWc1TuvsMpKOi_vFO
+    domain: library.emedclub.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:21:28.628146+00:00'
+    stale_at: '2026-08-09T04:21:28.628146+00:00'
+    expire_at: '2026-10-08T04:21:28.628146+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b7ef81
+  filename: 2026-07-10_一图回顾国产pd-1历次医保谈判降价情况-2022新老玩家一起卷.md
+  source_type: web-search
+  added: '2026-07-10T04:22:09.531710+00:00'
+  processed: true
+  notes: query='中国PD-1单抗价格战医保谈判历史镜鉴' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 中国PD-1单抗价格战医保谈判历史镜鉴
+    url: https://www.phirda.com/artilce_38xxx
+    domain: phirda.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:22:09.508026+00:00'
+    stale_at: '2026-08-09T04:22:09.508026+00:00'
+    expire_at: '2026-10-08T04:22:09.508026+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-eca0de
+  filename: 2026-07-10_pd-1医保国谈-四大国产pd-1谁卖得最好-君实恒瑞盘中大涨.md
+  source_type: web-search
+  added: '2026-07-10T04:22:09.597375+00:00'
+  processed: true
+  notes: query='中国PD-1单抗价格战医保谈判历史镜鉴' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 中国PD-1单抗价格战医保谈判历史镜鉴
+    url: https://www.21jingji.com/article/pd1-guotan
+    domain: 21jingji.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:22:09.573551+00:00'
+    stale_at: '2026-08-09T04:22:09.573551+00:00'
+    expire_at: '2026-10-08T04:22:09.573551+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6efbc9
+  filename: 2026-07-10_百济pd-1获批新适应症-君实信达争相降价-赛道卷出新高度.md
+  source_type: web-search
+  added: '2026-07-10T04:22:09.663053+00:00'
+  processed: true
+  notes: query='中国PD-1单抗价格战医保谈判历史镜鉴' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 中国PD-1单抗价格战医保谈判历史镜鉴
+    url: https://www.cls.cn/detail/pd1-price-war
+    domain: cls.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-10T04:22:09.639078+00:00'
+    stale_at: '2026-08-09T04:22:09.639078+00:00'
+    expire_at: '2026-10-08T04:22:09.639078+00:00'
+    triggered_by: 00-deep-fetch

@@ -22,7 +22,10 @@ WECHAT_OUTPUT_KEYS = ("00_primer", "c_investment_case", "i_industry_case", "a_ar
 # 一个 mat 引用「核」：mat-6位hex，可后接斜杠连写的 6 位 hex（mat-aaaaaa/bbbbbb）。
 _MAT_RUN = r"mat-[0-9a-f]{6}(?:/[0-9a-f]{6})*"
 # 括号包裹（[]/()/全角（））+ 可选前导空白 → 整体吃掉。
-_BRACKETED_MAT = re.compile(r"[ \t]*[\[\(（]\s*" + _MAT_RUN + r"\s*[\]\)）]")
+# 支持逗号分隔的多引用：[mat-aaaaaa, mat-bbbbbb] 或 [mat-aaaaaa/bbbbbb, mat-cccccc]。
+_BRACKETED_MAT = re.compile(
+    r"[ \t]*[\[\(（]\s*" + _MAT_RUN + r"(?:\s*,\s*" + _MAT_RUN + r")*\s*[\]\)）]"
+)
 # 裸引用 + 可选前导空白。
 _BARE_MAT = re.compile(r"[ \t]*" + _MAT_RUN)
 
@@ -35,7 +38,7 @@ def strip_mat_refs(text: str) -> str:
     text = re.sub(r"[ \t]+([，。、；：！？）】」』])", r"\1", text)
     text = re.sub(r"([（【「『])[ \t]+", r"\1", text)
     text = re.sub(r"（\s*）|\(\s*\)|\[\s*\]", "", text)
-    text = re.sub(r"[ \t]{2,}", " ", text)
+    text = re.sub(r"(?m)(?<=\S)[ \t]{2,}", " ", text)
     return text
 
 

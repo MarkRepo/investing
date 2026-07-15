@@ -1,0 +1,123 @@
+slug: cn-advanced-mfg-hbm
+variant: opus4.8
+entries:
+- searched_at: '2026-07-02T02:18:42.167841+00:00'
+  query: 长鑫存储 HBM3 量产 交样 华为 昇腾 2026 进展
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 2
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-02T02:18:42.175790+00:00'
+  query: 中芯国际 7nm N+2 良率 2026 先进产能扩张 昇腾
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 1
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-02T02:18:42.180364+00:00'
+  query: 美国 出口管制 HBM 三星 海力士 对华 供应 限制 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-02T02:18:42.194148+00:00'
+  query: 兴森科技 深南电路 ABF FCBGA 载板 量产 认证 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 1
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-02T02:18:42.213084+00:00'
+  query: 国产 先进封装 CoWoS 2.5D HBM 集成 通富微电 长电 2026 进展
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 1
+  n_mid: 1
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-02T02:18:42.237341+00:00'
+  query: 澜起科技 2026 一季报 PCIe Retimer MRCD CKD 营收 增速
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 0
+  n_mid: 2
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-02T02:18:42.268898+00:00'
+  query: 华为 昇腾 920 950 上游 BOM 国产 制程 HBM 供应链 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 1
+  n_mid: 1
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-02T02:18:42.289347+00:00'
+  query: 国产 AI 算力 需求 智算中心 利用率 产能过剩 H20 B30 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 1
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-02T02:18:42.326426+00:00'
+  query: CMP 耗材 光刻胶 国产化率 半导体材料 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 2
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-02T02:18:42.363014+00:00'
+  query: 中芯国际 2026 一季报 毛利率 ROIC 资本开支 产能利用率
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 2
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-02T02:19:01.507841+00:00'
+  query: 美国 出口管制 HBM 三星 海力士 对华 供应 限制 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-02T02:33:12.562850+00:00'
+  query: 长鑫HBM3进昇腾BOM时间表容量+华为自研HBM构成
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-02T02:33:12.703925+00:00'
+  query: 澜起AI增量PCIe Retimer/CKD/MRCD营收拆分与可持续性卖方深度
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-02T02:33:12.865857+00:00'
+  query: 中芯N+2良率产能+昇腾系统战对先进制程需求+份额≠利润
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-02T02:33:13.036233+00:00'
+  query: 国产先进封装通富/长电 CoWoS/TSV/HBM集成良率产能+玻璃基板
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered

@@ -5,7 +5,7 @@ created: '2026-06-13T03:06:40.835167+00:00'
 status: active
 stage: 04-synthesize
 canonical: false
-parent_topic: null
+parent_topic: cn-premium-baijiu
 monitoring_tier: dormant
 concepts: []
 scope:
@@ -21,6 +21,7 @@ scope:
   - 批价
   - 直营
   - 分红回购
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
 outputs_state:
   00_primer:
     version: 1
@@ -287,3 +288,4 @@ stage_history:
     - bull-bear
     autofetch_debt: 0
     empty_pending_decision: 0
+suggested_drilldowns: []
