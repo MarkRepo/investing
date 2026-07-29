@@ -18,6 +18,7 @@ scope:
   - 库存动销
   - 次高端
   - 周期见底
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
 outputs_state:
   00_primer:
     version: 1
@@ -115,11 +116,10 @@ outputs_state:
     last_error: null
 parent_materials: []
 next_actions:
-- Arena 合成完成：00_primer + a_arena_case(6环) + peer_matrix.yaml + thesis_v1/decomposition_v1
-  全部落盘
-- 深研档已建 company stub：cn-kweichow-moutai-600519 / cn-luzhou-laojiao-000568（继承父 thesis_v0）
-- arena 评审非强制：可说「评审 cn-premium-baijiu」跑对抗式 steelman，或 web 详情页点✓标记完成
-- 推进深研：说「prism 推进 cn-kweichow-moutai-600519」或「prism 推进 cn-luzhou-laojiao-000568」
+- 深研档已建 company topic：cn-kweichow-moutai-600519 / cn-luzhou-laojiao（kimi-k3 深研已完成
+  05-critic+重写，case v3 已挂回本 arena）
+- 推进深研：说「prism 推进 cn-kweichow-moutai-600519」或「prism 推进 cn-luzhou-laojiao」
+- 旧空壳 cn-luzhou-laojiao-000568 已于 2026-07-22 废弃删除（独特信息已吸收进 cn-luzhou-laojiao v3）
 user_todos:
 - task: 下载茅五泸三家 2025 年报 + 2026Q1 季报（营收/净利/毛利率/合同负债/预收款/经营现金流全表）
   priority: P0
@@ -367,3 +367,4 @@ stage_history:
     - winner-variables
     autofetch_debt: 0
     empty_pending_decision: 0
+suggested_drilldowns: []

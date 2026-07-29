@@ -298,11 +298,15 @@ pending:
     翻牌。'
   rationale: 史上最大回购落地，精准命中 bull_signal「启动大额回购」；王宁个人小额减持方向相反，弱信号需复核。
   requires_thesis_review: false
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-06-18T22:06:31.827058+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-07-16T01:20:47.742670+00:00'
+  writeback_done: true
+  living_feed_appended: true
+  registered_mat_ids:
+  - mat-b699e9
+  evidence_anchor: signpost:资本动作(回购/减持)｜bear:王宁/高管进一步减持
+  evidence_registered: true
 - proposal_id: 5a1d3b9d6029
   slug: us-micron-mu
   variant: opus4.8
@@ -340,11 +344,16 @@ pending:
     **当前判断更新**：翻牌 bull，HBM 上行周期结构未松动。'
   rationale: HBM4 2026 量价已锁定售罄 + 2027 谈判掌握定价权，精准命中 bull；无产能回流/DDR5 反超证据。
   requires_thesis_review: false
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-06-18T22:06:31.827154+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-07-15T13:37:08.521942+00:00'
+  writeback_done: true
+  living_feed_appended: true
+  registered_mat_ids:
+  - mat-01b47e
+  evidence_anchor: signpost:2027 HBM4 SCA(供货协议)谈判 + HBM vs DDR5 单wafer经济性走向｜bear:HBM
+    经济性继续被 DDR5 反超、产能回流标准 DRAM
+  evidence_registered: true
 - proposal_id: 56ce3b881aae
   slug: cn-popmart
   variant: opus4.8
@@ -387,11 +396,14 @@ pending:
   rationale: 海外减速已兑现（美国3月-45%、管理层预警），存量店转负未证实——弱证据需复核；bear 翻牌且动摇海外增长引擎核心假设，标记 thesis
     复核
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-06-21T22:10:14.444207+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-07-16T01:20:47.806915+00:00'
+  writeback_done: true
+  living_feed_appended: true
+  registered_mat_ids: []
+  evidence_anchor: signpost:季度海外增速与存量店表现｜bear:海外持续减速+存量店转负
+  evidence_registered: true
 - proposal_id: 2fbb711e0500
   slug: cn-popmart
   variant: opus4.8
@@ -427,11 +439,15 @@ pending:
     **当前判断更新**：建议翻 bear（弱证据），标记需 thesis 复核'
   rationale: 二手价续跌兑现、黄牛停收（弱证据，非持续抛售），无止跌企稳信号；bear 翻牌触及 IP 变现核心假设，标记 thesis 复核
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-06-21T22:10:14.444383+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-07-16T01:20:47.943423+00:00'
+  writeback_done: true
+  living_feed_appended: true
+  registered_mat_ids:
+  - mat-5295d4
+  evidence_anchor: signpost:得物等二手价走势｜bear:二手价续跌+黄牛持续抛售
+  evidence_registered: true
 - proposal_id: 27f2f9b63de3
   slug: cn-momenta
   variant: deepseek-v4-pro
@@ -441,22 +457,22 @@ pending:
   expected_current: null
   evidence: []
   evidence_urls: []
-  living_feed_entry: '## 2026-07-15 价格破位:跌入买入框
+  living_feed_entry: '## 2026-07-16 价格破位:跌入买入框
 
     **来源**:market_data 自动行情
 
-    **关键信息**:现价 295.6000061035156（2026-07-14）落入 **accumulate** 区间（强买≤250 / 可建仓 250-310）
+    **关键信息**:现价 296.3999938964844（2026-07-15）落入 **accumulate** 区间（强买≤250 / 可建仓 250-310）
 
     **对已有判断的影响**:触及预设买入区,需按 position_framework 复核建仓
 
     **当前判断更新**:维持原判断,价格信号待人工确认'
-  rationale: 现价 295.6000061035156 落入 accumulate（零 LLM 价格判定）
+  rationale: 现价 296.3999938964844 落入 accumulate（零 LLM 价格判定）
   requires_thesis_review: false
-  status: awaiting_confirm
-  created_at: '2026-07-14T22:09:34.500204+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  status: confirmed
+  created_at: '2026-07-15T22:00:13.288693+00:00'
+  confirmed_at: '2026-07-16T01:20:47.992491+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: ed357d8d0574
   slug: cn-momenta
   variant: opus4.8
@@ -478,11 +494,11 @@ pending:
   rationale: 依赖的『高位企稳·10Y4.53%·10Y实际利率2.2%高位(压高久期成长估值)』已变『高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平(2s10s+30bp)』(regime
     v2→v3)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-01T04:04:55.432452+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-07-16T01:20:48.027563+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 074b486d3893
   slug: us-eli-lilly
   variant: opus4.8
@@ -504,11 +520,11 @@ pending:
   rationale: 依赖的『高位企稳·双向风险·10Y实际利率2.2%』已变『高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平(2s10s+30bp)』(regime
     v2→v3)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-01T04:04:55.432460+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-07-16T01:20:48.070883+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 17104a9beb39
   slug: us-micron-mu
   variant: opus4.8
@@ -530,11 +546,11 @@ pending:
   rationale: 依赖的『金融条件偏松·信用利差极窄·风险偏好亢奋但脆弱』已变『条件偏松·信用利差历史地板·资金面无压但临界(RRP小幅回补)·风险偏好亢奋但脆弱』(regime
     v2→v3)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-01T04:04:55.432463+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-07-15T13:37:04.936874+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: ae2195f6d1cc
   slug: pinduoduo
   variant: opus4.8
@@ -555,8 +571,517 @@ pending:
     **当前判断更新**:维持原判断,价格信号待人工确认'
   rationale: 现价 84.5 落入 accumulate（零 LLM 价格判定）
   requires_thesis_review: false
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-14T22:09:34.500210+00:00'
+  confirmed_at: '2026-07-15T13:16:03.040478+00:00'
+  writeback_done: true
+  living_feed_appended: true
+- proposal_id: 68eb1f797404
+  slug: cn-montage-688008
+  variant: opus4.8
+  kind: signpost
+  locator: d8476f72
+  proposed_value: bull
+  expected_current: null
+  evidence:
+  - title: 澜起科技股份有限公司2026年半年度业绩预增的自愿性公告
+    url: https://paper.cnstock.com/html/2026-07/17/content_2245364.htm
+    snippet: 2026年上半年，公司互连类芯片产品线销售收入约为31.11亿元，同比增长约26.4%，其中第二季度互连类芯片产品线销售收入约为16.94亿元，同比增长约28.2%，环比增长。
+  - title: 澜起科技2026年半年度业绩预增的自愿性公告- CFi.CN 中财网
+    url: https://www.cfi.net.cn/p20260716002433.html
+    snippet: 2026年半年度实现归属于上市公司股东的扣除非经常性损益的净利润12.50亿元~14.50亿元，较上年同期（法定披露数据）增长14.5%~32.9%；剔除股份支付费用后口径更高。
+  - title: 澜起科技2026年半年报业绩预告解读
+    url: https://caifuhao.eastmoney.com/news/20260717000737935518470
+    snippet: 公告显示报表口径扣非净利润同比增速14.5%~32.9%，该数据受大额股份支付费用持续摊销压制，无法真实反映主业增速。
+  evidence_urls:
+  - https://paper.cnstock.com/html/2026-07/17/content_2245364.htm
+  - https://www.cfi.net.cn/p20260716002433.html
+  - https://caifuhao.eastmoney.com/news/20260717000737935518470
+  living_feed_entry: '## 2026-07-17 澜起科技发布 2026 H1 业绩预增公告（正式半年报前的预告）
+
+    **来源**：上海证券报/中财网 公司自愿性公告 + 东方财富解读
+
+    **关键信息**：报表口径扣非净利 12.50–14.50 亿元、同比 +14.5%~32.9%（受大额股份支付费用摊销压制，剔除后口径更高）；互连类芯片
+    H1 收入约 31.11 亿元、同比 +26.4%，其中 Q2 约 16.94 亿元、同比 +28.2% 且环比增长——核心产品线增速逐季加速。
+
+    **对已有判断的影响**：支持 bull 一侧的营收动能（Q2 +28.2% 加速直接反驳 bear 的“一次性收益退潮后真实增速掉档”）；但 bull 需要的“毛利率环比持稳/上行”与
+    ex-SBC 扣非口径尚未在预告中披露，报表口径扣非区间下沿(14.5%)偏软。
+
+    **当前判断更新**：偏多兑现但为预告非正式半年报，弱证据需复核——待 8 月下旬正式半年报确认毛利率与剔除股份支付后的真实增速。'
+  rationale: H1 业绩预增：互连类营收 Q2 +28.2% 逐季加速否定 bear 掉档说，偏多；但报表口径扣非受 SBC 压制且毛利率未披露，弱证据需待正式半年报确认。
+  requires_thesis_review: false
+  status: confirmed
+  created_at: '2026-07-18T22:18:24.906036+00:00'
+  confirmed_at: '2026-07-23T23:46:21.078482+00:00'
+  writeback_done: true
+  living_feed_appended: true
+  registered_mat_ids:
+  - mat-c14684
+  evidence_anchor: signpost:2026 H1 半年报｜bear:扣非同比<15%,一次性收益退潮后真实增速掉档
+  evidence_registered: true
+- proposal_id: 47647ff373b4
+  slug: cn-xingye-silver-tin
+  variant: opus4.8
+  kind: price
+  locator: buy_box
+  proposed_value: accumulate
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-21 价格破位:跌入买入框
+
+    **来源**:market_data 自动行情
+
+    **关键信息**:现价 26.93（2026-07-20）落入 **accumulate** 区间（强买≤24 / 可建仓 24-27）
+
+    **对已有判断的影响**:触及预设买入区,需按 position_framework 复核建仓
+
+    **当前判断更新**:维持原判断,价格信号待人工确认'
+  rationale: 现价 26.93 落入 accumulate（零 LLM 价格判定）
+  requires_thesis_review: false
+  status: awaiting_confirm
+  created_at: '2026-07-20T22:00:11.710475+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 1de266ddc45f
+  slug: us-tesla
+  variant: opus4.8
+  kind: price
+  locator: buy_box
+  proposed_value: accumulate
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-29 价格破位:跌入买入框
+
+    **来源**:market_data 自动行情
+
+    **关键信息**:现价 307.44000244140625（2026-07-28）落入 **accumulate** 区间（强买≤230 / 可建仓 230-320）
+
+    **对已有判断的影响**:触及预设买入区,需按 position_framework 复核建仓
+
+    **当前判断更新**:维持原判断,价格信号待人工确认'
+  rationale: 现价 307.44000244140625 落入 accumulate（零 LLM 价格判定）
+  requires_thesis_review: false
+  status: awaiting_confirm
+  created_at: '2026-07-28T22:00:13.136550+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 7c8888506e59
+  slug: us-applovin
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『高位企稳/官方+市场双双转鹰但长端牛平(10Y4.38)』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『高位企稳/官方+市场双双转鹰但长端牛平(10Y4.38)』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435301+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: e3a7fd9f653b
+  slug: us-ionq
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『高位企稳·双双转鹰·长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『高位企稳·双双转鹰·长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435313+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 1970d6ce61d1
+  slug: cn-hengli-hydraulic-601100
+  variant: opus4.8
+  kind: macro_regime
+  locator: fx_cny
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：人民币汇率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『人民币贬值利出口但2025出口停滞+1.58%』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『人民币贬值利出口但2025出口停滞+1.58%』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435317+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 45183b9040b6
+  slug: us-nvidia
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『现读数(见regime eval v3)』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『现读数(见regime eval v3)』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435319+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: c30e56307ae4
+  slug: us-google
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『fed funds 3.75%、长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『fed funds 3.75%、长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435321+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: c47458ca5281
+  slug: us-tesla
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『高位企稳·官方市场双双转鹰但长端牛平·实际利率2.16%边际回落』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『高位企稳·官方市场双双转鹰但长端牛平·实际利率2.16%边际回落』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435328+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 3efcc8aa9f62
+  slug: us-structure-gpcr
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『关注实际利率方向（下行利好长久期biotech）』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『关注实际利率方向（下行利好长久期biotech）』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435330+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 73d7a6e215d1
+  slug: us-viking-vktx
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『实际利率高位/降息路径未定』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『实际利率高位/降息路径未定』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435332+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 208040fac49a
+  slug: cn-hymson-688559
+  variant: opus4.8
+  kind: macro_regime
+  locator: fx_cny
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：人民币汇率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『人民币企稳偏弱(利出海49%高毛利钣金)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『人民币企稳偏弱(利出海49%高毛利钣金)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435334+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 68f2788369cf
+  slug: cn-xingye-silver-tin
+  variant: opus4.8
+  kind: macro_regime
+  locator: fx_cny
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：人民币汇率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『企稳偏弱（弱美元利好美元计价银锡）』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『企稳偏弱（弱美元利好美元计价银锡）』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435335+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 8ad1a0b5d603
+  slug: us-palantir-pltr
+  variant: opus4.8
+  kind: macro_regime
+  locator: rates_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国利率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『高位企稳·双双转鹰但长端牛平·实际利率2.16%边际回落仍约束』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『高位企稳·双双转鹰但长端牛平·实际利率2.16%边际回落仍约束』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435337+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 77bccfddb7d7
+  slug: us-spacex-spcx
+  variant: opus4.8
+  kind: macro_regime
+  locator: liquidity_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国流动性体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『条件偏松·信用利差历史地板·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『条件偏松·信用利差历史地板·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435339+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: b7d21a92aa5f
+  slug: us-coinbase
+  variant: opus4.8
+  kind: macro_regime
+  locator: liquidity_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国流动性体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『条件偏松·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『条件偏松·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435340+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: b3a214f8de35
+  slug: cn-montage-688008
+  variant: opus4.8
+  kind: macro_regime
+  locator: liquidity_us
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：美国流动性体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『条件偏松·信用利差地板·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『条件偏松·信用利差地板·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435342+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 11d4964c05be
+  slug: cn-baili-688506
+  variant: opus4.8
+  kind: macro_regime
+  locator: fx_cny
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：人民币汇率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『企稳偏弱·区间震荡·中性偏友好转弱』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『企稳偏弱·区间震荡·中性偏友好转弱』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435344+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 52c5702c9fd2
+  slug: cn-kweichow-moutai-600519
+  variant: opus4.8
+  kind: macro_regime
+  locator: fx_cny
+  proposed_value: regime_shift
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-28 宏观体制变化：人民币汇率体制
+
+    **来源**：宏观层 regime 重合成（v3→v4）
+
+    **关键信息**：你依赖的『人民币企稳(favor)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』
+
+    **对已有判断的影响**：该 case 的宏观背景已过期，建议重判
+
+    **当前判断更新**：维持，等用户在 web 端决定是否重跑合成'
+  rationale: 依赖的『人民币企稳(favor)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+    v3→v4)
+  requires_thesis_review: true
+  status: awaiting_confirm
+  created_at: '2026-07-28T09:27:57.435348+00:00'
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false

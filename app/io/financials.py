@@ -341,6 +341,11 @@ def upsert_financials_us(conn: sqlite3.Connection, rows: Iterable[dict]) -> int:
 
 _CN_MARKETS = {"SSE", "SZSE", "BSE"}
 
+# Markets list_periods_with_ratios / recompute_ratios can actually serve.
+# Shared with app/io/company.py so prism topics for unsupported markets
+# (e.g. Japan/TSE) don't get surfaced as phantom "company" entries.
+SUPPORTED_MARKETS = _CN_MARKETS | {"US", "HKEX"}
+
 
 _CN_RATIOS_SQL = """
 INSERT INTO ratios (ticker, period,

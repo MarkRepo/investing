@@ -8,6 +8,7 @@ import yaml
 
 from app import config as cfg
 from app.config import VALID_MARKETS
+from app.io import financials as fin_io
 
 _META_KEYS = (
     "ticker",
@@ -230,6 +231,8 @@ def _prism_company_topics() -> list[dict]:
             market = scope.get("market", "")
             code = ticker_full
         if not market or not code:
+            continue
+        if market not in fin_io.SUPPORTED_MARKETS:
             continue
         key = f"{market}_{code}"
         if key in seen:

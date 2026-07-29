@@ -1,0 +1,277 @@
+slug: us-spacex-spcx
+variant: gpt-5.6-sol
+entries:
+- searched_at: '2026-07-15T02:16:01.023637+00:00'
+  query: SpaceX SPCX SEC 424B4 final prospectus IPO price shares June 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:17:55.754852+00:00'
+  query: SpaceX 2025 revenue operating income cash flow capex 2026 Q1 S-1
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:17:55.765232+00:00'
+  query: SpaceX Connectivity segment Starlink subscribers revenue operating income
+    2026 Q1
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:17:55.776248+00:00'
+  query: SpaceX Space segment launches backlog government revenue 2025 S-1
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:17:55.813229+00:00'
+  query: SpaceX xAI merger X Holdings pro forma financials related party S-1 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:17:55.827883+00:00'
+  query: SpaceX Elon Musk voting power Class B economic ownership 424B4
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:17:55.875116+00:00'
+  query: SpaceX Starship latest flight test FAA license July 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:17:55.913147+00:00'
+  query: SPCX stock price market cap analyst consensus July 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:17:55.955644+00:00'
+  query: SpaceX IPO lockup shares eligible for future sale 2026 prospectus
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:17:55.958187+00:00'
+  query: SpaceX Starlink direct to cell regulatory spectrum partnerships 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-lowtier
+- searched_at: '2026-07-15T02:17:56.012220+00:00'
+  query: SpaceX SPCX earnings Starship launch failure regulatory contract latest 90
+    days
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:18:06.307201+00:00'
+  query: 00-prescan scope slot covered by SpaceX SPCX SEC 424B4 final prospectus IPO
+    price shares June 2026
+  triggered_by: 00-prescan
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: skipped-covered
+- searched_at: '2026-07-15T02:18:06.310720+00:00'
+  query: 00-prescan company-event slot covered by SpaceX SPCX earnings Starship launch
+    failure regulatory contract latest 90 days
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-15T02:21:34.109686+00:00'
+  query: SPCX July 14 2026 close 136.07 market capitalization shares outstanding
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-15T02:21:49.754196+00:00'
+  query: SPCX July 14 2026 close 136.07 market capitalization shares outstanding
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:25:13.382460+00:00'
+  query: SpaceX 424b4 2025 connectivity segment revenue operating income AI segment
+    capex 2026 Q1
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-15T02:25:31.116428+00:00'
+  query: SpaceX 424b4 2025 connectivity segment revenue operating income AI segment
+    capex 2026 Q1
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:27:42.017000+00:00'
+  query: Starlink 2025 subscribers ARPU terminal subsidy satellite replacement capex
+    SpaceX S-1
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:27:42.091460+00:00'
+  query: SpaceX NASA Space Force NRO commercial launch backlog customer concentration
+    2025 S-1
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:27:42.211603+00:00'
+  query: Iridium Globalstar OneWeb bankruptcy capital intensity historical mirror
+    satellite network
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T02:28:00.732830+00:00'
+  query: Starlink regional subscribers churn ARPU direct to cell carrier revenue share
+    2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-15T02:28:32.185115+00:00'
+  query: 取得 Starlink 地区级用户 流失 ARPU Direct-to-Cell 运营商分成 非公开经营数据
+  triggered_by: 00-deep-fetch
+  n_results: 10
+  n_high: 0
+  n_mid: 0
+  n_low: 10
+  disposition: native-websearch-tool-empty-hard-data
+- searched_at: '2026-07-15T03:20:40.818527+00:00'
+  query: 建立卫星宽带 电信基础设施 发射 AI 全球 peer 估值矩阵
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-15T03:21:05.448422+00:00'
+  query: 建立卫星宽带 电信基础设施 发射 AI 全球 peer 估值矩阵
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T03:21:20.044753+00:00'
+  query: 双层股权 受控公司 创始人 关联交易 失败案例
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-15T03:21:35.369510+00:00'
+  query: 双层股权 受控公司 创始人 关联交易 失败案例
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T03:23:10.648524+00:00'
+  query: SpaceX SPCX Starlink financial valuation July 2026
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T03:23:10.761480+00:00'
+  query: SpaceX SPCX latest 10-Q earnings Starship FAA insider July 2026
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T03:23:10.990863+00:00'
+  query: Starlink FCF capex Connectivity cash flow satellite replacement cost 2026
+  triggered_by: 01-prescan
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T03:23:11.114282+00:00'
+  query: SpaceX AI capex xAI operating loss IPO use proceeds 2026
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T03:23:11.374655+00:00'
+  query: Starship flight record FAA mishap license commercial payload 2026
+  triggered_by: 01-prescan
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T03:23:11.510555+00:00'
+  query: SPCX diluted shares SpaceX analyst model reverse DCF July 2026
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-15T03:23:11.718594+00:00'
+  query: SpaceX related party SPCX insider sale lockup dilution 2026
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered

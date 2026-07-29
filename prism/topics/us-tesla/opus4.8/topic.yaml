@@ -1,0 +1,488 @@
+slug: us-tesla
+display_name: 特斯拉 Tesla (US_TSLA)
+type: company
+created: '2026-07-23T03:40:20.484043+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: 特斯拉 deep 研究，终局=买/卖/持有+EV+目标价。核心赌注：当前估值已把 Robotaxi/FSD/Optimus 期权定价进去，命门是
+    EV/能源基本面能否支撑这份溢价——市场付的是哪部分钱。共识押 AI/自动驾驶叙事，分歧在兑现节奏与基本面拐点。scope 覆盖 EV/能源/FSD/Optimus
+    全线，主轴=估值 vs 基本面。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_TSLA
+  market: US
+  short_name: 特斯拉
+  search_terms:
+  - 特斯拉估值
+  - Robotaxi 商业化
+  - FSD 兑现进度
+  - 交付量毛利
+outputs_state:
+  00_primer:
+    version: 4
+    last_updated: '2026-07-23T16:28:37.796966+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-20a64a
+    - mat-af6378
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-07-23T06:37:17.010483+00:00'
+      warnings:
+      - 缺争议节（写作硬规约要求 5-7 条根本争议）
+      - 缺自检清单节
+      - 未过 critic（set_output_critic_passed 未置位）
+    critic_passed: true
+  c_investment_case:
+    version: 4
+    last_updated: '2026-07-23T16:28:37.828156+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-023199
+    - mat-044c9a
+    - mat-0819c0
+    - mat-12ee90
+    - mat-1eee21
+    - mat-26f8fa
+    - mat-2c8f3a
+    - mat-2df642
+    - mat-2f9ce0
+    - mat-319f11
+    - mat-340330
+    - mat-43cf7c
+    - mat-5a701f
+    - mat-5a75c2
+    - mat-76a830
+    - mat-894236
+    - mat-8d8fae
+    - mat-a25877
+    - mat-a83b87
+    - mat-a9ba97
+    - mat-acf298
+    - mat-afde91
+    - mat-b66265
+    - mat-bc5764
+    - mat-bc9ef2
+    - mat-c3d086
+    - mat-ca6266
+    - mat-d99e06
+    - mat-e80e33
+    - mat-ed30ab
+    - mat-f2df13
+    - mat-f71025
+    - mat-f9e88f
+    - mat-ff2751
+    last_error: null
+  07_decision_kit:
+    version: 4
+    last_updated: '2026-07-23T16:28:37.841602+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-023199
+    - mat-044c9a
+    - mat-0819c0
+    - mat-2c8f3a
+    - mat-2df642
+    - mat-5a75c2
+    - mat-a25877
+    - mat-a83b87
+    - mat-afde91
+    - mat-b66265
+    - mat-bc5764
+    - mat-c3d086
+    - mat-d99e06
+    - mat-e80e33
+    - mat-f71025
+    last_error: null
+  08_living_feed:
+    version: 7
+    last_updated: '2026-07-23T16:36:55.703067+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  05-critic-review:
+    version: 2
+    last_updated: '2026-07-23T16:36:55.690964+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- Q2 补料复评闭环(verdict=request-more)：request-rewrite 已解除，终局 HOLD 维持
+- 未尽1：正常化口径(剔 $1T 薪酬包 SBC + AI R&D)重估 base 盈利能力——可走 07-drilldown
+- 未尽2：K3(robotaxi 每英里成本)一手仍空白=终局符号唯一 gate → 06-monitor 待 Q3 财报盯 K3 首披露 + robotaxi
+  真无人独立验证
+user_todos:
+- task: 下载特斯拉 FY2025 年报(10-K) + 2026 Q1/Q2 季报(10-Q)：分部收入·利润、剔除碳积分汽车毛利、FCF、净利率
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  - K6
+  source_hint: SEC EDGAR / ir.tesla.com；ticker US_TSLA
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-044c9a
+  - mat-319f11
+  - mat-340330
+  - mat-5a701f
+  - mat-76a830
+  - mat-a25877
+  - mat-e80e33
+  - mat-ed30ab
+  - mat-f2df13
+  - mat-f9e88f
+  - mat-ff2751
+  last_fetch_note: SEC EDGAR 10-K+10-Q，含分段 11 mat
+- task: 收集卖方目标价一致预期分布：多头(Morgan Stanley/ARK)vs传统卖方空头的目标价与SOTP假设(各分部估值)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: MS/ARK 研报、TipRanks/Visible Alpha 共识；A合同 consensus
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-70a9aa
+  - mat-c3d086
+  - mat-cd8df8
+  - mat-e38a18
+  last_fetch_note: 'fetched: 4 mat'
+- task: robotaxi 无监管商业化一手证据：2026 财报电话会 robotaxi 段落 + 监管许可文件(CPUC/NHTSA/州级)+ 第三方接管/里程数据
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K2
+  - K3
+  source_hint: 财报电话会实录、监管备案、第三方 robotaxi 追踪；命门2低置信优先
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-26f8fa
+  - mat-a9ba97
+  last_fetch_note: 'fetched: 2 mat'
+- task: Waymo vs Tesla robotaxi 横向对比：运营城市数、无监管里程、单位经济学(每英里成本)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  - K3
+  source_hint: Waymo 官方/媒体、第三方分析
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1eee21
+  - mat-b66265
+  last_fetch_note: 'fetched: 2 mat'
+- task: Q3/Q4 2026 交付前瞻 + 剔除碳积分汽车单独毛利率趋势的卖方拆解
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: Cox Automotive/卖方交付预测
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2c8f3a
+  - mat-43cf7c
+  last_fetch_note: 'fetched: 2 mat'
+- task: Optimus 量产/外部订单一手证据：2026 财报电话会 Optimus 段落 + 官方出货/产线披露(非口播演示)
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K5
+  source_hint: 财报电话会、官方发布；大概率 empty，仍须尝试
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: searched no hard source
+- task: 储能 2026 部署/营收/毛利指引：能源分部数据 + Megablock 休斯顿产能 + 2026 毛利承压量化
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 财报能源分部、pv-magazine/energy-storage.news；部分已 prescan
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0cbda8
+  - mat-743b3c
+  - mat-9a489c
+  last_fetch_note: 'fetched: 3 mat'
+- task: Musk 资本配置史 + $1T 薪酬包完整条款 + 25%投票权诉求进展(绑定vs稀释)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 代理声明 DEF 14A、ir.tesla.com；A合同 mgmt-capital-alloc
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-12ee90
+  - mat-4a82a7
+  - mat-acf298
+  - mat-bc9ef2
+  last_fetch_note: 'fetched: 4 mat'
+- task: 历史镜鉴：Musk 时间表跳票史(FSD/Cybertruck/Semi/Model2/robotaxi 历年承诺vs实际) + 高估值叙事股 de-rating
+    案例
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: 历年财报/发布会时间表回溯；A合同 historical-mirror
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 'fetched: 0 mat'
+- task: 资料提取完成：22 份 actionable 全部处理完毕（10-K/10-Q SEC + web 一致预期/robotaxi/薪酬包）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 04 决策链合成进行中（00_primer + c_investment_case + 07_decision_kit）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 04 合成完成(primer+case+decision_kit+thesis_v1)，判 HOLD→UNDERWEIGHT/EV≈-7%，可进 05
+    评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 补 Q2'26 一手：Tesla 10-Q(Q2 2026) + 财报电话会 transcript — 取剔积分汽车毛利实际值、robotaxi 去安全员城市数/每英里经济学首披露、Optimus
+    订单
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K4
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: robotaxi 去监管现状核实：CPUC/NHTSA/州级无人化商业许可，哪些城市已越过"安全员+teleoperations"阶段(截至 2026-07)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 能源(Megapack/Autobidder 软件属性)+FSD 订阅的独立倍数/经济性资料 — 供 SOTP base 压力测试
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: robotaxi 单位经济学：Cybercab/robotaxi 每英里成本与毛利一手数据（是否低于 Waymo、是否靠补贴）
+  rationale: ''
+  source: capped_decomposition
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T06:37:24.450514+00:00'
+- question: Optimus 可核实外部订单/量产出货（非演示）
+  rationale: ''
+  source: capped_decomposition
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T06:37:24.450514+00:00'
+- question: robotaxi 单位经济学(每英里成本 vs Waymo)——特斯拉是否真有 Waymo 不具备的成本/规模优势？
+  rationale: K3 命门零一手数据、critic 判不足承重；决定期权兑现概率却只能靠第三方粗估
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T08:15:30.022039+00:00'
+- question: SOTP base 若给能源(软件属性)+FSD 订阅高倍数，期权占比在何临界点使 EV 翻正？
+  rationale: 反方致命一击：80%期权占比搭在自认粗糙的 base 上、未压测
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P1
+  status: open
+  suggested_at: '2026-07-23T08:15:30.022039+00:00'
+- question: robotaxi 真解锁的右尾情景该给多大概率×多大回报？12-24月市场会把多少 TAM 前移定价？
+  rationale: 复评致命一击:环④无上行tail,EV符号对右尾高度敏感
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T10:01:06.946354+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-more
+  summary: 补料复评v3.1：Q2 完整10-Q补齐、request-rewrite已解除；独立多头命中2处valid弱点(base质量论范畴错误+tail概率无论证)已即时修;正常化base精估未完+K3一手仍空白→request-more(非approve)。终局HOLD维持
+  at: '2026-07-23T16:36:55.661780+00:00'
+  thesis_version: null
+  next_stage: 02-gather-materials
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-23T06:36:57.929704+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-23T03:49:24.955937+00:00'
+    summary: 命门1=基本面部分占$1.43T市值比例(中); 命门2=robotaxi无监管商业化兑现节奏+单位经济学(低,优先); 命门3=汽车Q2反转持续性+剔积分毛利(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T06:36:57.929729+00:00'
+    summary: 命门1(期权占比~20%基本面)已答证实期权定价;命门2(robotaxi单位经济学)K3空白capped;命门3(基本面持续性)企稳真但盈利质量承压
+    convergence_status: capped
+    changelog: 命门1置信度中→中高量化落点确定;命门2维持低+新增capped(K3两轮未解);命门3中→中高细化;入门目标12条无增删,第11条(三地竞争)欧洲料薄标部分
+thesis:
+  current_version: 2
+  last_updated: '2026-07-23T11:05:45.644539+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-23T03:47:51.153697+00:00'
+    summary: 分化—看空估值/看多业务韧性：$1.43T/204x前瞻PE已把robotaxi+Optimus+集团叙事定价进去，汽车+能源基本面虽V型企稳但撑不起溢价，当前价位判减持/不追高(HOLD→UW,强度3.5)。命门=市场付的期权钱能否按204x隐含节奏兑现。
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 83%（10/12，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T06:36:57.895239+00:00'
+    summary: $1.40T/346x TTM PE 已把 robotaxi+Optimus 近乎完美兑现定价进去(期权占~80%市值);汽车+能源基本面V型企稳但撑不起溢价。EV≈-7%,判减持/不追高(HOLD→UNDERWEIGHT)。命门=期权兑现节奏,robotaxi单位经济学一手数据最缺
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T11:05:45.644721+00:00'
+    summary: 终局HOLD(中性弱偏谨慎):估值确贵(期权占56-80%)但被robotaxi真解锁的凸性右尾对冲,补上行tail后EV≈0(-4%~+2%带);现价$374双向无edge;终局符号骑在K3(robotaxi每英里经济学一手空白)上
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-23T03:50:07.430780+00:00'
+  exited_at: '2026-07-23T04:07:11.553533+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-23T04:07:11.553533+00:00'
+  exited_at: '2026-07-23T06:02:32.755977+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 04-synthesizing
+  entered_at: '2026-07-23T06:02:32.755977+00:00'
+  exited_at: '2026-07-23T06:41:58.957784+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 05-critic-review
+  entered_at: '2026-07-23T06:41:58.957784+00:00'
+  exited_at: '2026-07-23T08:58:34.579597+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 1
+- stage: 04-post-synthesis
+  entered_at: '2026-07-23T08:58:34.579597+00:00'
+  exited_at: '2026-07-23T11:05:45.677538+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 4
+    empty_pending_decision: 1
+- stage: 04-post-synthesis
+  entered_at: '2026-07-23T11:05:45.677538+00:00'
+  exited_at: '2026-07-23T16:37:20.412420+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 4
+    empty_pending_decision: 1
+- stage: 04-post-synthesis
+  entered_at: '2026-07-23T16:37:20.412420+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 4
+    empty_pending_decision: 1
+prescan_log:
+- round_at: '2026-07-23T04:06:56.497829+00:00'
+  status: partial
+  triggered_by: 01-prescan
+  hit_rate: 0.667
+  queries_run: 3
+  queries_with_hits: 2
+  failure_reason: prescan 校准率 67%（2/3，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%

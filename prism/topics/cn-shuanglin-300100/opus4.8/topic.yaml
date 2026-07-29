@@ -1,0 +1,47 @@
+slug: cn-shuanglin-300100
+display_name: 双林股份 (300100)
+type: company
+created: '2026-07-24T00:08:48.888443+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: global-roller-screw
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 双林股份能否靠总成路线+科之鑫磨床自制的垂直整合，拿下人形机器人反向式PRS/关节模组头部定点并兑现盈利？
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SZSE_300100
+  market: SZSE
+  short_name: 双林股份
+  search_terms:
+  - 双林股份
+  - 反向式行星滚柱丝杠
+  - 科之鑫磨床
+  - 关节模组
+  - '300100'
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-24T00:10:16.849656+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-24T00:10:16.849787+00:00'
+    summary: 双林=PRS arena里卡位真实+定价有安全边际的首选:总成路线+磨床自制(科之鑫C3-C0)垂直整合,主业扣非+36.6%撑现金流,PE
+      30x全场最低。赌K4设备自主+K2良率兑现时先受益。强度3/10

@@ -3,9 +3,8 @@ variant: opus4.8
 topic_type: company
 display_name: 泡泡玛特 (Pop Mart, HKEX 09992)
 ticker: HKEX_09992
-generated: 2026-06-06T00:00:00Z
+generated: 2026-06-06 00:00:00+00:00
 data_freshness: 2026-Q1
-
 buy_box:
   strong_buy_max: 135
   accumulate_min: 135
@@ -15,106 +14,128 @@ buy_box:
   current_price: 176.4
   price_as_of: 2026-06-05
   current_zone: hold
-
 position_framework:
   position_tier: 观望
   sizing_rationale: v2(05反方后)—EV重算≈-1%(边际负)、下行47%、增长预期无edge(delta仅+1.5pct)、16x非崩塌倍数故"市场高估崩塌"伪edge不成立、现金仅护清算价值非股价。好公司错价位:现价不建仓,等跌入bear区(≤135-150)安全边际或命门1/2正向反转
   initial_max_pct: 0
   full_max_pct: 5
-  add_ladder_prices: [135, 120]
+  add_ladder_prices:
+  - 135
+  - 120
   max_cluster_pct: 15
-
 valuation_models:
-  - name: reverse_pe_dcf
-    label: Reverse PE-DCF(逆向反推5年净利CAGR)
-    bull_fair_value: [250, 290]
-    base_fair_value: [180, 200]
-    bear_fair_value: [115, 135]
-  - name: peer_historical
-    label: 同业/历史分位(Sanrio/Hasbro/Disney对照)
-    bull_fair_value: [230, 260]
-    base_fair_value: [175, 195]
-    bear_fair_value: [125, 140]
-  - name: base_plus_option
-    label: 基本盘+期权拆解(成熟基本盘+新IP/海外/乐园期权)
-    bull_fair_value: [280, 320]
-    base_fair_value: [185, 205]
-    bear_fair_value: [130, 145]
-
+- name: reverse_pe_dcf
+  label: Reverse PE-DCF(逆向反推5年净利CAGR)
+  bull_fair_value:
+  - 250
+  - 290
+  base_fair_value:
+  - 180
+  - 200
+  bear_fair_value:
+  - 115
+  - 135
+- name: peer_historical
+  label: 同业/历史分位(Sanrio/Hasbro/Disney对照)
+  bull_fair_value:
+  - 230
+  - 260
+  base_fair_value:
+  - 175
+  - 195
+  bear_fair_value:
+  - 125
+  - 140
+- name: base_plus_option
+  label: 基本盘+期权拆解(成熟基本盘+新IP/海外/乐园期权)
+  bull_fair_value:
+  - 280
+  - 320
+  base_fair_value:
+  - 185
+  - 205
+  bear_fair_value:
+  - 130
+  - 145
 kill_criteria:
-  - id: labubu_revenue_absolute_decline
-    description: 2026中报/年报THE MONSTERS系列一级收入绝对同比下滑>15%且无IP接棒(命门2转空)
-    status: pending
-    check_at: 2026-08
-  - id: no_ip_succession
-    description: 非Labubu IP收入占比连续两期不升,平台论证伪(命门1转空)
-    status: pending
-    check_at: 2026-08
-  - id: overseas_same_store_negative
-    description: 海外存量店(非新店摊薄)单店收入同比转负(WMBT3破)
-    status: pending
-    check_at: 2026-08
-  - id: gross_margin_break_68
-    description: 毛利率跌破68%,盈利质量拐点(WMBT5破)
-    status: pending
-    check_at: 2026-08
-  - id: insider_continued_selldown
-    description: 王宁/高管继续大额减持(再现10亿级套现),治理信号恶化
-    status: pending
-    check_at: 2026-12
-
+- id: labubu_revenue_absolute_decline
+  description: 2026中报/年报THE MONSTERS系列一级收入绝对同比下滑>15%且无IP接棒(命门2转空)
+  status: pending
+  check_at: 2026-08
+- id: no_ip_succession
+  description: 非Labubu IP收入占比连续两期不升,平台论证伪(命门1转空)
+  status: pending
+  check_at: 2026-08
+- id: overseas_same_store_negative
+  description: 海外存量店(非新店摊薄)单店收入同比转负(WMBT3破)
+  status: pending
+  check_at: 2026-08
+- id: gross_margin_break_68
+  description: 毛利率跌破68%,盈利质量拐点(WMBT5破)
+  status: pending
+  check_at: 2026-08
+- id: insider_continued_selldown
+  description: 王宁/高管继续大额减持(再现10亿级套现),治理信号恶化
+  status: pending
+  check_at: 2026-12
 signposts:
-  - date: 2026-08
-    event: 2026中报IP收入拆分披露
-    bull_signal: THE MONSTERS绝对额企稳+非Labubu IP占比上升(接棒证成)
-    bear_signal: Labubu绝对下滑且无IP接棒,集中度续升
-    triggered: null
-  - date: 2026-Q3
-    event: 季度海外增速与存量店表现
-    bull_signal: 美洲稳在正增长+存量店健康
-    bear_signal: 海外持续减速+存量店转负
-    triggered: null
-  - date: 2026-Q3
-    event: 得物等二手价走势
-    bull_signal: 二手价止跌企稳(投机退潮见底)
-    bear_signal: 二手价续跌+黄牛持续抛售
-    triggered: null
-  - date: 2026-Q3
-    event: 传导代理—二手价跌幅 vs THE MONSTERS一级收入增速 背离/收敛(架桥最大盲点,在kill绝对下滑前提前捕捉)
-    bull_signal: 二者背离(二手崩但一级仍增)=投机退潮未传导,软着陆
-    bear_signal: 二者收敛(一级增速跟着二手下行)=传导启动,转Sanrio式停滞预警
-    triggered: null
-  - date: 2026
-    event: 资本动作(回购/减持)
-    bull_signal: 启动大额回购(资本配置转积极)
-    bear_signal: 王宁/高管进一步减持
-    triggered: null
-
-cluster_tags: [china-consumer, ip-collectibles, blind-box, china-going-global, hkex]
-
+- date: 2026-08
+  event: 2026中报IP收入拆分披露
+  bull_signal: THE MONSTERS绝对额企稳+非Labubu IP占比上升(接棒证成)
+  bear_signal: Labubu绝对下滑且无IP接棒,集中度续升
+  triggered: null
+- date: 2026-Q3
+  event: 季度海外增速与存量店表现
+  bull_signal: 美洲稳在正增长+存量店健康
+  bear_signal: 海外持续减速+存量店转负
+  triggered: bear
+- date: 2026-Q3
+  event: 得物等二手价走势
+  bull_signal: 二手价止跌企稳(投机退潮见底)
+  bear_signal: 二手价续跌+黄牛持续抛售
+  triggered: bear
+- date: 2026-Q3
+  event: 传导代理—二手价跌幅 vs THE MONSTERS一级收入增速 背离/收敛(架桥最大盲点,在kill绝对下滑前提前捕捉)
+  bull_signal: 二者背离(二手崩但一级仍增)=投机退潮未传导,软着陆
+  bear_signal: 二者收敛(一级增速跟着二手下行)=传导启动,转Sanrio式停滞预警
+  triggered: null
+- date: 2026
+  event: 资本动作(回购/减持)
+  bull_signal: 启动大额回购(资本配置转积极)
+  bear_signal: 王宁/高管进一步减持
+  triggered: bull
+cluster_tags:
+- china-consumer
+- ip-collectibles
+- blind-box
+- china-going-global
+- hkex
 chain_links:
-  rings_present: [1, 2, 3, 4, 5, 6]
+  rings_present:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
   r4_anchors_r2: true
   r6_takes_r4_ev: true
   r5_has_kill_signpost: true
-
 honest_gaps:
-  - ring: 5
-    kind: data-missing
-    note: 二手价对一级经常性收入的传导强度与时滞未被量化(最大盲点,决定退烧杀伤力)
-  - ring: 1
-    kind: data-missing
-    note: 海外分区域毛利率拆分缺,CCASS逐笔减持明细+完整回购史待补
-  - ring: 5
-    kind: data-missing
-    note: 命门2"真实需求稳态基数"待2026季度运营数据,列入07-drilldown候选
-
+- ring: 5
+  kind: data-missing
+  note: 二手价对一级经常性收入的传导强度与时滞未被量化(最大盲点,决定退烧杀伤力)
+- ring: 1
+  kind: data-missing
+  note: 海外分区域毛利率拆分缺,CCASS逐笔减持明细+完整回购史待补
+- ring: 5
+  kind: data-missing
+  note: 命门2"真实需求稳态基数"待2026季度运营数据,列入07-drilldown候选
 market_implied:
   metric: implied_net_income_cagr_5y
   value: 10
-
 my_vs_market_delta:
   metric: implied_net_income_cagr_5y
   my_value: 11.5
-  delta: "+1.5pct"
+  delta: +1.5pct
   direction: long

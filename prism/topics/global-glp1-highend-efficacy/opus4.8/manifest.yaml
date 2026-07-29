@@ -1,0 +1,1014 @@
+slug: global-glp1-highend-efficacy
+variant: opus4.8
+updated: '2026-07-23T23:31:09.027441+00:00'
+materials:
+- id: mat-6bd7d7
+  filename: 2026-07-23_lilly-s-triple-agonist-retatrutide-delivered-power.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.223340+00:00'
+  processed: true
+  notes: query='retatrutide TRIUMPH Phase 3 topline'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: retatrutide TRIUMPH safety all doses
+    url: https://investor.lilly.com/news-releases/news-release-details/lillys-triple-agonist-retatrutide-delivered-powerful-weight-loss
+    domain: investor.lilly.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:00.096009+00:00'
+    stale_at: '2026-08-22T17:01:00.096009+00:00'
+    expire_at: '2026-10-21T17:01:00.096009+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - retatrutide 12mg tolerability safety
+    - retatrutide TRIUMPH Phase 3 topline
+- id: mat-292056
+  filename: 2026-07-23_retatrutide-achieves-up-to-30-3-average-weight-los.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.231414+00:00'
+  processed: false
+  notes: query='retatrutide TRIUMPH Phase 3 topline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: retatrutide TRIUMPH Phase 3 topline
+    url: https://www.ajmc.com/view/retatrutide-achieves-up-to-30-3-average-weight-loss-in-phase-3-triumph-1-trial
+    domain: ajmc.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.230446+00:00'
+    stale_at: '2026-08-22T16:52:29.230446+00:00'
+    expire_at: '2026-10-21T16:52:29.230446+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3ef8ab
+  filename: 2026-07-23_phase-iii-retatrutide-study-demonstrates-30-weight.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.239764+00:00'
+  processed: false
+  notes: query='retatrutide TRIUMPH Phase 3 topline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: retatrutide TRIUMPH Phase 3 topline
+    url: https://pharmaceutical-journal.com/article/news/phase-iii-retatrutide-study-demonstrates-30-weight-loss
+    domain: pharmaceutical-journal.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.238527+00:00'
+    stale_at: '2026-08-22T16:52:29.238527+00:00'
+    expire_at: '2026-10-21T16:52:29.238527+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fc2951
+  filename: 2026-07-23_what-pharmacists-need-to-know-about-retatrutide-s-.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.255997+00:00'
+  processed: false
+  notes: query='retatrutide 12mg tolerability safety' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: retatrutide 12mg tolerability safety
+    url: https://www.pharmacytimes.com/view/what-pharmacists-need-to-know-about-retatrutide-s-triumph-1-phase-3-results
+    domain: pharmacytimes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.254415+00:00'
+    stale_at: '2026-08-22T16:52:29.254415+00:00'
+    expire_at: '2026-10-21T16:52:29.254415+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9c044b
+  filename: 2026-07-23_retatrutide-fda-approval-2025-2026-phase-3-trials-.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.266345+00:00'
+  processed: false
+  notes: query='retatrutide FDA submission timeline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: retatrutide FDA submission timeline
+    url: https://www.gethealthspan.com/research/article/retatrutide-fda-approval-2025-2026-a1gn?srsltid=AfmBOop1J4JodYX40a1GaDn2RPPOZ9chDiSnYJNFYUC_tG88LRraewWs
+    domain: gethealthspan.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.264394+00:00'
+    stale_at: '2026-08-22T16:52:29.264394+00:00'
+    expire_at: '2026-10-21T16:52:29.264394+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e5ff32
+  filename: 2026-07-23_amycretin-a-novel-unimolecular-glp-1-and-amylin-re.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.275537+00:00'
+  processed: false
+  notes: query='Novo amycretin Phase 2 weight loss'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Novo amycretin Phase 2 weight loss
+    url: https://www.sciencedirect.com/science/article/abs/pii/S0140673625011857
+    domain: sciencedirect.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:29.273252+00:00'
+    stale_at: '2026-08-22T16:52:29.273252+00:00'
+    expire_at: '2026-10-21T16:52:29.273252+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c97859
+  filename: 2026-07-23_novo-nordisk-s-amycretin-demonstrates-superior-wei.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.285071+00:00'
+  processed: true
+  notes: query='Novo amycretin Phase 2 weight loss'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: NVO amycretin obesity Phase 2 weight loss
+    url: https://www.hcplive.com/view/novo-nordisk-s-amycretin-demonstrates-superior-weight-loss-versus-placebo
+    domain: hcplive.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:00.362432+00:00'
+    stale_at: '2026-08-22T17:01:00.362432+00:00'
+    expire_at: '2026-10-21T17:01:00.362432+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Novo amycretin Phase 2 weight loss
+- id: mat-adf441
+  filename: 2026-07-23_novo-nordisk-ramps-up-obesity-fight-advances-amycr.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.297781+00:00'
+  processed: false
+  notes: query='Novo amycretin Phase 2 weight loss' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Novo amycretin Phase 2 weight loss
+    url: https://www.clinicaltrialsarena.com/news/novo-nordisk-obesity-drug-phase-iii-trial-advance/
+    domain: clinicaltrialsarena.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.294757+00:00'
+    stale_at: '2026-08-22T16:52:29.294757+00:00'
+    expire_at: '2026-10-21T16:52:29.294757+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-40a1f8
+  filename: 2026-07-23_amgen-positions-maritide-as-potential-best-monthly.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.310989+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 dosing'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Amgen MariTide Phase 3 dosing
+    url: https://www.biospace.com/business/amgen-positions-maritide-as-potential-best-monthly-obesity-drug
+    domain: biospace.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:29.307135+00:00'
+    stale_at: '2026-08-22T16:52:29.307135+00:00'
+    expire_at: '2026-10-21T16:52:29.307135+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c23e39
+  filename: 2026-07-23_amgen-s-phase-3-maritide-study-will-titrate-doses-.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.324969+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 dosing'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Amgen MariTide Phase 3 dosing
+    url: https://www.fiercebiotech.com/biotech/amgen-adjusts-phase-3-dosing-plan-lead-obesity-candidate-maritide-after-high
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:29.320951+00:00'
+    stale_at: '2026-08-22T16:52:29.320951+00:00'
+    expire_at: '2026-10-21T16:52:29.320951+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ea3837
+  filename: 2026-07-23_amgen-announces-robust-weight-loss-with-maritide-i.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.341060+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 dosing' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Amgen MariTide Phase 3 dosing
+    url: https://www.amgen.com/newsroom/press-releases/2024/11/amgen-announces-robust-weight-loss-with-maritide-in-people-living-with-obesity-or-overweight-at-52-weeks-in-a-phase-2-study
+    domain: amgen.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.336483+00:00'
+    stale_at: '2026-08-22T16:52:29.336483+00:00'
+    expire_at: '2026-10-21T16:52:29.336483+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5003e0
+  filename: 2026-07-23_investors.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.358369+00:00'
+  processed: true
+  notes: query='Viking VK2735 VANQUISH Phase 3 takeover'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: VKTX VANQUISH-2 topline 2026
+    url: https://ir.vikingtherapeutics.com/2026-03-26-Viking-Therapeutics-Announces-Completion-of-Enrollment-in-Phase-3-VANQUISH-2-Trial-of-VK2735
+    domain: ir.vikingtherapeutics.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:00.258274+00:00'
+    stale_at: '2026-08-22T17:01:00.258274+00:00'
+    expire_at: '2026-10-21T17:01:00.258274+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Viking VK2735 VANQUISH Phase 3 takeover
+- id: mat-4b1584
+  filename: 2026-07-23_viking-therapeutics-announces-completion-of-enroll.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.373539+00:00'
+  processed: false
+  notes: query='Viking VK2735 VANQUISH Phase 3 takeover'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking VK2735 VANQUISH Phase 3 takeover
+    url: https://www.prnewswire.com/news-releases/viking-therapeutics-announces-completion-of-enrollment-in-phase-3-vanquish-2-trial-of-vk2735-302725563.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:29.368668+00:00'
+    stale_at: '2026-08-22T16:52:29.368668+00:00'
+    expire_at: '2026-10-21T16:52:29.368668+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cf75c5
+  filename: 2026-07-23_3-potential-takeover-targets-in-obesity.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.389878+00:00'
+  processed: false
+  notes: query='Viking VK2735 VANQUISH Phase 3 takeover'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking VK2735 VANQUISH Phase 3 takeover
+    url: https://finance.yahoo.com/sectors/healthcare/articles/3-potential-takeover-targets-obesity-085837811.html
+    domain: finance.yahoo.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:29.384395+00:00'
+    stale_at: '2026-08-22T16:52:29.384395+00:00'
+    expire_at: '2026-10-21T16:52:29.384395+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-338ea2
+  filename: 2026-07-23_roche-announces-positive-phase-ii-results-for-petr.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.411934+00:00'
+  processed: false
+  notes: query='Roche CT-388 petrelintide Phase 2' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Roche CT-388 petrelintide Phase 2
+    url: https://www.roche.com/media/releases/med-cor-2026-03-05
+    domain: roche.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.406522+00:00'
+    stale_at: '2026-08-22T16:52:29.406522+00:00'
+    expire_at: '2026-10-21T16:52:29.406522+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-271498
+  filename: 2026-07-23_roche-to-present-new-data-advancing-its-obesity-po.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.431863+00:00'
+  processed: false
+  notes: query='Roche CT-388 petrelintide Phase 2' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Roche CT-388 petrelintide Phase 2
+    url: https://www.roche.com/media/releases/med-cor-2026-06-01
+    domain: roche.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.425851+00:00'
+    stale_at: '2026-08-22T16:52:29.425851+00:00'
+    expire_at: '2026-10-21T16:52:29.425851+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b4a47c
+  filename: 2026-07-23_zealand-pharma-and-roche-advance-petrelintide-to-p.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.453714+00:00'
+  processed: false
+  notes: query='Roche CT-388 petrelintide Phase 2' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Roche CT-388 petrelintide Phase 2
+    url: https://www.biopharminternational.com/view/zealand-pharma-and-roche-advance-petrelintide-to-phase-3-for-chronic-weight-management
+    domain: biopharminternational.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.446726+00:00'
+    stale_at: '2026-08-22T16:52:29.446726+00:00'
+    expire_at: '2026-10-21T16:52:29.446726+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a508a7
+  filename: 2026-07-23_novo-nordisk-s-cagrisema-2-4-mg-2-4-mg-demonstrate.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.475170+00:00'
+  processed: false
+  notes: query='CagriSema REDEFINE 2026 amylin'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: CagriSema REDEFINE 2026 amylin
+    url: https://www.prnewswire.com/news-releases/novo-nordisks-cagrisema-2-4-mg--2-4-mg-demonstrated-significant-reduction-in-hba1c-and-weight-across-multiple-studies-in-the-reimagine-program-presented-at-ada-2026--302793443.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:29.468544+00:00'
+    stale_at: '2026-08-22T16:52:29.468544+00:00'
+    expire_at: '2026-10-21T16:52:29.468544+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ae77a3
+  filename: 2026-07-23_novo-nordisk-s-cagrisema-bested-by-lilly-s-zepboun.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.499070+00:00'
+  processed: false
+  notes: query='CagriSema REDEFINE 2026 amylin' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: CagriSema REDEFINE 2026 amylin
+    url: https://www.clinicaltrialsarena.com/news/novo-nordisks-cagrisema-bested-by-lillys-zepbound-in-head-to-head-trial/
+    domain: clinicaltrialsarena.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.491350+00:00'
+    stale_at: '2026-08-22T16:52:29.491350+00:00'
+    expire_at: '2026-10-21T16:52:29.491350+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f377f8
+  filename: 2026-07-23_cagrisema-demonstrated-superior-hba1c-reduction-of.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.524907+00:00'
+  processed: false
+  notes: query='CagriSema REDEFINE 2026 amylin' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: CagriSema REDEFINE 2026 amylin
+    url: https://www.novonordisk.com/content/nncorp/global/en/news-and-media/news-and-ir-materials/news-details.html?id=916481
+    domain: novonordisk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.517498+00:00'
+    stale_at: '2026-08-22T16:52:29.517498+00:00'
+    expire_at: '2026-10-21T16:52:29.517498+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-097164
+  filename: 2026-07-23_eli-lilly-and-company-lly-stock-price-news-quote.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.550228+00:00'
+  processed: false
+  notes: query='LLY NVO forward PE valuation 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: LLY NVO forward PE valuation 2026
+    url: https://finance.yahoo.com/quote/LLY/
+    domain: finance.yahoo.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:29.542020+00:00'
+    stale_at: '2026-08-22T16:52:29.542020+00:00'
+    expire_at: '2026-10-21T16:52:29.542020+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4cc2cc
+  filename: 2026-07-23_eli-lilly-vs-novo-nordisk-better-obesity-drug-stoc.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.575869+00:00'
+  processed: false
+  notes: query='LLY NVO forward PE valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: LLY NVO forward PE valuation 2026
+    url: https://www.fool.com/investing/2026/06/16/eli-lilly-vs-novo-nordisk-better-obesity-drug-stoc/
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.567760+00:00'
+    stale_at: '2026-08-22T16:52:29.567760+00:00'
+    expire_at: '2026-10-21T16:52:29.567760+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-86fd60
+  filename: 2026-07-23_eli-lilly-vs-novo-nordisk-the-obesity-drug-race-ha.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.602990+00:00'
+  processed: false
+  notes: query='LLY NVO forward PE valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: LLY NVO forward PE valuation 2026
+    url: https://247wallst.com/investing/2026/04/10/eli-lilly-vs-novo-nordisk-the-obesity-drug-race-has-a-new-leader/
+    domain: 247wallst.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.593981+00:00'
+    stale_at: '2026-08-22T16:52:29.593981+00:00'
+    expire_at: '2026-10-21T16:52:29.593981+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d19b85
+  filename: 2026-07-23_beyond-glp-1-amylin-cagrisema-after-eco-2026.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.633314+00:00'
+  processed: false
+  notes: query='obesity efficacy ceiling amylin muscle' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: obesity efficacy ceiling amylin muscle
+    url: https://www.privatedoc.com/weight-loss/blog/eco-2026-reflections-amylin-cagrisema
+    domain: privatedoc.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.624697+00:00'
+    stale_at: '2026-08-22T16:52:29.624697+00:00'
+    expire_at: '2026-10-21T16:52:29.624697+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d75f8d
+  filename: 2026-07-23_muscle-mass-is-preserved-after-obesity-drug-treatm.md
+  source_type: web-search
+  added: '2026-07-23T16:52:29.661746+00:00'
+  processed: false
+  notes: query='obesity efficacy ceiling amylin muscle' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: obesity efficacy ceiling amylin muscle
+    url: https://medicalxpress.com/news/2026-05-muscle-mass-obesity-drug-treatment.html
+    domain: medicalxpress.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:29.652864+00:00'
+    stale_at: '2026-08-22T16:52:29.652864+00:00'
+    expire_at: '2026-10-21T16:52:29.652864+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f6eb26
+  filename: 2026-07-23_triple-hormone-receptor-agonist-retatrutide-for-ob.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.127373+00:00'
+  processed: true
+  notes: query='retatrutide TRIUMPH safety all doses' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: retatrutide TRIUMPH safety all doses
+    url: https://mediacenteratypon.nejmgroup-production.org/NEJMoa2301972.pdf
+    domain: mediacenteratypon.nejmgroup-production.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.117792+00:00'
+    stale_at: '2026-08-22T17:01:00.117792+00:00'
+    expire_at: '2026-10-21T17:01:00.117792+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6f71bc
+  filename: 2026-07-23_lilly-s-retatrutide-scores-triple-trial-triumph-wi.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.157471+00:00'
+  processed: true
+  notes: query='retatrutide TRIUMPH safety all doses'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: retatrutide TRIUMPH safety all doses
+    url: https://www.biospace.com/drug-development/lillys-retatrutide-scores-triple-trial-triumph-with-26-weight-loss-but-new-safety-signal-emerges
+    domain: biospace.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:00.147556+00:00'
+    stale_at: '2026-08-22T17:01:00.147556+00:00'
+    expire_at: '2026-10-21T17:01:00.147556+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e42129
+  filename: 2026-07-23_a-study-of-retatrutide-ly3437943-in-participants-w.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.191063+00:00'
+  processed: true
+  notes: query='retatrutide TRIUMPH safety all doses' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: retatrutide TRIUMPH safety all doses
+    url: https://clinicaltrials.gov/study/NCT05929066
+    domain: clinicaltrials.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.180516+00:00'
+    stale_at: '2026-08-22T17:01:00.180516+00:00'
+    expire_at: '2026-10-21T17:01:00.180516+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-732553
+  filename: 2026-07-23_viking-therapeutics-reports-first-quarter-2026-fin.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.226368+00:00'
+  processed: true
+  notes: query='VKTX VANQUISH-2 topline 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: VKTX VANQUISH-2 topline 2026
+    url: https://ir.vikingtherapeutics.com/2026-04-29-Viking-Therapeutics-Reports-First-Quarter-2026-Financial-Results-and-Provides-Corporate-Update
+    domain: ir.vikingtherapeutics.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:00.214867+00:00'
+    stale_at: '2026-08-22T17:01:00.214867+00:00'
+    expire_at: '2026-10-21T17:01:00.214867+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d49f82
+  filename: 2026-07-23_viking-therapeutics-presents-data-from-its-13-week.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.290934+00:00'
+  processed: true
+  notes: query='VKTX VANQUISH-2 topline 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: VKTX VANQUISH-2 topline 2026
+    url: https://www.prnewswire.com/news-releases/viking-therapeutics-presents-data-from-its-13-week-phase-2-venture-oral-dosing-trial-of-vk2735-at-european-congress-on-obesity-eco-2026-302768959.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:00.279960+00:00'
+    stale_at: '2026-08-22T17:01:00.279960+00:00'
+    expire_at: '2026-10-21T17:01:00.279960+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-053d60
+  filename: 2026-07-23_novo-nordisk-advances-early-stage-obesity-medicati.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.327603+00:00'
+  processed: true
+  notes: query='NVO amycretin obesity Phase 2 weight loss'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: NVO amycretin obesity Phase 2 weight loss
+    url: https://www.prnewswire.com/news-releases/novo-nordisk-advances-early-stage-obesity-medication-amycretin-to-phase-3-clinical-development-based-on-early-phase-clinical-trial-results-in-people-with-obesity-or-excess-weight-published-in-the-lancet-302487500.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:00.315876+00:00'
+    stale_at: '2026-08-22T17:01:00.315876+00:00'
+    expire_at: '2026-10-21T17:01:00.315876+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d59bb4
+  filename: 2026-07-23_novo-nordisk-s-amycretin-achieves-up-to-22-weight-.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.401443+00:00'
+  processed: true
+  notes: query='NVO amycretin obesity Phase 2 weight loss' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: NVO amycretin obesity Phase 2 weight loss
+    url: https://www.patientcareonline.com/view/novo-nordisk-s-amycretin-achieves-up-to-22-weight-loss-in-phase-1b-2a-trial
+    domain: patientcareonline.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.389454+00:00'
+    stale_at: '2026-08-22T17:01:00.389454+00:00'
+    expire_at: '2026-10-21T17:01:00.389454+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-505828
+  filename: 2026-07-23_lilly-vs-novo-nordisk-obesity-drug-giants-face-off.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.440314+00:00'
+  processed: true
+  notes: query='LLY NVO VKTX forward PE consensus 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: LLY NVO VKTX forward PE consensus 2026
+    url: https://finance.yahoo.com/news/lilly-vs-novo-nordisk-obesity-170000484.html
+    domain: finance.yahoo.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:00.428366+00:00'
+    stale_at: '2026-08-22T17:01:00.428366+00:00'
+    expire_at: '2026-10-21T17:01:00.428366+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-61becc
+  filename: 2026-07-23_eli-lilly-vs-viking-therapeutics-which-glp-1-stock.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.476043+00:00'
+  processed: true
+  notes: query='LLY NVO VKTX forward PE consensus 2026' | query='LLY NVO VKTX forward
+    PE consensus 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: LLY NVO VKTX forward PE consensus 2026
+    url: https://www.aol.com/articles/eli-lilly-vs-viking-therapeutics-143400000.html
+    domain: aol.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.502429+00:00'
+    stale_at: '2026-08-22T17:01:00.502429+00:00'
+    expire_at: '2026-10-21T17:01:00.502429+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8edc63
+  filename: 2026-07-23_fact-sheet---medicare-glp-1-bridge-glp-1-drugs-for.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.558227+00:00'
+  processed: true
+  notes: query='obesity net price IRA Medicare 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: obesity net price IRA Medicare 2026
+    url: https://www.medicare.gov/publications/12234-medicare-glp-1-bridge-glp-1-drugs-for-50-a-month.pdf
+    domain: medicare.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.545491+00:00'
+    stale_at: '2026-08-22T17:01:00.545491+00:00'
+    expire_at: '2026-10-21T17:01:00.545491+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f91712
+  filename: 2026-07-23_fact-sheet-president-donald-j-trump-announces-majo.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.599116+00:00'
+  processed: true
+  notes: query='obesity net price IRA Medicare 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: obesity net price IRA Medicare 2026
+    url: https://www.whitehouse.gov/fact-sheets/2025/11/fact-sheet-president-donald-j-trump-announces-major-developments-in-bringing-most-favored-nation-pricing-to-american-patients/
+    domain: whitehouse.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.585492+00:00'
+    stale_at: '2026-08-22T17:01:00.585492+00:00'
+    expire_at: '2026-10-21T17:01:00.585492+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c4b77e
+  filename: 2026-07-23_fiscal-impact-of-expanded-medicare-coverage-for-gl.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.641318+00:00'
+  processed: true
+  notes: query='obesity net price IRA Medicare 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: obesity net price IRA Medicare 2026
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12032556/
+    domain: pmc.ncbi.nlm.nih.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.627538+00:00'
+    stale_at: '2026-08-22T17:01:00.627538+00:00'
+    expire_at: '2026-10-21T17:01:00.627538+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-7fde1f
+  filename: 2026-07-23_pcsk9-inhibition-from-effectiveness-to-cost-effect.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.688703+00:00'
+  processed: true
+  notes: query='PCSK9 efficacy leader displaced history' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: PCSK9 efficacy leader displaced history
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11234837/
+    domain: pmc.ncbi.nlm.nih.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.673801+00:00'
+    stale_at: '2026-08-22T17:01:00.673801+00:00'
+    expire_at: '2026-10-21T17:01:00.673801+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-624267
+  filename: 2026-07-23_targeting-proprotein-convertase-subtilisin-kexin-t.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.732471+00:00'
+  processed: true
+  notes: query='PCSK9 efficacy leader displaced history'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: PCSK9 efficacy leader displaced history
+    url: https://www.nature.com/articles/s41392-023-01690-3
+    domain: nature.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:00.716558+00:00'
+    stale_at: '2026-08-22T17:01:00.716558+00:00'
+    expire_at: '2026-10-21T17:01:00.716558+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-61df5e
+  filename: 2026-07-23_cost-effectiveness-analysis-says-price-of-pcsk9-in.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.778094+00:00'
+  processed: true
+  notes: query='PCSK9 efficacy leader displaced history' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: PCSK9 efficacy leader displaced history
+    url: https://www.tctmd.com/news/more-bang-less-buck-cost-effectiveness-analysis-says-price-pcsk9-inhibitors-needs-drop-two
+    domain: tctmd.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.763323+00:00'
+    stale_at: '2026-08-22T17:01:00.763323+00:00'
+    expire_at: '2026-10-21T17:01:00.763323+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3cb00b
+  filename: 2026-07-23_the-effect-of-amycretin-a-unimolecular-glucagon-li.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.827256+00:00'
+  processed: true
+  notes: query='amylin lean muscle preservation body comp' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: amylin lean muscle preservation body comp
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12309853/
+    domain: pmc.ncbi.nlm.nih.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.812592+00:00'
+    stale_at: '2026-08-22T17:01:00.812592+00:00'
+    expire_at: '2026-10-21T17:01:00.812592+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-88aaee
+  filename: 2026-07-23_petrelintide-zp8396-significantly-reduces-fat-mass.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.873488+00:00'
+  processed: true
+  notes: query='amylin lean muscle preservation body comp' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: amylin lean muscle preservation body comp
+    url: https://www.zealandpharma.com/media/k0zbilez/petrelintide-on-preserving-lean-mass-in-dio-rats_ada-2024-poster.pdf
+    domain: zealandpharma.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.858064+00:00'
+    stale_at: '2026-08-22T17:01:00.858064+00:00'
+    expire_at: '2026-10-21T17:01:00.858064+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e3fe45
+  filename: 2026-07-23_incretin-based-weight-loss-pharmacotherapy-can-res.md
+  source_type: web-search
+  added: '2026-07-23T17:01:00.921129+00:00'
+  processed: true
+  notes: query='amylin lean muscle preservation body comp' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: amylin lean muscle preservation body comp
+    url: https://diabetesjournals.org/care/article/47/10/1718/154535/Incretin-Based-Weight-Loss-Pharmacotherapy-Can
+    domain: diabetesjournals.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:01:00.905440+00:00'
+    stale_at: '2026-08-22T17:01:00.905440+00:00'
+    expire_at: '2026-10-21T17:01:00.905440+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0bce49
+  filename: 2026-07-23_lilly-with-new-data-to-seek-fda-approval-of-obesit.md
+  source_type: web-search
+  added: '2026-07-23T17:43:20.667493+00:00'
+  processed: false
+  notes: query='obesity readout July 2026 retatrutide TRIUMPH CV + ADA competition'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive + BMJ
+      meta + ADA competition
+    url: https://www.biopharmadive.com/news/lilly-retatrutide-fda-application-obesity-drug-results/825987/
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:43:35.472998+00:00'
+    stale_at: '2026-08-22T17:43:35.472998+00:00'
+    expire_at: '2026-10-21T17:43:35.472998+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - obesity readout July 2026 retatrutide TRIUMPH CV + ADA competition
+- id: mat-a1e648
+  filename: 2026-07-23_with-ada-in-the-books-analyst-says-lilly-is-wideni.md
+  source_type: web-search
+  added: '2026-07-23T17:43:20.726212+00:00'
+  processed: false
+  notes: query='obesity readout July 2026 retatrutide TRIUMPH CV + ADA competition'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive + BMJ
+      meta + ADA competition
+    url: https://www.fiercebiotech.com/pharma/ada-lilly-widening-its-lead-obesity-race-analyst
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:43:35.632883+00:00'
+    stale_at: '2026-08-22T17:43:35.632883+00:00'
+    expire_at: '2026-10-21T17:43:35.632883+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - obesity readout July 2026 retatrutide TRIUMPH CV + ADA competition
+- id: mat-06719c
+  filename: 2026-07-23_lilly-and-novo-face-off-at-ada-2026-as-others-seek.md
+  source_type: web-search
+  added: '2026-07-23T17:43:20.774178+00:00'
+  processed: false
+  notes: query='obesity readout July 2026 retatrutide TRIUMPH CV + ADA competition'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive + BMJ
+      meta + ADA competition
+    url: https://www.biospace.com/lilly-novo-face-off-at-ada-2026-as-others-seek-to-compete-in-obesity
+    domain: biospace.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:43:35.689124+00:00'
+    stale_at: '2026-08-22T17:43:35.689124+00:00'
+    expire_at: '2026-10-21T17:43:35.689124+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - obesity readout July 2026 retatrutide TRIUMPH CV + ADA competition
+- id: mat-08d7bc
+  filename: 2026-07-23_new-data-on-eli-lilly-triple-g-drug-retatrutide-le.md
+  source_type: web-search
+  added: '2026-07-23T17:43:35.420454+00:00'
+  processed: false
+  notes: query='obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive
+    + BMJ meta + ADA competition' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive + BMJ
+      meta + ADA competition
+    url: https://www.statnews.com/2026/07/23/new-data-on-eli-lilly-triple-g-drug-retatrutide-leave-open-questions-on-heart-benefit/
+    domain: statnews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:43:35.403435+00:00'
+    stale_at: '2026-08-22T17:43:35.403435+00:00'
+    expire_at: '2026-10-21T17:43:35.403435+00:00'
+    triggered_by: 01-prescan
+- id: mat-ab1c02
+  filename: 2026-07-23_retatrutide-achieved-up-to-22-6-weight-loss-in-2-p.md
+  source_type: web-search
+  added: '2026-07-23T17:43:35.526129+00:00'
+  processed: false
+  notes: query='obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive
+    + BMJ meta + ADA competition' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive + BMJ
+      meta + ADA competition
+    url: https://www.patientcareonline.com/view/retatrutide-achieved-up-to-22-6-weight-loss-in-2-phase-3-obesity-trials
+    domain: patientcareonline.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:43:35.508519+00:00'
+    stale_at: '2026-08-22T17:43:35.508519+00:00'
+    expire_at: '2026-10-21T17:43:35.508519+00:00'
+    triggered_by: 01-prescan
+- id: mat-a41282
+  filename: 2026-07-23_comparing-benefits-and-harms-of-obesity-drugs-bmj-.md
+  source_type: web-search
+  added: '2026-07-23T17:43:35.579287+00:00'
+  processed: false
+  notes: query='obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive
+    + BMJ meta + ADA competition' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive + BMJ
+      meta + ADA competition
+    url: https://www.bmj.com/content/394/bmj-2026-725349
+    domain: bmj.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:43:35.561792+00:00'
+    stale_at: '2026-08-22T17:43:35.561792+00:00'
+    expire_at: '2026-10-21T17:43:35.561792+00:00'
+    triggered_by: 01-prescan
+- id: mat-19b826
+  filename: 2026-07-23_beyond-peak-weight-loss-the-next-battleground-in-o.md
+  source_type: web-search
+  added: '2026-07-23T17:43:35.743966+00:00'
+  processed: false
+  notes: query='obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive
+    + BMJ meta + ADA competition' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive + BMJ
+      meta + ADA competition
+    url: https://www.lek.com/insights/biotech-and-pharmaceuticals/beyond-peak-weight-loss-next-battleground-obesity
+    domain: lek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:43:35.725787+00:00'
+    stale_at: '2026-08-22T17:43:35.725787+00:00'
+    expire_at: '2026-10-21T17:43:35.725787+00:00'
+    triggered_by: 01-prescan
+- id: mat-ae3a6f
+  filename: 2026-07-23_lilly-shares-jump-as-analysts-see-retatrutide-data.md
+  source_type: web-search
+  added: '2026-07-23T17:43:35.799407+00:00'
+  processed: false
+  notes: query='obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive
+    + BMJ meta + ADA competition' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive + BMJ
+      meta + ADA competition
+    url: https://www.bnnbloomberg.ca/business/company-news/2026/06/08/lilly-shares-jump-as-analysts-see-retatrutide-data-extending-obesity-market-edge/
+    domain: bnnbloomberg.ca
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:43:35.780893+00:00'
+    stale_at: '2026-08-22T17:43:35.780893+00:00'
+    expire_at: '2026-10-21T17:43:35.780893+00:00'
+    triggered_by: 01-prescan

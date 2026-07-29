@@ -54,6 +54,8 @@ def page(request: Request, key: str):
         fin_io.upsert_company(conn, {**meta, "ticker": ticker, "market": market})
         rows = fin_io.list_periods_with_ratios(conn, ticker, market=market)
         last_fetch = fin_io.get_last_fetch(conn, ticker)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     finally:
         conn.close()
 

@@ -1,0 +1,149 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-structure-gpcr
+variant: opus4.8
+created: 2026-07-22
+
+# L1/L2 已坍缩为 primer_scope（背景理解交给 00_primer，roadmap 只驱动 L3/L4 收料）
+primer_scope: >
+  00_primer 应覆盖：口服小分子 GLP-1 赛道边界与发展阶段（注射剂→口服平权化）、
+  参与者地图（LLY orforglipron 领先装机 / Novo oral sema / Viking VK2735 / Roche CT-996 /
+  AstraZeneca AZD5004 / Structure aleniglipron）、市场规模与放量节奏、
+  GPCR 公司沿革与管线（aleniglipron GSBR-1290 主资产 + amylin ACCG-2671/3535 第二条腿 + Roche 授权关系）、
+  小分子口服相较肽类的机理/成本/产能差异（何以"口服平权化"）。
+
+learning_track:
+  l1_orientation: []   # 坍缩进 primer_scope
+  l2_history: []       # 坍缩进 primer_scope
+
+  l3_debates:          # 争议层：分歧在哪，各方逻辑（展开 thesis 反方）
+    - question: "『疗效领跑』含金量之争：核心 120mg/36wk −11.3% vs orforglipron ~10.5% 差距不大，高剂量 16.3% 靠加量换来——GPCR 是真领跑还是名不副实？"
+      source_hint: 头对头/交叉试验对照、卖方疗效比较表、mat-0b4c14
+    - question: "落后一身位 + pre-revenue：2029/30 才商业化，其间持续亏损（Q1'26 净亏 $76M），独立利润池窗口是否被 LLY/Novo 已锁定装机挤压？"
+      source_hint: orforglipron 上市放量数据、10-K 管线时间表
+    - question: "耐受性/停药率变量：ACCESS 全臂停药率 10.4%，高剂量疗效靠加量——Phase 3 若因耐受性无法用高剂量，疗效领跑是否收窄？"
+      source_hint: 临床安全性数据、剂量-停药率曲线
+    - question: "结局是并购期权 vs 独立利润池：疗效领跑者历史上常被规模者碾压（他汀 vs PCSK9），GPCR 最终是独立商业化还是高价并购标的？"
+      source_hint: M&A comps、Roche 优先谈判权条款、arena-mirror
+    - question: "IP 护城河真实性：24 专利族 2041-45 + Roche $100M 背书能否真防第三方诉讼，还是像 Gilead→Merck 一样反被诉、利润池寿命被侵蚀？"
+      source_hint: 专利组合分析、Roche 许可条款、Gilead-Merck 判例
+
+  l4_hunting:          # 狩猎层：逐条对齐 thesis Killer Question
+    - question: "aleniglipron Phase 3（Q3'26 启动）试验设计/剂量臂/主终点是什么？市场当前隐含的『守住 Phase 2 核心 11.3%/高剂量 16.3%』概率多少？高剂量是否受 10.4% 停药率约束而无法落地？"
+      addresses: [K1]
+      search_keywords: [aleniglipron Phase 3 设计, ACCESS 试验 剂量臂, Structure 停药率]
+      source_hint: ClinicalTrials.gov、公司 R&D 更新、卖方临床点评
+    - question: "$3.5B 市值隐含的并购概率/独立价值是多少？近期口服 GLP-1 biotech M&A（Viking/Metsera 等）成交/估值倍数？潜在买家（Roche 优先权？AZ/Pfizer/Amgen）出价锚在哪？"
+      addresses: [K2]
+      search_keywords: [Structure Therapeutics 收购, 口服 GLP-1 并购估值, GPCR 潜在买家]
+      source_hint: 卖方 M&A comps、Roche 授权协议、并购传闻
+    - question: "若 Phase 3 成功，2029/30 GPCR 自主商业化时 LLY orforglipron/Novo 口服的装机+份额已锁定多少？口服供给/产能瓶颈是否给后进者留放量空间？PBM formulary 支付摩擦多大？"
+      addresses: [K3]
+      search_keywords: [orforglipron 上市放量 份额, 口服 GLP-1 产能瓶颈, GLP-1 PBM formulary]
+      source_hint: LLY/Novo 放量数据、口服产能分析、支付端研究
+    - question: "24 专利族 2041-45 能否真正防第三方诉讼？Roche $100M 许可是否买断潜在专利冲突？Gilead→Merck / 他汀→PCSK9 镜鉴对 GPCR 利润池寿命的启示？"
+      addresses: [K4]
+      search_keywords: [Structure 专利组合 到期, GLP-1 专利诉讼, Roche 许可协议 条款]
+      source_hint: 专利族分析、Roche 8-K/协议、丙肝专利判例
+    - question: "现金 $14.6 亿 + ATM $341.5M 按当前烧钱（Q1'26 −$76M/季）跑道多久、够不够到商业化（2029/30）？Phase 3 全成本估算？ATM 已增发多少、对每股价值摊薄多大？"
+      addresses: [K5]
+      search_keywords: [Structure Therapeutics 现金 跑道, ATM 增发 摊薄, GPCR burn rate]
+      source_hint: 10-Q 现金流量表、ATM 披露、卖方摊薄模型
+
+material_priority:
+  tier1:              # 必读，研究不可缺
+    - title: "Structure Therapeutics FY2025 10-K（管线/现金/风险/IP 披露）"
+      type: annual-report
+      ticker: GPCR
+      source: SEC EDGAR
+      why: "financial-arc + 现金跑道 + aleniglipron/amylin 管线时间表 + 专利披露；服务环①/环⑤/valuation-anchor"
+      addresses: [K1, K4, K5]
+      info_tier: public
+    - title: "Structure Therapeutics 最新 10-Q（Q1'26 现金/烧钱/ATM 增发）"
+      type: quarterly-report
+      ticker: GPCR
+      source: SEC EDGAR
+      why: "Q1'26 净亏 $76M、$14.6 亿现金、ATM 摊薄——K5 命门核心数据"
+      addresses: [K5]
+      info_tier: public
+    - title: "aleniglipron Phase 3 试验设计 + Phase 2 顶线数据深度点评（临床/卖方）"
+      type: sell-side-note
+      source: exa/ClinicalTrials.gov/卖方
+      why: "K1 主命门：疗效可复制性 + 停药率约束；父料 mat-0b4c14/mat-822d22 已有顶线，需补 Phase 3 设计与头对头对照"
+      addresses: [K1]
+      info_tier: half_public
+    - title: "Structure Therapeutics 卖方一致预期 / 目标价模型（consensus）"
+      type: sell-side-note
+      source: exa/财经媒体 consensus 汇总
+      why: "A 轴合同必收 consensus——喂环②；$3.5B 市值隐含预期锚定 K2"
+      addresses: [K2, K5]
+      info_tier: half_public
+    - title: "Roche 授权协议条款 + Structure 24 专利族 IP 组合分析"
+      type: industry-research
+      source: exa/公司 8-K/专利数据库
+      why: "K4 命门：IP 护城河耐久性 + Roche $100M 背书性质（许可 vs 买断诉讼）"
+      addresses: [K4]
+      info_tier: half_public
+
+  tier2:              # 补充，有最好
+    - title: "Structure 管理层背景 + 资本配置 track record（proxy/治理）"
+      type: sell-side-note
+      source: SEC DEF 14A / 公司治理
+      why: "A 轴合同必收 mgmt-capital-alloc——喂环①；pre-revenue biotech 管理层烧钱纪律与并购取向"
+      addresses: [K2, K5]
+      info_tier: half_public
+    - title: "口服 GLP-1 biotech M&A comps（Viking/Metsera 估值倍数）"
+      type: industry-research
+      source: exa/卖方（复用父料 mat-87d0af/mat-403da9/mat-5b4888）
+      why: "K2 并购标的定价锚；父 arena 已收 Viking M&A 分析可直接复用"
+      addresses: [K2]
+      info_tier: half_public
+    - title: "orforglipron / Novo oral sema 上市放量与份额数据（K3 放量参照）"
+      type: industry-research
+      source: exa（复用父料 mat-e0d600/mat-f39c3c/mat-ff23c8）
+      why: "K3 放量斜率：领先者装机进度决定后进者剩余空间"
+      addresses: [K3]
+      info_tier: half_public
+    - title: "amylin ACCG-2671/3535（DACRA）临床进展与联用增效数据"
+      type: sell-side-note
+      source: exa/公司管线
+      why: "第二条腿期权价值——支持理由4，影响 K2 独立价值"
+      addresses: [K2]
+      info_tier: half_public
+
+  tier3:              # 可选（深度研究时参考）
+    - title: "同赛道 peer 财务对照（Viking VKTX 等 pre-revenue biotech）"
+      type: data
+      source: financial_data/market_data API（给 ticker 自动拉）
+      why: "valuation-anchor / peer 倍数；结构化项合成期自动拉"
+      addresses: [K2]
+      info_tier: public
+    - title: "口服 GLP-1 CMC/产能瓶颈分析（小分子量产成本）"
+      type: industry-research
+      source: exa
+      why: "K3 供给侧：口服产能是否给后进者放量窗口"
+      addresses: [K3]
+      info_tier: half_public
+
+key_risks_to_monitor:
+  - "aleniglipron Phase 3 顶线（预计 2027-28）——最大二元事件"
+  - "Roche 授权关系变动 / 优先谈判权行使"
+  - "ATM 持续增发节奏（摊薄监控）"
+  - "LLY orforglipron / Novo oral 上市放量斜率（挤压窗口）"
+  - "口服 GLP-1 专利诉讼进展（第三方或反诉）"
+
+analogies_to_study:
+  - name: "他汀 vs PCSK9 抑制剂（US pharma, 2015-）"
+    logic: "疗效更强的新类（PCSK9）被更便宜、已装机的老类（他汀）成本/可及性护城河压制，利润池远不及预期"
+    limitation: "GLP-1 减重是全新利润池，非替代存量；口服 vs 口服而非口服 vs 注射"
+    ring: historical-mirror
+    reuse: mat-a6e783
+  - name: "Gilead 丙肝 DAA 专利战（Gilead vs Merck, 2016）"
+    logic: "即便拥有最强分子与 IP，仍可能反被诉赔付，且利润池随治愈型用药+仿制快速崩塌"
+    limitation: "丙肝是治愈型（一次性），GLP-1 是慢病长期用药，利润池节奏不同"
+    ring: historical-mirror
+    reuse: mat-56ee94, mat-da05cc
+  - name: "DPP-4/SGLT2 口服糖尿病小分子（2010s）"
+    logic: "口服小分子专利到期后仿制侵蚀，利润池寿命受专利悬崖硬约束"
+    limitation: "GPCR 专利到 2041-45，悬崖较远；但示范仿制侵蚀终局"
+    ring: historical-mirror
+    reuse: mat-daac55

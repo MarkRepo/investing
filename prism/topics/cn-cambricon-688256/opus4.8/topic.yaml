@@ -1,0 +1,46 @@
+slug: cn-cambricon-688256
+display_name: 寒武纪 (688256, 思元ASIC)
+type: company
+created: '2026-07-23T23:33:03.319787+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-domestic-ai-chip
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 寒武纪最大客户字节自研PPU替代速度多快、多客户放量能否摊薄88.66%客户集中度、极端估值PS95x何时消化到可介入价位
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_688256
+  market: SSE
+  short_name: 寒武纪
+  search_terms:
+  - 寒武纪
+  - 思元590
+  - 思元690
+  - 字节PPU
+  - '688256'
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-23T23:34:09.012102+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-23T23:34:09.012117+00:00'
+    summary: 寒武纪是A股最纯AI芯片旗帜/推理最强/已扭亏兑现(2025+453%/净利20.59亿),但估值(PS94.9x/PE289x)踩在最大客户字节不快速自研替代这块最不可证伪的虚地上;多客户放量能否摊薄88.66%集中度是核心命门。强度4.5

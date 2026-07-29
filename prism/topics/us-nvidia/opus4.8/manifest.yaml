@@ -1,0 +1,1358 @@
+slug: us-nvidia
+variant: opus4.8
+updated: '2026-07-23T23:28:44.631751+00:00'
+materials:
+- id: mat-32a09a
+  filename: 2026-07-23_nvidia-announces-financial-results-for-fourth-quar.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.733907+00:00'
+  processed: false
+  notes: query='NVIDIA FY2026 quarterly revenue data center results 2025 earnings'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA gross margin guidance Blackwell 2025 2026 latest quarter
+    url: https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026
+    domain: nvidianews.nvidia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.753824+00:00'
+    stale_at: '2026-08-22T16:49:54.753824+00:00'
+    expire_at: '2026-10-21T16:49:54.753824+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - NVIDIA FY2026 quarterly revenue data center results 2025 earnings
+- id: mat-daf31f
+  filename: 2026-07-23_nvidia-announces-financial-results-for-third-quart.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.737703+00:00'
+  processed: false
+  notes: query='NVIDIA FY2026 quarterly revenue data center results 2025 earnings'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA FY2026 quarterly revenue data center results 2025 earnings
+    url: https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026
+    domain: nvidianews.nvidia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.736681+00:00'
+    stale_at: '2026-08-22T16:49:54.736681+00:00'
+    expire_at: '2026-10-21T16:49:54.736681+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f69d2f
+  filename: 2026-07-23_nvidia-reports-q4-fy2026-earnings-data-center-and-.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.742178+00:00'
+  processed: false
+  notes: query='NVIDIA FY2026 quarterly revenue data center results 2025 earnings'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA FY2026 quarterly revenue data center results 2025 earnings
+    url: https://www.servethehome.com/nvidia-reports-q4-fy2026-earnings-data-center-and-proviz-drive-revenue-records/
+    domain: servethehome.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.740862+00:00'
+    stale_at: '2026-08-22T16:49:54.740862+00:00'
+    expire_at: '2026-10-21T16:49:54.740862+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-82c4ed
+  filename: 2026-07-23_nvidia-q3-fy-2026-record-data-center-revenue-highe.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.747636+00:00'
+  processed: false
+  notes: query='NVIDIA FY2026 quarterly revenue data center results 2025 earnings'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA FY2026 quarterly revenue data center results 2025 earnings
+    url: https://futurumgroup.com/insights/nvidia-q3-fy-2026-record-data-center-revenue-higher-q4-guide/
+    domain: futurumgroup.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.745980+00:00'
+    stale_at: '2026-08-22T16:49:54.745980+00:00'
+    expire_at: '2026-10-21T16:49:54.745980+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-529284
+  filename: 2026-07-23_nvidia-announces-financial-results-for-first-quart.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.760261+00:00'
+  processed: false
+  notes: query='NVIDIA gross margin guidance Blackwell 2025 2026 latest quarter' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA gross margin guidance Blackwell 2025 2026 latest quarter
+    url: https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2027
+    domain: nvidianews.nvidia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.758270+00:00'
+    stale_at: '2026-08-22T16:49:54.758270+00:00'
+    expire_at: '2026-10-21T16:49:54.758270+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-44f3f7
+  filename: 2026-07-23_nvidia-s-gross-margin-hovers-near-75-can-nvda-main.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.767137+00:00'
+  processed: false
+  notes: query='NVIDIA gross margin guidance Blackwell 2025 2026 latest quarter' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA gross margin guidance Blackwell 2025 2026 latest quarter
+    url: https://qz.com/nvidia-s-gross-margin-hovers-near-75-can-nvda-maintain-this-level
+    domain: qz.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.764779+00:00'
+    stale_at: '2026-08-22T16:49:54.764779+00:00'
+    expire_at: '2026-10-21T16:49:54.764779+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6d1cae
+  filename: 2026-07-23_nvidia-gb200-supply-chain-the-global-ecosystem-exp.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.775896+00:00'
+  processed: false
+  notes: query='NVIDIA Blackwell GB200 GB300 ramp production shipments 2025 status'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA Blackwell GB200 GB300 ramp production shipments 2025 status
+    url: https://intuitionlabs.ai/articles/nvidia-gb200-supply-chain
+    domain: intuitionlabs.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.773119+00:00'
+    stale_at: '2026-08-22T16:49:54.773119+00:00'
+    expire_at: '2026-10-21T16:49:54.773119+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ecad34
+  filename: 2026-07-23_nvidia-suppliers-send-mixed-signals-for-delays-on-.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.784668+00:00'
+  processed: false
+  notes: query='NVIDIA Blackwell GB200 GB300 ramp production shipments 2025 status'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA Blackwell GB200 GB300 ramp production shipments 2025 status
+    url: https://io-fund.com/semiconductors/supply-chain/nvidia-gb200-delays-mixed-signals-nvda-stock-analysis
+    domain: io-fund.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.781615+00:00'
+    stale_at: '2026-08-22T16:49:54.781615+00:00'
+    expire_at: '2026-10-21T16:49:54.781615+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e0c890
+  filename: 2026-07-23_nvidia-stock-trades-cheaper-than-the-s-p-500-and.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.794860+00:00'
+  processed: false
+  notes: query='NVIDIA stock price market cap valuation forward PE 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: NVIDIA stock price market cap valuation forward PE 2026
+    url: https://www.barrons.com/articles/nvidia-stock-price-value-dividend-d31e2ba8
+    domain: barrons.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:54.791333+00:00'
+    stale_at: '2026-08-22T16:49:54.791333+00:00'
+    expire_at: '2026-10-21T16:49:54.791333+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f286dc
+  filename: 2026-07-23_nvidia-s-valuation-just-hit-a-multiyear-low.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.805981+00:00'
+  processed: false
+  notes: query='NVIDIA stock price market cap valuation forward PE 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA stock price market cap valuation forward PE 2026
+    url: https://finance.yahoo.com/technology/article/nvidias-valuation-just-hit-a-multiyear-low--even-as-revenue-sets-records-155948933.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.802010+00:00'
+    stale_at: '2026-08-22T16:49:54.802010+00:00'
+    expire_at: '2026-10-21T16:49:54.802010+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d9c227
+  filename: 2026-07-23_nvidia-forward-pe-ratio-23-33-possible-value-trap.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.818363+00:00'
+  processed: false
+  notes: query='NVIDIA stock price market cap valuation forward PE 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA stock price market cap valuation forward PE 2026
+    url: https://www.gurufocus.com/term/forward-pe-ratio/NVDA
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.813876+00:00'
+    stale_at: '2026-08-22T16:49:54.813876+00:00'
+    expire_at: '2026-10-21T16:49:54.813876+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4dc6c0
+  filename: 2026-07-23_nvidia-pe-ratio-2012-2026-nvda.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.832104+00:00'
+  processed: false
+  notes: query='NVIDIA stock price market cap valuation forward PE 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA stock price market cap valuation forward PE 2026
+    url: https://www.macrotrends.net/stocks/charts/NVDA/nvidia/pe-ratio
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.827193+00:00'
+    stale_at: '2026-08-22T16:49:54.827193+00:00'
+    expire_at: '2026-10-21T16:49:54.827193+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-772c97
+  filename: 2026-07-23_nvidia-says-it-will-record-5-5-billion-charge-for-.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.846803+00:00'
+  processed: false
+  notes: query='NVIDIA H20 China export restrictions license 2025 charge writedown
+    resumption'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: NVIDIA H20 China export restrictions license 2025 charge writedown resumption
+    url: https://www.cnbc.com/amp/2025/04/15/nvidia-says-it-will-record-5point5-billion-quarterly-charge-tied-to-h20-processors-exported-to-china.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:54.841717+00:00'
+    stale_at: '2026-08-22T16:49:54.841717+00:00'
+    expire_at: '2026-10-21T16:49:54.841717+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b750dd
+  filename: 2026-07-23_nvidia-faces-5-5-billion-charge-as-us-restricts-ch.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.861596+00:00'
+  processed: false
+  notes: query='NVIDIA H20 China export restrictions license 2025 charge writedown
+    resumption'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: NVIDIA H20 China export restrictions license 2025 charge writedown resumption
+    url: https://www.reuters.com/technology/nvidia-expects-up-55-billion-charge-first-quarter-2025-04-15/
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:54.855770+00:00'
+    stale_at: '2026-08-22T16:49:54.855770+00:00'
+    expire_at: '2026-10-21T16:49:54.855770+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9e08d9
+  filename: 2026-07-23_nvidia-records-5-5-billion-charge-on-new-h20-expor.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.876598+00:00'
+  processed: false
+  notes: query='NVIDIA H20 China export restrictions license 2025 charge writedown
+    resumption'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: NVIDIA H20 China export restrictions license 2025 charge writedown resumption
+    url: https://www.wsj.com/livecoverage/stock-market-trump-tariffs-trade-war-04-15-25/card/nvidia-records-5-5-billion-charge-on-new-h20-export-restrictions-LXjxlqr2m80QIrfJxnYZ
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:54.870908+00:00'
+    stale_at: '2026-08-22T16:49:54.870908+00:00'
+    expire_at: '2026-10-21T16:49:54.870908+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9d1080
+  filename: 2026-07-23_tech-ai-spending-approaches-700-billion-in-2026-ca.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.893782+00:00'
+  processed: false
+  notes: query='hyperscaler AI capex guidance 2025 2026 Microsoft Meta Amazon Google
+    total spending'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: hyperscaler AI capex guidance 2025 2026 Microsoft Meta Amazon Google total
+      spending
+    url: https://www.cnbc.com/amp/2026/02/06/google-microsoft-meta-amazon-ai-cash.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:54.887568+00:00'
+    stale_at: '2026-08-22T16:49:54.887568+00:00'
+    expire_at: '2026-10-21T16:49:54.887568+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8a5486
+  filename: 2026-07-23_big-tech-s-ai-spending-to-reach-725-billion-in-202.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.910828+00:00'
+  processed: false
+  notes: query='hyperscaler AI capex guidance 2025 2026 Microsoft Meta Amazon Google
+    total spending'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: hyperscaler AI capex guidance 2025 2026 Microsoft Meta Amazon Google total
+      spending
+    url: https://www.statista.com/chart/amp/35046/capital-expenditure-of-meta-alphabet-amazon-and-microsoft/
+    domain: statista.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:54.904548+00:00'
+    stale_at: '2026-08-22T16:49:54.904548+00:00'
+    expire_at: '2026-10-21T16:49:54.904548+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ec0a38
+  filename: 2026-07-23_google-microsoft-meta-and-amazon-capex-spending-to.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.930060+00:00'
+  processed: false
+  notes: query='hyperscaler AI capex guidance 2025 2026 Microsoft Meta Amazon Google
+    total spending' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: hyperscaler AI capex guidance 2025 2026 Microsoft Meta Amazon Google total
+      spending
+    url: https://finance.yahoo.com/sectors/technology/articles/google-microsoft-meta-amazon-capex-131823436.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.923340+00:00'
+    stale_at: '2026-08-22T16:49:54.923340+00:00'
+    expire_at: '2026-10-21T16:49:54.923340+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5f3287
+  filename: 2026-07-23_big-tech-s-725b-ai-capex-in-2026-up-77-from-2025.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.949411+00:00'
+  processed: true
+  notes: query='hyperscaler AI capex guidance 2025 2026 Microsoft Meta Amazon Google
+    total spending' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Microsoft Amazon Google Meta 2026 2027 AI capex guidance earnings call
+      outlook increase
+    url: https://valueaddvc.com/blog/big-tech-ai-capex-in-2025-microsoft-google-meta-amazon-and-the-spending-race
+    domain: valueaddvc.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.215796+00:00'
+    stale_at: '2026-08-22T17:07:32.215796+00:00'
+    expire_at: '2026-10-21T17:07:32.215796+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - hyperscaler AI capex guidance 2025 2026 Microsoft Meta Amazon Google total spending
+- id: mat-01668b
+  filename: 2026-07-23_nvidia-s-85-gpu-market-share-faces-growing-competi.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.972249+00:00'
+  processed: false
+  notes: query='AMD MI350 MI400 vs NVIDIA AI GPU market share 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AMD MI350 MI400 vs NVIDIA AI GPU market share 2025 2026
+    url: https://www.fool.com/investing/2026/01/25/nvidias-85-gpu-market-share-faces-growing-competit/
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:54.964859+00:00'
+    stale_at: '2026-08-22T16:49:54.964859+00:00'
+    expire_at: '2026-10-21T16:49:54.964859+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-af7d6a
+  filename: 2026-07-23_amd-s-mi350-the-ai-accelerator-that-could-challeng.md
+  source_type: web-search
+  added: '2026-07-23T16:49:54.993060+00:00'
+  processed: false
+  notes: query='AMD MI350 MI400 vs NVIDIA AI GPU market share 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AMD MI350 MI400 vs NVIDIA AI GPU market share 2025 2026
+    url: https://seekingalpha.com/article/4856532-amds-mi350-ai-accelerator-that-could-challenge-nvidias-dominance-in-2026
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:54.984881+00:00'
+    stale_at: '2026-08-22T16:49:54.984881+00:00'
+    expire_at: '2026-10-21T16:49:54.984881+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4e4dac
+  filename: 2026-07-23_amd-vs-nvidia-ai-gpu-market-share-2026.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.017292+00:00'
+  processed: false
+  notes: query='AMD MI350 MI400 vs NVIDIA AI GPU market share 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AMD MI350 MI400 vs NVIDIA AI GPU market share 2025 2026
+    url: https://siliconanalysts.com/analysis/amd-vs-nvidia-ai-gpu-market-share-2026
+    domain: siliconanalysts.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.008563+00:00'
+    stale_at: '2026-08-22T16:49:55.008563+00:00'
+    expire_at: '2026-10-21T16:49:55.008563+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-596b8c
+  filename: 2026-07-23_ai-server-compute-asic-shipments-to-triple-by-2027.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.041436+00:00'
+  processed: false
+  notes: query='Broadcom custom ASIC AI revenue 2025 growth TPU Trainium hyperscaler
+    market share'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Broadcom custom ASIC AI revenue 2025 growth TPU Trainium hyperscaler market
+      share
+    url: https://counterpointresearch.com/en/insights/AI-Server-Compute-ASIC-Shipments-to-Triple-by-2027
+    domain: counterpointresearch.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:55.032896+00:00'
+    stale_at: '2026-08-22T16:49:55.032896+00:00'
+    expire_at: '2026-10-21T16:49:55.032896+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4880fd
+  filename: 2026-07-23_the-custom-ai-asic-state-of-play-may-2026-broadcom.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.065827+00:00'
+  processed: false
+  notes: query='Broadcom custom ASIC AI revenue 2025 growth TPU Trainium hyperscaler
+    market share' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Broadcom custom ASIC AI revenue 2025 growth TPU Trainium hyperscaler market
+      share
+    url: https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia
+    domain: tomshardware.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.057013+00:00'
+    stale_at: '2026-08-22T16:49:55.057013+00:00'
+    expire_at: '2026-10-21T16:49:55.057013+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4854c7
+  filename: 2026-07-23_broadcom-ai-revenue-surges-106-custom-chip-strateg.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.090308+00:00'
+  processed: false
+  notes: query='Broadcom custom ASIC AI revenue 2025 growth TPU Trainium hyperscaler
+    market share' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Broadcom custom ASIC AI revenue 2025 growth TPU Trainium hyperscaler market
+      share
+    url: https://tech-insider.org/broadcom-ai-revenue-custom-chips-2026/
+    domain: tech-insider.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.081439+00:00'
+    stale_at: '2026-08-22T16:49:55.081439+00:00'
+    expire_at: '2026-10-21T16:49:55.081439+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-71d680
+  filename: 2026-07-23_nvidia-blackwell-google-tpus-aws-trainium-comparin.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.115178+00:00'
+  processed: false
+  notes: query='Broadcom custom ASIC AI revenue 2025 growth TPU Trainium hyperscaler
+    market share'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Broadcom custom ASIC AI revenue 2025 growth TPU Trainium hyperscaler market
+      share
+    url: https://www.cnbc.com/amp/2025/11/21/nvidia-gpus-google-tpus-aws-trainium-comparing-the-top-ai-chips.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:55.105571+00:00'
+    stale_at: '2026-08-22T16:49:55.105571+00:00'
+    expire_at: '2026-10-21T16:49:55.105571+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-59357f
+  filename: 2026-07-23_nvidia-vera-rubin-ramps-into-full-production-to-po.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.144234+00:00'
+  processed: false
+  notes: query='NVIDIA Rubin architecture launch timeline 2026 Vera CPU next generation'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA Rubin architecture launch timeline 2026 Vera CPU next generation
+    url: https://nvidianews.nvidia.com/news/vera-rubin-full-production-agentic-ai-factory
+    domain: nvidianews.nvidia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.134339+00:00'
+    stale_at: '2026-08-22T16:49:55.134339+00:00'
+    expire_at: '2026-10-21T16:49:55.134339+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d2d538
+  filename: 2026-07-23_nvidia-kicks-off-the-next-generation-of-ai-with-ru.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.172314+00:00'
+  processed: false
+  notes: query='NVIDIA Rubin architecture launch timeline 2026 Vera CPU next generation'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA Rubin architecture launch timeline 2026 Vera CPU next generation
+    url: https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer
+    domain: nvidianews.nvidia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.162119+00:00'
+    stale_at: '2026-08-22T16:49:55.162119+00:00'
+    expire_at: '2026-10-21T16:49:55.162119+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7d2e3d
+  filename: 2026-07-23_rubin-microarchitecture.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.201004+00:00'
+  processed: false
+  notes: query='NVIDIA Rubin architecture launch timeline 2026 Vera CPU next generation'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA Rubin architecture launch timeline 2026 Vera CPU next generation
+    url: https://en.wikipedia.org/wiki/Rubin_(microarchitecture)
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.190052+00:00'
+    stale_at: '2026-08-22T16:49:55.190052+00:00'
+    expire_at: '2026-10-21T16:49:55.190052+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9e2848
+  filename: 2026-07-23_why-gpu-and-hbm-supply-is-still-broken-in-2026-cow.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.232658+00:00'
+  processed: false
+  notes: query='TSMC CoWoS HBM supply capacity 2025 2026 AI chip bottleneck' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: TSMC CoWoS HBM supply capacity 2025 2026 AI chip bottleneck
+    url: https://info.fusionww.com/blog/inside-the-ai-bottleneck-cowos-hbm-and-2-3nm-capacity-constraints-through-2027?hs_amp
+    domain: info.fusionww.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.221816+00:00'
+    stale_at: '2026-08-22T16:49:55.221816+00:00'
+    expire_at: '2026-10-21T16:49:55.221816+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-47f087
+  filename: 2026-07-23_advanced-packaging-and-hbm-not-logic-dies-were-the.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.263468+00:00'
+  processed: false
+  notes: query='TSMC CoWoS HBM supply capacity 2025 2026 AI chip bottleneck' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: TSMC CoWoS HBM supply capacity 2025 2026 AI chip bottleneck
+    url: https://epochai.substack.com/p/advanced-packaging-and-hbm-not-logic
+    domain: epochai.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.251662+00:00'
+    stale_at: '2026-08-22T16:49:55.251662+00:00'
+    expire_at: '2026-10-21T16:49:55.251662+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-99b33f
+  filename: 2026-07-23_nvidia-gpu-order-backlog-signals-long-multi-year-c.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.297585+00:00'
+  processed: false
+  notes: query='NVIDIA Blackwell demand exceeds supply order backlog visibility 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA Blackwell demand exceeds supply order backlog visibility 2026
+    url: https://www.investing.com/analysis/nvidia-gpu-order-backlog-signals-long-multi-year-cycle-200670726
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.285649+00:00'
+    stale_at: '2026-08-22T16:49:55.285649+00:00'
+    expire_at: '2026-10-21T16:49:55.285649+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f49f2f
+  filename: 2026-07-23_jensen-huang-just-raised-nvidia-s-order-outlook-to.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.331511+00:00'
+  processed: false
+  notes: query='NVIDIA Blackwell demand exceeds supply order backlog visibility 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA Blackwell demand exceeds supply order backlog visibility 2026
+    url: https://www.fool.com/investing/2026/03/31/jensen-huang-just-raised-nvidias-order-outlook-to/
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.318867+00:00'
+    stale_at: '2026-08-22T16:49:55.318867+00:00'
+    expire_at: '2026-10-21T16:49:55.318867+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6a7771
+  filename: 2026-07-23_nvidia-stuns-wall-street-with-500b-ai-order-analys.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.366305+00:00'
+  processed: false
+  notes: query='NVIDIA Blackwell demand exceeds supply order backlog visibility 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA Blackwell demand exceeds supply order backlog visibility 2026
+    url: https://finance.yahoo.com/news/nvidia-stuns-wall-street-500b-061116860.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.352971+00:00'
+    stale_at: '2026-08-22T16:49:55.352971+00:00'
+    expire_at: '2026-10-21T16:49:55.352971+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9ff371
+  filename: 2026-07-23_nvidia-modifies-h20-chip-for-china-to-overcome-us-.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.402468+00:00'
+  processed: false
+  notes: query='NVIDIA China data center revenue 2025 export control impact H20 percentage'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: NVIDIA China data center revenue 2025 export control impact H20 percentage
+    url: https://www.reuters.com/world/china/nvidia-modifies-h20-chip-china-overcome-us-export-controls-sources-say-2025-05-09/
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:49:55.389673+00:00'
+    stale_at: '2026-08-22T16:49:55.389673+00:00'
+    expire_at: '2026-10-21T16:49:55.389673+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-114c7d
+  filename: 2026-07-23_nvidia-to-pay-the-u-s-government-15-of-china-ai-ch.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.438050+00:00'
+  processed: false
+  notes: query='NVIDIA China data center revenue 2025 export control impact H20 percentage'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA China data center revenue 2025 export control impact H20 percentage
+    url: https://www.fool.com/investing/2025/08/11/nvda-stock-china-ai-chips/
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.424600+00:00'
+    stale_at: '2026-08-22T16:49:55.424600+00:00'
+    expire_at: '2026-10-21T16:49:55.424600+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-69638b
+  filename: 2026-07-23_revenue-sharing-stakes-in-nvidia-s-china-chip-expo.md
+  source_type: web-search
+  added: '2026-07-23T16:49:55.474929+00:00'
+  processed: false
+  notes: query='NVIDIA China data center revenue 2025 export control impact H20 percentage'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA China data center revenue 2025 export control impact H20 percentage
+    url: https://www.aicerts.ai/news/revenue-sharing-stakes-in-nvidias-china-chip-export-turmoil/
+    domain: aicerts.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:49:55.461597+00:00'
+    stale_at: '2026-08-22T16:49:55.461597+00:00'
+    expire_at: '2026-10-21T16:49:55.461597+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5fb1d3
+  filename: 2026-07-23_china-nvidia-violated-anti-monopoly-law-will-conti.md
+  source_type: web-search
+  added: '2026-07-23T16:55:35.204559+00:00'
+  processed: false
+  notes: query='NVIDIA antitrust investigation regulatory probe 2025 2026 EU China
+    DOJ'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: NVIDIA antitrust investigation regulatory probe 2025 2026 EU China DOJ
+    url: https://www.cnbc.com/2025/09/15/china-nvidia-violated-anti-monopoly-law-will-continue-investigation.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:55:35.190395+00:00'
+    stale_at: '2026-08-22T16:55:35.190395+00:00'
+    expire_at: '2026-10-21T16:55:35.190395+00:00'
+    triggered_by: 00-prescan
+- id: mat-f4722a
+  filename: 2026-07-23_china-says-nvidia-violated-antitrust-law.md
+  source_type: web-search
+  added: '2026-07-23T16:55:35.241198+00:00'
+  processed: false
+  notes: query='NVIDIA antitrust investigation regulatory probe 2025 2026 EU China
+    DOJ'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: NVIDIA antitrust investigation regulatory probe 2025 2026 EU China DOJ
+    url: https://www.wsj.com/tech/china-probe-says-nvidia-violated-antitrust-laws-4acf344c
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:55:35.226997+00:00'
+    stale_at: '2026-08-22T16:55:35.226997+00:00'
+    expire_at: '2026-10-21T16:55:35.226997+00:00'
+    triggered_by: 00-prescan
+- id: mat-17fa79
+  filename: 2026_NVDA_10-Q_2026-05-20.htm
+  source_type: quarterly-report
+  added: '2026-07-23T17:01:01.821204+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — NVIDIA CORP
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-74ec46
+  filename: sec/2026_NVDA_10-Q_2026-05-20/item_1_financial.md
+  source_type: sec-section
+  added: '2026-07-23T17:01:01.963472+00:00'
+  processed: true
+  notes: split from 2026_NVDA_10-Q_2026-05-20.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-17fa79
+  sec_section: item_1_financial
+- id: mat-c1a75f
+  filename: sec/2026_NVDA_10-Q_2026-05-20/item_2_mda.md
+  source_type: sec-section
+  added: '2026-07-23T17:01:01.987396+00:00'
+  processed: true
+  notes: split from 2026_NVDA_10-Q_2026-05-20.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-17fa79
+  sec_section: item_2_mda
+- id: mat-ed0097
+  filename: sec/2026_NVDA_10-Q_2026-05-20/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-23T17:01:02.010980+00:00'
+  processed: true
+  notes: split from 2026_NVDA_10-Q_2026-05-20.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-17fa79
+  sec_section: item_3_quant_risk
+- id: mat-3644ae
+  filename: sec/2026_NVDA_10-Q_2026-05-20/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-23T17:01:02.035020+00:00'
+  processed: true
+  notes: split from 2026_NVDA_10-Q_2026-05-20.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-17fa79
+  sec_section: item_1a_risk
+- id: mat-c72404
+  filename: 2026_NVDA_10-K_2026-02-25.htm
+  source_type: annual-report
+  added: '2026-07-23T17:01:04.205253+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — NVIDIA CORP
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-2e1732
+  filename: sec/2026_NVDA_10-K_2026-02-25/item_1_business.md
+  source_type: sec-section
+  added: '2026-07-23T17:01:04.364230+00:00'
+  processed: true
+  notes: split from 2026_NVDA_10-K_2026-02-25.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-c72404
+  sec_section: item_1_business
+- id: mat-d0bfc5
+  filename: sec/2026_NVDA_10-K_2026-02-25/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-23T17:01:04.400467+00:00'
+  processed: true
+  notes: split from 2026_NVDA_10-K_2026-02-25.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-c72404
+  sec_section: item_1a_risk
+- id: mat-a048c7
+  filename: sec/2026_NVDA_10-K_2026-02-25/item_7_mda.md
+  source_type: sec-section
+  added: '2026-07-23T17:01:04.426614+00:00'
+  processed: true
+  notes: split from 2026_NVDA_10-K_2026-02-25.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-c72404
+  sec_section: item_7_mda
+- id: mat-960d53
+  filename: sec/2026_NVDA_10-K_2026-02-25/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-23T17:01:04.453102+00:00'
+  processed: true
+  notes: split from 2026_NVDA_10-K_2026-02-25.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-c72404
+  sec_section: item_7a_quant_risk
+- id: mat-469616
+  filename: sec/2026_NVDA_10-K_2026-02-25/item_8_financial.md
+  source_type: sec-section
+  added: '2026-07-23T17:01:04.479883+00:00'
+  processed: true
+  notes: split from 2026_NVDA_10-K_2026-02-25.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-c72404
+  sec_section: item_8_financial
+- id: mat-db8e5d
+  filename: 2026-07-23_meta-microsoft-amazon-and-alphabet-are-about-to-sp.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.120564+00:00'
+  processed: true
+  notes: query='Microsoft Amazon Google Meta 2026 2027 AI capex guidance earnings
+    call outlook increase' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Microsoft Amazon Google Meta 2026 2027 AI capex guidance earnings call
+      outlook increase
+    url: https://finance.yahoo.com/sectors/technology/article/meta-microsoft-amazon-and-alphabet-are-about-to-spend-a-shocking-amount-of-money-to-dominate-the-ai-era-115359575.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.104167+00:00'
+    stale_at: '2026-08-22T17:07:32.104167+00:00'
+    expire_at: '2026-10-21T17:07:32.104167+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e439b9
+  filename: 2026-07-23_microsoft-and-meta-earnings-previews.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.167495+00:00'
+  processed: true
+  notes: query='Microsoft Amazon Google Meta 2026 2027 AI capex guidance earnings
+    call outlook increase' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Microsoft Amazon Google Meta 2026 2027 AI capex guidance earnings call
+      outlook increase
+    url: https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/04/microsoft-and-meta-earnings-previews
+    domain: spglobal.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.150611+00:00'
+    stale_at: '2026-08-22T17:07:32.150611+00:00'
+    expire_at: '2026-10-21T17:07:32.150611+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d98abd
+  filename: 2026-07-23_microsoft-meta-and-google-just-silenced-ai-spendin.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.261945+00:00'
+  processed: true
+  notes: query='Microsoft Amazon Google Meta 2026 2027 AI capex guidance earnings
+    call outlook increase' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Microsoft Amazon Google Meta 2026 2027 AI capex guidance earnings call
+      outlook increase
+    url: https://stocktwits.com/news-articles/markets/equity/microsoft-meta-and-google-just-silenced-ai-spending-critics-in-one-earnings-night-as-big-tech-capex-swells-to-725-b/cZBtCIgReEx
+    domain: stocktwits.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.245719+00:00'
+    stale_at: '2026-08-22T17:07:32.245719+00:00'
+    expire_at: '2026-10-21T17:07:32.245719+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f39ae9
+  filename: 2026-07-23_nvda-nvidia-corp-analyst-estimates-ratings.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.312156+00:00'
+  processed: true
+  notes: query='NVIDIA analyst consensus estimates FY2027 FY2028 revenue EPS price
+    target Wall Street' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA analyst consensus estimates FY2027 FY2028 revenue EPS price target
+      Wall Street
+    url: https://www.wsj.com/market-data/quotes/NVDA/research-ratings
+    domain: wsj.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.295496+00:00'
+    stale_at: '2026-08-22T17:07:32.295496+00:00'
+    expire_at: '2026-10-21T17:07:32.295496+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-495eaa
+  filename: 2026-07-23_wall-street-s-most-watched-researcher-just-predict.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.366579+00:00'
+  processed: true
+  notes: query='NVIDIA analyst consensus estimates FY2027 FY2028 revenue EPS price
+    target Wall Street' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA analyst consensus estimates FY2027 FY2028 revenue EPS price target
+      Wall Street
+    url: https://finance.yahoo.com/markets/stocks/articles/wall-street-most-watched-researcher-173006251.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.347593+00:00'
+    stale_at: '2026-08-22T17:07:32.347593+00:00'
+    expire_at: '2026-10-21T17:07:32.347593+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-211826
+  filename: 2026-07-23_nvidia-nasdaqgs-nvda-stock-forecast-analyst-predic.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.418035+00:00'
+  processed: true
+  notes: query='NVIDIA analyst consensus estimates FY2027 FY2028 revenue EPS price
+    target Wall Street' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA analyst consensus estimates FY2027 FY2028 revenue EPS price target
+      Wall Street
+    url: https://simplywall.st/stocks/us/semiconductors/nasdaq-nvda/nvidia/future
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.399753+00:00'
+    stale_at: '2026-08-22T17:07:32.399753+00:00'
+    expire_at: '2026-10-21T17:07:32.399753+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-64ffdb
+  filename: 2026-07-23_nvidia-corp-nvda-forecast-price-target-analyst-rat.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.469341+00:00'
+  processed: true
+  notes: query='NVIDIA analyst consensus estimates FY2027 FY2028 revenue EPS price
+    target Wall Street' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA analyst consensus estimates FY2027 FY2028 revenue EPS price target
+      Wall Street
+    url: https://www.chartmill.com/stock/quote/NVDA/analyst-ratings
+    domain: chartmill.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.451071+00:00'
+    stale_at: '2026-08-22T17:07:32.451071+00:00'
+    expire_at: '2026-10-21T17:07:32.451071+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ea3a1f
+  filename: 2026-07-23_nvidia-s-20-trillion-thesis-is-intact-my-2026-allo.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.524777+00:00'
+  processed: true
+  notes: query='NVIDIA bull bear thesis deep dive analyst report 2026 valuation' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA bull bear thesis deep dive analyst report 2026 valuation
+    url: https://io-fund.com/ai-stocks/nvidia-stock-20-trillion-market-cap-timing
+    domain: io-fund.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.506310+00:00'
+    stale_at: '2026-08-22T17:07:32.506310+00:00'
+    expire_at: '2026-10-21T17:07:32.506310+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6e3eea
+  filename: 2026-07-23_nvidia-corporation-nvda---the-henry-fund.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.579399+00:00'
+  processed: true
+  notes: query='NVIDIA bull bear thesis deep dive analyst report 2026 valuation' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA bull bear thesis deep dive analyst report 2026 valuation
+    url: https://henryfund.tippie.uiowa.edu/sites/henryfund.tippie.uiowa.edu/files/2025-09/s25_NVDA.pdf
+    domain: henryfund.tippie.uiowa.edu
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.559513+00:00'
+    stale_at: '2026-08-22T17:07:32.559513+00:00'
+    expire_at: '2026-10-21T17:07:32.559513+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-7205ca
+  filename: 2026-07-23_nvidia-stock-analysis-2026-is-nvda-still-a-buy-for.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.636762+00:00'
+  processed: true
+  notes: query='NVIDIA bull bear thesis deep dive analyst report 2026 valuation' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA bull bear thesis deep dive analyst report 2026 valuation
+    url: https://intellectia.ai/blog/nvidia-stock-ai-investment-analysis-2026
+    domain: intellectia.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.615278+00:00'
+    stale_at: '2026-08-22T17:07:32.615278+00:00'
+    expire_at: '2026-10-21T17:07:32.615278+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b818ba
+  filename: 2026-07-23_hyperscaler-custom-ai-chips-in-2026-trainium-3-goo.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.696112+00:00'
+  processed: true
+  notes: query='custom AI ASIC TPU Trainium Maia hyperscaler self-designed chip volume
+    2026 vs NVIDIA GPU inference' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: custom AI ASIC TPU Trainium Maia hyperscaler self-designed chip volume
+      2026 vs NVIDIA GPU inference
+    url: https://www.spheron.network/blog/hyperscaler-custom-ai-chips-2026-trainium-tpu-maia-mtia-vs-nvidia-gpu/
+    domain: spheron.network
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.676882+00:00'
+    stale_at: '2026-08-22T17:07:32.676882+00:00'
+    expire_at: '2026-10-21T17:07:32.676882+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-9c7086
+  filename: 2026-07-23_custom-silicon-inflection-2026-introl-blog.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.753247+00:00'
+  processed: true
+  notes: query='custom AI ASIC TPU Trainium Maia hyperscaler self-designed chip volume
+    2026 vs NVIDIA GPU inference' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: custom AI ASIC TPU Trainium Maia hyperscaler self-designed chip volume
+      2026 vs NVIDIA GPU inference
+    url: https://introl.com/blog/custom-silicon-inflection-2026-hyperscaler-asics-nvidia-gpu
+    domain: introl.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.732540+00:00'
+    stale_at: '2026-08-22T17:07:32.732540+00:00'
+    expire_at: '2026-10-21T17:07:32.732540+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c425c0
+  filename: 2026-07-23_the-ai-deep-dive-the-rise-of-the-custom-silicon-pa.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.812070+00:00'
+  processed: true
+  notes: query='custom AI ASIC TPU Trainium Maia hyperscaler self-designed chip volume
+    2026 vs NVIDIA GPU inference' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: custom AI ASIC TPU Trainium Maia hyperscaler self-designed chip volume
+      2026 vs NVIDIA GPU inference
+    url: https://outperformingthemarket.substack.com/p/the-ai-deep-dive-the-rise-of-the
+    domain: outperformingthemarket.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.790854+00:00'
+    stale_at: '2026-08-22T17:07:32.790854+00:00'
+    expire_at: '2026-10-21T17:07:32.790854+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c138a5
+  filename: 2026-07-23_nvidia-and-the-cautionary-tale-of-cisco-systems.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.873666+00:00'
+  processed: true
+  notes: query='semiconductor cycle peak Cisco 2000 bubble NVIDIA valuation historical
+    parallel lesson' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: semiconductor cycle peak Cisco 2000 bubble NVIDIA valuation historical
+      parallel lesson
+    url: https://www.hardingloevner.com/insights/nvidia-and-the-cautionary-tale-of-cisco-systems/
+    domain: hardingloevner.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.853441+00:00'
+    stale_at: '2026-08-22T17:07:32.853441+00:00'
+    expire_at: '2026-10-21T17:07:32.853441+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-cfcbc6
+  filename: 2026-07-23_nvidia-2023-vs-cisco-1999-will-history-repeat.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.931053+00:00'
+  processed: true
+  notes: query='semiconductor cycle peak Cisco 2000 bubble NVIDIA valuation historical
+    parallel lesson' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: semiconductor cycle peak Cisco 2000 bubble NVIDIA valuation historical
+      parallel lesson
+    url: https://global.morningstar.com/en-gb/stocks/nvidia-2023-vs-cisco-1999-will-history-repeat
+    domain: global.morningstar.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.910279+00:00'
+    stale_at: '2026-08-22T17:07:32.910279+00:00'
+    expire_at: '2026-10-21T17:07:32.910279+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f3c93c
+  filename: 2026-07-23_nvidia-just-like-cisco-in-2000-nvda.md
+  source_type: web-search
+  added: '2026-07-23T17:07:32.989307+00:00'
+  processed: true
+  notes: query='semiconductor cycle peak Cisco 2000 bubble NVIDIA valuation historical
+    parallel lesson' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: semiconductor cycle peak Cisco 2000 bubble NVIDIA valuation historical
+      parallel lesson
+    url: https://seekingalpha.com/article/4848553-nvidia-just-like-cisco-in-2000
+    domain: seekingalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:32.968555+00:00'
+    stale_at: '2026-08-22T17:07:32.968555+00:00'
+    expire_at: '2026-10-21T17:07:32.968555+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d6214a
+  filename: 2026-07-23_nvidia-s-80-billion-stock-buyback-and-bigger-divid.md
+  source_type: web-search
+  added: '2026-07-23T17:07:33.053054+00:00'
+  processed: true
+  notes: query='NVIDIA share buyback capital allocation history dividend shareholder
+    return' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA share buyback capital allocation history dividend shareholder return
+    url: https://finance.yahoo.com/markets/stocks/article/nvidias-80-billion-stock-buyback-and-bigger-dividend-may-unleash-an-apple-like-stock-move-122248827.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:33.031333+00:00'
+    stale_at: '2026-08-22T17:07:33.031333+00:00'
+    expire_at: '2026-10-21T17:07:33.031333+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f76641
+  filename: 2026-07-23_nvidia-to-return-1-billion-to-shareholders-in-curr.md
+  source_type: web-search
+  added: '2026-07-23T17:07:33.115527+00:00'
+  processed: true
+  notes: query='NVIDIA share buyback capital allocation history dividend shareholder
+    return' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA share buyback capital allocation history dividend shareholder return
+    url: https://nvidianews.nvidia.com/_gallery/download_pdf/544819a9f6091d2735000567/
+    domain: nvidianews.nvidia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:33.093634+00:00'
+    stale_at: '2026-08-22T17:07:33.093634+00:00'
+    expire_at: '2026-10-21T17:07:33.093634+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6787a2
+  filename: 2026-07-23_nvidia-nvda-share-buybacks---current-historical-da.md
+  source_type: web-search
+  added: '2026-07-23T17:07:33.177661+00:00'
+  processed: true
+  notes: query='NVIDIA share buyback capital allocation history dividend shareholder
+    return' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NVIDIA share buyback capital allocation history dividend shareholder return
+    url: https://www.financecharts.com/stocks/NVDA/cash-flow/repurchase-of-capital-stock
+    domain: financecharts.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:07:33.155885+00:00'
+    stale_at: '2026-08-22T17:07:33.155885+00:00'
+    expire_at: '2026-10-21T17:07:33.155885+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a1ff4a
+  filename: 2026-07-23_amd-previews-instinct-mi400-series-helios-ai-rack.md
+  source_type: web-search
+  added: '2026-07-23T17:10:36.242441+00:00'
+  processed: true
+  notes: query='AMD MI400 MI450 roadmap 2026 2027 vs NVIDIA Rubin market share' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: AMD MI400 MI450 roadmap 2026 2027 vs NVIDIA Rubin market share
+    url: https://www.phoronix.com/news/AMD-Instinct-MI400-Preview
+    domain: phoronix.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:10:36.219858+00:00'
+    stale_at: '2026-08-22T17:10:36.219858+00:00'
+    expire_at: '2026-10-21T17:10:36.219858+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6a2059
+  filename: 2026-07-23_amd-unveils-instinct-mi400-and-mi500-to-challenge-.md
+  source_type: web-search
+  added: '2026-07-23T17:10:36.304971+00:00'
+  processed: true
+  notes: query='AMD MI400 MI450 roadmap 2026 2027 vs NVIDIA Rubin market share' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: AMD MI400 MI450 roadmap 2026 2027 vs NVIDIA Rubin market share
+    url: https://theoutpost.ai/news-story/amd-unveils-instinct-mi-400-and-mi-500-ai-accelerators-to-challenge-nvidia-s-market-dominance-21637/
+    domain: theoutpost.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:10:36.282822+00:00'
+    stale_at: '2026-08-22T17:10:36.282822+00:00'
+    expire_at: '2026-10-21T17:10:36.282822+00:00'
+    triggered_by: 00-deep-fetch

@@ -203,6 +203,99 @@ def test_fetch_matrix_missing_row_returns_none():
     assert val is None
 
 
+# --- html kind：sign_negative_regex（中文涨跌词无 +/− 时判负）---
+
+def test_html_sign_negative_regex_negates():
+    html = "<p>本周环比减少2.8%</p>"
+    recipe = {"kind": "html", "url": "https://x",
+              "parse": {"value_regex": r"环比(?:增加|减少)([0-9.]+)%",
+                        "sign_negative_regex": "减少"}}
+    val, _ = recipe_fetch.fetch_by_recipe(recipe, client=_fake_text_client(html))
+    assert val == -2.8
+
+
+def test_html_sign_negative_regex_positive_when_absent():
+    html = "<p>本周环比增加2.8%</p>"
+    recipe = {"kind": "html", "url": "https://x",
+              "parse": {"value_regex": r"环比(?:增加|减少)([0-9.]+)%",
+                        "sign_negative_regex": "减少"}}
+    val, _ = recipe_fetch.fetch_by_recipe(recipe, client=_fake_text_client(html))
+    assert val == 2.8
+
+
+# --- html_list kind：两步抓取（列表页找最新条目 id → 详情页正文取值）---
+
+def _fake_multi_text_client(by_url):
+    """url 精确匹配 → 对应 text 响应（供 html_list 两步抓取 mock 列表页+详情页）。"""
+    class _Resp:
+        def __init__(self, t): self.text = t
+        def raise_for_status(self): pass
+    class _Client:
+        def get(self, url, timeout=None, headers=None):
+            if url not in by_url:
+                raise AssertionError(f"unexpected url: {url}")
+            return _Resp(by_url[url])
+    return _Client()
+
+
+def _html_list_recipe():
+    return {
+        "kind": "html_list",
+        "list_url": "https://list.x/page1",
+        "parse": {
+            "list_item_regex": r'itemId=(\d+)"[^>]*>.*?alt="([^"]*)"',
+            "title_match_regex": "35城新建商品住宅成交面积",
+            "detail_url_template": "https://detail.x/item?id={id}",
+            "value_regex": r"环比上周(?:增加|减少)([0-9.]+)%",
+            "sign_negative_regex": "减少",
+            "date_regex": r"(\d{4}年第\d+周)",
+        },
+    }
+
+
+def test_html_list_two_step_fetch_and_negates():
+    list_html = ('<a itemId=12345"><img alt="2026年第28周35城新建商品住宅成交面积"></a>'
+                 '<a itemId=999"><img alt="无关条目"></a>')
+    detail_html = "<p>2026年第28周35城新建商品住宅成交面积158.7万平方米，环比上周减少2.8%。</p>"
+    client = _fake_multi_text_client({
+        "https://list.x/page1": list_html,
+        "https://detail.x/item?id=12345": detail_html,
+    })
+    val, as_of = recipe_fetch.fetch_by_recipe(_html_list_recipe(), client=client)
+    assert val == -2.8 and as_of == "2026年第28周"
+
+
+def test_html_list_date_from_raw_script_survives_body_cleaning():
+    """详情页发布日期常在 <script type=application/ld+json> 的 datePublished 里；
+    清洗正文时会把 script 标签连内容一起去掉，所以 date_regex 须对**原始** HTML 跑
+    （_fetch_html_list 的 date_text 参数），而不是清洗后的 text——这条测试锁死这个行为。"""
+    list_html = '<a itemId=12345"><img alt="市场周报 | 35城新建商品住宅成交面积环比"></a>'
+    detail_html = ('<script type="application/ld+json">{"datePublished":"2026-07-22 09:44:02"}'
+                   '</script><p>本周35城新建商品住宅成交面积环比上周减少2.8%。</p>')
+    recipe = dict(_html_list_recipe())
+    recipe["parse"] = dict(recipe["parse"])
+    recipe["parse"]["date_regex"] = r'"datePublished":"(\d{4}-\d{2}-\d{2})'
+    client = _fake_multi_text_client({
+        "https://list.x/page1": list_html,
+        "https://detail.x/item?id=12345": detail_html,
+    })
+    val, as_of = recipe_fetch.fetch_by_recipe(recipe, client=client)
+    assert val == -2.8 and as_of == "2026-07-22"
+
+
+def test_html_list_no_title_match_returns_none():
+    list_html = '<a itemId=999"><img alt="无关条目"></a>'
+    client = _fake_multi_text_client({"https://list.x/page1": list_html})
+    val, as_of = recipe_fetch.fetch_by_recipe(_html_list_recipe(), client=client)
+    assert val is None and as_of is None
+
+
+def test_html_list_missing_list_url_returns_none():
+    recipe = {"kind": "html_list", "parse": {"list_item_regex": r"(\d+)"}}
+    val, as_of = recipe_fetch.fetch_by_recipe(recipe, client=_fake_multi_text_client({}))
+    assert val is None and as_of is None
+
+
 # --- 按输入名派生：derived.from_inputs ---
 
 def test_run_recipe_derives_from_named_inputs(monkeypatch):

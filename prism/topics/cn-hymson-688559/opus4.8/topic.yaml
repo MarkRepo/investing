@@ -1,0 +1,407 @@
+slug: cn-hymson-688559
+display_name: 海目星激光 HYMSON (SSE_688559)
+type: company
+created: '2026-07-18T16:55:20.446860+00:00'
+status: active
+stage: 02-gather-materials
+canonical: true
+parent_topic: global-ssb-equipment
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 海目星(688559)是固态电池设备卖铲人中故事最响、现金质量最差的标的——赌买/卖/持有？核心命门：应收账龄47.83%恶化+存货堰塞湖+首亏8.8亿的现金质量，能否靠2026-2027固态订单验收+出海钣金(并购Xteg)第二曲线兑现扭转，还是已亏损市值仍157亿、固态期权被提前定价、下行大于弹性？给目标价区间与介入纪律。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_688559
+  market: SSE
+  short_name: 海目星
+  search_terms:
+  - 海目星 固态电池设备
+  - 海目星 应收账龄 存货
+  - 海目星 出海 钣金 Xteg
+  - 海目星 欣界能源 2GWh
+outputs_state:
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-19T02:47:43.153121+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-21e90f
+    - mat-2b1b69
+    - mat-2f03bd
+    - mat-47c625
+    - mat-4b1700
+    - mat-59696b
+    - mat-73ae48
+    - mat-7c4513
+    - mat-967cb4
+    - mat-aea1bc
+    - mat-b3f8e3
+    - mat-d302dd
+    - mat-e0e824
+    - mat-e282aa
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-19T02:47:43.173861+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-59696b
+    - mat-b3f8e3
+    - mat-d302dd
+    - mat-e0e824
+    - mat-e282aa
+    last_error: null
+  00_primer:
+    version: 1
+    last_updated: '2026-07-19T05:46:53.729373+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-2b1b69
+    - mat-4b1700
+    - mat-59696b
+    - mat-7c4513
+    - mat-aea1bc
+    - mat-b3f8e3
+    - mat-d302dd
+    - mat-e0e824
+    - mat-e282aa
+    last_error: null
+    critic_passed: true
+  08_living_feed:
+    version: 3
+    last_updated: '2026-07-19T09:57:29.039711+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials:
+- parent_slug: global-ssb-equipment
+  parent_variant: opus4.8
+  mat_id: mat-4b1700
+  note: 海目星2025年报(已抽取findings)：2GWh固态订单/账龄47.83%/首亏8.8亿/出海钣金+213%/欣界能源入股。公司case复用父层findings_mat-4b1700.md
+next_actions:
+- 说「prism 推进 cn-hymson-688559」回到 02-gather-materials，先跑 web-search prescan
+- critic 评审：反方(多头)未击穿"中性偏空/等半年报"结论(反而强化)；暴露PB双标+减值单边解读两处论证张力；承重单线(consensus单源+命门2账龄2026未校准)→封顶request-more，核心验证待8月底半年报一手披露
+user_todos:
+- task: 下载3家卖方深度报告(含2026-2027盈利预测+目标价表)——浙商/国泰海通/中泰任选3家近半年更新版
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K6
+  source_hint: 东财/同花顺研报;环④ consensus估值锚必需
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-70ca41
+  - mat-d3dc82
+  last_fetch_note: 一致预期(净利4-10亿/PE10-15x/目标58)已captured;券商原文东财付费墙,用户可选补
+- task: 下载海目星2026Q1季报PDF(细拆应收/存货/合同负债/分产品)
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  - K5
+  source_hint: SSE_688559 quarterly 2026Q1;ticker直下
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-b3f8e3
+  last_fetch_note: cninfo直下
+- task: 同业估值对照表(先导/利元亨/联赢 PS/PE/PB + 2026净利预测)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: 复用父层peer_matrix+market_data;环④相对估值
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 复用父层global-ssb-equipment/peer_matrix + market_data实时(PS2.21 vs
+    先导5.7)
+- task: 海目星2026半年报(约8月底披露)——账龄/扣非/存货/现金流四大验证点
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  source_hint: 尚未披露,建监控项;半年报是升降仓硬闸门
+  status: in_progress
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: waived
+  last_fetch_note: 尚未披露(Q1已扭亏非强制预告),预计8月底;监控项,升降仓硬闸门
+  disposition_note: 半年报尚未披露(预计2026-08底),非当前可收料;用户已认可作为06-monitor升降仓硬闸门增量更新,本轮合成写成显式catalyst缺口(K1/K2/K4/K5待验)
+- task: 固态2GWh量产线订单/欣界能源产线 临时公告(客户名/金额披露)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 688559公告流+互动易;固态叙事硬证据
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2b1b69
+  - mat-70ca41
+  - mat-7c4513
+  last_fetch_note: 欣界能源2GWh/4亿+(关联投资方)+产业基金合伙协议公告
+- task: 实控人赵盛宇 减持/质押/再融资公告(摊薄风险)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 688559公告流;环⑤资本配置/摊薄
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-2f03bd
+  - mat-47c625
+  - mat-70ca41
+  - mat-73ae48
+  - mat-967cb4
+  - mat-e0e824
+  coverage_note: cninfo原文核实完成,修正粗述
+  last_fetch_note: cninfo gqbd原文4份+核实摘要;修正:主体=泰安海合非本人,减2.19%/2.83亿,系持股27.55->25.36
+- task: AI算力液冷微通道盖板 + 储能大圆柱订单信息(新曲线收入贡献)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: 公告/卖方/行业展会;多曲线兑现结构
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4d69cc
+  - mat-70ca41
+  last_fetch_note: AI液冷疑似英伟达Code+储能大圆柱(1月订单10亿)
+- task: 欣界能源固态进展 + 全固态行业放量节奏深度(2027-2028兑现窗口)
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K3
+  source_hint: 产业调研/固态行业深度;命门3背景
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2b1b69
+  - mat-70ca41
+  last_fetch_note: 公开层面覆盖;更深产业调研(良率/客户)留07-drilldown
+- task: historical-mirror实证:锂电设备商(先导/利元亨/赢合)扩产周期见顶后应收存货减值/利润未兑现复盘
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K4
+  source_hint: 行业研报/复盘文章/web-search;环⑤历史失败镜鉴[A合同]
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-21e90f
+  - mat-59696b
+  coverage_note: 先导龙头完整周期镜鉴+行业预收存货堆积实证
+  last_fetch_note: 东吴先导300450深度(含全文:周期复盘+28亿减值+现金流转正拐点)mat-59696b + 锂电设备行业深度mat-21e90f
+- task: consensus卖方深度:3+家近半年海目星深度(2026-2027盈利预测表+目标价模型底稿)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K6
+  source_hint: 东财/同花顺/exa;环④EV锚[A合同consensus类目]
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-d3dc82
+  - mat-e282aa
+  coverage_note: 一致预期锚齐(58.13/营收68亿);深度底稿付费墙,环④以聚合锚+同业对照为主
+  last_fetch_note: 聚合层一致预期锚已captured(mat cid);per-broker深度模型底稿付费墙未获,留软todo
+- task: 资料提取完成：本轮新抽12份findings(Q1季报+80页问询函回复+4份减持公告+减值公告+产业基金+先导镜鉴+consensus锚)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '04合成完成(3份产出: 00_primer+c_investment_case+07_decision_kit+thesis_v1+decomposition_v1);中性偏空强度4.5,观察不建仓,半年报为硬闸门'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 2026半年报(约8月底)披露后补入：1年以上应收账龄占比(vs 47.83%)、扣非净利(vs Q1 735万)、存货/发出商品消化、经营现金流质量——命门1/2决定性验证点
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K4
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: consensus 第2个券商级独立来源(Wind/券商终端一致预期或研报)——现仅 mat-e282aa 单源撑68亿营收/58.13目标价，量化
+    edge 分歧需交叉
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-d40208
+  coverage_note: 已尽力校准:独立第2家券商consensus客观不存在(海目星正式卖方覆盖仅2名分析师),目标价58.13/68亿非宽基共识。已写入case环②+decision_kit。绑定约束转为命门2账龄(待8月底半年报)
+- task: 固态2GWh订单客户名/金额/确认进度 + 欣界能源产线落地节奏——至今零披露，命门3期权兑现证据
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 海目星2025年应收账龄计提比例(1-2年10%)相对同业(13.75%)偏低,是否隐含补提压力?调同业(先导/杭可/联赢)分账龄段计提政策横向对比
+  rationale: 命门2承重但2026未校准+计提政策单源(mat-d302dd)
+  source: critic_weak_k
+  related:
+  - K1
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-07-19T05:58:36.334265+00:00'
+- question: 海目星商誉占净资产60%(约14.5亿,Xteg/Leister/美德乐并购形成),各标的2025业绩承诺兑现与减值测试细节
+  rationale: 商誉/净资产比极高为环⑤承重风险但case仅一笔带过
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P1
+  status: open
+  suggested_at: '2026-07-19T05:58:36.334265+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-more
+  summary: 反方(多头)未击穿"中性偏空/等半年报"结论(反而强化)；暴露PB双标+减值单边解读两处论证张力；承重单线(consensus单源+命门2账龄2026未校准)→封顶request-more，核心验证待8月底半年报一手披露
+  at: '2026-07-19T05:58:36.082249+00:00'
+  thesis_version: 1
+  next_stage: 02-gather-materials
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-19T02:47:43.236527+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-18T17:10:00.331130+00:00'
+    summary: 命门1=Q1双扭亏拐点真伪(现金流靠预收款,净利薄)(中); 命门2=应收账龄47.83%+存货堰塞的尾部风险消化路径(低,半年报验证);
+      命门3=固态/AI液冷/储能/出海四期权的兑现结构(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-19T02:47:43.236540+00:00'
+    summary: 命门1拐点真伪(偏负:现金流靠合同负债+16.2亿);命门2堰塞湖(偏负:计提10%<同业13.75%+回款11.61%);命门3多期权(开放偏负:固态零披露)
+    convergence_status: converged
+    changelog: 三命门全保留无增删,均置信度更新:命门1/2由厚料(mat-b3f8e3/d302dd)定调偏负,命门2的v0低置信缺口已被80页问询函补实;primer目标微调(科目4扩为四科目+新增计提vs同业);对照全历史无震荡;delta空+双轴绿+chain-critic六环全通→converged
+thesis:
+  current_version: 1
+  last_updated: '2026-07-19T02:47:43.210102+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-18T17:08:30.940041+00:00'
+    summary: 谨慎偏多(强度5.5)：现价44.48(52周低/PS2.2/市值110亿)是"2026Q1双扭亏正拐点+概念泡沫已挤"的合理左侧区，逢跌分批建观察仓；半年报(8月底)应收账龄/扣非利润为升降仓硬闸门，不追高。
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 60%（3/5，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-19T02:47:43.210272+00:00'
+    summary: 中性偏空-观察不建仓(强度4.5)：现价44.48看似便宜(PS2.2)但PB4.55同业最贵;拐点靠预收款+账龄计提低于同业藏补提压力+固态零兑现+实控人谷底首次减持;EV≈+0.2%风险调整后负;半年报四大硬闸门验证前不动手
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-18T17:10:59.844893+00:00'
+  exited_at: '2026-07-18T17:33:21.669069+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-18T17:33:21.669069+00:00'
+  exited_at: '2026-07-19T02:22:38.084560+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - consensus
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 04-synthesizing
+  entered_at: '2026-07-19T02:22:38.084560+00:00'
+  exited_at: '2026-07-19T05:47:12.864972+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 05-critic-review
+  entered_at: '2026-07-19T05:47:12.864972+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-18T17:35:29.143937+00:00'
+  status: partial
+  triggered_by: 01-prescan
+  hit_rate: 0.625
+  failure_reason: prescan 校准率 62%（5/8，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%

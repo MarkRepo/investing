@@ -1,0 +1,115 @@
+slug: us-nvidia
+variant: opus4.8
+topic_type: company
+display_name: 英伟达 (NVIDIA, US NVDA)
+ticker: US_NVDA
+generated: 2026-07-24T00:00:00Z
+data_freshness: 2026-Q1
+data_freshness_basis: mat-74ec46 (10-Q Q1FY27，截至2026-04-26) + market_data 现采 2026-07-23
+
+buy_box:
+  strong_buy_max: 175
+  accumulate_min: 175
+  accumulate_max: 190
+  hold_min: 190
+  hold_max: 232
+  current_price: 208.76
+  price_as_of: 2026-07-23
+  current_zone: hold
+
+position_framework:
+  position_tier: 标准
+  sizing_rationale: 长期生意质量够标准档,但EV微负(−3%,v1.2:终值倍数27x梁经压测后现价在22-25x已公允无安全边际+尾部按自身历史基率升至23%;EV演进+14%→+5%→−3%,前值系乐观分布+未压测终值倍数所致高估)+命门②无一手量化+单一capex反身性可腰斩→现价及以上不上任何仓,首仓等$175以下
+  initial_max_pct: 0
+  full_max_pct: 8
+  add_ladder_prices: [175, 160, 150]
+  max_cluster_pct: 15
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: 逆向PE-DCF(核心口径,剔股权收益)
+    bull_fair_value: [272, 272]
+    base_fair_value: [228, 232]
+    bear_fair_value: [164, 182]
+  - name: forward_dcf
+    label: 正向FCF折现(WACC10%)
+    bull_fair_value: [290, 290]
+    base_fair_value: [230, 230]
+    bear_fair_value: [160, 160]
+  - name: peer_cross_section
+    label: 同业横截面(PS法·仅作上限参照)
+    bull_fair_value: [320, 355]
+    base_fair_value: [320, 355]
+    bear_fair_value: [null, null]
+
+kill_criteria:
+  - id: capex_guidance_cut
+    description: 任一超大厂财报下调2026/2027 AI capex指引或明确AI投资回报未达预期(命门①)
+    status: pending
+    check_at: 2026-Q3
+  - id: revenue_backlog_miss
+    description: NVDA连续两季营收miss指引，或$119B采购承诺环比下滑/出现取消订单
+    status: pending
+    check_at: 2026-Q3
+  - id: margin_share_break
+    description: 整体毛利率连续两季跌破70%(非一次性)或数据中心份额跌破75%(命门②)
+    status: pending
+    check_at: 2026-Q4
+  - id: core_pe_overvalued
+    description: 核心前瞻PE(剔股权收益)在无基本面改善下升破32x(v1.2由35x收紧,因终值倍数梁压测后27x已偏高)，赔率反转止盈(命门③)
+    status: pending
+    check_at: 2026-Q4
+
+signposts:
+  - date: 2026-Q3
+    event: 超大厂(MSFT/AMZN/GOOGL/META)下两季财报capex指引
+    bull_signal: 继续上调2026/2027 AI capex指引+云AI收入加速
+    bear_signal: 任一家下调capex或表述投资回报放缓
+    triggered: null
+  - date: 2026-Q3
+    event: NVDA下季财报(毛利率/采购承诺/中国)
+    bull_signal: 毛利守72%+、采购承诺环比升、无中国新断点
+    bear_signal: 毛利跌破70%、backlog环比降、RASA立法推进
+    triggered: null
+  - date: 2027-H1
+    event: Rubin FY2027下半年量产爬坡
+    bull_signal: 如期full production、每token成本降兑现
+    bear_signal: 延迟/良率问题/爬坡计提
+    triggered: null
+  - date: 2026-Q3
+    event: Broadcom/AMD财报ASIC与MI400 AI收入(命门②量化一手来源)
+    bull_signal: ASIC仅吃增量、AMD份额未突破、出货低于预期
+    bear_signal: ASIC出货加速吃存量、AMD MI400放量抢份额
+    triggered: null
+
+cluster_tags: [ai-compute, semiconductor, us-megacap, gpu, ai-capex]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 2
+    kind: data-missing
+    note: 逐机构目标价分布缺，仅一致目标价$301.62(单一值)
+  - ring: 3
+    kind: data-missing
+    note: 命门②ASIC/AMD一手规格与份额量化缺(材料多为标题级快讯)，侵蚀速度只能定性
+  - ring: 2
+    kind: assumption-untested
+    note: 终值前瞻PE(27x vs 正常半导体18-20x)无历史正常化锚——base与全部上行独靠25x+这根梁,却缺"NVDA穿越周期正常化前瞻PE"一手对照;18-20x则base$164-182跌破现价(v1.2 round-2照出的最大摆动变量)
+  - ring: 1
+    kind: data-missing
+    note: 超大厂$725B capex中GPU占比与AI应用ROI一手拆分未披露；且剔除NVDA自投循环需求后的"干净"第三方capex增速未披露(命门①反身性去重的关键缺口)
+  - ring: 4
+    kind: reflexivity-risk
+    note: WMBT-1(capex永续)与WMBT-4(consensus兑现)同源,净edge不能双重计数;去重后edge仅~+2pct单一capex赌注,与市场共享同一反身性风险(v1.1经05-critic修)
+market_implied:
+  metric: implied_core_eps_cagr_3_5y
+  value: 20
+my_vs_market_delta:
+  metric: implied_core_eps_cagr_3_5y
+  my_value: 22
+  delta: "+2pct"
+  direction: long

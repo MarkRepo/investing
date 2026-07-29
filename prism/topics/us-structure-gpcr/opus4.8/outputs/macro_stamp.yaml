@@ -1,0 +1,17 @@
+as_of_regime_version: 3
+regime_composite: pre-revenue 超长久期 biotech：贴现率与风险偏好双高敏感；估值=管线rNPV，利率上行/risk-off直接杀估值。现价已derate
+  38%部分已反映紧缩。
+depends_on_states:
+- conclusion: rates_us
+  state: 关注实际利率方向（下行利好长久期biotech）
+  role: load_bearing
+- conclusion: risk_appetite
+  state: biotech风险偏好（risk-on利好）
+  role: load_bearing
+discount_rate: null
+slug: us-structure-gpcr
+variant: opus4.8
+stamped_at: '2026-07-22T08:35:24.843285+00:00'
+stale: true
+stale_reason: 依赖的『关注实际利率方向（下行利好长久期biotech）』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+  v3→v4)

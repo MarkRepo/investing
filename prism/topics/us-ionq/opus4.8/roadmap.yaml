@@ -1,0 +1,133 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: us-ionq
+variant: opus4.8
+created: 2026-07-27
+thesis_version: 0
+
+# L1/L2 已坍缩为 primer_scope（背景理解交 00_primer）
+primer_scope: >
+  primer 该覆盖：量子计算 vs 经典计算基础（比特/叠加/纠缠）、离子阱 vs 超导 vs 中性原子 vs 光子路线优劣、
+  物理比特→逻辑比特→容错(FTQC)与纠错为何是命门、NISQ vs 容错时代与"量子优势 vs 商业效用"差距、
+  IonQ 产品线(Aria/Forte/Tempo)与 #AQ 指标、商业模式(云访问/机器销售/政府合同/授权)、
+  2025 并购帝国战略逻辑、竞争格局(IonQ/Quantinuum/IBM/Google/PsiQuantum/D-Wave/Rigetti)、
+  量子网络/QKD 第二曲线、量子股估值方法(P/S 而非 P/E + forward P/S + 期权价值框架)、
+  量子"主题股/meme 化"市场行为特征。
+
+learning_track:
+  l3_debates:   # 反方逻辑展开为可调研争议点
+    - question: 营收 100%+ 增长是"真商业化跃迁"还是"并购并表 + 一次性硬件确认"的会计繁荣？
+      source_hint: 10-K/10-Q 分部与收入确认附注 + 卖方拆分
+    - question: 离子阱的差异化(全连接/高保真)是可持续护城河，还是会被 Google/IBM 的规模+纠错碾过？
+      source_hint: 各家逻辑比特/纠错里程碑对标 + 技术综述
+    - question: de Masi 并购帝国是"垂直整合创造价值"还是"用股票买营收/掩盖有机乏力"的估值游戏？
+      source_hint: 并购对价/商誉/发股稀释 + de Masi(Glu/dMY)历史 track record
+    - question: 40-48x forward P/S 是稀缺量子纯玩龙头的合理溢价，还是 Quantinuum IPO+板块成熟后必压缩的泡沫？
+      source_hint: Quantinuum IPO 定价 + 同业 P/S(RGTI/QBTS/QUBT) + 历史高倍股回归
+    - question: Nvidia 反转+主题资金是可持续估值支撑，还是又一轮易反向的情绪脉冲？
+      source_hint: 板块 ETF 资金流 + 权威表态历史 + 催化剂日历
+
+  l4_hunting:   # 逐条对齐 thesis K#
+    - question: 近两季营收中并购并表 vs 有机贡献能否拆出？剔除并购后有机增长真实速率是多少？
+      addresses: [K1]
+      search_keywords: [IonQ organic revenue, acquisition contribution, segment breakdown]
+      source_hint: 10-K/10-Q 分部附注 + 卖方拆分模型
+    - question: Q1'26 约60%商业营收的客户集中度/复购/收入确认性质——可持续企业付费还是一次性硬件？
+      addresses: [K2]
+      search_keywords: [IonQ commercial customers, revenue recognition, customer concentration]
+      source_hint: 10-K 客户集中度披露 + MD&A 收入确认政策
+    - question: IonQ 2026-27 逻辑比特/纠错的独立可验证进展 vs Quantinuum/Google 差距是否扩大？
+      addresses: [K3]
+      search_keywords: [IonQ logical qubits, error correction demo, below threshold]
+      source_hint: ionq/oxionics 白皮书 + arxiv + 竞品里程碑
+    - question: Quantinuum IPO 定价隐含的 P/S 对标是多少？IONQ forward P/S 合理区间与目标价怎么倒推？
+      addresses: [K4]
+      search_keywords: [Quantinuum IPO valuation, quantum stock P/S, IONQ price target]
+      source_hint: Quantinuum S-1/定价 + 同业 P/S + 卖方目标价
+    - question: FY2026 经营性现金消耗规模 + 股本稀释速率 + 再启大额 ATM/增发概率？
+      addresses: [K5]
+      search_keywords: [IonQ cash burn, share dilution, ATM offering]
+      source_hint: 10-Q 现金流量表 + shares outstanding 序列 + 8-K
+    - question: 量子板块主题资金/情绪拐点的可观测信号 + 未来 12 个月催化剂日历？
+      addresses: [K6]
+      search_keywords: [quantum stocks sentiment, sector ETF flows, quantum catalyst 2026]
+      source_hint: 板块 ETF 资金流 + 竞品 IPO/里程碑/政府合同时间表
+
+material_priority:
+  tier1:
+    - title: IonQ FY2025 10-K + Q1 2026 10-Q（分部/收入确认/客户集中度/有机 vs 并购）
+      type: annual-report
+      ticker: IONQ
+      source: SEC EDGAR
+      why: 营收成色地基(K1/K2)——命门1核心；已 fetched
+      addresses: [K1, K2]
+    - title: 分析师一致预期 + 目标价分布 + 评级（consensus，A合同必收）
+      type: sell-side-note
+      source: MarketBeat/Benzinga/WSJ/TipRanks
+      why: 估值锚+目标价(K4)——环④终局输入；ring=consensus
+      addresses: [K4]
+    - title: IonQ 技术路线图 + Oxford EQC 99.99% 白皮书 + 逻辑比特/纠错 vs Quantinuum/Google
+      type: industry-research
+      source: ionq.com/oxionics/arxiv/竞品
+      why: 技术兑现(K3)——命门2；已 fetched 部分
+      addresses: [K3]
+    - title: Quantinuum IPO 招股/估值 + 技术对标
+      type: industry-research
+      source: SEC EDGAR/media
+      why: 估值重定价触发(K4)——命门3；保密 S-1 未公开，取 Honeywell $10B/wiki 语境
+      addresses: [K4]
+  tier2:
+    - title: IonQ 2025 并购文件 8-K/proxy（Oxford/IDQ/Vector Atomic 对价、商誉、发股稀释）
+      type: sell-side-note
+      ticker: IONQ
+      source: SEC EDGAR
+      why: 增长有机性+资本配置(K1/K5)——mgmt-capital-alloc
+      addresses: [K1, K5]
+    - title: de Masi 并购史/资本配置(Glu/dMY) + 内部人 Form 4 + 股权激励稀释
+      type: sell-side-note
+      source: SEC Form 4/proxy + 媒体
+      why: 管理层 track record(K5)——环③ mgmt-capital-alloc
+      addresses: [K5]
+    - title: IonQ 现金流/稀释序列（shares outstanding、ATM、经营性现金消耗）
+      type: data
+      source: macrotrends/10-Q
+      why: 稀释→每股价值(K5)
+      addresses: [K5]
+    - title: 卖方深度研报 ×3（营收成色/目标价/多空）
+      type: sell-side-note
+      source: 卖方/transcript/tavily
+      why: 多空校准(K1/K4)
+      addresses: [K1, K4]
+  tier3:
+    - title: 历史镜鉴：科技主题股/SPAC 高倍 P/S 估值回归案例（historical-mirror）
+      type: industry-research
+      source: web/训练知识
+      why: 环⑤历史失败镜鉴(K4/K6)
+      addresses: [K4, K6]
+    - title: 量子板块情绪/资金流 + 催化剂日历（板块 ETF、竞品里程碑、政府合同）
+      type: data
+      source: web/ETF flows
+      why: 情绪拐点(K6)
+      addresses: [K6]
+    - title: 同业财务对标（RGTI/QBTS/QUBT P/S peer matrix）
+      type: data
+      source: financial_data/market_data 自动拉
+      why: 环④ P/S 对标锚；给 ticker 合成期自动拉
+      addresses: [K4]
+
+key_risks_to_monitor:
+  - 并购整合失败 / 商誉减值
+  - 经营性现金消耗扩大 + 再启大额稀释
+  - 逻辑比特/纠错落后 Quantinuum/Google
+  - 量子主题资金退潮 / 权威"时间线太远"表态
+  - 逼空/期权驱动的向上波动（看空方尾部风险）
+
+analogies_to_study:
+  - 案例: 美股 3D 打印股 2013-2015（DDD/SSYS）
+    类比逻辑: 革命性制造技术叙事 + 高 P/S，商业化兑现慢于预期后估值腰斩
+    类比局限: 3D 打印当期已有实收入体量；量子当期效用更早期
+  - 案例: 2020-2021 pre-revenue SPAC 科技股（QuantumScape/Nikola 等）
+    类比逻辑: SPAC 上市 + 远期技术叙事 + 极高估值 → 里程碑延期后回归
+    类比局限: IonQ 已有 100%+ 增长的真实营收，非纯 pre-revenue
+  - 案例: 2000 光通信/互联网泡沫
+    类比逻辑: 技术长期正确但股价因兑现时点错配崩盘
+    类比局限: 宏观/利率环境不同

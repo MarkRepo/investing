@@ -1,0 +1,594 @@
+slug: us-structure-gpcr
+variant: opus4.8
+updated: '2026-07-22T10:11:51.391353+00:00'
+materials:
+- id: mat-03844d
+  filename: 2026_GPCR_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-07-22T07:09:55.861691+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Structure Therapeutics Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-a58944
+  filename: sec/2026_GPCR_10-Q_2026-05-07/item_1_financial.md
+  source_type: sec-section
+  added: '2026-07-22T07:09:56.030664+00:00'
+  processed: true
+  notes: split from 2026_GPCR_10-Q_2026-05-07.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-03844d
+  sec_section: item_1_financial
+- id: mat-4a960e
+  filename: sec/2026_GPCR_10-Q_2026-05-07/item_2_mda.md
+  source_type: sec-section
+  added: '2026-07-22T07:09:56.031675+00:00'
+  processed: true
+  notes: split from 2026_GPCR_10-Q_2026-05-07.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-03844d
+  sec_section: item_2_mda
+- id: mat-a91cda
+  filename: sec/2026_GPCR_10-Q_2026-05-07/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-22T07:09:56.032871+00:00'
+  processed: true
+  notes: split from 2026_GPCR_10-Q_2026-05-07.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-03844d
+  sec_section: item_3_quant_risk
+- id: mat-1097e3
+  filename: sec/2026_GPCR_10-Q_2026-05-07/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-22T07:09:56.034316+00:00'
+  processed: true
+  notes: split from 2026_GPCR_10-Q_2026-05-07.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-03844d
+  sec_section: item_1a_risk
+- id: mat-59bba1
+  filename: 2025_GPCR_10-K_2026-02-26.htm
+  source_type: annual-report
+  added: '2026-07-22T07:09:58.539490+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Structure Therapeutics Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-d51ff4
+  filename: sec/2025_GPCR_10-K_2026-02-26/item_1_business.md
+  source_type: sec-section
+  added: '2026-07-22T07:09:58.801484+00:00'
+  processed: true
+  notes: split from 2025_GPCR_10-K_2026-02-26.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-59bba1
+  sec_section: item_1_business
+- id: mat-141bfa
+  filename: sec/2025_GPCR_10-K_2026-02-26/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-22T07:09:58.804107+00:00'
+  processed: true
+  notes: split from 2025_GPCR_10-K_2026-02-26.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-59bba1
+  sec_section: item_1a_risk
+- id: mat-77fabb
+  filename: sec/2025_GPCR_10-K_2026-02-26/item_7_mda.md
+  source_type: sec-section
+  added: '2026-07-22T07:09:58.807092+00:00'
+  processed: true
+  notes: split from 2025_GPCR_10-K_2026-02-26.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-59bba1
+  sec_section: item_7_mda
+- id: mat-6e9cfe
+  filename: sec/2025_GPCR_10-K_2026-02-26/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-22T07:09:58.810879+00:00'
+  processed: true
+  notes: split from 2025_GPCR_10-K_2026-02-26.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-59bba1
+  sec_section: item_7a_quant_risk
+- id: mat-7ce583
+  filename: sec/2025_GPCR_10-K_2026-02-26/item_8_financial.md
+  source_type: sec-section
+  added: '2026-07-22T07:09:58.815913+00:00'
+  processed: true
+  notes: split from 2025_GPCR_10-K_2026-02-26.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-59bba1
+  sec_section: item_8_financial
+- id: mat-0b5bd0
+  filename: 2026-07-22_roche-commits-100m-to-keep-its-glp-1-structure-sou.md
+  source_type: web-search
+  added: '2026-07-22T07:12:00.139248+00:00'
+  processed: true
+  notes: query='Structure Roche license agreement patent IP'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: Structure Roche license agreement patent IP
+    url: https://www.fiercebiotech.com/biotech/roche-shores-100m-keep-its-glp-1-structure-sound
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:12:00.136420+00:00'
+    stale_at: '2026-08-21T07:12:00.136420+00:00'
+    expire_at: '2026-10-20T07:12:00.136420+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-de1d77
+  filename: 2026-07-22_roche-licenses-glp-1-patents-from-structure-therap.md
+  source_type: web-search
+  added: '2026-07-22T07:12:00.149633+00:00'
+  processed: true
+  notes: query='Structure Roche license agreement patent IP'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: Structure Roche license agreement patent IP
+    url: https://www.linkedin.com/posts/glenhall4strategy_in-structure-licensing-deal-roche-commits-activity-7414377667405168640-2xYr
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:12:00.146279+00:00'
+    stale_at: '2026-08-21T07:12:00.146279+00:00'
+    expire_at: '2026-10-20T07:12:00.146279+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-9df89f
+  filename: 2026-07-22_amylin-development-candidate-accg-2671.md
+  source_type: web-search
+  added: '2026-07-22T07:12:00.166948+00:00'
+  processed: true
+  notes: query='Structure amylin ACCG-2671 DACRA pipeline'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: Structure amylin ACCG-2671 DACRA pipeline
+    url: https://ir.structuretx.com/static-files/56283ffa-a413-4d66-b825-578518c83baa
+    domain: ir.structuretx.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:12:00.163456+00:00'
+    stale_at: '2026-08-21T07:12:00.163456+00:00'
+    expire_at: '2026-10-20T07:12:00.163456+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-938919
+  filename: 2026-07-22_structure-therapeutics-to-present-aleniglipron-and.md
+  source_type: web-search
+  added: '2026-07-22T07:12:36.209936+00:00'
+  processed: true
+  notes: query='Structure aleniglipron Phase 3 design ADA data' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.75
+  search_meta:
+    query: Structure aleniglipron Phase 3 design ADA data
+    url: https://www.ainvest.com/news/structure-therapeutics-present-aleniglipron-amylin-data-ada-86th-scientific-sessions-2604
+    domain: ainvest.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:12:36.205682+00:00'
+    stale_at: '2026-08-21T07:12:36.205682+00:00'
+    expire_at: '2026-10-20T07:12:36.205682+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-1c7235
+  filename: 2026-07-22_jp-morgan-raises-price-target-for-structure-therap.md
+  source_type: web-search
+  added: '2026-07-22T07:12:36.226534+00:00'
+  processed: true
+  notes: query='Structure GPCR analyst price target consensus history' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  rings:
+  - consensus
+  confidence: 0.75
+  search_meta:
+    query: Structure GPCR analyst price target consensus history
+    url: https://www.gurufocus.com/news/8544685/jp-morgan-raises-price-target-for-structure-therapeutics-gpcr-to-105-gpcr-stock-news
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:12:36.222220+00:00'
+    stale_at: '2026-08-21T07:12:36.222220+00:00'
+    expire_at: '2026-10-20T07:12:36.222220+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-6a9953
+  filename: 2026-07-22_structure-therapeutics-gpcr-stock-forecast-and-pri.md
+  source_type: web-search
+  added: '2026-07-22T07:12:36.244926+00:00'
+  processed: true
+  notes: query='Structure GPCR analyst consensus rating aggregate' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  rings:
+  - consensus
+  confidence: 0.75
+  search_meta:
+    query: Structure GPCR analyst consensus rating aggregate
+    url: https://www.marketbeat.com/stocks/NASDAQ/GPCR/forecast
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:12:36.240434+00:00'
+    stale_at: '2026-08-21T07:12:36.240434+00:00'
+    expire_at: '2026-10-20T07:12:36.240434+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-a53028
+  filename: 2026-07-22_roche-secures-patent-license-for-obesity-drug-ct-9.md
+  source_type: web-search
+  added: '2026-07-22T07:12:36.263347+00:00'
+  processed: true
+  notes: query='Roche CT-996 license Structure IP infringement Leerink' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.75
+  search_meta:
+    query: Roche CT-996 license Structure IP infringement Leerink
+    url: https://trial.medpath.com/news/roche-secures-patent-license-for-obesity-drug-ct-996-in-100-million-deal-with-structure-therapeutics
+    domain: trial.medpath.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:12:36.258433+00:00'
+    stale_at: '2026-08-21T07:12:36.258433+00:00'
+    expire_at: '2026-10-20T07:12:36.258433+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-42c155
+  filename: 2026-07-22_structure-therapeutics-gpcr-study-update-summary-q.md
+  source_type: web-search
+  added: '2026-07-22T07:12:36.284749+00:00'
+  processed: true
+  notes: query='Structure amylin ACCG-2671 DACRA preclinical cagrilintide' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.75
+  search_meta:
+    query: Structure amylin ACCG-2671 DACRA preclinical cagrilintide
+    url: https://quartr.com/events/structure-therapeutics-gpcr-study-update_FLGr4oso
+    domain: quartr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:12:36.277691+00:00'
+    stale_at: '2026-08-21T07:12:36.277691+00:00'
+    expire_at: '2026-10-20T07:12:36.277691+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-5197e9
+  filename: 2026-07-22_form-def-14a-for-structure-therapeutics-inc-filed-.md
+  source_type: web-search
+  added: '2026-07-22T07:13:39.337622+00:00'
+  processed: true
+  notes: query='Structure mgmt DEF14A capital allocation' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  rings:
+  - mgmt-capital-alloc
+  confidence: 0.7
+  search_meta:
+    query: Structure mgmt DEF14A capital allocation
+    url: https://ir.structuretx.com/static-files/a9cb472b-e9fe-4a4e-9000-a48e07671b5d
+    domain: ir.structuretx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:13:39.331997+00:00'
+    stale_at: '2026-08-21T07:13:39.331997+00:00'
+    expire_at: '2026-10-20T07:13:39.331997+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-078952
+  filename: 2026-07-22_structure-therapeutics-appoints-matthew-lang-j-d-a.md
+  source_type: web-search
+  added: '2026-07-22T07:13:39.356522+00:00'
+  processed: true
+  notes: query='Structure mgmt DEF14A capital allocation' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  rings:
+  - mgmt-capital-alloc
+  confidence: 0.7
+  search_meta:
+    query: Structure mgmt DEF14A capital allocation
+    url: https://ir.structuretx.com/news-releases/news-release-details/structure-therapeutics-appoints-matthew-lang-jd-chief-operating
+    domain: ir.structuretx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:13:39.350645+00:00'
+    stale_at: '2026-08-21T07:13:39.350645+00:00'
+    expire_at: '2026-10-20T07:13:39.350645+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-29f6ea
+  filename: 2026-07-22_oral-glp-1-market-to-rise-at-35-05-cagr-till-2035.md
+  source_type: web-search
+  added: '2026-07-22T07:13:39.378593+00:00'
+  processed: true
+  notes: query='oral GLP-1 manufacturing capacity market' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.5
+  search_meta:
+    query: oral GLP-1 manufacturing capacity market
+    url: https://www.towardshealthcare.com/insights/oral-glp-1-market-sizing
+    domain: towardshealthcare.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:13:39.372361+00:00'
+    stale_at: '2026-08-21T07:13:39.372361+00:00'
+    expire_at: '2026-10-20T07:13:39.372361+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-e21327
+  filename: 2026-07-22_oral-small-molecule-glp-1-receptor-agonist-alenigl.md
+  source_type: web-search
+  added: '2026-07-22T07:16:36.398895+00:00'
+  processed: true
+  notes: query='Structure aleniglipron Nature publication + Q1 2026 results' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Structure aleniglipron Nature publication + Q1 2026 results
+    url: https://www.nature.com/articles/s41591-026-04476-6
+    domain: nature.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:16:36.391811+00:00'
+    stale_at: '2026-08-21T07:16:36.391811+00:00'
+    expire_at: '2026-10-20T07:16:36.391811+00:00'
+    triggered_by: 01-prescan
+- id: mat-2f71ac
+  filename: 2026-07-22_structure-therapeutics-reports-first-quarter-2026-.md
+  source_type: web-search
+  added: '2026-07-22T07:16:36.423648+00:00'
+  processed: false
+  notes: query='Structure aleniglipron Nature publication + Q1 2026 results' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Structure aleniglipron Nature publication + Q1 2026 results
+    url: https://ir.structuretx.com/news-releases/news-release-details/structure-therapeutics-reports-first-quarter-2026-financial
+    domain: ir.structuretx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:16:36.415924+00:00'
+    stale_at: '2026-08-21T07:16:36.415924+00:00'
+    expire_at: '2026-10-20T07:16:36.415924+00:00'
+    triggered_by: 01-prescan
+- id: mat-bfd639
+  filename: 2026-07-22_structure-therapeutics-sets-5-ada-2026-presentatio.md
+  source_type: web-search
+  added: '2026-07-22T07:16:36.451615+00:00'
+  processed: false
+  notes: query='Structure ADA 2026 five presentations' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Structure ADA 2026 five presentations
+    url: https://www.stocktitan.net/news/GPCR/structure-therapeutics-to-present-aleniglipron-amylin-and-xjrl2pv6kz1o.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:16:36.443514+00:00'
+    stale_at: '2026-08-21T07:16:36.443514+00:00'
+    expire_at: '2026-10-20T07:16:36.443514+00:00'
+    triggered_by: 01-prescan
+- id: mat-b5a787
+  filename: 2026-07-22_structure-therapeutics-glp-1-agonist-could-be-a.md
+  source_type: web-search
+  added: '2026-07-22T07:16:36.486476+00:00'
+  processed: false
+  notes: query='Structure GLP-1 takeover analysis seekingalpha' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Structure GLP-1 takeover analysis seekingalpha
+    url: https://seekingalpha.com/article/4883026-structure-therapeutics-glp-1-agonist-could-be-potential-acquisition-target
+    domain: seekingalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:16:36.477279+00:00'
+    stale_at: '2026-08-21T07:16:36.477279+00:00'
+    expire_at: '2026-10-20T07:16:36.477279+00:00'
+    triggered_by: 01-prescan
+- id: mat-c35c1d
+  filename: 2026-07-22_novo-nordisk-sees-pills-capturing-over-third-of-gl.md
+  source_type: web-search
+  added: '2026-07-22T07:16:36.519181+00:00'
+  processed: false
+  notes: query='Novo pills capture third of GLP-1 market' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Novo pills capture third of GLP-1 market
+    url: https://www.reuters.com/business/healthcare-pharmaceuticals/novo-nordisk-sees-oral-pills-capturing-over-third-glp-1-market-by-2030-2026-01-12/
+    domain: reuters.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:16:36.510106+00:00'
+    stale_at: '2026-08-21T07:16:36.510106+00:00'
+    expire_at: '2026-10-20T07:16:36.510106+00:00'
+    triggered_by: 01-prescan
+- id: mat-d26559
+  filename: 2026-07-22_2026-is-the-year-of-obesity-pills-from-novo-nordis.md
+  source_type: web-search
+  added: '2026-07-22T07:16:36.547144+00:00'
+  processed: false
+  notes: query='Novo pills capture third of GLP-1 market' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Novo pills capture third of GLP-1 market
+    url: https://www.cnbc.com/2026/01/10/2026-is-the-year-of-obesity-pills-from-novo-nordisk-eli-lilly-.html
+    domain: cnbc.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:16:36.538249+00:00'
+    stale_at: '2026-08-21T07:16:36.538249+00:00'
+    expire_at: '2026-10-20T07:16:36.538249+00:00'
+    triggered_by: 01-prescan
+- id: mat-bfe5f6
+  filename: 2026-07-22_roche-clears-obesity-pill-legal-concerns-with-stru.md
+  source_type: web-search
+  added: '2026-07-22T07:16:36.581591+00:00'
+  processed: false
+  notes: query='Roche clears obesity pill legal concerns Structure patent' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Roche clears obesity pill legal concerns Structure patent
+    url: https://www.biospace.com/deals/roche-clears-obesity-pill-legal-concerns-with-structure-patent-agreement
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:16:36.571936+00:00'
+    stale_at: '2026-08-21T07:16:36.571936+00:00'
+    expire_at: '2026-10-20T07:16:36.571936+00:00'
+    triggered_by: 01-prescan
+- id: mat-1c55fe
+  filename: 2026-07-22_structure-therapeutics-announces-proposed-500-mill.md
+  source_type: web-search
+  added: '2026-07-22T07:16:36.616412+00:00'
+  processed: true
+  notes: query='Structure $500M offering + ATM expansion dilution' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Structure $500M offering + ATM expansion dilution
+    url: https://ir.structuretx.com/news-releases/news-release-details/structure-therapeutics-announces-proposed-500-million-public
+    domain: ir.structuretx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:16:36.606758+00:00'
+    stale_at: '2026-08-21T07:16:36.606758+00:00'
+    expire_at: '2026-10-20T07:16:36.606758+00:00'
+    triggered_by: 01-prescan
+- id: mat-77bdfd
+  filename: 2026-07-22_structure-therapeutics-expands-atm-capacity-advanc.md
+  source_type: web-search
+  added: '2026-07-22T07:16:36.648452+00:00'
+  processed: true
+  notes: query='Structure $500M offering + ATM expansion dilution' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Structure $500M offering + ATM expansion dilution
+    url: https://www.theglobeandmail.com/investing/markets/stocks/GPCR/pressreleases/1819299/structure-therapeutics-expands-atm-capacity-advances-obesity-program/
+    domain: theglobeandmail.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:16:36.638034+00:00'
+    stale_at: '2026-08-21T07:16:36.638034+00:00'
+    expire_at: '2026-10-20T07:16:36.638034+00:00'
+    triggered_by: 01-prescan
+- id: mat-785b73
+  filename: historical-mirror-synthesis.md
+  source_type: synthesis
+  added: '2026-07-22T07:39:57.890482+00:00'
+  processed: true
+  notes: 他汀vsPCSK9 / Gilead丙肝专利战 / DPP-4口服侵蚀 三镜鉴合成（环⑤）
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  rings:
+  - historical-mirror
+  confidence: 0.7
+- id: mat-824874
+  filename: 2026-07-22_lilly-s-foundayo-orforglipron-fda-approval-for-chr.md
+  source_type: web-search
+  added: '2026-07-22T10:11:51.329254+00:00'
+  processed: true
+  notes: query='orforglipron ATTAIN topline approval 2026 / oral semaglutide Wegovy
+    pill OASIS approval launch 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  rings:
+  - bull-bear
+  confidence: 0.9
+  search_meta:
+    query: orforglipron ATTAIN topline approval 2026 / oral semaglutide Wegovy pill
+      OASIS approval launch 2026
+    url: https://investor.lilly.com/news-releases/news-release-details/foundayo-orforglipron-once-daily-pill-taken-without-food-or
+    domain: investor.lilly.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T10:11:51.317492+00:00'
+    stale_at: '2026-08-21T10:11:51.317492+00:00'
+    expire_at: '2026-10-20T10:11:51.317492+00:00'
+    triggered_by: 04-synth
+- id: mat-11e96d
+  filename: 2026-07-22_novo-nordisk-oral-wegovy-semaglutide-25mg-first-or.md
+  source_type: web-search
+  added: '2026-07-22T10:11:51.355807+00:00'
+  processed: true
+  notes: query='orforglipron ATTAIN topline approval 2026 / oral semaglutide Wegovy
+    pill OASIS approval launch 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  rings:
+  - bull-bear
+  confidence: 0.85
+  search_meta:
+    query: orforglipron ATTAIN topline approval 2026 / oral semaglutide Wegovy pill
+      OASIS approval launch 2026
+    url: https://www.nasdaq.com/articles/novo-nordisk-wins-european-commission-nod-wegovy-pill-adult-obesity-overweight
+    domain: nasdaq.com
+    domain_tier: other
+    searched_at: '2026-07-22T10:11:51.345219+00:00'
+    stale_at: '2026-08-21T10:11:51.345219+00:00'
+    expire_at: '2026-10-20T10:11:51.345219+00:00'
+    triggered_by: 04-synth

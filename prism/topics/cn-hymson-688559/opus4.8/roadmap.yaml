@@ -1,0 +1,150 @@
+# roadmap.yaml — 研究路线图 (workflow 01 生成)
+slug: cn-hymson-688559
+variant: opus4.8
+created: '2026-07-19'
+thesis_version: 0
+
+# L1/L2 已坍缩为 primer_scope（S2）：背景理解交 00_primer 承担
+primer_scope: >
+  primer 应覆盖：激光+自动化装备在锂电制造中段(模切/制片/装配/焊接/化成分容)的工序位置与"设备价值量随工艺迭代跃升"机理；
+  海目星四业务(锂电/消费电子/光伏/钣金)周期对冲结构；"新签/在手/营收"三口径时滞与验收确认制；
+  "发出商品/合同负债/应收账龄"三科目如何反映验收兑现节奏与回款质量(现金流为何与净利背离)；
+  固态"路线无关卖铲人"叙事(干法电极/等静压/超薄涂布增量)+ 双技术路线(氧化物+锂金属 vs 硫化物+硅碳)差异；
+  全固态产业化阶段(中试/小批量放量前夜)与"订单→收入"时滞(2027-2028)；出海高毛利(境外49% vs 境内18.74%)成因；
+  欣界能源"投资+整线供货"协同；重投入重资产设备商在景气上/下行的双面性。
+
+learning_track:
+
+  # ── L3 争议层：分歧在哪，多空各方逻辑（喂决策链环④）──
+  l3_debates:
+    - question: 2026Q1双扭亏(归母+2521万/扣非+735万/经营现金流+1447%)是"可持续经营拐点"，还是"合同负债预收款+2025巨亏低基数"制造的一次性账面改善？
+      source_hint: 2026Q1季报现金流量表拆解(合同负债36.97亿 vs 净利)、半年报验证；命门1
+    - question: 应收1年以上账龄47.83%(2025末)+存货54亿(发出商品58%)堰塞湖，能在2026-2027验收兑现中自然消化，还是集中大额计提/爆雷？——父层踢出海目星的唯一硬理由能否证伪？
+      source_hint: 2025年报问询函回复(已入mat-d302dd)、计提减值公告(mat-aea1bc)、半年报账龄细拆；命门2(置信度低,优先砸料)
+    - question: 固态2GWh量产线订单零披露(无客户名/金额/确认进度)——是真实独占卡位(锂金属路线设备市占率高)还是营销叙事？全固态2027-2028才放量，2026期权是否已被提前定价？
+      source_hint: 688559公告流/互动易、固态行业深度、欣界能源进展；命门3
+    - question: 四条新曲线(储能大圆柱/固态/AI液冷微通道盖板/出海钣金)哪条2026-2027真贡献利润、哪条只是估值故事？多元化真分散锂电周期依赖，还是故事拼盘？
+      source_hint: 卖方分产品拆分、订单公告、SNEC/展会；命门3、环③
+    - question: 现价44.48(52周低/PS2.2/PB4.55/低于卖方目标下限58.13)——是"概念泡沫已挤的合理左侧区"，还是"下行未止、卖方目标价将随2025谷底被下修"？(注:现评级多为1-2月高位所出、已旧)
+      source_hint: 卖方最新(近半年)盈利预测与目标价、同业估值对照、股价技术位；环④
+
+  # ── L4 狩猎层：找错误定价，逐条对齐 thesis Killer Question ──
+  l4_hunting:
+    - question: 2026半年报"应收1年以上账龄占比"较2025末47.83%是升是降？市场当前隐含的账龄改善概率有多高？
+      addresses: [K1]
+      search_keywords: [海目星 应收账龄, 海目星 半年报 应收款, 688559 账龄 改善]
+      source_hint: 2026半年报(约8月底)、问询函回复账龄口径；账龄连降=证实转积极,再升=父层踢出逻辑复活
+    - question: 2026半年报扣非归母净利较Q1(735万)是否显著走阔，且非靠汇兑收益/政府补助/投资收益等非经常损益？
+      addresses: [K2]
+      search_keywords: [海目星 扣非净利, 海目星 非经常性损益, 688559 半年报 业绩]
+      source_hint: 半年报利润表+非经常损益明细；薄利润能否转厚是拐点真伪分水岭
+    - question: 固态2GWh量产线订单是否披露客户名+金额+确认进度？欣界能源产线是否落地、是否绑定其他电芯厂？
+      addresses: [K3]
+      search_keywords: [海目星 固态 2GWh 订单, 海目星 欣界能源 产线, 688559 固态电池 客户]
+      source_hint: 688559临时公告+互动易+固态产业调研；固态叙事唯一硬证据
+    - question: 存货发出商品(2025末31.6亿/58%)在半年报是否明显转收入？存货跌价是否再大额计提？
+      addresses: [K4]
+      search_keywords: [海目星 存货 发出商品, 海目星 存货跌价, 688559 减值]
+      source_hint: 半年报存货明细+资产减值；堰塞湖消化路径
+    - question: 2026全年经营现金流是否维持正、且不靠合同负债(36.97亿)堆砌？新签放缓时预收款消耗完是否反噬？
+      addresses: [K5]
+      search_keywords: [海目星 经营现金流, 海目星 合同负债, 688559 新签订单]
+      source_hint: 季报/半年报现金流量表+合同负债变动+新签订单披露；命门1
+    - question: AI算力液冷微通道盖板/储能大圆柱/出海钣金三条新曲线2026H1收入贡献占比各多少？多元化是否真实分散锂电周期依赖？
+      addresses: [K6]
+      search_keywords: [海目星 AI液冷 微通道, 海目星 储能大圆柱 订单, 海目星 出海 钣金 Xteg]
+      source_hint: 半年报分产品收入+订单公告+卖方拆分；多曲线兑现结构决定目标价上行弹性
+
+material_priority:
+
+  # ── Tier1 必读（复用5.3 P0 + 环④/A合同必收）──
+  tier1:
+    - title: 海目星2026半年报(约8月底披露)——账龄/扣非/存货/现金流四大验证点
+      type: semi-annual-report
+      ticker: SSE_688559
+      source: cninfo(尚未披露,监控项)
+      why: 升降仓硬闸门;K1/K2/K4/K5一次性验证;命门2优先砸料
+      addresses: [K1, K2, K4, K5]
+      info_tier: public
+    - title: 3+家卖方深度(含2026-2027盈利预测表+目标价模型)——consensus/估值锚[A合同必收]
+      type: sell-side-note
+      source: 东财/同花顺研报;浙商/国泰海通/中泰
+      why: 环④EV靶点;consensus一致预期4-10亿净利/目标58.13区间46-70的模型底稿;A合同consensus类目
+      addresses: [K2, K6]
+      info_tier: half_public
+    - title: 海目星2026Q1季报(细拆应收/存货/合同负债/分产品)
+      type: quarterly-report
+      ticker: SSE_688559
+      source: cninfo(已下 mat-b3f8e3)
+      why: 拐点数字底稿;命门1现金流vs净利背离
+      addresses: [K1, K4, K5]
+      info_tier: public
+    - title: 锂电设备商资本开支周期见顶后利润未兑现/减值史——historical-mirror[A合同必收]
+      type: industry-research
+      source: 先导智能/利元亨/赢合科技 2018-2020应收存货减值复盘
+      why: 环⑤历史失败镜鉴;设备商"扩产尾部利润坑"实证,对照海目星2025首亏是否重演
+      addresses: [K1, K4]
+      info_tier: half_public
+      ring: historical-mirror
+
+  # ── Tier2 补充 ──
+  tier2:
+    - title: 同业估值对照表(先导/利元亨/联赢 PS/PE/PB+2026净利预测)
+      type: data
+      source: 父层global-ssb-equipment/peer_matrix + market_data
+      why: 环④相对估值(现PS2.21 vs 先导5.7);已复用
+      addresses: [K6]
+      info_tier: half_public
+    - title: 固态2GWh订单/欣界能源产线临时公告(客户名/金额)
+      type: announcement
+      ticker: SSE_688559
+      source: 688559公告流+互动易(已下产业基金合伙协议mat-7c4513)
+      why: 固态叙事硬证据;命门3
+      addresses: [K3]
+      info_tier: half_public
+    - title: AI液冷微通道盖板+储能大圆柱订单信息(新曲线收入贡献)
+      type: industry-research
+      source: 公告/卖方/展会
+      why: 多曲线兑现结构;环③/K6
+      addresses: [K6]
+      info_tier: half_public
+    - title: 2025年报问询函回复公告(账龄/存货/固态问询)
+      type: announcement
+      ticker: SSE_688559
+      source: cninfo(已下 mat-d302dd)
+      why: 监管视角account质量;K1/K4背景
+      addresses: [K1, K4]
+      info_tier: public
+
+  # ── Tier3 可选（深研）──
+  tier3:
+    - title: 欣界能源固态进展+全固态行业放量节奏深度(2027-2028兑现窗口)
+      type: industry-research
+      source: 产业调研/固态行业深度
+      why: 命门3背景;更深良率/客户留07-drilldown
+      addresses: [K3]
+      info_tier: hard
+    - title: 出海钣金(Xteg/Leister并购)整合进展+境外毛利49%可持续性
+      type: industry-research
+      source: 并购公告/卖方出海拆分
+      why: 环①/⑤;商誉减值风险+高毛利可持续
+      addresses: [K6]
+      info_tier: hard
+
+key_risks_to_monitor:
+  - 半年报账龄再恶化 / 存货集中计提爆雷（父层K5硬过滤复活 → 降仓/退出）
+  - 固态概念退潮动能未止，52周低继续破位（PB破40止损位）
+  - 实控人一致行动人后续再减持（泰安海合仍持2.82%+盛世海康15.78%可流通；本轮减2.83亿已核实）
+  - Q1薄利润靠合同负债/预收款，新签放缓则现金流反噬
+  - Xteg/Leister并购商誉减值
+
+analogies_to_study:
+  - 案例: 先导智能/利元亨 锂电设备(CN, 2018-2021)
+    类比逻辑: 设备商在电池扩产周期后期同样堆积应收/存货，扩产放缓时验收延后、集中计提减值——海目星2025首亏8.8亿是否在重演设备商"扩产尾部利润坑"
+    类比局限: 海目星多曲线(固态/AI液冷/出海)对冲更多，且当前在拐点验证期而非景气顶部
+  - 案例: 光伏设备"卖铲人"技术迭代(CN, 晶盛/迈为 PERC→TOPCon→HJT)
+    类比逻辑: 设备价值量随工艺跃升的"卖铲人"叙事，与固态"路线无关卖铲人"同构；押错路线/客户扩产不及预期的设备商如何被证伪
+    类比局限: 固态放量节奏(2027-2028)比光伏迭代更慢更不确定，海目星双路线布局分散押注
+  - 案例: 消费电子自动化设备出海高毛利(CN, 3C设备商)
+    类比逻辑: 境外毛利显著高于境内的可持续性——订单结构(高端封装 vs 国内低价整线)驱动 vs 竞争加剧回落
+    类比局限: 海目星出海规模仍小(+213%但基数低)，Xteg并购整合尚早

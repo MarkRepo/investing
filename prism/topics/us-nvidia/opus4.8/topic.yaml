@@ -1,0 +1,459 @@
+slug: us-nvidia
+display_name: 英伟达 (NVIDIA, US NVDA)
+type: company
+created: '2026-07-23T16:38:28.339464+00:00'
+status: active
+stage: done
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: 英伟达(deep/US/全景以数据中心GPU为主轴)：赌AI数据中心capex周期与CUDA护城河能否支撑当前估值——买/卖/持有 + EV
+    + 目标价；核心命门=超大厂capex拐点风险vs算力需求兑现、定制ASIC与客户自研芯片对份额毛利的侵蚀
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_NVDA
+  market: US
+  short_name: 英伟达
+  search_terms:
+  - 数据中心 GPU
+  - AI capex 周期
+  - CUDA 护城河
+  - 定制 ASIC 竞争
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-23T23:41:18.454939+00:00'
+    status: draft
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-2e1732
+    - mat-3644ae
+    - mat-5f3287
+    - mat-74ec46
+    - mat-a048c7
+    - mat-b818ba
+    - mat-c1a75f
+    - mat-d0bfc5
+    - mat-d98abd
+    - mat-e439b9
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-07-23T23:41:18.446572+00:00'
+      warnings:
+      - 缺自检清单节
+      - 未过 critic（set_output_critic_passed 未置位）
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-24T00:57:10.709852+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-211826
+    - mat-2e1732
+    - mat-3644ae
+    - mat-495eaa
+    - mat-5f3287
+    - mat-64ffdb
+    - mat-6787a2
+    - mat-6a2059
+    - mat-6e3eea
+    - mat-7205ca
+    - mat-74ec46
+    - mat-960d53
+    - mat-a048c7
+    - mat-a1ff4a
+    - mat-b818ba
+    - mat-c138a5
+    - mat-c1a75f
+    - mat-cfcbc6
+    - mat-d0bfc5
+    - mat-d6214a
+    - mat-d98abd
+    - mat-e439b9
+    - mat-ea3a1f
+    - mat-ed0097
+    - mat-f39ae9
+    - mat-f3c93c
+    - mat-f76641
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-24T00:57:10.726170+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-211826
+    - mat-2e1732
+    - mat-3644ae
+    - mat-495eaa
+    - mat-5f3287
+    - mat-64ffdb
+    - mat-6787a2
+    - mat-6a2059
+    - mat-6e3eea
+    - mat-7205ca
+    - mat-74ec46
+    - mat-960d53
+    - mat-a048c7
+    - mat-a1ff4a
+    - mat-b818ba
+    - mat-c138a5
+    - mat-c1a75f
+    - mat-cfcbc6
+    - mat-d0bfc5
+    - mat-d6214a
+    - mat-d98abd
+    - mat-e439b9
+    - mat-ea3a1f
+    - mat-ed0097
+    - mat-f39ae9
+    - mat-f3c93c
+    - mat-f76641
+    last_error: null
+  08_living_feed:
+    version: 3
+    last_updated: '2026-07-24T00:57:10.760289+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 us-nvidia」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：round-2重写后定稿:两漏洞已闭合(终值倍数梁压测+分布与去重声明自洽+尾部按自身历史基率23%+Lucent镜鉴).结论=审慎中性(长期温和偏建设性),EV演进+14%→+5%→−3%,现价$208.76无正edge/略负偏斜、明确不新建,正赔率仅$175以下.末轮定稿,空头AVOID/−9%已判过火不采纳.命门②与终值倍数正常化并行挂P0
+  drilldown
+user_todos:
+- task: 下载 NVIDIA FY2026 10-K 年报（截至 2026-01）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K3
+  - K4
+  - K5
+  source_hint: SEC EDGAR / NVDA IR，含分部/客户/地区收入拆分
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2e1732
+  - mat-469616
+  - mat-960d53
+  - mat-a048c7
+  - mat-c72404
+  - mat-d0bfc5
+  last_fetch_note: SEC EDGAR
+- task: 下载 NVIDIA 最近两季季报（10-Q，Q4 FY2026 + Q1 FY2027）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  - K4
+  source_hint: SEC EDGAR，看毛利率趋势+backlog/RPO+H20库存
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-17fa79
+  - mat-3644ae
+  - mat-74ec46
+  - mat-c1a75f
+  - mat-ed0097
+  last_fetch_note: SEC EDGAR Q1 FY2027
+- task: 收集超大厂 2026/2027 AI capex 指引与 AI 收入/ROI 披露（MSFT/AMZN/GOOGL/META 各最近两季电话会）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 各公司 IR 电话会 transcript / 卖方汇总，攻打命门1 capex 拐点
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5f3287
+  - mat-db8e5d
+  - mat-e439b9
+  last_fetch_note: adapter deep-fetch 入库
+- task: 收集 NVDA 一致预期（FY2027/FY2028 营收/EPS/毛利率 consensus + 卖方目标价分布）[A合同:consensus]
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: Visible Alpha/Koyfin/卖方深度，环④EV 输入，A合同必收
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5f3287
+  - mat-db8e5d
+  - mat-e439b9
+  last_fetch_note: adapter deep-fetch 入库
+- task: 收集 Broadcom/Marvell 定制 ASIC AI 收入与超大厂自研芯片（TPU/Trainium/Maia）出货进度
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: AVGO/MRVL 财报 + Counterpoint/TrendForce，攻打命门2
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5f3287
+  - mat-db8e5d
+  - mat-e439b9
+  last_fetch_note: adapter deep-fetch 入库
+- task: 收集 AMD MI350/MI400 路线图、实测性能对比与 AI GPU 份额数据
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: AMD IR + 卖方对比研报
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: WebSearch fallback 救回
+- task: 收集 NVDA 历史资本配置/回购史与股东回报政策 [A合同:mgmt-capital-alloc]
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 历年 10-K 现金流量表 + 回购公告，环②/⑤，A合同必收
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5f3287
+  - mat-db8e5d
+  - mat-e439b9
+  last_fetch_note: adapter deep-fetch 入库
+- task: 收集半导体周期股见顶镜鉴（思科2000泡沫、NVDA 2018挖矿周期估值行为）[A合同:historical-mirror]
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K6
+  - K1
+  source_hint: 历史复盘研报/学术，环⑤估值锚，A合同必收
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5f3287
+  - mat-db8e5d
+  - mat-e439b9
+  last_fetch_note: adapter deep-fetch 入库
+- task: 收集 3-5 份卖方 NVDA 深度报告（含多空双方观点）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K6
+  source_hint: Morgan Stanley/Goldman/摩根等，兼收 bull+bear
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5f3287
+  - mat-db8e5d
+  - mat-e439b9
+  last_fetch_note: adapter deep-fetch 入库
+- task: 收集 TSMC CoWoS/HBM 供给 2026-2027 松紧最新数据
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: TSMC 财报电话会 + TrendForce，供给瓶颈是否缓解
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-47f087
+  - mat-9e2848
+  last_fetch_note: 00-prescan 已覆盖
+- task: 收集 NVDA 中国市场 H20/后续降规版销售与政策最新进展
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 出口管制公告 + 中国反垄断调查进展
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-114c7d
+  - mat-9e08d9
+  - mat-9ff371
+  last_fetch_note: 00-prescan 已覆盖
+- task: 资料提取完成:71份收齐、31份actionable全部抽取findings
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: NVDA投资case合成完成:审慎偏多6/10,现价208.76落合理买入带,base目标价255,EV+14%
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 命门②量化：AMD MI400/MI500 vs Blackwell/Rubin 峰值算力/显存/功耗/TCO 对比 + Trainium/TPU/Maia
+    出货量与自用比例 + ASIC 吃增量还是存量
+  rationale: ASIC/AMD 竞争材料多为标题级快讯,缺一手规格,护城河折价速度只能定性;两轮未解 capped
+  source: capped_decomposition
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T23:53:38.779434+00:00'
+- question: 环④尾部概率重定价：用NVDA自身2018挖矿(-56%)+Cisco2000(-80%)历史基率校准空/深空档权重，检验EV+14%能否扛住
+  rationale: 反方致命一击=case用乐观分布抹平自记的不对称;下行仅15%权重与自引历史基率矛盾
+  source: critic_weak_k
+  related:
+  - K1
+  - K6
+  priority: P0
+  status: open
+  suggested_at: '2026-07-24T00:24:12.007959+00:00'
+- question: 命门②一手量化：AMD MI400/MI500 vs Blackwell/Rubin算力/显存/TCO + Trainium/TPU出货与自用比例
+    + ASIC吃增量vs存量
+  rationale: K3 thin仅1条、无一手规格,毛利守70%承重结论只能定性(capped,待配额恢复)
+  source: critic_weak_k
+  related:
+  - K2
+  - K3
+  priority: P0
+  status: open
+  suggested_at: '2026-07-24T00:24:12.007959+00:00'
+- question: NVDA穿越周期的"正常化"终值前瞻PE应是多少:对比历史优质半导体龙头(TSM/ASML/曾经的Intel)见顶后倍数+NVDA自身2018/2022去泡沫倍数,检验27x作终值是否站得住
+  rationale: round-2致命一击:27x终值是唯一承重梁却零论证,18-20x则整个多头case反转
+  source: critic_weak_k
+  related:
+  - K6
+  priority: P0
+  status: open
+  suggested_at: '2026-07-24T00:44:58.355740+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: round-2重写后定稿:两漏洞已闭合(终值倍数梁压测+分布与去重声明自洽+尾部按自身历史基率23%+Lucent镜鉴).结论=审慎中性(长期温和偏建设性),EV演进+14%→+5%→−3%,现价$208.76无正edge/略负偏斜、明确不新建,正赔率仅$175以下.末轮定稿,空头AVOID/−9%已判过火不采纳.命门②与终值倍数正常化并行挂P0
+    drilldown
+  at: '2026-07-24T00:57:10.739350+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-23T23:48:59.313137+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-23T16:59:21.757080+00:00'
+    summary: 命门1=超大厂AI capex可持续性/ROI兑现(低); 命门2=定制ASIC对份额毛利侵蚀速度(中); 命门3=22x前瞻PE是错杀还是周期见顶合理折价(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T23:48:59.313145+00:00'
+    summary: 命门1=capex可持续(低→中偏多);命门2=ASIC侵蚀速度(中·横盘,无一手量化capped);命门3=PE错杀还是见顶(中偏多,核心27.8x合理偏低)
+    convergence_status: capped
+    changelog: 命门1置信度低→中偏多(capex落地);命门2中→横盘(方向确认但无法量化,P0未解→capped);命门3内涵修正22x→核心27.8x合理偏低;3命门维持无增删;primer11目标全覆盖
+thesis:
+  current_version: 1
+  last_updated: '2026-07-23T23:48:59.287845+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-23T16:58:00.901446+00:00'
+    summary: 审慎偏多(BUY on weakness,强度6/10)：FY2026基本面创纪录(营收$216B/数据中心占91%/backlog$600B-1T)但前瞻PE已回落至22-23x多年低位。赌capex不见顶+Blackwell/Rubin兑现,目标价对应回归30-35x前瞻PE。命门=超大厂capex拐点+定制ASIC份额毛利侵蚀。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T23:48:59.287857+00:00'
+    summary: 审慎偏多(BUY on weakness,6/10)：核心前瞻PE~27.8x(剔股权收益,非报告22x)合理偏低；capex短期强+Cisco对照排除泡沫顶。base目标价$255,强力买入$150-175。EV+14%(尾部厚,标准档不满仓)。命门②ASIC侵蚀无一手量化(capped)。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-23T17:00:01.326412+00:00'
+  exited_at: '2026-07-23T17:41:50.474157+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-23T17:41:50.474157+00:00'
+  exited_at: '2026-07-23T23:29:17.477920+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-23T23:29:17.477920+00:00'
+  exited_at: '2026-07-24T00:02:12.131521+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-24T00:02:12.131521+00:00'
+  exited_at: '2026-07-24T00:34:20.739103+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-24T00:34:20.739103+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-23T17:44:07.891898+00:00'
+  status: partial
+  triggered_by: 01-prescan
+  queries_run: 2
+  queries_with_hits: 0
+  failure_reason: 'adapter 三 provider(tavily/exa/serper)今日配额全耗尽；WebSearch fallback
+    未返回结构化 URL(仅合成叙事,不可入库)。但 00-prescan(同日 2026-07-24)已用同一 90 天窗口跑 14 query 入库 37
+    份 + deep-fetch 22 份,覆盖 K1-K6 全部时敏项至 2026-07,无 drift 风险。定性信号: Q2 FY2027(截至2026-07)数据中心再超预期但
+    Q3 指引略低于 whisper 致波动,增速环比减速成焦点——验证 thesis 核心张力未反转。'

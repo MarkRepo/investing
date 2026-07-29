@@ -1,0 +1,399 @@
+slug: us-structure-gpcr
+display_name: Structure Therapeutics (GPCR)
+type: company
+created: '2026-07-22T06:48:09.373056+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: global-glp1-oral-small-molecule
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: aleniglipron 小分子纯口服疗效领跑(核心11.3%/高剂量16.3%)能否在 Phase 3 守住并成独立利润池？最强 IP 组合(Roche背书)+amylin
+    期权+现金到2028 值多少？
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_GPCR
+  market: US
+  short_name: Structure
+  search_terms:
+  - aleniglipron
+  - GSBR-1290
+  - Structure
+  - 口服小分子
+  - amylin
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-22T08:39:13.063896+00:00'
+    status: draft
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0b4c14
+    - mat-0b5bd0
+    - mat-1c55fe
+    - mat-1c7235
+    - mat-6a9953
+    - mat-77bdfd
+    - mat-77fabb
+    - mat-785b73
+    - mat-875aa5
+    - mat-87d0af
+    - mat-938919
+    - mat-9df89f
+    - mat-a53028
+    - mat-a58944
+    - mat-e0d600
+    - mat-e21327
+    - mat-f5d5a3
+    - mat-f8c8d4
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-07-22T08:39:13.056428+00:00'
+      warnings:
+      - 缺自检清单节
+      - 未过 critic（set_output_critic_passed 未置位）
+  c_investment_case:
+    version: 2
+    last_updated: '2026-07-22T10:20:42.247783+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-078952
+    - mat-0b4c14
+    - mat-0b5bd0
+    - mat-1097e3
+    - mat-11e96d
+    - mat-141bfa
+    - mat-1c55fe
+    - mat-1c7235
+    - mat-29f6ea
+    - mat-403da9
+    - mat-42c155
+    - mat-4a960e
+    - mat-5197e9
+    - mat-56ee94
+    - mat-5b4888
+    - mat-6a9953
+    - mat-77bdfd
+    - mat-77fabb
+    - mat-785b73
+    - mat-7ce583
+    - mat-824874
+    - mat-875aa5
+    - mat-87d0af
+    - mat-938919
+    - mat-9df89f
+    - mat-a53028
+    - mat-a58944
+    - mat-a6e783
+    - mat-da05cc
+    - mat-daac55
+    - mat-e0d600
+    - mat-e21327
+    - mat-f39c3c
+    - mat-f5d5a3
+    - mat-ff23c8
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-07-22T10:20:42.257458+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0b4c14
+    - mat-11e96d
+    - mat-1c55fe
+    - mat-4a960e
+    - mat-77bdfd
+    - mat-824874
+    - mat-a53028
+    - mat-a58944
+    - mat-f5d5a3
+    last_error: null
+  08_living_feed:
+    version: 3
+    last_updated: '2026-07-22T10:22:00.012803+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials:
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-0b4c14
+  addresses:
+  - K1
+  note: Structure aleniglipron 阳性顶线数据(核心11.3%/高剂量16.3%)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-f5d5a3
+  addresses:
+  - K1
+  - K4
+  note: aleniglipron 靶点/适应症/专利综述
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-822d22
+  addresses:
+  - K1
+  note: ex-99-1 aleniglipron/VK2735 顶线新闻稿原文
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-f8c8d4
+  addresses:
+  - K1
+  - K3
+  note: Viking VK2735 口服 13 周数据(同赛道疗效对照)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-87d0af
+  addresses:
+  - K2
+  note: Viking 2026 收购估值(并购概率锚)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-403da9
+  addresses:
+  - K2
+  note: Viking 被收购谁获益(M&A comps)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-5b4888
+  addresses:
+  - K2
+  note: Viking 头号收购标的分析
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-875aa5
+  addresses:
+  - K2
+  - K4
+  note: Roche 付 $100M 保 Structure 口服(背书+IP)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-ff23c8
+  addresses:
+  - K3
+  note: 口服小分子 GLP-1 竞争格局(beyond orforglipron)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-e0d600
+  addresses:
+  - K3
+  note: orforglipron 处方放量 vs 注射剂份额(放量斜率参照)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-f39c3c
+  addresses:
+  - K3
+  note: 肥胖用药 PBM formulary 覆盖(支付摩擦)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-a91c3a
+  addresses:
+  - K3
+  note: AstraZeneca 口服肥胖管线(竞争者)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-a645b0
+  addresses:
+  - K3
+  note: AZD5004/ECC5004 小分子 GLP-1(竞争者)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-56ee94
+  addresses:
+  - K4
+  note: Gilead 赔 Merck 丙肝专利案(K4 IP 诉讼直引镜鉴)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-da05cc
+  addresses:
+  - K4
+  note: 丙肝 DAA 利润池崩塌(arena-mirror)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-a6e783
+  addresses:
+  - K2
+  - K4
+  note: statins vs PCSK9 疗效领跑者被规模碾压(反方4镜鉴)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-daac55
+  addresses:
+  - K4
+  note: DPP-4/SGLT2 口服糖尿病仿制侵蚀(arena-mirror)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-4970d3
+  addresses:
+  - K4
+  note: orforglipron 专利到期/仿制背景
+next_actions:
+- 可再跑 05 复评翻案后的 v2（这次独立反方将押多头，检验观望结论是否过度看空高剂量差异化潜力）
+- 监控近端信号：orforglipron/口服司美上市首年 TRx 斜率+支付覆盖（验装机碾压）；2026Q3 三期设计
+user_todos:
+- task: aleniglipron Phase 3 完整试验协议（主终点/剂量臂/样本量/头对头 orforglipron 与否）——待 ClinicalTrials.gov
+    注册后补
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: ''
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 0
+  disposition: undecided
+- task: Roche 授权协议全文条款（是否含优先并购权/里程碑/独家性）——8-K 摘要之外的完整合同
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K4
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 0
+  disposition: undecided
+- task: 专家访谈：内分泌医生对 aleniglipron 停药率 10.4% 与高剂量落地可行性的临床判断
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: ''
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 0
+  disposition: undecided
+- task: 资料提取完成：32 份全部处理完毕（24 findings + historical-mirror 镜鉴闭环）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 合成完成：00_primer + c_investment_case + 07_decision_kit + thesis_v1/decomposition_v1（chain-critic
+    放行，已修订口径/压测/疗效死区）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: aleniglipron 三期 ACCOMPLISH-2 剂量臂设计——是否保留高剂量维持臂+是否头对头 orforglipron（定 WMBT-1
+    赌注结构）
+  rationale: 主命门 K1 承重、三期协议当前无覆盖(hard-tier web拿不到)，2026Q3揭晓即重估
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-07-22T09:20:22.163191+00:00'
+- question: Structure 11.3%核心/16.3%高剂量在 2026 口服战场的真实身位——orforglipron 顶剂量实际读数+口服司美上市份额，验疗效领先
+    vs 中游偏下
+  rationale: 反方指核心分歧建在"疗效领先"上但实为中游、装机才是胜负手；可 web-search 部分钉住
+  source: critic_weak_k
+  related:
+  - K1
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-22T09:20:22.163191+00:00'
+- question: '晚入场非领先者的现实峰值地板——晚 3-4 身位 #3-4 口服 GLP-1 的历史份额/峰值先例，压 rNPV 下限到 $0.5-1B
+    看 EV 是否转负'
+  rationale: 单线承重：核心 delta 靠软 rNPV，反方 $0.5-1B 场景成稿未测
+  source: critic_weak_k
+  related:
+  - K2
+  - K3
+  priority: P1
+  status: open
+  suggested_at: '2026-07-22T09:20:22.163191+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: 独立反方落 4 个强攻击：EV→隐含峰值$1.2B 的 rNPV 反推循环、11.3%疗效实为中游偏下、减重药胜负手是装机非疗效(晚入场者峰值$0.5-1B/$1.2B未必悲观)、接管地板伪地板。承重充分性=单线承重(核心delta单线靠软rNPV)。方向与试探档不变，但环④核心分歧方向性过度自信+下限压测不够狠+Roche/接管地板高估→重写
+    c_investment_case。
+  at: '2026-07-22T09:20:00.690866+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 2
+  last_updated: '2026-07-22T10:20:42.298322+00:00'
+  history:
+  - version: 1
+    stage_set_at: 04-synthesize
+    set_at: '2026-07-22T08:39:13.148617+00:00'
+    summary: 命门优先级 K1三期疗效(主)>K5摊薄(第二,新升级)>K2利润池/并购>K4 IP(上调)>K3放量(下调)；停药率子命门因2.5mg滴定利好下修。
+    convergence_status: converged
+    changelog: K5摊薄升为第二命门(新增$9亿稀释证据)；停药率子命门下修(2.5mg滴定无AE停药)；K4置信上调(Roche背书)、K3下调(礼来装机+支付摩擦)；converged-主命门须等三期不可提前证实。
+  - version: 2
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-22T10:20:42.298348+00:00'
+    summary: v2命门重排：K1(三期疗效+对已上市玩家差异化,主)>K3放量/装机碾压(升第二杠杆,两竞品已获批上市)>K5摊薄>K2利润池/me-too折价>K4
+      IP(降,非胜负手)；"疗效领先"命门证伪。
+    convergence_status: converged
+    changelog: 加"竞争差异化"并入K1主命门(凭mat-824874 orforglipron获批/mat-11e96d 口服司美上市，证Structure疗效仅打平)；放量K3从中偏弱升为第二杠杆(装机碾压成硬约束)；砍"疗效领先"假设(被两竞品数据证伪)；IP
+      K4降级(保护寿命非胜负手)；对照全历史无震荡。
+thesis:
+  current_version: 2
+  last_updated: '2026-07-22T10:20:42.267889+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-22T06:49:01.626920+00:00'
+    summary: 小分子纯口服疗效领跑者(核心11.3%/高剂量16.3%无平台期)+全赛道最强IP(2041-45+Roche背书)+amylin期权+现金到2028；押Phase3守住疗效成独立利润池/高价并购标的。强度6/10。
+  - version: 1
+    stage_set_at: 04-synthesize
+    set_at: '2026-07-22T08:39:13.119756+00:00'
+    summary: 二元期权(aleniglipron三期ACCOMPLISH-2 2026Q3启动)+现金$14.6亿+最强IP(Roche$1亿背书)+amylin期权；现价$49.35(EV$2.05B)定价"平庸#3-4玩家"、未透支且跌破多数接管地板，EV+22%正、赔率不对称；主命门=三期疗效可复制性，第二命门=结构性摊薄。强度6/10。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-22T10:20:42.267894+00:00'
+    summary: v2方向翻案：web揭示orforglipron(2026-04批)+口服司美(2026-01上市)已获批上市，Structure核心11.3%仅打平非领先、晚3-4身位；EV反推是循环论证、市场$1.2B隐含对me-too迟到者合理甚至偏慷慨；rNPV
+      base下修$45-52现价坐中枢、接管是伪地板、EV≈−9%。中性/观望，数据点前不建仓，仅≤$35或三期显真差异化后试探。强度4/10。
+stage_history:
+- stage: 02-gather-materials
+  entered_at: '2026-07-22T07:14:40.302189+00:00'
+  exited_at: '2026-07-22T07:40:34.951757+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 3
+- stage: 04-synthesizing
+  entered_at: '2026-07-22T07:40:34.951757+00:00'
+  exited_at: '2026-07-22T08:47:03.472820+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 3
+- stage: 05-critic-review
+  entered_at: '2026-07-22T08:47:03.472820+00:00'
+  exited_at: '2026-07-22T10:21:10.679690+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 3
+- stage: 04-post-synthesis
+  entered_at: '2026-07-22T10:21:10.679690+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 3

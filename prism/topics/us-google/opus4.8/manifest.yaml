@@ -1,0 +1,1287 @@
+slug: us-google
+variant: opus4.8
+updated: '2026-07-23T16:35:16.513115+00:00'
+materials:
+- id: mat-69b262
+  filename: 2026-07-23_judge-finalizes-remedies-in-google-antitrust-case.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.268531+00:00'
+  processed: false
+  notes: query='Google DOJ search antitrust remedy ruling 2025 Chrome divestiture
+    Mehta final decision'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Google DOJ search antitrust remedy ruling 2025 Chrome divestiture Mehta
+      final decision
+    url: https://www.cnbc.com/amp/2025/12/05/judge-finalize-remedies-in-google-antitrust-case.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.267643+00:00'
+    stale_at: '2026-08-22T09:53:31.267643+00:00'
+    expire_at: '2026-10-21T09:53:31.267643+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-477943
+  filename: 2026-07-23_a-judge-lets-google-keep-chrome-but-levies-other-p.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.271786+00:00'
+  processed: false
+  notes: query='Google DOJ search antitrust remedy ruling 2025 Chrome divestiture
+    Mehta final decision' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google DOJ search antitrust remedy ruling 2025 Chrome divestiture Mehta
+      final decision
+    url: https://www.npr.org/2025/09/02/nx-s1-5478625/google-chrome-doj-antitrust-ruling
+    domain: npr.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.270978+00:00'
+    stale_at: '2026-08-22T09:53:31.270978+00:00'
+    expire_at: '2026-10-21T09:53:31.270978+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-18e00e
+  filename: 2026-07-23_2025-the-year-google-lost-in-court-and-won-anyway-.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.275663+00:00'
+  processed: false
+  notes: query='Google DOJ search antitrust remedy ruling 2025 Chrome divestiture
+    Mehta final decision' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google ad-tech antitrust remedy 2025 2026 Brinkema decision ad exchange
+      divestiture
+    url: https://www.adexchanger.com/antitrust/2025-the-year-google-lost-in-court-and-won-anyway
+    domain: adexchanger.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.286068+00:00'
+    stale_at: '2026-08-22T09:53:31.286068+00:00'
+    expire_at: '2026-10-21T09:53:31.286068+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Google DOJ search antitrust remedy ruling 2025 Chrome divestiture Mehta final
+      decision
+- id: mat-414252
+  filename: 2026-07-23_google-ad-tech-remedies-phase-shows-divestitures-v.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.280838+00:00'
+  processed: false
+  notes: query='Google ad-tech antitrust remedy 2025 2026 Brinkema decision ad exchange
+    divestiture' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google ad-tech antitrust remedy 2025 2026 Brinkema decision ad exchange
+      divestiture
+    url: https://www.openmarketsinstitute.org/publications/google-ad-tech-remedies-phase-shows-divestitures-viable-and-urgent-for-the-future-of-news-and-advertising
+    domain: openmarketsinstitute.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.279295+00:00'
+    stale_at: '2026-08-22T09:53:31.279295+00:00'
+    expire_at: '2026-10-21T09:53:31.279295+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f2594f
+  filename: 2026-07-23_google-s-ad-tech-antitrust-trial-remedy-phase-has-.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.291959+00:00'
+  processed: false
+  notes: query='Google ad-tech antitrust remedy 2025 2026 Brinkema decision ad exchange
+    divestiture' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google ad-tech antitrust remedy 2025 2026 Brinkema decision ad exchange
+      divestiture
+    url: https://www.marketingbrew.com/stories/2025/10/07/here-s-how-the-dust-is-settling-as-the-google-ad-tech-antitrust-trial-remedy-phase-wraps-up
+    domain: marketingbrew.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.290014+00:00'
+    stale_at: '2026-08-22T09:53:31.290014+00:00'
+    expire_at: '2026-10-21T09:53:31.290014+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-aa30f9
+  filename: 2026-07-23_the-doj-and-google-sharpen-their-remedy-proposals-.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.298856+00:00'
+  processed: false
+  notes: query='Google ad-tech antitrust remedy 2025 2026 Brinkema decision ad exchange
+    divestiture' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google ad-tech antitrust remedy 2025 2026 Brinkema decision ad exchange
+      divestiture
+    url: https://www.adexchanger.com/antitrust/the-doj-and-google-sharpen-their-remedy-proposals-as-the-two-sides-prepare-for-closing-arguments
+    domain: adexchanger.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.296462+00:00'
+    stale_at: '2026-08-22T09:53:31.296462+00:00'
+    expire_at: '2026-10-21T09:53:31.296462+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-863fff
+  filename: 2026-07-23_alphabet-announces-fourth-quarter-and-fiscal-year-.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.307015+00:00'
+  processed: false
+  notes: query='Alphabet FY2025 full year revenue earnings net income Google Cloud
+    growth rate' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Alphabet FY2025 full year revenue earnings net income Google Cloud growth
+      rate
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000012/googexhibit991q42025.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.311921+00:00'
+    stale_at: '2026-08-22T09:53:31.311921+00:00'
+    expire_at: '2026-10-21T09:53:31.311921+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-efdceb
+  filename: 2026-07-23_consolidated-alphabet-revenues-in-q2-2025-increase.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.322493+00:00'
+  processed: false
+  notes: query='Alphabet FY2025 full year revenue earnings net income Google Cloud
+    growth rate'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Alphabet FY2025 full year revenue earnings net income Google Cloud growth
+      rate
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204425000056/googexhibit991q22025.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.319586+00:00'
+    stale_at: '2026-08-22T09:53:31.319586+00:00'
+    expire_at: '2026-10-21T09:53:31.319586+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cf946d
+  filename: 2026-07-23_alphabet-reports-q2-2026-revenue-of-119-8-billion.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.332834+00:00'
+  processed: false
+  notes: query='Alphabet Q2 2026 earnings results Search advertising revenue Google
+    Cloud' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Alphabet Q2 2026 earnings results Search advertising revenue Google Cloud
+    url: https://9to5google.com/2026/07/22/alphabet-q2-2026-earnings
+    domain: 9to5google.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.329522+00:00'
+    stale_at: '2026-08-22T09:53:31.329522+00:00'
+    expire_at: '2026-10-21T09:53:31.329522+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-aebbd4
+  filename: 2026-07-23_google-goog-q2-2026-earnings-report-live-updates.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.343663+00:00'
+  processed: false
+  notes: query='Alphabet Q2 2026 earnings results Search advertising revenue Google
+    Cloud'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Alphabet Q2 2026 earnings results Search advertising revenue Google Cloud
+    url: https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.339667+00:00'
+    stale_at: '2026-08-22T09:53:31.339667+00:00'
+    expire_at: '2026-10-21T09:53:31.339667+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e6b2aa
+  filename: 2026-07-23_alphabet-q2-2026-slides-24-revenue-growth-cloud.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.356113+00:00'
+  processed: false
+  notes: query='Alphabet Q2 2026 earnings results Search advertising revenue Google
+    Cloud' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Alphabet Q2 2026 earnings results Search advertising revenue Google Cloud
+    url: https://www.investing.com/news/company-news/alphabet-q2-2026-slides-24-revenue-growth-cloud-surges-despite-capex-93CH-4807148
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.351619+00:00'
+    stale_at: '2026-08-22T09:53:31.351619+00:00'
+    expire_at: '2026-10-21T09:53:31.351619+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3cbb2c
+  filename: 2026-07-23_alphabet-boosts-2026-capex-to-190-billion-for-ai-i.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.372913+00:00'
+  processed: false
+  notes: query='Alphabet capex 2025 actual 2026 guidance AI infrastructure capital
+    expenditure' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Alphabet capex 2025 actual 2026 guidance AI infrastructure capital expenditure
+    url: https://datacenters.economictimes.indiatimes.com/news/investments-deals/alphabet-boosts-2026-capex-to-190-billion-for-ai-infrastructure-amid-cloud-growth/130669925
+    domain: datacenters.economictimes.indiatimes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.367599+00:00'
+    stale_at: '2026-08-22T09:53:31.367599+00:00'
+    expire_at: '2026-10-21T09:53:31.367599+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-96e664
+  filename: 2026-07-23_alphabet-resets-the-bar-for-ai-infrastructure-spen.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.386350+00:00'
+  processed: false
+  notes: query='Alphabet capex 2025 actual 2026 guidance AI infrastructure capital
+    expenditure'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Alphabet capex 2025 actual 2026 guidance AI infrastructure capital expenditure
+    url: https://www.cnbc.com/amp/2026/02/04/alphabet-resets-the-bar-for-ai-infrastructure-spending.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.381225+00:00'
+    stale_at: '2026-08-22T09:53:31.381225+00:00'
+    expire_at: '2026-10-21T09:53:31.381225+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b94c8b
+  filename: 2026-07-23_alphabet-plans-record-185-billion-ai-spending-but-.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.402695+00:00'
+  processed: false
+  notes: query='Alphabet capex 2025 actual 2026 guidance AI infrastructure capital
+    expenditure' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Alphabet capex 2025 actual 2026 guidance AI infrastructure capital expenditure
+    url: https://fortune.com/2026/02/04/alphabet-google-ai-spending-supply-constraints
+    domain: fortune.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.396396+00:00'
+    stale_at: '2026-08-22T09:53:31.396396+00:00'
+    expire_at: '2026-10-21T09:53:31.396396+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8ba765
+  filename: 2026-07-23_google-gemini-surpasses-662m-users-threatening-cha.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.419385+00:00'
+  processed: false
+  notes: query='Google Gemini 3 latest model 2026 vs ChatGPT usage market share adoption'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Google Gemini 3 latest model 2026 vs ChatGPT usage market share adoption
+    url: https://www.linkedin.com/posts/amitrawal-ai_heres-what-the-market-share-numbers-actually-activity-7473698625886269441--kVM
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.413580+00:00'
+    stale_at: '2026-08-22T09:53:31.413580+00:00'
+    expire_at: '2026-10-21T09:53:31.413580+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d23b56
+  filename: 2026-07-23_ai-overviews-are-expanding-across-commercial-inten.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.445452+00:00'
+  processed: false
+  notes: query='Google AI Overviews AI Mode search monetization impact query volume
+    CPC clicks 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google AI Overviews AI Mode search monetization impact query volume CPC
+      clicks 2025 2026
+    url: https://www.semrush.com/blog/ai-overviews-commercial-search-study
+    domain: semrush.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.435674+00:00'
+    stale_at: '2026-08-22T09:53:31.435674+00:00'
+    expire_at: '2026-10-21T09:53:31.435674+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d68a3f
+  filename: 2026-07-23_google-ai-mode-hits-1-billion-users---how-search-c.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.464805+00:00'
+  processed: false
+  notes: query='Google AI Overviews AI Mode search monetization impact query volume
+    CPC clicks 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google AI Overviews AI Mode search monetization impact query volume CPC
+      clicks 2025 2026
+    url: https://ppc.land/google-ai-mode-hits-1-billion-users-how-search-changed-in-one-year
+    domain: ppc.land
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.458153+00:00'
+    stale_at: '2026-08-22T09:53:31.458153+00:00'
+    expire_at: '2026-10-21T09:53:31.458153+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0d724c
+  filename: 2026-07-23_alphabet-inc-googl-valuation-measures-financial.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.488066+00:00'
+  processed: false
+  notes: query='Alphabet GOOGL stock price valuation PE ratio market cap 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Alphabet GOOGL stock price valuation PE ratio market cap 2026
+    url: https://finance.yahoo.com/quote/GOOGL/key-statistics/
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.480265+00:00'
+    stale_at: '2026-08-22T09:53:31.480265+00:00'
+    expire_at: '2026-10-21T09:53:31.480265+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-10e9e5
+  filename: 2026-07-23_alphabet-googl-p-e-ratio-current-historical-analys.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.508365+00:00'
+  processed: false
+  notes: query='Alphabet GOOGL stock price valuation PE ratio market cap 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Alphabet GOOGL stock price valuation PE ratio market cap 2026
+    url: https://public.com/stocks/googl/pe-ratio
+    domain: public.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.500819+00:00'
+    stale_at: '2026-08-22T09:53:31.500819+00:00'
+    expire_at: '2026-10-21T09:53:31.500819+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-336e91
+  filename: 2026-07-23_waymo-s-skyrocketing-ridership-in-one-chart.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.531236+00:00'
+  processed: false
+  notes: query='Waymo weekly paid rides 2026 cities expansion robotaxi scale revenue'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Waymo weekly paid rides 2026 cities expansion robotaxi scale revenue
+    url: https://techcrunch.com/2026/03/27/waymo-skyrocketing-ridership-in-one-chart/
+    domain: techcrunch.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.522798+00:00'
+    stale_at: '2026-08-22T09:53:31.522798+00:00'
+    expire_at: '2026-10-21T09:53:31.522798+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-050380
+  filename: 2026-07-23_waymo-targets-1-million-robotaxi-rides-a-week.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.554160+00:00'
+  processed: false
+  notes: query='Waymo weekly paid rides 2026 cities expansion robotaxi scale revenue'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Waymo weekly paid rides 2026 cities expansion robotaxi scale revenue
+    url: https://www.forbes.com/sites/alanohnsman/2025/12/10/waymo-targets-1-million-robotaxi-rides-a-week/
+    domain: forbes.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.546116+00:00'
+    stale_at: '2026-08-22T09:53:31.546116+00:00'
+    expire_at: '2026-10-21T09:53:31.546116+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3c6b29
+  filename: 2026-07-23_alphabet-issues-first-ever-dividend-70-billion-buy.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.579256+00:00'
+  processed: false
+  notes: query='Alphabet dividend increase buyback authorization 2025 2026 shareholder
+    return'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Alphabet dividend increase buyback authorization 2025 2026 shareholder
+      return
+    url: https://www.cnbc.com/2024/04/25/alphabet-issues-first-ever-dividend-70-billion-buyback.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.570239+00:00'
+    stale_at: '2026-08-22T09:53:31.570239+00:00'
+    expire_at: '2026-10-21T09:53:31.570239+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-005926
+  filename: 2026-07-23_investors---2026-annual-meeting-of-shareholders.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.603805+00:00'
+  processed: false
+  notes: query='Alphabet dividend increase buyback authorization 2025 2026 shareholder
+    return' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Alphabet dividend increase buyback authorization 2025 2026 shareholder
+      return
+    url: https://abc.xyz/investor/annual-meeting/default.aspx
+    domain: abc.xyz
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.594961+00:00'
+    stale_at: '2026-08-22T09:53:31.594961+00:00'
+    expire_at: '2026-10-21T09:53:31.594961+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bbcb49
+  filename: 2026-07-23_alphabet-boosts-dividend-and-plans-new-share-buyba.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.627664+00:00'
+  processed: false
+  notes: query='Alphabet dividend increase buyback authorization 2025 2026 shareholder
+    return' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Alphabet dividend increase buyback authorization 2025 2026 shareholder
+      return
+    url: https://finance.yahoo.com/news/alphabet-boosts-dividend-plans-share-152500515.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.618955+00:00'
+    stale_at: '2026-08-22T09:53:31.618955+00:00'
+    expire_at: '2026-10-21T09:53:31.618955+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-950a14
+  filename: 2026-07-23_expanding-our-use-of-google-cloud-tpus-and-service.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.656212+00:00'
+  processed: false
+  notes: query='Google TPU Ironwood 2026 custom AI chip Nvidia dependence Anthropic
+    deal' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google TPU Ironwood 2026 custom AI chip Nvidia dependence Anthropic deal
+    url: https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services
+    domain: anthropic.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.647031+00:00'
+    stale_at: '2026-08-22T09:53:31.647031+00:00'
+    expire_at: '2026-10-21T09:53:31.647031+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-400487
+  filename: 2026-07-23_broadcom-reveals-its-mystery-10-billion-customer-i.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.681432+00:00'
+  processed: false
+  notes: query='Google TPU Ironwood 2026 custom AI chip Nvidia dependence Anthropic
+    deal'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Google TPU Ironwood 2026 custom AI chip Nvidia dependence Anthropic deal
+    url: https://www.cnbc.com/amp/2025/12/11/broadcom-reveals-its-mystery-10-billion-customer-is-anthropic.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.671663+00:00'
+    stale_at: '2026-08-22T09:53:31.671663+00:00'
+    expire_at: '2026-10-21T09:53:31.671663+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e01fac
+  filename: 2026-07-23_google-debuts-ai-chips-with-4x-performance-boost-s.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.709362+00:00'
+  processed: false
+  notes: query='Google TPU Ironwood 2026 custom AI chip Nvidia dependence Anthropic
+    deal' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google TPU Ironwood 2026 custom AI chip Nvidia dependence Anthropic deal
+    url: https://venturebeat.com/infrastructure/google-debuts-ai-chips-with-4x-performance-boost-secures-anthropic-megadeal
+    domain: venturebeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.698962+00:00'
+    stale_at: '2026-08-22T09:53:31.698962+00:00'
+    expire_at: '2026-10-21T09:53:31.698962+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-eff6d4
+  filename: 2026-07-23_google-cloud-backlog-doubles-to-460-billion-in-q1-.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.739929+00:00'
+  processed: false
+  notes: query='Google Cloud backlog remaining performance obligation 2025 2026 AI
+    revenue growth'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Google Cloud backlog remaining performance obligation 2025 2026 AI revenue
+      growth
+    url: https://www.linkedin.com/posts/no-bs-marketplace_alphabets-q1-2026-earnings-got-plenty-of-activity-7457793629747638272-IS_o
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T09:53:31.729124+00:00'
+    stale_at: '2026-08-22T09:53:31.729124+00:00'
+    expire_at: '2026-10-21T09:53:31.729124+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d2016a
+  filename: 2026-07-23_google-cloud-surpasses-20b-but-says-growth-was-cap.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.768978+00:00'
+  processed: false
+  notes: query='Google Cloud backlog remaining performance obligation 2025 2026 AI
+    revenue growth' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google Cloud backlog remaining performance obligation 2025 2026 AI revenue
+      growth
+    url: https://finance.yahoo.com/sectors/technology/articles/google-cloud-surpasses-20b-says-222048133.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.758375+00:00'
+    stale_at: '2026-08-22T09:53:31.758375+00:00'
+    expire_at: '2026-10-21T09:53:31.758375+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f86102
+  filename: 2026-07-23_google-cloud-revenue-is-now-18-of-alphabet-s-busin.md
+  source_type: web-search
+  added: '2026-07-23T09:53:31.799175+00:00'
+  processed: false
+  notes: query='Google Cloud backlog remaining performance obligation 2025 2026 AI
+    revenue growth' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google Cloud backlog remaining performance obligation 2025 2026 AI revenue
+      growth
+    url: https://fortune.com/2026/04/29/google-earnings-cloud-ai/
+    domain: fortune.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T09:53:31.788411+00:00'
+    stale_at: '2026-08-22T09:53:31.788411+00:00'
+    expire_at: '2026-10-21T09:53:31.788411+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7355cb
+  filename: 2026_GOOGL_10-Q_2026-04-30.htm
+  source_type: quarterly-report
+  added: '2026-07-23T09:59:30.740773+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Alphabet Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-6f5dbd
+  filename: 2025_GOOGL_10-K_2026-02-05.htm
+  source_type: annual-report
+  added: '2026-07-23T09:59:32.932179+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Alphabet Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-3e9a5a
+  filename: 2026-07-23_alphabet-investor-relations---2026-q1-earnings-cal.md
+  source_type: web-search
+  added: '2026-07-23T10:01:37.895589+00:00'
+  processed: true
+  notes: query='Alphabet Q2 2026 earnings call transcript Sundar Pichai Anat Ashkenazi
+    capex AI monetization' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Alphabet Q2 2026 earnings call transcript Sundar Pichai Anat Ashkenazi
+      capex AI monetization
+    url: https://abc.xyz/investor/events/event-details/2026/2026-Q1-Earnings-Call-2026-nW8kCrBAKS/default.aspx
+    domain: abc.xyz
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:37.883603+00:00'
+    stale_at: '2026-08-22T10:01:37.883603+00:00'
+    expire_at: '2026-10-21T10:01:37.883603+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b53410
+  filename: 2026-07-23_alphabet-inc-goog-q2-fy2026-earnings-call-transcri.md
+  source_type: web-search
+  added: '2026-07-23T10:01:37.930413+00:00'
+  processed: true
+  notes: query='Alphabet Q2 2026 earnings call transcript Sundar Pichai Anat Ashkenazi
+    capex AI monetization' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Alphabet Q2 2026 earnings call transcript Sundar Pichai Anat Ashkenazi
+      capex AI monetization
+    url: https://finance.yahoo.com/quote/GOOG/earnings/GOOG-Q2-2026-earnings_call-657320.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:37.918249+00:00'
+    stale_at: '2026-08-22T10:01:37.918249+00:00'
+    expire_at: '2026-10-21T10:01:37.918249+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4e867e
+  filename: 2026-07-23_alphabet-investor-relations---2025-q2-earnings-cal.md
+  source_type: web-search
+  added: '2026-07-23T10:01:37.969103+00:00'
+  processed: true
+  notes: query='Alphabet Q2 2026 earnings call transcript Sundar Pichai Anat Ashkenazi
+    capex AI monetization' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Alphabet Q2 2026 earnings call transcript Sundar Pichai Anat Ashkenazi
+      capex AI monetization
+    url: https://abc.xyz/investor/events/event-details/2025/2025-Q2-Earnings-Call/
+    domain: abc.xyz
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:37.955527+00:00'
+    stale_at: '2026-08-22T10:01:37.955527+00:00'
+    expire_at: '2026-10-21T10:01:37.955527+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f9e6cc
+  filename: 2026-07-23_alphabet-googl-stock-forecast-analyst-ratings-pred.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.012704+00:00'
+  processed: true
+  notes: query='Alphabet GOOGL analyst price target 2026 consensus estimate EPS revenue
+    forward PE buy sell' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Alphabet GOOGL analyst price target 2026 consensus estimate EPS revenue
+      forward PE buy sell
+    url: https://public.com/stocks/googl/forecast-price-target
+    domain: public.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:37.999100+00:00'
+    stale_at: '2026-08-22T10:01:37.999100+00:00'
+    expire_at: '2026-10-21T10:01:37.999100+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-eb9123
+  filename: 2026-07-23_alphabet-googl-stock-forecast-analyst-price-target.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.052353+00:00'
+  processed: true
+  notes: query='Alphabet GOOGL analyst price target 2026 consensus estimate EPS revenue
+    forward PE buy sell' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Alphabet GOOGL analyst price target 2026 consensus estimate EPS revenue
+      forward PE buy sell
+    url: https://stockanalysis.com/stocks/googl/forecast/
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:38.038326+00:00'
+    stale_at: '2026-08-22T10:01:38.038326+00:00'
+    expire_at: '2026-10-21T10:01:38.038326+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-270d40
+  filename: 2026-07-23_morgan-stanley-sees-new-ai-signal-for-google-stock.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.098071+00:00'
+  processed: true
+  notes: query='Alphabet GOOGL sell-side deep research AI search monetization capex
+    ROI cloud Morgan Stanley Goldman' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Alphabet GOOGL sell-side deep research AI search monetization capex ROI
+      cloud Morgan Stanley Goldman
+    url: https://www.thestreet.com/investing/stocks/morgan-stanley-google-stock-investors-ai-spending-monetization
+    domain: thestreet.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:38.083165+00:00'
+    stale_at: '2026-08-22T10:01:38.083165+00:00'
+    expire_at: '2026-10-21T10:01:38.083165+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-7aa4cc
+  filename: 2026-07-23_alphabet-the-big-infrastructure-bet-defining-the-f.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.138546+00:00'
+  processed: true
+  notes: query='Alphabet GOOGL sell-side deep research AI search monetization capex
+    ROI cloud Morgan Stanley Goldman'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: Alphabet GOOGL sell-side deep research AI search monetization capex ROI
+      cloud Morgan Stanley Goldman
+    url: https://seekingalpha.com/article/4917773-alphabet-the-big-infrastructure-bet-defining-the-future-of-the-company
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T10:01:38.123810+00:00'
+    stale_at: '2026-08-22T10:01:38.123810+00:00'
+    expire_at: '2026-10-21T10:01:38.123810+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0d4f17
+  filename: 2026-07-23_alphabet-gets-closer-to-4-trillion-as-morgan-stanl.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.181161+00:00'
+  processed: true
+  notes: query='Alphabet GOOGL sell-side deep research AI search monetization capex
+    ROI cloud Morgan Stanley Goldman'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: Alphabet GOOGL sell-side deep research AI search monetization capex ROI
+      cloud Morgan Stanley Goldman
+    url: https://www.marketwatch.com/story/alphabet-gets-closer-to-4-trillion-as-morgan-stanley-puts-a-big-number-around-its-chip-potential-8a0fa5cb?eafs_enabled=false
+    domain: marketwatch.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T10:01:38.166480+00:00'
+    stale_at: '2026-08-22T10:01:38.166480+00:00'
+    expire_at: '2026-10-21T10:01:38.166480+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8eefb0
+  filename: 2026-07-23_department-of-justice-wins-significant-remedies-ag.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.231289+00:00'
+  processed: true
+  notes: query='DOJ Google search antitrust final remedy order text default agreement
+    data sharing Apple' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: DOJ Google search antitrust final remedy order text default agreement data
+      sharing Apple
+    url: https://www.justice.gov/opa/pr/department-justice-wins-significant-remedies-against-google
+    domain: justice.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:38.215408+00:00'
+    stale_at: '2026-08-22T10:01:38.215408+00:00'
+    expire_at: '2026-10-21T10:01:38.215408+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-822e13
+  filename: 2026-07-23_google-dodges-worst-penalties-in-u-s-antitrust-cas.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.276167+00:00'
+  processed: true
+  notes: query='DOJ Google search antitrust final remedy order text default agreement
+    data sharing Apple'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: DOJ Google search antitrust final remedy order text default agreement data
+      sharing Apple
+    url: https://www.wsj.com/tech/judge-bars-google-from-exclusive-search-deals-orders-data-sharing-e65a2191
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T10:01:38.260458+00:00'
+    stale_at: '2026-08-22T10:01:38.260458+00:00'
+    expire_at: '2026-10-21T10:01:38.260458+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8ae32a
+  filename: 2026-07-23_united-states-v-google-llc-2020.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.322402+00:00'
+  processed: true
+  notes: query='DOJ Google search antitrust final remedy order text default agreement
+    data sharing Apple' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: DOJ Google search antitrust final remedy order text default agreement data
+      sharing Apple
+    url: https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2020)
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:38.306588+00:00'
+    stale_at: '2026-08-22T10:01:38.306588+00:00'
+    expire_at: '2026-10-21T10:01:38.306588+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-cefd09
+  filename: 2026-07-23_chart-big-three-hold-dominant-lead-in-accelerating.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.372614+00:00'
+  processed: true
+  notes: query='cloud market share 2026 AWS Azure Google Cloud growth rate operating
+    margin comparison Q2'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: cloud market share 2026 AWS Azure Google Cloud growth rate operating margin
+      comparison Q2
+    url: https://www.statista.com/chart/amp/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/
+    domain: statista.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T10:01:38.356053+00:00'
+    stale_at: '2026-08-22T10:01:38.356053+00:00'
+    expire_at: '2026-10-21T10:01:38.356053+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-83035e
+  filename: 2026-07-23_aws-vs-google-cloud-vs-microsoft-azure-q1-earnings.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.419997+00:00'
+  processed: true
+  notes: query='cloud market share 2026 AWS Azure Google Cloud growth rate operating
+    margin comparison Q2' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: cloud market share 2026 AWS Azure Google Cloud growth rate operating margin
+      comparison Q2
+    url: https://www.crn.com/news/cloud/2026/aws-vs-google-cloud-vs-microsoft-azure-q1-earnings-face-off
+    domain: crn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:38.403381+00:00'
+    stale_at: '2026-08-22T10:01:38.403381+00:00'
+    expire_at: '2026-10-21T10:01:38.403381+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5793c9
+  filename: 2026-07-23_robotaxis-in-2026-scale-arriving-faster-than-profi.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.473032+00:00'
+  processed: true
+  notes: query='Waymo unit economics robotaxi cost per ride fleet safety driver profitability
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: Waymo unit economics robotaxi cost per ride fleet safety driver profitability
+      2026
+    url: https://www.linkedin.com/pulse/robotaxis-2026-scale-arriving-faster-than-profitability-uwnnc
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T10:01:38.455453+00:00'
+    stale_at: '2026-08-22T10:01:38.455453+00:00'
+    expire_at: '2026-10-21T10:01:38.455453+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-07b2b5
+  filename: 2026-07-23_robotaxi-cost-per-mile-2026-0-18-target-breakdown-.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.523167+00:00'
+  processed: true
+  notes: query='Waymo unit economics robotaxi cost per ride fleet safety driver profitability
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Waymo unit economics robotaxi cost per ride fleet safety driver profitability
+      2026
+    url: https://sdvguru.com/blog/robotaxi-cost-per-mile-2026-tesla-0-18-target
+    domain: sdvguru.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:01:38.505707+00:00'
+    stale_at: '2026-08-22T10:01:38.505707+00:00'
+    expire_at: '2026-10-21T10:01:38.505707+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6ab0f9
+  filename: 2026-07-23_defending-against-disruption-how-software-incumben.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.577613+00:00'
+  processed: true
+  notes: query='how incumbents defended against platform shift disruption search mobile
+    transition case study'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: how incumbents defended against platform shift disruption search mobile
+      transition case study
+    url: https://www.bain.com/insights/defending-against-disruption/
+    domain: bain.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T10:01:38.559672+00:00'
+    stale_at: '2026-08-22T10:01:38.559672+00:00'
+    expire_at: '2026-10-21T10:01:38.559672+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-97bf5a
+  filename: 2026-07-23_an-incumbent-s-guide-to-digital-disruption.md
+  source_type: web-search
+  added: '2026-07-23T10:01:38.627961+00:00'
+  processed: true
+  notes: query='how incumbents defended against platform shift disruption search mobile
+    transition case study'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: how incumbents defended against platform shift disruption search mobile
+      transition case study
+    url: https://www.mckinsey.com/br/en/~/media/McKinsey/Industries/Technology%20Media%20and%20Telecommunications/High%20Tech/Our%20Insights/An%20incumbents%20guide%20to%20digital%20disruption/An-incumbents-guide-to-digital-disruption.pdf
+    domain: mckinsey.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T10:01:38.609718+00:00'
+    stale_at: '2026-08-22T10:01:38.609718+00:00'
+    expire_at: '2026-10-21T10:01:38.609718+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-631d9d
+  filename: 2026-07-23_billing-gemini-api---google-ai-for-developers.md
+  source_type: web-search
+  added: '2026-07-23T10:02:30.265456+00:00'
+  processed: true
+  notes: query='Gemini monetization revenue subscription API Google One AI 2026 paid
+    users ARPU' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Gemini monetization revenue subscription API Google One AI 2026 paid users
+      ARPU
+    url: https://ai.google.dev/gemini-api/docs/billing
+    domain: ai.google.dev
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:02:30.247216+00:00'
+    stale_at: '2026-08-22T10:02:30.247216+00:00'
+    expire_at: '2026-10-21T10:02:30.247216+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0aee7a
+  filename: 2026-07-23_gemini-hits-750m-users-3-1-pro-launch-april-2026--.md
+  source_type: web-search
+  added: '2026-07-23T10:02:30.317784+00:00'
+  processed: true
+  notes: query='Gemini monetization revenue subscription API Google One AI 2026 paid
+    users ARPU' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Gemini monetization revenue subscription API Google One AI 2026 paid users
+      ARPU
+    url: https://tech-insider.org/google-gemini-750-million-users-march-2026-updates/
+    domain: tech-insider.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:02:30.299324+00:00'
+    stale_at: '2026-08-22T10:02:30.299324+00:00'
+    expire_at: '2026-10-21T10:02:30.299324+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-2c255b
+  filename: 2026-07-23_gemini-pricing-2026-plans-api-workspace-cost-guide.md
+  source_type: web-search
+  added: '2026-07-23T10:02:30.372004+00:00'
+  processed: true
+  notes: query='Gemini monetization revenue subscription API Google One AI 2026 paid
+    users ARPU' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Gemini monetization revenue subscription API Google One AI 2026 paid users
+      ARPU
+    url: https://felloai.com/gemini-pricing/
+    domain: felloai.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:02:30.352869+00:00'
+    stale_at: '2026-08-22T10:02:30.352869+00:00'
+    expire_at: '2026-10-21T10:02:30.352869+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-7c7796
+  filename: 2026-07-23_about-ads-and-ai-overviews.md
+  source_type: web-search
+  added: '2026-07-23T10:02:30.432536+00:00'
+  processed: true
+  notes: query='Google AI Overviews AI Mode ad load CPC vs traditional blue links
+    monetization study 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Google AI Overviews AI Mode ad load CPC vs traditional blue links monetization
+      study 2026
+    url: https://support.google.com/google-ads/answer/16297775?hl=en
+    domain: support.google.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:02:30.413212+00:00'
+    stale_at: '2026-08-22T10:02:30.413212+00:00'
+    expire_at: '2026-10-21T10:02:30.413212+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3200ac
+  filename: 2026-07-23_google-ai-mode-75m-users-ads-in-25-of-ai-results.md
+  source_type: web-search
+  added: '2026-07-23T10:02:30.489892+00:00'
+  processed: true
+  notes: query='Google AI Overviews AI Mode ad load CPC vs traditional blue links
+    monetization study 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Google AI Overviews AI Mode ad load CPC vs traditional blue links monetization
+      study 2026
+    url: https://www.digitalapplied.com/blog/google-ai-mode-75m-users-ads-in-ai-results-2026
+    domain: digitalapplied.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:02:30.469856+00:00'
+    stale_at: '2026-08-22T10:02:30.469856+00:00'
+    expire_at: '2026-10-21T10:02:30.469856+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5caa48
+  filename: 2026-07-23_google-ai-mode-search-ads-are-here-and-there-s-mor.md
+  source_type: web-search
+  added: '2026-07-23T10:02:30.547800+00:00'
+  processed: true
+  notes: query='Google AI Overviews AI Mode ad load CPC vs traditional blue links
+    monetization study 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Google AI Overviews AI Mode ad load CPC vs traditional blue links monetization
+      study 2026
+    url: https://www.linkedin.com/posts/alexmembrillo_google-briefs-brands-on-ai-mode-ads-ahead-activity-7360270794729398273-jX_l
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T10:02:30.526954+00:00'
+    stale_at: '2026-08-22T10:02:30.526954+00:00'
+    expire_at: '2026-10-21T10:02:30.526954+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8659d8
+  filename: 2026-07-23_meta-s-stock-wrapping-up-record-year-spurred-by-co.md
+  source_type: web-search
+  added: '2026-07-23T10:33:11.670794+00:00'
+  processed: true
+  notes: query='Meta 2022 capex metaverse stock crash 2023 AI efficiency recovery
+    lesson investor'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: Meta 2022 capex metaverse stock crash 2023 AI efficiency recovery lesson
+      investor
+    url: https://www.cnbc.com/amp/2023/12/18/metas-stock-wrapping-up-record-year-spurred-by-cost-cuts.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T10:33:11.650173+00:00'
+    stale_at: '2026-08-22T10:33:11.650173+00:00'
+    expire_at: '2026-10-21T10:33:11.650173+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-c02c68
+  filename: 2026-07-23_why-meta-stock-suddenly-broke-out-after-a-long-sli.md
+  source_type: web-search
+  added: '2026-07-23T10:33:11.729564+00:00'
+  processed: true
+  notes: query='Meta 2022 capex metaverse stock crash 2023 AI efficiency recovery
+    lesson investor' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Meta 2022 capex metaverse stock crash 2023 AI efficiency recovery lesson
+      investor
+    url: https://finance.yahoo.com/markets/stocks/article/why-meta-stock-suddenly-broke-out-after-a-long-slide-182755052.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:33:11.708210+00:00'
+    stale_at: '2026-08-22T10:33:11.708210+00:00'
+    expire_at: '2026-10-21T10:33:11.708210+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-022644
+  filename: 2026-07-23_the-market-is-pricing-meta-like-it-s-the-ai-loser-.md
+  source_type: web-search
+  added: '2026-07-23T10:33:11.790978+00:00'
+  processed: true
+  notes: query='Meta 2022 capex metaverse stock crash 2023 AI efficiency recovery
+    lesson investor' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Meta 2022 capex metaverse stock crash 2023 AI efficiency recovery lesson
+      investor
+    url: https://www.uncoveralpha.com/p/the-market-is-pricing-meta-like-its
+    domain: uncoveralpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:33:11.769734+00:00'
+    stale_at: '2026-08-22T10:33:11.769734+00:00'
+    expire_at: '2026-10-21T10:33:11.769734+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-d0097b
+  filename: 2026-07-23_lessons-from-the-big-tech-breakup-that-never-happe.md
+  source_type: web-search
+  added: '2026-07-23T10:33:11.858408+00:00'
+  processed: true
+  notes: query='US v Microsoft antitrust remedy no breakup stock performance lesson
+    tech monopoly' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: US v Microsoft antitrust remedy no breakup stock performance lesson tech
+      monopoly
+    url: https://www.marketplace.org/story/2024/11/01/lessons-from-the-big-tech-microsoft-breakup-that-never-happened
+    domain: marketplace.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:33:11.836572+00:00'
+    stale_at: '2026-08-22T10:33:11.836572+00:00'
+    expire_at: '2026-10-21T10:33:11.836572+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-709e60
+  filename: 2026-07-23_antitrust-division-u-s-v-microsoft-court-s-finding.md
+  source_type: web-search
+  added: '2026-07-23T10:33:11.925947+00:00'
+  processed: true
+  notes: query='US v Microsoft antitrust remedy no breakup stock performance lesson
+    tech monopoly' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: US v Microsoft antitrust remedy no breakup stock performance lesson tech
+      monopoly
+    url: https://www.justice.gov/atr/us-v-microsoft-courts-findings-fact
+    domain: justice.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:33:11.899769+00:00'
+    stale_at: '2026-08-22T10:33:11.899769+00:00'
+    expire_at: '2026-10-21T10:33:11.899769+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-7b9558
+  filename: 2026-07-23_united-states-v-microsoft-corp.md
+  source_type: web-search
+  added: '2026-07-23T10:33:11.993301+00:00'
+  processed: true
+  notes: query='US v Microsoft antitrust remedy no breakup stock performance lesson
+    tech monopoly' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: US v Microsoft antitrust remedy no breakup stock performance lesson tech
+      monopoly
+    url: https://en.wikipedia.org/wiki/United_States_v._Microsoft_Corp.
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T10:33:11.970874+00:00'
+    stale_at: '2026-08-22T10:33:11.970874+00:00'
+    expire_at: '2026-10-21T10:33:11.970874+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-5cef02
+  filename: 2026-07-23_alphabet-q2-2026-earnings-revenue-up-24-cloud-surg.md
+  source_type: web-search
+  added: '2026-07-23T13:48:47.206099+00:00'
+  processed: true
+  notes: query='Alphabet Google Q2 2026 earnings revenue cloud capex free cash flow'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - H1
+  - H2
+  - H3
+  - K1
+  - K2
+  - K3
+  rings:
+  - '2'
+  - '3'
+  - '5'
+  confidence: 0.7
+  search_meta:
+    query: Alphabet Q2 2026 8-K verification revenue cloud FCF capex actuals
+    url: https://www.stocktitan.net/sec-filings/GOOG/8-k-alphabet-inc-reports-material-event-c600716f9a4d.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:35:16.474323+00:00'
+    stale_at: '2026-08-22T16:35:16.474323+00:00'
+    expire_at: '2026-10-21T16:35:16.474323+00:00'
+    triggered_by: 05-critic
+    prev_queries:
+    - Alphabet Google Q2 2026 earnings revenue cloud capex free cash flow

@@ -1,0 +1,187 @@
+slug: global-roller-screw
+variant: opus4.8
+entries:
+- searched_at: '2026-07-23T16:52:11.442521+00:00'
+  query: 行星滚柱丝杠 国产 定点 Tesla 供应链 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 3
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:11.671674+00:00'
+  query: Tesla Optimus 2026 量产 出货量 进度
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:11.918754+00:00'
+  query: 五洲新春 603667 丝杠业务 收入 2025年报
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:12.081650+00:00'
+  query: 北特科技 603009 机器人 丝杠 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:12.246375+00:00'
+  query: 恒而达 300946 行星滚柱丝杠 量产进展
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:12.417520+00:00'
+  query: 国产 螺纹磨床 秦川机床 华辰装备 精度突破 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:12.592601+00:00'
+  query: 人形机器人 准直驱 行星减速器 替代丝杠 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:12.771403+00:00'
+  query: 行星滚柱丝杠 良率 C3 C5 国产 批量 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:12.950781+00:00'
+  query: 双林股份 300100 线性执行器 丝杠总成 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:13.132756+00:00'
+  query: 人形机器人 2026 出货量 产业链 量产节奏
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:40.760383+00:00'
+  query: '[slot:scope] 行星滚柱丝杠 Tesla 定点/出货量'
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T16:52:40.763752+00:00'
+  query: '[slot:industry-event] 丝杠 国产 良率/磨床/路线'
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T17:02:00.351996+00:00'
+  query: 新剑传动 招股说明书 IPO 营收 毛利 特斯拉 丝杠 定点
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:02:00.650885+00:00'
+  query: 人形机器人 准直驱 QDD 行星减速器 vs 行星滚柱丝杠 成本 量产 整机采用
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:02:00.956864+00:00'
+  query: 华辰装备 秦川机床 螺纹磨床 丝杠 量产 供货 2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:02:01.269844+00:00'
+  query: 谐波减速器 国产化 绿的谐波 来福 毛利率 下滑 以价换量
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:04:24.200051+00:00'
+  query: 行星滚柱丝杠 单价 元每根 国产 进口 价格 C5 C3 报价 2026
+  triggered_by: 00-deep-fetch
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: native-websearch-synthetic-no-url
+- searched_at: '2026-07-23T17:05:11.854255+00:00'
+  query: 丝杠量产定价序列 C5 C3 国产vs进口价差 2025 2026 批价
+  triggered_by: 00-deep-fetch
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: native-websearch-synthetic-no-url
+- searched_at: '2026-07-23T17:41:44.507507+00:00'
+  query: 丝杠 定点 Tier1 北特 五洲 头部客户 供货合同
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: provider-exhausted-transient
+- searched_at: '2026-07-23T17:41:44.512468+00:00'
+  query: 行星滚柱丝杠 良率 量产 返工 C5 批量 2026
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: provider-exhausted-transient
+- searched_at: '2026-07-23T17:41:44.517203+00:00'
+  query: Optimus Gen3 BOM 特斯拉 执行器 用量 线性 丝杠
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: provider-exhausted-transient
+- searched_at: '2026-07-23T17:41:44.522469+00:00'
+  query: 螺纹磨床 国产 量产 华辰 秦川 丝杠厂 交付
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: provider-exhausted-transient
+- searched_at: '2026-07-23T17:41:44.527687+00:00'
+  query: 丝杠 单价 毛利 降价 放量 2026
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: provider-exhausted-transient

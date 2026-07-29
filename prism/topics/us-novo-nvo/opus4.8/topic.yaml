@@ -1,0 +1,34 @@
+slug: us-novo-nvo
+display_name: '诺和诺德 (Novo Nordisk, NYSE: NVO)'
+type: company
+created: '2026-07-28T08:35:38.037233+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: global-glp1-highend-efficacy
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 诺和诺德作为 GLP-1 高端疗效池命门3(净价商品化)情景的杠铃"对冲/走量赢家"腿：低成本走量+已让净价换覆盖的模型是否成立、下行(11.5x/ROIC42.8%/已跌56%)是否已耗尽、amycretin(24.3%
+    no-plateau)Ph3头对头能否兑现疗效再入场、存量sema承压何时企稳？
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_NVO
+  market: US
+  short_name: 诺和诺德
+  search_terms:
+  - amycretin Ph3
+  - CagriSema 减重
+  - 诺和诺德 估值
+  - sema 净价
+  - Novo 指引
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily

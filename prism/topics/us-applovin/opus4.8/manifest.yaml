@@ -1,0 +1,683 @@
+slug: us-applovin
+variant: opus4.8
+updated: '2026-07-28T02:59:42.413738+00:00'
+materials:
+- id: mat-dea7f0
+  filename: 2026-07-27_applovin-corp---applovin-completes-sale-of-mobile-.md
+  source_type: web-search
+  added: '2026-07-27T12:44:48.077127+00:00'
+  processed: false
+  notes: query='AppLovin sell mobile gaming apps business Tripledot deal closed 2025
+    divestiture'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin sell mobile gaming apps business Tripledot deal closed 2025 divestiture
+    url: https://investors.applovin.com/news/news-details/2025/AppLovin-Completes-Sale-of-Mobile-Gaming-Business-to-Tripledot-Studios/default.aspx
+    domain: investors.applovin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:44:48.076467+00:00'
+    stale_at: '2026-08-26T12:44:48.076467+00:00'
+    expire_at: '2026-10-25T12:44:48.076467+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-27a0e6
+  filename: 2026-07-27_applovin-shares-pop-on-earnings-beat-mobile-gaming.md
+  source_type: web-search
+  added: '2026-07-27T12:44:48.080576+00:00'
+  processed: false
+  notes: query='AppLovin sell mobile gaming apps business Tripledot deal closed 2025
+    divestiture'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin sell mobile gaming apps business Tripledot deal closed 2025 divestiture
+    url: https://www.cnbc.com/2025/05/07/applovin-earnings-mobile-gaming.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:44:48.079719+00:00'
+    stale_at: '2026-08-26T12:44:48.079719+00:00'
+    expire_at: '2026-10-25T12:44:48.079719+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b524b0
+  filename: 2026-07-27_tripledot-acquires-applovin-games-in-800m-deal.md
+  source_type: web-search
+  added: '2026-07-27T12:44:48.084053+00:00'
+  processed: false
+  notes: query='AppLovin sell mobile gaming apps business Tripledot deal closed 2025
+    divestiture'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin sell mobile gaming apps business Tripledot deal closed 2025 divestiture
+    url: https://www.linkedin.com/pulse/mobile-ma-heats-up-tripledot-acquires-applovin-games-800m-deal-2v9tf
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:44:48.082716+00:00'
+    stale_at: '2026-08-26T12:44:48.082716+00:00'
+    expire_at: '2026-10-25T12:44:48.082716+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8c0843
+  filename: 2026-07-27_applovin-shares-tumble-as-short-sellers-question-a.md
+  source_type: web-search
+  added: '2026-07-27T12:44:48.090522+00:00'
+  processed: true
+  notes: query='AppLovin short seller Fuzzy Panda Culper aftermath SEC investigation
+    lawsuit 2025 2026' | query='Fuzzy Panda Culper AppLovin short report full text
+    allegations attribution app store'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Fuzzy Panda Culper AppLovin short report full text allegations attribution
+      app store
+    url: https://www.cnbc.com/2025/02/26/applovin-shares-tumble-as-short-sellers-target-axon-ad-software.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:55:27.861128+00:00'
+    stale_at: '2026-08-26T12:55:27.861128+00:00'
+    expire_at: '2026-10-25T12:55:27.861128+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-280d44
+  filename: 2026-07-27_reported-applovin-sec-probe-wipes-out-8-65-billion.md
+  source_type: web-search
+  added: '2026-07-27T12:44:48.096777+00:00'
+  processed: false
+  notes: query='AppLovin short seller Fuzzy Panda Culper aftermath SEC investigation
+    lawsuit 2025 2026' | query='AppLovin SEC investigation lawsuit app store policy
+    update 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin SEC investigation lawsuit app store policy update 2026
+    url: https://www.forbes.com/sites/martinacastellanos/2025/10/06/reported-applovin-sec-probe-wipes-out-865-billion-for-its-top-executives-and-early-investors/
+    domain: forbes.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T13:27:08.233456+00:00'
+    stale_at: '2026-08-26T13:27:08.233456+00:00'
+    expire_at: '2026-10-25T13:27:08.233456+00:00'
+    triggered_by: 01-prescan
+- id: mat-33e35b
+  filename: 2026-07-27_applovin-corporation-app-faces-investor-scrutiny-a.md
+  source_type: web-search
+  added: '2026-07-27T12:44:48.104181+00:00'
+  processed: false
+  notes: query='AppLovin short seller Fuzzy Panda Culper aftermath SEC investigation
+    lawsuit 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin short seller Fuzzy Panda Culper aftermath SEC investigation lawsuit
+      2025 2026
+    url: https://www.prnewswire.com/news-releases/applovin-corporation-app-faces-investor-scrutiny-after-losing-over-13-7-billion-of-shareholder-value-after-fuzzy-panda-research-and-culper-research-take-aim--hagens-berman-302388368.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:44:48.101579+00:00'
+    stale_at: '2026-08-26T12:44:48.101579+00:00'
+    expire_at: '2026-10-25T12:44:48.101579+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2a18d9
+  filename: 2026-07-27_research-update-applovin-corp-upgraded-to-bbb-s-p-.md
+  source_type: web-search
+  added: '2026-07-27T12:44:48.115400+00:00'
+  processed: false
+  notes: query='AppLovin e-commerce advertising revenue ramp self-service 2025 2026
+    update'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin e-commerce advertising revenue ramp self-service 2025 2026 update
+    url: https://www.spglobal.com/ratings/en/regulatory/article/-/view/sourceId/101649442
+    domain: spglobal.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:44:48.112254+00:00'
+    stale_at: '2026-08-26T12:44:48.112254+00:00'
+    expire_at: '2026-10-25T12:44:48.112254+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-28ea37
+  filename: 2026-07-27_applovin-q2-2025-earnings-ad-revenue-up-77.md
+  source_type: web-search
+  added: '2026-07-27T12:44:48.123855+00:00'
+  processed: false
+  notes: query='AppLovin e-commerce advertising revenue ramp self-service 2025 2026
+    update'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin e-commerce advertising revenue ramp self-service 2025 2026 update
+    url: https://www.linkedin.com/posts/ericseufert_applovin-q2-2025-earnings-ad-revenue-up-activity-7359272756166750209-iyC1
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:44:48.120531+00:00'
+    stale_at: '2026-08-26T12:44:48.120531+00:00'
+    expire_at: '2026-10-25T12:44:48.120531+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7e8b95
+  filename: 2026-07-27_applovin-announces-first-quarter-2026-financial-re.md
+  source_type: web-search
+  added: '2026-07-27T12:47:43.661758+00:00'
+  processed: true
+  notes: query='AppLovin Q1 2026 earnings results revenue advertising EBITDA guidance
+    press release'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin analyst consensus price target EPS 2026 + Q2 guidance
+    url: https://investors.applovin.com/news/news-details/2026/AppLovin-Announces-First-Quarter-2026-Financial-Results/default.aspx
+    domain: investors.applovin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T02:59:42.371173+00:00'
+    stale_at: '2026-08-27T02:59:42.371173+00:00'
+    expire_at: '2026-10-26T02:59:42.371173+00:00'
+    triggered_by: 05-critic
+    prev_queries:
+    - AppLovin Q1 2026 earnings results revenue advertising EBITDA guidance press
+      release
+    - AppLovin Q2 2026 revenue growth guidance advertising deceleration
+- id: mat-03c560
+  filename: 2026-07-27_stock-market-news-for-feb-12-2026.md
+  source_type: web-search
+  added: '2026-07-27T12:47:43.675659+00:00'
+  processed: false
+  notes: query='AppLovin stock decline sell-off 2026 growth deceleration concerns
+    Reuters CNBC Bloomberg'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin stock decline sell-off 2026 growth deceleration concerns Reuters
+      CNBC Bloomberg
+    url: https://www.cnbc.com/2026/02/11/stock-market-today-live-updates.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:47:43.671292+00:00'
+    stale_at: '2026-08-26T12:47:43.671292+00:00'
+    expire_at: '2026-10-25T12:47:43.671292+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-04a860
+  filename: 2026-07-27_watch-stocks-slip-as-software-selloff-sparks-ai-co.md
+  source_type: web-search
+  added: '2026-07-27T12:47:43.689363+00:00'
+  processed: false
+  notes: query='AppLovin stock decline sell-off 2026 growth deceleration concerns
+    Reuters CNBC Bloomberg'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin stock decline sell-off 2026 growth deceleration concerns Reuters
+      CNBC Bloomberg
+    url: https://www.bloomberg.com/news/videos/2026-02-24/the-close-2-23-2026-video
+    domain: bloomberg.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:47:43.684393+00:00'
+    stale_at: '2026-08-26T12:47:43.684393+00:00'
+    expire_at: '2026-10-25T12:47:43.684393+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-396405
+  filename: 2026-07-27_world-stocks-edge-lower-as-tech-selloff-drags-mark.md
+  source_type: web-search
+  added: '2026-07-27T12:47:43.703820+00:00'
+  processed: false
+  notes: query='AppLovin stock decline sell-off 2026 growth deceleration concerns
+    Reuters CNBC Bloomberg'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin stock decline sell-off 2026 growth deceleration concerns Reuters
+      CNBC Bloomberg
+    url: https://www.reuters.com/world/china/global-markets-global-markets-2026-06-26
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:47:43.698480+00:00'
+    stale_at: '2026-08-26T12:47:43.698480+00:00'
+    expire_at: '2026-10-25T12:47:43.698480+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c18c67
+  filename: 2026_APP_10-Q_2026-05-06.htm
+  source_type: quarterly-report
+  added: '2026-07-27T12:52:55.786672+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — AppLovin Corp
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-0888c8
+  filename: sec/2026_APP_10-Q_2026-05-06/item_1_financial.md
+  source_type: sec-section
+  added: '2026-07-27T12:52:55.903399+00:00'
+  processed: true
+  notes: split from 2026_APP_10-Q_2026-05-06.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-c18c67
+  sec_section: item_1_financial
+- id: mat-8cf41e
+  filename: sec/2026_APP_10-Q_2026-05-06/item_2_mda.md
+  source_type: sec-section
+  added: '2026-07-27T12:52:55.911797+00:00'
+  processed: true
+  notes: split from 2026_APP_10-Q_2026-05-06.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-c18c67
+  sec_section: item_2_mda
+- id: mat-a251a5
+  filename: sec/2026_APP_10-Q_2026-05-06/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-27T12:52:55.923504+00:00'
+  processed: true
+  notes: split from 2026_APP_10-Q_2026-05-06.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-c18c67
+  sec_section: item_3_quant_risk
+- id: mat-ce5674
+  filename: sec/2026_APP_10-Q_2026-05-06/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-27T12:52:55.932852+00:00'
+  processed: true
+  notes: split from 2026_APP_10-Q_2026-05-06.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-c18c67
+  sec_section: item_1a_risk
+- id: mat-c4bdcb
+  filename: 2025_APP_10-K_2026-02-19.htm
+  source_type: annual-report
+  added: '2026-07-27T12:53:00.362277+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — AppLovin Corp
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-dd8ac8
+  filename: sec/2025_APP_10-K_2026-02-19/item_1_business.md
+  source_type: sec-section
+  added: '2026-07-27T12:53:00.518905+00:00'
+  processed: true
+  notes: split from 2025_APP_10-K_2026-02-19.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-c4bdcb
+  sec_section: item_1_business
+- id: mat-81005d
+  filename: sec/2025_APP_10-K_2026-02-19/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-27T12:53:00.529734+00:00'
+  processed: true
+  notes: split from 2025_APP_10-K_2026-02-19.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-c4bdcb
+  sec_section: item_1a_risk
+- id: mat-3f4ca4
+  filename: sec/2025_APP_10-K_2026-02-19/item_7_mda.md
+  source_type: sec-section
+  added: '2026-07-27T12:53:00.540281+00:00'
+  processed: true
+  notes: split from 2025_APP_10-K_2026-02-19.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-c4bdcb
+  sec_section: item_7_mda
+- id: mat-421634
+  filename: sec/2025_APP_10-K_2026-02-19/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-27T12:53:00.555049+00:00'
+  processed: true
+  notes: split from 2025_APP_10-K_2026-02-19.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-c4bdcb
+  sec_section: item_7a_quant_risk
+- id: mat-8ac9db
+  filename: sec/2025_APP_10-K_2026-02-19/item_8_financial.md
+  source_type: sec-section
+  added: '2026-07-27T12:53:00.567432+00:00'
+  processed: true
+  notes: split from 2025_APP_10-K_2026-02-19.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-c4bdcb
+  sec_section: item_8_financial
+- id: mat-040afb
+  filename: 2026-07-27_applovin-corp---investor-relations.md
+  source_type: web-search
+  added: '2026-07-27T12:55:27.805827+00:00'
+  processed: true
+  notes: query='AppLovin Q1 2026 earnings call transcript management commentary e-commerce
+    AXON'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin Q1 2026 earnings call transcript management commentary e-commerce
+      AXON
+    url: https://investors.applovin.com/
+    domain: investors.applovin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:55:27.798228+00:00'
+    stale_at: '2026-08-26T12:55:27.798228+00:00'
+    expire_at: '2026-10-25T12:55:27.798228+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e26d9d
+  filename: 2026-07-27_events-presentations.md
+  source_type: web-search
+  added: '2026-07-27T12:55:27.832569+00:00'
+  processed: true
+  notes: query='AppLovin Q1 2026 earnings call transcript management commentary e-commerce
+    AXON'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin Q1 2026 earnings call transcript management commentary e-commerce
+      AXON
+    url: https://investors.applovin.com/events-and-presentations/default.aspx
+    domain: investors.applovin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:55:27.824602+00:00'
+    stale_at: '2026-08-26T12:55:27.824602+00:00'
+    expire_at: '2026-10-25T12:55:27.824602+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-90531d
+  filename: 2026-07-27_applovin-attribution-discrepancies-explained-axon-.md
+  source_type: web-search
+  added: '2026-07-27T12:55:27.939396+00:00'
+  processed: true
+  notes: query='AppLovin AXON advertiser retention incrementality third party MMM
+    results'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AppLovin AXON advertiser retention incrementality third party MMM results
+    url: https://www.linkedin.com/posts/axonbyapplovin_different-numbers-one-channel-making-sense-activity-7472681141595054082-Ni9p
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:55:27.931182+00:00'
+    stale_at: '2026-08-26T12:55:27.931182+00:00'
+    expire_at: '2026-10-25T12:55:27.931182+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-240119
+  filename: 2026-07-27_ecommerce---worldwide-statista-market-forecast.md
+  source_type: web-search
+  added: '2026-07-27T12:55:27.983730+00:00'
+  processed: true
+  notes: query='e-commerce performance advertising market size TAM retail media 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: e-commerce performance advertising market size TAM retail media 2026
+    url: https://www.statista.com/outlook/emo/ecommerce/worldwide/?srsltid=AfmBOooqvtR1tlZIB8ZbhgdlyYYkYsMhAcgewYDi9mWyY4f7S2Ekneq6
+    domain: statista.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:55:27.975116+00:00'
+    stale_at: '2026-08-26T12:55:27.975116+00:00'
+    expire_at: '2026-10-25T12:55:27.975116+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ebb7e3
+  filename: 2026-07-27_the-case-of-apple-s-app-tracking-transparency-att.md
+  source_type: web-search
+  added: '2026-07-27T12:55:28.016847+00:00'
+  processed: true
+  notes: query='adtech attribution Criteo iOS ATT ad platform growth decline case
+    study'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: adtech attribution Criteo iOS ATT ad platform growth decline case study
+    url: https://www.ftc.gov/system/files/ftc_gov/pdf/3-Skiera-Economic-Impact-of-Opt-in-versus-Opt-out-Requirements-for-Personal-Data-Usage.pdf
+    domain: ftc.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:55:28.007699+00:00'
+    stale_at: '2026-08-26T12:55:28.007699+00:00'
+    expire_at: '2026-10-25T12:55:28.007699+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4c7272
+  filename: q1-2026-earnings-call-takeaways.md
+  source_type: earnings-call
+  added: '2026-07-27T12:57:00.470699+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+- id: mat-308a46
+  filename: fuzzy-panda-culper-short-report.md
+  source_type: short-report
+  added: '2026-07-27T12:57:00.485503+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+- id: mat-3364ba
+  filename: 2026-07-27_applovin-expects-q2-2026-revenue-of-1-915b--1-945b.md
+  source_type: web-search
+  added: '2026-07-27T13:27:08.135617+00:00'
+  processed: false
+  notes: query='AppLovin consumer vertical e-commerce advertiser spend growth Q2 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: AppLovin Q2 2026 revenue growth guidance advertising deceleration
+    url: https://seekingalpha.com/news/4587892-applovin-expects-q2-2026-revenue-of-1_915b-1_945b-with-84-percentminus-85-percent-adjusted
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T13:27:08.437799+00:00'
+    stale_at: '2026-08-26T13:27:08.437799+00:00'
+    expire_at: '2026-10-25T13:27:08.437799+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - AppLovin consumer vertical e-commerce advertiser spend growth Q2 2026
+- id: mat-38d145
+  filename: 2026-07-27_applovin-gains-e-commerce-ad-share-as-advertisers.md
+  source_type: web-search
+  added: '2026-07-27T13:27:08.166564+00:00'
+  processed: false
+  notes: query='AppLovin consumer vertical e-commerce advertiser spend growth Q2 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: AppLovin consumer vertical e-commerce advertiser spend growth Q2 2026
+    url: https://www.proactiveinvestors.com/companies/news/1095274/applovin-gains-e-commerce-ad-share-as-advertisers-expand-platform-use-jefferies-survey-finds-1095274.html
+    domain: proactiveinvestors.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T13:27:08.156485+00:00'
+    stale_at: '2026-08-26T13:27:08.156485+00:00'
+    expire_at: '2026-10-25T13:27:08.156485+00:00'
+    triggered_by: 01-prescan
+- id: mat-82c371
+  filename: 2026-07-27_applovin-probed-by-us-sec-over-data-collection-pra.md
+  source_type: web-search
+  added: '2026-07-27T13:27:08.212358+00:00'
+  processed: false
+  notes: query='AppLovin SEC investigation lawsuit app store policy update 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: AppLovin SEC investigation lawsuit app store policy update 2026
+    url: https://www.reuters.com/technology/applovin-probed-by-us-sec-over-data-collection-practices-bloomberg-news-reports-2025-10-06/
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T13:27:08.201711+00:00'
+    stale_at: '2026-08-26T13:27:08.201711+00:00'
+    expire_at: '2026-10-25T13:27:08.201711+00:00'
+    triggered_by: 01-prescan
+- id: mat-dd32ee
+  filename: 2026-07-27_applovin-stock-tanks-report-sec-investigating-comp.md
+  source_type: web-search
+  added: '2026-07-27T13:27:08.275495+00:00'
+  processed: false
+  notes: query='AppLovin SEC investigation lawsuit app store policy update 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: AppLovin SEC investigation lawsuit app store policy update 2026
+    url: https://www.cnbc.com/2025/10/06/applovin-stock-tanks-on-report-sec-is-investigating-company-over-data-collection-practices.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T13:27:08.264626+00:00'
+    stale_at: '2026-08-26T13:27:08.264626+00:00'
+    expire_at: '2026-10-25T13:27:08.264626+00:00'
+    triggered_by: 01-prescan
+- id: mat-4f26f8
+  filename: 2026-07-27_warren-jolly-s-post.md
+  source_type: web-search
+  added: '2026-07-27T13:27:08.330409+00:00'
+  processed: false
+  notes: query='AppLovin AXON attribution incrementality advertiser results 2026'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: AppLovin AXON attribution incrementality advertiser results 2026
+    url: https://www.linkedin.com/posts/warrenjolly_lots-of-chatter-on-whether-or-not-applovin-activity-7391488295752495104-JPQs
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T13:27:08.318756+00:00'
+    stale_at: '2026-08-26T13:27:08.318756+00:00'
+    expire_at: '2026-10-25T13:27:08.318756+00:00'
+    triggered_by: 01-prescan
+- id: mat-30f2f4
+  filename: 2026-07-27_applovin-corp---financials---quarterly-results.md
+  source_type: web-search
+  added: '2026-07-27T13:27:08.369736+00:00'
+  processed: false
+  notes: query='AppLovin Q2 2026 revenue growth guidance advertising deceleration'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: AppLovin Q2 2026 revenue growth guidance advertising deceleration
+    url: https://investors.applovin.com/financials/quarterly-results/default.aspx
+    domain: investors.applovin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T13:27:08.357424+00:00'
+    stale_at: '2026-08-26T13:27:08.357424+00:00'
+    expire_at: '2026-10-25T13:27:08.357424+00:00'
+    triggered_by: 01-prescan
+- id: mat-383beb
+  filename: 2026-07-27_applovin-dominates-mobile-ad-tech-in-2025.md
+  source_type: web-search
+  added: '2026-07-27T13:27:08.485698+00:00'
+  processed: false
+  notes: query='AppLovin competition Trade Desk Meta Google advertising 2026'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: AppLovin competition Trade Desk Meta Google advertising 2026
+    url: https://www.linkedin.com/posts/joshchandley_applovin-had-the-best-year-in-mobile-ad-tech-activity-7414319834898849792--Lt9
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T13:27:08.473380+00:00'
+    stale_at: '2026-08-26T13:27:08.473380+00:00'
+    expire_at: '2026-10-25T13:27:08.473380+00:00'
+    triggered_by: 01-prescan
+- id: mat-8303f3
+  filename: 2026-07-27_applovin-integrates-with-the-trade-desk-to-provide.md
+  source_type: web-search
+  added: '2026-07-27T13:27:08.525075+00:00'
+  processed: false
+  notes: query='AppLovin competition Trade Desk Meta Google advertising 2026'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: AppLovin competition Trade Desk Meta Google advertising 2026
+    url: https://investors.applovin.com/news/news-details/2022/AppLovin-Integrates-with-The-Trade-Desk-to-Provide-Unmatched-Access-to-the-Largest-Mobile-In-app-Ad-Exchange/default.aspx
+    domain: investors.applovin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T13:27:08.512642+00:00'
+    stale_at: '2026-08-26T13:27:08.512642+00:00'
+    expire_at: '2026-10-25T13:27:08.512642+00:00'
+    triggered_by: 01-prescan
+- id: mat-4ad89d
+  filename: 2026-07-28_app-applovin-corp-analyst-estimates-marketwatch.md
+  source_type: web-search
+  added: '2026-07-28T02:59:42.320866+00:00'
+  processed: true
+  notes: query='AppLovin analyst consensus price target EPS 2026 + Q2 guidance'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: AppLovin analyst consensus price target EPS 2026 + Q2 guidance
+    url: https://www.marketwatch.com/investing/stock/app/analystestimates
+    domain: marketwatch.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T02:59:42.307306+00:00'
+    stale_at: '2026-08-27T02:59:42.307306+00:00'
+    expire_at: '2026-10-26T02:59:42.307306+00:00'
+    triggered_by: 05-critic

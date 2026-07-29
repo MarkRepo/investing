@@ -1,0 +1,13 @@
+as_of_regime_version: null
+regime_composite: 无同 variant 宏观体制基准；SpaceX 为超长久期、高风险偏好 beta 资产，估值对实际利率与流动性高度敏感。
+depends_on_states: []
+discount_rate:
+  risk_free: null
+  applied_wacc: 0.1
+  rate_sensitivity: WACC ±50bp 将在正式估值模型中敏感性测试；本轮因完整分部FCF缺失仅作框架
+  source_input: 无 macro eval；10% 为情景折现门槛，不冒充市场WACC
+slug: us-spacex-spcx
+variant: gpt-5.6-sol
+stamped_at: '2026-07-15T04:06:20.349443+00:00'
+stale: false
+stale_reason: null

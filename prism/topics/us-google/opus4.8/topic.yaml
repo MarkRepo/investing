@@ -1,0 +1,497 @@
+slug: us-google
+display_name: Alphabet 谷歌 (GOOGL, NASDAQ)
+type: company
+created: '2026-07-23T09:48:34.778421+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: Alphabet (GOOGL, deep/US)：先验赌买入——市场对生成式AI侵蚀搜索护城河定价过重，Gemini+AI Overviews防御、Google
+    Cloud+AI变现加速、Waymo期权被低估；核心命门=搜索查询量与货币化是否被AI助手实质分流。最强反方=DOJ搜索反垄断remedy落地+AI资本开支侵蚀自由现金流。目标价赌中等上行。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_GOOGL
+  market: US
+  extra_tickers:
+  - US_GOOG
+  extra_markets:
+  - US
+  short_name: Alphabet
+  search_terms:
+  - AI搜索货币化
+  - Google Cloud变现
+  - 搜索反垄断remedy
+  - AI资本开支
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-23T13:31:48.053467+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-07b2b5
+    - mat-0aee7a
+    - mat-0d4f17
+    - mat-3200ac
+    - mat-5793c9
+    - mat-5caa48
+    - mat-6f5dbd
+    - mat-709e60
+    - mat-7355cb
+    - mat-7b9558
+    - mat-7c7796
+    - mat-822e13
+    - mat-8ae32a
+    - mat-8eefb0
+    - mat-cefd09
+    - mat-d0097b
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 3
+    last_updated: '2026-07-23T16:15:15.804581+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-022644
+    - mat-07b2b5
+    - mat-0d4f17
+    - mat-270d40
+    - mat-5793c9
+    - mat-5cef02
+    - mat-6f5dbd
+    - mat-709e60
+    - mat-7355cb
+    - mat-7b9558
+    - mat-822e13
+    - mat-83035e
+    - mat-8659d8
+    - mat-8ae32a
+    - mat-8eefb0
+    - mat-c02c68
+    - mat-cefd09
+    - mat-d0097b
+    - mat-eb9123
+    - mat-f9e6cc
+    last_error: null
+  07_decision_kit:
+    version: 3
+    last_updated: '2026-07-23T16:15:15.836047+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-5cef02
+    - mat-6f5dbd
+    - mat-7355cb
+    - mat-eb9123
+    - mat-f9e6cc
+    last_error: null
+  08_living_feed:
+    version: 4
+    last_updated: '2026-07-23T14:34:35.364954+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 说「评审 us-google」对 v3 做对抗式复评（去循环化 kill + EV 保守化后）
+- Q3'26 财报盯 FCF 是否连续第二季为负（fcf_negative 触发线）
+user_todos:
+- task: Alphabet 10-K FY2025 + 10-Q Q2 2026（SEC EDGAR）：分部收入/TAC/Cloud利润率/capex/FCF
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K3
+  source_hint: SEC EDGAR fetch_sec (US_GOOGL)
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6f5dbd
+  - mat-7355cb
+  last_fetch_note: 'SEC EDGAR: 10-K FY2025 + Q1 2026 10-Q入库；Q2 2026 10-Q昨发EDGAR未上(数据已由prescan
+    8-K覆盖)'
+- task: Q2 2026 + Q1 2026 财报电话会transcript + 幻灯片：管理层对AI货币化/capex ROI/Cloud的表态（mgmt-capital-alloc）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  - K3
+  source_hint: abc.xyz IR / motley fool transcript / seeking alpha
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3e9a5a
+  - mat-b53410
+  last_fetch_note: Q2 FY2026 transcript(yahoo)+Q1 2026 call(abc.xyz IR)入库
+- task: 3份卖方深度研报：AI搜索货币化 + capex ROI + Cloud变现（大行任选3家）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: exa semantic 搜卖方深度转载
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0d4f17
+  - mat-270d40
+  - mat-7aa4cc
+  last_fetch_note: MS/SeekingAlpha/MarketWatch AI基建+目标价深度
+- task: consensus一致预期 + 卖方目标价分布 + forward P/E/EV/EBITDA（估值锚 consensus）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: yahoo finance analysis / tipranks / visible alpha 摘要
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-eb9123
+  - mat-f9e6cc
+  last_fetch_note: 分析师目标价/预期聚合(stockanalysis/public)
+- task: DOJ搜索案remedy终裁文本 + ad-tech案(Brinkema)remedy最新状态
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: court order PDF / DOJ press / adexchanger
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-822e13
+  - mat-8ae32a
+  - mat-8eefb0
+  last_fetch_note: justice.gov remedy裁决+WSJ+wiki案情
+- task: Gemini vs ChatGPT vs Claude 用户+货币化(订阅/API/云AI收入)对比数据
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: sensor tower / statista / a16z 报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0aee7a
+  - mat-2c255b
+  - mat-631d9d
+  last_fetch_note: Gemini 750M+3.1Pro/API billing/pricing变现
+- task: Google Cloud backlog/RPO明细 + AWS/Azure增速与利润率横向对比
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 各家10-Q + canalys/synergy 云份额
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 云三巨头Q1 2026对比(statista/CRN)
+- task: AI Mode/AI Overviews货币化研究：广告加载率/CPC相对传统蓝链（命门1）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: semrush/DAP 研究 + 卖方渠道调查
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3200ac
+  - mat-5caa48
+  - mat-7c7796
+  - mat-d68a3f
+  last_fetch_note: AI Mode广告加载/CPC研究(digitalapplied/support/linkedin)
+- task: Waymo周单量轨迹 + Robotaxi单位经济(安全员/车队折旧/单价)
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: techcrunch/forbes + Alphabet 披露
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-07b2b5
+  - mat-5793c9
+  last_fetch_note: Robotaxi单位经济(scale vs profitability/cost per mile)
+- task: historical-mirror：平台迁移中在位者防御/被颠覆案例（如移动转型、搜索护城河史）
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: 产业史/学术复盘
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6ab0f9
+  - mat-97bf5a
+  last_fetch_note: Bain/McKinsey在位者防御颠覆镜鉴
+- task: historical-mirror(Meta capex周期):2022烧钱腰斩→2023 AI效率反转的ROI情绪镜鉴
+  priority: P2
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-022644
+  - mat-8659d8
+  - mat-c02c68
+  last_fetch_note: CNBC/uncoveralpha/yahoo Meta capex ROI周期
+- task: historical-mirror(Microsoft反垄断):判垄断未拆分+股价长期消化镜鉴
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-709e60
+  - mat-7b9558
+  - mat-83035e
+  last_fetch_note: marketplace/justice.gov/wiki Microsoft案镜鉴
+- task: 资料提取完成：31份actionable全部抽成findings（另30份prescan豁免），三红gap(consensus/historical-mirror/bull-bear)已补，gap全清
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 产出合成中...
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 产出合成完成：00_primer(deep,critic1轮收敛) + c_investment_case(6环,EV+8%) + 07_decision_kit
+    + thesis_v1(强度6/10) + decomposition_v1(capped)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: AI界面(AI Overviews/AI Mode)每次查询货币化 vs 传统蓝链ARPU对比——K1长期命门黑箱
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T13:38:55.742221+00:00'
+- question: capex ROI兑现证据：2026 capex具体指引区间(一手复核)+增量ROIC vs资本成本+FCF路径——H3全靠前瞻
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T13:38:55.742221+00:00'
+- question: 空头方向历史镜鉴：宽护城河公司因AI/技术平台迁移被结构性击穿(诺基亚/雅虎类)——H1盲点无历史校准
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P1
+  status: open
+  suggested_at: '2026-07-23T13:38:55.742221+00:00'
+- question: Cloud剔除Wiz并购摊销的有机经营利润率与可持续性
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P1
+  status: open
+  suggested_at: '2026-07-23T13:38:55.742221+00:00'
+- question: Waymo单周订单量/单位经济(期权精确定价)
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P2
+  status: open
+  suggested_at: '2026-07-23T13:38:55.742221+00:00'
+- question: Q2'26 单季 FCF 转负 −$5.9B 是 capex 时点错配（转固节奏错位、可逆）还是增量 ROIC 结构性 < 资本成本的起点？拆
+    capex 现金流出 vs 折旧入表节奏、Cloud 增量收入对增量资本的边际回报。
+  rationale: Q2 触发 fcf_negative kill、反方致命一击兑现；这是决定 thesis 生死的核心问题
+  source: critic_weak_k
+  related:
+  - K2
+  - H3
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T13:51:53.565746+00:00'
+- question: AI Overviews / AI Mode 单位查询货币化 vs 传统蓝链的 ARPU 量化对比（含 AI 界面广告加载率、点击稀释）——K1
+    长期命门至今黑箱。
+  rationale: K1 长期 ARPU 无任何量化，反方评"评级注水"、多头逻辑地基缺数字
+  source: critic_weak_k
+  related:
+  - K1
+  - H1
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T13:51:53.565746+00:00'
+- question: 补空头方向历史镜鉴：宽护城河公司因资本军备/平台迁移被结构性击穿或真拆分的案例（AT&T 被拆、诺基亚/雅虎平台迁移），对冲现 case 三镜鉴两个利多方向的确认偏误。
+  rationale: case 自陈缺口 4：空头方向镜鉴覆盖不足
+  source: critic_weak_k
+  related:
+  - K3
+  - H4
+  priority: P1
+  status: open
+  suggested_at: '2026-07-23T13:51:53.565746+00:00'
+- question: Cloud capex 的实测增量 ROIC：折旧正常化后，投入每美元 capex 的增量经营利润/FCF 回报率 vs WACC——直接回答"负
+    FCF 是时点还是结构"，绕开 backlog 这个不证 ROI 的代理指标。
+  rationale: 复评证实 backlog(RPO)≠ROI，承重结论缺直接 ROI 证据
+  source: critic_weak_k
+  related:
+  - K2
+  - H3
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T14:34:35.334315+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: v2复评：kill refine确证为移动球门+循环论证——用backlog(RPO)论证"负FCF=时点错配"是逻辑越界(RPO证需求不证ROI)、把已触发的fcf_negative降级另设"且backlog掉头"的fcf_structural(backlog由capex驱动→近乎不可证伪=拆掉刹车)。买入方向未翻(业务真强),但证伪框架须去循环化、"时点错配"降为开放问题、EV权重保守化(预计回落+6~9%)。评分3/5。
+  at: '2026-07-23T14:34:35.324936+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-23T13:38:55.736899+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-23T09:58:37.231859+00:00'
+    summary: 命门1=搜索货币化机理(AI Mode广告加载×CPC vs蓝链)(中); 命门2=capex→Cloud收入兑现路径/增量ROIC(中);
+      命门3=反垄断remedy对护城河实际切口(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T13:38:55.736921+00:00'
+    summary: 命门重排：K1搜索货币化当期证伪空头降级为长期斜率观察；K3 capex→收入兑现升为头号命门(FCF腰斩/零回购);K4尾部收敛(搜索案出清,残余ad-tech)。12条primer目标全覆盖(critic12/12)。
+    convergence_status: capped
+    changelog: v0→v1：命门1(搜索货币化)当期证伪→降级；命门2(capex ROI)升头号；命门3(反垄断)尾部收敛；新增估值层张力(假便宜还原)；primer
+      12条无增删。capped原因：命门1(AI ARPU量化)+命门2(capex ROI兑现)两轮收料仍无一手数据,属研究阶段本身未知。
+thesis:
+  current_version: 1
+  last_updated: '2026-07-23T13:38:55.694407+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-23T09:56:49.986543+00:00'
+    summary: 买入 GOOGL(强度7/10)：AI侵蚀搜索恐惧被证伪(AI Mode~1B用户/Gemini追赶/Cloud+82%)+DOJ保住Chrome，~30x
+      P/E未充分定价AI全栈变现；核心命门=搜索货币化是否被AI分流，最大风险=2026 capex翻倍至$195-205B压FCF。目标价赌中等上行+15~25%。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T13:38:55.694589+00:00'
+    summary: 买入 GOOGL(强度6/10)：业务面已证伪AI侵蚀搜索空头(Search+13→19%加速、Cloud利润率14→33%拐点)、搜索案最坏情形(拆Chrome)出清；但股价已再定价到$4.17T、干净PE~30x(headline17x是股权收益假便宜)，EV~+8%正但薄。核心张力从K1搜索侵蚀迁移到K3
+      capex ROI/FCF+K4 ad-tech拆分。标准仓、主力逢回调建仓。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-23T09:59:06.309614+00:00'
+  exited_at: '2026-07-23T10:33:42.386007+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-23T10:33:42.386007+00:00'
+  exited_at: '2026-07-23T13:10:10.243310+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-23T13:10:10.243310+00:00'
+  exited_at: '2026-07-23T13:39:06.512643+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-23T13:39:06.512643+00:00'
+  exited_at: '2026-07-23T14:01:46.250260+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-23T14:01:46.250260+00:00'
+  exited_at: '2026-07-23T16:15:15.850977+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-23T16:15:15.850977+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-23T10:34:05.765130+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 8
+  queries_with_hits: 8
+  failure_reason: 01-prescan L4槽全由同日(Q2财报次日)00/01 deep-fetch K#料覆盖，log-skip-covered

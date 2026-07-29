@@ -59,3 +59,39 @@ watches:
   kind: null
   locator: null
   added_at: '2026-07-14T16:27:45.524456+00:00'
+- slug: us-coinbase
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-07-15T12:45:43.180561+00:00'
+- slug: us-spacex-spcx
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-07-18T00:52:22.876073+00:00'
+- slug: us-palantir-pltr
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-07-18T16:48:45.767710+00:00'
+- slug: cn-xingye-silver-tin
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-07-19T13:32:48.526535+00:00'
+- slug: cn-montage-688008
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-07-22T10:32:51.868277+00:00'
+- slug: us-tesla
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-07-24T15:18:02.711083+00:00'

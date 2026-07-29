@@ -32,8 +32,8 @@
 
 **纪律（必须严格遵守，违反视为任务失败）**：
 
-1. **不写文件，不调 Edit/Write 工具，不用 Bash heredoc 写文件**——
-   你只通过 final message 返回结果。这是硬规约，参 prism memory feedback_subagent_write_hallucination。
+1. **只通过 final message 返回 hits 列表，不产出文件**——深挖 subagent 的职责是收集证据、
+   交主 agent 用 `register_web_search_batch` 统一登记入库（本角色不产文件，与"能不能写"无关）。
 
 2. **只调 WebSearch / WebFetch 工具收集证据**，不做合成 / 不写产出。
 

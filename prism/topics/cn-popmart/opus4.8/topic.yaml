@@ -20,6 +20,7 @@ scope:
   - 海外门店扩张
   - 营收增长
   - 估值赔率
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
 outputs_state:
   00_primer:
     version: 1
@@ -73,8 +74,8 @@ outputs_state:
     - mat-fac663
     last_error: null
   08_living_feed:
-    version: 3
-    last_updated: '2026-06-06T15:32:42.542338+00:00'
+    version: 6
+    last_updated: '2026-07-16T01:20:47.850044+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -358,3 +359,9 @@ stage_history:
     uncovered_ring_inputs: []
     autofetch_debt: 0
     empty_pending_decision: 0
+suggested_drilldowns: []
+pending_thesis_review:
+  since: '2026-07-16T01:20:47.951220+00:00'
+  reason: 二手价续跌兑现、黄牛停收（弱证据，非持续抛售），无止跌企稳信号；bear 翻牌触及 IP 变现核心假设，标记 thesis 复核
+  proposal_id: 2fbb711e0500
+  locator: c9f97082

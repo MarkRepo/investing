@@ -1,0 +1,120 @@
+# roadmap.yaml — 研究路线图 (workflow 01, arena)
+slug: global-glp1-highend-efficacy
+variant: opus4.8
+created: 2026-07-24
+
+# L1/L2 坍缩为 primer scope（背景交 00_primer）
+primer_scope: >
+  primer 该覆盖：GLP-1→双靶(GIP)→三靶(GCGR)→amylin combo 的机理演进与疗效阶梯；
+  各机理"多减的那部分从哪来"；减重 Phase 3 读出该看哪些数（安慰剂调整%/达标率/停药率/AE谱）；
+  高端疗效池在整个减重利润池的相对位置；玩家×候选药×读出阶段地图；疗效领先≠商业领先的三断点；
+  疗效生理上限（对照减重手术25-35%）；高端定价逻辑与净价压制来源(IRA/TrumpRx/PBM)。
+
+learning_track:
+  l3_debates:   # 争议层：展开 thesis 反方
+    - question: retatrutide 疗效独占是"临床成立"还是"商业成立"？GCG 安全窗迫使商业剂量下移的概率有多大？
+      source_hint: TRIUMPH 完整安全性谱 + FDA label 草案 + KOL 处方倾向
+    - question: 疗效竞争是否已近生理上限、战场正从"减重%"转向给药频率/口服/减重质量？若是，LLY 疗效护城河边际价值几何？
+      source_hint: amylin body composition 数据 + MariTide 月频定位 + 口服疗效对照
+    - question: 高端疗效 → 利润溢价的转化在净价压制下是否成立？疗效赢家会不会不是利润赢家？
+      source_hint: IRA第二批/TrumpRx/Medicare Bridge 净价路径 + PBM formulary
+    - question: 挑战者被并购整合进大药厂后，是加速对 LLY 的挑战还是被雪藏？VKTX 的并购期权价值如何定价？
+      source_hint: VKTX 现金跑道 + 潜在买家 + 历史 biotech 并购整合案例
+    - question: 市场是否已把 retatrutide 兑现 price-in 进 LLY 估值？共识 vs 我的分歧点在哪？
+      source_hint: LLY forward PE + 卖方 obesity 板块估值表 + 一致预期
+
+  l4_hunting:   # 狩猎层：逐 K# 对齐
+    - question: retatrutide 完整 TRIUMPH 项目群最高剂量的停药率/心率/dysesthesia 是否可控到不迫使商业剂量下移？
+      addresses: [K1]
+      search_keywords: [retatrutide TRIUMPH safety, 最高剂量 停药率, dysesthesia 心率]
+      source_hint: LLY IR + NEJM/Lancet TRIUMPH 论文 + FDA label
+    - question: VANQUISH-2 顶线 / amycretin Phase 3 / MariTide III / 罗氏 CT-388 任一能否在疗效+耐受双轴逼平 retatrutide？
+      addresses: [K2]
+      search_keywords: [VANQUISH-2 topline, amycretin Phase 3, MariTide 双轴]
+      source_hint: 各公司 IR + ClinicalTrials.gov + ADA/EASD 会议
+    - question: 高端疗效药能否在 IRA/TrumpRx 净价压制下守住溢价、把疗效领先转化为利润领先？
+      addresses: [K3]
+      search_keywords: [obesity net price 2026, Medicare GLP-1 Bridge, tirzepatide 净价]
+      source_hint: STAT/Endpoints + CMS + PBM formulary
+    - question: retatrutide 兑现是否已 price-in 进 LLY 估值？VKTX 并购期权的介入时点/binary 风险如何定？
+      addresses: [K4]
+      search_keywords: [Lilly forward PE 2026, VKTX 估值 并购, obesity 板块 一致预期]
+      source_hint: Yahoo Finance + 卖方估值表 + financial_data peer 横比
+
+material_priority:
+  tier1:   # 必读（复用 5.3 P0，多已 fetched）
+    - title: retatrutide 完整 TRIUMPH 项目群安全性谱（各剂量心率/肌肉/GI/dysesthesia+停药率）
+      type: sell-side-note
+      source: LLY IR / NEJM Lancet TRIUMPH 论文
+      addresses: [K1]
+      info_tier: half_public
+      why: 命门1 GCG安全窗——决定30%疗效是否商业落地。已 fetched(NEJM Ph2全文+biospace+停药11.3%)
+      rings: [migration-path-evidence]
+    - title: VKTX VANQUISH-2 顶线读出（减重%+耐受性）
+      type: data
+      source: Viking IR / ClinicalTrials.gov
+      addresses: [K2]
+      info_tier: half_public
+      why: 命门2 最近的活跃 binary 催化剂——顶线未读出，已收周边料，读出后翻盘 shortlist。留 06-monitor
+      rings: [arena-scoring-inputs]
+    - title: LLY/NVO/VKTX 最新 forward PE + 一致预期
+      type: sell-side-note
+      source: Yahoo Finance / 卖方 obesity 估值表
+      addresses: [K4]
+      info_tier: public
+      why: 终局环②定价锚——疗效兑现是否已 price-in。已 fetched
+      rings: [leader-valuation-anchor]
+    - title: 高端疗效候选公司 peer 财务横比（LLY/NVO/AMGN/VKTX/Roche 收入/毛利/ROIC/PE/历史PE）
+      type: data
+      source: financial_data.get_peer_comparison_data_by_tickers
+      addresses: [K4]
+      info_tier: public
+      why: 终局环④选 shortlist 的一手锚——04 环④现拉 financial_data + 复用父级 peer findings
+      rings: [arena-scoring-inputs, leader-valuation-anchor]
+  tier2:   # 补充（复用 5.3 P1）
+    - title: NVO amycretin 皮下+口服完整 Phase 2/3 减重数据（obesity 适应症）
+      type: data
+      source: Novo IR / Lancet / ADA
+      addresses: [K2]
+      info_tier: half_public
+      why: NVO 反击核心的兑现进度。已 fetched(Ph1b/2a 22%+Ph2 T2D 14.5%)
+      rings: [migration-path-evidence]
+    - title: 高端疗效药净价/支付方覆盖动态（IRA第二批后净价路径）
+      type: policy
+      source: STAT/Endpoints / CMS / PBM
+      addresses: [K3]
+      info_tier: half_public
+      why: 命门3 定价可持续。已 fetched(Medicare GLP-1 Bridge $50/月+TrumpRx官方)
+      rings: [value-chain-profit-pool]
+    - title: 历史镜鉴：疗效领先者被平价/后发者取代先例（PCSK9/胰岛素/丙肝）
+      type: industry-research
+      source: 行业史综述 / 卖方历史对照
+      addresses: [K4]
+      info_tier: public
+      why: 环⑤ historical-mirror——疗效赢家≠利润赢家的实证。已 fetched(PCSK9成本效益NIH/Nature)
+      rings: [industry-mirror]
+  tier3:   # 可选
+    - title: amylin 路线减重质量证据（瘦体重保护 head-to-head）+ 差异化战场转移信号
+      type: industry-research
+      source: petrelintide/amycretin body composition / ECO 2026
+      addresses: [K1, K2]
+      info_tier: half_public
+      why: L3争议2——疗效上限说与差异化战场转移。已 fetched(Zealand/NIH body comp)
+      rings: [arena-scoring-inputs]
+
+key_risks_to_monitor:
+  - retatrutide 真实世界耐受性劣于试验→商业剂量下移→疗效独占在处方端缩水
+  - VANQUISH-2/amycretin 顶线意外强→arena 从独占变多雄→shortlist 洗牌
+  - IRA/TrumpRx 净价压制超预期→高端溢价压平→疗效赢家非利润赢家
+  - LLY 估值高位→疗效兑现已 price-in→上行有限而下行 binary
+
+analogies_to_study:
+  - name: PCSK9 抑制剂疗效竞赛（美国/降脂/2015-2020）
+    logic: 疗效数据强(LDL大幅下降)但高定价+支付方限制→放量远低于预期，疗效领先未转化为商业成功
+    limit: PCSK9 无口服/减重的消费属性拉动；GLP-1 需求端远更强
+  - name: 丙肝直接抗病毒(DAA)疗效竞赛（美国/2013-2018）
+    logic: Gilead 疗效领先(治愈率>95%)但后发者(AbbVie)价格战+治愈即缩池→利润塌陷
+    limit: 减重是慢病长期用药，非一次性治愈，池不自我消灭
+  - name: 胰岛素/糖尿病用药迭代（长期）
+    logic: 疗效领先者被平价 biosimilar 逐步侵蚀，净价长期承压
+    limit: 高端减重仍在专利保护期早段，biosimilar 侵蚀是远期

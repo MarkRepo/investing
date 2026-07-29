@@ -1,0 +1,1276 @@
+slug: us-ionq
+variant: opus4.8
+updated: '2026-07-28T07:01:41.557625+00:00'
+materials:
+- id: mat-acf2c0
+  filename: 2026-07-27_ionq---ionq-announces-first-quarter-2026-financial.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.574303+00:00'
+  processed: false
+  notes: query='IonQ latest quarterly earnings 2026 revenue bookings guidance'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: IonQ equity raise dilution share count ATM 2026
+    url: https://investors.ionq.com/news/news-details/2026/IonQ-Announces-First-Quarter-2026-Financial-Results/default.aspx
+    domain: investors.ionq.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:23:31.034524+00:00'
+    stale_at: '2026-08-26T12:23:31.034524+00:00'
+    expire_at: '2026-10-25T12:23:31.034524+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - IonQ latest quarterly earnings 2026 revenue bookings guidance
+- id: mat-71a25f
+  filename: 2026-07-27_ionq---ionq-to-report-fourth-quarter-and-full-year.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.576961+00:00'
+  processed: false
+  notes: query='IonQ latest quarterly earnings 2026 revenue bookings guidance'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: IonQ latest quarterly earnings 2026 revenue bookings guidance
+    url: https://investors.ionq.com/news/news-details/2026/IonQ-to-Report-Fourth-Quarter-and-Full-Year-2025-Financial-Results-on-February-25-2026/default.aspx
+    domain: investors.ionq.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:23:30.575965+00:00'
+    stale_at: '2026-08-26T12:23:30.575965+00:00'
+    expire_at: '2026-10-25T12:23:30.575965+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-293251
+  filename: 2026-07-27_ionq-ionq-reports-q1-everything-you-need-to-know-a.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.584092+00:00'
+  processed: false
+  notes: query='IonQ latest quarterly earnings 2026 revenue bookings guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ latest quarterly earnings 2026 revenue bookings guidance
+    url: https://finance.yahoo.com/markets/stocks/articles/ionq-ionq-reports-q1-everything-you-need-to-know-ahead-of-earnings-202855376.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.582305+00:00'
+    stale_at: '2026-08-26T12:23:30.582305+00:00'
+    expire_at: '2026-10-25T12:23:30.582305+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-60d66e
+  filename: 2026-07-27_ionq-announces-fourth-quarter-and-full-year-2025.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.588711+00:00'
+  processed: false
+  notes: query='IonQ 2025 full year revenue net loss cash position results'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: IonQ 2025 full year revenue net loss cash position results
+    url: https://investors.ionq.com/news/news-details/2026/IonQ-Announces-Fourth-Quarter-and-Full-Year-2025-Financial-Results/default.aspx
+    domain: investors.ionq.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:23:30.587146+00:00'
+    stale_at: '2026-08-26T12:23:30.587146+00:00'
+    expire_at: '2026-10-25T12:23:30.587146+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a0a4fd
+  filename: 2026-07-27_ionq-reports-on-its-q3-2025-financial-results-worl.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.597600+00:00'
+  processed: false
+  notes: query='IonQ 2025 full year revenue net loss cash position results' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ 2025 full year revenue net loss cash position results
+    url: https://quantumcomputingreport.com/ionq-reports-on-its-q3-2025-financial-results-world-record-fidelity-achieved-and-record-cash-position
+    domain: quantumcomputingreport.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.595467+00:00'
+    stale_at: '2026-08-26T12:23:30.595467+00:00'
+    expire_at: '2026-10-25T12:23:30.595467+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-adcbd0
+  filename: 2026-07-27_ionq-announces-third-quarter-2025-financial-result.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.607653+00:00'
+  processed: false
+  notes: query='IonQ 2025 full year revenue net loss cash position results' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ 2025 full year revenue net loss cash position results
+    url: https://www.ionq.com/news/ionq-announces-third-quarter-2025-financial-results
+    domain: ionq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.605199+00:00'
+    stale_at: '2026-08-26T12:23:30.605199+00:00'
+    expire_at: '2026-10-25T12:23:30.605199+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c93eba
+  filename: 2026-07-27_ionq-ionq---market-capitalization.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.618372+00:00'
+  processed: false
+  notes: query='IonQ stock market cap price to sales valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ stock market cap price to sales valuation 2026
+    url: https://companiesmarketcap.com/ionq/marketcap
+    domain: companiesmarketcap.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.615263+00:00'
+    stale_at: '2026-08-26T12:23:30.615263+00:00'
+    expire_at: '2026-10-25T12:23:30.615263+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-781c37
+  filename: 2026-07-27_ionq-inc-ionq-market-cap-july-2026-update-capital-.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.629530+00:00'
+  processed: false
+  notes: query='IonQ stock market cap price to sales valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ stock market cap price to sales valuation 2026
+    url: https://capital.com/en-int/markets/shares/ionq-inc-share-price/market-cap
+    domain: capital.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.626232+00:00'
+    stale_at: '2026-08-26T12:23:30.626232+00:00'
+    expire_at: '2026-10-25T12:23:30.626232+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-feab7f
+  filename: 2026-07-27_assessing-ionq-ionq-valuation-after-strong-q1-resu.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.641522+00:00'
+  processed: false
+  notes: query='IonQ stock market cap price to sales valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ stock market cap price to sales valuation 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/assessing-ionq-ionq-valuation-strong-082251858.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.637916+00:00'
+    stale_at: '2026-08-26T12:23:30.637916+00:00'
+    expire_at: '2026-10-25T12:23:30.637916+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a0360d
+  filename: 2026-07-27_ionq-ionq-completes-acquisition-of-oxford-ionics-r.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.656900+00:00'
+  processed: false
+  notes: query='IonQ Oxford Ionics acquisition completed close status' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ Oxford Ionics acquisition completed close status
+    url: https://www.ionq.com/news/ionq-completes-acquisition-of-oxford-ionics-rapidly-accelerating-its-quantum
+    domain: ionq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.652747+00:00'
+    stale_at: '2026-08-26T12:23:30.652747+00:00'
+    expire_at: '2026-10-25T12:23:30.652747+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a7b34a
+  filename: 2026-07-27_ionq-completes-1-07bn-acquisition-of-oxford-ionics.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.673017+00:00'
+  processed: false
+  notes: query='IonQ Oxford Ionics acquisition completed close status' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ Oxford Ionics acquisition completed close status
+    url: https://finance.yahoo.com/news/ionq-completes-1-07bn-acquisition-094032174.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.668780+00:00'
+    stale_at: '2026-08-26T12:23:30.668780+00:00'
+    expire_at: '2026-10-25T12:23:30.668780+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2f5ec0
+  filename: 2026-07-27_ionq-acquires-uk-based-oxford-ionics-for-1-075-bil.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.688425+00:00'
+  processed: false
+  notes: query='IonQ Oxford Ionics acquisition completed close status' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ Oxford Ionics acquisition completed close status
+    url: https://thequantuminsider.com/2025/06/09/ionq-acquires-uk-based-oxford-ionics-for-1-075-billion
+    domain: thequantuminsider.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.683140+00:00'
+    stale_at: '2026-08-26T12:23:30.683140+00:00'
+    expire_at: '2026-10-25T12:23:30.683140+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3a1051
+  filename: 2026-07-27_ionq.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.706752+00:00'
+  processed: false
+  notes: query='IonQ Capella Space acquisition status 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ Capella Space acquisition status 2026
+    url: https://en.wikipedia.org/wiki/IonQ
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.701344+00:00'
+    stale_at: '2026-08-26T12:23:30.701344+00:00'
+    expire_at: '2026-10-25T12:23:30.701344+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-452ef4
+  filename: 2026-07-27_pdf-ionq-inc-presentation-delivered-at-the-2026-gl.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.725185+00:00'
+  processed: false
+  notes: query='IonQ logical qubits milestone AQ roadmap 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ logical qubits milestone AQ roadmap 2026
+    url: https://s28.q4cdn.com/828571518/files/doc_events/2026/May/18/IonQ-at-JPM-Global-Technology-Media-and-Communications-Conference-2026-05-18.pdf
+    domain: s28.q4cdn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.719722+00:00'
+    stale_at: '2026-08-26T12:23:30.719722+00:00'
+    expire_at: '2026-10-25T12:23:30.719722+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a9845e
+  filename: 2026-07-27_ionq-roadmap.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.743696+00:00'
+  processed: false
+  notes: query='IonQ logical qubits milestone AQ roadmap 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ logical qubits milestone AQ roadmap 2026
+    url: https://www.ionq.com/roadmap
+    domain: ionq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.737409+00:00'
+    stale_at: '2026-08-26T12:23:30.737409+00:00'
+    expire_at: '2026-10-25T12:23:30.737409+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dd60c9
+  filename: 2026-07-27_ionq-ionq-s-accelerated-roadmap-turning-quantum-am.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.762704+00:00'
+  processed: false
+  notes: query='IonQ logical qubits milestone AQ roadmap 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ logical qubits milestone AQ roadmap 2026
+    url: https://www.ionq.com/blog/ionqs-accelerated-roadmap-turning-quantum-ambition-into-reality
+    domain: ionq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.756544+00:00'
+    stale_at: '2026-08-26T12:23:30.756544+00:00'
+    expire_at: '2026-10-25T12:23:30.756544+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-975a55
+  filename: 2026-07-27_ionq-names-niccolo-de-masi-as-president-chief-exec.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.783411+00:00'
+  processed: false
+  notes: query='IonQ CEO Niccolo de Masi Peter Chapman management 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ CEO Niccolo de Masi Peter Chapman management 2026
+    url: https://thequantuminsider.com/2025/02/26/ionq-names-niccolo-de-masi-as-president-chief-executive-officer
+    domain: thequantuminsider.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.776761+00:00'
+    stale_at: '2026-08-26T12:23:30.776761+00:00'
+    expire_at: '2026-10-25T12:23:30.776761+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1c9951
+  filename: 2026-07-27_ex-99-3.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.801988+00:00'
+  processed: false
+  notes: query='IonQ CEO Niccolo de Masi Peter Chapman management 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: IonQ CEO Niccolo de Masi Peter Chapman management 2026
+    url: https://www.sec.gov/Archives/edgar/data/1824920/000095017025027713/ionq-ex99_3.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:23:30.794087+00:00'
+    stale_at: '2026-08-26T12:23:30.794087+00:00'
+    expire_at: '2026-10-25T12:23:30.794087+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-84c1e9
+  filename: 2026-07-27_ionq---ionq-names-niccolo-de-masi-as-president-chi.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.820747+00:00'
+  processed: false
+  notes: query='IonQ CEO Niccolo de Masi Peter Chapman management 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: IonQ CEO Niccolo de Masi Peter Chapman management 2026
+    url: https://investors.ionq.com/news/news-details/2025/IonQ-Names-Niccolo-de-Masi-as-President--Chief-Executive-Officer/default.aspx
+    domain: investors.ionq.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:23:30.813394+00:00'
+    stale_at: '2026-08-26T12:23:30.813394+00:00'
+    expire_at: '2026-10-25T12:23:30.813394+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fdf44c
+  filename: 2026-07-27_top-trapped-ion-quantum-computing-companies-comple.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.845533+00:00'
+  processed: false
+  notes: query='Quantinuum vs IonQ trapped ion competition fidelity 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Quantinuum vs IonQ trapped ion competition fidelity 2026
+    url: https://quantumzeitgeist.com/top-trapped-ion-quantum-computing-companies
+    domain: quantumzeitgeist.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.837137+00:00'
+    stale_at: '2026-08-26T12:23:30.837137+00:00'
+    expire_at: '2026-10-25T12:23:30.837137+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9cf962
+  filename: 2026-07-27_top-trapped-ion-quantum-computing-companies-in-202.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.870825+00:00'
+  processed: false
+  notes: query='Quantinuum vs IonQ trapped ion competition fidelity 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Quantinuum vs IonQ trapped ion competition fidelity 2026
+    url: https://thequantuminsider.com/2026/06/12/trapped-ion-quantum-computing-companies-technology-and-where-it-stands-in-2026
+    domain: thequantuminsider.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.862666+00:00'
+    stale_at: '2026-08-26T12:23:30.862666+00:00'
+    expire_at: '2026-10-25T12:23:30.862666+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7c4bfb
+  filename: 2026-07-27_quantum-advantage---why-is-there-a-discrepancy-in-.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.897123+00:00'
+  processed: false
+  notes: query='Google IBM quantum error correction milestone 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google IBM quantum error correction milestone 2025 2026
+    url: https://quantumcomputing.stackexchange.com/questions/40854/why-is-there-a-discrepancy-in-error-correction-milestones-between-google-s-willo
+    domain: quantumcomputing.stackexchange.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.888870+00:00'
+    stale_at: '2026-08-26T12:23:30.888870+00:00'
+    expire_at: '2026-10-25T12:23:30.888870+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-41d1c4
+  filename: 2026-07-27_quantum-2026-ibm-technology-atlas.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.923073+00:00'
+  processed: false
+  notes: query='Google IBM quantum error correction milestone 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Google IBM quantum error correction milestone 2025 2026
+    url: https://www.ibm.com/roadmaps/quantum/2026
+    domain: ibm.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.913704+00:00'
+    stale_at: '2026-08-26T12:23:30.913704+00:00'
+    expire_at: '2026-10-25T12:23:30.913704+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-127027
+  filename: 2026-07-27_ionq-ionq-stock-forecast-and-price-target-2026.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.953401+00:00'
+  processed: false
+  notes: query='IonQ analyst price target rating consensus 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ analyst price target rating consensus 2026
+    url: https://www.marketbeat.com/stocks/NYSE/IONQ/forecast
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.944251+00:00'
+    stale_at: '2026-08-26T12:23:30.944251+00:00'
+    expire_at: '2026-10-25T12:23:30.944251+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8929d8
+  filename: 2026-07-27_ionq-analyst-ratings-and-price-targets-nyse-ionq-b.md
+  source_type: web-search
+  added: '2026-07-27T12:23:30.979751+00:00'
+  processed: false
+  notes: query='IonQ analyst price target rating consensus 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ analyst price target rating consensus 2026
+    url: https://www.benzinga.com/quote/IONQ/analyst-ratings
+    domain: benzinga.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:30.970558+00:00'
+    stale_at: '2026-08-26T12:23:30.970558+00:00'
+    expire_at: '2026-10-25T12:23:30.970558+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b5505e
+  filename: 2026-07-27_ionq-inc-analyst-estimates-ratings.md
+  source_type: web-search
+  added: '2026-07-27T12:23:31.006409+00:00'
+  processed: false
+  notes: query='IonQ analyst price target rating consensus 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: IonQ analyst price target rating consensus 2026
+    url: https://www.wsj.com/market-data/quotes/IONQ/research-ratings
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:23:30.996822+00:00'
+    stale_at: '2026-08-26T12:23:30.996822+00:00'
+    expire_at: '2026-10-25T12:23:30.996822+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-383412
+  filename: 2026-07-27_ionq-raises-360m-through-atm-program-terminates-of.md
+  source_type: web-search
+  added: '2026-07-27T12:23:31.063558+00:00'
+  processed: false
+  notes: query='IonQ equity raise dilution share count ATM 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ cash burn share dilution ATM offering 2026
+    url: https://thequantuminsider.com/2025/03/11/ionq-raises-360m-through-atm-program-terminates-offering-after-meeting-capital-needs
+    domain: thequantuminsider.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:39:43.643769+00:00'
+    stale_at: '2026-08-26T12:39:43.643769+00:00'
+    expire_at: '2026-10-25T12:39:43.643769+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - IonQ equity raise dilution share count ATM 2026
+- id: mat-b5259a
+  filename: 2026-07-27_ionq-ionq-raises-over-372-million-via-at-the-marke.md
+  source_type: web-search
+  added: '2026-07-27T12:23:31.094291+00:00'
+  processed: false
+  notes: query='IonQ equity raise dilution share count ATM 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ equity raise dilution share count ATM 2026
+    url: https://www.ionq.com/news/ionq-raises-over-usd372-million-via-at-the-market-equity-offering-program
+    domain: ionq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:31.083093+00:00'
+    stale_at: '2026-08-26T12:23:31.083093+00:00'
+    expire_at: '2026-10-25T12:23:31.083093+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6e18e7
+  filename: 2026-07-27_ionq-shares-outstanding-2021-2026-ionq-macrotrends.md
+  source_type: web-search
+  added: '2026-07-27T12:23:31.125289+00:00'
+  processed: false
+  notes: query='IonQ equity raise dilution share count ATM 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: IonQ equity raise dilution share count ATM 2026
+    url: https://www.macrotrends.net/stocks/charts/IONQ/ionq/shares-outstanding
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:23:31.114418+00:00'
+    stale_at: '2026-08-26T12:23:31.114418+00:00'
+    expire_at: '2026-10-25T12:23:31.114418+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9eaf2a
+  filename: 2026-07-27_nvidia-ceo-huang-says-was-wrong-about-timeline-for.md
+  source_type: web-search
+  added: '2026-07-27T12:23:31.158589+00:00'
+  processed: false
+  notes: query='quantum computing stocks Nvidia Jensen Huang quantum advantage timeline'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: quantum computing stocks Nvidia Jensen Huang quantum advantage timeline
+    url: https://www.cnbc.com/amp/2025/03/20/nvidia-ceo-huang-says-was-wrong-about-timeline-for-quantum-computing.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:23:31.146660+00:00'
+    stale_at: '2026-08-26T12:23:31.146660+00:00'
+    expire_at: '2026-10-25T12:23:31.146660+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9326d8
+  filename: 2026-07-27_nvidia-invests-in-three-quantum-computing-firms-re.md
+  source_type: web-search
+  added: '2026-07-27T12:23:31.189041+00:00'
+  processed: false
+  notes: query='quantum computing stocks Nvidia Jensen Huang quantum advantage timeline'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: quantum computing stocks Nvidia Jensen Huang quantum advantage timeline
+    url: https://www.linkedin.com/posts/russfein_jensen-huang-and-nvidias-massive-quantum-activity-7372411474352201728-FGSE
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:23:31.177431+00:00'
+    stale_at: '2026-08-26T12:23:31.177431+00:00'
+    expire_at: '2026-10-25T12:23:31.177431+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-54eee7
+  filename: 2026_IONQ_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-07-27T12:29:34.558649+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — IonQ, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-0d908f
+  filename: 2025_IONQ_10-K_2026-02-25.htm
+  source_type: annual-report
+  added: '2026-07-27T12:29:42.016467+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — IonQ, Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-c8cda9
+  filename: sec/2025_IONQ_10-K_2026-02-25/item_1_business.md
+  source_type: sec-section
+  added: '2026-07-27T12:29:42.415592+00:00'
+  processed: true
+  notes: split from 2025_IONQ_10-K_2026-02-25.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-0d908f
+  sec_section: item_1_business
+- id: mat-ab00d2
+  filename: sec/2025_IONQ_10-K_2026-02-25/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-27T12:29:42.436232+00:00'
+  processed: true
+  notes: split from 2025_IONQ_10-K_2026-02-25.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-0d908f
+  sec_section: item_1a_risk
+- id: mat-01fcf8
+  filename: sec/2025_IONQ_10-K_2026-02-25/item_7_mda.md
+  source_type: sec-section
+  added: '2026-07-27T12:29:42.456859+00:00'
+  processed: true
+  notes: split from 2025_IONQ_10-K_2026-02-25.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-0d908f
+  sec_section: item_7_mda
+- id: mat-adfa6c
+  filename: sec/2025_IONQ_10-K_2026-02-25/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-27T12:29:42.477550+00:00'
+  processed: true
+  notes: split from 2025_IONQ_10-K_2026-02-25.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-0d908f
+  sec_section: item_7a_quant_risk
+- id: mat-504098
+  filename: sec/2025_IONQ_10-K_2026-02-25/item_8_financial.md
+  source_type: sec-section
+  added: '2026-07-27T12:29:42.498371+00:00'
+  processed: true
+  notes: split from 2025_IONQ_10-K_2026-02-25.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-0d908f
+  sec_section: item_8_financial
+- id: mat-2906e2
+  filename: 2024-02-28_IONQ_search_qubit_10-K.htm
+  source_type: announcement
+  added: '2026-07-27T12:31:57.097909+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — IonQ, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-451b39
+  filename: 2025-02-26_IONQ_search_qubit_10-K.htm
+  source_type: announcement
+  added: '2026-07-27T12:32:00.229637+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — IonQ, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-d945a7
+  filename: 2022-03-28_IONQ_search_qubit_10-K.htm
+  source_type: announcement
+  added: '2026-07-27T12:32:03.137614+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — IonQ, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-e1a1a9
+  filename: 2026-07-27_ionq-stock-price-ionq-inc-stock-quote-u-s-nyse-mar.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.430154+00:00'
+  processed: true
+  notes: query='IonQ analyst price target consensus average high low rating 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: IonQ analyst price target consensus average high low rating 2026
+    url: https://www.marketwatch.com/investing/stock/ionq
+    domain: marketwatch.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:33:49.415322+00:00'
+    stale_at: '2026-08-26T12:33:49.415322+00:00'
+    expire_at: '2026-10-25T12:33:49.415322+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d4385c
+  filename: 2026-07-27_ionq-ionq-inc.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.475948+00:00'
+  processed: true
+  notes: query='IonQ analyst price target consensus average high low rating 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: IonQ analyst price target consensus average high low rating 2026
+    url: https://finance.yahoo.com/quote/IONQ
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.461057+00:00'
+    stale_at: '2026-08-26T12:33:49.461057+00:00'
+    expire_at: '2026-10-25T12:33:49.461057+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c91035
+  filename: 2026-07-27_ionq-achieves-99-99-two-qubit-gate-fidelity-using-.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.529241+00:00'
+  processed: true
+  notes: query='Oxford Ionics electronic qubit control 99.99% two-qubit gate fidelity
+    Nature paper' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Oxford Ionics electronic qubit control 99.99% two-qubit gate fidelity Nature
+      paper
+    url: https://quantumcomputingreport.com/ionq-achieves-99-99-two-qubit-gate-fidelity-using-electronic-qubit-control-technology
+    domain: quantumcomputingreport.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.510920+00:00'
+    stale_at: '2026-08-26T12:33:49.510920+00:00'
+    expire_at: '2026-10-25T12:33:49.510920+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f50127
+  filename: 2026-07-27_ionq-achieves-99-99-two-qubit-gate-performance.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.574746+00:00'
+  processed: true
+  notes: query='Oxford Ionics electronic qubit control 99.99% two-qubit gate fidelity
+    Nature paper' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Oxford Ionics electronic qubit control 99.99% two-qubit gate fidelity Nature
+      paper
+    url: https://thequantuminsider.com/2025/10/21/ionq-achieves-99-99-two-qubit-gate-performance
+    domain: thequantuminsider.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.559538+00:00'
+    stale_at: '2026-08-26T12:33:49.559538+00:00'
+    expire_at: '2026-10-25T12:33:49.559538+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-784690
+  filename: 2026-07-27_accelerating-towards-fault-tolerance-unlocking-99-.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.620781+00:00'
+  processed: true
+  notes: query='Oxford Ionics electronic qubit control 99.99% two-qubit gate fidelity
+    Nature paper' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Oxford Ionics electronic qubit control 99.99% two-qubit gate fidelity Nature
+      paper
+    url: https://www.oxionics.com/blogs/accelerating-towards-fault-tolerance-unlocking-99-99-two-qubit-gate-fidelities
+    domain: oxionics.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.605092+00:00'
+    stale_at: '2026-08-26T12:33:49.605092+00:00'
+    expire_at: '2026-10-25T12:33:49.605092+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-133850
+  filename: 2026-07-27_quantinuum---wikipedia.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.674160+00:00'
+  processed: true
+  notes: query='Quantinuum IPO S-1 filing valuation Honeywell 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Quantinuum IPO S-1 filing valuation Honeywell 2026
+    url: https://en.wikipedia.org/wiki/Quantinuum
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.656782+00:00'
+    stale_at: '2026-08-26T12:33:49.656782+00:00'
+    expire_at: '2026-10-25T12:33:49.656782+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-103695
+  filename: 2026-07-27_honeywell-announces-600-million-capital-raise-for-.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.727035+00:00'
+  processed: true
+  notes: query='Quantinuum IPO S-1 filing valuation Honeywell 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Quantinuum IPO S-1 filing valuation Honeywell 2026
+    url: https://www.honeywell.com/us/en/news/press-releases/2025/09/honeywell-announces-600-million-capital-raise-for-quantinuum-at-10b-pre-money-equity-valuation-to-advance-quantum-computing-at-scale
+    domain: honeywell.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.708887+00:00'
+    stale_at: '2026-08-26T12:33:49.708887+00:00'
+    expire_at: '2026-10-25T12:33:49.708887+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d94e7a
+  filename: 2026-07-27_speaker-details-de-spac-with-ionq.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.781601+00:00'
+  processed: true
+  notes: query='Niccolo de Masi acquisition track record dMY Glu Mobile capital allocation'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Niccolo de Masi acquisition track record dMY Glu Mobile capital allocation
+    url: https://icr.swoogo.com/De-SPAC_IonQ/speaker/297728/niccolo-de-masi
+    domain: icr.swoogo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.764413+00:00'
+    stale_at: '2026-08-26T12:33:49.764413+00:00'
+    expire_at: '2026-10-25T12:33:49.764413+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3ee2be
+  filename: 2026-07-27_s-1.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.829403+00:00'
+  processed: true
+  notes: query='Niccolo de Masi acquisition track record dMY Glu Mobile capital allocation'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Niccolo de Masi acquisition track record dMY Glu Mobile capital allocation
+    url: https://www.sec.gov/Archives/edgar/data/1816101/000119312520181153/d942567ds1.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:33:49.812470+00:00'
+    stale_at: '2026-08-26T12:33:49.812470+00:00'
+    expire_at: '2026-10-25T12:33:49.812470+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-db3057
+  filename: 2026-07-27_former-glu-ceo-niccolo-de-masi-is-at-it-again-read.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.880010+00:00'
+  processed: true
+  notes: query='Niccolo de Masi acquisition track record dMY Glu Mobile capital allocation'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Niccolo de Masi acquisition track record dMY Glu Mobile capital allocation
+    url: https://gamesbeat.com/former-glu-ceo-niccolo-de-masi-is-at-it-again-ready-to-take-another-company-public
+    domain: gamesbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.862572+00:00'
+    stale_at: '2026-08-26T12:33:49.862572+00:00'
+    expire_at: '2026-10-25T12:33:49.862572+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ee7d46
+  filename: 2026-07-27_ionq-posts-strong-q4-guides-to-81-revenue-growth-i.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.939162+00:00'
+  processed: true
+  notes: query='IonQ revenue organic growth vs acquisition contribution analyst breakdown'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: IonQ revenue organic growth vs acquisition contribution analyst breakdown
+    url: https://www.benzinga.com/analyst-stock-ratings/analyst-color/26/02/50900159/ionq-posts-strong-q4-guides-to-81-revenue-growth-in-2026
+    domain: benzinga.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.920475+00:00'
+    stale_at: '2026-08-26T12:33:49.920475+00:00'
+    expire_at: '2026-10-25T12:33:49.920475+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-955423
+  filename: 2026-07-27_ionq-revenue-breakdown-ionq-sources-segments---ain.md
+  source_type: web-search
+  added: '2026-07-27T12:33:49.992712+00:00'
+  processed: true
+  notes: query='IonQ revenue organic growth vs acquisition contribution analyst breakdown'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: IonQ revenue organic growth vs acquisition contribution analyst breakdown
+    url: https://www.ainvest.com/stocks/NYSE-IONQ/financials/revenue-breakdown
+    domain: ainvest.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:49.973944+00:00'
+    stale_at: '2026-08-26T12:33:49.973944+00:00'
+    expire_at: '2026-10-25T12:33:49.973944+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-103178
+  filename: 2026-07-27_are-quantum-computing-stocks-in-a-bubble-the-motle.md
+  source_type: web-search
+  added: '2026-07-27T12:33:50.053551+00:00'
+  processed: true
+  notes: query='quantum computing stocks bubble valuation price to sales collapse
+    history' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: quantum computing stocks bubble valuation price to sales collapse history
+    url: https://www.fool.com/investing/2025/11/02/are-quantum-computing-stocks-in-a-bubble
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:50.032218+00:00'
+    stale_at: '2026-08-26T12:33:50.032218+00:00'
+    expire_at: '2026-10-25T12:33:50.032218+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8859cd
+  filename: 2026-07-27_are-quantum-computing-stocks-in-a-bubble-nasdaq.md
+  source_type: web-search
+  added: '2026-07-27T12:33:50.110756+00:00'
+  processed: true
+  notes: query='quantum computing stocks bubble valuation price to sales collapse
+    history'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: quantum computing stocks bubble valuation price to sales collapse history
+    url: https://www.nasdaq.com/articles/are-quantum-computing-stocks-bubble
+    domain: nasdaq.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:33:50.089394+00:00'
+    stale_at: '2026-08-26T12:33:50.089394+00:00'
+    expire_at: '2026-10-25T12:33:50.089394+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-149509
+  filename: 2026-07-27_quantum-computing-just-hit-commercial-viability-an.md
+  source_type: web-search
+  added: '2026-07-27T12:33:50.175977+00:00'
+  processed: true
+  notes: query='quantum computing sector ETF fund flows sentiment catalyst 2026' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: quantum computing sector ETF fund flows sentiment catalyst 2026
+    url: https://247wallst.com/investing/2026/06/30/quantum-computing-just-hit-commercial-viability-and-trumps-2-billion-quantum-push-has-these-3-etfs-sitting-on-top-of-the-trade
+    domain: 247wallst.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:50.154908+00:00'
+    stale_at: '2026-08-26T12:33:50.154908+00:00'
+    expire_at: '2026-10-25T12:33:50.154908+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-432e48
+  filename: 2026-07-27_3-best-quantum-computing-etfs-for-2026-and-how-to-.md
+  source_type: web-search
+  added: '2026-07-27T12:33:50.235029+00:00'
+  processed: true
+  notes: query='quantum computing sector ETF fund flows sentiment catalyst 2026' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: quantum computing sector ETF fund flows sentiment catalyst 2026
+    url: https://www.fool.com/investing/stock-market/market-sectors/information-technology/ai-stocks/quantum-computing-etf
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:33:50.215044+00:00'
+    stale_at: '2026-08-26T12:33:50.215044+00:00'
+    expire_at: '2026-10-25T12:33:50.215044+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-528bd5
+  filename: 2026_IONQ_8-K-earnings_2026-06-22.html
+  source_type: quarterly-report
+  added: '2026-07-27T12:36:45.170709+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — IonQ, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-54997b
+  filename: 2026-07-27_quantinuum-considers-ipo-targets-10b-valuation-acc.md
+  source_type: web-search
+  added: '2026-07-27T12:39:43.383610+00:00'
+  processed: false
+  notes: query='Quantinuum IPO valuation quantum stock price to sales IONQ price target'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Quantinuum IPO valuation quantum stock price to sales IONQ price target
+    url: https://www.hpcwire.com/2024/07/30/quantinuum-considers-ipo-targets-10b-valuation-according-to-report
+    domain: hpcwire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:39:43.362238+00:00'
+    stale_at: '2026-08-26T12:39:43.362238+00:00'
+    expire_at: '2026-10-25T12:39:43.362238+00:00'
+    triggered_by: 01-prescan
+- id: mat-0195f8
+  filename: 2026-07-27_quantum-computing-stocks-quantinuum-boosts-ipo-off.md
+  source_type: web-search
+  added: '2026-07-27T12:39:43.443186+00:00'
+  processed: false
+  notes: query='Quantinuum IPO valuation quantum stock price to sales IONQ price target'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: Quantinuum IPO valuation quantum stock price to sales IONQ price target
+    url: https://www.investors.com/news/technology/quantum-computing-stocks-quantiniuum-ipo-valuation-honeywell
+    domain: investors.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:39:43.420544+00:00'
+    stale_at: '2026-08-26T12:39:43.420544+00:00'
+    expire_at: '2026-10-25T12:39:43.420544+00:00'
+    triggered_by: 01-prescan
+- id: mat-60a328
+  filename: 2026-07-27_honeywell-s-quantinuum-settles-on-12-7bn-ipo-targe.md
+  source_type: web-search
+  added: '2026-07-27T12:39:43.508287+00:00'
+  processed: false
+  notes: query='Quantinuum IPO valuation quantum stock price to sales IONQ price target'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Quantinuum IPO valuation quantum stock price to sales IONQ price target
+    url: https://thenextweb.com/news/quantinuum-127bn-ipo-target-honeywell
+    domain: thenextweb.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:39:43.486777+00:00'
+    stale_at: '2026-08-26T12:39:43.486777+00:00'
+    expire_at: '2026-10-25T12:39:43.486777+00:00'
+    triggered_by: 01-prescan
+- id: mat-e440d6
+  filename: 2026-07-27_ionq-announces-pricing-of-2-0-billion-equity-offer.md
+  source_type: web-search
+  added: '2026-07-27T12:39:43.579487+00:00'
+  processed: false
+  notes: query='IonQ cash burn share dilution ATM offering 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: IonQ cash burn share dilution ATM offering 2026
+    url: https://www.ionq.com/news/ionq-announces-pricing-of-usd2-0-billion-equity-offering
+    domain: ionq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:39:43.557442+00:00'
+    stale_at: '2026-08-26T12:39:43.557442+00:00'
+    expire_at: '2026-10-25T12:39:43.557442+00:00'
+    triggered_by: 01-prescan
+- id: mat-e76e1f
+  filename: 2026-07-27_ionq-ionq-achieves-130-0-million-of-gaap-revenues-.md
+  source_type: web-search
+  added: '2026-07-27T12:39:43.714059+00:00'
+  processed: false
+  notes: query='IonQ commercial customers revenue recognition customer concentration'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: IonQ commercial customers revenue recognition customer concentration
+    url: https://www.ionq.com/news/ionq-announces-fourth-quarter-and-full-year-2025-financial-results
+    domain: ionq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:39:43.691577+00:00'
+    stale_at: '2026-08-26T12:39:43.691577+00:00'
+    expire_at: '2026-10-25T12:39:43.691577+00:00'
+    triggered_by: 01-prescan
+- id: mat-05d48c
+  filename: 2026-07-27_ionq---ionq-only-quantum-company-in-2025-deloitte-.md
+  source_type: web-search
+  added: '2026-07-27T12:39:43.775520+00:00'
+  processed: false
+  notes: query='IonQ commercial customers revenue recognition customer concentration'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: IonQ commercial customers revenue recognition customer concentration
+    url: https://investors.ionq.com/news/news-details/2025/IonQ-Only-Quantum-Company-in-2025-Deloitte-Technology-Fast-500-Grows-Revenue-Nearly-2000-in-3-years/default.aspx
+    domain: investors.ionq.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:39:43.752444+00:00'
+    stale_at: '2026-08-26T12:39:43.752444+00:00'
+    expire_at: '2026-10-25T12:39:43.752444+00:00'
+    triggered_by: 01-prescan
+- id: mat-d9f430
+  filename: 2026-07-27_ionq-reports-64-7-million-q1-2026-revenue-fueled-b.md
+  source_type: web-search
+  added: '2026-07-27T12:39:43.842096+00:00'
+  processed: false
+  notes: query='IonQ commercial customers revenue recognition customer concentration'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: IonQ commercial customers revenue recognition customer concentration
+    url: https://thequantuminsider.com/2026/05/06/ionq-reports-64-7-million-q1-2026-revenue-fueled-by-quantum-contracts-and-system-sales
+    domain: thequantuminsider.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:39:43.818645+00:00'
+    stale_at: '2026-08-26T12:39:43.818645+00:00'
+    expire_at: '2026-10-25T12:39:43.818645+00:00'
+    triggered_by: 01-prescan
+- id: mat-f5d592
+  filename: 2026-07-27_ionq-shows-quantum-error-correction-can-finally-do.md
+  source_type: web-search
+  added: '2026-07-27T12:39:43.918910+00:00'
+  processed: false
+  notes: query='IonQ logical qubits error correction below threshold demonstration
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: IonQ logical qubits error correction below threshold demonstration 2026
+    url: https://quantumzeitgeist.com/ionq-quantum-ldpc-codes
+    domain: quantumzeitgeist.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:39:43.894543+00:00'
+    stale_at: '2026-08-26T12:39:43.894543+00:00'
+    expire_at: '2026-10-25T12:39:43.894543+00:00'
+    triggered_by: 01-prescan
+- id: mat-2e7f1d
+  filename: 2026-07-27_ionq-demystifying-logical-qubits-and-fault-toleran.md
+  source_type: web-search
+  added: '2026-07-27T12:39:43.989359+00:00'
+  processed: false
+  notes: query='IonQ logical qubits error correction below threshold demonstration
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: IonQ logical qubits error correction below threshold demonstration 2026
+    url: https://www.ionq.com/resources/demystifying-logical-qubits-and-fault-tolerance
+    domain: ionq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:39:43.965066+00:00'
+    stale_at: '2026-08-26T12:39:43.965066+00:00'
+    expire_at: '2026-10-25T12:39:43.965066+00:00'
+    triggered_by: 01-prescan
+- id: mat-61064b
+  filename: 2026-07-27_ionq-ionq-s-novel-efficient-approach-to-quantum-er.md
+  source_type: web-search
+  added: '2026-07-27T12:39:44.061605+00:00'
+  processed: false
+  notes: query='IonQ logical qubits error correction below threshold demonstration
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: IonQ logical qubits error correction below threshold demonstration 2026
+    url: https://www.ionq.com/blog/our-novel-efficient-approach-to-quantum-error-correction
+    domain: ionq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-27T12:39:44.037860+00:00'
+    stale_at: '2026-08-26T12:39:44.037860+00:00'
+    expire_at: '2026-10-25T12:39:44.037860+00:00'
+    triggered_by: 01-prescan
+- id: mat-02d8b4
+  filename: 2026-07-27_ionq---investor-relations.md
+  source_type: web-search
+  added: '2026-07-27T12:39:44.133774+00:00'
+  processed: false
+  notes: query='IonQ organic revenue acquisition contribution segment breakdown Q2
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: IonQ organic revenue acquisition contribution segment breakdown Q2 2026
+    url: https://investors.ionq.com/overview/default.aspx
+    domain: investors.ionq.com
+    domain_tier: whitelist
+    searched_at: '2026-07-27T12:39:44.109142+00:00'
+    stale_at: '2026-08-26T12:39:44.109142+00:00'
+    expire_at: '2026-10-25T12:39:44.109142+00:00'
+    triggered_by: 01-prescan
+- id: mat-e9c3f9
+  filename: ionq-FY2025-10K-20251231.htm
+  source_type: sec-filing
+  added: '2026-07-28T07:01:36.409299+00:00'
+  processed: true
+  notes: IonQ FY2025 10-K (filed 2026-02-25, acc 0001193125-26-071562). 命门补料：Note15
+    收入disaggregation + 客户集中度 + ICFR段并购营收占比39%。当初01因data.sec.gov SSL失败未取，本轮重抓成功。
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  rings:
+  - '1'
+  - '2'
+  - '3'
+  - '5'
+  confidence: 1.0
+  sec_section: 10-K-full

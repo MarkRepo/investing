@@ -217,21 +217,21 @@ print(f'已自动跳过 {skipped} 份 SEC parent htm（其 sec-section 子条目
 
 **架构：subagent 写优先落盘，主 agent 做地面真值校验（不信 subagent 自我报告），失败才回传正文**
 
-> 📎 *为何从"禁止 subagent 写"改为"写优先+校验"、2026-05 幻觉的真实根因 → 附录 A2-sub（执行时可跳过）*
+**写优先 + 主 agent `ls` 地面校验**：subagent 直接用 Write 落盘 findings，正文**不回传主 context**（消除"回传+重写"双程，token 通道 B 最大一块），主 agent 只对最终文件跑 `ls` 校验，缺失才回退取正文。
 
-**根因订正（2026-07-14 受控复测）**：2026-05 的"subagent 写文件必幻觉出'Write 被拦截'"**不是** subagent 能力/派发参数/model/权限问题——用完全相同参数（`general-purpose`、不传 model）、但 prompt 改为**明确要求写**（去掉禁写硬规约）后，Write 工具与 Bash heredoc **都真写成功、且如实报告**（主 agent `ls`/`cat` 地面校验证实文件落盘、内容正确）。真凶是**旧规约末尾那条"你绝对不要用 Write/Edit/heredoc"禁令自我实现**：模型被告知"你不能写"，就顺势幻觉出与该指令一致的"被拦截"叙事。**故禁写规约取消**，改为写优先 + 校验。这样 findings 正文**不再回传主 context**（消除"回传+重写"双程，通道 B 最大一块），仅在写失败时才回退。
+> ⚠️ **给 subagent 的 prompt 里绝不要提"写 hook / 写权限 / 写可能失败 / 写失败就兜底"**——实测（[[subagent-write-hallucination]]，2026-07-14 与 2026-07-19 两次复现）：Write 在本环境对 subagent 本就正常工作；但**任何关于"写权限/拦截/失败兜底"的措辞——哪怕是"本仓无 hook""不要怀疑写权限"这类否定式安抚——都会把"写会被拦"的念头种进 subagent，诱它 pattern-complete 出历史幻觉串 `Subagents should return findings as text` 并走兜底路径只回文本**（2026-07-19 一次 dispatch 4 个 subagent，3 个照抄了该串、其中 1 个据此拒写只回文本）。干净的"请写到 X"prompt → Write 直接成功、如实报告。故下方 mandated prompt **通篇不谈写权限**，失败兜底完全交给主 agent 的 `ls` + SendMessage 回补（见 L229-233），**不在 subagent 侧埋任何逃生口**。
 
 dispatch subagent 时：
 
 - `subagent_type`: **必须 `general-purpose`**
 - `model`: **不传**，跟随主 agent
-- prompt 末尾必须原文加入：
-  > "**请你直接用 Write 工具把每份 finding 落盘到 `prism/topics/{slug}/{variant}/outputs/findings_{mat_id}.md`（一份资料一个文件，路径里的 {mat_id} 换成对应 mat-xxxxxx）。** 写完后用 Bash 运行 `ls -la` 列出你写的这些文件路径确认存在。final message **只回**：(1) 1-2 句 key signals 摘要；(2) 你**实际写成功**的文件路径清单（逐个列全路径）；(3) 若某份写失败，**原文粘贴**工具返回的完整错误信息 + 该 mat_id。**不要在 final message 里回传 finding 正文**（正文已落盘，回传会浪费主 context）。除非某份写失败，才把那一份的完整 markdown 附在 final message 末尾供主 agent 兜底落盘。"
+- prompt 末尾必须原文加入（**注意：不含任何写权限/hook/失败兜底话术**）：
+  > "请把每份 finding 用 Write 工具落盘到 `prism/topics/{slug}/{variant}/outputs/findings_{mat_id}.md`（一份资料一个文件，路径里的 {mat_id} 换成对应 mat-xxxxxx）。写完后用 Bash 运行 `ls -la` 列出你写的这些文件路径确认存在。final message **只回两样**：(1) 1-2 句 key signals 摘要；(2) 你写的文件全路径清单（逐个列全）。**不要在 final message 里回传 finding 正文**（正文已落盘，回传会浪费主 context）。"
 
 主 agent 收到 subagent final message 后（**关键：不信 subagent 的成功/失败自述，一律地面真值校验**）：
 1. 对**本批应产出的每个 `findings_{mat_id}.md`** 跑 `ls -la` + `wc -c`（或 `test -s`）——**校验的是应写清单，不是 subagent 声称写了的清单**（防"幻觉声称写成功但实际没写"）。
 2. **文件存在且非平凡大小（如 >200 字节）** → 该份完成，正文全程未进主 context。
-3. **缺失 / 空 / 过小** → (a) 若 subagent final message 里已附该份正文（写失败兜底），主 agent 直接 Write 落盘；(b) 若没附，用 `SendMessage` 让**同一个 subagent**（context 还在，无需重跑）把该 mat_id 的完整 markdown 回传，主 agent 落盘；(c) **向用户报告**：哪个 mat_id 写失败、subagent 贴的错误原文、你的兜底动作——供用户定位是否环境/权限/路径问题。
+3. **缺失 / 空 / 过小** → (a) 用 `SendMessage` 让**同一个 subagent**（context 还在，无需重跑）把该 mat_id 的完整 markdown 回传，主 agent 直接 Write 落盘（主 agent 的 Write 从不受此幻觉影响）；(b) 该 subagent 已结束/取不回 → 主 agent 自己重读该 mat 抽一份；(c) **向用户报告**：哪个 mat_id 未落盘、你的兜底动作——供用户定位路径/磁盘问题。
 4. 全部校验通过后再进 Step 3（标 processed）。
 
 > **为什么校验对着"应写清单"而非"声称清单"**：subagent 对自己写没写成功的自述历史上不可信（既可能幻觉失败、也可能幻觉成功）。主 agent 的 `ls` 是唯一地面真值，两个方向的幻觉都能抓到。这一层校验正是"可以安全地让 subagent 写"的前提。
@@ -516,7 +516,7 @@ sub-agent 在自己 context 跑 1-3 轮 search → 返回 final message
 
 **纪律**：
 - 一份资料 03 处理过程最多 dispatch 1 次 sub-agent（防"sub-agent 套娃"）
-- sub-agent prompt **必须**原文嵌入 _subagent_deep_search.md 的硬规约（防写文件幻觉）
+- sub-agent prompt **必须**原文嵌入 _subagent_deep_search.md 的硬规约（深挖只返回 hits、交主 agent 登记）
 
 ---
 
@@ -657,13 +657,14 @@ else:
 
 这是诊断不是 gate——脚本不会拒绝前进，但跳过相当于把 [[feedback_addresses_granularity]] 已经踩过的"父级 finding 假覆盖"问题留到 04/05。
 
-### 附录 A2-sub — subagent 写文件幻觉：现象、根因订正、当前对策
+### 附录 A2-sub — subagent 落盘对策
 
-**2026-05-22 现象**：4/4 测试里 subagent Write findings_{mat_id}.md 时总会幻觉出"Write 被拦截"错误（实际不存在 hook），且声称的"Bash heredoc 绕过"/".write_test 写入成功"也常是幻觉。当时结论 = 一刀切禁止 subagent 写、只回传正文由主 agent 落盘。
+**当前对策（见本文件 Step 2 dispatch 规约）**：**subagent 写优先 + 主 agent 对"应写清单"跑 `ls` 地面真值校验（不信自述）+ 缺失才 SendMessage 回取正文由主 agent 落盘**。收益 = findings 正文不再回传主 context，消除"回传+重写"双程（token 通道 B 最大一块）。
 
-**2026-07-14 根因订正（受控复测）**：那批测试的 prompt **本身就嵌了"你绝对不要用 Write/Edit/heredoc"的硬禁令**——是这条指令自我实现，模型被告知"不能写"就幻觉出与之一致的"被拦截"叙事。用**完全相同派发参数**（`general-purpose`、不传 model）、但 prompt 改为**明确要求写**（去掉禁令）后复测：Write 工具与 Bash heredoc **都真写成功、如实报告**，主 agent `ls`/`cat` 地面校验证实文件落盘、内容正确（marker-A7F3 / marker-B9K2）。→ **不是能力/参数/model/权限问题，是 prompt 反向暗示**。
-
-**当前对策（见本文件 Step 2 dispatch 规约）**：改为 **subagent 写优先 + 主 agent 对"应写清单"跑 `ls` 地面真值校验（不信自述）+ 缺失才回退（附正文兜底 / SendMessage 重取 / 报用户）**。收益 = findings 正文不再回传主 context，消除"回传+重写"双程（token 通道 B 最大一块）。关键不变量：**subagent 的成功/失败自述永远不可信，落盘与否以主 agent `ls` 为唯一地面真值**。详见 [[subagent-write-hallucination]]、[[prism-token-diagnosis]]。
+关键不变量与已证实的坑：
+1. **subagent 的成功/失败自述永远不可信**，落盘与否以主 agent `ls` 为唯一地面真值。
+2. **subagent 的 Write 在本环境本就正常工作**（2026-07-14 & 2026-07-19 干净 prompt 受控复测均成功落盘）；那句 `Subagents should return findings as text` **是 dispatch prompt 措辞诱发的幻觉，不是真实拦截**。触发源是 prompt 里任何"写权限/hook/失败兜底"话术——**连"本仓无 hook""不要怀疑写权限"这种否定式安抚都会反向植入**（2026-07-19：4 个 subagent 中 3 个照抄该串、1 个据此拒写只回文本，正因当时 mandated prompt 仍带这类措辞）。
+3. **故 mandated prompt 通篇不谈写权限、不给失败逃生口**；真出现缺失，主 agent 侧 `ls`+SendMessage 回补足矣（主 agent 自己的 Write 从不受影响）。背景见 [[subagent-write-hallucination]]、[[prism-token-diagnosis]]。
 
 ### 附录 A2.1A — 跨 variant 复用原理 + 段落级过滤为何不做
 

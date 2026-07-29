@@ -1,0 +1,147 @@
+slug: cn-hengli-hydraulic-601100
+variant: opus4.8
+entries:
+- searched_at: '2026-07-24T14:08:11.186454+00:00'
+  query: 恒立液压 2025年报 营业收入 净利润 毛利率 分红
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-07-24T14:08:11.204573+00:00'
+  query: 恒立液压 601100 2026年一季报 业绩 营收 净利润
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-24T14:08:11.214322+00:00'
+  query: 恒立液压 市盈率 PE 市值 估值 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-07-24T14:08:11.235601+00:00'
+  query: 恒立液压 行星滚柱丝杠 特斯拉 定点 进展 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-24T14:08:11.263871+00:00'
+  query: 恒立液压 线性执行器 丝杠 产能 量产 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-24T14:08:11.291748+00:00'
+  query: 恒立液压 精密传动 机器人 业务 营收 占比 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-24T14:08:11.326558+00:00'
+  query: 2026年 挖掘机 销量 国内 出口 工程机械 周期
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-24T14:08:11.337256+00:00'
+  query: 特斯拉 Optimus Gen3 量产 时间表 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-07-24T14:08:11.373456+00:00'
+  query: 恒立液压 定增 机器人 募投项目 线性驱动器 进展
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-24T14:08:11.413359+00:00'
+  query: 恒立液压 汪立平 机器人 精密传动 战略 表态 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-24T14:17:06.867080+00:00'
+  query: 恒立液压 浙商证券 华西证券 线性驱动器 丝杠 深度研报 目标价
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 1
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-24T14:17:06.908996+00:00'
+  query: 恒立液压 601100 盈利预测 一致预期 目标价 买入 卖方评级 2026
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-07-24T14:17:06.992402+00:00'
+  query: 汪立平 恒立液压 留置 立案 最新进展 结果 2026
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-24T14:17:07.039156+00:00'
+  query: 零部件龙头 第二曲线 机器人 概念 兑现 失败 复盘 汽车零部件
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-07-24T14:17:07.109072+00:00'
+  query: 恒立液压 丝杠 良率 精度 C3 C5 产能 磨床 业绩说明会 调研
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-24T14:17:07.182662+00:00'
+  query: 恒立液压 海外 生产基地 墨西哥 印度 德国 美国 产能
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-25T08:08:20.443087+00:00'
+  query: 恒立液压 601100 2026 归母净利润 一致预期 券商
+  triggered_by: 05-critic
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-25T08:08:20.550825+00:00'
+  query: 恒立液压 2026Q1 EBIT 汇兑 新工厂 归母 收入增速
+  triggered_by: 05-critic
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered

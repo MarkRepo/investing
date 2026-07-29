@@ -1,0 +1,184 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-hengli-hydraulic-601100
+created: 2026-07-24T14:40:00Z
+variant: opus4.8
+
+# L1/L2 已坍缩进 primer_scope（背景理解交给 00_primer）
+primer_scope: >
+  00_primer 该覆盖：液压油缸/泵阀马达在挖机中的作用与恒立护城河来源（打破 KYB/川崎垄断）；
+  行星滚柱丝杠(PRS)是什么、在人形机器人线性关节里为何是"最值钱环节"(~占Optimus成本30%)；
+  滚珠丝杠 vs PRS vs 谐波/RV减速器技术定位与门槛；PRS 量产核心壁垒（螺纹磨削精度/良率C3-C5/磨床卡脖子）；
+  恒立液压能力向丝杠迁移的逻辑与真实可复用度边界；主业周期属性（挖机/地产/基建/更新周期）；
+  财务质量为何在工程机械链里罕见（毛利41.6%/近零负债/高ROIC来源）；PRS赛道竞争格局与恒立相对位
+  （纯玩家双林/新剑/五洲新春/恒而达 vs 恒立"厚基本盘+期权"型）；特斯拉Optimus供应链("O链")结构与恒立
+  真实位置（送样 vs Tier1）；机器人期权对估值的双面性；实控人留置类治理事件对上市公司的传导渠道与可观测信号。
+
+learning_track:
+  # L3 争议层 → 喂决策链环④（多空分歧、共识可能错在哪）
+  l3_debates:
+    - question: 汪立平留置是止于个人层面，还是会传导至上市公司（资金占用/资产/战略连续性中断/机器人投入放缓/易主）？市场已反弹至市值1432亿是否消化过度或不足？
+      source_hint: cninfo/sse 601100 公告流 + 监察委官方通报 + 财经媒体后续跟踪
+      why: 反方观点1（最重·治理黑天鹅）；厚基本盘"稳态"假设的前提
+    - question: PE51.7x/PS12.2x 隐含多少机器人期权溢价？机器人仍处"送样"（对营收贡献<5%）而估值先付——若PRS慢兑现，溢价回吐幅度多大？
+      source_hint: 卖方分部估值/SOTP模型 + 纯玩家(双林/新剑)估值对照 + 历史PE-Band
+      why: 反方观点2（叙事已定价 vs 期权未证实）；环④EV核心分歧
+    - question: 2026Q1 营收+32.5%/归母净利+5.59% 的背离——是费用前置/丝杠扩产投入（一次性、可接受）还是毛利趋势下行/价格战（趋势性、伤基本盘）？FCF从2024的14亿降到2025的8.87亿的原因？
+      source_hint: 2025年报+2026Q1季报成本/费用/现金流拆分 + 卖方点评
+      why: 反方观点3（盈利质量裂缝）；基本盘成色的直接证据
+    - question: 液压精密制造know-how（冷拔管/珩磨/热处理）迁移到丝杠螺纹磨削的真实可复用度有多高？"再造一个恒立"是可兑现路径还是叙事？相对纯玩家弹性是否被百亿液压基数摊薄？
+      source_hint: 华创/华西/浙商深度研报 + 五洲新春vs恒立丝杠精度对比 + 产业链工艺对比
+      why: 反方观点4（弹性不如纯玩家）+ 护城河可迁移性争议；环①核心
+
+  # L4 狩猎层 → 逐条对齐 thesis Killer Question（找错误定价）
+  l4_hunting:
+    - question: 恒立PRS能否从"研发/送样/进体系传闻"升级为头部整机（特斯拉/国内）Tier1批量定点？市场目前隐含的定点概率多少？
+      addresses: [K1]
+      search_keywords: [恒立液压 丝杠 定点, 恒立 特斯拉 送样, 线性驱动器 量产 订单]
+      source_hint: 卖方深度(长江/浙商/华西) + 恒立业绩说明会/调研纪要 + 钛媒体O链
+    - question: 恒立精密丝杠产线良率/精度能否达 C3/C5 量产要求？磨床产能与工艺瓶颈进展？
+      addresses: [K2]
+      search_keywords: [恒立 丝杠 良率 精度, C3 C5 螺纹磨削, 恒立 磨床 产能]
+      source_hint: 五洲新春vs恒立精度对比 + 产业链调研 + 父arena丝杠工艺料(mat-0f858a/629891)
+    - question: 所配套整机线性关节是否维持 PRS 方案（vs 滚珠丝杠/其他）？路线若切换对恒立布局的影响？
+      addresses: [K3]
+      search_keywords: [Optimus 线性执行器 方案, 行星滚柱丝杠 滚珠丝杠, 人形机器人 关节 路线]
+      source_hint: 父arena Optimus Gen3料(mat-83db06/8162be) + 特斯拉供应链拆解
+    - question: 机器人/精密传动业务放量后毛利能否维持 >25%？量价假设的合理区间？
+      addresses: [K5]
+      search_keywords: [恒立 精密传动 毛利率, 丝杠 单价 成本, 人形PRS 市场 量价]
+      source_hint: 年报分部毛利 + 卖方盈利预测 + 父arena量价锚(mat-5289b8)
+    - question: 机器人/精密传动何时对营收利润形成实质贡献（占比>5%）？"再造一个恒立"的兑现节奏与里程碑？
+      addresses: [K6]
+      search_keywords: [恒立 线性驱动器 投产 进展, 恒立 第二增长曲线, 精密传动 营收 占比]
+      source_hint: 2021年15亿定增募投进展公告 + 卖方深度 + 汽车零部件第二曲线复盘
+    - question: 工程机械液压主业若周期反转下行，现金流能否持续支撑机器人投入而不拖累估值？当前挖机内销/出口分化的周期位置？
+      addresses: [K7]
+      search_keywords: [挖掘机 销量 出口 2026, 工程机械 周期 内需, 恒立 海外 产能 基地]
+      source_hint: 挖机月度销量+出口数据 + 恒立海外基地(中德美日印墨) + 年报现金流
+    - question: 2026Q1 营收+32.5%/净利+5.59% 的背离是一次性(费用前置/丝杠扩产)还是趋势性(毛利下行/价格战)？后续季度净利增速能否收敛回营收？
+      addresses: [K8]
+      search_keywords: [恒立液压 一季度 净利润 背离, 恒立 毛利率 下滑, 恒立 费用 研发投入]
+      source_hint: 2026Q1季报费用/毛利/现金流明细 + 卖方季报点评
+    - question: 汪立平留置的最终定性与对公司的实质影响（是否牵连上市公司资产/资金占用、战略连续性、机器人投入节奏、是否易主）？
+      addresses: [K9]
+      search_keywords: [汪立平 留置 结果 进展, 恒立液压 董事长 履职, 恒立 治理 公告]
+      source_hint: cninfo/sse 601100 公告流 + 监察委通报 + 后续复职/立案定性跟踪
+
+material_priority:
+  tier1:              # 必读，研究不可缺
+    - title: 恒立液压 2025年年度报告（分部/机器人业务拆分+成本结构+现金流+mgmt讨论）
+      type: annual-report
+      ticker: SSE_601100
+      source: cninfo 已下载 mat-32d079
+      addresses: [K5, K6, K7, K8]
+      status: done
+      covered_by: [mat-32d079]
+      info_tier: half_public
+      why: 基本盘成色+分部毛利+FCF背离查因的一手证据；喂环①③④、命门3
+    - title: 恒立液压 2026Q1季报（利润背离/毛利/费用明细/现金流）
+      type: quarterly-report
+      ticker: SSE_601100
+      source: cninfo 已下载 mat-13a734
+      addresses: [K8]
+      status: done
+      covered_by: [mat-13a734]
+      info_tier: half_public
+      why: K8利润背离的直接拆分；命门3盈利质量
+    - title: 卖方深度研报（长江/浙商/华西 线性驱动器+丝杠"再造恒立"+目标价一致预期）
+      type: sell-side-note
+      source: 新浪研报库 mat-bf5168 + 父arena华创 mat-4d239d
+      addresses: [K1, K5, K6]
+      status: done
+      covered_by: [mat-bf5168, mat-4d239d]
+      info_tier: public
+      why: consensus目标价/盈利预测(环④EV锚) + PRS兑现路径的卖方视角；命门1
+    - title: 汪立平留置公告流+官方定性+后续履职（K9治理事件传导）
+      type: data
+      source: stcn/21jingji/thepaper mat-d2ca7f/f72590/0afaf2/3fc0e0/69ff5d
+      addresses: [K9]
+      status: done
+      covered_by: [mat-d2ca7f, mat-f72590, mat-0afaf2]
+      info_tier: half_public
+      why: 命门2下行核心；留置24天后恢复正常履职的定性
+    - title: 2021年15亿线性驱动器定增募投进展+募集资金使用+结项公告
+      type: data
+      source: cninfo 已下载 mat-dc7a25(结项)/mat-d1ee54(募资使用)
+      addresses: [K1, K6]
+      status: done
+      covered_by: [mat-dc7a25, mat-d1ee54]
+      info_tier: half_public
+      why: mgmt资本配置史(环②) + PRS产能兑现节奏；命门1
+
+  tier2:              # 补充，有最好
+    - title: 恒立丝杠良率/精度/产能一手（C3-C5、五洲新春对比、磨床瓶颈）
+      type: industry-research
+      source: xueqiu mat-1b0ced + 新浪研报 mat-846243 + 父arena mat-0f858a/629891
+      addresses: [K1, K2]
+      status: done
+      covered_by: [mat-1b0ced, mat-846243]
+      info_tier: hard
+      why: K2良率壁垒；一手C3-C5良率仍需drilldown深挖
+    - title: 挖机销量/出口周期数据 + 工程机械景气
+      type: data
+      source: 21jingji/stcn mat-e85a91/mat-33909e
+      addresses: [K7]
+      status: done
+      covered_by: [mat-e85a91, mat-33909e]
+      info_tier: public
+      why: K7主业周期位置；下行保护的周期前提
+    - title: 恒立海外产能布局（中德美日印墨基地规模与用途）
+      type: data
+      source: 上海证券报 mat-e730d3 + 恒立官网 mat-8b6c68
+      addresses: [K7]
+      status: done
+      covered_by: [mat-e730d3, mat-8b6c68]
+      info_tier: public
+      why: 出口周期对冲+海外产能的战略连续性(与K9交叉)
+    - title: 汽车/零部件龙头"第二曲线"叙事成败镜鉴（historical-mirror）
+      type: industry-research
+      source: stcn/dfcfw mat-6d898e
+      addresses: [K6]
+      status: done
+      covered_by: [mat-6d898e]
+      info_tier: public
+      rings: [historical-mirror]
+      why: 环⑤历史镜鉴（成功=三花/汇川 vs 蹭概念回吐）
+    - title: 特斯拉Optimus供应链结构+PRS方案稳定性（O链、Gen3量产时点）
+      type: industry-research
+      source: 钛媒体 mat-326980 + 父arena mat-83db06/8162be
+      addresses: [K3]
+      status: done
+      covered_by: [mat-326980]
+      info_tier: public
+      why: K3路线稳定性 + 恒立在O链真实位置（送样vsTier1）
+
+  tier3:              # 可选（深度研究时）
+    - title: 恒立2025半年报（分部毛利中期验证）
+      type: semi-annual-report
+      ticker: SSE_601100
+      source: 新浪 mat-e20a3b（已有摘要）
+      addresses: [K5, K8]
+      status: done
+    - title: 见智研究/36kr 机器人赛道环节爆发潜力（行业面背景）
+      type: industry-research
+      source: mat-fb28d4 / mat-9f3a67
+      addresses: [K6]
+      status: done
+
+key_risks_to_monitor:
+  - 汪立平留置事件升级至上市公司层面（资金占用/资产牵连/易主）— K9
+  - PRS长期停留送样、被双林/新剑/五洲新春纯玩家抢占定点 — K1
+  - 后续季度净利增速持续跑输营收（毛利趋势下行确认）— K8
+  - 工程机械主业周期反转（挖机内销回落/出口受阻）— K7
+  - 再融资稀释（机器人投入若需大额定增）— K6/环②
+
+analogies_to_study:
+  - 案例: 三花智控 / 汇川技术（汽车/工控龙头成功切入机器人第二曲线）
+    类比逻辑: 制造know-how迁移+厚基本盘+期权兑现的成功范式
+    类比局限: 三花热管理/汇川电控与恒立液压→丝杠的工艺迁移距离不同
+  - 案例: A股"蹭机器人概念"回吐股（叙事定价后未兑现）
+    类比逻辑: PE先付机器人溢价、期权证伪后估值回归
+    类比局限: 恒立有真实液压主业+近零负债做下行垫，非纯蹭概念
+  - 案例: 实控人被查/留置对上市公司的历史冲击样本
+    类比逻辑: 治理黑天鹅传导渠道（战略中断/资金占用/易主）
+    类比局限: 每案牵连程度差异大，需看官方定性是否涉公司

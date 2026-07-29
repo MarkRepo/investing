@@ -129,3 +129,27 @@ entries:
   n_mid: 2
   n_low: 0
   disposition: registered
+- searched_at: '2026-07-16T01:20:47.740682+00:00'
+  query: '[daily-monitor] signpost:资本动作(回购/减持)｜bear:王宁/高管进一步减持'
+  triggered_by: 06-daily-monitor
+  n_results: 2
+  n_high: 1
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-16T01:20:47.805106+00:00'
+  query: '[daily-monitor] signpost:季度海外增速与存量店表现｜bear:海外持续减速+存量店转负'
+  triggered_by: 06-daily-monitor
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-16T01:20:47.940776+00:00'
+  query: '[daily-monitor] signpost:得物等二手价走势｜bear:二手价续跌+黄牛持续抛售'
+  triggered_by: 06-daily-monitor
+  n_results: 4
+  n_high: 1
+  n_mid: 0
+  n_low: 3
+  disposition: registered

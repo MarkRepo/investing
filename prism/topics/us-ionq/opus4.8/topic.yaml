@@ -1,0 +1,397 @@
+slug: us-ionq
+display_name: IonQ (IONQ, NYSE)
+type: company
+created: '2026-07-27T12:17:14.334552+00:00'
+status: active
+stage: done
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: 'IonQ (US_IONQ, deep): 赌买还是卖——离子阱路线能否在估值透支的容错/逻辑比特里程碑上兑现？核心命门=技术路线图兑现速度
+    vs 估值隐含预期，以及收入从政府/科研合同向商业化跃迁的可信度；先验偏谨慎/看空高估值，目标价区间待 prescan 校准后定'
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_IONQ
+  market: US
+  short_name: IonQ
+  search_terms:
+  - IonQ trapped
+  - logical qubits
+  - quantum revenue
+  - IONQ valuation
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-27T13:42:01.601542+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01fcf8
+    - mat-103178
+    - mat-103695
+    - mat-133850
+    - mat-149509
+    - mat-3ee2be
+    - mat-432e48
+    - mat-54eee7
+    - mat-784690
+    - mat-8859cd
+    - mat-955423
+    - mat-ab00d2
+    - mat-adfa6c
+    - mat-c8cda9
+    - mat-c91035
+    - mat-d4385c
+    - mat-d94e7a
+    - mat-db3057
+    - mat-ee7d46
+    - mat-f50127
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-07-28T07:05:45.065044+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-e9c3f9
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-27T13:48:37.640502+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01fcf8
+    - mat-103695
+    - mat-54eee7
+    - mat-8859cd
+    - mat-d4385c
+    - mat-ee7d46
+    last_error: null
+  08_living_feed:
+    version: 3
+    last_updated: '2026-07-28T07:05:45.096487+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 us-ionq」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：命门补料后复评：FY2025 10-K(mat-e9c3f9)量化坐实K1——并购占营收~39%(部分年度)/有机~$79M/客户集中3家=53%/成本+276%>营收+202%。承重充分性由单线承重升为「够」，看空方向被一手件强化，无残留研究缺口(余下K3/K4为未发生的产业事件)。verdict升为approve。
+user_todos:
+- task: IonQ FY2025 10-K + Q1 2026 10-Q（营收分部/收入确认/客户集中度/有机 vs 并购拆分）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: SEC EDGAR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: 'SEC efts: FY2024 10-K(2025-02-26)+FY2023/21+Q1 2026 10-Q 已入库；FY2025
+    10-K 待 data.sec.gov 恢复由 01 重试'
+  last_fetch_note: 'SEC efts: FY2024 10-K(2025-02-26)+FY2023/21+Q1 2026 10-Q 已入库；FY2025
+    10-K 待 data.sec.gov 恢复由 01 重试'
+- task: IonQ 2025 并购文件 8-K/proxy（Oxford Ionics/ID Quantique/Vector Atomic 对价、并表、商誉、发股稀释）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: SEC EDGAR — mgmt-capital-alloc
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: 经 sidecar 取 Oxford EQC/Quantinuum/de Masi 并购语境；IonQ 8-K 交易条款原件待 data.sec.gov(SSL)由
+    01 重试
+  last_fetch_note: 经 sidecar 取 Oxford EQC/Quantinuum/de Masi 并购语境；IonQ 8-K 交易条款原件待
+    data.sec.gov(SSL)由 01 重试
+- task: IonQ 分析师一致预期 + 目标价分布 + 评级（consensus）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: MarketBeat/Benzinga/WSJ/TipRanks
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: quote/forecast 页入库；干净的目标价分布数字待 02 深读 marketbeat/tipranks
+  last_fetch_note: quote/forecast 页入库；干净的目标价分布数字待 02 深读 marketbeat/tipranks
+- task: IonQ 技术路线图 + 逻辑比特/纠错白皮书 + Oxford EQC 论文；vs Quantinuum/Google 里程碑对标
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: ionq.com/arxiv/竞品官网
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: Oxford EQC 99.99% 官方+行业源 + IonQ 加速路线图入库(K3)
+  last_fetch_note: Oxford EQC 99.99% 官方+行业源 + IonQ 加速路线图入库(K3)
+- task: 卖方深度研报 ×3（营收成色/目标价/多空观点）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K4
+  source_hint: 卖方公众号/transcript/tavily
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: Benzinga/Fool 分析件入库(81%增长指引)；正式卖方 deep 待 02
+  last_fetch_note: Benzinga/Fool 分析件入库(81%增长指引)；正式卖方 deep 待 02
+- task: Quantinuum IPO S-1/招股材料 + 估值与技术对标
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: SEC EDGAR/media（未公开则 empty）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: Honeywell $10B pre-money + wiki + QNT 代码入库；保密 S-1 原件未公开
+  last_fetch_note: Honeywell $10B pre-money + wiki + QNT 代码入库；保密 S-1 原件未公开
+- task: de Masi 并购史/资本配置记录 + 内部人 Form 4 + 股权激励稀释（mgmt-capital-alloc）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: SEC Form 4/proxy
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: Glu/dMY/S-1 履历入库(K5)；内部人 Form 4 待 data.sec.gov 由 01 重试
+  last_fetch_note: Glu/dMY/S-1 履历入库(K5)；内部人 Form 4 待 data.sec.gov 由 01 重试
+- task: IonQ 现金流/稀释序列（shares outstanding、ATM、经营性现金消耗）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: macrotrends/10-Q
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: macrotrends 股本序列(prescan)+10-Q 已入库
+  last_fetch_note: macrotrends 股本序列(prescan)+10-Q 已入库
+- task: 历史镜鉴：科技主题股/SPAC 高倍 P/S 估值回归案例（historical-mirror）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  - K6
+  source_hint: 训练知识+web
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: Fool/Nasdaq "量子股泡沫" 镜鉴入库(K4/K6)
+  last_fetch_note: Fool/Nasdaq "量子股泡沫" 镜鉴入库(K4/K6)
+- task: 量子板块情绪/资金流 + 催化剂日历（板块 ETF、竞品里程碑、政府合同）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: web/ETF flows
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: ETF 资金流 + Trump $2B 量子计划催化剂入库(K6)
+  last_fetch_note: ETF 资金流 + Trump $2B 量子计划催化剂入库(K6)
+- task: 资料提取完成:23 份 findings 落盘(SEC 10-K/10-Q + 16 web研究)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成(3 份 output),等待评审或监控
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 重取 FY2025 10-K 财报附注 F 页：收入 disaggregation（system sales / QCaaS / 政府 / 卫星精确拆分）+
+    前 N 大客户占比 + 硬件一次性交付季 vs QCaaS 复现毛利的拆分 —— 消解命门 K1「有机成色」量化缺口 + 反方「毛利 lumpy 假象」质疑（属重取已在库
+    10-K 全文，非新 web 搜索）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-e9c3f9
+  coverage_note: FY2025 10-K 全文重抓成功(SSL已恢复)。命门量化坐实：并购占营收~39%(部分年度)→有机~$79M；客户集中度3家=53%；硬件53.8%；成本增速276%>营收202%。findings_mat-e9c3f9。
+- task: Quantinuum IPO 定价落地后取最终估值/P.S → 重算 K4 离子阱板块估值锚（模型 F 的 Base 是否 >$35）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 补抽 IonQ 10-K F 页收入 disaggregation：system sales/QCaaS/政府/卫星精确拆分 + 前 N 大客户占比
+    + 有机 vs 并购并表拆分
+  rationale: chain-critic 指出这是唯一能把整条看空链承重的"有机成色"从定性估算(-90M,区间1.8倍)升级为定量实测的一环——直接钉死
+    ④营收delta / 模型A/B base / ③-1 支持度，收紧 EV 分布负偏程度。是现成一手件、只是未取，优先级高于外部事件。
+  source: critic_weak_k
+  related:
+  - K1
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-27T13:52:52.931931+00:00'
+- question: Quantinuum IPO 最终定价与技术对标落地后，重算离子阱板块估值锚（抬锚 vs 压制）
+  rationale: K4 估值对标的关键外部变量；>B 抬高板块锚利多、相近/更低 P/S+技术更强则压制 IONQ。
+  source: critic_weak_k
+  related:
+  - K4
+  priority: P1
+  status: open
+  suggested_at: '2026-07-27T13:52:52.931931+00:00'
+- question: IonQ 是否交付经独立/同行评审的数十逻辑比特 below-threshold 纠错 demo（K3 技术兑现）
+  rationale: 终局证据中"技术兑现"维当前为 data-missing（只有物理比特单指标 99.99%）；逻辑比特实测是 kill 空头的核心触发。
+  source: critic_weak_k
+  related:
+  - K3
+  priority: P1
+  status: open
+  suggested_at: '2026-07-27T13:52:52.931931+00:00'
+- question: IonQ 剔除并购并表/一次性硬件后的真实有机经常性商业营收基数到底是多少（-90M 估值区间收窄到点值）？
+  rationale: K1 命门单线承重：有机成色定性坐实、非精确量化，缺 10-K F页 disaggregation
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-07-28T02:56:19.427662+00:00'
+- question: Q1 2026 毛利 23.8% 中，硬件一次性交付季的一次性拖累占多少 vs QCaaS 复现毛利实际水平？
+  rationale: 反方质疑4「毛利 lumpy 假象」case 应答不足，需拆分才能判恶化是否可逆
+  source: critic_weak_k
+  related:
+  - K3
+  priority: P1
+  status: open
+  suggested_at: '2026-07-28T02:56:19.427662+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: 命门补料后复评：FY2025 10-K(mat-e9c3f9)量化坐实K1——并购占营收~39%(部分年度)/有机~$79M/客户集中3家=53%/成本+276%>营收+202%。承重充分性由单线承重升为「够」，看空方向被一手件强化，无残留研究缺口(余下K3/K4为未发生的产业事件)。verdict升为approve。
+  at: '2026-07-28T07:05:45.077152+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-27T13:55:08.427175+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-27T12:28:14.800510+00:00'
+    summary: 命门1=营收真实经济性(低,剥离并购/一次性/政府后的可持续商业算力付费); 命门2=离子阱扩展性物理天花板(低); 命门3=估值锚重定价(中,Quantinuum
+      $20B IPO对标+主题资金退潮)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-27T13:55:08.427197+00:00'
+    summary: 命门1(营收真实经济性)低→高看空定调(一手坐实);命门2(离子阱扩展/技术兑现)低·未证(99.99%外购/无逻辑比特);命门3(估值锚重定价)中·已启动(股价腰斩但现价仍完全定价主题溢价)
+    convergence_status: converged
+    changelog: 命门1置信度低→高(mat-01fcf8管理层自认并购+mat-54eee7硬件55%/round-trip坐实);命门2维持低未证;命门3重定价已启动(实时P/S
+      303x→68.8x);无新命门,K5留资本配置轴不单列(防震荡);primer新增1条(GAAP盈利悖论)已落地。delta均属置信度更新/本轮已覆盖,不需第二收料趟;gap双轴绿+critic放行→converged。对照全历史无震荡。
+thesis:
+  current_version: 1
+  last_updated: '2026-07-27T13:55:08.386249+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-27T12:26:48.244806+00:00'
+    summary: 当前价(市值~$11-13B)看空/回避，强度3/10。营收100%+增长+芯片级99.99%保真度+并购帝国叙事漂亮，但估值(forward
+      P/S~40-48x)透支科学不确定性；核心命门=增长有机性与商业化真实性(疑似并购注水)+估值对标Quantinuum $20B IPO。带敬意的看空、非裸空。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-27T13:55:08.386402+00:00'
+    summary: 现价$34.52/市值$12.84B 回避,强度3/10,信心中。基本面看空(增长质量差/巨额稀释/商业化未证)被SEC一手件坐实,但股价已从峰值腰斩、P/S从303x塌到68.8x,送分做空已过;现价坐在基本面公允$10-15与主题溢价$30-40中间,EV≈0且负偏。带敬意看空、非裸空。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-27T12:28:47.832437+00:00'
+  exited_at: '2026-07-27T12:40:01.203009+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-27T12:40:01.203009+00:00'
+  exited_at: '2026-07-27T12:51:29.485509+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-27T12:51:29.485509+00:00'
+  exited_at: '2026-07-27T13:55:23.098853+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-27T13:55:23.098853+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-27T12:40:01.188542+00:00'
+  status: partial
+  triggered_by: 01-prescan
+  hit_rate: 0.875
+  queries_run: 8
+  queries_with_hits: 7
+  failure_reason: prescan 校准率 88%（7/8，含 2 条已覆盖跳过），低于满分但高于失败阈值 50%

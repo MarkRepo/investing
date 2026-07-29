@@ -1,0 +1,185 @@
+slug: us-nvidia
+variant: opus4.8
+entries:
+- searched_at: '2026-07-23T16:49:54.748764+00:00'
+  query: NVIDIA FY2026 quarterly revenue data center results 2025 earnings
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:54.769006+00:00'
+  query: NVIDIA gross margin guidance Blackwell 2025 2026 latest quarter
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:54.787202+00:00'
+  query: NVIDIA Blackwell GB200 GB300 ramp production shipments 2025 status
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:54.835944+00:00'
+  query: NVIDIA stock price market cap valuation forward PE 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:54.880818+00:00'
+  query: NVIDIA H20 China export restrictions license 2025 charge writedown resumption
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:54.955260+00:00'
+  query: hyperscaler AI capex guidance 2025 2026 Microsoft Meta Amazon Google total
+    spending
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:55.023611+00:00'
+  query: AMD MI350 MI400 vs NVIDIA AI GPU market share 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:55.122821+00:00'
+  query: Broadcom custom ASIC AI revenue 2025 growth TPU Trainium hyperscaler market
+    share
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:55.209128+00:00'
+  query: NVIDIA Rubin architecture launch timeline 2026 Vera CPU next generation
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:55.272089+00:00'
+  query: TSMC CoWoS HBM supply capacity 2025 2026 AI chip bottleneck
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:55.375813+00:00'
+  query: NVIDIA Blackwell demand exceeds supply order backlog visibility 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:49:55.485130+00:00'
+  query: NVIDIA China data center revenue 2025 export control impact H20 percentage
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:55:35.252077+00:00'
+  query: NVIDIA antitrust investigation regulatory probe 2025 2026 EU China DOJ
+  triggered_by: 00-prescan
+  n_results: 3
+  n_high: 2
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-23T16:55:35.255395+00:00'
+  query: 00-prescan 全量（baseline 12 query + 覆盖槽监管 1 query）
+  triggered_by: 00-prescan
+  n_results: 71
+  n_high: 11
+  n_mid: 30
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:07:32.274140+00:00'
+  query: Microsoft Amazon Google Meta 2026 2027 AI capex guidance earnings call outlook
+    increase
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:07:32.483116+00:00'
+  query: NVIDIA analyst consensus estimates FY2027 FY2028 revenue EPS price target
+    Wall Street
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:07:32.651886+00:00'
+  query: NVIDIA bull bear thesis deep dive analyst report 2026 valuation
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:07:32.827735+00:00'
+  query: custom AI ASIC TPU Trainium Maia hyperscaler self-designed chip volume 2026
+    vs NVIDIA GPU inference
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:07:33.005044+00:00'
+  query: semiconductor cycle peak Cisco 2000 bubble NVIDIA valuation historical parallel
+    lesson
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:07:33.194821+00:00'
+  query: NVIDIA share buyback capital allocation history dividend shareholder return
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:10:09.375501+00:00'
+  query: AMD MI400 MI450 roadmap 2026 2027 vs NVIDIA Rubin market share
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-23T17:10:36.322047+00:00'
+  query: AMD MI400 MI450 roadmap 2026 2027 vs NVIDIA Rubin market share
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered

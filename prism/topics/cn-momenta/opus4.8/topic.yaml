@@ -112,6 +112,13 @@ outputs_state:
     - mat-de78d1
     - mat-f997d9
     last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-07-16T01:20:48.023809+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
 parent_materials: []
 next_actions:
 - 估值锚=实时peer(2026-06-30,汇率归一):地平线13.7x/Mobileye3.5x/WeRide17.6x,Momenta25.0x;EV-6%,现价不参与,等回调进accumulate
@@ -309,8 +316,8 @@ thesis:
   - version: 1
     stage_set_at: 04-post-synthesis
     set_at: '2026-06-30T09:54:21.116266+00:00'
-    summary: 中性偏多质地(6/10)但招股价偏满:对标实时peer(6/30)地平线13.7x,Momenta
-      25.0x溢价~83%;EV约-6%。现价(295.6,above_hold)不参与IPO,等回调进accumulate 150-200或上市后财报验证(毛利守65%+客户无切换)再启动试探。Base中枢170-230。
+    summary: 中性偏多质地(6/10)但招股价偏满:对标实时peer(6/30)地平线13.7x,Momenta 25.0x溢价~83%;EV约-6%。现价(295.6,above_hold)不参与IPO,等回调进accumulate
+      150-200或上市后财报验证(毛利守65%+客户无切换)再启动试探。Base中枢170-230。
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-06-30T08:16:57.652769+00:00'
@@ -348,3 +355,9 @@ stage_history:
     - consensus
     autofetch_debt: 0
     empty_pending_decision: 0
+pending_thesis_review:
+  since: '2026-07-16T01:20:48.034859+00:00'
+  reason: 依赖的『高位企稳·10Y4.53%·10Y实际利率2.2%高位(压高久期成长估值)』已变『高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平(2s10s+30bp)』(regime
+    v2→v3)
+  proposal_id: ed357d8d0574
+  locator: rates_us

@@ -1,0 +1,1305 @@
+slug: us-spacex-spcx
+variant: opus4.8
+updated: '2026-07-18T00:44:15.587258+00:00'
+materials:
+- id: mat-06c603
+  filename: 2026-07-15_space-exploration-technologies---424-b-4.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305450+00:00'
+  processed: true
+  notes: query='SpaceX SPCX SEC 424B4 final prospectus IPO price shares June 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: SpaceX 424b4 2025 connectivity segment revenue operating income AI segment
+      capex 2026 Q1
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-15T02:25:13.367422+00:00'
+    stale_at: '2026-08-14T02:25:13.367422+00:00'
+    expire_at: '2026-10-13T02:25:13.367422+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - SpaceX SPCX SEC 424B4 final prospectus IPO price shares June 2026
+- id: mat-c44a07
+  filename: spaceX_424b4_2026-06-11_excerpt.md
+  source_type: prospectus
+  added: '2026-07-17T13:45:03.305621+00:00'
+  processed: true
+  notes: SEC 424(b)(4)一手摘录；后续应下载并切分完整 filing | SEC 424(b)(4)一手摘录；workflow02 retag
+    到 thesis K#
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  rings:
+  - biz-moat-unit-econ
+  - consensus
+  - mgmt-capital-alloc
+  - multi-year-financials
+- id: mat-2956fb
+  filename: 2026-07-15_assessing-spacex-finances-addressable-market-and-t.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305625+00:00'
+  processed: true
+  notes: query='SpaceX 424b4 2025 connectivity segment revenue operating income AI
+    segment capex 2026 Q1' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: SpaceX 424b4 2025 connectivity segment revenue operating income AI segment
+      capex 2026 Q1
+    url: https://www.satellitetoday.com/finance/2026/06/03/assessing-spacex-finances-addressable-market-and-the-ai-pitch-ahead-of-ipo/
+    domain: satellitetoday.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:25:31.068090+00:00'
+    stale_at: '2026-08-14T02:25:31.068090+00:00'
+    expire_at: '2026-10-13T02:25:31.068090+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8cb31e
+  filename: 2026-07-15_spacex-aims-to-be-the-largest-ipo-ever-but-it-just.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305626+00:00'
+  processed: true
+  notes: query='SpaceX 424b4 2025 connectivity segment revenue operating income AI
+    segment capex 2026 Q1' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: SpaceX 424b4 2025 connectivity segment revenue operating income AI segment
+      capex 2026 Q1
+    url: https://finance.yahoo.com/markets/stocks/articles/spacex-aims-largest-ipo-ever-154919249.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:25:31.097970+00:00'
+    stale_at: '2026-08-14T02:25:31.097970+00:00'
+    expire_at: '2026-10-13T02:25:31.097970+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-caf1ba
+  filename: 2026-07-15_starlink-surpasses-2-million-subscribers---via-sat.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305628+00:00'
+  processed: true
+  notes: query='Starlink 2025 subscribers ARPU terminal subsidy satellite replacement
+    capex SpaceX S-1' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Starlink 2025 subscribers ARPU terminal subsidy satellite replacement capex
+      SpaceX S-1
+    url: https://www.satellitetoday.com/broadband/2023/09/25/starlink-surpasses-2-million-subscribers
+    domain: satellitetoday.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:27:41.932092+00:00'
+    stale_at: '2026-08-14T02:27:41.932092+00:00'
+    expire_at: '2026-10-13T02:27:41.932092+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ebea47
+  filename: 2026-07-15_spacex-may-sell-starlink-satellite-internet-dishes.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305630+00:00'
+  processed: true
+  notes: query='Starlink 2025 subscribers ARPU terminal subsidy satellite replacement
+    capex SpaceX S-1' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Starlink 2025 subscribers ARPU terminal subsidy satellite replacement capex
+      SpaceX S-1
+    url: https://archive.is/o/TS00n/https://www.businessinsider.com/spacex-starlink-satellite-dish-internet-user-terminal-cost-phased-array-2020-11
+    domain: archive.is
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:27:41.964100+00:00'
+    stale_at: '2026-08-14T02:27:41.964100+00:00'
+    expire_at: '2026-10-13T02:27:41.964100+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-489aef
+  filename: 2026-07-15_spacex-calls-fcc-rejection-of-886m-starlink-subsid.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305631+00:00'
+  processed: true
+  notes: query='Starlink 2025 subscribers ARPU terminal subsidy satellite replacement
+    capex SpaceX S-1' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Starlink 2025 subscribers ARPU terminal subsidy satellite replacement capex
+      SpaceX S-1
+    url: https://www.businessinsider.com/spacex-fcc-rejection-starlink-internet-subsidy-leaves-americans-stranded-filing-2022-9
+    domain: businessinsider.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:27:41.996915+00:00'
+    stale_at: '2026-08-14T02:27:41.996915+00:00'
+    expire_at: '2026-10-13T02:27:41.996915+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-bf74fd
+  filename: 2026-07-15_spacex-launches-multiple-satellites-for-the-nro-fr.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305632+00:00'
+  processed: true
+  notes: query='SpaceX NASA Space Force NRO commercial launch backlog customer concentration
+    2025 S-1' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: SpaceX NASA Space Force NRO commercial launch backlog customer concentration
+      2025 S-1
+    url: https://spaceflightnow.com/2024/06/29/live-coverage-spacex-to-launch-multiple-satellites-for-the-nro-from-vandenberg-space-force-base
+    domain: spaceflightnow.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:27:42.035067+00:00'
+    stale_at: '2026-08-14T02:27:42.035067+00:00'
+    expire_at: '2026-10-13T02:27:42.035067+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d89b22
+  filename: 2026-07-15_nro-space-force-launch-nrol-48-mission-on-spacex-r.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305633+00:00'
+  processed: true
+  notes: query='SpaceX NASA Space Force NRO commercial launch backlog customer concentration
+    2025 S-1' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: SpaceX NASA Space Force NRO commercial launch backlog customer concentration
+      2025 S-1
+    url: https://www.executivegov.com/articles/nro-space-force-nrol-48-mission-spacex
+    domain: executivegov.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:27:42.070134+00:00'
+    stale_at: '2026-08-14T02:27:42.070134+00:00'
+    expire_at: '2026-10-13T02:27:42.070134+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6dda4b
+  filename: 2026-07-15_oneweb-from-bankruptcy-files-48-000-satellite-cons.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305634+00:00'
+  processed: true
+  notes: query='Iridium Globalstar OneWeb bankruptcy capital intensity historical
+    mirror satellite network' | 待用户确认 | OneWeb bankruptcy mirror
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Iridium Globalstar OneWeb bankruptcy capital intensity historical mirror
+      satellite network
+    url: https://www.spaceintelreport.com/oneweb-from-bankruptcy-files-48000-satellite-constellation-with-u-s-regulators
+    domain: spaceintelreport.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:27:42.110536+00:00'
+    stale_at: '2026-08-14T02:27:42.110536+00:00'
+    expire_at: '2026-10-13T02:27:42.110536+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-f05983
+  filename: 2026-07-15_globalstar-troubled-after-iridium-bankruptcy.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305635+00:00'
+  processed: true
+  notes: query='Iridium Globalstar OneWeb bankruptcy capital intensity historical
+    mirror satellite network' | 待用户确认 | Iridium/Globalstar bankruptcy mirror
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Iridium Globalstar OneWeb bankruptcy capital intensity historical mirror
+      satellite network
+    url: https://www.forbes.com/2000/03/22/mu2.html
+    domain: forbes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:27:42.147904+00:00'
+    stale_at: '2026-08-14T02:27:42.147904+00:00'
+    expire_at: '2026-10-13T02:27:42.147904+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-870816
+  filename: 2026-07-15_mda-rocket-lab-s-17-satellite-globalstar-contract-.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305636+00:00'
+  processed: true
+  notes: query='Iridium Globalstar OneWeb bankruptcy capital intensity historical
+    mirror satellite network' | 待用户确认 | Satellite replacement/capital-cycle mirror
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Iridium Globalstar OneWeb bankruptcy capital intensity historical mirror
+      satellite network
+    url: https://www.spaceintelreport.com?p=108427
+    domain: spaceintelreport.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T02:27:42.186810+00:00'
+    stale_at: '2026-08-14T02:27:42.186810+00:00'
+    expire_at: '2026-10-13T02:27:42.186810+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-e4ae12
+  filename: 2026-07-15_spacex-starlink-is-ahead-of-competitors-but-growth.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305638+00:00'
+  processed: true
+  notes: query='Starlink regional subscribers churn ARPU direct to cell carrier revenue
+    share 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Starlink regional subscribers churn ARPU direct to cell carrier revenue
+      share 2026
+    url: https://www.cnbc.com/2026/06/11/spacex-starlink-growth-getting-harder-ahead-of-ipo.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-15T02:28:00.663741+00:00'
+    stale_at: '2026-08-14T02:28:00.663741+00:00'
+    expire_at: '2026-10-13T02:28:00.663741+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e35913
+  filename: 2026-07-15_starlink-revenue-per-user-fell-18-as-customers-qua.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305639+00:00'
+  processed: true
+  notes: query='Starlink regional subscribers churn ARPU direct to cell carrier revenue
+    share 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: Starlink regional subscribers churn ARPU direct to cell carrier revenue
+      share 2026
+    url: https://www.theinformation.com/articles/spacexs-starlink-revenue-per-user-fell-18-customers-quadrupled
+    domain: theinformation.com
+    domain_tier: whitelist
+    searched_at: '2026-07-15T02:28:00.707099+00:00'
+    stale_at: '2026-08-14T02:28:00.707099+00:00'
+    expire_at: '2026-10-13T02:28:00.707099+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-99bba4
+  filename: 2026-07-15_to-trillion-s-and-beyond-a-spacex-ipo-odyssey.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305640+00:00'
+  processed: true
+  notes: query='建立卫星宽带 电信基础设施 发射 AI 全球 peer 估值矩阵' | 待用户确认 | workflow01 roadmap material
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 建立卫星宽带 电信基础设施 发射 AI 全球 peer 估值矩阵
+    url: https://aswathdamodaran.substack.com/p/to-trillions-and-beyond-a-spacex
+    domain: aswathdamodaran.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T03:21:05.329039+00:00'
+    stale_at: '2026-08-14T03:21:05.329039+00:00'
+    expire_at: '2026-10-13T03:21:05.329039+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - consensus
+  - valuation-percentile
+- id: mat-5bf511
+  filename: 2026-07-15_spacex-ipo-can-starlink-support-its-valuation.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305641+00:00'
+  processed: true
+  notes: query='建立卫星宽带 电信基础设施 发射 AI 全球 peer 估值矩阵' | 待用户确认 | workflow01 roadmap material
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 建立卫星宽带 电信基础设施 发射 AI 全球 peer 估值矩阵
+    url: https://www.thirdbridge.com/en-us/about-us/media/perspectives/spacex-ipo-starlink
+    domain: thirdbridge.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T03:21:05.374131+00:00'
+    stale_at: '2026-08-14T03:21:05.374131+00:00'
+    expire_at: '2026-10-13T03:21:05.374131+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - consensus
+  - valuation-percentile
+- id: mat-1eccb5
+  filename: 2026-07-15_spacex-valuation-full-excel-file-tutorial-and-comm.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305642+00:00'
+  processed: true
+  notes: query='建立卫星宽带 电信基础设施 发射 AI 全球 peer 估值矩阵' | 待用户确认 | workflow01 roadmap material
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 建立卫星宽带 电信基础设施 发射 AI 全球 peer 估值矩阵
+    url: https://mergersandinquisitions.com/spacex-valuation/
+    domain: mergersandinquisitions.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T03:21:05.419827+00:00'
+    stale_at: '2026-08-14T03:21:05.419827+00:00'
+    expire_at: '2026-10-13T03:21:05.419827+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - valuation-percentile
+- id: mat-954b27
+  filename: 2026-07-15_dual-class-stock.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305643+00:00'
+  processed: true
+  notes: query='双层股权 受控公司 创始人 关联交易 失败案例' | 待用户确认 | workflow01 roadmap material
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 双层股权 受控公司 创始人 关联交易 失败案例
+    url: https://www.ecgi.global/sites/default/files/working_papers/documents/dualclassstock.pdf
+    domain: ecgi.global
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T03:21:35.242254+00:00'
+    stale_at: '2026-08-14T03:21:35.242254+00:00'
+    expire_at: '2026-10-13T03:21:35.242254+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - historical-mirror
+  - mgmt-capital-alloc
+- id: mat-c1b19b
+  filename: 2026-07-15_dual-class-shares-governance-risks-and-company-per.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305644+00:00'
+  processed: true
+  notes: query='双层股权 受控公司 创始人 关联交易 失败案例' | 待用户确认 | workflow01 roadmap material
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 双层股权 受控公司 创始人 关联交易 失败案例
+    url: https://corpgov.law.harvard.edu/2019/06/28/dual-class-shares-governance-risks-and-company-performance/
+    domain: corpgov.law.harvard.edu
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T03:21:35.290381+00:00'
+    stale_at: '2026-08-14T03:21:35.290381+00:00'
+    expire_at: '2026-10-13T03:21:35.290381+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - historical-mirror
+  - mgmt-capital-alloc
+- id: mat-d242dc
+  filename: 2026-07-15_the-untenable-case-for-perpetual-dual-class-stock.md
+  source_type: web-search
+  added: '2026-07-17T13:45:03.305645+00:00'
+  processed: true
+  notes: query='双层股权 受控公司 创始人 关联交易 失败案例' | 待用户确认 | workflow01 roadmap material
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 双层股权 受控公司 创始人 关联交易 失败案例
+    url: https://www.virginialawreview.org/wp-content/uploads/2020/12/Bebchuk%20%26%20Kastiel_Book.pdf
+    domain: virginialawreview.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T03:21:35.338669+00:00'
+    stale_at: '2026-08-14T03:21:35.338669+00:00'
+    expire_at: '2026-10-13T03:21:35.338669+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - historical-mirror
+  - mgmt-capital-alloc
+- id: mat-e94b53
+  filename: 2026-07-17_spacex-ipo-market-cap-tops-2-trillion-after-shares.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.297144+00:00'
+  processed: true
+  notes: query='SpaceX SPCX IPO price shares raised market cap valuation July 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: SpaceX SPCX IPO price shares raised market cap valuation July 2026
+    url: https://www.cnbc.com/amp/2026/06/12/spacex-stock-jumps-2-trillion.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T13:50:10.287337+00:00'
+    stale_at: '2026-08-16T13:50:10.287337+00:00'
+    expire_at: '2026-10-15T13:50:10.287337+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4a862a
+  filename: 2026-07-17_spacex-ipo-spcx-debuts-at-150-live-updates.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.322640+00:00'
+  processed: true
+  notes: query='SpaceX SPCX IPO price shares raised market cap valuation July 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: SpaceX SPCX IPO price shares raised market cap valuation July 2026
+    url: https://www.forbes.com/sites/tylerroush/2026/06/12/spacex-opens-at-150-surging-17-after-largest-ipo-ever-live-updates
+    domain: forbes.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T13:50:10.313258+00:00'
+    stale_at: '2026-08-16T13:50:10.313258+00:00'
+    expire_at: '2026-10-15T13:50:10.313258+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-42a399
+  filename: 2026-07-17_spacex-spcx-raises-75-billion-in-largest-ever-ipo.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.349045+00:00'
+  processed: true
+  notes: query='SpaceX SPCX IPO price shares raised market cap valuation July 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SpaceX SPCX IPO price shares raised market cap valuation July 2026
+    url: https://www.coindesk.com/markets/2026/06/11/spacex-prices-shares-at-usd135-in-largest-ipo-ever
+    domain: coindesk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T13:50:10.339167+00:00'
+    stale_at: '2026-08-16T13:50:10.339167+00:00'
+    expire_at: '2026-10-15T13:50:10.339167+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1cfb1b
+  filename: 2026-07-17_spacex-clears-starship-mishap-probe-before-next-te.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.377001+00:00'
+  processed: true
+  notes: query='SpaceX Starship flight test FAA mishap license milestone 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: SpaceX Starship flight test FAA mishap license milestone 2026
+    url: https://www.reuters.com/business/media-telecom/faa-closes-starship-review-ahead-spacexs-next-test-flight-this-week-2026-07-13
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T13:50:10.367009+00:00'
+    stale_at: '2026-08-16T13:50:10.367009+00:00'
+    expire_at: '2026-10-15T13:50:10.367009+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dcaa6e
+  filename: 2026-07-17_faa-requires-mishap-investigation-into-latest-star.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.405134+00:00'
+  processed: true
+  notes: query='SpaceX Starship flight test FAA mishap license milestone 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SpaceX Starship flight test FAA mishap license milestone 2026
+    url: https://spacenews.com/faa-requires-mishap-investigation-into-latest-starship-launch
+    domain: spacenews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T13:50:10.394736+00:00'
+    stale_at: '2026-08-16T13:50:10.394736+00:00'
+    expire_at: '2026-10-15T13:50:10.394736+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8a4303
+  filename: 2026-07-17_spacex-starlink-subscribers-2026-statista.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.434623+00:00'
+  processed: true
+  notes: query='Starlink subscribers ARPU revenue direct-to-cell 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Starlink subscribers ARPU revenue direct-to-cell 2026
+    url: https://www.statista.com/statistics/1662074/number-of-starlink-subscribers
+    domain: statista.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T13:50:10.424672+00:00'
+    stale_at: '2026-08-16T13:50:10.424672+00:00'
+    expire_at: '2026-10-15T13:50:10.424672+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9cdb81
+  filename: 2026-07-17_starlink-revenue-in-2026-15-5b-7m-subscribers-and-.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.463268+00:00'
+  processed: true
+  notes: query='Starlink subscribers ARPU revenue direct-to-cell 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Starlink subscribers ARPU revenue direct-to-cell 2026
+    url: https://valueaddvc.com/blog/starlink-revenue-2025-2026-subscriber-count-arpu-and-the-path-to-profitability
+    domain: valueaddvc.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T13:50:10.451965+00:00'
+    stale_at: '2026-08-16T13:50:10.451965+00:00'
+    expire_at: '2026-10-15T13:50:10.451965+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c2531d
+  filename: 2026-07-17_starlink-growth-is-getting-harder-ahead-of-spacex-.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.493289+00:00'
+  processed: true
+  notes: query='Starlink subscribers ARPU revenue direct-to-cell 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Starlink subscribers ARPU revenue direct-to-cell 2026
+    url: https://thenextweb.com/news/starlink-is-spacexs-cash-machine-but-the-maths-is-getting-harder
+    domain: thenextweb.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T13:50:10.482062+00:00'
+    stale_at: '2026-08-16T13:50:10.482062+00:00'
+    expire_at: '2026-10-15T13:50:10.482062+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-17c9ce
+  filename: 2026-07-17_spacex-just-got-14-new-buy-ratings-why-1-analyst.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.524299+00:00'
+  processed: true
+  notes: query='SPCX analyst consensus price target diluted shares enterprise value
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: SPCX analyst consensus price target diluted shares enterprise value 2026
+    url: https://www.barrons.com/articles/spacex-stock-price-analyst-ratings-buy-6935428c
+    domain: barrons.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T13:50:10.512458+00:00'
+    stale_at: '2026-08-16T13:50:10.512458+00:00'
+    expire_at: '2026-10-15T13:50:10.512458+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-601f60
+  filename: 2026-07-17_spacex-analyst-ratings-and-price-targets-nasdaq-sp.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.555260+00:00'
+  processed: true
+  notes: query='SPCX analyst consensus price target diluted shares enterprise value
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SPCX analyst consensus price target diluted shares enterprise value 2026
+    url: https://www.benzinga.com/quote/SPCX/analyst-ratings
+    domain: benzinga.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T13:50:10.543702+00:00'
+    stale_at: '2026-08-16T13:50:10.543702+00:00'
+    expire_at: '2026-10-15T13:50:10.543702+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ed764c
+  filename: 2026-07-17_can-spacex-stock-sustain-its-2-5-trillion-valuatio.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.587441+00:00'
+  processed: true
+  notes: query='SPCX analyst consensus price target diluted shares enterprise value
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SPCX analyst consensus price target diluted shares enterprise value 2026
+    url: https://www.disruptionbanking.com/2026/06/18/can-spacex-stock-sustain-its-2-5-trillion-valuation-in-2026
+    domain: disruptionbanking.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T13:50:10.574999+00:00'
+    stale_at: '2026-08-16T13:50:10.574999+00:00'
+    expire_at: '2026-10-15T13:50:10.574999+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2a29ad
+  filename: 2026-07-17_spacex-s-ai-wing-casts-cloud-over-ipo-and-future-e.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.623982+00:00'
+  processed: true
+  notes: query='SpaceX xAI X merger consolidation related party AI segment IPO 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: SpaceX xAI X merger consolidation related party AI segment IPO 2026
+    url: https://www.forbes.com/sites/kevinholdenplatt/2026/06/08/spacexs-ai-wing-casts-cloud-over-future-earnings-leading-experts-say
+    domain: forbes.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T13:50:10.608486+00:00'
+    stale_at: '2026-08-16T13:50:10.608486+00:00'
+    expire_at: '2026-10-15T13:50:10.608486+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-467afa
+  filename: 2026-07-17_biggest-ipo-of-all-time-elon-musk-s-spacex-is-in-t.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.657158+00:00'
+  processed: true
+  notes: query='SpaceX xAI X merger consolidation related party AI segment IPO 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: SpaceX xAI X merger consolidation related party AI segment IPO 2026
+    url: https://www.linkedin.com/posts/linasbeliunas_biggest-ipo-of-all-time-elon-musks-spacex-activity-7422734271511035904-wcAX
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T13:50:10.644510+00:00'
+    stale_at: '2026-08-16T13:50:10.644510+00:00'
+    expire_at: '2026-10-15T13:50:10.644510+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-48749e
+  filename: 2026-07-17_spacex-reveals-musk-company-links-from-cybertrucks.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.691529+00:00'
+  processed: true
+  notes: query='SpaceX xAI X merger consolidation related party AI segment IPO 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SpaceX xAI X merger consolidation related party AI segment IPO 2026
+    url: https://journalrecord.com/2026/05/21/spacex-musk-company-ties-ipo-cybertrucks-ai
+    domain: journalrecord.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T13:50:10.678563+00:00'
+    stale_at: '2026-08-16T13:50:10.678563+00:00'
+    expire_at: '2026-10-15T13:50:10.678563+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f3f9f5
+  filename: 2026-07-17_spacex-won-t-be-free-cash-flow-positive-until-2029.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.729250+00:00'
+  processed: true
+  notes: query='SpaceX Starlink free cash flow FCF capex debt 2026 2029' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SpaceX Starlink free cash flow FCF capex debt 2026 2029
+    url: https://finance.yahoo.com/markets/stocks/articles/spacex-wont-free-cash-flow-212700643.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T13:50:10.715027+00:00'
+    stale_at: '2026-08-16T13:50:10.715027+00:00'
+    expire_at: '2026-10-15T13:50:10.715027+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-931108
+  filename: 2026-07-17_spacex-ai-starlink-and-the-usd-22-8-billion-cash-b.md
+  source_type: web-search
+  added: '2026-07-17T13:50:10.765306+00:00'
+  processed: true
+  notes: query='SpaceX Starlink free cash flow FCF capex debt 2026 2029' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SpaceX Starlink free cash flow FCF capex debt 2026 2029
+    url: https://petergarnry.substack.com/p/spacex-ai-starlink-and-the-usd-228
+    domain: petergarnry.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T13:50:10.751539+00:00'
+    stale_at: '2026-08-16T13:50:10.751539+00:00'
+    expire_at: '2026-10-15T13:50:10.751539+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-78d79b
+  filename: starship_flight_table_K3.md
+  source_type: data
+  added: '2026-07-17T14:07:07.609065+00:00'
+  processed: true
+  notes: Starship 完整试飞表 IFT1-12（维基权威聚合 12发7成5败 + Block1/2/3 演进 + 逐次详情）；K3 兑现时钟核心
+  mineru_state: not_needed
+  addresses:
+  - K3
+  rings:
+  - biz-moat-unit-econ
+  confidence: 0.85
+- id: mat-176f0f
+  filename: spacex_bull_case_deep.md
+  source_type: sell-side-note
+  added: '2026-07-17T14:08:42.116446+00:00'
+  processed: true
+  notes: bull-case 深度：卖方目标价分布(DB$255/RJ$800/Stifel$190/均$220) + SA深度看多($28.5T TAM/COLOSSUS
+    Anthropic+Google ~$26B ARR待核实) + Nasdaq100纳入；环⑤对称反方
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  rings:
+  - bull-bear
+  - consensus
+  confidence: 0.7
+- id: mat-449806
+  filename: 2026-07-15_6-charts-on-spacex-s-pre-ipo-financials.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.536692+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX 2025 revenue operating income cash flow capex 2026 Q1 S-1
+    url: https://www.morningstar.com/stocks/6-charts-spacexs-s-1-financials
+    searched_at: '2026-07-15T02:17:55.750351+00:00'
+- id: mat-836edd
+  filename: 2026-07-15_faa-completes-starship-mishap-report-review-launch.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.560454+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Starship flight record FAA mishap license commercial payload 2026
+    url: https://payloadspace.com/faa-completes-starship-mishap-report-review-launch-license-is-next
+    searched_at: '2026-07-15T03:23:11.208964+00:00'
+- id: mat-012feb
+  filename: 2026-07-15_faa-requires-mishap-investigation-into-latest-star.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.584471+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Starship flight record FAA mishap license commercial payload 2026
+    url: https://spacenews.com/faa-requires-mishap-investigation-into-latest-starship-launch
+    searched_at: '2026-07-15T03:23:11.144841+00:00'
+- id: mat-a4a3a4
+  filename: 2026-07-15_faa-requires-spacex-led-mishap-investigation-befor.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.608586+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX Starship latest flight test FAA license July 2026
+    url: https://spaceflightnow.com/2026/05/27/faa-requires-spacex-led-mishap-investigation-before-resumption-of-starship-launches
+    searched_at: '2026-07-15T02:17:55.864658+00:00'
+- id: mat-49d253
+  filename: 2026-07-15_financials-look-reckless-lifting-the-xai-hood-in-t.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.632586+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX AI capex xAI operating loss IPO use proceeds 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/financials-look-reckless-lifting-xai-000608351.html
+    searched_at: '2026-07-15T03:23:11.019215+00:00'
+  addresses:
+  - K2
+- id: mat-8bbc35
+  filename: 2026-07-15_financials-look-reckless-lifting-xai-s-hood-in-the.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.657293+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX xAI merger X Holdings pro forma financials related party S-1 2026
+    url: https://global.morningstar.com/en-eu/stocks/financials-look-reckless-lifting-xais-hood-spacex-ipo
+    searched_at: '2026-07-15T02:17:55.793375+00:00'
+- id: mat-af37be
+  filename: 2026-07-15_forrester-s-digest-forecast-starlink-s-revenues-at.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.683729+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Starlink FCF capex Connectivity cash flow satellite replacement cost 2026
+    url: https://satnews.com/2025/09/11/forresters-digest-forecast-starlinks-revenues-at-15-9bn-in-2026
+    searched_at: '2026-07-15T03:23:10.842224+00:00'
+- id: mat-32fb60
+  filename: 2026-07-15_inside-spacex-s-ipo-filing-revenue-starlink-ai-and.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.709726+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX 2025 revenue operating income cash flow capex 2026 Q1 S-1
+    url: https://www.hl.co.uk/news/inside-spacexs-ipo-filing-revenue-starlink-ai-and-key-financials
+    searched_at: '2026-07-15T02:17:55.735595+00:00'
+- id: mat-6cea46
+  filename: 2026-07-15_launch-segment-archives---page-112-of-112---space-.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.735698+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX Space segment launches backlog government revenue 2025 S-1
+    url: https://www.spaceintelreport.com/category/launch-segment/page/112
+    searched_at: '2026-07-15T02:17:55.770545+00:00'
+- id: mat-3e0e2c
+  filename: 2026-07-15_only-elon-musk-can-fire-himself-from-spacex-filing.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.762260+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX Elon Musk voting power Class B economic ownership 424B4
+    url: https://m.economictimes.com/tech/technology/only-elon-musk-can-fire-himself-from-spacex-filing-shows/amp_articleshow/130610155.cms
+    searched_at: '2026-07-15T02:17:55.819782+00:00'
+- id: mat-a75a6f
+  filename: 2026-07-15_pdf-all-in-the-family-consolidating-control-via-sp.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.789425+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX xAI merger X Holdings pro forma financials related party S-1 2026
+    url: https://mercercapital.com/media/ec2kf5f1/spacex-fairness-considerations-mercer-capital-june-2026.pdf
+    searched_at: '2026-07-15T02:17:55.781966+00:00'
+  addresses:
+  - K4
+  - K5
+- id: mat-fd966d
+  filename: 2026-07-15_pdf-commercial-space-launch-and-the-april-2023-sta.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.816741+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Starship flight record FAA mishap license commercial payload 2026
+    url: https://www.congress.gov/crs_external_products/IF/PDF/IF12403/IF12403.3.pdf
+    searched_at: '2026-07-15T03:23:11.271329+00:00'
+- id: mat-fe7ebf
+  filename: 2026-07-15_reverse-dcf-spacex-valuation-breakdown.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.844308+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SPCX diluted shares SpaceX analyst model reverse DCF July 2026
+    url: https://www.linkedin.com/posts/benchon_one-of-the-most-underutilized-financial-models-activity-7447350750164418560-p--N
+    searched_at: '2026-07-15T03:23:11.405698+00:00'
+- id: mat-fea945
+  filename: 2026-07-15_revisiting-the-spacex-valuation-a-post-prospectus-.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.872579+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX SPCX Starlink financial valuation July 2026
+    url: https://aswathdamodaran.substack.com/p/revisiting-the-spacex-valuation-a
+    searched_at: '2026-07-15T03:23:10.614372+00:00'
+- id: mat-b6b0b6
+  filename: 2026-07-15_space-exploration-technologies---s-1-a-2.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.901499+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: SpaceX SPCX SEC 424B4 final prospectus IPO price shares June 2026
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm
+    searched_at: '2026-07-15T02:16:01.015225+00:00'
+- id: mat-1716ca
+  filename: 2026-07-15_space-exploration-technologies---s-1.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.930219+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX SPCX latest 10-Q earnings Starship FAA insider July 2026
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm
+    searched_at: '2026-07-15T03:23:10.675129+00:00'
+- id: mat-010c36
+  filename: 2026-07-15_space-exploration-technologies-corp-analyst-estima.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.959425+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SPCX stock price market cap analyst consensus July 2026
+    url: https://www.marketwatch.com/investing/stock/spcx/analystestimates
+    searched_at: '2026-07-15T02:17:55.883726+00:00'
+- id: mat-daec8a
+  filename: 2026-07-15_space-exploration-technologies-corp-spcx.md
+  source_type: web-search
+  added: '2026-07-17T14:10:10.989496+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: SPCX July 14 2026 close 136.07 market capitalization shares outstanding
+    url: https://www.wsj.com/market-data/quotes/SPCX
+    searched_at: '2026-07-15T02:21:34.070430+00:00'
+- id: mat-885308
+  filename: 2026-07-15_space-exploration-technologies-corp.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.019234+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX SPCX SEC 424B4 final prospectus IPO price shares June 2026
+    url: https://content.spacex.com/cms-assets/FINAL_Documents%20and%20Updates/SpaceX%20-%20EU%20Prospectus%20%28Approved%20by%20Bafin%29%20-%20June%205%2C%202026.pdf
+    searched_at: '2026-07-15T02:16:01.021201+00:00'
+- id: mat-bf3ec6
+  filename: 2026-07-15_spacex-ai-starlink-and-the-usd-22-8-billion-cash-b.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.049456+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Starlink FCF capex Connectivity cash flow satellite replacement cost 2026
+    url: https://petergarnry.substack.com/p/spacex-ai-starlink-and-the-usd-228
+    searched_at: '2026-07-15T03:23:10.955120+00:00'
+- id: mat-a87f74
+  filename: 2026-07-15_spacex-analyst-debut-set-to-test-2-2-trillion-valu.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.080623+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SPCX diluted shares SpaceX analyst model reverse DCF July 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/spacex-analyst-debut-set-test-084117535.html
+    searched_at: '2026-07-15T03:23:11.469634+00:00'
+- id: mat-c8c724
+  filename: 2026-07-15_spacex-cleared-to-fly-starship-again-after-booster.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.111985+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX Starship latest flight test FAA license July 2026
+    url: https://techcrunch.com/2026/07/13/spacex-cleared-to-fly-starship-again-after-booster-failure-in-may
+    searched_at: '2026-07-15T02:17:55.834914+00:00'
+- id: mat-55d071
+  filename: 2026-07-15_spacex-clears-starship-mishap-probe-before-next-te.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.144423+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX Starship latest flight test FAA license July 2026
+    url: https://www.reuters.com/business/media-telecom/faa-closes-starship-review-ahead-spacexs-next-test-flight-this-week-2026-07-13
+    searched_at: '2026-07-15T02:17:55.849253+00:00'
+- id: mat-8450f2
+  filename: 2026-07-15_spacex-has-several-big-dates-coming-up-that-invest.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.177420+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX related party SPCX insider sale lockup dilution 2026
+    url: https://finance.yahoo.com/markets/stocks/article/spacex-has-several-big-dates-coming-up-that-investors-shouldnt-forget-121828573.html
+    searched_at: '2026-07-15T03:23:11.542224+00:00'
+- id: mat-8f2ef7
+  filename: 2026-07-15_spacex-insiders-will-get-to-sell-shares-earlier-th.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.209627+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX related party SPCX insider sale lockup dilution 2026
+    url: https://www.cnbc.com/2026/05/21/spacex-insiders-will-get-to-sell-shares-earlier-than-usual-after-the-ipo.html
+    searched_at: '2026-07-15T03:23:11.609216+00:00'
+- id: mat-6264e8
+  filename: 2026-07-15_spacex-just-revealed-its-finances-is-it-a-warning-.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.242998+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX 2025 revenue operating income cash flow capex 2026 Q1 S-1
+    url: https://finance.yahoo.com/markets/stocks/articles/spacex-just-revealed-finances-warning-203600433.html
+    searched_at: '2026-07-15T02:17:55.742393+00:00'
+- id: mat-9a3208
+  filename: 2026-07-15_spacex-launch-elon-musk-s-starship-blows-up-in-lat.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.276555+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX SPCX earnings Starship launch failure regulatory contract latest
+      90
+    url: https://www.telegraph.co.uk/business/2025/05/27/spacex-launch-elon-musks-starship-launch-multiplanetary
+    searched_at: '2026-07-15T02:17:55.970033+00:00'
+- id: mat-8c566c
+  filename: 2026-07-15_spacex-lockup-countdown-when-shares-may-become-saf.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.310150+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX related party SPCX insider sale lockup dilution 2026
+    url: https://www.investing.com/analysis/spacex-lockup-countdown-when-shares-may-become-safer-to-buy-200682574
+    searched_at: '2026-07-15T03:23:11.675642+00:00'
+- id: mat-f3f804
+  filename: 2026-07-15_spacex-lockup-period-what-you-need-to-know-about-p.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.344643+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX IPO lockup shares eligible for future sale 2026 prospectus
+    url: https://finance.yahoo.com/markets/stocks/articles/spacex-lockup-period-know-potential-163000985.html
+    searched_at: '2026-07-15T02:17:55.942303+00:00'
+- id: mat-750aaa
+  filename: 2026-07-15_spacex-spcx-ipo-live-updates.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.379315+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX SPCX latest 10-Q earnings Starship FAA insider July 2026
+    url: https://www.cnbc.com/2026/06/12/spacex-ipo-spcx-live-updates.html
+    searched_at: '2026-07-15T03:23:10.728025+00:00'
+- id: mat-e6fad8
+  filename: 2026-07-15_spacex-spcx-stock-forecast-price-target.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.414092+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SPCX stock price market cap analyst consensus July 2026
+    url: https://www.investing.com/equities/spacex-consensus-estimates
+    searched_at: '2026-07-15T02:17:55.901648+00:00'
+- id: mat-053fb7
+  filename: 2026-07-15_spacex-starship-breaks-apart-after-launch-in-secon.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.450571+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX SPCX earnings Starship launch failure regulatory contract latest
+      90
+    url: https://www.cbsnews.com/news/spacex-starship-launch-breakup-second-failure
+    searched_at: '2026-07-15T02:17:55.995306+00:00'
+- id: mat-e2e735
+  filename: 2026-07-15_spacex-starship-super-heavy-project-at-kennedy-spa.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.486588+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Starship flight record FAA mishap license commercial payload 2026
+    url: https://www.faa.gov/space/stakeholder_engagement/spacex_starship_ksc
+    searched_at: '2026-07-15T03:23:11.334690+00:00'
+- id: mat-a3f82c
+  filename: 2026-07-15_spacex-stock-information.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.522562+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: SPCX July 14 2026 close 136.07 market capitalization shares outstanding
+    url: https://ir.spacex.com/stock-information/default.aspx
+    searched_at: '2026-07-15T02:21:34.093524+00:00'
+- id: mat-512f69
+  filename: 2026-07-15_spacex-stock-price-spcx-stock-quote-news-and-histo.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.558255+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SPCX July 14 2026 close 136.07 market capitalization shares outstanding
+    url: https://markets.businessinsider.com/stocks/spcx-stock
+    searched_at: '2026-07-15T02:21:49.736632+00:00'
+- id: mat-a1dafe
+  filename: 2026-07-15_spacex-to-allow-early-share-resale-before-usual-si.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.595297+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX IPO lockup shares eligible for future sale 2026 prospectus
+    url: https://www.reuters.com/legal/government/spacex-allow-early-share-resale-before-usual-sixmonth-lock-up-2026-05-22
+    searched_at: '2026-07-15T02:17:55.922412+00:00'
+- id: mat-b1b683
+  filename: 2026-07-15_spacex-won-t-be-free-cash-flow-positive-until-2029.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.632198+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Starlink FCF capex Connectivity cash flow satellite replacement cost 2026
+    url: https://www.theglobeandmail.com/investing/markets/markets-news/motley/3064844/spacex-won-t-be-free-cash-flow-positive-until-2029-and-it-s-already-taking-on-25-billion-in-debt-here-s-what-that-means-for-your-investment
+    searched_at: '2026-07-15T03:23:10.788366+00:00'
+- id: mat-597fad
+  filename: 2026-07-15_the-filing-is-out-marking-our-spacex-model-to-the-.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.669316+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Starlink FCF capex Connectivity cash flow satellite replacement cost 2026
+    url: https://www.linkedin.com/pulse/filing-out-marking-our-spacex-model-s-1-hauwa-umaru-qfn3f
+    searched_at: '2026-07-15T03:23:10.899239+00:00'
+- id: mat-66e0b4
+  filename: 2026-07-15_the-starlink-monopoly-question-is-spacex-s-dominan.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.707182+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX Connectivity segment Starlink subscribers revenue operating income
+      2026
+    url: https://newspaceeconomy.ca/2026/04/11/the-starlink-monopoly-question-is-spacexs-dominance-over-low-earth-orbit-connectivity-a-market-failure-or-a-market-victory?amp=1
+    searched_at: '2026-07-15T02:17:55.759950+00:00'
+  addresses:
+  - K1
+- id: mat-f5bc02
+  filename: 2026-07-15_xai-burned-6-4b-last-year-spacex-s-ipo-filing-show.md
+  source_type: web-search
+  added: '2026-07-17T14:10:11.746394+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: SpaceX AI capex xAI operating loss IPO use proceeds 2026
+    url: https://techcrunch.com/2026/05/20/xai-burned-6-4b-last-year-spacexs-ipo-filing-shows-why-the-spending-is-far-from-over
+    searched_at: '2026-07-15T03:23:11.077170+00:00'
+- id: mat-3ad147
+  filename: 2026-07-18_spacex-stock-sinks-below-135-ipo-price-for-the-fir.md
+  source_type: web-search
+  added: '2026-07-18T00:44:15.546933+00:00'
+  processed: true
+  notes: query='SpaceX SPCX IPO price + Starship IFT-13 status 2026-07'
+  mineru_state: not_needed
+  addresses:
+  - WMBT-C
+  - WMBT-D
+  - 命门3
+  confidence: 0.9
+  search_meta:
+    query: SpaceX SPCX IPO price + Starship IFT-13 status 2026-07
+    url: https://www.cnbc.com/2026/07/15/spacex-spcx-stock-ipo-price.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T00:44:15.521385+00:00'
+    stale_at: '2026-08-17T00:44:15.521385+00:00'
+    expire_at: '2026-10-16T00:44:15.521385+00:00'
+    triggered_by: 05-critic

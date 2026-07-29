@@ -1,0 +1,140 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: jp-cover-5253
+variant: opus4.8
+created: 2026-07-28
+terminal: company → 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+
+# L1/L2 坍缩进 primer（背景理解层交给 00_primer 承担）
+primer_scope: >
+  primer 该覆盖：VTuber 事务所商业模式（打赏→物販/演唱会/授权/TCG 多元变现）；
+  COVER 五大收入分部（配信/ライブ/物販/ライセンス/TCG·游戏）驱动因子与毛利结构；
+  talent 生命周期机理（出道→成长→头部→毕业）的造血/折旧含义；
+  日本财年制与 COVER 季节性（Q4 演唱会/年末旺季）；
+  "增收不增利"的会计构成（一次性减损/在库评价减 vs 经营性利润率）；
+  YouTube 平台依赖机理；VTuber/IP 公司估值锚（PER/EV-EBIT/订阅·talent 规模）；
+  中国大陆/地缘舆论风险传导路径。
+
+learning_track:
+  # L1/L2 已坍缩进 primer_scope（不再单列问题树）
+  l3_debates:         # 争议层：分歧在哪，各方逻辑（thesis 反方展开为可调研争议点）
+    - question: FY2026 净利-45.7% 是一次性会计出清（ホロアース减损¥31.99亿+在库评价减）还是经营性利润率结构下滑？剔除一次性后本业 op profit 究竟是持平、下滑还是隐性回升？
+      source_hint: 決算短信§一次性明细 / 決算説明資料 P 利润桥 / logmi QA
+    - question: 物販（占48%收入）增速刹车（Q2 QoQ-0.7%）是结构性天花板，还是关税/EC 渠道代替/talent 卒業带来的周期性逆风、可随 TCG 与新品周期回补？
+      source_hint: 決算説明会 QA(物販品类/海外EC/关税) / Q1-Q4 分部季度表
+    - question: COVER 相对 ANYCOLOR 的估值折价（市值¥1,048亿 vs ¥1,603亿）是被贴"输家"折价，还是重资产 IP 稀缺性未被定价、应享溢价？范式差（重资产制作+物販 vs 轻资产 talent 打赏）是护城河还是包袱？
+      source_hint: 5253 vs 5032 财务战略对比材料 / 两家决算短信 / 营益率·ROIC 拆分
+    - question: 一致预期（¥596亿/¥106亿）向公司指引（¥513亿/¥70亿）的 14%/34% 下修，是否已在 2026-06 上場来安値+当前¥1,600 中出清？还是盈利预测下修尚未走完、估值仍有二次压缩空间？
+      source_hint: nikkei consensus 页 / 各券商目标价与下修轨迹 / minkabu·ifis
+    - question: TCG + ホロドリ手游是真实第二曲线期权，还是像ホロアース一样先烧钱后减损？管理层"質的拡大·規律ある成長"降档措辞是审慎务实还是增长故事终结的官方确认？
+      source_hint: ホロアース撤退复盘 / TCG 出货·粗利数据 / ホロドリ セルラン·game-i 流水
+
+  l4_hunting:         # 狩猎层：逐条对齐 thesis Killer Question
+    - question: FY2027 Q1 决算（2026-08-12）营业利益率能否止跌回升至 ≥14%，还是滑向指引隐含的≈13.6% 以下坐实结构性下滑？H1 指引营益-27.6% 的季度节奏如何？
+      addresses: [K1]
+      search_keywords: [COVER 5253 第1四半期 決算, 営業利益率 通期予想, 5253 Q1 進捗率]
+      source_hint: FY2027 Q1 決算短信(8/12) / 決算説明資料季度分部表 / kabutan 進捗率
+    - question: 物販分部 YoY 增速能否重回双位数（摆脱关税/EC/卒業拖累），还是刹车成为常态？在库评价减是否反复发生侵蚀粗利？
+      addresses: [K2]
+      search_keywords: [hololive 物販 売上 前年比, COVER 物販 在庫 評価減, 5253 EC 関税 影響]
+      source_hint: 決算説明会 QA(P25) / Q1-Q4 分部季度表 / 物販品类结构
+    - question: 未来 2-4 季 COVER 与 ANYCOLOR 的营收增速差 / 营益率差是收敛还是继续扩大？COVER 该享 IP 溢价还是被贴"输家"折价？
+      addresses: [K3]
+      search_keywords: [ANYCOLOR 5032 決算 営業利益率, COVER ANYCOLOR 比較, VTuber 事務所 業績 差]
+      source_hint: ANYCOLOR FY2026/4 決算短信 / 5253 vs 5032 对比材料 / 两家 IR
+    - question: TCG「hololive OFFICIAL CARD GAME」+ ホロドリ手游能否贡献可辨识（可拆分披露）收入/利润，规模足以抵消物販减速？还是ホロドリ重蹈ホロアース减损覆辙？
+      addresses: [K4]
+      search_keywords: [hololive カードゲーム 売上, ホロドリ セルラン 売上, hololive dreams 流水]
+      source_hint: 決算分部 TCG 拆分 / game-i セルラン 流水 / gamebiz DL·收入
+    - question: 一致预期向公司指引的下修是否已在股价出清？出清后 P/E≈21x + ¥30亿(4.6%)回购 + 上場来安値 是否构成足够安全边际支撑目标价重回¥1,900-2,000？各券商目标价分布与下修轨迹？
+      addresses: [K5]
+      search_keywords: [5253 目標株価 コンセンサス, COVER 株価 予想 下方修正, 5253 PER 割安]
+      source_hint: nikkei consensus / 日系中堅¥2270·米系¥2000·minkabu¥1934 / 回购公告
+
+material_priority:
+  # 复用 00 阶段 5.3 已 fetched 的 10 条 todo（全部 done/fetched），按 A 合同+B 命门双轴组织
+  tier1:              # 必读，研究不可缺
+    - title: FY2026/3 決算短信 全文（JPX 適時開示原本，含完整财务+注记+一次性明细）
+      type: financial-filing
+      ticker: TSE_5253
+      source: JPX 適時開示 / cover-corp.com IR（mat-53da95）
+      why: K1/K2 核心事实源——营收¥513亿/营益/净利桥/一次性减损/分部收入
+      addresses: [K1, K2]
+      rings: [biz-moat-unit-econ, financial-arc]
+      status: done
+    - title: FY2026/3 決算説明資料 全文（分部季度表/先行投资明细/资本配分框架/QA）
+      type: sell-side-note
+      source: japanir.jp 5253-20260514-02.pdf / logmi 決算説明会書き起こし（mat-20fc41）
+      why: K1/K2/K5 关键——分部季度推移、先行投资节奏、¥30亿回购+500亿成长投资框架、ホロアース减损QA
+      addresses: [K1, K2, K5]
+      rings: [biz-moat-unit-econ, mgmt-capital-alloc, historical-mirror]
+      status: done
+    - title: 一致预期与目标价明细（QUICK/各券商 FY2027-29 营收·营益·净利预测+评级+目标价）
+      type: consensus
+      source: nikkei consensus / 日系中堅¥2270·米系¥2000·日系大手¥2800·minkabu¥1934
+      why: K5 环④终局估值锚——下修轨迹、目标价分布、共识 vs 指引缺口
+      addresses: [K5]
+      rings: [consensus, valuation-anchor]
+      status: done
+    - title: ANYCOLOR(5032) FY2026/4 决算对标（营益率36%/回购¥50亿/分红¥41亿/PER-EV倍数）
+      type: sell-side-note
+      source: kabutan / Yahoo / ANYCOLOR IR
+      why: K3 竞争对标——增速·盈利质量·股东回报三线差距，定 COVER 溢价 or 折价
+      addresses: [K3]
+      rings: [biz-moat-unit-econ, valuation-anchor]
+      status: done
+  tier2:              # 补充，有最好
+    - title: 管理层资本配置史（¥30亿回购细节+中期经营目标+资本配分框架+谷郷/金子 IR 发言）
+      type: mgmt-commentary
+      source: 決算説明資料 P19-20 / IR / 適時開示
+      why: 环① A 合同必收 mgmt-capital-alloc——累计500亿成长投资/M&A枠+30亿(4.6%)回购+机动还元
+      addresses: [K5]
+      rings: [mgmt-capital-alloc]
+      status: done
+    - title: ホロアース（元宇宙）撤退失败镜鉴（累计投入+¥31.99亿减损明细+撤退决策始末）
+      type: industry-research
+      source: gamebusiness / irnote / 決算説明会 QA
+      why: 环⑤ historical-mirror——"相似剧本怎么崩"，验证 K4 ホロドリ是否重蹈覆辙
+      addresses: [K4]
+      rings: [historical-mirror]
+      status: done
+    - title: TCG + ホロドリ手游 收入/流水追踪（セルラン/DL/TCG出货/收入拆分）
+      type: data
+      source: gamebiz / game-i セルラン / 決算分部
+      why: K4 第二曲线兑现——Q1物販¥58亿中TCG¥19亿；ホロドリ 2026-07-23 上线セルラン1位
+      addresses: [K4]
+      rings: [growth-path]
+      status: done
+  tier3:              # 可选，深度研究时参考
+    - title: 物販分部深挖（品类结构/海外EC占比/北美关税影响/在库周转与评价减机制）
+      type: data
+      source: 決算説明会 QA(P25) / kitaishihon 事業内容
+      why: K2 命门靶点——Q2评价减5.5亿粗利-1.6%；北米关税影响金额
+      addresses: [K2]
+      rings: [growth-path]
+      status: done
+    - title: talent 收益生命周期数据（2023后新talent成长曲线/头部毕业对配信·EC量化影响）
+      type: data
+      source: 決算説明資料 P17-18 / userlocal 订阅数据 / 行业专家
+      why: 命门3（中-低置信度优先砸料）——造血 vs 折旧；per-talent 收益曲线待03抽取
+      addresses: [K4]
+      rings: [biz-moat-unit-econ, historical-mirror]
+      status: done
+
+key_risks_to_monitor:
+  - FY2027 Q1 决算（2026-08-12）营益率是否止跌——命门1 触底反弹 vs 结构性下滑分水岭
+  - 物販 YoY 增速与在库评价减是否反复（命门2 单引擎失速）
+  - ANYCOLOR 增速·营益率差是否继续扩大（K3 输家折价固化）
+  - ホロドリ セルラン 是否材料出尽后回落 / TCG 出货可持续性（K4 期权 vs 减损）
+  - talent 头部毕业（2025 已7名含 Gawr Gura）对配信·EC 的量化拖累（命门3）
+  - 中国大陆/地缘舆论敏感事件（bilibili活动/领土议题/权利侵害）
+
+analogies_to_study:
+  - 案例: ホロアース（COVER 自家元宇宙业务，2021-2025）
+    类比逻辑: 同一管理层的"新增长曲线"赌注最终¥31.99亿减损撤退——检验 ホロドリ/TCG 是否重蹈"先烧钱后出清"覆辙
+    类比局限: TCG/手游是已验证变现模式（非未成熟元宇宙），且 ホロドリ 依托既有 IP·talent 而非从零建平台
+  - 案例: ANYCOLOR(5032) 轻资产范式（同业镜鉴，非历史失败）
+    类比逻辑: 同赛道竞对以轻资产（talent数×打赏抽成）跑出36%营益率+高股东回报，映照 COVER 重资产范式的利润率天花板
+    类比局限: 两家 IP 定位·海外占比·物販依赖度不同，营益率差部分是商业模式选择而非纯粹优劣
+  - 案例: 万代南梦宫/任天堂等 IP·玩具·TCG 龙头的物販/授权周期
+    类比逻辑: 成熟 IP 公司物販·TCG 收入的周期性与天花板，映照 COVER 物販见顶后的稳态增速
+    类比局限: COVER IP 生命周期更短（talent 毕业折旧）、粉丝基数与全球化程度差异大

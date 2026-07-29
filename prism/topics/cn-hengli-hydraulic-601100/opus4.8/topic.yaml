@@ -1,0 +1,462 @@
+slug: cn-hengli-hydraulic-601100
+display_name: 恒立液压 (601100)
+type: company
+created: '2026-07-24T00:08:48.915115+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: global-roller-screw
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 恒立液压能否以液压龙头底蕴切入精密传动/PRS线性执行器，让机器人业务成为厚基本盘上的第二增长曲线？
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_601100
+  market: SSE
+  short_name: 恒立液压
+  search_terms:
+  - 恒立液压
+  - 线性驱动器
+  - 行星滚柱丝杠
+  - 精密传动
+  - '601100'
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-25T06:24:29.883587+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-13a734
+    - mat-1b0ced
+    - mat-280736
+    - mat-32d079
+    - mat-4d239d
+    - mat-5289b8
+    - mat-6d898e
+    - mat-d1ee54
+    - mat-d2ca7f
+    - mat-e85a91
+    - mat-f72590
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-07-25T08:19:45.473411+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-13a734
+    - mat-1b0ced
+    - mat-280736
+    - mat-32d079
+    - mat-3a64d1
+    - mat-42e97d
+    - mat-4d239d
+    - mat-4eee9a
+    - mat-5289b8
+    - mat-6d898e
+    - mat-8162be
+    - mat-d1ee54
+    - mat-d2ca7f
+    - mat-dc7a25
+    - mat-f72590
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-07-25T08:19:45.502328+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-13a734
+    - mat-1b0ced
+    - mat-280736
+    - mat-32d079
+    - mat-3a64d1
+    - mat-42e97d
+    - mat-4d239d
+    - mat-4eee9a
+    - mat-5289b8
+    - mat-6d898e
+    - mat-8162be
+    - mat-d1ee54
+    - mat-d2ca7f
+    - mat-dc7a25
+    - mat-f72590
+    last_error: null
+  05-critic-review:
+    version: 1
+    last_updated: '2026-07-25T08:04:17.276300+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-07-25T08:04:17.286667+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials:
+- parent_slug: global-roller-screw
+  parent_variant: opus4.8
+  mat_id: mat-4d239d
+  addresses:
+  - K6
+  - K1
+  note: 华创深度:不止于液压传动,精密传动再造一个恒立
+- parent_slug: global-roller-screw
+  parent_variant: opus4.8
+  mat_id: mat-6b2027
+  addresses:
+  - K1
+  note: 恒立液压精密滚珠丝杠布局(财富号)
+- parent_slug: global-roller-screw
+  parent_variant: opus4.8
+  mat_id: mat-7456f0
+  addresses:
+  - K7
+  note: 恒立深度布局电动化工程机械零部件(主业)
+- parent_slug: global-roller-screw
+  parent_variant: opus4.8
+  mat_id: mat-b8db40
+  addresses:
+  - K2
+  note: 行星滚柱丝杠人形机器人高壁垒
+- parent_slug: global-roller-screw
+  parent_variant: opus4.8
+  mat_id: mat-8162be
+  addresses:
+  - K1
+  - K3
+  note: 特斯拉机器人降本超预期,滚珠丝杠大量应用
+- parent_slug: global-roller-screw
+  parent_variant: opus4.8
+  mat_id: mat-0f858a
+  addresses:
+  - K2
+  - K4
+  note: 机器人丝杠的终局是磨床(良率/工艺壁垒)
+- parent_slug: global-roller-screw
+  parent_variant: opus4.8
+  mat_id: mat-629891
+  addresses:
+  - K2
+  note: 丝杠生产工艺流程详解
+- parent_slug: global-roller-screw
+  parent_variant: opus4.8
+  mat_id: mat-83db06
+  addresses:
+  - K1
+  note: Optimus Gen3量产官宣(PRS需求时间线)
+- parent_slug: global-roller-screw
+  parent_variant: opus4.8
+  mat_id: mat-5289b8
+  addresses:
+  - K5
+  note: 2025全球人形PRS市场4.31亿美元(量价锚)
+next_actions:
+- 05-critic 触发的重写已完成:c_investment_case+07_decision_kit 升 v2,thesis_v2(terminal 偏空→中性,EV
+  -6%→约+2%)
+- 可说「评审 cn-hengli-hydraulic-601100」对 v2 复评(对抗式重审),或直接进 06 监控
+user_todos:
+- task: 下载恒立液压 2025年报（机器人/精密传动业务拆分+成本结构+mgmt讨论）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K5
+  - K6
+  - K8
+  source_hint: cninfo SSE_601100 直下
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-32d079
+  last_fetch_note: cninfo annual
+- task: 下载恒立液压 2026Q1季报（利润背离/毛利/费用明细）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K8
+  source_hint: cninfo SSE_601100
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-13a734
+  last_fetch_note: cninfo Q1
+- task: 收3份卖方深度研报（浙商/华西/华创 线性驱动器+丝杠再造恒立主题）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K5
+  - K6
+  source_hint: 父arena已有华创mat-4d239d;补浙商/华西
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 浙商/华西+父级华创mat-4d239d+dfcfw丝杠放量
+- task: 收一致预期/卖方盈利预测+目标价（consensus，环④EV锚）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: wind/choice/卖方研报一致预期表
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: dfcfw线性驱动器海外项目稳步推进+yahoo分析师评级
+- task: 跟踪汪立平留置后续公告+官方定性（K9治理事件传导）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K9
+  source_hint: cninfo/sse 601100 公告流+监察委通报
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: stcn/21jingji/thepaper:汪立平24天后恢复正常履职
+- task: mgmt资本配置：2021年15亿线性驱动器定增募投项目进展公告
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K6
+  source_hint: cninfo 募集资金使用/募投进展
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-d1ee54
+  - mat-dc7a25
+  last_fetch_note: 募投结项+募集资金使用公告
+- task: historical-mirror：汽车/工程机械零部件龙头"第二曲线"叙事成败镜鉴（成功=三花/汇川 vs 蹭概念回吐）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 行业复盘/卖方主题
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: stcn汽车零部件第二增长曲线+dfcfw从汽车到人形机器人
+- task: PRS良率/精度/产能一手（C3-C5良率爬坡、磨床产能、定点档位）
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K1
+  - K2
+  source_hint: 产业链调研/专家纪要/业绩说明会
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: xueqiu五洲新春vs恒立丝杠精度对比+9fzt深度(一手C3-C5良率仍需调研,留drilldown)
+- task: 海外产能细节（墨西哥/印度/德/美/日基地规模与用途）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K7
+  source_hint: 年报/官网/公告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: cnstock上海证券报+恒立官网(中德美日印墨基地)
+- task: 资料提取完成：20 份 findings 全部就位(含补齐5份父arena)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成(3份:primer+case+sidecar),进入评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 拉一手可验证的 2026E 归母一致预期表(wind/choice/多家券商研报),核实华创+30.8%是否高位孤例(broader疑~+17-21%)——决定环④核心delta真伪、可能翻正EV
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 补成功历史镜鉴:三花智控/汇川等制造业龙头"第二曲线兑现"样本,平衡现有全空方镜鉴(拓普/双林)的确认偏误
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 恒立PRS/丝杠实际良率与精度等级(C3/C5达成率)、磨床产能爬坡进度
+  rationale: K2良率公开无硬数据,机器人期权兑现的技术命门,需产业链一手调研
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-25T06:31:31.060965+00:00'
+- question: 恒立PRS是否/何时进入特斯拉或国内头部整机Tier1批量定点(vs当前送样)
+  rationale: K1定点是750-830亿期权费兑现核心闸门,公开天花板,需一手渠道
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-07-25T06:31:31.060965+00:00'
+- question: 恒立2026E归母的真实券商一致预期分布(华创+30.8% vs浙商/华西/长江疑+17-21%),市场隐含增速到底多少
+  rationale: consensus单线承重:环④核心delta(-26pct)仅锚华创一条,web兜底疑其为高位孤例,证实后可能翻正EV
+  source: critic_weak_k
+  related:
+  - K6
+  priority: P0
+  status: open
+  suggested_at: '2026-07-25T08:04:32.212571+00:00'
+- question: 2026Q2/Q3扣非归母是否转正(验证Q1 -18.33%是单季汇兑/确认节奏噪音还是趋势)
+  rationale: 下行核心K8承担58%下行概率权重却仅凭单季数据,同季经营现金流反+934%,单季证据撑不起趋势判定
+  source: critic_weak_k
+  related:
+  - K8
+  priority: P0
+  status: open
+  suggested_at: '2026-07-25T08:04:32.212571+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: web兜底(可引用)证实consensus非单源:同花顺25家券商2026归母均值35.12亿(+28.4%),华创+30.8%属区间上沿非孤例→作者偏空delta站得住;但同批揭出Q1弱=汇兑+新工厂(收入+33%/EBIT+34%),25家券商见Q1后仍给+28%,作者命门A"趋势性裂缝"框定被证据冲击、其自估2026
+    0~10%实为对赌25家分析师的孤例。需重写c_investment_case+07_decision_kit:纳入25家consensus、重估K8下行权重与EV、补bull-bear
+    steelman。整体3.4/5
+  at: '2026-07-25T08:09:08.614298+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 2
+  last_updated: '2026-07-25T08:19:45.547393+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-24T14:13:48.136909+00:00'
+    summary: 命门1=机器人PRS兑现路径(送样→Tier1定点→放量,中低); 命门2=汪立平留置对上市公司传导(低/uncertain); 命门3=主业盈利质量(Q1利润背离,中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-25T06:31:31.055850+00:00'
+    summary: 命门重排:命门A(盈利质量K8,中高,最重下行核心)>命门B(机器人期权K1/K5/K6,中低,上行核心)>命门C(治理K9,中,已缓释尾部)
+    convergence_status: converged
+    changelog: K8升为最重(凭mat-13a734 Q1扣非-18.33%趋势性);K9降级(凭mat-d2ca7f复职);机器人双向降温(mat-5289b8+mat-6d898e);无新增/掉队命门;primer目标无增删;全历史无震荡
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-25T08:19:45.547409+00:00'
+    summary: 命门重排:命门B(机器人期权K1/K2/K5/K6,中低)升为现价胜负手>命门A(盈利成色K8,中高)降为关注项(EBIT+34%弱在FX/新厂)>命门C(治理K9,已缓释尾部)
+    convergence_status: converged
+    changelog: 命门A(K8)从最重下行降关注项(凭mat-4eee9a EBIT+34%/mat-3a64d1 25家+28%,区别v1砍它的Q1扣非趋势理由,非震荡);命门B升胜负手;命门C维持;无新增/掉队;primer目标无增删
+thesis:
+  current_version: 2
+  last_updated: '2026-07-25T08:19:45.515367+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-24T00:10:16.855749+00:00'
+    summary: 恒立液压=PRS arena里厚基本盘+免费期权的稳健下注:液压全球龙头(毛利41.6%/负债0.2%)切入PRS已进特斯拉体系,机器人为第二曲线期权,PE
+      52x温和。即使PRS慢主业不塌。强度3/10
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-24T14:11:46.200374+00:00'
+    summary: 恒立液压=顶级质地液压龙头(2025营收109.4亿/毛利41.6%/负债率0.19%/主业周期向上),厚基本盘真下行保护;但PRS期权仍"送样"(非特斯拉Tier1定点)、估值已充分(PE51.7x)透支叙事、2026-03董事长留置新增治理尾部风险。中性偏谨慎:持有观察不追高,等K1定点兑现或估值回落。强度3/10
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 80%（8/10，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-25T06:31:31.031045+00:00'
+    summary: 顶级质地液压龙头主业护城河真实;但①基本盘盈利质量趋势性裂缝(Q1扣非-18.33%,归母靠外汇掉期粉饰)②机器人PRS期权仍送样且严重高估(市场付748-831亿vs合理NPV<455亿)③consensus定价2026盈利+30.8%与Q1硬数据矛盾。中性偏空EV约-6%,现价Hold不追高,等PE回35x或K1定点或K8证伪。强度3/10
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-25T08:19:45.515384+00:00'
+    summary: 顶级质地液压龙头,主业腿被25家consensus(+28.4%)+Q1 EBIT+34%坐实(命门A降级);但现价前瞻PE41x估值充分,上行几乎全押未证机器人期权(市场付748-831亿vs我估217亿)。中性/Hold,EV约+2%,现价可小额试探不追高。强度3/10
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-24T14:14:04.103487+00:00'
+  exited_at: '2026-07-24T15:16:38.503228+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K3
+    - K5
+    - K7
+    - K8
+    - K9
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 9
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-24T15:16:38.503228+00:00'
+  exited_at: '2026-07-24T15:31:47.927572+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K3
+    - K8
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-24T15:31:47.927572+00:00'
+  exited_at: '2026-07-25T06:31:31.132593+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-25T06:31:31.132593+00:00'
+  exited_at: '2026-07-25T08:20:10.074676+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-25T08:20:10.074676+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 2
+    empty_pending_decision: 0

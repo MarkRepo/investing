@@ -1,0 +1,161 @@
+# roadmap.yaml — 研究路线图 (workflow 01 生成)
+slug: cn-luzhou-laojiao
+variant: kimi-k3
+created: 2026-07-22
+primer_scope: "primer 覆盖背景层：浓香酿造机理/窖池资产、茅五泸格局史与价格锚传导链、渠道体系与合同负债先行性、价格倒挂机理、2013-2015 周期史、消费税机制、控量挺价策略史、库存观测信号清单、高端需求结构（政务/商务/宴席/收藏）、双品牌攻守逻辑（详见 decomposition_v0 §三 10 条入门目标）"
+
+learning_track:
+  l1_orientation: []   # S2 坍缩进 primer_scope
+  l2_history: []       # S2 坍缩进 primer_scope
+
+  l3_debates:          # 争议层：分歧在哪（喂决策链环④）
+    - question: 茅台批价 1700 元是不是本轮底？多头押官方控量+1639 指导价托底，空方押收藏/投资性社会库存出清才刚开始——全行业定价锚之争
+      source_hint: 月度批价高频（酒价内参/今日酒价）、茅台公司控量政策公告、渠道草根
+    - question: 「控量挺价」是保品牌的理性选择还是失血陷阱？核心分歧：牺牲报表换价盘在需求回暖前是净收益（2014 茅台模式）还是价值陷阱（E 缩水使 PE 被动抬升）
+      source_hint: 2013-2015 复盘料 vs 当前季报降幅、卖方多空报告
+    - question: 85 亿保底分红是硬底还是必然被修正的承诺？分歧点：2026 净利 <85 亿时分红率破 100% 的可持续性——股东会决议约束力 vs 财务现实
+      source_hint: 分红回报规划公告、经营现金流、账面现金、洋河/格力等高分红承诺修正先例
+    - question: 国窖1573 批价反超普五是格局性变化（品牌势能真上移）还是被动现象（五粮液放量跌价更快）？若是后者，国窖守价将丢量、保量将丢价
+      source_hint: 茅五泸三家年报量价拆解、批价高频、渠道调研
+    - question: 消费税新规是已消化的明牌（程序性征管细化）还是未定价的慢变量（征收环节后移+税负提升）？
+      source_hint: 税务总局公告原文、财政部后续细则、2026 中报税金及附加率
+
+  l4_hunting:          # 狩猎层：找错误定价（逐条对齐 thesis K#）
+    - question: 国窖1573 批价 2026H2 能否止跌（连续 2 个月不创新低）并维持对普五反超？市场当前价格隐含的企稳概率是多少？
+      addresses: [K1]
+      search_keywords: [国窖1573 批价, 普五 批价, 飞天茅台 批价]
+      source_hint: 酒价内参月度序列、今日酒价、不二酱
+    - question: 渠道真实库存（经销商+终端+社会库存）能否在 2026 年底降至 3 个月健康水位？价格倒挂何时消除？
+      addresses: [K2]
+      search_keywords: [白酒 渠道库存, 泸州老窖 经销商, 白酒 动销]
+      source_hint: 草根调研纪要、微酒/酒业家、机构调研记录、合同负债环比
+    - question: 2026H2 业绩降幅收窄的领先信号是什么？市场对 2026E 净利一致预期（约 95 亿）是否仍过于乐观（证伪点：Q2 中报/合同负债）？
+      addresses: [K3]
+      search_keywords: [泸州老窖 中报, 泸州老窖 盈利预测, 泸州老窖 合同负债]
+      source_hint: 2026 中报（8 月底）、业绩预告、卖方盈利预测调整轨迹
+    - question: 85 亿保底分红的现金流覆盖机理——2026 经营现金流能否覆盖分红+capex？承诺修正的触发条件（净利阈值）是什么？
+      addresses: [K4]
+      search_keywords: [泸州老窖 经营现金流, 泸州老窖 分红, 泸州老窖 现金]
+      source_hint: 2025 年报现金流量表、分红回报规划原文、洋河等高分红修正先例
+    - question: 消费税新规落地后白酒企业实际税负率是否上升（>1pct）？征收环节后移是否进入立法/征求意见程序？
+      addresses: [K5]
+      search_keywords: [白酒消费税 税负, 消费税 征收后移, 白酒 税金及附加]
+      source_hint: 2026 中报税金及附加率、财政部/税务总局后续文件、券商政策点评
+
+material_priority:
+  tier1:
+    - title: "泸州老窖 2025 年年度报告全文 + 2026 年第一季度报告"
+      type: annual-report
+      ticker: SZSE_000568
+      source: cninfo
+      why: "✓ 已收集（mat-60f5a9/mat-d45eb6）。2025 净利 -19.6% 后的首份完整年报：分产品量价拆解、合同负债、经营现金流——命门2/3 的第一数据源（rings: financial-arc, biz-moat-unit-econ）"
+      addresses: [K2, K3, K4]
+      info_tier: half_public
+    - title: "贵州茅台/五粮液 2025 年报 + 2026Q1（peer 对照）"
+      type: annual-report
+      ticker: SSE_600519
+      source: cninfo
+      why: "✓ 已收集（4 份 PDF）。茅台量价政策=行业天花板传导源；五粮液放量跌价 vs 国窖守价——判「反超是格局还是被动」（命门1，rings: biz-moat-unit-econ, valuation-percentile）"
+      addresses: [K1]
+      info_tier: half_public
+    - title: "国窖1573/普五/飞天 批价高频序列（酒价内参+酒排名归档）"
+      type: data
+      source: 酒价内参（新浪财经/搜狐）+ 酒排名归档
+      why: "✓ 已收集 3 份（6/14、7/5 两期+归档源）。K1 的月度验证轴，06-monitor 滚动续追（rings: valuation-anchor, bull-bear）"
+      addresses: [K1, K2]
+      info_tier: half_public
+    - title: "2026-06-30 机构调研纪要（投资者关系活动记录表，中金/华福参与）"
+      type: data
+      source: cninfo/巨潮投资者关系栏目
+      why: "✓ 已收集 2 份（活动记录表 PDF+管理信息公告）。半年度经营近况一手口径：管理层对批价/库存/消费税的直接回应（命门2/3，rings: bull-bear, mgmt-capital-alloc）"
+      addresses: [K2, K3, K5]
+      info_tier: half_public
+    - title: "卖方深度研报 4 份（加速出清/经营稳健分红提升/复盘系列/产能研报）"
+      type: sell-side-note
+      source: 东方财富研报中心 PDF
+      why: "✓ 已收集 5 份（含一致预期页）。多空论据 + 盈利预测模型锚（rings: consensus, bull-bear）"
+      addresses: [K3, K4]
+      info_tier: public
+
+  tier2:
+    - title: "2025年度股东会决议公告 + 2024-2026年度股东分红回报规划 + 利润分配预案 + 中期分红授权"
+      type: policy
+      source: cninfo 临时公告
+      why: "✓ 已收集 6 份。K4 保底 85 亿分红的法律文本依据——承诺的约束力层级（rings: mgmt-capital-alloc, valuation-anchor）"
+      addresses: [K4]
+      info_tier: public
+    - title: "消费税新规：税务总局公告原文+官方解读+白酒申报实操"
+      type: policy
+      source: 税务总局 fgk.chinatax.gov.cn + 财税垂直站
+      why: "✓ 已收集 3 份。K5 税负影响的一手政策文本（rings: bull-bear）"
+      addresses: [K5]
+      info_tier: public
+    - title: "2013-2015 白酒深度调整周期复盘（复盘系列之七+中金历次周期+高端量价研报）"
+      type: industry-research
+      source: 东财/财联社/新浪研报
+      why: "✓ 已收集 3 份。历史镜鉴：反转信号出现顺序对照本轮（rings: historical-mirror）"
+      addresses: [K1, K3]
+      info_tier: public
+    - title: "渠道草根调研：库存高企困局报道+渠道高压评论+经销商堆货 7 个月草根贴"
+      type: data
+      source: DoNews/观察者网/什么值得买 UGC
+      why: "✓ 已收集 3 份（均 mid 待确认）。命门2 社会库存的草根证据（rings: bull-bear）"
+      addresses: [K2]
+      info_tier: hard
+    - title: "卖方一致预期：同花顺盈利预测页+雪球估值讨论+东证/华鑫评级"
+      type: data
+      source: 同花顺/雪球/新浪财经
+      why: "✓ 已收集 4 份。一致预期锚与目标价离散度（rings: consensus）"
+      addresses: [K3]
+      info_tier: half_public
+    - title: "洋河股份 2019-2021 渠道库存危机镜鉴复盘（新增 · historical-mirror 环⑤）"
+      type: industry-research
+      source: 券商洋河复盘研报/财经媒体深度
+      why: "⬜ 01 新增待收。环⑤ B 靶点：渠道压货模式失效→主动控货去库存→报表与股价的双杀与修复全过程，是本轮老窖最直接的单公司镜鉴（rings: historical-mirror）"
+      addresses: [K1, K3]
+      info_tier: public
+    - title: "高端白酒需求结构拆解（政务/商务/宴席/自饮/收藏占比 + 禁酒令影响实况）（新增 · primer #9 背景）"
+      type: industry-research
+      source: 券商行业深度/协会数据/媒体调研
+      why: "⬜ 01 新增待收。primer 入门目标 #9 背景料 + K2 需求侧判断：政务出清≠需求归零的结构证据（rings: biz-moat-unit-econ, bull-bear）"
+      addresses: [K2]
+      info_tier: public
+
+  tier3:
+    - title: "管理层 track record + 资本配置史（股权激励低门槛报道+刘淼策略口径+回购注销/关联交易公告）"
+      type: data
+      source: 蓝鲸财经/证券时报/cninfo
+      why: "✓ 已收集 4 份。A 合同 mgmt-capital-alloc（rings: mgmt-capital-alloc）"
+      addresses: [K4]
+      info_tier: half_public
+    - title: "产能/窖池/基酒储备（17 万吨基酒口径+雪球产能分析）"
+      type: data
+      source: 凤凰网酒业/雪球
+      why: "✓ 已收集 2 份。高端放量产能天花板（rings: biz-moat-unit-econ）"
+      addresses: [K3]
+      info_tier: public
+    - title: "中低档产品线动销（股东大会直击+十五五目标报道）"
+      type: data
+      source: 搜狐/新华网
+      why: "✓ 已收集 2 份。对冲腿：特曲/窖龄/高光复苏弹性（rings: biz-moat-unit-econ, bull-bear）"
+      addresses: [K3]
+      info_tier: half_public
+
+key_risks_to_monitor:
+  - "飞天茅台批价跌破 1600/1500 元（K1 证伪 → 千元带整体下移，触发卖出纪律）"
+  - "2026 中报（8 月底）：营收/净利降幅是否收窄、合同负债环比方向、税金及附加率变化（K3+K5 验证节点）"
+  - "2026 年度分红方案是否足额兑现 85 亿、口径是否从保底额转为分红率（K4 证伪点）"
+  - "国窖1573 批价月度序列：是否连续 2 个月不创新低、对普五反超是否维持（K1 右侧确认）"
+  - "消费税征收环节后移是否进入立法/征求意见程序（K5 升级为命门的触发器）"
+  - "茅台公司量价政策（控量/提价/拆箱）变动——行业天花板的直接传导源"
+
+analogies_to_study:
+  - case: "中国白酒 2013-2015 深度调整（限三公+塑化剂）"
+    logic: "政策冲击→需求坍塌→库存出清→批价下行→控量挺价→龙头先反转；本轮同样政策+库存双杀"
+    limit: "本轮需求结构已大众化（政务占比远低于 2013）、无塑化剂式安全事故、新增消费税改革变量、茅台金融属性更强"
+  - case: "洋河股份 2019-2021 渠道库存危机"
+    logic: "渠道压货模式失效→库存高企+价格倒挂→主动控货去库存→营收连续两年下滑→去库存成功后修复；单公司层面与老窖当前处境最像"
+    limit: "洋河是次高端区域龙头（品牌高度不及国窖1573）；洋河调整期行业仍上行（有行业β托底），本轮是全行业下行"
+  - case: "法国干邑 2012-2015（中国反腐冲击）"
+    logic: "高端烈酒对中国政务/礼品需求依赖→反腐后需求坍塌→人头马/轩尼诗靠大众市场+美国市场重构需求复苏"
+    limit: "干邑有全球市场分散（美国 hip-hop 文化接盘），国窖 1573 几乎 100% 依赖国内市场；复苏路径不可照搬"

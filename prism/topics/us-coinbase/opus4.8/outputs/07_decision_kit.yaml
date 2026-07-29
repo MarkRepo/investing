@@ -7,39 +7,41 @@ generated: 2026-07-15T00:00:00Z
 data_freshness: 2026-07-14
 
 buy_box:
-  strong_buy_max: 130
-  accumulate_min: 100
+  strong_buy_max: 110
+  accumulate_min: 90
   accumulate_max: 130
   hold_min: 130
   hold_max: 210
   current_price: 159.5
   price_as_of: 2026-07-14
-  current_zone: hold
+  current_zone: observe_rich
+  ev_breakeven_price: 153
+  note: 三评+资产负债表桥后按 SOTP 混合经营倍数~17x + 净现金$3B+BTC持仓$1.6B+股权+Base/Deribit期权，base~$135-145(中枢~$140)；现价 $159.5 高于 base ~9~14%、EV −4% → 略贵/观望。EV 盈亏平衡 ~$153，真安全边际 ≤$120-130(+18~40%)，强力买 ≤$110(+40%)。⚠️股数(266M/300M)±$15、BTC折价±$5，base 为区间。
 
 position_framework:
   position_tier: 试探
-  sizing_rationale: 05-critic 后 base 下调至 $170-180、现价 EV 仅 +3-4%、安全边际薄——现价仅极小试探/观望，主力仓位等 ≤$130 强力买入区（该价位 EV~+27%）。K1 利润地板降级为缓冲垫、K3/K4 未解、beta 3.35 高波动。
+  sizing_rationale: 估值方法=SOTP混合经营倍数(~17x)+资产负债表桥(净现金$3B+BTC持仓$1.6B+Circle/战略股权$0.9B+Base/Deribit期权$4B，漏加~$2.5B补回)。base $120-140→$135-145(中枢~$140)。现价 $159.5 高于 base ~9~14%、EV −4% → 现价不建仓(略贵/观望)。thesis 5/10(中性偏谨慎，方向未翻空)。主力仓位等 ≤$110(EV+40%)，逢低吸纳 ≤$120-130。K1缓冲垫/K3已price-in/K4 take rate独立非周期未解/beta 3.35。
   initial_max_pct: null
   full_max_pct: 5
-  add_ladder_prices: [95, 110, 130]
+  add_ladder_prices: [90, 100, 110]
   max_cluster_pct: null
 
 valuation_models:
-  - name: normalized_earnings_pe
-    label: 正常化盈利 × 周期中枢 PE（主模型·base 用经营性正常化 ~$2.0B）
-    bull_fair_value: [310, 310]
-    base_fair_value: [160, 185]
-    bear_fair_value: [60, 75]
-  - name: ev_ebitda_cross_cycle
-    label: EV/EBITDA 跨周期
-    bull_fair_value: [310, 310]
-    base_fair_value: [158, 158]
-    bear_fair_value: [63, 63]
+  - name: sotp_operating_pe_plus_balance_sheet
+    label: SOTP 经营 PE ~17x($1.75B) + 资产负债表桥(净现金+BTC持仓+股权+Base/Deribit期权)（主模型·杠铃）
+    bull_fair_value: [300, 300]
+    base_fair_value: [137, 137]
+    bear_fair_value: [60, 70]
+  - name: ev_ebitda_blended_plus_bridge
+    label: EV/EBITDA 混合(base 13x) + 净现金/金融资产桥
+    bull_fair_value: [322, 322]
+    base_fair_value: [137, 137]
+    bear_fair_value: [56, 56]
   - name: ps_cross_section
-    label: P/S 同业横截面（vs Robinhood 21.7 / Circle 5.9）
-    bull_fair_value: [380, 380]
-    base_fair_value: [187, 187]
-    bear_fair_value: [73, 73]
+    label: P/S 同业横截面(base 6x≈现价·PS已隐含整体口径；COIN 6.69 已 ≥ CRCL 5.86)
+    bull_fair_value: [368, 368]
+    base_fair_value: [147, 147]
+    bear_fair_value: [77, 77]
 
 kill_criteria:
   - id: k1_ss_floor_break
@@ -102,6 +104,7 @@ market_implied:
 
 my_vs_market_delta:
   metric: implied_ev_ebitda_midcycle
-  my_value: 17
-  delta: "+3x"
-  direction: long
+  my_value: 13
+  delta: "-1x"
+  direction: slightly_rich
+  note: 按 SOTP 混合经营 ~13x EV/EBITDA + 资产负债表桥，base~$140 < 现价$159.5(高~9~14%)、EV −4%；delta 由 v1 的 long +3x 翻为略贵/观望。不翻空仅因 bull 尾部不对称（≤$110 才是正 EV 期权）+ 资产负债表垫底。

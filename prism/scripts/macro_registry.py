@@ -62,7 +62,8 @@ VALID_FETCH_METHOD = ("fred-api", "recipe", "akshare", "yfinance", "macromicro",
 VALID_FEDWATCH_METRIC = ("next_cut_prob", "next_rate", "eoy_rate", "eoy_cuts")   # FedWatch 隐含路径可落标量
 VALID_TEXT_FETCH = ("fomc", "qra", "china_us", "hfcaa", "politburo", "pbc_mpr", "fed_speech")   # 脚本「取文」通道（下载原文存本地缓存），须与 textfetch._FETCHERS 键一致；
                                # 立场判读仍走 LLM，故仅 llm/scriptable_todo 项可设，与 fetch_method 互斥
-VALID_RECIPE_KIND = ("json", "csv", "matrix", "html", "json_scan")   # 须与 recipe_fetch._PARSERS 键一致
+VALID_RECIPE_KIND = ("json", "csv", "matrix", "html", "json_scan", "html_list")   # html_list 是两步取
+                               # （列表→详情），不在 recipe_fetch._PARSERS 表内，其余须与该表键一致
 VALID_MOFCOM_METRIC = ("credit_impulse",)   # 须与 mofcom_fetch._KNOWN_METRICS 键一致（mofcom 块按 metric 分派派生）
 
 # 输入源族系（input_glossary 词典/Web 表分组键，顺序=展示顺序，单一真相）
@@ -73,9 +74,11 @@ CANONICAL_FAMILIES = (
 )
 # 每 kind 的必填 parse 键（缺则取不到值）：matrix 须 row_label（解析器靠它定位数据行；
 # header_label/col_index/delimiter 有默认或仅影响日期）。html 须 value_regex（第 1 捕获组=值；
-# date_regex 选填）。
+# date_regex 选填）。html_list 须 list_item_regex（列表页里定位候选条目 id/标题的正则，
+# 缺了连第一步都跑不动；value_regex/detail_url_template 同样必填但由 recipe_fetch 运行时兜底）。
 _RECIPE_REQUIRED_PARSE = {"json": "json_path", "csv": "value_column", "matrix": "row_label",
-                          "html": "value_regex", "json_scan": "match_regex"}
+                          "html": "value_regex", "json_scan": "match_regex",
+                          "html_list": "list_item_regex"}
 
 # policy 立场有序轴：轴名 → 档位元组（有序，索引升=趋势的"高"端）。diff 按索引差算方向。
 STANCE_SCALES = {

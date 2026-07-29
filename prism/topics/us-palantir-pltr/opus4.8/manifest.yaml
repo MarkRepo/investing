@@ -1,0 +1,1030 @@
+slug: us-palantir-pltr
+variant: opus4.8
+updated: '2026-07-18T00:56:16.639021+00:00'
+materials:
+- id: mat-7ae61e
+  filename: 2026-07-17_palantir-q1-2026-earnings-u-s-revenue-crosses-100-.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.197818+00:00'
+  processed: false
+  notes: query='Palantir Q1 2026 earnings revenue growth guidance raised' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir Q1 2026 earnings revenue growth guidance raised
+    url: https://www.tikr.com/blog/palantir-q1-2026-earnings-u-s-revenue-crosses-100-growth-for-the-first-time
+    domain: tikr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.196905+00:00'
+    stale_at: '2026-08-16T14:21:34.196905+00:00'
+    expire_at: '2026-10-15T14:21:34.196905+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e2a5eb
+  filename: 2026-07-17_palantir-q1-2026-earnings-revenue-surges-85-guidan.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.200961+00:00'
+  processed: false
+  notes: query='Palantir Q1 2026 earnings revenue growth guidance raised' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir Q1 2026 earnings revenue growth guidance raised
+    url: https://finance.yahoo.com/markets/stocks/articles/palantir-q1-2026-earnings-revenue-205048964.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.200049+00:00'
+    stale_at: '2026-08-16T14:21:34.200049+00:00'
+    expire_at: '2026-10-15T14:21:34.200049+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d21f32
+  filename: 2026-07-17_palantir-q1-2026-revenue-jumps-85-with-strong-prof.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.204862+00:00'
+  processed: false
+  notes: query='Palantir Q1 2026 earnings revenue growth guidance raised' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir Q1 2026 earnings revenue growth guidance raised
+    url: https://www.stocktitan.net/sec-filings/PLTR/8-k-palantir-technologies-inc-reports-material-event-e4ff3e917756.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.203627+00:00'
+    stale_at: '2026-08-16T14:21:34.203627+00:00'
+    expire_at: '2026-10-15T14:21:34.203627+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4631bc
+  filename: 2026-07-17_palantir-pltr-q1-earnings-report-2026.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.209649+00:00'
+  processed: false
+  notes: query='Palantir Q1 2026 earnings revenue growth guidance raised' | query='Palantir
+    US commercial revenue growth rate latest quarter 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir net dollar retention customer count Q1 2026
+    url: https://www.cnbc.com/2026/05/04/palantir-pltr-q1-earnings-report-2026.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.343020+00:00'
+    stale_at: '2026-08-16T14:21:34.343020+00:00'
+    expire_at: '2026-10-15T14:21:34.343020+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Palantir US commercial revenue growth rate latest quarter 2026
+- id: mat-e61407
+  filename: 2026-07-17_palantir-reports-70-revenue-growth-beats-estimates.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.216102+00:00'
+  processed: false
+  notes: query='Palantir FY2025 full year revenue US commercial growth results'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir FY2025 full year revenue US commercial growth results
+    url: https://www.linkedin.com/posts/palantir-technologies_palantir-reports-q4-2025-revenue-growth-of-activity-7424196613805453313-50NE
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.213721+00:00'
+    stale_at: '2026-08-16T14:21:34.213721+00:00'
+    expire_at: '2026-10-15T14:21:34.213721+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fc9497
+  filename: 2026-07-17_palantir-reports-q3-2025-us-comm-revenue-growth.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.222422+00:00'
+  processed: false
+  notes: query='Palantir FY2025 full year revenue US commercial growth results'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir FY2025 full year revenue US commercial growth results
+    url: https://investors.palantir.com/news-details/2025/Palantir-Reports-Q3-2025-U-S--Comm-Revenue-Growth-of-121-YY-and-Revenue-Growth-of-63-YY-Guides-Q4-Revenue-to-61-YY-and-U-S--Comm-Revenue-to-121-YY-Raises-FY-2025-Revenue-Guidance-to-53-YY-Crushing-Consensus-Expectations
+    domain: investors.palantir.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.219898+00:00'
+    stale_at: '2026-08-16T14:21:34.219898+00:00'
+    expire_at: '2026-10-15T14:21:34.219898+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ba9e89
+  filename: 2026-07-17_palantir-reports-q4-2025-revenue-growth-of-70-y-y.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.229825+00:00'
+  processed: false
+  notes: query='Palantir FY2025 full year revenue US commercial growth results'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir FY2025 full year revenue US commercial growth results
+    url: https://investors.palantir.com/news-details/2026/Palantir-Reports-Q4-2025-U-S--Comm-Revenue-Growth-of-137-YY-and-Revenue-Growth-of-70-YY-Issues-FY-2026-Revenue-Guidance-of-61-YY-and-U-S--Comm-Revenue-Guidance-of-115-YY-Crushing-Consensus-Expectations
+    domain: investors.palantir.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.226989+00:00'
+    stale_at: '2026-08-16T14:21:34.226989+00:00'
+    expire_at: '2026-10-15T14:21:34.226989+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-12a416
+  filename: 2026-07-17_palantir-technologies-pltr-statistics-valuation.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.244078+00:00'
+  processed: false
+  notes: query='Palantir stock price market cap valuation forward PE price-to-sales
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir stock price market cap valuation forward PE price-to-sales 2026
+    url: https://stockanalysis.com/stocks/pltr/statistics
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.240977+00:00'
+    stale_at: '2026-08-16T14:21:34.240977+00:00'
+    expire_at: '2026-10-15T14:21:34.240977+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e0176b
+  filename: 2026-07-17_palantir-nears-a-valuation-wall-as-markets-price-i.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.253915+00:00'
+  processed: false
+  notes: query='Palantir stock price market cap valuation forward PE price-to-sales
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir stock price market cap valuation forward PE price-to-sales 2026
+    url: https://www.investing.com/analysis/palantir-nears-a-valuation-wall-as-markets-price-it-like-a-core-ai-platform-200672399
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.250493+00:00'
+    stale_at: '2026-08-16T14:21:34.250493+00:00'
+    expire_at: '2026-10-15T14:21:34.250493+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3c468f
+  filename: 2026-07-17_palantir-technologies-inc-pltr-valuation-measures-.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.266510+00:00'
+  processed: false
+  notes: query='Palantir stock price market cap valuation forward PE price-to-sales
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir stock price market cap valuation forward PE price-to-sales 2026
+    url: https://finance.yahoo.com/quote/PLTR/key-statistics
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.261277+00:00'
+    stale_at: '2026-08-16T14:21:34.261277+00:00'
+    expire_at: '2026-10-15T14:21:34.261277+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d11282
+  filename: 2026-07-17_palantir-reports-q1-2026-us-revenue-growth-of-104-.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.293425+00:00'
+  processed: false
+  notes: query='Palantir US commercial revenue growth rate latest quarter 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir remaining performance obligations RPO total contract value bookings
+      2026
+    url: https://investors.palantir.com/news-details/2026/Palantir-Reports-Q1-2026-U-S--Revenue-Growth-of-104-YY-and-Revenue-Growth-of-85-YY-Raises-FY-2026-Revenue-Guidance-to-71-YY-Growth-and-U-S--Comm-Revenue-Guidance-to-120-YY-Crushing-Consensus-Expectations
+    domain: investors.palantir.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.416062+00:00'
+    stale_at: '2026-08-16T14:21:34.416062+00:00'
+    expire_at: '2026-10-15T14:21:34.416062+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Palantir US commercial revenue growth rate latest quarter 2026
+- id: mat-60e1a0
+  filename: 2026-07-17_palantir-technologies-shares-outstanding-2019-2026.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.310074+00:00'
+  processed: false
+  notes: query='Palantir stock based compensation dilution shares outstanding 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir stock based compensation dilution shares outstanding 2026
+    url: https://www.macrotrends.net/stocks/charts/PLTR/palantir-technologies/shares-outstanding
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.304735+00:00'
+    stale_at: '2026-08-16T14:21:34.304735+00:00'
+    expire_at: '2026-10-15T14:21:34.304735+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bdf836
+  filename: 2026-07-17_palantir-technologies-inc-pltr---stock-based-compe.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.327272+00:00'
+  processed: false
+  notes: query='Palantir stock based compensation dilution shares outstanding 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir stock based compensation dilution shares outstanding 2026
+    url: https://www.alphaquery.com/stock/PLTR/fundamentals/annual/stock-based-compensation
+    domain: alphaquery.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.320589+00:00'
+    stale_at: '2026-08-16T14:21:34.320589+00:00'
+    expire_at: '2026-10-15T14:21:34.320589+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bfe705
+  filename: 2026-07-17_should-you-buy-palantir-stock-while-the-pentagon-i.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.361706+00:00'
+  processed: false
+  notes: query='Palantir government revenue DOGE defense budget 2026 impact' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir government revenue DOGE defense budget 2026 impact
+    url: https://finance.yahoo.com/markets/stocks/articles/buy-palantir-stock-while-pentagon-000300498.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.355284+00:00'
+    stale_at: '2026-08-16T14:21:34.355284+00:00'
+    expire_at: '2026-10-15T14:21:34.355284+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-56d974
+  filename: 2026-07-17_palantir-stock-drops-as-pentagon-prepares-for-budg.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.377066+00:00'
+  processed: false
+  notes: query='Palantir government revenue DOGE defense budget 2026 impact'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir government revenue DOGE defense budget 2026 impact
+    url: https://www.forbes.com/sites/antoniopequenoiv/2025/02/19/palantir-stock-suddenly-falls-10-after-report-of-incoming-pentagon-budget-cuts
+    domain: forbes.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.371273+00:00'
+    stale_at: '2026-08-16T14:21:34.371273+00:00'
+    expire_at: '2026-10-15T14:21:34.371273+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bfddd3
+  filename: 2026-07-17_palantir-pltr-q1-2026-earnings-transcript.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.396082+00:00'
+  processed: false
+  notes: query='Palantir remaining performance obligations RPO total contract value
+    bookings 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir remaining performance obligations RPO total contract value bookings
+      2026
+    url: https://www.theglobeandmail.com/investing/markets/stocks/PLTR/pressreleases/1698303/palantir-pltr-q1-2026-earnings-transcript
+    domain: theglobeandmail.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.390098+00:00'
+    stale_at: '2026-08-16T14:21:34.390098+00:00'
+    expire_at: '2026-10-15T14:21:34.390098+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b3acfc
+  filename: 2026-07-17_pltr-forecast-price-target-analyst-ratings.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.438457+00:00'
+  processed: true
+  notes: query='Palantir analyst consensus price target FY2026 FY2027 estimate' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir analyst consensus price target FY2026 FY2027 estimate
+    url: https://www.chartmill.com/stock/quote/PLTR/analyst-ratings
+    domain: chartmill.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:32:41.243117+00:00'
+    stale_at: '2026-08-16T14:32:41.243117+00:00'
+    expire_at: '2026-10-15T14:32:41.243117+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-2699a9
+  filename: 2026-07-17_pltr-palantir-technologies-inc-analyst-estimates.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.458904+00:00'
+  processed: false
+  notes: query='Palantir analyst consensus price target FY2026 FY2027 estimate'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir analyst consensus price target FY2026 FY2027 estimate
+    url: https://www.wsj.com/market-data/quotes/PLTR/research-ratings?eafs_enabled=false
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.450315+00:00'
+    stale_at: '2026-08-16T14:21:34.450315+00:00'
+    expire_at: '2026-10-15T14:21:34.450315+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-69e68b
+  filename: 2026-07-17_palantir-technologies-pltr-stock-forecast-and-pric.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.480915+00:00'
+  processed: true
+  notes: query='Palantir analyst consensus price target FY2026 FY2027 estimate' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir analyst consensus price target FY2026 FY2027 estimate
+    url: https://www.marketbeat.com/stocks/NASDAQ/PLTR/forecast
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:32:41.283757+00:00'
+    stale_at: '2026-08-16T14:32:41.283757+00:00'
+    expire_at: '2026-10-15T14:32:41.283757+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-43d614
+  filename: 2026-07-17_palantir-insiders-keep-selling-shares-after-4-bill.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.504232+00:00'
+  processed: false
+  notes: query='Palantir Peter Thiel Alex Karp insider selling shares 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir Peter Thiel Alex Karp insider selling shares 2026
+    url: https://www.bloomberg.com/news/articles/2025-02-21/palantir-insiders-keep-selling-after-4-billion-windfall-in-2024
+    domain: bloomberg.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.496448+00:00'
+    stale_at: '2026-08-16T14:21:34.496448+00:00'
+    expire_at: '2026-10-15T14:21:34.496448+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-600cc2
+  filename: 2026-07-17_palantir-reports-104-q1-revenue-growth-raises-guid.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.529357+00:00'
+  processed: false
+  notes: query='Palantir international commercial revenue Europe growth 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir international commercial revenue Europe growth 2026
+    url: https://www.linkedin.com/posts/palantir-technologies_palantir-reports-q1-26-us-revenue-growth-activity-7457159109784666112-kO8A
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.521346+00:00'
+    stale_at: '2026-08-16T14:21:34.521346+00:00'
+    expire_at: '2026-10-15T14:21:34.521346+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-69a082
+  filename: 2026-07-17_palantir-q1-2026-has-broken-the-enterprise-softwar.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.551833+00:00'
+  processed: false
+  notes: query='Palantir international commercial revenue Europe growth 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir international commercial revenue Europe growth 2026
+    url: https://www.saastr.com/palantir-q1-2026-has-broken-the-enterprise-software-mold-again-revenue-accelerates-to-85-at-6b-arr
+    domain: saastr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.543614+00:00'
+    stale_at: '2026-08-16T14:21:34.543614+00:00'
+    expire_at: '2026-10-15T14:21:34.543614+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-112a9a
+  filename: 2026-07-17_army-plans-big-shakeup-in-software-buying-practice.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.582870+00:00'
+  processed: false
+  notes: query='Palantir new contracts 2026 Army defense Warp Speed commercial deal'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir new contracts 2026 Army defense Warp Speed commercial deal
+    url: https://defensescoop.com/2025/07/31/army-palantir-software-enterprise-agreement-10-billion
+    domain: defensescoop.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.573590+00:00'
+    stale_at: '2026-08-16T14:21:34.573590+00:00'
+    expire_at: '2026-10-15T14:21:34.573590+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ddc313
+  filename: 2026-07-17_u-s-army-awards-enterprise-service-agreement-to-en.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.607522+00:00'
+  processed: false
+  notes: query='Palantir new contracts 2026 Army defense Warp Speed commercial deal'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Palantir new contracts 2026 Army defense Warp Speed commercial deal
+    url: https://www.army.mil/article/287506/u_s_army_awards_enterprise_service_agreement_to_enhance_military_readiness_and_drive_operational_efficiency
+    domain: army.mil
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:21:34.598310+00:00'
+    stale_at: '2026-08-16T14:21:34.598310+00:00'
+    expire_at: '2026-10-15T14:21:34.598310+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cfc8db
+  filename: 2026-07-17_press-releases.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.637001+00:00'
+  processed: false
+  notes: query='Palantir new contracts 2026 Army defense Warp Speed commercial deal'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir new contracts 2026 Army defense Warp Speed commercial deal
+    url: https://www.palantir.com/newsroom/press-releases
+    domain: palantir.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.627538+00:00'
+    stale_at: '2026-08-16T14:21:34.627538+00:00'
+    expire_at: '2026-10-15T14:21:34.627538+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9fc430
+  filename: 2026-07-17_we-are-excited-to-announce-palantir-s-first-warp-s.md
+  source_type: web-search
+  added: '2026-07-17T14:21:34.665403+00:00'
+  processed: false
+  notes: query='Palantir new contracts 2026 Army defense Warp Speed commercial deal'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Palantir new contracts 2026 Army defense Warp Speed commercial deal
+    url: https://www.linkedin.com/posts/palantir-technologies_we-are-excited-to-announce-palantirs-first-activity-7272582693890965505-8t_V
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:21:34.652983+00:00'
+    stale_at: '2026-08-16T14:21:34.652983+00:00'
+    expire_at: '2026-10-15T14:21:34.652983+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-45d023
+  filename: 2026_PLTR_10-Q_2026-05-05.htm
+  source_type: quarterly-report
+  added: '2026-07-17T14:29:14.416575+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Palantir Technologies Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-53e892
+  filename: sec/2026_PLTR_10-Q_2026-05-05/item_1_financial.md
+  source_type: sec-section
+  added: '2026-07-17T14:29:14.738506+00:00'
+  processed: true
+  notes: split from 2026_PLTR_10-Q_2026-05-05.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-45d023
+  sec_section: item_1_financial
+- id: mat-eea90a
+  filename: sec/2026_PLTR_10-Q_2026-05-05/item_2_mda.md
+  source_type: sec-section
+  added: '2026-07-17T14:29:14.764230+00:00'
+  processed: true
+  notes: split from 2026_PLTR_10-Q_2026-05-05.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-45d023
+  sec_section: item_2_mda
+- id: mat-300438
+  filename: sec/2026_PLTR_10-Q_2026-05-05/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-17T14:29:14.781952+00:00'
+  processed: true
+  notes: split from 2026_PLTR_10-Q_2026-05-05.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-45d023
+  sec_section: item_3_quant_risk
+- id: mat-619866
+  filename: sec/2026_PLTR_10-Q_2026-05-05/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-17T14:29:14.799480+00:00'
+  processed: true
+  notes: split from 2026_PLTR_10-Q_2026-05-05.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-45d023
+  sec_section: item_1a_risk
+- id: mat-6b0cf2
+  filename: 2025_PLTR_10-K_2026-02-17.htm
+  source_type: annual-report
+  added: '2026-07-17T14:29:18.889253+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Palantir Technologies Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-c4c533
+  filename: sec/2025_PLTR_10-K_2026-02-17/item_1_business.md
+  source_type: sec-section
+  added: '2026-07-17T14:29:19.043130+00:00'
+  processed: true
+  notes: split from 2025_PLTR_10-K_2026-02-17.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-6b0cf2
+  sec_section: item_1_business
+- id: mat-fbccda
+  filename: sec/2025_PLTR_10-K_2026-02-17/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-17T14:29:19.064286+00:00'
+  processed: true
+  notes: split from 2025_PLTR_10-K_2026-02-17.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-6b0cf2
+  sec_section: item_1a_risk
+- id: mat-0d05e4
+  filename: sec/2025_PLTR_10-K_2026-02-17/item_7_mda.md
+  source_type: sec-section
+  added: '2026-07-17T14:29:19.082725+00:00'
+  processed: true
+  notes: split from 2025_PLTR_10-K_2026-02-17.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-6b0cf2
+  sec_section: item_7_mda
+- id: mat-eaa74b
+  filename: sec/2025_PLTR_10-K_2026-02-17/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-17T14:29:19.101582+00:00'
+  processed: true
+  notes: split from 2025_PLTR_10-K_2026-02-17.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-6b0cf2
+  sec_section: item_7a_quant_risk
+- id: mat-36dbfb
+  filename: sec/2025_PLTR_10-K_2026-02-17/item_8_financial.md
+  source_type: sec-section
+  added: '2026-07-17T14:29:19.120500+00:00'
+  processed: true
+  notes: split from 2025_PLTR_10-K_2026-02-17.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-6b0cf2
+  sec_section: item_8_financial
+- id: mat-b5aaeb
+  filename: 2026-07-17_palantir-pltr-q1-2026-earnings-transcript-the-motl.md
+  source_type: web-search
+  added: '2026-07-17T14:32:40.908286+00:00'
+  processed: true
+  notes: query='Palantir Q1 2026 earnings call transcript Karp commercial AIP' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Palantir Q1 2026 earnings call transcript Karp commercial AIP
+    url: https://www.fool.com/earnings/call-transcripts/2026/05/04/palantir-pltr-q1-2026-earnings-transcript
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:32:40.896224+00:00'
+    stale_at: '2026-08-16T14:32:40.896224+00:00'
+    expire_at: '2026-10-15T14:32:40.896224+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-9b0925
+  filename: 2026-07-17_palantir---q1-2026-business-update.md
+  source_type: web-search
+  added: '2026-07-17T14:32:40.941415+00:00'
+  processed: true
+  notes: query='Palantir Q1 2026 earnings call transcript Karp commercial AIP'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Palantir Q1 2026 earnings call transcript Karp commercial AIP
+    url: https://investors.palantir.com/files/Palantir%20-%20Q1%202026%20Business%20Update.pdf
+    domain: investors.palantir.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:32:40.929400+00:00'
+    stale_at: '2026-08-16T14:32:40.929400+00:00'
+    expire_at: '2026-10-15T14:32:40.929400+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-62251e
+  filename: 2026-07-17_palantir-technologies-inc-pltr-q4-2025-earnings-ca.md
+  source_type: web-search
+  added: '2026-07-17T14:32:40.975449+00:00'
+  processed: true
+  notes: query='Palantir Q4 2025 earnings call transcript full year results'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Palantir Q4 2025 earnings call transcript full year results
+    url: https://seekingalpha.com/article/4865083-palantir-technologies-inc-pltr-q4-2025-earnings-call-transcript
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:32:40.963235+00:00'
+    stale_at: '2026-08-16T14:32:40.963235+00:00'
+    expire_at: '2026-10-15T14:32:40.963235+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-1c7ab6
+  filename: 2026-07-17_q1-2026-letter-to-shareholders.md
+  source_type: web-search
+  added: '2026-07-17T14:32:41.009721+00:00'
+  processed: true
+  notes: query='Palantir investor day 2026 slides shareholder letter guidance'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: Palantir investor day 2026 slides shareholder letter guidance
+    url: https://www.palantir.com/q1-2026-letter/en
+    domain: palantir.com
+    domain_tier: whitelist
+    searched_at: '2026-07-17T14:32:40.997476+00:00'
+    stale_at: '2026-08-16T14:32:40.997476+00:00'
+    expire_at: '2026-10-15T14:32:40.997476+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b7f267
+  filename: 2026-07-17_datadog-vs-snowflake-which-cloud-data-stock-is-the.md
+  source_type: web-search
+  added: '2026-07-17T14:32:41.045478+00:00'
+  processed: true
+  notes: query='high growth software stock valuation de-rating multiple compression
+    Snowflake Datadog Zoom after peak growth' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: high growth software stock valuation de-rating multiple compression Snowflake
+      Datadog Zoom after peak growth
+    url: https://www.tikr.com/blog/datadog-vs-snowflake-which-cloud-data-stock-is-the-better-growth-play
+    domain: tikr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:32:41.032910+00:00'
+    stale_at: '2026-08-16T14:32:41.032910+00:00'
+    expire_at: '2026-10-15T14:32:41.032910+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ace03b
+  filename: 2026-07-17_palantir-technologies-inc-pltr---insider-trading-f.md
+  source_type: web-search
+  added: '2026-07-17T14:32:41.082486+00:00'
+  processed: true
+  notes: query='Palantir SEC Form 4 insider selling Karp Thiel 2026 stock compensation
+    policy' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Palantir SEC Form 4 insider selling Karp Thiel 2026 stock compensation
+      policy
+    url: https://www.secform4.com/insider-trading/1321655.htm
+    domain: secform4.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:32:41.069616+00:00'
+    stale_at: '2026-08-16T14:32:41.069616+00:00'
+    expire_at: '2026-10-15T14:32:41.069616+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-10ff12
+  filename: 2026-07-17_llc-tied-to-peter-thiel-sells-2m-palantir-shares--.md
+  source_type: web-search
+  added: '2026-07-17T14:32:41.120216+00:00'
+  processed: true
+  notes: query='Palantir SEC Form 4 insider selling Karp Thiel 2026 stock compensation
+    policy' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Palantir SEC Form 4 insider selling Karp Thiel 2026 stock compensation
+      policy
+    url: https://www.stocktitan.net/sec-filings/PLTR/form-4-palantir-technologies-inc-insider-trading-activity-b546ce28b273.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:32:41.106579+00:00'
+    stale_at: '2026-08-16T14:32:41.106579+00:00'
+    expire_at: '2026-10-15T14:32:41.106579+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-38d4e3
+  filename: 2026-07-17_palantir-technologies-nasdaq-pltr-profile-2026-fin.md
+  source_type: web-search
+  added: '2026-07-17T14:32:41.160892+00:00'
+  processed: true
+  notes: query='Palantir Databricks Snowflake enterprise AI platform competition AIP
+    win rate 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Palantir Databricks Snowflake enterprise AI platform competition AIP win
+      rate 2026
+    url: https://dexteragent.ai/companies/palantir-technologies-1771662785
+    domain: dexteragent.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:32:41.146179+00:00'
+    stale_at: '2026-08-16T14:32:41.146179+00:00'
+    expire_at: '2026-10-15T14:32:41.146179+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-eddceb
+  filename: 2026-07-17_databricks-vs-palantir-which-enterprise-ai-platfor.md
+  source_type: web-search
+  added: '2026-07-17T14:32:41.202193+00:00'
+  processed: true
+  notes: query='Palantir Databricks Snowflake enterprise AI platform competition AIP
+    win rate 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Palantir Databricks Snowflake enterprise AI platform competition AIP win
+      rate 2026
+    url: https://www.latentview.com/blog/databricks-vs-palantir
+    domain: latentview.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T14:32:41.187125+00:00'
+    stale_at: '2026-08-16T14:32:41.187125+00:00'
+    expire_at: '2026-10-15T14:32:41.187125+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e78988
+  filename: 2026-02-04_saas-de-rating-forward-multiple-39x-to-21x.md
+  source_type: industry-research
+  added: '2026-07-17T16:28:10.912818+00:00'
+  processed: true
+  notes: 软件板块 forward 倍数 39x→21x de-rating 实证(Forbes 2026-02); 攻命门2 终局环 K2 目标价支撑
+  mineru_state: not_needed
+  addresses:
+  - K2
+  rings:
+  - historical-mirror
+  confidence: 0.8
+- id: mat-f6ae70
+  filename: 2026-07-17_palantir-technologies-p-s-ratio-2019-2026-pltr.md
+  source_type: web-search
+  added: '2026-07-17T16:31:18.344995+00:00'
+  processed: false
+  notes: query='Palantir forward price to sales valuation multiple de-rating 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Palantir forward price to sales valuation multiple de-rating 2026
+    url: https://www.macrotrends.net/stocks/charts/PLTR/palantir-technologies/price-sales
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T16:31:18.329924+00:00'
+    stale_at: '2026-08-16T16:31:18.329924+00:00'
+    expire_at: '2026-10-15T16:31:18.329924+00:00'
+    triggered_by: 01-prescan
+- id: mat-c1ea99
+  filename: 2026-07-17_price-fwd-sales-for-palantir-technologies-inc-pltr.md
+  source_type: web-search
+  added: '2026-07-17T16:31:18.388000+00:00'
+  processed: false
+  notes: query='Palantir forward price to sales valuation multiple de-rating 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Palantir forward price to sales valuation multiple de-rating 2026
+    url: https://finbox.com/BMV:PLTR*/explorer/price_to_sales_fwd/
+    domain: finbox.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T16:31:18.372670+00:00'
+    stale_at: '2026-08-16T16:31:18.372670+00:00'
+    expire_at: '2026-10-15T16:31:18.372670+00:00'
+    triggered_by: 01-prescan
+- id: mat-f3c482
+  filename: 2026-07-17_republicans-advance-largest-pentagon-budget-in-his.md
+  source_type: web-search
+  added: '2026-07-17T16:31:18.434859+00:00'
+  processed: false
+  notes: query='Palantir Army ELA government revenue DOGE defense budget cut 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3@FY26-defense-budget
+  confidence: 0.7
+  search_meta:
+    query: Palantir Army ELA government revenue DOGE defense budget cut 2026
+    url: http://democrats-appropriations.house.gov/news/press-releases/republicans-advance-largest-pentagon-budget-history-while-cutting-billions
+    domain: democrats-appropriations.house.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T16:31:18.419536+00:00'
+    stale_at: '2026-08-16T16:31:18.419536+00:00'
+    expire_at: '2026-10-15T16:31:18.419536+00:00'
+    triggered_by: 01-prescan
+- id: mat-9dca30
+  filename: 2026-07-17_fy2026-budget-request-pdf.md
+  source_type: web-search
+  added: '2026-07-17T16:31:18.482433+00:00'
+  processed: false
+  notes: query='Palantir Army ELA government revenue DOGE defense budget cut 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Palantir Army ELA government revenue DOGE defense budget cut 2026
+    url: https://comptroller.war.gov/Portals/45/Documents/defbudget/FY2026/FY2026_Budget_Request.pdf
+    domain: comptroller.war.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T16:31:18.466928+00:00'
+    stale_at: '2026-08-16T16:31:18.466928+00:00'
+    expire_at: '2026-10-15T16:31:18.466928+00:00'
+    triggered_by: 01-prescan
+- id: mat-d473c8
+  filename: 2026-07-17_palantir-schedules-q2-2026-earnings-release-for-au.md
+  source_type: web-search
+  added: '2026-07-17T16:31:18.532002+00:00'
+  processed: false
+  notes: query='Palantir PLTR latest news contract announcement guidance Q2 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5@2026Q2-earnings
+  confidence: 0.7
+  search_meta:
+    query: Palantir PLTR latest news contract announcement guidance Q2 2026
+    url: https://marketchameleon.com/articles/b/2026/7/14/palantir-q2-2026-earnings-date-investor-insight
+    domain: marketchameleon.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T16:31:18.515850+00:00'
+    stale_at: '2026-08-16T16:31:18.515850+00:00'
+    expire_at: '2026-10-15T16:31:18.515850+00:00'
+    triggered_by: 01-prescan
+- id: mat-b596b8
+  filename: 2026-07-17_what-to-expect-from-palantir-s-q2-2026-earnings-re.md
+  source_type: web-search
+  added: '2026-07-17T16:31:18.579065+00:00'
+  processed: false
+  notes: query='Palantir PLTR latest news contract announcement guidance Q2 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5@2026Q2-earnings
+  confidence: 0.7
+  search_meta:
+    query: Palantir PLTR latest news contract announcement guidance Q2 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/expect-palantir-q2-2026-earnings-124258336.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T16:31:18.562087+00:00'
+    stale_at: '2026-08-16T16:31:18.562087+00:00'
+    expire_at: '2026-10-15T16:31:18.562087+00:00'
+    triggered_by: 01-prescan
+- id: mat-7c5dde
+  filename: 2026-07-17_palantir-stock-forecast-raised-2026-revenue-guidan.md
+  source_type: web-search
+  added: '2026-07-17T16:31:18.630752+00:00'
+  processed: false
+  notes: query='Palantir PLTR latest news contract announcement guidance Q2 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Palantir PLTR latest news contract announcement guidance Q2 2026
+    url: https://capital.com/en-int/market-updates/palantir-stock-forecast-02-06-2026
+    domain: capital.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T16:31:18.614280+00:00'
+    stale_at: '2026-08-16T16:31:18.614280+00:00'
+    expire_at: '2026-10-15T16:31:18.614280+00:00'
+    triggered_by: 01-prescan
+- id: mat-9c17b3
+  filename: 2026-07-17_palantir-s-government-to-commercial-transition-is-.md
+  source_type: web-search
+  added: '2026-07-17T16:31:18.681810+00:00'
+  processed: false
+  notes: query='Palantir PLTR AIP commercial revenue government valuation 2026' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Palantir PLTR AIP commercial revenue government valuation 2026
+    url: https://news.alphastreet.com/palantirs-government-to-commercial-transition-is-the-shift-real-or-is-ai-hype-doing-the-work
+    domain: news.alphastreet.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T16:31:18.665227+00:00'
+    stale_at: '2026-08-16T16:31:18.665227+00:00'
+    expire_at: '2026-10-15T16:31:18.665227+00:00'
+    triggered_by: 01-prescan
+- id: mat-2231cf
+  filename: 2026-07-17_palantir-technologies-cash-flow-liquidity-and-dcf-.md
+  source_type: web-search
+  added: '2026-07-17T16:31:18.734967+00:00'
+  processed: false
+  notes: query='Palantir stock based compensation dilution GAAP operating margin free
+    cash flow 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Palantir stock based compensation dilution GAAP operating margin free cash
+      flow 2026
+    url: https://cyclicaflow.substack.com/p/palantir-technologies-cash-flow-liquidity
+    domain: cyclicaflow.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-17T16:31:18.717457+00:00'
+    stale_at: '2026-08-16T16:31:18.717457+00:00'
+    expire_at: '2026-10-15T16:31:18.717457+00:00'
+    triggered_by: 01-prescan

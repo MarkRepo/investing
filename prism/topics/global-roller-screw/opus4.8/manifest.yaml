@@ -1,0 +1,2033 @@
+slug: global-roller-screw
+variant: opus4.8
+updated: '2026-07-24T15:31:35.637308+00:00'
+materials:
+- id: mat-3784f0
+  filename: 2023-07_华金证券_行星滚柱丝杠卡脖子零件.pdf
+  source_type: sell-side-note
+  added: '2026-07-23T16:35:08.467628+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-fa85eb
+  filename: 2023-09_开源证券_丝杠直线传动精密部件.pdf
+  source_type: sell-side-note
+  added: '2026-07-23T16:35:08.468807+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-c210e2
+  filename: 2024-03_华鑫证券_行星滚柱丝杠高精技术集成.pdf
+  source_type: sell-side-note
+  added: '2026-07-23T16:35:08.469717+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: needs
+- id: mat-d90b6f
+  filename: 2026-06-23_与非网_六万美元Optimus中国供应商.md
+  source_type: manual-note
+  added: '2026-07-23T16:35:08.471060+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-2f5472
+  filename: 2025-07-11_300100_announce_zf_关于终止2025年度向特定对象发行A股股票事项的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.473009+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-2efd34
+  filename: 2025-07-16_300100_announce_yjygjxz_2025年半年度业绩预告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.474837+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-301909
+  filename: 2025-10-27_603667_announce_zf_五洲新春关于向特定对象发行A股股票申请获得上海证券交易所受理的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.476656+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-138d44
+  filename: 2025-10-27_603667_announce_zf_浙江五洲新春集团股份有限公司2025年度向特定对象发行A股股票募集说明书（申报稿.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.478745+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-28a341
+  filename: 2025-11-17_603667_announce_zf_五洲新春关于向特定对象发行股票申请文件的审核问询函回复的提示性公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.480959+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-0961b6
+  filename: 2025-12-08_603667_announce_zf_浙江五洲新春集团股份有限公司2025年度向特定对象发行A股股票募集说明书（注册稿.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.483482+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-cccb6b
+  filename: 2025-12-30_603667_announce_fxts_五洲新春股票交易异常波动公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.486288+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-6182cc
+  filename: 2025-12-31_603667_announce_fxts_五洲新春关于股票交易风险提示性公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.489129+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-eecd0e
+  filename: 2025_300100_annual_2026-03-24_双林股份.PDF
+  source_type: annual-report
+  added: '2026-07-23T16:35:08.492176+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-12355e
+  filename: 2025_300946_annual_2026-04-24_恒而达.PDF
+  source_type: annual-report
+  added: '2026-07-23T16:35:08.495586+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-90440c
+  filename: 2025_603667_annual_2026-04-27_五洲新春.PDF
+  source_type: annual-report
+  added: '2026-07-23T16:35:08.499167+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-eaeea1
+  filename: 2026-01-05_603667_announce_zf_五洲新春关于向特定对象发行股票申请获得中国证券监督管理委员会同意注册批复的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.502862+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-95c617
+  filename: 2026-01-19_603667_announce_fxts_五洲新春股票交易异常波动公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.506709+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-bc254b
+  filename: 2026-01-28_300946_announce_yjygjxz_2025年年度业绩预告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.510635+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-f5a537
+  filename: 2026-03-10_603667_announce_zf_浙江五洲新春集团股份有限公司2025年度向特定对象发行A股股票募集说明书（注册稿.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.514998+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-a3d7b7
+  filename: 2026-03-24_300100_announce_kzz_2025年度财务决算报告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.519555+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-4981c6
+  filename: 2026-03-24_300100_announce_kzz_2026年度日常关联交易预计公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.524288+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-8fd7da
+  filename: 2026-03-24_300100_announce_kzz_关于2025年员工持股计划第一个锁定期届满暨解锁条件成就的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.529323+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-18a028
+  filename: 2026-03-24_300100_announce_kzz_关于“质量回报双提升”行动方案的进展公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.534574+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-7fa52f
+  filename: 2026-03-24_300100_announce_kzz_关于为全资子公司提供担保的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.539969+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-53bd5e
+  filename: 2026-03-24_300100_announce_kzz_关于举行2025年度网上业绩说明会的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.545756+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-642f72
+  filename: 2026-03-24_300100_announce_kzz_关于会计政策变更的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.551773+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-754475
+  filename: 2026-03-24_300100_announce_kzz_关于公司2026年度开展资产池业务的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.558081+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-fbeb29
+  filename: 2026-03-24_300100_announce_kzz_关于计提资产减值准备的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.564431+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-34d309
+  filename: 2026-03-24_300100_announce_kzz_商誉减值测试报告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.570894+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-f5434b
+  filename: 2026-03-24_300100_announce_kzz_董事、高级管理人员薪酬管理制度（2026年3月）.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.577936+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-ee958f
+  filename: 2026-04-14_300100_announce_kzz_2025年度股东会决议公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.584944+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-e09e9a
+  filename: 2026-04-16_300100_announce_kzz_2025年年度权益分派实施公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.592388+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-bcd9a7
+  filename: 2026-04-23_603667_announce_zf_五洲新春关于向特定对象发行股票发行情况的提示性公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.599731+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-3da5ea
+  filename: 2026-04-23_603667_announce_zf_浙江五洲新春集团股份有限公司向特定对象发行A股股票发行情况报告书.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.607452+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-57affe
+  filename: 2026-04-24_300946_announce_kzz_2025年年度募集资金存放、管理与使用情况的专项报告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.615239+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-f723dc
+  filename: 2026-04-24_300946_announce_kzz_2026年一季度报告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.623302+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-7cb07e
+  filename: 2026-04-24_300946_announce_kzz_关于2025年度利润分配方案及2026年中期分红规划的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.631866+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-80f860
+  filename: 2026-04-24_300946_announce_kzz_关于2025年度计提资产减值准备及核销资产的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.640526+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-4478af
+  filename: 2026-04-24_300946_announce_kzz_关于2026年度使用暂时闲置自有资金进行现金管理的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.649630+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-1ea049
+  filename: 2026-04-24_300946_announce_kzz_关于2026年度对外担保额度预计的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.658550+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-3ff870
+  filename: 2026-04-24_300946_announce_kzz_关于召开2025年年度股东会的通知.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.667933+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c7c43b
+  filename: 2026-04-24_300946_announce_kzz_关于续聘公司2026年度审计机构的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.677101+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-32c762
+  filename: 2026-04-24_300946_announce_kzz_关于调整公司组织架构的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.686689+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-99133b
+  filename: 2026-04-24_300946_announce_kzz_华泰联合证券有限责任公司关于福建恒而达新材料股份有限公司2025年度募集资金存放.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.696846+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-f61bda
+  filename: 2026-04-24_300946_announce_kzz_福建恒而达新材料股份有限公司五年（2026-2030年度）股东分红回报规划.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.707206+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-3af57e
+  filename: 2026-04-24_300946_announce_kzz_第三届董事会第十三次会议决议公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.718007+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-168c15
+  filename: 2026-04-27_603667_announce_kzz_中信证券股份有限公司关于浙江五洲新春集团股份有限公司2025年度募集资金存放、管.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.728930+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-3f0968
+  filename: 2026-04-27_603667_announce_kzz_中信证券股份有限公司关于浙江五洲新春集团股份有限公司使用募集资金置换预先投入募投.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.739736+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-079bf8
+  filename: 2026-04-27_603667_announce_kzz_中信证券股份有限公司关于浙江五洲新春集团股份有限公司使用银行承兑汇票支付募投项目.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.750868+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c23dd8
+  filename: 2026-04-27_603667_announce_kzz_中信证券股份有限公司关于浙江五洲新春集团股份有限公司调整募集资金投资项目拟投入募.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.762180+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-e5e1a2
+  filename: 2026-04-27_603667_announce_kzz_五洲新春2025年度审计报告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.773667+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-a0859d
+  filename: 2026-04-27_603667_announce_kzz_五洲新春关于2025年度募集资金年度存放、管理与实际使用情况的专项报告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.785546+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-be9274
+  filename: 2026-04-27_603667_announce_kzz_五洲新春关于2026年度公司及其下属控股子公司之间预计担保的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.797745+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-166f0d
+  filename: 2026-04-27_603667_announce_kzz_五洲新春关于2026年度公司及控股子公司开展票据池业务的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.809804+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-eaa1cb
+  filename: 2026-04-27_603667_announce_kzz_五洲新春关于“提质增效重回报”行动方案的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.822291+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c0f3bf
+  filename: 2026-04-27_603667_announce_kzz_五洲新春关于使用募集资金置换预先投入募投项目及已支付发行费用的自筹资金的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.834767+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-262927
+  filename: 2026-04-27_603667_announce_kzz_五洲新春关于使用承兑汇票支付募投项目所需资金并以募集资金等额置换的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.847641+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-f80493
+  filename: 2026-04-27_603667_announce_kzz_五洲新春关于变更部分募集资金用途的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.860632+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-4acc73
+  filename: 2026-04-27_603667_announce_kzz_五洲新春关于向特定对象发行股票上市公告书披露的提示性公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.874238+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-437a3e
+  filename: 2026-04-27_603667_announce_kzz_五洲新春关于调整募集资金投资项目拟投入募集资金金额的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.887938+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-298a78
+  filename: 2026-04-27_603667_announce_kzz_五洲新春向特定对象发行股票结果暨股本变动的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.902109+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-ee054a
+  filename: 2026-04-27_603667_announce_zf_五洲新春关于向特定对象发行股票上市公告书披露的提示性公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.915819+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-825678
+  filename: 2026-04-27_603667_announce_zf_浙江五洲新春集团股份有限公司向特定对象发行A股股票上市公告书.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.929766+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-991226
+  filename: 2026-04-28_300100_announce_kzz_2025年度环境、社会和公司治理（ESG）报告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.943723+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-6bae75
+  filename: 2026-04-28_300100_announce_kzz_2026年一季度报告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.957917+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-27c930
+  filename: 2026-04-28_300100_announce_kzz_第七届董事会第二十七次会议决议公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.972751+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-e7b5d8
+  filename: 2026-04-29_603667_announce_kzz_五洲新春2026年第一季度报告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:08.987826+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-630ef3
+  filename: 2026-04-29_603667_announce_kzz_五洲新春关于召开2025年年度暨2026年第一季度业绩暨现金分红说明会公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.002957+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-417911
+  filename: 2026-05-06_300946_announce_kzz_关于第二期员工持股计划实施进展的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.018298+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-1c1ac3
+  filename: 2026-05-08_603667_announce_kzz_五洲新春2025年年度股东会会议资料.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.034208+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-90686e
+  filename: 2026-05-12_300946_announce_kzz_关于举行2025年度暨2026年第一季度业绩说明会的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.050215+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-f9f571
+  filename: 2026-05-13_603667_announce_kzz_五洲新春关于归还全部临时补充流动资金的募集资金的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.066482+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-0f617a
+  filename: 2026-05-14_300946_announce_kzz_第二期员工持股计划第一次持有人会议决议公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.083156+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c87313
+  filename: 2026-05-18_603667_announce_kzz_中信证券股份有限公司关于浙江五洲新春集团股份有限公司募集资金临时补充流动资金的核.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.099719+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-5faeae
+  filename: 2026-05-18_603667_announce_kzz_五洲新春2025年年度股东会决议公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.116553+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-b1ac3c
+  filename: 2026-05-18_603667_announce_kzz_五洲新春关于募集资金临时补充流动资金公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.133564+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-ddb01f
+  filename: 2026-05-18_603667_announce_kzz_五洲新春第五届董事会第十三次会议决议公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.150693+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-0f34b9
+  filename: 2026-05-18_603667_announce_kzz_国浩律师（上海）事务所关于五洲新春2025年年度股东会见证法律意见书.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.167793+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-a0cdfb
+  filename: 2026-05-19_300946_announce_kzz_关于为全资子公司提供担保进展的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.185318+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-ce6e63
+  filename: 2026-05-21_300946_announce_kzz_2025年年度股东会会议决议公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.204338+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-bd2c1b
+  filename: 2026-05-21_300946_announce_kzz_关于福建恒而达新材料股份有限公司2025年年度股东会的法律意见书.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.223380+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-7672ac
+  filename: 2026-05-26_300100_announce_kzz_第七届董事会第二十八次会议决议公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.242643+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-771772
+  filename: 2026-05-26_300946_announce_kzz_2025年年度分红派息实施公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.262234+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-a36e45
+  filename: 2026-06-05_300946_announce_kzz_关于第二期员工持股计划实施进展的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.282088+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-72a420
+  filename: 2026-06-07_603667_announce_kzz_五洲新春2025年年度权益分派实施公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.302786+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-7ba26c
+  filename: 2026-06-08_300946_announce_kzz_关于召开2026年第二次临时股东会的通知.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.322675+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-bd22ba
+  filename: 2026-06-08_300946_announce_kzz_关于部分募集资金投资项目结项并将节余募集资金永久补充流动资金的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.342721+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-001aed
+  filename: 2026-06-08_300946_announce_kzz_华泰联合证券有限责任公司关于福建恒而达新材料股份有限公司部分募集资金投资项目结项.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.362711+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-0560bc
+  filename: 2026-06-08_300946_announce_kzz_第三届董事会第十四次会议决议公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.382770+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-a7762c
+  filename: 2026-06-17_603667_announce_kzz_五洲新春关于完成工商变更登记并换发营业执照的公告.PDF
+  source_type: announcement
+  added: '2026-07-23T16:35:09.402717+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c9cabf
+  filename: 2026-06-25_10亿元加码-这家公司未来要配套7万台人形---机器人大讲堂.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.423205+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: 五洲新春 定增 98万套 达产 特斯拉 交付 2026
+    url: https://leaderobot.com/news/5676
+    searched_at: '2026-06-25T07:28:03.143493+00:00'
+- id: mat-ed4c53
+  filename: 2026-06-25_2026人形机器-量产元年-机器人-抢-了汽车的产线---赛迪网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.444872+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: Optimus Gen3 投产 爬坡合格率 2026 量产 弗里蒙特
+    url: https://www.ccidnet.com/news/1105843.jhtml
+    searched_at: '2026-06-25T07:28:02.850715+00:00'
+- id: mat-d4e504
+  filename: 2026-06-25_pdf-丝杠-核心传动部件-人形机器人开启成长空间.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.467355+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: 行星滚柱丝杠 良率 单根成本 螺纹磨床 国产 规模化
+    url: https://zhongzhihui.oss-cn-beijing.aliyuncs.com/industryPdf/20231025-%E4%B8%9C%E6%96%B9%E8%AF%81%E5%88%B8-%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97%E6%8A%A5%E5%91%8A%EF%BC%9A%E4%B8%9D%E6%9D%A0%EF%BC%9A%E6%A0%B8%E5%BF%83%E4%BC%A0%E5%8A%A8%E9%83%A8%E4%BB%B6%EF%BC%8C%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E5%90%AF%E6%88%90%E9%95%BF%E7%A9%BA%E9%97%B4.pdf
+    searched_at: '2026-06-25T07:28:03.723894+00:00'
+- id: mat-e0bfe1
+  filename: 2026-06-25_pdf-人形机器人丝杠走向量产.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.489969+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: 行星滚柱丝杠 单价 根 成本 人形机器人
+    url: https://pdf.dfcfw.com/pdf/H3_AP202412221641390322_1.pdf
+    searched_at: '2026-06-25T06:57:25.509873+00:00'
+- id: mat-ca1996
+  filename: 2026-06-25_pdf-人形机器人关节-从optimus选型看关节的发展---i研报.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.513405+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Tesla Optimus 直线执行器 数量 滚柱丝杠 用量
+    url: https://file.iyanbao.com/pdf/16fc5-106fd61d-619b-4bb9-9113-b2ba326be21c.pdf
+    searched_at: '2026-06-25T06:57:25.302723+00:00'
+- id: mat-5d6dcb
+  filename: 2026-06-25_pdf-人形机器人系列深度-驱动-拆解-产业链.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.537655+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Tesla Optimus 直线执行器 数量 滚柱丝杠 用量
+    url: https://aigc.idigital.com.cn/djyanbao/%E3%80%90%E4%B8%AD%E6%B3%B0%E8%AF%81%E5%88%B8%E3%80%91%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97%E6%B7%B1%E5%BA%A6%EF%BC%9A%E9%A9%B1%E5%8A%A8%EF%BC%8C%E6%8B%86%E8%A7%A3%EF%BC%8C%E4%BA%A7%E4%B8%9A%E9%93%BE%EF%BC%9A%E8%BD%A6%E7%AB%AF%E8%BD%AF%E7%A1%AC%E5%8D%8F%E5%90%8C%E9%A9%B1%E5%8A%A8%E9%99%8D%E6%9C%AC%EF%BC%8C%E6%8A%80%E6%9C%AF%2B%E5%AE%A2%E6%88%B7%E5%90%8C%E6%BA%90%E7%9A%84%E6%B1%BD%E9%9B%B6%E5%8F%97%E7%9B%8A-2023-12-18.pdf
+    searched_at: '2026-06-25T06:57:25.311012+00:00'
+- id: mat-7456f0
+  filename: 2026-06-25_pdf-恒立液压-601100-深度布局电动化工程机械零部件.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.562102+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: 恒立液压 行星滚柱丝杠 量产 进展 2026
+    url: https://pdf.dfcfw.com/pdf/H3_AP202412251641420483_1.pdf
+    searched_at: '2026-06-25T06:57:25.631249+00:00'
+- id: mat-db6251
+  filename: 2026-06-25_pdf-新产品.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.586132+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: Rollvis Schaeffler 扩产 墨西哥 本地化 丝杠
+    url: https://www.schaeffler.com/remotemedien/media/_shared_media/08_media_library/01_publications/schaeffler_2/magazine/downloads_12/added_competence_2015_2016_de_zh.pdf
+    searched_at: '2026-06-25T07:28:03.834250+00:00'
+- id: mat-887052
+  filename: 2026-06-25_pdf-滚柱丝杠-让运动更丝滑-国产替代蓄势待发.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.610707+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: 行星滚柱丝杠 螺纹磨床 国产 设备 突破
+    url: https://pdf.dfcfw.com/pdf/H3_AP202402261623588850_1.pdf
+    searched_at: '2026-06-25T06:57:26.053956+00:00'
+- id: mat-8162be
+  filename: 2026-06-25_pdf-特斯拉机器人降本超预期-滚珠丝杠大量应用.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.635431+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: Tesla Optimus 直线执行器 数量 滚柱丝杠 用量
+    url: https://pdf.dfcfw.com/pdf/H3_AP202210091579016261_1.pdf?1665394813000.pdf=
+    searched_at: '2026-06-25T06:57:25.295370+00:00'
+- id: mat-573822
+  filename: 2026-06-25_pdf-目录.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.660493+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: Rollvis Harmonic Drive 行星滚柱丝杠 海外 厂商
+    url: https://rollvis.com/wp-content/uploads/2023/07/Catalogue-CN-2019-compressed.pdf
+    searched_at: '2026-06-25T06:57:25.811724+00:00'
+- id: mat-b8db40
+  filename: 2026-06-25_pdf-行星滚柱丝杠-人形机器人高壁垒.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.686598+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: 行星滚柱丝杠 市场规模 全球 2025 人形机器人 弹性
+    url: https://pdf.dfcfw.com/pdf/H301_AP202308121594339512_1.pdf
+    searched_at: '2026-06-25T06:57:25.404054+00:00'
+- id: mat-96f85c
+  filename: 2026-06-25_万亿级人形机器人赛道-哪个环节最具爆发潜力---36氪.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.712526+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 国产 定点 Tesla 供应链 2026
+    url: https://eu.36kr.com/zh/p/3636380217885702
+    domain: ''
+    domain_tier: other
+    searched_at: '2026-07-23T16:52:11.349931+00:00'
+    stale_at: '2026-08-22T16:52:11.349931+00:00'
+    expire_at: '2026-10-21T16:52:11.349931+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 行星滚柱丝杠 单价 根 成本 人形机器人
+  addresses:
+  - scope
+- id: mat-53422c
+  filename: 2026-06-25_东吴证券-滚柱丝杠将撬动人形机器人千亿市场-国产化蓄势待发-特斯拉-机械-滚珠-螺纹-梯形-手机新浪.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.738556+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: 行星滚柱丝杠 良率 单根成本 螺纹磨床 国产 规模化
+    url: https://finance.sina.cn/hkstock/gsxw/2024-02-27/detail-inakmwir3636112.d.html?vt=4&cid=76526&node_id=76526
+    searched_at: '2026-06-25T07:28:03.622095+00:00'
+- id: mat-3ec6bf
+  filename: 2026-06-25_中金-特斯拉机器人的又一个看点-行星滚柱丝杠---xuangubao-cn.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.765429+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 市场规模 全球 2025 人形机器人 弹性
+    url: https://xuangubao.cn/v/article/101977868
+    searched_at: '2026-06-25T06:57:25.454685+00:00'
+- id: mat-b6334c
+  filename: 2026-06-25_五洲新春募资10亿-剑指7万台人形机器人量产-21新智人---21财经.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.792913+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 五洲新春 定增 98万套 达产 特斯拉 交付 2026
+    url: https://www.21jingji.com/article/20250617/herald/05cf32584a26e6fdfc4a7e696cbf7333.html
+    searched_at: '2026-06-25T07:28:03.426275+00:00'
+- id: mat-b6be17
+  filename: 2026-06-25_产品-瑞威士-瑞威士-北京-科技有限公司.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.821019+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Rollvis Harmonic Drive 行星滚柱丝杠 海外 厂商
+    url: https://rollvis-beijing.com/products
+    searched_at: '2026-06-25T06:57:25.866101+00:00'
+- id: mat-f12916
+  filename: 2026-06-25_人形机器人-特斯拉-这10家公司抢占万亿赛道-财富号-东方财富网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.849196+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 五洲新春 定增 98万套 达产 特斯拉 交付 2026
+    url: https://caifuhao.eastmoney.com/news/20260509153458566731260
+    searched_at: '2026-06-25T07:28:03.521265+00:00'
+- id: mat-6b2027
+  filename: 2026-06-25_人形机器人-精密滚珠丝杠-简析10家有代表性的企业-1-恒立液压-601100-财富号-东方财富网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.879070+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 恒立液压 行星滚柱丝杠 量产 进展 2026
+    url: https://caifuhao.eastmoney.com/news/20260505184956443439530
+    searched_at: '2026-06-25T06:57:25.570111+00:00'
+- id: mat-a88f76
+  filename: 2026-06-25_人形机器人供应商新剑传动冲刺ipo-丝杠产业化提速.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.909268+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 北特科技 603009 机器人 丝杠 2025 2026
+    url: https://www.cls.cn/detail/2254812
+    domain: ''
+    domain_tier: other
+    searched_at: '2026-07-23T16:52:11.979765+00:00'
+    stale_at: '2026-08-22T16:52:11.979765+00:00'
+    expire_at: '2026-10-21T16:52:11.979765+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 新剑传动 IPO 行星滚柱丝杠 Optimus 一级供应商
+  addresses:
+  - scope
+- id: mat-4e15ea
+  filename: 2026-06-25_人形机器人利好-t链一级供应商新剑传动冲刺ipo---东方财富.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.939995+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 新剑传动 招股书 IPO 产能 客户 2026
+    url: https://wap.eastmoney.com/a/202601103614965720.html
+    searched_at: '2026-06-25T07:28:03.044228+00:00'
+- id: mat-23f888
+  filename: 2026-06-25_人形机器人奇点时刻丝杠崛起-受益上市公司梳理---财联社.md
+  source_type: web-search
+  added: '2026-07-23T16:35:09.970413+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 贝斯特 秦川机床 五洲新春 行星滚柱丝杠 产能 2026
+    url: https://www.cls.cn/detail/1477403
+    searched_at: '2026-06-25T06:57:25.782554+00:00'
+- id: mat-d8eb31
+  filename: 2026-06-25_人形机器人核心零部件-行星滚柱丝杠分析-概念股能否逆天改命.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.000837+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 单价 根 成本 人形机器人
+    url: https://xueqiu.com/5948801713/321042275
+    searched_at: '2026-06-25T06:57:25.472470+00:00'
+- id: mat-ca9cef
+  filename: 2026-06-25_人形机器人概念-特斯拉optimus供应商-杭州新剑-行星滚柱丝杠的.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.032331+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 新剑传动 IPO 行星滚柱丝杠 Optimus 一级供应商
+    url: http://www.geartoutiao.com/news/5979
+    searched_at: '2026-06-25T06:58:57.166592+00:00'
+- id: mat-10205f
+  filename: 2026-06-25_人形机器人爆发前夜-谁啃硬骨头-谁是真金矿--虎嗅网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.064717+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 概念股 PE 估值 2026 涨幅
+    url: https://www.huxiu.com/article/4866437.html
+    searched_at: '2026-06-25T06:57:25.928116+00:00'
+- id: mat-56ddd1
+  filename: 2026-06-25_人形机器人行星滚柱丝杠大热-a股龙头引领百亿投资布局---证券时报.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.097814+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 恒而达 300946 行星滚柱丝杠 量产进展
+    url: https://stcn.com/article/detail/1562897.html
+    domain: ''
+    domain_tier: other
+    searched_at: '2026-07-23T16:52:12.142988+00:00'
+    stale_at: '2026-08-22T16:52:12.142988+00:00'
+    expire_at: '2026-10-21T16:52:12.142988+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 贝斯特 秦川机床 五洲新春 行星滚柱丝杠 产能 2026
+  addresses:
+  - scope
+- id: mat-b62838
+  filename: 2026-06-25_人形机器人零部件详细分析-tesla-optimus.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.129537+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: Tesla Optimus 直线执行器 数量 滚柱丝杠 用量
+    url: https://www.aibangbots.com/a/942
+    searched_at: '2026-06-25T06:57:25.282749+00:00'
+- id: mat-0ab2e4
+  filename: 2026-06-25_人形机器人龙头-002050-白马-失速.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.163075+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 概念股 PE 估值 2026 涨幅
+    url: https://q.stock.sohu.com/cn/news.html?textId=1014452711&type=120&tab=200&code=cn_688381&date=2026%2F0521
+    searched_at: '2026-06-25T06:57:25.957728+00:00'
+- id: mat-87040a
+  filename: 2026-06-25_具身智能一级市场新共识-本体遇冷-上游零部件融资迎热潮---中国工业新闻网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.197247+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 国产 良率 突破 2026 量产
+    url: https://www.cinn.cn/yc/2026/06-09/VDWY3Gd1.html
+    searched_at: '2026-06-25T06:57:25.370565+00:00'
+- id: mat-747d14
+  filename: 2026-06-25_冲击ipo-新剑传动启动上市辅导-北京商报.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.231716+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: 新剑传动 招股书 IPO 产能 客户 2026
+    url: https://www.bbtnews.com.cn/2026/0111/581290.shtml
+    searched_at: '2026-06-25T07:28:02.949065+00:00'
+- id: mat-629891
+  filename: 2026-06-25_券商观点-机械设备行业深度-机器人硬件拆解七-丝杠生产工艺流程详解.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.266742+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: 行星滚柱丝杠 螺纹磨床 国产 设备 突破
+    url: https://m.10jqka.com.cn/20231221/c653392402.shtml
+    searched_at: '2026-06-25T06:57:26.120182+00:00'
+- id: mat-4d239d
+  filename: 2026-06-25_华创证券-系列深度研究报告-三-不止于液压传动-精密传动有望再造一个恒立---发现报告.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.300824+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 行星滚柱丝杠 量产 进展 2026
+    url: https://www.fxbaogao.com/detail/5454034
+    searched_at: '2026-06-25T06:57:25.651822+00:00'
+- id: mat-45d1ae
+  filename: 2026-06-25_又一家狂飙的机器人-股价两月翻倍-谁在疯狂押注---锦囊专家官网---数字经济智库平台.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.335196+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 概念股 PE 估值 2026 涨幅
+    url: https://www.jnexpert.com/article/detail?id=23939
+    searched_at: '2026-06-25T06:57:25.988408+00:00'
+- id: mat-2ed100
+  filename: 2026-06-25_双林股份人形机器人用反向式行星滚柱丝杠第一批样件订单预计4月交付-奇瑞-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.369005+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 双林股份 反向式 行星滚柱丝杠 国产首款 量产
+    url: https://finance.sina.com.cn/stock/stockzmt/2025-04-21/doc-inetxwtn8451159.shtml
+    searched_at: '2026-06-25T06:58:57.405475+00:00'
+- id: mat-0fad04
+  filename: 2026-06-25_双林股份发布国产首款反向式行星滚柱丝杠---东方财富.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.404046+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 双林股份 反向式 行星滚柱丝杠 国产首款 量产
+    url: https://wap.eastmoney.com/a/202503133344925136.html
+    searched_at: '2026-06-25T06:58:57.365320+00:00'
+- id: mat-73e0fa
+  filename: 2026-06-25_双林股份发布国产首款反向式行星滚柱丝杠-中证网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.441694+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: 双林股份 反向式 行星滚柱丝杠 国产首款 量产
+    url: https://cs.com.cn/ssgs/gsxw/202503/t20250314_6479305.html
+    searched_at: '2026-06-25T06:58:57.325564+00:00'
+- id: mat-893ff3
+  filename: 2026-06-25_双林股份发布国产首款反向式行星滚柱丝杠.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.479061+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 国产 良率 突破 2026 量产
+    url: https://www.stcn.com/article/detail/1580971.html
+    searched_at: '2026-06-25T06:57:25.341785+00:00'
+- id: mat-c4a4e2
+  filename: 2026-06-25_工业机器人系列文章三-2025年人形机器人产业化量产元年-九方智投.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.516761+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: 行星滚柱丝杠 市场规模 全球 2025 人形机器人 弹性
+    url: https://www.9fzt.com/common/110855f38d50b096fd461c274c545cb5.html
+    searched_at: '2026-06-25T06:57:25.435143+00:00'
+- id: mat-44fc69
+  filename: 2026-06-25_建议收藏-9家公司股价有超50-上涨空间--周刊原创-证券市场周刊.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.555247+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 概念股 PE 估值 2026 涨幅
+    url: https://static.weeklyonstock.com/25/1213/zbf140159.html
+    searched_at: '2026-06-25T06:57:25.897513+00:00'
+- id: mat-91bab2
+  filename: 2026-06-25_建议收藏-9家公司股价有超50-上涨空间--腾讯新闻---qq-com.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.594163+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 概念股 PE 估值 2026 涨幅
+    url: https://view.inews.qq.com/a/20251213A04AYL00
+    searched_at: '2026-06-25T06:57:26.019181+00:00'
+- id: mat-32a114
+  filename: 2026-06-25_必看-人形机器人-丝杠产业链的6大国产核心公司-收藏.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.633078+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: 行星滚柱丝杠 市场规模 全球 2025 人形机器人 弹性
+    url: https://m-robo.datayes.com/feed/detail?id=463826
+    searched_at: '2026-06-25T06:57:25.419434+00:00'
+- id: mat-cc70c1
+  filename: 2026-06-25_恒而达-公司具备批量生产多规格反向式行星滚柱丝杠能力.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.673386+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 恒而达 行星滚柱丝杠 磨床 规模化 2026
+    url: https://finance.sina.com.cn/jjxw/2026-06-09/doc-iniauknz5279288.shtml
+    searched_at: '2026-06-25T06:58:57.529448+00:00'
+- id: mat-2441c9
+  filename: 2026-06-25_恒而达布局机器人核心部件-解决行星滚柱丝杠规模化难题.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.713435+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 螺纹磨床 国产 设备 突破
+    url: http://stcn.com/article/detail/3357658.html
+    searched_at: '2026-06-25T06:57:26.085929+00:00'
+- id: mat-bd4e99
+  filename: 2026-06-25_成都汇阳投资关于人形机器人推动丝杠需求-国内厂商突破量产壁垒.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.751857+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 国产 良率 突破 2026 量产
+    url: https://m.tech.china.com/redian/2025/0714/072025_1699002.html
+    searched_at: '2026-06-25T06:57:25.331632+00:00'
+- id: mat-5f19b5
+  filename: 2026-06-25_新剑传动冲击ipo-特斯拉人形机器人核心零部件供应商-拥有制造场地超3万平方米-风闻.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.790893+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.65
+  search_meta:
+    query: 新剑传动 IPO 行星滚柱丝杠 Optimus 一级供应商
+    url: https://user.guancha.cn/main/content?id=1582316&s=fwtjgzwz
+    searched_at: '2026-06-25T06:58:57.205829+00:00'
+- id: mat-f58f62
+  filename: 2026-06-25_新剑传动启动ipo-t链-三大巨头聚首a股---21经济网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.831639+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 新剑传动 IPO 行星滚柱丝杠 Optimus 一级供应商
+    url: https://www.21jingji.com/article/20260112/herald/aa97a074926580fc432da9bcace8ac6b.html
+    searched_at: '2026-06-25T06:58:57.092861+00:00'
+- id: mat-0f858a
+  filename: 2026-06-25_机器人丝杠的终局是磨床--公司动态-证券市场周刊.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.872008+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: 华辰装备 秦川机床 螺纹磨床 丝杠 量产 供货 2026
+    url: https://static.weeklyonstock.com/25/0519/qdy160938.html
+    domain: ''
+    domain_tier: other
+    searched_at: '2026-07-23T17:02:00.733005+00:00'
+    stale_at: '2026-08-22T17:02:00.733005+00:00'
+    expire_at: '2026-10-21T17:02:00.733005+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 行星滚柱丝杠 国产 良率 突破 2026 量产
+  addresses:
+  - K4
+- id: mat-5fb0c1
+  filename: 2026-06-25_机器人最性感的细分赛道-丝杠环节-九方智投.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.912783+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: 贝斯特 秦川机床 五洲新春 行星滚柱丝杠 产能 2026
+    url: https://www.9fzt.com/common/b0f28753cad9bb3bdd28d3bd3b398ac8.html
+    searched_at: '2026-06-25T06:57:25.698496+00:00'
+- id: mat-c06fdf
+  filename: 2026-06-25_机器人的上游拉动正在兑现行星滚柱丝杠被称为-2026年工业母机产业.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.953593+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: Tesla Optimus 行星滚柱丝杠 定点 供应商 2026
+    url: https://xueqiu.com/6272863261/388502224
+    searched_at: '2026-06-25T06:54:56.761462+00:00'
+- id: mat-640490
+  filename: 2026-06-25_机器人的关节-精密执行器.md
+  source_type: web-search
+  added: '2026-07-23T16:35:10.997536+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: Tesla Optimus 直线执行器 数量 滚柱丝杠 用量
+    url: https://www.cls.cn/detail/1388876
+    searched_at: '2026-06-25T06:57:25.288667+00:00'
+- id: mat-9d3992
+  filename: 2026-06-25_欧洲技术-中国制造-全球市场-恒而达拿下人形机器人-金铲子.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.067248+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 恒而达 行星滚柱丝杠 磨床 规模化 2026
+    url: https://stcn.com/article/detail/1826603.html
+    searched_at: '2026-06-25T06:58:57.613071+00:00'
+- id: mat-83db06
+  filename: 2026-06-25_特斯拉optimus-gen-3量产官宣-特斯拉ceo马斯克在2026年---雪球.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.117249+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: Optimus Gen3 投产 爬坡合格率 2026 量产 弗里蒙特
+    url: https://xueqiu.com/6194642173/392753075
+    searched_at: '2026-06-25T07:28:02.669010+00:00'
+- id: mat-c20fe4
+  filename: 2026-06-25_特斯拉optimus-gen3量产在即-哪些环节最具确定性---同花顺.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.163728+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 五洲新春 定增 98万套 达产 特斯拉 交付 2026
+    url: https://stock.10jqka.com.cn/20260408/c675837515.shtml
+    searched_at: '2026-06-25T07:28:03.237189+00:00'
+- id: mat-5e705d
+  filename: 2026-06-25_特斯拉optimus-gen3量产在即-哪些环节最具确定性---蓝鲸财经.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.207400+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: Tesla Optimus 行星滚柱丝杠 定点 供应商 2026
+    url: https://www.lanjinger.com/d/1775640932000833540
+    searched_at: '2026-06-25T06:54:56.768908+00:00'
+- id: mat-b8b718
+  filename: 2026-06-25_特斯拉optimus-gen3量产在即-哪些环节最具确定性---资鲸网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.251057+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 五洲新春 定增 98万套 达产 特斯拉 交付 2026
+    url: http://m.capwhale.com/newsfile/mdetails/20260408/m19d6a244f30342df918550975d21dd46.shtml
+    searched_at: '2026-06-25T07:28:03.330848+00:00'
+- id: mat-d47e89
+  filename: 2026-06-25_特斯拉optimus三代今夏投产-工厂-机器人---新浪新闻.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.295872+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Optimus Gen3 投产 爬坡合格率 2026 量产 弗里蒙特
+    url: https://news.sina.cn/bignews/2026-03-30/detail-inhstpia4096337.d.html?vt=4
+    searched_at: '2026-06-25T07:28:02.586842+00:00'
+- id: mat-9de561
+  filename: 2026-06-25_特斯拉官宣optimus-gen3年中亮相-7月底启动量产--donews.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.341842+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: Optimus Gen3 投产 爬坡合格率 2026 量产 弗里蒙特
+    url: https://www.donews.com/news/detail/4/6525620.html
+    searched_at: '2026-06-25T07:28:02.757337+00:00'
+- id: mat-e9d76d
+  filename: 2026-06-25_特斯拉机器人供应链中国厂商主导-新浪新闻.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.385454+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: Tesla Optimus 行星滚柱丝杠 定点 供应商 2026
+    url: https://www.sina.cn/news/detail/5265051319798437.html
+    searched_at: '2026-06-25T06:54:56.759475+00:00'
+- id: mat-0f3ce0
+  filename: 2026-06-25_研判2025-中国行星滚柱丝杠行业产业链-市场规模及重点企业分析-技术突破与市场爆发共振-高端传动领.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.429622+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: 恒而达 300946 行星滚柱丝杠 量产进展
+    url: https://www.chyxx.com/industry/1225527.html
+    domain: ''
+    domain_tier: other
+    searched_at: '2026-07-23T16:52:12.226592+00:00'
+    stale_at: '2026-08-22T16:52:12.226592+00:00'
+    expire_at: '2026-10-21T16:52:12.226592+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 行星滚柱丝杠 国产 良率 突破 2026 量产
+  addresses:
+  - scope
+- id: mat-0cbe5b
+  filename: 2026-06-25_科创丨新剑传动ipo-特斯拉机器人核心零部件供应商-2026量产提速-机器人-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.473794+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 新剑传动 IPO 行星滚柱丝杠 Optimus 一级供应商
+    url: https://finance.sina.com.cn/roll/2026-01-20/doc-inhhyfup7085578.shtml
+    searched_at: '2026-06-25T06:58:57.128437+00:00'
+- id: mat-3d232d
+  filename: 2026-06-25_行星丝杠---力姆泰克.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.518502+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Rollvis Harmonic Drive 行星滚柱丝杠 海外 厂商
+    url: https://www.lim-tec.com/pc-ezydzt.html
+    searched_at: '2026-06-25T06:57:25.837661+00:00'
+- id: mat-0eb787
+  filename: 2026-06-25_马斯克百万台机器人-70-零件是中国的---澎湃新闻.md
+  source_type: web-search
+  added: '2026-07-23T16:35:11.574349+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: Tesla Optimus 行星滚柱丝杠 定点 供应商 2026
+    url: https://m.thepaper.cn/newsDetail_forward_33043760
+    searched_at: '2026-06-25T06:54:56.764824+00:00'
+- id: mat-c646fc
+  filename: 2026-07-23_行星滚柱丝杠-人形机器人-关节命脉-的千亿赛道与.md
+  source_type: web-search
+  added: '2026-07-23T16:52:11.205130+00:00'
+  processed: false
+  notes: query='行星滚柱丝杠 国产 定点 Tesla 供应链 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 国产 定点 Tesla 供应链 2026
+    url: https://awtmt.com/articles/3776358
+    domain: awtmt.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:11.177412+00:00'
+    stale_at: '2026-08-22T16:52:11.177412+00:00'
+    expire_at: '2026-10-21T16:52:11.177412+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-76ad2c
+  filename: 2026-07-23_马斯克机器人刚要量产-这家浙江供应商就准备好上市了.md
+  source_type: web-search
+  added: '2026-07-23T16:52:11.276640+00:00'
+  processed: false
+  notes: query='行星滚柱丝杠 国产 定点 Tesla 供应链 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 国产 定点 Tesla 供应链 2026
+    url: https://www.huxiu.com/article/4872991.html
+    domain: huxiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:11.248549+00:00'
+    stale_at: '2026-08-22T16:52:11.248549+00:00'
+    expire_at: '2026-10-21T16:52:11.248549+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e017d1
+  filename: 2026-07-23_德迈仕-券商实锤-特斯拉人形机器人丝杠tier2供应商.md
+  source_type: web-search
+  added: '2026-07-23T16:52:11.424920+00:00'
+  processed: false
+  notes: query='行星滚柱丝杠 国产 定点 Tesla 供应链 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 国产 定点 Tesla 供应链 2026
+    url: https://xueqiu.com/9318376815/315489530
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:11.395084+00:00'
+    stale_at: '2026-08-22T16:52:11.395084+00:00'
+    expire_at: '2026-10-21T16:52:11.395084+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5a99c9
+  filename: 2026-07-23_tesla-宣布量產版optimus-機器人2026-年q1-亮相-年底前啟動.md
+  source_type: web-search
+  added: '2026-07-23T16:52:11.502247+00:00'
+  processed: false
+  notes: query='Tesla Optimus 2026 量产 出货量 进度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla Optimus 2026 量产 出货量 进度
+    url: https://www.inside.com.tw/article/40586-tesla-optimus-gen-3-q1-2026
+    domain: inside.com.tw
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:11.473809+00:00'
+    stale_at: '2026-08-22T16:52:11.473809+00:00'
+    expire_at: '2026-10-21T16:52:11.473809+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2e6f8c
+  filename: 2026-07-23_拚成本壓在2萬美元內-特斯拉-第三代人形機器人產線將在.md
+  source_type: web-search
+  added: '2026-07-23T16:52:11.579414+00:00'
+  processed: false
+  notes: query='Tesla Optimus 2026 量产 出货量 进度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla Optimus 2026 量产 出货量 进度
+    url: https://hk.finance.yahoo.com/news/%E6%8B%9A%E6%88%90%E6%9C%AC%E5%A3%93%E5%9C%A82%E8%90%AC%E7%BE%8E%E5%85%83%E5%85%A7-%E7%89%B9%E6%96%AF%E6%8B%89-%E7%AC%AC%E4%B8%89%E4%BB%A3%E4%BA%BA%E5%BD%A2%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%94%A2%E7%B7%9A%E5%B0%87%E5%9C%A82026%E5%B9%B4%E5%BB%BA%E6%88%90%E6%8A%95%E7%94%A2-033006744.html
+    domain: hk.finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:11.550547+00:00'
+    stale_at: '2026-08-22T16:52:11.550547+00:00'
+    expire_at: '2026-10-21T16:52:11.550547+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-947126
+  filename: 2026-07-23_前瞻全球产业早报-2026年特斯拉人形机器人optimus产量或.md
+  source_type: web-search
+  added: '2026-07-23T16:52:11.653439+00:00'
+  processed: false
+  notes: query='Tesla Optimus 2026 量产 出货量 进度'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tesla Optimus 2026 量产 出货量 进度
+    url: https://finance.sina.com.cn/stock/relnews/us/2025-01-10/doc-ineemsef5810038.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:11.624537+00:00'
+    stale_at: '2026-08-22T16:52:11.624537+00:00'
+    expire_at: '2026-10-21T16:52:11.624537+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2a7f60
+  filename: 2026-07-23_公司公告-五洲新春-2025年半年度报告.md
+  source_type: web-search
+  added: '2026-07-23T16:52:11.735050+00:00'
+  processed: false
+  notes: query='五洲新春 603667 丝杠业务 收入 2025年报'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 五洲新春 603667 丝杠业务 收入 2025年报
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=603667&id=11393611
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:11.702890+00:00'
+    stale_at: '2026-08-22T16:52:11.702890+00:00'
+    expire_at: '2026-10-21T16:52:11.702890+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-54137a
+  filename: 2026-07-23_五洲新春-2025年实现营业收入33-43亿-三道成长-地平线.md
+  source_type: web-search
+  added: '2026-07-23T16:52:11.817464+00:00'
+  processed: false
+  notes: query='五洲新春 603667 丝杠业务 收入 2025年报' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 五洲新春 603667 丝杠业务 收入 2025年报
+    url: https://m.wenxuan.news/live/21659.html
+    domain: m.wenxuan.news
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:11.787067+00:00'
+    stale_at: '2026-08-22T16:52:11.787067+00:00'
+    expire_at: '2026-10-21T16:52:11.787067+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5a1c55
+  filename: 2026-07-23_基础件五洲新春-603667-sh-增持.md
+  source_type: web-search
+  added: '2026-07-23T16:52:11.899875+00:00'
+  processed: false
+  notes: query='五洲新春 603667 丝杠业务 收入 2025年报' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 五洲新春 603667 丝杠业务 收入 2025年报
+    url: https://pdf.dfcfw.com/pdf/H3_AP202605251822858870_1.pdf?1779732659000.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:11.869706+00:00'
+    stale_at: '2026-08-22T16:52:11.869706+00:00'
+    expire_at: '2026-10-21T16:52:11.869706+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-997070
+  filename: 2026-07-23_人形机器人再现量产信号-特斯拉供应商-北特科技18-5亿.md
+  source_type: web-search
+  added: '2026-07-23T16:52:12.061852+00:00'
+  processed: false
+  notes: query='北特科技 603009 机器人 丝杠 2025 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 北特科技 603009 机器人 丝杠 2025 2026
+    url: https://m.21jingji.com/article/20241016/992611936967b7c1177fc2167efd6798.html
+    domain: m.21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:12.029399+00:00'
+    stale_at: '2026-08-22T16:52:12.029399+00:00'
+    expire_at: '2026-10-21T16:52:12.029399+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7263f7
+  filename: 2026-07-23_重要工业母机-磨床迎数个增量需求市场-国产化推进丨黄金眼.md
+  source_type: web-search
+  added: '2026-07-23T16:52:12.309434+00:00'
+  processed: false
+  notes: query='国产 螺纹磨床 秦川机床 华辰装备 精度突破 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 国产 螺纹磨床 秦川机床 华辰装备 精度突破 2026
+    url: https://www.stcn.com/article/detail/1124110.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:12.278034+00:00'
+    stale_at: '2026-08-22T16:52:12.278034+00:00'
+    expire_at: '2026-10-21T16:52:12.278034+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-54b7d5
+  filename: 2026-07-23_华辰装备发布新产品-高端精密磨削装备实现国产化突破.md
+  source_type: web-search
+  added: '2026-07-23T16:52:12.397291+00:00'
+  processed: false
+  notes: query='国产 螺纹磨床 秦川机床 华辰装备 精度突破 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 国产 螺纹磨床 秦川机床 华辰装备 精度突破 2026
+    url: https://www.ksrmtzx.com/wap/news/256084
+    domain: ksrmtzx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:12.365005+00:00'
+    stale_at: '2026-08-22T16:52:12.365005+00:00'
+    expire_at: '2026-10-21T16:52:12.365005+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e01dab
+  filename: 2026-07-23_机器人中的行星减速器与qdd发展趋势.md
+  source_type: web-search
+  added: '2026-07-23T16:52:12.485160+00:00'
+  processed: true
+  notes: query='人形机器人 准直驱 行星减速器 替代丝杠 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 人形机器人 准直驱 QDD 行星减速器 vs 行星滚柱丝杠 成本 量产 整机采用
+    url: https://www.cubemars.com/cn/planetary-gearboxes-in-robotics-qdd-trends.html
+    domain: cubemars.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:02:00.525131+00:00'
+    stale_at: '2026-08-22T17:02:00.525131+00:00'
+    expire_at: '2026-10-21T17:02:00.525131+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 人形机器人 准直驱 行星减速器 替代丝杠 2026
+- id: mat-4bd3a2
+  filename: 2026-07-23_人形机器人关节执行器代表性技术路线及未来演进趋势.md
+  source_type: web-search
+  added: '2026-07-23T16:52:12.571856+00:00'
+  processed: false
+  notes: query='人形机器人 准直驱 行星减速器 替代丝杠 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 人形机器人 准直驱 行星减速器 替代丝杠 2026
+    url: https://www.aibangbots.com/a/7005
+    domain: aibangbots.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:12.539546+00:00'
+    stale_at: '2026-08-22T16:52:12.539546+00:00'
+    expire_at: '2026-10-21T16:52:12.539546+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5289b8
+  filename: 2026-07-23_2025年全球人形机器人行星滚柱丝杠市场销售额达到了4-31亿美元.md
+  source_type: web-search
+  added: '2026-07-23T16:52:12.662781+00:00'
+  processed: true
+  notes: query='行星滚柱丝杠 良率 C3 C5 国产 批量 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 行星滚柱丝杠 良率 C3 C5 国产 批量 2026
+    url: https://www.sina.cn/news/detail/5317971884901168.html
+    domain: sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:12.628950+00:00'
+    stale_at: '2026-08-22T16:52:12.628950+00:00'
+    expire_at: '2026-10-21T16:52:12.628950+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b03a2f
+  filename: 2026-07-23_人形机器人丝杠-最值钱的环节---财富号.md
+  source_type: web-search
+  added: '2026-07-23T16:52:12.749961+00:00'
+  processed: false
+  notes: query='行星滚柱丝杠 良率 C3 C5 国产 批量 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 行星滚柱丝杠 良率 C3 C5 国产 批量 2026
+    url: https://caifuhao.eastmoney.com/news/20260704235455378152630?from=guba&name=5LqU5rSy5paw5pil5ZCn&gubaurl=aHR0cDovL2d1YmFwb3N0LmVhc3Rtb25leS5jb20vbGlzdCw2MDM2NjcuaHRtbA%3D%3D
+    domain: caifuhao.eastmoney.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:12.716650+00:00'
+    stale_at: '2026-08-22T16:52:12.716650+00:00'
+    expire_at: '2026-10-21T16:52:12.716650+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8b6512
+  filename: 2026-07-23_双林股份10万套机器人用丝杠产线计划6月投产.md
+  source_type: web-search
+  added: '2026-07-23T16:52:12.838402+00:00'
+  processed: false
+  notes: query='双林股份 300100 线性执行器 丝杠总成 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 双林股份 300100 线性执行器 丝杠总成 2026
+    url: https://www.stcn.com/article/detail/3696136.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:12.805219+00:00'
+    stale_at: '2026-08-22T16:52:12.805219+00:00'
+    expire_at: '2026-10-21T16:52:12.805219+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2f4f6d
+  filename: 2026-07-23_双林发布-机器人行星滚柱丝杠新产品.md
+  source_type: web-search
+  added: '2026-07-23T16:52:12.928682+00:00'
+  processed: false
+  notes: query='双林股份 300100 线性执行器 丝杠总成 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 双林股份 300100 线性执行器 丝杠总成 2026
+    url: https://www.shuanglin.com/news/624551.htm
+    domain: shuanglin.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T16:52:12.894724+00:00'
+    stale_at: '2026-08-22T16:52:12.894724+00:00'
+    expire_at: '2026-10-21T16:52:12.894724+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-653126
+  filename: 2026-07-23_2026人形机器人产业展望-10万级量产将至商业化元年开启.md
+  source_type: web-search
+  added: '2026-07-23T16:52:13.021114+00:00'
+  processed: false
+  notes: query='人形机器人 2026 出货量 产业链 量产节奏'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 人形机器人 2026 出货量 产业链 量产节奏
+    url: https://finance.sina.com.cn/stock/hyyj/2026-01-07/doc-inhfmppw5333500.shtml?vt=4&pos=108
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:12.985976+00:00'
+    stale_at: '2026-08-22T16:52:12.985976+00:00'
+    expire_at: '2026-10-21T16:52:12.985976+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-012401
+  filename: 2026-07-23_2026人形机器人产业链分析.md
+  source_type: web-search
+  added: '2026-07-23T16:52:13.110647+00:00'
+  processed: false
+  notes: query='人形机器人 2026 出货量 产业链 量产节奏'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 人形机器人 2026 出货量 产业链 量产节奏
+    url: https://finance.sina.com.cn/wm/2026-03-25/doc-inhseyvs0914418.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-23T16:52:13.075796+00:00'
+    stale_at: '2026-08-22T16:52:13.075796+00:00'
+    expire_at: '2026-10-21T16:52:13.075796+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a91362
+  filename: 2025_603009_annual_2026-04-22_北特科技.PDF
+  source_type: annual-report
+  added: '2026-07-23T17:00:31.565100+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 北特科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-d0218d
+  filename: 2026_603009_quarterly_2026-04-28_北特科技.PDF
+  source_type: quarterly-report
+  added: '2026-07-23T17:00:31.983135+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 北特科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-7a5d31
+  filename: 2026-01-26_603009_announce_yjygjxz_北特科技2025年度业绩预增公告.PDF
+  source_type: announcement
+  added: '2026-07-23T17:01:05.401815+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 北特科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-48981c
+  filename: 2026-01-05_603009_announce_zf_北特科技2025年度以简易程序向特定对象发行A股股票募集说明书（注册稿）.PDF
+  source_type: announcement
+  added: '2026-07-23T17:01:05.664420+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 北特科技
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-f364f3
+  filename: 2026-07-23_杭州新剑机电传动股份有限公司.md
+  source_type: web-search
+  added: '2026-07-23T17:02:00.035227+00:00'
+  processed: true
+  notes: query='新剑传动 招股说明书 IPO 营收 毛利 特斯拉 丝杠 定点'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 新剑传动 招股说明书 IPO 营收 毛利 特斯拉 丝杠 定点
+    url: https://pdf.dfcfw.com/pdf/H2_AN202606261824799314_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:01:59.999982+00:00'
+    stale_at: '2026-08-22T17:01:59.999982+00:00'
+    expire_at: '2026-10-21T17:01:59.999982+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-916d85
+  filename: 2026-07-23_新剑传动ipo-特斯拉机器人链上的豪赌.md
+  source_type: web-search
+  added: '2026-07-23T17:02:00.131929+00:00'
+  processed: true
+  notes: query='新剑传动 招股说明书 IPO 营收 毛利 特斯拉 丝杠 定点' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 新剑传动 招股说明书 IPO 营收 毛利 特斯拉 丝杠 定点
+    url: https://zhuanlan.zhihu.com/p/2061052902240789079
+    domain: zhuanlan.zhihu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:02:00.193026+00:00'
+    stale_at: '2026-08-22T17:02:00.193026+00:00'
+    expire_at: '2026-10-21T17:02:00.193026+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-33b231
+  filename: 2026-07-23_新剑传动创业板ipo-押注行星滚柱丝杠能否兑现成长预期.md
+  source_type: web-search
+  added: '2026-07-23T17:02:00.328467+00:00'
+  processed: true
+  notes: query='新剑传动 招股说明书 IPO 营收 毛利 特斯拉 丝杠 定点' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 新剑传动 招股说明书 IPO 营收 毛利 特斯拉 丝杠 定点
+    url: https://cj.sina.cn/articles/view/6889319236/19aa2ab4400101g1yq
+    domain: cj.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:02:00.292328+00:00'
+    stale_at: '2026-08-22T17:02:00.292328+00:00'
+    expire_at: '2026-10-21T17:02:00.292328+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-cb3e51
+  filename: 2026-07-23_人形机器人系列专题-二-执行系统之旋转关节-扭矩跃升-动力内核.md
+  source_type: web-search
+  added: '2026-07-23T17:02:00.425690+00:00'
+  processed: true
+  notes: query='人形机器人 准直驱 QDD 行星减速器 vs 行星滚柱丝杠 成本 量产 整机采用'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 人形机器人 准直驱 QDD 行星减速器 vs 行星滚柱丝杠 成本 量产 整机采用
+    url: https://pdf.dfcfw.com/pdf/H3_AP202503171644440150_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:02:00.389342+00:00'
+    stale_at: '2026-08-22T17:02:00.389342+00:00'
+    expire_at: '2026-10-21T17:02:00.389342+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4cdba0
+  filename: 2026-07-23_为什么顶级人形机器人都在押注行星滚柱丝杠.md
+  source_type: web-search
+  added: '2026-07-23T17:02:00.626166+00:00'
+  processed: true
+  notes: query='人形机器人 准直驱 QDD 行星减速器 vs 行星滚柱丝杠 成本 量产 整机采用' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 人形机器人 准直驱 QDD 行星减速器 vs 行星滚柱丝杠 成本 量产 整机采用
+    url: https://www.leaderobot.com/news/5666
+    domain: leaderobot.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:02:00.589653+00:00'
+    stale_at: '2026-08-22T17:02:00.589653+00:00'
+    expire_at: '2026-10-21T17:02:00.589653+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4b4ab4
+  filename: 2026-07-23_新一轮围堵压顶-半导体-幕后功臣-的国产替代之路还有多远.md
+  source_type: web-search
+  added: '2026-07-23T17:02:00.829706+00:00'
+  processed: true
+  notes: query='华辰装备 秦川机床 螺纹磨床 丝杠 量产 供货 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: 华辰装备 秦川机床 螺纹磨床 丝杠 量产 供货 2026
+    url: https://www.cls.cn/detail/2120692
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:02:00.792087+00:00'
+    stale_at: '2026-08-22T17:02:00.792087+00:00'
+    expire_at: '2026-10-21T17:02:00.792087+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-836a33
+  filename: 2026-07-23_秦川机床工具集团股份公司投资者关系活动记录表.md
+  source_type: web-search
+  added: '2026-07-23T17:02:00.931986+00:00'
+  processed: true
+  notes: query='华辰装备 秦川机床 螺纹磨床 丝杠 量产 供货 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 华辰装备 秦川机床 螺纹磨床 丝杠 量产 供货 2026
+    url: http://news.10jqka.com.cn/field/sn/20260421/57462415.shtml
+    domain: news.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:02:00.894693+00:00'
+    stale_at: '2026-08-22T17:02:00.894693+00:00'
+    expire_at: '2026-10-21T17:02:00.894693+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5cb809
+  filename: 2026-07-23_订单排到2027年-绿的谐波为何不敢涨价---维科号.md
+  source_type: web-search
+  added: '2026-07-23T17:02:01.039244+00:00'
+  processed: true
+  notes: query='谐波减速器 国产化 绿的谐波 来福 毛利率 下滑 以价换量' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 谐波减速器 国产化 绿的谐波 来福 毛利率 下滑 以价换量
+    url: https://mp.ofweek.com/ai/a856714884687
+    domain: mp.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:02:01.000632+00:00'
+    stale_at: '2026-08-22T17:02:01.000632+00:00'
+    expire_at: '2026-10-21T17:02:01.000632+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e35cf5
+  filename: 2026-07-23_来福谐波港股ipo-谐波减速器靠降价抢量毛利率持续走低应收款占收入.md
+  source_type: web-search
+  added: '2026-07-23T17:02:01.144597+00:00'
+  processed: true
+  notes: query='谐波减速器 国产化 绿的谐波 来福 毛利率 下滑 以价换量' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 谐波减速器 国产化 绿的谐波 来福 毛利率 下滑 以价换量
+    url: https://finance.sina.cn/hkstock/gggd/2026-06-17/detail-inicsrqv7098398.d.html?oid=%E5%A8%81%E6%B5%B7%E4%BC%B4%E6%B8%B8%E5%A5%B3%E5%BE%AE%E4%BF%A1%E9%A2%84%E7%BA%A6%EF%BC%88%E6%9E%81%E9%99%90%E5%AE%9A%E5%88%B6%EF%BC%89%E7%BB%8F%E7%BA%AAV%20%EF%BC%9A(%E2%91%A7%E2%91%A7417421)%E5%A4%9A%E4%BD%8D%E5%A4%A7%E5%92%96%E8%AE%A4%E8%AF%81%E7%BB%8F%E7%BA%AA%E4%BA%BATrM8in2gyxzJdoBYNQVR0209&vt=4
+    domain: finance.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T17:02:01.105012+00:00'
+    stale_at: '2026-08-22T17:02:01.105012+00:00'
+    expire_at: '2026-10-21T17:02:01.105012+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-753249
+  filename: 2026-07-23_投资逻辑盈利预测-估值和评级风险提示.md
+  source_type: web-search
+  added: '2026-07-23T17:02:01.244385+00:00'
+  processed: true
+  notes: query='谐波减速器 国产化 绿的谐波 来福 毛利率 下滑 以价换量'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 谐波减速器 国产化 绿的谐波 来福 毛利率 下滑 以价换量
+    url: https://pdf.dfcfw.com/pdf/H3_AP202601291818526425_1.pdf?1769674033000.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T17:02:01.205333+00:00'
+    stale_at: '2026-08-22T17:02:01.205333+00:00'
+    expire_at: '2026-10-21T17:02:01.205333+00:00'
+    triggered_by: 00-deep-fetch

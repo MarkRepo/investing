@@ -1,0 +1,483 @@
+slug: cn-xingye-silver-tin
+display_name: 兴业银锡 (000426.SZ)
+type: company
+created: '2026-07-18T16:50:58.265880+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 兴业银锡(000426.SZ)，deep/CN单市场：赌银漫矿业复产达产放量叠加银/锡价格上行能否兑现业绩与估值双击——核心命门是银漫产能兑现节奏与银/锡价β弹性；共识押白银牛市贝塔，我更看重量价双击里'量'(产能放量确定性)的边际；不做纯商品价格投机、不含一级资产注入预期。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SZSE_000426
+  market: SZSE
+  short_name: 兴业银锡
+  search_terms:
+  - 银漫矿业 产能放量
+  - 白银 锡 价格
+  - 业绩 估值 弹性
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-19T02:58:16.261683+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-08571d
+    - mat-0b5521
+    - mat-1b9e1e
+    - mat-1ead00
+    - mat-3b4480
+    - mat-3f3de8
+    - mat-4b91ac
+    - mat-5891d8
+    - mat-5d4695
+    - mat-5df37d
+    - mat-67bc13
+    - mat-702ef6
+    - mat-74ce34
+    - mat-786786
+    - mat-7d7ae5
+    - mat-7dd499
+    - mat-85679b
+    - mat-90c71a
+    - mat-9ae98c
+    - mat-a87349
+    - mat-b84471
+    - mat-cae236
+    - mat-db9ab1
+    - mat-e50af2
+    - mat-e5fb1b
+    - mat-f5b19a
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-07-19T09:58:18.749467+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-08571d
+    - mat-0b5521
+    - mat-1b9e1e
+    - mat-1ead00
+    - mat-3b4480
+    - mat-3f3de8
+    - mat-4630ac
+    - mat-4b91ac
+    - mat-5891d8
+    - mat-5d4695
+    - mat-5df37d
+    - mat-67bc13
+    - mat-702ef6
+    - mat-74ce34
+    - mat-786786
+    - mat-7d7ae5
+    - mat-7dd499
+    - mat-85679b
+    - mat-90c71a
+    - mat-9ae98c
+    - mat-a87349
+    - mat-b84471
+    - mat-cae236
+    - mat-db9ab1
+    - mat-e50af2
+    - mat-e5fb1b
+    - mat-f5b19a
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-07-19T09:58:18.775722+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-08571d
+    - mat-0b5521
+    - mat-1b9e1e
+    - mat-1ead00
+    - mat-3b4480
+    - mat-3f3de8
+    - mat-4630ac
+    - mat-4b91ac
+    - mat-5891d8
+    - mat-5d4695
+    - mat-5df37d
+    - mat-67bc13
+    - mat-702ef6
+    - mat-74ce34
+    - mat-786786
+    - mat-7d7ae5
+    - mat-7dd499
+    - mat-85679b
+    - mat-90c71a
+    - mat-9ae98c
+    - mat-a87349
+    - mat-b84471
+    - mat-cae236
+    - mat-db9ab1
+    - mat-e50af2
+    - mat-e5fb1b
+    - mat-f5b19a
+    last_error: null
+  08_living_feed:
+    version: 3
+    last_updated: '2026-07-19T09:58:59.848433+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-08571d
+    - mat-0b5521
+    - mat-1b9e1e
+    - mat-1ead00
+    - mat-3b4480
+    - mat-3f3de8
+    - mat-4630ac
+    - mat-4b91ac
+    - mat-5891d8
+    - mat-5d4695
+    - mat-5df37d
+    - mat-67bc13
+    - mat-702ef6
+    - mat-74ce34
+    - mat-786786
+    - mat-7d7ae5
+    - mat-7dd499
+    - mat-85679b
+    - mat-90c71a
+    - mat-9ae98c
+    - mat-a87349
+    - mat-b84471
+    - mat-cae236
+    - mat-db9ab1
+    - mat-e50af2
+    - mat-e5fb1b
+    - mat-f5b19a
+    last_error: null
+parent_materials: []
+next_actions:
+- v2 已消化 05-critic request-rewrite（环④edge/环⑤深跌/环②估值已重写）；可「评审 cn-xingye-silver-tin」复评，或等
+  H 股招股书 Q3 补一手 C1 后再评
+user_todos:
+- task: 兴业银锡 2025年报 + 2026Q1季报（分金属产量/在建工程/毛利/成本拆分）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: cninfo 直下 SZSE_000426
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-74ce34
+  - mat-786786
+  last_fetch_note: cninfo 2 份
+- task: 兴业银锡 H股招股书/港交所聆讯资料集（弗若斯特沙利文行业章节+产能时间表+分矿成本+募资用途）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  - K4
+  - K5
+  source_hint: 港交所披露易 HKEXnews，2026-05 递表
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-67bc13
+  - mat-7d7ae5
+  - mat-90c71a
+  - mat-9ae98c
+  - mat-e50af2
+  last_fetch_note: 递表+发回重递公告/新闻；招股书正文待重递后披露易取
+- task: 银/锡价格情景 + 公司单位现金成本料（最新银锡价/金银比/LME库存 + 卖方对银锡价假设 + C1成本）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K3
+  source_hint: SMM/富宝/卖方大宗研报
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1f59a1
+  - mat-2fe5df
+  - mat-4630ac
+  - mat-4743b1
+  - mat-db9ab1
+  last_fetch_note: 成本/毛利+资源禀赋+prescan银锡价
+- task: 兴业银锡 卖方深度研报×3（2026-28盈利预测/目标价/产能假设 一致预期）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 中信建投/中金/华创/信达任选3家，同花顺/Wind
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1b9e1e
+  - mat-1ead00
+  - mat-85679b
+  last_fetch_note: 研报聚合+H1预告+锡牛行业深度+兴业research
+- task: 银漫二期(297万吨)/宇邦扩产进度（在建工程%/调研纪要/公司公告）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 公司公告+机构调研纪要
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-f5b19a
+  last_fetch_note: 建设用地批复公告
+- task: 管理层/资本配置史（吉兴业/兴业集团 借壳-并购-再融资-分红-质押取舍史）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: A合同 mgmt-capital-alloc；历年公告+媒体深度
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5891d8
+  - mat-702ef6
+  - mat-7dd499
+  - mat-b84471
+  - mat-e5fb1b
+  last_fetch_note: 百科/翻身叙事+M&A公告+IPO深度
+- task: 控股股东质押+集团债务重整+天津信业受让6.87% 详情
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 公司质押/权益变动公告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-48079d
+  - mat-9ae98c
+  - mat-ee4577
+  last_fetch_note: prescan质押/解押+H股治理新闻
+- task: 锡行业供需深度（缅甸佤邦/印尼/刚果金供给 + AI/HBM需求 + 全球库存）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 卖方锡行业深度/SMM
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-08571d
+  - mat-3b4480
+  - mat-5df37d
+  last_fetch_note: 锡牛来袭深度+观点汇总
+- task: 白银供需 + 金银比 + 光伏银浆/工业需求
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 卖方贵金属深度/世界白银协会
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5d4695
+  - mat-a87349
+  last_fetch_note: 光伏用银+头豹白银研报
+- task: 可比公司横比（锡业股份/盛达资源/华锡有色 估值/资源量/成本对标）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: Wind/卖方；资源价值法+PB/EV
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1b9e1e
+  last_fetch_note: 可比个股+兴业research（横比表薄，留01深化）
+- task: 历史失败镜鉴（资源股价格顶部追高教训/高质押矿企爆雷/银漫停产期股价复盘）
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K5
+  source_hint: A合同 historical-mirror；复盘文章/研报
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: waived
+  last_fetch_note: adapter搜1轮全低质无权威复盘专文；hard tier，镜鉴由04/05从翻身叙事+训练知识合成
+  disposition_note: hard-tier historical-mirror，公开无权威复盘专文；环⑤由行业翻身叙事+训练知识合成 A股高质押矿企爆雷/资源股周期顶追高/银漫2019停产复盘，明标训练知识估算
+- task: Tartana + 摩洛哥大西洋锡业(Achmmach) 海外项目细节（产能/品位/权益/时间轴）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 公司公告+TAT披露
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0b5521
+  - mat-4b91ac
+  - mat-5891d8
+  - mat-b84471
+  - mat-cae236
+  last_fetch_note: 全控大西洋锡业+Atlas/FarEast公告
+- task: 资料提取完成：27 份 actionable 全部处理完毕（另 20 份 prescan 料豁免）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成（3 份），可说「评审 cn-xingye-silver-tin」进 05 对抗式重审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: H股招股书分金属副产法真实 C1（银/锡/铅锌各金属现金成本）是多少，替代当前共产品分摊反推的 $13/6.7万近似值？
+  rationale: critic致命一击:成本地板是承重命门却零一手数据,共生金属同跌时可能崩塌为会计幻象;C1一手数据决定深跌幅度与"抗跌edge"能否复活
+  source: critic_weak_k
+  related:
+  - K2
+  - K3
+  priority: P0
+  status: open
+  suggested_at: '2026-07-19T10:02:19.949617+00:00'
+- question: H股招股书完整产能时间表 + 资源量分级口径（探明/控制/推断）可信度如何？
+  rationale: 影响NAV模型G分母 + 治理折价幅度;贴堂媒体指向资源量分类被质疑,须区分探明vs总资源量
+  source: critic_weak_k
+  related:
+  - K1
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-07-19T10:02:19.949617+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: c_investment_case 骨架完整、诚实度高、方向克制(现价EV≈0观望),但独立空头有效挑战一根承重梁:"$13/oz成本地板"零一手数据(共产品分摊反推)却被当环④抗跌edge+环⑤深跌-39%封顶依据,共生金属同跌时可能崩塌为会计幻象,case无应答。评分整体3.5。重写环④edge/环⑤深跌档+重审normalized中枢与PB溢价。(反方商誉减值论点因财务API显示bug误喂已作废;真实商誉占净资产1.9%)
+  at: '2026-07-19T05:56:10.518270+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-19T03:17:24.384406+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-18T17:05:57.227315+00:00'
+    summary: 命门1=银漫二期+宇邦产能兑现节奏(中); 命门2=银/锡价格中枢维持(低/uncertain); 命门3=扩产资本纪律与治理(中)。终局环④EV靶点=一致预期+资源价值锚+A+H情景。
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-19T03:17:24.384427+00:00'
+    summary: 命门1(量)拆宇邦近端确定/银漫二期2028Q4远期期权；命门2(价)不可控但成本地板量化压缩杀伤；命门3(治理)强化为真实折价(100%质押+H股贴堂)
+    convergence_status: converged
+    changelog: 加:命门1拆两段(mat-f5b19a/mat-786786)+命门2成本地板对冲(mat-74ce34)+命门3资源量口径盲点(mat-7d7ae5)；改:命门1置信度分化、命门3升为估值折价；primer加#6时间贴现区分；砍:无；对照全历史无震荡
+thesis:
+  current_version: 2
+  last_updated: '2026-07-19T10:01:52.978604+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-18T17:03:50.804026+00:00'
+    summary: 看多买入(逢回调)：银锡量价双击，银漫二期(165→297万吨)+宇邦扩产使白银产量2025-28向~692吨放量，叠加银$57/锡$58.7k高位，Q1净利+257%已兑现；命门=产能兑现节奏×价格中枢；12M基准目标35-42元。强度6.5/10。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-19T03:17:24.351454+00:00'
+    summary: A股稀缺银锡量价双击资源股，方向看多但现价27.9元EV≈−4%定价公允、无安全边际→观望等回调(<27启动、<24加码)。edge在宇邦近端放量确定性+成本地板(/oz银)，非银价共识；对冲价格历史高位回撤+治理折价(100%质押/H股贴堂)。强度5.5/10
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-19T10:01:52.978766+00:00'
+    summary: 方向看多但现价EV≈−7%负、观望等回调;赌宇邦近端放量+银漫二期期权,"成本地板抗跌"经05-critic撤为待一手C1证实假设,深跌放开−39%封顶。强度5.0/10
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-18T17:06:53.223393+00:00'
+  exited_at: '2026-07-18T17:25:49.493880+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 03-extract-findings
+  entered_at: '2026-07-18T17:25:49.493880+00:00'
+  exited_at: '2026-07-19T02:27:35.317080+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 04-synthesizing
+  entered_at: '2026-07-19T02:27:35.317080+00:00'
+  exited_at: '2026-07-19T03:18:10.556267+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 05-critic-review
+  entered_at: '2026-07-19T03:18:10.556267+00:00'
+  exited_at: '2026-07-19T09:56:52.703151+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-19T09:56:52.703151+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0

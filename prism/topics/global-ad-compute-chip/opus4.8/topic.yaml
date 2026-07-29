@@ -1,0 +1,45 @@
+slug: global-ad-compute-chip
+display_name: 上游国产 AD 计算芯片 (地平线为核心)
+type: arena
+created: '2026-07-28T09:51:20.192036+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: global-autonomous-driving
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 国产 AD 计算芯片(地平线为核心)能否持续吃 Nvidia 高端份额+舱驾融合红利,且不被 OEM 自研(比亚迪4nm/蔚小理流片)显著吃穿?利润池落到哪家、地平线
+    PS16.7 的高估值能否被份额兑现?
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  short_name: 国产AD芯片
+  search_terms:
+  - 地平线 征程6
+  - OEM 自研芯片
+  - 舱驾融合
+  - 黑芝麻智能
+  - 智驾芯片份额
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-28T09:52:55.558058+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-28T09:52:55.558204+00:00'
+    summary: 国产AD芯片(地平线一超)享国产替代+舱驾融合红利、Nvidia因Thor跳票松动;但地平线PS16.7已透支且面临OEM自研侵蚀——方向对,估值需回调或选二线介入。强度5/10

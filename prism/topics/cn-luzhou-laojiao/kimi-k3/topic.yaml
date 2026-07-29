@@ -1,0 +1,628 @@
+slug: cn-luzhou-laojiao
+display_name: 泸州老窖 (Luzhou Laojiao, SZSE 000568)
+type: company
+created: '2026-07-22T07:01:00.100037+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: cn-premium-baijiu
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 泸州老窖（SZSE_000568，CN/deep）：赌买/卖/持有——核心命门是国窖1573批价企稳时点与渠道库存消化斜率，胜负变量是高端价格带份额保卫战与中低档复苏弹性；押当前估值已
+    price-in 白酒去库存悲观预期，对照一致预期给目标价区间与介入纪律。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SZSE_000568
+  market: SZSE
+  short_name: 泸州老窖
+  search_terms:
+  - 国窖1573 批价
+  - 白酒 库存周期
+  - 泸州老窖 业绩
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-22T13:17:44.639699+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0bec29
+    - mat-1a2963
+    - mat-25b5af
+    - mat-3a679e
+    - mat-3d5562
+    - mat-421cf0
+    - mat-437ece
+    - mat-4636c5
+    - mat-4aa720
+    - mat-5220f3
+    - mat-55a2d5
+    - mat-5b5b61
+    - mat-607df4
+    - mat-60f5a9
+    - mat-665c58
+    - mat-679de6
+    - mat-6a44e7
+    - mat-6d7e6f
+    - mat-80a6b2
+    - mat-8793c1
+    - mat-940705
+    - mat-9537c8
+    - mat-959966
+    - mat-993a30
+    - mat-a3c08d
+    - mat-a9e570
+    - mat-b08805
+    - mat-b16d27
+    - mat-b2c7b2
+    - mat-bfba71
+    - mat-c0916d
+    - mat-c0bedd
+    - mat-c10496
+    - mat-c14557
+    - mat-d16dcb
+    - mat-d298d2
+    - mat-d45eb6
+    - mat-d7b671
+    - mat-de66fa
+    - mat-e61a4a
+    - mat-e74351
+    - mat-ea9dc8
+    - mat-ee6701
+    - mat-ef6345
+    - mat-f03901
+    - mat-f181a3
+    - mat-fd9481
+    - mat-fe416d
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-23T13:26:29.982116+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0bec29
+    - mat-1a2963
+    - mat-25b5af
+    - mat-3a679e
+    - mat-3d5562
+    - mat-421cf0
+    - mat-437ece
+    - mat-4636c5
+    - mat-4aa720
+    - mat-5220f3
+    - mat-55a2d5
+    - mat-5b5b61
+    - mat-607df4
+    - mat-60f5a9
+    - mat-665c58
+    - mat-679de6
+    - mat-6a44e7
+    - mat-6d7e6f
+    - mat-80a6b2
+    - mat-8793c1
+    - mat-940705
+    - mat-9537c8
+    - mat-959966
+    - mat-993a30
+    - mat-a3c08d
+    - mat-a9e570
+    - mat-b08805
+    - mat-b16d27
+    - mat-b2c7b2
+    - mat-bfba71
+    - mat-c0916d
+    - mat-c0bedd
+    - mat-c10496
+    - mat-c14557
+    - mat-d16dcb
+    - mat-d298d2
+    - mat-d45eb6
+    - mat-d7b671
+    - mat-de66fa
+    - mat-e61a4a
+    - mat-e74351
+    - mat-ea9dc8
+    - mat-ee6701
+    - mat-ef6345
+    - mat-f03901
+    - mat-f181a3
+    - mat-fd9481
+    - mat-fe416d
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-23T13:26:29.998636+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0bec29
+    - mat-1a2963
+    - mat-25b5af
+    - mat-3a679e
+    - mat-3d5562
+    - mat-421cf0
+    - mat-437ece
+    - mat-4636c5
+    - mat-4aa720
+    - mat-5220f3
+    - mat-55a2d5
+    - mat-5b5b61
+    - mat-607df4
+    - mat-60f5a9
+    - mat-665c58
+    - mat-679de6
+    - mat-6a44e7
+    - mat-6d7e6f
+    - mat-80a6b2
+    - mat-8793c1
+    - mat-940705
+    - mat-9537c8
+    - mat-959966
+    - mat-993a30
+    - mat-a3c08d
+    - mat-a9e570
+    - mat-b08805
+    - mat-b16d27
+    - mat-b2c7b2
+    - mat-bfba71
+    - mat-c0916d
+    - mat-c0bedd
+    - mat-c10496
+    - mat-c14557
+    - mat-d16dcb
+    - mat-d298d2
+    - mat-d45eb6
+    - mat-d7b671
+    - mat-de66fa
+    - mat-e61a4a
+    - mat-e74351
+    - mat-ea9dc8
+    - mat-ee6701
+    - mat-ef6345
+    - mat-f03901
+    - mat-f181a3
+    - mat-fd9481
+    - mat-fe416d
+    last_error: null
+  08_living_feed:
+    version: 4
+    last_updated: '2026-07-23T13:26:30.094645+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials:
+- parent_slug: cn-premium-baijiu
+  parent_variant: opus4.8
+  mat_id: mat-118a9e
+  addresses:
+  - K1
+  - K2
+  note: 老窖2014前科（逆势提价→营收-48.7%→修复拖到2017）+2012-13规律失效（6段被动去库存5段涨/唯2012-13跌）+联合资信横盘警示——环⑤镜鉴主源
+- parent_slug: cn-premium-baijiu
+  parent_variant: opus4.8
+  mat_id: mat-48af62
+  addresses:
+  - K1
+  - K3
+  note: 板块Q1营收-0.66%全靠茅台撑（次高端全员深跌=伪企稳风险）+茅台Q1合同负债-62%/经现暴增靠口径——A1/A5证据
+- parent_slug: cn-premium-baijiu
+  parent_variant: opus4.8
+  mat_id: mat-d42e97
+  addresses:
+  - K4
+  note: 6-07估值横截面锚：茅台19.5x/一年分位7.5%、五粮液13.25x/十年0.1%分位、股息率泸州6.34%>五粮液6.07%>汾酒5.11%>茅台3.92%
+- parent_slug: cn-premium-baijiu
+  parent_variant: opus4.8
+  mat_id: mat-78157e
+  addresses:
+  - K4
+  note: 分红回购横比：茅台650亿+60亿注销式回购+30亿增持、五粮液223亿无注销式回购——老窖绝对额保底在组内的独特性
+- parent_slug: cn-premium-baijiu
+  parent_variant: opus4.8
+  mat_id: mat-0225c4
+  addresses:
+  - K3
+  note: 卖方拐点共识"十年一遇大底/Q2全板块转正/次高端弹性最大"——环④核心分歧对照靶子
+- parent_slug: cn-premium-baijiu
+  parent_variant: opus4.8
+  mat_id: mat-765cbf
+  addresses:
+  - K1
+  note: 6-07批价命门偏空口径：飞天控货稳~1635未破前高、普五/国窖创新低、618击穿价盘——对照7月国窖两期领涨的边际改善
+next_actions:
+- 04 重写完成（消化 05-critic verdict）：case v2/kit/thesis_v2 已落盘，三份产出 fresh
+- 待复评：说「评审 cn-luzhou-laojiao」跑 05 复评（重点验 EV 重构后框架是否还站得住）
+- 或进 06-daily-monitor 盯 signpost：2026-08 底中报（A1 确认点）/ 批价月度序列（K1）
+user_todos:
+- task: 下载泸州老窖 2025 年报全文 + 2026Q1 季报（cninfo 直下）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K3
+  - K4
+  source_hint: cninfo ticker 直下（6.5a）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-60f5a9
+  - mat-d45eb6
+  last_fetch_note: cninfo 2 份
+- task: 下载贵州茅台/五粮液 2025 年报 + 2026Q1 季报（peer 批价传导与估值对照）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: cninfo 直下 SSE_600519 / SZSE_000858
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6d7e6f
+  - mat-bfba71
+  - mat-d16dcb
+  - mat-ee6701
+  last_fetch_note: cninfo 4 份
+- task: 国窖1573/普五/飞天茅台 近12个月批价高频序列
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 今日酒价/不二酱/酒说/微酒高频栏目
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-25b5af
+  - mat-e61a4a
+  - mat-ea9dc8
+  last_fetch_note: fetched（酒价内参 6/14+7/5 两期 + 酒排名归档源）
+- task: 下载 2026-06-30 机构调研纪要全文（投资者关系活动记录表）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K3
+  - K5
+  source_hint: cninfo 临时公告（6.5a-ann 分诊下载）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-80a6b2
+  - mat-ef6345
+  last_fetch_note: fetched（投资者关系管理信息公告+6/26活动记录表PDF+5月记录）
+- task: 2-3 份卖方深度报告：2026 白酒行业策略 + 泸州老窖个股深度
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  - K4
+  source_hint: 慧博/东财研报中心/卖方公众号
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-271842
+  - mat-437ece
+  - mat-b2c7b2
+  - mat-de66fa
+  - mat-f46ebe
+  last_fetch_note: fetched（研报 PDF×4 在库：加速出清/经营稳健/复盘系列/产能研报 + 盈利预测页）
+- task: 下载 2025年度股东会决议公告 + 2024-2026年度股东分红回报规划公告（cninfo 原文）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: cninfo 临时公告（6.5a-ann）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-5220f3
+  - mat-55a2d5
+  - mat-993a30
+  - mat-b9d9ef
+  - mat-c0916d
+  - mat-cd3022
+  last_fetch_note: fetched（规划公告原文+股东会决议+利润分配预案+中期分红授权）
+- task: 白酒消费税新规细则原文（财政部/税务总局）+ 权威解读
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 财政部/税务总局官网、证券时报/一财解读
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1a2963
+  - mat-a3c08d
+  - mat-fd9481
+  last_fetch_note: fetched（税务总局公告原文+官方解读+白酒实操申报文）
+- task: 2013-2015 白酒深度调整周期复盘（历史镜鉴，A合同 historical-mirror）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: 券商周期复盘研报/财经媒体十周年回顾
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3a679e
+  - mat-437ece
+  - mat-607df4
+  last_fetch_note: fetched（复盘系列之七+中金历次周期复盘+高端白酒量价研报）
+- task: 渠道草根调研：经销商打款意愿/库存月数/倒挂幅度一手信息
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K2
+  source_hint: 微酒/酒业家/糖酒快讯草根纪要（须实际尝试一次）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-421cf0
+  - mat-c14557
+  - mat-d7b671
+  last_fetch_note: fetched（困局报道+渠道高压评论+经销商堆货7个月草根贴，均 mid 待确认）
+- task: 管理层 track record + 资本配置史（刘淼/林锋任期决策、分红回购史、集团关联交易，A合同 mgmt-capital-alloc）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 年报管理层讨论+历任公告+媒体人物报道
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3d5562
+  - mat-9537c8
+  - mat-f03901
+  - mat-fe416d
+  last_fetch_note: fetched（股权激励低门槛报道+刘淼进攻策略口径+回购注销/关联交易公告）
+- task: 卖方一致预期汇总（2026E/2027E 净利预测分布、目标价离散度，A合同 consensus）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 东财/Wind 一致预期页、慧博研报聚合
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-8aa586
+  - mat-932381
+  - mat-de66fa
+  - mat-f181a3
+  last_fetch_note: fetched（同花顺盈利预测页+雪球估值讨论+东证/华鑫评级新闻）
+- task: 公司产能/窖池/基酒储备数据梳理
+  priority: P2
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: 年报+公司官网+历史招股书口径
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-8793c1
+  - mat-c0bedd
+  last_fetch_note: fetched（17万吨基酒产能报道+雪球产能分析+2025研报PDF）
+- task: 中低档产品线（特曲60/窖龄/高光/黑盖）2025 动销与提价记录
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 公司新闻+渠道报道+糖酒会信息
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-665c58
+  - mat-b08805
+  last_fetch_note: fetched（股东大会直击+十五五目标报道）
+- task: 收洋河股份 2019-2021 渠道库存危机镜鉴复盘（控货去库存→报表双杀→修复全过程，A合同 historical-mirror 环⑤）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: 券商洋河复盘研报/财经媒体深度
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4636c5
+  - mat-6a44e7
+  - mat-940705
+  - mat-e74351
+  last_fetch_note: 研报PDF×2+stcn+大河财立方
+- task: '收高端白酒需求结构拆解（政务/商务/宴席/自饮/收藏占比 + 禁酒令影响实况，primer #9 背景）'
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 券商行业深度/协会数据/媒体调研
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-4aa720
+  - mat-5b5b61
+  - mat-679de6
+  - mat-c10496
+  - mat-d298d2
+  last_fetch_note: 联合资信+东财研报+南都+钛媒体+KPMG酒业协会
+- task: 资料提取完成：90 份全部处理完毕（48 份 actionable 抽取 + 42 份 Role α prescan 豁免）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成（3 份：00_primer/c_investment_case/07_decision_kit + thesis_v1 + decomposition_v1），chain-critic
+    一轮收敛（修 3 处），等待 05 对抗式评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 渠道库存真实水位交叉验证：草根7个月 vs 公司端13.4个月，中报合同负债+调研纪要能否收敛到统一刻度？
+  rationale: 05-critic 反方点名"出清进行中证伪"，渠道精确水位 UGC 单线（mat-d7b671 低可信）；8月底中报是第一验证窗
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-22T12:46:04.909682+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: EV框架三处循环被反方击穿（免费期权≈股息率/先设终值12x再证市场错/悲观格打包三独立事件）+保底到期应进base case+A1算术未拆——证据无缺口、问题在分析框架，重写环②/④/⑥
+  at: '2026-07-22T12:45:50.231869+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-22T10:34:51.774201+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-22T07:19:19.927904+00:00'
+    summary: 命门1=茅台批价传导与国窖不降价兑现极限(中); 命门2=渠道真实库存水位与消化斜率(中低); 命门3=85亿分红保底现金流覆盖机理(中低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-22T10:34:51.774218+00:00'
+    summary: 命门1=反超性质→2026H2攻防战（中）；命门2=库存7个月+未见停单级→出清判2027（中）；命门3=保底覆盖=存量资产负债表~3.7年垫、真证伪点=2027新规划口径（中高）
+    convergence_status: open
+    changelog: 命门1内容更新（性质裁决→攻防战，凭mat-6d7e6f/bfba71/25b5af/ea9dc8）；命门2置信度中低→中（水位量化mat-d7b671/60f5a9+洋河刻度mat-6a44e7）；命门3中低→中高（覆盖机理mat-60f5a9/55a2d5/a9e570）；primer目标新增#11报表三陷阱/#12分红文本层级、#5扩展洋河；K5维持非命门；无震荡
+thesis:
+  current_version: 3
+  last_updated: '2026-07-23T13:26:29.928741+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-22T07:16:05.971602+00:00'
+    summary: 行业出清左侧但 PE~11x + 保底85亿分红（~7%股息率）封底；国窖1573反超普五。持有/80元下分批低吸，赌2026H2-2027批价企稳反转，强度6/10。
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 92%（12/13，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-22T10:34:51.736700+00:00'
+    summary: 行业出清第二年，PE 12.8x+85亿保底分红（6.65%股息率，靠存量资产负债表兜底）封下行；国窖反超普五含被动成分、2026H2遭进攻性测试。持有/80元下分批低吸（试探档），赌2027出清后反转，EV+5.3%/年，强度5.5/10。
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-22T10:44:56.459205+00:00'
+    summary: 行业出清第二年，PE 12.8x+85亿保底分红（6.65%股息率，靠存量资产负债表兜底）封下行；国窖反超普五含被动成分、2026H2遭进攻性测试。持有/80元下分批低吸（试探档），赌2027出清后反转，EV+5.76%/年，强度5.5/10。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-22T13:16:17.630741+00:00'
+    summary: 出清第二年，PE12.8x非送钱——现价已预付反转期权半价；85亿保底2027-04到期、口径调整~50%已进情景。EV重算-4.8%/年：存量持有吃股息，增量观望；低吸≤80元或K1+K3双确认追。
+  - version: 3
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T13:26:29.928863+00:00'
+    summary: 出清第二年，PE12.8x非送钱——现价已预付反转期权半价；85亿保底2027-04到期、口径调整~50%已进情景。EV重算-4.8%/年：存量持有吃股息，增量观望；低吸≤80元或K1+K3双确认追。v3挂回父arena复用成稿。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-22T07:20:51.736364+00:00'
+  exited_at: '2026-07-22T08:21:01.767448+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-22T08:21:01.767448+00:00'
+  exited_at: '2026-07-22T09:18:34.096258+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-22T09:18:34.096258+00:00'
+  exited_at: '2026-07-22T10:45:28.061995+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-22T10:45:28.061995+00:00'
+  exited_at: '2026-07-22T13:18:40.651947+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-22T13:18:40.651947+00:00'
+  exited_at: '2026-07-22T13:18:40.853909+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-22T13:18:40.853909+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-22T08:24:07.939388+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 7
+  queries_with_hits: 7

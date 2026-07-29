@@ -1,6 +1,6 @@
 slug: us-micron-mu
 variant: opus4.8
-updated: '2026-06-12T02:35:47.950146+00:00'
+updated: '2026-07-15T13:47:10.664299+00:00'
 materials:
 - id: mat-f03161
   filename: 2026-06-12_micron-mu-q2-fy2026-earnings-report.md
@@ -923,3 +923,79 @@ materials:
     stale_at: '2026-07-12T01:46:14.758022+00:00'
     expire_at: '2026-09-10T01:46:14.758022+00:00'
     triggered_by: 00-deep-fetch
+- id: mat-01b47e
+  filename: 2026-07-15_hbm-prices-may-surge-in-2027-due-to-tight-dram-sup.md
+  source_type: web-search
+  added: '2026-07-15T13:37:08.500493+00:00'
+  processed: false
+  notes: query='[daily-monitor] signpost:2027 HBM4 SCA(供货协议)谈判 + HBM vs DDR5 单wafer经济性走向｜bear:HBM
+    经济性继续被 DDR5 反超、产能回流标准 DRAM'
+  mineru_state: not_needed
+  addresses:
+  - signpost:2027 HBM4 SCA(供货协议)谈判 + HBM vs DDR5 单wafer经济性走向｜bear:HBM 经济性继续被 DDR5
+    反超、产能回流标准 DRAM
+  confidence: 0.9
+  search_meta:
+    query: '[daily-monitor] signpost:2027 HBM4 SCA(供货协议)谈判 + HBM vs DDR5 单wafer经济性走向｜bear:HBM
+      经济性继续被 DDR5 反超、产能回流标准 DRAM'
+    url: https://www.linkedin.com/posts/trendforce-corporation_tight-dram-supply-gives-suppliers-greater-activity-7467606256787079168-GjRT
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-15T13:37:08.480721+00:00'
+    stale_at: '2026-08-14T13:37:08.480721+00:00'
+    expire_at: '2026-10-13T13:37:08.480721+00:00'
+    triggered_by: 06-daily-monitor
+- id: mat-895ab3
+  filename: 2026-07-15_micron-technology-mu-q3-2026-post-call-summary.md
+  source_type: web-search
+  added: '2026-07-15T13:47:10.557860+00:00'
+  processed: true
+  notes: query='Micron Q3 FY2026 earnings results revenue gross margin guidance June
+    2026 HBM SCA'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  rings:
+  - ring2
+  - ring4
+  - ring5
+  confidence: 0.9
+  search_meta:
+    query: Micron Q3 FY2026 earnings results revenue gross margin guidance June 2026
+      HBM SCA
+    url: https://quartr.com/events/micron-technology-inc-mu-q3-2026-post-call_3Yxg2bAG
+    domain: quartr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-15T13:47:10.539625+00:00'
+    stale_at: '2026-08-14T13:47:10.539625+00:00'
+    expire_at: '2026-10-13T13:47:10.539625+00:00'
+    triggered_by: 04-synth
+- id: mat-ad9a41
+  filename: 2026-07-15_micron-posts-record-41-5b-revenue-amid-ai-driven-h.md
+  source_type: web-search
+  added: '2026-07-15T13:47:10.605405+00:00'
+  processed: true
+  notes: query='Micron Q3 FY2026 earnings results revenue gross margin guidance June
+    2026 HBM SCA'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  rings:
+  - ring2
+  - ring4
+  - ring5
+  confidence: 0.8
+  search_meta:
+    query: Micron Q3 FY2026 earnings results revenue gross margin guidance June 2026
+      HBM SCA
+    url: https://www.kucoin.com/news/flash/micron-posts-record-41-5b-revenue-amid-ai-driven-hbm-demand-surge
+    domain: kucoin.com
+    domain_tier: other
+    searched_at: '2026-07-15T13:47:10.586424+00:00'
+    stale_at: '2026-08-14T13:47:10.586424+00:00'
+    expire_at: '2026-10-13T13:47:10.586424+00:00'
+    triggered_by: 04-synth

@@ -1,0 +1,116 @@
+slug: us-tesla
+variant: opus4.8
+topic_type: company
+display_name: 特斯拉 Tesla (US_TSLA)
+ticker: US_TSLA
+generated: 2026-07-23T09:00:00Z
+data_freshness: 2026-Q2-full
+data_freshness_basis: SEC Q2'26 完整 10-Q(mat-20a64a MD&A / mat-5e1871 财报表) + 官方 Q2 Update 8-K deck(mat-af6378) + 交付(mat-0819c0) + robotaxi去监管进度(mat-a83b87/bc5764) + Optimus(mat-afde91/f71025) + 卖方一致预期 2026-07 + 实时市值 2026-07-23 财报后 $1.264T
+
+buy_box:
+  strong_buy_max: 230
+  accumulate_min: 230
+  accumulate_max: 320
+  hold_min: 320
+  hold_max: 360
+  current_price: 336.60
+  price_as_of: 2026-07-23
+  current_zone: in_hold   # 财报后 -10%（$374→$336.6），从 above_hold 跌入 hold 区(320-360)，"不追高"edge 部分兑现
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 终局HOLD(v2 UNDERWEIGHT经05-critic复评降级)。命门2(robotaxi每英里经济学)一手仍空白=高信息不确定 + EV≈0(-4%~+2%带,v2 -9%补上行melt-up tail后中性) + 信心中(对"无边际优势"中性结论信心中,对任一方向重注信心低)；期权占56-80%的黑箱标的不配标准/重仓,当前价$374双向均无edge建议0仓;已持有者v3不再主张因估值主动减
+  initial_max_pct: null
+  full_max_pct: 4
+  add_ladder_prices: [320, 285, 250, 210]
+  max_cluster_pct: 5
+
+valuation_models:
+  - name: sotp_fundamental
+    label: SOTP分部加总(汽车+能源+净现金,不含期权)
+    bull_fair_value: [356, 356]
+    base_fair_value: [286, 286]
+    bear_fair_value: [195, 195]
+  - name: sotp_per_share_fundamental
+    label: SOTP基本面每股(基本面市值/3751M股)
+    bull_fair_value: [95, 95]
+    base_fair_value: [76, 76]
+    bear_fair_value: [52, 52]
+  - name: reverse_dcf_implied
+    label: 反推隐含(当前价隐含十年盈利CAGR)
+    bull_fair_value: null
+    base_fair_value: [374, 374]
+    bear_fair_value: null
+
+kill_criteria:
+  - id: robotaxi_deregulated_3cities
+    description: robotaxi 2026底前≥3城真无人被独立证实(非尾随安全车)+去安全员收费+官方披露每英里成本低于Waymo → 上修转HOLD/加仓。Q2进展:Dallas/Houston 4/18宣布无监督扩张但electrek实测真无人存疑(mat-bc5764),节奏在跑真无人未证实
+    status: pending
+    check_at: 2026-Q4
+  - id: optimus_external_orders
+    description: Optimus出现可核实外部量产订单/出货(非演示) → 期权兑现节奏证实,上修
+    status: pending
+    check_at: 2026-Q4
+  - id: auto_fundamentals_break
+    description: Q3/Q4 2026交付YoY转负 + 剔积分汽车毛利率跌破15%(Q2已16.3%续降逼近) + robotaxi真无人持续证伪 → 下修确认,加确信空
+    status: pending
+    check_at: 2026-Q4
+  - id: keyman_event
+    description: Musk被迫卖股/健康/政治事件触发 tail bear
+    status: pending
+    check_at: 2027
+
+signposts:
+  - date: 2026-Q2
+    event: Q2 2026财报(交付/剔积分毛利/能源毛利/FCF)——已出
+    bull_signal: robotaxi去监管城市数增加+每英里成本首披露且低于Waymo+Optimus订单
+    bear_signal: robotaxi里程碑再推迟一年+剔积分毛利继续降+交付YoY转负
+    triggered: bear——完整10-Q确认:交付480126创纪录+营收$28.24B(+26%)(利多面),但①经营利润坍塌至$398M/经营利润率1.4%(YoY-57%),因opex+47%(AI研发+$1T薪酬包SBC);②净利$1.11B(-5%)被SpaceX持仓MTM浮盈+加州$274M一次性税收利得粉饰,剔除后核心几乎不赚钱;③剔积分汽车毛利16.3%续降+碳积分Q2仅$146M(-67%);④能源毛利39.5→20.4%骤崩;⑤capex指引>$25B(≈3x'25),Q2单季FCF转负;robotaxi扩至7大都会(利多)但仍FSD Supervised+试点、真无人存疑(mat-af6378/mat-20a64a/mat-bc5764);净偏空
+  - date: 2026-Q3
+    event: Q3 2026财报电话会(robotaxi真无人独立验证/每英里成本首披露/Optimus出货/剔积分毛利是否破15%)
+    bull_signal: robotaxi真无人被独立证实+每英里成本首披露且低于Waymo+Optimus出货
+    bear_signal: robotaxi真无人持续证伪+剔积分毛利破15%+交付YoY转负
+    triggered: null
+  - date: 2026-Q4
+    event: robotaxi无人化商业许可进展(CPUC/NHTSA/州级)
+    bull_signal: ≥3城获无人化商业运营许可且真无人被独立证实
+    bear_signal: 仍限于地理围栏试点/尾随安全车/teleoperations
+    triggered: null
+  - date: 2026-Q4
+    event: 美国EV税补/碳积分制度存废落地(OBBBA)
+    bull_signal: 政策缓和/积分制度保留
+    bear_signal: 积分加速枯竭+EV需求payback
+    triggered: null
+  - date: 2027
+    event: $1T薪酬包稀释兑现进度 + Musk资本配置动作
+    bull_signal: 里程碑达标绑定Musk且叙事兑现
+    bear_signal: 巨额稀释兑现而期权未兑现
+
+cluster_tags: [autonomous-driving, ai-compute, ev, humanoid-robot, energy-storage, narrative-option-stock]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 3
+    kind: data-missing
+    note: robotaxi每英里单位经济学(成本,K3)Tesla至今未披露一手数据,仅第三方框定"司机占ride-hail成本60-70%",唯一真空缺
+  - ring: 4
+    kind: data-missing
+    note: 命门2 robotaxi兑现概率因K3每英里成本空白仍为低置信估计;终局EV符号骑在上行tail概率(建议6%)上——6%→3%则EV≈-3.7%(弱偏空)、6%→8%则EV≈+2%(弱偏多),这就是终局落HOLD而非任一方向的机械理由
+  - ring: 2
+    kind: training-estimate
+    note: SOTP汽车/能源销售额倍数为训练知识区间估算,非精确DCF;②.4压测显示期权占比56-80%区间,仅证"贵"不直接证"该减持"(终局需并入右尾凸性)。**Q2'26完整财报重算(2026-07-23,市值降至$1.264T):期权占比~77-79%(base)/72%(bull base)-85%(bear base)——占比降2-3pt纯因股价跌10%,非base变好;相反Q2经营利润率1.4%+capex 3x论证base质量更差、2.5x sales偏高→critic"base被低估致期权占比腰斩到55-60%"情景Q2不支持**
+  - ring: 1
+    kind: data-missing
+    note: 能源Q2毛利骤降至20.4%含一次性(warranty true-up+关税),稳态毛利未知——需Q3确认是否回稳
+market_implied:
+  metric: implied_10y_earnings_cagr
+  value: 40
+my_vs_market_delta:
+  metric: implied_10y_earnings_cagr
+  my_value: 20
+  delta: "-20pct"
+  direction: short

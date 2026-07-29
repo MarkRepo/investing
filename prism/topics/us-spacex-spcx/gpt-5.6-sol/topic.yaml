@@ -1,0 +1,442 @@
+slug: us-spacex-spcx
+display_name: 'Space Exploration Technologies Corp. (SpaceX, NASDAQ: SPCX)'
+type: company
+created: '2026-07-15T02:12:47.375021+00:00'
+status: active
+stage: 05-critic-review
+canonical: false
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: '美国 SpaceX（NASDAQ: SPCX），deep 深度：判断当前价格下应买入、持有还是卖出，核心赌注是 Starlink 自由现金流与发射规模经济能否支撑公开市场估值，并形成目标价区间与介入纪律。'
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_SPCX
+  market: US
+  short_name: SpaceX
+  search_terms:
+  - SpaceX SPCX
+  - Starlink 财务
+  - SpaceX 估值
+  - SpaceX 发射经济
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-15T04:19:18.702226+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-06c603
+    - mat-1eccb5
+    - mat-2956fb
+    - mat-489aef
+    - mat-5bf511
+    - mat-6dda4b
+    - mat-870816
+    - mat-8cb31e
+    - mat-954b27
+    - mat-99bba4
+    - mat-bf74fd
+    - mat-c1b19b
+    - mat-c44a07
+    - mat-caf1ba
+    - mat-d242dc
+    - mat-d89b22
+    - mat-e35913
+    - mat-e4ae12
+    - mat-ebea47
+    - mat-f05983
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-15T04:19:18.728156+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-06c603
+    - mat-1eccb5
+    - mat-2956fb
+    - mat-489aef
+    - mat-5bf511
+    - mat-6dda4b
+    - mat-870816
+    - mat-8cb31e
+    - mat-954b27
+    - mat-99bba4
+    - mat-bf74fd
+    - mat-c1b19b
+    - mat-c44a07
+    - mat-caf1ba
+    - mat-d242dc
+    - mat-d89b22
+    - mat-e35913
+    - mat-e4ae12
+    - mat-ebea47
+    - mat-f05983
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-15T04:19:18.751175+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-06c603
+    - mat-1eccb5
+    - mat-2956fb
+    - mat-489aef
+    - mat-5bf511
+    - mat-6dda4b
+    - mat-870816
+    - mat-8cb31e
+    - mat-954b27
+    - mat-99bba4
+    - mat-bf74fd
+    - mat-c1b19b
+    - mat-c44a07
+    - mat-caf1ba
+    - mat-d242dc
+    - mat-d89b22
+    - mat-e35913
+    - mat-e4ae12
+    - mat-ebea47
+    - mat-f05983
+    last_error: null
+parent_materials: []
+next_actions:
+- 运行 workflow 05 对抗式 critic-review；重点攻击分部FCF、SOTP假设、AI/Starship联合成功概率与治理折价
+user_todos:
+- task: 下载并切分 SpaceX 2026 最终 424(b)(4) 完整招股书（MD&A、财务报表、分部、关联交易、股本）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  source_hint: SEC EDGAR accession 000162828026042639；完整 HTML/附件
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-06c603
+  - mat-c44a07
+  coverage_note: 已取得一手 filing 与条款摘录；MD&A/财务分部尚待完整切分
+  last_fetch_note: SEC final 424B4 URL + reusable excerpt registered; complete section
+    extraction deferred to workflow 03
+- task: 提取 SpaceX 2025 与 2026Q1 Connectivity/Space/AI 分部收入、营业利润、现金流与 capex 表
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K4
+  source_hint: 424(b)(4) MD&A + notes；严格核对追溯并表口径
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-06c603
+  - mat-2956fb
+  - mat-8cb31e
+  coverage_note: 关键分部数字已取；完整现金流/capex表待03核对
+  last_fetch_note: SEC snippets + Satellite Today/Yahoo filing analyses registered
+- task: 收集 Starlink 用户、ARPU、终端补贴、卫星寿命/补网 capex 与容量利用率资料
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K4
+  source_hint: S-1、管理层访谈、FCC/Ofcom、行业研究
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-caf1ba
+  - mat-e35913
+  - mat-e4ae12
+  - mat-ebea47
+  coverage_note: 公开 S-1 二手抽取、CNBC/The Information/Via Satellite 已取；地区级 churn 与 D2C
+    分成仍缺
+  last_fetch_note: 公开 S-1 二手抽取、CNBC/The Information/Via Satellite 已取；地区级 churn 与 D2C
+    分成仍缺
+- task: 重建 SPCX 基本股本/完全稀释股本、IPO 后净现金与企业价值口径
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  - K5
+  source_hint: 424(b)(4) capitalization/dilution/beneficial ownership + 最新 8-K
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-685656
+  - mat-c44a07
+  coverage_note: 发行股数与价格已取；完全稀释股本/净现金待完整表
+  last_fetch_note: SEC final filing, IPO excerpt, latest market snapshot
+- task: 拆解首轮卖方一致预期与目标价模型（至少 5 家，统一到 2030 收入/利润/终值）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 承销商及独立卖方 initiation；不能只抄目标价聚合
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0ae532
+  - mat-1dbdd2
+  coverage_note: 目标价聚合已取；5家模型假设拆分待roadmap/深抓
+  last_fetch_note: MarketWatch/Investing aggregations and July initiation search registered
+- task: 梳理 xAI/X 同一控制合并、关联交易、AI 资本承诺与 Musk 资本配置史
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K5
+  source_hint: S-1 related-party/notes/MD&A + board/governance disclosures
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-7425fb
+  - mat-c44a07
+  - mat-db5017
+  coverage_note: 并表与治理资料已取；完整关联交易表待03
+  last_fetch_note: SEC excerpt + Mercer/Morningstar analyses registered
+- task: 建立 Starship Flight 记录、FAA 事故调查/许可与 2027 商业任务里程碑表
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: FAA、SpaceX、NASA、Reuters/Spaceflight Now
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6d6b9c
+  - mat-ddeae4
+  - mat-f8fe9a
+  coverage_note: 近期事故/复飞资料已取；完整flight table待roadmap
+  last_fetch_note: Reuters/TechCrunch/Spaceflight Now accident and FAA sources registered
+- task: 收集 NASA、Space Force/NRO 与商业发射 backlog、合同收入确认和客户集中度
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  - K4
+  source_hint: S-1、USASpending、NASA/USSF award notices
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-06c603
+  - mat-bf74fd
+  - mat-d89b22
+  coverage_note: NRO/Space Force 任务与行业报道已取；完整 backlog/集中度待 SEC
+  last_fetch_note: NRO/Space Force 任务与行业报道已取；完整 backlog/集中度待 SEC
+- task: 制作 Iridium、Globalstar、OneWeb 与宽带重资本网络历史失败镜鉴
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K4
+  source_hint: 破产文件、重组资料、历史财务与卫星更替周期
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6dda4b
+  - mat-870816
+  - mat-f05983
+  coverage_note: 历史破产与重组镜鉴来源已入库
+  last_fetch_note: 历史破产与重组镜鉴来源已入库
+- task: 核对 IPO 锁定期、提前出售机制、可售股时间表与 Form 4 内部人交易
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 424(b)(4) shares eligible for future sale + Reuters + SEC Form 4
+  status: in_progress
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-75d35a
+  - mat-89f1f1
+  coverage_note: 提前出售机制资料已取；精确可售股表待SEC章节
+  last_fetch_note: Reuters + market article registered
+- task: 取得 Starlink 地区级用户/流失/ARPU 和 Direct-to-Cell 运营商分成的非公开经营数据
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: 渠道访谈、运营商/分销商数据、付费行业数据库
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: waived
+  coverage_note: 已尝试 adapter + 原生搜索；仅公开总量/ARPU摘要，未找到地区级 churn 与运营商分成数据
+  last_fetch_note: 已尝试 adapter + 原生搜索；仅公开总量/ARPU摘要，未找到地区级 churn 与运营商分成数据
+  disposition_note: 用户选择本轮豁免；产出必须明确地区级 churn/ARPU/D2C 分成缺失并降级置信度
+- task: 建立卫星宽带/电信基础设施/发射/AI 全球 peer 估值矩阵
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: 公开市场数据、公司财报；服务 valuation-percentile/consensus
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1eccb5
+  - mat-5bf511
+  - mat-99bba4
+  coverage_note: 三份独立估值框架已入库；具体 peer 倍数由04结构化取数
+  last_fetch_note: Damodaran/Third Bridge/M&I SpaceX valuation analyses registered
+- task: 收集双层股权受控公司与创始人关联交易失败案例
+  priority: P2
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 治理机构/学术研究；服务 historical-mirror/mgmt-capital-alloc
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-954b27
+  - mat-c1b19b
+  - mat-d242dc
+  coverage_note: 双层股权历史基率与永久控制研究已入库
+  last_fetch_note: ECGI/Harvard/Virginia Law Review governance research registered
+- task: 资料提取完成：20 份可操作资料已处理并建立索引
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 用户选择立即合成；Starlink 地区级 hard 数据本轮 waived
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: SpaceX primer、投资case、决策sidecar与thesis_v1已生成，等待05评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-15T04:07:13.522804+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-15T02:24:34.845605+00:00'
+    summary: 命门1=Starlink利润能否转化为FCF(低)；命门2=集团资本配置与治理(低)；命门3=Starship兑现速度(中低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-15T04:07:13.523003+00:00'
+    summary: 命门1=Starlink现金穿透(中低)；命门2=AI/X资本回报(中)；命门3=Starship时钟(低)；横贯约束=股本/口径
+    convergence_status: open
+    changelog: 保留三命门；凭mat-8cb31e与mat-2956fb升格现金穿透和AI资本吞噬；新增股本/百分比口径约束；primer新增现金流桥、同一控制和仪表盘
+thesis:
+  current_version: 1
+  last_updated: '2026-07-15T04:19:18.763791+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-15T02:24:34.838509+00:00'
+    summary: 观望偏空：世界级发射-Starlink资产不足以抵消AI/X并表、资本强度与绝对控制风险；待完整分部FCF与估值反推后再买。
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 93%（14/15，含 2 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-15T04:19:18.763801+00:00'
+    summary: 观望偏空：当前约92.9x P/S隐含5年43%-58%收入CAGR；Connectivity盈利尚未穿透集团FCF，AI/X烧钱和绝对控制使当前EV约-4%。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-15T02:24:34.856587+00:00'
+  exited_at: '2026-07-15T03:23:49.537615+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 11
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-15T03:23:49.537615+00:00'
+  exited_at: '2026-07-15T03:29:25.665601+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 03-extracting
+  entered_at: '2026-07-15T03:29:25.665601+00:00'
+  exited_at: '2026-07-15T03:41:12.672978+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 04-synthesizing
+  entered_at: '2026-07-15T03:41:12.672978+00:00'
+  exited_at: '2026-07-15T04:19:41.609854+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 05-critic-review
+  entered_at: '2026-07-15T04:19:41.609854+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-15T03:23:25.708545+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 7
+  queries_with_hits: 7

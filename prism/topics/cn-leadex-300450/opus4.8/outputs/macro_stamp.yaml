@@ -1,0 +1,18 @@
+as_of_regime_version: 4
+regime_composite: S5 v4:美利率牛平→熊陡、象限再通胀、人民币企稳偏强;先导=高久期顺周期成长,受中国宽松托底但需宽货币真传导宽信用
+depends_on_states:
+- conclusion: fx_cny
+  state: 人民币企稳偏强
+  role: confirming
+- conclusion: rates_us
+  state: 美实际利率2.43%高位
+  role: load_bearing
+- conclusion: credit_cn
+  state: 信贷脉冲仍负(-1.85)待转宽信用
+  role: load_bearing
+discount_rate: null
+slug: cn-leadex-300450
+variant: opus4.8
+stamped_at: '2026-07-28T09:48:36.817959+00:00'
+stale: false
+stale_reason: null

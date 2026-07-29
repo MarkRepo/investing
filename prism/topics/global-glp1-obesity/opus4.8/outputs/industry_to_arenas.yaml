@@ -1,0 +1,119 @@
+slug: global-glp1-obesity
+variant: opus4.8
+topic_type: industry
+display_name: 全球肥胖/GLP-1 减重药物行业
+generated: 2026-07-22T00:00:00+00:00
+data_freshness: 2026-Q1
+
+arenas:
+  - name: 三激动/amylin 高端疗效
+    suggested_slug: global-glp1-highend-efficacy
+    topic_created: true
+    topic_slug: global-glp1-highend-efficacy
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 5
+      valuation: 2
+      cycle: 5
+      composite: 4.1
+    tier: deep
+    tier_reason: retatrutide 独占疗效天花板(28-30%)、挑战者掉队(MariTide 2027/CagriSema 败/罗氏落后)，证据强度最高的深挖档；入口标的 LLY 41.8x 已贵
+    upgrade_triggers: ["retatrutide TRIUMPH 完整读出 + FDA 提交", "LLY 回调至 forward PE <28x"]
+    monitor_metrics: ["retatrutide 各 Phase 3 减重% + 心率/停药率", "VANQUISH-2/MariTide 挑战者读出时点"]
+    revive_condition: null
+  - name: 口服小分子平权化
+    suggested_slug: global-glp1-oral-small-molecule
+    topic_created: true
+    topic_slug: global-glp1-oral-small-molecule
+    scores:
+      profit_pool: 4
+      growth: 5
+      competition: 4
+      valuation: 2
+      cycle: 5
+      composite: 4.0
+    tier: deep
+    tier_reason: 口服放量最快(口服 Wegovy 65%新处方)、TAM 最大(B 逻辑主战场)；但 orforglipron 疗效弱(10.5%)、疗效领跑者是 GPCR/VKTX、长期 generic 风险；入口 LLY 已贵
+    upgrade_triggers: ["orforglipron 上市首季 TRx 斜率验证放量", "GPCR/VKTX 口服 Phase 3 顶线"]
+    monitor_metrics: ["口服占新增 GLP-1 处方份额", "orforglipron TRx/收入斜率 vs 注射装机"]
+    revive_condition: null
+  - name: 注射 incretin 存量池
+    suggested_slug: global-glp1-injectable-incumbent
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
+      growth: 3
+      competition: 4
+      valuation: 3
+      cycle: 3
+      composite: 3.7
+    tier: watch
+    tier_reason: 当前利润池绝对主体但增量正流出、净价压最狠、面临被自身口服化替代；是守成非迁移目标
+    upgrade_triggers: ["NVO amycretin 关键读出反转", "NVO 估值触底 + Wegovy 份额企稳"]
+    monitor_metrics: ["LLY/NVO 季度份额与净价", "IRA/TrumpRx 净价落地幅度"]
+    revive_condition: null
+  - name: 国产双靶 + BD 出海
+    suggested_slug: cn-glp1-domestic-dual-bd
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 3
+      valuation: 2
+      cycle: 5
+      composite: 3.3
+    tier: watch
+    tier_reason: 出海期权兑现是 alpha(恒瑞/Kailera $6B、信达首盈利)，但本土低毛利 + 估值高位(信达 170x/恒瑞 44.9x)
+    upgrade_triggers: ["再现规模化 BD 出海(首付+里程碑)", "国产双靶头对头司美优效读出"]
+    monitor_metrics: ["信达 mazdutide/恒瑞 HRS9531 放量与净价", "出海授权里程碑达成"]
+    revive_condition: null
+  - name: sema 仿制价格战
+    suggested_slug: cn-sema-generic-pricewar
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 3
+      competition: 1
+      valuation: 3
+      cycle: 4
+      composite: 2.5
+    tier: eliminated
+    tier_reason: 价格腰斩 + 10+家内卷完全竞争，量迁移到国产群体但不迁移到某一家，无耐久利润(价值陷阱)
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 某家拿到首仿独占期 + 避开集采降价
+  - name: telehealth 复方分销
+    suggested_slug: us-telehealth-glp1-distribution
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 2
+      competition: 1
+      valuation: 2
+      cycle: 2
+      composite: 1.8
+    tier: eliminated
+    tier_reason: compounding 窗口关闭、branded 低毛利中间商、利润被药企收回制造端(WMBT3 反证)
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 药企主动让出分销利润 / 出现新监管套利窗口
+
+cluster_tags: [glp1-obesity, healthcare, china-innovation-pharma]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 2
+    kind: data-missing
+    note: NVO/AMGN/VKTX/GPCR 本地行情拉不到，NVO/AMGN 走 web-search fallback[mat-21a243]，VKTX/GPCR 按期权价值定
+  - ring: 5
+    kind: training-estimate
+    note: 历史镜鉴(PCSK9/丙肝/胰岛素)峰谷幅度为训练知识估算，非本研究 findings 实证

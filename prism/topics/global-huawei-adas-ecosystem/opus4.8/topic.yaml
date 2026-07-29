@@ -1,0 +1,44 @@
+slug: global-huawei-adas-ecosystem
+display_name: 华为软硬一体智驾生态 (乾崑 ADS)
+type: arena
+created: '2026-07-28T09:51:20.193075+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: global-autonomous-driving
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 华为乾崑软硬一体智驾生态能否在纯软被挤压时持续吃份额、保住高阶?可投载体是谁(引望分拆/鸿蒙智行车企)、护城河(190万台数据飞轮+鸿蒙生态)可持续性如何?
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  short_name: 华为智驾生态
+  search_terms:
+  - 华为乾崑 ADS
+  - 引望
+  - 鸿蒙智行
+  - 问界 智界 享界
+  - 华为智驾份额
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-28T09:52:55.564412+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-28T09:52:55.564421+00:00'
+    summary: 华为乾崑软硬一体护城河最厚(190万台飞轮+鸿蒙),智驾平权中吃份额、是看空纯软的对偶受益者;核心障碍是可投载体——引望未上市,只能经鸿蒙智行车企间接暴露。强度5/10

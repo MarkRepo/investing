@@ -1,0 +1,354 @@
+slug: us-applovin
+display_name: AppLovin (APP, NASDAQ)
+type: company
+created: '2026-07-27T12:41:04.505051+00:00'
+status: active
+stage: done
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: 'AppLovin(APP, US, deep): 赌买还是卖——核心命门是 AXON 广告引擎从手游向电商/CTV 外延的可持续性 与 高估值是否已透支的对赌；目标价区间与介入纪律的赌注。关注空头质疑(归因造假/数据合规)能否证伪基本面。'
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_APP
+  market: US
+  short_name: AppLovin
+  search_terms:
+  - AXON 广告引擎
+  - AppLovin 电商广告
+  - APP 估值 空头
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-27T13:55:45.990641+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0888c8
+    - mat-240119
+    - mat-308a46
+    - mat-3f4ca4
+    - mat-4c7272
+    - mat-81005d
+    - mat-8ac9db
+    - mat-8cf41e
+    - mat-90531d
+    - mat-ce5674
+    - mat-dd8ac8
+    - mat-ebb7e3
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-27T14:01:35.300585+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0888c8
+    - mat-240119
+    - mat-308a46
+    - mat-3f4ca4
+    - mat-4c7272
+    - mat-81005d
+    - mat-8ac9db
+    - mat-8cf41e
+    - mat-90531d
+    - mat-ce5674
+    - mat-dd8ac8
+    - mat-ebb7e3
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-27T14:01:35.320747+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0888c8
+    - mat-3f4ca4
+    - mat-4c7272
+    - mat-8ac9db
+    - mat-8cf41e
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-07-28T03:03:56.253232+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  05-critic-review:
+    version: 1
+    last_updated: '2026-07-28T03:03:56.263319+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 us-applovin」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：独立空头反方对抗后维持看多6.0/标准档：反方致命一击(命门1过度归因)已被case用仓位化+kill+signpost结构化对冲(非论证消除)，consensus缺口经5源web兜底证定价锚成立且偏保守。残留=命门1单线承重(证据方向反向)+PEG头版口径瑕疵，均可修补不推翻结论。
+user_todos:
+- task: AppLovin 10-K 2025 + 10-Q Q1 2026（+ Q2 2026 若已出）财报原文
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  - K5
+  source_hint: SEC EDGAR / IR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: SEC EDGAR 10-K+10-Q 已下载并分节
+- task: AppLovin Q1 2026 与 Q4 2025 电话会 transcript（管理层对电商/AXON/监管的表态）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  - K4
+  source_hint: IR / seekingalpha / investing.com transcript
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: Q1 2026 电话会 takeaways 入库
+- task: 空头报告全文（Fuzzy Panda + Culper）+ 公司官方逐条反驳
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K3
+  source_hint: 做空方网站 + AppLovin IR 声明
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: Fuzzy Panda+Culper 报告 + 证券集体诉讼 入库
+- task: 电商广告 ramp 实质数据（self-serve 广告主数、电商收入占比/环比、管理层量化披露）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 财报电话会 + IR + 卖方拆解
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: Q1 2026 电话会电商数据（3月+25%/4月创新高）入库
+- task: 卖方深度研报 2-3 份（估值桥/增速假设/目标价，含看多与看空双向）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: Morgan Stanley/Jefferies/UBS 等，公众号转载
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: marketbeat 一致预期入库 + Benchmark 2026 top idea/tikr $745 已搜
+- task: SEC 调查 + 数据隐私调查 + 应用商店政策的最新进展跟踪
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: Reuters/Bloomberg/nypost/法律新闻
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: nypost/Forbes/Reuters SEC 调查报道入库
+- task: 管理层资本配置史（回购节奏与价位、Foroughi 持股与内部人减持）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: SEC Form 4 / 财报回购披露 [A合同 mgmt-capital-alloc]
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 电话会 $1B 回购/$2.3B 授权 + secform4/globeandmail 内部人交易 已搜
+- task: AXON 归因真实性第三方证据（广告主 MMM/增量测试结论、大客户背书或流失）
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K3
+  source_hint: 广告主案例/行业访谈/adtech 媒体
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: workmagic 增量测试案例 + Axon 归因差异解释 入库
+- task: 电商 performance 广告市场规模与格局资料（primer 入门目标6 背景料）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: eMarketer/行业报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: retail media ~$70B/grandview/statista 入库
+- task: 历史镜鉴：高飞 adtech/广告平台归因红利消退案例（Criteo/ATT 冲击/叙事股杀估值）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: '[A合同 historical-mirror]'
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: digiday ATT/FTC/学术 ATT 冲击研究 入库
+- task: AXON CTV/联网电视广告战略进展
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: IR/adtech 媒体
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 电话会 CTV 在研 + CTV 市场资料 已搜
+- task: 资料提取完成：14 份 findings 全部落盘
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: AXON 电商增量的第三方增量测试/独立 MMM 复算 + 广告主留存/复投硬数据——证真/证伪命门1(过度归因 vs 真增量)
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K1
+  - K3
+  priority: P0
+  status: open
+  suggested_at: '2026-07-27T14:09:05.575211+00:00'
+- question: 命门1 AXON 电商真增量证伪：能否找到广告主侧 incrementality/holdout 测试、第三方 MMP 对 AXON 上报
+    ROAS 的复核、或空头报告(Fuzzy Panda/Culper)给出的可复现方法？
+  rationale: 命门1是本案总开关但多头侧证据全是管理层自述+MMM halo，方向与唯一硬数据点(Humans减值)相反、无第三方增量测试→单线且反向承重
+  source: critic_weak_k
+  related:
+  - K1
+  - K3
+  priority: P0
+  status: open
+  suggested_at: '2026-07-28T03:03:56.230184+00:00'
+- question: 命门2 监管尾部独立计权：SEC 是否已正式立案(区别于证券集诉5:25-cv-03438)、App Store 对 adtech SDK
+    合规执法的近期先例，用于把监管尾部从命门1拆出独立3-5%概率
+  rationale: 反方正确指出SEC执法与商店下架是与过度归因独立的腰斩源，当前被压进同一10%强空档
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P1
+  status: open
+  suggested_at: '2026-07-28T03:03:56.230184+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: 独立空头反方对抗后维持看多6.0/标准档：反方致命一击(命门1过度归因)已被case用仓位化+kill+signpost结构化对冲(非论证消除)，consensus缺口经5源web兜底证定价锚成立且偏保守。残留=命门1单线承重(证据方向反向)+PEG头版口径瑕疵，均可修补不推翻结论。
+  at: '2026-07-28T03:03:56.221283+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-27T14:03:41.879766+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-27T12:51:37.326472+00:00'
+    summary: 命门1=AXON电商外延真增量性/归因真实(中); 命门2=SEC/应用商店监管二元结果(uncertain); 命门3=大数定律下增速可持续vs估值(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-27T14:03:41.879781+00:00'
+    summary: 命门1=AXON电商外延真增量/归因(中,机理锐化为单价可持续+漏斗放量);命门2=SEC/监管二元(uncertain,只坐实证券集诉);命门3=大数定律单价驱动增速vs估值(中,强化)
+    convergence_status: open
+    changelog: 命门无增删(3保3);命门1锐化+单价维度+Humans减值反证(mat-8ac9db/8cf41e);命门2口径厘清证券集诉vs未坐实SEC(mat-ce5674/81005d);命门3强化量萎缩(mat-8cf41e);primer入门目标+1(价vs量货币化,mat-8cf41e);对照全历史无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-07-27T14:03:41.851442+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-27T12:50:20.143256+00:00'
+    summary: 看多(6.5/10)：~$392 回调位买入纯AI广告平台，forward P/E 22.6x/PEG 0.61 已de-rate到合理；核心命门=AXON电商外延真实性(K1/K3)
+      + SEC监管二元尾部(K2)。基准公允价$520-580，熊市$220-260，仓位化对冲。
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 50%（5/10，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-27T14:03:41.851610+00:00'
+    summary: 看多(6.0/10):~$410现价分批建仓、$360加码;forward P/E~27x/PEG~0.6已de-rate合理;命门=AXON电商外延真增量vs过度归因(K1/K3)+监管二元尾部(K2)。base公允$520-580,bear$210-250,EV+24%,仓位化非满仓。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-27T12:52:21.247321+00:00'
+  exited_at: '2026-07-27T13:27:22.766471+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-27T13:27:22.766471+00:00'
+  exited_at: '2026-07-27T13:36:02.577729+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-27T13:36:02.577729+00:00'
+  exited_at: '2026-07-27T14:09:27.406222+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-27T14:09:27.406222+00:00'
+  exited_at: '2026-07-27T14:09:36.343955+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-27T14:09:36.343955+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    autofetch_debt: 0
+    empty_pending_decision: 0

@@ -1,0 +1,155 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: global-autonomous-driving
+variant: opus4.8
+created: 2026-07-28
+thesis_version: 0
+
+primer_scope: >
+  primer 该覆盖：行业边界(SAE L0-L5 + 全栈价值链上中下游) / 参与者(芯片·传感器·域控 / 方案商·OEM自研 / robotaxi·robotruck运营) /
+  市场规模(乘用车智驾前装 + robotaxi 运营两条) / 发展阶段(城市NOA 渗透拐点 + robotaxi 商业化前夜) /
+  周期(渗透率 S 曲线当前位置) / 技术路线(纯视觉 vs 多传感器融合、模块化 vs 端到端/VLA、有图 vs 无图)。
+
+learning_track:
+  l3_debates:
+    - question: "Nvidia 反击 vs 去英伟达化：Thor V15/舱驾融合能否 2026-2027 夺回高端定点？OEM 自研芯片(比亚迪4nm/蔚小理)体验能否达到公版水平、普及速度是否快到连地平线份额都被吃？"
+      source_hint: "36氪/OFweek 芯片深度 + 地平线IR + 车企发布会"
+    - question: "robotaxi 兑现时点：单位经济学 2026-2027 拐点(RT6降本+规模)兑现 vs 烧钱久期>5年——'观察档'会否踏空一个万亿级终局？"
+      source_hint: "百度财报电话会 + Waymo 披露 + 券商 robotaxi 专题"
+    - question: "纯软方案商护城河：数据飞轮规模效应(Momenta多客户) vs 智驾平权价格战被 OEM自研+华为+大疆卓驭三面挤压——端到端时代软件是不是最高毛利环？"
+      source_hint: "Momenta 招股书 + 券商方案商深度"
+    - question: "激光雷达：前装放量利好(禾赛全球第一) vs 纯视觉端到端压缩长期 TAM——量增能否转成利增(持续正毛利/净利)？"
+      source_hint: "禾赛/速腾 IR 季报 + Yole 报告 + 路线之争分析"
+
+  l4_hunting:
+    - question: "地平线征程6(J6P高阶)在 15万+价格带车型的定点/装机份额 2026-2027 是否持续第一，且不被 OEM 自研 + 舱驾融合芯片显著侵蚀？"
+      addresses: [K1]
+      search_keywords: ["征程6 定点 份额", "舱驾融合 芯片", "地平线 市占率 2026"]
+      source_hint: "地平线IR/机构调研 + 卖方芯片份额表"
+    - question: "Nvidia Thor(或后继)是否在 2026-2027 兑现舱驾融合量产上车 + 算力达标 + 拿回 ≥2 家头部新定点，还是继续跳票/被去英伟达化？"
+      addresses: [K2]
+      search_keywords: ["Thor 量产 上车", "英伟达 舱驾融合", "Thor 定点 车企"]
+      source_hint: "Nvidia GTC + 造车新势力硬件方案"
+    - question: "百度萝卜/Waymo 是否披露单车运营正毛利或盈亏平衡(单公里成本<对标网约车)及兑现时点？"
+      addresses: [K3]
+      search_keywords: ["萝卜快跑 盈亏平衡", "robotaxi 单车成本", "Waymo 单位经济学"]
+      source_hint: "百度电话会 + 36氪/科创板日报"
+    - question: "华为乾崑搭载量/合作品牌 2026 破 200 万后是否持续扩张且保住高阶份额，还是被比亚迪自研 + Momenta/大疆平价方案分流？"
+      addresses: [K4]
+      search_keywords: ["华为乾崑 搭载量", "ADS 份额 2026", "鸿蒙智行 销量"]
+      source_hint: "华为引望披露 + 鸿蒙智行销量"
+    - question: "禾赛/速腾车载激光雷达是否实现持续正毛利 + 净利转正(而非仅出货增长)？robotaxi 转 ADAS 激光雷达能否稳住 ASP？"
+      addresses: [K5]
+      search_keywords: ["禾赛 毛利率 净利", "速腾 盈利 2026", "激光雷达 ASP"]
+      source_hint: "禾赛/速腾 IR 季报"
+    - question: "Momenta 港股 IPO 后是否兑现清晰盈利路径，还是在智驾平权价格战中毛利被三面挤压、千亿估值证伪？"
+      addresses: [K6]
+      search_keywords: ["Momenta 盈利 路径", "智驾 价格战", "纯软 方案商 毛利"]
+      source_hint: "Momenta 招股书财务 + 券商点评"
+    - question: "纯视觉端到端(特斯拉 FSD 入华 + 中国车厂去激光雷达)是否在 2026-2027 形成规模化上车，从而决定激光雷达 TAM 长期上限？"
+      addresses: [K7]
+      search_keywords: ["FSD 入华 规模", "去激光雷达 车型", "纯视觉 端到端 上车"]
+      source_hint: "特斯拉中国 + 中国车厂技术发布会"
+
+material_priority:
+  tier1:
+    - title: "智驾行业深度研报×3(全栈价值链+利润池分布+arena比较)"
+      type: industry-research
+      source: "中信/中金/华泰/东吴(dfcfw)"
+      why: "环①看懂行业 + 环⑥ arena 可比矩阵基础"
+      addresses: [K1, K3, K5]
+      status: fetched
+    - title: "各arena龙头估值与一致预期锚(地平线/禾赛/速腾/小马/文远/Mobileye EV-S·PE·隐含增速)"
+      type: sell-side-note
+      source: "同花顺F10/卖方estimates"
+      why: "环②定价锚(硬锚·命门环) + 环⑥可比"
+      addresses: [K1, K3, K5, K6]
+      status: fetched
+    - title: "robotaxi 单位经济学专题(萝卜快跑RT6单车/单公里成本/盈亏平衡)"
+      type: industry-research
+      source: "百度电话会/草根调研"
+      why: "命门2(低置信优先) + 环③假设 + K3"
+      addresses: [K3]
+      status: fetched
+    - title: "AD芯片竞争格局(Thor vs 征程6 定点份额/算力/交付)"
+      type: industry-research
+      source: "芯片深度/GTC"
+      why: "命门1 + 超配国产芯片赌注核心"
+      addresses: [K1, K2]
+      status: fetched
+    - title: "华为乾崑ADS份额 + Momenta港股招股书/纯软盈利路径"
+      type: sell-side-note
+      source: "华为引望/Momenta招股书"
+      why: "命门3 + 看空纯软赌注"
+      addresses: [K4, K6]
+      status: fetched
+  tier2:
+    - title: "激光雷达盈利分化(禾赛/速腾季报毛利·净利+ADAS前装ASP)"
+      type: sell-side-note
+      source: "禾赛/速腾IR"
+      why: "K5 分化论(量增≠利增)证据"
+      addresses: [K5]
+      status: fetched
+    - title: "历史行业镜鉴(2016-2019 L4寒冬 + Cruise出清/图森退市)"
+      type: industry-research
+      source: "复盘长文/媒体深度"
+      why: "环⑤证伪 + historical-mirror(热过利润没兑现)"
+      addresses: [K3]
+      rings: [historical-mirror]
+      status: fetched
+    - title: "端到端/城市NOA渗透率数据 + 纯视觉去激光雷达进展"
+      type: industry-research
+      source: "行业蓝皮书/高工智能汽车"
+      why: "K7 技术分叉 + 命门1 迁移路径"
+      addresses: [K7]
+      status: fetched
+    - title: "中/美/欧自动驾驶监管框架对比(准入+牌照+L3/L4立法)"
+      type: policy
+      source: "政策原文/律所解读"
+      why: "primer#10 + robotaxi落地约束"
+      addresses: [K3]
+      status: fetched
+  tier3:
+    - title: "OEM自研芯片进展(比亚迪4nm/蔚小理流片与上车)"
+      type: industry-research
+      source: "车企发布会/媒体"
+      why: "K1 反噬风险(侵蚀外采TAM)"
+      addresses: [K1]
+      status: fetched
+    - title: "robotruck干线物流arena候选(Aurora/Kodiak 2026商业化)"
+      type: industry-research
+      source: "Aurora IR/媒体"
+      why: "环⑥ arena 候选补充(淘汰档判定)"
+      addresses: [K3]
+      status: fetched
+
+# 环②/环⑥ 结构化估值锚 —— 04 合成期由 market_data API 按 ticker 自动拉取(不单列收料 todo)
+valuation_anchor_tickers:
+  地平线: HKEX_09660
+  禾赛: HSAI
+  速腾聚创: HKEX_02498
+  小马智行: PONY
+  文远知行: WRD
+  Mobileye: MBLY
+  百度: NASDAQ_BIDU   # Apollo 仅小分部，取集团叙事权重
+
+key_risks_to_monitor:
+  - "Nvidia Thor V15/舱驾融合兑现节奏(反击成功则错杀 Nvidia arena)"
+  - "OEM 自研芯片普及速度(侵蚀地平线份额)"
+  - "robotaxi 单位经济学拐点时点(观察档踏空万亿终局)"
+  - "智驾平权价格战(纯软方案商毛利崩塌)"
+  - "纯视觉端到端逆转激光雷达 TAM"
+  - "L3/L4 监管责任落地(中国强制国标 + UN 全球法规)"
+
+analogies_to_study:
+  - name: "2016-2019 全球/中国 L4 寒冬"
+    logic: "资本狂热后商业化未兑现、玩家出清(图森退市/Argo关停/Cruise停注资)"
+    limit: "如今端到端+城市NOA 有真实量产收入与飞轮，非纯 PPT"
+    ring: historical-mirror
+  - name: "中国光伏/LED 国产替代→产能过剩→价格战"
+    logic: "智驾平权可能重演供给过剩、龙头微利(激光雷达/芯片放量薄利)"
+    limit: "软件+数据飞轮有差异化壁垒，非纯制造同质化"
+    ring: industry-mirror
+  - name: "智能手机 SoC(高通/联发科 vs 苹果自研)"
+    logic: "卖铲人 vs 客户自研的长期博弈，镜鉴自研侵蚀节奏(Nvidia/地平线 vs OEM)"
+    limit: "汽车 OEM 自研门槛/规模低于手机，侵蚀路径未必同速"
+    ring: industry-mirror

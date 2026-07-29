@@ -1,0 +1,47 @@
+slug: cn-hygon-688041
+display_name: 海光信息 (688041, DCU)
+type: company
+created: '2026-07-23T23:33:03.318816+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: cn-domestic-ai-chip
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 海光DCU放量斜率能否兑现、迁移易在推理场景可持续抢份额吗、吸并终止后剩余支柱能否支撑A股首选卡位、介入价位如何
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_688041
+  market: SSE
+  short_name: 海光信息
+  search_terms:
+  - 海光信息
+  - DCU
+  - 类CUDA迁移
+  - 深算
+  - '688041'
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 01-build-roadmap
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-23T23:34:09.005488+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-23T23:34:09.005633+00:00'
+    summary: 海光是份额≠利润赛道里少见的真利润体(净利25.45亿/26-27E+57%),DCU通用路线+盈利兑现是A股AI芯片最实卡位;但迁移易半真+吸并终止两支柱各松动一根,现价26E
+      PE~164x远超可介入阈值。强度5.0

@@ -53,8 +53,8 @@ outputs_state:
     last_error: null
     critic_passed: true
   c_investment_case:
-    version: 2
-    last_updated: '2026-07-15T02:04:27.523118+00:00'
+    version: 5
+    last_updated: '2026-07-15T13:52:51.280303+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
@@ -80,25 +80,25 @@ outputs_state:
     - mat-fe0dd9
     last_error: null
   07_decision_kit:
-    version: 2
-    last_updated: '2026-07-15T02:04:27.537697+00:00'
+    version: 4
+    last_updated: '2026-07-15T13:52:51.302739+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
   08_living_feed:
-    version: 1
-    last_updated: '2026-07-15T01:54:41.976215+00:00'
+    version: 5
+    last_updated: '2026-07-15T13:52:51.321212+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
 parent_materials: []
 next_actions:
-- 'critic 标 stale: c_investment_case'
-- 主 agent 即将在本对话续跑 04（见 workflow 05 Step 7.5）
-- critic 评审：thesis方向维持,但定价锚②base正常化净利$2.7B偏高(逼近2024峰值)+致命一击"S&S抗周期地板是会计幻觉"未完整应答+K1
-  kill"连续2季"缓冲按住Q1单季-14%证伪信号→定点重写c_investment_case环②base盈利+④EV+⑤K1 kill
+- case v5 + thesis_v2(就地补桥)：补资产负债表桥(净现金+BTC持仓+股权+Base/Deribit期权)，base $120-140→$135-145、现价EV
+  −9%→−4%(略贵/观望)、真机会≤$120-130
+- 可选：再跑05四评验证/转06-daily-monitor(Q2 07-30 K1决胜)
+- 独立整理项：00_primer mat漂移待刷新
 user_todos:
 - task: Coinbase FY2025 年报(10-K) + Q1 2026 季报(10-Q)
   priority: P0
@@ -232,9 +232,10 @@ monitoring:
   cadence: daily
 critic:
   verdict: request-rewrite
-  summary: thesis方向维持,但定价锚②base正常化净利$2.7B偏高(逼近2024峰值)+致命一击"S&S抗周期地板是会计幻觉"未完整应答+K1
-    kill"连续2季"缓冲按住Q1单季-14%证伪信号→定点重写c_investment_case环②base盈利+④EV+⑤K1 kill
-  at: '2026-07-15T01:54:41.959556+00:00'
+  summary: 三评：v3 已落第1/2轮全部收口(噪声↔尾部/CRCL 反方承认已应答)；命中一个未披露孪生轴——v2 补了base盈利轴敏感性、漏了倍数轴:base三模型全取乐观端倍数(25x
+    PE/17x EV-EBITDA/8x PS>现价6.69),若按纯周期倍数(12-15x)→base$95-125、≤$130买入区失去安全边际。另take
+    rate结构性侵蚀是独立非周期轴未单独辩护。注:25x属乐观端非明显错误(取决于平台成长期权)——重写前需确认走"辩护25x保thesis"还是"接受纯周期→弱化到中性/回避"(可能触及方向)。
+  at: '2026-07-15T13:15:14.894884+00:00'
   thesis_version: 1
   next_stage: 04-synthesizing
 decomposition:
@@ -254,8 +255,8 @@ decomposition:
     convergence_status: open
     changelog: 命门2置信度低→中(凭mat-c4de6d Coinbase-shaped hole,非震荡);命门1表述精修(被动多元化,kill改占比+绝对额双看);无新增/掉队命门;primer入门目标delta空。05-critic未跑故open
 thesis:
-  current_version: 1
-  last_updated: '2026-07-14T16:34:34.471905+00:00'
+  current_version: 2
+  last_updated: '2026-07-15T13:25:01.636802+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -266,8 +267,14 @@ thesis:
   - version: 1
     stage_set_at: 04-post-synthesis
     set_at: '2026-07-14T16:34:34.472080+00:00'
-    summary: 逆周期看多(6/10)：加密寒冬底部分批买入COIN，押franchise质量+逆周期资本配置被Q1转亏账面噪声($482M自持币重估)低估；命门K1多元化(被动多元化打折)/K2监管(Coinbase-shaped
-      hole暂幸存)/K3周期未定；base$195-200、EV+13%、试探档逢低分批
+    summary: 逆周期看多(6/10)：加密寒冬底部分批买入COIN，押franchise质量+逆周期资本配置被Q1转亏账面噪声($482M自持币重估)低估；base$170-180、EV+3-4%(现价$159.5
+      edge薄)、现价观望·主力等≤$130；K1多元化(S&S降级为缓冲垫·单季黄灯)/K2监管(Coinbase-shaped hole暂幸存)/K3周期未定/K4
+      consumer费率代理。[05-critic 2轮定点收口后]
+  - version: 2
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-15T13:25:01.636973+00:00'
+    summary: 中性偏谨慎(5/10)：COIN是"杠铃"(59%顺周期交易+41%经常性平台)，按SOTP混合经营倍数(~17x)+资产负债表桥(净现金$3B+BTC持仓$1.6B+股权+Base/Deribit期权)定价，base~$135-145(中枢~$140)；现价$159.5高于base~9~14%、EV≈−4%→略贵/观望；真逆周期机会≤$120-130(EV+18~40%)、强力买≤$110；不翻空(bull$310尾部不对称)。K1缓冲垫/K2监管/K3周期已price-in/K4
+      take rate独立非周期承重轴。
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-07-14T14:17:33.511821+00:00'
@@ -324,6 +331,22 @@ stage_history:
     empty_pending_decision: 0
 - stage: 04-post-synthesis
   entered_at: '2026-07-15T02:04:27.546432+00:00'
+  exited_at: '2026-07-15T13:05:05.088181+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-15T13:05:05.088181+00:00'
+  exited_at: '2026-07-15T13:31:35.531340+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-15T13:31:35.531340+00:00'
   exited_at: null
   gap_snapshot:
     uncovered_ks: []

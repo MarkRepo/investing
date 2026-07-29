@@ -1,0 +1,147 @@
+slug: cn-hymson-688559
+variant: opus4.8
+entries:
+- searched_at: '2026-07-18T17:03:22.185066+00:00'
+  query: 海目星 688559 2026一季报 营收净利润 订单 新增长极
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-18T17:03:22.188887+00:00'
+  query: 海目星 688559 股价 市值 估值 7月暴跌 卖方目标价
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-18T17:04:09.709125+00:00'
+  query: 海目星 688559 2026一季报 官方财报数据
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:06:20.405277+00:00'
+  query: 海目星 固态电池 双路线 欣界能源 2028 500Wh/kg 进展
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:06:20.415739+00:00'
+  query: 海目星 2026 半年报 业绩预告 应收账龄 存货 回款
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:14:12.976566+00:00'
+  query: 海目星 深度投资价值 固态订单客户 股权激励目标 一致预期
+  triggered_by: 00-deep-fetch
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:15:45.132984+00:00'
+  query: 海目星2026半年报 业绩预告 归母净利润 应收账龄 存货 上半年
+  triggered_by: 00-deep-fetch
+  n_results: 10
+  n_high: 0
+  n_mid: 0
+  n_low: 10
+  disposition: native-websearch-tool
+- searched_at: '2026-07-18T17:30:57.500897+00:00'
+  query: 锂电设备 先导智能 利元亨 应收账款 存货 减值 扩产周期 复盘
+  triggered_by: 01-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-18T17:30:57.507774+00:00'
+  query: 海目星 688559 深度报告 盈利预测 2026 2027 目标价 券商
+  triggered_by: 01-deep-fetch
+  n_results: 1
+  n_high: 0
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-18T17:31:31.997653+00:00'
+  query: 锂电设备 先导智能 利元亨 应收账款 存货 减值 扩产周期 复盘
+  triggered_by: 01-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:35:19.077523+00:00'
+  query: 海目星 688559 固态电池 应收账龄 出海钣金 最新
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:35:19.099300+00:00'
+  query: 海目星 应收账龄 半年报 回款
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:35:19.144267+00:00'
+  query: 海目星 存货 发出商品 减值 跌价
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:35:19.192791+00:00'
+  query: 海目星 固态 2GWh 订单 欣界能源 客户
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:35:19.244609+00:00'
+  query: 海目星 AI液冷 微通道 储能大圆柱 出海
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-19T05:55:18.694872+00:00'
+  query: 海目星 688559 2026 营收 净利润 券商 预测 目标价
+  triggered_by: 05-critic
+  n_results: 1
+  n_high: 0
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-19T09:55:18.871515+00:00'
+  query: 海目星 688559 分析师 一致预期 机构 家数 目标价 2026
+  triggered_by: 05-critic
+  n_results: 1
+  n_high: 0
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-19T09:55:51.730385+00:00'
+  query: 海目星 688559 分析师 一致预期 机构 家数 目标价 2026
+  triggered_by: 05-critic
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered

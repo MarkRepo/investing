@@ -1,0 +1,23 @@
+as_of_regime_version: 3
+regime_composite: 中美背离·risk-on但脆弱(反通胀式增长降温)/久期端因牛平边际转友好、但脆弱度high+利差地板+CAPE39.4=顺风后期
+depends_on_states:
+- conclusion: liquidity_us
+  state: 条件偏松·信用利差历史地板·风险偏好亢奋但脆弱
+  role: load_bearing
+- conclusion: rates_us
+  state: 高位企稳·长端牛平·10Y实际利率2.16%边际回落
+  role: load_bearing
+- conclusion: fragility
+  state: high(波动压缩临界+CAPE39.4+carry拥挤)
+  role: confirming
+discount_rate:
+  risk_free: 2.16
+  applied_wacc: null
+  rate_sensitivity: 反向DCF口径:10Y实际利率2.16%作无风险腿;利率反弹是长久期故事股的头号杀估值渠道(定性为主)
+  source_input: regime v3 10Y实际利率TIPS
+slug: us-spacex-spcx
+variant: opus4.8
+stamped_at: '2026-07-17T16:26:17.425605+00:00'
+stale: true
+stale_reason: 依赖的『条件偏松·信用利差历史地板·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』(regime
+  v3→v4)

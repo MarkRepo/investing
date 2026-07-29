@@ -1,0 +1,16 @@
+as_of_regime_version: 3
+regime_composite: 中美背离·risk-on但脆弱/官方+市场双双转鹰(零降息计价)——对前盈利长久期主题股是估值逆风
+depends_on_states:
+- conclusion: rates_us
+  state: 高位企稳·双双转鹰·长端牛平
+  role: load_bearing
+- conclusion: overall
+  state: risk-on但脆弱(极窄利差/低波动缓冲可能被刺破)
+  role: load_bearing
+discount_rate: null
+slug: us-ionq
+variant: opus4.8
+stamped_at: '2026-07-27T13:32:07.829227+00:00'
+stale: true
+stale_reason: 依赖的『高位企稳·双双转鹰·长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+  v3→v4)

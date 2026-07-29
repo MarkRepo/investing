@@ -1,6 +1,6 @@
 slug: cn-popmart
 variant: opus4.8
-updated: '2026-06-06T13:29:59.726639+00:00'
+updated: '2026-07-16T01:20:47.902406+00:00'
 materials:
 - id: mat-6ca844
   filename: 2026-06-05_泡泡玛特2025年营收首破300亿元-海外收入占比超四成---东方财富.md
@@ -437,16 +437,19 @@ materials:
   mineru_state: not_needed
   addresses:
   - scope
+  - signpost:得物等二手价走势｜bear:二手价续跌+黄牛持续抛售
   confidence: 0.9
   search_meta:
-    query: Labubu 热度 2026 退烧 持续 二手价格 得物 溢价
+    query: '[daily-monitor] signpost:得物等二手价走势｜bear:二手价续跌+黄牛持续抛售'
     url: https://www.stcn.com/article/detail/3564080.html
     domain: stcn.com
     domain_tier: whitelist
-    searched_at: '2026-06-05T23:23:38.999137+00:00'
-    stale_at: '2026-07-05T23:23:38.999137+00:00'
-    expire_at: '2026-09-03T23:23:38.999137+00:00'
-    triggered_by: 00-prescan-baseline
+    searched_at: '2026-07-16T01:20:47.902386+00:00'
+    stale_at: '2026-08-15T01:20:47.902386+00:00'
+    expire_at: '2026-10-14T01:20:47.902386+00:00'
+    triggered_by: 06-daily-monitor
+    prev_queries:
+    - Labubu 热度 2026 退烧 持续 二手价格 得物 溢价
 - id: mat-4f1d48
   filename: 2026-06-05_泡泡玛特与labubu热潮---caixin.md
   source_type: web-search
@@ -993,3 +996,22 @@ materials:
     stale_at: '2026-07-06T04:23:41.505728+00:00'
     expire_at: '2026-09-04T04:23:41.505728+00:00'
     triggered_by: 01-prescan-rescue
+- id: mat-b699e9
+  filename: 2026-07-16_pop-mart-launches-largest-ever-buyback-after-recor.md
+  source_type: web-search
+  added: '2026-07-16T01:20:47.717847+00:00'
+  processed: false
+  notes: query='[daily-monitor] signpost:资本动作(回购/减持)｜bear:王宁/高管进一步减持'
+  mineru_state: not_needed
+  addresses:
+  - signpost:资本动作(回购/减持)｜bear:王宁/高管进一步减持
+  confidence: 0.9
+  search_meta:
+    query: '[daily-monitor] signpost:资本动作(回购/减持)｜bear:王宁/高管进一步减持'
+    url: https://www.bloomberg.com/news/articles/2026-03-27/pop-mart-launches-largest-ever-buyback-after-record-stock-plunge
+    domain: bloomberg.com
+    domain_tier: whitelist
+    searched_at: '2026-07-16T01:20:47.671564+00:00'
+    stale_at: '2026-08-15T01:20:47.671564+00:00'
+    expire_at: '2026-10-14T01:20:47.671564+00:00'
+    triggered_by: 06-daily-monitor

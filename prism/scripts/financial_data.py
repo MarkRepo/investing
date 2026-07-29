@@ -377,7 +377,7 @@ def get_financial_context(slug: str, variant: str) -> str:
         f"- **ROE**: {_fmt_pct(data['latest_roe'])}",
         f"- **资产负债率**: {_fmt_pct(data['debt_to_equity'])}",
         f"- **自由现金流**: {_fmt(data['fcf'])}",
-        f"- **商誉占净资产**: {_fmt_pct(data['goodwill_pct_equity'])}",
+        f"- **商誉占净资产**: {_fmt_pct_scaled(data['goodwill_pct_equity'])}",
         "",
     ]
     lines.append("### 3年 ROIC")
@@ -388,7 +388,7 @@ def get_financial_context(slug: str, variant: str) -> str:
         )
     else:
         for r in data.get("roic_3y", []):
-            lines.append(f"- {r['period']}: {_fmt_pct(r['roic'])}")
+            lines.append(f"- {r['period']}: {_fmt_pct_scaled(r['roic'])}")
     lines.append("")
     lines.append("### 3年自由现金流")
     for r in data.get("fcf_3y", []):
@@ -408,7 +408,25 @@ def _fmt(v: Any) -> str:
 
 
 def _fmt_pct(v: Any) -> str:
-    """Format ratio value as percentage. DB stores decimals (0.72 = 72%)."""
+    """Format a DECIMAL ratio as percentage (0.72 → '72.00%').
+
+    Use ONLY for values stored as decimals in the ratios table
+    (gross_margin / roe / debt_to_equity). For values already expressed in
+    percent units (roic / goodwill_pct_equity are computed as ×100 in
+    _compute_roic / get_quality_data_by_ticker), use _fmt_pct_scaled instead
+    — passing them here double-scales (13.23 → '1323.00%').
+    """
     if v is None:
         return "N/A"
     return f"{v * 100:.2f}%"
+
+
+def _fmt_pct_scaled(v: Any) -> str:
+    """Format a value ALREADY in percent units (13.23 → '13.23%').
+
+    For roic / goodwill_pct_equity, which _compute_roic and
+    get_quality_data_by_ticker already multiply by 100.
+    """
+    if v is None:
+        return "N/A"
+    return f"{v:.2f}%"

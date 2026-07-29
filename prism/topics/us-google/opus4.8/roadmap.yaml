@@ -1,0 +1,120 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: us-google
+variant: opus4.8
+created: 2026-07-23
+thesis_version: 0
+
+primer_scope: "primer 该覆盖：Alphabet 三业务板块(Services/Cloud/Other Bets)边界与盈利结构、搜索广告商业模式(竞价/CPC/TAC)、云竞争格局、自研TPU意义、AI capex会计传导、两起DOJ反垄断案、Gemini全栈分发、Waymo商业化阶段、双class控制结构、财报阅读要点"
+
+learning_track:
+  l3_debates:   # 争议层：多空分歧展开（反映 thesis 最大反方）
+    - question: "capex 翻倍($195-205B)是'需求逼出的投资'(Cloud backlog $460B产能受限)还是'AI军备竞赛烧钱黑洞'？增量ROIC能否>资本成本？"
+      source_hint: "财报电话会capex表态 + Cloud backlog转化 + 折旧曲线建模"
+    - question: "市场对'生成式AI侵蚀搜索'是否过度定价？还是相反——市场对AI Mode货币化过度乐观、忽视长期ARPU下行？"
+      source_hint: "AI Mode广告加载/CPC研究 + 搜索广告增速趋势"
+    - question: "Q2 2026净利$112.1B含$99B股权重估(Anthropic/SpaceX)一次性——市场是否被GAAP净利误导、高估经营质量？"
+      source_hint: "剔除other income看经营利润 + 股权投资波动性"
+    - question: "反垄断尾部是否真的出清？搜索案保住Chrome是利好，但ad-tech案剥离广告交易所+默认协议限制的实际切口有多深？"
+      source_hint: "ad-tech remedy终裁 + 搜索案default agreement条款"
+    - question: "Gemini用户追赶(662M+)是否真能转化为可货币化收入、而非仅免费用户数堆砌？"
+      source_hint: "Gemini订阅/API/云AI收入拆分"
+
+  l4_hunting:   # 狩猎层：逐条对齐 K#
+    - question: "未来2-3个季度Google搜索广告收入增速是否跌至个位数或负增长(AI Mode全面铺开后)？市场隐含预期是多少？"
+      addresses: [K1]
+      search_keywords: [Google 搜索广告 增速, AI Mode 货币化, search ad revenue growth 2026]
+      source_hint: "季度财报Search分部 + 卖方渠道调查"
+    - question: "Google Cloud能否在产能解绑后维持>40%营收增速且经营利润率逐季扩张(backlog转收入)？"
+      addresses: [K2]
+      search_keywords: [Google Cloud growth 2026, cloud operating margin, backlog RPO 转化]
+      source_hint: "Cloud分部数据 + AWS/Azure对比"
+    - question: "2026-2027 capex是否继续超预期上调致FCF同比转负？AI变现(云增量+自用效率)能否覆盖资本消耗？"
+      addresses: [K3]
+      search_keywords: [Alphabet capex 2027 guidance, free cash flow 2026, AI capex ROI]
+      source_hint: "capex指引轨迹 + FCF建模 + 折旧对EPS拖累"
+    - question: "ad-tech案(Brinkema)是否终判强制剥离广告交易所？搜索案数据共享/默认协议限制是否实质削弱搜索经济(Apple默认协议是否被禁)？"
+      addresses: [K4]
+      search_keywords: [Google ad exchange divestiture 2026, DOJ ad-tech remedy ruling, Apple default deal ban]
+      source_hint: "法院remedy终裁文本 + DOJ press"
+    - question: "Gemini用户/份额是否继续逼近ChatGPT并转化为可货币化收入(订阅/API/云AI)，而非仅免费用户数？"
+      addresses: [K5]
+      search_keywords: [Gemini paid subscribers, Gemini API revenue, ChatGPT market share 2026]
+      source_hint: "Sensor Tower/Statista + Google One AI订阅"
+    - question: "Waymo是否达到100万单/周并接近单位经济转正，成为可量化期权价值(而非拖累Other Bets)？"
+      addresses: [K6]
+      search_keywords: [Waymo 1 million rides week, robotaxi unit economics, Waymo profitability 2026]
+      source_hint: "周单量轨迹 + 单位经济(安全员/车队折旧)"
+
+material_priority:
+  tier1:   # 必读（复用 5.3 P0，00已抓齐）
+    - title: "Alphabet 10-K FY2025 + 10-Q Q1/Q2 2026"
+      type: annual-report
+      ticker: GOOGL
+      source: "SEC EDGAR"
+      why: "分部收入/TAC/Cloud利润率/capex/FCF 权威一手；喂环①④⑤"
+      addresses: [K1, K2, K3]
+    - title: "Q2 2026 + Q1 2026 财报电话会 transcript + 幻灯片"
+      type: sell-side-note
+      source: "yahoo transcript / abc.xyz IR"
+      why: "管理层对AI货币化/capex ROI/Cloud的表态(mgmt-capital-alloc)；喂环①③"
+      addresses: [K1, K2, K3]
+    - title: "卖方深度研报 ×3(AI搜索货币化+capex ROI+Cloud变现)"
+      type: sell-side-note
+      source: "Morgan Stanley/SeekingAlpha/MarketWatch"
+      why: "多空论据+目标价框架；喂环②④"
+      addresses: [K1, K3]
+    - title: "consensus一致预期+目标价分布+forward估值倍数"
+      type: data
+      source: "stockanalysis/public/yahoo analysis"
+      why: "估值锚(consensus)；喂环④"
+      addresses: [K3]
+  tier2:   # 补充（复用 5.3 P1）
+    - title: "DOJ搜索案remedy终裁文本+ad-tech案remedy状态"
+      type: policy
+      source: "justice.gov/WSJ/adexchanger"
+      why: "护城河切口(命门3)；喂环⑤"
+      addresses: [K4]
+    - title: "Gemini vs ChatGPT vs Claude 用户+货币化对比"
+      type: industry-research
+      source: "Sensor Tower/Statista/tech-insider"
+      why: "竞争位(K5)；喂环②"
+      addresses: [K5]
+    - title: "Google Cloud backlog/RPO明细+AWS/Azure横向对比"
+      type: industry-research
+      source: "各家10-Q+Statista/CRN云份额"
+      why: "Cloud变现节奏(命门2)；喂环②③"
+      addresses: [K2]
+    - title: "AI Mode/AI Overviews货币化研究(广告加载/CPC vs蓝链)"
+      type: industry-research
+      source: "semrush/digitalapplied/support.google"
+      why: "命门1核心；喂环①⑤"
+      addresses: [K1]
+  tier3:   # 可选（复用 5.3 P2）
+    - title: "Waymo周单量轨迹+Robotaxi单位经济"
+      type: industry-research
+      source: "techcrunch/forbes/linkedin"
+      why: "期权价值(K6)；喂环③"
+      addresses: [K6]
+    - title: "historical-mirror：平台迁移在位者防御/被颠覆案例"
+      type: industry-research
+      source: "Bain/McKinsey"
+      why: "镜鉴；喂环⑤"
+      addresses: [K1]
+
+key_risks_to_monitor:
+  - "2026-2027 capex续上调→FCF转负(最真实空头逻辑)"
+  - "AI Mode/AI答案页货币化<传统蓝链→搜索长期ARPU结构性下行"
+  - "ad-tech案终判强制剥离广告交易所"
+  - "搜索案默认协议(Apple $20B)被禁→Safari流量/搜索经济受损"
+  - "Gemini用户增长不转化为收入(免费用户堆砌)"
+
+analogies_to_study:
+  - name: "US v. Microsoft 反垄断案(美国科技/1998-2001)"
+    similar: "科技霸主被判垄断+捆绑/默认争议+remedy拆分威胁，最终未拆分、股价长期消化"
+    different: "Microsoft错过移动/搜索转型；Google在AI主动出击(自有Gemini/DeepMind)"
+  - name: "Meta capex恐慌→反转(美国广告/2022-2023)"
+    similar: "市场先因capex/烧钱质疑腰斩股价，后AI效率+广告复苏股价大涨——capex ROI情绪周期镜鉴"
+    different: "Meta Reality Labs纯亏无收入支撑；Google capex有Cloud backlog订单支撑"
+  - name: "诺基亚/雅虎 平台迁移被颠覆(2007-2013)"
+    similar: "技术范式切换(功能机→智能机/门户→搜索)时在位者防御失败——搜索→AI助手同类风险"
+    different: "Google自身是AI前沿玩家、非被动挨打；全栈分发渠道未被绕过"

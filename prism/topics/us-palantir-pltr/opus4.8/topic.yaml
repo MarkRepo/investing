@@ -1,0 +1,387 @@
+slug: us-palantir-pltr
+display_name: Palantir Technologies (PLTR, NASDAQ)
+type: company
+created: '2026-07-17T14:14:04.276950+00:00'
+status: active
+stage: done
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: 'Palantir (PLTR/US/deep): 终局=买/卖/持有 + 目标价/介入纪律。核心命门押在美国商业板块(US commercial)
+    AIP 放量的可持续性与客户经济性——共识押 AIP=第二增长曲线、极端估值可由高增长消化；分歧点在商业获客的留存/扩张(NRR) 与政府板块集中度、SBC
+    稀释、估值消化路径孰重。方向性 call 落在 prescan 后的 thesis_v0。'
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_PLTR
+  market: US
+  short_name: Palantir
+  search_terms:
+  - AIP 商业化放量
+  - 美国商业营收增长
+  - 政府营收占比
+  - PLTR 估值消化
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-18T01:36:51.707571+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0d05e4
+    - mat-10ff12
+    - mat-1c7ab6
+    - mat-36dbfb
+    - mat-38d4e3
+    - mat-53e892
+    - mat-619866
+    - mat-69e68b
+    - mat-ace03b
+    - mat-b3acfc
+    - mat-b5aaeb
+    - mat-b7f267
+    - mat-c4c533
+    - mat-e78988
+    - mat-eddceb
+    - mat-eea90a
+    - mat-fbccda
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-18T01:42:58.296798+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0d05e4
+    - mat-10ff12
+    - mat-1c7ab6
+    - mat-36dbfb
+    - mat-38d4e3
+    - mat-53e892
+    - mat-619866
+    - mat-69e68b
+    - mat-ace03b
+    - mat-b3acfc
+    - mat-b5aaeb
+    - mat-b7f267
+    - mat-c4c533
+    - mat-e78988
+    - mat-eddceb
+    - mat-eea90a
+    - mat-fbccda
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-18T01:42:58.319482+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0d05e4
+    - mat-10ff12
+    - mat-1c7ab6
+    - mat-36dbfb
+    - mat-38d4e3
+    - mat-53e892
+    - mat-619866
+    - mat-69e68b
+    - mat-ace03b
+    - mat-b3acfc
+    - mat-b5aaeb
+    - mat-b7f267
+    - mat-c4c533
+    - mat-e78988
+    - mat-eddceb
+    - mat-eea90a
+    - mat-fbccda
+    last_error: null
+  05-critic-review:
+    version: 1
+    last_updated: '2026-07-18T02:05:02.866846+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-b3acfc
+    - mat-b7f267
+    - mat-e78988
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-07-18T02:05:02.856837+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 us-palantir-pltr」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：approve：核心承重(极端估值/同业倍数差)硬定量、反方致命一击(稀缺性→均值回归不适用)已被case环⑤盲点#1/#2+多头kill预答、减仓call经分布压力测试仍稳健(EV≤0由起点41x不对称锁死)。承重充分性=够(de-rating镜鉴薄为佐证非独撑)。
+user_todos:
+- task: 下载 Palantir FY2025 10-K 年报 + Q1 2026 10-Q
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  - K4
+  source_hint: SEC EDGAR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-45d023
+  - mat-6b0cf2
+  last_fetch_note: SEC 直下 10-K+10-Q
+- task: 获取 Q1 2026 + Q4 2025 财报电话会 transcript
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K5
+  source_hint: seekingalpha/motleyfool/globeandmail
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-62251e
+  - mat-9b0925
+  - mat-b5aaeb
+  last_fetch_note: Q1/Q4 transcript+IR
+- task: 卖方一致预期明细：FY26/27/28 营收/EPS/目标价 bull-bear 分布
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: consensus A合同；tikr/koyfin/marketbeat
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-69e68b
+  - mat-b3acfc
+  last_fetch_note: chartmill $189.65+marketbeat 分布
+- task: Q1 2026 投资者演示 slides + shareholder letter
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: investors.palantir.com
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1c7ab6
+  - mat-45d023
+  last_fetch_note: Letter to Shareholders
+- task: 高估值成长软件股 de-rating 历史镜鉴(NVDA/SNOW/DDOG/ZM 增速峰值后倍数路径)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: historical-mirror A合同
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-b7f267
+  last_fetch_note: DDOG/SNOW 对比种子(01/02 深挖)
+- task: 管理层/内部人：Thiel/Karp 10b5-1 减持明细 + SBC 政策/净稀释轨迹
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: mgmt-capital-alloc A合同；SEC Form 4/benzinga
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-10ff12
+  - mat-ace03b
+  last_fetch_note: Form4+stocktitan
+- task: 政府板块：Army $10B ELA 条款 + 政府营收增速 + DOGE/Pentagon 预算传导
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: defensescoop/army.mil/财报分部
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0d05e4
+  - mat-c4c533
+  last_fetch_note: 10-K MD&A+业务分部+prescan Army$10B
+- task: 竞争格局：AIP vs Databricks/Snowflake/超大规模云/C3.ai 企业AI落地赢率
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 行业研报/第三方评测
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-38d4e3
+  - mat-eddceb
+  last_fetch_note: dexteragent+latentview 竞争对比
+- task: 国际商业营收拆分(欧洲增速 vs 美国)
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: 财报分部/IR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-36dbfb
+  - mat-53e892
+  last_fetch_note: 10-Q/10-K 分部附注(US/international×gov/comm)
+- task: 资料提取完成：21 份 actionable findings 处理完毕（total 56，其余 35 为 prescan web 料自动豁免）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成（3 份决策链产出：00_primer+c_investment_case+07_decision_kit+thesis_v1+decomposition_v1），chain-critic
+    六环通过放行，待 05 对抗式重审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: GAAP盈利+Rule-of-40>100的超高增长软件，历史上是否曾有守住40x+ fwd P/S的先例(哪怕反例)？PLTR是否真无可比对照组？
+  rationale: 05反方致命一击=倍数锚定可比对象错误(稀缺性→均值回归统计基础不适用)；命门②终局全押"公平25-30x"，需带对照组的实证而非纯经验律
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-18T02:05:02.810126+00:00'
+- question: 高估值软件股de-rating的完整峰谷倍数路径+增速拐点时点(NVDA/SNOW/DDOG/ZM机构复盘)，PLTR质地溢价下倍数地板究竟25x/30x/35x？
+  rationale: de-rating历史镜鉴现仅2份web料偏薄(承重佐证)，需增厚以夯实命门②目标价支撑
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P1
+  status: open
+  suggested_at: '2026-07-18T02:05:02.810126+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: approve：核心承重(极端估值/同业倍数差)硬定量、反方致命一击(稀缺性→均值回归不适用)已被case环⑤盲点#1/#2+多头kill预答、减仓call经分布压力测试仍稳健(EV≤0由起点41x不对称锁死)。承重充分性=够(de-rating镜鉴薄为佐证非独撑)。
+  at: '2026-07-18T02:05:02.800670+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-18T01:45:42.574148+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-17T14:27:02.170616+00:00'
+    summary: 命门1=AIP客户经济学可复制性(中); 命门2=倍数重力vs增长赛跑/终局(中偏低); 命门3=政府板块政治预算依赖(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-18T01:45:42.574168+00:00'
+    summary: 命门1(AIP可复制)升中高让给多头; 命门2(倍数重力·终局)维持最低升为唯一核心空头腿; 命门3(政府依赖)降权为尾部(商业增速已反超政府)
+    convergence_status: converged
+    changelog: 命门无增删,置信度重排:①升(mat-eea90a land-and-expand硬证据)②维持最低升为核心③降权(mat-53e892商业反超政府);
+      primer入门目标+Ontology独立讲/RPO≪TRDV/NOL税盾三理解点,无删除; 对照全历史无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-07-18T01:45:42.537036+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-17T14:25:19.504115+00:00'
+    summary: 伟大公司危险股票：业务加速(增速85%/US+104%/稀释停滞/Army$10B)但现价$134仍~40x fwd P/S且已从峰值-31%。终局偏卖出/减仓，base目标~$105(低于现价与$189.65一致预期)。强度4/10。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-18T01:45:42.537222+00:00'
+    summary: 伟大公司危险股票：业务加速(US商业+133%/Rule40=145/GAAP盈利)但现价$132=fwd P/S 41x(DDOG的2.4x)。让出增长只赌倍数均值回归(市场35-41x
+      vs 我判25-30x)。EV≈-10%,现价减仓/回避不做空。base$110/bull$150/bear$72。强度4/10。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-17T14:27:51.087747+00:00'
+  exited_at: '2026-07-17T16:32:02.226606+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-17T16:32:02.226606+00:00'
+  exited_at: '2026-07-18T00:56:39.909507+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-18T00:56:39.909507+00:00'
+  exited_at: '2026-07-18T01:48:47.307247+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-18T01:48:47.307247+00:00'
+  exited_at: '2026-07-18T01:48:47.571848+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-18T01:48:47.571848+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-17T16:31:40.039448+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 9
+  queries_with_hits: 9

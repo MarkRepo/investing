@@ -179,34 +179,75 @@ def _find_part_anchors(lines: list[str]) -> list[tuple[int, str]]:
     return hits
 
 
-def _select_body_anchors_10k(item_hits: list[tuple[int, str]]) -> dict[str, int]:
-    """10-K body 锚点：每个 item_id 取**最后一次**出现的位置。
+def _item_rank(item_id: str) -> tuple[int, int]:
+    """把 item_id 映射成可比较的规范序 rank：'1'→(1,0), '1A'→(1,1), '7A'→(7,1)。
 
-    SEC 10-K 结构：TOC 在文档开头（item_id 全集出现一次），body 在 TOC 之后
-    （item_id 全集再出现一次，可能还有 cross-references 散落在文中）。
-    取最后一次出现能稳健避开 TOC，因为 TOC 永远在 body 之前。
-    cross-reference 通常文本中嵌入"Part I, Item 1A"，但前面有"in" / "see"等词，
-    不会被 `^\\s*ITEM\\s+N` 锚点正则匹配。
+    SEC Item 编号规范顺序 = (数字, 字母后缀序)。字母后缀 A=1, B=2, …；无后缀=0。
+    body 段落一定按此 rank 单调递增出现，cross-reference 会打乱顺序——正是 LIS 用来
+    甄别 body vs cross-ref 的依据。
     """
-    body: dict[str, int] = {}
-    for lineno, item in item_hits:
-        body[item] = lineno  # 持续覆盖 → 保留最后值
-    return body
+    m = re.match(r"(\d+)([A-Z]*)", item_id.upper())
+    if not m:
+        return (999, 0)
+    num = int(m.group(1))
+    suffix = m.group(2)
+    suf_rank = 0
+    for ch in suffix:
+        suf_rank = suf_rank * 26 + (ord(ch) - ord("A") + 1)
+    return (num, suf_rank)
 
 
-def _select_part_body(part_hits: list[tuple[int, str]]) -> dict[str, int]:
-    """Part I/II body 锚点：取**最后一次**出现的位置。同 _select_body_anchors_10k 理由。"""
-    body: dict[str, int] = {}
-    for lineno, part in part_hits:
-        body[part] = lineno
-    return body
+def _lis_by_rank(anchors: list[tuple[int, str]]) -> list[tuple[int, str]]:
+    """从按行号升序的 (lineno, item_id) 中取**规范序严格递增的最长子序列 (LIS)**。
+
+    真 body 段落一定按 Item 规范序单调递增；cross-reference（如 MD&A 里回指
+    "Item 1A. Risk Factors"）会出现在乱序位置、破坏单调性，因此不会进入 LIS，被自动剔除。
+    同一 item 的多次 title 出现（页眉重复），LIS 只保留能延续最长递增链的那一个
+    （通常即真 body 位置）。O(n²)，n≤~50，可忽略。
+    """
+    n = len(anchors)
+    if n == 0:
+        return []
+    ranks = [_item_rank(item) for _, item in anchors]
+    # dp[i] = 以 i 结尾的最长严格递增链长度；prev[i] = 前驱下标
+    dp = [1] * n
+    prev = [-1] * n
+    for i in range(n):
+        for j in range(i):
+            if ranks[j] < ranks[i] and dp[j] + 1 > dp[i]:
+                dp[i] = dp[j] + 1
+                prev[i] = j
+    # 取最长链的结尾；并列时取更靠后的（body 在 TOC/前置 cross-ref 之后）
+    best = max(range(n), key=lambda i: (dp[i], i))
+    chain: list[tuple[int, str]] = []
+    k = best
+    while k != -1:
+        chain.append(anchors[k])
+        k = prev[k]
+    chain.reverse()
+    return chain
+
+
+def _select_body_anchors_10k(
+    lines: list[str], item_hits: list[tuple[int, str]]
+) -> dict[str, int]:
+    """10-K body 锚点：先按 title 过滤掉 TOC 桩，再用规范序 LIS 剔除 cross-reference。
+
+    旧策略"每个 item 取最后一次出现"会被出现在真 body **之后**的 cross-reference
+    抢占锚点（如 PLTR 10-K 里 MD&A/治理段回指 "Item 1A. Risk Factors" 出现在 L2575，
+    把真 Item 1A(L1552) 的锚点覆盖掉）。改为 title 过滤 + LIS 后，只保留规范序单调
+    递增的 body 链，cross-reference 因乱序被自动排除。
+    """
+    title_hits = [(ln, item) for ln, item in item_hits if _line_has_title(lines[ln], item)]
+    body_chain = _lis_by_rank(title_hits)
+    return {item: ln for ln, item in body_chain}
 
 
 def split_10k(htm_path: Path) -> dict:
     """切 10-K。返回 {'form': '10-K', 'sections': [...], 'split_ok': bool, ...}"""
     lines = _extract_lines(htm_path)
     item_hits = _find_item_anchors(lines)
-    body = _select_body_anchors_10k(item_hits)
+    body = _select_body_anchors_10k(lines, item_hits)
 
     # 按 lineno 排序的所有 body Item，用于确定 section 结束行
     sorted_body = sorted(body.items(), key=lambda kv: kv[1])
@@ -275,15 +316,14 @@ def split_10q(htm_path: Path) -> dict:
         default=None,
     )
 
-    # 对每个 item_id，按所在 Part 取最后一次出现（TOC 始终在 body 之前，
-    # 同一 Part 内最后出现的 item 锚点必为 body）。
-    part_i_items: dict[str, int] = {}
-    part_ii_items: dict[str, int] = {}
-    for lineno, item in item_hits:
-        if lineno < part_ii_start:
-            part_i_items[item] = lineno
-        else:
-            part_ii_items[item] = lineno
+    # 每个 Part 内：先按 title 过滤掉 TOC 桩，再用规范序 LIS 剔除 cross-reference，
+    # 得到干净的 body item 锚点。旧策略"取最后一次出现"会被出现在 body 段落**内部**的
+    # cross-reference 当成边界（如 PLTR 10-Q 里 MD&A 段回指 "Item 1A. Risk Factors"(L2443)
+    # 把 Item 2 MD&A 截成 32 行；Part II 风险段回指 "Item 7."(L3109) 把风险因素截成 97 行）。
+    pi_title = [(ln, it) for ln, it in item_hits if ln < part_ii_start and _line_has_title(lines[ln], it)]
+    pii_title = [(ln, it) for ln, it in item_hits if ln >= part_ii_start and _line_has_title(lines[ln], it)]
+    part_i_items: dict[str, int] = {it: ln for ln, it in _lis_by_rank(pi_title)}
+    part_ii_items: dict[str, int] = {it: ln for ln, it in _lis_by_rank(pii_title)}
 
     # ---- Part I Item 1（财报报表）----
     # 两种 layout：

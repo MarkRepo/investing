@@ -113,3 +113,21 @@ entries:
   n_mid: 4
   n_low: 0
   disposition: registered
+- searched_at: '2026-07-15T13:37:08.520244+00:00'
+  query: '[daily-monitor] signpost:2027 HBM4 SCA(供货协议)谈判 + HBM vs DDR5 单wafer经济性走向｜bear:HBM
+    经济性继续被 DDR5 反超、产能回流标准 DRAM'
+  triggered_by: 06-daily-monitor
+  n_results: 3
+  n_high: 1
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-15T13:47:10.677311+00:00'
+  query: Micron Q3 FY2026 earnings results revenue gross margin guidance June 2026
+    HBM SCA
+  triggered_by: 04-synth
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered

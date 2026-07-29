@@ -30,15 +30,15 @@ outputs_state:
     last_error: null
     critic_passed: true
   m_regime_read:
-    version: 3
-    last_updated: '2026-07-01T03:59:45.585317+00:00'
+    version: 4
+    last_updated: '2026-07-28T09:14:58.238420+00:00'
     status: fresh
-    data_freshness: snapshot@2026-06-30
+    data_freshness: snapshot@2026-07-28
     referenced_mat_ids: []
     last_error: null
   transmission_map:
-    version: 3
-    last_updated: '2026-07-01T04:09:19.354592+00:00'
+    version: 4
+    last_updated: '2026-07-28T09:22:08.051095+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: []
@@ -55,13 +55,22 @@ user_todos:
   fetch_status: unattempted
   fetch_attempts: 0
   disposition: undecided
+- task: v4重估完成(m_regime_read/transmission_map/thesis_v4/decomposition_v4+eval快照v4),内嵌critic已过并按承重反馈修订(熊陡成因归属拆清+OSAT汇率暴露修正+9训练估算降权),stage→评审
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: true
   cadence: daily
 critic: null
 decomposition:
-  current_version: 3
-  last_updated: '2026-07-01T04:03:43.077259+00:00'
+  current_version: 4
+  last_updated: '2026-07-28T09:24:53.317819+00:00'
   history:
   - version: 2
     stage_set_at: 04-synthesizing
@@ -75,6 +84,13 @@ decomposition:
     summary: 命门1=过热降温是软着陆还是硬着陆前奏(升首要); 命门2=极窄利差/低波动/carry缓冲何时被刺破; 命门3=人民币企稳能否扛住走强的广义美元
     convergence_status: converged
     changelog: v3相对v2:①命门1具体化为软/硬着陆(象限已给降温票,升首要);②命门2更新读数(carry越带161.7/波动压缩/杠杆UST净空),翻盘清单加百利天恒/药明合联/Momenta;③命门3锚更新为走强广义美元正侵蚀对冲(人民币已微贬).无增删/复活,无震荡
+  - version: 4
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-28T09:24:53.317835+00:00'
+    summary: 命门1=再通胀式利率再上是需求真强还是油价+期限溢价假警报(熊陡成因,首要); 命门2=缓冲已在利率+vol轴刺破,是否蔓延到信用/股vol/carry;
+      命门3=人民币企稳偏强是政策维稳暂态还是外资参与收缩下的虚稳
+    convergence_status: converged
+    changelog: v4相对v3:①命门1方向翻转-从降温软/硬着陆改为再通胀式熊陡成因归属(需求vs供给/期限溢价),仍首要;②命门2从何时被刺破升级为已在利率+vol轴兑现、是否蔓延到信用/股vol/carry;③命门3锚翻转-v3判贬本轮反强,改问政策维稳暂态vs外资参与收缩虚稳。无增删/复活,收敛
 stage_history:
 - stage: done
   entered_at: '2026-06-07T08:06:52.775725+00:00'
@@ -93,8 +109,8 @@ stage_history:
     autofetch_debt: 0
     empty_pending_decision: 0
 thesis:
-  current_version: 3
-  last_updated: '2026-07-01T04:03:43.059610+00:00'
+  current_version: 4
+  last_updated: '2026-07-28T09:24:53.298307+00:00'
   history:
   - version: 2
     stage_set_at: 04-synthesizing
@@ -104,4 +120,8 @@ thesis:
     stage_set_at: 04-synthesizing
     set_at: '2026-07-01T04:03:43.059771+00:00'
     summary: 中美背离延续叠加反通胀式增长降温：GDPNow2.5/油价塌/长端牛平vs官方市场双双转鹰；组合偏防御压久期，真雷从利率再上转向极窄利差/carry/低波动缓冲被刺破。强度6·脆弱度高
+  - version: 4
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-28T09:24:53.298466+00:00'
+    summary: 中美背离延续;美端从反通胀降温翻转为再通胀式利率再上/熊陡:10Y4.69+31bp、实际利率2.43创新高、油价反弹、劳动力再走强,牛平背离消解;流动性偏松但RRP抽干SOFR-IORB咬合;人民币反企稳偏强(v3判贬被证伪)。偏防御压久期,久期风险重回利率端,脆弱度high已在利率+vol轴兑现。强度6
 suggested_drilldowns: []

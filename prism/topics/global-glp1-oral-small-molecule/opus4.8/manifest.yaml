@@ -1,0 +1,700 @@
+slug: global-glp1-oral-small-molecule
+variant: opus4.8
+updated: '2026-07-22T07:38:24.542102+00:00'
+materials:
+- id: mat-e0d600
+  filename: 2026-07-22_lilly-s-orforglipron-mapping-the-oral-glp-1-s-curv.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.798410+00:00'
+  processed: true
+  notes: query='oral GLP-1 orforglipron prescription uptake vs injectable market share
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: oral GLP-1 orforglipron prescription uptake vs injectable market share
+      2026
+    url: https://www.ainvest.com/news/lilly-orforglipron-mapping-oral-glp-1-curve-infrastructure-war-2602
+    domain: ainvest.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.797493+00:00'
+    stale_at: '2026-08-21T06:08:15.797493+00:00'
+    expire_at: '2026-10-20T06:08:15.797493+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-0b4c14
+  filename: 2026-07-22_structure-therapeutics-reports-positive-topline-da.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.818828+00:00'
+  processed: true
+  notes: query='aleniglipron GSBR-1290 VK2735 oral Phase 3 efficacy readout 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: aleniglipron GSBR-1290 VK2735 oral Phase 3 efficacy readout 2026
+    url: https://ir.structuretx.com/news-releases/news-release-details/structure-therapeutics-reports-positive-topline-data-access
+    domain: ir.structuretx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.817626+00:00'
+    stale_at: '2026-08-21T06:08:15.817626+00:00'
+    expire_at: '2026-10-20T06:08:15.817626+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-f8c8d4
+  filename: 2026-07-22_viking-therapeutics-presents-data-from-its-13-week.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.828378+00:00'
+  processed: true
+  notes: query='aleniglipron GSBR-1290 VK2735 oral Phase 3 efficacy readout 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: aleniglipron VK2735 oral obesity Phase 3 topline readout 2026
+    url: https://ir.vikingtherapeutics.com/2026-05-12-Viking-Therapeutics-Presents-Data-from-its-13-Week-Phase-2-VENTURE-Oral-Dosing-Trial-of-VK2735-at-European-Congress-on-Obesity-ECO-2026
+    domain: ir.vikingtherapeutics.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.654273+00:00'
+    stale_at: '2026-08-21T06:10:59.654273+00:00'
+    expire_at: '2026-10-20T06:10:59.654273+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - aleniglipron GSBR-1290 VK2735 oral Phase 3 efficacy readout 2026
+- id: mat-f5d5a3
+  filename: 2026-07-22_aleniglipron---drug-targets-indications-patents---.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.838391+00:00'
+  processed: true
+  notes: query='aleniglipron GSBR-1290 VK2735 oral Phase 3 efficacy readout 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: aleniglipron GSBR-1290 VK2735 oral Phase 3 efficacy readout 2026
+    url: https://synapse.patsnap.com/drug/5bddfa8e0017451aa1f0826f4400b683
+    domain: synapse.patsnap.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.836413+00:00'
+    stale_at: '2026-08-21T06:08:15.836413+00:00'
+    expire_at: '2026-10-20T06:08:15.836413+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-87d0af
+  filename: 2026-07-22_viking-therapeutics-is-2026-the-year.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.862001+00:00'
+  processed: true
+  notes: query='Viking Structure acquisition takeover valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Viking Structure acquisition takeover valuation 2026
+    url: https://biotechinvestor25.substack.com/p/viking-therapeutics-is-2026-the-year
+    domain: biotechinvestor25.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.858670+00:00'
+    stale_at: '2026-08-21T06:08:15.858670+00:00'
+    expire_at: '2026-10-20T06:08:15.858670+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-403da9
+  filename: 2026-07-22_if-viking-therapeutics-is-acquired-here-s-who-wins.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.875348+00:00'
+  processed: true
+  notes: query='Viking Structure acquisition takeover valuation 2026' | 待用户确认 | query='Viking
+    Structure acquisition takeover deal 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Viking Structure acquisition takeover deal 2026
+    url: https://finance.yahoo.com/sectors/healthcare/articles/viking-therapeutics-acquired-wins-125016734.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.801561+00:00'
+    stale_at: '2026-08-21T06:10:59.801561+00:00'
+    expire_at: '2026-10-20T06:10:59.801561+00:00'
+    triggered_by: 01-prescan
+- id: mat-493874
+  filename: 2026-07-22_beyond-the-needle-eli-lilly-s-orforglipron-and-the.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.899861+00:00'
+  processed: true
+  notes: query='orforglipron oral GLP-1 patent expiry generic 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral GLP-1 patent expiry generic 2026
+    url: https://synapse.patsnap.com/blog/beyond-the-needle-eli-lillys-orforglipron-and-the-small-molecule-glp-1-revolution
+    domain: synapse.patsnap.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.896669+00:00'
+    stale_at: '2026-08-21T06:08:15.896669+00:00'
+    expire_at: '2026-10-20T06:08:15.896669+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-ff734a
+  filename: 2026-07-22_peptide-biosimilars-what-happens-when-semaglutide-.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.916816+00:00'
+  processed: true
+  notes: query='orforglipron oral GLP-1 patent expiry generic 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral GLP-1 patent expiry generic 2026
+    url: https://meto.co/blog/semaglutide-patent-expiry-biosimilar
+    domain: meto.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.912708+00:00'
+    stale_at: '2026-08-21T06:08:15.912708+00:00'
+    expire_at: '2026-10-20T06:08:15.912708+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-7f94b2
+  filename: 2026-07-22_science-and-technology-law-review.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.932275+00:00'
+  processed: true
+  notes: query='orforglipron oral GLP-1 patent expiry generic 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral GLP-1 patent expiry generic 2026
+    url: https://journals.library.columbia.edu/index.php/stlr/blog/view/653
+    domain: journals.library.columbia.edu
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.928040+00:00'
+    stale_at: '2026-08-21T06:08:15.928040+00:00'
+    expire_at: '2026-10-20T06:08:15.928040+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-f39c3c
+  filename: 2026-07-22_next-wave-of-anti-obesity-meds-2026-2028-outlook--.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.962784+00:00'
+  processed: true
+  notes: query='oral GLP-1 obesity insurance PBM formulary coverage 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: oral GLP-1 obesity insurance PBM formulary coverage 2026
+    url: https://www.wtwco.com/en-us/insights/2026/04/the-next-wave-of-anti-obesity-medications-2026-2028-market-outlook
+    domain: wtwco.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.957127+00:00'
+    stale_at: '2026-08-21T06:08:15.957127+00:00'
+    expire_at: '2026-10-20T06:08:15.957127+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-fd18f6
+  filename: 2026-07-22_why-the-glp-1-drug-you-were-approved-for-suddenly-.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.980193+00:00'
+  processed: true
+  notes: query='oral GLP-1 obesity insurance PBM formulary coverage 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: oral GLP-1 obesity insurance PBM formulary coverage 2026
+    url: https://understoodcare.com/care-guides/why-the-glp-1-drug-you-were-approved-for-suddenly-costs-1-200-instead-of-the-promised-50
+    domain: understoodcare.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.975687+00:00'
+    stale_at: '2026-08-21T06:08:15.975687+00:00'
+    expire_at: '2026-10-20T06:08:15.975687+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-1cc9d9
+  filename: 2026-07-22_pharmacy-vs-medical-benefit-explained-glp-1-covera.md
+  source_type: web-search
+  added: '2026-07-22T06:08:15.998565+00:00'
+  processed: true
+  notes: query='oral GLP-1 obesity insurance PBM formulary coverage 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: oral GLP-1 obesity insurance PBM formulary coverage 2026
+    url: https://intuitionlabs.ai/articles/pharmacy-vs-medical-benefit-glp1-coverage
+    domain: intuitionlabs.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:15.993713+00:00'
+    stale_at: '2026-08-21T06:08:15.993713+00:00'
+    expire_at: '2026-10-20T06:08:15.993713+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-875aa5
+  filename: 2026-07-22_roche-commits-100m-to-keep-its-glp-1-structure-sou.md
+  source_type: web-search
+  added: '2026-07-22T06:08:16.033030+00:00'
+  processed: true
+  notes: query='Roche CT-996 Terns AstraZeneca oral GLP-1 pipeline 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Roche CT-996 Terns AstraZeneca oral GLP-1 pipeline 2026
+    url: https://www.fiercebiotech.com/biotech/roche-shores-100m-keep-its-glp-1-structure-sound
+    domain: fiercebiotech.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:16.027133+00:00'
+    stale_at: '2026-08-21T06:08:16.027133+00:00'
+    expire_at: '2026-10-20T06:08:16.027133+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-a91c3a
+  filename: 2026-07-22_astrazeneca-bolsters-obesity-pipeline-with-promisi.md
+  source_type: web-search
+  added: '2026-07-22T06:08:16.054582+00:00'
+  processed: true
+  notes: query='Roche CT-996 Terns AstraZeneca oral GLP-1 pipeline 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Roche CT-996 Terns AstraZeneca oral GLP-1 pipeline 2026
+    url: https://www.biospace.com/drug-development/astrazeneca-bolsters-obesity-pipeline-with-promising-early-data-for-candidates
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:16.048729+00:00'
+    stale_at: '2026-08-21T06:08:16.048729+00:00'
+    expire_at: '2026-10-20T06:08:16.048729+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-a645b0
+  filename: 2026-07-22_azd5004-ecc5004-a-small-molecule-glp-1-receptor.md
+  source_type: web-search
+  added: '2026-07-22T06:08:16.078459+00:00'
+  processed: true
+  notes: query='Roche CT-996 Terns AstraZeneca oral GLP-1 pipeline 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Roche CT-996 Terns AstraZeneca oral GLP-1 pipeline 2026
+    url: https://www.eccogene.com/wp-content/uploads/OW-2024_ECC5004-Food-Effects-Poster_FINAL_24Oct2024-1.pdf
+    domain: eccogene.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:16.072473+00:00'
+    stale_at: '2026-08-21T06:08:16.072473+00:00'
+    expire_at: '2026-10-20T06:08:16.072473+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-9c426c
+  filename: 2026-07-22_eli-lilly-commits-3-billion-to-china-manufacturing.md
+  source_type: web-search
+  added: '2026-07-22T06:08:16.114006+00:00'
+  processed: true
+  notes: query='orforglipron oral small molecule manufacturing cost capacity access
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral small molecule manufacturing cost capacity access 2026
+    url: https://flcube.com?p=59332
+    domain: flcube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:16.106478+00:00'
+    stale_at: '2026-08-21T06:08:16.106478+00:00'
+    expire_at: '2026-10-20T06:08:16.106478+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-ff23c8
+  filename: 2026-07-22_the-oral-small-molecule-glp-1-race-beyond-orforgli.md
+  source_type: web-search
+  added: '2026-07-22T06:08:16.137679+00:00'
+  processed: true
+  notes: query='orforglipron oral small molecule manufacturing cost capacity access
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral small molecule manufacturing cost capacity access 2026
+    url: https://www.patentvest.com/patentvest-pulse/the-oral-small-molecule-glp-1-race-beyond-orforglipron
+    domain: patentvest.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:16.130778+00:00'
+    stale_at: '2026-08-21T06:08:16.130778+00:00'
+    expire_at: '2026-10-20T06:08:16.130778+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-da05cc
+  filename: 2026-07-22_many-millions-still-untreated-but-hep-c-boom-is-al.md
+  source_type: web-search
+  added: '2026-07-22T06:08:16.182696+00:00'
+  processed: true
+  notes: query='hepatitis C DAA Sovaldi Harvoni profit pool collapse patent generic'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  rings:
+  - arena-mirror
+  confidence: 0.7
+  search_meta:
+    query: hepatitis C DAA Sovaldi Harvoni profit pool collapse patent generic
+    url: https://pharmaphorum.com/views-and-analysis/many-millions-left-untreated-hepatitis-c-boom-already
+    domain: pharmaphorum.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:16.174503+00:00'
+    stale_at: '2026-08-21T06:08:16.174503+00:00'
+    expire_at: '2026-10-20T06:08:16.174503+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-56ee94
+  filename: 2026-07-22_court-orders-gilead-to-pay-merck-in-hepatitis-c-dr.md
+  source_type: web-search
+  added: '2026-07-22T06:08:16.209043+00:00'
+  processed: true
+  notes: query='hepatitis C DAA Sovaldi Harvoni profit pool collapse patent generic'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  rings:
+  - arena-mirror
+  confidence: 0.7
+  search_meta:
+    query: hepatitis C DAA Sovaldi Harvoni profit pool collapse patent generic
+    url: https://www.hcplive.com/view/court-orders-gilead-to-pay-merck-in-hepatitis-c-drug-patent-lawsuit
+    domain: hcplive.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:16.200696+00:00'
+    stale_at: '2026-08-21T06:08:16.200696+00:00'
+    expire_at: '2026-10-20T06:08:16.200696+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-a6e783
+  filename: 2026-07-22_the-lipid-lowering-efficacy-of-pcsk9-inhibitors-al.md
+  source_type: web-search
+  added: '2026-07-22T06:08:16.250496+00:00'
+  processed: true
+  notes: query='statins vs PCSK9 inhibitors oral efficacy access lesson' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  rings:
+  - arena-mirror
+  confidence: 0.7
+  search_meta:
+    query: statins vs PCSK9 inhibitors oral efficacy access lesson
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12954586/
+    domain: pmc.ncbi.nlm.nih.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:16.242359+00:00'
+    stale_at: '2026-08-21T06:08:16.242359+00:00'
+    expire_at: '2026-10-20T06:08:16.242359+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-daac55
+  filename: 2026-07-22_diabetes-drugs-market-trends-opportunity-and-forec.md
+  source_type: web-search
+  added: '2026-07-22T06:08:16.292890+00:00'
+  processed: true
+  notes: query='DPP-4 SGLT2 oral diabetes small molecule uptake generic erosion' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  rings:
+  - arena-mirror
+  confidence: 0.7
+  search_meta:
+    query: DPP-4 SGLT2 oral diabetes small molecule uptake generic erosion
+    url: https://finance.yahoo.com/news/diabetes-drugs-market-trends-opportunity-125300809.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:08:16.284331+00:00'
+    stale_at: '2026-08-21T06:08:16.284331+00:00'
+    expire_at: '2026-10-20T06:08:16.284331+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-a76b57
+  filename: 2026-07-22_lilly-s-oral-glp-1-orforglipron-delivered-superior.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.292410+00:00'
+  processed: false
+  notes: query='orforglipron oral GLP-1 small molecule obesity 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral GLP-1 small molecule obesity 2026
+    url: https://www.prnewswire.com/news-releases/lillys-oral-glp-1-orforglipron-delivered-superior-blood-sugar-control-and-weight-loss-compared-to-oral-semaglutide-in-head-to-head-type-2-diabetes-trial-published-in-the-lancet-302697632.html
+    domain: prnewswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.283338+00:00'
+    stale_at: '2026-08-21T06:10:59.283338+00:00'
+    expire_at: '2026-10-20T06:10:59.283338+00:00'
+    triggered_by: 01-prescan
+- id: mat-c61bc5
+  filename: 2026-07-22_could-orforglipron-reshape-the-glp-1-market.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.322841+00:00'
+  processed: false
+  notes: query='orforglipron oral GLP-1 small molecule obesity 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral GLP-1 small molecule obesity 2026
+    url: https://www.managedhealthcareexecutive.com/view/could-orforglipron-reshape-the-glp-1-market-
+    domain: managedhealthcareexecutive.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.313764+00:00'
+    stale_at: '2026-08-21T06:10:59.313764+00:00'
+    expire_at: '2026-10-20T06:10:59.313764+00:00'
+    triggered_by: 01-prescan
+- id: mat-d8489d
+  filename: 2026-07-22_head-to-head-trial-shows-eli-lilly-s-oral-glp-1-or.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.356466+00:00'
+  processed: false
+  notes: query='orforglipron oral GLP-1 small molecule obesity 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral GLP-1 small molecule obesity 2026
+    url: https://www.medschool.umaryland.edu/media/som/news/docs/Head-to-head-trial-shows-Eli-Lilly%E2%80%99s-oral-GLP-1-orforglipron-outperforms-oral-semaglutide-_-Scientific-American.pdf
+    domain: medschool.umaryland.edu
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.345602+00:00'
+    stale_at: '2026-08-21T06:10:59.345602+00:00'
+    expire_at: '2026-10-20T06:10:59.345602+00:00'
+    triggered_by: 01-prescan
+- id: mat-0a9ade
+  filename: 2026-07-22_elecoglipron-an-oral-small-molecule-glp-1-ra-moves.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.392059+00:00'
+  processed: false
+  notes: query='oral GLP-1 small molecule obesity FDA approval trial readout 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: oral GLP-1 small molecule obesity FDA approval trial readout 2026
+    url: https://www.astrazeneca.com/media-centre/press-releases/2026/elecoglipron-an-oral-small-molecule-glp-1-ra-moves-to-phase-iii-programme.html
+    domain: astrazeneca.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.381218+00:00'
+    stale_at: '2026-08-21T06:10:59.381218+00:00'
+    expire_at: '2026-10-20T06:10:59.381218+00:00'
+    triggered_by: 01-prescan
+- id: mat-3f851a
+  filename: 2026-07-22_the-growing-impact-of-oral-glp-1s-on-obesity-treat.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.424122+00:00'
+  processed: false
+  notes: query='oral GLP-1 small molecule obesity FDA approval trial readout 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: oral GLP-1 small molecule obesity FDA approval trial readout 2026
+    url: https://www.delveinsight.com/blog/oral-glp1-in-obesity-treatment
+    domain: delveinsight.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.414074+00:00'
+    stale_at: '2026-08-21T06:10:59.414074+00:00'
+    expire_at: '2026-10-20T06:10:59.414074+00:00'
+    triggered_by: 01-prescan
+- id: mat-485983
+  filename: 2026-07-22_novo-s-ceo-champions-record-breaking-start-for-weg.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.460873+00:00'
+  processed: false
+  notes: query='orforglipron prescription launch uptake oral Wegovy market share 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: orforglipron prescription launch uptake oral Wegovy market share 2026
+    url: https://www.pharmaceutical-technology.com/news/novos-ceo-champions-record-breaking-start-for-wegovy-pill-in-us-market
+    domain: pharmaceutical-technology.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.449784+00:00'
+    stale_at: '2026-08-21T06:10:59.449784+00:00'
+    expire_at: '2026-10-20T06:10:59.449784+00:00'
+    triggered_by: 01-prescan
+- id: mat-f0402a
+  filename: 2026-07-22_is-novo-nordisk-s-oral-wegovy-driving-strong-early.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.493618+00:00'
+  processed: false
+  notes: query='orforglipron prescription launch uptake oral Wegovy market share 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: orforglipron prescription launch uptake oral Wegovy market share 2026
+    url: https://finance.yahoo.com/news/novo-nordisks-oral-wegovy-driving-145900933.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.483134+00:00'
+    stale_at: '2026-08-21T06:10:59.483134+00:00'
+    expire_at: '2026-10-20T06:10:59.483134+00:00'
+    triggered_by: 01-prescan
+- id: mat-4eeb42
+  filename: 2026-07-22_wegovy-pill-demonstrated-greater-weight-loss-than-.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.529492+00:00'
+  processed: false
+  notes: query='orforglipron prescription launch uptake oral Wegovy market share 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: orforglipron prescription launch uptake oral Wegovy market share 2026
+    url: https://www.prnewswire.com/news-releases/wegovy-pill-demonstrated-greater-weight-loss-than-orforglipron-and-lower-odds-of-stopping-medication-due-to-side-effects-in-a-new-indirect-comparison-to-be-presented-at-obesity-medicine-association-2026-302732768.html
+    domain: prnewswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.518100+00:00'
+    stale_at: '2026-08-21T06:10:59.518100+00:00'
+    expire_at: '2026-10-20T06:10:59.518100+00:00'
+    triggered_by: 01-prescan
+- id: mat-9d00b3
+  filename: 2026-07-22_transformative-arrival-of-oral-weight-loss-medicin.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.574683+00:00'
+  processed: false
+  notes: query='orforglipron prescription launch uptake oral Wegovy market share 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: orforglipron prescription launch uptake oral Wegovy market share 2026
+    url: https://www.pharmaceutical-technology.com/analyst-comment/transformative-arrival-of-oral-weight-loss-medicines-in-us
+    domain: pharmaceutical-technology.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.560147+00:00'
+    stale_at: '2026-08-21T06:10:59.560147+00:00'
+    expire_at: '2026-10-20T06:10:59.560147+00:00'
+    triggered_by: 01-prescan
+- id: mat-822d22
+  filename: 2026-07-22_ex-99-1.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.617084+00:00'
+  processed: true
+  notes: query='aleniglipron VK2735 oral obesity Phase 3 topline readout 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: aleniglipron VK2735 oral obesity Phase 3 topline readout 2026
+    url: https://www.sec.gov/Archives/edgar/data/1607678/000119312525246775/vktx-ex99_1.htm
+    domain: sec.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.605170+00:00'
+    stale_at: '2026-08-21T06:10:59.605170+00:00'
+    expire_at: '2026-10-20T06:10:59.605170+00:00'
+    triggered_by: 01-prescan
+- id: mat-230a2c
+  filename: 2026-07-22_study-details-nct07104383-vk2735-for-weight-manage.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.693209+00:00'
+  processed: false
+  notes: query='aleniglipron VK2735 oral obesity Phase 3 topline readout 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: aleniglipron VK2735 oral obesity Phase 3 topline readout 2026
+    url: https://clinicaltrials.gov/study/NCT07104383
+    domain: clinicaltrials.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.680084+00:00'
+    stale_at: '2026-08-21T06:10:59.680084+00:00'
+    expire_at: '2026-10-20T06:10:59.680084+00:00'
+    triggered_by: 01-prescan
+- id: mat-5b4888
+  filename: 2026-07-22_is-viking-therapeutics-a-top-takeover-target-the-m.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.735958+00:00'
+  processed: true
+  notes: query='Viking Structure acquisition takeover deal 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Viking Structure acquisition takeover deal 2026
+    url: https://www.fool.com/investing/2026/05/23/is-viking-therapeutics-a-top-takeover-target
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.723438+00:00'
+    stale_at: '2026-08-21T06:10:59.723438+00:00'
+    expire_at: '2026-10-20T06:10:59.723438+00:00'
+    triggered_by: 01-prescan
+- id: mat-4970d3
+  filename: 2026-07-22_orforglipron---wikipedia.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.855845+00:00'
+  processed: true
+  notes: query='orforglipron oral GLP-1 patent expiry generic 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral GLP-1 patent expiry generic 2026
+    url: https://en.wikipedia.org/wiki/Orforglipron
+    domain: en.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.843220+00:00'
+    stale_at: '2026-08-21T06:10:59.843220+00:00'
+    expire_at: '2026-10-20T06:10:59.843220+00:00'
+    triggered_by: 01-prescan
+- id: mat-e11b30
+  filename: 2026-07-22_lilly-s-foundayo-orforglipron-the-only-oral-glp-1-.md
+  source_type: web-search
+  added: '2026-07-22T06:10:59.896987+00:00'
+  processed: false
+  notes: query='orforglipron oral GLP-1 patent expiry generic 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: orforglipron oral GLP-1 patent expiry generic 2026
+    url: https://investor.lilly.com/news-releases/news-release-details/lillys-foundayo-orforglipron-only-oral-glp-1-taken-without-food
+    domain: investor.lilly.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T06:10:59.883045+00:00'
+    stale_at: '2026-08-21T06:10:59.883045+00:00'
+    expire_at: '2026-10-20T06:10:59.883045+00:00'
+    triggered_by: 01-prescan

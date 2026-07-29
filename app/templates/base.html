@@ -29,12 +29,15 @@
   {%- endmacro %}
   <nav class="top">
     {# 研究 是 /prism 整段的 brand 根；仪表盘与宏观层子树各有独立 nav 入口，故从研究的高亮里排除，避免同时点亮 #}
-    {{ _navlink('/prism', '研究', 'brand', excludes=['/prism/dashboard', '/prism/global-macro-rates-liquidity']) }}
+    {{ _navlink('/prism', '研究', 'brand', excludes=['/prism/dashboard', '/prism/global-macro-rates-liquidity', '/prism/notes']) }}
     {{ _navlink('/prism/dashboard', '仪表盘') }}
     {{ _navlink('/prism/global-macro-rates-liquidity/opus4.8', '宏观层') }}
     {{ _navlink('/financials', '财务') }}
     {{ _navlink('/prices', '行情') }}
     {{ _navlink('/digest', '研报摘要') }}
+    {{ _navlink('/prism/notes', '计划') }}
+    {# 个人Wiki：/wiki 反代到本地 Quartz(8080)，相对路径自动跟随当前 host（本机/ngrok 都对）——不参与 active 高亮，新标签打开保留 prism 页面 #}
+    <a href="/wiki/" target="_blank" rel="noopener">个人Wiki</a>
   </nav>
   <main class="{% block main_class %}{% endblock %}">
     {% block content %}{% endblock %}

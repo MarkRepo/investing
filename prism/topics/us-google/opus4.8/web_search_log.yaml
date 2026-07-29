@@ -1,0 +1,299 @@
+slug: us-google
+variant: opus4.8
+entries:
+- searched_at: '2026-07-23T09:53:31.276468+00:00'
+  query: Google DOJ search antitrust remedy ruling 2025 Chrome divestiture Mehta final
+    decision
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.300644+00:00'
+  query: Google ad-tech antitrust remedy 2025 2026 Brinkema decision ad exchange divestiture
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.324846+00:00'
+  query: Alphabet FY2025 full year revenue earnings net income Google Cloud growth
+    rate
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.360415+00:00'
+  query: Alphabet Q2 2026 earnings results Search advertising revenue Google Cloud
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.407096+00:00'
+  query: Alphabet capex 2025 actual 2026 guidance AI infrastructure capital expenditure
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.424109+00:00'
+  query: Google Gemini 3 latest model 2026 vs ChatGPT usage market share adoption
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.470149+00:00'
+  query: Google AI Overviews AI Mode search monetization impact query volume CPC clicks
+    2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.514263+00:00'
+  query: Alphabet GOOGL stock price valuation PE ratio market cap 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.560688+00:00'
+  query: Waymo weekly paid rides 2026 cities expansion robotaxi scale revenue
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.635800+00:00'
+  query: Alphabet dividend increase buyback authorization 2025 2026 shareholder return
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.717358+00:00'
+  query: Google TPU Ironwood 2026 custom AI chip Nvidia dependence Anthropic deal
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:31.808344+00:00'
+  query: Google Cloud backlog remaining performance obligation 2025 2026 AI revenue
+    growth
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T09:53:54.212116+00:00'
+  query: Alphabet GOOGL scope overview (covered by 4.5a earnings/antitrust/AI queries)
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T09:53:54.216002+00:00'
+  query: Alphabet company-event latest (covered by 4.5a Q2-2026 earnings/capex/dividend
+    queries)
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T10:01:37.979843+00:00'
+  query: Alphabet Q2 2026 earnings call transcript Sundar Pichai Anat Ashkenazi capex
+    AI monetization
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:01:38.064141+00:00'
+  query: Alphabet GOOGL analyst price target 2026 consensus estimate EPS revenue forward
+    PE buy sell
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:01:38.194210+00:00'
+  query: Alphabet GOOGL sell-side deep research AI search monetization capex ROI cloud
+    Morgan Stanley Goldman
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:01:38.334981+00:00'
+  query: DOJ Google search antitrust final remedy order text default agreement data
+    sharing Apple
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:01:38.433266+00:00'
+  query: cloud market share 2026 AWS Azure Google Cloud growth rate operating margin
+    comparison Q2
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:01:38.536871+00:00'
+  query: Waymo unit economics robotaxi cost per ride fleet safety driver profitability
+    2026
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:01:38.642728+00:00'
+  query: how incumbents defended against platform shift disruption search mobile transition
+    case study
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:02:30.387277+00:00'
+  query: Gemini monetization revenue subscription API Google One AI 2026 paid users
+    ARPU
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:02:30.564026+00:00'
+  query: Google AI Overviews AI Mode ad load CPC vs traditional blue links monetization
+    study 2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:33:11.808277+00:00'
+  query: Meta 2022 capex metaverse stock crash 2023 AI efficiency recovery lesson
+    investor
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:33:12.011302+00:00'
+  query: US v Microsoft antitrust remedy no breakup stock performance lesson tech
+    monopoly
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T10:34:05.698963+00:00'
+  query: scope Alphabet(00-prescan已覆盖)
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T10:34:05.706223+00:00'
+  query: company-event Alphabet Q2-2026(00-prescan已覆盖)
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T10:34:05.713353+00:00'
+  query: L4-K1 搜索广告增速/AI Mode货币化(今日deep-fetch已抓K1料)
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T10:34:05.720654+00:00'
+  query: L4-K2 Cloud增速+利润率/backlog(今日已抓K2料)
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T10:34:05.727884+00:00'
+  query: L4-K3 capex 2027/FCF(今日已抓K3料+Meta镜鉴)
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T10:34:05.735640+00:00'
+  query: L4-K4 ad-tech剥离/默认协议(今日已抓K4料+MSFT镜鉴)
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T10:34:05.743965+00:00'
+  query: L4-K5 Gemini货币化/份额(今日已抓K5料)
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T10:34:05.752407+00:00'
+  query: L4-K6 Waymo 100万单/单位经济(今日已抓K6料)
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T13:48:47.271969+00:00'
+  query: Alphabet Google Q2 2026 earnings revenue cloud capex free cash flow
+  triggered_by: 05-critic
+  n_results: 3
+  n_high: 0
+  n_mid: 1
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-23T16:35:16.540792+00:00'
+  query: Alphabet Q2 2026 8-K verification revenue cloud FCF capex actuals
+  triggered_by: 05-critic
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered

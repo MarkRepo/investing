@@ -1,0 +1,1820 @@
+slug: us-viking-vktx
+variant: opus4.8
+updated: '2026-07-22T08:50:36.802339+00:00'
+materials:
+- id: mat-f559f2
+  filename: 2026-07-21_viking-therapeutics-presents-data-from-its-13-week.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.375940+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 oral Phase 2 VENTURE data 2026 results'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2735 oral Phase 2 VENTURE data 2026 results
+    url: https://www.prnewswire.com/news-releases/viking-therapeutics-presents-data-from-its-13-week-phase-2-venture-oral-dosing-trial-of-vk2735-at-european-congress-on-obesity-eco-2026-302768959.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.374992+00:00'
+    stale_at: '2026-08-20T22:41:29.374992+00:00'
+    expire_at: '2026-10-19T22:41:29.374992+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fbb22b
+  filename: 2026-07-21_mixed-top-line-results-for-viking-s-oral-obesity-d.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.380346+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 oral Phase 2 VENTURE data 2026 results'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 oral Phase 2 VENTURE data 2026 results
+    url: https://www.ddw-online.com/mixed-top-line-results-for-vikings-oral-obesity-drug-36097-202508
+    domain: ddw-online.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.379405+00:00'
+    stale_at: '2026-08-20T22:41:29.379405+00:00'
+    expire_at: '2026-10-19T22:41:29.379405+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8555cd
+  filename: 2026-07-21_oral-glp-1-gip-dual-agonist-vk2735-achieves-up-to-.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.385460+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 oral Phase 2 VENTURE data 2026 results'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 oral Phase 2 VENTURE data 2026 results
+    url: https://www.appliedclinicaltrialsonline.com/view/oral-glp-1-gip-dual-agonist-vk2735-achieves-weight-loss-venture-trial
+    domain: appliedclinicaltrialsonline.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.384153+00:00'
+    stale_at: '2026-08-20T22:41:29.384153+00:00'
+    expire_at: '2026-10-19T22:41:29.384153+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-de4415
+  filename: 2026-07-21_vk2735-fda-approval-timeline-status-viking-therape.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.391900+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 subcutaneous VANQUISH Phase 3 enrollment
+    timeline 2027' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 subcutaneous VANQUISH Phase 3 enrollment timeline
+      2027
+    url: https://www.findhonestcare.com/metabolic-innovations/vk2735/fda-timeline
+    domain: findhonestcare.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.390320+00:00'
+    stale_at: '2026-08-20T22:41:29.390320+00:00'
+    expire_at: '2026-10-19T22:41:29.390320+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d2c3a8
+  filename: 2026-07-21_viking-therapeutics-announces-completion-of-enroll.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.397059+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 subcutaneous VANQUISH Phase 3 enrollment
+    timeline 2027' | query='Viking Therapeutics VK2735 maintenance study data 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2735 maintenance study data 2026
+    url: https://www.prnewswire.com/news-releases/viking-therapeutics-announces-completion-of-enrollment-in-maintenance-dosing-clinical-trial-of-vk2735-in-obesity-302655902.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.418889+00:00'
+    stale_at: '2026-08-20T22:41:29.418889+00:00'
+    expire_at: '2026-10-19T22:41:29.418889+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3f688b
+  filename: 2026-07-21_viking-therapeutics-completes-enrollment-for-phase.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.404754+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 subcutaneous VANQUISH Phase 3 enrollment
+    timeline 2027' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 subcutaneous VANQUISH Phase 3 enrollment timeline
+      2027
+    url: https://clival.com/news/viking-therapeutics-completes-enrollment-for-phase-3-vanquish-1-obesity-trial-of-vk2735
+    domain: clival.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.402482+00:00'
+    stale_at: '2026-08-20T22:41:29.402482+00:00'
+    expire_at: '2026-10-19T22:41:29.402482+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e59bb0
+  filename: 2026-07-21_vk2735-oral-viking-therap.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.413917+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 maintenance study data 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 maintenance study data 2026
+    url: https://delta.larvol.com/Products?ProductId=17b1921d-1232-420c-b467-e51d8a0406e6
+    domain: delta.larvol.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.411339+00:00'
+    stale_at: '2026-08-20T22:41:29.411339+00:00'
+    expire_at: '2026-10-19T22:41:29.411339+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-666196
+  filename: 2026-07-21_earnings-call-transcript-viking-therapeutics-q1-20.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.432704+00:00'
+  processed: false
+  notes: query='Viking Therapeutics cash position runway 2026 10-Q quarterly' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics cash position runway 2026 10-Q quarterly
+    url: https://www.investing.com/news/transcripts/earnings-call-transcript-viking-therapeutics-q1-2026-sees-widened-net-loss-93CH-4676743
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.429687+00:00'
+    stale_at: '2026-08-20T22:41:29.429687+00:00'
+    expire_at: '2026-10-19T22:41:29.429687+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f0fe96
+  filename: 2026-07-21_viking-therapeutics-reports-first-quarter-2026-fin.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.441712+00:00'
+  processed: false
+  notes: query='Viking Therapeutics cash position runway 2026 10-Q quarterly'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics cash position runway 2026 10-Q quarterly
+    url: https://www.prnewswire.com/news-releases/viking-therapeutics-reports-first-quarter-2026-financial-results-and-provides-corporate-update-302757850.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.438232+00:00'
+    stale_at: '2026-08-20T22:41:29.438232+00:00'
+    expire_at: '2026-10-19T22:41:29.438232+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1ad5ae
+  filename: 2026-07-21_viking-therapeutics-market-cap-2014-2026-vktx-macr.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.455350+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VKTX market cap stock price 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VKTX market cap stock price 2026
+    url: https://www.macrotrends.net/stocks/charts/VKTX/viking-therapeutics/market-cap
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.451265+00:00'
+    stale_at: '2026-08-20T22:41:29.451265+00:00'
+    expire_at: '2026-10-19T22:41:29.451265+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-95f77a
+  filename: 2026-07-21_vktx-stock-price-viking-therapeutics-inc-stock-quo.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.468224+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VKTX market cap stock price 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VKTX market cap stock price 2026
+    url: https://www.marketwatch.com/investing/stock/vktx
+    domain: marketwatch.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.462346+00:00'
+    stale_at: '2026-08-20T22:41:29.462346+00:00'
+    expire_at: '2026-10-19T22:41:29.462346+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-603080
+  filename: 2026-07-21_3-potential-takeover-targets-in-obesity.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.485454+00:00'
+  processed: false
+  notes: query='Viking Therapeutics acquisition takeover M&A rumor 2026 Lilly Pfizer'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics acquisition takeover M&A rumor 2026 Lilly Pfizer
+    url: https://www.pharmavoice.com/news/3-potential-takeover-targets-obesity-lilly-viking-kailera-structure/822173
+    domain: pharmavoice.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.479592+00:00'
+    stale_at: '2026-08-20T22:41:29.479592+00:00'
+    expire_at: '2026-10-19T22:41:29.479592+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-efa5df
+  filename: 2026-07-21_eli-lilly-considering-viking-therapeutics-acquisit.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.501228+00:00'
+  processed: false
+  notes: query='Viking Therapeutics acquisition takeover M&A rumor 2026 Lilly Pfizer'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics acquisition takeover M&A rumor 2026 Lilly Pfizer
+    url: https://www.benzinga.com/markets/equities/25/08/47201502/eli-lilly-considering-viking-therapeutics-acquisition-expert-says-theyre-setting-up-for-something-big-as-lly-issues-40-year-bond
+    domain: benzinga.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.495810+00:00'
+    stale_at: '2026-08-20T22:41:29.495810+00:00'
+    expire_at: '2026-10-19T22:41:29.495810+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e14b87
+  filename: 2026-07-21_fda-approves-lilly-s-foundayo-orforglipron-the-onl.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.522508+00:00'
+  processed: false
+  notes: query='orforglipron FDA approval submission 2026 Eli Lilly obesity oral'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: orforglipron FDA approval submission 2026 Eli Lilly obesity oral
+    url: https://investor.lilly.com/news-releases/news-release-details/fda-approves-lillys-foundayotm-orforglipron-only-glp-1-pill
+    domain: investor.lilly.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.554702+00:00'
+    stale_at: '2026-08-20T22:41:29.554702+00:00'
+    expire_at: '2026-10-19T22:41:29.554702+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-34420a
+  filename: 2026-07-21_lilly-chasing-novo-expects-second-quarter-fda-deci.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.541932+00:00'
+  processed: false
+  notes: query='orforglipron FDA approval submission 2026 Eli Lilly obesity oral'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: orforglipron FDA approval submission 2026 Eli Lilly obesity oral
+    url: https://www.biopharmadive.com/news/lilly-obesity-pill-orforglipron-fda-decision-dtc-sales/809598
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.535655+00:00'
+    stale_at: '2026-08-20T22:41:29.535655+00:00'
+    expire_at: '2026-10-19T22:41:29.535655+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3e8afc
+  filename: 2026-07-21_novo-nordisk-ramps-up-obesity-fight-advances-amycr.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.579047+00:00'
+  processed: false
+  notes: query='Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data
+    url: https://www.clinicaltrialsarena.com/news/novo-nordisk-obesity-drug-phase-iii-trial-advance
+    domain: clinicaltrialsarena.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.573237+00:00'
+    stale_at: '2026-08-20T22:41:29.573237+00:00'
+    expire_at: '2026-10-19T22:41:29.573237+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-43516d
+  filename: 2026-07-21_novo-s-glp-1-amylin-dual-agonist-amycretin-to-ente.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.598013+00:00'
+  processed: false
+  notes: query='Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data
+    url: https://www.patientcareonline.com/view/novo-s-glp-1-amylin-dual-agonist-amycretin-to-enter-late-stage-trials-for-obesity
+    domain: patientcareonline.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.591418+00:00'
+    stale_at: '2026-08-20T22:41:29.591418+00:00'
+    expire_at: '2026-10-19T22:41:29.591418+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f91644
+  filename: 2026-07-21_novo-nordisk-advances-cardiometabolic-pipeline-wit.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.615152+00:00'
+  processed: false
+  notes: query='Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data
+    url: https://www.prnewswire.com/news-releases/novo-nordisk-advances-cardiometabolic-pipeline-with-new-data-featuring-cagrisema-and-zenagamtide-at-the-american-diabetes-associations-2026-scientific-sessions-302783110.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.608646+00:00'
+    stale_at: '2026-08-20T22:41:29.608646+00:00'
+    expire_at: '2026-10-19T22:41:29.608646+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-240439
+  filename: 2026-07-21_novo-leans-on-cagrisema-s-safety-as-amycretin-move.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.635988+00:00'
+  processed: false
+  notes: query='Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data
+    url: https://www.biospace.com/drug-development/novo-leans-on-cagrisemas-safety-as-amycretin-moves-forward-to-phase-iii
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.628242+00:00'
+    stale_at: '2026-08-20T22:41:29.628242+00:00'
+    expire_at: '2026-10-19T22:41:29.628242+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6df97d
+  filename: 2026-07-21_novo-nordisk-plots-phase-3-trials-for-next-gen-obe.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.658550+00:00'
+  processed: false
+  notes: query='Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data
+    url: https://www.fiercebiotech.com/biotech/novo-nordisk-plots-phase-3-trials-next-gen-obesity-asset-amycretin
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.650610+00:00'
+    stale_at: '2026-08-20T22:41:29.650610+00:00'
+    expire_at: '2026-10-19T22:41:29.650610+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9c5233
+  filename: 2026-07-21_amgen-s-late-stage-obesity-trials-are-expected-to-.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.681430+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 obesity 2026 data'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Amgen MariTide Phase 3 obesity 2026 data
+    url: https://www.fiercebiotech.com/biotech/amgen-enters-maritime-launching-2-late-stage-obesity-trials-maritide
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.673689+00:00'
+    stale_at: '2026-08-20T22:41:29.673689+00:00'
+    expire_at: '2026-10-19T22:41:29.673689+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0ab2fe
+  filename: 2026-07-21_jpm26-amgen-touts-maritide-s-weight-loss-t2d-poten.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.705164+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 obesity 2026 data' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Amgen MariTide Phase 3 obesity 2026 data
+    url: https://www.clinicaltrialsarena.com/news/jpm26-amgen-maritide-obesity-t2d-phase-ii
+    domain: clinicaltrialsarena.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.696983+00:00'
+    stale_at: '2026-08-20T22:41:29.696983+00:00'
+    expire_at: '2026-10-19T22:41:29.696983+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-06ab7b
+  filename: 2026-07-21_amgen-says-maritide-helped-trial-patients-maintain.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.727413+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 obesity 2026 data'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Amgen MariTide Phase 3 obesity 2026 data
+    url: https://www.reuters.com/business/healthcare-pharmaceuticals/amgen-says-maritide-helped-trial-patients-maintain-weight-loss-2026-01-13
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.719094+00:00'
+    stale_at: '2026-08-20T22:41:29.719094+00:00'
+    expire_at: '2026-10-19T22:41:29.719094+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1457eb
+  filename: 2026-07-21_structure-therapeutics-reports-positive-topline-da.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.753812+00:00'
+  processed: false
+  notes: query='Structure Therapeutics aleniglipron GSBR-1290 oral GLP-1 2026 data'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Structure Therapeutics aleniglipron GSBR-1290 oral GLP-1 2026 data
+    url: https://ir.structuretx.com/news-releases/news-release-details/structure-therapeutics-reports-positive-topline-data-phase-2
+    domain: ir.structuretx.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.744508+00:00'
+    stale_at: '2026-08-20T22:41:29.744508+00:00'
+    expire_at: '2026-10-19T22:41:29.744508+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-65bf3b
+  filename: 2026-07-21_structure-therapeutics-oral-glp-1-pill-aleniglipro.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.779509+00:00'
+  processed: false
+  notes: query='Structure Therapeutics aleniglipron GSBR-1290 oral GLP-1 2026 data'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Structure Therapeutics aleniglipron GSBR-1290 oral GLP-1 2026 data
+    url: https://www.alphaspread.com/market-news/product-launches/structure-therapeutics-oral-glp-1-pill-aleniglipron-delivers-16-mean-weight-loss-in-phase-2-access-ii-trial
+    domain: alphaspread.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.770500+00:00'
+    stale_at: '2026-08-20T22:41:29.770500+00:00'
+    expire_at: '2026-10-19T22:41:29.770500+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e26a97
+  filename: 2026-07-21_oral-small-molecule-glp-1-receptor-agonist-alenigl.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.805697+00:00'
+  processed: false
+  notes: query='Structure Therapeutics aleniglipron GSBR-1290 oral GLP-1 2026 data'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Structure Therapeutics aleniglipron GSBR-1290 oral GLP-1 2026 data
+    url: https://www.nature.com/articles/s41591-026-04476-6
+    domain: nature.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.795170+00:00'
+    stale_at: '2026-08-20T22:41:29.795170+00:00'
+    expire_at: '2026-10-19T22:41:29.795170+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ad0053
+  filename: 2026-07-21_structure-s-glp-1-pill-shows-best-in-class-potenti.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.830825+00:00'
+  processed: false
+  notes: query='Structure Therapeutics aleniglipron GSBR-1290 oral GLP-1 2026 data'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Structure Therapeutics aleniglipron GSBR-1290 oral GLP-1 2026 data
+    url: https://www.biopharmadive.com/news/structure-glp1-pill-aleniglipron-study-results-obesity/814786
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.821232+00:00'
+    stale_at: '2026-08-20T22:41:29.821232+00:00'
+    expire_at: '2026-10-19T22:41:29.821232+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9477b4
+  filename: 2026-07-21_viking-therapeutics-inc.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.860431+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2809 MASH partnership licensing 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2809 MASH partnership licensing 2026
+    url: https://www.sec.gov/Archives/edgar/data/1607678/000119312526137931/vktx-2026-04-01-ars.pdf
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.850183+00:00'
+    stale_at: '2026-08-20T22:41:29.850183+00:00'
+    expire_at: '2026-10-19T22:41:29.850183+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7ce156
+  filename: 2026-07-21_viking-therapeutics-presents-results-from-phase-2b.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.887296+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2809 MASH partnership licensing 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2809 MASH partnership licensing 2026
+    url: https://www.prnewswire.com/news-releases/viking-therapeutics-presents-results-from-phase-2b-voyage-study-of-vk2809-in-biopsy-confirmed-nashmash-at-the-75th-liver-meeting-2024-302310271.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.877020+00:00'
+    stale_at: '2026-08-20T22:41:29.877020+00:00'
+    expire_at: '2026-10-19T22:41:29.877020+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-da4a72
+  filename: 2026-07-21_viking-therapeutics-to-present-data-from-phase-2b-.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.915388+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2809 MASH partnership licensing 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2809 MASH partnership licensing 2026
+    url: https://www.prnewswire.com/news-releases/viking-therapeutics-to-present-data-from-phase-2b-voyage-study-of-vk2809-in-patients-with-biopsy-confirmed-nashmash-at-the-75th-liver-meeting-2024-302302102.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.904805+00:00'
+    stale_at: '2026-08-20T22:41:29.904805+00:00'
+    expire_at: '2026-10-19T22:41:29.904805+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-683eb5
+  filename: 2026-07-21_viking-pushes-ahead-in-obesity-race-phase-3-moment.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.950614+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 oral Phase 3 start Q4 2026 obesity' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 oral Phase 3 start Q4 2026 obesity
+    url: https://clival.com/news/viking-pushes-ahead-in-obesity-race-phase-3-momentum-builds-for-vk2735
+    domain: clival.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:41:29.937995+00:00'
+    stale_at: '2026-08-20T22:41:29.937995+00:00'
+    expire_at: '2026-10-19T22:41:29.937995+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ccfc23
+  filename: 2026-07-21_viking-outlines-52-week-vanquish-extension-and-pla.md
+  source_type: web-search
+  added: '2026-07-21T22:41:29.982999+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 oral Phase 3 start Q4 2026 obesity'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2735 oral Phase 3 start Q4 2026 obesity
+    url: https://seekingalpha.com/news/4582487-viking-outlines-52-week-vanquish-extension-and-plans-oral-vk2735-phase-iii-start-in-q4-2026
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:41:29.970623+00:00'
+    stale_at: '2026-08-20T22:41:29.970623+00:00'
+    expire_at: '2026-10-19T22:41:29.970623+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-af5671
+  filename: 2026_VKTX_10-Q_2026-04-30.htm
+  source_type: quarterly-report
+  added: '2026-07-21T22:48:37.588550+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Viking Therapeutics, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-66d570
+  filename: sec/2026_VKTX_10-Q_2026-04-30/item_1_financial.md
+  source_type: sec-section
+  added: '2026-07-21T22:48:37.763784+00:00'
+  processed: true
+  notes: split from 2026_VKTX_10-Q_2026-04-30.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-af5671
+  sec_section: item_1_financial
+- id: mat-4c75ab
+  filename: sec/2026_VKTX_10-Q_2026-04-30/item_2_mda.md
+  source_type: sec-section
+  added: '2026-07-21T22:48:37.782635+00:00'
+  processed: true
+  notes: split from 2026_VKTX_10-Q_2026-04-30.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-af5671
+  sec_section: item_2_mda
+- id: mat-062e3d
+  filename: 2025_VKTX_10-K_2026-02-11.htm
+  source_type: annual-report
+  added: '2026-07-21T22:48:40.011630+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Viking Therapeutics, Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-0ca4c4
+  filename: sec/2025_VKTX_10-K_2026-02-11/item_1_business.md
+  source_type: sec-section
+  added: '2026-07-21T22:48:40.226598+00:00'
+  processed: true
+  notes: split from 2025_VKTX_10-K_2026-02-11.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-062e3d
+  sec_section: item_1_business
+- id: mat-1db451
+  filename: sec/2025_VKTX_10-K_2026-02-11/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-21T22:48:40.250133+00:00'
+  processed: true
+  notes: split from 2025_VKTX_10-K_2026-02-11.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-062e3d
+  sec_section: item_1a_risk
+- id: mat-1fbdca
+  filename: sec/2025_VKTX_10-K_2026-02-11/item_7_mda.md
+  source_type: sec-section
+  added: '2026-07-21T22:48:40.269896+00:00'
+  processed: true
+  notes: split from 2025_VKTX_10-K_2026-02-11.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-062e3d
+  sec_section: item_7_mda
+- id: mat-d2e306
+  filename: sec/2025_VKTX_10-K_2026-02-11/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-21T22:48:40.290065+00:00'
+  processed: true
+  notes: split from 2025_VKTX_10-K_2026-02-11.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-062e3d
+  sec_section: item_7a_quant_risk
+- id: mat-a5af1d
+  filename: sec/2025_VKTX_10-K_2026-02-11/item_8_financial.md
+  source_type: sec-section
+  added: '2026-07-21T22:48:40.310850+00:00'
+  processed: true
+  notes: split from 2025_VKTX_10-K_2026-02-11.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-062e3d
+  sec_section: item_8_financial
+- id: mat-d52849
+  filename: 2026-07-21_9-promising-obesity-drugs-set-to-launch-by-2030.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.047675+00:00'
+  processed: true
+  notes: query='obesity pipeline 2026 2027 amycretin MariTide retatrutide Phase 3
+    readout timeline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: obesity pipeline 2026 2027 amycretin MariTide retatrutide Phase 3 readout
+      timeline
+    url: https://www.delveinsight.com/blog/obesity-drugs-launch
+    domain: delveinsight.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.032886+00:00'
+    stale_at: '2026-08-20T22:50:44.032886+00:00'
+    expire_at: '2026-10-19T22:50:44.032886+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-2917b4
+  filename: 2026-07-21_novo-nordisk-plans-phase-3-trials-of-oral-injectab.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.090602+00:00'
+  processed: true
+  notes: query='obesity pipeline 2026 2027 amycretin MariTide retatrutide Phase 3
+    readout timeline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: obesity pipeline 2026 2027 amycretin MariTide retatrutide Phase 3 readout
+      timeline
+    url: https://endpoints.news/novo-nordisk-plans-phase-3-trials-of-oral-injectable-amycretin/
+    domain: endpoints.news
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.075111+00:00'
+    stale_at: '2026-08-20T22:50:44.075111+00:00'
+    expire_at: '2026-10-19T22:50:44.075111+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5fd6ad
+  filename: 2026-07-21_vktx-def14a-20170523-htm.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.137474+00:00'
+  processed: true
+  notes: query='Viking Therapeutics Brian Lian equity offering financing history capital
+    strategy'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics Brian Lian equity offering financing history capital
+      strategy
+    url: https://www.sec.gov/Archives/edgar/data/1607678/000156459017006213/vktx-def14a_20170523.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:50:44.121369+00:00'
+    stale_at: '2026-08-20T22:50:44.121369+00:00'
+    expire_at: '2026-10-19T22:50:44.121369+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-51d247
+  filename: 2026-07-21_pfizer-s-10bn-acquisition-of-metsera-m-a-watch.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.186538+00:00'
+  processed: true
+  notes: query='Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+    2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+      2025
+    url: https://mnawatch.com/financial-reports/pfizers-10bn-acquisition-of-metsera
+    domain: mnawatch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.170478+00:00'
+    stale_at: '2026-08-20T22:50:44.170478+00:00'
+    expire_at: '2026-10-19T22:50:44.170478+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ca8e69
+  filename: 2026-07-21_pfizer-to-acquire-obesity-focused-metsera-in-4-9b-.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.232920+00:00'
+  processed: true
+  notes: query='Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+    2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+      2025
+    url: https://www.statnews.com/2025/09/22/pfizer-metsera-acquisition-obesity-weight-loss
+    domain: statnews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.217036+00:00'
+    stale_at: '2026-08-20T22:50:44.217036+00:00'
+    expire_at: '2026-10-19T22:50:44.217036+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-864930
+  filename: 2026-07-21_metsera-accepts-pfizer-s-us-10-billion-bid-in-ongo.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.281124+00:00'
+  processed: true
+  notes: query='Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+    2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+      2025
+    url: https://www.businesstimes.com.sg/companies-markets/metsera-accepts-pfizers-us10-billion-bid-ongoing-m-battle
+    domain: businesstimes.com.sg
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.264278+00:00'
+    stale_at: '2026-08-20T22:50:44.264278+00:00'
+    expire_at: '2026-10-19T22:50:44.264278+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b9f518
+  filename: 2026-07-21_after-internal-setbacks-pfizer-buys-obesity-player.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.331861+00:00'
+  processed: true
+  notes: query='Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+    2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+      2025
+    url: https://pharmaphorum.com/news/after-internal-setbacks-pfizer-buys-obesity-player-metsera
+    domain: pharmaphorum.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.315036+00:00'
+    stale_at: '2026-08-20T22:50:44.315036+00:00'
+    expire_at: '2026-10-19T22:50:44.315036+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-17967a
+  filename: 2026-07-21_breakingviews---pfizer-s-obesity-win-is-new-formul.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.379552+00:00'
+  processed: true
+  notes: query='Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+    2025'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: Pfizer Metsera acquisition deal terms price obesity biotech M&A premium
+      2025
+    url: https://www.reuters.com/commentary/breakingviews/pfizers-obesity-win-is-new-formula-pharma-ma-2025-11-10
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:50:44.362597+00:00'
+    stale_at: '2026-08-20T22:50:44.362597+00:00'
+    expire_at: '2026-10-19T22:50:44.362597+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-628245
+  filename: 2026-07-21_novo-nordisk-stock-crashes-after-cagrisema-misses-.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.432064+00:00'
+  processed: true
+  notes: query='obesity drug Phase 3 failure disappointment CagriSema danuglipron
+    biotech pivotal miss stock crash'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: obesity drug Phase 3 failure disappointment CagriSema danuglipron biotech
+      pivotal miss stock crash
+    url: https://www.fiercebiotech.com/biotech/novo-nordisk-stock-crashes-after-cagrisema-misses-phase-3-weight-loss-goal
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:50:44.414478+00:00'
+    stale_at: '2026-08-20T22:50:44.414478+00:00'
+    expire_at: '2026-10-19T22:50:44.414478+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3020e6
+  filename: 2026-07-21_novo-nordisk-stock-falls-as-weight-loss-drug-fails.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.483671+00:00'
+  processed: true
+  notes: query='obesity drug Phase 3 failure disappointment CagriSema danuglipron
+    biotech pivotal miss stock crash' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: obesity drug Phase 3 failure disappointment CagriSema danuglipron biotech
+      pivotal miss stock crash
+    url: https://www.cnbc.com/2026/02/23/novo-nordisk-stock-cagrisema-trial-fails-weight-loss.html
+    domain: cnbc.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.466011+00:00'
+    stale_at: '2026-08-20T22:50:44.466011+00:00'
+    expire_at: '2026-10-19T22:50:44.466011+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-395f13
+  filename: 2026-07-21_novo-nordisk-shares-plunge-after-cagrisema-obesity.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.534400+00:00'
+  processed: true
+  notes: query='obesity drug Phase 3 failure disappointment CagriSema danuglipron
+    biotech pivotal miss stock crash'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: obesity drug Phase 3 failure disappointment CagriSema danuglipron biotech
+      pivotal miss stock crash
+    url: https://www.reuters.com/business/healthcare-pharmaceuticals/novo-nordisks-next-gen-obesity-drug-cagrisema-achieves-lower-weight-loss-than-2024-12-20/
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:50:44.516200+00:00'
+    stale_at: '2026-08-20T22:50:44.516200+00:00'
+    expire_at: '2026-10-19T22:50:44.516200+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0281c5
+  filename: 2026-07-21_pfizer-s-weight-loss-drug-won-t-enter-a-phase-3-tr.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.587199+00:00'
+  processed: true
+  notes: query='obesity drug Phase 3 failure disappointment CagriSema danuglipron
+    biotech pivotal miss stock crash' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: obesity drug Phase 3 failure disappointment CagriSema danuglipron biotech
+      pivotal miss stock crash
+    url: https://www.barrons.com/articles/pfizer-stock-obesity-trial-c0b2a5a5
+    domain: barrons.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.568617+00:00'
+    stale_at: '2026-08-20T22:50:44.568617+00:00'
+    expire_at: '2026-10-19T22:50:44.568617+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-91f322
+  filename: 2026-07-21_viking-therapeutics-reports-third-quarter-2025-fin.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.650704+00:00'
+  processed: true
+  notes: query='Viking Therapeutics VK2735 maintenance dosing trial design weight
+    regain results 2026'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2735 maintenance dosing trial design weight regain
+      results 2026
+    url: https://www.sec.gov/Archives/edgar/data/1607678/000119312525246775/vktx-ex99_1.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:50:44.629696+00:00'
+    stale_at: '2026-08-20T22:50:44.629696+00:00'
+    expire_at: '2026-10-19T22:50:44.629696+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a7e9c0
+  filename: 2026-07-21_viking-therapeutics-announces-initiation-of-vk2735.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.710088+00:00'
+  processed: true
+  notes: query='Viking Therapeutics VK2735 maintenance dosing trial design weight
+    regain results 2026'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2735 maintenance dosing trial design weight regain
+      results 2026
+    url: https://www.prnewswire.com/news-releases/viking-therapeutics-announces-initiation-of-vk2735-maintenance-dosing-clinical-trial-in-patients-with-obesity-302589652.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T22:50:44.689559+00:00'
+    stale_at: '2026-08-20T22:50:44.689559+00:00'
+    expire_at: '2026-10-19T22:50:44.689559+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6dacd0
+  filename: 2026-07-21_viking-therapeutics-inc-target-price-consensus-and.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.771242+00:00'
+  processed: true
+  notes: query='Viking Therapeutics VK2735 peak sales estimate analyst price target
+    model obesity' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 peak sales estimate analyst price target model
+      obesity
+    url: https://www.marketscreener.com/quote/stock/VIKING-THERAPEUTICS-INC-17937582/consensus
+    domain: marketscreener.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.750753+00:00'
+    stale_at: '2026-08-20T22:50:44.750753+00:00'
+    expire_at: '2026-10-19T22:50:44.750753+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-696f8c
+  filename: 2026-07-21_viking-therapeutics-vktx-stock-price-overview.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.830524+00:00'
+  processed: true
+  notes: query='Viking Therapeutics VK2735 peak sales estimate analyst price target
+    model obesity' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 peak sales estimate analyst price target model
+      obesity
+    url: https://stockanalysis.com/stocks/vktx
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.809312+00:00'
+    stale_at: '2026-08-20T22:50:44.809312+00:00'
+    expire_at: '2026-10-19T22:50:44.809312+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-26f796
+  filename: 2026-07-21_viking-therapeutics-stock-jumps-11-after-obesity-d.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.893274+00:00'
+  processed: true
+  notes: query='Viking Therapeutics VK2735 peak sales estimate analyst price target
+    model obesity' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 peak sales estimate analyst price target model
+      obesity
+    url: https://www.tikr.com/blog/viking-therapeutics-stock-jumps-11-after-obesity-drug-update-analysts-see-93-target
+    domain: tikr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.871919+00:00'
+    stale_at: '2026-08-20T22:50:44.871919+00:00'
+    expire_at: '2026-10-19T22:50:44.871919+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-892218
+  filename: 2026-07-21_oral-semaglutide-demonstrates-greater-weight-loss-.md
+  source_type: web-search
+  added: '2026-07-21T22:50:44.961158+00:00'
+  processed: true
+  notes: query='VK2735 oral vs orforglipron aleniglipron weight loss tolerability
+    discontinuation comparison' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: VK2735 oral vs orforglipron aleniglipron weight loss tolerability discontinuation
+      comparison
+    url: https://www.pharmacytimes.com/view/oral-semaglutide-demonstrates-greater-weight-loss-versus-orforglipron-in-indirect-comparison
+    domain: pharmacytimes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.939632+00:00'
+    stale_at: '2026-08-20T22:50:44.939632+00:00'
+    expire_at: '2026-10-19T22:50:44.939632+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b3a2cc
+  filename: 2026-07-21_oral-obesity-candidates-disappoint-with-novo-emerg.md
+  source_type: web-search
+  added: '2026-07-21T22:50:45.020514+00:00'
+  processed: true
+  notes: query='VK2735 oral vs orforglipron aleniglipron weight loss tolerability
+    discontinuation comparison' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: VK2735 oral vs orforglipron aleniglipron weight loss tolerability discontinuation
+      comparison
+    url: https://www.biospace.com/drug-development/oral-obesity-candidates-disappoint-with-novo-emerging-as-leader-of-the-pack
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:44.999258+00:00'
+    stale_at: '2026-08-20T22:50:44.999258+00:00'
+    expire_at: '2026-10-19T22:50:44.999258+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6737dd
+  filename: 2026-07-21_aleniglipron-vs-orforglipron-oral-glp-1-comparison.md
+  source_type: web-search
+  added: '2026-07-21T22:50:45.082787+00:00'
+  processed: true
+  notes: query='VK2735 oral vs orforglipron aleniglipron weight loss tolerability
+    discontinuation comparison' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: VK2735 oral vs orforglipron aleniglipron weight loss tolerability discontinuation
+      comparison
+    url: https://www.peptideprotocolwiki.com/blog/comparisons/aleniglipron-vs-orforglipron
+    domain: peptideprotocolwiki.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T22:50:45.059609+00:00'
+    stale_at: '2026-08-20T22:50:45.059609+00:00'
+    expire_at: '2026-10-19T22:50:45.059609+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-40e89e
+  filename: 2026-07-22_clinical-development-success-rates-2011-2020-bio-i.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.028064+00:00'
+  processed: true
+  notes: query='GLP-1/GIP obesity Ph2→Ph3 clinical success base rate'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: GLP-1/GIP obesity Ph2→Ph3 clinical success base rate
+    url: https://go.bio.org/rs/490-EHZ-999/images/ClinicalDevelopmentSuccessRates2011_2020.pdf
+    domain: go.bio.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:32.005329+00:00'
+    stale_at: '2026-08-21T08:50:32.005329+00:00'
+    expire_at: '2026-10-20T08:50:32.005329+00:00'
+    triggered_by: 05-critic
+- id: mat-312c41
+  filename: 2026-07-22_estimation-of-clinical-trial-success-rates-wong-si.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.100177+00:00'
+  processed: true
+  notes: query='GLP-1/GIP obesity Ph2→Ph3 clinical success base rate'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: GLP-1/GIP obesity Ph2→Ph3 clinical success base rate
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6409418/
+    domain: pmc.ncbi.nlm.nih.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:32.076320+00:00'
+    stale_at: '2026-08-21T08:50:32.076320+00:00'
+    expire_at: '2026-10-20T08:50:32.076320+00:00'
+    triggered_by: 05-critic
+- id: mat-8b056e
+  filename: 2026-07-22_clinical-development-success-rates-for-investigati.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.172088+00:00'
+  processed: true
+  notes: query='GLP-1/GIP obesity Ph2→Ph3 clinical success base rate'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.85
+  search_meta:
+    query: GLP-1/GIP obesity Ph2→Ph3 clinical success base rate
+    url: https://diyhpl.us/~nmz787/pdf/Clinical_development_success_rates_for_investigational_drugs.pdf
+    domain: diyhpl.us
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:32.147678+00:00'
+    stale_at: '2026-08-21T08:50:32.147678+00:00'
+    expire_at: '2026-10-20T08:50:32.147678+00:00'
+    triggered_by: 05-critic
+- id: mat-6007dc
+  filename: 2026-07-22_why-are-clinical-development-success-rates-falling.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.247956+00:00'
+  processed: true
+  notes: query='GLP-1/GIP obesity Ph2→Ph3 clinical success base rate'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.8
+  search_meta:
+    query: GLP-1/GIP obesity Ph2→Ph3 clinical success base rate
+    url: https://www.norstella.com/insight/why-are-clinical-development-success-rates-falling/
+    domain: norstella.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:32.222919+00:00'
+    stale_at: '2026-08-21T08:50:32.222919+00:00'
+    expire_at: '2026-10-20T08:50:32.222919+00:00'
+    triggered_by: 05-critic
+- id: mat-2920e9
+  filename: 2026-07-22_lilly-s-oral-glp-1-orforglipron-successful-in-thir.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.328796+00:00'
+  processed: true
+  notes: query='GLP-1/GIP obesity Ph2→Ph3 clinical success base rate' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.75
+  search_meta:
+    query: GLP-1/GIP obesity Ph2→Ph3 clinical success base rate
+    url: https://www.prnewswire.com/news-releases/lillys-oral-glp-1-orforglipron-is-successful-in-third-phase-3-trial-triggering-global-regulatory-submissions-this-year-for-the-treatment-of-obesity-302538028.html
+    domain: prnewswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:32.304334+00:00'
+    stale_at: '2026-08-21T08:50:32.304334+00:00'
+    expire_at: '2026-10-20T08:50:32.304334+00:00'
+    triggered_by: 05-critic
+- id: mat-6d036c
+  filename: 2026-07-22_phase-iii-synchronize-1-obesity-trial-met-primary-.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.403663+00:00'
+  processed: true
+  notes: query='GLP-1/GIP obesity Ph2→Ph3 clinical success base rate' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: GLP-1/GIP obesity Ph2→Ph3 clinical success base rate
+    url: https://www.boehringer-ingelheim.com/us/human-health/metabolic-diseases/results-phase-iii-synchronize-1-obesity-trial
+    domain: boehringer-ingelheim.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:32.378647+00:00'
+    stale_at: '2026-08-21T08:50:32.378647+00:00'
+    expire_at: '2026-10-20T08:50:32.378647+00:00'
+    triggered_by: 05-critic
+- id: mat-dc6400
+  filename: 2026-07-22_pfizer-dips-on-new-data-for-obesity-drug-acquired-.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.728653+00:00'
+  processed: true
+  notes: query='obesity biotech M&A deal-size distribution / $10B tail rate'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: obesity biotech M&A deal-size distribution / $10B tail rate
+    url: https://www.biopharmadive.com/news/pfizer-obesity-metsera-phase-2-results-GLP1-monthly-shot/811201/
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:32.702681+00:00'
+    stale_at: '2026-08-21T08:50:32.702681+00:00'
+    expire_at: '2026-10-20T08:50:32.702681+00:00'
+    triggered_by: 05-critic
+- id: mat-5fabb4
+  filename: 2026-07-22_pfizer-s-acquisition-of-metsera-bucks-recent-trend.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.803960+00:00'
+  processed: true
+  notes: query='obesity biotech M&A deal-size distribution / $10B tail rate'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: obesity biotech M&A deal-size distribution / $10B tail rate
+    url: https://insights.citeline.com/scrip/business/deals/pfizers-acquisition-of-metsera-bucks-the-recent-trend-for-obesity-deals-OSD4OAGRWVBWVJVPIED2RNMRVI/
+    domain: insights.citeline.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:32.778009+00:00'
+    stale_at: '2026-08-21T08:50:32.778009+00:00'
+    expire_at: '2026-10-20T08:50:32.778009+00:00'
+    triggered_by: 05-critic
+- id: mat-06f26d
+  filename: 2026-07-22_obesity-drug-m-a-shows-yo-yo-effect-ion-analytics-.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.880688+00:00'
+  processed: true
+  notes: query='obesity biotech M&A deal-size distribution / $10B tail rate'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.8
+  search_meta:
+    query: obesity biotech M&A deal-size distribution / $10B tail rate
+    url: https://ionanalytics.com/insights/mergermarket/obesity-drug-ma-shows-yo-yo-effect-as-acquirers-wait-for-the-next-generation-of-medicines/
+    domain: ionanalytics.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:32.853850+00:00'
+    stale_at: '2026-08-21T08:50:32.853850+00:00'
+    expire_at: '2026-10-20T08:50:32.853850+00:00'
+    triggered_by: 05-critic
+- id: mat-5ab013
+  filename: 2026-07-22_lilly-to-buy-versanis-up-to-1-9b-biopharma-dive.md
+  source_type: web-search
+  added: '2026-07-22T08:50:32.958979+00:00'
+  processed: true
+  notes: query='obesity biotech M&A deal-size distribution / $10B tail rate'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: obesity biotech M&A deal-size distribution / $10B tail rate
+    url: https://www.biopharmadive.com/news/lilly-versanis-obesity-drug-acquire-deal/687539/
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:32.932402+00:00'
+    stale_at: '2026-08-21T08:50:32.932402+00:00'
+    expire_at: '2026-10-20T08:50:32.932402+00:00'
+    triggered_by: 05-critic
+- id: mat-b09be2
+  filename: 2026-07-22_biggest-obesity-deals-of-2025-roche-carmot-2-7-3-1.md
+  source_type: web-search
+  added: '2026-07-22T08:50:33.038714+00:00'
+  processed: true
+  notes: query='obesity biotech M&A deal-size distribution / $10B tail rate'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.8
+  search_meta:
+    query: obesity biotech M&A deal-size distribution / $10B tail rate
+    url: https://www.pharmavoice.com/news/obesity-deals-roche-lilly-novo-ozempic-mounjaro-zealand/750079/
+    domain: pharmavoice.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:33.010110+00:00'
+    stale_at: '2026-08-21T08:50:33.010110+00:00'
+    expire_at: '2026-10-20T08:50:33.010110+00:00'
+    triggered_by: 05-critic
+- id: mat-01a998
+  filename: 2026-07-22_top-10-biopharma-m-a-deals-of-2025-akero-novo-5-2b.md
+  source_type: web-search
+  added: '2026-07-22T08:50:33.118673+00:00'
+  processed: true
+  notes: query='obesity biotech M&A deal-size distribution / $10B tail rate' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.75
+  search_meta:
+    query: obesity biotech M&A deal-size distribution / $10B tail rate
+    url: https://www.fiercepharma.com/pharma/top-10-biopharma-ma-deals-2025
+    domain: fiercepharma.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:33.091051+00:00'
+    stale_at: '2026-08-21T08:50:33.091051+00:00'
+    expire_at: '2026-10-20T08:50:33.091051+00:00'
+    triggered_by: 05-critic
+- id: mat-22ad60
+  filename: 2026-07-22_pfizer-to-acquire-metsera-and-next-gen-obesity-por.md
+  source_type: web-search
+  added: '2026-07-22T08:50:33.474188+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.95
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.pfizer.com/news/press-release/press-release-detail/pfizer-acquire-metsera-and-its-next-generation-obesity
+    domain: pfizer.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:33.446009+00:00'
+    stale_at: '2026-08-21T08:50:33.446009+00:00'
+    expire_at: '2026-10-20T08:50:33.446009+00:00'
+    triggered_by: 05-critic
+- id: mat-dac01c
+  filename: 2026-07-22_pfizer-completes-acquisition-of-metsera-pfizer-pr.md
+  source_type: web-search
+  added: '2026-07-22T08:50:33.558585+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.95
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.pfizer.com/news/press-release/press-release-detail/pfizer-completes-acquisition-metsera
+    domain: pfizer.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:33.529933+00:00'
+    stale_at: '2026-08-21T08:50:33.529933+00:00'
+    expire_at: '2026-10-20T08:50:33.529933+00:00'
+    triggered_by: 05-critic
+- id: mat-210cca
+  filename: 2026-07-22_pfizer-wins-10b-bidding-war-for-metsera-as-novo-ex.md
+  source_type: web-search
+  added: '2026-07-22T08:50:33.640786+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.reuters.com/business/healthcare-pharmaceuticals/pfizer-sweetens-offer-metsera-bidding-war-against-novo-bloomberg-news-reports-2025-11-08/
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:33.612285+00:00'
+    stale_at: '2026-08-21T08:50:33.612285+00:00'
+    expire_at: '2026-10-20T08:50:33.612285+00:00'
+    triggered_by: 05-critic
+- id: mat-a27817
+  filename: 2026-07-22_pfizer-novo-escalate-bidding-war-for-metsera-wsj.md
+  source_type: web-search
+  added: '2026-07-22T08:50:33.722352+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.wsj.com/health/pharma/novo-nordisk-sweetens-offer-for-metsera-e6dc4c2b
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:33.694138+00:00'
+    stale_at: '2026-08-21T08:50:33.694138+00:00'
+    expire_at: '2026-10-20T08:50:33.694138+00:00'
+    triggered_by: 05-critic
+- id: mat-a6b826
+  filename: 2026-07-22_lilly-s-retatrutide-28-weight-loss-phase-3-biophar.md
+  source_type: web-search
+  added: '2026-07-22T08:50:33.816655+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.biopharmadive.com/news/lillys-retatrutide-tripleG-phase3-obesity-data/820851/
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:33.784583+00:00'
+    stale_at: '2026-08-21T08:50:33.784583+00:00'
+    expire_at: '2026-10-20T08:50:33.784583+00:00'
+    triggered_by: 05-critic
+- id: mat-849117
+  filename: 2026-07-22_lilly-s-orforglipron-oral-3rd-phase-3-success-lill.md
+  source_type: web-search
+  added: '2026-07-22T08:50:33.912550+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://investor.lilly.com/news-releases/news-release-details/lillys-oral-glp-1-orforglipron-successful-third-phase-3-trial
+    domain: investor.lilly.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:33.883050+00:00'
+    stale_at: '2026-08-21T08:50:33.883050+00:00'
+    expire_at: '2026-10-20T08:50:33.883050+00:00'
+    triggered_by: 05-critic
+- id: mat-7214e0
+  filename: 2026-07-22_novo-s-cagrisema-falls-short-of-25-goal-fierce-bio.md
+  source_type: web-search
+  added: '2026-07-22T08:50:33.997008+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.88
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.fiercebiotech.com/biotech/novos-cagrisema-tops-semaglutide-ph-3-diabetes-study-still-falls-short-25-weight-loss-goal
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:33.967611+00:00'
+    stale_at: '2026-08-21T08:50:33.967611+00:00'
+    expire_at: '2026-10-20T08:50:33.967611+00:00'
+    triggered_by: 05-critic
+- id: mat-ab7249
+  filename: 2026-07-22_novo-advances-amycretin-to-phase-iii-clinical-tria.md
+  source_type: web-search
+  added: '2026-07-22T08:50:34.084515+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.82
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.clinicaltrialsarena.com/news/novo-nordisk-obesity-drug-phase-iii-trial-advance/
+    domain: clinicaltrialsarena.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:34.053709+00:00'
+    stale_at: '2026-08-21T08:50:34.053709+00:00'
+    expire_at: '2026-10-20T08:50:34.053709+00:00'
+    triggered_by: 05-critic
+- id: mat-329e42
+  filename: 2026-07-22_amgen-positions-maritide-as-best-monthly-obesity-d.md
+  source_type: web-search
+  added: '2026-07-22T08:50:34.173692+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.biospace.com/business/amgen-positions-maritide-as-potential-best-monthly-obesity-drug
+    domain: biospace.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:34.142706+00:00'
+    stale_at: '2026-08-21T08:50:34.142706+00:00'
+    expire_at: '2026-10-20T08:50:34.142706+00:00'
+    triggered_by: 05-critic
+- id: mat-43335b
+  filename: 2026-07-22_roche-s-carmot-ct-388-22-5-readies-phase-3-fierce-.md
+  source_type: web-search
+  added: '2026-07-22T08:50:34.261804+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.88
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.fiercebiotech.com/biotech/roches-glp1gip-drug-carmot-sees-225-weight-loss-readies-phase-3-trial
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:34.230614+00:00'
+    stale_at: '2026-08-21T08:50:34.230614+00:00'
+    expire_at: '2026-10-20T08:50:34.230614+00:00'
+    triggered_by: 05-critic
+- id: mat-8ca468
+  filename: 2026-07-22_roche-5-3b-amylin-pact-with-zealand-petrelintide-b.md
+  source_type: web-search
+  added: '2026-07-22T08:50:34.350465+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.biospace.com/deals/roche-makes-another-obesity-play-with-potential-5-3b-amylin-pact-with-zealand
+    domain: biospace.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:34.319438+00:00'
+    stale_at: '2026-08-21T08:50:34.319438+00:00'
+    expire_at: '2026-10-20T08:50:34.319438+00:00'
+    triggered_by: 05-critic
+- id: mat-8cbe78
+  filename: 2026-07-22_astrazeneca-returns-to-cspc-for-obesity-deal-fierc.md
+  source_type: web-search
+  added: '2026-07-22T08:50:34.444668+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.fiercebiotech.com/biotech/astrazeneca-returns-chinas-cspc-47b-obesity-deal
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:34.412450+00:00'
+    stale_at: '2026-08-21T08:50:34.412450+00:00'
+    expire_at: '2026-10-20T08:50:34.412450+00:00'
+    triggered_by: 05-critic
+- id: mat-eabc5e
+  filename: 2026-07-22_abbvie-gets-into-obesity-with-350m-gubra-amylin-de.md
+  source_type: web-search
+  added: '2026-07-22T08:50:34.536079+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.biopharmadive.com/news/abbvie-obesity-amylin-gubra-licensing-deal/741362/
+    domain: biopharmadive.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:34.503616+00:00'
+    stale_at: '2026-08-21T08:50:34.503616+00:00'
+    expire_at: '2026-10-20T08:50:34.503616+00:00'
+    triggered_by: 05-critic
+- id: mat-ebf284
+  filename: 2026-07-22_new-data-cast-doubt-on-boehringer-s-survodutide-co.md
+  source_type: web-search
+  added: '2026-07-22T08:50:34.628366+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.statnews.com/2026/06/07/boehringer-ingelheim-obesity-drug-survodutide-phase-3-data/
+    domain: statnews.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:34.595749+00:00'
+    stale_at: '2026-08-21T08:50:34.595749+00:00'
+    expire_at: '2026-10-20T08:50:34.595749+00:00'
+    triggered_by: 05-critic
+- id: mat-a78709
+  filename: 2026-07-22_appetite-for-weight-loss-deals-broader-than-visibl.md
+  source_type: web-search
+  added: '2026-07-22T08:50:34.721675+00:00'
+  processed: true
+  notes: query='per-acquirer obesity pipeline gap / is $10B anchor still alive'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.88
+  search_meta:
+    query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+    url: https://www.reuters.com/business/healthcare-pharmaceuticals/appetite-weight-loss-deals-broader-than-visible-viking-ceo-says-2026-01-13/
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:50:34.688498+00:00'
+    stale_at: '2026-08-21T08:50:34.688498+00:00'
+    expire_at: '2026-10-20T08:50:34.688498+00:00'
+    triggered_by: 05-critic
+- id: mat-eb2cb7
+  filename: 2026-07-22_viking-therapeutics-def-14a-2025-sec-edgar-vktx-20.md
+  source_type: web-search
+  added: '2026-07-22T08:50:35.634674+00:00'
+  processed: true
+  notes: query='VKTX latest 2025 proxy Brian Lian ownership/comp'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.95
+  search_meta:
+    query: VKTX latest 2025 proxy Brian Lian ownership/comp
+    url: https://www.sec.gov/Archives/edgar/data/1607678/000095017025052162/vktx-20250408.htm
+    domain: sec.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:50:35.600043+00:00'
+    stale_at: '2026-08-21T08:50:35.600043+00:00'
+    expire_at: '2026-10-20T08:50:35.600043+00:00'
+    triggered_by: 05-critic
+- id: mat-d69600
+  filename: 2026-07-22_vktx-form-4-insider-trading-brian-lian-holdings-se.md
+  source_type: web-search
+  added: '2026-07-22T08:50:35.730513+00:00'
+  processed: true
+  notes: query='VKTX latest 2025 proxy Brian Lian ownership/comp'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.8
+  search_meta:
+    query: VKTX latest 2025 proxy Brian Lian ownership/comp
+    url: https://www.secform4.com/insider-trading/1607678.htm
+    domain: secform4.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:35.696481+00:00'
+    stale_at: '2026-08-21T08:50:35.696481+00:00'
+    expire_at: '2026-10-20T08:50:35.696481+00:00'
+    triggered_by: 05-critic
+- id: mat-802979
+  filename: 2026-07-22_vktx-ownership-insider-2-79-institutional-64-4-cha.md
+  source_type: web-search
+  added: '2026-07-22T08:50:35.826954+00:00'
+  processed: true
+  notes: query='VKTX latest 2025 proxy Brian Lian ownership/comp' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.6
+  search_meta:
+    query: VKTX latest 2025 proxy Brian Lian ownership/comp
+    url: https://www.chartmill.com/stock/quote/VKTX/ownership
+    domain: chartmill.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:35.792618+00:00'
+    stale_at: '2026-08-21T08:50:35.792618+00:00'
+    expire_at: '2026-10-20T08:50:35.792618+00:00'
+    triggered_by: 05-critic
+- id: mat-2b62d9
+  filename: 2026-07-22_brian-lian-total-compensation-21-27m-salary-com.md
+  source_type: web-search
+  added: '2026-07-22T08:50:35.925171+00:00'
+  processed: true
+  notes: query='VKTX latest 2025 proxy Brian Lian ownership/comp' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.55
+  search_meta:
+    query: VKTX latest 2025 proxy Brian Lian ownership/comp
+    url: https://www.salary.com/research/executive-compensation/brian-lian-ph-d-executive-member-of-viking-therapeutics-inc
+    domain: salary.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:35.890211+00:00'
+    stale_at: '2026-08-21T08:50:35.890211+00:00'
+    expire_at: '2026-10-20T08:50:35.890211+00:00'
+    triggered_by: 05-critic
+- id: mat-689a68
+  filename: 2026-07-22_goldman-sachs-sets-viking-at-neutral-risk-adj-peak.md
+  source_type: web-search
+  added: '2026-07-22T08:50:36.257540+00:00'
+  processed: true
+  notes: query='sell-side VK2735 peak sales / rNPV / PoS detail'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.85
+  search_meta:
+    query: sell-side VK2735 peak sales / rNPV / PoS detail
+    url: https://m.investing.com/news/analyst-ratings/goldman-sachs-sets-viking-therapeutics-stock-at-neutral-93CH-3972976?ampMode=1
+    domain: m.investing.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:36.222694+00:00'
+    stale_at: '2026-08-21T08:50:36.222694+00:00'
+    expire_at: '2026-10-20T08:50:36.222694+00:00'
+    triggered_by: 05-critic
+- id: mat-919a6e
+  filename: 2026-07-22_vk2735-risk-adjusted-3b-by-2040-intellectia.md
+  source_type: web-search
+  added: '2026-07-22T08:50:36.369130+00:00'
+  processed: true
+  notes: query='sell-side VK2735 peak sales / rNPV / PoS detail' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.5
+  search_meta:
+    query: sell-side VK2735 peak sales / rNPV / PoS detail
+    url: https://intellectia.ai/news/stock/viking-therapeutics-faces-intense-competition-in-obesity-drug-market
+    domain: intellectia.ai
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:36.329369+00:00'
+    stale_at: '2026-08-21T08:50:36.329369+00:00'
+    expire_at: '2026-10-20T08:50:36.329369+00:00'
+    triggered_by: 05-critic
+- id: mat-30b367
+  filename: 2026-07-22_vk2735-un-risk-adjusted-peak-21-6b-10-oral-obesity.md
+  source_type: web-search
+  added: '2026-07-22T08:50:36.469454+00:00'
+  processed: true
+  notes: query='sell-side VK2735 peak sales / rNPV / PoS detail' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.5
+  search_meta:
+    query: sell-side VK2735 peak sales / rNPV / PoS detail
+    url: https://www.kavout.com/market-lens/viking-therapeutics-positioned-for-growth-amid-promising-vk2735-trial-results
+    domain: kavout.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:36.434186+00:00'
+    stale_at: '2026-08-21T08:50:36.434186+00:00'
+    expire_at: '2026-10-20T08:50:36.434186+00:00'
+    triggered_by: 05-critic
+- id: mat-bdc7aa
+  filename: 2026-07-22_morgan-stanley-overweight-vktx-pt-95-105-moomoo-ma.md
+  source_type: web-search
+  added: '2026-07-22T08:50:36.570327+00:00'
+  processed: true
+  notes: query='sell-side VK2735 peak sales / rNPV / PoS detail' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.65
+  search_meta:
+    query: sell-side VK2735 peak sales / rNPV / PoS detail
+    url: https://www.moomoo.com/news/post/71730199/morgan-stanley-maintains-viking-therapeutics-vktxus-with-buy-rating-maintains
+    domain: moomoo.com
+    domain_tier: other
+    searched_at: '2026-07-22T08:50:36.534215+00:00'
+    stale_at: '2026-08-21T08:50:36.534215+00:00'
+    expire_at: '2026-10-20T08:50:36.534215+00:00'
+    triggered_by: 05-critic

@@ -1,0 +1,267 @@
+slug: global-autonomous-driving
+variant: opus4.8
+entries:
+- searched_at: '2026-07-28T07:24:18.076431+00:00'
+  query: Waymo robotaxi 2026 weekly paid rides cities expansion latest
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 3
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.099810+00:00'
+  query: Tesla robotaxi Austin 2026 unsupervised FSD commercial launch fleet size
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.129891+00:00'
+  query: 特斯拉 FSD 入华 2025 2026 监管审批 数据合规 落地进展
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.192534+00:00'
+  query: Nvidia Thor DRIVE 智驾芯片 2026 量产 上车 车厂 出货 SOP
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.268616+00:00'
+  query: 地平线 征程6 J6 2026 出货量 定点车厂 市占率 黑芝麻智能
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.341410+00:00'
+  query: Mobileye 2026 revenue EyeQ6 SuperVision design win 定点 outlook
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.442347+00:00'
+  query: 华为 乾崑 ADS 智驾 2026 装机量 问界 份额 Momenta IPO 估值
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.590061+00:00'
+  query: 禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.690088+00:00'
+  query: 百度 萝卜快跑 Apollo Go 2026 单量 盈利 unit economics 车队规模 出海
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.840922+00:00'
+  query: 小马智行 Pony.ai 文远知行 WeRide 2026 robotaxi 车队 盈利 营收
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:18.956646+00:00'
+  query: 端到端 VLA 智驾 2026 城市NOA 高阶辅助驾驶 渗透率 中国
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:24:19.085224+00:00'
+  query: 比亚迪 天神之眼 2026 高阶智驾 渗透 激光雷达 纯视觉 端到端 TAM
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:26:55.793236+00:00'
+  query: 00-prescan-baseline 全量（baseline §5 优先 query 12 条，覆盖 Waymo/Tesla/FSD入华/Thor/地平线/Mobileye/华为+Momenta/禾赛速腾/百度/小马文远/端到端NOA/比亚迪）
+  triggered_by: 00-prescan-baseline
+  n_results: 60
+  n_high: 14
+  n_mid: 29
+  n_low: 17
+  disposition: registered
+- searched_at: '2026-07-28T07:34:17.521488+00:00'
+  query: 自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:17.695217+00:00'
+  query: 地平线 禾赛 速腾聚创 小马智行 文远知行 Mobileye 估值 目标价 一致预期 2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:17.937438+00:00'
+  query: 萝卜快跑 robotaxi 单车成本 单公里成本 盈亏平衡 unit economics 百度 Waymo 2026
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:18.128337+00:00'
+  query: 英伟达 Thor 地平线 征程6 J6 智驾芯片 定点 份额 交付 对比 2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:18.451196+00:00'
+  query: Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 3
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:18.790993+00:00'
+  query: 禾赛 速腾聚创 2026 财报 毛利率 净利润 ADAS 激光雷达 出货 ASP 分化
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 3
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:19.009758+00:00'
+  query: 自动驾驶 L4 寒冬 复盘 Cruise 关停 图森未来 退市 利润未兑现 教训
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:19.317802+00:00'
+  query: 城市NOA 渗透率 2026 端到端 纯视觉 去激光雷达 特斯拉 FSD 中国 高阶智驾
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:19.655320+00:00'
+  query: 自动驾驶 监管 2026 中国准入 美国 NHTSA 欧盟 UN-R157 L3 L4 立法 对比
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:20.008253+00:00'
+  query: 比亚迪 蔚来 小鹏 理想 自研 智驾芯片 流片 4nm 2026 上车 侵蚀 英伟达
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:20.349449+00:00'
+  query: Aurora Kodiak robotruck 干线物流 自动驾驶卡车 2026 商业化 盈利
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T08:20:47.798695+00:00'
+  query: '[01-prescan scope [''scope'']] 已由 00 deep-fetch 同日按 K# 主题覆盖入库'
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-28T08:20:47.807320+00:00'
+  query: '[01-prescan industry-event [''scope'']] 已由 00 deep-fetch 同日按 K# 主题覆盖入库'
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-28T08:20:47.814072+00:00'
+  query: '[01-prescan l4-hunting [''K1'']] 已由 00 deep-fetch 同日按 K# 主题覆盖入库'
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-28T08:20:47.822358+00:00'
+  query: '[01-prescan l4-hunting [''K2'']] 已由 00 deep-fetch 同日按 K# 主题覆盖入库'
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-28T08:20:47.829573+00:00'
+  query: '[01-prescan l4-hunting [''K3'']] 已由 00 deep-fetch 同日按 K# 主题覆盖入库'
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-28T08:20:47.837369+00:00'
+  query: '[01-prescan l4-hunting [''K4'']] 已由 00 deep-fetch 同日按 K# 主题覆盖入库'
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-28T08:20:47.845010+00:00'
+  query: '[01-prescan l4-hunting [''K5'']] 已由 00 deep-fetch 同日按 K# 主题覆盖入库'
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-28T08:20:47.855903+00:00'
+  query: '[01-prescan l4-hunting [''K6'']] 已由 00 deep-fetch 同日按 K# 主题覆盖入库'
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-28T08:20:47.863948+00:00'
+  query: '[01-prescan l4-hunting [''K7'']] 已由 00 deep-fetch 同日按 K# 主题覆盖入库'
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered

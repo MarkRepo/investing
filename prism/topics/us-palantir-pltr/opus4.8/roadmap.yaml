@@ -1,0 +1,134 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-palantir-pltr
+variant: opus4.8
+created: 2026-07-17
+thesis_driven: true            # 基于 thesis_v0 (K1-K5) + decomposition_v0 (命门1-3)
+
+# L1/L2 已坍缩进 primer_scope（背景理解交给 00_primer，见 workflow 01 附录 A2）
+primer_scope: >
+  00_primer 该覆盖：两大板块（政府/商业）+ 四产品（Gotham/Foundry/Apollo/AIP）的边界与协同；
+  AIP/Bootcamp land-and-expand 商业模式；软件公司关键指标（NRR/NDR、RPO/TCV、Rule-of-40、SBC/稀释）读法；
+  政府护城河来源（认证/长周期合同/深度嵌入）两面性；双层股权与 Thiel-Karp 控制；
+  为何估值处于极端量级（P/S ~59x TTM / ~40x fwd）市场在给什么定价；GAAP vs 调整后盈利质量之争。
+
+learning_track:
+  # L3 争议层：把 thesis「最大反方观点」展开为可调研的分歧点
+  l3_debates:
+    - question: AIP 美国商业 +104% 放量，是 land-and-expand 单位经济学真实可复制（平台级拐点），还是早期采用者集中释放 + 大合同前置确认在透支未来增速？
+      maps_to: 命门1 / 反方1
+      source_hint: 10-K item_1/item_7 MD&A、Q1'26 transcript、Bootcamp 转化漏斗披露、客户案例
+    - question: 在 ~40x forward P/S 起点，未来 2-3 年「增长长进倍数」与「倍数向 25-30x 均值回归」哪个更快？倍数体制受流动性/散户/指数被动流影响能否机理认证？
+      maps_to: 命门2（终局） / K2
+      source_hint: 一致预期分布 + PLTR 自身 2021-2026 倍数 band + 高估值成长股 de-rating 历史镜鉴
+    - question: 政府营收（约半壁）的增长是结构性护城河（软件定义国防长期渗透 + ELA 模式复制），还是对国防预算周期 + 政治关系（Thiel-Trump）的脆弱依赖？DOGE 是净渗透利好还是预算削减风险？
+      maps_to: 命门3 / K3
+      source_hint: Army $10B ELA 条款、政府 vs 商业分季增速缺口、Pentagon 预算决议、DOGE 传导
+    - question: beat-and-raise 能否自我延续（参 NVDA 2023-24 动能未破倍数可扩张），还是 beat 幅度已在逐季衰减、增长成熟化领先信号已现？
+      maps_to: 反方2 / K5
+      source_hint: Q2'26 实际 vs $1.8B 指引超出幅度、FY26 指引上调序列、分季增速斜率
+    - question: 稀释/SBC 空头论据是否已被证伪（股数仅 +0.71% YoY、GAAP 盈利 + 强 FCF），还是净稀释/SBC 会随人才竞争重新加速、利润率见顶？
+      maps_to: 反方3 / K4
+      source_hint: 10-K/Q SBC 附注、shares outstanding 轨迹、GAAP 运营利润率与 FCF 序列
+
+  # L4 狩猎层：逐条对齐 thesis Killer Question，找错误定价
+  l4_hunting:
+    - question: US commercial 营收能否在 FY2026-2027 持续 >40% YoY？任一季度美国商业增速跌破 30% = 减速确认。市场当前隐含的减速斜率是多少，是否过于乐观/悲观？
+      addresses: [K1]
+      search_keywords: [Palantir US commercial growth, AIP 商业放量持续性, 美国商业增速拆分]
+      source_hint: 分季 US commercial 增速序列（10-K/Q + transcript）、NDR 150% 口径、客户数扩张
+    - question: 股票能否守住 >35x forward P/S 还是 de-rate 向 20-25x？PLTR 自身历史倍数 band 与同类高增长软件股增速峰值后的倍数路径，隐含 12 个月合理价落点？
+      addresses: [K2]
+      search_keywords: [Palantir forward P/S valuation, 高估值软件股 de-rating, NVDA SNOW DDOG 倍数峰值]
+      source_hint: consensus FY26/27/28 目标价分布 + PLTR 2021-2026 倍数区间 + de-rating 镜鉴实证
+    - question: Army $10B ELA 模式是否可复制（更多 ELA 落地）？还是 DOGE/Pentagon 预算削减使政府营收增速掉到商业之下？FY26 政府 vs 商业增速缺口走向？
+      addresses: [K3]
+      search_keywords: [Palantir Army ELA enterprise agreement, DOGE defense budget cut, 政府营收增速]
+      source_hint: Army ESA 条款、Pentagon FY26/27 预算决议、政府营收分季增速
+    - question: GAAP 运营利润率 + FCF 是否继续扩张（Rule-of-40 守 >100）、净稀释是否维持 <2%/年？若稀释重新加速或利润率见顶 = 反方3 被推翻。
+      addresses: [K4]
+      search_keywords: [Palantir stock based compensation dilution, GAAP operating margin FCF, 净稀释轨迹]
+      source_hint: 10-K/Q SBC 附注 + shares outstanding 2019-2026 + 利润率/FCF 序列
+    - question: beat-and-raise 的幅度是否收窄（Q2'26 实际 vs $1.8B 指引超出幅度、FY26 是否再上调）？beat 幅度逐季缩小 = 增长成熟化领先信号。
+      addresses: [K5]
+      search_keywords: [Palantir Q2 2026 guidance beat, FY26 guidance raise, beat 幅度衰减]
+      source_hint: 分季 beat 幅度序列、指引上调节奏、Q2'26 财报（预期 2026-08 披露，进监控）
+
+material_priority:
+  # 说明：00 eager-fetch 已把家底铺满（46 material 覆盖 K1-K5 全环）。
+  # tier 内 status=covered 项 = 已有料覆盖（covered_by 标 mat_id）；status=gap 项 = 01 新增、需补抓。
+  tier1:
+    - title: FY2025 10-K + Q1 2026 10-Q（正本 + 分 section）
+      type: annual-report
+      ticker: PLTR
+      source: SEC EDGAR
+      why: 生意质地/收入确认/SBC/风险/MD&A 的一手来源，喂环①③④⑤
+      addresses: [K1, K3, K4]
+      status: covered
+      covered_by: [mat-6b0cf2, mat-45d023, mat-c4c533, mat-0d05e4, mat-eea90a, mat-53e892]
+    - title: Q1 2026 + Q4 2025 财报电话会 transcript + shareholder letter
+      type: sell-side-note
+      source: motleyfool/seekingalpha/IR
+      why: US commercial 增速、NDR、beat 幅度、管理层口径，喂环①③、K1/K5
+      addresses: [K1, K5]
+      status: covered
+      covered_by: [mat-62251e, mat-9b0925, mat-b5aaeb, mat-1c7ab6]
+    - title: 卖方一致预期明细（FY26/27/28 营收/EPS/目标价 bull-bear 分布）
+      type: data
+      source: marketbeat/chartmill/analyst estimates
+      why: 环④终局环一致预期锚（39 位均值 $189.65），攻 K2/命门2
+      addresses: [K2]
+      status: covered
+      covered_by: [mat-69e68b, mat-b3acfc, mat-2699a9]
+    - title: 高估值成长软件股 de-rating 历史镜鉴（NVDA/SNOW/DDOG/ZM 增速峰值后倍数路径 + 数量级）
+      type: industry-research
+      source: exa/seekingalpha/机构复盘
+      why: 环④命门2（终局，置信度最低）的历史失败镜鉴——现有 mat-b7f267 仅为 DDOG-vs-SNOW 比较文，偏薄；需带实际倍数 de-rating 路径的镜鉴强化目标价支撑
+      addresses: [K2]
+      status: gap        # 01 新增补抓靶点（命门2 优先砸料）
+      ring: historical-mirror
+  tier2:
+    - title: 政府板块：Army $10B ELA 条款 + 政府营收增速 + DOGE/Pentagon 预算传导
+      type: policy
+      source: defense media/press release
+      why: 攻 K3/命门3，政府这条腿的估值权重
+      addresses: [K3]
+      status: covered
+      covered_by: [mat-0d05e4, mat-c4c533, mat-112a9a, mat-ddc313, mat-56d974]
+    - title: 管理层/内部人：Thiel/Karp 10b5-1 减持明细 + SBC 政策/净稀释轨迹
+      type: data
+      source: SEC Form 4/insider trading tracker
+      why: 环⑤资本配置 + 反方3 证伪点，攻 K4
+      addresses: [K4]
+      status: covered
+      covered_by: [mat-10ff12, mat-ace03b, mat-60e1a0, mat-bdf836]
+    - title: 竞争格局：AIP vs Databricks/Snowflake/超大规模云/C3.ai 企业AI落地赢率
+      type: industry-research
+      source: exa/行业对比
+      why: 环②护城河，攻命门1/3、K1
+      addresses: [K1]
+      status: covered
+      covered_by: [mat-38d4e3, mat-eddceb]
+  tier3:
+    - title: 国际商业营收拆分（欧洲增速 vs 美国）
+      type: data
+      source: 10-Q geographic segment
+      why: US commercial 增速持续性的对照锚，K1
+      addresses: [K1]
+      status: covered
+      covered_by: [mat-36dbfb, mat-53e892]
+
+key_risks_to_monitor:
+  - Q2'26 财报（预期 2026-08）美国商业增速 vs 30% 破位线、beat 幅度 vs Q1
+  - Pentagon FY26/27 国防预算决议与 DOGE 削减范围
+  - 新 ELA 落地数量（Army 模式复制验证 K3）
+  - forward P/S 是否跌破 30x（≈ $100 on FY26）触发 base 情景
+  - Thiel/Karp 减持节奏是否超 10b5-1 计划节奏
+  - SBC/净稀释是否重新加速（反方3 证伪）
+
+analogies_to_study:   # → 落成 historical-mirror 收料 todo（喂环⑤/终局环④）
+  - name: NVDA 2023-2024（美国 · 半导体/AI · 高动能成长股倍数扩张期）
+    logic: beat-and-raise 动能未破时倍数可长期维持甚至扩张——做空高动能成长股的时机风险镜鉴（反方2）
+    limit: NVDA 硬件+CUDA 生态壁垒与 PLTR 软件订阅属性不同，绝对增速量级更大
+  - name: SNOW / DDOG / ZM 增速峰值后 de-rating（美国 · 云软件 · 2021-2023）
+    logic: 高 forward P/S 软件股在增速从峰值回落时倍数塌缩的实证路径——攻命门2/K2 目标价支撑
+    limit: 这些公司 de-rate 时多未维持 GAAP 盈利 + Rule-of-40 135，PLTR 盈利质量更强，倍数地板可能更高

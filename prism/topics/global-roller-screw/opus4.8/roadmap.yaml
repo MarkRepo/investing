@@ -1,0 +1,158 @@
+slug: global-roller-screw
+variant: opus4.8
+created: 2026-07-24
+thesis_driven: true
+primer_scope: 'primer 该覆盖：行星滚柱丝杠工作原理/三大结构分类/精度等级体系(C10-C1)/制造产业链(含螺纹磨床瓶颈)/ 全球+国产玩家格局/需求侧(人形机器人用量模型)/PRS
+  vs 准直驱路线权衡/定价与量产降本逻辑/ 供应链认证节奏(定点→送样→SOP)/Tesla供应链管理逻辑
+
+  '
+learning_track:
+  l3_debates:
+  - question: 赢家是否已经选完——Tesla/舍弗勒体系锁定新剑传动后，上市公司群是否只能永远做Tier2/国内备胎？
+    source_hint: 新剑IPO招股书定点披露 + 上市公司群定点公告对比
+  - question: 量产是否会显著慢于估值隐含节奏——Tesla Optimus 2026Q1量产版是PPT还是真产线？丝杠需求兑现滞后风险？
+    source_hint: Tesla IR/财报电话会 + 卖方产量预测 vs 官方口径差
+  - question: 准直驱路线会不会颠覆——成本1/5的行星减速器方案是否已被头部整机量产采用，PRS用量被砍？
+    source_hint: cubemars/执行器供应商 + Figure/宇树/优必选执行器方案披露
+  - question: 国产'良率突破'是企业自述还是有第三方实证——各厂C5/C3良率到底多少？
+    source_hint: 年报/投资者关系记录中的良率口径 + 第三方检测(若有)
+  - question: 磨床卡脖子是真瓶颈还是已被夸大——华辰/秦川国产磨床是否已能支撑丝杠厂C3量产？
+    source_hint: 华辰/秦川磨床精度公告 + 丝杠厂设备采购披露
+  l4_hunting:
+  - question: 上市公司群(北特/五洲/双林/恒而达)2026-2027能否拿到任一头部整机(Tesla/优必选/宇树/Figure)的Tier1批量供货合同？
+    addresses:
+    - K1
+    search_keywords:
+    - 丝杠 定点 Tier1
+    - 北特 五洲 头部客户
+    - 人形 供货合同
+    source_hint: 各厂定点公告 + 头部整机供应商披露 + 新剑IPO定点对照
+  - question: 国产C5级PRS批量良率2026能否从传闻50-70%稳步升至≥80%？返工率/成本曲线拐点何时到？
+    addresses:
+    - K2
+    search_keywords:
+    - 行星滚柱丝杠 良率
+    - 丝杠 量产 返工
+    - C5 批量
+    source_hint: 年报产量口径(双林2025仅1500套) + 投资者关系记录良率表述
+  - question: Tesla Optimus Gen-3/4是否维持PRS线性执行器方案、单台用量不大幅削减(仍~14根)？
+    addresses:
+    - K3
+    search_keywords:
+    - Optimus Gen3 BOM
+    - 特斯拉 执行器 用量
+    - 线性执行器 丝杠 数量
+    source_hint: 卖方Gen-3拆解 + Tesla技术发布会 + 准直驱替代信号
+  - question: 高精度螺纹磨床2026-2027是否有国产机型批量上线丝杠厂(非仅院所验证)？
+    addresses:
+    - K4
+    search_keywords:
+    - 螺纹磨床 国产 量产
+    - 华辰 秦川 丝杠
+    - 磨床 交付 丝杠厂
+    source_hint: 华辰/秦川磨床公告 + 丝杠厂设备采购/产能公告
+  - question: 丝杠国产化放量后(2027万级)单价/毛利能否维持>25%，还是重演谐波'以价换量'？
+    addresses:
+    - K5
+    search_keywords:
+    - 丝杠 单价 毛利
+    - 谐波 价格战 毛利
+    - 丝杠 降价 放量
+    source_hint: 谐波镜鉴(绿的/来福毛利轨迹) + 丝杠批价序列(公开无源)
+material_priority:
+  tier1:
+  - title: 北特科技 2025年报 + 2026Q1季报
+    type: annual-report
+    ticker: SSE_603009
+    source: cninfo
+    why: 核心标的、库中原缺；机器人丝杠业务收入/毛利/在手定点 — addresses K1,K2
+    addresses:
+    - K1
+    - K2
+  - title: 新剑传动 IPO 招股说明书 + 问询回复
+    type: prospectus
+    ticker: ''
+    source: 创业板受理(cls报道) — 非上市，招股书是Tesla定点实锤+估值锚
+    why: thesis头号赢家的唯一透明化窗口 — addresses K1
+    addresses:
+    - K1
+  - title: 五家PRS厂横向对比数据(产能/定点/交付量/良率/毛利)
+    type: data
+    ticker: ''
+    source: 5家年报+公告+卖方拼装
+    why: 环⑥ shortlist 靶点，赢家概率排序 — addresses K1,K2
+    addresses:
+    - K1
+    - K2
+  - title: 五洲新春 2025年报
+    type: annual-report
+    ticker: SSE_603667
+    source: cninfo（已在库）
+    why: 轴承底蕴切丝杠；2025营收33.43亿、丝杠进展 — addresses K1
+    addresses:
+    - K1
+  - title: 双林/恒而达 2025年报
+    type: annual-report
+    ticker: SZSE_300100
+    source: cninfo（已在库）
+    why: 双林做总成路线1500套→10万套产线；恒而达精密跨界 — addresses K1,K2
+    addresses:
+    - K1
+    - K2
+  tier2:
+  - title: 准直驱(行星减速器+力矩电机)方案头部整机实测/成本拆解
+    type: industry-research
+    ticker: ''
+    source: cubemars/aibangbots执行器路线综述
+    why: PRS路线颠覆威胁验证 — addresses K3
+    addresses:
+    - K3
+  - title: 国产螺纹磨床(华辰/秦川)精度进展 + 丝杠厂应用
+    type: industry-research
+    ticker: ''
+    source: 华辰0.001mm光学磨床公告 + 秦川攻关
+    why: 良率上限的设备约束 — addresses K4
+    addresses:
+    - K4
+  - title: Tesla Optimus Gen-3 BOM拆解/PRS单台用量
+    type: sell-side-note
+    ticker: ''
+    source: 卖方人形系列深度(库中已有) + 父topic BOM findings
+    why: 路线稳定性+需求侧用量 — addresses K3
+    addresses:
+    - K3
+  - title: consensus/估值锚：上市公司群一致预期PE + 机器人分部估值
+    type: data
+    ticker: ''
+    source: Wind/东财一致预期 + 卖方估值表
+    why: A合同consensus必收，环⑤估值 — addresses K5
+    addresses:
+    - K5
+  tier3:
+  - title: 历史镜鉴：谐波减速器国产化'以价换量'毛利下滑轨迹(绿的/来福)
+    type: industry-research
+    ticker: ''
+    source: 绿的/来福价格战报道(已fetched)
+    why: A合同historical-mirror，环⑤ — addresses K5
+    addresses:
+    - K5
+  - title: 丝杠量产定价序列(C5/C3国产vs进口价差+2025-2026批价)
+    type: data
+    ticker: ''
+    source: 产业链调研/草根价格(公开无源,已标empty)
+    why: 量价关系硬数据 — addresses K5
+    addresses:
+    - K5
+key_risks_to_monitor:
+- 新剑传动IPO进展/定价 → 上市公司群估值锚重定
+- Tesla Optimus Gen-3量产节奏 + PRS用量是否变化
+- 头部整机准直驱切换信号(赛道天花板风险)
+- 各厂良率/产能爬坡 vs 承诺差
+- 丝杠批价 → 是否进入谐波式价格战
+analogies_to_study:
+- name: 谐波减速器国产化 (中国·机器人零部件·2020-2026)
+  logic: 同为人形机器人高价值精密件国产替代；绿的/来福从高毛利→价格战毛利走低
+  limits: 谐波技术壁垒(柔轮)与PRS(磨床)不同；PRS海外磨床卡脖子更硬，价格战节奏或滞后
+- name: 刀具/滚珠丝杠国产替代 (中国·机床件·2015-2023)
+  logic: 同为精密传动件从进口替代到国产放量的降价路径
+  limits: 机床需求周期性 vs 人形机器人成长期；PRS单价/壁垒更高

@@ -1,0 +1,16 @@
+as_of_regime_version: 3
+regime_composite: 临床期无收入biotech=超长久期资产,对贴现率+风险偏好双敏感;当前regime下spec小盘biotech估值受流动性/risk-on程度支配
+depends_on_states:
+- conclusion: rates_us
+  state: 实际利率高位/降息路径未定
+  role: load_bearing
+- conclusion: risk_appetite
+  state: risk-on程度决定spec biotech估值
+  role: load_bearing
+discount_rate: null
+slug: us-viking-vktx
+variant: opus4.8
+stamped_at: '2026-07-22T07:37:40.889496+00:00'
+stale: true
+stale_reason: 依赖的『实际利率高位/降息路径未定』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+  v3→v4)

@@ -1,0 +1,443 @@
+slug: cn-hymson-688559
+variant: opus4.8
+updated: '2026-07-19T09:55:51.723055+00:00'
+materials:
+- id: mat-4d69cc
+  filename: 2026-07-18_海目星2026q1官方财报-营收13-17亿-144-净利2521万扭亏-经营现金流-1447.md
+  source_type: web-search
+  added: '2026-07-18T17:04:09.699821+00:00'
+  processed: true
+  notes: query='海目星 688559 2026一季报 官方财报数据'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.85
+  search_meta:
+    query: 海目星 688559 2026一季报 官方财报数据
+    url: https://www.ytnews.cn/hzxw/news/2026/0508/2026050830973.html
+    domain: ytnews.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:04:09.698873+00:00'
+    stale_at: '2026-08-17T17:04:09.698873+00:00'
+    expire_at: '2026-10-16T17:04:09.698873+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d3dc82
+  filename: 2026-07-18_海目星现价44-48元-2026-07-17-市值110亿-ps2-21-处52周低.md
+  source_type: web-search
+  added: '2026-07-18T17:04:09.704705+00:00'
+  processed: true
+  notes: query='海目星 688559 2026一季报 官方财报数据'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.8
+  search_meta:
+    query: 海目星 688559 2026一季报 官方财报数据
+    url: https://data.eastmoney.com/stockdata/688559.html
+    domain: data.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:04:09.703192+00:00'
+    stale_at: '2026-08-17T17:04:09.703192+00:00'
+    expire_at: '2026-10-16T17:04:09.703192+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2b1b69
+  filename: 2026-07-18_海目星固态设备-双路线-2028目标500wh-kg-欣界能源协同-但全固态仍中试前夜.md
+  source_type: web-search
+  added: '2026-07-18T17:06:20.401494+00:00'
+  processed: true
+  notes: query='海目星 固态电池 双路线 欣界能源 2028 500Wh/kg 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 海目星 固态电池 双路线 欣界能源 2028 500Wh/kg 进展
+    url: https://laser.ofweek.com/2026-03/ART-8100-2400-30682331.html
+    domain: laser.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:06:20.399820+00:00'
+    stale_at: '2026-08-17T17:06:20.399820+00:00'
+    expire_at: '2026-10-16T17:06:20.399820+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ce33b6
+  filename: 2026-07-18_海目星未发2026h1业绩预告-q1回款质量优化但账龄未细拆-半年报约8月底.md
+  source_type: web-search
+  added: '2026-07-18T17:06:20.411127+00:00'
+  processed: true
+  notes: query='海目星 2026 半年报 业绩预告 应收账龄 存货 回款' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.65
+  search_meta:
+    query: 海目星 2026 半年报 业绩预告 应收账龄 存货 回款
+    url: https://q.stock.sohu.com/cn/688559/yjyg.shtml
+    domain: q.stock.sohu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:06:20.409271+00:00'
+    stale_at: '2026-08-17T17:06:20.409271+00:00'
+    expire_at: '2026-10-16T17:06:20.409271+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b3f8e3
+  filename: 2026_688559_quarterly_2026-04-29_海目星.PDF
+  source_type: quarterly-report
+  added: '2026-07-18T17:11:17.060817+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 海目星
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-d302dd
+  filename: 2026-06-23_688559_announce_kzz_海目星：关于2025年年度报告的信息披露监管问询函回复公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:12:00.989007+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 海目星
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-aea1bc
+  filename: 2026-04-29_688559_announce_kzz_海目星：关于2025年度计提减值准备的公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:12:01.170969+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 海目星
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-7c4513
+  filename: 2026-05-22_688559_announce_kzz_海目星：关于参与投资设立产业基金暨签订合伙协议的公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:12:01.323107+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 海目星
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-70ca41
+  filename: 2026-07-18_海目星深度投资价值研究-雪球散户-促销偏见-事实锚可验证.md
+  source_type: web-search
+  added: '2026-07-18T17:14:12.969850+00:00'
+  processed: true
+  notes: query='海目星 深度投资价值 固态订单客户 股权激励目标 一致预期' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - K6
+  confidence: 0.5
+  search_meta:
+    query: 海目星 深度投资价值 固态订单客户 股权激励目标 一致预期
+    url: https://xueqiu.com/5334485159/380143166
+    domain: xueqiu.com
+    domain_tier: other
+    searched_at: '2026-07-18T17:14:12.966747+00:00'
+    stale_at: '2026-08-17T17:14:12.966747+00:00'
+    expire_at: '2026-10-16T17:14:12.966747+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e0e824
+  filename: 2026-03-20_688559_announce_gqbd_海目星：关于实际控制人的一致行动人减持计划时间届满暨减持股份结果公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:22:46.397400+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 海目星
+  mineru_state: not_needed
+  rings:
+  - mgmt-capital-alloc
+  addresses:
+  - K5
+- id: mat-967cb4
+  filename: 2026-03-18_688559_announce_gqbd_海目星：关于实际控制人及其一致行动人权益变动触及1%刻度的提示性公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:22:46.495883+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 海目星
+  mineru_state: not_needed
+  rings:
+  - mgmt-capital-alloc
+  addresses:
+  - K5
+- id: mat-47c625
+  filename: 2026-02-10_688559_announce_gqbd_海目星：关于实际控制人及其一致行动人权益变动触及1%刻度的提示性公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:22:46.605476+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 海目星
+  mineru_state: not_needed
+  rings:
+  - mgmt-capital-alloc
+  addresses:
+  - K5
+- id: mat-2f03bd
+  filename: 2025-11-28_688559_announce_gqbd_海目星：关于实际控制人的一致行动人减持股份计划公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:22:46.769149+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 海目星
+  mineru_state: not_needed
+  rings:
+  - mgmt-capital-alloc
+  addresses:
+  - K5
+- id: mat-73ae48
+  filename: 2026-07-19_赵盛宇一致行动人减持权益变动-cninfo原文核实-泰安海合减持2.83亿持股27.55降至25.36.md
+  source_type: announcement
+  added: '2026-07-18T17:25:16.572273+00:00'
+  processed: true
+  notes: cninfo原文核实:减持主体=一致行动人泰安海合(非赵盛宇本人),累计减2.19%/2.83亿@45.9-59.35,实控人系持股27.55%->25.36%;修正thesis"26.92%/小幅"粗述
+  mineru_state: not_needed
+  addresses:
+  - K5
+  rings:
+  - mgmt-capital-alloc
+  confidence: 0.95
+- id: mat-59696b
+  filename: 2026-07-18_pdf-电池--先导智能-300450---看好国内龙头扩产重启-海外整车厂入局.md
+  source_type: web-search
+  added: '2026-07-18T17:31:31.976855+00:00'
+  processed: true
+  notes: query='锂电设备 先导智能 利元亨 应收账款 存货 减值 扩产周期 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  rings:
+  - historical-mirror
+  confidence: 0.7
+  search_meta:
+    query: 锂电设备 先导智能 利元亨 应收账款 存货 减值 扩产周期 复盘
+    url: https://pdf.dfcfw.com/pdf/H3_AP202506031684034706_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:31:31.972249+00:00'
+    stale_at: '2026-08-17T17:31:31.972249+00:00'
+    expire_at: '2026-10-16T17:31:31.972249+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-21e90f
+  filename: 2026-07-18_202185-锂电设备行业深度.md
+  source_type: web-search
+  added: '2026-07-18T17:31:31.993366+00:00'
+  processed: true
+  notes: query='锂电设备 先导智能 利元亨 应收账款 存货 减值 扩产周期 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  rings:
+  - historical-mirror
+  confidence: 0.7
+  search_meta:
+    query: 锂电设备 先导智能 利元亨 应收账款 存货 减值 扩产周期 复盘
+    url: https://www.scribd.com/document/958449694/202185-%E9%94%82%E7%94%B5%E8%AE%BE%E5%A4%87%E8%A1%8C%E4%B8%9A%E6%B7%B1%E5%BA%A6
+    domain: scribd.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:31:31.988976+00:00'
+    stale_at: '2026-08-17T17:31:31.988976+00:00'
+    expire_at: '2026-10-16T17:31:31.988976+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-e282aa
+  filename: 2026-07-19_海目星consensus一致预期锚-目标价58.13区间46-70-2026E营收68亿.md
+  source_type: sell-side-note
+  added: '2026-07-18T17:32:24.468023+00:00'
+  processed: true
+  notes: 一致预期锚:目标价58.13(区间46.26-70,现价44.48低于下限);2026E营收68亿(+62.4%)/2027E85.5亿;仅2位分析师;per-broker深度底稿付费墙未获
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K6
+  rings:
+  - valuation-anchor
+  confidence: 0.7
+- id: mat-787551
+  filename: 2026-07-18_海目星遭业绩股价-双杀-支柱业务收入缩水-产能扩张恐埋隐患-资讯-蓝鲸财经.md
+  source_type: web-search
+  added: '2026-07-18T17:35:19.053969+00:00'
+  processed: false
+  notes: query='海目星 688559 固态电池 应收账龄 出海钣金 最新' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 海目星 688559 固态电池 应收账龄 出海钣金 最新
+    url: https://www.lanjinger.com/d/1754285795813857462
+    domain: lanjinger.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:35:19.048354+00:00'
+    stale_at: '2026-08-17T17:35:19.048354+00:00'
+    expire_at: '2026-10-16T17:35:19.048354+00:00'
+    triggered_by: 01-prescan
+- id: mat-e8cacd
+  filename: 2026-07-18_海目星-688559-sh.md
+  source_type: web-search
+  added: '2026-07-18T17:35:19.072866+00:00'
+  processed: false
+  notes: query='海目星 688559 固态电池 应收账龄 出海钣金 最新' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 海目星 688559 固态电池 应收账龄 出海钣金 最新
+    url: https://pdf.dfcfw.com/pdf/H3_AP202405161633547911_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:35:19.067547+00:00'
+    stale_at: '2026-08-17T17:35:19.067547+00:00'
+    expire_at: '2026-10-16T17:35:19.067547+00:00'
+    triggered_by: 01-prescan
+- id: mat-f7bbb3
+  filename: 2026-07-18_海目星回复年报问询函-2025年营收下滑6-8-存货跌价计提.md
+  source_type: web-search
+  added: '2026-07-18T17:35:19.094501+00:00'
+  processed: false
+  notes: query='海目星 应收账龄 半年报 回款' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 海目星 应收账龄 半年报 回款
+    url: https://finance.sina.com.cn/stock/aigc/weigui/2026-06-23/doc-iniekzkr8728439.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:35:19.089243+00:00'
+    stale_at: '2026-08-17T17:35:19.089243+00:00'
+    expire_at: '2026-10-16T17:35:19.089243+00:00'
+    triggered_by: 01-prescan
+- id: mat-cdc1df
+  filename: 2026-07-18_海目星回复监管问询函-营收下滑6-8-存货跌价计提4-66亿元.md
+  source_type: web-search
+  added: '2026-07-18T17:35:19.116408+00:00'
+  processed: false
+  notes: query='海目星 存货 发出商品 减值 跌价' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 海目星 存货 发出商品 减值 跌价
+    url: https://finance.sina.cn/2026-06-23/detail-iniekzkq1951217.d.html?vt=4
+    domain: finance.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:35:19.110815+00:00'
+    stale_at: '2026-08-17T17:35:19.110815+00:00'
+    expire_at: '2026-10-16T17:35:19.110815+00:00'
+    triggered_by: 01-prescan
+- id: mat-9acb0a
+  filename: 2026-07-18_计提资产减值准备及研发投入增加-海目星2025年净亏损8-76亿元.md
+  source_type: web-search
+  added: '2026-07-18T17:35:19.138919+00:00'
+  processed: false
+  notes: query='海目星 存货 发出商品 减值 跌价' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 海目星 存货 发出商品 减值 跌价
+    url: https://m.caijing.com.cn/article/202602/402105
+    domain: m.caijing.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:35:19.132685+00:00'
+    stale_at: '2026-08-17T17:35:19.132685+00:00'
+    expire_at: '2026-10-16T17:35:19.132685+00:00'
+    triggered_by: 01-prescan
+- id: mat-cdd8a4
+  filename: 2026-07-18_接连斩获16-5亿订单-海目星国内外业务实现双突破-周刊原创-证券市场周刊.md
+  source_type: web-search
+  added: '2026-07-18T17:35:19.163207+00:00'
+  processed: false
+  notes: query='海目星 固态 2GWh 订单 欣界能源 客户' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 海目星 固态 2GWh 订单 欣界能源 客户
+    url: https://static.weeklyonstock.com/24/0813/zj165905.html
+    domain: static.weeklyonstock.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:35:19.156444+00:00'
+    stale_at: '2026-08-17T17:35:19.156444+00:00'
+    expire_at: '2026-10-16T17:35:19.156444+00:00'
+    triggered_by: 01-prescan
+- id: mat-371bfe
+  filename: 2026-07-18_2gwh-4亿元-海目星-欣界能源固态电池战略合作进展.md
+  source_type: web-search
+  added: '2026-07-18T17:35:19.186826+00:00'
+  processed: false
+  notes: query='海目星 固态 2GWh 订单 欣界能源 客户' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 海目星 固态 2GWh 订单 欣界能源 客户
+    url: https://www.aibanglib.com/a/20632
+    domain: aibanglib.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:35:19.179906+00:00'
+    stale_at: '2026-08-17T17:35:19.179906+00:00'
+    expire_at: '2026-10-16T17:35:19.179906+00:00'
+    triggered_by: 01-prescan
+- id: mat-a5a4f3
+  filename: 2026-07-18_切入ai算力供应-激光装备商海目星成功出货液冷设备订单.md
+  source_type: web-search
+  added: '2026-07-18T17:35:19.213559+00:00'
+  processed: false
+  notes: query='海目星 AI液冷 微通道 储能大圆柱 出海' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 海目星 AI液冷 微通道 储能大圆柱 出海
+    url: https://www.moomoo.com/hans/news/post/62705635
+    domain: moomoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:35:19.206434+00:00'
+    stale_at: '2026-08-17T17:35:19.206434+00:00'
+    expire_at: '2026-10-16T17:35:19.206434+00:00'
+    triggered_by: 01-prescan
+- id: mat-6317a5
+  filename: 2026-07-18_海目星-ai-光通信-固态电池三重引擎驱动价值重估.md
+  source_type: web-search
+  added: '2026-07-18T17:35:19.238002+00:00'
+  processed: false
+  notes: query='海目星 AI液冷 微通道 储能大圆柱 出海' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 海目星 AI液冷 微通道 储能大圆柱 出海
+    url: https://www.stcn.com/article/detail/3891505.html
+    domain: stcn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:35:19.230366+00:00'
+    stale_at: '2026-08-17T17:35:19.230366+00:00'
+    expire_at: '2026-10-16T17:35:19.230366+00:00'
+    triggered_by: 01-prescan
+- id: mat-d40208
+  filename: 2026-07-19_海目星688559分析师一致预期-investing-com-路孚特聚合-仅2名分析师覆盖-12个月.md
+  source_type: web-search
+  added: '2026-07-19T09:55:51.709913+00:00'
+  processed: true
+  notes: query='海目星 688559 分析师 一致预期 机构 家数 目标价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 海目星 688559 分析师 一致预期 机构 家数 目标价 2026
+    url: https://cn.investing.com/equities/hymson-laser-intelligent-equip-consensus-estimates
+    domain: cn.investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-19T09:55:51.701032+00:00'
+    stale_at: '2026-08-18T09:55:51.701032+00:00'
+    expire_at: '2026-10-17T09:55:51.701032+00:00'
+    triggered_by: 05-critic

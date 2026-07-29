@@ -3,7 +3,7 @@ display_name: 先导智能 (Leadex, SZSE 300450)
 type: company
 created: '2026-05-31T17:27:36.379393+00:00'
 status: active
-stage: 00-init
+stage: 05-critic-review
 parent_topic: global-ssb-equipment
 monitoring_tier: dormant
 concepts: []
@@ -12,31 +12,328 @@ scope:
   question: 先导智能作为全球锂电设备龙头，固态整线方案能否在2026-2028把单GWh价值量5亿+的招标订单兑现到收入，海外护城河与CATL依赖如何平衡？
   depth: deep
   ticker: SZSE_300450
-  market: SZSE
+  market: SZSE+HKEX
   short_name: 先导智能
   search_terms:
   - 先导智能 固态
   - 锂电设备 整线
   - 固态 订单
-outputs_state: {}
+  extra_tickers:
+  - HKEX_00470
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-28T09:47:14.020427+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0ac7f4
+    - mat-11c585
+    - mat-25745a
+    - mat-2c8506
+    - mat-58ae06
+    - mat-5d2750
+    - mat-6dba37
+    - mat-bc51cc
+    - mat-c6452e
+    - mat-e4d40d
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-28T09:53:49.722619+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-11c585
+    - mat-25745a
+    - mat-2c8506
+    - mat-440bc8
+    - mat-58ae06
+    - mat-5d2750
+    - mat-6dba37
+    - mat-bc51cc
+    - mat-c6452e
+    - mat-d2a1ff
+    - mat-e4d40d
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-28T09:53:49.745779+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-25745a
+    - mat-5d2750
+    - mat-bc51cc
+    - mat-e4d40d
+    last_error: null
 parent_materials: []
 next_actions:
-- 运行 workflow 01-build-roadmap
-user_todos: []
+- '04合成完成: 00_primer(critic1轮收敛) + c_investment_case(6环,EV+4%) + 07_decision_kit +
+  thesis_v1/decomposition_v1'
+- chain-critic已过(终局证据可接受),断点一(EV时间轴)已修:现价33观望,首仓≤31
+- 说「评审 cn-leadex-300450」进 05 对抗式重审
+user_todos:
+- task: 下载先导智能 2025年报 + 2026Q1一季报（cninfo 直下）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  - K5
+  source_hint: cninfo SZSE_300450
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5d2750
+  - mat-bc51cc
+  last_fetch_note: cninfo 2 份
+- task: 下载先导智能 H股招股说明书（固态业务/募资用途/Frost&Sullivan份额）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K3
+  - K6
+  source_hint: HKEX 00470；cninfo 公告 mat-0ac7f4
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-0ac7f4
+  - mat-b46cca
+  - mat-e4d40d
+  last_fetch_note: HKEXnews 2026_HK00470_prospectus_2026-02-03_WUXILEAD.pdf
+- task: 收集券商深度研报×2-3（先导个股 + 锂电设备行业拐点/固态）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: dfcfw 点评 mat-4186af/mat-593919/mat-8e2874
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0ac7f4
+  - mat-11c585
+  - mat-25745a
+  - mat-267caf
+  - mat-2ed781
+  - mat-440bc8
+  - mat-58ae06
+  - mat-6dba37
+  - mat-761f01
+  - mat-b46cca
+  - mat-c6452e
+  - mat-d89a8f
+  last_fetch_note: 00-deep-fetch sidecar 入库
+- task: 收集一致预期/盈利预测/目标价 consensus（A/H 估值锚·终局）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K6
+  source_hint: 同花顺F10/Investing/理杏仁 mat-14536d
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0ac7f4
+  - mat-11c585
+  - mat-25745a
+  - mat-267caf
+  - mat-2ed781
+  - mat-440bc8
+  - mat-58ae06
+  - mat-6dba37
+  - mat-761f01
+  - mat-b46cca
+  - mat-c6452e
+  - mat-d89a8f
+  last_fetch_note: 00-deep-fetch sidecar 入库
+- task: 管理层/资本配置史 mgmt-capital-alloc（王燕清 capex/并购/股权激励/H股募资用途）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: 年报+招股书+历史公告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0ac7f4
+  - mat-11c585
+  - mat-25745a
+  - mat-267caf
+  - mat-2ed781
+  - mat-440bc8
+  - mat-58ae06
+  - mat-6dba37
+  - mat-761f01
+  - mat-b46cca
+  - mat-c6452e
+  - mat-d89a8f
+  last_fetch_note: 00-deep-fetch sidecar 入库
+- task: 历史失败镜鉴 historical-mirror（2022→2024净利断崖-87.66%复盘+同业周期股杀估值）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 年报+研报回顾
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0ac7f4
+  - mat-11c585
+  - mat-25745a
+  - mat-267caf
+  - mat-2ed781
+  - mat-440bc8
+  - mat-58ae06
+  - mat-6dba37
+  - mat-761f01
+  - mat-b46cca
+  - mat-c6452e
+  - mat-d89a8f
+  last_fetch_note: 00-deep-fetch sidecar 入库
+- task: 先导A股固态相关临时公告（中标/重大合同/自愿披露/减持回购）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: cninfo 临时公告 分诊
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2c8506
+  - mat-d2a1ff
+  last_fetch_note: 2份(H股回购+业绩预告)
+- task: CATL全固态量产节奏深度跟踪（2027小批量硫化物路线）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: prescan mat-f844f5 补充
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 00-deep-fetch sidecar 入库
+- task: 资料提取完成：17 份全部处理完毕(含招股书关键章节)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '决策链合成完成: 6/10看多,现价33观望/首仓≤31/试探档6%; 固态零收入是唯一data-missing终局维'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: false
   cadence: daily
 critic: null
 decomposition:
-  current_version: null
-  last_updated: null
-  history: []
+  current_version: 1
+  last_updated: '2026-07-28T09:56:30.082883+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-28T07:38:10.124606+00:00'
+    summary: 命门1=固态价值量溢价×订单兑现链(中); 命门2=锂电设备主业真拐点or二次探底(中); 命门3=全球化/份额护城河宽度+海外并购增厚or摊薄(低·优先收料)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-28T09:56:30.082910+00:00'
+    summary: 命门1(固态价值量×订单兑现)中/open;命门2(主业真拐点vs二次探底)中/open张力锐化;命门3(份额护城河)低→中趋收敛(15.5%份额+募资用途已由招股书澄清)
+    convergence_status: open
+    changelog: 命门3置信度低→中(份额15.5%非35%+募资无并购专项由招股书坐实);命门1/2维持中(新证据firmed风险侧);无命门增删;primer目标8补增厚摊薄机理
 thesis:
-  current_version: 0
-  last_updated: '2026-05-31T17:27:36.381207+00:00'
+  current_version: 1
+  last_updated: '2026-07-28T09:56:30.042810+00:00'
   history:
   - version: 0
     stage_set_at: 00-init-from-parent
     set_at: '2026-05-31T17:27:36.381211+00:00'
     summary: 先导=固态整线兑现最确定载体；龙头(CR1~35%)+海外护城河(毛利40.75%)+董秘亲证价值量5亿+/Q1订单+60%；固态占订单<5%兑现极早期，6/10看多靠订单先行指标持有
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-28T07:35:55.323956+00:00'
+    summary: 先导=固态整线兑现最确定载体+锂电周期拐点+A+H全球化平台(H股00470已挂牌募资41.66亿港元)三重期权；份额实为全球15.5%(非35%)、2026Q1净利仅+11%、固态零收入使弹性受限；PE
+      53x→34.5x估值压力缓解，6/10看多靠订单先行指标持有
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-28T09:56:30.042958+00:00'
+    summary: 先导=周期反转锂电设备真龙头(全球15.5%第一)+固态领先卡位(零收入期权)+A+H平台三段叠加;6/10看多,合理价拿期权+赌周期反转;现价33.03贴52周低期权溢价已压缩,EV+4%偏薄→试探建底等回调
 canonical: true
+suggested_drilldowns: []
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-28T07:38:52.655590+00:00'
+  exited_at: '2026-07-28T08:30:42.675530+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-28T08:30:42.675530+00:00'
+  exited_at: '2026-07-28T09:27:49.911003+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K2
+    - K4
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-28T09:27:49.911003+00:00'
+  exited_at: '2026-07-28T10:01:29.779397+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-28T10:01:29.779397+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

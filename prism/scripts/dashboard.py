@@ -274,6 +274,23 @@ def canonical_variant(slug: str) -> str | None:
     return _canonical_variant(topics).get("variant", "")
 
 
+_peer_variant_cache: dict[str, str | None] = {}
+
+
+def _peer_topic_link(topic_slug: str | None) -> str:
+    """arena/peer 表里「已建 topic」的链接——variant 走 canonical_variant 解析
+    （原硬编码 deepseek-v4-pro：无该变体的 slug 全部死链）。"""
+    if not topic_slug:
+        return "—"
+    if topic_slug not in _peer_variant_cache:
+        try:
+            _peer_variant_cache[topic_slug] = canonical_variant(topic_slug)
+        except Exception:
+            _peer_variant_cache[topic_slug] = None
+    v = _peer_variant_cache[topic_slug]
+    return f"[✓](/prism/{topic_slug}/{v})" if v else "—"
+
+
 # ── topic collection ─────────────────────────────────────────────────────────
 
 def _collect_company_rows() -> list[dict]:
@@ -731,7 +748,7 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict], macro: d
                     scores = a.get("scores", {})
                     composite = scores.get("composite", "—")
                     topic_link = (
-                        f"[✓](/prism/{a['topic_slug']}/deepseek-v4-pro)"
+                        _peer_topic_link(a.get("topic_slug"))
                         if a.get("topic_created") else "—"
                     )
                     reason = (a.get("tier_reason") or "").replace("|", "\\|")[:60]
@@ -786,7 +803,7 @@ def _render_dashboard(company_rows: list[dict], other_rows: list[dict], macro: d
                 ]
                 for c in shortlist:
                     topic_link = (
-                        f"[✓](/prism/{c['topic_slug']}/deepseek-v4-pro)"
+                        _peer_topic_link(c.get("topic_slug"))
                         if c.get("topic_created") else "—"
                     )
                     thesis = (c.get("thesis_one_liner") or "—").replace("|", "\\|")[:70]

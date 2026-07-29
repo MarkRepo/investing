@@ -1,0 +1,575 @@
+slug: cn-hengli-hydraulic-601100
+variant: opus4.8
+updated: '2026-07-25T08:08:20.541435+00:00'
+materials:
+- id: mat-f5629c
+  filename: 2026-07-24_恒立液压-2025年上半年净利润增长11-但现金流回落-结构性调整引关注.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.182335+00:00'
+  processed: false
+  notes: query='恒立液压 2025年报 营业收入 净利润 毛利率 分红'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 2025年报 营业收入 净利润 毛利率 分红
+    url: https://wallstreetcn.com/articles/3754059
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.181166+00:00'
+    stale_at: '2026-08-23T14:08:11.181166+00:00'
+    expire_at: '2026-10-22T14:08:11.181166+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-84d12a
+  filename: 2026-07-24_恒立液压-一季度净利润6-52亿元-同比增长5-59.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.189880+00:00'
+  processed: false
+  notes: query='恒立液压 601100 2026年一季报 业绩 营收 净利润'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 601100 2026年一季报 业绩 营收 净利润
+    url: https://www.stcn.com/article/detail/3823080.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.189031+00:00'
+    stale_at: '2026-08-23T14:08:11.189031+00:00'
+    expire_at: '2026-10-22T14:08:11.189031+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a41a26
+  filename: 2026-07-24_恒立液压-第一季度净利润同比增长5-59.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.197494+00:00'
+  processed: false
+  notes: query='恒立液压 601100 2026年一季报 业绩 营收 净利润'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 601100 2026年一季报 业绩 营收 净利润
+    url: https://www.cls.cn/detail/2356874
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.196288+00:00'
+    stale_at: '2026-08-23T14:08:11.196288+00:00'
+    expire_at: '2026-10-22T14:08:11.196288+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-846243
+  filename: 2026-07-24_恒立液压-sh601100-研究报告-研究评级-机构研报-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.203283+00:00'
+  processed: true
+  notes: query='恒立液压 601100 2026年一季报 业绩 营收 净利润'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 丝杠 良率 精度 C3 C5 产能 磨床 业绩说明会 调研
+    url: http://vip.stock.finance.sina.com.cn/q/go.php/vReport_List/kind/search/index.phtml?symbol=sh601100&orgname=&industry=&title=&t1=all
+    domain: vip.stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:07.064718+00:00'
+    stale_at: '2026-08-23T14:17:07.064718+00:00'
+    expire_at: '2026-10-22T14:17:07.064718+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 恒立液压 601100 2026年一季报 业绩 营收 净利润
+- id: mat-9f3a67
+  filename: 2026-07-24_万亿级人形机器人赛道-哪个环节最具爆发潜力.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.222415+00:00'
+  processed: false
+  notes: query='恒立液压 行星滚柱丝杠 特斯拉 定点 进展 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 线性执行器 丝杠 产能 量产 2026
+    url: https://eu.36kr.com/zh/p/3636380217885702
+    domain: eu.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.254705+00:00'
+    stale_at: '2026-08-23T14:08:11.254705+00:00'
+    expire_at: '2026-10-22T14:08:11.254705+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 恒立液压 行星滚柱丝杠 特斯拉 定点 进展 2026
+- id: mat-326980
+  filename: 2026-07-24_谁为特斯拉的百万机器人造-关节--钛媒体官方网站.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.231042+00:00'
+  processed: false
+  notes: query='恒立液压 行星滚柱丝杠 特斯拉 定点 进展 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 行星滚柱丝杠 特斯拉 定点 进展 2026
+    url: https://www.tmtpost.com/7919143.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.228680+00:00'
+    stale_at: '2026-08-23T14:08:11.228680+00:00'
+    expire_at: '2026-10-22T14:08:11.228680+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-79a1c9
+  filename: 2026-07-24_机械-恒力液压-从工程机械到机器人-国产替代之光-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.243512+00:00'
+  processed: false
+  notes: query='恒立液压 线性执行器 丝杠 产能 量产 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 线性执行器 丝杠 产能 量产 2026
+    url: https://finance.sina.com.cn/wm/2026-07-17/doc-iniiahrp8151941.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.240337+00:00'
+    stale_at: '2026-08-23T14:08:11.240337+00:00'
+    expire_at: '2026-10-22T14:08:11.240337+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7dcf16
+  filename: 2026-07-24_公司公告-恒立液压-2025年年度报告.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.272943+00:00'
+  processed: false
+  notes: query='恒立液压 精密传动 机器人 业务 营收 占比 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 精密传动 机器人 业务 营收 占比 2025
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=601100&id=12118901
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.269332+00:00'
+    stale_at: '2026-08-23T14:08:11.269332+00:00'
+    expire_at: '2026-10-22T14:08:11.269332+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e20a3b
+  filename: 2026-07-24_恒立液压-2025年半年度报告新浪财经.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.283254+00:00'
+  processed: false
+  notes: query='恒立液压 精密传动 机器人 业务 营收 占比 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 精密传动 机器人 业务 营收 占比 2025
+    url: http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=601100&id=11351292
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.279591+00:00'
+    stale_at: '2026-08-23T14:08:11.279591+00:00'
+    expire_at: '2026-10-22T14:08:11.279591+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e85a91
+  filename: 2026-07-24_一季度挖掘机出口增超36-海外市场成工程机械增长主引擎---21经济网.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.303188+00:00'
+  processed: false
+  notes: query='2026年 挖掘机 销量 国内 出口 工程机械 周期'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 2026年 挖掘机 销量 国内 出口 工程机械 周期
+    url: https://www.21jingji.com/article/20260410/herald/4fe51219c45933b9fe07a24c429199f6.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.298500+00:00'
+    stale_at: '2026-08-23T14:08:11.298500+00:00'
+    expire_at: '2026-10-22T14:08:11.298500+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-33909e
+  filename: 2026-07-24_时报观察-内外需均衡驱动-中国工程机械走出更稳增长曲线.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.322789+00:00'
+  processed: false
+  notes: query='2026年 挖掘机 销量 国内 出口 工程机械 周期'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 2026年 挖掘机 销量 国内 出口 工程机械 周期
+    url: https://www.stcn.com/article/detail/3736411.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.318464+00:00'
+    stale_at: '2026-08-23T14:08:11.318464+00:00'
+    expire_at: '2026-10-22T14:08:11.318464+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fb28d4
+  filename: 2026-07-24_恒立液压遇上人形机器人-曾经的10倍成长公司迎来新想象-见智研究.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.351199+00:00'
+  processed: false
+  notes: query='恒立液压 定增 机器人 募投项目 线性驱动器 进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 定增 机器人 募投项目 线性驱动器 进展
+    url: https://wallstreetcn.com/articles/3702826
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.345774+00:00'
+    stale_at: '2026-08-23T14:08:11.345774+00:00'
+    expire_at: '2026-10-22T14:08:11.345774+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ebab5c
+  filename: 2026-07-24_恒立液压成为机器人产业链上的龙头企业.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.365412+00:00'
+  processed: false
+  notes: query='恒立液压 定增 机器人 募投项目 线性驱动器 进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 定增 机器人 募投项目 线性驱动器 进展
+    url: https://xueqiu.com/2965814896/320686140
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.360398+00:00'
+    stale_at: '2026-08-23T14:08:11.360398+00:00'
+    expire_at: '2026-10-22T14:08:11.360398+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3fc0e0
+  filename: 2026-07-24_董事长被留置-1300亿-大牛股-最新公告-恒立液压-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.386157+00:00'
+  processed: false
+  notes: query='恒立液压 汪立平 机器人 精密传动 战略 表态 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 汪立平 机器人 精密传动 战略 表态 2026
+    url: https://finance.sina.com.cn/wm/2026-03-20/doc-inhrrvnp7946431.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.380946+00:00'
+    stale_at: '2026-08-23T14:08:11.380946+00:00'
+    expire_at: '2026-10-22T14:08:11.380946+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-69ff5d
+  filename: 2026-07-24_千亿龙头董事长-遭立案留置.md
+  source_type: web-search
+  added: '2026-07-24T14:08:11.408543+00:00'
+  processed: false
+  notes: query='恒立液压 汪立平 机器人 精密传动 战略 表态 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 汪立平 机器人 精密传动 战略 表态 2026
+    url: http://finance.sina.com.cn/wm/2026-03-20/doc-inhrshar6594791.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:08:11.402990+00:00'
+    stale_at: '2026-08-23T14:08:11.402990+00:00'
+    expire_at: '2026-10-22T14:08:11.402990+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-32d079
+  filename: 2025_601100_annual_2026-04-20_恒立液压.PDF
+  source_type: annual-report
+  added: '2026-07-24T14:14:17.715989+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒立液压
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-13a734
+  filename: 2026_601100_quarterly_2026-04-27_恒立液压.PDF
+  source_type: quarterly-report
+  added: '2026-07-24T14:14:18.129938+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒立液压
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-dc7a25
+  filename: 2026-04-27_601100_announce_kzz_江苏恒立液压股份有限公司关于部分募投项目结项的公告.PDF
+  source_type: announcement
+  added: '2026-07-24T14:15:21.579189+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒立液压
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-d1ee54
+  filename: 2026-04-20_601100_announce_kzz_江苏恒立液压股份有限公司2025年度募集资金存放与实际使用情况鉴证报告.PDF
+  source_type: announcement
+  added: '2026-07-24T14:15:21.784756+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒立液压
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-280736
+  filename: 2026-04-20_601100_announce_kzz_江苏恒立液压股份有限公司关于公司2025年度利润分配预案及2026年中期分红授权.PDF
+  source_type: announcement
+  added: '2026-07-24T14:15:21.878113+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 恒立液压
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-bf5168
+  filename: 2026-07-24_长江证券股份有限公司---研究报告-研究评级-机构研报-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-24T14:17:06.861456+00:00'
+  processed: true
+  notes: query='恒立液压 浙商证券 华西证券 线性驱动器 丝杠 深度研报 目标价'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 浙商证券 华西证券 线性驱动器 丝杠 深度研报 目标价
+    url: https://stock.finance.sina.com.cn/stock/go.php/vReport_List/kind/search/index.phtml?t1=1&orgname=%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%D6%A4%C8%AF%EF%BF%BD%C9%B7%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%DE%B9%EF%BF%BD%CB%BE
+    domain: stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:06.854562+00:00'
+    stale_at: '2026-08-23T14:17:06.854562+00:00'
+    expire_at: '2026-10-22T14:17:06.854562+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3e22bc
+  filename: 2026-07-24_江苏恒立液压股份有限公司2025-年年度报告.md
+  source_type: web-search
+  added: '2026-07-24T14:17:06.899177+00:00'
+  processed: true
+  notes: query='恒立液压 601100 盈利预测 一致预期 目标价 买入 卖方评级 2026'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 601100 盈利预测 一致预期 目标价 买入 卖方评级 2026
+    url: https://stockmc.xueqiu.com/202604/601100_20260421_M5DF.pdf
+    domain: stockmc.xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:06.891813+00:00'
+    stale_at: '2026-08-23T14:17:06.891813+00:00'
+    expire_at: '2026-10-22T14:17:06.891813+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d2ca7f
+  filename: 2026-07-24_液压一哥-出事-首富-董事长被留置.md
+  source_type: web-search
+  added: '2026-07-24T14:17:06.929079+00:00'
+  processed: true
+  notes: query='汪立平 恒立液压 留置 立案 最新进展 结果 2026'
+  mineru_state: not_needed
+  addresses:
+  - K9
+  confidence: 0.9
+  search_meta:
+    query: 汪立平 恒立液压 留置 立案 最新进展 结果 2026
+    url: https://stcn.com/article/detail/3688963.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:06.921374+00:00'
+    stale_at: '2026-08-23T14:17:06.921374+00:00'
+    expire_at: '2026-10-22T14:17:06.921374+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f72590
+  filename: 2026-07-24_千亿液压龙头突发-董事长被留置---21经济网.md
+  source_type: web-search
+  added: '2026-07-24T14:17:06.952563+00:00'
+  processed: true
+  notes: query='汪立平 恒立液压 留置 立案 最新进展 结果 2026'
+  mineru_state: not_needed
+  addresses:
+  - K9
+  confidence: 0.9
+  search_meta:
+    query: 汪立平 恒立液压 留置 立案 最新进展 结果 2026
+    url: https://www.21jingji.com/article/20260320/herald/cec20428f1829e5b8f683c5488b91ed1.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:06.944746+00:00'
+    stale_at: '2026-08-23T14:17:06.944746+00:00'
+    expire_at: '2026-10-22T14:17:06.944746+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0afaf2
+  filename: 2026-07-24_1050亿-又一位首富被-带走调查.md
+  source_type: web-search
+  added: '2026-07-24T14:17:06.985774+00:00'
+  processed: true
+  notes: query='汪立平 恒立液压 留置 立案 最新进展 结果 2026'
+  mineru_state: not_needed
+  addresses:
+  - K9
+  confidence: 0.9
+  search_meta:
+    query: 汪立平 恒立液压 留置 立案 最新进展 结果 2026
+    url: https://finance.sina.com.cn/wm/2026-03-26/doc-inhsiqkt8905129.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:06.977474+00:00'
+    stale_at: '2026-08-23T14:17:06.977474+00:00'
+    expire_at: '2026-10-22T14:17:06.977474+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6d898e
+  filename: 2026-07-24_从-新赛道-到-第二增长曲线-汽车零部件企业-人形机器人-布局持续加码.md
+  source_type: web-search
+  added: '2026-07-24T14:17:07.018970+00:00'
+  processed: true
+  notes: query='零部件龙头 第二曲线 机器人 概念 兑现 失败 复盘 汽车零部件'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: 零部件龙头 第二曲线 机器人 概念 兑现 失败 复盘 汽车零部件
+    url: https://www.stcn.com/article/detail/3821406.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:07.010110+00:00'
+    stale_at: '2026-08-23T14:17:07.010110+00:00'
+    expire_at: '2026-10-22T14:17:07.010110+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-1b0ced
+  filename: 2026-07-24_五洲新春和恒立液压在丝杠产品精度方面的对比信息如下.md
+  source_type: web-search
+  added: '2026-07-24T14:17:07.091868+00:00'
+  processed: true
+  notes: query='恒立液压 丝杠 良率 精度 C3 C5 产能 磨床 业绩说明会 调研'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 丝杠 良率 精度 C3 C5 产能 磨床 业绩说明会 调研
+    url: https://xueqiu.com/7277129525/327471952
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:07.082438+00:00'
+    stale_at: '2026-08-23T14:17:07.082438+00:00'
+    expire_at: '2026-10-22T14:17:07.082438+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e730d3
+  filename: 2026-07-24_恒立液压-大国重器背后的-千斤顶-上海证券报.md
+  source_type: web-search
+  added: '2026-07-24T14:17:07.134340+00:00'
+  processed: true
+  notes: query='恒立液压 海外 生产基地 墨西哥 印度 德国 美国 产能'
+  mineru_state: not_needed
+  addresses:
+  - K7
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 海外 生产基地 墨西哥 印度 德国 美国 产能
+    url: https://paper.cnstock.com/html/2024-12/18/content_2007721.htm
+    domain: paper.cnstock.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:07.124354+00:00'
+    stale_at: '2026-08-23T14:17:07.124354+00:00'
+    expire_at: '2026-10-22T14:17:07.124354+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8b6c68
+  filename: 2026-07-24_恒立液压-sh601100-公司致力于成为具有国际影响力的高端传动.md
+  source_type: web-search
+  added: '2026-07-24T14:17:07.174735+00:00'
+  processed: true
+  notes: query='恒立液压 海外 生产基地 墨西哥 印度 德国 美国 产能'
+  mineru_state: not_needed
+  addresses:
+  - K7
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 海外 生产基地 墨西哥 印度 德国 美国 产能
+    url: https://xueqiu.com/5149589065/321489636
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-24T14:17:07.164828+00:00'
+    stale_at: '2026-08-23T14:17:07.164828+00:00'
+    expire_at: '2026-10-22T14:17:07.164828+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3a64d1
+  filename: 2026-07-25_恒立液压-601100-盈利预测一致预期-同花顺f10-25家券商.md
+  source_type: web-search
+  added: '2026-07-25T08:08:20.371383+00:00'
+  processed: true
+  notes: query='恒立液压 601100 2026 归母净利润 一致预期 券商'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  rings:
+  - consensus
+  confidence: 0.9
+  search_meta:
+    query: 恒立液压 601100 2026 归母净利润 一致预期 券商
+    url: https://basic.10jqka.com.cn/601100/worth.html
+    domain: basic.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-25T08:08:20.403183+00:00'
+    stale_at: '2026-08-24T08:08:20.403183+00:00'
+    expire_at: '2026-10-23T08:08:20.403183+00:00'
+    triggered_by: 05-critic
+- id: mat-4eee9a
+  filename: 2026-07-25_恒立液压-601100-2026年一季报点评-q1收入-33-汇兑压制利润-东吴证券.md
+  source_type: web-search
+  added: '2026-07-25T08:08:20.472099+00:00'
+  processed: true
+  notes: query='恒立液压 2026Q1 EBIT 汇兑 新工厂 归母 收入增速'
+  mineru_state: not_needed
+  addresses:
+  - K8
+  confidence: 0.85
+  search_meta:
+    query: 恒立液压 2026Q1 EBIT 汇兑 新工厂 归母 收入增速
+    url: https://pdf.dfcfw.com/pdf/H3_AP202604291821755175_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-25T08:08:20.461620+00:00'
+    stale_at: '2026-08-24T08:08:20.461620+00:00'
+    expire_at: '2026-10-23T08:08:20.461620+00:00'
+    triggered_by: 05-critic
+- id: mat-42e97d
+  filename: 2026-07-25_恒立液压-601100-2025年三季报点评-q3归母-31-业绩提速-东吴证券.md
+  source_type: web-search
+  added: '2026-07-25T08:08:20.506538+00:00'
+  processed: true
+  notes: query='恒立液压 2026Q1 EBIT 汇兑 新工厂 归母 收入增速'
+  mineru_state: not_needed
+  addresses:
+  - K8
+  confidence: 0.8
+  search_meta:
+    query: 恒立液压 2026Q1 EBIT 汇兑 新工厂 归母 收入增速
+    url: https://pdf.dfcfw.com/pdf/H3_AP202510281770626217_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-25T08:08:20.496472+00:00'
+    stale_at: '2026-08-24T08:08:20.496472+00:00'
+    expire_at: '2026-10-23T08:08:20.496472+00:00'
+    triggered_by: 05-critic

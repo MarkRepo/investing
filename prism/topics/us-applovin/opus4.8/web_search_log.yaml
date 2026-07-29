@@ -1,0 +1,200 @@
+slug: us-applovin
+variant: opus4.8
+entries:
+- searched_at: '2026-07-27T12:44:48.070955+00:00'
+  query: AppLovin APP stock price market cap 2026 current valuation forward P/E
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 0
+  n_mid: 0
+  n_low: 6
+  disposition: registered
+- searched_at: '2026-07-27T12:44:48.075140+00:00'
+  query: AppLovin Q1 2026 earnings revenue advertising software platform growth results
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 0
+  n_mid: 0
+  n_low: 6
+  disposition: registered
+- searched_at: '2026-07-27T12:44:48.085286+00:00'
+  query: AppLovin sell mobile gaming apps business Tripledot deal closed 2025 divestiture
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 3
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-27T12:44:48.106982+00:00'
+  query: AppLovin short seller Fuzzy Panda Culper aftermath SEC investigation lawsuit
+    2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 3
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-27T12:44:48.127336+00:00'
+  query: AppLovin e-commerce advertising revenue ramp self-service 2025 2026 update
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 2
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-07-27T12:44:48.132482+00:00'
+  query: AppLovin analyst price target buy sell rating consensus 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 0
+  n_mid: 0
+  n_low: 6
+  disposition: registered
+- searched_at: '2026-07-27T12:46:25.916338+00:00'
+  query: AppLovin APP stock price market cap 2026 current valuation forward P/E
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-27T12:46:25.919230+00:00'
+  query: AppLovin analyst price target buy sell rating consensus 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-27T12:47:43.666047+00:00'
+  query: AppLovin Q1 2026 earnings results revenue advertising EBITDA guidance press
+    release
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 1
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-07-27T12:47:43.708319+00:00'
+  query: AppLovin stock decline sell-off 2026 growth deceleration concerns Reuters
+    CNBC Bloomberg
+  triggered_by: 00-prescan-baseline
+  n_results: 6
+  n_high: 3
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-27T12:55:27.839209+00:00'
+  query: AppLovin Q1 2026 earnings call transcript management commentary e-commerce
+    AXON
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-27T12:55:27.879439+00:00'
+  query: Fuzzy Panda Culper AppLovin short report full text allegations attribution
+    app store
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-07-27T12:55:27.895735+00:00'
+  query: AppLovin sell-side analyst deep dive valuation target price bull bear 2026
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-07-27T12:55:27.911837+00:00'
+  query: AppLovin share buyback capital allocation Foroughi insider selling 2025 2026
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-07-27T12:55:27.952742+00:00'
+  query: AppLovin AXON advertiser retention incrementality third party MMM results
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-07-27T12:55:27.991560+00:00'
+  query: e-commerce performance advertising market size TAM retail media 2026
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-07-27T12:55:28.035295+00:00'
+  query: adtech attribution Criteo iOS ATT ad platform growth decline case study
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-07-27T12:55:28.056315+00:00'
+  query: AppLovin CTV connected TV advertising strategy 2025 2026
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-07-27T13:27:08.186364+00:00'
+  query: AppLovin consumer vertical e-commerce advertiser spend growth Q2 2026
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-27T13:27:08.288446+00:00'
+  query: AppLovin SEC investigation lawsuit app store policy update 2026
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-27T13:27:08.340401+00:00'
+  query: AppLovin AXON attribution incrementality advertiser results 2026
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 1
+  n_mid: 0
+  n_low: 4
+  disposition: registered
+- searched_at: '2026-07-27T13:27:08.448178+00:00'
+  query: AppLovin Q2 2026 revenue growth guidance advertising deceleration
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 3
+  n_mid: 0
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-27T13:27:08.536117+00:00'
+  query: AppLovin competition Trade Desk Meta Google advertising 2026
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-07-28T02:59:42.426260+00:00'
+  query: AppLovin analyst consensus price target EPS 2026 + Q2 guidance
+  triggered_by: 05-critic
+  n_results: 5
+  n_high: 2
+  n_mid: 0
+  n_low: 3
+  disposition: registered

@@ -1,0 +1,173 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: global-glp1-oral-small-molecule
+variant: opus4.8
+created: 2026-07-22
+topic_type: arena
+parent_topic: global-glp1-obesity
+
+# L1/L2 坍缩为 primer scope 备注（背景理解交给 00_primer）
+primer_scope: >
+  primer 该覆盖：口服减重药三条技术路线（多肽口服=口服司美 vs 小分子=orforglipron/GSBR-1290/VK2735 口服）、
+  口服 vs 注射的机理/疗效/可及性/成本差异、TAM 平权化逻辑（注射窄口→基层扩容）、
+  口服玩家定位（LLY 规模领跑 / GPCR·VKTX 疗效领跑 / NVO 口服存量 / 恒瑞·华东国产小分子）、
+  口服小分子的专利结构与 generic 悬崖机制（化学合成 vs 多肽生物类似药）。
+
+learning_track:
+  # L1/L2 略（见 primer_scope）
+  l3_debates:         # 争议层：分歧在哪，各方逻辑
+    - question: 口服"疗效弱"是否致命——orforglipron 10.5% vs 注射 20%+，口服是利润池迁移目标，还是仅"可及性补充入口"而利润仍留在高疗效注射剂？
+      source_hint: LLY/GPCR/VKTX 10-K + 口服 vs 注射疗效对照 + 卖方对口服利润池的定性
+    - question: "规模领跑 vs 疗效领跑分离能否持续——LLY 靠规模+可及性(orforglipron)统治，还是 GPCR/VKTX 疗效收敛后夺走高价值口服利润池？"
+      source_hint: aleniglipron/VK2735 Phase 3 顶线 + 口服疗效收敛轨迹
+    - question: 口服小分子 generic 悬崖是否比多肽更陡——小分子化学合成门槛低，专利到期后利润池会否被 generic 快速摧毁（比司美多肽生物类似药更凶）？
+      source_hint: 口服小分子专利到期时点 + 化学 generic vs 生物类似药竞争速度对照 + 丙肝 DAA 镜鉴
+    - question: 保险/PBM 已装机注射剂是否把口服放量斜率限制在慢坡——支付方偏好、formulary 卡位、净价压制是否让"平权化放量"斜率不及预期？
+      source_hint: 美国 PBM/formulary 口服覆盖政策 + IRA/TrumpRx 净价路径
+    - question: 口服"可及性平权"是否真兑现——绕开冷链/依从性/产能后，口服能否把 TAM 从注射窄口真扩到基层，还是被净价/支付/疗效落差堵住扩容？
+      source_hint: 口服产能/成本 economics + 基层放量数据 + TAM 口径
+
+  l4_hunting:         # 狩猎层：哪里有错误定价（逐条对齐 thesis K#）
+    - question: orforglipron/口服 Wegovy 上市后首 12 月 TRx/收入斜率，是兑现"平权化放量"，还是被注射装机+保险偏好限制在慢坡？市场目前隐含的放量斜率是多少？
+      addresses: [K1]
+      search_keywords: [orforglipron 上市 处方, 口服 Wegovy 新处方份额, oral GLP-1 launch uptake]
+      source_hint: LLY/NVO 季报口服口径 + IQVIA/处方追踪 + 卖方放量模型
+    - question: GPCR aleniglipron / VKTX VK2735 口服 Phase 3 顶线读出时点与疗效，能否既"疗效强"又"可及"，成为独立高价值利润池，还是仅为 LLY 过贵时的替代入口？
+      addresses: [K2]
+      search_keywords: [aleniglipron Phase 3, VK2735 oral Phase 3, GSBR-1290 顶线]
+      source_hint: GPCR/VKTX 10-Q 临床进度 + Phase 3 设计与读出时点 + 疗效收敛卖方评估
+    - question: 疗效领跑者(GPCR/VKTX)最终是被 LLY/大厂并购(替代入口、期权兑现)还是独立商业化(独立利润池)？当前市场隐含的并购概率与估值是多少？
+      addresses: [K2]
+      search_keywords: [Viking 并购 收购, Structure Therapeutics acquisition, VKTX takeover target]
+      source_hint: VKTX/GPCR 市值与现金 + 并购传闻/卖方 M&A 估值 + 大厂口服管线缺口
+    - question: 口服小分子专利悬崖的时点与陡度——小分子化学 generic 上市速度是否远快于多肽生物类似药？利润池被摧毁的时间窗有多长？
+      addresses: [K3]
+      search_keywords: [orforglipron 专利到期, oral GLP-1 generic, 小分子 专利悬崖 减重]
+      source_hint: orforglipron/GSBR-1290 专利结构 + 化学 generic vs 生物类似药竞争速度 + 丙肝/他汀镜鉴
+    - question: 净价/支付(IRA 谈判、TrumpRx、PBM formulary)对口服放量斜率与利润率的限制有多大？口服是否因净价下压反而利润池更薄？
+      addresses: [K1]
+      search_keywords: [口服 GLP-1 保险覆盖, oral obesity PBM formulary, orforglipron 定价 净价]
+      source_hint: 美国 PBM/formulary 政策 + IRA/TrumpRx 净价落地 + 口服现付价对照
+
+material_priority:
+  tier1:              # 必读，研究不可缺
+    - title: LLY 10-K + 10-Q（orforglipron 口服规模领跑者：放量口径/利润池主体/管线）
+      type: annual-report
+      ticker: ""       # ✓ 已收集（来自父 topic）—— 复用 mat-82221a / mat-c9c6aa
+      source: 复用父 topic materials（global-glp1-obesity）
+      why: 口服规模领跑者，放量斜率(K1)与规模vs疗效(K2)的核心主体
+      addresses: [K1, K2]
+      info_tier: public
+    - title: GPCR (Structure Therapeutics) 10-K + 10-Q（aleniglipron/GSBR-1290 口服疗效领跑者：-16.3% 无平台期）
+      type: annual-report
+      ticker: ""       # ✓ 已收集（来自父 topic）—— 复用 mat-124143 / mat-63a6fb
+      source: 复用父 topic materials
+      why: 口服疗效领跑者，K2 规模vs疗效分离的疗效侧核心
+      addresses: [K2]
+      info_tier: public
+    - title: VKTX (Viking) 10-K + 10-Q（VK2735 口服疗效 12.2% + 并购标的属性）
+      type: annual-report
+      ticker: ""       # ✓ 已收集（来自父 topic）—— 复用 mat-b1dcfc / mat-405320
+      source: 复用父 topic materials
+      why: 口服疗效第二领跑者 + 潜在并购标的，K2 核心
+      addresses: [K2]
+      info_tier: public
+    - title: NVO 20-F + 6-K（口服 Wegovy/司美：口服放量证据 65% 新处方 + 多肽 generic 悬崖）
+      type: annual-report
+      ticker: ""       # ✓ 已收集（来自父 topic）—— 复用 mat-77d015 / mat-76802d
+      source: 复用父 topic materials
+      why: 口服放量的已兑现证据(K1) + 多肽 generic 悬崖对照(K3)
+      addresses: [K1, K3]
+      info_tier: public
+    - title: 口服 GLP-1 竞争格局与放量追踪（orforglipron 上市 uptake vs 注射装机；处方份额时序）
+      type: industry-research
+      ticker: ""
+      source: IQVIA / 卖方 GLP-1 pipeline update / 处方追踪
+      why: K1 放量斜率的直接证据（是否被注射装机限制在慢坡）
+      addresses: [K1]
+      info_tier: half_public
+    - title: aleniglipron / VK2735 口服 Phase 3 读出与疗效收敛评估（卖方/临床解读）
+      type: sell-side-note
+      ticker: ""
+      source: 卖方生物医药研报 / clinicaltrials.gov / 学会读出
+      why: K2 疗效领跑者能否既强又可及、成独立利润池的关键判据
+      addresses: [K2]
+      info_tier: half_public
+
+  tier2:              # 补充，有最好
+    - title: 恒瑞医药 2025 年报（HRS-7535 口服小分子管线 + 国产 generic 视角）
+      type: annual-report
+      ticker: ""       # ✓ 已收集（来自父 topic）—— 复用 mat-3e8247
+      source: 复用父 topic materials
+      why: 国产口服小分子玩家 + generic 悬崖(K3)的中国侧
+      addresses: [K2, K3]
+      info_tier: public
+    - title: 华东医药 2025 年报（HDM-1002/HDM-1005 口服小分子管线）
+      type: annual-report
+      ticker: ""       # ✓ 已收集（来自父 topic）—— 复用 mat-70c031
+      source: 复用父 topic materials
+      why: 国产口服小分子第二玩家，K2/K3 中国侧证据
+      addresses: [K2, K3]
+      info_tier: public
+    - title: 口服玩家一致预期/估值表（LLY/NVO/VKTX/GPCR forward PE、目标价、并购隐含估值）
+      type: sell-side-note
+      ticker: ""       # 部分复用 mat-21a243（GLP-1 个股估值），需补最新
+      source: 复用 mat-21a243 + exa 补最新卖方目标价
+      why: 环⑥ winner 选拔的估值锚（谁贵、纯标的赔率）
+      addresses: [K1, K2]
+      info_tier: half_public
+    - title: 口服小分子专利悬崖与 generic 分析（专利到期时点 + 化学 generic vs 生物类似药竞争速度）
+      type: industry-research
+      ticker: ""
+      source: 专利数据库/卖方专利到期分析 + 丙肝 DAA 复盘
+      why: K3 长期 generic 是否自我摧毁口服利润池
+      addresses: [K3]
+      info_tier: half_public
+    - title: 美国口服 GLP-1 支付/PBM/formulary 覆盖政策（放量斜率限制、净价路径）
+      type: policy
+      ticker: ""
+      source: KFF/Mercer/GoodRx 覆盖追踪 + IRA/TrumpRx 净价
+      why: K1 放量是否被保险偏好+净价限制在慢坡
+      addresses: [K1]
+      info_tier: half_public
+
+  tier3:              # 可选（深度研究时参考）
+    - title: 其他口服玩家管线（Roche CT-996、Terns TERN-601、AstraZeneca AZD5004/Eccogene、Pfizer danuglipron 退出复盘）
+      type: industry-research
+      ticker: ""
+      source: 卖方 pipeline update / 公司公告
+      why: 口服小分子竞争纵深，判断疗效领跑梯队是否更拥挤（K2）
+      addresses: [K2]
+      info_tier: half_public
+    - title: 口服小分子产能/单位成本 economics（可及性平权是否真兑现到基层）
+      type: industry-research
+      ticker: ""
+      source: 卖方成本模型 / LLY 产能披露
+      why: 口服可及性平权(TAM 扩容)的成本侧验证（K1）
+      addresses: [K1]
+      info_tier: hard
+
+key_risks_to_monitor:
+  - 口服占新增 GLP-1 处方份额（放量斜率兑现/证伪 K1）
+  - orforglipron TRx/收入斜率 vs 注射装机（K1）
+  - aleniglipron/VK2735 口服 Phase 3 顶线读出时点与疗效%（K2）
+  - VKTX/GPCR 并购动态与隐含估值（K2）
+  - 口服小分子专利到期时点 + 首个 generic 申报（K3）
+  - IRA/TrumpRx/PBM 对口服净价与覆盖的落地（K1）
+
+# 历史类比 → arena-mirror 收料 todo（喂决策链环⑤）
+analogies_to_study:
+  - name: 丙肝 DAA 口服小分子（Gilead Sovaldi/Harvoni，2013–2018）
+    logic: 口服小分子颠覆性疗法快速铺量、利润池急速做大，但专利到期+竞争(AbbVie/Merck)+付费方压价在数年内快速摧毁利润池
+    limits: 丙肝是一次性治愈（存量耗竭），减重是慢病长期用药（存量可复用），摧毁节奏可能不同
+    addresses: [K3]
+    ring: arena-mirror
+  - name: 他汀 vs PCSK9 疗效↔可及性分层（口服他汀统治 vs 注射 PCSK9 小众）
+    logic: 口服(疗效够+可及性强)统治大众市场、注射(疗效更强但依从性差)退居小众——类比口服减重"疗效弱但铺量"能否成利润池主体
+    limits: 他汀疗效与注射差距远小于口服减重 10.5% vs 20%+ 的落差，可及性优势能否补偿疗效落差存疑
+    addresses: [K1, K2]
+    ring: arena-mirror
+  - name: DPP-4 / SGLT2 口服糖尿病小分子平权放量（西格列汀/达格列净）
+    logic: 口服小分子在糖尿病的放量斜率 + 长期 generic 化后利润池演变，作为口服减重放量与 generic 节奏的镜鉴
+    limits: 糖尿病口服疗效定位与减重不同，且未经历减重级别的需求爆发
+    addresses: [K1, K3]
+    ring: arena-mirror

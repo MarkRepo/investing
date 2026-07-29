@@ -1,0 +1,252 @@
+slug: us-ionq
+variant: opus4.8
+entries:
+- searched_at: '2026-07-27T12:23:30.584969+00:00'
+  query: IonQ latest quarterly earnings 2026 revenue bookings guidance
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:30.609578+00:00'
+  query: IonQ 2025 full year revenue net loss cash position results
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:30.644675+00:00'
+  query: IonQ stock market cap price to sales valuation 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:30.692158+00:00'
+  query: IonQ Oxford Ionics acquisition completed close status
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:30.711010+00:00'
+  query: IonQ Capella Space acquisition status 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:30.767445+00:00'
+  query: IonQ logical qubits milestone AQ roadmap 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:30.826042+00:00'
+  query: IonQ CEO Niccolo de Masi Peter Chapman management 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:30.877066+00:00'
+  query: Quantinuum vs IonQ trapped ion competition fidelity 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:30.930604+00:00'
+  query: Google IBM quantum error correction milestone 2025 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:31.013858+00:00'
+  query: IonQ analyst price target rating consensus 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:31.133614+00:00'
+  query: IonQ equity raise dilution share count ATM 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:31.198622+00:00'
+  query: quantum computing stocks Nvidia Jensen Huang quantum advantage timeline
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:23:53.153392+00:00'
+  query: IonQ scope 覆盖（离子阱/估值/营收/路线图）
+  triggered_by: 00-prescan
+  n_results: 6
+  n_high: 0
+  n_mid: 0
+  n_low: 6
+  disposition: skipped-covered
+- searched_at: '2026-07-27T12:23:53.157306+00:00'
+  query: IonQ company-event 覆盖（财报/M&A/管理层/融资）
+  triggered_by: 00-prescan
+  n_results: 6
+  n_high: 0
+  n_mid: 0
+  n_low: 6
+  disposition: skipped-covered
+- searched_at: '2026-07-27T12:33:49.487912+00:00'
+  query: IonQ analyst price target consensus average high low rating 2026
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:33:49.632908+00:00'
+  query: Oxford Ionics electronic qubit control 99.99% two-qubit gate fidelity Nature
+    paper
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:33:49.740802+00:00'
+  query: Quantinuum IPO S-1 filing valuation Honeywell 2026
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:33:49.894787+00:00'
+  query: Niccolo de Masi acquisition track record dMY Glu Mobile capital allocation
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:33:50.006696+00:00'
+  query: IonQ revenue organic growth vs acquisition contribution analyst breakdown
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:33:50.126192+00:00'
+  query: quantum computing stocks bubble valuation price to sales collapse history
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:33:50.250917+00:00'
+  query: quantum computing sector ETF fund flows sentiment catalyst 2026
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:35:03.947062+00:00'
+  query: 00-deep-fetch 分析类 todo 全量(consensus/EQC/Quantinuum/de Masi/营收成色/泡沫镜鉴/情绪)
+  triggered_by: 00-deep-fetch
+  n_results: 35
+  n_high: 3
+  n_mid: 13
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:39:43.525074+00:00'
+  query: Quantinuum IPO valuation quantum stock price to sales IONQ price target
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:39:43.660369+00:00'
+  query: IonQ cash burn share dilution ATM offering 2026
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:39:43.860902+00:00'
+  query: IonQ commercial customers revenue recognition customer concentration
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:39:44.079283+00:00'
+  query: IonQ logical qubits error correction below threshold demonstration 2026
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:39:44.152409+00:00'
+  query: IonQ organic revenue acquisition contribution segment breakdown Q2 2026
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-27T12:39:44.159025+00:00'
+  query: quantum computing stocks sentiment sector ETF flows catalyst 2026
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-lowtier
+- searched_at: '2026-07-27T12:39:44.165849+00:00'
+  query: IonQ scope L4轮
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-27T12:39:44.173032+00:00'
+  query: IonQ company-event L4轮
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-27T12:40:01.196259+00:00'
+  query: 01-prescan L4逐K#扫(K1-K6, 90天)
+  triggered_by: 01-prescan
+  n_results: 30
+  n_high: 3
+  n_mid: 9
+  n_low: 0
+  disposition: registered

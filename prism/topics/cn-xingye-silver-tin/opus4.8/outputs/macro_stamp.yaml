@@ -1,0 +1,16 @@
+as_of_regime_version: 3
+regime_composite: v3 过热转降温+长端牛平+fx企稳偏弱：实际利率下行与弱美元对银锡量价双击总体友好，但隐含利率路径边际偏鹰+象限降温是尾部逆风
+depends_on_states:
+- conclusion: fx_cny
+  state: 企稳偏弱（弱美元利好美元计价银锡）
+  role: confirming
+- conclusion: rates_us
+  state: 长端牛平/实际利率下行（利好白银金融属性）
+  role: load_bearing
+discount_rate: null
+slug: cn-xingye-silver-tin
+variant: opus4.8
+stamped_at: '2026-07-19T02:32:12.411346+00:00'
+stale: true
+stale_reason: 依赖的『企稳偏弱（弱美元利好美元计价银锡）』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+  v3→v4)

@@ -1,0 +1,118 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: us-tesla
+variant: opus4.8
+created: 2026-07-23
+primer_scope: "primer 该覆盖：特斯拉四块业务边界(汽车/能源/服务/期权)、EV 与自动驾驶产业链、robotaxi 两阶段(围栏试点 vs 无监管规模化)、纯视觉 vs 激光雷达路线、碳积分机制、储能商业模式、Musk key-man 与薪酬结构、估值分歧的期权定价机理、汽车基本盘季度指标读法"
+
+learning_track:
+  l3_debates:   # 争议层：多空分歧展开(源自 thesis 最大反方)
+    - question: "叙事股不按 DCF 定价——SpaceX 2026-06 IPO + xAI/集团整合叙事正加速，204x 是否会'越贵越涨'？空头择时风险有多大？"
+      source_hint: "SpaceX IPO 估值、Musk 集团整合表态、TSLA 估值史"
+    - question: "能源(133GWh 路线, 31%毛利)+FSD 软件订阅能否逐步'填实'期权、把 204x 摊薄，实现不靠 Optimus 的软着陆？"
+      source_hint: "能源分部财务、FSD 订阅渗透率/ARPU"
+    - question: "Q2 2026 交付 480k(+25%)是趋势反转还是 Q1 库存积压的一次性消化？Q3/Q4 能否延续？"
+      source_hint: "季度产销分解、库存周转、区域交付、订单"
+    - question: "纯视觉路线 vs Waymo 激光雷达——安全冗余与监管无人化许可上，特斯拉是领先还是落后？"
+      source_hint: "接管率数据、NHTSA 调查、州级无人商业许可"
+    - question: "key-man(Musk 注意力/政治/America Party)+$1T 薪酬稀释+品牌-36%——是持续折价项还是已充分 price-in？"
+      source_hint: "品牌价值追踪、薪酬包稀释测算、政治事件时间线"
+
+  l4_hunting:   # 狩猎层：逐条对齐 thesis K#
+    - question: "SOTP 拆解后，汽车+能源基本面部分的合理估值占当前 $1.43T 市值多少？市场为期权(robotaxi+Optimus)隐含定价了多少？"
+      addresses: [K1]
+      search_keywords: [Tesla sum-of-parts valuation, TSLA auto business fair value, robotaxi implied value]
+      source_hint: "卖方 SOTP 模型(MS/ARK vs 空头)、分部 EV/EBITDA"
+    - question: "到 2026-12 特斯拉是否在 ≥3 城实现真无安全员、公众收费的 robotaxi 商业运营？拿到无人化商业许可没有？"
+      addresses: [K2]
+      search_keywords: [Tesla robotaxi unsupervised cities 2026, driverless commercial permit, robotaxi public paid rides]
+      source_hint: "财报电话会 robotaxi 段、州级监管备案、第三方追踪"
+    - question: "Cybercab/robotaxi 每英里成本与毛利是否有一手数据证明可规模盈利(vs 补贴推广)？对标 Waymo 如何？"
+      addresses: [K3]
+      search_keywords: [robotaxi cost per mile, Cybercab unit economics, Tesla robotaxi margin]
+      source_hint: "财报电话会单位经济学披露、第三方拆解"
+    - question: "Q3/Q4 2026 交付是否延续 YoY 增长(非一次性)？剔除碳积分的汽车单独毛利率是否企稳回升？"
+      addresses: [K4]
+      search_keywords: [Tesla Q3 2026 deliveries, automotive gross margin ex-credits, Tesla ASP trend]
+      source_hint: "Cox/卖方交付预测、剔积分毛利拆解"
+    - question: "2026 年内 Optimus 是否有可核实的外部订单/量产出货(非口播/演示)？若全年无实质出货，期权折价多少？"
+      addresses: [K5]
+      search_keywords: [Optimus production units 2026, Tesla robot shipments, Optimus external order]
+      source_hint: "财报电话会 Optimus 段、官方产线披露"
+    - question: "2026 储能部署/营收是否延续 >25% 增长？毛利承压指引兑现程度？能源能否成摊薄估值的可靠支柱？"
+      addresses: [K6]
+      search_keywords: [Tesla energy storage 2026 growth, Megapack deployment guidance, energy gross margin compression]
+      source_hint: "财报能源分部、行业部署数据"
+
+material_priority:
+  tier1:   # 必读(P0)
+    - title: "特斯拉 FY2025 10-K + 2026 Q1 10-Q(分部收入/剔积分汽车毛利/FCF/净利率)"
+      type: annual-report
+      ticker: TSLA
+      source: "SEC EDGAR"
+      addresses: [K1, K4, K6]
+      why: "环①④基本面地基；K1/K4/K6 财务锚"
+    - title: "特斯拉官方 Q1 2026 Update deck + 财报电话会实录(robotaxi/能源/Optimus 指引)"
+      type: sell-side-note
+      source: "assets-ir.tesla.com / 转录"
+      addresses: [K2, K5, K6]
+      why: "一手管理层指引；K2/K5/K6"
+    - title: "卖方目标价一致预期 + SOTP 分部估值(MS/ARK 多头 vs 传统卖方空头假设)"
+      type: sell-side-note
+      source: "MS/ARK 研报、TipRanks/Benzinga/MarketBeat 共识"
+      addresses: [K1]
+      why: "A合同 consensus；环②④；K1 估值锚(市场隐含期权定价)"
+    - title: "robotaxi 无监管商业化一手证据(监管许可 + 第三方接管/里程数据)"
+      type: industry-research
+      source: "州级监管备案、第三方 robotaxi 追踪"
+      addresses: [K2, K3]
+      why: "命门2(低置信优先)；K2/K3"
+  tier2:   # 补充(P1)
+    - title: "Waymo vs Tesla robotaxi 横向对比(城市数/无监管里程/单位经济学)"
+      type: industry-research
+      source: "Waymo 官方/媒体、第三方分析"
+      addresses: [K2, K3]
+      why: "环②护城河；K2/K3"
+    - title: "Q3/Q4 2026 交付前瞻 + 剔积分汽车毛利趋势卖方拆解"
+      type: sell-side-note
+      source: "Cox Automotive/卖方"
+      addresses: [K4]
+      why: "命门3；K4"
+    - title: "储能 2026 部署/营收/毛利指引 + Megablock 休斯顿产能"
+      type: industry-research
+      source: "财报能源分部、pv-magazine/energy-storage.news"
+      addresses: [K6]
+      why: "K6 第二曲线韧性"
+    - title: "Musk 资本配置史 + $1T 薪酬包完整条款 + 25%投票权诉求(proxy DEF 14A)"
+      type: policy
+      source: "ir.tesla.com DEFA14A"
+      addresses: [K5]
+      why: "A合同 mgmt-capital-alloc；环①⑤；K5 稀释/绑定双面性"
+    - title: "Optimus 量产/外部订单一手证据(财报电话会 + 官方出货)"
+      type: industry-research
+      source: "财报电话会、官方发布"
+      addresses: [K5]
+      why: "K5 期权证伪(现 empty，待财报电话会)"
+  tier3:   # 可选(P2)
+    - title: "历史镜鉴：Musk 时间表跳票史 + 高估值叙事股 de-rating 案例"
+      type: industry-research
+      source: "历年财报/发布会时间表回溯、复盘文章"
+      addresses: [K1, K2]
+      why: "A合同 historical-mirror；环⑤；K1/K2"
+
+key_risks_to_monitor:
+  - "robotaxi 无监管商业化跳票(Musk 时间表历史)→期权 de-rating"
+  - "剔积分汽车毛利继续压缩 + 碳积分收入随税补到期骤降"
+  - "中国份额被 BYD/小米持续挤压、欧洲品牌抵制"
+  - "Musk 政治卷入/注意力分散/$1T 薪酬稀释"
+  - "2026 储能毛利承压指引兑现超预期(下修风险)"
+
+analogies_to_study:
+  - name: "Cisco 2000(美国网络设备泡沫顶)"
+    logic: "高增长叙事把估值推到极端 PE，随后叙事降速触发多年 de-rating"
+    limit: "Cisco 无第二曲线期权；特斯拉有 robotaxi/Optimus 真实(但未兑现)期权"
+  - name: "特斯拉自身 2020-2022(估值泡沫→2022 腰斩)"
+    logic: "同一标的的叙事周期：2021 极端估值后 2022 基本面降速+加息导致腰斩"
+    limit: "当时无 robotaxi 商业化落地，纯预期;今有 Austin 实运营，期权更'实'"
+  - name: "Nvidia 2023-2025(AI 叙事兑现股)"
+    logic: "叙事股中'兑现派'样本——基本面真放量支撑高估值的正面对照"
+    limit: "Nvidia 基本面已兑现(营收暴增);特斯拉期权尚未转化为利润"

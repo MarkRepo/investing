@@ -1,0 +1,682 @@
+slug: cn-leadex-300450
+variant: opus4.8
+updated: '2026-07-28T09:27:31.521162+00:00'
+materials:
+- id: mat-b46cca
+  filename: 2026-07-28_无锡先导智能装备股份有限公司.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.185877+00:00'
+  processed: true
+  notes: query='先导智能 2025年年度报告 营业收入 归母净利润 经营现金流 毛利率' | query='先导智能 固态电池 收入 单独披露 单GWh
+    价值量' | query='先导智能 2025年报 资产减值 Northvolt 应收账款 计提'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 王燕清 资本开支 并购 股权激励 分红 历史 资本配置
+    url: http://static.cninfo.com.cn/finalpage/2026-03-31/1225058761.PDF
+    domain: static.cninfo.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:41:25.505858+00:00'
+    stale_at: '2026-08-27T07:41:25.505858+00:00'
+    expire_at: '2026-10-26T07:41:25.505858+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 先导智能 2025年报 资产减值 Northvolt 应收账款 计提
+- id: mat-4186af
+  filename: 2026-07-28_电池--先导智能-300450---2025-年报点评-25-年业绩高速增长.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.190360+00:00'
+  processed: false
+  notes: query='先导智能 2025年年度报告 营业收入 归母净利润 经营现金流 毛利率' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 固态电池 收入 单独披露 单GWh 价值量
+    url: https://pdf.dfcfw.com/pdf/H3_AP202603311820920592_1.pdf?1774983105000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.259881+00:00'
+    stale_at: '2026-08-27T07:32:39.259881+00:00'
+    expire_at: '2026-10-26T07:32:39.259881+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 先导智能 2025年年度报告 营业收入 归母净利润 经营现金流 毛利率
+- id: mat-608d04
+  filename: 2026-07-28_先导智能2026年一季度营收36-91亿-归母净利润4-05亿---观点网.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.195035+00:00'
+  processed: false
+  notes: query='先导智能 2026年一季报 营收 净利 在手订单 同比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 2026年一季报 营收 净利 在手订单 同比
+    url: https://www.guandian.cn/m/show/558197
+    domain: guandian.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.193634+00:00'
+    stale_at: '2026-08-27T07:32:39.193634+00:00'
+    expire_at: '2026-10-26T07:32:39.193634+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dd56ac
+  filename: 2026-07-28_新能源装备龙头先导智能斩获史上一季度最高营收---经济界.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.201180+00:00'
+  processed: false
+  notes: query='先导智能 2026年一季报 营收 净利 在手订单 同比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 2026年一季报 营收 净利 在手订单 同比
+    url: https://www.huaxjr.com/17832.html
+    domain: huaxjr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.199348+00:00'
+    stale_at: '2026-08-27T07:32:39.199348+00:00'
+    expire_at: '2026-10-26T07:32:39.199348+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2a8e1d
+  filename: 2026-07-28_先导智能-300450-公司公告-先导智能-2025年年度报告新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.206834+00:00'
+  processed: false
+  notes: query='先导智能 2025年报 前五大客户 第一大客户 占比 宁德时代'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 研发费用 研发人员 2025 变动
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=300450&id=12047263
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.312810+00:00'
+    stale_at: '2026-08-27T07:32:39.312810+00:00'
+    expire_at: '2026-10-26T07:32:39.312810+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 先导智能 2025年报 前五大客户 第一大客户 占比 宁德时代
+- id: mat-6a8915
+  filename: 2026-07-28_先导智能赴港上市聆讯通过-去年净利润预增四至五倍---21财经.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.212795+00:00'
+  processed: false
+  notes: query='先导智能 2025年报 前五大客户 第一大客户 占比 宁德时代'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 2025年报 前五大客户 第一大客户 占比 宁德时代
+    url: https://m.21jingji.com/article/20260127/71b544db204f87ee223caa5a685c5adc.html
+    domain: m.21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.210507+00:00'
+    stale_at: '2026-08-27T07:32:39.210507+00:00'
+    expire_at: '2026-10-26T07:32:39.210507+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-baea31
+  filename: 2026-07-28_先导智能-目前公司已实现全固态电池整线解决方案的量产级交付.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.220417+00:00'
+  processed: false
+  notes: query='先导智能 固态电池 设备订单 金额 量产线 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 固态电池 设备订单 金额 量产线 2026
+    url: https://finance.sina.com.cn/stock/relnews/cn/2026-03-31/doc-inhswxzv9114176.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.217896+00:00'
+    stale_at: '2026-08-27T07:32:39.217896+00:00'
+    expire_at: '2026-10-26T07:32:39.217896+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-777638
+  filename: 2026-07-28_先导智能-已成功打通全固态电池量产的全线工艺环节.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.228397+00:00'
+  processed: false
+  notes: query='先导智能 固态电池 设备订单 金额 量产线 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 固态电池 设备订单 金额 量产线 2026
+    url: https://www.cls.cn/detail/2135960
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.225226+00:00'
+    stale_at: '2026-08-27T07:32:39.225226+00:00'
+    expire_at: '2026-10-26T07:32:39.225226+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c25cbb
+  filename: 2026-07-28_锂电设备企业订单增多动能足-固态电池技术突破与海外市场拓展成新引擎.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.237512+00:00'
+  processed: false
+  notes: query='先导智能 固态电池 设备订单 金额 量产线 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 海外订单 LG 三星 SK 固态 客户 2026
+    url: https://www.stcn.com/article/detail/3322486.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.477281+00:00'
+    stale_at: '2026-08-27T07:32:39.477281+00:00'
+    expire_at: '2026-10-26T07:32:39.477281+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - 先导智能 固态电池 设备订单 金额 量产线 2026
+- id: mat-507d57
+  filename: 2026-07-28_港股ipo-锂电池智能装备巨头先导智能开始招股-东方财富网.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.272445+00:00'
+  processed: false
+  notes: query='先导智能 赴港上市 H股 IPO 进展 递表 聆讯 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 赴港上市 H股 IPO 进展 递表 聆讯 2026
+    url: https://finance.eastmoney.com/a/202602033639848510.html
+    domain: finance.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.268622+00:00'
+    stale_at: '2026-08-27T07:32:39.268622+00:00'
+    expire_at: '2026-10-26T07:32:39.268622+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f1be88
+  filename: 2026-07-28_财报-先导智能-2025年年度报告---发现报告.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.286829+00:00'
+  processed: false
+  notes: query='先导智能 2025年报 资产减值 Northvolt 应收账款 计提'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 2025年报 资产减值 Northvolt 应收账款 计提
+    url: https://www.fxbaogao.com/detail/5326336
+    domain: fxbaogao.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.282529+00:00'
+    stale_at: '2026-08-27T07:32:39.282529+00:00'
+    expire_at: '2026-10-26T07:32:39.282529+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-593919
+  filename: 2026-07-28_先导智能-300450-sz-深度报告-锂电设备龙头-受益全球产能周期.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.329280+00:00'
+  processed: false
+  notes: query='先导智能 研发费用 研发人员 2025 变动' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 研发费用 研发人员 2025 变动
+    url: https://pdf.dfcfw.com/pdf/H3_AP202108211511423340_1.pdf?1630178365000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.322937+00:00'
+    stale_at: '2026-08-27T07:32:39.322937+00:00'
+    expire_at: '2026-10-26T07:32:39.322937+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f844f5
+  filename: 2026-07-28_宁德时代-计划2027年小批量生产全固态电池-硫化物路线或能率先量产-附固态电池行业发展现状分析-产.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.348650+00:00'
+  processed: false
+  notes: query='宁德时代 全固态电池 量产 时间表 2027 凝聚态 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 宁德时代 全固态电池 量产 时间表 2027 凝聚态 2026
+    url: https://t.qianzhan.com/caijing/detail/240428-abd65f5a.html
+    domain: t.qianzhan.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.342172+00:00'
+    stale_at: '2026-08-27T07:32:39.342172+00:00'
+    expire_at: '2026-10-26T07:32:39.342172+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-384551
+  filename: 2026-07-28_固态电池产业化步入黄金发展期.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.364896+00:00'
+  processed: false
+  notes: query='宁德时代 全固态电池 量产 时间表 2027 凝聚态 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 宁德时代 全固态电池 量产 时间表 2027 凝聚态 2026
+    url: https://www.stcn.com/article/detail/1530674.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.358552+00:00'
+    stale_at: '2026-08-27T07:32:39.358552+00:00'
+    expire_at: '2026-10-26T07:32:39.358552+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-14536d
+  filename: 2026-07-28_先导智能-300450-市盈率-估值-基本面---理杏仁.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.382868+00:00'
+  processed: false
+  notes: query='先导智能 市盈率 市净率 市销率 股价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 市盈率 市净率 市销率 股价 2026
+    url: https://www.lixinger.com/equity/company/detail/sz/300450/300450/fundamental/valuation
+    domain: lixinger.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.377372+00:00'
+    stale_at: '2026-08-27T07:32:39.377372+00:00'
+    expire_at: '2026-10-26T07:32:39.377372+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d32f38
+  filename: 2026-07-28_先导智能-300450-相关资料-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.399221+00:00'
+  processed: false
+  notes: query='先导智能 市盈率 市净率 市销率 股价 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 市盈率 市净率 市销率 股价 2026
+    url: http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_CorpXiangGuan/stockid/300450.phtml
+    domain: vip.stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.392602+00:00'
+    stale_at: '2026-08-27T07:32:39.392602+00:00'
+    expire_at: '2026-10-26T07:32:39.392602+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8e2874
+  filename: 2026-07-28_锂电设备行业深度关注海外扩产加速-头部设备商产能稀缺性.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.422311+00:00'
+  processed: false
+  notes: query='锂电设备 行业 2026 招标 电池厂 扩产 capex 复苏 拐点' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 锂电设备 行业 2026 招标 电池厂 扩产 capex 复苏 拐点
+    url: https://pdf.dfcfw.com/pdf/H3_AP202108031507775097_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.415498+00:00'
+    stale_at: '2026-08-27T07:32:39.415498+00:00'
+    expire_at: '2026-10-26T07:32:39.415498+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5aa9c0
+  filename: 2026-07-28_先导智能-2026年第二季度持续斩获固态电池头部客户订单.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.452036+00:00'
+  processed: false
+  notes: query='先导智能 海外订单 LG 三星 SK 固态 客户 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 海外订单 LG 三星 SK 固态 客户 2026
+    url: https://m.sohu.com/a/1055396763_114984
+    domain: m.sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:32:39.440225+00:00'
+    stale_at: '2026-08-27T07:32:39.440225+00:00'
+    expire_at: '2026-10-26T07:32:39.440225+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4cbc04
+  filename: 2026-07-28_先导智能固态钠电业务进展顺利订单增长预期向好.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.502947+00:00'
+  processed: false
+  notes: query='先导智能 海外订单 LG 三星 SK 固态 客户 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 海外订单 LG 三星 SK 固态 客户 2026
+    url: http://www.eeo.com.cn/2026/0613/913772.shtml
+    domain: eeo.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.492252+00:00'
+    stale_at: '2026-08-27T07:32:39.492252+00:00'
+    expire_at: '2026-10-26T07:32:39.492252+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ee04b7
+  filename: 2026-07-28_先导智能港股正式发售-明星投资机构云集-无锡国资也来了.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.527519+00:00'
+  processed: false
+  notes: query='先导智能 H股 港股 股票代码 上市 09656 OR 02580' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 H股 港股 股票代码 上市 09656 OR 02580
+    url: https://time-weekly.com/post/327308
+    domain: time-weekly.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.519777+00:00'
+    stale_at: '2026-08-27T07:32:39.519777+00:00'
+    expire_at: '2026-10-26T07:32:39.519777+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0ac7f4
+  filename: 2026-07-28_无锡先导智能装备股份有限公司关于刊发h-股招股说明书.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.552078+00:00'
+  processed: true
+  notes: query='先导智能 H股 港股 股票代码 上市 09656 OR 02580'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 H股 招股说明书 全文 港交所 hkexnews 全球发售
+    url: http://static.cninfo.com.cn/finalpage/2026-02-03/1224963817.pdf
+    domain: static.cninfo.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:41:25.280598+00:00'
+    stale_at: '2026-08-27T07:41:25.280598+00:00'
+    expire_at: '2026-10-26T07:41:25.280598+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 先导智能 H股 港股 股票代码 上市 09656 OR 02580
+- id: mat-7ee560
+  filename: 2026-07-28_无锡迎来新年第一股-先导智能-a-h-上市.md
+  source_type: web-search
+  added: '2026-07-28T07:32:39.578047+00:00'
+  processed: false
+  notes: query='先导智能 H股 港股 股票代码 上市 09656 OR 02580' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 H股 港股 股票代码 上市 09656 OR 02580
+    url: https://www.xhby.net/content/s69a83e1de4b04ffb0910949c.html
+    domain: xhby.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:32:39.568761+00:00'
+    stale_at: '2026-08-27T07:32:39.568761+00:00'
+    expire_at: '2026-10-26T07:32:39.568761+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bc51cc
+  filename: 2025_300450_annual_2026-03-30_先导智能.PDF
+  source_type: annual-report
+  added: '2026-07-28T07:39:09.191875+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 先导智能
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-5d2750
+  filename: 2026_300450_quarterly_2026-04-28_先导智能.PDF
+  source_type: quarterly-report
+  added: '2026-07-28T07:39:09.556785+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 先导智能
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-2c8506
+  filename: 2026-07-20_300450_announce_kzz_关于H股回购股份方案的自愿性公告.PDF
+  source_type: announcement
+  added: '2026-07-28T07:39:42.226850+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 先导智能
+  mineru_state: done
+  rings:
+  - financial-arc
+- id: mat-d2a1ff
+  filename: 2026-01-25_300450_announce_yjygjxz_2025年度业绩预告.PDF
+  source_type: announcement
+  added: '2026-07-28T07:39:42.384252+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 先导智能
+  mineru_state: done
+  rings:
+  - financial-arc
+- id: mat-d89a8f
+  filename: 2026-07-28_全球發售.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.253942+00:00'
+  processed: true
+  notes: query='先导智能 H股 招股说明书 全文 港交所 hkexnews 全球发售' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 H股 招股说明书 全文 港交所 hkexnews 全球发售
+    url: https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0203/2026020300010_c.pdf
+    domain: www1.hkexnews.hk
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:41:25.243350+00:00'
+    stale_at: '2026-08-27T07:41:25.243350+00:00'
+    expire_at: '2026-10-26T07:41:25.243350+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6dba37
+  filename: 2026-07-28_先导智能-300450-看好国内龙头扩产重启-海外整车厂入局.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.312036+00:00'
+  processed: true
+  notes: query='先导智能 深度报告 固态电池 整线 量产 2026 券商研报'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 深度报告 固态电池 整线 量产 2026 券商研报
+    url: https://pdf.dfcfw.com/pdf/H3_AP202506031684034706_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:41:25.302655+00:00'
+    stale_at: '2026-08-27T07:41:25.302655+00:00'
+    expire_at: '2026-10-26T07:41:25.302655+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-2ed781
+  filename: 2026-07-28_先导智能-成功输出量产级固态电池整线方案产品陆续获订单.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.340050+00:00'
+  processed: true
+  notes: query='先导智能 深度报告 固态电池 整线 量产 2026 券商研报'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 深度报告 固态电池 整线 量产 2026 券商研报
+    url: https://m.cnstock.com/commonDetail/493579?from=QRCODE
+    domain: m.cnstock.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:41:25.329851+00:00'
+    stale_at: '2026-08-27T07:41:25.329851+00:00'
+    expire_at: '2026-10-26T07:41:25.329851+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-58ae06
+  filename: 2026-07-28_先导智能-已实现全固态电池整线解决方案的量产级交付.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.371700+00:00'
+  processed: true
+  notes: query='先导智能 深度报告 固态电池 整线 量产 2026 券商研报' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 深度报告 固态电池 整线 量产 2026 券商研报
+    url: https://wap.eastmoney.com/a/202601153620749180.html
+    domain: wap.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:41:25.361398+00:00'
+    stale_at: '2026-08-27T07:41:25.361398+00:00'
+    expire_at: '2026-10-26T07:41:25.361398+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c6452e
+  filename: 2026-07-28_业绩-v型-反转先导智能如何穿越周期.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.406143+00:00'
+  processed: true
+  notes: query='先导智能 2022 2024 业绩下滑 减值 复盘 锂电设备 周期 教训' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 2022 2024 业绩下滑 减值 复盘 锂电设备 周期 教训
+    url: http://www.cb.com.cn/index/show/bzyc/cv/cv135275741644
+    domain: cb.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:41:25.395085+00:00'
+    stale_at: '2026-08-27T07:41:25.395085+00:00'
+    expire_at: '2026-10-26T07:41:25.395085+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-440bc8
+  filename: 2026-07-28_电池--先导智能-300450---2024-年-2025-一季报点评.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.436475+00:00'
+  processed: true
+  notes: query='先导智能 2022 2024 业绩下滑 减值 复盘 锂电设备 周期 教训'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 2022 2024 业绩下滑 减值 复盘 锂电设备 周期 教训
+    url: https://pdf.dfcfw.com/pdf/H3_AP202504301665041341_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:41:25.425362+00:00'
+    stale_at: '2026-08-27T07:41:25.425362+00:00'
+    expire_at: '2026-10-26T07:41:25.425362+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-267caf
+  filename: 2026-07-28_a-h新能源智能制造展宏图-先导智能开启双资本征程.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.474144+00:00'
+  processed: true
+  notes: query='先导智能 王燕清 资本开支 并购 股权激励 分红 历史 资本配置' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 王燕清 资本开支 并购 股权激励 分红 历史 资本配置
+    url: https://www.leadintelligent.com/news-detail/480
+    domain: leadintelligent.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:41:25.463014+00:00'
+    stale_at: '2026-08-27T07:41:25.463014+00:00'
+    expire_at: '2026-10-26T07:41:25.463014+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-25745a
+  filename: 2026-07-28_先导智能-300450-盈利预测.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.544446+00:00'
+  processed: true
+  notes: query='先导智能 盈利预测 目标价 券商评级 2026 2027 净利润 一致预期' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 盈利预测 目标价 券商评级 2026 2027 净利润 一致预期
+    url: https://basic.10jqka.com.cn/300450/worth.html
+    domain: basic.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:41:25.532848+00:00'
+    stale_at: '2026-08-27T07:41:25.532848+00:00'
+    expire_at: '2026-10-26T07:41:25.532848+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-761f01
+  filename: 2026-07-28_盈利预测.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.579082+00:00'
+  processed: true
+  notes: query='先导智能 盈利预测 目标价 券商评级 2026 2027 净利润 一致预期' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 先导智能 盈利预测 目标价 券商评级 2026 2027 净利润 一致预期
+    url: https://webf10.gw.com.cn/SH/B16/SH688768_B16.html
+    domain: webf10.gw.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:41:25.567266+00:00'
+    stale_at: '2026-08-27T07:41:25.567266+00:00'
+    expire_at: '2026-10-26T07:41:25.567266+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-11c585
+  filename: 2026-07-28_东吴证券晨会纪要2025-04-29.md
+  source_type: web-search
+  added: '2026-07-28T07:41:25.613411+00:00'
+  processed: true
+  notes: query='先导智能 盈利预测 目标价 券商评级 2026 2027 净利润 一致预期'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: 先导智能 盈利预测 目标价 券商评级 2026 2027 净利润 一致预期
+    url: https://pdf.dfcfw.com/pdf/H3_AP202504291664097536_1.pdf?1745887036000.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:41:25.600625+00:00'
+    stale_at: '2026-08-27T07:41:25.600625+00:00'
+    expire_at: '2026-10-26T07:41:25.600625+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e4d40d
+  filename: 2026_HK00470_prospectus_2026-02-03_WUXILEAD.pdf
+  source_type: prospectus
+  added: '2026-07-28T08:21:14.889501+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — WUXI LEAD
+  mineru_state: done
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc

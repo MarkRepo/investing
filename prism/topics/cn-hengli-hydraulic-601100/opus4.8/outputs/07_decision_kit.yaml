@@ -1,0 +1,107 @@
+slug: cn-hengli-hydraulic-601100
+variant: opus4.8
+topic_type: company
+display_name: 恒立液压 (601100)
+ticker: SSE_601100
+generated: 2026-07-25T08:20:00Z
+data_freshness: 2026-Q1
+data_freshness_basis: mat-13a734 (2026Q1季报) + mat-3a64d1 (25家券商一致预期) + mat-4eee9a (Q1 EBIT+34%归因) + 实时行情 akshare 2026-07-24
+
+buy_box:
+  strong_buy_max: 72
+  accumulate_min: 72
+  accumulate_max: 87
+  hold_min: 87
+  hold_max: 110
+  current_price: 106.79
+  price_as_of: 2026-07-24
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: v2重估——主业腿已被25家consensus(+28.4%)+Q1 EBIT+34%坐实(命门A下调),但核心上行仍押未证机器人期权(K2良率黑箱/K1定点未兑现)+现价前瞻PE 41x估值充分+EV仅约+2%+信心中。现价可小额试探性底仓,标准加仓仍等回调进可建仓区
+  initial_max_pct: null
+  full_max_pct: 5
+  add_ladder_prices: [87, 78, 72]
+  max_cluster_pct: null
+
+valuation_models:
+  - name: forward_pe_consensus
+    label: 前瞻PE(2026E consensus EPS 2.60)
+    bull_fair_value: [123, 147]
+    base_fair_value: [99, 109]
+    bear_fair_value: [78, 91]
+  - name: base_plus_option_decomposition
+    label: 基本盘+期权拆解
+    bull_fair_value: [95, 110]
+    base_fair_value: [62, 72]
+    bear_fair_value: [45, 51]
+  - name: reverse_pe_dcf
+    label: 逆向PE-DCF(隐含5年EPS CAGR)
+    bull_fair_value: [130, 147]
+    base_fair_value: [95, 105]
+    bear_fair_value: [62, 72]
+
+kill_criteria:
+  - id: earnings_quality_confirm
+    description: 2026半年报+三季报扣非连续两季负增长且EBIT增速同步转弱→WMBT-1证伪(v2加EBIT条件避免单季FX噪音误触)
+    status: pending
+    check_at: 2026-10
+  - id: prs_tier1_designation
+    description: 特斯拉/国内头部整机PRS批量定点公告→WMBT-3兑现,重估期权转多
+    status: pending
+    check_at: 2026-12
+  - id: valuation_reset_35x
+    description: 股价回落至前瞻PE≤35x(约91元,2026E EPS 2.60)或TTM PE≤35x(约72元)→期权费出清、安全边际出现转积极
+    status: pending
+    check_at: 2026-12
+  - id: governance_escalation
+    description: 汪立平留置升级至上市公司层面(资金占用/资产牵连)→命门C复活为下行核心
+    status: pending
+    check_at: 2026-12
+
+signposts:
+  - date: 2026-08
+    event: 恒立2026半年报
+    bull_signal: 扣非增速转正、EBIT延续高增(+30%)、墨西哥等新厂减亏
+    bear_signal: 扣非继续负增长且EBIT增速同步转弱
+    triggered: null
+  - date: 2026-Q3
+    event: 特斯拉Optimus Gen3投产(官宣7-8月，初期周产100台)
+    bull_signal: 带动PRS定点/订单落地(期权重定价催化)
+    bear_signal: 投产延期/单台用量不及预期
+    triggered: null
+  - date: 2026
+    event: 恒立PRS定点进展
+    bull_signal: 整机Tier1批量定点
+    bear_signal: 长期停留送样、被双林/五洲抢占
+    triggered: null
+
+cluster_tags: [humanoid-robot, planetary-roller-screw, construction-machinery, hydraulics, china-industrial]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    note: K2丝杠良率/精度等级(C3/C5)无公开硬数据，仅门槛C5≤21μm/300mm
+  - ring: 3
+    kind: data-missing
+    note: K1整机Tier1定点档位未兑现，公开信息天花板，需产业链一手调研
+  - ring: 2
+    kind: data-missing
+    note: 机器人业务无独立分部披露，藏于"配件及铸件"8.91亿含多项，单独毛利/营收不可分离；期权NPV敏感带为LLM假设非实证
+
+market_implied:
+  metric: implied_2026_net_income_growth_pct
+  value: 28.4
+
+my_vs_market_delta:
+  metric: implied_2026_net_income_growth_pct
+  my_value: 21
+  delta: "-7pct"
+  direction: neutral

@@ -1,0 +1,397 @@
+slug: global-glp1-oral-small-molecule
+display_name: GLP-1 口服小分子平权化 arena
+type: arena
+created: '2026-07-21T23:22:48.382352+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: global-glp1-obesity
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 口服小分子减重药能否真放量、把 TAM 从注射窄口扩到基层？谁是规模领跑者(LLY orforglipron)、谁是疗效领跑者(GPCR/VKTX)？口服疗效弱(10.5%)会否限制利润池、长期
+    generic 会否自我摧毁口服利润？
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  short_name: 口服小分子平权
+  search_terms:
+  - orforglipron
+  - 口服小分子
+  - GSBR-1290
+  - VK2735 口服
+  - 平权化
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-22T06:40:58.026884+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0b4c14
+    - mat-124143
+    - mat-1cc9d9
+    - mat-21a243
+    - mat-3e8247
+    - mat-493874
+    - mat-56ee94
+    - mat-63a6fb
+    - mat-70c031
+    - mat-77d015
+    - mat-7f94b2
+    - mat-875aa5
+    - mat-87d0af
+    - mat-9c426c
+    - mat-a645b0
+    - mat-a6e783
+    - mat-a91c3a
+    - mat-b1dcfc
+    - mat-da05cc
+    - mat-daac55
+    - mat-e0d600
+    - mat-f39c3c
+    - mat-fd18f6
+    - mat-ff23c8
+    - mat-ff734a
+    last_error: null
+    critic_passed: true
+  a_arena_case:
+    version: 1
+    last_updated: '2026-07-22T06:49:52.548883+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0b4c14
+    - mat-124143
+    - mat-1cc9d9
+    - mat-21a243
+    - mat-3e8247
+    - mat-493874
+    - mat-56ee94
+    - mat-63a6fb
+    - mat-70c031
+    - mat-77d015
+    - mat-82221a
+    - mat-875aa5
+    - mat-87d0af
+    - mat-9c426c
+    - mat-a645b0
+    - mat-a6e783
+    - mat-a91c3a
+    - mat-b1dcfc
+    - mat-c9c6aa
+    - mat-da05cc
+    - mat-daac55
+    - mat-e0d600
+    - mat-f39c3c
+    - mat-fd18f6
+    - mat-ff23c8
+    last_error: null
+  peer_matrix:
+    version: 1
+    last_updated: '2026-07-22T06:49:52.573827+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-124143
+    - mat-21a243
+    - mat-3e8247
+    - mat-63a6fb
+    - mat-70c031
+    - mat-77d015
+    - mat-82221a
+    - mat-87d0af
+    - mat-a91c3a
+    - mat-b1dcfc
+    - mat-e0d600
+    last_error: null
+parent_materials:
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-82221a
+  addresses:
+  - K1
+  - K2
+  note: LLY 10-K：orforglipron 口服规模领跑者，放量与利润池主体
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-c9c6aa
+  addresses:
+  - K1
+  - K2
+  note: LLY 10-Q：最新季度口服进展/放量口径
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-124143
+  addresses:
+  - K2
+  note: GPCR 10-K：Structure aleniglipron 口服疗效领跑者(-16.3%)、产能口径
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-63a6fb
+  addresses:
+  - K2
+  note: GPCR 10-Q：aleniglipron 44wk 无平台期最新数据
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-b1dcfc
+  addresses:
+  - K2
+  note: VKTX 10-K：VK2735 口服疗效(12.2%)、并购标的属性
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-405320
+  addresses:
+  - K2
+  note: VKTX 10-Q：VK2735 口服 Phase 3 进展/现金
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-77d015
+  addresses:
+  - K1
+  - K3
+  note: NVO 20-F：口服 Wegovy(司美)放量口径 + 多肽 generic 悬崖
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-76802d
+  addresses:
+  - K1
+  note: NVO 6-K：最新季度口服司美份额/净价
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-3e8247
+  addresses:
+  - K2
+  - K3
+  note: 恒瑞 2025 年报：HRS-7535 口服小分子管线/国产 generic 视角
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-70c031
+  addresses:
+  - K2
+  - K3
+  note: 华东医药 2025 年报：HDM-1002/HDM-1005 口服小分子管线
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-21a243
+  addresses:
+  - K1
+  - K2
+  note: GLP-1 个股估值表(LLY/NVO/VKTX forward PE)：winner 选拔的估值锚
+next_actions:
+- 为深研档推进研究：说「prism 推进 us-viking-vktx」或「prism 推进 us-structure-gpcr」
+- 可选：说「评审 global-glp1-oral-small-molecule」跑对抗式 steelman，或 web 点「✓ 标记完成」
+user_todos:
+- task: 收 口服 GLP-1 竞争格局与放量追踪（orforglipron uptake vs 注射装机；处方份额时序）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: sidecar→registered 1 hits
+- task: 收 aleniglipron/VK2735 口服 Phase 3 读出与疗效收敛评估（卖方/临床）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: sidecar→registered 3 hits
+- task: 收 口服玩家一致预期/估值表（LLY/NVO/VKTX/GPCR forward PE、目标价、并购隐含估值）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: sidecar→registered 2 hits
+- task: 收 口服小分子专利悬崖与 generic 分析（专利到期时点 + 化学 generic vs 生物类似药竞争速度）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: sidecar→registered 3 hits
+- task: 收 美国口服 GLP-1 支付/PBM/formulary 覆盖政策（放量斜率限制、净价路径）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: sidecar→registered 3 hits
+- task: 收 其他口服玩家管线（Roche CT-996、Terns TERN-601、AstraZeneca AZD5004、Pfizer danuglipron
+    退出）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: sidecar→registered 3 hits
+- task: 收 口服小分子产能/单位成本 economics（可及性平权是否兑现到基层）
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: sidecar→registered 2 hits
+- task: 收 arena-mirror 实证：丙肝 DAA(Sovaldi/Harvoni) 专利悬崖快速摧毁利润池复盘
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: sidecar→registered 2 hits
+- task: 收 arena-mirror 实证：他汀 vs PCSK9 疗效↔可及性分层复盘
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: sidecar→registered 1 hits
+- task: 收 arena-mirror 实证：DPP-4/SGLT2 口服糖尿病小分子平权放量 + generic 节奏
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: sidecar→registered 1 hits
+- task: 03 抽取完成：19 份 web findings 全部落盘（+11 份父级复用）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成（3 份），深研档 VKTX/GPCR 已建 company stub，等待推进或进入监控
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-22T06:52:05.436720+00:00'
+  history:
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-22T06:52:05.436738+00:00'
+    summary: 3命门：A疗效↔可及性权衡(主·中) / B规模vs疗效领跑分离(中高) / C generic悬崖+支付总闸(中)。均未坍塌未增删。
+    convergence_status: converged
+    changelog: v1首版据厚料直接立3命门；命门A细化(规模/疗效领跑分层+支付摩擦证据)非增删；primer 12目标无增删(DACRA/biased
+      agonist术语补足属写作修订)；对照无v0历史无震荡。
+thesis:
+  current_version: 1
+  last_updated: '2026-07-22T06:52:05.398160+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-21T23:23:42.109229+00:00'
+    summary: 口服小分子是 TAM 平权化唯一路径、放量最快；但规模领跑(LLY)与疗效领跑(GPCR/VKTX)分离，orforglipron 疗效弱是主命门。强度7/10。
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-22T06:52:05.398315+00:00'
+    summary: 押平权化真放量+规模收敛LLY(已透支40.8x故观察)，赔率在疗效领跑纯标的VKTX/GPCR(对冲疗效落差+并购期权、估值未透支)；淘汰NVO口服多肽/华东低毛利/AZN太早。强度6/10。
+stage_history:
+- stage: 02-gather-materials
+  entered_at: '2026-07-22T06:08:46.387818+00:00'
+  exited_at: '2026-07-22T06:23:52.218545+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    - peer-comparison-financials
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-22T06:23:52.218545+00:00'
+  exited_at: '2026-07-22T06:57:08.649944+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-22T06:57:08.649944+00:00'
+  exited_at: '2026-07-22T06:57:17.963465+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-22T06:57:17.963465+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-22T06:10:59.930968+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 8
+  queries_with_hits: 8

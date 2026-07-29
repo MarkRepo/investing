@@ -1,0 +1,142 @@
+slug: us-viking-vktx
+variant: opus4.8
+topic_type: company
+display_name: Viking Therapeutics (VKTX)
+ticker: US_VKTX
+generated: 2026-07-22T00:00:00Z
+version: 2
+data_freshness: 2026-Q1 + 2026-07-22（05-critic 兜底 web-search）
+prior_version_note: v1 判标准档买入/EV+98%；v2 经 base rate 检验降为观望/极小仓/EV+8%
+
+buy_box:
+  strong_buy_max: 25
+  accumulate_min: 25
+  accumulate_max: 32
+  hold_min: 32
+  hold_max: 48
+  current_price: 37.95
+  price_as_of: 2026-07-21
+  current_zone: hold   # v1=accumulate；v2 下修——现价高于 Goldman 风险调整低锚 $30、多头无 edge
+
+position_framework:
+  position_tier: 试探/观望
+  sizing_rationale: EV 从 v1 +98% 重算至 +8%（$10B 结局概率被 base rate 打回 9-15% vs 市场隐含 38%、稀释打进 base/muddle、bear 打深）；+8% EV 配 40% 的 -76% 尾 = 赔率不足；现价高于可信低锚 $30 → 现价观望不买，≤$30 才转小仓投机
+  initial_max_pct: 1.5   # 现价观望为主，0-1.5%；已持有则减到极小核心期权仓
+  full_max_pct: 3        # 仅在 ≤$30 赔率转正后逐步到此上限
+  add_ladder_prices: [30, 25]
+  max_cluster_pct: 10    # v1=12，v2 收紧
+
+valuation_models:
+  - name: rnpv_independent
+    label: rNPV 独立开发（皮下峰值销售×份额×成功概率×折现−未来烧钱）
+    bull_fair_value: [90, 130]      # 需未风险调整 ~$21.6B 峰值 [mat-30b367]
+    base_fair_value: [40, 60]
+    bear_fair_value: [8, 18]
+  - name: sellside_risk_adjusted
+    label: 卖方风险调整锚（Goldman $2.8B 峰值→PT $30，低于现价）[mat-689a68]
+    bull_fair_value: [null, null]
+    base_fair_value: [30, 30]
+    bear_fair_value: [null, null]
+  - name: ma_comps_metsera
+    label: 并购可比（Metsera ~$100亿；$10B 结局 base rate 仅 9-15%，买家池 2-3 家）
+    bull_fair_value: [120, 172]
+    base_fair_value: [70, 86]
+    bear_fair_value: [40, null]
+  - name: cash_floor_sotp
+    label: 现金地板+管线残值 SOTP（读出前烧尽+稀释后下行保护线走薄）
+    bull_fair_value: [null, null]
+    base_fair_value: [12, 20]
+    bear_fair_value: [8, 12]
+
+scenarios:
+  - name: bull
+    desc: 78周强 + 真 $12-18B 竞拍收购
+    prob: 0.11
+    target: 120
+    return_pct: 216
+  - name: base_up
+    desc: 三期达标 + $10B 并购 或 强独立 rNPV
+    prob: 0.18
+    target: 70
+    return_pct: 84
+  - name: muddle
+    desc: 达标但稀释15-25% + 无溢价并购 + 竞争挤压
+    prob: 0.31
+    target: 38
+    return_pct: 0
+  - name: bear
+    desc: 三期miss/安全信号/读出前深度稀释
+    prob: 0.40
+    target: 9
+    return_pct: -76
+expected_return_pct: 8.5   # v1=98；负偏双峰，40% 概率 -76%
+
+kill_criteria:
+  - id: vanquish_miss
+    description: VANQUISH-1/2 78周减重<15%(安慰剂调整)或停药率>20%或安全信号→兑现Bear(-76%)
+    status: pending
+    check_at: 2027
+  - id: deep_dilution
+    description: 读出前>15%折价大额增发或runway警告→Muddle兑现、进一步压EV(近乎必然事件、非尾部)
+    status: pending
+    check_at: 2026-Q4
+  - id: oral_liability
+    description: 口服三期显著落后orforglipron/aleniglipron且耐受无优势→命门3转实锤负债
+    status: pending
+    check_at: 2027
+
+flip_up_triggers:   # v2 新增——观望转买入的上行信号
+  - id: buyer_named
+    description: 诺和/默沙东具名实质尽调或要约→反转观望转买入(右尾兑现、踏空风险)
+    status: pending
+    check_at: ongoing
+  - id: price_to_floor
+    description: 股价跌至≤$30(Goldman风险调整锚)→赔率转正、转小仓投机
+    status: pending
+    check_at: ongoing
+
+signposts:
+  - date: 2026-Q4
+    event: 口服三期是否如期启动(已滑期)+维持研究数据 + ATM动用/增发节奏(惜发→急发=WMBT-3兑现最早信号)
+    bull_signal: 按期启动+维持数据好+无急发稀释
+    bear_signal: 再滑期+停药反弹严重+急发折价增发
+    triggered: null
+  - date: 2026-H2_2027
+    event: 并购传闻/具名买家(诺和最可能)尽调——观望立场的最大上行风险
+    bull_signal: 诺和/默沙东具名尽调或实质要约
+    bear_signal: 主要买家明确退出
+    triggered: null
+  - date: 2027
+    event: VANQUISH-1/2 皮下三期 topline(核心临床开关)
+    bull_signal: 78周减重≥15%安慰剂调整+清洁安全/停药率
+    bear_signal: 减重miss或AE停药率高或安全信号
+    triggered: null
+
+cluster_tags: [glp1-obesity, clinical-biotech, ma-target, oral-glp1]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 2
+    kind: data-missing
+    note: 逐家券商 rNPV/PoS model 逐项拆解在付费墙后未取(仅有 Goldman 风险调整峰值$2.8B/PT$30 + 乐观$21.6B 两端锚);需用户一手研报
+  - ring: 1
+    kind: data-missing
+    note: SEC 2025 proxy(vktx-20250408)正文精确持股%与comp逐项需一手fetch;insider口径冲突2.79%vs5.30%待裁决
+  - ring: 4
+    kind: inference
+    note: "$10B结局base rate 9-15%为跨案例统计推断(非VKTX专项);乐观峰值$21.6B来自三手源confidence0.5"
+
+market_implied:
+  metric: implied_prob_of_10b_outcome
+  value: 0.38
+
+my_vs_market_delta:
+  metric: implied_prob_of_10b_outcome
+  my_value: 0.12          # v1=0.52；base rate 拆解后 9-15% 取中枢
+  delta: "-26pct"          # v1=+14pct(long)；v2 反向
+  direction: neutral       # 多头edge反向；但不做空(临床base rate高、右尾轧空风险)

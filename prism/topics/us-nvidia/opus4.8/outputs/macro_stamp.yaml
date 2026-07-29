@@ -1,0 +1,16 @@
+as_of_regime_version: 3
+regime_composite: NVDA不在原transmission_map，已自注册provisional行(长久期高beta成长)待macro复核；织进case⑤(risk-off杀高估值)+②(贴现率敏感)
+depends_on_states:
+- conclusion: rates_us
+  state: 现读数(见regime eval v3)
+  role: load_bearing
+- conclusion: risk_appetite
+  state: 现读数
+  role: confirming
+discount_rate: null
+slug: us-nvidia
+variant: opus4.8
+stamped_at: '2026-07-23T23:46:12.367362+00:00'
+stale: true
+stale_reason: 依赖的『现读数(见regime eval v3)』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+  v3→v4)

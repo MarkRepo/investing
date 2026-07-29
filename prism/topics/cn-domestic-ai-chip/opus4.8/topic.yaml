@@ -3,7 +3,7 @@ display_name: 国产AI芯片（昇腾链/寒武纪/海光）
 type: arena
 created: '2026-07-01T07:36:49.806491+00:00'
 status: active
-stage: 00-init
+stage: done
 canonical: true
 parent_topic: cn-ai-compute
 monitoring_tier: dormant
@@ -20,25 +20,448 @@ scope:
   - 海光DCU
   - 国产AI芯片份额
   - 华鲲振宇
-outputs_state: {}
-parent_materials: []
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-23T23:27:37.757026+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1495b8
+    - mat-1c4f09
+    - mat-1d1f97
+    - mat-22a172
+    - mat-5681bc
+    - mat-9bbdca
+    - mat-9bcb1e
+    - mat-aa336b
+    - mat-b468e9
+    - mat-b7b1ad
+    - mat-bff4a1
+    - mat-e09e87
+    - mat-e3c813
+    - mat-eb8ad9
+    - mat-f47302
+    - mat-f82211
+    - mat-fef166
+    last_error: null
+    critic_passed: true
+  a_arena_case:
+    version: 2
+    last_updated: '2026-07-24T00:04:04.424870+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1495b8
+    - mat-1c4f09
+    - mat-1d1f97
+    - mat-22a172
+    - mat-27eea4
+    - mat-5681bc
+    - mat-713fe2
+    - mat-9bcb1e
+    - mat-aa336b
+    - mat-b468e9
+    - mat-b7b1ad
+    - mat-bff4a1
+    - mat-c6e650
+    - mat-dc8ac3
+    - mat-e09e87
+    - mat-eb8ad9
+    - mat-ec6de6
+    - mat-f47302
+    - mat-fef166
+    last_error: null
+  peer_matrix:
+    version: 2
+    last_updated: '2026-07-24T00:04:04.453765+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-27eea4
+    - mat-713fe2
+    - mat-bff4a1
+    - mat-e09e87
+    last_error: null
+  08_living_feed:
+    version: 3
+    last_updated: '2026-07-24T00:06:51.203828+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials:
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-fd3250
+  addresses:
+  - K3
+  - K4
+  note: 寒武纪2024年报:前五大客户94.63%/第一大79.15%
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-566b9a
+  addresses:
+  - K4
+  note: 寒武纪2025业绩快报:全年盈利20.6亿
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-7a9acb
+  addresses:
+  - K4
+  note: 寒武纪2025业绩预告
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-19e0fd
+  addresses:
+  - K4
+  note: 寒武纪2025定增募集说明书
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-cf9c9a
+  addresses:
+  - K4
+  note: 寒武纪2026Q1季报:经营现金流转正
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-bcc950
+  addresses:
+  - K1
+  - K5
+  note: 昇腾产业链拆解/供应链国产化率
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-f82211
+  addresses:
+  - K2
+  note: 推理范式/DeepSeek效率/价值再分配
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-1d1f97
+  addresses:
+  - K4
+  - K5
+  note: 半导体国产替代历史镜鉴:面板/存储
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-9bbdca
+  addresses:
+  - K1
+  note: 华为资本配置与战略史(不上市/利润分配)
+- parent_slug: cn-ai-compute
+  parent_variant: opus4.8
+  mat_id: mat-27eea4
+  addresses:
+  - K4
+  note: 算力链估值锚:PE/PS/市值横向对比
 next_actions:
-- 运行 workflow 01-build-roadmap
-user_todos: []
-suggested_drilldowns: []
+- 研究主题已闭环，下一步「监控 cn-domestic-ai-chip」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：v2返修后独立反方复核放行:介入纪律改可执行双条件闸门(滚动fwd-12M PE<80x AND命门未恶化,宁可踏空不接飞刀)、海光评分拆CPU/DCU两维降3.5、寒武纪深研≠买入分离降3.0、镜鉴装牙。三致命点实质封堵,残留为立场分歧或已下沉company/P1缺口
+user_todos:
+- task: 下载海光信息(688041)2025年报+2026Q1季报结构化PDF
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  - K5
+  - K3
+  source_hint: cninfo ticker SSE_688041,走annual_report_extractor
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-bff4a1
+  - mat-f47302
+  last_fetch_note: cninfo 2份
+- task: 厘清海光吸并中科曙光最新状态(终止/软整合/推进)与对海光标的形态影响
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: mat-590858与mat-be379c矛盾,需最新公告/研报确认
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-eb8ad9
+- task: 构建海光vs寒武纪vs华鲲振宇(昇腾外围)同口径shortlist可比矩阵料(份额/增速/26-27E估值/客户质量/生态/介入价位)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K4
+  source_hint: 环⑥终局收料,卖方对比深度+估值锚
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-25e97e
+  - mat-79b32f
+  - mat-c6e650
+  - mat-dc8ac3
+  - mat-ec6de6
+  last_fetch_note: 三门派/五强对比 3份
+- task: 华鲲振宇/高新发展(000628)昇腾整机份额与利润分配数据
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 昇腾外围卡位,整机毛利15-25%验证
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-a7e6f7
+- task: 字节跳动自研PPU对寒武纪订单/客户集中度冲击的草根/产业链证据
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K3
+  source_hint: 命门2核心,草根纪要/产业链调研多半empty但需尝试
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-77fc88
+  - mat-981cb0
+  - mat-aa336b
+  last_fetch_note: 字节SeedChip 35万颗 2份
+- task: 寒武纪思元690发布节奏与多客户放量进展(摊薄字节依赖)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 决定寒武纪shortlist位次
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-22a172
+  - mat-77fc88
+  - mat-981cb0
+  - mat-b468e9
+  - mat-b7b1ad
+  - mat-dc67ad
+  last_fetch_note: 产量翻两倍/多客户 5份
+- task: 上游产能最新硬数据:中芯7nm可分配昇腾产能上限+长鑫HBM3进BOM时间表
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: 与cn-advanced-mfg-hbm共地基,部分已由继承mat-bcc950/mat-bcc9db覆盖
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-1495b8
+  - mat-4c9099
+  - mat-77fc88
+  - mat-bcc950
+  - mat-bcc9db
+  - mat-e3c813
+  last_fetch_note: 长鑫HBM3交付/中芯扩产 4份
+- task: 下载寒武纪(688256)2025年报+2026Q1季报结构化PDF
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-e09e87
+  - mat-1c4f09
+- task: 收consensus卖方一致预期(寒武纪/海光26E-28E净利+目标价)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-713fe2
+  - mat-0b733b
+- task: 资料提取完成：本轮17份actionable全部处理完毕(累计finding覆盖K1-K6)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 资料提取完成：24份findings就位(17新抽+6深抓+1即兴arena-mirror)，62份料全处理
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: arena case 合成中...
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: arena 决策链合成中(primer + a_arena_case + peer_matrix)...
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: arena决策链合成完成:primer(deep,critic1轮)+a_arena_case(6环全通,chain-critic2轮收敛)+peer_matrix(5家)+2个company
+    stub(海光/寒武纪)+thesis_v1/decomposition_v1(converged)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 海光 AI-DCU 分部收入/放量斜率与 x86 CPU 信创业务拆分(4.0评分锚有多少靠CPU)
+  rationale: critic致命点:143.77亿以CPU为主、DCU年报未拆不可测、不在昇腾62/寒武14交付份额表
+  source: critic_weak_k
+  related:
+  - K5
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-07-23T23:57:03.756933+00:00'
+- question: K2份额可持续性一手统计(现仅TrendForce/大摩二手web、thin+单源)
+  rationale: gap thin K2(1)+单源;承重份额节奏靠prescan二手
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P1
+  status: open
+  suggested_at: '2026-07-23T23:57:03.756933+00:00'
 monitoring:
   enabled: false
   cadence: daily
-critic: null
+critic:
+  verdict: approve
+  summary: v2返修后独立反方复核放行:介入纪律改可执行双条件闸门(滚动fwd-12M PE<80x AND命门未恶化,宁可踏空不接飞刀)、海光评分拆CPU/DCU两维降3.5、寒武纪深研≠买入分离降3.0、镜鉴装牙。三致命点实质封堵,残留为立场分歧或已下沉company/P1缺口
+  at: '2026-07-24T00:06:51.178524+00:00'
+  thesis_version: 1
+  next_stage: done
 decomposition:
-  current_version: null
-  last_updated: null
-  history: []
+  current_version: 1
+  last_updated: '2026-07-23T23:46:49.118621+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-23T16:46:49.017969+00:00'
+    summary: 命门1=海光首选卡位是否成立(生态迁移易+PS0.49x+吸并闭环)(中); 命门2=寒武纪最大客户字节自研PPU替代速度(中); 命门3=份额56%→90%是否被上游产能卡住(中-高)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-23T23:46:49.118646+00:00'
+    summary: 命门1(海光首选卡位:吸并终止+迁移易半真两支柱各松动一根,剩盈利+体量+通用路线)中; 命门2(寒武纪字节自研PPU替代速度,最脆弱WMBT-3)中;
+      命门3(份额56→90%被上游产能卡,中芯7nm+长鑫HBM3封顶)中-高
+    convergence_status: converged
+    changelog: 砍命门1旧支柱吸并闭环(因mat-eb8ad9吸并2025/12/9终止)+迁移易降级(mat-5681bc半真);命门2/3维持表述强化证据;primer入门目标11条无增删,仅#5补制程先修节(critic反馈);2轮chain-critic内收敛(首轮判份额节奏停浅致命缺口→补份额兑现节奏→二轮可接受放行);对照全历史无震荡
 thesis:
-  current_version: 0
-  last_updated: '2026-07-01T07:38:07.359603+00:00'
+  current_version: 1
+  last_updated: '2026-07-23T23:46:49.085931+00:00'
   history:
   - version: 0
     stage_set_at: 00-init-from-parent
     set_at: '2026-07-01T07:38:07.359619+00:00'
     summary: 国产AI芯片是替代兑现层核心(寒武纪FY25+453%已证实)但估值极端(PE369x);命门=华为不上市下A股最优卡位+份额是否被H20/B30挤压+估值消化时点。看多兑现但需价格纪律。强度5.5
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-23T16:44:55.823300+00:00'
+    summary: 国产AI芯片替代进入业绩兑现期(寒武纪+453%/海光+57%/份额56%/H20哑弹),分化看法:首选海光(生态迁移易+PS0.49x体量+吸并中科曙光闭环)、次选寒武纪(推理最强但字节自研PPU风险+PS80x)、昇腾不上市买外围整机、四小龙淘��。强度6.0,需价格纪律
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 70%（7/10，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-23T16:45:14.242182+00:00'
+    summary: 国产AI芯片进入业绩兑现期(寒武纪+453%/海光+57%/份额56%/H20解禁成哑弹),分化看法:首选海光(类CUDA迁移易+PS0.49x体量+吸并中科曙光闭环)、次选寒武纪(推理最强但字节自研PPU风险+PS80x仍贵)、昇腾不上市买外围整机(华鲲振宇)、四小龙淘汰。强度6.0需价格纪律
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 70%（7/10，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T23:46:49.086087+00:00'
+    summary: 国产AI芯片进入业绩兑现验证期,A股纯芯片可投卡位收敛为海光(盈利+通用DCU)vs寒武纪(纯度+推理旗帜)双雄;两家都是真受益者但都被极端定价(26E
+      PE均远超80x阈值),alpha在谁最弱假设更扛+谁介入价先到。强度6.0,深研以备、价格纪律介入
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-23T16:53:19.160780+00:00'
+  exited_at: '2026-07-23T17:01:38.240330+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K6
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-23T17:01:38.240330+00:00'
+  exited_at: '2026-07-23T17:51:45.945652+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K6
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-23T17:51:45.945652+00:00'
+  exited_at: '2026-07-23T23:47:07.894196+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-23T23:47:07.894196+00:00'
+  exited_at: '2026-07-24T00:04:04.466926+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 2
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-24T00:04:04.466926+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 2
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-23T17:04:48.597995+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 8
+  queries_with_hits: 8

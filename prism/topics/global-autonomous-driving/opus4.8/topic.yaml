@@ -1,0 +1,409 @@
+slug: global-autonomous-driving
+display_name: 自动驾驶行业 (Autonomous Driving, GLOBAL)
+type: industry
+created: '2026-07-28T07:18:26.938748+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 自动驾驶行业(GLOBAL/deep/全栈价值链：上游AD芯片·激光雷达·域控→中游智驾软件·方案商·OEM自研→下游robotaxi运营)——预判利润池落到哪几个arena、押哪条迁移路径。先验赌注:利润池最确定在AD计算芯片(Nvidia+地平线双寡头卖铲人)与能规模化上车的少数L2+方案商(华为/Momenta);robotaxi运营单位经济学未证、兑现最慢。迁移路径押视觉+端到端大模型压缩激光雷达/高精地图价值,激光雷达TAM是我与共识(押ADAS放量利好禾赛/速腾)的分歧点。
+  depth: deep
+  terminal: 把资本/注意力分配给哪几个细分 arena（深挖/观察/淘汰三档分流）
+  short_name: 自动驾驶
+  search_terms:
+  - 端到端智驾
+  - robotaxi 商业化
+  - 自动驾驶芯片
+  - 激光雷达 纯视觉
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-28T09:44:08.773265+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-041e4e
+    - mat-079b09
+    - mat-0ac4e9
+    - mat-323bf4
+    - mat-461d7c
+    - mat-52c2f5
+    - mat-61db3c
+    - mat-6417b1
+    - mat-94c77d
+    - mat-9a125f
+    - mat-9c851d
+    - mat-9e16e0
+    - mat-9e3123
+    - mat-a1b668
+    - mat-a678a9
+    - mat-a81878
+    - mat-a9b6a2
+    - mat-abba71
+    - mat-b9b432
+    - mat-c7de09
+    - mat-d5e608
+    - mat-d9818f
+    - mat-e5fb63
+    - mat-e9f88a
+    - mat-eb5378
+    - mat-ec5cd0
+    - mat-f720f4
+    last_error: null
+    critic_passed: true
+  i_industry_case:
+    version: 1
+    last_updated: '2026-07-28T09:53:22.621917+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-021ccc
+    - mat-02c337
+    - mat-041e4e
+    - mat-079b09
+    - mat-0ac4e9
+    - mat-19d44e
+    - mat-323bf4
+    - mat-41019d
+    - mat-461d7c
+    - mat-52c2f5
+    - mat-61db3c
+    - mat-6417b1
+    - mat-94c77d
+    - mat-9a125f
+    - mat-9c851d
+    - mat-9e16e0
+    - mat-9e3123
+    - mat-a1b668
+    - mat-a678a9
+    - mat-a81878
+    - mat-a9b6a2
+    - mat-abba71
+    - mat-b9b432
+    - mat-c7de09
+    - mat-d5e608
+    - mat-d9818f
+    - mat-e5fb63
+    - mat-eb5378
+    - mat-ec5cd0
+    - mat-edc5c2
+    - mat-f56b98
+    - mat-f720f4
+    last_error: null
+  industry_to_arenas:
+    version: 1
+    last_updated: '2026-07-28T09:53:22.651332+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-079b09
+    - mat-0ac4e9
+    - mat-19d44e
+    - mat-461d7c
+    - mat-6417b1
+    - mat-9e3123
+    - mat-a678a9
+    - mat-a81878
+    - mat-abba71
+    - mat-d5e608
+    - mat-e5fb63
+    - mat-ec5cd0
+    - mat-edc5c2
+    - mat-f56b98
+    last_error: null
+parent_materials: []
+next_actions:
+- 可评审(说「评审 global-autonomous-driving」)或推进深挖档 arena(说「prism 推进 global-ad-compute-chip」/「prism
+  推进 global-huawei-adas-ecosystem」)
+user_todos:
+- task: 收集智驾行业深度研报×3（中信证券/中金/华泰/东吴任选3家，覆盖全栈价值链+利润池分布+arena比较）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  - K5
+  source_hint: 同花顺/慧博/dfcfw 研报PDF
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 5份入库
+- task: 各arena龙头估值与一致预期锚：地平线09660.HK/禾赛HSAI/速腾2498.HK/小马PONY/文远WRD/Mobileye MBLY 的EV-S·PE·隐含增速+全球peer水位
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  - K5
+  - K6
+  source_hint: 同花顺F10/Bloomberg/卖方estimates
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 3份入库
+- task: robotaxi单位经济学专题：百度萝卜快跑RT6单车成本/单公里成本/盈亏平衡时点 + Waymo规模摊薄数据
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K3
+  source_hint: 百度财报电话会/行业草根调研/专家纪要
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 4份入库
+- task: AD芯片竞争格局：Nvidia Thor(V15/舱驾融合)vs地平线征程6(J6P)定点份额+算力/交付节奏对比
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 地平线IR/Nvidia GTC/卖方芯片深度
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 3份入库
+- task: 华为乾崑ADS份额+Momenta港股招股书/纯软方案商盈利路径
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  - K6
+  source_hint: 华为引望披露/Momenta招股书(HKEX)/卖方
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 5份入库
+- task: 激光雷达盈利分化：禾赛/速腾最新季报毛利率·净利+ADAS前装出货与ASP走势
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 禾赛/速腾IR季报
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 5份入库
+- task: 历史行业镜鉴：2016-2019 L4寒冬复盘 + Cruise出清(GM 2024停注资)/图森退市 的利润未兑现教训
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: 行业复盘长文/媒体深度
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 3份入库
+- task: 端到端/城市NOA渗透率数据 + 纯视觉去激光雷达进展(特斯拉FSD入华+中国车厂)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K7
+  source_hint: 行业蓝皮书/高工智能汽车
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 4份入库
+- task: 中/美/欧自动驾驶监管框架最新对比(准入+牌照+L3/L4立法)
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: 政策原文/律所解读
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 4份入库
+- task: OEM自研芯片进展：比亚迪4nm 2100TOPS/蔚来神玑/小鹏图灵/理想 流片与上车节奏（侵蚀外采TAM）
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 车企发布会/媒体
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 4份入库
+- task: robotruck干线物流arena候选：Aurora/Kodiak/赢彻 2026商业化进度
+  priority: P2
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: Aurora IR/媒体
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: web-search 4份入库
+- task: 资料提取完成：44 份 findings 全部落盘
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成(3份:primer+case+sidecar),已建2个深挖arena stub,可评审或推进子arena
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: robotaxi 单车含资本/研发摊销的真盈利何时兑现、跨城可复制吗?武汉UE平衡是否仅中票价单城特例?
+  rationale: 命门2核心残留:UE平衡口径仅覆盖直接运营成本、不含摊销(mat-e5fb63),无补贴无价格优势(mat-a81878);小马PS27透支已price-in真盈利,是robotaxi
+    arena从观察升深挖的唯一硬指标
+  source: capped_decomposition
+  related:
+  - K3
+  priority: P0
+  status: open
+  suggested_at: '2026-07-28T10:02:08.391880+00:00'
+- question: 华为软硬一体智驾生态的可投载体是谁?引望何时/是否分拆独立上市?在此之前鸿蒙智行车企(赛力斯等)是不是纯度可接受的唯一暴露路径?
+  rationale: chain-critic 补一处首选:华为是深挖档(要真配资本)但主体引望未上市——"看得到吃不到"是终局最薄且执行受限处,需专项落实可投载体与纯度
+  source: critic_weak_k
+  related:
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-07-28T10:02:08.391880+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-28T10:07:17.326012+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-28T07:30:20.618180+00:00'
+    summary: 命门1=上游硬件卖铲人选对铲子(中,国产替代/OEM自研侵蚀/纯视觉压激光雷达); 命门2=robotaxi单位经济学拐点时点(低,数据空白优先砸料);
+      命门3=端到端时代软件价值攫取者(中,软硬一体+OEM自研vs纯软)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-28T09:55:44.163878+00:00'
+    summary: 命门1(选对铲子·中高)+命门2(robotaxi拐点真伪·中·仍最低·顽固)+命门3(软件攫取者·中高);primer入门目标+1口径辨识
+    convergence_status: open
+    changelog: 命门无增删仅置信度上调(1/3中→中高,2低→中);primer+1新增口径辨识(凭mat-0ac4e9/079b09/e5fb63,已覆盖不触发二次收料);命门2残留(robotaxi含摊销真盈利)标capped候选踢07;对照全历史无震荡;convergence首轮open待critic
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-28T10:07:17.326201+00:00'
+    summary: 命门1(选对铲子·中高)+命门2(robotaxi拐点真伪·中·顽固未解·踢07)+命门3(软件攫取者·中高);primer入门目标+1口径辨识
+    convergence_status: capped
+    changelog: chain-critic 2轮放行(链走通/目标达成/终局可接受);命门2(robotaxi含摊销真盈利)与华为可投载体为数据缺失型顽固残留,已挂2条P0
+      suggested_drilldowns踢07;命门无增删仅置信度上调;primer+1口径辨识(已覆盖);无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-07-28T09:55:44.132181+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-28T07:28:05.522482+00:00'
+    summary: 分化(6/10):超配上游国产AD芯片(地平线+舱驾融合)与软硬一体方案商(华为);robotaxi终局最大但兑现最慢(观察);激光雷达从空头改分化(量兑现利分化);看空纯软方案商(Momenta)与Nvidia高端在华确定性下修
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-28T09:55:44.132353+00:00'
+    summary: 利润池从"讲故事的软件/高端芯片"迁移到"已量产盈利的国产硬件",robotaxi终局最大兑现最慢。超配国产AD芯片(地平线)+华为软硬一体;激光雷达量兑现利分化(偏多禾赛);观察robotaxi(UE口径存疑);看空纯软(Momenta)+Nvidia在华+美系。强度6.5/10
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-28T07:31:10.957791+00:00'
+  exited_at: '2026-07-28T08:20:59.573027+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    - K7
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-28T08:20:59.573027+00:00'
+  exited_at: '2026-07-28T08:26:00.210024+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 03-extracting
+  entered_at: '2026-07-28T08:26:00.210024+00:00'
+  exited_at: '2026-07-28T08:48:59.857098+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-28T08:48:59.857098+00:00'
+  exited_at: '2026-07-28T09:56:23.805245+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - arena-scoring-inputs
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-28T09:56:23.805245+00:00'
+  exited_at: '2026-07-28T09:56:24.270763+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - arena-scoring-inputs
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-28T09:56:24.270763+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - arena-scoring-inputs
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-28T08:20:47.875826+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 9
+  queries_with_hits: 9

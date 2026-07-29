@@ -1,0 +1,196 @@
+slug: global-glp1-highend-efficacy
+variant: opus4.8
+entries:
+- searched_at: '2026-07-23T16:52:29.240586+00:00'
+  query: retatrutide TRIUMPH Phase 3 topline
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:29.257298+00:00'
+  query: retatrutide 12mg tolerability safety
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:29.267910+00:00'
+  query: retatrutide FDA submission timeline
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:29.300212+00:00'
+  query: Novo amycretin Phase 2 weight loss
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:29.344580+00:00'
+  query: Amgen MariTide Phase 3 dosing
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:29.394332+00:00'
+  query: Viking VK2735 VANQUISH Phase 3 takeover
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:29.458480+00:00'
+  query: Roche CT-388 petrelintide Phase 2
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:29.530538+00:00'
+  query: CagriSema REDEFINE 2026 amylin
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:29.609438+00:00'
+  query: LLY NVO forward PE valuation 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T16:52:29.668785+00:00'
+  query: obesity efficacy ceiling amylin muscle
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:01:00.198759+00:00'
+  query: retatrutide TRIUMPH safety all doses
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:01:00.299128+00:00'
+  query: VKTX VANQUISH-2 topline 2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:01:00.410278+00:00'
+  query: NVO amycretin obesity Phase 2 weight loss
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:01:00.524550+00:00'
+  query: LLY NVO VKTX forward PE consensus 2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:01:00.651248+00:00'
+  query: obesity net price IRA Medicare 2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:01:00.789674+00:00'
+  query: PCSK9 efficacy leader displaced history
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:01:00.932589+00:00'
+  query: amylin lean muscle preservation body comp
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:04:19.638582+00:00'
+  query: 00-prescan(10) + 00-deep-fetch(8) 全量
+  triggered_by: 00-prescan
+  n_results: 90
+  n_high: 20
+  n_mid: 26
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:43:20.798613+00:00'
+  query: obesity readout July 2026 retatrutide TRIUMPH CV + ADA competition
+  triggered_by: 01-prescan
+  n_results: 8
+  n_high: 3
+  n_mid: 0
+  n_low: 5
+  disposition: registered
+- searched_at: '2026-07-23T17:43:35.813412+00:00'
+  query: obesity readout July 2026 retatrutide TRIUMPH-2/3 CV inconclusive + BMJ meta
+    + ADA competition
+  triggered_by: 01-prescan
+  n_results: 8
+  n_high: 0
+  n_mid: 8
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-23T17:43:51.295839+00:00'
+  query: scope 三激动高端疗效 arena 概览
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T17:43:51.300957+00:00'
+  query: retatrutide TRIUMPH 安全窗 K1
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T17:43:51.306278+00:00'
+  query: 高端疗效药 IRA净价 K3
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-23T17:43:51.311670+00:00'
+  query: LLY/VKTX 估值锚 K4
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered

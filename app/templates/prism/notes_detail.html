@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} · 学习笔记{% endblock %}
+{% block content %}
+<nav class="breadcrumb">
+  <a href="/prism">研究主题</a> /
+  <a href="/prism/notes">学习笔记</a> /
+  <span>{{ title }}</span>
+</nav>
+
+<div class="output-layout">
+  <aside class="output-nav">
+    <h3>笔记（{{ notes | length }}）</h3>
+    <ul>
+    {% for n in notes %}
+      <li class="{% if n.name == name %}active{% endif %}">
+        <a href="/prism/notes/{{ n.name }}">{{ n.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+    <nav id="page-toc" class="page-toc" hidden>
+      <h3>本页目录</h3>
+      <ul id="page-toc-list"></ul>
+    </nav>
+    <p class="hint nav-back"><a href="/prism/notes">← 笔记列表</a></p>
+  </aside>
+
+  <article class="output-body">
+    <h1 class="note-title">{{ title }}</h1>
+    <div class="output-meta hint">
+      <span class="model-tag">学习笔记</span>{% if updated %} · 更新于 {{ updated }}{% endif %}
+    </div>
+    <div class="markdown-body">{{ html_body | safe }}</div>
+  </article>
+</div>
+
+<style>
+  main { margin-top: 0; }
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 0; position: sticky; top: 41px; background: #fafafa; z-index: 9; padding: 0.5em 0; border-bottom: 1px solid #eee; }
+  .breadcrumb a { color: #555; }
+  .output-layout { display: grid; grid-template-columns: 210px 1fr; gap: 2em; align-items: start; margin-top: 1.2em; }
+  @media (max-width: 800px) { .output-layout { grid-template-columns: 1fr; } }
+  .output-nav { position: sticky; top: 78px; align-self: start; }
+  .output-nav h3 { font-size: 0.85em; color: #888; margin: 0 0 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
+  .output-nav ul { list-style: none; padding: 0; margin: 0; }
+  .output-nav li { margin: 0.3em 0; font-size: 0.9em; padding: 0.25em 0.4em; border-radius: 3px; }
+  .output-nav li.active { background: #f0f0f0; font-weight: 600; }
+  .output-nav li.active a { color: #111; }
+  .output-nav a { color: #2a5db0; text-decoration: none; }
+  .nav-back { margin-top: 1em; }
+  .note-title { font-size: 1.5em; margin: 0 0 0.4em; }
+  .output-meta { margin-bottom: 1.2em; }
+  .model-tag { font-size: 0.82em; color: #2a5db0; background: #f0f4ff; padding: 0.1em 0.4em; border-radius: 3px; font-family: monospace; }
+  .hint { color: #888; font-size: 0.85em; }
+
+  .markdown-body h1 { font-size: 1.4em; margin-top: 0; }
+  .markdown-body h2 { font-size: 1.15em; margin-top: 1.6em; border-bottom: 1px solid #eee; padding-bottom: 0.2em; }
+  .markdown-body h3 { font-size: 1em; margin-top: 1.3em; }
+  .markdown-body table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.9em; }
+  .markdown-body th, .markdown-body td { border: 1px solid #ddd; padding: 0.4em 0.7em; text-align: left; vertical-align: top; }
+  .markdown-body th { background: #f8f8f8; font-weight: 600; }
+  .markdown-body code { background: #f4f4f4; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.9em; }
+  .markdown-body pre { background: #f4f4f4; padding: 1em; border-radius: 4px; overflow-x: auto; }
+  .markdown-body pre code { background: none; padding: 0; }
+  .markdown-body blockquote { border-left: 3px solid #ddd; margin: 0.6em 0; padding: 0.2em 1em; color: #666; background: #fafafa; }
+  .markdown-body ul { padding-left: 1.4em; }
+  .markdown-body li { margin: 0.3em 0; }
+  .markdown-body hr { border: none; border-top: 1px solid #eee; margin: 1.5em 0; }
+  .markdown-body a { color: #2a5db0; }
+
+  html { scroll-behavior: smooth; }
+  .markdown-body :is(h2, h3) { scroll-margin-top: 90px; }
+  .page-toc { margin-top: 1.4em; border-top: 1px solid #eee; padding-top: 0.8em; }
+  .page-toc h3 { font-size: 0.85em; color: #888; margin: 0 0 0.5em; text-transform: uppercase; letter-spacing: 0.05em; }
+  .page-toc ul { list-style: none; padding: 0; margin: 0; max-height: calc(100vh - 200px); overflow: auto; }
+  .page-toc li { margin: 0.1em 0; }
+  .page-toc li.lvl-3 { padding-left: 0.9em; }
+  .page-toc a { display: block; padding: 0.18em 0.4em; border-radius: 3px; font-size: 0.85em; color: #555; text-decoration: none; border-left: 2px solid transparent; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .page-toc li.lvl-3 a { font-size: 0.8em; color: #777; }
+  .page-toc a:hover { background: #f2f5fb; color: #2a5db0; }
+  .page-toc a.toc-active { background: #eef3ff; color: #1e4a96; border-left-color: #2a5db0; font-weight: 600; }
+</style>
+
+<script>
+// 页内目录（ToC + scrollspy）——与 output.html 同一套实现
+(function () {
+  var body = document.querySelector(".markdown-body");
+  var toc = document.getElementById("page-toc");
+  var list = document.getElementById("page-toc-list");
+  if (!body || !toc || !list) return;
+  var heads = Array.prototype.slice.call(body.querySelectorAll("h2, h3"));
+  if (heads.length < 2) return;
+
+  function slugify(txt) {
+    return (txt || "").trim().toLowerCase()
+      .replace(/[\s　]+/g, "-")
+      .replace(/[^\w一-鿿-]/g, "")
+      .replace(/-+/g, "-").replace(/^-|-$/g, "") || "sec";
+  }
+  var seen = {}, links = [];
+  heads.forEach(function (h) {
+    var text = (h.textContent || "").trim();
+    if (!text) return;
+    if (!h.id) {
+      var base = slugify(text), id = base, n = 1;
+      while (seen[id] || document.getElementById(id)) { n += 1; id = base + "-" + n; }
+      h.id = id;
+    }
+    seen[h.id] = true;
+    var li = document.createElement("li");
+    li.className = h.tagName === "H3" ? "lvl-3" : "lvl-2";
+    var a = document.createElement("a");
+    a.href = "#" + h.id; a.textContent = text; a.title = text;
+    li.appendChild(a); list.appendChild(li);
+    links.push({ a: a, head: h });
+  });
+  if (!links.length) return;
+  toc.hidden = false;
+
+  var byId = {}; links.forEach(function (l) { byId[l.head.id] = l.a; });
+  var activeA = null;
+  function setActive(a) {
+    if (a === activeA) return;
+    if (activeA) activeA.classList.remove("toc-active");
+    activeA = a;
+    if (activeA) activeA.classList.add("toc-active");
+  }
+  var visible = {};
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) visible[e.target.id] = e.boundingClientRect.top;
+      else delete visible[e.target.id];
+    });
+    var ids = Object.keys(visible);
+    if (ids.length) { ids.sort(function (x, y) { return visible[x] - visible[y]; }); setActive(byId[ids[0]]); }
+  }, { rootMargin: "-80px 0px -70% 0px", threshold: 0 });
+  links.forEach(function (l) { io.observe(l.head); });
+  links.forEach(function (l) { l.a.addEventListener("click", function () { setActive(l.a); }); });
+})();
+</script>
+{% endblock %}

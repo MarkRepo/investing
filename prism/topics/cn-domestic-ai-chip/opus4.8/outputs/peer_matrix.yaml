@@ -1,0 +1,82 @@
+slug: cn-domestic-ai-chip
+variant: opus4.8
+topic_type: arena
+display_name: 国产AI芯片（昇腾链/寒武纪/海光）
+generated: 2026-07-24 00:00:00+00:00
+data_freshness: 2026-07-23
+companies:
+- name: 海光信息
+  ticker: SSE_688041
+  score: 3.5
+  tier: shortlist
+  topic_created: true
+  topic_slug: cn-hygon-688041
+  thesis_one_liner: 公司质量/盈利确定性最强(真利润25亿/ROIC正/CPU信创基本盘),DCU通用路线是AI期权;但AI受益纯度靠CPU综合盈利撑、DCU斜率不可测+Zen授权地缘尾部风险,深研核心=把DCU从CPU拆出测斜率(深研≠买入,现价fwd
+    PE>120x价格闸门未到)
+  upgrade_triggers: []
+  quarantine: false
+- name: 寒武纪
+  ticker: SSE_688256
+  score: 3.0
+  tier: shortlist
+  topic_created: true
+  topic_slug: cn-cambricon-688256
+  thesis_one_liner: A股最纯AI芯片旗帜(收入100%AI/推理最强/扭亏),AI纯度全场最高;但估值全踩在WMBT-3(字节替代最脆弱不可证伪)且全市场最贵;深研=下沉company用草根挖字节命门(不可证伪才须下沉),非买入信号,现价PS94.9x双闸门均未过
+  upgrade_triggers: []
+  quarantine: false
+- name: 高新发展
+  ticker: SZSE_000628
+  score: 2.5
+  tier: watch
+  topic_created: false
+  topic_slug: null
+  thesis_one_liner: null
+  upgrade_triggers:
+  - 昇腾整机毛利兑现到15-25%区间
+  - 被证实是昇腾链国产化率跃升的瓶颈受益者
+  - 更适合放到cn-ai-server-odm arena横比
+  quarantine: false
+- name: 摩尔线程
+  ticker: ''
+  score: 1.5
+  tier: eliminated
+  topic_created: false
+  topic_slug: null
+  thesis_one_liner: null
+  upgrade_triggers: []
+  quarantine: true
+- name: 沐曦股份
+  ticker: ''
+  score: 1.5
+  tier: eliminated
+  topic_created: false
+  topic_slug: null
+  thesis_one_liner: null
+  upgrade_triggers: []
+  quarantine: true
+cluster_tags:
+- ai-compute
+- china-domestic-substitution
+- semiconductor
+- ai-chip
+chain_links:
+  rings_present:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+- ring: 4
+  kind: data-missing
+  note: 海光DCU分部收入年报未单独披露,放量斜率不可直接测算,只能靠合并口径推断
+- ring: 4
+  kind: training-estimate
+  note: 四小龙(摩尔线程/沐曦)为IPO前后web-search摘要非结构化财报,巨亏数字与横比为估算
+- ring: 2
+  kind: data-missing
+  note: K2份额证据(TrendForce/摩根士丹利)来自web-search无一手统计,份额斜率引用需标不确定性

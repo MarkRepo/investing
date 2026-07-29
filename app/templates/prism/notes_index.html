@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}学习笔记{% endblock %}
+{% block content %}
+<nav class="breadcrumb"><a href="/prism">研究主题</a> / <span>学习笔记</span></nav>
+
+<h1 class="notes-h1">📓 学习笔记</h1>
+<p class="hint">与投资研究隔离的个人 markdown 笔记（放在 <code>prism/notes/</code>）。新增笔记只需把 <code>.md</code> 丢进该目录。</p>
+
+<ul class="notes-list">
+{% for n in notes %}
+  <li>
+    <a href="/prism/notes/{{ n.name }}">{{ n.title }}</a>
+    <code class="fname">{{ n.name }}.md</code>
+  </li>
+{% else %}
+  <li class="hint">还没有笔记。把 <code>.md</code> 放进 <code>prism/notes/</code> 即可。</li>
+{% endfor %}
+</ul>
+
+<style>
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 1em; }
+  .breadcrumb a { color: #555; }
+  .notes-h1 { font-size: 1.5em; margin: 0.2em 0 0.3em; }
+  .notes-list { list-style: none; padding: 0; margin: 1.2em 0; }
+  .notes-list li { padding: 0.6em 0.8em; border: 1px solid #eee; border-radius: 6px; margin: 0.5em 0; display: flex; align-items: center; gap: 0.8em; }
+  .notes-list li:hover { background: #fafafa; border-color: #cdd9ee; }
+  .notes-list a { font-size: 1.02em; color: #2a5db0; text-decoration: none; font-weight: 600; }
+  .notes-list .fname { font-size: 0.78em; color: #aaa; background: #f6f6f6; padding: 0.1em 0.4em; border-radius: 3px; }
+  .hint { color: #888; font-size: 0.9em; }
+</style>
+{% endblock %}

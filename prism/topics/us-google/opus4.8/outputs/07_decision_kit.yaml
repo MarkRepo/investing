@@ -1,0 +1,111 @@
+slug: us-google
+variant: opus4.8
+topic_type: company
+display_name: Alphabet 谷歌 (GOOGL, NASDAQ)
+ticker: US_GOOGL
+generated: 2026-07-24T00:00:00Z
+data_freshness: 2026-Q2
+
+buy_box:
+  strong_buy_max: 300
+  accumulate_min: 300
+  accumulate_max: 360
+  hold_min: 360
+  hold_max: 430
+  current_price: 322.03
+  price_as_of: 2026-07-23
+  current_zone: accumulate
+
+position_framework:
+  position_tier: 标准
+  sizing_rationale: EV +8%(v3 bear权重压力测试后诚实值,较v2 +13%回落:v2高估源于强多权重偏乐观+把股价下跌纯当更好入场)正但薄+业务命门Q2强验证需求侧→够标准仓下沿;但H3的capex ROI至今无直接证据(backlog=RPO证需求不证ROI)+Q2单季FCF转负已亮fcf_negative预警+EV对权重敏感(强多<15%/空>42%即转负)→只到标准仓下沿、首仓压回2.5%、Q3若FCF连负则暂停加仓
+  initial_max_pct: 2.5
+  full_max_pct: 6
+  add_ladder_prices: [322, 300, 280]
+  max_cluster_pct: 25
+
+valuation_models:
+  - name: sotp
+    label: SOTP 分部估值(Services净利×PE + Cloud收入×PS[Q2年化] + Waymo期权 + 净现金)
+    bull_fair_value: [386, 418]
+    base_fair_value: [318, 346]
+    bear_fair_value: [228, 236]
+  - name: peer_relative
+    label: 同业相对(清洁PE，不给激进溢价因FCF质量拖累 vs MSFT 23.2/META 22.2)
+    bull_fair_value: [400, 400]
+    base_fair_value: [350, 350]
+    bear_fair_value: [250, 250]
+  - name: reverse_dcf
+    label: 反向DCF情景(capex 2027见顶→FCF复苏 vs 延续负值→结构黑洞)
+    bull_fair_value: [470, 470]
+    base_fair_value: [360, 380]
+    bear_fair_value: [230, 250]
+
+kill_criteria:
+  - id: fcf_negative
+    description: FCF 连续 2 季为负 或 FY2026 全年 FCF 为负(经营现金流未覆盖capex的硬证据)。Q2'26单季负已亮预警→收紧仓位,Q3连负即触发
+    status: warning
+    check_at: 2026-Q3
+  - id: fcf_roi_structural
+    description: FY2027全年FCF仍为负 或 折旧正常化后实测增量ROIC<资本成本(时间有界、不依赖backlog,替换v2循环条款)
+    status: pending
+    check_at: 2027
+  - id: search_decel
+    description: Search 广告增速连续 2 季跌破 +8%(AI 分流实体化)
+    status: pending
+    check_at: 2026-Q3
+  - id: adtech_divest
+    description: 广告技术案终判强制剥离广告交易所
+    status: pending
+    check_at: 2026
+  - id: cloud_margin_break
+    description: Cloud 经营利润率连续 2 季回落至 <30%(阈值随Q2 35.6%上调)
+    status: pending
+    check_at: 2026-Q3
+  - id: capex_roi_proven
+    description: capex见顶回落 + FCF恢复同比增长 + 实测增量ROIC>WACC + Cloud有机增速站稳40%+(上修信号)
+    status: pending
+    check_at: 2027
+
+signposts:
+  - date: 2026-Q3
+    event: Q3'26 财报(下一 catalyst · 最关键)
+    bull_signal: Search 维持中双位数 + Cloud 利润率站稳 35%+ + FCF 转正/收窄
+    bear_signal: FCF 连续第二季为负(fcf_negative 触发) + capex 再上调 + Search 掉速
+    triggered: null
+  - date: 2026
+    event: 广告技术案 remedy 终审
+    bull_signal: 行为救济(不剥离广告交易所)
+    bear_signal: 结构性剥离广告交易所
+    triggered: null
+  - date: 2027
+    event: 2027 capex 指引 + FCF 拐点 + 实测增量 ROIC(时点/结构分水岭)
+    bull_signal: capex 见顶 + FCF 转正回升 + 实测 ROIC > WACC
+    bear_signal: capex 继续超预期 + FCF 延续负值(fcf_roi_structural 坐实)
+    triggered: null
+
+cluster_tags: [ai-compute, us-megacap-tech, cloud, digital-advertising, antitrust]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 3
+    kind: data-missing
+    note: capex 实测增量 ROIC 无数据——H3 命门的直接证据缺失(本case最大缺口);backlog=RPO 只证需求不证ROI
+  - ring: 1
+    kind: data-missing
+    note: AI 界面每次查询货币化 vs 传统蓝链的 ARPU 对比无量化(K1 长期命门黑箱)
+  - ring: 5
+    kind: data-missing
+    note: Waymo 单周订单量/单位经济未披露，期权价值无法精确定价
+market_implied:
+  metric: implied_clean_earnings_cagr_3y
+  value: 11
+my_vs_market_delta:
+  metric: implied_clean_earnings_cagr_3y
+  my_value: 14
+  delta: "+3pct"
+  direction: long

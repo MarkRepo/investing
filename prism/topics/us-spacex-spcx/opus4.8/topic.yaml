@@ -1,0 +1,364 @@
+slug: us-spacex-spcx
+display_name: 'Space Exploration Technologies Corp. (SpaceX, NASDAQ: SPCX)'
+type: company
+created: '2026-07-17T13:44:10.451718+00:00'
+status: active
+stage: done
+canonical: true
+parent_topic: null
+monitoring_tier: watch
+concepts: []
+scope:
+  geo: US
+  question: '美国 SpaceX（NASDAQ: SPCX），deep 深度：判断当前价格下应买入、持有还是卖出，核心赌注是 Starlink 自由现金流与发射规模经济能否支撑公开市场估值，并形成目标价区间与介入纪律。'
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_SPCX
+  market: US
+  short_name: SpaceX
+  search_terms:
+  - SpaceX SPCX
+  - Starlink 财务
+  - SpaceX 估值
+  - SpaceX 发射经济
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-17T16:36:07.999771+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-176f0f
+    - mat-1cfb1b
+    - mat-2a29ad
+    - mat-49d253
+    - mat-66e0b4
+    - mat-6dda4b
+    - mat-78d79b
+    - mat-870816
+    - mat-99bba4
+    - mat-a75a6f
+    - mat-c2531d
+    - mat-c44a07
+    - mat-e35913
+    - mat-f05983
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-07-17T16:43:03.463612+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-176f0f
+    - mat-1cfb1b
+    - mat-2a29ad
+    - mat-49d253
+    - mat-66e0b4
+    - mat-6dda4b
+    - mat-78d79b
+    - mat-870816
+    - mat-99bba4
+    - mat-a75a6f
+    - mat-c2531d
+    - mat-c44a07
+    - mat-e35913
+    - mat-f05983
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-07-17T16:43:03.483178+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-176f0f
+    - mat-1cfb1b
+    - mat-2a29ad
+    - mat-49d253
+    - mat-66e0b4
+    - mat-6dda4b
+    - mat-78d79b
+    - mat-870816
+    - mat-99bba4
+    - mat-a75a6f
+    - mat-c2531d
+    - mat-c44a07
+    - mat-e35913
+    - mat-f05983
+    last_error: null
+  08_living_feed:
+    version: 2
+    last_updated: '2026-07-18T00:47:08.572029+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 us-spacex-spcx」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：approve：AVOID/卖出主判断经独立多头反方对抗 + critic 补 web 校准双重考验后站得住。看空承重论断(命门2 xAI、命门3
+  Starship)被新料证实(IFT-13 2026-07-16 再 abort、xAI 利润率恶化至 −302%)，反方致命一击"时敏数据可能已翻转"被反驳。评分
+  4.25/5。待办：价格锚 $124.20→实盘~$131 由 06-monitor 刷新；Starship 乘数属性(命门1/命门3 公共乘数)已挂专项深挖。
+user_todos:
+- task: 核实 Connectivity/Starlink 分部收入·营业利润·订户·backlog 与现金穿透（FY25 $11.4B/$4.4B/10.3M/$27.6B）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-06c603
+  - mat-c44a07
+  - mat-caf1ba
+  - mat-e35913
+  - mat-e4ae12
+  coverage_note: 424B4分部 + Starlink运营指标已覆盖；完整现金流表待03
+  last_fetch_note: 424B4分部 + Starlink运营指标已覆盖；完整现金流表待03
+- task: 梳理 AI(xAI) 分部收入·营业亏损·并表口径与 Musk 资本配置/关联交易（FY25 $3.2B rev/-$6.4B op loss）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-8cb31e
+  - mat-954b27
+  - mat-c44a07
+  coverage_note: AI分部亏损口径 + 治理料已覆盖；完整关联交易表待03
+  last_fetch_note: AI分部亏损口径 + 治理料已覆盖；完整关联交易表待03
+- task: 拆解 SOTP 分部估值 + 反向DCF隐含增长 + 卖方一致预期($240)统一到 2030 收入/利润/终值
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-17c9ce
+  - mat-1eccb5
+  - mat-5bf511
+  - mat-99bba4
+  - mat-c44a07
+  coverage_note: Damodaran/ThirdBridge/M&I估值框架 + 分部财务 + 一致预期已覆盖
+  last_fetch_note: Damodaran/ThirdBridge/M&I估值框架 + 分部财务 + 一致预期已覆盖
+- task: 核对双层股权/超级投票权/xAI关联并表的治理折价与历史基率
+  priority: P0
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-954b27
+  - mat-c1b19b
+  - mat-c44a07
+  - mat-d242dc
+  coverage_note: dual-class学术研究 + 招股书关联条款已覆盖
+  last_fetch_note: dual-class学术研究 + 招股书关联条款已覆盖
+- task: 建立 Starship 试飞/FAA事故/复飞与2027商业里程碑记录
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1cfb1b
+  - mat-dcaa6e
+  coverage_note: 最新FAA复飞/事故已校准；完整flight table待01深化
+  last_fetch_note: 最新FAA复飞/事故已校准；完整flight table待01深化
+- task: 制作 Iridium/OneWeb/Globalstar 重资本 LEO 失败镜鉴
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-6dda4b
+  - mat-870816
+  - mat-f05983
+  coverage_note: 历史破产镜鉴已入库
+  last_fetch_note: 历史破产镜鉴已入库
+- task: 确立 SPCX 当前价/市值/完全稀释股本/EV 口径 + 一致预期估值锚（$135定价→$1.78T FDV，近价~$136）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-42a399
+  - mat-4a862a
+  - mat-601f60
+  - mat-e94b53
+  - mat-ed764c
+  coverage_note: IPO条款/市值/一致预期估值锚已校准
+  last_fetch_note: IPO条款/市值/一致预期估值锚已校准
+- task: 取得 Starlink 地区级 churn/ARPU/D2C 运营商分成的非公开经营数据
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K1
+  source_hint: ''
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: waived
+  coverage_note: 沿用gpt-5.6-sol：本轮waived；产出需明确地区级churn/ARPU/D2C缺失并降级置信度
+  last_fetch_note: adapter+prescan 实搜：仅公开总量/ARPU摘要，无地区级churn/分国ARPU/D2C运营商分成拆分；公开无源
+  disposition_note: 本轮豁免；产出必须明确地区级churn/ARPU/D2C分成缺失并降级置信度
+- task: Starship 完整试飞/事故/复飞/商业里程碑记录表（IFT-1 至今 + 2027 里程碑）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: SpaceX 官方发射日志 + spacenews + FAA mishap 裁决聚合
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: 01 新增：K3 唯一 uncovered，需完整时间序列非零散快照
+  last_fetch_note: exa web_fetch→Wikipedia List of Starship launches + ElonX
+- task: SpaceX bull-case 深度多方论证（稀缺性溢价+Starship TAM+AI 期权正方逻辑）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 14 家买入评级卖方深度 + 独立看多研究
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: 01 新增：uncovered_ring_inputs=[bull-bear]，环⑤ 需对称正方论证
+  last_fetch_note: exa→Morningstar+SeekingAlpha+Investors.com
+- task: 资料提取完成：78 份全部处理(14份产真finding，其余prescan残渣已消化)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成(3 份),等待进入 05 评审或监控
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: Starship 作为命门1(Starlink 单位经济)与命门3(新 TAM)的公共乘数——定型情景下 SOTP 该给多少乘数信用？现给
+    $100B 期权项是否低估一个数量级？
+  rationale: 05-critic 独立多头反方的致命一击，且是唯一未被 web 校准反驳的框架级洞见；case 只当 SOTP 第四行加数处理并自认"可能太保守"
+  source: critic_weak_k
+  related:
+  - 命门1
+  - 命门3
+  priority: P1
+  status: open
+  suggested_at: '2026-07-18T00:47:08.539886+00:00'
+monitoring:
+  enabled: true
+  cadence: daily
+critic:
+  verdict: approve
+  summary: approve：AVOID/卖出主判断经独立多头反方对抗 + critic 补 web 校准双重考验后站得住。看空承重论断(命门2 xAI、命门3
+    Starship)被新料证实(IFT-13 2026-07-16 再 abort、xAI 利润率恶化至 −302%)，反方致命一击"时敏数据可能已翻转"被反驳。评分
+    4.25/5。待办：价格锚 $124.20→实盘~$131 由 06-monitor 刷新；Starship 乘数属性(命门1/命门3 公共乘数)已挂专项深挖。
+  at: '2026-07-18T00:46:59.367119+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-17T16:49:09.448549+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-17T13:55:25.084908+00:00'
+    summary: 命门1=Starlink现金穿透率(中低); 命门2=AI/xAI资本吞噬vs期权(中); 命门3=估值缺口填充物真实性/Starship时钟(低);
+      横贯=股本口径+治理折价
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-17T16:49:09.448558+00:00'
+    summary: 命门1 Starlink现金穿透(中低→中,坐实弱化)/命门2 AI吞噬vs期权(中,双向清晰)/命门3 Starship时钟(低,depth降级);内容级delta空、gap双轴绿、chain-critic放行→converged
+    convergence_status: converged
+    changelog: 命门无增删重排,仅置信度更新(命门1中低→中凭ARPU-18%+营业利润停滞+FCF-14.1B);入门目标11条无增删(终端补贴为子点完善);delta空+双轴绿+critic六环全通→converged,未走第二趟,无震荡;命门3与AI定价为本质未来不可知/公开未披露的诚实缺口,走depth降级+06监控,不capped
+thesis:
+  current_version: 1
+  last_updated: '2026-07-17T16:49:09.422321+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-17T13:53:57.978177+00:00'
+    summary: 卖出/回避@~$136：世界级已盈利Connectivity($4.4B营利)+发射内核真实，但~$1.78T/~94x P/S定价了Starlink现金转型+Starship
+      TAM+AI分部止血三重奇迹，叠加Musk绝对控制；SOTP的EV显著为负，目标价$50-90，介入纪律<$70-80。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-17T16:49:09.422514+00:00'
+    summary: AVOID/卖出(强度2.5/10)。现价$124.20/P/S84.8x把Starlink现金转化+AI止血+Starship万亿TAM三重奇迹同时定价;严格SOTP地板$20-40、慷慨版$50-90(中$70);EV约-16%(中信心);仅<$60建试探仓。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-17T13:58:34.838216+00:00'
+  exited_at: '2026-07-17T14:10:11.784004+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K3
+    uncovered_ring_inputs:
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-17T14:10:11.784004+00:00'
+  exited_at: '2026-07-17T14:29:25.550456+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-17T14:29:25.550456+00:00'
+  exited_at: '2026-07-17T16:49:25.459739+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-17T16:49:25.459739+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

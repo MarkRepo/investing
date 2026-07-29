@@ -1,0 +1,113 @@
+slug: us-spacex-spcx
+variant: gpt-5.6-sol
+topic_type: company
+display_name: "Space Exploration Technologies Corp. (SpaceX, NASDAQ: SPCX)"
+ticker: US_SPCX
+generated: 2026-07-15T04:35:00Z
+data_freshness: 2026-07-14
+buy_box:
+  strong_buy_max: 55
+  accumulate_min: 55
+  accumulate_max: 75
+  hold_min: 75
+  hold_max: 150
+  current_price: 136.08
+  price_as_of: 2026-07-14
+  current_zone: hold
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 当前价情景EV约-4%所以执行为零仓观察；仅当价格进入75至105美元且Starlink现金转化或AI收敛至少一项改善时才启用试探档
+  initial_max_pct: 2
+  full_max_pct: 5
+  add_ladder_prices: [55, 75, 100]
+  max_cluster_pct: 10
+valuation_models:
+  - name: reverse_ps_convergence
+    label: 逆向P/S收敛（隐含门槛，不输出公允值）
+    bull_fair_value: [null, null]
+    base_fair_value: [null, null]
+    bear_fair_value: [null, null]
+  - name: segment_sotp
+    label: 分部加总SOTP
+    bull_fair_value: [145, 205]
+    base_fair_value: [70, 100]
+    bear_fair_value: [45, 55]
+  - name: core_plus_options
+    label: 基本盘加Starship/AI概率期权
+    bull_fair_value: [150, 220]
+    base_fair_value: [70, 105]
+    bear_fair_value: [35, 50]
+kill_criteria:
+  - id: group_fcf_burn
+    description: 连续两个季度集团自由现金流低于负50亿美元且主要由AI/X资本开支扩大驱动
+    status: pending
+    check_at: 2027-Q1
+  - id: starlink_cash_conversion
+    description: 连续两个季度Connectivity扣维持性资本开支后FCF/营业利润低于50%
+    status: pending
+    check_at: 2027-Q1
+  - id: starship_execution
+    description: 到2027年6月底未实现连续三次关键任务成功或没有硬件复用证据
+    status: pending
+    check_at: 2027-06-30
+  - id: dilution_related_party
+    description: 完全稀释股数较IPO后基准增加超过10%或发生占净资产超过5%的非市场化关联交易
+    status: pending
+    check_at: 2027-Q2
+  - id: government_contract
+    description: NASA或国家安全关键合同被取消且未由新订单补足
+    status: pending
+    check_at: 2027-Q2
+signposts:
+  - date: 2026-Q3
+    event: 首份上市后10-Q披露分部利润、现金流、资本开支与净现金
+    bull_signal: Connectivity扣除维持性资本开支后现金流显著为正且AI亏损收敛
+    bear_signal: 集团现金消耗扩大或分部现金流继续不透明
+    triggered: null
+  - date: 2027-06-30
+    event: 检查Starship连续任务成功、硬件复用与商业载荷节奏
+    bull_signal: 至少连续三次关键成功并出现复用或商业载荷
+    bear_signal: 继续处于事故调查许可单次试飞循环
+    triggered: null
+  - date: 2026-Q4
+    event: 检查ARPU、用户结构、终端经济与Direct-to-Cell合作
+    bull_signal: ARPU企稳且高价值企业航空海事占比提高
+    bear_signal: 用户增长依赖持续降价且容量资本开支上升
+    triggered: null
+  - date: 2026-Q4
+    event: 检查锁定期、Form 4、增发和关联交易
+    bull_signal: 无重大稀释且交易透明市场化
+    bear_signal: 大额提前出售、增发或非市场化关联交易
+    triggered: null
+  - date: 2027-Q2
+    event: 检查NASA、Space Force和NRO合同变化
+    bull_signal: 新增长期合同且客户结构更分散
+    bear_signal: 关键合同取消、延期或集中度上升
+    triggered: null
+cluster_tags: [us-commercial-space, satellite-connectivity, reusable-launch, ai-infrastructure]
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    note: Connectivity维持性补星资本开支和地区级churn/ARPU/Direct-to-Cell分成缺失
+  - ring: 2
+    kind: data-missing
+    note: 完全稀释总股本和净现金尚未从完整424(b)(4)系统抽取；当前股数由市值除股价反推
+  - ring: 4
+    kind: training-estimate
+    note: SOTP和期权区间为透明情景假设，不是完整卖方模型或审计DCF
+  - ring: 5
+    kind: data-missing
+    note: 历史镜鉴材料未提供统一峰谷损失幅度，未编造百分比
+market_implied:
+  metric: implied_revenue_cagr_5y
+  value: 50
+my_vs_market_delta:
+  metric: implied_revenue_cagr_5y
+  my_value: 35
+  delta: -15pct
+  direction: short

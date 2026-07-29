@@ -5,7 +5,7 @@ created: '2026-06-12T06:12:03.972744+00:00'
 status: active
 stage: 05-critic-review
 canonical: true
-parent_topic: null
+parent_topic: global-glp1-highend-efficacy
 monitoring_tier: dormant
 concepts: []
 scope:
@@ -20,6 +20,7 @@ scope:
   - donanemab 管线
   - 口服GLP-1 竞争
   - 高估值 FCF兑现
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
 outputs_state:
   00_primer:
     version: 1
@@ -93,6 +94,13 @@ outputs_state:
     - mat-4d2bd0
     - mat-a3e10f
     - mat-fb28e6
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-07-16T01:20:48.067228+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
     last_error: null
 parent_materials: []
 next_actions:
@@ -365,3 +373,10 @@ stage_history:
     uncovered_ring_inputs: []
     autofetch_debt: 0
     empty_pending_decision: 0
+suggested_drilldowns: []
+pending_thesis_review:
+  since: '2026-07-16T01:20:48.077229+00:00'
+  reason: 依赖的『高位企稳·双向风险·10Y实际利率2.2%』已变『高位企稳·官方+市场双双转鹰但长端牛平(增长降温抢跑)·曲线续平(2s10s+30bp)』(regime
+    v2→v3)
+  proposal_id: 074b486d3893
+  locator: rates_us

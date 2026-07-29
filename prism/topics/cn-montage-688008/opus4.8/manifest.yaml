@@ -1,6 +1,6 @@
 slug: cn-montage-688008
 variant: opus4.8
-updated: '2026-07-14T08:13:26.006556+00:00'
+updated: '2026-07-23T23:46:21.047139+00:00'
 materials:
 - id: mat-8d89ea
   filename: 2026-07-14_澜起科技-688008---2025年度业绩快报公告新浪财经.md
@@ -1146,3 +1146,22 @@ materials:
     stale_at: '2026-08-13T07:36:47.592122+00:00'
     expire_at: '2026-10-12T07:36:47.592122+00:00'
     triggered_by: 01-prescan
+- id: mat-c14684
+  filename: 2026-07-23_澜起科技股份有限公司2026年半年度业绩预增的自愿性公告.md
+  source_type: web-search
+  added: '2026-07-23T23:46:21.047125+00:00'
+  processed: false
+  notes: query='[daily-monitor] signpost:2026 H1 半年报｜bear:扣非同比<15%,一次性收益退潮后真实增速掉档'
+  mineru_state: not_needed
+  addresses:
+  - signpost:2026 H1 半年报｜bear:扣非同比<15%,一次性收益退潮后真实增速掉档
+  confidence: 0.9
+  search_meta:
+    query: '[daily-monitor] signpost:2026 H1 半年报｜bear:扣非同比<15%,一次性收益退潮后真实增速掉档'
+    url: https://paper.cnstock.com/html/2026-07/17/content_2245364.htm
+    domain: paper.cnstock.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T23:46:21.025211+00:00'
+    stale_at: '2026-08-22T23:46:21.025211+00:00'
+    expire_at: '2026-10-21T23:46:21.025211+00:00'
+    triggered_by: 06-daily-monitor

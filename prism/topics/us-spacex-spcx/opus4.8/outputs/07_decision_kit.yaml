@@ -1,0 +1,115 @@
+slug: us-spacex-spcx
+variant: opus4.8
+topic_type: company
+display_name: "Space Exploration Technologies Corp. (SpaceX, NASDAQ: SPCX)"
+ticker: US_SPCX
+generated: 2026-07-18T00:00:00Z
+data_freshness: 2026-07-17
+
+buy_box:
+  strong_buy_max: 60
+  accumulate_min: 60
+  accumulate_max: 85
+  hold_min: 85
+  hold_max: 100
+  current_price: 124.20
+  price_as_of: 2026-07-17
+  current_zone: above_hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: "黑箱式故事股(pre-profit+双层股权治理错配+Starship/AI肥尾双向)，信息完备度中、信心中、当前EV约-16%为负——不具上标准/重仓条件；即便跌入建仓区也只给试探档"
+  initial_max_pct: 2
+  full_max_pct: 5
+  add_ladder_prices: [60, 45, 30]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: sotp
+    label: "SOTP 分部加总（Connectivity+Space+Starship期权+AI-净债）"
+    bull_fair_value: [60, 90]
+    base_fair_value: [20, 40]
+    bear_fair_value: [null, 15]
+  - name: reverse_ps_dcf
+    label: "反向 P/S-DCF（隐含收入 CAGR 现不现实）"
+    bull_fair_value: [90, 130]
+    base_fair_value: [50, 70]
+    bear_fair_value: [20, 40]
+  - name: peer_cross_section
+    label: "同业横截面（对标 IRDM/VSAT 成熟层 vs RKLB/ASTS 故事层）"
+    bull_fair_value: [80, 110]
+    base_fair_value: [35, 55]
+    bear_fair_value: [null, 20]
+
+kill_criteria:
+  - id: starship_delivers
+    description: "IFT-13 及后续连续3次成功 + V3 Starlink 常态部署（命门3翻多，我错）"
+    status: pending
+    check_at: 2026-Q4
+  - id: ai_heals
+    description: "AI分部季度营业亏损连续两季环比收窄>30% + Colossus合同扩容获证实（命门2翻多）"
+    status: pending
+    check_at: 2027-Q1
+  - id: price_breaks_200
+    description: "价格突破 200 美元且 backlog/收入超预期（市场证明我错）"
+    status: pending
+    check_at: 2026-Q4
+  - id: fcf_delayed
+    description: "集团FCF转正时点被推迟到2030+（thesis加强，下行加速）"
+    status: pending
+    check_at: 2027-Q1
+  - id: cash_to_xai
+    description: "xAI新增数十亿美元资本承诺 或 明确Starlink现金补贴xAI（命门2恶化）"
+    status: pending
+    check_at: 2027-Q2
+
+signposts:
+  - date: 2026-07-20
+    event: "IFT-13 及后续 Starship 试飞（V3 Starlink 首次载荷部署）— 2026-07-16 首次尝试最后一秒 abort（33台猛禽部分未点火），重试窗口约 2026-07-20"
+    bull_signal: "V3 成功部署 + 连续入轨节奏"
+    bear_signal: "再现事故/mishap 长停飞，商业化时钟右移"
+    triggered: null
+  - date: 2026-Q4
+    event: "首份上市后季报（Connectivity 分部 FCF / AI 分部亏损环比 / 集团 FCF 轨迹）"
+    bull_signal: "Connectivity FCF 转正迹象 + AI 亏损收窄"
+    bear_signal: "FCF 继续恶化 + AI 亏损加速"
+    triggered: null
+  - date: 2026-Q4
+    event: "锁定期到期 / 提前出售窗口（供给面）"
+    bull_signal: "内部人不减持、供给平稳吸收"
+    bear_signal: "大额减持引发 de-rate"
+    triggered: null
+  - date: 2027-Q1
+    event: "Colossus 合同进展（Google 侧是否证实 / ARR 扩容）"
+    bull_signal: "Google 合同证实 + ARR 向 26B 扩容"
+    bear_signal: "仅 Anthropic 15B/年、无新增"
+    triggered: null
+
+cluster_tags: [space-launch, satellite-broadband, ai-compute, story-stock, dual-class-governance]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 3
+    kind: training-estimate
+    note: "Starship 常态化商业发射时间表本质未来不可知，命门3 depth 降级"
+  - ring: 2
+    kind: data-missing
+    note: "AI 分部(250B mark vs 持续烧钱)独立 SOTP 定价口径依赖假设，给区间不给点估"
+  - ring: 1
+    kind: data-missing
+    note: "Starlink 地区级 churn / ARPU 分市场拆分公开仅总量，waived"
+
+market_implied:
+  metric: implied_rev_cagr_3y
+  value: 46
+
+my_vs_market_delta:
+  metric: implied_rev_cagr_3y
+  my_value: 30
+  delta: "-16pct"
+  direction: short

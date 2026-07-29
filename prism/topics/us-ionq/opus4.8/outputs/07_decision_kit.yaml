@@ -1,0 +1,107 @@
+slug: us-ionq
+variant: opus4.8
+topic_type: company
+display_name: IonQ (IONQ, NYSE)
+ticker: NYSE_IONQ
+generated: 2026-07-27T00:00:00Z
+data_freshness: 2026-Q1
+
+buy_box:
+  strong_buy_max: 15
+  accumulate_min: 15
+  accumulate_max: 22
+  hold_min: 22
+  hold_max: 40
+  current_price: 34.52
+  price_as_of: 2026-07-27
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: EV≈0且负偏 + 商业化未证 + 主题股高波动/squeeze尾部 + 管理层资本运作型(环①信任度低)——不具备标准/重仓所需确信度与安全边际
+  initial_max_pct: null
+  full_max_pct: 2
+  add_ladder_prices: [22, 15, 10]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: reverse_multiple_regression
+    label: 成熟倍数回归(可信有机营收×15-30x fwd P/S)
+    bull_fair_value: [15, 19]
+    base_fair_value: [8, 12]
+    bear_fair_value: [3, 5]
+  - name: base_plus_option
+    label: 基本盘+期权价值拆解(FTQC成功概率10-15%)
+    bull_fair_value: [16, 20]
+    base_fair_value: [9, 13]
+    bear_fair_value: [3, 5]
+  - name: peer_cross_section
+    label: 同业横截面(主题溢价维持,IONQ相对最便宜)
+    bull_fair_value: [45, 55]
+    base_fair_value: [30, 40]
+    bear_fair_value: [18, 22]
+
+kill_criteria:
+  - id: logical_qubit_demo
+    description: 交付经独立/同行评审的数十逻辑比特below-threshold纠错demo(K3兑现)→kill空头转中性/看多
+    status: pending
+    check_at: 2027
+  - id: organic_rev_margin_turn
+    description: 剔除并购/一次性后有机经常性商业营收连续两季>$100M年化且毛利率回升(K1/K3兑现)→kill空头
+    status: pending
+    check_at: 2026-Q4
+  - id: big_miss_theme_retreat
+    description: 某季营收大幅miss指引+有机成色坐实差+主题资金退潮(板块ETF转负)+再启大额ATM→转看空/参与做空
+    status: pending
+    check_at: 2026-Q3
+
+signposts:
+  - date: 2026-08-05
+    event: Q2 2026 财报
+    bull_signal: 有机拆分佳/毛利率回升/上调FY指引/客户集中度下降
+    bear_signal: 有机成色差/毛利续恶化(<24%)/客户更集中/烧钱加速
+    triggered: null
+  - date: 2026
+    event: Quantinuum IPO 定价落地
+    bull_signal: '>$20B高估值抬高离子阱板块锚'
+    bear_signal: 相近/更低P/S定价+技术公认更强→压制IONQ估值
+    triggered: null
+  - date: 2026-Q3
+    event: SkyWater 收购交割
+    bull_signal: 顺利整合/代工产能自主
+    bear_signal: 消耗~$10亿现金+跨行业整合风险
+    triggered: null
+  - date: 2026
+    event: 256-比特系统演示
+    bull_signal: 含逻辑比特/纠错系统级实测
+    bear_signal: 仅物理比特单指标/延期
+    triggered: null
+
+cluster_tags: [quantum-computing, thematic-momentum, us-tech, trapped-ion]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: resolved
+    note: '[已闭合 2026-07-28] FY2025 10-K(mat-e9c3f9)量化坐实:并购占营收~39%(部分年度)/有机~$79M(含一次性硬件)/客户集中度3家=53%/成本+276%vs营收+202%。命门K1从定性升级为量化。'
+  - ring: 2
+    kind: data-missing
+    note: Quantinuum IPO最终定价未落地,K4估值对标关键变量待补
+  - ring: 3
+    kind: data-missing
+    note: 无独立同行评审的逻辑比特实测,K3技术兑现待验证
+
+market_implied:
+  metric: implied_fwd_ps
+  value: 54
+
+my_vs_market_delta:
+  metric: implied_fwd_ps
+  my_value: 22
+  delta: -32x
+  direction: short

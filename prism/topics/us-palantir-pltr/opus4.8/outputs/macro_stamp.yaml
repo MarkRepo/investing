@@ -1,0 +1,16 @@
+as_of_regime_version: 3
+regime_composite: risk-on但脆弱(反通胀式增长降温)/利率高位企稳双双转鹰、10Y实际利率2.16%边际回落仍约束——对极端估值长久期成长股属倍数压缩顺风(利空持有)
+depends_on_states:
+- conclusion: rates_us
+  state: 高位企稳·双双转鹰但长端牛平·实际利率2.16%边际回落仍约束
+  role: load_bearing
+- conclusion: overall
+  state: 中美背离·risk-on但脆弱(叠反通胀式增长降温)·强度6脆弱度高
+  role: confirming
+discount_rate: null
+slug: us-palantir-pltr
+variant: opus4.8
+stamped_at: '2026-07-18T01:29:03.859255+00:00'
+stale: true
+stale_reason: 依赖的『高位企稳·双双转鹰但长端牛平·实际利率2.16%边际回落仍约束』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+  v3→v4)

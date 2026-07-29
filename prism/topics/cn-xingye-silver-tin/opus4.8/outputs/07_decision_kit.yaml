@@ -1,0 +1,107 @@
+slug: cn-xingye-silver-tin
+variant: opus4.8
+topic_type: company
+display_name: 兴业银锡 (000426.SZ)
+ticker: SZSE_000426
+generated: 2026-07-19T06:00:00Z
+data_freshness: 2026-Q2
+
+buy_box:
+  strong_buy_max: 24
+  accumulate_min: 24
+  accumulate_max: 27
+  hold_min: 27
+  hold_max: 30
+  current_price: 27.9
+  price_as_of: 2026-07-17
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 现价EV≈−7%(基准目标价≈现价、下行档破坏力放大)→现价仅配试探级≤2%;方向看多+量增确定性+资产质量硬+回调后EV转正(24元EV+8%)→回调至<27进入买入区升标准档3-4%。不上重仓:信心中偏谨慎+承重缺口未解(C1已成决定深跌幅度的悬案/资源量口径)+成本地板抗跌经05-critic降级为待证实+治理折价+价格β高。现价已贴52周低、破位途中,回调可能不止于24
+  initial_max_pct: 2
+  full_max_pct: 6
+  add_ladder_prices: [24, 21, 18]
+  max_cluster_pct: 15
+
+valuation_models:
+  - name: normalized_pe
+    label: Normalized PE（周期均值利润法，下尾计经营去杠杆）
+    bull_fair_value: [32, 38]
+    base_fair_value: [21, 23]
+    bear_fair_value: [13, 15]
+  - name: peer_cross_section
+    label: 同业横截面（治理净折价，非中位对冲）
+    bull_fair_value: [32, 38]
+    base_fair_value: [26, 30]
+    bear_fair_value: [22, 24]
+  - name: nav_resource
+    label: NAV/资源价值法
+    bull_fair_value: [33, 35]
+    base_fair_value: [28, 30]
+    bear_fair_value: [24, 25]
+
+kill_criteria:
+  - id: price_break
+    description: 银跌破$42/oz或锡跌破$42k/吨且持稳≥1季度→减仓
+    status: pending
+    check_at: 2026-Q4
+  - id: capacity_delay
+    description: 银漫二期主体较2028Q4延期>2季度，或2026年银产量不及300吨→降级量逻辑
+    status: pending
+    check_at: 2026-Q4
+  - id: governance_blowup
+    description: 控股股东质押率回升/H股折价发行>30%/集团债务违约传导上市公司
+    status: pending
+    check_at: 2026-Q4
+  - id: resource_downgrade
+    description: H股重递招股书暴露资源量口径被监管实质下修→NAV逻辑动摇
+    status: pending
+    check_at: 2026-Q3
+
+signposts:
+  - date: 2026-Q3
+    event: H股是否如期重递（公司承诺本季度内）
+    bull_signal: 如期重递→执行力+资产质量确认
+    bear_signal: 再度发回/爽约→治理与披露质量负面
+  - date: 2026-08
+    event: 2026半年报正式披露
+    bull_signal: H1扣非落地符合/超预告、分金属成本可控
+    bear_signal: 扣非不及预告、毛利率进一步下滑
+  - date: 2026-Q4
+    event: 银锡价格路径+社库/加工费+宇邦季度产量爬坡
+    bull_signal: 价格维持高位、宇邦放量兑现
+    bear_signal: 价格向中枢回落、社库继续高企
+  - date: 2028-Q4
+    event: 银漫二期带料试车节点
+    bull_signal: 按期或提前试车
+    bear_signal: 延期>2季度
+
+cluster_tags: [precious-metals, silver, tin, china-resource, ai-compute-tin]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    note: 分金属副产法真实C1未拆（现为共产品分摊口径反推近似值）——经05-critic升级为P0承重悬案:决定"成本地板是否成立/深跌封顶幅度",共生金属同跌时抵扣可能崩塌使单位成本不降反升。已挂P0 suggested_drilldown待H股招股书Q3
+  - ring: 2
+    kind: data-missing
+    note: H股招股书完整产能时间表+资源量分级口径可信度未取，影响NAV模型分母
+  - ring: 5
+    kind: training-estimate
+    note: 历史失败镜鉴(资源顶部追高/高质押爆仓)为训练知识估算，非公开实证复盘专文
+
+market_implied:
+  metric: implied_2026e_kf_pe
+  value: 14
+
+my_vs_market_delta:
+  metric: implied_2026e_kf_pe
+  my_value: 14
+  delta: "现价27.9落base中枢偏上沿(normalized EPS 1.5-1.6×15-16x≈25-29元)，市场定价中性偏贵、EV≈−7%(v2较v1的−3.6%下修:深跌档撤成本地板封顶−39%→−46%中枢)；edge在量增确定性+市场未定价银漫二期期权(成本地板抗跌经05-critic撤为待证实)，安全边际全在回调(<24元EV+8%、21元+24%)"
+  direction: long

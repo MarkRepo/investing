@@ -1,0 +1,127 @@
+# roadmap.yaml — 研究路线图 (workflow 01 生成)
+slug: cn-domestic-ai-chip
+created: '2026-07-24'
+
+# L1/L2 已坍缩为 primer_scope（背景深度交 00_primer）
+primer_scope: >
+  primer 该覆盖：国产 AI 芯片三条技术路线（昇腾NPU自研栈 / 寒武纪ASIC / 海光DCU类CUDA）、
+  训练vs推理门槛差异、CUDA生态护城河与绕过路径、华为不上市下的产业链利润分配、
+  Fabless设计vs上游产能利润池分布、AI芯片PS估值读法、客户集中度双面性、
+  超节点"以系统补单芯"逻辑、出口管制博弈机制、"份额≠利润≠估值"京东方镜鉴、换股吸并资本运作机制。
+  （详见 decomposition_v0.md §三 11 条入门目标）
+
+learning_track:
+  l3_debates:   # 争议层：把 thesis 反方展开为可调研争议点
+    - question: 估值到底贵不贵——寒武纪 PS~80x/海光 27E PE 117x 是"透支2030份额质变"还是"成长期合理溢价"？多空定价锚差在哪？
+      source_hint: 卖方估值模型（26E/27E/28E 净利一致预期）+ 财经媒体估值透支专题（ifeng/huxiu 已在库）
+    - question: 寒武纪 88.66% 客户集中度 + 字节自研 SeedChip（2026目标35万颗）——最大客户自研化到底多快侵蚀订单？多客户放量摊薄跑得赢吗？
+      source_hint: 产业链草根/供应链纪要（字节资本开支结构、寒武纪多客户进展、思元690节奏）
+    - question: 海光"首选卡位"三支柱塌一根（吸并2025-12终止）后是否还成立？"类CUDA生态迁移易"是真护城河还是营销话术（实测迁移成本）？
+      source_hint: 海光 DCU 实测迁移案例/开发者反馈 + 软整合方案细节 + DCU 出货斜率
+    - question: H20 哑弹是否会因中美政策反复而逆转？国产份额 56%→90% 的斜率里，政策驱动 vs 市场驱动占比多大？
+      source_hint: H20/B30 最新政策动态 + 央国企国产化采购≥75%执行细则 + TrendForce/大摩份额跟踪
+    - question: 份额兑现≠利润兑现≠估值兑现——国产AI芯片会不会重演京东方(25%份额但仅2.7%利润率)？谁能真赚到钱？
+      source_hint: 京东方/面板/存储国产替代复盘（mat-1d1f97 已继承）+ 三家毛利率/现金流质量对比
+
+  l4_hunting:   # 狩猎层：逐 K# 对齐，找错误定价
+    - question: arena 内谁是赔率-确定性最优卡位？海光(生态+体量) vs 寒武纪(纯芯片+推理) vs 华鲲振宇(昇腾整机)——三者同口径可比矩阵下的排序？
+      addresses: [K1]
+      search_keywords: [国产AI芯片 三门派对比, 寒武纪 海光 华鲲振宇 出货, 昇腾 shortlist 卡位]
+      source_hint: 三门派/五强对比研报（mat 已在库）+ IDC 出货数据 + 各标的介入价位测算
+    - question: 国产份额 56%→90% 兑现节奏——2026H2/2027 采购斜率能否顶住？H20 哑弹会否因政策反复逆转？
+      addresses: [K2]
+      search_keywords: [国产AI芯片 份额 2026, 昇腾 采购 斜率, H20 B30 政策 反复]
+      source_hint: TrendForce/大摩份额跟踪（mat-af9f18/cec2d8）+ 政策执行细则 + 季度采购数据
+    - question: 寒武纪最大客户字节自研 SeedChip 切换速度——2026-27 侵蚀寒武纪订单几成？多客户放量（思元690）摊薄够快吗？
+      addresses: [K3]
+      search_keywords: [字节 SeedChip 量产, 寒武纪 客户集中度, 思元690 多客户 放量]
+      source_hint: 字节资本开支结构（mat-cb6e91）+ 寒武纪客户结构草根 + 思元690发布节奏
+    - question: 芯片层合理入场时点——寒武纪/海光 26E/27E PE 回到多少可介入？高位泡沫的 kill signpost 是什么？
+      addresses: [K4]
+      search_keywords: [寒武纪 海光 估值 PE PS, AI芯片 估值透支, 科技股 减持 套现]
+      source_hint: 卖方一致预期（26E/27E净利）+ 估值透支专题 + 减持/解禁时间表
+    - question: 海光"首选卡位"存废——吸并终止后 DCU 放量斜率能否兑现？"类CUDA迁移易"是否经得起实测？
+      addresses: [K5]
+      search_keywords: [海光 DCU 出货 放量, 海光 类CUDA 迁移 成本, 海光 中科曙光 软整合]
+      source_hint: 海光年报 DCU 收入拆分（Step5.5下载）+ 开发者迁移反馈 + 软整合方案
+    - question: 上游产能天花板——中芯7nm可分配昇腾/寒武纪产能上限、长鑫HBM3进BOM时间表，能否顶住份额需求？
+      addresses: [K6]
+      search_keywords: [中芯 7nm 产能 昇腾, 长鑫 HBM3 量产 华为, 国产AI芯片 产能 饥饿]
+      source_hint: 产能饥饿游戏研报（mat-ffc81b）+ 长鑫HBM3交付（mat 已在库）+ 中芯扩产指引
+
+material_priority:
+  tier1:   # 必读，研究不可缺
+    - title: 寒武纪(688256) 2025年报 + 2026Q1季报（结构化PDF）
+      type: annual-report
+      ticker: SSE_688256
+      source: cninfo 自动下载
+      why: 环④EV兑现核心——收入/毛利/现金流质量(经营现金流与净利25.6亿缺口)/存货/客户集中度精确值；本arena旗帜标的但仅有web-search料，缺结构化年报
+      addresses: [K3, K4]
+      info_tier: public
+    - title: 海光信息(688041) 2025年报 + 2026Q1季报
+      type: annual-report
+      ticker: SSE_688041
+      source: cninfo（已下载 mat-bff4a1/f47302）
+      why: 环④命门1核心——DCU收入拆分/双芯毛利/现金流，验证"首选卡位"放量斜率
+      addresses: [K5, K1]
+      info_tier: public
+    - title: 海光vs寒武纪vs华鲲振宇同口径 shortlist 可比矩阵
+      type: industry-research
+      source: 三门派/五强对比研报（已在库 mat-c17014 系列）
+      why: 环⑥终局环——选赢家+定介入纪律的直接输入
+      addresses: [K1]
+      info_tier: public
+    - title: 字节自研 SeedChip 对寒武纪冲击的产业链证据
+      type: industry-research
+      source: 已在库（字节榜一/资本开支/SeedChip 35万颗）
+      why: 命门2——寒武纪 shortlist 位次的头号尾部风险
+      addresses: [K3]
+      info_tier: half_public
+  tier2:   # 补充
+    - title: 卖方一致预期/估值锚（寒武纪/海光 26E-28E 净利+目标价）
+      type: sell-side-note
+      source: exa/adapter 搜卖方深度（consensus 必收类目）
+      why: 环②估值锚 + K4介入纪律，A合同必收
+      addresses: [K4]
+      info_tier: half_public
+    - title: 上游产能硬数据（中芯7nm可分配上限 + 长鑫HBM3进BOM）
+      type: industry-research
+      source: 已在库（产能饥饿 mat-ffc81b + 长鑫HBM3交付）
+      why: 命门3物理前提，环①
+      addresses: [K6]
+      info_tier: half_public
+    - title: 华鲲振宇/高新发展(000628)昇腾整机份额与利润分配
+      type: industry-research
+      source: 已在库 mat-a7e6f7（净利率仅1.1-1.3%）
+      why: K1昇腾外围卡位——整机利润薄的证据
+      addresses: [K1]
+      info_tier: half_public
+    - title: 国产AI芯片份额兑现节奏跟踪（TrendForce/大摩 + H20政策）
+      type: industry-research
+      source: 已在库 mat-af9f18/mat-cec2d8/mat-3d97c7（份额56%→90% + H20哑弹）
+      why: K2份额可持续性——56%→90%斜率 + H20政策反复的直接数据
+      addresses: [K2]
+      info_tier: half_public
+  tier3:   # 可选
+    - title: 摩尔线程/沐曦 IPO 后估值与基本面
+      type: industry-research
+      source: 已在库（首日暴涨425-693%后回落40%）
+      why: arena 全景补充，交易性泡沫已挤，父级判 eliminated
+      addresses: [K1]
+      info_tier: public
+
+key_risks_to_monitor:
+  - 字节 SeedChip 2026 量产进度（35万颗目标）与寒武纪订单切换速度
+  - H20/B30 中美政策反复（解禁→再禁的博弈）
+  - 中芯7nm/长鑫HBM3 产能爬坡是否卡住份额兑现
+  - 海光吸并中科曙光软整合进展与标的形态重构
+  - 高位估值下的减持/解禁套现信号（寒武纪/海光）
+
+analogies_to_study:
+  - name: 京东方/面板国产替代（中国 · 2010s-2020s）
+    logic: 25%全球份额却仅2.7%利润率——"拿下份额≠赚到钱≠估值兑现"，周期+结构决定盈利
+    limit: 面板是标准品价格战，AI芯片有生态壁垒+政策保护+高毛利，未必同样惨烈
+    mirror_mat: mat-1d1f97  # 父级继承
+  - name: 存储国产替代（长江存储/长鑫 · 2018-2024）
+    logic: 技术追赶+国产替代逻辑相同，但盈利兑现滞后于份额多年
+    limit: 存储更同质化、周期性更强；AI芯片需求刚性更高

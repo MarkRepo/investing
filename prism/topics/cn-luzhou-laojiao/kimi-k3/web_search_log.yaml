@@ -1,0 +1,275 @@
+slug: cn-luzhou-laojiao
+variant: kimi-k3
+entries:
+- searched_at: '2026-07-22T07:09:22.801514+00:00'
+  query: 泸州老窖 2025年报 营收 归母净利润 同比
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:22.815644+00:00'
+  query: 泸州老窖 2026年一季报 营收 净利润 合同负债
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:22.840053+00:00'
+  query: 泸州老窖 股价 市盈率 股息率
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:22.862833+00:00'
+  query: 飞天茅台 批价 2026年7月
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:22.877798+00:00'
+  query: 白酒行业 库存 去化 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:22.924844+00:00'
+  query: 泸州老窖 2025年度 分红 派息 方案
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:22.981224+00:00'
+  query: 泸州老窖 2026 经销商大会 控量挺价 经营策略
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:23.043898+00:00'
+  query: 白酒 消费税 改革 2026 进展
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:23.121847+00:00'
+  query: 泸州老窖 目标价 券商 评级 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:23.233854+00:00'
+  query: 国窖1573 一批价 渠道 库存 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 4
+  n_high: 3
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:09:23.236516+00:00'
+  query: 国窖1573 批价 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-lowtier
+- searched_at: '2026-07-22T07:10:59.662321+00:00'
+  query: 泸州老窖 公告 高管变动 监管 2026年6月
+  triggered_by: 00-prescan
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:10:59.746672+00:00'
+  query: 泸州老窖 股东大会 2026 经营目标 分红规划
+  triggered_by: 00-prescan
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:31.709382+00:00'
+  query: 国窖1573 飞天茅台 普五 批价 今日酒价 2026年6月
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:31.796450+00:00'
+  query: 泸州老窖 深度报告 券商 2026 盈利预测 估值
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:31.933140+00:00'
+  query: 白酒消费税 纳税申报 新规 财政部 税务总局 2026 细则
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:32.075887+00:00'
+  query: 白酒行业 2013 2014 2015 深度调整 复盘 周期 茅台 五粮液
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:32.233509+00:00'
+  query: 泸州老窖 经销商 库存 打款 倒挂 调研 2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:32.344737+00:00'
+  query: 泸州老窖 刘淼 林锋 管理层 股权激励 分红 回购 历史
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:32.457859+00:00'
+  query: 泸州老窖 一致预期 2026 2027 净利润预测 机构
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:32.631619+00:00'
+  query: 泸州老窖 投资者关系活动记录表 2026年6月 调研
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:32.702085+00:00'
+  query: 泸州老窖 2024-2026年度股东分红回报规划 公告
+  triggered_by: 00-deep-fetch
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:32.892089+00:00'
+  query: 泸州老窖 窖池 基酒 产能 储备 万吨
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T07:27:33.022436+00:00'
+  query: 泸州老窖 特曲 窖龄 高光 黑盖 2025 动销 提价
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:19:29.880943+00:00'
+  query: 洋河股份 2019 2020 渠道库存 危机 控货 复盘
+  triggered_by: 01-deep-fetch
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:19:30.208504+00:00'
+  query: 高端白酒 需求结构 政务 商务 宴席 占比 禁酒令
+  triggered_by: 01-deep-fetch
+  n_results: 5
+  n_high: 3
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:23:40.492288+00:00'
+  query: 国窖1573 批价 普五 飞天茅台 2026年7月
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:23:40.851888+00:00'
+  query: 白酒 渠道库存 动销 淡季 2026年6月
+  triggered_by: 01-prescan
+  n_results: 5
+  n_high: 3
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:23:40.930202+00:00'
+  query: 泸州老窖 中报 业绩预告 盈利预测 2026
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:23:41.163513+00:00'
+  query: 泸州老窖 经营现金流 分红 货币资金 2025年报
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:23:41.320922+00:00'
+  query: 消费税 征收后移 白酒 立法 征求意见 2026
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:23:41.327698+00:00'
+  query: '[scope 槽] 泸州老窖 综合校准'
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: skipped-covered
+- searched_at: '2026-07-22T08:23:41.334561+00:00'
+  query: '[company-event 槽] 泸州老窖 公司事件'
+  triggered_by: 01-prescan
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: skipped-covered
+- searched_at: '2026-07-22T08:24:07.931556+00:00'
+  query: 01-prescan 全量（5 L4 槽执行 + scope/company-event covered）
+  triggered_by: 01-prescan
+  n_results: 23
+  n_high: 7
+  n_mid: 5
+  n_low: 0
+  disposition: registered

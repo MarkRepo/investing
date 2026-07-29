@@ -93,12 +93,16 @@ def _parse_matrix(text, cfg) -> tuple[float | None, str | None]:
     return None, as_of
 
 
-def _parse_html(text, cfg) -> tuple[float | None, str | None]:
-    """HTML 正则取值：value_regex 必填（第 1 捕获组=值），date_regex 选填（第 1 捕获组=日期）。
-    两条正则都对**整页原文**跑（带 re.DOTALL），故可把区段锚点写进正则自身
+def _extract_value_from_text(text, cfg, *, date_text=None) -> tuple[float | None, str | None]:
+    """HTML/纯文本正则取值：value_regex 必填（第 1 捕获组=值），date_regex 选填（第 1 捕获组=日期）。
+    两条正则缺省都对同一个 **text** 跑（带 re.DOTALL），故可把区段锚点写进正则自身
     （如 'chart-stat-lastrows.*?<span class="val">([\\d.,]+)' 避开页头同名块）。
-    值去千分位逗号后转 float；任何对不上 → 诚实 (None, as_of)，不抛。
-    供「固定 URL、值嵌在静态 HTML、无免费 json/csv 接口」的第三方镜像（如 macromicro）。"""
+    date_text 选填：日期改对它跑而不是 text——供「值在正文（须先去标签清洗）、日期在
+    <script type=application/ld+json> 的 datePublished 里（清洗会连 script 标签一起去掉）」
+    这种日期源/值源不同处的页面（如好房点评网详情页），此时 text=清洗后正文、date_text=原始 HTML。
+    值去千分位逗号后转 float；sign_negative_regex 选填，命中则取负（在值匹配前 60 字符窗口内找，
+    供中文涨跌词无 +/− 时判负，如「减少/下降」）。任何对不上 → 诚实 (None, as_of)，不抛。
+    供 html / html_list 两个 kind 共用。"""
     vr = cfg.get("value_regex")
     if not vr:
         return None, None
@@ -107,12 +111,22 @@ def _parse_html(text, cfg) -> tuple[float | None, str | None]:
     as_of = None
     dr = cfg.get("date_regex")
     if dr:
-        dm = re.search(dr, text, re.DOTALL)
+        dm = re.search(dr, date_text if date_text is not None else text, re.DOTALL)
         as_of = dm.group(1) if dm else None
     try:
-        return (float(raw.replace(",", "")) if raw not in (None, "") else None), as_of
+        val = float(raw.replace(",", "")) if raw not in (None, "") else None
     except (ValueError, TypeError, AttributeError):
         return None, as_of
+    neg = cfg.get("sign_negative_regex")
+    if val is not None and neg and re.search(neg, text[max(0, vm.start() - 60):vm.end()]):
+        val = -val
+    return val, as_of
+
+
+def _parse_html(text, cfg) -> tuple[float | None, str | None]:
+    """HTML 正则取值，供「固定 URL、值嵌在静态 HTML、无免费 json/csv 接口」的第三方镜像
+    （如 macromicro）。实现见 _extract_value_from_text。"""
+    return _extract_value_from_text(text, cfg)
 
 
 def _parse_json_scan(payload, cfg) -> tuple[float | None, str | None]:
@@ -161,9 +175,63 @@ def _parse_json_scan(payload, cfg) -> tuple[float | None, str | None]:
     return None, None
 
 
+_SCRIPT_STYLE = re.compile(r"<(script|style)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
+_ANY_TAG = re.compile(r"<[^>]+>")
+_WS = re.compile(r"\s+")
+
+
+def _clean_text(raw: str) -> str:
+    """去 script/style → 去标签 → 反转义实体 → collapse 空白。供 fetch_text 与 html_list 共用
+    （后者详情页正文常是 135editor 式逐字符 <span> 富文本，数字/文字被拆进大量相邻标签，
+    正则要在标签剥净后的纯文本上跑才抓得到，直接对原始 HTML 跑基本抓不到）。"""
+    raw = _SCRIPT_STYLE.sub(" ", raw)
+    raw = _ANY_TAG.sub(" ", raw)
+    return _WS.sub(" ", unescape(raw)).strip()
+
+
+def _fetch_html_list(recipe: dict, parse: dict, *, client) -> tuple[float | None, str | None]:
+    """两步抓取（列表→详情），供「值不在列表字段里、要点进详情正文才有」的站点
+    （如好房点评网 haofangdp.com 的市场周报：列表页只有标题，环比数字在详情正文里）。
+    先 GET list_url，用 list_item_regex（第 1 组=id，第 2 组=标题）在列表原文里顺序找，
+    取第一个标题命中 title_match_regex 的条目 id（列表新→旧排序时即最新一条）；
+    再用 detail_url_template.format(id=...) 拼详情页 URL 抓取；value_regex/sign_negative_regex
+    对清洗后正文（_clean_text）跑，date_regex 缺省对**原始 HTML**跑（date_text=原文）——因为发布
+    日期常在 <script type=application/ld+json> 的 datePublished 里，清洗会把 script 标签连内容
+    一起去掉；正文数字反而常被 135editor 式逐字符 <span> 拆散，须先清洗才抓得到。
+    任何一步找不到 → 诚实 (None, None)，不抛。"""
+    list_url = recipe.get("list_url")
+    item_rx = parse.get("list_item_regex")
+    if not list_url or not item_rx:
+        return None, None
+    kw: dict = {"timeout": 30}
+    headers = recipe.get("headers")
+    if headers:
+        kw["headers"] = headers
+    list_resp = client.get(list_url, **kw)
+    list_resp.raise_for_status()
+    title_rx = parse.get("title_match_regex")
+    item_id = None
+    for m in re.finditer(item_rx, list_resp.text, re.DOTALL):
+        title = m.group(2) if m.re.groups >= 2 else ""
+        if title_rx and not re.search(title_rx, title):
+            continue
+        item_id = m.group(1)
+        break
+    if not item_id:
+        return None, None
+    tmpl = parse.get("detail_url_template")
+    if not tmpl:
+        return None, None
+    detail_resp = client.get(tmpl.format(id=item_id), **kw)
+    detail_resp.raise_for_status()
+    detail_raw = detail_resp.text
+    return _extract_value_from_text(_clean_text(detail_raw), parse, date_text=detail_raw)
+
+
 _PARSERS = {"json": _parse_json, "csv": _parse_csv, "matrix": _parse_matrix,
             "html": _parse_html, "json_scan": _parse_json_scan}
 _TEXT_KINDS = {"csv", "matrix", "html"}  # 这些 kind 喂 resp.text；json/json_scan 喂 resp.json()
+# html_list 不入表：它自己两步取文本（列表页+详情页），不走下面 fetch_by_recipe 的单次请求派发。
 
 
 def _cip_basis(legs: list[float], params: dict) -> float:
@@ -199,26 +267,29 @@ def _cip_basis(legs: list[float], params: dict) -> float:
 def fetch_by_recipe(recipe: dict, *, client=None) -> tuple[float | None, str | None]:
     """按 fetch_recipe 抓一个数值。recipe: {kind?, url, method?, headers?, body?, parse:{...}}。
     kind 缺省 'json'（向后兼容现有写法）；按 kind 派发解析器。未知 kind 抛 ValueError（不静默）。
-    method 缺省 GET；POST 传 body（json）。headers 可选。client 可注入（测试 mock）。"""
-    url = recipe.get("url")
-    if not url:
-        return None, None
+    method 缺省 GET；POST 传 body（json）。headers 可选。client 可注入（测试 mock）。
+    kind='html_list' 是两步取（列表→详情），走 list_url/detail_url_template（无顶层 url）。"""
     kind = recipe.get("kind", "json")
-    parser = _PARSERS.get(kind)
-    if parser is None:
-        raise ValueError(f"未知 fetch_recipe.kind: {kind!r}（支持 {sorted(_PARSERS)}）")
     parse = recipe.get("parse") or {}
-    method = (recipe.get("method") or "GET").upper()
-    headers = recipe.get("headers")
-    body = recipe.get("body")
-    # 仅在显式给定时才传 headers/json，保持与既有 mock client（get(url, timeout=)）的兼容。
-    kw: dict = {"timeout": 30}
-    if headers:
-        kw["headers"] = headers
     owns = client is None
     if owns:
         client = httpx.Client()
     try:
+        if kind == "html_list":
+            return _fetch_html_list(recipe, parse, client=client)
+        url = recipe.get("url")
+        if not url:
+            return None, None
+        parser = _PARSERS.get(kind)
+        if parser is None:
+            raise ValueError(f"未知 fetch_recipe.kind: {kind!r}（支持 {sorted(_PARSERS)}）")
+        method = (recipe.get("method") or "GET").upper()
+        headers = recipe.get("headers")
+        body = recipe.get("body")
+        # 仅在显式给定时才传 headers/json，保持与既有 mock client（get(url, timeout=)）的兼容。
+        kw: dict = {"timeout": 30}
+        if headers:
+            kw["headers"] = headers
         if method == "POST":
             resp = client.post(url, json=body, **kw)
         else:
@@ -231,14 +302,9 @@ def fetch_by_recipe(recipe: dict, *, client=None) -> tuple[float | None, str | N
     return parser(payload, parse)
 
 
-_SCRIPT_STYLE = re.compile(r"<(script|style)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
-_ANY_TAG = re.compile(r"<[^>]+>")
-_WS = re.compile(r"\s+")
-
-
 def fetch_text(url: str, *, client=None) -> str:
     """固定 URL 取正文，喂给 headless LLM 判读用（如央行声明/报告索引页）。
-    GET → 去 script/style → 去标签 → 反转义实体 → collapse 空白。
+    GET → _clean_text（去 script/style → 去标签 → 反转义实体 → collapse 空白）。
 
     刻意不挂在 fetch_by_recipe 上：那条只管 json/csv 数值提取，保持纯粹；
     文本是给 LLM 读的，不是 value。多跳（索引→最新条目）由 headless LLM 侧决定。
@@ -253,9 +319,7 @@ def fetch_text(url: str, *, client=None) -> str:
     finally:
         if owns:
             client.close()
-    raw = _SCRIPT_STYLE.sub(" ", raw)
-    raw = _ANY_TAG.sub(" ", raw)
-    return _WS.sub(" ", unescape(raw)).strip()
+    return _clean_text(raw)
 
 
 def run_recipe_fetch(slug: str, variant: str, *, client=None,

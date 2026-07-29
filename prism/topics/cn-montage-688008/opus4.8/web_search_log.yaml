@@ -249,3 +249,11 @@ entries:
   n_mid: 0
   n_low: 0
   disposition: registered
+- searched_at: '2026-07-23T23:46:21.075396+00:00'
+  query: '[daily-monitor] signpost:2026 H1 半年报｜bear:扣非同比<15%,一次性收益退潮后真实增速掉档'
+  triggered_by: 06-daily-monitor
+  n_results: 3
+  n_high: 1
+  n_mid: 0
+  n_low: 2
+  disposition: registered

@@ -1,0 +1,23 @@
+as_of_regime_version: 3
+regime_composite: 美higher-for-longer(点阵3.8/FedWatch4.01计价零降息)+长端牛平(10Y4.38/实际利率~2.2%)+risk-on但脆弱度high;对长久期高beta成长股偏逆风,压久期
+depends_on_states:
+- conclusion: rates_us
+  state: 高位企稳/官方+市场双双转鹰但长端牛平(10Y4.38)
+  role: load_bearing
+- conclusion: liquidity_us
+  state: risk-on但脆弱度high(VIX17.65/信用利差地板)
+  role: load_bearing
+- conclusion: fx_usd
+  state: 广义美元走强(120.9)
+  role: confirming
+discount_rate:
+  risk_free: 4.38
+  applied_wacc: 11.0
+  rate_sensitivity: 10Y实际利率±50bp→反推DCF公允价约±8-10%(长久期放大);higher-for-longer限制倍数上修空间
+  source_input: 'macro v3: 10Y名义4.38%/实际利率~2.2%(TIPS)'
+slug: us-applovin
+variant: opus4.8
+stamped_at: '2026-07-27T13:46:52.121556+00:00'
+stale: true
+stale_reason: 依赖的『高位企稳/官方+市场双双转鹰但长端牛平(10Y4.38)』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+  v3→v4)

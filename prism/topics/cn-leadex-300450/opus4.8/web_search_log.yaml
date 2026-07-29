@@ -1,0 +1,155 @@
+slug: cn-leadex-300450
+variant: opus4.8
+entries:
+- searched_at: '2026-07-28T07:32:39.190956+00:00'
+  query: 先导智能 2025年年度报告 营业收入 归母净利润 经营现金流 毛利率
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.202517+00:00'
+  query: 先导智能 2026年一季报 营收 净利 在手订单 同比
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.214628+00:00'
+  query: 先导智能 2025年报 前五大客户 第一大客户 占比 宁德时代
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.240139+00:00'
+  query: 先导智能 固态电池 设备订单 金额 量产线 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.262852+00:00'
+  query: 先导智能 固态电池 收入 单独披露 单GWh 价值量
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.276726+00:00'
+  query: 先导智能 赴港上市 H股 IPO 进展 递表 聆讯 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 1
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.302567+00:00'
+  query: 先导智能 2025年报 资产减值 Northvolt 应收账款 计提
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.333582+00:00'
+  query: 先导智能 研发费用 研发人员 2025 变动
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.369647+00:00'
+  query: 宁德时代 全固态电池 量产 时间表 2027 凝聚态 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.405163+00:00'
+  query: 先导智能 市盈率 市净率 市销率 股价 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.429053+00:00'
+  query: 锂电设备 行业 2026 招标 电池厂 扩产 capex 复苏 拐点
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.509904+00:00'
+  query: 先导智能 海外订单 LG 三星 SK 固态 客户 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:32:39.585339+00:00'
+  query: 先导智能 H股 港股 股票代码 上市 09656 OR 02580
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:34:05.563160+00:00'
+  query: 00-prescan 全量（13 条优先 query：财务/客户/固态订单/赴港H股/减值/研发/CATL/估值/行业/海外）
+  triggered_by: 00-prescan-baseline
+  n_results: 65
+  n_high: 16
+  n_mid: 11
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-28T07:41:25.288478+00:00'
+  query: 先导智能 H股 招股说明书 全文 港交所 hkexnews 全球发售
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:41:25.380223+00:00'
+  query: 先导智能 深度报告 固态电池 整线 量产 2026 券商研报
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:41:25.445593+00:00'
+  query: 先导智能 2022 2024 业绩下滑 减值 复盘 锂电设备 周期 教训
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:41:25.516231+00:00'
+  query: 先导智能 王燕清 资本开支 并购 股权激励 分红 历史 资本配置
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-28T07:41:25.623603+00:00'
+  query: 先导智能 盈利预测 目标价 券商评级 2026 2027 净利润 一致预期
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered

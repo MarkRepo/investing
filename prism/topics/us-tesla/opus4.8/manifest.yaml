@@ -1,0 +1,1246 @@
+slug: us-tesla
+variant: opus4.8
+updated: '2026-07-23T16:17:13.666408+00:00'
+materials:
+- id: mat-92fbb6
+  filename: 2026-07-23_tesla-brand-value-tanked-with-musk-s-political-mov.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.705414+00:00'
+  processed: false
+  notes: query='Musk Trump feud America Party 2025 2026 Tesla brand sales impact'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Musk Trump feud America Party 2025 2026 Tesla brand sales impact
+    url: https://www.cnbc.com/amp/2026/01/27/tesla-brand-value-2025-musk-politics.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:45:02.704549+00:00'
+    stale_at: '2026-08-22T03:45:02.704549+00:00'
+    expire_at: '2026-10-21T03:45:02.704549+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2c9739
+  filename: 2026-07-23_trump-musk-spat-creates-more-problems-for-tesla.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.710475+00:00'
+  processed: false
+  notes: query='Musk Trump feud America Party 2025 2026 Tesla brand sales impact'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Musk Trump feud America Party 2025 2026 Tesla brand sales impact
+    url: https://www.nytimes.com/2025/06/07/business/trump-elon-musk-tesla.html
+    domain: nytimes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.709517+00:00'
+    stale_at: '2026-08-22T03:45:02.709517+00:00'
+    expire_at: '2026-10-21T03:45:02.709517+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5fb2c6
+  filename: 2026-07-23_tesla-s-quarterly-sales-fall-13-experts-blame-musk.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.716134+00:00'
+  processed: false
+  notes: query='Musk Trump feud America Party 2025 2026 Tesla brand sales impact'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Musk Trump feud America Party 2025 2026 Tesla brand sales impact
+    url: https://www.npr.org/2025/04/02/nx-s1-5348934/tesla-sales-protests-musk-trump
+    domain: npr.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.714593+00:00'
+    stale_at: '2026-08-22T03:45:02.714593+00:00'
+    expire_at: '2026-10-21T03:45:02.714593+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-743b3c
+  filename: 2026-07-23_tesla-s-energy-storage-business-is-growing-faster-.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.721965+00:00'
+  processed: false
+  notes: query='Tesla energy storage Megapack 2025 2026 deployment GWh revenue'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tesla energy storage Megapack 2025 2026 deployment GWh revenue
+    url: https://techcrunch.com/2026/01/29/teslas-energy-storage-business-is-growing-faster-than-any-other-part-of-the-company
+    domain: techcrunch.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:45:02.720203+00:00'
+    stale_at: '2026-08-22T03:45:02.720203+00:00'
+    expire_at: '2026-10-21T03:45:02.720203+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9a489c
+  filename: 2026-07-23_tesla-energy-up-84-43-5-gwh-deployed-last-12-month.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.730095+00:00'
+  processed: false
+  notes: query='Tesla energy storage Megapack 2025 2026 deployment GWh revenue' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla energy storage Megapack 2025 2026 deployment GWh revenue
+    url: https://pv-magazine-usa.com/2025/10/27/tesla-energy-up-84-43-5-gwh-deployed-last-12-months-breakout-q4-quarter-coming
+    domain: pv-magazine-usa.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.727697+00:00'
+    stale_at: '2026-08-22T03:45:02.727697+00:00'
+    expire_at: '2026-10-21T03:45:02.727697+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0cbda8
+  filename: 2026-07-23_tesla-energy-storage-deployments-jumped-in-crucial.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.739501+00:00'
+  processed: false
+  notes: query='Tesla energy storage Megapack 2025 2026 deployment GWh revenue' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla energy storage Megapack 2025 2026 deployment GWh revenue
+    url: https://www.energy-storage.news/tesla-energy-storage-deployments-jumped-in-crucial-ai-transformation-year-company-expects-margin-compression-in-2026
+    domain: energy-storage.news
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.736954+00:00'
+    stale_at: '2026-08-22T03:45:02.736954+00:00'
+    expire_at: '2026-10-21T03:45:02.736954+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-371e6e
+  filename: 2026-07-23_tesla-tsla-statistics-valuation.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.750580+00:00'
+  processed: false
+  notes: query='Tesla stock price market cap July 2026 valuation PE ratio' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla stock price market cap July 2026 valuation PE ratio
+    url: https://stockanalysis.com/stocks/tsla/statistics
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.747606+00:00'
+    stale_at: '2026-08-22T03:45:02.747606+00:00'
+    expire_at: '2026-10-21T03:45:02.747606+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-70a9aa
+  filename: 2026-07-23_tsla-market-cap-1430330-mil-significantly-overvalu.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.762016+00:00'
+  processed: false
+  notes: query='Tesla stock price market cap July 2026 valuation PE ratio' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla stock price market cap July 2026 valuation PE ratio
+    url: https://www.gurufocus.com/term/mktcap/TSLA
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.758460+00:00'
+    stale_at: '2026-08-22T03:45:02.758460+00:00'
+    expire_at: '2026-10-21T03:45:02.758460+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ad0294
+  filename: 2026-07-23_killing-ira-ev-tax-credits-will-ruin-us-ev-and-bat.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.777598+00:00'
+  processed: false
+  notes: query='US EV tax credit IRA regulatory credits 2025 2026 repeal Tesla impact'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: US EV tax credit IRA regulatory credits 2025 2026 repeal Tesla impact
+    url: https://electrek.co/2025/03/13/ira-ev-tax-credits-princeton-study
+    domain: electrek.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.772578+00:00'
+    stale_at: '2026-08-22T03:45:02.772578+00:00'
+    expire_at: '2026-10-21T03:45:02.772578+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d8d378
+  filename: 2026-07-23_study-trump-killing-ev-tax-credits-would-decimate-.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.792406+00:00'
+  processed: false
+  notes: query='US EV tax credit IRA regulatory credits 2025 2026 repeal Tesla impact'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: US EV tax credit IRA regulatory credits 2025 2026 repeal Tesla impact
+    url: https://www.greencarreports.com/news/1145994_study-trump-killing-ev-tax-credits-would-decimate-us-industries
+    domain: greencarreports.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.787897+00:00'
+    stale_at: '2026-08-22T03:45:02.787897+00:00'
+    expire_at: '2026-10-21T03:45:02.787897+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9a1a70
+  filename: 2026-07-23_特斯拉第二季交付量達48萬輛-大幅超越預期-庫存積壓疑慮消散.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.813095+00:00'
+  processed: false
+  notes: query='特斯拉 2025 全年交付量 2026 Q1 Q2 交付量 同比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 特斯拉 2025 全年交付量 2026 Q1 Q2 交付量 同比
+    url: https://hk.finance.yahoo.com/news/%E7%89%B9%E6%96%AF%E6%8B%89%E7%AC%AC%E4%BA%8C%E5%AD%A3%E4%BA%A4%E4%BB%98%E9%87%8F%E9%81%9448%E8%90%AC%E8%BC%9B-%E5%A4%A7%E5%B9%85%E8%B6%85%E8%B6%8A%E9%A0%90%E6%9C%9F-%E5%BA%AB%E5%AD%98%E7%A9%8D%E5%A3%93%E7%96%91%E6%85%AE%E6%B6%88%E6%95%A3-141240310.html
+    domain: hk.finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.807521+00:00'
+    stale_at: '2026-08-22T03:45:02.807521+00:00'
+    expire_at: '2026-10-21T03:45:02.807521+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-20436f
+  filename: 2026-07-23_tesla-robotaxi-safety-monitors-removed-in-austin-b.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.828421+00:00'
+  processed: false
+  notes: query='Tesla Austin robotaxi 2026 expansion cities unsupervised safety monitor
+    removed'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tesla Austin robotaxi 2026 expansion cities unsupervised safety monitor
+      removed
+    url: https://www.linkedin.com/posts/malachigreb_teslarobotaxi-unsupervisedfsd-austintx-activity-7406411317231853570-kXG4
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:45:02.822598+00:00'
+    stale_at: '2026-08-22T03:45:02.822598+00:00'
+    expire_at: '2026-10-21T03:45:02.822598+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-19577a
+  filename: 2026-07-23_breaking-tesla-launches-public-robotaxi-rides-in-a.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.850542+00:00'
+  processed: false
+  notes: query='Tesla Austin robotaxi 2026 expansion cities unsupervised safety monitor
+    removed' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla Austin robotaxi 2026 expansion cities unsupervised safety monitor
+      removed
+    url: https://www.teslarati.com/tesla-launches-robotaxi-rides-in-austin-with-no-safety-monitor
+    domain: teslarati.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.843512+00:00'
+    stale_at: '2026-08-22T03:45:02.843512+00:00'
+    expire_at: '2026-10-21T03:45:02.843512+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ff9b5e
+  filename: 2026-07-23_tesla-cybercab-production-will-begin-in-april-2026.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.873645+00:00'
+  processed: false
+  notes: query='Tesla Cybercab production 2026 timeline start' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla Cybercab production 2026 timeline start
+    url: https://insideevs.com/news/778232/tesla-cybercab-production-april-2026
+    domain: insideevs.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.865992+00:00'
+    stale_at: '2026-08-22T03:45:02.865992+00:00'
+    expire_at: '2026-10-21T03:45:02.865992+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cd8df8
+  filename: 2026-07-23_automakers-share-in-china-s-nev-market-in-june-byd.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.894644+00:00'
+  processed: false
+  notes: query='Tesla China 2026 deliveries market share BYD Xiaomi competition' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla China 2026 deliveries market share BYD Xiaomi competition
+    url: https://cnevpost.com/2026/07/10/automakers-share-china-nev-market-jun-2026
+    domain: cnevpost.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.888095+00:00'
+    stale_at: '2026-08-22T03:45:02.888095+00:00'
+    expire_at: '2026-10-21T03:45:02.888095+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c422c9
+  filename: 2026-07-23_tesla-removes-chase-vehicles-from-robotaxi-trips-m.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.917245+00:00'
+  processed: false
+  notes: query='Tesla FSD v14 unsupervised 2026 regulatory approval' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla FSD v14 unsupervised 2026 regulatory approval
+    url: https://eletric-vehicles.com/tesla/tesla-removes-chase-vehicles-from-robotaxi-trips-musk-says-fsd-100-unsupervised
+    domain: eletric-vehicles.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:45:02.909648+00:00'
+    stale_at: '2026-08-22T03:45:02.909648+00:00'
+    expire_at: '2026-10-21T03:45:02.909648+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-12ee90
+  filename: 2026-07-23_tesla-says-shareholders-approve-musk-s-1-trillion-.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.938054+00:00'
+  processed: true
+  notes: query='Musk Tesla new pay package voting rights 2025 2026 shareholder vote
+    result'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tesla 2025 proxy statement Musk trillion pay package terms voting rights
+      25% dilution vesting
+    url: https://www.cnbc.com/amp/2025/11/06/tesla-shareholders-musk-pay.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:52:54.537273+00:00'
+    stale_at: '2026-08-22T03:52:54.537273+00:00'
+    expire_at: '2026-10-21T03:52:54.537273+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Musk Tesla new pay package voting rights 2025 2026 shareholder vote result
+- id: mat-4a82a7
+  filename: 2026-07-23_elon-musk-s-1-trillion-tesla-pay-plan-wins-shareho.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.957373+00:00'
+  processed: false
+  notes: query='Musk Tesla new pay package voting rights 2025 2026 shareholder vote
+    result'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Musk Tesla new pay package voting rights 2025 2026 shareholder vote result
+    url: https://www.reuters.com/legal/transactional/tesla-shareholders-approve-878-billion-pay-plan-elon-musk-2025-11-06/
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:45:02.949953+00:00'
+    stale_at: '2026-08-22T03:45:02.949953+00:00'
+    expire_at: '2026-10-21T03:45:02.949953+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2edbfa
+  filename: 2026-07-23_shareholder-vote-guide.md
+  source_type: web-search
+  added: '2026-07-23T03:45:02.981926+00:00'
+  processed: false
+  notes: query='Musk Tesla new pay package voting rights 2025 2026 shareholder vote
+    result'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Musk Tesla new pay package voting rights 2025 2026 shareholder vote result
+    url: https://ir.tesla.com/shareholders/vote
+    domain: ir.tesla.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:45:02.972984+00:00'
+    stale_at: '2026-08-22T03:45:02.972984+00:00'
+    expire_at: '2026-10-21T03:45:02.972984+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ed30ab
+  filename: 2026_TSLA_10-Q_2026-04-23.htm
+  source_type: quarterly-report
+  added: '2026-07-23T03:50:29.778430+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-a25877
+  filename: sec/2026_TSLA_10-Q_2026-04-23/item_1_financial.md
+  source_type: sec-section
+  added: '2026-07-23T03:50:29.928504+00:00'
+  processed: true
+  notes: split from 2026_TSLA_10-Q_2026-04-23.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-ed30ab
+  sec_section: item_1_financial
+- id: mat-e80e33
+  filename: sec/2026_TSLA_10-Q_2026-04-23/item_2_mda.md
+  source_type: sec-section
+  added: '2026-07-23T03:50:29.941272+00:00'
+  processed: true
+  notes: split from 2026_TSLA_10-Q_2026-04-23.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-ed30ab
+  sec_section: item_2_mda
+- id: mat-319f11
+  filename: sec/2026_TSLA_10-Q_2026-04-23/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-23T03:50:29.954050+00:00'
+  processed: true
+  notes: split from 2026_TSLA_10-Q_2026-04-23.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-ed30ab
+  sec_section: item_3_quant_risk
+- id: mat-76a830
+  filename: sec/2026_TSLA_10-Q_2026-04-23/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-23T03:50:29.967772+00:00'
+  processed: true
+  notes: split from 2026_TSLA_10-Q_2026-04-23.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-ed30ab
+  sec_section: item_1a_risk
+- id: mat-5a701f
+  filename: 2025_TSLA_10-K_2026-01-29.htm
+  source_type: annual-report
+  added: '2026-07-23T03:50:32.003996+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-ff2751
+  filename: sec/2025_TSLA_10-K_2026-01-29/item_1_business.md
+  source_type: sec-section
+  added: '2026-07-23T03:50:32.194071+00:00'
+  processed: true
+  notes: split from 2025_TSLA_10-K_2026-01-29.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-5a701f
+  sec_section: item_1_business
+- id: mat-340330
+  filename: sec/2025_TSLA_10-K_2026-01-29/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-23T03:50:32.224448+00:00'
+  processed: true
+  notes: split from 2025_TSLA_10-K_2026-01-29.htm (1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-5a701f
+  sec_section: item_1a_risk
+- id: mat-f9e88f
+  filename: sec/2025_TSLA_10-K_2026-01-29/item_7_mda.md
+  source_type: sec-section
+  added: '2026-07-23T03:50:32.238989+00:00'
+  processed: true
+  notes: split from 2025_TSLA_10-K_2026-01-29.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-5a701f
+  sec_section: item_7_mda
+- id: mat-f2df13
+  filename: sec/2025_TSLA_10-K_2026-01-29/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-23T03:50:32.254926+00:00'
+  processed: true
+  notes: split from 2025_TSLA_10-K_2026-01-29.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-5a701f
+  sec_section: item_7a_quant_risk
+- id: mat-044c9a
+  filename: sec/2025_TSLA_10-K_2026-01-29/item_8_financial.md
+  source_type: sec-section
+  added: '2026-07-23T03:50:32.270057+00:00'
+  processed: true
+  notes: split from 2025_TSLA_10-K_2026-01-29.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-5a701f
+  sec_section: item_8_financial
+- id: mat-a9ba97
+  filename: 2026-07-23_q1-2026-update.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.016416+00:00'
+  processed: true
+  notes: query='Tesla 2026 Q1 earnings call transcript robotaxi unsupervised regulatory
+    permit progress'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: Tesla 2026 Q1 earnings call transcript robotaxi unsupervised regulatory
+      permit progress
+    url: https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q1-2026-Update.pdf
+    domain: assets-ir.tesla.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:52:54.006156+00:00'
+    stale_at: '2026-08-22T03:52:54.006156+00:00'
+    expire_at: '2026-10-21T03:52:54.006156+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-26f8fa
+  filename: 2026-07-23_tesla-inc-tsla-q1-fy2026-earnings-call-transcript.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.048049+00:00'
+  processed: true
+  notes: query='Tesla 2026 Q1 earnings call transcript robotaxi unsupervised regulatory
+    permit progress' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Tesla 2026 Q1 earnings call transcript robotaxi unsupervised regulatory
+      permit progress
+    url: https://finance.yahoo.com/quote/TSLA/earnings/TSLA-Q1-2026-earnings_call-547944.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:52:54.037630+00:00'
+    stale_at: '2026-08-22T03:52:54.037630+00:00'
+    expire_at: '2026-10-21T03:52:54.037630+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b66265
+  filename: 2026-07-23_tesla-vs-waymo-austin-comparison-of-autonomous-rid.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.082652+00:00'
+  processed: true
+  notes: query='Waymo vs Tesla robotaxi 2026 driverless cities miles unit economics
+    comparison'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: Waymo vs Tesla robotaxi 2026 driverless cities miles unit economics comparison
+    url: https://www.linkedin.com/posts/cedrikchavez_autonomous-selfdriving-austin-activity-7426961952180084736-60mT
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:52:54.070918+00:00'
+    stale_at: '2026-08-22T03:52:54.070918+00:00'
+    expire_at: '2026-10-21T03:52:54.070918+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-1eee21
+  filename: 2026-07-23_waymo-vs-tesla-s-robotaxi-alphabet-s-quiet-driverl.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.116994+00:00'
+  processed: true
+  notes: query='Waymo vs Tesla robotaxi 2026 driverless cities miles unit economics
+    comparison' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Waymo vs Tesla robotaxi 2026 driverless cities miles unit economics comparison
+    url: https://www.tradingview.com/news/invezz:1cd84b1bd094b:0-waymo-vs-tesla-s-robotaxi-alphabet-s-quiet-driverless-surge-is-overlooked
+    domain: tradingview.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:52:54.105631+00:00'
+    stale_at: '2026-08-22T03:52:54.105631+00:00'
+    expire_at: '2026-10-21T03:52:54.105631+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-43cf7c
+  filename: 2026-07-23_tesla-releases-analyst-estimates-ahead-of-q4-earni.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.156730+00:00'
+  processed: true
+  notes: query='Tesla Q3 Q4 2026 delivery forecast automotive gross margin excluding
+    credits analyst' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Tesla Q3 Q4 2026 delivery forecast automotive gross margin excluding credits
+      analyst
+    url: https://finance.yahoo.com/news/tesla-releases-analyst-estimates-ahead-223138475.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:52:54.145419+00:00'
+    stale_at: '2026-08-22T03:52:54.145419+00:00'
+    expire_at: '2026-10-21T03:52:54.145419+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-2c8f3a
+  filename: 2026-07-23_tesla-expected-to-post-revenue-growth-despite-q3-m.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.193704+00:00'
+  processed: true
+  notes: query='Tesla Q3 Q4 2026 delivery forecast automotive gross margin excluding
+    credits analyst' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Tesla Q3 Q4 2026 delivery forecast automotive gross margin excluding credits
+      analyst
+    url: https://www.cbtnews.com/tesla-expected-to-post-revenue-growth-despite-margin-pressures
+    domain: cbtnews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:52:54.181171+00:00'
+    stale_at: '2026-08-22T03:52:54.181171+00:00'
+    expire_at: '2026-10-21T03:52:54.181171+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8d8fae
+  filename: 2026-07-23_robots-robotaxis-and-cybertruck-will-elon-musk-fin.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.235947+00:00'
+  processed: true
+  notes: query='Elon Musk missed timeline history FSD Cybertruck robotaxi Optimus
+    promises vs actual delivered' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Elon Musk missed timeline history FSD Cybertruck robotaxi Optimus promises
+      vs actual delivered
+    url: https://thedeepdive.ca/robots-robotaxis-and-cybertruck-will-elon-musk-finally-meet-his-own-tesla-timeline
+    domain: thedeepdive.ca
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:52:54.221698+00:00'
+    stale_at: '2026-08-22T03:52:54.221698+00:00'
+    expire_at: '2026-10-21T03:52:54.221698+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c3d086
+  filename: 2026-07-23_tesla-opens-up-over-2-shares-return-to-400-here-is.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.279979+00:00'
+  processed: true
+  notes: query='Tesla TSLA analyst price target 2026 Morgan Stanley ARK bull bear
+    sum-of-parts valuation robotaxi' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Tesla TSLA analyst price target 2026 Morgan Stanley ARK bull bear sum-of-parts
+      valuation robotaxi
+    url: https://www.tradingkey.com/analysis/stocks/us-stocks/261868770-tesla-stock-rebound-robotaxi-fsd-optimus-terafab-cathie-wood-valuation-tradingkey
+    domain: tradingkey.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:52:54.265920+00:00'
+    stale_at: '2026-08-22T03:52:54.265920+00:00'
+    expire_at: '2026-10-21T03:52:54.265920+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e38a18
+  filename: 2026-07-23_ark-s-expected-value-for-tesla-in-2029-2600-per-sh.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.318400+00:00'
+  processed: false
+  notes: query='Tesla TSLA analyst price target 2026 Morgan Stanley ARK bull bear
+    sum-of-parts valuation robotaxi' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Tesla auto business standalone valuation what is Tesla worth without robotaxi
+      bear case fair value
+    url: https://www.ark-invest.com/articles/valuation-models/arks-tesla-price-target-2029
+    domain: ark-invest.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T04:06:56.429983+00:00'
+    stale_at: '2026-08-22T04:06:56.429983+00:00'
+    expire_at: '2026-10-21T04:06:56.429983+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - Tesla TSLA analyst price target 2026 Morgan Stanley ARK bull bear sum-of-parts
+      valuation robotaxi
+- id: mat-5a75c2
+  filename: 2026-07-23_tesla-analyst-ratings-and-price-targets-nasdaq-tsl.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.361191+00:00'
+  processed: true
+  notes: query='Tesla TSLA analyst price target 2026 Morgan Stanley ARK bull bear
+    sum-of-parts valuation robotaxi' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Tesla TSLA analyst price target 2026 Morgan Stanley ARK bull bear sum-of-parts
+      valuation robotaxi
+    url: https://www.benzinga.com/quote/TSLA/analyst-ratings
+    domain: benzinga.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:52:54.347337+00:00'
+    stale_at: '2026-08-22T03:52:54.347337+00:00'
+    expire_at: '2026-10-21T03:52:54.347337+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-2df642
+  filename: 2026-07-23_tesla-tsla-stock-forecast-and-price-target-2026.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.403563+00:00'
+  processed: true
+  notes: query='Tesla TSLA analyst price target 2026 Morgan Stanley ARK bull bear
+    sum-of-parts valuation robotaxi' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Tesla TSLA analyst price target 2026 Morgan Stanley ARK bull bear sum-of-parts
+      valuation robotaxi
+    url: https://www.marketbeat.com/stocks/NASDAQ/TSLA/forecast
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T03:52:54.389205+00:00'
+    stale_at: '2026-08-22T03:52:54.389205+00:00'
+    expire_at: '2026-10-21T03:52:54.389205+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-acf298
+  filename: 2026-07-23_united-states-securities-and-exchange-commission.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.453736+00:00'
+  processed: true
+  notes: query='Tesla 2025 proxy statement Musk trillion pay package terms voting
+    rights 25% dilution vesting'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Tesla 2025 proxy statement Musk trillion pay package terms voting rights
+      25% dilution vesting
+    url: https://ir.tesla.com/_flysystem/s3/sec/000110465925087598/tm252289-4_pre14a-gen.pdf
+    domain: ir.tesla.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:52:54.439437+00:00'
+    stale_at: '2026-08-22T03:52:54.439437+00:00'
+    expire_at: '2026-10-21T03:52:54.439437+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-bc9ef2
+  filename: 2026-07-23_tm252289d43-defa14a-gen-pdf.md
+  source_type: web-search
+  added: '2026-07-23T03:52:54.495730+00:00'
+  processed: true
+  notes: query='Tesla 2025 proxy statement Musk trillion pay package terms voting
+    rights 25% dilution vesting'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Tesla 2025 proxy statement Musk trillion pay package terms voting rights
+      25% dilution vesting
+    url: https://ir.tesla.com/_flysystem/s3/sec/000110465925103255/tm252289d43_defa14a-gen.pdf
+    domain: ir.tesla.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T03:52:54.480762+00:00'
+    stale_at: '2026-08-22T03:52:54.480762+00:00'
+    expire_at: '2026-10-21T03:52:54.480762+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6fe08b
+  filename: 2026-07-23_tesla-sees-record-fsd-subscriptions-in-q1-2026---d.md
+  source_type: web-search
+  added: '2026-07-23T04:06:56.250230+00:00'
+  processed: false
+  notes: query='Tesla FSD subscription take rate software revenue high margin 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Tesla FSD subscription take rate software revenue high margin 2026
+    url: https://driveteslacanada.ca/news/tesla-sees-record-fsd-subscriptions-in-q1-2026
+    domain: driveteslacanada.ca
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T04:06:56.235998+00:00'
+    stale_at: '2026-08-22T04:06:56.235998+00:00'
+    expire_at: '2026-10-21T04:06:56.235998+00:00'
+    triggered_by: 01-prescan
+- id: mat-6c02b3
+  filename: 2026-07-23_tesla-hits-546-million-in-annual-recurring-revenue.md
+  source_type: web-search
+  added: '2026-07-23T04:06:56.292108+00:00'
+  processed: false
+  notes: query='Tesla FSD subscription take rate software revenue high margin 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Tesla FSD subscription take rate software revenue high margin 2026
+    url: https://www.notateslaapp.com/news/4042/tesla-hits-546-million-in-annual-recurring-revenue-from-fsd-subscriptions
+    domain: notateslaapp.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T04:06:56.320491+00:00'
+    stale_at: '2026-08-22T04:06:56.320491+00:00'
+    expire_at: '2026-10-21T04:06:56.320491+00:00'
+    triggered_by: 01-prescan
+- id: mat-942b5a
+  filename: 2026-07-23_tsla---tesla-s-revenue-to-soar-16-as-fair-value-hi.md
+  source_type: web-search
+  added: '2026-07-23T04:06:56.387339+00:00'
+  processed: false
+  notes: query='Tesla auto business standalone valuation what is Tesla worth without
+    robotaxi bear case fair value' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Tesla auto business standalone valuation what is Tesla worth without robotaxi
+      bear case fair value
+    url: https://simplywall.st/community/narratives/us/automobiles/nasdaq-tsla/tesla/u1z7imzf-teslas-revenue-to-soar-16percent-as-fair-value-hits-39181-in-five-years
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T04:06:56.372881+00:00'
+    stale_at: '2026-08-22T04:06:56.372881+00:00'
+    expire_at: '2026-10-21T04:06:56.372881+00:00'
+    triggered_by: 01-prescan
+- id: mat-69564e
+  filename: 2026-07-23_the-bet-inside-the-bet-what-tesla-s-robotaxi-valua.md
+  source_type: web-search
+  added: '2026-07-23T04:06:56.474372+00:00'
+  processed: false
+  notes: query='Tesla auto business standalone valuation what is Tesla worth without
+    robotaxi bear case fair value' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: Tesla auto business standalone valuation what is Tesla worth without robotaxi
+      bear case fair value
+    url: https://taasmaster.com/p/the-bet-inside-the-bet-what-tesla-s-valuation-requires-you-to-believe
+    domain: taasmaster.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T04:06:56.458363+00:00'
+    stale_at: '2026-08-22T04:06:56.458363+00:00'
+    expire_at: '2026-10-21T04:06:56.458363+00:00'
+    triggered_by: 01-prescan
+- id: mat-0819c0
+  filename: 2026-07-23_tesla-second-quarter-2026-production-deliveries.md
+  source_type: web-search
+  added: '2026-07-23T08:35:37.482316+00:00'
+  processed: true
+  notes: query='Tesla Q2 2026 earnings automotive gross margin ex-regulatory-credits
+    deliveries results'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: Tesla Q2 2026 earnings automotive gross margin ex-regulatory-credits deliveries
+      results
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828026046717/exhibit99111111.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-07-23T08:35:37.464296+00:00'
+    stale_at: '2026-08-22T08:35:37.464296+00:00'
+    expire_at: '2026-10-21T08:35:37.464296+00:00'
+    triggered_by: 05-critic
+- id: mat-d99e06
+  filename: 2026-07-23_q2-2026-earnings-consensus.md
+  source_type: web-search
+  added: '2026-07-23T08:35:37.523462+00:00'
+  processed: true
+  notes: query='Tesla Q2 2026 earnings automotive gross margin ex-regulatory-credits
+    deliveries results'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: Tesla Q2 2026 earnings automotive gross margin ex-regulatory-credits deliveries
+      results
+    url: https://ir.tesla.com/press-release/earnings-consensus-second-quarter-2026
+    domain: ir.tesla.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T08:35:37.507533+00:00'
+    stale_at: '2026-08-22T08:35:37.507533+00:00'
+    expire_at: '2026-10-21T08:35:37.507533+00:00'
+    triggered_by: 05-critic
+- id: mat-023199
+  filename: 2026-07-23_tesla-inc-tsla-q2-2026-earnings-call-highlights.md
+  source_type: web-search
+  added: '2026-07-23T08:35:37.574722+00:00'
+  processed: true
+  notes: query='Tesla Q2 2026 earnings automotive gross margin ex-regulatory-credits
+    deliveries results' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Tesla Q2 2026 earnings automotive gross margin ex-regulatory-credits deliveries
+      results
+    url: https://finance.yahoo.com/markets/stocks/articles/tesla-inc-tsla-q2-2026-050138649.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T08:35:37.558278+00:00'
+    stale_at: '2026-08-22T08:35:37.558278+00:00'
+    expire_at: '2026-10-21T08:35:37.558278+00:00'
+    triggered_by: 05-critic
+- id: mat-a83b87
+  filename: 2026-07-23_tesla-robotaxi-dallas-houston-launch-573-vehicles-.md
+  source_type: web-search
+  added: '2026-07-23T08:35:37.716073+00:00'
+  processed: true
+  notes: query='Tesla robotaxi unsupervised FSD per-mile cost economics safety driver
+    removed 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Tesla robotaxi unsupervised FSD per-mile cost economics safety driver removed
+      2026
+    url: https://tech-insider.org/tesla-robotaxi-dallas-houston-unsupervised-launch-2026
+    domain: tech-insider.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T08:35:37.697936+00:00'
+    stale_at: '2026-08-22T08:35:37.697936+00:00'
+    expire_at: '2026-10-21T08:35:37.697936+00:00'
+    triggered_by: 05-critic
+- id: mat-bc5764
+  filename: 2026-07-23_tesla-s-unsupervised-robotaxis-vanish-a-week-after.md
+  source_type: web-search
+  added: '2026-07-23T08:35:37.769247+00:00'
+  processed: true
+  notes: query='Tesla robotaxi unsupervised FSD per-mile cost economics safety driver
+    removed 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Tesla robotaxi unsupervised FSD per-mile cost economics safety driver removed
+      2026
+    url: https://electrek.co/2026/01/28/teslas-unsupervised-robotaxis-vanish
+    domain: electrek.co
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T08:35:37.752044+00:00'
+    stale_at: '2026-08-22T08:35:37.752044+00:00'
+    expire_at: '2026-10-21T08:35:37.752044+00:00'
+    triggered_by: 05-critic
+- id: mat-ca6266
+  filename: 2026-07-23_tesla-launches-unsupervised-robotaxis-and-fsd-rera.md
+  source_type: web-search
+  added: '2026-07-23T08:35:37.822750+00:00'
+  processed: true
+  notes: query='Tesla robotaxi unsupervised FSD per-mile cost economics safety driver
+    removed 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Tesla robotaxi unsupervised FSD per-mile cost economics safety driver removed
+      2026
+    url: https://chamath.substack.com/p/what-i-read-this-week-170
+    domain: chamath.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T08:35:37.805151+00:00'
+    stale_at: '2026-08-22T08:35:37.805151+00:00'
+    expire_at: '2026-10-21T08:35:37.805151+00:00'
+    triggered_by: 05-critic
+- id: mat-894236
+  filename: 2026-07-23_elon-musk-says-tesla-taking-safety-supervisors-out.md
+  source_type: web-search
+  added: '2026-07-23T08:35:37.961022+00:00'
+  processed: true
+  notes: query='Tesla robotaxi driverless commercial permit cities Austin no safety
+    driver July 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: Tesla robotaxi driverless commercial permit cities Austin no safety driver
+      July 2026
+    url: https://www.cnbc.com/2026/01/22/musk-says-tesla-takes-safety-supervisors-out-of-some-austin-robotaxis.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T08:35:37.943025+00:00'
+    stale_at: '2026-08-22T08:35:37.943025+00:00'
+    expire_at: '2026-10-21T08:35:37.943025+00:00'
+    triggered_by: 05-critic
+- id: mat-2f9ce0
+  filename: 2026-07-23_tesla-starts-testing-robotaxis-in-austin-with-no-s.md
+  source_type: web-search
+  added: '2026-07-23T08:35:38.010099+00:00'
+  processed: true
+  notes: query='Tesla robotaxi driverless commercial permit cities Austin no safety
+    driver July 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: Tesla robotaxi driverless commercial permit cities Austin no safety driver
+      July 2026
+    url: https://techcrunch.com/2025/12/15/tesla-starts-testing-robotaxis-in-austin-with-no-safety-driver/
+    domain: techcrunch.com
+    domain_tier: whitelist
+    searched_at: '2026-07-23T08:35:37.990788+00:00'
+    stale_at: '2026-08-22T08:35:37.990788+00:00'
+    expire_at: '2026-10-21T08:35:37.990788+00:00'
+    triggered_by: 05-critic
+- id: mat-afde91
+  filename: 2026-07-23_tesla-raises-optimus-production-target-to-70-000-u.md
+  source_type: web-search
+  added: '2026-07-23T08:35:38.149816+00:00'
+  processed: true
+  notes: query='Tesla Optimus production external orders shipment 2026 humanoid robot'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Tesla Optimus production external orders shipment 2026 humanoid robot
+    url: https://finance.biggo.com/news/e77c6e9b-d703-45fc-906d-1ea3d1272482
+    domain: finance.biggo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T08:35:38.129931+00:00'
+    stale_at: '2026-08-22T08:35:38.129931+00:00'
+    expire_at: '2026-10-21T08:35:38.129931+00:00'
+    triggered_by: 05-critic
+- id: mat-f71025
+  filename: 2026-07-23_tesla-is-turning-its-model-s-line-into-an-optimus-.md
+  source_type: web-search
+  added: '2026-07-23T08:35:38.208600+00:00'
+  processed: true
+  notes: query='Tesla Optimus production external orders shipment 2026 humanoid robot'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Tesla Optimus production external orders shipment 2026 humanoid robot
+    url: https://www.techtimes.com/articles/318071/20260609/tesla-turning-its-model-s-line-optimus-robot-factorygen-3-targets-2026-production-start.htm
+    domain: techtimes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-23T08:35:38.188013+00:00'
+    stale_at: '2026-08-22T08:35:38.188013+00:00'
+    expire_at: '2026-10-21T08:35:38.188013+00:00'
+    triggered_by: 05-critic
+- id: mat-86b83c
+  filename: 2026_TSLA_10-Q_2026-07-23.htm
+  source_type: quarterly-report
+  added: '2026-07-23T16:11:52.682645+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5e1871
+  filename: sec/2026_TSLA_10-Q_2026-07-23/item_1_financial.md
+  source_type: sec-section
+  added: '2026-07-23T16:11:52.865890+00:00'
+  processed: false
+  notes: split from 2026_TSLA_10-Q_2026-07-23.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-86b83c
+  sec_section: item_1_financial
+- id: mat-20a64a
+  filename: sec/2026_TSLA_10-Q_2026-07-23/item_2_mda.md
+  source_type: sec-section
+  added: '2026-07-23T16:11:52.912913+00:00'
+  processed: true
+  notes: split from 2026_TSLA_10-Q_2026-07-23.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-86b83c
+  sec_section: item_2_mda
+- id: mat-d1c67d
+  filename: sec/2026_TSLA_10-Q_2026-07-23/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-07-23T16:11:52.945049+00:00'
+  processed: false
+  notes: split from 2026_TSLA_10-Q_2026-07-23.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-86b83c
+  sec_section: item_3_quant_risk
+- id: mat-6b43e3
+  filename: sec/2026_TSLA_10-Q_2026-07-23/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-07-23T16:11:52.977221+00:00'
+  processed: false
+  notes: split from 2026_TSLA_10-Q_2026-07-23.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-86b83c
+  sec_section: item_1a_risk
+- id: mat-af6378
+  filename: 2026-07-22_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:11:58.651163+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-156e86
+  filename: 2026-07-02_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:00.305424+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-c3a0b2
+  filename: 2026-04-22_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:02.245077+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-ec6c4b
+  filename: 2026-04-02_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:03.916036+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-fe1e63
+  filename: 2026-01-28_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:05.877999+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-0045e4
+  filename: 2026-01-02_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:07.611544+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-c8945e
+  filename: 2025-11-07_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:09.500724+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-66a804
+  filename: 2025-10-22_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:11.382486+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-103066
+  filename: 2025-10-02_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:13.109484+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5fb256
+  filename: 2025-09-05_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:15.122204+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-819a88
+  filename: 2025-08-04_TSLA_announce_8K.htm
+  source_type: announcement
+  added: '2026-07-23T16:12:16.823430+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Tesla, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc

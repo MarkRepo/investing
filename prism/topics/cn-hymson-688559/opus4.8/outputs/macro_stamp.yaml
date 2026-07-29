@@ -1,0 +1,16 @@
+as_of_regime_version: 3
+regime_composite: 海目星为电池capex周期+固态期权的A股小盘成长,主要受风险偏好/流动性与锂电扩产景气驱动,利率敏感中等;非DCF主导标的,估值以PS/PB同业横截面为主
+depends_on_states:
+- conclusion: fx_cny
+  state: 人民币企稳偏弱(利出海49%高毛利钣金)
+  role: confirming
+- conclusion: rates_us
+  state: 美债利率见顶回落利成长估值
+  role: confirming
+discount_rate: null
+slug: cn-hymson-688559
+variant: opus4.8
+stamped_at: '2026-07-19T02:34:29.907735+00:00'
+stale: true
+stale_reason: 依赖的『人民币企稳偏弱(利出海49%高毛利钣金)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+  v3→v4)

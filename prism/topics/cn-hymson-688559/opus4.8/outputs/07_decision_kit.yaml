@@ -1,0 +1,114 @@
+slug: cn-hymson-688559
+variant: opus4.8
+topic_type: company
+display_name: 海目星激光 HYMSON
+ticker: SSE_688559
+generated: 2026-07-19T11:45:00+08:00
+data_freshness: 2026-Q1
+data_freshness_basis: mat-b3f8e3 (2026Q1季报) + mat-d302dd (2025年报问询函回复); 行情2026-07-17
+
+buy_box:
+  strong_buy_max: null
+  accumulate_min: 33
+  accumulate_max: 36
+  hold_min: 36
+  hold_max: 52
+  current_price: 44.48
+  price_as_of: 2026-07-17
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 环①信任闸门半开(护城河弱+ROIC转负+谷底减持)、环④ EV仅+0.2%(风险调整后为负)、命门2/3未证伪、固态零兑现——低信息低信心只配试探档；当前价不建仓
+  initial_max_pct: null
+  full_max_pct: 4
+  add_ladder_prices: [36, 33]
+  max_cluster_pct: 8
+
+valuation_models:
+  - name: peer_ps_crosssection
+    label: 同业PS横截面(F)
+    bull_fair_value: [70, 70]
+    base_fair_value: [40, 40]
+    bear_fair_value: [30, 31]
+  - name: sotp
+    label: SOTP分部(存量生意+固态期权)
+    bull_fair_value: [58, 58.5]
+    base_fair_value: [40, 40]
+    bear_fair_value: [34, 34]
+  - name: pb_floor
+    label: PB底价法(同业PB2.5收敛)
+    bull_fair_value: [null, null]
+    base_fair_value: [24, 25]
+    bear_fair_value: [24, 25]
+
+kill_criteria:
+  - id: aging_deteriorate
+    description: 2026半年报1年以上应收账龄占比>47.83%(再恶化),确认命门2空头
+    status: pending
+    check_at: 2026-08
+  - id: large_impairment
+    description: 半年报或全年单季>2亿新增存货跌价/信用减值计提,减值未尽证实
+    status: pending
+    check_at: 2026-08
+  - id: pb_breakdown
+    description: 股价收盘跌破PB2.5对应位(约30元)且无基本面改善,下行趋势确认
+    status: pending
+    check_at: 2026-12
+  - id: controller_resell
+    description: 实控人系再启动新一轮减持计划(超过总股本1%),治理信号恶化
+    status: pending
+    check_at: 2026-12
+  - id: bull_thesis_falsified
+    description: 半年报扣非仍未较Q1(735万)显著走阔 且 固态2GWh订单仍零披露(WMBT-1+3双证伪),若已在试探区建仓则退出
+    status: pending
+    check_at: 2026-08
+
+signposts:
+  - date: 2026-08
+    event: 2026半年报披露(账龄/扣非/存货/现金流四大硬闸门)
+    bull_signal: 1年以上账龄较47.83%下降 + 扣非净利较Q1的735万显著走阔(非靠非经损益)
+    bear_signal: 账龄再升 或 大额存货跌价/信用减值补提 或 现金流转负
+    triggered: null
+  - date: 2026-Q4
+    event: 固态2GWh量产线订单是否披露客户名+金额+确认进度
+    bull_signal: 披露具名大额固态订单,卖铲人溢价获实锤
+    bear_signal: 继续零披露,固态期权证伪
+    triggered: null
+  - date: 2026-Q4
+    event: AI液冷/储能大圆柱/出海钣金新曲线收入占比首次拆分
+    bull_signal: 至少一条新曲线贡献可见利润,多元化对冲兑现
+    bear_signal: 新曲线均仅营收占位无利润,多元化仍是故事拼盘
+    triggered: null
+
+cluster_tags: [solid-state-battery, equipment, ev-supply-chain, china-equipment, picks-and-shovels]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    note: 固态2GWh订单客户名/金额/确认进度至今零披露,护城河先发卡位无法证实
+  - ring: 4
+    kind: data-missing
+    note: per-broker券商深度盈利模型底稿(2026-2027分产品预测)在付费墙后,EV光谱回报区间部分为训练知识估算
+  - ring: 2
+    kind: thin-consensus
+    note: "consensus校准(05-critic补料mat-d40208):海目星正式卖方覆盖仅2名分析师(2买入/0卖出),目标价均值58.13/68亿营收非宽基共识而是2家乐观机构观点。edge分歧的多头锚样本极小,分量应打折——市场用52周低价对抗的其实只是2家机构"
+  - ring: 2
+    kind: data-missing
+    note: 半年报未披露,账龄/扣非/存货消化的验证点缺失,环②反推基于Q1单季+2025年报
+
+market_implied:
+  metric: implied_rev_2026e
+  value: 36.7
+
+my_vs_market_delta:
+  metric: implied_rev_2026e
+  my_value: 47.5
+  delta: "+10.8亿(我45-50亿 vs 市场隐含36.7亿 vs 卖方68亿[仅2家分析师覆盖,非宽基共识 mat-d40208])"
+  direction: long

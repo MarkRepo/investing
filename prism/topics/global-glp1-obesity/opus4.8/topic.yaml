@@ -1,0 +1,439 @@
+slug: global-glp1-obesity
+display_name: 全球肥胖/GLP-1 减重药物行业
+type: industry
+created: '2026-07-21T16:04:10.888589+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 全球肥胖/GLP-1 减重药物行业，deep，不含2型糖尿病本适应症单列/一级pre-IPO。预判利润池会从注射剂incretin双寡头(NVO/LLY)迁移到哪几个细分arena？押哪条迁移路径——口服小分子平权化
+    vs 三靶点/amylin combo疗效深化 vs 分销&国产仿制价格战？共识押哪条、我与它分歧在哪？
+  depth: deep
+  terminal: 把资本/注意力分配给哪几个细分 arena（深挖/观察/淘汰三档分流）
+  short_name: GLP-1减重
+  search_terms:
+  - GLP-1 减重药
+  - 口服 orforglipron
+  - amylin 三靶点combo
+  - 司美格鲁肽 仿制
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-21T23:16:02.522573+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-02e585
+    - mat-124143
+    - mat-21a243
+    - mat-264d97
+    - mat-2a5b8f
+    - mat-331b3f
+    - mat-36647e
+    - mat-3bf309
+    - mat-3e76f0
+    - mat-3e8247
+    - mat-420fa5
+    - mat-42690a
+    - mat-479a41
+    - mat-4ce150
+    - mat-54d41a
+    - mat-63a6fb
+    - mat-678c60
+    - mat-6bf701
+    - mat-6c32e3
+    - mat-70c031
+    - mat-76802d
+    - mat-77d015
+    - mat-7a1d73
+    - mat-7de0c1
+    - mat-82221a
+    - mat-86d407
+    - mat-8b9937
+    - mat-97c2bb
+    - mat-9a13fd
+    - mat-a0b1b8
+    - mat-a74f24
+    - mat-ade082
+    - mat-b1dcfc
+    - mat-c489df
+    - mat-c68134
+    - mat-c78536
+    - mat-c9c6aa
+    - mat-cf0f51
+    - mat-e896e5
+    - mat-eb6d03
+    - mat-ee7fd6
+    last_error: null
+    critic_passed: true
+  i_industry_case:
+    version: 1
+    last_updated: '2026-07-21T23:24:08.757496+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-124143
+    - mat-21a243
+    - mat-264d97
+    - mat-2a5b8f
+    - mat-331b3f
+    - mat-36647e
+    - mat-3e8247
+    - mat-420fa5
+    - mat-479a41
+    - mat-4ce150
+    - mat-54d41a
+    - mat-63a6fb
+    - mat-678c60
+    - mat-6bf701
+    - mat-6c32e3
+    - mat-70c031
+    - mat-715f0d
+    - mat-742120
+    - mat-76802d
+    - mat-77d015
+    - mat-7a1d73
+    - mat-7de0c1
+    - mat-82221a
+    - mat-86d407
+    - mat-8b9937
+    - mat-97c2bb
+    - mat-9a13fd
+    - mat-a74f24
+    - mat-ade082
+    - mat-b1dcfc
+    - mat-c489df
+    - mat-c68134
+    - mat-c9c6aa
+    - mat-cf0f51
+    - mat-e896e5
+    - mat-ee7fd6
+    last_error: null
+  industry_to_arenas:
+    version: 1
+    last_updated: '2026-07-21T23:24:08.778173+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-124143
+    - mat-21a243
+    - mat-264d97
+    - mat-2a5b8f
+    - mat-331b3f
+    - mat-36647e
+    - mat-3e8247
+    - mat-420fa5
+    - mat-479a41
+    - mat-4ce150
+    - mat-54d41a
+    - mat-63a6fb
+    - mat-678c60
+    - mat-6bf701
+    - mat-6c32e3
+    - mat-70c031
+    - mat-715f0d
+    - mat-742120
+    - mat-76802d
+    - mat-77d015
+    - mat-7a1d73
+    - mat-7de0c1
+    - mat-82221a
+    - mat-86d407
+    - mat-8b9937
+    - mat-97c2bb
+    - mat-9a13fd
+    - mat-a74f24
+    - mat-ade082
+    - mat-b1dcfc
+    - mat-c489df
+    - mat-c68134
+    - mat-c9c6aa
+    - mat-cf0f51
+    - mat-e896e5
+    - mat-ee7fd6
+    last_error: null
+parent_materials: []
+next_actions:
+- 深挖档 arena 已建 stub：说「prism 推进 global-glp1-highend-efficacy」或「prism 推进 global-glp1-oral-small-molecule」
+- industry 评审非强制：可说「评审 global-glp1-obesity」跑对抗式 steelman，或 web 详情页点「✓ 标记完成」直接 done
+user_todos:
+- task: K1 口服小分子放量证据：orforglipron/Foundayo 上市后疗效/可及性 + LLY口服管线财务（10-K/10-Q）+ GPCR/VKTX
+    口服进度
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 已收 orforglipron web-search + LLY/GPCR/VKTX filings + prescan
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-124143
+  - mat-82221a
+  - mat-b1dcfc
+  - mat-264d97
+  - mat-63a6fb
+  - mat-c9c6aa
+  - mat-405320
+  - mat-fe6900
+- task: K2 三激动/amylin 高端疗效与安全性：retatrutide TRIUMPH / MariTide III期 / Roche CT-388
+    / VK2735 数据 + AMGN/VKTX 10-K
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 已收 prescan 临床读出 + 挑战者 filings
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-420fa5
+  - mat-b1dcfc
+  - mat-2a5b8f
+  - mat-9a13fd
+  - mat-7aea78
+  - mat-c68134
+  - mat-05665b
+  - mat-e896e5
+- task: K3 NVO 止血与否：CagriSema 头对头/amycretin 读出 + Wegovy 份额 + NVO 20-F/6-K 财务指引
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: 已收 NVO 20-F/6-K + CagriSema web-search
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-77d015
+  - mat-54d41a
+  - mat-4ce150
+  - mat-dc3891
+  - mat-a27de3
+  - mat-76802d
+  - mat-7ae040
+  - mat-b4bfd1
+- task: K4 中国仿制节奏 + 国产双靶定价：恒瑞/信达/华东 年报 + sema 仿制申报/获批 web-search（残留：是否已有仿制获批待监控）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 已收中国三家年报 + 仿制潮 web-search；获批时间表走 06-monitor 续跟
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-70c031
+  - mat-3e8247
+  - mat-97c2bb
+  - mat-28b639
+  - mat-d35aa0
+  - mat-86d407
+  - mat-7de0c1
+  - mat-742120
+- task: K5 净价 vs 放量：Medicare/TrumpRx/IRA 谈判价 + 商保覆盖 + 现金支付渠道 web-search
+  priority: P0
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 已收定价政策 web-search
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-7c7613
+  - mat-02e585
+  - mat-3bf309
+  - mat-331b3f
+  - mat-678c60
+  - mat-a74f24
+  - mat-b4bfd1
+  - mat-3237db
+- task: '[A合同·consensus] 卖方对 LLY/NVO 目标价 + 肥胖药 TAM/利润池一致预期（IQVIA/Reuters/CNBC/Gabelli）'
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 00-deep-fetch 已补
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-ade082
+  - mat-3ca643
+  - mat-715f0d
+  - mat-ee7fd6
+  - mat-36647e
+- task: '[A合同·mgmt-capital-alloc] LLY/NVO/AMGN 资本配置与扩产史（capex/并购/产能，从 10-K/20-F 提取）'
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 从已收 10-K/20-F 抽取，无需硬收
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-420fa5
+  - mat-82221a
+  - mat-77d015
+- task: '[A合同·historical-mirror] 历史重磅药超级周期镜鉴（他汀/PCSK9/丙肝的放量-价格战-仿制轨迹）'
+  priority: P2
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 训练知识可覆盖，04 case 环⑤引用；无对应可收文档
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '[终局环⑥] 跨 arena 同口径可比矩阵（注射存量/口服/三激动/国产双靶/仿制/telehealth 六 arena 的 TAM增量·疗效·利润率·集中度·政策敏感度）'
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  source_hint: 由 03抽取+04合成从现有跨公司/跨arena料构建，非收料项
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-124143
+  - mat-82221a
+  - mat-b1dcfc
+  - mat-420fa5
+  - mat-b1dcfc
+  - mat-2a5b8f
+  - mat-70c031
+  - mat-3e8247
+  - mat-97c2bb
+- task: '[分销 arena] HIMS telehealth 转型 + compounding 退潮（HIMS 10-K/10-Q + NVO合作/复方
+    web-search）'
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 已收 HIMS filings + web-search
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-c78536
+  - mat-0fe063
+  - mat-dc3891
+  - mat-c489df
+  - mat-4d74f5
+  - mat-005d84
+- task: 资料提取完成：49 份 actionable 全部处理完毕（16 财报/年报 + 33 web-search）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成（3 份：00_primer + i_industry_case + industry_to_arenas + 2 arena stub），等待推进深挖档
+    arena 或进入监控
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-21T23:25:59.079960+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-21T16:24:00.534362+00:00'
+    summary: 命门1=口服"疗效↔可及性"权衡是否成立(中); 命门2=NVO sema存量池衰减是斜率还是断崖(中); 命门3=行业净价路径=利润池总闸(低,优先砸料)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-21T23:25:59.079969+00:00'
+    summary: 三命门(口服权衡/NVO衰减/净价总闸)厚料确认未坍塌，命门2/3升信心，命门1细化出"规模vs疗效领跑"分层；primer目标+1条。
+    convergence_status: converged
+    changelog: 加"LLY口服规模vs疗效领跑"分层(mat-c9c6aa/63a6fb/b1dcfc)+primer目标第4条；命门2/3升信心；无砍无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-07-21T23:25:59.053992+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-21T16:21:47.943447+00:00'
+    summary: 利润池向「口服平权化+三激动疗效天花板」两arena集中，两条路径均被LLY独占先手；NVO sema存量池三面侵蚀缩水；国产双靶/仿制/telehealth为期权或价值陷阱。超配口服+三激动(≈LLY
+      8/10)，低配sema存量(NVO 3/10)+仿制价格战。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-21T23:25:59.054116+00:00'
+    summary: 利润池向「口服平权化(规模)」+「三激动/amylin(疗效)」两 arena 集中，两条路径现实入口都收敛到 LLY；NVO 结构性受压但已定价；国产/仿制/分销为期权或价值陷阱。LLY
+      8/10、NVO 3/10、行业 beta 5-6/10。
+stage_history:
+- stage: 03-extract-findings
+  entered_at: '2026-07-21T16:27:46.173175+00:00'
+  exited_at: '2026-07-21T22:57:01.066215+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    uncovered_ring_inputs:
+    - value-chain-profit-pool
+    - industry-financial-arc
+    - leader-valuation-anchor
+    - migration-path-evidence
+    - arena-scoring-inputs
+    - industry-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-21T22:57:01.066215+00:00'
+  exited_at: '2026-07-21T23:30:43.317235+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-21T23:30:43.317235+00:00'
+  exited_at: '2026-07-21T23:30:43.659754+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-21T23:30:43.659754+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

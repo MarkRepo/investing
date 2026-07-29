@@ -1,0 +1,97 @@
+slug: us-palantir-pltr
+variant: opus4.8
+topic_type: company
+display_name: Palantir Technologies (PLTR, NASDAQ)
+ticker: US_PLTR
+generated: 2026-07-18T00:00:00+00:00
+data_freshness: 2026-Q1
+
+buy_box:
+  strong_buy_max: 85
+  accumulate_min: 90
+  accumulate_max: 105
+  hold_min: 105
+  hold_max: 150
+  current_price: 132.38
+  price_as_of: 2026-07-17
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: EV现价为负(约-10%)、终局落点全压命门2(倍数体制难机理认证)、是估值call非质地call → 不配标准/重仓；新钱现价等回调进买入框，持有者减仓至试探档
+  initial_max_pct: null
+  full_max_pct: 6
+  add_ladder_prices: [72, 85, 95, 105]
+  max_cluster_pct: null
+
+valuation_models:
+  - name: fwd_ps_scenario_band
+    label: 前瞻P/S情景带(FY27营收~11B锚·估值方法裁决;牛150/超牛185/base110/熊72)
+    bull_fair_value: [150, 185]
+    base_fair_value: [100, 118]
+    bear_fair_value: [65, 80]
+  - name: peer_relative_ps
+    label: 同业相对前瞻市销率(fwd-to-fwd·DDOG fwd~19.6x;我判公平1.3-1.5x DDOG=25-30x fwd)
+    bull_fair_value: [140, 165]
+    base_fair_value: [100, 115]
+    bear_fair_value: [62, 80]
+
+kill_criteria:
+  - id: bull_kill_momentum_regime
+    description: 连续2季US商业>50% AND fwd P/S再扩张>45x创新高 → 动能体制确立、均值回归判断本周期失效、撤销减仓站一边勿空
+    status: pending
+    check_at: 2026-11
+  - id: base_confirm_multiple_compression
+    description: fwd P/S跌破30x(≈100 on FY26)而基本面未破 → 倍数压缩兑现、可在买入框分批建仓
+    status: pending
+    check_at: 2026-Q4
+  - id: bear_growth_break
+    description: 任一季US商业增速跌破30% 或 营收miss指引 → 减速确认、倍数塌向18-20x、加速回避
+    status: pending
+    check_at: 2026-08
+
+signposts:
+  - date: 2026-08
+    event: Q2 2026财报
+    bull_signal: US商业维持>50%+beat幅度不缩+FY26指引再上调
+    bear_signal: US商业增速回落近30%/beat收窄/指引不再上调
+    triggered: null
+  - date: 2026-Q4
+    event: Pentagon FY27预算决议+DOGE削减范围+新ELA数量
+    bull_signal: 国防预算维持/Army ELA模式复制落地
+    bear_signal: 预算削减命中政府新签合同/FASA不利变动
+    triggered: null
+  - date: 2026-Q4
+    event: fwd P/S倍数体制
+    bull_signal: 再扩张>45x并创新高
+    bear_signal: 跌破30x(≈100)
+    triggered: null
+
+cluster_tags: [enterprise-ai, defense-software, high-multiple-growth, us-software]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    note: 竞争赢率/份额无量化数据，竞争护城河靠定性判断
+  - ring: 1
+    kind: data-missing
+    note: 国际商业(欧洲)增速拆分薄，未拿硬数字
+  - ring: 5
+    kind: data-missing
+    note: 内部人减持主体归属未确认(10b5-1计划性 vs 主动)
+
+market_implied:
+  metric: fwd_ps
+  value: 41.4
+
+my_vs_market_delta:
+  metric: fwd_ps
+  my_value: 27
+  delta: "-14x (≈-30%倍数)"
+  direction: short

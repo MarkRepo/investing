@@ -1,59 +1,58 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-generated: '2026-06-30T00:00:00Z'
+generated: '2026-07-28T09:15:00+00:00'
 regime:
   rates:
-    state: 高位企稳/官方市场转鹰但长端牛平
-    note: 点阵图3.8+FedWatch4.01双双转鹰，但10Y4.38、2s10s+30bp续平（增长降温抢跑）；中10Y1.73低位偏松
-    confidence: 6
+    state: 高位/官方市场长端同向再上·再通胀式熊陡
+    note: 10Y4.69(+31bp)、10Y实际利率2.43%(周期新高,+27bp)、期限溢价0.78(+9bp)、2s10s+34bp走陡;油价反弹84.4;v3牛平背离消解,久期重新不友好;中10Y1.73低位偏松
+    confidence: 7
   liquidity:
-    state: 条件偏松但极脆
-    note: 美NFCI-0.52松、SOFR-IORB-3bp无压、RRP小幅回补269亿、信用利差地板(IG76/HY280)缓冲薄；中宽货币紧信用、信贷脉冲转负
+    state: 偏松但缓冲抽干·SOFR-IORB咬合
+    note: 美NFCI-0.55更松、净流动性5.92万亿续升,但RRP抽干至近零(13.8亿)、SOFR-IORB向0咬合(binding driver黄灯)、IG起步走阔0.80、MOVE解压77;中宽货币紧信用、信贷脉冲仍负-1.85
     confidence: 6
   fx:
-    state: 人民币企稳偏弱
-    note: USDCNY6.798微贬、广义美元120.9走强、利差-265bp；日元carry161.67越带为悬顶；外资方向观测硬度低（北向净流入停发）
+    state: 人民币企稳偏强
+    note: USDCNY6.772走强、中间价6.793更强、逆周期因子越带;广义美元微弱120.7;利差走阔至-296bp而人民币反升(套利链失灵印证);北向成交塌+南向转负=外资参与度收缩;日元carry163.7再越带
     confidence: 6
-  composite: 中美背离 — 美 higher-for-longer×risk-on 但脆弱（叠加反通胀式增长降温：GDPNow2.5%、油价塌、长端牛平）/
-    中宽货币紧信用；偏防御、压久期、防极窄利差/carry/低波动这层缓冲被刺破
+  composite: 中美背离延续,美端本轮从"反通胀降温+长端牛平"翻转为"再通胀式利率再上+熊陡"(10Y4.69/实际利率2.43创新高/油价反弹/劳动力再走强);流动性仍偏松但RRP抽干、SOFR-IORB咬合=没有减震器的宽松;脆弱度high已在利率+vol轴兑现;人民币反企稳偏强(v3判贬被证伪)。组合偏防御、久期风险重回利率端,真雷从"可能被刺破"转为"利率+vol轴已被刺破,看是否蔓延到信用/股票/carry"
   conviction: 6
-  quadrant: 过热（降温中）
+  quadrant: 过热（再通胀风险回升）
   fragility: high
 holdings:
 - slug: cn-kweichow-moutai-600519
   display_name: 贵州茅台
   duration: mid
-  rate_beta: mid
+  rate_beta: low
   usd_exposure: low
   liquidity_beta: mid
   exposure_score: mid
   regime_favor:
-  - 人民币企稳
-  - 中国宽货币
+  - 人民币企稳偏强
+  - 中国宽货币/低利率抬红利估值锚
   regime_hurt:
-  - 中国紧信用
+  - 中国紧信用/内需走弱
   - 风险偏好走弱
-  plain: 人民币内需防御票，几乎无美元暴露；估值已低、盈利稳，主看国内流动性与风险偏好，对美利率间接；本轮美长端牛平对其基本无影响
+  plain: 人民币内需防御票,几乎无美元暴露;估值已低、盈利稳,主看国内流动性与风险偏好;本轮美熊陡/实际利率再上对其基本无直接影响,人民币偏强略利
   source: macro_synth
   provisional: false
-  as_of_regime: v3
-- slug: cn-luzhou-laojiao-000568
+  as_of_regime: v4
+- slug: cn-luzhou-laojiao
   display_name: 泸州老窖
   duration: mid
-  rate_beta: mid
+  rate_beta: low
   usd_exposure: low
   liquidity_beta: mid
   exposure_score: mid
   regime_favor:
-  - 人民币企稳
-  - 中国宽货币
+  - 人民币企稳偏强
+  - 中国低利率(10Y1.73)抬红利估值锚、高股息率利差吸引
   regime_hurt:
-  - 中国紧信用
-  - 风险偏好走弱
-  plain: 同茅台逻辑但弹性更大；人民币计价、内需驱动，受美紧端冲击小，主看国内信用能否转松（本轮信贷脉冲转负=逆风）
+  - 中国紧信用(信贷脉冲-1.85)/社零弱→白酒需求端逆风
+  - 风险偏好走弱时A股消费外资流承压
+  plain: 同茅台逻辑但弹性更大;人民币计价、内需驱动,受美熊陡冲击小,主看国内信用能否转松(信贷脉冲仍负=逆风);去重后并入本行(原-000568 slug 已改名)
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-popmart
   display_name: 泡泡玛特
   duration: long
@@ -62,16 +61,15 @@ holdings:
   liquidity_beta: high
   exposure_score: high
   regime_favor:
+  - 人民币企稳偏强(港股/中概外资流出压力缓)
   - 风险偏好回升
-  - 人民币企稳
   regime_hurt:
-  - 美实际利率高位
-  - 广义美元走强
-  - 流动性收紧/低波动反转
-  plain: 高PE成长(贴现率渠道)+港股风险偏好票(风险偏好渠道)；港元盯美元→10Y实际利率2.16%仍是估值硬约束；碰上carry平仓/低波动反转最先挨打
+  - 美实际利率2.43%创新高(港元盯美元→估值硬约束加剧)
+  - 流动性收紧/低波动反转/carry平仓
+  plain: 高PE成长(贴现率渠道)+港股风险偏好票;港元盯美元→10Y实际利率2.43%(本轮+27bp)是加剧的估值硬约束;人民币偏强略缓外资压力,但碰上carry平仓/vol解压最先挨打
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: pinduoduo
   display_name: 拼多多
   duration: mid
@@ -80,16 +78,16 @@ holdings:
   liquidity_beta: high
   exposure_score: high
   regime_favor:
-  - 人民币企稳
+  - 人民币企稳偏强(中概外资流出压力缓)
   - 关税缓和
   regime_hurt:
-  - 广义美元走强
-  - 外资流出
+  - 美实际利率再上压中概成长估值
+  - 外资参与度收缩(北向成交塌/南向转负)
   - 风险偏好走弱
-  plain: 中概ADR，广义美元/外资流向直接定价(汇率渠道)；本轮广义美元升到120.9+人民币微贬是边际逆风，外资方向观测硬度低使支撑变虚
+  plain: 中概ADR,广义美元/外资流向直接定价(汇率渠道);本轮人民币走强(6.77)是边际顺风,但北向成交塌+南向转负使外资支撑变虚,美实际利率再上是估值逆风
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: global-futu
   display_name: 富途控股
   duration: long
@@ -99,15 +97,15 @@ holdings:
   exposure_score: high
   regime_favor:
   - 风险偏好回升
-  - 人民币企稳
+  - 人民币企稳偏强
   regime_hurt:
-  - 流动性收紧
-  - 广义美元走强
-  - 信用利差走阔/carry平仓
-  plain: 券商=风险偏好放大器(风险偏好渠道)+中概美元暴露(汇率渠道)；信用利差从地板走阔/carry(161.7)平仓/低波动反转时交投与估值双杀，对本体制最敏感
+  - 美实际利率2.43%再上压高久期估值
+  - 信用利差起步走阔(IG0.80)/carry(163.7)平仓/低波动反转
+  - 外资参与度收缩
+  plain: 券商=风险偏好放大器(风险偏好渠道)+中概美元暴露(汇率渠道);IG利差离开地板+MOVE解压+carry越带时交投与估值双杀,对本体制脆弱度兑现最敏感
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: us-robinhood
   display_name: Robinhood
   duration: mid
@@ -117,16 +115,15 @@ holdings:
   exposure_score: high
   regime_favor:
   - 风险偏好回升
-  - 美金融条件偏松
-  - 散户活跃
+  - 美金融条件偏松(NFCI-0.55)
+  - 散户活跃+短端高利率支撑净息
   regime_hurt:
-  - 信用利差走阔
-  - 风险偏好走弱
-  - carry平仓踩踏
-  plain: 美元本币(无人民币暴露)，=美国流动性与风险偏好纯多头；当前NFCI松、利差地板是顺风，但低波动(VIX17.6)+carry越带时高β券商先跌
+  - 信用利差走阔(IG起步)/MOVE解压
+  - 风险偏好走弱/carry平仓踩踏
+  plain: 美元本币,=美国流动性与风险偏好纯多头;NFCI仍松是顺风,但RRP抽干+SOFR-IORB咬合+VIX18.6抬升时高β券商先跌;短端3.50-3.75支撑利息收入
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-yuanli-heng-688499
   display_name: 利元亨
   duration: long
@@ -137,14 +134,15 @@ holdings:
   regime_favor:
   - 中国宽货币转宽信用
   - 风险偏好回升
+  - 人民币企稳偏强
   regime_hurt:
-  - 中国紧信用持续
-  - 美实际利率高位
+  - 中国紧信用持续(信贷脉冲-1.85)
+  - 美实际利率2.43%高位(间接压高久期)
   - 流动性收紧
-  plain: 高久期锂电设备成长(贴现率渠道)；受中国宽松托底但需宽货币传导到宽信用才反转，本轮信贷脉冲转负+美实际利率2.16%仍是双压制
+  plain: 高久期锂电设备成长(贴现率渠道);受中国宽松托底但需宽货币传导到宽信用才反转,本轮信贷脉冲仍负+美实际利率再上是双压制
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-leadex-300450
   display_name: 先导智能
   duration: long
@@ -155,34 +153,35 @@ holdings:
   regime_favor:
   - 中国宽货币转宽信用
   - 风险偏好回升
+  - 人民币企稳偏强
   regime_hurt:
-  - 中国紧信用持续
-  - 美实际利率高位
+  - 中国紧信用持续(信贷脉冲-1.85)
+  - 美实际利率2.43%高位(间接压高久期)
   - 流动性收紧
-  plain: 高久期顺周期成长(贴现率+风险偏好渠道)；受中国宽松托底，但需宽货币真传导到宽信用才反转，本轮信贷脉冲转负是压制加深
+  plain: 高久期顺周期成长(贴现率+风险偏好渠道);受中国宽松托底,但需宽货币真传导到宽信用才反转,本轮信贷脉冲仍负+美实际利率再上压制加深
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: us-micron-mu
   display_name: 美光科技 (Micron, MU)
   duration: long
-  rate_beta: mid
+  rate_beta: high
   liquidity_beta: high
   usd_exposure: mid
   exposure_score: high
   regime_favor:
   - risk-on/AI capex 上行周期
-  - 金融条件偏松
-  - 美长端牛平(高倍数分母边际松)
+  - 金融条件偏松(NFCI-0.55)
+  - 再通胀式增长强(周期性内存需求)
   regime_hurt:
-  - higher-for-longer 高实际利率(压高倍数)
-  - risk-off/流动性收水/低波动反转
+  - 美实际利率2.43%创新高(压高倍数,本轮rate_beta升至high)
+  - risk-off/MOVE解压/低波动反转
   - AI capex 2027 减速
   - 强美元+对华地缘(CAC禁令/CXMT)
-  plain: 高β AI内存周期股：risk-on顺风时最受益、缓冲薄；实际利率2.16%边际松一口气但AI capex拐点仍是最大尾部；USD功能货币、直接CNY敞口低但地缘(CAC/CXMT)高
+  plain: 高β AI内存周期股:risk-on顺风、缓冲薄;本轮实际利率+27bp至2.43%从"边际松"翻为逆风,AI capex拐点仍是最大尾部;USD功能货币、直接CNY敞口低但地缘(CAC/CXMT)高
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: us-eli-lilly
   display_name: 礼来 (LLY)
   duration: long
@@ -191,17 +190,16 @@ holdings:
   usd_exposure: mid
   exposure_score: mid
   regime_favor:
-  - 防御性医疗需求(GLP-1结构性放量与经济周期弱相关)
-  - franchise定价权抗通胀
-  - 美长端牛平(长久期估值分母边际松)
+  - 防御性医疗需求(GLP-1结构性放量与周期弱相关)
+  - franchise定价权抗通胀(再通胀环境相对占优)
   regime_hurt:
-  - higher-for-longer压长久期成长股估值倍数
+  - 美实际利率2.43%创新高压长久期成长估值倍数(本轮逆风加剧)
   - risk-on脆弱:任何readout/指引miss放大回撤
   - 强美元拖累~40%海外营收折算
-  plain: 长久期高估值成长股：10Y实际利率2.16%仍是估值倍数逆风(本轮边际松)，医疗需求防御性+GLP-1结构性放量部分对冲；命门在增速换挡而非宏观，故exposure_score中
+  plain: 长久期高估值成长股:10Y实际利率2.43%(本轮+27bp)是加剧的估值倍数逆风,医疗需求防御性+GLP-1结构性放量+定价权抗通胀部分对冲;命门在增速换挡而非宏观,故exposure中
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-momenta
   display_name: Momenta 魔门塔 (06880)
   duration: long
@@ -210,16 +208,16 @@ holdings:
   usd_exposure: low
   exposure_score: high
   regime_favor:
-  - 人民币企稳+外资参与(利港股流动性与基石认购)
+  - 人民币企稳偏强+外资参与(利港股流动性与基石认购)
   - 美risk-on亢奋(短期IPO情绪/稀缺溢价顺风)
   regime_hurt:
-  - 美10Y实际利率2.16%高位(高久期/pre-profit成长估值硬天花板)
-  - risk-on脆弱+CAPE39.4+低波动反转(投机标的先被杀,首日破发放大)
+  - 美10Y实际利率2.43%创新高(高久期/pre-profit成长估值硬天花板加剧)
+  - risk-on脆弱+CAPE39.4+MOVE解压(投机标的先被杀,首日破发放大)
   - 恒科逆风+智驾被资本冷落
-  plain: 高久期pre-profit成长IPO：实际利率高位压估值分母+风险偏好脆弱放大破发；人民币企稳(本轮微贬)与外资参与仅薄顺风，对风险偏好/carry尾部极敏感
+  plain: 高久期pre-profit成长IPO:实际利率创新高压估值分母+风险偏好脆弱放大破发;人民币企稳偏强与外资参与仅薄顺风,对风险偏好/carry尾部极敏感
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-baili-688506
   display_name: 百利天恒
   duration: long
@@ -230,15 +228,15 @@ holdings:
   regime_favor:
   - 风险偏好回升(创新药BD情绪)
   - 中国宽货币(资产荒推高成长估值)
-  - 人民币企稳
+  - 人民币企稳偏强
   regime_hurt:
-  - 美实际利率高位(pre-profit创新药久期极长,估值分母硬约束)
-  - risk-on脆弱/低波动反转(高波动生物科技先杀)
-  - 强美元(海外BD里程碑/授权款美元计价折算)
-  plain: A股高久期pre-profit创新药：现金流极远置,10Y实际利率2.16%是估值硬约束(贴现率渠道最敏感);BD授权款含美元暴露;命门在管线数据读出而非宏观,但宏观放大波动
+  - 美实际利率2.43%创新高(pre-profit创新药久期极长,估值分母硬约束加剧)
+  - risk-on脆弱/MOVE解压(高波动生物科技先杀)
+  - 人民币走强(海外BD里程碑/授权款美元计价折算减值)
+  plain: A股高久期pre-profit创新药:现金流极远置,10Y实际利率2.43%是加剧的估值硬约束(贴现率渠道最敏感);BD授权款美元暴露、人民币走强反成折算逆风;命门在管线读出但宏观放大波动
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-hengrui-600276
   display_name: 恒瑞医药
   duration: long
@@ -249,15 +247,15 @@ holdings:
   regime_favor:
   - 防御性医疗需求(与经济周期弱相关)
   - 中国宽货币/资产荒(红利+成长兼具)
-  - 人民币企稳
+  - 人民币企稳偏强
   regime_hurt:
-  - 美实际利率高位(长久期成长估值倍数逆风)
+  - 美实际利率高位(长久期成长估值倍数间接逆风)
   - 中国紧信用/内需走弱(集采+需求端)
   - 风险偏好走弱
   plain: A股创新药龙头,盈利稳+管线厚,久期长但非pre-profit;人民币内需为主、美元暴露低,受美利率间接;主看国内医药政策与需求,exposure_score中
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-wuxixdc-02268
   display_name: 药明合联
   duration: long
@@ -268,16 +266,15 @@ holdings:
   regime_favor:
   - 全球生物药外包(ADC)结构性放量
   - 风险偏好回升(港股成长)
-  - 人民币企稳(海外美元收入折算)
   regime_hurt:
-  - 强美元/广义美元走强(海外收入折算+估值)
-  - 美实际利率高位(高久期CDMO成长)
+  - 人民币走强(海外美元收入折算减值,本轮汇率逆风翻向)
+  - 美实际利率2.43%创新高(高久期CDMO成长)
   - 对华生物地缘尾部(BIOSECURE类)
-  - risk-on脆弱/低波动反转
-  plain: 港股ADC/CDMO外包,全球美元收入占比高(汇率渠道)+高久期成长(贴现率渠道);广义美元120.9走强双重逆风(折算+估值);BIOSECURE类地缘是特有尾部
+  - risk-on脆弱/MOVE解压
+  plain: 港股ADC/CDMO外包,全球美元收入占比高(汇率渠道)+高久期成长(贴现率渠道);本轮人民币走强变折算逆风+实际利率2.43%双压;BIOSECURE类地缘是特有尾部
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-hengerda-300946
   display_name: 恒而达 (Hengerda)
   duration: long
@@ -288,15 +285,15 @@ holdings:
   regime_favor:
   - 中国宽货币转宽信用
   - 顺周期资本开支/人形机器人PRS量产逻辑
-  - 人民币企稳
+  - 人民币企稳偏强
   regime_hurt:
-  - 中国紧信用持续(信贷脉冲转负)
+  - 中国紧信用持续(信贷脉冲-1.85)
   - 风险偏好走弱(PE212极高估值先杀)
-  - 美实际利率高位(间接压高久期成长)
-  plain: A股高PE(212)磨床+PRS成长制造；人民币计价、美元暴露低,美利率仅间接;高久期对国内风险偏好/流动性极敏感(贴现率+风险偏好渠道),真驱动是国内宽货币能否传导到宽信用+制造资本开支;US侧regime基本不直接触及故exposure中
+  - 美实际利率再上(间接压高久期成长)
+  plain: A股高PE(212)磨床+PRS成长制造;人民币计价、美元暴露低,美利率仅间接;高久期对国内风险偏好/流动性极敏感,真驱动是国内宽货币能否传导到宽信用+制造资本开支;US侧regime不直接触及故exposure中
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-wuzhou-xinchun-603667
   display_name: 五洲新春 (Wuzhou Xinchun)
   duration: long
@@ -307,34 +304,33 @@ holdings:
   regime_favor:
   - 中国宽货币转宽信用
   - 顺周期资本开支/PRS-T链二供弹性
-  - 人民币企稳
+  - 人民币企稳偏强
   regime_hurt:
-  - 中国紧信用持续(信贷脉冲转负)
+  - 中国紧信用持续(信贷脉冲-1.85)
   - 风险偏好走弱(PE300极高估值先杀)
-  - 强美元(泰国工厂/出口部分美元敞口)
-  plain: A股高PE(300)轴承+PRS二供成长；主内需+泰国工厂含部分出口美元敞口;高久期对国内风险偏好/流动性极敏感(贴现率+风险偏好渠道),真驱动国内宽信用传导+制造复苏;US侧regime间接故exposure中
+  - 人民币走强(泰国工厂/出口部分美元敞口折算)
+  plain: A股高PE(300)轴承+PRS二供成长;主内需+泰国工厂含部分出口美元敞口;高久期对国内风险偏好/流动性极敏感,真驱动国内宽信用传导+制造复苏;US侧regime间接故exposure中
   source: macro_synth
   provisional: false
-  as_of_regime: v3
+  as_of_regime: v4
 - slug: cn-montage-688008
   display_name: 澜起科技
   duration: long
   rate_beta: high
   liquidity_beta: high
-  usd_exposure: mid
+  usd_exposure: high
   exposure_score: high
   regime_favor:
   - risk-on/流动性宽松(半导体动量龙头最受益)
-  - 美实际利率回落(高PE长久期折现改善)
-  - 人民币温和贬值(72%境外USD营收折算增厚)
+  - 再通胀式增长强(周期性内存接口需求)
   regime_hurt:
-  - risk-off急杀/流动性收紧(三位数PE无估值缓冲,参Astera单日-12%)
-  - 美实际利率反弹
-  - 人民币急升(H股USD募资汇兑损失+营收折算缩水)
-  plain: 高毛利fabless内存接口寡头,72%境外USD收入;作为AI半导体高PE动量龙头,涨时领涨risk-on、跌时因零估值缓冲领跌;RMB弱势温和利好营收折算但H股USD现金制造汇兑P&L噪声
-  as_of_regime: v3
+  - 美实际利率2.43%创新高(三位数PE无估值缓冲,参Astera单日-12%)
+  - risk-off急杀/MOVE解压/流动性收紧
+  - 人民币走强(72%境外USD营收折算缩水+H股USD募资汇兑)
+  plain: 高毛利fabless内存接口寡头,72%境外USD收入;AI半导体高PE动量龙头,涨时领涨、跌时零估值缓冲领跌;本轮人民币走强变营收折算逆风,实际利率再上压三位数PE。已复核确认自注册标签
   source: self_registered
-  provisional: true
+  provisional: false
+  as_of_regime: v4
 - slug: us-coinbase
   display_name: Coinbase (COIN)
   duration: long
@@ -343,31 +339,425 @@ holdings:
   usd_exposure: mid
   exposure_score: high
   regime_favor:
-  - risk-on/风险偏好回暖
-  - 流动性宽松
-  - 加密周期回暖
+  - risk-on/风险偏好回暖(比特币本轮6.4万反弹)
+  - 流动性宽松/加密周期回暖
   - 高利率维持(短端支撑稳定币利息收入)
   regime_hurt:
   - risk-off/脆弱性刺破(加密高beta首当其冲)
-  - 实际利率高企压长久期估值
-  - 深度降息(压稳定币息差·双刃)
-  plain: 加密高beta(3.35)长久期资产：风险偏好/流动性是总开关(liquidity_us载重)，实际利率2.16%压估值，短端Fed3.50-3.75支撑稳定币利息但深度降息会反噬息差
-  as_of_regime: v3
+  - 实际利率2.43%创新高压长久期估值
+  - MOVE解压/carry平仓等尾部去杠杆
+  plain: 加密高beta(3.35)长久期资产:风险偏好/流动性是总开关(liquidity_us载重),实际利率2.43%(本轮+27bp)压估值,短端Fed3.50-3.75支撑稳定币利息但深度降息会反噬息差。已复核确认
   source: self_registered
-  provisional: true
+  provisional: false
+  as_of_regime: v4
+- slug: us-spacex-spcx
+  display_name: SpaceX (SPCX)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: high
+  regime_favor:
+  - risk-on亢奋+散户/指数纳入溢价
+  - 流动性条件偏松(NFCI-0.55)
+  regime_hurt:
+  - 美实际利率2.43%创新高抬贴现率(本轮从"牛平利好"翻为逆风)
+  - 脆弱度high兑现中(MOVE解压/carry越带)被risk-off刺破
+  - 信用利差起步走阔(IG0.80)/风险偏好退潮
+  plain: 深度负FCF至2029的长久期故事股:贴现率与风险偏好双高敏——本轮实际利率+27bp至2.43%从顺风翻逆风,MOVE解压+carry越带下终值主导+散户溢价标的杀估值最猛。已复核并改写(v3"长端牛平利好"已翻转)
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: us-palantir-pltr
+  display_name: Palantir (PLTR)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: low
+  exposure_score: high
+  regime_favor:
+  - risk-on/流动性充裕
+  - 散户+被动流回补
+  regime_hurt:
+  - 利率再加速/实际利率2.43%创新高(本轮兑现)
+  - risk-off/MOVE解压/VIX抬升
+  - 极端估值均值回归/de-rating
+  plain: 极端估值(60x PS/41x fwd)长久期成长股:贴现率+风险偏好双高敏感,本轮实际利率+27bp至2.43%高位与risk-on脆弱兑现共存,倍数压缩风险最大。已复核确认(regime_hurt"实际利率上行"本轮正兑现)
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: cn-xingye-silver-tin
+  display_name: 兴业银锡
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: high
+  exposure_score: high
+  regime_favor:
+  - 再通胀/避险共振(油价反弹+通胀预期回升利大宗金属)
+  - 弱美元(广义美元微降120.7)
+  - 风险偏好上行
+  regime_hurt:
+  - 实际利率2.43%创新高(本轮金融属性白银逆风加剧)
+  - 全球衰退致工业需求萎缩
+  - 流动性收紧
+  plain: 银锡以美元计价+白银强金融属性:本轮再通胀/油价反弹利工业金属,但实际利率+27bp至2.43%是白银金融属性的加剧逆风(方向对冲);实际利率上行+需求萎缩仍是主杀。已复核并改写(本轮实际利率翻向逆风)
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: cn-hymson-688559
+  display_name: 海目星激光
+  duration: long
+  rate_beta: mid
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: high
+  regime_favor:
+  - 电池capex复苏
+  - 固态产业化催化
+  - 风险偏好回升利小盘成长
+  regime_hurt:
+  - 锂电资本开支下行
+  - A股小盘流动性收紧/紧信用
+  - 固态概念退潮
+  - 人民币走强(压出海高毛利折算,本轮汇率翻向)
+  plain: 国产替代+电池capex周期股+固态期权;强风险偏好/流动性驱动的小盘成长,对锂电扩产景气与固态叙事高度敏感;本轮人民币走强对出海毛利折算转逆风,利率敏感度中等。已复核并改写
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: us-viking-vktx
+  display_name: Viking Therapeutics (VKTX)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: low
+  exposure_score: high
+  regime_favor:
+  - 流动性宽松(NFCI-0.55)
+  - 风险偏好上行(risk-on)
+  regime_hurt:
+  - 实际利率2.43%创新高(本轮加息式熊陡兑现,超长久期杀估值)
+  - MOVE解压/流动性收紧
+  - 风险偏好下行(risk-off)
+  plain: 临床期无收入生物科技=超长久期资产,价值几乎全在2027+ pivotal读出后的远期现金流/并购期权;贴现率与风险偏好双敏感,本轮实际利率再上+熊陡环境下spec小盘biotech杀估值最狠。已复核确认(regime_hurt"实际利率上行"正兑现)
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: us-structure-gpcr
+  display_name: Structure Therapeutics (GPCR)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: high
+  regime_favor:
+  - 风险偏好回升(risk-on)
+  - 流动性宽松
+  regime_hurt:
+  - 实际利率2.43%创新高(本轮兑现,超长久期rNPV杀估值)
+  - risk-off/生物科技估值杀/MOVE解压
+  - 流动性收紧
+  plain: pre-revenue临床期biotech,现金流远在2029/30后→超长久期,贴现率与风险偏好双高敏感;估值=管线rNPV,本轮实际利率再上直接杀估值。已复核确认
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: us-tesla
+  display_name: 特斯拉 Tesla (US_TSLA)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: high
+  regime_favor:
+  - risk-on/流动性宽松
+  regime_hurt:
+  - 实际利率2.43%创新高(超长久期期权股杀估值,本轮兑现)
+  - risk-off/信用利差走阔(IG起步)
+  - 强美元期(本轮广义美元微弱略缓)
+  plain: 346x期权定价的超长久期成长股:实际利率与风险偏好是估值主导变量,本轮实际利率+27bp至2.43%是加剧逆风;基本面(汽车+能源)对利率不敏感但期权部分极敏感。已复核确认
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: us-google
+  display_name: Alphabet 谷歌 (GOOGL)
+  duration: long
+  rate_beta: mid
+  liquidity_beta: mid
+  usd_exposure: high
+  exposure_score: mid
+  regime_favor:
+  - risk-on/流动性宽松
+  - 现金流强、低杠杆缓冲利率冲击(相对抗跌)
+  regime_hurt:
+  - 贴现率上行(10Y4.69/实际利率2.43本轮兑现)
+  - risk-off/流动性收紧
+  - AI资本开支周期证伪致成长溢价压缩
+  plain: 长久期成长股+AI资本开支重仓:贴现率与风险偏好双敏感;48%美国本土+52%国际,广义美元微弱本轮折算逆风略减;现金流强、低杠杆使其为megacap里相对抗利率冲击者故exposure中。已复核确认
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: us-nvidia
+  display_name: 英伟达(NVDA)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: high
+  exposure_score: high
+  regime_favor:
+  - 风险偏好升/AI资本开支扩张
+  - 再通胀式增长强(算力需求周期)
+  regime_hurt:
+  - 贴现率上行(实际利率2.43创新高,本轮兑现)
+  - 流动性收紧/MOVE解压
+  - risk-off杀高估值成长
+  plain: 长久期高beta成长龙头:风险偏好↑利好但本轮贴现率上行(实际利率+27bp至2.43)成逆风;估值对实际利率敏感,risk-off首当其冲被杀。已复核确认(v3"降息利好"本轮转为利率上行逆风)
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: cn-hengli-hydraulic-601100
+  display_name: 恒立液压
+  duration: long
+  rate_beta: mid
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: mid
+  regime_favor:
+  - risk-on机器人叙事
+  - 地产基建刺激
+  - 人民币企稳偏强(略缓外资压力,但压出口折算)
+  regime_hurt:
+  - 紧缩/流动性收紧/紧信用
+  - risk-off估值杀
+  - 地产链下行
+  - 人民币走强压出口/贸易摩擦
+  plain: 工程机械主业吃地产基建+出口(利率/汇率)；机器人期权吃risk-on流动性(高PS对流动性最敏感);本轮人民币走强对出口略逆风。已复核确认
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: us-ionq
+  display_name: IonQ (IONQ)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: low
+  exposure_score: high
+  regime_favor:
+  - risk-on持续/主题资金流入
+  - 板块逼空/期权gamma
+  regime_hurt:
+  - 鹰派重定价/实际利率2.43%创新高(本轮兑现,长久期估值杀)
+  - risk-off/MOVE解压/VIX飙升(脆弱risk-on被刺破)
+  - 流动性收紧/主题资金退潮
+  plain: 前盈利长久期主题股:利润在多年之后→贴现率与风险偏好双高beta;本轮鹰派+实际利率再上+脆弱risk-on体制对其估值不利,是逆风而非顺风。已复核确认(regime_hurt正兑现)
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: us-applovin
+  display_name: AppLovin (APP)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: high
+  regime_favor:
+  - risk-on延续
+  - 波动压缩期(本轮反向:MOVE解压中)
+  regime_hurt:
+  - 长端实际利率2.43%创新高压成长股倍数(本轮兑现)
+  - risk-off/软件-AI板块抛售
+  - 脆弱度爆发VIX跳升(18.6抬升中)
+  - 强美元压RoW折算(本轮广义美元微弱略缓)
+  plain: 长久期高beta(2.48)成长股:估值随10Y实际利率与风险偏好放大波动;本轮higher-for-longer+实际利率+27bp+脆弱度兑现是加剧逆风。已复核确认
+  source: self_registered
+  provisional: false
+  as_of_regime: v4
+- slug: cn-3sbio-01530
+  display_name: 三生制药 (3SBio)
+  duration: mid
+  rate_beta: mid
+  liquidity_beta: mid
+  usd_exposure: mid
+  exposure_score: mid
+  regime_favor:
+  - 港股风险偏好回升/BD情绪(707授权Pfizer里程碑)
+  - 人民币企稳偏强
+  - 防御性医疗需求(EPO/血制品有盈利)
+  regime_hurt:
+  - 美实际利率高位(间接压港股成长估值)
+  - risk-off/港股流动性收紧
+  - 人民币走强(海外BD美元里程碑折算)
+  plain: 港股生物药,有盈利(EPO/特比澳)+707 BD期权;久期中(非纯pre-profit),受美利率间接、港股风险偏好直接;BD美元里程碑含汇率暴露。训练知识估算(无公司case,标签保守)
+  source: macro_synth
+  provisional: false
+  as_of_regime: v4
+- slug: cn-akeso-09926
+  display_name: 康方生物 (Akeso)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: high
+  regime_favor:
+  - 港股风险偏好回升(依沃西/BD情绪)
+  - 人民币企稳偏强
+  - 创新药BD授权催化
+  regime_hurt:
+  - 美实际利率2.43%创新高(early-profit创新药久期长,估值硬约束)
+  - risk-off/港股生物科技估值杀/MOVE解压
+  - 人民币走强(Summit等海外BD美元里程碑折算)
+  plain: 港股创新药,依沃西(PD-1/VEGF双抗)放量+海外BD;久期长、对贴现率与港股风险偏好双敏感;美元BD里程碑含汇率暴露。训练知识估算(无公司case,标签保守)
+  source: macro_synth
+  provisional: false
+  as_of_regime: v4
+- slug: cn-cambricon-688256
+  display_name: 寒武纪 (688256, 思元ASIC)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: low
+  exposure_score: high
+  regime_favor:
+  - 国内AI capex/国产算力替代
+  - risk-on/A股流动性宽松
+  - 中国宽货币(资产荒推高成长估值)
+  regime_hurt:
+  - risk-off杀高估值成长(三位数PE无缓冲)
+  - 中国紧信用/流动性收紧
+  - 美实际利率再上(间接压高久期成长)
+  plain: A股AI芯片ASIC龙头,高PE长久期,主内需/国产替代逻辑、美元暴露低,美利率仅间接;真驱动是国内AI capex+A股风险偏好/流动性。训练知识估算(无公司case,标签保守)
+  source: macro_synth
+  provisional: false
+  as_of_regime: v4
+- slug: cn-hygon-688041
+  display_name: 海光信息 (688041, DCU)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: low
+  exposure_score: high
+  regime_favor:
+  - 国内AI capex/信创国产替代
+  - risk-on/A股流动性宽松
+  - 中国宽货币
+  regime_hurt:
+  - risk-off杀高估值成长
+  - 中国紧信用/流动性收紧
+  - 美实际利率再上(间接压高久期成长)
+  plain: A股DCU/CPU AI芯片,有盈利但高PE长久期,信创国产替代逻辑、美元暴露低,美利率间接;真驱动国内AI capex+A股风险偏好。训练知识估算(无公司case,标签保守)
+  source: macro_synth
+  provisional: false
+  as_of_regime: v4
+- slug: cn-jcet-600584
+  display_name: 长电科技
+  duration: mid
+  rate_beta: mid
+  liquidity_beta: mid
+  usd_exposure: high
+  exposure_score: mid
+  regime_favor:
+  - 半导体周期回升/AI封装需求
+  - risk-on/A股流动性宽松
+  - 再通胀式增长强(周期性)
+  regime_hurt:
+  - 半导体资本开支下行
+  - 中国紧信用/流动性收紧
+  - 人民币走强(星科金朋等海外USD营收占比高,折算逆风)
+  plain: A股OSAT封测龙头(含星科金朋),海外USD营收占比高;周期股、盈利波动大,久期中;吃全球半导体周期(USD计价)+国内流动性;本轮人民币走强对海外营收折算是实质逆风(usd_exposure升至high),对半导体景气/风险偏好敏感。训练知识估算(无公司case,标签保守)
+  source: macro_synth
+  provisional: false
+  as_of_regime: v4
+- slug: cn-shuanglin-300100
+  display_name: 双林股份 (300100)
+  duration: long
+  rate_beta: mid
+  liquidity_beta: high
+  usd_exposure: low
+  exposure_score: mid
+  regime_favor:
+  - 机器人减速器叙事/risk-on
+  - 中国宽货币转宽信用
+  - 顺周期汽车零部件复苏
+  regime_hurt:
+  - 中国紧信用持续(信贷脉冲-1.85)
+  - 风险偏好走弱(高PE成长先杀)
+  - 美实际利率再上(间接压高久期)
+  plain: A股汽车零部件+机器人减速器期权,高PE成长;人民币计价、美元暴露低,美利率间接;高久期对国内风险偏好/流动性敏感,真驱动机器人叙事+顺周期复苏。训练知识估算(无公司case,标签保守)
+  source: macro_synth
+  provisional: false
+  as_of_regime: v4
+- slug: cn-tfme-002156
+  display_name: 通富微电
+  duration: mid
+  rate_beta: mid
+  liquidity_beta: mid
+  usd_exposure: high
+  exposure_score: mid
+  regime_favor:
+  - 半导体周期回升/AMD算力封装需求
+  - risk-on/A股流动性宽松
+  - 再通胀式增长强(周期性)
+  regime_hurt:
+  - 半导体资本开支下行
+  - 中国紧信用/流动性收紧
+  - 人民币走强(AMD大头绑定,海外USD收入占比高,折算逆风)
+  plain: A股OSAT封测(AMD封装核心伙伴,海外USD营收占比高);周期股、盈利波动大,久期中;吃AMD/全球算力封装(USD)+国内流动性;本轮人民币走强对海外营收折算是实质逆风(usd_exposure升至high),对半导体景气敏感。训练知识估算(无公司case,标签保守)
+  source: macro_synth
+  provisional: false
+  as_of_regime: v4
+- slug: jp-cover-5253
+  display_name: COVER株式会社 (hololive, TSE 5253)
+  duration: mid
+  rate_beta: mid
+  liquidity_beta: mid
+  usd_exposure: mid
+  exposure_score: mid
+  regime_favor:
+  - 内容出海/IP变现放量
+  - risk-on/日股散户活跃
+  - 弱日元利海外(美元)营收折算
+  regime_hurt:
+  - 日元carry平仓致JPY急升(163.7越带,日股回撤+海外收入折算缩水)
+  - BoJ转紧/JGB收益率上行
+  - risk-off/日本成长股估值杀
+  plain: 日股VTuber内容成长(hololive),JPY计价+海外USD周边收入;独有日元carry尾部暴露——USDJPY163.7越带,carry平仓时JPY急升冲击日股+海外折算;久期中。训练知识估算(无公司case,标签保守)
+  source: macro_synth
+  provisional: false
+  as_of_regime: v4
+- slug: us-novo-nvo
+  display_name: 诺和诺德 (Novo Nordisk, NVO)
+  duration: long
+  rate_beta: high
+  liquidity_beta: mid
+  usd_exposure: high
+  exposure_score: mid
+  regime_favor:
+  - 防御性医疗需求(GLP-1结构性放量与周期弱相关)
+  - franchise定价权抗通胀(再通胀相对占优)
+  - 强美元期利美元营收换DKK/EUR(本轮广义美元微弱略减)
+  regime_hurt:
+  - 美实际利率2.43%创新高压长久期成长估值倍数
+  - 竞争(LLY)+指引miss放大回撤(risk-on脆弱)
+  - EUR/DKK-USD折算与ADR汇率
+  plain: GLP-1防御性pharma(Ozempic/Wegovy),DKK/EUR base+大额USD营收;长久期高估值,实际利率2.43%是估值逆风,医疗需求防御+定价权部分对冲;命门在竞争格局而非宏观故exposure中。训练知识估算(无公司case,标签保守)
+  source: macro_synth
+  provisional: false
+  as_of_regime: v4
 categorical_tail:
 - name: 中美地缘/关税
   state: 平静
-  note: 2026-06 关税摩擦边际缓和（stance=缓和），但结构性博弈未消，仍属可随时重定价的尾部
+  note: 关税摩擦边际缓和但结构性博弈未消,仍属可随时重定价的尾部
 - name: ADR退市/HFCAA
   state: 平静
-  note: HFCAA/PCAOB 监管摩擦边际缓和（stance=缓和），中概ADR（拼多多/富途）非自愿退市尾部风险降温但未清零
+  note: HFCAA/PCAOB 监管摩擦边际缓和,中概ADR(拼多多/富途)非自愿退市尾部降温但未清零
 - name: 日元carry平仓
   state: 警示
-  note: USDJPY 161.67 越过160阈值(本轮breached)、carry更拥挤，BoJ转紧或风险骤升可触发拥挤平仓踩踏，冲击全球高β风险资产
+  note: USDJPY 163.71 本轮再越带(v3 161.67)、carry更拥挤,BoJ转紧或风险骤升可触发拥挤平仓踩踏,冲击全球高β风险资产(含新增jp-cover日股直接暴露)
 - name: 美信用利差走阔
   state: 警示
-  note: IG 76bp/HY 280bp 仍在历史地板、缓冲极薄且低波动(VIX17.6)进一步压平，一旦从地板走阔对券商/成长杀伤最快
+  note: IG 80bp本轮率先离开地板(+4bp)、HY 279bp仍地板;缓冲极薄且MOVE解压至77,一旦从地板走阔对券商/成长杀伤最快;脆弱度已在利率+vol轴兑现,信用侧起步松动
 - name: 生物地缘(BIOSECURE类)
   state: 平静
-  note: 对华生物医药地缘立法风险当前平静，但药明合联等CDMO外包一旦重定价冲击海外订单，属结构性尾部
+  note: 对华生物医药地缘立法风险当前平静,但药明合联等CDMO外包一旦重定价冲击海外订单,属结构性尾部
+- name: 美长端/期限溢价失锚
+  state: 警示
+  note: 10Y+31bp至4.69、期限溢价+9bp至0.78、实际利率2.43%创周期新高;若熊陡由财政/发行(QRA)供给面主导而非需求,可演变为股债双杀的系统性尾部

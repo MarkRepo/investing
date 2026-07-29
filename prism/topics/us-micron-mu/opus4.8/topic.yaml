@@ -20,6 +20,7 @@ scope:
   - DRAM 周期
   - NAND 价格
   - 存储 资本开支
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
 outputs_state:
   00_primer:
     version: 1
@@ -54,11 +55,12 @@ outputs_state:
     last_error: null
     critic_passed: true
   c_investment_case:
-    version: 1
-    last_updated: '2026-06-12T02:55:26.059503+00:00'
+    version: 2
+    last_updated: '2026-07-15T13:55:50.517936+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-01b47e
     - mat-035fad
     - mat-037039
     - mat-14a5a4
@@ -73,7 +75,9 @@ outputs_state:
     - mat-6a8149
     - mat-7780df
     - mat-85c74c
+    - mat-895ab3
     - mat-8dc9dc
+    - mat-ad9a41
     - mat-b1a3bc
     - mat-ba0222
     - mat-bc352c
@@ -86,11 +90,12 @@ outputs_state:
     - mat-feabed
     last_error: null
   07_decision_kit:
-    version: 1
-    last_updated: '2026-06-12T02:55:26.080188+00:00'
+    version: 2
+    last_updated: '2026-07-15T13:55:50.541789+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-01b47e
     - mat-035fad
     - mat-037039
     - mat-14a5a4
@@ -105,7 +110,9 @@ outputs_state:
     - mat-6a8149
     - mat-7780df
     - mat-85c74c
+    - mat-895ab3
     - mat-8dc9dc
+    - mat-ad9a41
     - mat-b1a3bc
     - mat-ba0222
     - mat-bc352c
@@ -117,10 +124,18 @@ outputs_state:
     - mat-f3679c
     - mat-feabed
     last_error: null
+  08_living_feed:
+    version: 2
+    last_updated: '2026-07-15T13:37:08.442732+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
 parent_materials: []
 next_actions:
-- 资料提取完成：38 份 actionable 全部抽成 findings（40/57 processed，17 份 prescan 自动豁免）
-- gap 全清：consensus/bull-bear/historical-mirror/mgmt-capital-alloc 四环已覆盖
+- v2 合成完成(Q3 FY26触发+内嵌critic 2轮收敛):case v2/decision_kit v2/thesis_v2/decomposition_v2;primer未改(领域背景未变)
+- critic 判终局证据薄→已挂P0深挖(normalized EPS可复核实证锚)+P1(SK Hynix实时倍数);EV+3%正负号悬于normalized~$45单点
+- 待05对抗式重审(强度4→5、EV-10%→+3%的修正、及"正EV来自时点后移非估值"的立场需steelman)
 user_todos:
 - task: 下载 Micron 最新年报 10-K (FY2025) + 最新季报 10-Q (Q2 FY2026)
   priority: P0
@@ -257,8 +272,8 @@ monitoring:
   cadence: daily
 critic: null
 decomposition:
-  current_version: 1
-  last_updated: '2026-06-12T03:00:08.911762+00:00'
+  current_version: 2
+  last_updated: '2026-07-15T13:55:50.584574+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
@@ -272,9 +287,15 @@ decomposition:
       hyperscaler capex)
     convergence_status: converged
     changelog: 命门无砍无加,仅置信度更新(命门1中→中高凭mat-dd8b66全ASP+mat-bc352c 2022量化;命门3低→中凭2027单变量收敛mat-398207/feabed;命门2维持中);primer入门目标净增1条(HBM认证逻辑/第三名定位凭mat-e85217/14a5a4);对照全历史无震荡。收敛:delta空+gap双轴绿+chain-critic无重大反转。
+  - version: 2
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-15T13:55:50.584586+00:00'
+    summary: 三命门维持:①周期顶时点(Q3证伪"即将rollover"、后移2028+)②HBM护城河(#3但SCA锁需求)③供给拐点(CEO紧缺延2027后、置信升中偏强)
+    convergence_status: converged
+    changelog: 命门无增删;命门1方向修正(周期顶时点被Q3证伪、后移2028+,凭mat-895ab3);命门3置信中→中偏强(CEO+16SCA+mat-01b47e);primer入门目标无增删(低PE陷阱被印证);对照全历史无震荡
 thesis:
-  current_version: 1
-  last_updated: '2026-06-12T03:00:08.874351+00:00'
+  current_version: 2
+  last_updated: '2026-07-15T13:55:50.554496+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -286,6 +307,10 @@ thesis:
     stage_set_at: 04-post-synthesis
     set_at: '2026-06-12T03:00:08.874470+00:00'
     summary: 一流存储franchise，但/.12T/74%峰值GM/PB15.5x/股价已高于卖方一致目标已把AI内存周期不再反转定满；生意8/10、入场3/10、加权4/10，EV≈-10%——耐久价值属买在下一周期底者，非此刻追ATH。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-15T13:55:50.554511+00:00'
+    summary: 一流存储franchise;Q3 FY26(营收$41.46B/GM84.9%→指引86%/16份take-or-pay SCA锁需求至2027后)证伪v1周期顶时点判断、近端契约去险;normalized上修$55-70,$954现价EV由-10%转正+7%——从"别买"调整为"小仓试探可建、回调加",深周期纪律留给2028+尾部
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-06-12T01:41:53.652767+00:00'
@@ -332,3 +357,30 @@ stage_history:
     uncovered_ring_inputs: []
     autofetch_debt: 0
     empty_pending_decision: 0
+suggested_drilldowns:
+- question: 给 Micron 穿越周期 normalized EPS 一个可复核实证锚：用历史 normalized GM 40%(mat-85c74c)反推下界
+    + SCA 锁定量×价格带给结构增量上界,推出"下限$X(若$35则EV转负、退回不建仓)→上限$Y"的推导链
+  rationale: critic 判终局证据薄:EV 从-10%翻正到+3%的正负号完全悬于 normalized~$45 这一 data-missing 单点估算;$35
+    即 EV 转负。这是 v2 唯一真正靠不住的地基,须从"拍脑袋"变"可复核区间"
+  source: critic_weak_k
+  related:
+  - K5
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-15T14:08:16.725230+00:00'
+- question: 取 SK Hynix(韩股000660.KS)+三星实时估值倍数,补齐 HBM 龙头同业横截面对标(本次 market_data 未取到)
+  rationale: ring2 同业横截面缺 HBM 真正龙头一角;SK Hynix 倍数是比 STX/WDC(HDD)贴切得多的对标锚
+  source: critic_weak_k
+  related:
+  - K1
+  - K5
+  priority: P1
+  status: open
+  suggested_at: '2026-07-15T14:08:16.725230+00:00'
+pending_thesis_review:
+  since: '2026-07-15T13:37:04.943386+00:00'
+  reason: 依赖的『金融条件偏松·信用利差极窄·风险偏好亢奋但脆弱』已变『条件偏松·信用利差历史地板·资金面无压但临界(RRP小幅回补)·风险偏好亢奋但脆弱』(regime
+    v2→v3)
+  proposal_id: 17104a9beb39
+  locator: liquidity_us

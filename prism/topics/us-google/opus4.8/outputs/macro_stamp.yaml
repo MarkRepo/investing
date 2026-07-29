@@ -1,0 +1,16 @@
+as_of_regime_version: 3
+regime_composite: regime v3 象限过热→降温、利率预期差转鹰但长端牛平、fed funds 3.75%；对长久期成长股中性偏顺（长端牛平利好贴现），但AI资本开支周期是个股特异风险高于宏观beta
+depends_on_states:
+- conclusion: rates_us
+  state: fed funds 3.75%、长端牛平
+  role: confirming
+- conclusion: fx_cny
+  state: USD 企稳偏弱
+  role: confirming
+discount_rate: null
+slug: us-google
+variant: opus4.8
+stamped_at: '2026-07-23T13:26:19.042275+00:00'
+stale: true
+stale_reason: 依赖的『fed funds 3.75%、长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+  v3→v4)

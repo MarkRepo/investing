@@ -1,0 +1,655 @@
+slug: global-glp1-highend-efficacy
+display_name: GLP-1 三激动/amylin 高端疗效 arena
+type: arena
+created: '2026-07-21T23:22:48.381452+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: global-glp1-obesity
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 减重疗效天花板竞赛(三激动/amylin combo)的高端利润池落到谁手里？retatrutide 30% 级疗效能否全剂量落地、副作用是否封顶最高剂量？挑战者(MariTide/罗氏CT-388/VKTX/CagriSema)能否收窄与
+    LLY 的疗效代差？
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  short_name: 三激动高端疗效
+  search_terms:
+  - retatrutide
+  - 三激动
+  - amylin combo
+  - MariTide
+  - 疗效天花板
+outputs_state:
+  00_primer:
+    version: 2
+    last_updated: '2026-07-24T00:25:15.838382+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-053d60
+    - mat-3cb00b
+    - mat-420fa5
+    - mat-5003e0
+    - mat-505828
+    - mat-54d41a
+    - mat-61becc
+    - mat-61df5e
+    - mat-624267
+    - mat-6bd7d7
+    - mat-6f71bc
+    - mat-732553
+    - mat-7fde1f
+    - mat-88aaee
+    - mat-8b9937
+    - mat-8edc63
+    - mat-c4b77e
+    - mat-c68134
+    - mat-c97859
+    - mat-cf0f51
+    - mat-d49f82
+    - mat-d59bb4
+    - mat-e3fe45
+    - mat-e42129
+    - mat-f6eb26
+    - mat-f91712
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-07-23T23:54:33.823884+00:00'
+      warnings:
+      - 未过 critic（set_output_critic_passed 未置位）
+    critic_passed: true
+  a_arena_case:
+    version: 4
+    last_updated: '2026-07-28T09:23:19.492892+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-053d60
+    - mat-3cb00b
+    - mat-420fa5
+    - mat-5003e0
+    - mat-505828
+    - mat-54d41a
+    - mat-61becc
+    - mat-61df5e
+    - mat-624267
+    - mat-6bd7d7
+    - mat-6f71bc
+    - mat-732553
+    - mat-7fde1f
+    - mat-88aaee
+    - mat-8b9937
+    - mat-8edc63
+    - mat-c4b77e
+    - mat-c68134
+    - mat-c97859
+    - mat-cf0f51
+    - mat-d49f82
+    - mat-d59bb4
+    - mat-e3fe45
+    - mat-e42129
+    - mat-f6eb26
+    - mat-f91712
+    last_error: null
+  peer_matrix:
+    version: 4
+    last_updated: '2026-07-28T09:23:19.509565+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-053d60
+    - mat-3cb00b
+    - mat-420fa5
+    - mat-5003e0
+    - mat-505828
+    - mat-54d41a
+    - mat-61becc
+    - mat-61df5e
+    - mat-624267
+    - mat-6bd7d7
+    - mat-6f71bc
+    - mat-732553
+    - mat-7fde1f
+    - mat-88aaee
+    - mat-8b9937
+    - mat-8edc63
+    - mat-c4b77e
+    - mat-c68134
+    - mat-c97859
+    - mat-cf0f51
+    - mat-d49f82
+    - mat-d59bb4
+    - mat-e3fe45
+    - mat-e42129
+    - mat-f6eb26
+    - mat-f91712
+    last_error: null
+  _prism_reading_guide:
+    version: 1
+    last_updated: '2026-07-23T23:54:33.898045+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+  08_living_feed:
+    version: 7
+    last_updated: '2026-07-28T09:23:20.001455+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials:
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-9a13fd
+  addresses:
+  - K1
+  - K2
+  note: retatrutide 三靶(GLP-1+GIP+GCGR)机制
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-82221a
+  addresses:
+  - K1
+  - K3
+  note: LLY 2025 10-K 财务/管线锚
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-c9c6aa
+  addresses:
+  - K1
+  - K3
+  note: LLY 2026Q1 10-Q
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-6c32e3
+  addresses:
+  - K3
+  note: LLY wiki 财务(估值锚)
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-8b9937
+  addresses:
+  - K1
+  note: tirzepatide SURMOUNT 疗效金标准基准
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-54d41a
+  addresses:
+  - K2
+  note: CagriSema REDEFINE 20.4%(amylin combo)
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-76802d
+  addresses:
+  - K2
+  note: NVO sema 7.2mg 单分子加量反击
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-420fa5
+  addresses:
+  - K2
+  note: AMGN MariTide 差异化 GLP-1+GIPR拮抗
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-cf0f51
+  addresses:
+  - K2
+  note: MariTide II期高停药/呕吐→III剂量调整
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-e896e5
+  addresses:
+  - K2
+  note: AMGN 2026Q1 10-Q MariTide进度
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-b1dcfc
+  addresses:
+  - K2
+  note: VKTX VK2735 皮下+口服双剂型
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-405320
+  addresses:
+  - K2
+  note: VKTX VANQUISH-2 入组完成 顶线倒计时
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-2a5b8f
+  addresses:
+  - K2
+  note: VKTX 并购标的期权价值
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-c68134
+  addresses:
+  - K2
+  note: Roche CT-388 22.5%(Carmot收购)
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-124143
+  addresses:
+  - K2
+  note: GPCR aleniglipron biased GLP-1R
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-63a6fb
+  addresses:
+  - K2
+  note: GPCR ACCESS II 44wk -16.3%
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-10ab6a
+  addresses:
+  - K2
+  note: Kailera $600M 双靶(恒瑞出海)
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-479a41
+  addresses:
+  - K2
+  note: 恒瑞 HRS9531 双靶 17.7%
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-86d407
+  addresses:
+  - K1
+  - K2
+  note: mazdutide GLP-1/GCG 双靶(GCG机制邻接)
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-3e76f0
+  addresses:
+  - K1
+  - K2
+  note: 已获批药物疗效%/机制对照表
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-ee7fd6
+  addresses:
+  - K3
+  note: 肥胖药 TAM $150-200B 预期收紧
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-331b3f
+  addresses:
+  - K3
+  note: IRA第二批 sema 谈判(净价压制)
+- parent_slug: global-glp1-obesity
+  parent_variant: opus4.8
+  mat_id: mat-715f0d
+  addresses:
+  - K3
+  note: LLY vs NVO 2026指引急剧分化
+next_actions:
+- round-3 窄收口已完成(a_arena_case/peer_matrix v4)：score 拆双列(业务质量 LLY4.5>NVO4.0 vs 当前介入
+  NVO4.0>LLY2.5)、orforglipron 改护盈利非护倍数、NVO 崩腿改相对赢/少亏
+- 当前可执行主力多头=NVO(11.5x下行已定价,小-中核心仓可现在起)；LLY 42x非介入区等回调；VKTX小仓期权
+- 可选:说「评审」跑 round-4 复评(边际收益递减)，或直接转监控
+- 监控(KILL-D 硬阈值已就位)：orforglipron 上市净价/覆盖/放量斜率 · VANQUISH-1顶线 · amycretin Ph3 H2H ·
+  IRA下轮是否纳入tirz
+user_todos:
+- task: retatrutide 完整 TRIUMPH 项目群安全性谱（各剂量心率/肌肉/GI/dysesthesia + 停药率明细）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: LLY IR / NEJM/Lancet TRIUMPH 论文 / FDA label 草案
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3cb00b
+  - mat-6bd7d7
+  - mat-6f71bc
+  - mat-88aaee
+  - mat-e3fe45
+  - mat-e42129
+  - mat-f6eb26
+  coverage_note: NEJM Ph2全文+biospace 26%+停药率明细入库
+  last_fetch_note: NEJM Ph2全文+biospace 26%+停药率明细入库
+- task: VKTX VANQUISH-2 顶线读出（减重%+耐受性，2026 倒计时中）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: Viking IR / ClinicalTrials.gov NCT / 生物医药媒体
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-053d60
+  - mat-3cb00b
+  - mat-5003e0
+  - mat-732553
+  - mat-88aaee
+  - mat-c97859
+  - mat-d49f82
+  - mat-d59bb4
+  - mat-e3fe45
+  coverage_note: VANQUISH-2 顶线未读出(binary催化剂)，已收周边;顶线读出后 06-monitor 补
+  last_fetch_note: 顶线尚未读出(2026-03入组完成/VENTURE Ph2已有)；抓到周边进度料，顶线本身待读出→留监控
+- task: NVO amycretin 皮下+口服完整 Phase 2/3 减重数据（obesity 适应症，非仅 T2D）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: Novo IR / Lancet / ADA/EASD 会议摘要
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-053d60
+  - mat-3cb00b
+  - mat-5003e0
+  - mat-732553
+  - mat-88aaee
+  - mat-c97859
+  - mat-d49f82
+  - mat-d59bb4
+  - mat-e3fe45
+  coverage_note: amycretin Ph1b/2a 22%+Ph2 T2D 14.5% 入库
+  last_fetch_note: amycretin Ph1b/2a 22%+Ph2 T2D 14.5% 入库
+- task: LLY / NVO / VKTX 最新 forward PE + 一致预期（疗效兑现后估值是否 price-in）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: Yahoo Finance / 卖方 obesity 板块估值表
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-505828
+  - mat-61becc
+  - mat-61df5e
+  - mat-624267
+  - mat-7fde1f
+  coverage_note: 2026 估值对照(Yahoo/fool/investing)入库
+  last_fetch_note: 2026 估值对照(Yahoo/fool/investing)入库
+- task: 高端疗效候选公司 peer 财务横比（LLY/NVO/AMGN/VKTX/Roche 收入/毛利/ROIC/PE）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: financial_data.get_peer_comparison_data_by_tickers（04 环④拉，此处占位）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  coverage_note: 04环④ financial_data.get_peer_comparison_data_by_tickers 现拉(LLY/NVO/AMGN/VKTX/Roche),非00收料范围
+  last_fetch_note: 非搜索型:04环④ financial_data 拉,标done交04
+- task: 高端疗效药净价/支付方覆盖动态（IRA第二批后 tirzepatide/reta 净价路径）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: STAT/Endpoints / PBM formulary / CMS
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-8edc63
+  - mat-c4b77e
+  - mat-f91712
+  coverage_note: Medicare GLP-1 Bridge $50/月+TrumpRx官方fact sheet入库
+  last_fetch_note: Medicare GLP-1 Bridge $50/月+TrumpRx官方fact sheet入库
+- task: 历史镜鉴：疗效领先者被平价/后发者取代的先例（PCSK9/胰岛素/丙肝疗效竞赛）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: 行业史综述 / 卖方历史对照
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-505828
+  - mat-61becc
+  - mat-61df5e
+  - mat-624267
+  - mat-7fde1f
+  coverage_note: PCSK9 成本效益镜鉴(NIH/Nature)入库
+  last_fetch_note: PCSK9 成本效益镜鉴(NIH/Nature)入库
+- task: amylin 路线减重质量证据（瘦体重保护 head-to-head）+ 差异化战场转移信号
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: petrelintide/amycretin body composition 数据 / ECO 2026
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3cb00b
+  - mat-6bd7d7
+  - mat-6f71bc
+  - mat-88aaee
+  - mat-e3fe45
+  - mat-e42129
+  - mat-f6eb26
+  coverage_note: petrelintide/amycretin body composition(Zealand/NIH)入库
+  last_fetch_note: petrelintide/amycretin body composition(Zealand/NIH)入库
+- task: arena 合成完成(primer+case+peer_matrix+thesis_v1+decomp_v1)，chain-critic 1轮过
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 各高端玩家逐公司的付费方/客户集中度 + 放量弹性（LLY/NVO/VKTX 在 Medicare/商保/自费渠道的净价暴露与量-价敏感度）
+  rationale: chain-critic 判本 case 终局证据可接受(定价锚+卡位双定量)，但客户集中度维只到支付方结构层、未逐公司拆——是最薄的一维，补齐可强化命门3(利润转化)的公司级分辨率
+  source: critic_weak_k
+  related:
+  - K3
+  - K4
+  priority: P1
+  status: open
+  suggested_at: '2026-07-23T23:59:01.350984+00:00'
+- question: NVO 非对称核实：11.76x forward PE + 42.8% ROIC 下行是否已耗尽？amycretin 口服 Ph3 是否构成近乎免费的疗效反击期权（NVO
+    是否应从纯 watch 升为小仓位深度价值+催化剂期权档）
+  rationale: critic 反方指作者把胰岛素史用反——净价换量的疗效领先者(NVO)才是走量赢家；case 无直接应答 NVO 非对称
+  source: critic_weak_k
+  related:
+  - K2
+  - K4
+  priority: P1
+  status: open
+  suggested_at: '2026-07-24T00:14:11.343460+00:00'
+- question: 商品化路径量化：orforglipron/amycretin 口服等「够用 20-24%+更便宜/口服」品种的商保覆盖与净价、放量斜率——不击败
+    reta 即侵蚀高端利润池的时点与幅度
+  rationale: critic 致命一击=KILL 开关漏掉作者自己的 R2 盲点(商品化不击败 reta 即毁利润池)，需武装为 KILL-D 可监测信号
+  source: critic_weak_k
+  related:
+  - K3
+  priority: P1
+  status: open
+  suggested_at: '2026-07-24T00:14:11.343460+00:00'
+- question: NVO 双核杠铃决策：按 case 自判"命门3崩"是最高概率死因，NVO 是该情景首要赢家。应否把组合从"LLY核心+NVO对冲"改为"LLY/NVO
+    跨命门3两结局双核杠铃"？需量化两情景概率+各腿赔率，判断是否触发 thesis_v2。
+  rationale: round2复评致命一击：NVO 被压到watch与作者自身pre-mortem概率权重相反，是本轮request-rewrite的真焦点
+  source: critic_weak_k
+  related:
+  - K2
+  - K3
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-07-28T07:17:08.770804+00:00'
+- question: orforglipron 对 LLY 42x 倍数的真实作用：命门3崩时它护盈利/份额，但能否护住倍数？量化"高端溢价塌+商品层低毛利走量"下
+    LLY 的 EPS 与倍数各自路径，判断 orforglipron 是估值支撑还是倍数压缩加速器。
+  rationale: round3致命一击:orforglipron撑LLY 4.5的论证把护盈利当护倍数
+  source: critic_weak_k
+  related:
+  - K3
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-07-28T08:56:18.585263+00:00'
+- question: NVO 命门3崩情景的净赢/净亏量化：其 $44B 高价 sema 存量被净价压制 vs 低成本走量+amycretin 上行，净效应是"相对赢"还是也大幅受损？11.5x
+    是错杀还是结构性衰退的合理定价？
+  rationale: round3:NVO崩腿被高估为干净赢,存量franchise承压未建模
+  source: critic_weak_k
+  related:
+  - K2
+  - K3
+  - K4
+  priority: P1
+  status: open
+  suggested_at: '2026-07-28T08:56:18.585263+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: round3复评：独立反方(不喂前两轮critic)未推翻thesis但戳中承重弱论证——"orforglipron两层通吃"撑LLY 4.5有硬伤(42x押高端溢价耐久性,orforglipron商品层低毛利走量=倍数压缩机制非兜底,护盈利≠护倍数)。另两处成立:NVO崩腿"干净赢"高估($44B存量也被压→改相对赢/少亏)、"业务质量分vs当前介入吸引力"混一个score致困惑。反方"第三次换皮=又做多42x
+    LLY"为稻草人(case实际LLY非介入区、当前主力多头是NVO)。整体3.5/5。窄收口3件:①拆score双列②改写orforglipron论证(移除作4.5辩护)③校准NVO崩腿。
+  at: '2026-07-28T08:56:18.574021+00:00'
+  thesis_version: 2
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 2
+  last_updated: '2026-07-28T07:33:08.108326+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-23T16:56:38.502914+00:00'
+    summary: 命门1=retatrutide GCG安全窗/剂量落地(中); 命门2=挑战者疗效+耐受双轴逼平(中); 命门3=疗效领先→利润领先转化/净价压制(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-23T23:54:33.940949+00:00'
+    summary: 命门1=GCG安全窗(中·实证有代价未封顶); 命门2=挑战者双轴逼平(中·open·疗效轴已逼近耐受未证·VANQUISH-2 2027
+      binary); 命门3=疗效→利润转化(证据充分·被净价+PCSK9镜鉴削弱·30x溢价踩此虚地)
+    convergence_status: open
+    changelog: 未增删命门(维持1-3); 命门3证据从低→证据充分(净价硬锚+PCSK9定量镜鉴齐); 命门1量化(dysesthesia12mg20.9%);
+      命门2校准为疗效轴逼近但双轴未证维持open; 对照v0全历史无震荡
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-28T07:33:08.108605+00:00'
+    summary: 命门1-3 无增删/置信度不变；唯一delta=命门3行动映射从单边(押守住重仓LLY)校正为对称(跨守住/崩两结局杠铃)，修正round-2
+      critic抓到的诊断-行动不一致
+    convergence_status: open
+    changelog: 命门结构与置信度全维持；命门3行动映射对称化(杠铃双核 LLY/NVO)；ring④ peer财务2026-07-27一手补拉；对照v1无命门震荡
+thesis:
+  current_version: 2
+  last_updated: '2026-07-28T07:32:54.506097+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-21T23:23:42.103708+00:00'
+    summary: 高端疗效池(22-30%)由 LLY retatrutide 独占天花板，挑战者(MariTide 2027/罗氏/VKTX/CagriSema
+      败)落后1-2身位，多为并购期权。强度7/10。
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-23T16:54:35.896560+00:00'
+    summary: 高端疗效池(22-30%)由 LLY retatrutide 独占天花板已实证(104wk 30.3%/45.3%患者≥30%)；挑战者(CagriSema败/MariTide~20%耐受差/罗氏VKTX未读出)落后。shortlist=LLY核心>VKTX期权>NVO
+      amycretin反击。强度8/10。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-23T23:54:33.910012+00:00'
+    summary: 高端疗效天花板 LLY retatrutide 独占已实证(28.3%/45.3%≥30%)，但疗效独占→利润独占隔三道折价(GCG安全窗12mg
+      dysesthesia20.9%/挑战者疗效轴逼近amycretin24.3%/净价压制+PCSK9镜鉴)；市场30x已price-in疗效且踩在最弱的利润转化假设上。押LLY核心(等回调<28x)+VKTX剂型期权。强度7/10。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-28T07:32:54.506253+00:00'
+    summary: 高端疗效天花板 LLY reta 独占已实证，但命门3(疗效→利润转化)先崩是最高概率死因(净价硬锚+PCSK9/胰岛素镜鉴)；故下注改为
+      LLY/NVO 跨命门3两结局杠铃双核——守住 LLY 疗效溢价赢、崩则 NVO 走量赢+LLY 靠 orforglipron 两层通吃部分兜，VKTX
+      小仓 binary 期权。LLY 42.44x TTM 非介入区。强度7/10。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-23T16:57:37.403015+00:00'
+  exited_at: '2026-07-23T17:44:04.680117+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    - peer-comparison-financials
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-23T17:44:04.680117+00:00'
+  exited_at: '2026-07-23T23:31:23.662691+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    - peer-comparison-financials
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-23T23:31:23.662691+00:00'
+  exited_at: '2026-07-23T23:59:21.146198+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - peer-comparison-financials
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-23T23:59:21.146198+00:00'
+  exited_at: '2026-07-24T00:24:59.260955+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - peer-comparison-financials
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-24T00:24:59.260955+00:00'
+  exited_at: '2026-07-28T07:33:27.217076+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - peer-comparison-financials
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-28T07:33:27.217076+00:00'
+  exited_at: '2026-07-28T09:23:19.525875+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - peer-comparison-financials
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-28T09:23:19.525875+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - peer-comparison-financials
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-23T17:43:51.323187+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 6
+  queries_with_hits: 6

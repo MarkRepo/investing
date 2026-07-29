@@ -1,0 +1,86 @@
+slug: global-glp1-oral-small-molecule
+variant: opus4.8
+topic_type: arena
+display_name: GLP-1 口服小分子平权化 arena
+generated: 2026-07-22T00:00:00+00:00
+data_freshness: 2026-07-21
+
+companies:
+  - name: Viking Therapeutics
+    ticker: VKTX
+    score: 4.2
+    tier: shortlist
+    topic_created: true
+    topic_slug: us-viking-vktx
+    thesis_one_liner: 口服+皮下双剂型、口服12.2%逼近注射的最大弹性纯标的，同时对冲疗效落差与独立利润池/并购期权，估值未透支胜利
+    upgrade_triggers: []
+    quarantine: false
+  - name: Structure Therapeutics
+    ticker: GPCR
+    score: 4.0
+    tier: shortlist
+    topic_created: true
+    topic_slug: us-structure-gpcr
+    thesis_one_liner: 小分子纯口服疗效领跑(高剂量16.3%无平台期)+全赛道最强IP(Roche $1亿背书)+amylin第二条腿，现金到2028不贱卖；须校准核心剂量11.3%
+    upgrade_triggers: []
+    quarantine: false
+  - name: 礼来 Eli Lilly
+    ticker: LLY
+    score: 3.5
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: ["forward PE 回调 <28x", "orforglipron 上市首季 TRx 斜率验证放量(K-kill-1 未触发)"]
+    quarantine: false
+  - name: 恒瑞医药
+    ticker: SSE_600276
+    score: 3.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: ["再现规模化 BD 出海(首付+里程碑)", "HRS-7535/HRS9531 头对头司美优效读出"]
+    quarantine: false
+  - name: 诺和诺德 Novo Nordisk
+    ticker: NVO
+    score: 2.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+  - name: 华东医药
+    ticker: SZSE_000963
+    score: 2.3
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+  - name: 阿斯利康 AstraZeneca
+    ticker: AZN
+    score: 2.0
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+
+cluster_tags: [glp1-obesity, oral-small-molecule, healthcare, biotech]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 5
+    kind: training-estimate
+    note: 历史镜鉴(他汀-PCSK9/丙肝 DAA)峰谷幅度为训练知识估算，非本研究 findings 实证
+  - ring: 4
+    kind: data-missing
+    note: 恒瑞/华东口服小分子头对头减重%、orforglipron 真实上市 TRx 斜率均未披露，相关判断标注待验证

@@ -20,6 +20,7 @@ scope:
   - 拼多多估值
   - 电商竞争格局
   - Temu监管风险
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
 outputs_state:
   roadmap:
     version: 1
@@ -93,18 +94,18 @@ outputs_state:
     - mat-f5c8be
     last_error: null
   08_living_feed:
-    version: 3
-    last_updated: '2026-06-05T15:04:27.721028+00:00'
+    version: 5
+    last_updated: '2026-07-15T13:22:45.169930+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
 parent_materials: []
 next_actions:
-- 研究主题已闭环，下一步「监控 pinduoduo」启动 06-daily-monitor
-- thesis_v2 已通过 critic-review
-- critic 评审：v2 复审 approve(整体3.8)：上轮致命一击"营业利润+22%会计幻觉"经Q1'26 6-K逐行一手证伪;独立反方复审未发现未应答的新致命一击——"saved
-  not earned"已在残核#1+kill阈值、"Temu吸收→4x低估"循环论证在亏损前提下部分被证伪、EV横盘修正后仍+9%。surviving critiques(其他损益经常性/营销换份额K5/横盘乐观)属已披露监控项。强度5.5/EV+12%/标准偏下档2.5%,thesis经两轮独立对抗定稿。
+- EU de-minimis 取消(2026-07-01 €3/件生效)经核查=thesis_v2 已price-in(mat-413cbf),决策环不改;已记
+  living_feed v5
+- 活命门转向 K2:Temu 减亏式 vs 失血式收缩。验证窗口=2026-08 Q2季报(集团营业利润是否维持两位数+毛利率企稳)
+- 若需正式重评 thesis,在对话发起「评审 pinduoduo」跑交互式 05-critic-review
 user_todos:
 - task: PDD 历次财报收入/利润国内 vs Temu 归因拆解 + take-rate 走势（命门1：利润下行性质）
   priority: P0
@@ -336,3 +337,4 @@ thesis:
     stage_set_at: 04-post-synthesis
     set_at: '2026-06-05T14:47:05.604810+00:00'
     summary: 温和偏多深度价值仓(强度5.5,EV+12%)：driver A 经Q1'26逐行证实(营业利润+22%是营销零增长的真实经营杠杆,反方"会计腾挪"致命一击被证伪);但Temu从免费期权降级为后de-minimis模糊拖累、扣现金4x→可分配口径5-6x、EV尾部按Wish/阿里先例上调→标准偏下档非重仓。
+suggested_drilldowns: []

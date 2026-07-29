@@ -1,0 +1,159 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-nvidia
+variant: opus4.8
+created: 2026-07-24
+thesis_version: 0
+decomposition_version: 0
+
+# L1/L2 已坍缩为 primer scope 备注（背景理解交给 00_primer，primer-first）
+primer_scope: >
+  primer 该覆盖：AI 数据中心 GPU 为什么是训练/推理的基础设施 / CUDA 软件生态如何形成开发者锁定护城河 /
+  rack-scale 系统(GB200 NVL72)"卖整柜而非单卡"的商业逻辑与价值抬升 / 通用 GPU vs 定制 ASIC(TPU/Trainium)
+  的适用场景与性价比差异 / HBM·CoWoS 先进封装为何是全行业供给瓶颈 / NVDA 财年(1月末结束)与自然年口径差异 /
+  AI capex 周期驱动逻辑与"泡沫/见顶"担忧从何而来 / 对华出口管制(H20/许可证/15%分成)机制 /
+  高毛利(75%)生意为何天然吸引竞争与客户自研(均值回归压力) / 观察 NVDA 该盯的可观测信号。
+
+learning_track:
+  # ── L3 争议层：把 thesis"最大反方观点"+命门展开为可调研的分歧点 ──
+  l3_debates:
+    - question: $725B 超大厂 capex(+77%)建立在"AI 应用 ROI 能兑现"的假设上——这是结构性算力需求的开端，还是 DeepSeek 时刻预演过的泡沫顶？ROI 证明不了则超大厂同步砍单、NVDA 断崖。这是整份 thesis 6/10 评分的最大命门。
+      maps_to: [命门1, K1, K4]
+      source_hint: 超大厂 capex 指引与 AI 收入/ROI 披露 [mat-5f3287][mat-db8e5d][mat-d98abd] + DeepSeek 时刻镜鉴(baseline fact-16) + backlog 能见度 [mat-99b33f][mat-f49f2f]
+    - question: 定制 ASIC(Broadcom AI 收入+106%、2027 ASIC 出货翻三倍)吃的是增量还是 NVDA 存量？是训练还是推理？在推理放量时代对 NVDA 85% 份额与 75% 毛利的实际压力有多大？
+      maps_to: [命门2, K2, K3]
+      source_hint: Broadcom ASIC [mat-4854c7][mat-596b8c][mat-4880fd] + 超大厂自研进度 [mat-b818ba][mat-9c7086][mat-c425c0] + 芯片对比 [mat-71d680]
+    - question: 22-23x 前瞻 PE(多年低位、一度低于标普500)是市场错杀便宜，还是聪明钱提前定价的周期顶——即 EPS 将随 capex 回落下修、forward PE 是"分母虚高"陷阱？这直接决定买卖点。
+      maps_to: [命门3, K6]
+      source_hint: 估值统计 [mat-d9c227][mat-4dc6c0][mat-e0c890][mat-f286dc] + 一致预期/目标价 [mat-f39ae9][mat-64ffdb] + Cisco 2000 镜鉴 [mat-c138a5][mat-f3c93c]
+    - question: 75% 超额毛利是护城河深度的证明，还是天然吸引竞争/客户自研的均值回归靶子？Rubin 爬坡成本+ASIC 降价压力下毛利率能否守住 70%+？
+      maps_to: [命门2, K3]
+      source_hint: 毛利率 [mat-44f3f7] + 10-K/10-Q MD&A [mat-c72404][mat-17fa79] + ASIC 竞争降价 [mat-4880fd]
+    - question: 中国市场(FY25 占 13.1%/$17.1B)的"美出口管制 + 中反垄断"双向夹击——是可控的一次性收入池收缩(其他区域增量弥补)，还是持续流失+政策黑天鹅源？
+      maps_to: [K5]
+      source_hint: H20 charge [mat-9e08d9][mat-772c97] + 15%分成 [mat-114c7d][mat-69638b] + 中反垄断 [mat-5fb1d3][mat-f4722a]
+
+  # ── L4 狩猎层：逐条对齐 thesis Killer Question，找错误定价 ──
+  l4_hunting:
+    - question: 任一超大厂在 2026H2 财报中下调 2026/2027 AI capex 指引，或明确表述"AI 投资回报未达预期/放缓建设"——目前 backlog 能见度到 2027，市场隐含的 capex 延续概率多少？
+      addresses: [K1]
+      search_keywords: [超大厂 capex 2027 指引, AI ROI 兑现, hyperscaler capex cut]
+      source_hint: 超大厂电话会 capex [mat-5f3287][mat-db8e5d][mat-e439b9] + AI spending critics [mat-d98abd] + backlog [mat-99b33f]
+    - question: NVDA 数据中心 GPU 份额能否守住 85%？Broadcom+Marvell 定制 ASIC 合计 AI 收入年化是否超过 NVDA 数据中心增量的 30%？ASIC 在推理负载的渗透曲线？
+      addresses: [K2]
+      search_keywords: [Broadcom AI revenue 2027, 定制 ASIC 份额, NVIDIA GPU 85% share]
+      source_hint: Broadcom+106% [mat-4854c7] + ASIC 翻三倍 [mat-596b8c] + 自研进度 [mat-b818ba][mat-9c7086] + AMD 份额 [mat-01668b][mat-6a2059]
+    - question: NVDA 整体毛利率是否连续两季跌破 70%(ASIC 降价 或 Rubin 爬坡成本)？这是临时性还是超额利润均值回归的证据？
+      addresses: [K3]
+      search_keywords: [NVIDIA 毛利率 趋势, Rubin 爬坡 成本, 数据中心 GPU 降价]
+      source_hint: 毛利率 near 75% [mat-44f3f7] + 10-Q MD&A 毛利率轨迹 [mat-17fa79] + 10-K [mat-c72404]
+    - question: $1T backlog（到 2027）叙事的真实性——RPO/purchase commitments 环比趋势、是否出现取消订单、连续两季营收是否 miss 指引？
+      addresses: [K4]
+      search_keywords: [NVIDIA backlog RPO, 订单取消, purchase commitments]
+      source_hint: backlog $1T [mat-f49f2f] + $500B order [mat-6a7771] + multi-year cycle [mat-99b33f] + 10-Q 资产负债表承诺 [mat-17fa79]
+    - question: H20/后续降规版是否被完全禁售且无替代？中国数据中心营收是否降至 <3%？未被其他区域增量弥补？中反垄断调查会否升级为实质处罚？
+      addresses: [K5]
+      search_keywords: [NVIDIA H20 China ban, 中国 数据中心 营收占比, NVIDIA 反垄断 处罚]
+      source_hint: H20 modified [mat-9ff371] + 15%分成对底线影响 [mat-114c7d] + 中国占比 [mat-69638b] + 反垄断 [mat-5fb1d3]
+    - question: 前瞻 PE 若无基本面恶化回升至 35x+ 则赔率不再对称(BUY 逻辑建立在 22x 便宜锚)；反之基本面稳而 PE 压至 18x 以下则加仓——mid-cycle normalized EPS 多少？穿越周期 PE 能否仍 <25x？
+      addresses: [K6]
+      search_keywords: [NVIDIA forward PE 历史, normalized EPS, 分析师 目标价 分布]
+      source_hint: forward PE 22-23x [mat-d9c227][mat-f286dc] + PE 史 [mat-4dc6c0] + 目标价分布 [mat-f39ae9][mat-64ffdb][mat-495eaa] + Cisco 镜鉴 [mat-c138a5]
+
+  # self-check: K1→L4#1✓ K2→L4#2✓ K3→L4#3✓ K4→L4#4✓ K5→L4#5✓ K6→L4#6✓ —— 6/6 全覆盖
+
+material_priority:
+  # 说明：所有材料已由 workflow 00 eager-fetch 收齐(71 份，2026-07-23/24 入库)。
+  # 01 无新增可自动抓取的 todo（10-K/10-Q 已分节，web 分析材料已入库）。
+  tier1:  # 必读，研究不可缺
+    - title: NVIDIA FY2026 10-K 年报（分节：business/risk/MD&A/financial）
+      type: annual-report
+      ticker: NVDA
+      source: SEC EDGAR
+      why: 分部/客户/地区收入拆分、风险因素、MD&A 毛利率与承诺——环②③④基础
+      addresses: [K2, K3, K4, K5]
+      covered_by: [mat-c72404]
+    - title: NVIDIA Q1 FY2027 10-Q 季报（分节）
+      type: quarterly-report
+      ticker: NVDA
+      source: SEC EDGAR
+      why: 最新毛利率趋势 + backlog/RPO + H20 库存——环④EV 最新读数
+      addresses: [K3, K4]
+      covered_by: [mat-17fa79]
+    - title: 超大厂 2026/2027 AI capex 指引与 ROI 披露（MSFT/AMZN/GOOGL/META）
+      type: industry-research
+      source: 各公司 IR 电话会 + 卖方汇总
+      why: 命门1 capex 拐点——决定收入池天花板与周期长短
+      addresses: [K1]
+      covered_by: [mat-5f3287, mat-db8e5d, mat-d98abd, mat-8a5486]
+    - title: NVDA 一致预期与卖方目标价分布（FY2027/FY2028）
+      type: sell-side-note
+      source: WSJ/Yahoo/analyst 汇总
+      why: A合同 consensus——环④EV 输入、环⑤估值锚，直接喂目标价
+      addresses: [K6]
+      covered_by: [mat-f39ae9, mat-64ffdb, mat-495eaa, mat-211826]
+    - title: 定制 ASIC 与超大厂自研芯片进度（Broadcom/TPU/Trainium/Maia）
+      type: industry-research
+      source: Broadcom 财报 + Counterpoint/tomshardware
+      why: 命门2 护城河侵蚀——决定份额与毛利折价
+      addresses: [K2]
+      covered_by: [mat-4854c7, mat-596b8c, mat-4880fd, mat-b818ba]
+  tier2:  # 补充，有最好
+    - title: NVDA 深度多空研报（含 henry fund 学术估值 + io-fund thesis）
+      type: sell-side-note
+      source: henryfund.uiowa.edu / io-fund
+      why: 多空双方论据、估值模型交叉验证
+      addresses: [K1, K6]
+      covered_by: [mat-6e3eea, mat-ea3a1f, mat-7205ca]
+    - title: AMD MI400/MI450/MI500 路线图与 AI GPU 份额
+      type: industry-research
+      source: AMD IR + phoronix/theoutpost
+      why: 正面 GPU 竞争(Helios 对标 Vera Rubin、OpenAI/Oracle 大单)
+      addresses: [K2]
+      covered_by: [mat-01668b, mat-a1ff4a, mat-6a2059, mat-af7d6a]
+    - title: NVDA 资本配置/回购史（$80B buyback + dividend）
+      type: data
+      source: NVDA IR + financecharts
+      why: A合同 mgmt-capital-alloc——股东回报政策、现金创造力
+      addresses: [K6]
+      covered_by: [mat-d6214a, mat-f76641, mat-6787a2]
+    - title: 半导体周期股见顶镜鉴（Cisco 2000 泡沫）
+      type: industry-research
+      source: hardingloevner/morningstar/seekingalpha
+      why: A合同 historical-mirror——环⑤估值锚的历史约束
+      addresses: [K6, K1]
+      covered_by: [mat-c138a5, mat-cfcbc6, mat-f3c93c]
+  tier3:  # 可选
+    - title: TSMC CoWoS/HBM 供给松紧 + GB200/GB300 供应链
+      type: industry-research
+      source: TrendForce/供应链媒体
+      why: 供给瓶颈是否缓解——出货节奏约束
+      addresses: [K4]
+      covered_by: [mat-9e2848, mat-47f087, mat-6d1cae, mat-ecad34]
+    - title: NVDA 中国市场 H20/降规版销售与政策 + 反垄断
+      type: policy
+      source: 出口管制公告 + 中国反垄断
+      why: 环②/⑤中国收入池风险
+      addresses: [K5]
+      covered_by: [mat-9ff371, mat-114c7d, mat-69638b, mat-5fb1d3, mat-f4722a]
+    - title: Rubin/Vera Rubin 架构与量产节奏
+      type: industry-research
+      source: NVDA IR + wikipedia
+      why: 一年一代 cadence 兑现——量价延续
+      addresses: [K1]
+      covered_by: [mat-59357f, mat-d2d538, mat-7d2e3d]
+
+key_risks_to_monitor:
+  - 超大厂 AI capex 拐点（K1，最致命，需求侧不可控）
+  - 定制 ASIC 在推理放量期加速抢份额、压制毛利（K2/K3）
+  - 中国市场双向夹击持续流失（K5）
+  - forward PE 是"分母虚高"陷阱而非便宜（K6/命门3）
+
+analogies_to_study:
+  - name: 思科 (Cisco) 2000 互联网泡沫顶（美国/网络设备/1999-2002）
+    logic: 同为某轮技术革命(互联网↔AI)的"卖铲人"龙头、高增速高估值、被视为不可撼动；泡沫顶后收入增速骤降、股价长期不回前高
+    limits: 思科当年 forward PE 100x+ 且客户是杠杆电信商(资金易断)；NVDA 现 22x 且客户是现金充裕超大厂——估值起点与客户质地差异巨大。是否真类比取决于 capex 可持续性
+    covered_by: [mat-c138a5, mat-cfcbc6, mat-f3c93c]
+  - name: NVDA 自身 2018 挖矿周期崩盘（美国/GPU/2018-2019）
+    logic: 需求端(加密挖矿)突然蒸发致库存积压、毛利与股价腰斩——警示"需求集中于单一狂热用途"的脆弱性(今日=AI capex 集中于少数超大厂)
+    limits: 挖矿是投机性需求、规模远小于今日 AI capex；AI 需求有真实生产力应用支撑(但 ROI 待证)。镜鉴价值在"需求断点如何传导到财务"的机理
+    covered_by: []  # 训练知识粗述，实证镜鉴待 07 深挖时补

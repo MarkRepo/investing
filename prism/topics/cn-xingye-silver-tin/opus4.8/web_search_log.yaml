@@ -1,0 +1,171 @@
+slug: cn-xingye-silver-tin
+variant: opus4.8
+entries:
+- searched_at: '2026-07-18T16:58:08.684522+00:00'
+  query: 白银价格 2026年7月 最新 美元每盎司 走势
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:08.691452+00:00'
+  query: LME 锡价 2026 最新 每吨 缅甸 供给
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:08.710495+00:00'
+  query: 兴业银锡 银漫矿业 165万吨 技改扩能 达产 产能
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:08.727619+00:00'
+  query: 兴业银锡 000426 2025年报 营收 净利润 白银 锡产量
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:08.764011+00:00'
+  query: 兴业银锡 2026年一季报 业绩 净利润 同比
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:08.796113+00:00'
+  query: 兴业银锡 控股股东 兴业集团 股权质押 比例 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:08.832053+00:00'
+  query: 兴业银锡 收购 Tartana Minerals 澳洲 进展
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:08.871417+00:00'
+  query: 兴业银锡 资产负债率 可转债 定增 再融资 2025
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:08.913779+00:00'
+  query: 兴业银锡 白银 锡 铅锌 资源储量 保有资源量
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:08.961229+00:00'
+  query: 兴业银锡 券商 研报 目标价 盈利预测 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T16:58:32.786218+00:00'
+  query: 兴业银锡 000426 scope 主体/业务/价格覆盖
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-18T16:58:32.789869+00:00'
+  query: 兴业银锡 company-event 最新公告/业绩/IPO/并购覆盖
+  triggered_by: 00-prescan
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-covered
+- searched_at: '2026-07-18T17:12:09.233947+00:00'
+  query: 兴业银锡 大西洋锡业 Achmmach 摩洛哥 Atlas Tin 锡产能
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:12:09.271352+00:00'
+  query: 锡业股份 盛达资源 华锡有色 估值对比 资源量 成本
+  triggered_by: 00-deep-fetch
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:12:09.343286+00:00'
+  query: 白银 供需 金银比 光伏银浆 工业需求 2026 深度
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:12:09.459116+00:00'
+  query: 锡 供需平衡 深度 2026 缅甸佤邦 印尼 库存 AI需求
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:12:09.545102+00:00'
+  query: 兴业银锡 吉兴业 兴业集团 借壳 并购 再融资 分红 历史
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:12:09.627252+00:00'
+  query: 兴业银锡 深度报告 中信建投 中金 盈利预测 目标价 2026
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:12:09.713123+00:00'
+  query: 兴业银锡 银漫 白银 锡 单位成本 克银成本 毛利率
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 2
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:13:34.309505+00:00'
+  query: 兴业银锡 H股 上市申请资料 港交所 披露易 application proof
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T17:15:25.590594+00:00'
+  query: 历史失败镜鉴 资源股 商品价格顶部追高 高质押矿企爆雷 银漫停产期股价复盘 兴业矿业
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 0
+  n_mid: 0
+  n_low: 5
+  disposition: skipped-lowtier

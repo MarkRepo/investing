@@ -1,0 +1,562 @@
+slug: us-viking-vktx
+display_name: Viking Therapeutics (VKTX)
+type: company
+created: '2026-07-21T22:36:00.615983+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: global-glp1-oral-small-molecule
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: VKTX(deep/US,以VK2735减重管线为主刀)——赌买入/持有:纯10x弹性来自被LLY/Pfizer并购期权+独立商业化双重看涨;核心命门=VK2735皮下维持数据兑现+口服剂型耐受性/可扩产性+并购节奏vs关键VANQUISH三期数据2H2027偏晚的时点折价;目标价区间取决于并购期权定价vs独立开发折现
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_VKTX
+  market: US
+  short_name: VKTX
+  search_terms:
+  - VK2735 减重
+  - 口服 GLP-1
+  - VKTX 并购
+  - VANQUISH 三期
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-22T07:40:44.901303+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0281c5
+    - mat-0ca4c4
+    - mat-17967a
+    - mat-1db451
+    - mat-1fbdca
+    - mat-4c75ab
+    - mat-51d247
+    - mat-628245
+    - mat-66d570
+    - mat-6737dd
+    - mat-696f8c
+    - mat-6dacd0
+    - mat-864930
+    - mat-892218
+    - mat-a5af1d
+    - mat-b3a2cc
+    last_error: null
+  c_investment_case:
+    version: 2
+    last_updated: '2026-07-22T09:23:39.263573+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01a998
+    - mat-0281c5
+    - mat-062e3d
+    - mat-06f26d
+    - mat-0ca4c4
+    - mat-17967a
+    - mat-1db451
+    - mat-1fbdca
+    - mat-210cca
+    - mat-22ad60
+    - mat-26f796
+    - mat-2917b4
+    - mat-2920e9
+    - mat-2b62d9
+    - mat-3020e6
+    - mat-30b367
+    - mat-312c41
+    - mat-329e42
+    - mat-395f13
+    - mat-40e89e
+    - mat-43335b
+    - mat-4c75ab
+    - mat-51d247
+    - mat-5ab013
+    - mat-5fabb4
+    - mat-5fd6ad
+    - mat-6007dc
+    - mat-628245
+    - mat-66d570
+    - mat-6737dd
+    - mat-689a68
+    - mat-696f8c
+    - mat-6d036c
+    - mat-6dacd0
+    - mat-7214e0
+    - mat-802979
+    - mat-849117
+    - mat-864930
+    - mat-892218
+    - mat-8b056e
+    - mat-8ca468
+    - mat-8cbe78
+    - mat-919a6e
+    - mat-91f322
+    - mat-a27817
+    - mat-a5af1d
+    - mat-a6b826
+    - mat-a78709
+    - mat-a7e9c0
+    - mat-ab7249
+    - mat-af5671
+    - mat-b09be2
+    - mat-b3a2cc
+    - mat-b9f518
+    - mat-bdc7aa
+    - mat-ca8e69
+    - mat-d2e306
+    - mat-d52849
+    - mat-d69600
+    - mat-dac01c
+    - mat-dc6400
+    - mat-eabc5e
+    - mat-eb2cb7
+    - mat-ebf284
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-07-22T09:23:39.282127+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-01a998
+    - mat-0281c5
+    - mat-062e3d
+    - mat-06f26d
+    - mat-0ca4c4
+    - mat-17967a
+    - mat-1db451
+    - mat-1fbdca
+    - mat-210cca
+    - mat-22ad60
+    - mat-26f796
+    - mat-2917b4
+    - mat-2920e9
+    - mat-2b62d9
+    - mat-3020e6
+    - mat-30b367
+    - mat-312c41
+    - mat-329e42
+    - mat-395f13
+    - mat-40e89e
+    - mat-43335b
+    - mat-4c75ab
+    - mat-51d247
+    - mat-5ab013
+    - mat-5fabb4
+    - mat-5fd6ad
+    - mat-6007dc
+    - mat-628245
+    - mat-66d570
+    - mat-6737dd
+    - mat-689a68
+    - mat-696f8c
+    - mat-6d036c
+    - mat-6dacd0
+    - mat-7214e0
+    - mat-802979
+    - mat-849117
+    - mat-864930
+    - mat-892218
+    - mat-8b056e
+    - mat-8ca468
+    - mat-8cbe78
+    - mat-919a6e
+    - mat-91f322
+    - mat-a27817
+    - mat-a5af1d
+    - mat-a6b826
+    - mat-a78709
+    - mat-a7e9c0
+    - mat-ab7249
+    - mat-af5671
+    - mat-b09be2
+    - mat-b3a2cc
+    - mat-b9f518
+    - mat-bdc7aa
+    - mat-ca8e69
+    - mat-d2e306
+    - mat-d52849
+    - mat-d69600
+    - mat-dac01c
+    - mat-dc6400
+    - mat-eabc5e
+    - mat-eb2cb7
+    - mat-ebf284
+    last_error: null
+  08_living_feed:
+    version: 4
+    last_updated: '2026-07-22T09:20:51.260342+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials:
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-87d0af
+  addresses:
+  - K1
+  - K2
+  note: VKTX 2026 展望(pivotal+并购双看涨)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-0b4c14
+  addresses:
+  - K4
+  note: Structure aleniglipron topline(口服对照)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-f5d5a3
+  addresses:
+  - K4
+  note: aleniglipron 靶点/适应症/专利
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-e0d600
+  addresses:
+  - K4
+  note: LLY orforglipron 口服GLP-1图谱
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-ff23c8
+  addresses:
+  - K4
+  note: 口服小分子GLP-1竞争格局
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-875aa5
+  addresses:
+  - K4
+  note: Roche 100M加码Structure(买家动机侧)
+- parent_slug: global-glp1-oral-small-molecule
+  parent_variant: opus4.8
+  mat_id: mat-a91c3a
+  addresses:
+  - K2
+  - K4
+  note: AstraZeneca 加码obesity(买家格局)
+next_actions:
+- 'critic 标 stale: c_investment_case, 07_decision_kit'
+- 主 agent 即将在本对话续跑 04（见 workflow 05 Step 7.5）
+- critic 评审：05-critic 兜底 web-search 已闭合承重腿缺口且实锤反方：(A)52%"$10B结局概率"被base rate证伪——P(Ph3~0.6)×P($10B|成功~0.15-0.25)≈9-15%,作者混淆临床成功vs$10B结局;(B)买家池收窄2-3家、辉瑞刚饱和,但价格锚被辉瑞收Metsera(~$100亿)坐实;(C)卖方极度分化Goldman风险调整$2.8B/目标$30(低于现价)vs乐观$21.6B。→重写环②/④/⑥:拆52为两概率、纳入$30低锚、稀释打进base/muddle、bear打深。
+user_todos:
+- task: VKTX 2025 10-K(2026-02) + 2026Q1 10-Q(2026-04)——现金流/股数/增发史/管线披露/OpEx轨迹
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: SEC EDGAR / ir.vikingtherapeutics.com
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-062e3d
+  - mat-0ca4c4
+  - mat-1db451
+  - mat-1fbdca
+  - mat-4c75ab
+  - mat-66d570
+  - mat-a5af1d
+  - mat-af5671
+  - mat-d2e306
+  last_fetch_note: VKTX 10-Q(2026Q1)已下,含现金$603M/股数/OpEx;10-K留01补
+- task: VANQUISH-1/2 皮下三期试验设计 + VENTURE皮下二期完整数据(减重曲线/AE停药率/各剂量)——命门1核心
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: clinicaltrials.gov / IR / prnewswire / PMC VENTURE论文
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan+deep-fetch:VANQUISH-1/2入组完成PR+试验设计+VENTURE PMC论文
+- task: 卖方深度consensus：VK2735皮下+口服峰值销售预测 + 分析师目标价模型拆解——A合同consensus/环④EV锚
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 卖方研报(Morgan Stanley/BofA/Guggenheim等obesity覆盖) / TipRanks模型
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: deep-fetch:分析师目标$93-99.50(25家),peak sales模型源(marketscreener/tikr)
+- task: obesity并购可比：Metsera成交条款($/资产) + 历史减重/biotech M&A溢价中位——环④并购定价锚+historical-mirror
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: Pfizer-Metsera公告 / 并购数据库 / 卖方M&A comps
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: deep-fetch:Pfizer-Metsera $10bn(起价$4.9B竞价战),reuters新M&A范式
+- task: VK2735口服二期VENTURE-Oral完整数据 + 与Foundayo(ATTAIN)/aleniglipron(ACCESS II)头对头效力/耐受对照——命门3
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: ECO2026 poster / DDW / 各公司IR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan+deep-fetch:口服12.2%+Foundayo/aleniglipron对照(biospace/peptidewiki)
+- task: 管理层资本配置史：Brian Lian历次融资时点/定价 + BD取舍 + 对独立vs卖身表态——A合同mgmt-capital-alloc
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 历年增发公告 / earnings call transcript / 访谈
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: deep-fetch:Lian管理层页+DEF14A proxy(治理/薪酬);融资时点史留01深挖
+- task: 减重药III期失败/失望镜鉴：CagriSema失望、danuglipron受挫、biotech pivotal miss腰斩样本——A合同historical-mirror/环⑤
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: Novo/Pfizer公告复盘 / biotech pivotal miss案例
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: deep-fetch:CagriSema两次失望(2024-12崩/2026-02 -15%),danuglipron受挫(barrons)
+- task: VK2735维持给药试验设计+数据(2026)+停药反弹机制——K5长期用药经济性
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: IR maintenance trial公告 / clinicaltrials.gov
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan+deep-fetch:maintenance启动2025-10-21/入组完成2026-01-08
+- task: VK2809(MASH)/VK0214(X-ALD)最新处置与价值权重——次要资产
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: VOYAGE数据 / 2026是否有授权/三期决定
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan:VOYAGE二期2024-11结果;2026处置留01核
+- task: 竞品后期pipeline时点：Novo amycretin/CagriSema、Amgen MariTide、LLY retatrutide三期读出——竞争格局
+  priority: P2
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: 各公司IR / fiercebiotech
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan+deep-fetch:amycretin/MariTide/retatrutide三期时点(delveinsight/endpoints)
+- task: 资料提取完成：27 份可处理资料(7 SEC 章节+20 web)全部抽 findings，另复用 7 份父级 finding
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 合成完成:primer+case+sidecar+thesis_v1;终局证据薄已挂3条drilldown待深挖
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 补 base rate：GLP-1/GIP 二期→三期临床成功历史转化率 + 减重 biotech 历史被并购档位分布，把"52% 的 $10B 结局概率"拆成「临床成功概率」×「$10B
+    并购/独立兑现概率」两个可证伪的数
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 逐买家缺口尽调：LLY/辉瑞/诺和/安进/罗氏/AZ/默沙东 各自减重管线缺口×支付能力×是否刚用掉子弹，判定 $10B 并购锚是否已被自研填补而失效
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 补最新 proxy（Brian Lian 持股/薪酬/激励对齐，替换在库 2017 陈旧 DEF14A）+ 卖方逐家 VK2735 峰值销售/rNPV
+    模型明细
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: VK2735 rNPV 明细 + 皮下三期成功基率：拆峰值销售($60-120亿的份额/定价假设)+用 GLP-1/GIP 二期→三期历史转化率给52%成功概率一个
+    base-rate 锚,把终局承重腿从训练估计翻成半定量可证伪
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-07-22T07:45:26.558302+00:00'
+- question: 逐买家减重管线缺口尽调(LLY/辉瑞/诺和/安进/罗氏/AZ):判 VKTX 后期双激动剂资产是否仍是刚需,对冲命门2买家饱和反向逻辑
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-22T07:45:26.558302+00:00'
+- question: 治理最新 proxy(Brian Lian 最新持股/薪酬/激励对齐,替代2017陈旧DEF14A)+卖方逐家峰值销售模型明细
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K3
+  - K2
+  priority: P1
+  status: open
+  suggested_at: '2026-07-22T07:45:26.558302+00:00'
+- question: VK2735 皮下三期「临床成功概率」与「$10B 结局概率」分别是多少（GLP-1/GIP Ph2→Ph3 历史转化率 + 减重 biotech
+    并购档位分布 base rate）
+  rationale: 'critic: 承重腿 52% 是训练估计且混淆两个概率,单线承重'
+  source: critic_weak_k
+  related:
+  - K1
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-22T08:28:05.054947+00:00'
+- question: $10B 并购锚是否已因买家饱和失效（逐买家减重管线缺口尽调）
+  rationale: 'critic 致命一击: 辉瑞已吞Metsera+大厂各有自研,实质买家≤2,却承载52%EV权重'
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-07-22T08:28:05.054947+00:00'
+- question: 重算 EV：deep_dilution 打进 base/muddle 回报 + bear 目标下修至现金地板之下($5-8)
+  rationale: 'critic: EV+98%偏高,稀释是日历驱动近端事件非尾部,bear$16过浅'
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-07-22T08:28:05.054947+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: 05-critic 兜底 web-search 已闭合承重腿缺口且实锤反方：(A)52%"$10B结局概率"被base rate证伪——P(Ph3~0.6)×P($10B|成功~0.15-0.25)≈9-15%,作者混淆临床成功vs$10B结局;(B)买家池收窄2-3家、辉瑞刚饱和,但价格锚被辉瑞收Metsera(~$100亿)坐实;(C)卖方极度分化Goldman风险调整$2.8B/目标$30(低于现价)vs乐观$21.6B。→重写环②/④/⑥:拆52为两概率、纳入$30低锚、稀释打进base/muddle、bear打深。
+  at: '2026-07-22T08:51:33.584323+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-22T07:40:44.994584+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-21T22:47:22.950911+00:00'
+    summary: 命门1=皮下14.7%斜率能否延续78周(中); 命门2=大买家愿买且买得起是否结构成立(中); 命门3=口服腿在Foundayo已批+aleniglipron16.3%领先下的商业净值符号(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-07-22T07:40:44.994605+00:00'
+    summary: 厚料确认v0三命门方向无翻转;命门1中(停药率护城河/78周零数据)、命门2中(Metsera锚坐实/买家饱和反向)、命门3低且符号细化为微负(口服edge不成立)。primer12条入门目标全保留
+    convergence_status: converged
+    changelog: 命门无增删无震荡;置信度更新(命门1/2维持中、命门3维持低但符号细化微负凭mat-6737dd/892218);primer入门目标12条全保留;delta小+双轴绿+无第二收料趟→converged
+thesis:
+  current_version: 1
+  last_updated: '2026-07-22T07:40:44.953587+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-21T22:45:08.678550+00:00'
+    summary: 买入(投机/期权驱动,6.5/10):$4.33B市值回撤60%处赌VK2735皮下pivotal(VANQUISH全入组,2027读出)成药价值+减重最干净后期并购标的拍卖期权;口服腿被Foundayo(已批)+Structure(16.3%)夹击受损故非all-in。目标:base$40-60/bull$90-170/bear$15-25
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-07-22T07:40:44.953612+00:00'
+    summary: 买入/持有(投机/期权驱动,6.5/10):.95/市值亿赌VK2735皮下pivotal(2027读出)成药+减重最干净后期资产并购拍卖期权(Metsera
+      亿设锚)双重上行;口服净值微负故非all-in。EV~+98%但双峰,~1/4腰斩。base-60/bull-170/bear-20
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-21T22:48:14.844155+00:00'
+  exited_at: '2026-07-22T07:09:05.890802+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-22T07:09:05.890802+00:00'
+  exited_at: '2026-07-22T07:21:54.011201+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-22T07:21:54.011201+00:00'
+  exited_at: '2026-07-22T07:45:41.810293+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-07-22T07:45:41.810293+00:00'
+  exited_at: '2026-07-22T09:20:50.842083+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-07-22T09:20:50.842083+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 3
+    empty_pending_decision: 0

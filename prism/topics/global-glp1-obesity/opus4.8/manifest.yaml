@@ -1,0 +1,1683 @@
+slug: global-glp1-obesity
+variant: opus4.8
+updated: '2026-07-21T23:06:27.717503+00:00'
+materials:
+- id: mat-70c031
+  filename: 2025_000963_annual_2026-04-23_华东医药.PDF
+  source_type: annual-report
+  added: '2026-07-21T16:04:22.900186+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-3e8247
+  filename: 2025_600276_annual_2026-03-25_恒瑞医药.PDF
+  source_type: annual-report
+  added: '2026-07-21T16:04:22.901202+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-420fa5
+  filename: 2025_AMGN_10-K_2026-02-13.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:22.902102+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-124143
+  filename: 2025_GPCR_10-K_2026-02-26.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:22.903182+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c78536
+  filename: 2025_HIMS_10-K_2026-02-23.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:22.904440+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-97c2bb
+  filename: 2025_HK01801_annual_2026-04-28_INNOVENTBIO.pdf
+  source_type: annual-report
+  added: '2026-07-21T16:04:22.905912+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-82221a
+  filename: 2025_LLY_10-K_2026-02-12.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:22.909446+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-77d015
+  filename: 2025_NVO_20-F_2026-02-04.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:22.911533+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-b1dcfc
+  filename: 2025_VKTX_10-K_2026-02-11.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:22.913768+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-28b639
+  filename: 2026-05-26_3-2亿研发投入-华东医药拿下首款国产利拉鲁肽减肥药注册证书---21经济网.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.916513+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 华东医药 利鲁平 利拉鲁肽 GLP-1 减重 中国 2025 2026 销售
+    url: https://www.21jingji.com/article/20230704/herald/0cf9b4591618ec0ca480c80769e60534.html
+    searched_at: '2026-05-26T05:27:04.572878+00:00'
+- id: mat-7c7613
+  filename: 2026-05-26_499-wegovy-and-349-zepbound-the-cash-pay-glp-1-eco.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.919580+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Wegovy Zepbound LillyDirect NovoCare direct pricing PBM 2026
+    url: https://thepeptideexaminer.com/news/novocare-lillydirect-cash-pay-options
+    searched_at: '2026-05-26T05:25:33.858438+00:00'
+- id: mat-cf0f51
+  filename: 2026-05-26_amgen-rolls-out-phase-3-dosing-plan-for-lead-obesi.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.922713+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: Amgen MariTide Phase 3 MARITIME obesity 2025 2026 results
+    url: https://www.fiercebiotech.com/biotech/amgen-adjusts-phase-3-dosing-plan-lead-obesity-candidate-maritide-after-high
+    searched_at: '2026-05-26T05:25:33.913751+00:00'
+- id: mat-3e76f0
+  filename: 2026-05-26_anti-obesity-medication---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.926244+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Anti-obesity medication 减肥药 GLP-1 市场格局 管线 2025 2026
+    url: https://en.wikipedia.org/wiki/Anti-obesity_medication
+    searched_at: '2026-05-26T03:35:35.441004+00:00'
+- id: mat-54d41a
+  filename: 2026-05-26_cagrilintide-semaglutide---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.930114+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: CagriSema REDEFINE 试验 数据 NVO 减重 与替尔泊肽对比
+    url: https://en.wikipedia.org/wiki/Cagrilintide/semaglutide
+    searched_at: '2026-05-26T03:38:24.903548+00:00'
+- id: mat-02e585
+  filename: 2026-05-26_cms-cancels-medicare-pilot-offering-glp-1s-to-seni.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.934107+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: Trump RFK Jr Medicare GLP-1 obesity coverage CMS rule 2026
+    url: https://www.statnews.com/2026/04/21/trump-medicare-weight-loss-drug-plan-unraveling-insurer-pushback/
+    searched_at: '2026-05-26T05:25:33.738598+00:00'
+- id: mat-6c32e3
+  filename: 2026-05-26_eli-lilly-and-company---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.938654+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly 2025 财报 Mounjaro Zepbound 市值 $1 trillion
+    url: https://en.wikipedia.org/wiki/Eli_Lilly_and_Company
+    searched_at: '2026-05-26T03:38:24.875915+00:00'
+- id: mat-3bf309
+  filename: 2026-05-26_eli-lilly-cuts-cash-prices-of-zepbound-weight-loss.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.943461+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: Wegovy Zepbound LillyDirect NovoCare direct pricing PBM 2026
+    url: https://www.cnbc.com/2025/12/01/eli-lilly-prices-zepbound-weight-loss-drug-vials.html
+    searched_at: '2026-05-26T05:25:33.842907+00:00'
+- id: mat-7a1d73
+  filename: 2026-05-26_hengrui-pharma-and-kailera-therapeutics-announce-a.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.948754+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: Hengrui HRS9531 Kailera Hercules license out GLP-1 GIP 2026
+    url: https://www.kailera.com/press-release/hengrui-pharma-and-kailera-therapeutics-announce-additional-data-from-phase-3-obesity-trial-in-china-of-dual-glp-1-gip-receptor-agonist-hrs9531/
+    searched_at: '2026-05-26T05:25:33.782159+00:00'
+- id: mat-479a41
+  filename: 2026-05-26_hengrui-s-dual-glp-1-gip-elicits-17-7-weight-loss-.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.954667+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: Hengrui HRS9531 Kailera Hercules license out GLP-1 GIP 2026
+    url: https://www.biospace.com/drug-development/hengruis-dual-glp-1-gip-elicits-17-7-weight-loss-in-phase-iii
+    searched_at: '2026-05-26T05:25:33.794497+00:00'
+- id: mat-0fe063
+  filename: 2026-05-26_hims-hers-announces-strategic-shift-for-us-weight-.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.960427+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: HIMS Hers 2026 GLP-1 strategy shift weight loss revenue
+    url: https://investors.hims.com/news/news-details/2026/Hims--Hers-Announces-Strategic-Shift-for-US-Weight-Loss-Business/default.aspx
+    domain: ''
+    domain_tier: other
+    searched_at: '2026-07-21T16:15:11.920782+00:00'
+    stale_at: '2026-08-20T16:15:11.920782+00:00'
+    expire_at: '2026-10-19T16:15:11.920782+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Hims Hers compounded GLP-1 semaglutide business 2025 2026 transition
+  addresses:
+  - scope
+- id: mat-d35aa0
+  filename: 2026-05-26_innovent-biologics---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.966962+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 信达生物 Innovent 2024 2025 财报 mazdutide 商业化 BD 出海 京东健康
+    url: https://en.wikipedia.org/wiki/Innovent_Biologics
+    searched_at: '2026-05-26T03:38:24.889180+00:00'
+- id: mat-2a5b8f
+  filename: 2026-05-26_is-viking-therapeutics-a-top-takeover-target---mot.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.974148+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Viking Therapeutics VK2735 Phase 3 VANQUISH acquisition 2026
+    url: https://www.fool.com/investing/2026/05/23/is-viking-therapeutics-a-top-takeover-target/
+    searched_at: '2026-05-26T05:25:33.975629+00:00'
+- id: mat-10ab6a
+  filename: 2026-05-26_kailera-secures-600m-to-advance-dual-targeting-obe.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.981387+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.75
+  search_meta:
+    query: Hengrui HRS9531 Kailera Hercules license out GLP-1 GIP 2026
+    url: https://medcitynews.com/2025/10/kailera-therapeutics-obesity-drug-weight-loss-glp-1-gip-metabolic-disorder/
+    searched_at: '2026-05-26T05:25:33.807808+00:00'
+- id: mat-86d407
+  filename: 2026-05-26_mazdutide---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.988876+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Mazdutide 玛仕度肽 信达 IBI362 NMPA 获批 中国 GLP-1/GCG
+    url: https://en.wikipedia.org/wiki/Mazdutide
+    searched_at: '2026-05-26T03:35:35.432319+00:00'
+- id: mat-331b3f
+  filename: 2026-05-26_medicare-unveils-price-reductions-for-15-drugs-inc.md
+  source_type: web-search
+  added: '2026-07-21T16:04:22.996914+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.95
+  search_meta:
+    query: semaglutide tirzepatide IRA Medicare drug price negotiation 2027
+    url: https://www.fiercepharma.com/pharma/medicare-unveils-price-reductions-15-drugs-including-novos-semaglutide
+    searched_at: '2026-05-26T05:27:04.790682+00:00'
+- id: mat-678c60
+  filename: 2026-05-26_next-round-of-medicare-drug-price-negotiations-to-.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.005291+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: semaglutide tirzepatide IRA Medicare drug price negotiation 2027
+    url: https://www.ajmc.com/view/next-round-of-medicare-drug-price-negotiations-to-include-semaglutide
+    searched_at: '2026-05-26T05:27:04.821667+00:00'
+- id: mat-4ce150
+  filename: 2026-05-26_novo-nordisk---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.013822+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Novo Nordisk 2024 2025 财报 Wegovy Ozempic 市值 evoke 阿尔茨海默 失败
+    url: https://en.wikipedia.org/wiki/Novo_Nordisk
+    searched_at: '2026-05-26T03:38:24.862334+00:00'
+- id: mat-dc3891
+  filename: 2026-05-26_novo-nordisk-drops-hims-hers-inside-the-compounded.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.022562+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: Hims Hers compounded GLP-1 semaglutide business 2025 2026 transition
+    url: https://www.pharmacytimes.com/view/novo-nordisk-drops-hims-hers-inside-the-compounded-glp-1-crisis
+    searched_at: '2026-05-26T05:27:04.659248+00:00'
+- id: mat-264d97
+  filename: 2026-05-26_orforglipron---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.031847+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Orforglipron Foundayo 口服 GLP-1 小分子 Lilly ACHIEVE-1 获批
+    url: https://en.wikipedia.org/wiki/Orforglipron
+    searched_at: '2026-05-26T03:35:35.425025+00:00'
+- id: mat-a27de3
+  filename: 2026-05-26_results-from-amgen-s-phase-2-obesity-study-of-mont.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.041484+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: Amgen MariTide Phase 3 dosing 2026 tolerability results
+    url: https://www.amgen.com/newsroom/press-releases/2025/06/results-from-amgens-phase-2-obesity-study-of-monthly-maritide-presented-at-the-american-diabetes-association-85th-scientific-sessions
+    domain: ''
+    domain_tier: other
+    searched_at: '2026-07-21T16:15:13.781173+00:00'
+    stale_at: '2026-08-20T16:15:13.781173+00:00'
+    expire_at: '2026-10-19T16:15:13.781173+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Amgen MariTide Phase 3 MARITIME obesity 2025 2026 results
+  addresses:
+  - scope
+- id: mat-9a13fd
+  filename: 2026-05-26_retatrutide---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.052289+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Retatrutide TRIUMPH Phase 3 GLP-1 GIP GCG 三靶点 Lilly
+    url: https://en.wikipedia.org/wiki/Retatrutide
+    searched_at: '2026-05-26T03:35:35.419005+00:00'
+- id: mat-7aea78
+  filename: 2026-05-26_roche-announces-positive-phase-ii-results-for-ct-3.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.062603+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.95
+  search_meta:
+    query: Roche CT-388 obesity Phase 2 2026 update pipeline
+    url: https://www.roche.com/media/releases/med-cor-2026-01-27
+    domain: ''
+    domain_tier: other
+    searched_at: '2026-07-21T16:15:11.611596+00:00'
+    stale_at: '2026-08-20T16:15:11.611596+00:00'
+    expire_at: '2026-10-19T16:15:11.611596+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Roche CT-388 Carmot Phase 2 obesity results 2026
+  addresses:
+  - scope
+- id: mat-c68134
+  filename: 2026-05-26_roche-s-22-weight-loss-benefit-seals-glp-1-s-phase.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.073242+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: Roche CT-388 Carmot Phase 2 obesity results 2026
+    url: https://www.biospace.com/drug-development/roches-22-weight-loss-benefit-seals-glp-1s-phase-iii-plans-boosts-zealand-combo
+    searched_at: '2026-05-26T05:27:04.740151+00:00'
+- id: mat-42690a
+  filename: 2026-05-26_semaglutide---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.084638+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Semaglutide 司美格鲁肽 价格 专利 适应症 2025 2026
+    url: https://en.wikipedia.org/wiki/Semaglutide
+    searched_at: '2026-05-26T03:35:35.410145+00:00'
+- id: mat-8b9937
+  filename: 2026-05-26_tirzepatide---wikipedia.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.096329+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: Tirzepatide 替尔泊肽 Zepbound 减重 SURMOUNT 适应症 2025 2026
+    url: https://en.wikipedia.org/wiki/Tirzepatide
+    searched_at: '2026-05-26T03:35:35.414374+00:00'
+- id: mat-a74f24
+  filename: 2026-05-26_trump-administration-blocks-medicare-from-covering.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.108202+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: Trump RFK Jr Medicare GLP-1 obesity coverage CMS rule 2026
+    url: https://www.kiplinger.com/personal-finance/health-insurance/trump-administration-blocks-medicare-from-covering-obesity-drugs
+    searched_at: '2026-05-26T05:25:33.728157+00:00'
+- id: mat-05665b
+  filename: 2026-05-26_viking-therapeutics-announces-completion-of-enroll.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.120459+00:00'
+  processed: false
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2735 Phase 3 enrollment results 2026 acquisition
+    url: https://www.prnewswire.com/news-releases/viking-therapeutics-announces-completion-of-enrollment-in-phase-3-vanquish-2-trial-of-vk2735-302725563.html
+    domain: ''
+    domain_tier: other
+    searched_at: '2026-07-21T16:15:13.474893+00:00'
+    stale_at: '2026-08-20T16:15:13.474893+00:00'
+    expire_at: '2026-10-19T16:15:13.474893+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Viking Therapeutics VK2735 Phase 3 VANQUISH acquisition 2026
+  addresses:
+  - scope
+- id: mat-496b37
+  filename: 2026-05-26_what-to-know-about-the-balance-model-for-glp-1s-in.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.132479+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: Trump RFK Jr Medicare GLP-1 obesity coverage CMS rule 2026
+    url: https://www.kff.org/medicare/what-to-know-about-the-balance-model-for-glp-1s-in-medicare-and-medicaid/
+    searched_at: '2026-05-26T05:25:33.749378+00:00'
+- id: mat-eb6d03
+  filename: 2026-05-26_千亿glp-1赛道-减重明星-领跑-国内药企踊跃入局---摩熵医药.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.145353+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.8
+  search_meta:
+    query: 华东医药 利鲁平 利拉鲁肽 GLP-1 减重 中国 2025 2026 销售
+    url: https://www.pharnexcloud.com/zixun/sx_7664
+    searched_at: '2026-05-26T05:27:04.595353+00:00'
+- id: mat-7de0c1
+  filename: 2026-05-26_司美格鲁肽专利仅剩20天-诺和诺德遭礼来-国产仿制药围剿---摩熵医药.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.159028+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.85
+  search_meta:
+    query: 司美格鲁肽 中国 仿制药 生物类似药 国产 2025 2026 上市
+    url: https://www.pharnexcloud.com/zixun/sx_282792
+    searched_at: '2026-05-26T05:27:04.481566+00:00'
+- id: mat-742120
+  filename: 2026-05-26_司美格鲁肽即将迎来国产仿制大潮---界面新闻.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.173190+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.7
+  search_meta:
+    query: 司美格鲁肽 中国 仿制药 生物类似药 国产 2025 2026 上市
+    url: https://m.jiemian.com/article/14142445.html
+    searched_at: '2026-05-26T05:27:04.524409+00:00'
+- id: mat-6bf701
+  filename: 2026-05-26_首款国产司美格鲁肽要来了-九源基因下半年获批---新浪财经.md
+  source_type: web-search
+  added: '2026-07-21T16:04:23.187262+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 web-search 料（仅读 frontmatter 元数据）'
+  mineru_state: not_needed
+  confidence: 0.9
+  search_meta:
+    query: 司美格鲁肽 中国 仿制药 生物类似药 国产 2025 2026 上市
+    url: https://finance.sina.com.cn/roll/2025-03-26/doc-ineqyzvi8756172.shtml
+    searched_at: '2026-05-26T05:27:04.502699+00:00'
+- id: mat-e896e5
+  filename: 2026_AMGN_10-Q_2026-05-01.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:23.201492+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-63a6fb
+  filename: 2026_GPCR_10-Q_2026-05-07.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:23.215479+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c489df
+  filename: 2026_HIMS_10-Q_2026-05-11.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:23.230097+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-c9c6aa
+  filename: 2026_LLY_10-Q_2026-04-30.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:23.244969+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-405320
+  filename: 2026_VKTX_10-Q_2026-04-30.htm
+  source_type: annual-report
+  added: '2026-07-21T16:04:23.275296+00:00'
+  processed: true
+  notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
+  mineru_state: not_needed
+- id: mat-a0b1b8
+  filename: 2025_HK01801_semi_2025-09-29_INNOVENTBIO.pdf
+  source_type: annual-report
+  added: '2026-07-21T16:05:07.673926+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+- id: mat-76802d
+  filename: 2026_NVO_6-K_2026-05-22.htm
+  source_type: annual-report
+  added: '2026-07-21T16:05:07.705172+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+- id: mat-0a2785
+  filename: 2026-07-21_eli-lilly-s-shares-up-as-oral-glp-1ra-scores-in-fi.md
+  source_type: web-search
+  added: '2026-07-21T16:11:29.873428+00:00'
+  processed: false
+  notes: query='orforglipron Phase 3 obesity results 2026 weight loss FDA submission'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: orforglipron Phase 3 obesity results 2026 weight loss FDA submission
+    url: https://www.clinicaltrialsarena.com/news/eli-lilly-orforglipron-first-phase-iii-win
+    domain: clinicaltrialsarena.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:11:29.862447+00:00'
+    stale_at: '2026-08-20T16:11:29.862447+00:00'
+    expire_at: '2026-10-19T16:11:29.862447+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fe6900
+  filename: 2026-07-21_lilly-s-oral-glp-1-orforglipron-is-successful-in-t.md
+  source_type: web-search
+  added: '2026-07-21T16:11:29.903938+00:00'
+  processed: false
+  notes: query='orforglipron Phase 3 obesity results 2026 weight loss FDA submission'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: orforglipron Phase 3 obesity results 2026 weight loss FDA submission
+    url: https://www.prnewswire.com/news-releases/lillys-oral-glp-1-orforglipron-is-successful-in-third-phase-3-trial-triggering-global-regulatory-submissions-this-year-for-the-treatment-of-obesity-302538028.html
+    domain: prnewswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:11:29.892685+00:00'
+    stale_at: '2026-08-20T16:11:29.892685+00:00'
+    expire_at: '2026-10-19T16:11:29.892685+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-598eac
+  filename: 2026-07-21_lilly-to-submit-obesity-pill-after-hitting-goal-in.md
+  source_type: web-search
+  added: '2026-07-21T16:11:29.935168+00:00'
+  processed: false
+  notes: query='orforglipron Phase 3 obesity results 2026 weight loss FDA submission'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: orforglipron Phase 3 obesity results 2026 weight loss FDA submission
+    url: https://www.biopharmadive.com/news/lilly-glp-1-orforglipron-fda-submission-obesity-diabetes/758608
+    domain: biopharmadive.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:11:29.923788+00:00'
+    stale_at: '2026-08-20T16:11:29.923788+00:00'
+    expire_at: '2026-10-19T16:11:29.923788+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2ca104
+  filename: 2026-07-21_glp-1-weight-loss-pills-may-be-bad-thing-for-job-i.md
+  source_type: web-search
+  added: '2026-07-21T16:15:10.829787+00:00'
+  processed: false
+  notes: query='GLP-1 obesity insurance coverage employer PBM 2026 US access'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: GLP-1 obesity insurance coverage employer PBM 2026 US access
+    url: https://www.cnbc.com/2026/06/26/glp1-weight-loss-drug-pills-insurance-plan-coverage.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:10.817324+00:00'
+    stale_at: '2026-08-20T16:15:10.817324+00:00'
+    expire_at: '2026-10-19T16:15:10.817324+00:00'
+    triggered_by: 00-prescan
+- id: mat-481335
+  filename: 2026-07-21_glp-1-considerations-for-2026-your-questions-answe.md
+  source_type: web-search
+  added: '2026-07-21T16:15:10.862902+00:00'
+  processed: false
+  notes: query='GLP-1 obesity insurance coverage employer PBM 2026 US access' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GLP-1 obesity insurance coverage employer PBM 2026 US access
+    url: https://www.mercer.com/en-us/insights/us-health-news/glp-1-considerations-for-2026-your-questions-answered
+    domain: mercer.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:10.850649+00:00'
+    stale_at: '2026-08-20T16:15:10.850649+00:00'
+    expire_at: '2026-10-19T16:15:10.850649+00:00'
+    triggered_by: 00-prescan
+- id: mat-4f0153
+  filename: 2026-07-21_live-updates-insurance-coverage-for-gip-and-glp-1-.md
+  source_type: web-search
+  added: '2026-07-21T16:15:10.897191+00:00'
+  processed: false
+  notes: query='GLP-1 obesity insurance coverage employer PBM 2026 US access' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GLP-1 obesity insurance coverage employer PBM 2026 US access
+    url: https://www.goodrx.com/healthcare-access/research/tracking-insurance-coverage-weight-loss-meds
+    domain: goodrx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:10.884409+00:00'
+    stale_at: '2026-08-20T16:15:10.884409+00:00'
+    expire_at: '2026-10-19T16:15:10.884409+00:00'
+    triggered_by: 00-prescan
+- id: mat-7ae040
+  filename: 2026-07-21_novo-nordisk-presents-new-phase-iii-data-for-next-.md
+  source_type: web-search
+  added: '2026-07-21T16:15:10.932372+00:00'
+  processed: false
+  notes: query='amylin cagrilintide next-gen obesity combo 2026 CagriSema' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: amylin cagrilintide next-gen obesity combo 2026 CagriSema
+    url: https://www.thepharmaletter.com/pharma-news/novo-nordisk-presents-new-phase-iiii-data-for-next-gen-amylin-cagrilintide
+    domain: thepharmaletter.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:10.919729+00:00'
+    stale_at: '2026-08-20T16:15:10.919729+00:00'
+    expire_at: '2026-10-19T16:15:10.919729+00:00'
+    triggered_by: 00-prescan
+- id: mat-b3ea86
+  filename: 2026-07-21_once-weekly-cagrisema-amylin-semaglutide.md
+  source_type: web-search
+  added: '2026-07-21T16:15:10.965594+00:00'
+  processed: false
+  notes: query='amylin cagrilintide next-gen obesity combo 2026 CagriSema'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: amylin cagrilintide next-gen obesity combo 2026 CagriSema
+    url: https://www.prnewswire.com/news-releases/once-weekly-cagrisema-amylin-semaglutide-combination-injection-more-effective-than-standalone-medications-302793308.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:10.952402+00:00'
+    stale_at: '2026-08-20T16:15:10.952402+00:00'
+    expire_at: '2026-10-19T16:15:10.952402+00:00'
+    triggered_by: 00-prescan
+- id: mat-0a1220
+  filename: 2026-07-21_reimagine-trials-demonstrate-efficacy-of-combinati.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.001652+00:00'
+  processed: false
+  notes: query='amylin cagrilintide next-gen obesity combo 2026 CagriSema' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: amylin cagrilintide next-gen obesity combo 2026 CagriSema
+    url: https://www.adameetingnews.org/reimagine-trials-demonstrate-efficacy-of-combination-therapy-for-treating-type-2-diabetes
+    domain: adameetingnews.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:10.988460+00:00'
+    stale_at: '2026-08-20T16:15:10.988460+00:00'
+    expire_at: '2026-10-19T16:15:10.988460+00:00'
+    triggered_by: 00-prescan
+- id: mat-fca7b3
+  filename: 2026-07-21_safety-and-efficacy-of-the-new-oral-small-molecule.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.039980+00:00'
+  processed: false
+  notes: query='oral GLP-1 small molecule race 2026 orforglipron GSBR-1290 danuglipron'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: oral GLP-1 small molecule race 2026 orforglipron GSBR-1290 danuglipron
+    url: https://pubmed.ncbi.nlm.nih.gov/37852529
+    domain: pubmed.ncbi.nlm.nih.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.026048+00:00'
+    stale_at: '2026-08-20T16:15:11.026048+00:00'
+    expire_at: '2026-10-19T16:15:11.026048+00:00'
+    triggered_by: 00-prescan
+- id: mat-c2c756
+  filename: 2026-07-21_orforglipron-an-oral-small-molecule-glp-1-receptor.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.078463+00:00'
+  processed: false
+  notes: query='oral GLP-1 small molecule race 2026 orforglipron GSBR-1290 danuglipron'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: oral GLP-1 small molecule race 2026 orforglipron GSBR-1290 danuglipron
+    url: https://mediacenteratypon.nejmgroup-production.org/NEJMoa2511774.pdf
+    domain: mediacenteratypon.nejmgroup-production.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.064445+00:00'
+    stale_at: '2026-08-20T16:15:11.064445+00:00'
+    expire_at: '2026-10-19T16:15:11.064445+00:00'
+    triggered_by: 00-prescan
+- id: mat-0b24bc
+  filename: 2026-07-21_glp-1-pipeline-update-may-2026.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.119075+00:00'
+  processed: false
+  notes: query='GLP-1 obesity pipeline competitive landscape 2026 new entrants' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GLP-1 obesity pipeline competitive landscape 2026 new entrants
+    url: https://www.primetherapeutics.com/glp-1-pipeline-update-may-2026
+    domain: primetherapeutics.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.104594+00:00'
+    stale_at: '2026-08-20T16:15:11.104594+00:00'
+    expire_at: '2026-10-19T16:15:11.104594+00:00'
+    triggered_by: 00-prescan
+- id: mat-7e3334
+  filename: 2026-07-21_5-projected-glp-1-trends-in-2026.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.160018+00:00'
+  processed: false
+  notes: query='GLP-1 obesity pipeline competitive landscape 2026 new entrants' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GLP-1 obesity pipeline competitive landscape 2026 new entrants
+    url: https://www.goodrx.com/classes/glp-1-agonists/glp-1-trends
+    domain: goodrx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.144316+00:00'
+    stale_at: '2026-08-20T16:15:11.144316+00:00'
+    expire_at: '2026-10-19T16:15:11.144316+00:00'
+    triggered_by: 00-prescan
+- id: mat-ade082
+  filename: 2026-07-21_outlook-for-obesity-in-2026-from-consolidation-to-.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.202207+00:00'
+  processed: true
+  notes: query='GLP-1 obesity pipeline competitive landscape 2026 new entrants' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly Novo Nordisk analyst price target 2026 obesity market forecast
+      consensus GLP-1 profit pool
+    url: https://www.iqvia.com/locations/emea/blogs/2026/01/outlook-for-obesity-in-2026
+    domain: iqvia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:25:28.273316+00:00'
+    stale_at: '2026-08-20T16:25:28.273316+00:00'
+    expire_at: '2026-10-19T16:25:28.273316+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - GLP-1 obesity pipeline competitive landscape 2026 new entrants
+- id: mat-7c51c3
+  filename: 2026-07-21_how-supply-and-demand-for-weight-loss-drugs-is-pla.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.244831+00:00'
+  processed: false
+  notes: query='GLP-1 obesity pipeline competitive landscape 2026 new entrants' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: global obesity drug market size 2030 forecast TAM 2026 update
+    url: https://www.jpmorgan.com/insights/global-research/current-events/obesity-drugs
+    domain: jpmorgan.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.333533+00:00'
+    stale_at: '2026-08-20T16:15:11.333533+00:00'
+    expire_at: '2026-10-19T16:15:11.333533+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - GLP-1 obesity pipeline competitive landscape 2026 new entrants
+- id: mat-71aa84
+  filename: 2026-07-21_obesity-treatment-market-size-share-report-2025-20.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.289172+00:00'
+  processed: false
+  notes: query='global obesity drug market size 2030 forecast TAM 2026 update' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: global obesity drug market size 2030 forecast TAM 2026 update
+    url: https://www.grandviewresearch.com/industry-analysis/obesity-treatment-devices-and-therapeutics-market
+    domain: grandviewresearch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.273057+00:00'
+    stale_at: '2026-08-20T16:15:11.273057+00:00'
+    expire_at: '2026-10-19T16:15:11.273057+00:00'
+    triggered_by: 00-prescan
+- id: mat-3ca643
+  filename: 2026-07-21_the-outlook-for-obesity-from-2026-to-2030.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.378573+00:00'
+  processed: false
+  notes: query='global obesity drug market size 2030 forecast TAM 2026 update' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: global obesity drug market size 2030 forecast TAM 2026 update
+    url: https://www.iqvia.com/locations/emea/blogs/2026/04/the-outlook-for-obesity-from-2026-to-2030
+    domain: iqvia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.361713+00:00'
+    stale_at: '2026-08-20T16:15:11.361713+00:00'
+    expire_at: '2026-10-19T16:15:11.361713+00:00'
+    triggered_by: 00-prescan
+- id: mat-707f6b
+  filename: 2026-07-21_lilly-reports-first-quarter-2026-financial-results.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.424069+00:00'
+  processed: false
+  notes: query='Wegovy Zepbound Q1 2026 sales growth Novo Lilly obesity revenue'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Wegovy Zepbound Q1 2026 sales growth Novo Lilly obesity revenue
+    url: https://investor.lilly.com/node/54176/pdf
+    domain: investor.lilly.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:11.406895+00:00'
+    stale_at: '2026-08-20T16:15:11.406895+00:00'
+    expire_at: '2026-10-19T16:15:11.406895+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e3d883
+  filename: 2026-07-21_eli-lilly-lifts-2026-revenue-guidance-as-q1-marks-.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.471144+00:00'
+  processed: false
+  notes: query='Wegovy Zepbound Q1 2026 sales growth Novo Lilly obesity revenue' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Wegovy Zepbound Q1 2026 sales growth Novo Lilly obesity revenue
+    url: https://www.pharmaceutical-technology.com/news/eli-lilly-lifts-2026-revenue-guidance-as-q1-marks-dominant-opening
+    domain: pharmaceutical-technology.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.453877+00:00'
+    stale_at: '2026-08-20T16:15:11.453877+00:00'
+    expire_at: '2026-10-19T16:15:11.453877+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fcadf1
+  filename: 2026-07-21_lilly-sees-strong-growth-in-2026-as-weight-loss-dr.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.515563+00:00'
+  processed: false
+  notes: query='Wegovy Zepbound Q1 2026 sales growth Novo Lilly obesity revenue'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly market cap 2026 trillion Zepbound orforglipron sales
+    url: https://www.reuters.com/business/healthcare-pharmaceuticals/eli-lilly-sees-2026-profit-above-estimates-weightloss-drug-demand-2026-02-04
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:13.180651+00:00'
+    stale_at: '2026-08-20T16:15:13.180651+00:00'
+    expire_at: '2026-10-19T16:15:13.180651+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Wegovy Zepbound Q1 2026 sales growth Novo Lilly obesity revenue
+- id: mat-f36860
+  filename: 2026-07-21_eli-lilly-lly-earnings-q1-2026.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.560885+00:00'
+  processed: false
+  notes: query='Wegovy Zepbound Q1 2026 sales growth Novo Lilly obesity revenue'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Wegovy Zepbound Q1 2026 sales growth Novo Lilly obesity revenue
+    url: https://www.cnbc.com/amp/2026/04/30/eli-lilly-lly-earnings-q1-2026.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:11.543431+00:00'
+    stale_at: '2026-08-20T16:15:11.543431+00:00'
+    expire_at: '2026-10-19T16:15:11.543431+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ba3472
+  filename: 2026-07-21_roche-reports-positive-phase-ii-results-for-dual-g.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.660319+00:00'
+  processed: false
+  notes: query='Roche CT-388 obesity Phase 2 2026 update pipeline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Roche CT-388 obesity Phase 2 2026 update pipeline
+    url: https://www.docwirenews.com/post/roche-reports-positive-phase-ii-results-for-dual-glp-1-gip-agonist-ct-388-in-obesity
+    domain: docwirenews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.642274+00:00'
+    stale_at: '2026-08-20T16:15:11.642274+00:00'
+    expire_at: '2026-10-19T16:15:11.642274+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-47e142
+  filename: 2026-07-21_genentech-reports-positive-results-from-phase-2-tr.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.710475+00:00'
+  processed: false
+  notes: query='Roche CT-388 obesity Phase 2 2026 update pipeline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Roche CT-388 obesity Phase 2 2026 update pipeline
+    url: https://www.hcplive.com/view/genentech-reports-positive-results-from-phase-2-trial-of-ct-388-in-obesity
+    domain: hcplive.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.691789+00:00'
+    stale_at: '2026-08-20T16:15:11.691789+00:00'
+    expire_at: '2026-10-19T16:15:11.691789+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-695c5b
+  filename: 2026-07-21_roche-to-present-new-data-advancing-its-obesity-po.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.761788+00:00'
+  processed: false
+  notes: query='Roche CT-388 obesity Phase 2 2026 update pipeline' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Roche CT-388 obesity Phase 2 2026 update pipeline
+    url: https://www.roche.com/media/releases/med-cor-2026-06-01
+    domain: roche.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.742832+00:00'
+    stale_at: '2026-08-20T16:15:11.742832+00:00'
+    expire_at: '2026-10-19T16:15:11.742832+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4d74f5
+  filename: 2026-07-21_hims-hers-q1-2026-earnings-net-loss-weak-guidance.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.816696+00:00'
+  processed: false
+  notes: query='HIMS Hers 2026 GLP-1 strategy shift weight loss revenue' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: HIMS Hers 2026 GLP-1 strategy shift weight loss revenue
+    url: https://qz.com/hims-hers-net-loss-weight-loss-drug-pivot-051226
+    domain: qz.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.796752+00:00'
+    stale_at: '2026-08-20T16:15:11.796752+00:00'
+    expire_at: '2026-10-19T16:15:11.796752+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-005d84
+  filename: 2026-07-21_hims-hers-swings-to-a-loss-in-q1-amid-shift-in-glp.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.870154+00:00'
+  processed: false
+  notes: query='HIMS Hers 2026 GLP-1 strategy shift weight loss revenue' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: HIMS Hers 2026 GLP-1 strategy shift weight loss revenue
+    url: https://www.fiercehealthcare.com/health-tech/hims-hers-posts-92m-loss-q1-it-shifts-branded-glp-1-medications
+    domain: fiercehealthcare.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:11.850003+00:00'
+    stale_at: '2026-08-20T16:15:11.850003+00:00'
+    expire_at: '2026-10-19T16:15:11.850003+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b4bfd1
+  filename: 2026-07-21_trump-eli-lilly-novo-nordisk-unveil-deals-to-cut-o.md
+  source_type: web-search
+  added: '2026-07-21T16:15:11.975317+00:00'
+  processed: false
+  notes: query='Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump
+    url: https://www.cnbc.com/amp/2025/11/06/trump-eli-lilly-novo-nordisk-deal-obesity-drug-prices.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:11.954720+00:00'
+    stale_at: '2026-08-20T16:15:11.954720+00:00'
+    expire_at: '2026-10-19T16:15:11.954720+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3237db
+  filename: 2026-07-21_medicare-drug-price-negotiation-program-the-inflat.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.030222+00:00'
+  processed: false
+  notes: query='Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump
+    url: https://www.healthlawadvisor.com/medicare-drug-price-negotiation-program-the-inflation-reduction-act-pill-penalty-and-other-ira-reforms-on-the-horizon-for-2026
+    domain: healthlawadvisor.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.009828+00:00'
+    stale_at: '2026-08-20T16:15:12.009828+00:00'
+    expire_at: '2026-10-19T16:15:12.009828+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-61aea0
+  filename: 2026-07-21_medicare-is-about-to-cover-glp-1-drugs-for-weight-.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.085911+00:00'
+  processed: false
+  notes: query='Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump
+    url: https://www.washingtonpost.com/health/2026/06/29/medicare-is-about-cover-glp-1-drugs-weight-loss-heres-what-know
+    domain: washingtonpost.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.065321+00:00'
+    stale_at: '2026-08-20T16:15:12.065321+00:00'
+    expire_at: '2026-10-19T16:15:12.065321+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c152f9
+  filename: 2026-07-21_medicare-releases-new-list-of-negotiated-drug-pric.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.143347+00:00'
+  processed: false
+  notes: query='Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump
+    url: https://www.statnews.com/2025/11/25/trump-administration-unveils-new-medicare-negotiated-drug-prices
+    domain: statnews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.122150+00:00'
+    stale_at: '2026-08-20T16:15:12.122150+00:00'
+    expire_at: '2026-10-19T16:15:12.122150+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1f8959
+  filename: 2026-07-21_trump-administration-unveils-medicare-negotiated-p.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.201555+00:00'
+  processed: false
+  notes: query='Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Medicare GLP-1 obesity coverage 2026 IRA negotiation price Trump
+    url: https://thehill.com/policy/healthcare/5623364-trump-medicare-drug-price-negotiation/amp
+    domain: thehill.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.180007+00:00'
+    stale_at: '2026-08-20T16:15:12.180007+00:00'
+    expire_at: '2026-10-19T16:15:12.180007+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a853b9
+  filename: 2026-07-21_获批上市晚于同行-商业化限国内-信达生物的减重药将迎考验.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.262649+00:00'
+  processed: false
+  notes: query='信达 mazdutide 2026 销售 获批适应症 中国减重' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 信达 mazdutide 2026 销售 获批适应症 中国减重
+    url: https://cj.sina.cn/articles/view/7741395216/1cd6c511000101ak40
+    domain: cj.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.240764+00:00'
+    stale_at: '2026-08-20T16:15:12.240764+00:00'
+    expire_at: '2026-10-19T16:15:12.240764+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e9d1e0
+  filename: 2026-07-21_信达玛仕度肽-闪电-商业化-中国减重药市场潜力被低估了.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.321864+00:00'
+  processed: false
+  notes: query='信达 mazdutide 2026 销售 获批适应症 中国减重'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 信达 mazdutide 2026 销售 获批适应症 中国减重
+    url: https://wallstreetcn.com/articles/3751372
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:12.298376+00:00'
+    stale_at: '2026-08-20T16:15:12.298376+00:00'
+    expire_at: '2026-10-19T16:15:12.298376+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e31b32
+  filename: 2026-07-21_全球首款-信达减重新药获批上市医药新闻-bydrug-一站式医药资源共享中心-医药魔方.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.381164+00:00'
+  processed: false
+  notes: query='信达 mazdutide 2026 销售 获批适应症 中国减重'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 信达 mazdutide 2026 销售 获批适应症 中国减重
+    url: https://bydrug.pharmcube.com/news/detail/332f1ae91a3a19e0b1ca9ba9e0ceda22
+    domain: bydrug.pharmcube.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:12.357942+00:00'
+    stale_at: '2026-08-20T16:15:12.357942+00:00'
+    expire_at: '2026-10-19T16:15:12.357942+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0e870e
+  filename: 2026-07-21_全球首款-信达生物-玛仕度肽-获批上市.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.442648+00:00'
+  processed: false
+  notes: query='信达 mazdutide 2026 销售 获批适应症 中国减重'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 信达 mazdutide 2026 销售 获批适应症 中国减重
+    url: https://www.pharmcube.com/newsLibrary/detail?id=c0952456128b389681f725662c0416ce
+    domain: pharmcube.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:12.418178+00:00'
+    stale_at: '2026-08-20T16:15:12.418178+00:00'
+    expire_at: '2026-10-19T16:15:12.418178+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-59a1a8
+  filename: 2026-07-21_恒瑞医药合作伙伴kailera-therapeutics公司成功在美国纳斯.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.508285+00:00'
+  processed: false
+  notes: query='恒瑞 HRS9531 Kailera 2026 临床进展 出海' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞 HRS9531 Kailera 2026 临床进展 出海
+    url: https://www.hengrui.com/media/detail-935.html
+    domain: hengrui.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.484854+00:00'
+    stale_at: '2026-08-20T16:15:12.484854+00:00'
+    expire_at: '2026-10-19T16:15:12.484854+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0369ce
+  filename: 2026-07-21_在-期临床试验中-治疗48周后-hrs9531-6-mg组平均减重达19-2.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.571898+00:00'
+  processed: false
+  notes: query='恒瑞 HRS9531 Kailera 2026 临床进展 出海' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞 HRS9531 Kailera 2026 临床进展 出海
+    url: https://www.hengrui.com/media/detail-876.html
+    domain: hengrui.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.548137+00:00'
+    stale_at: '2026-08-20T16:15:12.548137+00:00'
+    expire_at: '2026-10-19T16:15:12.548137+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-873ae7
+  filename: 2026-07-21_恒瑞医药glp-1类新药-出海-kailera成立-b轮6亿融资与全球3期试验.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.633344+00:00'
+  processed: false
+  notes: query='恒瑞 HRS9531 Kailera 2026 临床进展 出海'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 恒瑞 HRS9531 Kailera 2026 临床进展 出海
+    url: https://www.pharnexcloud.com/zixun/trz_57696
+    domain: pharnexcloud.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:12.609232+00:00'
+    stale_at: '2026-08-20T16:15:12.609232+00:00'
+    expire_at: '2026-10-19T16:15:12.609232+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7a633e
+  filename: 2026-07-21_恒瑞医药hrs9531注射液-期减重数据将亮相2025年美国肥胖周大会.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.697791+00:00'
+  processed: false
+  notes: query='恒瑞 HRS9531 Kailera 2026 临床进展 出海' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 恒瑞 HRS9531 Kailera 2026 临床进展 出海
+    url: https://www.hengrui.com/media/detail-868.html
+    domain: hengrui.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.673563+00:00'
+    stale_at: '2026-08-20T16:15:12.673563+00:00'
+    expire_at: '2026-10-19T16:15:12.673563+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fbd9fa
+  filename: 2026-07-21_chinese-drugmakers-prep-for-looming-semaglutide-ge.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.766812+00:00'
+  processed: false
+  notes: query='semaglutide China patent expiry 2026 generic biosimilar approval 九源基因'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: semaglutide China patent expiry 2026 generic biosimilar approval 九源基因
+    url: https://www.pharmaceutical-technology.com/news/chinese-drugmakers-prep-for-looming-semaglutide-generics-horizon
+    domain: pharmaceutical-technology.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.742325+00:00'
+    stale_at: '2026-08-20T16:15:12.742325+00:00'
+    expire_at: '2026-10-19T16:15:12.742325+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d785de
+  filename: 2026-07-21_novo-nordisk-braces-for-generic-challenge-to-ozemp.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.832205+00:00'
+  processed: false
+  notes: query='semaglutide China patent expiry 2026 generic biosimilar approval 九源基因'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: semaglutide China patent expiry 2026 generic biosimilar approval 九源基因
+    url: https://www.reuters.com/business/healthcare-pharmaceuticals/novo-nordisk-braces-generic-challenge-ozempic-wegovy-china-2024-06-05
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:12.806933+00:00'
+    stale_at: '2026-08-20T16:15:12.806933+00:00'
+    expire_at: '2026-10-19T16:15:12.806933+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-44c8a8
+  filename: 2026-07-21_semaglutide-patent-expires-today-12-fastest-chines.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.900426+00:00'
+  processed: false
+  notes: query='semaglutide China patent expiry 2026 generic biosimilar approval 九源基因'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: semaglutide China patent expiry 2026 generic biosimilar approval 九源基因
+    url: https://www.vcbeathealth.com/article/2957
+    domain: vcbeathealth.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:12.874667+00:00'
+    stale_at: '2026-08-20T16:15:12.874667+00:00'
+    expire_at: '2026-10-19T16:15:12.874667+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8a103d
+  filename: 2026-07-21_lilly-sees-big-sales-increase-in-2026-despite-pric.md
+  source_type: web-search
+  added: '2026-07-21T16:15:12.969917+00:00'
+  processed: false
+  notes: query='Eli Lilly market cap 2026 trillion Zepbound orforglipron sales'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly market cap 2026 trillion Zepbound orforglipron sales
+    url: https://www.fiercepharma.com/pharma/even-pricing-headwinds-eli-lilly-expects-sales-continue-surge-2026
+    domain: fiercepharma.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:12.944004+00:00'
+    stale_at: '2026-08-20T16:15:12.944004+00:00'
+    expire_at: '2026-10-19T16:15:12.944004+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2b3691
+  filename: 2026-07-21_tirzepatide-to-surpass-45b-in-sales-by-2026.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.040385+00:00'
+  processed: false
+  notes: query='Eli Lilly market cap 2026 trillion Zepbound orforglipron sales' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly market cap 2026 trillion Zepbound orforglipron sales
+    url: https://www.linkedin.com/posts/beth-snyder-bulik_glp-1s-lead-drug-sales-activity-7421917871624077313-5svN
+    domain: linkedin.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:13.013807+00:00'
+    stale_at: '2026-08-20T16:15:13.013807+00:00'
+    expire_at: '2026-10-19T16:15:13.013807+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-57c99a
+  filename: 2026-07-21_lilly-s-path-to-94b-in-revenue-rests-on-oral-obesi.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.111943+00:00'
+  processed: false
+  notes: query='Eli Lilly market cap 2026 trillion Zepbound orforglipron sales' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly market cap 2026 trillion Zepbound orforglipron sales
+    url: https://www.biospace.com/business/lillys-path-to-94b-in-revenue-rests-on-oral-obesity-market-and-other-2026-milestones
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:13.084567+00:00'
+    stale_at: '2026-08-20T16:15:13.084567+00:00'
+    expire_at: '2026-10-19T16:15:13.084567+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f906c9
+  filename: 2026-07-21_novo-s-cagrisema-loses-phase-3-obesity-battle.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.253964+00:00'
+  processed: false
+  notes: query='Novo Nordisk 2026 stock CagriSema amycretin CEO new outlook'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Novo Nordisk 2026 stock CagriSema amycretin CEO new outlook
+    url: https://www.fiercebiotech.com/biotech/novos-cagrisema-loses-phase-3-battle-mounjaro-knocking-15-share-price
+    domain: fiercebiotech.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:13.226730+00:00'
+    stale_at: '2026-08-20T16:15:13.226730+00:00'
+    expire_at: '2026-10-19T16:15:13.226730+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1f14d6
+  filename: 2026-07-21_press-releases.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.326635+00:00'
+  processed: false
+  notes: query='Novo Nordisk 2026 stock CagriSema amycretin CEO new outlook' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Novo Nordisk 2026 stock CagriSema amycretin CEO new outlook
+    url: https://www.novonordisk.com/news-and-media/news-and-ir-materials.html
+    domain: novonordisk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:13.299251+00:00'
+    stale_at: '2026-08-20T16:15:13.299251+00:00'
+    expire_at: '2026-10-19T16:15:13.299251+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-fc2db4
+  filename: 2026-07-21_viking-therapeutics-reports-first-quarter-2026-fin.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.401838+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 Phase 3 enrollment results 2026 acquisition'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2735 Phase 3 enrollment results 2026 acquisition
+    url: https://ir.vikingtherapeutics.com/2026-04-29-Viking-Therapeutics-Reports-First-Quarter-2026-Financial-Results-and-Provides-Corporate-Update
+    domain: ir.vikingtherapeutics.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:13.374150+00:00'
+    stale_at: '2026-08-20T16:15:13.374150+00:00'
+    expire_at: '2026-10-19T16:15:13.374150+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5aeea0
+  filename: 2026-07-21_viking-therapeutics-phase-3-obesity-data-feels-lik.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.547588+00:00'
+  processed: false
+  notes: query='Viking Therapeutics VK2735 Phase 3 enrollment results 2026 acquisition'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Viking Therapeutics VK2735 Phase 3 enrollment results 2026 acquisition
+    url: https://seekingalpha.com/article/4884220-viking-therapeutics-phase-3-obesity-data-feels-like-a-coin-toss-rating-downgrade
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:13.519427+00:00'
+    stale_at: '2026-08-20T16:15:13.519427+00:00'
+    expire_at: '2026-10-19T16:15:13.519427+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f21201
+  filename: 2026-07-21_jpm26-amgen-touts-maritide-s-weight-loss-t2d-poten.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.627189+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 dosing 2026 tolerability results' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Amgen MariTide Phase 3 dosing 2026 tolerability results
+    url: https://www.clinicaltrialsarena.com/news/jpm26-amgen-maritide-obesity-t2d-phase-ii
+    domain: clinicaltrialsarena.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:13.598893+00:00'
+    stale_at: '2026-08-20T16:15:13.598893+00:00'
+    expire_at: '2026-10-19T16:15:13.598893+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ee67a9
+  filename: 2026-07-21_amgen-experimental-weight-loss-drug-needs-lower-do.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.702159+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 dosing 2026 tolerability results'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Amgen MariTide Phase 3 dosing 2026 tolerability results
+    url: https://www.reuters.com/business/healthcare-pharmaceuticals/low-start-dose-amgen-experimental-weight-loss-drug-limits-side-effects-2025-06-23
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:13.672995+00:00'
+    stale_at: '2026-08-20T16:15:13.672995+00:00'
+    expire_at: '2026-10-19T16:15:13.672995+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-95b8e4
+  filename: 2026-07-21_amgen-gears-up-for-phase-3-trial-of-monthly-weight.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.861278+00:00'
+  processed: false
+  notes: query='Amgen MariTide Phase 3 dosing 2026 tolerability results' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Amgen MariTide Phase 3 dosing 2026 tolerability results
+    url: https://finance.yahoo.com/news/amgen-gears-up-for-phase-3-trial-of-monthly-weight-loss-drug-maritide-amid-mixed-investor-sentiment-183015561.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:13.830951+00:00'
+    stale_at: '2026-08-20T16:15:13.830951+00:00'
+    expire_at: '2026-10-19T16:15:13.830951+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d8e9c8
+  filename: 2026-07-21_phase-iii-retatrutide-study-demonstrates-30-weight.md
+  source_type: web-search
+  added: '2026-07-21T16:15:13.944206+00:00'
+  processed: false
+  notes: query='retatrutide Phase 3 TRIUMPH results 2026 weight loss' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: retatrutide Phase 3 TRIUMPH results 2026 weight loss
+    url: https://pharmaceutical-journal.com/article/news/phase-iii-retatrutide-study-demonstrates-30-weight-loss
+    domain: pharmaceutical-journal.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:15:13.914170+00:00'
+    stale_at: '2026-08-20T16:15:13.914170+00:00'
+    expire_at: '2026-10-19T16:15:13.914170+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-af07b2
+  filename: 2026-07-21_lilly-s-triple-agonist-retatrutide-delivered-power.md
+  source_type: web-search
+  added: '2026-07-21T16:15:14.022935+00:00'
+  processed: false
+  notes: query='retatrutide Phase 3 TRIUMPH results 2026 weight loss'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: retatrutide Phase 3 TRIUMPH results 2026 weight loss
+    url: https://www.prnewswire.com/news-releases/lillys-triple-agonist-retatrutide-delivered-powerful-weight-loss-in-pivotal-phase-3-obesity-trial-302778859.html
+    domain: prnewswire.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:15:14.072286+00:00'
+    stale_at: '2026-08-20T16:15:14.072286+00:00'
+    expire_at: '2026-10-19T16:15:14.072286+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-715f0d
+  filename: 2026-07-21_eli-lilly-gaining-in-glp-1-market-over-novo-nordis.md
+  source_type: web-search
+  added: '2026-07-21T16:25:15.513734+00:00'
+  processed: true
+  notes: query='Eli Lilly Novo Nordisk analyst price target 2026 obesity market forecast
+    consensus GLP-1 profit pool'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly Novo Nordisk analyst price target 2026 obesity market forecast
+      consensus GLP-1 profit pool
+    url: https://www.cnbc.com/amp/2026/02/04/eli-lilly-novo-nordisk-earnings-glp1-market.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:25:15.441850+00:00'
+    stale_at: '2026-08-20T16:25:15.441850+00:00'
+    expire_at: '2026-10-19T16:25:15.441850+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ee7fd6
+  filename: 2026-07-21_obesity-market-sales-potential-tightens-as-novo-an.md
+  source_type: web-search
+  added: '2026-07-21T16:25:15.721297+00:00'
+  processed: true
+  notes: query='Eli Lilly Novo Nordisk analyst price target 2026 obesity market forecast
+    consensus GLP-1 profit pool'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Eli Lilly Novo Nordisk analyst price target 2026 obesity market forecast
+      consensus GLP-1 profit pool
+    url: https://www.reuters.com/business/healthcare-pharmaceuticals/obesity-market-sales-potential-tightens-novo-lilly-enter-new-era-2026-02-02
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-07-21T16:25:15.638324+00:00'
+    stale_at: '2026-08-20T16:25:15.638324+00:00'
+    expire_at: '2026-10-19T16:25:15.638324+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-36647e
+  filename: 2026-07-21_overview-of-glp-1s.md
+  source_type: web-search
+  added: '2026-07-21T16:25:28.504738+00:00'
+  processed: true
+  notes: query='Eli Lilly Novo Nordisk analyst price target 2026 obesity market forecast
+    consensus GLP-1 profit pool' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Eli Lilly Novo Nordisk analyst price target 2026 obesity market forecast
+      consensus GLP-1 profit pool
+    url: https://gabelli.com/research/overview-of-glp-1s
+    domain: gabelli.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T16:25:28.419589+00:00'
+    stale_at: '2026-08-20T16:25:28.419589+00:00'
+    expire_at: '2026-10-19T16:25:28.419589+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-21a243
+  filename: 2026-07-21_glp-1-stocks-valuation-lilly-leads-novo-offers-val.md
+  source_type: web-search
+  added: '2026-07-21T23:06:27.662913+00:00'
+  processed: true
+  notes: query='Novo Nordisk NVO forward PE market cap July 2026 Amgen PE' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Novo Nordisk NVO forward PE market cap July 2026 Amgen PE
+    url: https://finance.yahoo.com/quote/NVO/key-statistics/
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-21T23:06:27.629691+00:00'
+    stale_at: '2026-08-20T23:06:27.629691+00:00'
+    expire_at: '2026-10-19T23:06:27.629691+00:00'
+    triggered_by: 04-synth

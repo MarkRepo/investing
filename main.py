@@ -18,6 +18,7 @@ from app.routes.financials import router as financials_router
 from app.routes.mineru import router as mineru_router
 from app.routes.prices import router as prices_router
 from app.routes.prism import router as prism_router
+from app.routes.wiki import router as wiki_router
 
 
 @asynccontextmanager
@@ -42,6 +43,7 @@ app.include_router(prism_router)
 app.include_router(financials_router)
 app.include_router(prices_router)
 app.include_router(mineru_router)
+app.include_router(wiki_router)
 
 
 @app.get("/")

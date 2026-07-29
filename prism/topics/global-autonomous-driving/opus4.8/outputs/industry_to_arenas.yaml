@@ -1,0 +1,207 @@
+slug: global-autonomous-driving
+variant: opus4.8
+topic_type: industry
+display_name: 自动驾驶行业 (Autonomous Driving, GLOBAL)
+generated: 2026-07-28T00:00:00Z
+data_freshness: 2026-07
+data_freshness_basis: mat-edc5c2 (国元证券 2026-07 深度) + 本地 market_data 2026-07-28 龙头倍数
+
+arenas:
+  - name: 上游国产 AD 计算芯片
+    suggested_slug: global-ad-compute-chip
+    topic_created: true
+    topic_slug: global-ad-compute-chip
+    scores:
+      profit_pool: 5
+      growth: 5
+      competition: 4
+      valuation: 2
+      cycle: 4
+      composite: 4.0
+    tier: deep
+    tier_reason: 利润池最确定的卖铲人环(国产替代+舱驾融合三重红利)；但龙头地平线 PS16.7 已贵,深挖≠现价买入,需等回调或选二线
+    upgrade_triggers:
+      - 地平线征程6P 拿回 ≥2 家头部高端定点
+      - 地平线股价回调至 PS<12
+      - 已在 stub topic global-ad-compute-chip L1-L4 跟踪
+    monitor_metrics:
+      - 15万+价格带高阶定点份额
+      - 征程6 出货量
+      - 舱驾融合定点数
+    revive_condition: null
+  - name: 华为软硬一体方案生态
+    suggested_slug: global-huawei-adas-ecosystem
+    topic_created: true
+    topic_slug: global-huawei-adas-ecosystem
+    scores:
+      profit_pool: 4
+      growth: 4
+      competition: 5
+      valuation: 3
+      cycle: 4
+      composite: 4.0
+    tier: deep
+    tier_reason: 护城河最厚(软硬一体+鸿蒙生态+190万台数据飞轮),纯软被挤压的最大受益者；但引望未独立上市,介入路径受限(看得到吃不到),核心待解=可投载体
+    upgrade_triggers:
+      - 引望分拆上市信号
+      - 乾崑搭载量破300万且保住高阶份额
+      - 已在 stub topic global-huawei-adas-ecosystem L1-L4 跟踪
+    monitor_metrics:
+      - 华为整体NOA份额(当前27.9%)
+      - 合作品牌数
+      - ADS版本迭代
+    revive_condition: null
+  - name: 激光雷达(禾赛系)
+    suggested_slug: global-automotive-lidar
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 4
+      competition: 4
+      valuation: 4
+      cycle: 4
+      composite: 3.8
+    tier: watch
+    tier_reason: 综合3.8单档内最高但仍观察——arena内部估值已分化(禾赛PE33/PEG<1机器人第二曲线偏积极,速腾PS4.2车载薄利偏消极),整体拖累不能给深挖；禾赛单独接近深挖门槛,是与共识"禾赛速腾齐受益"的最大分歧
+    upgrade_triggers:
+      - 禾赛机器人业务收入占比突破30%且维持高毛利
+      - 禾赛ETX量产确认单车价值量跃升至500-1000美元
+      - 禾赛车载毛利守住>35%
+    monitor_metrics:
+      - 禾赛/速腾车载毛利率
+      - 机器人出货与占比
+      - ASP通缩斜率
+      - 纯视觉迁移进度
+    revive_condition: null
+  - name: robotaxi 运营
+    suggested_slug: global-robotaxi
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 5
+      growth: 3
+      competition: 3
+      valuation: 2
+      cycle: 2
+      composite: 3.0
+    tier: watch
+    tier_reason: 终局最大(2030中国≈2.93万亿)但兑现最慢+定价已透支(小马PS27),必须等含摊销单位经济学硬证据才升档；图森99%蒸发镜鉴是不满仓的直接理由
+    upgrade_triggers:
+      - 头部披露含资本/研发摊销的单车正毛利
+      - 扩城复制跑通(非武汉单城特例)
+    monitor_metrics:
+      - 单公里成本 vs 出租车
+      - 单车日订单
+      - 无补贴 take rate
+      - 车队规模
+    revive_condition: null
+  - name: robotruck 干线物流
+    suggested_slug: global-robotruck
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 3
+      competition: 3
+      valuation: null
+      cycle: 2
+      composite: 2.5
+    tier: watch
+    tier_reason: TAM稳健(2034全球1077亿美元)但数据薄+估值锚缺失(AUR取不到),商业化慢于robotaxi,降级观察
+    upgrade_triggers:
+      - Aurora/Kodiak 无人化(driverless)里程碑兑现
+      - 车队规模突破千辆级
+    monitor_metrics:
+      - 无人化里程碑兑现
+      - 车队规模
+    revive_condition: null
+  - name: Nvidia 高端智驾(在华)
+    suggested_slug: global-nvidia-ad-highend
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 3
+      growth: 2
+      competition: 2
+      valuation: null
+      cycle: 2
+      composite: 2.2
+    tier: watch
+    tier_reason: Thor跳票+去英伟达化,在华高端确定性下修；但Nvidia整体不可拆分、全球机器人/数据中心叙事另有支撑,观察其能否反击
+    upgrade_triggers:
+      - Thor后继兑现舱驾融合量产
+      - 拿回≥2家头部新定点
+    monitor_metrics:
+      - Thor交付算力/节奏
+      - 在华头部定点数
+    revive_condition: null
+  - name: 纯软第三方方案商(Momenta)
+    suggested_slug: global-pure-software-ad
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 4
+      competition: 2
+      valuation: 2
+      cycle: 2
+      composite: 2.4
+    tier: eliminated
+    tier_reason: 两端挤压(华为+车企自研)+一二级倒挂(千亿→696亿)+研发占收77.5%未自我造血+智驾平权打没软件溢价；composite2.4(growth高拉高)但盈利路径判假,tier=定性override判eliminated
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 数据飞轮跑出清晰盈利路径(毛利转正且可持续)+千亿估值向基本面靠拢兑现
+  - name: Mobileye/美系 ADAS 芯片
+    suggested_slug: global-mobileye-adas
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 2
+      growth: 2
+      competition: 2
+      valuation: 3
+      cycle: 2
+      composite: 2.2
+    tier: eliminated
+    tier_reason: recovery未坐实(仅Q1 beat),PB0.86虽低但基本面未反转
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: SuperVision/EyeQ6定点放量+营收增速转正坐实recovery
+  - name: 美系激光雷达(Luminar 等)
+    suggested_slug: global-us-lidar
+    topic_created: false
+    topic_slug: null
+    scores:
+      profit_pool: 1
+      growth: 1
+      competition: 1
+      valuation: 2
+      cycle: 1
+      composite: 1.2
+    tier: eliminated
+    tier_reason: 已出清中,中国厂商占全球车载95%,美系无成本/规模竞争力
+    upgrade_triggers: []
+    monitor_metrics: []
+    revive_condition: 极难——除非拿下特斯拉级独家大单
+
+cluster_tags: [autonomous-driving, ai-compute, china-tech, robotaxi, lidar]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 5
+    kind: data-missing
+    note: robotaxi 含资本/研发摊销的单车真盈利数据缺失,仅有 UE 平衡口径(不含摊销)——命门2核心残留
+  - ring: 4
+    kind: data-missing
+    note: robotruck arena 估值锚 AUR(Aurora)本地行情取不到,该 arena 估值定性化
+  - ring: 2
+    kind: data-missing
+    note: Nvidia 智驾部分无法从整体市值(4.76万亿)拆分,环②对其定价只能定性
+  - ring: 4
+    kind: training-estimate
+    note: Momenta PS~29x 由发行市值696亿/2025营收24亿估算,本地行情源未收录该新上市标的实时倍数

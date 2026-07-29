@@ -478,16 +478,207 @@
   },
   "global-ssb-equipment": {
     "finance.sina.com.cn": {
+      "count": 2,
+      "topics": [
+        "global-ssb-equipment/claude-opus-4-8",
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": true
+    },
+    "xueqiu.com": {
       "count": 1,
       "topics": [
         "global-ssb-equipment/claude-opus-4-8"
       ],
       "promoted": false
     },
-    "xueqiu.com": {
+    "ytnews.cn": {
       "count": 1,
       "topics": [
-        "global-ssb-equipment/claude-opus-4-8"
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "data.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "laser.ofweek.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "q.stock.sohu.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pdf.dfcfw.com": {
+      "count": 2,
+      "topics": [
+        "cn-hymson-688559/opus4.8",
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": true
+    },
+    "scribd.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "lanjinger.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.sina.cn": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "m.caijing.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "static.weeklyonstock.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "aibanglib.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "moomoo.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stcn.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cn.investing.com": {
+      "count": 1,
+      "topics": [
+        "cn-hymson-688559/opus4.8"
+      ],
+      "promoted": false
+    },
+    "guandian.cn": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "huaxjr.com": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "lixinger.com": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "eeo.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "time-weekly.com": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "xhby.net": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "www1.hkexnews.hk": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "wap.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cb.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "leadintelligent.com": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "basic.10jqka.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
+      ],
+      "promoted": false
+    },
+    "webf10.gw.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-leadex-300450/opus4.8"
       ],
       "promoted": false
     }
@@ -564,11 +755,12 @@
       "promoted": false
     },
     "news.qq.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-humanoid-robot/opus4.8"
+        "global-humanoid-robot/opus4.8",
+        "global-roller-screw/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "m.36kr.com": {
       "count": 1,
@@ -606,11 +798,12 @@
       "promoted": false
     },
     "pdf.dfcfw.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-humanoid-robot/opus4.8"
+        "global-humanoid-robot/opus4.8",
+        "global-roller-screw/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "jtn.com": {
       "count": 1,
@@ -677,11 +870,12 @@
       "promoted": false
     },
     "zhuanlan.zhihu.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-humanoid-robot/opus4.8"
+        "global-humanoid-robot/opus4.8",
+        "global-roller-screw/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "news.sina.cn": {
       "count": 1,
@@ -719,11 +913,12 @@
       "promoted": false
     },
     "leaderobot.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-roller-screw/glm5.2"
+        "global-roller-screw/glm5.2",
+        "global-roller-screw/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "stock.10jqka.com.cn": {
       "count": 1,
@@ -740,11 +935,12 @@
       "promoted": false
     },
     "finance.sina.cn": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-roller-screw/glm5.2"
+        "global-roller-screw/glm5.2",
+        "global-roller-screw/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "zhongzhihui.oss-cn-beijing.aliyuncs.com": {
       "count": 1,
@@ -757,6 +953,104 @@
       "count": 1,
       "topics": [
         "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "awtmt.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "inside.com.tw": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hk.finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "m.wenxuan.news": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "chyxx.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ksrmtzx.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cubemars.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "aibangbots.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "sina.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "shuanglin.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cj.sina.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "static.weeklyonstock.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "news.10jqka.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
+      ],
+      "promoted": false
+    },
+    "mp.ofweek.com": {
+      "count": 1,
+      "topics": [
+        "global-roller-screw/opus4.8"
       ],
       "promoted": false
     }
@@ -1574,10 +1868,11 @@
       "promoted": false
     },
     "dram.com.cn": {
-      "count": 2,
+      "count": 3,
       "topics": [
         "cn-ai-compute/opus4.8",
-        "cn-advanced-mfg-hbm/opus4.8"
+        "cn-advanced-mfg-hbm/opus4.8",
+        "cn-domestic-ai-chip/opus4.8"
       ],
       "promoted": true
     },
@@ -1645,11 +1940,12 @@
       "promoted": false
     },
     "voachinese.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "cn-advanced-mfg-hbm/opus4.8"
+        "cn-advanced-mfg-hbm/opus4.8",
+        "cn-domestic-ai-chip/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "secrss.com": {
       "count": 1,
@@ -1659,11 +1955,12 @@
       "promoted": false
     },
     "163.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "cn-advanced-mfg-hbm/opus4.8"
+        "cn-advanced-mfg-hbm/opus4.8",
+        "cn-domestic-ai-chip/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "chenxiaosheng.com": {
       "count": 1,
@@ -1725,6 +2022,139 @@
       "count": 1,
       "topics": [
         "cn-advanced-mfg-hbm/opus4.8"
+      ],
+      "promoted": false
+    },
+    "mittrchina.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "nxny.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cls.cn": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "zaobao.com.sg": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "sohu.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "k.sina.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "forbeschina.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "huxiu.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.sina.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "i.ifeng.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "jiemian.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.ifeng.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "afdata.org.cn": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "guancha.cn": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "sputniknews.cn": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "zhuanlan.zhihu.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "caifuhao.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "21jingji.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tmtpost.com": {
+      "count": 1,
+      "topics": [
+        "cn-domestic-ai-chip/opus4.8"
       ],
       "promoted": false
     }
@@ -2272,6 +2702,13 @@
       "promoted": false
     },
     "trendforce.com": {
+      "count": 1,
+      "topics": [
+        "us-micron-mu/opus4.8"
+      ],
+      "promoted": false
+    },
+    "quartr.com": {
       "count": 1,
       "topics": [
         "us-micron-mu/opus4.8"
@@ -3005,11 +3442,12 @@
       "promoted": false
     },
     "pdf.dfcfw.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-roller-screw/glm5.2"
+        "global-roller-screw/glm5.2",
+        "cn-hengli-hydraulic-601100/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "file.iyanbao.com": {
       "count": 1,
@@ -3141,6 +3579,13 @@
       "count": 1,
       "topics": [
         "global-roller-screw/glm5.2"
+      ],
+      "promoted": false
+    },
+    "basic.10jqka.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-hengli-hydraulic-601100/opus4.8"
       ],
       "promoted": false
     }
@@ -3952,6 +4397,2958 @@
       "count": 1,
       "topics": [
         "us-coinbase/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "us-spacex-spcx": {
+    "content.spacex.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "hl.co.uk": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "finance.yahoo.com": {
+      "count": 2,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol",
+        "us-spacex-spcx/opus4.8"
+      ],
+      "promoted": true
+    },
+    "morningstar.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "newspaceeconomy.ca": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "spaceintelreport.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "mercercapital.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "global.morningstar.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "fidelity.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "m.economictimes.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "techcrunch.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "reuters.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "spaceflightnow.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "marketwatch.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "investing.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "telegraph.co.uk": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "cbsnews.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "markets.businessinsider.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "satellitetoday.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "archive.is": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "businessinsider.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "executivegov.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "forbes.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "aswathdamodaran.substack.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "thirdbridge.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "mergersandinquisitions.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "ecgi.global": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "corpgov.law.harvard.edu": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "virginialawreview.org": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "sec.gov": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "cnbc.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "theglobeandmail.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "satnews.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "linkedin.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "petergarnry.substack.com": {
+      "count": 2,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol",
+        "us-spacex-spcx/opus4.8"
+      ],
+      "promoted": true
+    },
+    "spacenews.com": {
+      "count": 2,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol",
+        "us-spacex-spcx/opus4.8"
+      ],
+      "promoted": true
+    },
+    "payloadspace.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "congress.gov": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "faa.gov": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/gpt-5.6-sol"
+      ],
+      "promoted": false
+    },
+    "coindesk.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "valueaddvc.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "thenextweb.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "benzinga.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "disruptionbanking.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "journalrecord.com": {
+      "count": 1,
+      "topics": [
+        "us-spacex-spcx/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "us-palantir-pltr": {
+    "tikr.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stocktitan.net": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stockanalysis.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "investing.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "macrotrends.net": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "alphaquery.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "theglobeandmail.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "chartmill.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketbeat.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "saastr.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "defensescoop.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "army.mil": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "fool.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "secform4.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "dexteragent.ai": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "latentview.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finbox.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "democrats-appropriations.house.gov": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "comptroller.war.gov": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketchameleon.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "capital.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "news.alphastreet.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cyclicaflow.substack.com": {
+      "count": 1,
+      "topics": [
+        "us-palantir-pltr/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "cn-xingye-silver-tin": {
+    "longforecast.cn": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "news.smm.cn": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "wap.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "news.futunn.com": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "static.cninfo.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "xyyxky.com": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pdf.dfcfw.com": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "chyxx.com": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "m.10jqka.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "baike.baidu.com": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "caifuhao.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "app.myzaker.com": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    },
+    "nbd.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-xingye-silver-tin/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "global-glp1-obesity": {
+    "clinicaltrialsarena.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "prnewswire.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": true
+    },
+    "biopharmadive.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "mercer.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "goodrx.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "thepharmaletter.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "adameetingnews.org": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pubmed.ncbi.nlm.nih.gov": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "mediacenteratypon.nejmgroup-production.org": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "primetherapeutics.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "iqvia.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "jpmorgan.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "grandviewresearch.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pharmaceutical-technology.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": true
+    },
+    "roche.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "docwirenews.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hcplive.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": true
+    },
+    "qz.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "fiercehealthcare.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "healthlawadvisor.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "washingtonpost.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "statnews.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "thehill.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cj.sina.cn": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hengrui.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "vcbeathealth.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "linkedin.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "biospace.com": {
+      "count": 3,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-oral-small-molecule/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "novonordisk.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "amgen.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "finance.yahoo.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": true
+    },
+    "pharmaceutical-journal.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-obesity/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "gabelli.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-obesity/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ainvest.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ir.structuretx.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ir.vikingtherapeutics.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "synapse.patsnap.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "biotechinvestor25.substack.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "meto.co": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "journals.library.columbia.edu": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "wtwco.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "understoodcare.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "intuitionlabs.ai": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "fiercebiotech.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "eccogene.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "flcube.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "patentvest.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pharmaphorum.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pmc.ncbi.nlm.nih.gov": {
+      "count": 2,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "managedhealthcareexecutive.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "medschool.umaryland.edu": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "astrazeneca.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "delveinsight.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "sec.gov": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "clinicaltrials.gov": {
+      "count": 2,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "fool.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "247wallst.com": {
+      "count": 2,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8",
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": true
+    },
+    "en.wikipedia.org": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "investor.lilly.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-oral-small-molecule/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ajmc.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pharmacytimes.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "gethealthspan.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "biopharminternational.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "privatedoc.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "medicalxpress.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "patientcareonline.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "aol.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "medicare.gov": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "whitehouse.gov": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tctmd.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "zealandpharma.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "diabetesjournals.org": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "bmj.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "lek.com": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    },
+    "bnnbloomberg.ca": {
+      "count": 1,
+      "topics": [
+        "global-glp1-highend-efficacy/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "us-viking-vktx": {
+    "ddw-online.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "appliedclinicaltrialsonline.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "findhonestcare.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "clival.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "delta.larvol.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "investing.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "macrotrends.net": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pharmavoice.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "benzinga.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "clinicaltrialsarena.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "patientcareonline.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "biospace.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "alphaspread.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "delveinsight.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "endpoints.news": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "mnawatch.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "statnews.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "businesstimes.com.sg": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pharmaphorum.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cnbc.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "barrons.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketscreener.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stockanalysis.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tikr.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pharmacytimes.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "peptideprotocolwiki.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "cn-luzhou-laojiao": {
+    "pdf.dfcfw.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "xinhuanet.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "lixinger.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "h5.ifeng.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "m.10jqka.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "moomoo.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "shui5.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "wap.stockstar.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "donews.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "cnfin.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "guandian.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "jiupaiming.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "taxrefund.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "user.guancha.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "post.m.smzdm.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "thejzy.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "basic.10jqka.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "jiu.ifeng.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "news.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "app.dahecube.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "file.iyanbao.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "lhratings.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "es.tradingview.com": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "cj.sina.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "jnzstatic.cs.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    },
+    "finance.people.com.cn": {
+      "count": 1,
+      "topics": [
+        "cn-luzhou-laojiao/kimi-k3"
+      ],
+      "promoted": false
+    }
+  },
+  "global-glp1-oral-small-molecule": {
+    "ainvest.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "gurufocus.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketbeat.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "trial.medpath.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "quartr.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ir.structuretx.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "towardshealthcare.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "nature.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stocktitan.net": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "seekingalpha.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "reuters.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cnbc.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "biospace.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "theglobeandmail.com": {
+      "count": 1,
+      "topics": [
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": false
+    },
+    "go.bio.org": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pmc.ncbi.nlm.nih.gov": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "diyhpl.us": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "norstella.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "prnewswire.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "boehringer-ingelheim.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pfizer.com": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    },
+    "investor.lilly.com": {
+      "count": 2,
+      "topics": [
+        "us-viking-vktx/opus4.8",
+        "us-structure-gpcr/opus4.8"
+      ],
+      "promoted": true
+    },
+    "sec.gov": {
+      "count": 1,
+      "topics": [
+        "us-viking-vktx/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "us-tesla": {
+    "nytimes.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "npr.org": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pv-magazine-usa.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "energy-storage.news": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stockanalysis.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "gurufocus.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "electrek.co": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "greencarreports.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hk.finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "teslarati.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "insideevs.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cnevpost.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "eletric-vehicles.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tradingview.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cbtnews.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "thedeepdive.ca": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tradingkey.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ark-invest.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "benzinga.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketbeat.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "driveteslacanada.ca": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "teslahubs.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "notateslaapp.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "simplywall.st": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "taasmaster.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tech-insider.org": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "chamath.substack.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.biggo.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    },
+    "techtimes.com": {
+      "count": 1,
+      "topics": [
+        "us-tesla/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "us-google": {
+    "npr.org": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "adexchanger.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "openmarketsinstitute.org": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketingbrew.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "s206.q4cdn.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "9to5google.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "investing.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "datacenters.economictimes.indiatimes.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "fortune.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "semrush.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ppc.land": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "public.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "abc.xyz": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "anthropic.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "venturebeat.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stockanalysis.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "thestreet.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "justice.gov": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "en.wikipedia.org": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "crn.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "sdvguru.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ai.google.dev": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tech-insider.org": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "felloai.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "support.google.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "digitalapplied.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "uncoveralpha.com": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketplace.org": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stocktitan.net": {
+      "count": 1,
+      "topics": [
+        "us-google/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "us-nvidia": {
+    "nvidianews.nvidia.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "servethehome.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "futurumgroup.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "qz.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "intuitionlabs.ai": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "io-fund.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "gurufocus.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "macrotrends.net": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "valueaddvc.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "fool.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "siliconanalysts.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tomshardware.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tech-insider.org": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "en.wikipedia.org": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "info.fusionww.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "epochai.substack.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "investing.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "aicerts.ai": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "spglobal.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stocktwits.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "wsj.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "simplywall.st": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "chartmill.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "henryfund.tippie.uiowa.edu": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "intellectia.ai": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "spheron.network": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "introl.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "outperformingthemarket.substack.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hardingloevner.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "global.morningstar.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "seekingalpha.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "financecharts.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "phoronix.com": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    },
+    "theoutpost.ai": {
+      "count": 1,
+      "topics": [
+        "us-nvidia/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "us-ionq": {
+    "finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "quantumcomputingreport.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ionq.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "companiesmarketcap.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "capital.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "thequantuminsider.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "en.wikipedia.org": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "s28.q4cdn.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "quantumzeitgeist.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "quantumcomputing.stackexchange.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ibm.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marketbeat.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "benzinga.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "macrotrends.net": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "oxionics.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "honeywell.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "icr.swoogo.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "gamesbeat.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ainvest.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "fool.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "247wallst.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hpcwire.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    },
+    "thenextweb.com": {
+      "count": 1,
+      "topics": [
+        "us-ionq/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "global-autonomous-driving": {
+    "mexicobusiness.news": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "electrive.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "automotiveworld.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "businessinsider.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "nev.ofweek.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "m.ofweek.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "pdf.dfcfw.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "momenta.ai": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "horizon.auto": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "moomoo.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "chedongxi.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "mobileye.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "bitauto.hk": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "yzwb.net": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "auto.huawei.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "reportify-1252068037.cos.ap-beijing.myqcloud.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hesaitech.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "auto.news18a.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "weride.ai": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "news.cn": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "zhuanlan.zhihu.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "jjckb.xinhuanet.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "dxobs.obs.cn-north-1.myhuaweicloud.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "user.guancha.cn": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "qbitai.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "app.myzaker.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "m.sgpjbg.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "tidenews.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "chyxx.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "marklines.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "news.un.org": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "bydglobal.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "fortunebusinessinsights.com": {
+      "count": 1,
+      "topics": [
+        "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "jp-cover-5253": {
+    "finance.yahoo.co.jp": {
+      "count": 2,
+      "topics": [
+        "jp-cover-5253/sonnet5",
+        "jp-cover-5253/opus4.8"
+      ],
+      "promoted": true
+    },
+    "note.com": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "minkabu.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "finance.logmi.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "cover-corp.com": {
+      "count": 2,
+      "topics": [
+        "jp-cover-5253/sonnet5",
+        "jp-cover-5253/opus4.8"
+      ],
+      "promoted": true
+    },
+    "kabutan.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "sbisec.co.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "finance-frontend-pc-dist.west.edge.storage-yahoo.jp": {
+      "count": 2,
+      "topics": [
+        "jp-cover-5253/sonnet5",
+        "jp-cover-5253/opus4.8"
+      ],
+      "promoted": true
+    },
+    "media.rakuten-sec.net": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "gamebiz.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "hololive.hololivepro.com": {
+      "count": 2,
+      "topics": [
+        "jp-cover-5253/sonnet5",
+        "jp-cover-5253/opus4.8"
+      ],
+      "promoted": true
+    },
+    "shikiho.toyokeizai.net": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "vivepostwave.com": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "imdb.com": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "scouter.monex.co.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "kabuyoho.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "moomoo.com": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "moguravr.com": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "jetro.go.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "hololivepro.com": {
+      "count": 2,
+      "topics": [
+        "jp-cover-5253/sonnet5",
+        "jp-cover-5253/opus4.8"
+      ],
+      "promoted": true
+    },
+    "news.yahoo.co.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "uyet.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "itmedia.co.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "gamebusiness.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "0115765.com": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "prtimes.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "kitaishihon.com": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "j-lic.com": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/sonnet5"
+      ],
+      "promoted": false
+    },
+    "japanir.jp": {
+      "count": 1,
+      "topics": [
+        "jp-cover-5253/opus4.8"
       ],
       "promoted": false
     }

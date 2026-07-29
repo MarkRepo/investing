@@ -1,0 +1,17 @@
+as_of_regime_version: 3
+regime_composite: 合成时按当下 regime 自判：机器人高PS对流动性/风险偏好最敏感，主业对地产基建+出口(汇率)敏感；provisional
+  待 macro 复核
+depends_on_states:
+- conclusion: fx_cny
+  state: 人民币贬值利出口但2025出口停滞+1.58%
+  role: confirming
+- conclusion: rates_us
+  state: 影响机器人成长股贴现率与risk appetite
+  role: load_bearing
+discount_rate: null
+slug: cn-hengli-hydraulic-601100
+variant: opus4.8
+stamped_at: '2026-07-24T15:44:17.773766+00:00'
+stale: true
+stale_reason: 依赖的『人民币贬值利出口但2025出口停滞+1.58%』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+  v3→v4)

@@ -1,0 +1,177 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: cn-xingye-silver-tin
+variant: opus4.8
+created: 2026-07-19
+thesis_version: 0
+
+# L1/L2 坍缩为 primer_scope（背景深度交 00_primer，见 §1.2 primer↔case 分工）
+primer_scope: >
+  primer 应覆盖：银锡多金属采选商业模式（利润=量×(价−成本)）、白银工业属性 vs 金融属性、
+  锡"小金属大弹性"供需结构、银漫矿业为何是核心资产（2018 事故→复产→二期扩产沿革）、
+  资源禀赋量级（白银亚洲第一 24,536.7 吨 / 锡国内第二 24.35 万吨）意味什么、
+  周期资源股报表盈利剧烈波动 & PE 拐点期误导、产能(万吨/年)如何折算金属产量(品位×回收率)、
+  A+H 双重上市对资源股融资/估值/治理的一般影响、金属价格情景×产量路径的粗略盈利框架。
+
+learning_track:
+  # L3 争议层：搞清"分歧在哪"（反映 thesis 最大反方观点）
+  l3_debates:
+    - question: Q1 净利 13.38 亿(+257%) 含多少不可外推的价格峰值红利？剥离峰值后的 normalized 盈利中枢在哪？
+      source_hint: 年报/半年报分金属毛利 + 卖方 normalized 净利拆分；锡业分会"非理性繁荣"警示
+    - question: 银($57)/锡($58.7k)"同期刷新历史新高"是结构性重定价还是周期顶部？下行空间 vs 上行空间是否已不对称？
+      source_hint: 头豹白银深度 + 锡牛行业深度 + 金银比历史分位 + LME/SHFE 库存
+    - question: 银漫致命事故史(2018-12)+297 万吨大规模扩产，市场对"量按期兑现"的定价是否过于乐观？
+      source_hint: 建设用地批复公告 + 在建工程季度轨迹 + 招股书产能时间表(待)
+    - question: 控股股东质押=其所持 100%(占总股本 20.46%)+集团重整刚 2025-10 完成，治理/流动性尾部风险是否被"翻身叙事"掩盖？
+      source_hint: 质押/解押公告季度轨迹 + 集团债务重整 + 天津信业受让 6.87%
+    - question: H 股 IPO 递表遭港交所发回(保荐中金被"贴堂")，是流程瑕疵还是招股书披露/合规实质问题？摊薄与折价风险多大？
+      source_hint: 发回重递公告 + 每经/ZAKER 报道 + 招股书正文(待重递披露)
+
+  # L4 狩猎层：找错误定价（每条对齐 thesis Killer Question）
+  l4_hunting:
+    - question: 银漫二期(297 万吨)主体工程能否 2026 底完成、2027 全面达产？宇邦一期 330 万吨能否 2026 投产？季报在建工程%与分金属产量能否验证？
+      addresses: [K1]
+      search_keywords: [银漫 二期 297万吨 进度, 宇邦矿业 投产, 兴业银锡 在建工程]
+      source_hint: 季报在建工程/分金属产量 + 扩产进度公告 + H 股招股书产能时间表
+    - question: 银价能否维持 $48+、锡价维持 $50k+ 支撑 2026-27 盈利？跌到哪个价位公司仍盈利（成本曲线位置）？
+      addresses: [K2]
+      search_keywords: [银价 2026 预测, 沪锡 价格 展望, 金银比 库存]
+      source_hint: LME 银/锡 + 沪锡 + 金银比 + SHFE/LME 库存 + 卖方银锡价假设
+    - question: 分金属(银/锡)单位现金成本 C1 是多少？成本曲线分位如何？Q1 峰值利润在价格回落下能留存多少？
+      addresses: [K3]
+      search_keywords: [兴业银锡 单位成本, 银漫 采选成本, 白银 C1 成本]
+      source_hint: 年报/招股书分金属毛利与单位成本 + H1 实际 vs 预告
+    - question: 控股股东质押比例季度轨迹是否持续下降？H 股 IPO 摊薄比例/募资用途/定价？资产负债率与 capex 指引是否可控？
+      addresses: [K4]
+      search_keywords: [兴业集团 质押 解押, 兴业银锡 H股 募资, 资产负债率]
+      source_hint: 质押比例季度轨迹 + H 股发行规模/定价 + 负债率/capex 指引
+    - question: 情景化 EV 下目标价与介入纪律？A+H 估值差 + 资源价值法(EV per 银当量吨) vs 锡业股份/盛达资源/华锡有色是贵是便宜？
+      addresses: [K5]
+      search_keywords: [兴业银锡 目标价 券商, 锡业股份 盛达资源 估值, 资源股 PB EV]
+      source_hint: 各券商 2026-28 盈利预测/目标价 + 可比 PB/EV/资源估值 + H 股定价
+
+material_priority:
+  # Tier 1（必读）— 已基本入库；标 done/covered_by，thin 处留深化
+  tier1:
+    - title: 兴业银锡 2025 年报 + 2026Q1 季报（分金属产量/在建工程/毛利/成本拆分）
+      type: annual-report
+      ticker: SZSE_000426
+      source: cninfo 直下
+      why: K1/K3 命门料——"量"物理载体 + 成本曲线基座
+      addresses: [K1, K3]
+      info_tier: public
+      status: done
+      covered_by: [mat-74ce34, mat-786786]
+    - title: 银/锡价格情景 + 公司单位现金成本（最新银锡价/金银比/LME 库存 + 卖方假设 + C1）
+      type: data
+      source: SMM/富宝/卖方大宗研报
+      why: K2/K3 命门料——价格中枢 + 成本曲线（跌到哪仍盈利）
+      addresses: [K2, K3]
+      info_tier: half_public
+      status: done
+      covered_by: [mat-1f59a1, mat-2fe5df, mat-4630ac, mat-4743b1, mat-db9ab1]
+      notes: 分矿单位成本仍薄（招股书正文未出前只有年报综合成本），留 03/04 从年报毛利率反推
+    - title: 卖方深度研报×3（2026-28 盈利预测/目标价/产能假设 一致预期）
+      type: sell-side-note
+      source: 中信建投/中金/华创/信达；同花顺/Wind
+      why: K5 环④终局环——一致预期锚（A 合同 consensus 必收）
+      addresses: [K5]
+      info_tier: public
+      status: done
+      covered_by: [mat-1b9e1e, mat-1ead00, mat-85679b, mat-a44d20]
+    - title: 银漫二期(297 万吨)/宇邦扩产进度（在建工程%/调研纪要/公司公告）
+      type: data
+      source: 公司公告 + 机构调研纪要
+      why: K1 命门 1——"量"兑现节奏证伪点
+      addresses: [K1]
+      info_tier: half_public
+      status: done
+      covered_by: [mat-f5b19a, mat-236ca4, mat-99d441]
+  # Tier 2（补充）
+  tier2:
+    - title: 兴业银锡 H 股招股书/港交所聆讯资料（弗若斯特沙利文行业章节+产能时间表+分矿成本+募资用途）
+      type: prospectus
+      ticker: HKEX_000426
+      source: 港交所披露易 HKEXnews
+      why: K1/K3/K4/K5 多命门交汇——分矿成本 + 产能表 + 摊薄，最高价值单一文档
+      addresses: [K1, K3, K4, K5]
+      info_tier: half_public
+      status: in_progress
+      covered_by: [mat-67bc13, mat-7d7ae5, mat-90c71a, mat-9ae98c, mat-e50af2]
+      notes: 仅抓到递表/发回重递公告+新闻；招股书正文待 2026Q3 重新递表后从披露易取——K3/K5 关键缺口
+    - title: 管理层/资本配置史（吉兴业/兴业集团 借壳-并购-再融资-分红-质押取舍史）
+      type: sell-side-note
+      source: A 合同 mgmt-capital-alloc；历年公告+媒体深度
+      why: K4 环②——管理层 track record（A 合同真·欠供）
+      addresses: [K4]
+      info_tier: half_public
+      status: done
+      covered_by: [mat-5891d8, mat-702ef6, mat-7dd499, mat-b84471, mat-e5fb1b]
+    - title: 控股股东质押 + 集团债务重整 + 天津信业受让 6.87% 详情
+      type: data
+      source: 公司质押/权益变动公告
+      why: K4 命门 3——治理/流动性尾部
+      addresses: [K4]
+      info_tier: half_public
+      status: done
+      covered_by: [mat-48079d, mat-9ae98c, mat-ee4577]
+    - title: 锡行业供需深度（缅甸佤邦/印尼/刚果金供给 + AI/HBM 需求 + 全球库存）
+      type: industry-research
+      source: 卖方锡行业深度/SMM
+      why: K2 环③——锡结构性紧缺（弹性第二重保险）
+      addresses: [K2]
+      info_tier: public
+      status: done
+      covered_by: [mat-08571d, mat-3b4480, mat-5df37d]
+    - title: 白银供需 + 金银比 + 光伏银浆/工业需求
+      type: industry-research
+      source: 卖方贵金属深度/世界白银协会
+      why: K2 环③——白银工业+金融双属性驱动
+      addresses: [K2]
+      info_tier: public
+      status: done
+      covered_by: [mat-5d4695, mat-a87349]
+    - title: 可比公司横比（锡业股份/盛达资源/华锡有色 估值/资源量/成本对标）
+      type: sell-side-note
+      source: Wind/卖方；资源价值法+PB/EV
+      why: K5 环④——相对估值锚（资源价值法 vs 可比）
+      addresses: [K5]
+      info_tier: public
+      status: in_progress
+      covered_by: [mat-1b9e1e]
+      notes: 横比表薄（仅个股散点）；03/04 需自建 EV per 银当量吨 + PB 对标表，可用 market_data 拉可比财务
+  # Tier 3（可选）
+  tier3:
+    - title: Tartana + 摩洛哥大西洋锡业(Achmmach) 海外项目细节（产能/品位/权益/时间轴）
+      type: data
+      source: 公司公告 + TAT 披露
+      why: K1——海外锡矿增量（次要引擎）
+      addresses: [K1]
+      info_tier: half_public
+      status: done
+      covered_by: [mat-0b5521, mat-4b91ac, mat-5891d8, mat-b84471, mat-cae236]
+    - title: 历史失败镜鉴（资源股价格顶部追高教训/高质押矿企爆雷/银漫停产期股价复盘）
+      type: sell-side-note
+      source: A 合同 historical-mirror；复盘文章/研报
+      why: K5 环⑤——证伪机制（A 合同 historical-mirror）
+      addresses: [K5]
+      info_tier: hard
+      status: pending
+      notes: adapter 搜 1 轮全低质无权威复盘专文；hard tier，镜鉴由 04/05 从翻身叙事+训练知识合成
+
+key_risks_to_monitor:
+  - 银/锡价格深跌（银破 $45 或锡破 $45k 并持稳 ≥1 季度）→ 盈利+估值双杀
+  - 银漫二期主体工程/达产较 2026 底/2027 延期 >2 季度 → "量"逻辑退化为纯价格投机
+  - 控股股东质押重新上升 / 质押爆仓风险
+  - H 股折价发行 >30% 或景气高位摊薄 A 股权益
+  - 银漫安全/环保事故（2018 致命事故史）→ 停产击穿放量节奏
+
+analogies_to_study:
+  - 案例: 资源股价格顶部追高（2011 白银顶 / 2021-22 锂钴顶部矿企）
+    类比逻辑: 商品价格历史高位时资源股估值与 EPS 同时见顶，戴维斯双杀
+    类比局限: 兴业有独立"量"增量（产能放量），非纯价格 β
+  - 案例: 高质押民营矿企爆雷（如部分 A 股高质押资源股股权冻结/易主）
+    类比逻辑: 控股股东 100% 质押 + 集团高杠杆，流动性风险传导至上市公司
+    类比局限: 集团重整已 2025-10 完成，天津信业(国资背景)受让改善治理
+  - 案例: 银漫自身 2018-12 停产期股价复盘
+    类比逻辑: 单一核心矿山事故/停产对"量"逻辑的直接冲击实证
+    类比局限: 当前安全合规体系与彼时不同，但事故史提示尾部

@@ -1,0 +1,1562 @@
+slug: global-autonomous-driving
+variant: opus4.8
+updated: '2026-07-28T08:48:18.686209+00:00'
+materials:
+- id: mat-68f41a
+  filename: 2026-07-28_waymo-aims-for-1-million-weekly-us-robotaxi-rides-.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.064717+00:00'
+  processed: false
+  notes: query='Waymo robotaxi 2026 weekly paid rides cities expansion latest' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Waymo robotaxi 2026 weekly paid rides cities expansion latest
+    url: https://mexicobusiness.news/automotive/news/waymo-aims-1-million-weekly-us-robotaxi-rides-2026
+    domain: mexicobusiness.news
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.063857+00:00'
+    stale_at: '2026-08-27T07:24:18.063857+00:00'
+    expire_at: '2026-10-26T07:24:18.063857+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8127f0
+  filename: 2026-07-28_waymo-s-skyrocketing-ridership-in-one-chart-techcr.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.067096+00:00'
+  processed: false
+  notes: query='Waymo robotaxi 2026 weekly paid rides cities expansion latest'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Waymo robotaxi 2026 weekly paid rides cities expansion latest
+    url: https://techcrunch.com/2026/03/27/waymo-skyrocketing-ridership-in-one-chart
+    domain: techcrunch.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.066209+00:00'
+    stale_at: '2026-08-27T07:24:18.066209+00:00'
+    expire_at: '2026-10-26T07:24:18.066209+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b4204b
+  filename: 2026-07-28_waymo-targets-1-million-robotaxi-rides-a-week.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.070776+00:00'
+  processed: false
+  notes: query='Waymo robotaxi 2026 weekly paid rides cities expansion latest'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Waymo robotaxi 2026 weekly paid rides cities expansion latest
+    url: https://www.forbes.com/sites/alanohnsman/2025/12/10/waymo-targets-1-million-robotaxi-rides-a-week
+    domain: forbes.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.069061+00:00'
+    stale_at: '2026-08-27T07:24:18.069061+00:00'
+    expire_at: '2026-10-26T07:24:18.069061+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c89aac
+  filename: 2026-07-28_waymo-starts-driverless-rides-in-san-diego-las-veg.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.075190+00:00'
+  processed: false
+  notes: query='Waymo robotaxi 2026 weekly paid rides cities expansion latest'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Waymo robotaxi 2026 weekly paid rides cities expansion latest
+    url: https://www.cnbc.com/amp/2026/07/08/waymo-starts-driverless-rides-in-san-diego-las-vegas-tampa-denver.html
+    domain: cnbc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.073445+00:00'
+    stale_at: '2026-08-27T07:24:18.073445+00:00'
+    expire_at: '2026-10-26T07:24:18.073445+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7e30a4
+  filename: 2026-07-28_tesla-robotaxi-fleet-in-texas-reaches-only-42-vehi.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.082438+00:00'
+  processed: false
+  notes: query='Tesla robotaxi Austin 2026 unsupervised FSD commercial launch fleet
+    size' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla robotaxi Austin 2026 unsupervised FSD commercial launch fleet size
+    url: https://www.electrive.com/2026/06/02/tesla-robotaxi-fleet-in-texas-reaches-only-42-vehicles
+    domain: electrive.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.080358+00:00'
+    stale_at: '2026-08-27T07:24:18.080358+00:00'
+    expire_at: '2026-10-26T07:24:18.080358+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-0cfe46
+  filename: 2026-07-28_tesla-robotaxi-fleet-hits-25-as-musk-defers-scale-.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.089797+00:00'
+  processed: false
+  notes: query='Tesla robotaxi Austin 2026 unsupervised FSD commercial launch fleet
+    size' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla robotaxi Austin 2026 unsupervised FSD commercial launch fleet size
+    url: https://www.automotiveworld.com/news/tesla-robotaxi-fleet-hits-25-as-musk-defers-scale-to-fsd-v15
+    domain: automotiveworld.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.087309+00:00'
+    stale_at: '2026-08-27T07:24:18.087309+00:00'
+    expire_at: '2026-10-26T07:24:18.087309+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-804400
+  filename: 2026-07-28_tesla-expands-service-area-of-unsupervised-robotax.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.097725+00:00'
+  processed: false
+  notes: query='Tesla robotaxi Austin 2026 unsupervised FSD commercial launch fleet
+    size' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla robotaxi Austin 2026 unsupervised FSD commercial launch fleet size
+    url: https://www.businessinsider.com/tesla-robotaxi-unsupervised-service-area-austin-stock-2026-6
+    domain: businessinsider.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.095092+00:00'
+    stale_at: '2026-08-27T07:24:18.095092+00:00'
+    expire_at: '2026-10-26T07:24:18.095092+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7cf529
+  filename: 2026-07-28_特斯拉官宣fsd入华-一场迟到的突围与未竟的征途---ofweek新能源汽车网.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.107295+00:00'
+  processed: false
+  notes: query='特斯拉 FSD 入华 2025 2026 监管审批 数据合规 落地进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 特斯拉 FSD 入华 2025 2026 监管审批 数据合规 落地进展
+    url: https://nev.ofweek.com/2026-05/ART-77015-8110-30688132.html
+    domain: nev.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.104172+00:00'
+    stale_at: '2026-08-27T07:24:18.104172+00:00'
+    expire_at: '2026-10-26T07:24:18.104172+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4b0a23
+  filename: 2026-07-28_记者观察-特斯拉fsd监督版拟入华-却早已失了先机---21经济网.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.116298+00:00'
+  processed: false
+  notes: query='特斯拉 FSD 入华 2025 2026 监管审批 数据合规 落地进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 特斯拉 FSD 入华 2025 2026 监管审批 数据合规 落地进展
+    url: https://www.21jingji.com/article/20260521/herald/e09f4be1d4eb8da964b589bc229a70b7.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.112843+00:00'
+    stale_at: '2026-08-27T07:24:18.112843+00:00'
+    expire_at: '2026-10-26T07:24:18.112843+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2d814f
+  filename: 2026-07-28_特斯拉fsd入华倒计时-迟到的鲶鱼-还是新的变量--钛媒体官方网站.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.126441+00:00'
+  processed: false
+  notes: query='特斯拉 FSD 入华 2025 2026 监管审批 数据合规 落地进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 特斯拉 FSD 入华 2025 2026 监管审批 数据合规 落地进展
+    url: https://www.tmtpost.com/7997341.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.122346+00:00'
+    stale_at: '2026-08-27T07:24:18.122346+00:00'
+    expire_at: '2026-10-26T07:24:18.122346+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-729a01
+  filename: 2026-07-28_英伟达thor再度延期-看芯吃饭-的造车新势力又遭背刺--36氪.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.139665+00:00'
+  processed: false
+  notes: query='Nvidia Thor DRIVE 智驾芯片 2026 量产 上车 车厂 出货 SOP'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Nvidia Thor DRIVE 智驾芯片 2026 量产 上车 车厂 出货 SOP
+    url: https://m.36kr.com/p/3025817032209543
+    domain: m.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.135046+00:00'
+    stale_at: '2026-08-27T07:24:18.135046+00:00'
+    expire_at: '2026-10-26T07:24:18.135046+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-abba71
+  filename: 2026-07-28_2026-智驾芯片-去英伟达化.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.153867+00:00'
+  processed: true
+  notes: query='Nvidia Thor DRIVE 智驾芯片 2026 量产 上车 车厂 出货 SOP' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 比亚迪 蔚来 小鹏 理想 自研 智驾芯片 流片 4nm 2026 上车 侵蚀 英伟达
+    url: https://m.ofweek.com/auto/2026-06/ART-70103-8420-30690563.html
+    domain: m.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.752426+00:00'
+    stale_at: '2026-08-27T07:34:19.752426+00:00'
+    expire_at: '2026-10-26T07:34:19.752426+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Nvidia Thor DRIVE 智驾芯片 2026 量产 上车 车厂 出货 SOP
+- id: mat-9b8257
+  filename: 2026-07-28_智驾芯片.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.170881+00:00'
+  processed: false
+  notes: query='Nvidia Thor DRIVE 智驾芯片 2026 量产 上车 车厂 出货 SOP' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Nvidia Thor DRIVE 智驾芯片 2026 量产 上车 车厂 出货 SOP
+    url: https://pdf.dfcfw.com/pdf/H3_AP202503271648050387_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.165193+00:00'
+    stale_at: '2026-08-27T07:24:18.165193+00:00'
+    expire_at: '2026-10-26T07:24:18.165193+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-13e410
+  filename: 2026-07-28_智己汽车-nvidia与momenta三方合作-打造行业首批基于thor芯片量产智驾解决方案.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.188252+00:00'
+  processed: false
+  notes: query='Nvidia Thor DRIVE 智驾芯片 2026 量产 上车 车厂 出货 SOP' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Nvidia Thor DRIVE 智驾芯片 2026 量产 上车 车厂 出货 SOP
+    url: https://www.momenta.ai/article/188.html
+    domain: momenta.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.181194+00:00'
+    stale_at: '2026-08-27T07:24:18.181194+00:00'
+    expire_at: '2026-10-26T07:24:18.181194+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a6ba4f
+  filename: 2026-07-28_市占率双榜第一-地平线征程家族出货量正式突破600万--地平线horizonrobotics.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.205694+00:00'
+  processed: false
+  notes: query='地平线 征程6 J6 2026 出货量 定点车厂 市占率 黑芝麻智能' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 地平线 征程6 J6 2026 出货量 定点车厂 市占率 黑芝麻智能
+    url: https://www.horizon.auto/news/product/182
+    domain: horizon.auto
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.200013+00:00'
+    stale_at: '2026-08-27T07:24:18.200013+00:00'
+    expire_at: '2026-10-26T07:24:18.200013+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9c413a
+  filename: 2026-07-28_软硬结合的智驾之芯.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.221973+00:00'
+  processed: false
+  notes: query='地平线 征程6 J6 2026 出货量 定点车厂 市占率 黑芝麻智能' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 地平线 征程6 J6 2026 出货量 定点车厂 市占率 黑芝麻智能
+    url: https://pdf.dfcfw.com/pdf/H3_AP202504071652861150_1.pdf?1744106908000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.216048+00:00'
+    stale_at: '2026-08-27T07:24:18.216048+00:00'
+    expire_at: '2026-10-26T07:24:18.216048+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-39f28e
+  filename: 2026-07-28_黑芝麻智能与地平线的竞争-延续到了在港交所-谁能成为-智驾芯片第一股.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.242107+00:00'
+  processed: false
+  notes: query='地平线 征程6 J6 2026 出货量 定点车厂 市占率 黑芝麻智能' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 地平线 征程6 J6 2026 出货量 定点车厂 市占率 黑芝麻智能
+    url: https://www.moomoo.com/hans/news/post/36845788
+    domain: moomoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.235253+00:00'
+    stale_at: '2026-08-27T07:24:18.235253+00:00'
+    expire_at: '2026-10-26T07:24:18.235253+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d42ff4
+  filename: 2026-07-28_地平线连发六款征程6-年内量产交付-王传福站台---车东西.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.262806+00:00'
+  processed: false
+  notes: query='地平线 征程6 J6 2026 出货量 定点车厂 市占率 黑芝麻智能' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 地平线 征程6 J6 2026 出货量 定点车厂 市占率 黑芝麻智能
+    url: https://chedongxi.com/p/317677.html
+    domain: chedongxi.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.254778+00:00'
+    stale_at: '2026-08-27T07:24:18.254778+00:00'
+    expire_at: '2026-10-26T07:24:18.254778+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f99703
+  filename: 2026-07-28_does-strong-q1-beat-and-raised-outlook-reframe-the.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.288029+00:00'
+  processed: false
+  notes: query='Mobileye 2026 revenue EyeQ6 SuperVision design win 定点 outlook' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Mobileye 2026 revenue EyeQ6 SuperVision design win 定点 outlook
+    url: https://finance.yahoo.com/markets/stocks/articles/does-strong-q1-beat-raised-142025938.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.279511+00:00'
+    stale_at: '2026-08-27T07:24:18.279511+00:00'
+    expire_at: '2026-10-26T07:24:18.279511+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-dead5a
+  filename: 2026-07-28_mobileye-releases-first-quarter-2026-results-updat.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.309013+00:00'
+  processed: false
+  notes: query='Mobileye 2026 revenue EyeQ6 SuperVision design win 定点 outlook'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Mobileye 2026 revenue EyeQ6 SuperVision design win 定点 outlook
+    url: https://ir.mobileye.com/news-releases/news-release-details/mobileye-releases-first-quarter-2026-results-updates-full-year
+    domain: ir.mobileye.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.301250+00:00'
+    stale_at: '2026-08-27T07:24:18.301250+00:00'
+    expire_at: '2026-10-26T07:24:18.301250+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6224ce
+  filename: 2026-07-28_supervision-and-future-av-wins-fuel-growth-mobiley.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.335058+00:00'
+  processed: false
+  notes: query='Mobileye 2026 revenue EyeQ6 SuperVision design win 定点 outlook' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Mobileye 2026 revenue EyeQ6 SuperVision design win 定点 outlook
+    url: https://www.mobileye.com/news/mobileye-growth-pipeline-fueled-with-supervision-and-future-av-wins
+    domain: mobileye.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.325169+00:00'
+    stale_at: '2026-08-27T07:24:18.325169+00:00'
+    expire_at: '2026-10-26T07:24:18.325169+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-eb5378
+  filename: 2026-07-28_2026年智驾平权之车企智驾方案梳理.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.360288+00:00'
+  processed: true
+  notes: query='华为 乾崑 ADS 智驾 2026 装机量 问界 份额 Momenta IPO 估值' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 比亚迪 蔚来 小鹏 理想 自研 智驾芯片 流片 4nm 2026 上车 侵蚀 英伟达
+    url: https://pdf.dfcfw.com/pdf/H3_AP202603041820272147_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.987279+00:00'
+    stale_at: '2026-08-27T07:34:19.987279+00:00'
+    expire_at: '2026-10-26T07:34:19.987279+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 华为 乾崑 ADS 智驾 2026 装机量 问界 份额 Momenta IPO 估值
+    - 比亚迪 天神之眼 2026 高阶智驾 渗透 激光雷达 纯视觉 端到端 TAM
+- id: mat-5cd3c4
+  filename: 2026-07-28_千億估值的智駕-獨角獸-momenta赴港ipo背後的格局與隱憂.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.384710+00:00'
+  processed: false
+  notes: query='华为 乾崑 ADS 智驾 2026 装机量 问界 份额 Momenta IPO 估值' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为 乾崑 ADS 智驾 2026 装机量 问界 份额 Momenta IPO 估值
+    url: https://www.bitauto.hk/zh/news/20031000231.html
+    domain: bitauto.hk
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.375283+00:00'
+    stale_at: '2026-08-27T07:24:18.375283+00:00'
+    expire_at: '2026-10-26T07:24:18.375283+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-85142e
+  filename: 2026-07-28_华为乾崑智驾总搭载量突破190万台-问界m9-奕境x9等车型本月率先启用华为乾崑智驾ads-5.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.408519+00:00'
+  processed: false
+  notes: query='华为 乾崑 ADS 智驾 2026 装机量 问界 份额 Momenta IPO 估值' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为 乾崑 ADS 智驾 2026 装机量 问界 份额 Momenta IPO 估值
+    url: https://www.yzwb.net/news/qiche/202607/t20260716_372950.html
+    domain: yzwb.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.400004+00:00'
+    stale_at: '2026-08-27T07:24:18.400004+00:00'
+    expire_at: '2026-10-26T07:24:18.400004+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6e27cb
+  filename: 2026-07-28_2026-华为乾崑技术大会在京举行.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.434687+00:00'
+  processed: false
+  notes: query='华为 乾崑 ADS 智驾 2026 装机量 问界 份额 Momenta IPO 估值' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为 乾崑 ADS 智驾 2026 装机量 问界 份额 Momenta IPO 估值
+    url: https://auto.huawei.com/cn/news/2026/2026-04-23-jishu
+    domain: auto.huawei.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.424124+00:00'
+    stale_at: '2026-08-27T07:24:18.424124+00:00'
+    expire_at: '2026-10-26T07:24:18.424124+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7a83fe
+  filename: 2026-07-28_禾赛-w-2525-hk-以-智驾之眼-筑基-迈向-物理ai-通用感官新纪元.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.463667+00:00'
+  processed: true
+  notes: query='禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 禾赛 速腾聚创 2026 财报 毛利率 净利润 ADAS 激光雷达 出货 ASP 分化
+    url: https://pdf.dfcfw.com/pdf/H3_AP202601271818456314_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:18.581235+00:00'
+    stale_at: '2026-08-27T07:34:18.581235+00:00'
+    expire_at: '2026-10-26T07:34:18.581235+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值
+- id: mat-ec5cd0
+  filename: 2026-07-28_激光雷达行业盈利分化-车载走量-机器人赚钱.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.491966+00:00'
+  processed: true
+  notes: query='禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 禾赛 速腾聚创 2026 财报 毛利率 净利润 ADAS 激光雷达 出货 ASP 分化
+    url: https://stcn.com/article/detail/3746488.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:18.518622+00:00'
+    stale_at: '2026-08-27T07:34:18.518622+00:00'
+    expire_at: '2026-10-26T07:34:18.518622+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值
+- id: mat-48ca34
+  filename: 2026-07-28_速腾聚创-2498-hk-深度报告-激光雷达及感知解决方案供应商.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.521987+00:00'
+  processed: false
+  notes: query='禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值
+    url: https://reportify-1252068037.cos.ap-beijing.myqcloud.com/media/production/s_fe49dc52_fe49dc5239e1f713bac95c9e7fa3680d.pdf
+    domain: reportify-1252068037.cos.ap-beijing.myqcloud.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.511614+00:00'
+    stale_at: '2026-08-27T07:24:18.511614+00:00'
+    expire_at: '2026-10-26T07:24:18.511614+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d5e608
+  filename: 2026-07-28_yole-2026车载报告-禾赛adas主激光雷达出货量全球第一.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.551035+00:00'
+  processed: true
+  notes: query='禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 禾赛 速腾聚创 2026 财报 毛利率 净利润 ADAS 激光雷达 出货 ASP 分化
+    url: https://www.hesaitech.com/cn/news/1463
+    domain: hesaitech.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:18.773659+00:00'
+    stale_at: '2026-08-27T07:34:18.773659+00:00'
+    expire_at: '2026-10-26T07:34:18.773659+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值
+- id: mat-b45d49
+  filename: 2026-07-28_禾赛科技-robotaxi厂商正转向使用adas激光雷达-期待q4接近盈利-直击业绩会.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.579916+00:00'
+  processed: false
+  notes: query='禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 禾赛 速腾聚创 2026 激光雷达 出货量 单价 ADAS 前装定点 市值
+    url: https://www.cls.cn/detail/1770219
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.568678+00:00'
+    stale_at: '2026-08-27T07:24:18.568678+00:00'
+    expire_at: '2026-10-26T07:24:18.568678+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c654d0
+  filename: 2026-07-28_干了700万单后-百度萝卜快跑谋-出海.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.614333+00:00'
+  processed: false
+  notes: query='百度 萝卜快跑 Apollo Go 2026 单量 盈利 unit economics 车队规模 出海'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 百度 萝卜快跑 Apollo Go 2026 单量 盈利 unit economics 车队规模 出海
+    url: https://www.yicai.com/news/102305991.html
+    domain: yicai.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.602677+00:00'
+    stale_at: '2026-08-27T07:24:18.602677+00:00'
+    expire_at: '2026-10-26T07:24:18.602677+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-393b5b
+  filename: 2026-07-28_can-apollo-go-s-global-expansion-power-baidu-s-nex.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.646439+00:00'
+  processed: false
+  notes: query='百度 萝卜快跑 Apollo Go 2026 单量 盈利 unit economics 车队规模 出海' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百度 萝卜快跑 Apollo Go 2026 单量 盈利 unit economics 车队规模 出海
+    url: https://finance.yahoo.com/news/apollo-gos-global-expansion-power-143200773.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.634939+00:00'
+    stale_at: '2026-08-27T07:24:18.634939+00:00'
+    expire_at: '2026-10-26T07:24:18.634939+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7fc604
+  filename: 2026-07-28_全球robotaxi指数出炉-百度apollo-go登顶-中国智驾商业化规模领跑-网通社号.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.678489+00:00'
+  processed: false
+  notes: query='百度 萝卜快跑 Apollo Go 2026 单量 盈利 unit economics 车队规模 出海' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 百度 萝卜快跑 Apollo Go 2026 单量 盈利 unit economics 车队规模 出海
+    url: http://auto.news18a.com/news/storys_269265.html
+    domain: auto.news18a.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.666632+00:00'
+    stale_at: '2026-08-27T07:24:18.666632+00:00'
+    expire_at: '2026-10-26T07:24:18.666632+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b4cdd7
+  filename: 2026-07-28_文远知行-季度营收增长58-毛利率35-领跑行业-robotaxi用户翻番-文远知行发布q1财报.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.720598+00:00'
+  processed: false
+  notes: query='小马智行 Pony.ai 文远知行 WeRide 2026 robotaxi 车队 盈利 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 小马智行 Pony.ai 文远知行 WeRide 2026 robotaxi 车队 盈利 营收
+    url: https://www.weride.ai/zh/posts/v4ytep5att28vdcs071ow5lk
+    domain: weride.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.707250+00:00'
+    stale_at: '2026-08-27T07:24:18.707250+00:00'
+    expire_at: '2026-10-26T07:24:18.707250+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8b35c5
+  filename: 2026-07-28_聚焦国内robotaxi-技术与商业化进度领先.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.760026+00:00'
+  processed: false
+  notes: query='小马智行 Pony.ai 文远知行 WeRide 2026 robotaxi 车队 盈利 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 小马智行 Pony.ai 文远知行 WeRide 2026 robotaxi 车队 盈利 营收
+    url: https://pdf.dfcfw.com/pdf/H3_AP202603181820614033_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.746893+00:00'
+    stale_at: '2026-08-27T07:24:18.746893+00:00'
+    expire_at: '2026-10-26T07:24:18.746893+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a13631
+  filename: 2026-07-28_新闻发布-小马智行.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.794783+00:00'
+  processed: false
+  notes: query='小马智行 Pony.ai 文远知行 WeRide 2026 robotaxi 车队 盈利 营收'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 小马智行 Pony.ai 文远知行 WeRide 2026 robotaxi 车队 盈利 营收
+    url: https://ir.pony.ai/zh-hans/news-events/press-releases
+    domain: ir.pony.ai
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.781458+00:00'
+    stale_at: '2026-08-27T07:24:18.781458+00:00'
+    expire_at: '2026-10-26T07:24:18.781458+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-01e1f4
+  filename: 2026-07-28_争夺-港股robotaxi第一股-文远与小马谁将是赢家.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.830574+00:00'
+  processed: false
+  notes: query='小马智行 Pony.ai 文远知行 WeRide 2026 robotaxi 车队 盈利 营收'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 小马智行 Pony.ai 文远知行 WeRide 2026 robotaxi 车队 盈利 营收
+    url: https://www.stcn.com/article/detail/3392013.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.816759+00:00'
+    stale_at: '2026-08-27T07:24:18.816759+00:00'
+    expire_at: '2026-10-26T07:24:18.816759+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-52c2f5
+  filename: 2026-07-28_技术路线逐渐清晰-高阶智驾迎来拐点.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.869925+00:00'
+  processed: true
+  notes: query='端到端 VLA 智驾 2026 城市NOA 高阶辅助驾驶 渗透率 中国' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 城市NOA 渗透率 2026 端到端 纯视觉 去激光雷达 特斯拉 FSD 中国 高阶智驾
+    url: https://pdf.dfcfw.com/pdf/H3_AP202604051821027031_1.pdf?1775469051000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.153506+00:00'
+    stale_at: '2026-08-27T07:34:19.153506+00:00'
+    expire_at: '2026-10-26T07:34:19.153506+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 端到端 VLA 智驾 2026 城市NOA 高阶辅助驾驶 渗透率 中国
+- id: mat-d9818f
+  filename: 2026-07-28_2026年中国汽车产业-汽车智驾产业进入新阶段.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.907768+00:00'
+  processed: true
+  notes: query='端到端 VLA 智驾 2026 城市NOA 高阶辅助驾驶 渗透率 中国' | 待用户确认 | query='自动驾驶 智驾 行业 深度报告
+    2026 全栈价值链 利润池 投资 分析' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析
+    url: http://jjckb.xinhuanet.com/20260122/5dd9e17179de48c69e7889139b89d084/c.html
+    domain: jjckb.xinhuanet.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:17.391614+00:00'
+    stale_at: '2026-08-27T07:34:17.391614+00:00'
+    expire_at: '2026-10-26T07:34:17.391614+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d3b381
+  filename: 2026-07-28_2026自动驾驶行业蓝皮书-城市noa-自动驾驶商业化的转折点-电子工程专辑.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.945613+00:00'
+  processed: false
+  notes: query='端到端 VLA 智驾 2026 城市NOA 高阶辅助驾驶 渗透率 中国'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 端到端 VLA 智驾 2026 城市NOA 高阶辅助驾驶 渗透率 中国
+    url: https://www.eet-china.com/mp/a507122.html
+    domain: eet-china.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:18.931113+00:00'
+    stale_at: '2026-08-27T07:24:18.931113+00:00'
+    expire_at: '2026-10-26T07:24:18.931113+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a5c575
+  filename: 2026-07-28_比亚迪天神之眼全面无图化-端到端大模型上车-自研4nm芯片算力突破2100tops-网通社号.md
+  source_type: web-search
+  added: '2026-07-28T07:24:18.988939+00:00'
+  processed: false
+  notes: query='比亚迪 天神之眼 2026 高阶智驾 渗透 激光雷达 纯视觉 端到端 TAM' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 比亚迪 天神之眼 2026 高阶智驾 渗透 激光雷达 纯视觉 端到端 TAM
+    url: https://auto.news18a.com/news/storys_261400.html
+    domain: auto.news18a.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:24:18.973686+00:00'
+    stale_at: '2026-08-27T07:24:18.973686+00:00'
+    expire_at: '2026-10-26T07:24:18.973686+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c0eab0
+  filename: 2026-07-28_天神之眼高阶智驾-从智驾洼地到全民智驾的逆袭-雷峰网.md
+  source_type: web-search
+  added: '2026-07-28T07:24:19.030957+00:00'
+  processed: false
+  notes: query='比亚迪 天神之眼 2026 高阶智驾 渗透 激光雷达 纯视觉 端到端 TAM'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 比亚迪 天神之眼 2026 高阶智驾 渗透 激光雷达 纯视觉 端到端 TAM
+    url: https://www.leiphone.com/category/transportation/IoPlUjYoMn4BvCx32.html
+    domain: leiphone.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:24:19.014735+00:00'
+    stale_at: '2026-08-27T07:24:19.014735+00:00'
+    expire_at: '2026-10-26T07:24:19.014735+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5d3746
+  filename: 2026-07-28_智能驾驶赛道2026年投资深度研究报告.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.312928+00:00'
+  processed: true
+  notes: query='自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析
+    url: https://zhuanlan.zhihu.com/p/1990569023851734649
+    domain: zhuanlan.zhihu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:17.297082+00:00'
+    stale_at: '2026-08-27T07:34:17.297082+00:00'
+    expire_at: '2026-10-26T07:34:17.297082+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-7a3f2d
+  filename: 2026-07-28_自动驾驶行业-全面迈向中高阶智驾.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.360701+00:00'
+  processed: true
+  notes: query='自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析
+    url: https://pdf.dfcfw.com/pdf/H3_AP202502261643523799_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:17.342967+00:00'
+    stale_at: '2026-08-27T07:34:17.342967+00:00'
+    expire_at: '2026-10-26T07:34:17.342967+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-18ebfb
+  filename: 2026-07-28_自动驾驶行业深度报告.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.458864+00:00'
+  processed: true
+  notes: query='自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析
+    url: https://dxobs.obs.cn-north-1.myhuaweicloud.com/dxzk/2023/02/rcl-2022-zi-dong-jia-shi-hang-ye-bao-gao.pdf
+    domain: dxobs.obs.cn-north-1.myhuaweicloud.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:17.440652+00:00'
+    stale_at: '2026-08-27T07:34:17.440652+00:00'
+    expire_at: '2026-10-26T07:34:17.440652+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-62ecd9
+  filename: 2026-07-28_2030年中国汽车行业价值池.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.508450+00:00'
+  processed: true
+  notes: query='自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 自动驾驶 智驾 行业 深度报告 2026 全栈价值链 利润池 投资 分析
+    url: https://www.strategyand.pwc.com/cn/zh/reports/2022/china-automotive-value-pools-2030-sep2022.pdf
+    domain: strategyand.pwc.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:17.489219+00:00'
+    stale_at: '2026-08-27T07:34:17.489219+00:00'
+    expire_at: '2026-10-26T07:34:17.489219+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f56b98
+  filename: 2026-07-28_地平线机器人--目前自动驾驶估值公司在港股上市的企.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.580508+00:00'
+  processed: true
+  notes: query='地平线 禾赛 速腾聚创 小马智行 文远知行 Mobileye 估值 目标价 一致预期 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: 地平线 禾赛 速腾聚创 小马智行 文远知行 Mobileye 估值 目标价 一致预期 2026
+    url: https://xueqiu.com/1605888223/395726323
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:17.562677+00:00'
+    stale_at: '2026-08-27T07:34:17.562677+00:00'
+    expire_at: '2026-10-26T07:34:17.562677+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-02c337
+  filename: 2026-07-28_文远知行-小马智行2026年一季报对比-自动驾驶商业化分道竞速-盈利拐点渐近-风闻.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.630430+00:00'
+  processed: true
+  notes: query='地平线 禾赛 速腾聚创 小马智行 文远知行 Mobileye 估值 目标价 一致预期 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 地平线 禾赛 速腾聚创 小马智行 文远知行 Mobileye 估值 目标价 一致预期 2026
+    url: https://user.guancha.cn/main/content?id=1660547
+    domain: user.guancha.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:17.613164+00:00'
+    stale_at: '2026-08-27T07:34:17.613164+00:00'
+    expire_at: '2026-10-26T07:34:17.613164+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-edc5c2
+  filename: 2026-07-28_l4商业化拐点推动-robotaxi迈向规模运营阶段.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.681472+00:00'
+  processed: true
+  notes: query='地平线 禾赛 速腾聚创 小马智行 文远知行 Mobileye 估值 目标价 一致预期 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 地平线 禾赛 速腾聚创 小马智行 文远知行 Mobileye 估值 目标价 一致预期 2026
+    url: https://pdf.dfcfw.com/pdf/H3_AP202607151826995807_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:17.663188+00:00'
+    stale_at: '2026-08-27T07:34:17.663188+00:00'
+    expire_at: '2026-10-26T07:34:17.663188+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-041e4e
+  filename: 2026-07-28_分拆百度robotaxi萝卜快跑-李彦宏回应了-量子位.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.754557+00:00'
+  processed: true
+  notes: query='萝卜快跑 robotaxi 单车成本 单公里成本 盈亏平衡 unit economics 百度 Waymo 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 萝卜快跑 robotaxi 单车成本 单公里成本 盈亏平衡 unit economics 百度 Waymo 2026
+    url: https://www.qbitai.com/2026/02/382914.html
+    domain: qbitai.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:17.735905+00:00'
+    stale_at: '2026-08-27T07:34:17.735905+00:00'
+    expire_at: '2026-10-26T07:34:17.735905+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a81878
+  filename: 2026-07-28_萝卜快跑武汉今年盈利-无人出租2026年成本将与的士持平-老牌车企下重注赌翻身.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.806248+00:00'
+  processed: true
+  notes: query='萝卜快跑 robotaxi 单车成本 单公里成本 盈亏平衡 unit economics 百度 Waymo 2026'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 萝卜快跑 robotaxi 单车成本 单公里成本 盈亏平衡 unit economics 百度 Waymo 2026
+    url: https://www.stcn.com/article/detail/1301411.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:17.787219+00:00'
+    stale_at: '2026-08-27T07:34:17.787219+00:00'
+    expire_at: '2026-10-26T07:34:17.787219+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a9b6a2
+  filename: 2026-07-28_智驾向高阶渗透-robotaxi-发展进入快车道.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.862318+00:00'
+  processed: true
+  notes: query='萝卜快跑 robotaxi 单车成本 单公里成本 盈亏平衡 unit economics 百度 Waymo 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 萝卜快跑 robotaxi 单车成本 单公里成本 盈亏平衡 unit economics 百度 Waymo 2026
+    url: https://pdf.dfcfw.com/pdf/H3_AP202604291821748379_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:17.842075+00:00'
+    stale_at: '2026-08-27T07:34:17.842075+00:00'
+    expire_at: '2026-10-26T07:34:17.842075+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e5fb63
+  filename: 2026-07-28_1天能跑2-4万单-李彦宏低调透露萝卜快跑在武汉盈亏平衡了-36氪.md
+  source_type: web-search
+  added: '2026-07-28T07:34:17.922586+00:00'
+  processed: true
+  notes: query='萝卜快跑 robotaxi 单车成本 单公里成本 盈亏平衡 unit economics 百度 Waymo 2026'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 萝卜快跑 robotaxi 单车成本 单公里成本 盈亏平衡 unit economics 百度 Waymo 2026
+    url: https://m.36kr.com/p/3432226379959937
+    domain: m.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:17.903173+00:00'
+    stale_at: '2026-08-27T07:34:17.903173+00:00'
+    expire_at: '2026-10-26T07:34:17.903173+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a678a9
+  filename: 2026-07-28_智驾芯片市场-一超两强-格局初定---维科号.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.002341+00:00'
+  processed: true
+  notes: query='英伟达 Thor 地平线 征程6 J6 智驾芯片 定点 份额 交付 对比 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 英伟达 Thor 地平线 征程6 J6 智驾芯片 定点 份额 交付 对比 2026
+    url: /goto?url=CAESYAHuR6pN9a4JLcOKSmRCW4ZlORiWv43ut1jKK_0D772OYT94uc-qkpdS4nAPXAvlc59f_KZ-zuzdtnaa7kREYTZ7L9tpxP4WQ2VB0EfxVIB3nWP6lmHE0aSfCjMhFQD8QQ%3D%3D
+    domain: ''
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:17.982138+00:00'
+    stale_at: '2026-08-27T07:34:17.982138+00:00'
+    expire_at: '2026-10-26T07:34:17.982138+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6979bb
+  filename: 2026-07-28_以地平线为例-探究第三方智驾供应商核心竞争力.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.057375+00:00'
+  processed: true
+  notes: query='英伟达 Thor 地平线 征程6 J6 智驾芯片 定点 份额 交付 对比 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 英伟达 Thor 地平线 征程6 J6 智驾芯片 定点 份额 交付 对比 2026
+    url: /goto?url=CAEScQHuR6pNRbG6jJG_GjijVMu5JDD3li0DXHXdCg2y17mTwf4VWoWnB8zeoNehdcPHfn2nSRIJiKAXFcLLlaaX40qx5S1Yx4jcQuDeTxk4MOyRcW2ACvhgKg0TtyOgwtszmJJ7gbTcKjDj8Nb7j4YWDQ8P
+    domain: ''
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:18.036677+00:00'
+    stale_at: '2026-08-27T07:34:18.036677+00:00'
+    expire_at: '2026-10-26T07:34:18.036677+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c7de09
+  filename: 2026-07-28_智驾芯片三强对决-征程6p-vs-eyeq-ultra-vs-thor.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.112837+00:00'
+  processed: true
+  notes: query='英伟达 Thor 地平线 征程6 J6 智驾芯片 定点 份额 交付 对比 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 英伟达 Thor 地平线 征程6 J6 智驾芯片 定点 份额 交付 对比 2026
+    url: /goto?url=CAESbAHuR6pNI-xRaIp2hBtScupB5YbsAuclBB9KpFeY8tkzcgf-L6oLom9F6FGA4cek2QfNzOqSsdBjD2O7P6LSC93MaAsTKBY0uFW_gPiLxUMQCeCcGY-Yt9BgzmMNitlsvNt-JoIUPNNSCROcZA%3D%3D
+    domain: ''
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:18.092111+00:00'
+    stale_at: '2026-08-27T07:34:18.092111+00:00'
+    expire_at: '2026-10-26T07:34:18.092111+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f720f4
+  filename: 2026-07-28_同时拿下bba-硬刚华为-momenta开启港股上市倒计时---zaker.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.195291+00:00'
+  processed: true
+  notes: query='Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026
+    url: https://app.myzaker.com/news/article.php?pk=6a3e5ff7b15ec03e0059354b
+    domain: app.myzaker.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:18.173534+00:00'
+    stale_at: '2026-08-27T07:34:18.173534+00:00'
+    expire_at: '2026-10-26T07:34:18.173534+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0ac4e9
+  filename: 2026-07-28_三年营收超45亿元-momenta呼唤更多确定性-36氪.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.253561+00:00'
+  processed: true
+  notes: query='Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026
+    url: https://m.36kr.com/p/3869758440307586
+    domain: m.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:18.232635+00:00'
+    stale_at: '2026-08-27T07:34:18.232635+00:00'
+    expire_at: '2026-10-26T07:34:18.232635+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-079b09
+  filename: 2026-07-28_momenta-易控智驾同日-ipo-智驾告别-市梦率--钛媒体官方网站.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.313122+00:00'
+  processed: true
+  notes: query='Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026
+    url: https://www.tmtpost.com/8058339.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:18.291748+00:00'
+    stale_at: '2026-08-27T07:34:18.291748+00:00'
+    expire_at: '2026-10-26T07:34:18.291748+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-461d7c
+  filename: 2026-07-28_拟募资约10亿美元-智驾-物理ai第一股-momenta抢跑港股ipo.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.372708+00:00'
+  processed: true
+  notes: query='Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026
+    url: https://m.cls.cn/detail/2406484
+    domain: m.cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:18.350613+00:00'
+    stale_at: '2026-08-27T07:34:18.350613+00:00'
+    expire_at: '2026-10-26T07:34:18.350613+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-34d210
+  filename: 2026-07-28_通过上市聆讯-momenta首度披露财务数据-三年营收翻三倍.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.434607+00:00'
+  processed: true
+  notes: query='Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Momenta 招股书 港股 IPO 盈利 商业模式 华为 乾崑 智驾 份额 2026
+    url: https://m.ofweek.com/auto/2026-06/ART-70109-12008-30691818.html
+    domain: m.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:18.412456+00:00'
+    stale_at: '2026-08-27T07:34:18.412456+00:00'
+    expire_at: '2026-10-26T07:34:18.412456+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-9e3123
+  filename: 2026-07-28_禾赛-割肉死守-龙一-压力山大--钛媒体官方网站.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.642477+00:00'
+  processed: true
+  notes: query='禾赛 速腾聚创 2026 财报 毛利率 净利润 ADAS 激光雷达 出货 ASP 分化'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 禾赛 速腾聚创 2026 财报 毛利率 净利润 ADAS 激光雷达 出货 ASP 分化
+    url: https://www.tmtpost.com/7993997.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:18.620019+00:00'
+    stale_at: '2026-08-27T07:34:18.620019+00:00'
+    expire_at: '2026-10-26T07:34:18.620019+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-9e16e0
+  filename: 2026-07-28_速腾聚创-pk-禾赛科技-2025-又见激光雷达技术路线之争-速腾-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.707418+00:00'
+  processed: true
+  notes: query='禾赛 速腾聚创 2026 财报 毛利率 净利润 ADAS 激光雷达 出货 ASP 分化'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 禾赛 速腾聚创 2026 财报 毛利率 净利润 ADAS 激光雷达 出货 ASP 分化
+    url: https://finance.sina.com.cn/stock/relnews/hk/2025-06-17/doc-infakiik8743949.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:18.683826+00:00'
+    stale_at: '2026-08-27T07:34:18.683826+00:00'
+    expire_at: '2026-10-26T07:34:18.683826+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6417b1
+  filename: 2026-07-28_全球自动驾驶第一股退市-三年市值蒸发99-36氪.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.858294+00:00'
+  processed: true
+  notes: query='自动驾驶 L4 寒冬 复盘 Cruise 关停 图森未来 退市 利润未兑现 教训'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 自动驾驶 L4 寒冬 复盘 Cruise 关停 图森未来 退市 利润未兑现 教训
+    url: https://auto-time.36kr.com/p/2610976003266951
+    domain: auto-time.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:18.834942+00:00'
+    stale_at: '2026-08-27T07:34:18.834942+00:00'
+    expire_at: '2026-10-26T07:34:18.834942+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - industry-mirror
+- id: mat-323bf4
+  filename: 2026-07-28_退市-全球自动驾驶第一股-还有未来吗.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.924020+00:00'
+  processed: true
+  notes: query='自动驾驶 L4 寒冬 复盘 Cruise 关停 图森未来 退市 利润未兑现 教训'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 自动驾驶 L4 寒冬 复盘 Cruise 关停 图森未来 退市 利润未兑现 教训
+    url: https://www.stcn.com/article/detail/1096879.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:18.899367+00:00'
+    stale_at: '2026-08-27T07:34:18.899367+00:00'
+    expire_at: '2026-10-26T07:34:18.899367+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - industry-mirror
+- id: mat-9a125f
+  filename: 2026-07-28_达摩院退出-图森未来退市l4级自动驾驶迎来-寒冬.md
+  source_type: web-search
+  added: '2026-07-28T07:34:18.990822+00:00'
+  processed: true
+  notes: query='自动驾驶 L4 寒冬 复盘 Cruise 关停 图森未来 退市 利润未兑现 教训'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 自动驾驶 L4 寒冬 复盘 Cruise 关停 图森未来 退市 利润未兑现 教训
+    url: https://www.cls.cn/detail/1351356
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:18.966319+00:00'
+    stale_at: '2026-08-27T07:34:18.966319+00:00'
+    expire_at: '2026-10-26T07:34:18.966319+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - industry-mirror
+- id: mat-61db3c
+  filename: 2026-07-28_2026年汽车智能化报告-城市noa渗透率23-新一代智驾架构落地前景-东吴证券-资讯-三个皮匠报告.md
+  source_type: web-search
+  added: '2026-07-28T07:34:19.083631+00:00'
+  processed: true
+  notes: query='城市NOA 渗透率 2026 端到端 纯视觉 去激光雷达 特斯拉 FSD 中国 高阶智驾' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  confidence: 0.7
+  search_meta:
+    query: 城市NOA 渗透率 2026 端到端 纯视觉 去激光雷达 特斯拉 FSD 中国 高阶智驾
+    url: https://m.sgpjbg.com/info/ff15a008e78e6a850ef0d19a71fba732.html
+    domain: m.sgpjbg.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.059000+00:00'
+    stale_at: '2026-08-27T07:34:19.059000+00:00'
+    expire_at: '2026-10-26T07:34:19.059000+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a1b668
+  filename: 2026-07-28_267万辆城区noa背后-5强争霸-智驾第一梯队排座次.md
+  source_type: web-search
+  added: '2026-07-28T07:34:19.223234+00:00'
+  processed: true
+  notes: query='城市NOA 渗透率 2026 端到端 纯视觉 去激光雷达 特斯拉 FSD 中国 高阶智驾' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  confidence: 0.7
+  search_meta:
+    query: 城市NOA 渗透率 2026 端到端 纯视觉 去激光雷达 特斯拉 FSD 中国 高阶智驾
+    url: https://tidenews.com.cn/tmh_news.html?id=69dcbb8c38547700016fd55b
+    domain: tidenews.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.198004+00:00'
+    stale_at: '2026-08-27T07:34:19.198004+00:00'
+    expire_at: '2026-10-26T07:34:19.198004+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ea0a65
+  filename: 2026-07-28_研判2025-中国noa行业渗透率-市场规模及未来趋势分析-noa-加速普及-产业规模迅速壮大-图-.md
+  source_type: web-search
+  added: '2026-07-28T07:34:19.297986+00:00'
+  processed: true
+  notes: query='城市NOA 渗透率 2026 端到端 纯视觉 去激光雷达 特斯拉 FSD 中国 高阶智驾' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  confidence: 0.7
+  search_meta:
+    query: 城市NOA 渗透率 2026 端到端 纯视觉 去激光雷达 特斯拉 FSD 中国 高阶智驾
+    url: https://www.chyxx.com/industry/1220123.html
+    domain: chyxx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.270494+00:00'
+    stale_at: '2026-08-27T07:34:19.270494+00:00'
+    expire_at: '2026-10-26T07:34:19.270494+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-9c851d
+  filename: 2026-07-28_中国l3-l4自动驾驶强制性国标落地-车企出海全球化面临合规新门槛-网通社号.md
+  source_type: web-search
+  added: '2026-07-28T07:34:19.397434+00:00'
+  processed: true
+  notes: query='自动驾驶 监管 2026 中国准入 美国 NHTSA 欧盟 UN-R157 L3 L4 立法 对比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 自动驾驶 监管 2026 中国准入 美国 NHTSA 欧盟 UN-R157 L3 L4 立法 对比
+    url: http://auto.news18a.com/news/storys_268599.html
+    domain: auto.news18a.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.369704+00:00'
+    stale_at: '2026-08-27T07:34:19.369704+00:00'
+    expire_at: '2026-10-26T07:34:19.369704+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e46049
+  filename: 2026-07-28_自动驾驶相关法规现状及趋势---marklines全球汽车产业平台.md
+  source_type: web-search
+  added: '2026-07-28T07:34:19.473716+00:00'
+  processed: true
+  notes: query='自动驾驶 监管 2026 中国准入 美国 NHTSA 欧盟 UN-R157 L3 L4 立法 对比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 自动驾驶 监管 2026 中国准入 美国 NHTSA 欧盟 UN-R157 L3 L4 立法 对比
+    url: https://www.marklines.com/cn/report/rep2457_202303
+    domain: marklines.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.446051+00:00'
+    stale_at: '2026-08-27T07:34:19.446051+00:00'
+    expire_at: '2026-10-26T07:34:19.446051+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b9b432
+  filename: 2026-07-28_全球首个自动驾驶系统全球技术法规获批发布-新华网.md
+  source_type: web-search
+  added: '2026-07-28T07:34:19.554849+00:00'
+  processed: true
+  notes: query='自动驾驶 监管 2026 中国准入 美国 NHTSA 欧盟 UN-R157 L3 L4 立法 对比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 自动驾驶 监管 2026 中国准入 美国 NHTSA 欧盟 UN-R157 L3 L4 立法 对比
+    url: https://www.news.cn/tech/20260626/842c0e8cda9f4efc9faa66f2adc36abc/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.523411+00:00'
+    stale_at: '2026-08-27T07:34:19.523411+00:00'
+    expire_at: '2026-10-26T07:34:19.523411+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e9f88a
+  filename: 2026-07-28_联合国通过全球法规-推动自动驾驶车辆安全上路-1联合国新闻.md
+  source_type: web-search
+  added: '2026-07-28T07:34:19.634252+00:00'
+  processed: true
+  notes: query='自动驾驶 监管 2026 中国准入 美国 NHTSA 欧盟 UN-R157 L3 L4 立法 对比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 自动驾驶 监管 2026 中国准入 美国 NHTSA 欧盟 UN-R157 L3 L4 立法 对比
+    url: https://news.un.org/zh/story/2026/02/1141596
+    domain: news.un.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.606167+00:00'
+    stale_at: '2026-08-27T07:34:19.606167+00:00'
+    expire_at: '2026-10-26T07:34:19.606167+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-021ccc
+  filename: 2026-07-28_l3落地前夜-比亚迪补齐智能化最后一块拼图.md
+  source_type: web-search
+  added: '2026-07-28T07:34:19.829193+00:00'
+  processed: true
+  notes: query='比亚迪 蔚来 小鹏 理想 自研 智驾芯片 流片 4nm 2026 上车 侵蚀 英伟达'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 比亚迪 蔚来 小鹏 理想 自研 智驾芯片 流片 4nm 2026 上车 侵蚀 英伟达
+    url: https://www.21jingji.com/article/20260531/herald/cc66fa3e46afbfb6bf5336f0bff9cc4d.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:19.801691+00:00'
+    stale_at: '2026-08-27T07:34:19.801691+00:00'
+    expire_at: '2026-10-26T07:34:19.801691+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-94c77d
+  filename: 2026-07-28_比亚迪率先承诺为城市领航安全兜底发布中国首款4nm智驾.md
+  source_type: web-search
+  added: '2026-07-28T07:34:19.907998+00:00'
+  processed: true
+  notes: query='比亚迪 蔚来 小鹏 理想 自研 智驾芯片 流片 4nm 2026 上车 侵蚀 英伟达' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 比亚迪 蔚来 小鹏 理想 自研 智驾芯片 流片 4nm 2026 上车 侵蚀 英伟达
+    url: https://www.bydglobal.com/cn/news/2026-05-29/1617162805514
+    domain: bydglobal.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:19.878712+00:00'
+    stale_at: '2026-08-27T07:34:19.878712+00:00'
+    expire_at: '2026-10-26T07:34:19.878712+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-97fd2c
+  filename: 2026-07-28_自动驾驶卡车跨越-死亡谷-商业化前夜谁将率先上岸.md
+  source_type: web-search
+  added: '2026-07-28T07:34:20.087421+00:00'
+  processed: true
+  notes: query='Aurora Kodiak robotruck 干线物流 自动驾驶卡车 2026 商业化 盈利' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Aurora Kodiak robotruck 干线物流 自动驾驶卡车 2026 商业化 盈利
+    url: https://m.ofweek.com/auto/2026-06/ART-70109-8420-30691271.html
+    domain: m.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:20.059794+00:00'
+    stale_at: '2026-08-27T07:34:20.059794+00:00'
+    expire_at: '2026-10-26T07:34:20.059794+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-19d44e
+  filename: 2026-07-28_自动卡车市场规模-增长-全球报告-2034.md
+  source_type: web-search
+  added: '2026-07-28T07:34:20.168359+00:00'
+  processed: true
+  notes: query='Aurora Kodiak robotruck 干线物流 自动驾驶卡车 2026 商业化 盈利' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Aurora Kodiak robotruck 干线物流 自动驾驶卡车 2026 商业化 盈利
+    url: https://www.fortunebusinessinsights.com/zh/autonomous-truck-market-103590
+    domain: fortunebusinessinsights.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-28T07:34:20.138454+00:00'
+    stale_at: '2026-08-27T07:34:20.138454+00:00'
+    expire_at: '2026-10-26T07:34:20.138454+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-fb3178
+  filename: 2026-07-28_美国自动驾驶商业化再提速-三家公司计划年底前实现无人.md
+  source_type: web-search
+  added: '2026-07-28T07:34:20.247450+00:00'
+  processed: true
+  notes: query='Aurora Kodiak robotruck 干线物流 自动驾驶卡车 2026 商业化 盈利'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: Aurora Kodiak robotruck 干线物流 自动驾驶卡车 2026 商业化 盈利
+    url: https://www.cls.cn/detail/1563570
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:20.218722+00:00'
+    stale_at: '2026-08-27T07:34:20.218722+00:00'
+    expire_at: '2026-10-26T07:34:20.218722+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-41019d
+  filename: 2026-07-28_aurora自动驾驶卡车规模化提速-2026年部署200辆.md
+  source_type: web-search
+  added: '2026-07-28T07:34:20.327801+00:00'
+  processed: true
+  notes: query='Aurora Kodiak robotruck 干线物流 自动驾驶卡车 2026 商业化 盈利'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: Aurora Kodiak robotruck 干线物流 自动驾驶卡车 2026 商业化 盈利
+    url: https://www.tmtpost.com/agent/ai-article/15861
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-07-28T07:34:20.298973+00:00'
+    stale_at: '2026-08-27T07:34:20.298973+00:00'
+    expire_at: '2026-10-26T07:34:20.298973+00:00'
+    triggered_by: 00-deep-fetch

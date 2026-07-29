@@ -1,0 +1,202 @@
+slug: us-viking-vktx
+variant: opus4.8
+entries:
+- searched_at: '2026-07-21T22:41:29.386334+00:00'
+  query: Viking Therapeutics VK2735 oral Phase 2 VENTURE data 2026 results
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.406584+00:00'
+  query: Viking Therapeutics VK2735 subcutaneous VANQUISH Phase 3 enrollment timeline
+    2027
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.424432+00:00'
+  query: Viking Therapeutics VK2735 maintenance study data 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 1
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.444487+00:00'
+  query: Viking Therapeutics cash position runway 2026 10-Q quarterly
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.472042+00:00'
+  query: Viking Therapeutics VKTX market cap stock price 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.506035+00:00'
+  query: Viking Therapeutics acquisition takeover M&A rumor 2026 Lilly Pfizer
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.564826+00:00'
+  query: orforglipron FDA approval submission 2026 Eli Lilly obesity oral
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.664659+00:00'
+  query: Novo Nordisk CagriSema amycretin 2026 obesity Phase 3 data
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.734299+00:00'
+  query: Amgen MariTide Phase 3 obesity 2026 data
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 2
+  n_mid: 1
+  n_low: 2
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.838254+00:00'
+  query: Structure Therapeutics aleniglipron GSBR-1290 oral GLP-1 2026 data
+  triggered_by: 00-prescan-baseline
+  n_results: 5
+  n_high: 3
+  n_mid: 1
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.923594+00:00'
+  query: Viking Therapeutics VK2809 MASH partnership licensing 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 3
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:41:29.992342+00:00'
+  query: Viking Therapeutics VK2735 oral Phase 3 start Q4 2026 obesity
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:50:44.102296+00:00'
+  query: obesity pipeline 2026 2027 amycretin MariTide retatrutide Phase 3 readout
+    timeline
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:50:44.148812+00:00'
+  query: Viking Therapeutics Brian Lian equity offering financing history capital
+    strategy
+  triggered_by: 00-deep-fetch
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:50:44.392830+00:00'
+  query: Pfizer Metsera acquisition deal terms price obesity biotech M&A premium 2025
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 1
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-21T22:50:44.604861+00:00'
+  query: obesity drug Phase 3 failure disappointment CagriSema danuglipron biotech
+    pivotal miss stock crash
+  triggered_by: 00-deep-fetch
+  n_results: 5
+  n_high: 2
+  n_mid: 2
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-21T22:50:44.724125+00:00'
+  query: Viking Therapeutics VK2735 maintenance dosing trial design weight regain
+    results 2026
+  triggered_by: 00-deep-fetch
+  n_results: 3
+  n_high: 2
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-21T22:50:44.912226+00:00'
+  query: Viking Therapeutics VK2735 peak sales estimate analyst price target model
+    obesity
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 3
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-21T22:50:45.108278+00:00'
+  query: VK2735 oral vs orforglipron aleniglipron weight loss tolerability discontinuation
+    comparison
+  triggered_by: 00-deep-fetch
+  n_results: 4
+  n_high: 0
+  n_mid: 3
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-22T08:50:32.667311+00:00'
+  query: GLP-1/GIP obesity Ph2→Ph3 clinical success base rate
+  triggered_by: 05-critic
+  n_results: 6
+  n_high: 4
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:50:33.406667+00:00'
+  query: obesity biotech M&A deal-size distribution / $10B tail rate
+  triggered_by: 05-critic
+  n_results: 6
+  n_high: 5
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:50:35.554332+00:00'
+  query: per-acquirer obesity pipeline gap / is $10B anchor still alive
+  triggered_by: 05-critic
+  n_results: 15
+  n_high: 15
+  n_mid: 0
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:50:36.178323+00:00'
+  query: VKTX latest 2025 proxy Brian Lian ownership/comp
+  triggered_by: 05-critic
+  n_results: 4
+  n_high: 2
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T08:50:36.831272+00:00'
+  query: sell-side VK2735 peak sales / rNPV / PoS detail
+  triggered_by: 05-critic
+  n_results: 4
+  n_high: 1
+  n_mid: 3
+  n_low: 0
+  disposition: registered

@@ -1,0 +1,817 @@
+slug: cn-xingye-silver-tin
+variant: opus4.8
+updated: '2026-07-19T02:27:10.790755+00:00'
+materials:
+- id: mat-4743b1
+  filename: 2026-07-18_白银价格走势预测-明天-周-月-2026年-2027年---2029年.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.684065+00:00'
+  processed: false
+  notes: query='白银价格 2026年7月 最新 美元每盎司 走势' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白银价格 2026年7月 最新 美元每盎司 走势
+    url: https://longforecast.cn/silver
+    domain: longforecast.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T16:58:08.683160+00:00'
+    stale_at: '2026-08-17T16:58:08.683160+00:00'
+    expire_at: '2026-10-16T16:58:08.683160+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1f59a1
+  filename: 2026-07-18_锡价开年涨超25-下游-原料买不起-订单不敢接---21经济网.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.687177+00:00'
+  processed: false
+  notes: query='LME 锡价 2026 最新 每吨 缅甸 供给'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: LME 锡价 2026 最新 每吨 缅甸 供给
+    url: https://www.21jingji.com/article/20260122/herald/2708e50beba84d0faf296174e3b58897.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.686211+00:00'
+    stale_at: '2026-08-17T16:58:08.686211+00:00'
+    expire_at: '2026-10-16T16:58:08.686211+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2fe5df
+  filename: 2026-07-18_供给偏紧-ai需求托底-锡价中长期上行可期.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.690372+00:00'
+  processed: false
+  notes: query='LME 锡价 2026 最新 每吨 缅甸 供给'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: LME 锡价 2026 最新 每吨 缅甸 供给
+    url: https://www.stcn.com/article/detail/3940324.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.689124+00:00'
+    stale_at: '2026-08-17T16:58:08.689124+00:00'
+    expire_at: '2026-10-16T16:58:08.689124+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-739a0f
+  filename: 2026-07-18_兴业银锡2025-2028年主要矿产产量增长分析-兴业银锡2025-2028年主要矿产产量增长分析一.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.695425+00:00'
+  processed: false
+  notes: query='兴业银锡 银漫矿业 165万吨 技改扩能 达产 产能'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 银漫矿业 165万吨 技改扩能 达产 产能
+    url: https://xueqiu.com/5798578993/339510055
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.693748+00:00'
+    stale_at: '2026-08-17T16:58:08.693748+00:00'
+    expire_at: '2026-10-16T16:58:08.693748+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-99d441
+  filename: 2026-07-18_兴业银锡-297万吨-年扩建项目达产后-银漫矿业银-锡产量将有望翻倍-上海有色网.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.702405+00:00'
+  processed: false
+  notes: query='兴业银锡 银漫矿业 165万吨 技改扩能 达产 产能' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 银漫矿业 165万吨 技改扩能 达产 产能
+    url: https://news.smm.cn/news/103408363
+    domain: news.smm.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T16:58:08.700244+00:00'
+    stale_at: '2026-08-17T16:58:08.700244+00:00'
+    expire_at: '2026-10-16T16:58:08.700244+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-236ca4
+  filename: 2026-07-18_兴业银锡-297万吨-年扩建项目达产后-银漫矿业的银-锡产量将有望翻倍-兴业-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.708646+00:00'
+  processed: false
+  notes: query='兴业银锡 银漫矿业 165万吨 技改扩能 达产 产能'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 银漫矿业 165万吨 技改扩能 达产 产能
+    url: https://finance.sina.com.cn/stock/relnews/cn/2025-07-02/doc-infecccw7593656.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.706199+00:00'
+    stale_at: '2026-08-17T16:58:08.706199+00:00'
+    expire_at: '2026-10-16T16:58:08.706199+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5a4773
+  filename: 2026-07-18_兴业银锡2025年营收同比增长30-净利润17亿元.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.717257+00:00'
+  processed: false
+  notes: query='兴业银锡 000426 2025年报 营收 净利润 白银 锡产量'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 000426 2025年报 营收 净利润 白银 锡产量
+    url: https://www.stcn.com/article/detail/3777755.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.714504+00:00'
+    stale_at: '2026-08-17T16:58:08.714504+00:00'
+    expire_at: '2026-10-16T16:58:08.714504+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ab16fa
+  filename: 2026-07-18_兴业银锡-2025年净利润17-04亿元-同比增长11-40.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.725251+00:00'
+  processed: false
+  notes: query='兴业银锡 000426 2025年报 营收 净利润 白银 锡产量'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 000426 2025年报 营收 净利润 白银 锡产量
+    url: https://www.cls.cn/detail/2350910
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.722133+00:00'
+    stale_at: '2026-08-17T16:58:08.722133+00:00'
+    expire_at: '2026-10-16T16:58:08.722133+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5ca1dd
+  filename: 2026-07-18_兴业银锡-2026年一季度净利润13-38亿元同比增长257-32.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.736921+00:00'
+  processed: false
+  notes: query='兴业银锡 2026年一季报 业绩 净利润 同比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 2026年一季报 业绩 净利润 同比
+    url: https://wap.eastmoney.com/a/202605013727283095.html
+    domain: wap.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T16:58:08.733558+00:00'
+    stale_at: '2026-08-17T16:58:08.733558+00:00'
+    expire_at: '2026-10-16T16:58:08.733558+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-32a17e
+  filename: 2026-07-18_兴业银锡-预计2026年半年度净利润同比增长168-95--197-86.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.748805+00:00'
+  processed: false
+  notes: query='兴业银锡 2026年一季报 业绩 净利润 同比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 2026年一季报 业绩 净利润 同比
+    url: https://news.futunn.com/flash/20509897/xingye-silver-tin-expects-net-profit-for-the-first-half
+    domain: news.futunn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T16:58:08.744660+00:00'
+    stale_at: '2026-08-17T16:58:08.744660+00:00'
+    expire_at: '2026-10-16T16:58:08.744660+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ff6361
+  filename: 2026-07-18_兴业银锡-000426-公司公告-兴业银锡-2026年一季度报告新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.760659+00:00'
+  processed: false
+  notes: query='兴业银锡 2026年一季报 业绩 净利润 同比'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 2026年一季报 业绩 净利润 同比
+    url: https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=000426&id=12276935
+    domain: vip.stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.756133+00:00'
+    stale_at: '2026-08-17T16:58:08.756133+00:00'
+    expire_at: '2026-10-16T16:58:08.756133+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-48079d
+  filename: 2026-07-18_一年净利17亿-700亿内蒙古矿业巨头-趁热打铁-赴港ipo.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.776031+00:00'
+  processed: false
+  notes: query='兴业银锡 控股股东 兴业集团 股权质押 比例 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 控股股东 兴业集团 股权质押 比例 2026
+    url: https://www.stcn.com/article/detail/3933071.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.769759+00:00'
+    stale_at: '2026-08-17T16:58:08.769759+00:00'
+    expire_at: '2026-10-16T16:58:08.769759+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ee4577
+  filename: 2026-07-18_公司公告-兴业银锡-关于控股股东部分股权解除质押的.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.791722+00:00'
+  processed: false
+  notes: query='兴业银锡 控股股东 兴业集团 股权质押 比例 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 控股股东 兴业集团 股权质押 比例 2026
+    url: https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?CompanyCode=10000697&gather=1&id=11225912
+    domain: vip.stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.786546+00:00'
+    stale_at: '2026-08-17T16:58:08.786546+00:00'
+    expire_at: '2026-10-16T16:58:08.786546+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-05be38
+  filename: 2026-07-18_溢价165-兴业银锡拟认购澳大利亚上市矿企tat20-股份-成其第一大股东-东方财富网.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.812499+00:00'
+  processed: false
+  notes: query='兴业银锡 收购 Tartana Minerals 澳洲 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 收购 Tartana Minerals 澳洲 进展
+    url: https://finance.eastmoney.com/a/202607173809854911.html
+    domain: finance.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T16:58:08.805731+00:00'
+    stale_at: '2026-08-17T16:58:08.805731+00:00'
+    expire_at: '2026-10-16T16:58:08.805731+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ff59e2
+  filename: 2026-07-18_溢价165-兴业银锡拟认购澳大利亚上市矿企tat20-股份.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.827455+00:00'
+  processed: false
+  notes: query='兴业银锡 收购 Tartana Minerals 澳洲 进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 收购 Tartana Minerals 澳洲 进展
+    url: https://finance.sina.com.cn/roll/2026-07-17/doc-iniiahrp8173620.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.821753+00:00'
+    stale_at: '2026-08-17T16:58:08.821753+00:00'
+    expire_at: '2026-10-16T16:58:08.821753+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-3f5b07
+  filename: 2026-07-18_兴业银锡-000426-公司公告.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.846144+00:00'
+  processed: false
+  notes: query='兴业银锡 资产负债率 可转债 定增 再融资 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 资产负债率 可转债 定增 再融资 2025
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=000426&id=11016647
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.839440+00:00'
+    stale_at: '2026-08-17T16:58:08.839440+00:00'
+    expire_at: '2026-10-16T16:58:08.839440+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f267f1
+  filename: 2026-07-18_内蒙古兴业银锡矿业股份有限公司2025-年第三季度报告.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.866288+00:00'
+  processed: false
+  notes: query='兴业银锡 资产负债率 可转债 定增 再融资 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 资产负债率 可转债 定增 再融资 2025
+    url: https://static.cninfo.com.cn/finalpage/2025-10-31/1224772110.PDF
+    domain: static.cninfo.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T16:58:08.859467+00:00'
+    stale_at: '2026-08-17T16:58:08.859467+00:00'
+    expire_at: '2026-10-16T16:58:08.859467+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2b5cee
+  filename: 2026-07-18_拿下亚洲第一大银矿-兴业银锡资源禀赋持续释放成长性.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.885964+00:00'
+  processed: false
+  notes: query='兴业银锡 白银 锡 铅锌 资源储量 保有资源量'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 白银 锡 铅锌 资源储量 保有资源量
+    url: https://www.stcn.com/article/detail/1466517.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.879218+00:00'
+    stale_at: '2026-08-17T16:58:08.879218+00:00'
+    expire_at: '2026-10-16T16:58:08.879218+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-58fae5
+  filename: 2026-07-18_资源与储量-内蒙古兴业银锡矿业股份有限公司-官方网站.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.907737+00:00'
+  processed: false
+  notes: query='兴业银锡 白银 锡 铅锌 资源储量 保有资源量' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 白银 锡 铅锌 资源储量 保有资源量
+    url: https://www.xyyxky.com/resources.html
+    domain: xyyxky.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T16:58:08.900245+00:00'
+    stale_at: '2026-08-17T16:58:08.900245+00:00'
+    expire_at: '2026-10-16T16:58:08.900245+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-85679b
+  filename: 2026-07-18_兴业银锡-sz000426-研究报告-研究评级-机构研报.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.930228+00:00'
+  processed: true
+  notes: query='兴业银锡 券商 研报 目标价 盈利预测 2026'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 深度报告 中信建投 中金 盈利预测 目标价 2026
+    url: http://vip.stock.finance.sina.com.cn/q/go.php/vReport_List/kind/search/index.phtml?symbol=sz000426&orgname=&industry=&title=&t1=all
+    domain: vip.stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T17:12:09.576902+00:00'
+    stale_at: '2026-08-17T17:12:09.576902+00:00'
+    expire_at: '2026-10-16T17:12:09.576902+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 兴业银锡 券商 研报 目标价 盈利预测 2026
+- id: mat-a44d20
+  filename: 2026-07-18_兴业银锡未来3年业绩展望-2026-2028.md
+  source_type: web-search
+  added: '2026-07-18T16:58:08.954733+00:00'
+  processed: false
+  notes: query='兴业银锡 券商 研报 目标价 盈利预测 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 券商 研报 目标价 盈利预测 2026
+    url: https://xueqiu.com/7197219405/370670786
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T16:58:08.943739+00:00'
+    stale_at: '2026-08-17T16:58:08.943739+00:00'
+    expire_at: '2026-10-16T16:58:08.943739+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-74ce34
+  filename: 2025_000426_annual_2026-04-21_兴业银锡.PDF
+  source_type: annual-report
+  added: '2026-07-18T17:07:08.733032+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴业银锡
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-786786
+  filename: 2026_000426_quarterly_2026-04-29_兴业银锡.PDF
+  source_type: quarterly-report
+  added: '2026-07-18T17:07:09.087605+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴业银锡
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-7dd499
+  filename: 2026-07-17_000426_announce_kzz_关于收购西藏阳光矿业投资有限公司100%股权进展暨完成工商变更登记的公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:07:54.637016+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴业银锡
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-e50af2
+  filename: 2026-07-16_000426_announce_kzz_关于发行H股股票并在香港联合交易所有限公司上市申请发回暨拟重新递交申请的提示性公.PDF
+  source_type: announcement
+  added: '2026-07-18T17:07:54.761471+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴业银锡
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-3f3de8
+  filename: 2026-07-14_000426_announce_yjygjxz_2026年半年度业绩预告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:07:54.876155+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴业银锡
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-f5b19a
+  filename: 2026-07-13_000426_announce_kzz_关于全资子公司银漫矿业297万吨-年扩建工程项目取得建设用地批复的公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:07:55.001791+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴业银锡
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-b84471
+  filename: 2026-06-30_000426_announce_kzz_关于收购AtlasTinSAS25%股权的公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:07:55.122726+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴业银锡
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5891d8
+  filename: 2026-05-27_000426_announce_kzz_关于以场外要约收购方式收购FarEastGoldLimited的公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:07:55.262070+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴业银锡
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-90c71a
+  filename: 2026-05-25_000426_announce_kzz_关于向香港联交所递交境外上市股份（H股）发行与上市申请并刊发申请资料的公告.PDF
+  source_type: announcement
+  added: '2026-07-18T17:07:55.388077+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 兴业银锡
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-4b91ac
+  filename: 2026-07-18_斥资超2300万美元收完剩余股权-兴业银锡全盘掌控海外世界级锡矿.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.164955+00:00'
+  processed: true
+  notes: query='兴业银锡 大西洋锡业 Achmmach 摩洛哥 Atlas Tin 锡产能' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 大西洋锡业 Achmmach 摩洛哥 Atlas Tin 锡产能
+    url: https://wap.eastmoney.com/a/202607013788813136.html
+    domain: wap.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:12:09.155143+00:00'
+    stale_at: '2026-08-17T17:12:09.155143+00:00'
+    expire_at: '2026-10-16T17:12:09.155143+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0b5521
+  filename: 2026-07-18_兴业银锡斥2311万美元全控海外锡矿首季盈利增257-总资产196-9亿.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.194674+00:00'
+  processed: true
+  notes: query='兴业银锡 大西洋锡业 Achmmach 摩洛哥 Atlas Tin 锡产能'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 大西洋锡业 Achmmach 摩洛哥 Atlas Tin 锡产能
+    url: https://finance.sina.com.cn/roll/2026-07-02/doc-inifkiye5888680.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T17:12:09.183692+00:00'
+    stale_at: '2026-08-17T17:12:09.183692+00:00'
+    expire_at: '2026-10-16T17:12:09.183692+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-cae236
+  filename: 2026-07-18_兴业银锡拟4-54亿元收购海外矿山锡金属探明资源量约两万吨---财联社.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.225416+00:00'
+  processed: true
+  notes: query='兴业银锡 大西洋锡业 Achmmach 摩洛哥 Atlas Tin 锡产能'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 大西洋锡业 Achmmach 摩洛哥 Atlas Tin 锡产能
+    url: https://www.cls.cn/detail/2022727
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T17:12:09.214887+00:00'
+    stale_at: '2026-08-17T17:12:09.214887+00:00'
+    expire_at: '2026-10-16T17:12:09.214887+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-1b9e1e
+  filename: 2026-07-18_pdf-兴业银锡-000426-sz.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.262399+00:00'
+  processed: true
+  notes: query='锡业股份 盛达资源 华锡有色 估值对比 资源量 成本' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 锡业股份 盛达资源 华锡有色 估值对比 资源量 成本
+    url: https://pdf.dfcfw.com/pdf/H3_AP202505161673950688_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:12:09.250991+00:00'
+    stale_at: '2026-08-17T17:12:09.250991+00:00'
+    expire_at: '2026-10-16T17:12:09.250991+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5d4695
+  filename: 2026-07-18_2026年中国光伏用银行业产业链-发展背景-需求量-价格走势及发展展望-全球光伏领域白银需求量约60.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.299525+00:00'
+  processed: true
+  notes: query='白银 供需 金银比 光伏银浆 工业需求 2026 深度' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 白银 供需 金银比 光伏银浆 工业需求 2026 深度
+    url: https://www.chyxx.com/industry/1253212.html
+    domain: chyxx.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:12:09.288743+00:00'
+    stale_at: '2026-08-17T17:12:09.288743+00:00'
+    expire_at: '2026-10-16T17:12:09.288743+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a87349
+  filename: 2026-07-18_头豹研究院-2026年全球白银行业-金银比仍处低位.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.334123+00:00'
+  processed: true
+  notes: query='白银 供需 金银比 光伏银浆 工业需求 2026 深度'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 白银 供需 金银比 光伏银浆 工业需求 2026 深度
+    url: https://www.fxbaogao.com/detail/5511663
+    domain: fxbaogao.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T17:12:09.321800+00:00'
+    stale_at: '2026-08-17T17:12:09.321800+00:00'
+    expire_at: '2026-10-16T17:12:09.321800+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3b4480
+  filename: 2026-07-18_小金属行业深度研究-锡牛-来袭-成本支撑叠加供需错配-看好锡价中枢系统性上移-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.372764+00:00'
+  processed: true
+  notes: query='锡 供需平衡 深度 2026 缅甸佤邦 印尼 库存 AI需求'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 锡 供需平衡 深度 2026 缅甸佤邦 印尼 库存 AI需求
+    url: http://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/search/rptid/830917542717/index.phtml
+    domain: stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T17:12:09.359410+00:00'
+    stale_at: '2026-08-17T17:12:09.359410+00:00'
+    expire_at: '2026-10-16T17:12:09.359410+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5df37d
+  filename: 2026-07-18_观点汇总-锡-佤邦复产-高库存-需求预期-缅甸-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.409198+00:00'
+  processed: true
+  notes: query='锡 供需平衡 深度 2026 缅甸佤邦 印尼 库存 AI需求'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 锡 供需平衡 深度 2026 缅甸佤邦 印尼 库存 AI需求
+    url: https://finance.sina.com.cn/wm/2026-03-05/doc-inhpxspm9826986.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T17:12:09.396263+00:00'
+    stale_at: '2026-08-17T17:12:09.396263+00:00'
+    expire_at: '2026-10-16T17:12:09.396263+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-08571d
+  filename: 2026-07-18_研报策略-2026年度沪锡展望-供需双驱-锡-牛或归.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.449508+00:00'
+  processed: true
+  notes: query='锡 供需平衡 深度 2026 缅甸佤邦 印尼 库存 AI需求' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 锡 供需平衡 深度 2026 缅甸佤邦 印尼 库存 AI需求
+    url: http://m.10jqka.com.cn/20260104/c673714250.shtml
+    domain: m.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:12:09.437041+00:00'
+    stale_at: '2026-08-17T17:12:09.437041+00:00'
+    expire_at: '2026-10-16T17:12:09.437041+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e5fb1b
+  filename: 2026-07-18_兴业矿业-000426.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.493817+00:00'
+  processed: true
+  notes: query='兴业银锡 吉兴业 兴业集团 借壳 并购 再融资 分红 历史' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 吉兴业 兴业集团 借壳 并购 再融资 分红 历史
+    url: https://baike.baidu.com/item/%E5%85%B4%E4%B8%9A%E7%9F%BF%E4%B8%9A%5B000426%5D/19148554
+    domain: baike.baidu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:12:09.480889+00:00'
+    stale_at: '2026-08-17T17:12:09.480889+00:00'
+    expire_at: '2026-10-16T17:12:09.480889+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-702ef6
+  filename: 2026-07-18_白银价格飞涨-一度陷入低谷的兴业银锡成功翻身-8月5日-兴业银锡-000426-财富号-东方财富网.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.534639+00:00'
+  processed: true
+  notes: query='兴业银锡 吉兴业 兴业集团 借壳 并购 再融资 分红 历史' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 吉兴业 兴业集团 借壳 并购 再融资 分红 历史
+    url: https://caifuhao.eastmoney.com/news/20251121184547419135080
+    domain: caifuhao.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:12:09.520467+00:00'
+    stale_at: '2026-08-17T17:12:09.520467+00:00'
+    expire_at: '2026-10-16T17:12:09.520467+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-1ead00
+  filename: 2026-07-18_兴业银锡-预计2026年上半年净利润为21-4亿元-23-7亿元-同比增长168-95-197-86.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.616805+00:00'
+  processed: true
+  notes: query='兴业银锡 深度报告 中信建投 中金 盈利预测 目标价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 深度报告 中信建投 中金 盈利预测 目标价 2026
+    url: https://app.myzaker.com/news/article.php?pk=6a5710d18e9f09030705f65d
+    domain: app.myzaker.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:12:09.602995+00:00'
+    stale_at: '2026-08-17T17:12:09.602995+00:00'
+    expire_at: '2026-10-16T17:12:09.602995+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-db9ab1
+  filename: 2026-07-18_拿下亚洲第一大银矿-兴业银锡资源禀赋持续释放成长性-白银市-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.659497+00:00'
+  processed: true
+  notes: query='兴业银锡 银漫 白银 锡 单位成本 克银成本 毛利率'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 银漫 白银 锡 单位成本 克银成本 毛利率
+    url: https://finance.sina.com.cn/roll/2024-12-24/doc-ineaqhun8358056.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T17:12:09.645800+00:00'
+    stale_at: '2026-08-17T17:12:09.645800+00:00'
+    expire_at: '2026-10-16T17:12:09.645800+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4630ac
+  filename: 2026-07-18_公司公告-兴业银锡-2025年半年度报告.md
+  source_type: web-search
+  added: '2026-07-18T17:12:09.700877+00:00'
+  processed: true
+  notes: query='兴业银锡 银漫 白银 锡 单位成本 克银成本 毛利率'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 银漫 白银 锡 单位成本 克银成本 毛利率
+    url: http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=000426&id=11355882
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-18T17:12:09.686324+00:00'
+    stale_at: '2026-08-17T17:12:09.686324+00:00'
+    expire_at: '2026-10-16T17:12:09.686324+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-9ae98c
+  filename: 2026-07-18_内蒙古兴业银锡矿业股份有限公司关于发行h股股票并在香港.md
+  source_type: web-search
+  added: '2026-07-18T17:13:34.188220+00:00'
+  processed: true
+  notes: query='兴业银锡 H股 上市申请资料 港交所 披露易 application proof'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 兴业银锡 H股 上市申请资料 港交所 披露易 application proof
+    url: https://paper.cnstock.com/html/2026-07/17/content_2245543.htm
+    domain: paper.cnstock.com
+    domain_tier: whitelist
+    searched_at: '2026-07-18T17:13:34.171018+00:00'
+    stale_at: '2026-08-17T17:13:34.171018+00:00'
+    expire_at: '2026-10-16T17:13:34.171018+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-7d7ae5
+  filename: 2026-07-18_兴业银锡港股上市申请材料遭港交所-打回头-独家保荐人中金被-贴堂-每经网.md
+  source_type: web-search
+  added: '2026-07-18T17:13:34.237949+00:00'
+  processed: true
+  notes: query='兴业银锡 H股 上市申请资料 港交所 披露易 application proof' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 H股 上市申请资料 港交所 披露易 application proof
+    url: https://www.nbd.com.cn/articles/2026-07-17/4476018.html
+    domain: nbd.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:13:34.220656+00:00'
+    stale_at: '2026-08-17T17:13:34.220656+00:00'
+    expire_at: '2026-10-16T17:13:34.220656+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-67bc13
+  filename: 2026-07-18_兴业银锡-000426-香港上市申请遭发回-将在本季度内重新递表-zaker新闻.md
+  source_type: web-search
+  added: '2026-07-18T17:13:34.294042+00:00'
+  processed: true
+  notes: query='兴业银锡 H股 上市申请资料 港交所 披露易 application proof' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 兴业银锡 H股 上市申请资料 港交所 披露易 application proof
+    url: https://app.myzaker.com/news/article.php?pk=6a598f488e9f094f1b70b0cf
+    domain: app.myzaker.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-18T17:13:34.273630+00:00'
+    stale_at: '2026-08-17T17:13:34.273630+00:00'
+    expire_at: '2026-10-16T17:13:34.273630+00:00'
+    triggered_by: 00-deep-fetch

@@ -1,0 +1,133 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-spacex-spcx
+variant: opus4.8
+created: 2026-07-17
+thesis_driven: true          # v0=AVOID@~$136，目标价 $50-90，介入 <$70-80
+decomposition_version: 0
+
+# L1/L2 坍缩为 primer_scope（S2）——背景理解交给 00_primer，roadmap 只驱动 L3/L4 收料
+primer_scope: >
+  primer 覆盖：三分部（Connectivity/Space/AI）各是什么与收入盈利结构；Falcon 9 可复用性护城河；
+  Starlink 订户/ARPU/终端补贴/补网 capex 周期；LEO 重资本经济学与历史失败镜鉴；
+  「分部营业利润 vs 集团 FCF」的区别；xAI 并表来龙去脉与同一控制人关联结构；
+  双层股权对少数股东的影响；Starship 是什么及其对 TAM/capex 的杠杆；
+  IPO 后股本/锁定期/提前出售机制；如何读「高倍数+亏损+期权叠加」的估值（P/S、SOTP、反向DCF）。
+
+learning_track:
+  # L3 争议层：搞清「分歧在哪」——反映 thesis 最大反方，展开为可调研争议点
+  l3_debates:
+    - question: ~$1.78T / ~94x P/S 是否已把「Starlink 现金转型 + Starship 万亿 TAM + AI 分部止血」三重奇迹同时定价？多方认为稀缺性溢价+指数纳入可长期维持，空方认为无一兑现证据。
+      source_hint: 估值框架料（Damodaran/Third Bridge/M&I）+ 一致预期拆解 + 反向 DCF 隐含增长
+    - question: Connectivity $4.4B 营业利润能以多高比例穿透集团 FCF？市场共识可能系统性低估补网 capex（卫星~5年寿命）+ 终端补贴 + 被 AI 引流的现金。
+      source_hint: 424B4 分部财务 + FCF 转正时点披露（2029）+ 历史 LEO 补网现金黑洞镜鉴
+    - question: 并表 AI（xAI）分部 –$6.4B 营业亏损，是价值毁灭的现金焚化炉，还是前沿 AI 的实物期权？去并表/分拆/资本承诺规模是关键。
+      source_hint: 424B4 AI 分部口径 + xAI 关联交易披露 + prescan xAI 最新动态
+    - question: Starship 兑现时钟——能否从 FAA 复飞走向常态化商业发射，从而压低 Starlink 补网 capex 并打开新 TAM？时钟右移则估值缺口暴露为纯故事溢价。
+      source_hint: Starship 完整试飞/事故/复飞记录 + 2027 商业里程碑（见 tier1 新增料）
+    - question: Musk 绝对投票权 + xAI 关联并表触发的治理折价应多大？多方认为稀缺性溢价盖过折价，空方引学术基率认为永久双层股权随时间损害少数股东。
+      source_hint: dual-class 学术研究 + 424B4 关联条款 + 治理折价历史基率
+
+  # L4 狩猎层：找错误定价——每条对齐 thesis Killer Question，带 search_keywords（H4）
+  l4_hunting:
+    - question: Connectivity 分部 FCF 能否在 FY26/FY27 披露中证明穿透率？集团 FCF 转正时点较 2029 提前/推迟 ≥12 个月的信号是什么？
+      addresses: [K1]
+      search_keywords: [Starlink 分部 现金流, SpaceX FCF 2029, Starlink capex 补网]
+      source_hint: 424B4 现金流表 + 卖方分部模型 + FCF 转正时点评论
+    - question: AI/xAI 分部营业亏损环比是收窄还是加速？是否出现「Starlink 现金被明确引去补贴 xAI」的资本承诺或去并表公告？
+      addresses: [K2]
+      search_keywords: [xAI 营业亏损, SpaceX xAI 并表, xAI 分拆 资本承诺]
+      source_hint: 季度分部亏损 + xAI 治理/关联交易公告
+    - question: Starship 复飞后连续成功入轨的节奏如何？首个商业载荷能否在 2027 前兑现？最新一次事故/停飞对时钟的右移幅度？
+      addresses: [K3]
+      search_keywords: [Starship flight test 2026, Starship FAA 复飞, Starship 商业发射 2027]
+      source_hint: Starship 完整 flight table（新增 tier1 data 料）+ FAA 复飞裁决
+    - question: 可辩护 SOTP 的隐含合理值 vs 现价差多少？卖方 $240 目标 vs 实际是否 de-rate？锁定期/供给驱动的重定价是否发生？
+      addresses: [K4]
+      search_keywords: [SpaceX SOTP 估值, SpaceX 目标价 240, SPCX 锁定期 减持]
+      source_hint: SOTP 分部估值料 + 反向 DCF + 一致预期 + 锁定期/提前出售机制
+    - question: 关联交易实际规模有多大？被引去 xAI 的资本量？少数股东保护条款的实际强度与历史基率对比？
+      addresses: [K5]
+      search_keywords: [SpaceX 关联交易 xAI, dual-class 少数股东, 超级投票权 折价]
+      source_hint: 424B4 关联条款 + dual-class 学术基率
+
+material_priority:
+  # tier1 大部分为 00 已入库耐久料的复用（标 ✓ 已收集）；新增两条为 01 本轮真需补的料
+  tier1:
+    - title: Starship 完整试飞/事故/复飞/商业里程碑记录表（IFT-1 至今 + 2027 里程碑）
+      type: data
+      source: SpaceX 官方发射日志 + spacenews + FAA mishap 裁决聚合
+      why: 唯一 uncovered_ks=[K3]。命门3（估值缺口填充物真伪）的关键闸门，需完整时间序列而非零散事件快照。
+      addresses: [K3]
+      info_tier: public
+      notes: 服务环⑤/环④ B 靶点；rings=[biz-moat-unit-econ]（发射内核）
+    - title: SpaceX bull-case 深度多方论证（稀缺性溢价 + Starship TAM + AI 期权正方逻辑）
+      type: sell-side-note
+      source: 14 家买入评级卖方深度 + 独立看多研究（诚实反方，非稻草人）
+      why: uncovered_ring_inputs=[bull-bear]。环⑤ 需要 bull 的完整正方论证以做对称对照，避免空方 thesis 单薄。
+      addresses: [K4]
+      info_tier: half_public
+      notes: 服务环⑤ 反方；rings=[bull-bear, consensus]
+    - title: SpaceX 424B4 招股书分部财务（Connectivity/Space/AI 收入·营业利润·backlog）
+      type: prospectus
+      source: SEC 424B4（mat-c44a07 / mat-06c603）
+      why: ✓ 已收集。SOTP 分部估值与 K1/K2/K4/K5 的财务地基。
+      addresses: [K1, K2, K4, K5]
+      info_tier: public
+    - title: 估值框架三件套（Damodaran / Third Bridge / M&I 反向DCF+SOTP）
+      type: sell-side-note
+      source: mat-99bba4 / mat-5bf511 / mat-1eccb5
+      why: ✓ 已收集。环④ EV 终局环 P0 靶点。
+      addresses: [K4]
+      info_tier: half_public
+    - title: 卖方一致预期与目标价锚（$240 均价 / 14 买入）
+      type: data
+      source: mat-17c9ce / mat-601f60 / mat-ed764c
+      why: ✓ 已收集。EV 收敛与街面看多对照（K4）。
+      addresses: [K4]
+      info_tier: half_public
+  tier2:
+    - title: LEO 重资本失败镜鉴（Iridium/OneWeb/Globalstar 破产复盘）
+      type: industry-research
+      source: mat-6dda4b / mat-f05983 / mat-870816
+      why: ✓ 已收集。环⑤ historical-mirror，命门1 现金黑洞对照。
+      addresses: [K1, K4]
+      info_tier: public
+    - title: 双层股权/超级投票权治理折价学术研究
+      type: industry-research
+      source: mat-954b27 / mat-c1b19b / mat-d242dc
+      why: ✓ 已收集。环③/横贯约束，K5 治理折价基率。
+      addresses: [K5]
+      info_tier: public
+    - title: Starlink 运营指标（订户 10.3M / 164 市场 / ARPU 下滑 / backlog $27.6B）
+      type: data
+      source: mat-caf1ba / mat-e35913 / mat-e4ae12 / mat-9cdb81 / mat-8a4303
+      why: ✓ 已收集。环① Connectivity 单位经济（K1）。
+      addresses: [K1]
+      info_tier: public
+  tier3:
+    - title: IPO 市值/股本/锁定期/提前出售机制供给面料
+      type: data
+      source: mat-42a399 / mat-4a862a / mat-e94b53
+      why: ✓ 已收集。供给压顶（K4 de-rating 触发器）。
+      addresses: [K4]
+      info_tier: public
+
+# 关键监控风险（K# 证伪锚）
+key_risks_to_monitor:
+  - "K1: FY26/27 Connectivity 分部 FCF 披露；集团 FCF 转正时点 vs 2029 偏移 ≥12 个月"
+  - "K2: 季度 AI 分部营业亏损环比（–$6.4B 年化基准）；xAI 去并表或新增数十亿美元资本承诺"
+  - "K3: FAA 复飞后连续成功入轨节奏 + 2027 前首个商业载荷；再现事故/停飞则时钟右移"
+  - "K4: SOTP 隐含合理值 vs 现价差；$240 目标兑现度；锁定期/供给驱动 de-rating"
+  - "K5: 关联交易规模披露；被引去 xAI 的资本量；少数股东保护条款实际强度"
+
+# 历史类比（→ 环⑤ historical-mirror）
+analogies_to_study:
+  - name: Iridium（美国·LEO 卫星电话·1998-1999 破产）
+    logic: 重资本 LEO 星座、技术领先但单位经济与需求错配，营业利润未穿透为现金即破产
+    limits: SpaceX 有 Falcon 自建发射降本 + 宽带需求真实且高增，非语音利基
+  - name: OneWeb（英国·LEO 宽带·2020 破产后重组）
+    logic: 补网 capex 黑洞 + 融资中断，直接对照 Starlink 5 年卫星寿命的现金消耗
+    limits: OneWeb 无自有发射、无 D2C、规模远小于 Starlink
+  - name: Globalstar（美国·LEO·Iridium 破产后长期困顿）
+    logic: 重资本卫星网络长期难产生自由现金流的镜鉴
+    limits: 频谱/商业模式与 Starlink 差异大，Starlink 已实质盈利于分部层

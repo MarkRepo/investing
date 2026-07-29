@@ -1,0 +1,140 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-applovin
+variant: opus4.8
+created: 2026-07-27
+thesis_driven: v0
+
+# L1/L2 已坍缩为 primer_scope（背景理解交给 00_primer）
+primer_scope: >
+  primer 该覆盖：AppLovin 现在是什么生意（纯 AI 广告平台，剥离手游后）；AXON 引擎的自学习机理与数据飞轮；
+  广告技术栈分层（推荐/DSP=AXON+AppDiscovery、聚合中介=MAX、归因=Adjust）；效果广告"归因"是什么、
+  "过度归因"争议为何存在、如何用增量测试/MMM 验证；iOS ATT 对移动广告的冲击与建模对冲；
+  电商 performance 广告 TAM vs 手游广告 TAM 的差异与跨界难点；高毛利广告平台的估值方法论
+  （为何用 forward P/E vs 增速 / PEG / EV/FCF，P/B 为何失效）；创始人主导型高波动成长股的特有风险。
+
+learning_track:
+  l3_debates:         # 争议层：分歧在哪，各方逻辑（展开 thesis 反方）
+    - question: "AXON 电商效果是'真增量 ROAS'还是空头指控的'过度归因/抄 Meta 作业窃取归因功劳'？这是多空最核心分歧。"
+      source_hint: "空头报告(Fuzzy Panda/Culper) vs 公司反驳 + 广告主增量测试案例(workmagic True Classic)"
+    - question: "$6B+ 收入体量上 50-59% 的增速能否持续，还是大数定律下即将掉档？共识(卖方均价$668)是否过度外推？"
+      source_hint: "Q2 2026 指引(+52-55%) vs 卖方模型 + 历史 adtech 增速衰减曲线"
+    - question: "SEC 调查 + 应用商店合规风险，结局是可控的披露/实践整改，还是实质执法/收入重述/SDK 下架？"
+      source_hint: "证券集体诉讼 5:25-cv-03438 进展 + SEC/隐私调查报道 + 历史 adtech 处罚镜鉴"
+    - question: "forward P/E 22.6x / PEG 0.61 到底是'错杀的便宜'还是'高增速股杀估值(先于杀盈利)的陷阱前夜'？"
+      source_hint: "卖方估值桥 + 高飞成长股 de-rate 案例 + beta 2.48 情绪属性"
+
+  l4_hunting:         # 狩猎层：逐条对齐 thesis K#
+    - question: "AXON 6 月全球公开自助发布后，consumer(电商)垂直的广告主数/支出能否持续环比放量，还是见顶？下季度环比增速多少？"
+      addresses: [K1]
+      search_keywords: [AppLovin consumer vertical, AXON self-serve advertiser, e-commerce ad spend]
+      source_hint: "Q2 2026 财报(8/5) + IR + 卖方电商拆解"
+    - question: "SEC 调查/数据隐私调查是否出现正式指控、和解金或 Apple/Google 应用商店政策行动？隐含的监管概率与影响量级？"
+      addresses: [K2]
+      search_keywords: [AppLovin SEC investigation, AppLovin app store policy, AppLovin lawsuit ruling]
+      source_hint: "Reuters/Bloomberg + 集体诉讼 docket + SEC filings"
+    - question: "有无第三方增量测试/MMM 证据显示 AXON 是真增量而非过度归因？大广告主是公开背书还是流失？CTR 30-40% 异常性是否被证实/证伪？"
+      addresses: [K3]
+      search_keywords: [AppLovin incrementality test, AXON attribution MMM, AppLovin advertiser churn]
+      source_hint: "广告主案例/adtech 媒体/行业访谈 + 公司归因差异解释"
+    - question: "广告平台营收同比增速能否稳在 30-40%+？Q2 2026(8/5) 是否验证 +52-55% 指引？后续减速斜率？"
+      addresses: [K4]
+      search_keywords: [AppLovin Q2 2026 revenue growth, AppLovin advertising revenue, AppLovin guidance]
+      source_hint: "Q2 2026 财报 + 卖方增速模型"
+    - question: "电商规模化(更依赖销售、可能更低毛利)后，85% adj EBITDA margin / 77% 营业利润率 / FCF 转化能否维持？"
+      addresses: [K5]
+      search_keywords: [AppLovin EBITDA margin, AppLovin operating leverage, AppLovin FCF conversion]
+      source_hint: "10-Q/10-K MD&A + 电话会 margin 指引"
+    - question: "Meta/Google/The Trade Desk/Unity 是否侵蚀 AXON 在中小/电商广告主的效果优势？迁移/eCPM 相对下滑证据？"
+      addresses: [K6]
+      search_keywords: [AppLovin vs Trade Desk, AppLovin competition Meta Google, AXON competitive moat]
+      source_hint: "竞品财报/adtech 媒体/广告主渠道对比"
+
+material_priority:
+  tier1:              # 必读（P0，均已在 00 eager-fetch 收齐）
+    - title: "AppLovin 10-K 2025 + 10-Q Q1 2026（业务/风险/MD&A/财报分节）"
+      type: annual-report
+      ticker: APP
+      source: SEC EDGAR
+      why: "环④估值锚 + 环①生意本质 + 风险披露；K4/K5 一手数据"
+      addresses: [K4, K5]
+      status: done
+    - title: "Q1 2026 电话会 takeaways（管理层电商/AXON/指引表态）"
+      type: earnings-call
+      source: "Motley Fool transcript"
+      why: "K1 电商 ramp 一手数据(3月+25%/4月创新高) + K4 指引 + 资本配置"
+      addresses: [K1, K3, K4]
+      status: done
+    - title: "Fuzzy Panda + Culper 空头报告全文 + 证券集体诉讼 5:25-cv-03438"
+      type: short-report
+      source: "fuzzypandaresearch.com + court docket"
+      why: "K2/K3 命门核心——归因造假/Direct Download/儿童追踪指控原文"
+      addresses: [K2, K3]
+      status: done
+    - title: "电商广告 ramp 实质数据（self-serve 广告主/收入占比）"
+      type: data
+      source: "电话会 + IR + 卖方"
+      why: "K1 第二增长曲线兑现验证"
+      addresses: [K1]
+      status: done
+  tier2:              # 补充（P1）
+    - title: "卖方深度研报（估值桥/增速假设/目标价，含 Benchmark 2026 top idea $745）"
+      type: sell-side-note
+      source: "marketbeat 一致预期 + Benchmark/tikr"
+      why: "环④一致预期锚 [A合同 consensus]"
+      addresses: [K4]
+      status: done
+    - title: "SEC + 数据隐私调查 + 应用商店政策最新进展"
+      type: policy
+      source: "Reuters/Bloomberg/nypost"
+      why: "K2 监管二元尾部跟踪"
+      addresses: [K2]
+      status: done
+    - title: "管理层资本配置史（回购节奏/价位、Foroughi 与内部人减持）"
+      type: data
+      source: "SEC Form 4 + 电话会回购披露"
+      why: "环①管理层 track record [A合同 mgmt-capital-alloc]"
+      addresses: [K4]
+      status: done
+    - title: "AXON 归因真实性第三方证据（广告主增量测试/MMM/留存）"
+      type: industry-research
+      source: "workmagic True Classic 案例 + Axon 归因差异解释"
+      why: "K3 归因命门机理化验证"
+      addresses: [K3]
+      status: done
+    - title: "电商 performance 广告市场规模与格局（retail media ~$70B）"
+      type: industry-research
+      source: "eMarketer/grandview/statista"
+      why: "K1 TAM 背景 + primer 入门目标6"
+      addresses: [K1]
+      status: done
+  tier3:              # 可选（P2）
+    - title: "历史镜鉴：高飞 adtech 归因红利消退案例（Criteo/iOS ATT 冲击/叙事股杀估值）"
+      type: industry-research
+      source: "digiday ATT + FTC/学术 ATT 研究"
+      why: "环⑤历史失败镜鉴 [A合同 historical-mirror]"
+      addresses: [K4]
+      status: done
+    - title: "AXON CTV/联网电视广告战略进展"
+      type: industry-research
+      source: "IR/adtech 媒体"
+      why: "K6 长期第三增长曲线期权"
+      addresses: [K6]
+      status: done
+
+key_risks_to_monitor:
+  - "SEC 调查升级为实质执法 / 收入重述（触发熊市 $220-260）"
+  - "Apple/Google 应用商店政策行动 → SDK 下架"
+  - "Q2 2026(8/5) 增速掉档或指引下修 → 杀估值"
+  - "电商 self-serve 公开发布后广告主留存/ROAS 不及预期"
+  - "beta 2.48 + AI 板块 risk-off 无差别抛售"
+
+analogies_to_study:
+  - name: "Criteo（法国 adtech，2018-2021）"
+    logic: "同为效果广告/归因驱动，iOS/隐私新政前享归因红利、后增长失速估值坍塌"
+    limit: "Criteo 依赖第三方 cookie/retargeting，AXON 是自有 SDK+AI 引擎，护城河机理不同"
+  - name: "iOS ATT 冲击（2021-2023，全移动广告）"
+    logic: "隐私政策一夜改变移动广告归因，重创依赖信号的玩家"
+    limit: "AXON 的建模能力被认为部分对冲了信号损失，反而受益于对手受损"
+  - name: "高飞叙事成长股 de-rate（如 2021-2022 SaaS/2000 dotcom）"
+    logic: "PEG 便宜的高增速股一旦增速掉档，杀估值幅度远超杀盈利"
+    limit: "APP 有真实巨额 FCF 与盈利，非烧钱叙事股，安全边际更高"

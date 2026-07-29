@@ -202,6 +202,67 @@ def prism_dashboard(request: Request, refresh: bool = False):
     )
 
 
+# ── 学习笔记（只读）：/prism/notes ────────────────────────────────────────
+# 与投资 topic 系统完全隔离：不进 topic forest / dashboard / monitor，纯扫
+# prism/notes/*.md 渲染成阅读页。必须定义在 /{slug} catch-all 之前，否则
+# /prism/notes 会被当成 slug=notes 吞掉。
+def _notes_dir():
+    from pathlib import Path
+    return Path(__file__).resolve().parent.parent.parent / "prism" / "notes"
+
+
+def _note_title(path) -> str:
+    """取 md 首个一级标题(# )作展示名，无则回退文件名。"""
+    try:
+        for line in path.read_text(encoding="utf-8").splitlines():
+            s = line.strip()
+            if s.startswith("# "):
+                return s[2:].strip()
+    except Exception:
+        pass
+    return path.stem
+
+
+def _list_notes() -> list[dict]:
+    d = _notes_dir()
+    if not d.exists():
+        return []
+    return [{"name": p.stem, "title": _note_title(p)} for p in sorted(d.glob("*.md"))]
+
+
+@router.get("/notes")
+def prism_notes_index(request: Request):
+    """学习笔记列表 — /prism/notes。独立于投资 topic 的纯 markdown 阅读区。"""
+    return templates.TemplateResponse(
+        request, "prism/notes_index.html", {"notes": _list_notes()},
+    )
+
+
+@router.get("/notes/{name}")
+def prism_note_detail(request: Request, name: str):
+    """渲染单篇学习笔记 — /prism/notes/{name}。"""
+    # 防目录穿越：文件名只允许字母/数字/连字符/下划线（'.'、'/' 会被拒）
+    if not name.replace("-", "").replace("_", "").isalnum():
+        raise HTTPException(status_code=404, detail="note not found")
+    path = _notes_dir() / f"{name}.md"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail=f"note {name!r} not found")
+    raw = path.read_text(encoding="utf-8")
+    title = _note_title(path)
+    lines = raw.splitlines()
+    if lines and lines[0].startswith("# "):  # 剥首个 h1，模板自渲染标题
+        raw = "\n".join(lines[1:]).lstrip("\n")
+    html_body = outputs_io.render_markdown(raw)
+    import os
+    import datetime
+    updated = datetime.date.fromtimestamp(os.path.getmtime(path)).isoformat()
+    return templates.TemplateResponse(
+        request, "prism/notes_detail.html",
+        {"html_body": html_body, "title": title, "name": name,
+         "updated": updated, "notes": _list_notes()},
+    )
+
+
 def _enrich_watchlist(watches: list[dict]) -> list[dict]:
     """给每条 watch 配人读标签(把 locator hash 还原成事件名),供 dashboard 列表展示。"""
     from prism.scripts import monitor, sidecar_edit

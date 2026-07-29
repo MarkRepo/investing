@@ -1,0 +1,1621 @@
+slug: cn-luzhou-laojiao
+variant: kimi-k3
+updated: '2026-07-22T09:17:44.355552+00:00'
+materials:
+- id: mat-0d0b77
+  filename: 2026-07-22_泸州老窖-2025年净利润同比下降19-61-拟10派44-17元.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.793583+00:00'
+  processed: false
+  notes: query='泸州老窖 2025年报 营收 归母净利润 同比'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 2025年报 营收 归母净利润 同比
+    url: https://www.yicai.com/brief/103158122.html
+    domain: yicai.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:22.792436+00:00'
+    stale_at: '2026-08-21T07:09:22.792436+00:00'
+    expire_at: '2026-10-20T07:09:22.792436+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-271842
+  filename: 2026-07-22_加速出清-释放压力.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.800041+00:00'
+  processed: false
+  notes: query='泸州老窖 2025年报 营收 归母净利润 同比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 2025年报 营收 归母净利润 同比
+    url: https://pdf.dfcfw.com/pdf/H3_AP202605051821970231_1.pdf?1777997243000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:22.797780+00:00'
+    stale_at: '2026-08-21T07:09:22.797780+00:00'
+    expire_at: '2026-10-20T07:09:22.797780+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f7dfd7
+  filename: 2026-07-22_泸州老窖-一季度营收80-25亿元净利润为37-08亿元.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.808183+00:00'
+  processed: false
+  notes: query='泸州老窖 2026年一季报 营收 净利润 合同负债' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 2026年一季报 营收 净利润 合同负债
+    url: http://www.xinhuanet.com/food/20260429/b33068f37b1f42ec92050c4d026d9f72/c.html
+    domain: xinhuanet.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:22.805062+00:00'
+    stale_at: '2026-08-21T07:09:22.805062+00:00'
+    expire_at: '2026-10-20T07:09:22.805062+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-92b2a4
+  filename: 2026-07-22_公司公告-泸州老窖-2025年年度报告.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.813664+00:00'
+  processed: false
+  notes: query='泸州老窖 2026年一季报 营收 净利润 合同负债'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 2026年一季报 营收 净利润 合同负债
+    url: http://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=000568&id=12261746
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:22.811331+00:00'
+    stale_at: '2026-08-21T07:09:22.811331+00:00'
+    expire_at: '2026-10-20T07:09:22.811331+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-faece5
+  filename: 2026-07-22_泸州老窖-sz000568-股票股价.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.821664+00:00'
+  processed: false
+  notes: query='泸州老窖 股价 市盈率 股息率'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 股价 市盈率 股息率
+    url: https://xueqiu.com/S/SZ000568
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:22.818667+00:00'
+    stale_at: '2026-08-21T07:09:22.818667+00:00'
+    expire_at: '2026-10-20T07:09:22.818667+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e0a973
+  filename: 2026-07-22_泸州老窖-82-46--2-04--1-72-000568-搜狐证券.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.828301+00:00'
+  processed: false
+  notes: query='泸州老窖 股价 市盈率 股息率'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 股价 市盈率 股息率
+    url: https://q.stock.sohu.com/cn/000568/index.shtml
+    domain: q.stock.sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:22.825454+00:00'
+    stale_at: '2026-08-21T07:09:22.825454+00:00'
+    expire_at: '2026-10-20T07:09:22.825454+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-35e51f
+  filename: 2026-07-22_泸州老窖-000568-股息率-估值-基本面.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.837472+00:00'
+  processed: false
+  notes: query='泸州老窖 股价 市盈率 股息率' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 股价 市盈率 股息率
+    url: https://www.lixinger.com/equity/company/detail/sz/000568/568/fundamental/valuation/dyr
+    domain: lixinger.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:22.834411+00:00'
+    stale_at: '2026-08-21T07:09:22.834411+00:00'
+    expire_at: '2026-10-20T07:09:22.834411+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8caf62
+  filename: 2026-07-22_今日酒价2026年7月14日-飞天茅台批价1700元拉锯---酒排名.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.847294+00:00'
+  processed: false
+  notes: query='飞天茅台 批价 2026年7月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 飞天茅台 批价 2026年7月
+    url: /goto?url=CAESXgHuR6pN5lmktgzDVKLUHhnn5iaWTkPCr7M8PUHbbecsX29IrjpGk5xGSHQxsqUjfA1Zzqg7QvoerwVRrSmOBO8M_b7163JqUdyiqOoLpArDPoPZ-z-mBsBg41Uo0bU%3D
+    domain: ''
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:22.843551+00:00'
+    stale_at: '2026-08-21T07:09:22.843551+00:00'
+    expire_at: '2026-10-20T07:09:22.843551+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2723d8
+  filename: 2026-07-22_2026年飞天茅台原箱最新批价报1700元-瓶.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.859410+00:00'
+  processed: false
+  notes: query='飞天茅台 批价 2026年7月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 飞天茅台 批价 2026年7月
+    url: /goto?url=CAESawHuR6pN4EEyICINwdVMZGmvoAta-Fq9UJFdtbSopNM0HT4lBEtfO8Syag8YVY8jxhmKXRjvVjrT_K50ALm4xMmkOAuDQjv6jUSsmqgiT7kGE_xNDXYd8-_avamLZMB88dRV2Wf2P6KYiZkG
+    domain: ''
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:22.854485+00:00'
+    stale_at: '2026-08-21T07:09:22.854485+00:00'
+    expire_at: '2026-10-20T07:09:22.854485+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c2950f
+  filename: 2026-07-22_动销-三管齐下-加速去库存丨春节白酒行业观察.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.874489+00:00'
+  processed: false
+  notes: query='白酒行业 库存 去化 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒行业 库存 去化 2026
+    url: https://h5.ifeng.com/c/vivo/v002JKjyoNTX4xU6tLR9xyGFxK1J--KvrPfCtD1kM--AYFmL8__?isNews=1&showComments=0
+    domain: h5.ifeng.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:22.869571+00:00'
+    stale_at: '2026-08-21T07:09:22.869571+00:00'
+    expire_at: '2026-10-20T07:09:22.869571+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cd3022
+  filename: 2026-07-22_泸州老窖股份有限公司2025-年中期分红派息实施公告.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.890941+00:00'
+  processed: false
+  notes: query='泸州老窖 2025年度 分红 派息 方案'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 2025年度 分红 派息 方案
+    url: http://static.cninfo.com.cn/finalpage/2026-01-24/1224947188.PDF
+    domain: static.cninfo.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:22.885079+00:00'
+    stale_at: '2026-08-21T07:09:22.885079+00:00'
+    expire_at: '2026-10-20T07:09:22.885079+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8de4b0
+  filename: 2026-07-22_泸州老窖多维布局穿越行业周期-即将开启股权登记分红近20亿元.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.903831+00:00'
+  processed: false
+  notes: query='泸州老窖 2025年度 分红 派息 方案'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 2025年度 分红 派息 方案
+    url: https://www.stcn.com/article/detail/3612585.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:22.898600+00:00'
+    stale_at: '2026-08-21T07:09:22.898600+00:00'
+    expire_at: '2026-10-20T07:09:22.898600+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f46ebe
+  filename: 2026-07-22_泸州老窖-000568-经营稳健-分红持续提升.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.920728+00:00'
+  processed: false
+  notes: query='泸州老窖 2025年度 分红 派息 方案' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 2025年度 分红 派息 方案
+    url: https://pdf.dfcfw.com/pdf/H3_AP202505011665322914_1.pdf?1746091010000.pdf=
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:22.913872+00:00'
+    stale_at: '2026-08-21T07:09:22.913872+00:00'
+    expire_at: '2026-10-20T07:09:22.913872+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7d4446
+  filename: 2026-07-22_泸州老窖-国窖1573不降价也保持良好动销-将坚持控量挺价策略.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.940449+00:00'
+  processed: false
+  notes: query='泸州老窖 2026 经销商大会 控量挺价 经营策略' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 2026 经销商大会 控量挺价 经营策略
+    url: https://m.10jqka.com.cn/20260701/c677869376.shtml
+    domain: m.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:22.934485+00:00'
+    stale_at: '2026-08-21T07:09:22.934485+00:00'
+    expire_at: '2026-10-20T07:09:22.934485+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bb240f
+  filename: 2026-07-22_泸州老窖-挺价-背后-一场用短期业绩换品牌锚定的豪赌.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.957179+00:00'
+  processed: false
+  notes: query='泸州老窖 2026 经销商大会 控量挺价 经营策略' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 2026 经销商大会 控量挺价 经营策略
+    url: https://www.moomoo.com/hans/news/post/72888077
+    domain: moomoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:22.950636+00:00'
+    stale_at: '2026-08-21T07:09:22.950636+00:00'
+    expire_at: '2026-10-20T07:09:22.950636+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-36ee32
+  filename: 2026-07-22_泸州老窖2025-股东大会释放积极信号-稳价去库存.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.975832+00:00'
+  processed: false
+  notes: query='泸州老窖 2026 经销商大会 控量挺价 经营策略'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 2026 经销商大会 控量挺价 经营策略
+    url: https://view.inews.qq.com/a/20260703A021FR00
+    domain: view.inews.qq.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:22.969012+00:00'
+    stale_at: '2026-08-21T07:09:22.969012+00:00'
+    expire_at: '2026-10-20T07:09:22.969012+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-74879c
+  filename: 2026-07-22_白酒税改大变局-2026新规重塑行业格局-茅台迎来长期.md
+  source_type: web-search
+  added: '2026-07-22T07:09:22.995060+00:00'
+  processed: false
+  notes: query='白酒 消费税 改革 2026 进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 消费税 改革 2026 进展
+    url: https://xueqiu.com/4443113144/391900953
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:22.988405+00:00'
+    stale_at: '2026-08-21T07:09:22.988405+00:00'
+    expire_at: '2026-10-20T07:09:22.988405+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9e4e56
+  filename: 2026-07-22_2026年6月纳税申报期起-如何准确填写-白酒消费税计算明细表-税-屋-第一时间传递财税政策法规.md
+  source_type: web-search
+  added: '2026-07-22T07:09:23.018119+00:00'
+  processed: false
+  notes: query='白酒 消费税 改革 2026 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 白酒 消费税 改革 2026 进展
+    url: https://www.shui5.cn/article/17/114060.html
+    domain: shui5.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:23.009213+00:00'
+    stale_at: '2026-08-21T07:09:23.009213+00:00'
+    expire_at: '2026-10-20T07:09:23.009213+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-548900
+  filename: 2026-07-22_白酒消费税纳税申报新规施行.md
+  source_type: web-search
+  added: '2026-07-22T07:09:23.038440+00:00'
+  processed: false
+  notes: query='白酒 消费税 改革 2026 进展'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 白酒 消费税 改革 2026 进展
+    url: https://www.stcn.com/article/detail/3938173.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:23.030771+00:00'
+    stale_at: '2026-08-21T07:09:23.030771+00:00'
+    expire_at: '2026-10-20T07:09:23.030771+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-932381
+  filename: 2026-07-22_研报掘金丨东方证券-维持泸州老窖-买入-评级-目标价104-72元-掘金-新浪财经-新浪网.md
+  source_type: web-search
+  added: '2026-07-22T07:09:23.062998+00:00'
+  processed: false
+  notes: query='泸州老窖 目标价 券商 评级 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 目标价 券商 评级 2026
+    url: https://finance.sina.com.cn/stock/bxjj/2026-05-22/doc-inhyumqm7615757.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:23.053107+00:00'
+    stale_at: '2026-08-21T07:09:23.053107+00:00'
+    expire_at: '2026-10-20T07:09:23.053107+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4c04f2
+  filename: 2026-07-22_券商批量调整个股评级-23股获上调.md
+  source_type: web-search
+  added: '2026-07-22T07:09:23.087281+00:00'
+  processed: false
+  notes: query='泸州老窖 目标价 券商 评级 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 目标价 券商 评级 2026
+    url: https://stcn.com/article/detail/3496591.html?u_atoken=3f73e8199218b7b99416849ca9dc91e2&u_asig=ffbfd
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:23.077946+00:00'
+    stale_at: '2026-08-21T07:09:23.077946+00:00'
+    expire_at: '2026-10-20T07:09:23.077946+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8aa586
+  filename: 2026-07-22_华鑫证券-给予泸州老窖买入评级.md
+  source_type: web-search
+  added: '2026-07-22T07:09:23.114233+00:00'
+  processed: false
+  notes: query='泸州老窖 目标价 券商 评级 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 目标价 券商 评级 2026
+    url: https://wap.stockstar.com/detail/RB2026050500004464
+    domain: wap.stockstar.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:23.103243+00:00'
+    stale_at: '2026-08-21T07:09:23.103243+00:00'
+    expire_at: '2026-10-20T07:09:23.103243+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7464e5
+  filename: 2026-07-22_泸州老窖坚持国窖1573不降价-以控量挺价应对业绩下滑与渠道库存压力--donews.md
+  source_type: web-search
+  added: '2026-07-22T07:09:23.143732+00:00'
+  processed: false
+  notes: query='国窖1573 一批价 渠道 库存 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 国窖1573 一批价 渠道 库存 2026
+    url: https://www.donews.com/news/detail/4/6632281.html
+    domain: donews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:09:23.134836+00:00'
+    stale_at: '2026-08-21T07:09:23.134836+00:00'
+    expire_at: '2026-10-20T07:09:23.134836+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5fda30
+  filename: 2026-07-22_国窖1573反超普五-一个持续了三十年的格局被打破.md
+  source_type: web-search
+  added: '2026-07-22T07:09:23.170707+00:00'
+  processed: false
+  notes: query='国窖1573 一批价 渠道 库存 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 国窖1573 一批价 渠道 库存 2026
+    url: https://xueqiu.com/3343519854/398231055
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:23.161326+00:00'
+    stale_at: '2026-08-21T07:09:23.161326+00:00'
+    expire_at: '2026-10-20T07:09:23.161326+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5a291f
+  filename: 2026-07-22_从4500亿元到不足1300亿元-泸州老窖-争三-豪言遇冷酷现实---21经济网.md
+  source_type: web-search
+  added: '2026-07-22T07:09:23.196927+00:00'
+  processed: false
+  notes: query='国窖1573 一批价 渠道 库存 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 国窖1573 一批价 渠道 库存 2026
+    url: https://www.21jingji.com/article/20260604/herald/d065dd2b4a0fee60192b4bd93b60f99b.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:23.186845+00:00'
+    stale_at: '2026-08-21T07:09:23.186845+00:00'
+    expire_at: '2026-10-20T07:09:23.186845+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-435e3f
+  filename: 2026-07-22_价格倒挂还在持续-国窖1573部分渠道售价低于出厂价.md
+  source_type: web-search
+  added: '2026-07-22T07:09:23.225765+00:00'
+  processed: false
+  notes: query='国窖1573 一批价 渠道 库存 2026'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 国窖1573 一批价 渠道 库存 2026
+    url: https://m.mp.oeeee.com/a/BAAFRD000020231208885086.html
+    domain: m.mp.oeeee.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:09:23.215383+00:00'
+    stale_at: '2026-08-21T07:09:23.215383+00:00'
+    expire_at: '2026-10-20T07:09:23.215383+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b4f1c3
+  filename: 2026-07-22_泸州老窖-6月30日接受机构调研-中金公司-华福证券等多家机构参与.md
+  source_type: web-search
+  added: '2026-07-22T07:10:59.602609+00:00'
+  processed: false
+  notes: query='泸州老窖 公告 高管变动 监管 2026年6月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 公告 高管变动 监管 2026年6月
+    url: https://m.10jqka.com.cn/20260702/c677906636.shtml
+    domain: m.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:10:59.592055+00:00'
+    stale_at: '2026-08-21T07:10:59.592055+00:00'
+    expire_at: '2026-10-20T07:10:59.592055+00:00'
+    triggered_by: 00-prescan
+- id: mat-b9d9ef
+  filename: 2026-07-22_泸州老窖-2025年度股东会决议公告.md
+  source_type: web-search
+  added: '2026-07-22T07:10:59.627308+00:00'
+  processed: false
+  notes: query='泸州老窖 公告 高管变动 监管 2026年6月' | query='泸州老窖 公告 高管变动 监管 2026年6月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 公告 高管变动 监管 2026年6月
+    url: https://www.cnfin.com/announ/detail/index.html?id=836161046753&code=000568&dannoun=lcdetail&announ=lc
+    domain: cnfin.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:10:59.644226+00:00'
+    stale_at: '2026-08-21T07:10:59.644226+00:00'
+    expire_at: '2026-10-20T07:10:59.644226+00:00'
+    triggered_by: 00-prescan
+- id: mat-6e57ad
+  filename: 2026-07-22_证券代码-000568-证券简称-泸州老窖.md
+  source_type: web-search
+  added: '2026-07-22T07:10:59.683578+00:00'
+  processed: false
+  notes: query='泸州老窖 股东大会 2026 经营目标 分红规划'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 股东大会 2026 经营目标 分红规划
+    url: http://static.cninfo.com.cn/finalpage/2026-05-07/1225281397.PDF
+    domain: static.cninfo.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:10:59.673541+00:00'
+    stale_at: '2026-08-21T07:10:59.673541+00:00'
+    expire_at: '2026-10-20T07:10:59.673541+00:00'
+    triggered_by: 00-prescan
+- id: mat-057f0b
+  filename: 2026-07-22_泸州老窖召开2025年度股东会明确2026年保底85亿分红.md
+  source_type: web-search
+  added: '2026-07-22T07:10:59.710935+00:00'
+  processed: false
+  notes: query='泸州老窖 股东大会 2026 经营目标 分红规划' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 股东大会 2026 经营目标 分红规划
+    url: https://www.guandian.cn/m/show/570327
+    domain: guandian.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:10:59.700680+00:00'
+    stale_at: '2026-08-21T07:10:59.700680+00:00'
+    expire_at: '2026-10-20T07:10:59.700680+00:00'
+    triggered_by: 00-prescan
+- id: mat-993a30
+  filename: 2026-07-22_公司公告-泸州老窖-关于2024-2026年度股东分红回报规划的.md
+  source_type: web-search
+  added: '2026-07-22T07:10:59.738434+00:00'
+  processed: true
+  notes: query='泸州老窖 股东大会 2026 经营目标 分红规划'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 2024-2026年度股东分红回报规划 公告
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=000568&id=11017874
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:32.686327+00:00'
+    stale_at: '2026-08-21T07:27:32.686327+00:00'
+    expire_at: '2026-10-20T07:27:32.686327+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 泸州老窖 股东大会 2026 经营目标 分红规划
+- id: mat-60f5a9
+  filename: 2025_000568_annual_2026-04-28_泸州老窖.PDF
+  source_type: annual-report
+  added: '2026-07-22T07:21:25.250579+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-d45eb6
+  filename: 2026_000568_quarterly_2026-04-28_泸州老窖.PDF
+  source_type: quarterly-report
+  added: '2026-07-22T07:21:25.652456+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-ee6701
+  filename: 2025_600519_annual_2026-04-16_贵州茅台.PDF
+  source_type: annual-report
+  added: '2026-07-22T07:21:26.057001+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-d16dcb
+  filename: 2026_600519_quarterly_2026-04-24_贵州茅台.PDF
+  source_type: quarterly-report
+  added: '2026-07-22T07:21:26.483357+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 贵州茅台
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-6d7e6f
+  filename: 2025_000858_annual_2026-04-30_五粮液.PDF
+  source_type: annual-report
+  added: '2026-07-22T07:21:26.956202+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-bfba71
+  filename: 2026_000858_quarterly_2026-04-30_五粮液.PDF
+  source_type: quarterly-report
+  added: '2026-07-22T07:21:27.427500+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 五粮液
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5220f3
+  filename: 2026-06-30_000568_announce_kzz_2025年度股东会决议公告.PDF
+  source_type: announcement
+  added: '2026-07-22T07:22:15.005854+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-f03901
+  filename: 2026-06-08_000568_announce_kzz_关于泸州老窖浓香国酒体验营销中心建设项目关联交易的公告.PDF
+  source_type: announcement
+  added: '2026-07-22T07:22:15.149440+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-a9e570
+  filename: 2026-06-08_000568_announce_kzz_2025年度股东会议案资料.PDF
+  source_type: announcement
+  added: '2026-07-22T07:22:15.348623+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-3d5562
+  filename: 2026-06-02_000568_announce_kzz_关于部分限制性股票回购注销完成的公告.PDF
+  source_type: announcement
+  added: '2026-07-22T07:22:15.478248+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-c0916d
+  filename: 2026-04-28_000568_announce_kzz_关于提请股东会授权董事会制定中期分红方案的公告.PDF
+  source_type: announcement
+  added: '2026-07-22T07:22:15.617160+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-55a2d5
+  filename: 2026-04-28_000568_announce_kzz_2025年度利润分配预案.PDF
+  source_type: announcement
+  added: '2026-07-22T07:22:15.754753+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 泸州老窖
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-25b5af
+  filename: 2026-07-22_酒价内参6月14日价格发布-五粮液普五八代国窖1573领涨总.md
+  source_type: web-search
+  added: '2026-07-22T07:27:31.620447+00:00'
+  processed: true
+  notes: query='国窖1573 飞天茅台 普五 批价 今日酒价 2026年6月'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 国窖1573 飞天茅台 普五 批价 今日酒价 2026年6月
+    url: https://finance.sina.com.cn/chanjing/jync/2026-06-14/doc-inicipvz0943015.shtml
+    domain: finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:31.606761+00:00'
+    stale_at: '2026-08-21T07:27:31.606761+00:00'
+    expire_at: '2026-10-20T07:27:31.606761+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ea9dc8
+  filename: 2026-07-22_酒价内参7月5日价格发布-飞天茅台国窖1573领涨.md
+  source_type: web-search
+  added: '2026-07-22T07:27:31.658440+00:00'
+  processed: true
+  notes: query='国窖1573 飞天茅台 普五 批价 今日酒价 2026年6月'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 国窖1573 飞天茅台 普五 批价 今日酒价 2026年6月
+    url: https://www.sohu.com/a/1045976576_122014422
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:31.644910+00:00'
+    stale_at: '2026-08-21T07:27:31.644910+00:00'
+    expire_at: '2026-10-20T07:27:31.644910+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e61a4a
+  filename: 2026-07-22_酒价格归档---酒排名.md
+  source_type: web-search
+  added: '2026-07-22T07:27:31.698634+00:00'
+  processed: true
+  notes: query='国窖1573 飞天茅台 普五 批价 今日酒价 2026年6月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 国窖1573 飞天茅台 普五 批价 今日酒价 2026年6月
+    url: https://www.jiupaiming.com/jiage
+    domain: jiupaiming.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:31.684973+00:00'
+    stale_at: '2026-08-21T07:27:31.684973+00:00'
+    expire_at: '2026-10-20T07:27:31.684973+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b16d27
+  filename: 2026-07-22_泸州老窖ai预测根据2026年春节动销情况及历史数据.md
+  source_type: web-search
+  added: '2026-07-22T07:27:31.742989+00:00'
+  processed: true
+  notes: query='泸州老窖 深度报告 券商 2026 盈利预测 估值'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 深度报告 券商 2026 盈利预测 估值
+    url: https://xueqiu.com/7568296857/379157326
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:31.728706+00:00'
+    stale_at: '2026-08-21T07:27:31.728706+00:00'
+    expire_at: '2026-10-20T07:27:31.728706+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b2c7b2
+  filename: 2026-07-22_盈利调高-数据中心.md
+  source_type: web-search
+  added: '2026-07-22T07:27:31.785408+00:00'
+  processed: true
+  notes: query='泸州老窖 深度报告 券商 2026 盈利预测 估值'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 深度报告 券商 2026 盈利预测 估值
+    url: https://www.stcn.com/dc/jgfx.html?type=ylyctg
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:31.769673+00:00'
+    stale_at: '2026-08-21T07:27:31.769673+00:00'
+    expire_at: '2026-10-20T07:27:31.769673+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a3c08d
+  filename: 2026-07-22_关于-国家税务总局关于调整消费税纳税申报表有关事项的公告-的解读.md
+  source_type: web-search
+  added: '2026-07-22T07:27:31.831377+00:00'
+  processed: true
+  notes: query='白酒消费税 纳税申报 新规 财政部 税务总局 2026 细则'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 白酒消费税 纳税申报 新规 财政部 税务总局 2026 细则
+    url: https://fgk.chinatax.gov.cn/zcfgk/c100015/c5249184/content.html
+    domain: fgk.chinatax.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:31.815469+00:00'
+    stale_at: '2026-08-21T07:27:31.815469+00:00'
+    expire_at: '2026-10-20T07:27:31.815469+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-fd9481
+  filename: 2026-07-22_白酒企业缴纳消费税-厘清概念-逐个品种申报计税价格--财税干货.md
+  source_type: web-search
+  added: '2026-07-22T07:27:31.875920+00:00'
+  processed: true
+  notes: query='白酒消费税 纳税申报 新规 财政部 税务总局 2026 细则' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 白酒消费税 纳税申报 新规 财政部 税务总局 2026 细则
+    url: https://taxrefund.com.cn/news/show-8096.html
+    domain: taxrefund.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:31.860509+00:00'
+    stale_at: '2026-08-21T07:27:31.860509+00:00'
+    expire_at: '2026-10-20T07:27:31.860509+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-1a2963
+  filename: 2026-07-22_国家税务总局关于调整消费税纳税申报表有关事项的公告.md
+  source_type: web-search
+  added: '2026-07-22T07:27:31.920821+00:00'
+  processed: true
+  notes: query='白酒消费税 纳税申报 新规 财政部 税务总局 2026 细则'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 白酒消费税 纳税申报 新规 财政部 税务总局 2026 细则
+    url: https://fgk.chinatax.gov.cn/zcfgk/c100012/c5249181/content.html
+    domain: fgk.chinatax.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:31.905400+00:00'
+    stale_at: '2026-08-21T07:27:31.905400+00:00'
+    expire_at: '2026-10-20T07:27:31.905400+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-437ece
+  filename: 2026-07-22_复盘系列之七-白酒韧性十足-不惧调整再攀高峰.md
+  source_type: web-search
+  added: '2026-07-22T07:27:31.970215+00:00'
+  processed: true
+  notes: query='白酒行业 2013 2014 2015 深度调整 复盘 周期 茅台 五粮液' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 白酒行业 2013 2014 2015 深度调整 复盘 周期 茅台 五粮液
+    url: https://pdf.dfcfw.com/pdf/H3_AP202204271561920492_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:31.954374+00:00'
+    stale_at: '2026-08-21T07:27:31.954374+00:00'
+    expire_at: '2026-10-20T07:27:31.954374+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-607df4
+  filename: 2026-07-22_中金公司-复盘白酒历次周期调整已到底部布局区间.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.016118+00:00'
+  processed: true
+  notes: query='白酒行业 2013 2014 2015 深度调整 复盘 周期 茅台 五粮液'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 白酒行业 2013 2014 2015 深度调整 复盘 周期 茅台 五粮液
+    url: https://www.cls.cn/detail/818751
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:32.000026+00:00'
+    stale_at: '2026-08-21T07:27:32.000026+00:00'
+    expire_at: '2026-10-20T07:27:32.000026+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-3a679e
+  filename: 2026-07-22_以产品视角逆周期看高端白酒量价解析---a股-研报详情--新浪.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.063155+00:00'
+  processed: true
+  notes: query='白酒行业 2013 2014 2015 深度调整 复盘 周期 茅台 五粮液'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 白酒行业 2013 2014 2015 深度调整 复盘 周期 茅台 五粮液
+    url: https://stock.finance.sina.com.cn/stock/view/paper.php?symbol=sh000001&reportid=821236326534
+    domain: stock.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:32.046577+00:00'
+    stale_at: '2026-08-21T07:27:32.046577+00:00'
+    expire_at: '2026-10-20T07:27:32.046577+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c14557
+  filename: 2026-07-22_泸州老窖的困局-库存高企-价格倒挂与重返前三的梦.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.116666+00:00'
+  processed: true
+  notes: query='泸州老窖 经销商 库存 打款 倒挂 调研 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 经销商 库存 打款 倒挂 调研 2026
+    url: https://www.donews.com/article/detail/7930/85935.html
+    domain: donews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:32.099776+00:00'
+    stale_at: '2026-08-21T07:27:32.099776+00:00'
+    expire_at: '2026-10-20T07:27:32.099776+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-421cf0
+  filename: 2026-07-22_控货稳价-饮鸩止渴-泸州老窖的渠道高压与年轻化突围两难.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.166075+00:00'
+  processed: true
+  notes: query='泸州老窖 经销商 库存 打款 倒挂 调研 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 经销商 库存 打款 倒挂 调研 2026
+    url: https://user.guancha.cn/main/content?id=1581725
+    domain: user.guancha.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:32.148576+00:00'
+    stale_at: '2026-08-21T07:27:32.148576+00:00'
+    expire_at: '2026-10-20T07:27:32.148576+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d7b671
+  filename: 2026-07-22_泸州老窖国窖1573库存真相-经销商堆货7个月.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.219052+00:00'
+  processed: true
+  notes: query='泸州老窖 经销商 库存 打款 倒挂 调研 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 经销商 库存 打款 倒挂 调研 2026
+    url: https://post.m.smzdm.com/p/aggx35z3/
+    domain: post.m.smzdm.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:32.201135+00:00'
+    stale_at: '2026-08-21T07:27:32.201135+00:00'
+    expire_at: '2026-10-20T07:27:32.201135+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-9537c8
+  filename: 2026-07-22_泸州老窖董事长刘淼任期推行股权激励-业绩考核或现-低门槛.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.277505+00:00'
+  processed: true
+  notes: query='泸州老窖 刘淼 林锋 管理层 股权激励 分红 回购 历史' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 刘淼 林锋 管理层 股权激励 分红 回购 历史
+    url: https://www.thejzy.com/?p=124718
+    domain: thejzy.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:32.259031+00:00'
+    stale_at: '2026-08-21T07:27:32.259031+00:00'
+    expire_at: '2026-10-20T07:27:32.259031+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-fe416d
+  filename: 2026-07-22_泸州老窖将采取稍微积极进攻策略董事长刘淼-4-5月数据表现整体良性.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.330067+00:00'
+  processed: true
+  notes: query='泸州老窖 刘淼 林锋 管理层 股权激励 分红 回购 历史'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 刘淼 林锋 管理层 股权激励 分红 回购 历史
+    url: https://www.stcn.com/article/detail/905412.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:32.311256+00:00'
+    stale_at: '2026-08-21T07:27:32.311256+00:00'
+    expire_at: '2026-10-20T07:27:32.311256+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-de66fa
+  filename: 2026-07-22_泸州老窖-000568-盈利预测.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.389256+00:00'
+  processed: true
+  notes: query='泸州老窖 一致预期 2026 2027 净利润预测 机构' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 一致预期 2026 2027 净利润预测 机构
+    url: https://basic.10jqka.com.cn/000568/worth.html
+    domain: basic.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:32.369237+00:00'
+    stale_at: '2026-08-21T07:27:32.369237+00:00'
+    expire_at: '2026-10-20T07:27:32.369237+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f181a3
+  filename: 2026-07-22_三年后泸州老窖多少股价才算正常水平.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.442901+00:00'
+  processed: true
+  notes: query='泸州老窖 一致预期 2026 2027 净利润预测 机构'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 一致预期 2026 2027 净利润预测 机构
+    url: https://xueqiu.com/7752197013/322590334
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:32.423876+00:00'
+    stale_at: '2026-08-21T07:27:32.423876+00:00'
+    expire_at: '2026-10-20T07:27:32.423876+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-80a6b2
+  filename: 2026-07-22_公司公告-泸州老窖-投资者关系管理信息20260702.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.502550+00:00'
+  processed: true
+  notes: query='泸州老窖 投资者关系活动记录表 2026年6月 调研'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 投资者关系活动记录表 2026年6月 调研
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=000568&id=12428233
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:32.481908+00:00'
+    stale_at: '2026-08-21T07:27:32.481908+00:00'
+    expire_at: '2026-10-20T07:27:32.481908+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-ef6345
+  filename: 2026-07-22_2026-年6-月26-日投资者关系活动记录表.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.559353+00:00'
+  processed: true
+  notes: query='泸州老窖 投资者关系活动记录表 2026年6月 调研' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 投资者关系活动记录表 2026年6月 调研
+    url: https://pdf.dfcfw.com/pdf/H2_AN202606301826601270_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:32.539692+00:00'
+    stale_at: '2026-08-21T07:27:32.539692+00:00'
+    expire_at: '2026-10-20T07:27:32.539692+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-959966
+  filename: 2026-07-22_000568-证券简称-泸州老窖.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.615326+00:00'
+  processed: true
+  notes: query='泸州老窖 投资者关系活动记录表 2026年6月 调研'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 投资者关系活动记录表 2026年6月 调研
+    url: http://static.cninfo.com.cn/finalpage/2026-05-25/1225328124.PDF
+    domain: static.cninfo.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:32.595505+00:00'
+    stale_at: '2026-08-21T07:27:32.595505+00:00'
+    expire_at: '2026-10-20T07:27:32.595505+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c0bedd
+  filename: 2026-07-22_泸州老窖-截至2023年底-17万吨为公司现有基酒总产能.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.752502+00:00'
+  processed: true
+  notes: query='泸州老窖 窖池 基酒 产能 储备 万吨' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 窖池 基酒 产能 储备 万吨
+    url: https://jiu.ifeng.com/c/8Zp1fAsbV4f
+    domain: jiu.ifeng.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:32.729374+00:00'
+    stale_at: '2026-08-21T07:27:32.729374+00:00'
+    expire_at: '2026-10-20T07:27:32.729374+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-8793c1
+  filename: 2026-07-22_泸州老窖产能分析之国窖产能.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.812334+00:00'
+  processed: true
+  notes: query='泸州老窖 窖池 基酒 产能 储备 万吨'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 窖池 基酒 产能 储备 万吨
+    url: https://xueqiu.com/7169360382/227791112
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:32.790762+00:00'
+    stale_at: '2026-08-21T07:27:32.790762+00:00'
+    expire_at: '2026-10-20T07:27:32.790762+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0bec29
+  filename: 2026-07-22_泸州老窖-000568-sz.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.874494+00:00'
+  processed: true
+  notes: query='泸州老窖 窖池 基酒 产能 储备 万吨' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 窖池 基酒 产能 储备 万吨
+    url: https://pdf.dfcfw.com/pdf/H3_AP202507091705814978_1.pdf?1752083044000.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:32.852104+00:00'
+    stale_at: '2026-08-21T07:27:32.852104+00:00'
+    expire_at: '2026-10-20T07:27:32.852104+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-665c58
+  filename: 2026-07-22_直击股东大会丨泸州老窖-国窖1573不降价也保持良好动销.md
+  source_type: web-search
+  added: '2026-07-22T07:27:32.942174+00:00'
+  processed: true
+  notes: query='泸州老窖 特曲 窖龄 高光 黑盖 2025 动销 提价'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 特曲 窖龄 高光 黑盖 2025 动销 提价
+    url: https://m.sohu.com/a/1043921915_115362?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334
+    domain: m.sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T07:27:32.920127+00:00'
+    stale_at: '2026-08-21T07:27:32.920127+00:00'
+    expire_at: '2026-10-20T07:27:32.920127+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b08805
+  filename: 2026-07-22_泸州老窖目标-十五五-贵州茅台已耗资约12亿元回购82万股.md
+  source_type: web-search
+  added: '2026-07-22T07:27:33.004814+00:00'
+  processed: true
+  notes: query='泸州老窖 特曲 窖龄 高光 黑盖 2025 动销 提价' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 特曲 窖龄 高光 黑盖 2025 动销 提价
+    url: http://www.news.cn/food/20250307/b79817b685ef49d292bb3e6e79a73315/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T07:27:32.981997+00:00'
+    stale_at: '2026-08-21T07:27:32.981997+00:00'
+    expire_at: '2026-10-20T07:27:32.981997+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e74351
+  filename: 2026-07-22_洋河股份-深度调整完成-未来值得期待.md
+  source_type: web-search
+  added: '2026-07-22T08:19:29.682715+00:00'
+  processed: true
+  notes: query='洋河股份 2019 2020 渠道库存 危机 控货 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 洋河股份 2019 2020 渠道库存 危机 控货 复盘
+    url: https://pdf.dfcfw.com/pdf/H3_AP202211201580409039_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:19:29.661212+00:00'
+    stale_at: '2026-08-21T08:19:29.661212+00:00'
+    expire_at: '2026-10-20T08:19:29.661212+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-940705
+  filename: 2026-07-22_洋河股份营销破局-去库存-稳价盘-梦之蓝占比提升3-5个.md
+  source_type: web-search
+  added: '2026-07-22T08:19:29.742281+00:00'
+  processed: true
+  notes: query='洋河股份 2019 2020 渠道库存 危机 控货 复盘'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 洋河股份 2019 2020 渠道库存 危机 控货 复盘
+    url: https://www.stcn.com/article/detail/3894406.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:19:29.720618+00:00'
+    stale_at: '2026-08-21T08:19:29.720618+00:00'
+    expire_at: '2026-10-20T08:19:29.720618+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-6a44e7
+  filename: 2026-07-22_渠道库存-价盘有效修复-洋河股份从出清风险步入夯实基础.md
+  source_type: web-search
+  added: '2026-07-22T08:19:29.803164+00:00'
+  processed: true
+  notes: query='洋河股份 2019 2020 渠道库存 危机 控货 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 洋河股份 2019 2020 渠道库存 危机 控货 复盘
+    url: https://app.dahecube.com/nweb/news/20260429/272217nb36e770d94f.htm?artid=272217
+    domain: app.dahecube.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:19:29.781429+00:00'
+    stale_at: '2026-08-21T08:19:29.781429+00:00'
+    expire_at: '2026-10-20T08:19:29.781429+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-4636c5
+  filename: 2026-07-22_洋河股份-002304.md
+  source_type: web-search
+  added: '2026-07-22T08:19:29.864386+00:00'
+  processed: true
+  notes: query='洋河股份 2019 2020 渠道库存 危机 控货 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 洋河股份 2019 2020 渠道库存 危机 控货 复盘
+    url: https://file.iyanbao.com/pdf/d6f5b-d5963cd5-9051-40b5-ab71-697c66405603.pdf
+    domain: file.iyanbao.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:19:29.842996+00:00'
+    stale_at: '2026-08-21T08:19:29.842996+00:00'
+    expire_at: '2026-10-20T08:19:29.842996+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-679de6
+  filename: 2026-07-22_新发展环境下禁酒政策调整对白酒行业影响分析.md
+  source_type: web-search
+  added: '2026-07-22T08:19:29.935367+00:00'
+  processed: true
+  notes: query='高端白酒 需求结构 政务 商务 宴席 占比 禁酒令' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 高端白酒 需求结构 政务 商务 宴席 占比 禁酒令
+    url: https://www.lhratings.com/file/g1182893638.pdf
+    domain: lhratings.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:19:29.911460+00:00'
+    stale_at: '2026-08-21T08:19:29.911460+00:00'
+    expire_at: '2026-10-20T08:19:29.911460+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-5b5b61
+  filename: 2026-07-22_禁酒令升级-中国白酒行业如何突破困局.md
+  source_type: web-search
+  added: '2026-07-22T08:19:29.999399+00:00'
+  processed: true
+  notes: query='高端白酒 需求结构 政务 商务 宴席 占比 禁酒令' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 高端白酒 需求结构 政务 商务 宴席 占比 禁酒令
+    url: https://pdf.dfcfw.com/pdf/H3_AP202506241696738933_1.pdf?1750780945000.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:19:29.976538+00:00'
+    stale_at: '2026-08-21T08:19:29.976538+00:00'
+    expire_at: '2026-10-20T08:19:29.976538+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-d298d2
+  filename: 2026-07-22_禁酒令-叠加跌价-商务场合出走的高端白酒-加速走向大众.md
+  source_type: web-search
+  added: '2026-07-22T08:19:30.063090+00:00'
+  processed: true
+  notes: query='高端白酒 需求结构 政务 商务 宴席 占比 禁酒令'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 高端白酒 需求结构 政务 商务 宴席 占比 禁酒令
+    url: https://m.mp.oeeee.com/a/BAAFRD0000202506251097820.html
+    domain: m.mp.oeeee.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:19:30.040146+00:00'
+    stale_at: '2026-08-21T08:19:30.040146+00:00'
+    expire_at: '2026-10-20T08:19:30.040146+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-c10496
+  filename: 2026-07-22_新禁酒令-后-升学宴禁令-来袭-白酒直面消费转型挑战.md
+  source_type: web-search
+  added: '2026-07-22T08:19:30.126342+00:00'
+  processed: true
+  notes: query='高端白酒 需求结构 政务 商务 宴席 占比 禁酒令'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 高端白酒 需求结构 政务 商务 宴席 占比 禁酒令
+    url: https://www.tmtpost.com/7602136.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:19:30.103706+00:00'
+    stale_at: '2026-08-21T08:19:30.103706+00:00'
+    expire_at: '2026-10-20T08:19:30.103706+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-4aa720
+  filename: 2026-07-22_报告撰写-中国酒业协会市场专业委员会.md
+  source_type: web-search
+  added: '2026-07-22T08:19:30.191015+00:00'
+  processed: true
+  notes: query='高端白酒 需求结构 政务 商务 宴席 占比 禁酒令'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 高端白酒 需求结构 政务 商务 宴席 占比 禁酒令
+    url: https://assets.kpmg.com/content/dam/kpmgsites/cn/pdf/zh/2025/06/mid-term-research-report-on-the-chinese-baijiu-market-2025.pdf
+    domain: assets.kpmg.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:19:30.167677+00:00'
+    stale_at: '2026-08-21T08:19:30.167677+00:00'
+    expire_at: '2026-10-20T08:19:30.167677+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-7d5aca
+  filename: 2026-07-22_飞天53-vol-1l贵州茅台酒i茅台平台零售价由3119元-瓶调整.md
+  source_type: web-search
+  added: '2026-07-22T08:23:40.473308+00:00'
+  processed: false
+  notes: query='国窖1573 批价 普五 飞天茅台 2026年7月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 国窖1573 批价 普五 飞天茅台 2026年7月
+    url: https://es.tradingview.com/news/gelonghui:8006208d4e3f9:0/
+    domain: es.tradingview.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:23:40.448544+00:00'
+    stale_at: '2026-08-21T08:23:40.448544+00:00'
+    expire_at: '2026-10-20T08:23:40.448544+00:00'
+    triggered_by: 01-prescan
+- id: mat-dc6e31
+  filename: 2026-07-22_6月白酒行业观察-淡季去库存为主-筑底信号渐明.md
+  source_type: web-search
+  added: '2026-07-22T08:23:40.549517+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 动销 淡季 2026年6月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 白酒 渠道库存 动销 淡季 2026年6月
+    url: https://cj.sina.cn/articles/view/1668899380/6379623400101ruuw?from=finance
+    domain: cj.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:23:40.524915+00:00'
+    stale_at: '2026-08-21T08:23:40.524915+00:00'
+    expire_at: '2026-10-20T08:23:40.524915+00:00'
+    triggered_by: 01-prescan
+- id: mat-8caa19
+  filename: 2026-07-22_淡季基本面平稳-关注风格再平衡强于大市-维持.md
+  source_type: web-search
+  added: '2026-07-22T08:23:40.620861+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 动销 淡季 2026年6月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 白酒 渠道库存 动销 淡季 2026年6月
+    url: https://pdf.dfcfw.com/pdf/H3_AP202607161827005231_1.pdf?1784187977000.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:23:40.595165+00:00'
+    stale_at: '2026-08-21T08:23:40.595165+00:00'
+    expire_at: '2026-10-20T08:23:40.595165+00:00'
+    triggered_by: 01-prescan
+- id: mat-6e8403
+  filename: 2026-07-22_有惊喜有隐忧-国窖不降价就滞销-等认知正在被打破.md
+  source_type: web-search
+  added: '2026-07-22T08:23:40.692465+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 动销 淡季 2026年6月'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 白酒 渠道库存 动销 淡季 2026年6月
+    url: https://xueqiu.com/7913104177/397725372
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:23:40.666254+00:00'
+    stale_at: '2026-08-21T08:23:40.666254+00:00'
+    expire_at: '2026-10-20T08:23:40.666254+00:00'
+    triggered_by: 01-prescan
+- id: mat-69c361
+  filename: 2026-07-22_壹评级-低基数下零售数据高增-短期关注白酒估值修复.md
+  source_type: web-search
+  added: '2026-07-22T08:23:40.763652+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 动销 淡季 2026年6月'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 白酒 渠道库存 动销 淡季 2026年6月
+    url: https://www.yicai.com/news/103277346.html
+    domain: yicai.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:23:40.738411+00:00'
+    stale_at: '2026-08-21T08:23:40.738411+00:00'
+    expire_at: '2026-10-20T08:23:40.738411+00:00'
+    triggered_by: 01-prescan
+- id: mat-738594
+  filename: 2026-07-22_券商晨会精华-白酒淡季需求偏弱-渠道优化成为核心边际改善.md
+  source_type: web-search
+  added: '2026-07-22T08:23:40.833056+00:00'
+  processed: false
+  notes: query='白酒 渠道库存 动销 淡季 2026年6月'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  search_meta:
+    query: 白酒 渠道库存 动销 淡季 2026年6月
+    url: https://www.cls.cn/detail/2431967
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:23:40.808131+00:00'
+    stale_at: '2026-08-21T08:23:40.808131+00:00'
+    expire_at: '2026-10-20T08:23:40.808131+00:00'
+    triggered_by: 01-prescan
+- id: mat-38014e
+  filename: 2026-07-22_公司公告-泸州老窖-2026年一季度报告.md
+  source_type: web-search
+  added: '2026-07-22T08:23:40.909643+00:00'
+  processed: false
+  notes: query='泸州老窖 中报 业绩预告 盈利预测 2026'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 中报 业绩预告 盈利预测 2026
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=000568&id=12261738
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:23:40.883420+00:00'
+    stale_at: '2026-08-21T08:23:40.883420+00:00'
+    expire_at: '2026-10-20T08:23:40.883420+00:00'
+    triggered_by: 01-prescan
+- id: mat-cadb42
+  filename: 2026-07-22_泸州老窖集团有限责任公司2025-年度跟踪评级报告.md
+  source_type: web-search
+  added: '2026-07-22T08:23:40.990331+00:00'
+  processed: false
+  notes: query='泸州老窖 经营现金流 分红 货币资金 2025年报'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 经营现金流 分红 货币资金 2025年报
+    url: https://static.sse.com.cn/disclosure/bond/announcement/company/c/new/2025-06-20/115085_20250620_ZGI3.pdf
+    domain: static.sse.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:23:40.963991+00:00'
+    stale_at: '2026-08-21T08:23:40.963991+00:00'
+    expire_at: '2026-10-20T08:23:40.963991+00:00'
+    triggered_by: 01-prescan
+- id: mat-db0eae
+  filename: 2026-07-22_泸州老窖股份有限公司2025-年半年度报告全文.md
+  source_type: web-search
+  added: '2026-07-22T08:23:41.065327+00:00'
+  processed: false
+  notes: query='泸州老窖 经营现金流 分红 货币资金 2025年报'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: 泸州老窖 经营现金流 分红 货币资金 2025年报
+    url: http://static.cninfo.com.cn/finalpage/2025-08-30/1224618711.PDF
+    domain: static.cninfo.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:23:41.037913+00:00'
+    stale_at: '2026-08-21T08:23:41.037913+00:00'
+    expire_at: '2026-10-20T08:23:41.037913+00:00'
+    triggered_by: 01-prescan
+- id: mat-1a3e1c
+  filename: 2026-07-22_泸州老窖-2025年营收净利双降-库存去化仍是关键命题.md
+  source_type: web-search
+  added: '2026-07-22T08:23:41.142658+00:00'
+  processed: false
+  notes: query='泸州老窖 经营现金流 分红 货币资金 2025年报' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 泸州老窖 经营现金流 分红 货币资金 2025年报
+    url: https://jnzstatic.cs.com.cn/zzb/htmlInfo/121343.html
+    domain: jnzstatic.cs.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:23:41.115231+00:00'
+    stale_at: '2026-08-21T08:23:41.115231+00:00'
+    expire_at: '2026-10-20T08:23:41.115231+00:00'
+    triggered_by: 01-prescan
+- id: mat-4c47e4
+  filename: 2026-07-22_消费税征收后移影响几何-以白酒为例.md
+  source_type: web-search
+  added: '2026-07-22T08:23:41.222981+00:00'
+  processed: false
+  notes: query='消费税 征收后移 白酒 立法 征求意见 2026'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 消费税 征收后移 白酒 立法 征求意见 2026
+    url: http://www.21jingji.com/article/20210609/herald/310337be7b6ac47ea0137df61cb377ab.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-07-22T08:23:41.196695+00:00'
+    stale_at: '2026-08-21T08:23:41.196695+00:00'
+    expire_at: '2026-10-20T08:23:41.196695+00:00'
+    triggered_by: 01-prescan
+- id: mat-ca727f
+  filename: 2026-07-22_财经观察-调整优化消费税如何发挥市场调节作用.md
+  source_type: web-search
+  added: '2026-07-22T08:23:41.299648+00:00'
+  processed: false
+  notes: query='消费税 征收后移 白酒 立法 征求意见 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 消费税 征收后移 白酒 立法 征求意见 2026
+    url: http://finance.people.com.cn/n1/2026/0307/c1004-40676836.html
+    domain: finance.people.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-22T08:23:41.271672+00:00'
+    stale_at: '2026-08-21T08:23:41.271672+00:00'
+    expire_at: '2026-10-20T08:23:41.271672+00:00'
+    triggered_by: 01-prescan

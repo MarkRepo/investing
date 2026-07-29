@@ -1,0 +1,177 @@
+# roadmap.yaml — 研究路线图
+slug: us-spacex-spcx
+created: 2026-07-15
+
+# L1/L2 坍缩为 primer_scope；背景理解交给 00_primer。
+primer_scope: >
+  primer 该覆盖：SpaceX 2026 年后 Connectivity/Space/AI 三分部边界及同一控制并表口径；Falcon 9
+  重复使用的成本、周转与可靠性飞轮；内部 Starlink 发射为何不能等同外部发射收入；Starlink 的卫星寿命、
+  波束容量、网关、频谱、终端补贴和用户密度经济学；消费者/企业/航空/海事/政府/Direct-to-Cell 场景差异；
+  Starship 与 Falcon/下一代 Starlink 的关系；NASA/Space Force/NRO 合同与商业发射差异；营业利润、segment
+  EBITDA、经营现金流和扣除维持性/增长性 capex 后 FCF 的区别；卫星网络资本密集陷阱；双层股权、controlled
+  company、同一控制合并与关联交易；SpaceX 的 reverse-DCF/SOTP/概率加权技术期权估值方法。
+
+learning_track:
+  l3_debates:
+    - question: Starlink 是可持续高回报现金牛，还是把卫星更替和终端补贴藏在 capex/折旧后的“高利润、低股东 FCF”网络？
+      source_hint: 424(b)(4) 分部利润、合并现金流、Connectivity capex 与卫星寿命/补星节奏
+    - question: xAI/X 与 SpaceX 的集团化是可审计的技术协同，还是利用绝对控制权把 Starlink 现金流转移给高风险 AI 资本开支？
+      source_hint: S-1 同一控制交易、关联交易、AI 分部亏损/capex、董事会治理与资本承诺
+    - question: Starship 是被市场低估的成本革命，还是成功时间远于市场模型、持续吞噬资本的长久期陷阱？
+      source_hint: FAA 事故/许可、Flight 任务记录、复用证据、R&D/capex 与商业任务计划
+    - question: 约 136 美元究竟隐含了 Starlink、Starship 与 AI 三线同时成功，还是单靠 Connectivity 基准情景已能支撑当前 EV？
+      source_hint: SEC 完全稀释股本/净现金、卖方 2030/2040 预测、分部 reverse-DCF 与 SOTP
+    - question: 82.4% 投票控制、controlled-company 豁免和提前解禁是合理创始人治理，还是应永久计入少数股东折价？
+      source_hint: 424(b)(4) beneficial ownership/related parties/shares eligible、Form 4、双层股权历史案例
+
+  l4_hunting:
+    - question: Connectivity 在未来四个季度扣除补星、地面网络和终端相关 capex 后，是否能连续形成正的分部近似自由现金流？
+      addresses: [K1]
+      search_keywords: [Starlink FCF capex, Connectivity cash flow, satellite replacement cost]
+      source_hint: SpaceX 10-Q/10-K 分部注释与现金流，Starlink 用户/ARPU/卫星更新资料
+    - question: Space 与 AI/X 的现金消耗是否在 24 个月内收敛到 Starlink 可覆盖范围，IPO 资金实际流向哪里？
+      addresses: [K2]
+      search_keywords: [SpaceX AI capex, xAI operating loss, IPO use proceeds]
+      source_hint: 424(b)(4) MD&A/notes/related parties，后续 10-Q 和资本开支披露
+    - question: 到 2027 年中 Starship 能否连续完成至少三次关键任务成功，并出现硬件复用与商业载荷节奏？
+      addresses: [K3]
+      search_keywords: [Starship flight record, FAA mishap license, Starship commercial payload]
+      source_hint: FAA、SpaceX、NASA HLS、任务清单与硬件编号
+    - question: 以 SEC 完全稀释股本和 IPO 后净现金反推，现价需要哪些 2030 收入/利润率、终值与 Starship/AI 成功概率？
+      addresses: [K4]
+      search_keywords: [SPCX diluted shares, SpaceX analyst model, SpaceX reverse DCF]
+      source_hint: 424(b)(4) capitalization/dilution + 至少五家卖方 initiation + 自建 SOTP
+    - question: Musk 控制、关联交易、未来增发和提前解禁是否已发生可量化的少数股东价值转移或持续供给冲击？
+      addresses: [K5]
+      search_keywords: [SpaceX related party, SPCX insider sale, SPCX lockup dilution]
+      source_hint: SEC related-party/proxy/Form 4/8-K、锁定协议与治理批评文件
+
+material_priority:
+  tier1:
+    - title: SpaceX 2026 最终 424(b)(4) 完整招股书及分章节抽取
+      type: prospectus
+      ticker: SPCX
+      source: SEC EDGAR accession 000162828026042639（已取得 URL/摘要，完整切分待处理）
+      why: K1/K2/K4/K5 的一手源；服务 biz-moat-unit-econ、multi-year-financials、mgmt-capital-alloc、consensus
+      addresses: [K1, K2, K4, K5]
+      info_tier: public
+      rings: [biz-moat-unit-econ, multi-year-financials, mgmt-capital-alloc, consensus]
+    - title: 2023–2025 与 2026Q1 三分部财务、现金流、capex 和股本重建表
+      type: data
+      ticker: ''
+      source: 424(b)(4) MD&A/财务报表/notes（已取得关键数字，完整表待抽取）
+      why: 直接验证 Starlink FCF、AI/Space 消耗和当前 EV；服务 financial-arc、valuation-anchor
+      addresses: [K1, K2, K4]
+      info_tier: public
+      rings: [financial-arc, valuation-anchor]
+    - title: Starlink 单位经济与资本强度数据包
+      type: industry-research
+      ticker: ''
+      source: S-1、FCC/Ofcom、CNBC/The Information、Via Satellite（部分已收）
+      why: 用户/ARPU/终端补贴/卫星寿命/容量利用率决定利润能否穿透为 FCF
+      addresses: [K1, K4]
+      info_tier: half_public
+      rings: [biz-moat-unit-econ, bull-bear]
+    - title: xAI/X 同一控制合并、关联交易与 AI 资本开支数据包
+      type: data
+      ticker: ''
+      source: 424(b)(4) related-party/notes + Mercer/Morningstar（已收分析，待完整表）
+      why: K2/K5 核心命门；服务管理层资本配置、治理和 bear case
+      addresses: [K2, K5]
+      info_tier: public
+      rings: [mgmt-capital-alloc, bull-bear]
+    - title: SPCX 完全稀释股本、IPO 后净现金与至少五家卖方模型
+      type: sell-side-note
+      ticker: ''
+      source: SEC capitalization/dilution + Morgan Stanley/Goldman/独立卖方（聚合已收，模型待深抓）
+      why: 环②/④核心输入；把目标价统一到 2030 收入、利润、终值和成功概率
+      addresses: [K4, K5]
+      info_tier: half_public
+      rings: [consensus, valuation-anchor, valuation-percentile]
+
+  tier2:
+    - title: Starship Flight 全记录、FAA 事故/许可与 2027 商业任务里程碑
+      type: data
+      ticker: ''
+      source: FAA、SpaceX、NASA、Reuters/Spaceflight Now（近期资料已收）
+      why: 验证 K3 的连续成功、复用和商业节奏，不以单次试飞叙事替代兑现
+      addresses: [K3]
+      info_tier: public
+      rings: [bull-bear]
+    - title: NASA、Space Force/NRO 与商业发射 backlog/客户集中度
+      type: data
+      ticker: ''
+      source: S-1、USASpending、NASA/USSF award notices（部分已收）
+      why: 衡量 Space 分部收入可见性、认证壁垒与客户集中风险
+      addresses: [K2, K4]
+      info_tier: public
+      rings: [biz-moat-unit-econ, bull-bear]
+    - title: Musk 资本配置史、双层股权、关联交易与 Class A 股东保护
+      type: policy
+      ticker: ''
+      source: SEC filing、治理机构联名信、历史同一控制交易
+      why: 管理层/资本配置合同输入，决定治理折价和 K5
+      addresses: [K2, K5]
+      info_tier: public
+      rings: [mgmt-capital-alloc, bull-bear]
+    - title: IPO 锁定期、提前出售、可售股时间表和 Form 4
+      type: data
+      ticker: ''
+      source: 424(b)(4) shares eligible + Reuters + SEC ownership filings（部分已收）
+      why: 识别 IPO 后供给冲击和内部人行为 signpost
+      addresses: [K5]
+      info_tier: public
+      rings: [mgmt-capital-alloc]
+    - title: Iridium、Globalstar、OneWeb 破产/重组与卫星更替镜鉴
+      type: industry-research
+      ticker: ''
+      source: 历史报道、破产/重组文件、Space Intel Report（已收）
+      why: 环⑤历史失败镜鉴，检验高增长卫星网络的资本结构和需求错配风险
+      addresses: [K1, K2, K4]
+      info_tier: public
+      rings: [historical-mirror]
+
+  tier3:
+    - title: Starlink 地区级用户、流失、ARPU 与 Direct-to-Cell 运营商分成
+      type: data
+      ticker: ''
+      source: 付费行业库、运营商/渠道访谈（公开检索无完整数据）
+      why: 精修 K1 单位经济；不阻止主流程但显著影响地区容量和长期 ARPU 模型
+      addresses: [K1]
+      info_tier: hard
+      rings: [biz-moat-unit-econ]
+    - title: 卫星宽带/电信基础设施/发射/AI 全球 peer 估值矩阵
+      type: data
+      ticker: ''
+      source: 公开市场数据、公司财报、行业数据库
+      why: 给 SOTP 分部倍数边界与历史估值水位，避免拿单一科技倍数套集团
+      addresses: [K4]
+      info_tier: public
+      rings: [valuation-percentile, consensus]
+    - title: 双层股权受控公司与创始人关联交易失败案例
+      type: industry-research
+      ticker: ''
+      source: 学术/治理机构研究与案例复盘
+      why: 给 K5 治理折价建立历史基率，而非只做价值判断
+      addresses: [K5]
+      info_tier: public
+      rings: [historical-mirror, mgmt-capital-alloc]
+
+key_risks_to_monitor:
+  - 首份上市后 10-Q：Connectivity/Space/AI 分部收入、利润、经营现金流与 capex
+  - Starlink ARPU、净增用户、终端补贴和卫星更替 capex 是否出现利润/现金流背离
+  - AI/X 月度现金消耗、关联交易和 IPO 募资用途是否超出招股书基准
+  - Starship 连续任务成功、硬件复用、FAA 调查/许可和商业载荷节奏
+  - 完全稀释股本、未来重大增发、提前解禁与 Form 4 内部人出售
+  - 政府合同取消/延迟、客户集中度和国家安全监管变化
+
+analogies_to_study:
+  - case: Iridium 与 Globalstar 第一轮信用周期（美国/移动卫星通信/1990s–2000s）
+    analogy: 巨额前置星座 capex、过高需求/ARPU 假设、技术成功但资本结构和商业需求不匹配
+    limitation: Starlink 已有更大用户规模、低成本自有发射和更广终端场景
+  - case: OneWeb 破产与重组（全球/LEO 宽带/2012–2020）
+    analogy: 星座部署必须持续融资，发射与商业化错配会在网络完成前触发流动性危机
+    limitation: SpaceX 自有发射、IPO 现金和 Starlink 现有收入显著降低融资依赖
+  - case: Meta Reality Labs 与 Alphabet Other Bets（美国/受控科技平台/2015–至今）
+    analogy: 高利润核心业务长期补贴创始人主导的高风险期权，治理结构让外部股东难以约束资本配置
+    limitation: SpaceX 的 Starship/AI 与核心网络可能存在更强技术协同，且政府任务具战略属性

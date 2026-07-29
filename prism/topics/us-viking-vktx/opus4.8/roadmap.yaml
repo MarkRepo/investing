@@ -1,0 +1,136 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: us-viking-vktx
+created: 2026-07-22
+
+# L1/L2 坍缩为 primer_scope（背景深度交 00_primer 承担；roadmap 只驱动 L3/L4 收料）
+primer_scope: >
+  primer 该覆盖：GLP-1/GIP 双激动剂 vs 单GLP-1/三激动剂机制差异；皮下 vs 口服减重药开发/商业/耐受差异
+  与"口服圣杯"含义；临床期 biotech 价值来源(风险调整 NPV + 并购期权)与市值跳动机理；VK2735 皮下/口服两条腿
+  进度与竞争位置；减重 III 期读什么(减重%/AE停药率/维持)与二元性；减重竞争地图(LLY/Novo 双寡头 + 追赶者 +
+  小 biotech 弹性池)与 VKTX 位置；obesity 并购逻辑(Metsera 案例)；VKTX 现金/烧钱/runway/稀释机制；
+  VK2735 vs VK2809(MASH)/VK0214(X-ALD) 价值权重；THR-β 平台；维持研究与长期用药经济性；如何读 biotech 分析师目标价。
+
+learning_track:
+
+  # 争议层：多空分歧在哪、共识可能错在哪（喂决策链环④）
+  l3_debates:
+    - question: 市场把 VKTX 当"皮下 pivotal 期权 + 并购标的"定价，还是已把口服腿受损/稀释风险充分 price in？$4.33B 隐含的成功概率是多少？
+      source_hint: 卖方目标价模型(25家/聚合~$95) + 市值史(2024峰值~$9-10B→$4.33B) + WMBT 反推
+    - question: 皮下 VK2735 13周 14.7% 的斜率是"接近 best-in-class 真资产"，还是短疗程幻觉——78周长疗程疗效平台/GI耐受衰减是否被低估？
+      source_hint: VENTURE PMC论文 + 替尔泊肽/司美长疗程对照 + VANQUISH extension 设计
+    - question: 街炒 $20B 收购的买家动机是否已被自研(orforglipron已批/retatrutide/MariTide)或并购(Pfizer拿Metsera)填补，VKTX 是否已非刚需？
+      source_hint: 逐买家(LLY/Pfizer/Novo/Amgen/Roche/AZ)管线缺口盘点 + Metsera成交条款
+    - question: 口服腿在 Foundayo(已批) + aleniglipron(44周-16.3%) 夹击下是差异化资产还是无差异跟随者——净值符号是正是负？
+      source_hint: VK2735口服 vs orforglipron vs aleniglipron 头对头效力/耐受/机制对照
+    - question: pivotal 读出前(2027)是否必然增发稀释？$603M runway 名义到 2028 但同跑 VANQUISH-1/2+口服三期+维持，market timing 风险多大？
+      source_hint: Q1'26 烧钱轨迹(净亏$158M) + Lian 历次融资时点/定价史 + runway 结构
+
+  # 狩猎层：找错误定价，逐条对齐 thesis Killer Question
+  l4_hunting:
+    - question: VANQUISH-1/2 皮下78周减重是否 ≥15%(安慰剂调整)且 AE 停药率 <15%？市场当前隐含的成功概率是多少，13周→78周衰减风险如何定价？
+      addresses: [K1]
+      search_keywords: [VK2735 VANQUISH 三期设计, VENTURE 减重曲线, tirzepatide 78周耐受]
+      source_hint: clinicaltrials.gov VANQUISH-1/2 全文 + VENTURE PMC论文 + IR extension 公告
+    - question: 2026-2027 是否出现实质要约/管理层松口卖身/具名买家尽调？隐含 EV 落 $10B/$15B/$20B 哪档，Metsera $10bn 成交为 VKTX 设的可比锚是否成立？
+      addresses: [K2]
+      search_keywords: [VKTX 并购 传闻, Pfizer Metsera 条款, obesity biotech M&A 溢价]
+      source_hint: Pfizer-Metsera 公告 + 街头号标的报道 + 历史减重并购 premium 中位
+    - question: pivotal 读出前是否增发？规模/定价折让/摊薄股数——$603M runway 是否真到 2028 不需补，Lian 资本配置史暗示独立还是卖身倾向？
+      addresses: [K3]
+      search_keywords: [VKTX 增发 历史, Viking runway 现金, Brian Lian 融资]
+      source_hint: 10-K/10-Q 现金流+股数史 + DEF14A + earnings call transcript
+    - question: VK2735 口服三期是否如期 4Q26 启动，相对 Foundayo(已批)/aleniglipron(16.3%) 是否仍有可辩护差异化(疗效上限/耐受/双激动剂)？口服净值符号？
+      addresses: [K4]
+      search_keywords: [VK2735 口服 12.2%, aleniglipron ACCESS II, orforglipron ATTAIN 对照]
+      source_hint: ECO2026 poster + Structure/LLY IR + 口服头对头效力/耐受对照
+    - question: VK2735 维持给药试验(2026读出)停药后体重反弹曲线与维持剂量耐受性是否支持长期用药标签与商业经济性？
+      addresses: [K5]
+      search_keywords: [VK2735 维持 试验, GLP-1 停药 反弹, obesity maintenance dosing]
+      source_hint: IR maintenance trial 公告(启动2025-10-21/入组完成2026-01-08) + clinicaltrials.gov
+
+material_priority:
+
+  tier1:   # 必读，研究不可缺（均已 fetched，见 manifest）
+    - title: VKTX 2025 10-K + 2026Q1 10-Q(现金$603M/股数/增发史/OpEx轨迹/管线披露)
+      type: annual-report
+      ticker: VKTX
+      source: SEC EDGAR
+      addresses: [K1, K3]
+      info_tier: public
+      why: 环①生意质量+环④股数靶点+K3稀释生存的一手来源；已下 10-K/10-Q 全文
+    - title: VANQUISH-1/2 皮下三期试验设计 + VENTURE 皮下二期完整数据(减重曲线/AE停药率/各剂量)
+      type: data
+      source: clinicaltrials.gov / IR / VENTURE PMC论文
+      addresses: [K1]
+      info_tier: public
+      why: 命门1(78周斜率延续)核心；pivotal 二元读出的可证伪锚
+    - title: 卖方 consensus——VK2735 皮下+口服峰值销售预测 + 分析师目标价模型拆解(25家/聚合~$95)
+      type: sell-side-note
+      source: Morgan Stanley/BofA/Guggenheim obesity 覆盖 + TipRanks/marketscreener
+      addresses: [K1, K2]
+      info_tier: half_public
+      why: 环②估值锚+环④EV锚；WMBT 反推市场隐含成功概率
+    - title: obesity 并购可比——Metsera 成交条款($10bn/起价$4.9B竞价战) + 历史减重/biotech M&A 溢价中位
+      type: industry-research
+      source: Pfizer-Metsera 公告 / Reuters / 卖方 M&A comps
+      addresses: [K2]
+      info_tier: half_public
+      why: 环④并购定价锚 + historical-mirror；命门2(买家愿买且买得起)结构验证
+
+  tier2:   # 补充，有最好（均已 fetched）
+    - title: VK2735 口服二期 VENTURE-Oral 完整数据 + 与 Foundayo(ATTAIN)/aleniglipron(ACCESS II) 头对头效力/耐受对照
+      type: data
+      source: ECO2026 poster / DDW / 各公司 IR / biospace
+      addresses: [K4]
+      info_tier: public
+      why: 命门3(口服净值符号)核心；差异化空间判定
+    - title: 管理层资本配置史——Brian Lian 历次融资时点/定价 + BD取舍 + 独立vs卖身表态
+      type: sell-side-note
+      source: 历年增发公告 / earnings call transcript / DEF14A proxy
+      addresses: [K3]
+      info_tier: half_public
+      why: 环①mgmt-capital-alloc；判独立开发 vs 卖身倾向、增发风险
+    - title: VK2735 维持给药试验设计+数据(2026) + 停药反弹机制
+      type: data
+      source: IR maintenance trial 公告 / clinicaltrials.gov
+      addresses: [K5]
+      info_tier: public
+      why: K5 长期用药经济性；标签与差异化影响
+    - title: 减重药 III 期失败/失望镜鉴——CagriSema 两次失望 + danuglipron 受挫 + biotech pivotal miss 腰斩样本
+      type: industry-research
+      source: Novo/Pfizer 公告复盘 / Barron's / biotech pivotal miss 案例
+      addresses: [K1]
+      info_tier: public
+      why: 环⑤historical-mirror；pivotal miss 腰斩情景的实证参照
+
+  tier3:   # 可选（已 fetched）
+    - title: 竞品后期 pipeline 时点——Novo amycretin/CagriSema、Amgen MariTide、LLY retatrutide 三期读出
+      type: industry-research
+      source: 各公司 IR / fiercebiotech / delveinsight / endpoints
+      addresses: [K4]
+      info_tier: public
+      why: 竞争格局与并购买家饱和度判断
+    - title: VK2809(MASH)/VK0214(X-ALD) 最新处置与价值权重(VOYAGE二期结果)
+      type: data
+      source: VOYAGE 数据 / 2026 授权或三期决定
+      addresses: [K4]
+      info_tier: public
+      why: 次要资产 SOTP 权重；THR-β 平台残值
+
+key_risks_to_monitor:
+  - VANQUISH-1/2 topline(2027) 减重不及针剂龙头或 AE 停药率升高 → 独立价值与并购价值同崩(腰斩)
+  - pivotal 读出前深度折价增发 → 摊薄侵蚀每股期权价值
+  - 具名买家明确退出/自研填补缺口 → 并购期权大幅贬值、估值回落独立 DCF
+  - 口服腿净值转负 → 从差异化资产变"烧钱难变现"负债、加重稀释命门
+  - 竞品(orforglipron 商业放量/aleniglipron 三期领先)挤压独立商业化空间
+
+analogies_to_study:
+  - 案例: CagriSema(Novo/减重/2024-12 + 2026-02 两次失望)
+    类比逻辑: 高预期减重药 pivotal/关键读出不达预期→单日崩盘的二元风险剧本；VKTX pivotal miss 的镜像
+    类比局限: CagriSema 是已上市巨头的次世代资产、非纯 biotech；VKTX 是单资产弹性池、下行有现金/管线残值托底
+  - 案例: Pfizer danuglipron(口服小分子GLP-1/2023-2025 受挫)
+    类比逻辑: 口服减重资产因耐受性/剂量问题受挫→口服腿差异化叙事崩塌；VK2735 口服净值风险的镜像
+    类比局限: danuglipron 是 BID 给药耐受差的早期失败；VK2735 口服已有 12.2%/13周 数据、给药与机制不同
+  - 案例: Metsera(被 Pfizer $10bn 收购/2026/早期 obesity 资产竞价战)
+    类比逻辑: obesity 后期/干净资产的并购拍卖期权定价锚；VKTX 上行情景的正向镜像
+    类比局限: Metsera 更早期(Pfizer 付溢价抢时间)，VKTX 更后期(pivotal 二元未消)——买家风险偏好不同

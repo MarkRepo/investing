@@ -1,0 +1,120 @@
+slug: us-structure-gpcr
+variant: opus4.8
+topic_type: company
+display_name: Structure Therapeutics (GPCR)
+ticker: GPCR
+generated: 2026-07-22T17:20:00Z
+data_freshness: 2026-07
+data_freshness_basis: market_data/consensus 现采 2026-07-21；10-Q Q1'26 现金/摊薄 [mat-a58944]；竞品获批上市 web 2026-07 [mat-824874, mat-11e96d]
+
+# ── company type 字段（v2 翻案：观望）─────────────
+buy_box:
+  strong_buy_max: 35
+  accumulate_min: 35
+  accumulate_max: 45
+  hold_min: 45
+  hold_max: 65
+  current_price: 49.35
+  price_as_of: 2026-07-21
+  current_zone: hold
+
+position_framework:
+  position_tier: 观望
+  sizing_rationale: >-
+    v2 方向翻案（05-critic + web 揭示两个口服玩家已获批上市）：Structure 疗效仅打平梯队
+    （核心11.3%≈orforglipron全随机11.1%、<口服司美13.6%）、晚3-4身位、估值坐诚实rNPV base($45-52)中枢
+    无折价、接管地板是伪地板、EV≈−9%。现价$49无边际优势→观望不建仓。非做空(IP真实+Bull尾部22%真实+
+    二元事件不可择时)。仅在跌破$35(赔率修复)或三期显示对已上市玩家真差异化后，才以试探仓(full_max 2-3%)介入。
+  initial_max_pct: 0
+  full_max_pct: 3
+  add_ladder_prices: [35, 30]
+  max_cluster_pct: 6
+
+# 估值模型汇总（v2 用诚实峰值锚重算，fair_value=每 ADS 价口径）
+valuation_models:
+  - name: rnpv_pipeline
+    label: rNPV 管线折现（诚实峰值$1.5-1.8B base=4th-mover现实，含有效净现金~$0.7B扣摊薄）
+    bull_fair_value: [80, 87]
+    base_fair_value: [45, 52]
+    bear_fair_value: [21, 27]
+  - name: ev_comps_vs_viking
+    label: EV 同类横截面（vs Viking，折价可能合理——Viking双剂型GIP/GLP上限更高，不独立看多锚）
+    bull_fair_value: [null, null]
+    base_fair_value: [null, null]
+    bear_fair_value: [null, null]
+  - name: takeout_floor
+    label: 并购/接管地板——降格为伪地板（me-too迟到者去风险后才成立，不作数据点前缓冲）
+    bull_fair_value: [null, null]
+    base_fair_value: [null, null]
+    bear_fair_value: [null, null]
+
+# ── 所有 type 字段 ─────────────────────────────────
+kill_criteria:
+  - id: phase3_efficacy_miss
+    description: ACCOMPLISH-2 三期顶线核心剂量安慰剂调整减重 <10%，或高剂量因耐受无法落地 → 疗效证伪
+    status: pending
+    check_at: 2027-12-31
+  - id: install_base_crush
+    description: >-
+      orforglipron/口服司美上市首年 TRx 陡峭放量 + 支付方明确表态不纳第3-4个口服GLP-1 →
+      装机碾压兑现，Structure 2029/30 窗口关闭（v2 新增，因两竞品已获批上市）
+    status: pending
+    check_at: 2027-06-30
+  - id: safety_signal
+    description: 出现 material 安全性信号（心血管/胰腺/肝）致临床暂停或剂量封顶
+    status: pending
+    check_at: 2027-06-30
+  - id: dilution_distress
+    description: 被迫在远低于 $40 的价深度增发（摊薄失控+隐含数据不利）/ Roche 终止授权 / 第三方专利可信挑战获初步不利裁决
+    status: pending
+    check_at: 2027-06-30
+
+signposts:
+  - date: 2026-09-30
+    event: aleniglipron 三期 ACCOMPLISH-2 启动（剂量臂/主终点/是否头对头 orforglipron 揭晓）
+    bull_signal: 保留高剂量维持臂 + 头对头 orforglipron + 早期差异化信号
+    bear_signal: 被迫仅用低剂量（放弃高剂量疗效）
+    triggered: null
+  - date: 2027-06-30
+    event: orforglipron / 口服司美上市首年 TRx 斜率 + 支付覆盖（v2 最关键近端信号——验装机碾压）
+    bull_signal: 两竞品放量慢坡 + 支付方仍愿纳新口服药（窗口未关）
+    bear_signal: 竞品 TRx 陡峭 + 支付方排斥后来者（装机碾压兑现）
+    triggered: null
+  - date: 2027-06-30
+    event: ATM 增发节奏与价位（摊薄监控）
+    bull_signal: 仅在数据利好后小额、合理价增发
+    bear_signal: 数据点前大额低价增发
+    triggered: null
+  - date: 2028-06-30
+    event: 三期 ACCOMPLISH-2 顶线（最大二元事件）
+    bull_signal: 守住核心≥13% + 高剂量差异化落地 + 耐受好
+    bear_signal: 疗效回落<10% / 高剂量被耐受封顶
+    triggered: null
+
+cluster_tags: [glp1-obesity, oral-small-molecule, biotech-binary]
+
+# ── 可观测层字段 ──
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 1
+    kind: data-thin
+    note: 高剂量16.3%+低停药率对两个已上市玩家(orforglipron/口服司美)的真差异化未经三期验证——本case观望方向的核心不确定
+  - ring: 2
+    kind: training-estimate
+    note: rNPV 诚实峰值($1.5-1.8B base)与 PoS(~50%)为 obesity 三期经验区间估算，非公司披露
+  - ring: 3
+    kind: data-missing
+    note: 三期 ACCOMPLISH-2 剂量臂/主终点/样本量未披露（2026 Q3 启动时揭晓）；竞品上市首季实际TRx/支付覆盖待观察
+market_implied:
+  metric: implied_rnpv_peak_sales_usd_b
+  value: 1.2
+my_vs_market_delta:
+  metric: implied_rnpv_peak_sales_usd_b
+  value: 1.65
+  note: >-
+    v2：市场隐含~$1.2B 对一个疗效打平、晚3-4身位的me-too迟到者是合理甚至偏慷慨的定价，非偏空。
+    我判诚实峰值锚~$1.5-1.8B与市场$1.2B无可靠正向delta；v1的+70-120% delta建在已证伪的"疗效领先"+循环rNPV上。

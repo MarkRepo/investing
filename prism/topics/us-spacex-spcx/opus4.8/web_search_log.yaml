@@ -1,0 +1,67 @@
+slug: us-spacex-spcx
+variant: opus4.8
+entries:
+- searched_at: '2026-07-17T13:50:10.355218+00:00'
+  query: SpaceX SPCX IPO price shares raised market cap valuation July 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-17T13:50:10.412201+00:00'
+  query: SpaceX Starship flight test FAA mishap license milestone 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 1
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-17T13:50:10.500598+00:00'
+  query: Starlink subscribers ARPU revenue direct-to-cell 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-17T13:50:10.595568+00:00'
+  query: SPCX analyst consensus price target diluted shares enterprise value 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 1
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-17T13:50:10.700312+00:00'
+  query: SpaceX xAI X merger consolidation related party AI segment IPO 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-17T13:50:10.774658+00:00'
+  query: SpaceX Starlink free cash flow FCF capex debt 2026 2029
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-18T00:44:15.604184+00:00'
+  query: SpaceX SPCX IPO price + Starship IFT-13 status 2026-07
+  triggered_by: 05-critic
+  n_results: 2
+  n_high: 1
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-18T00:44:15.617473+00:00'
+  query: xAI Colossus revenue + Q1 2026 losses + Grok ARR
+  triggered_by: 05-critic
+  n_results: 2
+  n_high: 0
+  n_mid: 0
+  n_low: 2
+  disposition: registered

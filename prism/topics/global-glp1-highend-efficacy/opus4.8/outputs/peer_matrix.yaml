@@ -1,0 +1,89 @@
+slug: global-glp1-highend-efficacy
+variant: opus4.8
+topic_type: arena
+display_name: GLP-1 三激动/amylin 高端疗效 arena
+generated: 2026-07-28T00:00:00+00:00
+data_freshness: 2026-07-27
+data_freshness_basis: peer 财务/估值 = financial_data + market_data 2026-07-27 一手(LLY TTM 42.44x/PB 34.17x 较5天前更贵)；疗效读出 = 2026-07 web-search findings；score 经 05-critic round-2→v2(NVO watch→shortlist 杠铃腿) 及 round-3→v3 收口：score 拆双列(业务质量分 score + 当前介入吸引力 current_entry_attractiveness)，业务质量 LLY4.5>NVO4.0>VKTX3.5，当前介入 NVO4.0>VKTX3.0>LLY2.5(LLY 42x非介入)；orforglipron 修正为护盈利非护倍数、不作 LLY 高估值辩护；NVO 崩腿改"相对赢/少亏"(自家 sema 存量也被压)
+
+companies:
+  - name: Eli Lilly
+    ticker: LLY
+    score: 4.5
+    tier: shortlist
+    current_entry_attractiveness: 2.5
+    topic_created: true
+    topic_slug: us-eli-lilly
+    barbell_role: 命门3守住腿(业务质量最强/当前非介入)
+    thesis_one_liner: 业务质量分4.5当之无愧(入场券满格+财务碾压+双路径)但当前介入吸引力低(2.5)——42.44x TTM已price-in守住情景=非介入区。orforglipron(round-3收口):护的是命门3崩情景下LLY的盈利/份额下限(不被挤出局)、但护不住42x倍数(商品层低毛利走量恰是倍数压缩机制)，故不作高估值辩护、反印证"42x非介入+bear-40~50%"；须回调+命门3实证双确认才分批建
+    upgrade_triggers: []
+    quarantine: false
+  - name: Viking Therapeutics
+    ticker: VKTX
+    score: 3.5
+    tier: shortlist
+    current_entry_attractiveness: 3.0
+    topic_created: true
+    topic_slug: us-viking-vktx
+    thesis_one_liner: 疗效执行(口服13wk 12.2%)+amylin第二腿的挑战者，但卖点从"稀缺卡位"下修为纯binary/M&A期权(口服非独家:orforglipron/amycretin口服在挤)；价值压在2027 VANQUISH binary+潜在被并购，零营收/烧钱$100M+增发几乎确定需盯稀释
+    upgrade_triggers: []
+    quarantine: false
+  - name: Novo Nordisk
+    ticker: NVO
+    score: 4.0
+    tier: shortlist
+    current_entry_attractiveness: 4.0
+    topic_created: true
+    topic_slug: us-novo-nvo
+    barbell_role: 命门3崩腿(相对赢/少亏)+深度价值+amycretin期权
+    thesis_one_liner: 杠铃"命门3崩"腿+当前介入吸引力最高(4.0)——命门3崩情景的相对赢家/最抗跌模型(低成本基数+走量弥补)，但非免疫:自家$44B高价sema存量同受净价压制故是"相对赢/少亏"非干净赢;11.53x+ROIC42.8%全场最高+D-E0.67+已跌56%=下行大部定价,小-中核心仓可现在起(对冲LLY命门3暴露);amycretin 24.3% no-plateau是疗效再入场期权但CagriSema已H2H败、同类有重蹈风险(下行对称提示),满仓催化剂=amycretin Ph3头对头
+    upgrade_triggers:
+      - amycretin Ph3 头对头 reta/tirz 读出"疗效≥24% 且耐受不劣"→从对冲腿升为独立疗效池玩家(满仓催化剂)
+      - 高端池商品化信号兑现(KILL-D 硬阈值)→净价-换量模型受益，对冲腿转主动加仓
+    quarantine: false
+  - name: Amgen
+    ticker: AMGN
+    score: 2.5
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers:
+      - MariTide Ph3 改滴定后耐受性显著改善+保住~20%疗效+月频给药优势坐实→差异化剂型期权兑现
+    quarantine: false
+  - name: Roche
+    ticker: RHHBY
+    score: 2
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: false
+  - name: Zealand Pharma
+    ticker: ""
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: null
+    upgrade_triggers: []
+    quarantine: true
+
+cluster_tags: [glp1, obesity, high-end-efficacy, triple-agonist, amylin, incretin, biotech]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 4
+    kind: data-missing
+    note: VKTX 零营收，PE/PS/毛利率不适用(标 n/a)，按管线期权 PB 8.31x + 现金 runway 定价，非同口径财务可比
+  - ring: 2
+    kind: data-missing
+    note: NVO 营收为 DKK 口径(~$44B 换算)；AMGN/Roche 无 forward PE(仅 trailing)，估值锚以 LLY/NVO 为主
+  - ring: 5
+    kind: training-estimate
+    note: 胰岛素净价镜鉴为行业通例定性归纳(非单一 mat 定量)，PCSK9 镜鉴为定量主料

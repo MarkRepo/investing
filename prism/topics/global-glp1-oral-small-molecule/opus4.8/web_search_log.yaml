@@ -1,0 +1,155 @@
+slug: global-glp1-oral-small-molecule
+variant: opus4.8
+entries:
+- searched_at: '2026-07-22T06:07:47.904815+00:00'
+  query: oral GLP-1 orforglipron prescription uptake vs injectable market share 2026
+  triggered_by: 01-deep-fetch
+  n_results: 1
+  n_high: 0
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-07-22T06:08:15.799190+00:00'
+  query: oral GLP-1 orforglipron prescription uptake vs injectable market share 2026
+  triggered_by: 01-deep-fetch
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:08:15.840067+00:00'
+  query: aleniglipron GSBR-1290 VK2735 oral Phase 3 efficacy readout 2026
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:08:15.877562+00:00'
+  query: Viking Structure acquisition takeover valuation 2026
+  triggered_by: 01-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:08:15.935746+00:00'
+  query: orforglipron oral GLP-1 patent expiry generic 2026
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:08:16.002635+00:00'
+  query: oral GLP-1 obesity insurance PBM formulary coverage 2026
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:08:16.083126+00:00'
+  query: Roche CT-996 Terns AstraZeneca oral GLP-1 pipeline 2026
+  triggered_by: 01-deep-fetch
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:08:16.145840+00:00'
+  query: orforglipron oral small molecule manufacturing cost capacity access 2026
+  triggered_by: 01-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:08:16.216005+00:00'
+  query: hepatitis C DAA Sovaldi Harvoni profit pool collapse patent generic
+  triggered_by: 01-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:08:16.257661+00:00'
+  query: statins vs PCSK9 inhibitors oral efficacy access lesson
+  triggered_by: 01-deep-fetch
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:08:16.299544+00:00'
+  query: DPP-4 SGLT2 oral diabetes small molecule uptake generic erosion
+  triggered_by: 01-deep-fetch
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:10:59.364525+00:00'
+  query: orforglipron oral GLP-1 small molecule obesity 2026
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:10:59.432269+00:00'
+  query: oral GLP-1 small molecule obesity FDA approval trial readout 2026
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:10:59.585239+00:00'
+  query: orforglipron prescription launch uptake oral Wegovy market share 2026
+  triggered_by: 01-prescan
+  n_results: 4
+  n_high: 0
+  n_mid: 4
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:10:59.703534+00:00'
+  query: aleniglipron VK2735 oral obesity Phase 3 topline readout 2026
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:10:59.823772+00:00'
+  query: Viking Structure acquisition takeover deal 2026
+  triggered_by: 01-prescan
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:10:59.908395+00:00'
+  query: orforglipron oral GLP-1 patent expiry generic 2026
+  triggered_by: 01-prescan
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-07-22T06:10:59.912862+00:00'
+  query: orforglipron price insurance coverage PBM formulary obesity 2026
+  triggered_by: 01-prescan
+  n_results: 1
+  n_high: 0
+  n_mid: 0
+  n_low: 1
+  disposition: skipped-covered
+- searched_at: '2026-07-22T06:10:59.919563+00:00'
+  query: 01-prescan 全量(scope+industry+5×L4)
+  triggered_by: 01-prescan
+  n_results: 35
+  n_high: 0
+  n_mid: 17
+  n_low: 0
+  disposition: registered

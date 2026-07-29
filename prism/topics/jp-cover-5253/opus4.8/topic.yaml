@@ -1,0 +1,239 @@
+slug: jp-cover-5253
+display_name: COVER株式会社 (COVER Corp, hololive, TSE 5253)
+type: company
+created: '2026-07-28T08:45:13.890267+00:00'
+status: active
+stage: 04-synthesizing
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: JP
+  question: COVER(hololive运营方) 赌买还是卖？核心命门=物販收入集中度(47%)+增速见顶 vs 重资产产能扩张兑现；FY2026/3增收不增利(营收+13.7%但营业利益-11.8%)已确认，赌利润率触底反弹还是持续侵蚀？目标价相对当前~¥1,600的空间
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: TSE_5253
+  market: TSE
+  short_name: カバー
+  search_terms:
+  - COVER 5253 決算
+  - hololive 物販 業績
+  - ANYCOLOR 比較
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 20份材料findings全抽完(2份决算全文+18份web-search)，环输入gap全消解，advance gate通过
+- 说「prism 推进 jp-cover-5253」走决策链合成：00_primer 领域入门 + c_investment_case 6环成稿 + 07_decision_kit
+  sidecar
+- 合成时并入2条prescan新信号：米系6/18下调弱气目标¥1200(K5) + ANYCOLOR 27.4期减益指引(K3)
+user_todos:
+- task: 下载 FY2026/3 有価証券報告書 + 決算短信 全文（EDINET/JPX/COVER IR）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: EDINET(E??) / JPX 適時開示 / cover-corp.com/ir，日文
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-53da95
+  coverage_note: 有価証券報告書(6/24提出)为EDINET全本，決算短信已含完整财务+注记；有報全本留01按需补
+  last_fetch_note: JPX原本全文via exa web_fetch；TDnet 35天窗口已过取不到，官方URL兜底成功
+- task: 下载 FY2026/3 決算説明資料 全文 PDF（含分部季度表/先行投资明细/资本配分框架/QA）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  - K5
+  source_hint: japanir.jp 5253-20260514-02.pdf / logmi 決算説明会書き起こし
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-20fc41
+  last_fetch_note: japanir.jp全文via exa web_fetch
+- task: 整理一致预期与目标价明细：QUICK + 各券商 FY2027-29 营收/营益/净利预测 + 评级 + 目标价（consensus 锚）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: kabuyoho/ifis/minkabu/moomoo/Yahoo アナリスト；日股无同花顺F10
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: nikkei consensus页+日系中堅¥2620→2270下修/米系¥2000/日系大手¥2800/minkabu中立¥1934，券商目标价普遍高于市价且部分下修
+  last_fetch_note: nikkei consensus页+日系中堅¥2620→2270下修/米系¥2000/日系大手¥2800/minkabu中立¥1934，券商目标价普遍高于市价且部分下修
+- task: 收集 3 份覆盖 5253 的卖方深度报告（日系/外资 initiation 或 update）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  - K5
+  source_hint: 券商研报/Yahoo アナリストレポート/logmi
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: ifis やや強気+biggo聚合レーティング4.5(4人)¥2968；深度PDF多为付费/券商内部，公开可得的评级/目标价已入库
+  last_fetch_note: ifis やや強気+biggo聚合レーティング4.5(4人)¥2968；深度PDF多为付费/券商内部，公开可得的评级/目标价已入库
+- task: 管理层资本配置史：¥30亿(4.6%)回购细节 + 中期经营目标 + 资本配分框架 + 谷郷/金子 IR 发言（mgmt-capital-alloc
+    必收）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 決算説明資料 P19-20/IR/適時開示
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-20fc41
+  - mat-53da95
+  last_fetch_note: 决算短信§8+决算说明资料P19-20覆盖:累计500亿成长投资/M&A枠+30亿(4.6%)回购+机动还元
+- task: ANYCOLOR(5032) 对标数据：FY2026/4 决算、营益率、回购¥75亿/分红¥40亿、PER/EV-EBIT 估值倍数
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: kabutan/Yahoo/ANYCOLOR IR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: ANYCOLOR FY2026/4決算短信:净利¥140.9亿+回购¥50亿+分红¥41亿；营收¥556.81亿+29.9%/营益¥201.72亿营益率36.2%
+  last_fetch_note: ANYCOLOR FY2026/4決算短信:净利¥140.9亿+回购¥50亿+分红¥41亿；营收¥556.81亿+29.9%/营益¥201.72亿营益率36.2%
+- task: ホロアース（元宇宙）撤退失败镜鉴：累计投入规模、¥31.99亿减损明细、撤退决策始末（historical-mirror 必收）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: gamebusiness/irnote/決算説明会 QA
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-20fc41
+  last_fetch_note: 决算短信/说明资料(¥33亿减损+战略ピボット)+prescan irnote/gamebusiness覆盖始末
+- task: TCG「hololive OFFICIAL CARD GAME」+ ホロドリ手游 收入/流水追踪：セルラン、DL、TCG 出货/收入拆分
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: gamebiz/セルラン(game-i)/決算分部
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: Q1物販¥58亿中TCG¥19亿(1/3)；TCG驱动FY2025物販+64.6%¥205.39亿；ホロドリ2026-07-23上线セルラン1位后材料出尽续落，game-i流水¥15.45亿G
+  last_fetch_note: Q1物販¥58亿中TCG¥19亿(1/3)；TCG驱动FY2025物販+64.6%¥205.39亿；ホロドリ2026-07-23上线セルラン1位后材料出尽续落，game-i流水¥15.45亿G
+- task: 物販分部深挖：品类结构、海外EC占比、北美关税影响、在库周转与评价减机制
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 決算説明会 QA(P25)/kitaishihon 事業内容
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: Q2评价减5.5亿粗利-1.6%；Q1物販¥58亿/TCG¥19亿/北米关税回复傾向；QA披露关税影响金额
+  last_fetch_note: Q2评价减5.5亿粗利-1.6%；Q1物販¥58亿/TCG¥19亿/北米关税回复傾向；QA披露关税影响金额
+- task: talent 收益生命周期数据：2023后新 talent 收益成长曲线、头部毕业对配信/EC 分部的量化影响
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K4
+  source_hint: 決算説明資料 P17-18/行业专家
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  coverage_note: ReGLOSS(2023-09)大成功+FLOW GLOW(DEV_IS 2期)近似轨迹稍慢；官方roster+userlocal订阅数据；精确per-talent收益曲线在決算資料P17-18待03抽取
+  last_fetch_note: ReGLOSS(2023-09)大成功+FLOW GLOW(DEV_IS 2期)近似轨迹稍慢；官方roster+userlocal订阅数据；精确per-talent收益曲线在決算資料P17-18待03抽取
+- task: 资料提取完成：20份actionable材料全部处理完毕(69份含Role α prescan料)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 0
+  last_updated: '2026-07-28T09:21:00.738202+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-28T09:21:00.738332+00:00'
+    summary: 命门1=利润率兑现路径能否回15%+(中); 命门2=物販单引擎可持续+TCG/手游第二曲线接棒(中); 命门3=IP资产折旧(talent毕业)vs新血造血(中-低)
+    convergence_status: open
+thesis:
+  current_version: 0
+  last_updated: '2026-07-28T09:17:40.034155+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-open
+    set_at: '2026-07-28T09:17:40.034297+00:00'
+    summary: 中性偏空4/10：一致预期(¥596亿/¥106亿)向公司指引(¥513亿/¥70亿)下修未走完+物販减速+落后ANYCOLOR；下行被上場来安値/¥30亿回购/OCF¥72亿/TCG·手游期权托底→¥1,600非有吸引力买点，持有倾向减持，目标¥1,300-1,700
+    prescan_status: full
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-28T09:23:06.719106+00:00'
+  exited_at: '2026-07-28T10:02:18.329565+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-28T10:02:18.329565+00:00'
+  exited_at: '2026-07-28T10:15:26.559922+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - consensus
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-07-28T10:15:26.559922+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-07-28T10:01:59.913634+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 7
+  queries_with_hits: 7

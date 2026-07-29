@@ -86,6 +86,13 @@ outputs_state:
     - mat-c0da02
     - mat-de5e3c
     last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-07-23T23:46:20.983052+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
 parent_materials: []
 next_actions:
 - 说「prism 推进 cn-montage-688008」走决策链合成（00_primer 领域入门 + c_investment_case 成稿 + 07_decision_kit

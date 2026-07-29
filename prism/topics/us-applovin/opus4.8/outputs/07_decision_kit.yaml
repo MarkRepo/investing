@@ -1,0 +1,111 @@
+slug: us-applovin
+variant: opus4.8
+topic_type: company
+display_name: AppLovin (APP, NASDAQ)
+ticker: US_APP
+generated: 2026-07-27T00:00:00Z
+data_freshness: "2026-07-27"
+
+buy_box:
+  strong_buy_max: 360
+  accumulate_min: 360
+  accumulate_max: 450
+  hold_min: 450
+  hold_max: 580
+  current_price: 410.69
+  price_as_of: "2026-07-27"
+  current_zone: accumulate
+
+position_framework:
+  position_tier: 标准
+  sizing_rationale: "EV +24% 且基本盘证据充分支持标准档；但命门1(AXON效果真实性)不可ex-ante证伪 + 命门2监管二元尾部 + beta 2.48 → 不上重仓、单一仓位上限从严"
+  initial_max_pct: 2.0
+  full_max_pct: 5.0
+  add_ladder_prices: [300, 360]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: reverse_dcf
+    label: "隐含反推/DCF (WACC 11%)"
+    bull_fair_value: [720, null]
+    base_fair_value: [520, 580]
+    bear_fair_value: [210, 250]
+  - name: forward_pe
+    label: "forward P/E × 前瞻EPS"
+    bull_fair_value: [700, 780]
+    base_fair_value: [510, 560]
+    bear_fair_value: [220, 238]
+  - name: ev_fcf
+    label: "EV / 前瞻FCF"
+    bull_fair_value: [560, 590]
+    base_fair_value: [400, 450]
+    bear_fair_value: [220, 250]
+
+kill_criteria:
+  - id: rev_growth_below_25
+    description: "广告平台营收同比增速跌破25%且下季指引下修 → 命门3破,目标价下修$300以下"
+    status: pending
+    check_at: "2026-08-05"
+  - id: ecommerce_stall
+    description: "电商/consumer收入环比连续两季<10%增长 + 管理层弱化电商叙事 → 命门1证伪多头"
+    status: pending
+    check_at: "2026-Q4"
+  - id: net_rev_per_install_negative
+    description: "每安装净收入增速转负 → 单价驱动逻辑破,量端萎缩(-18%)无对冲"
+    status: pending
+    check_at: "2026-08-05"
+  - id: sec_enforcement_or_delisting
+    description: "SEC正式指控/和解金>营收5% 或 Apple/Google下架SDK → 命门2触发熊市"
+    status: pending
+    check_at: "2026"
+  - id: op_margin_below_65
+    description: "营业利润率跌破65% → 估值假设A4重置"
+    status: pending
+    check_at: "2026-08-05"
+  - id: price_stop_300
+    description: "跌破$300(熊市情景确认线)且无重大利好 → 减仓/重估"
+    status: pending
+    check_at: "2026"
+
+signposts:
+  - date: "2026-08-05"
+    event: "Q2 2026 财报(盘后)——近端最重催化"
+    bull_signal: "增速兑现≥指引+52-55% + 电商给量化放量读数 + 每安装净收入增速延续 + 利润率守"
+    bear_signal: "增速掉档/指引下修 + 电商仍零数字 + 每安装净收入见顶 + 利润率滑向65%"
+    triggered: null
+  - date: "2026-Q4"
+    event: "self-serve全球开放后广告主数/consumer留存量化披露"
+    bull_signal: "广告主数放量 + 30天留存兑现管理层口径 + 电商收入占比可量化"
+    bear_signal: "仍只有定性口径/无量化 + 新业务坏账扩大"
+    triggered: null
+  - date: "2026"
+    event: "SEC调查是否被申报文件确认 / 证券集诉(5:25-cv-03438)进展"
+    bull_signal: "收敛为披露/投放实践整改,无罚没/重述"
+    bear_signal: "SEC正式立案/传票被确认 或 和解金显著"
+    triggered: null
+
+cluster_tags: [adtech, ai-advertising, us-growth, high-beta-ai]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 3
+    kind: data-missing
+    note: "命门1 AXON电商效果真实性缺第三方增量测试硬证据;电商财报零收入数字,ex-ante不可完全消除→仓位化+signpost兜"
+  - ring: 5
+    kind: training-estimate
+    note: "Criteo/Meta2022历史镜鉴的峰谷幅度与机制为训练知识估算,非findings;TTD镜鉴为实时现采"
+
+market_implied:
+  metric: implied_eps_cagr_5y
+  value: 27
+
+my_vs_market_delta:
+  metric: implied_eps_cagr_5y
+  my_value: 31
+  delta: "+4pct"
+  direction: long

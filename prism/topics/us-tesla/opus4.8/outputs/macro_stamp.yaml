@@ -1,0 +1,16 @@
+as_of_regime_version: 3
+regime_composite: 中美背离·risk-on但脆弱；美利率高位企稳(3.50-3.75)、实际利率2.16%边际回落仍约束；对346x期权股属温和逆风(贴现率高位)但risk-on托底叙事
+depends_on_states:
+- conclusion: rates_us
+  state: 高位企稳·官方市场双双转鹰但长端牛平·实际利率2.16%边际回落
+  role: load_bearing
+- conclusion: overall
+  state: risk-on但脆弱(反通胀式增长降温)
+  role: load_bearing
+discount_rate: null
+slug: us-tesla
+variant: opus4.8
+stamped_at: '2026-07-23T06:28:57.081505+00:00'
+stale: true
+stale_reason: 依赖的『高位企稳·官方市场双双转鹰但长端牛平·实际利率2.16%边际回落』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+  v3→v4)
