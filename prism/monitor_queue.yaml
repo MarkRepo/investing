@@ -653,7 +653,7 @@ pending:
   expected_current: null
   evidence: []
   evidence_urls: []
-  living_feed_entry: '## 2026-07-29 价格破位:跌入买入框
+  living_feed_entry: '## 2026-07-31 价格破位:跌入买入框
 
     **来源**:market_data 自动行情
 
@@ -665,7 +665,7 @@ pending:
   rationale: 现价 307.44000244140625 落入 accumulate（零 LLM 价格判定）
   requires_thesis_review: false
   status: awaiting_confirm
-  created_at: '2026-07-28T22:00:13.136550+00:00'
+  created_at: '2026-07-30T22:00:11.614879+00:00'
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false
@@ -1082,6 +1082,31 @@ pending:
   requires_thesis_review: true
   status: awaiting_confirm
   created_at: '2026-07-28T09:27:57.435348+00:00'
+  confirmed_at: null
+  writeback_done: false
+  living_feed_appended: false
+- proposal_id: 22ad33fe3e8b
+  slug: us-applovin
+  variant: opus4.8
+  kind: price
+  locator: buy_box
+  proposed_value: accumulate
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-07-31 价格破位:跌入买入框
+
+    **来源**:market_data 自动行情
+
+    **关键信息**:现价 412.7300109863281（2026-07-27）落入 **accumulate** 区间（强买≤360 / 可建仓 360-450）
+
+    **对已有判断的影响**:触及预设买入区,需按 position_framework 复核建仓
+
+    **当前判断更新**:维持原判断,价格信号待人工确认'
+  rationale: 现价 412.7300109863281 落入 accumulate（零 LLM 价格判定）
+  requires_thesis_review: false
+  status: awaiting_confirm
+  created_at: '2026-07-30T22:00:11.614901+00:00'
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false

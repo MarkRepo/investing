@@ -95,3 +95,15 @@ watches:
   kind: null
   locator: null
   added_at: '2026-07-24T15:18:02.711083+00:00'
+- slug: us-applovin
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-07-30T07:05:16.761344+00:00'
+- slug: us-nvidia
+  variant: opus4.8
+  scope: topic
+  kind: null
+  locator: null
+  added_at: '2026-07-30T10:58:36.076593+00:00'
