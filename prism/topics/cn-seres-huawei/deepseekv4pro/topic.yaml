@@ -1,0 +1,48 @@
+slug: cn-seres-huawei
+display_name: 赛力斯 (SERES, SSE 601127) — 华为智驾最纯受益标的
+type: company
+created: '2026-07-31T13:22:55.866752+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: global-huawei-adas-ecosystem
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 赛力斯作为华为智驾(问界品牌)最纯暴露标的，2025净利59.57亿(+0.18%)但2026H1预亏15-18亿——利润是否已见顶？PE
+    15.9x是价值陷阱还是周期低点？问界M6能否打开20-25万增量、M9高端溢价能否在FSD入华后守住？
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: SSE_601127
+  market: SSE
+  short_name: 赛力斯
+  search_terms:
+  - 赛力斯 问界
+  - 601127 盈利
+  - M9 M8 M6 交付
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 00-research-topic 完成 baseline + prescan + user_todos
+- 或直接说「研究 cn-seres-huawei」开始完整研究流程
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-31T13:23:34.809258+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-31T13:23:34.809439+00:00'
+    summary: 赛力斯=华为智驾最纯A股暴露(6/10)：问界39.1万ASP+28.8%毛利率+82.5NPS确认高端品牌力，但H1预亏15-18亿+净利增速0.18%暗示利润可能见顶。PE
+      15.9x是价值陷阱还是周期低点，取决于H2 M6放量+M9高端溢价能否在FSD入华后守住
+    prescan_status: partial

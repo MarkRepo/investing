@@ -1,0 +1,48 @@
+slug: cn-horizon-robotics
+display_name: 地平线 (Horizon Robotics, HKEX 9660) — 智驾"卖水人"
+type: company
+created: '2026-07-31T13:22:55.867748+00:00'
+status: active
+stage: 00-init
+canonical: true
+parent_topic: global-huawei-adas-ecosystem
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: CN
+  question: 地平线作为智驾芯片Tier-2中立供应商，2025营收37.58亿(+57.7%)毛利率64.5%，20万以下NOA份额44.2%第一。PS
+    22.8x是否合理？Fabless高毛利+行业总量增长能否持续跑赢智驾"价格战"对芯片ASP的压力？
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: HKEX_09660
+  market: HKEX
+  short_name: 地平线
+  search_terms:
+  - 地平线 征程
+  - 智驾芯片 份额
+  - 9660 盈利
+outputs_state: {}
+parent_materials: []
+next_actions:
+- 运行 workflow 00-research-topic 完成 baseline + prescan + user_todos
+- 或直接说「研究 cn-horizon-robotics」开始完整研究流程
+user_todos: []
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: null
+  last_updated: null
+  history: []
+thesis:
+  current_version: 0
+  last_updated: '2026-07-31T13:23:34.820703+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-init-from-parent
+    set_at: '2026-07-31T13:23:34.820711+00:00'
+    summary: 地平线=智驾卖水人(6/10)：Fabless高毛利64.5%+20万以下NOA份额44.2%第一。受益于全行业智驾渗透率扩张，不赌单一路线。PS
+      22.8x在Fabless模式下合理但已price-in高增长，核心风险是智驾价格战向芯片层传导
+    prescan_status: partial

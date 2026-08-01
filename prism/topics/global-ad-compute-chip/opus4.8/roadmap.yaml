@@ -1,0 +1,192 @@
+# roadmap.yaml — 研究路线图 (由 workflow 01 生成)
+slug: global-ad-compute-chip
+created: 2026-07-31
+primer_scope: "AD 芯片技术基础（TOPS/制程/工具链/前视vs域控vs中央计算）、中国AD芯片竞争格局全图、OEM自研经济学、舱驾融合商业逻辑——背景深度交给 00_primer，roadmap 聚焦 L3/L4"
+
+learning_track:
+  l3_debates:
+    - question: "OEM 自研芯片是渐进侵蚀还是全面替代？比亚迪璇玑A3量产+蔚来神玑单车降本1万已证经济性，但制造瓶颈（先进制程依赖台积电）+工具链生态（算法适配追赶公版速度）是否构成刹车？"
+      source_hint: "21经济网 OEM自研报道[mat-98dee4] + 比亚迪/蔚来 IR + 半导体制造产能分析"
+
+    - question: "地平线征程6P能否在15万+高阶城市NOA站住？J6E/M在中低阶已证明（20+OEM/100+车型），但高端（$100+ ASP）是估值命门——J6P 560 TOPS vs Orin-X 254 TOPS 的纸面参数不等于实际体验，算法适配+工具链效率才是关键"
+      source_hint: "征程6P vs Orin/Thor独立评测 + 星途ET5实际用户反馈"
+
+    - question: "地平线PS19x(2026E)→PS12x(2027E)→PS8x(2028E)的卖方预测是否过于乐观？毛利率从64.5%→57.7%→53%持续下行，2028年才扭亏——若增速放缓或毛利率降幅超预期，估值支撑坍塌"
+      source_hint: "东吴证券2025业绩点评[mat-173663] + 一致预期汇总 + 黑芝麻可比估值"
+
+    - question: "舱驾融合是国产独享的结构性红利还是短暂窗口？高通Snapdragon Ride Flex携全球OEM关系追击，地平线/黑芝麻的舱驾融合方案能否在窗口期锁定份额？"
+      source_hint: "高通/地平线/黑芝麻舱驾融合定点对比 + 盖世汽车/界面新闻报道"
+
+    - question: "黑芝麻A2000能否成为地平线的真正挑战者？A2000获头部车企定点（2026-02）是积极信号，但出货量（2025仅15万 vs 地平线401万）差距悬殊——A2000量产爬坡能否兑现？"
+      source_hint: "黑芝麻2025年报[mat-88785b] + A2000定点新闻[mat-8437e8] + 客户反馈"
+
+  l4_hunting:
+    - question: "地平线征程6P在15万+价格带高阶城市NOA大芯片的定点/装机份额是否在2026-2027持续第一？"
+      addresses: [K1]
+      search_keywords: ["征程6P 定点", "城市NOA 芯片份额", "地平线 高阶智驾"]
+      source_hint: "地平线IR/季报 + 汽车之家新车配置表 + 券商月度跟踪"
+
+    - question: "Nvidia Thor后继（或下一代）是否在2026-2027兑现舱驾融合量产+拿回≥2家中国头部新定点？"
+      addresses: [K2]
+      search_keywords: ["Nvidia Thor 中国", "Thor 定点 2026", "英伟达 智驾芯片"]
+      source_hint: "Nvidia GTC 2026/2027 + 中国OEM发布会 + 供应链确认"
+
+    - question: "征程6P 560 TOPS在城市NOA实际场景中的性能（延迟/功耗/算法适配）是否达到Orin-X水平？"
+      addresses: [K3]
+      search_keywords: ["征程6P 实测", "J6P Orin 对比", "地平线 城市NOA"]
+      source_hint: "电子工程专辑/爱范儿评测 + 星途ET5车主实测 + 第三方对比"
+
+    - question: "地平线PS19x vs 黑芝麻PS~8x的估值差是否合理？黑芝麻A2000量产兑现后能否重估？二线是否提供更好的风险收益比？"
+      addresses: [K4]
+      search_keywords: ["地平线 估值 PS", "黑芝麻智能 估值", "智驾芯片 可比估值"]
+      source_hint: "一致预期数据 + 东吴/国信目标价 + 可比公司倍数（Nvidia/高通/Mobileye）"
+
+material_priority:
+  tier1:
+    - title: "地平线机器人 2025 年报全文"
+      type: annual-report
+      ticker: "HKEX_09660"
+      source: "HKEX 披露易"
+      why: "K4/K3 核心——收入结构（产品vs授权vs非车）、毛利率趋势、HSD交付数据、2026 guidance"
+      addresses: [K4, K3]
+      info_tier: public
+      status: done
+      covered_by: [mat-e4f0d3]
+
+    - title: "黑芝麻智能 2025 年报全文"
+      type: annual-report
+      ticker: "HKEX_02533"
+      source: "HKEX 披露易"
+      why: "K4 核心——收入/亏损/现金储备、A2000量产进度、客户集中度"
+      addresses: [K4]
+      info_tier: public
+      status: done
+      covered_by: [mat-88785b]
+
+    - title: "地平线/黑芝麻一致预期数据（2026-2028E 收入/毛利率/净利/目标价）"
+      type: data
+      ticker: ""
+      source: "同花顺F10 / 东方财富 / Wind一致预期"
+      why: "K4 命门3（估值合理性）核心输入——卖方一致预期 vs 实际兑现的差距"
+      addresses: [K4]
+      info_tier: half_public
+      status: fetched
+
+    - title: "智能驾驶SoC行业深度报告（光大/东吴/国信至少2家）"
+      type: sell-side-note
+      ticker: ""
+      source: "慧博投研/东方财富研报中心"
+      why: "K1/K3 核心——行业TAM、竞争格局、各芯片厂商份额/产品对比、估值框架"
+      addresses: [K1, K3]
+      info_tier: half_public
+      status: fetched
+      covered_by: [mat-9f6e2c, mat-358846, mat-462adb]
+
+    - title: "地平线第三方供应商核心竞争力分析（TogetheROS生态+工具链壁垒）"
+      type: industry-research
+      ticker: ""
+      source: "父 topic mat-6979bb + 电子工程专辑/爱范儿"
+      why: "K1/K3——芯片不是卖硬件是卖平台，理解生态壁垒是判断份额持续性的关键"
+      addresses: [K1, K3]
+      info_tier: half_public
+      status: fetched
+      covered_by: [mat-6979bb, mat-731c53]
+
+  tier2:
+    - title: "比亚迪/蔚来/小鹏自研芯片装车时间表与装机量规划"
+      type: industry-research
+      ticker: ""
+      source: "公司IR/技术发布会/汽车之家/盖世汽车"
+      why: "K1 命门2——OEM自研侵蚀速度的关键变量"
+      addresses: [K1]
+      info_tier: half_public
+      status: fetched
+
+    - title: "征程6P vs Orin-X/Thor 独立性能评测（TOPS/功耗/延迟/算法适配）"
+      type: industry-research
+      ticker: ""
+      source: "电子工程专辑/爱范儿/第三方评测机构"
+      why: "K3 命门1——高端上探能否成功的技术证据"
+      addresses: [K3]
+      info_tier: half_public
+      status: fetched
+
+    - title: "地平线管理层访谈/业绩会纪要（2025-2026，余凯战略表述）"
+      type: sell-side-note
+      ticker: ""
+      source: "同花顺/东方财富/路演中"
+      why: "K3/K4——管理层对高端上探+盈利路径的指引，判断卖方预测是否过于乐观"
+      addresses: [K3, K4]
+      info_tier: half_public
+      status: fetched
+
+    - title: "黑芝麻A2000量产进展与客户反馈（2026H2更新）"
+      type: industry-research
+      ticker: ""
+      source: "汽车之家/盖世汽车/公司公告"
+      why: "K4——A2000是黑芝麻缩小差距的关键产品，量产兑现决定二线投资价值"
+      addresses: [K4]
+      info_tier: half_public
+      status: fetched
+
+    - title: "手机AP自研 vs 外采终局分析（苹果A系列/三星Exynos/华为麒麟 vs 高通骁龙）——AD芯片类比"
+      type: industry-research
+      ticker: ""
+      source: "科技媒体/券商半导体深度报告"
+      why: "K1 命门2 历史镜鉴——手机AP自研的终局（苹果全自研/三星双轨/华为被迫自研/其余买高通）对AD芯片竞争终局的启示"
+      addresses: [K1]
+      info_tier: public
+      status: fetched
+
+  tier3:
+    - title: "高通Snapdragon Ride Flex中国定点与舱驾融合份额"
+      type: industry-research
+      ticker: ""
+      source: "盖世汽车/券商智能座舱报告"
+      why: "K1 补充——舱驾融合赛道的外部竞争者"
+      addresses: [K1]
+      info_tier: half_public
+      status: fetched
+
+    - title: "Mobileye EyeQ6中国定点/出货数据（2025-2026）"
+      type: industry-research
+      ticker: ""
+      source: "Mobileye IR/行业报告"
+      why: "K2 补充——Nvidia在华的另一个竞争者状态"
+      addresses: [K2]
+      info_tier: half_public
+      status: fetched
+
+    - title: "Mobileye从霸主到边缘化的历史复盘"
+      type: industry-research
+      ticker: ""
+      source: "科技媒体/券商复盘报告"
+      why: "K1 历史镜鉴——Mobileye被挤出中国的教训对地平线的启示（封闭生态+迭代慢是致命伤）"
+      addresses: [K1]
+      info_tier: public
+
+key_risks_to_monitor:
+  - "比亚迪璇玑A3全系装车比例（若2027年比亚迪50%+车型用自研芯片，地平线TAM遭腰斩）"
+  - "地平线毛利率持续下行（从64.5%→57.7%→53%→？若跌破50%则盈利路径存疑）"
+  - "Nvidia Thor后继突然兑现+拿回比亚迪/蔚来定点（高端垄断回归）"
+  - "纯视觉方案（特斯拉FSD入华）降低对高算力芯片需求——结构性利空所有AD芯片厂商"
+  - "黑芝麻A2000量产爬坡失败（若2026H2出货仍<50万，则二线投资价值归零）"
+
+analogies_to_study:
+  - case: "手机AP 自研 vs 外采终局（2010-2025，全球）"
+    logic: >
+      苹果A系列全自研→体验领先+成本最优；三星Exynos双轨（自研+外采高通）；华为麒麟被迫自研→短期阵痛但长期可控；其余Android厂商全买高通。AD芯片类似：头部OEM（比亚迪/蔚来）有能力自研→长期可能全自研；中小OEM（多数国内车企）买公版是理性选择。但关键差异：手机AP一年一迭代，车规芯片迭代慢（2-3年），自研的过时风险更高。
+    limitation: >
+      手机AP的规模效应远超车规芯片（手机年出货10亿+ vs 汽车1亿-）；车规芯片对安全/可靠性要求更高，自研认证周期更长；AD芯片的AI算法迭代速度可能快于芯片硬件迭代，工具链生态的重要性超过硬件本身。
+
+  - case: "Mobileye 从霸主到边缘化（2015-2025，全球→中国）"
+    logic: >
+      Mobileye 2015年全球ADAS芯片市占率70%+，EyeQ系列垄断L1/L2前视市场。但因①封闭生态（Black-box算法不开放，OEM无法自调）②迭代慢（EyeQ5拖到2020，EyeQ6 2024才量产）③中国OEM转向开放平台（地平线/华为/英伟达），2025年在中国份额被蚕食至个位数。地平线当前的开放生态（TogetheROS+BPU授权）正是Mobileye封闭策略的反面——但若地平线未来走向封闭（如征程6P绑定HSD方案），重蹈Mobileye覆辙的风险存在。
+    limitation: >
+      Mobileye的衰落也有地缘政治因素（以色列公司在中国市场天然受限）；地平线作为中国公司无此问题。Mobileye的EyeQ是ASIC（功能固定），地平线征程是GPU-like（可编程），架构灵活性不同。
+
+  - case: "图森未来 三年市值蒸发99%（2021-2024，美国→全球）"
+    logic: >
+      图森2021年上市市值$85亿，2024年退市市值<1亿。失败原因：①L4商业化远慢于预期（技术可行≠商业可行）②中美双重监管压力③管理层内斗④烧钱速度远超收入增长。对AD芯片的启示：①高估值需要兑现路径，不能只靠终局叙事②地平线PS19x隐含的2028年扭亏假设若被推迟，估值可能重蹈图森。
+    limitation: >
+      图森是L4运营公司（重资产+长变现周期），地平线是芯片卖铲人（轻资产+当期收入），商业模式不同。但估值逻辑相似：高PS倍数需要高增长+盈利路径兑现，一旦miss则戴维斯双杀。

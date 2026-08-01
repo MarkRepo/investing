@@ -653,7 +653,7 @@ pending:
   expected_current: null
   evidence: []
   evidence_urls: []
-  living_feed_entry: '## 2026-07-31 价格破位:跌入买入框
+  living_feed_entry: '## 2026-08-01 价格破位:跌入买入框
 
     **来源**:market_data 自动行情
 
@@ -665,7 +665,7 @@ pending:
   rationale: 现价 307.44000244140625 落入 accumulate（零 LLM 价格判定）
   requires_thesis_review: false
   status: awaiting_confirm
-  created_at: '2026-07-30T22:00:11.614879+00:00'
+  created_at: '2026-07-31T22:00:14.302555+00:00'
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false
@@ -1094,7 +1094,7 @@ pending:
   expected_current: null
   evidence: []
   evidence_urls: []
-  living_feed_entry: '## 2026-07-31 价格破位:跌入买入框
+  living_feed_entry: '## 2026-08-01 价格破位:跌入买入框
 
     **来源**:market_data 自动行情
 
@@ -1106,7 +1106,7 @@ pending:
   rationale: 现价 412.7300109863281 落入 accumulate（零 LLM 价格判定）
   requires_thesis_review: false
   status: awaiting_confirm
-  created_at: '2026-07-30T22:00:11.614901+00:00'
+  created_at: '2026-07-31T22:00:14.302573+00:00'
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false

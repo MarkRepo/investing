@@ -1,0 +1,465 @@
+slug: global-huawei-adas-ecosystem
+display_name: 华为软硬一体智驾生态 (乾崑 ADS)
+type: arena
+created: '2026-07-31T10:02:37.114494+00:00'
+status: active
+stage: done
+canonical: false
+parent_topic: global-autonomous-driving
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: GLOBAL
+  question: 华为乾崑软硬一体智驾生态能否在纯软被挤压时持续吃份额、保住高阶?可投载体是谁(引望分拆/鸿蒙智行车企)、护城河(190万台数据飞轮+鸿蒙生态)可持续性如何?
+  depth: deep
+  terminal: 在候选标的里选出 shortlist——谁是赢家、介入纪律
+  short_name: 华为智驾生态
+  search_terms:
+  - 华为乾崑 ADS
+  - 引望
+  - 鸿蒙智行
+  - 问界 智界 享界
+  - 华为智驾份额
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-07-31T13:13:24.114359+00:00'
+    status: draft
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-07c880
+    - mat-119215
+    - mat-11fa39
+    - mat-17dd53
+    - mat-18eb95
+    - mat-27b90e
+    - mat-47887c
+    - mat-4bb3c6
+    - mat-4ec974
+    - mat-53342d
+    - mat-566645
+    - mat-584c89
+    - mat-5bb5df
+    - mat-603822
+    - mat-671a12
+    - mat-6cde9c
+    - mat-9183f3
+    - mat-9ae550
+    - mat-a445b1
+    - mat-ae6f5c
+    - mat-b6421c
+    - mat-bb2914
+    - mat-c218da
+    - mat-ccc593
+    - mat-d8c4f3
+    - mat-e562ee
+    - mat-e69f57
+    - mat-eba452
+    - mat-ecaea2
+    - mat-ffc4aa
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-07-31T13:13:24.105885+00:00'
+      warnings:
+      - 缺争议节（写作硬规约要求 5-7 条根本争议）
+      - 缺自检清单节
+      - 未过 critic（set_output_critic_passed 未置位）
+  a_arena_case:
+    version: 2
+    last_updated: '2026-07-31T13:21:28.688233+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-07c880
+    - mat-119215
+    - mat-17dd53
+    - mat-18eb95
+    - mat-27b90e
+    - mat-4bb3c6
+    - mat-4ec974
+    - mat-53342d
+    - mat-584c89
+    - mat-5bb5df
+    - mat-671a12
+    - mat-6cde9c
+    - mat-9183f3
+    - mat-9ae550
+    - mat-a445b1
+    - mat-b6421c
+    - mat-bb2914
+    - mat-c218da
+    - mat-ccc593
+    - mat-d8c4f3
+    - mat-e69f57
+    - mat-eba452
+    - mat-ecaea2
+    - mat-ffc4aa
+    last_error: null
+  peer_matrix:
+    version: 1
+    last_updated: '2026-07-31T13:13:24.163361+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-27b90e
+    - mat-4ec974
+    - mat-53342d
+    - mat-5bb5df
+    - mat-671a12
+    - mat-9183f3
+    last_error: null
+  05-critic-review:
+    version: 2
+    last_updated: '2026-07-31T13:21:28.676384+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials:
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-d9818f
+  addresses:
+  - K1
+  - K3
+  - K5
+  note: 2026年中国汽车产业-智驾产业进入新阶段
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-5d3746
+  addresses:
+  - K1
+  - K3
+  - K5
+  note: 智能驾驶赛道2026年投资深度研究
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-18ebfb
+  addresses:
+  - K1
+  - K3
+  - K5
+  note: 自动驾驶行业深度报告
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-eb5378
+  addresses:
+  - K1
+  - K5
+  note: 2026年智驾平权之车企智驾方案梳理（含华为客户矩阵）
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-461d7c
+  addresses:
+  - K2
+  note: Momenta拟募资10亿美元 物理AI第一股
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-34d210
+  addresses:
+  - K2
+  note: Momenta通过聆讯 三年营收翻三倍
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-f720f4
+  addresses:
+  - K2
+  note: 同时拿下BBA 硬刚华为 Momenta港股上市
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-c7de09
+  addresses:
+  - K1
+  note: 智驾芯片三强对决 征程6P vs EyeQ Ultra vs Thor
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-6979bb
+  addresses:
+  - K1
+  note: 以地平线为例 探究第三方智驾供应商核心竞争力
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-ec5cd0
+  addresses:
+  - K5
+  note: 激光雷达行业盈利分化 车载走量 机器人赚钱
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-021ccc
+  addresses:
+  - K1
+  note: L3落地前夜 比亚迪补齐智能化最后一块拼图
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-2d814f
+  addresses:
+  - K3
+  note: 特斯拉FSD入华倒计时 迟到的鲶鱼还是新的变量
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-6417b1
+  addresses:
+  - K3
+  note: 全球自动驾驶第一股退市 三年市值蒸发99%
+next_actions:
+- 'Arena 研究完成。Shortlist: 赛力斯(601127, 深研) + 地平线(9660.HK, 深研)。Company stub 已创建'
+- 说「研究 cn-seres-huawei」或「研究 cn-horizon-robotics」开始公司深研
+- '剩余待补(非阻塞): arena-mirror实证 + K3 FSD横评数据(Q3-Q4)'
+user_todos:
+- task: 华为 ADS 各级功能/硬件/价格详情（SE/Pro/Max/Ultra四档确凿数据）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 华为官网/发布会PPT/盖世汽车横向对比文章
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-9ae550
+  - mat-ccc593
+- task: 引望 IPO 最新时间表/战投进展/估值更新（2026 Q3 最新）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 财联社/彭博/证券时报等财媒追踪
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: Momenta 港交所聆讯后招股书/财务数据/客户结构 detail
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 港交所披露易/Momenta IR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-8981d7
+  - mat-c8126c
+- task: 赛力斯/北汽蓝谷/地平线 A 股一致预期（2026-2027 营收/净利/Wind 一致预期 vs 最新财报对比）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 同花顺F10/东方财富盈利预测页——按 prism_websearch_cn_consensus 记忆走 serper/exa 兜底
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-11fa39
+  - mat-288238
+- task: 问界 M9/M8/M7/M6 月销量追踪（2025-2026 逐月/逐季数据表）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: 鸿蒙智行月度交付快报/汽车之家/懂车帝/理想汽车周销量榜
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: 余承东/靳玉志 2026 年最新公开发言/战略部署 — 华为车业务定调
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 华为发布会实录/央视采访/微博
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: 大疆车载（卓驭）2026 最新进展 — 低价纯视觉智驾的铺货量和定价
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: 36氪/盖世汽车/大疆车载公众号
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: FSD 中国用户真实体验/车主论坛横评 vs 华为 ADS5（2026 Q3 数据）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: 小红书/懂车帝/汽车之家/新出行 车主真实驾驶体验帖——侧重点在纯视觉 vs 多传感器的"日常好用"感觉
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: 华为车 BU/引望的独立财务数据与可比估值（平安证券 vs 地平线/Momenta 估值锚对比）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  - K4
+  source_hint: 卖方研报(东吴/中信建投/平安)估值模型 + SOTP
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+- task: 华为自研激光雷达外供率 & 禾赛/速腾聚创在华为生态中的角色
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 产业链调研/激光雷达行业研报
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: P2 非核心收料，研究阶段由03/04处理
+- task: Mobileye 从统治到被替代的历史镜鉴 — 软硬一体→纯软替代的 pattern
+  priority: P2
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: Mobileye历史 case study/学术文献
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: P2 非核心收料，研究阶段由03/04处理
+- task: 资料提取完成：23/41 份已处理（23 份 actionable + 18 份 prescan 校准层自动跳过）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 04-synthesize 完成：primer(领域入门)+case(决策链①→⑥)+sidecar(peer_matrix)+thesis_v1+decomposition_v1
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 05-critic 完成。修复：kill#4(利润见顶)+H6(软硬一体>纯软)。剩余：arena-mirror实证+K3 FSD横评
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-more
+  summary: 整体3.5/5。致命一击：赛力斯H1预亏大概率证伪全年利润假设，PE 15.9x是价值陷阱。已修复：环⑤新增kill#4(利润见顶)+WMBT新增H6(软硬一体>纯软)。剩余：arena-mirror实证(环⑤🔴)+K3
+    FSD横评数据(仅2个月)
+  at: '2026-07-31T13:21:28.699517+00:00'
+  thesis_version: 1
+  next_stage: 02-gather-materials
+decomposition:
+  current_version: 1
+  last_updated: '2026-07-31T13:13:24.205489+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-31T10:15:06.998896+00:00'
+    summary: 命门1=引望12月内IPO确定性(中); 命门2=智驾体验维度持续领先(中); 命门3=15-25万华为定价权守住(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesized
+    set_at: '2026-07-31T13:13:24.205509+00:00'
+    summary: 命门1=引望12月内IPO确定性(低,官方否认2026); 命门2=智驾体验维度持续领先(中,FSD入华博弈); 命门3=15-25万华为定价权守住(中,ADS
+      Pro涨价至1.5万)
+    convergence_status: open
+    changelog: 'v1: 命门1置信度中→低(官方否认2026H2 IPO); 命门3置信度低→中(ADS Pro涨价验证定价权); 入门目标#12(L3/L4准入政策)从[收料]改为已覆盖;
+      新增终局环B靶点=引望vs地平线vsMomenta可比估值矩阵'
+thesis:
+  current_version: 1
+  last_updated: '2026-07-31T13:13:24.174834+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-31T10:14:03.803796+00:00'
+    summary: 看多华为智驾软硬一体生态(6/10)：ADS5+WEWA2.0 AI智能体拉开代差、引望半年营收破百亿扭亏为盈、35万+NOA市占率53.2%高端统治；核心障碍引望未上市，可投载体赛力斯净利微增非纯智驾beta。Momenta千亿聆讯+FSD入华形成双线对标
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 58%（15/26，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-synthesized
+    set_at: '2026-07-31T13:13:24.174850+00:00'
+    summary: 看多华为软硬一体生态(7/10,+1)：引入望扭亏+ADS5 AI智能体+第三方扩展+FSD入华压力验证。赛力斯PE15.9x最纯暴露，地平线卖水人逻辑。K2引望IPO为最大障碍，K4H1预亏+五界内生竞争为新增风险
+    prescan_status: partial
+    prescan_failure_reason: 校准率58%,market_data API暂不可用,估值数据来自findings卖方预测/公开市值
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-31T10:16:14.788806+00:00'
+  exited_at: '2026-07-31T13:00:30.630807+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-31T13:00:30.630807+00:00'
+  exited_at: '2026-07-31T13:07:43.277723+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 2
+- stage: 04-synthesizing
+  entered_at: '2026-07-31T13:07:43.277723+00:00'
+  exited_at: '2026-07-31T13:13:24.217895+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 2
+- stage: 05-critic-review
+  entered_at: '2026-07-31T13:13:24.217895+00:00'
+  exited_at: '2026-07-31T13:22:55.876265+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 2
+- stage: done
+  entered_at: '2026-07-31T13:22:55.876265+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 2

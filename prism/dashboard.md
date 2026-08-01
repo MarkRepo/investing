@@ -1,50 +1,52 @@
 # 投资仪表盘
 
-> 生成：2026-07-28　　公司：39 个　　行业：7 个　　竞技场：14 个
+> 生成：2026-07-31　　公司：41 个　　行业：7 个　　竞技场：14 个
 
 ## 公司层：决策清单
 
 | 公司 | 当前价 | 当前区间 | 距 Buy 区间 | 仓位上限 | Kill | 近期路标 | 数据新鲜度 |
 |------|--------|---------|-----------|---------|------|---------|----------|
+| [地平线 (Horizon Robotics, HKEX 9660) — 智驾"卖水人"](/prism/cn-horizon-robotics/deepseekv4pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
+| [赛力斯 (SERES, SSE 601127) — 华为智驾最纯受益标的](/prism/cn-seres-huawei/deepseekv4pro) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [COVER株式会社 (COVER Corp, hololive, TSE 5253)](/prism/jp-cover-5253/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [诺和诺德 (Novo Nordisk, NYSE: NVO)](/prism/us-novo-nvo/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [AppLovin (APP, NASDAQ)](/prism/us-applovin/opus4.8) (US_APP) | 412.73 | 🔵 可建仓 | +15% | 标准 (≤2.0%) / 5.0% | ✅ | 2 个 | 🟢 1d |
-| [IonQ (IONQ, NYSE)](/prism/us-ionq/opus4.8) (NYSE_IONQ) | 34.52 | 🟡 观望 | +130% | 试探 / 2% | ✅ | 4 个 | 🟢 1d |
-| [恒立液压 (601100)](/prism/cn-hengli-hydraulic-601100/opus4.8) (SSE_601100) | 103.80 | 🟡 观望 | +44% | 试探 / 5% | ✅ | 3 个 | 🟢 3d |
+| [AppLovin (APP, NASDAQ)](/prism/us-applovin/opus4.8) (US_APP) | 412.73 | 🔵 可建仓 | +15% | 标准 (≤2.0%) / 5.0% | ✅ | 2 个 | 🟢 4d |
+| [IonQ (IONQ, NYSE)](/prism/us-ionq/opus4.8) (NYSE_IONQ) | 32.85 | 🟡 观望 | +119% | 试探 / 2% | ✅ | 4 个 | 🟢 4d |
+| [恒立液压 (601100)](/prism/cn-hengli-hydraulic-601100/opus4.8) (SSE_601100) | 103.80 | 🟡 观望 | +44% | 试探 / 5% | ✅ | 3 个 | 🟢 6d |
 | [双林股份 (300100)](/prism/cn-shuanglin-300100/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [寒武纪 (688256, 思元ASIC)](/prism/cn-cambricon-688256/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [海光信息 (688041, DCU)](/prism/cn-hygon-688041/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [英伟达 (NVIDIA, US NVDA)](/prism/us-nvidia/opus4.8) (US_NVDA) | 196.51 | 🟡 观望 | +12% | 标准 / 8% | ✅ | 3 个 | 🟢 4d |
-| [Alphabet 谷歌 (GOOGL, NASDAQ)](/prism/us-google/opus4.8) (US_GOOGL) | 326.56 | 🔵 可建仓 | +9% | 标准 (≤2.5%) / 6% | ✅ | 2 个 | 🟢 4d |
-| [特斯拉 Tesla (US_TSLA)](/prism/us-tesla/opus4.8) (US_TSLA) | 309.22 | 🔵 可建仓 | +34% | 试探 / 4% | ✅ | 1 个 | 🟢 5d |
-| [泸州老窖](/prism/cn-luzhou-laojiao/kimi-k3) (SZSE_000568) | 87.00 | 🟡 观望 | +24% | 试探 (≤2%) / 6% | ✅ | 2 个 | 🟢 5d |
-| [Structure Therapeutics (GPCR)](/prism/us-structure-gpcr/opus4.8) (GPCR) | 49.35 | 🟡 观望 | +41% | 观望 / 3% | ✅ | — | 🟢 5d |
-| [Viking Therapeutics (VKTX)](/prism/us-viking-vktx/opus4.8) (US_VKTX) | 34.87 | 🟡 观望 | +39% | 试探/观望 (≤1.5%) / 3% | ✅ | — | 🟢 6d |
-| [海目星激光 HYMSON](/prism/cn-hymson-688559/opus4.8) (SSE_688559) | 42.85 | 🟡 观望 | — | 试探 / 4% | ✅ | 1 个 | 🟢 9d |
-| [兴业银锡 (000426.SZ)](/prism/cn-xingye-silver-tin/opus4.8) (SZSE_000426) | 31.25 | 🔴 高于观望区 | +30% | 试探 (≤2%) / 6% | ✅ | 2 个 | 🟢 9d |
-| [Palantir Technologies (PLTR, NASDAQ)](/prism/us-palantir-pltr/opus4.8) (US_PLTR) | 131.53 | 🟡 观望 | +55% | 试探 / 6% | ✅ | 1 个 | 🟢 10d |
-| [Space Exploration Technologies Corp. (SpaceX, NASDAQ: SPCX)](/prism/us-spacex-spcx/opus4.8) (US_SPCX) | 113.50 | 🔴 高于观望区 | +89% | 试探 (≤2%) / 5% | ✅ | 1 个 | 🟢 10d |
-| [Coinbase (COIN, NASDAQ)](/prism/us-coinbase/opus4.8) (US_COIN) | 167.49 | 🟡 观望 | +52% | 试探 / 5% | ✅ | 4 个 | 🟢 13d |
+| [英伟达 (NVIDIA, US NVDA)](/prism/us-nvidia/opus4.8) (US_NVDA) | 196.51 | 🟡 观望 | +12% | 标准 / 8% | ✅ | 3 个 | 🟢 7d |
+| [Alphabet 谷歌 (GOOGL, NASDAQ)](/prism/us-google/opus4.8) (US_GOOGL) | 326.56 | 🔵 可建仓 | +9% | 标准 (≤2.5%) / 6% | ✅ | 2 个 | 🟢 7d |
+| [特斯拉 Tesla (US_TSLA)](/prism/us-tesla/opus4.8) (US_TSLA) | 307.44 | 🔵 可建仓 | +34% | 试探 / 4% | ✅ | 1 个 | 🟢 8d |
+| [泸州老窖](/prism/cn-luzhou-laojiao/kimi-k3) (SZSE_000568) | 90.40 | 🟡 观望 | +29% | 试探 (≤2%) / 6% | ✅ | 2 个 | 🟢 8d |
+| [Structure Therapeutics (GPCR)](/prism/us-structure-gpcr/opus4.8) (GPCR) | 49.35 | 🟡 观望 | +41% | 观望 / 3% | ✅ | — | 🟢 8d |
+| [Viking Therapeutics (VKTX)](/prism/us-viking-vktx/opus4.8) (US_VKTX) | 34.87 | 🟡 观望 | +39% | 试探/观望 (≤1.5%) / 3% | ✅ | — | 🟢 9d |
+| [海目星激光 HYMSON](/prism/cn-hymson-688559/opus4.8) (SSE_688559) | 42.85 | 🟡 观望 | — | 试探 / 4% | ✅ | 1 个 | 🟢 12d |
+| [兴业银锡 (000426.SZ)](/prism/cn-xingye-silver-tin/opus4.8) (SZSE_000426) | 31.50 | 🔴 高于观望区 | +31% | 试探 (≤2%) / 6% | ✅ | 2 个 | 🟢 12d |
+| [Palantir Technologies (PLTR, NASDAQ)](/prism/us-palantir-pltr/opus4.8) (US_PLTR) | 123.53 | 🟡 观望 | +45% | 试探 / 6% | ✅ | 1 个 | 🟢 13d |
+| [Space Exploration Technologies Corp. (SpaceX, NASDAQ: SPCX)](/prism/us-spacex-spcx/opus4.8) (US_SPCX) | 116.41 | 🔴 高于观望区 | +94% | 试探 (≤2%) / 5% | ✅ | 1 个 | 🟢 13d |
+| [Coinbase (COIN, NASDAQ)](/prism/us-coinbase/opus4.8) (US_COIN) | 167.90 | 🟡 观望 | +53% | 试探 / 5% | ✅ | 4 个 | 🟡 16d |
 | [三生制药](/prism/cn-3sbio-01530/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [康方生物](/prism/cn-akeso-09926/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [百利天恒](/prism/cn-baili-688506/opus4.8) (SSE_688506) | 307.01 | 🔴 高于观望区 | +54% | 试探 / 4% | ✅ | 1 个 | 🟡 25d |
+| [百利天恒](/prism/cn-baili-688506/opus4.8) (SSE_688506) | 307.01 | 🔴 高于观望区 | +54% | 试探 / 4% | ✅ | 1 个 | 🟡 28d |
 | [通富微电](/prism/cn-tfme-002156/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [长电科技](/prism/cn-jcet-600584/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [澜起科技](/prism/cn-montage-688008/opus4.8) (SSE_688008) | 206.04 | 🔴 高于观望区 | +87% | 试探 / 8% | ✅ | 1 个 | 🟢 14d |
-| [Momenta 魔门塔 (HKEX 06880)](/prism/cn-momenta/opus4.8) (HKEX_06880) | 241.80 | 🟡 观望 | +61% | 试探 / 5% | ✅ | 2 个 | 🟡 27d |
-| [贵州茅台](/prism/cn-kweichow-moutai-600519/opus4.8) (SSE_600519) | 1320.00 | 🟡 观望 | +20% | 标准 / 10% | ✅ | 2 个 | 🟡 27d |
+| [澜起科技](/prism/cn-montage-688008/opus4.8) (SSE_688008) | 196.78 | 🟡 观望 | +79% | 试探 / 8% | ✅ | 1 个 | 🟡 17d |
+| [Momenta 魔门塔 (HKEX 06880)](/prism/cn-momenta/opus4.8) (HKEX_06880) | 243.60 | 🟡 观望 | +62% | 试探 / 5% | ✅ | 2 个 | 🟡 31d |
+| [贵州茅台](/prism/cn-kweichow-moutai-600519/opus4.8) (SSE_600519) | 1320.00 | 🟡 观望 | +20% | 标准 / 10% | ✅ | 2 个 | 🟡 30d |
 | [药明合联](/prism/cn-wuxixdc-02268/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [恒瑞医药](/prism/cn-hengrui-600276/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [恒而达 (Hengerda, SZSE 300946)](/prism/cn-hengerda-300946/glm5.2) | — | ⚪ 缺 sidecar | — | — | — | — | — |
 | [五洲新春 (Wuzhou Xinchun, SSE 603667)](/prism/cn-wuzhou-xinchun-603667/glm5.2) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [礼来 (Eli Lilly, NYSE: LLY)](/prism/us-eli-lilly/opus4.8) (US_LLY) | 1197.53 | 🟡 观望 | +26% | 标准 / 6% | ✅ | 1 个 | 🔴 46d |
-| [美光科技 (Micron, MU)](/prism/us-micron-mu/opus4.8) (US_MU) | 900.20 | 🟡 观望 | +61% | 试探 (≤1.0%) / 6% | ✅ | 1 个 | 🟢 13d |
-| [泡泡玛特 (Pop Mart, HKEX 09992)](/prism/cn-popmart/opus4.8) (HKEX_09992) | 161.80 | 🟡 观望 | +20% | 观望 / 5% | ✅ | 2 个 | 🔴 52d |
-| [PDD Holdings (拼多多, NASDAQ: PDD)](/prism/pinduoduo/opus4.8) (US_PDD) | 84.85 | 🔵 可建仓 | +13% | 标准 (≤2.5%) / 6% | ✅ | 3 个 | 🔴 53d |
-| [Robinhood (HOOD, NASDAQ)](/prism/us-robinhood/opus4.8) (US_HOOD) | 95.65 | 🔴 高于观望区 | +41% | 试探 (≤1%) / 7% | ✅ | 2 个 | 🔴 54d |
+| [礼来 (Eli Lilly, NYSE: LLY)](/prism/us-eli-lilly/opus4.8) (US_LLY) | 1220.66 | 🟡 观望 | +28% | 标准 / 6% | ✅ | 1 个 | 🔴 49d |
+| [美光科技 (Micron, MU)](/prism/us-micron-mu/opus4.8) (US_MU) | 820.53 | 🟡 观望 | +47% | 试探 (≤1.0%) / 6% | ✅ | 1 个 | 🟡 16d |
+| [泡泡玛特 (Pop Mart, HKEX 09992)](/prism/cn-popmart/opus4.8) (HKEX_09992) | 162.80 | 🟡 观望 | +21% | 观望 / 5% | ✅ | 2 个 | 🔴 55d |
+| [PDD Holdings (拼多多, NASDAQ: PDD)](/prism/pinduoduo/opus4.8) (US_PDD) | 85.71 | 🔵 可建仓 | +14% | 标准 (≤2.5%) / 6% | ✅ | 3 个 | 🔴 56d |
+| [Robinhood (HOOD, NASDAQ)](/prism/us-robinhood/opus4.8) (US_HOOD) | 92.76 | 🔴 高于观望区 | +36% | 试探 (≤1%) / 7% | ✅ | 2 个 | 🔴 57d |
 | [利元亨 (Yuanli Heng, SSE 688499)](/prism/cn-yuanli-heng-688499/opus4.8) | — | ⚪ 缺 sidecar | — | — | — | — | — |
-| [先导智能 (Leadex, SZSE 300450 + HKEX 00470)](/prism/cn-leadex-300450/opus4.8) (SZSE_300450) | 33.03 | 🟡 观望 | +22% | 试探 (≤3%) / 6% | ✅ | 1 个 | 🟢 0d |
-| [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)](/prism/global-futu/opus4.8) (US_FUTU) | 104.27 | 🟡 观望 | +60% | 2% / 3% | ✅ | — | 🟡 44d |
+| [先导智能 (Leadex, SZSE 300450 + HKEX 00470)](/prism/cn-leadex-300450/opus4.8) (SZSE_300450) | 33.03 | 🟡 观望 | +22% | 试探 (≤3%) / 6% | ✅ | 1 个 | 🟢 3d |
+| [富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)](/prism/global-futu/opus4.8) (US_FUTU) | 101.84 | 🟡 观望 | +57% | 2% / 3% | ✅ | — | 🔴 47d |
 
 ## 公司详情
 
@@ -85,7 +87,7 @@
 | 🔵 可建仓 | 15 – 22 |
 | 🟡 观望 | 22 – 40 |
 | 🔴 高于观望 | > 40 |
-| **当前** | **34.52**（2026-07-27）→ 🟡 观望 |
+| **当前** | **32.85**（2026-07-28）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -197,7 +199,7 @@
 | 🔵 可建仓 | 230 – 320 |
 | 🟡 观望 | 320 – 360 |
 | 🔴 高于观望 | > 360 |
-| **当前** | **309.22**（2026-07-27）→ 🔵 可建仓 |
+| **当前** | **307.44**（2026-07-28）→ 🔵 可建仓 |
 
 **估值矩阵**
 
@@ -223,7 +225,7 @@
 | 🔵 可建仓 | 70 – 80 |
 | 🟡 观望 | 80 – 95 |
 | 🔴 高于观望 | > 95 |
-| **当前** | **87.00**（2026-07-28）→ 🟡 观望 |
+| **当前** | **90.40**（2026-07-30）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -324,7 +326,7 @@
 | 🔵 可建仓 | 24 – 27 |
 | 🟡 观望 | 27 – 30 |
 | 🔴 高于观望 | > 30 |
-| **当前** | **31.25**（2026-07-28）→ 🔴 高于观望区 |
+| **当前** | **31.50**（2026-07-30）→ 🔴 高于观望区 |
 
 **估值矩阵**
 
@@ -351,7 +353,7 @@
 | 🔵 可建仓 | 90 – 105 |
 | 🟡 观望 | 105 – 150 |
 | 🔴 高于观望 | > 150 |
-| **当前** | **131.53**（2026-07-27）→ 🟡 观望 |
+| **当前** | **123.53**（2026-07-28）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -376,7 +378,7 @@
 | 🔵 可建仓 | 60 – 85 |
 | 🟡 观望 | 85 – 100 |
 | 🔴 高于观望 | > 100 |
-| **当前** | **113.50**（2026-07-27）→ 🔴 高于观望区 |
+| **当前** | **116.41**（2026-07-28）→ 🔴 高于观望区 |
 
 **估值矩阵**
 
@@ -402,7 +404,7 @@
 | 🔵 可建仓 | 90 – 130 |
 | 🟡 观望 | 130 – 210 |
 | 🔴 高于观望 | > 210 |
-| **当前** | **167.49**（2026-07-27）→ 🟡 观望 |
+| **当前** | **167.90**（2026-07-28）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -457,7 +459,7 @@
 | 🔵 可建仓 | 110 – 155 |
 | 🟡 观望 | 155 – 200 |
 | 🔴 高于观望 | > 200 |
-| **当前** | **206.04**（2026-07-28）→ 🔴 高于观望区 |
+| **当前** | **196.78**（2026-07-30）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -483,7 +485,7 @@
 | 🔵 可建仓 | 150 – 200 |
 | 🟡 观望 | 200 – 250 |
 | 🔴 高于观望 | > 250 |
-| **当前** | **241.80**（2026-07-28）→ 🟡 观望 |
+| **当前** | **243.60**（2026-07-28）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -537,7 +539,7 @@
 | 🔵 可建仓 | 950 – 1060 |
 | 🟡 观望 | 1060 – 1250 |
 | 🔴 高于观望 | > 1250 |
-| **当前** | **1197.53**（2026-07-27）→ 🟡 观望 |
+| **当前** | **1220.66**（2026-07-28）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -563,7 +565,7 @@
 | 🔵 可建仓 | 560 – 720 |
 | 🟡 观望 | 720 – 1000 |
 | 🔴 高于观望 | > 1000 |
-| **当前** | **900.20**（2026-07-27）→ 🟡 观望 |
+| **当前** | **820.53**（2026-07-28）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -589,7 +591,7 @@
 | 🔵 可建仓 | 135 – 150 |
 | 🟡 观望 | 150 – 195 |
 | 🔴 高于观望 | > 195 |
-| **当前** | **161.80**（2026-07-28）→ 🟡 观望 |
+| **当前** | **162.80**（2026-07-28）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -616,7 +618,7 @@
 | 🔵 可建仓 | 75 – 100 |
 | 🟡 观望 | 100 – 125 |
 | 🔴 高于观望 | > 125 |
-| **当前** | **84.85**（2026-07-27）→ 🔵 可建仓 |
+| **当前** | **85.71**（2026-07-28）→ 🔵 可建仓 |
 
 **估值矩阵**
 
@@ -644,7 +646,7 @@
 | 🔵 可建仓 | 68 – 74 |
 | 🟡 观望 | 74 – 85 |
 | 🔴 高于观望 | > 85 |
-| **当前** | **95.65**（2026-07-27）→ 🔴 高于观望区 |
+| **当前** | **92.76**（2026-07-28）→ 🔴 高于观望区 |
 
 **估值矩阵**
 
@@ -696,7 +698,7 @@
 | 🔵 可建仓 | 65 – 80 |
 | 🟡 观望 | 80 – 125 |
 | 🔴 高于观望 | > 125 |
-| **当前** | **104.27**（2026-07-27）→ 🟡 观望 |
+| **当前** | **101.84**（2026-07-28）→ 🟡 观望 |
 
 **估值矩阵**
 
@@ -764,7 +766,7 @@
 | 标的 | 类型 | 建议翻牌 | 依据 | 证据 | 需重评 thesis |
 |------|------|---------|------|------|--------------|
 | cn-xingye-silver-tin | price (buy_box) | accumulate | 现价 26.93 落入 accumulate（零 LLM 价格判定） | ⚠️ 无 | — |
-| us-tesla | price (buy_box) | accumulate | 现价 311.1499938964844 落入 accumulate（零 LLM 价格判定） | ⚠️ 无 | — |
+| us-tesla | price (buy_box) | accumulate | 现价 307.44000244140625 落入 accumulate（零 LLM 价格判定） | ⚠️ 无 | — |
 | us-applovin | macro_regime (rates_us) | regime_shift | 依赖的『高位企稳/官方+市场双双转鹰但长端牛平(10Y4.38)』已变『高位·官方/市场/长端同向再 | ⚠️ 无 | 🔺 |
 | us-ionq | macro_regime (rates_us) | regime_shift | 依赖的『高位企稳·双双转鹰·长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s | ⚠️ 无 | 🔺 |
 | cn-hengli-hydraulic-601100 | macro_regime (fx_cny) | regime_shift | 依赖的『人民币贬值利出口但2025出口停滞+1.58%』已变『企稳偏强·逆周期因子越带·套利链失灵( | ⚠️ 无 | 🔺 |
@@ -781,12 +783,13 @@
 | cn-montage-688008 | macro_regime (liquidity_us) | regime_shift | 依赖的『条件偏松·信用利差地板·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IO | ⚠️ 无 | 🔺 |
 | cn-baili-688506 | macro_regime (fx_cny) | regime_shift | 依赖的『企稳偏弱·区间震荡·中性偏友好转弱』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人 | ⚠️ 无 | 🔺 |
 | cn-kweichow-moutai-600519 | macro_regime (fx_cny) | regime_shift | 依赖的『人民币企稳(favor)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)· | ⚠️ 无 | 🔺 |
+| us-applovin | price (buy_box) | accumulate | 现价 412.7300109863281 落入 accumulate（零 LLM 价格判定） | ⚠️ 无 | — |
 
 **🔺 建议重评 thesis**（kill/重大 signpost 触发，请在对话里发起交互式 05-critic-review / 重新合成）：cn-baili-688506, cn-hengli-hydraulic-601100, cn-hymson-688559, cn-kweichow-moutai-600519, cn-montage-688008, cn-xingye-silver-tin, us-applovin, us-coinbase, us-google, us-ionq, us-nvidia, us-palantir-pltr, us-spacex-spcx, us-structure-gpcr, us-tesla, us-viking-vktx
 
 ## 行业层：竞技场选择
 
-### 自动驾驶行业 (Autonomous Driving, GLOBAL) [🟢 0d]
+### 自动驾驶行业 (Autonomous Driving, GLOBAL) [🟢 3d]
 
 **深度研究竞技场（Deep）**
 
@@ -808,7 +811,7 @@
 
 ---
 
-### 全球肥胖/GLP-1 减重药物行业 [🟢 6d]
+### 全球肥胖/GLP-1 减重药物行业 [🟢 9d]
 
 **深度研究竞技场（Deep）**
 
@@ -828,7 +831,7 @@
 
 ---
 
-### 中国算力行业 (AI Compute, 全产业链) [🟡 27d]
+### 中国算力行业 (AI Compute, 全产业链) [🟡 30d]
 
 **深度研究竞技场（Deep）**
 
@@ -850,7 +853,7 @@
 
 ---
 
-### 中国商业航天 [🟡 41d]
+### 中国商业航天 [🟡 44d]
 
 **深度研究竞技场（Deep）**
 
@@ -871,7 +874,7 @@
 
 ---
 
-### 中国商业航天【旧 opus4.8 归档·20260617】 [🟡 44d]
+### 中国商业航天【旧 opus4.8 归档·20260617】 [🔴 47d]
 
 **深度研究竞技场（Deep）**
 
@@ -891,7 +894,7 @@
 
 ---
 
-### 人形机器人行业 (Global Humanoid Robot) [🔴 57d]
+### 人形机器人行业 (Global Humanoid Robot) [🔴 60d]
 
 **深度研究竞技场（Deep）**
 
@@ -913,7 +916,7 @@
 
 ---
 
-### 中国创新药行业 [🔴 58d]
+### 中国创新药行业 [🔴 61d]
 
 **深度研究竞技场（Deep）**
 
@@ -948,7 +951,7 @@
 
 ---
 
-### GLP-1 口服小分子平权化 arena [🟢 6d]
+### GLP-1 口服小分子平权化 arena [🟢 9d]
 
 **入围（Shortlist）**
 
@@ -968,7 +971,7 @@
 
 ---
 
-### GLP-1 三激动/amylin 高端疗效 arena [🟢 0d]
+### GLP-1 三激动/amylin 高端疗效 arena [🟢 3d]
 
 **入围（Shortlist）**
 
@@ -988,7 +991,7 @@
 
 ---
 
-### 国产AI芯片（昇腾链/寒武纪/海光） [🟢 4d]
+### 国产AI芯片（昇腾链/寒武纪/海光） [🟢 7d]
 
 **入围（Shortlist）**
 
@@ -1007,7 +1010,7 @@
 
 ---
 
-### 中国算力上游制造（先进制程/国产HBM/先进封装） [🟡 26d]
+### 中国算力上游制造（先进制程/国产HBM/先进封装） [🟡 29d]
 
 **入围（Shortlist）**
 
@@ -1027,7 +1030,7 @@
 
 ---
 
-### 行星滚柱丝杠 (Planetary Roller Screw) [🟢 4d]
+### 行星滚柱丝杠 (Planetary Roller Screw) [🟢 7d]
 
 **入围（Shortlist）**
 
@@ -1067,7 +1070,7 @@
 
 ---
 
-### 高端白酒 (Premium Baijiu — 周期拐点) [🔴 51d]
+### 高端白酒 (Premium Baijiu — 周期拐点) [🔴 54d]
 
 **入围（Shortlist）**
 
@@ -1088,7 +1091,7 @@
 
 ---
 
-### 全球固态电池设备链（卖铲人漏斗） [🔴 57d]
+### 全球固态电池设备链（卖铲人漏斗） [🔴 60d]
 
 **入围（Shortlist）**
 
@@ -1109,7 +1112,7 @@
 
 ---
 
-### 中国PD-1/VEGF双抗 arena [🟡 18d]
+### 中国PD-1/VEGF双抗 arena [🟡 21d]
 
 **入围（Shortlist）**
 
@@ -1129,7 +1132,7 @@
 
 ---
 
-### 中国ADC（抗体偶联药物）arena [🟡 30d]
+### 中国ADC（抗体偶联药物）arena [🟡 33d]
 
 **入围（Shortlist）**
 
@@ -1305,11 +1308,13 @@
 
 ## 🟡 数据过期提醒（>45 天）
 
-- **礼来 (Eli Lilly, NYSE: LLY)**：上次更新 46 天前，建议重新生成产出
-- **泡泡玛特 (Pop Mart, HKEX 09992)**：上次更新 52 天前，建议重新生成产出
-- **PDD Holdings (拼多多, NASDAQ: PDD)**：上次更新 53 天前，建议重新生成产出
-- **Robinhood (HOOD, NASDAQ)**：上次更新 54 天前，建议重新生成产出
-- **高端白酒 (Premium Baijiu — 周期拐点)**：上次更新 51 天前，建议重新生成产出
-- **全球固态电池设备链（卖铲人漏斗）**：上次更新 57 天前，建议重新生成产出
-- **人形机器人行业 (Global Humanoid Robot)**：上次更新 57 天前，建议重新生成产出
-- **中国创新药行业**：上次更新 58 天前，建议重新生成产出
+- **礼来 (Eli Lilly, NYSE: LLY)**：上次更新 49 天前，建议重新生成产出
+- **泡泡玛特 (Pop Mart, HKEX 09992)**：上次更新 55 天前，建议重新生成产出
+- **PDD Holdings (拼多多, NASDAQ: PDD)**：上次更新 56 天前，建议重新生成产出
+- **Robinhood (HOOD, NASDAQ)**：上次更新 57 天前，建议重新生成产出
+- **富途控股 (FUTU, NASDAQ FUTU / HKEX 03588)**：上次更新 47 天前，建议重新生成产出
+- **中国商业航天【旧 opus4.8 归档·20260617】**：上次更新 47 天前，建议重新生成产出
+- **高端白酒 (Premium Baijiu — 周期拐点)**：上次更新 54 天前，建议重新生成产出
+- **全球固态电池设备链（卖铲人漏斗）**：上次更新 60 天前，建议重新生成产出
+- **人形机器人行业 (Global Humanoid Robot)**：上次更新 60 天前，建议重新生成产出
+- **中国创新药行业**：上次更新 61 天前，建议重新生成产出

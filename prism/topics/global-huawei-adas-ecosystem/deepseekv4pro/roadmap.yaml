@@ -1,0 +1,180 @@
+# roadmap.yaml — 研究路线图
+slug: global-huawei-adas-ecosystem
+variant: deepseekv4pro
+created: 2026-07-31
+primer_scope: 华为ADS技术架构演进(ADS1→5)、智驾平权驱动力、三种合作模式(鸿蒙智行/HI/零部件)、五界品牌矩阵、中国智驾三层竞争格局(软硬一体/纯软/自研)
+
+learning_track:
+  l3_debates:
+    - question: "华为智驾高端统治力53.2%能否下沉到15-25万？ADS SE/Pro价格带面临比亚迪天神之眼同价竞争——'SE抢规模'策略是否导致品牌贬值、高端溢价被稀释？"
+      addresses: [K1, K3]
+      source_hint: 盖世汽车四档方案分析 + 比亚迪天神之眼B定价策略 + 深蓝S07/华境S销量数据
+
+    - question: "FSD入华后消费者在'安全'vs'好用'之间的真实选择——纯视觉端到端体验优势能否压倒华为的多传感器安全冗余？'安全但不够好用' vs '更好用但安全不如华为'的博弈何方胜出？"
+      addresses: [K3]
+      source_hint: FSD中国车主论坛/横评实测 + 问界M9智驾NPS数据 + 小米/小鹏/理想车主智驾满意度对比
+
+    - question: "引望不上市的话，这个arena的终局输出被迫退化为'间接暴露质量排名'——赛力斯/北汽蓝谷/江淮谁的华为智驾纯度最高？研究价值是否因缺乏直接标的而大打折扣？"
+      addresses: [K2]
+      source_hint: 引望最新IPO进展追踪 + 赛力斯/北汽/江淮的华为智驾收入占比分析
+
+    - question: "Momenta 65%第三方NOA份额 vs 华为53.2%高端份额——两套生态是否永远共存而非一家赢？纯软方案商的客户广度（24家车企210+定点）能否弥补软硬一体的深度锁定？"
+      addresses: [K2, K5]
+      source_hint: Momenta招股书客户结构 + 华为第三方客户扩展速度对比
+
+    - question: "鸿蒙智行'五界'扩张（问界/智界/享界/尊界/尚界）是否导致华为资源稀释、品牌内耗？11-18款新车密集投放，五界之间是否存在直接竞争？"
+      addresses: [K6]
+      source_hint: 五界2026各月交付数据 + 五界车型价格带重叠分析
+
+  l4_hunting:
+    - question: "华为搭载量2026年能否突破250万（当前170万）？35万+市占率能否守住50%+？市场对'比亚迪天神之眼285万辆数据+Momenta 65%第三方份额'的两端夹击是否过度定价？"
+      addresses: [K1]
+      search_keywords: ["华为乾崑搭载量", "2026 智驾份额", "比亚迪天神之眼"]
+      source_hint: 华为乾崑技术大会官方数据 + 盖世汽车/汽车之家月度份额追踪 + 比亚迪天神之眼搭载量公告
+
+    - question: "引望IPO时间表不确定性是否被过度折价？赛力斯115亿买入10%股权（引望估值1150亿）、上半年营收破百亿扭亏——如果2027年前IPO，当前间接暴露标的（赛力斯/北汽蓝谷）是否被低估？"
+      addresses: [K2]
+      search_keywords: ["引望IPO", "车BU独立", "赛力斯入股引望"]
+      source_hint: 引望官方公告 + 财联社/证券时报IPO追踪 + 平安证券引望估值模型
+
+    - question: "FSD入华后问界M9等高端车型的'智驾溢价'能否维持？特斯拉FSD 6.4万定价 vs 华为ADS Pro 1.2-1.5万——消费者是否愿意为'华为智驾'标签多付1-2万？"
+      addresses: [K3]
+      search_keywords: ["FSD 华为对比", "问界M9 智驾溢价", "智驾选装率"]
+      source_hint: 问界M9/M8车主智驾选装率 + FSD中国定价策略 + 车主论坛横评
+
+    - question: "赛力斯2026H1预亏15-18亿，市场是否已price in？全年净利一致预期71亿（东吴下修后）vs 国信证券乐观预期94亿——卖方分歧是否创造了定价错误？"
+      addresses: [K4]
+      search_keywords: ["赛力斯 盈利预测", "问界 毛利率", "601127 一致预期"]
+      source_hint: 同花顺/东方财富一致预期汇总 + 东吴/国信/中信建投卖方模型对比
+
+    - question: "华为第三方OEM扩展（深蓝S07标配ADS SE、华境S全系标配ADS Pro、阿维塔HI PLUS、广汽传祺/启境）是否被市场低估？'被集成'模式能否开辟第二增长曲线？"
+      addresses: [K5]
+      search_keywords: ["华为ADS 第三方", "深蓝 阿维塔 岚图", "华为HI模式"]
+      source_hint: 长安/东风/广汽公告 + 盖世汽车定点追踪 + 东吴证券客户矩阵
+
+    - question: "鸿蒙智行2026年130-220万辆目标——实际H1交付能否达60万辆（下限的一半）？问界M6新车型能否弥补M9/M8增速放缓？五界中谁在拖后腿？"
+      addresses: [K6]
+      search_keywords: ["鸿蒙智行 交付", "问界M6 订单", "五界 月销量"]
+      source_hint: 鸿蒙智行月度交付快报 + 汽车之家/懂车帝销量榜 + 问界M6小订数据
+
+material_priority:
+  tier1:
+    - title: "赛力斯 2025 年报 + 2026 Q1 季报（含问界分车型交付/毛利率/单车盈利）"
+      type: annual-report
+      ticker: SSE_601127
+      source: cninfo
+      why: "K4核心输入——赛力斯是华为智驾最纯暴露标的，净利/毛利率/单车数据是判断'华为受益度'的财务锚"
+      addresses: [K4, K6]
+      info_tier: half_public
+
+    - title: "北汽蓝谷 2025 年报 + 2026 Q1 季报（享界S9交付/极狐扭亏进展）"
+      type: annual-report
+      ticker: SSE_600733
+      source: cninfo
+      why: "K6核心输入——享界是鸿蒙智行第二增长极，S9/S9T 30万+销冠的财务兑现"
+      addresses: [K6]
+      info_tier: half_public
+
+    - title: "地平线 2025 年报（征程芯片出货/毛利率/客户结构）"
+      type: annual-report
+      ticker: HKEX_09660
+      source: HKEXnews
+      why: "K1/K5估值的可比锚——地平线是智驾上市公司的'硬芯片'参照系，858亿市值 vs 引望1150亿估值的对照"
+      addresses: [K1, K5]
+      info_tier: half_public
+
+    - title: "东吴证券：2026年智驾平权之车企智驾方案梳理（含华为全客户矩阵/OTA迭代史）"
+      type: industry-research
+      source: 东吴证券研究所/dfcfw
+      why: "K1/K5核心输入——华为ADS全版本矩阵+第三方客户扩展详表，是判断'华为Tier-1战略'扩张速度的基准"
+      addresses: [K1, K5]
+      info_tier: public
+
+    - title: "盖世汽车：华为乾崑ADS四大方案量产落地，细分市场智驾竞争格局初探"
+      type: industry-research
+      source: 盖世汽车/gasgoo.com
+      why: "K1/K3核心输入——35万+市占率53.2%、SE/Pro/Max/Ultra四档价格带对标、FSD对比框架"
+      addresses: [K1, K3]
+      info_tier: public
+
+  tier2:
+    - title: "华为乾崑技术大会2026官方实录（ADS5/WEWA2.0/乾崑OS/CAS5.0）"
+      type: industry-research
+      source: auto.huawei.com + 新华社/经济参考报
+      why: "K1/K3技术验证——ADS5 AI智能体架构升级是华为维持'体验代差'的技术底座"
+      addresses: [K1, K3]
+      info_tier: public
+
+    - title: "Momenta港交所聆讯后招股书/上市文件（财务数据/客户结构/R7世界模型）"
+      type: prospectus
+      source: 港交所披露易/hkexnews.hk
+      why: "K2可比估值——Momenta纯软模式(千亿估值/营收24亿/65%NOA份额) vs 引望软硬一体(1150亿/半年营收破百亿)的对照"
+      addresses: [K2]
+      info_tier: public
+
+    - title: "引望估值分析：平安证券研报（车BU独立运营对标博世，营收1275-1650亿/净利191-248亿）"
+      type: sell-side-note
+      source: 平安证券/dfcfw
+      why: "K2估值锚——引望1150亿估值是否合理？平安证券给出SOTP框架，是对照Momenta/地平线定价的关键"
+      addresses: [K2]
+      info_tier: half_public
+
+    - title: "鸿蒙智行2026年月度交付数据（问界M9/M8/M7/M6 + 智界/享界/尊界/尚界逐月）"
+      type: data
+      source: 鸿蒙智行官方交付快报 + 汽车之家/懂车帝
+      why: "K6核心追踪——五界逐月交付是判断'130-220万辆目标'可实现性的高频数据"
+      addresses: [K6]
+      info_tier: half_public
+
+    - title: "赛力斯/北汽蓝谷/地平线A股&港股一致预期汇总（2026-2028营收/净利/EPS，Wind/同花顺）"
+      type: data
+      source: 同花顺F10/东方财富盈利预测/Wind
+      why: "K4估值锚——卖方一致预期分歧（赛力斯2026净利61-128亿区间）是判断'市场是否price in预亏'的基准"
+      addresses: [K4]
+      info_tier: half_public
+
+  tier3:
+    - title: "大疆车载/卓驭2026进展：纯视觉低价智驾的铺货量和定价策略"
+      type: industry-research
+      source: 36氪/盖世汽车
+      why: "K1/K3补充——15万以下纯视觉方案的竞争变量，是华为ADS SE能否守住13万+价格带的参照"
+      addresses: [K1, K3]
+      info_tier: half_public
+
+    - title: "FSD中国车主真实体验/横评 vs 华为ADS5（2026 Q3数据）"
+      type: data
+      source: 小红书/懂车帝/新出行/汽车之家车主论坛
+      why: "K3补充——消费者在'安全'vs'好用'之间的真实选择，定量数据稀缺但定性判断重要"
+      addresses: [K3]
+      info_tier: half_public
+
+    - title: "Mobileye从统治到被替代的历史复盘：软硬一体→纯软替代的pattern"
+      type: industry-research
+      source: 行业研报/学术文献
+      why: "historical-mirror（环⑤）——Mobileye EyeQ芯片+算法封闭生态被高通/英伟达/地平线开放平台替代的历史，是华为软硬一体生态的镜鉴"
+      addresses: [K3]
+      info_tier: public
+
+key_risks_to_monitor:
+  - "引望IPO无限期推迟 → arena可投性降级，终局输出退化为'间接暴露排名'"
+  - "FSD V14端到端体验全面超越ADS5 → 高端市占率53.2%松动，华为'安全'护城河被'好用'压倒"
+  - "赛力斯2026全年净利低于50亿（一致预期下限61亿）→ '赛力斯=华为受益者'论据崩塌"
+  - "比亚迪天神之眼从285万→500万辆数据飞轮加速 → 华为在15-25万价格带被挤出"
+  - "鸿蒙智行五界2026实际交付<100万辆 → 飞轮增速放缓，130万下限失守"
+  - "Momenta千亿IPO后估值继续跑赢 → 纯软模式被资本市场验证，华为软硬一体'重资产'被折价"
+
+analogies_to_study:
+  - case: "Mobileye (2016-2024)：软硬一体EyeQ芯片+算法封闭生态 → 被高通/英伟达/地平线开放平台替代"
+    logic: "与华为同样走软硬一体全栈路线，Mobileye从垄断ADAS到被车企'去Mobileye化'的历程——核心教训是封闭生态在行业成熟期被开放平台替代"
+    limitation: "华为比Mobileye多了鸿蒙生态+手机用户基盘+销售渠道，不只是'车载芯片+算法'的封闭盒子"
+    todo: "收 historical-mirror 实证：Mobileye市场份额从70%→30%的复盘文章或行业研报"
+
+  - case: "博世/大陆 (2015-2025)：Tier-1巨头在智能电动时代的份额流失"
+    logic: "传统Tier-1在'软件定义汽车'时代被OEM自研+科技公司双重挤压，与华为'赋能者'定位形成对照——华为能否避免博世的命运？"
+    limitation: "华为的软硬一体化深度远超博世（芯+OS+云+终端），不只是'供应商'而是'生态构建者'"
+    todo: "收 industry-mirror 实证：博世/大陆在智能驾驶时代的市场份额变化数据"
+
+  - case: "NVIDIA CUDA生态锁定 (2006-至今)：软硬一体生态的终极成功案例"
+    logic: "CUDA生态锁定效应——开发者/应用/硬件三者正反馈循环，是华为鸿蒙智行生态的理想参照。如果华为能做到'智驾界的CUDA'，护城河将远超Mobileye"
+    limitation: "汽车行业是B2B2C（OEM→经销商→消费者），不像CUDA的B2D（开发者）自增强循环——华为必须同时搞定OEM和消费者两端"
+    todo: "对比分析：CUDA生态锁定机制 vs 鸿蒙智行生态锁定机制的异同"

@@ -3,7 +3,7 @@ display_name: 上游国产 AD 计算芯片 (地平线为核心)
 type: arena
 created: '2026-07-28T09:51:20.192036+00:00'
 status: active
-stage: 00-init
+stage: 02-gather-materials
 canonical: true
 parent_topic: global-autonomous-driving
 monitoring_tier: dormant
@@ -22,24 +22,295 @@ scope:
   - 黑芝麻智能
   - 智驾芯片份额
 outputs_state: {}
-parent_materials: []
+parent_materials:
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-abba71
+  addresses:
+  - K2
+  note: 去英伟达化分析——Thor跳票+OEM自研替代趋势
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-a678a9
+  addresses:
+  - K1
+  - K2
+  note: 智驾芯片一超两强格局——地平线/黑芝麻/Nvidia份额
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-6979bb
+  addresses:
+  - K1
+  - K3
+  note: 地平线核心竞争力分析——TogetheROS生态+工具链壁垒
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-c7de09
+  addresses:
+  - K3
+  note: 征程6P vs EyeQ Ultra vs Thor三强对决——性能对比
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-021ccc
+  addresses:
+  - K1
+  note: 比亚迪补齐智能化——OEM自研芯片动机
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-94c77d
+  addresses:
+  - K1
+  note: 比亚迪4nm智驾芯片+城市领航安全兜底
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-eb5378
+  addresses:
+  - K1
+  note: 智驾平权车企方案梳理——OEM芯片选型策略
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-f56b98
+  addresses:
+  - K4
+  note: 地平线估值分析——港股自动驾驶估值对比
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-6417b1
+  addresses:
+  - K1
+  note: 图森未来退市镜鉴——L4自动驾驶估值崩塌教训
+- parent_slug: global-autonomous-driving
+  parent_variant: opus4.8
+  mat_id: mat-d9818f
+  addresses:
+  - K1
+  - K3
+  note: 2026年中国汽车智驾产业全景——含芯片竞争格局
 next_actions:
-- 运行 workflow 01-build-roadmap
-user_todos: []
+- 00 eager-fetch 已抓 2 份年报 + 01 deep-fetch 已补抓 Mobileye复盘；46份材料入库
+- 运行 workflow 03-extract-findings：抽取所有材料的 findings
+user_todos:
+- task: 地平线机器人 2025 年报全文（HKEX 披露）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  - K3
+  source_hint: HKEX 披露易 / 公司 IR，ticker=HKEX_09660
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-88785b
+  - mat-e4f0d3
+  last_fetch_note: fetch_report_prism
+- task: 黑芝麻智能 2025 年报全文（HKEX 披露）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: HKEX 披露易 / 公司 IR，ticker=HKEX_02533
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-88785b
+  - mat-e4f0d3
+  last_fetch_note: fetch_report_prism
+- task: 地平线/黑芝麻一致预期数据（收入/毛利率/净利 2026-2028E）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 同花顺F10 / 东方财富 / Wind一致预期
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0aacf1
+  - mat-338b6a
+  - mat-358846
+  - mat-8437e8
+  - mat-903fdb
+  last_fetch_note: web-search sidecar
+- task: 地平线征程6P vs Nvidia Orin-X/Thor 独立性能评测
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  - K1
+  source_hint: 电子工程专辑/爱范儿/第三方评测机构
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0aacf1
+  - mat-338b6a
+  - mat-358846
+  - mat-8437e8
+  - mat-903fdb
+  last_fetch_note: web-search sidecar
+- task: 比亚迪/蔚来/小鹏自研芯片装车时间表与装机量规划
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 公司IR/技术发布会/汽车之家
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0aacf1
+  - mat-338b6a
+  - mat-358846
+  - mat-8437e8
+  - mat-903fdb
+  last_fetch_note: web-search sidecar
+- task: 手机AP自研 vs 外采终局分析（苹果A系列/三星Exynos/华为麒麟 vs 高通骁龙）——AD芯片类比
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 科技媒体/券商半导体深度报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0aacf1
+  - mat-338b6a
+  - mat-358846
+  - mat-8437e8
+  - mat-903fdb
+  last_fetch_note: web-search sidecar
+- task: 地平线管理层访谈/业绩会纪要（2025-2026）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  - K4
+  source_hint: 同花顺/东方财富/路演中
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0aacf1
+  - mat-338b6a
+  - mat-358846
+  - mat-8437e8
+  - mat-903fdb
+  last_fetch_note: web-search sidecar
+- task: 黑芝麻智能 A2000 量产进度与客户反馈（2026H2 更新）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 汽车之家/盖世汽车/公司公告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0aacf1
+  - mat-338b6a
+  - mat-358846
+  - mat-8437e8
+  - mat-903fdb
+  last_fetch_note: web-search sidecar
+- task: 高通 Snapdragon Ride Flex 中国定点与舱驾融合份额
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 盖世汽车/券商智能座舱报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0aacf1
+  - mat-338b6a
+  - mat-358846
+  - mat-8437e8
+  - mat-903fdb
+  last_fetch_note: web-search sidecar
+- task: Mobileye EyeQ6 中国定点/出货数据（2025-2026）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: Mobileye IR/行业报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0aacf1
+  - mat-338b6a
+  - mat-358846
+  - mat-8437e8
+  - mat-903fdb
+  last_fetch_note: web-search sidecar
 suggested_drilldowns: []
 monitoring:
   enabled: false
   cadence: daily
 critic: null
 decomposition:
-  current_version: null
-  last_updated: null
-  history: []
+  current_version: 0
+  last_updated: '2026-07-31T13:27:26.970400+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-07-31T13:27:26.970561+00:00'
+    summary: 命门1=征程6P高端上探成功(中); 命门2=OEM自研侵蚀速度(中); 命门3=地平线估值合理性(低)——估值命门置信度最低,环④优先收料
+    convergence_status: open
 thesis:
   current_version: 0
-  last_updated: '2026-07-28T09:52:55.558058+00:00'
+  last_updated: '2026-07-31T13:26:30.478898+00:00'
   history:
   - version: 0
     stage_set_at: 00-init-from-parent
     set_at: '2026-07-28T09:52:55.558204+00:00'
     summary: 国产AD芯片(地平线一超)享国产替代+舱驾融合红利、Nvidia因Thor跳票松动;但地平线PS16.7已透支且面临OEM自研侵蚀——方向对,估值需回调或选二线介入。强度5/10
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-07-31T13:26:30.479083+00:00'
+    summary: 国产AD芯片(地平线一超)享国产替代+舱驾融合红利,Nvidia因Thor跳票松动;但地平线PS19x(2026E)已透支,比亚迪璇玑A3量产标志OEM自研现实化——方向对,估值需回调或选二线。强度5/10
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 72%（13/18，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-07-31T13:28:02.680147+00:00'
+  exited_at: '2026-07-31T15:38:27.286605+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - peer-valuation-anchor
+    - peer-comparison-financials
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-07-31T15:38:27.286605+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - biz-value-chain-position
+    - winner-variables
+    - arena-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0

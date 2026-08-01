@@ -6947,11 +6947,12 @@
       "promoted": false
     },
     "pdf.dfcfw.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-autonomous-driving/opus4.8"
+        "global-autonomous-driving/opus4.8",
+        "global-ad-compute-chip/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "momenta.ai": {
       "count": 1,
@@ -6961,18 +6962,20 @@
       "promoted": false
     },
     "horizon.auto": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-autonomous-driving/opus4.8"
+        "global-autonomous-driving/opus4.8",
+        "global-ad-compute-chip/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "moomoo.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-autonomous-driving/opus4.8"
+        "global-autonomous-driving/opus4.8",
+        "global-ad-compute-chip/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "chedongxi.com": {
       "count": 1,
@@ -6982,11 +6985,12 @@
       "promoted": false
     },
     "finance.yahoo.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-autonomous-driving/opus4.8"
+        "global-autonomous-driving/opus4.8",
+        "global-ad-compute-chip/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "mobileye.com": {
       "count": 1,
@@ -7052,18 +7056,20 @@
       "promoted": false
     },
     "zhuanlan.zhihu.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-autonomous-driving/opus4.8"
+        "global-autonomous-driving/opus4.8",
+        "global-ad-compute-chip/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "jjckb.xinhuanet.com": {
-      "count": 1,
+      "count": 2,
       "topics": [
-        "global-autonomous-driving/opus4.8"
+        "global-autonomous-driving/opus4.8",
+        "global-ad-compute-chip/opus4.8"
       ],
-      "promoted": false
+      "promoted": true
     },
     "dxobs.obs.cn-north-1.myhuaweicloud.com": {
       "count": 1,
@@ -7139,6 +7145,188 @@
       "count": 1,
       "topics": [
         "global-autonomous-driving/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hk.finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "m-new.inabr.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "21jingji.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "finance.sina.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cinn.cn": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "spdbi.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hibor.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "wap.eastmoney.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "blogs.nvidia.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "nvidia.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "nvidianews.nvidia.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "jiemian.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "news.pedaily.cn": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "i.gasgoo.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "wallstreetcn.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "hkexnews.hk": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "stcn.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "eet-china.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "ifanr.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "mobileyechina.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "prnasia.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "cls.cn": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "m.jiemian.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "xueqiu.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "db.m.auto.sohu.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
+      ],
+      "promoted": false
+    },
+    "m.36kr.com": {
+      "count": 1,
+      "topics": [
+        "global-ad-compute-chip/opus4.8"
       ],
       "promoted": false
     }
@@ -7349,6 +7537,176 @@
       "count": 1,
       "topics": [
         "jp-cover-5253/opus4.8"
+      ],
+      "promoted": false
+    }
+  },
+  "global-huawei-adas-ecosystem": {
+    "auto.ifeng.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "auto.huawei.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "qichejingwei.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "auto.sina.cn": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "news.cn": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "hk.finance.yahoo.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "jjckb.xinhuanet.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "news.qq.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "pdf.dfcfw.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "m.gasgoo.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "nev.ofweek.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "finance.sina.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "auto.anhuinews.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "m.cls.cn": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "huaon.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "auto.news18a.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "stcn.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "www1.hkexnews.hk": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "auto-time.36kr.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "stockmc.xueqiu.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "chnfund.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "m.36kr.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "k.sina.com.cn": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
+      ],
+      "promoted": false
+    },
+    "tmtpost.com": {
+      "count": 1,
+      "topics": [
+        "global-huawei-adas-ecosystem/deepseekv4pro"
       ],
       "promoted": false
     }

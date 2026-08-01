@@ -1,0 +1,72 @@
+slug: global-huawei-adas-ecosystem
+variant: deepseekv4pro
+topic_type: arena
+display_name: 华为软硬一体智驾生态 (乾崑 ADS)
+generated: 2026-07-31
+data_freshness: 2026-07-31 (findings-based, market_data API unavailable)
+companies:
+  - name: 赛力斯
+    ticker: SSE_601127
+    score: 4.0
+    tier: shortlist
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: "华为智驾最纯暴露标的——问界=华为，39.1万ASP+28.8%毛利率确认高端品牌力，H1预亏为短期阵痛，PE 15.9x有安全边际"
+    upgrade_triggers: null
+    quarantine: null
+  - name: 地平线
+    ticker: HKEX_09660
+    score: 3.5
+    tier: shortlist
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: "智驾'卖水人'——Fabless高毛利64.5%+20万以下NOA份额44.2%第一，受益于全行业扩张的'军火商'，不赌单一路线"
+    upgrade_triggers: null
+    quarantine: null
+  - name: 北汽蓝谷
+    ticker: SSE_600733
+    score: 2.0
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: "享界30万+销冠+极狐扭亏的期权——高赔率(营收+92.5%)但低确定性(2027年才扭亏)，hard filter不通过"
+    upgrade_triggers:
+      - "享界2026全年交付>8万辆(2025为4.27万)"
+      - "毛利率连续4季为正"
+      - "极狐单月销>2.5万辆"
+    quarantine: null
+  - name: 引望
+    ticker: null
+    score: 4.5
+    tier: watch
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: "华为智驾最纯正标的——半年营收破百亿且扭亏，估值1150亿(PS 5.8x)显著低于Momenta(PS 41.4x)，IPO是扳机事件"
+    upgrade_triggers:
+      - "IPO正式启动(递交招股书或通过聆讯)"
+    quarantine: null
+  - name: 江淮汽车
+    ticker: SSE_600418
+    score: 1.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: "尊界70-100万超豪华市场天花板极低(2026预计5-8万辆)，江淮自主品牌拖累严重，华为纯度最低"
+    upgrade_triggers: null
+    quarantine: "尊界定位超豪华(70-100万)，中国市场天花板<10万辆/年，且江淮自主品牌(卡车/MPV)持续亏损"
+  - name: 长安汽车
+    ticker: SSE_000625
+    score: 2.5
+    tier: eliminated
+    topic_created: false
+    topic_slug: null
+    thesis_one_liner: "华为的'客户'而非'受益者'——自研智驾团队+深蓝/阿维塔搭载华为但非独家，华为智驾不构成长安的投资主题"
+    upgrade_triggers: null
+    quarantine: "长安有自研智驾团队(陶吉)，华为仅是供应商之一，非深度绑定"
+cluster_tags:
+  - 华为智驾生态
+  - 软硬一体
+  - ADS
+  - 鸿蒙智行
+  - 引望
+  - 智驾平权

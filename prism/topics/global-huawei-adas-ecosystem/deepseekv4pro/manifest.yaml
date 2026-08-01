@@ -1,0 +1,749 @@
+slug: global-huawei-adas-ecosystem
+variant: deepseekv4pro
+updated: '2026-07-31T13:07:22.749284+00:00'
+materials:
+- id: mat-3fdd1c
+  filename: 2026-07-31_引望半年营收破百亿-估值1150亿-华为套现230亿.md
+  source_type: web-search
+  added: '2026-07-31T10:06:45.830189+00:00'
+  processed: false
+  notes: query='引望 分拆 IPO 2026 最新进展 估值 战投'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 引望 分拆 IPO 2026 最新进展 估值 战投
+    url: https://stcn.com/article/detail/1298551.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-31T10:06:45.829487+00:00'
+    stale_at: '2026-08-30T10:06:45.829487+00:00'
+    expire_at: '2026-10-29T10:06:45.829487+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-11fa39
+  filename: 2026-07-31_赛力斯2025年报-归母净利59-57亿微增-问界交付42-6万辆.md
+  source_type: web-search
+  added: '2026-07-31T10:06:45.833731+00:00'
+  processed: false
+  notes: query='赛力斯 2025年报 2026Q1 问界 营收 毛利率 净利'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 赛力斯 2025年报 2026Q1 问界 营收 毛利率 净利
+    url: https://wallstreetcn.com/articles/3768736
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-07-31T10:06:45.832765+00:00'
+    stale_at: '2026-08-30T10:06:45.832765+00:00'
+    expire_at: '2026-10-29T10:06:45.832765+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-18eb95
+  filename: 2026-07-31_华为乾崑亮剑2026-ads5-l3智驾-170万辆搭载.md
+  source_type: web-search
+  added: '2026-07-31T10:08:36.030825+00:00'
+  processed: false
+  notes: query='华为乾崑 ADS 2026年 搭载量 累计 合作品牌' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为乾崑 ADS 2026年 搭载量 累计 合作品牌
+    url: https://auto.ifeng.com/c/8sZCISinEcm
+    domain: auto.ifeng.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:08:36.029166+00:00'
+    stale_at: '2026-08-30T10:08:36.029166+00:00'
+    expire_at: '2026-10-29T10:08:36.029166+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-93029d
+  filename: 2026-07-31_2026华为乾崑技术大会官方.md
+  source_type: web-search
+  added: '2026-07-31T10:08:36.036062+00:00'
+  processed: false
+  notes: query='华为乾崑 ADS 2026年 搭载量 累计 合作品牌' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为乾崑 ADS 2026年 搭载量 累计 合作品牌
+    url: https://auto.huawei.com/cn/news/2026/2026-04-23-jishu
+    domain: auto.huawei.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:08:36.034551+00:00'
+    stale_at: '2026-08-30T10:08:36.034551+00:00'
+    expire_at: '2026-10-29T10:08:36.034551+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-07c880
+  filename: 2026-07-31_同价1-2万-比亚迪天神之眼vs华为乾崑ads.md
+  source_type: web-search
+  added: '2026-07-31T10:08:36.045633+00:00'
+  processed: false
+  notes: query='华为乾崑 NOA 市场份额 2026 比亚迪天神之眼 对比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为乾崑 NOA 市场份额 2026 比亚迪天神之眼 对比
+    url: https://www.qichejingwei.com/article-24968.html
+    domain: qichejingwei.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:08:36.043755+00:00'
+    stale_at: '2026-08-30T10:08:36.043755+00:00'
+    expire_at: '2026-10-29T10:08:36.043755+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ccc593
+  filename: 2026-07-31_2026智驾品牌封神榜4大梯队.md
+  source_type: web-search
+  added: '2026-07-31T10:08:36.052213+00:00'
+  processed: false
+  notes: query='华为乾崑 NOA 市场份额 2026 比亚迪天神之眼 对比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为乾崑 NOA 市场份额 2026 比亚迪天神之眼 对比
+    url: https://auto.sina.cn/2026-07-17/detail-iniicqkx8237752.d.html
+    domain: auto.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:08:36.050044+00:00'
+    stale_at: '2026-08-30T10:08:36.050044+00:00'
+    expire_at: '2026-10-29T10:08:36.050044+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bb2914
+  filename: 2026-07-31_北汽蓝谷2025及2026q1营收销量显著增长.md
+  source_type: web-search
+  added: '2026-07-31T10:08:36.063708+00:00'
+  processed: false
+  notes: query='北汽蓝谷 2025年报 2026Q1 享界 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北汽蓝谷 2025年报 2026Q1 享界 营收
+    url: https://auto.ifeng.com/c/8sa4grQKDGn
+    domain: auto.ifeng.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:08:36.061067+00:00'
+    stale_at: '2026-08-30T10:08:36.061067+00:00'
+    expire_at: '2026-10-29T10:08:36.061067+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-de7fc4
+  filename: 2026-07-31_北汽蓝谷上半年经营全面向好.md
+  source_type: web-search
+  added: '2026-07-31T10:08:36.071971+00:00'
+  processed: false
+  notes: query='北汽蓝谷 2025年报 2026Q1 享界 营收' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北汽蓝谷 2025年报 2026Q1 享界 营收
+    url: http://www.news.cn/auto/20250715/b70b1ed6f31849d397a7dd02ae2b5e39/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:08:36.069134+00:00'
+    stale_at: '2026-08-30T10:08:36.069134+00:00'
+    expire_at: '2026-10-29T10:08:36.069134+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-5bb5df
+  filename: 2026-07-31_引望估值1150亿人民币-ipo浮现.md
+  source_type: web-search
+  added: '2026-07-31T10:08:50.039738+00:00'
+  processed: true
+  notes: query='引望 分拆 IPO 2026 最新进展 估值 战投' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 平安证券 引望 估值 车BU 博世 营收 1275亿
+    url: https://hk.finance.yahoo.com/news/華為引望獲長安大手筆入股後估值達1150億人民幣-073209878.html
+    domain: hk.finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T13:00:02.571451+00:00'
+    stale_at: '2026-08-30T13:00:02.571451+00:00'
+    expire_at: '2026-10-29T13:00:02.571451+00:00'
+    triggered_by: 01-deep-fetch
+    prev_queries:
+    - 引望 分拆 IPO 2026 最新进展 估值 战投
+- id: mat-288238
+  filename: 2026-07-31_赛力斯2025年报-营收1650-5亿-净利59-6亿.md
+  source_type: web-search
+  added: '2026-07-31T10:08:50.055115+00:00'
+  processed: false
+  notes: query='赛力斯 2025年报 2026Q1 问界 营收 毛利率 净利' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 赛力斯 2025年报 2026Q1 问界 营收 毛利率 净利
+    url: http://www.news.cn/auto/20260331/34e17aaafff94d498b9448745fba4157/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:08:50.050942+00:00'
+    stale_at: '2026-08-30T10:08:50.050942+00:00'
+    expire_at: '2026-10-29T10:08:50.050942+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ae6f5c
+  filename: 2026-07-31_2026华为乾崑技术大会-ads5发布-wewa2-0-ai智能体.md
+  source_type: web-search
+  added: '2026-07-31T10:10:24.181395+00:00'
+  processed: false
+  notes: query='ADS 5.0 WEWA 2.0 发布 2026 华为智驾' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ADS 5.0 WEWA 2.0 发布 2026 华为智驾
+    url: http://jjckb.xinhuanet.com/20260423/f81887c97a5a49a780f0584d6861f97e/c.html
+    domain: jjckb.xinhuanet.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:10:24.177162+00:00'
+    stale_at: '2026-08-30T10:10:24.177162+00:00'
+    expire_at: '2026-10-29T10:10:24.177162+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ffc4aa
+  filename: 2026-07-31_华为乾崑ads5-从辅助驾驶到ai智能体.md
+  source_type: web-search
+  added: '2026-07-31T10:10:24.194051+00:00'
+  processed: false
+  notes: query='ADS 5.0 WEWA 2.0 发布 2026 华为智驾' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ADS 5.0 WEWA 2.0 发布 2026 华为智驾
+    url: https://news.qq.com/rain/a/20260426A05GHZ00
+    domain: news.qq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:10:24.189796+00:00'
+    stale_at: '2026-08-30T10:10:24.189796+00:00'
+    expire_at: '2026-10-29T10:10:24.189796+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-17dd53
+  filename: 2026-07-31_东吴证券-2026年智驾平权之车企智驾方案梳理.md
+  source_type: web-search
+  added: '2026-07-31T10:10:24.211956+00:00'
+  processed: true
+  notes: query='余承东 华为车BU 2026 智驾 最新 战略' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为自研激光雷达 外供 禾赛 速腾聚创
+    url: https://pdf.dfcfw.com/pdf/H3_AP202603041820272147_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:20:34.041529+00:00'
+    stale_at: '2026-08-30T10:20:34.041529+00:00'
+    expire_at: '2026-10-29T10:20:34.041529+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 余承东 华为车BU 2026 智驾 最新 战略
+- id: mat-9ae550
+  filename: 2026-07-31_华为乾崑ads四大方案量产落地-细分市场智驾竞争格局.md
+  source_type: web-search
+  added: '2026-07-31T10:10:24.232402+00:00'
+  processed: true
+  notes: query='东风岚图 阿维塔 华为ADS 2026 新定点 第三方客户' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Mobileye 被替代 软硬一体 纯软 历史 case study
+    url: https://m.gasgoo.com/news/70452943.html
+    domain: m.gasgoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:20:34.101244+00:00'
+    stale_at: '2026-08-30T10:20:34.101244+00:00'
+    expire_at: '2026-10-29T10:20:34.101244+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 东风岚图 阿维塔 华为ADS 2026 新定点 第三方客户
+    - 华为 ADS SE Pro Max Ultra 四档 功能 硬件 价格 2026
+- id: mat-ecaea2
+  filename: 2026-07-31_特斯拉官宣fsd入华-2026年5月正式上线10国含中国.md
+  source_type: web-search
+  added: '2026-07-31T10:10:24.252601+00:00'
+  processed: false
+  notes: query='Tesla FSD 中国 入华 2026 获批 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla FSD 中国 入华 2026 获批 进展
+    url: https://nev.ofweek.com/2026-05/ART-77015-8110-30688132.html
+    domain: nev.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:10:24.246878+00:00'
+    stale_at: '2026-08-30T10:10:24.246878+00:00'
+    expire_at: '2026-10-29T10:10:24.246878+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-1d0c22
+  filename: 2026-07-31_马斯克-fsd预计2026年2-3月获中国全面批准.md
+  source_type: web-search
+  added: '2026-07-31T10:10:24.271065+00:00'
+  processed: false
+  notes: query='Tesla FSD 中国 入华 2026 获批 进展' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tesla FSD 中国 入华 2026 获批 进展
+    url: https://finance.sina.com.cn/stock/marketresearch/2025-11-07/doc-infwqerv2530720.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:10:24.264650+00:00'
+    stale_at: '2026-08-30T10:10:24.264650+00:00'
+    expire_at: '2026-10-29T10:10:24.264650+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-4ec974
+  filename: 2026-07-31_鸿蒙智行2026年五界争雄-130-220万辆目标.md
+  source_type: web-search
+  added: '2026-07-31T10:10:24.293515+00:00'
+  processed: false
+  notes: query='鸿蒙智行 2026 月销量 问界 M7 M9 智界 享界 尊界' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 鸿蒙智行 2026 月销量 问界 M7 M9 智界 享界 尊界
+    url: http://auto.anhuinews.com/rdzx/202512/t20251225_8996477.html
+    domain: auto.anhuinews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:10:24.287027+00:00'
+    stale_at: '2026-08-30T10:10:24.287027+00:00'
+    expire_at: '2026-10-29T10:10:24.287027+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c8126c
+  filename: 2026-07-31_momenta通过港交所聆讯-拟募10亿美元-千亿估值-物理ai第一股.md
+  source_type: web-search
+  added: '2026-07-31T10:11:23.963313+00:00'
+  processed: false
+  notes: query='Momenta IPO 2026 估值 智能驾驶' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta IPO 2026 估值 智能驾驶
+    url: https://m.cls.cn/detail/2406484
+    domain: m.cls.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:11:23.955493+00:00'
+    stale_at: '2026-08-30T10:11:23.955493+00:00'
+    expire_at: '2026-10-29T10:11:23.955493+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8981d7
+  filename: 2026-07-31_momenta千亿估值投石问路-地平线对比858亿人民币.md
+  source_type: web-search
+  added: '2026-07-31T10:11:23.982526+00:00'
+  processed: false
+  notes: query='Momenta IPO 2026 估值 智能驾驶' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Momenta IPO 2026 估值 智能驾驶
+    url: https://finance.sina.com.cn/stock/zqgd/2026-03-26/doc-inhsikav8954678.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:11:23.975226+00:00'
+    stale_at: '2026-08-30T10:11:23.975226+00:00'
+    expire_at: '2026-10-29T10:11:23.975226+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-eba452
+  filename: 2026-07-31_2026年智能网联汽车行业深度分析报告-华为智选车全图谱.md
+  source_type: web-search
+  added: '2026-07-31T10:11:24.008239+00:00'
+  processed: false
+  notes: query='华为智驾 出海 2026 欧洲 东南亚 搭载量' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 华为智驾 出海 2026 欧洲 东南亚 搭载量
+    url: https://pdf.dfcfw.com/pdf/H3_AP202605281822944695_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:11:24.001030+00:00'
+    stale_at: '2026-08-30T10:11:24.001030+00:00'
+    expire_at: '2026-10-29T10:11:24.001030+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ae251f
+  filename: 2026-07-31_2026年中国自动驾驶行业发展现状及趋势.md
+  source_type: web-search
+  added: '2026-07-31T10:12:00.634669+00:00'
+  processed: false
+  notes: query='2026年 智能驾驶 政策 准入 竞争格局 市场份额' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 2026年 智能驾驶 政策 准入 竞争格局 市场份额
+    url: https://huaon.com/channel/auto/1164991.html
+    domain: huaon.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:12:00.625619+00:00'
+    stale_at: '2026-08-30T10:12:00.625619+00:00'
+    expire_at: '2026-10-29T10:12:00.625619+00:00'
+    triggered_by: 00-prescan
+- id: mat-9183f3
+  filename: 2025_601127_annual_2026-03-30_赛力斯.PDF
+  source_type: annual-report
+  added: '2026-07-31T10:15:29.767971+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 赛力斯
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-4bb3c6
+  filename: 2026_601127_quarterly_2026-04-29_赛力斯.PDF
+  source_type: quarterly-report
+  added: '2026-07-31T10:15:30.373918+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 赛力斯
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-53342d
+  filename: 2025_600733_annual_2026-04-23_北汽蓝谷.PDF
+  source_type: annual-report
+  added: '2026-07-31T10:15:30.796462+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 北汽蓝谷
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-87fa43
+  filename: 2026_600733_quarterly_2026-04-23_北汽蓝谷.PDF
+  source_type: quarterly-report
+  added: '2026-07-31T10:15:31.158385+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 北汽蓝谷
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+- id: mat-27b90e
+  filename: 2025_HK09660_annual_2026-04-30_HORIZONROBOT-W.pdf
+  source_type: annual-report
+  added: '2026-07-31T10:15:42.164704+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — HORIZONROBOT-W
+  mineru_state: not_needed
+  rings:
+  - peer-comparison-financials
+  - peer-valuation-anchor
+- id: mat-119215
+  filename: 2026-07-31_华为乾崑智驾高阶包涨价至1-5万元.md
+  source_type: web-search
+  added: '2026-07-31T10:17:31.351529+00:00'
+  processed: true
+  notes: query='华为 ADS SE Pro Max Ultra 四档 功能 硬件 价格 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: 华为 ADS SE Pro Max Ultra 四档 功能 硬件 价格 2026
+    url: https://auto.news18a.com/article/14524.html
+    domain: auto.news18a.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:17:31.342586+00:00'
+    stale_at: '2026-08-30T10:17:31.342586+00:00'
+    expire_at: '2026-10-29T10:17:31.342586+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e562ee
+  filename: 2026-07-31_引望智能回应-今年下半年上市-传闻-假消息.md
+  source_type: web-search
+  added: '2026-07-31T10:17:31.385780+00:00'
+  processed: true
+  notes: query='引望 IPO 时间表 2026 战投 上市进展 华为车BU' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 引望 IPO 时间表 2026 战投 上市进展 华为车BU
+    url: https://finance.sina.com.cn/tech/roll/2026-07-15/doc-inftxmct7295477.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:17:31.375434+00:00'
+    stale_at: '2026-08-30T10:17:31.375434+00:00'
+    expire_at: '2026-10-29T10:17:31.375434+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-584c89
+  filename: 2026-07-31_阿维塔深绑华为引望再闯港股.md
+  source_type: web-search
+  added: '2026-07-31T10:17:31.414704+00:00'
+  processed: true
+  notes: query='引望 IPO 时间表 2026 战投 上市进展 华为车BU' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 引望 IPO 时间表 2026 战投 上市进展 华为车BU
+    url: https://stcn.com/article/detail/1319933.html
+    domain: stcn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:17:31.405084+00:00'
+    stale_at: '2026-08-30T10:17:31.405084+00:00'
+    expire_at: '2026-10-29T10:17:31.405084+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-671a12
+  filename: 2026-07-31_momenta通过港交所聆讯-推动物理ai技术走向新突破.md
+  source_type: web-search
+  added: '2026-07-31T10:17:31.457508+00:00'
+  processed: true
+  notes: query='Momenta 港交所 聆讯 招股书 财务数据 2026 IPO' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Momenta 港交所 聆讯 招股书 财务数据 2026 IPO
+    url: http://www.news.cn/fortune/20260623/c13b2e59ba9a40bc81111e6bc86e3aab/c.html
+    domain: news.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:17:31.445003+00:00'
+    stale_at: '2026-08-30T10:17:31.445003+00:00'
+    expire_at: '2026-10-29T10:17:31.445003+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-78c699
+  filename: 2026-07-31_momenta港交所上市文件-聆听后资料集.md
+  source_type: web-search
+  added: '2026-07-31T10:17:31.488254+00:00'
+  processed: true
+  notes: query='Momenta 港交所 聆讯 招股书 财务数据 2026 IPO' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Momenta 港交所 聆讯 招股书 财务数据 2026 IPO
+    url: https://www1.hkexnews.hk/app/sehk/2026/106912/documents/sehk25061900124_c.pdf
+    domain: www1.hkexnews.hk
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:17:31.478024+00:00'
+    stale_at: '2026-08-30T10:17:31.478024+00:00'
+    expire_at: '2026-10-29T10:17:31.478024+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-d8c4f3
+  filename: 2026-07-31_鸿蒙智行6月各车型销量出炉-问界m9重返50万价位销冠.md
+  source_type: web-search
+  added: '2026-07-31T10:17:31.526504+00:00'
+  processed: true
+  notes: query='问界 M9 M8 M7 M6 月销量 2026 鸿蒙智行' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 问界 M9 M8 M7 M6 月销量 2026 鸿蒙智行
+    url: https://finance.sina.com.cn/tech/roll/2026-07-09/doc-inftxqiy7254128.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:17:31.515229+00:00'
+    stale_at: '2026-08-30T10:17:31.515229+00:00'
+    expire_at: '2026-10-29T10:17:31.515229+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-47887c
+  filename: 2026-07-31_华为不造车往事-一周两场发布会-不造车-的华为把汽车生态越做越大.md
+  source_type: web-search
+  added: '2026-07-31T10:17:31.565554+00:00'
+  processed: true
+  notes: query='余承东 华为车业务 2026 最新 战略 发布会 不造车' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 余承东 华为车业务 2026 最新 战略 发布会 不造车
+    url: https://auto-time.36kr.com/p/4081568049277440
+    domain: auto-time.36kr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:17:31.554476+00:00'
+    stale_at: '2026-08-30T10:17:31.554476+00:00'
+    expire_at: '2026-10-29T10:17:31.554476+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c218da
+  filename: 2026-07-31_当技术不再-独宠-谁在稀释鸿蒙智行.md
+  source_type: web-search
+  added: '2026-07-31T10:17:31.601438+00:00'
+  processed: true
+  notes: query='余承东 华为车业务 2026 最新 战略 发布会 不造车' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: 余承东 华为车业务 2026 最新 战略 发布会 不造车
+    url: https://nev.ofweek.com/2026-07/ART-77015-8310-30693921.html
+    domain: nev.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:17:31.589519+00:00'
+    stale_at: '2026-08-30T10:17:31.589519+00:00'
+    expire_at: '2026-10-29T10:17:31.589519+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b6421c
+  filename: 2026-07-31_东吴证券-赛力斯2026q1点评-下修净利至71-85-110亿.md
+  source_type: web-search
+  added: '2026-07-31T10:18:07.252057+00:00'
+  processed: true
+  notes: query='赛力斯 北汽蓝谷 A股一致预期 盈利预测 2026-2028' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 赛力斯 北汽蓝谷 A股一致预期 盈利预测 2026-2028
+    url: https://pdf.dfcfw.com/pdf/H3_AP202604301821804192_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:18:07.240227+00:00'
+    stale_at: '2026-08-30T10:18:07.240227+00:00'
+    expire_at: '2026-10-29T10:18:07.240227+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-6cde9c
+  filename: 2026-07-31_赛力斯2026年半年度业绩预亏公告-预亏15-18亿元.md
+  source_type: web-search
+  added: '2026-07-31T10:18:07.286225+00:00'
+  processed: true
+  notes: query='赛力斯 北汽蓝谷 A股一致预期 盈利预测 2026-2028' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 赛力斯 北汽蓝谷 A股一致预期 盈利预测 2026-2028
+    url: https://stockmc.xueqiu.com/202607/601127_20260713_610V.pdf
+    domain: stockmc.xueqiu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:18:07.274506+00:00'
+    stale_at: '2026-08-30T10:18:07.274506+00:00'
+    expire_at: '2026-10-29T10:18:07.274506+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-a445b1
+  filename: 2026-07-31_北汽蓝谷2026h1预亏17-7-19-7亿元.md
+  source_type: web-search
+  added: '2026-07-31T10:18:07.323232+00:00'
+  processed: true
+  notes: query='赛力斯 北汽蓝谷 A股一致预期 盈利预测 2026-2028' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 赛力斯 北汽蓝谷 A股一致预期 盈利预测 2026-2028
+    url: https://www.chnfund.com/article/6fc2f233-2c0a-2df3-c556-3a22bfa25416
+    domain: chnfund.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:18:07.310645+00:00'
+    stale_at: '2026-08-30T10:18:07.310645+00:00'
+    expire_at: '2026-10-29T10:18:07.310645+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e69f57
+  filename: 2026-07-31_东吴证券-北汽蓝谷2月销量稳健-2026e净利-14亿-2027e-14亿.md
+  source_type: web-search
+  added: '2026-07-31T10:18:07.360643+00:00'
+  processed: true
+  notes: query='赛力斯 北汽蓝谷 A股一致预期 盈利预测 2026-2028' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 赛力斯 北汽蓝谷 A股一致预期 盈利预测 2026-2028
+    url: https://pdf.dfcfw.com/pdf/H3_AP202603021820199684_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:18:07.347458+00:00'
+    stale_at: '2026-08-30T10:18:07.347458+00:00'
+    expire_at: '2026-10-29T10:18:07.347458+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-566645
+  filename: 2026-07-31_告别大疆两年后-估值超百亿的-价格屠夫-冲刺ipo.md
+  source_type: web-search
+  added: '2026-07-31T10:19:38.419234+00:00'
+  processed: true
+  notes: query='大疆车载 卓驭 2026 纯视觉 智驾 铺货量 定价' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 大疆车载 卓驭 2026 纯视觉 智驾 铺货量 定价
+    url: https://m.36kr.com/p/4081568049277440
+    domain: m.36kr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:19:38.406355+00:00'
+    stale_at: '2026-08-30T10:19:38.406355+00:00'
+    expire_at: '2026-10-29T10:19:38.406355+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-603822
+  filename: 2026-07-31_城市noa哪家强-特斯拉-小鹏-华为ads-3-0实测对比.md
+  source_type: web-search
+  added: '2026-07-31T10:19:38.464676+00:00'
+  processed: true
+  notes: query='FSD 中国 华为 ADS 对比 车主 真实体验 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: FSD 中国 华为 ADS 对比 车主 真实体验 2026
+    url: https://k.sina.com.cn/article_7857386594_1d14ada6200100yl0d.html
+    domain: k.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:19:38.451891+00:00'
+    stale_at: '2026-08-30T10:19:38.451891+00:00'
+    expire_at: '2026-10-29T10:19:38.451891+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-377ac9
+  filename: 2026-07-31_市值仅差18亿-地平线机器人与momenta贴身肉搏.md
+  source_type: web-search
+  added: '2026-07-31T10:19:38.512895+00:00'
+  processed: true
+  notes: query='华为引望 估值 平安证券 可比 地平线 Momenta SOTP' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: 华为引望 估值 平安证券 可比 地平线 Momenta SOTP
+    url: https://tmtpost.com/7351265.html
+    domain: tmtpost.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-07-31T10:19:38.498644+00:00'
+    stale_at: '2026-08-30T10:19:38.498644+00:00'
+    expire_at: '2026-10-29T10:19:38.498644+00:00'
+    triggered_by: 00-deep-fetch
