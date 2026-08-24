@@ -2,7 +2,7 @@
 
 本地运行的 LLM 驱动投资研究系统。对**行业 / 竞技场 / 公司**开展结构化研究，产出单份决策链 case + 配套 sidecar，可在 `/prism` 查看。
 
-- 设计文档：[`DESIGN.md`](./DESIGN.md) · [`docs/architecture/prism-design.md`](./docs/architecture/prism-design.md)
+- 设计文档：[`DESIGN.md`](./DESIGN.md)（概览） · [`prism/DESIGN.md`](./prism/DESIGN.md)（内部细节 · 权威版）
 - 使用手册：[`docs/USER-GUIDE-PRISM.md`](./docs/USER-GUIDE-PRISM.md)
 - 开发指南：[`docs/DEVELOPER-GUIDE.md`](./docs/DEVELOPER-GUIDE.md)
 - 工作流（Claude skill）：`.claude/skills/prism/`

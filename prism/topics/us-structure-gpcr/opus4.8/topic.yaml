@@ -114,8 +114,8 @@ outputs_state:
     - mat-f5d5a3
     last_error: null
   08_living_feed:
-    version: 3
-    last_updated: '2026-07-22T10:22:00.012803+00:00'
+    version: 4
+    last_updated: '2026-08-05T21:04:34.399021+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -397,3 +397,9 @@ stage_history:
     uncovered_ring_inputs: []
     autofetch_debt: 0
     empty_pending_decision: 3
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.412637+00:00'
+  reason: 依赖的『关注实际利率方向（下行利好长久期biotech）』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  proposal_id: 3efcc8aa9f62
+  locator: rates_us

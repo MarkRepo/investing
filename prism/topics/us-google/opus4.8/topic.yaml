@@ -91,8 +91,8 @@ outputs_state:
     - mat-f9e6cc
     last_error: null
   08_living_feed:
-    version: 4
-    last_updated: '2026-07-23T14:34:35.364954+00:00'
+    version: 5
+    last_updated: '2026-08-05T21:04:34.286571+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -495,3 +495,9 @@ prescan_log:
   queries_run: 8
   queries_with_hits: 8
   failure_reason: 01-prescan L4槽全由同日(Q2财报次日)00/01 deep-fetch K#料覆盖，log-skip-covered
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.301288+00:00'
+  reason: 依赖的『fed funds 3.75%、长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  proposal_id: c30e56307ae4
+  locator: rates_us

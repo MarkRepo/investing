@@ -124,8 +124,8 @@ outputs_state:
     - mat-f5b19a
     last_error: null
   08_living_feed:
-    version: 3
-    last_updated: '2026-07-19T09:58:59.848433+00:00'
+    version: 5
+    last_updated: '2026-08-05T21:04:34.564284+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
@@ -481,3 +481,9 @@ stage_history:
     - bull-bear
     autofetch_debt: 0
     empty_pending_decision: 0
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.578722+00:00'
+  reason: 依赖的『企稳偏弱（弱美元利好美元计价银锡）』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+    v3→v4)
+  proposal_id: 68f2788369cf
+  locator: fx_cny

@@ -1,0 +1,15 @@
+as_of_regime_version: 4
+regime_composite: 'Q2 2026: 降息临近但未加速;HOOD对贴现率/风险偏好高beta(2.29),对利率久期短(<1yr)但NII顺周期,预测市场增长引擎对监管政策敏感'
+depends_on_states:
+- conclusion: rates_us
+  state: 降息路径未定,每25bp≈-$76M税前营收;Q2 NII+9%靠margin book+127%以量补价
+  role: confirming
+- conclusion: risk_appetite
+  state: 高beta(2.29),风险偏好退潮时倍数(PE39)第一个被杀
+  role: load_bearing
+discount_rate: null
+slug: us-robinhood
+variant: opus4.8
+stamped_at: '2026-08-05T21:22:28.477705+00:00'
+stale: false
+stale_reason: null

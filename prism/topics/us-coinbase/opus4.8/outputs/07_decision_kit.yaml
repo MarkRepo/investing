@@ -3,57 +3,57 @@ variant: opus4.8
 topic_type: company
 display_name: Coinbase (COIN, NASDAQ)
 ticker: US_COIN
-generated: 2026-07-15T00:00:00Z
-data_freshness: 2026-07-14
+generated: 2026-08-03T00:00:00Z
+data_freshness: 2026-07-31
 
 buy_box:
-  strong_buy_max: 110
-  accumulate_min: 90
-  accumulate_max: 130
-  hold_min: 130
-  hold_max: 210
-  current_price: 159.5
-  price_as_of: 2026-07-14
-  current_zone: observe_rich
-  ev_breakeven_price: 153
-  note: 三评+资产负债表桥后按 SOTP 混合经营倍数~17x + 净现金$3B+BTC持仓$1.6B+股权+Base/Deribit期权，base~$135-145(中枢~$140)；现价 $159.5 高于 base ~9~14%、EV −4% → 略贵/观望。EV 盈亏平衡 ~$153，真安全边际 ≤$120-130(+18~40%)，强力买 ≤$110(+40%)。⚠️股数(266M/300M)±$15、BTC折价±$5，base 为区间。
+  strong_buy_max: 105
+  accumulate_min: 85
+  accumulate_max: 125
+  hold_min: 125
+  hold_max: 200
+  current_price: 146.26
+  price_as_of: 2026-07-31
+  current_zone: observe_fair
+  ev_breakeven_price: 145
+  note: Q2'26后按 SOTP 混合经营倍数~16.5x($1.6B正常化经营净利,S&S侵蚀下修) + 净现金$2.7B+BTC持仓$1.47B+战略股权$0.84B+Base/Deribit期权$4B，base~$125-140(中枢~$132)；现价 $146.26 高于 base ~10%、EV ~+1% → ≈公允/观望。概率加权目标价 ~$148≈现价。EV 盈亏平衡 ~$145，真安全边际 ≤$115-125(+12~25%)，强力买 ≤$105(+40%)。⚠️股数264M(全稀释~285M)±$10、正常化盈利$1.4-1.8B±$12，base 为区间。
 
 position_framework:
   position_tier: 试探
-  sizing_rationale: 估值方法=SOTP混合经营倍数(~17x)+资产负债表桥(净现金$3B+BTC持仓$1.6B+Circle/战略股权$0.9B+Base/Deribit期权$4B，漏加~$2.5B补回)。base $120-140→$135-145(中枢~$140)。现价 $159.5 高于 base ~9~14%、EV −4% → 现价不建仓(略贵/观望)。thesis 5/10(中性偏谨慎，方向未翻空)。主力仓位等 ≤$110(EV+40%)，逢低吸纳 ≤$120-130。K1缓冲垫/K3已price-in/K4 take rate独立非周期未解/beta 3.35。
+  sizing_rationale: 估值方法=SOTP混合经营倍数(~16.5x·正常化经营净利$1.6B,Q2后因S&S连2季同比负下修)+资产负债表桥(净现金$2.7B+BTC$1.47B+战略股权$0.84B+Base/Deribit期权$4B)。base $135-145→$125-140(中枢~$132)。现价 $146.26 高于 base ~10%、EV ~+1% → 现价不建仓(≈公允/观望)。thesis 5/10(中性偏谨慎,方向未翻空,重构为纯周期高beta加密期权+份额赢家)。主力仓位等 ≤$105(EV+40%),逢低吸纳 ≤$115-125。K1红灯已翻(S&S非抗周期支柱)/K3未触底/K4 take rate独立未解/beta高。
   initial_max_pct: null
   full_max_pct: 5
-  add_ladder_prices: [90, 100, 110]
+  add_ladder_prices: [85, 95, 105]
   max_cluster_pct: null
 
 valuation_models:
   - name: sotp_operating_pe_plus_balance_sheet
-    label: SOTP 经营 PE ~17x($1.75B) + 资产负债表桥(净现金+BTC持仓+股权+Base/Deribit期权)（主模型·杠铃）
+    label: SOTP 经营 PE ~16.5x($1.6B,S&S侵蚀下修) + 资产负债表桥(净现金$2.7B+BTC$1.47B+战略股权+Base/Deribit期权)（主模型·杠铃）
     bull_fair_value: [300, 300]
-    base_fair_value: [137, 137]
-    bear_fair_value: [60, 70]
+    base_fair_value: [132, 132]
+    bear_fair_value: [60, 60]
   - name: ev_ebitda_blended_plus_bridge
-    label: EV/EBITDA 混合(base 13x) + 净现金/金融资产桥
+    label: EV/EBITDA 混合(base 13x·经营EBITDA$2.3B) + 净现金/金融资产桥
     bull_fair_value: [322, 322]
-    base_fair_value: [137, 137]
-    bear_fair_value: [56, 56]
+    base_fair_value: [131, 131]
+    bear_fair_value: [57, 57]
   - name: ps_cross_section
-    label: P/S 同业横截面(base 6x≈现价·PS已隐含整体口径；COIN 6.69 已 ≥ CRCL 5.86)
-    bull_fair_value: [368, 368]
-    base_fair_value: [147, 147]
-    bear_fair_value: [77, 77]
+    label: P/S 同业横截面(base 6x≈现价·PS已隐含整体口径；COIN 6.38 ≈ CRCL 5.85)
+    bull_fair_value: [375, 375]
+    base_fair_value: [146, 146]
+    bear_fair_value: [76, 76]
 
 kill_criteria:
   - id: k1_ss_floor_break
-    description: 黄灯已亮(Q1'26 S&S 绝对额单季 -14%)；红灯翻牌=Q2'26 财报 S&S 绝对额再度同比负增长(连续2季)，坐实 S&S 是斜坡非地板→下修 base 退出
-    status: pending
+    description: 【已触发·翻红灯】Q2'26 S&S $555M vs Q2'25 $632M=−12% Y/Y，Q1'26 亦 −13.6% Y/Y→连2季同比负，坐实 S&S 是斜坡非地板(根因降息压缩USDC利息)→已下修base、移除S&S抗周期支柱。解除条件=利率企稳后S&S重回正增长
+    status: triggered
     check_at: 2026-07-30
   - id: k2_yield_ban_closes_hole
     description: GENIUS/CLARITY 最终细则把"分销方返奖/间接收益"并入禁令口径，补上 Coinbase-shaped hole
     status: pending
     check_at: 2026
   - id: k4_take_rate_structural_erosion
-    description: consumer-only 费率(Consumer交易收入÷Consumer交易量,本季1.575%)连续2季下滑且非用户主动迁向Advanced/One可解释
+    description: consumer-only 费率(Consumer交易收入÷Consumer交易量,Q2'26约1.575%)连续2季下滑且非用户主动迁向Advanced/One可解释
     status: pending
     check_at: 2026-Q4
   - id: cycle_double_dip
@@ -62,18 +62,18 @@ kill_criteria:
     check_at: 2026-Q4
 
 signposts:
-  - date: 2026-07-30
-    event: Q2'26 财报（K1 决胜点）
-    bull_signal: S&S 绝对额恢复正增长且占比升、交易量触底回升、Deribit 完整季度放量、亏损收窄/转正
-    bear_signal: S&S 绝对额再度负增长(K1红灯)、交易量二次探底、续亏扩大、consumer 费率下滑
+  - date: 2026-10
+    event: Q3'26 财报（下一决胜点·K1红灯能否解除）
+    bull_signal: S&S 随利率企稳止跌回升、交易量触底、砍成本后经营杠杆兑现、Deribit/预测市场放量
+    bear_signal: S&S 连第4季降、交易量二次探底、Adj净利续亏扩大、consumer 费率下滑
   - date: 2026
     event: CLARITY Act 参议院最终文本 + GENIUS 实施细则终稿
     bull_signal: 明确保住分销方 rewards 链条（Coinbase-shaped hole 幸存）
     bear_signal: 把间接收益/分销方返奖并入禁令口径
   - date: 2026
-    event: 美联储利率路径
+    event: 美联储利率路径（regime v4 核心传导）
     bull_signal: 降息提振风险偏好/币价、交易量回暖盖过稳定币息差压缩
-    bear_signal: 深度降息压缩稳定币息差且币价未回暖
+    bear_signal: 深度降息继续压缩稳定币息差且币价未回暖（Q2已现）
   - date: 2026
     event: BTC 价格/全市场交易量周期拐点
     bull_signal: BTC 站稳更高位、全市场成交量回升
@@ -99,12 +99,12 @@ honest_gaps:
     note: K2 收益禁令最终实施细则（NPRM）未定稿，Coinbase-shaped hole 能否幸存悬而未决
 
 market_implied:
-  metric: implied_ev_ebitda_midcycle
-  value: 14
+  metric: normalized_midcycle_adj_ebitda_usd_bn
+  value: 2.8
 
 my_vs_market_delta:
-  metric: implied_ev_ebitda_midcycle
-  my_value: 13
-  delta: "-1x"
-  direction: slightly_rich
-  note: 按 SOTP 混合经营 ~13x EV/EBITDA + 资产负债表桥，base~$140 < 现价$159.5(高~9~14%)、EV −4%；delta 由 v1 的 long +3x 翻为略贵/观望。不翻空仅因 bull 尾部不对称（≤$110 才是正 EV 期权）+ 资产负债表垫底。
+  metric: normalized_midcycle_adj_ebitda_usd_bn
+  my_value: 2.3
+  delta: "-18%"
+  direction: slightly_below
+  note: 真正的承重分歧轴在正常化盈利、不在倍数——双方都用~13x EV/EBITDA(共识维)，但市场13x隐含中周期EBITDA~$2.8B，我因Q2 S&S侵蚀+利率逆风下修到经营~$2.3B(低~18%)。经此下修 base~$132<现价$146(高~10%)、EV~+1%；股价跌8.3%快于锚跌3.3%→由 v5"略贵EV−4%"净改善~5pp到"≈公允"。概率加权目标价$148≈现价。不翻空仅因 franchise份额ATH+bull尾部不对称(≤$105才是厚安全边际)+资产负债表垫底。

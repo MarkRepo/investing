@@ -126,8 +126,8 @@ outputs_state:
     - mat-f18803
     last_error: null
   08_living_feed:
-    version: 1
-    last_updated: '2026-07-01T07:31:46.795784+00:00'
+    version: 2
+    last_updated: '2026-08-05T21:04:34.847114+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -384,3 +384,9 @@ stage_history:
     uncovered_ring_inputs: []
     autofetch_debt: 0
     empty_pending_decision: 0
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.860708+00:00'
+  reason: 依赖的『人民币企稳(favor)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+    v3→v4)
+  proposal_id: 52c5702c9fd2
+  locator: fx_cny

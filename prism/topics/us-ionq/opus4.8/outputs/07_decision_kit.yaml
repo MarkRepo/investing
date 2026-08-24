@@ -3,55 +3,68 @@ variant: opus4.8
 topic_type: company
 display_name: IonQ (IONQ, NYSE)
 ticker: NYSE_IONQ
-generated: 2026-07-27T00:00:00Z
-data_freshness: 2026-Q1
+generated: 2026-08-06T00:00:00Z
+data_freshness: 2026-Q2
 
 buy_box:
-  strong_buy_max: 15
-  accumulate_min: 15
-  accumulate_max: 22
-  hold_min: 22
-  hold_max: 40
-  current_price: 34.52
-  price_as_of: 2026-07-27
+  strong_buy_max: 18
+  accumulate_min: 18
+  accumulate_max: 26
+  hold_min: 26
+  hold_max: 42
+  current_price: 39.93
+  price_as_of: 2026-08-05
   current_zone: hold
 
 position_framework:
   position_tier: 试探
-  sizing_rationale: EV≈0且负偏 + 商业化未证 + 主题股高波动/squeeze尾部 + 管理层资本运作型(环①信任度低)——不具备标准/重仓所需确信度与安全边际
+  sizing_rationale: EV≈+4.3%(上行概率上修4-8pt即达+7~+11%试探做多区,是最敏感杠杆) + 05-critic重写后承认原估值用错尺子(增长尺子模型G地板$23,现价离G-bull $36仅11%) + 盈利质量未证(GM停25%,判成熟vs增长尺子谁对的决定性证据=Q2 10-Q分部毛利待披露) + 主题股高波动/squeeze尾部 + 管理层资本运作型——方向温和看空但edge薄、离转多仅一两个signpost,不建多仓也不裸空
   initial_max_pct: null
   full_max_pct: 2
-  add_ladder_prices: [22, 15, 10]
+  add_ladder_prices: [26, 18, 13]
   max_cluster_pct: 10
 
 valuation_models:
   - name: reverse_multiple_regression
-    label: 成熟倍数回归(可信有机营收×15-30x fwd P/S)
-    bull_fair_value: [15, 19]
-    base_fair_value: [8, 12]
-    bear_fair_value: [3, 5]
+    label: 成熟倍数回归(可信有机营收×15-30x fwd P/S;与B共用成熟尺子·非独立)
+    bull_fair_value: [20, 23]
+    base_fair_value: [11, 13]
+    bear_fair_value: [4, 6]
   - name: base_plus_option
-    label: 基本盘+期权价值拆解(FTQC成功概率10-15%)
-    bull_fair_value: [16, 20]
-    base_fair_value: [9, 13]
-    bear_fair_value: [3, 5]
+    label: 基本盘+期权价值拆解(FTQC成功概率12-18%;基本盘腿与A同尺子)
+    bull_fair_value: [21, 23]
+    base_fair_value: [12, 14]
+    bear_fair_value: [4, 6]
+  - name: rpo_growth_adjusted_floor
+    label: RPO-aware增长调整地板锚(半独立·与A同机器同营收基·G-base≡A-bull;真实贡献=RPO托底bear把地板从$5抬到$11)
+    bull_fair_value: [32, 36]
+    base_fair_value: [22, 24]
+    bear_fair_value: [10, 12]
   - name: peer_cross_section
     label: 同业横截面(主题溢价维持,IONQ相对最便宜)
-    bull_fair_value: [45, 55]
-    base_fair_value: [30, 40]
-    bear_fair_value: [18, 22]
+    bull_fair_value: [55, 60]
+    base_fair_value: [40, 44]
+    bear_fair_value: [22, 26]
 
 kill_criteria:
   - id: logical_qubit_demo
     description: 交付经独立/同行评审的数十逻辑比特below-threshold纠错demo(K3兑现)→kill空头转中性/看多
     status: pending
     check_at: 2027
-  - id: organic_rev_margin_turn
-    description: 剔除并购/一次性后有机经常性商业营收连续两季>$100M年化且毛利率回升(K1/K3兑现)→kill空头
+  - id: gross_margin_floor_falsified
+    description: 【最早证伪点·看空独柱】Q2完整10-Q分部毛利显示Tempo/QCaaS云部署增量毛利健康(>50%)、24.9%整体毛利主因硬件lumpy拖累→"25%是稳态"被证伪、"投资期谷底"被证实→看空唯一承重柱塌,回避翻多。无需等两季数据,最低成本翻案触发
+    status: pending
+    check_at: 2026-Q3
+  - id: organic_margin_quality_turn
+    description: 有机经常性商业营收(剔一次性硬件)连续两季>$120M年化且毛利率回升至35%+(K1质量腿/K3兑现)→kill空头。Q2有机已证高增,焦点转质量能否跟上
     status: pending
     check_at: 2026-Q4
+  - id: skywater_integration
+    description: SkyWater整合顺利+半导体基产能2027 H1如期commissioning→kill空头转看多
+    status: pending
+    check_at: 2027-H1
   - id: big_miss_theme_retreat
-    description: 某季营收大幅miss指引+有机成色坐实差+主题资金退潮(板块ETF转负)+再启大额ATM→转看空/参与做空
+    description: 某季营收大幅miss上调后指引+毛利进一步恶化+主题资金退潮(板块ETF转负)+再启大额ATM→转看空/参与做空
     status: pending
     check_at: 2026-Q3
 
@@ -60,20 +73,26 @@ signposts:
     event: Q2 2026 财报
     bull_signal: 有机拆分佳/毛利率回升/上调FY指引/客户集中度下降
     bear_signal: 有机成色差/毛利续恶化(<24%)/客户更集中/烧钱加速
+    triggered: bull_and_bear_mixed
+    outcome: 有机+132%超100%指引+RPO+297%+上调指引至280-290M(利空看空方);但毛利停24.9%未回升+调整后EBITDA-120.3M翻3倍+(利多看空方)。净效应=看空最强论据(增长靠买)被部分证伪,强度3/10→2/10
+  - date: 2026-Q3
+    event: Q2 2026 完整10-Q(收入disaggregation+分部毛利+客户集中度)
+    bull_signal: QCaaS经常性占比升/分部毛利健康/有机高质量
+    bear_signal: 有机增长全是一次性硬件部署/QCaaS毛利仍低
+    triggered: null
+  - date: 2027-H1
+    event: SkyWater整合+客户commissioning
+    bull_signal: 半导体基产能如期兑现/垂直整合成
+    bear_signal: 跨行业整合受阻/延期/再消耗现金
     triggered: null
   - date: 2026
     event: Quantinuum IPO 定价落地
     bull_signal: '>$20B高估值抬高离子阱板块锚'
     bear_signal: 相近/更低P/S定价+技术公认更强→压制IONQ估值
     triggered: null
-  - date: 2026-Q3
-    event: SkyWater 收购交割
-    bull_signal: 顺利整合/代工产能自主
-    bear_signal: 消耗~$10亿现金+跨行业整合风险
-    triggered: null
   - date: 2026
-    event: 256-比特系统演示
-    bull_signal: 含逻辑比特/纠错系统级实测
+    event: 逻辑比特里程碑/256-比特系统演示
+    bull_signal: 含逻辑比特/纠错系统级独立评审实测
     bear_signal: 仅物理比特单指标/延期
     triggered: null
 
@@ -87,21 +106,22 @@ chain_links:
 
 honest_gaps:
   - ring: 1
-    kind: resolved
-    note: '[已闭合 2026-07-28] FY2025 10-K(mat-e9c3f9)量化坐实:并购占营收~39%(部分年度)/有机~$79M(含一次性硬件)/客户集中度3家=53%/成本+276%vs营收+202%。命门K1从定性升级为量化。'
+    kind: data-missing
+    note: Q2完整10-Q收入disaggregation+分部毛利未出——判"有机132%加速是否高质量(经常性vs一次性硬件)"的最后一块,现成一手件待发布
   - ring: 2
     kind: data-missing
-    note: Quantinuum IPO最终定价未落地,K4估值对标关键变量待补
+    note: Quantinuum IPO最终定价未落地,K4估值对标关键变量待补(post-Q2 consensus已现采:PT $70.71/Moderate Buy,街面仍站主题溢价世界观)
   - ring: 3
     kind: data-missing
-    note: 无独立同行评审的逻辑比特实测,K3技术兑现待验证
+    note: 无独立同行评审的逻辑比特实测+SkyWater整合兑现待验证,K3技术兑现待观察
 
 market_implied:
   metric: implied_fwd_ps
-  value: 54
+  value: 52
 
 my_vs_market_delta:
   metric: implied_fwd_ps
-  my_value: 22
-  delta: -32x
+  my_value: 35
+  delta: -17x
   direction: short
+  note: 重写后用增长调整尺子(模型G 30-40x)而非成熟尺子(15-25x)——delta由原-30x收窄至-17x,即"温和高估~30-40%"而非"该腰斩"。成熟尺子下my_value仍为20/delta-32x,但那把尺子对hypergrowth系统性偏低

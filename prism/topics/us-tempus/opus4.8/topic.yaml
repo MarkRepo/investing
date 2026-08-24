@@ -1,0 +1,353 @@
+slug: us-tempus
+display_name: Tempus AI (TEM, NASDAQ)
+type: company
+created: '2026-08-03T13:46:49.877552+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: Tempus AI (TEM/US/deep)：当前估值下先押偏空——核心命门是 Data & AI 数据业务能否兑现 AI 溢价（还是沦为商品化临床实验室）；Genomics
+    诊断增长真实但盈利路径未证、Ambry 收购摊薄，目标价需 Data 业务 ARR/毛利可持续性验证方可上修。赌买还是卖 + EV + 目标价区间。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_TEM
+  market: US
+  short_name: Tempus AI
+  search_terms:
+  - Tempus AI 数据业务
+  - Genomics 盈利路径
+  - Ambry 整合
+  - AI 溢价估值
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-08-03T15:55:33.646666+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0371dd
+    - mat-037bbf
+    - mat-399d84
+    - mat-3b9cb8
+    - mat-3e977f
+    - mat-573782
+    - mat-788e90
+    - mat-a63418
+    - mat-ac237d
+    - mat-b837e8
+    - mat-bef81d
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-08-03T16:01:35.036362+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0371dd
+    - mat-037bbf
+    - mat-090ecc
+    - mat-198fdd
+    - mat-1b712c
+    - mat-399d84
+    - mat-3b9cb8
+    - mat-3e977f
+    - mat-4067b7
+    - mat-4df4c8
+    - mat-573782
+    - mat-5a2c84
+    - mat-6495e2
+    - mat-775a07
+    - mat-788e90
+    - mat-7a8fc9
+    - mat-a63418
+    - mat-ac237d
+    - mat-b837e8
+    - mat-bef81d
+    - mat-c41324
+    - mat-e9a35e
+    - mat-f29ed2
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-08-03T16:01:35.056235+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0371dd
+    - mat-399d84
+    - mat-3b9cb8
+    - mat-6495e2
+    - mat-a63418
+    last_error: null
+parent_materials: []
+next_actions:
+- 说「prism 推进 us-tempus」走决策链合成（00_primer + c_investment_case + 07_decision_kit）
+user_todos:
+- task: 下载 Tempus 最新年报 10-K (FY2025) + 最新季报 10-Q (Q1/Q2 2026)——分部营收/毛利/现金流/股本
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K3
+  source_hint: SEC EDGAR / investors.tempus.com
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3d8a42
+  - mat-9ad112
+  last_fetch_note: 'SEC: FY2025 10-K + Q2 2026 10-Q 已切 item 落盘'
+- task: 下载 Personalis 收购 8-K/公告 + 交易条款（$1.5B EV、融资方式、股本摊薄）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K3
+  - K5
+  source_hint: SEC 8-K / 2026-07-20 IR 公告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 收购公告(tempus/mobihealthnews/stocktitan)已入库;10-Q含subsequent events;01补全8-K/S-4条款
+- task: 获取 Spruce Point 做空报告全文 + Tempus 公司回应
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: sprucepointcap.com (2025-05-28) + businesswire + 公司 8-K/回应
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 报告源(sprucepointcap)+businesswire+nanalyze复盘+华尔街回应已入库;01可WebFetch
+    PDF全文
+- task: 提取 Data & AI 分部 TCV/backlog 历季时间序列 + 客户集中度 + 有机增速
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 历季财报 deck / earnings call transcript / IR
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3d8a42
+  - mat-9ad112
+  last_fetch_note: 10-K item_8_financial + MD&A + 10-Q 含分部;01补历季deck做时间序列
+- task: 收集 2-3 家券商对 TEM 的深度报告/一致预期（2026/2027 营收、EPS、目标价、评级）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: 券商研报 / MarketBeat/Public 聚合作起点再取一手
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 聚合源(marketbeat/public/simplywall)已入库;01取一手券商深度
+- task: 构建诊断同业估值可比表（Guardant GH / Natera NTRA / Exact EXAS / Caris）EV/Sales + 增速 +
+    毛利
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 各公司财报 + 行情数据
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: GH/NTRA comps(seekingalpha/multiples.vc/GH财报)已入库
+- task: 拆分 Ambry 整合进展：有机 vs 并表增长桥、整合费用、协同兑现
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: 财报电话会 transcript / 管理层评论
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3d8a42
+  - mat-9ad112
+  last_fetch_note: 10-K MD&A + 财报含整合评论
+- task: 核实 AstraZeneca+Pathos $200M 交易结构与收入确认方式（是否循环收入）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 2025-04-23 公告 + genomeweb/fiercebiotech + 10-K 关联方披露
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: $200M交易(genomeweb/fiercebiotech)+10-K关联方披露
+- task: MRD 赛道竞争与报销：Natera Signatera vs Personalis/Tempus 份额与覆盖进展
+  priority: P2
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: 行业媒体 + 各公司披露
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: pmc学术+genomeweb+natera+分析帖已入库
+- task: 管理层资本配置史 + Lefkofsky 股权/关联实体（Pathos 等）图谱
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 代理声明 DEF 14A / 招股书 S-1 关联方 / 深度报道
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: DEF 14A(2026-04-07)+S-1关联方+CEO关联实体减持250K已入库
+- task: 获取 Tempus 财报电话会 transcript（Q2 2026 等）——有机 vs 并表增长桥、分部拆分
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: undecided
+- task: historical-mirror 实证：Invitae/23andMe 诊断股并购堆量/故事股崩盘复盘
+  priority: P2
+  info_tier: public
+  addresses:
+  - K2
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: undecided
+- task: 资料提取完成：34 份 findings 全部处理完毕
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 全部产出完成(3份:00_primer+c_investment_case+07_decision_kit),等待05对抗式评审或进监控
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: Data分部剔除关联方Pathos后的第三方有机增速是多少(命门①折价=机会or陷阱的核心裁决点)
+  rationale: 环③假设A悬而未决:NRR126%支持but真AI仅1.6%+Q2增量点名Pathos;拆不出剔Pathos有机增速则无法判折价是被质量正当化还是市场过度惩罚。下季财报/买方拆分可解
+  source: capped_decomposition
+  related:
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-08-03T16:04:19.923166+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-08-03T16:04:19.890666+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-08-03T13:56:50.854521+00:00'
+    summary: 命门1=Data&AI是高毛利平台还是项目制数据授权(中); 命门2=连环并购(Ambry→Personalis)真协同还是堆量掩盖弱有机+摊薄(中);
+      命门3=两笔收购后GAAP盈利/正FCF路径与再融资摊薄风险(低)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-08-03T16:04:19.890683+00:00'
+    summary: 命门1重构(P/S折价是机会or陷阱,承重子问=稀释/关联方是否吃增长)+命门2坐实(并购堆量)+命门3维持(FCF未证);残留Data剔Pathos有机缺口挂drilldown
+    convergence_status: converged
+    changelog: 重构命门1(凭market_data实时倍数证零AI溢价,非砍是前提翻转)/强化命门2(凭mat-b837e8 Ambry$1.8M净利)/维持命门3/新增primer目标13稀释全景;无砍除,对照全历史无震荡
+thesis:
+  current_version: 1
+  last_updated: '2026-08-03T16:04:19.859058+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-08-03T13:55:22.825302+00:00'
+    summary: 当前估值下先押"回避/不追高"(中性偏空,4/10)：Tempus 是真高增长精准肿瘤诊断机器,但全部AI溢价押在Data&AI未证兑现;增长很大一块来自连环并购(Ambry→Personalis
+      $1.5B)而非有机经济性,叠加Spruce Point关联方/循环收入疑云,现价风险回报不对称向下。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-03T16:04:19.859282+00:00'
+    summary: 中性偏空/回避不追(强度4/10)。现价$47无正edge:真25%有机增长但三漏损(持续稀释+Data绑关联方Pathos+真FCF未证)吃增长;市场零AI溢价(P/S
+      5.9x折价同业);EV≈-5%。强力买入$28-32
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-08-03T13:57:37.673628+00:00'
+  exited_at: '2026-08-03T14:13:07.830852+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-08-03T14:13:07.830852+00:00'
+  exited_at: '2026-08-03T14:46:08.624026+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-08-03T14:46:08.624026+00:00'
+  exited_at: '2026-08-03T16:04:34.106474+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-08-03T16:04:34.106474+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-08-03T14:13:07.824156+00:00'
+  status: full
+  triggered_by: 01-prescan
+  hit_rate: 1.0
+  queries_run: 7
+  queries_with_hits: 7

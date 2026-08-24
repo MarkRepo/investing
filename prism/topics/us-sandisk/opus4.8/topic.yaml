@@ -1,0 +1,384 @@
+slug: us-sandisk
+display_name: SanDisk (SNDK, Nasdaq)
+type: company
+created: '2026-08-06T12:43:22.442590+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: SanDisk (SNDK, Nasdaq, US, deep)：赌这是 NAND 上行周期叠加 AI 企业级 SSD(eSSD) 结构性需求下的买入机会。核心命门=NAND
+    供需/价格拐点的持续性 + SanDisk 相对铠侠/三星/SK海力士的成本与技术位;共识押 HBM 抢产能挤 NAND 供给推涨价,我要验证这轮涨价是周期性补库还是结构性,以及
+    2025 分拆后独立资本开支纪律与铠侠JV关系。买/卖方向与目标价赌注待 prescan+估值校准。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_SNDK
+  market: US
+  short_name: SanDisk
+  search_terms:
+  - NAND 闪存价格周期
+  - AI eSSD 需求
+  - SanDisk 分拆铠侠JV
+outputs_state:
+  00_primer:
+    version: 2
+    last_updated: '2026-08-07T03:25:09.959823+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-016d36
+    - mat-04096b
+    - mat-07630c
+    - mat-2394bf
+    - mat-28c180
+    - mat-572c9f
+    - mat-8db6a2
+    - mat-91210f
+    - mat-c68feb
+    - mat-d1581f
+    - mat-d60fa4
+    - mat-dbd19e
+    - mat-dde2cb
+    - mat-e0fafe
+    - mat-f13cc1
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-08-07T03:25:09.974910+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-016d36
+    - mat-04096b
+    - mat-07630c
+    - mat-2394bf
+    - mat-28c180
+    - mat-572c9f
+    - mat-8db6a2
+    - mat-91210f
+    - mat-c68feb
+    - mat-d1581f
+    - mat-d60fa4
+    - mat-dbd19e
+    - mat-dde2cb
+    - mat-e0fafe
+    - mat-f13cc1
+    last_error: null
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-08-07T03:25:09.987130+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-016d36
+    - mat-04096b
+    - mat-07630c
+    - mat-2394bf
+    - mat-28c180
+    - mat-572c9f
+    - mat-8db6a2
+    - mat-91210f
+    - mat-c68feb
+    - mat-d1581f
+    - mat-d60fa4
+    - mat-dbd19e
+    - mat-dde2cb
+    - mat-e0fafe
+    - mat-f13cc1
+    last_error: null
+  08_living_feed:
+    version: 3
+    last_updated: '2026-08-07T03:25:31.438534+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 04 重写完成(05-critic request-rewrite):c_investment_case v2 + 00_primer v2 + 07_decision_kit
+  v2 + thesis_v2(3/5,EV≈0%中性) + decomposition_v1(capped,命门1踢drilldown)
+- 立场 回避/趋卖(-20%) → 中性/持有(≈0%):正常化EPS $35-50→$65-85、Bear $400→$720
+- 说「评审 us-sandisk」对 v2 再跑一轮 05 复评;或「深挖 us-sandisk 的 NBM覆盖」推进命门1 drilldown
+user_todos:
+- task: 下载 SanDisk 分拆后首份 10-K 年报(FY2026,财年6月底结束)——重点 NBM 合同条款/风险因子/资本开支
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K4
+  - K5
+  source_hint: investor.sandisk.com / SEC EDGAR 10-K
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-28c180
+  last_fetch_note: SEC EDGAR 4 份
+- task: 下载 SanDisk FY26 Q4 + Q3 电话会实录/earnings presentation(NBM take-or-pay/价格地板、bit
+    vs ASP、capex 指引)
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K5
+  source_hint: investor.sandisk.com / Seeking Alpha transcript
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 3
+  disposition: undecided
+  covered_by:
+  - mat-91210f
+  last_fetch_note: Q4FY26 call NBM条款全覆盖 mat-91210f
+- task: 收集 NAND 合约/现货价季度序列(2024-2026,TrendForce/CFM/DRAMeXchange)+ 2027 价格预测
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: TrendForce/DIGITIMES 转载、卖方存储月报
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan TrendForce季度合约价2份入库;完整序列交01深挖
+- task: 历史周期镜鉴:SanDisk/WDC 闪存段 2022-2023 下行期财务(营收/毛利/亏损)——建 mid-cycle 正常化 EPS 与下行年情景
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: WDC 历史 10-K/财报存档、historical-mirror
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-2394bf
+  last_fetch_note: WDC Flash 2022-24 谷底财务 mat-2394bf
+- task: 收集 sell-side 一致预期:SNDK FY27/FY28 营收/EPS 预测 + 目标价分布 + 评级(estimize/visible alpha/大行研报)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: consensus——Yahoo/大行研报转载、visible alpha
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan目标价分布$1000-3169+FY26数字入库;FY27/28 EPS明细交01
+- task: 收集 2-3 份卖方存储行业深度(NAND 成本曲线/BiCS 良率/供需模型)——MS/Susquehanna/UBS/Morningstar
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: 大行研报;Morningstar Kerwin 熊方 note
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan MS$1750/Susq$3250/Morningstar熊方highlights入库;全文交01 web_fetch
+- task: 竞争位对比:SanDisk vs Solidigm(SK海力士)/三星/Micron 企业级 eSSD(TLC/QLC)份额、qualification、单GB成本
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K3
+  source_hint: Counterpoint/TrendForce 份额、卖方竞品对比
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan NAND份额+Solidigm对比入库;单GB成本细粒度交01
+- task: YMTC/中国供给跟踪:份额轨迹、扩产计划、美国出口管制现状对 NAND 供给曲线影响
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: Reuters/Counterpoint/UBS
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan Reuters/Counterpoint/UBS充分入库
+- task: WDC-Kioxia 合并谈判进展 + Kioxia JV(四日市/北上,延至2034)结构与 SanDisk 出资/分晶圆机制细节
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K6
+  - K3
+  source_hint: Yole/Reuters、SanDisk 10-K JV 章节
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan JV延2034+WDC合并谈判入库;10-K含JV章节
+- task: 管理层资本配置史:$6B 回购授权时点/节奏、分拆后资产负债表(债务/现金)、Goeckeler 资本纪律表态
+  priority: P2
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: mgmt-capital-alloc——10-K/电话会/8-K
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: prescan $6B回购+debt-free入库;10-K/10-Q资本章节
+- task: 资料提取完成:8份核心findings全部处理完毕(含consensus)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 04 决策链合成完成:primer+case+sidecar+thesis_v1,终局=回避/趋卖(EV-20%)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: NBM floor 的绝对价格/毛利率水平——查 FY2026 完整 10-K NBM 条款 + 用 ASP/GB 与 FV 单位成本反推
+    floor 隐含 GM 区间,把正常化 EPS $35-50 收敛成点估
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-08-06T14:12:44.198242+00:00'
+- question: NBM 覆盖比例究竟是 1/3(Morningstar) 还是 60%(Bernstein)? floor 单位经济($/GB 与 GM)在
+    2029 下行年托底后的正常化 EPS 下限是多少?
+  rationale: '05-critic: 承重定价锚单线承重; Bernstein 测算 @60%覆盖@$0.11/GB 与作者 -50 差数倍, 覆盖比例+floor
+    单位经济是命门1收敛的钥匙'
+  source: critic_weak_k
+  related:
+  - K1
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-08-06T15:10:43.127842+00:00'
+- question: HBF(High Bandwidth Flash, NAND+HBM, SK海力士 MoU/OCP) 的 TAM、时间线与对 SanDisk
+    护城河/估值的结构性含义?
+  rationale: '05-critic: case 完全漏掉 HBF, 反方列为多方结构性支柱'
+  source: critic_weak_k
+  related:
+  - K3
+  priority: P1
+  status: open
+  suggested_at: '2026-08-06T15:10:43.127842+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: 反方致命一击命中 case 已自认的唯一承重空心命门(NBM floor 有牙度); Step 6.5 web 三角验证补入 Bernstein
+    floor 测算($214@60%覆盖@$0.11/GB)/Morningstar 1/3 覆盖/HBF/consensus 离散。承重定价锚"正常化 EPS
+    $35-50"单源且拿谷底数×中枢倍数(方法论隐患)——需重写环②/④吸收新证据，EV −20% 视为中枢下沿、很可能上修。方向不必然翻案。
+  at: '2026-08-06T15:10:00.490160+00:00'
+  thesis_version: 1
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 1
+  last_updated: '2026-08-07T03:24:14.064421+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-08-06T12:55:59.230889+00:00'
+    summary: 命门1=NBM $42B合同含牙度(低,决定周期性是否真被削弱);命门2=NAND上行是结构regime还是周期峰值(中);命门3=SanDisk相对成本/技术位下行期谁先失血(中)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-08-06T14:16:09.546213+00:00'
+    summary: 命门1(NBM含牙度)低→中高已大部解(capped,仅floor毛利率未披露挂P0 drilldown);命门2(regime vs峰值)中;命门3(裸+FV刚性下行失血)中微空
+    convergence_status: capped
+    changelog: 命门1置信度低→中高(凭mat-91210f NBM条款,证伪空方无牙论,非震荡)+标capped挂drilldown;命门2/3维持;primer目标2处机制注精修(EUV/冷数据);对照全历史无震荡
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-07T03:24:14.064436+00:00'
+    summary: 命门1=NBM覆盖比例×floor单位经济(未披露,被Morningstar1/3~Bernstein60%夹住);命门2=结构vs周期(部分结构化);命门3=成本/技术位+HBF期权
+    convergence_status: capped
+    changelog: 05-critic后:命门1从"floor毛利率绝对值"重定义为"覆盖比例×floor经济"(凭mat-dbd19e/mat-8db6a2外部区间);加HBF入命门3(凭mat-d60fa4);命门1撞未披露顶仍capped→踢07-drilldown。对照全历史无震荡
+thesis:
+  current_version: 2
+  last_updated: '2026-08-07T03:24:14.027268+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-08-06T12:54:33.713407+00:00'
+    summary: 当前~$1,215-1,428是NAND超级周期峰值区高位;商品化NAND无护城河+峰值盈利×低forward PE的经典价值陷阱,谨慎偏空/回避(强度4/10)。反方=AI结构性regime+NBM
+      $42B合同或削周期性。终局倾向卖出/回避,目标价待环④正常化EPS敲定。
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 67%（8/12，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-06T14:16:09.516758+00:00'
+    summary: 现价~$1,260是被NBM真实改善($93.9B floor+担保)但估值已过度定价的强周期顶部;隐含正常化EPS~$95>峰值年$70.88,EV≈-20%。终局回避/趋卖,仅<$650试探建仓。强度4/10。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-07T03:24:14.027282+00:00'
+    summary: 中性/持有(EV≈0%,band -12%~+8%):现价$1,260大致公允,落consensus均值$1,659下、可信空头Morningstar$1,000上。正常化EPS中枢上修$35-50→$65-85(谷底改中枢+NBM托底),Bear$400→$720。命门1=NBM覆盖(1/3
+      vs 60%)未披露。方向仍偏谨慎但非做空
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-08-06T12:56:36.176914+00:00'
+  exited_at: '2026-08-06T13:28:20.195300+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-08-06T13:28:20.195300+00:00'
+  exited_at: '2026-08-06T13:55:19.973871+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K3
+    - K6
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-08-06T13:55:19.973871+00:00'
+  exited_at: '2026-08-06T14:16:31.023149+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-08-06T14:16:31.023149+00:00'
+  exited_at: '2026-08-07T03:25:31.063165+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-08-07T03:25:31.063165+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

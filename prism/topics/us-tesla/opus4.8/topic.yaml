@@ -105,8 +105,8 @@ outputs_state:
     - mat-f71025
     last_error: null
   08_living_feed:
-    version: 7
-    last_updated: '2026-07-23T16:36:55.703067+00:00'
+    version: 9
+    last_updated: '2026-08-05T21:04:34.344255+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -486,3 +486,9 @@ prescan_log:
   queries_run: 3
   queries_with_hits: 2
   failure_reason: prescan 校准率 67%（2/3，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.358625+00:00'
+  reason: 依赖的『高位企稳·官方市场双双转鹰但长端牛平·实际利率2.16%边际回落』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  proposal_id: c47458ca5281
+  locator: rates_us

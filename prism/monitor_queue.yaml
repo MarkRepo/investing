@@ -639,11 +639,11 @@ pending:
     **当前判断更新**:维持原判断,价格信号待人工确认'
   rationale: 现价 26.93 落入 accumulate（零 LLM 价格判定）
   requires_thesis_review: false
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-20T22:00:11.710475+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:33.969850+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 1de266ddc45f
   slug: us-tesla
   variant: opus4.8
@@ -653,22 +653,22 @@ pending:
   expected_current: null
   evidence: []
   evidence_urls: []
-  living_feed_entry: '## 2026-08-01 价格破位:跌入买入框
+  living_feed_entry: '## 2026-08-04 价格破位:跌入买入框
 
     **来源**:market_data 自动行情
 
-    **关键信息**:现价 307.44000244140625（2026-07-28）落入 **accumulate** 区间（强买≤230 / 可建仓 230-320）
+    **关键信息**:现价 318.239990234375（2026-08-03）落入 **accumulate** 区间（强买≤230 / 可建仓 230-320）
 
     **对已有判断的影响**:触及预设买入区,需按 position_framework 复核建仓
 
     **当前判断更新**:维持原判断,价格信号待人工确认'
-  rationale: 现价 307.44000244140625 落入 accumulate（零 LLM 价格判定）
+  rationale: 现价 318.239990234375 落入 accumulate（零 LLM 价格判定）
   requires_thesis_review: false
-  status: awaiting_confirm
-  created_at: '2026-07-31T22:00:14.302555+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  status: confirmed
+  created_at: '2026-08-03T22:00:21.453599+00:00'
+  confirmed_at: '2026-08-05T21:04:34.018873+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 7c8888506e59
   slug: us-applovin
   variant: opus4.8
@@ -690,11 +690,11 @@ pending:
   rationale: 依赖的『高位企稳/官方+市场双双转鹰但长端牛平(10Y4.38)』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435301+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.061804+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: e3a7fd9f653b
   slug: us-ionq
   variant: opus4.8
@@ -716,11 +716,11 @@ pending:
   rationale: 依赖的『高位企稳·双双转鹰·长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435313+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.116266+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 1970d6ce61d1
   slug: cn-hengli-hydraulic-601100
   variant: opus4.8
@@ -742,11 +742,11 @@ pending:
   rationale: 依赖的『人民币贬值利出口但2025出口停滞+1.58%』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435317+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.172864+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 45183b9040b6
   slug: us-nvidia
   variant: opus4.8
@@ -768,11 +768,11 @@ pending:
   rationale: 依赖的『现读数(见regime eval v3)』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435319+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.231889+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: c30e56307ae4
   slug: us-google
   variant: opus4.8
@@ -794,11 +794,11 @@ pending:
   rationale: 依赖的『fed funds 3.75%、长端牛平』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435321+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.291125+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: c47458ca5281
   slug: us-tesla
   variant: opus4.8
@@ -820,11 +820,11 @@ pending:
   rationale: 依赖的『高位企稳·官方市场双双转鹰但长端牛平·实际利率2.16%边际回落』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435328+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.348539+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 3efcc8aa9f62
   slug: us-structure-gpcr
   variant: opus4.8
@@ -846,11 +846,11 @@ pending:
   rationale: 依赖的『关注实际利率方向（下行利好长久期biotech）』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435330+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.402537+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 73d7a6e215d1
   slug: us-viking-vktx
   variant: opus4.8
@@ -872,11 +872,11 @@ pending:
   rationale: 依赖的『实际利率高位/降息路径未定』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435332+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.459458+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 208040fac49a
   slug: cn-hymson-688559
   variant: opus4.8
@@ -898,11 +898,11 @@ pending:
   rationale: 依赖的『人民币企稳偏弱(利出海49%高毛利钣金)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435334+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.514728+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 68f2788369cf
   slug: cn-xingye-silver-tin
   variant: opus4.8
@@ -924,11 +924,11 @@ pending:
   rationale: 依赖的『企稳偏弱（弱美元利好美元计价银锡）』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435335+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.568107+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 8ad1a0b5d603
   slug: us-palantir-pltr
   variant: opus4.8
@@ -950,11 +950,11 @@ pending:
   rationale: 依赖的『高位企稳·双双转鹰但长端牛平·实际利率2.16%边际回落仍约束』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435337+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.647336+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 77bccfddb7d7
   slug: us-spacex-spcx
   variant: opus4.8
@@ -976,11 +976,11 @@ pending:
   rationale: 依赖的『条件偏松·信用利差历史地板·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435339+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.698458+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: b7d21a92aa5f
   slug: us-coinbase
   variant: opus4.8
@@ -1002,11 +1002,11 @@ pending:
   rationale: 依赖的『条件偏松·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435340+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-03T01:40:11.797035+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: b3a214f8de35
   slug: cn-montage-688008
   variant: opus4.8
@@ -1028,11 +1028,11 @@ pending:
   rationale: 依赖的『条件偏松·信用利差地板·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435342+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.747709+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 11d4964c05be
   slug: cn-baili-688506
   variant: opus4.8
@@ -1054,11 +1054,11 @@ pending:
   rationale: 依赖的『企稳偏弱·区间震荡·中性偏友好转弱』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435344+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.798879+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 52c5702c9fd2
   slug: cn-kweichow-moutai-600519
   variant: opus4.8
@@ -1080,11 +1080,11 @@ pending:
   rationale: 依赖的『人民币企稳(favor)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
     v3→v4)
   requires_thesis_review: true
-  status: awaiting_confirm
+  status: confirmed
   created_at: '2026-07-28T09:27:57.435348+00:00'
-  confirmed_at: null
-  writeback_done: false
-  living_feed_appended: false
+  confirmed_at: '2026-08-05T21:04:34.850513+00:00'
+  writeback_done: true
+  living_feed_appended: true
 - proposal_id: 22ad33fe3e8b
   slug: us-applovin
   variant: opus4.8
@@ -1094,19 +1094,44 @@ pending:
   expected_current: null
   evidence: []
   evidence_urls: []
-  living_feed_entry: '## 2026-08-01 价格破位:跌入买入框
+  living_feed_entry: '## 2026-08-05 价格破位:跌入买入框
 
     **来源**:market_data 自动行情
 
-    **关键信息**:现价 412.7300109863281（2026-07-27）落入 **accumulate** 区间（强买≤360 / 可建仓 360-450）
+    **关键信息**:现价 419.70001220703125（2026-08-04）落入 **accumulate** 区间（强买≤360 / 可建仓 360-450）
 
     **对已有判断的影响**:触及预设买入区,需按 position_framework 复核建仓
 
     **当前判断更新**:维持原判断,价格信号待人工确认'
-  rationale: 现价 412.7300109863281 落入 accumulate（零 LLM 价格判定）
+  rationale: 现价 419.70001220703125 落入 accumulate（零 LLM 价格判定）
+  requires_thesis_review: false
+  status: confirmed
+  created_at: '2026-08-04T22:00:16.132462+00:00'
+  confirmed_at: '2026-08-05T21:04:34.905442+00:00'
+  writeback_done: true
+  living_feed_appended: true
+- proposal_id: 610332b277db
+  slug: cn-popmart
+  variant: opus4.8
+  kind: price
+  locator: buy_box
+  proposed_value: accumulate
+  expected_current: null
+  evidence: []
+  evidence_urls: []
+  living_feed_entry: '## 2026-08-24 价格破位:跌入买入框
+
+    **来源**:market_data 自动行情
+
+    **关键信息**:现价 149.0（2026-08-21）落入 **accumulate** 区间（强买≤135 / 可建仓 135-150）
+
+    **对已有判断的影响**:触及预设买入区,需按 position_framework 复核建仓
+
+    **当前判断更新**:维持原判断,价格信号待人工确认'
+  rationale: 现价 149.0 落入 accumulate（零 LLM 价格判定）
   requires_thesis_review: false
   status: awaiting_confirm
-  created_at: '2026-07-31T22:00:14.302573+00:00'
+  created_at: '2026-08-23T22:16:52.195321+00:00'
   confirmed_at: null
   writeback_done: false
   living_feed_appended: false

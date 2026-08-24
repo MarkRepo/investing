@@ -1,0 +1,430 @@
+slug: jp-anycolor-5032
+display_name: ANYCOLOR株式会社 (ANYCOLOR Inc., にじさんじ/NIJISANJI, TSE 5032)
+type: company
+created: '2026-08-03T02:37:06.299896+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: JP
+  question: ANYCOLOR(にじさんじ運営) 赌买还是卖？赌注=买（VTuber双寡头里该买轻资产高质量的这个而非COVER）：营益率~36%/ROE~57%/PE~11x/大额回购+分红
+    vs 股价从¥6,790崩61%到~¥2,618；核心命门=FY2027/4减益指引(营益¥180-200亿 vs 共识¥241亿)是先行投资/海外扩张的暂时性压缩，还是にじさんじIP生命周期见顶的结构性衰退？目标价相对~¥2,600的空间与介入纪律。scope不含一级VTuber初创与中国VTuber市场
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: TSE_5032
+  market: US
+  short_name: ANYCOLOR
+  search_terms:
+  - ANYCOLOR 決算
+  - にじさんじ 業績
+  - 5032 目標株価
+  - 5032 自社株買い
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-08-03T05:31:36.232884+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1989db
+    - mat-2b9147
+    - mat-45cd43
+    - mat-484ba2
+    - mat-b48eaf
+    - mat-b69000
+    - mat-b9c76e
+    - mat-c7cf5e
+    - mat-d484e9
+    - mat-ea34f4
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-08-03T05:33:24.259833+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-14338a
+    - mat-1989db
+    - mat-2b9147
+    - mat-45cd43
+    - mat-484ba2
+    - mat-b48eaf
+    - mat-b69000
+    - mat-b9c76e
+    - mat-c7cf5e
+    - mat-ccd2a3
+    - mat-d484e9
+    - mat-ea34f4
+    - mat-f3824b
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-08-03T05:33:24.284046+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-2b9147
+    - mat-484ba2
+    - mat-b69000
+    - mat-b9c76e
+    - mat-ea34f4
+    last_error: null
+parent_materials:
+- parent_slug: jp-cover-5253
+  parent_variant: opus4.8
+  mat_id: mat-53da95
+  addresses:
+  - K1
+  - K2
+  note: COVER FY2026/3 決算短信：双寡头同口径对照(营益率14.3%/ROE16.3%/物販48%)——K1营益率横截面锚
+- parent_slug: jp-cover-5253
+  parent_variant: opus4.8
+  mat_id: mat-20fc41
+  addresses:
+  - K1
+  - K2
+  note: COVER 決算説明資料：分季/减损/资本配分——重资产范式对照，判ANYCOLOR是否在走同一路径
+next_actions:
+- 说「评审 jp-anycolor-5032」进 05 对抗式重审（chain-critic 已放行）
+user_todos:
+- task: 下载 ANYCOLOR FY2026/4 通期決算短信 + 決算説明資料（TDnet/IR 一手 PDF，含販管費·员工数·分部季度序列·BS棚卸資産）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K3
+  source_hint: anycolor.co.jp IR / TDnet / Yahoo 開示 PDF（已有 mat-f84f40 待抽取）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1989db
+  - mat-2b9147
+  last_fetch_note: 'TDnet镜像PDF直下: 通期決算短信+通期決算説明資料(4.3MB)'
+- task: 取 ANYCOLOR 中期経営計画原文（FY2027/4 终点：营收+88%/营益+94%/股东回报¥300亿以上）+ 计算股东回报剩余额度
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: 決算説明資料 中期計画页 / 成長戦略説明資料
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2b9147
+  - mat-619d05
+  - mat-8da2b6
+  last_fetch_note: 中期計画页含于 mat-2b9147 通期説明資料；¥300亿余额精确值待03抽取
+- task: 取决算后（2026-06-11 起）券商目标价·评级·一致预期最新落点（决算前共识¥6,660已作废）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: IFIS株予報/kabuyoho.jp/みんかぶ アナリスト予想（已有 mat-ccd2a3/mat-14f4d3 待抽取）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 'IFIS(7/17)+みんかぶ(7/13)全文入库: 目标价¥4,170(从¥5,433下修)、分析师净利¥15,049 vs
+    会予¥13,011、每周持续下修'
+- task: 取 ANYCOLOR 自己株式取得 TDnet 公告序列（2026年1月决议 + 完成公告 + 是否有新决议）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: TDnet 適時開示 / 日経会社情報DIGITAL（已有 mat-ad1b50/mat-34bff0）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-34bff0
+  - mat-ad1b50
+  last_fetch_note: 1月决议(mat-ad1b50)+完成公告¥49.99亿/117.71万株(mat-34bff0)；截至2026-08-03未见新决议
+- task: 下载 FY2024/4 与 FY2025/4 通期決算短信（拿营业利益绝对值作中期计划达成率分母 + 3年营益率序列）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: TDnet 過去開示（已有 mat-40ced1 FY2024/4 説明資料）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0da0c3
+  - mat-ea34f4
+  last_fetch_note: FY2025/4短信+FY2024/4説明資料直下；4期营益序列12,361/16,279/20,172/19,000(会予)已由みんかぶ补全
+- task: 取 FY2027/4 Q1 决算日程与（发布后）实绩，验证营收-1%/营益-18%指引
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: IR 決算発表予定日（约2026-09中旬）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 松井証券/株予報Pro決算页已入库；Q1实绩本身约2026-09中旬发布，转06-monitor跟踪
+- task: 取 にじさんじ/NIJISANJI EN 官方 liver 名册与 2025-2026 卒業·新出道公告（净变动明细 + EN 26名现状）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  - K6
+  source_hint: nijisanji.jp 公式 / にじさんじWiki（已有 mat-8c6229/mat-e55585）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1e2c20
+  - mat-8c6229
+  - mat-e55585
+  last_fetch_note: にじさんじ公式Wiki 公式ライバー一覧+Wikipedia条目；期末179人(+9)/EN26人已知，逐人明细待03抽取
+- task: 取 COVER(5253) FY2027/3 最新指引与营益率，做同期同口径双寡头对照
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: 复用亲属 topic jp-cover-5253/opus4.8 已有材料 + COVER 最新决算
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 复用亲属topic jp-cover-5253/opus4.8(FY2027/3减益预想·营益率14%·v1结论4/10)
+- task: 取日本 IP/角色周边可比公司 EV/EBIT 横截面（バンダイナムコ/GENDA/Good Smile 等）作估值锚
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 各社決算短信 + 株探/irbank 指标页
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 仅取到バンダイナムコ FY2026/3 一手财务资料；GENDA/Good Smile 未命中(返回商品页)，可比组合待01/02补全
+- task: 取 liver 劳务法律属性（承揽 vs 雇佣）与日本 VTuber 业界合规动向（成熟度税的外部证据）
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K1
+  - K6
+  source_hint: 業界団体/法律事務所解説/公取委 動向
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: gvalaw弁護士解説(2026-04-17 取適法+フリーランス法与VTuber事务所)+kai-law契約形態；全文抓取返回乱码,仅snippet
+- task: 取 ANYCOLOR 有価証券報告書 FY2026/4（事業リスク/従業員数·平均年収/liver契約形態/関連当事者）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K6
+  source_hint: EDINET(需API key)→ 无key时走 EDINET网页版 / anycolor.co.jp IRライブラリ
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 'EDINET无API key→改走衍生源: corp-research(第8期有報全文解读,全文已落盘)+edinetdb.jp有報全文页入库;
+    FY2026/4第9期有報约2026-07提交,待01/02补'
+- task: 取卖方 ANYCOLOR 深度研报论证（日系中堅7/15目标¥5,080 / 米系大手¥5,500 的营益率恢复假设与终值倍数）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  - K4
+  source_hint: 公开转载/kabuyoho/财经媒体摘要——这是我中性判断的最强反方
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: IFIS/monex/みんかぶ 券商动作汇总入库(日系中堅7/15 ¥5,080等); 研报正文本身付费墙, 四季报页被content-block挡;
+    恢复假设待03从consensus序列反推
+- task: 取 historical-mirror 实证：日本高利润率内容/手游公司旗舰IP见顶后利润率与估值双杀复盘
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: コロプラ/ミクシィ·モンスト/gumi 复盘文章或券商行业研报（喂环⑤）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: MIXI「モンスト頼み」売上7割依存脱却の高い壁(四季报)+コロプラ業績データ推移(官方)+gamebiz手游13社决算+MIXI利益率47%改善(gamebusiness);
+    MIXI条为snippet-only(四季报content-block)
+- task: 取日本IP/角色周边可比公司估值横截面（GENDA/Good Smile/ブシロード 的EV-EBIT，バンダイナムコ已有）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 各社決算短信 + 株探/irbank 指标页
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: GENDA(官方EBITDA说明+gurafu决算图表+gamebusiness)+ブシロード(strainer営業利益推移)入库;
+    バンダイナムコ已有; Good Smile未上市/未命中
+- task: 取 VTuber 市场规模与渗透率第三方数据（判"500亿的墙"是公司问题还是市场天花板）
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 矢野経済研究所 等民间调查机构公开摘要
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 矢野経済研究所系列入库(webtan 2023年¥800亿 / panora ¥1,050亿 / gii.co.jp 2026-2031预测
+    / CREX); ⚠口径存疑—¥1,050亿与ANYCOLOR¥557亿+COVER约¥500亿之和几乎重合,03须先校准口径再用
+- task: 资料提取完成：31 份可处理资料全部产出 finding（含 6 份一手決算 PDF 深度抽取 + 3 次即兴 web-search 补查）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 产出更新中（04 合成）...
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: in_progress
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 常设棚卸資産評価损年度run-rate(¥18亿是否含历史追补,常态多少)
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-08-03T05:38:00.237007+00:00'
+- question: NIJISANJI EN衰亡归因(主动放弃抽调资源vs IP自然衰亡)
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P2
+  status: open
+  suggested_at: '2026-08-03T05:38:00.237007+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic: null
+decomposition:
+  current_version: 1
+  last_updated: '2026-08-03T05:37:45.988525+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-08-03T02:56:12.468344+00:00'
+    summary: 命门1=36%营益率可守性:组织成本是补齐一次性还是成熟度税(中-低,优先砸料); 命门2=commerce单引擎撞500亿墙:施策周期vs需求饱和(中);
+      命门3=¥300亿股东回报承诺兑现意志/治理可信度(低,优先砸料)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-03T05:37:45.988535+00:00'
+    summary: 命门1(营益率)基本裁决=会计非经营；命门2(commerce天花板)开放待FY2027 Q1；命门3(股东回报兑现)分裂读数(执行史正面/利益一致性存疑)；K5海外降级为拖累耗尽顺风。primer目标精修13条(新增2改写2补口径2)。
+    convergence_status: open
+    changelog: 命门1 中-低→偏多/基本裁决；命门2 中→开放(新增10-20岁横盘反证)；命门3 低→分裂(¥300亿→¥350-450亿+治理负面)；K5降级为顺风。primer新增#8成本三桶/#12中期计划，改写#4经济属性/#11减配，补桥#3/#10。
+thesis:
+  current_version: 1
+  last_updated: '2026-08-03T05:37:45.954674+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-08-03T02:53:56.525300+00:00'
+    summary: 中性 5/10：ANYCOLOR 从非连续高增长跌入零增长+上市以来首次减益减配，¥2,627(PER12.3x/EV-EBIT6.8x)已大致公允定价该转换，EV仅+3%不构成买点；轻资产现金牛(营益率36.2%/OCF¥157亿/净现金¥220亿)使下行有限。相对COVER明确更优。买点≤¥2,100-2,200
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 95%（19/20，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-08-03T03:11:19.573954+00:00'
+    summary: 中性略偏多 5.5/10（同轮修正：现价¥2,418非¥2,627）：营益率连续4期单调下滑38.6→38.0→36.2→32.8%(会予)，是趋势非一次性；中期计划营益未达20.8%、分析师预想仍逐周下修且比会予高16%。但EV/EBIT
+      6.1x+OCF收益率10.8%+净现金¥220亿+¥300亿股东回报承诺构成扎实托底。EV¥2,648(+9.5%/含息+12.1%)。¥2,418可建1/3仓，≤¥2,100加仓，>¥3,200减持。相对COVER(4/10)明确更优
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 86%（19/22，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-03T05:37:45.954854+00:00'
+    summary: 偏多 6.5/10。最强利空「营益率单调下滑=成熟度税」被一手成本明细证伪为会计基准(¥18亿评价损)+取样偏差(剔除后FY26 39.5%>FY25
+      38.0%)；叠加海外拖累耗尽顺风+¥350-450亿(市值24-31%)股东回报，EV/EBIT 6.6x把降档错误定价成衰退。EV+12.1%，估值带¥1,970-4,120中枢¥2,913。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-08-03T02:56:12.479015+00:00'
+  exited_at: '2026-08-03T03:21:05.567206+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 02-gather-materials
+  entered_at: '2026-08-03T03:21:05.567206+00:00'
+  exited_at: '2026-08-03T03:28:02.963957+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K3
+    uncovered_ring_inputs:
+    - consensus
+    - bull-bear
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 03-extracting
+  entered_at: '2026-08-03T03:28:02.963957+00:00'
+  exited_at: '2026-08-03T04:23:01.693998+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-08-03T04:23:01.693998+00:00'
+  exited_at: '2026-08-03T05:42:28.915874+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-08-03T05:42:28.915874+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 0
+prescan_log:
+- round_at: '2026-08-03T03:21:05.549445+00:00'
+  status: partial
+  triggered_by: 01-prescan
+  hit_rate: 0.875
+  queries_run: 7
+  queries_with_hits: 7
+  failure_reason: prescan 校准率 88%（7/8，含 6 条已覆盖跳过），低于满分但高于失败阈值 50%

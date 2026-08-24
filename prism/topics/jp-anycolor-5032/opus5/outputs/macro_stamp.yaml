@@ -1,0 +1,19 @@
+as_of_regime_version: 4
+regime_composite: 中美背离体制下美端转为实际利率主导的熊陡（10Y实际利率2.43%创周期新高）、脆弱度high已在利率+vol轴兑现、日元carry
+  USDJPY 163.71再越带；对本标的的净影响=倍数扩张受压但基本面几乎不受传导，主要风险是carry平仓触发的日股系统性抛售
+depends_on_states:
+- conclusion: rates_us
+  state: 高位·官方/市场/长端同向再上·再通胀式熊陡·10Y实际利率2.43创周期新高
+  role: load_bearing
+- conclusion: fragility
+  state: high（利率+vol轴已进入兑现期）
+  role: load_bearing
+- conclusion: overall
+  state: 中美背离·再通胀式利率再上/熊陡·偏防御压久期·强度6
+  role: confirming
+discount_rate: null
+slug: jp-anycolor-5032
+variant: opus5
+stamped_at: '2026-08-03T04:27:38.926142+00:00'
+stale: false
+stale_reason: null

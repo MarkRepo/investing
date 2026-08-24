@@ -108,8 +108,8 @@ outputs_state:
     - mat-e78988
     last_error: null
   08_living_feed:
-    version: 1
-    last_updated: '2026-07-18T02:05:02.856837+00:00'
+    version: 2
+    last_updated: '2026-08-05T21:04:34.643752+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -385,3 +385,9 @@ prescan_log:
   hit_rate: 1.0
   queries_run: 9
   queries_with_hits: 9
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.658030+00:00'
+  reason: 依赖的『高位企稳·双双转鹰但长端牛平·实际利率2.16%边际回落仍约束』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  proposal_id: 8ad1a0b5d603
+  locator: rates_us

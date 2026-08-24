@@ -87,8 +87,8 @@ outputs_state:
     - mat-f05983
     last_error: null
   08_living_feed:
-    version: 2
-    last_updated: '2026-07-18T00:47:08.572029+00:00'
+    version: 3
+    last_updated: '2026-08-05T21:04:34.695119+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -362,3 +362,9 @@ stage_history:
     uncovered_ring_inputs: []
     autofetch_debt: 0
     empty_pending_decision: 0
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.708810+00:00'
+  reason: 依赖的『条件偏松·信用利差历史地板·风险偏好亢奋但脆弱』已变『偏松但缓冲抽干·RRP近零·SOFR-IORB向0咬合·IG起步走阔·MOVE解压=没有减震器的宽松』(regime
+    v3→v4)
+  proposal_id: 77bccfddb7d7
+  locator: liquidity_us

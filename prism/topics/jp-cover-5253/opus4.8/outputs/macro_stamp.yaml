@@ -1,0 +1,15 @@
+as_of_regime_version: 4
+regime_composite: 日股VTuber内容成长股,mid宏观敏感;弱日元利海外美元周边折算,但独有日元carry尾部(USDJPY越163.7带,carry平仓时JPY急升冲击日股+海外折算)
+depends_on_states:
+- conclusion: fx_jpy
+  state: JPY弱(carry未平仓)
+  role: confirming
+- conclusion: rates_jp
+  state: BoJ渐进,JGB温和
+  role: confirming
+discount_rate: null
+slug: jp-cover-5253
+variant: opus4.8
+stamped_at: '2026-08-02T15:55:55.058807+00:00'
+stale: false
+stale_reason: null

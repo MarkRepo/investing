@@ -1,6 +1,6 @@
 slug: us-coinbase
 variant: opus4.8
-updated: '2026-07-14T15:14:40.001662+00:00'
+updated: '2026-08-03T01:54:02.964254+00:00'
 materials:
 - id: mat-e17bc8
   filename: 2026-07-14_coinbase-s-q1-earnings-jump-to-1-6-billion-as-tran.md
@@ -1096,3 +1096,353 @@ materials:
     stale_at: '2026-08-13T14:35:21.217322+00:00'
     expire_at: '2026-10-12T14:35:21.217322+00:00'
     triggered_by: 01-prescan
+- id: mat-85ad69
+  filename: 2026_COIN_10-Q_2026-07-30.htm
+  source_type: quarterly-report
+  added: '2026-08-03T01:44:33.047360+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+  - K3
+  - K5
+- id: mat-914208
+  filename: sec/2026_COIN_10-Q_2026-07-30/item_1_financial.md
+  source_type: sec-section
+  added: '2026-08-03T01:44:33.261134+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-07-30.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - Q1
+  - valuation
+  parent_mat: mat-85ad69
+  sec_section: item_1_financial
+  rings:
+  - financial-arc
+- id: mat-214ea8
+  filename: sec/2026_COIN_10-Q_2026-07-30/item_2_mda.md
+  source_type: sec-section
+  added: '2026-08-03T01:44:33.295065+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-07-30.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  - Q1
+  parent_mat: mat-85ad69
+  sec_section: item_2_mda
+  rings:
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-c46986
+  filename: sec/2026_COIN_10-Q_2026-07-30/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-08-03T01:44:33.329014+00:00'
+  processed: true
+  notes: split from 2026_COIN_10-Q_2026-07-30.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-85ad69
+  sec_section: item_3_quant_risk
+- id: mat-62bb40
+  filename: 2026_COIN_8-K-earnings_2026-07-30.htm
+  source_type: quarterly-report
+  added: '2026-08-03T01:44:35.181177+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - consensus
+  - financial-arc
+  addresses:
+  - K1
+  - K3
+- id: mat-7f6cbe
+  filename: 2026-07-30_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:44:40.308280+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-5585da
+  filename: 2026-07-23_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:44:41.949829+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-a77ae4
+  filename: 2026-07-09_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:44:43.568424+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-fdee59
+  filename: 2026-06-18_COIN_announce_8K.html
+  source_type: announcement
+  added: '2026-08-03T01:44:45.048755+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-37fabc
+  filename: 2026-05-07_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:44:46.770528+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-c40ba7
+  filename: 2026-05-05_COIN_announce_8K.html
+  source_type: announcement
+  added: '2026-08-03T01:44:48.279369+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-bb80f8
+  filename: 2026-04-10_COIN_announce_8K.html
+  source_type: announcement
+  added: '2026-08-03T01:44:49.784208+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-669f82
+  filename: 2026-02-12_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:44:52.336113+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-394a00
+  filename: 2025-12-16_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:44:54.946936+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-fb97db
+  filename: 2025-10-30_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:44:57.520560+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-23bd9e
+  filename: 2025-08-15_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:44:59.149842+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-a403b8
+  filename: 2025-08-08_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:45:01.743394+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-7231a3
+  filename: 2025-08-06_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:45:03.383016+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-c000cd
+  filename: 2025-08-05_COIN_announce_8K.htm
+  source_type: announcement
+  added: '2026-08-03T01:45:04.995709+00:00'
+  processed: false
+  notes: Auto-downloaded from cninfo — Coinbase Global, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-50b3ba
+  filename: 2026-08-03_coinbase-q2-earnings-miss-wall-street-estimates.md
+  source_type: web-search
+  added: '2026-08-03T01:51:45.450035+00:00'
+  processed: true
+  notes: query='Coinbase Q2 2026 earnings analyst reaction consensus miss net loss'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  rings:
+  - bull-bear
+  - consensus
+  confidence: 0.75
+  search_meta:
+    query: Coinbase Q2 2026 earnings analyst reaction consensus miss net loss
+    url: https://www.thestreet.com/crypto/markets/coinbase-q2-earnings-miss-wall-street-estimates
+    domain: thestreet.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T01:51:45.425815+00:00'
+    stale_at: '2026-09-02T01:51:45.425815+00:00'
+    expire_at: '2026-11-01T01:51:45.425815+00:00'
+    triggered_by: 02-step0
+- id: mat-14e435
+  filename: 2026-08-03_coinbase-stock-tumbles-after-reporting-wider-than.md
+  source_type: web-search
+  added: '2026-08-03T01:51:45.523688+00:00'
+  processed: true
+  notes: query='Coinbase Q2 2026 earnings analyst reaction consensus miss net loss'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  rings:
+  - bull-bear
+  - consensus
+  confidence: 0.75
+  search_meta:
+    query: Coinbase Q2 2026 earnings analyst reaction consensus miss net loss
+    url: https://www.tikr.com/blog/coinbase-stock-tumbles-wider-q2-loss-2026
+    domain: tikr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T01:51:45.499336+00:00'
+    stale_at: '2026-09-02T01:51:45.499336+00:00'
+    expire_at: '2026-11-01T01:51:45.499336+00:00'
+    triggered_by: 02-step0
+- id: mat-012909
+  filename: 2026-08-03_coinbase-shares-slide-as-revenue-and-earnings-miss.md
+  source_type: web-search
+  added: '2026-08-03T01:51:45.596595+00:00'
+  processed: true
+  notes: query='Coinbase Q2 2026 earnings analyst reaction consensus miss net loss'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  rings:
+  - bull-bear
+  - consensus
+  confidence: 0.75
+  search_meta:
+    query: Coinbase Q2 2026 earnings analyst reaction consensus miss net loss
+    url: https://siliconangle.com/2026/07/30/coinbase-shares-slide-revenue-earnings-miss-despite-record-market-share/
+    domain: siliconangle.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T01:51:45.571740+00:00'
+    stale_at: '2026-09-02T01:51:45.571740+00:00'
+    expire_at: '2026-11-01T01:51:45.571740+00:00'
+    triggered_by: 02-step0
+- id: mat-08ec9c
+  filename: 2026-08-03_coinbase-q2-revenue-miss-widens-to-70m-as-subscrip.md
+  source_type: web-search
+  added: '2026-08-03T01:51:45.671252+00:00'
+  processed: true
+  notes: query='Coinbase Q2 2026 earnings analyst reaction consensus miss net loss'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  rings:
+  - bull-bear
+  - consensus
+  confidence: 0.75
+  search_meta:
+    query: Coinbase Q2 2026 earnings analyst reaction consensus miss net loss
+    url: https://www.techtimes.com/articles/322358/20260730/coinbase-q2-revenue-miss-widens-70m-subscription-segment-also-falls-short.htm
+    domain: techtimes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T01:51:45.644775+00:00'
+    stale_at: '2026-09-02T01:51:45.644775+00:00'
+    expire_at: '2026-11-01T01:51:45.644775+00:00'
+    triggered_by: 02-step0
+- id: mat-4a5e24
+  filename: 2026-08-03_coinbase-coin-stock-price-sinks-as-losses-deepen-a.md
+  source_type: web-search
+  added: '2026-08-03T01:51:45.747647+00:00'
+  processed: true
+  notes: query='Coinbase Q2 2026 earnings analyst reaction consensus miss net loss'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  rings:
+  - bull-bear
+  - consensus
+  confidence: 0.75
+  search_meta:
+    query: Coinbase Q2 2026 earnings analyst reaction consensus miss net loss
+    url: https://simplywall.st/stocks/us/diversified-financials/nasdaq-coin/coinbase-global/news/coinbase-coin-stock-price-sinks-as-losses-deepen-and-valuati
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T01:51:45.721662+00:00'
+    stale_at: '2026-09-02T01:51:45.721662+00:00'
+    expire_at: '2026-11-01T01:51:45.721662+00:00'
+    triggered_by: 02-step0
+- id: mat-3743dc
+  filename: 2026-08-03_coinbase-q2-earnings-net-loss-over-350m-prediction.md
+  source_type: web-search
+  added: '2026-08-03T01:51:45.829827+00:00'
+  processed: true
+  notes: query='Coinbase stablecoin USDC regulation prediction markets July 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  rings:
+  - biz-moat-unit-econ
+  confidence: 0.75
+  search_meta:
+    query: Coinbase stablecoin USDC regulation prediction markets July 2026
+    url: https://www.panews.io/articles/019fb6f3-9c93-76cc-b270-19e6c1e05d2c
+    domain: panews.io
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T01:51:45.803532+00:00'
+    stale_at: '2026-09-02T01:51:45.803532+00:00'
+    expire_at: '2026-11-01T01:51:45.803532+00:00'
+    triggered_by: 02-step0

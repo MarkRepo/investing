@@ -3,7 +3,7 @@ display_name: IonQ (IONQ, NYSE)
 type: company
 created: '2026-07-27T12:17:14.334552+00:00'
 status: active
-stage: done
+stage: 04-post-synthesis
 canonical: true
 parent_topic: null
 monitoring_tier: dormant
@@ -25,7 +25,7 @@ scope:
 outputs_state:
   00_primer:
     version: 1
-    last_updated: '2026-07-27T13:42:01.601542+00:00'
+    last_updated: '2026-08-06T13:30:45.368634+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
@@ -52,38 +52,45 @@ outputs_state:
     last_error: null
     critic_passed: true
   c_investment_case:
-    version: 2
-    last_updated: '2026-07-28T07:05:45.065044+00:00'
-    status: fresh
-    data_freshness: null
-    referenced_mat_ids:
-    - mat-e9c3f9
-    last_error: null
-  07_decision_kit:
-    version: 1
-    last_updated: '2026-07-27T13:48:37.640502+00:00'
+    version: 4
+    last_updated: '2026-08-06T13:30:33.506117+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
     - mat-01fcf8
     - mat-103695
+    - mat-133850
     - mat-54eee7
-    - mat-8859cd
-    - mat-d4385c
+    - mat-7a6a44
+    - mat-955423
+    - mat-ab00d2
+    - mat-c8cda9
+    - mat-c91035
+    - mat-d94e7a
+    - mat-e9c3f9
     - mat-ee7d46
     last_error: null
-  08_living_feed:
+  07_decision_kit:
     version: 3
-    last_updated: '2026-07-28T07:05:45.096487+00:00'
+    last_updated: '2026-08-06T13:30:33.551852+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-54eee7
+    - mat-7a6a44
+    - mat-e9c3f9
+    last_error: null
+  08_living_feed:
+    version: 9
+    last_updated: '2026-08-06T13:51:23.099894+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
 parent_materials: []
 next_actions:
-- 研究主题已闭环，下一步「监控 us-ionq」启动 06-daily-monitor
-- thesis_v1 已通过 critic-review
-- critic 评审：命门补料后复评：FY2025 10-K(mat-e9c3f9)量化坐实K1——并购占营收~39%(部分年度)/有机~$79M/客户集中3家=53%/成本+276%>营收+202%。承重充分性由单线承重升为「够」，看空方向被一手件强化，无残留研究缺口(余下K3/K4为未发生的产业事件)。verdict升为approve。
+- request-rewrite已完成(case v4:估值补模型G独立锚+RPO折进+上行敏感性),等chain-critic复核
+- 复核通过后可再跑05复评或进06监控;关键signpost=Q2完整10-Q分部毛利(定尺子之争)
 user_todos:
 - task: IonQ FY2025 10-K + Q1 2026 10-Q（营收分部/收入确认/客户集中度/有机 vs 并购拆分）
   priority: P0
@@ -300,18 +307,37 @@ suggested_drilldowns:
   priority: P1
   status: open
   suggested_at: '2026-07-28T02:56:19.427662+00:00'
+- question: 构建 RPO-aware / 增长调整型独立估值地板锚（按 RPO $485M 覆盖度 1.7x + 有机增速持续性给过渡期公允区间），替代
+    A/B 共用的成熟倍数单点
+  rationale: 模型A/B共用有机营收×15-25x成熟倍数、非独立;成熟尺子对+132%有机/RPO+297%的S曲线陡峭段系统性低估(两轮反方复现的致命一击)
+  source: critic_weak_k
+  related:
+  - K1
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-08-06T12:50:05.985994+00:00'
+- question: Q2完整10-Q分部毛利披露后,拆 Tempo/computing 云部署增量毛利 vs 一次性硬件——判毛利25%是投资期谷底还是稳态
+  rationale: 反方假设1:毛利率停25%可能是投资期错配非商业模式差;需分部毛利证伪/证实
+  source: critic_weak_k
+  related:
+  - K1
+  - K3
+  priority: P1
+  status: open
+  suggested_at: '2026-08-06T12:50:05.985994+00:00'
 monitoring:
   enabled: false
   cadence: daily
 critic:
-  verdict: approve
-  summary: 命门补料后复评：FY2025 10-K(mat-e9c3f9)量化坐实K1——并购占营收~39%(部分年度)/有机~$79M/客户集中3家=53%/成本+276%>营收+202%。承重充分性由单线承重升为「够」，看空方向被一手件强化，无残留研究缺口(余下K3/K4为未发生的产业事件)。verdict升为approve。
-  at: '2026-07-28T07:05:45.077152+00:00'
-  thesis_version: 1
-  next_stage: done
+  verdict: request-rewrite
+  summary: 独立多头对抗:方向(回避2/10)经得起,但基本面公允地板$12-15单线承重(模型A/B共用成熟倍数假设非独立+成熟尺子对S曲线陡峭段系统性低估,两轮反方复现)。重写环②/④:点破A/B非独立+补RPO-aware独立地板锚+上行概率敏感性。非补料(数据已在手,框架用错)。
+  at: '2026-08-06T12:49:47.844478+00:00'
+  thesis_version: 2
+  next_stage: 04-synthesizing
 decomposition:
-  current_version: 1
-  last_updated: '2026-07-27T13:55:08.427175+00:00'
+  current_version: 2
+  last_updated: '2026-08-06T11:48:08.611171+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
@@ -326,9 +352,15 @@ decomposition:
     convergence_status: converged
     changelog: 命门1置信度低→高(mat-01fcf8管理层自认并购+mat-54eee7硬件55%/round-trip坐实);命门2维持低未证;命门3重定价已启动(实时P/S
       303x→68.8x);无新命门,K5留资本配置轴不单列(防震荡);primer新增1条(GAAP盈利悖论)已落地。delta均属置信度更新/本轮已覆盖,不需第二收料趟;gap双轴绿+critic放行→converged。对照全历史无震荡。
+  - version: 2
+    stage_set_at: 04-synthesizing
+    set_at: '2026-08-06T11:48:08.611341+00:00'
+    summary: 命门1(营收真实经济性)高→中·混合(有机132%证伪纯并购,但硬件质量腿仍立);命门2(技术兑现)低·未证;命门3(估值锚)中·锚上移(beat-and-raise逆转derate,79.65x)
+    convergence_status: converged
+    changelog: Q2 2026财报(mat-7a6a44)触发:K1有机132%+RPO297%+上调指引部分证伪增长靠买(高→中·混合),质量腿(GM24.9%未回升)仍立;K4锚上移$34.52→$39.93/68.8x→79.65x(derate逆转);K5(SkyWater$1.8B+Nexus/现金腰斩/EBITDA-120M/权证亏损15.76亿)坐实强化;delta被单轮一手件覆盖不需二趟,方向未翻转无震荡→converged
 thesis:
-  current_version: 1
-  last_updated: '2026-07-27T13:55:08.386249+00:00'
+  current_version: 2
+  last_updated: '2026-08-06T13:51:23.034529+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -340,6 +372,15 @@ thesis:
     stage_set_at: 04-post-synthesis
     set_at: '2026-07-27T13:55:08.386402+00:00'
     summary: 现价$34.52/市值$12.84B 回避,强度3/10,信心中。基本面看空(增长质量差/巨额稀释/商业化未证)被SEC一手件坐实,但股价已从峰值腰斩、P/S从303x塌到68.8x,送分做空已过;现价坐在基本面公允$10-15与主题溢价$30-40中间,EV≈0且负偏。带敬意看空、非裸空。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-06T12:27:40.832103+00:00'
+    summary: 现价$39.93(市值$14.90B)回避,强度2/10(Q2后由3下调),信心中偏低。Q2有机+132%证伪增长纯靠买(看空最强论据),但GM停25%/烧钱翻3倍/估值锚升至79.65x/并购帝国延续→温和看空、不建多仓也不裸空。EV≈+4%
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-06T13:51:23.034715+00:00'
+    summary: 现价$39.93回避·强度2/10·信心中偏低。Q2有机+132%证伪增长靠买;05-critic重写为三层尺子(成熟A/B $12-13/增长G
+      $23/主题F $42),现价离G-bull $36仅11%。看空独柱=毛利25%是稳态vs投资期谷底,待Q2 10-Q分部毛利定夺→无干净edge·等信号,若QCaaS增量毛利健康则翻多。EV+4.3%
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-07-27T12:28:47.832437+00:00'
@@ -381,11 +422,19 @@ stage_history:
     empty_pending_decision: 0
 - stage: 05-critic-review
   entered_at: '2026-07-27T13:55:23.098853+00:00'
-  exited_at: null
+  exited_at: '2026-08-06T13:34:55.676364+00:00'
   gap_snapshot:
     uncovered_ks: []
     uncovered_ring_inputs: []
     autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-08-06T13:34:55.676364+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
     empty_pending_decision: 0
 prescan_log:
 - round_at: '2026-07-27T12:40:01.188542+00:00'
@@ -395,3 +444,4 @@ prescan_log:
   queries_run: 8
   queries_with_hits: 7
   failure_reason: prescan 校准率 88%（7/8，含 2 条已覆盖跳过），低于满分但高于失败阈值 50%
+pending_thesis_review: null

@@ -3,7 +3,7 @@ display_name: AppLovin (APP, NASDAQ)
 type: company
 created: '2026-07-27T12:41:04.505051+00:00'
 status: active
-stage: done
+stage: 04-post-synthesis
 canonical: true
 parent_topic: null
 monitoring_tier: dormant
@@ -23,74 +23,111 @@ scope:
 outputs_state:
   00_primer:
     version: 1
-    last_updated: '2026-07-27T13:55:45.990641+00:00'
+    last_updated: '2026-08-06T03:20:36.153595+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-040afb
     - mat-0888c8
     - mat-240119
     - mat-308a46
     - mat-3f4ca4
+    - mat-421634
+    - mat-4ad89d
     - mat-4c7272
+    - mat-7e8b95
     - mat-81005d
     - mat-8ac9db
+    - mat-8c0843
     - mat-8cf41e
     - mat-90531d
+    - mat-963a64
+    - mat-a251a5
+    - mat-c18c67
+    - mat-c4bdcb
     - mat-ce5674
     - mat-dd8ac8
+    - mat-e26d9d
     - mat-ebb7e3
     last_error: null
     critic_passed: true
   c_investment_case:
-    version: 1
-    last_updated: '2026-07-27T14:01:35.300585+00:00'
+    version: 5
+    last_updated: '2026-08-12T14:57:25.543116+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-040afb
     - mat-0888c8
     - mat-240119
     - mat-308a46
     - mat-3f4ca4
+    - mat-421634
+    - mat-4ad89d
     - mat-4c7272
+    - mat-7e8b95
     - mat-81005d
     - mat-8ac9db
+    - mat-8c0843
     - mat-8cf41e
     - mat-90531d
+    - mat-963a64
+    - mat-a251a5
+    - mat-c18c67
+    - mat-c4bdcb
     - mat-ce5674
     - mat-dd8ac8
+    - mat-e26d9d
     - mat-ebb7e3
     last_error: null
   07_decision_kit:
-    version: 1
-    last_updated: '2026-07-27T14:01:35.320747+00:00'
+    version: 4
+    last_updated: '2026-08-12T14:37:54.045722+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-040afb
     - mat-0888c8
+    - mat-240119
+    - mat-308a46
     - mat-3f4ca4
+    - mat-421634
+    - mat-4ad89d
     - mat-4c7272
+    - mat-7e8b95
+    - mat-81005d
     - mat-8ac9db
+    - mat-8c0843
     - mat-8cf41e
+    - mat-90531d
+    - mat-963a64
+    - mat-a251a5
+    - mat-c18c67
+    - mat-c4bdcb
+    - mat-ce5674
+    - mat-dd8ac8
+    - mat-e26d9d
+    - mat-ebb7e3
     last_error: null
   08_living_feed:
-    version: 1
-    last_updated: '2026-07-28T03:03:56.253232+00:00'
+    version: 3
+    last_updated: '2026-08-13T03:16:18.621782+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
   05-critic-review:
-    version: 1
-    last_updated: '2026-07-28T03:03:56.263319+00:00'
+    version: 2
+    last_updated: '2026-08-12T14:57:25.561195+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
 parent_materials: []
 next_actions:
-- 研究主题已闭环，下一步「监控 us-applovin」启动 06-daily-monitor
-- thesis_v1 已通过 critic-review
-- critic 评审：独立空头反方对抗后维持看多6.0/标准档：反方致命一击(命门1过度归因)已被case用仓位化+kill+signpost结构化对冲(非论证消除)，consensus缺口经5源web兜底证定价锚成立且偏保守。残留=命门1单线承重(证据方向反向)+PEG头版口径瑕疵，均可修补不推翻结论。
+- Q3 财报 2026-11-04：盯①每安装净收入减速斜率(守不守+58→若快掉向+30=self-learning见顶证据)、②电商是否首次量化、③增长靠self-learning还是engineer-directed
+- 可选：用户 greenlight 一次窄重合成，把 Q2 量价(-2%/+58%)+安装量≠流失 烘进 c_investment_case(环①收入拆解补Q2行、环⑤
+  kill#3 改未触·可测·+58%强正)
 user_todos:
 - task: AppLovin 10-K 2025 + 10-Q Q1 2026（+ Q2 2026 若已出）财报原文
   priority: P0
@@ -255,18 +292,43 @@ suggested_drilldowns:
   priority: P1
   status: open
   suggested_at: '2026-07-28T03:03:56.230184+00:00'
+- question: 命门1：找广告主侧 AXON incrementality/holdout 增量测试，或第三方 MMP 对 AXON 上报 ROAS 的复核；把"电商连续6季拒披露"作为叙事塌方前置信号显式定权
+  rationale: 命门1(总开关)单线反向承重：多头侧仅管理层自述+1份MMM halo，方向与唯一硬数据(Humans减值清零+坏账)相反，Q2再添负面(营收miss+电商零披露)
+  source: critic_weak_k
+  related:
+  - K1
+  - K3
+  priority: P0
+  status: open
+  suggested_at: '2026-08-06T02:13:11.760765+00:00'
+- question: 命门2：SEC调查(5:25-cv-03438)/证券集诉进展 + App Store/Play SDK 政策对 APP 分发依赖的具体风险敞口，量化为独立二元尾部概率
+  rationale: 监管尾部当前与命门1捆同一13%强空档、未独立计权(旧评审建议#3未落实、独立反方复中)
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P1
+  status: open
+  suggested_at: '2026-08-06T02:13:11.760765+00:00'
+- question: APP base 估值对 forward 倍数的敏感度:若 de-rate 为永久 re-rating(倍数维持20x不回23-30x),base公允值与EV各是多少?
+  rationale: 独立反方致命一击:EV+34%全压base 48%×+51%,而+51%依赖倍数回归=市场刚否决的溢价,该杠杆未单独压测
+  source: critic_weak_k
+  related:
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-08-12T14:50:02.637822+00:00'
 monitoring:
   enabled: false
   cadence: daily
 critic:
-  verdict: approve
-  summary: 独立空头反方对抗后维持看多6.0/标准档：反方致命一击(命门1过度归因)已被case用仓位化+kill+signpost结构化对冲(非论证消除)，consensus缺口经5源web兜底证定价锚成立且偏保守。残留=命门1单线承重(证据方向反向)+PEG头版口径瑕疵，均可修补不推翻结论。
-  at: '2026-07-28T03:03:56.221283+00:00'
-  thesis_version: 1
-  next_stage: done
+  verdict: request-rewrite
+  summary: 第3轮复评:反方致命一击=EV+34%最大杠杆(base倍数温和回归+29%CAGR)从未单独压测,且$300分岔有温和证伪接刀漏洞;看多5.5不翻案,窄重写环④(base敏感度)+环⑤⑥(软触发封仓)+环④⑤(SEC对命门1零信息量/私人集诉双刃)
+  at: '2026-08-12T14:50:02.628839+00:00'
+  thesis_version: 3
+  next_stage: 04-synthesizing
 decomposition:
-  current_version: 1
-  last_updated: '2026-07-27T14:03:41.879766+00:00'
+  current_version: 2
+  last_updated: '2026-08-05T21:15:03.162462+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
@@ -279,9 +341,15 @@ decomposition:
     summary: 命门1=AXON电商外延真增量/归因(中,机理锐化为单价可持续+漏斗放量);命门2=SEC/监管二元(uncertain,只坐实证券集诉);命门3=大数定律单价驱动增速vs估值(中,强化)
     convergence_status: open
     changelog: 命门无增删(3保3);命门1锐化+单价维度+Humans减值反证(mat-8ac9db/8cf41e);命门2口径厘清证券集诉vs未坐实SEC(mat-ce5674/81005d);命门3强化量萎缩(mat-8cf41e);primer入门目标+1(价vs量货币化,mat-8cf41e);对照全历史无震荡
+  - version: 2
+    stage_set_at: 04-resynthesis-q2
+    set_at: '2026-08-05T21:15:03.162471+00:00'
+    summary: 命门1=AXON电商真增量/归因(中偏低,略偏负:Q2电商零量化+营收miss,裁决点移至Q3);命门2=监管二元(uncertain,无变化);命门3=单价驱动增速vs估值(中,减速坐实+59→53→指引47%但de-rate同步反映,剩余下行收窄)
+    convergence_status: open
+    changelog: 命门无增删(3保3);命门1新增Q2负面(营收miss+电商持续零披露mat-963a64)裁决点移Q3;命门3减速由指引变已兑现坐实+margin见顶,但-22%de-rate使估值风险部分兑现;置信度微调均Q2硬数据驱动
 thesis:
-  current_version: 1
-  last_updated: '2026-07-27T14:03:41.851442+00:00'
+  current_version: 3
+  last_updated: '2026-08-12T14:37:53.985298+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -294,6 +362,20 @@ thesis:
     stage_set_at: 04-post-synthesis
     set_at: '2026-07-27T14:03:41.851610+00:00'
     summary: 看多(6.0/10):~$410现价分批建仓、$360加码;forward P/E~27x/PEG~0.6已de-rate合理;命门=AXON电商外延真增量vs过度归因(K1/K3)+监管二元尾部(K2)。base公允$520-580,bear$210-250,EV+24%,仓位化非满仓。
+  - version: 2
+    stage_set_at: 04-resynthesis-q2
+    set_at: '2026-08-05T21:15:03.121114+00:00'
+    summary: 看多(6.0维持):Q2 2026营收$1.924B(+52.8%,miss共识)+Q3指引双低+电商仍零量化→beat-and-raise叙事击穿盘后-22%至~$328;但无硬kill触发(增速53%/营业利润率77.7%),de-rate使forward
+      P/E~20x/PEG~0.4-0.5,现价已进强力买入区,EV+24%→+35%.目标价下修~10%:base$470-520/bull$620-700/bear$200-240.命门1裁决点后移至Q3财报.
+  - version: 2
+    stage_set_at: 04-resynthesis-q2
+    set_at: '2026-08-05T21:25:13.358971+00:00'
+    summary: 看多6.0→5.5(Q2侵蚀信心下调半档):Q2营收$1.924B(+52.8%,miss共识)+Q3指引双低+电商仍零量化→beat-and-raise叙事击穿盘后-22%至~$328.两轴分离:conviction降(命门1催化剂再落空/减速坐实/CAGR31→29)→强度5.5;odds升(de-rate使forward
+      P/E~20x/EV+24%→+32%)→落仓位.无硬kill触发.目标价下修:base$440-510(并回保守EV/FCF模型)/bull$620-700/bear$200-240.$300改分岔判据非机械止损.命门1裁决点移至Q3财报.
+  - version: 3
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-12T14:37:53.985492+00:00'
+    summary: 窄重合成:SEC结案(赔率+,监管尾部5%→3%)被BofA gaming self-learning见顶疑点(信心-)对冲→强度5.5不动;EV+30%→~+34%;价$314;看多不翻案,Q3(2026-11-04)裁决点
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-07-27T12:52:21.247321+00:00'
@@ -345,10 +427,33 @@ stage_history:
     empty_pending_decision: 0
 - stage: 05-critic-review
   entered_at: '2026-07-27T14:09:36.343955+00:00'
-  exited_at: null
+  exited_at: '2026-08-06T03:01:20.545034+00:00'
   gap_snapshot:
     uncovered_ks: []
     uncovered_ring_inputs:
     - consensus
     autofetch_debt: 0
     empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-08-06T03:01:20.545034+00:00'
+  exited_at: '2026-08-12T14:57:25.574211+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - consensus
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-08-12T14:57:25.574211+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.072570+00:00'
+  reason: 依赖的『高位企稳/官方+市场双双转鹰但长端牛平(10Y4.38)』已变『高位·官方/市场/长端同向再上·再通胀式熊陡(2s10s+34bp)·10Y实际利率2.43创周期新高』(regime
+    v3→v4)
+  proposal_id: 7c8888506e59
+  locator: rates_us

@@ -49,7 +49,8 @@ holdings:
   regime_hurt:
   - 中国紧信用(信贷脉冲-1.85)/社零弱→白酒需求端逆风
   - 风险偏好走弱时A股消费外资流承压
-  plain: 同茅台逻辑但弹性更大;人民币计价、内需驱动,受美熊陡冲击小,主看国内信用能否转松(信贷脉冲仍负=逆风);去重后并入本行(原-000568 slug 已改名)
+  plain: 同茅台逻辑但弹性更大;人民币计价、内需驱动,受美熊陡冲击小,主看国内信用能否转松(信贷脉冲仍负=逆风);去重后并入本行(原-000568 slug
+    已改名)
   source: macro_synth
   provisional: false
   as_of_regime: v4
@@ -742,6 +743,61 @@ holdings:
   source: macro_synth
   provisional: false
   as_of_regime: v4
+- slug: jp-anycolor-5032
+  display_name: ANYCOLOR (5032, にじさんじ)
+  duration: long
+  rate_beta: mid
+  liquidity_beta: high
+  usd_exposure: low
+  exposure_score: mid
+  regime_favor:
+  - 日元升值/BoJ正常化（营收96.4%国内日元、无海外折算损失，内需股相对受益）
+  - 风险偏好回升（年振幅100%+、自由流通股换手6.8x，高beta弹性大）
+  - 实际利率回落（成长股贴现率缓解，但已de-rate到EV/EBIT 6.7x故弹性有限）
+  regime_hurt:
+  - 10Y实际利率2.43%创周期新高=估值天花板（虽PER已压到11.3x，进一步扩张受限）
+  - 日元carry(USDJPY 163.71)拥挤平仓→日股整体强制抛售，高换手高beta小盘首当其冲
+  - MOVE/VIX上行的波动解压环境不利高波动标的
+  plain: 实际利率再上压制成长股倍数扩张，但本标的已de-rate到EV/EBIT 6.7x、零负债、净现金占市值14%，贴现率敏感度已大幅钝化；真正的传导是carry平仓引发的日股系统性抛售（高换手高beta），而非基本面。营收96.4%国内日元→汇率直接暴露低。
+  as_of_regime: v4
+  source: self_registered
+  provisional: true
+- slug: us-tempus
+  display_name: Tempus AI (TEM)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: low
+  exposure_score: high
+  regime_favor:
+  - risk-on/流动性宽松
+  - 实际利率下行
+  - 成长股风险偏好回升
+  regime_hurt:
+  - 再通胀式熊陡/实际利率上行
+  - 风险偏好收缩
+  - 信用利差走阔
+  plain: 未盈利高久期成长股+持续股权/可转债再融资依赖：贴现率上行直接压估值、流动性收紧抬高再融资摊薄成本、风险偏好退潮时缺基本面地板；对美国实际利率与风险偏好双高敏感
+  as_of_regime: v4
+  source: self_registered
+  provisional: true
+- slug: us-sandisk
+  display_name: SanDisk (SNDK)
+  duration: short
+  rate_beta: mid
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: high
+  regime_favor:
+  - 再通胀/名义需求强利好周期品ASP
+  - NBM近端现金流可见度=short-duration抗贴现率
+  regime_hurt:
+  - 高实际利率2.43%压高估值/AI主题beta
+  - 脆弱度high+MOVE无减震器放大超高beta回撤(已从$2354→$1260)
+  plain: 超高beta NAND周期股;盈利受名义需求(利好),但估值/情绪受高实际利率+risk-off压制;净现金资产负债表是缓冲
+  as_of_regime: v4
+  source: self_registered
+  provisional: true
 categorical_tail:
 - name: 中美地缘/关税
   state: 平静

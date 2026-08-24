@@ -1,6 +1,6 @@
 slug: us-applovin
 variant: opus4.8
-updated: '2026-07-28T02:59:42.413738+00:00'
+updated: '2026-08-13T03:15:28.742354+00:00'
 materials:
 - id: mat-dea7f0
   filename: 2026-07-27_applovin-corp---applovin-completes-sale-of-mobile-.md
@@ -72,6 +72,8 @@ materials:
     allegations attribution app store'
   mineru_state: not_needed
   addresses:
+  - K1
+  - K3
   - scope
   confidence: 0.9
   search_meta:
@@ -84,6 +86,8 @@ materials:
     stale_at: '2026-08-26T12:55:27.861128+00:00'
     expire_at: '2026-10-25T12:55:27.861128+00:00'
     triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
 - id: mat-280d44
   filename: 2026-07-27_reported-applovin-sec-probe-wipes-out-8-65-billion.md
   source_type: web-search
@@ -193,6 +197,9 @@ materials:
     - AppLovin Q1 2026 earnings results revenue advertising EBITDA guidance press
       release
     - AppLovin Q2 2026 revenue growth guidance advertising deceleration
+  rings:
+  - consensus
+  - financial-arc
 - id: mat-03c560
   filename: 2026-07-27_stock-market-news-for-feb-12-2026.md
   source_type: web-search
@@ -264,7 +271,10 @@ materials:
   notes: Auto-downloaded from cninfo — AppLovin Corp
   mineru_state: not_needed
   rings:
+  - biz-moat-unit-econ
   - financial-arc
+  addresses:
+  - K4
 - id: mat-0888c8
   filename: sec/2026_APP_10-Q_2026-05-06/item_1_financial.md
   source_type: sec-section
@@ -302,6 +312,8 @@ materials:
   - risk
   parent_mat: mat-c18c67
   sec_section: item_3_quant_risk
+  rings:
+  - bull-bear
 - id: mat-ce5674
   filename: sec/2026_APP_10-Q_2026-05-06/item_1a_risk.md
   source_type: sec-section
@@ -326,6 +338,8 @@ materials:
   - biz-moat-unit-econ
   - financial-arc
   - mgmt-capital-alloc
+  addresses:
+  - K4
 - id: mat-dd8ac8
   filename: sec/2025_APP_10-K_2026-02-19/item_1_business.md
   source_type: sec-section
@@ -379,6 +393,8 @@ materials:
   - risk
   parent_mat: mat-c4bdcb
   sec_section: item_7a_quant_risk
+  rings:
+  - bull-bear
 - id: mat-8ac9db
   filename: sec/2025_APP_10-K_2026-02-19/item_8_financial.md
   source_type: sec-section
@@ -400,6 +416,7 @@ materials:
     AXON'
   mineru_state: not_needed
   addresses:
+  - K1
   - scope
   confidence: 0.9
   search_meta:
@@ -412,6 +429,8 @@ materials:
     stale_at: '2026-08-26T12:55:27.798228+00:00'
     expire_at: '2026-10-25T12:55:27.798228+00:00'
     triggered_by: 00-deep-fetch
+  rings:
+  - biz-moat-unit-econ
 - id: mat-e26d9d
   filename: 2026-07-27_events-presentations.md
   source_type: web-search
@@ -421,6 +440,7 @@ materials:
     AXON'
   mineru_state: not_needed
   addresses:
+  - K1
   - scope
   confidence: 0.9
   search_meta:
@@ -433,6 +453,8 @@ materials:
     stale_at: '2026-08-26T12:55:27.824602+00:00'
     expire_at: '2026-10-25T12:55:27.824602+00:00'
     triggered_by: 00-deep-fetch
+  rings:
+  - biz-moat-unit-econ
 - id: mat-90531d
   filename: 2026-07-27_applovin-attribution-discrepancies-explained-axon-.md
   source_type: web-search
@@ -442,6 +464,8 @@ materials:
     results'
   mineru_state: not_needed
   addresses:
+  - K1
+  - K3
   - scope
   confidence: 0.9
   search_meta:
@@ -461,6 +485,7 @@ materials:
   notes: query='e-commerce performance advertising market size TAM retail media 2026'
   mineru_state: not_needed
   addresses:
+  - K1
   - scope
   confidence: 0.9
   search_meta:
@@ -481,6 +506,7 @@ materials:
     study'
   mineru_state: not_needed
   addresses:
+  - K3
   - scope
   confidence: 0.9
   search_meta:
@@ -492,6 +518,8 @@ materials:
     stale_at: '2026-08-26T12:55:28.007699+00:00'
     expire_at: '2026-10-25T12:55:28.007699+00:00'
     triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
 - id: mat-4c7272
   filename: q1-2026-earnings-call-takeaways.md
   source_type: earnings-call
@@ -499,6 +527,9 @@ materials:
   processed: true
   notes: ''
   mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
 - id: mat-308a46
   filename: fuzzy-panda-culper-short-report.md
   source_type: short-report
@@ -506,6 +537,9 @@ materials:
   processed: true
   notes: ''
   mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
 - id: mat-3364ba
   filename: 2026-07-27_applovin-expects-q2-2026-revenue-of-1-915b--1-945b.md
   source_type: web-search
@@ -681,3 +715,25 @@ materials:
     stale_at: '2026-08-27T02:59:42.307306+00:00'
     expire_at: '2026-10-26T02:59:42.307306+00:00'
     triggered_by: 05-critic
+  rings:
+  - consensus
+  - valuation-anchor
+- id: mat-963a64
+  filename: q2_2026_earnings_web.md
+  source_type: realtime-web
+  added: '2026-08-05T21:03:52.429749+00:00'
+  processed: false
+  notes: ''
+  mineru_state: not_needed
+  rings:
+  - historical-mirror
+- id: mat-d65d44
+  filename: drilldown_20260813_installs.md
+  source_type: drilldown
+  added: '2026-08-13T03:15:28.719758+00:00'
+  processed: true
+  notes: 07-drilldown 专题：安装量下降说明了什么/是否用户流失/未来增速有无保障（含 Q2 10-Q 量价 −2%/+58% 新披露）
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4

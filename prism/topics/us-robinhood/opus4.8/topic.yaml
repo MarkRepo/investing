@@ -3,7 +3,7 @@ display_name: Robinhood (HOOD, NASDAQ)
 type: company
 created: '2026-06-04T03:58:47.030177+00:00'
 status: active
-stage: done
+stage: 04-post-synthesis
 parent_topic: null
 monitoring_tier: dormant
 concepts: []
@@ -20,6 +20,7 @@ scope:
   - 加密收入占比
   - Gold 订阅 ARPU
   - 监管 PFOF
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
 outputs_state:
   00_primer:
     version: 1
@@ -56,81 +57,53 @@ outputs_state:
     last_error: null
     critic_passed: true
   c_investment_case:
-    version: 2
-    last_updated: '2026-06-04T22:24:57.429008+00:00'
+    version: 4
+    last_updated: '2026-08-06T02:58:59.818409+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
-    - mat-0bd2d9
     - mat-0ea800
     - mat-151402
-    - mat-156e74
     - mat-1dd165
-    - mat-1ef1f0
-    - mat-3ae8ce
     - mat-402035
     - mat-470dc6
-    - mat-4f8182
     - mat-4ff346
     - mat-51f1da
-    - mat-6dd3c8
     - mat-7089e3
-    - mat-79f041
-    - mat-7d7b75
-    - mat-825d24
-    - mat-8455d8
     - mat-84ccf5
     - mat-aba43c
     - mat-b47f3b
     - mat-b8d336
-    - mat-c10716
     - mat-c9a2c5
     - mat-d0a459
     - mat-d76b19
-    - mat-ddaac6
-    - mat-e5157e
+    - mat-e43ce5
     - mat-ffdbb4
     last_error: null
   07_decision_kit:
-    version: 2
-    last_updated: '2026-06-04T22:26:05.774150+00:00'
+    version: 4
+    last_updated: '2026-08-06T02:58:59.839145+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
-    - mat-0ea800
-    - mat-1dd165
-    - mat-3ae8ce
     - mat-470dc6
     - mat-51f1da
-    - mat-7089e3
-    - mat-7d7b75
-    - mat-aba43c
-    - mat-c9a2c5
-    - mat-d0a459
-    - mat-e5157e
-    - mat-ffdbb4
+    - mat-e43ce5
     last_error: null
   08_living_feed:
-    version: 5
-    last_updated: '2026-06-14T08:59:14.025194+00:00'
+    version: 7
+    last_updated: '2026-08-06T02:11:38.347794+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
-    - mat-1dd165
-    - mat-470dc6
-    - mat-4ff346
-    - mat-aba43c
-    - mat-b47f3b
-    - mat-c10716
-    - mat-ffdbb4
+    - mat-e43ce5
     last_error: null
 parent_materials: []
 next_actions:
-- ✅ 05 复评 approve（v2 整体4）→ stage=done，进 06-daily-monitor。监控锚：Q2 2026 财报(~2026/08)
-  验事件合约可持续性+NII趋势+倍数是否压缩
-- 增量补强(非阻断,06触发时补)：给倍数空头(全部edge)加对称证伪 signpost——"连续两季EPS beat+加密/事件合约放量但PE仍≥38x未压缩→认40x结构性、上调base倍数至33x+、buy
-  box上移"，入 07_decision_kit kill_criteria
-- 增量补强：环⑥"等回调$68-74"软化为"回调优先,但Q2平滑论第二季硬验证+倍数未压则可现价分批"——回应高beta跳跃路径踏空右尾风险
+- 'critic 标 stale: c_investment_case'
+- 主 agent 即将在本对话续跑 04（见 workflow 05 Step 7.5）
+- critic 评审：v3 case 整体 4 分、证据充分，但环④ EV 存在"倍数收敛×clean增速"双重计价漏洞（对复合器二者正相关）+ 概率左偏（右尾多期权仅给强牛12%）；窄范围重写
+  c_investment_case 环④/环⑤盲点，补联合右尾情景+显式概率论证。
 user_todos:
 - task: 确认 PFOF / Order Competition Rule / Reg Best Execution 在 Atkins SEC 下的最新状态（撤回/搁置/仍在）
   priority: P0
@@ -296,19 +269,28 @@ user_todos:
   fetch_status: unattempted
   fetch_attempts: 0
   disposition: undecided
+- task: 决策(Q2后v3):现价$92.80在hold区(EV≈-10%),业务升7/10;可0-2%小额试探,回调至$80-88分批,$70-80强力买入,>$100不追
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
 monitoring:
   enabled: false
   cadence: daily
 critic:
-  verdict: approve
-  summary: v2 复评 approve（整体4）：上轮三大致命一击（街口缺口/下行权重无敏感性/-46%回撤）已全闭环；本轮多头反方致命一击「28x单点故障/用错周期可比」经交叉核对为中——反方用trailing+52%，case用前瞻~15%
-    EPS CAGR+监管期权空头+PEG≈2.67化解。残留二处增量(交06跟踪)：①倍数空头缺对称证伪signpost ②"等回调"在beta2.29跳跃路径踏空右尾风险被低估。
-  at: '2026-06-04T22:38:37.530072+00:00'
-  thesis_version: 1
-  next_stage: done
+  verdict: request-rewrite
+  summary: v3 case 整体 4 分、证据充分，但环④ EV 存在"倍数收敛×clean增速"双重计价漏洞（对复合器二者正相关）+ 概率左偏（右尾多期权仅给强牛12%）；窄范围重写
+    c_investment_case 环④/环⑤盲点，补联合右尾情景+显式概率论证。
+  at: '2026-08-06T02:11:38.333366+00:00'
+  thesis_version: 2
+  next_stage: 04-synthesizing
 decomposition:
-  current_version: 1
-  last_updated: '2026-06-04T08:10:27.365908+00:00'
+  current_version: 2
+  last_updated: '2026-08-05T21:22:12.560909+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
@@ -322,9 +304,15 @@ decomposition:
     summary: 命门1多元化平滑论:中→偏成立但质变(换尾部非真对冲); 命门2估值:低→中(PE40.2更贵,EV-15%@现价); 命门3 PFOF监管:低→中(近端中和+休眠可复活+2026H2节点)
     convergence_status: open
     changelog: 3条命门全置信度更新(命门1凭mat-1dd165 Q1硬验证/命门2凭market_data PE40.2+EV测算/命门3凭mat-c10716/ffdbb4监管定调);命门1从"平滑论真伪"重述为"平滑器质量";primer目标6/7从缺口升为已覆盖、"平滑器质量"并入目标4;无砍/重排/新增独立命门,对照全历史无震荡
+  - version: 2
+    stage_set_at: 04-synthesize
+    set_at: '2026-08-05T21:22:12.560915+00:00'
+    summary: Q2 2026重拆:命门1(平滑论)升结构性成立;命门2新增headline质量瑕疵;命门3(监管)迁移到增长引擎本身(预测市场~12%)-K7升头号kill.业务6→7,买入框上移.
+    convergence_status: converged
+    changelog: 'v1→v2: 命门1置信度跃升(2季连续验证,P0缺口已解);命门2新增一次性粉饰维度(clean+15% vs headline+48%),base倍数28x→31x;命门3结构性迁移(监管从旁支→增长引擎),K7升头号kill;业务评分6→7有Q2硬数据支撑.'
 thesis:
-  current_version: 1
-  last_updated: '2026-06-04T08:10:27.326341+00:00'
+  current_version: 2
+  last_updated: '2026-08-05T21:22:12.526348+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -336,6 +324,11 @@ thesis:
     stage_set_at: 04-post-synthesis
     set_at: '2026-06-04T08:10:27.326361+00:00'
     summary: 中性偏多6/10(业务方向)+现价不便宜(EV负):扭亏真实+多元化平滑论Q1硬验证,但平滑器是高beta换尾部、NII以量补价降息双杀、PE40.2缺质量支撑;5档EV≈-15%@$82.85为负→等回调至$63-74买入框分批,现价仅试探
+  - version: 2
+    stage_set_at: 04-synthesize
+    set_at: '2026-08-05T21:22:12.526503+00:00'
+    summary: '中性偏多7/10(业务,v1 6→7)+现价$92.80 EV≈-10%(价格). Q2 2026 blowout: 加密-38%但总营收+32%,平滑论2季连续验证,13线$100M+,费用指引下调;但EPS含$0.14一次性RVI收益(clean+15%),增长引擎=监管最脆弱的预测市场.
+      edge=街口44x溢价过头(我30-33x). 买入框上移:强力$70-80/标准$80-88.'
 prescan_log:
 - round_at: '2026-06-04T06:27:45.326440+00:00'
   status: full
@@ -344,3 +337,32 @@ prescan_log:
   queries_run: 9
   queries_with_hits: 9
 canonical: true
+suggested_drilldowns:
+- question: 构造"增速回暖(clean 20%+)+ 倍数守 36-40x"的联合右尾情景，量化其独立概率——右尾多期权(预测市场/代币化/Trump
+    Account/国际/Gold渗透)是否真独立、还是同受宏观风险偏好驱动？
+  rationale: critic 致命一击：环④ base 把低倍数(31x)与低增速(15%)当独立赌注，对复合器实为同一看空赌注计两次；强牛仅12%把联合右尾压过低，直接决定
+    EV=-10% 的正负。
+  source: critic_weak_k
+  related:
+  - WMBT-1
+  - WMBT-4
+  priority: P0
+  status: open
+  suggested_at: '2026-08-06T02:11:51.097975+00:00'
+stage_history:
+- stage: 05-critic-review
+  entered_at: '2026-08-05T21:27:30.644360+00:00'
+  exited_at: '2026-08-06T02:58:59.848657+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 5
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-08-06T02:58:59.848657+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 6
+    empty_pending_decision: 0

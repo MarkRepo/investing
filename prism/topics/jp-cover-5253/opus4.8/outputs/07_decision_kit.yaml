@@ -1,0 +1,103 @@
+slug: jp-cover-5253
+variant: opus4.8
+topic_type: company
+display_name: COVER株式会社 (COVER Corp, hololive, TSE 5253)
+ticker: TSE_5253
+generated: 2026-08-02T00:00:00+09:00
+data_freshness: 2026-Q4
+data_freshness_basis: mat-53da95 (FY2026/3 通期決算 2026-05-14) + 实时行情 yfinance 2026-08-02
+
+buy_box:
+  strong_buy_max: 1200
+  accumulate_min: 1200
+  accumulate_max: 1460
+  hold_min: 1460
+  hold_max: 1950
+  current_price: 1460
+  price_as_of: 2026-08-02
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: EV微正(+6%)但信心中-低；利润率触底(命门1)与第二曲线兑现(K4)两大命门信息不充分(ホロドリ流水/库存出清/TCG占比均未明)——低信息+未验证拐点，不配标准/重仓
+  initial_max_pct: null
+  full_max_pct: 4
+  add_ladder_prices: [1200, 1050]
+  max_cluster_pct: 8
+
+valuation_models:
+  - name: reverse_forward_pe
+    label: 前瞻PE反推（公司指引EPS ¥74.64 × 倍数区间）
+    bull_fair_value: [1900, 2270]
+    base_fair_value: [1450, 1650]
+    bear_fair_value: [1020, 1200]
+  - name: peer_relative_ev_ebit
+    label: 同业横截面（EV/EBIT 对标 ANYCOLOR，含IP稀缺溢价折让）
+    bull_fair_value: [1750, 2100]
+    base_fair_value: [1400, 1600]
+    bear_fair_value: [1000, 1200]
+
+kill_criteria:
+  - id: margin_break_13
+    description: FY2027 Q1(8/12)或H1(11月)营业利益率跌破13%，确认结构性下滑非节奏
+    status: pending
+    check_at: 2026-08-12
+  - id: merch_two_q_negative
+    description: 物販连续2季YoY负增长且无第二曲线可辨识收入抵消
+    status: pending
+    check_at: 2026-11-30
+  - id: new_impairment
+    description: 出现新一笔重大减损(尤其ホロドリ/TCG相关)，第二曲线重蹈ホロアース覆辙
+    status: pending
+    check_at: 2027-03-31
+  - id: margin_recover_14_bull
+    description: （上修）FY2027 Q1营益率回升≥14%且物販YoY转正，触底反弹成立→翻多升标准仓
+    status: pending
+    check_at: 2026-08-12
+
+signposts:
+  - date: 2026-08-12
+    event: FY2027 Q1 决算（最关键验证点）
+    bull_signal: 营益率止跌≥14% + 物販YoY转正 + ホロドリ初期正贡献
+    bear_signal: 营益率<13% + 物販续负 + H1指引-27.6%被兑现
+  - date: 2026-11-30
+    event: FY2027 H1 决算
+    bull_signal: H2修复叙事成立、利润率回升
+    bear_signal: H1营益-27.6%坐实、无触底迹象
+  - date: 2027-01-31
+    event: ホロドリ 上线后3-6月 セルラン/流水轨迹
+    bull_signal: 维持畅销榜前列、流水稳定
+    bear_signal: 初动#1后快速回落（材料出尽）
+  - date: 2027-03-31
+    event: TCG 出货/新弹节奏 + 全年物販第二曲线可持续性
+    bull_signal: TCG持续出新弹撑物販增量
+    bear_signal: TCG增长熄火、物販无第二曲线接棒
+
+cluster_tags: [vtuber, japan-content, ip-monetization]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 3
+    kind: data-missing
+    note: ホロドリ 精确流水/留存未披露，第二曲线抵消物販减速的能力无法量化
+  - ring: 1
+    kind: data-missing
+    note: TCG 在物販内精确占比、talent per-head 收益曲线缺失，护城河变薄速度靠定性
+  - ring: 4
+    kind: data-missing
+    note: 库存评价减是否已一次性出清短信未明，利润率触底判断含此假设不确定性
+
+market_implied:
+  metric: op_margin_fy27_pct
+  value: 14
+
+my_vs_market_delta:
+  metric: op_margin_fy27_pct
+  my_value: 13.5
+  delta: "-0.5pct"
+  direction: short

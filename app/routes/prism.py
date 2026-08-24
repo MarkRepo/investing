@@ -13,12 +13,12 @@ from __future__ import annotations
 import random
 from collections import defaultdict
 
-from fastapi import APIRouter, Depends, Form, HTTPException, Query, Request
+from fastapi import APIRouter, Cookie, Depends, Form, HTTPException, Query, Request
 from fastapi.responses import JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
-from app.auth import require_auth
+from app.auth import _TOKEN, require_auth
 from app.config import APP_TEMPLATES_DIR
 from prism.scripts import manifest as manifest_io
 from prism.scripts import outputs as outputs_io
@@ -230,16 +230,63 @@ def _list_notes() -> list[dict]:
     return [{"name": p.stem, "title": _note_title(p)} for p in sorted(d.glob("*.md"))]
 
 
+def _safe_next(next_path: str | None) -> str:
+    """登录回跳白名单：只允许以单个 '/' 开头的站内路径，防开放重定向(//evil 或 https://)。"""
+    if not next_path or not next_path.startswith("/") or next_path.startswith("//"):
+        return "/prism/notes"
+    return next_path
+
+
+def require_notes_auth(request: Request, prism_auth: str | None = Cookie(default=None)):
+    """笔记区门禁：复用 .env 的 PRISM_AUTH_TOKEN cookie。未配置 token 时放行
+    (降级兼容，与 require_auth 一致)；cookie 不匹配则 302 跳 /prism/notes/login
+    并带 next 回跳。用 HTTPException(302+location) 抛出即短路，等价于依赖内重定向。"""
+    from urllib.parse import quote
+    if not _TOKEN or prism_auth == _TOKEN:
+        return
+    raise HTTPException(
+        status_code=302,
+        detail="login required",
+        headers={"location": f"/prism/notes/login?next={quote(request.url.path, safe='')}"},
+    )
+
+
 @router.get("/notes")
-def prism_notes_index(request: Request):
+def prism_notes_index(request: Request, _auth: None = Depends(require_notes_auth)):
     """学习笔记列表 — /prism/notes。独立于投资 topic 的纯 markdown 阅读区。"""
     return templates.TemplateResponse(
         request, "prism/notes_index.html", {"notes": _list_notes()},
     )
 
 
+@router.get("/notes/login")
+def prism_notes_login(request: Request, next: str = "/prism/notes"):
+    """笔记区登录页 — /prism/notes/login。已登录直接回跳 next，否则渲染 token 表单。"""
+    nxt = _safe_next(next)
+    if _TOKEN and request.cookies.get("prism_auth") == _TOKEN:
+        return RedirectResponse(url=nxt, status_code=302)
+    return templates.TemplateResponse(
+        request, "prism/notes_login.html", {"next": nxt, "error": False},
+    )
+
+
+@router.post("/notes/login")
+def prism_notes_login_post(request: Request, token: str = Form(...), next: str = Form("/prism/notes")):
+    """笔记区登录提交：校验 token → 写 30 天 cookie → 303 回跳 next。复用与
+    /prism/auth 同一套 token 与 cookie 属性；校验失败则回登录页标红提示。"""
+    nxt = _safe_next(next)
+    if not _TOKEN or token != _TOKEN:
+        return templates.TemplateResponse(
+            request, "prism/notes_login.html", {"next": nxt, "error": True},
+        )
+    resp = RedirectResponse(url=nxt, status_code=303)
+    resp.set_cookie("prism_auth", token, max_age=60 * 60 * 24 * 30,
+                    httponly=True, samesite="strict")
+    return resp
+
+
 @router.get("/notes/{name}")
-def prism_note_detail(request: Request, name: str):
+def prism_note_detail(request: Request, name: str, _auth: None = Depends(require_notes_auth)):
     """渲染单篇学习笔记 — /prism/notes/{name}。"""
     # 防目录穿越：文件名只允许字母/数字/连字符/下划线（'.'、'/' 会被拒）
     if not name.replace("-", "").replace("_", "").isalnum():

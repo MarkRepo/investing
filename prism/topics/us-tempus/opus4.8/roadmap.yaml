@@ -1,0 +1,121 @@
+# roadmap.yaml — 研究路线图 (workflow 01 · Tempus AI TEM)
+slug: us-tempus
+created: 2026-08-03
+primer_scope: >
+  primer 应覆盖：精准肿瘤诊断行业边界（NGS/液体活检/MRD/遗传检测四类）、参与者格局
+  （Tempus/Guardant/Foundation/Natera/Exact/Caris）、市场规模与发展阶段、报销机制
+  （CMS/商保/ADLT/PAMA）、Tempus 两大分部商业模式与"诊断换数据"飞轮、估值叙事双面性、
+  adj.EBITDA vs GAAP/FCF 会计差异、分部 SOTP 估值方法。
+
+learning_track:
+  l3_debates:         # 争议层：分歧在哪，各方逻辑（映射 thesis 反方）
+    - question: "Data & AI 是可复利的高毛利数据护城河，还是项目制、增速放缓、含 Pathos 循环成分的数据授权？"
+      source_hint: "10-K item_1 business + 分部披露 + Spruce Point 报告 + 历季 TCV"
+    - question: "连环并购（Ambry $600M + Personalis $1.5B）是战略补位+真协同，还是并购堆量掩盖弱有机诊断经济性 + 稀释股东？"
+      source_hint: "10-K/10-Q 分部与股本 + 财报电话会有机增长口径"
+    - question: "Spruce Point 的关联方/激进会计指控是实质问题，还是已被市场淡化（报告后股价回升 15%）？"
+      source_hint: "Spruce Point 全文 + 公司回应 + 10-K 关联方披露 + SEC 动态"
+    - question: "TEM 该按诊断同业倍数（EV/Sales 3-6x）定价，还是 AI 平台溢价倍数？合理溢价区间多少？"
+      source_hint: "诊断同业 comps + 券商 SOTP + 分部毛利结构"
+    - question: "adj. EBITDA 转正（Q2'26 $8.0M）是否等于可持续盈利/正 FCF？两笔收购后现金消耗如何？"
+      source_hint: "10-Q 现金流量表 + 资产负债表 + 债务/可转债披露"
+
+  l4_hunting:         # 狩猎层：逐条对齐 K#
+    - question: "剔除新签大单后 Data & AI 的有机 YoY 增速与 TCV/backlog 趋势——能否支撑 AI 溢价？"
+      addresses: [K1]
+      search_keywords: ["Tempus Data AI organic growth", "TCV backlog trend", "data licensing revenue"]
+      source_hint: "历季财报 deck + earnings call transcript + 10-K MD&A"
+    - question: "剔除 Ambry/Personalis 并表后的有机总营收增速与每股价值稀释轨迹？"
+      addresses: [K2]
+      search_keywords: ["Tempus organic revenue ex-acquisition", "share dilution TEM", "Ambry contribution"]
+      source_hint: "10-Q 分部 + 股本 + 财报电话会有机口径评论"
+    - question: "两笔大收购后 GAAP 盈利/自由现金流路径与现金跑道，是否需股权再融资摊薄？"
+      addresses: [K3]
+      search_keywords: ["Tempus free cash flow 2026", "cash runway balance sheet", "convertible debt"]
+      source_hint: "10-Q 现金流量表 + 资产负债表 + 管理层指引"
+    - question: "Spruce Point 指控是否被监管/审计坐实？Pathos 相关收入占 Data 收入比例多少？"
+      addresses: [K4]
+      search_keywords: ["Tempus SEC inquiry restatement", "Pathos related party revenue", "AstraZeneca circular"]
+      source_hint: "10-K 关联方披露 + Spruce Point 全文 + 后续新闻/监管"
+    - question: "Personalis 并入后 MRD 产品对 Natera Signatera 的报销与份额进展——新引擎还是烧钱红海？"
+      addresses: [K5]
+      search_keywords: ["MRD reimbursement Medicare", "Signatera market share", "Personalis NeXT Dx"]
+      source_hint: "行业媒体 + 各公司披露 + 学术 ctDNA MRD 综述"
+    - question: "当前 EV/Sales 相对诊断同业（GH/NTRA/EXAS/Caris）溢价幅度，AI 叙事退潮时的均值回归下行空间？"
+      addresses: [K6]
+      search_keywords: ["Tempus EV sales multiple peers", "diagnostic valuation comps", "TEM SOTP"]
+      source_hint: "同业行情/财报 comps + 券商目标价 + 分部 SOTP"
+
+material_priority:
+  tier1:              # 必读（多数 00 已抓）
+    - title: "Tempus FY2025 10-K（business/MD&A/financial 已切 item）"
+      type: annual-report
+      ticker: TEM
+      source: "SEC EDGAR（已下载 mat-3d8a42）"
+      why: "分部营收/毛利/TCV、现金流、股本、关联方(Pathos)、风险因素——环①③④⑤地基"
+    - title: "Tempus Q2 2026 10-Q（financial/MD&A 已切 item）"
+      type: quarterly-report
+      ticker: TEM
+      source: "SEC EDGAR（已下载 mat-9ad112）"
+      why: "最新季度分部/现金/EBITDA + Personalis 后续事件——环③④"
+    - title: "Data & AI 分部 TCV/backlog 历季时间序列 + 客户集中度"
+      type: data
+      source: "历季财报 deck / earnings call transcript"
+      why: "K1 命门核心——有机增速与 backlog 兑现是 AI 溢价成立与否的关键"
+      addresses: [K1]
+    - title: "Spruce Point 做空报告全文 + 公司回应"
+      type: sell-side-note
+      source: "sprucepointcap.com (2025-05-28) + 公司 8-K/回应"
+      why: "K4 关联方/会计指控清单——环⑤证伪 + 治理折价"
+      addresses: [K4]
+  tier2:              # 补充
+    - title: "2-3 家券商 TEM 深度报告 / 一致预期（2026-2027 营收/EPS/目标价）"
+      type: sell-side-note
+      source: "券商研报 + MarketBeat/Public 聚合起点取一手"
+      why: "K6 环②市场定价锚 + 目标价框架"
+      addresses: [K6]
+    - title: "诊断同业估值可比（GH/NTRA/EXAS/Caris）EV/Sales + 增速 + 毛利"
+      type: data
+      source: "各公司财报 + 行情数据"
+      why: "K6 环②/④ 分部 SOTP 与溢价测算"
+      addresses: [K6]
+    - title: "Tempus 财报电话会 transcript（有机 vs 并表增长桥、整合费用）"
+      type: data
+      source: "earnings call transcript（Q3'25 / Q4'25 / Q1'26 / Q2'26）"
+      why: "K2 有机口径拆分 + 管理层资本配置语气"
+      addresses: [K2]
+    - title: "DEF 14A 代理声明（2026-04-07）+ S-1 关联方披露"
+      type: policy
+      source: "SEC（已入库聚合源，01 取一手）"
+      why: "K4 Lefkofsky 双层股权 + Pathos/Fukushima 关联实体图谱——环①管理层梁"
+      addresses: [K4]
+  tier3:              # 可选
+    - title: "MRD 赛道竞争与报销（Natera Signatera vs Personalis）"
+      type: industry-research
+      source: "行业媒体 + 学术综述"
+      why: "K5 MRD 新引擎评估"
+      addresses: [K5]
+    - title: "historical-mirror：诊断股并购堆量/故事股崩盘复盘（Invitae、23andMe）"
+      type: industry-research
+      source: "复盘文章 / 行业研报 / web-search"
+      why: "环⑤历史失败镜鉴——相似剧本怎么崩、利润为何没兑现"
+      addresses: [K2, K3]
+
+key_risks_to_monitor:
+  - "Data & AI 有机增速掉到 <20% 或 backlog 停滞/下修（K1 证伪）"
+  - "剔除并表后有机增长 <15% + 每股指标持续摊薄（K2 证伪）"
+  - "2026-2027 仍烧现金 + 股权再融资摊薄（K3 证伪）"
+  - "SEC 问询/财报重述，或 Pathos 循环收入被坐实（K4 触发）"
+  - "MRD 报销受阻/份额被 Natera 压制（K5）"
+  - "EV/Sales 向诊断同业均值回归（K6 下行）"
+
+analogies_to_study:
+  - case: "Invitae (NVTA)｜美国遗传检测｜2017-2024"
+    logic: "并购驱动高增长 + 长期现金消耗的诊断 roll-up，2024 破产被 Labcorp 收购"
+    limit: "Tempus 有 AI/数据溢价与更强融资能力，且已 adj.EBITDA 转正"
+  - case: "23andMe｜美国消费基因组｜2021-2024"
+    logic: "基因组'故事股'高估值上市后叙事退潮、股价崩塌"
+    limit: "商业模式不同（消费 vs 临床/药企数据），Tempus 收入基础更实"
+  - case: "Guardant Health (GH)｜美国肿瘤 NGS 同业｜2018-至今"
+    logic: "高倍数肿瘤 NGS 上市后估值压缩、盈利兑现慢——直接可比的倍数回归镜鉴"
+    limit: "产品结构（液体活检为主）与 Tempus 数据业务侧重不同"

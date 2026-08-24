@@ -1,0 +1,15 @@
+as_of_regime_version: 4
+regime_composite: 再通胀式熊陡·美国实际利率创新高(2.43%)·偏防御压久期——对未盈利高久期+再融资依赖型成长股(TEM)构成估值与融资双重逆风
+depends_on_states:
+- conclusion: rates_us
+  state: 高位·再通胀式熊陡·10Y实际利率2.43%创新高
+  role: load_bearing
+- conclusion: overall
+  state: 脆弱度high已在利率+vol轴兑现·偏防御
+  role: confirming
+discount_rate: null
+slug: us-tempus
+variant: opus4.8
+stamped_at: '2026-08-03T15:46:13.707006+00:00'
+stale: false
+stale_reason: null

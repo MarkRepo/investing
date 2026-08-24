@@ -1,0 +1,486 @@
+slug: us-sandisk
+variant: opus4.8
+updated: '2026-08-06T15:06:23.311834+00:00'
+materials:
+- id: mat-593164
+  filename: 2026-08-06_sandisk-reports-fiscal-q4-2026-financial-results-i.md
+  source_type: web-search
+  added: '2026-08-06T12:49:02.621974+00:00'
+  processed: false
+  notes: query='SanDisk SNDK quarterly earnings FY2026 revenue gross margin EPS' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SanDisk SNDK quarterly earnings FY2026 revenue gross margin EPS
+    url: https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-fourth-quarter-2026-financial-results
+    domain: investor.sandisk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:49:02.621014+00:00'
+    stale_at: '2026-09-05T12:49:02.621014+00:00'
+    expire_at: '2026-11-04T12:49:02.621014+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b5f605
+  filename: 2026-08-06_sandisk-q1-fy2027-business-outlook-guidance.md
+  source_type: web-search
+  added: '2026-08-06T12:49:02.626119+00:00'
+  processed: false
+  notes: query='SanDisk SNDK quarterly earnings FY2026 revenue gross margin EPS' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SanDisk SNDK quarterly earnings FY2026 revenue gross margin EPS
+    url: https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-fourth-quarter-2026-financial-results#outlook
+    domain: investor.sandisk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:49:02.625119+00:00'
+    stale_at: '2026-09-05T12:49:02.625119+00:00'
+    expire_at: '2026-11-04T12:49:02.625119+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-77834c
+  filename: 2026-08-06_kioxia-and-sandisk-extend-yokkaichi-jv-through-203.md
+  source_type: web-search
+  added: '2026-08-06T12:49:02.632506+00:00'
+  processed: false
+  notes: query='Kioxia SanDisk JV merger consolidation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Kioxia SanDisk JV merger consolidation 2026
+    url: https://investor.sandisk.com/news-releases/news-release-details/kioxia-and-sandisk-extend-yokkaichi-joint-venture-agreement
+    domain: investor.sandisk.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:49:02.631230+00:00'
+    stale_at: '2026-09-05T12:49:02.631230+00:00'
+    expire_at: '2026-11-04T12:49:02.631230+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bd9010
+  filename: 2026-08-06_sandisk-q3-fy26-record-6b-buyback-42b-nbm-seeking-.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.135366+00:00'
+  processed: false
+  notes: query='SanDisk Q3 FY26 buyback NBM contracts' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SanDisk Q3 FY26 buyback NBM contracts
+    url: https://seekingalpha.com/news/4583535-sandisk-forecasts-q4-revenue-of-7750m-8250m-while-authorizing-a-6b-share-buyback
+    domain: seekingalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:50:17.133412+00:00'
+    stale_at: '2026-09-05T12:50:17.133412+00:00'
+    expire_at: '2026-11-04T12:50:17.133412+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-80e6d3
+  filename: 2026-08-06_memory-ssd-supply-chain-mid-2026-trendforce-data-v.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.143263+00:00'
+  processed: false
+  notes: query='NAND flash contract price 2026 TrendForce' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NAND flash contract price 2026 TrendForce
+    url: https://www.hiper-global.com/news/memory-and-ssd-update-mid-2026
+    domain: hiper-global.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:50:17.141394+00:00'
+    stale_at: '2026-09-05T12:50:17.141394+00:00'
+    expire_at: '2026-11-04T12:50:17.141394+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-20bf45
+  filename: 2026-08-06_solidigm-co-ceo-700-price-jump-12mo-25eb-flash-per.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.153157+00:00'
+  processed: false
+  notes: query='NAND flash contract price 2026 TrendForce' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NAND flash contract price 2026 TrendForce
+    url: https://www.matterfact.com/newsletter/2026-08-01-hbm-record-profits-china-shock
+    domain: matterfact.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:50:17.150684+00:00'
+    stale_at: '2026-09-05T12:50:17.150684+00:00'
+    expire_at: '2026-11-04T12:50:17.150684+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8bdc04
+  filename: 2026-08-06_nand-shortage-2026-cost-blind-csp-procurement-qlc-.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.161307+00:00'
+  processed: false
+  notes: query='NAND flash contract price 2026 TrendForce' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.6
+  search_meta:
+    query: NAND flash contract price 2026 TrendForce
+    url: https://en.unibetter-ic.com/nand-shortage-2026
+    domain: en.unibetter-ic.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:50:17.158573+00:00'
+    stale_at: '2026-09-05T12:50:17.158573+00:00'
+    expire_at: '2026-11-04T12:50:17.158573+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-bc05d9
+  filename: 2026-08-06_wdc-reopens-kioxia-merger-talks-yahoo-finance-simp.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.172327+00:00'
+  processed: false
+  notes: query='WDC Kioxia merger talks 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.6
+  search_meta:
+    query: WDC Kioxia merger talks 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/western-digital-wdc-reopens-kioxia-151411891.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:50:17.169413+00:00'
+    stale_at: '2026-09-05T12:50:17.169413+00:00'
+    expire_at: '2026-11-04T12:50:17.169413+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cce756
+  filename: 2026-08-06_sndk-quote-valuation-snapshot-yahoo-finance-2026-0.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.184271+00:00'
+  processed: false
+  notes: query='SanDisk SNDK valuation analyst price target 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SanDisk SNDK valuation analyst price target 2026
+    url: https://finance.yahoo.com/quote/SNDK
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:50:17.180746+00:00'
+    stale_at: '2026-09-05T12:50:17.180746+00:00'
+    expire_at: '2026-11-04T12:50:17.180746+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8db6a2
+  filename: 2026-08-06_sndk-bull-ms-1750-susq-3250-vs-bear-double-order-c.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.195341+00:00'
+  processed: true
+  notes: query='SanDisk SNDK valuation analyst price target 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - scope
+  confidence: 0.6
+  search_meta:
+    query: SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+      HBF dispersion
+    url: https://www.forbes.com/sites/investor-hub/article/sandisk-stock-over-574-where-its-heading-2026
+    domain: forbes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T15:06:23.129069+00:00'
+    stale_at: '2026-09-05T15:06:23.129069+00:00'
+    expire_at: '2026-11-04T15:06:23.129069+00:00'
+    triggered_by: 05-critic
+    prev_queries:
+    - SanDisk SNDK valuation analyst price target 2026
+- id: mat-dbd19e
+  filename: 2026-08-06_morningstar-kerwin-bear-peak-2028-downturn-2029-fv.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.208835+00:00'
+  processed: true
+  notes: query='SanDisk SNDK valuation analyst price target 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+      HBF dispersion
+    url: https://www.techtimes.com/articles/322247/20260730/sandisk-falls-54-morningstar-sees-finite-ai-boom-before-2029-downturn.htm
+    domain: techtimes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T15:06:23.104590+00:00'
+    stale_at: '2026-09-05T15:06:23.104590+00:00'
+    expire_at: '2026-11-04T15:06:23.104590+00:00'
+    triggered_by: 05-critic
+    prev_queries:
+    - SanDisk SNDK valuation analyst price target 2026
+- id: mat-429231
+  filename: 2026-08-06_sndk-debt-free-42b-contracts-6b-buyback-simply-wal.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.225299+00:00'
+  processed: false
+  notes: query='SanDisk balance sheet debt free capital return' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.6
+  search_meta:
+    query: SanDisk balance sheet debt free capital return
+    url: https://simplywall.st/stocks/us/tech/nasdaq-sndk/sandisk/health
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:50:17.220115+00:00'
+    stale_at: '2026-09-05T12:50:17.220115+00:00'
+    expire_at: '2026-11-04T12:50:17.220115+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8b9f71
+  filename: 2026-08-06_ymtc-nand-13-ties-sandisk-reuters-counterpoint-ubs.md
+  source_type: web-search
+  added: '2026-08-06T12:50:17.241570+00:00'
+  processed: false
+  notes: query='YMTC NAND market share 2026 China competition' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: YMTC NAND market share 2026 China competition
+    url: https://www.reuters.com/world/china/chinese-chipmaker-ymtc-plans-new-factories-amid-heightened-us-sino-trade-2026-04-14
+    domain: reuters.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T12:50:17.236878+00:00'
+    stale_at: '2026-09-05T12:50:17.236878+00:00'
+    expire_at: '2026-11-04T12:50:17.236878+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-28c180
+  filename: 2026_SNDK_10-Q_2026-05-01.htm
+  source_type: quarterly-report
+  added: '2026-08-06T12:57:40.285905+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Sandisk Corp
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-04096b
+  filename: sec/2026_SNDK_10-Q_2026-05-01/item_1_financial.md
+  source_type: sec-section
+  added: '2026-08-06T12:57:40.448670+00:00'
+  processed: true
+  notes: split from 2026_SNDK_10-Q_2026-05-01.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-28c180
+  sec_section: item_1_financial
+- id: mat-f13cc1
+  filename: sec/2026_SNDK_10-Q_2026-05-01/item_2_mda.md
+  source_type: sec-section
+  added: '2026-08-06T12:57:40.456663+00:00'
+  processed: true
+  notes: split from 2026_SNDK_10-Q_2026-05-01.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-28c180
+  sec_section: item_2_mda
+- id: mat-e0fafe
+  filename: 2025_SNDK_10-K_2025-08-21.htm
+  source_type: annual-report
+  added: '2026-08-06T12:57:43.672838+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Sandisk Corp
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-016d36
+  filename: 2026_WDC_10-Q_2026-05-01.htm
+  source_type: quarterly-report
+  added: '2026-08-06T12:59:58.773151+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — WESTERN DIGITAL CORP
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-572c9f
+  filename: 2025_WDC_10-K_2025-08-14.htm
+  source_type: annual-report
+  added: '2026-08-06T13:00:01.378691+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — WESTERN DIGITAL CORP
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-91210f
+  filename: sandisk_q4fy26_call_nbm_terms.md
+  source_type: sell-side-note
+  added: '2026-08-06T13:27:47.482066+00:00'
+  processed: true
+  notes: Q4 FY26 电话会:NBM 8客户/$93.9B最低营收/floor+ceiling定价/$16.5B担保;命门1决定性
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - mgmt-capital-alloc
+  - moat
+  confidence: 0.85
+- id: mat-2394bf
+  filename: historical_mirror_wdc_flash_2022_2024.md
+  source_type: data
+  added: '2026-08-06T13:27:47.491983+00:00'
+  processed: true
+  notes: WDC Flash分部2022-24周期:谷底毛利-11.9%,营收~$6B/年;K4正常化盈利下行年锚
+  mineru_state: not_needed
+  addresses:
+  - K4
+  rings:
+  - historical-mirror
+  confidence: 0.85
+- id: mat-d1581f
+  filename: 2026-08-06_sndk-consensus-estimates-yahoo-finance-analysis.md
+  source_type: web-search
+  added: '2026-08-06T13:54:36.936104+00:00'
+  processed: true
+  notes: query='SanDisk SNDK consensus EPS FY2027 FY2028 downturn 2029 forecast' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.75
+  search_meta:
+    query: SanDisk SNDK consensus EPS FY2027 FY2028 downturn 2029 forecast
+    url: https://finance.yahoo.com/quote/SNDK/analysis
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T13:54:36.928910+00:00'
+    stale_at: '2026-09-05T13:54:36.928910+00:00'
+    expire_at: '2026-11-04T13:54:36.928910+00:00'
+    triggered_by: 03-extract
+- id: mat-c68feb
+  filename: 2026-08-06_sndk-年度模型-2028见顶2029崩塌-chartmill-analyst-consensus.md
+  source_type: web-search
+  added: '2026-08-06T13:54:36.958322+00:00'
+  processed: true
+  notes: query='SanDisk SNDK consensus EPS FY2027 FY2028 downturn 2029 forecast' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+      HBF dispersion
+    url: https://www.chartmill.com/stock/quote/SNDK/analyst-ratings
+    domain: chartmill.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T15:06:23.152549+00:00'
+    stale_at: '2026-09-05T15:06:23.152549+00:00'
+    expire_at: '2026-11-04T15:06:23.152549+00:00'
+    triggered_by: 05-critic
+    prev_queries:
+    - SanDisk SNDK consensus EPS FY2027 FY2028 downturn 2029 forecast
+- id: mat-07630c
+  filename: 2026-08-06_sndk-analyst-future-estimates-out-year-coverage-th.md
+  source_type: web-search
+  added: '2026-08-06T15:06:23.176358+00:00'
+  processed: true
+  notes: query='SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+    HBF dispersion' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  rings:
+  - consensus
+  - historical-mirror
+  confidence: 0.6
+  search_meta:
+    query: SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+      HBF dispersion
+    url: https://simplywall.st/stocks/us/tech/nasdaq-sndk/sandisk/future
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T15:06:23.169310+00:00'
+    stale_at: '2026-09-05T15:06:23.169310+00:00'
+    expire_at: '2026-11-04T15:06:23.169310+00:00'
+    triggered_by: 05-critic
+- id: mat-dde2cb
+  filename: 2026-08-06_sndk-bull-bear-dispersion-1-000--2-900-real-rate-r.md
+  source_type: web-search
+  added: '2026-08-06T15:06:23.200866+00:00'
+  processed: true
+  notes: query='SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+    HBF dispersion' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  rings:
+  - consensus
+  - historical-mirror
+  confidence: 0.55
+  search_meta:
+    query: SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+      HBF dispersion
+    url: https://m.investing.com/analysis/sandisks-700-surge-turns-the-fed-dot-plot-into-a-major-risk-200682357
+    domain: m.investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T15:06:23.193341+00:00'
+    stale_at: '2026-09-05T15:06:23.193341+00:00'
+    expire_at: '2026-11-04T15:06:23.193341+00:00'
+    triggered_by: 05-critic
+- id: mat-d60fa4
+  filename: 2026-08-06_sndk-bear-base-bull-earnings-model-hbf-pillar-opti.md
+  source_type: web-search
+  added: '2026-08-06T15:06:23.228523+00:00'
+  processed: true
+  notes: query='SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+    HBF dispersion' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  rings:
+  - consensus
+  - historical-mirror
+  confidence: 0.55
+  search_meta:
+    query: SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+      HBF dispersion
+    url: https://options.cafe/stock-analysis/sndk-analysis-march-2026
+    domain: options.cafe
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-06T15:06:23.220213+00:00'
+    stale_at: '2026-09-05T15:06:23.220213+00:00'
+    expire_at: '2026-11-04T15:06:23.220213+00:00'
+    triggered_by: 05-critic

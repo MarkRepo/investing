@@ -1,0 +1,1900 @@
+slug: jp-anycolor-5032
+variant: opus5
+updated: '2026-08-03T04:22:20.680320+00:00'
+materials:
+- id: mat-f84f40
+  filename: 2026-08-03_2026年4月期-決算短信-日本基準-非連結.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.168949+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益
+    url: https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260610/20260610567133.pdf
+    domain: finance-frontend-pc-dist.west.edge.storage-yahoo.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.168000+00:00'
+    stale_at: '2026-09-02T02:43:45.168000+00:00'
+    expire_at: '2026-11-01T02:43:45.168000+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-fc4c66
+  filename: 2026-08-03_pdf-2026年4月期-第3四半期決算短信-日本基準-非連結.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.174951+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得 進捗 取得結果 2026年
+    url: https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260311/20260311579589.pdf
+    domain: finance-frontend-pc-dist.west.edge.storage-yahoo.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.326997+00:00'
+    stale_at: '2026-09-02T02:46:50.326997+00:00'
+    expire_at: '2026-11-01T02:46:50.326997+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-969013
+  filename: 2026-08-03_5032-業績-財務推移-通期-半期-四半期-株探.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.181518+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益
+    url: https://kabutan.jp/stock/finance?code=5032
+    domain: kabutan.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.180128+00:00'
+    stale_at: '2026-09-02T02:43:45.180128+00:00'
+    expire_at: '2026-11-01T02:43:45.180128+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - financial-arc
+- id: mat-cc9afd
+  filename: 2026-08-03_5032-決算情報-業績-anycolor.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.188739+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益
+    url: https://minkabu.jp/stock/5032/settlement
+    domain: minkabu.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.187052+00:00'
+    stale_at: '2026-09-02T02:43:45.187052+00:00'
+    expire_at: '2026-11-01T02:43:45.187052+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-49db6c
+  filename: 2026-08-03_株-5032-決算情報---yahoo.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.196467+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 2026年4月期 決算短信 売上高 営業利益
+    url: https://finance.yahoo.co.jp/quote/5032.T/financials
+    domain: finance.yahoo.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.194551+00:00'
+    stale_at: '2026-09-02T02:43:45.194551+00:00'
+    expire_at: '2026-11-01T02:43:45.194551+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-7286c5
+  filename: 2026-08-03_2027年4月期-税引-利益12-5-減-予想平均下回---日本経済新聞.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.202728+00:00'
+  processed: false
+  notes: query='ANYCOLOR 2027年4月期 業績予想 営業利益 減益 理由'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: ANYCOLOR 2027年4月期 業績予想 営業利益 減益 理由
+    url: https://www.nikkei.com/article/DGXZRST0567133Q6A610C2000000
+    domain: nikkei.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T02:43:45.200547+00:00'
+    stale_at: '2026-09-02T02:43:45.200547+00:00'
+    expire_at: '2026-11-01T02:43:45.200547+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-37b011
+  filename: 2026-08-03_anycolor-安気配-27年4月期-減益減配予想.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.212294+00:00'
+  processed: false
+  notes: query='ANYCOLOR 2027年4月期 業績予想 営業利益 減益 理由' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 2027年4月期 業績予想 営業利益 減益 理由
+    url: https://shikiho.toyokeizai.net/news/0/947716
+    domain: shikiho.toyokeizai.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.209594+00:00'
+    stale_at: '2026-09-02T02:43:45.209594+00:00'
+    expire_at: '2026-11-01T02:43:45.209594+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-1eb464
+  filename: 2026-08-03_anycolor-26年4月期決算-売上高29-増-営業益23-増-領域-全社成長-牽引-今期-人件.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.223375+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 セグメント別 売上 コマース 構成比 2026年4月期' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 セグメント別 売上 コマース 構成比 2026年4月期
+    url: https://gamebiz.jp/news/427533
+    domain: gamebiz.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.220382+00:00'
+    stale_at: '2026-09-02T02:43:45.220382+00:00'
+    expire_at: '2026-11-01T02:43:45.220382+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-5587d6
+  filename: 2026-08-03_anycolor-5032-前年比二桁増収増益-主要-領域-大型施策-寄与-売上-見通-上回.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.235118+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 セグメント別 売上 コマース 構成比 2026年4月期' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 セグメント別 売上 コマース 構成比 2026年4月期
+    url: https://finance.logmi.jp/articles/384031
+    domain: finance.logmi.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.231571+00:00'
+    stale_at: '2026-09-02T02:43:45.231571+00:00'
+    expire_at: '2026-11-01T02:43:45.231571+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-8a7e86
+  filename: 2026-08-03_2026年4月期-第3四半期決算説明資料.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.248304+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 セグメント別 売上 コマース 構成比 2026年4月期' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 中期経営計画 未達 2026 目標
+    url: https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260311/20260311579611.pdf
+    domain: finance-frontend-pc-dist.west.edge.storage-yahoo.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.162489+00:00'
+    stale_at: '2026-09-02T02:46:50.162489+00:00'
+    expire_at: '2026-11-01T02:46:50.162489+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - ANYCOLOR 5032 セグメント別 売上 コマース 構成比 2026年4月期
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-87e87d
+  filename: 2026-08-03_anycolor-5032-配当金-推移-irbank.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.264093+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 自己株式取得 配当 株主還元 2026年' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得 配当 株主還元 2026年
+    url: https://irbank.net/E37573/dividend
+    domain: irbank.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.259024+00:00'
+    stale_at: '2026-09-02T02:43:45.259024+00:00'
+    expire_at: '2026-11-01T02:43:45.259024+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-ccc378
+  filename: 2026-08-03_5032-配当-株主還元---銘柄.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.282365+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 自己株式取得 配当 株主還元 2026年' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得 配当 株主還元 2026年
+    url: https://scouter.monex.co.jp/report/dps/5032
+    domain: scouter.monex.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.277180+00:00'
+    stale_at: '2026-09-02T02:43:45.277180+00:00'
+    expire_at: '2026-11-01T02:43:45.277180+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-ad1b50
+  filename: 2026-08-03_自己株式取得-係-事項-決定-関-知-2026年1月.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.296732+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 自己株式取得 配当 株主還元 2026年'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得 進捗 取得結果 2026年
+    url: https://www.nikkei.com/nkd/disclosure/tdnr/20260121536442
+    domain: nikkei.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T02:46:50.285865+00:00'
+    stale_at: '2026-09-02T02:46:50.285865+00:00'
+    expire_at: '2026-11-01T02:46:50.285865+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - ANYCOLOR 5032 自己株式取得 配当 株主還元 2026年
+  rings:
+  - mgmt-capital-alloc
+- id: mat-8ac42f
+  filename: 2026-08-03_anycolor-5032-per-株価収益率-推移-irbank.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.316358+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 株価 PER 時価総額 2026年8月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 株価 PER 時価総額 2026年8月
+    url: https://irbank.net/5032/per
+    domain: irbank.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.310565+00:00'
+    stale_at: '2026-09-02T02:43:45.310565+00:00'
+    expire_at: '2026-11-01T02:43:45.310565+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-ccd2a3
+  filename: 2026-08-03_5032---ifis株予報---目標株価-想定株価.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.336691+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 株価 PER 時価総額 2026年8月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 決算後 一致予期 目標株価 アナリスト 2026年7月（IFIS+みんかぶ 全文取得）
+    url: https://kabuyoho.ifis.co.jp/index.php?action=tp1&sa=report_pbr&bcode=5032
+    domain: kabuyoho.ifis.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:06:27.187156+00:00'
+    stale_at: '2026-09-02T03:06:27.187156+00:00'
+    expire_at: '2026-11-01T03:06:27.187156+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - ANYCOLOR 5032 株価 PER 時価総額 2026年8月
+    - ANYCOLOR 5032 目標株価 アナリスト レーティング 2026
+  rings:
+  - consensus
+- id: mat-14f4d3
+  filename: 2026-08-03_anycolor-5032-株式指標-irbank.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.355316+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 株価 PER 時価総額 2026年8月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 株価 PER 時価総額 2026年8月
+    url: https://irbank.net/E37573/valuation
+    domain: irbank.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.349246+00:00'
+    stale_at: '2026-09-02T02:43:45.349246+00:00'
+    expire_at: '2026-11-01T02:43:45.349246+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-f71a6e
+  filename: 2026-08-03_評価-強気-継続-目標株価5-500円-引下-米系大手証券-株予報---yahoo.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.397470+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 目標株価 アナリスト レーティング 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 目標株価 アナリスト レーティング 2026
+    url: https://finance.yahoo.co.jp/news/detail/9524d007c02f4be95fcf5494c31474bb1152526c
+    domain: finance.yahoo.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.390446+00:00'
+    stale_at: '2026-09-02T02:43:45.390446+00:00'
+    expire_at: '2026-11-01T02:43:45.390446+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+  - consensus
+- id: mat-427414
+  filename: 2026-08-03_5032-日系中堅証券-強気-目標株価7-640円-株予報pro.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.418169+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 目標株価 アナリスト レーティング 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 目標株価 アナリスト レーティング 2026
+    url: https://kabuyoho.jp/sp/consNewsDetail?cat=3&nid=5032_20251107_rep_20251107_180012_39&wd2=&lst=&score=&page=
+    domain: kabuyoho.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.411419+00:00'
+    stale_at: '2026-09-02T02:43:45.411419+00:00'
+    expire_at: '2026-11-01T02:43:45.411419+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+- id: mat-5fe2f7
+  filename: 2026-08-03_5032-米系大手証券-強気継続-目標株価引-上-6-100円-株予報pro.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.441385+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 目標株価 アナリスト レーティング 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 目標株価 アナリスト レーティング 2026
+    url: https://kabuyoho.jp/consNewsDetail?nid=5032_20251210_rep_20251211_110505_11&cat=3
+    domain: kabuyoho.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.434081+00:00'
+    stale_at: '2026-09-02T02:43:45.434081+00:00'
+    expire_at: '2026-11-01T02:43:45.434081+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+- id: mat-0b22bc
+  filename: 2026-08-03_5032-日系大手証券-強気継続-目標株価引-上-5-100円-株予報pro.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.464736+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 目標株価 アナリスト レーティング 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 目標株価 アナリスト レーティング 2026
+    url: https://kabuyoho.jp/sp/consNewsDetail?nid=5032_20250611_rep_20250612_140507_23&cat=3
+    domain: kabuyoho.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.456700+00:00'
+    stale_at: '2026-09-02T02:43:45.456700+00:00'
+    expire_at: '2026-11-01T02:43:45.456700+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+- id: mat-e55585
+  filename: 2026-08-03_wikipedia.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.491815+00:00'
+  processed: false
+  notes: query='にじさんじ 卒業 契約解除 2025 2026 ライバー' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: にじさんじ 卒業 契約解除 2025 2026 ライバー
+    url: https://ja.wikipedia.org/wiki/%E3%81%AB%E3%81%98%E3%81%95%E3%82%93%E3%81%98
+    domain: ja.wikipedia.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.482444+00:00'
+    stale_at: '2026-09-02T02:43:45.482444+00:00'
+    expire_at: '2026-11-01T02:43:45.482444+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-8c6229
+  filename: 2026-08-03_公式---wiki.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.516785+00:00'
+  processed: false
+  notes: query='にじさんじ 卒業 契約解除 2025 2026 ライバー' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: にじさんじ 卒業 契約解除 2025 2026 ライバー
+    url: https://wikiwiki.jp/nijisanji/%E5%85%AC%E5%BC%8F%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC
+    domain: wikiwiki.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.508303+00:00'
+    stale_at: '2026-09-02T02:43:45.508303+00:00'
+    expire_at: '2026-11-01T02:43:45.508303+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-cba90c
+  filename: 2026-08-03_untitled.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.543307+00:00'
+  processed: false
+  notes: query='にじさんじ 卒業 契約解除 2025 2026 ライバー' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: にじさんじ 卒業 契約解除 2025 2026 ライバー
+    url: https://www.nijisanji.jp
+    domain: nijisanji.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.534583+00:00'
+    stale_at: '2026-09-02T02:43:45.534583+00:00'
+    expire_at: '2026-11-01T02:43:45.534583+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-a5776d
+  filename: 2026-08-03_anycolor-5032-他-43-18-43-19-田角-陸-変更報告---quick-mone.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.571018+00:00'
+  processed: false
+  notes: query='ANYCOLOR 田角陸 保有株式 売出 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 田角陸 保有株式 売出 2025 2026
+    url: https://moneyworld.jp/news/PQZ7114_ainews
+    domain: moneyworld.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.562276+00:00'
+    stale_at: '2026-09-02T02:43:45.562276+00:00'
+    expire_at: '2026-11-01T02:43:45.562276+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-7dbc37
+  filename: 2026-08-03_株式会社-2026年2月19日-大量保有報告書-m-a-online---m-a-身近.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.600069+00:00'
+  processed: false
+  notes: query='ANYCOLOR 田角陸 保有株式 売出 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 田角陸 保有株式 売出 2025 2026
+    url: https://maonline.jp/db/shareholding_reports/S100XM8T
+    domain: maonline.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.590598+00:00'
+    stale_at: '2026-09-02T02:43:45.590598+00:00'
+    expire_at: '2026-11-01T02:43:45.590598+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-eaf1fb
+  filename: 2026-08-03_5032-anycolor-大量保有-5---田角陸.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.628555+00:00'
+  processed: false
+  notes: query='ANYCOLOR 田角陸 保有株式 売出 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 田角陸 保有株式 売出 2025 2026
+    url: https://irbank.net/E37573/share?e=E37826
+    domain: irbank.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.618389+00:00'
+    stale_at: '2026-09-02T02:43:45.618389+00:00'
+    expire_at: '2026-11-01T02:43:45.618389+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-c2288e
+  filename: 2026-08-03_anycolor株式会社-by-pr-times.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.658210+00:00'
+  processed: false
+  notes: query='ANYCOLOR 田角陸 保有株式 売出 2025 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 田角陸 保有株式 売出 2025 2026
+    url: https://prtimes.jp/companyrdf.php?company_id=30865
+    domain: prtimes.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.647963+00:00'
+    stale_at: '2026-09-02T02:43:45.647963+00:00'
+    expire_at: '2026-11-01T02:43:45.647963+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-1746e0
+  filename: 2026-08-03_最大級-祭典-2026-開催決定-2026年5月16日-土-17日-日-幕張-開催-2026年5月1.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.692975+00:00'
+  processed: false
+  notes: query='にじさんじ ライブ イベント 2026 新規事業 先行投資' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: にじさんじ ライブ イベント 2026 新規事業 先行投資
+    url: https://www.anycolor.co.jp/news/y6y7s8muzdr2
+    domain: anycolor.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.679693+00:00'
+    stale_at: '2026-09-02T02:43:45.679693+00:00'
+    expire_at: '2026-11-01T02:43:45.679693+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-81b1c0
+  filename: 2026-08-03_今後-大型-分-最新映像-明日-2026-公開-甲子園2026-開催-speciale-系列-明--.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.724654+00:00'
+  processed: false
+  notes: query='にじさんじ ライブ イベント 2026 新規事業 先行投資' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: にじさんじ ライブ イベント 2026 新規事業 先行投資
+    url: https://eeo.today/media/2026/05/26/349300
+    domain: eeo.today
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.713875+00:00'
+    stale_at: '2026-09-02T02:43:45.713875+00:00'
+    expire_at: '2026-11-01T02:43:45.713875+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-2bdceb
+  filename: 2026-08-03_5-16-17開催-2026-新規企画-展示情報-解禁-追加情報-公開-panora.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.761592+00:00'
+  processed: false
+  notes: query='にじさんじ ライブ イベント 2026 新規事業 先行投資' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: にじさんじ ライブ イベント 2026 新規事業 先行投資
+    url: https://panora.tokyo/archives/131183
+    domain: panora.tokyo
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.749419+00:00'
+    stale_at: '2026-09-02T02:43:45.749419+00:00'
+    expire_at: '2026-11-01T02:43:45.749419+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-608e16
+  filename: 2026-08-03_q-新規上場-vtuber事務所-anycolor-利益率-違-生-理由-決算-読.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.800396+00:00'
+  processed: false
+  notes: query='ANYCOLOR COVER 比較 営業利益率 2026 VTuber 市場 成長率' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR COVER 比較 営業利益率 2026 VTuber 市場 成長率
+    url: https://irnote.jp/article/2023/03/14/178.html
+    domain: irnote.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.787797+00:00'
+    stale_at: '2026-09-02T02:43:45.787797+00:00'
+    expire_at: '2026-11-01T02:43:45.787797+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-c61396
+  filename: 2026-08-03_一人当-営業利益3000万円-利益率40-anycolor-圧倒的収益性実現-裏側-tech-gro.md
+  source_type: web-search
+  added: '2026-08-03T02:43:45.837967+00:00'
+  processed: false
+  notes: query='ANYCOLOR COVER 比較 営業利益率 2026 VTuber 市場 成長率' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR COVER 比較 営業利益率 2026 VTuber 市場 成長率
+    url: https://industrysafari.theletter.jp/posts/ca66a890-c84d-11f0-8cb1-e90eefe914e7
+    domain: industrysafari.theletter.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:43:45.823268+00:00'
+    stale_at: '2026-09-02T02:43:45.823268+00:00'
+    expire_at: '2026-11-01T02:43:45.823268+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-619d05
+  filename: 2026-08-03_anycolor株-買-決算解説-株価-見通-注目企業-決算---yahoo.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.010502+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 目標株価 引き下げ 2026年6月 決算後 アナリスト' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 目標株価 引き下げ 2026年6月 決算後 アナリスト
+    url: https://finance.yahoo.co.jp/feature/special/report-anycolor.html
+    domain: finance.yahoo.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:49.998056+00:00'
+    stale_at: '2026-09-02T02:46:49.998056+00:00'
+    expire_at: '2026-11-01T02:46:49.998056+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-14338a
+  filename: 2026-08-03_5032-予想株価-予想-anycolor.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.044906+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 目標株価 引き下げ 2026年6月 決算後 アナリスト' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 決算後 一致予期 目標株価 アナリスト 2026年7月（IFIS+みんかぶ 全文取得）
+    url: https://minkabu.jp/stock/5032/analyst_consensus
+    domain: minkabu.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:06:27.245496+00:00'
+    stale_at: '2026-09-02T03:06:27.245496+00:00'
+    expire_at: '2026-11-01T03:06:27.245496+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - ANYCOLOR 5032 目標株価 引き下げ 2026年6月 決算後 アナリスト
+  rings:
+  - consensus
+- id: mat-9119f6
+  filename: 2026-08-03_5032---ifis株予報---事業内容-取扱-商品-銘柄診断.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.082751+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 目標株価 引き下げ 2026年6月 決算後 アナリスト' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 目標株価 引き下げ 2026年6月 決算後 アナリスト
+    url: https://kabuyoho.ifis.co.jp/index.php?action=tp1&sa=report_top&bcode=5032
+    domain: kabuyoho.ifis.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.069525+00:00'
+    stale_at: '2026-09-02T02:46:50.069525+00:00'
+    expire_at: '2026-11-01T02:46:50.069525+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - consensus
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-8fa823
+  filename: 2026-08-03_anycolor-売上高-前年比-29-9-営業利益-23-9-領域.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.124459+00:00'
+  processed: false
+  notes: query='ANYCOLOR 中期経営計画 未達 2026 目標' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 中期経営計画 未達 2026 目標
+    url: https://finance.logmi.jp/articles/385001
+    domain: finance.logmi.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.110512+00:00'
+    stale_at: '2026-09-02T02:46:50.110512+00:00'
+    expire_at: '2026-11-01T02:46:50.110512+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+- id: mat-96409a
+  filename: 2026-08-03_anycolor-安売-気配-今期減益見通-中期計画未達-嫌気.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.200589+00:00'
+  processed: false
+  notes: query='ANYCOLOR 中期経営計画 未達 2026 目標' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 中期経営計画 未達 2026 目標
+    url: https://finance.biggo.jp/news/dmmctJ4BoicNoOgC0GUZ
+    domain: finance.biggo.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.186751+00:00'
+    stale_at: '2026-09-02T02:46:50.186751+00:00'
+    expire_at: '2026-11-01T02:46:50.186751+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-34bff0
+  filename: 2026-08-03_anycolor-取得金額-上限到達-伴-自社株買-終了-49億9900万円-117万7100株-取.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.245536+00:00'
+  processed: false
+  notes: query='ANYCOLOR 5032 自己株式取得 進捗 取得結果 2026年' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得 進捗 取得結果 2026年
+    url: https://gamebiz.jp/news/421138
+    domain: gamebiz.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.230481+00:00'
+    stale_at: '2026-09-02T02:46:50.230481+00:00'
+    expire_at: '2026-11-01T02:46:50.230481+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - mgmt-capital-alloc
+- id: mat-4edc72
+  filename: 2026-08-03_anycolor-一時16-超安-業績見通-引-下.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.367934+00:00'
+  processed: false
+  notes: query='ANYCOLOR 棚卸資産評価損 18億円 グッズ 在庫'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: ANYCOLOR 棚卸資産評価損 18億円 グッズ 在庫
+    url: https://jp.reuters.com/markets/japan/WKEAHOM6ORMFVBZ2AZNFIKDJWQ-2026-03-12
+    domain: jp.reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T02:46:50.353574+00:00'
+    stale_at: '2026-09-02T02:46:50.353574+00:00'
+    expire_at: '2026-11-01T02:46:50.353574+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-8da2b6
+  filename: 2026-08-03_anycolor決算-過去-評価損-計上-利益見通.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.409851+00:00'
+  processed: false
+  notes: query='ANYCOLOR 棚卸資産評価損 18億円 グッズ 在庫' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 棚卸資産評価損 18億円 グッズ 在庫
+    url: https://gamebiz.jp/news/422691
+    domain: gamebiz.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.393916+00:00'
+    stale_at: '2026-09-02T02:46:50.393916+00:00'
+    expire_at: '2026-11-01T02:46:50.393916+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-a3a3e0
+  filename: 2026-08-03_在庫-評価方法-見直-実施-anycolor-今期見通.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.453774+00:00'
+  processed: false
+  notes: query='ANYCOLOR 棚卸資産評価損 18億円 グッズ 在庫' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 棚卸資産評価損 18億円 グッズ 在庫
+    url: https://www.gamebusiness.jp/article/2026/05/26/27037.html
+    domain: gamebusiness.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.438310+00:00'
+    stale_at: '2026-09-02T02:46:50.438310+00:00'
+    expire_at: '2026-11-01T02:46:50.438310+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-e3bb18
+  filename: 2026-08-03_海外事業急成長-上方修正-anycolor-次-課題-不足-gamebusiness-jp.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.502577+00:00'
+  processed: false
+  notes: query='NIJISANJI EN 2026 海外売上 成長 現状' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NIJISANJI EN 2026 海外売上 成長 現状
+    url: https://www.gamebusiness.jp/article/2023/03/22/21497.html
+    domain: gamebusiness.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.486715+00:00'
+    stale_at: '2026-09-02T02:46:50.486715+00:00'
+    expire_at: '2026-11-01T02:46:50.486715+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+- id: mat-1e2c20
+  filename: 2026-08-03_海外vtuber-nijisanji-id-nijisanji-kr-国内vtuber-統合-関-知.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.554267+00:00'
+  processed: false
+  notes: query='NIJISANJI EN 2026 海外売上 成長 現状' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: NIJISANJI EN 2026 海外売上 成長 現状
+    url: https://www.nijisanji.jp/news/ox9j5ekzl
+    domain: nijisanji.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.531488+00:00'
+    stale_at: '2026-09-02T02:46:50.531488+00:00'
+    expire_at: '2026-11-01T02:46:50.531488+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+- id: mat-c8e794
+  filename: 2026-08-03_anycolor-決算説明資料-1q業績見通-売上高1-減-営業益18-減-見込-売上高-好調-前年.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.606565+00:00'
+  processed: false
+  notes: query='ANYCOLOR 2027年4月期 第1四半期 決算 発表日' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 2027年4月期 第1四半期 決算 発表日
+    url: https://gamebiz.jp/news/427584
+    domain: gamebiz.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.588879+00:00'
+    stale_at: '2026-09-02T02:46:50.588879+00:00'
+    expire_at: '2026-11-01T02:46:50.588879+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-56fa0e
+  filename: 2026-08-03_2026年4月期-第1四半期決算説明資料.md
+  source_type: web-search
+  added: '2026-08-03T02:46:50.655486+00:00'
+  processed: false
+  notes: query='ANYCOLOR 2027年4月期 第1四半期 決算 発表日' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 2027年4月期 第1四半期 決算 発表日
+    url: https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20250910/20250910555664.pdf
+    domain: finance-frontend-pc-dist.west.edge.storage-yahoo.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:46:50.638244+00:00'
+    stale_at: '2026-09-02T02:46:50.638244+00:00'
+    expire_at: '2026-11-01T02:46:50.638244+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-40ced1
+  filename: 2026-08-03_2024年4月期-通期決算説明資料.md
+  source_type: web-search
+  added: '2026-08-03T02:48:47.898201+00:00'
+  processed: false
+  notes: query='ANYCOLOR 2024年4月期 通期 売上高 営業利益 実績' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 2024年4月期 通期 売上高 営業利益 実績
+    url: https://production-mkdd-news.s3.ap-northeast-1.amazonaws.com/urn%3Anewsml%3Atdnet.info%3A20240612527182/140120240612527182.pdf
+    domain: production-mkdd-news.s3.ap-northeast-1.amazonaws.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:48:47.880388+00:00'
+    stale_at: '2026-09-02T02:48:47.880388+00:00'
+    expire_at: '2026-11-01T02:48:47.880388+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-4253b0
+  filename: 2026-08-03_anycolor-5032-財務情報-finance-qa-anycolor-4q売上高-営業利益-.md
+  source_type: web-search
+  added: '2026-08-03T02:48:47.946252+00:00'
+  processed: false
+  notes: query='ANYCOLOR 2024年4月期 通期 売上高 営業利益 実績' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 2024年4月期 通期 売上高 営業利益 実績
+    url: https://finance.logmi.jp/articles/382128
+    domain: finance.logmi.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:48:47.928039+00:00'
+    stale_at: '2026-09-02T02:48:47.928039+00:00'
+    expire_at: '2026-11-01T02:48:47.928039+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-9714f9
+  filename: 2026-08-03_運営-anycolor社-26年4月期決算-売上高約30-増-営業利益約23-増-増収増益-pano.md
+  source_type: web-search
+  added: '2026-08-03T02:48:47.995362+00:00'
+  processed: false
+  notes: query='ANYCOLOR 2024年4月期 通期 売上高 営業利益 実績' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 2024年4月期 通期 売上高 営業利益 実績
+    url: https://panora.tokyo/archives/145278
+    domain: panora.tokyo
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:48:47.976297+00:00'
+    stale_at: '2026-09-02T02:48:47.976297+00:00'
+    expire_at: '2026-11-01T02:48:47.976297+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - financial-arc
+- id: mat-fb48de
+  filename: 2026-08-03_anycolor-転換期迎-上場以来初-営業減益見通.md
+  source_type: web-search
+  added: '2026-08-03T02:48:48.049159+00:00'
+  processed: false
+  notes: query='ANYCOLOR 転換期 上場以来初 営業減益 コマース鈍化 人件費' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 転換期 上場以来初 営業減益 コマース鈍化 人件費
+    url: https://www.gamebusiness.jp/article/2026/06/17/27223.html
+    domain: gamebusiness.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:48:48.030953+00:00'
+    stale_at: '2026-09-02T02:48:48.030953+00:00'
+    expire_at: '2026-11-01T02:48:48.030953+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-a71336
+  filename: 2026-08-03_5032-anycolor-26年4月期4q-営業利益200億円突破-anycolor-直面-500.md
+  source_type: web-search
+  added: '2026-08-03T02:48:48.099223+00:00'
+  processed: false
+  notes: query='ANYCOLOR 転換期 上場以来初 営業減益 コマース鈍化 人件費' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 転換期 上場以来初 営業減益 コマース鈍化 人件費
+    url: https://note.com/ir_growthlab/n/n1629f8a909c6
+    domain: note.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T02:48:48.080859+00:00'
+    stale_at: '2026-09-02T02:48:48.080859+00:00'
+    expire_at: '2026-11-01T02:48:48.080859+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-1989db
+  filename: ANYCOLOR_FY2026-4_通期決算短信_20260610.pdf
+  source_type: annual-report
+  added: '2026-08-03T03:03:31.460081+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+  - K3
+  - K4
+- id: mat-b69000
+  filename: ANYCOLOR_FY2026-4_Q3決算短信_20260311.pdf
+  source_type: annual-report
+  added: '2026-08-03T03:03:33.464128+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  addresses:
+  - K1
+  - K3
+- id: mat-45cd43
+  filename: ANYCOLOR_FY2026-4_Q3決算説明資料_20260311.pdf
+  source_type: annual-report
+  added: '2026-08-03T03:03:36.214247+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  - K6
+- id: mat-ea34f4
+  filename: ANYCOLOR_FY2024-4_通期決算説明資料_20240612.pdf
+  source_type: annual-report
+  added: '2026-08-03T03:03:38.376759+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+  - K2
+- id: mat-2b9147
+  filename: ANYCOLOR_FY2026-4_通期決算説明資料_20260610.pdf
+  source_type: annual-report
+  added: '2026-08-03T03:04:16.398156+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - K6
+- id: mat-03cc35
+  filename: 2026-08-03_2026年4月期-通期決算説明資料.md
+  source_type: web-search
+  added: '2026-08-03T03:04:16.455621+00:00'
+  processed: true
+  notes: query='ANYCOLOR 2026年4月期 通期 決算説明資料 pdf 中期経営計画 株主還元' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 2026年4月期 通期 決算説明資料 pdf 中期経営計画 株主還元
+    url: https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260610/20260610567144.pdf
+    domain: finance-frontend-pc-dist.west.edge.storage-yahoo.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:04:16.436042+00:00'
+    stale_at: '2026-09-02T03:04:16.436042+00:00'
+    expire_at: '2026-11-01T03:04:16.436042+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-e07c30
+  filename: 2026-08-03_anycolor-5032-2026年4月期-通期決算説明資料.md
+  source_type: web-search
+  added: '2026-08-03T03:04:16.521829+00:00'
+  processed: true
+  notes: query='ANYCOLOR 2026年4月期 通期 決算説明資料 pdf 中期経営計画 株主還元'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: ANYCOLOR 2026年4月期 通期 決算説明資料 pdf 中期経営計画 株主還元
+    url: https://www.nikkei.com/nkd/disclosure/tdnr/20260610567144/
+    domain: nikkei.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T03:04:16.495652+00:00'
+    stale_at: '2026-09-02T03:04:16.495652+00:00'
+    expire_at: '2026-11-01T03:04:16.495652+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-0da0c3
+  filename: ANYCOLOR_FY2025-4_通期決算短信_20250611.pdf
+  source_type: annual-report
+  added: '2026-08-03T03:04:18.694260+00:00'
+  processed: true
+  notes: ''
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+- id: mat-3ec97f
+  filename: 2026-08-03_2025年4月期-決算短信-日本基準-非連結.md
+  source_type: web-search
+  added: '2026-08-03T03:04:18.756916+00:00'
+  processed: true
+  notes: query='ANYCOLOR 2025年4月期 決算短信 pdf 開示' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 2025年4月期 決算短信 pdf 開示
+    url: https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20250611/20250610586607.pdf
+    domain: finance-frontend-pc-dist.west.edge.storage-yahoo.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:04:18.736413+00:00'
+    stale_at: '2026-09-02T03:04:18.736413+00:00'
+    expire_at: '2026-11-01T03:04:18.736413+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - financial-arc
+- id: mat-452064
+  filename: 2026-08-03_5032-東証-決算-情報-松井証券.md
+  source_type: web-search
+  added: '2026-08-03T03:09:15.503672+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 決算発表予定日 2027年4月期 第1四半期 2026年9月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 決算発表予定日 2027年4月期 第1四半期 2026年9月
+    url: https://finance.matsui.co.jp/stock/5032/settlement/index
+    domain: finance.matsui.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:09:15.482668+00:00'
+    stale_at: '2026-09-02T03:09:15.482668+00:00'
+    expire_at: '2026-11-01T03:09:15.482668+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - financial-arc
+- id: mat-f2b03b
+  filename: 2026-08-03_5032-決算-業績進捗情報-株予報pro.md
+  source_type: web-search
+  added: '2026-08-03T03:09:15.565025+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 決算発表予定日 2027年4月期 第1四半期 2026年9月' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 決算発表予定日 2027年4月期 第1四半期 2026年9月
+    url: https://kabuyoho.jp/sp/report?bcode=5032
+    domain: kabuyoho.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:09:15.543202+00:00'
+    stale_at: '2026-09-02T03:09:15.543202+00:00'
+    expire_at: '2026-11-01T03:09:15.543202+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - consensus
+- id: mat-b48eaf
+  filename: 2026-08-03_bandai-namco-group-fiscal-year-ended-march-2026-in.md
+  source_type: web-search
+  added: '2026-08-03T03:09:15.634134+00:00'
+  processed: true
+  notes: query='バンダイナムコ GENDA グッドスマイル EV EBIT 2026 バリュエーション キャラクターグッズ' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: バンダイナムコ GENDA グッドスマイル EV EBIT 2026 バリュエーション キャラクターグッズ
+    url: https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20260513_presentation.pdf
+    domain: bandainamco.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:09:15.611993+00:00'
+    stale_at: '2026-09-02T03:09:15.611993+00:00'
+    expire_at: '2026-11-01T03:09:15.611993+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - valuation-percentile
+- id: mat-5df241
+  filename: 2026-08-03_弁護士解説-vtuber事務所-守-新常識-取適法.md
+  source_type: web-search
+  added: '2026-08-03T03:09:15.703196+00:00'
+  processed: true
+  notes: query='VTuber ライバー 業務委託 雇用 労働法 リスク 2026 事務所' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: VTuber ライバー 業務委託 雇用 労働法 リスク 2026 事務所
+    url: https://gvalaw.jp/blog/h20260417/
+    domain: gvalaw.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:09:15.681011+00:00'
+    stale_at: '2026-09-02T03:09:15.681011+00:00'
+    expire_at: '2026-11-01T03:09:15.681011+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-28b0f0
+  filename: 2026-08-03_vtuber-契約形態-企業-契約時-注意点-弁護士.md
+  source_type: web-search
+  added: '2026-08-03T03:09:15.768812+00:00'
+  processed: true
+  notes: query='VTuber ライバー 業務委託 雇用 労働法 リスク 2026 事務所' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: VTuber ライバー 業務委託 雇用 労働法 リスク 2026 事務所
+    url: https://kai-law.jp/subculture-and-entertainment-law/vtuber-contract-types/
+    domain: kai-law.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:09:15.745535+00:00'
+    stale_at: '2026-09-02T03:09:15.745535+00:00'
+    expire_at: '2026-11-01T03:09:15.745535+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-e60eca
+  filename: 2026-08-03_株式会社-有価証券報告書-全文-最新-事業内容-md-a-edinet-db.md
+  source_type: web-search
+  added: '2026-08-03T03:16:59.484761+00:00'
+  processed: true
+  notes: query='ANYCOLOR 有価証券報告書 2026年4月期 事業等のリスク 従業員' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 有価証券報告書 2026年4月期 事業等のリスク 従業員
+    url: https://edinetdb.jp/company/E37573/text
+    domain: edinetdb.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:16:59.462008+00:00'
+    stale_at: '2026-09-02T03:16:59.462008+00:00'
+    expire_at: '2026-11-01T03:16:59.462008+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-95436c
+  filename: 2026-08-03_転職-有価証券報告書等-読-解-会社-実態-就職転職企業研究.md
+  source_type: web-search
+  added: '2026-08-03T03:16:59.553040+00:00'
+  processed: true
+  notes: query='ANYCOLOR 有価証券報告書 2026年4月期 事業等のリスク 従業員' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 有価証券報告書 第8期 会社実態（従業員数/大株主/経営陣/事業等のリスク/4領域収益機構）
+    url: https://corp-research.jp/articles/10626
+    domain: corp-research.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:18:47.296788+00:00'
+    stale_at: '2026-09-02T03:18:47.296788+00:00'
+    expire_at: '2026-11-01T03:18:47.296788+00:00'
+    triggered_by: 01-deep-fetch
+    prev_queries:
+    - ANYCOLOR 有価証券報告書 2026年4月期 事業等のリスク 従業員
+  rings:
+  - mgmt-capital-alloc
+- id: mat-ca9bb2
+  filename: 2026-08-03_anycolor-最高値-国内証券-目標株価2万0600円-設定.md
+  source_type: web-search
+  added: '2026-08-03T03:16:59.630359+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 目標株価 5080円 日系中堅証券 レポート 営業利益率 回復' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 目標株価 5080円 日系中堅証券 レポート 営業利益率 回復
+    url: https://shikiho.toyokeizai.net/news/0/628910
+    domain: shikiho.toyokeizai.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:16:59.606007+00:00'
+    stale_at: '2026-09-02T03:16:59.606007+00:00'
+    expire_at: '2026-11-01T03:16:59.606007+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - consensus
+- id: mat-d484e9
+  filename: 2026-08-03_5032-業績---銘柄.md
+  source_type: web-search
+  added: '2026-08-03T03:16:59.700173+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 目標株価 5080円 日系中堅証券 レポート 営業利益率 回復' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K4
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）
+    url: https://scouter.monex.co.jp/report/news/5032
+    domain: scouter.monex.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T04:03:24.703250+00:00'
+    stale_at: '2026-09-02T04:03:24.703250+00:00'
+    expire_at: '2026-11-01T04:03:24.703250+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - ANYCOLOR 5032 目標株価 5080円 日系中堅証券 レポート 営業利益率 回復
+  rings:
+  - financial-arc
+- id: mat-f3824b
+  filename: 2026-08-03_売上高-7割-依存-mixi-頼-脱却-高-壁.md
+  source_type: web-search
+  added: '2026-08-03T03:16:59.781796+00:00'
+  processed: true
+  notes: query='コロプラ ミクシィ モンスト gumi 主力IP ピーク後 営業利益率 低下 株価 下落 検証' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: コロプラ ミクシィ モンスト gumi 主力IP ピーク後 営業利益率 低下 株価 下落 検証
+    url: https://shikiho.toyokeizai.net/news/0/787407
+    domain: shikiho.toyokeizai.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:16:59.756836+00:00'
+    stale_at: '2026-09-02T03:16:59.756836+00:00'
+    expire_at: '2026-11-01T03:16:59.756836+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-70aa9c
+  filename: 2026-08-03_業績-推移-株式会社.md
+  source_type: web-search
+  added: '2026-08-03T03:16:59.852682+00:00'
+  processed: true
+  notes: query='コロプラ ミクシィ モンスト gumi 主力IP ピーク後 営業利益率 低下 株価 下落 検証' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: コロプラ ミクシィ モンスト gumi 主力IP ピーク後 営業利益率 低下 株価 下落 検証
+    url: https://colopl.co.jp/ir/finance/data
+    domain: colopl.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:16:59.828093+00:00'
+    stale_at: '2026-09-02T03:16:59.828093+00:00'
+    expire_at: '2026-11-01T03:16:59.828093+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - financial-arc
+- id: mat-fbf450
+  filename: 2026-08-03_mixi-事業-利益率-47-急改善-400億円-海外大型m-a.md
+  source_type: web-search
+  added: '2026-08-03T03:16:59.924799+00:00'
+  processed: true
+  notes: query='コロプラ ミクシィ モンスト gumi 主力IP ピーク後 営業利益率 低下 株価 下落 検証' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: コロプラ ミクシィ モンスト gumi 主力IP ピーク後 営業利益率 低下 株価 下落 検証
+    url: https://www.gamebusiness.jp/article/2025/06/12/24409.html
+    domain: gamebusiness.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:16:59.899414+00:00'
+    stale_at: '2026-09-02T03:16:59.899414+00:00'
+    expire_at: '2026-11-01T03:16:59.899414+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-d7036c
+  filename: 2026-08-03_主要-企業-決算-13社中12社-黒字-成長-成長支-資金源-突出-ca-光明見-klab-game.md
+  source_type: web-search
+  added: '2026-08-03T03:16:59.999642+00:00'
+  processed: true
+  notes: query='コロプラ ミクシィ モンスト gumi 主力IP ピーク後 営業利益率 低下 株価 下落 検証' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: コロプラ ミクシィ モンスト gumi 主力IP ピーク後 営業利益率 低下 株価 下落 検証
+    url: https://gamebiz.jp/news/427056
+    domain: gamebiz.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:16:59.973633+00:00'
+    stale_at: '2026-09-02T03:16:59.973633+00:00'
+    expire_at: '2026-11-01T03:16:59.973633+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - historical-mirror
+  - valuation-percentile
+- id: mat-8d6cae
+  filename: 2026-08-03_genda-売上-利益-業績推移-決算-経営分析-決算.md
+  source_type: web-search
+  added: '2026-08-03T03:17:00.091136+00:00'
+  processed: true
+  notes: query='GENDA ブシロード グッドスマイル 決算 営業利益 EV EBITDA 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: GENDA ブシロード グッドスマイル 決算 営業利益 EV EBITDA 2026
+    url: https://gurafu.net/jpn/genda
+    domain: gurafu.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:17:00.064296+00:00'
+    stale_at: '2026-09-02T03:17:00.064296+00:00'
+    expire_at: '2026-11-01T03:17:00.064296+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - valuation-percentile
+- id: mat-b9ec98
+  filename: 2026-08-03_7803-営業利益-推移.md
+  source_type: web-search
+  added: '2026-08-03T03:17:00.168254+00:00'
+  processed: true
+  notes: query='GENDA ブシロード グッドスマイル 決算 営業利益 EV EBITDA 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: GENDA ブシロード グッドスマイル 決算 営業利益 EV EBITDA 2026
+    url: https://strainer.jp/companies/JP-7803/financials/OperatingIncomeLoss
+    domain: strainer.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:17:00.141240+00:00'
+    stale_at: '2026-09-02T03:17:00.141240+00:00'
+    expire_at: '2026-11-01T03:17:00.141240+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - financial-arc
+  - historical-mirror
+  - valuation-percentile
+- id: mat-4255b6
+  filename: 2026-08-03_1q-ebitda対比-ebita-ifrs-営業利益-前年同期比-小---株式会社genda.md
+  source_type: web-search
+  added: '2026-08-03T03:17:00.244350+00:00'
+  processed: true
+  notes: query='GENDA ブシロード グッドスマイル 決算 営業利益 EV EBITDA 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  confidence: 0.7
+  search_meta:
+    query: GENDA ブシロード グッドスマイル 決算 営業利益 EV EBITDA 2026
+    url: https://genda.jp/ufaq/%E3%82%B0%E3%83%A9%E3%83%95%E3%81%AE1q%E3%81%AEebitda%E5%AF%BE%E6%AF%94%E3%81%A7ebitaifrs%E3%81%AE%E5%96%B6%E6%A5%AD%E5%88%A9%E7%9B%8A%E3%81%AE%E5%89%8D%E5%B9%B4%E5%90%8C%E6%9C%9F
+    domain: genda.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:17:00.217248+00:00'
+    stale_at: '2026-09-02T03:17:00.217248+00:00'
+    expire_at: '2026-11-01T03:17:00.217248+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - valuation-percentile
+- id: mat-e3bc73
+  filename: 2026-08-03_vtuber-市場規模-800億円-推計-同人誌-並-成長-矢野経研調-web担当者forum.md
+  source_type: web-search
+  added: '2026-08-03T03:17:00.329642+00:00'
+  processed: true
+  notes: query='VTuber 市場規模 2026 矢野経済研究所 成長率 頭打ち' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: VTuber 市場規模 2026 矢野経済研究所 成長率 頭打ち
+    url: https://webtan.impress.co.jp/n/2023/08/03/45367
+    domain: webtan.impress.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:17:00.302413+00:00'
+    stale_at: '2026-09-02T03:17:00.302413+00:00'
+    expire_at: '2026-11-01T03:17:00.302413+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+- id: mat-146bc6
+  filename: 2026-08-03_vtuber市場規模-1050億円-矢野経済研究所-市場-調査-発表-panora.md
+  source_type: web-search
+  added: '2026-08-03T03:17:00.409172+00:00'
+  processed: true
+  notes: query='VTuber 市場規模 2026 矢野経済研究所 成長率 頭打ち' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: VTuber 市場規模 2026 矢野経済研究所 成長率 頭打ち
+    url: https://panora.tokyo/archives/129079
+    domain: panora.tokyo
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:17:00.380992+00:00'
+    stale_at: '2026-09-02T03:17:00.380992+00:00'
+    expire_at: '2026-11-01T03:17:00.380992+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+- id: mat-7523ba
+  filename: 2026-08-03_vtuber市場-業界-市場規模-成長性-2026---2031年.md
+  source_type: web-search
+  added: '2026-08-03T03:17:00.488107+00:00'
+  processed: true
+  notes: query='VTuber 市場規模 2026 矢野経済研究所 成長率 頭打ち' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: VTuber 市場規模 2026 矢野経済研究所 成長率 頭打ち
+    url: https://www.gii.co.jp/report/moi2035012-vtuber-market-share-analysis-industry-trends.html
+    domain: gii.co.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:17:00.460457+00:00'
+    stale_at: '2026-09-02T03:17:00.460457+00:00'
+    expire_at: '2026-11-01T03:17:00.460457+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+- id: mat-c7cf5e
+  filename: 2026-08-03_vtuber市場規模-2026年最新動向-成長要因-解説-crex-戦略-ai-dx-bpo-事業-.md
+  source_type: web-search
+  added: '2026-08-03T03:17:00.570386+00:00'
+  processed: true
+  notes: query='VTuber 市場規模 2026 矢野経済研究所 成長率 頭打ち' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: VTuber 市場規模 2026 矢野経済研究所 成長率 頭打ち
+    url: https://crex-consulting.com/column/research/vtuber-market-size-analysis
+    domain: crex-consulting.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:17:00.542567+00:00'
+    stale_at: '2026-09-02T03:17:00.542567+00:00'
+    expire_at: '2026-11-01T03:17:00.542567+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+- id: mat-2ad7f5
+  filename: 2026-08-03_vtuber-新-8名-本日2026年4月19日-日-活動開始-twitch-youtube-同時初.md
+  source_type: web-search
+  added: '2026-08-03T03:19:49.679349+00:00'
+  processed: false
+  notes: query='NIJISANJI EN ライバー 人数 2026 現状 卒業 デビュー 英語圏' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NIJISANJI EN ライバー 人数 2026 現状 卒業 デビュー 英語圏
+    url: https://prtimes.jp/main/html/rd/p/000001487.000030865.html
+    domain: prtimes.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:19:49.651004+00:00'
+    stale_at: '2026-09-02T03:19:49.651004+00:00'
+    expire_at: '2026-11-01T03:19:49.651004+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - biz-moat-unit-econ
+- id: mat-e17d0a
+  filename: 2026-08-03_vtuber-新-2名-本日2026年7月21日-火-活動開始.md
+  source_type: web-search
+  added: '2026-08-03T03:19:49.763572+00:00'
+  processed: false
+  notes: query='NIJISANJI EN ライバー 人数 2026 現状 卒業 デビュー 英語圏' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NIJISANJI EN ライバー 人数 2026 現状 卒業 デビュー 英語圏
+    url: https://www.nijisanji.jp/news/5b6sd5gev4rr
+    domain: nijisanji.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:19:49.734440+00:00'
+    stale_at: '2026-09-02T03:19:49.734440+00:00'
+    expire_at: '2026-11-01T03:19:49.734440+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - biz-moat-unit-econ
+- id: mat-748ded
+  filename: 2026-08-03_nijisanji-en-10-26-3名-新人-panora.md
+  source_type: web-search
+  added: '2026-08-03T03:19:49.849281+00:00'
+  processed: false
+  notes: query='NIJISANJI EN ライバー 人数 2026 現状 卒業 デビュー 英語圏' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NIJISANJI EN ライバー 人数 2026 現状 卒業 デビュー 英語圏
+    url: https://panora.tokyo/archives/73652
+    domain: panora.tokyo
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:19:49.820242+00:00'
+    stale_at: '2026-09-02T03:19:49.820242+00:00'
+    expire_at: '2026-11-01T03:19:49.820242+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - biz-moat-unit-econ
+- id: mat-f67490
+  filename: 2026-08-03_nijisanji-main-branch.md
+  source_type: web-search
+  added: '2026-08-03T03:19:49.934972+00:00'
+  processed: false
+  notes: query='NIJISANJI EN ライバー 人数 2026 現状 卒業 デビュー 英語圏' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: NIJISANJI EN ライバー 人数 2026 現状 卒業 デビュー 英語圏
+    url: https://virtualyoutuber.fandom.com/wiki/NIJISANJI_(main_branch)
+    domain: virtualyoutuber.fandom.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T03:19:49.906008+00:00'
+    stale_at: '2026-09-02T03:19:49.906008+00:00'
+    expire_at: '2026-11-01T03:19:49.906008+00:00'
+    triggered_by: 01-prescan
+  rings:
+  - biz-moat-unit-econ
+- id: mat-6180a6
+  filename: 2026-08-03_5032-t-自己株式-取得状況及-取得終了-関-知-tdnet-2026-02-17.md
+  source_type: web-search
+  added: '2026-08-03T04:02:44.139063+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.95
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）
+    url: https://finance.biggo.jp/news/jpx_tdnet_140120260217564022
+    domain: finance.biggo.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T04:03:24.226161+00:00'
+    stale_at: '2026-09-02T04:03:24.226161+00:00'
+    expire_at: '2026-11-01T04:03:24.226161+00:00'
+    triggered_by: 03-extract
+- id: mat-61ba78
+  filename: 2026-08-03_5032-ir気象台-第9回定時株主総会決議結果-臨時報告書-2026-07-29.md
+  source_type: web-search
+  added: '2026-08-03T04:02:44.232934+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）
+    url: https://irweather.jp/companies/5032
+    domain: irweather.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T04:03:24.321365+00:00'
+    stale_at: '2026-09-02T04:03:24.321365+00:00'
+    expire_at: '2026-11-01T04:03:24.321365+00:00'
+    triggered_by: 03-extract
+- id: mat-484ba2
+  filename: 2026-08-03_5032-t-譲渡制限付株式報酬制度-改定-関-知-tdnet-2026-06-24.md
+  source_type: web-search
+  added: '2026-08-03T04:02:44.329352+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.95
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）
+    url: https://finance.biggo.jp/news/jpx_tdnet_140120260622575701
+    domain: finance.biggo.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T04:03:24.417856+00:00'
+    stale_at: '2026-09-02T04:03:24.417856+00:00'
+    expire_at: '2026-11-01T04:03:24.417856+00:00'
+    triggered_by: 03-extract
+- id: mat-09ad82
+  filename: 2026-08-03_anycolor-5032-適時開示情報一覧-日経電子版.md
+  source_type: web-search
+  added: '2026-08-03T04:02:44.426095+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）
+    url: https://www.nikkei.com/nkd/company/disclose?scode=5032
+    domain: nikkei.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T04:03:24.513605+00:00'
+    stale_at: '2026-09-02T04:03:24.513605+00:00'
+    expire_at: '2026-11-01T04:03:24.513605+00:00'
+    triggered_by: 03-extract
+- id: mat-b9c76e
+  filename: 2026-08-03_anycolor-5032-過去10年間-株価推移-日経電子版.md
+  source_type: web-search
+  added: '2026-08-03T04:02:44.522026+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.95
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）
+    url: https://www.nikkei.com/nkd/company/history/yprice?scode=5032
+    domain: nikkei.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T04:03:24.608707+00:00'
+    stale_at: '2026-09-02T04:03:24.608707+00:00'
+    expire_at: '2026-11-01T04:03:24.608707+00:00'
+    triggered_by: 03-extract
+- id: mat-7eb067
+  filename: 2026-08-03_anycolor-株価-3分-1-売-理由-今後-成長性-解説-峯岸恭一.md
+  source_type: web-search
+  added: '2026-08-03T04:03:24.792363+00:00'
+  processed: true
+  notes: query='ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K6
+  confidence: 0.8
+  search_meta:
+    query: ANYCOLOR 5032 自己株式取得決議/適時開示/株主総会 2026年6-7月（K4 兑现意志 + 治理）
+    url: https://www.mag2.com/p/money/1755963
+    domain: mag2.com
+    domain_tier: other
+    searched_at: '2026-08-03T04:03:24.758220+00:00'
+    stale_at: '2026-09-02T04:03:24.758220+00:00'
+    expire_at: '2026-11-01T04:03:24.758220+00:00'
+    triggered_by: 03-extract

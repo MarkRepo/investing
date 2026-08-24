@@ -1,6 +1,6 @@
 # prism — 设计概览
 
-> 本文是高层概览。权威细节见 [`docs/architecture/prism-design.md`](./docs/architecture/prism-design.md)、
+> 本文是高层概览。权威细节见 [`prism/DESIGN.md`](./prism/DESIGN.md)（内部细节 · 权威版）、
 > [`docs/PLAN-PRISM-FUNNEL.md`](./docs/PLAN-PRISM-FUNNEL.md) 与 prism skill（`.claude/skills/prism/`）。
 
 ## 它解决什么

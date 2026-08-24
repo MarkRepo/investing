@@ -1,0 +1,1393 @@
+slug: us-tempus
+variant: opus4.8
+updated: '2026-08-03T14:45:59.666522+00:00'
+materials:
+- id: mat-77216b
+  filename: 2026-08-03_tempus-ai-nasdaq-tem-q2-revenue-hits-382-5m-with-2.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.352316+00:00'
+  processed: false
+  notes: query='Tempus AI TEM 2025 Q2 Q3 earnings revenue guidance adjusted EBITDA'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI TEM 2025 Q2 Q3 earnings revenue guidance adjusted EBITDA
+    url: https://www.stocktitan.net/sec-filings/TEM/8-k-tempus-ai-inc-reports-material-event-283c41fa0cca.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.351386+00:00'
+    stale_at: '2026-09-02T13:51:50.351386+00:00'
+    expire_at: '2026-11-01T13:51:50.351386+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-2f4ca2
+  filename: 2026-08-03_tempus-reports-second-quarter-2025-results-tempus-.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.355393+00:00'
+  processed: false
+  notes: query='Tempus AI TEM 2025 Q2 Q3 earnings revenue guidance adjusted EBITDA'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tempus AI gross margin genomics vs data segment breakdown 2025
+    url: https://investors.tempus.com/news-releases/news-release-details/tempus-reports-second-quarter-2025-results
+    domain: investors.tempus.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T13:51:50.401455+00:00'
+    stale_at: '2026-09-02T13:51:50.401455+00:00'
+    expire_at: '2026-11-01T13:51:50.401455+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Tempus AI TEM 2025 Q2 Q3 earnings revenue guidance adjusted EBITDA
+- id: mat-f76fe0
+  filename: 2026-08-03_tempus-ai-inc-tem-q2-2026-earnings-call-highlights.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.361192+00:00'
+  processed: true
+  notes: query='Tempus AI TEM 2025 Q2 Q3 earnings revenue guidance adjusted EBITDA'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI Q2 2026 earnings call transcript organic growth genomics data
+      segment management
+    url: https://finance.yahoo.com/healthcare/articles/tempus-ai-inc-tem-q2-050243586.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:10:42.311895+00:00'
+    stale_at: '2026-09-02T14:10:42.311895+00:00'
+    expire_at: '2026-11-01T14:10:42.311895+00:00'
+    triggered_by: 01-deep-fetch
+    prev_queries:
+    - Tempus AI TEM 2025 Q2 Q3 earnings revenue guidance adjusted EBITDA
+- id: mat-736308
+  filename: 2026-08-03_tempus-reports-fourth-quarter-and-full-year-2025-r.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.365261+00:00'
+  processed: false
+  notes: query='Tempus AI TEM 2025 Q2 Q3 earnings revenue guidance adjusted EBITDA'
+    | query='Tempus AI Data and AI segment revenue growth total remaining contract
+    value backlog 2025' | 待用户确认 | query='Tempus AI cash runway balance sheet debt
+    convertible dilution 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tempus AI cash runway balance sheet debt convertible dilution 2025
+    url: https://investors.tempus.com/news-releases/news-release-details/tempus-reports-fourth-quarter-and-full-year-2025-results
+    domain: investors.tempus.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T13:51:50.797259+00:00'
+    stale_at: '2026-09-02T13:51:50.797259+00:00'
+    expire_at: '2026-11-01T13:51:50.797259+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b966ca
+  filename: 2026-08-03_tempus-reports-first-quarter-2025-results.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.379152+00:00'
+  processed: false
+  notes: query='Tempus AI Data and AI segment revenue growth total remaining contract
+    value backlog 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tempus AI Ambry Genetics acquisition revenue contribution integration 2025
+    url: https://investors.tempus.com/news-releases/news-release-details/tempus-reports-first-quarter-2025-results
+    domain: investors.tempus.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T13:51:50.460421+00:00'
+    stale_at: '2026-09-02T13:51:50.460421+00:00'
+    expire_at: '2026-11-01T13:51:50.460421+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Tempus AI Data and AI segment revenue growth total remaining contract value
+      backlog 2025
+    - Tempus AI gross margin genomics vs data segment breakdown 2025
+- id: mat-534b6a
+  filename: 2026-08-03_ex-99-1.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.385548+00:00'
+  processed: false
+  notes: query='Tempus AI Data and AI segment revenue growth total remaining contract
+    value backlog 2025' | query='Tempus AI gross margin genomics vs data segment breakdown
+    2025' | query='Tempus AI Ambry Genetics acquisition revenue contribution integration
+    2025' | query='Tempus AI AstraZeneca Pathos foundation model deal terms circular
+    revenue' | query='Tempus AI cash runway balance sheet debt convertible dilution
+    2025' | query='Tempus AI NVIDIA partnership stake AI compute 2025 2026 update'
+    | query='Tempus Data AI segment organic growth TCV backlog 2026' | query='Tempus
+    organic revenue growth ex-acquisition dilution 2026' | query='Tempus SEC inquiry
+    Pathos related party revenue latest 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tempus SEC inquiry Pathos related party revenue latest 2026
+    url: https://www.sec.gov/Archives/edgar/data/1717115/000119312526206317/tem-ex99_1.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-03T14:12:54.322890+00:00'
+    stale_at: '2026-09-02T14:12:54.322890+00:00'
+    expire_at: '2026-11-01T14:12:54.322890+00:00'
+    triggered_by: 01-prescan
+- id: mat-1ca44b
+  filename: 2026-08-03_tempus-reports-first-quarter-2026-results.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.392827+00:00'
+  processed: false
+  notes: query='Tempus AI Data and AI segment revenue growth total remaining contract
+    value backlog 2025' | query='Tempus AI TEM stock price market cap EV sales valuation
+    multiple 2026' | query='Tempus AI cash runway balance sheet debt convertible dilution
+    2025' | query='Tempus organic revenue growth ex-acquisition dilution 2026' | 待用户确认
+    | query='Tempus free cash flow cash runway 2026 guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus TEM EV sales multiple valuation vs Guardant Natera 2026
+    url: https://investors.tempus.com/news-releases/news-release-details/tempus-reports-first-quarter-2026-results
+    domain: investors.tempus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:55.005040+00:00'
+    stale_at: '2026-09-02T14:12:55.005040+00:00'
+    expire_at: '2026-11-01T14:12:55.005040+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - Tempus free cash flow cash runway 2026 guidance
+- id: mat-f00ef8
+  filename: 2026-08-03_tempus-ai-gross-margin-2023-2026-tem.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.412986+00:00'
+  processed: false
+  notes: query='Tempus AI gross margin genomics vs data segment breakdown 2025' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI gross margin genomics vs data segment breakdown 2025
+    url: https://www.macrotrends.net/stocks/charts/TEM/tempus-ai/gross-margin
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.409742+00:00'
+    stale_at: '2026-09-02T13:51:50.409742+00:00'
+    expire_at: '2026-11-01T13:51:50.409742+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c46c4d
+  filename: 2026-08-03_tempus-completes-acquisition-of-ambry-genetics.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.447370+00:00'
+  processed: false
+  notes: query='Tempus AI Ambry Genetics acquisition revenue contribution integration
+    2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI Ambry Genetics acquisition revenue contribution integration 2025
+    url: https://www.tempus.com/news/pr/acquisition-of-ambry-genetics/?srsltid=AfmBOorzyiw8Wt2Z508j_syMsTl6J8jLyBxAi0jtiNs-WdwCrTbH3Ku_
+    domain: tempus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.443096+00:00'
+    stale_at: '2026-09-02T13:51:50.443096+00:00'
+    expire_at: '2026-11-01T13:51:50.443096+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7545d5
+  filename: 2026-08-03_ambry-genetics-genomics-news.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.474978+00:00'
+  processed: false
+  notes: query='Tempus AI Ambry Genetics acquisition revenue contribution integration
+    2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI Ambry Genetics acquisition revenue contribution integration 2025
+    url: https://www.genomeweb.com/companies/ambry
+    domain: genomeweb.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.470355+00:00'
+    stale_at: '2026-09-02T13:51:50.470355+00:00'
+    expire_at: '2026-11-01T13:51:50.470355+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-ac237d
+  filename: 2026-08-03_spruce-point-capital-management-announces-investme.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.501342+00:00'
+  processed: true
+  notes: query='Tempus AI Spruce Point short report response SEC accounting Pathos
+    related party' | query='Spruce Point Tempus AI short report full thesis accounting
+    allegations Pathos circular revenue' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Spruce Point Tempus AI short report full thesis accounting allegations
+      Pathos circular revenue
+    url: https://www.businesswire.com/news/home/20250528603657/en/Spruce-Point-Capital-Management-Announces-Investment-Opinion-Releases-Report-and-Strong-Sell-Research-Opinion-on-Tempus-AI-Inc.-Nasdaq-TEM
+    domain: businesswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:33.101822+00:00'
+    stale_at: '2026-09-02T14:00:33.101822+00:00'
+    expire_at: '2026-11-01T14:00:33.101822+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f72135
+  filename: 2026-08-03_s-1.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.527317+00:00'
+  processed: true
+  notes: query='Tempus AI Spruce Point short report response SEC accounting Pathos
+    related party'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tempus AI Lefkofsky dual class shares related party Pathos capital allocation
+      proxy
+    url: https://www.sec.gov/Archives/edgar/data/1717115/000119312524142956/d221145ds1.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-03T14:00:32.400888+00:00'
+    stale_at: '2026-09-02T14:00:32.400888+00:00'
+    expire_at: '2026-11-01T14:00:32.400888+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Tempus AI Spruce Point short report response SEC accounting Pathos related party
+- id: mat-037bbf
+  filename: 2026-08-03_revisiting-the-tempus-ai-short-report.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.543584+00:00'
+  processed: true
+  notes: query='Tempus AI Spruce Point short report response SEC accounting Pathos
+    related party' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Spruce Point Tempus AI short report full thesis accounting allegations
+      Pathos circular revenue
+    url: https://www.nanalyze.com/2026/02/revisiting-the-tempus-ai-short-report/
+    domain: nanalyze.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:33.168537+00:00'
+    stale_at: '2026-09-02T14:00:33.168537+00:00'
+    expire_at: '2026-11-01T14:00:33.168537+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Tempus AI Spruce Point short report response SEC accounting Pathos related party
+- id: mat-7c2ef6
+  filename: 2026-08-03_tempus-signs-expanded-strategic-agreements-with-as.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.559058+00:00'
+  processed: false
+  notes: query='Tempus AI AstraZeneca Pathos foundation model deal terms circular
+    revenue'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tempus AI AstraZeneca Pathos foundation model deal terms circular revenue
+    url: https://investors.tempus.com/news-releases/news-release-details/tempus-signs-expanded-strategic-agreements-astrazeneca-and
+    domain: investors.tempus.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T13:51:50.553474+00:00'
+    stale_at: '2026-09-02T13:51:50.553474+00:00'
+    expire_at: '2026-11-01T13:51:50.553474+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-f8d87f
+  filename: 2026-08-03_tempus-signs-200m-deal-with-astrazeneca-pathos-ai-.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.578085+00:00'
+  processed: false
+  notes: query='Tempus AI AstraZeneca Pathos foundation model deal terms circular
+    revenue' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI AstraZeneca Pathos foundation model deal terms circular revenue
+    url: https://www.genomeweb.com/cancer/tempus-signs-200m-deal-astrazeneca-pathos-ai-develop-multimodal-cancer-foundation-model
+    domain: genomeweb.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.572118+00:00'
+    stale_at: '2026-09-02T13:51:50.572118+00:00'
+    expire_at: '2026-11-01T13:51:50.572118+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8975a0
+  filename: 2026-08-03_tempus-ai-in-line-for-200m-from-astrazeneca-cancer.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.597333+00:00'
+  processed: false
+  notes: query='Tempus AI AstraZeneca Pathos foundation model deal terms circular
+    revenue' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI AstraZeneca Pathos foundation model deal terms circular revenue
+    url: https://www.fiercebiotech.com/biotech/tempus-ai-line-200m-astrazeneca-pathos-deal-develop-cancer-model
+    domain: fiercebiotech.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.591027+00:00'
+    stale_at: '2026-09-02T13:51:50.591027+00:00'
+    expire_at: '2026-11-01T13:51:50.591027+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6495e2
+  filename: 2026-08-03_tempus-ai-inc-tem-stock-price-news-quote-history.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.639124+00:00'
+  processed: true
+  notes: query='Tempus AI TEM stock price market cap EV sales valuation multiple 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI TEM analyst price target consensus 2026 2027 revenue EPS estimate
+      rating
+    url: https://finance.yahoo.com/quote/TEM/
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:33.012425+00:00'
+    stale_at: '2026-09-02T14:00:33.012425+00:00'
+    expire_at: '2026-11-01T14:00:33.012425+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Tempus AI TEM stock price market cap EV sales valuation multiple 2026
+- id: mat-61e4a1
+  filename: 2026-08-03_tempus-ai-ev-to-ebitda--93-99.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.660179+00:00'
+  processed: false
+  notes: query='Tempus AI TEM stock price market cap EV sales valuation multiple 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI TEM stock price market cap EV sales valuation multiple 2026
+    url: https://www.gurufocus.com/term/enterprise-value-to-ebitda/TEM
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.653152+00:00'
+    stale_at: '2026-09-02T13:51:50.653152+00:00'
+    expire_at: '2026-11-01T13:51:50.653152+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-157ca9
+  filename: 2026-08-03_tempus-ai---multiples-vc---public-comps-and-valuat.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.683362+00:00'
+  processed: false
+  notes: query='Tempus AI TEM stock price market cap EV sales valuation multiple 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI TEM stock price market cap EV sales valuation multiple 2026
+    url: https://multiples.vc/public-comps/tempus-ai-valuation-multiples
+    domain: multiples.vc
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.675811+00:00'
+    stale_at: '2026-09-02T13:51:50.675811+00:00'
+    expire_at: '2026-11-01T13:51:50.675811+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e3a657
+  filename: 2026-08-03_tempus-ai-nasdaq-tem---stock-analysis.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.706479+00:00'
+  processed: true
+  notes: query='Tempus AI TEM stock price market cap EV sales valuation multiple 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI TEM analyst price target consensus 2026 2027 revenue EPS estimate
+      rating
+    url: https://simplywall.st/stocks/us/pharmaceuticals-biotech/nasdaq-tem/tempus-ai
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.960177+00:00'
+    stale_at: '2026-09-02T14:00:32.960177+00:00'
+    expire_at: '2026-11-01T14:00:32.960177+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Tempus AI TEM stock price market cap EV sales valuation multiple 2026
+    - Tempus AI analyst consensus price target rating 2026 2027 revenue estimate
+- id: mat-399d84
+  filename: 2026-08-03_tempus-ai-tem-stock-forecast-and-price-target-2026.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.755762+00:00'
+  processed: true
+  notes: query='Tempus AI analyst consensus price target rating 2026 2027 revenue
+    estimate' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI TEM analyst price target consensus 2026 2027 revenue EPS estimate
+      rating
+    url: https://www.marketbeat.com/stocks/NASDAQ/TEM/forecast/
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:33.062496+00:00'
+    stale_at: '2026-09-02T14:00:33.062496+00:00'
+    expire_at: '2026-11-01T14:00:33.062496+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - Tempus AI analyst consensus price target rating 2026 2027 revenue estimate
+- id: mat-2a8047
+  filename: 2026-08-03_form-10-q-for-tempus-ai-inc-filed-05-06-2025.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.828670+00:00'
+  processed: false
+  notes: query='Tempus AI cash runway balance sheet debt convertible dilution 2025'
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tempus AI cash runway balance sheet debt convertible dilution 2025
+    url: https://investors.tempus.com/static-files/46eed65a-543e-4718-90d8-e222ea608094
+    domain: investors.tempus.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T13:51:50.819991+00:00'
+    stale_at: '2026-09-02T13:51:50.819991+00:00'
+    expire_at: '2026-11-01T13:51:50.819991+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-d12007
+  filename: 2026-08-03_income-statement-balance-sheet-cash-flow-tempus-ai.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.902835+00:00'
+  processed: false
+  notes: query='Tempus AI cash runway balance sheet debt convertible dilution 2025'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI cash runway balance sheet debt convertible dilution 2025
+    url: https://www.stocktitan.net/financials/TEM/
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.893249+00:00'
+    stale_at: '2026-09-02T13:51:50.893249+00:00'
+    expire_at: '2026-11-01T13:51:50.893249+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a13ab2
+  filename: 2026-08-03_news.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.934768+00:00'
+  processed: false
+  notes: query='Tempus AI NVIDIA partnership stake AI compute 2025 2026 update' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI NVIDIA partnership stake AI compute 2025 2026 update
+    url: https://www.tempus.com/news/?srsltid=AfmBOorTzcsYtgeJzjYu-9uOG7qpCQvStd8fNLku9IRzL9KBThfZvciV
+    domain: tempus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.925209+00:00'
+    stale_at: '2026-09-02T13:51:50.925209+00:00'
+    expire_at: '2026-11-01T13:51:50.925209+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-c46925
+  filename: 2026-08-03_q1-2026-overview.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.960387+00:00'
+  processed: false
+  notes: query='Tempus AI NVIDIA partnership stake AI compute 2025 2026 update'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Tempus Data AI segment organic growth TCV backlog 2026
+    url: https://investors.tempus.com/static-files/e940c10c-914e-4761-95c8-709dc2669c2f
+    domain: investors.tempus.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T14:12:53.604703+00:00'
+    stale_at: '2026-09-02T14:12:53.604703+00:00'
+    expire_at: '2026-11-01T14:12:53.604703+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - Tempus AI NVIDIA partnership stake AI compute 2025 2026 update
+- id: mat-7fc8c8
+  filename: 2026-08-03_nvidia-and-partners-build-america-s-ai-infrastruct.md
+  source_type: web-search
+  added: '2026-08-03T13:51:50.992625+00:00'
+  processed: false
+  notes: query='Tempus AI NVIDIA partnership stake AI compute 2025 2026 update' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI NVIDIA partnership stake AI compute 2025 2026 update
+    url: https://nvidianews.nvidia.com/news/nvidia-partners-ai-infrastructure-america
+    domain: nvidianews.nvidia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:51:50.982160+00:00'
+    stale_at: '2026-09-02T13:51:50.982160+00:00'
+    expire_at: '2026-11-01T13:51:50.982160+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-b70753
+  filename: 2026-08-03_tempus-to-acquire-personalis-more-tightly-integrat.md
+  source_type: web-search
+  added: '2026-08-03T13:52:54.961869+00:00'
+  processed: false
+  notes: query='Tempus AI acquire Personalis definitive agreement 2026 enterprise
+    value' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI acquire Personalis definitive agreement 2026 enterprise value
+    url: https://www.tempus.com/news/pr/tempus-to-acquire-personalis-integrating-mrd/?srsltid=AfmBOooIwNjesLOS7NT3d9HROaVHx-oorZ29fmvsD3bUE3O6HmGZym0t
+    domain: tempus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:52:54.951631+00:00'
+    stale_at: '2026-09-02T13:52:54.951631+00:00'
+    expire_at: '2026-11-01T13:52:54.951631+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-6a9986
+  filename: 2026-08-03_tempus-ai-to-acquire-personalis-for-1-5b.md
+  source_type: web-search
+  added: '2026-08-03T13:52:54.992146+00:00'
+  processed: false
+  notes: query='Tempus AI acquire Personalis definitive agreement 2026 enterprise
+    value' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI acquire Personalis definitive agreement 2026 enterprise value
+    url: https://www.mobihealthnews.com/news/tempus-ai-acquire-personalis-15b
+    domain: mobihealthnews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:52:54.981529+00:00'
+    stale_at: '2026-09-02T13:52:54.981529+00:00'
+    expire_at: '2026-11-01T13:52:54.981529+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-7cb9c1
+  filename: 2026-08-03_personalis-to-be-acquired-by-tempus-in-1-5b-deal-p.md
+  source_type: web-search
+  added: '2026-08-03T13:52:55.023386+00:00'
+  processed: false
+  notes: query='Tempus AI acquire Personalis definitive agreement 2026 enterprise
+    value' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI acquire Personalis definitive agreement 2026 enterprise value
+    url: https://www.stocktitan.net/sec-filings/PSNL/425-personalis-inc-business-combination-communication-2339068424e6.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T13:52:55.012553+00:00'
+    stale_at: '2026-09-02T13:52:55.012553+00:00'
+    expire_at: '2026-11-01T13:52:55.012553+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-9ad112
+  filename: 2026_TEM_10-Q_2026-07-30.htm
+  source_type: quarterly-report
+  added: '2026-08-03T13:58:06.115430+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Tempus AI, Inc.
+  mineru_state: not_needed
+  rings:
+  - financial-arc
+- id: mat-a63418
+  filename: sec/2026_TEM_10-Q_2026-07-30/item_1_financial.md
+  source_type: sec-section
+  added: '2026-08-03T13:58:06.395793+00:00'
+  processed: true
+  notes: split from 2026_TEM_10-Q_2026-07-30.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-9ad112
+  sec_section: item_1_financial
+- id: mat-3b9cb8
+  filename: sec/2026_TEM_10-Q_2026-07-30/item_2_mda.md
+  source_type: sec-section
+  added: '2026-08-03T13:58:06.414388+00:00'
+  processed: true
+  notes: split from 2026_TEM_10-Q_2026-07-30.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-9ad112
+  sec_section: item_2_mda
+- id: mat-5a2c84
+  filename: sec/2026_TEM_10-Q_2026-07-30/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-08-03T13:58:06.433494+00:00'
+  processed: true
+  notes: split from 2026_TEM_10-Q_2026-07-30.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-9ad112
+  sec_section: item_3_quant_risk
+- id: mat-3d8a42
+  filename: 2025_TEM_10-K_2026-02-24.htm
+  source_type: annual-report
+  added: '2026-08-03T13:58:09.929550+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — Tempus AI, Inc.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-0371dd
+  filename: sec/2025_TEM_10-K_2026-02-24/item_1_business.md
+  source_type: sec-section
+  added: '2026-08-03T13:58:10.294885+00:00'
+  processed: true
+  notes: split from 2025_TEM_10-K_2026-02-24.htm (1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - Q1
+  - scope
+  parent_mat: mat-3d8a42
+  sec_section: item_1_business
+- id: mat-bef81d
+  filename: sec/2025_TEM_10-K_2026-02-24/item_7_mda.md
+  source_type: sec-section
+  added: '2026-08-03T13:58:10.316333+00:00'
+  processed: true
+  notes: split from 2025_TEM_10-K_2026-02-24.htm (7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-3d8a42
+  sec_section: item_7_mda
+- id: mat-8ee59a
+  filename: sec/2025_TEM_10-K_2026-02-24/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-08-03T13:58:10.336581+00:00'
+  processed: true
+  notes: split from 2025_TEM_10-K_2026-02-24.htm (7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-3d8a42
+  sec_section: item_7a_quant_risk
+- id: mat-b837e8
+  filename: sec/2025_TEM_10-K_2026-02-24/item_8_financial.md
+  source_type: sec-section
+  added: '2026-08-03T13:58:10.357953+00:00'
+  processed: true
+  notes: split from 2025_TEM_10-K_2026-02-24.htm (8)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-3d8a42
+  sec_section: item_8_financial
+- id: mat-3e977f
+  filename: 2026-08-03_tempus-ai-sec-filing.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.365246+00:00'
+  processed: true
+  notes: query='Tempus AI Lefkofsky dual class shares related party Pathos capital
+    allocation proxy'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.9
+  search_meta:
+    query: Tempus AI Lefkofsky dual class shares related party Pathos capital allocation
+      proxy
+    url: https://investors.tempus.com/node/7136/html
+    domain: investors.tempus.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T14:00:32.352087+00:00'
+    stale_at: '2026-09-02T14:00:32.352087+00:00'
+    expire_at: '2026-11-01T14:00:32.352087+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-f29ed2
+  filename: 2026-08-03_tempus-ai-inc-via-public-proxy-statement-form-def-.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.441009+00:00'
+  processed: true
+  notes: query='Tempus AI Lefkofsky dual class shares related party Pathos capital
+    allocation proxy' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI Lefkofsky dual class shares related party Pathos capital allocation
+      proxy
+    url: https://www.publicnow.com/view/F724C2A3C27159DEBF4F6B8D110A9234C23D438F?1775595129
+    domain: publicnow.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.427226+00:00'
+    stale_at: '2026-09-02T14:00:32.427226+00:00'
+    expire_at: '2026-11-01T14:00:32.427226+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-775a07
+  filename: 2026-08-03_tempus-ai-ceo-linked-entities-sell-250k-shares-tem.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.482208+00:00'
+  processed: true
+  notes: query='Tempus AI Lefkofsky dual class shares related party Pathos capital
+    allocation proxy' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI Lefkofsky dual class shares related party Pathos capital allocation
+      proxy
+    url: https://www.stocktitan.net/sec-filings/TEM/form-4-tempus-ai-inc-insider-trading-activity-0d43e70104e4.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.468196+00:00'
+    stale_at: '2026-09-02T14:00:32.468196+00:00'
+    expire_at: '2026-11-01T14:00:32.468196+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c9e3e4
+  filename: 2026-08-03_commercial-ctdna-assays-for-minimal-residual-disea.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.527269+00:00'
+  processed: true
+  notes: query='Natera Signatera vs Tempus Personalis MRD molecular residual disease
+    reimbursement market share' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Natera Signatera vs Tempus Personalis MRD molecular residual disease reimbursement
+      market share
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC9016631/
+    domain: pmc.ncbi.nlm.nih.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.512686+00:00'
+    stale_at: '2026-09-02T14:00:32.512686+00:00'
+    expire_at: '2026-11-01T14:00:32.512686+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e94e0a
+  filename: 2026-08-03_natera-and-personalis-partner-for-personalized-mon.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.566916+00:00'
+  processed: true
+  notes: query='Natera Signatera vs Tempus Personalis MRD molecular residual disease
+    reimbursement market share'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Natera Signatera vs Tempus Personalis MRD molecular residual disease reimbursement
+      market share
+    url: https://investors.personalis.com/news-releases/news-release-details/natera-and-personalis-partner-personalized-monitoring-oncology-0
+    domain: investors.personalis.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T14:00:32.552418+00:00'
+    stale_at: '2026-09-02T14:00:32.552418+00:00'
+    expire_at: '2026-11-01T14:00:32.552418+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e9a35e
+  filename: 2026-08-03_tempus-ai-s-1-5b-acquisition-of-personalis-mrd-mar.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.611963+00:00'
+  processed: true
+  notes: query='Natera Signatera vs Tempus Personalis MRD molecular residual disease
+    reimbursement market share' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Natera Signatera vs Tempus Personalis MRD molecular residual disease reimbursement
+      market share
+    url: https://www.linkedin.com/posts/brigitteganter_tempus-acquires-personalis-and-raises-the-activity-7486222324237496320-Gccf
+    domain: linkedin.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.596380+00:00'
+    stale_at: '2026-09-02T14:00:32.596380+00:00'
+    expire_at: '2026-11-01T14:00:32.596380+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-198fdd
+  filename: 2026-08-03_minimal-residual-disease-mrd-testing.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.659740+00:00'
+  processed: true
+  notes: query='Natera Signatera vs Tempus Personalis MRD molecular residual disease
+    reimbursement market share' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Natera Signatera vs Tempus Personalis MRD molecular residual disease reimbursement
+      market share
+    url: https://www.genomeweb.com/scientific-terms/minimal-residual-disease
+    domain: genomeweb.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.644226+00:00'
+    stale_at: '2026-09-02T14:00:32.644226+00:00'
+    expire_at: '2026-11-01T14:00:32.644226+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5f3b61
+  filename: 2026-08-03_what-is-mrd-testing-and-how-can-it-help-monitor-ca.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.706078+00:00'
+  processed: true
+  notes: query='Natera Signatera vs Tempus Personalis MRD molecular residual disease
+    reimbursement market share' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Natera Signatera vs Tempus Personalis MRD molecular residual disease reimbursement
+      market share
+    url: https://www.natera.com/resource-library/signatera/what-is-mrd-testing-and-how-can-it-help-monitor-cancer-recurrence/
+    domain: natera.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.690428+00:00'
+    stale_at: '2026-09-02T14:00:32.690428+00:00'
+    expire_at: '2026-11-01T14:00:32.690428+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-090ecc
+  filename: 2026-08-03_guardant-health-an-expensive-price-for-a-great-com.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.756412+00:00'
+  processed: true
+  notes: query='Guardant Health Natera Exact Sciences EV to sales revenue multiple
+    valuation comparison 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Guardant Health Natera Exact Sciences EV to sales revenue multiple valuation
+      comparison 2026
+    url: https://seekingalpha.com/article/4925557-guardant-health-an-expensive-price-for-a-great-company
+    domain: seekingalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.740323+00:00'
+    stale_at: '2026-09-02T14:00:32.740323+00:00'
+    expire_at: '2026-11-01T14:00:32.740323+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-7a8fc9
+  filename: 2026-08-03_guardant-health---multiples-vc---public-comps-and-.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.804907+00:00'
+  processed: true
+  notes: query='Guardant Health Natera Exact Sciences EV to sales revenue multiple
+    valuation comparison 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Guardant Health Natera Exact Sciences EV to sales revenue multiple valuation
+      comparison 2026
+    url: https://multiples.vc/public-comps/guardant-health-valuation-multiples
+    domain: multiples.vc
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.788183+00:00'
+    stale_at: '2026-09-02T14:00:32.788183+00:00'
+    expire_at: '2026-11-01T14:00:32.788183+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-4df4c8
+  filename: 2026-08-03_guardant-health-reports-second-quarter-2026-financ.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.856717+00:00'
+  processed: true
+  notes: query='Guardant Health Natera Exact Sciences EV to sales revenue multiple
+    valuation comparison 2026'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: Guardant Health Natera Exact Sciences EV to sales revenue multiple valuation
+      comparison 2026
+    url: https://investors.guardanthealth.com/press-releases/press-releases/2026/Guardant-Health-Reports-Second-Quarter-2026-Financial-Results-and-Increases-2026-Revenue-Guidance/default.aspx
+    domain: investors.guardanthealth.com
+    domain_tier: whitelist
+    searched_at: '2026-08-03T14:00:32.837652+00:00'
+    stale_at: '2026-09-02T14:00:32.837652+00:00'
+    expire_at: '2026-11-01T14:00:32.837652+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-c929aa
+  filename: 2026-08-03_tem-stock-forecast-analyst-ratings-predictions-pri.md
+  source_type: web-search
+  added: '2026-08-03T14:00:32.909551+00:00'
+  processed: true
+  notes: query='Tempus AI TEM analyst price target consensus 2026 2027 revenue EPS
+    estimate rating' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI TEM analyst price target consensus 2026 2027 revenue EPS estimate
+      rating
+    url: https://public.com/stocks/tem/forecast-price-target
+    domain: public.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:32.892443+00:00'
+    stale_at: '2026-09-02T14:00:32.892443+00:00'
+    expire_at: '2026-11-01T14:00:32.892443+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0341fd
+  filename: 2026-08-03_tempus-ai-recovers-15-as-wall-street-downplays-spr.md
+  source_type: web-search
+  added: '2026-08-03T14:00:33.218556+00:00'
+  processed: true
+  notes: query='Spruce Point Tempus AI short report full thesis accounting allegations
+    Pathos circular revenue' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Spruce Point Tempus AI short report full thesis accounting allegations
+      Pathos circular revenue
+    url: https://ca.finance.yahoo.com/news/tempus-ai-recovers-15-wall-201808072.html
+    domain: ca.finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:00:33.201253+00:00'
+    stale_at: '2026-09-02T14:00:33.201253+00:00'
+    expire_at: '2026-11-01T14:00:33.201253+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-5332f5
+  filename: 2026-08-03_tempus-reports-second-quarter-2026-results.md
+  source_type: web-search
+  added: '2026-08-03T14:10:42.206086+00:00'
+  processed: false
+  notes: query='Tempus AI Q2 2026 earnings call transcript organic growth genomics
+    data segment management' | 待用户确认 | query='Tempus Data AI segment organic growth
+    TCV backlog 2026' | 待用户确认 | query='Tempus organic revenue growth ex-acquisition
+    dilution 2026' | 待用户确认 | query='Tempus SEC inquiry Pathos related party revenue
+    latest 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Tempus SEC inquiry Pathos related party revenue latest 2026
+    url: https://investors.tempus.com/news-releases/news-release-details/tempus-reports-second-quarter-2026-results
+    domain: investors.tempus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:54.446619+00:00'
+    stale_at: '2026-09-02T14:12:54.446619+00:00'
+    expire_at: '2026-11-01T14:12:54.446619+00:00'
+    triggered_by: 01-prescan
+- id: mat-788e90
+  filename: 2026-08-03_earnings-call-transcript-tempus-ai-beats-q2-2026-e.md
+  source_type: web-search
+  added: '2026-08-03T14:10:42.258703+00:00'
+  processed: true
+  notes: query='Tempus AI Q2 2026 earnings call transcript organic growth genomics
+    data segment management' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI Q2 2026 earnings call transcript organic growth genomics data
+      segment management
+    url: https://www.investing.com/news/transcripts/earnings-call-transcript-tempus-ai-beats-q2-2026-eps-view-as-stock-trims-gains-93CH-4826295
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:10:42.240109+00:00'
+    stale_at: '2026-09-02T14:10:42.240109+00:00'
+    expire_at: '2026-11-01T14:10:42.240109+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-79d15a
+  filename: 2026-08-03_tempus-ai-inc-tem-q2-2026-earnings-call-transcript.md
+  source_type: web-search
+  added: '2026-08-03T14:10:42.364589+00:00'
+  processed: true
+  notes: query='Tempus AI Q2 2026 earnings call transcript organic growth genomics
+    data segment management' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI Q2 2026 earnings call transcript organic growth genomics data
+      segment management
+    url: https://seekingalpha.com/article/4928247-tempus-ai-inc-tem-q2-2026-earnings-call-transcript
+    domain: seekingalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:10:42.346206+00:00'
+    stale_at: '2026-09-02T14:10:42.346206+00:00'
+    expire_at: '2026-11-01T14:10:42.346206+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-304a09
+  filename: 2026-08-03_tempus-ai-tem-q2-2026-earnings-summary.md
+  source_type: web-search
+  added: '2026-08-03T14:10:42.419789+00:00'
+  processed: true
+  notes: query='Tempus AI Q2 2026 earnings call transcript organic growth genomics
+    data segment management' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Tempus AI Q2 2026 earnings call transcript organic growth genomics data
+      segment management
+    url: https://quartr.com/events/tempus-ai-inc-tem-q2-2026_F3j4vqTx
+    domain: quartr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:10:42.400396+00:00'
+    stale_at: '2026-09-02T14:10:42.400396+00:00'
+    expire_at: '2026-11-01T14:10:42.400396+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-c41324
+  filename: 2026-08-03_labcorp-makes-another-acquisition-plucking-invitae.md
+  source_type: web-search
+  added: '2026-08-03T14:10:42.486532+00:00'
+  processed: true
+  notes: query='Invitae bankruptcy genetic testing acquisition rollup cash burn lessons
+    23andMe collapse diagnostics' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Invitae bankruptcy genetic testing acquisition rollup cash burn lessons
+      23andMe collapse diagnostics
+    url: https://medcitynews.com/2024/04/labcorp-acquisition-invitae-bankruptcy-auction-genetic-testing/
+    domain: medcitynews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:10:42.466999+00:00'
+    stale_at: '2026-09-02T14:10:42.466999+00:00'
+    expire_at: '2026-11-01T14:10:42.466999+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-1b712c
+  filename: 2026-08-03_genetic-testing-company-invitae-files-for-bankrupt.md
+  source_type: web-search
+  added: '2026-08-03T14:10:42.542984+00:00'
+  processed: true
+  notes: query='Invitae bankruptcy genetic testing acquisition rollup cash burn lessons
+    23andMe collapse diagnostics' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Invitae bankruptcy genetic testing acquisition rollup cash burn lessons
+      23andMe collapse diagnostics
+    url: https://www.mobihealthnews.com/news/genetic-testing-company-invitae-files-bankruptcy
+    domain: mobihealthnews.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:10:42.523220+00:00'
+    stale_at: '2026-09-02T14:10:42.523220+00:00'
+    expire_at: '2026-11-01T14:10:42.523220+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-462d05
+  filename: 2026-08-03_form-8-k-for-tempus-ai-inc-filed-02-24-2026.md
+  source_type: web-search
+  added: '2026-08-03T14:12:53.843352+00:00'
+  processed: false
+  notes: query='Tempus organic revenue growth ex-acquisition dilution 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Tempus organic revenue growth ex-acquisition dilution 2026
+    url: https://investors.tempus.com/static-files/1691f309-1916-4869-820d-60bae4c6844a
+    domain: investors.tempus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:53.822891+00:00'
+    stale_at: '2026-09-02T14:12:53.822891+00:00'
+    expire_at: '2026-11-01T14:12:53.822891+00:00'
+    triggered_by: 01-prescan
+- id: mat-d9176c
+  filename: 2026-08-03_tempus-targets-1-595b--1-605b-2026-revenue-as-it-o.md
+  source_type: web-search
+  added: '2026-08-03T14:12:53.902631+00:00'
+  processed: false
+  notes: query='Tempus organic revenue growth ex-acquisition dilution 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Tempus free cash flow cash runway 2026 guidance
+    url: https://seekingalpha.com/news/4622276-tempus-targets-1_595b-1_605b-2026-revenue-as-it-outlines-2028-400m-uplift-tied-to-xt-cdx-and
+    domain: seekingalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:54.219662+00:00'
+    stale_at: '2026-09-02T14:12:54.219662+00:00'
+    expire_at: '2026-11-01T14:12:54.219662+00:00'
+    triggered_by: 01-prescan
+    prev_queries:
+    - Tempus organic revenue growth ex-acquisition dilution 2026
+- id: mat-df08f7
+  filename: 2026-08-03_tempus-ai-free-cash-flow-2023-2026-tem.md
+  source_type: web-search
+  added: '2026-08-03T14:12:54.094799+00:00'
+  processed: false
+  notes: query='Tempus free cash flow cash runway 2026 guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Tempus free cash flow cash runway 2026 guidance
+    url: https://www.macrotrends.net/stocks/charts/TEM/tempus-ai/free-cash-flow
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:54.073107+00:00'
+    stale_at: '2026-09-02T14:12:54.073107+00:00'
+    expire_at: '2026-11-01T14:12:54.073107+00:00'
+    triggered_by: 01-prescan
+- id: mat-b3dfeb
+  filename: 2026-08-03_tempus-ai-nasdaq-tem-swings-to-q2-profit-as-revenu.md
+  source_type: web-search
+  added: '2026-08-03T14:12:54.406110+00:00'
+  processed: false
+  notes: query='Tempus SEC inquiry Pathos related party revenue latest 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Tempus SEC inquiry Pathos related party revenue latest 2026
+    url: https://www.stocktitan.net/sec-filings/TEM/10-q-tempus-ai-inc-quarterly-earnings-report-b23d68656095.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:54.384750+00:00'
+    stale_at: '2026-09-02T14:12:54.384750+00:00'
+    expire_at: '2026-11-01T14:12:54.384750+00:00'
+    triggered_by: 01-prescan
+- id: mat-573782
+  filename: 2026-08-03_personalis-receives-medicare-coverage-for-next-per.md
+  source_type: web-search
+  added: '2026-08-03T14:12:54.534685+00:00'
+  processed: true
+  notes: query='Personalis MRD reimbursement Signatera competition 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Personalis NeXT Personal Medicare coverage MRD
+    url: https://investors.personalis.com/news-releases/news-release-details/personalis-receives-medicare-coverage-next-personalr-lung-cancer
+    domain: investors.personalis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:54.866873+00:00'
+    stale_at: '2026-09-02T14:12:54.866873+00:00'
+    expire_at: '2026-11-01T14:12:54.866873+00:00'
+    triggered_by: 01-deep-fetch
+    prev_queries:
+    - Personalis MRD reimbursement Signatera competition 2026
+- id: mat-97aa02
+  filename: 2026-08-03_mrd-testing-liquid-biopsy-cancer-assay-personalis-.md
+  source_type: web-search
+  added: '2026-08-03T14:12:54.597410+00:00'
+  processed: false
+  notes: query='Personalis MRD reimbursement Signatera competition 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Personalis MRD reimbursement Signatera competition 2026
+    url: https://www.personalis.com/for-biopharma/next-personal/
+    domain: personalis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:54.575527+00:00'
+    stale_at: '2026-09-02T14:12:54.575527+00:00'
+    expire_at: '2026-11-01T14:12:54.575527+00:00'
+    triggered_by: 01-prescan
+- id: mat-4067b7
+  filename: 2026-08-03_personalis-secures-fourth-medicare-coverage-decisi.md
+  source_type: web-search
+  added: '2026-08-03T14:12:54.660989+00:00'
+  processed: true
+  notes: query='Personalis MRD reimbursement Signatera competition 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Personalis NeXT Personal Medicare coverage MRD
+    url: https://investors.personalis.com/news-releases/news-release-details/personalis-secures-fourth-medicare-coverage-decision-next
+    domain: investors.personalis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:54.933202+00:00'
+    stale_at: '2026-09-02T14:12:54.933202+00:00'
+    expire_at: '2026-11-01T14:12:54.933202+00:00'
+    triggered_by: 01-deep-fetch
+    prev_queries:
+    - Personalis MRD reimbursement Signatera competition 2026
+- id: mat-23761b
+  filename: 2026-08-03_personalis-highlights-early-colorectal-cancer-recu.md
+  source_type: web-search
+  added: '2026-08-03T14:12:54.727307+00:00'
+  processed: false
+  notes: query='Personalis MRD reimbursement Signatera competition 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Personalis MRD reimbursement Signatera competition 2026
+    url: https://www.businesswire.com/news/home/20260602445979/en/Personalis-Highlights-Early-Colorectal-Cancer-Recurrence-Detection-and-Ultrasensitive-MRD-Performance-Across-a-Broad-Set-of-Tumor-Types-at-ASCO-2026
+    domain: businesswire.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:54.704401+00:00'
+    stale_at: '2026-09-02T14:12:54.704401+00:00'
+    expire_at: '2026-11-01T14:12:54.704401+00:00'
+    triggered_by: 01-prescan
+- id: mat-97fde3
+  filename: 2026-08-03_personalis-stock-a-growth-inflection-is-imminent-n.md
+  source_type: web-search
+  added: '2026-08-03T14:12:54.794928+00:00'
+  processed: false
+  notes: query='Personalis MRD reimbursement Signatera competition 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Personalis MRD reimbursement Signatera competition 2026
+    url: https://seekingalpha.com/article/4848401-personalis-stock-growth-inflection-is-imminent-hold-for-now
+    domain: seekingalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:54.770848+00:00'
+    stale_at: '2026-09-02T14:12:54.770848+00:00'
+    expire_at: '2026-11-01T14:12:54.770848+00:00'
+    triggered_by: 01-prescan
+- id: mat-781a1a
+  filename: 2026-08-03_tempus-ai-the-market-is-betting-on-an-inflection-i.md
+  source_type: web-search
+  added: '2026-08-03T14:12:55.072894+00:00'
+  processed: false
+  notes: query='Tempus TEM EV sales multiple valuation vs Guardant Natera 2026' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Tempus TEM EV sales multiple valuation vs Guardant Natera 2026
+    url: https://seekingalpha.com/article/4921573-tempus-ai-stock-market-betting-on-inflection-i-cant-yet-see
+    domain: seekingalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:55.049296+00:00'
+    stale_at: '2026-09-02T14:12:55.049296+00:00'
+    expire_at: '2026-11-01T14:12:55.049296+00:00'
+    triggered_by: 01-prescan
+- id: mat-6ded27
+  filename: 2026-08-03_tempus-ai-the-future-of-ai-in-healthcare---the-tec.md
+  source_type: web-search
+  added: '2026-08-03T14:12:55.140568+00:00'
+  processed: false
+  notes: query='Tempus TEM EV sales multiple valuation vs Guardant Natera 2026' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Tempus TEM EV sales multiple valuation vs Guardant Natera 2026
+    url: https://thetechinvestor1.substack.com/p/tempus-ai-the-future-of-ai-in-healthcare
+    domain: thetechinvestor1.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:55.116524+00:00'
+    stale_at: '2026-09-02T14:12:55.116524+00:00'
+    expire_at: '2026-11-01T14:12:55.116524+00:00'
+    triggered_by: 01-prescan
+- id: mat-a1bfbc
+  filename: 2026-08-03_a-look-at-tempus-ai-tem-valuation-after-genopredic.md
+  source_type: web-search
+  added: '2026-08-03T14:12:55.209644+00:00'
+  processed: false
+  notes: query='Tempus TEM EV sales multiple valuation vs Guardant Natera 2026' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: Tempus TEM EV sales multiple valuation vs Guardant Natera 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/look-tempus-ai-tem-valuation-150629487.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-03T14:12:55.185336+00:00'
+    stale_at: '2026-09-02T14:12:55.185336+00:00'
+    expire_at: '2026-11-01T14:12:55.185336+00:00'
+    triggered_by: 01-prescan

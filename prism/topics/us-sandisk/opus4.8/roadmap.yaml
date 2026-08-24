@@ -1,0 +1,136 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: us-sandisk
+created: 2026-08-06
+
+primer_scope: >
+  00_primer 覆盖背景：NAND 闪存是什么(vs DRAM/HBM/HDD)、存储强周期商品生意机理、
+  SanDisk 从 WDC 分拆沿革与业务边界、Kioxia JV 结构、TLC/QLC/eSSD 分类、
+  NAND 全球寡头格局、NBM 多年合同机制、存储周期股估值方法论、HBM 挤出传导、
+  YMTC/中国供给。发展阶段=2025-2026 AI 驱动的 NAND 超级周期上行末段/峰值区。
+
+learning_track:
+  l3_debates:         # 争议层：反方逻辑展开(对齐 thesis 最大反方)
+    - question: "本轮 NAND 上行是 AI 驱动的结构性 regime change,还是又一次周期峰值?共识与我的分歧点在哪?"
+      source_hint: "Morningstar Kerwin 熊方 note vs MS/Susquehanna 牛方;TrendForce 供需模型;hyperscaler capex 轨迹"
+    - question: "NBM($42B)多年合同是否真能削弱 NAND 周期性?市场是否已把'降周期性'过度定价进 forward PE?"
+      source_hint: "10-K/电话会 NBM 条款(take-or-pay/价格地板);同业(Micron/SK海力士)LTA 对比"
+    - question: "SanDisk 作为无 DRAM/HBM 交叉补贴的纯 NAND 中位玩家,下行周期是否最先失血?市场是否低估其脆弱性?"
+      source_hint: "各家毛利结构对比;BiCS 成本曲线;eSSD 份额 vs Solidigm/三星"
+    - question: "峰值资本配置($6B 回购+顺周期扩产)是价值毁损还是信心信号?最易被忽视的风险?"
+      source_hint: "10-K 资本配置章节;历史存储周期顶部回购复盘"
+    - question: "YMTC 崛起(+246%)+ 潜在制裁放松,对 NAND 供给曲线与定价权的中期威胁被市场如何定价?"
+      source_hint: "Counterpoint/UBS 份额预测;美国出口管制政策轨迹"
+
+  l4_hunting:         # 狩猎层:逐条对齐 K#
+    - question: "NAND 合约价 2026H2-2027 能否维持?任一季度 TrendForce 合约价环比转跌是拐点铁证"
+      addresses: [K1]
+      search_keywords: [NAND contract price 2027 forecast, TrendForce NAND Q4 2026, NAND price peak decline]
+      source_hint: "TrendForce/CFM 季度合约价;SanDisk 财报 bit/ASP 分解"
+    - question: "SanDisk NBM 合同是否含 take-or-pay 或价格地板条款?仅 volume 承诺则'降周期性'叙事被证伪"
+      addresses: [K2]
+      search_keywords: [SanDisk NBM take-or-pay, SanDisk supply agreement minimum revenue, NAND long-term agreement pricing floor]
+      source_hint: "FY2025 10-K 风险因子/合同章节;FY26 Q4 电话会 Q&A;10-Q MD&A"
+    - question: "BiCS8/BiCS9 单 GB 成本与良率是否 ≤ 铠侠/三星?企业级 QLC/TLC 份额是否被 Solidigm 挤压?"
+      addresses: [K3]
+      search_keywords: [BiCS8 cost per bit yield, SanDisk enterprise SSD market share, Solidigm QLC vs SanDisk]
+      source_hint: "卖方竞品对比;Counterpoint eSSD 份额;10-K 技术章节"
+    - question: "从 10-K 建模的 mid-cycle 正常化 EPS 是多少?FY29e 下行年是否重回接近盈亏平衡?现价相对正常化 EPS 是 <10x 还是 >30x?"
+      addresses: [K4]
+      search_keywords: [SanDisk normalized earnings mid-cycle, SanDisk FY2028 EPS estimate, NAND cycle trough earnings]
+      source_hint: "10-K 历史财务+WDC 闪存段 2022-23 下行期;sell-side FY27/28 一致预期"
+    - question: "管理层是否在峰值大额回购($6B 已授权)+顺周期扩产?capex 指引是否埋过剩隐患?"
+      addresses: [K5]
+      search_keywords: [SanDisk buyback capex FY2027, SanDisk capital allocation Goeckeler, SanDisk share repurchase timing]
+      source_hint: "10-K 资本配置;电话会资本纪律 Q&A;8-K 回购公告"
+    - question: "三星加速扩产/YMTC 制裁放松/WDC-铠侠合并落地——任一供给冲击的概率与时点?"
+      addresses: [K6]
+      search_keywords: [Samsung NAND capacity expansion 2027, WDC Kioxia merger 2026, YMTC export controls 2026]
+      source_hint: "Yole/Reuters;三星资本开支公告;Counterpoint 供给预测"
+
+material_priority:
+  tier1:              # 必读(多数 00 已收)
+    - title: "SanDisk FY2025 10-K (分拆后首份年报) — NBM 条款/风险因子/资本开支/JV 章节"
+      type: annual-report
+      ticker: SNDK
+      source: "SEC EDGAR (已收 mat-e0fafe)"
+      why: "K2/K4/K5 核心一手源;NBM 含牙度=命门1"
+      addresses: [K2, K4, K5]
+      info_tier: public
+      status: done
+    - title: "SanDisk FY2026 Q3 10-Q (含 MD&A/财务切片)"
+      type: quarterly-report
+      ticker: SNDK
+      source: "SEC EDGAR (已收 mat-28c180/04096b/f13cc1)"
+      why: "最新季度 bit/ASP/毛利趋势;NBM 覆盖比例"
+      addresses: [K1, K2]
+      info_tier: public
+      status: done
+    - title: "SanDisk FY26 Q4 正式电话会 transcript (2026-08-05 财报后)"
+      type: sell-side-note
+      ticker: ""
+      source: "Seeking Alpha/Quartr transcript"
+      why: "K2 NBM 条款问答 + Q1FY27 指引解读 + 资本纪律表态;prescan 仅有摘要,需全文"
+      addresses: [K2, K5]
+      info_tier: half_public
+      status: pending
+    - title: "历史镜鉴:WDC/SanDisk 闪存段 2022-2023 下行期财务(营收/毛利/亏损)"
+      type: data
+      ticker: ""
+      source: "WDC 历史 10-K 存档 / stockanalysis / macrotrends"
+      why: "K4 正常化 EPS 下行年锚——决定目标价/EV 的关键;00 SEC 精确年份未命中"
+      addresses: [K4]
+      info_tier: half_public
+      status: pending
+  tier2:              # 补充(多数 00 prescan 已覆盖)
+    - title: "sell-side 一致预期:SNDK FY27/FY28 营收/EPS + 目标价分布"
+      type: data
+      ticker: ""
+      source: "visible alpha/大行研报;prescan 有目标价分布"
+      why: "K4 估值锚(consensus 必收类目)"
+      addresses: [K4]
+      info_tier: half_public
+      status: done
+    - title: "卖方存储行业深度(NAND 成本曲线/BiCS 良率/供需模型)MS/Susquehanna/UBS/Morningstar"
+      type: sell-side-note
+      ticker: ""
+      source: "大行研报;prescan 有 highlights"
+      why: "K1/K3 供需与成本位;Morningstar 熊方立论"
+      addresses: [K1, K3]
+      info_tier: half_public
+      status: done
+    - title: "竞品 eSSD 对比:SanDisk vs Solidigm/三星/Micron 份额/qualification/成本"
+      type: industry-research
+      ticker: ""
+      source: "Counterpoint/TrendForce;prescan 有份额"
+      why: "K3 相对竞争位"
+      addresses: [K3]
+      info_tier: half_public
+      status: done
+  tier3:              # 可选
+    - title: "YMTC/中国供给 + 美国出口管制跟踪"
+      type: industry-research
+      ticker: ""
+      source: "Reuters/Counterpoint/UBS(prescan 已覆盖)"
+      addresses: [K6]
+      info_tier: public
+      status: done
+    - title: "WDC-Kioxia 合并进展 + JV 结构细节"
+      type: industry-research
+      ticker: ""
+      source: "Yole/Reuters(prescan 已覆盖)+ 10-K JV 章节"
+      addresses: [K6, K3]
+      info_tier: half_public
+      status: done
+
+key_risks_to_monitor:
+  - "NAND 合约价环比转跌(K1 拐点铁证)"
+  - "hyperscaler capex 增速塌陷(UBS: 2026+76%→2027+25%→2028+6%)"
+  - "双订单/库存回补信号显现"
+  - "三星逆周期扩产 / YMTC 制裁放松 / 新供给 2027-28 上线"
+  - "峰值大额回购毁损价值"
+  - "WDC-Kioxia 合并改变 JV 结构"
+
+analogies_to_study:
+  - "2022-2023 NAND 深度下行:全行业亏损/减产——最直接的下行年镜鉴(historical-mirror,喂 K4 正常化盈利)"
+  - "美光(Micron)2018-2019 周期:峰值 forward PE 低位后股价腰斩——'低 PE≠便宜'的存储周期股价值陷阱经典案例"
+  - "2017-2018 NAND 上行→2019 崩盘:双订单+新供给上线如何逆转紧供给(喂 L3 争议1/命门2)"

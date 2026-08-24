@@ -4,85 +4,95 @@ topic_type: company
 display_name: AppLovin (APP, NASDAQ)
 ticker: US_APP
 generated: 2026-07-27T00:00:00Z
-data_freshness: "2026-07-27"
+last_resynth: 2026-08-12T00:00:00Z
+data_freshness: "2026-08-12 (窄重合成:SEC结案+BofA降级+价$314;基线为Q2 2026财报盘后)"
 
 buy_box:
-  strong_buy_max: 360
-  accumulate_min: 360
-  accumulate_max: 450
-  hold_min: 450
-  hold_max: 580
-  current_price: 410.69
-  price_as_of: "2026-07-27"
-  current_zone: accumulate
+  strong_buy_max: 330
+  accumulate_min: 330
+  accumulate_max: 440
+  hold_min: 440
+  hold_max: 510
+  current_price: 314
+  price_as_of: "2026-08-12 (创新低$311,再-4%)"
+  current_zone: strong_buy
+  note: "<$280且无新kill=最强买入;$300为分岔判据(非机械止损):跌破时若伴新kill/基本面恶化→减仓,若单纯de-rate超调→加码;任何价位+新硬kill触发→减仓优先于价格;现价$314距$300仅~4.5%重点盯。【05-critic第3轮补·软触发】Q3温和miss+电商续零量化+增速掉向<35%三者同现(即使不触硬kill)=命门1软证伪→封首仓停加码,不接慢刀(堵'温和证伪却继续接刀'漏洞)"
 
 position_framework:
   position_tier: 标准
-  sizing_rationale: "EV +24% 且基本盘证据充分支持标准档；但命门1(AXON效果真实性)不可ex-ante证伪 + 命门2监管二元尾部 + beta 2.48 → 不上重仓、单一仓位上限从严"
-  initial_max_pct: 2.0
+  sizing_rationale: "【8/12窄重合成+05-critic第3轮】强度维持5.5不动:SEC结案(赔率轴+,监管尾部5%→3%)被BofA'gaming self-learning有机增长见顶'疑点(信心轴-)对冲,不因SEC上调强度;EV从首版+34%诚实下修至~+30%(中性,区间+20~+36%)——反方致命一击:EV最大杠杆'base倍数温和回归+29%CAGR'两乐观数此前未单独压测,现补敏感度:倍数永停20x则EV+26%,再叠增速掉向24%则+20%(仍正);好处落仓位(首仓2-2.5%)非托强度;命门1过度归因(强空11%)仍是主尾+BofA gaming引擎见顶+EV对base双假设敏感+beta2.53+macro再通胀熊陡→维持标准档非重仓"
+  initial_max_pct: 2.5
   full_max_pct: 5.0
-  add_ladder_prices: [300, 360]
+  add_ladder_prices: [290]
   max_cluster_pct: 10
 
 valuation_models:
   - name: reverse_dcf
-    label: "隐含反推/DCF (WACC 11%)"
-    bull_fair_value: [720, null]
-    base_fair_value: [520, 580]
-    bear_fair_value: [210, 250]
+    label: "隐含反推/DCF (WACC 11%, 实际利率2.43)"
+    bull_fair_value: [640, 700]
+    base_fair_value: [470, 520]
+    bear_fair_value: [200, 240]
   - name: forward_pe
     label: "forward P/E × 前瞻EPS"
-    bull_fair_value: [700, 780]
-    base_fair_value: [510, 560]
-    bear_fair_value: [220, 238]
+    bull_fair_value: [630, 690]
+    base_fair_value: [460, 510]
+    bear_fair_value: [200, 230]
   - name: ev_fcf
     label: "EV / 前瞻FCF"
-    bull_fair_value: [560, 590]
-    base_fair_value: [400, 450]
-    bear_fair_value: [220, 250]
+    bull_fair_value: [520, 580]
+    base_fair_value: [370, 430]
+    bear_fair_value: [200, 230]
 
 kill_criteria:
   - id: rev_growth_below_25
     description: "广告平台营收同比增速跌破25%且下季指引下修 → 命门3破,目标价下修$300以下"
-    status: pending
-    check_at: "2026-08-05"
+    status: not_triggered
+    check_note: "Q2 +52.8%、Q3指引+47%——远高于25%,减速轨迹坐实但未破位"
+    check_at: "2026-Q3(~11月)"
   - id: ecommerce_stall
-    description: "电商/consumer收入环比连续两季<10%增长 + 管理层弱化电商叙事 → 命门1证伪多头"
-    status: pending
-    check_at: "2026-Q4"
+    description: "电商/consumer收入环比连续两季<10%增长 + 管理层弱化电商叙事 → 命门1证伪多头。【05-critic第2轮补】持续零量化披露本身按TTD/Criteo塌方前『叙事先变模糊』先例定为命门1领先负面信号:Q3(~11月)若仍零量化,视同本kill软触发→把强空-归因档从11%上调、首仓封顶不加"
+    status: unmeasurable
+    check_note: "Q2电商仍不单列无法测;管理层维持早期定性——已连续6季拒披露,零披露本身是命门1领先负面信号(非中性),权重逐季累积;Q3为硬裁决点。【05-critic第3轮·软触发】Q3'温和miss+电商续零量化+增速掉向<35%'三者同现(即使不触本kill的连续两季<10%硬线)=命门1软证伪→封首仓停加码(见buy_box.note)"
+    check_at: "2026-Q3"
   - id: net_rev_per_install_negative
     description: "每安装净收入增速转负 → 单价驱动逻辑破,量端萎缩(-18%)无对冲"
-    status: pending
-    check_at: "2026-08-05"
+    status: unmeasurable
+    check_note: "Q2未拆量价"
+    check_at: "2026-Q3"
   - id: sec_enforcement_or_delisting
     description: "SEC正式指控/和解金>营收5% 或 Apple/Google下架SDK → 命门2触发熊市"
-    status: pending
+    status: not_triggered
+    check_note: "【2026-08-12 复核】SEC 自愿性问询已于 2026-08-05 电话会确认结案、无处罚(no recommended action, transcript 原文)→ 本 kill 最凶的 SEC/去平台化腿已清;残留仅私人证券集诉(5:25-cv-03438)+ Apple/Google SDK 政策。8/6 thesis_v2 漏记此利好,监管尾部权重应下修"
     check_at: "2026"
   - id: op_margin_below_65
     description: "营业利润率跌破65% → 估值假设A4重置"
-    status: pending
-    check_at: "2026-08-05"
+    status: not_triggered
+    check_note: "Q2营业利润率77.7%(强);唯Adj EBITDA margin 83.9%低于指引84-85%低端=margin见顶"
+    check_at: "2026-Q3"
   - id: price_stop_300
     description: "跌破$300(熊市情景确认线)且无重大利好 → 减仓/重估"
-    status: pending
-    check_at: "2026"
+    status: near_trigger
+    check_note: "Q2盘后~$328,-22%后距确认线仅一步,重点盯"
+    check_at: "ongoing"
 
 signposts:
   - date: "2026-08-05"
     event: "Q2 2026 财报(盘后)——近端最重催化"
     bull_signal: "增速兑现≥指引+52-55% + 电商给量化放量读数 + 每安装净收入增速延续 + 利润率守"
     bear_signal: "增速掉档/指引下修 + 电商仍零数字 + 每安装净收入见顶 + 利润率滑向65%"
-    triggered: null
-  - date: "2026-Q4"
-    event: "self-serve全球开放后广告主数/consumer留存量化披露"
-    bull_signal: "广告主数放量 + 30天留存兑现管理层口径 + 电商收入占比可量化"
-    bear_signal: "仍只有定性口径/无量化 + 新业务坏账扩大"
+    triggered: bear
+    outcome: "营收$1.924B miss共识、Q3指引rev+EBITDA双低于共识、电商仍零量化、回购腰斩→beat-and-raise叙事击穿,盘后-22%。bear信号占优但均为叙事/估值负面、无硬kill"
+  - date: "2026-Q3(~2026-11)"
+    event: "Q3 2026财报——命门1(电商量化)真正裁决点被Q2推后至此"
+    bull_signal: "电商终给量化放量 + 增速守≥40% + margin稳"
+    bear_signal: "电商仍零量化 + 增速继续掉向<30% + margin续滑"
     triggered: null
   - date: "2026"
     event: "SEC调查是否被申报文件确认 / 证券集诉(5:25-cv-03438)进展"
     bull_signal: "收敛为披露/投放实践整改,无罚没/重述"
     bear_signal: "SEC正式立案/传票被确认 或 和解金显著"
-    triggered: null
+    triggered: bull
+    outcome: "【2026-08-12 复核】SEC 于 2026-08-05 电话会确认结案、无 recommended action、无罚没/重述——bull_signal 兑现;仅私人证券集诉仍未决(独立于 SEC 监管腿)"
 
 cluster_tags: [adtech, ai-advertising, us-growth, high-beta-ai]
 
@@ -102,10 +112,11 @@ honest_gaps:
 
 market_implied:
   metric: implied_eps_cagr_5y
-  value: 27
+  value: 22
 
 my_vs_market_delta:
   metric: implied_eps_cagr_5y
-  my_value: 31
-  delta: "+4pct"
+  my_value: 29
+  delta: "+7pct"
   direction: long
+  note: "8/12:价$328→$314使market隐含CAGR 23→22;my维持29(BofA self-learning见顶疑点未改中性判断,但为下行风险,待Q3裁决);delta +6→+7pct"

@@ -73,8 +73,8 @@ outputs_state:
     last_error: null
     critic_passed: true
   08_living_feed:
-    version: 3
-    last_updated: '2026-07-19T09:57:29.039711+00:00'
+    version: 4
+    last_updated: '2026-08-05T21:04:34.511077+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -405,3 +405,9 @@ prescan_log:
   triggered_by: 01-prescan
   hit_rate: 0.625
   failure_reason: prescan 校准率 62%（5/8，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.524926+00:00'
+  reason: 依赖的『人民币企稳偏弱(利出海49%高毛利钣金)』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+    v3→v4)
+  proposal_id: 208040fac49a
+  locator: fx_cny

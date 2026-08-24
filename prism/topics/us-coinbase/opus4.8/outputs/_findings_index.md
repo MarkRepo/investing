@@ -3,7 +3,7 @@
 > 主 agent 调度提示：写每批 output 前重读本文件，按 addresses(K# 脊柱) + rings(决策链输入合同) 判断 context 是否覆盖所需维度；
 > 记忆模糊的 mat_id 单独 Read `outputs/findings_{mat_id}.md` 补回。
 
-## 自有 findings（29 份）
+## 自有 findings（30 份）
 
 - `mat-008730` | 2026-07-14_deribit-joins-coinbase-unlocking-the-future-of-glo.md | addresses=[K1] | rings=[biz-moat-unit-econ] | medium/issuer-official（Coinbase 投资者关系页，正面口径） | Deribit 单月交易营收（transaction revenue）：2025 年 7 月单月 >$30M（快照原文 "Deribit generated over $30 million in J…
 - `mat-0483ab` | sec/2026_COIN_10-Q_2026-05-07/item_1a_risk.md | addresses=[risk,K1] | rings=[-] | low/low | 本节无实质增量内容：明确声明"相较 2025 年度 10-K Part I Item 1A 的风险因素，无重大变化（no material changes）"。
@@ -18,6 +18,7 @@
 - `mat-4529fe` | 2026-07-14_coinbase-robinhood-financial-performance-overview-.md | addresses=[K4] | rings=[peer-comparison-financials] | medium/insights4vc（VC 视角 Substack），中性偏分析；快照仅一句 | Robinhood take rate：Q4 2024 = 0.50%，较 Q1 2022 的 0.23% 翻倍上行。
 - `mat-4db1e9` | 2026-07-14_q3-25-shareholder-letter.md | addresses=[K1] | rings=[biz-moat-unit-econ] | low/bull | S&S 收入 Q4'25 指引区间：$710–790M（管理层给出，来自 Q3'25 letter 对 Q4 的展望）。
 - `mat-53aae8` | 2026-07-14_is-coinbase-stock-undervalued-after-q1-2026-here-s.md | addresses=[K1,valuation] | rings=[consensus,valuation-anchor] | medium/TIKR 估值工具/自家模型推广（"Pull up financials on TIKR for free"），多头倾向；仅快照单段 | Q1 2026 总收入 $1.4B，同比 -31%（YoY）。
+- `mat-62bb40` | findings_mat-62bb40.md | addresses=[K1,K3,K5] | rings=[financial-arc,biz-moat-unit-econ,consensus,mgmt-capital-alloc] | ?/? | | 科目 | Q2'25 | Q3'25 | Q4'25 | Q1'26 | Q2'26 | Q/Q | Y/Y |
 - `mat-74564c` | 2026-07-14_coinbase-to-acquire-deribit-becoming-the-most-comp.md | addresses=[K1,K5] | rings=[mgmt-capital-alloc] | high/issuer-official（Coinbase 官方博客，正面战略叙事） | 收购对价：约 $2.9B，明确拆分为 $700M 现金 + 1,100 万股 Coinbase Class A 普通股（与 CNBC/mat-c02351 完全一致，官方口径互证）。
 - `mat-977fb4` | sec/2025_COIN_10-K_2026-02-12/item_1_business.md | addresses=[scope,K3,K5] | rings=[biz-moat-unit-econ] | high/neutral | 年 12 月公司转型定位为 "Everything Exchange"（万物交易所），交易品类从现货加密扩展到股票、商品期货、永续期货、预测市场（事件合约）。
 - `mat-9b32e2` | sec/2025_COIN_10-K_2026-02-12/item_1a_risk.md | addresses=[risk,K1] | rings=[biz-moat-unit-econ,bull-bear/peer-comparison-financials] | high/bear | 收入高度依赖加密价格与交易量：交易费为价值百分比或固定费，价/量下滑直接压收入（核心周期性风险）。

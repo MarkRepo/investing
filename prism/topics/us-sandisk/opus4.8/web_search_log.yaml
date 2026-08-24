@@ -1,0 +1,125 @@
+slug: us-sandisk
+variant: opus4.8
+entries:
+- searched_at: '2026-08-06T12:49:02.626795+00:00'
+  query: SanDisk SNDK quarterly earnings FY2026 revenue gross margin EPS
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 2
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-08-06T12:49:02.627305+00:00'
+  query: NAND flash price trend 2026 contract spot forecast
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-08-06T12:49:02.633820+00:00'
+  query: Kioxia SanDisk JV merger consolidation 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 1
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-08-06T12:49:02.634747+00:00'
+  query: SanDisk SNDK stock price valuation analyst target
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 0
+  n_low: 3
+  disposition: registered
+- searched_at: '2026-08-06T12:49:02.635824+00:00'
+  query: SanDisk balance sheet debt buyback capital allocation
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-08-06T12:49:02.637102+00:00'
+  query: China YMTC NAND competition market share 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 0
+  n_low: 1
+  disposition: registered
+- searched_at: '2026-08-06T12:50:17.137423+00:00'
+  query: SanDisk Q3 FY26 buyback NBM contracts
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-06T12:50:17.164178+00:00'
+  query: NAND flash contract price 2026 TrendForce
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-06T12:50:17.175430+00:00'
+  query: WDC Kioxia merger talks 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-06T12:50:17.213432+00:00'
+  query: SanDisk SNDK valuation analyst price target 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-06T12:50:17.229791+00:00'
+  query: SanDisk balance sheet debt free capital return
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-06T12:50:17.246564+00:00'
+  query: YMTC NAND market share 2026 China competition
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-06T13:54:36.986292+00:00'
+  query: SanDisk SNDK consensus EPS FY2027 FY2028 downturn 2029 forecast
+  triggered_by: 03-extract
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-06T15:05:52.339778+00:00'
+  query: SanDisk SNDK consensus EPS FY2027-2029 price target dispersion NBM floor
+    coverage Bernstein Morningstar HBF
+  triggered_by: 05-critic
+  n_results: 6
+  n_high: 0
+  n_mid: 0
+  n_low: 6
+  disposition: registered
+- searched_at: '2026-08-06T15:06:23.319699+00:00'
+  query: SanDisk SNDK consensus EPS 2027-2029 Bernstein floor Morningstar coverage
+    HBF dispersion
+  triggered_by: 05-critic
+  n_results: 6
+  n_high: 0
+  n_mid: 6
+  n_low: 0
+  disposition: registered

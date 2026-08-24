@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}计划区 · 登录{% endblock %}
+{% block content %}
+<nav class="breadcrumb"><a href="/prism">研究主题</a> / <a href="/prism/notes">计划</a> / <span>登录</span></nav>
+
+<div class="notes-login">
+  <h1>🔐 计划区</h1>
+  <p class="hint">这是私人笔记区，仅限本人访问。请输入 Token 进入。</p>
+  {% if error %}
+  <p class="login-err">Token 错误，请重试。</p>
+  {% endif %}
+  <form method="post" action="/prism/notes/login" autocomplete="off">
+    <input type="hidden" name="next" value="{{ next }}" />
+    <input type="password" name="token" placeholder="Token" autofocus required />
+    <button type="submit">进入</button>
+  </form>
+</div>
+
+<style>
+  .breadcrumb { font-size: 0.85em; color: #888; margin-bottom: 1em; }
+  .breadcrumb a { color: #555; }
+  .notes-login { max-width: 360px; margin: 3em auto; }
+  .notes-login h1 { font-size: 1.4em; margin: 0.2em 0 0.5em; }
+  .notes-login .hint { color: #888; font-size: 0.9em; margin-bottom: 1.2em; }
+  .notes-login form { display: flex; gap: 0.5em; }
+  .notes-login input[type=password] {
+    flex: 1; padding: 0.55em 0.7em; font-size: 1em;
+    border: 1px solid #ccc; border-radius: 6px; outline: none;
+  }
+  .notes-login input[type=password]:focus { border-color: #2a5db0; }
+  .notes-login button {
+    padding: 0.55em 1.1em; font-size: 1em; cursor: pointer;
+    background: #2a5db0; color: #fff; border: none; border-radius: 6px;
+  }
+  .notes-login button:hover { background: #234a8c; }
+  .login-err { color: #c0392b; font-size: 0.9em; margin-bottom: 1em; }
+</style>
+{% endblock %}

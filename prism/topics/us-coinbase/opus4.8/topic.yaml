@@ -3,7 +3,7 @@ display_name: Coinbase (COIN, NASDAQ)
 type: company
 created: '2026-07-14T14:02:49.237224+00:00'
 status: active
-stage: 04-post-synthesis
+stage: 05-critic-review
 canonical: true
 parent_topic: null
 monitoring_tier: dormant
@@ -53,52 +53,54 @@ outputs_state:
     last_error: null
     critic_passed: true
   c_investment_case:
-    version: 5
-    last_updated: '2026-07-15T13:52:51.280303+00:00'
+    version: 6
+    last_updated: '2026-08-03T02:03:27.702377+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
     - mat-008730
+    - mat-012909
+    - mat-08ec9c
     - mat-0ded80
+    - mat-14e435
     - mat-22fcff
     - mat-2c07c9
-    - mat-3124fe
     - mat-4529fe
-    - mat-53aae8
+    - mat-50b3ba
+    - mat-62bb40
     - mat-74564c
     - mat-977fb4
     - mat-9b32e2
-    - mat-abfc11
     - mat-adcede
     - mat-b0635b
     - mat-b4e2c4
     - mat-c02351
     - mat-c4de6d
-    - mat-eed625
     - mat-efc570
     - mat-f64190
     - mat-fe0dd9
     last_error: null
   07_decision_kit:
-    version: 4
-    last_updated: '2026-07-15T13:52:51.302739+00:00'
+    version: 5
+    last_updated: '2026-08-03T02:03:27.714135+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
   08_living_feed:
-    version: 5
-    last_updated: '2026-07-15T13:52:51.321212+00:00'
+    version: 7
+    last_updated: '2026-08-03T02:09:45.179125+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
 parent_materials: []
 next_actions:
-- case v5 + thesis_v2(就地补桥)：补资产负债表桥(净现金+BTC持仓+股权+Base/Deribit期权)，base $120-140→$135-145、现价EV
-  −9%→−4%(略贵/观望)、真机会≤$120-130
-- 可选：再跑05四评验证/转06-daily-monitor(Q2 07-30 K1决胜)
-- 独立整理项：00_primer mat漂移待刷新
+- thesis_v3 + case v6 已出(K1红灯翻牌·S&S证伪·纯周期重构)，内嵌chain-critic放行(终局2定量/1定性有据/1薄:take
+  rate)
+- 说「评审 us-coinbase」进 05 对抗式重审
+- 'P0 drilldown: 拉 consumer-only take rate 逐季序列(K4 最薄承重轴+40%下行总开关)'
+- '下一决胜点 Q3''26 财报(约2026-10末): S&S 能否随利率企稳止跌、K1红灯能否解除'
 user_todos:
 - task: Coinbase FY2025 年报(10-K) + Q1 2026 季报(10-Q)
   priority: P0
@@ -226,7 +228,25 @@ user_todos:
   fetch_status: unattempted
   fetch_attempts: 0
   disposition: undecided
-suggested_drilldowns: []
+- task: 'Q2''26重合成完成: case v6 + thesis_v3(中性偏谨慎5/10·纯周期高beta重构) + sidecar + decomposition_v2
+    + living feed; chain-critic放行'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: K4 take rate 结构性侵蚀：拉 consumer-only 费率(Consumer交易收入÷Consumer交易量)的逐季历史序列+前瞻，判断
+    1.575% vs HOOD 0.50% 的3x溢价是否被竞争性磨平。这是移除S&S支柱后仅存的独立非周期承重轴，且挂40%熊/深熊下行概率。
+  rationale: ''
+  source: critic_weak_k
+  related: []
+  priority: P0
+  status: open
+  suggested_at: '2026-08-03T02:09:45.145816+00:00'
 monitoring:
   enabled: false
   cadence: daily
@@ -239,8 +259,8 @@ critic:
   thesis_version: 1
   next_stage: 04-synthesizing
 decomposition:
-  current_version: 1
-  last_updated: '2026-07-14T16:34:34.495926+00:00'
+  current_version: 2
+  last_updated: '2026-08-03T02:03:27.673533+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
@@ -254,9 +274,17 @@ decomposition:
       + 命门3周期vs竞争侵蚀(中·未分离)
     convergence_status: open
     changelog: 命门2置信度低→中(凭mat-c4de6d Coinbase-shaped hole,非震荡);命门1表述精修(被动多元化,kill改占比+绝对额双看);无新增/掉队命门;primer入门目标delta空。05-critic未跑故open
+  - version: 2
+    stage_set_at: '2026-08-03T00:00:00+00:00'
+    set_at: '2026-08-03T02:03:27.673550+00:00'
+    summary: 命门1 S&S抗周期地板【红灯·已证伪】(Q2连2季同比负,降息压缩USDC利息) + 命门2稳定币监管(中·NPRM悬念) + 命门3周期(低-中·Q2续降未触底,已price-in)
+      + 命门4 take rate侵蚀(中·独立非周期承重轴)
+    convergence_status: converged
+    changelog: K1由"中·黄灯(缓冲垫)"→"红·已证伪"：Q2'26 S&S $555M连2季同比负(Q1 −13.6%/Q2 −12%),坐实斜坡非地板,根因降息压缩USDC利息(regime
+      v4传导);S&S支柱移除、base下修。K2/K3/K4结构不变。无新增/掉队命门。收敛:K1财报决胜已定,故converged。
 thesis:
-  current_version: 2
-  last_updated: '2026-07-15T13:25:01.636802+00:00'
+  current_version: 3
+  last_updated: '2026-08-03T02:03:27.630795+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -275,6 +303,11 @@ thesis:
     set_at: '2026-07-15T13:25:01.636973+00:00'
     summary: 中性偏谨慎(5/10)：COIN是"杠铃"(59%顺周期交易+41%经常性平台)，按SOTP混合经营倍数(~17x)+资产负债表桥(净现金$3B+BTC持仓$1.6B+股权+Base/Deribit期权)定价，base~$135-145(中枢~$140)；现价$159.5高于base~9~14%、EV≈−4%→略贵/观望；真逆周期机会≤$120-130(EV+18~40%)、强力买≤$110；不翻空(bull$310尾部不对称)。K1缓冲垫/K2监管/K3周期已price-in/K4
       take rate独立非周期承重轴。
+  - version: 3
+    stage_set_at: '2026-08-03T00:00:00+00:00'
+    set_at: '2026-08-03T02:03:27.630995+00:00'
+    summary: 中性偏谨慎(5/10·维持·支柱重构)：Q2'26触发K1红灯——S&S连2季同比负(Q2 −12%)、降息压缩USDC利息、抗周期地板证伪。thesis从"逆周期看多+S&S缓冲垫"重构为"纯周期高beta加密期权+合规份额赢家(份额ATH10.3%)"。base
+      $135-145→$125-140(中枢~$132·正常化经营净利下修$1.75B→$1.6B)；现价$159.5→$146.26，EV −4%→~+1%≈公允/观望(概率加权目标$148≈现价)。真机会≤$115-125(EV+12~25%)、强力买≤$105(+40%)。方向未翻空(bull$310尾部不对称+逆周期资本配置+资产负债表垫底)。K1红/K2中/K3低-中/K4独立未解/K5偏正。
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-07-14T14:17:33.511821+00:00'
@@ -347,6 +380,14 @@ stage_history:
     empty_pending_decision: 0
 - stage: 04-post-synthesis
   entered_at: '2026-07-15T13:31:35.531340+00:00'
+  exited_at: '2026-08-03T02:09:45.189949+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-08-03T02:09:45.189949+00:00'
   exited_at: null
   gap_snapshot:
     uncovered_ks: []
@@ -360,3 +401,4 @@ prescan_log:
   hit_rate: 1.0
   queries_run: 5
   queries_with_hits: 5
+pending_thesis_review: null

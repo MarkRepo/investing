@@ -15,6 +15,7 @@ from __future__ import annotations
 
 # 规范名 → {aliases, rank}。rank 越大越优先作兜底（借异模型父时取最高）。
 REGISTRY: dict[str, dict] = {
+    "opus5":           {"aliases": ["claude-opus-5", "opus-5", "claude-opus-5[1m]"], "rank": 110},
     "opus4.8":         {"aliases": ["claude-opus-4-8", "opus-4.8"], "rank": 100},
     "glm5.2":          {"aliases": ["glm-5.2", "glm5.2"], "rank": 95},
     "claude-opus-4-7": {"aliases": ["opus4.7", "opus-4.7"],     "rank": 90},

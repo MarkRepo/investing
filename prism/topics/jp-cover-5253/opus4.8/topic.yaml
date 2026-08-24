@@ -3,7 +3,7 @@ display_name: COVER株式会社 (COVER Corp, hololive, TSE 5253)
 type: company
 created: '2026-07-28T08:45:13.890267+00:00'
 status: active
-stage: 04-synthesizing
+stage: 05-critic-review
 canonical: true
 parent_topic: null
 monitoring_tier: dormant
@@ -20,13 +20,68 @@ scope:
   - COVER 5253 決算
   - hololive 物販 業績
   - ANYCOLOR 比較
-outputs_state: {}
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-08-02T15:52:04.665423+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-20fc41
+    - mat-3a456c
+    - mat-53da95
+    - mat-6ba4a0
+    - mat-746932
+    - mat-aa6454
+    - mat-aee2b8
+    - mat-af3c2f
+    - mat-e2d5ae
+    - mat-fd47b7
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-08-02T15:55:42.942914+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0e5564
+    - mat-20fc41
+    - mat-3a456c
+    - mat-53da95
+    - mat-6ba4a0
+    - mat-746932
+    - mat-9826d4
+    - mat-aa6454
+    - mat-aee2b8
+    - mat-af3c2f
+    - mat-e2d5ae
+    - mat-fd47b7
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-08-02T15:55:42.961062+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0e5564
+    - mat-20fc41
+    - mat-3a456c
+    - mat-53da95
+    - mat-6ba4a0
+    - mat-746932
+    - mat-9826d4
+    - mat-aa6454
+    - mat-aee2b8
+    - mat-af3c2f
+    - mat-e2d5ae
+    - mat-fd47b7
+    last_error: null
 parent_materials: []
 next_actions:
-- 20份材料findings全抽完(2份决算全文+18份web-search)，环输入gap全消解，advance gate通过
-- 说「prism 推进 jp-cover-5253」走决策链合成：00_primer 领域入门 + c_investment_case 6环成稿 + 07_decision_kit
-  sidecar
-- 合成时并入2条prescan新信号：米系6/18下调弱气目标¥1200(K5) + ANYCOLOR 27.4期减益指引(K3)
+- 决策链合成全部完成，chain-critic 六环全通(断点1 driver归因已补敏感性桥修复)
+- 说「评审 jp-cover-5253」进 05 对抗式重审(steelman)
+- 关键验证点 2026-08-12 FY2027 Q1 决算——验证K1利润率触底(H1指引营益-27.6%)
 user_todos:
 - task: 下载 FY2026/3 有価証券報告書 + 決算短信 全文（EDINET/JPX/COVER IR）
   priority: P0
@@ -169,29 +224,74 @@ user_todos:
   fetch_status: unattempted
   fetch_attempts: 0
   disposition: undecided
-suggested_drilldowns: []
+- task: 合成完成：00_primer(deep,1轮critic收敛)+c_investment_case(6环,EV+6%)+07_decision_kit+thesis_v1(中性4.5/10)+decomp_v1(converged)+macro_stamp(regime
+    v4)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: ホロドリ手游上线后精确流水/留存/QualiArts分成结构——第二曲线能否量化抵消物販减速
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K4
+  priority: P0
+  status: open
+  suggested_at: '2026-08-02T15:59:52.745339+00:00'
+- question: TCG在物販内精确占比与增速——物販剔除TCG后核心周边是否已负增长
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K2
+  - K4
+  priority: P1
+  status: open
+  suggested_at: '2026-08-02T15:59:52.745339+00:00'
+- question: 库存评价减是否FY2026一次性出清抑或FY2027仍有尾巴——决定K1利润率触底判断确定性
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P1
+  status: open
+  suggested_at: '2026-08-02T15:59:52.745339+00:00'
 monitoring:
   enabled: false
   cadence: daily
 critic: null
 decomposition:
-  current_version: 0
-  last_updated: '2026-07-28T09:21:00.738202+00:00'
+  current_version: 1
+  last_updated: '2026-08-02T15:55:42.920462+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
     set_at: '2026-07-28T09:21:00.738332+00:00'
     summary: 命门1=利润率兑现路径能否回15%+(中); 命门2=物販单引擎可持续+TCG/手游第二曲线接棒(中); 命门3=IP资产折旧(talent毕业)vs新血造血(中-低)
     convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-08-02T15:55:42.920468+00:00'
+    summary: 厚料确认v0三命门方向:命门1利润率兑现(中,证据偏否强化);命门2物販单引擎+第二曲线(中-高,Q4-13.5%坐实刹车);命门3 IP折旧vs造血(中-低,per-talent数据仍缺)
+    convergence_status: converged
+    changelog: 厚料确认v0三命门,无新增/无掉队;置信度更新(命门1偏否强化/命门2升中-高/命门3维持);primer11目标无增删,critic补ホロドリ定义+跟踪信号节;delta实质空→converged
 thesis:
-  current_version: 0
-  last_updated: '2026-07-28T09:17:40.034155+00:00'
+  current_version: 1
+  last_updated: '2026-08-02T15:55:42.886851+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-open
     set_at: '2026-07-28T09:17:40.034297+00:00'
     summary: 中性偏空4/10：一致预期(¥596亿/¥106亿)向公司指引(¥513亿/¥70亿)下修未走完+物販减速+落后ANYCOLOR；下行被上場来安値/¥30亿回购/OCF¥72亿/TCG·手游期权托底→¥1,600非有吸引力买点，持有倾向减持，目标¥1,300-1,700
     prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-02T15:55:42.887023+00:00'
+    summary: 中性4.5/10：利润率结构下滑(营益率18.4%→14.3%→指引13.6%,FY27营益-0.8%/H1-27.6%)+物販Q4-13.5%坐实刹车+第二曲线未证(ホロアース减损镜鉴);但¥1,460近52周低+净现金¥160亿+OCF¥72亿+首次回购托底→EV+6%但高离散,持有/等FY27Q1(8/12)验证或¥1,200下方建仓
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-07-28T09:23:06.719106+00:00'
@@ -224,6 +324,14 @@ stage_history:
     empty_pending_decision: 0
 - stage: 04-synthesizing
   entered_at: '2026-07-28T10:15:26.559922+00:00'
+  exited_at: '2026-08-02T15:59:52.798566+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-08-02T15:59:52.798566+00:00'
   exited_at: null
   gap_snapshot:
     uncovered_ks: []

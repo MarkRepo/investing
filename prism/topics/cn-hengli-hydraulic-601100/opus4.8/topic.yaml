@@ -94,8 +94,8 @@ outputs_state:
     referenced_mat_ids: null
     last_error: null
   08_living_feed:
-    version: 1
-    last_updated: '2026-07-25T08:04:17.286667+00:00'
+    version: 2
+    last_updated: '2026-08-05T21:04:34.168394+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
@@ -460,3 +460,9 @@ stage_history:
     - bull-bear
     autofetch_debt: 2
     empty_pending_decision: 0
+pending_thesis_review:
+  since: '2026-08-05T21:04:34.183534+00:00'
+  reason: 依赖的『人民币贬值利出口但2025出口停滞+1.58%』已变『企稳偏强·逆周期因子越带·套利链失灵(利差走阔而人民币升)·外资参与度收缩(北向塌/南向负)』(regime
+    v3→v4)
+  proposal_id: 1970d6ce61d1
+  locator: fx_cny

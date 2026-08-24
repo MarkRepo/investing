@@ -1,0 +1,119 @@
+slug: jp-anycolor-5032
+variant: opus5
+topic_type: company
+display_name: ANYCOLOR株式会社 (ANYCOLOR Inc., にじさんじ/NIJISANJI, TSE 5032)
+ticker: TSE_5032
+generated: 2026-08-03T15:45:00+09:00
+data_freshness: 2026-08
+
+# ── buy_box（环⑥ 买入框，锚回环② 反推估值）──
+buy_box:
+  strong_buy_max: 2050      # ≤¥2,050 超跌加仓：逼近四年三次触及的历史地板 ¥1,900-2,007 + 熊市估值 ¥1,970
+  accumulate_min: 2050
+  accumulate_max: 2600      # ¥2,050-2,600 建仓/加仓区间
+  hold_min: 2600
+  hold_max: 3400            # >¥3,400 视为 above_hold（减持区，接近牛市 80%）
+  current_price: 2599
+  price_as_of: 2026-08-03
+  current_zone: accumulate
+
+# ── position_framework（环⑥ 仓位框架，接环④ EV +12.1%）──
+position_framework:
+  position_tier: 标准
+  sizing_rationale: 信息充分（一手财务/成本明细/中期计划/实时行情全）但信心中等（治理负面报酬×10+回购高位买满、常设评价损run-rate黑箱、年内振幅常年±100%高beta）→标准仓不上重仓，分档慢建
+  initial_max_pct: 4        # 标准档人工落点：现价附近先建约 3-4%（试探性首仓）
+  full_max_pct: 7           # 满仓上限约 6-7%，高beta硬约束不因EV为正放松
+  add_ladder_prices: [2050, 2300]
+  max_cluster_pct: 10       # VTuber/日本内容IP主题集中度约束
+
+# ── valuation_models（环② 估值锚，每模型独立不取平均）──
+valuation_models:
+  - name: ev_ebit_crosssection
+    label: EV/EBIT横截面（主锚 · 剔净现金 ¥220.5亿）
+    bull_fair_value: [3800, 4120]
+    base_fair_value: [2700, 2870]
+    bear_fair_value: [1930, 1970]
+  - name: ocf_yield_cashcow
+    label: OCF收益率（现金牛检验 · OCF ¥156.78亿，6-12%收益率带）
+    bull_fair_value: [3269, 4359]
+    base_fair_value: [2615, 3269]
+    bear_fair_value: [2179, 2615]
+  - name: shareholder_return_yield
+    label: 股东回报收益率（期权锚 · ¥350-450亿/3yr = 年化7.5-9.6%）
+    bull_fair_value: [3200, null]
+    base_fair_value: [2600, 3000]
+    bear_fair_value: [2000, 2400]
+
+# ── kill_criteria（环⑤ 证伪触发，可观测数据化）──
+kill_criteria:
+  - id: commerce_ttm_negative
+    description: TTM commerce同比连续两季转负（剔施策时点漂移）→需求饱和坐实，kill多头
+    status: pending
+    check_at: 2027-Q1
+  - id: margin_below_31
+    description: 剔一次性后营益率跌破31%且公司再上调费用预期→成熟度税向下突破32.5%新锚
+    status: pending
+    check_at: 2026-09
+  - id: buyback_not_delivered
+    description: 到FY2027期末(2027-04)累计新回购决议<¥50亿→¥350-450亿承诺证伪，下行托底失效
+    status: pending
+    check_at: 2027-04
+  - id: top_liver_graduation
+    description: 单季头部liver卒業≥3名→commerce需求端失血（COVER已示范此路径）
+    status: pending
+    check_at: 2026-Q3
+  - id: id_growth_below_10
+    description: ANYCOLOR ID增速连续两期<+10%→获客/用户基数见顶
+    status: pending
+    check_at: 2027-Q1
+
+# ── signposts（环⑤ 未来3-12月验证事件）──
+signposts:
+  - date: 2026-09
+    event: FY2027/4 Q1实绩发布
+    bull_signal: 营益降幅显著好于-18.8%指引 + commerce维持正增长
+    bear_signal: 营益降幅超-18.8% + commerce同比转负
+    triggered: null
+  - date: 2027-04
+    event: FY2027内TDnet自己株式取得（回购）决议（最大alpha点+治理试金石）
+    bull_signal: 公告¥100亿+新回购
+    bear_signal: FY2027期末仍无新回购决议
+    triggered: null
+  - date: 2026-Q3
+    event: 常设棚卸資産評価损季度计提规模（揭假设E黑箱）
+    bull_signal: 季度计提run-rate温和（<¥5亿/季）
+    bear_signal: 季度计提run-rate高（>¥5亿/季）→永久压低利润率
+    triggered: null
+  - date: 2026-12
+    event: にじさんじ Girls Idol Festival / 2027新春タカラトミーTCG成效
+    bull_signal: 大型施策带动commerce再生、可辨识收入增量
+    bear_signal: 施策疲软、commerce未见起色
+    triggered: null
+
+# ── 主题标签 ──
+cluster_tags: [vtuber, japan-content-ip, shareholder-return, small-cap-high-beta]
+
+# ── 可观测层字段（被动观测层机械读取）──
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 4
+    kind: data-missing
+    note: 常设棚卸資産評価损年度run-rate公司未披露（假设E黑箱，32.5%目标里已含多少评价损未知）
+  - ring: 1
+    kind: data-missing
+    note: 员工数四年序列图表未OCR（K-2「员工增速降至+10%内」观测口有缺）
+  - ring: 5
+    kind: data-missing
+    note: 第9期有価証券報告書（关联交易/审计意见/头部liver集中度）未取
+market_implied:
+  metric: implied_op_profit_cagr_3y
+  value: 0
+my_vs_market_delta:
+  metric: implied_op_profit_cagr_3y
+  my_value: 6.5
+  delta: "+6.5pct"
+  direction: long

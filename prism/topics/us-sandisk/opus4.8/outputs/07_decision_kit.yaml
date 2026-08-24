@@ -1,0 +1,112 @@
+slug: us-sandisk
+variant: opus4.8
+topic_type: company
+display_name: SanDisk (SNDK, Nasdaq)
+ticker: US_SNDK
+generated: 2026-08-07T00:00:00Z
+data_freshness: 2026-08-06
+
+buy_box:
+  strong_buy_max: 550
+  accumulate_min: 550
+  accumulate_max: 850
+  hold_min: 850
+  hold_max: 1300
+  current_price: 1260.27
+  price_as_of: 2026-08-06
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 商品周期股+命门1(NBM覆盖比例1/3-vs-60%)未公司披露+P/B13.5x周期高位;EV经05评审上修至中性(~0%,band -12%~+8%),现价大致公允,首仓为0系无安全边际(非看空),到试探区亦仅试探
+  initial_max_pct: null
+  full_max_pct: 4
+  add_ladder_prices: [850, 700, 550]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: normalized_eps
+    label: 正常化/穿越周期EPS(中枢~$65-85) × 13-16x
+    bull_fair_value: [1800, 2200]
+    base_fair_value: [1000, 1300]
+    bear_fair_value: [600, 850]
+  - name: peer_multiple
+    label: 同业横比(vs Micron PE19.7x;纯NAND应折价但NBM/HBF溢价部分抵消)
+    bull_fair_value: [1600, 2200]
+    base_fair_value: [1000, 1400]
+    bear_fair_value: [650, 900]
+  - name: pb_cycle_position
+    label: P/B周期位(现13.5x vs 周期底~1x;最硬看空信号)
+    bull_fair_value: [1200, 1700]
+    base_fair_value: [700, 1000]
+    bear_fair_value: [400, 600]
+
+kill_criteria:
+  - id: nand_contract_price_rollover
+    description: 连续2季TrendForce NAND合约价环比转跌,或SanDisk财报bit出货+ASP同时环比走弱、库存DIO续升
+    status: pending
+    check_at: 2026-Q4
+  - id: nbm_customer_attrition
+    description: 任一大客户退出/削减NBM,或RPO环比下降
+    status: pending
+    check_at: 2027-Q1
+  - id: nbm_coverage_thin_downgrade
+    description: 下修触发(转偏空)——10-K/电话会披露NBM覆盖仅~1/3(印证Morningstar)且floor毛利率<25%,正常化中枢下修
+    status: pending
+    check_at: 2026-Q4
+  - id: nbm_coverage_thick_upgrade
+    description: 上修触发(转偏多)——披露覆盖≥1/2且floor毛利率≥40%(印证Bernstein侧),EV升至+8%以上,$900-1000即可建仓
+    status: pending
+    check_at: 2026-Q4
+  - id: samsung_countercyclical_capacity
+    description: 三星宣布逆周期加速扩产/YMTC制裁放松/CXMT提前放量,供给曲线右移
+    status: pending
+    check_at: 2027-Q2
+
+signposts:
+  - date: 2026-Q4
+    event: SanDisk FY2026完整10-K披露(NBM覆盖比例/floor毛利率线索/capex指引)
+    bull_signal: NBM覆盖≥1/2、floor毛利率≥40%、capex纪律
+    bear_signal: 覆盖仅~1/3、floor仅略高现货、非NBM占比大、顺周期扩产
+    triggered: null
+  - date: 2026-Q4
+    event: TrendForce Q4 2026 NAND合约价方向
+    bull_signal: 合约价维持正增长
+    bear_signal: 环比转跌(周期见顶铁证)
+    triggered: null
+  - date: 2027-Q1
+    event: hyperscaler(微软/亚马逊/Google/Meta)FY2027 capex指引
+    bull_signal: capex增速维持高位
+    bear_signal: 增速大幅放缓(验证UBS 76%→25%→6%)
+    triggered: null
+  - date: 2027-Q1
+    event: HBF(NAND+HBM,SK海力士MoU/OCP标准化)进展与首个量产客户
+    bull_signal: OCP标准化推进+获量产客户,结构性技术位坐实
+    bear_signal: 标准化停滞/无客户,HBF期权归零
+    triggered: null
+
+cluster_tags: [ai-compute, memory-storage, nand-flash, semiconductor-cyclical, us-tech]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 4
+    kind: data-missing
+    note: NBM floor覆盖比例(Morningstar 1/3 vs Bernstein 60%)+绝对毛利率未公司披露,直接决定正常化EPS中枢落$65还是$100——命门1最后拼图,待FY26完整10-K;现被外部分析师区间夹住
+  - ring: 2
+    kind: training-estimate
+    note: 穿越周期倍数13-16x为训练知识估算(存储改善后商品股),非精确锚
+
+market_implied:
+  metric: implied_normalized_eps
+  value: 110
+
+my_vs_market_delta:
+  metric: implied_normalized_eps
+  my_value: 75
+  delta: "-32pct"
+  direction: short

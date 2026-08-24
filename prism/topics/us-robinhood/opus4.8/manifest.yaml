@@ -1,6 +1,6 @@
 slug: us-robinhood
 variant: opus4.8
-updated: '2026-06-04T11:58:23.707007+00:00'
+updated: '2026-08-05T21:07:19.745665+00:00'
 materials:
 - id: mat-65dd76
   filename: 2025_COIN_10-K_2026-02-12.htm
@@ -1486,3 +1486,20 @@ materials:
     stale_at: '2026-07-04T11:58:23.550581+00:00'
     expire_at: '2026-09-02T11:58:23.550581+00:00'
     triggered_by: 05-critic
+- id: mat-e43ce5
+  filename: 2026-08-06_robinhood-reports-second-quarter-2026-results.md
+  source_type: earnings-release
+  added: '2026-08-05T21:04:07.599393+00:00'
+  processed: true
+  notes: HOOD Q2 2026 财报原文(SEC exhibit 99.1)+街口目标价更新; 事件合约10x/加密-38%/总营收+32%/EPS0.62含0.14一次性/费用指引下调
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - Q1
+  rings:
+  - ①
+  - ②
+  - ④
+  - ⑤

@@ -1,0 +1,243 @@
+# roadmap.yaml — 研究路线图 (workflow 01, opus5)
+slug: jp-anycolor-5032
+created: '2026-08-03'
+
+# L1/L2 已坍缩进 primer_scope（背景理解层由 00_primer 全权承担）
+primer_scope: >-
+  primer 该覆盖：VTuber 事务所商业模式的工业化机理与固有脆弱点；ANYCOLOR 四分部（コマース65%/プロモーション16%/
+  ライブストリーミング12%/イベント7%）驱动因子与毛利分层；轻资产抽成 vs COVER 重资产自制两种范式；限定周边的
+  "生鲜食品"特性与棚卸評価損 会计机理；liver 生命周期（1万人audition→半年~1.5年培养→出道→头部→卒業）；
+  4月期财年 + 强季节性（Q3峰/Q4谷）与跨 COVER（3月期）比较的口径陷阱；营业杠杆反向作用；YouTube 单平台依赖与
+  SuperChat 见顶；高利润率轻资产 IP 公司的估值锚（EV/EBIT为主、PBR近乎无意义）；日本市场对"减配"的信号解读传统。
+
+learning_track:
+  l1_orientation: []   # 坍缩进 primer_scope
+  l2_history: []       # 坍缩进 primer_scope
+
+  l3_debates:          # 争议层：多空分歧在哪 → 喂决策链环④
+    - question: >-
+        营益率 4 期单调下滑（38.6→38.0→36.2→32.8%会予）该读成"组织补齐的一次性代价"（公司口径：人件費増）
+        还是"行业规范化带来的成熟度税"（结构性）？空方证据是单调性本身，多方证据是收入端仍指引正增长（+0.6~7.8%）。
+      source_hint: 通期決算説明資料 販管費明细/员工数序列；FY2024-26 三年費用率拆解；フリーランス法·取適法 合规成本
+    - question: >-
+        commerce 从 +29.9% 骤降到零增长，是"8周年大年后的小年（施策周期）"还是"粉丝购买力饱和"？
+        棚卸評価損（Q3 ¥9.7亿+Q4 ¥18亿）与粗利率 -2.2pt 是备货失误还是需求见顶的账面显影？
+      source_hint: 分部季度序列 + ANYCOLOR ID 增速 + 棚卸資産回転日数；施策日历（甲子園2026/ぬいストア巡回/Kアリーナ系列）
+    - question: >-
+        PER 10-12x / EV-EBIT 6.1x 对一家零增长公司是"深度价值"还是"合理价"？
+        日本市场对零增长内容公司的惯例倍数是多少，ANYCOLOR 该在其中的哪一档（36% 营益率该给多少溢价）？
+      source_hint: 日本 IP/角色周边可比 EV-EBIT 横截面（バンダイナムコ/GENDA/Good Smile）；IFIS 想定株価レンジ
+    - question: >-
+        减配（¥75→¥62）是"保守主义 + 把额度让给回购"还是"对中期现金流的自我下调"？
+        中期计划 ¥300亿 股东回报承诺（终点 FY2027/4）的剩余额度能否兑现，构成硬买盘还是空头承诺？
+      source_hint: 通期決算説明資料 株主還元页 + 配当性向 + 自己株式取得公告序列（历史节奏 1月/6月）
+    - question: >-
+        全行业拐点（COVER 亦减益、业界称"曲がり角"）下，轻资产的质量溢价该给多少？
+        还是双寡头会一起 de-rate 到同一倍数区间（即 ANYCOLOR 的相对优势已被 price-in）？
+      source_hint: 复用亲属 jp-cover-5253/opus4.8（COVER v1 结论 4/10）+ COVER FY2027/3 指引同期对照
+
+  l4_hunting:          # 狩猎层：逐条对齐 thesis K#
+    - question: >-
+        FY2027/4 Q1-Q2 販管費率与员工数增速能否回落（Q3末 621人/+22.7%）？公司是否明确"组织补齐已完成"？
+        营益率守 33%+ 还是跌破 31%？
+      addresses: [K1]
+      search_keywords: [ANYCOLOR 販管費 人件費, 5032 従業員数 増加, ANYCOLOR 営業利益率 推移]
+      source_hint: FY2027/4 Q1 決算短信+説明資料（约2026-09中旬）；通期説明資料 費用構造页
+    - question: >-
+        FY2027/4 各季 commerce 同比与 ANYCOLOR ID 增速（203.3万/+20.6%）——8周年后的施策能否撑住正增长？
+        ID 增速是否掉到 +10% 以下？
+      addresses: [K2]
+      search_keywords: [ANYCOLOR コマース 売上 四半期, にじさんじ グッズ 施策 2026, ANYCOLOR ID 会員数]
+      source_hint: 決算説明資料 領域別页；にじさんじ 官方施策公告
+    - question: >-
+        FY2027/4 是否继续计提棚卸資産評価損？棚卸資産/营收比与回転日数走向？粗利率能否止跌于 44% 上方
+        （FY2026 44.7% vs FY2025 46.9%）？
+      addresses: [K3]
+      search_keywords: [ANYCOLOR 棚卸資産 評価損, 5032 売上総利益率, ANYCOLOR 在庫 回転日数]
+      source_hint: 決算短信 BS + 評価基準変更後的常态计提规模
+    - question: >-
+        ¥300亿股东回报承诺的剩余额度是多少（已执行 ¥75亿 + ¥49.99亿回购是否重叠）？
+        FY2027/4（计划终点）内是否会公告 ¥50亿+ 新回购？配当性向政策如何变化？
+      addresses: [K4]
+      search_keywords: [ANYCOLOR 株主還元 300億, 5032 自己株式取得 決議, ANYCOLOR 配当性向]
+      source_hint: 通期決算説明資料 中期計画/株主還元页；TDnet 適時開示序列
+    - question: >-
+        NIJISANJI EN liver 数（26名 vs JP 144名）与海外收入贡献走向？EN 首个全体曲项目/海外 live
+        能否带来可辨识增量，还是继续收缩（ID/IN/KR 已全部整合）？
+      addresses: [K5]
+      search_keywords: [NIJISANJI EN ライバー 数, ANYCOLOR 海外売上 比率, NIJISANJI EN 2026 プロジェクト]
+      source_hint: 決算説明資料 海外页；にじさんじ 公式 liver 名册；EN 官方公告
+    - question: >-
+        179人（+9）的 liver 净增能否延续？头部 liver（葛葉/月ノ美兎/Vox Akuma 等）是否有卒業动向？
+        2026-06-26 冒名爆炸预告事件是否衍生实质法务/业务风险？
+      addresses: [K6]
+      search_keywords: [にじさんじ 卒業 2026, にじさんじ 新人 デビュー 2026, ANYCOLOR なりすまし 被害]
+      source_hint: にじさんじ 公式卒業公告；公式 liver 名册变动；有価証券報告書 事業リスク页
+
+material_priority:
+  tier1:              # 必读，研究不可缺
+    - title: ANYCOLOR FY2026/4 通期決算説明資料（中期計画/株主還元/領域別序列/費用構造/員工数）
+      type: annual-report
+      ticker: TSE_5032
+      source: TDnet 镜像 PDF（已下载）
+      addresses: [K1, K2, K4, K5]
+      info_tier: public
+      status: fetched
+      why: >-
+        本 topic 唯一同时承载三条命门核心输入的文档——命门1(販管費/员工数)、命门2(領域別季度序列/ID)、
+        命门3(中期計画¥300亿股东回报余额)。已入库 mat-2b9147，是 03 抽取的第一优先。
+    - title: ANYCOLOR FY2026/4 通期決算短信（BS/CF/棚卸資産/販管費/指引）
+      type: annual-report
+      ticker: TSE_5032
+      source: TDnet 镜像 PDF（已下载）
+      addresses: [K1, K3, K4]
+      info_tier: public
+      status: fetched
+      why: 一手财务表——棚卸資産绝对额、CF 结构、净现金、FY2027 指引原文。已入库 mat-1989db。
+    - title: 决算后一致预期与目标价（IFIS 2026-07-17 + みんかぶ 2026-07-13 全文）
+      type: consensus
+      ticker: ''
+      source: IFIS株予報 / みんかぶ（全文已落盘）
+      addresses: [K1, K2, K4]
+      info_tier: half_public
+      status: fetched
+      why: >-
+        A 合同必收类目 consensus。提供 4 期财务序列（营益率 38.6→38.0→36.2→32.8%）+ 目标价下修轨迹
+        （¥5,433→¥4,170）+ 分析师预想仍比会予高 16% 的收敛空间 → 环④估值锚与下修路径的唯一外部锚。
+    - title: ANYCOLOR FY2027/4 第1四半期 決算短信 + 説明資料
+      type: quarterly-report
+      ticker: TSE_5032
+      source: TDnet（约 2026-09 中旬发布）
+      addresses: [K1, K2, K3]
+      info_tier: public
+      status: pending-by-date
+      why: >-
+        命门1/命门2 的第一个真实验证点（Q1 指引为营收-1%/营益-18%）。**文档尚未存在**，非收不到——
+        转 06-daily-monitor 按日程跟踪，不计入 empty。
+    - title: COVER(5253) 決算短信 + 決算説明資料（双寡头同口径对照）
+      type: peer-financials
+      ticker: TSE_5253
+      source: 复用亲属 topic jp-cover-5253/opus4.8（parent_materials 已登记）
+      addresses: [K1, K2]
+      info_tier: public
+      status: fetched
+      why: >-
+        环②护城河与环④横截面的对照锚（COVER 营益率14.3%/ROE16.3% vs ANYCOLOR 36.2%/57.6%），
+        同时是"全行业拐点 vs ANYCOLOR 独弱"的判别依据。已 set_parent_materials 登记 mat-53da95/mat-20fc41。
+
+  tier2:              # 补充，有最好
+    - title: ANYCOLOR 有価証券報告書 FY2026/4（事業リスク/従業員/関連当事者/株式情報 详于決算短信）
+      type: annual-report
+      ticker: EDINET_E37573
+      source: EDINET（需 EDINET_API_KEY；无 key 时走 EDINET 网页版或公司 IR）
+      addresses: [K1, K6]
+      info_tier: half_public
+      why: >-
+        公司自述事業リスク（人材/人気VTuber依存/レピュテーション）的原文 + 従業員数与平均年収序列
+        （命门1"成熟度税"的内部证据）+ liver 契约形态披露。決算短信不含这些。
+    - title: ANYCOLOR FY2025/4 + FY2024/4 決算短信·説明資料（营益率序列的一手分母）
+      type: annual-report
+      ticker: TSE_5032
+      source: TDnet 镜像（已下载 FY2025/4 短信 + FY2024/4 説明資料）
+      addresses: [K1]
+      info_tier: public
+      status: fetched
+      why: 中期计划达成率的精确分母（FY2024/4 营益 ¥12,361百万）+ 营益率 4 期序列的一手确认。
+    - title: 卖方 ANYCOLOR 深度研报（日系中堅証券 7/15 目标价¥5,080 / 米系大手 4/1 ¥5,500）
+      type: sell-side-note
+      ticker: ''
+      source: 公开转载 / kabuyoho / 财经媒体摘要
+      addresses: [K1, K2, K4]
+      info_tier: half_public
+      why: >-
+        看多方的完整论证（为何在减益指引下仍给 ¥4,170-5,080 目标价）——这是我 5.5/10 中性判断的
+        最强反方，必须拿到其假设（营益率恢复路径 / 终值倍数）才能公平评估。
+    - title: 自己株式取得 TDnet 公告序列（2026-01 决议 → 完成 ¥49.99亿 → 是否有新决议）
+      type: policy
+      ticker: ''
+      source: TDnet 適時開示 / 日経会社情報DIGITAL（已入库 2 份）
+      addresses: [K4]
+      info_tier: public
+      status: fetched
+      why: 命门3 治理可信度的直接证据链；新决议是最强上行催化。
+    - title: にじさんじ/NIJISANJI EN 公式 liver 名册与 2025-2026 卒業·デビュー公告
+      type: data
+      ticker: ''
+      source: nijisanji.jp 公式 / にじさんじWiki（已入库 3 份）
+      addresses: [K5, K6]
+      info_tier: public
+      status: fetched
+      why: 179人(+9)/EN26人 的逐人明细与净变动方向——IP 池扩张 vs 折旧的量化。
+    - title: historical-mirror 实证：日本内容/手游公司旗舰 IP 见顶后的利润率与估值双杀复盘
+      type: industry-research
+      ticker: ''
+      source: 复盘文章 / 券商行业研报 / 決算分析媒体
+      addresses: [K1, K2]
+      info_tier: half_public
+      why: >-
+        A 合同必收类目 historical-mirror（喂环⑤）。ANYCOLOR 的处境（高营益率内容公司+旗舰IP增长见顶+
+        费用刚性上升）在日本有多个先例，需要"相似剧本怎么崩"的实证而非训练知识粗述。
+
+  tier3:              # 可选
+    - title: 日本 IP/角色周边可比公司估值横截面（バンダイナムコ / GENDA / Good Smile / ブシロード）
+      type: data
+      ticker: ''
+      source: 各社決算短信 + 株探/irbank 指标页（已取 バンダイナムコ 1 家）
+      addresses: [K1]
+      info_tier: half_public
+      why: 环④ EV/EBIT 横截面的可比组——判 6.1x 是低估还是零增长公司的合理档。
+    - title: VTuber 市场规模与渗透率第三方数据（矢野経済研究所 等）
+      type: industry-research
+      ticker: ''
+      source: 矢野経済研究所 / 民间调查机构公开摘要
+      addresses: [K2]
+      info_tier: half_public
+      why: 判"500亿的墙"是公司问题还是市场天花板——需要行业级渗透率曲线而非单公司数据。
+    - title: liver 劳务法律属性与合规环境（フリーランス法 / 取適法 与 VTuber 事务所）
+      type: policy
+      ticker: ''
+      source: 弁護士解説（gvalaw 2026-04-17 / kai-law，已入库 2 份）
+      addresses: [K1, K6]
+      info_tier: hard
+      status: fetched
+      why: 命门1"成熟度税"的外部制度证据——合规成本是否为不可逆的行业性抬升。
+
+key_risks_to_monitor:
+  - 营益率跌破 31%（会予 32.8% 已在临界点）→ 成熟度税坐实，熊市情景 ¥1,929
+  - commerce 同比转负 或 ANYCOLOR ID 增速 <+10% → 需求饱和
+  - FY2027/4 继续计提棚卸資産評価損 → 需求预测失灵常态化
+  - 公司以业绩为由不达 ¥300亿股东回报承诺 → 下行托底失效 + 治理折价扩大
+  - 头部 liver 集中卒業 → commerce 需求端直接失血（COVER 已示范此路径）
+  - 分析师预想（净利 ¥15,049百万）继续向会予（¥13,011百万）收敛 → 估值锚下移
+  - 上行风险（做空/减仓侧）：¥50亿+ 新回购决议落地；Q1 营益降幅显著好于 -18%
+
+analogies_to_study:
+  - name: COVER株式会社 / hololive（日本 · VTuber · 2025-2026）
+    logic: >-
+      同赛道、同期、更早一个身位：营益率 18.4%→14.3%、营业利益上市来首次转负（-11.8%）、
+      物販 Q4 -13.5%、股价创上場来安値。失败模式=IP 龙头在全赛道退潮中被"增长降档+费用刚性"双杀。
+    limits: >-
+      COVER 是重资产（自建 studio/演唱会/自研制作 → 折旧刚性），ANYCOLOR 投资 CF 仅 -¥2.8亿；
+      且 COVER 有人气 talent 卒業（Gawr Gura 等）作为直接诱因，ANYCOLOR liver 数仍净增 +9。
+      → 类比的是"利润率下行的路径形态"，不是"成因"。
+    mirror_ring: historical-mirror
+    material_status: fetched（复用亲属 topic 全套 + set_parent_materials 已登记）
+  - name: 日本高利润率内容/手游公司的旗舰 IP 见顶（如 コロプラ/ミクシィ·モンスト/gumi 模式，2015-2020）
+    logic: >-
+      单一旗舰 IP 撑起 30-40% 营益率 → 增长见顶后，为寻找第二曲线而扩张组织与投入，
+      费用刚性上升遇收入平台期 → 营益率与估值倍数双杀，PER 从 20x+ 压到 8-12x。
+      与 ANYCOLOR 当前形态高度同构（にじさんじ 单 IP 占绝对多数 + 组织从 506→621 人）。
+    limits: >-
+      手游 IP 是单一产品、生命周期由玩家流失曲线决定；VTuber 的"IP"是人+品牌的组合，
+      可持续出道新血（179人 +9）、ID 基数仍 +20.6% → 折旧速度理论上慢于手游。
+    mirror_ring: historical-mirror
+    material_status: pending（tier2 新增 todo，Step 5.6 当场抓）
+  - name: 角色周边/景品公司的限定品库存周期（Good Smile / バンダイ 周边业务）
+    logic: >-
+      限定周边"生鲜食品"特性 → 大型施策备货过度 → 评价损 + 毛利率下滑。
+      ANYCOLOR Q3 ¥9.7亿 + Q4 ¥18亿 评价损 + 粗利率 -2.2pt 正是这个剧本。
+    limits: >-
+      ANYCOLOR 预订制比例高、库存绝对额小（棚卸資産 ¥52.2亿 / 营收 ¥557亿 = 9.4%），
+      且已主动改严评价基准 → 暗雷密度低于典型周边制造商。
+    mirror_ring: historical-mirror
+    material_status: partial（tier3 可比公司料 1 家）

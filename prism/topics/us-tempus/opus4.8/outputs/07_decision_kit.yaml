@@ -1,0 +1,108 @@
+slug: us-tempus
+variant: opus4.8
+topic_type: company
+display_name: Tempus AI (TEM, NASDAQ)
+ticker: US_TEM
+generated: 2026-08-03T00:00:00Z
+data_freshness: 2026-Q2
+data_freshness_basis: 10-Q Q2 2026 (filed 2026-07-30, mat-a63418/mat-3b9cb8) + market_data 实时 2026-08-03
+
+buy_box:
+  strong_buy_max: 32
+  accumulate_min: 32
+  accumulate_max: 40
+  hold_min: 40
+  hold_max: 50
+  current_price: 47.0
+  price_as_of: 2026-08-03
+  current_zone: hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: EV约-5%(负)+信心中+黑箱多(Data剔Pathos有机拆不出/Spruce未决/治理双层股权)——不够标准档;现价首仓0(回避),仅-32强力买入区启试探
+  initial_max_pct: null
+  full_max_pct: 5
+  add_ladder_prices: [26, 29, 32]
+  max_cluster_pct: 10
+
+valuation_models:
+  - name: segment_sotp
+    label: 分部SOTP(诊断倍数+Data平台倍数,主锚)
+    bull_fair_value: [50, 54]
+    base_fair_value: [37, 42]
+    bear_fair_value: [24, 28]
+  - name: peer_relative_ps
+    label: 同业横截面相对P/S(现采2026-08-03)
+    bull_fair_value: [65, 68]
+    base_fair_value: [45, 49]
+    bear_fair_value: [32, 36]
+  - name: reverse_dcf_implied
+    label: 反推DCF/隐含预期(定性,宏观贴现率逆风)
+    bull_fair_value: [60, 68]
+    base_fair_value: [43, 47]
+    bear_fair_value: [28, 32]
+
+kill_criteria:
+  - id: data_organic_ex_pathos_weak
+    description: 连续2季剔除关联方Pathos后Data有机增速<20% 或 关联方占Data分部>30% → 命门①折价=陷阱坐实,Data向诊断倍数回归
+    status: pending
+    check_at: 2026-Q4
+  - id: fcf_not_turning
+    description: 到2027中季度FCF仍未转正且经营亏损未收窄 → 盈利地板叙事破,命门③证伪
+    status: pending
+    check_at: 2027-Q2
+  - id: sec_or_restatement
+    description: 出现SEC问询/财报重述/Spruce Point指控实质坐实 → 治理折价扩大,估值杀(转深空)
+    status: pending
+    check_at: 2027-Q2
+  - id: bull_flip_organic_fcf
+    description: 连续2季剔Pathos有机Data≥25% 且 季度FCF转正 且 无SEC动作 → thesis上修,EV转正,升试探/标准建仓
+    status: pending
+    check_at: 2027-Q1
+  - id: debt_covenant_squeeze
+    description: TTM营收逼近债务契约下限.1B 或 启动大额ATM/股权再融资 → 稀释/流动性风险升
+    status: pending
+    check_at: 2026-Q4
+
+signposts:
+  - date: 2026-Q3
+    event: Q3 2026财报(下季)
+    bull_signal: 剔Pathos有机Data≥25% + 季度FCF转正 + Hereditary量能止跌
+    bear_signal: Data增量继续绑Pathos + FCF仍负 + SBC占营收升
+    triggered: null
+  - date: 2027-Q1
+    event: Personalis收购交割(2026末/2027初)
+    bull_signal: 摊薄可控 + MRD对垒Signatera份额/报销进展
+    bear_signal: 全股票摊薄>预期 + 商誉大增 + MRD烧钱红海
+    triggered: null
+  - date: 2026-Q4
+    event: Spruce Point/SEC任何后续动作
+    bull_signal: 疑云澄清/无监管动作 → 治理折价收敛
+    bear_signal: SEC问询/重述 → 折价扩大
+    triggered: null
+
+cluster_tags: [precision-oncology-diagnostics, healthcare-ai-data, mrd-liquid-biopsy, dilution-heavy-growth]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+  - ring: 3
+    kind: data-missing
+    note: Data分部剔除关联方Pathos后的第三方有机增速findings未覆盖(命门①核心,建议07-drilldown)
+  - ring: 4
+    kind: data-missing
+    note: Personalis全股票并购的精确摊薄EPS影响未量化(10-Q仅战略定性)
+  - ring: 2
+    kind: data-missing
+    note: EXAS实时倍数取数失败;变量对价历史true-up准确度未披露
+market_implied:
+  metric: implied_ev_sales_fy26
+  value: 5.6
+my_vs_market_delta:
+  metric: implied_ev_sales_fy26
+  my_value: 4.8
+  delta: "-0.8x(市场对稀释与Data关联方含金量折损定价不足)"
+  direction: short

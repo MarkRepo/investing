@@ -82,7 +82,7 @@ def refresh(key: str):
     if not company_io.read_meta(ticker, market):
         raise HTTPException(status_code=404, detail="company not found")
     try:
-        if market == "US":
+        if market in ("US", "HKEX"):
             n = fetch_financials_us.run_for_ticker(ticker, market)
         elif market in ("SSE", "SZSE", "BSE"):
             n = fetch_financials_cn.run_for_ticker(ticker, market)
