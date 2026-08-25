@@ -229,6 +229,8 @@ def test_list_outputs_file_exists_false_initially(outputs_root):
 
     result = o.list_outputs("cn-pet", VARIANT)
     for r in result:
+        if r["key"] == "_prism_reading_guide":
+            continue  # 系统约定条目：W-F 起 web 统一渲染 canonical，恒 fresh/存在
         assert r["file_exists"] is False
         assert r["status"] == "pending"
 
