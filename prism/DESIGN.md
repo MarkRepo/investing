@@ -179,7 +179,7 @@ monitoring: {enabled, cadence, last_reviewed}
 - `stale`：有新资料入库 或 critic verdict='request-rewrite' 显式标 → 需重写。
 - `draft`：primer 门禁降级专用（depth=deep 但机械检查不过）。
 
-> **file-first 设计**（`topic.py` 顶部注释）：`create_topic` **不再** seed 产出为 pending 死槽。产出只在文件落地时由 `set_output_status`/`set_output_referenced_mats` 的 `setdefault` 惰性注册。首次合成"该产哪些"的枚举由 `list_affected_outputs` 用 `_outputs_for_type(type)` 补出（`_DECISION_CHAIN_OUTPUTS` 表：company=`[00_primer, c_investment_case, 08_living_feed]` 等）。这消除了"未开工却显示 pending primer/case"的死 slot 污染。**遗留 topic 若带旧 8 维并列 key（01_business_panorama…）仍能 graceful 处理**（list_outputs skip-if-absent、list_affected_outputs union）。
+> **file-first 设计**（`topic.py` 顶部注释）：`create_topic` **不再** seed 产出为 pending 死槽。产出只在文件落地时由 `set_output_status`/`set_output_referenced_mats` 的 `setdefault` 惰性注册。首次合成"该产哪些"的枚举由 `list_affected_outputs` 用 `_outputs_for_type(type)` 补出（`_DECISION_CHAIN_OUTPUTS` 表：company=`[00_primer, c_investment_case]` 等；08_living_feed 已移出、由 06-monitor append 落地，见 §10.3）。这消除了"未开工却显示 pending primer/case"的死 slot 污染。**遗留 topic 若带旧 8 维并列 key（01_business_panorama…）仍能 graceful 处理**（list_outputs skip-if-absent、list_affected_outputs union）。
 
 ## 2.2 user_todos — todo 生命周期（原理 2 的核心）
 
@@ -256,7 +256,7 @@ materials:
 | 文件 | 谁产 | 消费者 |
 |------|------|--------|
 | `00_primer.md` | 04 各路径 Step 2（primer-first） | 门外人 + case 站其上 |
-| `_prism_reading_guide.md` | 从 `_reading_guide_canonical.md` 复制 | 读者（prism 系统约定，跨 topic 通用） |
+| `_reading_guide_canonical.md` | web 输出页统一渲染（不再 per-topic 复制） | 读者（prism 系统约定，跨 topic 通用） |
 | `{c/i/a}_investment/industry/arena_case.md` / `m_regime_read.md` | 04 主 agent 直做 | 决策者 + 05 critic + web output 页 |
 | `07_decision_kit.yaml` / `industry_to_arenas.yaml` / `peer_matrix.yaml` / `transmission_map.yaml` | 04 Step 4/6.5 | **dashboard + monitor 直接消费**（严格 schema） |
 | `findings_*.md` | 03 抽取 / 04 即兴 web-search inline | 04 合成、gap_detector、诊断页 |

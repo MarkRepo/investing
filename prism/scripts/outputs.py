@@ -109,7 +109,7 @@ def render_markdown(raw: str) -> str:
 _OUTPUT_KEYS_LABELS = [
     ("00_primer", "领域入门"),
     # 决策链成稿 case（按 topic.type 三选一，见 topic._DECISION_CHAIN_OUTPUTS）。
-    # create_topic 按 type seed 决策链 key（00_primer + 对应 case + 08_living_feed）。
+    # 首次合成枚举 = 决策链 canonical key（00_primer + 对应 case）；08_living_feed 由 monitor append，不在此。
     # 旧 8 维并列产出（01_business_panorama…07_decision_kit）已随决策链重构退休：
     # 不再 seed、磁盘文件已清空，故不再列入 label 表（保留只会让遗留 topic 渲染出
     # file_exists=False 的死行 + 坏链）。list_outputs 用 skip-if-absent 渲染——
@@ -130,7 +130,6 @@ _OUTPUT_KEYS_LABELS = [
 _EXTRA_OUTPUTS_LABELS = [
     ("05-critic-review", "批评者评审"),
     ("industry_to_arenas", "产业→竞技场选拔"),
-    ("_synthesis_brief", "K# 校准 brief（04 副产物）"),
     ("00b_input_glossary", "输入源词典"),
 ]
 
@@ -298,6 +297,18 @@ def list_outputs(slug: str, variant: str) -> list[dict]:
                 "is_decision": True,
                 "last_error": None,
             })
+
+    # 阅读指南（系统约定 · 单一 canonical）：恒展示一入口，read_output_html 兜底渲染
+    # canonical（不再 per-topic 复制；遗留 per-topic 副本存在则由 read_output_html 优先）。
+    result.append({
+        "key": "_prism_reading_guide",
+        "label": "阅读指南（系统约定）",
+        "status": "fresh",
+        "version": 1,
+        "last_updated": None,
+        "file_exists": True,
+        "last_error": None,
+    })
     return result
 
 
@@ -845,6 +856,11 @@ def collect_parent_materials(slug: str, variant: str) -> list[dict]:
 
 
 def read_output_html(slug: str, output_key: str, variant: str) -> str:
+    # 阅读指南：不再 per-topic 复制，统一渲染 canonical（遗留 per-topic 副本存在则优先）。
+    if output_key == "_prism_reading_guide":
+        per_topic = _topic_dir(slug, variant) / "outputs" / "_prism_reading_guide.md"
+        rg_path = per_topic if per_topic.is_file() else _PRISM_ROOT / "workflows" / "_reading_guide_canonical.md"
+        return render_markdown(rg_path.read_text(encoding="utf-8"))
     # Handle drilldown outputs
     if output_key.startswith("drilldown_"):
         out_path = _topic_dir(slug, variant) / "outputs" / f"{output_key}.md"
@@ -956,14 +972,6 @@ def collect_critic_artifacts(slug: str, variant: str) -> dict:
             break
 
     return {"banner": banner, "review_html": review_html}
-
-
-def read_synthesis_brief_html(slug: str, variant: str) -> str | None:
-    """读取 _synthesis_brief.md（合成阶段内部备忘，canonical 辅助产物）。缺失返回 None。"""
-    path = _topic_dir(slug, variant) / "outputs" / "_synthesis_brief.md"
-    if not path.is_file():
-        return None
-    return render_markdown(path.read_text(encoding="utf-8"))
 
 
 # source_type → 可信信号（非 web 料不走 domain_tier，可信度由来源性质定）

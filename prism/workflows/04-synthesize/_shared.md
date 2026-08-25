@@ -221,7 +221,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
 3. **读 thesis_v0**：作为强度 v0→v1 对照锚。
 
-4. **写 _synthesis_brief.md**：先 dump K1-K5 v0→v1 强度调整结论到 `outputs/_synthesis_brief.md`，作为后续 06/07/08 的 cross-mat 校准锚。
+4. **对话内校准（不落盘）**：dump K1-K5 v0→v1 强度调整结论**到对话**（不再落盘为独立 brief 文件），作为本轮 ④⑤⑥/critic 的 cross-mat 校准锚。主 agent 单上下文直做，校准结论随对话流转到收尾写 thesis_v1，无需磁盘回环。
 
 5. **走本 type 的决策链写 case**：进入决策链（`_case_chain.md` §3 骨架 + 对应 type 卡 §6 环），按其逐环硬落地 Write。Write 节奏仍是"主 agent 直做 + 并行 Write"（一次 message 发多个 Write）。
 
@@ -315,7 +315,7 @@ set_suggested_drilldowns('{slug}', '{variant}', [
 
 ### 写 thesis_v1（基于资料的修正版）：
 
-收尾时主 agent **必读** `outputs/_synthesis_brief.md`（如不存在 — 资料 <10 跳过，则直接读 06+07 合成 v1），把 K1-K5（或对应 thesis 钩子）的 v0→v1 强度调整结论 dump 到 `prism/topics/{slug}/{variant}/thesis_v1.md`。
+收尾时主 agent 用**对话内已 dump 的 v0→v1 强度校准结论**（本 workflow 第 4 步产出，不再落盘 brief；若本轮资料 <10 未做校准，则直接读 06+07 合成 v1），把 K1-K5（或对应 thesis 钩子）的 v0→v1 强度调整结论 dump 到 `prism/topics/{slug}/{variant}/thesis_v1.md`。
 
 #### Scheme C 写作约定（v1 起所有 thesis 强制）
 
@@ -399,7 +399,7 @@ if ns == '05-critic-review':
 
 ### primer 由各路径 Step 2 自管（primer-first）
 
-primer 不再是 04 的"最后一步"。三类路径都在**各自的 Step 2、case 之前**调用 `00-primer.md` 生成 `00_primer.md` + `_prism_reading_guide.md`（理解先行，case 站其上）。要点（主 agent 直做、critic 不可省、来源分层、depth 降级）见 `00-primer.md` 本身。本文件不再重复 primer 收尾逻辑。
+primer 不再是 04 的"最后一步"。三类路径都在**各自的 Step 2、case 之前**调用 `00-primer.md` 生成 `00_primer.md`（理解先行，case 站其上；阅读指南由 web 统一渲染 canonical，不再 per-topic 复制）。要点（主 agent 直做、critic 不可省、来源分层、depth 降级）见 `00-primer.md` 本身。本文件不再重复 primer 收尾逻辑。
 
 ## 质量检验
 

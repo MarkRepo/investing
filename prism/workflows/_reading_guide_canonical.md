@@ -27,7 +27,7 @@ prism 一个 topic 的研究输出是**决策链三件套**——领域入门 + 
 **成稿 case 的 6 个命门环**（按 topic.type 措辞略异，骨架一致）：
 - 环① 业务/价值链卡位 → 环② **定价锚**（当前价/倍数反推隐含预期，数字最硬的一环）→ 环③ WWHTBT（什么必须为真）→ 环④ 横比/竞争格局 → 环⑤ 证伪与历史镜鉴 → 环⑥ 决策分流 / tier（company 给个股 buy_box；industry 切子战场；arena 给玩家矩阵）
 
-辅助文件：`findings_mat-XXXXXX.md`（每份原始资料的提炼笔记）、`_synthesis_brief.md`（合成阶段内部备忘）、`_findings_index.md`（findings 轻索引）、`_glossary.md`（领域术语速查，可选）、`_prism_reading_guide.md`（本篇）。
+辅助文件：`findings_mat-XXXXXX.md`（每份原始资料的提炼笔记）、`_findings_index.md`（findings 轻索引）、`_glossary.md`（领域术语速查，可选）、`_prism_reading_guide.md`（本篇）。
 
 ---
 

@@ -60,7 +60,7 @@
    ```
 
    返回：最新报告期 / 营收 / 归母净利 / 毛利率 / ROE / 资产负债率 / FCF / 商誉占净资产 + **3 年 ROIC + 3 年 FCF**。这是①财务轨迹梁与②反推的一手锚；不在 findings 里手抽。市价/估值口径另调 `market_data.get_valuation_context`。
-3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整，供 ④⑤⑥ 与 critic 复用。
+3. **对话内 dump**（不落盘）：核心 thesis / 关键假设 / v0→v1 强度调整，供 ④⑤⑥ 与 critic 复用。
 
 > **亲属复用 hook（已生效）**：若本 topic 有 `parent_topic`（或 `find_child_topics` 返回非空），调 `get_relative_outputs('{slug}','{variant}')` 取亲属**成稿产出路径**并 Read。**借来内容受 §1.4 约束**——脚本只返路径不读内容，借用永远是输入/参照：必标来源、质量按本维度自跑、冲突时本 topic 赢。
 > - **向下（父 arena/industry → 本 company）**：company primer 站在父 primer 上扩写、不重教；读父最新 thesis；读**父 sidecar（`peer_matrix` / `industry_to_arenas`）里点名本公司的那行 = 本 company 的"mandate"**（父级为什么把我放深研档、预期洞见、预填狩猎问题），①从这里起、②③去验证/修正它。

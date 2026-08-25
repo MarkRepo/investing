@@ -279,8 +279,10 @@ def test_fresh_topic_enumerates_canonical_outputs_as_new(tmp_topic):
     # 前置：建表确为空 seed（file-first 的核心不变量）
     assert topic_io.read_topic(slug, variant)["outputs_state"] == {}
     result = list_affected_outputs(slug, variant)
-    for key in ("00_primer", "c_investment_case", "08_living_feed"):
+    for key in ("00_primer", "c_investment_case"):
         assert result[key]["reason"] == "new", f"{key} 应在首次合成被枚举为 new"
+    # 08_living_feed 由 06-daily-monitor append 落地（非 04 合成产出）——不再作 canonical 枚举（W-F item 2）
+    assert "08_living_feed" not in result, "living_feed 不应再被 list_affected_outputs 枚举为决策链产出"
 
 
 def test_manifest_coverage_counts_findings_layer(tmp_topic):

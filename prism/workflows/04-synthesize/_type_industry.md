@@ -24,7 +24,7 @@
    ]))
    ```
    > ⚠️ **硬 checkpoint（F13：拉不到要 log，不静默跳）**：函数对取不到的龙头显式标 *(取不到)*。若某龙头倍数缺，**必须在对话里 log 缺哪个 + 为何**（ticker/market 错？该标的真无行情？），再决定用研报 PE 表 fallback 或标注缺口——**不许默默让环②退化成纯定性**（这正是上轮环②脊柱塌的根因）。
-3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整，供 ④⑤⑥ 与 critic 复用。
+3. **对话内 dump**（不落盘）：核心 thesis / 关键假设 / v0→v1 强度调整，供 ④⑤⑥ 与 critic 复用。
 
 > **亲属复用 hook（已生效）**：若本 topic 有 `parent_topic`（或 `find_child_topics` 返回非空），调 `get_relative_outputs('{slug}','{variant}')` 取亲属的 primer / 最新 thesis / case·09·10 **路径**并 Read。**借来内容受 §1.3 约束**——脚本只返路径不读内容，借用永远是输入/参照：必标来源、质量按本维度自跑、冲突时本 topic 赢。
 > - **向下（父→子）**：行业极少有父；若有（如更大产业），primer 站其上、不重教。

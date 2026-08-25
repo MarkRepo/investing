@@ -116,15 +116,9 @@ primer 混合三种来源，**必须分层标注**，否则门外人会把"研�
 
 > 📎 *稀有领域瓶颈在 findings 覆盖度（robinhood/荣昌验证）→ 附录 A2.4（执行时可跳过）*
 
-### 2.5 配套生成 `_prism_reading_guide.md`（首次生成时）
+### 2.5 阅读指南（系统约定 · 单一 canonical，不再 per-topic 复制）
 
-prism 系统约定（mat-XXX / K# / R# / KILL / thesis 强度 / topic 类型 / 产出体系 / 阅读路径）是**跨 topic 通用**的，不混进 primer（primer 专注领域本身）。从 canonical 模板复制：
-
-```bash
-cp prism/workflows/_reading_guide_canonical.md prism/topics/{slug}/{variant}/outputs/_prism_reading_guide.md
-```
-
-若该 topic 有领域特有的 K# 含义想补，可在复制后追加一小节，但通用部分不改（保持一处维护）。
+prism 系统约定（mat-XXX / K# / R# / KILL / thesis 强度 / topic 类型 / 产出体系 / 阅读路径）是**跨 topic 通用**的，不混进 primer（primer 专注领域本身）。它由唯一 canonical 文件 `prism/workflows/_reading_guide_canonical.md` 承载，web 输出页统一渲染（`/prism/{slug}/{variant}/_prism_reading_guide` 兜底渲染 canonical）——**不再 per-topic 复制**（一处维护、零副本漂移）。领域特有的 K# 含义写进 primer 本身，不改通用指南。
 
 ### 2.6 主 agent 直做，不 dispatch subagent 写
 
@@ -191,7 +185,6 @@ generated: {timestamp}
 depth: deep | shallow
 sources_note: 主体（{领域原理范围}）来自 LLM 训练知识，截止 2025 年中；具体数据凡引用 findings 均标 [mat-XXX]
 prereq: 无（本篇即前置）
-companion: _prism_reading_guide.md
 ---
 ```
 
@@ -225,7 +218,7 @@ if final == 'draft':
 
 ```
 ✅ 领域入门已生成 → 00_primer v{N}（depth={deep/shallow}）
-   配套 _prism_reading_guide.md（prism 系统约定）
+   阅读指南：web 输出页统一渲染 canonical（系统约定，不再 per-topic 复制）
 
 Web 查看：http://localhost:8000/prism/{slug}/{variant}/output/00_primer
 

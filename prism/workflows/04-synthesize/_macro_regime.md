@@ -82,7 +82,7 @@ prism 里的文件只是这条链的容器；逻辑在前、文件在后。本�
 
 ### Step 2：**先出 `00_primer`（入门读本 / 理解地基）**
 
-按 `00-primer.md` Step 1-5 执行，产 `outputs/00_primer.md`（+ `_prism_reading_guide.md`，照该文件惯例）。本路径走 **primer-first**：primer 写完、critic 收敛后才进 Step 3 写 regime_read。
+按 `00-primer.md` Step 1-5 执行，产 `outputs/00_primer.md`。本路径走 **primer-first**：primer 写完、critic 收敛后才进 Step 3 写 regime_read。
 
 **frontmatter 必须 `depth: deep`**（本层的核心目标之一就是"用大白话把框架讲透"，浅 primer 不达学习载体目标）。
 

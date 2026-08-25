@@ -85,13 +85,13 @@
 
 1. 照 `_shared.md` § 调度模式：`format_findings_for_prompt` 列 findings → 主 agent 并行 Read；`build_findings_index` 落盘 `_findings_index.md`（防 compact 地图）；读 `thesis_v0.md`（强度 v0→v1 锚）。
 2. **拉取数**（财务轨迹 / 行情倍数 / 宏观 —— 口径按 type）→ 见 type 卡 §取数（含 `financial_data` / `market_data` 一手锚拉法、F13 硬 checkpoint、亲属复用 hook、company 的 macro 强制 hook）。财务/行情**不在 findings 里手抽**。
-3. 写 `outputs/_synthesis_brief.md`：dump 核心 thesis / 关键假设 / v0→v1 强度调整，供 ④⑤⑥ 与 critic 复用。
+3. **对话内 dump**（不落盘）：核心 thesis / 关键假设 / v0→v1 强度调整，供本轮 ④⑤⑥ 与 critic 复用（主 agent 单上下文，无需写 brief 文件）。
 
 > **调度模式**：case 默认**主 agent 直做 + 并行 Write**（同 `_shared.md` 默认；勿 dispatch subagent 写长产出，见 [[subagent-write-hallucination]] / feedback_subagent_bulk_synthesis）。唯一 subagent 是 critic（只读不写）。
 
 ### Step 2：**先出 `00_primer`（理解地基）**
 
-按 `00-primer.md` Step 1-5 执行，产 `outputs/00_primer.md` + `_prism_reading_guide.md`。
+按 `00-primer.md` Step 1-5 执行，产 `outputs/00_primer.md`（阅读指南由 web 统一渲染 canonical，不再 per-topic 复制）。
 
 **走 `00-primer.md` 的 primer-first 路径**（00-primer.md 已全类型统一 primer-first，见其头部调度提示）：
 - 原材料 = **findings + `thesis_v0` + K# + type 卡 §取数拉到的财务/行情 + 亲属 primer（若有）**。
@@ -154,7 +154,7 @@ print('primer + case 产出已注册')
 ```
 > 新 case key 靠 `set_output_status` 的 `setdefault` 自动注册，**不用改 topic.py**。
 
-**thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。先读 `_synthesis_brief.md`，dump v0→v1 强度调整，写 `thesis_v1.md`，调 `set_thesis(version=1, ...)`。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, summary, stage_set_at, convergence_status, changelog)`**（`summary`/`stage_set_at` 必填；`convergence_status ∈ {open, converged, capped}`；完整示例见 `_shared.md` §B 轴有界 delta 重拆）。收尾出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单），见 `_shared.md` §终态报告。
+**thesis_v1（决策链跑完后才写）**：照 `_shared.md` § thesis_v1 的 **Scheme C 全快照 11 段式**，不改。用**对话内已 dump 的 v0→v1 强度调整**，写 `thesis_v1.md`，调 `set_thesis(version=1, ...)`。**同时写 `decomposition_v1.md` + `set_decomposition(version=1, summary, stage_set_at, convergence_status, changelog)`**（`summary`/`stage_set_at` 必填；`convergence_status ∈ {open, converged, capped}`；完整示例见 `_shared.md` §B 轴有界 delta 重拆）。收尾出**终态报告**（双轴 gap + 收敛状态 + 残留缺口诚实清单），见 `_shared.md` §终态报告。
 
 **收尾**：照 `_shared.md` § 全部产出完成后（含 capped→suggested_drilldowns 回流）——`append_user_todos` + 清 `next_actions` + stage 推进。合成完 stage 置 `05-critic-review`（第 6 阶段「评审」，三类统一）——**company 必经 05 才能 `done`；industry/arena 的 05 critic 非强制**（可说「评审 {slug}」跑对抗式 steelman，或 web 详情页点「✓ 标记完成」直接 `done`）。industry/arena 的 stage 推进细节 + 旧 stage 名退休提示 + 宏观软提示见 type 卡 §收尾（company 必经 05，见本节）。
 

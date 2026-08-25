@@ -23,10 +23,12 @@ PRISM_ROOT = Path(__file__).resolve().parent.parent
 # 旧 8 维并列产出（01_business_panorama … 07_decision_kit）已随决策链重构退休、不在表内；
 # 遗留 topic 仍可能带这些 key，list_affected_outputs 走 union 照旧处理、list_outputs
 # 用 skip-if-absent 渲染，互不影响。
+# 08_living_feed 不在本表——它由 06-daily-monitor append 落地（零 LLM），走
+# set_output_status 的 setdefault 惰性注册，无需 canonical 预枚举（见 monitor._append_living_feed）。
 _DECISION_CHAIN_OUTPUTS = {
-    "company": ["00_primer", "c_investment_case", "08_living_feed"],
-    "industry": ["00_primer", "i_industry_case", "08_living_feed"],
-    "arena": ["00_primer", "a_arena_case", "08_living_feed"],
+    "company": ["00_primer", "c_investment_case"],
+    "industry": ["00_primer", "i_industry_case"],
+    "arena": ["00_primer", "a_arena_case"],
     "macro": ["00_primer", "m_regime_read"],
 }
 
@@ -112,9 +114,9 @@ def _validate_ticker(ticker: str, field: str = "ticker") -> None:
 def _outputs_for_type(topic_type: str) -> list[str]:
     """create_topic 初始 seed 的 outputs_state key（决策链产出，修 F1）。
 
-    未知 type 兜底只 seed 00_primer + 08_living_feed（最小活产出集）。
+    未知 type 兜底只 seed 00_primer（08_living_feed 由 monitor append，不预枚举）。
     """
-    return _DECISION_CHAIN_OUTPUTS.get(topic_type, ["00_primer", "08_living_feed"])
+    return _DECISION_CHAIN_OUTPUTS.get(topic_type, ["00_primer"])
 
 
 def next_stage(topic_type: str, current_stage: str) -> str | None:

@@ -706,9 +706,6 @@ def prism_diag(request: Request, slug: str, variant: str):
     # ⑥ critic 裁决层（05-critic-review.md + case 头承重充分性横幅）
     critic = outputs_io.collect_critic_artifacts(slug, variant)
 
-    # 合成阶段内部备忘（canonical 辅助产物）
-    synthesis_brief = outputs_io.read_synthesis_brief_html(slug, variant)
-
     return templates.TemplateResponse(
         request,
         "prism/diagnostics.html",
@@ -724,7 +721,6 @@ def prism_diag(request: Request, slug: str, variant: str):
             "findings": findings,
             "finding_ids": finding_ids,
             "parent_materials": parent_materials,
-            "synthesis_brief": synthesis_brief,
             "gap": gap,
             "critic": critic,
             "material_trust": outputs_io.material_trust,
