@@ -108,7 +108,7 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 | tier 排序 | 主要按吸引力（估值占 1/6 权重） | **吸引力 × 当前定价**（②做闸门） |
 | 期望收益 | 无 | 刻意不做 EV（漏斗终点是 tier 分+触发器） |
 | 产出份数 | 8 份 + 09 | 默认 1 份连贯 case（可拆，⑥含旧 09 内容） |
-| 09 sidecar / arena stub | 09 内 | **不变，复用**（Step 4 引 `_arena_select_spec.md`） |
+| 09 sidecar / arena stub | 09 内 | sidecar 不变（引 `_arena_select_spec.md`）；建 stub 移至 `_child_stub.md` |
 | 上游 findings / 财务 / thesis | — | **不变，复用** |
 | 跨层复用 | 仅 parent_materials（raw findings） | Step1 亲属 hook（已生效）：向下站父 primer、向上拿子 case 当实证；借用受 §1.3 约束 |
 | critic | 05（可选） | 内嵌 chain-critic + 05（已按 type 读 i_industry_case） |
@@ -125,7 +125,7 @@ arena 不是终局决策——它是**漏斗**：终点不是"买/卖一只股�
 | tier 排序 | 主要按综合分 | **卡位/质量 × 当前定价**（②做闸门） |
 | 期望收益 | 无 | 刻意不做 EV（漏斗终点是 tier 分+触发器） |
 | 产出份数 | 8 份 + 10 | 默认 1 份连贯 case（可拆，⑥含旧 10 内容） |
-| 10 sidecar / company stub | 10 内 | **不变，复用**（Step 4 引 `_peer_matrix_spec.md`） |
+| 10 sidecar / company stub | 10 内 | sidecar 不变（引 `_peer_matrix_spec.md`）；建 stub 移至 `_child_stub.md` |
 | 上游 findings / 财务 / thesis | — | **不变，复用** |
 | 跨层复用 | 仅 parent_materials（raw findings） | Step1 亲属 hook（已生效）：向下站父 primer/mandate、向上拿子 case 当实证；借用受 §1.3 约束 |
 | critic | 05（可选） | 内嵌 chain-critic + 05（已按 type 读 a_arena_case） |

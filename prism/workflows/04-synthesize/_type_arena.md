@@ -95,7 +95,7 @@
 
 1. **写 `outputs/peer_matrix.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_peer_matrix_spec.md` Step 6.5**（`slug / variant / topic_type=arena / display_name / generated / data_freshness / companies[{name, ticker, score, tier(shortlist/watch/eliminated), topic_created, topic_slug, thesis_one_liner, upgrade_triggers, quarantine}] / cluster_tags`）。**`score` 用 1-5 制**（详见 `_peer_matrix_spec.md`；勿用 1-100），与 case ④综合评级同向。数字不加引号，缺失 null。`write_text` 落盘。
    > ⚠️ **写完即自检（机器↔叙事一致性 · dashboard 直接消费）**：① **score 排序必须与 case ④综合评级同向**——同档内若 score 与评级倒挂（如 K5 hard-filter 把高 upside 公司压到低分），必须在 case 显式写一句解释，否则 dashboard 按 score 排序会与叙事方向相反；② **tier 枚举 ↔ case 中文档名映射必须在 case 显式写一行**（深研=shortlist / 观察=watch / 淘汰=eliminated），别让 dashboard 靠猜对齐档名。
-2. **建 company stub + 继承 thesis_v0**：对每个深研档公司，照 `_peer_matrix_spec.md` Step 7 + 7b **逐字执行**（`create_topic(topic_type='company', parent_topic='{slug}', ticker=...)` → 收窄父 arena K# 到公司视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
+2. **建 company stub + 继承 thesis_v0**：对每个深研档公司，照 `_child_stub.md` **逐字执行**（child=company，带 ticker：建 stub → 收窄父 arena K# 到公司视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
 
 ---
 

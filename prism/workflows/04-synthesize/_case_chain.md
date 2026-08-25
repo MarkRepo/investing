@@ -4,7 +4,7 @@
 >
 > **复用上游、不重写**：00-research → 01-roadmap → 02-materials → 03-findings 产出的 findings、`gap_detector`、增量重写判定、`financial_data` 财务模块、dashboard sidecar、`00-primer.md`、`thesis` 全部沿用，本骨架只重做"合成"这一段。
 >
-> **sidecar schema 保留**：`_decision_kit_spec.md`（company 07）/ `_arena_select_spec.md`（industry 09）/ `_peer_matrix_spec.md`（arena 10）均不删——作为对应环的 sidecar schema + stub 创建机制被 type 卡 Step 4 引用（查 schema，不照搬结构）。
+> **sidecar schema 保留**：`_decision_kit_spec.md`（company 07）/ `_arena_select_spec.md`（industry 09）/ `_peer_matrix_spec.md`（arena 10）均不删——作为对应环的 sidecar schema 被 type 卡 Step 4 引用（查 schema，不照搬结构）；建 stub 的过程统一见 `_child_stub.md`。
 
 ---
 

@@ -102,7 +102,7 @@
 
 1. **写 `outputs/industry_to_arenas.yaml`**：字段从 ④/⑥ 提取，schema **逐字照 `_arena_select_spec.md` Step 6.5**（`slug / variant / topic_type=industry / display_name / generated / data_freshness / arenas[{name, suggested_slug, topic_created, topic_slug, scores{profit_pool,growth,competition,valuation,cycle,composite}, tier(deep/watch/eliminated), tier_reason, upgrade_triggers, monitor_metrics, revive_condition}] / cluster_tags`）。数字不加引号，缺失 null。`write_text` 落盘。
    > ⚠️ **写完即自检（机器↔叙事一致性 · dashboard 直接消费）**：① **composite 排序必须与 case ④综合评级同向**——同档内若 composite 与评级倒挂，必须在 case 显式写一句解释，否则 dashboard 按分排序会与叙事方向相反；② **tier 枚举 ↔ case 中文档名映射必须在 case 显式写一行**（深挖=deep / 观察=watch / 淘汰=eliminated），别让 dashboard 靠猜对齐档名。
-2. **建 arena stub + 继承 thesis_v0**：对每个深挖档 arena，照 `_arena_select_spec.md` Step 6 + 6b **逐字执行**（`create_topic(topic_type='arena', parent_topic='{slug}')` → 收窄父 K# 到 arena 视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
+2. **建 arena stub + 继承 thesis_v0**：对每个深挖档 arena，照 `_child_stub.md` **逐字执行**（child=arena，不带 ticker：建 stub → 收窄父 K# 到 arena 视角 → 写 stub `thesis_v0.md` 强度父级 -1）。这是父子链的自顶向下建链路径之一（图谱层 relink 是另一路径）。
 
 ---
 

@@ -391,7 +391,7 @@ if ns == '05-critic-review':
 后台失败仅写 `prism/logs/dashboard_auto.log`——若发现 dashboard 长期未刷新，手动跑一次 `python3 -m prism.scripts.dashboard` 排查。
 
 **selection（09/10）已折进 funnel 环⑥**（不再自动触发独立 workflow）：
-- **industry** → arena 选拔是 `_type_industry.md` 环⑥（落 `industry_to_arenas.yaml` + 建 arena stub），`_arena_select_spec.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema / stub 创建）。
+- **industry** → arena 选拔是 `_type_industry.md` 环⑥（落 `industry_to_arenas.yaml` + 建 arena stub），`_arena_select_spec.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema；建 stub 见 `_child_stub.md`）。
 - **arena** → peer shortlist 是 `_type_arena.md` 环⑥（落 `peer_matrix.yaml` + 建 company stub），`_peer_matrix_spec.md` 同样降级为工具规范。
 - **company** → 无 selection 环，c_investment_case 即完整决策。
 

@@ -1,6 +1,6 @@
 # Arena → Peer Matrix 规范（财务横比 / 矩阵 / 分流 / sidecar / stub）
 
-> **工具规范，非独立产出步骤。** arena 的公司选拔已折进 arena（`_type_arena.md`）决策链环④（peer 财务横比矩阵）+ 环⑥（三档分流 + 落 sidecar + 建 company stub），叙事写进 `a_arena_case`。本文件只作 `_type_arena.md` **逐字引用**的工具规范：环①/②/④引 **Step 3**（financial_data 拉数口径）+ **Step 4**（矩阵维度）、环⑥引 **Step 6.5**（sidecar schema）+ **Step 7/7b**（company stub 创建 / 继承 thesis_v0）。查规范，不照搬结构。
+> **工具规范，非独立产出步骤。** arena 的公司选拔已折进 arena（`_type_arena.md`）决策链环④（peer 财务横比矩阵）+ 环⑥（三档分流 + 落 sidecar + 建 company stub），叙事写进 `a_arena_case`。本文件只作 `_type_arena.md` **逐字引用**的工具规范：环①/②/④引 **Step 3**（financial_data 拉数口径）+ **Step 4**（矩阵维度）、环⑥引 **Step 6.5**（sidecar schema）；建 company stub / 继承 thesis_v0 的过程见 `_child_stub.md`（child=company，带 ticker）。查规范，不照搬结构。
 >
 > **不再产出**独立 markdown（旧 `peer_matrix.md`）；sidecar `peer_matrix.yaml` 是 dashboard 竞技场层唯一契约。Tier 排序以**对话内 v0→v1 K# 校准结论**为锚（funnel 与 case 同上下文，已持有 thesis + 校准）；无校准结论时在评分备注写"纯 findings 推断"。
 
@@ -170,68 +170,6 @@ print('10 sidecar 写入完成')
 
 ---
 
-## Step 7：为深研档创建 stub company topic
+## Step 7：为深研档建 company stub + 继承 thesis_v0 → 见 `_child_stub.md`
 
-对每个深研档公司：
-
-```bash
-python3 -c "
-from prism.scripts.topic import create_topic, read_topic
-parent = read_topic('{slug}', '{variant}')
-geo = parent.get('scope', {}).get('geo', 'cn')  # 从父 topic 继承 geo
-create_topic(
-    slug='{geo}-{company_slug}',
-    display_name='{company_display_name}',
-    topic_type='company',
-    question='{company_question}',
-    geo=geo,
-    depth='deep',
-    variant='{variant}',
-    parent_topic='{slug}',
-    ticker='{ticker}',
-    short_name='{company_short_name}',         # 简称（dashboard 显示用）
-    search_terms=['{词1}', '{词2}', '{词3}'],  # 见下 ⚠️：company question >25 字时必填
-)
-"
-```
-
-> ⚠️ **必传 `search_terms`（否则 create_topic 直接 raise）**：`question` >25 字时 create_topic 强制要求 `search_terms`（`list[str]`，每项 ≤15 字，≥1 非空）。company stub 问题常 >25 字 → 漏传会崩。手挑 3-5 个检索词（公司名/核心产品/赛道），别整句塞。
-
-### Step 7b：为 stub company 写入继承自父 thesis 的 thesis_v0.md
-
-create_topic 完成后，立即为 stub 写 thesis_v0.md。
-
-1. 读父 arena thesis：
-
-```bash
-python3 -c "
-from prism.scripts.outputs import extract_killer_questions
-from prism.scripts.topic import read_topic
-parent = read_topic('{slug}', '{variant}')
-cur_v = (parent.get('thesis') or {}).get('current_version', 0)
-ks = extract_killer_questions('{slug}', '{variant}', cur_v)
-print('父 arena K# 数量:', len(ks))
-for k in ks: print(' -', k[:80])
-"
-```
-
-也读 `prism/topics/{slug}/{variant}/thesis_v{cur_v}.md`（**variant 根下，非 outputs/**）全文 + 该公司在决策链④矩阵中的"入选理由 / 预期 thesis"段落作为 narrowing 输入。
-
-2. **收窄到公司视角**：从父 arena K# 中挑出与该公司直接相关的 2-4 条（重写为针对本公司的版本，例如「行业是否能跑出 OEM 模式」收窄为「{公司} 能否拿下 OEM 客户份额」）；补 1-2 条公司专属 K#（管理层兑现 / 单一大客户依赖 / 估值锚等）。
-
-3. 按 thesis_v0 四段式（① 核心 thesis + 强度评分 / ② 支持理由 / ③ 反方观点 / ④ K1-K5；**不单列 V# 验证项**，与 workflow 00 Step 5.0 一致）写入 `prism/topics/{geo}-{company_slug}/{variant}/thesis_v0.md`（**variant 根下，非 outputs/** —— 与 decomposition_v{N} 同级；错位到 outputs/ 会让 extract_killer_questions/5.7 闸门/web 全部读不到）。**核心 thesis ≤120 字**，强度按父 arena 强度 -1 起估。每条 K# 末尾标注「(继承自父 K#)」或「(新增)」。
-
-4. 落入 stub topic.yaml：
-
-```bash
-python3 -c "
-from prism.scripts.topic import set_thesis
-set_thesis(
-    slug='{geo}-{company_slug}',
-    variant='{variant}',
-    version=0,
-    summary='{≤120字 company 视角 thesis}',
-    stage_set_at='00-init-from-parent',
-)
-"
-```
+对每个深研档公司，照 `_child_stub.md` **逐字执行**（`child_type=company`，**带 ticker**）：建 stub → 收窄父 arena K# 到公司视角 → 写 stub `thesis_v0.md`（强度父级 -1）。`search_terms` 必传规则 / 检索词口径 / 跳过条件均见该文件。

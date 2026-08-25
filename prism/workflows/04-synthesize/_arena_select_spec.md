@@ -1,6 +1,6 @@
 # Industry → Arenas 选拔规范（arena 评分 / 分流 / sidecar / stub）
 
-> **工具规范，非独立产出步骤。** industry 的 arena 选拔已折进 industry（`_type_industry.md`）决策链环④（6 维评分）+ 环⑥（三档分流 + 落 sidecar + 建 arena stub），叙事写进 `i_industry_case`。本文件只作 `_type_industry.md` **逐字引用**的工具规范：环④引 **Step 3**（6 维评分口径）、环⑥引 **Step 6.5**（sidecar schema）+ **Step 6/6b**（arena stub 创建 / 继承 thesis_v0）。查规范，不照搬结构。
+> **工具规范，非独立产出步骤。** industry 的 arena 选拔已折进 industry（`_type_industry.md`）决策链环④（6 维评分）+ 环⑥（三档分流 + 落 sidecar + 建 arena stub），叙事写进 `i_industry_case`。本文件只作 `_type_industry.md` **逐字引用**的工具规范：环④引 **Step 3**（6 维评分口径）、环⑥引 **Step 6.5**（sidecar schema）；建 arena stub / 继承 thesis_v0 的过程见 `_child_stub.md`（child=arena，不带 ticker）。查规范，不照搬结构。
 >
 > **不再产出**独立 markdown（旧 `industry_to_arenas.md`）；sidecar `industry_to_arenas.yaml` 是 dashboard 行业层唯一契约。
 
@@ -46,72 +46,9 @@
 
 ---
 
-## Step 6：为深挖档创建 stub arena topic
+## Step 6：为深挖档建 arena stub + 继承 thesis_v0 → 见 `_child_stub.md`
 
-对每个深挖档 arena：
-
-```bash
-python3 -c "
-from prism.scripts.topic import create_topic, read_topic
-parent = read_topic('{slug}', '{variant}')
-geo = parent.get('scope', {}).get('geo', 'cn')  # 从父 topic 继承 geo
-create_topic(
-    slug='{geo}-{arena_slug}',
-    display_name='{arena_display_name}',
-    topic_type='arena',
-    question='{arena_question}',
-    geo=geo,
-    depth='deep',
-    variant='{variant}',
-    parent_topic='{slug}',
-    short_name='{arena_short_name}',          # 简称（dashboard 显示用）
-    search_terms=['{词1}', '{词2}', '{词3}'],  # 见下 ⚠️：arena question 普遍 >25 字，必填
-)
-"
-```
-
-> ⚠️ **必传 `search_terms`（否则 create_topic 直接 raise）**：当 `question` >25 字时 create_topic 强制要求 `search_terms`（避免脚本自行从长问题里乱拆关键词）。arena 问题几乎都 >25 字 → **本步漏传必崩**。规则：`list[str]`，每项 ≤15 字，至少 1 个非空项。从 arena 主题手挑 3-5 个检索词（如 `['ADC', '出海 BD', '双抗']`），别整句塞进去。
-
-### Step 6b：为 stub 写入继承自父 thesis 的 thesis_v0.md
-
-create_topic 完成后，**立即**为 stub 写 thesis_v0.md，省去用户后续推进时再走 00-research-topic 的麻烦。
-
-1. 读父 topic 当前 thesis：
-
-```bash
-python3 -c "
-from prism.scripts.outputs import extract_killer_questions
-from prism.scripts.topic import read_topic
-parent = read_topic('{slug}', '{variant}')
-cur_v = (parent.get('thesis') or {}).get('current_version', 0)
-ks = extract_killer_questions('{slug}', '{variant}', cur_v)
-print('父级 K# 数量:', len(ks))
-for k in ks: print(' -', k[:80])
-"
-```
-
-也读 `prism/topics/{slug}/{variant}/thesis_v{cur_v}.md`（**variant 根下，非 outputs/**）全文用作 narrowing 参考。
-
-2. 在对话里**收窄到 arena 视角**：从父 K# 中挑出与该 arena 直接相关的 2-4 条，重写措辞使其聚焦本 arena（公司/路线/客户）；如父 K# 不足，补 1-2 条 arena 专属的待验证假设。
-
-3. 按 thesis_v0 四段式（① 核心 thesis + 强度评分 / ② 支持理由 / ③ 反方观点 / ④ K1-K5；**不单列 V# 验证项**，与 workflow 00 Step 5.0 一致）写入 stub 的 `prism/topics/{geo}-{arena_slug}/{variant}/thesis_v0.md`（**variant 根下，非 outputs/** —— 与 decomposition_v{N} 同级；错位到 outputs/ 会让 extract_killer_questions/5.7 闸门/web 全部读不到）。**核心 thesis ≤120 字**，强度先按父级强度 -1 起估（继承可信度低于亲自验证）。每条 K# 末尾标注「(继承自父 K#)」或「(新增)」。
-
-4. 落入 stub 的 topic.yaml：
-
-```bash
-python3 -c "
-from prism.scripts.topic import set_thesis
-set_thesis(
-    slug='{geo}-{arena_slug}',
-    variant='{variant}',
-    version=0,
-    summary='{≤120字 arena 视角 thesis}',
-    stage_set_at='00-init-from-parent',
-)
-"
-```
-
-> 跳过条件：父 thesis 完全不可拆分到 arena 维度（极少见）。此时 stub 仍创建，但不写 thesis_v0，由用户日后手动走 00-research-topic。
+对每个深挖档 arena，照 `_child_stub.md` **逐字执行**（`child_type=arena`，**不带 ticker**）：建 stub → 收窄父 K# 到 arena 视角（公司/路线/客户）→ 写 stub `thesis_v0.md`（强度父级 -1）。`search_terms` 必传规则 / 检索词口径 / 跳过条件均见该文件。
 
 ---
 
