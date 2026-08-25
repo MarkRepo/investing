@@ -626,7 +626,7 @@ roadmap 落地后立即跑 `_web_prescan_shared.md` 一次（`recency_days=90`�
 >
 > 如果跳过本步直接把这些写成 user_todos，等于把**本可以自动完成的工作甩给用户**。
 >
-> **产即收衔接**：本步抓 **01 自己 Step 2/3 新增**的 todo（L4 狩猎 / A合同必收类目）——00 产的 todo 已在 **00 Step 6.5** 当场抓过（产即收：谁产谁收），这里**只对 00 遗留的 `error` 按 R3 重试**，不重抓已 `fetched`/`empty` 的。闭环按**文档身份**盖戳（`mark_todo_fetch` + `update_user_todo_status`），**不靠 K# 撮合**。
+> **产即收衔接**（总规约 + 闭环键见 `_autofetch_protocol.md`）：本步抓 **01 自己 Step 2/3 新增**的 todo（L4 狩猎 / A合同必收类目）——00 产的 todo 已在 **00 Step 6.5** 当场抓过，这里**只对 00 遗留的 `error` 按 R3 重试**，不重抓已 `fetched`/`empty` 的。闭环按文档身份盖戳（`mark_todo_fetch`+`update_user_todo_status`）。
 
 ### 附录 A5.8 — 为什么必须做 / 静默推进教训
 

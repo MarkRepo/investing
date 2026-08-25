@@ -150,7 +150,6 @@ EOF
 
 > **drilldown 入库后，若它承接了某条 pending todo 要的那份文档**，主 agent 按 **task 身份**（不是 K#）显式闭环：
 > `update_user_todo_status(slug, variant, '<task子串>', 'done', covered_by=[mat_id])`；只是碰巧同 K# 的旁证则不动。
-> 没有任何「列共享 K# 候选」的脚本（已删）——撮合是主 agent 读 todo + 读料的判读。
 > 闭环键是 task/文档身份不是 K#（见 `_autofetch_protocol.md` 「产即收」+「闭环键」节 + memory `feedback_todo_closure_key`）。
 
 drilldown 默认不触发 04 重写：

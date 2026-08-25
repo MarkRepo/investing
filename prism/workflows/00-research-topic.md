@@ -599,20 +599,9 @@ got = download_announcements_cn('SSE_688506', slug, variant, selected)
 
 ### 6.5b：分析材料（卖方研报/行业数据/政策/科普）→ sidecar-first 惰性阶梯
 
-非报告类 todo（sell-side / industry-research / policy / data / 科普）走 workflow 01 Step 5.6 同一阶梯——**默认 sidecar-first，搜索正文落盘不进 context**：
+非报告类 todo（sell-side / industry-research / policy / data / 科普）**照 workflow 01 Step 5.6 同一 sidecar-first 惰性阶梯逐字执行**——阶梯（① adapter sidecar 搜索默认首选、正文落盘不进 context → ② `web_fetch_exa` 精准取权威 URL 全文落盘、03 复用 → ③ exa 高级搜索仅补充、**默认不取 `text`** 省 token）、token 中性质量理由、snippet 兜底纪律**均见该步**，不在此重列。
 
-1. **adapter sidecar 搜索（默认首选）**：
-   ```bash
-   python3 -m prism.scripts.web_search search "<材料标题关键词>" \
-       --intent semantic --days 365 --max-results 5 --output sidecar \
-       --slug {slug} --variant {variant} \
-       --triggered-by 00-deep-fetch --addresses K1,K2
-   ```
-   → `review-digest --raw-path {raw_path}`（或省路径用 `--slug` 取最新）看投影判 tier，**零正文进 context**；判不出的残差才 `--show IDX`（单条 snippet），确认要入库且需正文的少数才 `--show IDX --full`。
-2. **精准取全文（只对确认入库的权威 URL）**：`mcp__exa__web_fetch_exa`（`maxCharacters:5000`，可批量传选定 URL）→ `register_web_search_batch(..., full_texts={url: 全文})` 透传落盘，03 复用（一次抓取）。
-3. **exa 高级搜索仅作补充**（sidecar 命中差 / provider 耗尽时）：`mcp__exa__web_search_advanced_exa`（`numResults:3`、`enableHighlights:true`、`highlightsMaxCharacters:2000`，**不取 `text`**——省略 `textMaxCharacters`；全文走上面阶梯 2 的 web_fetch）。highlights 是引擎按 query 抽的高信句，判 tier + 抓数字已够。
-
-> **为什么 sidecar-first（token 中性质量）**：搜索正文默认落盘、context 只承载 review-digest 投影——判 tier 靠 host/标题/flags（不需全文），关键数字在 highlights/snippet。exa `web_search_advanced` 的 `text` 字段是把全部候选全文无差别直灌 context，是本步**最大自造 token 成本**（实测 cn-pd1-vegf 一轮 4 次 exa 直灌 ~40-60K tok，利用率 <20%），默认不取；需通读的少数走 `web_fetch_exa` 精准抓选定 URL（同样落盘复用）。质量不减：tier 判断 / 关键数字 / 反方识别都只需投影+摘要，通读走惰性展开，snippet 兜底纪律照旧（见 01 Step 5.6）。
+> **本步作用域（00 特化）**：post-thesis 阶段只抓 00 自己产的非报告类 pending todo；命令透传 `--triggered-by 00-deep-fetch --addresses <K#>`。
 
 抓到 → 落 `prism/topics/{slug}/inbox/{descriptive_name}.md`（资料只在 topic 层）→ `add_material` 入库 → 按 task 子串 `mark_todo_fetch('fetched')` + `update_user_todo_status('done', covered_by=[mat])`。
 
@@ -845,9 +834,9 @@ if r["unmapped_facts"]:
 
 ### 附录 A5.3 — todo 闭环语义 / 产即收衔接 / 建 todo 前查重展开
 
-> **闭环语义（钉死）**：一条 todo = 「去收**某份具体文档**」的任务，`task` 描述那份文档。`addresses=[K#]` 只标「这份料喂哪个命门」，是**相关性标签**——多条不同 todo 可共享同一 K#（年报 / 卖方预期 / 二手价都可挂 K2），A 合同必收类目（consensus/mgmt-capital-alloc/historical-mirror）甚至**可以不挂任何 K#**。因此 todo 的闭环键是 **task/文档身份，不是 K#**：某 K# 有料 ≠ 攻打它的每条 todo 都收齐了。闭环只走 `mark_todo_fetch(task子串)` + `update_user_todo_status(task子串)`，**禁止用 K# 交集自动 done**（见 `_autofetch_protocol.md` 闭环键节 + memory `feedback_todo_closure_key`）。下面 5.3 的 Coverage self-check 是**反方向**校验（每个 K# 至少有 1 条 todo 瞄准），与「todo 收齐没」无关。
+> **闭环语义（钉死 · 详见 `_autofetch_protocol.md` 闭环键节 + memory `feedback_todo_closure_key`）**：闭环键是 **task/文档身份不是 K#**，闭环只走 `mark_todo_fetch`/`update_user_todo_status` 的 task 子串（禁止 K# 交集自动 done）。**本步特化**：A 合同必收类目（consensus/mgmt-capital-alloc/historical-mirror）**可以不挂任何 K#**；下面 5.3 的 Coverage self-check 是**反方向**校验（每个 K# 至少有 1 条 todo 瞄准），与「todo 收齐没」无关。
 
-> **产即收衔接**：本阶段（00）产的 pending todo **由 00 自己在 Step 6.5 当场抓**（产即收总规约：谁产谁收、同段闭环）。关键时序——todo 产在 thesis_v0（5.0）**之后**、赌注已锁定，此时 eager-fetch **不污染 bet-first**：bet-first 由 Step 4.5 prescan 前置（只校准事实、`scope` 入库、永不碰 todo）担保，与"fetch 放哪一步"无关。01 Step 5.6 **只补抓 01 自己 Step 2/3 新增**的 L4/A合同 todo（并按 R3 重试 00 遗留的 `error`），不重抓 00 已 `fetched`/`empty` 的。
+> **产即收衔接**（总规约见 `_autofetch_protocol.md` 产即收节）：本阶段（00）产的 pending todo **由 00 自己在 Step 6.5 当场抓**。**关键时序（00 特化）**——todo 产在 thesis_v0（5.0）**之后**、赌注已锁定，此时 eager-fetch **不污染 bet-first**：bet-first 由 Step 4.5 prescan 前置（只校准事实、`scope` 入库、永不碰 todo）担保，与"fetch 放哪一步"无关。01 Step 5.6 **只补抓 01 自己 Step 2/3 新增**的 L4/A合同 todo（并按 R3 重试 00 遗留的 `error`），不重抓 00 已 `fetched`/`empty` 的。
 
 **建 todo 前查重展开**（主 agent 先 `read_manifest` 扫已有料，按文档身份判：已有料 → 建成 done 填 covered_by 或不建；没有 → 建 pending）。按文档身份判（不是 K# 撞 K#）——一份挂 K2 的旧价新闻不等于"年报全文"已收。
 
