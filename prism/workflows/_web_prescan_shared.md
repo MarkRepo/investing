@@ -1,6 +1,6 @@
 # Shared Sub-workflow — LLM-driven Web-search Prescan
 
-**被引用**：01-build-roadmap (Step 7) / 02-gather-materials (Step 0) / 06-daily-monitor (Step N) / 07-drilldown (Step M)
+**被引用**：01-gather (Step 8 + 重入增量扫) / 06-daily-monitor (Step N) / 07-drilldown (Step M)
 **定位**：通用 across 所有 topic type（company / industry / arena / concept），用 LLM 主动调 WebSearch + WebFetch 把"训练截止后的新事件"和"高频小数据"自动纳入 manifest，减少用户手工收集负担
 **LLM 分工**：脚本零 LLM——覆盖槽枚举 / 域名分类 / 写 inbox / 入 manifest / 更新 todo 都由 Python；**query 措辞** / WebSearch 调用 / confidence 判断 / addresses 标注由主 agent 在对话里做（参 `memory/feedback_llm_workflow.md`）。注意：query 文本**不再由脚本模板生成**——查什么是领域判断（旧版对创新药套死"产能变化"即 PRISM_VALIDATION F3 病根），脚本只给"需要覆盖哪些 address"的清单
 

@@ -27,7 +27,7 @@ print(format_summary(detect_gaps('{slug}', '{variant}')))
 "
 ```
 
-主 agent 直接读上面 Bash 输出的 report 做决策——**不必再整份贴/复述到对话**（Bash 输出里已有一份，actionable 项也在 web 详情页），对话只回**一句话摘要**。**若本会话刚从 02 Step 5.8 直连推进、其后未新增材料，直接沿用那次结果、不必重跑本块；新会话/隔轮回来则照常重跑本块（从磁盘重算，绝不跳过）。** **双轴都看**（B 轴 = K# 脊柱，A 轴 = 决策链输入合同）：
+主 agent 直接读上面 Bash 输出的 report 做决策——**不必再整份贴/复述到对话**（Bash 输出里已有一份，actionable 项也在 web 详情页），对话只回**一句话摘要**。**若本会话刚从 01-gather Step 5.85 直连推进、其后未新增材料，直接沿用那次结果、不必重跑本块；新会话/隔轮回来则照常重跑本块（从磁盘重算，绝不跳过）。** **双轴都看**（B 轴 = K# 脊柱，A 轴 = 决策链输入合同）：
 - `uncovered_ks` 非空 → 该 K# 当前 0 条材料覆盖
 - `thin_evidence` 非空 → 该 K# 证据 < 2 条
 - `uncovered_ring_inputs` 非空 → 决策链某环必带输入无料覆盖（带 🔴 = 三项真·欠供，最该补）；`api_pending_inputs` 非红
@@ -318,7 +318,7 @@ else:
     print()
     print('补救：')
     print('  1. 立即跳到下一份资料继续 03（不阻塞）')
-    print('  2. 完成本轮 03 后回 workflow 02 Step 4.5 用 list_pending_mineru')
+    print('  2. 完成本轮 03 后回 workflow 01-gather Step 5.65 用 list_pending_mineru')
     print('     批量重试 failed 的；或单独跑 scripts.mineru_api 排查 API 配额/网络')
     print('  3. 修好后回 03 重跑该 mat（unprocessed 队列里它仍在）')
     print('=' * 60)
@@ -461,7 +461,7 @@ conflict_note: {一句话：冲突在哪/暂如何取舍}   # 可选，仅 confl
 
 ### 2.4 训练知识冲突触发即兴 web-search（新增）
 
-提取 finding 时如果遇到以下情况，**主 agent 可以即兴调用 WebSearch 验证一条**（不需要回 02 让用户跑 prescan）：
+提取 finding 时如果遇到以下情况，**主 agent 可以即兴调用 WebSearch 验证一条**（不需要回 01-gather 让用户跑 prescan）：
 
 - 资料中数字与 LLM 训练知识冲突（如资料说 "2024 年市占率 35%"，LLM 训练记忆是 25%）
 - 资料引用的事件 LLM 训练时不知道（训练截止后的新事件）
@@ -493,7 +493,7 @@ register_web_search_batch(
 
 **纪律**：
 - 单份资料 03 处理过程中即兴 web-search 不超过 3 条（避免变成 prescan）
-- 若冲突点超过 3 条 → 标记 user_todos，stage 回退 02-gather-materials 走完整 prescan
+- 若冲突点超过 3 条 → 标记 user_todos，stage 回退 02-gather-materials（收料读 `01-gather.md`）走完整 prescan
 - 即兴 web-search 必须填 addresses，否则 manifest coverage 算不进
 - URL/snippet 必须来自 WebSearch 工具实际返回，不得用训练记忆补 URL
 - 显式 `inline_finding=False` 可关闭自动产 finding（罕见，如只想登记 URL 留痕）

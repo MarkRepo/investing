@@ -1,6 +1,6 @@
 # 自动获取协议（auto-fetch 规约 · R2 有效尝试判定）
 
-> 被 `00-research-topic.md`(Step 6.5)、`01-build-roadmap.md`(Step 5.6)、`02-gather-materials.md`(Step 5.7)、`03-extract-findings.md`(Step 2.4/2.4b)、`05-critic-review.md`(Step 6.5)共享引用。
+> 被 `00-research-topic.md`(Step 6.5)、`01-gather.md`(Step 5.6/5.65)、`03-extract-findings.md`(Step 2.4/2.4b)、`05-critic-review.md`(Step 6.5)共享引用。
 >
 > **一句话**：每个产 todo 的点，浮给用户前必须先**有效尝试**一次自动抓；留不留 user-todo、是否要重试，由**尝试的真实结果**决定，不由 tier/info_tier 标签事前 gate。
 >

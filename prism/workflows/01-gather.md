@@ -1,8 +1,9 @@
-# Workflow 01 — 制定研究路线图
+# Workflow 01 — 收料（roadmap 计划 + 自动收料 + 登记）
 
-**触发**：stage=01-roadmap-pending 或用户说「制定路线图」  
+**触发**：stage=`01-roadmap`/`01-roadmap-pending`/`02-gather-materials`，或用户说「制定路线图」/「登记资料」/「推进 {slug}」到收料阶段  
 **前置**：topic.yaml 已存在  
-**产出**：`prism/topics/{slug}/{variant}/roadmap.yaml`
+**产出**：`prism/topics/{slug}/{variant}/roadmap.yaml` + manifest 登记 + auto-fetch 收料  
+**说明**：本文件是**收料主线**（原 workflow 01 制定路线图 + 原 workflow 02 登记资料合并，原 `02-gather-materials` workflow 已退休）。**stage 常量 `02-gather-materials` 保留**——本 workflow 跑完有可处理料就推 `03-extracting`，没有就停在 `02-gather-materials` 等用户上传，用户上传后「推进」直接进 03（03 Step 0 能 inline 登记）。
 
 ---
 
@@ -393,6 +394,76 @@ mark_todo_fetch('{slug}', '{variant}', '<task 子串>', 'error', note='providers
 
 ---
 
+## Step 5.65：登记用户交付 / 中途上传的资料（+ mineru 转换）
+
+> 吸收原 workflow 02 的收料登记流。auto-fetch（5.5/5.6）已把自动抓到的料入库；本步处理**用户放进 `prism/topics/{slug}/inbox/` 的料**（父复用 / 中途上传 / 手工交付）。
+> 📎 *早期 ingest 不替代本步 / 为什么必须 vlm → 附录 A-early / A-mineru（执行时可跳过）*
+
+**先幂等登记家底**（用户中途放进 inbox 的料，元数据先入库）：
+```bash
+python3 -c "from prism.scripts.manifest import register_inbox_materials; register_inbox_materials('{slug}','{variant}')"
+```
+`prism/topics/{slug}/inbox/` 下的文件**默认全属本 topic，无需甄别直接全部登记**；批量登记后逐份补 addresses/rings。
+
+**判 source_type**（文件名无语义如 `H3_AP*` / 纯数字 / `report.pdf` / `s_*` 随机串时，用 pdftotext 抽前 3 页确认标题主题）：
+```bash
+pdftotext -l 3 "<file>" - | head -30
+```
+类型：`sell-side-note`（卖方研报）/ `annual-report`（年报 / 10-K / 20-F）/ `industry-research`（第三方行研）/ `web-article`（网页新闻）/ `manual-note`（用户笔记）/ `policy`（政策监管）。
+
+**逐份登记**（必填 addresses 指向 K#、选填 rings 决策链输入合同）：
+```bash
+python3 -c "
+from pathlib import Path
+from prism.scripts.manifest import add_material
+mat_id = add_material(
+    slug='{slug}', filename='{filename}', source_type='{source_type}', notes='{notes}',
+    source_path=Path('{material_full_path}'), variant='{variant}',
+    addresses={addresses_list},  # 例 ['K1','K3']；禁 []，无具体 K# 填 ['background']/['scope']
+    rings={rings_list},          # 例 ['mgmt-capital-alloc','financial-arc']，见 _input_contract.md
+)
+print(f'已登记：{filename} -> {mat_id}')
+"
+```
+- **addresses 强制三态**（全局约定见 `_web_prescan_shared.md` 关键纪律 3）：必填、禁 `[]`；K# 来自 thesis_v{N}.md；无具体 K# 填 `['background']`，与 scope 相关非背景填 `['scope']`。
+- **rings** 与 addresses 解耦（addresses=thesis 脊柱、rings=输入脊柱）：按 `_input_contract.md` 本 type code 填；财报 / 公告自动下载的料 fetcher 已按 report_type 默认打 rings，手工登记的自己标；喂 gap A 轴（ring 轴）覆盖统计，不确定就先不填，03 抽取时按内容在 finding frontmatter 补。
+- **dedup**：`add_material` 按 filename 去重——重复调用合并 addresses/notes 而非新增，幂等安全；文件自动复制到 `materials/`，原 inbox 保留。
+
+**立即跑 mineru 转换**（sell-side / industry PDF 必做，避免 03 卡在转换上）：
+> 🔑 env 变量名是 `MINERU_TOKEN`（在 `.env`），不是 `MINERU_API_KEY`；缺了 `mineru_api` 会直接 raise。
+`add_material` 登记时已自动给 sell-side-note / industry-research / policy 类 PDF 标 `mineru_state=needs`。
+```bash
+python3 << 'EOF'
+from pathlib import Path
+from prism.scripts.manifest import list_pending_mineru, set_mineru_state
+from scripts.mineru_api import convert
+
+slug = '{slug}'
+variant = '{variant}'
+mats_dir = Path(f'prism/topics/{slug}/materials')
+pending = list_pending_mineru(slug, variant)
+print(f'Pending mineru: {len(pending)}')
+for m in pending:
+    src = mats_dir / m['filename']
+    if not src.exists():
+        set_mineru_state(slug, variant, m['id'], 'failed'); continue
+    out_dir = mats_dir / (src.stem + '_vlm')
+    if (out_dir / 'full.md').exists():
+        set_mineru_state(slug, variant, m['id'], 'done'); continue
+    set_mineru_state(slug, variant, m['id'], 'in_progress')
+    try:
+        convert(src, out_dir, 'vlm')
+        set_mineru_state(slug, variant, m['id'], 'done')
+        print(f'  ok {m["filename"][:50]}')
+    except Exception as e:
+        set_mineru_state(slug, variant, m['id'], 'failed')
+        print(f'  fail {m["filename"][:50]}: {e}')
+EOF
+```
+**幂等**：检查 `{stem}_vlm/full.md` 存在则跳过，重复跑安全。**失败**标 `failed`（detail 页红显），可手动修后回设 `needs` 再跑。
+
+---
+
 ## Step 5.7：自动校验 roadmap → thesis 闭环（**未通过不得进 Step 6**）
 
 ```bash
@@ -429,6 +500,28 @@ else:
 
 ---
 
+## Step 5.75：manifest 实际覆盖校验（计划 vs 实收）
+
+> roadmap coverage（5.7）校验「计划要收什么」，本步校验「实际收了什么」——两者背离说明计划落空，detail 页显示红 ✗。
+
+```bash
+python3 -c "
+from prism.scripts.outputs import validate_manifest_coverage
+from prism.scripts.topic import read_topic
+t = read_topic('{slug}', '{variant}')
+cur = (t.get('thesis') or {}).get('current_version')
+if cur is not None:
+    r = validate_manifest_coverage('{slug}', '{variant}', cur)
+    print(f'Manifest 覆盖率: {r[\"coverage_pct\"]}%')
+    print(f'已覆盖 K#: {r[\"covered\"]}')
+    if r['uncovered']:
+        print(f'⚠ 未覆盖 K#: {r[\"uncovered\"]} — 这些 Killer Question 规划了但实际没收到任何材料')
+        print('  -> 要么补资料、要么在 thesis 里标注不验证此 K')
+"
+```
+
+---
+
 ## Step 5.8：auto-fetch 全覆盖硬闸门（**未通过不得进 Step 6 / 不得 set_stage**）
 
 > 📎 *为什么必须做 / 静默推进教训 → 附录 A5.8（执行时可跳过）*
@@ -436,6 +529,7 @@ else:
 ```bash
 python3 -c "
 from prism.scripts.topic import pending_unfetched_todos
+from prism.scripts.web_prescan import verify_empty_todos_searched
 p = pending_unfetched_todos('{slug}', '{variant}')
 unattempted = [t for t in p if t.get('fetch_status') == 'unattempted']
 errored     = [t for t in p if t.get('fetch_status') == 'error']
@@ -450,11 +544,38 @@ if errored:
     print('⚠ 以下 todo 抓取失败（fetch_status=error），按退避梯重试；本轮带过将由 02/03 的 R3 续抓：')
     for t in errored:
         print(f'   - {t[\"task\"][:60]}')
-print('✓ auto-fetch 全覆盖通过：无 unattempted（每条 todo 都已有效尝试过）')
+v = verify_empty_todos_searched('{slug}', '{variant}')
+if v['unverified']:
+    print('❌ empty 证据缺失：以下 todo 标了 empty 但 web_search_log 无痕——补搜或重盖后再进 Step 6：')
+    for t in v['unverified']:
+        print(f'   - {t[\"task\"][:60]}')
+    raise SystemExit(1)
+print('✓ auto-fetch 全覆盖通过：无 unattempted、且 empty 均有搜索证据')
 "
 ```
 
 如果非 0 退出（有 `unattempted`），**回 Step 5.6 把它们逐条抓完 / 盖 `empty` / 盖 `error`**，再回来跑 Step 5.8。**`unattempted` 清零是进 Step 6 的前置条件。**
+
+---
+
+## Step 5.85：gap 体检（升 stage 到 03 前必跑）
+
+```bash
+python3 -c "
+from prism.scripts.gap_detector import detect_gaps, format_summary
+print(format_summary(detect_gaps('{slug}', '{variant}')))
+"
+```
+
+主 agent 直接读 Bash 输出的 report 做决策——**不必整份贴/复述到对话**（Bash 输出已有、actionable 项也在 web 详情页），对话只回**一句话摘要**（如『gap：2 红 K# / 1 红环，正在补』）。**双轴都看**：
+
+**B 轴（K# 脊柱）**：`uncovered_ks`（0 覆盖）/ `thin_evidence`（< 2 条）/ `expired_web_materials`（web 料 > 90 天）非空。
+
+**A 轴（决策链输入合同 · ring 轴）**：`uncovered_ring_inputs`（某环必带输入无料，🔴=三项真·欠供之一）/ `thin_ring_inputs`（🟡 hard 项有料但 < min_evidence，按 `code(当前/阈值)` 补到阈值或诚实降级）/ `api_pending_inputs`（财务估值类合成期自动拉，非红）/ `ring_axis_status=='n/a'`（旧 topic 未接入，忽略）。
+
+任一红项非空 → **不要硬升 stage**，先补救（顺序有先后、非平级 · auto-fetch 规约）：① **先**走 Step 5.6 自动补料（能自动抓的绝不甩用户）；② **只有**缺口对应 todo 被 `mark_todo_fetch('empty')`（有效尝试确认公开无源）后，`set_user_todos` 让用户补才合法，且走 empty 硬闸门；③ `error` 必须重试，不当"用户去收"。
+
+这是诊断不是 gate——脚本不会拒绝你升 stage，但跳过等于把"论证薄弱"留给 04/05。`uncovered_ring_inputs` 的 hard 项尤其要在升 stage 前显式处理（**先自动尝试**，确认 empty 再收料或诚实标"数据缺失"）。
 
 ---
 
@@ -474,7 +595,7 @@ from pathlib import Path
 from prism.scripts.topic import (
     read_topic, set_stage, set_next_actions, set_user_todos, update_user_todo_status
 )
-from prism.scripts.manifest import register_inbox_materials
+from prism.scripts.manifest import register_inbox_materials, material_count
 
 slug = '{slug}'
 variant = '{variant}'
@@ -533,11 +654,15 @@ for t in APPEND:
 
 set_user_todos(slug, new_todos, variant)
 
-set_stage(slug, '02-gather-materials', variant)
+# stage 转移（承重墙 stage 常量 02-gather-materials 保留）：有可处理未处理料 → 03-extracting；
+# 否则停在 02-gather-materials 等用户上传，用户「推进」直接进 03（03 Step 0 能 inline 登记）。
+counts = material_count(slug, variant)
+_next = '03-extracting' if counts['unprocessed_actionable'] > 0 else '02-gather-materials'
+set_stage(slug, _next, variant)
 set_next_actions(slug, [
-    f'已下载 N 份资料，登记 manifest（A股自动；美股需手工 add_material）',
-    '运行 workflow 03-extract-findings 处理已收集资料',
-    '剩余 P0 todo 补齐后再跑 workflow 03',
+    (f'{counts["unprocessed"]} 份未处理资料 → 运行 workflow 03-extract-findings'
+     if _next == '03-extracting' else '等用户上传剩余资料；补齐后说「推进」直接进 03'),
+    'detail 页查看「📚 实际收集覆盖」徽章，红色 ✗ 的 K# 优先补料',
 ], variant)
 EOF
 ```
@@ -581,6 +706,8 @@ roadmap 落地后立即跑 `_web_prescan_shared.md` 一次（`recency_days=90`�
 各槽的事件轴（**查什么**）由主 agent 按领域自定，**不套固定后缀**——旧版对所有行业写死"产能变化"、对 company 写死"最新公告/监管/业绩"即 PRISM_VALIDATION F3 病根；措辞规约见 `_web_prescan_shared.md` Step A。按 Step A-F 执行，`triggered_by='01-prescan'`。
 
 完成后 user_todos 通常已自动消化掉大半 K# 级 todo——剩下的（如未公开内部数据、付费墙、专家访谈）才是真正需要用户手工去搞的清单。
+
+> **重入增量扫（吸收原 02 Step 0）**：若本 workflow 被**重入**（如 critic `request-more` 把 stage 打回 `02-gather-materials` 后用户「推进」回收料），别无脑重跑 90 天全扫——先 `should_run_step0('{slug}','{variant}')` 判是否要跑、跑就用它给的 `recency_days`（≤7 天有 prescan 则跳过；否则按距今 7/30/90 增量），`triggered_by='02-step0'`。
 
 ---
 
@@ -632,3 +759,10 @@ roadmap 落地后立即跑 `_web_prescan_shared.md` 一次（`recency_days=90`�
 
 > **为什么必须做**：Step 5.6 的「产即收 + R1 全覆盖」此前只是散文纪律（「不要跳过本步」），没有像 5.7 coverage 那样的机器卡口——主 agent 一旦漏抓某条 todo（尤其凭 `info_tier` 先入为主跳过 half_public/hard），stage 仍会静默推进到 02，下游不替它补抓（产即收的下游不补抓原则），缺口就永久蛰伏。本闸门把已有的 `pending_unfetched_todos`（R3 清单）接成 advance 前的硬断言，精确拦截「从未尝试就推进」。
 
+### 附录 A-early — 早期 ingest 不替代 Step 5.65 登记
+
+> 00 Step 4.0 的 `register_inbox_materials` 只是第一遍登记家底元数据；用户**本轮中途**交付的料仍在 Step 5.65 登记，并按文档身份闭环对应 todo（产即收：本 workflow 是用户上传料的收料点）。`register_inbox_materials` 与 Step 5.65 的 `add_material` 是同一套幂等登记——批量元数据先调它，再逐份补 addresses/rings。
+
+### 附录 A-mineru — 为什么必须 vlm + [[feedback_mineru_required]]
+
+> ⚠️ **必须用 vlm 模型**——pipeline/pymupdf 会丢表格/公式/多栏排版，研报和行业报告的关键数据多在表格里。**禁止改 `convert(src, out_dir, 'vlm')` 的第三参**。详见 [[feedback_mineru_required]]。

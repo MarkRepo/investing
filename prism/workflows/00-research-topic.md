@@ -503,8 +503,8 @@ h = check_prescan_health(slug, variant, expected_queries={n_priority_queries})
 
 set_stage(slug, '01-roadmap-pending', variant)
 set_next_actions(slug, [
-    '运行 workflow 01-build-roadmap：制定详细研究路线图',
-    '收集 P0 资料后运行 workflow 02-gather-materials',
+    '运行 workflow 01-gather：制定路线图 + 自动收料 + 登记',
+    '收集 P0 资料后运行 workflow 01-gather 登记',
 ], variant,
     prescan_status=h['status'],
     prescan_failure_reason=h['failure_reason'],
@@ -624,7 +624,7 @@ t = read_topic(slug, variant)
 remain = [td['task'] for td in t['user_todos'] if td.get('fetch_status') == 'empty']
 set_next_actions(slug, [
     f'00 eager-fetch 已抓 N 份入库；剩 {len(remain)} 条公开无源待你决策（waived/will_collect）',
-    '运行 workflow 01-build-roadmap（01 只补抓自己新增的 L4/A合同 todo + 按 R3 重试 00 的 error）',
+    '运行 workflow 01-gather（01 只补抓自己新增的 L4/A合同 todo + 按 R3 重试 00 的 error）',
 ], variant)
 ```
 
