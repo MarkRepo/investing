@@ -1,6 +1,6 @@
 # Macro 合成（理解先行 · 因果链驱动 · 三体制读数 · 自由发挥版）
 
-> **调度提示**：本文件是 **macro 类型 topic 在 04-synthesize 阶段的完整规范**，是 `_arena_funnel.md`（arena 漏斗）/ `_company_case.md`（公司决策链）/ `_industry_funnel.md`（行业漏斗）的并列同胞。`company` 走 `_company_case.md`，`arena` 走 `_arena_funnel.md`，`industry` 走 `_industry_funnel.md`，**`macro` 走本文件**。
+> **调度提示**：本文件是 **macro 类型 topic 在 04-synthesize 阶段的完整规范**，是三类 case 决策链（`_case_chain.md` 骨架 + `_type_{company,industry,arena}.md`）的并列同胞。`company`/`arena`/`industry` 走 `_case_chain.md` + 对应 type 卡，**`macro` 走本文件**。
 >
 > **复用上游、不重写**：00-research → 01-roadmap → 02-materials → 03-findings 的 findings、`gap_detector`、增量重写判定、`thesis`、`00-primer.md`、sidecar schema/stub 创建机制全部沿用。本文件只重做 macro 的"合成"这一段。
 >
@@ -14,7 +14,7 @@ macro 不是自下而上的个股/行业逻辑——它是**整个组合共用�
 
 用户是宏观门外汉，故本层有**双重目标**（spec §1）：① **学习载体**——用大白话把利率/流动性/汇率讲透；② **专业级集成**——以严谨因果链结构接入 prism，输出可消费的体制读数与传导决策。
 
-两条根本规约（与 `_arena_funnel.md` 同构）：
+两条根本规约（与 `_case_chain.md` 同构）：
 
 1. **理解先行**：先出 `00_primer`（宏观理解地基，critic 校验"门外人真懂了"），活读数与传导地图**显式站在它之上**。
 2. **按因果链组织**（不是并列指标罗列）：L1 输入 → L2 驱动变量 → L3 三体制读数 → L4 传导决策，每一层是上一层**逼出来的**。
@@ -74,7 +74,7 @@ prism 里的文件只是这条链的容器；逻辑在前、文件在后。本�
    "
    ```
 
-   - 函数**只返路径、绝不读内容、不做判断**——借用永远是输入/参照，受 `_arena_funnel.md` §1.3 跨层复用护栏约束（借来必标来源、质量按本维度自跑、冲突时本 topic 赢）。
+   - 函数**只返路径、绝不读内容、不做判断**——借用永远是输入/参照，受 `_case_chain.md` §1.3 跨层复用护栏约束（借来必标来源、质量按本维度自跑、冲突时本 topic 赢）。
    - **macro 在 tier 漏斗之外**：它通常既无 `parent_topic` 也无子 topic（持仓不是 macro 的 child，是平行的 company/arena topic）。故 `get_relative_outputs` 返回 `parent=None, children=[]` 是**正常退化**，直接走独立合成，**零特判、不阻塞**。
    - 若确有亲属（极少见，如未来挂了上层 macro-regime 父）→ 按护栏标来源、本维度自跑，不照搬结论。
 
@@ -417,7 +417,7 @@ print('m_regime_read 数据时效已标记')
 
 ### 附录 A附 — 与 arena/company 路径对照表
 
-| | arena `_arena_funnel.md` | company `_company_case.md` | **macro 本文件** |
+| | arena `_type_arena.md` | company `_type_company.md` | **macro 本文件** |
 |---|---|---|---|
 | 组织原则 | 理解先行 + 6 环决策漏斗 | 理解先行 + 决策链 | **理解先行 + 四层因果链（L1→L4）** |
 | 终点 | peer shortlist（押哪几个玩家） | 买/卖一只票 | **三体制读数 + 每持仓倾斜标签（不选标的、不做 EV）** |

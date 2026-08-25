@@ -205,7 +205,7 @@ def _compute_roic(
 
 
 def get_quality_screen_data(slug: str, variant: str) -> dict[str, Any]:
-    """Return financial metrics needed by _company_case Step 0.5 质量红线门控（折自旧 03b）.
+    """Return financial metrics needed by _type_company Step 0.5 质量红线门控（折自旧 03b）.
 
     Returns: roic_3y (list), fcf_3y (list), debt_ratio, goodwill_pct_equity,
     ocf_quality_3y (list), has_data (bool).

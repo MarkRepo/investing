@@ -274,7 +274,7 @@ materials:
 
 ## 3.1 理解先行 + 6 环决策链（契约本身）
 
-04 合成的元目标（`_company_case.md` §1.1，逐字不改）：
+04 合成的元目标（`_type_company.md` §元目标，逐字不改）：
 
 > **一个门外人为了做出买/卖/不动的决策，正在研究这家公司。先让他读懂这门生意所在的领域与公司本身（primer）；再带他走完一条决策链：看懂生意 → 市场定了什么价 → 这价要什么为真 → 我信哪边 → 错了怎么知道 → 那就怎么做。**
 
@@ -288,7 +288,7 @@ materials:
 
 生成顺序 = 阅读顺序。case 环① **已假定读者读过 primer**，只留决策导向速写，背景深度写"详见 primer"。
 
-**6 环决策链**（紧的因果序，非并列箱，`_company_case.md` §1.3）：
+**6 环决策链**（紧的因果序，非并列箱，`_case_chain.md` §1.4）：
 
 ```
 ① 能不能看懂这家公司？     —— 闸门（三梁：生意/护城河/单位经济 + 管理层资本配置 + 多年财务轨迹）
@@ -314,7 +314,7 @@ materials:
 
 ## 3.3 04 的执行骨架（`_shared.md` 是共享工具库）
 
-三类 type 走各自路径文档（`_company_case.md` / `_industry_funnel.md` / `_arena_funnel.md` / `_macro_regime.md`），**都引用 `_shared.md`** 的：前置检查 / gap 双轴体检 / 增量重写判定 / 断点续跑 / 调度模式 / thesis_v1 Scheme C / B 轴 delta 重拆 / 即兴 web-search。
+三类 case 走 `_case_chain.md` + `_type_{company,industry,arena}.md`，macro 走 `_macro_regime.md`，**都引用 `_shared.md`** 的：前置检查 / gap 双轴体检 / 增量重写判定 / 断点续跑 / 调度模式 / thesis_v1 Scheme C / B 轴 delta 重拆 / 即兴 web-search。
 
 **执行顺序**（company 为例）：
 0. **empty 硬闸门**（`empty_undecided_todos` 非空 → AskUserQuestion 逐条处置，全决策完前不进决策链）。

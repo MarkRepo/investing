@@ -1,6 +1,6 @@
 # Industry → Arenas 选拔规范（arena 评分 / 分流 / sidecar / stub）
 
-> **工具规范，非独立产出步骤。** industry 的 arena 选拔已折进 `_industry_funnel.md` 决策链环④（6 维评分）+ 环⑥（三档分流 + 落 sidecar + 建 arena stub），叙事写进 `i_industry_case`。本文件只作 `_industry_funnel.md` **逐字引用**的工具规范：环④引 **Step 3**（6 维评分口径）、环⑥引 **Step 6.5**（sidecar schema）+ **Step 6/6b**（arena stub 创建 / 继承 thesis_v0）。查规范，不照搬结构。
+> **工具规范，非独立产出步骤。** industry 的 arena 选拔已折进 industry（`_type_industry.md`）决策链环④（6 维评分）+ 环⑥（三档分流 + 落 sidecar + 建 arena stub），叙事写进 `i_industry_case`。本文件只作 `_type_industry.md` **逐字引用**的工具规范：环④引 **Step 3**（6 维评分口径）、环⑥引 **Step 6.5**（sidecar schema）+ **Step 6/6b**（arena stub 创建 / 继承 thesis_v0）。查规范，不照搬结构。
 >
 > **不再产出**独立 markdown（旧 `industry_to_arenas.md`）；sidecar `industry_to_arenas.yaml` 是 dashboard 行业层唯一契约。
 

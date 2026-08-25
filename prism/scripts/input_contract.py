@@ -1,7 +1,7 @@
 """决策链输入合同（A 层）—— machine-readable。
 
 这是 0/1/2/3 收料/抽料的组织脊柱之一（另一轴是 thesis 的 K# 覆盖）。
-合同 = 三条 case 决策链（_company_case / _industry_funnel / _arena_funnel）
+合同 = 三条 case 决策链（_type_company / _type_industry / _type_arena，配 _case_chain 骨架）
 各环【必带硬落地】对**输入**的机械投影：要让每一环能落地，上游必须供给哪几类资料/数据。
 
 关键性质（见 plan §关键设计原理 1/3）：
@@ -9,7 +9,7 @@
     （命门特化深度是 B 层 decomposition，知识驱动、迭代，不在本文件。）
   - 与 thesis 的 K# **解耦**：K# 是 thesis 脊柱（addresses 字段），本合同是输入脊柱（rings 字段）。
   - **不新发明**：每项都能在对应 case 文档 §3.2【必带硬落地】找到出处；改合同必须同步改
-    `_company_case.md`/`_industry_funnel.md`/`_arena_funnel.md` 与 prose 版 `_input_contract.md`。
+    `_type_company.md`/`_type_industry.md`/`_type_arena.md`（+ `_case_chain.md`）与 prose 版 `_input_contract.md`。
 
 字段：
   code          : 稳定标识（材料/findings 的 `rings` 标签用此），全小写 kebab，type 内唯一

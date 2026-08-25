@@ -1,6 +1,6 @@
 # 决策套件 sidecar 规范 — `07_decision_kit.yaml`
 
-> **工具规范，非独立产出步骤。** company 的决策叙事由 `_company_case.md` 的 6 环决策链写进 `c_investment_case`；本文件只定义随 case 落盘的 **machine-readable sidecar**（`07_decision_kit.yaml`，dashboard 直接消费）的字段 schema。由 `_company_case.md` Step 4 + `_shared.md` 调度模式**逐字引用**（查 schema，不照搬结构）。industry / arena 的同性质规范见 `_arena_select_spec.md` / `_peer_matrix_spec.md`。
+> **工具规范，非独立产出步骤。** company 的决策叙事由 `_type_company.md` 的 6 环决策链写进 `c_investment_case`；本文件只定义随 case 落盘的 **machine-readable sidecar**（`07_decision_kit.yaml`，dashboard 直接消费）的字段 schema。由 `_type_company.md` §sidecar + `_shared.md` 调度模式**逐字引用**（查 schema，不照搬结构）。industry / arena 的同性质规范见 `_arena_select_spec.md` / `_peer_matrix_spec.md`。
 
 **output_key**：`07_decision_kit`　|　**文件**：`prism/topics/{slug}/{variant}/outputs/07_decision_kit.yaml`（随 case 由主 agent 直接 Write；文件名固定，即使本规范文档已改名也不变）
 

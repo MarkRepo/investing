@@ -1,7 +1,7 @@
 # 产出 00 — 领域入门 (Domain Primer)
 
 > **调度提示**：本文件是 04-synthesize 的内容规范。产出文件名 `00_primer`（排最前、读者最先读）。**primer 一律先行（全类型统一）**：在 case/决策链之前生成，作为理解地基，case 站其上。
-> - **三类路径统一 primer-first**：company 走 `_company_case.md` Step 2、industry 走 `_industry_funnel.md` Step 2、arena 走 `_arena_funnel.md` Step 2，都在 Step 2 调用本文件。
+> - **三类路径统一 primer-first**：company/industry/arena 都在 `_case_chain.md` Step 2 调用本文件。
 > - **原材料统一为** findings + `thesis_v0` + K#（+ 按类型的财务数据 / 父级 primer 等亲属产出）。**不依赖 01-08 / thesis_v1**（旧 primer-last 路径已退休）。
 >
 > 可单独触发（「生成入门 {slug}」/「primer {slug}」）——若该 topic 已有 01-08/thesis_v1（旧数据），可一并作参考，但不作硬前置。

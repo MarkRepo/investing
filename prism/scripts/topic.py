@@ -130,7 +130,7 @@ def next_stage(topic_type: str, current_stage: str) -> str | None:
         # 选拔/同行矩阵已并进 04 合成期 case 环⑥ + sidecar（属第 5 阶段产物，不是定稿动作）；
         # 唯一的定稿动作是 critic 评审，对 industry/arena 非强制——可在对话跑评审、或 web 点
         # 「完成」直接 done（见 app/routes/prism.py mark-done）。旧名 09-arena-shortlist /
-        # 10-peer-matrix 已退休（曾破坏 SKILL stage 路由，见 _arena_funnel.md 收尾段）。
+        # 10-peer-matrix 已退休（曾破坏 SKILL stage 路由，见 _type_arena.md §收尾）。
         flow = [
             "00-init",
             "01-roadmap",

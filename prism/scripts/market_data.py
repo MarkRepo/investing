@@ -119,7 +119,7 @@ def get_quote(slug: str, variant: str) -> dict[str, Any]:
 
 
 def get_valuation_context(slug: str, variant: str) -> str:
-    """Return a markdown snippet with current valuation data for 决策链环②定价锚（_company_case / _valuation_models）.
+    """Return a markdown snippet with current valuation data for 决策链环②定价锚（_type_company / _valuation_models）.
 
     Designed to be injected into the workflow prompt context.
     """

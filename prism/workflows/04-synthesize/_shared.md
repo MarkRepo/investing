@@ -2,7 +2,7 @@
 
 每份产出工作流开始前必须完成以下检查，违反则停止并告知用户。
 
-> **本文件现为"共享工具库"**：三类 topic 的合成都改走决策链路径——company → `_company_case.md`、industry → `_industry_funnel.md`、arena → `_arena_funnel.md`。它们**引用**本文件的：前置检查 / gap 体检 / 增量重写判定 / 断点续跑 / 调度模式（主 agent 直做 + findings 加载/索引）/ thesis_v1 Scheme C / 即兴 web-search。
+> **本文件现为"共享工具库"**：三类 topic 的合成都改走决策链路径——company/industry/arena → `_case_chain.md` + 对应 `_type_{company,industry,arena}.md`。它们**引用**本文件的：前置检查 / gap 体检 / 增量重写判定 / 断点续跑 / 调度模式（主 agent 直做 + findings 加载/索引）/ thesis_v1 Scheme C / 即兴 web-search。
 > **旧 8 份并列维度路径已全退休**（01-08 分批 Write / subagent 模板 / 09-10 自动触发 / primer-last 均下线；selection 折进 funnel 环⑥、primer 改 primer-first 由各路径 Step 2 自管）。
 
 > **Web 搜索路径**：见 [[_web_search_routing]]（必读）。本步默认走 adapter；
@@ -223,7 +223,7 @@ for f in list_failed_outputs('{slug}', '{variant}'):
 
 4. **写 _synthesis_brief.md**：先 dump K1-K5 v0→v1 强度调整结论到 `outputs/_synthesis_brief.md`，作为后续 06/07/08 的 cross-mat 校准锚。
 
-5. **走本 type 的决策链写 case**：进入对应路径文档的决策链（company `_company_case.md` §3 / industry `_industry_funnel.md` §3 / arena `_arena_funnel.md` §3），按其逐环硬落地 Write。Write 节奏仍是"主 agent 直做 + 并行 Write"（一次 message 发多个 Write）。
+5. **走本 type 的决策链写 case**：进入决策链（`_case_chain.md` §3 骨架 + 对应 type 卡 §6 环），按其逐环硬落地 Write。Write 节奏仍是"主 agent 直做 + 并行 Write"（一次 message 发多个 Write）。
 
    **每批次/每环开始前必做**（廉价且重要）：
    - **Read `outputs/_findings_index.md`**（已落盘，~3K token）—— 即使中间发生过 compact，看一眼索引也能立即定位本环需要哪些 mat_id
@@ -391,8 +391,8 @@ if ns == '05-critic-review':
 后台失败仅写 `prism/logs/dashboard_auto.log`——若发现 dashboard 长期未刷新，手动跑一次 `python3 -m prism.scripts.dashboard` 排查。
 
 **selection（09/10）已折进 funnel 环⑥**（不再自动触发独立 workflow）：
-- **industry** → arena 选拔是 `_industry_funnel.md` 环⑥（落 `industry_to_arenas.yaml` + 建 arena stub），`_arena_select_spec.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema / stub 创建）。
-- **arena** → peer shortlist 是 `_arena_funnel.md` 环⑥（落 `peer_matrix.yaml` + 建 company stub），`_peer_matrix_spec.md` 同样降级为工具规范。
+- **industry** → arena 选拔是 `_type_industry.md` 环⑥（落 `industry_to_arenas.yaml` + 建 arena stub），`_arena_select_spec.md` 降级为环④/⑥ 引用的"工具规范"（6 维评分 / sidecar schema / stub 创建）。
+- **arena** → peer shortlist 是 `_type_arena.md` 环⑥（落 `peer_matrix.yaml` + 建 company stub），`_peer_matrix_spec.md` 同样降级为工具规范。
 - **company** → 无 selection 环，c_investment_case 即完整决策。
 
 > 📎 *Tier 排序依据 → 附录 A-tier（执行时可跳过）*
