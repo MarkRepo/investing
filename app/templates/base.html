@@ -34,6 +34,7 @@
     {{ _navlink('/prism/global-macro-rates-liquidity/opus4.8', '宏观层') }}
     {{ _navlink('/financials', '财务') }}
     {{ _navlink('/prices', '行情') }}
+    {{ _navlink('/surf', '趋势') }}
     {{ _navlink('/digest', '研报摘要') }}
     {{ _navlink('/prism/notes', '计划') }}
     {# 个人Wiki：/wiki 反代到本地 Quartz(8080)，相对路径自动跟随当前 host（本机/ngrok 都对）——不参与 active 高亮，新标签打开保留 prism 页面 #}
@@ -87,7 +88,7 @@
       if (pending) {
         pending = false;
         if (pendingTimer) clearTimeout(pendingTimer);
-        const map = { r: '/prism', b: '/prism/dashboard', m: '/prism/global-macro-rates-liquidity/opus4.8', f: '/financials', p: '/prices', d: '/digest' };
+        const map = { r: '/prism', b: '/prism/dashboard', m: '/prism/global-macro-rates-liquidity/opus4.8', f: '/financials', p: '/prices', d: '/digest', s: '/surf' };
         if (map[e.key]) { e.preventDefault(); go(map[e.key]); }
         return;
       }

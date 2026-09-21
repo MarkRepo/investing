@@ -1,0 +1,35 @@
+# 本期 2×2 判定（DESIGN §2）。机器可读，供 /surf 首页渲染。
+# 每期扫描由 SKILL Step 4 产出，与 summary.md 的判定必须一致。
+date: 2026-09-21
+scan: "001"
+headline: 六个候选趋势，只有一个进入「可跟随」
+
+cells:
+  # 产业逻辑成立 + 技术确认 —— 唯一出手的格子
+  follow:
+    - name: 创新药 / 医药（A股+港股+美股共振）
+      card: cn-hk-pharma-delivery
+      note: 五项独立证据；广度 97-98% 对照半导体 51.6%
+    - name: 美股软件与云
+      card: us-software-rerating
+      note: 通道 B 发现；未放量，优先级低
+  # 产业逻辑成立 + 技术未确认 —— 观察不动手
+  too_early:
+    - name: AI 电力缺口 / 燃气轮机
+      note: 设备/EPC/发电三层同时被否，加息压垮长久期估值
+    - name: 国产算力（昇腾链）
+      note: 缩量超跌反弹，资金净流出 35 亿，广度仅 51.6%
+    - name: 固态电池
+      note: 板块位置分位 2.8-7.6，躺在 250 日最低位
+    - name: 存储超级周期
+      stage_error: true
+      note: 逻辑成立但主升浪已走完（MU +518%、SNDK +1641%），阶段错
+  # 产业逻辑不成立 + 技术确认 —— 纯炒作，入黑名单
+  speculation:
+    - name: A 股军工 / 国防 / 航空航天
+      blacklisted: true
+      note: 低位 + 缩量 + 资金流出 + 已停涨 + 美股 ITA 全场最弱
+  # 产业逻辑不成立 + 技术未确认 —— 忽略
+  ignore:
+    - name: 人形机器人
+      note: 90% 出货给科研机构，商业闭环未成；BOTZ/ROBO 均空头排列

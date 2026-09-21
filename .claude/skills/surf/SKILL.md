@@ -14,6 +14,7 @@ description: 趋势跟随系统（主升浪/二波）。触发词：surf / surf 
 | 「surf 扫描」/「本周扫描」/「趋势扫描」 | 完整跑 Step 0 → 4 |
 | 「复查卡片」/「卡片还成立吗」 | 只跑 Step 0 |
 | 「surf 卡片 {slug}」 | 读 `surf/cards/{slug}/card.md` 与 `log.md` |
+| 「打开 surf」/「看看趋势页」 | 页面在 <http://127.0.0.1:8000/surf>（服务由 launchd 托管） |
 | 「加扫 {方向}」（重大事件） | 跑 Step 1 → 4，跳过 Step 0 |
 
 ## 铁律（违反即系统失效）
@@ -36,11 +37,13 @@ ls surf/cards/*/card.md
 
 | 结果 | 动作 |
 |---|---|
-| 触发证伪 | **离场**，`log.md` 追加一条，卡片状态改为「已离场」并写明触发了哪条 |
+| 触发证伪 | **离场**；frontmatter 该条 `triggered: true`、`status: exited`；`log.md` 追加一条写明触发了哪条 |
 | 接近触发 | `log.md` 记录预警，下次扫描重点跟 |
 | 未触发 | `log.md` 追加一行当期数值快照 |
 
-`log.md` **只追加，不修改历史记录**——向前验证是本系统唯一的有效性证据来源（DESIGN §3）。
+两处都要写：
+- **`card.md` 的 frontmatter**（`falsifiers[].triggered`、`status`）——`/surf` 页面的状态面板读这里，正文里的文字描述不作为数据源（DESIGN §7.1）
+- **`log.md`** —— **只追加，不修改历史记录**，向前验证是本系统唯一的有效性证据来源（DESIGN §3）
 
 ---
 
@@ -117,9 +120,16 @@ ls surf/cards/*/card.md
 - 2×2 填表
 - **本次扫描修正了产业扫描的哪些结论**（留痕，不粉饰）
 
-进入左上角的方向，产出/更新 `surf/cards/{slug}/card.md`，七字段格式见 DESIGN §7。
+同时产出 `surf/scans/{today}/matrix.yaml`（2×2 的机器可读版，格式见 DESIGN §7.2）——`/surf` 首页读它渲染矩阵，**漏写则首页矩阵为空**。判定必须与 `summary.md` 一致。
+
+进入左上角的方向，产出/更新 `surf/cards/{slug}/card.md`：
+- **frontmatter 必填**，格式见 DESIGN §7.1。`ticker.code` 必须与 `cn_etf.csv` / `us_etf.csv` 的「代码」列完全一致，否则页面取不到现价与指标时间序列
+- `falsifiers` 要与正文⑦逐条对应，每条带 `baseline`（建卡时对照值）
+- 七字段正文格式见 DESIGN §7
 
 新建卡片时同步建 `log.md`，记录建卡时的关键数值、当时知道什么、**我可能错在哪**、下次该检查什么。
+
+改完可在 <http://127.0.0.1:8000/surf> 核对渲染结果。改的是 `surf/` 下的数据文件则**无需重启**（页面每次请求实时读文件）；只有改了 `app/routes/surf.py` 或模板才要 `launchctl kickstart -k gui/$(id -u)/com.mark.investing`。
 
 ---
 

@@ -1,0 +1,116 @@
+<style>
+  .surf-wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px 48px; }
+  .surf-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+               margin: 18px 0 6px; }
+  .surf-head h1 { font-size: 1.45rem; margin: 0; }
+  .surf-meta { color: #666; font-size: 0.86rem; }
+  .surf-sec { margin-top: 30px; }
+  .surf-sec > h2 { font-size: 1.02rem; margin: 0 0 12px; color: #333;
+                   border-bottom: 1px solid #e6e6e6; padding-bottom: 6px; }
+  .surf-sec > h2 .hint { float: right; font-weight: normal; font-size: 0.8rem; color: #999; }
+
+  /* ---- 卡片状态块 ---- */
+  .card-panel { border: 1px solid #dfe3e8; border-radius: 8px; padding: 14px 16px;
+                margin-bottom: 14px; background: #fff; }
+  .card-panel.secondary { border-left: 3px solid #d7b36c; }
+  .card-panel.primary   { border-left: 3px solid #3d8b57; }
+  .card-panel.exited    { opacity: .6; border-left: 3px solid #999; }
+  .card-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .card-top a.name { font-size: 1.06rem; font-weight: 600; color: #1a1a1a;
+                     text-decoration: none; }
+  .card-top a.name:hover { color: #2a5db0; text-decoration: underline; }
+  .badge { font-size: .74rem; padding: 1px 7px; border-radius: 10px; white-space: nowrap; }
+  .badge.follow { background: #e6f4ea; color: #1e6b3a; }
+  .badge.second { background: #fdf3e0; color: #8a6116; }
+  .badge.exit   { background: #eee; color: #666; }
+  .badge.stage  { background: #eef3ff; color: #2a5db0; }
+  .badge.mkt    { background: #f4f4f4; color: #555; }
+  .card-tick { color: #555; font-size: .88rem; margin: 7px 0 2px; font-family: monospace; }
+
+  /* ---- 止损/目标进度条 ---- */
+  .gauge { margin: 9px 0 4px; }
+  .gauge-bar { position: relative; height: 7px; border-radius: 4px;
+               background: linear-gradient(90deg,#f3d0d0 0%,#f5ecd5 42%,#d9ecdf 100%); }
+  .gauge-pin { position: absolute; top: -4px; width: 3px; height: 15px;
+               background: #1a1a1a; border-radius: 2px; transform: translateX(-1.5px); }
+  .gauge-lab { display: flex; justify-content: space-between; font-size: .76rem;
+               color: #777; margin-top: 5px; font-family: monospace; }
+  .gauge-lab b { color: #1a1a1a; font-weight: 600; }
+
+  .kv { display: flex; gap: 16px; flex-wrap: wrap; font-size: .82rem;
+        color: #555; margin-top: 8px; }
+  .kv span b { color: #1a1a1a; }
+  .up { color: #1e6b3a; } .down { color: #b3322c; } .warn { color: #a5741a; }
+
+  /* ---- 2x2 矩阵 ---- */
+  table.matrix { border-collapse: collapse; width: 100%; font-size: .87rem; }
+  table.matrix th, table.matrix td { border: 1px solid #e0e0e0; padding: 9px 11px;
+                                     vertical-align: top; }
+  table.matrix th { background: #fafafa; font-weight: 600; color: #444; }
+  table.matrix td.follow { background: #f4fbf6; }
+  table.matrix td.spec   { background: #fdf6f5; }
+  table.matrix li { margin: 0 0 6px; list-style: none; }
+  table.matrix li:last-child { margin-bottom: 0; }
+  table.matrix li .nm { font-weight: 600; }
+  table.matrix li .nt { display: block; color: #777; font-size: .8rem; margin-top: 1px; }
+  table.matrix a { color: #2a5db0; text-decoration: none; }
+  table.matrix a:hover { text-decoration: underline; }
+
+  /* ---- 证伪条件 ---- */
+  .fal-group { margin-bottom: 12px; }
+  .fal-group > .lbl { font-size: .8rem; color: #888; margin-bottom: 5px; }
+  .fal { display: flex; gap: 9px; padding: 6px 0; border-bottom: 1px dashed #eee;
+         font-size: .87rem; }
+  .fal:last-child { border-bottom: 0; }
+  .fal .mark { flex: 0 0 15px; color: #bbb; }
+  .fal.on .mark { color: #b3322c; font-weight: bold; }
+  .fal.on .txt { color: #b3322c; font-weight: 600; }
+  .fal .base { color: #888; font-size: .8rem; margin-top: 2px; font-family: monospace; }
+  .fal .note { color: #a5741a; font-size: .8rem; margin-top: 2px; }
+
+  /* ---- 通用表格 ---- */
+  table.grid { border-collapse: collapse; width: 100%; font-size: .8rem;
+               font-family: ui-monospace, monospace; }
+  table.grid th, table.grid td { border-bottom: 1px solid #eee; padding: 4px 7px;
+                                 text-align: right; white-space: nowrap; }
+  table.grid th { background: #fafafa; position: sticky; top: 0; cursor: pointer;
+                  user-select: none; text-align: right; font-weight: 600; z-index: 1; }
+  table.grid th:hover { background: #f0f4fa; }
+  table.grid th::after { content: " ⇅"; color: #ccc; font-size: .9em; }
+  table.grid th.asc::after  { content: " ▲"; color: #2a5db0; }
+  table.grid th.desc::after { content: " ▼"; color: #2a5db0; }
+  table.grid td:nth-child(1), table.grid td:nth-child(2),
+  table.grid th:nth-child(1), table.grid th:nth-child(2) { text-align: left; }
+  table.grid tbody tr:hover { background: #f7f9fc; }
+  .tbl-box { max-height: 620px; overflow: auto; border: 1px solid #e6e6e6;
+             border-radius: 6px; }
+
+  /* ---- tabs ---- */
+  .tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tabs button { border: 1px solid #dfe3e8; background: #fff; border-radius: 6px;
+                 padding: 5px 12px; cursor: pointer; font-size: .85rem; color: #444; }
+  .tabs button.on { background: #2a5db0; color: #fff; border-color: #2a5db0; }
+  .tab-body { display: none; } .tab-body.on { display: block; }
+
+  .bl { border-left: 3px solid #b3322c; padding: 8px 12px; background: #fdf6f5;
+        border-radius: 0 6px 6px 0; margin-bottom: 8px; font-size: .86rem; }
+  .bl .t { font-weight: 600; }
+  .bl .r { color: #777; font-size: .82rem; margin-top: 3px; }
+
+  .scan-row { display: flex; gap: 12px; padding: 7px 0; border-bottom: 1px solid #f0f0f0;
+              font-size: .88rem; align-items: baseline; }
+  .scan-row a { color: #2a5db0; text-decoration: none; font-family: monospace; }
+  .scan-row .h { color: #666; }
+
+  .markdown-body { font-size: .92rem; line-height: 1.72; }
+  .markdown-body table { border-collapse: collapse; margin: 12px 0; font-size: .86rem; }
+  .markdown-body th, .markdown-body td { border: 1px solid #e0e0e0; padding: 5px 9px; }
+  .markdown-body th { background: #fafafa; }
+  .markdown-body h2 { font-size: 1.1rem; margin-top: 26px; border-bottom: 1px solid #eee;
+                      padding-bottom: 4px; }
+  .markdown-body h3 { font-size: 1rem; margin-top: 20px; }
+  .markdown-body code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+  .markdown-body blockquote { border-left: 3px solid #dfe3e8; margin: 12px 0;
+                              padding: 2px 14px; color: #666; }
+  .empty { color: #999; font-size: .88rem; padding: 10px 0; }
+</style>

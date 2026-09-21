@@ -1,3 +1,58 @@
+---
+slug: us-software-rerating
+title: 美股软件「SaaSpocalypse 错杀修复」
+status: following
+priority: secondary
+stage: 二波反弹 · 早中段
+market: US
+created: 2026-09-21
+scan: "001"
+source: channel_B
+ticker:
+  code: IGV
+  name: iShares Expanded Tech-Software
+trade:
+  entry_ref: 104.35
+  stop_hard: 96.00
+  stop_tech: 98.60
+  target: 117.76
+  hold: 3 周 - 3 个月
+  position: 医药卡片的一半
+  rr: "2.3:1（按 ma60 止损）"
+falsifiers:
+  - layer: 价格层
+    text: IGV 收盘跌破 98.60（ma60，第一道止损）
+    baseline: 收盘 104.35
+    triggered: false
+  - layer: 价格层
+    text: IGV 收盘跌破 96.00（-8% 硬止损）
+    baseline: 收盘 104.35
+    triggered: false
+  - layer: 相对强度层
+    text: IGV/SOXX 比价连续 4 周重新走弱
+    baseline: 374 天跑输后反转，8 月 IGV +16% vs SOXX +1%
+    note: 本卡片的核心观察量——比价反转则整个前提消失
+    triggered: false
+  - layer: 相对强度层
+    text: IGV 的 RS60 跌出候选池前 25%
+    baseline: RS60 89.8
+    triggered: false
+  - layer: 产业层
+    text: S&P 1500 应用软件人均营收增速回落到 $10,000/年以下
+    baseline: 2023 年起 +$38,538/年（此前 22 年为 +$2,454/年）
+    triggered: false
+  - layer: 产业层
+    text: 软件板块季报出现整体性收入增速下修，尤其 seat-based 定价公司座席数下滑
+    baseline: 人均营收 $290,066（2026 年中）
+    note: 这正是 SaaSpocalypse 论点的核心预测
+    triggered: false
+  - layer: 结构层
+    text: 半导体设备（AMAT/LRCX/KLAC）与软件同步转强
+    baseline: AMAT -24.44% / KLAC -26.32% / LRCX -23.13%（ret60）
+    note: 若同步转强说明此前分化只是仓位噪音，应降级为普通反弹
+    triggered: false
+---
+
 # 趋势卡片 · 美股软件「SaaSpocalypse 错杀修复」
 
 > 建卡日期：2026-09-21 ｜ 扫描批次：#001 ｜ 状态：可跟随（2×2 左上角），**优先级低于医药卡片**

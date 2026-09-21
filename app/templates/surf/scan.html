@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}扫描 {{ date }}{% endblock %}
+{% block content %}
+{% include "surf/_style.html" %}
+<div class="surf-wrap">
+
+  <div class="surf-head">
+    <h1>扫描 {{ date }}</h1>
+    {% if matrix and matrix.scan %}<span class="badge stage">#{{ matrix.scan }}</span>{% endif %}
+    <span class="surf-meta">
+      {%- if matrix and matrix.headline %}{{ matrix.headline }} · {% endif %}
+      <a href="/surf" style="color:#2a5db0;text-decoration:none">← 返回</a></span>
+  </div>
+
+  <div class="tabs" id="tabs">
+    {% for d in docs %}
+      <button data-t="d-{{ loop.index }}" class="{{ 'on' if loop.first }}">{{ d.label }}</button>
+    {% endfor %}
+    {% for t in tables %}
+      <button data-t="t-{{ loop.index }}"
+        class="{{ 'on' if loop.first and not docs }}">{{ t.label }} <span style="opacity:.6">{{ t.n }}</span></button>
+    {% endfor %}
+  </div>
+
+  {% for d in docs %}
+    <div class="tab-body {{ 'on' if loop.first }}" id="d-{{ loop.index }}">
+      <div class="markdown-body">{{ d.html|safe }}</div>
+    </div>
+  {% endfor %}
+
+  {% for t in tables %}
+    <div class="tab-body {{ 'on' if loop.first and not docs }}" id="t-{{ loop.index }}">
+      <div class="surf-meta" style="margin-bottom:8px">{{ t.desc }} · {{ t.n }} 行 · 点列头排序</div>
+      <div class="tbl-box">
+        <table class="grid">
+          <thead><tr>{% for c in t.cols %}<th>{{ c }}</th>{% endfor %}</tr></thead>
+          <tbody>
+          {% for r in t.rows %}
+            <tr>{% for c in t.cols %}<td>{{ r[c] }}</td>{% endfor %}</tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+
+<script>
+/* tab 切换 */
+document.getElementById('tabs').addEventListener('click', function (e) {
+  var b = e.target.closest('button'); if (!b) return;
+  this.querySelectorAll('button').forEach(function (x) { x.classList.remove('on'); });
+  document.querySelectorAll('.tab-body').forEach(function (x) { x.classList.remove('on'); });
+  b.classList.add('on');
+  var el = document.getElementById(b.dataset.t); if (el) el.classList.add('on');
+});
+
+/* 表格排序：数字按数值比，其余按字符串。再次点击同一列反向。 */
+document.querySelectorAll('table.grid').forEach(function (tbl) {
+  var head = tbl.tHead; if (!head) return;
+  head.addEventListener('click', function (e) {
+    var th = e.target.closest('th'); if (!th) return;
+    var idx = Array.prototype.indexOf.call(th.parentNode.children, th);
+    var desc = !th.classList.contains('desc');
+    head.querySelectorAll('th').forEach(function (x) { x.classList.remove('asc', 'desc'); });
+    th.classList.add(desc ? 'desc' : 'asc');
+
+    var body = tbl.tBodies[0];
+    var rows = Array.prototype.slice.call(body.rows);
+    rows.sort(function (a, b) {
+      var x = (a.cells[idx] || {}).textContent || '', y = (b.cells[idx] || {}).textContent || '';
+      var nx = parseFloat(x), ny = parseFloat(y);
+      var bothNum = !isNaN(nx) && !isNaN(ny) && /^-?[\d.]+$/.test(x.trim()) && /^-?[\d.]+$/.test(y.trim());
+      var c = bothNum ? nx - ny : x.localeCompare(y, 'zh');
+      return desc ? -c : c;
+    });
+    rows.forEach(function (r) { body.appendChild(r); });
+  });
+});
+</script>
+{% endblock %}

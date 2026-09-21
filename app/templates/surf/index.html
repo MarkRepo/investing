@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}surf 趋势跟随{% endblock %}
+{% block content %}
+{% include "surf/_style.html" %}
+<div class="surf-wrap">
+
+  <div class="surf-head">
+    <h1>surf · 趋势跟随</h1>
+    {% if latest %}
+      <span class="surf-meta">最近扫描 {{ latest }}
+        {%- if matrix and matrix.scan %} · #{{ matrix.scan }}{% endif %}</span>
+    {% endif %}
+  </div>
+
+  {# ---------------- 在跟的趋势 ---------------- #}
+  <div class="surf-sec">
+    <h2>在跟的趋势
+      <span class="hint">价格为扫描快照（{{ latest or '—' }}），非实时</span>
+    </h2>
+
+    {% for c in cards %}
+      <div class="card-panel {{ 'exited' if c.status == 'exited' else (c.priority or 'primary') }}">
+        <div class="card-top">
+          <a class="name" href="/surf/card/{{ c.slug }}">{{ c.title }}</a>
+          {% if c.status == 'following' and c.priority == 'secondary' %}
+            <span class="badge second">可跟随 · 低优先</span>
+          {% elif c.status == 'following' %}
+            <span class="badge follow">可跟随</span>
+          {% elif c.status == 'exited' %}
+            <span class="badge exit">已离场</span>
+          {% else %}
+            <span class="badge exit">{{ c.status }}</span>
+          {% endif %}
+          {% if c.stage %}<span class="badge stage">{{ c.stage }}</span>{% endif %}
+          {% if c.market %}<span class="badge mkt">{{ c.market }}</span>{% endif %}
+          <span class="surf-meta">建卡 {{ c.created }}</span>
+        </div>
+
+        <div class="card-tick">{{ c.ticker.code }} {{ c.ticker.name }}</div>
+
+        {% if c.gauge %}
+          <div class="gauge">
+            <div class="gauge-bar"><div class="gauge-pin" style="left: {{ '%.1f'|format(c.gauge.pct) }}%"></div></div>
+            <div class="gauge-lab">
+              <span>止损 {{ c.trade.stop_tech or c.trade.stop_hard }}</span>
+              <span><b>现价 {{ c.current }}</b></span>
+              <span>目标 {{ c.trade.target }}</span>
+            </div>
+          </div>
+          <div class="kv">
+            {# 止损有两道时分别显示：哪一道更紧取决于 ma60 与 -8% 的相对位置，
+               医药卡片 ma60 更紧、软件卡片硬止损更松，不标注会被误读 #}
+            {% if c.trade.stop_tech %}
+              <span>距 ma60 <b class="up">+{{ '%.1f'|format(c.gauge.to_stop) }}%</b></span>
+              <span>距硬止损 <b class="up">+{{ '%.1f'|format(c.gauge.to_hard) }}%</b></span>
+            {% else %}
+              <span>距硬止损 <b class="up">+{{ '%.1f'|format(c.gauge.to_stop) }}%</b></span>
+            {% endif %}
+            <span>距目标 <b>+{{ '%.1f'|format(c.gauge.to_target) }}%</b></span>
+            {% if c.trade.rr %}<span>盈亏比 <b>{{ c.trade.rr }}</b></span>{% endif %}
+          </div>
+        {% endif %}
+
+        <div class="kv">
+          <span>证伪条件
+            <b class="{{ 'down' if c.n_triggered else '' }}">{{ c.n_triggered }}/{{ c.n_falsifiers }}</b> 触发</span>
+          {% if c.quote %}
+            {% set v = c.quote['量能比']|float(0) %}
+            <span>量能比 <b class="{{ 'up' if v >= 1 else 'warn' }}">{{ c.quote['量能比'] }}</b>
+              {%- if v < 1 %} ⚠未放量{% endif %}</span>
+            {% if c.quote['板块当日广度_%'] %}
+              <span>广度 <b>{{ c.quote['板块当日广度_%'] }}%</b></span>
+              <span>板块资金 <b class="{{ 'up' if c.quote['板块5日资金净额_亿']|float(0) > 0 else 'down' }}">{{ c.quote['板块5日资金净额_亿'] }} 亿</b></span>
+            {% else %}
+              <span title="港股 ETF 与跨板块主题不做板块映射（DESIGN §6.3），资金流与广度按设计留空">
+                广度/板块资金 <b style="color:#aaa">—</b></span>
+            {% endif %}
+            <span>ret60 <b class="{{ 'up' if c.quote['ret60']|float(0) > 0 else 'down' }}">{{ c.quote['ret60'] }}%</b></span>
+          {% endif %}
+        </div>
+      </div>
+    {% else %}
+      <div class="empty">还没有卡片。跑一次扫描（对 Claude 说「surf 扫描」）。</div>
+    {% endfor %}
+  </div>
+
+  {# ---------------- 2x2 ---------------- #}
+  {% if matrix %}
+  <div class="surf-sec">
+    <h2>本期 2×2 判定
+      {% if matrix.headline %}<span class="hint">{{ matrix.headline }}</span>{% endif %}
+    </h2>
+    {% macro cell(items, cls='') %}
+      <td class="{{ cls }}">
+        {% if items %}<ul style="margin:0;padding:0">
+          {% for it in items %}
+            <li>
+              <span class="nm">
+                {%- if it.card %}<a href="/surf/card/{{ it.card }}">{{ it.name }}</a>
+                {%- else %}{{ it.name }}{% endif %}
+                {%- if it.stage_error %} <span class="badge second">阶段错</span>{% endif %}
+                {%- if it.blacklisted %} <span class="badge exit">黑名单</span>{% endif %}
+              </span>
+              {% if it.note %}<span class="nt">{{ it.note }}</span>{% endif %}
+            </li>
+          {% endfor %}
+        </ul>{% else %}<span class="surf-meta">—</span>{% endif %}
+      </td>
+    {% endmacro %}
+    <table class="matrix">
+      <tr><th style="width:15%"></th><th style="width:42%">技术确认（资金在押注）</th><th>技术未确认</th></tr>
+      <tr><th>产业逻辑成立</th>
+        {{ cell(matrix.cells.follow, 'follow') }}{{ cell(matrix.cells.too_early) }}</tr>
+      <tr><th>产业逻辑不成立</th>
+        {{ cell(matrix.cells.speculation, 'spec') }}{{ cell(matrix.cells.ignore) }}</tr>
+    </table>
+  </div>
+  {% endif %}
+
+  {# ---------------- 扫描历史 ---------------- #}
+  <div class="surf-sec">
+    <h2>扫描历史</h2>
+    {% for s in scans %}
+      <div class="scan-row">
+        <a href="/surf/scan/{{ s.date }}">{{ s.date }}</a>
+        <span class="h">{{ s.headline }}</span>
+      </div>
+    {% else %}<div class="empty">尚无扫描记录。</div>{% endfor %}
+  </div>
+
+  {# ---------------- 黑名单 ---------------- #}
+  <div class="surf-sec">
+    <h2>纯炒作黑名单 <span class="hint">找不到真实产业变化解释其上涨</span></h2>
+    {% for b in blacklist %}
+      <div class="bl">
+        <div class="t">{{ b['主题'] }} <span class="surf-meta">{{ b['判定日期'] }}</span></div>
+        <div class="r">{{ b['结论'] }}</div>
+      </div>
+    {% else %}<div class="empty">空。</div>{% endfor %}
+  </div>
+
+</div>
+{% endblock %}

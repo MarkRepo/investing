@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}{{ card.title }}{% endblock %}
+{% block content %}
+{% include "surf/_style.html" %}
+<div class="surf-wrap">
+
+  <div class="surf-head">
+    <h1>{{ card.title }}</h1>
+    {% if card.status == 'following' and card.priority == 'secondary' %}
+      <span class="badge second">可跟随 · 低优先</span>
+    {% elif card.status == 'following' %}<span class="badge follow">可跟随</span>
+    {% else %}<span class="badge exit">{{ card.status }}</span>{% endif %}
+    {% if card.stage %}<span class="badge stage">{{ card.stage }}</span>{% endif %}
+    <span class="surf-meta">建卡 {{ card.created }}
+      {%- if card.fm.scan %} · 扫描 #{{ card.fm.scan }}{% endif %}
+      {%- if card.fm.source == 'channel_B' %} · 通道 B 发现{% endif %}
+      · <a href="/surf" style="color:#2a5db0;text-decoration:none">← 返回</a></span>
+  </div>
+
+  {# ---------------- 交易参数 ---------------- #}
+  <div class="surf-sec">
+    <h2>交易参数 <span class="hint">价格为扫描快照（{{ latest or '—' }}），非实时</span></h2>
+    <div class="card-panel {{ card.priority or 'primary' }}">
+      <div class="card-tick">{{ card.ticker.code }} {{ card.ticker.name }}</div>
+      {% if card.gauge %}
+        <div class="gauge">
+          <div class="gauge-bar"><div class="gauge-pin" style="left: {{ '%.1f'|format(card.gauge.pct) }}%"></div></div>
+          <div class="gauge-lab">
+            <span>止损 {{ card.trade.stop_tech or card.trade.stop_hard }}</span>
+            <span><b>现价 {{ card.current }}</b></span>
+            <span>目标 {{ card.trade.target }}</span>
+          </div>
+        </div>
+      {% endif %}
+      <div class="kv">
+        <span>建卡参考 <b>{{ card.trade.entry_ref }}</b></span>
+        <span>硬止损 <b class="down">{{ card.trade.stop_hard }}</b></span>
+        {% if card.trade.stop_tech %}<span>技术止损(ma60) <b class="down">{{ card.trade.stop_tech }}</b></span>{% endif %}
+        <span>目标 <b class="up">{{ card.trade.target }}</b></span>
+        {% if card.gauge %}
+          <span>距止损 <b class="up">+{{ '%.1f'|format(card.gauge.to_stop) }}%</b></span>
+          <span>距目标 <b>+{{ '%.1f'|format(card.gauge.to_target) }}%</b></span>
+        {% endif %}
+        {% if card.trade.rr %}<span>盈亏比 <b>{{ card.trade.rr }}</b></span>{% endif %}
+        {% if card.trade.hold %}<span>持有 <b>{{ card.trade.hold }}</b></span>{% endif %}
+        {% if card.trade.position %}<span>仓位 <b>{{ card.trade.position }}</b></span>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# ---------------- 证伪条件（提到顶部，这是每周要核对的） ---------------- #}
+  <div class="surf-sec">
+    <h2>证伪条件
+      <span class="hint">{{ card.n_triggered }}/{{ card.n_falsifiers }} 触发 ·
+        状态由每周扫描写入，本页只读</span>
+    </h2>
+    <div class="card-panel">
+      {% for layer, items in card.falsifiers|groupby('layer') %}
+        <div class="fal-group">
+          <div class="lbl">{{ layer }}</div>
+          {% for f in items %}
+            <div class="fal {{ 'on' if f.triggered else '' }}">
+              <div class="mark">{{ '●' if f.triggered else '○' }}</div>
+              <div>
+                <div class="txt">{{ f.text }}</div>
+                {% if f.baseline %}<div class="base">建卡时：{{ f.baseline }}</div>{% endif %}
+                {% if f.note %}<div class="note">{{ f.note }}</div>{% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# ---------------- 指标时间序列 ---------------- #}
+  <div class="surf-sec">
+    <h2>指标时间序列
+      <span class="hint">从历次扫描快照中按代码抽取，用于向前验证</span>
+    </h2>
+    {% if timeline|length > 1 %}
+      <div class="tbl-box"><table class="grid">
+        <thead><tr><th>扫描日</th><th>收盘</th><th>ret5</th><th>ret60</th><th>RS60</th>
+          <th>位置分位</th><th>量能比</th><th>板块资金(亿)</th><th>广度%</th><th>结构</th></tr></thead>
+        <tbody>
+        {% for t in timeline %}
+          <tr><td>{{ t.date }}</td><td>{{ t.close }}</td><td>{{ t.ret5 }}</td>
+            <td>{{ t.ret60 }}</td><td>{{ t.rs60 }}</td><td>{{ t.pos }}</td>
+            <td>{{ t.vol }}</td><td>{{ t.flow or '—' }}</td><td>{{ t.breadth or '—' }}</td>
+            <td style="text-align:left">{{ t.structure }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table></div>
+    {% elif timeline %}
+      <div class="empty">只有一期扫描（{{ timeline[0].date }}），下次扫描后此处出现对比。
+        当期：收盘 {{ timeline[0].close }} · ret60 {{ timeline[0].ret60 }}%
+        · 量能比 {{ timeline[0].vol }} · {{ timeline[0].structure }}</div>
+    {% else %}
+      <div class="empty">该标的不在扫描候选池中（如美股个股或未覆盖标的），无时间序列。</div>
+    {% endif %}
+  </div>
+
+  {# ---------------- 正文 ---------------- #}
+  <div class="surf-sec">
+    <h2>卡片正文</h2>
+    <div class="markdown-body">{{ card.body_html|safe }}</div>
+  </div>
+
+  {# ---------------- 决策日志 ---------------- #}
+  {% if card.log_html %}
+  <div class="surf-sec">
+    <h2>决策日志 <span class="hint">只追加，不修改历史</span></h2>
+    <div class="markdown-body">{{ card.log_html|safe }}</div>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}

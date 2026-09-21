@@ -162,6 +162,47 @@ ETF 净值由实际交易产生，无回溯合成问题，且扫描对象直接�
 
 卡片末尾附本卡片特有的优势与劣势（非系统通用）。同目录 `log.md` 记录决策日志，每次扫描追加，**不修改历史**。
 
+### 7.1 卡片 frontmatter（机器可读头部）
+
+正文之上必须有 YAML frontmatter，`/surf` 页面靠它渲染状态面板与证伪条件清单。**手写正文里的「状态：可跟随」不作为数据源**，以 frontmatter 为准。
+
+```yaml
+---
+slug: cn-hk-pharma-delivery          # 与目录名一致
+title: 中国创新药「从叙事到兑现」
+status: following                     # following | watching | exited
+priority: primary                     # primary | secondary（决定仓位权重与展示顺序）
+stage: 1→10 放量期 · 早中段
+market: CN/HK                         # CN | HK | US | CN/HK
+created: 2026-09-21
+scan: "001"
+source: channel_B                     # 可选，仅通道 B 发现的方向标注
+ticker:
+  code: sh520510                      # 必须与 scans/*/[cn|us]_etf.csv 的「代码」列一致，
+  name: 港股通医疗ETF华夏              # 否则现价与指标时间序列取不到
+trade:
+  entry_ref: 0.9590                   # 建卡参考价
+  stop_hard: 0.8823                   # 硬止损（-8~10%）
+  stop_tech: 0.8900                   # 可选，技术止损（通常是 ma60）
+  target: 1.1240
+  hold: 3 周 - 3 个月
+  position: ≤ 总仓 1/3
+  rr: "2:1"
+falsifiers:                           # ⑦证伪条件的结构化版本，与正文逐条对应
+  - layer: 价格层                      # 价格层/资金层/产业层/逻辑层/相对强度层/结构层
+    text: 520510 收盘价跌破 0.8823（-8% 硬止损）
+    baseline: 收盘 0.9590              # 建卡时的对照值
+    note: 最致命——直接推翻盈利拐点这个地基   # 可选
+    triggered: false                  # 每周扫描 Step 0 核对后更新
+---
+```
+
+`triggered` 由每周扫描时人工核对后写入，**web 层只读不写**——状态散在两处会打架。
+
+### 7.2 每期 `matrix.yaml`
+
+2×2 判定的机器可读版本，供 `/surf` 首页渲染，必须与 `summary.md` 的判定一致。四个格子键名固定：`follow` / `too_early` / `speculation` / `ignore`；条目可带 `card`（链到卡片）、`stage_error`、`blacklisted`、`note`。
+
 ## 8. 交易系统
 
 ```
@@ -206,6 +247,7 @@ surf/
 │   ├── cn_boards.csv                同花顺 90 行业 5 日资金流
 │   ├── cn_board_summary.csv         同花顺 90 行业当日概况（含涨跌家数）
 │   ├── cn_concepts.csv              同花顺 387 概念 5 日资金流
+│   ├── matrix.yaml                  2×2 判定（机器可读，供 web 渲染）
 │   └── summary.md                   技术佐证与 2×2 判定
 ├── cards/{slug}/
 │   ├── card.md               趋势卡片
@@ -227,16 +269,33 @@ surf/
 |---|---|
 | ETF 候选池筛选（A 股 + 美股） | 历史回测 / 统计验证 |
 | 技术扫描脚本，产出指标快照 | 板块生命周期状态机 |
-| 通道 A 产业趋势全域扫描（对话中进行） | web 展示（第二期） |
-| 趋势卡片产出与归档 | 自动定时任务 |
-| 决策日志留痕 | 自动交易 / 持仓管理 |
+| 通道 A 产业趋势全域扫描（对话中进行） | 自动定时任务 |
+| 趋势卡片产出与归档 | 自动交易 / 持仓管理 |
+| 决策日志留痕 | 个股增强层（⑤字段目前只到 ETF） |
+| web 展示 `/surf`（只读消费，零写入） | |
 
 **第一期验收（已达成，扫描 #001）**：完成一次全域扫描，产出两张完整趋势卡片（七字段齐全，含可观测证伪条件）。
 
 **待办**：
 - 个股增强层（⑤字段的龙头筛选，目前两张卡片都只到 ETF）
 - §6.4 ② 同主题多只 ETF 的百分位扭曲
-- web 展示 `/surf`（第二期）
+- 指标时间序列的折线可视化（现为表格；需第二期扫描后才有对比意义）
+
+## 10.1 Web 展示
+
+`app/routes/surf.py` + `app/templates/surf/`，挂在 `/surf`：
+
+| 路径 | 内容 |
+|---|---|
+| `/surf` | 卡片状态面板（止损/目标进度条、证伪触发计数、当期指标）+ 本期 2×2 + 扫描历史 + 黑名单 |
+| `/surf/card/{slug}` | 交易参数、**证伪条件清单（提到正文之前，这是每周要核对的）**、指标时间序列、卡片正文、决策日志 |
+| `/surf/scan/{date}` | 摘要与 2×2、通道 A 产业扫描原文、五张指标表（点列头排序） |
+
+**只读消费 `surf/` 下的文件，不写任何东西。** 现价用扫描快照而非实时行情——周频系统，日内价格无决策意义，页面标注数据日期。
+
+指标时间序列不额外存储，按 `ticker.code` 从历次 `scans/*/[cn|us]_etf.csv` 抽取，避免与扫描快照产生不一致。
+
+与 prism 的代码隔离：不 import prism 任何模块，markdown 渲染在 `surf.py` 内独立实现；样式内联在模板中，不动 `static/style.css`。接触点只有 `main.py` 的两行挂载、`app/config.py` 的 `SURF_DIR` 常量、`base.html` 的一个导航链接。
 
 ## 11. 已确认的前提
 
@@ -282,7 +341,7 @@ surf/
 | 目录 | `prism/` | `surf/` |
 | 数据 | `prism/topics/`、`data/financials.db` | `surf/scans/`、`surf/cards/` |
 | 工作流 | `prism/workflows/` | `.claude/skills/surf/SKILL.md`（不建 workflow 文件） |
-| web | `/prism` | `/surf`（第二期） |
-| 共用 | FastAPI 服务（`main.py`）、模板层 | 同左 |
+| web | `/prism` | `/surf` |
+| 共用 | FastAPI 服务（`main.py`）、`base.html` | 同左 |
 
-代码零交叉：surf 不 import prism 任何模块，prism 也不感知 surf 的存在。共用仅限基础设施层。
+代码零交叉：surf 不 import prism 任何模块，prism 也不感知 surf 的存在。共用仅限基础设施层——`main.py` 两行挂载、`config.SURF_DIR` 常量、`base.html` 一个导航链接。

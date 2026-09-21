@@ -1,3 +1,64 @@
+---
+slug: cn-hk-pharma-delivery
+title: 中国创新药「从叙事到兑现」
+status: following
+priority: primary
+stage: 1→10 放量期 · 早中段
+market: CN/HK
+created: 2026-09-21
+scan: "001"
+ticker:
+  code: sh520510
+  name: 港股通医疗ETF华夏
+trade:
+  entry_ref: 0.9590
+  stop_hard: 0.8823
+  stop_tech: 0.8900
+  target: 1.1240
+  hold: 3 周 - 3 个月
+  position: ≤ 总仓 1/3
+  rr: "2:1"
+falsifiers:
+  - layer: 价格层
+    text: 520510 收盘价跌破 0.8823（-8% 硬止损）
+    baseline: 收盘 0.9590
+    triggered: false
+  - layer: 价格层
+    text: 收盘跌破 ma60 且 20 日线下穿 60 日线
+    baseline: 0.9590 > ma20 0.9464 > ma60 0.8900（多头排列）
+    triggered: false
+  - layer: 资金层
+    text: 南向资金对港股医药生物板块连续 4 周净卖出
+    baseline: 年内净买入 792 亿港元，居全行业首位
+    triggered: false
+  - layer: 资金层
+    text: 同花顺「医疗服务」与「化学制药」5 日资金净额连续 3 周同时为负
+    baseline: +21.15 亿 / +18.48 亿
+    triggered: false
+  - layer: 资金层
+    text: 520510 量能比连续 2 周低于 0.7
+    baseline: 量能比 1.90
+    triggered: false
+  - layer: 产业层
+    text: 2026Q3 或年报显示 Biotech/Biopharma 板块净利率重新转负
+    baseline: 2026H1 +15.21%（2025H1 为 -7.86%）
+    note: 最致命——直接推翻「盈利拐点」这个地基
+    triggered: false
+  - layer: 产业层
+    text: 2026Q4 中国创新药 License-out 首付款总额低于 2026Q1 水平
+    baseline: 2026H1 首付款约 50 亿美元，同比 +71.65%
+    triggered: false
+  - layer: 产业层
+    text: 医保目录调整落地后出现超预期大幅降价
+    baseline: 9/4 医保局表态未来五年更多创新药纳入报销
+    triggered: false
+  - layer: 逻辑层
+    text: 剔除 CXO 的指数持续跑赢含 CXO 的指数（强弱关系反转）
+    baseline: 恒生创新药 +16.07% vs 港股通医疗 +29.59%
+    note: 若触发说明对「为兑现定价」的解读是错的，需重写而非微调
+    triggered: false
+---
+
 # 趋势卡片 · 中国创新药「从叙事到兑现」
 
 > 建卡日期：2026-09-21 ｜ 扫描批次：#001 ｜ 状态：可跟随（2×2 左上角）
