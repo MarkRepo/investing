@@ -87,6 +87,52 @@ def _quote(code: str, date: str) -> dict | None:
     return None
 
 
+def _latest_quotes() -> dict[str, dict]:
+    """`surf/latest_quotes.csv` → {代码: 行}。
+
+    由 `surf/scripts/refresh_quotes.py` 生成，与 scans/ 的扫描快照分开：
+    快照是向前验证的历史记录，不可改；但「距止损还有多远」必须用最新收盘价算
+    （扫描 #001 建卡时新浪当日数据未发布，快照停在建卡日前一天）。
+    仍只取收盘价，不取盘中（DESIGN §10.1）。
+    """
+    _, rows = _read_csv(SURF_DIR / "latest_quotes.csv")
+    return {r["代码"]: r for r in rows if r.get("代码")}
+
+
+def _cn_market(code: str) -> str:
+    """A 股代码 → 交易所代码，与 /prices、/financials 的 URL 前缀一致。"""
+    if code[:2] in ("60", "68") or code[:1] == "9":
+        return "SSE"
+    if code[:1] in ("0", "3"):
+        return "SZSE"
+    return "BSE"
+
+
+def _linkable() -> set[str]:
+    """能跳 /prices 与 /financials 的标的集合（形如 SSE_600276）。
+
+    这两个页面的可跳转集合完全由 prism 的 company 主题决定（`companies/` 目录
+    为空时全靠 topic 兜底），surf 的趋势股绝大多数不在其中，点进去是 404。
+    故只对已覆盖的给链接 —— 链接的有无本身就指示「这只有没有做过基本面功课」。
+
+    走 `app.io.company` 这层共用数据适配器，不 import prism（DESIGN 附录 B）。
+    """
+    try:
+        from app.io import company as company_io
+        return {c["key"] for c in company_io.list_companies()}
+    except Exception:
+        return set()
+
+
+def _stock_key(code: str, market: str) -> str:
+    """个股 → /prices/{key} 的 key。港股代码在 companies 里是 5 位带前导零。"""
+    if market == "US":
+        return f"US_{code}"
+    if market == "HK":
+        return f"HKEX_{code.zfill(5)}"
+    return f"{_cn_market(code)}_{code}"
+
+
 def _timeline(code: str) -> list[dict]:
     """该标的在历次扫描中的关键指标，按日期正序。
 
@@ -120,21 +166,46 @@ def _f(v) -> float | None:
         return None
 
 
-def _parse_card(path: Path, latest_date: str | None) -> dict:
+def _parse_card(path: Path, latest_date: str | None,
+                lq: dict[str, dict] | None = None,
+                linkable: set[str] | None = None) -> dict:
     """卡片文件 → 渲染所需的全部数据（frontmatter + 正文 + 实时对照）。"""
     fm, body = _split_frontmatter(path.read_text(encoding="utf-8"))
     slug = fm.get("slug") or path.parent.name
     trade = fm.get("trade") or {}
     code = (fm.get("ticker") or {}).get("code", "")
 
-    quote = _quote(code, latest_date) if latest_date else None
-    cur = _f(quote.get("收盘")) if quote else None
-    # 现价缺失时（该标的不在候选池 / 尚未扫描）回落到建卡参考价，
-    # 页面标注数据日期，不做实时拉取（周频系统，日内价格无决策意义）。
-    cur = cur if cur is not None else _f(trade.get("entry_ref"))
+    lq = lq if lq is not None else _latest_quotes()
+    linkable = linkable if linkable is not None else _linkable()
 
-    stop = _f(trade.get("stop_tech")) or _f(trade.get("stop_hard"))
+    quote = _quote(code, latest_date) if latest_date else None
+    snap = _f(quote.get("收盘")) if quote else None
+    snap_date = (quote or {}).get("日期") or latest_date
+
+    # 取价优先级：latest_quotes.csv（最新收盘）→ 扫描快照 → 建卡参考价。
+    # 不做实时拉取（周频系统，日内价格无决策意义，DESIGN §10.1）。
+    fresh = lq.get(code)
+    cur, cur_date, cur_src = None, None, ""
+    if fresh:
+        cur, cur_date, cur_src = _f(fresh.get("收盘")), fresh.get("日期"), "最新收盘"
+    if cur is None and snap is not None:
+        cur, cur_date, cur_src = snap, snap_date, "扫描快照"
+    if cur is None:
+        cur, cur_date, cur_src = _f(trade.get("entry_ref")), "", "建卡参考价"
+
+    entry = _f(trade.get("entry_ref"))
+    # 建卡参考价与最新收盘的偏移。扫描 #001 两张卡片都因新浪当日数据未发布
+    # 而冻结在建卡日前一天，追入会把单笔风险放大到设计区间之外，必须显式提示。
+    drift = (cur / entry - 1) * 100 if cur and entry else None
+
+    # 操作止损 = 两道里**先触发**的那道，即价位更高的那个。
+    # 两张卡片方向相反：医药 ma60(0.8900) 紧于硬止损(0.8823)，美股软件反过来
+    # ma60(98.60) 紧于硬止损(96.00)。只写「距止损」会被读成硬止损，故取 max
+    # 并标明是哪一道（首页与卡片页同一口径）。
+    tech = _f(trade.get("stop_tech"))
     hard = _f(trade.get("stop_hard"))
+    stop = max(x for x in (tech, hard) if x is not None) if (tech or hard) else None
+    stop_label = "ma60" if (tech is not None and stop == tech) else "硬止损"
     target = _f(trade.get("target"))
 
     gauge = None
@@ -147,6 +218,19 @@ def _parse_card(path: Path, latest_date: str | None) -> dict:
         }
 
     fals = fm.get("falsifiers") or []
+    stocks = []
+    for s in fm.get("stocks") or []:
+        s = dict(s)
+        key = _stock_key(str(s.get("code", "")), s.get("market", "CN"))
+        s["key"] = key
+        # prism 未覆盖的标的不给链接 —— /prices/{key} 会 404，见 _linkable()
+        s["linked"] = key in linkable
+        q = lq.get(str(s.get("code", "")))
+        s["last_close"] = _f(q.get("收盘")) if q else None
+        s["last_date"] = (q or {}).get("日期")
+        sp = _f(s.get("stop_price"))
+        s["to_stop"] = (s["last_close"] / sp - 1) * 100 if s["last_close"] and sp else None
+        stocks.append(s)
     log_path = path.parent / "log.md"
 
     return {
@@ -162,7 +246,20 @@ def _parse_card(path: Path, latest_date: str | None) -> dict:
         "falsifiers": fals,
         "n_triggered": sum(1 for f in fals if f.get("triggered")),
         "n_falsifiers": len(fals),
+        # 个股增强层（DESIGN §6.5）。verdict: follow 进交易清单，watch 观察池，
+        # reject 已否定。tradable=false 是港股，只展示卡位，不可交易。
+        "stocks": stocks,
+        "stocks_follow": [s for s in stocks if s.get("verdict") == "follow"],
+        "stocks_watch": [s for s in stocks if s.get("verdict") in ("watch", "reject")],
+        "prism_refs": fm.get("prism_refs") or [],
+        "stop_op": stop,
+        "stop_op_label": stop_label,
+        "risk_pct": (cur / stop - 1) * 100 if cur and stop else None,
         "current": cur,
+        "current_date": cur_date,
+        "current_src": cur_src,
+        "entry_ref": entry,
+        "drift": drift,
         "quote": quote,
         "gauge": gauge,
         "body_html": _render_md(body),
@@ -174,7 +271,9 @@ def _load_cards(latest_date: str | None) -> list[dict]:
     d = SURF_DIR / "cards"
     if not d.is_dir():
         return []
-    cards = [_parse_card(p / "card.md", latest_date)
+    # 两个共用查询各算一次，不在卡片循环里重复做
+    lq, linkable = _latest_quotes(), _linkable()
+    cards = [_parse_card(p / "card.md", latest_date, lq, linkable)
              for p in sorted(d.iterdir()) if (p / "card.md").is_file()]
     # 在跟的排前，其次按优先级，最后按建卡日期倒序
     order = {"following": 0, "watching": 1, "exited": 2}
@@ -220,7 +319,7 @@ def surf_card(slug: str, request: Request):
         raise HTTPException(status_code=404, detail=f"卡片不存在：{slug}")
     dates = _scan_dates()
     latest = dates[0] if dates else None
-    card = _parse_card(path, latest)
+    card = _parse_card(path, latest, _latest_quotes(), _linkable())
     return templates.TemplateResponse(request, "surf/card.html", {
         "card": card,
         "timeline": _timeline((card["ticker"] or {}).get("code", "")),

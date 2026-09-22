@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+{% macro stock_links(s) -%}
+  {%- if s.linked -%}
+    <a class="xlink" href="/prices/{{ s.key }}" title="跳行情页（prism 已覆盖该公司）">行情</a>
+    <a class="xlink" href="/financials/{{ s.key }}" title="跳财务页（prism 已覆盖该公司）">财务</a>
+  {%- else -%}
+    <span class="xlink off" title="prism 尚未研究该公司，/prices/{{ s.key }} 会 404。&#10;surf 不做基本面深研——要看财务需先在 prism 开主题（DESIGN 附录 B）">prism 未覆盖</span>
+  {%- endif -%}
+{%- endmacro %}
 {% block title %}{{ card.title }}{% endblock %}
 {% block content %}
 {% include "surf/_style.html" %}
@@ -19,7 +27,9 @@
 
   {# ---------------- 交易参数 ---------------- #}
   <div class="surf-sec">
-    <h2>交易参数 <span class="hint">价格为扫描快照（{{ latest or '—' }}），非实时</span></h2>
+    <h2>交易参数
+      <span class="hint">现价取{{ card.current_src }}
+        {%- if card.current_date %}（{{ card.current_date }}）{% endif %} · 收盘价，非盘中</span></h2>
     <div class="card-panel {{ card.priority or 'primary' }}">
       <div class="card-tick">{{ card.ticker.code }} {{ card.ticker.name }}</div>
       {% if card.gauge %}
@@ -46,6 +56,18 @@
         {% if card.trade.position %}<span>仓位 <b>{{ card.trade.position }}</b></span>{% endif %}
       </div>
     </div>
+    {% if card.drift is not none and card.drift|abs >= 1.0 and card.risk_pct %}
+      <div class="drift {{ 'ok' if card.risk_pct <= 10.5 else '' }}">
+        建卡参考价 <b>{{ card.trade.entry_ref }}</b> → 最新收盘
+        <b>{{ card.current }}</b>（{{ '%+.2f'|format(card.drift) }}%）。
+        按最新收盘算，距<b>{{ card.stop_op_label }}</b>（{{ card.stop_op }}，两道止损里先触发的那道）
+        <b>{{ '%.1f'|format(card.risk_pct) }}%</b>
+        {%- if card.risk_pct > 10.5 %}，<b>已超出 8-10% 的设计区间 —— 此时追入等于自行放大单笔风险</b>，
+          应等回踩或缩减首笔仓位。
+        {%- else %}，仍在设计区间内。{% endif %}
+        建卡参数不回改（那是向前验证的记录）。
+      </div>
+    {% endif %}
   </div>
 
   {# ---------------- 证伪条件（提到顶部，这是每周要核对的） ---------------- #}
@@ -72,6 +94,65 @@
       {% endfor %}
     </div>
   </div>
+
+  {# ---------------- 个股增强层（DESIGN §6.5） ---------------- #}
+  {% if card.stocks %}
+  <div class="surf-sec">
+    <h2>个股增强层
+      <span class="hint">{{ card.stocks_follow|length }} 只进交易清单 ·
+        ETF 触发证伪则个股无条件同步离场 ·
+        指标为扫描日快照，最新收盘悬停可见日期</span>
+    </h2>
+    <div class="tbl-box"><table class="grid stk">
+      <thead><tr>
+        <th>标的</th><th style="text-align:left">链上卡位</th><th>超额20</th><th>超额60</th>
+        <th>位置分位</th><th>量能比</th><th>最新收盘</th><th>止损价</th><th>距止损</th><th>仓位</th>
+      </tr></thead>
+      <tbody>
+      {% for s in card.stocks_follow %}
+        <tr class="follow">
+          <td class="code">{{ s.name }}<span class="c">{{ s.code }}</span>
+            {{ stock_links(s) }}</td>
+          <td style="text-align:left">{{ s.role }}</td>
+          <td class="{{ 'up' if s.excess20 and s.excess20 > 0 else 'down' }}">{{ s.excess20 }}</td>
+          <td class="{{ 'up' if s.excess60 and s.excess60 > 0 else 'down' }}">{{ s.excess60 }}</td>
+          <td>{{ s.pos }}</td>
+          <td class="{{ 'down' if s.vol_ratio and s.vol_ratio < 1 else '' }}">{{ s.vol_ratio }}</td>
+          <td title="{{ s.last_date or '' }} 收盘">{{ s.last_close or '—' }}</td>
+          <td><b>{{ s.stop_price }}</b></td>
+          <td class="{{ 'up' if s.to_stop and s.to_stop > 0 else 'down' }}">
+            {%- if s.to_stop %}{{ '%+.1f'|format(s.to_stop) }}%{% else %}—{% endif %}</td>
+          <td>{{ (s.position * 100)|round(1) }}%</td>
+        </tr>
+      {% endfor %}
+      {% for s in card.stocks_watch %}
+        <tr class="watch {{ 'untradable' if s.tradable is defined and not s.tradable }}">
+          <td class="code">{{ s.name }}<span class="c">{{ s.code }}</span>
+            {{ stock_links(s) }}
+            {% if s.tradable is defined and not s.tradable %}
+              <span class="tag" title="用户不可交易港股；列出仅为展示这条链上的真实卡位（DESIGN §6.5）">不可交易</span>
+            {% elif s.verdict == 'reject' %}<span class="tag rj">已否定</span>
+            {% else %}<span class="tag wt">观察池</span>{% endif %}
+          </td>
+          <td style="text-align:left">{{ s.role }}{% if s.note %}<div class="note">{{ s.note }}</div>{% endif %}</td>
+          <td class="{{ 'up' if s.excess20 and s.excess20 > 0 else 'down' }}">{{ s.excess20 }}</td>
+          <td class="{{ 'up' if s.excess60 and s.excess60 > 0 else 'down' }}">{{ s.excess60 }}</td>
+          <td>{{ s.pos }}</td>
+          <td class="{{ 'down' if s.vol_ratio and s.vol_ratio < 1 else '' }}">{{ s.vol_ratio }}</td>
+          <td title="{{ s.last_date or '' }} 收盘">{{ s.last_close or '—' }}</td>
+          <td colspan="3" class="na">—</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table></div>
+    {% if card.prism_refs %}
+      <div class="prism-ref">需要基本面深研（surf 不做）：
+        {% for r in card.prism_refs %}<code>{{ r }}</code>{% endfor %}
+        —— 建议单独开 prism 主题
+      </div>
+    {% endif %}
+  </div>
+  {% endif %}
 
   {# ---------------- 指标时间序列 ---------------- #}
   <div class="surf-sec">

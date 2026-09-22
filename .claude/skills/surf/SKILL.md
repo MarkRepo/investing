@@ -16,6 +16,7 @@ description: 趋势跟随系统（主升浪/二波）。触发词：surf / surf 
 | 「surf 卡片 {slug}」 | 读 `surf/cards/{slug}/card.md` 与 `log.md` |
 | 「打开 surf」/「看看趋势页」 | 页面在 <http://127.0.0.1:8000/surf>（服务由 launchd 托管） |
 | 「加扫 {方向}」（重大事件） | 跑 Step 1 → 4，跳过 Step 0 |
+| 「补个股」/「这张卡片买什么股」 | 只跑 Step 5（需卡片已在左上角） |
 
 ## 铁律（违反即系统失效）
 
@@ -24,14 +25,28 @@ description: 趋势跟随系统（主升浪/二波）。触发词：surf / surf 
 3. **没有可观测证伪条件的卡片不得发出。**
 4. 脚本一律用 `.venv/bin/python`，系统 python3 静默失败。
 5. 查 A 股一致预期/盈利预测**不要用 WebSearch**（返回幻觉散文），用 tavily / exa / serper。
+   同理，**跨源比价格前先比 `date` 列** —— 差异的第一嫌疑是日期不同，不是数据错误（DESIGN §6.4 ⑤ 踩过）。
+6. **个股候选名单落盘之前，禁止查看任何个股行情**（Step 5）。同 2 的道理，但个股涨幅更大、讲故事的诱惑更强，更容易破戒。
+7. **用户不能交易港股。** 港股标的照列并标 `tradable: false`，但凡该环节只有港股标的，**必须补 A 股替代并写明替代代价**（DESIGN §6.5）。
 
 ---
 
 ## Step 0 · 复查已有卡片
 
 ```bash
+.venv/bin/python surf/scripts/refresh_quotes.py   # 先刷最新收盘价，价格层证伪条件要用
 ls surf/cards/*/card.md
 ```
+
+个股走 `/prices` 刷新按钮背后的同一条 quotes 管线（只调 daily 不调 snapshot，周频系统只认收盘价），
+ETF 走 surf 自己的抓取器（ETF 不是公司，不注册进 `companies/`）。
+
+`refresh_quotes.py` 写 `surf/latest_quotes.csv`（ETF + 全部个股，含不可交易的港股），
+**不回写 `scans/`** —— 扫描快照是向前验证的历史记录，改它等于改历史。
+
+⚠️ **顺带核对建卡参考价有没有过期。** 扫描 #001 两张卡片都因新浪当日数据未发布而冻结在建卡日前一天，
+520510 实际已涨 +3.96%、距 ma60 达 12.0%，**超出 8-10% 设计区间**。
+建卡参数不回改，但要在对话里提示用户按最新收盘重算入场距离。
 
 对每张卡片，逐条核对⑦证伪条件。分三类处置：
 
@@ -133,6 +148,59 @@ ls surf/cards/*/card.md
 
 ---
 
+## Step 5 · 个股增强层
+
+**只对 2×2 左上角（可跟随）的卡片做。** 方法论见 DESIGN §6.5，止损与仓位见 §8.1。
+
+### 5a · 先落盘候选（禁止看个股行情）
+
+> ⚠️ 顺序颠倒 = 「涨得好的就是龙头」。这比 ETF 层更危险。
+
+从**趋势背景**推导「这条趋势的钱必须经过谁」，逐只写明链上卡位，写入 `surf/scans/{date}/stock_candidates.md`，同步登记到 `surf/stock_universe.yaml`。
+
+- 龙头 = **卡位 × 纯度 × 市场认可**，不是市值第一（恒瑞是反例）
+- 存在互斥的子假设时（例：错杀修复 vs AI 受益方），**两组都预先登记**，让技术层判别钱在买哪个——事后再分就说不清了
+- 港股标的照列，标 `tradable: false`，并补 A 股替代 + 替代代价
+- 可以放**对照组**（预期会被否定的标的），它是检验判据有效性的手段
+
+### 5b · 技术验证
+
+```bash
+.venv/bin/python surf/scripts/scan_stock.py [slug]   # 默认写入最近一次扫描目录
+```
+
+| 列 | 判据 |
+|---|---|
+| `超额20` / `超额60` | 相对基准 ETF。**20 日超额 ≤ 0 = 市场不认它是这轮的兑现方**，不进交易清单 |
+| `趋势结构` | **空头排列一票否决** |
+| `位置分位` / `距250日高` | 防追高；极低说明资金没进来 |
+| `量能比` | < 1 记减分，需说明为何仍选它 |
+| `日均成交额_万` | 硬门槛，流动性不足直接剔除 |
+| `硬止损_%` / `建议仓位_%` | 脚本已按 §8.1 算好，直接抄进卡片 |
+
+**不算 RS 百分位**——候选只有 5-8 只，池内排名无统计意义。
+
+### 5c · 注册 companies，打通跳转
+
+```bash
+.venv/bin/python surf/scripts/register_companies.py --dry-run   # 先看要注册哪些
+.venv/bin/python surf/scripts/register_companies.py
+```
+
+只写 `companies/{MARKET}_{TICKER}/meta.md` 一个文件，**不要用 `company_io.create_company()`**
+（会铺 v0/valuation/narratives 全套价值研究脚手架，对趋势股是多余的）。
+prism 已有同名 topic 的自动跳过，**不覆写**。
+
+### 5d · 写回卡片
+
+- ⑤ 补个股：选谁、为什么、**不选谁及理由**、港股不可交易的说明与 A 股替代
+- ⑥ 补双层止损与仓位，并写明**联动离场**：基准 ETF 触发证伪 → 个股无条件同步离场
+- frontmatter 补 `stocks:` 块（格式见 DESIGN §7.1），逻辑成立但技术不认的记 `verdict: watch`
+- 判断卡在「这家公司能不能兑现」→ 写入 `prism_refs`，并在对话里提醒用户**转 prism 深研**
+- 最多 3 只，**允许 0 只**
+
+---
+
 ## 数据源备忘
 
 | 用途 | 接口 | 注意 |
@@ -143,6 +211,11 @@ ls surf/cards/*/card.md
 | 行业广度 | `stock_board_industry_summary_ths()` | 当日快照，含涨跌家数 |
 | 概念资金流 | `stock_fund_flow_concept("5日排行")` | 387 概念，无历史指数 |
 | 美股 | yfinance | **需要代理**，与 akshare 相反 |
+| 港股个股 | `stock_hk_daily(adjust="qfq")` | 新浪；东财 `stock_hk_hist` 在本机持续 RemoteDisconnected |
+| ETF 持仓查漏 | `fund_portfolio_hold_em` | **只在候选写定之后用**，是校对工具不是候选来源 |
+| A 股个股（主源） | `stock_zh_a_daily(symbol="sh603259")` | 新浪，与 ETF 层同源、收盘日对齐；**东财 `stock_zh_a_hist` 收盘价实测有误且会限流，只作备源**（DESIGN §6.4 ⑤） |
+| 行情/财务页跳转 | `companies/{MARKET}_{TICKER}/meta.md` | 一个文件即可注册（Step 5c）。ETF 不注册 |
+| 个股最新价 | `scripts.fetch_quotes_eod.run_for_ticker` | `/prices` 刷新按钮的同一条管线；**只调 daily 不调 snapshot**。存的是不复权价，**指标层不能用** |
 
 东财 push2 端口（`fund_etf_spot_em` 等）在本机持续不可用，A 股板块数据一律走同花顺。
 同花顺**板块指数历史有前视偏差，绝不可用于任何历史验证**（DESIGN 附录 A）。

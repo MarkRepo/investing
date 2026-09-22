@@ -1,0 +1,43 @@
+# surf · 个股增强层候选池（DESIGN §6.5）
+#
+# 候选由「这条趋势的钱必须经过谁」推导，不从 ETF 持仓机械取前十大。
+# 入选理由见 scans/{date}/stock_candidates.md —— 那份文件必须先于个股行情落笔。
+#
+# tradable: false = 港股，用户不可交易。仍然列出，因为省略会看不出真正的卡位在哪；
+#           凡该环节只有港股标的，必须在 stocks 里额外给 A 股替代（substitute_for）。
+# market:   CN = A股(akshare qfq) | HK = 港股(akshare qfq) | US = yfinance
+#           CN_ETF = 基准走新浪 ETF 接口，与 scan_cn.py 同源
+
+cn-hk-pharma-delivery:
+  benchmark: {code: sh520510, name: 港股通医疗ETF华夏, market: CN_ETF}
+  # 同市场参照：候选多为 A 股，与港股基准直接比会混进市场 beta 差异
+  benchmark_local: {code: sz159859, name: 生物医药ETF天弘, market: CN_ETF}
+  stocks:
+    # ── 环节一：CRDMO / CXO —— 卖铲子，本条趋势里唯一「收入已在确认」的环节
+    - {code: "603259", name: 药明康德,   market: CN, role: 一体化CRDMO·全球订单卡位}
+    - {code: "02269",  name: 药明生物,   market: HK, tradable: false, role: 生物药CDMO·国产BD分子主要承接方}
+    - {code: "02268",  name: 药明合联,   market: HK, tradable: false, role: ADC CDMO·当下最热模态的瓶颈}
+    - {code: "002821", name: 凯莱英,     market: CN, role: 小分子CDMO, substitute_for: "02269"}
+    - {code: "300759", name: 康龙化成,   market: CN, role: 全流程CRO+CDMO·早期业务是订单先行指标}
+    - {code: "300363", name: 博腾股份,   market: CN, role: 小分子CDMO·弹性档, substitute_for: "02268"}
+    - {code: "603456", name: 九洲药业,   market: CN, role: 小分子CDMO}
+    - {code: "300347", name: 泰格医药,   market: CN, role: 临床CRO·兑现慢于生产端}
+    # ── 环节二：已经兑现的 biotech
+    - {code: "688235", name: 百济神州,   market: CN, role: 全球商业化已兑现的唯一样本}
+    # ── 对照组：市值龙头但本轮被市场否定，用于校准「龙头 ≠ 市值第一」
+    - {code: "600276", name: 恒瑞医药,   market: CN, role: 对照组·市值龙头}
+
+us-software-rerating:
+  benchmark: {code: IGV, name: iShares Expanded Tech-Software, market: US}
+  stocks:
+    # ── 子假设 A：席位制 SaaS 错杀修复（本卡片的主逻辑）
+    - {code: CRM,  name: Salesforce, market: US, role: 席位制叙事头号受害者}
+    - {code: ADBE, name: Adobe,      market: US, role: 生成式AI叙事下杀得最狠}
+    - {code: WDAY, name: Workday,    market: US, role: HR席位制}
+    - {code: HUBS, name: HubSpot,    market: US, role: 中小企业CRM·席位制·跌幅大}
+    - {code: TEAM, name: Atlassian,  market: US, role: 开发者席位制}
+    - {code: NOW,  name: ServiceNow, market: US, role: AI变现最被认可·可能已不算错杀}
+    # ── 子假设 B（对照）：AI 受益方而非受害方，逻辑不同，用来判别钱到底在买哪一个
+    - {code: MDB,  name: MongoDB,    market: US, role: 对照组·AI应用数据层}
+    - {code: DDOG, name: Datadog,    market: US, role: 对照组·AI负载可观测性}
+    - {code: PANW, name: PaloAlto,   market: US, role: 对照组·安全·AI带来增量而非替代}

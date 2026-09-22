@@ -113,4 +113,35 @@
   .markdown-body blockquote { border-left: 3px solid #dfe3e8; margin: 12px 0;
                               padding: 2px 14px; color: #666; }
   .empty { color: #999; font-size: .88rem; padding: 10px 0; }
+
+  /* 个股增强层 */
+  table.stk tr.follow { background: #fbfffb; }
+  table.stk tr.watch  { color: #777; background: #fcfcfc; }
+  table.stk tr.untradable td.code { text-decoration: line-through dotted #bbb; }
+  table.stk td.code { text-align: left; font-weight: 600; white-space: nowrap; }
+  table.stk td.code .c { font-family: monospace; font-size: .82em; color: #999; margin-left: .4em; font-weight: 400; }
+  table.stk .tag { font-size: .72em; padding: .05em .35em; border-radius: 3px;
+                   background: #eee; color: #777; margin-left: .4em; font-weight: 400; cursor: help; }
+  table.stk .tag.wt { background: #fff4e0; color: #a76b00; }
+  table.stk .tag.rj { background: #f3f3f3; color: #999; }
+  table.stk .note { font-size: .82em; color: #999; margin-top: .15em; font-weight: 400; }
+  table.stk td.na { color: #ccc; }
+  table.stk .up   { color: #c0392b; }
+  table.stk .down { color: #2a7a4b; }
+  .prism-ref { margin-top: .6em; font-size: .88em; color: #666;
+               background: #f5f7ff; border-left: 3px solid #8fa8e0; padding: .5em .8em; }
+  .prism-ref code { font-family: monospace; background: #fff; padding: .05em .35em;
+                    border-radius: 3px; margin: 0 .2em; }
+
+  /* 个股 → 行情/财务 跳转 */
+  .xlink { font-size: .74em; font-weight: 400; margin-left: .35em; padding: .05em .34em;
+           border-radius: 3px; background: #eef3ff; color: #2a5db0; text-decoration: none; }
+  .xlink:hover { background: #dde7ff; text-decoration: underline; }
+  .xlink.off { background: #f4f4f4; color: #aaa; cursor: help; }
+  /* 建卡参考价与最新收盘的偏移提示 */
+  .drift { margin: -4px 0 14px; font-size: .87rem; padding: .55em .8em;
+           border-left: 3px solid #e0a020; background: #fffaf0; color: #7a5a10; }
+  .drift b { color: #b35c00; }
+  .drift.ok { border-left-color: #6aab7f; background: #f4fbf6; color: #2f6b45; }
+  .drift.ok b { color: #1f7a45; }
 </style>

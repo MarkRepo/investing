@@ -48,13 +48,12 @@
             </div>
           </div>
           <div class="kv">
-            {# 止损有两道时分别显示：哪一道更紧取决于 ma60 与 -8% 的相对位置，
-               医药卡片 ma60 更紧、软件卡片硬止损更松，不标注会被误读 #}
-            {% if c.trade.stop_tech %}
-              <span>距 ma60 <b class="up">+{{ '%.1f'|format(c.gauge.to_stop) }}%</b></span>
+            {# 止损有两道时分别显示，并标明哪一道先触发（stop_op_label 由路由按
+               价位高低判定）。医药卡片 ma60 更紧、软件卡片硬止损更松，不标注会被误读 #}
+            <span title="两道止损里先触发的那道">距 {{ c.stop_op_label }}
+              <b class="{{ 'down' if c.gauge.to_stop > 10.5 else 'up' }}">+{{ '%.1f'|format(c.gauge.to_stop) }}%</b></span>
+            {% if c.trade.stop_tech and c.gauge.to_hard %}
               <span>距硬止损 <b class="up">+{{ '%.1f'|format(c.gauge.to_hard) }}%</b></span>
-            {% else %}
-              <span>距硬止损 <b class="up">+{{ '%.1f'|format(c.gauge.to_stop) }}%</b></span>
             {% endif %}
             <span>距目标 <b>+{{ '%.1f'|format(c.gauge.to_target) }}%</b></span>
             {% if c.trade.rr %}<span>盈亏比 <b>{{ c.trade.rr }}</b></span>{% endif %}
@@ -64,6 +63,11 @@
         <div class="kv">
           <span>证伪条件
             <b class="{{ 'down' if c.n_triggered else '' }}">{{ c.n_triggered }}/{{ c.n_falsifiers }}</b> 触发</span>
+          {% if c.stocks %}
+            <span title="个股增强层：ETF 触发证伪则个股无条件同步离场（DESIGN §6.5/§8.1）">个股
+              <b>{{ c.stocks_follow|length }}</b> 只{% if c.stocks_watch %} ·
+              观察 {{ c.stocks_watch|length }}{% endif %}</span>
+          {% endif %}
           {% if c.quote %}
             {% set v = c.quote['量能比']|float(0) %}
             <span>量能比 <b class="{{ 'up' if v >= 1 else 'warn' }}">{{ c.quote['量能比'] }}</b>
