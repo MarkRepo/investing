@@ -1,0 +1,51 @@
+{#
+  长文档的目录导航。扫描 summary 五百多行、卡片 log 同量级，
+  整篇平铺只能靠滚轮找章节。
+
+  两个宏：`doc_toc(toc)` 渲染侧栏，`toc_script()` 整页只出一次，
+  负责滚动高亮。锚点 id 由 `_render_doc` 带前缀生成（同页多篇会撞 id）。
+#}
+{% macro doc_toc(toc) -%}
+<nav class="doc-toc" aria-label="目录">
+  <div class="doc-toc-h">目录</div>
+  <ul>
+    {% for h in toc %}
+      <li class="lv{{ h.level }}"><a href="#{{ h.id }}">{{ h.name }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
+{%- endmacro %}
+
+{% macro toc_script() -%}
+<script>
+/* 目录滚动高亮。rootMargin 把观察窗压成顶部一条窄带：
+   标题滚进这条带才算「当前章节」，否则整屏可见的标题会同时点亮。
+   顶部留 60px 是给 base.html 那条 sticky nav 让位。 */
+(function () {
+  var links = {};
+  document.querySelectorAll('.doc-toc a').forEach(function (a) {
+    links[decodeURIComponent(a.getAttribute('href').slice(1))] = a;
+  });
+  var heads = Array.prototype.slice.call(
+    document.querySelectorAll('.markdown-body h2[id], .markdown-body h3[id]'));
+  if (!heads.length || !window.IntersectionObserver) return;
+
+  var live = {};
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { live[e.target.id] = e.isIntersecting; });
+    var cur = null;
+    for (var i = 0; i < heads.length; i++) {
+      if (live[heads[i].id]) { cur = heads[i].id; break; }
+    }
+    if (!cur) return;
+    Object.keys(links).forEach(function (k) { links[k].classList.toggle('on', k === cur); });
+    var a = links[cur];
+    /* 目录自身可能已滚出侧栏可视区，把高亮项带回来。用 nearest 不用 center，
+       避免每次滚动都把侧栏甩动一下。 */
+    if (a && a.scrollIntoView) a.scrollIntoView({ block: 'nearest' });
+  }, { rootMargin: '-60px 0px -72% 0px', threshold: 0 });
+
+  heads.forEach(function (h) { io.observe(h); });
+})();
+</script>
+{%- endmacro %}

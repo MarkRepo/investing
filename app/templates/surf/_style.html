@@ -102,6 +102,33 @@
   .scan-row a { color: #2a5db0; text-decoration: none; font-family: monospace; }
   .scan-row .h { color: #666; }
 
+  /* ---- 长文档目录导航 ---------------------------------------------------
+     正文 + 右侧 sticky 目录。base.html 的 nav 是 sticky top:0（约 40px 高），
+     所以目录和锚点都要让开它，否则点目录跳过去标题被 nav 盖住。 */
+  .doc-2col { display: grid; grid-template-columns: minmax(0, 1fr) 216px; gap: 26px;
+              align-items: start; }
+  .doc-toc { position: sticky; top: 56px; max-height: calc(100vh - 76px);
+             overflow-y: auto; font-size: .82rem; line-height: 1.5;
+             border-left: 1px solid #ececec; padding-left: 12px; }
+  .doc-toc-h { font-size: .74rem; color: #999; letter-spacing: .08em;
+               margin-bottom: 8px; text-transform: uppercase; }
+  .doc-toc ul { list-style: none; margin: 0; padding: 0; }
+  .doc-toc li { margin: 1px 0; }
+  .doc-toc li.lv3 { padding-left: 11px; font-size: .78rem; }
+  .doc-toc a { display: block; color: #666; text-decoration: none;
+               padding: 2px 6px; border-radius: 4px;
+               border-left: 2px solid transparent; margin-left: -8px; }
+  .doc-toc a:hover { color: #2a5db0; background: #f5f8ff; }
+  .doc-toc a.on { color: #2a5db0; font-weight: 600; background: #f0f5ff;
+                  border-left-color: #2a5db0; }
+  .markdown-body h2[id], .markdown-body h3[id] { scroll-margin-top: 56px; }
+  /* 窄屏没有放侧栏的余地，收成正文上方的一个可折叠块 */
+  @media (max-width: 900px) {
+    .doc-2col { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .doc-toc { position: static; max-height: 200px; order: -1; margin-bottom: 14px;
+               border-left: none; border-bottom: 1px solid #ececec; padding: 0 0 10px; }
+  }
+
   .markdown-body { font-size: .92rem; line-height: 1.72; }
   .markdown-body table { border-collapse: collapse; margin: 12px 0; font-size: .86rem; }
   .markdown-body th, .markdown-body td { border: 1px solid #e0e0e0; padding: 5px 9px; }
@@ -124,6 +151,9 @@
                    background: #eee; color: #777; margin-left: .4em; font-weight: 400; cursor: help; }
   table.stk .tag.wt { background: #fff4e0; color: #a76b00; }
   table.stk .tag.rj { background: #f3f3f3; color: #999; }
+  /* 「真·未讨论」里命中的技术信号 */
+  table.stk .tag.sig { background: #fff4e0; color: #9a5b00;
+                       border: 1px solid #f0dcb8; margin-right: 4px; }
   table.stk .note { font-size: .82em; color: #999; margin-top: .15em; font-weight: 400; }
   table.stk td.na { color: #ccc; }
   table.stk .up   { color: #c0392b; }
@@ -144,4 +174,20 @@
   .drift b { color: #b35c00; }
   .drift.ok { border-left-color: #6aab7f; background: #f4fbf6; color: #2f6b45; }
   .drift.ok b { color: #1f7a45; }
+</style>
+<style>
+/* /surf/universe 漏斗页 */
+.usum{cursor:pointer;font-weight:600;font-size:14px;padding:7px 10px;margin:10px 0 4px;
+      border-radius:5px;background:#f4f6f8;border-left:3px solid #c3ccd6;list-style:none}
+.usum::-webkit-details-marker{display:none}
+.usum::before{content:'▸ ';color:#8a95a1}
+details[open]>.usum::before{content:'▾ '}
+.usum b{color:#1a1a1a}
+.usum.ok{background:#eef7ee;border-left-color:#4a8f4a}
+.usum.warn{background:#fdf4e7;border-left-color:#d08a2c}
+.usum.dim{background:#f7f7f7;border-left-color:#d5d5d5;color:#777}
+.usum .hint{font-weight:400;color:#8a95a1;margin-left:8px;font-size:12px}
+.fgroup{margin:10px 0 14px}
+.flab{font-size:13px;font-weight:600;color:#444;margin:0 0 4px 2px}
+table.stk .note.nx{color:#7a6020}
 </style>

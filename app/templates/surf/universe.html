@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block title %}surf 候选池{% endblock %}
+{% block content %}
+{% include "surf/_style.html" %}
+<div class="surf-wrap">
+
+  <div class="surf-head">
+    <h1>surf · 候选池漏斗</h1>
+    <span class="surf-meta">{{ date }}
+      · <a href="/surf" style="color:#2a5db0;text-decoration:none">← 返回趋势页</a></span>
+  </div>
+
+  {% if matrix_stale %}
+    <div class="drift">本期（{{ date }}）通道 A 尚未跑，判定层沿用
+      <b>{{ matrix_date }}</b> 的 2×2 结果。
+      主题划分已按新口径重建，所以上期没讨论过的主题会全部落在「真·未讨论」或
+      「技术层零支持」——这不是数据缺失，是<b>上期确实没看过它们</b>。</div>
+  {% endif %}
+
+  {% macro metrics(t) -%}
+    <td class="{{ 'up' if t.ret5 and t.ret5|float > 0 else 'down' }}">{{ t.ret5 }}</td>
+    <td class="{{ 'up' if t.ret60 and t.ret60|float > 0 else 'down' }}">{{ t.ret60 }}</td>
+    <td>{{ t.rs5 }}</td><td>{{ t.pos }}</td>
+    <td style="text-align:left">{{ t.structure }}</td>
+    <td class="{{ 'down' if t.vol and t.vol|float < 1 else '' }}">{{ t.vol }}</td>
+  {%- endmacro %}
+
+  {% macro thead(last) -%}
+    <thead><tr><th style="text-align:left">主题</th><th style="text-align:left">代表标的</th>
+      <th>ret5</th><th>ret60</th><th>RS5</th><th>位置</th>
+      <th style="text-align:left">结构</th><th>量能比</th>
+      <th style="text-align:left">{{ last }}</th></tr></thead>
+  {%- endmacro %}
+
+  {% for b in blocks %}
+  <div class="surf-sec">
+    <h2>{{ labels[b.market] }}
+      <span class="hint">抓取 {{ b.n_raw }} → 入池 {{ b.n_pool }} 只 /
+        {{ b.n_theme }} 个主题 → 框架内 {{ b.n_scoped }} → 已判定 {{ b.n_done }}
+        （<b>{{ (b.n_done / b.n_scoped * 100)|round|int }}%</b>） → 建卡 {{ b.carded|length }}
+        <br>覆盖率分母已剔掉「结构性不覆盖」的 {{ b.out_scope|length }} 个——那不是漏，是框架不适用</span>
+    </h2>
+
+    {% if b.carded %}
+      <details open><summary class="usum ok">建卡 <b>{{ b.carded|length }}</b></summary>
+        <div class="tbl-box"><table class="grid stk">
+          {{ thead("卡片") }}
+          <tbody>{% for t in b.carded %}
+            <tr class="follow"><td style="text-align:left"><b>{{ t.theme }}</b></td>
+              <td style="text-align:left" class="code">{{ t.name }}<span class="c">{{ t.code }}</span></td>
+              {{ metrics(t) }}
+              <td style="text-align:left"><a class="xlink" href="/surf/card/{{ t.verdict.card }}">{{ t.verdict.name }}</a></td>
+            </tr>{% endfor %}</tbody>
+        </table></div>
+      </details>
+    {% endif %}
+
+    {% if b.judged %}
+      <details open><summary class="usum">判定淘汰 <b>{{ b.judged|length }}</b>
+        <span class="hint">看过并否了——按原因分级，下期按「下期动作」复看</span></summary>
+        <div class="tbl-box"><table class="grid stk">
+          {{ thead("判定 / 理由 / 下期动作") }}
+          <tbody>{% for t in b.judged %}
+            <tr><td style="text-align:left"><b>{{ t.theme }}</b></td>
+              <td style="text-align:left" class="code">{{ t.name }}<span class="c">{{ t.code }}</span></td>
+              {{ metrics(t) }}
+              <td style="text-align:left">
+                <span class="tag rj">{{ t.verdict.label }}</span> {{ t.verdict.name }}
+                <div class="note">{{ t.verdict.note }}</div>
+                <div class="note nx">下期：{{ t.verdict.next }}</div>
+              </td></tr>{% endfor %}</tbody>
+        </table></div>
+      </details>
+    {% endif %}
+
+    <details open><summary class="usum warn">真 · 未讨论 <b>{{ b.unjudged|length }}</b>
+      <span class="hint">扫了、算了指标，至少有一条技术判据在喊，但 2×2 里根本没讨论过。
+        这不是「判定为不跟」，是没进入判断——<b>真盲区只有这一段</b>，下期要逐个交代。</span></summary>
+      <div class="tbl-box"><table class="grid stk">
+        {{ thead("命中的技术信号") }}
+        <tbody>{% for t in b.unjudged %}
+          <tr class="watch"><td style="text-align:left"><b>{{ t.theme }}</b></td>
+            <td style="text-align:left" class="code">{{ t.name }}<span class="c">{{ t.code }}</span></td>
+            {{ metrics(t) }}
+            <td style="text-align:left">
+              {% for sg in t.signals %}<span class="tag sig">{{ sg }}</span>{% endfor %}
+            </td></tr>{% endfor %}</tbody>
+      </table></div>
+    </details>
+
+    <details><summary class="usum dim">技术层零支持 <b>{{ b.silent|length }}</b>
+      <span class="hint">四条判据（{{ signal_names|join(' / ') }}）一条都不中，
+        没有任何东西在喊我看它们。<b>分诊不是判定</b>——它们仍未被判断过，
+        只是无声跳过是合理的。本池「放量」门槛 = 池内 75 分位
+        <b>{{ b.vol_gate }}</b>（固定 1.0 对两个市场是两把尺子）</span></summary>
+      <div class="tbl-box"><table class="grid stk">
+        {{ thead("—") }}
+        <tbody>{% for t in b.silent %}
+          <tr><td style="text-align:left">{{ t.theme }}</td>
+            <td style="text-align:left" class="code">{{ t.name }}<span class="c">{{ t.code }}</span></td>
+            {{ metrics(t) }}<td class="na">—</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </details>
+
+    {% if b.out_scope %}
+    <details><summary class="usum dim">结构性不覆盖 <b>{{ b.out_scope|length }}</b>
+      <span class="hint">本系统的框架对它们不适用，<b>不计入覆盖率分母</b>。
+        登记在 <code>surf/theme_scope.yaml</code>，加一条进来的门槛很高：
+        理由必须是框架性的，不能是「这期技术不好」——那是判定</span></summary>
+      {% set ns = namespace(gid='') %}
+      {% for t in b.out_scope %}
+        {% if t.scope.id != ns.gid %}
+          {% set ns.gid = t.scope.id %}
+          {% if not loop.first %}</tbody></table></div></div>{% endif %}
+          <div class="fgroup"><div class="flab">{{ t.scope.label }}
+            <span class="hint">{{ t.scope.why }}</span></div>
+          <div class="tbl-box"><table class="grid stk"><tbody>
+        {% endif %}
+        <tr><td style="text-align:left;width:18%">{{ t.theme }}</td>
+          <td style="text-align:left" class="code">{{ t.name }}<span class="c">{{ t.code }}</span></td>
+          {{ metrics(t) }}</tr>
+        {% if loop.last %}</tbody></table></div></div>{% endif %}
+      {% endfor %}
+    </details>
+    {% endif %}
+
+    <details><summary class="usum dim">入池前剔除 <b>{{ b.n_filtered }}</b>
+      <span class="hint">机械剔除，平时不用看，但需要随时可查——只有能看见砍了什么，
+        才可能发现砍错了</span></summary>
+      {% for g in b.filtered %}
+        <div class="fgroup">
+          <div class="flab">{{ g.label }} <b>{{ g.rows|length }}</b>
+            <span class="hint">{{ g.desc }}</span></div>
+          <div class="tbl-box"><table class="grid stk">
+            <tbody>{% for it in g.rows %}
+              <tr><td class="code" style="width:22%">{{ it.name }}<span class="c">{{ it.code }}</span></td>
+                <td style="text-align:left" class="note">{{ it.note }}</td></tr>
+            {% endfor %}</tbody>
+          </table></div>
+        </div>
+      {% endfor %}
+    </details>
+  </div>
+  {% endfor %}
+
+  <div class="surf-sec">
+    <h2>其他扫描期</h2>
+    {% for d in dates %}
+      <div class="scan-row"><a href="/surf/universe/{{ d }}">{{ d }}</a>
+        {% if d == date %}<span class="h">当前</span>{% endif %}</div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

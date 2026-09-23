@@ -2,6 +2,7 @@
 {% block title %}扫描 {{ date }}{% endblock %}
 {% block content %}
 {% include "surf/_style.html" %}
+{% from "surf/_toc.html" import doc_toc, toc_script %}
 <div class="surf-wrap">
 
   <div class="surf-head">
@@ -24,7 +25,10 @@
 
   {% for d in docs %}
     <div class="tab-body {{ 'on' if loop.first }}" id="d-{{ loop.index }}">
-      <div class="markdown-body">{{ d.html|safe }}</div>
+      <div class="doc-2col">
+        <div class="markdown-body">{{ d.html|safe }}</div>
+        {% if d.toc %}{{ doc_toc(d.toc) }}{% endif %}
+      </div>
     </div>
   {% endfor %}
 
@@ -46,6 +50,7 @@
 
 </div>
 
+{{ toc_script() }}
 <script>
 /* tab 切换 */
 document.getElementById('tabs').addEventListener('click', function (e) {

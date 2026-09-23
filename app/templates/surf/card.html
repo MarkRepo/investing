@@ -10,6 +10,7 @@
 {% block title %}{{ card.title }}{% endblock %}
 {% block content %}
 {% include "surf/_style.html" %}
+{% from "surf/_toc.html" import doc_toc, toc_script %}
 <div class="surf-wrap">
 
   <div class="surf-head">
@@ -184,16 +185,23 @@
   {# ---------------- 正文 ---------------- #}
   <div class="surf-sec">
     <h2>卡片正文</h2>
-    <div class="markdown-body">{{ card.body_html|safe }}</div>
+    <div class="doc-2col">
+      <div class="markdown-body">{{ card.body_html|safe }}</div>
+      {% if card.body_toc %}{{ doc_toc(card.body_toc) }}{% endif %}
+    </div>
   </div>
 
   {# ---------------- 决策日志 ---------------- #}
   {% if card.log_html %}
   <div class="surf-sec">
     <h2>决策日志 <span class="hint">只追加，不修改历史</span></h2>
-    <div class="markdown-body">{{ card.log_html|safe }}</div>
+    <div class="doc-2col">
+      <div class="markdown-body">{{ card.log_html|safe }}</div>
+      {% if card.log_toc %}{{ doc_toc(card.log_toc) }}{% endif %}
+    </div>
   </div>
   {% endif %}
 
 </div>
+{{ toc_script() }}
 {% endblock %}

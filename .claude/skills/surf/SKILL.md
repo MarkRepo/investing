@@ -15,6 +15,7 @@ description: 趋势跟随系统（主升浪/二波）。触发词：surf / surf 
 | 「复查卡片」/「卡片还成立吗」 | 只跑 Step 0 |
 | 「surf 卡片 {slug}」 | 读 `surf/cards/{slug}/card.md` 与 `log.md` |
 | 「打开 surf」/「看看趋势页」 | 页面在 <http://127.0.0.1:8000/surf>（服务由 launchd 托管） |
+| 「候选池」/「扫了哪些」/「盲区在哪」 | <http://127.0.0.1:8000/surf/universe>，看「未判定」那段 |
 | 「加扫 {方向}」（重大事件） | 跑 Step 1 → 4，跳过 Step 0 |
 | 「补个股」/「这张卡片买什么股」 | 只跑 Step 5（需卡片已在左上角） |
 
@@ -27,6 +28,7 @@ description: 趋势跟随系统（主升浪/二波）。触发词：surf / surf 
 5. 查 A 股一致预期/盈利预测**不要用 WebSearch**（返回幻觉散文），用 tavily / exa / serper。
    同理，**跨源比价格前先比 `date` 列** —— 差异的第一嫌疑是日期不同，不是数据错误（DESIGN §6.4 ⑤ 踩过）。
 6. **个股候选名单落盘之前，禁止查看任何个股行情**（Step 5）。同 2 的道理，但个股涨幅更大、讲故事的诱惑更强，更容易破戒。
+   **判 ETF 主题时同理**（Step 2b）：只看代码+名称，看了涨跌幅就会按「涨得好的归一类」分组。
 7. **用户不能交易港股。** 港股标的照列并标 `tradable: false`，但凡该环节只有港股标的，**必须补 A 股替代并写明替代代价**（DESIGN §6.5）。
 
 ---
@@ -84,12 +86,56 @@ ETF 走 surf 自己的抓取器（ETF 不是公司，不注册进 `companies/`�
 
 ## Step 2 · 技术佐证
 
+**两段式**：抓数 → 我判主题 → 出池。脚本本身零 LLM 调用（可离线重跑、结果可复现），
+主题判定由我在中间做。
+
+### 2a · 抓数
+
 ```bash
-.venv/bin/python surf/scripts/scan_cn.py    # A股 ETF + 板块资金流/广度/概念
-.venv/bin/python surf/scripts/scan_us.py    # 美股 ETF
+.venv/bin/python surf/scripts/scan_cn.py fetch    # A股：全量→规则层→抓历史→流动性精筛
+.venv/bin/python surf/scripts/scan_us.py fetch    # 美股：Yahoo screener→抓历史
 ```
 
-产出 `surf/scans/{today}/` 下的 `cn_etf.csv`、`us_etf.csv`、`cn_boards.csv`、`cn_board_summary.csv`、`cn_concepts.csv`。
+各自输出 `{cn,us}_etf_raw.csv`、`universe_{cn,us}.csv`（全量带剔除原因），
+并在 stdout 打出**待判主题清单**（缓存已覆盖的不会出现）。
+
+### 2b · 判主题（我做）
+
+> ⚠️ **只看「代码 + 名称 (+ 美股的 Morningstar 类别)」，禁止先看行情。**
+> 给了涨跌幅就会按「涨得好的归一类」分组，等于从后门破掉铁律 2。
+
+对每只输出三个字段，写入 `scans/{date}/themes.json`（用 `surf/scripts/themes.py`
+的 `write_themes`，它会同步回写 `surf/theme_cache.json`）：
+
+| 字段 | 含义 |
+|---|---|
+| `theme` | 主题键。**同一产业方向必须归一**——港股的创新药/医药/医疗/生物科技指数成分高度重叠，合为一个 |
+| `is_trend_carrier` | 成分按**产业**聚合 = true；按**财务特征/所有制/动量/套利**聚合 = false |
+| `reason` | 一句话，会原样显示在 `/surf/universe` 的被过滤列表里 |
+
+**边界情况一律留**（`is_trend_carrier: true`）：漏砍只是多扫几只，误砍是永久盲区。
+
+### 2d · 持仓查漏（不必每期，但这两种情况必须跑）
+
+主题判定只看「代码+名称」（铁律 6 要求），代价是不知道成分。**名称与成分可能完全是两回事**——扫描 #002 实测 `BAI`（「人工智能」）与 SOXX top10 重叠 6/10 是半导体马甲、`QTUM`（「量子计算」）装的是软件篮子、`ARKF`（「金融科技」）前九大有四只加密标的。
+
+必跑的两种情况（方法见 DESIGN §6.5）：
+
+1. **某主题第一次进入 2×2 判定** —— 不查成分就判方向 = 按基金公司的营销名称做决策；
+2. **拿「板块资金流」或「当日事件」当决定性判据时** —— 先确认那笔钱、那个事件打在载体持仓上。扫描 #002：9/22 传媒涨停潮的催化在中证影视成分里只占 1.10%，当日 30 亿净流入流不到载体上。
+
+A 股可先按「去基金公司后缀的产品名」机械分组再判，减少条目——同名产品必然同主题。
+这不是主题归一（旧版的 bug 正是把它当主题键）。
+
+### 2c · 出池
+
+```bash
+.venv/bin/python surf/scripts/scan_cn.py finalize
+.venv/bin/python surf/scripts/scan_us.py finalize
+```
+
+套用载体资格剔除 + 同主题折叠，**折叠之后才算 RS**（RS 是池内百分位，
+同主题十几只会把排名撑坏），产出 `cn_etf.csv` / `us_etf.csv` / 板块三表。
 
 ### 检查清单
 
@@ -99,7 +145,7 @@ ETF 走 surf 自己的抓取器（ETF 不是公司，不注册进 `companies/`�
 |---|---|
 | `ret5` / `ret60` + `RS5` / `RS60` | 长短期是否一致？只有 ret5 强 = 超跌反弹；只有 ret60 强 = 可能在滞涨 |
 | `位置分位` / `距250日高` | 是否已在追高区？位置极低（<10）说明资金根本没进来 |
-| `趋势结构` | 空头排列下的上涨是反弹，不是趋势 |
+| `趋势结构` | 空头排列下的上涨是反弹，不是趋势。但**空头排列不排除该标的**——二波的前置状态就是它 |
 | `量能比` | **< 1（未放量）时，必须说明为何仍判技术确认，并降低该卡片优先级** |
 | `板块5日资金净额_亿` | 涨但资金净流出 = 散户游资推动，主力在出货 |
 | `板块当日广度_%` | 低广度 + 高涨幅 = 少数权重股伪装成板块行情 |
@@ -136,6 +182,11 @@ ETF 走 surf 自己的抓取器（ETF 不是公司，不注册进 `companies/`�
 - **本次扫描修正了产业扫描的哪些结论**（留痕，不粉饰）
 
 同时产出 `surf/scans/{today}/matrix.yaml`（2×2 的机器可读版，格式见 DESIGN §7.2）——`/surf` 首页读它渲染矩阵，**漏写则首页矩阵为空**。判定必须与 `summary.md` 一致。
+
+每个格子的条目要登记 `themes:`（实际持仓的主题）与 `themes_covered:`（同向但未选作载体），**主题键带 `cn:`/`us:` 前缀**。`/surf/universe` 靠它把判定广播到具体 ETF。
+**只登记真正判定过的方向**——仅作佐证引用的不登记，那属于「未判定」，登记进来是虚报覆盖面。
+
+**扫完对着 <http://127.0.0.1:8000/surf/universe> 的「未判定」清单过一遍**：那是本期扫了但压根没讨论的主题。不要求每个都讨论，但要能说出为什么不讨论。
 
 进入左上角的方向，产出/更新 `surf/cards/{slug}/card.md`：
 - **frontmatter 必填**，格式见 DESIGN §7.1。`ticker.code` 必须与 `cn_etf.csv` / `us_etf.csv` 的「代码」列完全一致，否则页面取不到现价与指标时间序列
@@ -205,14 +256,16 @@ prism 已有同名 topic 的自动跳过，**不覆写**。
 
 | 用途 | 接口 | 注意 |
 |---|---|---|
-| A 股 ETF 列表 | `fund_etf_category_sina(symbol="ETF基金")` | 需清代理 |
+| A 股 ETF 列表 | `fund_etf_category_sina(symbol="ETF基金")` | 需清代理；全量 1676 只，规则层过 438 |
 | A 股 ETF 历史 | `fund_etf_hist_sina` | 需清代理；**非线程安全，必须串行**；未复权，脚本已处理折算 |
 | 行业资金流 | `stock_fund_flow_industry("5日排行")` | 同花顺，90 行业 |
 | 行业广度 | `stock_board_industry_summary_ths()` | 当日快照，含涨跌家数 |
 | 概念资金流 | `stock_fund_flow_concept("5日排行")` | 387 概念，无历史指数 |
-| 美股 | yfinance | **需要代理**，与 akshare 相反 |
+| 美股 ETF 列表 | `yfinance.screen` + `ETFQuery` | Yahoo screener，免费无 key。**客户端 categoryname 白名单是 Dec-2024 快照**，缺工业/可选消费/通信/杂项四类而服务端认，须绕过校验（`us_universe._query`） |
+| 美股行情 | yfinance | **需要代理**，与 akshare 相反 |
 | 港股个股 | `stock_hk_daily(adjust="qfq")` | 新浪；东财 `stock_hk_hist` 在本机持续 RemoteDisconnected |
-| ETF 持仓查漏 | `fund_portfolio_hold_em` | **只在候选写定之后用**，是校对工具不是候选来源 |
+| ETF 持仓查漏（A股） | `index_stock_cons_weight_csindex` | 中证官方成分权重，月频。**`fund_portfolio_hold_em` 在本机 JSONDecodeError 不可用**（东财 push2） |
+| ETF 持仓查漏（美股） | `yf.Ticker(t).funds_data.top_holdings` | 需代理。**只在候选写定之后用**，是校对工具不是候选来源 |
 | A 股个股（主源） | `stock_zh_a_daily(symbol="sh603259")` | 新浪，与 ETF 层同源、收盘日对齐；**东财 `stock_zh_a_hist` 收盘价实测有误且会限流，只作备源**（DESIGN §6.4 ⑤） |
 | 行情/财务页跳转 | `companies/{MARKET}_{TICKER}/meta.md` | 一个文件即可注册（Step 5c）。ETF 不注册 |
 | 个股最新价 | `scripts.fetch_quotes_eod.run_for_ticker` | `/prices` 刷新按钮的同一条管线；**只调 daily 不调 snapshot**。存的是不复权价，**指标层不能用** |
