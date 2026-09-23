@@ -85,6 +85,23 @@ def _exchange(code: str, market: str) -> str:
     return "BSE"
 
 
+def _session_open(market: str) -> tuple[bool, str]:
+    """该市场此刻是否仍在交易（含盘前未收盘）。返回 (是否未收盘, 当地今天的日期)。
+
+    盘中运行时 yfinance / 行情源会给出当日**未收盘**的 bar。卡片的价格层证伪条件
+    写的是「收盘跌破 X」，拿盘中价去核对等于用一个还会变的数去判一个不可逆的动作。
+    周频系统只认收盘价（DESIGN §6.4）。
+    """
+    from zoneinfo import ZoneInfo
+    tz, close_t = {
+        "US": ("America/New_York", "16:05"),
+        "HK": ("Asia/Hong_Kong", "16:15"),
+        "HKEX": ("Asia/Hong_Kong", "16:15"),
+    }.get(market, ("Asia/Shanghai", "15:05"))
+    now = datetime.now(ZoneInfo(tz))
+    return now.strftime("%H:%M") < close_t, now.strftime("%Y-%m-%d")
+
+
 def fetch_stock(code: str, market: str) -> tuple[str, float, str] | None:
     """个股走 quotes 管线（= /prices 刷新按钮的 daily 部分），返回 (日期, 收盘, 来源)。"""
     from scripts.fetch_quotes_eod import run_for_ticker
@@ -102,6 +119,13 @@ def fetch_stock(code: str, market: str) -> tuple[str, float, str] | None:
     last = quotes_io.latest_for(code)
     if not last or last.get("close") is None:
         return None
+    open_now, today = _session_open(market)
+    if open_now and last["date"] == today:
+        prev = quotes_io.second_latest_for(code)
+        if not prev or prev.get("close") is None:
+            return None
+        print(f"    ~ {code} {today} 尚未收盘，回落到 {prev['date']}", file=sys.stderr)
+        last = prev
     return last["date"], float(last["close"]), f"quotes/{last.get('source') or ex}"
 
 
@@ -115,6 +139,12 @@ if __name__ == "__main__":
             got = fetch_stock(t["代码"], t["market"])
         else:
             h = FETCH[t["market"]](t["代码"])
+            if h is not None and not h.empty:
+                mkt = "US" if t["market"] == "US" else "CN"
+                open_now, today = _session_open(mkt)
+                if open_now and h["date"].iloc[-1].date().isoformat() == today:
+                    print(f"    ~ {t['代码']} {today} 尚未收盘，丢弃盘中 bar", file=sys.stderr)
+                    h = h.iloc[:-1]
             got = (h["date"].iloc[-1].date().isoformat(),
                    round(float(h["close"].iloc[-1]), 4), "surf/" + t["market"]) \
                 if h is not None and not h.empty else None
