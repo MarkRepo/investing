@@ -1,0 +1,485 @@
+slug: us-moderna-mrna
+display_name: Moderna (MRNA, NASDAQ)
+type: company
+created: '2026-08-25T15:14:07.582639+00:00'
+status: active
+stage: done
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: Moderna(MRNA, NASDAQ) 美股上市股权，standard 深度（不含一级/衍生品、不单独给 mRNA 平台外授权估值）。赌注：倾向卖出/减持——INT
+    个体化肿瘤疫苗黑色素瘤 P3 首胜后股价自 ~$22 飙至 $130-176（YTD +451%），而卖方共识目标仅 $40-85，隐含深度下行；核心命门=INT
+    从黑色素瘤外推到冷肿瘤的生物学概率、Merck 50/50 分成后 Moderna 实得经济、以及 COVID/呼吸道收入下滑下的现金跑道能否撑到兑现。目标价区间取决于给
+    INT 期权赋多少概率权重 vs 呼吸道特许经营的稳态定价。
+  depth: standard
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_MRNA
+  market: US
+  short_name: Moderna
+  search_terms:
+  - Moderna MRNA
+  - intismeran INT
+  - mRESVIA RSV
+  - mRNA-1010 流感
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-08-26T07:46:02.519748+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-07f2b8
+    - mat-092291
+    - mat-10e2e6
+    - mat-17252a
+    - mat-20fec5
+    - mat-2f068d
+    - mat-2f4635
+    - mat-32ed4a
+    - mat-489d4a
+    - mat-5480e0
+    - mat-6fbd47
+    - mat-72c8ae
+    - mat-7c2029
+    - mat-8842c2
+    - mat-8ee163
+    - mat-967429
+    - mat-99916a
+    - mat-a08a45
+    - mat-a9a469
+    - mat-ace761
+    - mat-bc7e01
+    - mat-d04406
+    - mat-d134d4
+    - mat-d946d7
+    - mat-de0507
+    - mat-df9859
+    - mat-e9e1b7
+    - mat-f2d0a8
+    - mat-fb3ad2
+    - mat-fd317b
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-08-26T09:39:11.024159+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-092291
+    - mat-10e2e6
+    - mat-17252a
+    - mat-20fec5
+    - mat-2f068d
+    - mat-2f4635
+    - mat-32ed4a
+    - mat-489d4a
+    - mat-5480e0
+    - mat-6fbd47
+    - mat-72c8ae
+    - mat-7c2029
+    - mat-8842c2
+    - mat-8ee163
+    - mat-923b7e
+    - mat-967429
+    - mat-99916a
+    - mat-a08a45
+    - mat-a9a469
+    - mat-ace761
+    - mat-bc7e01
+    - mat-d04406
+    - mat-d134d4
+    - mat-d946d7
+    - mat-de0507
+    - mat-df9859
+    - mat-e9e1b7
+    - mat-edc57c
+    - mat-f2d0a8
+    - mat-fb3ad2
+    - mat-fd317b
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-08-26T09:39:11.050583+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-092291
+    - mat-10e2e6
+    - mat-17252a
+    - mat-20fec5
+    - mat-2f068d
+    - mat-2f4635
+    - mat-32ed4a
+    - mat-489d4a
+    - mat-5480e0
+    - mat-6fbd47
+    - mat-72c8ae
+    - mat-7c2029
+    - mat-8842c2
+    - mat-8ee163
+    - mat-923b7e
+    - mat-967429
+    - mat-99916a
+    - mat-a08a45
+    - mat-a9a469
+    - mat-ace761
+    - mat-bc7e01
+    - mat-d04406
+    - mat-d134d4
+    - mat-d946d7
+    - mat-de0507
+    - mat-df9859
+    - mat-e9e1b7
+    - mat-edc57c
+    - mat-f2d0a8
+    - mat-fb3ad2
+    - mat-fd317b
+    last_error: null
+  08_living_feed:
+    version: 2
+    last_updated: '2026-08-26T09:58:04.825909+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- 研究主题已闭环，下一步「监控 us-moderna-mrna」启动 06-daily-monitor
+- thesis_v1 已通过 critic-review
+- critic 评审：c_investment_case 整体 4/5：独立多头反方复现最强多头逻辑，其致命一击(Bull $120 vs kill线 $220-260)已被
+  case 内在-市场口径区分预应答；未尽两点(平台凸性/NSCLC非冷肿瘤)仅收窄不闭合核心估值差。承重充分性=够(W1为最弱承重项但P3 HR已waive)，无缺失材料，gap双轴全绿
+  → approve。
+user_todos:
+- task: INTerpath-001 P3 完整数据/ESMO 2026 摘要（RFS+DMFS 的 HR/CI/亚组/安全性）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: ESMO 2026 abstracts, NEJM/Lancet, Merck/Moderna 投资者电话会
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: waived
+  last_fetch_note: 有效尝试：adapter semantic 搜 ESMO/HR/摘要，公开仅得 ESMO 2025 与 INTerpath-011
+    材料；P3 的 HR/CI/亚组官方至今未披露(结构性未知)，待 ESMO 2026 或期刊
+  disposition_note: 用户 2026-08-26 决定 waive：官方与期刊至今未披露 P3 的 HR/CI/亚组，属结构性未知；转为 signpost
+    等 ESMO 2026(约10月)或期刊发表
+- task: INT 全 program 9 项 P2/P3 试验清单与读出时点表（NSCLC/RCC/MIBC/HNSCC 等）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  - K3
+  source_hint: clinicaltrials.gov INTerpath, Moderna Oncology Overview deck
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-07f2b8
+  - mat-99916a
+  - mat-bc7e01
+  last_fetch_note: merck 官方新 P3 启动稿 + INTerpath-011(NMIBC膀胱癌 P2) + ESMO program 稿；已有
+    Oncology Overview deck
+- task: Moderna 10-K FY2025 + 10-Q Q1/Q2 2026（财务弧线/现金/成本指引/股本）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: SEC EDGAR ticker US_MRNA
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-27528b
+  - mat-60fedc
+  - mat-de0507
+  - mat-f2d0a8
+  - mat-fd317b
+  last_fetch_note: SEC EDGAR 直下 10-K FY2025(2026-02-20)+10-Q Q2 2026(2026-07-31)，含
+    Item 切片 8 份
+- task: Merck-Moderna INT 合作条款与会计口径（谁记销售/50% 净利定义/里程碑余额）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 10-K collaboration & license agreements 章节
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-de0507
+  - mat-df9859
+  last_fetch_note: 10-K item_1_business + item_8_financial(附注含 collaboration) 已入库，待
+    03 抽取条款口径
+- task: P3 后已更新的卖方目标价与 2040 峰值模型明细（区分已更新 vs 存量未更新）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: William Blair/Guggenheim/Wolfe post-P3 notes, TipRanks/MarketBeat
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-5480e0
+  - mat-6fbd47
+  - mat-c31355
+  last_fetch_note: William Blair 上调 + 新 12 个月高点 + barchart/yahoo 报道；叠加已入库 fiercebiotech
+    峰值模型明细
+- task: 管理层资本配置史+激励治理（COVID 现金约 $180 亿去向/回购增发史/Bancel 持股与减持）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: DEF 14A proxy, 历年 10-K financing activities
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-2f068d
+  - mat-2f4635
+  - mat-978a59
+  last_fetch_note: 2021 proxy(sec.gov 一手) + 2023 proxy PDF(IR) + 2026 投票与薪酬摘要
+- task: 历史失败镜鉴：治疗性癌症疫苗商业化史（Provenge/Dendreon）+ 平台首胜后均值回归（CAR-T/基因治疗/mRNA 2021）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: Dendreon 破产复盘, CAR-T/基因治疗炒作周期复盘
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-23379c
+  - mat-a08a45
+  - mat-d134d4
+  - mat-e9e1b7
+  - mat-fb3ad2
+  last_fetch_note: Dendreon/Provenge 全套：制造成本致疑虑、$70M 设施、破产(reuters+ABI)——治疗性癌症疫苗商业化镜鉴
+- task: 呼吸道市场：RSV/流感竞争格局与 mRESVIA 销售明细 + 可比疫苗上市爬坡曲线（Arexvy/Abrysvo/Shingrix）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: GSK/Pfizer 分部销售, RSV 市场报告
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-ace761
+  - mat-d946d7
+  last_fetch_note: reuters:GSK/Pfizer RSV 美国销售下滑(接种人数锐减) + GSK 标签扩展；RSV 市场收缩对 mRESVIA
+    更不利
+- task: $9.5 亿诉讼和解性质与后续风险 + 2026 融资/回购/信贷提取动作
+  priority: P1
+  info_tier: public
+  addresses:
+  - K4
+  - K5
+  source_hint: 10-Q legal proceedings, 8-K
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-de0507
+  - mat-f2d0a8
+  last_fetch_note: 10-Q item_1_financial(法律诉讼附注)+10-K item_8_financial 已入库
+- task: INT 个体化生产经济：COGS/产能上限/4 周周转/规模化路径
+  priority: P2
+  info_tier: hard
+  addresses:
+  - K6
+  source_hint: Moderna Oncology deck, 生产工艺文献, Analyst Day
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-d04406
+  last_fetch_note: 仅得 BioProcess Insider 产能网络缩减侧证；COGS/单位经济具体数字公开无源，留 03 从 10-K 抽
+- task: INT 定价与患者数分解（个体化疗法定价参照 CAR-T/Provenge + 辅助治疗可及人群×渗透率）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: CAR-T 定价史, Provenge $9.3万/疗程, 黑色素瘤/NSCLC 辅助人群流行病学
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-32ed4a
+  - mat-72c8ae
+  - mat-a9a469
+  - mat-edc57c
+  last_fetch_note: PharmExec 癌症疫苗定价/价值论证 + PMC 新抗原疫苗综述 + CAR-T 定价 + Provenge Medicare
+    覆盖
+- task: BioNTech BNT122 等个体化肿瘤疫苗竞争进展 + 生物科技 peer 估值水位对照
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: BNTX/Genentech autogene cevumeran, 疫苗与肿瘤平台股 EV/S 分位
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-092291
+  - mat-20fec5
+  - mat-489d4a
+  - mat-967429
+  - mat-abe23f
+  last_fetch_note: BNT 官方 P2 扩适应症 + P1 阳性(investors.biontech) + 6-K + patsnap 档案；peer
+    估值仅得行业通用 EV/S 基准，MRNA 专属分位由 market_data 自算
+- task: 资料提取完成：38/83 份已处理（actionable 0 剩余）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 04 合成完成:00_primer(critic1轮)+ c_investment_case(6环,EV-53%)+ 07_decision_kit
+    + thesis_v1 + decomposition_v1
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 把跨癌种从"8瘤种×独立30%"改述为平台贝叶斯级联，并区分辅助NSCLC(高TMB热肿瘤,IO最起效)与真冷肿瘤(RCC/膀胱/胰腺)的分层概率——前者应显著高于后者
+  rationale: 独立多头反方指出笼统30%把NSCLC隐含当冷肿瘤，系统性低估NSCLC概率+抹掉平台凸性；W1是终局delta命门
+  source: critic_weak_k
+  related:
+  - W1
+  priority: P0
+  status: open
+  suggested_at: '2026-08-26T09:58:29.979178+00:00'
+- question: 把 -53% 拆成两口径并列：内在价值差(-53%)与交易期望回报(以市场价兑现、Bull可$220-260卖出，约-28%)
+  rationale: 反方称-53%作为交易决策头号数字有误导；既然结论是减持不做空，交易期望回报才是仓位直接依据
+  source: critic_weak_k
+  related:
+  - 环④
+  - 环⑥
+  priority: P1
+  status: open
+  suggested_at: '2026-08-26T09:58:29.979178+00:00'
+- question: 给Provenge COGS镜鉴加边界：Marlborough专用产能2025-09已发运商业患者批次，抽掉了"能否规模化制造"前提，残留仅"制造经济性COGS%"
+  rationale: 反方指出Marlborough已发运是最大被低估信号，当前case让Provenge镜鉴承载过多
+  source: critic_weak_k
+  related:
+  - W3
+  - 环①
+  - 环⑤
+  priority: P1
+  status: open
+  suggested_at: '2026-08-26T09:58:29.979178+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: approve
+  summary: c_investment_case 整体 4/5：独立多头反方复现最强多头逻辑，其致命一击(Bull $120 vs kill线 $220-260)已被
+    case 内在-市场口径区分预应答；未尽两点(平台凸性/NSCLC非冷肿瘤)仅收窄不闭合核心估值差。承重充分性=够(W1为最弱承重项但P3 HR已waive)，无缺失材料，gap双轴全绿
+    → approve。
+  at: '2026-08-26T09:58:04.805990+00:00'
+  thesis_version: 1
+  next_stage: done
+decomposition:
+  current_version: 1
+  last_updated: '2026-08-26T09:39:11.094416+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-08-25T15:32:11.174605+00:00'
+    summary: 命门1=INT跨免疫微环境外推(黑→NSCLC→RCC冷肿瘤)(低);命门2=50/50实得经济口径+个体化生产COGS(中);命门3=政策敌意下呼吸道稳态地板$15亿vs$50亿(中)。现金跑道从命门降级为环⑤风险(暴涨已开融资窗)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-08-26T09:39:11.094441+00:00'
+    summary: 命门2条:①INT跨癌种外推(置信度低→中,内部广谱≠跨癌种);②Merck实得经济(会计口径已解=利润50/50/生产COGS未定)。命门3(呼吸道地板)降入环⑤+环②。
+    convergence_status: open
+    changelog: 命门3→2(呼吸道降级);命门1低→中(mat-df9859上调/mat-edc57c约束);命门2会计口径已解(利润50/50);primer目标12→13(+竞争并购条);chain-critic修断点①(Bull锚回SOTP,EV-33%→-53%);无震荡。待05定稿converged。
+thesis:
+  current_version: 1
+  last_updated: '2026-08-26T09:39:11.061826+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-08-25T15:29:25.530860+00:00'
+    summary: 卖出/减持(2/10):P3只de-risk最热瘤种,$618亿市值已把2040年NSCLC$100亿+RCC$33亿按近确定性计价,连P3
+      HR都未披露;目标$75-95(中枢$85),隐含-39%~-52%
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-26T09:39:11.061846+00:00'
+    summary: 卖出/减持(2-3/10)。8/19 P3 只de-risk黑色素瘤;Merck利润50/50(卖方口径打对折);三档SOTP全负,即使跨癌种兑现内在价值也仅$120(-22%);目标$55-85中枢$68,EV-53%。不做空。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-08-25T15:32:45.858738+00:00'
+  exited_at: '2026-08-26T02:41:07.675382+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 03-extracting
+  entered_at: '2026-08-26T02:41:07.675382+00:00'
+  exited_at: '2026-08-26T03:20:53.369575+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 04-synthesizing
+  entered_at: '2026-08-26T03:20:53.369575+00:00'
+  exited_at: '2026-08-26T09:39:36.884189+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 04-post-synthesis
+  entered_at: '2026-08-26T09:39:36.884189+00:00'
+  exited_at: '2026-08-26T09:39:37.372440+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-08-26T09:39:37.372440+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0

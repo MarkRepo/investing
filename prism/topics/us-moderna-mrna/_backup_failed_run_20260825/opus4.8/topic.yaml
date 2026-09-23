@@ -1,0 +1,286 @@
+slug: us-moderna-mrna
+display_name: Moderna (MRNA, NASDAQ)
+type: company
+created: '2026-08-25T14:01:28.542720+00:00'
+status: active
+stage: 02-gather-materials
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: Moderna(MRNA) US standard。赌 COVID 收入断崖后管线(RSV mRESVIA+呼吸道组合+INT肿瘤/Merck)能否在现金耗尽前兑现估值——倾向近端谨慎/看空，核心命门=肿瘤期权兑现节奏
+    vs 现金消耗跑道；目标价区间取决于对INT期权与呼吸道特许经营的定价。
+  depth: standard
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_MRNA
+  market: US
+  short_name: Moderna
+  search_terms:
+  - mRESVIA RSV
+  - Moderna INT
+  - Moderna 现金消耗
+  - mRNA-1010 流感
+outputs_state:
+  00_primer:
+    version: 2
+    last_updated: '2026-08-25T15:04:12.378922+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-1026d3
+    - mat-421e23
+    - mat-447084
+    - mat-8eeb5d
+    - mat-add981
+    - mat-b477af
+    - mat-cc1aef
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-08-25T15:03:51.796006+00:00'
+      warnings:
+      - 正文 5871 字 < deep 地板 6000
+    critic_passed: true
+  c_investment_case:
+    version: 1
+    last_updated: '2026-08-25T14:32:36.589917+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-0ce360
+    - mat-1026d3
+    - mat-21ec04
+    - mat-421e23
+    - mat-647d42
+    - mat-8eeb5d
+    - mat-add981
+    - mat-b477af
+    - mat-cc1aef
+    last_error: null
+  07_decision_kit:
+    version: 1
+    last_updated: '2026-08-25T14:32:36.606890+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-421e23
+    - mat-647d42
+    - mat-add981
+    last_error: null
+  05-critic-review:
+    version: 1
+    last_updated: '2026-08-25T14:54:22.530514+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-421e23
+    - mat-62c0ec
+    - mat-add981
+    last_error: null
+parent_materials: []
+next_actions:
+- 说「prism 推进 us-moderna-mrna」回到 02-gather-materials，先跑 web-search prescan
+- critic 评审：单线承重:命门1冷肿瘤概率无独立证据+全web-search单源+INT HR未披露;等ESMO(10月)+补一手料
+user_todos:
+- task: INT/intismeran 冷肿瘤外推证据+ESMO 2026预期(INTerpath全program读出节奏/AI选新抗原机理/冷肿瘤免疫学)
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: ESMO 2026 abstracts, clinicaltrials.gov INTerpath, 卖方onco深度
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-a92932
+  last_fetch_note: web-search fallback 入库 1 份
+- task: INT个体化生产规模化经济+Merck 50/50合作条款/分成结构
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: 10-K Merck collaboration, R&D day deck
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-62c0ec
+  last_fetch_note: web-search fallback 入库 1 份
+- task: Moderna 10-K FY2025 + 2026 Q1/Q2 季报(多年财务弧线/现金消耗/年末指引)
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: SEC 10-K/10-Q ticker US_MRNA
+  status: pending
+  fetch_status: error
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: SEC EDGAR SSL EOF(本地网络断);财务已由prescan web-mat覆盖;交01/R3重试
+- task: 一致预期/估值锚:19家投行P3后目标价模型($60-170)假设拆解+共识$85-95反推
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: 卖方post-P3 notes, TipRanks/MarketBeat consensus
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-647d42
+  - mat-add981
+  last_fetch_note: web-search fallback 入库 2 份
+- task: 管理层资本配置史(COVID现金再投/成本削减执行/增发回购记录/Bancel激励治理)
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K4
+  source_hint: proxy statement DEF14A, 历年capital allocation
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0ce360
+  - mat-21ec04
+  last_fetch_note: web-search fallback 入库 2 份
+- task: 历史失败镜鉴:生物科技平台首胜后翻倍再mean-revert(CAR-T/基因治疗炒作周期)+mRNA COVID自身泡沫
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: CAR-T/gene therapy hype cycle复盘, MRNA $484→$40史
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: native WebSearch 0 results;镜鉴从训练知识补(环⑤照搬),明标训练知识估算
+- task: 呼吸道特许经营2026销售+流感mRNA-1010美国PDUFA(8/5)结果+组合mRNA-1083审批进展
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  - K5
+  source_hint: Q3 2026 earnings, FDA决定, EU/日/加/澳审评
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-8eeb5d
+  - mat-b477af
+  - mat-e74244
+  last_fetch_note: web-search fallback 入库 3 份
+- task: RSV竞争格局+市场规模(GSK Arexvy/Pfizer Abrysvo/mRESVIA三方,接种年衰减,ACIP驱动)
+  priority: P2
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: RSV market reports, GSK/Pfizer RSV分部销售
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-67092c
+  - mat-cc1aef
+  - mat-e747a3
+  last_fetch_note: web-search fallback 入库 3 份
+- task: 资料提取完成:11/18处理(7份prescan Role α非actionable)
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns: []
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-more
+  summary: 单线承重:命门1冷肿瘤概率无独立证据+全web-search单源+INT HR未披露;等ESMO(10月)+补一手料
+  at: '2026-08-25T14:54:22.546396+00:00'
+  thesis_version: 1
+  next_stage: 02-gather-materials
+decomposition:
+  current_version: 1
+  last_updated: '2026-08-25T14:30:21.697723+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-08-25T14:15:43.844308+00:00'
+    summary: 命门1=INT冷肿瘤生物学外推(低);命门2=INT个体化生产规模化经济+Merck分成(中);命门3=现金跑道vs兑现时点赛跑(中)。终局环④=EV三情景(黑色素瘤锚/冷肿瘤外推/下行)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-08-25T14:30:21.697941+00:00'
+    summary: v1 delta:命门1(冷肿瘤外推)仍低-ESMO/RCC未读出;命门2(INT经济)中→Merck记全额销售、Moderna仅50%净,GS峰值melanoma$4.3B已知;命门3(现金)中-2028平衡指引确认。收敛open:两个de-risk事件(ESMO
+      10月/RCC年末)前不收敛
+    convergence_status: open
+thesis:
+  current_version: 1
+  last_updated: '2026-08-25T14:32:36.617098+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-08-25T14:13:37.313675+00:00'
+    summary: 近端看空/减持:INT黑色素瘤P3首胜后股价翻倍至~$140,共识目标~$85-95隐含下行,冷肿瘤外推(K2)+ESMO HR(K1)未验证前估值透支;目标价$85-100,等ESMO+RCC读出再重估
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 50%（5/10，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-synthesized
+    set_at: '2026-08-25T14:32:36.617109+00:00'
+    summary: v1(全快照):近端看空/减持,EV≈$101<现价$140,共识$85-95;K3(flu)已解;目标$85-100等ESMO+RCC
+      de-risk
+    prescan_status: partial
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-08-25T14:16:27.742251+00:00'
+  exited_at: '2026-08-25T14:24:46.447922+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 03-extracting
+  entered_at: '2026-08-25T14:24:46.447922+00:00'
+  exited_at: '2026-08-25T14:27:32.709948+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K5
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 1
+    empty_pending_decision: 1
+- stage: 04-synthesizing
+  entered_at: '2026-08-25T14:27:32.709948+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs:
+    - historical-mirror
+    autofetch_debt: 1
+    empty_pending_decision: 1

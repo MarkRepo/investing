@@ -798,6 +798,68 @@ holdings:
   as_of_regime: v4
   source: self_registered
   provisional: true
+- slug: us-moderna-mrna
+  display_name: Moderna (MRNA)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: high
+  exposure_score: high
+  regime_favor:
+  - 实际利率下行
+  - 风险偏好扩张/流动性宽松
+  - 生物科技板块 derate 逆转
+  regime_hurt:
+  - 10Y实际利率再上(现2.43%创周期新高)
+  - 偏防御压久期
+  - vol 解压/无减震器的宽松
+  - 脆弱度high兑现期
+  plain: 零/负现金流+价值全在终局期权→久期最长的一类权益：实际利率每上行都直接压缩 rNPV 现值；且 2027 必需的股权再融资窗口依赖风险偏好，流动性收紧会同时打估值与融资通道(双重挤压)
+  as_of_regime: v4
+  source: self_registered
+  provisional: true
+- slug: us-aaoi
+  display_name: Applied Optoelectronics 应用光电 (AAOI)
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: high
+  regime_favor:
+  - 实际利率下行 / 久期重新友好
+  - 流动性宽松 + 风险偏好高（AI capex 主题溢价）
+  - 信用利差收窄（股权与可转债融资窗口宽）
+  regime_hurt:
+  - 实际利率上行（v4 已到 2.43% 周期新高，正在发生）
+  - MOVE/VIX 上行 · 脆弱度兑现期（高 beta 高波动标的首当其冲）
+  - IG/HY 利差走阔（ATM 增发窗口关闭 → 扩产资金链直接受压）
+  - AI capex 叙事降温 / 超大厂资本开支节奏放缓
+  plain: 实际利率上行 → 压 16x P/S 的纯久期估值；同时风险偏好收缩关掉 ATM 增发窗口 → 扩产资金链断档 → 产能爬坡（K5）与 1.6T
+    交付（K4）同时延后。宏观对 AAOI 是估值与融资双通道打击，且两条通道在同一体制下同向恶化。
+  as_of_regime: v4
+  source: self_registered
+  provisional: true
+- slug: us-axti
+  display_name: AXT Inc (AXTI) 化合物半导体衬底
+  duration: long
+  rate_beta: high
+  liquidity_beta: high
+  usd_exposure: mid
+  exposure_score: high
+  regime_favor:
+  - 流动性偏松
+  - 风险偏好高位
+  - AI资本开支超级周期
+  regime_hurt:
+  - 实际利率上行
+  - 波动率上行/MOVE解压
+  - 风险偏好反转
+  - 人民币升值(成本端在人民币)
+  plain: 价值几乎全在2029+终值(fwd PE 29x但TTM EPS为负、PS 34x)→贴现率与风险偏好双敞口最大;成本与99.5%资产在人民币、收入约1/3为美元→人民币升值抬高美元口径成本(但汇兑损益体量极小,渠道定性次要);实际利率2.43%创周期新高是最硬的估值天花板
+  as_of_regime: v4
+  provisional: true
+  provisional_note: 由 us-axti/opus5 case 合成时自注册（company 强制 macro hook），待 macro 复核
+  source: self_registered
 categorical_tail:
 - name: 中美地缘/关税
   state: 平静

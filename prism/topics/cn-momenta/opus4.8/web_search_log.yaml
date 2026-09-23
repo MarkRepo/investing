@@ -97,3 +97,35 @@ entries:
   n_mid: 3
   n_low: 0
   disposition: registered
+- searched_at: '2026-09-02T04:35:51.012703+00:00'
+  query: Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比
+  triggered_by: 05-critic
+  n_results: 5
+  n_high: 4
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-09-02T04:35:51.492067+00:00'
+  query: Momenta 06880 上市后卖方首次覆盖 目标价 一致预期
+  triggered_by: 05-critic
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-09-02T04:35:52.003480+00:00'
+  query: 2026H1 中国城市NOA 装机量份额 华为 Momenta 元戎 千里 车企自研
+  triggered_by: 05-critic
+  n_results: 3
+  n_high: 2
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-09-02T04:40:51.630302+00:00'
+  query: 地平线 09660 2026H1 财报 营收 毛利率 授权收入占比 芯片份额（最贴近可比 peer 锚）
+  triggered_by: 05-critic
+  n_results: 1
+  n_high: 1
+  n_mid: 0
+  n_low: 0
+  disposition: registered

@@ -1,0 +1,221 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: us-axti
+variant: opus5
+created: 2026-08-26
+thesis_version: 0
+
+# L1/L2 已坍缩进 primer（S2）——背景理解层由 00_primer 全权承担
+primer_scope: >
+  primer 该覆盖：化合物半导体衬底是什么(InP/GaAs/Ge 三线与各自下游)；VGF 长晶原理与 2"→6" 转换经济学；
+  AI 光模块中 InP 的物理位置与单端口用量强度(EML/DFB/CW/超高功率CW 四类激光器之别，CPO 改变的是"用哪类")；
+  完整产业链(铟矿→高纯铟→InP多晶→单晶→切磨抛→外延MOCVD→激光芯片→光模块)与各段玩家；
+  中国出口管制体系运作(管制清单 vs 许可制 vs 定向禁令，一单一申请流程)；
+  AXT/北京通美/十余家原材料JV 的股权结构与少数股东权益如何影响归母利润；
+  "短缺租金 vs 结构性成本优势"在财报上的区分法；客户预付款锁产能的会计与商业含义；
+  科创板注册停滞四年 vs 港股18C 的制度差别。
+
+learning_track:
+  l3_debates:
+    - question: InP 短缺是"需求6x vs 供给3-4x 的多年结构性缺口"，还是"2027年中即转向的窗口期"？
+      source_hint: >
+        三方口径直接冲突：Jason's Chips 需求 CAGR 56%(2026-2030 约6x)；麦肯锡称800G短缺40-60%持续到2027、
+        1.6T 30-40%持续到2029；LightCounting 却认为短缺2026年底缓解。而卖方一致预期(ChartMill)自身
+        已把 2027Q3 营收从 Q2 的 103.89M 砍到 47.67M(-54%)——街上模型里短缺2027年中结束。
+    - question: 44.9% 毛利率是许可造出的"行政租金"，还是真实产能不足的"产业租金"？
+      source_hint: >
+        决定它消散方式(政策放开=瞬间 vs 产能爬坡=渐进)。唯一硬证据是出口 vs 境内毛利率差，
+        而 AXT 从不披露分地区毛利率 → 必须从 transcript 问答 + 10-Q + 中国同行毛利率反推三角测量。
+    - question: 中国内销占比>50%且免许可，是对冲了地缘命门的护城河，还是无壁垒红海的低毛利稀释器？
+      source_hint: >
+        多头(反方2)视其为许可风险的自然对冲、指引到60%；空方视其为直面云南锗业/先导、
+        无许可壁垒的普通竞争位。境内毛利率是判据。
+    - question: AXT"低于计划的 capex 把产能翻三倍"，究竟是 know-how 护城河的证据，还是"人人可扩"的证据？
+      source_hint: >
+        同一句话两种读法指向相反结论(命门2)。需单位产能capex($ capex ÷ $季度产能增量)
+        与良率/单炉产出，AXT vs 云南锗业 vs 住友 同口径对比。
+    - question: 通美转港股是"估值解锁"，还是把同一批治理问题(关联交易定价、无实控人、商业秘密刑案)换个市场再问一遍？
+      source_hint: >
+        科创板卡四年的两大障碍(通美售AXT 483元/片 vs AXT转售1275元/片的2.6倍价差；山东国晶商业秘密刑案)
+        不因换市场消失；且通美另背少数股东回售(put)义务。
+
+  l4_hunting:
+    - question: 2026Q3/Q4 与 2027H1 的 InP ASP 与毛利率轨迹会走哪条路径？跌破38%的时点市场隐含在何时？
+      addresses: [K1]
+      search_keywords: [AXT 毛利率 指引, InP 衬底 价格 2027, InP substrate ASP trend]
+      source_hint: 季度财报+transcript；对照 ChartMill 季度一致预期(Q3/27 EPS 0.14)反推市场隐含路径
+    - question: AXT 产能兑现($60M/季@2026年底、$130M/季@2027年底)与实际营收的背离，最早在哪个季度可观测？
+      addresses: [K2]
+      search_keywords: [AXT InP 产能 扩产, AXT capacity expansion 2027, 磷化铟 产能 投放]
+      source_hint: 产能达标但营收未同步=产能空转/降价保量，即供给过剩已发生
+    - question: 中国境内 InP 衬底售价与毛利率 vs 出口口径差多少？mix 转向60%境内会稀释多少整体毛利率？
+      addresses: [K3]
+      search_keywords: [磷化铟 衬底 国内 价格, 云南锗业 磷化铟 毛利率, InP 衬底 内销 报价]
+      source_hint: 命门1与命门3的交汇点；用中国同行(云南锗业/先导)公开毛利率反推境内价格带
+    - question: 出口许可发放节奏有无可观测的领先指标？2026Q3/Q4 是否再现2026-01 式的指引下调？
+      addresses: [K4]
+      search_keywords: [磷化铟 出口许可 商务部, AXT export permit delay, 锗 磷化铟 出口 延迟]
+      source_hint: 2026-08-21 已现延迟报道(Wedbush 警告)；连续两季受限即证实"许可即命门"
+    - question: 云南锗业/住友/Coherent/先导 中哪一家会最先公开披露 InP 降价或产能利用率不足？
+      addresses: [K5]
+      search_keywords: [云南锗业 磷化铟 扩产 产能, 住友电工 InP 衬底 产能, Coherent InP 6 inch ramp]
+      source_hint: 任一出现即供给周期见顶信号；云南锗业已承诺450k 4寸当量、2030占全球近半
+    - question: 通美港股递表时点？招股书是否修正关联交易定价？AXT持股对应市值 vs 当前 AXTI 市值孰高？
+      addresses: [K6]
+      search_keywords: [北京通美 港股 递表, 通美 H股 招股书, 通美 关联交易 定价]
+      source_hint: 若港股挂牌且持股对应市值>AXTI市值，多头"估值解锁"成立、目标价须上修
+    - question: 内部人是否继续减持？是否出现第三次增发？81岁CEO的继任安排何时公布？
+      addresses: [K7]
+      search_keywords: [AXT Form 4 insider selling, AXTI 增发 offering 2026, Morris Young succession]
+      source_hint: 第三次增发=资本周期顶部确认；继任公布=治理折价收敛
+
+material_priority:
+  tier1:
+    - title: AXT Inc 10-K FY2025（含子公司清单、noncontrolling interests、关联方、风险因素）
+      type: annual-report
+      ticker: AXTI
+      addresses: [K1, K2, K6, K7]
+      rings: [financial-arc, mgmt-capital-alloc, biz-moat-unit-econ]
+      source: SEC EDGAR CIK 1051627
+      why: 唯一能定 opex 结构、少数股东权益扣除比例、JV 名单的一手文件；EV 三档 EPS 的锚
+      status: ✓ 已收（mat-1d5c19）
+    - title: AXT Inc 10-Q 2026Q2（MD&A / 风险因素 / 市场风险 三节已切）
+      type: quarterly-report
+      ticker: AXTI
+      addresses: [K1, K3, K4]
+      rings: [financial-arc, biz-moat-unit-econ]
+      source: SEC EDGAR
+      why: $135M 预付款的会计确认口径、许可对收入确认的表述、最新分部数据
+      status: ✓ 已收（mat-89f074 + 3 节）
+    - title: 北京通美晶体科创板招股说明书（2022-08 版）全文
+      type: prospectus
+      ticker: ""
+      addresses: [K3, K6]
+      rings: [biz-moat-unit-econ, mgmt-capital-alloc]
+      source: file.finance.sina.com.cn PDF 原件 / 启信宝缓存
+      why: 唯一披露通美单体财务、关联交易定价(483 vs 1275)、股权结构与对赌的一手文件——命门1/3 的地基
+    - title: AXT Q2 2026 电话会 transcript 全文（管理层对毛利率结构/许可/产能的原话）
+      type: web-article
+      ticker: ""
+      addresses: [K1, K2, K3]
+      rings: [biz-moat-unit-econ, bull-bear]
+      source: SeekingAlpha / Motley Fool
+      why: 分地区毛利率不在财报里，管理层问答是最可能泄露口径的地方（命门1唯一硬证据的主要来源）
+    - title: 云南锗业(002428) 2025 年报 + 2026 半年报（InP 衬底产能/毛利率/扩产投资额）
+      type: annual-report
+      ticker: SZSE_002428
+      addresses: [K5, K3]
+      rings: [bull-bear, valuation-percentile]
+      source: cninfo
+      why: 命门2的对照组——中国同行的单位产能capex与毛利率，是判断"扩产成本曲线平不平"的唯一同口径样本
+    - title: Yole / LightCounting InP 衬底 2026 份额与产能报告
+      type: industry-research
+      ticker: ""
+      addresses: [K5]
+      rings: [bull-bear]
+      source: Yole Développement / LightCounting / 发现报告转载
+      why: 解决份额口径冲突（Yole 2020"AXT第二36%" vs 空方"住友最大~45%"），2026 当期数据
+
+  tier2:
+    - title: 住友电工 2025-11 化合物半导体战略 deck（InP 产能 2028 提 2.4x）
+      type: industry-research
+      ticker: ""
+      addresses: [K5]
+      rings: [bull-bear]
+      source: Sumitomo Electric IR
+      why: 最大玩家的产能投放曲线，Bear 情景供给侧的关键定量输入
+    - title: Coherent 6 英寸 InP 产能与良率披露（已量产、2026年底翻倍、2027再翻倍）
+      type: web-article
+      ticker: ""
+      addresses: [K5, K2]
+      rings: [bull-bear]
+      source: Coherent IR / 财报电话会
+      why: 6寸转换是降本主路径；AXT 6寸进度未知，若落后则成本位2027反转
+    - title: Maius Partners《AXT's Tongmei Problem》空方深度全文
+      type: sell-side-note
+      ticker: ""
+      addresses: [K1, K3, K6]
+      rings: [bull-bear]
+      source: maiuspartners.com
+      why: 目前唯一系统性空方论证（转移定价/扩产无壁垒/真瓶颈在外延/TAM很小）——环④多空交锋的空方主干
+      status: △ 已收 snippet，需全文
+    - title: 发现报告《AXT, Inc.：磷化铟衬底双寡头，上游"卖铲人"卡位AI光》多方研报全文
+      type: sell-side-note
+      ticker: ""
+      addresses: [K1, K2]
+      rings: [bull-bear, consensus]
+      source: fxbaogao.com
+      why: 环④多空交锋的多方主干，与 Maius 对冲
+      status: △ 已收 snippet，需全文
+    - title: 商务部出口管制公告原文合集（2023 镓锗 / 2025-02-04 磷化铟 / 2026 许可目录 / 2026年第23号）
+      type: policy
+      ticker: ""
+      addresses: [K4]
+      rings: [bull-bear]
+      source: mofcom.gov.cn
+      why: 许可制度的一手法条，primer#6 与 K4 的地基
+      status: ✓ 已收
+    - title: GT Advanced Technologies 蓝宝石崩盘复盘（一手业绩 + 破产案卷 + 教训）
+      type: industry-research
+      ticker: ""
+      addresses: [K1, K5]
+      rings: [historical-mirror]
+      source: SEC / govinfo 14-11916 / MoneyMorning
+      why: 历史失败镜鉴主案例——取"从涨价见顶到毛利率归零的时滞"
+      status: ✓ 已收
+
+  tier3:
+    - title: 多晶硅 2008/2011 两轮暴涨崩塌复盘（价格从 $400/kg 到崩 90%+ 的时滞）
+      type: industry-research
+      ticker: ""
+      addresses: [K1, K5]
+      rings: [historical-mirror]
+      source: 行业复盘文章 / 券商深度
+      why: 第二镜鉴——上游材料短缺租金消散的经典节奏
+    - title: MLCC 2017-2019 短缺涨价与毛利率腰斩复盘
+      type: industry-research
+      ticker: ""
+      addresses: [K1]
+      rings: [historical-mirror]
+      source: 行业复盘 / 村田-国巨财报
+      why: 第三镜鉴——被动元件短缺周期的毛利率轨迹
+    - title: 广东先导稀材(Vital Materials) InP 产能与国产替代进展
+      type: industry-research
+      ticker: ""
+      addresses: [K5]
+      rings: [bull-bear]
+      source: 公司官网 / 行业媒体
+      why: 中国境内最直接的份额威胁（命门3）
+    - title: 港交所 18C 特专科技章规则原文 + 与科创板对比
+      type: policy
+      ticker: ""
+      addresses: [K6]
+      rings: [mgmt-capital-alloc]
+      source: hkex.com.hk / cn-rules.hkex.com.hk
+      why: primer#10；判断通美转港成功概率
+      status: ✓ 已收
+
+key_risks_to_monitor:
+  - 出口许可再次收紧导致季度指引下调（2026-01 已发生过一次；2026-08-21 再现延迟报道）
+  - 第三次公开增发（前两次自 2025-12 已发行约 1800 万股）
+  - CEO(81岁) 继续减持或健康/继任事件
+  - 2027Q3 一致预期腰斩兑现（街上模型已嵌入，但市值未反映）
+  - 云南锗业 450k 4寸当量产能投放节奏快于预期
+  - 2X 单股 ETF(Tradr AXTX/AXTQ) 放大波动，52周区间 $2.68-$143.16
+
+analogies_to_study:
+  - name: GT Advanced Technologies 蓝宝石（美国，2013-2014）
+    similar: 单一材料、短缺叙事、大客户绑定(Apple)、巨额融资扩产、股价暴涨后崩塌破产
+    different: GTAT 有 Apple 排他合同陷阱且设备+材料双业务；AXT 多客户多产品线且已盈利、账上 $749M 现金
+    extract: 从"客户绑定公告"到破产仅约 12 个月——绑定不等于安全边际
+  - name: 多晶硅（全球，2008 与 2011 两轮）
+    similar: 上游材料短缺→价格暴涨→全行业扩产→价格崩塌 90%+→高成本产能出清
+    different: 多晶硅无出口管制这一行政变量；技术门槛低于 InP 单晶
+    extract: 从价格见顶到毛利率归零的时滞（这是 Bear 情景的兑现节奏）
+  - name: MLCC（2017-2019）
+    similar: 被动元件短缺→涨价数倍→毛利率翻倍→需求回落+产能投放→利润率腰斩
+    different: 纯消费电子周期，无 AI 这类多年结构性需求托底
+    extract: 涨价幅度与随后毛利率回撤幅度的对应关系
+  - name: DRAM（2017-2019）
+    similar: 寡头格局 + 短缺 + 毛利率峰值 → 崩塌
+    different: DRAM 资本壁垒极高(数十亿美元/厂)，而 InP 扩产 capex 低 — 这个"不像"恰恰对 AXT 不利
+    extract: 反证：资本壁垒高低决定短缺持续期，InP 属低壁垒侧

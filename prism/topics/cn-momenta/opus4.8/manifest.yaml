@@ -1,6 +1,6 @@
 slug: cn-momenta
 variant: opus4.8
-updated: '2026-06-30T09:20:00.394455+00:00'
+updated: '2026-09-02T04:40:51.603839+00:00'
 materials:
 - id: mat-c40eb1
   filename: 2026-06-29_momenta开启招股-拟募资59亿港元-7月8日上市-gic奔驰比亚迪认购.md
@@ -1837,3 +1837,254 @@ materials:
   processed: true
   notes: 'early-ingest: 自动登记 topic 家底（元数据，未读正文）'
   mineru_state: not_needed
+- id: mat-072c62
+  filename: 2026-09-02_momenta首份半年报-接近盈亏平衡-不会无底线降价-车东西.md
+  source_type: web-search
+  added: '2026-09-02T04:35:50.303711+00:00'
+  processed: true
+  notes: query='Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比
+    url: https://chedongxi.com/p/375252.html
+    domain: chedongxi.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-02T04:35:50.269253+00:00'
+    stale_at: '2026-10-02T04:35:50.269253+00:00'
+    expire_at: '2026-12-01T04:35:50.269253+00:00'
+    triggered_by: 05-critic
+- id: mat-7563bb
+  filename: 2026-09-02_大跌11-智驾-优等生-失宠-36氪.md
+  source_type: web-search
+  added: '2026-09-02T04:35:50.404777+00:00'
+  processed: true
+  notes: query='Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.85
+  search_meta:
+    query: Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比
+    url: https://www.36kr.com/p/3964762107403522
+    domain: 36kr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-02T04:35:50.369870+00:00'
+    stale_at: '2026-10-02T04:35:50.369870+00:00'
+    expire_at: '2026-12-01T04:35:50.369870+00:00'
+    triggered_by: 05-critic
+- id: mat-585ab9
+  filename: 2026-09-02_momenta上市首份半年报-技术故事讲完之后-资本市场开始算账-钛媒体.md
+  source_type: web-search
+  added: '2026-09-02T04:35:50.503922+00:00'
+  processed: true
+  notes: query='Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.75
+  search_meta:
+    query: Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比
+    url: https://www.tmtpost.com/8123399.html
+    domain: tmtpost.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-02T04:35:50.468468+00:00'
+    stale_at: '2026-10-02T04:35:50.468468+00:00'
+    expire_at: '2026-12-01T04:35:50.468468+00:00'
+    triggered_by: 05-critic
+- id: mat-d5a7ca
+  filename: 2026-09-02_momenta上半年营收突破16亿元创新高-接近盈亏平衡-证券时报.md
+  source_type: web-search
+  added: '2026-09-02T04:35:50.596317+00:00'
+  processed: true
+  notes: query='Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比
+    url: https://www.stcn.com/article/detail/4166216.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-09-02T04:35:50.560372+00:00'
+    stale_at: '2026-10-02T04:35:50.560372+00:00'
+    expire_at: '2026-12-01T04:35:50.560372+00:00'
+    triggered_by: 05-critic
+- id: mat-9e1b61
+  filename: 2026-09-02_momenta上半年营收增近76-至16亿元-预计明年实现l3项目量产-21财经-澎湃.md
+  source_type: web-search
+  added: '2026-09-02T04:35:50.689473+00:00'
+  processed: true
+  notes: query='Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  confidence: 0.85
+  search_meta:
+    query: Momenta 2026上半年中期业绩 收入结构 毛利率 许可占比
+    url: https://m.21jingji.com/article/20260831/herald/44125b97edaa23a39d9068a20178654f.html
+    domain: m.21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-09-02T04:35:50.653068+00:00'
+    stale_at: '2026-10-02T04:35:50.653068+00:00'
+    expire_at: '2026-12-01T04:35:50.653068+00:00'
+    triggered_by: 05-critic
+- id: mat-0f22a5
+  filename: 2026-09-02_营收劲增76-核心指标大幅改善-momenta驶入指数级增长快车道-证券时报-含卖方首覆汇总.md
+  source_type: web-search
+  added: '2026-09-02T04:35:51.085501+00:00'
+  processed: true
+  notes: query='Momenta 06880 上市后卖方首次覆盖 目标价 一致预期'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  rings:
+  - consensus
+  confidence: 0.9
+  search_meta:
+    query: Momenta 06880 上市后卖方首次覆盖 目标价 一致预期
+    url: https://www.stcn.com/article/detail/4166926.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-09-02T04:35:51.049016+00:00'
+    stale_at: '2026-10-02T04:35:51.049016+00:00'
+    expire_at: '2026-12-01T04:35:51.049016+00:00'
+    triggered_by: 05-critic
+- id: mat-6a19bb
+  filename: 2026-09-02_中金首次覆盖momenta并给予跑赢行业评级-目标价500港元-时代周报.md
+  source_type: web-search
+  added: '2026-09-02T04:35:51.188448+00:00'
+  processed: true
+  notes: query='Momenta 06880 上市后卖方首次覆盖 目标价 一致预期'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  rings:
+  - consensus
+  confidence: 0.8
+  search_meta:
+    query: Momenta 06880 上市后卖方首次覆盖 目标价 一致预期
+    url: https://time-weekly.com/post/331991
+    domain: time-weekly.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-02T04:35:51.152198+00:00'
+    stale_at: '2026-10-02T04:35:51.152198+00:00'
+    expire_at: '2026-12-01T04:35:51.152198+00:00'
+    triggered_by: 05-critic
+- id: mat-aa599a
+  filename: 2026-09-02_大行-瑞银首予momenta-06880-hk-买入-评级-目标价360元.md
+  source_type: web-search
+  added: '2026-09-02T04:35:51.284638+00:00'
+  processed: true
+  notes: query='Momenta 06880 上市后卖方首次覆盖 目标价 一致预期' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  rings:
+  - consensus
+  confidence: 0.6
+  search_meta:
+    query: Momenta 06880 上市后卖方首次覆盖 目标价 一致预期
+    url: https://hk.finance.yahoo.com/news/
+    domain: hk.finance.yahoo.com
+    domain_tier: other
+    searched_at: '2026-09-02T04:35:51.247406+00:00'
+    stale_at: '2026-10-02T04:35:51.247406+00:00'
+    expire_at: '2026-12-01T04:35:51.247406+00:00'
+    triggered_by: 05-critic
+- id: mat-a45beb
+  filename: 2026-09-02_中国城市noa装机量排行榜-2026-h1-第一电动网独立上险量口径.md
+  source_type: web-search
+  added: '2026-09-02T04:35:51.573659+00:00'
+  processed: true
+  notes: query='2026H1 中国城市NOA 装机量份额 华为 Momenta 元戎 千里 车企自研'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.85
+  search_meta:
+    query: 2026H1 中国城市NOA 装机量份额 华为 Momenta 元戎 千里 车企自研
+    url: https://d1ev.com/news/shichang/307313
+    domain: d1ev.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-02T04:35:51.536189+00:00'
+    stale_at: '2026-10-02T04:35:51.536189+00:00'
+    expire_at: '2026-12-01T04:35:51.536189+00:00'
+    triggered_by: 05-critic
+- id: mat-ff3063
+  filename: 2026-09-02_智驾潜规则-自研的招牌和隐身的供应商-36氪.md
+  source_type: web-search
+  added: '2026-09-02T04:35:51.678273+00:00'
+  processed: true
+  notes: query='2026H1 中国城市NOA 装机量份额 华为 Momenta 元戎 千里 车企自研'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.8
+  search_meta:
+    query: 2026H1 中国城市NOA 装机量份额 华为 Momenta 元戎 千里 车企自研
+    url: https://www.36kr.com/p/3183398094052994
+    domain: 36kr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-02T04:35:51.640691+00:00'
+    stale_at: '2026-10-02T04:35:51.640691+00:00'
+    expire_at: '2026-12-01T04:35:51.640691+00:00'
+    triggered_by: 05-critic
+- id: mat-2e2a9e
+  filename: 2026-09-02_100万辆-斩杀线-出现-2026年中国智驾进入淘汰赛-36氪.md
+  source_type: web-search
+  added: '2026-09-02T04:35:51.783459+00:00'
+  processed: true
+  notes: query='2026H1 中国城市NOA 装机量份额 华为 Momenta 元戎 千里 车企自研' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: 2026H1 中国城市NOA 装机量份额 华为 Momenta 元戎 千里 车企自研
+    url: https://m.36kr.com/p/3641713184181889
+    domain: m.36kr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-02T04:35:51.745864+00:00'
+    stale_at: '2026-10-02T04:35:51.745864+00:00'
+    expire_at: '2026-12-01T04:35:51.745864+00:00'
+    triggered_by: 05-critic
+- id: mat-c425f8
+  filename: 2026-09-02_地平线机器人2026半年报-营收20-55亿-32-9-毛利率66-授权及服务收入占比过半-新华财经.md
+  source_type: web-search
+  added: '2026-09-02T04:40:51.541584+00:00'
+  processed: true
+  notes: query='地平线 09660 2026H1 财报 营收 毛利率 授权收入占比 芯片份额（最贴近可比 peer 锚）'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  rings:
+  - arena-mirror
+  confidence: 0.9
+  search_meta:
+    query: 地平线 09660 2026H1 财报 营收 毛利率 授权收入占比 芯片份额（最贴近可比 peer 锚）
+    url: https://www.jrj.com.cn/hz-09660-2026h1
+    domain: jrj.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-02T04:40:51.502836+00:00'
+    stale_at: '2026-10-02T04:40:51.502836+00:00'
+    expire_at: '2026-12-01T04:40:51.502836+00:00'
+    triggered_by: 05-critic

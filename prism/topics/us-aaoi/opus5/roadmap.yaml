@@ -1,0 +1,203 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: us-aaoi
+variant: opus5
+created: 2026-08-26
+primer_scope: >-
+  门外人理解地基：光模块内部结构与 800G/1.6T 物理含义；EML/DFB/VCSEL/硅光四条路线与 200G/lane 的 EML 卡口；
+  InP 光芯片"1 年建线 + 3 年验证"的产业节奏；可插拔/LPO/NPO/CPO 四形态分工；光互联价值链各段的钱在哪；
+  CATV/HFC 与 DOCSIS 4.0 升级周期；读懂光模块公司财报的关键行；ATM/可转债/客户认股权证如何影响每股价值；
+  超大厂 qualification 流程。背景深度交给 00_primer，case 只写决策相关张力。
+
+learning_track:
+  l3_debates:
+    - question: >-
+        AAOI 在光互联价值链上占的是「瓶颈位」还是「代工位」？多方证据是 InP 激光芯片扩产需 ~1 年建线 + 3 年客户验证、
+        AAOI 自有 fab 且 2027 年产能 +350%；空方证据是 FY2025 毛利率从 24.8%→30.0% 公司自己归因于「CATV 产品规模化生产」
+        而非 800G，且 2023 年公司曾拟整体出售光模块业务、中国同业评价其资产「吸引力不大」。
+      source_hint: 10-K MD&A 毛利率归因段 + 电话会 Q&A 关于 ASP/自供比例 + 2023 出售案报道
+    - question: >-
+        管理层 mid-2027 数据中心月收入 $471M（年化 ≈$5.65B）与一致预期 FY2027 ≈$2.50B 之间存在 2.3 倍分歧，谁错了？
+        分歧是产能爬坡节奏、ASP 假设，还是客户订单可见度？
+      source_hint: Q2'26 电话会原文 + S&P/TipRanks 季度路径 + 卖方模型假设拆解
+    - question: >-
+        Digicomm 占 FY2025 收入 53.1%、2026-06-30 应收账款 $314M 中 $211M 欠自它——这是 CATV 渠道正常放量，
+        还是渠道填货/收入质量问题？市场叙事几乎不讨论这条。
+      source_hint: 10-K/10-Q 客户与应收披露 + Digicomm 公司背景 + DSO 时序 + CATV 终端 MSO capex
+    - question: >-
+        收入 +86% 而 GAAP 净亏 $22.8M、FY2025 opex 占收入 42%（R&D +55.6% / S&M +66.7%）——经营杠杆会不会来？
+        管理层 FY2026「非 GAAP 营业利润 >$120M」隐含 opex 率从 42% 压到约 19%，凭什么？
+      source_hint: 10-K opex 表 + 季度 opex 绝对额趋势 + 非 GAAP 调整项构成（含 warrants contra revenue）
+    - question: >-
+        整个光互联板块 P/S 15-26x（旭创 15.3 / 新易盛 15.7 / Lumentum 26.4 / AAOI 16.1 / Fabrinet 3.3）——
+        AAOI 的「贵」是个体错误定价还是板块 beta？若是板块问题，个股 alpha 判断会不会被 beta 淹没？
+      source_hint: 同业倍数横比材料 + 板块历史倍数带 + CPO 叙事对板块估值的影响
+
+  l4_hunting:
+    - question: >-
+        2026Q4 收入能否 ≥$370M？Q3 指引 $255-290M，要凑够管理层 FY2026「约 $1.1B」需要 Q4 做到约 $400M+，
+        环比再 +40%。产能到出货的桥能不能搭上？
+      addresses: [K1]
+      search_keywords: [AAOI Q4 2026 收入, AAOI 出货 月产能, AAOI FY2026 指引]
+      source_hint: Q3'26 财报（2026-11-04）+ 电话会产能口径 + 月度出货披露
+    - question: >-
+        非 GAAP 毛利率何时突破 34%（通往 40% 的中途标尺）？分产品毛利率结构（CATV vs 数据中心）与
+        激光芯片良率曲线在哪个点让 GM 跳升？还是 ASP 下行会持续抵消？
+      addresses: [K2]
+      search_keywords: [AAOI 毛利率 40% 2027, AAOI laser chip yield, 光模块 ASP 降价]
+      source_hint: 电话会 Q&A 毛利率路径问答 + 卖方分段模型 + 行业 ASP 数据
+    - question: >-
+        完全稀释股数 2027Q4 落在哪？$600M ATM 剩余额度使用节奏 + Amazon 权证归属节奏
+        （含 contra revenue 对报表收入的冲减幅度）+ 2030 转债 2.885M 股。
+      addresses: [K3]
+      search_keywords: [AAOI ATM 剩余额度, AAOI 稀释 股数 2026, Amazon warrant 归属]
+      source_hint: 季度 10-Q 封面股数 + 权益变动表 + 8-K/424B5 + 权证 contra revenue 科目
+    - question: >-
+        1.6T 拿到几家超大厂量产认证、月出货爬到多少？2026-03 的 >$200M 首单交付进度如何
+        （公司称 2026Q3 晚些开始发货）？
+      addresses: [K4]
+      search_keywords: [AAOI 1.6T 认证, AAOI 1.6T 出货, 1.6T 光模块 hyperscaler]
+      source_hint: 公司 press release 流 + 电话会认证进度问答 + 客户侧披露
+    - question: >-
+        名义产能（2026 末 65 万只/月、2027 末 93 万只/月）与实际出货之间的桥怎么搭？
+        真正卡口是自有激光芯片良率、外购件（DSP/光引擎），还是客户提货节奏？
+      addresses: [K5]
+      search_keywords: [AAOI 产能利用率, AAOI 800G 出货量, AAOI EML 自供]
+      source_hint: 投资者演示 PPT + 电话会「capacity-constrained」问答 + 存货与应收周转
+    - question: >-
+        是否出现第二个 Amazon 式锁量结构（take-or-pay / 认股权证）？Digicomm 关系的性质
+        （分销商 vs 代理）与其背后终端 MSO 是谁？
+      addresses: [K6]
+      search_keywords: [AAOI 新客户 协议, Digicomm AOI 分销, AAOI 长约 锁量]
+      source_hint: 8-K 重大合同 + 10-K 客户段 + Digicomm 公司资料 + MSO capex 报道
+
+    - question: >-
+        Digicomm 这条单一备货型分销商通道的信用与渠道风险何时显形？占应收 67.2-74.5%、金额 $211M、
+        DSO 178-196 天，而 FY2025 全年信用损失计提仅 $4 千——转向时先出现的是分销商停止备货还是应收减值？
+      addresses: [K7]
+      search_keywords: [AAOI Digicomm 应收, AAOI allowance credit loss, stocking distributor 渠道填货]
+      source_hint: 每季 10-Q 应收与信用损失附注 + Digicomm 背景 + MSO capex 指引
+    - question: >-
+        CATV（第一大业务，占 53.8%、同比 +179.5%）什么时候见顶？DOCSIS 4.0 是替换周期而非永续增长，
+        替换潮剩余时长与 MSO 资本开支节奏决定第一大业务的拐点。
+      addresses: [K8]
+      search_keywords: [DOCSIS 4.0 部署进度, MSO capex 2027, AAOI CATV 收入 同比]
+      source_hint: 10-Q/10-K 分市场收入附注 + Comcast/Charter capex 指引 + 光节点替换量级
+    - question: >-
+        2026Q2 未披露身份的第三大客户占收入 24%（一年前仅 6%），四倍跃升——它是谁、这个占比稳不稳？
+        FY2017-2019 崩塌的两个死因之一正是单一大客户抽单，本轮是否在重演同一结构。
+      addresses: [K9]
+      search_keywords: [AAOI 客户集中度 第三大客户, AAOI major customer 24%, AAOI 8-K 重大合同]
+      source_hint: 每季 10-Q 客户集中度附注 + 8-K 重大合同公告 + FY2019 10-K 单客户抽单叙述
+
+material_priority:
+  tier1:
+    - title: "AAOI FY2025 年报 10-K（2026-02-26）"
+      type: annual-report
+      ticker: AAOI
+      source: SEC EDGAR CIK 1158114
+      addresses: [K1, K2, K3, K5, K6, K7, K8]
+      info_tier: public
+      why: "分市场收入(CATV 53.8%/DC 42.9%)、Digicomm 53.1%/Microsoft 28.8%、GM 归因、opex 42% 的唯一权威来源；环①②③⑤ 全部要它"
+      status: 已收集 (mat-7f5d21 + 抽取件 mat-3ea4b8)
+    - title: "AAOI 2026Q2 季报 10-Q（2026-08-06）"
+      type: quarterly-report
+      ticker: AAOI
+      source: SEC EDGAR
+      addresses: [K1, K2, K3, K6, K7, K9]
+      info_tier: public
+      why: "应收 $314M/其中 Digicomm $211M、前三客户 42/26/24%、ATM 三步加码与 Q2 $645.8M 增发、股本 84.386M —— M3 稀释命门的原始凭证"
+      status: 已收集 (mat-af5b4c + 4 个 section)
+    - title: "AAOI 2026Q1 季报 10-Q（2026-05 前后）"
+      type: quarterly-report
+      ticker: AAOI
+      source: SEC EDGAR
+      addresses: [K1, K2, K3]
+      info_tier: public
+      why: "Q1 是实打实的 miss（收入/EPS/GM 三项低于预期），需原文核 GM 结构与股数起点，构成季度序列"
+    - title: "AAOI 2026Q1 + Q2 财报电话会逐字稿全文（含 Q&A）"
+      type: industry-research
+      source: 公司 IR webcast / Quartr / gurufocus / 华尔街见闻纪要
+      addresses: [K1, K2, K4, K5]
+      info_tier: public
+      why: "『growth limited by production, not demand』『2027 GM 40%』『mid-2027 $471M/月』三条关键口径都只在电话会；Q&A 里才有产能口径定义与 ASP 线索"
+      status: 部分已收（摘要+纪要），缺完整 Q&A 逐字稿
+    - title: "AAOI 季度投资者演示 PPT（产能/出货/客户结构口径）"
+      type: industry-research
+      source: investors.ao-inc.com events & presentations
+      addresses: [K1, K5]
+      info_tier: public
+      why: "产能路径(9万→20万→65万→93万只/月)的官方口径与定义（季末瞬时 vs 全季可用）只在 PPT，决定 M2 能否证伪"
+  tier2:
+    - title: "光互联同业倍数与财务横比（AAOI/COHR/LITE/FN/CIEN/旭创/新易盛/光迅）"
+      type: data
+      source: prism market_data 同日快照
+      addresses: [K2]
+      info_tier: half_public
+      why: "环② 定价锚：AAOI P/S 16.1x 与 A 股同业同档、低于 LITE 26.4x、远高于代工位 FN 3.3x —— 决定用哪个参照系"
+      status: 已收集 (mat-1cfbc2)
+    - title: "Digicomm International 公司背景 + CATV 渠道结构 + 终端 MSO capex"
+      type: industry-research
+      source: 公司官网/行业媒体/MSO 财报（Charter/Comcast/Mediacom capex）
+      addresses: [K6, K1]
+      info_tier: half_public
+      why: "占收入 53.1% 且欠款 $211M 的对手方是分销商——收入质量与渠道库存风险的唯一入口"
+    - title: "光模块 ASP 与出货量行业数据（800G/1.6T 分代）"
+      type: data
+      source: LightCounting / Cignal AI / Omdia（付费，找公开转载）
+      addresses: [K2, K5]
+      info_tier: hard
+      why: "反推产能利用率与验证 ASP 下行速度，M1/M2 判别式的量化基础"
+    - title: "一致预期明细（13 家覆盖的 FY26-28 收入/EPS/目标价与分歧带）"
+      type: data
+      source: stockanalysis / chartmill(S&P) / TipRanks / Rosenblatt
+      addresses: [K1, K3]
+      info_tier: half_public
+      why: "环② 必需：市场隐含预期的量化锚（FY26 $1.04B/EPS $0.68；FY27 ≈$2.50B/EPS ≈$4.18；均价目标 $140.68）"
+      status: 已收集（聚合页口径）
+    - title: "光模块 HTS 8517.62 的 301 关税当期实际税率与归类"
+      type: policy
+      source: USTR 四年期复审修订通知 + USITC HTS 逐条
+      addresses: [K1]
+      info_tier: half_public
+      why: "『非中国产能溢价』是多方第三条支柱，需要税率数字才能量化，否则只是叙事"
+  tier3:
+    - title: "AAOI 2017-2019 微软流失与业绩崩塌一手复盘"
+      type: industry-research
+      source: 2018-2019 10-K/电话会 + 当时卖方与媒体复盘
+      addresses: [K1, K6]
+      info_tier: half_public
+      why: "环⑤ 历史失败镜鉴（A 合同 historical-mirror 必收）；微软如今仍占 28.8%，同一风险仍在场"
+    - title: "CPO/LPO 商业化节奏（SemiAnalysis 争议 + 西部证券行业深度）"
+      type: industry-research
+      source: 已入库 web-search（stcn/fxbaogao/tradingkey）
+      addresses: [K4]
+      info_tier: public
+      why: "决定可插拔现金流窗口长度；反方观点 5 的证据基础"
+      status: 已收集（二手口径）
+    - title: "中际旭创 / 新易盛 2026 半年报（成本结构与毛利率对照）"
+      type: annual-report
+      ticker: SZSE_300308
+      source: cninfo
+      addresses: [K2]
+      info_tier: public
+      why: "用中国头部厂的 GM/费用率作『代工位 vs 瓶颈位』的外部标尺"
+
+key_risks_to_monitor:
+  - "Digicomm 应收 $211M（≈1.1 个季度总收入）的回款与渠道库存风险 —— 市场未定价"
+  - "前三大客户占 92%（42/26/24%），任一流失即重演 2018-2019"
+  - "$600M ATM 剩余额度 + Amazon 权证 7.945M + 2030 转债 2.885M 的持续稀释；10-Q 明文称还会继续增发"
+  - "Amazon 权证按 contra revenue 冲减报表收入 —— 采购越多冲减越多，收入口径需还原"
+  - "opex 占收入 42% 与 FY26『$120M 非 GAAP 营业利润』目标之间约 $40-50M 的缺口"
+  - "板块 beta：光互联板块 P/S 15-26x，任何 CPO 叙事扰动都会带来 30%+ 的个股波动（AAOI 90 天曾 -32%、5 月至今 -49%）"
+  - "做空 12.83% / days-to-cover 1.2 —— 拥挤但流动性极好，双向踩踏都快"
+
+analogies_to_study:
+  - name: "AAOI 自身 2017-2019（美国·光模块·100G 周期）"
+    logic: "同样是超大厂订单驱动的爆发式增长 + 激进产能扩张 + 高估值；随后单一客户份额流失 + 中国厂价格战导致业绩与股价崩塌"
+    limits: "当时是 100G 单客户(微软 46.6%)，现在是三客户+CATV 双引擎；且今天有自有激光 fab 与关税/本土产能护城河，中国厂无法直接复制"
+  - name: "JDS Uniphase 1999-2002（全球·光通信·电信泡沫）"
+    logic: "超级周期中重资本扩产 + 大规模股权融资，需求拐点后产能利用率与毛利率同时崩塌、巨额减值"
+    limits: "当时是电信运营商 capex 泡沫（负债驱动），今天是超大厂自由现金流驱动的 AI capex，付款能力与持续性不同量级"
+  - name: "Lumentum 2021-2023（全球·光器件）"
+    logic: "器件厂在周期高点扩产、需求回落后 GM 与产能利用率双杀；同为激光器件+模块混合业务模型"
+    limits: "Lumentum 器件组合更宽、GM 基线更高，且有工业/3D sensing 对冲；AAOI 集中度远高"

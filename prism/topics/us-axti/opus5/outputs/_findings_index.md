@@ -1,0 +1,91 @@
+# Findings Index — us-axti/opus5
+
+> 主 agent 调度提示：写每批 output 前重读本文件，按 addresses(K# 脊柱) + rings(决策链输入合同) 判断 context 是否覆盖所需维度；
+> 记忆模糊的 mat_id 单独 Read `outputs/findings_{mat_id}.md` 补回。
+
+## 自有 findings（84 份）
+
+- `mat-036429` | 2026-08-26_特專科技公司上市.md | addresses=[K6] | rings=[mgmt-capital-alloc] | high/neutral | 港交所自 2023-03-31 起在《主板上市规则》新增第十八C 章（特专科技公司）。
+- `mat-07fb6d` | findings_mat-07fb6d.md | addresses=[K5,K4] | rings=[peer-comparison-financials] | medium/neutral | URL: https://www.laserfair.com/mobile/news/202605/11/90550.html
+- `mat-0a648a` | findings_mat-0a648a.md | addresses=[K5,K2] | rings=[peer-comparison-financials] | medium/neutral | URL: https://www.linkedin.com/posts/jim-anderson-a7215b12_im-proud-to-share-that-coherent-corp-has-a…
+- `mat-0b0680` | findings_mat-0b0680.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://zhuanlan.zhihu.com/p/2072296296539596295
+- `mat-0f320a` | sec/2026_AXTI_10-Q_2026-08-13/item_2_mda.md | addresses=[K1,K2,K4,K5,K6,K7] | rings=[biz-moat-unit-econ,mgmt-capital-alloc,valuation-anchor,bull-bear] | high/neutral | A组 · 2026Q2 损益全拆（环②/环④的当期基数）
+- `mat-104d04` | 2026-08-26_商务部公告2026年第23号公布将10家美国实体列入出口管制.md | addresses=[K4,K6] | rings=[bull-bear] | high/neutral | 商务部公告 2026 年第 23 号：将 10 家美国实体列入出口管制管控名单，附件为《出口管制管控名单（2026 年 6 月 22 日）》。
+- `mat-121372` | findings_mat-121372.md | addresses=[K1,K2,K3] | rings=[consensus,valuation-anchor] | medium/neutral | URL: https://www.stocktitan.net/sec-filings/AXTI/10-q-axt-inc-quarterly-earnings-report-db714ed7f0c5…
+- `mat-142cae` | 2026-08-26_14-11916---gt-advanced-technologies-inc-and-gt.md | addresses=[K1,K5] | rings=[historical-mirror] | high/neutral | 美国政府公开司法记录（govinfo）：GT Advanced Technologies, Inc. 与 GT Advanced Equipment Holding LLC 破产案，案号 14-119…
+- `mat-16ee9d` | 2026-08-26_gt-advanced-technologies-inc-announces-results-for.md | addresses=[K1,K5] | rings=[historical-mirror] | high/neutral | GT Advanced Technologies 一手业绩公告（SEC EDGAR，CIK 1394954）：PV 与多晶硅设备 non-GAAP 毛利率分别 45% 与 12%，蓝宝石毛利率 20%…
+- `mat-174b60` | findings_mat-174b60.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://static.weeklyonstock.com/26/0804/qdy164103.html
+- `mat-178b29` | sec/2025_AXTI_10-K_2026-03-17/item_8_statements.md | addresses=[K1,K2] | rings=[valuation-anchor] | high/neutral | | ($千) | 2023 | 2024 | 2025 |
+- `mat-17c239` | sec/2026_AXTI_10-Q_2026-08-13/item_1a_risk.md | addresses=[K1,K2,K4,K5,K6,K7] | rings=[historical-mirror,bull-bear,biz-moat-unit-econ] | high/neutral | A组 · 本研究最决定性的一组数字：AXT 自己披露的季度毛利率震荡史
+- `mat-18b132` | 2026-08-26_中金-mlcc周期复盘与展望-算力增长重构供需-结构性提价.md | addresses=[K1,K5] | rings=[historical-mirror] | high/neutral | 中金公司 MLCC 周期复盘：MLCC 具备较强周期性，当前处在结构性涨价窗口。
+- `mat-194ffb` | 2026-08-26_商务部公告-2026-年第-30-号-将-14-家欧盟实体列入出口管制管控名单.md | addresses=[K4,K6] | rings=[-] | high/bear | 商务部公告 2026 年第 30 号：将 14 家欧盟实体列入出口管制管控名单，附件为《出口管制管控名单（2026 年 7 月 24 日）》。
+- `mat-1df988` | findings_mat-1df988.md | addresses=[K1,K3,K6] | rings=[bull-bear,mgmt-capital-alloc] | medium/neutral | URL: https://www.stocktitan.net/sec-filings/AXTI/8-k-axt-inc-reports-material-event-1065f9e00ff9.htm…
+- `mat-20c9e7` | 2026-08-27_axt-q2-2026-earnings-call-transcript-fool-full.md | addresses=[K1,K2,K3] | rings=[biz-moat-unit-econ,financial-arc,valuation-anchor,bull-bear] | high/bull | [Fischer] Q2/2026 营收 $47.6M（qoq +77%、yoy +164%），公司史上最高单季。
+- `mat-225d5d` | 2026-08-26_直接材料占营业成本比例攀升北京通美冲刺科创板.md | addresses=[K1,K2] | rings=[biz-moat-unit-econ] | medium/bear | 通美主营业务：磷化铟衬底、砷化镓衬底、锗衬底、PBN 材料及其他高纯材料的研发、生产与销售。
+- `mat-2289e3` | 2026-09-01_inp-wafer-market-size-vendor-dispersion.md | addresses=[K2,K5] | rings=[valuation-anchor,peer-comparison-financials] | medium/neutral | Mordor：2026 $221.42M（2025 $198M）→ 2031 $386.65M，CAGR 11.73%。
+- `mat-2579cb` | 2026-08-26_磷化铟8大金刚-供给迎来缓和窗口-雪球-含铟资源占比.md | addresses=[K4,K5] | rings=[bull-bear] | medium/bull | 中国掌握全球 75% 以上可开采铟资源。
+- `mat-27cb3c` | findings_mat-27cb3c.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://globalsemiresearch.substack.com/p/axt-the-indium-phosphide-play-for
+- `mat-27fe21` | findings_mat-27fe21.md | addresses=[K1,K2] | rings=[bull-bear] | medium/neutral | URL: https://www.fxbaogao.com/detail/5292001
+- `mat-291e1b` | findings_mat-291e1b.md | addresses=[K1,K3,K6] | rings=[bull-bear,mgmt-capital-alloc] | medium/neutral | URL: https://www.jcapitalresearch.com/axti.html
+- `mat-29a6fb` | findings_mat-29a6fb.md | addresses=[K1,K3,K6] | rings=[bull-bear,mgmt-capital-alloc] | medium/neutral | URL: https://www.maiuspartners.com/p/axts-tongmei-problem-great-asset
+- `mat-29e87f` | 2025_002428_annual_2026-04-22_云南锗业.PDF | addresses=[K3,K5,K2,K4] | rings=[peer-comparison-financials,historical-mirror,biz-moat-unit-econ] | high/neutral | A组 · 命门2 的对照组产能与投放曲线（最关键）
+- `mat-2c2d06` | findings_mat-2c2d06.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://www.mordorintelligence.com/industry-reports/indium-phosphide-wafer-market
+- `mat-2c5dd3` | 2026-08-26_axt-inc-form-144-lists-proposed-insider-share-sale.md | addresses=[K7] | rings=[mgmt-capital-alloc] | high/bear | Form 144 申报列出 Morris S. Young 与 Young Family Trust 在 2026-03-02 至 2026-06-02 期间多个特定日期的多笔交易。
+- `mat-3b21fe` | findings_mat-3b21fe.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://www.coherent.com/news/blog/indium-phosphide-wafer-fab
+- `mat-3fd5db` | 2026-08-26_axti-stock-jumps-as-northland-hikes-ai-driven-pric.md | addresses=[K1,K2] | rings=[consensus,valuation-anchor] | high/bull | ：Northland 将 AXT 目标价从 $90 上调至 $125，维持 Outperform，理由为 AI 数据中心需求走强。
+- `mat-40f3c3` | 2026-08-26_公布-出口许可证管理货物目录-2026年.md | addresses=[K4,K6] | rings=[bull-bear] | high/neutral | 商务部《出口许可证管理货物目录（2026 年）》：2026 年实行许可证管理的出口货物共 43 种。
+- `mat-4111b9` | findings_mat-4111b9.md | addresses=[K1,K2,K3] | rings=[consensus,valuation-anchor] | medium/neutral | URL: https://finance.yahoo.com/markets/stocks/articles/axt-inc-axti-q2-2026-050437348.html
+- `mat-47310e` | 2026-08-26_烈火烹油磷化铟-云南锗业净利数千万元-市值却狂飙数百亿元.md | addresses=[K2,K5,K1] | rings=[peer-comparison-financials,valuation-anchor] | medium/bear | 云南锗业发布《实施高品质磷化铟单晶片建设项目公告》：计划总投资 1.89 亿元，扩建年产 30 万片（折合 4 寸）产能。（与 mat-88dd46 的 IR 记录表互相印证）
+- `mat-479f16` | 2026-08-26_axt-axti-q2-2026-earnings-call-transcript.md | addresses=[K1,K2,K3] | rings=[consensus,biz-moat-unit-econ] | high/neutral | 管理层原话（Q2/2026 电话会）："第二季度营收 $47.6 million。这是 AXT 历史上最高的季度营收。较（Q1 的）$26.9 million 增长近 77%。"
+- `mat-47f734` | 2026-08-26_港股18c章-咨询稿-与上交所科创板之上市要求对比及分析.md | addresses=[K6] | rings=[mgmt-capital-alloc] | medium/neutral | 金杜（或同类律所）对比分析结论："虽然科创板要求较多、较细，但是标准相对 18C 较低。"
+- `mat-491e10` | 2026-08-26_磷化铟-断供-危机才刚开始-新浪财经转载-含配额与通过率.md | addresses=[K4,K5,K1] | rings=[bull-bear] | high/bull | 政策硬约束（三源交叉确认）：2026 年将铟出口总量锁定在年产量的 30% 以内；高纯铟（纯度 ≥6N）的特批更加严格。
+- `mat-5825b3` | 2026-09-01_axt-q2-2026-earnings-call-QA-verbatim.md | addresses=[K1,K2,K3,K5] | rings=[biz-moat-unit-econ,mgmt-capital-alloc,valuation-anchor,bull-bear,consensus] | high/bull | [Bettles/Q&A][2026-07-30] exit-2026 InP 季度产能 ≈ $60M —— Savageaux 问"新目标是否约 $60M 季度 InP 产能"，答"Yes, tha…
+- `mat-62dddb` | 2026-08-26_全球疯抢磷化铟-经济观察报-2026-08-16.md | addresses=[K2,K5] | rings=[peer-comparison-financials,biz-moat-unit-econ] | high/neutral | 经济观察报（2026-08-16）确认云南锗业磷化铟扩产项目全参数：
+- `mat-62df35` | sec/2025_AXTI_10-K_2026-03-17/item_7_mda.md | addresses=[K1,K2,K4,K5] | rings=[valuation-anchor,biz-moat-unit-econ,mgmt-capital-alloc,historical-mirror] | high/neutral | A组 · 三年完整损益（正常化 EPS 的唯一可靠基座）
+- `mat-6fa92c` | 北京通美_审核中心意见落实函回复_2022-07-05.md | addresses=[K1,K2,K3,K5,K6] | rings=[biz-moat-unit-econ,historical-mirror,peer-comparison-financials,mgmt-capital-alloc,valuation-anchor] | high/neutral | A组 · 命门1 的基准口径（本研究最关键的一组数字）
+- `mat-73fe1d` | sec/2025_AXTI_10-K_2026-03-17/item_1a_risk.md | addresses=[K1,K4,K6] | rings=[bull-bear] | medium/neutral | K FY2025 风险因素与 2026Q2 10-Q 风险因素高度重叠（同一套五分类：业务与运营 / 国际业务 / 财务结果与资本结构 / 知识产权 / 合规环保与法律）。本节按"仅记录 10-Q 未…
+- `mat-795e93` | 2026-08-26_axt-sees-unusually-high-options-volume-marketbeat-.md | addresses=[K1,K2] | rings=[consensus,valuation-anchor] | medium/neutral | 印证 Q3/2026 指引：EPS $0.30–0.32 vs 一致预期 $0.10；营收约 $66M vs 约 $38.7M。
+- `mat-814547` | findings_mat-814547.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://www.citriniresearch.com/p/let-there-be-light
+- `mat-8192f2` | 2026-08-26_gt-advanced-loss-widens-in-q1-2014-solar-power-new.md | addresses=[K1,K5] | rings=[historical-mirror] | medium/neutral | GT Advanced 2014Q1 亏损扩大。同期披露：光伏与多晶硅设备部门 non-GAAP 毛利率分别达 37% 与 57%，公司给出的（合并）毛利率指引区间为 25%–27%。
+- `mat-88dd46` | 2026-08-26_公司公告-云南锗业-2026年5月13日投资者关系活动记录表.md | addresses=[K2,K5] | rings=[peer-comparison-financials,biz-moat-unit-econ] | high/neutral | 命门2 的决定性一手数据（云南锗业 2026-05-13 投资者关系活动记录表）：
+- `mat-8abeab` | findings_mat-8abeab.md | addresses=[K1,K2,K3] | rings=[consensus,valuation-anchor] | medium/neutral | URL: https://www.investing.com/news/transcripts/earnings-call-transcript-axt-inc-beats-q1-2026-eps-e…
+- `mat-8b9a27` | sec/2025_AXTI_10-K_2026-03-17/item_5_market.md | addresses=[K7,K1] | rings=[mgmt-capital-alloc,valuation-anchor] | high/neutral | 股东总回报指数（基期 2020-12-31 = 100）：
+- `mat-90ba3e` | findings_mat-90ba3e.md | addresses=[K1,K5] | rings=[historical-mirror] | medium/neutral | URL: https://news.cncaa.org/9499.html
+- `mat-926fc8` | 2026-08-26_北京通美晶体ipo受阻-关联交易价格显失公允-业绩真实性存疑.md | addresses=[K1,K6,K7] | rings=[biz-moat-unit-econ,mgmt-capital-alloc] | medium/bear | 关联采购金额（四期）：8,230.22 / 3,185.49 / 6,160.82 / 5,748.58 万元——即通美不仅有关联销售，还有相当规模的关联采购。
+- `mat-950ac9` | 2026-08-26_axt-inc-axti-forecast-price-target-analyst-ratings.md | addresses=[K1,K2] | rings=[consensus] | medium/neutral | 下一季度一致预期：EPS $0.31、营收 $60.37M。
+- `mat-999adc` | findings_mat-999adc.md | addresses=[K5,K4] | rings=[peer-comparison-financials] | medium/neutral | URL: https://www.tmtpost.com/8059100.html
+- `mat-a842e7` | findings_mat-a842e7.md | addresses=[K5,K1] | rings=[peer-comparison-financials] | medium/neutral | URL: https://eu.36kr.com/en/p/3651344579993989
+- `mat-a98f5d` | findings_mat-a98f5d.md | addresses=[K7] | rings=[mgmt-capital-alloc] | medium/neutral | URL: https://investors.axt.com/Investors/news/news-details/2026/AXT-Announces-Adjournment-of-2026-An
+- `mat-aac87d` | sec/2025_AXTI_10-K_2026-03-17/item_8_notes.md | addresses=[K6,K7,K2] | rings=[mgmt-capital-alloc,biz-moat-unit-econ] | high/neutral | A组 · 股权结构全图（P-OWNERSHIP primer 的一手骨架）
+- `mat-ab66f4` | findings_mat-ab66f4.md | addresses=[K1,K3,K6] | rings=[bull-bear,mgmt-capital-alloc] | medium/neutral | URL: https://compoundsemiconductor.net/article/124087/AXT_raises_over_630m_to_increase_InP_capacity
+- `mat-b1de1e` | findings_mat-b1de1e.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://stock.10jqka.com.cn/20260613/c677444177.shtml
+- `mat-b7b005` | findings_mat-b7b005.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://finance.yahoo.com/news/axt-expands-indium-phosphide-capacity-231335079.html
+- `mat-b87cd0` | findings_mat-b87cd0.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://finance.yahoo.com/news/axt-touts-surging-indium-phosphide-100250562.html
+- `mat-bc4b50` | 2026-08-26_axti-forecast-price-target-estimates-fintel.md | addresses=[K1,K2,K5] | rings=[consensus,valuation-anchor,bull-bear] | high/bear | Fintel 预测 2027-12-31 季度：营收 $42MM（同比 −10.84%）、EPS $0.13（同比 −29.57%）。
+- `mat-c299ed` | 2026-08-26_缺口超50-订单排到2028年-磷化铟的-断供-危机才刚开始.md | addresses=[K4,K5,K1] | rings=[bull-bear] | medium/bull | 关键政策数据：2026 年将铟出口总量锁定在年产量的 30% 以内；高纯铟（纯度 ≥6N）的特批更加严格。
+- `mat-c31a89` | 2026-08-26_mlcc周期复盘对比-把握十年一次的历史级别机遇-2017.md | addresses=[K1,K5] | rings=[historical-mirror] | medium/bull | MLCC 2017-2018 周期的四要素拆解：需求——汽车电子全面爆发；供给——国巨控产、日系退出低端；缺货——交期延期 12 周；价格——现货最高（数值被截断）。
+- `mat-c7c751` | sec/2026_AXTI_10-Q_2026-08-13/item_1_financial.md | addresses=[K1,K2,K6,K7] | rings=[valuation-anchor,biz-moat-unit-econ,mgmt-capital-alloc] | high/neutral | A组 · 股本与摊薄（环②每股口径的基准）
+- `mat-d17bd7` | findings_mat-d17bd7.md | addresses=[K4,K5] | rings=[bull-bear] | medium/neutral | URL: https://m.cls.cn/detail/2461334
+- `mat-d22e59` | 2026-08-26_稀有金属-铟-2026-年出口配额降至年产量-30-出口量环比暴跌-23.md | addresses=[K4,K5] | rings=[bull-bear] | medium/neutral | 年底中国进一步收紧铟出口配额，2026 年出口配额降至年产量的 30%。
+- `mat-d252fe` | 2026-08-26_axti-upgraded-by-needham----price-target-90-gurufo.md | addresses=[K1,K2] | rings=[consensus,valuation-anchor] | medium/neutral | 分析师意见分布极度分散：Needham Buy $90 vs B. Riley Neutral $52–55。
+- `mat-df6ffc` | findings_mat-df6ffc.md | addresses=[K5] | rings=[bull-bear] | medium/neutral | URL: https://seekingalpha.com/article/4916989-axt-market-is-pricing-a-monopoly-that-does-not-exist
+- `mat-e0222e` | sec/2026_AXTI_10-Q_2026-08-13/item_other.md | addresses=[K7] | rings=[mgmt-capital-alloc] | high/neutral | A组 · 证券集体诉讼（Shareholder Class Action）
+- `mat-e047be` | 2026-08-26_axt-adjourns-2026-shareholder-meeting-for-quorum-8.md | addresses=[K7] | rings=[mgmt-capital-alloc] | high/neutral | K 事实：AXT 2026 年股东大会在仅有 48% 股份出席后休会（未达法定人数 quorum），改至 6 月 4 日重开（另一源提及 6 月 11 日的重开通知）。
+- `mat-e2d653` | findings_mat-e2d653.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: http://www.moomoo.com/hans/community/feed/axt-surges-17-5-as-market-bets-on-an-inp-117115823325…
+- `mat-e40421` | 2026-08-26_mlcc或迎-史上最长缺货潮-概念股集体飙升.md | addresses=[K1] | rings=[historical-mirror] | low/bull | 报道当日 A 股 MLCC 概念股表现：双星新材（002585.SZ）9 天 5 板；宏达电子（300726.SZ）、昀冢科技（688260.SH）涨超 10%；振华科技（000733.SZ）、火炬电…
+- `mat-e47491` | 2026-08-26_axt-inc-axti-2026-annual-shareholder-meeting.md | addresses=[K7] | rings=[mgmt-capital-alloc] | medium/neutral | AXT 2026 年年度股东大会议案包含：对 Named Executive Officers 薪酬的非约束性咨询投票（say-on-pay）。
+- `mat-e6d79a` | sec/2025_AXTI_10-K_2026-03-17/item_1_business.md | addresses=[K3,K5,K6] | rings=[biz-moat-unit-econ,peer-comparison-financials] | high/neutral | 公司 1986 年成立以商业化其自有 VGF（垂直梯度冷凝） 技术，1990 年录得首笔衬底销售。一个经营分部、两条产品线：特种材料衬底 + 制造这些衬底所需的原材料。
+- `mat-ed9db3` | 2026-08-26_axt-inc-axti-q2-2026-earnings-call-transcript.md | addresses=[K1,K3] | rings=[biz-moat-unit-econ] | high/neutral | 管理层对 Q2 毛利率的官方归因（原话要点）："毛利率在第二季度again 显著改善，favorable product mix（有利的产品结构）。第二季度毛利率为 44.9%。"
+- `mat-eea747` | 2026-08-26_云南锗业-002428-盈利预测.md | addresses=[K1,K2] | rings=[consensus,valuation-anchor] | medium/bull | 卖方对云南锗业（002428）的盈利预测：维持 2026-2028 年 EPS 预测 0.51 / 1.71 / 2.57 元。
+- `mat-eebdf6` | 2026-08-26_three-lessons-from-gt-advanced-technologies-nasdaq.md | addresses=[K1,K5] | rings=[historical-mirror] | medium/bear | → 2013 GT Advanced 分业务营收变动：光伏 −35.8%、多晶硅 −52.3%、蓝宝石 −78.7%。
+- `mat-efd716` | 2026-08-26_axti-stock-skyrockets-as-investors-cheer-blowout-g.md | addresses=[K1,K2] | rings=[consensus,valuation-anchor,bull-bear] | high/bull | Q3/2026 管理层指引（本轮最关键的前瞻数字）：EPS $0.30–0.32 vs 街上一致预期 $0.10；营收约 $66M vs 街上 $38.8M。
+- `mat-f0db77` | sec/2025_AXTI_10-K_2026-03-17/item_7a_quant_risk.md | addresses=[K2] | rings=[-] | medium/neutral | 汇率风险：功能货币为人民币（境外运营），多数运营与成本在中国、以人民币发生。汇兑损益：2025 年损失 $74K、2024 年收益 $0.1M、2023 年收益 $0.2M —— 体量极小，非重要变量…
+- `mat-f563d1` | findings_mat-f563d1.md | addresses=[K1,K5] | rings=[historical-mirror] | medium/neutral | URL: https://solar.ofweek.com/2012-01/ART-260001-8420-28594762.html
+- `mat-f65d60` | 2026-08-26_未知机构-磷化铟全球供需情况和扩产预期20260105.md | addresses=[K5,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | 卖方（未具名机构，2026-01-05）《磷化铟全球供需情况和扩产预期》要点：
+- `mat-f7e025` | 2026-08-26_securities-and-exchange-commission.md | addresses=[K7] | rings=[mgmt-capital-alloc] | medium/neutral | SEC 申报文件（代理声明类）片段：AXT, Inc. 年度股东大会定于 2026-05-14 召开；为 2026 财年向 Named Executive Officers 授予了限制性股票（rest…
+- `mat-f90065` | 2026-08-26_第十八c章特專科技公司---上市規則與指引.md | addresses=[K6] | rings=[mgmt-capital-alloc] | medium/neutral | 港交所《主板上市规则》第十八C 章的结构性目录：概览 / 定义（18C.01）/ 上市条件 / 基本条件 / 未商业化公司的附加条件 / 特专科技公司的首次公开招股 / 股份分配 / 发售规模 / 特…
+- `mat-fb5f4e` | findings_mat-fb5f4e.md | addresses=[K5,K2,K1] | rings=[bull-bear,peer-comparison-financials] | medium/neutral | URL: https://straitsresearch.com/report/indium-phosphide-wafer-market
+- `mat-fc1ddc` | findings_mat-fc1ddc.md | addresses=[K1,K2,K3] | rings=[consensus,valuation-anchor] | medium/neutral | URL: https://www.fool.com/earnings/call-transcripts/2026/08/03/axt-axti-q2-2026-earnings-call-transc…
+- `mat-fcb2b1` | 2026-08-26_电子行业点评报告mlcc-供给端出清.md | addresses=[K1,K5] | rings=[historical-mirror] | medium/neutral | MLCC 2017-2018 涨价缺货周期回顾：MLCC 提价 15%-30%、价格上涨 20%-30%，高频电容交货期延长至 6 个月（2018-01-01 时点）。
+- `mat-fd4888` | 2026-08-26_mlcc指数三连涨-下一个存储-确认了.md | addresses=[K1,K5] | rings=[historical-mirror] | medium/bull | 实际提价一手数据：2026 年 4 月村田对 AI 服务器高容 MLCC 提价 15%–35%；太阳诱电跟进，自 5 月起对中低容消费级及车用 MLCC 提价 6%–13%。
+- `mat-fef9f9` | 2026-08-26_北京通美晶体技术股份有限公司.md | addresses=[K1,K6,K3] | rings=[biz-moat-unit-econ] | high/neutral | 与通美落实函（mat-6fa92c）一致的一手数字复述：2021 年 InP 销售单价 1,196.06 元/片；2021H1 售 AXT 均价 662.39 元/片 vs AXT 对外售价 1,37…

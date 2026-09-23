@@ -1,0 +1,317 @@
+slug: us-aaoi
+variant: opus5
+topic_type: company
+display_name: 应用光电 (Applied Optoelectronics)
+ticker: NASDAQ_AAOI
+generated: 2026-09-02T00:00:00+08:00
+version: 2
+supersedes_version: 1
+revised_after_critic: true
+critic_verdict_addressed: request-more
+data_freshness: 2026-Q2
+
+buy_box:
+  strong_buy_max: 68
+  accumulate_min: 68
+  accumulate_max: 86
+  hold_min: 86
+  hold_max: 106
+  current_price: 103.39
+  price_as_of: 2026-09-01
+  current_zone: hold
+  anchor_note: >-
+    各档由「在该价位买入相对加权 EV $106.17 的期望回报」定义：≤$68 期望 ≥+56%；$68-86 为 +23% 到 +56%
+    （上沿 $86 = EV 打 19% 安全边际）；$86-106 为 0 到 +23%（无足够安全边际）；>$106 期望 ≤0。
+    v1 的锚是 EV $96、买入框 62/78/96；v2 上移到 68/86/106，原因是定价锚由单源改为 5 源交叉后
+    FY2027 EPS 从 $4.18 修正为 $4.75。**买入框不因股价下跌而上移。**
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: >-
+    期望收益 +2.7%（加权 EV $106.17 vs 现价 $103.39，均为 FY2027 年底未折现目标价），且敏感带跨零
+    （Bull 终值倍数 26x 时 EV $99.19 = −4.1%；30x 中枢 $106.17 = +2.7%；33x 时 $111.41 = +7.8%）。
+    一个期望值贴着零的下注不配更高档位。另有三个决定性变量至今黑箱（分段毛利率——它使命门 M1 的定量核心
+    失效、已认证产能、分速率出货只数与 ASP），且 Q4'26 是 5 个月内揭晓的高杠杆二元事件、信心度仅中、
+    强度评分 4.2/10。full_max_pct 由 v1 的 3% 上调到 4%，理由是净利率 delta 从 −3.5pp 收窄到 −1.8pp
+    且「终值倍数」这条 v1 的看空 delta 被证明不存在（现价只隐含 21.8x，低于我 Base 用的 23x）。
+  initial_max_pct: null
+  full_max_pct: 4
+  add_ladder_prices: [66, 76, 86]
+  max_cluster_pct: 8
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: 逆向 PE-DCF（FY2027 净利率 × 终值倍数 × 完全稀释股数；均为 FY2027 年底未折现目标价）
+    bull_fair_value: [198, 221]
+    base_fair_value: [81, 92]
+    bear_fair_value: [30, 42.5]
+    key_assumption: >-
+      FY2027 非 GAAP 净利率：Bull 18%（收入 $3.80B、98M 股、30x 中枢）/ Base 13.0%（我的判断）
+      到 14.8%（市场干净口径 $381M÷$2,574M）、23x、96M 股 / Bear 收入 $1.50-1.70B × P/S 2.0-2.5x、100M 股。
+      Bull 倍数由 v1 的 26x 提到 30x：v1 一端向下给到低于纯代工 Fabrinet 的 3.10x、另一端向上却压在
+      同业带（旭创 49.53x / 新易盛 43.48x / Coherent 66.19x）下限之下，属自我设限。不取 40x（峰值倍数叠加峰值盈利）。
+  - name: peer_cross_section
+    label: 同业横截面（P/S 折溢价，实时倍数 as-of 2026-09-01；每股值除以当前流通股 84.386M）
+    bull_fair_value: [113, 127]
+    base_fair_value: [88, 99]
+    bear_fair_value: [53, 66]
+    key_assumption: >-
+      TTM 收入 $596M × 同业 P/S。中位 13.26x（剔除 AAOI：FN 3.10 / COHR 7.48 / 光迅 10.98 /
+      旭创 15.53 / 新易盛 16.15 / LITE 25.86）。Base 不折不溢（12.5-14.0x），把折溢价分歧留给两端表达。
+
+base_convergence:
+  models_included: [reverse_pe_dcf, peer_cross_section]
+  range: [81, 99]
+  overlap_range: [88, 92]
+  note: >-
+    v1 曾宣称「三模型 Base 收敛 $75-94」，但 base_plus_option 已在 v2 退出收敛（见 option_pricing_check）。
+    现价 $103.39 高于两模型的 Base 重叠区 $88-92。
+
+option_pricing_check:
+  role: sanity check only — 不产出每股公允值、不参与 Base 收敛
+  base_business_revenue_musd: 639
+  base_business_detail: CATV 约 $260M + 老世代数据中心约 $379M（Q2'26 数据中心 $107.6M/季 − 800G $12.8M → $94.8M/季 年化）
+  base_business_value_busd: [0.96, 1.92]
+  market_implied_option_value_busd: [6.86, 7.82]
+  market_implied_option_pct_of_cap: [78, 89]
+  my_option_expected_npv_busd: 3.75
+  market_over_mine_x: [1.83, 2.09]
+  demotion_reason: >-
+    三条结构性缺陷：① 重复计价——模型 A 的 Base（23x × 一致预期 EPS）里已含市场对同一份期权的定价，
+    模型 B 再单独加一遍；② 二次贴现——B 把期权 NPV 折现 3 年到今天，而 A/F 是 FY2027 年底未折现目标价，
+    时点不可并列；③ 概率被乘两遍——B 的每档已乘成功概率，进情景光谱又乘一次档位概率。
+    另 v1 的模型 B 每股表算术上高估约 60%。
+
+expected_value:
+  distribution:
+    - {label: 强多, prob: 0.25, fair_value: 209, basis: "收入 $3.80B / 净利率 18% / 98M 股 / 30x"}
+    - {label: 弱多, prob: 0.15, fair_value: 92, basis: "一致预期兑现：$2.60B / 14.8% / 96M / 23x（市场口径 Base）"}
+    - {label: Base（我的判断）, prob: 0.40, fair_value: 81, basis: "$2.60B / 13.0% / 96M / 23x"}
+    - {label: 弱空, prob: 0.13, fair_value: 42.5, basis: "$1.70B × P/S 2.5x ÷ 100M（v1 表内误写为 $62）"}
+    - {label: 强空, prob: 0.07, fair_value: 30, basis: "$1.50B × P/S 2.0x ÷ 100M"}
+  ev_fair_value: 106.17
+  ev_vs_price_pct: 2.7
+  sensitivity_bull_multiple:
+    - {bull_multiple: 26, bull_fair_value: 181, ev: 99.19, ev_vs_price_pct: -4.1}
+    - {bull_multiple: 30, bull_fair_value: 209, ev: 106.17, ev_vs_price_pct: 2.7}
+    - {bull_multiple: 33, bull_fair_value: 230, ev: 111.41, ev_vs_price_pct: 7.8}
+  v1_comparison_note: >-
+    v1 的 EV 是 $93.45 / $99.9（两口径并列且未说明取哪个），期望收益 −15%。v2 为单一口径 $106.17、+2.7%。
+    约 11pp 的改善来自我的修正（定价锚 5 源交叉、弱空档算术改正、Bull 倍数校准、弱多档补概率），
+    约 9pp 来自股价自身从 $113.76 跌到 $103.39。**基本面判断方向未变，只是幅度小了很多。**
+
+kill_criteria:
+  - id: q4_2026_revenue_miss
+    description: 2026Q4 GAAP 收入低于 330M 美元（管理层三口径中最低者的下限），曲棍球棒证伪
+    status: pending
+    check_at: 2027-02
+  - id: q4_2026_partial_370_450
+    description: 2026Q4 收入落在 370-450M 美元的打折兑现档（卖方共识 442.87M 恰在此区间）
+    status: pending
+    check_at: 2027-02
+  - id: gm_stuck_below_31
+    description: 2027H1 连续两季非 GAAP 毛利率均不高于 31%，代工位判断成立
+    status: pending
+    check_at: 2027-08
+  - id: gm_stuck_32_34_op_below_8
+    description: >-
+      2027H1 两季非 GAAP 毛利率落在 32-34% 区间且营业利润率仍低于 8%，证实「卖得出货但变不成每股利润」
+      （v2 改写：v1 用营业利润率 <5%，按 FY2019 一手教训放宽到 <8%——那年毛利率还有 24.2% 时营业利润已深亏）
+    status: pending
+    check_at: 2027-08
+  - id: third_customer_concentration_break
+    description: >-
+      未披露身份的第三大客户占收入比在任一季度回落 5pp 以上（如 24% → 19% 以下），且公司收入同比增速同步降档
+      → 单一大客户抽单机制重演。**这是唯一一条有本案自身一手历史先例的 kill**（FY2018 剧本，mat-41683c）
+    status: pending
+    check_at: 2026-11
+  - id: dilution_breach_105m
+    description: 加权平均或完全稀释股数超过 105M 股，每股价值漏损假设成立（每季观测，首个正式判定点 2027-02）
+    status: pending
+    check_at: 2027-02
+  - id: digicomm_credit_event
+    description: Digicomm 应收出现超过 20M 美元减值或计提；或收入下滑同时其占应收比例不降
+    status: pending
+    check_at: 2026-11
+  - id: catv_rollover
+    description: CATV 分部收入连续两季同比负增长，第一大业务见顶且数据中心未接棒
+    status: pending
+    check_at: 2027-02
+  - id: gm_above_35_op_above_10
+    description: >-
+      反向证伪——非 GAAP 毛利率连续两季不低于 35% 且营业利润率不低于 10%，直接推翻净利率 13.0% 的判断基础
+      （v2 改写：v1 只要求 GM ≥34%，但按修正后门槛 34% 已落在我承认可能达到的区间内，会误触发）
+    status: pending
+    check_at: 2027-08
+  - id: segment_gm_disclosed
+    description: >-
+      反向证伪（v2 新增）——公司首次披露分部（CATV vs 数据中心）毛利率。不改变数字，但把本案最要紧的黑箱
+      变成可验证变量；若 datacom 分部毛利率显著高于合并的 27.72%，M1「代工位」定性需重写、置信度应由中降到低
+    status: pending
+    check_at: 2027-02
+  - id: second_hyperscaler_lockin
+    description: 反向证伪——出现第二个类 Amazon 的锁量或权证或多年协议结构，紧缺配额升级为多年设计中标
+    status: pending
+    check_at: 2027-06
+  - id: q4_2026_beat_480m
+    description: 反向证伪——2026Q4 收入不低于 480M 美元，假设 1 完全兑现，Base 应上移
+    status: pending
+    check_at: 2027-02
+  - id: share_count_held_below_95m
+    description: >-
+      反向证伪——到 2027Q4 加权平均股数不超过 95M 且当年 ATM 净发行低于 150M 美元，推翻股数 96-100M 的判断，
+      并意味着经营现金流已能覆盖大部分 capex
+    status: pending
+    check_at: 2028-02
+
+signposts:
+  - date: 2026-11-04
+    event: >-
+      Q3'26 财报与 Q4 指引（第一个决策点）。v2 追加要求：须把 FY2026 年底出口毛利率（CEO 已给 32-33%）
+      与 FY2027 稳态毛利率分开听——v1 把这两个数混用过
+    bull_signal: 收入达指引上限 290M + 800G 环比接近 5 倍兑现 + Q4 指引不低于 450M
+    bear_signal: 收入落指引下半 + Q4 指引低于 400M 或拒绝给指引 + 营业利润指引仍缺席
+    triggered: null
+  - date: 2026-11-04
+    event: 第三大客户集中度首查（K9 · 2026Q2 为 24%，一年前仅 6%）
+    bull_signal: 占比稳定，或出现第二家分散集中度
+    bear_signal: 占比回落 5pp 以上且收入同比增速同步降档 → FY2018 剧本重演
+    triggered: null
+  - date: 2026-11-10
+    event: USTR 301 排除清单到期
+    bull_signal: 排除延续或扩大且覆盖光模块
+    bear_signal: 到期不续，对中国制造占 42.8% 的成本结构形成压力
+    triggered: null
+  - date: 2026-12
+    event: FCC 拟禁进口新型号中国光模块的规则是否正式发布
+    bull_signal: 发布且覆盖面广，非中国产能溢价扩大
+    bear_signal: 搁置或仅限新型号；且本案自身 42.8% 收入为中国制造，未必净受益
+    triggered: null
+  - date: 2027-01
+    event: 1.6T 第二家超大厂认证与月出货口径
+    bull_signal: 认证不少于 2 家且月出货不低于 3 万只
+    bear_signal: 仍只 1 家且 Q4 只做到 70-80M
+    triggered: null
+  - date: 2027-01-15
+    event: 2030 转债赎回权可行使日（触发价 56.30 已被突破）
+    bull_signal: 公司逼转，2.886M 股稀释一次性确定化且债务从表内消除
+    bear_signal: 未行使，转股权（公允价与账面价差约 316M 美元）继续留在债主手上；股价若跌回 56.30 以下则该窗口关闭
+    triggered: null
+  - date: 2026-11
+    event: 同业估值倍数带季度监测（假设 4 唯一的可观测代理）
+    bull_signal: 倍数带维持或扩张（当前旭创 PE 49.53、新易盛 43.48、Coherent 66.19，而现价只要求 21.8x）
+    bear_signal: 同业 PE 中位数跌破 30 倍，或旭创毛利率见顶回落，整个板块估值降档
+    triggered: null
+  - date: 2027-02
+    event: Q4'26 财报（假设 1 主判决，最关键决策点）
+    bull_signal: Q4 不低于 480M + 非 GAAP 毛利率不低于 31% + 股数不超过 100M
+    bear_signal: Q4 低于 400M 或非 GAAP 毛利率低于 29%
+    triggered: null
+  - date: 2027-08
+    event: 2027H1 非 GAAP 毛利率 × 营业利润率轨迹（分歧 1 与命门 M5 的裁决 · v2 加装营业利润率）
+    bull_signal: 连续两季毛利率不低于 35% 且营业利润率不低于 10%
+    bear_signal: 连续两季毛利率不高于 31%；或毛利率 32-34% 而营业利润率低于 8%
+    triggered: null
+  - date: 2027-12
+    event: 行业供需缺口是否如 LightCounting 预期消除
+    bull_signal: 缺口延续，或卡口迁移到 AAOI 有优势的环节（组装/认证/封装）
+    bear_signal: 缺口消除 + 价格加速下跌（2019/2022 的历史机制，约每三年一轮）
+    triggered: null
+
+cluster_tags: [ai-compute, optical-networking, us-hardware]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 1
+    kind: data-missing
+    priority: P0
+    note: >-
+      分段毛利率（CATV 硬件 vs datacom 模块）从未披露——**v2 新增且为全案最要紧的缺口**。命门 M1「代工位」
+      的唯一定量核心是「AAOI 27.72% vs 旭创 46.59%」，但 AAOI 含 53.8% CATV 硬件而旭创是纯 datacom，
+      苹果比橘子；18.9pp 差额里有多少来自代工位、多少来自业务混合无法拆开。已攻两轮（04 收料 + 05 critic 补料）
+      仍不存在，非收料覆盖度问题。**M1 置信度已因此从中高下调到中，且在此数拿到前不得回升。** 替代承重路径
+      已建立（同一家公司九年纵向分部序列），并踢 07-drilldown（P0）
+  - ring: 2
+    kind: data-missing
+    priority: P0
+    note: 已认证产能（qualified capacity）从未披露，导致利用率只能用名义产能倒推，且分子依赖 ASP 假设
+  - ring: 2
+    kind: training-estimate
+    priority: P0
+    note: 分速率出货只数与 ASP 从未披露，ASP 取 300-604 美元区间（同业口径与管理层长期目标隐含），误差可达一倍
+  - ring: 1
+    kind: data-missing
+    priority: P1
+    note: >-
+      2026Q2 第三大客户（占收入 24%，一年前仅 6%）身份未披露，模型对该结构变化无解释力。
+      **v2 已从「盲点」升格为风险 K9 并配 kill `third_customer_concentration_break`**，因为
+      FY2017-2019 崩塌的两个死因之一正是单一大客户抽单（mat-41683c）
+  - ring: 1
+    kind: data-missing
+    priority: P1
+    note: >-
+      FY2020 / FY2021 数据中心分部收入与毛利率未取，九年弧线中间有两年空档。
+      **这是所有缺口里唯一确定可解且成本极低的一条**——拉 FY2021 10-K 一份文件即可补齐两年。已踢 07-drilldown（P1）
+  - ring: 1
+    kind: data-missing
+    priority: P1
+    note: 自有激光 fab 的自供率具体数字从未量化，管理层被直问后回避；激光业务 55-65% 毛利率对合并毛利率的贡献无法计算
+  - ring: 3
+    kind: data-missing
+    priority: P1
+    note: 无 backlog 与剩余履约义务披露（所有合同期限不超过一年），管理层口述的 200M+ 在手订单无法从财报核对
+  - ring: 5
+    kind: training-estimate
+    priority: P2
+    note: >-
+      镜鉴 1（FY2017-2019）的经营侧已在 v2 全部一手化（mat-41683c：收入与分部毛利率序列），
+      但**股价峰谷幅度约 −90% 仍为训练知识级回忆**（10-K 不含股价序列）。**不作为任何情景的定价输入**
+      （Bear 用 30-42.5 美元，远高于按该幅度机械外推的结果）
+  - ring: 4
+    kind: method-risk
+    priority: P1
+    note: >-
+      **v2 新增（方法论）**：critic 在 v1 查出四处表内算术与自身参数不符（弱空档 62 应为 42.5、模型 B 每股表
+      高估约 60%、Q2 数据中心 82M 应为 107.6M、EV 两口径并列未说明取哪个），**且四处方向一致地压低公允值**。
+      这不是随机错误的分布形状，没有理由认为未被查到的地方没有同向偏差。v2 的每个公允值已用脚本重算并保留可复现输出
+
+market_implied:
+  metric: implied_fy2027_net_margin
+  value: 14.80
+  basis: >-
+    干净口径 $381M ÷ $2,574M（Simply Wall St 自洽口径，5 源交叉之一）。v1 的 15.52% 是拿街上 EPS ×
+    公司自己的 92.8M 股本指引倒推的，把股数分歧折叠进了毛利率分歧。反推街上自己的股本假设是 78.2-82.8M，
+    **低于公司 Q3 指引的 92.8M，甚至低于 2026-06-30 期末流通股 84.386M**
+  consensus_fy2027_eps: 4.75
+  consensus_fy2027_eps_detail: 中位 4.735 / 均值 4.800 / 区间 4.18-5.55（5 源：Chartmill、Yahoo、WSJ、Simply Wall St、Barchart）
+  consensus_fy2027_revenue_busd: 2.60
+  current_forward_pe: 21.8
+
+my_vs_market_delta:
+  metric: implied_fy2027_net_margin
+  my_value: 13.0
+  delta: "-1.8pp"
+  direction: short
+  basis: >-
+    v1 记的是 12.0% / −3.5pp。v2 两处修正：① 我的净利率从 12.0% 上修到 13.0%，因为 FY2019 10-K 证明
+    这家公司在上一个世代的高点做到过 43.50% 分部毛利率，v1 隐含的「结构性天花板 32%」缺一手依据；
+    ② 市场口径改用干净的 14.80%。**「终值倍数」这条 v1 的第三条 delta 已被判定不成立且方向相反**——
+    现价只隐含 21.8x，低于我 Base 用的 23x，倍数因此是看多来源而非看空来源。
+    **股数 delta（我 96-100M vs 街上 78-83M）不再单独乘一遍**，因为它与净利率 delta 在 v1 的算法里
+    存在重复计价；v2 只把它作为定性风险提示与 Bear/Base 的股数输入
+
+thesis_link:
+  strength_score: 4.2
+  strength_score_v1: 3.0
+  stance: 观望（现价落在观望区上沿，不建仓；已持有者可持不加）；不做空
+  confidence: 中
+  core_question: >-
+    命门已从「32-40% 毛利率做不到」改为「做到了守不住」：FY2017 数据中心分部毛利率 43.50%，三年掉到
+    24.20%，八年后（FY2025）收入只多 19.2%（CAGR 2.2%）而高点毛利率低 13.5pp。观测量必须是
+    毛利率 × 营业利润率（FY2019 教训：GM 还有 24.2% 时营业利润已深亏）
+  see_also: [thesis_v2.md, decomposition_v2.md, "outputs/05-critic-review.md"]

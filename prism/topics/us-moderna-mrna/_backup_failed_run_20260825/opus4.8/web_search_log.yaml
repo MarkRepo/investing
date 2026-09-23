@@ -1,0 +1,83 @@
+slug: us-moderna-mrna
+variant: opus4.8
+entries:
+- searched_at: '2026-08-25T14:10:15.869697+00:00'
+  query: Moderna 2025 full year revenue results vs guidance
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-25T14:10:15.878540+00:00'
+  query: Moderna intismeran INT V940 Phase 3 melanoma NSCLC readout
+  triggered_by: 00-prescan-baseline
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-25T14:10:15.907920+00:00'
+  query: Moderna mRESVIA RSV 2025 sales ACIP recommendation
+  triggered_by: 00-prescan-baseline
+  n_results: 3
+  n_high: 0
+  n_mid: 3
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-25T14:10:15.934464+00:00'
+  query: Moderna MRNA stock price valuation analyst target Aug 2026
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-25T14:10:15.968300+00:00'
+  query: Moderna 2026 pipeline catalysts norovirus CMV cash runway breakeven
+  triggered_by: 00-prescan-baseline
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-25T14:20:15.055517+00:00'
+  query: INT intismeran ESMO 2026 hazard ratio cold tumor peak sales
+  triggered_by: 00-deep-fetch
+  n_results: 1
+  n_high: 0
+  n_mid: 1
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-25T14:20:15.093402+00:00'
+  query: Moderna mRNA-1010 mFLUSIVA flu FDA approval Aug 2026 PDUFA
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-25T14:20:15.137574+00:00'
+  query: Moderna Merck intismeran collaboration 50/50 profit share economics
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-25T14:20:15.186206+00:00'
+  query: Moderna capital allocation buyback dilution Bancel track record
+  triggered_by: 00-deep-fetch
+  n_results: 2
+  n_high: 0
+  n_mid: 2
+  n_low: 0
+  disposition: registered
+- searched_at: '2026-08-25T14:20:15.188575+00:00'
+  query: 历史失败镜鉴 生物科技平台首胜后翻倍mean-revert CAR-T gene therapy hype cycle overvaluation
+  triggered_by: 00-deep-fetch
+  n_results: 0
+  n_high: 0
+  n_mid: 0
+  n_low: 0
+  disposition: native-websearch-tool

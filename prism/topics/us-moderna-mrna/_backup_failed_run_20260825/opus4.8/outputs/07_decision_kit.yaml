@@ -1,0 +1,117 @@
+slug: us-moderna-mrna
+variant: opus4.8
+topic_type: company
+display_name: Moderna (MRNA, NASDAQ)
+ticker: US_MRNA
+generated: '2026-08-25T14:40:00Z'
+data_freshness: 2026-06(Q2)/2026-08(INT P3,mFLUSIVA)
+buy_box:
+  strong_buy_max: 70
+  accumulate_min: 70
+  accumulate_max: 85
+  hold_min: 85
+  hold_max: 100
+  current_price: 138.89
+  price_as_of: '2026-08-24'
+  current_zone: above_hold
+position_framework:
+  position_tier: 试探
+  sizing_rationale: 冷肿瘤未证+ESMO HR未披露,黑箱度高;现价>EV,仅跟踪期权不建底仓
+  initial_max_pct: null
+  full_max_pct: 3
+  add_ladder_prices:
+  - 70
+  - 85
+  max_cluster_pct: 5
+valuation_models:
+- name: platform_rnpv
+  label: 平台rNPV(分成后净)
+  bull_fair_value:
+  - 150
+  - 170
+  base_fair_value:
+  - 85
+  - 95
+  bear_fair_value:
+  - 60
+  - 70
+- name: consensus_anchor
+  label: 19家投行共识锚
+  bull_fair_value:
+  - 125
+  - 170
+  base_fair_value:
+  - 85
+  - 95
+  bear_fair_value:
+  - 60
+  - 77
+kill_criteria:
+- id: esmo_hr_strong
+  description: ESMO RFS HR≤0.55且OS现获益→翻多$150+
+  status: pending
+  check_at: '2026-10-27'
+- id: esmo_hr_weak
+  description: ESMO HR>0.75→连黑色素瘤价值打折,加空$60-70
+  status: pending
+  check_at: '2026-10-27'
+- id: cold_tumor_fail
+  description: 首个冷肿瘤(RCC/NSCLC)读出失败→$9.2B峰值腰斩
+  status: pending
+  check_at: '2026-12-31'
+- id: cash_burn_over
+  description: 季度烧钱超指引/增发稀释→跑道命门恶化
+  status: pending
+  check_at: '2026-10-31'
+signposts:
+- date: '2026-10-27'
+  event: ESMO 2026披露INT完整HR/OS
+  bull_signal: RFS HR≤0.55+OS趋势
+  bear_signal: HR>0.75或OS无信号
+  triggered: null
+- date: '2026-12-31'
+  event: 首个冷肿瘤(RCC辅助)读出
+  bull_signal: 主终点阳性
+  bear_signal: 未达标
+  triggered: null
+- date: '2026-10-31'
+  event: Q3 2026财报(现金+呼吸道秋季销售)
+  bull_signal: 现金守指引+flu放量
+  bear_signal: 烧钱超标+RSV续跌
+  triggered: null
+cluster_tags:
+- mrna-platform
+- oncology-vaccine
+- biotech
+chain_links:
+  rings_present:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+honest_gaps:
+- ring: 1
+  kind: data-missing
+  note: 财务API不可用(网络断),财务弧线用web财报数据
+- ring: 4
+  kind: data-missing
+  note: INT P3 HR/绝对获益ESMO(10月)才披露,EV概率为主观
+- ring: 4
+  kind: training-estimate
+  note: 冷肿瘤外推概率无读出支撑,靠机理判断
+- ring: 5
+  kind: training-estimate
+  note: historical-mirror WebSearch 0结果,从训练知识补
+market_implied:
+  metric: implied_cold_tumor_success_prob
+  value: 0.57
+my_vs_market_delta:
+  metric: implied_cold_tumor_success_prob
+  my_value: 0.35
+  delta: -22pct
+  direction: short

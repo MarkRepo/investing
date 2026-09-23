@@ -1,0 +1,1493 @@
+slug: us-axti
+display_name: 'AXT Inc (NASDAQ: AXTI) 化合物半导体衬底'
+type: company
+created: '2026-08-26T10:56:04.775406+00:00'
+status: active
+stage: 05-critic-review
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: 'AXT（NASDAQ: AXTI）双引擎并重：InP/GaAs/Ge 衬底主业吃 AI 光模块需求 + 通美（北京通美晶体）上游镓/锗/砷原材料与科创板分拆上市。deep
+    深度。先验赌注：InP 稀缺性已被 AI 光模块叙事充分定价，而"中国运营+美国上市+出口许可"的结构性折价未被充分定价——核心命门是 InP 份额能否转成持续正
+    FCF（而非又一轮周期高点亏损）；目标价赌注偏中性偏空，若通美分拆落地 + 主业毛利率站上结构性台阶则翻多。不含：非 AXT 自产的第三方晶圆代工/器件环节。'
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_AXTI
+  market: US
+  short_name: AXT
+  search_terms:
+  - AXT 磷化铟 衬底
+  - 磷化铟 光模块 需求
+  - 通美 科创板 上市
+  - 镓锗 出口管制
+outputs_state:
+  00_primer:
+    version: 4
+    last_updated: '2026-09-03T02:39:12.480801+00:00'
+    status: draft
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-036429
+    - mat-07fb6d
+    - mat-092f7e
+    - mat-0958b5
+    - mat-0a648a
+    - mat-0b0680
+    - mat-0cc946
+    - mat-0f320a
+    - mat-104d04
+    - mat-121372
+    - mat-142cae
+    - mat-155453
+    - mat-15ea9e
+    - mat-16ee9d
+    - mat-174b60
+    - mat-1771bb
+    - mat-178b29
+    - mat-17c239
+    - mat-18b132
+    - mat-194ffb
+    - mat-19c605
+    - mat-1cd2ed
+    - mat-1d5c19
+    - mat-1df988
+    - mat-205235
+    - mat-20a836
+    - mat-20c9e7
+    - mat-225d5d
+    - mat-2289e3
+    - mat-231d5d
+    - mat-23c325
+    - mat-249dce
+    - mat-2579cb
+    - mat-2591b9
+    - mat-27cb3c
+    - mat-27fe21
+    - mat-291e1b
+    - mat-29797b
+    - mat-29a6fb
+    - mat-29e87f
+    - mat-2c2d06
+    - mat-2c5dd3
+    - mat-32c3f7
+    - mat-383f72
+    - mat-3b21fe
+    - mat-3fd5db
+    - mat-40f3c3
+    - mat-4111b9
+    - mat-43ba6b
+    - mat-441a30
+    - mat-47310e
+    - mat-479f16
+    - mat-47f734
+    - mat-491e10
+    - mat-54d899
+    - mat-556021
+    - mat-57eeca
+    - mat-5825b3
+    - mat-5a96d6
+    - mat-60f02b
+    - mat-61af29
+    - mat-62142a
+    - mat-62dddb
+    - mat-62df35
+    - mat-66c883
+    - mat-67889f
+    - mat-694469
+    - mat-6f1c98
+    - mat-6fa92c
+    - mat-73fe1d
+    - mat-795e93
+    - mat-7b1a5d
+    - mat-80342c
+    - mat-80f5c8
+    - mat-814547
+    - mat-8192f2
+    - mat-88dd46
+    - mat-89f074
+    - mat-8abeab
+    - mat-8b9a27
+    - mat-8bca0a
+    - mat-8f4278
+    - mat-90ba3e
+    - mat-9265c3
+    - mat-926fc8
+    - mat-92960d
+    - mat-92ec1b
+    - mat-950ac9
+    - mat-95334a
+    - mat-95ff8a
+    - mat-966473
+    - mat-9844b9
+    - mat-999adc
+    - mat-a842e7
+    - mat-a98f5d
+    - mat-aac87d
+    - mat-ab66f4
+    - mat-afd3a0
+    - mat-b1de1e
+    - mat-b51491
+    - mat-b7b005
+    - mat-b87cd0
+    - mat-ba1737
+    - mat-bc4b50
+    - mat-be8354
+    - mat-bf9ee8
+    - mat-c299ed
+    - mat-c31a89
+    - mat-c33ca0
+    - mat-c7c751
+    - mat-c88af9
+    - mat-c96ab7
+    - mat-c9dc0a
+    - mat-cc9b03
+    - mat-d02767
+    - mat-d074b7
+    - mat-d17bd7
+    - mat-d2289e
+    - mat-d22e59
+    - mat-d252fe
+    - mat-d75d68
+    - mat-df6ffc
+    - mat-e0222e
+    - mat-e047be
+    - mat-e0feca
+    - mat-e24e9c
+    - mat-e2cce6
+    - mat-e2d653
+    - mat-e40421
+    - mat-e47491
+    - mat-e47c18
+    - mat-e65c57
+    - mat-e65ce8
+    - mat-e69707
+    - mat-e6d79a
+    - mat-e8dca1
+    - mat-ed6968
+    - mat-ed9db3
+    - mat-eea747
+    - mat-eebdf6
+    - mat-ef3769
+    - mat-efd716
+    - mat-f0db77
+    - mat-f22d23
+    - mat-f563d1
+    - mat-f65d60
+    - mat-f7d378
+    - mat-f7e025
+    - mat-f90065
+    - mat-fa7013
+    - mat-fb5f4e
+    - mat-fc1ddc
+    - mat-fcb2b1
+    - mat-fd4888
+    - mat-fda7d3
+    - mat-fdc35e
+    - mat-fef9f9
+    last_error: null
+    primer_gate:
+      downgraded_from: fresh
+      checked_at: '2026-09-03T02:39:12.502984+00:00'
+      warnings:
+      - 未过 critic（set_output_critic_passed 未置位）
+  c_investment_case:
+    version: 4
+    last_updated: '2026-09-03T02:39:12.573536+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-036429
+    - mat-07fb6d
+    - mat-092f7e
+    - mat-0958b5
+    - mat-0a648a
+    - mat-0b0680
+    - mat-0cc946
+    - mat-0f320a
+    - mat-104d04
+    - mat-121372
+    - mat-142cae
+    - mat-155453
+    - mat-15ea9e
+    - mat-16ee9d
+    - mat-174b60
+    - mat-1771bb
+    - mat-178b29
+    - mat-17c239
+    - mat-18b132
+    - mat-194ffb
+    - mat-19c605
+    - mat-1cd2ed
+    - mat-1d5c19
+    - mat-1df988
+    - mat-205235
+    - mat-20a836
+    - mat-20c9e7
+    - mat-225d5d
+    - mat-2289e3
+    - mat-231d5d
+    - mat-23c325
+    - mat-249dce
+    - mat-2579cb
+    - mat-2591b9
+    - mat-27cb3c
+    - mat-27fe21
+    - mat-291e1b
+    - mat-29797b
+    - mat-29a6fb
+    - mat-29e87f
+    - mat-2c2d06
+    - mat-2c5dd3
+    - mat-32c3f7
+    - mat-383f72
+    - mat-3b21fe
+    - mat-3fd5db
+    - mat-40f3c3
+    - mat-4111b9
+    - mat-43ba6b
+    - mat-441a30
+    - mat-47310e
+    - mat-479f16
+    - mat-47f734
+    - mat-491e10
+    - mat-54d899
+    - mat-556021
+    - mat-57eeca
+    - mat-5825b3
+    - mat-5a96d6
+    - mat-60f02b
+    - mat-61af29
+    - mat-62142a
+    - mat-62dddb
+    - mat-62df35
+    - mat-66c883
+    - mat-67889f
+    - mat-694469
+    - mat-6f1c98
+    - mat-6fa92c
+    - mat-73fe1d
+    - mat-795e93
+    - mat-7b1a5d
+    - mat-80342c
+    - mat-80f5c8
+    - mat-814547
+    - mat-8192f2
+    - mat-88dd46
+    - mat-89f074
+    - mat-8abeab
+    - mat-8b9a27
+    - mat-8bca0a
+    - mat-8f4278
+    - mat-90ba3e
+    - mat-9265c3
+    - mat-926fc8
+    - mat-92960d
+    - mat-92ec1b
+    - mat-950ac9
+    - mat-95334a
+    - mat-95ff8a
+    - mat-966473
+    - mat-9844b9
+    - mat-999adc
+    - mat-a842e7
+    - mat-a98f5d
+    - mat-aac87d
+    - mat-ab66f4
+    - mat-afd3a0
+    - mat-b1de1e
+    - mat-b51491
+    - mat-b7b005
+    - mat-b87cd0
+    - mat-ba1737
+    - mat-bc4b50
+    - mat-be8354
+    - mat-bf9ee8
+    - mat-c299ed
+    - mat-c31a89
+    - mat-c33ca0
+    - mat-c7c751
+    - mat-c88af9
+    - mat-c96ab7
+    - mat-c9dc0a
+    - mat-cc9b03
+    - mat-d02767
+    - mat-d074b7
+    - mat-d17bd7
+    - mat-d2289e
+    - mat-d22e59
+    - mat-d252fe
+    - mat-d75d68
+    - mat-df6ffc
+    - mat-e0222e
+    - mat-e047be
+    - mat-e0feca
+    - mat-e24e9c
+    - mat-e2cce6
+    - mat-e2d653
+    - mat-e40421
+    - mat-e47491
+    - mat-e47c18
+    - mat-e65c57
+    - mat-e65ce8
+    - mat-e69707
+    - mat-e6d79a
+    - mat-e8dca1
+    - mat-ed6968
+    - mat-ed9db3
+    - mat-eea747
+    - mat-eebdf6
+    - mat-ef3769
+    - mat-efd716
+    - mat-f0db77
+    - mat-f22d23
+    - mat-f563d1
+    - mat-f65d60
+    - mat-f7d378
+    - mat-f7e025
+    - mat-f90065
+    - mat-fa7013
+    - mat-fb5f4e
+    - mat-fc1ddc
+    - mat-fcb2b1
+    - mat-fd4888
+    - mat-fda7d3
+    - mat-fdc35e
+    - mat-fef9f9
+    last_error: null
+  07_decision_kit:
+    version: 4
+    last_updated: '2026-09-03T02:39:12.645090+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-036429
+    - mat-07fb6d
+    - mat-092f7e
+    - mat-0958b5
+    - mat-0a648a
+    - mat-0b0680
+    - mat-0cc946
+    - mat-0f320a
+    - mat-104d04
+    - mat-121372
+    - mat-142cae
+    - mat-155453
+    - mat-15ea9e
+    - mat-16ee9d
+    - mat-174b60
+    - mat-1771bb
+    - mat-178b29
+    - mat-17c239
+    - mat-18b132
+    - mat-194ffb
+    - mat-19c605
+    - mat-1cd2ed
+    - mat-1d5c19
+    - mat-1df988
+    - mat-205235
+    - mat-20a836
+    - mat-20c9e7
+    - mat-225d5d
+    - mat-2289e3
+    - mat-231d5d
+    - mat-23c325
+    - mat-249dce
+    - mat-2579cb
+    - mat-2591b9
+    - mat-27cb3c
+    - mat-27fe21
+    - mat-291e1b
+    - mat-29797b
+    - mat-29a6fb
+    - mat-29e87f
+    - mat-2c2d06
+    - mat-2c5dd3
+    - mat-32c3f7
+    - mat-383f72
+    - mat-3b21fe
+    - mat-3fd5db
+    - mat-40f3c3
+    - mat-4111b9
+    - mat-43ba6b
+    - mat-441a30
+    - mat-47310e
+    - mat-479f16
+    - mat-47f734
+    - mat-491e10
+    - mat-54d899
+    - mat-556021
+    - mat-57eeca
+    - mat-5825b3
+    - mat-5a96d6
+    - mat-60f02b
+    - mat-61af29
+    - mat-62142a
+    - mat-62dddb
+    - mat-62df35
+    - mat-66c883
+    - mat-67889f
+    - mat-694469
+    - mat-6f1c98
+    - mat-6fa92c
+    - mat-73fe1d
+    - mat-795e93
+    - mat-7b1a5d
+    - mat-80342c
+    - mat-80f5c8
+    - mat-814547
+    - mat-8192f2
+    - mat-88dd46
+    - mat-89f074
+    - mat-8abeab
+    - mat-8b9a27
+    - mat-8bca0a
+    - mat-8f4278
+    - mat-90ba3e
+    - mat-9265c3
+    - mat-926fc8
+    - mat-92960d
+    - mat-92ec1b
+    - mat-950ac9
+    - mat-95334a
+    - mat-95ff8a
+    - mat-966473
+    - mat-9844b9
+    - mat-999adc
+    - mat-a842e7
+    - mat-a98f5d
+    - mat-aac87d
+    - mat-ab66f4
+    - mat-afd3a0
+    - mat-b1de1e
+    - mat-b51491
+    - mat-b7b005
+    - mat-b87cd0
+    - mat-ba1737
+    - mat-bc4b50
+    - mat-be8354
+    - mat-bf9ee8
+    - mat-c299ed
+    - mat-c31a89
+    - mat-c33ca0
+    - mat-c7c751
+    - mat-c88af9
+    - mat-c96ab7
+    - mat-c9dc0a
+    - mat-cc9b03
+    - mat-d02767
+    - mat-d074b7
+    - mat-d17bd7
+    - mat-d2289e
+    - mat-d22e59
+    - mat-d252fe
+    - mat-d75d68
+    - mat-df6ffc
+    - mat-e0222e
+    - mat-e047be
+    - mat-e0feca
+    - mat-e24e9c
+    - mat-e2cce6
+    - mat-e2d653
+    - mat-e40421
+    - mat-e47491
+    - mat-e47c18
+    - mat-e65c57
+    - mat-e65ce8
+    - mat-e69707
+    - mat-e6d79a
+    - mat-e8dca1
+    - mat-ed6968
+    - mat-ed9db3
+    - mat-eea747
+    - mat-eebdf6
+    - mat-ef3769
+    - mat-efd716
+    - mat-f0db77
+    - mat-f22d23
+    - mat-f563d1
+    - mat-f65d60
+    - mat-f7d378
+    - mat-f7e025
+    - mat-f90065
+    - mat-fa7013
+    - mat-fb5f4e
+    - mat-fc1ddc
+    - mat-fcb2b1
+    - mat-fd4888
+    - mat-fda7d3
+    - mat-fdc35e
+    - mat-fef9f9
+    last_error: null
+  08_living_feed:
+    version: 4
+    last_updated: '2026-09-03T02:10:41.639736+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- v4 tight-scope 重写完成：并入 JX 一手(mat-8f4278)+Jefferies(mat-54d899)。case/kit/thesis_v4/decomposition_v4
+  全部 v4、chain-critic GO
+- EV -10.6%→-6.0%(band -28.4~+22.7%)、E目标价$52.7、强度3/10→2/10；KILL-8 与 KILL-12 均已触发
+- 下一步：说「评审 us-axti」跑最终一轮 05 确认（预计 approve→done）；或直接在详情页标完成。承重仍=单线承重(终值倍数)，primary-share
+  一手挂 P0 drilldown 交 06 监控
+user_todos:
+- task: '[A-FIN] 下载 AXT 一手申报文件：10-K FY2025 + 10-Q 2026Q1/Q2，取 opex 结构、少数股东权益扣除比例、$135M
+    客户预付款的会计确认口径(合同负债/递延收入及释放节奏)'
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: SEC EDGAR CIK 1051627；fetch_report_prism ticker=AXTI
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0f320a
+  - mat-17c239
+  - mat-1d5c19
+  - mat-80342c
+  - mat-89f074
+  last_fetch_note: SEC 直下：10-K FY2025(含Tongmei/少数股东权益)+2026 10-Q(已切MD&A/风险两节)
+- task: '[A-SEGMENT-GM] 挖 AXT 分地区/分产品毛利率(出口 vs 中国境内；InP vs GaAs vs 原材料JV)——命门1 的唯一硬证据'
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K1
+  - K3
+  source_hint: 2026Q2 电话会问答全文(fool.com transcript / alphaspread)、10-Q 分部附注、卖方问答；AXT
+    历来不披露分地区毛利率，需三角测量
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0f320a
+  - mat-4111b9
+  - mat-479f16
+  - mat-9844b9
+  - mat-d074b7
+  - mat-ed9db3
+  last_fetch_note: Q2/26 电话会 transcript(SeekingAlpha/Fool)+要点+10-Q MD&A 已入库。⚠️ AXT
+    历来不披露分地区毛利率——该数字须在 03 由 transcript 问答 + 10-Q + 中国同行毛利率反推做三角测量，非收料可直接解决
+- task: '[A-MGMT·hard] 管理层 track record + 资本配置史 + 激励治理：两次增发条款、CEO 2026-06 减持 $22.3M
+    的 Form 4、81 岁继任安排、2026-05 股东大会休会原因'
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K7
+  source_hint: DEF 14A 代理声明、SEC Form 4、8-K(股东会休会)
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-17c239
+  - mat-2591b9
+  - mat-2c5dd3
+  - mat-a98f5d
+  - mat-e47491
+  last_fetch_note: Form 144 拟售 + 2026 股东大会(含休会) + CEO 减持 $22.3M 已入库；DEF 14A 原文未直接命中，10-K
+    治理章可代偿
+- task: '[A-CONSENSUS·hard] 卖方一致预期与目标价模型：$77(Kalkine口径) vs $91.6(StockAnalysis 5位口径)
+    的差异归因到哪几个假设'
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: Northland/Needham/B.Riley/Craig-Hallum/Wedbush(正是 $550M 增发承销团，注意利益冲突)
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-3fd5db
+  - mat-795e93
+  - mat-950ac9
+  - mat-bc4b50
+  - mat-d252fe
+  last_fetch_note: ChartMill 2026-2028 年度+季度一致预期已入库(内含 Q3/27 营收较 Q2/27 腰斩 -54% 的街上假设)；目标价谱系
+    $55(B.Riley Neutral) / $90(Needham Buy) / $125(Northland—增发独家承销商，利益冲突) 齐了
+- task: '[A-MIRROR·hard] 历史失败镜鉴：短缺租金→全行业扩产→崩塌的相似剧本，重点取「从涨价见顶到毛利率归零的时滞」——GT Advanced
+    蓝宝石(2013-14)、多晶硅(2008/2011)、MLCC(2018)、DRAM(2018)'
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K5
+  source_hint: 该时滞就是 Bear 情景的兑现节奏，直接进环⑤与环④EV
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-142cae
+  - mat-16ee9d
+  - mat-8192f2
+  - mat-eebdf6
+  last_fetch_note: GT Advanced 蓝宝石一手业绩 + 破产案卷 + 三条教训已入库；多晶硅/MLCC/DRAM 三个镜鉴留 01 补
+- task: '[B-CAPEX-CURVE] 命门2：单位产能 capex($ capex ÷ $季度产能增量) 与良率/单炉产出，AXT vs 云南锗业 vs
+    住友 同口径对比——判扩产成本曲线是平是陡'
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K2
+  - K5
+  source_hint: 云南锗业 002428 年报/公告、住友电工 2025-11 战略 deck、AXT 电话会 capex 口径
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-47310e
+  - mat-88dd46
+  - mat-eea747
+  last_fetch_note: 云南锗业 2026-05-13 投资者关系活动记录表(一手)+磷化铟行业深度+盈利预测已入库
+- task: '[B-PEER-CAPACITY] 环④终局料：云南锗业(450k 4寸当量承诺)/住友(2028 提2.4x)/Coherent(6寸已量产)/先导
+    的 InP 产能投放曲线与 ASP 同口径数据 → Bear 情景供给侧定量'
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: 各家 IR + Yole/LightCounting；已有 mat-67889f/mat-61af29 作起点
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-47310e
+  - mat-556021
+  - mat-61af29
+  - mat-67889f
+  - mat-88dd46
+  - mat-95334a
+  - mat-eea747
+  last_fetch_note: Coherent/住友/Lumentum 6寸产能时间表 + 云南锗业 450k 4寸当量承诺已由 00-prescan 覆盖
+- task: '[B-CHINA-IDENTITY] 命门3：AXT/通美在中国政策体系里的定位——出口许可获批宽严相对同行、是否进/出国产替代名单、境内头部客户份额变化、港股递表进展'
+  priority: P0
+  info_tier: hard
+  addresses:
+  - K4
+  - K6
+  source_hint: 商务部许可公示、光迅/旭创/华工正源供应商披露、港交所披露易
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-104d04
+  - mat-40f3c3
+  - mat-d17bd7
+  - mat-f65d60
+  last_fetch_note: 商务部 2026 许可目录 + 第23号公告(10家美企列管) + 磷化铟断供危机深度 + 国内链"资源强制造弱"已入库
+- task: '[B-TRANSFER-PRICING] 环①B(b)：关联交易定价现状(通美售AXT 483元/片 vs AXT转售1275元/片是否仍成立)
+    + AXT 持通美股比现状(85.51% 为2022口径)'
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K6
+  source_hint: 通美 2022-08 版招股书 + AXT 10-K 关联方附注 + 未来港股招股书
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-225d5d
+  - mat-926fc8
+  - mat-b51491
+  - mat-fef9f9
+  last_fetch_note: 通美招股说明书 PDF 原件(2022-07，新浪财经/启信宝两版)+关联交易显失公允监管问询复述+每经直接材料占比已入库
+- task: '[B-VALUATION-IMPLIED] 环②B：反推 $4.33B 市值隐含的 2028 稳态组合(营收/毛利率/份额须同时成立到什么程度)
+    + 同「剧本」peer 估值 band(短缺租金型材料股，非同业peer)'
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: market_data 拉 AXTI 历史估值分位；剧本 peer 取 A-MIRROR 那几个标的的峰值估值
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-fdc35e
+  last_fetch_note: market_data 已拉：AXTI PE(TTM)2248x/PS 35.2x/PB 4.9x/市值$4.42B/价$67.45(2026-08-25,yfinance)；对照云南锗业
+    PS 54.8x/PB 41.6x/市值610亿元。隐含预期反推属 04 环②分析动作
+- task: '[P-EXPORT-REGIME] primer#6：中国出口管制体系怎么运作——管制清单 vs 许可制 vs 定向禁令的区别、一单一申请流程与时滞'
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: 商务部 2023 镓锗公告原文 + 2025-02-04 磷化铟管制公告原文 + AXT 10-K 风险披露口径
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-17c239
+  - mat-40f3c3
+  - mat-5a96d6
+  - mat-c88af9
+  last_fetch_note: 商务部管制公告原文 + 2026 许可目录 + 10-Q 风险因素节 + AXT 许可时间线已入库
+- task: '[P-OWNERSHIP] primer#9：AXT / 北京通美 / 十余家原材料合资公司群的股权结构图，及少数股东权益如何影响归母利润'
+  priority: P0
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 10-K Exhibit 21 子公司清单 + 通美招股书组织架构章
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0f320a
+  - mat-17c239
+  - mat-1d5c19
+  - mat-80342c
+  - mat-89f074
+  last_fetch_note: 10-K FY2025 已含子公司清单与 noncontrolling interests 附注；通美招股书口径待补
+- task: '[P-INP-MODULE] primer#4：800G / 1.6T 光模块里 InP 的位置、颗数、面积强度——系统化整理'
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 已有 mat-95334a / mat-556021 / mat-61af29 作原料，需整合成教学性口径
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-556021
+  - mat-61af29
+  - mat-67889f
+  - mat-95334a
+  - mat-bf9ee8
+  last_fetch_note: 由 00-prescan 已入库的 InP 需求强度/激光器分类深度料覆盖，01 只需系统化整理
+- task: '[P-LASER-TYPES] primer#5：EML / DFB / 普通CW / 超高功率CW 四类激光器的区分，及 CPO 改变的是「用哪类」而非「要不要」'
+  priority: P1
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: 已有 mat-67889f / mat-bf9ee8 作原料
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-556021
+  - mat-61af29
+  - mat-67889f
+  - mat-95334a
+  - mat-bf9ee8
+  last_fetch_note: 由 00-prescan 已入库的 InP 需求强度/激光器分类深度料覆盖，01 只需系统化整理
+- task: '[P-HK18C] primer#10：港股 18C 特专科技通道规则，与科创板注册制的制度差别(为何通美转港)'
+  priority: P2
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 港交所 18C 章规则原文 + 2026 上市纠错新规
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-036429
+  - mat-47f734
+  - mat-f90065
+  last_fetch_note: 港交所特专科技上市页 + 第十八C章规则原文 + 金杜 18C vs 科创板对比已入库
+- task: '[T1-PROSPECTUS] 北京通美科创板招股书/审核中心意见落实函回复全文（关联交易定价、分产品毛利率基准、份额权威口径）'
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  - K6
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1771bb
+  - mat-6fa92c
+  last_fetch_note: sina 一手 PDF 直下 41 页 + 全文 md 落盘
+- task: '[T1-TRANSCRIPT] AXT 2026Q2 电话会 transcript 全文（管理层对分地区毛利率/许可/产能/6寸的原话）'
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  - K3
+  source_hint: SeekingAlpha 4928416 / Motley Fool 2026-08-03；两站均 Cloudflare 挡 curl
+    与 exa crawl
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: Motley Fool/Yahoo/investing.com transcript 要点已入库(营收$47.6M/GAAP
+    GM 44.9%/Non-GAAP 45.0% vs Q1 29.9% vs 2025Q2 8.2%；许可时点为管理层自陈关键变量)
+- task: '[T1-YUNNAN] 云南锗业(002428) 年报/半年报：InP 产能、扩产投资额、分产品毛利率（命门2 对照组）'
+  priority: P0
+  info_tier: public
+  addresses:
+  - K5
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-29e87f
+  - mat-eea747
+  last_fetch_note: cninfo 直下 2025 年报；2026 半年报 A股 8/31 前尚未披露，下轮补
+- task: '[T1-YOLE] Yole / LightCounting InP 衬底 2026 当期份额与产能报告（解决 36% vs 45% 口径冲突）'
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: Omdia/Yole 需求口径救回：2026 需求 260-300万片(2025 200-210万片)、缺口>70%；份额口径三源并存(住友42%/AXT~40%口径
+    vs 住友60%口径 vs Maius 通美~35%@$200M市场)，冲突留 04 环②裁决
+- task: '[T2-SUMITOMO] 住友电工 2025-11 化合物半导体战略 deck：InP 产能 2028 较 2023 提 2.4x 的原始披露'
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: Citrini Research 引住友2025战略deck：InP 衬底产能 2028 提 2.4x；SeekingAlpha
+    空方补 JX 同步扩产
+- task: '[T2-COHERENT] Coherent 6 英寸 InP 产能/良率/成本降幅的一手披露（2026年底翻倍、2027再翻倍）'
+  priority: P1
+  info_tier: public
+  addresses:
+  - K5
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: Coherent 官网一手：全球首个6英寸InP晶圆制造能力，显著降低单die成本；另获德州半导体创新基金$14M
+- task: '[T2-MAIUS] Maius Partners《AXT Tongmei Problem》空方深度全文（环④空方主干）'
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  - K6
+  source_hint: maiuspartners.com Cloudflare 挡 curl 与 exa crawl；已有 highlights 摘要入库
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: Maius 原站 highlights 救回(通美85.5%持股、~35%份额、2026市场仅~$200M)；额外发现 J Capital
+    Research 独立做空报告(此前未知)
+- task: '[T2-FXBAOGAO] 发现报告《AXT：磷化铟衬底双寡头，上游卖铲人卡位AI光》研报全文（环④多方主干）'
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: 发现报告标题页+摘要入库(双寡头/卖铲人/出口许可是短期最大扰动与催化)；全文仍需付费墙，摘要口径够喂环④多方
+- task: '[T3-POLYSILICON] 多晶硅 2008/2011 两轮暴涨崩塌复盘：从价格见顶到毛利率归零的时滞'
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  - K5
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: 多晶硅镜鉴入库：毛利率70%→30%(2008末起)；2011年5月见顶后大幅下挫、全年均价-14.8%；有效产能一个季度从19.8万吨→29万吨
+- task: '[T3-MLCC] MLCC 2017-2019 短缺涨价与毛利率回落复盘（第三镜鉴）'
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  - K5
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-18b132
+  - mat-c31a89
+  - mat-e40421
+  - mat-fcb2b1
+  - mat-fd4888
+  last_fetch_note: 中金 MLCC 周期复盘 + 东财供给出清点评 + 雪球十年复盘对比
+- task: '[T3-VITAL] 广东先导稀材 InP 产能与国产替代进展（命门3 境内竞争）'
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K5
+  source_hint: ''
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: 先导：2026-07 落地年产40吨InP晶体项目；规划新增25万片/年、2027H2达产、目标40万片/年、固投17亿元；国内6英寸国产化率<5%、良率爬坡2-4年/单线投资>10亿
+- task: 03 抽取完成：134/135 份资料已处理，68 份 finding 落盘（含 10-K 七节 + 10-Q 五节手工重切后补抽）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '[BLOCKER-P0] MINERU_TOKEN 已失效（401 Unauthorized）→ 北京通美科创板招股说明书 PDF(mat-1771bb,
+    41页) 无法转换。请续期 .env 里的 MINERU_TOKEN，之后跑 `list_pending_mineru` 批量重试即可回补这一份。注：其核心内容（分产品毛利率、关联交易定价、份额口径、募投产能）已由同日的《审核中心意见落实函回复》(mat-6fa92c,
+    一手全文) 覆盖，故不阻塞 04'
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  - K6
+  source_hint: .env MINERU_TOKEN 续期 → .venv/bin/python -m scripts.mineru_api "prism/topics/us-axti/materials/北京通美_科创板招股说明书_2022-07-05.pdf"
+    --out ..._vlm --model vlm
+  status: pending
+  fetch_status: error
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: MINERU_TOKEN 401 Unauthorized，非公开无源问题、须用户续期 token 后重试；核心内容已由 mat-6fa92c
+    落实函全文覆盖，不阻塞 04
+- task: '[GAP-P1] 04 之前建议补三条硬证据：(1) 2026-05 股东大会休会原因 + say-on-pay 票数（8-K/DEF 14A）；(2)
+    商务部原文核实「2026 年铟出口总量锁定在年产量 30% 以内」；(3) Q2/2026 电话会问答全文（分地区/分产品毛利率的管理层原话）——三者都不阻塞
+    04，但会显著提升 K7/K4/命门1 的论证强度'
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K7
+  - K4
+  - K1
+  source_hint: SEC EDGAR 8-K/DEF 14A；商务部公告原文；fool.com transcript（Cloudflare 需换路径）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 已自动补齐 2/3：(1) 股东会休会原因查明=仅48%股份出席未达法定人数、非议案遭否(8-K, mat-e047be)；(2)
+    铟出口配额"2026年限于年产量30%+民用许可通过率<20%"已三源交叉(mat-491e10/d22e59)，商务部原文仍待核；(3) Q2 电话会问答全文仍被
+    Cloudflare 挡，未取到。另附带发现：商务部2026年第30号(2026-07-24)将14家欧盟实体列入管控名单——AXT 欧洲营收占19%，客户端风险须在04环⑤单列
+- task: '[P0][BLOCKER] 续期 .env 里的 MINERU_TOKEN（当前 401 Unauthorized），之后跑 list_pending_mineru
+    批量重试，回补北京通美科创板招股说明书 PDF(mat-1771bb, 41页)'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '[P0] 取 Q2/2026 电话会问答全文（Cloudflare 拦截 Motley Fool）——含管理层对分地区/分产品毛利率的原话，是命门1/K3
+    的最后一块拼图。可试 Seeking Alpha 付费源、电话会音频、或等下季问答被媒体引用'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '[P1] 取 Yole/Omdia 最新版 InP 衬底份额与「片数口径」供需平衡表——统一需求 CAGR 56%（片数，单一来源）与市场规模 CAGR
+    12%（美元，三源一致）这两个差 4 倍以上的口径'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '[P2] 商务部/海关总署公告库定向检索「2026 年铟出口配额 = 年产量 30%」的公告原文（现为媒体三源一致，原文待核）'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '[P2] 关注 2026-08-31 前云南锗业 2026 半年报的化合物半导体毛利率（KILL-8：若升破 35% 则命门1 的同业对照失效）'
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '[P0] 取 Q2/2026 电话会 **Q&A 逐字稿**（prepared remarks 已由 mat-20c9e7 覆盖）。目标：核实管理层是否给出
+    50%+ 毛利率目标口径、以及分地区/分产品毛利率问答 —— K3 唯一直接证据的路径。可试 Seeking Alpha 付费源 / 电话会音频 / alphaspread
+    Q&A 段 / 下季问答被媒体引用'
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: ''
+  status: pending
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: tavily_extract advanced → alphaspread 全场 Q&A（mat-5825b3）；globeandmail
+    交叉
+- task: '[P0] 取**片数口径**的 InP 衬底供需与份额表（Yole/Omdia/住友 deck 原版），用于统一「需求 CAGR 56%（片数）vs
+    市场规模 CAGR 12%（美元）」这两个差 4 倍的口径，并替换环②天花板的第三方美元 TAM 锚'
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K5
+  source_hint: ''
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: semantic×365d 检索仅命中美元口径报告；Yole/Omdia 片数原件在付费墙后，未见公开转载
+- task: '[P1] 核实第三方 InP 美元市场规模（Mordor/Straits/SNS $190-221M）的 **scope 定义**：是否只统计外购商品衬底、是否排除自用/日系内销/中国内销
+    —— 决定该口径是"作废"还是"scope 差异可校正"'
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 供应商间离散度 4-10 倍已取证（mat-2289e3）；各家 scope 方法论细则未公开
+- task: '[P1] 取 2026 **当期** InP 衬底份额口径（现用 Yole 份额为 2020 年），以及住友/Coherent/JX 的当期出货或产能片数，用于自下而上
+    TAM 的分母校验'
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  - K5
+  source_hint: ''
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: 同上：公开源只给美元规模与厂商名单，未给当期份额百分比
+- task: '[P2] 云南锗业 2025 年 InP 利用率仅 67%（产能 15 万片/产量 10.01 万片）而当年缺口 >70% —— 找其投资者关系/年报问答对低利用率的解释（良率、认证、原料还是订单），用于判「capex/片是否等于可交付产能」'
+  priority: P2
+  info_tier: public
+  addresses:
+  - K5
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '[P2][承接旧账] 续期 .env 的 MINERU_TOKEN（401）后跑 list_pending_mineru，回补通美科创板招股书 PDF(mat-1771bb)'
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: roadmap 需补 K8：thesis v3 升版后 K8 在 L4-hunting + tier-material 中未闭环
+  priority: P1
+  info_tier: public
+  addresses:
+  - K8
+  source_hint: auto-generated by set_thesis reverse-check (v3)
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: roadmap 需补 K9：thesis v3 升版后 K9 在 L4-hunting + tier-material 中未闭环
+  priority: P1
+  info_tier: public
+  addresses:
+  - K9
+  source_hint: auto-generated by set_thesis reverse-check (v3)
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '[P0·终局证据薄] chain-critic 判终局环四维仅财务轨迹达定量。唯一高杠杆补料=AXT真实InP份额一手披露+「有效合规产能」scope定义(解JX/住友各~40%
+    vs AXT 30-36%的>110%冲突)。路径：Yole/Omdia原报告、通美18C招股书(KILL-13)、JX IR(KILL-12)。此单源同喂命门6/命门7/环②TAM/环④EV符号'
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K8
+  - K9
+  source_hint: Yole/Omdia原报告(付费墙) / 港交所披露易(通美18C) / JX Advanced Metals IR
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: AXT 分产品(InP/GaAs/原材料)与分地区(出口 vs 中国境内)的毛利率拆解 —— K3 的唯一直接证据。公司从不披露，Q2/2026
+    电话会问答全文被 Cloudflare 拦截。路径：换 transcript 源(Seeking Alpha 付费/Motley Fool 全文/电话会音频)、或从
+    Lumentum/Coherent 侧披露反推、或等下季问答被媒体引用
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K1
+  - K3
+  priority: P0
+  status: open
+  suggested_at: '2026-08-27T03:51:50.891296+00:00'
+- question: 2026 年当期 InP 衬底全球份额分布 —— 现有口径全是旧的或冲突的：Yole 通美 36%(2020年)、空方称住友 42-45%(当期但无出处)。路径：Yole/Omdia
+    最新版报告、或通美港股 18C 招股书(若递表)
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K5
+  - K3
+  priority: P0
+  status: open
+  suggested_at: '2026-08-27T03:51:50.891296+00:00'
+- question: InP 需求的片数口径供需平衡表 —— 统一"需求 CAGR 56%(片数,单一来源)"与"市场规模 CAGR 12%(美元,三源一致)"这两个差
+    4 倍以上的口径。路径：Yole/Omdia/LightCounting 原报告的片数口径平衡表
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K1
+  - K5
+  priority: P0
+  status: open
+  suggested_at: '2026-08-27T03:51:50.891296+00:00'
+- question: 外延 MOCVD(大尺寸)是否才是真瓶颈 —— 盲点 B1 仅单一来源(渠道调研称 Aixtron >70% 份额、无现成中国替代)。若成立则多空双方机理都错。路径：Aixtron
+    财报/法说会的 InP 用大尺寸 MOCVD 订单与交期、中微/AMEC 在 InP 上的进展
+  rationale: ''
+  source: critic_weak_k
+  related:
+  - K5
+  priority: P1
+  status: open
+  suggested_at: '2026-08-27T03:51:50.891296+00:00'
+- question: 自下而上重算 InP 衬底 TAM：用各家当期出货片数×单价（AXT/住友/JX/Coherent/云南锗业/先导/中科晶电）替换第三方美元市场规模，判
+    2026 真实市场是 $221M 还是 $340M+，并推 2031 区间
+  rationale: 05-critic 判环②天花板「不足」：三家第三方美元口径同方法论、非独立，且被本案自身「Q2 InP 年化 $123M ÷ 份额 35-36%」反证
+    1.5 倍；环②/④/⑥ 全部从这一个数派生
+  source: critic_weak_k
+  related:
+  - K2
+  - K5
+  priority: P0
+  status: open
+  suggested_at: '2026-08-27T12:02:04.905686+00:00'
+- question: 把 COGS=F+v·R 成本模型显式参数化到单价指数 p 与固定成本 F(产能)：给出各情景隐含的 p 与 F，并论证 2028 单价相对
+    2025/2026 的合理落点
+  rationale: 05-critic 复核出口径混用：41.5% 渐近线只在 p=1.0 成立、当期 p=1.40 下为 58.2%；Base 反解出 p=0.92（比
+    2025 再低 8%），与自引 ASP 年降 5-10% 冲突；且 F 钉在 $25.4M 而情景假设产能翻 2-5 倍
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-08-27T12:02:04.905686+00:00'
+- question: exit-2027 $130M/季 InP 产能路线图的兑现路径与可信度：相邻厂区选址、长晶炉订单、6 英寸时间表、$632.5M 募资的实际投放节奏，以及若兑现则
+    A3-2 份额与 A3-4「钱花不出去」如何同时松动
+  rationale: 该路线图写在 thesis_v1 K2 却未进成稿环②/③/④；它是多头最强的定量表达，也是 KILL-3 的反向触发条件
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-08-27T12:02:04.905686+00:00'
+- question: 客户预付款锁货 vs 自建替代的矛盾：Casella $22.3M / Coherent $25.4M / Lumentum 长约至 2031，为何被列为
+    2028 自建替代者的同时掏现金锁 AXT 产能？这对「2027H2 供给洪水」的削弱有多大
+  rationale: 05-critic：环③ A3-2 与环⑤ R1 从未应答这条反证；两件事不能同时都算 bear
+  source: critic_weak_k
+  related:
+  - K5
+  priority: P1
+  status: open
+  suggested_at: '2026-08-27T12:02:04.905686+00:00'
+- question: 云南锗业 2025 年 InP 利用率仅 67%（缺口 >70% 的年份）的成因：良率/一致性/客户认证/原料/订单，判「158 元/片 capex」是否等于可交付产能的边际成本锚
+  rationale: 05-critic：命门 2 标「已解·高置信」过头，替代读法（良率与认证约束）未应答，应降为中置信
+  source: critic_weak_k
+  related:
+  - K5
+  priority: P1
+  status: open
+  suggested_at: '2026-08-27T12:02:04.905686+00:00'
+- question: 把成本模型升级为 (v, p) 二维并做识别性检验：用季度序列（2022Q1–2026Q2，含 42.0%→10.7%→44.9% 全震荡带）而非
+    3 个年度点重估 F/v，并检验 v 是否已从 58.5% 下移；若季度数据仍无法识别，改用「v 与 p 联合扫描 + 不做点估计」呈现，替换现在的单行 p
+    阶梯
+  rationale: 05-critic 判承重不足：v=58.5% 全文只出现1次、从未扰动，而其敏感度与已扫的 p 同量级（Base $28.7–$43.1）；p=1.40
+    是恒等式残差、参数有效标定样本只有 2025 一年
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P0
+  status: open
+  suggested_at: '2026-09-02T04:17:09.900456+00:00'
+- question: 命门5 三分化后，为第三支「单位成本/良率(v↓)」找独立判别式：AXT 存货跌价准备率（现 25%）与在产品占比（现 63%）的季度变化、云南锗业单位成本口径（其半年报自陈「产能利用率提高带动单位成本下降」）、以及大尺寸迁移对单片成本
+    vs 单片价格的分别影响
+  rationale: KILL-10 在 v 下降的世界里会给出「结构主导」的对答案错理由，只允许 EV 从 −3.7% 到 +1.4%，而真值可能 +9%
+  source: critic_weak_k
+  related:
+  - K1
+  - K5
+  priority: P0
+  status: open
+  suggested_at: '2026-09-02T04:17:09.900456+00:00'
+- question: 份额分母口径调和：日经/Straits 称 JX 与住友「各约占 40%」，而本案用 AXT 份额 33–45% —— 按「营收份额 / 有效合规产能份额
+    / 含非合规产能份额」三种 scope 分别重算，并用新到手的 Omdia/Yole 片数口径（2026 需求 260–300 万片 / 有效产能约 75
+    万片）校验
+  rationale: 两组份额口径不可能同时为真；环② TAM 与环③ A3-3 都挂在这个分母上
+  source: critic_weak_k
+  related:
+  - K2
+  - K5
+  priority: P0
+  status: open
+  suggested_at: '2026-09-02T04:17:09.900456+00:00'
+- question: 用 SMM 现货（4 寸 ¥6,500–7,500、+73% YTD）与 AXT 实现 ASP（Q2 反推约 $480/4 寸当量）重建环②
+    TAM 的第二条腿，并据此重定 2031 三档的 ASP 递减路径
+  rationale: case 用 $30–40/片折 2 寸（=$120–160/4 寸），与当期现货差 6–7 倍；两路 TAM「互相印证」名不副实
+  source: critic_weak_k
+  related:
+  - K2
+  priority: P1
+  status: open
+  suggested_at: '2026-09-02T04:17:09.900456+00:00'
+- question: AXT 真实 InP 衬底份额的一手披露 + "有效合规产能"scope 定义 —— 解 chain-critic(2026-09-02)判定的「终局证据薄」：终局环(环④EV+目标价)四维里只有财务轨迹达定量，估值锚(终值倍数16x=判断非测量)与份额/竞争壁垒(二手转引)均定性。核心冲突：日经/Straits
+    称 JX 与住友各约40%，与本案 AXT 30-36% 不可能同真(三家>110%)。此单一数据源同时喂命门6(需求口径)/命门7(份额-倍数)/环②TAM/环④EV符号。路径：Yole/Omdia
+    原报告(付费墙)、通美港股18C招股书(KILL-13)、JX IR一手确认(KILL-12)
+  rationale: chain-critic「只补一处补哪」的首选；三条空方论据(份额/需求/JX产能)共同依赖的单一数据源瓶颈,性价比高于继续打磨(F,v0)拆分或终值倍数本身
+  source: critic_weak_k
+  related:
+  - K8
+  - K9
+  priority: P0
+  status: open
+  suggested_at: '2026-09-02T11:13:06.135015+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-rewrite
+  summary: 对 v3 再评审：独立多头反方未找到新的未应答致命点(致命一击=终值16x vs JX 32.3x, case 已预先披露定价, 评分4/3/5/5/4)。Step
+    6.5 取到 JX 一手公告(mat-8f4278)：¥1200亿/累计¥1500亿/7-10倍(vs FY3/26)一手确认(KILL-12触发/B8 resolved)，且龙头谈涨价+需求超预期+Jefferies
+    Buy(mat-54d899)——需求/价格/终值三轴利多空方。tight-scope 并入：环③A3-2/A3-4、环⑤R4/B8/R1-R2、命门9证据、JX引用升一手
+    + kit重算。承重=单线承重。
+  at: '2026-09-03T02:10:41.598512+00:00'
+  thesis_version: 3
+  next_stage: 04-synthesizing
+decomposition:
+  current_version: 4
+  last_updated: '2026-09-03T02:38:05.130198+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-08-26T11:28:13.541608+00:00'
+    summary: 命门1=45%毛利率的物理归属:许可造的人为短缺 vs 真实产能不足(低,唯一硬证据=境内/出口毛利率差); 命门2=扩产边际成本曲线平or陡(低/uncertain,决定供给应答伤AXT还是成就AXT);
+      命门3=AXT在中国队的身份:境内产能or外资通道(低,决定60%内销引擎真假)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-08-27T03:49:49.888998+00:00'
+    summary: 命门1(毛利率归属)已解并定量三分(杠杆48%/价格结构52%,渐近线41.5%)；命门2(扩产曲线)已解=平且四年降30%；命门3(中国队身份)部分解=双面并存净效应open(唯一未收敛)；新增命门4($6.94亿资本配置)已解=钱花不出去或花出去两条路都不通向Bull。
+    convergence_status: open
+    changelog: 加了命门4($6.94亿资本配置,凭mat-c7c751的H1 capex $8.6M/$305.6M买债券/无采购承诺 + mat-62df35/mat-178b29的三年PP&E累计$2300万零增长)；命门1结论反转(v0"45%=许可租金"被四条独立证据否定,改为定量三分,置信度低→高)；命门2置信度低→高(凭三源一致的1.89亿元/30万片折4寸/18个月)；命门3置信度低→中且从二选一改为双面并存(凭mat-29e87f管制含技术及资料
+      + mat-2579cb铟资源75%vs衬底出货10%的错位,两条v0完全不知道)；未砍任何命门,无曾砍又复活项,对照全历史无震荡。primer入门目标13→15条:加#9(配额制经济学,凭mat-29e87f境内外毛利率反转)、#10(纯经营杠杆支,凭mat-178b29成本刚性)；升权v0第13条(美股+中国产能读表法)为独立特色章；降权v0第10条(科创板/18C)并入股权结构节；未砍任何入门目标。两条新增目标均已被现有findings完全覆盖,第二收料趟需求为零。收敛判定:delta非空但已实质收敛+gap双轴绿+05
+      critic未跑→open,未撞2轮硬顶故不用capped、无需suggested_drilldowns回流。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-02T03:03:06.788513+00:00'
+    summary: 命门1(GM持续性)重新打开为唯一承重项；命门2降中置信(名义产能≠可交付产能)；命门4结构被推翻改为三条路(产能不靠这笔钱)；新增命门5=单价指数p里"价格vs结构"的成分，它是能让EV翻正的枢轴；K3确认永久不可得。
+    convergence_status: open
+    changelog: v1的渐近线41.5%口径错误已修(GM=1-v/p-F/S)；命门1/2从已解回退；命门4推翻重构；新增命门5
+  - version: 3
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-02T04:37:17.727467+00:00'
+    summary: 枢轴迁移：v2 的「p 里价格 vs 结构」在公开数据下不可识别（只有 m=p/u 可观测，且 (F,v) 换窗口即从渐近GM 38.9%
+      跳到 56.7%），故撤换。命门1 大幅上修至60%（2022年 m=1.30 常态锚 + 季度 m 平滑单调 + 对照组云南锗业 47.14% 翻牌）；命门2/5
+      已解且供给应答幅度上修（JX 7-10倍）。新增两个可观测枢轴：命门6「缺口>70% 是可购买需求还是设计意向」、命门7「2031终值倍数 12-18x
+      还是 25-35x」——后者已是 EV 第一杠杆。承重压力从不可判定的毛利率成分迁到可观测的份额约束与资本周期。
+    convergence_status: open
+    changelog: v2→v3：命门5 撤换（不可识别）；命门1 40%→60%；命门2 中→中高；新增命门6(量的口径)与命门7(终值倍数)；K1 上修、K5
+      已解且幅度上修；补齐2022年度点解决(F,v)窗口敏感性问题
+  - version: 4
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-03T02:38:05.130395+00:00'
+    summary: v3→v4：Step6.5取JX官方一手(mat-8f4278)，命门2一手坐实/KILL-12触发/盲点B8 resolved；命门6需求向真侧偏(A3-2
+      45→55%)；命门7终值两侧均补一手(Jefferies Buy vs 资本周期,A3-4 25→30%)。EV -10.6→-6.0%、强度3→2/10。convergence仍open(命门6/7可观测未收敛,primary-share一手仍缺)
+    convergence_status: open
+    changelog: JX ¥1200亿从二手转引升一手(mat-8f4278):累计约¥1500亿/7-10倍(相对FY3/26)。KILL-12触发、B8
+      resolved。命门6需求向真(A3-2 45→55%)、命门7终值两侧补一手(A3-4 25→30%)。EV -10.6→-6.0%
+thesis:
+  current_version: 4
+  last_updated: '2026-09-03T02:37:04.112350+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-08-26T11:24:39.231117+00:00'
+    summary: 看空当前价位(3/10)：需求与份额都真，但45%毛利率是出口许可造的短缺租金；AXT自己三倍扩产+同行齐扩，2027供给转向。目标价$54(EV加权)vs现价$67.45约-20%；介入区$28-34。
+    prescan_status: full
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-27T03:49:49.846882+00:00'
+    summary: 方向仍看空但支柱全换：44.9%毛利率约一半是可逆经营杠杆(渐近线41.5%,已被超越)、另一半是价格与配额结构；扩产成本曲线平且四年降30%(158元/片折2寸)，复制方不以毛利率为门槛；$6.94亿现金两条路都不通向Bull。12个月目标价$44，概率加权内在价值$36.4，EV−44%，介入区$18-26，试探档。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-02T03:02:08.056307+00:00'
+    summary: 方向仍偏空但强度降至弱(2/10)：产能路线图与需求为真且不需大额capex，现价$56.11的隐含预期已收窄为单变量赌注——GM能否长期守45%+且2031仍值25-35x。我给GM持续约40%概率，EV约-6%、下行尾部极厚(33%概率-67%~-81%)。不买入；已持有者可继续持有严守KILL，不加仓；介入区上移至$25-36。
+  - version: 3
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-02T11:02:48.892298+00:00'
+    summary: 偏空强度3/10：毛利率轴已让给多头(A3-1 40→60%)，承重迁到两个可观测量——隐含2031份额40-90% vs当前30-36%(对阵JX
+      7-10x/住友2.4x)、终值倍数13-21x vs市场25-35x。EV -10.6%(带-25~+17%)，E目标价$50.2，12m $52。不买入/持有严守KILL/不做空；介入区≤$31
+  - version: 4
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-03T02:37:04.112547+00:00'
+    summary: 偏空强度2/10(近中性)：05再评审Step6.5取到JX官方一手(mat-8f4278)——¥1200亿/累计约¥1500亿/7-10倍(相对FY3/26)确认(KILL-12触发/B8
+      resolved)，且龙头谈涨价+需求超预期+Jefferies给Buy，在需求/价格/终值三轴利多空方对立面。EV -10.6%→-6.0%(band
+      -28.4~+22.7%)、E目标价$52.7、12m$52。不买入/持有严守KILL/不做空；介入区≤$31。承重=单线承重(终值倍数仍判断)
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-08-26T11:29:33.455567+00:00'
+  exited_at: '2026-08-26T12:27:21.988783+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    - K7
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 03-extracting
+  entered_at: '2026-08-26T12:27:21.988783+00:00'
+  exited_at: '2026-08-26T13:35:17.375374+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 8
+    empty_pending_decision: 0
+- stage: 04-synthesizing
+  entered_at: '2026-08-26T13:35:17.375374+00:00'
+  exited_at: '2026-08-27T03:52:46.238751+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-08-27T03:52:46.238751+00:00'
+  exited_at: '2026-08-27T03:52:46.643778+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-08-27T03:52:46.643778+00:00'
+  exited_at: '2026-09-01T09:01:14.708814+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 0
+- stage: 03-extracting
+  entered_at: '2026-09-01T09:01:14.708814+00:00'
+  exited_at: '2026-09-02T02:21:46.639499+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 8
+    empty_pending_decision: 2
+- stage: 04-synthesizing
+  entered_at: '2026-09-02T02:21:46.639499+00:00'
+  exited_at: '2026-09-02T03:36:41.362732+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 8
+    empty_pending_decision: 2
+- stage: 04-post-synthesis
+  entered_at: '2026-09-02T03:36:41.362732+00:00'
+  exited_at: '2026-09-02T11:02:49.003799+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 8
+    empty_pending_decision: 2
+- stage: 01-roadmap-reopen
+  entered_at: '2026-09-02T11:02:49.003799+00:00'
+  exited_at: '2026-09-02T11:17:35.340771+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K8
+    - K9
+    uncovered_ring_inputs: []
+    autofetch_debt: 8
+    empty_pending_decision: 2
+- stage: 05-critic-review
+  entered_at: '2026-09-02T11:17:35.340771+00:00'
+  exited_at: '2026-09-03T02:37:04.180523+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K8
+    - K9
+    uncovered_ring_inputs: []
+    autofetch_debt: 8
+    empty_pending_decision: 2
+- stage: 01-roadmap-reopen
+  entered_at: '2026-09-03T02:37:04.180523+00:00'
+  exited_at: '2026-09-03T02:45:02.439080+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 9
+    empty_pending_decision: 2
+- stage: 04-post-synthesis
+  entered_at: '2026-09-03T02:45:02.439080+00:00'
+  exited_at: '2026-09-03T02:45:02.923524+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 9
+    empty_pending_decision: 2
+- stage: 05-critic-review
+  entered_at: '2026-09-03T02:45:02.923524+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 9
+    empty_pending_decision: 2

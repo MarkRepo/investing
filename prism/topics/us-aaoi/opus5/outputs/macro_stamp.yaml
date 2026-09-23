@@ -1,0 +1,29 @@
+as_of_regime_version: 4
+regime_composite: regime v4：实际利率主导的熊陡（10Y 实际 2.43% 周期新高）+ 流动性缓冲耗尽（RRP 13.8 亿、SOFR−IORB
+  −1bp）+ 信用利差极窄（IG 0.80%/HY 2.79%）+ 脆弱度 high 已进入兑现期。本案真实敞口是「融资通道渠道」而非「贴现率渠道」——贴现率
+  ±50bp 仅影响估值 ±1.3%，但利差走阔会关闭 ATM 窗口，而 ATM 是 H1 FCF −$707M 的唯一资金来源
+depends_on_states:
+- conclusion: rates_us
+  state: 10Y 4.69% / 10Y 实际 2.43%（周期新高，+27bp）、熊陡由实际利率主导
+  role: confirming
+- conclusion: liquidity
+  state: NFCI −0.55、净流动性 5.92 万亿、RRP 抽干至 13.8 亿、SOFR−IORB −1bp 向 0 咬合 → 缓冲耗尽
+  role: load_bearing
+- conclusion: credit
+  state: IG OAS 0.80% / HY 2.79%，极窄；走阔即关闭本案唯一融资通道
+  role: load_bearing
+- conclusion: fx_cny
+  state: USDCNY 6.77 企稳偏强；成本端在宁波（61% 员工）与台北，人民币升值压成本
+  role: confirming
+discount_rate:
+  risk_free: 4.69
+  applied_wacc: 12.5
+  rate_sensitivity: ±50bp → Base 公允值 ±1.3%（12.0% → $94.2 / 12.5% → $93.0 / 13.0% →
+    $91.8）。因估值锚以相对倍数为主而非绝对折现，利率敏感度低；真正杠杆在毛利率（±1pp → ±8%）与股数（±10% → ∓9%）
+  source_input: macro regime v4（2026-07-28）10Y 名义 4.69% 作无风险腿 + 股权风险溢价约 5.5% + 小盘/单一客户/融资依赖溢价约
+    2.3%
+slug: us-aaoi
+variant: opus5
+stamped_at: '2026-08-27T10:36:54.479439+00:00'
+stale: false
+stale_reason: null

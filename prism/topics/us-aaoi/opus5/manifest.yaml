@@ -1,0 +1,3386 @@
+slug: us-aaoi
+variant: opus5
+updated: '2026-09-01T09:05:49.194608+00:00'
+materials:
+- id: mat-618a50
+  filename: 2026-08-26_applied-optoelectronics-q2-earnings-191-9m-revenue.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.492754+00:00'
+  processed: true
+  notes: query='AAOI Applied Optoelectronics 2026 Q2 earnings revenue gross margin
+    guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics Microsoft customer loss 2018 2019 revenue collapse
+      retrospective
+    url: https://www.stocktitan.net/news/AAOI/applied-optoelectronics-reports-second-quarter-2026-wjz4h91d9ngj.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:15.490020+00:00'
+    stale_at: '2026-09-25T10:51:15.490020+00:00'
+    expire_at: '2026-11-24T10:51:15.490020+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI Applied Optoelectronics 2026 Q2 earnings revenue gross margin guidance
+    - AAOI Q2 2026 earnings call transcript Stefan Murry key takeaways
+    - AAOI gross margin 800G scale operating leverage analysis 2026
+    - Applied Optoelectronics 2025 full year results revenue net loss gross margin
+      10-K
+    - Applied Optoelectronics Q2 2026 earnings call transcript full capacity per month
+      utilization
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-4485a1
+  filename: 2026-08-26_applied-optoelectronics-tops-q2-2026-forecasts.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.498250+00:00'
+  processed: true
+  notes: query='AAOI Applied Optoelectronics 2026 Q2 earnings revenue gross margin
+    guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 'AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027, 40%
+      gross margin path, non-GAAP operating income guidance, EML in-house supply,
+      1.6T qualification, capacity constrained'
+    url: https://www.investing.com/news/transcripts/earnings-call-transcript-applied-optoelectronics-tops-q2-2026-forecasts-93CH-4844551
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-27T02:50:14.752655+00:00'
+    stale_at: '2026-09-26T02:50:14.752655+00:00'
+    expire_at: '2026-11-25T02:50:14.752655+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - AAOI Applied Optoelectronics 2026 Q2 earnings revenue gross margin guidance
+    - AAOI Q2 2026 earnings call transcript Stefan Murry key takeaways
+    - Applied Optoelectronics Q2 2026 earnings call transcript full capacity per month
+      utilization
+  rings:
+  - consensus
+- id: mat-db7dc1
+  filename: 2026-08-26_applied-optoelectronics-reports-second-quarter-202.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.501637+00:00'
+  processed: true
+  notes: query='AAOI Applied Optoelectronics 2026 Q2 earnings revenue gross margin
+    guidance' | query='AAOI top customer concentration percentage revenue 2025 annual
+    report' | query='AAOI gross margin 800G scale operating leverage analysis 2026'
+    | query='AAOI Q2 2026 earnings call transcript Stefan Murry key takeaways' | 待用户确认
+    | query='AAOI segment gross margin datacenter CATV 800G ASP EML laser internal
+    supply ratio'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI segment gross margin datacenter CATV 800G ASP EML laser internal supply
+      ratio
+    url: https://investors.ao-inc.com/news-releases/news-release-details/applied-optoelectronics-reports-second-quarter-2026-results
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:13.365270+00:00'
+    stale_at: '2026-09-25T10:51:13.365270+00:00'
+    expire_at: '2026-11-24T10:51:13.365270+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-a27432
+  filename: 2026-08-26_applied-optoelectronics-inc-aaoi-q2-2026-earnings-.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.509671+00:00'
+  processed: false
+  notes: query='AAOI Applied Optoelectronics 2026 Q2 earnings revenue gross margin
+    guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI Applied Optoelectronics 2026 Q2 earnings revenue gross margin guidance
+    url: https://finance.yahoo.com/markets/stocks/articles/applied-optoelectronics-inc-aaoi-q2-050943160.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.507981+00:00'
+    stale_at: '2026-09-25T10:38:11.507981+00:00'
+    expire_at: '2026-11-24T10:38:11.507981+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-ff7c1d
+  filename: 2026-08-26_applied-optoelectronics-aaoi-reported-q2-results-a.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.517869+00:00'
+  processed: false
+  notes: query='AAOI Applied Optoelectronics 2026 Q2 earnings revenue gross margin
+    guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI Applied Optoelectronics 2026 Q2 earnings revenue gross margin guidance
+    url: https://simplywall.st/stocks/us/tech/nasdaq-aaoi/applied-optoelectronics/news/applied-optoelectronics-aaoi-reported-q2-results-and-new-gui
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.515788+00:00'
+    stale_at: '2026-09-25T10:38:11.515788+00:00'
+    expire_at: '2026-11-24T10:38:11.515788+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-149188
+  filename: 2026-08-26_form-10-q-for-applied-optoelectronics-inc-filed-08.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.524714+00:00'
+  processed: false
+  notes: query='Applied Optoelectronics 2025 full year results revenue net loss gross
+    margin 10-K'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics 2025 full year results revenue net loss gross margin
+      10-K
+    url: https://investors.ao-inc.com/static-files/80b82041-5bab-406d-8991-c4f31de63104
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:11.522374+00:00'
+    stale_at: '2026-09-25T10:38:11.522374+00:00'
+    expire_at: '2026-11-24T10:38:11.522374+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - financial-arc
+- id: mat-69ecdb
+  filename: 2026-08-26_applied-optoelectronics-reports-fourth-quarter-and.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.531957+00:00'
+  processed: false
+  notes: query='Applied Optoelectronics 2025 full year results revenue net loss gross
+    margin 10-K'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics 2025 full year results revenue net loss gross margin
+      10-K
+    url: https://investors.ao-inc.com/node/16676/pdf
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:11.529245+00:00'
+    stale_at: '2026-09-25T10:38:11.529245+00:00'
+    expire_at: '2026-11-24T10:38:11.529245+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-7ca049
+  filename: 2026-08-26_sec-filing-applied-optoelectronics-inc.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.540300+00:00'
+  processed: false
+  notes: query='Applied Optoelectronics 2025 full year results revenue net loss gross
+    margin 10-K' | query='AAOI Amazon warrant purchase commitment vesting milestone
+    progress 2026' | query='Applied Optoelectronics Ningbo Global Technology divestiture
+    closing proceeds'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics Ningbo Global Technology divestiture closing proceeds
+    url: https://investors.ao-inc.com/node/10881/html
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:11.893605+00:00'
+    stale_at: '2026-09-25T10:38:11.893605+00:00'
+    expire_at: '2026-11-24T10:38:11.893605+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - financial-arc
+- id: mat-f6b7aa
+  filename: 2026-08-26_aaoi20241231-10k-htm.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.561784+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics 2025 full year results revenue net loss gross
+    margin 10-K'
+  mineru_state: not_needed
+  addresses:
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI CATV DOCSIS 4.0 1.8GHz amplifier order backlog MSO 2026
+    url: https://www.sec.gov/Archives/edgar/data/1158114/000143774925005575/aaoi20241231_10k.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:12.083425+00:00'
+    stale_at: '2026-09-25T10:38:12.083425+00:00'
+    expire_at: '2026-11-24T10:38:12.083425+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - Applied Optoelectronics 2025 full year results revenue net loss gross margin
+      10-K
+- id: mat-72ae74
+  filename: 2026-08-26_applied-optoelectronics-aaoi---market-capitalizati.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.576552+00:00'
+  processed: false
+  notes: query='AAOI stock price market cap shares outstanding August 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI stock price market cap shares outstanding August 2026
+    url: https://tradingeconomics.com/aaoi:us:market-capitalization
+    domain: tradingeconomics.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.572572+00:00'
+    stale_at: '2026-09-25T10:38:11.572572+00:00'
+    expire_at: '2026-11-24T10:38:11.572572+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-64ecbd
+  filename: 2026-08-26_aaoi-stock-price-news-analysis-applied-optoelec.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.591889+00:00'
+  processed: false
+  notes: query='AAOI stock price market cap shares outstanding August 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI stock price market cap shares outstanding August 2026
+    url: https://www.stocktitan.net/overview/AAOI
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.587379+00:00'
+    stale_at: '2026-09-25T10:38:11.587379+00:00'
+    expire_at: '2026-11-24T10:38:11.587379+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-cfa3b9
+  filename: 2026-08-26_how-to-buy-applied-optoelectronics-stock-invest-in.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.610520+00:00'
+  processed: false
+  notes: query='AAOI stock price market cap shares outstanding August 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI stock price market cap shares outstanding August 2026
+    url: https://www.wallstreetzen.com/how-to-buy-applied-optoelectronics-stock
+    domain: wallstreetzen.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.605529+00:00'
+    stale_at: '2026-09-25T10:38:11.605529+00:00'
+    expire_at: '2026-11-24T10:38:11.605529+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-f878ed
+  filename: 2026-08-26_applied-optoelectronics-inc-aaoi-stock-price-news.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.629711+00:00'
+  processed: false
+  notes: query='AAOI stock price market cap shares outstanding August 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI stock price market cap shares outstanding August 2026
+    url: https://finance.yahoo.com/quote/AAOI
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.622983+00:00'
+    stale_at: '2026-09-25T10:38:11.622983+00:00'
+    expire_at: '2026-11-24T10:38:11.622983+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-353ff5
+  filename: 2026-08-26_applied-optoelectronics-aaoi-stock-forecast-price-.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.649720+00:00'
+  processed: false
+  notes: query='AAOI 2026 2027 consensus revenue EPS estimate analyst price target'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 2026 2027 consensus revenue EPS estimate analyst price target
+    url: https://stockanalysis.com/stocks/aaoi/forecast
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.643246+00:00'
+    stale_at: '2026-09-25T10:38:11.643246+00:00'
+    expire_at: '2026-11-24T10:38:11.643246+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+- id: mat-7d8079
+  filename: 2026-08-26_aaoi-forecast-price-target-analyst-ratings-chartmi.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.671238+00:00'
+  processed: true
+  notes: query='AAOI 2026 2027 consensus revenue EPS estimate analyst price target'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI analyst estimates FY2026 FY2027 revenue EPS price target breakdown
+      by firm
+    url: https://www.chartmill.com/stock/quote/AAOI/analyst-ratings
+    domain: chartmill.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:13.235536+00:00'
+    stale_at: '2026-09-25T10:51:13.235536+00:00'
+    expire_at: '2026-11-24T10:51:13.235536+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI 2026 2027 consensus revenue EPS estimate analyst price target
+  rings:
+  - consensus
+- id: mat-aa2792
+  filename: 2026-08-26_applied-optoelectronics-future-growth.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.691433+00:00'
+  processed: true
+  notes: query='AAOI 2026 2027 consensus revenue EPS estimate analyst price target'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 2026 2027 consensus revenue EPS estimate analyst price target
+    url: https://simplywall.st/stocks/us/tech/nasdaq-aaoi/applied-optoelectronics/future
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.684961+00:00'
+    stale_at: '2026-09-25T10:38:11.684961+00:00'
+    expire_at: '2026-11-24T10:38:11.684961+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+- id: mat-d6520a
+  filename: 2026-08-26_applied-optoelectronics-nasdaq-aaoi---stock-analys.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.712873+00:00'
+  processed: false
+  notes: query='AAOI 2026 2027 consensus revenue EPS estimate analyst price target'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 2026 2027 consensus revenue EPS estimate analyst price target
+    url: https://simplywall.st/stocks/us/tech/nasdaq-aaoi/applied-optoelectronics
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.705361+00:00'
+    stale_at: '2026-09-25T10:38:11.705361+00:00'
+    expire_at: '2026-11-24T10:38:11.705361+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-e29650
+  filename: 2026-08-26_applied-optoelectronics-inc-10-q.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.752936+00:00'
+  processed: true
+  notes: query='AAOI Amazon warrant purchase commitment vesting milestone progress
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics Amazon warrant transaction agreement exhibit 4.1
+      vesting increments anti-dilution
+    url: https://www.sec.gov/Archives/edgar/data/1158114/000168316825001580/appliedopto_8k.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:14.929009+00:00'
+    stale_at: '2026-09-25T10:51:14.929009+00:00'
+    expire_at: '2026-11-24T10:51:14.929009+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI Amazon warrant purchase commitment vesting milestone progress 2026
+  rings:
+  - financial-arc
+- id: mat-324918
+  filename: 2026-08-26_applied-optoelectronics-aaoi-could-be-93-overvalue.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.781139+00:00'
+  processed: false
+  notes: query='AAOI Amazon warrant purchase commitment vesting milestone progress
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI Amazon warrant purchase commitment vesting milestone progress 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/applied-optoelectronics-aaoi-could-93-001604934.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.770875+00:00'
+    stale_at: '2026-09-25T10:38:11.770875+00:00'
+    expire_at: '2026-11-24T10:38:11.770875+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-545855
+  filename: 2026-08-26_applied-optoelectronics-stock-soars-on-amazon-deal.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.805580+00:00'
+  processed: false
+  notes: query='AAOI Amazon warrant purchase commitment vesting milestone progress
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI Amazon warrant purchase commitment vesting milestone progress 2026
+    url: https://www.investopedia.com/applied-optoelectronics-stock-soars-on-amazon-deal-giving-option-to-buy-shares-11696869
+    domain: investopedia.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.797293+00:00'
+    stale_at: '2026-09-25T10:38:11.797293+00:00'
+    expire_at: '2026-11-24T10:38:11.797293+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-8b8ebc
+  filename: 2026-08-26_applied-optoelectronics-rallies-on-amazon-stock-wa.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.827871+00:00'
+  processed: false
+  notes: query='AAOI Amazon warrant purchase commitment vesting milestone progress
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI Amazon warrant purchase commitment vesting milestone progress 2026
+    url: https://seekingalpha.com/article/4767517-applied-optoelectronics-stock-rallies-on-amazon-stock-warrant-agreement
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:11.819612+00:00'
+    stale_at: '2026-09-25T10:38:11.819612+00:00'
+    expire_at: '2026-11-24T10:38:11.819612+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-119748
+  filename: 2026-08-26_aaoi20221231-10k-htm.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.853755+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Ningbo Global Technology divestiture closing
+    proceeds'
+  mineru_state: not_needed
+  addresses:
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics Ningbo Global Technology divestiture closing proceeds
+    url: https://www.sec.gov/Archives/edgar/data/1158114/000143774923004648/aaoi20221231_10k.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:11.845001+00:00'
+    stale_at: '2026-09-25T10:38:11.845001+00:00'
+    expire_at: '2026-11-24T10:38:11.845001+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-76d9af
+  filename: 2026-08-26_applied-optoelectronics-announces-definitive-agree.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.878177+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Ningbo Global Technology divestiture closing
+    proceeds'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics Ningbo Global Technology divestiture closing proceeds
+    url: https://investors.ao-inc.com/news-releases/news-release-details/applied-optoelectronics-announces-definitive-agreement-sell-its
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:11.869029+00:00'
+    stale_at: '2026-09-25T10:38:11.869029+00:00'
+    expire_at: '2026-11-24T10:38:11.869029+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - historical-mirror
+  - mgmt-capital-alloc
+- id: mat-93778e
+  filename: 2026-08-26_applied-optoelectronics-announces-pricing-of-80-2-.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.929808+00:00'
+  processed: false
+  notes: query='Applied Optoelectronics Ningbo Global Technology divestiture closing
+    proceeds'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics Ningbo Global Technology divestiture closing proceeds
+    url: https://investors.ao-inc.com/news-releases/news-release-details/applied-optoelectronics-announces-pricing-802-million
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:11.919407+00:00'
+    stale_at: '2026-09-25T10:38:11.919407+00:00'
+    expire_at: '2026-11-24T10:38:11.919407+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+  - valuation-anchor
+- id: mat-318351
+  filename: 2026-08-26_applied-optoelectronics-q2-2026-results-and-expans.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.959169+00:00'
+  processed: false
+  notes: query='Applied Optoelectronics Ningbo Global Technology divestiture closing
+    proceeds' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI top customer concentration percentage revenue 2025 annual report
+    url: https://www.stocktitan.net/sec-filings/AAOI/10-q-applied-optoelectronics-inc-quarterly-earnings-report-1b10770fa4b7.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.621283+00:00'
+    stale_at: '2026-09-25T10:38:12.621283+00:00'
+    expire_at: '2026-11-24T10:38:12.621283+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - AAOI convertible notes outstanding 2026 maturity dilution fully diluted share
+      count
+    - Applied Optoelectronics Ningbo Global Technology divestiture closing proceeds
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-eef7b3
+  filename: 2026-08-26_applied-optoelectronics-stock-sank-14-yesterday-on.md
+  source_type: web-search
+  added: '2026-08-26T10:38:11.988434+00:00'
+  processed: false
+  notes: query='Applied Optoelectronics Ningbo Global Technology divestiture closing
+    proceeds' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics Ningbo Global Technology divestiture closing proceeds
+    url: https://www.tikr.com/blog/applied-optoelectronics-stock-sank-14-yesterday-on-a-600-million-stock-sale-the-street-isnt-cutting-its-target
+    domain: tikr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:11.978181+00:00'
+    stale_at: '2026-09-25T10:38:11.978181+00:00'
+    expire_at: '2026-11-24T10:38:11.978181+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - historical-mirror
+- id: mat-bf0ad7
+  filename: 2026-08-26_aaoi20251231-10k-htm.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.019413+00:00'
+  processed: false
+  notes: query='AAOI CATV DOCSIS 4.0 1.8GHz amplifier order backlog MSO 2026'
+  mineru_state: not_needed
+  addresses:
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI top customer concentration percentage revenue 2025 annual report
+    url: https://www.sec.gov/Archives/edgar/data/1158114/000143774926005875/aaoi20251231_10k.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:12.579183+00:00'
+    stale_at: '2026-09-25T10:38:12.579183+00:00'
+    expire_at: '2026-11-24T10:38:12.579183+00:00'
+    triggered_by: 00-prescan-baseline
+    prev_queries:
+    - AAOI CATV DOCSIS 4.0 1.8GHz amplifier order backlog MSO 2026
+- id: mat-ee1089
+  filename: 2026-08-26_u-s-optical-module-leader-aaoi-is-showing-strong-m.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.050931+00:00'
+  processed: true
+  notes: query='AAOI CATV DOCSIS 4.0 1.8GHz amplifier order backlog MSO 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics press release 1.6T order 800G order 2026 hyperscale
+      certification
+    url: https://news.futunn.com/en/ja/post/77336939/us-optical-module-leader-aaoi-is-showing-strong-momentum-capacity
+    domain: news.futunn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:14.226601+00:00'
+    stale_at: '2026-09-25T10:51:14.226601+00:00'
+    expire_at: '2026-11-24T10:51:14.226601+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI CATV DOCSIS 4.0 1.8GHz amplifier order backlog MSO 2026
+    - AAOI news announcement August 2026 order certification 1.6T
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-f9b8af
+  filename: 2026-08-26_pdf-form-424b5-for-applied-optoelectronics-inc-fil.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.151327+00:00'
+  processed: true
+  notes: query='AAOI convertible notes outstanding 2026 maturity dilution fully diluted
+    share count'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI at-the-market equity distribution agreement 2026  million prospectus
+      424B5
+    url: https://investors.ao-inc.com/static-files/a1b44fac-db4b-4173-aae4-f6f518504e6c
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:13.714244+00:00'
+    stale_at: '2026-09-25T10:51:13.714244+00:00'
+    expire_at: '2026-11-24T10:51:13.714244+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI convertible notes outstanding 2026 maturity dilution fully diluted share
+      count
+  rings:
+  - mgmt-capital-alloc
+- id: mat-707422
+  filename: 2026-08-26_applied-optoelectronics-closes-exchange-of-2026-no.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.183512+00:00'
+  processed: false
+  notes: query='AAOI convertible notes outstanding 2026 maturity dilution fully diluted
+    share count'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI convertible notes outstanding 2026 maturity dilution fully diluted
+      share count
+    url: https://www.nasdaq.com/press-release/applied-optoelectronics-closes-exchange-2026-notes-and-concurrent-registered-direct
+    domain: nasdaq.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:12.203280+00:00'
+    stale_at: '2026-09-25T10:38:12.203280+00:00'
+    expire_at: '2026-11-24T10:38:12.203280+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-9fdbd9
+  filename: 2026-08-26_applied-optoelectronics-inc---sec-gov.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.248528+00:00'
+  processed: false
+  notes: query='AAOI convertible notes outstanding 2026 maturity dilution fully diluted
+    share count'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI convertible notes outstanding 2026 maturity dilution fully diluted
+      share count
+    url: https://www.sec.gov/Archives/edgar/data/1158114/000110465924131385/tm2431223d10_8k.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:12.236315+00:00'
+    stale_at: '2026-09-25T10:38:12.236315+00:00'
+    expire_at: '2026-11-24T10:38:12.236315+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - financial-arc
+- id: mat-03951b
+  filename: 2026-08-26_applied-optoelectronics-aaoi-convertible-debt-2019.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.284966+00:00'
+  processed: true
+  notes: query='AAOI convertible notes outstanding 2026 maturity dilution fully diluted
+    share count' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI convertible notes outstanding 2026 maturity dilution fully diluted
+      share count
+    url: https://businessquant.com/metrics/aaoi/convertible-debt
+    domain: businessquant.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.272125+00:00'
+    stale_at: '2026-09-25T10:38:12.272125+00:00'
+    expire_at: '2026-11-24T10:38:12.272125+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - historical-mirror
+  - mgmt-capital-alloc
+- id: mat-dba133
+  filename: 2026-08-26_aoi-adds-388-000-sq-ft-targets-700-000-units-month.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.326204+00:00'
+  processed: false
+  notes: query='AAOI Sugar Land Texas Taiwan capacity expansion 800G capacity 2026
+    capex' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI Sugar Land Texas Taiwan capacity expansion 800G capacity 2026 capex
+    url: https://www.stocktitan.net/news/AAOI/aoi-expands-its-houston-area-footprint-to-900-000-square-feet-to-pfg8a8sfm495.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.312991+00:00'
+    stale_at: '2026-09-25T10:38:12.312991+00:00'
+    expire_at: '2026-11-24T10:38:12.312991+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-9a2635
+  filename: 2026-08-26_applied-optoelectronics-inc---aoi.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.363292+00:00'
+  processed: false
+  notes: query='AAOI Sugar Land Texas Taiwan capacity expansion 800G capacity 2026
+    capex'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI Sugar Land Texas Taiwan capacity expansion 800G capacity 2026 capex
+    url: https://investors.ao-inc.com/news-releases/news-release-details/aoi-expands-its-houston-area-footprint-900000-square-feet
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:12.349536+00:00'
+    stale_at: '2026-09-25T10:38:12.349536+00:00'
+    expire_at: '2026-11-24T10:38:12.349536+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - financial-arc
+- id: mat-a528a4
+  filename: 2026-08-26_aoi-announces-expansion-in-the-city-of-sugar-land-.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.402028+00:00'
+  processed: false
+  notes: query='AAOI Sugar Land Texas Taiwan capacity expansion 800G capacity 2026
+    capex' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI Sugar Land Texas Taiwan capacity expansion 800G capacity 2026 capex
+    url: https://sugarlandecodev.com/release/aoi-announces-expansion-in-the-city-of-sugar-land
+    domain: sugarlandecodev.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.388561+00:00'
+    stale_at: '2026-09-25T10:38:12.388561+00:00'
+    expire_at: '2026-11-24T10:38:12.388561+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-2e0b30
+  filename: 2026-08-26_sugar-land-based-aoi-secures-20-9m-grant-to-scale-.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.442941+00:00'
+  processed: false
+  notes: query='AAOI Sugar Land Texas Taiwan capacity expansion 800G capacity 2026
+    capex' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI Sugar Land Texas Taiwan capacity expansion 800G capacity 2026 capex
+    url: https://houston.org/news/sugar-land-based-aoi-secures-20m-grant-to-scale-ai-manufacturing
+    domain: houston.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.428797+00:00'
+    stale_at: '2026-09-25T10:38:12.428797+00:00'
+    expire_at: '2026-11-24T10:38:12.428797+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-9fec33
+  filename: 2026-08-26_替代性关税延续-美国新近301调查的影响与应对-北京大成-上海-律师事务所.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.487875+00:00'
+  processed: false
+  notes: query='光模块 美国 301 关税 2026 非中国产能 影响' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 光模块 美国 301 关税 2026 非中国产能 影响
+    url: https://shanghai.dacheng.com/Party_2/1428.html
+    domain: shanghai.dacheng.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.473031+00:00'
+    stale_at: '2026-09-25T10:38:12.473031+00:00'
+    expire_at: '2026-11-24T10:38:12.473031+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-f99330
+  filename: 2026-08-26_ustr-releases-section-301-tariff-specifics-and-ele.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.531119+00:00'
+  processed: false
+  notes: query='光模块 美国 301 关税 2026 非中国产能 影响' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 光模块 美国 301 关税 2026 非中国产能 影响
+    url: https://www.dwlaw.com/news-alerts/client-alert-heusel-ustr-releases-tariff-specifics
+    domain: dwlaw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.515977+00:00'
+    stale_at: '2026-09-25T10:38:12.515977+00:00'
+    expire_at: '2026-11-24T10:38:12.515977+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-45a922
+  filename: 2026-08-26_applied-optoelectronics-aaoi-earnings-call---the-g.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.663799+00:00'
+  processed: false
+  notes: query='AAOI top customer concentration percentage revenue 2025 annual report'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI top customer concentration percentage revenue 2025 annual report
+    url: https://www.theglobeandmail.com/investing/markets/markets-news/motley/457313/applied-optoelectronics-aaoi-earnings-call
+    domain: theglobeandmail.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.648383+00:00'
+    stale_at: '2026-09-25T10:38:12.648383+00:00'
+    expire_at: '2026-11-24T10:38:12.648383+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-59b1c7
+  filename: 2026-08-26_cpo量产并未延期卡点在上移.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.748862+00:00'
+  processed: false
+  notes: query='CPO 共封装光学 2026 落地节奏 可插拔光模块 需求影响'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: CPO 共封装光学 2026 落地节奏 可插拔光模块 需求影响
+    url: https://www.stcn.com/article/detail/3978305.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:12.732450+00:00'
+    stale_at: '2026-09-25T10:38:12.732450+00:00'
+    expire_at: '2026-11-24T10:38:12.732450+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-b0c933
+  filename: 2026-08-26_西部证券-光模块行业深度-二-cpo商业化节奏探讨及结构件拆解---发现报告.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.791024+00:00'
+  processed: false
+  notes: query='CPO 共封装光学 2026 落地节奏 可插拔光模块 需求影响'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: CPO 共封装光学 2026 落地节奏 可插拔光模块 需求影响
+    url: https://www.fxbaogao.com/detail/5350336
+    domain: fxbaogao.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:12.775036+00:00'
+    stale_at: '2026-09-25T10:38:12.775036+00:00'
+    expire_at: '2026-11-24T10:38:12.775036+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-be9af9
+  filename: 2026-08-26_ai与资本双轮驱动-cpo挑战何在.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.837658+00:00'
+  processed: false
+  notes: query='CPO 共封装光学 2026 落地节奏 可插拔光模块 需求影响' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: CPO 共封装光学 2026 落地节奏 可插拔光模块 需求影响
+    url: https://cn.supplyframe.com/article/9581.html
+    domain: cn.supplyframe.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.820968+00:00'
+    stale_at: '2026-09-25T10:38:12.820968+00:00'
+    expire_at: '2026-11-24T10:38:12.820968+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-2fc881
+  filename: 2026-08-26_cpo延期风波深度复盘-semianalysis-一纸报告为何单日重挫美股光通信-延后-到底该不该信.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.885093+00:00'
+  processed: false
+  notes: query='CPO 共封装光学 2026 落地节奏 可插拔光模块 需求影响' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: CPO 共封装光学 2026 落地节奏 可插拔光模块 需求影响
+    url: https://www.tradingkey.com/zh-hans/analysis/stocks/us-stock/261969598-semianalysis-cpo-delay-optical-selloff-tradingkey
+    domain: tradingkey.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.868260+00:00'
+    stale_at: '2026-09-25T10:38:12.868260+00:00'
+    expire_at: '2026-11-24T10:38:12.868260+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-a32c1d
+  filename: 2026-08-26_applied-optoelectronics-aaoi-short-interest-short-.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.937264+00:00'
+  processed: true
+  notes: query='AAOI short interest insider selling equity offering 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI short interest insider selling equity offering 2026
+    url: https://www.marketbeat.com/stocks/NASDAQ/AAOI/short-interest
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.920210+00:00'
+    stale_at: '2026-09-25T10:38:12.920210+00:00'
+    expire_at: '2026-11-24T10:38:12.920210+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-cc3bec
+  filename: 2026-08-26_applied-optoelectronics-executive-sells-29-000-sha.md
+  source_type: web-search
+  added: '2026-08-26T10:38:12.985960+00:00'
+  processed: true
+  notes: query='AAOI short interest insider selling equity offering 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI short interest insider selling equity offering 2026
+    url: https://www.stocktitan.net/sec-filings/AAOI/form-4-applied-optoelectronics-inc-insider-trading-activity-0f5b6e7da72e.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:12.968445+00:00'
+    stale_at: '2026-09-25T10:38:12.968445+00:00'
+    expire_at: '2026-11-24T10:38:12.968445+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-7b391c
+  filename: 2026-08-26_applied-optoelectronics-svp-sells-6-000-shares-at-.md
+  source_type: web-search
+  added: '2026-08-26T10:38:13.036482+00:00'
+  processed: true
+  notes: query='AAOI short interest insider selling equity offering 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI short interest insider selling equity offering 2026
+    url: https://www.stocktitan.net/sec-filings/AAOI/form-4-applied-optoelectronics-inc-insider-trading-activity-3aea6f12f863.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:13.018543+00:00'
+    stale_at: '2026-09-25T10:38:13.018543+00:00'
+    expire_at: '2026-11-24T10:38:13.018543+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-7bae69
+  filename: 2026-08-26_applied-optoelectronics-inc-aaoi---insider-trading.md
+  source_type: web-search
+  added: '2026-08-26T10:38:13.088007+00:00'
+  processed: true
+  notes: query='AAOI short interest insider selling equity offering 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI short interest insider selling equity offering 2026
+    url: https://www.secform4.com/insider-trading/1158114.htm
+    domain: secform4.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:38:13.069178+00:00'
+    stale_at: '2026-09-25T10:38:13.069178+00:00'
+    expire_at: '2026-11-24T10:38:13.069178+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-00ee3d
+  filename: 2026-08-26_applied-optoelectronics-announces-entry-into-excha.md
+  source_type: web-search
+  added: '2026-08-26T10:38:13.139105+00:00'
+  processed: false
+  notes: query='AAOI short interest insider selling equity offering 2026'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI short interest insider selling equity offering 2026
+    url: https://investors.ao-inc.com/news-releases/news-release-details/applied-optoelectronics-announces-entry-exchange-transactions
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:38:13.120418+00:00'
+    stale_at: '2026-09-25T10:38:13.120418+00:00'
+    expire_at: '2026-11-24T10:38:13.120418+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+  - valuation-anchor
+- id: mat-4ab236
+  filename: 2026-08-26_can-800g-transceivers-drive-aaoi-s-revenue-growth-.md
+  source_type: web-search
+  added: '2026-08-26T10:40:03.512994+00:00'
+  processed: false
+  notes: query='AAOI 800G 1.6T optical module orders hyperscaler revenue ramp 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 800G 1.6T optical module orders hyperscaler revenue ramp 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/800g-transceivers-drive-aaois-revenue-143600096.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:03.493786+00:00'
+    stale_at: '2026-09-25T10:40:03.493786+00:00'
+    expire_at: '2026-11-24T10:40:03.493786+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-03a274
+  filename: 2026-08-26_breaking-down-applied-optoelectronics-inc-aaoi.md
+  source_type: web-search
+  added: '2026-08-26T10:40:03.567293+00:00'
+  processed: false
+  notes: query='AAOI 800G 1.6T optical module orders hyperscaler revenue ramp 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 800G 1.6T optical module orders hyperscaler revenue ramp 2026
+    url: https://gritcap.io/p/breaking-down-applied-optoelectronics-inc-aaoi
+    domain: gritcap.io
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:03.547242+00:00'
+    stale_at: '2026-09-25T10:40:03.547242+00:00'
+    expire_at: '2026-11-24T10:40:03.547242+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-581451
+  filename: 2026-08-26_applied-optoelectronics-the-800g-and-1-6-t-ramp-ca.md
+  source_type: web-search
+  added: '2026-08-26T10:40:03.620139+00:00'
+  processed: true
+  notes: query='AAOI 800G 1.6T optical module orders hyperscaler revenue ramp 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics press release 1.6T order 800G order 2026 hyperscale
+      certification
+    url: https://seekingalpha.com/article/4911255-applied-optoelectronics-800g-and-1_6t-ramp-can-keep-driving-stock-higher
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:14.142214+00:00'
+    stale_at: '2026-09-25T10:51:14.142214+00:00'
+    expire_at: '2026-11-24T10:51:14.142214+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI 800G 1.6T optical module orders hyperscaler revenue ramp 2026
+  rings:
+  - bull-bear
+- id: mat-ada7e3
+  filename: 2026-08-26_aaoi-from-10-to-150-how-a-cable-tv-parts-company-b.md
+  source_type: web-search
+  added: '2026-08-26T10:40:03.676390+00:00'
+  processed: true
+  notes: query='AAOI 800G 1.6T optical module orders hyperscaler revenue ramp 2026'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI segment gross margin datacenter CATV 800G ASP EML laser internal supply
+      ratio
+    url: https://photoncap.net/p/aaoi-from-10-to-150-how-a-cable-tv
+    domain: photoncap.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:13.552009+00:00'
+    stale_at: '2026-09-25T10:51:13.552009+00:00'
+    expire_at: '2026-11-24T10:51:13.552009+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI 800G 1.6T optical module orders hyperscaler revenue ramp 2026
+    - AAOI news announcement August 2026 order certification 1.6T
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-9e7877
+  filename: 2026-08-26_aaoi-stock-forecast-applied-optoelectronics-revenu.md
+  source_type: web-search
+  added: '2026-08-26T10:40:03.796376+00:00'
+  processed: false
+  notes: query='AAOI gross margin 800G scale operating leverage analysis 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI gross margin 800G scale operating leverage analysis 2026
+    url: https://www.tradingkey.com/analysis/stocks/us-stocks/261948725-aaoi-stock-forecast-revenue-grew-42-percent-but-is-the-ai-opportunity-just-starting-tradingkey
+    domain: tradingkey.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:03.773610+00:00'
+    stale_at: '2026-09-25T10:40:03.773610+00:00'
+    expire_at: '2026-11-24T10:40:03.773610+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - consensus
+- id: mat-1e9ddd
+  filename: 2026-08-26_applied-optoelectronics-800g-ramp-key-catalyst-to-.md
+  source_type: web-search
+  added: '2026-08-26T10:40:03.854398+00:00'
+  processed: true
+  notes: query='AAOI gross margin 800G scale operating leverage analysis 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI segment gross margin datacenter CATV 800G ASP EML laser internal supply
+      ratio
+    url: https://finviz.com/news/334170/applied-optoelectronics-800g-ramp-key-catalyst-to-aid-2026-growth
+    domain: finviz.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:13.473887+00:00'
+    stale_at: '2026-09-25T10:51:13.473887+00:00'
+    expire_at: '2026-11-24T10:51:13.473887+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI gross margin 800G scale operating leverage analysis 2026
+  rings:
+  - bull-bear
+- id: mat-8c27ad
+  filename: 2026-08-26_aaoi-bets-on-800g-ramp-1-6t-optics-texas-scale-to-.md
+  source_type: web-search
+  added: '2026-08-26T10:40:03.969670+00:00'
+  processed: true
+  notes: query='AAOI gross margin 800G scale operating leverage analysis 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI segment gross margin datacenter CATV 800G ASP EML laser internal supply
+      ratio
+    url: https://www.tradingview.com/news/zacks:76899f7bb094b:0-aaoi-bets-on-800g-ramp-1-6t-optics-texas-scale-to-power-ai-growth
+    domain: tradingview.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:13.318251+00:00'
+    stale_at: '2026-09-25T10:51:13.318251+00:00'
+    expire_at: '2026-11-24T10:51:13.318251+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI gross margin 800G scale operating leverage analysis 2026
+  rings:
+  - bull-bear
+- id: mat-dcb6b6
+  filename: 2026-08-26_深度解读-aaoi光模块产能扩张10倍的谣言是怎么来的-财富号-东方财富网.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.033768+00:00'
+  processed: false
+  notes: query='AAOI 光模块 800G 1.6T 产能 订单 2026 深度分析' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 光模块 800G 1.6T 产能 订单 2026 深度分析
+    url: https://caifuhao.eastmoney.com/news/20260807162627383529900
+    domain: caifuhao.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:04.011871+00:00'
+    stale_at: '2026-09-25T10:40:04.011871+00:00'
+    expire_at: '2026-11-24T10:40:04.011871+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-e575c5
+  filename: 2026-08-26_第一上海证券-应用光电-aaoi-高端光模块进入1-10放量阶段-27年预期大幅上修---发现报告.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.093703+00:00'
+  processed: true
+  notes: query='AAOI 光模块 800G 1.6T 产能 订单 2026 深度分析'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 第一上海证券 应用光电 AAOI 深度报告 27年预期上修 目标价
+    url: https://www.fxbaogao.com/detail/5283133
+    domain: fxbaogao.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:16.077443+00:00'
+    stale_at: '2026-09-25T10:51:16.077443+00:00'
+    expire_at: '2026-11-24T10:51:16.077443+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI 光模块 800G 1.6T 产能 订单 2026 深度分析
+  rings:
+  - bull-bear
+- id: mat-ca60c0
+  filename: 2026-08-26_订单外溢-a股二线光模块-三剑客-谁更有潜力翻倍-应用光电-光通信-美股-产能-厂商-手机新浪网.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.160488+00:00'
+  processed: false
+  notes: query='AAOI 光模块 800G 1.6T 产能 订单 2026 深度分析' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 光模块 800G 1.6T 产能 订单 2026 深度分析
+    url: https://finance.sina.cn/2026-03-13/detail-inhqvtih4111690.d.html?vt=4
+    domain: finance.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:04.136009+00:00'
+    stale_at: '2026-09-25T10:40:04.136009+00:00'
+    expire_at: '2026-11-24T10:40:04.136009+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-c92954
+  filename: 2026-08-26_美国光模块龙头aaoi电话会-预计产能两年扩张10倍-1-6t最快两周获大客户认证-财报见闻---华.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.221106+00:00'
+  processed: false
+  notes: query='AAOI 光模块 800G 1.6T 产能 订单 2026 深度分析'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI 光模块 800G 1.6T 产能 订单 2026 深度分析
+    url: https://wallstreetcn.com/articles/3778954
+    domain: wallstreetcn.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:40:04.197779+00:00'
+    stale_at: '2026-09-25T10:40:04.197779+00:00'
+    expire_at: '2026-11-24T10:40:04.197779+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-ee7835
+  filename: 2026-08-26_aaoi-s-texas-plant-capacity-to-surge-nearly-10-fol.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.352188+00:00'
+  processed: true
+  notes: query='AAOI news announcement August 2026 order certification 1.6T' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics press release 1.6T order 800G order 2026 hyperscale
+      certification
+    url: https://finance.biggo.com/news/96d010fb-8d33-4ac5-895f-e831ba731b8b
+    domain: finance.biggo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:14.309772+00:00'
+    stale_at: '2026-09-25T10:51:14.309772+00:00'
+    expire_at: '2026-11-24T10:51:14.309772+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AAOI news announcement August 2026 order certification 1.6T
+  rings:
+  - bull-bear
+- id: mat-165316
+  filename: 2026-08-26_aaoi-s-earnings-surged-lifting-the-entire-optical-.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.417340+00:00'
+  processed: false
+  notes: query='AAOI news announcement August 2026 order certification 1.6T' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI news announcement August 2026 order certification 1.6T
+    url: https://www.moomoo.com/news/post/74363604/aaoi-s-earnings-surged-lifting-the-entire-optical-communications-sector
+    domain: moomoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:04.393520+00:00'
+    stale_at: '2026-09-25T10:40:04.393520+00:00'
+    expire_at: '2026-11-24T10:40:04.393520+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-533486
+  filename: 2026-08-26_applied-optoelectronics-aaoi-q2-2026-er-review.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.549385+00:00'
+  processed: false
+  notes: query='AAOI news announcement August 2026 order certification 1.6T' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI news announcement August 2026 order certification 1.6T
+    url: https://thebigberbowski.substack.com/p/applied-optoelectronics-aaoi-q2-2026
+    domain: thebigberbowski.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:04.525491+00:00'
+    stale_at: '2026-09-25T10:40:04.525491+00:00'
+    expire_at: '2026-11-24T10:40:04.525491+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-d4432b
+  filename: 2026-08-26_applied-optoelectronics-inc-aaoi-q2-fy2026-earning.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.694359+00:00'
+  processed: false
+  notes: query='AAOI Q2 2026 earnings call transcript Stefan Murry key takeaways'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI Q2 2026 earnings call transcript Stefan Murry key takeaways
+    url: https://finance.yahoo.com/quote/AAOI/earnings/AAOI-Q2-2026-earnings_call-662748.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:04.669613+00:00'
+    stale_at: '2026-09-25T10:40:04.669613+00:00'
+    expire_at: '2026-11-24T10:40:04.669613+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-ae50a0
+  filename: 2026-08-26_applied-optoelectronics-q2-2026-earnings-call-reve.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.830544+00:00'
+  processed: false
+  notes: query='AAOI Q2 2026 earnings call transcript Stefan Murry key takeaways'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI Q2 2026 earnings call transcript Stefan Murry key takeaways
+    url: https://finance.biggo.com/news/US_AAOI_2026-08-06
+    domain: finance.biggo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:04.804869+00:00'
+    stale_at: '2026-09-25T10:40:04.804869+00:00'
+    expire_at: '2026-11-24T10:40:04.804869+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-d04ccc
+  filename: 2026-08-26_nvidia-orders-surge-innolight-and-eoptolink-domina.md
+  source_type: web-search
+  added: '2026-08-26T10:40:04.973348+00:00'
+  processed: false
+  notes: query='AAOI vs Innolight Eoptolink Coherent 800G market share 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI vs Innolight Eoptolink Coherent 800G market share 2026
+    url: https://ip-fiber.com/blogs/news/nvidia-orders-surge-innolight-and-eoptolink-dominate-60-of-800g-sfp-optical-modules-supply
+    domain: ip-fiber.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:04.948287+00:00'
+    stale_at: '2026-09-25T10:40:04.948287+00:00'
+    expire_at: '2026-11-24T10:40:04.948287+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-a302e1
+  filename: 2026-08-26_innolight-coherent-lumentum-who-wins-and-loses-in-.md
+  source_type: web-search
+  added: '2026-08-26T10:40:05.040796+00:00'
+  processed: false
+  notes: query='AAOI vs Innolight Eoptolink Coherent 800G market share 2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI vs Innolight Eoptolink Coherent 800G market share 2026
+    url: https://counterpointresearch.com/en/insights/fcc-china-ban-ai-component
+    domain: counterpointresearch.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:40:05.014755+00:00'
+    stale_at: '2026-09-25T10:40:05.014755+00:00'
+    expire_at: '2026-11-24T10:40:05.014755+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - valuation-percentile
+- id: mat-002a78
+  filename: 2026-08-26_optical-components---market-research-cignal-ai.md
+  source_type: web-search
+  added: '2026-08-26T10:40:05.112756+00:00'
+  processed: false
+  notes: query='AAOI vs Innolight Eoptolink Coherent 800G market share 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI vs Innolight Eoptolink Coherent 800G market share 2026
+    url: https://cignal.ai/optco
+    domain: cignal.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:05.085997+00:00'
+    stale_at: '2026-09-25T10:40:05.085997+00:00'
+    expire_at: '2026-11-24T10:40:05.085997+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - valuation-percentile
+- id: mat-d8003f
+  filename: 2026-08-26_aaoi-drops-over-12-premarket-as-up-to-600-million-.md
+  source_type: web-search
+  added: '2026-08-26T10:40:05.192258+00:00'
+  processed: false
+  notes: query='AAOI bear case overvalued dilution ATM risk 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI bear case overvalued dilution ATM risk 2026
+    url: https://www.tradingkey.com/analysis/stocks/us-stocks/262127665-aaoi-pre-market-drop-applied-optoelectronics-tradingkey
+    domain: tradingkey.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:05.164812+00:00'
+    stale_at: '2026-09-25T10:40:05.164812+00:00'
+    expire_at: '2026-11-24T10:40:05.164812+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - mgmt-capital-alloc
+  - valuation-anchor
+- id: mat-27a819
+  filename: 2026-08-26_why-is-applied-optoelectronics-aaoi-stock-down--12.md
+  source_type: web-search
+  added: '2026-08-26T10:40:05.266889+00:00'
+  processed: false
+  notes: query='AAOI bear case overvalued dilution ATM risk 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI bear case overvalued dilution ATM risk 2026
+    url: https://tickeron.com/blogs/why-is-applied-optoelectronics-aaoi-stock-down-12-today-12823
+    domain: tickeron.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:05.239762+00:00'
+    stale_at: '2026-09-25T10:40:05.239762+00:00'
+    expire_at: '2026-11-24T10:40:05.239762+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - historical-mirror
+- id: mat-199479
+  filename: 2026-08-26_aaoi-slides-9-6-as-600m-at-the-market-program-fuel.md
+  source_type: web-search
+  added: '2026-08-26T10:40:05.341516+00:00'
+  processed: false
+  notes: query='AAOI bear case overvalued dilution ATM risk 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI bear case overvalued dilution ATM risk 2026
+    url: https://www.quiverquant.com/news/AAOI+slides+9.6%25+as+$600M+at-the-market+program+fuels+dilution+worries
+    domain: quiverquant.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:05.313711+00:00'
+    stale_at: '2026-09-25T10:40:05.313711+00:00'
+    expire_at: '2026-11-24T10:40:05.313711+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - historical-mirror
+  - mgmt-capital-alloc
+- id: mat-706a8c
+  filename: 2026-08-26_aaoi-is-overvalued-at-6-68x-ps-buy-sell-or-hold-th.md
+  source_type: web-search
+  added: '2026-08-26T10:40:05.416903+00:00'
+  processed: false
+  notes: query='AAOI bear case overvalued dilution ATM risk 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI bear case overvalued dilution ATM risk 2026
+    url: https://www.tradingview.com/news/zacks:5e879b726094b:0-aaoi-is-overvalued-at-6-68x-ps-buy-sell-or-hold-the-stock
+    domain: tradingview.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:05.389094+00:00'
+    stale_at: '2026-09-25T10:40:05.389094+00:00'
+    expire_at: '2026-11-24T10:40:05.389094+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-ae5cb4
+  filename: 2026-08-26_aaoi-stock-dips-10-overnight-after-600m-equity-off.md
+  source_type: web-search
+  added: '2026-08-26T10:40:05.494085+00:00'
+  processed: false
+  notes: query='AAOI bear case overvalued dilution ATM risk 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI bear case overvalued dilution ATM risk 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/aaoi-stock-dips-10-overnight-014552572.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:40:05.465231+00:00'
+    stale_at: '2026-09-25T10:40:05.465231+00:00'
+    expire_at: '2026-11-24T10:40:05.465231+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - historical-mirror
+  - mgmt-capital-alloc
+- id: mat-af5b4c
+  filename: 2026_AAOI_10-Q_2026-08-06.htm
+  source_type: quarterly-report
+  added: '2026-08-26T10:46:50.283833+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — APPLIED OPTOELECTRONICS, INC.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K6
+- id: mat-1658c3
+  filename: sec/2026_AAOI_10-Q_2026-08-06/item_1_financial.md
+  source_type: sec-section
+  added: '2026-08-26T10:46:50.517897+00:00'
+  processed: true
+  notes: split from 2026_AAOI_10-Q_2026-08-06.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - Q1
+  - valuation
+  parent_mat: mat-af5b4c
+  sec_section: item_1_financial
+  rings:
+  - financial-arc
+- id: mat-28463d
+  filename: sec/2026_AAOI_10-Q_2026-08-06/item_2_mda.md
+  source_type: sec-section
+  added: '2026-08-26T10:46:50.562883+00:00'
+  processed: true
+  notes: split from 2026_AAOI_10-Q_2026-08-06.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-af5b4c
+  sec_section: item_2_mda
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-f8e368
+  filename: sec/2026_AAOI_10-Q_2026-08-06/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-08-26T10:46:50.607504+00:00'
+  processed: true
+  notes: split from 2026_AAOI_10-Q_2026-08-06.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K3
+  - risk
+  parent_mat: mat-af5b4c
+  sec_section: item_3_quant_risk
+  rings:
+  - financial-arc
+- id: mat-263b3e
+  filename: sec/2026_AAOI_10-Q_2026-08-06/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-08-26T10:46:50.651708+00:00'
+  processed: true
+  notes: split from 2026_AAOI_10-Q_2026-08-06.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K6
+  - risk
+  parent_mat: mat-af5b4c
+  sec_section: item_1a_risk
+  rings:
+  - bull-bear
+  - historical-mirror
+- id: mat-7f5d21
+  filename: 2025_AAOI_10-K_2026-02-26.htm
+  source_type: annual-report
+  added: '2026-08-26T10:46:52.769732+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — APPLIED OPTOELECTRONICS, INC.
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - historical-mirror
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  - K6
+- id: mat-956657
+  filename: 2026-08-26_applied-optoelectronics-inc-aaoi-comprehensive.md
+  source_type: web-search
+  added: '2026-08-26T10:51:13.630953+00:00'
+  processed: true
+  notes: query='AAOI segment gross margin datacenter CATV 800G ASP EML laser internal
+    supply ratio' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI segment gross margin datacenter CATV 800G ASP EML laser internal supply
+      ratio
+    url: https://anandcapital.substack.com/p/applied-optoelectronics-inc-aaoi
+    domain: anandcapital.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:13.602714+00:00'
+    stale_at: '2026-09-25T10:51:13.602714+00:00'
+    expire_at: '2026-11-24T10:51:13.602714+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-ac79e5
+  filename: 2026-08-26_applied-optoelectronics-nasdaq-aaoi-lines-up-new-s.md
+  source_type: web-search
+  added: '2026-08-26T10:51:13.796437+00:00'
+  processed: true
+  notes: query='AAOI at-the-market equity distribution agreement 2026  million prospectus
+    424B5' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI at-the-market equity distribution agreement 2026  million prospectus
+      424B5
+    url: https://www.stocktitan.net/sec-filings/AAOI/8-k-applied-optoelectronics-inc-reports-material-event-e59835118b19.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:13.765379+00:00'
+    stale_at: '2026-09-25T10:51:13.765379+00:00'
+    expire_at: '2026-11-24T10:51:13.765379+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - mgmt-capital-alloc
+  - valuation-anchor
+- id: mat-b65792
+  filename: 2026-08-26_tm2614157-1-424b5---none---4-4062684s.md
+  source_type: web-search
+  added: '2026-08-26T10:51:13.879051+00:00'
+  processed: true
+  notes: query='AAOI at-the-market equity distribution agreement 2026  million prospectus
+    424B5'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI at-the-market equity distribution agreement 2026  million prospectus
+      424B5
+    url: https://www.sec.gov/Archives/edgar/data/1158114/000110465926061146/tm2614157-1_424b5.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:13.849119+00:00'
+    stale_at: '2026-09-25T10:51:13.849119+00:00'
+    expire_at: '2026-11-24T10:51:13.849119+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - mgmt-capital-alloc
+- id: mat-9731d1
+  filename: 2026-08-26_applied-optoelectronics-establishes-600-million-at.md
+  source_type: web-search
+  added: '2026-08-26T10:51:13.963112+00:00'
+  processed: true
+  notes: query='AAOI at-the-market equity distribution agreement 2026  million prospectus
+    424B5' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI at-the-market equity distribution agreement 2026  million prospectus
+      424B5
+    url: https://www.theglobeandmail.com/investing/markets/markets-news/Tipranks/1966344/applied-optoelectronics-establishes-600-million-atm-program
+    domain: theglobeandmail.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:13.932917+00:00'
+    stale_at: '2026-09-25T10:51:13.932917+00:00'
+    expire_at: '2026-11-24T10:51:13.932917+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - mgmt-capital-alloc
+  - valuation-anchor
+- id: mat-bf5a1e
+  filename: 2026-08-26_applied-optoelectronics-secures-53m-order-for-800g.md
+  source_type: web-search
+  added: '2026-08-26T10:51:14.053434+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics press release 1.6T order 800G order 2026 hyperscale
+    certification' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics press release 1.6T order 800G order 2026 hyperscale
+      certification
+    url: https://www.investing.com/news/company-news/applied-optoelectronics-secures-53m-order-for-800g-transceivers-93CH-4577918
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:14.023058+00:00'
+    stale_at: '2026-09-25T10:51:14.023058+00:00'
+    expire_at: '2026-11-24T10:51:14.023058+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-b8d9aa
+  filename: 2026-08-26_applied-optoelectronics-inc-a59-sg-q2-fy2026-earni.md
+  source_type: web-search
+  added: '2026-08-26T10:51:14.400723+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Q2 2026 earnings call transcript full capacity
+    per month utilization' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics Q2 2026 earnings call transcript full capacity
+      per month utilization
+    url: https://finance.yahoo.com/quote/A59.SG/earnings/A59.SG-Q2-2026-earnings_call-662748.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:14.369942+00:00'
+    stale_at: '2026-09-25T10:51:14.369942+00:00'
+    expire_at: '2026-11-24T10:51:14.369942+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-181ed0
+  filename: 2026-08-26_q2-2026-applied-optoelectronics-inc-earnings-call-.md
+  source_type: web-search
+  added: '2026-08-26T10:51:14.488008+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Q2 2026 earnings call transcript full capacity
+    per month utilization' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics Q2 2026 earnings call transcript full capacity
+      per month utilization
+    url: https://www.gurufocus.com/stock/MIL:1AAOI/transcripts/9014970
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:14.455829+00:00'
+    stale_at: '2026-09-25T10:51:14.455829+00:00'
+    expire_at: '2026-11-24T10:51:14.455829+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-776fb3
+  filename: 2026-08-26_applied-optoelectronics-q2-earnings-call-highlight.md
+  source_type: web-search
+  added: '2026-08-26T10:51:14.576275+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Q2 2026 earnings call transcript full capacity
+    per month utilization' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics Q2 2026 earnings call transcript full capacity
+      per month utilization
+    url: https://www.marketbeat.com/instant-alerts/applied-optoelectronics-q2-earnings-call-highlights-2026-08-06
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:14.544221+00:00'
+    stale_at: '2026-09-25T10:51:14.544221+00:00'
+    expire_at: '2026-11-24T10:51:14.544221+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-c26070
+  filename: 2026-08-26_sec-filing-applied-optoelectronics-inc---investor-.md
+  source_type: web-search
+  added: '2026-08-26T10:51:14.841869+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Amazon warrant transaction agreement exhibit
+    4.1 vesting increments anti-dilution'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics Amazon warrant transaction agreement exhibit 4.1
+      vesting increments anti-dilution
+    url: https://investors.ao-inc.com/node/15621/html
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:14.810442+00:00'
+    stale_at: '2026-09-25T10:51:14.810442+00:00'
+    expire_at: '2026-11-24T10:51:14.810442+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - financial-arc
+- id: mat-7f90e7
+  filename: 2026-08-26_warrant-to-purchase-common-stock.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.016032+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Amazon warrant transaction agreement exhibit
+    4.1 vesting increments anti-dilution'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: Applied Optoelectronics Amazon warrant transaction agreement exhibit 4.1
+      vesting increments anti-dilution
+    url: https://www.sec.gov/Archives/edgar/data/1158114/000168316825001580/appliedopto_ex0401.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:14.983567+00:00'
+    stale_at: '2026-09-25T10:51:14.983567+00:00'
+    expire_at: '2026-11-24T10:51:14.983567+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - mgmt-capital-alloc
+- id: mat-68f8ef
+  filename: 2026-08-26_applied-optoelectronics-shares-surge-on-amazon-dea.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.107440+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Amazon warrant transaction agreement exhibit
+    4.1 vesting increments anti-dilution' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics Amazon warrant transaction agreement exhibit 4.1
+      vesting increments anti-dilution
+    url: https://www.investing.com/news/stock-market-news/applied-optoelectronics-shares-surge-on-amazon-deal-93CH-3929346
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:15.074254+00:00'
+    stale_at: '2026-09-25T10:51:15.074254+00:00'
+    expire_at: '2026-11-24T10:51:15.074254+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-0ab2e2
+  filename: 2026-08-26_applied-optoelectronics-aaoi-is-up-20-5-after-rapi.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.207656+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Microsoft customer loss 2018 2019 revenue
+    collapse retrospective' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics Microsoft customer loss 2018 2019 revenue collapse
+      retrospective
+    url: https://simplywall.st/stocks/us/tech/nasdaq-aaoi/applied-optoelectronics/news/applied-optoelectronics-aaoi-is-up-205-after-rapid-q2-revenu
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:15.174353+00:00'
+    stale_at: '2026-09-25T10:51:15.174353+00:00'
+    expire_at: '2026-11-24T10:51:15.174353+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-b2f4f9
+  filename: 2026-08-26_applied-optoelectronics-sinks-after-q1-sales-miss-.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.301299+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Microsoft customer loss 2018 2019 revenue
+    collapse retrospective' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics Microsoft customer loss 2018 2019 revenue collapse
+      retrospective
+    url: https://sherwood.news/markets/applied-optoelectronics-first-quarter-earnings
+    domain: sherwood.news
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:15.267352+00:00'
+    stale_at: '2026-09-25T10:51:15.267352+00:00'
+    expire_at: '2026-11-24T10:51:15.267352+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-972ec4
+  filename: 2026-08-26_applied-optoelectronics-aaoi-reports-q1-loss-misse.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.395476+00:00'
+  processed: true
+  notes: query='Applied Optoelectronics Microsoft customer loss 2018 2019 revenue
+    collapse retrospective' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Applied Optoelectronics Microsoft customer loss 2018 2019 revenue collapse
+      retrospective
+    url: https://finance.yahoo.com/markets/stocks/articles/applied-optoelectronics-aaoi-reports-q1-022502119.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:15.361768+00:00'
+    stale_at: '2026-09-25T10:51:15.361768+00:00'
+    expire_at: '2026-11-24T10:51:15.361768+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-d9c8af
+  filename: 2026-08-26_仕佳光子公告终止投资-业内-aoi境内光模块资产-吸引力不大.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.587803+00:00'
+  processed: true
+  notes: query='应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因
+    url: https://m.cls.cn/detail/1560361
+    domain: m.cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:15.553610+00:00'
+    stale_at: '2026-09-25T10:51:15.553610+00:00'
+    expire_at: '2026-11-24T10:51:15.553610+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - historical-mirror
+- id: mat-6eb556
+  filename: 2026-08-26_豫股动态丨aoi终止出售光模块仕佳光子计划生变.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.680462+00:00'
+  processed: true
+  notes: query='应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因
+    url: https://www.21jingji.com/article/20230921/herald/be96da29ad85d2eec593e4d8c13576d5.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:51:15.645734+00:00'
+    stale_at: '2026-09-25T10:51:15.645734+00:00'
+    expire_at: '2026-11-24T10:51:15.645734+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - historical-mirror
+- id: mat-87ca3b
+  filename: 2026-08-26_光模块高景气延续-传输升级必需品带来估值溢价.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.777841+00:00'
+  processed: true
+  notes: query='应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因
+    url: http://pdf.dfcfw.com/pdf/H3_AP202006291388183444_1.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:15.743046+00:00'
+    stale_at: '2026-09-25T10:51:15.743046+00:00'
+    expire_at: '2026-11-24T10:51:15.743046+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-b4cadd
+  filename: 2026-08-26_aaoi以1-5亿美元出售中国工厂退出光模块业务.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.876503+00:00'
+  processed: true
+  notes: query='应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因
+    url: http://www.c-fol.net/news/3_202209/20220916081429.html
+    domain: c-fol.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:15.841142+00:00'
+    stale_at: '2026-09-25T10:51:15.841142+00:00'
+    expire_at: '2026-11-24T10:51:15.841142+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - historical-mirror
+- id: mat-4bd9f0
+  filename: 2026-08-26_aoi退出光模块市场-作价1-5亿美元出售位于中国的工厂.md
+  source_type: web-search
+  added: '2026-08-26T10:51:15.975334+00:00'
+  processed: true
+  notes: query='应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 应用光电 2023 出售 光模块业务 退出 transceiver 市场 交易 终止 原因
+    url: https://m.c114.com.cn/w3542-1209608.html
+    domain: m.c114.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:15.939052+00:00'
+    stale_at: '2026-09-25T10:51:15.939052+00:00'
+    expire_at: '2026-11-24T10:51:15.939052+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - historical-mirror
+- id: mat-5044f7
+  filename: 2026-08-26_china-tariffs.md
+  source_type: web-search
+  added: '2026-08-26T10:51:16.185494+00:00'
+  processed: true
+  notes: query='optical transceiver Section 301 tariff rate HTS 8517.62 2026 China
+    exclusion' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: optical transceiver Section 301 tariff rate HTS 8517.62 2026 China exclusion
+    url: https://hts.usitc.gov/reststop/file?release=currentRelease&filename=China%20Tariffs
+    domain: hts.usitc.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:16.148963+00:00'
+    stale_at: '2026-09-25T10:51:16.148963+00:00'
+    expire_at: '2026-11-24T10:51:16.148963+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-e550b1
+  filename: 2026-08-26_section-301-china-tariffs-2026-rates-lists-hts-cod.md
+  source_type: web-search
+  added: '2026-08-26T10:51:16.286060+00:00'
+  processed: true
+  notes: query='optical transceiver Section 301 tariff rate HTS 8517.62 2026 China
+    exclusion' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: optical transceiver Section 301 tariff rate HTS 8517.62 2026 China exclusion
+    url: https://ustariffrates.com/section-301-tariffs
+    domain: ustariffrates.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:16.249620+00:00'
+    stale_at: '2026-09-25T10:51:16.249620+00:00'
+    expire_at: '2026-11-24T10:51:16.249620+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-dfd24d
+  filename: 2026-08-26_section-301-tariffs-on-china.md
+  source_type: web-search
+  added: '2026-08-26T10:51:16.387550+00:00'
+  processed: true
+  notes: query='optical transceiver Section 301 tariff rate HTS 8517.62 2026 China
+    exclusion' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: optical transceiver Section 301 tariff rate HTS 8517.62 2026 China exclusion
+    url: https://www.strtrade.com/trade-news-resources/tariff-actions-resources/section-301-tariffs-on-china
+    domain: strtrade.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:51:16.350498+00:00'
+    stale_at: '2026-09-25T10:51:16.350498+00:00'
+    expire_at: '2026-11-24T10:51:16.350498+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-0e6628
+  filename: 00-deep-fetch_一手摘录_2026-08-26.md
+  source_type: industry-research
+  added: '2026-08-26T10:52:31.589225+00:00'
+  processed: true
+  notes: 00 Step 6.5b exa web_fetch 全文抽取的一手数字摘录：$600M ATM 424B5(2026-05-14,股价$223.10)/Amazon
+    认股权证原文条款/2026Q2电话会"growth limited by production not demand"/2026Q1 三项 miss/2026-03
+    $53M+$200M 订单/2023 中国资产出售案终止全过程+业内评价/301 关税清单现状
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  - K6
+  confidence: 0.9
+  rings:
+  - bull-bear
+  - historical-mirror
+  - mgmt-capital-alloc
+- id: mat-1cfbc2
+  filename: 09-peer-multiples_2026-08-26.md
+  source_type: data
+  added: '2026-08-26T10:54:19.702144+00:00'
+  processed: true
+  notes: 同业倍数横比同日快照(AAOI/COHR/LITE/FN/CIEN/旭创/新易盛/光迅)：AAOI P/S 16.1x 与旭创15.3/新易盛15.7
+    同档、低于 LITE 26.4；PB 5.72 远低于A股同业→重资本低ROE画像；FN 3.33x 为代工位锚
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.9
+  rings:
+  - consensus
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-5408b9
+  filename: 2026-08-26_applied-optoelectronics-reports-first-quarter-2026.md
+  source_type: web-search
+  added: '2026-08-26T10:55:40.000253+00:00'
+  processed: true
+  notes: query='AAOI 卖方深度研报 应用光电 覆盖机构 深度报告 目标价 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - background
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AAOI 卖方深度研报 应用光电 覆盖机构 深度报告 目标价 2026
+    url: https://investors.ao-inc.com/news-releases/news-release-details/applied-optoelectronics-reports-first-quarter-2026-results
+    domain: investors.ao-inc.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T10:55:39.962181+00:00'
+    stale_at: '2026-09-25T10:55:39.962181+00:00'
+    expire_at: '2026-11-24T10:55:39.962181+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - financial-arc
+- id: mat-ca5e3b
+  filename: 2026-08-26_applied-optoelectronics-aaoi-股票预测和分析师评级.md
+  source_type: web-search
+  added: '2026-08-26T10:55:40.106451+00:00'
+  processed: true
+  notes: query='AAOI 卖方深度研报 应用光电 覆盖机构 深度报告 目标价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 卖方深度研报 应用光电 覆盖机构 深度报告 目标价 2026
+    url: https://www.futunn.com/stock/AAOI-US/forecast
+    domain: futunn.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:55:40.067953+00:00'
+    stale_at: '2026-09-25T10:55:40.067953+00:00'
+    expire_at: '2026-11-24T10:55:40.067953+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - consensus
+- id: mat-2d432b
+  filename: 2026-08-26_applied-optoelectronics-aaoi-股票預測和分析師評級.md
+  source_type: web-search
+  added: '2026-08-26T10:55:40.217680+00:00'
+  processed: true
+  notes: query='AAOI 卖方深度研报 应用光电 覆盖机构 深度报告 目标价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - background
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 卖方深度研报 应用光电 覆盖机构 深度报告 目标价 2026
+    url: https://www.moomoo.com/hant/stock/AAOI-US/forecast
+    domain: moomoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:55:40.175211+00:00'
+    stale_at: '2026-09-25T10:55:40.175211+00:00'
+    expire_at: '2026-11-24T10:55:40.175211+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-795694
+  filename: 2026-08-26_applied-optoelectronics-aaoi-股票分析师一致预期-市场情绪.md
+  source_type: web-search
+  added: '2026-08-26T10:55:40.326710+00:00'
+  processed: true
+  notes: query='AAOI 卖方深度研报 应用光电 覆盖机构 深度报告 目标价 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AAOI 卖方深度研报 应用光电 覆盖机构 深度报告 目标价 2026
+    url: https://cn.investing.com/equities/applied-opt-consensus-estimates
+    domain: cn.investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T10:55:40.287426+00:00'
+    stale_at: '2026-09-25T10:55:40.287426+00:00'
+    expire_at: '2026-11-24T10:55:40.287426+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - consensus
+- id: mat-3ea4b8
+  filename: 00-filings_10K10Q关键数字_2026-08-26.md
+  source_type: annual-report
+  added: '2026-08-26T10:58:14.480917+00:00'
+  processed: true
+  notes: 10-K(FY2025)+10-Q(Q2 2026)原文抽取：FY25 CATV占53.8%>数据中心42.9%；Digicomm占收入53.1%、Microsoft
+    28.8%(未流失,推翻fact-18)；Q2应收$314M中$211M来自Digicomm；GM改善公司归因CATV规模化非800G；opex占收入42%(FY26
+    $120M营业利润目标需压到19%)；ATM分三步$250M→$600M+Q2完成$645.8M增发；股本15个月+58.6%；Amazon权证按contra
+    revenue冲减收入
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  - K6
+  confidence: 0.95
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  - financial-arc
+  - mgmt-capital-alloc
+- id: mat-e7e8f2
+  filename: 2026_300308_semi_2026-08-21_中际旭创.PDF
+  source_type: quarterly-report
+  added: '2026-08-26T12:15:08.031229+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 中际旭创
+  mineru_state: not_needed
+  rings:
+  - bull-bear
+  - financial-arc
+  - valuation-percentile
+  addresses:
+  - K2
+- id: mat-a57041
+  filename: 2026Q1_AAOI_10-Q_2026-05-07.htm
+  source_type: quarterly-report
+  added: '2026-08-26T12:17:21.416651+00:00'
+  processed: true
+  notes: AAOI 2026Q1 10-Q（2026-05-07 filed）：Q1 收入 $151.1M(miss $157.5M)、adj EPS -$0.07(miss)、adj
+    GM 29.1%(miss 30.37%)；用于季度序列与股数起点
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  confidence: 0.95
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-723213
+  filename: 01-ATM二次增发与稀释量化_2026-08-26.md
+  source_type: annual-report
+  added: '2026-08-26T12:18:16.395106+00:00'
+  processed: true
+  notes: 2026-08-21 第二份 $600M ATM（8/20 收盘$129.10）原文抽取：净有形账面$19.72/股、全额需增发4,647,561股、新投资者即时稀释$102.90/股、6/30后已发332,428股($49.2M)+188,000
+    RSU；完全稀释股数推演≈100.4M；管理层8/18称减少股权依赖、8/21即挂新ATM
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  confidence: 0.95
+  rings:
+  - mgmt-capital-alloc
+  - valuation-anchor
+- id: mat-dda9ba
+  filename: 2026-08-26_top-optical-transceiver-manufacturers-in-2026---fb.md
+  source_type: web-search
+  added: '2026-08-26T12:20:29.741038+00:00'
+  processed: true
+  notes: query='optical transceiver 800G ASP decline 2026 LightCounting shipment forecast
+    EML supply gap' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: optical transceiver 800G ASP decline 2026 LightCounting shipment forecast
+      EML supply gap
+    url: https://www.100gmodules.com/info/2026-top-optical-transceiver-manufacturers-103418406.html
+    domain: 100gmodules.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:20:29.699010+00:00'
+    stale_at: '2026-09-25T12:20:29.699010+00:00'
+    expire_at: '2026-11-24T12:20:29.699010+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-b41c2a
+  filename: 2026-08-26_lightcounting-april-2026-market-forecast-demand-fo.md
+  source_type: web-search
+  added: '2026-08-26T12:20:29.857277+00:00'
+  processed: true
+  notes: query='optical transceiver 800G ASP decline 2026 LightCounting shipment forecast
+    EML supply gap' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: optical transceiver 800G ASP decline 2026 LightCounting shipment forecast
+      EML supply gap
+    url: https://www.lightcounting.com/newsletter/en/april-2026-market-forecast-379
+    domain: lightcounting.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:20:29.815558+00:00'
+    stale_at: '2026-09-25T12:20:29.815558+00:00'
+    expire_at: '2026-11-24T12:20:29.815558+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - consensus
+- id: mat-914f22
+  filename: 2026-08-26_optical-transceiver-market-size-data-centers-2026-.md
+  source_type: web-search
+  added: '2026-08-26T12:20:29.977276+00:00'
+  processed: true
+  notes: query='optical transceiver 800G ASP decline 2026 LightCounting shipment forecast
+    EML supply gap' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: optical transceiver 800G ASP decline 2026 LightCounting shipment forecast
+      EML supply gap
+    url: https://m.c-light.com/news/details/Optical_Transceiver_Market_Size_Data_Centers_2026.html
+    domain: m.c-light.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:20:29.933672+00:00'
+    stale_at: '2026-09-25T12:20:29.933672+00:00'
+    expire_at: '2026-11-24T12:20:29.933672+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-a9cf47
+  filename: 2026-08-26_lightcounting-demand-for-400g-800g-exceeds-supply-.md
+  source_type: web-search
+  added: '2026-08-26T12:20:30.098155+00:00'
+  processed: true
+  notes: query='optical transceiver 800G ASP decline 2026 LightCounting shipment forecast
+    EML supply gap' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: optical transceiver 800G ASP decline 2026 LightCounting shipment forecast
+      EML supply gap
+    url: https://htfuture.com/lightcounting-the-demand-for-400g-800g-optical-modules-exceeds-the-supply-by-twice
+    domain: htfuture.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:20:30.054484+00:00'
+    stale_at: '2026-09-25T12:20:30.054484+00:00'
+    expire_at: '2026-11-24T12:20:30.054484+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-a4f05c
+  filename: 2026-08-26_optical-transceiver-sourcing-and-tariff-exposure-c.md
+  source_type: web-search
+  added: '2026-08-26T12:22:36.519347+00:00'
+  processed: true
+  notes: query='Section 301 tariff rate optical transceivers HTS 8517.62 China 2026
+    duty percentage' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Section 301 tariff rate optical transceivers HTS 8517.62 China 2026 duty
+      percentage
+    url: https://ventureoutsource.com/contract-manufacturing/optical-transceiver-tariff-china-concentration
+    domain: ventureoutsource.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:22:36.473053+00:00'
+    stale_at: '2026-09-25T12:22:36.473053+00:00'
+    expire_at: '2026-11-24T12:22:36.473053+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-f0a2c0
+  filename: 2026-08-26_china-tariff-rates-today-networking-gear-8517-62-b.md
+  source_type: web-search
+  added: '2026-08-26T12:22:36.641843+00:00'
+  processed: true
+  notes: query='Section 301 tariff rate optical transceivers HTS 8517.62 China 2026
+    duty percentage' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Section 301 tariff rate optical transceivers HTS 8517.62 China 2026 duty
+      percentage
+    url: https://www.importcostcalculator.com/china-tariff-rates-today.html
+    domain: importcostcalculator.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:22:36.599237+00:00'
+    stale_at: '2026-09-25T12:22:36.599237+00:00'
+    expire_at: '2026-11-24T12:22:36.599237+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-945719
+  filename: 2026-08-26_section-301-tariffs-guide-usitc-chapter-99-verifie.md
+  source_type: web-search
+  added: '2026-08-26T12:22:36.765586+00:00'
+  processed: true
+  notes: query='Section 301 tariff rate optical transceivers HTS 8517.62 China 2026
+    duty percentage' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: Section 301 tariff rate optical transceivers HTS 8517.62 China 2026 duty
+      percentage
+    url: https://tariffsentinel.com/guide/section-301-tariffs
+    domain: tariffsentinel.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:22:36.721545+00:00'
+    stale_at: '2026-09-25T12:22:36.721545+00:00'
+    expire_at: '2026-11-24T12:22:36.721545+00:00'
+    triggered_by: 01-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-7d45cd
+  filename: 01-行业供需与关税量化_2026-08-26.md
+  source_type: industry-research
+  added: '2026-08-26T12:22:36.848873+00:00'
+  processed: true
+  notes: LightCounting Apr2026：2026 +65%,减速非需求—订单超InP EML产出约30%；Nvidia 2026-03 向Coherent+Lumentum投$40亿扩EML,EML交期排到2027后；McKinsey
+    800G产出低于需求40-60%到2027；"allocation decides who ships, price no longer clearing
+    mechanism"；2027软着陆警告(2019/2022先例)。关税：HTS 8517.62 MFN 0% + 中国原产 301 List3 +25%（USITC
+    Ch99 2026-08-10核验）
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  confidence: 0.9
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  - historical-mirror
+- id: mat-76fc11
+  filename: 01-投资者演示_产能表与制造足迹_2026-08-26.md
+  source_type: industry-research
+  added: '2026-08-26T12:28:04.525706+00:00'
+  processed: true
+  notes: '投资者演示官方分产品产能表(800G+1.6T: Q226 148K→Q426 650K→Q427 930K/月;全产品 463K→1,850K)+ELSFP(CPO外置光源)Q427
+    400K/月+产品路线图对齐GB200/Spectrum-X/TH7；制造足迹(宁波2,927人/61%员工,休斯敦508人)推翻"美国制造"比例叙事；Q4-25分段(DC
+    $74.9M/CATV $54.0M,GM31.4%)+3年资产负债表；Digicomm=独家备货型分销商(2023-11起)→渠道填货机理；一致预期两口径(6家$163.40
+    vs 13家$140.68)+B.Riley下调至$109 Neutral；线索:2026-08-04 美国拟对光模块进口禁令传闻'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  - K6
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  - consensus
+  - financial-arc
+  - mgmt-capital-alloc
+  confidence: 0.95
+- id: mat-7163f5
+  filename: sec/2026Q1_AAOI_10-Q_2026-05-07/item_1_financial.md
+  source_type: sec-section
+  added: '2026-08-26T12:44:30.242498+00:00'
+  processed: true
+  notes: split from 2026Q1_AAOI_10-Q_2026-05-07.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - Q1
+  - valuation
+  parent_mat: mat-a57041
+  sec_section: item_1_financial
+- id: mat-2ab035
+  filename: sec/2026Q1_AAOI_10-Q_2026-05-07/item_2_mda.md
+  source_type: sec-section
+  added: '2026-08-26T12:44:30.327877+00:00'
+  processed: true
+  notes: split from 2026Q1_AAOI_10-Q_2026-05-07.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - Q1
+  parent_mat: mat-a57041
+  sec_section: item_2_mda
+- id: mat-758909
+  filename: sec/2026Q1_AAOI_10-Q_2026-05-07/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-08-26T12:44:30.419005+00:00'
+  processed: true
+  notes: split from 2026Q1_AAOI_10-Q_2026-05-07.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-a57041
+  sec_section: item_3_quant_risk
+- id: mat-5be92a
+  filename: sec/2026Q1_AAOI_10-Q_2026-05-07/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-08-26T12:44:30.503403+00:00'
+  processed: true
+  notes: split from 2026Q1_AAOI_10-Q_2026-05-07.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-a57041
+  sec_section: item_1a_risk
+- id: mat-5d5347
+  filename: sec/2025_AAOI_10-K_2026-02-26/item_1_business.md
+  source_type: sec-section
+  added: '2026-08-26T12:45:25.954538+00:00'
+  processed: true
+  notes: split from 2025_AAOI_10-K_2026-02-26.htm (PartI_1)
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - scope
+  parent_mat: mat-7f5d21
+  sec_section: item_1_business
+- id: mat-a833a0
+  filename: sec/2025_AAOI_10-K_2026-02-26/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-08-26T12:45:26.050889+00:00'
+  processed: true
+  notes: split from 2025_AAOI_10-K_2026-02-26.htm (PartI_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-7f5d21
+  sec_section: item_1a_risk
+- id: mat-c38dd9
+  filename: sec/2025_AAOI_10-K_2026-02-26/item_7_mda.md
+  source_type: sec-section
+  added: '2026-08-26T12:45:26.133315+00:00'
+  processed: true
+  notes: split from 2025_AAOI_10-K_2026-02-26.htm (PartII_7)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  parent_mat: mat-7f5d21
+  sec_section: item_7_mda
+- id: mat-2a0e88
+  filename: sec/2025_AAOI_10-K_2026-02-26/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-08-26T12:45:26.233662+00:00'
+  processed: true
+  notes: split from 2025_AAOI_10-K_2026-02-26.htm (PartII_7A)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-7f5d21
+  sec_section: item_7a_quant_risk
+- id: mat-03e60b
+  filename: sec/2025_AAOI_10-K_2026-02-26/item_8_financial.md
+  source_type: sec-section
+  added: '2026-08-26T12:45:26.315086+00:00'
+  processed: true
+  notes: split from 2025_AAOI_10-K_2026-02-26.htm (PartIV_15)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - valuation
+  parent_mat: mat-7f5d21
+  sec_section: item_8_financial
+- id: mat-fb4005
+  filename: 2026-08-26_exclusive-trump-administration-drafting-ban-on-chi.md
+  source_type: web-search
+  added: '2026-08-26T12:54:09.155269+00:00'
+  processed: true
+  notes: query='US import ban optical transceiver modules August 2026 FCC Chinese
+    modules'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.95
+  search_meta:
+    query: US import ban optical transceiver modules August 2026 FCC Chinese modules
+    url: https://www.reuters.com/world/trump-administration-drafting-ban-chinese-data-center-devices-sources-say-2026-08-04/
+    domain: reuters.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:54:36.280979+00:00'
+    stale_at: '2026-09-25T12:54:36.280979+00:00'
+    expire_at: '2026-11-24T12:54:36.280979+00:00'
+    triggered_by: 03-extract
+- id: mat-605d0d
+  filename: 2026-08-26_fcc-ban-on-new-chinese-optical-modules-cignal-ai-a.md
+  source_type: web-search
+  added: '2026-08-26T12:54:09.302850+00:00'
+  processed: true
+  notes: query='US import ban optical transceiver modules August 2026 FCC Chinese
+    modules'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: US import ban optical transceiver modules August 2026 FCC Chinese modules
+    url: https://cignal.ai/2026/08/fcc-ban-on-new-chinese-optical-modules/
+    domain: cignal.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:54:36.428259+00:00'
+    stale_at: '2026-09-25T12:54:36.428259+00:00'
+    expire_at: '2026-11-24T12:54:36.428259+00:00'
+    triggered_by: 03-extract
+- id: mat-d730c9
+  filename: 2026-08-26_us-reported-plan-to-ban-chinese-optical-transceive.md
+  source_type: web-search
+  added: '2026-08-26T12:54:36.567321+00:00'
+  processed: true
+  notes: query='US import ban optical transceiver modules August 2026 FCC Chinese
+    modules' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.6
+  search_meta:
+    query: US import ban optical transceiver modules August 2026 FCC Chinese modules
+    url: https://www.globaltimes.cn/page/202608/1367518.shtml
+    domain: globaltimes.cn
+    domain_tier: other
+    searched_at: '2026-08-26T12:54:36.513747+00:00'
+    stale_at: '2026-09-25T12:54:36.513747+00:00'
+    expire_at: '2026-11-24T12:54:36.513747+00:00'
+    triggered_by: 03-extract
+- id: mat-5379c6
+  filename: 2026-08-26_optical-component-stocks-rally-on-proposed-u-s-ban.md
+  source_type: web-search
+  added: '2026-08-26T12:54:36.707390+00:00'
+  processed: true
+  notes: query='US import ban optical transceiver modules August 2026 FCC Chinese
+    modules' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: US import ban optical transceiver modules August 2026 FCC Chinese modules
+    url: https://finance.yahoo.com/markets/stocks/articles/optical-component-stocks-rally-proposed-113406255.html
+    domain: finance.yahoo.com
+    domain_tier: other
+    searched_at: '2026-08-26T12:54:36.652141+00:00'
+    stale_at: '2026-09-25T12:54:36.652141+00:00'
+    expire_at: '2026-11-24T12:54:36.652141+00:00'
+    triggered_by: 03-extract
+- id: mat-104c72
+  filename: 2026-08-26_the-proposed-ban-on-chinese-data-center-components.md
+  source_type: web-search
+  added: '2026-08-26T12:54:36.849870+00:00'
+  processed: true
+  notes: query='US import ban optical transceiver modules August 2026 FCC Chinese
+    modules' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K4
+  - K5
+  confidence: 0.5
+  search_meta:
+    query: US import ban optical transceiver modules August 2026 FCC Chinese modules
+    url: https://roctelecom.com/insights/chinese-data-center-component-ban/
+    domain: roctelecom.com
+    domain_tier: other
+    searched_at: '2026-08-26T12:54:36.795174+00:00'
+    stale_at: '2026-09-25T12:54:36.795174+00:00'
+    expire_at: '2026-11-24T12:54:36.795174+00:00'
+    triggered_by: 03-extract
+- id: mat-4e8a59
+  filename: 2026-08-27_earnings-call-transcript-applied-optoelectronics-m.md
+  source_type: web-search
+  added: '2026-08-27T02:50:14.897310+00:00'
+  processed: true
+  notes: 'query=''AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027,
+    40% gross margin path, non-GAAP operating income guidance, EML in-house supply,
+    1.6T qualification, capacity constrained'''
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  - K6
+  confidence: 0.95
+  search_meta:
+    query: 'AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027, 40%
+      gross margin path, non-GAAP operating income guidance, EML in-house supply,
+      1.6T qualification, capacity constrained'
+    url: https://www.investing.com/news/transcripts/earnings-call-transcript-applied-optoelectronics-misses-q1-2026-eps-forecast-93CH-4670746
+    domain: investing.com
+    domain_tier: whitelist
+    searched_at: '2026-08-27T02:50:14.838167+00:00'
+    stale_at: '2026-09-26T02:50:14.838167+00:00'
+    expire_at: '2026-11-25T02:50:14.838167+00:00'
+    triggered_by: 03-extract
+- id: mat-89a180
+  filename: 2026-08-27_applied-optoelectronics-aaoi-q4-2025-earnings-call.md
+  source_type: web-search
+  added: '2026-08-27T02:50:15.035123+00:00'
+  processed: true
+  notes: 'query=''AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027,
+    40% gross margin path, non-GAAP operating income guidance, EML in-house supply,
+    1.6T qualification, capacity constrained'''
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  - K6
+  confidence: 0.92
+  search_meta:
+    query: 'AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027, 40%
+      gross margin path, non-GAAP operating income guidance, EML in-house supply,
+      1.6T qualification, capacity constrained'
+    url: https://www.fool.com/earnings/call-transcripts/2026/02/26/applied-optoelectronics-aaoi-earnings-call
+    domain: fool.com
+    domain_tier: whitelist
+    searched_at: '2026-08-27T02:50:14.982430+00:00'
+    stale_at: '2026-09-26T02:50:14.982430+00:00'
+    expire_at: '2026-11-25T02:50:14.982430+00:00'
+    triggered_by: 03-extract
+- id: mat-f15b94
+  filename: 2026-08-27_earnings-call-transcript-applied-optoelectronics-q.md
+  source_type: web-search
+  added: '2026-08-27T02:50:15.172068+00:00'
+  processed: true
+  notes: 'query=''AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027,
+    40% gross margin path, non-GAAP operating income guidance, EML in-house supply,
+    1.6T qualification, capacity constrained'''
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  - K6
+  confidence: 0.9
+  search_meta:
+    query: 'AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027, 40%
+      gross margin path, non-GAAP operating income guidance, EML in-house supply,
+      1.6T qualification, capacity constrained'
+    url: https://www.investing.com/news/transcripts/earnings-call-transcript-applied-optoelectronics-q4-2025-beats-forecasts-93CH-4530098
+    domain: investing.com
+    domain_tier: whitelist
+    searched_at: '2026-08-27T02:50:15.119042+00:00'
+    stale_at: '2026-09-26T02:50:15.119042+00:00'
+    expire_at: '2026-11-25T02:50:15.119042+00:00'
+    triggered_by: 03-extract
+- id: mat-3def15
+  filename: 2026-08-27_applied-optoelectronics-inc-q2-fy2026-earnings-cal.md
+  source_type: web-search
+  added: '2026-08-27T02:50:15.314085+00:00'
+  processed: true
+  notes: 'query=''AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027,
+    40% gross margin path, non-GAAP operating income guidance, EML in-house supply,
+    1.6T qualification, capacity constrained'''
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  - K6
+  confidence: 0.88
+  search_meta:
+    query: 'AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027, 40%
+      gross margin path, non-GAAP operating income guidance, EML in-house supply,
+      1.6T qualification, capacity constrained'
+    url: https://finance.yahoo.com/quote/A59.DU/earnings/A59.DU-Q2-2026-earnings_call-662748.html
+    domain: finance.yahoo.com
+    domain_tier: whitelist
+    searched_at: '2026-08-27T02:50:15.259033+00:00'
+    stale_at: '2026-09-26T02:50:15.259033+00:00'
+    expire_at: '2026-11-25T02:50:15.259033+00:00'
+    triggered_by: 03-extract
+- id: mat-33f62e
+  filename: 2026-08-27_aaoi-earnings-massive-upside-or-massive-risk-crux-.md
+  source_type: web-search
+  added: '2026-08-27T02:50:15.456001+00:00'
+  processed: true
+  notes: 'query=''AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027,
+    40% gross margin path, non-GAAP operating income guidance, EML in-house supply,
+    1.6T qualification, capacity constrained'' | 待用户确认'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  - K6
+  confidence: 0.7
+  search_meta:
+    query: 'AAOI Q2 2026 earnings call transcript full: 471M monthly mid-2027, 40%
+      gross margin path, non-GAAP operating income guidance, EML in-house supply,
+      1.6T qualification, capacity constrained'
+    url: https://cruxcapitalgroup.substack.com/p/aaoi-earnings-massive-upside-or-massive
+    domain: cruxcapitalgroup.substack.com
+    domain_tier: other
+    searched_at: '2026-08-27T02:50:15.401572+00:00'
+    stale_at: '2026-09-26T02:50:15.401572+00:00'
+    expire_at: '2026-11-25T02:50:15.401572+00:00'
+    triggered_by: 03-extract
+- id: mat-1b5964
+  filename: 2026-08-27_applied-optoelectronics-inc-aaoi-analyst-ratings-e.md
+  source_type: web-search
+  added: '2026-08-27T11:32:43.426866+00:00'
+  processed: true
+  notes: query='AAOI FY2027 consensus EPS / revenue 第二独立源 + 街上隐含股数（05-critic 兜底）'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  rings:
+  - consensus
+  - valuation-anchor
+  confidence: 0.85
+  search_meta:
+    query: AAOI FY2027 consensus EPS / revenue 第二独立源 + 街上隐含股数（05-critic 兜底）
+    url: https://finance.yahoo.com/quote/AAOI/analysis
+    domain: finance.yahoo.com
+    domain_tier: whitelist
+    searched_at: '2026-08-27T11:32:43.370996+00:00'
+    stale_at: '2026-09-26T11:32:43.370996+00:00'
+    expire_at: '2026-11-25T11:32:43.370996+00:00'
+    triggered_by: 05-critic
+- id: mat-6cc1cc
+  filename: 2026-08-27_applied-optoelectronics-inc-analyst-estimates-rati.md
+  source_type: web-search
+  added: '2026-08-27T11:32:43.574431+00:00'
+  processed: true
+  notes: query='AAOI FY2027 consensus EPS / revenue 第二独立源 + 街上隐含股数（05-critic 兜底）'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  rings:
+  - consensus
+  - valuation-anchor
+  confidence: 0.8
+  search_meta:
+    query: AAOI FY2027 consensus EPS / revenue 第二独立源 + 街上隐含股数（05-critic 兜底）
+    url: https://www.wsj.com/market-data/quotes/AAOI/research-ratings
+    domain: wsj.com
+    domain_tier: whitelist
+    searched_at: '2026-08-27T11:32:43.516353+00:00'
+    stale_at: '2026-09-26T11:32:43.516353+00:00'
+    expire_at: '2026-11-25T11:32:43.516353+00:00'
+    triggered_by: 05-critic
+- id: mat-4d20e6
+  filename: 2026-08-27_aaoi-q2-2026-revenue-2027-eps-analyst-projections-.md
+  source_type: web-search
+  added: '2026-08-27T11:32:43.733378+00:00'
+  processed: true
+  notes: query='AAOI FY2027 consensus EPS / revenue 第二独立源 + 街上隐含股数（05-critic 兜底）'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  rings:
+  - consensus
+  - valuation-anchor
+  confidence: 0.75
+  search_meta:
+    query: AAOI FY2027 consensus EPS / revenue 第二独立源 + 街上隐含股数（05-critic 兜底）
+    url: https://fintel.io/topic/aaoi-q2-2026-revenue-2027-eps-analyst-projections-2630-2780
+    domain: fintel.io
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-27T11:32:43.676402+00:00'
+    stale_at: '2026-09-26T11:32:43.676402+00:00'
+    expire_at: '2026-11-25T11:32:43.676402+00:00'
+    triggered_by: 05-critic
+- id: mat-41683c
+  filename: sec/_raw/2019_AAOI_10-K_2020-02-28.htm
+  source_type: annual-report
+  added: '2026-09-01T09:04:58.568882+00:00'
+  processed: true
+  notes: 05-critic 兜底自 SEC EDGAR 直下（accession 0001437749-20-003909）。split_file 只认
+    1 节（老毛病：Item 标题次行/目录页陷阱），改按 _extract_lines 手工定位取数。用于一手化镜鉴 1（2017-2019 世代切换）。
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K6
+  rings:
+  - biz-moat-unit-econ
+  - historical-mirror
+  - peer-comparison-financials
+  confidence: 0.95

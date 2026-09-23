@@ -1,0 +1,762 @@
+slug: us-aaoi
+display_name: Applied Optoelectronics 应用光电 (AAOI)
+type: company
+created: '2026-08-26T10:29:17.409618+00:00'
+status: active
+stage: 04-post-synthesis
+canonical: true
+parent_topic: null
+monitoring_tier: dormant
+concepts: []
+scope:
+  geo: US
+  question: AAOI (Applied Optoelectronics)，US 上市主体，deep 深度，只研究本体（不含未上市同行/代工厂单列）；对终局的赌注：我赌
+    AAOI 是「AI 光模块供给紧俏 + 去中国化产能」窗口期的高 beta 交易标的，而非结构性赢家——核心命门是 800G/1.6T 规模化后毛利率能否结构性站上
+    30%，以及 Amazon/超大厂资格是否转成多年设计中标而非一轮紧缺配额；据此定买/卖/持有 + EV + 目标价区间与介入纪律。
+  depth: deep
+  terminal: 买/卖/持有 + 期望收益(EV) + 目标价/介入纪律
+  ticker: US_AAOI
+  market: US
+  short_name: AAOI
+  search_terms:
+  - AAOI 800G 光模块
+  - AAOI 毛利率
+  - AAOI Amazon 订单
+  - AAOI DOCSIS 4.0
+outputs_state:
+  00_primer:
+    version: 1
+    last_updated: '2026-08-27T10:22:40.716722+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-03e60b
+    - mat-1658c3
+    - mat-2ab035
+    - mat-4485a1
+    - mat-4e8a59
+    - mat-605d0d
+    - mat-7163f5
+    - mat-76fc11
+    - mat-7d45cd
+    - mat-89a180
+    - mat-8c27ad
+    - mat-c38dd9
+    - mat-e575c5
+    - mat-e7e8f2
+    - mat-fb4005
+    last_error: null
+    critic_passed: true
+  c_investment_case:
+    version: 2
+    last_updated: '2026-09-02T03:21:42.457065+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-03e60b
+    - mat-1658c3
+    - mat-2ab035
+    - mat-3ea4b8
+    - mat-4485a1
+    - mat-4e8a59
+    - mat-605d0d
+    - mat-7163f5
+    - mat-76fc11
+    - mat-7d45cd
+    - mat-7d8079
+    - mat-89a180
+    - mat-8c27ad
+    - mat-c38dd9
+    - mat-d9c8af
+    - mat-e575c5
+    - mat-e7e8f2
+    - mat-fb4005
+    last_error: null
+    critic_passed: true
+  07_decision_kit:
+    version: 2
+    last_updated: '2026-09-02T03:21:42.475992+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids:
+    - mat-03e60b
+    - mat-1658c3
+    - mat-2ab035
+    - mat-3ea4b8
+    - mat-4485a1
+    - mat-4e8a59
+    - mat-605d0d
+    - mat-7163f5
+    - mat-76fc11
+    - mat-7d45cd
+    - mat-7d8079
+    - mat-89a180
+    - mat-8c27ad
+    - mat-c38dd9
+    - mat-d9c8af
+    - mat-e575c5
+    - mat-e7e8f2
+    - mat-fb4005
+    last_error: null
+  08_living_feed:
+    version: 1
+    last_updated: '2026-09-02T03:21:42.494896+00:00'
+    status: fresh
+    data_freshness: null
+    referenced_mat_ids: null
+    last_error: null
+parent_materials: []
+next_actions:
+- thesis_v2 + decomposition_v2 + c_investment_case v2 + 07_decision_kit v2 已落盘并登记；05-critic
+  的 request-more 已应答（九条缺陷七修两转持久缺口）
+- 可选：再跑一轮 05-critic 对抗式复审（说「评审 us-aaoi」），验证 v2 是否仍有单线承重
+- 2026-11-04 Q3'26 财报为下一个决策点：Q4 指引 + FY26 出口 GM vs FY27 稳态 GM 分离 + K9 第三大客户集中度首查
+- P1 低成本缺口：拉 FY2021 10-K 补 FY2020/FY2021 数据中心分部收入与毛利率，补完九年弧线中间空档
+- 'primer 待补第 18 节「纵向对标法」（decomposition_v2 入门目标 #13，尚未写入 primer）'
+user_todos:
+- task: AAOI FY2025 10-K + 2026Q1/Q2 10-Q 原文（分段收入、分段毛利率、前十客户集中度、封面股数、2030 转债条款）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K3
+  source_hint: SEC EDGAR CIK 1158114 / investors.ao-inc.com
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1658c3
+  - mat-263b3e
+  - mat-28463d
+  - mat-7f5d21
+  - mat-af5b4c
+  - mat-f8e368
+  last_fetch_note: SEC EDGAR 直下 10-K(FY2025)+10-Q(Q2 2026)，10-Q 已切 4 个 section
+- task: 一致预期明细：覆盖机构的 FY2026-2028 收入/EPS/目标价与分歧带（$140.68 与 $163 两个口径需对齐）
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  - K3
+  source_hint: stockanalysis.com / chartmill / TipRanks / 卖方研报
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  last_fetch_note: adapter+exa：stockanalysis(S&P口径 FY26 rev $1.04B/EPS $0.68)、chartmill(13家/PT
+    $140.68/季度路径至Q4-27)、Rosenblatt PT $140
+- task: 分段毛利率拆分（数据中心 vs CATV vs 电信）+ 800G/1.6T ASP 走势 + 自产 EML/DFB 芯片自供比例
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  - K5
+  source_hint: 10-K MD&A + 电话会问答 + 行业 ASP 数据（Cignal AI / LightCounting）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 3
+  disposition: undecided
+  covered_by:
+  - mat-3ea4b8
+  last_fetch_note: R3 追加：行业侧 ASP/供需口径已取（LightCounting 缺口30%、McKinsey 40-60%、配额而非价格出清）→
+    mat-7d45cd；AAOI 自身 EML 自供比例仍未披露，留 03 电话会 Q&A 攻
+- task: ATM 使用披露 + Amazon 权证已归属股数 + 2030 转债余额（8-K / 10-Q / 424B5 招股补充）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K3
+  - K6
+  source_hint: SEC EDGAR 8-K 与 424B5；2026-08 ATM 相关文件
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-0e6628
+  - mat-af5b4c
+  last_fetch_note: 追加：2026-08-21 第二份 $600M ATM 原文 + Dilution 章节精确数字 → mat-723213
+- task: 1.6T 认证与订单公告流：2026-03 起全部 press release 与 8-K（>$200M 1.6T 首单、>$124M 800G 订单、后续认证）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K4
+  source_hint: investors.ao-inc.com news-releases
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0e6628
+  last_fetch_note: 2026-03 >$200M 1.6T首单 + >$53M/$124M 800G订单；1.6T 2026Q3晚些发货；press-release
+    全量清单待 01 逐条抓
+- task: 产能与出货一手口径：2026Q1/Q2 财报电话会逐字稿 + 季度投资者演示 PPT（产能定义、月出货、美国占比）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K5
+  source_hint: investors.ao-inc.com events / Yahoo transcript / 华尔街见闻电话会纪要
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-0e6628
+  - mat-76fc11
+  last_fetch_note: exa 取到 Q4-25 投资者演示全文（含官方分产品产能表 Q2-26→Q4-27 与制造足迹）+ IR events 页清单
+- task: Amazon Transaction Agreement + Warrant 原文条款（8-K 附件 4.1/10.1）：归属档位、采购口径、反稀释条款
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: 2025-03-13 8-K 附件
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0e6628
+  last_fetch_note: warrant 原文全文已取（7,945,399股/$23.6954/2035到期/1,324,233即时归属/$40亿采购上限/无现金行权）；分档增量被
+    [***] 删节
+- task: 历史镜鉴：2017-2019 微软客户流失导致业绩崩塌完整复盘 + 2023-11「拟作价$150M出售中国工厂及transceiver业务、退出光模块市场」事件全过程与未按原样完成的原因
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K6
+  source_hint: 2023-2024 press release/8-K + 当时卖方与媒体复盘
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-0e6628
+  last_fetch_note: 2023 中国资产出售案全过程（裕汉光电/仕佳光子，2023-09终止、2024-01-02公告终止投资）+业内"资产吸引力不大"评价已取；2017-2019微软流失复盘仅得二手概述，01
+    再补
+- task: 同业倍数横比：中际旭创/新易盛/Coherent/Lumentum/Fabrinet 当期 P/S·P/E·毛利率同口径对照（中概需换汇）
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: prism market_data + 各公司最新财报
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-1cfbc2
+  last_fetch_note: prism market_data 同日快照自算 → mat-1cfbc2
+- task: 卖方深度研报：第一上海证券《应用光电(AAOI)：高端光模块进入1-10放量阶段》及其他覆盖机构深度
+  priority: P1
+  info_tier: half_public
+  addresses:
+  - K1
+  - K2
+  source_hint: 发现报告 fxbaogao / 券商研报平台
+  status: pending
+  fetch_status: empty
+  fetch_attempts: 2
+  disposition: waived
+  last_fetch_note: 二次尝试(含"卖方深度研报"措辞)仍只得行情/评级聚合页与公司 PR；fxbaogao 付费墙、mystockhk 为导航页、exa
+    全文抓取失败 → 确认公开无研报正文源
+- task: 光模块（HTS 8517.62 等）301 关税当期实际税率与归类，及非中国产能的实际成本优势量化
+  priority: P2
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: USTR 公告 + 律所客户提示 + 海关税则
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  covered_by:
+  - mat-7d45cd
+  last_fetch_note: R3 重试成功：HTS 8517.62 MFN 0% + 中国原产 List3 +25%（USITC Ch99 2026-08-10
+    核验，另有一源矛盾已标注）→ mat-7d45cd
+- task: Digicomm International 关系与 CATV 渠道结构：独家备货分销商定性、终端 MSO 构成、DSO 与渠道库存周转
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K6
+  - K1
+  source_hint: digicomm.com + AOI 2023-11 联合新闻稿 + 10-Q 应收披露 + MSO capex
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-76fc11
+  last_fetch_note: exa 取到 2023-11-10 独家分销新闻稿全文 + digicomm.com 产品页 → mat-76fc11；残差：终端
+    MSO 构成与 DSO 需 03 交叉验证
+- task: 季度投资者演示 PPT 与分产品产能表（800G/1.6T/ELSFP 逐代产能与出货口径）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K5
+  source_hint: investors.ao-inc.com events-and-presentations（OFC 2026-03-17 / Q4-25
+    deck / 2Q26 Trended Quarterly Results）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-76fc11
+  last_fetch_note: exa 取到 Q4-25 投资者演示全文（含官方分产品产能表 Q2-26→Q4-27 与制造足迹）+ IR events 页清单
+- task: 光模块行业供需与 ASP：LightCounting 2026-04 预测、McKinsey 缺口口径、EML 交期与 Nvidia $40 亿投
+    Coherent/Lumentum
+  priority: P1
+  info_tier: hard
+  addresses:
+  - K2
+  - K5
+  source_hint: LightCounting newsletter + 行业转载
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 1
+  disposition: undecided
+  covered_by:
+  - mat-7d45cd
+  last_fetch_note: LightCounting Apr2026 + McKinsey 缺口 + Nvidia $40亿投COHR/LITE 已入库
+    → mat-7d45cd；付费原报告仍 hard
+- task: 查证 2026-08-04「美国拟对光模块实施进口禁令」报道的原始政策文件与适用范围
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K1
+  source_hint: USTR / 商务部公告 + Fierce/LightReading 原报道
+  status: pending
+  fetch_status: fetched
+  fetch_attempts: 2
+  disposition: undecided
+  last_fetch_note: R3 重试成功（03-extract）：原始报道 = Reuters 2026-08-04 独家「Trump 政府起草禁令，FCC
+    主导，禁止进口新型号中国数据中心组件/光模块」，官员拟今年内发布、仍可能被修改或搁置；非关税、非已生效法规。Cignal AI 同日拆解量化（旭创 1Q26
+    datacom 组件 $2.6B=34% 份额、中国厂合计约60%；AAOI 仅 $81M≈旭创1/32；卡口在组装/测试/合格产能而非光芯片；Cignal
+    不预期该措施落地）→ mat-fb4005/mat-605d0d 等 5 条已入库并产 inline finding
+- task: 资料提取完成：66 份可处理资料全部抽出 findings（另 5 条 03-extract 即兴 web-search 自动产 inline finding）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: Q2/Q1/Q4'25 三场电话会完整逐字稿已补齐，6 项缺口全部拿到管理层原话（含 3 条重大口径纠错）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: roadmap 需补 K7：thesis v1 升版后 K7 在 L4-hunting + tier-material 中未闭环
+  priority: P1
+  info_tier: public
+  addresses:
+  - K7
+  source_hint: auto-generated by set_thesis reverse-check (v1)
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  coverage_note: 已补：l4_hunting 新增该 K# 专项问题 + tier1 材料（FY2025 10-K / 2026Q2 10-Q）addresses
+    扩容；set_thesis 反向检查 ok=True
+- task: roadmap 需补 K8：thesis v1 升版后 K8 在 L4-hunting + tier-material 中未闭环
+  priority: P1
+  info_tier: public
+  addresses:
+  - K8
+  source_hint: auto-generated by set_thesis reverse-check (v1)
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  coverage_note: 已补：l4_hunting 新增该 K# 专项问题 + tier1 材料（FY2025 10-K / 2026Q2 10-Q）addresses
+    扩容；set_thesis 反向检查 ok=True
+- task: 【决策】当前 $113.76 落在 above_hold 区（期望回报 −15%）：不建仓；已持有者降至观察仓。介入线 ≤$78（可建仓）、≤$62（强力买入）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: 04 合成收尾产出的决策待办 / 观测日历，非收料任务（不计 auto-fetch 欠账）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: waived
+  coverage_note: 已被 thesis_v2 的新买入框替代（EV 锚 $96→$106、现价 $103.39 落观望区）
+- task: 【最近观测点 2026-11 前后】Q3 财报 + Q4 指引 —— 若 Q4 指引 <$400M 或仍不给营业利润指引，加权 EV 下修至约 $80、买入框整体下移约
+    17%
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: 04 合成收尾产出的决策待办 / 观测日历，非收料任务（不计 auto-fetch 欠账）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: waived
+  coverage_note: 已被 thesis_v2 §5 的新档位替代（Q4 指引 <$400M → EV 下修至约 $88、买入框下移约 17%）
+- task: 【主判决 2027-02 前后】Q4 财报三档判定：≥$480M 兑现 / $370-450M 打折兑现 / <$330M 证伪
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: 04 合成收尾产出的决策待办 / 观测日历，非收料任务（不计 auto-fetch 欠账）
+  status: pending
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: waived
+- task: 【下一步】说「评审 us-aaoi」跑 05 对抗式重审（company 必经 05 才能 done）
+  priority: P1
+  info_tier: public
+  addresses: []
+  source_hint: 04 合成收尾产出的决策待办 / 观测日历，非收料任务（不计 auto-fetch 欠账）
+  status: done
+  fetch_status: fetched
+  fetch_attempts: 0
+  disposition: waived
+  coverage_note: 05 已于 2026-08-27 跑完，verdict=request-more；九条缺陷七条已在 thesis_v2/decomposition_v2
+    修完，两条转持久缺口
+- task: 定向 03-extract（在库未处理）：mat-aa2792 Simply Wall St 一致预期净利 $381M/收入 $2,574M（→ 街上隐含股数
+    78-83M，替掉用 92.8M 换算街上净利率的做法）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-1b5964
+  - mat-4d20e6
+  - mat-6cc1cc
+  - mat-aa2792
+  coverage_note: 已抽取：街上 FY2027 净利 $381M/收入 $2,574M → 隐含净利率 14.80%（免股数假设）、隐含股数 78-83M；另
+    3 个新源给 EPS 中枢 $4.6-4.9。⚠️ 同页 Narrative 社区目标价 $27-35 不可用，已在 finding 标警。
+- task: 定向 03-extract（在库未处理）：mat-119748 FY2022 10-K + mat-f6b7aa FY2024 10-K + mat-03951b
+    2019 转债 → 把镜鉴 1（2017-2019 峰谷 −90%、当年三条预警信号）从训练记忆换成一手
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-119748
+  - mat-41683c
+  - mat-f6b7aa
+  coverage_note: ⚠️ 原判断有误：mat-119748/mat-f6b7aa 是 SEC search-snippet 存根（各约 2KB）、不含
+    2017-2019，无法一手化镜鉴 1；本地库 financials.db 最早也只到 2022A。已改为自 EDGAR 直下 FY2019 10-K 全文（mat-41683c）解决：收入
+    $382.3M→$267.5M→$190.9M、GM 43.5%→32.8%→24.2% 均为一手。存根另贡献 FY2022-2024 利润表交叉验证（与梁三表逐格吻合）。
+- task: 定向 03-extract（在库未处理）：mat-76d9af 公司原始 "Announces Definitive Agreement" 公告 →
+    替掉二手财联社 mat-d9c8af 作为镜鉴 2 主源
+  priority: P1
+  info_tier: public
+  addresses:
+  - K6
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-119748
+  - mat-76d9af
+  coverage_note: 已抽取公司官方新闻稿：CEO 原话 "AOI to exit the transceiver market and focus our
+    resources on our CATV business and manufacturing lasers"、CFO "accelerate our path
+    to profitability"；FY2022 10-K 补出"人民币计价 less holdback"与"反投买方换 10% 股权"两个 case 缺的口径。
+- task: 定向 03-extract（在库未处理）：mat-a32c1d short interest + mat-cc3bec/7b391c/7bae69
+    内部人交易 → 复核 thesis 里"本轮未用一手源复核"的空头 12.83%/days-to-cover 1.2
+  priority: P1
+  info_tier: public
+  addresses:
+  - K3
+  source_hint: ''
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  covered_by:
+  - mat-7b391c
+  - mat-7bae69
+  - mat-a32c1d
+  - mat-cc3bec
+  coverage_note: 空头 12.83%/1.2 天已由 MarketBeat 一手验证（as-of 2026-07-31，口径应改为"占 public
+    float"）。★ 附带重大新事实：内部人减持是 2026-06→08 的持续流而非 3 月一次性，含 CFO Stefan Murry 2026-07-10
+    在 $122.09 减持 4,000 股（case 完全未记录）。
+- task: AAOI 分段毛利率（CATV vs 数据中心）：若 Q3'26 财报/电话会仍不披露，则确认为公开永久不可得并写入 honest_gaps，同时把
+    M1 置信度从「中高」回调至「中」
+  priority: P0
+  info_tier: half_public
+  addresses:
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  coverage_note: M1 置信度已在 decomposition_v2 主动下调（中高→中）且升为 §7 P0 第一缺口 + 已踢 07-drilldown(P0)；剩余动作只是
+    Q3-26 财报/电话会若仍不披露则钉为公开永久不可得
+- task: Q3'26 电话会（2026-11-04）须追问并区分两个不同的量：FY2026 年底出口 GM（CEO 已给 32-33%）vs FY2027 稳态
+    GM（未给）——分歧 1 的唯一支点
+  priority: P0
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: （镜鉴 1 残留）2017 高点约 $103 → 2019 低点约 $8-10、约 −90% 仍为训练记忆——10-K 不含股价序列；若要一手化须取当年
+    proxy/年报市场信息表或第三方历史行情。基本面对应物已一手化（收入 −50.1%、GM −19.3pp），故此项优先级低
+  priority: P2
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: roadmap 需补 K9：thesis v2 升版后 K9 在 L4-hunting + tier-material 中未闭环
+  priority: P1
+  info_tier: public
+  addresses:
+  - K9
+  source_hint: auto-generated by set_thesis reverse-check (v2)
+  status: done
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+  coverage_note: 已补：l4_hunting 新增该 K# 专项问题 + tier1 材料（FY2025 10-K / 2026Q2 10-Q）addresses
+    扩容；set_thesis 反向检查 ok=True
+- task: 【决策 v2】现价 $103.39（2026-09-01）落观望区上沿，期望回报 +2.7%：不建仓；已持有者可持不加。介入线 ≤$86（可建仓，EV
+    打 19% 安全边际）、≤$68（强力买入）。加仓阶梯 $86/$76/$66，每档先查 kill
+  priority: P0
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 【最近观测点 2026-11-04】Q3'26 财报三件事：① Q4 指引（若 <$400M 或仍不给营业利润指引 → EV 下修至约 $88、买入框下移约
+    17%）；② 须把 FY2026 年底出口 GM（CEO 已给 32-33%）与 FY2027 稳态 GM 分开听；③ K9 第三大客户集中度首查（24%
+    若回落 ≥5pp 且增速降档 → EV 下修至约 $75）
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  - K2
+  - K9
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 【主判决 2027-02】Q4 财报三档判定：≥$480M 兑现 / $370-450M 打折兑现 / <$330M 证伪
+  priority: P0
+  info_tier: public
+  addresses:
+  - K1
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: 【P1 低成本】拉 AAOI FY2021 10-K，补 FY2020/FY2021 数据中心分部收入与毛利率——九年弧线唯一的中间空档，一份文件解决两年（所有残留缺口里唯一确定可解的）
+  priority: P1
+  info_tier: public
+  addresses:
+  - K2
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+- task: '【primer 待补】第 18 节「当横向同业对标因混品失效时，怎么改用同一家公司的跨周期分部序列做纵向对标」——decomposition_v2
+    入门目标 #13，是本案 P0 缺口（分段毛利率）唯一的绕道'
+  priority: P2
+  info_tier: public
+  addresses: []
+  source_hint: ''
+  status: pending
+  fetch_status: unattempted
+  fetch_attempts: 0
+  disposition: undecided
+suggested_drilldowns:
+- question: 能否从任何非财报口径（行业数据库分产品 ASP × BOM 反推 / CATV 硬件同业毛利率带 / 历史纯 CATV 时期的公司毛利率）估出
+    AAOI datacom 分部毛利率区间？
+  rationale: M1「代工位」的唯一定量核心是 AAOI 合并毛利率 vs 旭创纯 datacom 毛利率，而 AAOI 含 53.8% CATV 硬件——苹果比橘子。公司从未按分部披露毛利率，04
+    收料轮与 05 critic 补料轮各攻一次未果，M1 置信度已因此锁在「中」。这是把 M1 推回「中高」的唯一钥匙。
+  source: capped_decomposition
+  related:
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-09-02T02:59:38.755731+00:00'
+- question: 拉 FY2021 10-K，补齐 FY2020/FY2021 数据中心分部收入与毛利率，补完九年弧线中间空档
+  rationale: M5「做不到还是守不住」的最硬证据是 FY2017 43.50% → FY2019 24.20% → FY2025 30.04% 的九年弧线，但
+    FY2020/FY2021 缺口未补。一份文件即可补两年，是 §7 里唯一确定可解且成本极低的缺口。
+  source: capped_decomposition
+  related:
+  - K2
+  priority: P1
+  status: open
+  suggested_at: '2026-09-02T02:59:38.755731+00:00'
+- question: 能否用第三方（Cignal AI / LightCounting）的分速率份额与出货估算，把「已认证产能」从黑箱变成有界区间？
+  rationale: M2 的三项判别式（已认证产能 / 分速率出货只数与 ASP / 自供率）在公开信息里都不存在，导致环②利用率分子只能用「收入 ÷ 假设
+    ASP」倒推，ASP 区间 $300-604 误差可达一倍。第三方份额估算是唯一的代理路径。
+  source: capped_decomposition
+  related:
+  - K5
+  priority: P1
+  status: open
+  suggested_at: '2026-09-02T02:59:38.755731+00:00'
+monitoring:
+  enabled: false
+  cadence: daily
+critic:
+  verdict: request-more
+  summary: 单线承重：M1「代工位」缺分段毛利率（混品合并 GM 对标属间接证据、且未列 honest_gaps）；定价锚 consensus 原为单一聚合页且取了同页两个互斥数中较低者（FY27
+    EPS $4.18 vs 年表 $4.87，5 源中枢 $4.6-4.9）→ 环②「给 25x 得 $104.5 低于现价、隐含 IRR 0-5%」按中枢重算为
+    +4%~+25%，方向翻转。另四处表内算术与自身参数不符（弱空 $62 应 $42.5、模型 B 每股表高估约 60% 且已被 sidecar 消费、Q2
+    数据中心 $82M 应 $107.6M）。反方致命一击（Bull 只给 26x vs 同业 43-70x、两端惩罚不对称）case 无应答。gap 报无缺口是假绿：138
+    份材料 59 份未处理，含镜鉴/空头/街上股数三处自认训练记忆项的一手源。方向（现价不建仓）维持，但 EV 量级不稳健（−15% → 可到 −4%），buy_box
+    上沿须重算。
+  at: '2026-08-27T12:05:25.675187+00:00'
+  thesis_version: 1
+  next_stage: 02-gather-materials
+decomposition:
+  current_version: 2
+  last_updated: '2026-09-02T02:59:38.746705+00:00'
+  history:
+  - version: 0
+    stage_set_at: 00-research-pending
+    set_at: '2026-08-26T10:45:53.493184+00:00'
+    summary: 命门1=占瓶颈位还是代工位(低,GM在收入翻倍时反降); 命门2=名义产能与实际出货40-50%缺口是口径还是订单不足(低); 命门3=每股价值漏损速度(中,股本12个月+63%+$600M
+      ATM)
+    convergence_status: open
+  - version: 1
+    stage_set_at: 04-synthesizing
+    set_at: '2026-08-27T10:51:53.343725+00:00'
+    summary: 4条命门：M1代工位vs瓶颈位(中高,指向代工位为主+一小块瓶颈位资产)/M2已认证产能永久黑箱+兑现节奏(中,问题已重定义)/M3漏损主体从ATM改判为SBC
+      35倍差(高,方向纠错)/M4新增Q4-26曲棍球棒四口径互斥(低但杠杆最高、6个月内裁决)
+    convergence_status: open
+    changelog: 加M4(凭mat-4e8a59的Q4桥三口径互斥+指引静默撤下、mat-7d8079的共识$442.87M为第四互斥口径;原散落K1/K5,单列因它是唯一6个月内可裁决的命门);M1升低→中高并定向代工位(凭mat-e7e8f2×mat-1658c3同期GM反向+mat-03e60b自陈+mat-fb4005约束在组装认证+mat-4e8a59衬底外购);M2重述(二分法被双向部分证实而失效,改为已认证产能黑箱,凭mat-e575c5分母下修30%且须并列两分母);M3升中→高且方向纠错(漏损主体从ATM改判SBC,凭mat-1658c3的$328.3M
+      vs $9.25M;Amazon权证全归属需23.5年故从看空论据剔除);primer目标加#12备货型分销商(凭mat-76fc11+mat-03e60b)、改#9扩为每股价值四出口、改#10合并qualification与可发货产能转化链;未砍任何v0命门、无复活项、对照全历史无震荡
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-02T02:59:38.746715+00:00'
+    summary: 5条命门(M5新增"做不到还是守不住")。M1中高→中(分段毛利率黑箱使同业对标成苹果比橘子)、M3高→中高(街上股本78-83M低于公司指引,股数delta部分重复计价)。capped:分段毛利率已攻两轮仍不存在,踢07-drilldown。
+    convergence_status: capped
+    changelog: M1↓中 M3↓中高 M5新增(靶子从能力换持续性) | B靶点+4(多源一致预期/模型不重复计价/镜鉴须一手/跨周期分部序列) |
+      primer目标+1(#13纵向对标法,待写) | EV锚 $96→$106
+thesis:
+  current_version: 2
+  last_updated: '2026-09-02T03:00:32.354256+00:00'
+  history:
+  - version: 0
+    stage_set_at: 01-roadmap-pending
+    set_at: '2026-08-26T10:44:07.174410+00:00'
+    summary: 生意变好但每股价值在漏损：GM 在收入翻倍时同比下滑(27.7%)、股本12个月+63%+新签$600M ATM；$113 高于模态估值，EV≈$100(-11%)。不买，目标价
+      $75-100，介入线 ≤$85
+    prescan_status: partial
+    prescan_failure_reason: prescan 校准率 95%（20/21，含 0 条已覆盖跳过），低于满分但高于失败阈值 50%
+  - version: 1
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-08-27T10:51:52.979032+00:00'
+    summary: 生意侧在变好但收入主体坐在代工位（旭创同期GM+6.63pp而AAOI−2.6pp、10-K自陈无差异化）；命门不是能否卖出货而是能否变成每股利润。$113.76不买、持有者降观察仓；EV−15%、加权公允值$96、强力买入≤$62。强度3.0/10
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-02T02:59:38.291528+00:00'
+    summary: 偏空但接近中性(4.2/10)。命门从"32-40%毛利率做不到"改为"做到了守不住"——FY2017一手43.50%、三年掉到24.20%、八年收入仅+19.2%。定价锚修正后现价仅21.8x前瞻PE，"无风险补偿"不成立。EV
+      $106 vs 现价$103，观望不建仓。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-02T03:00:32.354503+00:00'
+    summary: 偏空但接近中性(4.2/10)。命门从"32-40%毛利率做不到"改为"做到了守不住"——FY2017一手43.50%、三年掉到24.20%、八年收入仅+19.2%。定价锚修正后现价仅21.8x前瞻PE,"无风险补偿"不成立。EV
+      $106 vs 现价$103,观望不建仓。
+stage_history:
+- stage: 01-roadmap-pending
+  entered_at: '2026-08-26T10:46:32.012586+00:00'
+  exited_at: '2026-08-26T12:28:48.233441+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K1
+    - K2
+    - K3
+    - K4
+    - K5
+    - K6
+    uncovered_ring_inputs:
+    - biz-moat-unit-econ
+    - mgmt-capital-alloc
+    - consensus
+    - bull-bear
+    - historical-mirror
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 03-extracting
+  entered_at: '2026-08-26T12:28:48.233441+00:00'
+  exited_at: '2026-08-27T01:42:10.478589+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 1
+    empty_pending_decision: 1
+- stage: 04-synthesizing
+  entered_at: '2026-08-27T01:42:10.478589+00:00'
+  exited_at: '2026-08-27T10:51:53.025263+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 1
+- stage: 01-roadmap-reopen
+  entered_at: '2026-08-27T10:51:53.025263+00:00'
+  exited_at: '2026-08-27T10:51:53.397501+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K7
+    - K8
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 05-critic-review
+  entered_at: '2026-08-27T10:51:53.397501+00:00'
+  exited_at: '2026-09-02T02:59:38.362185+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K7
+    - K8
+    uncovered_ring_inputs: []
+    autofetch_debt: 4
+    empty_pending_decision: 0
+- stage: 01-roadmap-reopen
+  entered_at: '2026-09-02T02:59:38.362185+00:00'
+  exited_at: '2026-09-02T03:01:05.955132+00:00'
+  gap_snapshot:
+    uncovered_ks:
+    - K9
+    uncovered_ring_inputs: []
+    autofetch_debt: 3
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-09-02T03:01:05.955132+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks:
+    - K9
+    uncovered_ring_inputs: []
+    autofetch_debt: 3
+    empty_pending_decision: 0

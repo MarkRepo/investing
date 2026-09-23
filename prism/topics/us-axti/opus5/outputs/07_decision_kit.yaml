@@ -1,0 +1,288 @@
+slug: us-axti
+variant: opus5
+topic_type: company
+display_name: "AXT Inc (NASDAQ: AXTI) 化合物半导体衬底"
+ticker: NASDAQ_AXTI
+generated: 2026-09-02T12:00:00Z
+version: 4
+parent_version: 3
+data_freshness: 2026-Q2
+thesis_version: 4
+
+buy_box:
+  strong_buy_max: 22
+  accumulate_min: 22
+  accumulate_max: 31
+  hold_min: 31
+  hold_max: 50
+  current_price: 56.11
+  price_as_of: 2026-09-01
+  current_zone: above_hold
+  v2_to_v3_shift: "25/25-36/36-54 → 22/22-31/31-50（整体下移 8-14%）。原因不是对毛利率更悲观（那一轮反而上修），而是：①终值倍数 Base 22x→16x；②模型G通美锚倍数 25x/20x→18x/15x（与终值口径统一）；③模型A因2026盈利基数不可决（$31M/$50M/$86M → Base $12-33）而降级、不再参与目标价"
+
+action:
+  headline: "不买入；已持有者可继续持有并严守 KILL，不加仓。不做空。"
+  v2_action: "不买入；已持有者可继续持有并严守 KILL，不加仓。不做空。（同向，依据已更换）"
+  change_reason: "v4(05再评审 Step6.5)：取到 JX 官方公告一手(mat-8f4278)——至多¥1200亿/累计约¥1500亿/产能7-10倍(相对FY3/26)确认(KILL-12触发/盲点B8 resolved)，且龙头明确谈涨价+需求超预期+Jefferies给Buy(mat-54d899)，在需求/价格/终值三轴利多空方对立面。概率从6/22/34/28/10调到5/20/34/29/12(左尾变薄右尾变厚)，每档目标价与机制未动。EV -10.6%→-6.0%，band [-31.9%,+16.6%]→[-28.4%,+22.7%]，强度3/10→2/10。承重=单线承重(终值倍数仍判断)"
+  confidence: 中
+  ev_to_2028: -0.060
+  ev_robustness_band: [-0.284, 0.227]
+  ev_robustness_band_note: "双轴联合包络(v4/新概率5/20/34/29/12重算)：下界=倍数-20%且m-0.10=-28.4%，上界=倍数+25%且m+0.10=+22.7%。单轴：倍数-20%单独=-21.5%、m-0.10单独=-14.6%、倍数+25%单独=+13.5%。EV符号仍由终值倍数轴(35pct跨度>m轴16pct)单独决定"
+  probability_weighted_value: 52.7
+  target_12m: 52
+
+valuation_models:
+  - name: reverse_pe_dcf
+    label: "逆向 PE-DCF（r=12%，无风险腿取 10Y 实际利率 2.43%）—— 本版降级为「读隐含预期」工具，不参与目标价"
+    bull_fair_value: [28, 78]
+    base_fair_value: [12, 33]
+    bear_fair_value: [5, 13]
+    caveat: "跨度完全由 2026 盈利基数选择驱动，不由业务判断驱动：含利息 $50M / 剔息 $31M / exit-2026 运行率 $86M，Base 分别为 $19.2 / $11.9 / $33.0。v2 只报了其中一个基数"
+    implied_cagr_by_base:
+      base_50m_with_interest: {pe35: 0.309, pe25: 0.400, pe18: 0.495}
+      base_31m_ex_interest: {pe35: 0.440, pe25: 0.541, pe18: 0.645}
+      base_86m_runrate: {pe35: 0.174, pe25: 0.256, pe18: 0.341}
+  - name: normalized_pe
+    label: "正常化 PE（GM = 1 − v0·(u/p) − F/S，令 m ≡ p/u；只有 m 可观测，p 与 u 不可分离识别）—— 本版主模型"
+    bull_fair_value: [73.2, 73.2]
+    base_fair_value: [36.2, 36.2]
+    bear_fair_value: [21.6, 21.6]
+    params:
+      bull: {S: 720, m: 1.35, F: 62, opex: 80, gm: 0.481, eps: 3.06, pe: 21}
+      base: {S: 520, m: 1.22, F: 55, opex: 68, gm: 0.415, eps: 1.70, pe: 16}
+      bear: {S: 430, m: 1.10, F: 55, opex: 62, gm: 0.340, eps: 0.97, pe: 13}
+    m_history: {y2022: 1.298, y2023: 1.196, y2024: 1.160, y2025: 1.000, q26q2: 1.401}
+    m_history_note: "2022 是常态年（无AI叙事/无出口管制/无短缺/InP占比低）却已 m=1.30 —— 当期 1.40 只高 8%。季度序列 0.80→1.03→1.06→1.14→1.25→1.40 平滑单调。这推翻了 v2 的 Bear(m=1.05)/崩塌(m=0.90)"
+    identification_caveat: "(F, v0) 不可识别：年度2023-25窗口→v0 56.8%/F $21.8M/渐近GM 38.9%（v2采用）；年度2022-25→35.3%/$40.3M/56.7%；季度2025→35.2%/$46.0M/55.6%；季度25Q1-26Q2→28.1%/$51.0M/61.7%。v2 的负EV有一半来自一个未标注的样本窗口选择（排除了2022这个唯一高营收观测点）"
+  - name: nav_sotp_option
+    label: "NAV/SOTP + 组合期权拆解（通美三锚，倍数降到 18x/15x 与环④终值口径统一）"
+    bull_fair_value: null
+    base_fair_value: [15.5, 26.3]
+    bear_fair_value: null
+    verifiable_value_range: [15.5, 26.3]
+    verifiable_value_mid: 23.0
+    option_premium_usd_m: 2171
+    option_premium_pct_of_mcap: 0.59
+    my_option_estimate_usd_m: 1947
+    option_delta_pct: -0.103
+
+scenarios:
+  - {id: collapse, label: 崩塌, prob: 0.05, revenue_2028: 280, m: 1.00, F: 50, gm: 0.236, method: "P/B 0.9x（账面约$8.3亿）", target: 11.0, return: -0.804}
+  - {id: bear, label: 熊, prob: 0.20, revenue_2028: 430, m: 1.10, F: 55, gm: 0.340, method: "13x + 每股净现金$9", target: 21.6, return: -0.615}
+  - {id: base, label: 基准, prob: 0.34, revenue_2028: 520, m: 1.22, F: 55, gm: 0.415, method: "16x + 每股净现金$9", target: 36.2, return: -0.355}
+  - {id: bull, label: 牛, prob: 0.29, revenue_2028: 720, m: 1.35, F: 62, gm: 0.481, method: "21x + 每股净现金$9", target: 73.2, return: 0.305}
+  - {id: super_bull, label: 超级牛, prob: 0.12, revenue_2028: 900, m: 1.42, F: 68, gm: 0.512, method: "26x + 每股净现金$9", target: 119.4, return: 1.128}
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: "EV=-6.0%（band -28.4%~+22.7%）故当前仓位为零；即使回到 22-31 介入区也只配试探档——①信心度仅中（命门6需求口径本轮由JX一手推向'真'但份额分母仍二手；终值倍数仍是判断非测量）；②方差极端（52周 2.83-143.16、单日 -7.42%、2X单股ETF放大）；③份额分母的scope仍未解——日经/Straits称JX与住友各约40%与本案AXT 30-36%不可能同真，Yole/Omdia片数口径仍只有券商二手转引(JX产能计划本轮已升一手 mat-8f4278)"
+  initial_max_pct: 2
+  full_max_pct: 4
+  add_ladder_prices: [22, 26, 30]
+  max_cluster_pct: 8
+  holding_period: 3-5 年
+
+market_implied:
+  metric: implied_2031_inp_share
+  value: "40%-90%"
+  note: "本版把隐含预期从「净利CAGR」改锚到「份额」——因为CAGR随2026盈利基数选择在17.4%到54.1%之间浮动、不可决胜负，而份额有第三方单位锚。推导：Yole/Omdia 2026全球有效合规产能75万片 × AXT一手实现ASP约$496/片（= Q2 InP $30.7M年化 ÷ 75万片×33%）→ 2026全球市场约$3.72亿（与v2自建的$3.4-4.1亿独立吻合）；按Yole的InP衬底2026-31 CAGR>18% → 2031 TAM $8.5-12.8亿；现价隐含AXT 2031 InP营收$5.1亿(35x)至$7.7亿(25x) ⇒ 份额40%-90%。当前份额30-36%，同期JX目标产能7-10倍、住友2.4倍"
+
+my_vs_market_delta:
+  metric: implied_2031_inp_share
+  my_value: "30%-35%"
+  delta: "-10 至 -55pct"
+  direction: short
+  strength: 2/10
+  core_disagreement: "咬两条 driver（都可观测）：①2031份额——市场40-90%，我判30-35%（守住而已），踩在JX已承诺¥1200亿/7-10倍、住友2.4倍、云南锗业利用率跃升+含税¥5.7-8.55亿大单、以及AXT已失去北美市场($7.58M→$0.161M)；②2031终值PE——市场25-35x，我判13-21x(Base 16x)，踩在同赛道实价(住友fwd 9.7x、JX 32.3x)+单一玩家承诺资本≈2倍当前全球年市场规模+通美自己的锗衬底镜鉴(毛利率21.55%→0.46%用了约一年)。③毛利率不再是分歧：v2判delta -7.6pct，本版Bull档已追平市场的≥47%"
+
+killer_questions_status:
+  K1: {topic: 毛利率能否守在≥40%, status: 大幅上修, note: "v2给40%→本版给60%。2022常态年m=1.30 vs 当期1.40（只高8%）；季度m平滑单调；对照组云南锗业化合物半导体GM 47.14%反超AXT的44.9%（KILL-8触发）"}
+  K2: {topic: 产能兑现与价格背离, status: 已解, note: "路线图逐字确认且不需大额capex；$5亿闲置现金转为纯配置风险"}
+  K3: {topic: 中国内销利润率真相, status: 永久不可得, note: "公司从不披露；但本版枢轴已不依赖它（不再试图分离p与u）"}
+  K4: {topic: 许可是否再次咬人, status: 已解双向, note: "管理层称流程趋规律化"}
+  K5: {topic: 同行供给可观测投放, status: 已解且幅度上修, note: "JX ¥1200亿/7-10倍（三巨头级别，v2完全缺席）+ 云南锗业2026H1产量达2025全年92%+大单落地。v2的「67%利用率⇒做不出同等品」作废"}
+  K6: {topic: 通美上市与结构折价, status: 已解负面但缓和, note: "PE方愿继续持有$49M；18C招股书若披露真实份额可直接裁决盲点B7"}
+  K7: {topic: 治理与再融资, status: 已解显著负面, note: "调和两处：优先股累计股息$2.9M未付是回购的法律前置（可用$290万解除、十一年未解除）；$64.25高位发股对老股东是增值行为，可指控的是12月$12.25那笔与4月那笔至今无用途"}
+  K8: {topic: "「缺口>70%」是可购买需求还是设计意向（新枢轴）", status: 未解可观测(v4向真侧偏), note: "2026需求260-300万片 vs 有效合规产能75万片=仅满足25-29%。若为真:2030已宣布产能422-537万片仍低于需求504-582万片→牛;若含设计意向:5-7倍投放→2029-30过剩→熊。判别式=SMM月度报价(KILL-11)。v4新证:JX官方称需求'超以往预期'+龙头谈涨价(mat-8f4278)+Jefferies'供给而非需求驱动上行'(mat-54d899)→A3-2从45%上修55%"}
+  K9: {topic: "2031终值倍数：12-18x（周期）还是25-35x（结构成长）（新枢轴·EV第一杠杆）", status: 未解可观测(两侧均有一手), note: "倍数±25%让EV从+13.5%到-21.5%(v4新概率)，跨度35pct>m轴16pct。市场侧一手：Jefferies给JX Buy按结构成长股SOTP较高PER(mat-54d899)、JX现价32.3x；周期侧一手：JX累计约¥1500亿资本≈2倍当前全球年市场规模(mat-8f4278)。赌哪侧主导2031"}
+
+kill_criteria:
+  - id: gm_holds_two_quarters
+    description: 2027Q1 与 2027Q2 连续两季 GAAP 毛利率 >=44% 且季度营收 >=$95M -> 我错，翻多
+    status: pending
+    check_at: 2027-08
+  - id: gm_breaks_32
+    description: 2027 任一季度 GAAP 毛利率跌破 32%，或披露 InP ASP 较 2026Q4 峰值回落 >10%
+    status: pending
+    check_at: 2027-05
+  - id: capex_never_deployed_and_no_capacity
+    description: "累计 capex(自2026-04起) < $80M 且现金及投资仍 > $5亿 且 InP 季度营收未达 $60M -> 按 SOTP 可验证价值($15.5-26.3/股)重估"
+    status: pending
+    check_at: 2027-03
+  - id: third_equity_offering
+    description: 第三次公开增发 -> 资本周期顶部确认
+    status: pending
+    check_at: 2027-06
+  - id: large_cash_acquisition
+    description: 宣布 >$2 亿现金并购 -> 本 thesis 失效需重写（约$5亿闲置）
+    status: pending
+    check_at: 2027-06
+  - id: china_relaxes_inp_control
+    description: 中国宣布放松或取消磷化铟出口管制/铟出口配额 -> 配额租金消失
+    status: pending
+    check_at: 2027-06
+  - id: tongmei_hk_18c_filing
+    description: 通美港股 18C 递表被受理且招股书隐含估值 > $25 亿 -> 部分翻多（且可能披露真实份额，直接裁决盲点B7）
+    status: pending
+    check_at: 2027-12
+  - id: peer_gm_breaks_35
+    description: 云南锗业化合物半导体毛利率升破 35% -> 命门1 对照组失效
+    status: TRIGGERED
+    triggered_at: 2026-08-27
+    triggered_evidence: "云南锗业 2026 半年报：化合物半导体材料营收 1.42 亿元(+154.57%)、毛利率 47.14%(同比 +33.10pct)，高于 AXT 自身的 44.9%。公司归因含'产能利用率提高带动单位成本下降' [mat-1cd2ed]"
+    triggered_by: 05-critic-review v2 (2026-09-02 Step 6.5)
+    consumed_in: c_investment_case v3 —— A3-1 从 40% 上修到 60%，命门1 的「行业性租金」对照组论证已删除
+    check_at: 2027-04
+  - id: capacity_roadmap_abandoned
+    description: 管理层放弃/下调/推迟 exit-2027 约 $130M/季产能目标 -> 空方确认
+    status: pending
+    check_at: 2027-06
+  - id: gm_and_share_hold_after_supply_lands
+    description: "2028 年同行新增产能落地后 AXT 毛利率仍不破 40% 且 InP 营收份额未下滑 -> 需求口径为真+份额守住（A3-2与A3-3同时成立），翻多"
+    status: pending
+    check_at: 2029-02
+  - id: smm_4inch_inp_price_holds
+    description: "2028年底 SMM 4英寸InP衬底最低价不跌破 ¥5,000/片（当前¥6,500、年初约¥3,760）——在JX/住友/云南锗业新增产能落地之后 -> 「缺口>70%」确认为可购买需求，终值倍数可上修到20x+，EV转正(+7.7%)。命门8判别式，可逐月跟踪"
+    status: pending
+    check_at: 2028-12
+  - id: jx_confirms_capacity_plan
+    description: "JX Advanced Metals 官方公告(2026-06-16)确认：未来四年至多¥1200亿、累计约¥1500亿、产能提升约7-10倍(相对FY3/26)。R1从二手转引升为一手事实，资本周期确立。命门9判别式 -> 已触发"
+    status: TRIGGERED
+    triggered_at: 2026-06-16
+    triggered_evidence: "jx-nmm.com 官方公告 [mat-8f4278]；同一公告龙头明确'与客户推进价格上调'+需求'超以往预期'(需求/价格侧反而利多)；Jefferies给Buy [mat-54d899]"
+    triggered_by: 05-critic-review v3 (2026-09-03 Step 6.5)
+    consumed_in: c_investment_case v4 —— R1升一手、盲点B8 resolved、R4价格侵蚀被反证、A3-2上修45→55%、A3-4上修25→30%、EV -10.6→-6.0%
+    check_at: 2027-06
+  - id: primary_share_disclosure_below_25pct
+    description: "任何一手份额披露（通美18C招股书 / Yole原报告 / JX IR）显示 AXT 份额 < 25% -> TAM上修1.5-2x，环②隐含份额要求从40-90%降到20-45%，核心论据大幅削弱，翻多（盲点B7兑现）"
+    status: pending
+    check_at: 2027-12
+
+signposts:
+  - date: 2026-08-27
+    event: 云南锗业 2026 半年报（已发生并已消化进 v3）
+    bull_signal: 化合物半导体毛利率向 AXT 收敛，支持行业性 m 上移
+    bear_signal: 其 InP 产量与大单显示对手既做得出也卖得掉
+    triggered: both
+    actual: "毛利率 47.14%(+33.10pct，反超AXT 44.9%) → 多方；InP产量9.18万片达2025全年92% + 云南鑫耀含税¥5.7-8.55亿大单 → 空方。同一份报告双向 [mat-1cd2ed][mat-c33ca0]"
+  - date: null
+    event: "【每月·最便宜的观察量】SMM 4英寸InP衬底报价（当前¥6,500-7,500，年初约¥3,760）"
+    bull_signal: 守在 ¥6,000 以上 -> 短缺为真
+    bear_signal: 跌破 ¥5,000 -> 短缺溢价开始退（KILL-11 反向）
+    triggered: null
+  - date: 2026-11
+    event: AXT Q3/2026 财报
+    bull_signal: 营收超过 $66M（许可地板，管理层明说可能有 significant upside）且 GM 维持 44%+；InP 季度营收向 $60M 产能靠拢
+    bear_signal: 营收不足 $66M（许可 air pocket 重演）；或 GM 跌破 40%；或 InP 营收停滞
+    triggered: null
+  - date: 2027-03
+    event: Q4/2026 + 10-K FY2026
+    bull_signal: InP 季度产能确认达 $60M；披露 6 英寸量产时间表；$5 亿现金用途被说明且不是高价并购
+    bear_signal: KILL-3 三条同时成立；或宣布第三次增发
+    triggered: null
+  - date: 2027-05
+    event: Q1/2027 财报——第一个真正检验点
+    bull_signal: 毛利率仍 >=44%，"2027H1 供应充足"被证伪
+    bear_signal: 毛利率跌破 35%
+    triggered: null
+  - date: 2027-08
+    event: Q2/2027 财报——KILL-1 判定点
+    bull_signal: 连续两季 >=44% 且营收 >=$95M，我错，翻多
+    bear_signal: 未达标，Bear/Base 权重上调
+    triggered: null
+  - date: 2027-06
+    event: JX Advanced Metals 对 ¥1,200亿 / 7-10倍 的官方确认与口径
+    bull_signal: 大幅缩水或推迟 -> R1/R2 权重下调，终值倍数可上修
+    bear_signal: 确认或上修（KILL-12）-> 资本周期确立
+    triggered: null
+  - date: 2027-12
+    event: 通美港股 18C 递表
+    bull_signal: 被受理且隐含估值 >$25 亿（KILL-7）；或招股书披露真实份额 <25%（KILL-13）-> 直接推翻本案分母
+    bear_signal: 迟迟不递或被问询卡住 -> 结构折价固化
+    triggered: null
+  - date: 2029-02
+    event: 云南锗业新线(2027底,45万片折4寸) + 住友2.4x(2028) + Coherent 6"翻倍 + JX分批投放 之后的第一份AXT年报
+    bull_signal: 投放后 AXT 毛利率与份额都不掉（KILL-10）
+    bear_signal: 毛利率与份额同步回落 -> 竞争击穿路径确立
+    triggered: null
+  - date: null
+    event: 每季观察对手实际出货片数（而非名义产能）
+    bull_signal: 对手产能上去但出货不上去 -> 良率/认证约束成立
+    bear_signal: 对手出货同步上去 -> 竞争击穿路径启动（云南锗业 2026H1 已是这一侧）
+    triggered: null
+  - date: null
+    event: 治理观察点
+    bull_signal: 付清 $2.9M 优先股累计股息（回购的法律前置）并启动回购；或公布继任计划
+    bear_signal: CEO 继续减持；重开股东大会 say-on-pay 低支持率
+    triggered: null
+
+cluster_tags: [ai-optics, compound-semi, china-export-control, us-listed-china-ops]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 2
+    kind: source-secondhand
+    note: "Omdia/Yole 的片数口径供需表（2026 需求260-300万片 / 有效合规产能约75万片）是经东吴证券引述的二手转引，未见原报告。本版的TAM与隐含份额全部建在这个锚上"
+  - ring: 2
+    kind: scope-conflict
+    note: "日经/Straits 称 JX 与住友各约占40%份额，与本案用的 AXT 30-36% 不可能同时为真（三家合计>110%）。三种scope（营收份额/有效合规产能份额/含非合规产能份额）需分辨但公开资料不足 -> 盲点B7，也是命门8只给低置信的原因"
+  - ring: 5
+    kind: resolved-v4
+    note: "[v4已解] JX ¥1200亿/7-10倍此前仅日经二手转引 -> 本轮Step6.5取到JX官方公告一手(mat-8f4278)：口径=相对FY3/26基数、累计约¥1500亿、Hitachinaka新厂+Isohara。盲点B8消除；残留仅'最终片数/面积'待JX细化"
+  - ring: 2
+    kind: identification-failure
+    note: "(F, v0) 的真实拆分无一手数据：四个标定窗口给出 S=$500M 处渐近GM 38.9%-61.7%。若真实 v0 接近35%而非58.5%，S=$520M下GM在50%+而非41.5%，Base目标价从$36升到$50+ -> 盲点B6，本版最可能错的地方"
+  - ring: 4
+    kind: judgment-not-measurement
+    note: "终值倍数Base 16x 是判断不是测量，而它单独决定EV符号（±25% -> +7.7%/-25.2%）。同赛道JX现在就是32.3x。这是全案最大的可辩点"
+  - ring: 1
+    kind: data-missing-permanent
+    note: "AXT 分产品/分地区毛利率确认永久不可得（从不披露 + 长约量价条款依601(b)(10)(iv)删去 + 全场Q&A无人问出）。但本版枢轴已不依赖它——不再试图分离 p 与 u"
+  - ring: 5
+    kind: data-missing
+    note: "单片价值量阶梯(2→3→4→6寸)无一手数据；MOCVD瓶颈说仅单一来源(盲点B1)；国巨毛利率从69%回落的时滞未取到；住友扩产2.4x的口径与基年未核"
+  - ring: 1
+    kind: blocked
+    note: "通美科创板招股书 PDF(mat-1771bb) 因 MINERU_TOKEN 401 未转换（核心内容已由同日落实函 mat-6fa92c 全文覆盖）；重开股东大会 say-on-pay 投票计数未取到"
+  - ring: 4
+    kind: correlated-source-risk
+    note: "chain-critic(2026-09-02)指出：命门6(需求口径,东吴转引Omdia/Yole)、命门7/份额(同源)、R1/R2(JX ¥1200亿经日经→财联社/搜狐两路转引)三条空方论据共享同一条二手转引链。KILL-11/12/13看似分散验证,但若这条二手链本身有系统性偏差,份额/需求/终值倍数三条假设会同时坍塌。环③已认A3-2/3/4业务相关,但此处是数据源相关,环④未单独扣分。方向偏多(二手源常高估在建/名义产能)。已落为盲点B9"
+
+corrections_from_v2:
+  - "成本模型识别性：v2 的 v=58.5% 全文只出现1次、五档从未扰动、从未标为假设；p=1.40 是由恒等式反解的残差（0.585/(1-0.449-25.4/190.4)=1.4009）而非观测值 -> 本版改写为 GM=1−v0·(u/p)−F/S，令 m≡p/u，并声明只有 m 可观测"
+  - "样本窗口：v2 用年度2023-2025三点回归，恰好排除2022这个唯一高营收观测点(S=$141M)；补上后同一模型在S=$500M处渐近GM从38.9%跳到56.7% -> 本版补齐2022年度点并公开四窗口区间"
+  - "命门5撤换：'p里价格vs结构'在公开数据下不可识别（三个抽屉两两组合同解），不能当枢轴 -> 换成命门8(需求口径)与命门9(终值倍数)，两者都可观测"
+  - "KILL-8已触发：云南锗业化合物半导体毛利率47.14%>35%阈值且反超AXT的44.9% -> 命门1的'行业性租金对照组'论证删除，A3-1 从40%上修到60%"
+  - "v2的'云南锗业67%利用率⇒做不出同等品⇒AXT护城河上修'作废：其2026H1 InP产量9.18万片已达2025全年92%，并签含税¥5.7-8.55亿大单 -> 环①know-how由中强下修回中，镜鉴一的'保留'删除，A3-3 从55%降到30%"
+  - "供给应答清单补进JX金属¥1,200亿/7-10倍（三巨头级别，v2完全缺席）-> R1/R2 重排为终值倍数与份额稀释"
+  - "环②TAM第二条腿重建：v2用$30-40/片折2寸(=$120-160/4寸)，与SMM当期4寸现货¥6,500-7,500(约$909-1,049)差6-7倍 -> 改用Yole有效合规产能75万片 × AXT一手实现ASP约$496/片"
+  - "隐含预期改锚：从'净利CAGR'(随基数在17.4%-54.1%浮动、不可决胜负)改到'2031份额40-90%'(有第三方单位锚、可裁决)"
+  - "算术缺陷修正：v2 同一文件出现三个 E[目标价]($54.0/$52.9/$54.6)且用过时的$52.9算出期权delta -10.3% -> 本版统一按采用值，delta = -18%"
+  - "A3-1 门槛口径：v2 写'GM≥40% 即 p≥约1.15'，实际 S=500/F=55 下 p=1.15 只给 GM 38.1%，需 p≥1.194 -> 本版改为直接以 m≥约1.18 表述并标明依赖 (S,F)"
+  - "治理段调和两处：优先股累计股息$2.9M未付是回购的法律前置(可用$290万解除、十一年未解除)，非纯'不想买'；$64.25高位发股对老股东是增值行为，可指控的是12月$12.25那笔与4月那笔至今无用途"
+  - "模型A降级：Base 区间 $12-33 完全由2026盈利基数选择驱动($31M/$50M/$86M)、不由业务判断驱动 -> 只用于读隐含预期，不参与目标价"
+  - "模型G通美锚倍数 25x/20x -> 18x/15x，与环④终值口径统一；可验证价值区间 $18-32/中值$25 -> $15.5-26.3/中值$23.0"
+  - "梁三补齐2022年：S=$141.1M、GM 36.9%、经营利润+$14.3M、归母+$15.8M —— 弧线定性从'未经周期检验的新平台'改为'2022年就见过一次雏形的亚规模制造商'"
+
+corrections_from_v3:
+  - "Step6.5取到JX官方公告一手(mat-8f4278)：把v3的二手转引(mat-e47c18,日经→财联社/搜狐)升为一手——¥1200亿/累计约¥1500亿/7-10倍(相对FY3/26)。KILL-12触发、盲点B8 resolved、R1升一手"
+  - "R4(价格侵蚀)被龙头行为直接反证：JX一边扩产7-10倍一边'与客户推进价格上调'——占约40%份额的龙头加产能又谈涨价=商品化价格战的反面。R4权重下调"
+  - "命门6(需求可购买)向'真'侧偏：JX称需求'超以往预期'、Jefferies判'供给而非需求驱动盈利上行'(mat-54d899)。A3-2 45%→55%"
+  - "命门9(终值倍数)对手侧补一手:Jefferies给JX Buy(¥6200/+39%)按结构成长股SOTP较高PER。市场25-35x不再只是'共识'、有一手卖方支撑。A3-4 25%→30%"
+  - "概率再分配:6/22/34/28/10→5/20/34/29/12(左尾变薄右尾变厚)。每档目标价与机制(S/m/F/PE)完全未动。EV -10.6%→-6.0%、E目标价$50.2→$52.7、band[-31.9,16.6]→[-28.4,22.7]、强度3/10→2/10；期权delta -18%→-10%(E目标价上修)"
+  - "净判断:方向仍偏空但已接近中性;JX一手在需求/价格/终值三轴利多空方对立面,只有资本周期一轴(最慢兑现)利空。承重充分性=单线承重(终值倍数仍判断非测量)"

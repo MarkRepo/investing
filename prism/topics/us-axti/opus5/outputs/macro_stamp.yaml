@@ -1,0 +1,29 @@
+as_of_regime_version: 4
+regime_composite: 中美背离延续+美端再通胀式熊陡(10Y 4.69%/10Y实际利率2.43%创周期新高)+流动性偏松但缓冲抽干+人民币企稳偏强+脆弱度high已在利率与波动轴兑现(强度6/10)——对本标的是"久期重新不友好+风险偏好末端资产"的双重逆风
+depends_on_states:
+- conclusion: rates_us
+  state: 高位·官方/市场/长端同向再上·再通胀式熊陡·10Y实际利率2.43%创周期新高
+  role: load_bearing
+- conclusion: liquidity_us
+  state: 偏松但RRP抽干·SOFR-IORB向0咬合·MOVE解压=没有减震器的宽松
+  role: load_bearing
+- conclusion: fx_cny
+  state: 企稳偏强·逆周期因子越带·套利链失灵
+  role: confirming
+- conclusion: liquidity_cn
+  state: 宽货币×紧信用·信贷脉冲仍负-1.85
+  role: confirming
+discount_rate:
+  risk_free: 2.43
+  risk_free_source: macro 登记表「10Y 实际利率 TIPS」 as_of 2026-07-24（regime v4）
+  applied_wacc: 12.0
+  rate_sensitivity: 模型A Base 公允值：r=11.5% -> $24.3 / r=12.0% -> $23.8 / r=12.5% ->
+    $23.2（±50bp 仅动 ±2%）
+  source_input: 10Y 实际利率 TIPS 2.43% + 高久期/极高波动/中国运营/小市值流动性溢价
+  note: 贴现率不是本标的的主要杠杆——毛利率是（20%->35% 让公允值从 $13 到 $41.5，3.2 倍）。宏观真正的作用在风险偏好渠道，见 case
+    环⑤ R7
+slug: us-axti
+variant: opus5
+stamped_at: '2026-08-27T03:39:07.625752+00:00'
+stale: false
+stale_reason: null

@@ -1,0 +1,144 @@
+# roadmap.yaml — 研究路线图 (workflow 01)
+slug: us-moderna-mrna
+variant: opus4.8
+created: '2026-08-26T00:00:00Z'
+thesis_version: 0
+
+# L1/L2 已坍缩（S2）：背景理解层全权交给 00_primer
+primer_scope: >
+  primer 该覆盖：mRNA 平台机理与 LNP 递送、个体化新抗原疗法全工作流、预防性 vs 治疗性疫苗的商业模式差异、
+  肿瘤"热/冷"谱系与新抗原可及性、RFS/DMFS/OS 终点与 HR 读法、pre-profit 生物科技的 rNPV 估值方法、
+  Moderna 收入构成与 COVID 断崖形态、Merck 合作经济结构、COVID/RSV/流感三市场格局、
+  美国疫苗"获批→ACIP→CDC→支付方"变现链条及其 2025-26 断点。
+
+learning_track:
+  l3_debates:
+    - question: P3 达标究竟是"平台跨瘤种验证"的结构性重估，还是单一适应症事件被外推过度？多空分歧的落点在"新抗原数量是否为疗效限速步骤"。
+      source_hint: merck 官方稿 + fiercebiotech 卖方评论 + 免疫学综述（新抗原负荷 vs 疗效相关性）
+    - question: 共识目标 $42.13（17 家 Reduce）是 P3 前的滞后存量，还是已包含对 2040 远期现金流的合理折现？两类目标价必须分开取，否则拿错锚。
+      source_hint: marketbeat/marketscreener 共识 + William Blair/Guggenheim post-P3 notes
+    - question: 个体化生产（每患者一批、约 4 周周转）在商业规模下是护城河（难复制）还是成本陷阱（毛利被制造吞掉）？
+      source_hint: Dendreon/Provenge 复盘 + BioProcess Insider 产能报道 + 10-K COGS 结构
+    - question: 股价暴涨后的增发窗口，是解除了现金跑道风险，还是只把稀释成本前置？（这是本 thesis 最大反方）
+      source_hint: 10-Q financing activities + shelf registration + 历史增发记录
+    - question: HHS/ACIP 的 mRNA 敌意对"肿瘤业务"是否根本不适用？（INT 作为肿瘤治疗药走 CMS/Part B 与商保，不经 ACIP 疫苗推荐机制）——若成立，我的政策折价论据只适用于呼吸道分部。
+      source_hint: CMS 报销路径资料 + hhs.gov 公告边界（"Other uses of mRNA technology not impacted"）
+
+  l4_hunting:
+    - question: INTerpath-001 的 P3 完整数据（RFS/DMFS 的 HR、CI、亚组、安全性）何时何处披露？当前价隐含的 HR 是多少？
+      addresses: [K1]
+      search_keywords: [INTerpath-001 HR, ESMO 2026 intismeran, melanoma RFS hazard ratio]
+      source_hint: ESMO 2026 (10月) abstracts、NEJM/Lancet、Merck 投资者电话会
+    - question: INTerpath-002（NSCLC 辅助）主要终点读出时点，以及市场当前隐含的成功概率是多少？
+      addresses: [K2]
+      search_keywords: [INTerpath-002 NSCLC, mRNA-4157 lung readout, adjuvant NSCLC timeline]
+      source_hint: clinicaltrials.gov、Moderna Oncology deck、卖方 onco 模型
+    - question: 首个"冷/中间"肿瘤（RCC / NMIBC / HNSCC）读出的节奏与生物学先验如何？低 TMB 瘤种为何仍可能有效？
+      addresses: [K3]
+      search_keywords: [INTerpath-004 RCC, INTerpath-011 NMIBC, neoantigen cold tumor]
+      source_hint: urotoday/ESMO TiP 摘要、clinicaltrials.gov、免疫学综述
+    - question: 暴涨后是否已出现增发/shelf/大股东减持/并购接触信号？稀释幅度与时点如何？
+      addresses: [K4]
+      search_keywords: [Moderna equity offering 2026, Merck acquire Moderna, MRNA shelf registration]
+      source_hint: SEC 8-K/S-3、Form 144、10-Q financing activities
+    - question: 2027 年末现金路径与 2028 breakeven 的具体构成（营收增速/COGS/R&D/SG&A 各降到多少）是否自洽？
+      addresses: [K5]
+      search_keywords: [Moderna 2027 cash guidance, breakeven 2028 cost structure]
+      source_hint: 10-Q MD&A、Analyst Day deck、seekingalpha 指引摘要
+    - question: Merck 合作的会计口径究竟是"Moderna 记 50% 销售"还是"仅在合作损益行记 50% 净利"？卖方 $54 亿口径对得上哪一种？
+      addresses: [K6]
+      search_keywords: [Moderna Merck collaboration revenue recognition, profit share accounting]
+      source_hint: 10-K item_1_business + item_8_financial 附注（已入库 mat-df9859/mat-de0507）
+
+material_priority:
+  tier1:
+    - title: Moderna 10-K FY2025 + 10-Q Q2 2026（含 Item 切片）
+      type: annual-report
+      ticker: MRNA
+      source: SEC EDGAR
+      addresses: [K5, K6]
+      rings: [financial-arc, biz-moat-unit-econ]
+      why: 财务弧线/现金/成本指引/股本/合作条款/诉讼附注的唯一一手源
+      status: fetched
+    - title: INTerpath-001 P3 完整数据（RFS/DMFS HR、亚组、安全性）
+      type: data
+      addresses: [K1]
+      rings: [bull-bear]
+      why: 命门 1 的直接证据；决定 $50-60 与 $220-260 两条路径
+      status: empty
+    - title: P3 后卖方目标价与 2040 峰值模型明细（William Blair / Guggenheim / Wolfe）
+      type: sell-side-note
+      addresses: [K2]
+      rings: [consensus, valuation-anchor, bull-bear]
+      why: 反推 $569 亿 EV 隐含的跨瘤种概率权重——环②的锚
+      status: fetched
+    - title: INT 全 program 9 项 P2/P3 试验清单与读出时点表
+      type: data
+      addresses: [K2, K3]
+      rings: [bull-bear]
+      why: 决定 EV 各情景的时间权重与折现
+      status: fetched
+    - title: INT 定价与患者数分解（个体化疗法定价参照：CAR-T / Provenge / 辅助治疗人群）
+      type: industry-research
+      addresses: [K2]
+      rings: [bull-bear, biz-moat-unit-econ]
+      why: 把"峰值销售 $X 亿"拆成价格×可及患者数×渗透率，否则 EV 是别人给的黑箱
+      status: pending
+  tier2:
+    - title: 管理层资本配置史 + 激励治理（proxy / 回购增发史 / Bancel 持股）
+      type: policy
+      addresses: [K4]
+      rings: [mgmt-capital-alloc]
+      why: A 合同 hard 项；判断暴涨后是否会理性融资、历史高位是否浪费过现金
+      status: fetched
+    - title: 历史失败镜鉴 — Dendreon/Provenge 治疗性癌症疫苗商业化崩塌
+      type: industry-research
+      addresses: [K1]
+      rings: [historical-mirror]
+      why: A 合同 hard 项；与 INT 的个体化制造结构相似度最高的实证镜鉴
+      status: fetched
+    - title: RSV/流感竞争格局与 mRESVIA 销售 + 可比疫苗上市爬坡曲线
+      type: industry-research
+      addresses: [K3]
+      rings: [biz-moat-unit-econ]
+      why: 决定呼吸道稳态地板取 $15 亿还是 $50 亿（命门 3）
+      status: fetched
+    - title: $9.5 亿诉讼和解性质 + 2026 融资/回购/信贷动作
+      type: data
+      addresses: [K4, K5]
+      rings: [financial-arc, mgmt-capital-alloc]
+      why: 现金跑道的实际流出与稀释路径
+      status: fetched
+    - title: BioNTech BNT122 等个体化肿瘤疫苗竞争进展 + 生物科技 peer 估值水位
+      type: industry-research
+      addresses: [K2]
+      rings: [valuation-percentile, bull-bear]
+      why: A 合同 valuation-percentile；判断 27x P/S 是行业性重估还是 MRNA 独有透支
+      status: pending
+  tier3:
+    - title: INT 个体化生产经济（COGS/产能上限/4 周周转/规模化路径）
+      type: industry-research
+      addresses: [K6]
+      rings: [biz-moat-unit-econ]
+      why: 命门 2 的单位经济侧；公开数据稀缺，弱覆盖可接受
+      status: fetched
+
+key_risks_to_monitor:
+  - ESMO 2026（约 10 月）P3 完整数据披露 —— 最大单点事件
+  - INTerpath-002（NSCLC）与首个冷肿瘤（RCC/NMIBC）读出
+  - 暴涨后增发 / shelf 登记 / 内部人减持
+  - HHS/ACIP 对 mRNA 的进一步限制（呼吸道分部）
+  - Merck 对 Moderna 或 INT 权益的收购/买断
+  - 诺如 mRNA-1403 与丙酸血症 pivotal 读出（2026 内）
+  - 8/19 单日 +177% 后的高波动本身（期权伽马、被动资金再平衡）
+
+analogies_to_study:
+  - name: Dendreon / Provenge（美国·治疗性前列腺癌疫苗·2010-2014）
+    logic: 拿到 OS 阳性并获 FDA 批准的"癌症疫苗"，仍因个体化制造成本、产能投入过重与给药复杂度走向破产
+    limits: Provenge 未与 PD-1 联用、疗效幅度远弱于 INT P2b；INT 有 Merck 分摊成本与 Keytruda 渠道
+  - name: CAR-T 首批获批后的平台重估（Kite/Juno·2016-2018）
+    logic: 平台型疗法首胜后估值飙升并引发大药企并购（Gilead 收 Kite、Celgene 收 Juno）——与"Merck 可能买断"路径同形
+    limits: CAR-T 疗效是完全缓解级别（血液瘤），远强于辅助治疗的 RFS 改善
+  - name: Moderna 自身 2021 泡沫（$497 → $22）
+    logic: 把单一产品的成功外推为整个平台的可复制性，估值先行于兑现
+    limits: 2021 时 COVID 收入是真实的 $180 亿级现金流；今天 INT 收入为零

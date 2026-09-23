@@ -3,7 +3,7 @@ display_name: Momenta 魔门塔 (HKEX 06880)
 type: company
 created: '2026-06-30T07:13:36.250154+00:00'
 status: active
-stage: 05-critic-review
+stage: 04-post-synthesis
 canonical: true
 parent_topic: null
 monitoring_tier: dormant
@@ -25,11 +25,12 @@ scope:
   - 06880 HKEX
 outputs_state:
   00_primer:
-    version: 1
-    last_updated: '2026-06-30T09:46:19.028056+00:00'
+    version: 2
+    last_updated: '2026-09-02T11:05:19.319149+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
+    - mat-072c62
     - mat-103095
     - mat-11a1c2
     - mat-12eadb
@@ -49,83 +50,75 @@ outputs_state:
     - mat-6ac255
     - mat-986f3c
     - mat-9a58a9
+    - mat-a45beb
     - mat-aa82d8
     - mat-de78d1
     - mat-f997d9
     last_error: null
     critic_passed: true
   c_investment_case:
-    version: 1
-    last_updated: '2026-06-30T10:26:43.973806+00:00'
+    version: 3
+    last_updated: '2026-09-03T02:16:15.537471+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
-    - mat-103095
-    - mat-11a1c2
+    - mat-072c62
+    - mat-0f22a5
     - mat-12eadb
     - mat-1f931d
     - mat-21332f
     - mat-264896
-    - mat-2ab958
-    - mat-2acc22
-    - mat-320b95
-    - mat-36233b
-    - mat-432c7b
-    - mat-478b0c
     - mat-48a1d3
+    - mat-585ab9
     - mat-62846c
     - mat-657deb
     - mat-690006
-    - mat-6ac255
+    - mat-6a19bb
+    - mat-7563bb
     - mat-986f3c
-    - mat-9a58a9
+    - mat-a45beb
     - mat-aa82d8
-    - mat-de78d1
-    - mat-f997d9
+    - mat-c425f8
+    - mat-ff3063
     last_error: null
   07_decision_kit:
-    version: 1
-    last_updated: '2026-06-30T10:26:43.988445+00:00'
+    version: 3
+    last_updated: '2026-09-03T02:16:15.566229+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids:
-    - mat-103095
-    - mat-11a1c2
+    - mat-072c62
+    - mat-0f22a5
     - mat-12eadb
     - mat-1f931d
     - mat-21332f
     - mat-264896
-    - mat-2ab958
-    - mat-2acc22
-    - mat-320b95
-    - mat-36233b
-    - mat-432c7b
-    - mat-478b0c
     - mat-48a1d3
+    - mat-585ab9
     - mat-62846c
     - mat-657deb
     - mat-690006
-    - mat-6ac255
+    - mat-6a19bb
+    - mat-7563bb
     - mat-986f3c
-    - mat-9a58a9
+    - mat-a45beb
     - mat-aa82d8
-    - mat-de78d1
-    - mat-f997d9
+    - mat-c425f8
+    - mat-ff3063
     last_error: null
   08_living_feed:
-    version: 1
-    last_updated: '2026-07-16T01:20:48.023809+00:00'
+    version: 6
+    last_updated: '2026-09-03T02:17:17.697146+00:00'
     status: fresh
     data_freshness: null
     referenced_mat_ids: null
     last_error: null
 parent_materials: []
 next_actions:
-- 估值锚=实时peer(2026-06-30,汇率归一):地平线13.7x/Mobileye3.5x/WeRide17.6x,Momenta25.0x;EV-6%,现价不参与,等回调进accumulate
-  150-200或财报验证
-- 说「评审 cn-momenta」进05对抗式重审
-- 终局证据薄已挂2条critic_weak_k深挖(毛利率口径拆分P0/L4单位经济P1); consensus待2026-07-08上市后06监控补; peer倍数随行情漂移,监控期需定期用
-  .venv market_data 刷新
+- 'v3 定向重写完成(case/decision_kit v3 + thesis_v3): 锚价盘中212.6→收盘200, EV -1%→+5.3%(保守口径),
+  现价200可小额试探≤2%。命门/方向不变、decomposition保持v2'
+- 说「评审 cn-momenta」进05第3轮复评(独立反方对v3), 或接受v3、说「监控 cn-momenta」进06
+- '头号监控信号: 2027中报许可占比是否回45%+/隐含ASP是否止跌(K-mix/K-ASP); 每季用.venv market_data刷收盘价重算EV(v2锚失真教训)+peer倍数'
 user_todos:
 - task: 精读招股书财务章节：毛利率按客户/产品拆分、前五大客户收入与占比、单车ASP、许可收入占比、累计亏损构成（经营vs优先股公允价值/SBC）
   priority: P0
@@ -283,13 +276,47 @@ suggested_drilldowns:
   priority: P1
   status: open
   suggested_at: '2026-06-30T09:58:09.604601+00:00'
+- question: 「退出 P/S 倍数该取哪一档」——Momenta 该被归类为软件公司(10-12x)、折中(8-10x)还是工程服务/硬件公司(5-7x)？需要按客户/产品的毛利率拆分
+    + NRE 与许可的成本归属实证
+  rationale: 05-critic 框架级发现：退出倍数一档之差把保本3年CAGR从14%摆到53%，即终局裁决的符号完全由这一格决定，而 case 把它当常量、0
+    条拆分证据支撑软件档取值。地平线授权占比54.9% > Momenta 37.9%，可比公司在该指标上反而领先。
+  source: critic_weak_k
+  related:
+  - K1
+  - K5
+  priority: P0
+  status: open
+  suggested_at: '2026-09-02T04:48:56.655952+00:00'
+- question: 隐含单车许可 ASP 的下滑斜率与地板：按客户(比亚迪系/上汽/海外)拆分 license ASP，阶梯定价的量价条款是什么？零跑百元级报价是否已成新锚
+  rationale: 05-critic 致命一击：许可+67.5% < 新增装机+83.7% ⇒ 隐含 ASP 1891元 vs 2025H1 2074元(-8.8%)、对2025FY约2400元则-22%；管理层已官方承认"平均售价可能出现一定调整"。这是命门1的直接驱动，目前只有汇总数可倒算、无按客户拆分。
+  source: critic_weak_k
+  related:
+  - K1
+  - K2
+  priority: P0
+  status: open
+  suggested_at: '2026-09-02T04:48:56.655952+00:00'
+- question: 经营现金流缺口的构成：应收账款/合同资产账龄与主机厂账期，NRE 收入确认与回款的时滞有多长
+  rationale: 05-critic 新增疑点：经调整亏损仅0.14亿而经营现金流出3.81亿(缺口27×)，且被剔的~2.12亿SBC+上市开支多为非现金、本应让现金流优于经调整亏损，实际反差3.67亿
+    ⇒ 营运资本占用~5亿量级。收入质量证据缺失。
+  source: critic_weak_k
+  related:
+  - K1
+  priority: P1
+  status: open
+  suggested_at: '2026-09-02T04:48:56.655952+00:00'
 monitoring:
   enabled: false
   cadence: daily
-critic: null
+critic:
+  verdict: request-rewrite
+  summary: 第2轮(对v2,独立反方=押多)：分析质量高但操作结论踩两颗核验成立的雷——①价格锚stale(环②用212.6盘中价,真实9-02收盘200/52w低194),按case自身模型EV由-1%翻正到+5.3%(194则+8.6%),符号翻转;②环④把32%下行权重(空22%+强空10%,幅度-32%/-51%)全押一个自称0证据的退出倍数变量、不对称,而缺证据被单向读成看空(未与毛利率17.5→73.2斜率对冲)。反方overreach已点名(芯片不重要/远期EV-S双刃/V反猜测)。评分4/3/3/4/3.5。重锚环②④⑥+刷新07_decision_kit,thesis方向(中性偏多)不变,不回收料。
+  at: '2026-09-02T17:59:54.235150+00:00'
+  thesis_version: 2
+  next_stage: 04-synthesizing
 decomposition:
-  current_version: 1
-  last_updated: '2026-06-30T09:54:21.147599+00:00'
+  current_version: 2
+  last_updated: '2026-09-02T11:05:19.446651+00:00'
   history:
   - version: 0
     stage_set_at: 00-research-pending
@@ -304,9 +331,15 @@ decomposition:
     convergence_status: converged
     changelog: 无砍/无加命门:厚料确认v0三命门全成立,各自加证据锐化(命门1+许可占比机制/单价压缩;命门2+比亚迪分层/三重身份;命门3+私募阶梯44%溢价/三模型估值).无砍/无加primer目标(12条确认,#9
       robotaxi单位经济depth降级).对照全历史无震荡.
+  - version: 2
+    stage_set_at: 04-synthesizing
+    set_at: '2026-09-02T11:05:19.446691+00:00'
+    summary: 命门5(升头号)=退出倍数软件vs工程服务分类(uncertain,0证据但决定成败);命门1=ASP/高毛利可持续(中,证伪闸门从失效的毛利率<60%换成K-ASP/K-mix/K-cash);命门2=客户自研均衡(uncertain,比亚迪低价带已自研);命门3=份额口径校正(独立上险量口径方案商第二但H1内份额在升)。
+    convergence_status: converged
+    changelog: 无砍命门;命门5从「K5破发」升级换轴为「退出倍数=软件or工程服务分类」提到最前(凭mat-585ab9许可占比退步+mat-c425f8地平线软件化反领先);命门1换证伪闸门(毛利率<60%失效→K-ASP/K-mix/K-cash,凭05-critic复算);命门3口径校正(凭mat-a45beb独立上险量)。对照全历史无震荡。
 thesis:
-  current_version: 1
-  last_updated: '2026-06-30T09:54:21.116094+00:00'
+  current_version: 3
+  last_updated: '2026-09-03T02:16:15.580008+00:00'
   history:
   - version: 0
     stage_set_at: 01-roadmap-pending
@@ -318,6 +351,15 @@ thesis:
     set_at: '2026-06-30T09:54:21.116266+00:00'
     summary: 中性偏多质地(6/10)但招股价偏满:对标实时peer(6/30)地平线13.7x,Momenta 25.0x溢价~83%;EV约-6%。现价(295.6,above_hold)不参与IPO,等回调进accumulate
       150-200或上市后财报验证(毛利守65%+客户无切换)再启动试探。Base中枢170-230。
+  - version: 2
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-02T11:05:19.395413+00:00'
+    summary: 质地经H1财报验证(营收+75.9%/毛利率73.2%/逼近平衡)的中性偏多,强度5.5/10;破发-28%至212.6使估值从偏满降为接近公允(Base
+      175-215)。但终局符号悬于退出倍数=软件档(EV/S7-9x)vs工程服务档(3-5x)、而软硬毛利拆分0证据;许可占比40.1%→37.9%倒退+隐含ASP-8.8%往服务端戳。12月EV≈-1%(近零),现价(hold)不建仓,等回落进accumulate(145-190)或结构改善(许可占比回45%+/ASP止跌)。
+  - version: 3
+    stage_set_at: 04-post-synthesis
+    set_at: '2026-09-03T02:16:15.580016+00:00'
+    summary: 质地已验证中性偏多、强度6/10;05-critic第2轮把锚价从盘中212.6校正到收盘200→EV -1%翻正+5.3%(保守口径,去下行权重不对称~+8%)、并修"缺证据单向读空"。现价200(hold下沿贴accumulate上沿195)可立小额试探≤2%,正式加仓待accumulate≤195或结构改善;软硬拆分仍0证据故不重仓。命门/方向不变。
 stage_history:
 - stage: 01-roadmap-pending
   entered_at: '2026-06-30T08:16:57.652769+00:00'
@@ -348,11 +390,27 @@ stage_history:
     empty_pending_decision: 1
 - stage: 05-critic-review
   entered_at: '2026-06-30T09:59:23.431293+00:00'
-  exited_at: null
+  exited_at: '2026-09-02T11:05:56.012648+00:00'
   gap_snapshot:
     uncovered_ks: []
     uncovered_ring_inputs:
     - consensus
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-09-02T11:05:56.012648+00:00'
+  exited_at: '2026-09-03T02:16:15.609084+00:00'
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
+    autofetch_debt: 0
+    empty_pending_decision: 0
+- stage: 04-post-synthesis
+  entered_at: '2026-09-03T02:16:15.609084+00:00'
+  exited_at: null
+  gap_snapshot:
+    uncovered_ks: []
+    uncovered_ring_inputs: []
     autofetch_debt: 0
     empty_pending_decision: 0
 pending_thesis_review:

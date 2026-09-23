@@ -1,0 +1,353 @@
+slug: us-moderna-mrna
+variant: opus4.8
+updated: '2026-08-25T14:27:20.233153+00:00'
+materials:
+- id: mat-447084
+  filename: 2026-08-25_moderna-reports-q4-and-fy2025-financial-results.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.856357+00:00'
+  processed: true
+  notes: query='Moderna 2025 full year revenue results vs guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna 2025 full year revenue results vs guidance
+    url: https://www.nasdaq.com/press-release/moderna-reports-fourth-quarter-and-fiscal-year-2025-financial-results-and-provides
+    domain: nasdaq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.855386+00:00'
+    stale_at: '2026-09-24T14:10:15.855386+00:00'
+    expire_at: '2026-11-23T14:10:15.855386+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a1c4ae
+  filename: 2026-08-25_moderna-beats-q4-expectations-stock-edges-lower-on.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.862444+00:00'
+  processed: false
+  notes: query='Moderna 2025 full year revenue results vs guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna 2025 full year revenue results vs guidance
+    url: https://finance.yahoo.com/news/moderna-beats-q4-expectations-stock-124241401.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.861363+00:00'
+    stale_at: '2026-09-24T14:10:15.861363+00:00'
+    expire_at: '2026-11-23T14:10:15.861363+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-15588b
+  filename: 2026-08-25_moderna-inc-mrna-10-k-annual-report-fy2025-sec-fil.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.868847+00:00'
+  processed: false
+  notes: query='Moderna 2025 full year revenue results vs guidance' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna 2025 full year revenue results vs guidance
+    url: https://last10k.com/sec-filings/mrna/0001682852-26-000033.htm
+    domain: last10k.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.867508+00:00'
+    stale_at: '2026-09-24T14:10:15.867508+00:00'
+    expire_at: '2026-11-23T14:10:15.867508+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-a92932
+  filename: 2026-08-25_moderna-stock-nearly-doubles-as-merck-partnered-mr.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.877161+00:00'
+  processed: false
+  notes: query='Moderna intismeran INT V940 Phase 3 melanoma NSCLC readout' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna intismeran INT V940 Phase 3 melanoma NSCLC readout
+    url: https://www.biospace.com/drug-development/moderna-stock-nearly-doubles-as-merck-partnered-mrna-cancer-vaccine-meets-phase-3-goal
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.875265+00:00'
+    stale_at: '2026-09-24T14:10:15.875265+00:00'
+    expire_at: '2026-11-23T14:10:15.875265+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-e747a3
+  filename: 2026-08-25_fda-expands-moderna-s-mrna-1345-rsv-vaccine-to-you.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.886118+00:00'
+  processed: false
+  notes: query='Moderna mRESVIA RSV 2025 sales ACIP recommendation' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna mRESVIA RSV 2025 sales ACIP recommendation
+    url: https://www.contagionlive.com/view/fda-expands-moderna-s-mrna-1345-rsv-vaccine-to-younger-adults
+    domain: contagionlive.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.883999+00:00'
+    stale_at: '2026-09-24T14:10:15.883999+00:00'
+    expire_at: '2026-11-23T14:10:15.883999+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-cc1aef
+  filename: 2026-08-25_kennedy-follows-rsv-recommendations-of-acip-member.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.895412+00:00'
+  processed: false
+  notes: query='Moderna mRESVIA RSV 2025 sales ACIP recommendation' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna mRESVIA RSV 2025 sales ACIP recommendation
+    url: https://www.biospace.com/policy/kennedy-follows-rsv-recommendations-of-acip-members-he-fired
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.892982+00:00'
+    stale_at: '2026-09-24T14:10:15.892982+00:00'
+    expire_at: '2026-11-23T14:10:15.892982+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-67092c
+  filename: 2026-08-25_acip-evidence-to-recommendations-moderna-rsv-vacci.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.905721+00:00'
+  processed: false
+  notes: query='Moderna mRESVIA RSV 2025 sales ACIP recommendation' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna mRESVIA RSV 2025 sales ACIP recommendation
+    url: https://www.cdc.gov/acip/evidence-to-recommendations/mrna-rsv-vaccine-older-adults-etr.html
+    domain: cdc.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.902862+00:00'
+    stale_at: '2026-09-24T14:10:15.902862+00:00'
+    expire_at: '2026-11-23T14:10:15.902862+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-647d42
+  filename: 2026-08-25_moderna-stock-more-than-doubles-on-phase-3-win-tim.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.917957+00:00'
+  processed: true
+  notes: query='Moderna MRNA stock price valuation analyst target Aug 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna MRNA stock price valuation analyst target Aug 2026
+    url: https://www.investing.com/news/stock-market-news/moderna-stock-more-than-doubles-on-phase-3-win-time-to-take-profits-93CH-4867722
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.914392+00:00'
+    stale_at: '2026-09-24T14:10:15.914392+00:00'
+    expire_at: '2026-11-23T14:10:15.914392+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-add981
+  filename: 2026-08-25_moderna-s-445-run-faces-its-first-real-test-can-on.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.931573+00:00'
+  processed: true
+  notes: query='Moderna MRNA stock price valuation analyst target Aug 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna MRNA stock price valuation analyst target Aug 2026
+    url: https://www.aktiencheck.de/news/Marktberichte-Moderna_s_445_Run_Faces_Its_First_Real_Test-20043099
+    domain: aktiencheck.de
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.927056+00:00'
+    stale_at: '2026-09-24T14:10:15.927056+00:00'
+    expire_at: '2026-11-23T14:10:15.927056+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-8eeb5d
+  filename: 2026-08-25_moderna-reports-second-quarter-2026-financial-resu.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.946704+00:00'
+  processed: true
+  notes: query='Moderna 2026 pipeline catalysts norovirus CMV cash runway breakeven'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna 2026 pipeline catalysts norovirus CMV cash runway breakeven
+    url: https://www.nasdaq.com/press-release/moderna-reports-second-quarter-2026-financial-results-and-provides-business-updates
+    domain: nasdaq.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.942244+00:00'
+    stale_at: '2026-09-24T14:10:15.942244+00:00'
+    expire_at: '2026-11-23T14:10:15.942244+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-718ddc
+  filename: 2026-08-25_moderna-2025-analyst-day-sec-exhibit-99-1.md
+  source_type: web-search
+  added: '2026-08-25T14:10:15.964790+00:00'
+  processed: false
+  notes: query='Moderna 2026 pipeline catalysts norovirus CMV cash runway breakeven'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: Moderna 2026 pipeline catalysts norovirus CMV cash runway breakeven
+    url: https://www.sec.gov/Archives/edgar/data/1682852/000162828025053318/exhibit9912025analystday.htm
+    domain: sec.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:10:15.960037+00:00'
+    stale_at: '2026-09-24T14:10:15.960037+00:00'
+    expire_at: '2026-11-23T14:10:15.960037+00:00'
+    triggered_by: 00-prescan-baseline
+- id: mat-421e23
+  filename: 2026-08-25_wolfe-research-upgrades-moderna-on-trial-results.md
+  source_type: web-search
+  added: '2026-08-25T14:20:15.051571+00:00'
+  processed: true
+  notes: query='INT intismeran ESMO 2026 hazard ratio cold tumor peak sales' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: INT intismeran ESMO 2026 hazard ratio cold tumor peak sales
+    url: https://www.investing.com/news/analyst-ratings/wolfe-research-upgrades-moderna-stock-rating-on-trial-results-93CH-4874870
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:20:15.046929+00:00'
+    stale_at: '2026-09-24T14:20:15.046929+00:00'
+    expire_at: '2026-11-23T14:20:15.046929+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-b477af
+  filename: 2026-08-25_moderna-s-mflusiva-snags-fda-nod-after-refusal-to-.md
+  source_type: web-search
+  added: '2026-08-25T14:20:15.070740+00:00'
+  processed: true
+  notes: query='Moderna mRNA-1010 mFLUSIVA flu FDA approval Aug 2026 PDUFA' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Moderna mRNA-1010 mFLUSIVA flu FDA approval Aug 2026 PDUFA
+    url: https://www.fiercepharma.com/pharma/modernas-mrna-flu-shot-mflusiva-snags-fda-nod-after-refusal-file-imbroglio
+    domain: fiercepharma.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:20:15.065831+00:00'
+    stale_at: '2026-09-24T14:20:15.065831+00:00'
+    expire_at: '2026-11-23T14:20:15.065831+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-e74244
+  filename: 2026-08-25_mflusiva-receives-fda-approval-for-influenza-in-ad.md
+  source_type: web-search
+  added: '2026-08-25T14:20:15.089131+00:00'
+  processed: true
+  notes: query='Moderna mRNA-1010 mFLUSIVA flu FDA approval Aug 2026 PDUFA' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  confidence: 0.7
+  search_meta:
+    query: Moderna mRNA-1010 mFLUSIVA flu FDA approval Aug 2026 PDUFA
+    url: https://www.hcplive.com/view/mflusiva-fda-approval-influenza-adults-50-older
+    domain: hcplive.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:20:15.083898+00:00'
+    stale_at: '2026-09-24T14:20:15.083898+00:00'
+    expire_at: '2026-11-23T14:20:15.083898+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-1026d3
+  filename: 2026-08-25_moderna-merck-int-collaboration-structure-10-k-col.md
+  source_type: web-search
+  added: '2026-08-25T14:20:15.110046+00:00'
+  processed: true
+  notes: query='Moderna Merck intismeran collaboration 50/50 profit share economics'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Moderna Merck intismeran collaboration 50/50 profit share economics
+    url: https://capedge.com/filing/1682852/0001682852-24-000015/MRNA-10K-2023FY/file/118/data
+    domain: capedge.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:20:15.104404+00:00'
+    stale_at: '2026-09-24T14:20:15.104404+00:00'
+    expire_at: '2026-11-23T14:20:15.104404+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-62c0ec
+  filename: 2026-08-25_should-merck-buy-out-moderna-on-keytruda-cancer-va.md
+  source_type: web-search
+  added: '2026-08-25T14:20:15.132563+00:00'
+  processed: true
+  notes: query='Moderna Merck intismeran collaboration 50/50 profit share economics'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  confidence: 0.7
+  search_meta:
+    query: Moderna Merck intismeran collaboration 50/50 profit share economics
+    url: https://www.biospace.com/deals/should-merck-buy-out-moderna-on-keytruda-cancer-vaccine-partnership
+    domain: biospace.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:20:15.126330+00:00'
+    stale_at: '2026-09-24T14:20:15.126330+00:00'
+    expire_at: '2026-11-23T14:20:15.126330+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-21ec04
+  filename: 2026-08-25_moderna-struggles-to-convince-the-market-capital-a.md
+  source_type: web-search
+  added: '2026-08-25T14:20:15.156664+00:00'
+  processed: true
+  notes: query='Moderna capital allocation buyback dilution Bancel track record' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Moderna capital allocation buyback dilution Bancel track record
+    url: https://sa.marketscreener.com/quote/stock/MODERNA-INC-47437573/news/Moderna-struggles-to-convince-the-market-50306580/
+    domain: sa.marketscreener.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:20:15.149957+00:00'
+    stale_at: '2026-09-24T14:20:15.149957+00:00'
+    expire_at: '2026-11-23T14:20:15.149957+00:00'
+    triggered_by: 00-deep-fetch
+- id: mat-0ce360
+  filename: 2026-08-25_moderna-10-q-share-repurchase-programs-q3-2025-res.md
+  source_type: web-search
+  added: '2026-08-25T14:20:15.180588+00:00'
+  processed: true
+  notes: query='Moderna capital allocation buyback dilution Bancel track record' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  confidence: 0.7
+  search_meta:
+    query: Moderna capital allocation buyback dilution Bancel track record
+    url: https://companiesmarketcap.com/moderna/sec-reports-10q/0001682852-25-000075/
+    domain: companiesmarketcap.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-25T14:20:15.173788+00:00'
+    stale_at: '2026-09-24T14:20:15.173788+00:00'
+    expire_at: '2026-11-23T14:20:15.173788+00:00'
+    triggered_by: 00-deep-fetch

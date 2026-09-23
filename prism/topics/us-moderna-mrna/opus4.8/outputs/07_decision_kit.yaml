@@ -1,0 +1,111 @@
+slug: us-moderna-mrna
+variant: opus4.8
+topic_type: company
+display_name: Moderna (MRNA, NASDAQ)
+ticker: US_MRNA
+generated: 2026-08-26T04:30:00Z
+data_freshness: 2026-08-25
+
+buy_box:
+  strong_buy_max: 47
+  accumulate_min: 47
+  accumulate_max: 75
+  hold_min: 75
+  hold_max: 110
+  current_price: 154.90
+  price_as_of: 2026-08-25
+  current_zone: above_hold
+
+position_framework:
+  position_tier: 试探
+  sizing_rationale: "终局吃 W1(跨癌种外推)概率判断+P3 HR 结构性空窗(信息不完备)+EV 虽负但 Bull 尾部真实(并购/NSCLC),不支持标准/重仓级方向下注;纪律是减持非做空"
+  initial_max_pct: null
+  full_max_pct: 3
+  add_ladder_prices: [47, 40, 34]
+  max_cluster_pct: null
+
+valuation_models:
+  - name: rnpv_sotp
+    label: rNPV 分部加总(主锚,利润50/50口径)
+    bull_fair_value: [117, 117]
+    base_fair_value: [66, 75]
+    bear_fair_value: [34, 34]
+  - name: ev_revenue_regression
+    label: EV/Revenue 板块回归(下行地板锚)
+    bull_fair_value: [58, 58]
+    base_fair_value: [47, 58]
+    bear_fair_value: [38, 47]
+  - name: relative_vs_bntx
+    label: 相对 BioNTech 同构对标
+    bull_fair_value: [null, null]
+    base_fair_value: [60, 90]
+    bear_fair_value: [40, 60]
+
+kill_criteria:
+  - id: nsclc_readout_success
+    description: "INTerpath-002(NSCLC辅助)主要终点达标且 HR<=0.65 → 跨癌种从期权变基本情形,平仓看空(市场价大概率冲 $220-260,内在 Bull 价值约 $120,不与已兑现动量对抗)"
+    status: pending
+    check_at: 2027-06-30
+  - id: cold_tumor_fail_or_weak_hr
+    description: "任一冷/中间瘤种(RCC/膀胱)读出失败,或 ESMO 2026 披露 P3 RFS HR>0.65/DMFS与RFS背离 → 加速看空 $45-60"
+    status: pending
+    check_at: 2026-10-31
+  - id: merck_buyout
+    description: "Merck 溢价买断 INT 权益或整体收购 → 一次性重估(注意作价可能低于市场隐含期权值)"
+    status: pending
+    check_at: 2027-12-31
+  - id: dilution_below_guidance
+    description: "季度现金跌破 $4.7-5.2B 年末指引且高位增发 → 稀释坐实,维持看空"
+    status: pending
+    check_at: 2027-03-31
+
+signposts:
+  - date: 2026-10-31
+    event: "ESMO 2026 披露 INTerpath-001 P3 完整数据(RFS/DMFS 的 HR/CI/亚组)"
+    bull_signal: "RFS HR<=0.55 且 DMFS 方向一致 → 黑色素瘤价值上限打开"
+    bear_signal: "HR>0.65 或 DMFS 与 RFS 背离 → 加速看空"
+    triggered: null
+  - date: 2026-12-31
+    event: "Q3/Q4 2026 财报:现金余额 vs $4.7-5.2B 指引 + mRESVIA/呼吸道销售"
+    bull_signal: "现金稳在指引上沿 + 呼吸道企稳"
+    bear_signal: "现金跌破指引 / RSV 续降验证归零"
+    triggered: null
+  - date: 2027-06-30
+    event: "INTerpath-002(NSCLC辅助)读出 —— 跨癌种外推总开关"
+    bull_signal: "主终点达标 HR<=0.65 → 翻多"
+    bear_signal: "失败 → 外推叙事崩塌"
+    triggered: null
+  - date: 2027-12-31
+    event: "2027 欧洲市场重开(竞品欧委会排他合同2026年底到期)后 Moderna 订单"
+    bull_signal: "拿到有意义的欧洲政府/商业订单 → 呼吸道地板抬高"
+    bear_signal: "被 Pfizer/BioNTech 渠道锁死,份额微弱"
+    triggered: null
+
+cluster_tags: [mrna-platform, cancer-immunotherapy, us-biotech, keytruda-ecosystem]
+
+chain_links:
+  rings_present: [1, 2, 3, 4, 5, 6]
+  r4_anchors_r2: true
+  r6_takes_r4_ev: true
+  r5_has_kill_signpost: true
+
+honest_gaps:
+  - ring: 4
+    kind: data-missing
+    note: "INTerpath-001 P3 具体 HR/CI/亚组公开无源(用户已 waive,等 ESMO 2026);Base/Bull 用 P2b HR=0.51 做上下界"
+  - ring: 1
+    kind: data-missing
+    note: "INT 个体化生产实际 COGS/产能上限公开无源;命门2 单位经济方向未定,用 Provenge/CAR-T 类比边界框定"
+  - ring: 4
+    kind: data-missing
+    note: "Merck 50/50 的'某些例外'条款未披露(需协议原件);实得经济按纯利润50/50估,不排除小幅偏差"
+
+market_implied:
+  metric: implied_cross_tumor_option_value_usd_bn
+  value: 455
+
+my_vs_market_delta:
+  metric: implied_cross_tumor_option_value_usd_bn
+  my_value: 105
+  delta: "-350亿(市场约$455亿 vs 我Base约$105亿;差在跨癌种概率:我~30% vs 价~70%+)"
+  direction: short

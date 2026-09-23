@@ -3,104 +3,113 @@ variant: opus4.8
 topic_type: company
 display_name: Momenta 魔门塔 (HKEX 06880)
 ticker: HKEX_06880
-generated: 2026-06-30 11:00:00+00:00
-data_freshness: 2025-FY (基本面) + 2026-06-30 (peer 实时行情)
+generated: 2026-09-03 01:54:00+08:00
+data_freshness: 2026H1 (中期业绩公告) + 2026-09-02 收盘行情(200.00)
 buy_box:
-  strong_buy_max: 150
-  accumulate_min: 150
-  accumulate_max: 200
-  hold_min: 200
-  hold_max: 250
-  current_price: 295.6
-  price_as_of: '2026-07-08'
-  current_zone: above_hold
+  strong_buy_max: 145
+  accumulate_min: 145
+  accumulate_max: 195
+  hold_min: 195
+  hold_max: 235
+  current_price: 200.0
+  price_as_of: '2026-09-02'
+  current_zone: hold
 position_framework:
   position_tier: 试探
-  sizing_rationale: 现价EV≈-6%(负):地平线13.7x,Momenta25.0x溢价~83%.现价(295.6,above_hold)暂缓建仓,试探仓(≤2-3%)等回调进accumulate(150-200)或上市后财报验证(毛利守65%+客户无切换)再启动
+  sizing_rationale: 现价EV+5.3%(保守口径,收盘200;去下行权重不对称后~+8%):质地经H1财报验证(营收+75.9%、毛利率73.2%),价较发行价-32%至收盘200使估值落Base中枢中段、净现金占市值37%厚垫、现价贴accumulate上沿195。05-critic第2轮修正v2两处偏差(锚用盘中212.6致EV失真为-1%;32%下行权重全押0证据的退出倍数变量)。现价200(hold下沿)允许小额试探(≤2%),正式加仓待进accumulate(≤195)或结构改善(许可占比回45%+/ASP止跌);软硬拆分仍0证据故只小额不重仓
   initial_max_pct: null
   full_max_pct: 5
   add_ladder_prices:
-  - 200
-  - 175
+  - 185
+  - 170
   - 150
   max_cluster_pct: 10
 valuation_models:
-- name: peer_ps_crosssection
-  label: 同业P/S横截面(实时peer锚6/30)
+- name: peer_evs_crosssection
+  label: 同业EV/S横截面(实时peer锚9/2,汇率归一)
   bull_fair_value:
-  - 265
-  - 310
-  base_fair_value:
-  - 155
-  - 200
-  bear_fair_value:
-  - 88
-  - 132
-- name: base_plus_l4_option
-  label: 基本盘+L4期权拆解
-  bull_fair_value:
-  - 280
-  - 340
-  base_fair_value:
-  - 190
-  - 230
-  bear_fair_value:
-  - 130
-  - 170
-- name: reverse_ps_growth
-  label: 逆向P/S-增速反推
-  bull_fair_value:
+  - 245
   - 300
-  - 350
   base_fair_value:
-  - 200
-  - 250
+  - 165
+  - 205
   bear_fair_value:
-  - 130
-  - 180
+  - 105
+  - 145
+- name: base_plus_l4_option
+  label: 基本盘+L4期权拆解(EV口径)
+  bull_fair_value:
+  - 250
+  - 300
+  base_fair_value:
+  - 175
+  - 210
+  bear_fair_value:
+  - 115
+  - 150
+- name: reverse_evs_growth
+  label: 逆向EV/S-增速反推
+  bull_fair_value:
+  - 270
+  - 320
+  base_fair_value:
+  - 195
+  - 235
+  bear_fair_value:
+  - 120
+  - 160
 kill_criteria:
-- id: margin_break
-  description: 上市后首份财报混合毛利率跌破60%(命门1破)
+- id: asp_spiral
+  description: 连续两期"许可收入增速-新增装机量增速"为负(隐含单车许可ASP同比-10%+),单价螺旋确立→命门1破退出倍数下压。2026H1已-8.8%逼近触发
   status: pending
-  check_at: 2026-Q3
+  check_at: 2027-Q3
+- id: mix_regression
+  description: 2027H1许可收入占比未回到45%+(现37.9%、已从40.1%退步)→"软件化"叙事破、退出倍数被re-rate到工程服务档
+  status: pending
+  check_at: 2027-Q3
+- id: cash_quality
+  description: 经营现金流缺口÷经调整利润持续>10x(现27x)或应收/合同资产周转恶化→收入质量破(NRE先确认后收现)
+  status: pending
+  check_at: 2027-Q1
 - id: customer_self_research
-  description: 前五大某客户(比亚迪系/上汽)公开切自研或订单绝对额显著下滑(命门2破);A3最弱假设证伪点前置
-  status: pending
-  check_at: 2026-Q4
-- id: share_loss
-  description: 第三方城市NOA份额(中汽协口径)跌破50%
+  description: 前五大某客户(比亚迪系/上汽)公开切自研或订单绝对额显著下滑(命门2破);比亚迪低价带天神之眼C已自研,B平台是下一个
   status: pending
   check_at: 2026-Q4
 - id: valuation_floor_entry
-  description: 股价回调进accumulate(150-200,~13-17x P/S,贴近已derate地平线13.7x)且基本面无恶化→赔率转正/价值买入触发
+  description: 股价回落进accumulate(145-195,EV/S~4-5x,服务档也有安全边际)且结构无进一步恶化→赔率转正/加仓触发。现价200已在上沿、小额试探已可启动
   status: pending
   check_at: 2026-Q4
 - id: bull_upgrade
-  description: 毛利率守65%+且大客户加单/新增头部定点→上修thesis升档
-  status: pending
-  check_at: 2026-Q4
+  description: H1定点+49至219、累计装机破100万、毛利守73%已部分触发;下一步需许可占比回升+ASP止跌才升档
+  status: triggered_bull
+  check_at: 2026-Q3
 signposts:
-- date: 2026-07-08
+- date: '2026-07-08'
   event: 港股上市首日
   bull_signal: 高开溢价并守住发行价295.6
-  bear_signal: 破发跌破295.6(参WRD/Pony)
-  triggered: null
+  bear_signal: 破发跌破295.6
+  triggered: bear
 - date: 2026-Q3
-  event: 上市后首份中报(毛利率/许可占比)
-  bull_signal: 毛利率守65%+许可占比继续升
-  bear_signal: 毛利率<60%+许可占比停滞
+  event: 上市后首份中报(毛利率/许可占比/ASP)
+  bull_signal: 毛利率守65%+且许可占比升
+  bear_signal: 许可占比停滞或倒退、ASP下滑
+  triggered: bear
+- date: 2027-Q3
+  event: 2027中报——许可占比/ASP是否止跌(最关键证伪点)
+  bull_signal: 许可占比回45%+且隐含ASP止跌
+  bear_signal: 许可占比仍<40%或ASP继续两位数下滑
   triggered: null
 - date: 2026-12
-  event: 比亚迪B平台智驾动向
-  bull_signal: 续约/扩量Momenta算法
-  bear_signal: 启动自研替换路线图
+  event: 2026年报客户集中度 + 比亚迪B平台智驾动向
+  bull_signal: 比亚迪B平台续用/扩量Momenta算法、客户集中度可控
+  bear_signal: 比亚迪B平台启动自研替换、某大客户削单
   triggered: null
 - date: 2026-Q4
-  event: 中汽协城市NOA份额更新
-  bull_signal: 独立口径守住60%
-  bear_signal: 华为逼近/份额跌破50%
+  event: Robotaxi四季度量产 + 数百台部署
+  bull_signal: 量产落地且有可量化单位经济
+  bear_signal: 延期/费用重启拖累经调整利润
   triggered: null
-- date: 2027
+- date: '2027'
   event: L4阿布扎比/慕尼黑商业化里程碑
   bull_signal: 单位经济可量化改善+车队规模增长
   bear_signal: 延期/股东OEM撤资(复刻Argo/Cruise)
@@ -124,18 +133,24 @@ chain_links:
 honest_gaps:
 - ring: 2
   kind: data-missing
-  note: 正式卖方一致预期/首覆目标价pre-IPO客观不存在(已waive),上市后06监控补
+  note: 按客户/产品的毛利率软硬拆分——公司IPO后首份报告仍不披露,0证据,而它决定退出倍数落软件档还是服务档、进而决定终局符号。估值按三档并列不单押软件档
 - ring: 1
   kind: data-missing
-  note: 单车许可ASP精确值+按客户/产品毛利率拆分招股书只给量级
+  note: H1客户集中度/前五大逐个拆分半年报隐去,比亚迪系占比(2025 21.6%)升降未知
 - ring: 5
   kind: training-estimate
   note: L4 cost-per-mile构成/盈亏平衡车队规模全行业披露稀薄,为同业类比+训练知识估算
+- ring: 2
+  kind: training-estimate
+  note: 隐含单车许可ASP 1891元为汇总倒算(许可收入÷新增装机),非按客户拆分,含阶梯定价噪声
+# 说明(v3,收盘200):两条被定价杠杆。增速杠杆(下方,同指标可比):现价保本隐含~30% 3yr CAGR,我判~40%→long,价跌到200后edge更清晰。
+# 退出倍数杠杆仍偏空(下行偏斜:可能re-rate到服务档EV/S 3x)+软硬拆分0证据(见honest_gaps),体现在valuation_models的bear档。
+# v3校正:锚价从盘中212.6→收盘200使EV -1%→+5.3%(保守口径),现价允许小额试探(≤2%)、正式加仓待accumulate(≤195)或结构改善。
 market_implied:
   metric: implied_rev_cagr_3y
-  value: 38
+  value: 30
 my_vs_market_delta:
   metric: implied_rev_cagr_3y
-  my_value: 30
-  delta: -8pct
-  direction: short
+  my_value: 40
+  delta: +10pct
+  direction: long

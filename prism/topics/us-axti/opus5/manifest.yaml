@@ -1,0 +1,3582 @@
+slug: us-axti
+variant: opus5
+updated: '2026-09-03T02:07:11.156395+00:00'
+materials:
+- id: mat-155453
+  filename: 2026-08-26_axt-inc-announces-second-quarter-2026-financial-re.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.031837+00:00'
+  processed: false
+  notes: query='AXT Inc AXTI 2026 Q2 earnings revenue gross margin InP substrate'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc AXTI 2026 Q2 earnings revenue gross margin InP substrate
+    url: https://www.sec.gov/Archives/edgar/data/1051627/000143774926025061/ex_974537.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.033372+00:00'
+    stale_at: '2026-09-25T11:10:28.033372+00:00'
+    expire_at: '2026-11-24T11:10:28.033372+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-121372
+  filename: 2026-08-26_axt-posts-strong-q2-2026-profit-and-cash-build-axt.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.039362+00:00'
+  processed: true
+  notes: query='AXT Inc AXTI 2026 Q2 earnings revenue gross margin InP substrate'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Q2/2026 电话会与业绩一手数字救回
+    url: https://www.stocktitan.net/sec-filings/AXTI/10-q-axt-inc-quarterly-earnings-report-db714ed7f0c5.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:32.661528+00:00'
+    stale_at: '2026-09-25T12:50:32.661528+00:00'
+    expire_at: '2026-11-24T12:50:32.661528+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - AXT Inc AXTI 2026 Q2 earnings revenue gross margin InP substrate
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-479f16
+  filename: 2026-08-26_axt-axti-q2-2026-earnings-call-transcript.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.045851+00:00'
+  processed: true
+  notes: query='AXT Inc AXTI 2026 Q2 earnings revenue gross margin InP substrate'
+    | 待用户确认 | query='AXT AXTI Q2 2026 earnings call transcript gross margin China
+    domestic export permit mix Fischer Young' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT AXTI Q2 2026 earnings call transcript gross margin China domestic export
+      permit mix Fischer Young
+    url: https://www.fool.com/earnings/call-transcripts/2026/07/30/axt-axti-q2-2026-earnings-call-transcript/
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:38:36.650377+00:00'
+    stale_at: '2026-09-25T11:38:36.650377+00:00'
+    expire_at: '2026-11-24T11:38:36.650377+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-7b1a5d
+  filename: 2026-08-26_axt-inc-market-cap-2012-2026-axti.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.053270+00:00'
+  processed: false
+  notes: query='AXTI stock price market cap valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI stock price market cap valuation 2026
+    url: https://www.macrotrends.net/stocks/charts/AXTI/axt-inc/market-cap
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.051505+00:00'
+    stale_at: '2026-09-25T11:10:28.051505+00:00'
+    expire_at: '2026-11-24T11:10:28.051505+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-9265c3
+  filename: 2026-08-26_axt-inc-axti.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.061358+00:00'
+  processed: false
+  notes: query='AXTI stock price market cap valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI stock price market cap valuation 2026
+    url: https://finance.yahoo.com/quote/AXTI/
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.059432+00:00'
+    stale_at: '2026-09-25T11:10:28.059432+00:00'
+    expire_at: '2026-11-24T11:10:28.059432+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-e0feca
+  filename: 2026-08-26_axti-stock-price-quote.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.070132+00:00'
+  processed: false
+  notes: query='AXTI stock price market cap valuation 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI stock price market cap valuation 2026
+    url: https://www.morningstar.com/stocks/xnas/axti/quote
+    domain: morningstar.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.067877+00:00'
+    stale_at: '2026-09-25T11:10:28.067877+00:00'
+    expire_at: '2026-11-24T11:10:28.067877+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-32c3f7
+  filename: 2026-08-26_科创板最久-钉子户-主动撤单-四年半注册未果-北京通美转.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.080644+00:00'
+  processed: false
+  notes: query='北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回
+    url: https://finance.ifeng.com/c/8v1gjNZd4d7
+    domain: finance.ifeng.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.077975+00:00'
+    stale_at: '2026-09-25T11:10:28.077975+00:00'
+    expire_at: '2026-11-24T11:10:28.077975+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-d02767
+  filename: 2026-08-26_外贸政策双重承压北京通美ipo-过会四年后终止注册拟转战.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.091745+00:00'
+  processed: false
+  notes: query='北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回
+    url: https://www.cs.com.cn/ssgs/01/2026/07/10/detail_2026071010023481.html
+    domain: cs.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.088475+00:00'
+    stale_at: '2026-09-25T11:10:28.088475+00:00'
+    expire_at: '2026-11-24T11:10:28.088475+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-62142a
+  filename: 2026-08-26_北京通美ipo-过会四年后终止注册拟转战港股上市.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.100900+00:00'
+  processed: false
+  notes: query='北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回
+    url: https://stcn.com/article/detail/4010120.html
+    domain: stcn.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.097320+00:00'
+    stale_at: '2026-09-25T11:10:28.097320+00:00'
+    expire_at: '2026-11-24T11:10:28.097320+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-60f02b
+  filename: 2026-08-26_北京通美冲a折戟多个公司仍在鏖战.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.114868+00:00'
+  processed: false
+  notes: query='北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回
+    url: https://www.bbtnews.com.cn/2026/0710/598821.shtml
+    domain: bbtnews.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.110961+00:00'
+    stale_at: '2026-09-25T11:10:28.110961+00:00'
+    expire_at: '2026-11-24T11:10:28.110961+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-e24e9c
+  filename: 2026-08-26_北京通美科创板ipo终止注册公司回应每经-系战略调整.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.130303+00:00'
+  processed: false
+  notes: query='北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北京通美晶体 科创板 IPO 最新进展 2026 上市 撤回
+    url: https://wap.eastmoney.com/a/202607123802692030.html
+    domain: wap.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.125236+00:00'
+    stale_at: '2026-09-25T11:10:28.125236+00:00'
+    expire_at: '2026-11-24T11:10:28.125236+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-f7d378
+  filename: 2026-08-26_the-u-s--china-trade-truce-has-not-solved-the-gall.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.147982+00:00'
+  processed: false
+  notes: query='AXT Inc export license China gallium germanium ban US shipments 2025
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc export license China gallium germanium ban US shipments 2025 2026
+    url: https://www.csis.org/analysis/us-china-trade-truce-has-not-solved-gallium-problem
+    domain: csis.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.143345+00:00'
+    stale_at: '2026-09-25T11:10:28.143345+00:00'
+    expire_at: '2026-11-24T11:10:28.143345+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-d2289e
+  filename: 2026-08-26_axt-s-q4-2025-revenue-constrained-by-delay-in-chin.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.165730+00:00'
+  processed: false
+  notes: query='AXT Inc export license China gallium germanium ban US shipments 2025
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc export license China gallium germanium ban US shipments 2025 2026
+    url: https://www.semiconductor-today.com/news_items/2026/mar/axt-090326.shtml
+    domain: semiconductor-today.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.159478+00:00'
+    stale_at: '2026-09-25T11:10:28.159478+00:00'
+    expire_at: '2026-11-24T11:10:28.159478+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-694469
+  filename: 2026-08-26_china-bans-export-of-critical-minerals-to-us-as-tr.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.180458+00:00'
+  processed: false
+  notes: query='AXT Inc export license China gallium germanium ban US shipments 2025
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc export license China gallium germanium ban US shipments 2025 2026
+    url: https://www.reuters.com/markets/commodities/china-bans-exports-gallium-germanium-antimony-us-2024-12-03/
+    domain: reuters.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.175055+00:00'
+    stale_at: '2026-09-25T11:10:28.175055+00:00'
+    expire_at: '2026-11-24T11:10:28.175055+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-0958b5
+  filename: 2026-08-26_全球镓价格本周大涨27-买家赶在中国出口管制落地前.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.197934+00:00'
+  processed: false
+  notes: query='锗 价格 2026 走势 出口管制 镓价格'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 锗 价格 2026 走势 出口管制 镓价格
+    url: https://www.cls.cn/detail/1398711
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.191625+00:00'
+    stale_at: '2026-09-25T11:10:28.191625+00:00'
+    expire_at: '2026-11-24T11:10:28.191625+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-c88af9
+  filename: 2026-08-26_锗相关物项实施出口管制的公告.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.215454+00:00'
+  processed: false
+  notes: query='锗 价格 2026 走势 出口管制 镓价格'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 锗 价格 2026 走势 出口管制 镓价格
+    url: https://www.mofcom.gov.cn/zcfb/dwmygl/art/2023/art_52b9a321087f402bb3d310d18b07967e.html
+    domain: mofcom.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.209301+00:00'
+    stale_at: '2026-09-25T11:10:28.209301+00:00'
+    expire_at: '2026-11-24T11:10:28.209301+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-ef3769
+  filename: 2026-08-26_价格飙升三种小金属被ai算力逼到-断货.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.236227+00:00'
+  processed: false
+  notes: query='锗 价格 2026 走势 出口管制 镓价格' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 锗 价格 2026 走势 出口管制 镓价格
+    url: https://finance.eastmoney.com/a/202606153771874648.html
+    domain: finance.eastmoney.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.229863+00:00'
+    stale_at: '2026-09-25T11:10:28.229863+00:00'
+    expire_at: '2026-11-24T11:10:28.229863+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-f22d23
+  filename: 2026-08-26_axt-s-inp-demand-is-surging-can-it-become-a-long-t.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.259432+00:00'
+  processed: false
+  notes: query='AXT InP indium phosphide substrate AI data center optical transceiver
+    demand 2026 capacity' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT InP indium phosphide substrate AI data center optical transceiver demand
+      2026 capacity
+    url: https://finance.yahoo.com/markets/stocks/articles/axts-inp-demand-surging-become-150900839.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.251900+00:00'
+    stale_at: '2026-09-25T11:10:28.251900+00:00'
+    expire_at: '2026-11-24T11:10:28.251900+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-0cc946
+  filename: 2026-08-26_axt-returns-to-profit-driven-by-record-quarterly-r.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.281652+00:00'
+  processed: false
+  notes: query='AXT InP indium phosphide substrate AI data center optical transceiver
+    demand 2026 capacity' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI stock drop August 2026 selloff InP oversupply valuation bear case
+    url: https://www.semiconductor-today.com/news_items/2026/aug/axt-040826.shtml
+    domain: semiconductor-today.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:19:32.159910+00:00'
+    stale_at: '2026-09-25T11:19:32.159910+00:00'
+    expire_at: '2026-11-24T11:19:32.159910+00:00'
+    triggered_by: 00-prescan
+    prev_queries:
+    - AXT InP indium phosphide substrate AI data center optical transceiver demand
+      2026 capacity
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-27cb3c
+  filename: 2026-08-26_axt-the-indium-phosphide-play-for-ai-s-optical-int.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.306132+00:00'
+  processed: true
+  notes: query='AXT InP indium phosphide substrate AI data center optical transceiver
+    demand 2026 capacity' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求
+    url: https://globalsemiresearch.substack.com/p/axt-the-indium-phosphide-play-for
+    domain: globalsemiresearch.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:34.209074+00:00'
+    stale_at: '2026-09-25T12:50:34.209074+00:00'
+    expire_at: '2026-11-24T12:50:34.209074+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - AXT InP indium phosphide substrate AI data center optical transceiver demand
+      2026 capacity
+  rings:
+  - bull-bear
+- id: mat-15ea9e
+  filename: 2026-08-26_2026磷化铟行业深度报告概况-现状及代表.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.328432+00:00'
+  processed: false
+  notes: query='磷化铟 衬底 市场份额 2026 住友电工 JX金属 先导稀材 云南锗业'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 磷化铟 衬底 市场份额 2026 住友电工 JX金属 先导稀材 云南锗业
+    url: https://www.fxbaogao.com/detail/5584683
+    domain: fxbaogao.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.320503+00:00'
+    stale_at: '2026-09-25T11:10:28.320503+00:00'
+    expire_at: '2026-11-24T11:10:28.320503+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-441a30
+  filename: 2026-08-26_全球磷化铟-inp-衬底-2026-年产能-良率与订单对比清单.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.350929+00:00'
+  processed: false
+  notes: query='磷化铟 衬底 市场份额 2026 住友电工 JX金属 先导稀材 云南锗业'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 磷化铟 衬底 市场份额 2026 住友电工 JX金属 先导稀材 云南锗业
+    url: https://xueqiu.com/4655880906/387612388
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.341900+00:00'
+    stale_at: '2026-09-25T11:10:28.341900+00:00'
+    expire_at: '2026-11-24T11:10:28.341900+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-c9dc0a
+  filename: 2026-08-26_inp-substrate-supply-demand-price-hike-sustainable.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.378059+00:00'
+  processed: false
+  notes: query='6 inch InP substrate mass production qualification 2026 AXT' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 6 inch InP substrate mass production qualification 2026 AXT
+    url: https://wukong123.substack.com/p/inp-substrate-supply-demand-price
+    domain: wukong123.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.369400+00:00'
+    stale_at: '2026-09-25T11:10:28.369400+00:00'
+    expire_at: '2026-11-24T11:10:28.369400+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - bull-bear
+- id: mat-966473
+  filename: 2026-08-26_axt-s-revenue-grows-17-in-q1-after-greater-than.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.408262+00:00'
+  processed: false
+  notes: query='6 inch InP substrate mass production qualification 2026 AXT' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 6 inch InP substrate mass production qualification 2026 AXT
+    url: https://www.semiconductor-today.com/news_items/2026/may/axt-050526.shtml
+    domain: semiconductor-today.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.396685+00:00'
+    stale_at: '2026-09-25T11:10:28.396685+00:00'
+    expire_at: '2026-11-24T11:10:28.396685+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-383f72
+  filename: 2026-08-26_inp-gaas-ge-substrates-1-to-8-semiconductor-wafers.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.437367+00:00'
+  processed: false
+  notes: query='6 inch InP substrate mass production qualification 2026 AXT' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 6 inch InP substrate mass production qualification 2026 AXT
+    url: https://www.axt.com/products
+    domain: axt.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.427576+00:00'
+    stale_at: '2026-09-25T11:10:28.427576+00:00'
+    expire_at: '2026-11-24T11:10:28.427576+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+- id: mat-950ac9
+  filename: 2026-08-26_axt-inc-axti-forecast-price-target-analyst-ratings.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.473970+00:00'
+  processed: true
+  notes: query='AXTI analyst price target consensus estimates 2026 revenue forecast'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI analyst estimates 2027 2028 revenue EPS consensus price target rationale
+    url: https://www.chartmill.com/stock/quote/AXTI/analyst-ratings
+    domain: chartmill.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:35:49.200060+00:00'
+    stale_at: '2026-09-25T11:35:49.200060+00:00'
+    expire_at: '2026-11-24T11:35:49.200060+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - AXTI analyst price target consensus estimates 2026 revenue forecast
+  rings:
+  - consensus
+- id: mat-205235
+  filename: 2026-08-26_axt-axti-stock-forecast-and-price-target-2026.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.504155+00:00'
+  processed: false
+  notes: query='AXTI analyst price target consensus estimates 2026 revenue forecast'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI analyst price target consensus estimates 2026 revenue forecast
+    url: https://www.marketbeat.com/stocks/NASDAQ/AXTI/forecast/
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.493087+00:00'
+    stale_at: '2026-09-25T11:10:28.493087+00:00'
+    expire_at: '2026-11-24T11:10:28.493087+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-249dce
+  filename: 2026-08-26_axt-nasdaq-axti---stock-analysis.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.534862+00:00'
+  processed: false
+  notes: query='AXTI analyst price target consensus estimates 2026 revenue forecast'
+    | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI analyst price target consensus estimates 2026 revenue forecast
+    url: https://simplywall.st/stocks/us/semiconductors/nasdaq-axti/axt
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.524210+00:00'
+    stale_at: '2026-09-25T11:10:28.524210+00:00'
+    expire_at: '2026-11-24T11:10:28.524210+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - consensus
+  - valuation-anchor
+  - valuation-percentile
+- id: mat-afd3a0
+  filename: 2026-08-26_axt-inc-march-31-2025.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.567827+00:00'
+  processed: false
+  notes: query='AXT Inc raw material joint venture Tongmei subsidiary ownership minority
+    interest 2025'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc raw material joint venture Tongmei subsidiary ownership minority
+      interest 2025
+    url: https://www.sec.gov/Archives/edgar/data/1051627/000155837025007751/axti-20250331x10q.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.556604+00:00'
+    stale_at: '2026-09-25T11:10:28.556604+00:00'
+    expire_at: '2026-11-24T11:10:28.556604+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-be8354
+  filename: 2026-08-26_axt-inc-investor-relations.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.598675+00:00'
+  processed: false
+  notes: query='AXT Inc raw material joint venture Tongmei subsidiary ownership minority
+    interest 2025'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc raw material joint venture Tongmei subsidiary ownership minority
+      interest 2025
+    url: https://investors.axt.com/Investors/Overview/default.aspx
+    domain: investors.axt.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.586702+00:00'
+    stale_at: '2026-09-25T11:10:28.586702+00:00'
+    expire_at: '2026-11-24T11:10:28.586702+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-6f1c98
+  filename: 2026-08-26_annual-report-for-fiscal-year-ending-12-31-2025-fo.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.634540+00:00'
+  processed: false
+  notes: query='AXT Inc raw material joint venture Tongmei subsidiary ownership minority
+    interest 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc raw material joint venture Tongmei subsidiary ownership minority
+      interest 2025
+    url: https://www.publicnow.com/view/19E3C4C86BDAF50817AF4BA91A3C0056268F9324
+    domain: publicnow.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.622265+00:00'
+    stale_at: '2026-09-25T11:10:28.622265+00:00'
+    expire_at: '2026-11-24T11:10:28.622265+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-e2cce6
+  filename: 2026-08-26_united-states-securities-and-exchange-commission--.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.670740+00:00'
+  processed: false
+  notes: query='AXT Inc raw material joint venture Tongmei subsidiary ownership minority
+    interest 2025' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc raw material joint venture Tongmei subsidiary ownership minority
+      interest 2025
+    url: https://d18rn0p25nwr6d.cloudfront.net/CIK-0001051627/9d819079-5f70-466c-8a1c-fe515aab819c.pdf
+    domain: d18rn0p25nwr6d.cloudfront.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.658129+00:00'
+    stale_at: '2026-09-25T11:10:28.658129+00:00'
+    expire_at: '2026-11-24T11:10:28.658129+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-ba1737
+  filename: 2026-08-26_axt-inc-announces-first-quarter-2026-financial-res.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.706397+00:00'
+  processed: false
+  notes: query='AXT Inc CEO Morris Young 2026 management change capital allocation
+    dilution offering'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc CEO Morris Young 2026 management change capital allocation dilution
+      offering
+    url: https://investors.axt.com/Investors/news/news-details/2026/AXT-Inc--Announces-First-Quarter-2026-Financial-Results/default.aspx
+    domain: investors.axt.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.693004+00:00'
+    stale_at: '2026-09-25T11:10:28.693004+00:00'
+    expire_at: '2026-11-24T11:10:28.693004+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-8bca0a
+  filename: 2026-08-26_axt-inc-axti-leadership-management-team-analysis.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.743115+00:00'
+  processed: false
+  notes: query='AXT Inc CEO Morris Young 2026 management change capital allocation
+    dilution offering' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc CEO Morris Young 2026 management change capital allocation dilution
+      offering
+    url: https://simplywall.st/stocks/us/semiconductors/nasdaq-axti/axt/management
+    domain: simplywall.st
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.730332+00:00'
+    stale_at: '2026-09-25T11:10:28.730332+00:00'
+    expire_at: '2026-11-24T11:10:28.730332+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-2591b9
+  filename: 2026-08-26_axt-ceo-morris-young-sells-22-3m-of-company-stock.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.781568+00:00'
+  processed: false
+  notes: query='AXT Inc CEO Morris Young 2026 management change capital allocation
+    dilution offering' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc CEO Morris Young 2026 management change capital allocation dilution
+      offering
+    url: https://www.investing.com/news/insider-trading-news/axt-ceo-morris-young-sells-223m-of-company-stock-93CH-4725449
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:10:28.768114+00:00'
+    stale_at: '2026-09-25T11:10:28.768114+00:00'
+    expire_at: '2026-11-24T11:10:28.768114+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-80f5c8
+  filename: 2026-08-26_axt-inc-investors---governance---executive-managem.md
+  source_type: web-search
+  added: '2026-08-26T11:10:28.817318+00:00'
+  processed: false
+  notes: query='AXT Inc CEO Morris Young 2026 management change capital allocation
+    dilution offering'
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc CEO Morris Young 2026 management change capital allocation dilution
+      offering
+    url: https://investors.axt.com/Investors/governance/executive-management/default.aspx
+    domain: investors.axt.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:10:28.802903+00:00'
+    stale_at: '2026-09-25T11:10:28.802903+00:00'
+    expire_at: '2026-11-24T11:10:28.802903+00:00'
+    triggered_by: 00-prescan-baseline
+  rings:
+  - mgmt-capital-alloc
+- id: mat-b51491
+  filename: 2026-08-26_北京通美ipo过会四年后终止注册-美籍董事长81岁高龄---瑞财经.md
+  source_type: web-search
+  added: '2026-08-26T11:15:03.734280+00:00'
+  processed: false
+  notes: query='北京通美 港股 上市 递表 2026 H股 IPO' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北京通美 港股 上市 递表 2026 H股 IPO
+    url: https://m.rccaijing.com/news-7482249170393953303.html
+    domain: m.rccaijing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:15:03.720164+00:00'
+    stale_at: '2026-09-25T11:15:03.720164+00:00'
+    expire_at: '2026-11-24T11:15:03.720164+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-29797b
+  filename: 2026-08-26_北京通美ipo-过会四年后终止注册-拟转战港股上市-新浪财经-转中证报.md
+  source_type: web-search
+  added: '2026-08-26T11:15:03.773759+00:00'
+  processed: false
+  notes: query='北京通美 港股 上市 递表 2026 H股 IPO' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北京通美 港股 上市 递表 2026 H股 IPO
+    url: https://finance.sina.com.cn/jjxw/2026-07-10/doc-inihhkup5152012.shtml
+    domain: finance.sina.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:15:03.759521+00:00'
+    stale_at: '2026-09-25T11:15:03.759521+00:00'
+    expire_at: '2026-11-24T11:15:03.759521+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-61af29
+  filename: 2026-08-26_death-taxes-and-indium-phosphide-shortage-jason-s-.md
+  source_type: web-search
+  added: '2026-08-26T11:15:03.818594+00:00'
+  processed: false
+  notes: query='磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026
+    url: https://www.jasonschips.ai/p/death-taxes-and-indium-phosphide
+    domain: jasonschips.ai
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:15:03.803874+00:00'
+    stale_at: '2026-09-25T11:15:03.803874+00:00'
+    expire_at: '2026-11-24T11:15:03.803874+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-95334a
+  filename: 2026-08-26_the-indium-phosphide-squeeze-the-iii-v-bottleneck-.md
+  source_type: web-search
+  added: '2026-08-26T11:15:03.861948+00:00'
+  processed: false
+  notes: query='磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026
+    url: https://abhayterminal.substack.com/p/the-indium-phosphide-squeeze
+    domain: abhayterminal.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:15:03.846757+00:00'
+    stale_at: '2026-09-25T11:15:03.846757+00:00'
+    expire_at: '2026-11-24T11:15:03.846757+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-556021
+  filename: 2026-08-26_global-inp-capacity-landscape-briefing-semi-fundam.md
+  source_type: web-search
+  added: '2026-08-26T11:15:03.905169+00:00'
+  processed: false
+  notes: query='磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026
+    url: https://semifundamental.substack.com/p/global-inp-capacity-landscape-briefing
+    domain: semifundamental.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:15:03.889739+00:00'
+    stale_at: '2026-09-25T11:15:03.889739+00:00'
+    expire_at: '2026-11-24T11:15:03.889739+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-67889f
+  filename: 2026-08-26_the-inp-shortage-that-could-halt-ai-optical-interc.md
+  source_type: web-search
+  added: '2026-08-26T11:15:03.950139+00:00'
+  processed: false
+  notes: query='磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026
+    url: https://xenospectrum.com/en/lumentum-inp-ai-optics-shortage/
+    domain: xenospectrum.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:15:03.933942+00:00'
+    stale_at: '2026-09-25T11:15:03.933942+00:00'
+    expire_at: '2026-11-24T11:15:03.933942+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-bf9ee8
+  filename: 2026-08-26_the-cpo-demand-multiplier-why-intra-rack-optical-i.md
+  source_type: web-search
+  added: '2026-08-26T11:15:03.996934+00:00'
+  processed: false
+  notes: query='磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026
+    url: https://404kresearch.substack.com/p/the-cpo-demand-multiplier-why-intra
+    domain: 404kresearch.substack.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:15:03.979773+00:00'
+    stale_at: '2026-09-25T11:15:03.979773+00:00'
+    expire_at: '2026-11-24T11:15:03.979773+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-231d5d
+  filename: 2026-08-26_co-packaged-optics-a-full-guide-to-cpo-vs-lpo-2026.md
+  source_type: web-search
+  added: '2026-08-26T11:15:04.044058+00:00'
+  processed: false
+  notes: query='磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 磷化铟 光模块 1.6T CPO 激光器 InP 单端口 用量 2026
+    url: https://www.insidedeeptech.com/co-packaged-optics-cpo-full-guide/
+    domain: insidedeeptech.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:15:04.026958+00:00'
+    stale_at: '2026-09-25T11:15:04.026958+00:00'
+    expire_at: '2026-11-24T11:15:04.026958+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-43ba6b
+  filename: 2026-08-26_axt-inc-announces-long-term-supplier-agreement-wit.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.190329+00:00'
+  processed: false
+  notes: query='AXT Inc long term supply agreement customer qualification InP prepayment
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc long term supply agreement customer qualification InP prepayment
+      2026
+    url: https://investors.axt.com/Investors/news/news-details/2026/AXT-Inc--Announces-Long-Term-Supplier-Agreement-with-Lumentum/default.aspx
+    domain: investors.axt.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:16:12.173329+00:00'
+    stale_at: '2026-09-25T11:16:12.173329+00:00'
+    expire_at: '2026-11-24T11:16:12.173329+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-e8dca1
+  filename: 2026-08-26_axt-announces-long-term-inp-supply-agreement-with.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.237135+00:00'
+  processed: false
+  notes: query='AXT Inc long term supply agreement customer qualification InP prepayment
+    2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc long term supply agreement customer qualification InP prepayment
+      2026
+    url: https://www.semiconductor-today.com/news_items/2026/jul/axt-lumentum-300726.shtml
+    domain: semiconductor-today.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:12.220378+00:00'
+    stale_at: '2026-09-25T11:16:12.220378+00:00'
+    expire_at: '2026-11-24T11:16:12.220378+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-ed6968
+  filename: 2026-08-26_axti20260630-8k-htm.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.283198+00:00'
+  processed: false
+  notes: query='AXT Inc long term supply agreement customer qualification InP prepayment
+    2026'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc long term supply agreement customer qualification InP prepayment
+      2026
+    url: https://www.sec.gov/Archives/edgar/data/1051627/000143774926022557/axti20260630_8k.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:16:12.265694+00:00'
+    stale_at: '2026-09-25T11:16:12.265694+00:00'
+    expire_at: '2026-11-24T11:16:12.265694+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-07fb6d
+  filename: 2026-08-26_先导科技集团-隐形的-磷化铟全产业链之王.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.333076+00:00'
+  processed: true
+  notes: query='先导稀材 广东先导 磷化铟 衬底 产能 扩产 2026 国产替代'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 先导/中铝/国内 InP 国产替代产能曲线（命门3 境内竞争）
+    url: https://www.laserfair.com/mobile/news/202605/11/90550.html
+    domain: laserfair.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T12:49:48.982763+00:00'
+    stale_at: '2026-09-25T12:49:48.982763+00:00'
+    expire_at: '2026-11-24T12:49:48.982763+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - 先导稀材 广东先导 磷化铟 衬底 产能 扩产 2026 国产替代
+  rings:
+  - bull-bear
+- id: mat-d17bd7
+  filename: 2026-08-26_磷化铟缺货真相-国内产业链-资源强-制造弱-提纯.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.380558+00:00'
+  processed: true
+  notes: query='先导稀材 广东先导 磷化铟 衬底 产能 扩产 2026 国产替代'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 中国铟出口配额 30% 与磷化铟许可通过率（政策硬约束）
+    url: https://m.cls.cn/detail/2461334
+    domain: m.cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-08-26T13:36:46.291510+00:00'
+    stale_at: '2026-09-25T13:36:46.291510+00:00'
+    expire_at: '2026-11-24T13:36:46.291510+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - 先导稀材 广东先导 磷化铟 衬底 产能 扩产 2026 国产替代
+  rings:
+  - bull-bear
+- id: mat-f65d60
+  filename: 2026-08-26_未知机构-磷化铟全球供需情况和扩产预期20260105.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.429426+00:00'
+  processed: true
+  notes: query='先导稀材 广东先导 磷化铟 衬底 产能 扩产 2026 国产替代'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 磷化铟 出口许可 商务部 批复 企业 差异 国产替代 名单 通美 2026
+    url: https://www.fxbaogao.com/detail/5227237
+    domain: fxbaogao.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:34:07.314583+00:00'
+    stale_at: '2026-09-25T11:34:07.314583+00:00'
+    expire_at: '2026-11-24T11:34:07.314583+00:00'
+    triggered_by: 00-deep-fetch
+    prev_queries:
+    - 先导稀材 广东先导 磷化铟 衬底 产能 扩产 2026 国产替代
+  rings:
+  - bull-bear
+- id: mat-e65c57
+  filename: 2026-08-26_the-bear-case-how-axti-behaves-during-market-shock.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.488022+00:00'
+  processed: false
+  notes: query='AXTI short interest bear case overvalued valuation risk 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI short interest bear case overvalued valuation risk 2026
+    url: https://www.trefis.com/stock/axti/articles/595588/the-bear-case-how-axti-behaves-during-market-shocks/2026-04-02
+    domain: trefis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:12.468980+00:00'
+    stale_at: '2026-09-25T11:16:12.468980+00:00'
+    expire_at: '2026-11-24T11:16:12.468980+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - valuation-percentile
+- id: mat-c96ab7
+  filename: 2026-08-26_axt-axti-short-interest-short-float-updated-aug-20.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.541382+00:00'
+  processed: false
+  notes: query='AXTI short interest bear case overvalued valuation risk 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI short interest bear case overvalued valuation risk 2026
+    url: https://www.marketbeat.com/stocks/NASDAQ/AXTI/short-interest/
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:12.522346+00:00'
+    stale_at: '2026-09-25T11:16:12.522346+00:00'
+    expire_at: '2026-11-24T11:16:12.522346+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - valuation-percentile
+- id: mat-cc9b03
+  filename: 2026-08-26_a-look-at-axt-axti-valuation-after-expansion-plans.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.595681+00:00'
+  processed: false
+  notes: query='AXTI short interest bear case overvalued valuation risk 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI short interest bear case overvalued valuation risk 2026
+    url: https://finance.yahoo.com/markets/stocks/articles/look-axt-axti-valuation-expansion-221236478.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:12.576294+00:00'
+    stale_at: '2026-09-25T11:16:12.576294+00:00'
+    expire_at: '2026-11-24T11:16:12.576294+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - valuation-percentile
+- id: mat-92ec1b
+  filename: 2026-08-26_is-axt-inc-axti-overvalued-after-3-5-rally-gf-valu.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.650989+00:00'
+  processed: false
+  notes: query='AXTI short interest bear case overvalued valuation risk 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI short interest bear case overvalued valuation risk 2026
+    url: https://www.gurufocus.com/news/8790736/is-axt-inc-axti-overvalued-after-35-rally-gf-value-says-overvalued
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:12.631106+00:00'
+    stale_at: '2026-09-25T11:16:12.631106+00:00'
+    expire_at: '2026-11-24T11:16:12.631106+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - valuation-percentile
+- id: mat-e65ce8
+  filename: 2026-08-26_axt-inc-磷化铟-砷化镓-锗半导体衬底制造商.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.712807+00:00'
+  processed: false
+  notes: query='AXT Inc 定兴 产能 搬迁 InP 衬底 扩产 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc 定兴 产能 搬迁 InP 衬底 扩产 2026
+    url: https://www.axt.com/zh
+    domain: axt.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:12.691444+00:00'
+    stale_at: '2026-09-25T11:16:12.691444+00:00'
+    expire_at: '2026-11-24T11:16:12.691444+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+- id: mat-57eeca
+  filename: 2026-08-26_讯石观察-axt获lumentum长协inp供需缺口持续扩大.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.774999+00:00'
+  processed: false
+  notes: query='AXT Inc 定兴 产能 搬迁 InP 衬底 扩产 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc 定兴 产能 搬迁 InP 衬底 扩产 2026
+    url: http://www.iccsz.com/4g/News.Asp?ID
+    domain: iccsz.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:12.750989+00:00'
+    stale_at: '2026-09-25T11:16:12.750989+00:00'
+    expire_at: '2026-11-24T11:16:12.750989+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-27fe21
+  filename: 2026-08-26_axt-inc-磷化铟-inp-衬底双寡头-上游-卖铲人-卡位ai光.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.836428+00:00'
+  processed: true
+  notes: query='AXT Inc 定兴 产能 搬迁 InP 衬底 扩产 2026'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 发现报告：AXT 磷化铟衬底双寡头 卖铲人（多方主干）
+    url: https://www.fxbaogao.com/detail/5292001
+    domain: fxbaogao.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T12:49:48.723124+00:00'
+    stale_at: '2026-09-25T12:49:48.723124+00:00'
+    expire_at: '2026-11-24T12:49:48.723124+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - AXT Inc 定兴 产能 搬迁 InP 衬底 扩产 2026
+  rings:
+  - bull-bear
+  - consensus
+- id: mat-fa7013
+  filename: 2026-08-26_axt-inc公布磷化铟衬底扩产计划股价年初至今涨幅显著.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.895601+00:00'
+  processed: false
+  notes: query='AXT Inc 定兴 产能 搬迁 InP 衬底 扩产 2026' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc 定兴 产能 搬迁 InP 衬底 扩产 2026
+    url: http://www.eeo.com.cn/2026/0518/880295.shtml
+    domain: eeo.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:12.874294+00:00'
+    stale_at: '2026-09-25T11:16:12.874294+00:00'
+    expire_at: '2026-11-24T11:16:12.874294+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-92960d
+  filename: 2026-08-26_axt-announces-public-offering-of-common-stock.md
+  source_type: web-search
+  added: '2026-08-26T11:16:12.956668+00:00'
+  processed: false
+  notes: query='AXT Inc secondary offering dilution shares outstanding 2026 ATM'
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc secondary offering dilution shares outstanding 2026 ATM
+    url: https://investors.axt.com/Investors/news/news-details/2026/AXT-Announces-Public-Offering-of-Common-Stock/default.aspx
+    domain: investors.axt.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:16:12.935407+00:00'
+    stale_at: '2026-09-25T11:16:12.935407+00:00'
+    expire_at: '2026-11-24T11:16:12.935407+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - mgmt-capital-alloc
+- id: mat-092f7e
+  filename: 2026-08-26_axt-inc-shares-outstanding-2012-2026-axti.md
+  source_type: web-search
+  added: '2026-08-26T11:16:13.018345+00:00'
+  processed: false
+  notes: query='AXT Inc secondary offering dilution shares outstanding 2026 ATM' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc secondary offering dilution shares outstanding 2026 ATM
+    url: https://www.macrotrends.net/stocks/charts/AXTI/axt-inc/shares-outstanding
+    domain: macrotrends.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:12.995654+00:00'
+    stale_at: '2026-09-25T11:16:12.995654+00:00'
+    expire_at: '2026-11-24T11:16:12.995654+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - mgmt-capital-alloc
+- id: mat-20a836
+  filename: 2026-08-26_axt-announces-pricing-of-550-million-public-offeri.md
+  source_type: web-search
+  added: '2026-08-26T11:16:13.076007+00:00'
+  processed: false
+  notes: query='AXT Inc secondary offering dilution shares outstanding 2026 ATM'
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc secondary offering dilution shares outstanding 2026 ATM
+    url: https://investors.axt.com/Investors/news/news-details/2026/AXT-Announces-Pricing-of-550-Million-Public-Offering-of-Common-Stock/default.aspx
+    domain: investors.axt.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:16:13.053581+00:00'
+    stale_at: '2026-09-25T11:16:13.053581+00:00'
+    expire_at: '2026-11-24T11:16:13.053581+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - mgmt-capital-alloc
+- id: mat-a98f5d
+  filename: 2026-08-26_axt-announces-adjournment-of-2026-annual-meeting-o.md
+  source_type: web-search
+  added: '2026-08-26T11:16:13.136165+00:00'
+  processed: true
+  notes: query='AXT Inc secondary offering dilution shares outstanding 2026 ATM' |
+    query='AXT 2026 股东大会休会原因（法定人数）与重开时点' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT 2026 股东大会休会原因（法定人数）与重开时点
+    url: https://investors.axt.com/Investors/news/news-details/2026/AXT-Announces-Adjournment-of-2026-An
+    domain: investors.axt.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T13:36:44.992094+00:00'
+    stale_at: '2026-09-25T13:36:44.992094+00:00'
+    expire_at: '2026-11-24T13:36:44.992094+00:00'
+    triggered_by: 03-extract
+  rings:
+  - mgmt-capital-alloc
+- id: mat-e69707
+  filename: 2026-08-26_financials---quarterly-results---axt-inc-investor-.md
+  source_type: web-search
+  added: '2026-08-26T11:16:13.202977+00:00'
+  processed: false
+  notes: query='AXT Inc AXTI Q3 2026 guidance outlook capacity expansion capex'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT Inc AXTI Q3 2026 guidance outlook capacity expansion capex
+    url: https://investors.axt.com/Investors/financials/quarterly-results/default.aspx
+    domain: investors.axt.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:16:13.179614+00:00'
+    stale_at: '2026-09-25T11:16:13.179614+00:00'
+    expire_at: '2026-11-24T11:16:13.179614+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-d074b7
+  filename: 2026-08-26_axti-q2-2026-earnings-call.md
+  source_type: web-search
+  added: '2026-08-26T11:16:13.273611+00:00'
+  processed: false
+  notes: query='AXT Inc AXTI Q3 2026 guidance outlook capacity expansion capex' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc AXTI Q3 2026 guidance outlook capacity expansion capex
+    url: https://www.alphaspread.com/security/nasdaq/axti/investor-relations/earnings-call/q2-2026
+    domain: alphaspread.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:13.249674+00:00'
+    stale_at: '2026-09-25T11:16:13.249674+00:00'
+    expire_at: '2026-11-24T11:16:13.249674+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-9844b9
+  filename: 2026-08-26_axti-q2-earnings-call-highlights-ai-capacity-expan.md
+  source_type: web-search
+  added: '2026-08-26T11:16:13.338493+00:00'
+  processed: false
+  notes: query='AXT Inc AXTI Q3 2026 guidance outlook capacity expansion capex' |
+    待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc AXTI Q3 2026 guidance outlook capacity expansion capex
+    url: https://finance.yahoo.com/technology/ai/articles/axti-q2-earnings-call-highlights-142800316.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:16:13.314570+00:00'
+    stale_at: '2026-09-25T11:16:13.314570+00:00'
+    expire_at: '2026-11-24T11:16:13.314570+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-29a6fb
+  filename: 2026-08-26_axt-s-tongmei-problem-great-asset-fragile-economic.md
+  source_type: web-search
+  added: '2026-08-26T11:19:32.094939+00:00'
+  processed: true
+  notes: query='AXTI stock drop August 2026 selloff InP oversupply valuation bear
+    case' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 空方深度救回：Maius Partners / J Capital 对 AXT-Tongmei 的质疑
+    url: https://www.maiuspartners.com/p/axts-tongmei-problem-great-asset
+    domain: maiuspartners.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:31.477927+00:00'
+    stale_at: '2026-09-25T12:50:31.477927+00:00'
+    expire_at: '2026-11-24T12:50:31.477927+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - AXTI stock drop August 2026 selloff InP oversupply valuation bear case
+  rings:
+  - bull-bear
+- id: mat-d75d68
+  filename: 2026-08-26_axt-stock-fell-17-yesterday-with-no-catalyst-tikr.md
+  source_type: web-search
+  added: '2026-08-26T11:19:32.231748+00:00'
+  processed: false
+  notes: query='AXTI stock drop August 2026 selloff InP oversupply valuation bear
+    case' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI stock drop August 2026 selloff InP oversupply valuation bear case
+    url: https://www.tikr.com/blog/axt-stock-fell-17-yesterday-with-no-catalyst-analysts-already-saw-this-coming
+    domain: tikr.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:19:32.201715+00:00'
+    stale_at: '2026-09-25T11:19:32.201715+00:00'
+    expire_at: '2026-11-24T11:19:32.201715+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - consensus
+- id: mat-19c605
+  filename: 2026-08-26_china-export-shock-sends-axt-stock-sliding-tiprank.md
+  source_type: web-search
+  added: '2026-08-26T11:19:32.306874+00:00'
+  processed: false
+  notes: query='AXTI stock drop August 2026 selloff InP oversupply valuation bear
+    case' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI stock drop August 2026 selloff InP oversupply valuation bear case
+    url: https://www.tipranks.com/news/catalyst/china-export-shock-sends-axt-stock-sliding-hard
+    domain: tipranks.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:19:32.281664+00:00'
+    stale_at: '2026-09-25T11:19:32.281664+00:00'
+    expire_at: '2026-11-24T11:19:32.281664+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-95ff8a
+  filename: 2026-08-26_axt-shares-pull-back-after-extraordinary-rally-kal.md
+  source_type: web-search
+  added: '2026-08-26T11:19:32.378365+00:00'
+  processed: false
+  notes: query='AXTI stock drop August 2026 selloff InP oversupply valuation bear
+    case' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI stock drop August 2026 selloff InP oversupply valuation bear case
+    url: https://kalkine.com/news/technology/axt-nasdaqaxti-shares-pull-back-after-extraordinary-rally
+    domain: kalkine.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:19:32.352374+00:00'
+    stale_at: '2026-09-25T11:19:32.352374+00:00'
+    expire_at: '2026-11-24T11:19:32.352374+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+  - consensus
+- id: mat-fdc35e
+  filename: 2026-08-26_axt-inc-axti-stock-price-overview-stockanalysis-估值.md
+  source_type: web-search
+  added: '2026-08-26T11:19:32.447565+00:00'
+  processed: false
+  notes: query='AXTI stock drop August 2026 selloff InP oversupply valuation bear
+    case' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI stock drop August 2026 selloff InP oversupply valuation bear case
+    url: https://stockanalysis.com/stocks/axti/
+    domain: stockanalysis.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:19:32.422314+00:00'
+    stale_at: '2026-09-25T11:19:32.422314+00:00'
+    expire_at: '2026-11-24T11:19:32.422314+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - consensus
+  - valuation-anchor
+- id: mat-5a96d6
+  filename: 2026-08-26_axt-bstock-falls-16-as-axti-reverses-rally-出口许可时间线.md
+  source_type: web-search
+  added: '2026-08-26T11:19:32.518812+00:00'
+  processed: false
+  notes: query='AXTI stock drop August 2026 selloff InP oversupply valuation bear
+    case' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI stock drop August 2026 selloff InP oversupply valuation bear case
+    url: https://thecryptobasic.com/2026/08/10/axt-bstock-falls-16-as-axti-reverses-fridays-sharp-rally/
+    domain: thecryptobasic.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:19:32.492430+00:00'
+    stale_at: '2026-09-25T11:19:32.492430+00:00'
+    expire_at: '2026-11-24T11:19:32.492430+00:00'
+    triggered_by: 00-prescan
+  rings:
+  - bull-bear
+- id: mat-89f074
+  filename: 2026_AXTI_10-Q_2026-08-13.htm
+  source_type: quarterly-report
+  added: '2026-08-26T11:30:57.733894+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — AXT INC
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  addresses:
+  - K1
+  - K3
+  - K4
+- id: mat-0f320a
+  filename: sec/2026_AXTI_10-Q_2026-08-13/item_2_mda.md
+  source_type: sec-section
+  added: '2026-08-26T11:30:57.989376+00:00'
+  processed: true
+  notes: split from 2026_AXTI_10-Q_2026-08-13.htm (PartI_2)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - K5
+  - Q1
+  parent_mat: mat-89f074
+  sec_section: item_2_mda
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-80342c
+  filename: sec/2026_AXTI_10-Q_2026-08-13/item_3_quant_risk.md
+  source_type: sec-section
+  added: '2026-08-26T11:30:58.032278+00:00'
+  processed: true
+  notes: split from 2026_AXTI_10-Q_2026-08-13.htm (PartI_3)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K4
+  - risk
+  parent_mat: mat-89f074
+  sec_section: item_3_quant_risk
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-17c239
+  filename: sec/2026_AXTI_10-Q_2026-08-13/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-08-26T11:30:58.075786+00:00'
+  processed: true
+  notes: split from 2026_AXTI_10-Q_2026-08-13.htm (PartII_1A)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K4
+  - K6
+  - risk
+  parent_mat: mat-89f074
+  sec_section: item_1a_risk
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  - financial-arc
+- id: mat-1d5c19
+  filename: 2025_AXTI_10-K_2026-03-17.htm
+  source_type: annual-report
+  added: '2026-08-26T11:31:13.070797+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — AXT INC
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+  - mgmt-capital-alloc
+  addresses:
+  - K1
+  - K2
+  - K6
+  - K7
+- id: mat-f7e025
+  filename: 2026-08-26_securities-and-exchange-commission.md
+  source_type: web-search
+  added: '2026-08-26T11:34:06.177503+00:00'
+  processed: true
+  notes: query='AXT Inc DEF 14A 2026 proxy executive compensation Morris Young succession
+    Form 4 insider selling'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - K7
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT 2026 股东大会休会原因（法定人数）与重开时点
+    url: https://www.sec.gov/Archives/edgar/data/1051627/000121390026032328/ea0282457-pre14a_axt.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T13:36:45.381042+00:00'
+    stale_at: '2026-09-25T13:36:45.381042+00:00'
+    expire_at: '2026-11-24T13:36:45.381042+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - AXT Inc DEF 14A 2026 proxy executive compensation Morris Young succession Form
+      4 insider selling
+  rings:
+  - biz-moat-unit-econ
+  - financial-arc
+- id: mat-2c5dd3
+  filename: 2026-08-26_axt-inc-form-144-lists-proposed-insider-share-sale.md
+  source_type: web-search
+  added: '2026-08-26T11:34:06.267513+00:00'
+  processed: true
+  notes: query='AXT Inc DEF 14A 2026 proxy executive compensation Morris Young succession
+    Form 4 insider selling' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Inc DEF 14A 2026 proxy executive compensation Morris Young succession
+      Form 4 insider selling
+    url: https://www.stocktitan.net/sec-filings/AXTI/144-axt-inc-sec-filing-fac7346a2814.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:34:06.233887+00:00'
+    stale_at: '2026-09-25T11:34:06.233887+00:00'
+    expire_at: '2026-11-24T11:34:06.233887+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - mgmt-capital-alloc
+- id: mat-e47491
+  filename: 2026-08-26_axt-inc-axti-2026-annual-shareholder-meeting.md
+  source_type: web-search
+  added: '2026-08-26T11:34:06.388160+00:00'
+  processed: true
+  notes: query='AXT Inc DEF 14A 2026 proxy executive compensation Morris Young succession
+    Form 4 insider selling' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT 2026 股东大会休会原因（法定人数）与重开时点
+    url: https://www.boardroomalpha.com/meetings/axti-2026-annual-meeting
+    domain: boardroomalpha.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T13:36:45.219112+00:00'
+    stale_at: '2026-09-25T13:36:45.219112+00:00'
+    expire_at: '2026-11-24T13:36:45.219112+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - AXT Inc DEF 14A 2026 proxy executive compensation Morris Young succession Form
+      4 insider selling
+  rings:
+  - mgmt-capital-alloc
+- id: mat-16ee9d
+  filename: 2026-08-26_gt-advanced-technologies-inc-announces-results-for.md
+  source_type: web-search
+  added: '2026-08-26T11:34:06.508859+00:00'
+  processed: true
+  notes: query='GT Advanced sapphire shortage 2013 2014 price collapse gross margin
+    capacity expansion lesson polysilicon MLCC shortage cycle'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: GT Advanced sapphire shortage 2013 2014 price collapse gross margin capacity
+      expansion lesson polysilicon MLCC shortage cycle
+    url: https://www.sec.gov/Archives/edgar/data/1394954/000117184314003684/exh_991.htm
+    domain: sec.gov
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:34:06.468517+00:00'
+    stale_at: '2026-09-25T11:34:06.468517+00:00'
+    expire_at: '2026-11-24T11:34:06.468517+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-eebdf6
+  filename: 2026-08-26_three-lessons-from-gt-advanced-technologies-nasdaq.md
+  source_type: web-search
+  added: '2026-08-26T11:34:06.607854+00:00'
+  processed: true
+  notes: query='GT Advanced sapphire shortage 2013 2014 price collapse gross margin
+    capacity expansion lesson polysilicon MLCC shortage cycle' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GT Advanced sapphire shortage 2013 2014 price collapse gross margin capacity
+      expansion lesson polysilicon MLCC shortage cycle
+    url: https://moneymorning.com/2014/10/10/three-lessons-from-gt-advanced-technologies-nasdaq-gtat-stocks-demise/
+    domain: moneymorning.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:34:06.573636+00:00'
+    stale_at: '2026-09-25T11:34:06.573636+00:00'
+    expire_at: '2026-11-24T11:34:06.573636+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-8192f2
+  filename: 2026-08-26_gt-advanced-loss-widens-in-q1-2014-solar-power-new.md
+  source_type: web-search
+  added: '2026-08-26T11:34:06.706296+00:00'
+  processed: true
+  notes: query='GT Advanced sapphire shortage 2013 2014 price collapse gross margin
+    capacity expansion lesson polysilicon MLCC shortage cycle' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GT Advanced sapphire shortage 2013 2014 price collapse gross margin capacity
+      expansion lesson polysilicon MLCC shortage cycle
+    url: https://renewablesnow.com/news/gt-advanced-loss-widens-in-q1-2014-419049/
+    domain: renewablesnow.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:34:06.672462+00:00'
+    stale_at: '2026-09-25T11:34:06.672462+00:00'
+    expire_at: '2026-11-24T11:34:06.672462+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-142cae
+  filename: 2026-08-26_14-11916---gt-advanced-technologies-inc-and-gt.md
+  source_type: web-search
+  added: '2026-08-26T11:34:06.835162+00:00'
+  processed: true
+  notes: query='GT Advanced sapphire shortage 2013 2014 price collapse gross margin
+    capacity expansion lesson polysilicon MLCC shortage cycle' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: GT Advanced sapphire shortage 2013 2014 price collapse gross margin capacity
+      expansion lesson polysilicon MLCC shortage cycle
+    url: https://www.govinfo.gov/app/details/USCOURTS-nhb-1_14-bk-11916
+    domain: govinfo.gov
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:34:06.788843+00:00'
+    stale_at: '2026-09-25T11:34:06.788843+00:00'
+    expire_at: '2026-11-24T11:34:06.788843+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - historical-mirror
+- id: mat-88dd46
+  filename: 2026-08-26_公司公告-云南锗业-2026年5月13日投资者关系活动记录表.md
+  source_type: web-search
+  added: '2026-08-26T11:34:06.948695+00:00'
+  processed: true
+  notes: query='云南锗业 002428 磷化铟 衬底 产能 扩产 投资额 良率 2026 单位投资'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 云南锗业 002428 磷化铟 衬底 产能 扩产 投资额 良率 2026 单位投资
+    url: https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=002428&id=12318293
+    domain: money.finance.sina.com.cn
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:34:06.914463+00:00'
+    stale_at: '2026-09-25T11:34:06.914463+00:00'
+    expire_at: '2026-11-24T11:34:06.914463+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - valuation-percentile
+- id: mat-eea747
+  filename: 2026-08-26_云南锗业-002428-盈利预测.md
+  source_type: web-search
+  added: '2026-08-26T11:34:07.040967+00:00'
+  processed: true
+  notes: query='云南锗业 002428 磷化铟 衬底 产能 扩产 投资额 良率 2026 单位投资' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 云南锗业 002428 磷化铟 衬底 产能 扩产 投资额 良率 2026 单位投资
+    url: http://basic.10jqka.com.cn/002428/worth.html
+    domain: basic.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:34:07.008373+00:00'
+    stale_at: '2026-09-25T11:34:07.008373+00:00'
+    expire_at: '2026-11-24T11:34:07.008373+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - valuation-percentile
+- id: mat-47310e
+  filename: 2026-08-26_烈火烹油磷化铟-云南锗业净利数千万元-市值却狂飙数百亿元.md
+  source_type: web-search
+  added: '2026-08-26T11:34:07.131262+00:00'
+  processed: true
+  notes: query='云南锗业 002428 磷化铟 衬底 产能 扩产 投资额 良率 2026 单位投资'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 云南锗业 002428 磷化铟 衬底 产能 扩产 投资额 良率 2026 单位投资
+    url: https://www.sohu.com/a/1062999938_116062
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:34:07.097785+00:00'
+    stale_at: '2026-09-25T11:34:07.097785+00:00'
+    expire_at: '2026-11-24T11:34:07.097785+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - valuation-percentile
+- id: mat-40f3c3
+  filename: 2026-08-26_公布-出口许可证管理货物目录-2026年.md
+  source_type: web-search
+  added: '2026-08-26T11:34:07.225712+00:00'
+  processed: true
+  notes: query='磷化铟 出口许可 商务部 批复 企业 差异 国产替代 名单 通美 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 磷化铟 出口许可 商务部 批复 企业 差异 国产替代 名单 通美 2026
+    url: http://www.mofcom.gov.cn/zwgk/zcfb/art/2025/art_0ac7e2005ff04c488daa3add8972ea36.html
+    domain: mofcom.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:34:07.193657+00:00'
+    stale_at: '2026-09-25T11:34:07.193657+00:00'
+    expire_at: '2026-11-24T11:34:07.193657+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-c299ed
+  filename: 2026-08-26_缺口超50-订单排到2028年-磷化铟的-断供-危机才刚开始.md
+  source_type: web-search
+  added: '2026-08-26T11:34:07.402738+00:00'
+  processed: true
+  notes: query='磷化铟 出口许可 商务部 批复 企业 差异 国产替代 名单 通美 2026'
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K4
+  - K5
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 磷化铟 出口许可 商务部 批复 企业 差异 国产替代 名单 通美 2026
+    url: https://www.tmtpost.com/7979390.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:34:07.369789+00:00'
+    stale_at: '2026-09-25T11:34:07.369789+00:00'
+    expire_at: '2026-11-24T11:34:07.369789+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-104d04
+  filename: 2026-08-26_商务部公告2026年第23号公布将10家美国实体列入出口管制.md
+  source_type: web-search
+  added: '2026-08-26T11:34:07.493582+00:00'
+  processed: true
+  notes: query='磷化铟 出口许可 商务部 批复 企业 差异 国产替代 名单 通美 2026'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 磷化铟 出口许可 商务部 批复 企业 差异 国产替代 名单 通美 2026
+    url: https://www.mofcom.gov.cn/zwgk/zcfb/art/2026/art_dfa9cc5c1e004d7fbb86f83d249e7986.html
+    domain: mofcom.gov.cn
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:34:07.460282+00:00'
+    stale_at: '2026-09-25T11:34:07.460282+00:00'
+    expire_at: '2026-11-24T11:34:07.460282+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+- id: mat-fef9f9
+  filename: 2026-08-26_北京通美晶体技术股份有限公司.md
+  source_type: web-search
+  added: '2026-08-26T11:34:07.597830+00:00'
+  processed: true
+  notes: query='北京通美 招股说明书 关联交易 定价 磷化铟 单价 AXT 销售 毛利率' | query='北京通美 招股说明书 关联交易 定价
+    磷化铟 单价 AXT 销售 毛利率' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北京通美 招股说明书 关联交易 定价 磷化铟 单价 AXT 销售 毛利率
+    url: http://qxb-pdf-osscache.qixin.com/AnBaseinfo/6067b24a2e9483695e6b707c419a5a31.pdf
+    domain: qxb-pdf-osscache.qixin.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:34:07.757331+00:00'
+    stale_at: '2026-09-25T11:34:07.757331+00:00'
+    expire_at: '2026-11-24T11:34:07.757331+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-225d5d
+  filename: 2026-08-26_直接材料占营业成本比例攀升北京通美冲刺科创板.md
+  source_type: web-search
+  added: '2026-08-26T11:34:07.694728+00:00'
+  processed: true
+  notes: query='北京通美 招股说明书 关联交易 定价 磷化铟 单价 AXT 销售 毛利率' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北京通美 招股说明书 关联交易 定价 磷化铟 单价 AXT 销售 毛利率
+    url: http://www.nbd.com.cn/rss/toutiao/articles/2211520.html
+    domain: nbd.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:34:07.661174+00:00'
+    stale_at: '2026-09-25T11:34:07.661174+00:00'
+    expire_at: '2026-11-24T11:34:07.661174+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-926fc8
+  filename: 2026-08-26_北京通美晶体ipo受阻-关联交易价格显失公允-业绩真实性存疑.md
+  source_type: web-search
+  added: '2026-08-26T11:34:07.887282+00:00'
+  processed: true
+  notes: query='北京通美 招股说明书 关联交易 定价 磷化铟 单价 AXT 销售 毛利率' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 北京通美 招股说明书 关联交易 定价 磷化铟 单价 AXT 销售 毛利率
+    url: https://zhuanlan.zhihu.com/p/613894349
+    domain: zhuanlan.zhihu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:34:07.852902+00:00'
+    stale_at: '2026-09-25T11:34:07.852902+00:00'
+    expire_at: '2026-11-24T11:34:07.852902+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+  - mgmt-capital-alloc
+- id: mat-036429
+  filename: 2026-08-26_特專科技公司上市.md
+  source_type: web-search
+  added: '2026-08-26T11:34:07.988924+00:00'
+  processed: true
+  notes: query='港交所 18C 特专科技 上市规则 与科创板 差别 2026 半导体材料'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 港交所 18C 特专科技 上市规则 与科创板 差别 2026 半导体材料
+    url: https://www.hkex.com.hk/listing/rules-and-resources/guidance/ipo/listing-of-specialist-technology-companies?sc_lang=zh-hk
+    domain: hkex.com.hk
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:34:07.954300+00:00'
+    stale_at: '2026-09-25T11:34:07.954300+00:00'
+    expire_at: '2026-11-24T11:34:07.954300+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - mgmt-capital-alloc
+- id: mat-f90065
+  filename: 2026-08-26_第十八c章特專科技公司---上市規則與指引.md
+  source_type: web-search
+  added: '2026-08-26T11:34:08.083859+00:00'
+  processed: true
+  notes: query='港交所 18C 特专科技 上市规则 与科创板 差别 2026 半导体材料'
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: 港交所 18C 特专科技 上市规则 与科创板 差别 2026 半导体材料
+    url: https://cn-rules.hkex.com.hk/%E8%A6%8F%E5%89%87%E6%89%8B%E5%86%8A/%E7%AC%AC%E5%8D%81%E5%85%ABc%E7%AB%A0-%E7%89%B9%E5%B0%88%E7%A7%91%E6%8A%80%E5%85%AC%E5%8F%B8
+    domain: cn-rules.hkex.com.hk
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:34:08.049073+00:00'
+    stale_at: '2026-09-25T11:34:08.049073+00:00'
+    expire_at: '2026-11-24T11:34:08.049073+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - mgmt-capital-alloc
+- id: mat-47f734
+  filename: 2026-08-26_港股18c章-咨询稿-与上交所科创板之上市要求对比及分析.md
+  source_type: web-search
+  added: '2026-08-26T11:34:08.184899+00:00'
+  processed: true
+  notes: query='港交所 18C 特专科技 上市规则 与科创板 差别 2026 半导体材料' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: 港交所 18C 特专科技 上市规则 与科创板 差别 2026 半导体材料
+    url: https://www.kingandwood.com/cn/zh/insights/latest-thinking/comparison-and-analysis-of-listing-requirements-of-hong-kong-stock-market-chapter-18cand-shanghai-stock-exchange-scientific-innovation-board.html
+    domain: kingandwood.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:34:08.149305+00:00'
+    stale_at: '2026-09-25T11:34:08.149305+00:00'
+    expire_at: '2026-11-24T11:34:08.149305+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - mgmt-capital-alloc
+- id: mat-efd716
+  filename: 2026-08-26_axti-stock-skyrockets-as-investors-cheer-blowout-g.md
+  source_type: web-search
+  added: '2026-08-26T11:35:49.299171+00:00'
+  processed: true
+  notes: query='AXTI analyst estimates 2027 2028 revenue EPS consensus price target
+    rationale' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI analyst estimates 2027 2028 revenue EPS consensus price target rationale
+    url: https://finance.yahoo.com/markets/stocks/articles/axti-stock-skyrockets-investors-cheer-142622680.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:35:49.263758+00:00'
+    stale_at: '2026-09-25T11:35:49.263758+00:00'
+    expire_at: '2026-11-24T11:35:49.263758+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - bull-bear
+  - consensus
+- id: mat-3fd5db
+  filename: 2026-08-26_axti-stock-jumps-as-northland-hikes-ai-driven-pric.md
+  source_type: web-search
+  added: '2026-08-26T11:35:49.401794+00:00'
+  processed: true
+  notes: query='AXTI analyst estimates 2027 2028 revenue EPS consensus price target
+    rationale' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K7
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI analyst estimates 2027 2028 revenue EPS consensus price target rationale
+    url: https://timothysykes.com/news/axt-inc-axti-news-2026_06_15-2
+    domain: timothysykes.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:35:49.363601+00:00'
+    stale_at: '2026-09-25T11:35:49.363601+00:00'
+    expire_at: '2026-11-24T11:35:49.363601+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - consensus
+  - mgmt-capital-alloc
+- id: mat-d252fe
+  filename: 2026-08-26_axti-upgraded-by-needham----price-target-90-gurufo.md
+  source_type: web-search
+  added: '2026-08-26T11:35:49.504391+00:00'
+  processed: true
+  notes: query='AXTI analyst estimates 2027 2028 revenue EPS consensus price target
+    rationale' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI analyst estimates 2027 2028 revenue EPS consensus price target rationale
+    url: https://www.gurufocus.com/news/8994956/axti-upgraded-by-needham-price-target-announced-at-9000
+    domain: gurufocus.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:35:49.468194+00:00'
+    stale_at: '2026-09-25T11:35:49.468194+00:00'
+    expire_at: '2026-11-24T11:35:49.468194+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - consensus
+- id: mat-795e93
+  filename: 2026-08-26_axt-sees-unusually-high-options-volume-marketbeat-.md
+  source_type: web-search
+  added: '2026-08-26T11:35:49.607359+00:00'
+  processed: true
+  notes: query='AXTI analyst estimates 2027 2028 revenue EPS consensus price target
+    rationale' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI analyst estimates 2027 2028 revenue EPS consensus price target rationale
+    url: https://www.marketbeat.com/instant-alerts/axt-sees-unusually-high-options-volume-nasdaqaxti-2026-07-31
+    domain: marketbeat.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:35:49.570824+00:00'
+    stale_at: '2026-09-25T11:35:49.570824+00:00'
+    expire_at: '2026-11-24T11:35:49.570824+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - consensus
+- id: mat-bc4b50
+  filename: 2026-08-26_axti-forecast-price-target-estimates-fintel.md
+  source_type: web-search
+  added: '2026-08-26T11:35:49.713048+00:00'
+  processed: true
+  notes: query='AXTI analyst estimates 2027 2028 revenue EPS consensus price target
+    rationale' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXTI analyst estimates 2027 2028 revenue EPS consensus price target rationale
+    url: https://fintel.io/sfo/us/axti
+    domain: fintel.io
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T11:35:49.675919+00:00'
+    stale_at: '2026-09-25T11:35:49.675919+00:00'
+    expire_at: '2026-11-24T11:35:49.675919+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - consensus
+- id: mat-ed9db3
+  filename: 2026-08-26_axt-inc-axti-q2-2026-earnings-call-transcript.md
+  source_type: web-search
+  added: '2026-08-26T11:38:36.581128+00:00'
+  processed: true
+  notes: query='AXT AXTI Q2 2026 earnings call transcript gross margin China domestic
+    export permit mix Fischer Young'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - scope
+  confidence: 0.9
+  search_meta:
+    query: AXT AXTI Q2 2026 earnings call transcript gross margin China domestic export
+      permit mix Fischer Young
+    url: https://seekingalpha.com/article/4928416-axt-inc-axti-q2-2026-earnings-call-transcript
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T11:38:36.543453+00:00'
+    stale_at: '2026-09-25T11:38:36.543453+00:00'
+    expire_at: '2026-11-24T11:38:36.543453+00:00'
+    triggered_by: 00-deep-fetch
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-4111b9
+  filename: 2026-08-26_axt-inc-axti-q2-2026-earnings-call-highlights.md
+  source_type: web-search
+  added: '2026-08-26T11:38:36.803668+00:00'
+  processed: true
+  notes: query='AXT AXTI Q2 2026 earnings call transcript gross margin China domestic
+    export permit mix Fischer Young' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - scope
+  confidence: 0.7
+  search_meta:
+    query: AXT Q2/2026 电话会与业绩一手数字救回
+    url: https://finance.yahoo.com/markets/stocks/articles/axt-inc-axti-q2-2026-050437348.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:32.519286+00:00'
+    stale_at: '2026-09-25T12:50:32.519286+00:00'
+    expire_at: '2026-11-24T12:50:32.519286+00:00'
+    triggered_by: 03-extract
+    prev_queries:
+    - AXT AXTI Q2 2026 earnings call transcript gross margin China domestic export
+      permit mix Fischer Young
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+- id: mat-29e87f
+  filename: 2025_002428_annual_2026-04-22_云南锗业.PDF
+  source_type: annual-report
+  added: '2026-08-26T12:14:25.214312+00:00'
+  processed: true
+  notes: Auto-downloaded from cninfo — 云南锗业
+  mineru_state: not_needed
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  - financial-arc
+  - mgmt-capital-alloc
+  - valuation-percentile
+  addresses:
+  - K3
+  - K5
+- id: mat-6fa92c
+  filename: 北京通美_审核中心意见落实函回复_2022-07-05.md
+  source_type: policy
+  added: '2026-08-26T12:17:44.463538+00:00'
+  processed: true
+  notes: ★一手监管问答。关键数据：①分产品关联交易价差(2019-2021合并,元/片)：GaAs 391.18 vs 377.11(+3.73%)、InP
+    483.15 vs 1275.32(-62.12%)、Ge 428.07 vs 430.54(-0.57%)——仅InP有价差；②差异率逐年收窄 2019
+    -68.85% → 2020 -59.41% → 2021 -51.81%；③★关联销售已终止：2021-03 AXT将境外销售及客户切换至美国通美，2021-05
+    通美完成收购美国通美，自2021-07起与AXT关联销售彻底终止(空方转移定价论据已过时)；④★按AXT终端价模拟的分产品毛利率(2021)：磷化铟57.47%
+    / 砷化镓23.86% / 锗1.18%——命门1的历史基准值；⑤通美向AXT销InP加权平均毛利率仅7.67%(成本加成口径)；⑥★份额权威口径：InP
+    2020通美全球36%第二，AXT+Sumitomo+JX三家占2020全球91%；GaAs 2019 13%第四；Ge Umicore高于通美、云南锗业进入加剧竞争；⑦关联销售占营收：2019
+    47.91% / 2020 48.35% / 2021 6.97%
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K6
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  - mgmt-capital-alloc
+  confidence: 0.95
+- id: mat-1771bb
+  filename: 北京通美_科创板招股说明书_2022-07-05.pdf
+  source_type: policy
+  added: '2026-08-26T12:17:44.526210+00:00'
+  processed: false
+  notes: 同上 PDF 原件（41页，text-based，可 fitz 直读，无需 mineru）
+  mineru_state: failed
+  addresses:
+  - K1
+  - K3
+  - K6
+  rings:
+  - biz-moat-unit-econ
+  - bull-bear
+  - mgmt-capital-alloc
+  confidence: 0.95
+- id: mat-fcb2b1
+  filename: 2026-08-26_电子行业点评报告mlcc-供给端出清.md
+  source_type: web-search
+  added: '2026-08-26T12:21:43.909234+00:00'
+  processed: true
+  notes: query='MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - historical-mirror
+  confidence: 0.7
+  search_meta:
+    query: MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘
+    url: https://pdf.dfcfw.com/pdf/H3_AP202304131585428504_1.pdf?1681406348000.pdf
+    domain: pdf.dfcfw.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:21:43.869115+00:00'
+    stale_at: '2026-09-25T12:21:43.869115+00:00'
+    expire_at: '2026-11-24T12:21:43.869115+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-18b132
+  filename: 2026-08-26_中金-mlcc周期复盘与展望-算力增长重构供需-结构性提价.md
+  source_type: web-search
+  added: '2026-08-26T12:21:44.020179+00:00'
+  processed: true
+  notes: query='MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - historical-mirror
+  confidence: 0.7
+  search_meta:
+    query: MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘
+    url: https://finance.sina.cn/2026-03-11/detail-inhqqixw2805853.d.html?vt=4
+    domain: finance.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:21:43.980511+00:00'
+    stale_at: '2026-09-25T12:21:43.980511+00:00'
+    expire_at: '2026-11-24T12:21:43.980511+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-e40421
+  filename: 2026-08-26_mlcc或迎-史上最长缺货潮-概念股集体飙升.md
+  source_type: web-search
+  added: '2026-08-26T12:21:44.134440+00:00'
+  processed: true
+  notes: query='MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - historical-mirror
+  confidence: 0.7
+  search_meta:
+    query: MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘
+    url: https://m.jiemian.com/article/14595140.html
+    domain: m.jiemian.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:21:44.093642+00:00'
+    stale_at: '2026-09-25T12:21:44.093642+00:00'
+    expire_at: '2026-11-24T12:21:44.093642+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-fd4888
+  filename: 2026-08-26_mlcc指数三连涨-下一个存储-确认了.md
+  source_type: web-search
+  added: '2026-08-26T12:21:44.244788+00:00'
+  processed: true
+  notes: query='MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - historical-mirror
+  confidence: 0.9
+  search_meta:
+    query: MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘
+    url: https://www.21jingji.com/article/20260603/herald/1737c53f9bbfa975b2dcfb42083e7ce0.html
+    domain: 21jingji.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T12:21:44.204956+00:00'
+    stale_at: '2026-09-25T12:21:44.204956+00:00'
+    expire_at: '2026-11-24T12:21:44.204956+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-c31a89
+  filename: 2026-08-26_mlcc周期复盘对比-把握十年一次的历史级别机遇-2017.md
+  source_type: web-search
+  added: '2026-08-26T12:21:44.357228+00:00'
+  processed: true
+  notes: query='MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - historical-mirror
+  confidence: 0.9
+  search_meta:
+    query: MLCC 2018 涨价 缺货 毛利率 见顶 回落 复盘
+    url: https://xueqiu.com/8959573262/391275390
+    domain: xueqiu.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T12:21:44.315126+00:00'
+    stale_at: '2026-09-25T12:21:44.315126+00:00'
+    expire_at: '2026-11-24T12:21:44.315126+00:00'
+    triggered_by: 01-deep-fetch
+- id: mat-e6d79a
+  filename: sec/2025_AXTI_10-K_2026-03-17/item_1_business.md
+  source_type: sec-section
+  added: '2026-08-26T12:46:35.430388+00:00'
+  processed: true
+  notes: 10-K FY2025 业务全景/产品/客户/竞争
+  mineru_state: not_needed
+  addresses:
+  - K3
+  - K5
+  - scope
+  rings:
+  - biz-moat-unit-econ
+  parent_mat: mat-1d5c19
+  sec_section: item_1_business
+- id: mat-73fe1d
+  filename: sec/2025_AXTI_10-K_2026-03-17/item_1a_risk.md
+  source_type: sec-section
+  added: '2026-08-26T12:46:35.502506+00:00'
+  processed: true
+  notes: 10-K FY2025 风险因素(含中国结构/出口许可)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - risk
+  parent_mat: mat-1d5c19
+  sec_section: item_1a_risk
+- id: mat-8b9a27
+  filename: sec/2025_AXTI_10-K_2026-03-17/item_5_market.md
+  source_type: sec-section
+  added: '2026-08-26T12:46:35.575053+00:00'
+  processed: true
+  notes: 10-K FY2025 股权市场/回购/股东事项
+  mineru_state: not_needed
+  addresses:
+  - K7
+  rings:
+  - mgmt-capital-alloc
+  parent_mat: mat-1d5c19
+  sec_section: item_5_market
+- id: mat-62df35
+  filename: sec/2025_AXTI_10-K_2026-03-17/item_7_mda.md
+  source_type: sec-section
+  added: '2026-08-26T12:46:35.649218+00:00'
+  processed: true
+  notes: 10-K FY2025 MD&A 毛利率/产能/现金流
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K4
+  - K5
+  parent_mat: mat-1d5c19
+  sec_section: item_7_mda
+- id: mat-f0db77
+  filename: sec/2025_AXTI_10-K_2026-03-17/item_7a_quant_risk.md
+  source_type: sec-section
+  added: '2026-08-26T12:46:35.722215+00:00'
+  processed: true
+  notes: 10-K FY2025 量化风险(汇率/利率)
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - risk
+  parent_mat: mat-1d5c19
+  sec_section: item_7a_quant_risk
+- id: mat-178b29
+  filename: sec/2025_AXTI_10-K_2026-03-17/item_8_statements.md
+  source_type: sec-section
+  added: '2026-08-26T12:46:35.795794+00:00'
+  processed: true
+  notes: 10-K FY2025 三表(含少数股东权益)
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - valuation
+  parent_mat: mat-1d5c19
+  sec_section: item_8_statements
+- id: mat-aac87d
+  filename: sec/2025_AXTI_10-K_2026-03-17/item_8_notes.md
+  source_type: sec-section
+  added: '2026-08-26T12:46:35.868853+00:00'
+  processed: true
+  notes: 10-K FY2025 附注(关联交易/子公司/可赎回少数股东权益)
+  mineru_state: not_needed
+  addresses:
+  - K6
+  - K7
+  - valuation
+  rings:
+  - mgmt-capital-alloc
+  parent_mat: mat-1d5c19
+  sec_section: item_8_notes
+- id: mat-c7c751
+  filename: sec/2026_AXTI_10-Q_2026-08-13/item_1_financial.md
+  source_type: sec-section
+  added: '2026-08-26T12:46:35.943319+00:00'
+  processed: true
+  notes: 10-Q 2026Q2 财报与附注
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K6
+  - valuation
+  parent_mat: mat-89f074
+  sec_section: item_1_financial
+- id: mat-e0222e
+  filename: sec/2026_AXTI_10-Q_2026-08-13/item_other.md
+  source_type: sec-section
+  added: '2026-08-26T12:46:36.019208+00:00'
+  processed: true
+  notes: 10-Q 2026Q2 Part II 其他(诉讼/内部人交易)
+  mineru_state: not_needed
+  addresses:
+  - K7
+  - risk
+  rings:
+  - mgmt-capital-alloc
+  parent_mat: mat-89f074
+  sec_section: item_other
+- id: mat-a842e7
+  filename: 2026-08-26_indium-phosphide-takes-the-spotlight-住友60-口径.md
+  source_type: web-search
+  added: '2026-08-26T12:49:48.234248+00:00'
+  processed: true
+  notes: query='InP 衬底份额权威口径 2026（解决 36% vs 45% 冲突）'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - peer-comparison-financials
+  confidence: 0.9
+  search_meta:
+    query: InP 衬底份额权威口径 2026（解决 36% vs 45% 冲突）
+    url: https://eu.36kr.com/en/p/3651344579993989
+    domain: eu.36kr.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T12:49:48.186323+00:00'
+    stale_at: '2026-09-25T12:49:48.186323+00:00'
+    expire_at: '2026-11-24T12:49:48.186323+00:00'
+    triggered_by: 03-extract
+- id: mat-df6ffc
+  filename: 2026-08-26_axt-market-is-pricing-a-monopoly-that-does-not-exi.md
+  source_type: web-search
+  added: '2026-08-26T12:49:48.462255+00:00'
+  processed: true
+  notes: query='住友/JX InP 产能 2028 提 2.4x 的一手与空方引用'
+  mineru_state: not_needed
+  addresses:
+  - K5
+  rings:
+  - bull-bear
+  confidence: 0.9
+  search_meta:
+    query: 住友/JX InP 产能 2028 提 2.4x 的一手与空方引用
+    url: https://seekingalpha.com/article/4916989-axt-market-is-pricing-a-monopoly-that-does-not-exist
+    domain: seekingalpha.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T12:49:48.413173+00:00'
+    stale_at: '2026-09-25T12:49:48.413173+00:00'
+    expire_at: '2026-11-24T12:49:48.413173+00:00'
+    triggered_by: 03-extract
+- id: mat-999adc
+  filename: 2026-08-26_光模块的命门被卡住了-先导-25万片新增-40万片目标.md
+  source_type: web-search
+  added: '2026-08-26T12:49:49.116764+00:00'
+  processed: true
+  notes: query='先导/中铝/国内 InP 国产替代产能曲线（命门3 境内竞争）'
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  rings:
+  - peer-comparison-financials
+  confidence: 0.9
+  search_meta:
+    query: 先导/中铝/国内 InP 国产替代产能曲线（命门3 境内竞争）
+    url: https://www.tmtpost.com/8059100.html
+    domain: tmtpost.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T12:49:49.068434+00:00'
+    stale_at: '2026-09-25T12:49:49.068434+00:00'
+    expire_at: '2026-11-24T12:49:49.068434+00:00'
+    triggered_by: 03-extract
+- id: mat-0a648a
+  filename: 2026-08-26_coherent-corp-receives-14m-texas-grant-for-6-inch-.md
+  source_type: web-search
+  added: '2026-08-26T12:49:49.432065+00:00'
+  processed: true
+  notes: query='Coherent 6英寸 InP 一手披露（降本/扩产）'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  rings:
+  - peer-comparison-financials
+  confidence: 0.9
+  search_meta:
+    query: Coherent 6英寸 InP 一手披露（降本/扩产）
+    url: https://www.linkedin.com/posts/jim-anderson-a7215b12_im-proud-to-share-that-coherent-corp-has-activi
+    domain: linkedin.com
+    domain_tier: whitelist
+    searched_at: '2026-08-26T12:49:49.382804+00:00'
+    stale_at: '2026-09-25T12:49:49.382804+00:00'
+    expire_at: '2026-11-24T12:49:49.382804+00:00'
+    triggered_by: 03-extract
+- id: mat-291e1b
+  filename: 2026-08-26_j-capital-research-axti-做空研究-做空机构原站.md
+  source_type: web-search
+  added: '2026-08-26T12:50:31.616510+00:00'
+  processed: true
+  notes: query='空方深度救回：Maius Partners / J Capital 对 AXT-Tongmei 的质疑' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K6
+  rings:
+  - bull-bear
+  - mgmt-capital-alloc
+  confidence: 0.7
+  search_meta:
+    query: 空方深度救回：Maius Partners / J Capital 对 AXT-Tongmei 的质疑
+    url: https://www.jcapitalresearch.com/axti.html
+    domain: jcapitalresearch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:31.567280+00:00'
+    stale_at: '2026-09-25T12:50:31.567280+00:00'
+    expire_at: '2026-11-24T12:50:31.567280+00:00'
+    triggered_by: 03-extract
+- id: mat-1df988
+  filename: 2026-08-26_axt-8-k-通美-ipo-转港-人民币基金持有赎回权.md
+  source_type: web-search
+  added: '2026-08-26T12:50:31.759609+00:00'
+  processed: true
+  notes: query='空方深度救回：Maius Partners / J Capital 对 AXT-Tongmei 的质疑' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K6
+  rings:
+  - bull-bear
+  - mgmt-capital-alloc
+  confidence: 0.7
+  search_meta:
+    query: 空方深度救回：Maius Partners / J Capital 对 AXT-Tongmei 的质疑
+    url: https://www.stocktitan.net/sec-filings/AXTI/8-k-axt-inc-reports-material-event-1065f9e00ff9.html
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:31.709351+00:00'
+    stale_at: '2026-09-25T12:50:31.709351+00:00'
+    expire_at: '2026-11-24T12:50:31.709351+00:00'
+    triggered_by: 03-extract
+- id: mat-ab66f4
+  filename: 2026-08-26_axt-raises-over-630m-to-increase-inp-capacity-comp.md
+  source_type: web-search
+  added: '2026-08-26T12:50:31.898968+00:00'
+  processed: true
+  notes: query='空方深度救回：Maius Partners / J Capital 对 AXT-Tongmei 的质疑' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K6
+  rings:
+  - bull-bear
+  - mgmt-capital-alloc
+  confidence: 0.7
+  search_meta:
+    query: 空方深度救回：Maius Partners / J Capital 对 AXT-Tongmei 的质疑
+    url: https://compoundsemiconductor.net/article/124087/AXT_raises_over_630m_to_increase_InP_capacity
+    domain: compoundsemiconductor.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:31.848953+00:00'
+    stale_at: '2026-09-25T12:50:31.848953+00:00'
+    expire_at: '2026-11-24T12:50:31.848953+00:00'
+    triggered_by: 03-extract
+- id: mat-fc1ddc
+  filename: 2026-08-26_axt-axti-q2-2026-earnings-call-transcript-motley-f.md
+  source_type: web-search
+  added: '2026-08-26T12:50:32.376613+00:00'
+  processed: true
+  notes: query='AXT Q2/2026 电话会与业绩一手数字救回' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  rings:
+  - consensus
+  - valuation-anchor
+  confidence: 0.7
+  search_meta:
+    query: AXT Q2/2026 电话会与业绩一手数字救回
+    url: https://www.fool.com/earnings/call-transcripts/2026/08/03/axt-axti-q2-2026-earnings-call-transcript/
+    domain: fool.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:32.326237+00:00'
+    stale_at: '2026-09-25T12:50:32.326237+00:00'
+    expire_at: '2026-11-24T12:50:32.326237+00:00'
+    triggered_by: 03-extract
+- id: mat-8abeab
+  filename: 2026-08-26_axt-q1-2026-电话会-许可时点是-q2-及以后的关键.md
+  source_type: web-search
+  added: '2026-08-26T12:50:32.806130+00:00'
+  processed: true
+  notes: query='AXT Q2/2026 电话会与业绩一手数字救回' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  rings:
+  - consensus
+  - valuation-anchor
+  confidence: 0.7
+  search_meta:
+    query: AXT Q2/2026 电话会与业绩一手数字救回
+    url: https://www.investing.com/news/transcripts/earnings-call-transcript-axt-inc-beats-q1-2026-eps-expect
+    domain: investing.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:32.753189+00:00'
+    stale_at: '2026-09-25T12:50:32.753189+00:00'
+    expire_at: '2026-11-24T12:50:32.753189+00:00'
+    triggered_by: 03-extract
+- id: mat-90ba3e
+  filename: 2026-08-26_2010光伏行业分析与2011展望-多晶硅毛利率-70-30.md
+  source_type: web-search
+  added: '2026-08-26T12:50:33.286434+00:00'
+  processed: true
+  notes: query='多晶硅镜鉴救回：从价格见顶到毛利率崩塌的时滞' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - historical-mirror
+  confidence: 0.7
+  search_meta:
+    query: 多晶硅镜鉴救回：从价格见顶到毛利率崩塌的时滞
+    url: https://news.cncaa.org/9499.html
+    domain: news.cncaa.org
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:33.234450+00:00'
+    stale_at: '2026-09-25T12:50:33.234450+00:00'
+    expire_at: '2026-11-24T12:50:33.234450+00:00'
+    triggered_by: 03-extract
+- id: mat-f563d1
+  filename: 2026-08-26_2011年中国多晶硅产业运行分析-ofweek.md
+  source_type: web-search
+  added: '2026-08-26T12:50:33.431917+00:00'
+  processed: true
+  notes: query='多晶硅镜鉴救回：从价格见顶到毛利率崩塌的时滞' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K5
+  rings:
+  - historical-mirror
+  confidence: 0.7
+  search_meta:
+    query: 多晶硅镜鉴救回：从价格见顶到毛利率崩塌的时滞
+    url: https://solar.ofweek.com/2012-01/ART-260001-8420-28594762.html
+    domain: solar.ofweek.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:33.379613+00:00'
+    stale_at: '2026-09-25T12:50:33.379613+00:00'
+    expire_at: '2026-11-24T12:50:33.379613+00:00'
+    triggered_by: 03-extract
+- id: mat-3b21fe
+  filename: 2026-08-26_the-world-s-first-6-inch-inp-scalable-wafer-fabs-c.md
+  source_type: web-search
+  added: '2026-08-26T12:50:33.760443+00:00'
+  processed: true
+  notes: query='产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.7
+  search_meta:
+    query: 产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求
+    url: https://www.coherent.com/news/blog/indium-phosphide-wafer-fab
+    domain: coherent.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:33.707526+00:00'
+    stale_at: '2026-09-25T12:50:33.707526+00:00'
+    expire_at: '2026-11-24T12:50:33.707526+00:00'
+    triggered_by: 03-extract
+- id: mat-814547
+  filename: 2026-08-26_citrini-research-住友-2025-战略-deck-显示-inp-衬底产能-2028-.md
+  source_type: web-search
+  added: '2026-08-26T12:50:33.909546+00:00'
+  processed: true
+  notes: query='产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.7
+  search_meta:
+    query: 产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求
+    url: https://www.citriniresearch.com/p/let-there-be-light
+    domain: citriniresearch.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:33.855255+00:00'
+    stale_at: '2026-09-25T12:50:33.855255+00:00'
+    expire_at: '2026-11-24T12:50:33.855255+00:00'
+    triggered_by: 03-extract
+- id: mat-b1de1e
+  filename: 2026-08-26_机构-磷化铟供需错配显著-omdia-yole-需求口径.md
+  source_type: web-search
+  added: '2026-08-26T12:50:34.058722+00:00'
+  processed: true
+  notes: query='产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.7
+  search_meta:
+    query: 产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求
+    url: https://stock.10jqka.com.cn/20260613/c677444177.shtml
+    domain: stock.10jqka.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:34.005234+00:00'
+    stale_at: '2026-09-25T12:50:34.005234+00:00'
+    expire_at: '2026-11-24T12:50:34.005234+00:00'
+    triggered_by: 03-extract
+- id: mat-2c2d06
+  filename: 2026-08-26_indium-phosphide-wafer-market-size-mordor-2026-市场-.md
+  source_type: web-search
+  added: '2026-08-26T12:50:34.361922+00:00'
+  processed: true
+  notes: query='产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.7
+  search_meta:
+    query: 产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求
+    url: https://www.mordorintelligence.com/industry-reports/indium-phosphide-wafer-market
+    domain: mordorintelligence.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:34.304629+00:00'
+    stale_at: '2026-09-25T12:50:34.304629+00:00'
+    expire_at: '2026-11-24T12:50:34.304629+00:00'
+    triggered_by: 03-extract
+- id: mat-e2d653
+  filename: 2026-08-26_axt-与-lumentum-长约-供货至-2031-年底-87m-预付款.md
+  source_type: web-search
+  added: '2026-08-26T12:50:34.517309+00:00'
+  processed: true
+  notes: query='产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.7
+  search_meta:
+    query: 产能与份额权威口径救回：Coherent 官网 / 住友战略deck / Omdia-Yole 需求
+    url: http://www.moomoo.com/hans/community/feed/axt-surges-17-5-as-market-bets-on-an-inp-117115823325590
+    domain: moomoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T12:50:34.461919+00:00'
+    stale_at: '2026-09-25T12:50:34.461919+00:00'
+    expire_at: '2026-11-24T12:50:34.461919+00:00'
+    triggered_by: 03-extract
+- id: mat-e047be
+  filename: 2026-08-26_axt-adjourns-2026-shareholder-meeting-for-quorum-8.md
+  source_type: web-search
+  added: '2026-08-26T13:36:44.881242+00:00'
+  processed: true
+  notes: query='AXT 2026 股东大会休会原因（法定人数）与重开时点' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K7
+  rings:
+  - mgmt-capital-alloc
+  confidence: 0.7
+  search_meta:
+    query: AXT 2026 股东大会休会原因（法定人数）与重开时点
+    url: https://www.stocktitan.net/sec-filings/AXTI/8-k-axt-inc-reports-material-event-4b7916a9ca27.htm
+    domain: stocktitan.net
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T13:36:44.822742+00:00'
+    stale_at: '2026-09-25T13:36:44.822742+00:00'
+    expire_at: '2026-11-24T13:36:44.822742+00:00'
+    triggered_by: 03-extract
+- id: mat-491e10
+  filename: 2026-08-26_磷化铟-断供-危机才刚开始-新浪财经转载-含配额与通过率.md
+  source_type: web-search
+  added: '2026-08-26T13:36:45.941514+00:00'
+  processed: true
+  notes: query='中国铟出口配额 30% 与磷化铟许可通过率（政策硬约束）' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 中国铟出口配额 30% 与磷化铟许可通过率（政策硬约束）
+    url: https://finance.sina.cn/stock/jdts/2026-05-08/detail-inhxcyyr4274198.d.html
+    domain: finance.sina.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T13:36:45.874754+00:00'
+    stale_at: '2026-09-25T13:36:45.874754+00:00'
+    expire_at: '2026-11-24T13:36:45.874754+00:00'
+    triggered_by: 03-extract
+- id: mat-d22e59
+  filename: 2026-08-26_稀有金属-铟-2026-年出口配额降至年产量-30-出口量环比暴跌-23.md
+  source_type: web-search
+  added: '2026-08-26T13:36:46.114676+00:00'
+  processed: true
+  notes: query='中国铟出口配额 30% 与磷化铟许可通过率（政策硬约束）' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 中国铟出口配额 30% 与磷化铟许可通过率（政策硬约束）
+    url: https://www.facebook.com/luluckyyu/posts/%E7%A8%80%E6%9C%89%E9%87%91%E5%B1%AC%E9%8A%A6%E5%85%A8
+    domain: facebook.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T13:36:46.052696+00:00'
+    stale_at: '2026-09-25T13:36:46.052696+00:00'
+    expire_at: '2026-11-24T13:36:46.052696+00:00'
+    triggered_by: 03-extract
+- id: mat-194ffb
+  filename: 2026-08-26_商务部公告-2026-年第-30-号-将-14-家欧盟实体列入出口管制管控名单.md
+  source_type: web-search
+  added: '2026-08-26T13:36:46.456524+00:00'
+  processed: true
+  notes: query='中国铟出口配额 30% 与磷化铟许可通过率（政策硬约束）' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K4
+  - K5
+  confidence: 0.7
+  search_meta:
+    query: 中国铟出口配额 30% 与磷化铟许可通过率（政策硬约束）
+    url: https://www.mofcom.gov.cn/zwgk/zcfb/art/2026/art_2c9a32aa73bf4f5ea80ffa83e62fb259.html
+    domain: mofcom.gov.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T13:36:46.400153+00:00'
+    stale_at: '2026-09-25T13:36:46.400153+00:00'
+    expire_at: '2026-11-24T13:36:46.400153+00:00'
+    triggered_by: 03-extract
+- id: mat-62dddb
+  filename: 2026-08-26_全球疯抢磷化铟-经济观察报-2026-08-16.md
+  source_type: web-search
+  added: '2026-08-26T13:36:47.031981+00:00'
+  processed: true
+  notes: query='云南锗业磷化铟扩产项目完整参数（经济观察报）' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  rings:
+  - peer-comparison-financials
+  confidence: 0.7
+  search_meta:
+    query: 云南锗业磷化铟扩产项目完整参数（经济观察报）
+    url: http://www.eeo.com.cn/2026/0816/1000184.shtml
+    domain: eeo.com.cn
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T13:36:46.967105+00:00'
+    stale_at: '2026-09-25T13:36:46.967105+00:00'
+    expire_at: '2026-11-24T13:36:46.967105+00:00'
+    triggered_by: 03-extract
+- id: mat-2579cb
+  filename: 2026-08-26_磷化铟8大金刚-供给迎来缓和窗口-雪球-含铟资源占比.md
+  source_type: web-search
+  added: '2026-08-26T13:36:47.209598+00:00'
+  processed: true
+  notes: query='云南锗业磷化铟扩产项目完整参数（经济观察报）' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  rings:
+  - peer-comparison-financials
+  confidence: 0.7
+  search_meta:
+    query: 云南锗业磷化铟扩产项目完整参数（经济观察报）
+    url: https://xueqiu.com/5392941286/394843302
+    domain: xueqiu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-26T13:36:47.143781+00:00'
+    stale_at: '2026-09-25T13:36:47.143781+00:00'
+    expire_at: '2026-11-24T13:36:47.143781+00:00'
+    triggered_by: 03-extract
+- id: mat-174b60
+  filename: 2026-08-27_光芯片股再起波澜-磷化铟材料受资金追捧-证券市场周刊-引浙商证券-2026-06-30.md
+  source_type: web-search
+  added: '2026-08-27T06:56:17.030931+00:00'
+  processed: true
+  notes: query='InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12%
+    口径）'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.85
+  search_meta:
+    query: InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12% 口径）
+    url: https://static.weeklyonstock.com/26/0804/qdy164103.html
+    domain: static.weeklyonstock.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-27T06:56:16.966339+00:00'
+    stale_at: '2026-09-26T06:56:16.966339+00:00'
+    expire_at: '2026-11-25T06:56:16.966339+00:00'
+    triggered_by: 05-critic
+- id: mat-0b0680
+  filename: 2026-08-27_全球疯抢磷化铟-经济观察报全文-知乎转载-含-yole-片数口径供需.md
+  source_type: web-search
+  added: '2026-08-27T06:56:17.203126+00:00'
+  processed: true
+  notes: query='InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12%
+    口径）'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.8
+  search_meta:
+    query: InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12% 口径）
+    url: https://zhuanlan.zhihu.com/p/2072296296539596295
+    domain: zhuanlan.zhihu.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-27T06:56:17.141272+00:00'
+    stale_at: '2026-09-26T06:56:17.141272+00:00'
+    expire_at: '2026-11-25T06:56:17.141272+00:00'
+    triggered_by: 05-critic
+- id: mat-b87cd0
+  filename: 2026-08-27_axt-touts-surging-indium-phosphide-demand-at-needh.md
+  source_type: web-search
+  added: '2026-08-27T06:56:17.369058+00:00'
+  processed: true
+  notes: query='InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12%
+    口径）'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.8
+  search_meta:
+    query: InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12% 口径）
+    url: https://finance.yahoo.com/news/axt-touts-surging-indium-phosphide-100250562.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-27T06:56:17.309568+00:00'
+    stale_at: '2026-09-26T06:56:17.309568+00:00'
+    expire_at: '2026-11-25T06:56:17.309568+00:00'
+    triggered_by: 05-critic
+- id: mat-b7b005
+  filename: 2026-08-27_axt-expands-indium-phosphide-capacity-as-ai-demand.md
+  source_type: web-search
+  added: '2026-08-27T06:56:17.546243+00:00'
+  processed: true
+  notes: query='InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12%
+    口径）' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.75
+  search_meta:
+    query: InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12% 口径）
+    url: https://finance.yahoo.com/news/axt-expands-indium-phosphide-capacity-231335079.html
+    domain: finance.yahoo.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-08-27T06:56:17.483683+00:00'
+    stale_at: '2026-09-26T06:56:17.483683+00:00'
+    expire_at: '2026-11-25T06:56:17.483683+00:00'
+    triggered_by: 05-critic
+- id: mat-fb5f4e
+  filename: 2026-08-27_indium-phosphide-wafer-market-size-share-growth-st.md
+  source_type: web-search
+  added: '2026-08-27T06:56:17.698355+00:00'
+  processed: true
+  notes: query='InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12%
+    口径）' | 待用户确认
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K5
+  rings:
+  - bull-bear
+  - peer-comparison-financials
+  confidence: 0.5
+  search_meta:
+    query: InP 衬底 2026 片数口径供需平衡表 + 当期份额 + 扩产成本/周期（05-critic 兜底：统一 56% vs 12% 口径）
+    url: https://straitsresearch.com/report/indium-phosphide-wafer-market
+    domain: straitsresearch.com
+    domain_tier: other
+    searched_at: '2026-08-27T06:56:17.640139+00:00'
+    stale_at: '2026-09-26T06:56:17.640139+00:00'
+    expire_at: '2026-11-25T06:56:17.640139+00:00'
+    triggered_by: 05-critic
+- id: mat-20c9e7
+  filename: 2026-08-27_axt-q2-2026-earnings-call-transcript-fool-full.md
+  source_type: earnings-call-transcript
+  added: '2026-08-27T10:02:06.724615+00:00'
+  processed: true
+  notes: 05-critic Step 6.5 兜底取回：Q2/2026 电话会 prepared remarks 全文（原残留缺口①）。含产能路线图 exit-2026
+    $60M/季→exit-2027 $130M/季、backlog>$100M、CEO 三因归因含 favorable pricing trends、Casella
+    $22.3M + Coherent $25.4M 预付款。Q&A 逐字稿仍缺。
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  confidence: 0.95
+- id: mat-5825b3
+  filename: 2026-09-01_axt-q2-2026-earnings-call-QA-verbatim.md
+  source_type: earnings-call-transcript
+  added: '2026-09-01T09:00:08.904052+00:00'
+  processed: true
+  notes: Q2/2026 电话会 Q&A 逐字稿（残留缺口①补齐）。关键：产能 exit-2026 $60M/季→exit-2027 约$130M/季逐字确认；**capex
+    计划不加**（$40M/2026+$100M/2027 维持不变，产能靠 productivity+大尺寸而非硬件）；毛利率管理层目标"begins with
+    the 5"、"stay at 45% for now"；InP 线满产"whatever we can produce, we can sell"；backlog>$100M
+    覆盖到 2027、故意不接单（可达$150M）；中国占比 Q2 >50%、指引 40-60%；长约 Casella/Lumentum 2027 才起量。**K3
+    仍无解：全场无人给出分地区/分产品毛利率数字**
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K2
+  - K3
+  - K5
+  confidence: 0.95
+- id: mat-2289e3
+  filename: 2026-09-01_inp-wafer-market-size-vendor-dispersion.md
+  source_type: industry-research
+  added: '2026-09-01T09:00:08.997974+00:00'
+  processed: true
+  notes: 环②天花板锚的可靠性检验：同名 InP 晶圆市场在供应商间差 4-10 倍（SNS 2035 $679.76M vs Strategic Market
+    Research 2030 约$2.4B vs Mordor 2031 $386.65M），基年均落在 2026 涨价前；并被自下而上算术反证（AXT Q2
+    InP 年化 $123M ÷ 份额35-36% ⇒ 2026 市场约$340M = Mordor 口径 1.5 倍）。片数口径原件与当期份额仍未取到
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.7
+- id: mat-c33ca0
+  filename: 2026-09-02_云南锗业半年报净利暴增235-含inp产量-大单-smm当期价格-yole-2月报告.md
+  source_type: web-search
+  added: '2026-09-02T04:09:48.699058+00:00'
+  processed: true
+  notes: query='云南锗业 2026 半年报 化合物半导体 毛利率 磷化铟 产量'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: 云南锗业 2026 半年报 化合物半导体 毛利率 磷化铟 产量
+    url: https://m.sohu.com/a/1068511808_114986
+    domain: m.sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-09-02T04:09:48.638249+00:00'
+    stale_at: '2026-10-02T04:09:48.638249+00:00'
+    expire_at: '2026-12-01T04:09:48.638249+00:00'
+    triggered_by: 05-critic
+- id: mat-e47c18
+  filename: 2026-09-02_瞄准ai数据中心需求-磷化铟衬底巨头jx金属计划将产能扩大至多10倍-财联社.md
+  source_type: web-search
+  added: '2026-09-02T04:09:49.079765+00:00'
+  processed: true
+  notes: query='JX金属 磷化铟衬底 1200亿日元 产能7-10倍 全球供需缺口 片数口径'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: JX金属 磷化铟衬底 1200亿日元 产能7-10倍 全球供需缺口 片数口径
+    url: https://www.cls.cn/detail/2400563
+    domain: cls.cn
+    domain_tier: whitelist
+    searched_at: '2026-09-02T04:09:49.005080+00:00'
+    stale_at: '2026-10-02T04:09:49.005080+00:00'
+    expire_at: '2026-12-01T04:09:49.005080+00:00'
+    triggered_by: 05-critic
+- id: mat-66c883
+  filename: 2026-09-02_磷化铟晶圆产能提升10倍-日经编译-含份额与straits市场规模口径.md
+  source_type: web-search
+  added: '2026-09-02T04:09:49.283247+00:00'
+  processed: true
+  notes: query='JX金属 磷化铟衬底 1200亿日元 产能7-10倍 全球供需缺口 片数口径'
+  mineru_state: not_needed
+  addresses:
+  - K2
+  - K5
+  confidence: 0.9
+  search_meta:
+    query: JX金属 磷化铟衬底 1200亿日元 产能7-10倍 全球供需缺口 片数口径
+    url: https://www.sohu.com/a/1037177126_121948415
+    domain: sohu.com
+    domain_tier: whitelist
+    searched_at: '2026-09-02T04:09:49.216123+00:00'
+    stale_at: '2026-10-02T04:09:49.216123+00:00'
+    expire_at: '2026-12-01T04:09:49.216123+00:00'
+    triggered_by: 05-critic
+- id: mat-1cd2ed
+  filename: 2026-09-02_磷化铟概念龙头云南锗业半年报-化合物半导体材料毛利率47-14-同比-33-10pct-新浪财经转每.md
+  source_type: web-search
+  added: '2026-09-02T04:10:12.585116+00:00'
+  processed: true
+  notes: query='云南锗业 2026半年报 化合物半导体材料 毛利率 47.14% 单位成本下降'
+  mineru_state: not_needed
+  addresses:
+  - K1
+  - K3
+  - K5
+  confidence: 0.86
+  search_meta:
+    query: 云南锗业 2026半年报 化合物半导体材料 毛利率 47.14% 单位成本下降
+    url: https://finance.sina.com.cn/jjxw/2026-08-27/doc-inipuqhm5158605.shtml
+    domain: finance.sina.com.cn
+    domain_tier: other
+    searched_at: '2026-09-02T04:10:12.523297+00:00'
+    stale_at: '2026-10-02T04:10:12.523297+00:00'
+    expire_at: '2026-12-01T04:10:12.523297+00:00'
+    triggered_by: 05-critic
+- id: mat-8f4278
+  filename: 2026-09-03_jx-advanced-metals-decision-on-capital-investment-.md
+  source_type: web-search
+  added: '2026-09-03T02:07:10.212173+00:00'
+  processed: true
+  notes: query='JX Advanced Metals InP substrate capacity 7-10x price revision one-source
+    primary IR'
+  mineru_state: not_needed
+  addresses:
+  - K8
+  - K9
+  rings:
+  - bull-bear
+  - valuation-anchor
+  confidence: 0.9
+  search_meta:
+    query: JX Advanced Metals InP substrate capacity 7-10x price revision one-source
+      primary IR
+    url: https://www.jx-nmm.com/english/newsrelease/fy2026/20260616_02.html
+    domain: jx-nmm.com
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-03T02:07:10.147086+00:00'
+    stale_at: '2026-10-03T02:07:10.147086+00:00'
+    expire_at: '2026-12-02T02:07:10.147086+00:00'
+    triggered_by: 05-critic
+- id: mat-23c325
+  filename: 2026-09-03_jx-nippon-mining-metals-to-triple-inp-substrate-ca.md
+  source_type: web-search
+  added: '2026-09-03T02:07:10.401999+00:00'
+  processed: true
+  notes: query='JX Advanced Metals InP substrate capacity 7-10x price revision one-source
+    primary IR'
+  mineru_state: not_needed
+  addresses:
+  - K8
+  - K9
+  rings:
+  - bull-bear
+  - valuation-anchor
+  confidence: 0.85
+  search_meta:
+    query: JX Advanced Metals InP substrate capacity 7-10x price revision one-source
+      primary IR
+    url: https://japanir.jp/en/company/company-5016/ir/5016-20260210-04_wp_business_update/
+    domain: japanir.jp
+    domain_tier: llm-judged-official
+    searched_at: '2026-09-03T02:07:10.338365+00:00'
+    stale_at: '2026-10-03T02:07:10.338365+00:00'
+    expire_at: '2026-12-02T02:07:10.338365+00:00'
+    triggered_by: 05-critic
+- id: mat-54d899
+  filename: 2026-09-03_jefferies-jxam-inp-expansion-drives-next-leg-of-ea.md
+  source_type: web-search
+  added: '2026-09-03T02:07:10.579387+00:00'
+  processed: true
+  notes: query='JX Advanced Metals InP substrate capacity 7-10x price revision one-source
+    primary IR'
+  mineru_state: not_needed
+  addresses:
+  - K8
+  - K9
+  rings:
+  - bull-bear
+  - valuation-anchor
+  confidence: 0.82
+  search_meta:
+    query: JX Advanced Metals InP substrate capacity 7-10x price revision one-source
+      primary IR
+    url: https://researchreportvip.com/en/reports/jefferies-jp-non-ferrous-jxam-inp-expansion-drives-next-leg-earnings-growth-119/
+    domain: researchreportvip.com
+    domain_tier: other
+    searched_at: '2026-09-03T02:07:10.515290+00:00'
+    stale_at: '2026-10-03T02:07:10.515290+00:00'
+    expire_at: '2026-12-02T02:07:10.515290+00:00'
+    triggered_by: 05-critic
+- id: mat-fda7d3
+  filename: 2026-09-03_nikkei-jx-advanced-metals-to-raise-optical-chip-wa.md
+  source_type: web-search
+  added: '2026-09-03T02:07:10.746572+00:00'
+  processed: true
+  notes: query='JX Advanced Metals InP substrate capacity 7-10x price revision one-source
+    primary IR'
+  mineru_state: not_needed
+  addresses:
+  - K8
+  - K9
+  rings:
+  - bull-bear
+  - valuation-anchor
+  confidence: 0.8
+  search_meta:
+    query: JX Advanced Metals InP substrate capacity 7-10x price revision one-source
+      primary IR
+    url: https://asia.nikkei.com/spotlight/supply-chain/jx-advanced-metals-to-raise-optical-chip-wafer-capacity-for-ai-data-centers
+    domain: asia.nikkei.com
+    domain_tier: other
+    searched_at: '2026-09-03T02:07:10.682515+00:00'
+    stale_at: '2026-10-03T02:07:10.682515+00:00'
+    expire_at: '2026-12-02T02:07:10.682515+00:00'
+    triggered_by: 05-critic

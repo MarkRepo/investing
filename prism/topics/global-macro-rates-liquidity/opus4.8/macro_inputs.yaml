@@ -1,6 +1,6 @@
 slug: global-macro-rates-liquidity
 variant: opus4.8
-updated: '2026-08-23T23:01:14.672705+00:00'
+updated: '2026-09-22T22:07:07.591786+00:00'
 inputs:
 - name: 联邦基金目标区间
   tier: A
@@ -21,11 +21,11 @@ inputs:
     enabled: true
   fred_series_id: DFEDTARU
   observed:
-    value: 3.75
-    as_of: '2026-08-23'
-    checked_at: '2026-08-23T22:16:53.357874+00:00'
+    value: 4.0
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:00:24.274494+00:00'
     streak: 0
-    prev_value: 3.75
+    prev_value: 4.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DFEDTARU
@@ -52,13 +52,13 @@ inputs:
   availability: scripted
   source_url: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
   observed:
-    value: 3.8
-    as_of: '2026-06-17'
+    value: 4.1
+    as_of: '2026-09-16'
     evidence: March 17-18, 2026 SEP（2026-03-18 发布）Table 1 中位联邦基金利率：2026=3.4%, 2027=3.1%,
       2028=3.1%, 长期=3.1%（较 12 月点阵图持平）。源：Fed fomcprojtabl20260318.htm
-    checked_at: '2026-08-23T23:00:43.301823+00:00'
+    checked_at: '2026-09-22T22:06:41.943688+00:00'
     streak: 0
-    prev_value: 3.8
+    prev_value: 4.1
   family: 货币政策
   gloss:
     define: FOMC 季度经济预测里各委员对未来政策利率的点状预期
@@ -83,13 +83,13 @@ inputs:
   availability: scripted
   source_url: https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html
   observed:
-    value: 3.895
-    as_of: '2026-08-23'
+    value: 4.225
+    as_of: '2026-09-22'
     evidence: Investing.com Fed Rate Monitor (mirrors CME FedWatch 30-Day Fed Fund
       futures), Dec 2026 contract price 96.145 → 隐含利率 3.855%
-    checked_at: '2026-08-23T23:00:41.633751+00:00'
+    checked_at: '2026-09-22T22:06:40.318561+00:00'
     streak: 0
-    prev_value: 3.89
+    prev_value: 4.225
     acq_note: 从 Investing.com Fed Rate Monitor 获取 Dec 2026 联邦基金期货价格 96.145，隐含利率 100-96.145
       = 3.855%，四舍五入 3.86%。当前目标区间 3.50-3.75%，Dec 隐含 3.86% 反映市场定价年内约一次加息 (25bp)；数据截至于
       2026-06-09。
@@ -194,11 +194,11 @@ inputs:
     enabled: true
   fred_series_id: PAYEMS
   observed:
-    value: 158858.0
-    as_of: '2026-07-01'
-    checked_at: '2026-08-23T22:16:53.876365+00:00'
+    value: 159075.0
+    as_of: '2026-08-01'
+    checked_at: '2026-09-22T22:00:36.801693+00:00'
     streak: 0
-    prev_value: 158858.0
+    prev_value: 159075.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PAYEMS
@@ -225,8 +225,8 @@ inputs:
   fred_series_id: UNRATE
   observed:
     value: 4.1
-    as_of: '2026-07-01'
-    checked_at: '2026-08-23T22:16:54.356471+00:00'
+    as_of: '2026-08-01'
+    checked_at: '2026-09-22T22:00:53.716341+00:00'
     streak: 0
     prev_value: 4.1
   authority: official
@@ -254,11 +254,11 @@ inputs:
     enabled: true
   fred_series_id: ICSA
   observed:
-    value: 206000.0
-    as_of: '2026-08-15'
-    checked_at: '2026-08-23T22:16:54.859145+00:00'
+    value: 196000.0
+    as_of: '2026-09-12'
+    checked_at: '2026-09-22T22:01:06.869585+00:00'
     streak: 0
-    prev_value: 206000.0
+    prev_value: 196000.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/ICSA
@@ -284,11 +284,11 @@ inputs:
     enabled: true
   fred_series_id: JTSJOL
   observed:
-    value: 7359.0
-    as_of: '2026-06-01'
-    checked_at: '2026-08-23T22:16:55.593472+00:00'
+    value: 7271.0
+    as_of: '2026-07-01'
+    checked_at: '2026-09-22T22:01:18.801661+00:00'
     streak: 0
-    prev_value: 7359.0
+    prev_value: 7271.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/JTSJOL
@@ -337,7 +337,7 @@ inputs:
       msg: 'Client error ''403 Forbidden'' for url ''https://sc.macromicro.me/series/265/ism-pmi''
 
         For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403'
-      at: '2026-08-23T23:00:45.837803+00:00'
+      at: '2026-09-22T22:06:43.841086+00:00'
   note: macromicro 镜像(series/265)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
     chart-stat-lastrows 侧栏取最新期值。原 FRED NAPM 停更/ISM 官网付费墙/DBnomics 坏尾,故曾退回 LLM 读新闻稿(2026-06-10
     改脚本)。
@@ -386,7 +386,7 @@ inputs:
       msg: 'Client error ''403 Forbidden'' for url ''https://sc.macromicro.me/series/293/ism-nmi''
 
         For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403'
-      at: '2026-08-23T23:00:46.140648+00:00'
+      at: '2026-09-22T22:06:44.193771+00:00'
   note: macromicro 镜像(series/293, NMI)html recipe 取值,零 LLM；带 Chrome UA 过 Cloudflare,正则锚
     chart-stat-lastrows 侧栏取最新期值。ISM 官网 SSO 墙,故曾退回 LLM 读 PRNewswire 新闻稿(2026-06-10
     改脚本)。
@@ -412,11 +412,11 @@ inputs:
     enabled: true
   fred_series_id: RSAFS
   observed:
-    value: 763602.0
-    as_of: '2026-07-01'
-    checked_at: '2026-08-23T22:16:56.265889+00:00'
+    value: 773947.0
+    as_of: '2026-08-01'
+    checked_at: '2026-09-22T22:01:31.561878+00:00'
     streak: 0
-    prev_value: 763602.0
+    prev_value: 773947.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/RSAFS
@@ -445,11 +445,16 @@ inputs:
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/GDPNOW
   observed:
-    value: 4.0302
+    value: 5.0796
     as_of: '2026-07-01'
-    checked_at: '2026-08-23T22:16:57.052628+00:00'
+    checked_at: '2026-09-21T22:02:19.172873+00:00'
     streak: 0
-    prev_value: 4.0302
+    prev_value: 5.0796
+    fetch_error:
+      msg: 'GDPNOW: Server error ''502 Bad Gateway'' for url ''https://api.stlouisfed.org/fred/series/observations?series_id=GDPNOW&api_key=e97b039212bb4dd74e8420471319db9a&file_type=json&sort_order=desc&limit=1''
+
+        For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502'
+      at: '2026-09-22T22:01:32.209009+00:00'
   family: 增长就业
   gloss:
     define: 亚特兰大联储基于已公布数据实时拼出的当季 GDP 估计
@@ -472,11 +477,11 @@ inputs:
     enabled: true
   fred_series_id: CES0500000003
   observed:
-    value: 37.62
-    as_of: '2026-07-01'
-    checked_at: '2026-08-23T22:16:57.620015+00:00'
+    value: 37.75
+    as_of: '2026-08-01'
+    checked_at: '2026-09-22T22:01:39.472991+00:00'
     streak: 0
-    prev_value: 37.62
+    prev_value: 37.75
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CES0500000003
@@ -502,11 +507,11 @@ inputs:
     enabled: true
   fred_series_id: PCEPILFE
   observed:
-    value: 130.266
-    as_of: '2026-06-01'
-    checked_at: '2026-08-23T22:16:58.281389+00:00'
+    value: 130.658
+    as_of: '2026-07-01'
+    checked_at: '2026-09-22T22:01:53.587420+00:00'
     streak: 0
-    prev_value: 130.266
+    prev_value: 130.658
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PCEPILFE
@@ -532,11 +537,11 @@ inputs:
     enabled: true
   fred_series_id: CPILFESL
   observed:
-    value: 336.789
-    as_of: '2026-07-01'
-    checked_at: '2026-08-23T22:16:58.840993+00:00'
+    value: 337.765
+    as_of: '2026-08-01'
+    checked_at: '2026-09-22T22:02:03.290015+00:00'
     streak: 0
-    prev_value: 336.789
+    prev_value: 337.765
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CPILFESL
@@ -562,11 +567,11 @@ inputs:
     enabled: true
   fred_series_id: PCEPILFE
   observed:
-    value: 130.266
-    as_of: '2026-06-01'
-    checked_at: '2026-08-23T22:16:59.418450+00:00'
+    value: 130.658
+    as_of: '2026-07-01'
+    checked_at: '2026-09-22T22:02:08.637142+00:00'
     streak: 0
-    prev_value: 130.266
+    prev_value: 130.658
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PCEPILFE
@@ -592,11 +597,11 @@ inputs:
     enabled: true
   fred_series_id: PPIFIS
   observed:
-    value: 156.563
-    as_of: '2026-07-01'
-    checked_at: '2026-08-23T22:16:59.933744+00:00'
+    value: 157.411
+    as_of: '2026-08-01'
+    checked_at: '2026-09-22T22:02:23.406673+00:00'
     streak: 0
-    prev_value: 156.563
+    prev_value: 157.411
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/PPIFIS
@@ -623,11 +628,11 @@ inputs:
     enabled: true
   fred_series_id: DCOILWTICO
   observed:
-    value: 86.48
-    as_of: '2026-08-18'
-    checked_at: '2026-08-23T22:17:01.988300+00:00'
+    value: 107.02
+    as_of: '2026-09-15'
+    checked_at: '2026-09-22T22:02:26.070965+00:00'
     streak: 0
-    prev_value: 86.48
+    prev_value: 107.02
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DCOILWTICO
@@ -654,10 +659,10 @@ inputs:
   fred_series_id: T5YIFR
   observed:
     value: 2.34
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T22:17:02.777544+00:00'
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:02:39.735878+00:00'
     streak: 0
-    prev_value: 2.34
+    prev_value: 2.35
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T5YIFR
@@ -696,7 +701,7 @@ inputs:
     verified_at: '2026-06-11T03:43:14.735227+00:00'
     fetch_error:
       msg: 索引页未找到 Policy Statement（季度再融资声明）链接
-      at: '2026-08-23T23:01:07.629300+00:00'
+      at: '2026-09-22T22:07:03.563635+00:00'
   authority: official
   availability: llm
   text_fetch: qra
@@ -723,11 +728,11 @@ inputs:
     enabled: true
   fred_series_id: WTREGEN
   observed:
-    value: 953612.0
-    as_of: '2026-08-19'
-    checked_at: '2026-08-23T22:17:03.502391+00:00'
+    value: 877028.0
+    as_of: '2026-09-16'
+    checked_at: '2026-09-22T22:02:41.873028+00:00'
     streak: 0
-    prev_value: 953612.0
+    prev_value: 877028.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/WTREGEN
@@ -753,11 +758,11 @@ inputs:
     enabled: true
   fred_series_id: MTSDS133FMS
   observed:
-    value: -432307.87462148
-    as_of: '2026-07-01'
-    checked_at: '2026-08-23T22:17:04.081052+00:00'
+    value: -166796.95227738
+    as_of: '2026-08-01'
+    checked_at: '2026-09-22T22:02:57.060481+00:00'
     streak: 0
-    prev_value: -432307.87462148
+    prev_value: -166796.95227738
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/MTSDS133FMS
@@ -784,11 +789,11 @@ inputs:
     enabled: true
   fred_series_id: WALCL
   observed:
-    value: 6745699.0
-    as_of: '2026-08-19'
-    checked_at: '2026-08-23T22:17:04.718565+00:00'
+    value: 6746548.0
+    as_of: '2026-09-16'
+    checked_at: '2026-09-22T22:03:11.493954+00:00'
     streak: 0
-    prev_value: 6745699.0
+    prev_value: 6746548.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/WALCL
@@ -814,14 +819,11 @@ inputs:
     enabled: true
   fred_series_id: RRPONTSYD
   observed:
-    value: 0.2
-    as_of: '2026-08-21'
-    checked_at: '2026-08-22T22:04:10.020515+00:00'
+    value: 0.453
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:03:26.465513+00:00'
     streak: 0
-    prev_value: 0.2
-    fetch_error:
-      msg: 'RRPONTSYD: The read operation timed out'
-      at: '2026-08-23T22:59:42.194369+00:00'
+    prev_value: 0.582
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/RRPONTSYD
@@ -847,10 +849,10 @@ inputs:
     enabled: true
   fred_series_id: __DERIVED__
   observed:
-    value: 5792086.8
-    checked_at: '2026-08-22T22:32:33.405799+00:00'
+    value: 5869519.547
+    checked_at: '2026-09-22T22:04:49.002622+00:00'
     streak: 0
-    prev_value: 5792086.8
+    prev_value: 5869519.418
   authority: official
   availability: scripted
   source_url: null
@@ -877,11 +879,11 @@ inputs:
     enabled: true
   fred_series_id: WRESBAL
   observed:
-    value: 2935287.0
-    as_of: '2026-08-19'
-    checked_at: '2026-08-23T22:59:42.695532+00:00'
+    value: 3013794.0
+    as_of: '2026-09-16'
+    checked_at: '2026-09-22T22:03:41.154475+00:00'
     streak: 0
-    prev_value: 2935287.0
+    prev_value: 3013794.0
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/WRESBAL
@@ -917,10 +919,10 @@ inputs:
     - SOFR
     - IORB
   observed:
-    value: -0.020000000000000018
-    checked_at: '2026-08-23T22:59:53.944077+00:00'
+    value: -0.04999999999999982
+    checked_at: '2026-09-22T22:04:48.879860+00:00'
     streak: 0
-    prev_value: -0.020000000000000018
+    prev_value: -0.04999999999999982
   family: 资金面咬合
   gloss:
     define: 担保隔夜利率减准备金利率的利差（FRED 日频）
@@ -968,11 +970,11 @@ inputs:
     stance: 中性
     evidence: 美联储 H.4.1 报表（2026-06-04）显示央行流动性互换余额仅 1.16 亿美元，处历史极低闲置水平，无明显美元流动性投放（Fed
       H.4.1，2026-06-04）。
-    value: 123.0
-    as_of: '2026-08-19'
-    checked_at: '2026-08-23T22:59:43.163991+00:00'
+    value: 94.0
+    as_of: '2026-09-16'
+    checked_at: '2026-09-22T22:03:44.552677+00:00'
     streak: 0
-    prev_value: 123.0
+    prev_value: 94.0
   authority: official
   availability: scripted
   fred_series_id: SWPT
@@ -1009,7 +1011,7 @@ inputs:
     acq_note: Net percentage of domestic banks tightening standards on business loans,
       weighted by outstanding loan balances. Positive value indicates net tightening.
       Released May 4, 2026.
-    checked_at: '2026-08-23T22:59:43.721997+00:00'
+    checked_at: '2026-09-22T22:03:46.802347+00:00'
     streak: 0
     prev_value: -5.7
   note: 已转脚本(fred-api 通道)：FRED series SUBLPDMBSXWBNQ=净占比国内银行收紧企业贷款标准(按未偿余额加权), 季度,正值=净收紧。零
@@ -1037,11 +1039,11 @@ inputs:
     enabled: true
   fred_series_id: DGS10
   observed:
-    value: 4.69
-    as_of: '2026-08-20'
-    checked_at: '2026-08-23T22:59:44.195079+00:00'
+    value: 4.96
+    as_of: '2026-09-21'
+    checked_at: '2026-09-22T22:03:48.165697+00:00'
     streak: 0
-    prev_value: 4.69
+    prev_value: 5.01
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DGS10
@@ -1068,11 +1070,11 @@ inputs:
     enabled: true
   fred_series_id: DFII10
   observed:
-    value: 2.35
-    as_of: '2026-08-20'
-    checked_at: '2026-08-23T22:59:44.683713+00:00'
+    value: 2.62
+    as_of: '2026-09-21'
+    checked_at: '2026-09-22T22:03:54.410615+00:00'
     streak: 0
-    prev_value: 2.35
+    prev_value: 2.68
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DFII10
@@ -1102,11 +1104,11 @@ inputs:
   source_url: https://fred.stlouisfed.org/series/THREEFYTP10
   note: Kim-Wright 代理（FRED THREEFYTP10），非 NY Fed ACM
   observed:
-    value: 0.8393
-    as_of: '2026-08-14'
-    checked_at: '2026-08-23T22:59:45.327719+00:00'
+    value: 0.9595
+    as_of: '2026-09-18'
+    checked_at: '2026-09-22T22:03:59.701310+00:00'
     streak: 0
-    prev_value: 0.8393
+    prev_value: 0.961
   family: 利率·曲线结构
   gloss:
     define: 把名义利率拆出期限溢价分量（Kim-Wright 代理 THREEFYTP10）
@@ -1129,11 +1131,11 @@ inputs:
     enabled: true
   fred_series_id: T10Y2Y
   observed:
-    value: 0.5
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T22:59:45.831428+00:00'
+    value: 0.25
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:04:06.909271+00:00'
     streak: 0
-    prev_value: 0.5
+    prev_value: 0.2
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/T10Y2Y
@@ -1159,11 +1161,11 @@ inputs:
     enabled: true
   fred_series_id: BAMLC0A0CM
   observed:
-    value: 0.82
-    as_of: '2026-08-20'
-    checked_at: '2026-08-23T22:59:46.350956+00:00'
+    value: 0.77
+    as_of: '2026-09-18'
+    checked_at: '2026-09-22T22:04:08.442662+00:00'
     streak: 0
-    prev_value: 0.82
+    prev_value: 0.77
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/BAMLC0A0CM
@@ -1193,11 +1195,11 @@ inputs:
     level_alarm: 5.5
   fred_series_id: BAMLH0A0HYM2
   observed:
-    value: 2.75
-    as_of: '2026-08-20'
-    checked_at: '2026-08-23T22:59:46.825923+00:00'
+    value: 2.68
+    as_of: '2026-09-18'
+    checked_at: '2026-09-22T22:04:09.970507+00:00'
     streak: 0
-    prev_value: 2.75
+    prev_value: 2.68
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/BAMLH0A0HYM2
@@ -1255,11 +1257,11 @@ inputs:
     field: Close
   observed:
     acq_note: yfinance ^MOVE（ICE BofA MOVE 指数，日频收盘）；Yahoo 发布、免费结构化，替代原"无源"判断。
-    value: 73.4000015258789
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T23:00:06.966971+00:00'
+    value: 78.56089782714844
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:04:56.642601+00:00'
     streak: 0
-    prev_value: 73.4000015258789
+    prev_value: 81.19740295410156
   family: 信用与风险偏好
   gloss:
     define: 美债期权隐含波动率指数（债市的 VIX）
@@ -1283,11 +1285,11 @@ inputs:
     enabled: true
   fred_series_id: VIXCLS
   observed:
-    value: 16.01
-    as_of: '2026-08-20'
-    checked_at: '2026-08-23T22:59:47.453864+00:00'
+    value: 14.87
+    as_of: '2026-09-21'
+    checked_at: '2026-09-22T22:04:17.815266+00:00'
     streak: 0
-    prev_value: 16.01
+    prev_value: 14.81
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/VIXCLS
@@ -1313,11 +1315,11 @@ inputs:
     enabled: true
   fred_series_id: NFCI
   observed:
-    value: -0.559
-    as_of: '2026-08-14'
-    checked_at: '2026-08-23T22:59:47.934639+00:00'
+    value: -0.56
+    as_of: '2026-09-11'
+    checked_at: '2026-09-22T22:04:19.765863+00:00'
     streak: 0
-    prev_value: -0.559
+    prev_value: -0.56
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/NFCI
@@ -1356,7 +1358,7 @@ inputs:
   observed:
     value: 39.41935320301406
     as_of: '2025-12-01'
-    checked_at: '2026-08-23T23:00:46.892847+00:00'
+    checked_at: '2026-09-22T22:06:44.987705+00:00'
     streak: 0
     prev_value: 39.41935320301406
   family: 跨资产代理
@@ -1445,12 +1447,12 @@ inputs:
   alert_band:
     z: 2.0
   observed:
-    value: -2229013.0
-    as_of: '2026-08-18'
-    z: -1.159533007021829
-    checked_at: '2026-08-23T23:00:40.793282+00:00'
+    value: -1868126.0
+    as_of: '2026-09-15'
+    z: -0.16356826870834473
+    checked_at: '2026-09-22T22:06:38.217104+00:00'
     streak: 0
-    prev_value: -2229013.0
+    prev_value: -1868126.0
 - name: 广义/EM加权美元(Fed DTWEXBGS)
   tier: A
   cadence_type: series
@@ -1469,11 +1471,11 @@ inputs:
     enabled: true
   fred_series_id: DTWEXBGS
   observed:
-    value: 118.9028
-    as_of: '2026-08-14'
-    checked_at: '2026-08-23T22:59:48.446318+00:00'
+    value: 119.5133
+    as_of: '2026-09-18'
+    checked_at: '2026-09-22T22:04:22.361034+00:00'
     streak: 0
-    prev_value: 118.9028
+    prev_value: 119.5133
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DTWEXBGS
@@ -1500,11 +1502,11 @@ inputs:
   fred_series_id: DTWEXAFEGS
   note: DXY 代理（Fed Advanced Foreign Economies 美元指数 DTWEXAFEGS，非 ICE DXY）
   observed:
-    value: 112.2388
-    as_of: '2026-08-14'
-    checked_at: '2026-08-23T22:59:48.961016+00:00'
+    value: 113.148
+    as_of: '2026-09-18'
+    checked_at: '2026-09-22T22:04:24.409261+00:00'
     streak: 0
-    prev_value: 112.2388
+    prev_value: 113.148
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DTWEXAFEGS
@@ -1534,11 +1536,11 @@ inputs:
   note: CIP 远期腿基准即期（USD/EUR）
   source_url: https://fred.stlouisfed.org/series/DEXUSEU
   observed:
-    value: 1.1581
-    as_of: '2026-08-14'
-    checked_at: '2026-08-23T22:59:49.510530+00:00'
+    value: 1.1464
+    as_of: '2026-09-18'
+    checked_at: '2026-09-22T22:04:26.434333+00:00'
     streak: 0
-    prev_value: 1.1581
+    prev_value: 1.1464
   family: 汇率·跨境套利
   gloss:
     define: 欧元兑美元即期汇率（CIP 远期腿的基准即期）
@@ -1565,11 +1567,11 @@ inputs:
   note: CIP 远期腿基准即期（JPY/USD）
   source_url: https://fred.stlouisfed.org/series/DEXJPUS
   observed:
-    value: 159.21
-    as_of: '2026-08-14'
-    checked_at: '2026-08-23T22:59:50.116871+00:00'
+    value: 156.87
+    as_of: '2026-09-18'
+    checked_at: '2026-09-22T22:04:28.049112+00:00'
     streak: 0
-    prev_value: 159.21
+    prev_value: 156.87
   family: 汇率·跨境套利
   gloss:
     define: 美元兑日元即期汇率（CIP 远期腿的基准即期）
@@ -1597,11 +1599,14 @@ inputs:
   note: barchart .H = 3M 远期点(pips, ×1e-4)
   source_url: https://www.barchart.com/forex/quotes/EURUSD.H/price-history/historical
   observed:
-    value: 40.4695
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T23:00:30.935570+00:00'
+    value: 39.4675
+    as_of: '2026-08-28'
+    checked_at: '2026-08-27T22:13:00.214247+00:00'
     streak: 0
-    prev_value: 40.4695
+    prev_value: 39.675
+    fetch_error:
+      msg: barchart 未取到 XSRF-TOKEN cookie（站点结构/反爬变更）
+      at: '2026-09-22T22:06:16.179809+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 欧元兑美元 3 个月远期点（barchart，pips）
@@ -1629,11 +1634,14 @@ inputs:
   note: barchart .H = 3M 远期点(pips, ×1e-2)
   source_url: https://www.barchart.com/forex/quotes/USDJPY.H/price-history/historical
   observed:
-    value: -112.641
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T23:00:33.199513+00:00'
+    value: -111.028
+    as_of: '2026-08-28'
+    checked_at: '2026-08-27T22:13:02.054388+00:00'
     streak: 0
-    prev_value: -112.641
+    prev_value: -111.012
+    fetch_error:
+      msg: barchart 未取到 XSRF-TOKEN cookie（站点结构/反爬变更）
+      at: '2026-09-22T22:06:28.828412+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 美元兑日元 3 个月远期点（barchart，pips）
@@ -1677,7 +1685,7 @@ inputs:
       msg: 'Client error ''403 Forbidden'' for url ''https://en.macromicro.me/series/43597/us-overnight-indexed-swaps-3-months''
 
         For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403'
-      at: '2026-08-23T23:00:47.253527+00:00'
+      at: '2026-09-22T22:06:45.386498+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 美元 3 个月隔夜指数掉期利率（两对基差共用 USD 腿）
@@ -1708,11 +1716,11 @@ inputs:
     ~13bp)→EUR/USD 基差算-层不可信
   source_url: https://data.ecb.europa.eu/data/datasets/MMSR
   observed:
-    value: 2.256
-    as_of: '2026-08-20'
-    checked_at: '2026-08-23T23:00:35.919698+00:00'
+    value: 2.505
+    as_of: '2026-09-21'
+    checked_at: '2026-09-22T22:06:34.067939+00:00'
     streak: 0
-    prev_value: 2.256
+    prev_value: 2.506
   family: 汇率·跨境套利
   gloss:
     define: 欧元 3 个月 OIS（€STR 锚混合估计，日频）
@@ -1741,11 +1749,14 @@ inputs:
     page_url: https://sc.macromicro.me/charts/95219/japan-ois
   note: MM 图 95219 第 2 档(series_index=1)=3M JPY TONA OIS
   observed:
-    value: 1.1325
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T23:00:09.870702+00:00'
+    value: 1.2388
+    as_of: '2026-09-15'
+    checked_at: '2026-09-16T22:03:00.750240+00:00'
     streak: 0
-    prev_value: 1.1325
+    prev_value: 1.2388
+    fetch_error:
+      msg: MacroMicro 页面未找到 data-stk token（站点结构可能变更）
+      at: '2026-09-22T22:05:13.647044+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 日元 3 个月 TONA OIS（MM 图 95219）
@@ -1822,11 +1833,11 @@ inputs:
       usd_role: base
   note: CIP 合成(bps)。信号较大(常态 ~-30/-50),合成验证 -21bp 量级合理。USD 腿与 EUR/USD 共用。
   observed:
-    value: -25.888784812513038
+    value: -36.628291196527
     as_of: '2026-08-14'
-    checked_at: '2026-08-23T23:01:03.803275+00:00'
+    checked_at: '2026-09-22T22:07:00.119763+00:00'
     streak: 0
-    prev_value: -25.888784812513038
+    prev_value: -36.628291196527
   family: 汇率·跨境套利
   gloss:
     define: 日元兑美元 3 个月跨币种基差，CIP 合成（bps）
@@ -1855,11 +1866,11 @@ inputs:
     level_alarm: 160
   fred_series_id: DEXJPUS
   observed:
-    value: 159.21
-    as_of: '2026-08-14'
-    checked_at: '2026-08-23T22:59:50.631621+00:00'
-    streak: 6
-    prev_value: 159.21
+    value: 156.87
+    as_of: '2026-09-18'
+    checked_at: '2026-09-22T22:04:29.916958+00:00'
+    streak: 0
+    prev_value: 156.87
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DEXJPUS
@@ -1952,11 +1963,11 @@ inputs:
   note: BIS SDMX REST CSV(季频,USD 对非银信用 YoY%),取 OBS_VALUE/TIME_PERIOD 最新一季。2026-06-10
     实测通。
   observed:
-    value: 7.304
+    value: 7.298
     as_of: 2026-Q1
-    checked_at: '2026-08-23T23:00:48.239297+00:00'
+    checked_at: '2026-09-22T22:06:46.327379+00:00'
     streak: 0
-    prev_value: 7.304
+    prev_value: 7.298
   family: 流动性·数量
   gloss:
     define: BIS 季度跨境对非银的美元/欧元/日元信用（YoY%）
@@ -1992,11 +2003,11 @@ inputs:
   note: Treasury TIC Table5(月频,Tab 分隔,十亿美元),取 China, Mainland 行最新一列(中国持美债)。2026-06-10
     实测通。旧 mfh.txt 已冻结勿用。
   observed:
-    value: 633.4
-    as_of: 2026-06
-    checked_at: '2026-08-23T23:00:57.935979+00:00'
+    value: 618.0
+    as_of: 2026-07
+    checked_at: '2026-09-22T22:06:56.384713+00:00'
     streak: 0
-    prev_value: 633.4
+    prev_value: 618.0
   family: 汇率·跨境套利
   gloss:
     define: 美财政部 TIC 月度外国（含中国）持美债数据
@@ -2045,11 +2056,11 @@ inputs:
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/CBBTCUSD
   observed:
-    value: 77117.73
-    as_of: '2026-08-22'
-    checked_at: '2026-08-23T22:59:51.217862+00:00'
+    value: 86396.74
+    as_of: '2026-09-21'
+    checked_at: '2026-09-22T22:04:37.213909+00:00'
     streak: 0
-    prev_value: 78126.63
+    prev_value: 81253.37
   family: 跨资产代理
   gloss:
     define: 比特币价格（流动性与风险偏好的边际代理）
@@ -2079,7 +2090,7 @@ inputs:
   observed:
     value: 13542.82086956522
     as_of: '2026-07-01'
-    checked_at: '2026-08-23T22:59:51.847518+00:00'
+    checked_at: '2026-09-22T22:04:38.848935+00:00'
     streak: 0
     prev_value: 13542.82086956522
   family: 跨资产代理
@@ -2123,11 +2134,11 @@ inputs:
   note: eastmoney RPT_ECONOMY_PMI,官方制造业 PMI(MAKE_INDEX)/REPORT_DATE 取最新。2026-06-10
     实测通。非官方端点,失效则回落 llm。
   observed:
-    value: 49.2
-    as_of: '2026-07-01 00:00:00'
-    checked_at: '2026-08-23T23:00:58.266354+00:00'
+    value: 49.8
+    as_of: '2026-08-01 00:00:00'
+    checked_at: '2026-09-22T22:06:56.773988+00:00'
     streak: 0
-    prev_value: 49.2
+    prev_value: 49.8
   family: 中国增长·外需
   gloss:
     define: 国家统计局月度官方制造业 PMI，50 荣枯线（偏大中企业）
@@ -2202,11 +2213,11 @@ inputs:
     value_column: 同比增长
   observed:
     acq_note: akshare macro_china_consumer_goods_retail（统计局直连），取「同比增长」月率。
-    value: 0.6
-    as_of: 2026-07
-    checked_at: '2026-08-23T22:59:55.170819+00:00'
+    value: 0.4
+    as_of: 2026-08
+    checked_at: '2026-09-22T22:04:49.783204+00:00'
     streak: 0
-    prev_value: 0.6
+    prev_value: 0.4
   family: 中国增长·外需
   gloss:
     define: 国家统计局月度社会消费品零售总额
@@ -2313,11 +2324,11 @@ inputs:
   note: eastmoney 数据中心 RPT_ECONOMY_CPI,全国 CPI 同比%(NATIONAL_SAME)/REPORT_DATE 取最新。2026-06-10
     实测通。非官方端点,失效则回落 llm。
   observed:
-    value: 0.5
-    as_of: '2026-07-01 00:00:00'
-    checked_at: '2026-08-23T23:00:58.508591+00:00'
+    value: 0.8
+    as_of: '2026-08-01 00:00:00'
+    checked_at: '2026-09-22T22:06:57.001133+00:00'
     streak: 0
-    prev_value: 0.5
+    prev_value: 0.8
   family: 中国增长·外需
   gloss:
     define: 国家统计局月度居民消费价格同比
@@ -2359,11 +2370,11 @@ inputs:
   note: eastmoney RPT_ECONOMY_PPI,PPI 同比%(BASE_SAME)/REPORT_DATE 取最新。2026-06-10 实测通。非官方端点,失效则回落
     llm。
   observed:
-    value: 3.5
-    as_of: '2026-07-01 00:00:00'
-    checked_at: '2026-08-23T23:00:58.728326+00:00'
+    value: 3.8
+    as_of: '2026-08-01 00:00:00'
+    checked_at: '2026-09-22T22:06:57.206757+00:00'
     streak: 0
-    prev_value: 3.5
+    prev_value: 3.8
   family: 中国增长·外需
   gloss:
     define: 国家统计局月度工业生产者出厂价同比
@@ -2402,7 +2413,7 @@ inputs:
     prev_value: 1.4
     fetch_error:
       msg: MacroMicro 页面未找到 data-stk token（站点结构可能变更）
-      at: '2026-08-23T23:00:25.959183+00:00'
+      at: '2026-09-22T22:05:30.057491+00:00'
   note: 操作利率原始来源=PBoC 每日公开市场业务交易公告(http://www.pbc.gov.cn/)；官方/chinamoney 端点无稳定免费 JSON(akshare
     原 macro_china_gksccz 已下线)，故经 MacroMicro 图 53839 取数—— series_index=0=7天逆回购操作利率(%)，series_index=1=操作量(亿)。MM
     为商业镜像源、低频自用，已知 ToS 灰区。
@@ -2458,8 +2469,8 @@ inputs:
   observed:
     acq_note: akshare macro_china_lpr，value=LPR1Y（政策锚，企业贷款基准）；5Y(房贷锚)见独立项「LPR 5Y(房贷锚)」。
     value: 3.0
-    as_of: '2026-08-20'
-    checked_at: '2026-08-23T22:59:56.062841+00:00'
+    as_of: '2026-09-20'
+    checked_at: '2026-09-22T22:04:50.790378+00:00'
     streak: 0
     prev_value: 3.0
   family: 中国货币·流动性
@@ -2493,8 +2504,8 @@ inputs:
   observed:
     acq_note: akshare macro_china_lpr，value=LPR5Y（房贷锚，房贷/地产信贷基准）；1Y(政策锚)见独立项「LPR 1Y(政策锚)」。
     value: 3.5
-    as_of: '2026-08-20'
-    checked_at: '2026-08-23T22:59:57.217074+00:00'
+    as_of: '2026-09-20'
+    checked_at: '2026-09-22T22:04:51.630857+00:00'
     streak: 0
     prev_value: 3.5
   family: 中国货币·流动性
@@ -2524,7 +2535,7 @@ inputs:
     value: 9.0
     as_of: '2025-05-07'
     acq_note: akshare macro_china_reserve_requirement_ratio，value=大型金融机构调整后存准率（事件，最近一次降准）。
-    checked_at: '2026-08-23T22:59:57.594481+00:00'
+    checked_at: '2026-09-22T22:04:51.859451+00:00'
     streak: 0
     prev_value: 9.0
   authority: official
@@ -2580,11 +2591,11 @@ inputs:
     利差」。 DR007 为央行政策锚(带 2.2/2.5 即按 DR007 标定)。2026-06-11 实测尾值 2026-06-10 DR007=1.4152。
     实时盘中值另见 prr-md.json/weightedRate,本项改用结算日报以与 R007 同口径算利差。失效则回落 llm。
   observed:
-    value: 1.4314
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T23:00:59.004286+00:00'
+    value: 1.3841
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:06:57.429003+00:00'
     streak: 0
-    prev_value: 1.4314
+    prev_value: 1.3953
   family: 中国货币·流动性
   gloss:
     define: 银行间存款类机构 7 天质押回购加权利率（chinamoney 日频）
@@ -2625,11 +2636,11 @@ inputs:
     恒在 index 1；若产品增删换位在此改 index。 日报为 T-1 结算值(date=data.lastDate),与 DR007(pr-dly-bltn-interbank-mark.json)同源同口径。
     2026-06-11 实测尾值 2026-06-10 R007=1.4156。失效则回落 llm。
   observed:
-    value: 1.442
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T23:00:59.229866+00:00'
+    value: 1.423
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:06:57.694114+00:00'
     streak: 0
-    prev_value: 1.442
+    prev_value: 1.4329
   family: 中国货币·流动性
   gloss:
     define: 全市场（含非银）7 天质押回购加权利率（日频）
@@ -2660,10 +2671,10 @@ inputs:
     - DR007/R007
   note: 派生=R007−DR007(同源结算日报,同口径加权)。利差走阔=非银融资成本相对走高、流动性分层加剧(压力信号)。 两腿落盘后在 recipe 抓取末段算。
   observed:
-    value: 0.010599999999999943
-    checked_at: '2026-08-23T23:01:03.923198+00:00'
+    value: 0.038899999999999935
+    checked_at: '2026-09-22T22:07:00.225393+00:00'
     streak: 0
-    prev_value: 0.010599999999999943
+    prev_value: 0.03760000000000008
   family: 中国货币·流动性
   gloss:
     define: R007 减 DR007 的利差（同源派生）
@@ -2702,11 +2713,11 @@ inputs:
   observed:
     acq_note: akshare bond_china_close_return，中债同业存单(AAA)到期收益率曲线、取 1 年期点（row_filter
       期限==1.0），@days_ago:20→@today 滚动窗取最新；CFETS/中债日频、约滞后 1 日。
-    value: 1.4809
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T22:59:58.259199+00:00'
+    value: 1.488
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:04:52.361191+00:00'
     streak: 0
-    prev_value: 1.4809
+    prev_value: 1.4885
   family: 中国货币·流动性
   gloss:
     define: 银行同业存单发行利率（日频）
@@ -2775,11 +2786,11 @@ inputs:
   note: eastmoney RPTA_WEB_TREASURYYIELD,中国 10Y CGB 收益率(EMM00166466)/SOLAR_DATE 取最新(同行
     EMG00001310 为美 10Y)。2026-06-10 实测通。非官方端点,失效则回落 llm。
   observed:
-    value: 1.6839
-    as_of: '2026-08-21 00:00:00'
-    checked_at: '2026-08-23T23:00:59.563812+00:00'
+    value: 1.6791
+    as_of: '2026-09-22 00:00:00'
+    checked_at: '2026-09-22T22:06:57.929642+00:00'
     streak: 0
-    prev_value: 1.6839
+    prev_value: 1.6829
   family: 中国货币·流动性
   gloss:
     define: 中国 10 年期国债收益率及配置盘需求（日频）
@@ -2876,13 +2887,16 @@ inputs:
     MacroMicro 图 133274 取数——series_index=0=社融存量同比(%)，idx1=M2-M1 同比(倒置)，idx2=中国10Y收益率（series
     漂移时据此排查）。MM 为商业镜像源、低频自用，已知 ToS 灰区（同 OMO 图53839/JPY-OIS 图95219 先例）。
   observed:
-    value: 7.4
-    as_of: '2026-07-01'
+    value: 7.2
+    as_of: '2026-08-01'
     evidence: https://sc.macromicro.me/charts/133274/China-Total-Social-Financing-amp-M2-M1-amp-10Year-Yield
     acq_note: MacroMicro 图 133274 series0＝社融存量同比（口径由"存量余额456.89万亿"修正为下游真正消费的存量同比%）
-    checked_at: '2026-08-23T23:00:27.089041+00:00'
+    checked_at: '2026-09-16T22:03:18.831258+00:00'
     streak: 0
-    prev_value: 7.4
+    prev_value: 7.2
+    fetch_error:
+      msg: MacroMicro 页面未找到 data-stk token（站点结构可能变更）
+      at: '2026-09-22T22:05:46.501361+00:00'
   family: 中国货币·流动性
   gloss:
     define: 社会融资规模存量同比增速（人行月度，实体融资总量总闸）
@@ -2913,11 +2927,11 @@ inputs:
   observed:
     acq_note: akshare macro_china_money_supply，value=M2 同比增长；剪刀差(M1−M2)需双列派生，暂存 M2
       同比。
-    value: 7.7
-    as_of: 2026-07
-    checked_at: '2026-08-23T22:59:58.805503+00:00'
+    value: 7.5
+    as_of: 2026-08
+    checked_at: '2026-09-22T22:04:52.637468+00:00'
     streak: 0
-    prev_value: 7.7
+    prev_value: 7.5
   family: 中国货币·流动性
   gloss:
     define: M1 与 M2 同比及其差（人行月度）
@@ -2957,7 +2971,7 @@ inputs:
   observed:
     value: -1.8500370005641809
     as_of: 2026-04
-    checked_at: '2026-08-23T23:00:44.651301+00:00'
+    checked_at: '2026-09-22T22:06:42.942249+00:00'
     streak: 0
     prev_value: -1.8500370005641809
 - name: 贷款增速
@@ -2999,11 +3013,11 @@ inputs:
     enabled: true
   fred_series_id: DEXCHUS
   observed:
-    value: 6.7412
-    as_of: '2026-08-14'
-    checked_at: '2026-08-23T22:59:52.504443+00:00'
+    value: 6.6975
+    as_of: '2026-09-18'
+    checked_at: '2026-09-22T22:04:41.817357+00:00'
     streak: 0
-    prev_value: 6.7412
+    prev_value: 6.6975
   authority: official
   availability: scripted
   source_url: https://fred.stlouisfed.org/series/DEXCHUS
@@ -3052,11 +3066,11 @@ inputs:
     read: PBoC 对汇率的政策意图直接表达；被管理的价格、是锚不是市场出清价
     use: 数字变大=中间价引导贬值；偏强(低)设定=稳汇率信号
   observed:
-    value: 6.7817
-    as_of: 2026-08-21 9:15
-    checked_at: '2026-08-23T23:00:59.811433+00:00'
+    value: 6.7459
+    as_of: 2026-09-22 9:15
+    checked_at: '2026-09-22T22:06:58.086064+00:00'
     streak: 0
-    prev_value: 6.7817
+    prev_value: 6.7487
 - name: 中间价偏离(逆周期因子代理)
   tier: A
   cadence_type: series
@@ -3091,10 +3105,10 @@ inputs:
     read: 负=中间价偏强/对抗贬值；正=中间价偏弱/对抗升值
     use: 绝对值走阔=PBoC 管理意图增强、稳汇率发力；符号给方向
   observed:
-    value: 0.05579999999999963
-    checked_at: '2026-08-23T23:01:04.068306+00:00'
-    streak: 37
-    prev_value: 0.05579999999999963
+    value: 0.045399999999999885
+    checked_at: '2026-09-22T22:07:00.373392+00:00'
+    streak: 67
+    prev_value: 0.05340000000000078
 - name: USDCNH(离岸即期)
   tier: B
   cadence_type: series
@@ -3122,11 +3136,11 @@ inputs:
       date_regex: fx_susdcnh="[^"]*?(\d{4}-\d{2}-\d{2})";
   source_url: https://finance.sina.com.cn/money/forex/hq/USDCNH.shtml
   observed:
-    value: 6.7198
-    as_of: '2026-08-24'
-    checked_at: '2026-08-23T23:00:59.981792+00:00'
+    value: 6.6978
+    as_of: '2026-09-23'
+    checked_at: '2026-09-22T22:06:58.247150+00:00'
     streak: 0
-    prev_value: 6.7193
+    prev_value: 6.6931
   family: 汇率·跨境套利
   gloss:
     define: 离岸人民币兑美元即期汇率
@@ -3159,11 +3173,11 @@ inputs:
       date_regex: fx_susdcny="[^"]*?(\d{4}-\d{2}-\d{2})";
   source_url: https://finance.sina.com.cn/money/forex/hq/USDCNY.shtml
   observed:
-    value: 6.7259
-    as_of: '2026-08-22'
-    checked_at: '2026-08-23T23:01:00.164053+00:00'
+    value: 6.7005
+    as_of: '2026-09-23'
+    checked_at: '2026-09-22T22:06:58.419636+00:00'
     streak: 0
-    prev_value: 6.7259
+    prev_value: 6.6953
   family: 汇率·跨境套利
   gloss:
     define: 在岸人民币兑美元即期成交价
@@ -3197,10 +3211,10 @@ inputs:
     - USDCNH(离岸即期)
     - USDCNY(在岸即期)
   observed:
-    value: -0.006099999999999994
-    checked_at: '2026-08-23T23:01:04.193943+00:00'
+    value: -0.0026999999999999247
+    checked_at: '2026-09-22T22:07:00.493849+00:00'
     streak: 0
-    prev_value: -0.006600000000000605
+    prev_value: -0.0021999999999993136
   family: 汇率·跨境套利
   gloss:
     define: 离岸减在岸人民币汇率价差（同源日频）
@@ -3252,7 +3266,7 @@ inputs:
   observed:
     value: 3482385.620113452
     as_of: '2026-06-01'
-    checked_at: '2026-08-23T22:59:53.052063+00:00'
+    checked_at: '2026-09-22T22:04:43.945264+00:00'
     streak: 0
     prev_value: 3482385.620113452
   family: 汇率·跨境套利
@@ -3286,10 +3300,10 @@ inputs:
   note: 派生=中国 10Y(eastmoney recipe)−美国 10Y(2Y/10Y/30Y 国债 的 DGS10)。两腿落盘后在 recipe 抓取末段算。中国腿已有源
     → 转 scripted 派生。
   observed:
-    value: -3.0061000000000004
-    checked_at: '2026-08-23T23:01:04.345550+00:00'
+    value: -3.2809
+    checked_at: '2026-09-22T22:07:00.630053+00:00'
     streak: 0
-    prev_value: -3.0061000000000004
+    prev_value: -3.3270999999999997
   family: 汇率·跨境套利
   gloss:
     define: 中国 10Y 减美国 10Y 国债收益率（派生）
@@ -3352,11 +3366,14 @@ inputs:
   observed:
     acq_note: 口径由「累计净买入 10998（已冻结的旧净流入口径）」修正为下游可持续消费的「北向成交额（活跃度）」，经 MacroMicro 图 15249
       series0 取数（单位以源为准）。value/as_of 由脚本实拉回填。
-    value: 268087.54
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T23:00:27.992940+00:00'
+    value: 264238.52
+    as_of: '2026-09-16'
+    checked_at: '2026-09-16T22:03:19.991622+00:00'
     streak: 0
-    prev_value: 268087.54
+    prev_value: 229704.69
+    fetch_error:
+      msg: MacroMicro 页面未找到 data-stk token（站点结构可能变更）
+      at: '2026-09-22T22:06:02.859804+00:00'
   family: 汇率·跨境套利
   gloss:
     define: 经陆股通的北向**成交额**（活跃度，日频）——净买/卖方向自约 2026-04 停发，改追踪成交额
@@ -3390,11 +3407,11 @@ inputs:
     agg: sum
   observed:
     acq_note: akshare stock_hsgt_fund_flow_summary_em，南向(港股通沪+深)成交净买额求和（日，亿元）。注：北向自2024停发、不可用。
-    value: -76.296415
-    as_of: '2026-08-21'
-    checked_at: '2026-08-23T22:59:59.507247+00:00'
+    value: 126.90632499999998
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:04:52.860034+00:00'
     streak: 0
-    prev_value: -76.296415
+    prev_value: 40.738337
   family: 汇率·跨境套利
   gloss:
     define: 经港股通南下配置港股的境内资金（日频）
@@ -3630,7 +3647,7 @@ inputs:
     prev_value: -2.8
     fetch_error:
       msg: 'recipe 解析未取到值（源结构可能变更）: '
-      at: '2026-08-23T23:01:03.595367+00:00'
+      at: '2026-09-22T22:06:59.926844+00:00'
   family: 中国增长·外需
   gloss:
     define: 35 个城市新房网签面积（周环比%；原"典型城市/30城"口径，2026年7月起克而瑞切至"35城"，序列延续）
@@ -3683,11 +3700,11 @@ inputs:
     agg: mean
   observed:
     acq_note: akshare macro_china_new_house_price，70城新建商品住宅价格指数-环比的城市均值（100=持平，月）。
-    value: 99.95
-    as_of: '2026-07-01'
-    checked_at: '2026-08-23T23:00:00.219033+00:00'
+    value: 100.1
+    as_of: '2026-08-01'
+    checked_at: '2026-09-22T22:04:53.212675+00:00'
     streak: 0
-    prev_value: 99.95
+    prev_value: 100.1
   family: 中国增长·外需
   gloss:
     define: 国家统计局 70 个大中城市住宅价格指数（月度）
@@ -4083,11 +4100,11 @@ inputs:
   state: 拆分自「结售汇 + 外汇占款 + 代客涉外收付」
   causal_sentence: 外汇占款=央行购汇投放的基础货币存量，其月度增减反映结售汇净额经央行的沉淀 → 经外汇供求与基础货币 → 驱动汇率与流动性。
   observed:
-    value: 217262.88
-    as_of: 2026-07
-    checked_at: '2026-08-23T23:00:04.853751+00:00'
+    value: 217247.55
+    as_of: 2026-08
+    checked_at: '2026-09-22T22:04:55.637583+00:00'
     streak: 0
-    prev_value: 217262.88
+    prev_value: 217247.55
   family: 汇率·跨境套利
   gloss:
     define: 央行购汇投放的基础货币存量（人行月度）
@@ -4116,11 +4133,11 @@ inputs:
   state: 拆分自「结售汇 + 外汇占款 + 代客涉外收付」
   causal_sentence: 银行结售汇差额=企业/居民经银行的净结汇（结汇−售汇）实际购售汇净额 → 直接计量境内外汇供求 → 驱动汇率。
   observed:
-    value: 182.61409999999978
-    as_of: 2026-07
-    checked_at: '2026-08-23T23:00:37.207403+00:00'
+    value: 484.8010999999999
+    as_of: 2026-08
+    checked_at: '2026-09-22T22:06:35.244569+00:00'
     streak: 0
-    prev_value: 182.61409999999978
+    prev_value: 484.8010999999999
   family: 汇率·跨境套利
   gloss:
     define: 银行代客及自身结汇减售汇的净额（外汇局月度）
@@ -4149,11 +4166,11 @@ inputs:
   state: 拆分自「结售汇 + 外汇占款 + 代客涉外收付」
   causal_sentence: 银行代客涉外收付差额=银行代客户的跨境收入−支出净额，计量实际跨境资金净流入流出 → 经外汇供求 → 驱动汇率。
   observed:
-    value: 598.238949406199
-    as_of: 2026-07
-    checked_at: '2026-08-23T23:00:38.823272+00:00'
+    value: 623.5733078920975
+    as_of: 2026-08
+    checked_at: '2026-09-22T22:06:35.877845+00:00'
     streak: 0
-    prev_value: 598.238949406199
+    prev_value: 623.5733078920975
   family: 汇率·跨境套利
   gloss:
     define: 银行代客户跨境收入减支出净额（外汇局月度）
@@ -4183,11 +4200,11 @@ inputs:
     read: 市场认为下次会议后政策利率落在哪
     use: 与当前利率比＝下次会议的方向与幅度定价
   observed:
-    value: 3.7321
-    as_of: '2026-08-23'
-    checked_at: '2026-08-23T23:00:41.754446+00:00'
+    value: 4.02
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:06:40.422432+00:00'
     streak: 0
-    prev_value: 3.7321
+    prev_value: 4.02
   family: 货币政策
 - tier: B
   cadence_type: series
@@ -4214,8 +4231,8 @@ inputs:
     use: 概率骤升=宽松预期升温；与实际点阵/数据背离时是预期差交易点
   observed:
     value: 0.0
-    as_of: '2026-08-23'
-    checked_at: '2026-08-23T23:00:41.904210+00:00'
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:06:40.545209+00:00'
     streak: 0
     prev_value: 0.0
   family: 货币政策
@@ -4243,9 +4260,9 @@ inputs:
     read: 市场总共给今年押了几次降息
     use: 前瞻宽松总量；转负=市场计价净加息，higher-for-longer 的硬证据
   observed:
-    value: -1.08
-    as_of: '2026-08-23'
-    checked_at: '2026-08-23T23:00:42.031543+00:00'
+    value: -2.4
+    as_of: '2026-09-22'
+    checked_at: '2026-09-22T22:06:40.649288+00:00'
     streak: 0
-    prev_value: -1.06
+    prev_value: -2.4
   family: 货币政策

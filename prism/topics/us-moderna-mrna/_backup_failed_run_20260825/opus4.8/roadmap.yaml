@@ -1,0 +1,108 @@
+slug: us-moderna-mrna
+created: '2026-08-25'
+learning_track:
+  l1_orientation:
+  - question: Moderna 三层收入结构(COVID现金牛/呼吸道特许经营/肿瘤期权)现状
+    source_hint: baseline + FY2025财报
+  l2_history:
+  - question: COVID断崖轨迹($19.26B→$1.94B)与现金消耗史
+    source_hint: 10-K多年
+  l3_debates:
+  - question: 翻倍后$140是重估起点还是散户情绪泡沫?共识$85-95隐含下行
+    source_hint: 卖方post-P3分歧
+  l4_hunting:
+  - question: 市场price in了多少冷肿瘤外推?ESMO HR强弱如何重定价
+    addresses:
+    - K1
+    - K2
+    search_keywords:
+    - INT ESMO hazard ratio
+    - cold tumor readout
+    - intismeran peak sales
+    source_hint: ESMO 2026 + 卖方模型
+  - question: 呼吸道特许经营补断崖被高估还是低估(flu获批+组合+RSV)
+    addresses:
+    - K3
+    - K5
+    search_keywords:
+    - mFLUSIVA approval
+    - mRESVIA sales
+    - mNEXSPIKE share
+    source_hint: FDA + Q3/Q4 2026销售
+  - question: 现金跑道vs兑现时点+稀释风险的市场定价
+    addresses:
+    - K4
+    search_keywords:
+    - Moderna cash runway 2028
+    - breakeven
+    - dilution
+    source_hint: 季报现金vs指引
+material_priority:
+  tier1:
+  - title: INT/intismeran 冷肿瘤外推证据+ESMO 2026
+    type: sell-side-note
+    ticker: ''
+    addresses:
+    - K1
+    - K2
+    source: ESMO/卖方onco
+    why: 命门1核心,当前估值赌注
+  - title: Moderna 10-K FY2025 + 2026季报(财务弧线/现金)
+    type: annual-report
+    ticker: MRNA
+    addresses:
+    - K4
+    source: SEC EDGAR
+    why: financial-arc + 现金跑道
+  - title: 一致预期/估值锚(19家投行目标价模型)
+    type: sell-side-note
+    ticker: ''
+    addresses:
+    - K1
+    source: 卖方post-P3
+    why: consensus硬合同
+  tier2:
+  - title: 管理层资本配置史(回购/减持/激励)
+    type: sell-side-note
+    ticker: ''
+    addresses:
+    - K4
+    source: proxy/复盘
+    why: mgmt-capital-alloc硬合同
+  - title: 呼吸道特许经营2026销售+flu PDUFA+组合
+    type: industry-research
+    ticker: ''
+    addresses:
+    - K3
+    - K5
+    source: FDA/earnings
+    why: 呼吸道基底价值
+  - title: Merck 50/50合作条款/分成结构
+    type: sell-side-note
+    ticker: ''
+    addresses:
+    - K2
+    source: 10-K collab
+    why: 命门2兑现路径
+  tier3:
+  - title: RSV竞争格局+市场规模
+    type: industry-research
+    ticker: ''
+    addresses:
+    - K5
+    source: RSV reports
+    why: primer#7背景
+  - title: 历史失败镜鉴(平台首胜后mean-revert)
+    type: industry-research
+    ticker: ''
+    addresses: []
+    source: 训练知识估算
+    why: historical-mirror硬合同(环⑤,复用红预期)
+key_risks_to_monitor:
+- ESMO(10/26-27)HR弱于0.7
+- 冷肿瘤(NSCLC/RCC)读出失败
+- 季度烧钱超指引触发增发
+- RSV品类第3年续跌
+analogies_to_study:
+- mRNA COVID泡沫自身($484→$26,17倍回撤)
+- 早期CAR-T/基因治疗平台炒作后mean-revert
