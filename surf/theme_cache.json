@@ -1,0 +1,3558 @@
+{
+  "AGIX": {
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "AGIX",
+    "名称": "KraneShares Public-Private AI &"
+  },
+  "AIPO": {
+    "is_trend_carrier": true,
+    "reason": "AI 算力的电力与基建瓶颈，驱动力是电网与发电扩容，与 AI 应用层不同",
+    "theme": "AI电力基建",
+    "代码": "AIPO",
+    "名称": "Defiance AI & Power Infrastruct"
+  },
+  "AIQ": {
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "AIQ",
+    "名称": "Global X Artificial Intelligenc"
+  },
+  "AIRR": {
+    "is_trend_carrier": true,
+    "reason": "美国本土制造业回流，成分是中小工业股",
+    "theme": "再工业化",
+    "代码": "AIRR",
+    "名称": "First Trust RBA American Indust"
+  },
+  "AIS": {
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "AIS",
+    "名称": "VistaShares Artificial Intellig"
+  },
+  "ARKF": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融科技",
+    "theme": "金融科技",
+    "代码": "ARKF",
+    "名称": "ARK Blockchain & Fintech Innova"
+  },
+  "ARKG": {
+    "is_trend_carrier": true,
+    "reason": "基因编辑与基因治疗，与大生物科技的兑现节奏不同",
+    "theme": "基因治疗",
+    "代码": "ARKG",
+    "名称": "ARK Genomic Revolution ETF"
+  },
+  "ARKX": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属太空",
+    "theme": "太空",
+    "代码": "ARKX",
+    "名称": "ARK Space & Defense Innovation "
+  },
+  "ARTY": {
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "ARTY",
+    "名称": "iShares Future AI & Tech ETF"
+  },
+  "BAI": {
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "BAI",
+    "名称": "iShares A.I. Innovation and Tec"
+  },
+  "BIZD": {
+    "is_trend_carrier": false,
+    "reason": "BDC 收益型产品，按分红属性聚合，驱动力是利率与信用利差",
+    "theme": null,
+    "代码": "BIZD",
+    "名称": "VanEck BDC Income ETF"
+  },
+  "BKGI": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属全球基建",
+    "theme": "全球基建",
+    "代码": "BKGI",
+    "名称": "BNY Mellon Global Infrastructur"
+  },
+  "BOTZ": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人",
+    "theme": "机器人",
+    "代码": "BOTZ",
+    "名称": "Global X Robotics & Artificial "
+  },
+  "BUG": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属网络安全",
+    "theme": "网络安全",
+    "代码": "BUG",
+    "名称": "Global X Cybersecurity ETF"
+  },
+  "CHAT": {
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "CHAT",
+    "名称": "Roundhill Generative AI & Techn"
+  },
+  "CIBR": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属网络安全",
+    "theme": "网络安全",
+    "代码": "CIBR",
+    "名称": "First Trust NASDAQ Cybersecurit"
+  },
+  "CLOU": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属云计算",
+    "theme": "云计算",
+    "代码": "CLOU",
+    "名称": "Global X Cloud Computing ETF"
+  },
+  "COPP": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属铜矿",
+    "theme": "铜矿",
+    "代码": "COPP",
+    "名称": "Sprott Copper Miners ETF"
+  },
+  "COPX": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属铜矿",
+    "theme": "铜矿",
+    "代码": "COPX",
+    "名称": "Global X Copper Miners ETF"
+  },
+  "CRAK": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属炼油",
+    "theme": "炼油",
+    "代码": "CRAK",
+    "名称": "VanEck Oil Refiners ETF"
+  },
+  "CSRE": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "CSRE",
+    "名称": "Cohen & Steers Real Estate Acti"
+  },
+  "DFAR": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "DFAR",
+    "名称": "Dimensional US Real Estate ETF"
+  },
+  "DRAM": {
+    "is_trend_carrier": true,
+    "reason": "存储是独立的产能-价格周期，与逻辑芯片不同步",
+    "theme": "存储芯片",
+    "代码": "DRAM",
+    "名称": "Roundhill Memory ETF"
+  },
+  "DTCR": {
+    "is_trend_carrier": true,
+    "reason": "数据中心与数字基建地产，受 AI 算力扩容驱动",
+    "theme": "数据中心REIT",
+    "代码": "DTCR",
+    "名称": "Global X Data Center & Digital "
+  },
+  "EUAD": {
+    "is_trend_carrier": true,
+    "reason": "欧洲重整军备，驱动力是欧洲防务预算，与美国国防预算不同步",
+    "theme": "国防·欧洲",
+    "代码": "EUAD",
+    "名称": "Select STOXX Europe Aerospace &"
+  },
+  "EUV": {
+    "is_trend_carrier": true,
+    "reason": "光刻与半导体设备环节，与设计/制造周期不同步",
+    "theme": "半导体设备",
+    "代码": "EUV",
+    "名称": "Corgi Lithography & Semiconduct"
+  },
+  "FCG": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属天然气",
+    "theme": "天然气",
+    "代码": "FCG",
+    "名称": "First Trust Natural Gas ETF"
+  },
+  "FCOM": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信服务",
+    "theme": "通信服务",
+    "代码": "FCOM",
+    "名称": "Fidelity MSCI Communication Ser"
+  },
+  "FDN": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属互联网",
+    "theme": "互联网",
+    "代码": "FDN",
+    "名称": "First Trust DJ Internet Index F"
+  },
+  "FENY": {
+    "is_trend_carrier": true,
+    "reason": "能源整体",
+    "theme": "能源",
+    "代码": "FENY",
+    "名称": "Fidelity MSCI Energy Index ETF"
+  },
+  "FHLC": {
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体",
+    "theme": "医疗保健",
+    "代码": "FHLC",
+    "名称": "Fidelity MSCI Health Care Index"
+  },
+  "FIDU": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业",
+    "theme": "工业",
+    "代码": "FIDU",
+    "名称": "Fidelity MSCI Industrials Index"
+  },
+  "FNCL": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融",
+    "theme": "金融",
+    "代码": "FNCL",
+    "名称": "Fidelity MSCI Financials Index "
+  },
+  "FREL": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "FREL",
+    "名称": "Fidelity MSCI Real Estate Index"
+  },
+  "FSTA": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费",
+    "theme": "必需消费",
+    "代码": "FSTA",
+    "名称": "Fidelity MSCI COnsumer Staples "
+  },
+  "FTEC": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "FTEC",
+    "名称": "Fidelity MSCI Information Techn"
+  },
+  "FTXH": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属制药",
+    "theme": "制药",
+    "代码": "FTXH",
+    "名称": "First Trust Nasdaq Pharmaceutic"
+  },
+  "FTXL": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体",
+    "theme": "半导体",
+    "代码": "FTXL",
+    "名称": "First Trust Nasdaq Semiconducto"
+  },
+  "FTXR": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属运输",
+    "theme": "运输",
+    "代码": "FTXR",
+    "名称": "First Trust Nasdaq Transportati"
+  },
+  "FUTY": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业",
+    "theme": "公用事业",
+    "代码": "FUTY",
+    "名称": "Fidelity MSCI Utilities Index E"
+  },
+  "FXL": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "FXL",
+    "名称": "First Trust Technology AlphaDEX"
+  },
+  "FXN": {
+    "is_trend_carrier": true,
+    "reason": "能源整体",
+    "theme": "能源",
+    "代码": "FXN",
+    "名称": "First Trust Energy AlphaDEX Fun"
+  },
+  "FXU": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业",
+    "theme": "公用事业",
+    "代码": "FXU",
+    "名称": "First Trust Utilities AlphaDEX "
+  },
+  "GDX": {
+    "is_trend_carrier": true,
+    "reason": "金矿，大小市值同受金价驱动，合为一个主题",
+    "theme": "金矿",
+    "代码": "GDX",
+    "名称": "VanEck Gold Miners ETF"
+  },
+  "GDXJ": {
+    "is_trend_carrier": true,
+    "reason": "金矿，大小市值同受金价驱动，合为一个主题",
+    "theme": "金矿",
+    "代码": "GDXJ",
+    "名称": "VanEck Junior Gold Miners ETF"
+  },
+  "GNR": {
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）",
+    "theme": "自然资源",
+    "代码": "GNR",
+    "名称": "State Street SPDR S&P Global Na"
+  },
+  "GPZ": {
+    "is_trend_carrier": true,
+    "reason": "另类资产管理人，属金融子行业",
+    "theme": "另类资管",
+    "代码": "GPZ",
+    "名称": "VanEck Alternative Asset Manage"
+  },
+  "GRID": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属智能电网",
+    "theme": "智能电网",
+    "代码": "GRID",
+    "名称": "First Trust NASDAQ Clean Edge S"
+  },
+  "GUNR": {
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）",
+    "theme": "自然资源",
+    "代码": "GUNR",
+    "名称": "Northern Trust Morningstar Glob"
+  },
+  "HACK": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属网络安全",
+    "theme": "网络安全",
+    "代码": "HACK",
+    "名称": "Amplify Cybersecurity ETF"
+  },
+  "IAK": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属保险",
+    "theme": "保险",
+    "代码": "IAK",
+    "名称": "iShares U.S. Insurance ETF"
+  },
+  "IAT": {
+    "is_trend_carrier": true,
+    "reason": "区域银行的信贷与存款结构独立于大行",
+    "theme": "区域银行",
+    "代码": "IAT",
+    "名称": "iShares U.S. Regional Banks ETF"
+  },
+  "IBB": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属生物科技",
+    "theme": "生物科技",
+    "代码": "IBB",
+    "名称": "iShares Biotechnology ETF"
+  },
+  "ICF": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "ICF",
+    "名称": "iShares Select U.S. REIT ETF"
+  },
+  "ICLN": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属清洁能源",
+    "theme": "清洁能源",
+    "代码": "ICLN",
+    "名称": "iShares Global Clean Energy ETF"
+  },
+  "ICOP": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属铜矿",
+    "theme": "铜矿",
+    "代码": "ICOP",
+    "名称": "iShares Copper and Metals Minin"
+  },
+  "IDEF": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天",
+    "theme": "国防航天",
+    "代码": "IDEF",
+    "名称": "iShares Defense Industrials and"
+  },
+  "IDU": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业",
+    "theme": "公用事业",
+    "代码": "IDU",
+    "名称": "iShares U.S. Utilities ETF"
+  },
+  "IEZ": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属油服",
+    "theme": "油服",
+    "代码": "IEZ",
+    "名称": "iShares U.S. Oil Equipment & Se"
+  },
+  "IFRA": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属美国基建",
+    "theme": "美国基建",
+    "代码": "IFRA",
+    "名称": "iShares U.S. Infrastructure ETF"
+  },
+  "IGE": {
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）",
+    "theme": "自然资源",
+    "代码": "IGE",
+    "名称": "iShares North American Natural "
+  },
+  "IGF": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属全球基建",
+    "theme": "全球基建",
+    "代码": "IGF",
+    "名称": "iShares Global Infrastructure E"
+  },
+  "IGM": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "IGM",
+    "名称": "iShares Expanded Tech Sector ET"
+  },
+  "IGPT": {
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "IGPT",
+    "名称": "Invesco AI and Next Gen Softwar"
+  },
+  "IGV": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属软件",
+    "theme": "软件",
+    "代码": "IGV",
+    "名称": "iShares Expanded Tech-Software "
+  },
+  "IHAK": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属网络安全",
+    "theme": "网络安全",
+    "代码": "IHAK",
+    "名称": "iShares Cybersecurity and Tech "
+  },
+  "IHE": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属制药",
+    "theme": "制药",
+    "代码": "IHE",
+    "名称": "iShares U.S. Pharmaceutical ETF"
+  },
+  "IHF": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属医疗服务",
+    "theme": "医疗服务",
+    "代码": "IHF",
+    "名称": "iShares U.S. Health Care Provid"
+  },
+  "IHI": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属医疗器械",
+    "theme": "医疗器械",
+    "代码": "IHI",
+    "名称": "iShares U.S. Medical Devices ET"
+  },
+  "ITA": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天",
+    "theme": "国防航天",
+    "代码": "ITA",
+    "名称": "iShares U.S. Aerospace & Defens"
+  },
+  "ITB": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属住宅建造",
+    "theme": "住宅建造",
+    "代码": "ITB",
+    "名称": "iShares U.S. Home Construction "
+  },
+  "IVES": {
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "IVES",
+    "名称": "Dan IVES Wedbush AI Revolution "
+  },
+  "IXC": {
+    "is_trend_carrier": true,
+    "reason": "能源整体",
+    "theme": "能源",
+    "代码": "IXC",
+    "名称": "iShares Global Energy ETF"
+  },
+  "IXJ": {
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体",
+    "theme": "医疗保健",
+    "代码": "IXJ",
+    "名称": "iShares Global Healthcare ETF"
+  },
+  "IXN": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "IXN",
+    "名称": "iShares Global Tech ETF"
+  },
+  "IYE": {
+    "is_trend_carrier": true,
+    "reason": "能源整体",
+    "theme": "能源",
+    "代码": "IYE",
+    "名称": "iShares U.S. Energy ETF"
+  },
+  "IYF": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融",
+    "theme": "金融",
+    "代码": "IYF",
+    "名称": "iShares U.S. Financial ETF"
+  },
+  "IYH": {
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体",
+    "theme": "医疗保健",
+    "代码": "IYH",
+    "名称": "iShares U.S. Healthcare ETF"
+  },
+  "IYJ": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业",
+    "theme": "工业",
+    "代码": "IYJ",
+    "名称": "iShares U.S. Industrials ETF"
+  },
+  "IYK": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费",
+    "theme": "必需消费",
+    "代码": "IYK",
+    "名称": "iShares U.S. Consumer Staples E"
+  },
+  "IYM": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属材料",
+    "theme": "材料",
+    "代码": "IYM",
+    "名称": "iShares U.S. Basic Materials ET"
+  },
+  "IYR": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "IYR",
+    "名称": "iShares U.S. Real Estate ETF"
+  },
+  "IYT": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属运输",
+    "theme": "运输",
+    "代码": "IYT",
+    "名称": "iShares U.S. Transportation ETF"
+  },
+  "IYW": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "IYW",
+    "名称": "iShares U.S. Technology ETF"
+  },
+  "IYZ": {
+    "is_trend_carrier": true,
+    "reason": "电信运营商，与媒体/互联网合并前的通信服务不同",
+    "theme": "电信",
+    "代码": "IYZ",
+    "名称": "iShares U.S. Telecommunications"
+  },
+  "JETS": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属航空运输",
+    "theme": "航空运输",
+    "代码": "JETS",
+    "名称": "U.S. Global Jets ETF"
+  },
+  "JTEK": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "JTEK",
+    "名称": "JPMorgan U.S. Tech Leaders ETF"
+  },
+  "KBE": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行",
+    "theme": "银行",
+    "代码": "KBE",
+    "名称": "State Street SPDR S&P Bank ETF"
+  },
+  "KBWB": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行",
+    "theme": "银行",
+    "代码": "KBWB",
+    "名称": "Invesco KBW Bank ETF"
+  },
+  "KBWD": {
+    "is_trend_carrier": false,
+    "reason": "按高股息率筛选金融股，成分跨子行业，驱动力是利率",
+    "theme": null,
+    "代码": "KBWD",
+    "名称": "Invesco KBW High Dividend Yield"
+  },
+  "KBWY": {
+    "is_trend_carrier": false,
+    "reason": "按股息率筛选 REIT，聚合逻辑是收益率不是地产业态",
+    "theme": null,
+    "代码": "KBWY",
+    "名称": "Invesco KBW Premium Yield Equit"
+  },
+  "KIE": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属保险",
+    "theme": "保险",
+    "代码": "KIE",
+    "名称": "State Street SPDR S&P Insurance"
+  },
+  "KOID": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人",
+    "theme": "机器人",
+    "代码": "KOID",
+    "名称": "KraneShares Global Humanoid Rob"
+  },
+  "KRE": {
+    "is_trend_carrier": true,
+    "reason": "区域银行的信贷与存款结构独立于大行",
+    "theme": "区域银行",
+    "代码": "KRE",
+    "名称": "State Street SPDR S&P Regional "
+  },
+  "KXI": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费",
+    "theme": "必需消费",
+    "代码": "KXI",
+    "名称": "iShares Global Consumer Staples"
+  },
+  "LIT": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属锂电池",
+    "theme": "锂电池",
+    "代码": "LIT",
+    "名称": "Global X Lithium & Battery Tech"
+  },
+  "MAGS": {
+    "is_trend_carrier": false,
+    "reason": "固定持有七只超大市值股，跨行业按市值聚合，不代表任何产业方向",
+    "theme": null,
+    "代码": "MAGS",
+    "名称": "Roundhill Magnificent Seven ETF"
+  },
+  "MGNR": {
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）",
+    "theme": "自然资源",
+    "代码": "MGNR",
+    "名称": "American Beacon Select Funds Am"
+  },
+  "MOO": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属农业",
+    "theme": "农业",
+    "代码": "MOO",
+    "名称": "VanEck Agribusiness ETF"
+  },
+  "MORT": {
+    "is_trend_carrier": true,
+    "reason": "抵押 REIT 持的是按揭资产，驱动力是利差不是租金",
+    "theme": "抵押REIT",
+    "代码": "MORT",
+    "名称": "VanEck Mortgage REIT Income ETF"
+  },
+  "MSOS": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属大麻",
+    "theme": "大麻",
+    "代码": "MSOS",
+    "名称": "AdvisorShares Pure US Cannabis "
+  },
+  "NLR": {
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题",
+    "theme": "铀与核能",
+    "代码": "NLR",
+    "名称": "VanEck Uranium and Nuclear ETF"
+  },
+  "NUKZ": {
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题",
+    "theme": "铀与核能",
+    "代码": "NUKZ",
+    "名称": "Range Nuclear Renaissance Index"
+  },
+  "OIH": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属油服",
+    "theme": "油服",
+    "代码": "OIH",
+    "名称": "VanEck Oil Services ETF"
+  },
+  "PAVE": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属美国基建",
+    "theme": "美国基建",
+    "代码": "PAVE",
+    "名称": "Global X U.S. Infrastructure De"
+  },
+  "PBEU": {
+    "is_trend_carrier": false,
+    "reason": "欧洲地域配置模块，按地区而非产业聚合",
+    "theme": null,
+    "代码": "PBEU",
+    "名称": "Portfolio Building Block Europe"
+  },
+  "PBPH": {
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体",
+    "theme": "医疗保健",
+    "代码": "PBPH",
+    "名称": "Portfolio Building Block World "
+  },
+  "PICK": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金属矿业",
+    "theme": "金属矿业",
+    "代码": "PICK",
+    "名称": "iShares MSCI Global Select Meta"
+  },
+  "PPA": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天",
+    "theme": "国防航天",
+    "代码": "PPA",
+    "名称": "Invesco Aerospace & Defense ETF"
+  },
+  "PPH": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属制药",
+    "theme": "制药",
+    "代码": "PPH",
+    "名称": "VanEck Pharmaceutical ETF"
+  },
+  "PSI": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体",
+    "theme": "半导体",
+    "代码": "PSI",
+    "名称": "Invesco Semiconductors ETF"
+  },
+  "PTF": {
+    "is_trend_carrier": false,
+    "reason": "按价格动量选科技股，聚合逻辑是交易特征——若入池等于用涨幅定义主题",
+    "theme": null,
+    "代码": "PTF",
+    "名称": "Invesco Dorsey Wright Technolog"
+  },
+  "QCLN": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属清洁能源",
+    "theme": "清洁能源",
+    "代码": "QCLN",
+    "名称": "First Trust NASDAQ Clean Edge G"
+  },
+  "QQQ": {
+    "is_trend_carrier": true,
+    "reason": "成长基准",
+    "theme": "基准·QQQ",
+    "代码": "QQQ",
+    "名称": "纳斯达克100"
+  },
+  "QTEC": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "QTEC",
+    "名称": "First Trust NASDAQ-100-Technolo"
+  },
+  "QTUM": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属量子计算",
+    "theme": "量子计算",
+    "代码": "QTUM",
+    "名称": "Defiance Quantum ETF"
+  },
+  "REM": {
+    "is_trend_carrier": true,
+    "reason": "抵押 REIT 持的是按揭资产，驱动力是利差不是租金",
+    "theme": "抵押REIT",
+    "代码": "REM",
+    "名称": "iShares Mortgage Real Estate ET"
+  },
+  "REMX": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土与关键材料",
+    "theme": "稀土与关键材料",
+    "代码": "REMX",
+    "名称": "VanEck Rare Earth and Strategic"
+  },
+  "RING": {
+    "is_trend_carrier": true,
+    "reason": "金矿，大小市值同受金价驱动，合为一个主题",
+    "theme": "金矿",
+    "代码": "RING",
+    "名称": "iShares MSCI Global Gold Miners"
+  },
+  "ROBO": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人",
+    "theme": "机器人",
+    "代码": "ROBO",
+    "名称": "ROBO Global Robotics and Automa"
+  },
+  "RSPD": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属可选消费",
+    "theme": "可选消费",
+    "代码": "RSPD",
+    "名称": "Invesco S&P 500 Equal Weight Co"
+  },
+  "RSPH": {
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体",
+    "theme": "医疗保健",
+    "代码": "RSPH",
+    "名称": "Invesco S&P 500 Equal Weight He"
+  },
+  "RSPN": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业",
+    "theme": "工业",
+    "代码": "RSPN",
+    "名称": "Invesco S&P 500 Equal Weight In"
+  },
+  "RSPS": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费",
+    "theme": "必需消费",
+    "代码": "RSPS",
+    "名称": "Invesco S&P 500 Equal Weight Co"
+  },
+  "RSPT": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "RSPT",
+    "名称": "Invesco S&P 500 Equal Weight Te"
+  },
+  "RWR": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "RWR",
+    "名称": "State Street SPDR Dow Jones REI"
+  },
+  "SCHH": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "SCHH",
+    "名称": "Schwab U.S. REIT ETF"
+  },
+  "SETM": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土与关键材料",
+    "theme": "稀土与关键材料",
+    "代码": "SETM",
+    "名称": "Sprott Critical Materials ETF"
+  },
+  "SHLD": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天",
+    "theme": "国防航天",
+    "代码": "SHLD",
+    "名称": "Global X Defense Tech ETF"
+  },
+  "SIL": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银矿",
+    "theme": "银矿",
+    "代码": "SIL",
+    "名称": "Global X Silver Miners ETF"
+  },
+  "SILJ": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银矿",
+    "theme": "银矿",
+    "代码": "SILJ",
+    "名称": "Amplify Junior Silver Miners ET"
+  },
+  "SKYY": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属云计算",
+    "theme": "云计算",
+    "代码": "SKYY",
+    "名称": "First Trust Cloud Computing ETF"
+  },
+  "SLVP": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银矿",
+    "theme": "银矿",
+    "代码": "SLVP",
+    "名称": "iShares MSCI Global Silver and "
+  },
+  "SLVR": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银矿",
+    "theme": "银矿",
+    "代码": "SLVR",
+    "名称": "Sprott Silver Miners & Physical"
+  },
+  "SMH": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体",
+    "theme": "半导体",
+    "代码": "SMH",
+    "名称": "VanEck Semiconductor ETF"
+  },
+  "SOXQ": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体",
+    "theme": "半导体",
+    "代码": "SOXQ",
+    "名称": "Invesco PHLX Semiconductor ETF"
+  },
+  "SOXX": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体",
+    "theme": "半导体",
+    "代码": "SOXX",
+    "名称": "iShares PHLX SOX Semiconductor "
+  },
+  "SPY": {
+    "is_trend_carrier": true,
+    "reason": "大盘基准",
+    "theme": "基准·SPY",
+    "代码": "SPY",
+    "名称": "标普500"
+  },
+  "TAN": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属太阳能",
+    "theme": "太阳能",
+    "代码": "TAN",
+    "名称": "Invesco Solar ETF"
+  },
+  "TDIV": {
+    "is_trend_carrier": false,
+    "reason": "按股息率在科技股中二次筛选，聚合逻辑是分红政策不是技术路线",
+    "theme": null,
+    "代码": "TDIV",
+    "名称": "First Trust NASDAQ Technology D"
+  },
+  "TRFK": {
+    "is_trend_carrier": true,
+    "reason": "数据基础设施与数字化，独立于泛科技",
+    "theme": "数据革命",
+    "代码": "TRFK",
+    "名称": "Pacer Data and Digital Revoluti"
+  },
+  "TRUT": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "TRUT",
+    "名称": "VanEck Technology TruSector ETF"
+  },
+  "TTEQ": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "TTEQ",
+    "名称": "T. Rowe Price Technology ETF"
+  },
+  "TURF": {
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）",
+    "theme": "自然资源",
+    "代码": "TURF",
+    "名称": "T. Rowe Price Natural Resources"
+  },
+  "UFO": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属太空",
+    "theme": "太空",
+    "代码": "UFO",
+    "名称": "Procure Space ETF"
+  },
+  "URA": {
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题",
+    "theme": "铀与核能",
+    "代码": "URA",
+    "名称": "Global X Uranium ETF"
+  },
+  "URNJ": {
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题",
+    "theme": "铀与核能",
+    "代码": "URNJ",
+    "名称": "Sprott Junior Uranium Miners ET"
+  },
+  "URNM": {
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题",
+    "theme": "铀与核能",
+    "代码": "URNM",
+    "名称": "Sprott Uranium Miners ETF"
+  },
+  "USRT": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "USRT",
+    "名称": "iShares Core U.S. REIT ETF"
+  },
+  "UTES": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业",
+    "theme": "公用事业",
+    "代码": "UTES",
+    "名称": "Virtus Reaves Utilities ETF"
+  },
+  "VDC": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费",
+    "theme": "必需消费",
+    "代码": "VDC",
+    "名称": "Vanguard Consumer Staples ETF"
+  },
+  "VDE": {
+    "is_trend_carrier": true,
+    "reason": "能源整体",
+    "theme": "能源",
+    "代码": "VDE",
+    "名称": "Vanguard Energy ETF"
+  },
+  "VFH": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融",
+    "theme": "金融",
+    "代码": "VFH",
+    "名称": "Vanguard Financials ETF"
+  },
+  "VGT": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "VGT",
+    "名称": "Vanguard Information Tech ETF"
+  },
+  "VHT": {
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体",
+    "theme": "医疗保健",
+    "代码": "VHT",
+    "名称": "Vanguard Health Care ETF"
+  },
+  "VIS": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业",
+    "theme": "工业",
+    "代码": "VIS",
+    "名称": "Vanguard Industrials ETF"
+  },
+  "VNQ": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "VNQ",
+    "名称": "Vanguard Real Estate ETF"
+  },
+  "VOX": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信服务",
+    "theme": "通信服务",
+    "代码": "VOX",
+    "名称": "Vanguard Communication Services"
+  },
+  "VPU": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业",
+    "theme": "公用事业",
+    "代码": "VPU",
+    "名称": "Vanguard Utilities ETF"
+  },
+  "WCLD": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属云计算",
+    "theme": "云计算",
+    "代码": "WCLD",
+    "名称": "WisdomTree Cloud Computing Fund"
+  },
+  "WQTM": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属量子计算",
+    "theme": "量子计算",
+    "代码": "WQTM",
+    "名称": "WisdomTree Quantum Computing Fu"
+  },
+  "WTAI": {
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "WTAI",
+    "名称": "WisdomTree Artificial Intellige"
+  },
+  "XAR": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天",
+    "theme": "国防航天",
+    "代码": "XAR",
+    "名称": "State Street SPDR S&P Aerospace"
+  },
+  "XBI": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属生物科技",
+    "theme": "生物科技",
+    "代码": "XBI",
+    "名称": "State Street SPDR S&P Biotech E"
+  },
+  "XHB": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属住宅建造",
+    "theme": "住宅建造",
+    "代码": "XHB",
+    "名称": "State Street SPDR S&P Homebuild"
+  },
+  "XLB": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属材料",
+    "theme": "材料",
+    "代码": "XLB",
+    "名称": "State Street Materials Select S"
+  },
+  "XLC": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信服务",
+    "theme": "通信服务",
+    "代码": "XLC",
+    "名称": "State Street Communication Serv"
+  },
+  "XLE": {
+    "is_trend_carrier": true,
+    "reason": "能源整体",
+    "theme": "能源",
+    "代码": "XLE",
+    "名称": "State Street Energy Select Sect"
+  },
+  "XLF": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融",
+    "theme": "金融",
+    "代码": "XLF",
+    "名称": "State Street Financial Select S"
+  },
+  "XLI": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业",
+    "theme": "工业",
+    "代码": "XLI",
+    "名称": "State Street Industrial Select "
+  },
+  "XLK": {
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题",
+    "theme": "科技综合",
+    "代码": "XLK",
+    "名称": "State Street Technology Select "
+  },
+  "XLP": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费",
+    "theme": "必需消费",
+    "代码": "XLP",
+    "名称": "State Street Consumer Staples S"
+  },
+  "XLRE": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT",
+    "theme": "房地产REIT",
+    "代码": "XLRE",
+    "名称": "State Street Real Estate Select"
+  },
+  "XLU": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业",
+    "theme": "公用事业",
+    "代码": "XLU",
+    "名称": "State Street Utilities Select S"
+  },
+  "XLV": {
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体",
+    "theme": "医疗保健",
+    "代码": "XLV",
+    "名称": "State Street Health Care Select"
+  },
+  "XLY": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属可选消费",
+    "theme": "可选消费",
+    "代码": "XLY",
+    "名称": "State Street Consumer Discretio"
+  },
+  "XME": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金属矿业",
+    "theme": "金属矿业",
+    "代码": "XME",
+    "名称": "State Street SPDR S&P Metals & "
+  },
+  "XOP": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属油气勘探",
+    "theme": "油气勘探",
+    "代码": "XOP",
+    "名称": "State Street SPDR S&P Oil & Gas"
+  },
+  "XPH": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属制药",
+    "theme": "制药",
+    "代码": "XPH",
+    "名称": "State Street SPDR S&P Pharmaceu"
+  },
+  "XRT": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属零售",
+    "theme": "零售",
+    "代码": "XRT",
+    "名称": "State Street SPDR S&P Retail ET"
+  },
+  "XSD": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体",
+    "theme": "半导体",
+    "代码": "XSD",
+    "名称": "State Street SPDR S&P Semicondu"
+  },
+  "ZAP": {
+    "is_trend_carrier": true,
+    "reason": "美国电气化改造，与公用事业的监管收益模型不同",
+    "theme": "电气化",
+    "代码": "ZAP",
+    "名称": "Global X U.S. Electrification E"
+  },
+  "sh510230": {
+    "is_trend_carrier": true,
+    "reason": "银行+非银综合",
+    "theme": "金融",
+    "代码": "sh510230",
+    "名称": "金融ETF国泰"
+  },
+  "sh510630": {
+    "is_trend_carrier": true,
+    "reason": "大消费综合；「50」是规模切法，底层仍按行业聚合",
+    "theme": "消费",
+    "代码": "sh510630",
+    "名称": "消费ETF华夏"
+  },
+  "sh510720": {
+    "is_trend_carrier": false,
+    "reason": "按所有制+股息率双重筛选，成分跨行业，驱动力是政策与资金再配置",
+    "theme": null,
+    "代码": "sh510720",
+    "名称": "红利国企ETF国泰"
+  },
+  "sh510810": {
+    "is_trend_carrier": false,
+    "reason": "按所有制+股息率双重筛选，成分跨行业，驱动力是政策与资金再配置",
+    "theme": null,
+    "代码": "sh510810",
+    "名称": "上海国企ETF汇添富"
+  },
+  "sh510880": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh510880",
+    "名称": "红利ETF华泰柏瑞"
+  },
+  "sh511850": {
+    "is_trend_carrier": false,
+    "reason": "货币型基金，规则层排除词未覆盖此产品名",
+    "theme": null,
+    "代码": "sh511850",
+    "名称": "招商财富宝ETF"
+  },
+  "sh512000": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sh512000",
+    "名称": "券商ETF华宝"
+  },
+  "sh512010": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh512010",
+    "名称": "医药ETF易方达"
+  },
+  "sh512040": {
+    "is_trend_carrier": false,
+    "reason": "按估值/增长风格因子选股，成分跨行业",
+    "theme": null,
+    "代码": "sh512040",
+    "名称": "价值ETF富国"
+  },
+  "sh512070": {
+    "is_trend_carrier": true,
+    "reason": "券商+保险，按行业聚合",
+    "theme": "非银金融",
+    "代码": "sh512070",
+    "名称": "证券保险ETF易方达"
+  },
+  "sh512170": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh512170",
+    "名称": "医疗ETF华宝"
+  },
+  "sh512200": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产",
+    "theme": "房地产",
+    "代码": "sh512200",
+    "名称": "房地产ETF南方"
+  },
+  "sh512290": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh512290",
+    "名称": "生物医药ETF国泰"
+  },
+  "sh512400": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属有色金属",
+    "theme": "有色金属",
+    "代码": "sh512400",
+    "名称": "有色金属ETF南方"
+  },
+  "sh512480": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh512480",
+    "名称": "半导体ETF国联安"
+  },
+  "sh512560": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属军工",
+    "theme": "军工",
+    "代码": "sh512560",
+    "名称": "军工ETF易方达"
+  },
+  "sh512570": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sh512570",
+    "名称": "证券ETF易方达"
+  },
+  "sh512630": {
+    "is_trend_carrier": true,
+    "reason": "卫星互联网是独立主题，驱动力是组网进度而非军费",
+    "theme": "卫星",
+    "代码": "sh512630",
+    "名称": "卫星ETF广发"
+  },
+  "sh512660": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属军工",
+    "theme": "军工",
+    "代码": "sh512660",
+    "名称": "军工ETF国泰"
+  },
+  "sh512670": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属军工",
+    "theme": "军工",
+    "代码": "sh512670",
+    "名称": "国防ETF鹏华"
+  },
+  "sh512680": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属军工",
+    "theme": "军工",
+    "代码": "sh512680",
+    "名称": "军工ETF广发"
+  },
+  "sh512690": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属白酒",
+    "theme": "白酒",
+    "代码": "sh512690",
+    "名称": "酒ETF鹏华"
+  },
+  "sh512700": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行",
+    "theme": "银行",
+    "代码": "sh512700",
+    "名称": "银行ETF南方"
+  },
+  "sh512710": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属军工",
+    "theme": "军工",
+    "代码": "sh512710",
+    "名称": "军工龙头ETF富国"
+  },
+  "sh512760": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh512760",
+    "名称": "芯片ETF国泰"
+  },
+  "sh512800": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行",
+    "theme": "银行",
+    "代码": "sh512800",
+    "名称": "银行ETF华宝"
+  },
+  "sh512810": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属军工",
+    "theme": "军工",
+    "代码": "sh512810",
+    "名称": "军工ETF华宝"
+  },
+  "sh512820": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行",
+    "theme": "银行",
+    "代码": "sh512820",
+    "名称": "银行ETF汇添富"
+  },
+  "sh512880": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sh512880",
+    "名称": "证券ETF国泰"
+  },
+  "sh512890": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh512890",
+    "名称": "红利低波ETF华泰柏瑞"
+  },
+  "sh512900": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sh512900",
+    "名称": "证券ETF南方"
+  },
+  "sh512930": {
+    "is_trend_carrier": true,
+    "reason": "四只均为 AI 主题，成分重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "sh512930",
+    "名称": "AI人工智能ETF平安"
+  },
+  "sh512940": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属有色金属",
+    "theme": "有色金属",
+    "代码": "sh512940",
+    "名称": "有色ETF华安"
+  },
+  "sh512980": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属传媒",
+    "theme": "传媒",
+    "代码": "sh512980",
+    "名称": "传媒ETF广发"
+  },
+  "sh513020": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sh513020",
+    "名称": "港股科技ETF国泰"
+  },
+  "sh513040": {
+    "is_trend_carrier": true,
+    "reason": "港股互联网平台，三只成分几乎一致",
+    "theme": "互联网·港股",
+    "代码": "sh513040",
+    "名称": "港股通互联网ETF易方达"
+  },
+  "sh513060": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh513060",
+    "名称": "恒生医疗ETF博时"
+  },
+  "sh513070": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属消费·港股",
+    "theme": "消费·港股",
+    "代码": "sh513070",
+    "名称": "港股通消费ETF易方达"
+  },
+  "sh513090": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商·港股",
+    "theme": "券商·港股",
+    "代码": "sh513090",
+    "名称": "香港证券ETF易方达"
+  },
+  "sh513120": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh513120",
+    "名称": "港股创新药ETF广发"
+  },
+  "sh513140": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融·港股",
+    "theme": "金融·港股",
+    "代码": "sh513140",
+    "名称": "港股通金融ETF华泰柏瑞"
+  },
+  "sh513150": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sh513150",
+    "名称": "港股通科技ETF华泰柏瑞"
+  },
+  "sh513160": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sh513160",
+    "名称": "港股科技ETF银华"
+  },
+  "sh513190": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融·港股",
+    "theme": "金融·港股",
+    "代码": "sh513190",
+    "名称": "港股通金融ETF华夏"
+  },
+  "sh513200": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh513200",
+    "名称": "港股通医药ETF易方达"
+  },
+  "sh513240": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属信息技术·港股",
+    "theme": "信息技术·港股",
+    "代码": "sh513240",
+    "名称": "港股通信息技术ETF华安"
+  },
+  "sh513280": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh513280",
+    "名称": "恒生生物科技ETF汇添富"
+  },
+  "sh513310": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh513310",
+    "名称": "中韩半导体ETF华泰柏瑞"
+  },
+  "sh513330": {
+    "is_trend_carrier": true,
+    "reason": "港股互联网平台，三只成分几乎一致",
+    "theme": "互联网·港股",
+    "代码": "sh513330",
+    "名称": "恒生互联网ETF华夏"
+  },
+  "sh513360": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属教育",
+    "theme": "教育",
+    "代码": "sh513360",
+    "名称": "教育ETF博时"
+  },
+  "sh513530": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh513530",
+    "名称": "港股通红利ETF华泰柏瑞"
+  },
+  "sh513620": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh513620",
+    "名称": "港股医疗ETF银华"
+  },
+  "sh513630": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh513630",
+    "名称": "港股低波红利ETF摩根"
+  },
+  "sh513690": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh513690",
+    "名称": "港股红利ETF博时"
+  },
+  "sh513700": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh513700",
+    "名称": "港股通医药ETF鹏华"
+  },
+  "sh513750": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属非银金融·港股",
+    "theme": "非银金融·港股",
+    "代码": "sh513750",
+    "名称": "港股通非银ETF广发"
+  },
+  "sh513770": {
+    "is_trend_carrier": true,
+    "reason": "港股互联网平台，三只成分几乎一致",
+    "theme": "互联网·港股",
+    "代码": "sh513770",
+    "名称": "港股互联网ETF华宝"
+  },
+  "sh513780": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh513780",
+    "名称": "港股创新药ETF景顺"
+  },
+  "sh513820": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh513820",
+    "名称": "港股通红利ETF汇添富"
+  },
+  "sh513860": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sh513860",
+    "名称": "港股通科技ETF海富通"
+  },
+  "sh513910": {
+    "is_trend_carrier": false,
+    "reason": "按所有制+股息率双重筛选，成分跨行业，驱动力是政策与资金再配置",
+    "theme": null,
+    "代码": "sh513910",
+    "名称": "港股通央企红利ETF华夏"
+  },
+  "sh513920": {
+    "is_trend_carrier": false,
+    "reason": "按所有制+股息率双重筛选，成分跨行业，驱动力是政策与资金再配置",
+    "theme": null,
+    "代码": "sh513920",
+    "名称": "港股通央企红利ETF华安"
+  },
+  "sh513930": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh513930",
+    "名称": "恒生生物科技ETF华泰柏瑞"
+  },
+  "sh513980": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sh513980",
+    "名称": "港股科技ETF景顺"
+  },
+  "sh515000": {
+    "is_trend_carrier": true,
+    "reason": "跨子行业的科技综合，成分仍按产业聚合",
+    "theme": "科技",
+    "代码": "sh515000",
+    "名称": "科技ETF华宝"
+  },
+  "sh515010": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sh515010",
+    "名称": "证券ETF华夏"
+  },
+  "sh515020": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行",
+    "theme": "银行",
+    "代码": "sh515020",
+    "名称": "银行ETF华夏"
+  },
+  "sh515030": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属新能源车",
+    "theme": "新能源车",
+    "代码": "sh515030",
+    "名称": "新能源车ETF华夏"
+  },
+  "sh515050": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信",
+    "theme": "通信",
+    "代码": "sh515050",
+    "名称": "通信ETF华夏"
+  },
+  "sh515060": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产",
+    "theme": "房地产",
+    "代码": "sh515060",
+    "名称": "房地产ETF华夏"
+  },
+  "sh515070": {
+    "is_trend_carrier": true,
+    "reason": "四只均为 AI 主题，成分重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "sh515070",
+    "名称": "人工智能ETF华夏"
+  },
+  "sh515080": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh515080",
+    "名称": "中证红利ETF招商"
+  },
+  "sh515100": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh515100",
+    "名称": "红利低波100ETF景顺"
+  },
+  "sh515120": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh515120",
+    "名称": "创新药ETF广发"
+  },
+  "sh515170": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属食品饮料",
+    "theme": "食品饮料",
+    "代码": "sh515170",
+    "名称": "食品饮料ETF华夏"
+  },
+  "sh515180": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh515180",
+    "名称": "红利ETF易方达"
+  },
+  "sh515210": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属钢铁",
+    "theme": "钢铁",
+    "代码": "sh515210",
+    "名称": "钢铁ETF国泰"
+  },
+  "sh515220": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属煤炭",
+    "theme": "煤炭",
+    "代码": "sh515220",
+    "名称": "煤炭ETF国泰"
+  },
+  "sh515230": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属软件",
+    "theme": "软件",
+    "代码": "sh515230",
+    "名称": "软件ETF国泰"
+  },
+  "sh515260": {
+    "is_trend_carrier": true,
+    "reason": "电子一级行业，比半导体宽，含元件与终端",
+    "theme": "电子",
+    "代码": "sh515260",
+    "名称": "电子ETF华宝"
+  },
+  "sh515290": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行",
+    "theme": "银行",
+    "代码": "sh515290",
+    "名称": "银行ETF天弘"
+  },
+  "sh515300": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh515300",
+    "名称": "300红利低波ETF嘉实"
+  },
+  "sh515400": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属大数据",
+    "theme": "大数据",
+    "代码": "sh515400",
+    "名称": "大数据ETF富国"
+  },
+  "sh515450": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh515450",
+    "名称": "红利低波50ETF南方"
+  },
+  "sh515630": {
+    "is_trend_carrier": true,
+    "reason": "券商+保险，按行业聚合",
+    "theme": "非银金融",
+    "代码": "sh515630",
+    "名称": "证券保险ETF鹏华"
+  },
+  "sh515650": {
+    "is_trend_carrier": true,
+    "reason": "大消费综合；「50」是规模切法，底层仍按行业聚合",
+    "theme": "消费",
+    "代码": "sh515650",
+    "名称": "消费50ETF富国"
+  },
+  "sh515700": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属新能源车",
+    "theme": "新能源车",
+    "代码": "sh515700",
+    "名称": "新能源车ETF平安"
+  },
+  "sh515790": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属光伏",
+    "theme": "光伏",
+    "代码": "sh515790",
+    "名称": "光伏ETF华泰柏瑞"
+  },
+  "sh515850": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sh515850",
+    "名称": "证券ETF富国"
+  },
+  "sh515880": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信",
+    "theme": "通信",
+    "代码": "sh515880",
+    "名称": "通信ETF国泰"
+  },
+  "sh515970": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工程机械",
+    "theme": "工程机械",
+    "代码": "sh515970",
+    "名称": "工程机械ETF华夏"
+  },
+  "sh515980": {
+    "is_trend_carrier": true,
+    "reason": "四只均为 AI 主题，成分重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "sh515980",
+    "名称": "人工智能ETF华富"
+  },
+  "sh516000": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属大数据",
+    "theme": "大数据",
+    "代码": "sh516000",
+    "名称": "大数据ETF华夏"
+  },
+  "sh516010": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属游戏",
+    "theme": "游戏",
+    "代码": "sh516010",
+    "名称": "游戏ETF国泰"
+  },
+  "sh516020": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属化工",
+    "theme": "化工",
+    "代码": "sh516020",
+    "名称": "化工ETF华宝"
+  },
+  "sh516080": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh516080",
+    "名称": "创新药ETF易方达"
+  },
+  "sh516090": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属新能源",
+    "theme": "新能源",
+    "代码": "sh516090",
+    "名称": "新能源ETF易方达"
+  },
+  "sh516100": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融科技",
+    "theme": "金融科技",
+    "代码": "sh516100",
+    "名称": "金融科技ETF华夏"
+  },
+  "sh516120": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属化工",
+    "theme": "化工",
+    "代码": "sh516120",
+    "名称": "化工ETF富国"
+  },
+  "sh516150": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土",
+    "theme": "稀土",
+    "代码": "sh516150",
+    "名称": "稀土ETF嘉实"
+  },
+  "sh516160": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属新能源",
+    "theme": "新能源",
+    "代码": "sh516160",
+    "名称": "新能源ETF南方"
+  },
+  "sh516310": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行",
+    "theme": "银行",
+    "代码": "sh516310",
+    "名称": "银行ETF易方达"
+  },
+  "sh516350": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh516350",
+    "名称": "芯片ETF易方达"
+  },
+  "sh516510": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属云计算",
+    "theme": "云计算",
+    "代码": "sh516510",
+    "名称": "云计算ETF易方达"
+  },
+  "sh516570": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属石油石化",
+    "theme": "石油石化",
+    "代码": "sh516570",
+    "名称": "石化ETF易方达"
+  },
+  "sh516620": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属影视",
+    "theme": "影视",
+    "代码": "sh516620",
+    "名称": "影视ETF国泰"
+  },
+  "sh516630": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属云计算",
+    "theme": "云计算",
+    "代码": "sh516630",
+    "名称": "云计算ETF华夏"
+  },
+  "sh516640": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh516640",
+    "名称": "芯片ETF富国"
+  },
+  "sh516650": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属有色金属",
+    "theme": "有色金属",
+    "代码": "sh516650",
+    "名称": "有色金属ETF华夏"
+  },
+  "sh516670": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属养殖",
+    "theme": "养殖",
+    "代码": "sh516670",
+    "名称": "畜牧养殖ETF招商"
+  },
+  "sh516780": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土",
+    "theme": "稀土",
+    "代码": "sh516780",
+    "名称": "稀土ETF华泰柏瑞"
+  },
+  "sh516810": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属农业",
+    "theme": "农业",
+    "代码": "sh516810",
+    "名称": "农业ETF华夏"
+  },
+  "sh516860": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融科技",
+    "theme": "金融科技",
+    "代码": "sh516860",
+    "名称": "金融科技ETF博时"
+  },
+  "sh516920": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh516920",
+    "名称": "芯片ETF汇添富"
+  },
+  "sh517110": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh517110",
+    "名称": "创新药ETF国泰"
+  },
+  "sh517380": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh517380",
+    "名称": "创新药ETF天弘"
+  },
+  "sh517900": {
+    "is_trend_carrier": false,
+    "reason": "按 A/H 折价择优切换，驱动力是两地估值套利，不是产业变化",
+    "theme": null,
+    "代码": "sh517900",
+    "名称": "银行AH优选ETF招商"
+  },
+  "sh520500": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh520500",
+    "名称": "恒生创新药ETF华泰柏瑞"
+  },
+  "sh520510": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh520510",
+    "名称": "港股通医疗ETF华夏"
+  },
+  "sh520550": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh520550",
+    "名称": "港股红利低波ETF招商"
+  },
+  "sh520600": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属汽车·港股",
+    "theme": "汽车·港股",
+    "代码": "sh520600",
+    "名称": "港股通汽车ETF广发"
+  },
+  "sh520650": {
+    "is_trend_carrier": true,
+    "reason": "港股互联网平台，三只成分几乎一致",
+    "theme": "互联网·港股",
+    "代码": "sh520650",
+    "名称": "港股通互联网ETF南方"
+  },
+  "sh520660": {
+    "is_trend_carrier": false,
+    "reason": "按所有制+股息率双重筛选，成分跨行业，驱动力是政策与资金再配置",
+    "theme": null,
+    "代码": "sh520660",
+    "名称": "港股通央企红利ETF南方"
+  },
+  "sh520690": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh520690",
+    "名称": "港股创新药ETF博时"
+  },
+  "sh520700": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh520700",
+    "名称": "港股通创新药ETF万家"
+  },
+  "sh520880": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh520880",
+    "名称": "港股通创新药ETF华宝"
+  },
+  "sh520900": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh520900",
+    "名称": "港股通红利ETF广发"
+  },
+  "sh520970": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sh520970",
+    "名称": "港股通创新药ETF嘉实"
+  },
+  "sh520980": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sh520980",
+    "名称": "港股通科技ETF汇添富"
+  },
+  "sh520990": {
+    "is_trend_carrier": false,
+    "reason": "按所有制+股息率双重筛选，成分跨行业，驱动力是政策与资金再配置",
+    "theme": null,
+    "代码": "sh520990",
+    "名称": "港股央企红利ETF景顺"
+  },
+  "sh526000": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属信息技术·港股",
+    "theme": "信息技术·港股",
+    "代码": "sh526000",
+    "名称": "港股通信息技术ETF华夏"
+  },
+  "sh560080": {
+    "is_trend_carrier": true,
+    "reason": "中药政策与集采周期独立于创新药，单列",
+    "theme": "中药",
+    "代码": "sh560080",
+    "名称": "中药ETF汇添富"
+  },
+  "sh560090": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sh560090",
+    "名称": "证券ETF汇添富"
+  },
+  "sh560170": {
+    "is_trend_carrier": false,
+    "reason": "按所有制在科技股中二次筛选，聚合逻辑是股东属性不是产业环节",
+    "theme": null,
+    "代码": "sh560170",
+    "名称": "央企科技ETF南方"
+  },
+  "sh560280": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工程机械",
+    "theme": "工程机械",
+    "代码": "sh560280",
+    "名称": "工程机械ETF广发"
+  },
+  "sh560390": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属电网设备",
+    "theme": "电网设备",
+    "代码": "sh560390",
+    "名称": "电网设备ETF易方达"
+  },
+  "sh560710": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属船舶",
+    "theme": "船舶",
+    "代码": "sh560710",
+    "名称": "船舶ETF富国"
+  },
+  "sh560780": {
+    "is_trend_carrier": true,
+    "reason": "设备环节与设计/制造的产业驱动力不同，单列",
+    "theme": "半导体设备",
+    "代码": "sh560780",
+    "名称": "半导体设备ETF广发"
+  },
+  "sh560860": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属有色金属",
+    "theme": "有色金属",
+    "代码": "sh560860",
+    "名称": "工业有色ETF万家"
+  },
+  "sh561100": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属消费电子",
+    "theme": "消费电子",
+    "代码": "sh561100",
+    "名称": "消费电子ETF富国"
+  },
+  "sh561160": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属锂电池",
+    "theme": "锂电池",
+    "代码": "sh561160",
+    "名称": "电池ETF富国"
+  },
+  "sh561170": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属绿色电力",
+    "theme": "绿色电力",
+    "代码": "sh561170",
+    "名称": "绿色电力ETF富国"
+  },
+  "sh561330": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属矿业",
+    "theme": "矿业",
+    "代码": "sh561330",
+    "名称": "矿业ETF国泰"
+  },
+  "sh561360": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属石油石化",
+    "theme": "石油石化",
+    "代码": "sh561360",
+    "名称": "石油ETF国泰"
+  },
+  "sh561380": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属电网设备",
+    "theme": "电网设备",
+    "代码": "sh561380",
+    "名称": "电网设备ETF国泰"
+  },
+  "sh561560": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属电力",
+    "theme": "电力",
+    "代码": "sh561560",
+    "名称": "电力ETF华泰柏瑞"
+  },
+  "sh561580": {
+    "is_trend_carrier": false,
+    "reason": "按所有制+股息率双重筛选，成分跨行业，驱动力是政策与资金再配置",
+    "theme": null,
+    "代码": "sh561580",
+    "名称": "央企红利ETF华泰柏瑞"
+  },
+  "sh561910": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属锂电池",
+    "theme": "锂电池",
+    "代码": "sh561910",
+    "名称": "电池ETF招商"
+  },
+  "sh561980": {
+    "is_trend_carrier": true,
+    "reason": "设备环节与设计/制造的产业驱动力不同，单列",
+    "theme": "半导体设备",
+    "代码": "sh561980",
+    "名称": "半导体设备ETF招商"
+  },
+  "sh562500": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人",
+    "theme": "机器人",
+    "代码": "sh562500",
+    "名称": "机器人ETF华夏"
+  },
+  "sh562510": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属旅游",
+    "theme": "旅游",
+    "代码": "sh562510",
+    "名称": "旅游ETF华夏"
+  },
+  "sh562550": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属绿色电力",
+    "theme": "绿色电力",
+    "代码": "sh562550",
+    "名称": "绿电ETF华夏"
+  },
+  "sh562590": {
+    "is_trend_carrier": true,
+    "reason": "设备环节与设计/制造的产业驱动力不同，单列",
+    "theme": "半导体设备",
+    "代码": "sh562590",
+    "名称": "半导体设备ETF华夏"
+  },
+  "sh562800": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土",
+    "theme": "稀土",
+    "代码": "sh562800",
+    "名称": "稀有金属ETF嘉实"
+  },
+  "sh562820": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh562820",
+    "名称": "集成电路ETF嘉实"
+  },
+  "sh562930": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属软件",
+    "theme": "软件",
+    "代码": "sh562930",
+    "名称": "软件ETF易方达"
+  },
+  "sh562950": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属消费电子",
+    "theme": "消费电子",
+    "代码": "sh562950",
+    "名称": "消费电子ETF易方达"
+  },
+  "sh563020": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sh563020",
+    "名称": "红利低波ETF易方达"
+  },
+  "sh563230": {
+    "is_trend_carrier": true,
+    "reason": "卫星互联网是独立主题，驱动力是组网进度而非军费",
+    "theme": "卫星",
+    "代码": "sh563230",
+    "名称": "卫星ETF富国"
+  },
+  "sh563380": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属航天航空",
+    "theme": "航天航空",
+    "代码": "sh563380",
+    "名称": "航空航天ETF华泰柏瑞"
+  },
+  "sh563530": {
+    "is_trend_carrier": true,
+    "reason": "卫星互联网是独立主题，驱动力是组网进度而非军费",
+    "theme": "卫星",
+    "代码": "sh563530",
+    "名称": "卫星ETF易方达"
+  },
+  "sh563790": {
+    "is_trend_carrier": true,
+    "reason": "卫星互联网是独立主题，驱动力是组网进度而非军费",
+    "theme": "卫星",
+    "代码": "sh563790",
+    "名称": "卫星ETF鹏华"
+  },
+  "sh588010": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属新材料",
+    "theme": "新材料",
+    "代码": "sh588010",
+    "名称": "科创新材料ETF博时"
+  },
+  "sh588020": {
+    "is_trend_carrier": false,
+    "reason": "按估值/增长风格因子选股，成分跨行业",
+    "theme": null,
+    "代码": "sh588020",
+    "名称": "科创成长ETF易方达"
+  },
+  "sh588110": {
+    "is_trend_carrier": false,
+    "reason": "按估值/增长风格因子选股，成分跨行业",
+    "theme": null,
+    "代码": "sh588110",
+    "名称": "科创成长ETF广发"
+  },
+  "sh588130": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh588130",
+    "名称": "科创医药ETF华夏"
+  },
+  "sh588160": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属新材料",
+    "theme": "新材料",
+    "代码": "sh588160",
+    "名称": "科创新材料ETF南方"
+  },
+  "sh588170": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh588170",
+    "名称": "科创半导体ETF华夏"
+  },
+  "sh588200": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh588200",
+    "名称": "科创芯片ETF嘉实"
+  },
+  "sh588290": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh588290",
+    "名称": "科创芯片ETF华安"
+  },
+  "sh588700": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh588700",
+    "名称": "科创医药ETF嘉实"
+  },
+  "sh588710": {
+    "is_trend_carrier": true,
+    "reason": "设备环节与设计/制造的产业驱动力不同，单列",
+    "theme": "半导体设备",
+    "代码": "sh588710",
+    "名称": "科创半导体设备ETF华泰柏瑞"
+  },
+  "sh588730": {
+    "is_trend_carrier": true,
+    "reason": "四只均为 AI 主题，成分重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "sh588730",
+    "名称": "科创人工智能ETF易方达"
+  },
+  "sh588750": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh588750",
+    "名称": "科创芯片ETF汇添富"
+  },
+  "sh588760": {
+    "is_trend_carrier": true,
+    "reason": "四只均为 AI 主题，成分重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "sh588760",
+    "名称": "科创人工智能ETF广发"
+  },
+  "sh588780": {
+    "is_trend_carrier": true,
+    "reason": "设计环节，与设备、制造的周期不同步",
+    "theme": "芯片设计",
+    "代码": "sh588780",
+    "名称": "科创芯片设计ETF国联安"
+  },
+  "sh588790": {
+    "is_trend_carrier": true,
+    "reason": "四只均为 AI 主题，成分重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "sh588790",
+    "名称": "科创AIETF博时"
+  },
+  "sh588810": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh588810",
+    "名称": "科创芯片ETF富国"
+  },
+  "sh588830": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属新能源",
+    "theme": "新能源",
+    "代码": "sh588830",
+    "名称": "科创新能源ETF鹏华"
+  },
+  "sh588890": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh588890",
+    "名称": "科创芯片ETF南方"
+  },
+  "sh588930": {
+    "is_trend_carrier": true,
+    "reason": "四只均为 AI 主题，成分重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "sh588930",
+    "名称": "科创人工智能ETF银华"
+  },
+  "sh588990": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh588990",
+    "名称": "科创芯片ETF博时"
+  },
+  "sh589010": {
+    "is_trend_carrier": true,
+    "reason": "四只均为 AI 主题，成分重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "sh589010",
+    "名称": "科创人工智能ETF华夏"
+  },
+  "sh589020": {
+    "is_trend_carrier": true,
+    "reason": "设备环节与设计/制造的产业驱动力不同，单列",
+    "theme": "半导体设备",
+    "代码": "sh589020",
+    "名称": "科创半导体设备ETF鹏华"
+  },
+  "sh589030": {
+    "is_trend_carrier": true,
+    "reason": "设计环节，与设备、制造的周期不同步",
+    "theme": "芯片设计",
+    "代码": "sh589030",
+    "名称": "科创芯片设计ETF易方达"
+  },
+  "sh589070": {
+    "is_trend_carrier": true,
+    "reason": "设计环节，与设备、制造的周期不同步",
+    "theme": "芯片设计",
+    "代码": "sh589070",
+    "名称": "科创芯片设计ETF天弘"
+  },
+  "sh589100": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh589100",
+    "名称": "科创芯片ETF国泰"
+  },
+  "sh589120": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh589120",
+    "名称": "科创创新药ETF汇添富"
+  },
+  "sh589130": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh589130",
+    "名称": "科创芯片ETF易方达"
+  },
+  "sh589190": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sh589190",
+    "名称": "科创芯片ETF华宝"
+  },
+  "sh589210": {
+    "is_trend_carrier": true,
+    "reason": "设计环节，与设备、制造的周期不同步",
+    "theme": "芯片设计",
+    "代码": "sh589210",
+    "名称": "科创芯片设计ETF广发"
+  },
+  "sh589720": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sh589720",
+    "名称": "科创创新药ETF国泰"
+  },
+  "sz159030": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属农业",
+    "theme": "农业",
+    "代码": "sz159030",
+    "名称": "粮食ETF华夏"
+  },
+  "sz159033": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属农业",
+    "theme": "农业",
+    "代码": "sz159033",
+    "名称": "粮食ETF国泰"
+  },
+  "sz159101": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sz159101",
+    "名称": "港股通科技ETF华夏"
+  },
+  "sz159102": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159102",
+    "名称": "港股通生物科技ETF华安"
+  },
+  "sz159105": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159105",
+    "名称": "恒生生物科技ETF易方达"
+  },
+  "sz159128": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sz159128",
+    "名称": "港股科技ETF天弘"
+  },
+  "sz159131": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属信息技术·港股",
+    "theme": "信息技术·港股",
+    "代码": "sz159131",
+    "名称": "港股通信息技术ETF华宝"
+  },
+  "sz159133": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属化工",
+    "theme": "化工",
+    "代码": "sz159133",
+    "名称": "化工ETF天弘"
+  },
+  "sz159137": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159137",
+    "名称": "港股通医疗ETF华宝"
+  },
+  "sz159147": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属锂电池",
+    "theme": "锂电池",
+    "代码": "sz159147",
+    "名称": "电池ETF南方"
+  },
+  "sz159157": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属有色金属",
+    "theme": "有色金属",
+    "代码": "sz159157",
+    "名称": "有色金属ETF天弘"
+  },
+  "sz159167": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159167",
+    "名称": "港股通医疗ETF工银"
+  },
+  "sz159185": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属信息技术·港股",
+    "theme": "信息技术·港股",
+    "代码": "sz159185",
+    "名称": "港股通信息技术ETF鹏华"
+  },
+  "sz159196": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属信息技术·港股",
+    "theme": "信息技术·港股",
+    "代码": "sz159196",
+    "名称": "港股通信息技术ETF易方达"
+  },
+  "sz159198": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属信息技术·港股",
+    "theme": "信息技术·港股",
+    "代码": "sz159198",
+    "名称": "港股通信息技术ETF富国"
+  },
+  "sz159202": {
+    "is_trend_carrier": true,
+    "reason": "港股互联网平台，三只成分几乎一致",
+    "theme": "互联网·港股",
+    "代码": "sz159202",
+    "名称": "恒生互联网ETF万家"
+  },
+  "sz159206": {
+    "is_trend_carrier": true,
+    "reason": "卫星互联网是独立主题，驱动力是组网进度而非军费",
+    "theme": "卫星",
+    "代码": "sz159206",
+    "名称": "卫星ETF永赢"
+  },
+  "sz159207": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sz159207",
+    "名称": "高股息ETF广发"
+  },
+  "sz159209": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sz159209",
+    "名称": "红利质量ETF招商"
+  },
+  "sz159217": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159217",
+    "名称": "港股通创新药ETF工银"
+  },
+  "sz159218": {
+    "is_trend_carrier": true,
+    "reason": "卫星互联网是独立主题，驱动力是组网进度而非军费",
+    "theme": "卫星",
+    "代码": "sz159218",
+    "名称": "卫星ETF招商"
+  },
+  "sz159227": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属航天航空",
+    "theme": "航天航空",
+    "代码": "sz159227",
+    "名称": "航空航天ETF华夏"
+  },
+  "sz159241": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属航天航空",
+    "theme": "航天航空",
+    "代码": "sz159241",
+    "名称": "航空航天ETF天弘"
+  },
+  "sz159259": {
+    "is_trend_carrier": false,
+    "reason": "按估值/增长风格因子选股，成分跨行业",
+    "theme": null,
+    "代码": "sz159259",
+    "名称": "成长ETF易方达"
+  },
+  "sz159262": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sz159262",
+    "名称": "港股通科技ETF广发"
+  },
+  "sz159263": {
+    "is_trend_carrier": false,
+    "reason": "按估值/增长风格因子选股，成分跨行业",
+    "theme": null,
+    "代码": "sz159263",
+    "名称": "价值ETF易方达"
+  },
+  "sz159267": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属航天航空",
+    "theme": "航天航空",
+    "代码": "sz159267",
+    "名称": "航天ETF华安"
+  },
+  "sz159269": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sz159269",
+    "名称": "港股通科技ETF南方"
+  },
+  "sz159272": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人",
+    "theme": "机器人",
+    "代码": "sz159272",
+    "名称": "机器人ETF富国"
+  },
+  "sz159278": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人",
+    "theme": "机器人",
+    "代码": "sz159278",
+    "名称": "机器人ETF鹏华"
+  },
+  "sz159281": {
+    "is_trend_carrier": false,
+    "reason": "按所有制+股息率双重筛选，成分跨行业，驱动力是政策与资金再配置",
+    "theme": null,
+    "代码": "sz159281",
+    "名称": "港股央企红利ETF天弘"
+  },
+  "sz159286": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159286",
+    "名称": "港股通创新药ETF鹏华"
+  },
+  "sz159297": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159297",
+    "名称": "港股通创新药ETF南方"
+  },
+  "sz159303": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159303",
+    "名称": "恒生医疗ETF大成"
+  },
+  "sz159307": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sz159307",
+    "名称": "红利低波100ETF博时"
+  },
+  "sz159309": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属石油石化",
+    "theme": "石油石化",
+    "代码": "sz159309",
+    "名称": "油气ETF汇添富"
+  },
+  "sz159316": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159316",
+    "名称": "港股通创新药ETF易方达"
+  },
+  "sz159320": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属电网设备",
+    "theme": "电网设备",
+    "代码": "sz159320",
+    "名称": "电网设备ETF广发"
+  },
+  "sz159323": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属汽车·港股",
+    "theme": "汽车·港股",
+    "代码": "sz159323",
+    "名称": "港股通汽车ETF华夏"
+  },
+  "sz159325": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sz159325",
+    "名称": "半导体ETF南方"
+  },
+  "sz159326": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属电网设备",
+    "theme": "电网设备",
+    "代码": "sz159326",
+    "名称": "电网设备ETF华夏"
+  },
+  "sz159327": {
+    "is_trend_carrier": true,
+    "reason": "设备环节与设计/制造的产业驱动力不同，单列",
+    "theme": "半导体设备",
+    "代码": "sz159327",
+    "名称": "半导体设备ETF万家"
+  },
+  "sz159366": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159366",
+    "名称": "港股医疗ETF永赢"
+  },
+  "sz159378": {
+    "is_trend_carrier": true,
+    "reason": "低空经济政策驱动，与军工航天不同",
+    "theme": "通用航空",
+    "代码": "sz159378",
+    "名称": "通用航空ETF永赢"
+  },
+  "sz159506": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159506",
+    "名称": "港股通创新药医疗ETF富国"
+  },
+  "sz159507": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信",
+    "theme": "通信",
+    "代码": "sz159507",
+    "名称": "通信ETF广发"
+  },
+  "sz159516": {
+    "is_trend_carrier": true,
+    "reason": "设备环节与设计/制造的产业驱动力不同，单列",
+    "theme": "半导体设备",
+    "代码": "sz159516",
+    "名称": "半导体设备ETF国泰"
+  },
+  "sz159530": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人",
+    "theme": "机器人",
+    "代码": "sz159530",
+    "名称": "机器人ETF易方达"
+  },
+  "sz159545": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sz159545",
+    "名称": "港股通红利低波ETF易方达"
+  },
+  "sz159546": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sz159546",
+    "名称": "集成电路ETF国泰"
+  },
+  "sz159547": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sz159547",
+    "名称": "红利低波ETF华夏"
+  },
+  "sz159557": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159557",
+    "名称": "恒生医疗ETF嘉实"
+  },
+  "sz159558": {
+    "is_trend_carrier": true,
+    "reason": "设备环节与设计/制造的产业驱动力不同，单列",
+    "theme": "半导体设备",
+    "代码": "sz159558",
+    "名称": "半导体设备ETF易方达"
+  },
+  "sz159559": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人",
+    "theme": "机器人",
+    "代码": "sz159559",
+    "名称": "机器人ETF景顺"
+  },
+  "sz159566": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属储能",
+    "theme": "储能",
+    "代码": "sz159566",
+    "名称": "储能电池ETF易方达"
+  },
+  "sz159567": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159567",
+    "名称": "港股创新药ETF银华"
+  },
+  "sz159568": {
+    "is_trend_carrier": true,
+    "reason": "港股互联网平台，三只成分几乎一致",
+    "theme": "互联网·港股",
+    "代码": "sz159568",
+    "名称": "港股互联网ETF博时"
+  },
+  "sz159569": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sz159569",
+    "名称": "港股红利低波ETF景顺"
+  },
+  "sz159570": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159570",
+    "名称": "港股通创新药ETF汇添富"
+  },
+  "sz159582": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sz159582",
+    "名称": "半导体ETF博时"
+  },
+  "sz159583": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信",
+    "theme": "通信",
+    "代码": "sz159583",
+    "名称": "通信ETF富国"
+  },
+  "sz159587": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属农业",
+    "theme": "农业",
+    "代码": "sz159587",
+    "名称": "粮食ETF广发"
+  },
+  "sz159590": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属软件",
+    "theme": "软件",
+    "代码": "sz159590",
+    "名称": "软件ETF汇添富"
+  },
+  "sz159599": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sz159599",
+    "名称": "芯片ETF东财"
+  },
+  "sz159608": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土",
+    "theme": "稀土",
+    "代码": "sz159608",
+    "名称": "稀有金属ETF广发"
+  },
+  "sz159611": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属电力",
+    "theme": "电力",
+    "代码": "sz159611",
+    "名称": "电力ETF广发"
+  },
+  "sz159615": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159615",
+    "名称": "恒生生物科技ETF南方"
+  },
+  "sz159622": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sz159622",
+    "名称": "创新药ETF东财"
+  },
+  "sz159625": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属绿色电力",
+    "theme": "绿色电力",
+    "代码": "sz159625",
+    "名称": "绿色电力ETF嘉实"
+  },
+  "sz159636": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sz159636",
+    "名称": "港股通科技30ETF工银"
+  },
+  "sz159652": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属有色金属",
+    "theme": "有色金属",
+    "代码": "sz159652",
+    "名称": "有色ETF汇添富"
+  },
+  "sz159663": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业母机",
+    "theme": "工业母机",
+    "代码": "sz159663",
+    "名称": "机床ETF华夏"
+  },
+  "sz159665": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sz159665",
+    "名称": "半导体龙头ETF工银"
+  },
+  "sz159667": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业母机",
+    "theme": "工业母机",
+    "代码": "sz159667",
+    "名称": "工业母机ETF国泰"
+  },
+  "sz159671": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土",
+    "theme": "稀土",
+    "代码": "sz159671",
+    "名称": "稀有金属ETF工银"
+  },
+  "sz159688": {
+    "is_trend_carrier": true,
+    "reason": "港股互联网平台，三只成分几乎一致",
+    "theme": "互联网·港股",
+    "代码": "sz159688",
+    "名称": "恒生互联网ETF华安"
+  },
+  "sz159691": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sz159691",
+    "名称": "港股红利ETF工银"
+  },
+  "sz159692": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sz159692",
+    "名称": "证券ETF东财"
+  },
+  "sz159695": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信",
+    "theme": "通信",
+    "代码": "sz159695",
+    "名称": "通信ETF嘉实"
+  },
+  "sz159697": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属石油石化",
+    "theme": "石油石化",
+    "代码": "sz159697",
+    "名称": "石油ETF鹏华"
+  },
+  "sz159698": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属农业",
+    "theme": "农业",
+    "代码": "sz159698",
+    "名称": "粮食ETF鹏华"
+  },
+  "sz159707": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产",
+    "theme": "房地产",
+    "代码": "sz159707",
+    "名称": "地产ETF华宝"
+  },
+  "sz159713": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土",
+    "theme": "稀土",
+    "代码": "sz159713",
+    "名称": "稀土ETF富国"
+  },
+  "sz159715": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土",
+    "theme": "稀土",
+    "代码": "sz159715",
+    "名称": "稀土ETF易方达"
+  },
+  "sz159731": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属石油石化",
+    "theme": "石油石化",
+    "代码": "sz159731",
+    "名称": "石化ETF华夏"
+  },
+  "sz159732": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属消费电子",
+    "theme": "消费电子",
+    "代码": "sz159732",
+    "名称": "消费电子ETF华夏"
+  },
+  "sz159745": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属建材",
+    "theme": "建材",
+    "代码": "sz159745",
+    "名称": "建材ETF国泰"
+  },
+  "sz159747": {
+    "is_trend_carrier": true,
+    "reason": "港股科技综合，四只成分高度重叠，合为一个主题",
+    "theme": "科技·港股",
+    "代码": "sz159747",
+    "名称": "香港科技ETF南方"
+  },
+  "sz159748": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sz159748",
+    "名称": "创新药ETF富国"
+  },
+  "sz159755": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属锂电池",
+    "theme": "锂电池",
+    "代码": "sz159755",
+    "名称": "电池ETF广发"
+  },
+  "sz159758": {
+    "is_trend_carrier": false,
+    "reason": "按股息率/波动率选股，成分跨行业，驱动力是利率与risk-off而非产业变化",
+    "theme": null,
+    "代码": "sz159758",
+    "名称": "红利质量ETF华夏"
+  },
+  "sz159766": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属旅游",
+    "theme": "旅游",
+    "代码": "sz159766",
+    "名称": "旅游ETF富国"
+  },
+  "sz159768": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产",
+    "theme": "房地产",
+    "代码": "sz159768",
+    "名称": "房地产ETF银华"
+  },
+  "sz159770": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人",
+    "theme": "机器人",
+    "代码": "sz159770",
+    "名称": "机器人ETF天弘"
+  },
+  "sz159792": {
+    "is_trend_carrier": true,
+    "reason": "港股互联网平台，三只成分几乎一致",
+    "theme": "互联网·港股",
+    "代码": "sz159792",
+    "名称": "港股通互联网ETF富国"
+  },
+  "sz159796": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属锂电池",
+    "theme": "锂电池",
+    "代码": "sz159796",
+    "名称": "电池ETF汇添富"
+  },
+  "sz159801": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sz159801",
+    "名称": "芯片ETF广发"
+  },
+  "sz159805": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属传媒",
+    "theme": "传媒",
+    "代码": "sz159805",
+    "名称": "传媒ETF鹏华"
+  },
+  "sz159807": {
+    "is_trend_carrier": true,
+    "reason": "跨子行业的科技综合，成分仍按产业聚合",
+    "theme": "科技",
+    "代码": "sz159807",
+    "名称": "科技ETF易方达"
+  },
+  "sz159813": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sz159813",
+    "名称": "半导体ETF鹏华"
+  },
+  "sz159819": {
+    "is_trend_carrier": true,
+    "reason": "四只均为 AI 主题，成分重叠，合为一个主题",
+    "theme": "人工智能",
+    "代码": "sz159819",
+    "名称": "人工智能ETF易方达"
+  },
+  "sz159825": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属农业",
+    "theme": "农业",
+    "代码": "sz159825",
+    "名称": "农业ETF富国"
+  },
+  "sz159828": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sz159828",
+    "名称": "医疗ETF国泰"
+  },
+  "sz159839": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sz159839",
+    "名称": "生物医药ETF汇添富"
+  },
+  "sz159840": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属锂电池",
+    "theme": "锂电池",
+    "代码": "sz159840",
+    "名称": "锂电池ETF工银"
+  },
+  "sz159841": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sz159841",
+    "名称": "证券ETF天弘"
+  },
+  "sz159842": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sz159842",
+    "名称": "券商ETF银华"
+  },
+  "sz159851": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融科技",
+    "theme": "金融科技",
+    "代码": "sz159851",
+    "名称": "金融科技ETF华宝"
+  },
+  "sz159852": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属软件",
+    "theme": "软件",
+    "代码": "sz159852",
+    "名称": "软件ETF嘉实"
+  },
+  "sz159857": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属光伏",
+    "theme": "光伏",
+    "代码": "sz159857",
+    "名称": "光伏ETF天弘"
+  },
+  "sz159859": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sz159859",
+    "名称": "生物医药ETF天弘"
+  },
+  "sz159865": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属养殖",
+    "theme": "养殖",
+    "代码": "sz159865",
+    "名称": "养殖ETF国泰"
+  },
+  "sz159867": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属养殖",
+    "theme": "养殖",
+    "代码": "sz159867",
+    "名称": "养殖ETF鹏华"
+  },
+  "sz159869": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属游戏",
+    "theme": "游戏",
+    "代码": "sz159869",
+    "名称": "游戏ETF华夏"
+  },
+  "sz159870": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属化工",
+    "theme": "化工",
+    "代码": "sz159870",
+    "名称": "化工ETF鹏华"
+  },
+  "sz159871": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属有色金属",
+    "theme": "有色金属",
+    "代码": "sz159871",
+    "名称": "有色ETF银华"
+  },
+  "sz159875": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属新能源",
+    "theme": "新能源",
+    "代码": "sz159875",
+    "名称": "新能源ETF嘉实"
+  },
+  "sz159876": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属有色金属",
+    "theme": "有色金属",
+    "代码": "sz159876",
+    "名称": "有色ETF华宝"
+  },
+  "sz159883": {
+    "is_trend_carrier": true,
+    "reason": "器械的产业驱动力（集采、国产替代）与药品不同，单列",
+    "theme": "医疗器械",
+    "代码": "sz159883",
+    "名称": "医疗器械ETF永赢"
+  },
+  "sz159887": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行",
+    "theme": "银行",
+    "代码": "sz159887",
+    "名称": "银行ETF富国"
+  },
+  "sz159892": {
+    "is_trend_carrier": true,
+    "reason": "港股创新药/医药/医疗/生物科技指数成分高度重叠（药明系、百济、信达等），合为一个主题；2026-09-21 扫描中这 11 只曾霸占 RS60 前 20 的 11 席",
+    "theme": "医药·港股",
+    "代码": "sz159892",
+    "名称": "恒生医药ETF华夏"
+  },
+  "sz159928": {
+    "is_trend_carrier": true,
+    "reason": "大消费综合；「50」是规模切法，底层仍按行业聚合",
+    "theme": "消费",
+    "代码": "sz159928",
+    "名称": "消费ETF汇添富"
+  },
+  "sz159929": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sz159929",
+    "名称": "医药ETF汇添富"
+  },
+  "sz159930": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属能源",
+    "theme": "能源",
+    "代码": "sz159930",
+    "名称": "能源ETF汇添富"
+  },
+  "sz159938": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sz159938",
+    "名称": "医药ETF广发"
+  },
+  "sz159939": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属信息技术",
+    "theme": "信息技术",
+    "代码": "sz159939",
+    "名称": "信息技术ETF广发"
+  },
+  "sz159980": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属有色金属",
+    "theme": "有色金属",
+    "代码": "sz159980",
+    "名称": "有色ETF大成"
+  },
+  "sz159992": {
+    "is_trend_carrier": true,
+    "reason": "A股创新药/医药/医疗指数成分重叠度高，合为一个主题",
+    "theme": "医药·A股",
+    "代码": "sz159992",
+    "名称": "创新药ETF银华"
+  },
+  "sz159993": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属券商",
+    "theme": "券商",
+    "代码": "sz159993",
+    "名称": "证券ETF鹏华"
+  },
+  "sz159994": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信",
+    "theme": "通信",
+    "代码": "sz159994",
+    "名称": "通信ETF银华"
+  },
+  "sz159995": {
+    "is_trend_carrier": true,
+    "reason": "半导体整体，成分覆盖设计+制造+封测",
+    "theme": "半导体",
+    "代码": "sz159995",
+    "名称": "芯片ETF华夏"
+  },
+  "sz159996": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属家电",
+    "theme": "家电",
+    "代码": "sz159996",
+    "名称": "家电ETF国泰"
+  },
+  "sz159997": {
+    "is_trend_carrier": true,
+    "reason": "电子一级行业，比半导体宽，含元件与终端",
+    "theme": "电子",
+    "代码": "sz159997",
+    "名称": "电子ETF天弘"
+  },
+  "sz159998": {
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属计算机",
+    "theme": "计算机",
+    "代码": "sz159998",
+    "名称": "计算机ETF天弘"
+  }
+}

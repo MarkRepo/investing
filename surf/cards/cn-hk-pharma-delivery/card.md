@@ -20,31 +20,31 @@ trade:
   rr: "2:1"
 stocks:
   - {code: "603259", name: 药明康德, market: CN, tradable: true, role: 一体化CRDMO·A股唯一卡位最硬且可买,
-     excess20: 2.74, excess60: 6.72, pos: 100.0, vol_ratio: 0.68,
+     excess20: 4.79, excess60: 6.77, pos: 99.9, vol_ratio: 0.73,
      stop_pct: 0.12, stop_price: 147.81, position: 0.04, verdict: follow}
   - {code: "002821", name: 凯莱英, market: CN, tradable: true, role: 小分子CDMO·生产端纯度高,
-     excess20: 16.59, excess60: -12.99, pos: 95.6, vol_ratio: 0.87,
+     excess20: 9.16, excess60: -12.64, pos: 92.4, vol_ratio: 0.88,
      stop_pct: 0.12, stop_price: 168.07, position: 0.04, verdict: follow}
   - {code: "300363", name: 博腾股份, market: CN, tradable: true, role: 小分子CDMO·弹性档,
-     excess20: 11.72, excess60: 10.07, pos: 66.6, vol_ratio: 0.71,
+     excess20: 15.33, excess60: 19.55, pos: 67.1, vol_ratio: 0.79,
      stop_pct: 0.12, stop_price: 21.09, position: 0.04, verdict: follow}
   - {code: "02269", name: 药明生物, market: HK, tradable: false, role: 生物药CDMO·卡位最硬但不可交易,
-     excess20: 3.66, excess60: 33.57, pos: 100.0, vol_ratio: 1.01, verdict: watch,
+     excess20: 1.06, excess60: 20.75, pos: 98.5, vol_ratio: 0.98, verdict: watch,
      note: A股无对标的纯生物药CDMO，替代代价=纯度显著下降}
   - {code: "02268", name: 药明合联, market: HK, tradable: false, role: ADC CDMO·卡位最锐但不可交易,
-     excess20: 10.23, excess60: 19.89, pos: 88.8, vol_ratio: 0.61, verdict: watch,
+     excess20: 0.7, excess60: 9.68, pos: 88.4, vol_ratio: 0.64, verdict: watch,
      note: A股无对标ADC CDMO，替代代价=弹性与纯度双降}
   - {code: "300347", name: 泰格医药, market: CN, tradable: true, role: 临床CRO·第一替补,
-     excess20: 14.61, excess60: -6.50, pos: 75.5, vol_ratio: 0.72, verdict: watch,
+     excess20: 10.86, excess60: -7.65, pos: 71.8, vol_ratio: 0.74, verdict: watch,
      note: 技术面比凯莱英安全，但预先登记的逻辑判据「兑现慢于生产端」把它排在后面}
   - {code: "300759", name: 康龙化成, market: CN, tradable: true, role: 全流程·二波候选形态,
-     excess20: -4.79, excess60: 30.90, pos: 79.6, vol_ratio: 0.78, verdict: watch,
+     excess20: -4.02, excess60: 26.22, pos: 77.4, vol_ratio: 0.84, verdict: watch,
      note: 60日极强20日回调，20日超额为负按规则不进，下轮重点看}
   - {code: "688235", name: 百济神州, market: CN, tradable: true, role: 对照·已兑现biotech假设被否定,
-     excess20: -8.66, excess60: -22.26, pos: 53.2, vol_ratio: 0.46, verdict: watch,
+     excess20: -2.14, excess60: -22.96, pos: 54.2, vol_ratio: 0.53, verdict: watch,
      note: 预先登记的「已兑现biotech」环节被市场否定，需 prism 判断是理解错还是太早}
   - {code: "600276", name: 恒瑞医药, market: CN, tradable: true, role: 对照组·市值龙头,
-     excess20: -6.93, excess60: -39.86, pos: 11.5, vol_ratio: 0.51, verdict: reject,
+     excess20: -1.46, excess60: -40.62, pos: 10.4, vol_ratio: 0.59, verdict: reject,
      note: 10只里最差，验证「龙头≠市值第一」判据有效}
 prism_refs: ["688235"]
 falsifiers:
@@ -63,6 +63,7 @@ falsifiers:
   - layer: 资金层
     text: 同花顺「医疗服务」与「化学制药」5 日资金净额连续 3 周同时为负
     baseline: +21.15 亿 / +18.48 亿
+    note: ⚠️ 2026-09-22 首次同时为负（医疗服务 -6.65 / 化学制药 -18.90；生物制品 -6.53 亦转负），计 1/3
     triggered: false
   - layer: 资金层
     text: 520510 量能比连续 2 周低于 0.7
@@ -89,6 +90,7 @@ falsifiers:
   - layer: 个股层
     text: 下次扫描时三只个股的量能比仍全部低于 0.8
     baseline: 药明康德 0.68 / 凯莱英 0.87 / 博腾股份 0.71
+    scan_002: 药明康德 0.73 / 凯莱英 0.88 / 博腾股份 0.79 —— 凯莱英已过 0.8，未触发
     note: 仅证伪个股增强层——触发则撤销个股仓位、保留 ETF 打底，不影响本卡片整体
     triggered: false
 ---

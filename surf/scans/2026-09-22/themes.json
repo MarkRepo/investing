@@ -1,0 +1,1276 @@
+[
+  {
+    "代码": "AGIX",
+    "名称": "KraneShares Public-Private AI &",
+    "theme": "人工智能",
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题"
+  },
+  {
+    "代码": "AIPO",
+    "名称": "Defiance AI & Power Infrastruct",
+    "theme": "AI电力基建",
+    "is_trend_carrier": true,
+    "reason": "AI 算力的电力与基建瓶颈，驱动力是电网与发电扩容，与 AI 应用层不同"
+  },
+  {
+    "代码": "AIQ",
+    "名称": "Global X Artificial Intelligenc",
+    "theme": "人工智能",
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题"
+  },
+  {
+    "代码": "AIRR",
+    "名称": "First Trust RBA American Indust",
+    "theme": "再工业化",
+    "is_trend_carrier": true,
+    "reason": "美国本土制造业回流，成分是中小工业股"
+  },
+  {
+    "代码": "AIS",
+    "名称": "VistaShares Artificial Intellig",
+    "theme": "人工智能",
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题"
+  },
+  {
+    "代码": "ARKF",
+    "名称": "ARK Blockchain & Fintech Innova",
+    "theme": "金融科技",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融科技"
+  },
+  {
+    "代码": "ARKG",
+    "名称": "ARK Genomic Revolution ETF",
+    "theme": "基因治疗",
+    "is_trend_carrier": true,
+    "reason": "基因编辑与基因治疗，与大生物科技的兑现节奏不同"
+  },
+  {
+    "代码": "ARKX",
+    "名称": "ARK Space & Defense Innovation ",
+    "theme": "太空",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属太空"
+  },
+  {
+    "代码": "ARTY",
+    "名称": "iShares Future AI & Tech ETF",
+    "theme": "人工智能",
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题"
+  },
+  {
+    "代码": "BAI",
+    "名称": "iShares A.I. Innovation and Tec",
+    "theme": "人工智能",
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题"
+  },
+  {
+    "代码": "BIZD",
+    "名称": "VanEck BDC Income ETF",
+    "theme": null,
+    "is_trend_carrier": false,
+    "reason": "BDC 收益型产品，按分红属性聚合，驱动力是利率与信用利差"
+  },
+  {
+    "代码": "BKGI",
+    "名称": "BNY Mellon Global Infrastructur",
+    "theme": "全球基建",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属全球基建"
+  },
+  {
+    "代码": "BOTZ",
+    "名称": "Global X Robotics & Artificial ",
+    "theme": "机器人",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人"
+  },
+  {
+    "代码": "BUG",
+    "名称": "Global X Cybersecurity ETF",
+    "theme": "网络安全",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属网络安全"
+  },
+  {
+    "代码": "CHAT",
+    "名称": "Roundhill Generative AI & Techn",
+    "theme": "人工智能",
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题"
+  },
+  {
+    "代码": "CIBR",
+    "名称": "First Trust NASDAQ Cybersecurit",
+    "theme": "网络安全",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属网络安全"
+  },
+  {
+    "代码": "CLOU",
+    "名称": "Global X Cloud Computing ETF",
+    "theme": "云计算",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属云计算"
+  },
+  {
+    "代码": "COPP",
+    "名称": "Sprott Copper Miners ETF",
+    "theme": "铜矿",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属铜矿"
+  },
+  {
+    "代码": "COPX",
+    "名称": "Global X Copper Miners ETF",
+    "theme": "铜矿",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属铜矿"
+  },
+  {
+    "代码": "CRAK",
+    "名称": "VanEck Oil Refiners ETF",
+    "theme": "炼油",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属炼油"
+  },
+  {
+    "代码": "CSRE",
+    "名称": "Cohen & Steers Real Estate Acti",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "DFAR",
+    "名称": "Dimensional US Real Estate ETF",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "DRAM",
+    "名称": "Roundhill Memory ETF",
+    "theme": "存储芯片",
+    "is_trend_carrier": true,
+    "reason": "存储是独立的产能-价格周期，与逻辑芯片不同步"
+  },
+  {
+    "代码": "DTCR",
+    "名称": "Global X Data Center & Digital ",
+    "theme": "数据中心REIT",
+    "is_trend_carrier": true,
+    "reason": "数据中心与数字基建地产，受 AI 算力扩容驱动"
+  },
+  {
+    "代码": "EUAD",
+    "名称": "Select STOXX Europe Aerospace &",
+    "theme": "国防·欧洲",
+    "is_trend_carrier": true,
+    "reason": "欧洲重整军备，驱动力是欧洲防务预算，与美国国防预算不同步"
+  },
+  {
+    "代码": "EUV",
+    "名称": "Corgi Lithography & Semiconduct",
+    "theme": "半导体设备",
+    "is_trend_carrier": true,
+    "reason": "光刻与半导体设备环节，与设计/制造周期不同步"
+  },
+  {
+    "代码": "FCG",
+    "名称": "First Trust Natural Gas ETF",
+    "theme": "天然气",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属天然气"
+  },
+  {
+    "代码": "FCOM",
+    "名称": "Fidelity MSCI Communication Ser",
+    "theme": "通信服务",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信服务"
+  },
+  {
+    "代码": "FDN",
+    "名称": "First Trust DJ Internet Index F",
+    "theme": "互联网",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属互联网"
+  },
+  {
+    "代码": "FENY",
+    "名称": "Fidelity MSCI Energy Index ETF",
+    "theme": "能源",
+    "is_trend_carrier": true,
+    "reason": "能源整体"
+  },
+  {
+    "代码": "FHLC",
+    "名称": "Fidelity MSCI Health Care Index",
+    "theme": "医疗保健",
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体"
+  },
+  {
+    "代码": "FIDU",
+    "名称": "Fidelity MSCI Industrials Index",
+    "theme": "工业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业"
+  },
+  {
+    "代码": "FNCL",
+    "名称": "Fidelity MSCI Financials Index ",
+    "theme": "金融",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融"
+  },
+  {
+    "代码": "FREL",
+    "名称": "Fidelity MSCI Real Estate Index",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "FSTA",
+    "名称": "Fidelity MSCI COnsumer Staples ",
+    "theme": "必需消费",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费"
+  },
+  {
+    "代码": "FTEC",
+    "名称": "Fidelity MSCI Information Techn",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "FTXH",
+    "名称": "First Trust Nasdaq Pharmaceutic",
+    "theme": "制药",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属制药"
+  },
+  {
+    "代码": "FTXL",
+    "名称": "First Trust Nasdaq Semiconducto",
+    "theme": "半导体",
+    "is_trend_carrier": true,
+    "reason": "半导体整体"
+  },
+  {
+    "代码": "FTXR",
+    "名称": "First Trust Nasdaq Transportati",
+    "theme": "运输",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属运输"
+  },
+  {
+    "代码": "FUTY",
+    "名称": "Fidelity MSCI Utilities Index E",
+    "theme": "公用事业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业"
+  },
+  {
+    "代码": "FXL",
+    "名称": "First Trust Technology AlphaDEX",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "FXN",
+    "名称": "First Trust Energy AlphaDEX Fun",
+    "theme": "能源",
+    "is_trend_carrier": true,
+    "reason": "能源整体"
+  },
+  {
+    "代码": "FXU",
+    "名称": "First Trust Utilities AlphaDEX ",
+    "theme": "公用事业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业"
+  },
+  {
+    "代码": "GDX",
+    "名称": "VanEck Gold Miners ETF",
+    "theme": "金矿",
+    "is_trend_carrier": true,
+    "reason": "金矿，大小市值同受金价驱动，合为一个主题"
+  },
+  {
+    "代码": "GDXJ",
+    "名称": "VanEck Junior Gold Miners ETF",
+    "theme": "金矿",
+    "is_trend_carrier": true,
+    "reason": "金矿，大小市值同受金价驱动，合为一个主题"
+  },
+  {
+    "代码": "GNR",
+    "名称": "State Street SPDR S&P Global Na",
+    "theme": "自然资源",
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）"
+  },
+  {
+    "代码": "GPZ",
+    "名称": "VanEck Alternative Asset Manage",
+    "theme": "另类资管",
+    "is_trend_carrier": true,
+    "reason": "另类资产管理人，属金融子行业"
+  },
+  {
+    "代码": "GRID",
+    "名称": "First Trust NASDAQ Clean Edge S",
+    "theme": "智能电网",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属智能电网"
+  },
+  {
+    "代码": "GUNR",
+    "名称": "Northern Trust Morningstar Glob",
+    "theme": "自然资源",
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）"
+  },
+  {
+    "代码": "HACK",
+    "名称": "Amplify Cybersecurity ETF",
+    "theme": "网络安全",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属网络安全"
+  },
+  {
+    "代码": "IAK",
+    "名称": "iShares U.S. Insurance ETF",
+    "theme": "保险",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属保险"
+  },
+  {
+    "代码": "IAT",
+    "名称": "iShares U.S. Regional Banks ETF",
+    "theme": "区域银行",
+    "is_trend_carrier": true,
+    "reason": "区域银行的信贷与存款结构独立于大行"
+  },
+  {
+    "代码": "IBB",
+    "名称": "iShares Biotechnology ETF",
+    "theme": "生物科技",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属生物科技"
+  },
+  {
+    "代码": "ICF",
+    "名称": "iShares Select U.S. REIT ETF",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "ICLN",
+    "名称": "iShares Global Clean Energy ETF",
+    "theme": "清洁能源",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属清洁能源"
+  },
+  {
+    "代码": "ICOP",
+    "名称": "iShares Copper and Metals Minin",
+    "theme": "铜矿",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属铜矿"
+  },
+  {
+    "代码": "IDEF",
+    "名称": "iShares Defense Industrials and",
+    "theme": "国防航天",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天"
+  },
+  {
+    "代码": "IDU",
+    "名称": "iShares U.S. Utilities ETF",
+    "theme": "公用事业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业"
+  },
+  {
+    "代码": "IEZ",
+    "名称": "iShares U.S. Oil Equipment & Se",
+    "theme": "油服",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属油服"
+  },
+  {
+    "代码": "IFRA",
+    "名称": "iShares U.S. Infrastructure ETF",
+    "theme": "美国基建",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属美国基建"
+  },
+  {
+    "代码": "IGE",
+    "名称": "iShares North American Natural ",
+    "theme": "自然资源",
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）"
+  },
+  {
+    "代码": "IGF",
+    "名称": "iShares Global Infrastructure E",
+    "theme": "全球基建",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属全球基建"
+  },
+  {
+    "代码": "IGM",
+    "名称": "iShares Expanded Tech Sector ET",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "IGPT",
+    "名称": "Invesco AI and Next Gen Softwar",
+    "theme": "人工智能",
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题"
+  },
+  {
+    "代码": "IGV",
+    "名称": "iShares Expanded Tech-Software ",
+    "theme": "软件",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属软件"
+  },
+  {
+    "代码": "IHAK",
+    "名称": "iShares Cybersecurity and Tech ",
+    "theme": "网络安全",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属网络安全"
+  },
+  {
+    "代码": "IHE",
+    "名称": "iShares U.S. Pharmaceutical ETF",
+    "theme": "制药",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属制药"
+  },
+  {
+    "代码": "IHF",
+    "名称": "iShares U.S. Health Care Provid",
+    "theme": "医疗服务",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属医疗服务"
+  },
+  {
+    "代码": "IHI",
+    "名称": "iShares U.S. Medical Devices ET",
+    "theme": "医疗器械",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属医疗器械"
+  },
+  {
+    "代码": "ITA",
+    "名称": "iShares U.S. Aerospace & Defens",
+    "theme": "国防航天",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天"
+  },
+  {
+    "代码": "ITB",
+    "名称": "iShares U.S. Home Construction ",
+    "theme": "住宅建造",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属住宅建造"
+  },
+  {
+    "代码": "IVES",
+    "名称": "Dan IVES Wedbush AI Revolution ",
+    "theme": "人工智能",
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题"
+  },
+  {
+    "代码": "IXC",
+    "名称": "iShares Global Energy ETF",
+    "theme": "能源",
+    "is_trend_carrier": true,
+    "reason": "能源整体"
+  },
+  {
+    "代码": "IXJ",
+    "名称": "iShares Global Healthcare ETF",
+    "theme": "医疗保健",
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体"
+  },
+  {
+    "代码": "IXN",
+    "名称": "iShares Global Tech ETF",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "IYE",
+    "名称": "iShares U.S. Energy ETF",
+    "theme": "能源",
+    "is_trend_carrier": true,
+    "reason": "能源整体"
+  },
+  {
+    "代码": "IYF",
+    "名称": "iShares U.S. Financial ETF",
+    "theme": "金融",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融"
+  },
+  {
+    "代码": "IYH",
+    "名称": "iShares U.S. Healthcare ETF",
+    "theme": "医疗保健",
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体"
+  },
+  {
+    "代码": "IYJ",
+    "名称": "iShares U.S. Industrials ETF",
+    "theme": "工业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业"
+  },
+  {
+    "代码": "IYK",
+    "名称": "iShares U.S. Consumer Staples E",
+    "theme": "必需消费",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费"
+  },
+  {
+    "代码": "IYM",
+    "名称": "iShares U.S. Basic Materials ET",
+    "theme": "材料",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属材料"
+  },
+  {
+    "代码": "IYR",
+    "名称": "iShares U.S. Real Estate ETF",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "IYT",
+    "名称": "iShares U.S. Transportation ETF",
+    "theme": "运输",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属运输"
+  },
+  {
+    "代码": "IYW",
+    "名称": "iShares U.S. Technology ETF",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "IYZ",
+    "名称": "iShares U.S. Telecommunications",
+    "theme": "电信",
+    "is_trend_carrier": true,
+    "reason": "电信运营商，与媒体/互联网合并前的通信服务不同"
+  },
+  {
+    "代码": "JETS",
+    "名称": "U.S. Global Jets ETF",
+    "theme": "航空运输",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属航空运输"
+  },
+  {
+    "代码": "JTEK",
+    "名称": "JPMorgan U.S. Tech Leaders ETF",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "KBE",
+    "名称": "State Street SPDR S&P Bank ETF",
+    "theme": "银行",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行"
+  },
+  {
+    "代码": "KBWB",
+    "名称": "Invesco KBW Bank ETF",
+    "theme": "银行",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银行"
+  },
+  {
+    "代码": "KBWD",
+    "名称": "Invesco KBW High Dividend Yield",
+    "theme": null,
+    "is_trend_carrier": false,
+    "reason": "按高股息率筛选金融股，成分跨子行业，驱动力是利率"
+  },
+  {
+    "代码": "KBWY",
+    "名称": "Invesco KBW Premium Yield Equit",
+    "theme": null,
+    "is_trend_carrier": false,
+    "reason": "按股息率筛选 REIT，聚合逻辑是收益率不是地产业态"
+  },
+  {
+    "代码": "KIE",
+    "名称": "State Street SPDR S&P Insurance",
+    "theme": "保险",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属保险"
+  },
+  {
+    "代码": "KOID",
+    "名称": "KraneShares Global Humanoid Rob",
+    "theme": "机器人",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人"
+  },
+  {
+    "代码": "KRE",
+    "名称": "State Street SPDR S&P Regional ",
+    "theme": "区域银行",
+    "is_trend_carrier": true,
+    "reason": "区域银行的信贷与存款结构独立于大行"
+  },
+  {
+    "代码": "KXI",
+    "名称": "iShares Global Consumer Staples",
+    "theme": "必需消费",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费"
+  },
+  {
+    "代码": "LIT",
+    "名称": "Global X Lithium & Battery Tech",
+    "theme": "锂电池",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属锂电池"
+  },
+  {
+    "代码": "MAGS",
+    "名称": "Roundhill Magnificent Seven ETF",
+    "theme": null,
+    "is_trend_carrier": false,
+    "reason": "固定持有七只超大市值股，跨行业按市值聚合，不代表任何产业方向"
+  },
+  {
+    "代码": "MGNR",
+    "名称": "American Beacon Select Funds Am",
+    "theme": "自然资源",
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）"
+  },
+  {
+    "代码": "MOO",
+    "名称": "VanEck Agribusiness ETF",
+    "theme": "农业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属农业"
+  },
+  {
+    "代码": "MORT",
+    "名称": "VanEck Mortgage REIT Income ETF",
+    "theme": "抵押REIT",
+    "is_trend_carrier": true,
+    "reason": "抵押 REIT 持的是按揭资产，驱动力是利差不是租金"
+  },
+  {
+    "代码": "MSOS",
+    "名称": "AdvisorShares Pure US Cannabis ",
+    "theme": "大麻",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属大麻"
+  },
+  {
+    "代码": "NLR",
+    "名称": "VanEck Uranium and Nuclear ETF",
+    "theme": "铀与核能",
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题"
+  },
+  {
+    "代码": "NUKZ",
+    "名称": "Range Nuclear Renaissance Index",
+    "theme": "铀与核能",
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题"
+  },
+  {
+    "代码": "OIH",
+    "名称": "VanEck Oil Services ETF",
+    "theme": "油服",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属油服"
+  },
+  {
+    "代码": "PAVE",
+    "名称": "Global X U.S. Infrastructure De",
+    "theme": "美国基建",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属美国基建"
+  },
+  {
+    "代码": "PBEU",
+    "名称": "Portfolio Building Block Europe",
+    "theme": null,
+    "is_trend_carrier": false,
+    "reason": "欧洲地域配置模块，按地区而非产业聚合"
+  },
+  {
+    "代码": "PBPH",
+    "名称": "Portfolio Building Block World ",
+    "theme": "医疗保健",
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体"
+  },
+  {
+    "代码": "PICK",
+    "名称": "iShares MSCI Global Select Meta",
+    "theme": "金属矿业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金属矿业"
+  },
+  {
+    "代码": "PPA",
+    "名称": "Invesco Aerospace & Defense ETF",
+    "theme": "国防航天",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天"
+  },
+  {
+    "代码": "PPH",
+    "名称": "VanEck Pharmaceutical ETF",
+    "theme": "制药",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属制药"
+  },
+  {
+    "代码": "PSI",
+    "名称": "Invesco Semiconductors ETF",
+    "theme": "半导体",
+    "is_trend_carrier": true,
+    "reason": "半导体整体"
+  },
+  {
+    "代码": "PTF",
+    "名称": "Invesco Dorsey Wright Technolog",
+    "theme": null,
+    "is_trend_carrier": false,
+    "reason": "按价格动量选科技股，聚合逻辑是交易特征——若入池等于用涨幅定义主题"
+  },
+  {
+    "代码": "QCLN",
+    "名称": "First Trust NASDAQ Clean Edge G",
+    "theme": "清洁能源",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属清洁能源"
+  },
+  {
+    "代码": "QQQ",
+    "名称": "纳斯达克100",
+    "theme": "基准·QQQ",
+    "is_trend_carrier": true,
+    "reason": "成长基准"
+  },
+  {
+    "代码": "QTEC",
+    "名称": "First Trust NASDAQ-100-Technolo",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "QTUM",
+    "名称": "Defiance Quantum ETF",
+    "theme": "量子计算",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属量子计算"
+  },
+  {
+    "代码": "REM",
+    "名称": "iShares Mortgage Real Estate ET",
+    "theme": "抵押REIT",
+    "is_trend_carrier": true,
+    "reason": "抵押 REIT 持的是按揭资产，驱动力是利差不是租金"
+  },
+  {
+    "代码": "REMX",
+    "名称": "VanEck Rare Earth and Strategic",
+    "theme": "稀土与关键材料",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土与关键材料"
+  },
+  {
+    "代码": "RING",
+    "名称": "iShares MSCI Global Gold Miners",
+    "theme": "金矿",
+    "is_trend_carrier": true,
+    "reason": "金矿，大小市值同受金价驱动，合为一个主题"
+  },
+  {
+    "代码": "ROBO",
+    "名称": "ROBO Global Robotics and Automa",
+    "theme": "机器人",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属机器人"
+  },
+  {
+    "代码": "RSPD",
+    "名称": "Invesco S&P 500 Equal Weight Co",
+    "theme": "可选消费",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属可选消费"
+  },
+  {
+    "代码": "RSPH",
+    "名称": "Invesco S&P 500 Equal Weight He",
+    "theme": "医疗保健",
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体"
+  },
+  {
+    "代码": "RSPN",
+    "名称": "Invesco S&P 500 Equal Weight In",
+    "theme": "工业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业"
+  },
+  {
+    "代码": "RSPS",
+    "名称": "Invesco S&P 500 Equal Weight Co",
+    "theme": "必需消费",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费"
+  },
+  {
+    "代码": "RSPT",
+    "名称": "Invesco S&P 500 Equal Weight Te",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "RWR",
+    "名称": "State Street SPDR Dow Jones REI",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "SCHH",
+    "名称": "Schwab U.S. REIT ETF",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "SETM",
+    "名称": "Sprott Critical Materials ETF",
+    "theme": "稀土与关键材料",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属稀土与关键材料"
+  },
+  {
+    "代码": "SHLD",
+    "名称": "Global X Defense Tech ETF",
+    "theme": "国防航天",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天"
+  },
+  {
+    "代码": "SIL",
+    "名称": "Global X Silver Miners ETF",
+    "theme": "银矿",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银矿"
+  },
+  {
+    "代码": "SILJ",
+    "名称": "Amplify Junior Silver Miners ET",
+    "theme": "银矿",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银矿"
+  },
+  {
+    "代码": "SKYY",
+    "名称": "First Trust Cloud Computing ETF",
+    "theme": "云计算",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属云计算"
+  },
+  {
+    "代码": "SLVP",
+    "名称": "iShares MSCI Global Silver and ",
+    "theme": "银矿",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银矿"
+  },
+  {
+    "代码": "SLVR",
+    "名称": "Sprott Silver Miners & Physical",
+    "theme": "银矿",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属银矿"
+  },
+  {
+    "代码": "SMH",
+    "名称": "VanEck Semiconductor ETF",
+    "theme": "半导体",
+    "is_trend_carrier": true,
+    "reason": "半导体整体"
+  },
+  {
+    "代码": "SOXQ",
+    "名称": "Invesco PHLX Semiconductor ETF",
+    "theme": "半导体",
+    "is_trend_carrier": true,
+    "reason": "半导体整体"
+  },
+  {
+    "代码": "SOXX",
+    "名称": "iShares PHLX SOX Semiconductor ",
+    "theme": "半导体",
+    "is_trend_carrier": true,
+    "reason": "半导体整体"
+  },
+  {
+    "代码": "SPY",
+    "名称": "标普500",
+    "theme": "基准·SPY",
+    "is_trend_carrier": true,
+    "reason": "大盘基准"
+  },
+  {
+    "代码": "TAN",
+    "名称": "Invesco Solar ETF",
+    "theme": "太阳能",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属太阳能"
+  },
+  {
+    "代码": "TDIV",
+    "名称": "First Trust NASDAQ Technology D",
+    "theme": null,
+    "is_trend_carrier": false,
+    "reason": "按股息率在科技股中二次筛选，聚合逻辑是分红政策不是技术路线"
+  },
+  {
+    "代码": "TRFK",
+    "名称": "Pacer Data and Digital Revoluti",
+    "theme": "数据革命",
+    "is_trend_carrier": true,
+    "reason": "数据基础设施与数字化，独立于泛科技"
+  },
+  {
+    "代码": "TRUT",
+    "名称": "VanEck Technology TruSector ETF",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "TTEQ",
+    "名称": "T. Rowe Price Technology ETF",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "TURF",
+    "名称": "T. Rowe Price Natural Resources",
+    "theme": "自然资源",
+    "is_trend_carrier": true,
+    "reason": "综合自然资源（能源+材料+农业）"
+  },
+  {
+    "代码": "UFO",
+    "名称": "Procure Space ETF",
+    "theme": "太空",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属太空"
+  },
+  {
+    "代码": "URA",
+    "名称": "Global X Uranium ETF",
+    "theme": "铀与核能",
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题"
+  },
+  {
+    "代码": "URNJ",
+    "名称": "Sprott Junior Uranium Miners ET",
+    "theme": "铀与核能",
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题"
+  },
+  {
+    "代码": "URNM",
+    "名称": "Sprott Uranium Miners ETF",
+    "theme": "铀与核能",
+    "is_trend_carrier": true,
+    "reason": "铀矿与核电建设同受核能扩张驱动，矿端与设备端合为一个主题"
+  },
+  {
+    "代码": "USRT",
+    "名称": "iShares Core U.S. REIT ETF",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "UTES",
+    "名称": "Virtus Reaves Utilities ETF",
+    "theme": "公用事业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业"
+  },
+  {
+    "代码": "VDC",
+    "名称": "Vanguard Consumer Staples ETF",
+    "theme": "必需消费",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费"
+  },
+  {
+    "代码": "VDE",
+    "名称": "Vanguard Energy ETF",
+    "theme": "能源",
+    "is_trend_carrier": true,
+    "reason": "能源整体"
+  },
+  {
+    "代码": "VFH",
+    "名称": "Vanguard Financials ETF",
+    "theme": "金融",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融"
+  },
+  {
+    "代码": "VGT",
+    "名称": "Vanguard Information Tech ETF",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "VHT",
+    "名称": "Vanguard Health Care ETF",
+    "theme": "医疗保健",
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体"
+  },
+  {
+    "代码": "VIS",
+    "名称": "Vanguard Industrials ETF",
+    "theme": "工业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业"
+  },
+  {
+    "代码": "VNQ",
+    "名称": "Vanguard Real Estate ETF",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "VOX",
+    "名称": "Vanguard Communication Services",
+    "theme": "通信服务",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信服务"
+  },
+  {
+    "代码": "VPU",
+    "名称": "Vanguard Utilities ETF",
+    "theme": "公用事业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业"
+  },
+  {
+    "代码": "WCLD",
+    "名称": "WisdomTree Cloud Computing Fund",
+    "theme": "云计算",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属云计算"
+  },
+  {
+    "代码": "WQTM",
+    "名称": "WisdomTree Quantum Computing Fu",
+    "theme": "量子计算",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属量子计算"
+  },
+  {
+    "代码": "WTAI",
+    "名称": "WisdomTree Artificial Intellige",
+    "theme": "人工智能",
+    "is_trend_carrier": true,
+    "reason": "AI 主题，九只成分高度重叠，合为一个主题"
+  },
+  {
+    "代码": "XAR",
+    "名称": "State Street SPDR S&P Aerospace",
+    "theme": "国防航天",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属国防航天"
+  },
+  {
+    "代码": "XBI",
+    "名称": "State Street SPDR S&P Biotech E",
+    "theme": "生物科技",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属生物科技"
+  },
+  {
+    "代码": "XHB",
+    "名称": "State Street SPDR S&P Homebuild",
+    "theme": "住宅建造",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属住宅建造"
+  },
+  {
+    "代码": "XLB",
+    "名称": "State Street Materials Select S",
+    "theme": "材料",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属材料"
+  },
+  {
+    "代码": "XLC",
+    "名称": "State Street Communication Serv",
+    "theme": "通信服务",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属通信服务"
+  },
+  {
+    "代码": "XLE",
+    "名称": "State Street Energy Select Sect",
+    "theme": "能源",
+    "is_trend_carrier": true,
+    "reason": "能源整体"
+  },
+  {
+    "代码": "XLF",
+    "名称": "State Street Financial Select S",
+    "theme": "金融",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金融"
+  },
+  {
+    "代码": "XLI",
+    "名称": "State Street Industrial Select ",
+    "theme": "工业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属工业"
+  },
+  {
+    "代码": "XLK",
+    "名称": "State Street Technology Select ",
+    "theme": "科技综合",
+    "is_trend_carrier": true,
+    "reason": "泛科技篮子，全球/美国版成分驱动力一致，合为一个主题"
+  },
+  {
+    "代码": "XLP",
+    "名称": "State Street Consumer Staples S",
+    "theme": "必需消费",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属必需消费"
+  },
+  {
+    "代码": "XLRE",
+    "名称": "State Street Real Estate Select",
+    "theme": "房地产REIT",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属房地产REIT"
+  },
+  {
+    "代码": "XLU",
+    "名称": "State Street Utilities Select S",
+    "theme": "公用事业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属公用事业"
+  },
+  {
+    "代码": "XLV",
+    "名称": "State Street Health Care Select",
+    "theme": "医疗保健",
+    "is_trend_carrier": true,
+    "reason": "医疗保健整体"
+  },
+  {
+    "代码": "XLY",
+    "名称": "State Street Consumer Discretio",
+    "theme": "可选消费",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属可选消费"
+  },
+  {
+    "代码": "XME",
+    "名称": "State Street SPDR S&P Metals & ",
+    "theme": "金属矿业",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属金属矿业"
+  },
+  {
+    "代码": "XOP",
+    "名称": "State Street SPDR S&P Oil & Gas",
+    "theme": "油气勘探",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属油气勘探"
+  },
+  {
+    "代码": "XPH",
+    "名称": "State Street SPDR S&P Pharmaceu",
+    "theme": "制药",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属制药"
+  },
+  {
+    "代码": "XRT",
+    "名称": "State Street SPDR S&P Retail ET",
+    "theme": "零售",
+    "is_trend_carrier": true,
+    "reason": "按产业聚合，成分同属零售"
+  },
+  {
+    "代码": "XSD",
+    "名称": "State Street SPDR S&P Semicondu",
+    "theme": "半导体",
+    "is_trend_carrier": true,
+    "reason": "半导体整体"
+  },
+  {
+    "代码": "ZAP",
+    "名称": "Global X U.S. Electrification E",
+    "theme": "电气化",
+    "is_trend_carrier": true,
+    "reason": "美国电气化改造，与公用事业的监管收益模型不同"
+  }
+]

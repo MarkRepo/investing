@@ -21,29 +21,29 @@ trade:
   rr: "2.3:1（按 ma60 止损）"
 stocks:
   - {code: CRM, name: Salesforce, market: US, tradable: true, role: 席位制叙事头号受害者,
-     excess20: 9.59, excess60: 31.30, pos: 75.6, vol_ratio: 1.17,
+     excess20: 6.86, excess60: 25.46, pos: 70.1, vol_ratio: 1.07,
      stop_pct: 0.12, stop_price: 208.05, position: 0.03, verdict: follow}
   - {code: NOW, name: ServiceNow, market: US, tradable: true, role: AI变现最被认可·位置最安全,
-     excess20: 3.52, excess60: 27.41, pos: 51.5, vol_ratio: 0.75,
+     excess20: 2.52, excess60: 17.82, pos: 49.6, vol_ratio: 0.64,
      stop_pct: 0.12, stop_price: 121.16, position: 0.03, verdict: follow}
   - {code: TEAM, name: Atlassian, market: US, tradable: true, role: 阶段错·主升浪已走完,
-     excess20: 10.25, excess60: 135.62, pos: 100.0, vol_ratio: 1.30, verdict: watch,
+     excess20: 5.12, excess60: 116.06, pos: 93.0, vol_ratio: 1.23, verdict: watch,
      note: 60日绝对涨幅+162%且站在250日最高点，DESIGN §2 的第三种情况，不进交易清单}
   - {code: HUBS, name: HubSpot, market: US, tradable: true, role: 跌最惨放量最猛仍在地板,
-     excess20: -14.54, excess60: -0.80, pos: 12.5, vol_ratio: 1.75, verdict: watch,
+     excess20: -16.86, excess60: -6.17, pos: 11.8, vol_ratio: 1.71, verdict: watch,
      note: 量能1.75但位置12.5——要么太早，要么SaaSpocalypse在它身上是真的}
   - {code: WDAY, name: Workday, market: US, tradable: true, role: 60日强20日弱,
-     excess20: -7.68, excess60: 42.30, pos: 58.7, vol_ratio: 0.92, verdict: watch,
+     excess20: -8.87, excess60: 31.47, pos: 56.1, vol_ratio: 0.87, verdict: watch,
      note: 与医药卡片的康龙化成同形态，20日超额为负按规则不进}
   - {code: ADBE, name: Adobe, market: US, tradable: true, role: 错杀叙事完全未修复,
-     excess20: -13.00, excess60: 2.62, pos: 33.3, vol_ratio: 1.10, verdict: reject,
+     excess20: -16.4, excess60: -1.53, pos: 28.2, vol_ratio: 1.0, verdict: reject,
      note: 空头排列一票否决}
   - {code: MDB, name: MongoDB, market: US, tradable: true, role: 子假设B·对照组,
-     excess20: -9.10, excess60: 12.10, pos: 73.6, vol_ratio: 0.80, verdict: reject}
+     excess20: -0.07, excess60: 12.42, pos: 77.2, vol_ratio: 0.77, verdict: reject}
   - {code: DDOG, name: Datadog, market: US, tradable: true, role: 子假设B·对照组,
-     excess20: 0.36, excess60: -15.48, pos: 76.8, vol_ratio: 0.75, verdict: reject}
+     excess20: 5.7, excess60: -17.39, pos: 77.5, vol_ratio: 0.63, verdict: reject}
   - {code: PANW, name: PaloAlto, market: US, tradable: true, role: 子假设B·对照组,
-     excess20: 0.24, excess60: 0.45, pos: 90.5, vol_ratio: 1.21, verdict: reject}
+     excess20: 1.25, excess60: 0.61, pos: 88.7, vol_ratio: 1.06, verdict: reject}
 falsifiers:
   - layer: 价格层
     text: IGV 收盘跌破 98.60（ma60，第一道止损）
@@ -57,6 +57,7 @@ falsifiers:
     text: IGV/SOXX 比价连续 4 周重新走弱
     baseline: 374 天跑输后反转，8 月 IGV +16% vs SOXX +1%
     note: 本卡片的核心观察量——比价反转则整个前提消失
+    scan_002: ⚠️ 第 1 周走弱，计 1/4。IGV RS5 95.9→50.0（ret5 +0.46）、SOXX RS5 85.7→100.0（ret5 +12.53）
     triggered: false
   - layer: 相对强度层
     text: IGV 的 RS60 跌出候选池前 25%
@@ -74,12 +75,14 @@ falsifiers:
   - layer: 逻辑层
     text: 子假设B（MDB/DDOG/PANW）超额转正而A组（CRM/NOW）转负
     baseline: B组 -9.10 / +0.36 / +0.24；A组 +9.59 / +3.52
-    note: 若触发说明把「AI受益方轮动」误读成「席位制SaaS错杀修复」，归因错误，卡片需重写
+    note: 若触发说明把「AI受益方轮动」误读成「席位制SaaS错杀修复」，归因错误，卡片需重写——重写方向是把载体从 IGV 换成 CIBR/SKYY
+    scan_002: ⚠️ 条件满足一半（1/2）。B组全改善 MDB -0.07(+9.03pct) / DDOG +5.70(+5.34pct) / PANW +1.25(+1.01pct)；A组全回落 CRM +6.86(-2.73pct) / NOW +2.52(-1.00pct)，但尚未转负
     triggered: false
   - layer: 结构层
     text: 半导体设备（AMAT/LRCX/KLAC）与软件同步转强
     baseline: AMAT -24.44% / KLAC -26.32% / LRCX -23.13%（ret60）
     note: 若同步转强说明此前分化只是仓位噪音，应降级为普通反弹
+    scan_002: 未触发，但实际发生的比本条预设更糟——半导体设备单边转强（EUV ret5 +10.81、SOXX +12.53）而软件停在 +0.46。本判据没考虑「不同步转强」，下期需改
     triggered: false
 ---
 

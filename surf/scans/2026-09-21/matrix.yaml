@@ -1,35 +1,52 @@
 # 本期 2×2 判定（DESIGN §2）。机器可读，供 /surf 首页渲染。
 # 每期扫描由 SKILL Step 4 产出，与 summary.md 的判定必须一致。
+# 主题键一律带市场前缀 cn:/us: —— 「软件」在两个池子里都存在，不加前缀会串台。
+# themes: 该条判定**实际持仓**的主题键（与 scans/{date}/themes.json 对齐）。
+# themes_covered: 同一判定覆盖、但未选作载体的主题——判过了，只是没买它。
+# /surf/universe 靠它把方向级的判定广播到具体 ETF，漏写则那些 ETF 显示为「未判定」。
 date: 2026-09-21
 scan: "001"
 headline: 六个候选趋势，只有一个进入「可跟随」
+# ⚠️ themes 只登记**被真正判定过**的方向。仅作为佐证被引用的（如美股 ITA 用于
+#    论证 A 股军工无全球共振）不登记——那属于「未判定」，登记进来会虚报覆盖面。
 
 cells:
   # 产业逻辑成立 + 技术确认 —— 唯一出手的格子
   follow:
     - name: 创新药 / 医药（A股+港股+美股共振）
       card: cn-hk-pharma-delivery
+      themes: ["cn:医药·港股"]
+      themes_covered: ["cn:医药·A股", "us:生物科技", "us:制药"]
       note: 五项独立证据；广度 97-98% 对照半导体 51.6%
     - name: 美股软件与云
       card: us-software-rerating
+      themes: ["us:软件"]
+      themes_covered: ["us:云计算", "us:网络安全", "cn:软件", "cn:云计算"]
       note: 通道 B 发现；未放量，优先级低
   # 产业逻辑成立 + 技术未确认 —— 观察不动手
   too_early:
     - name: AI 电力缺口 / 燃气轮机
+      themes: ["cn:电力", "cn:绿色电力", "cn:电网设备", "us:智能电网", "us:AI电力基建",
+                "us:公用事业", "us:电气化", "us:美国基建"]
       note: 设备/EPC/发电三层同时被否，加息压垮长久期估值
     - name: 国产算力（昇腾链）
+      themes: ["cn:半导体", "cn:半导体设备", "cn:芯片设计", "cn:电子"]
       note: 缩量超跌反弹，资金净流出 35 亿，广度仅 51.6%
     - name: 固态电池
+      themes: ["cn:锂电池", "cn:储能", "cn:新能源", "cn:新能源车"]
       note: 板块位置分位 2.8-7.6，躺在 250 日最低位
     - name: 存储超级周期
       stage_error: true
+      themes: ["us:存储芯片"]
       note: 逻辑成立但主升浪已走完（MU +518%、SNDK +1641%），阶段错
   # 产业逻辑不成立 + 技术确认 —— 纯炒作，入黑名单
   speculation:
     - name: A 股军工 / 国防 / 航空航天
       blacklisted: true
+      themes: ["cn:军工", "cn:航天航空", "cn:卫星"]
       note: 低位 + 缩量 + 资金流出 + 已停涨 + 美股 ITA 全场最弱
   # 产业逻辑不成立 + 技术未确认 —— 忽略
   ignore:
     - name: 人形机器人
+      themes: ["cn:机器人", "us:机器人"]
       note: 90% 出货给科研机构，商业闭环未成；BOTZ/ROBO 均空头排列
