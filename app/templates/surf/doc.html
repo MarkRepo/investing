@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "surf/_toc.html" import doc_toc, toc_script %}
+{# 单页文档视图：`surf/` 下某个 .md 的独立渲染页（/surf/file/…、/scans/…、/surf/scan/…）。
+
+   与扫描页的 tab 视图的区别：一个 URL 只装一篇，可收藏、可分享、可当 diff 的两端；
+   tab 视图里两篇挤在一页、还带着 tab 状态。样式与目录复用 _style.html / _toc.html。 #}
+{% block title %}{{ name }}{% endblock %}
+{% block content %}
+{% include "surf/_style.html" %}
+<div class="surf-wrap">
+
+  <div class="surf-head">
+    <h1>{{ name }}</h1>
+    <span class="surf-meta">
+      {%- if sub %}{{ sub }} · {% endif %}
+      <a class="xlink" href="{{ raw_url }}" title="同一份文件的纯文本，复制、跨期 diff 用">原文</a>
+      · <a href="{{ back_url }}" style="color:#2a5db0;text-decoration:none">← {{ back_label }}</a>
+    </span>
+  </div>
+
+  <div class="surf-sec">
+    <div class="doc-2col">
+      <div class="markdown-body">{{ html|safe }}</div>
+      {% if toc %}{{ doc_toc(toc) }}{% endif %}
+    </div>
+  </div>
+
+</div>
+{{ toc_script() }}
+{% endblock %}

@@ -20,6 +20,7 @@ import markdown as _md
 from markdown.extensions.toc import slugify_unicode as _toc_slugify_unicode
 import yaml
 from fastapi import APIRouter, HTTPException, Request
+from fastapi.responses import PlainTextResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import APP_TEMPLATES_DIR, SURF_DIR
@@ -147,6 +148,16 @@ def _latest_quotes() -> dict[str, dict]:
     """
     _, rows = _read_csv(SURF_DIR / "latest_quotes.csv")
     return {r["代码"]: r for r in rows if r.get("代码")}
+
+
+def _quotes_date() -> str | None:
+    """`latest_quotes.csv` 里最新的收盘日期。
+
+    首页卡片面板混着两个日期的数据：现价与进度条取这里的最新收盘（可能晚于本期
+    扫描），量能 / 广度 / 板块资金 / ret60 取当期扫描快照。页头原先只写「价格为
+    扫描快照」，会把现价也读成快照日期，故把两个日期分别标出来。
+    """
+    return max((r.get("日期") or "" for r in _latest_quotes().values()), default="") or None
 
 
 def _cn_market(code: str) -> str:
@@ -541,6 +552,19 @@ def _universe_block(date: str, mkt: str, verdicts: dict[str, dict],
 
 # ---------------------------------------------------------------- 路由
 
+# 无前缀的第二组：`/scans/{date}/{file}`。用户习惯的路径形状，直接给文件。
+raw_router = APIRouter(tags=["surf"])
+
+
+@raw_router.get("/scans/{date}/{name}")
+def surf_scan_raw(date: str, name: str, request: Request, raw: bool = False):
+    """`/scans/2026-09-21/summary.md` —— 扫描目录下单个文件。
+
+    与 `/surf/file/scans/{date}/{name}` 等价，只是路径形状不同（两个入口都留，
+    页面上的链接走 /scans/ 这条，手敲 URL 两种都认）。
+    """
+    return _serve(SURF_DIR / "scans" / date / name, request, raw)
+
 @router.get("")
 def surf_index(request: Request):
     dates = _scan_dates()
@@ -553,6 +577,7 @@ def surf_index(request: Request):
         "blacklist": _load_yaml(SURF_DIR / "blacklist.yaml") or [],
         "scans": [{"date": d, "headline": _scan_headline(d)} for d in dates],
         "latest": latest,
+        "quotes_date": _quotes_date(),
     })
 
 
@@ -573,7 +598,15 @@ def surf_card(slug: str, request: Request):
 
 
 @router.get("/scan/{date}")
-def surf_scan(date: str, request: Request):
+def surf_scan(date: str, request: Request, raw: bool = False):
+    # `/surf/scan/summary.md` —— 带后缀即要文件本身，取最近一期里有它的那期。
+    # 日期段没有点，两者不会混。
+    if date.endswith(_FILE_SUFFIXES):
+        f = _latest_scan_file(date)
+        if f is None:
+            raise HTTPException(status_code=404, detail=f"历次扫描里都没有这个文件：{date}")
+        return _serve(f, request, raw)
+
     d = SURF_DIR / "scans" / date
     if not d.is_dir():
         raise HTTPException(status_code=404, detail=f"扫描不存在：{date}")
@@ -600,6 +633,74 @@ def surf_scan(date: str, request: Request):
         "matrix": _load_yaml(d / "matrix.yaml"),
         "scans": _scan_dates(),
     })
+
+
+# 扫描目录里认得的文件后缀。`/surf/scan/{段}` 靠它区分「日期」还是「要文件」——
+# 日期是 YYYY-MM-DD（无点），所以带后缀就是文件。
+_FILE_SUFFIXES = (".md", ".csv", ".yaml", ".yml", ".json", ".txt")
+
+
+def _serve(path: Path, request: Request, raw: bool = False):
+    """`surf/` 内的文件。越界或不存在一律 404。
+
+    **`.md` 默认渲染成单页文档**（`?raw=1` 才给纯文本），其余类型一律纯文本。
+    渲染视图与文件本身是两条路，都要：读用渲染，复制/跨期 diff 用原文。
+
+    纯文本一律 `text/plain` 而非 `text/markdown` —— 后者会被浏览器下载而不是显示。
+    `utf-8-sig` 读，把脚本写 CSV 时带的 BOM 吃掉。
+    """
+    root = SURF_DIR.resolve()
+    target = path.resolve()
+    if not target.is_file() or root not in target.parents:
+        raise HTTPException(status_code=404, detail=f"文件不存在：{path}")
+
+    if target.suffix == ".md" and not raw:
+        rel = target.relative_to(root).parts
+        # 面包屑按所在目录给，别让人从单页里回不去
+        if len(rel) >= 3 and rel[0] == "scans":
+            back, label, sub = f"/surf/scan/{rel[1]}", "返回该期扫描", f"扫描 {rel[1]}"
+        elif len(rel) >= 3 and rel[0] == "cards":
+            back, label, sub = f"/surf/card/{rel[1]}", "返回卡片", f"卡片 {rel[1]}"
+        else:
+            back, label, sub = "/surf", "返回趋势页", ""
+        html, toc = _render_doc(target.read_text(encoding="utf-8"))
+        return templates.TemplateResponse(request, "surf/doc.html", {
+            "name": target.name, "sub": sub, "html": html, "toc": toc,
+            "raw_url": f"{request.url.path}?raw=1",
+            "back_url": back, "back_label": label,
+        })
+
+    return PlainTextResponse(target.read_text(encoding="utf-8-sig"))
+
+
+def _scan_dirs_desc() -> list[Path]:
+    """扫描目录，新的在前（不看是否已判定——取原文不该受判定层影响）。"""
+    root = SURF_DIR / "scans"
+    if not root.is_dir():
+        return []
+    return sorted((d for d in root.iterdir() if d.is_dir()), key=lambda d: d.name, reverse=True)
+
+
+def _latest_scan_file(name: str) -> Path | None:
+    """最近一期里含该文件的那一期。`/surf/scan/summary.md` 不带日期时用它定位。"""
+    for d in _scan_dirs_desc():
+        if (d / name).is_file():
+            return d / name
+    return None
+
+
+@router.get("/file/{path:path}")
+def surf_file(path: str, request: Request, raw: bool = False):
+    """`surf/` 下的原始文件按纯文本直出 —— 页面上的「原文」链接指到这里。
+
+    页面里的 tab 与表格都是**渲染后**的视图（markdown → HTML、CSV → 可排序表格），
+    取不到文件本身：复制原文、跨期 diff、丢进编辑器比对都要用到这个。
+    `/surf/scan/{date}` 是按日期渲染的视图，不是文件服务，所以
+    `/surf/scan/summary.md` 那种写法必然是 404。
+
+    `.md` 默认渲染，`?raw=1` 取纯文本（见 `_serve`）。只允许 `surf/` 目录内，防目录穿越。
+    """
+    return _serve(SURF_DIR / path, request, raw)
 
 
 @router.get("/universe")

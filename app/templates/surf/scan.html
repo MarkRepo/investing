@@ -25,6 +25,10 @@
 
   {% for d in docs %}
     <div class="tab-body {{ 'on' if loop.first }}" id="d-{{ loop.index }}">
+      {# 本页两篇挤在一起且带 tab 状态；单页是可收藏/可分享/可当 diff 一端的独立地址 #}
+      <div class="surf-meta" style="margin-bottom:8px">单页打开
+        <a class="xlink" href="/scans/{{ date }}/{{ d.key }}">{{ d.key }}</a>
+        · 原文 <a class="xlink" href="/scans/{{ date }}/{{ d.key }}?raw=1">纯文本</a></div>
       <div class="doc-2col">
         <div class="markdown-body">{{ d.html|safe }}</div>
         {% if d.toc %}{{ doc_toc(d.toc) }}{% endif %}
@@ -34,7 +38,8 @@
 
   {% for t in tables %}
     <div class="tab-body {{ 'on' if loop.first and not docs }}" id="t-{{ loop.index }}">
-      <div class="surf-meta" style="margin-bottom:8px">{{ t.desc }} · {{ t.n }} 行 · 点列头排序</div>
+      <div class="surf-meta" style="margin-bottom:8px">{{ t.desc }} · {{ t.n }} 行 · 点列头排序 ·
+        原文 <a class="xlink" href="/scans/{{ date }}/{{ t.key }}">{{ t.key }}</a></div>
       <div class="tbl-box">
         <table class="grid">
           <thead><tr>{% for c in t.cols %}<th>{{ c }}</th>{% endfor %}</tr></thead>
@@ -52,14 +57,39 @@
 
 {{ toc_script() }}
 <script>
-/* tab 切换 */
-document.getElementById('tabs').addEventListener('click', function (e) {
-  var b = e.target.closest('button'); if (!b) return;
-  this.querySelectorAll('button').forEach(function (x) { x.classList.remove('on'); });
-  document.querySelectorAll('.tab-body').forEach(function (x) { x.classList.remove('on'); });
-  b.classList.add('on');
-  var el = document.getElementById(b.dataset.t); if (el) el.classList.add('on');
-});
+/* tab 与 hash。hash 承担两件事：
+   ① 指向某个 tab（#d-2 / #t-3）—— 标签页可分享、刷新后停在原处；
+   ② 指向正文某一节（#d2-xxx，由右侧目录链接产生）。
+   ② 原先是不通的：目标所在 tab 若未激活就是 display:none，浏览器对隐藏元素做锚点
+   定位时静默失败（不报错、不滚动）。实测三种情形都停在原地 —— 在 summary 上跳
+   #d2-…、在通道A 上跳 #d1-…、冷开 /surf/scan/x#d2-… —— 看起来就是「这篇打不开」。
+   故跳转前先把目标所在的 tab 激活，再滚。 */
+(function () {
+  var bar = document.getElementById('tabs');
+  function activate(id) {
+    var body = document.getElementById(id); if (!body) return;
+    bar.querySelectorAll('button').forEach(function (b) {
+      b.classList.toggle('on', b.dataset.t === id);
+    });
+    document.querySelectorAll('.tab-body').forEach(function (x) {
+      x.classList.toggle('on', x.id === id);
+    });
+  }
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    location.hash = b.dataset.t;   // 切页与滚动走同一条路径，tab 才可分享
+  });
+  function gotoHash() {
+    var raw = location.hash.slice(1); if (!raw) return;
+    var id; try { id = decodeURIComponent(raw); } catch (err) { return; }
+    var el = document.getElementById(id); if (!el) return;
+    var body = el.closest ? el.closest('.tab-body') : null;
+    if (body && !body.classList.contains('on')) activate(body.id);
+    el.scrollIntoView({ block: 'start' });   // 锚点自带 scroll-margin-top 让开 sticky nav
+  }
+  window.addEventListener('hashchange', gotoHash);
+  gotoHash();   // 冷开带 hash 的链接：浏览器自己那次是在目标还隐藏时做的，这里补一次
+})();
 
 /* 表格排序：数字按数值比，其余按字符串。再次点击同一列反向。 */
 document.querySelectorAll('table.grid').forEach(function (tbl) {

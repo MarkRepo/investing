@@ -479,6 +479,7 @@ falsifiers:                           # ⑦证伪条件的结构化版本，与�
 ```
 surf/
 ├── DESIGN.md                 本文件（权威版）
+├── USER-GUIDE.md             使用说明：工作原理 + 结果在哪看（面向使用者）
 ├── etf_universe_cn.csv       A 股 ETF 候选池快照
 ├── etf_board_map.yaml        ETF → 同花顺板块映射（人工维护，允许不全）
 ├── stock_universe.yaml       个股候选池与基准（§6.5）
@@ -539,14 +540,27 @@ surf/
 |---|---|
 | `/surf` | 卡片状态面板（止损/目标进度条、证伪触发计数、当期指标）+ 本期 2×2 + 扫描历史 + 黑名单 |
 | `/surf/card/{slug}` | 交易参数、**证伪条件清单（提到正文之前，这是每周要核对的）**、个股增强层表格（不可交易标的置灰）、指标时间序列、卡片正文、决策日志 |
-| `/surf/scan/{date}` | 摘要与 2×2、通道 A 产业扫描原文、五张指标表（点列头排序） |
+| `/surf/scan/{date}` | 摘要与 2×2、通道 A 产业扫描原文、五张指标表（点列头排序）。tab 与章节均可直链（URL hash，见下） |
+| `/surf/file/{path}` | `surf/` 下任意文件。**`.md` 渲染成单页文档**（模板 `surf/doc.html`，带目录与返回面包屑），`?raw=1` 给纯文本；其余类型一律纯文本 |
+| `/surf/scan/{file}` | 日期段里带后缀（`/surf/scan/summary.md`）= 要**文档**，取最近一期里有它的那期。日期是 `YYYY-MM-DD`（无点），两者不会混 |
+| `/scans/{date}/{file}` | 与 `/surf/file/scans/{date}/{file}` 等价，短写法（页面上的链接走这条） |
+
 
 **长文档（扫描 summary、卡片正文与日志）带右侧 sticky 目录**（`app/templates/surf/_toc.html`）。
 summary 已到五百多行、三十多个二三级标题，整篇平铺只能靠滚轮找章节。
-两个实现约束：① markdown 的 `toc` 扩展默认 slugify 走 ASCII 化，**中文标题会被整段剥空**
+三个实现约束：① markdown 的 `toc` 扩展默认 slugify 走 ASCII 化，**中文标题会被整段剥空**
 （`## 1. 本次数据质量问题` → id `1`，`### 左上角 · 出手` → 空串退化成 `_1`），必须换
 `slugify_unicode`；② toc 只在**单个 Markdown 实例内**去重，同一页渲染多篇（扫描两个 tab、
 卡片正文+日志）时跨篇同名标题会撞 id、点目录跳到另一篇去，所以 `_render_doc` 给锚点加了前缀。
+③ **锚点落在隐藏 tab 里时浏览器静默不跳**（2026-09-23 修）。扫描页七个 tab 只有一个
+`.tab-body` 不是 `display:none`，而 hash 不知道这件事——浏览器对隐藏元素做锚点定位时
+不报错、不滚动。实测在 summary 上跳 `#d2-…`、在通道 A 上跳 `#d1-…`、冷开
+`/surf/scan/x#d2-…`，页面都停在原地（scrollY 0），表现就是「这篇打不开」。
+修法：`scan.html` 让 hash 兼任 tab 标识（点标签写 `#d-2`），并在滚动前先激活目标
+所在的 tab。**tab 因此变成可直链、可分享、刷新后停在原处。**
+
+> 渲染有**两种粒度**，都要：`/surf/scan/{date}` 是「一期一页」——两篇 tab 切换 + 五张可排序表；`/surf/file/…`、`/scans/…`、`/surf/scan/{file}` 是「一篇一页」（`surf/doc.html`）——一个 URL 只装一篇，可收藏、可分享、可当 diff 的两端。
+> 取原文在任一 URL 后加 `?raw=1`。一律 `text/plain` 而非 `text/markdown`：后者会被浏览器下载而不是显示。扫描页每个 tab、卡片页正文与日志都带「单页 / 原文」两个链接指过去。
 
 **只读消费 `surf/` 下的文件，不写任何东西。** 不取盘中价——周频系统，日内价格无决策意义，页面标注数据日期与来源。
 

@@ -10,12 +10,21 @@
       <span class="surf-meta">最近扫描 {{ latest }}
         {%- if matrix and matrix.scan %} · #{{ matrix.scan }}{% endif %}</span>
     {% endif %}
+    {# 顶栏也有入口，但那一条挤在 10 个链接里，窄窗口容易看漏——这里给一个显式的 #}
+    <span class="surf-meta">
+      <a href="/surf/universe" style="color:#2a5db0;text-decoration:none">候选池（扫了哪些 / 盲区在哪）→</a>
+    </span>
   </div>
 
   {# ---------------- 在跟的趋势 ---------------- #}
   <div class="surf-sec">
     <h2>在跟的趋势
-      <span class="hint">价格为扫描快照（{{ latest or '—' }}），非实时</span>
+      {# 这块面板混着两个日期的数据：现价与进度条取 latest_quotes.csv 的最新收盘，
+         量能/广度/板块资金/ret60 取当期扫描快照。原先只写「价格为扫描快照」，
+         会把现价也读成快照日期 #}
+      <span class="hint">均为收盘价，非实时 · 现价取最新收盘
+        {%- if quotes_date %}（{{ quotes_date }}）{% endif %} ·
+        量能/广度/资金/ret60 取扫描快照（{{ latest or '—' }}）</span>
     </h2>
 
     {% for c in cards %}

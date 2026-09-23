@@ -90,7 +90,10 @@
   .tabs button { border: 1px solid #dfe3e8; background: #fff; border-radius: 6px;
                  padding: 5px 12px; cursor: pointer; font-size: .85rem; color: #444; }
   .tabs button.on { background: #2a5db0; color: #fff; border-color: #2a5db0; }
-  .tab-body { display: none; } .tab-body.on { display: block; }
+  /* scroll-margin 给 tab 自身也用上：hash 直接指到某个 tab 时，它的内容
+     不该被 sticky nav 压住 */
+  .tab-body { display: none; scroll-margin-top: 56px; }
+  .tab-body.on { display: block; }
 
   .bl { border-left: 3px solid #b3322c; padding: 8px 12px; background: #fdf6f5;
         border-radius: 0 6px 6px 0; margin-bottom: 8px; font-size: .86rem; }

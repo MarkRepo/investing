@@ -15,6 +15,7 @@ description: 趋势跟随系统（主升浪/二波）。触发词：surf / surf 
 | 「复查卡片」/「卡片还成立吗」 | 只跑 Step 0 |
 | 「surf 卡片 {slug}」 | 读 `surf/cards/{slug}/card.md` 与 `log.md` |
 | 「打开 surf」/「看看趋势页」 | 页面在 <http://127.0.0.1:8000/surf>（服务由 launchd 托管） |
+| 「surf 怎么用」/「surf 说明」 | 读 `surf/USER-GUIDE.md` —— 工作原理 + 结果在哪看，给用户看的 |
 | 「候选池」/「扫了哪些」/「盲区在哪」 | <http://127.0.0.1:8000/surf/universe>，看「未判定」那段 |
 | 「加扫 {方向}」（重大事件） | 跑 Step 1 → 4，跳过 Step 0 |
 | 「补个股」/「这张卡片买什么股」 | 只跑 Step 5（需卡片已在左上角） |

@@ -184,7 +184,11 @@
 
   {# ---------------- 正文 ---------------- #}
   <div class="surf-sec">
-    <h2>卡片正文</h2>
+    <h2>卡片正文
+      <span class="hint">单页
+        <a class="xlink" href="/surf/file/cards/{{ card.slug }}/card.md">card.md</a>
+        · 原文 <a class="xlink" href="/surf/file/cards/{{ card.slug }}/card.md?raw=1">纯文本</a></span>
+    </h2>
     <div class="doc-2col">
       <div class="markdown-body">{{ card.body_html|safe }}</div>
       {% if card.body_toc %}{{ doc_toc(card.body_toc) }}{% endif %}
@@ -194,7 +198,9 @@
   {# ---------------- 决策日志 ---------------- #}
   {% if card.log_html %}
   <div class="surf-sec">
-    <h2>决策日志 <span class="hint">只追加，不修改历史</span></h2>
+    <h2>决策日志 <span class="hint">只追加，不修改历史 · 单页
+      <a class="xlink" href="/surf/file/cards/{{ card.slug }}/log.md">log.md</a>
+      · 原文 <a class="xlink" href="/surf/file/cards/{{ card.slug }}/log.md?raw=1">纯文本</a></span></h2>
     <div class="doc-2col">
       <div class="markdown-body">{{ card.log_html|safe }}</div>
       {% if card.log_toc %}{{ doc_toc(card.log_toc) }}{% endif %}
